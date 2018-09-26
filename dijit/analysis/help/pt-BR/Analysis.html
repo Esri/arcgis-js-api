@@ -44,7 +44,7 @@
         <p>A caixa de ferramentas Analisar Fei&ccedil;&atilde;o cont&eacute;m diversas ferramentas que voc&ecirc; pode acessar e utilizar.  Estas tarefas s&atilde;o organizadas abaixo em categorias; as categorias s&atilde;o agrupamentos l&oacute;gicos e n&atilde;o afetam como acessar ou utilizar as tarefas de qualquer forma.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir Dados</h2>
         <hr/>
         <p>Estas ferramentas calculam a contagem total, comprimentos, &aacute;reas, e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
@@ -56,6 +56,8 @@
                 <li> <b>Resumir Mais Pr&oacute;ximo</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es e seus atributos que est&atilde;o dentro de uma dist&acirc;ncia especificada.
                 </li>
                 <li> <b>Resumir Dentro</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es de &aacute;rea e atributos que sobrep&otilde;em uns aos outros.
+                </li>
+                <li> <b>Resumir Centro e Dispers&atilde;o</b> calcula fei&ccedil;&otilde;es centrais e distribui&ccedil;&otilde;es direcionais.
                 </li>
             </ul>
             
@@ -76,7 +78,7 @@
 <hr/>
             <p>Utilizando uma camada de fei&ccedil;&otilde;es de ponto e uma camada de fei&ccedil;&otilde;es de &aacute;rea, esta ferramenta determina quais pontos caem dentro de cada &aacute;rea e calcula a estat&iacute;stica sobre todos os pontos dentro de cada &aacute;rea. Por exemplo:
                 <ul>
-                    <li>Determinados locais de ponto dos incidentes de crime, contagem do n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
+                    <li>Determinados os locais de ponto dos incidentes de crime, contar o n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
                     </li>
                     <li>Encontrar as rendas mais altas e mais baixas para locais de franquia por estado.
                     </li>
@@ -98,13 +100,13 @@
 <hr/>
             <p>Ligar Fei&ccedil;&otilde;es ir&aacute; transerir atributos de uma camada ou tabela para outra baseado relacionamentos espaciais e atributos. Por exemplo:
                 <ul>
-                    <li>Anexar limite comum ou informa&ccedil;&otilde;es demogr&aacute;ficas para seus dados incidentes.
+                    <li>Anexar informa&ccedil;&otilde;es demogr&aacute;ficas ou de limite comuns para seus dados de incidentes.
                     </li>
                     <li>Identificar as instala&ccedil;&otilde;es mais pr&oacute;ximas de uma localiza&ccedil;&atilde;o conhecida.
                     </li>
                     <li>Determinar o n&uacute;mero de resid&ecirc;ncias que caem dentro das zonas de inunda&ccedil;&atilde;o.
                     </li>
-                    <li>Identificar h&aacute;bitats comuns de esp&eacute;cies de vida selvagem diferentes.
+                    <li>Identificar habitats comuns para diferentes esp&eacute;cies de vida selvagem.
                     </li>
                 </ul>
                 
@@ -149,6 +151,32 @@
                     <li>Dada uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
                     </li>
                     <li>Dada uma camada de lotes em um munic&iacute;pio e uma camada de limites da cidade, resuma o valor m&eacute;dio de lotes desocupados dentro de cada cidade.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Centro e Dispersão</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Resumir Centro e Dispers&atilde;o">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta utiliza fei&ccedil;&otilde;es de ponto para calcular a fei&ccedil;&atilde;o central, centro m&eacute;dio, centro mediano ou elipse (distribui&ccedil;&atilde;o). Por exemplo:
+                <ul>
+                    <li>Com uma camada de centr&oacute;ides do grupo de blocos fornecida, a fei&ccedil;&atilde;o central ponderada pela popula&ccedil;&atilde;o pode ser utilizada para identificar qual arte da cidade &eacute; a mais acess&iacute;vel para uma apresentar um centro de artes.
+                    </li>
+                    <li>Com uma camada de observa&ccedil;&otilde;es de alce dentro de um parque em diversos anos fornecida, o centro m&eacute;dio pode ser utilizado para ver onde o alce congrega no ver&atilde;o e inverno.
+                    </li>
+                    <li>Com uma camada de incidentes de inc&ecirc;ndio fornecida, o centro mediano pode ser utilizado para medir a propens&atilde;o central dos inc&ecirc;ndios sem ser afetado por perif&eacute;rico dados at&iacute;picos.
+                    </li>
+                    <li>Com uma camada de amostras de po&ccedil;o de &aacute;guas subterr&acirc;neas fornecida, uma elipse pode ser utilizada para determinar como uma &aacute;rea contaminante est&aacute; espalhando.
                     </li>
                 </ul>
                 
@@ -346,8 +374,8 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Analisar Modelos</h2>
+    <div id="AnalyzePatternsCategory" class="largesize">
+        <h2>Analisar Padrões</h2>
         <hr/>
         <p>Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.  
             <ul>
@@ -356,6 +384,8 @@
                 <li> <b>Localizar Alto Valor de Incid&ecirc;ncia</b> identifica agrupamentos estatisticamente significativos no modelo espacial dos seus dados.
                 </li>
                 <li> <b>Localizar Valores At&iacute;picos</b> determina se h&aacute; quaisquer valores at&iacute;picos significantes por meio de estat&iacute;sticas no padr&atilde;o espacial dos seus dados.
+                </li>
+                <li> <b>Localizar Agrupamentos de Ponto</b> localiza agrupamentos de fei&ccedil;&otilde;es de ponto dentro da &aacute;rea de ru&iacute;do baseado em sua distribui&ccedil;&atilde;o espacial.
                 </li>
                 <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseado em medidas localizadas em uma cole&ccedil;&atilde;o de pontos.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Esta ferramenta cria um mapa mostrando qualquer agrupamento e valores at&iacute;picos significativos por meio de estat&iacute;sticas presentes em seus dados. Utilize esta ferramenta para identificar fei&ccedil;&otilde;es com valores que s&atilde;o significativamente diferentes de seus vizinhos.  Voc&ecirc; pode utilizar esta ferramenta, por exemplo, para localizar padr&otilde;es de gastos an&ocirc;malos, determinar onde est&atilde;o os limites entre riqueza e pobreza em uma &aacute;rea de estudo ou determinar se h&aacute; munic&iacute;pios nos Estados Unidos com probabilidade de vida baixa comparada a seus vizinhos.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Agrupamentos de Pontos</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Localizar Agrupamentos de Pontos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta detecta &aacute;reas onde os pontos s&atilde;o concentrados e onde eles s&atilde;o separados por &aacute;reas que est&atilde;o vazias ou escassas. Os pontos que n&atilde;o s&atilde;o parte de um agrupamento s&atilde;o rotulados como ru&iacute;do.
             </p>
             <br/>
         </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define([],function(){var e={};e.createRegExp=function(t,n,r){return t=e.trimText(t),!t&&r?null:new RegExp(t,n)},e.trimText=function(e){return e?e.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,"").trim():""},e.replace=function(e,t,n){return null==e?"":(""+e).replace(t,function(e){return n[e]||""})};var t=/&|<|>/g,n=/&|<|>|"|'/g,r={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"};e.encodeXML=function(u,a){return e.replace(u,a?n:t,r)};var u=/&amp;|&lt;|&gt;|&quot;|&apos;/g,a={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"',"&apos;":"'"};return e.decodeXML=function(t){return e.replace(t,u,a)},e});
+define([],function(){var t={};t.createRegExp=function(e,n,r){return e=t.trimText(e),!e&&r?null:new RegExp(e,n)},t.trimText=function(t){return t?t.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,"").trim():""},t.replace=function(t,e,n){return null==t?"":(""+t).replace(e,function(t){return n[t]||""})};var e=/&|<|>/g,n=/&|<|>|"|'/g,r={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"};t.encodeXML=function(u,a){return t.replace(u,a?n:e,r)};var u=/&amp;|&lt;|&gt;|&quot;|&apos;/g,a={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"',"&apos;":"'"};return t.decodeXML=function(e){return t.replace(e,u,a)},t.IS_RICH_TEXT_RE=/<\w/,t.IS_URL_RE=/((www\.|http:\/\/|https:\/\/)[A-Za-z0-9_.\-~]+\.[A-Za-z0-9_.\-~\/]+)|([A-Za-z0-9_.\-~]+\.com[A-Za-z0-9_.\-~\/]*)/,t.isRichText=function(e){return e&&t.IS_RICH_TEXT_RE.test(e)},t.isUrl=function(e){return e&&t.IS_URL_RE.test(e)},t});

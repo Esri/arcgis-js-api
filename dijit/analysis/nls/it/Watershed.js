@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli layer di direzione flusso",pourPointLayerLabel:"Scegli raster o feature layer di punti di versamento",pourPointField:"Scegli campo punto versamento",resultLayerName:"Nome del layer dei risultati",outputLayerName:"Spartiacque di ${layername}",itemDescription:"Feature layer generato in seguito all'esecuzione di Riepiloga centro e dispersione su ${inputLayerName}. ",itemTags:"Risultato analisi, Spartiacque, ${layername} ${fieldname}",itemSnippet:"Feature layer generato da Spartiacque."});

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pontok összevonása</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Pontok &ouml;sszevon&aacute;sa"></h2>
+        <hr/>
+    <p>Ez az eszk&ouml;z egy pontszerű vektoros elemeket tartalmaz&oacute; r&eacute;teggel &eacute;s egy ter&uuml;let vektoros elemeket tartalmaz&oacute; r&eacute;teggel műk&ouml;dik.  A bemeneti ter&uuml;let vektoros elemek sz&aacute;rmazhatnak poligonr&eacute;tegből, de sz&aacute;rmazhatnak n&eacute;gysz&ouml;g vagy hatsz&ouml;g alak&uacute; gyűjtőkből is az eszk&ouml;z futtat&aacute;sakor. Az eszk&ouml;z elősz&ouml;r meghat&aacute;rozza, hogy mely pontok esnek az egyes megadott ter&uuml;leteken bel&uuml;l. A pont-ter&uuml;let t&eacute;rbeli kapcsolat meghat&aacute;roz&aacute;sa ut&aacute;n kisz&aacute;m&iacute;tja a ter&uuml;leten tal&aacute;lhat&oacute; &ouml;sszes ponttal kapcsolatos statisztikai adatokat, &eacute;s hozz&aacute;rendeli őket a ter&uuml;lethez. A legalapvetőbb statisztikai adat a ter&uuml;leten bel&uuml;li pontok sz&aacute;ma, de m&aacute;s statisztikai adatok kinyer&eacute;s&eacute;re is lehetős&eacute;g van. 
+
+    </p>
+    <p>Tegy&uuml;k fel p&eacute;ld&aacute;ul, hogy rendelkez&eacute;sre &aacute;llnak k&aacute;v&eacute;z&oacute;k hely&eacute;nek pontszerű vektoros elemei &eacute;s megy&eacute;k ter&uuml;let vektoros elemei, &eacute;s szeretn&eacute; megy&eacute;nk&eacute;nt &ouml;sszes&iacute;teni a k&aacute;v&eacute;&eacute;rt&eacute;kes&iacute;t&eacute;st.  Felt&eacute;telezve azt, hogy a k&aacute;v&eacute;z&oacute;k rendelkeznek  <i>TOTAL_SALES</i> attrib&uacute;tummal, kinyerheti a megy&eacute;nk&eacute;nti <i>TOTAL_SALES</i> &ouml;sszeg&eacute;t vagy a megy&eacute;nk&eacute;nti minim&aacute;lis vagy maxim&aacute;lis <i>TOTAL_SALES</i>
+ &eacute;rt&eacute;k&eacute;t, vagy m&aacute;s statisztik&aacute;kat, p&eacute;ld&aacute;ul a darabsz&aacute;mot, a terjedelmet, a sz&oacute;r&aacute;st &eacute;s a varianci&aacute;t.
+    </p>
+    <p>Ez az eszk&ouml;z időb&eacute;lyeggel ell&aacute;tott adatokkal is k&eacute;pes műk&ouml;dni. Ha az idő enged&eacute;lyezve van a bemeneti pontokon, akkor rendelkez&eacute;sre &aacute;ll az időszeletek k&eacute;pz&eacute;se lehetős&eacute;g. Időszeletek k&eacute;pz&eacute;s&eacute;vel lehetős&eacute;ge van a pont-ter&uuml;let kapcsolat kisz&aacute;m&iacute;t&aacute;s&aacute;ra egy meghat&aacute;rozott időszeletet figyelve. N&eacute;zhet p&eacute;ld&aacute;ul &oacute;r&aacute;s időintervallumot, amikor is minden &oacute;r&aacute;ban kapna egy kimenetet eredm&eacute;nyk&eacute;ppen. 
+    </p>
+    <p>Az idő haszn&aacute;lat&aacute;ra p&eacute;ldak&eacute;nt tegy&uuml;k fel, hogy a k&uuml;l&ouml;nb&ouml;ző k&aacute;v&eacute;z&oacute;kban v&eacute;gbement tranzakci&oacute;k mindegyik&eacute;ről rendelkez&eacute;sre &aacute;llnak pontszerű vektoros elemek, &eacute;s nincs ter&uuml;letr&eacute;teg. Az adatokat egy &eacute;ve gyűjtik, &eacute;s mindegyik tranzakci&oacute;hoz hely &eacute;s időb&eacute;lyegző tartozik. Felt&eacute;telezve, hogy mindegyik tranzakci&oacute; rendelkezik  <i>TOTAL_SALES</i> attrib&uacute;tummal, kisz&aacute;m&iacute;thatja az &ouml;sszes <i>TOTAL_SALES</i> &ouml;sszeg&eacute;t az &Ouml;nt &eacute;rdeklő helyen &eacute;s időben. Ha ezek a tranzakci&oacute;k mind egy v&aacute;rosb&oacute;l val&oacute;k, l&eacute;trehozhatunk 1 kilom&eacute;teres r&aacute;csh&aacute;l&oacute;knak megfelelő ter&uuml;leteket, &eacute;s heti időszeletekben n&eacute;zhetj&uuml;k az adatokat a tranzakci&oacute;k időbeli &eacute;s t&eacute;rbeli &ouml;sszegz&eacute;s&eacute;hez.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>A területekké összesíteni kívánt pontokat tartalmazó réteg kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A pontr&eacute;teg, amelyet a program ter&uuml;letekk&eacute; &ouml;sszes&iacute;t.  A  <b>N&eacute;gysz&ouml;g</b> vagy <b>Hatsz&ouml;g</b> gyűjtőkk&eacute; &ouml;sszes&iacute;tett pontr&eacute;tegekn&eacute;l alkalmazott t&eacute;rbeli referenci&aacute;t vet&uuml;leti koordin&aacute;ta-rendszerre kell &aacute;ll&iacute;tani az <b>Elemz&eacute;si k&ouml;rnyezetek</b> seg&iacute;ts&eacute;g&eacute;vel.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Válassza ki a területréteget, amelybe az összevonás történik</h2></div>
+        <hr/>
+        <div>
+            <p>A ter&uuml;let, amelybe a pontr&eacute;teg &ouml;sszes&iacute;tve lesz. V&aacute;laszthat a megadott ter&uuml;let r&eacute;teg vagy az eszk&ouml;z fut&aacute;sakor l&eacute;trehozott t&aacute;rol&oacute;k k&ouml;z&ouml;tt.  <b>N&eacute;gysz&ouml;g</b> t&aacute;rol&oacute;k l&eacute;trehoz&aacute;sakor a megadott sz&aacute;m &eacute;s egys&eacute;gek a n&eacute;gysz&ouml;g magass&aacute;g&aacute;t &eacute;s hossz&uacute;s&aacute;g&aacute;t hat&aacute;rozz&aacute;k meg. <b>Hatsz&ouml;g</b> eset&eacute;n a megadott sz&aacute;m &eacute;s a m&eacute;rt&eacute;kegys&eacute;gek a p&aacute;rhuzamos oldalak k&ouml;z&ouml;tti t&aacute;vols&aacute;got hat&aacute;rozz&aacute;k meg.
+            </p>
+            <p>Analysis using  <b>Square</b> or <b>Hexagon</b> bins requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Válassza ki azt a területréteget, amelybe az összevonás történik</h2></div>
+        <hr/>
+        <div>
+            <p>A ter&uuml;letr&eacute;teg, amelybe a program &ouml;sszes&iacute;ti a pontokat. A program az ezen a r&eacute;tegen tal&aacute;lhat&oacute; ter&uuml;letek hat&aacute;rvonalain bel&uuml;l eső b&aacute;rmely pontot sz&aacute;mba veszi, &eacute;s opcion&aacute;lisan &ouml;sszes&iacute;ti a felhaszn&aacute;l&oacute; &aacute;ltal kiv&aacute;lasztott statisztika haszn&aacute;lat&aacute;val. 
+            </p>
+            <p>Either  <b>Bin Size</b> for bins or <b>Area Layer</b> must be set.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Válassza ki a távolságot a gyűjtők létrehozásához és az összevonáshoz</h2></div>
+        <hr/>
+        <div>
+            <p>Azoknak a gyűjtőknek a l&eacute;trehoz&aacute;s&aacute;hoz haszn&aacute;lt t&aacute;vols&aacute;g, amelybe a bemenő pontokat &ouml;sszes&iacute;ti. N&eacute;gysz&ouml;g alak&uacute; gyűjtő eset&eacute;n a m&eacute;ret a n&eacute;gysz&ouml;g magass&aacute;g&aacute;t jel&ouml;li. Hatsz&ouml;g alak&uacute; gyűjtő eset&eacute;n a m&eacute;ret a hatsz&ouml;g (p&aacute;rhuzamos oldalakt&oacute;l m&eacute;rt) magass&aacute;g&aacute;t jel&ouml;li.  
+            </p>
+            <p>Either  <b>Bin Size</b> for bins or <b>Area Layer</b> must be set.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Összevonás időbeli lépések használatával (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
+                <ul>
+                    <li> <b>Time step interval</b>
+                    </li>
+                    <li> <b>How often to repeat the time step</b>
+                    </li>
+                    <li> <b>Time to align the time steps to</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to <code>1 week</code>. 
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Időbeli lépés intervalluma</h2></div>
+        <hr/>
+        <div>
+            <p>The interval of time used for generating time steps.  <b>Time step interval</b> can be used alone or with the <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameter.
+            </p>
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Az időbeli lépés ismétlésének gyakorisága</h2></div>
+        <hr/>
+        <div>
+            <p> The step used for calculating a time step. <b>How often to repeat the time step</b> can be used alone, with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
+            </p>
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Az időbeli lépések igazításához használt idő</h2></div>
+        <hr/>
+        <div>
+            <p>The date and time used to align time slicing. Time stepping will start at and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
+            </p>
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statisztika hozzáadása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
+                <ul>
+                    <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
+                    </li>
+                    <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
+                    </li>
+                    <li>Mean&mdash;The mean of numeric values. The mean of [0, 2, null] is 1.
+                    </li>
+                    <li>Min&mdash;The minimum value of a numeric field. The minimum of [0, 2, null] is 0. 
+                    </li>
+                    <li>Max&mdash;The maximum value of a numeric field. The maximum value of [0, 2, null] is 2.
+                    </li>
+                    <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
+                    </li>
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,0,1,1] is 0.25.
+                    </li>
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You can calculate the following on string fields:
+                <ul>
+                    <li>Count&mdash;The number of nonnull strings.
+                    </li>
+                    <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
+                    </li>
+                </ul>
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (WKID)</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store adattár kiválasztása az eredmények mentéséhez</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+                <ul>
+                    <li>You can use results in portal-to-portal collaboration.
+                    </li>
+                    <li>You can enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created in <b>My Content</b> and added to the map. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. If the layer already exists, the tool will fail.
+            </p>
+            <p>Az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mezőben megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

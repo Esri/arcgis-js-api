@@ -33,7 +33,7 @@
             <td  colspan="3" class="sectionHeader" data-dojo-attach-point="_interpolateToolDescription" ></td>
           </tr>
           <tr data-dojo-attach-point="_analysisLabelRow" style="display:none;">
-            <td colspan="2" style="padding-bottom:0;">
+            <td colspan="2" style="padding-bottom:0;" class="width-90">
               <label class="esriFloatLeading  esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.oneLabel}</label>
               <label class="esriAnalysisStepsLabel esriAnalysisStepsLabel">${i18n.analysisLayerLabel}</label>
             </td>
@@ -47,7 +47,7 @@
             </td>
           </tr>          
         <tr>
-          <td colspan="2" style="padding-bottom:0;">
+          <td colspan="2" style="padding-bottom:0;" class="width-90">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.oneLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.selectAttributesLabel}</label>
           </td>
@@ -104,18 +104,18 @@
               <table class="esriFormTable optionsTable">
                 <tbody>
                   <tr>
-                    <td colspan="2" class="twobythree-width">
+                    <td colspan="2" class="width-90">
                       <label class="esriLeadingMargin2">${i18n.interpolateWithin}</label>
                     </td>
-                    <td class="shortTextInput strict-onebythree-width">
+                    <td class="shortTextInput">
                       <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="boundingPolygonLayer"></a>
                     </td>                    
                   </tr>
                   <tr>
-                    <td colspan="2" style="width:40%;">
+                    <td colspan="2">
                       <select class="esriLeadingMargin2 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_boundingAreaSelect" data-dojo-attach-event="onChange:_handleBoundingSelectChange"></select>                      
                     </td>
-                    <td style="width:9%;">
+                    <td>
                       <div data-dojo-type="dijit/form/ToggleButton" data-dojo-attach-point="_bndgPolyDrawBtn" class="esriFloatLeading esriActionButton" data-dojo-props="showLabel:false,iconClass:'toolbarIcon polygonIcon',label:'${i18n.drawLabel}'" data-dojo-attach-event="onChange:_handleBoundingBtnChange"></div>
                     </td> 
                   </tr>      
@@ -138,7 +138,7 @@
                       </select>
                     </td>
                   </tr>
-                  <tr data-dojo-attach-point="_classifyOtherOptionLabelRow"> 
+                  <tr data-dojo-attach-point="_classifyOtherOptionLabelRow">
                     <td colspan="2" style="padding-top:0.25;padding-bottom:0.25;">
                       <label class="esriLeadingMargin2">${i18n.classesCountLabel}</label>
                     </td>
@@ -168,7 +168,7 @@
                     </td>
                   </tr>                  
                   <tr>
-                    <td colspan="2" style="width:40%;">
+                    <td colspan="2">
                       <label class="esriLeadingMargin2">${i18n.predictLocLabel}</label>
                     </td>
                     <td class="shortTextInput">
@@ -218,7 +218,7 @@
    </div>
   <div style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
     <div class="esriExtentCreditsCtr">
-      <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+      <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
      <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
        <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
          ${i18n.useMapExtent}

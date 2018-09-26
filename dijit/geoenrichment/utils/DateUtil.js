@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/date/locale","esri/moment","./ObjectUtil"],function(t,e,r){var n={formatDate:function(e,n){return e=r.objectToDate(e),e?t.format(e,n):""},formatMoment:function(t,n){var o=r.objectToTime(t);return o?e(o).format(n):""},formatDateShort:function(t){return n.formatMoment(t,"L")},formatDateTimeShort:function(t){return n.formatMoment(t,"L LT")},formatLiveTime:function(t){var e=n.formatMoment(t,"l, LT").replace(/\d\d\d\d/,function(t){return t.substr(2)});return e?e+" "+n.formatDate(t,{datePattern:"ZZZZ",selector:"date"}):""},formatTypicalTime:function(t){return n.formatMoment(t,"ddd LT")},parseDateShort:function(t){var r=+e(t,"L");return r?new Date(r):null},getReportFooterDate:function(e){var r=e||new Date;return t.format(r,{datePattern:"MMMM d, yyyy",selector:"date"})},getFullYear:function(){return(new Date).getFullYear()}};return n});

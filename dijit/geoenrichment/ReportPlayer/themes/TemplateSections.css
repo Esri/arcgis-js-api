@@ -1,44 +1,47 @@
 
 
-.esriGEReportPlayer_section .section_stackNode {
+.esriGEReportPlayer_section {
     position: relative;
-    height: 100%;
 }
 
-    .esriGEReportPlayer_section .section_stackNode .stackNodeEmptyLine {
-        display: block;
-        background-color: transparent;
-        height: 1px;
-        margin-bottom: -1px;
+    .esriGEReportPlayer_section .section_stackNode {
+        height: 100%;
     }
 
-    .esriGEReportPlayer_section .section_stackNode .stackNodeSpacer {
-        display: block;
+        .esriGEReportPlayer_section .section_stackNode .stackNodeEmptyLine {
+            display: block;
+            background-color: transparent;
+            height: 1px;
+            margin-bottom: -1px;
+        }
+
+        .esriGEReportPlayer_section .section_stackNode .stackNodeSpacer {
+            display: block;
+        }
+
+    .esriGEReportPlayer_section .section_errorDiv {
+        text-align: center;
+        padding-top: 50px;
+        color: red;
     }
 
-.esriGEReportPlayer_section .section_errorDiv {
-    text-align: center;
-    padding-top: 50px;
-    color: red;
-}
+    
 
-
-
-.esriGEReportPlayer_section .templateHorizontalLine {
-    background-color: black;
-    height: 2px;
-    margin-right: 2px;
-    position: absolute;
-    width: 100%;
-}
-
-    .esriGEReportPlayer_section .templateHorizontalLine.templateHorizontalLineTop {
-        top: 0px;
+    .esriGEReportPlayer_section .templateHorizontalLine {
+        background-color: black;
+        height: 2px;
+        margin-right: 2px;
+        position: absolute;
+        width: 100%;
     }
 
-    .esriGEReportPlayer_section .templateHorizontalLine.templateHorizontalLineBottom {
-        bottom: 0px;
-    }
+        .esriGEReportPlayer_section .templateHorizontalLine.templateHorizontalLineTop {
+            top: 0px;
+        }
+
+        .esriGEReportPlayer_section .templateHorizontalLine.templateHorizontalLineBottom {
+            bottom: 0px;
+        }
 
 
 

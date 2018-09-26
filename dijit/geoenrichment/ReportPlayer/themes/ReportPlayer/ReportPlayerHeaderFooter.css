@@ -12,7 +12,7 @@
 
 .esriGEReportPlayerPrintNode .printNode_titleLabel {
     font-size: 21px;
-    height: 25px;
+    min-height: 25px;
     padding-bottom: 5px;
 }
 

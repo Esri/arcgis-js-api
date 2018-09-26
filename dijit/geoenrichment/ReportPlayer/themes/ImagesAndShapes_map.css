@@ -1,0 +1,126 @@
+
+
+
+.esriGEReportPlayer_section .templateMapImage {
+    background-position: center;
+    background-size: cover;
+}
+
+    .esriGEReportPlayer_section .templateMapImage.templateImageWithThumbnail {
+        background-size: auto;
+    }
+
+.esriGEReportPlayer_section .templateLiveMap .esriAttributionItem,
+.esriGEReportPlayer_section .templateLiveMap .esriAttributionLastItem {
+    display: none !important;
+}
+
+
+
+
+.esriGEReportPlayer_section .templateLiveMap .esriSimpleSliderTR {
+    top: 40px;
+    border-radius: 0px;
+    right: 0px;
+}
+
+
+
+.esriGEReportPlayer .HomeButton {
+    position: absolute;
+    top: 113px;
+    right: 0px;
+}
+
+    .esriGEReportPlayer .HomeButton .home {
+        border-radius: 0px;
+        padding: 1px;
+    }
+
+
+
+.esriGEReportPlayer_mapLegend {
+    position: absolute !important;
+    background-color: white;
+    min-width: 70px;
+    max-width: 200px;
+    overflow-y: auto;
+    cursor: move;
+    font-size: 10px; 
+    color: #4d4d4d;
+}
+
+    .esriGEReportPlayer_mapLegend .esriLegendService {
+        padding: 5px;
+    }
+
+    .esriGEReportPlayer_mapLegend .esriLegendServiceLabel {
+        word-break: break-word;
+    }
+
+
+
+.esriGEReportPlayerMobile .map .esriMapContainer .fixedPan {
+    position: absolute;
+    background-image: url('../../themes/common/images/paginationArrows/LeftArrowWhite.svg');
+    display: block;
+    background-color: rgba(100, 100, 100, 0.75);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-size: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 50 !important; 
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panUp {
+    top: 0px;
+    transform: rotate(90deg);
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panUpperRight {
+    display: none;
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panRight {
+    right: 0px;
+    background-image: url('../../themes/common/images/paginationArrows/RightArrowWhite.svg');
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panLowerRight {
+    right: 0px;
+    bottom: 0px;
+    background-size: 20px;
+    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
+    transform: rotate(180deg);
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panDown {
+    bottom: 0px;
+    transform: rotate(-90deg);
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panLowerLeft {
+    left: 0px;
+    bottom: 0px;
+    background-size: 20px;
+    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
+    transform: rotate(-90deg);
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panLeft {
+    left: 0px;
+}
+
+.esriGEReportPlayerMobile .map .esriMapContainer .panUpperLeft {
+    left: 0px;
+    top: 0px;
+    background-size: 20px;
+    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
+}
+
+.esriGEReportPlayerMobile .esriControlsBR.withPanArrows {
+    right: 35px;
+}

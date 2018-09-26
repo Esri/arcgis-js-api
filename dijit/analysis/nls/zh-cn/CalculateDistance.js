@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"选择栅格或要素位置图层以计算相应距离",maxDistanceLabel:"要计算的最大距离(可选)",outputCellSize:"输出像元大小(可选)",resultDistLayerName:"结果距离图层名称",resultDirectionLayerName:"结果方向图层名称(可选)",resultAllocationLayerName:"结果分配图层名称(可选)",outputLayerName:"${layername} 的已计算距离",allocationFieldLabel:"选择分配字段(可选)",itemDescription:"通过在 ${layerName} 上运行计算距离生成的要素图层。 ",itemTags:"分析结果，计算距离，${layername} ${fieldname}",itemSnippet:"通过计算距离生成的要素图层。"});

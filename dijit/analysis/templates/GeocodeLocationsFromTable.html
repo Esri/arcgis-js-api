@@ -57,7 +57,7 @@
           </tr>
           <tr>
             <td  colspan="3" class="padTop0">
-              <select class="esriAnalysisSelect esriLeadingMargin1 longInput esriLongLabel"   data-dojo-type="dijit/form/Select" data-dojo-attach-point="_locatorSelect" data-dojo-attach-event="onChange:_handleLocatorChange">
+              <select class="esriAnalysisSelect esriLeadingMargin1 longInput esriLongLabel"   data-dojo-type="dijit/form/Select" data-dojo-attach-point="_locatorSelect" data-dojo-props="required:true" data-dojo-attach-event="onChange:_handleLocatorChange">
               </select>
             </td>
           </tr>
@@ -166,7 +166,7 @@
      </div>
     <div data-dojo-attach-point="_aggregateToolContentButtons" style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
      <div class="esriExtentCreditsCtr">
-        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
          <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
            ${i18n.useMapExtent}

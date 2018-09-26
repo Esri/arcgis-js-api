@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["../../ChartBuilder"],function(e){var l={};return l.jorneyToWork={states:"n,p",defaultState:"p",fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Journey to Work (ACS)",points:[{label:"Drove Alone",fullName:"commute.ACSDRALONE"},{label:"Carpooled",fullName:"commute.ACSCARPOOL"},{label:"Public Transportation",fullName:"commute.ACSPUBTRAN"},{label:"Bus",fullName:"commute.ACSBUS"},{label:"Streetcar",fullName:"commute.ACSSTRTCAR"},{label:"Subway",fullName:"commute.ACSSUBWAY"},{label:"Railroad",fullName:"commute.ACSRAILRD"},{label:"Ferryboat",fullName:"commute.ACSFERRY"},{label:"Taxicab",fullName:"commute.ACSTAXICAB"},{label:"Motorcycle",fullName:"commute.ACSMCYCLE"},{label:"Bicycle",fullName:"commute.ACSBICYCLE"},{label:"Walked",fullName:"commute.ACSWALKED"},{label:"Other Means",fullName:"commute.ACSOTHTRAN"},{label:"Worked at Home",fullName:"commute.ACSWRKHOME"}],visualProps:{sorting:"Descending"}})}},l});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/Band.html","../form/MinNumberElement","../form/InputMaxNumber","../form/BandUnitsElement"],function(e,t,n,a,r,o){var d=e(r,{templateString:o});return n("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.content.Band",d,a),d});

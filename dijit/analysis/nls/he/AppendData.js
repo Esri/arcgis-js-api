@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבה שאליה תרצה להוסיף",inputWarningLabel:"אזהרה: יתבצעו שינויים בשכבה שאליה תוסיף.",inputHostedLayerWarning:"השכבה שנבחרה אינה שכבת ישויות מתארחת. בחר שכבת ישויות מתארחת שאליה תתבצע ההוספה.",appendLayerLabel:"בחר שכבה שתרצה להוסיף",filterLabel:"הוסף את כל הישויות או הגדר סט משנה (אופציונלי)",fieldMappingLabel:"בחר כיצד להוסיף שדות (אופציונלי)",inputField:"שדה קלט",appendValue:"הוסף ערך",expression:"ביטוי"});

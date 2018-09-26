@@ -57,6 +57,8 @@
                 </li>
                 <li> <b>Sažmi unutar</b> računa statistike za poligonalne geoobjekte i atribute koji se preklapaju.
                 </li>
+                <li> <b>Sažmi sredinu i disperziju</b> izračunava sredi&scaron;nje geoobjekte i distribucije smjerova.
+                </li>
             </ul>
             
         </p>
@@ -122,7 +124,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Pronađite geoobjekte koji se nalaze unutar određene udaljenosti geoobjekata u sloju unosa.   Udaljenost se može mjeriti uz ravne linije ili uz izvedive putove ovisne o načinu putovanja.  Tada se izračunavaju statistike za obližnje geoobjekte.  Na primjer:
+            <p>Pronađite geoobjekte koji se nalaze unutar određene udaljenosti geoobjekata u sloju unosa.   Udaljenost se može mjeriti uz ravne linije ili uz izvedive putove ovisne o načinu putovanja.  Tada se izračunavaju statistike za obližnje geoobjekte. Na primjer:
                 <ul>
                     <li>Izračunajte ukupnu populaciju unutar pet minuta od predložene lokacije nove trgovine.
                     </li>
@@ -149,6 +151,32 @@
                     <li>Ako imate poligonalni sloj sliva i poligonalni sloj uporabe zemlji&scaron;ta prema vrsti uporabe zemlji&scaron;ta, izračunajte ukupnu poljoprivrednu povr&scaron;inu za svaki sliv. 
                     </li>
                     <li>Ako imate sloj parcela u okrugu i sloj granica grada, sažmite prosječnu vrijednost praznih parcela unutar svakog grada.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sažmi sredinu i disperziju</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Sažmi sredinu i disperziju">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat upotrebljava točkaste geoobjekte za izračun sredi&scaron;njeg geoobjekta, srednje sredine, prosječne sredine ili elipse (distribucije). Na primjer:
+                <ul>
+                    <li>S obzirom na sloj grupe centroida gradskih blokova, izračun sredi&scaron;njeg geoobjekta prema stanovni&scaron;tvu može se upotrijebiti za određivanje dijela grada koji je najpristupačniji za kulturni centar.
+                    </li>
+                    <li>S obzirom sloj zapažanja losova u parku tijekom nekoliko godina, može se upotrijebiti srednja sredina kako bi se vidjelo gdje se losovi okupljaju ljeti i zimi.
+                    </li>
+                    <li>S obzirom na sloj pojavljivanja požara, prosječna sredina može se upotrijebiti za mjerenje sredi&scaron;nje tendencije nastanka požara bez utjecanja na periferna odstupanja.
+                    </li>
+                    <li>S obzirom na sloj uzoraka podzemnih voda, može se izraditi elipsa kako bi se odredio način &scaron;irenja oneči&scaron;ćenja.
                     </li>
                 </ul>
                 
@@ -356,6 +384,8 @@
                 </li>
                 <li> <b>Pronađi odstupanja</b> određuje ima li statistički značajnih odstupanja u prostornom obrascu va&scaron;ih podataka.
                 </li>
+                <li> <b>Pronađi klastere točaka</b> pronalazi klastere točkastih geoobjekata u okolnim podacima na temelju njihove prostorne distribucije.
+                </li>
                 <li> <b>Interpoliraj točke</b> predviđa vrijednosti na novim lokacijama na temelju mjera dobivenih iz skupa točaka.
                 </li>
             </ul>
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Ovaj alat stvara kartu s prikazom svih statistički značajnih klastera i prostornih odstupanja prisutnih u va&scaron;im podacima. Upotrijebite ovaj alat kako biste identificirali geoobjekte s vrijednostima koje su značajno drugačije od vrijednosti susjednih geoobjekata.  Primjerice, možete upotrijebiti ovaj alat kako biste prona&scaron;li abnormalne obrasce potro&scaron;nje, utvrdili gdje su najo&scaron;trije granice između bogatstva i siroma&scaron;tva u radnom području ili utvrdili postoje li okruzi u Sjedinjenim Američkim Državama s neobično niskim životnim vijekom s obzirom na susjedne okruge.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pronađi klastere točaka</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Pronađi klastere točaka">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat otkriva područja gdje su koncentrirane točke i područja gdje su točke razdvojene praznim područjima ili rijetke. Točke koje nisu dio klastera smatraju se nevažnima.
             </p>
             <br/>
         </div>

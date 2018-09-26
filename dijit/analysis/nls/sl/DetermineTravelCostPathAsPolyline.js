@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Izberite rastrski ali geoobjektni izvorni sloj za določitev poti od",inputCostRasterLabel:"Izberite rastrski sloj s potnimi stroški",inputDestinationLayerLabel:"Izberite rastrski ali geoobjektni sloj ciljev za določitev poti do",pathTypeLabel:"Izberite tip poti za določitev (izbirno)",bestSingle:"Najboljše enojno",eachCell:"Do vsake celice",eachZone:"Do vsakega območja",outputPolylineName:"Ime polilinije z rezultati",outputLayerName:"Optimalni potni stroški kot polilinija za ${layername}",drawDestinationPointLayerName:"Točke ciljev",drawSourcePointLayerName:"Izvorne točke",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Določi pot potnih stroškov kot polilinijo na ${layerName}. ",itemTags:"Rezultat analize, Določi pot potnih stroškov kot polilinijo, ${layername} ${fieldname}",itemSnippet:"Geoobjektni sloj, ustvarjen z orodjem Določi pot potnih stroškov kot polilinijo."});

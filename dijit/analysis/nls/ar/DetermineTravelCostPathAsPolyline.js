@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"اختر الطبقة النقطية لمصدر المعالم لأجل تحديد المسارات من",inputCostRasterLabel:"اختيار الطبقة النقطية لتكلفة السفر",inputDestinationLayerLabel:"اختر الطبقة النقطية لمصدر المعالم لأجل تحديد المسارات إلى",pathTypeLabel:"اختر نوع المسارات لتحديد (اختياري)",bestSingle:"أفضل مفرد",eachCell:"لكل خلية",eachZone:"لكل منطقة",outputPolylineName:"اسم الشكل متعدد الخطوط",outputLayerName:"التكلفة المثلى للسفر في الشكل متعدد الخطوط ${layername}",drawDestinationPointLayerName:"نقاط الوجهة",drawSourcePointLayerName:"نقاط المصدر",itemDescription:"طبقة المعالم المنشأة من تشغيل مسار تحديد تكلفة السفر في الشكل متعدد الخطوط على ${layerName}. ",itemTags:"تحليل النتيجة، مسار تحديد تكلفة السفر في الشكل متعدد الخطوط، ${layername} ${fieldname}",itemSnippet:"طبقة المعالم المنشأة من مسار تحديد تكلفة السفر في الشكل متعدد الخطوط"});

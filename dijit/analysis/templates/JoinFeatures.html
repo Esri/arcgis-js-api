@@ -168,7 +168,7 @@
 	          	</tr>
 	    	</tbody>
 	    </table>
-	    <table class="esriFormTable esriLeadingMargin1" style="border-collapse:collapse;border-spacing:5px;margin-top:10px;" cellpadding="5px" cellspacing="5px"> 
+	    <table class="esriFormTable esriLeadingMargin1 attributeJoin" style="border-collapse:collapse;border-spacing:5px;margin-top:10px;" cellpadding="5px" cellspacing="5px"> 
 	        <tbody>
 		      	<tr data-dojo-attach-point="_attributeRelationshipRow" class="hide longInput">
 		          	
@@ -191,7 +191,43 @@
 		              	<select class="esriLeadingMargin1 esriTrailingMargin025 longInput esriLongLabel" style="overflow:hidden!important;" data-dojo-attach-point="_joinOperation" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleJoinOperationChange">
 		              	</select>
 		            </td>
-	          	</tr>
+              </tr>
+              <tr data-dojo-attach-point="_joinOneOneOptionRow" style="display: table-row;">
+                <td colspan="3">
+                  <select data-dojo-attach-point="_joinOptionSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleJoinOneToOneOptionChange" class="esriLeadingMargin1 esriTrailingMargin025 longInput esriLongLabel">
+                    <option value="RECORD">${i18n.recordKept}</option>
+                    <option value="STATS">${i18n.addStats}</option>
+                  </select>
+                </td>
+		            <td data-dojo-attach-point="_joinOneOneOptionsHelpTd" class="shortTextInput" style="padding-bottom:0;">
+		              <a href="#" class="esriFloatTrailing helpIcon" esrihelptopic="summaryFields"></a>
+		            </td>
+              </tr>
+              <!--<tr>
+                <td colspan="4">
+                    <label class="esriLeadingMargin1" data-dojo-attach-point="_joinRecordRowLabel">${i18n.recordKept}</label>
+                </td>
+              </tr>-->
+              <tr data-dojo-attach-point="_joinRecordRow" style="display: table-row;">
+                <td colspan="4">
+                  <div class="esriLeadingMargin2" style="width:100%;">
+                    <label class="esriSelectLabel">
+                      <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_firstRecRadioBtn" data-dojo-props="'class':'esriSelectLabel',checked:true" name="chooserecord"/>
+                      ${i18n.chooseFirstRecord}
+                    </label>
+                    <br/>
+                    <label class="esriSelectLabel">
+                      <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_exprRadioBtn" data-dojo-attach-event="onChange:_handleExprRadioChange" data-dojo-props="'class':'esriSelectLabel'" name="chooserecord"/> 
+                      ${i18n.orderByField}
+                    </label>
+                    <br/>
+                    <select class="padTop05 esriTableFixedLayout mediumDivInput"  data-dojo-type="dijit/form/Select"  data-dojo-attach-event="onChange:_handleExpFieldChange" data-dojo-attach-point="_expFieldsSelect">
+                    </select>
+                    <select class="padTop05 esriTableFixedLayout mediumDivInput"  data-dojo-type="dijit/form/Select"  data-dojo-attach-point="_expFilterSelect">
+                    </select>
+                  </div>
+                </td>
+              </tr>
 							<tr data-dojo-attach-point="_joinOperationLabelRow" style="display: table-row;">
 		            <td colspan="3" style="padding-bottom:1em;">
 		              <label class="esriLeadingMargin1">${i18n.statisticsLabel}</label>
@@ -199,9 +235,10 @@
 		            <td class="shortTextInput" style="padding-bottom:0;">
 		              <a href="#" class="esriFloatTrailing helpIcon" esrihelptopic="summaryFields"></a>
 		            </td>
-	          	</tr>
-	          	<tr data-dojo-attach-point="_summaryStatisticRow" >
-	          	</tr>
+              </tr>
+	          	<tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget" 
+								data-dojo-props="layer:'', showGeoAnalyticsParams:${showGeoAnalyticsParams}, emptyValue:'', addAsRow:true, allowDateType:true, isGPStringObjType: true">
+							</tr>
 	        </tbody>
 	    </table>
 			<table data-dojo-attach-point="_joinConditionNode" class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinOperationTable"> 
@@ -262,7 +299,7 @@
 	</div>
   	<div style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
       	<div class="esriExtentCreditsCtr">
-        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
        	<label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel esriLeadingMargin025">
          	<input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_handleExtentChange" data-dojo-props="checked:true" name="extent" value="true"/>
            	${i18n.useMapExtent}

@@ -20,12 +20,12 @@
     border-color: #A4A3A4 !important;
 }
 
-.VariableToggleButtonGroup .dijitToggleButton .dijitButtonContents {
+.VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonContents {
     height: 19px;
     line-height: 19px;
 }
 
-.VariableToggleButtonGroup .dijitToggleButton .dijitButtonNode {
+.VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonNode {
     padding: 0;
     color: #444444;
     -moz-border-radius: 0px;
@@ -34,12 +34,12 @@
     margin-right: 0px;
 }
 
-.dj_rtl .VariableToggleButtonGroup .dijitToggleButton .dijitButtonNode {
+.dj_rtl .VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonNode {
     margin-left: 0px;
     margin-right: -1px;
 }
 
-.VariableToggleButtonGroup .firstButton.dijitToggleButton .dijitButtonNode {
+.VariableToggleButtonGroup .firstButton.dijitToggleButton.esriGroupButton .dijitButtonNode {
     margin-left: 0px;
     margin-right: 0px;
 }

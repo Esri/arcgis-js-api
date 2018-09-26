@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["require","exports","../Extent","../Multipoint","../Point","../Polygon","../Polyline"],function(e,o,n,i,r,t,s){function u(e){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(e){console.warn(e.stack)}return a(e)}function l(e){return void 0!==e.xmin&&void 0!==e.ymin&&void 0!==e.xmax&&void 0!==e.ymax}function f(e){return void 0!==e.points}function y(e){return void 0!==e.x&&void 0!==e.y}function m(e){return void 0!==e.paths}function c(e){return void 0!==e.rings}function a(e){return e?y(e)?r.fromJSON(e):m(e)?s.fromJSON(e):c(e)?t.fromJSON(e):f(e)?i.fromJSON(e):l(e)?n.fromJSON(e):null:null}function d(e){return e instanceof r?"esriGeometryPoint":e instanceof s?"esriGeometryPolyline":e instanceof t?"esriGeometryPolygon":e instanceof n?"esriGeometryEnvelope":e instanceof i?"esriGeometryMultipoint":null}function p(e){return e&&v[e]||null}Object.defineProperty(o,"__esModule",{value:!0}),o.fromJson=u,o.isMultipoint=f,o.isPoint=y,o.isPolyline=m,o.isPolygon=c,o.fromJSON=a,o.getJsonType=d;var v={esriGeometryPoint:r,esriGeometryPolyline:s,esriGeometryPolygon:t,esriGeometryEnvelope:n,esriGeometryMultipoint:i};o.getGeometryType=p});

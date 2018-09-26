@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pilih layer yang akan diuraikan",summaryTypes:"Jenis ringkasan",centralFeature:"Fitur pusat",meanCenter:"Tengah rata-rata",medianCenter:"Median tengah",ellipse:"Elips",weightBy:"Ditimbang menurut (opsional)",groupBy:"Kelompokkan menurut (opsional)",resultLayerName:"Nama layer hasil",outputLayerName:"Uraikan distribusi ${layerName}",none:"Tidak ada",itemDescription:"Feature layer dihasilkan setelah menjalankan Ringkas pusat dan penyebaran pada ${layerName}. ",itemTags:"Hasil Analisis, Ringkas pusat dan penyebaran, ${layerName}",itemSnippet:"Feature layer dihasilkan dari Ringkas pusat dan penyebaran"});

@@ -69,13 +69,13 @@
                     <li> <b>Suprafeţe care se suprapun sau sunt adiacente</b>&mdash;Două sau mai multe suprafeţe ale căror graniţe se suprapun vor fi unificate &icirc;ntr-o singură suprafaţă.  &Icirc;n plus, suprafeţele care sunt adiacente (adică au o graniţă comună) vor fi unificate &icirc;ntr-o singură suprafaţă.
                     </li>
                     <li> <b>Suprafeţe cu aceeaşi valoare de c&acirc;mp</b>&mdash;Suprafeţele care se suprapun şi au o graniţă comună vor fi unificate &icirc;ntr-o singură suprafaţă dacă au aceeaşi valoare de c&acirc;mp.
-                        <p>De exemplu, dacă aveţi un strat tematic de unităţi teritoriale şi fiecare unitate teritorială are un c&acirc;mp  <i>State_Name</i>, puteți dizolva granițele folosind c&acirc;mpul <i>State_Name</i>.  Unităţile teritoriale adiacente vor fi unificate dacă au aceeaşi valoare pentru <i>State_Name</i>. Rezultatul final este un strat tematic cu graniţe statale.
+                        <p>De exemplu, dacă aveţi un strat tematic de unităţi teritoriale şi fiecare unitate teritorială are un c&acirc;mp  <i>State_Name</i>, puteți dizolva granițele folosind c&acirc;mpul <i>State_Name</i>.  Unităţile teritoriale adiacente vor fi unificate dacă au aceeaşi valoare pentru <i>State_Name</i>.  Rezultatul final este un strat tematic cu graniţe statale.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Dacă este bifat  <b>Folosește extinderea curentă a hărţii</b>, doar obiectele spațiale din stratul tematic din stratul de intrare care sunt vizibile din extinderea corectă a hărții vor fi dizolvate.  Dacă nu se bifează, toate obiectele spaţiale din stratul tematic introdus vor fi dizolvate, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+            <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi dizolvate numai obiectele spaţiale din stratul tematic de intrare care sunt vizibile &icirc;n extinderea curentă a hărţii.  Dacă nu se bifează, toate obiectele spaţiale din stratul tematic de intrare vor fi dizolvate, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
             </p>
         </div>
     </div>
@@ -83,7 +83,7 @@
         <div><h2>Creare obiecte spaţiale cu mai multe părţi</h2></div>
         <hr/>
         <div>
-            <p>&Icirc;n ArcGIS, o reprezentare a unui loc sau lucru care are mai mult de o singură parte dar este definită ca un obiect spațial doarece face referire la un set de atribute. &Icirc;ntr-un strat tematic de state, de exemplu, statul Hawaii poate fi considerat obiect spaţial cu componente multiple deoarece componentele geometrice separate ale acestuia pot fi clasificate drept un singur stat. Un obiect spaţial cu componente multiple poate fi un punct, o linie sau un poligon. Acest parametru boolean oferă două opțiuni:
+            <p>&Icirc;n ArcGIS, o reprezentare a unui loc sau lucru care are mai mult de o singură parte dar este definită ca un obiect spațial doarece face referire la un set de atribute. &Icirc;ntr-un strat tematic de state, de exemplu, statul Hawaii poate fi considerat obiect spaţial cu componente multiple deoarece componentele geometrice separate ale acestuia pot fi clasificate drept un singur stat. Acest parametru boolean oferă două opțiuni:
                 <ul>
                     <li>Real (verificat): serviciul de ieșire poate include obiecte spațiale cu componente multiple.
                     </li>

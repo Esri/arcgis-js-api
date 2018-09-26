@@ -57,6 +57,8 @@
                 </li>
                 <li> <b>Synth&eacute;tiser - A l'int&eacute;rieur</b> permet de calculer des statistiques des entit&eacute;s surfaciques et de leurs attributs qui se superposent.
                 </li>
+                <li> <b>Summarize Center and Dispersion (Synth&eacute;tiser le centre et la dispersion)</b> permet de calculer les entit&eacute;s centrales et les distributions directionnelles.
+                </li>
             </ul>
             
         </p>
@@ -149,6 +151,32 @@
                     <li>En prenant une couche de zones de bassin versant et une couche de zones d'utilisation du sol par type d'utilisation du sol, calculez la superficie totale du type d'utilisation du sol pour chaque bassin versant. 
                     </li>
                     <li>En prenant une couche de parcelles dans un comt&eacute; et une couche de limites de ville, r&eacute;sumez la valeur moyenne des parcelles vacantes au sein de chaque ville.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Synthétiser le centre et la dispersion</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Synth&eacute;tiser le centre et la dispersion">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil utilise les entit&eacute;s ponctuelles pour calculer l&rsquo;entit&eacute; centrale, le centre moyen, le centre m&eacute;dian ou l&rsquo;ellipse (distribution). Par exemple&nbsp;:
+                <ul>
+                    <li>Consid&eacute;rons une couche de centro&iuml;des de groupes d&rsquo;&icirc;lots, l&rsquo;entit&eacute; centrale pond&eacute;r&eacute;e en fonction de la population permet d&rsquo;identifier la partie de la ville pouvant accueillir une salle de spectacle qui soit la plus accessible.
+                    </li>
+                    <li>Dans le cadre d&rsquo;observations de wapitis au sein d&rsquo;un parc sur plusieurs ann&eacute;es, le centre moyen permet d&rsquo;identifier les lieux de rassemblement des wapitis en &eacute;t&eacute; comme en hiver.
+                    </li>
+                    <li>En consid&eacute;rant une couche d&rsquo;incendies, le centre m&eacute;dian permet de mesure la tendance centrale des incidents non affect&eacute;e par les points aberrants en p&eacute;riph&eacute;rie.
+                    </li>
+                    <li>Pour une couche de captages d&rsquo;eaux souterraines, une ellipse permet de d&eacute;terminer le mode de propagation d&rsquo;un contaminant.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analyser la répartition spatiale</h2>
         <hr/>
         <p>Ces outils vous permettent d'identifier, de quantifier et de visualiser les mod&egrave;les spatiaux dans vos donn&eacute;es.  
@@ -356,6 +384,8 @@
                 <li> <b>Trouver des points chauds</b> identifie les agr&eacute;gations statistiquement significatives dans le mod&egrave;le spatial de vos donn&eacute;es.
                 </li>
                 <li>L'outil  <b>Trouver des points aberrants</b> d&eacute;termine si le mod&egrave;le spatial de vos donn&eacute;es pr&eacute;sente des points aberrants statistiquement significatifs.
+                </li>
+                <li>L&rsquo;outil  <b>Find Point Clusters (Rechercher des agr&eacute;gats)</b> de points d&eacute;tecte les agr&eacute;gats d&rsquo;entit&eacute;s ponctuelles dans le bruit environnant en se basant sur leur distribution spatiale.
                 </li>
                 <li>L'outil  <b>Interpoler les points</b> permet de pr&eacute;voir des valeurs dans de nouveaux sites en fonction de mesures trouv&eacute;es dans une collection de points.
                 </li>
@@ -374,7 +404,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>L'analyse de densit&eacute; s&eacute;lectionne des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes et les r&eacute;partit sur la carte. Vous pouvez utiliser cet outil, par exemple, pour afficher les concentrations d'&eacute;clairs ou de tornades, l'acc&egrave;s aux centres de soins m&eacute;dicaux et les densit&eacute;s de population.
+            <p>L'analyse de densit&eacute; s&eacute;lectionne des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes et les r&eacute;partit sur la carte. Vous pouvez utiliser cet outil, par exemple, pour afficher les concentrations d&rsquo;&eacute;clairs ou de tornades, l&rsquo;acc&egrave;s aux centres de soins m&eacute;dicaux et les densit&eacute;s de population.
             </p>
             <br/>
         </div>
@@ -408,6 +438,21 @@
             </p>
             <br/>
         </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rechercher des agrégats de points</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Rechercher des agr&eacute;gats de points">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil d&eacute;tecte les zones o&ugrave; les points sont concentr&eacute;s et celles o&ugrave; ils sont s&eacute;par&eacute;s par des zones vides ou clairsem&eacute;es. Les points ne faisant pas partie d&rsquo;un agr&eacute;gat sont class&eacute;s comme bruit.
+            </p>
+            <br/>
+        </div>
         <div id="InterpolatePointsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -419,7 +464,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Cet outil vous permet de pr&eacute;voir des valeurs dans de nouveaux sites en fonction de mesures trouv&eacute;es dans une collection de points. L'outil s&eacute;lectionne des donn&eacute;es ponctuelles avec des valeurs &agrave; chaque point et renvoie des zones class&eacute;es par valeurs pr&eacute;vues. Vous pouvez utiliser cet outil, par exemple, pour pr&eacute;voir les niveaux de pr&eacute;cipitations sur un bassin versant en fonction de mesures prises dans des pluviom&egrave;tres individuels.
+            <p>Cet outil permet de pr&eacute;voir des valeurs dans de nouveaux sites en fonction de mesures trouv&eacute;es dans une collection de points. L'outil s&eacute;lectionne des donn&eacute;es ponctuelles avec des valeurs &agrave; chaque point et renvoie des zones class&eacute;es par valeurs pr&eacute;vues. Vous pouvez utiliser cet outil, par exemple, pour pr&eacute;voir les niveaux de pr&eacute;cipitations sur un bassin versant en fonction de mesures prises dans des pluviom&egrave;tres individuels.
             </p>
             <br/>
         </div>

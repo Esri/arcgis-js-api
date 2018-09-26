@@ -44,7 +44,7 @@
         <p>Geoobjektanalyse-verkt&oslash;ykassen inneholder en rekke verkt&oslash;y du f&aring;r tilgang til og kan bruke.  Disse oppgavene er sortert i kategorier nedenfor. Kategoriene er logiske grupperinger og har ingen innvirkning p&aring; hvordan du f&aring;r tilgang til og bruker verkt&oslash;yene.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Summer data</h2>
         <hr/>
         <p>Med disse verkt&oslash;yene kan du beregne totaler, lengder, omr&aring;der og grunnleggende beskrivende statistikk for geoobjekter og tilh&oslash;rende attributter innenfor omr&aring;der eller i n&aelig;rheten av andre geoobjekter.
@@ -56,6 +56,8 @@
                 <li> <b>Summer n&aelig;rliggende</b> beregner statistikk for geoobjekter og deres attributter som er innenfor en angitt avstand.
                 </li>
                 <li> <b>Summer innenfor</b> beregner statistikk for omr&aring;degeoobjekter og attributter som overlapper hverandre.
+                </li>
+                <li> <b>Summer midtpunkt og fordeling</b> beregner sentrale geoobjekter og retningsfordelinger.
                 </li>
             </ul>
             
@@ -149,6 +151,32 @@
                     <li>Hvis du har et lag med nedb&oslash;rsfelt og et lag med arealbruksomr&aring;der etter arealbrukstype, kan du beregne totalt areal for arealbrukstype for hvert nedb&oslash;rsfelt. 
                     </li>
                     <li>Hvis du har et lag med tomtene i et fylke og et lag med bygrenser, kan du summere gjennomsnittsverdien p&aring; ledige tomter i hver enkelt by.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summer midtpunkt og fordeling</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Summer midtpunkt og fordeling">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet bruker punktgeoobjekter til &aring; beregne det sentrale geoobjektet, snitt for midtpunkt, median for midtpunkt eller ellipse (fordeling). Eksempel:
+                <ul>
+                    <li>Gitt at det finnes et lag med blokker av tyngdepunkter, kan det sentrale geoobjektet vektet etter befolkning brukes til &aring; identifisere hvilken del av byen som er den lettest tilgjengelige for et senter for ut&oslash;vende kunst.
+                    </li>
+                    <li>Gitt at det finnes et lag med observasjoner av elg i en park i l&oslash;pet av flere &aring;r, kan snitt for midtpunkt brukes til &aring; se hvor elgene samles sommer og vinter.
+                    </li>
+                    <li>Gitt at det finnes et lag med brannhendelser, kan median for midtpunkt brukes til &aring; m&aring;le brannenes sentrale tendens uten &aring; p&aring;virkes av perifere utbrudd.
+                    </li>
+                    <li>Gitt at det finnes et lag med vannpr&oslash;ver fra grunnvannsbr&oslash;nner, kan en ellipse brukes til &aring; fastsl&aring; hvordan forurensning blir spredt.
                     </li>
                 </ul>
                 
@@ -357,6 +385,8 @@
                 </li>
                 <li> <b>Finn avvik</b> finner ut om det er noen statistisk signifikante avvik i det geografiske m&oslash;nsteret i dataene dine.
                 </li>
+                <li>Verkt&oslash;yet  <b>Finn punktklynger</b> finner klynger av punktgeoobjekter med omgivelsesst&oslash;y basert p&aring; deres geografiske fordeling.
+                </li>
                 <li> <b>Interpoler punkter</b>-verkt&oslash;yet forutsier verdier p&aring; nye lokasjoner basert p&aring; m&aring;linger fra en samling punkter.
                 </li>
             </ul>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Dette verkt&oslash;yet oppretter et kart som viser eventuelle statistisk signifikante klynger og romlige avvik i dataene dine. Bruk dette verkt&oslash;yet til &aring; identifisere geoobjekter med verdier som er signifikant forskjellige fra naboene. Du kan bruke dette verkt&oslash;yet til &aring; finne for eksempel avvikende forbruksvaner, finne ut hvor det er tydeligst i et studieomr&aring;de eller finne ut om det er fylker i USA som har uvanlig lav forventet levealder sammenlignet med nabofylkene.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Finn punktklynger</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Finn punktklynger">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet identifiserer omr&aring;der der punkter er konsentrert, og der de er adskilt av omr&aring;der som er tomme eller har f&aring; punkter. Punkter som ikke inng&aring;r i klynger, merkes som st&oslash;y.
             </p>
             <br/>
         </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["require","dojo/_base/declare","dojo/_base/lang","dojo/Evented","dojo/dom-class","dojo/dom-construct","./dom","dojo/Deferred","../../extend"],function(e,n,o,t,r,c,i,u,d){function a(e,n){for(var o in n)if(n.hasOwnProperty(o))try{e[o]=n[o].constructor==Object?a(e[o],n[o]):n[o]}catch(t){e[o]=n[o]}return e}function s(e){return!e||e==f}var f="common",m=f,h=new(n([t],{set:function(e,n){this.change(e,m,n),m=n,this.emit("change")},get:function(){return m},load:function(n){function t(){i&&i.remove(),r.resolve(c)}var r=new u,c=null,i=e.on("error",t);return e(["./themes/"+f+"/"+n],function(r){c=o.clone(r),s(m)?t():e(["./themes/"+m+"/"+n],function(e){a(c,e),t()})}),r.promise},change:function(e,n,o){s(n)||r.remove(e,n),s(o)||r.add(e,o)}}));return d("esri.dijit.geoenrichment.theme",h),h});
+define(["require","dojo/_base/declare","dojo/_base/lang","dojo/Evented","dojo/dom-class","dojo/Deferred","../../extend"],function(e,n,o,r,t,c,i){function u(e,n){for(var o in n)if(n.hasOwnProperty(o))try{e[o]=n[o].constructor==Object?u(e[o],n[o]):n[o]}catch(r){e[o]=n[o]}return e}function a(e){return!e||e==d}var d="common",f=d,s=new(n([r],{set:function(e,n){this.change(e,f,n),f=n,this.emit("change")},get:function(){return f},load:function(n){function r(){s&&s.remove(),t.resolve(i)}var t=new c,i=null,s=e.on("error",r);return e(["./themes/"+d+"/"+n],function(t){i=o.clone(t),a(f)?r():e(["./themes/"+f+"/"+n],function(e){u(i,e),r()})}),t.promise},change:function(e,n,o){a(n)||t.remove(e,n),a(o)||t.add(e,o)}}));return i("esri.dijit.geoenrichment.theme",s),s});

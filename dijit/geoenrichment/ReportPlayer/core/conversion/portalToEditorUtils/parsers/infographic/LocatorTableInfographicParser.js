@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["../../../ConversionUtil"],function(t){var e={};return e.portalToEditor=function(e,a){return{type:e.attributes.type,scaleToFitHeight:e.attributes.scaleToFitHeight,showNumberOfLocations:e.attributes.showNumberOfLocations,calculatorName:e.tags[0].attributes.query,style:{width:t.ptToPx(e.attributes.width),height:t.ptToPx(e.attributes.height)},headerSectionJson:a.parsers.getParser("section").parseSection(e.tags[0],a),dataSectionJson:a.parsers.getParser("section").parseSection(e.tags[1],a),locatorCalculatorInfo:a.templateJson.metadata.locatorCalculatorsHash[e.tags[1].attributes.query]}},e});
+define(["../../../../sections/SectionTypes","../../../ConversionUtil"],function(t,e){var r={};return r.portalToEditor=function(r,a){var o,s,i;return r.tags.forEach(function(e){e.attributes.type===t.INFOGRAPHIC_HEADER?o=e:e.attributes.query&&(s?i=e:s=e)}),{type:r.attributes.type,scaleToFitHeight:r.attributes.scaleToFitHeight,showNumberOfLocations:r.attributes.showNumberOfLocations,calculatorName:s.attributes.query,style:{width:e.ptToPx(r.attributes.width),height:e.ptToPx(r.attributes.height)},titleSectionJson:o&&a.parsers.getParser("section").parseSection(o,a),headerSectionJson:a.parsers.getParser("section").parseSection(s,a),dataSectionJson:a.parsers.getParser("section").parseSection(i,a),locatorCalculatorInfo:a.templateJson.metadata.locatorCalculatorsHash[i.attributes.query]}},r});

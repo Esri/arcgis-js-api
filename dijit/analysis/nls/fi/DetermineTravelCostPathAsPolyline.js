@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Valitse kohteen lähdekarttatason rasteri polkujen määrittämiseksi sijainnista",inputCostRasterLabel:"Valitse matkakulujen rasterikarttataso",inputDestinationLayerLabel:"Valitse rasteri tai kohteen kohdekarttataso polkujen määrittämiseksi sijainnista",pathTypeLabel:"Valitse määritettävien polkujen tyyppi (valinnainen)",bestSingle:"Paras yksittäinen",eachCell:"Jokaiseen soluun",eachZone:"Jokaiselle alueelle",outputPolylineName:"Tuloksena olevan taiteviivan nimi",outputLayerName:"Optimaaliset matkakustannukset karttatason ${layername} taiteviivana",drawDestinationPointLayerName:"Kohteen pisteet",drawSourcePointLayerName:"Lähteen pisteet",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Määritä matkakustannusten polku taiteviivana -toiminto karttatasossa ${layerName}. ",itemTags:"Analyysitulos, Määritä matkakustannusten polku taiteviivana, ${layername} ${fieldname}",itemSnippet:"Kohdekarttataso, joka on luotu Määritä matkakustannusten polku taiteviivana -toiminnosta."});

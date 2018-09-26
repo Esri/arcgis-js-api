@@ -44,7 +44,7 @@
         <p>El quadre d'eines An&agrave;lisi d'entitats cont&eacute; una s&egrave;rie d'eines que podeu utilitzar i a les quals podeu accedir.  Aquestes tasques es classifiquen en categories, que s&oacute;n simplement agrupacions l&ograve;giques i no afecten en cap cas la manera com accediu a les tasques o les utilitzeu.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir les dades</h2>
         <hr/>
         <p>Aquestes eines calculen recomptes totals, longituds, &agrave;rees i estad&iacute;stiques descriptives b&agrave;siques d'entitats i dels seus atributs que es troben dins d'&agrave;rees o prop d'altres entitats.
@@ -56,6 +56,8 @@
                 <li> <b>Resumir prop de</b> calcula estad&iacute;stiques d'entitats i dels seus atributs que es troben dins d'una dist&agrave;ncia especificada.
                 </li>
                 <li> <b>Resumir dins de</b> calcula estad&iacute;stiques d'entitats d'&agrave;rees i atributs que se superposen entre si.
+                </li>
+                <li> <b>Resumir centre i dispersi&oacute;</b> calcula les entitats centrals i les distribucions direccionals.
                 </li>
             </ul>
             
@@ -148,7 +150,33 @@
                 <ul>
                     <li>Donada una capa d'&agrave;rees de conques hidrogr&agrave;fiques i una capa d'&agrave;rees d'&uacute;s del s&ograve;l per tipus d'&uacute;s, calcula la superf&iacute;cie total del tipus d'&uacute;s del s&ograve;l per a cada conca hidrogr&agrave;fica. 
                     </li>
-                    <li>Donada una capa de parcel&middot;les d'un comtat i una capa de l&iacute;mits de ciutats, resumir el valor mitj&agrave; de les parcel&middot;les buides en cada ciutat.
+                    <li>Donada una capa de parcel&middot;les d'un comtat i una capa de l&iacute;mits de ciutats, resumiu el valor mitj&agrave; de les parcel&middot;les buides en cada ciutat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir centre i dispersió</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Resumir centre i dispersi&oacute;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina utilitza entitats de punts per calcular l'entitat central, el centre mitj&agrave;, el centre mitj&agrave; o l'el&middot;lipse (distribuci&oacute;). Per exemple:
+                <ul>
+                    <li>Donada una capa de centroides de grup de blocs, l'entitat central ponderada per poblaci&oacute; es podria fer servir per identificar quina obra d'arquitectura &eacute;s m&eacute;s accessible per a un centre d'art.
+                    </li>
+                    <li>Donada una capa d'observacions d'ants en un parc durant diversos anys, el centre mitj&agrave; es pot utilitzar per veure on es congrega l'ant a l'estiu i a l'hivern.
+                    </li>
+                    <li>Donada una capa d'incidents d'incendi, el centre mitj&agrave; es pot utilitzar per mesurar la tend&egrave;ncia central dels incendis sense que es vegin afectats per valors at&iacute;pics perif&egrave;rics.
+                    </li>
+                    <li>Donada una capa de mostres d'aigua subterr&agrave;nia, es pot utilitzar una el&middot;lipse per determinar com es propaga un contaminant.
                     </li>
                 </ul>
                 
@@ -345,7 +373,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analitza els patrons</h2>
         <hr/>
         <p>Aquestes eines us ajuden a identificar, quantificar i visualitzar els patrons espacials de les vostres dades.  
@@ -355,6 +383,8 @@
                 <li> <b>Cerca punts calents</b> identifica clusteritzacions estad&iacute;sticament significatives al patr&oacute; espacial de les vostres dades.
                 </li>
                 <li> <b>Cerca valors at&iacute;pics</b> determina si hi ha algun valor at&iacute;pic estad&iacute;sticament significatiu al patr&oacute; espacial de les vostres dades.
+                </li>
+                <li> <b>Cerca cl&uacute;sters de punts</b> cerca cl&uacute;sters d'entitats de punts dins del soroll de l'entorn en funci&oacute; de la seva distribuci&oacute; espacial.
                 </li>
                 <li> <b>Interpola els punts</b> prediu els valors en ubicacions noves en funci&oacute; de les mesures d'una col&middot;lecci&oacute; de punts.
                 </li>
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Aquesta eina crea un mapa que mostra qualsevol clusteritzaci&oacute; i valors at&iacute;pics espacials estad&iacute;sticament significatius que hi hagi a les vostres dades. Utilitzeu aquesta eina per identificar entitats que tinguin valors considerablement diferents dels que tenen els seus ve&iuml;ns.  Per exemple, podeu utilitzar aquesta eina per cercar patrons de despesa an&ograve;mals, determinar on s&oacute;n els l&iacute;mits m&eacute;s marcats entre la riquesa i la pobresa en una &agrave;rea d'estudi o determinar si hi ha comtats als Estats Units amb una esperan&ccedil;a de vida excepcionalment baixa en comparaci&oacute; dels seus ve&iuml;ns.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Cerca clústers de punts</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Cerca cl&uacute;sters de punts">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina detecta &agrave;rees on els punts estan concentrats i on estan separats per &agrave;rees buides o disperses. Els punts que no formen part d'un cl&uacute;ster s'etiqueten com soroll.
             </p>
             <br/>
         </div>

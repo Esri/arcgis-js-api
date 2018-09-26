@@ -55,7 +55,7 @@
         <div><h2>Tvori nove lokacije, ki se ujemajo z naslednjimi izrazi</h2></div>
         <hr/>
         <div>
-            <p>Kliknite gumb <b>Dodaj izraz</b>, da določite izraz. Dodate lahko več izrazov. Po vnosu izraza in kliku gumba <b>Zaženi analizo</b> se geoobjekti v va&scaron;em sloj za analizo filtrirajo z vsakim izrazom. Del geoobjektov, ki ustreza vsem izrazom, je zapisan v sloju z rezultati.
+            <p>Kliknite gumb <b>Dodaj izraz</b>, da določite izraz. Dodate lahko več izrazov. Po vnosu izraza in kliku gumba <b>Zaženi analizo</b> se geoobjekti v va&scaron;em sloju za analizo filtrirajo z vsakim izrazom. Del geoobjektov, ki ustreza vsem izrazom, je zapisan v sloju z rezultati.
             </p>
             <p>Obstajata dva osnovna tipa izrazov, ki jih lahko ustvarite; atributni in prostorski. Atributni izrazi so poizvedbe po vrednostih poljih, kot npr.  <code>kjer je ime &raquo;San Francisco&laquo;</code>. Obstajajo &scaron;tirje tipi prostorskih izrazov:
                 <ul>
@@ -65,12 +65,14 @@
                     </li>
                     <li> <b>v celoti znotraj</b>: geoobjekt mora biti popolnoma obkrožen z geoobjektom iz drugega sloja. Na primer, najde &scaron;olska okrožja, ki so v celoti znotraj meja mesta. Noben del &scaron;olskega okrožja ne sme biti zunaj meja mesta.
                     </li>
-                    <li> <b>seka</b>: geoobjekt ali deli geoobjekta se morajo prekrivati z ali sekati geoobjekt iz drugega sloja. Na primer, najde območja, ki imajo požgano vegetacijo zaradi več požarov v nacionalnem parku. Požgana območja zunaj meja parka ne bodo vključena.
+                    <li> <b>seka</b>: geoobjekt ali deli geoobjekta se morajo prekrivati z ali sekati geoobjekt iz drugega sloja. Na primer, najde območja znotraj nacionalnega parka s pogorelimi vegetacijskimi povr&scaron;inami.Pogorela območja zunaj meja parka ne bodo vključena.
+                    </li>
+                    <li> <b>Najbližje</b>: geoobjekt mora biti najbližje geoobjektu v drugem sloju. Na primer, najdi zelenico, ki je najbližje posamezni &scaron;oli.
                     </li>
                 </ul>
                 
             </p>
-            <p>Vsak prostorski izraz ima ustrezno negacijo;  <b>ni znotraj razdalje</b>, <b>ne vsebuje v celoti</b>, <b>ni v celoti znotraj</b> in <b>ne seka</b>.
+            <p>Vsak prostorski izraz ima ustrezno negacijo, razen  <b>najbližje</b>, <b>ni znotraj razdalje</b>, <b>ne vsebuje v celoti</b>, <b>ni v celoti znotraj</b> in <b>ne seka</b>.
             </p> 
         </div>
     </div>

@@ -3115,6 +3115,33 @@
     }
   },
 
+  "AspectSlope": {
+    "rasterFunctionArguments": {
+      "PythonModule": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true
+      },
+      "ClassName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true
+      },
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "zf": {
+        "required": true,
+        "displayName": "${rasterFunctions.rfxArgs.zFactorName}",
+        "hidden": false,
+        "dataType": "double"
+      }
+    }
+  },
+
   "LocalFunction": {
     "rasterFunctionArguments": {
       "Rasters": {

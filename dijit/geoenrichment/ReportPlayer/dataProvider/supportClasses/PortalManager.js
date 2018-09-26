@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/when","esri/arcgis/Portal"],function(r,a){var n={_cache:{},getPortalInfo:function(t){if(!n._cache[t.portalUrl]){var e=new a.Portal(t.portalUrl);n._cache[t.portalUrl]=r(e.signIn(),function(r){return{user:r,portal:e}})}return n._cache[t.portalUrl]}};return n});
+define(["dojo/when","esri/arcgis/Portal"],function(n,r){var e={_cache:{},getPortalInfo:function(c){if(!e._cache[c]){var a=new r.Portal(c);e._cache[c]=n(a.signIn(),function(n){return{user:n,portal:a}})}return e._cache[c]}};return e});

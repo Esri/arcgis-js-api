@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Raster analysis allows you to perform analysis of large raster datasets using the  ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server. The toolsets currently available through the  Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, and <b>Manage Data</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Adatok összegzése</h2>
+        <hr/>
+        <p>This toolset contains a tool for calculating some statistics for a raster layer within area boundaries that you define. 
+            <ul>
+                <li> <b>Summarize Raster Within</b> calculates statistics for raster cells that fall within defined area boundaries.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raszter területen belüli összegzése</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Summarize Raster Within tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates some summary statistics for raster cells within defined areas.
+            </p>
+            <p>Some example applications are the following: 
+
+                <ul>
+                    <li>Given a layer of watershed areas and an elevation raster layer, calculate the range of elevations within each watershed in order to determine which ones will have the highest energy streamflow.
+                        
+
+                    </li>
+                    <li>Given a layer of administrative management units and a raster layer of land-use categories, calculate the variety of land-use values within each management area to identify which ones require the most work to determine a management plan.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Mintázatok elemzése</h2>
+        <hr/>
+        <p>Az al&aacute;bbi eszk&ouml;z&ouml;k seg&iacute;tenek azonos&iacute;tani, mennyis&eacute;gileg meghat&aacute;rozni &eacute;s megjelen&iacute;teni az adatok t&eacute;rbeli mint&aacute;zatait. 
+
+            <ul>
+                <li> <b>Calculate Density</b> takes known quantities of some phenomenon and creates a density map by spreading these quantities across the map.
+                    
+
+                </li>
+                <li>A  <b>Pontok interpol&aacute;l&aacute;sa</b> pontgyűjtem&eacute;nyekben tal&aacute;lt m&eacute;rt &eacute;rt&eacute;kek alapj&aacute;n előrejelzi az &eacute;rt&eacute;keket az &uacute;j helyeken.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sűrűség számítása</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa eszk&ouml;z">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Density analysis takes known quantities of some phenomenon and creates a density map by spreading these quantities across the map. Az eszk&ouml;z haszn&aacute;lat&aacute;val kimutathatja p&eacute;ld&aacute;ul vill&aacute;mcsap&aacute;sok vagy torn&aacute;d&oacute;k koncentr&aacute;ci&oacute;j&aacute;t, eg&eacute;szs&eacute;g&uuml;gyi int&eacute;zm&eacute;nyek el&eacute;rhetős&eacute;g&eacute;t &eacute;s a n&eacute;pess&eacute;g sűrűs&eacute;g&eacute;t.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pontok interpolálása</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Pontok interpol&aacute;l&aacute;sa eszk&ouml;z">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ezzel az eszk&ouml;zzel pontgyűjtem&eacute;nyekben tal&aacute;lt mutat&oacute;k alapj&aacute;n &eacute;rt&eacute;keket jelezhet előre &uacute;j helyeken. Az eszk&ouml;z egyes &eacute;rt&eacute;kkel rendelkező pont adatok alapj&aacute;n előrejelzett &eacute;rt&eacute;kek szerint kategoriz&aacute;lt ter&uuml;leteket ad eredm&eacute;ny&uuml;l. Az eszk&ouml;z haszn&aacute;lat&aacute;val p&eacute;ld&aacute;ul csapad&eacute;km&eacute;rők adatai alapj&aacute;n előrejelezheti a csapad&eacute;k mennyis&eacute;g&eacute;t egy v&iacute;zgyűjtő ter&uuml;leten.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Közelség használata</h2>
+        <hr/>
+        <p>These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
+
+            <ul>
+                <li> <b>Calculate Distance</b> calculates the Euclidean distance, direction and allocation from a single or set of sources.
+                    
+
+                </li>
+                <li> <b>Determine Optimum Travel Cost Network</b> calculates the optimum cost network from a set of input regions.
+                    
+
+                </li>
+                <li> <b>Determine Travel Cost Path As Polyline</b> calculates the least cost polyline path between sources and known destinations.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Távolság kiszámítása</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="T&aacute;vols&aacute;g kisz&aacute;m&iacute;t&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates the Euclidean distance, direction and allocation from a single or set of sources. You can use this tool to determine how far a location is to a road, a building or a park. You can also determine which direction you must travel from a location to return back to a source in the most direct way. You can see for every location in your study area which is the closest source.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimális útiköltséghez tartozó hálózat meghatározása</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="Az Optim&aacute;lis &uacute;tik&ouml;lts&eacute;ghez tartoz&oacute; h&aacute;l&oacute;zat meghat&aacute;roz&aacute;sa eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates the optimum cost network from a set of input regions.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Útiköltség-útvonal meghatározása vonalláncként</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa vonall&aacute;nck&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates the least cost polyline path between sources and known destinations.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Kép elemzése</h2>
+        <hr/>
+        <p>The following tool helps you analyze images. 
+            <ul>
+                <li> <b>Apply Raster Function Template</b> processes your imagery with the chain of functions, as specified by the raster function template.
+                </li>
+                <li> <b>Monitor Vegetation</b> detects vegetation within an image, based on arithmetic operations on the bands.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ApplyRFxTemplateTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raszterfunkció-sablon alkalmazása</h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Processes your imagery with the chain of functions, as specified by the raster function template.
+            </p>
+            <br/>
+        </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Növényzeti monitoring</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="N&ouml;v&eacute;nyzeti monitoring eszk&ouml;z port&aacute;lhoz">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Felszínelmezés</h2>
+        <hr/>
+        <p>These tools help you analyze raster surfaces. 
+            <ul>
+                <li> <b>Calculate Slope</b> calculates the steepness of terrain.
+                    
+
+                </li>
+                <li> <b>Derive Aspect</b> calculates the direction of steepest slope for each location.
+                    
+
+                </li>
+                <li> <b>Create Viewshed</b> identifies what can be seen from any point on the landscape.
+                    
+
+                </li>
+                <li> <b>Watershed</b> calculates the contributing area above identified location(s) on a surface.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Lejtőszögszámítás</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Lejtősz&ouml;gsz&aacute;m&iacute;t&aacute;s eszk&ouml;z port&aacute;lhoz">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifies a surface that shows the slope of the input elevation data. Slope represents the rate of change of elevation for each digital elevation model (DEM) cell.
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kitettségszámítás</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Kitetts&eacute;gsz&aacute;m&iacute;t&aacute;si eszk&ouml;z port&aacute;lhoz">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifies the downslope direction of the maximum rate of change in value from each cell to its neighbors. Aspect can be thought of as the slope direction.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Belátható terület létrehozása</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Bel&aacute;that&oacute; ter&uuml;let l&eacute;trehoz&aacute;sa eszk&ouml;z">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Determines the locations on a raster surface that are visible to a set of observers.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vízgyűjtő terület</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="Watershed task">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Determines the contributing area above a set of cells in a raster.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Adatok kezelése</h2>
+        <hr/>
+        <p>Ezek az eszk&ouml;z&ouml;k f&ouml;ldrajzi adatok napi kezel&eacute;s&eacute;re &eacute;s az adatok elemz&eacute;s előtti egyes&iacute;t&eacute;s&eacute;re egyar&aacute;nt haszn&aacute;lhat&oacute;k. 
+            <ul>
+                <li> <b>Extract Raster</b> clips out portions from a raster dataset for further analysis.
+                    
+
+                </li>
+                <li> <b>Remap Values</b> assigns different values to raster cells.
+                    
+
+                </li>
+                <li> <b>Convert Feature to Raster</b> rasterizes vector data.
+                    
+
+                </li>
+                <li> <b>Convert Raster to Feature</b> vectorizes raster data.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raszterkinyerés</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Raszterkinyer&eacute;s eszk&ouml;z port&aacute;lhoz">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Extract cells from a raster based on value, shape, or the extent of a different dataset.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Újraleképezési értékek</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Remap Values tool for Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Change the individual or ranges of cell values to new values.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vektoros elem átalakítása raszterré</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Vektoros elem &aacute;talak&iacute;t&aacute;sa raszterr&eacute; eszk&ouml;z">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Create a new raster dataset from an existing feature dataset.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raszter átalakítása vektoros elemmé</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Raszter &aacute;talak&iacute;t&aacute;sa vektoros elemm&eacute; eszk&ouml;z">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Create a new feature dataset from an existing raster dataset.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

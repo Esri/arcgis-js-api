@@ -41,102 +41,102 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Calculate Distance</h2><p/>
-        <h2><img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" alt="Calculate Distance"></h2>
+        <h2>Calcular Distância</h2><p/>
+        <h2><img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" alt="Calcular Dist&acirc;ncia"></h2>
         <hr/>
-    <p>This tool calculates Euclidean distance, direction, and allocation from a single source or set of sources.
+    <p>Esta ferramenta calcula dist&acirc;ncia euclideana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma &uacute;nica origem ou de um conjunto de origens.
     </p>
-    <p>Example applications include answering questions such as the following:
+    <p>Exemplos de aplica&ccedil;&otilde;es incluem responder a quest&otilde;es tais como as seguintes:
 
         <ul>
-            <li>What is the distance to the closest town?
+            <li>Qual &eacute; a dist&acirc;ncia at&eacute; &agrave; cidade mais pr&oacute;xima?
                 
 
             </li>
-            <li>What is the distance to the closest road?
+            <li>Qual &eacute; a dist&acirc;ncia at&eacute; &agrave; estrada mais pr&oacute;xima?
                 
 
             </li>
-            <li>What is the distance to the closest water source?
+            <li>Qual &eacute; a dist&acirc;ncia at&eacute; &agrave; fonte de &aacute;gua mais pr&oacute;xima?
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer that are visible within the current map extent will be analyzed. If unchecked, all features in the input layer will be analyzed, even if they are outside the current map display extent.
+    <p>Se  <b>Utilizar a extens&atilde;o atual do mapa</b> estiver selecionado, apenas ser&atilde;o analisados elementos na camada de entrada que sejam vis&iacute;veis na extens&atilde;o atual do mapa . Se n&atilde;o estiver selecionado, ser&atilde;o analisados todos os elementos na camada de entrada, mesmo que estejam fora da extens&atilde;o atual do mapa.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Choose raster of feature location layer to calculate the distance to</h2></div>
+        <div><h2>Selecionar raster de camada de localização de elemento para o qual calcular a distância</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the sources to which the distance will be calculated. The layer can be an image service or a feature service.
+            <p>A camada que define as origens para as quais as dist&acirc;ncias ser&atilde;o calculadas. A camada pode ser um servi&ccedil;o de imagens ou um servi&ccedil;o de elementos:
             </p>
-            <p>For an image service, the input type can be integer or floating point.
+            <p>Para um servi&ccedil;o de imagens, o tipo de entrada pode ser inteiro ou ponto flutuante.
             </p>
-            <p>For a feature service, the input can be point, line, or polygon.
+            <p>Para um servi&ccedil;o de elementos, a entrada pode ser ponto, linha ou pol&iacute;gono.
             </p>
         </div>
     </div>
     <div id="maximumDistance">
-        <div><h2>Maximum distance to calculate</h2></div>
+        <div><h2>Distância máxima a calcular</h2></div>
         <hr/>
         <div>
-            <p>The maximum distance to be calculated. For example, if you provide a value of 10,000 meters, the Euclidian distance will be calculated from the source locations out to that value (distance).
+            <p>A dist&acirc;ncia m&aacute;xima a ser calculada. Por exemplo, se introduzir um valor de 10,000 metros, a dist&acirc;ncia euclideana ser&aacute; calculada a partir das localiza&ccedil;&otilde;es de origem at&eacute; esse valor (dist&acirc;ncia).
             </p>
-            <p>If no value is provided, the distance will be calculated out to the defined extent.
+            <p>Caso n&atilde;o seja introduzido qualquer valor, a dist&acirc;ncia ser&aacute; calculada at&eacute; &agrave; extens&atilde;o definida.
             </p>
-            <p>The available units are Kilometers, Meters, Miles, and Feet.
+            <p>As unidades dispon&iacute;veis s&atilde;o Quil&oacute;metros, Metros, Milhas e P&eacute;s.
             </p>
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output Cell Size</h2></div>
+        <div><h2>Tamanho de Célula de Saída</h2></div>
         <hr/>
         <div>
-            <p>Enter the cell size and unit for the output rasters.
+            <p>Introduza o tamanho da c&eacute;lula e a unidade para rasters de sa&iacute;da.
             </p>
-            <p>The units can be in Kilometers, Meters, Miles, or Feet.
+            <p>As unidades podem estar em Quil&oacute;metros, Metros, milhas ou P&eacute;s.
             </p>
         </div>
     </div>
     <div id="outputDistanceName">
-        <div><h2>Result distance layer name</h2></div>
+        <div><h2>Nome da camada de distância resultante</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que forne&ccedil;a outro nome.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>
         </div>
     </div>
     <div id="outputDirectionName">
-        <div><h2>Result direction layer name</h2></div>
+        <div><h2>Nome da camada de direção resultante</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not already exist in <b>My Content</b>.
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b>. T&ecirc;m de fornecer um nome que ainda n&atilde;o exista em <b>O Meu Conte&uacute;do</b>.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>
         </div>
     </div>
     <div id="outputAllocationName">
-        <div><h2>Result Allocation layer name</h2></div>
+        <div><h2>Nome da camada de Alocação resultante</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not already exist in <b>My Content</b>.
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b>. T&ecirc;m de fornecer um nome que ainda n&atilde;o exista em <b>O Meu Conte&uacute;do</b>.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>
         </div>
     </div>
     <div id="allocationField">
-        <div><h2>Choose allocation field</h2></div>
+        <div><h2>Selecionar campo de alocação</h2></div>
         <hr/>
         <div>
-            <p>A field on the input source layer that holds the values that define each source. It can be an integer or a string field of the source dataset.
+            <p>Um campo na camada de origem de entrada que cont&eacute;m os valores que definem cada origem. Pode ser um n&uacute;mero inteiro ou um campo de string do conjunto de dados de origem.
             </p>
-            <p>The default is  <i>Value</i>. If using a feature service and no <i>Value</i> field is available, then the first available integer or string field will be used. If no valid fields exist, the ObjectID field (for example, OID or FID, depending on the type of feature input) will be used.
+            <p>A predefini&ccedil;&atilde;o &eacute;  <i>Value</i>. Caso esteja a utilizar um servi&ccedil;o de elementos e n&atilde;o se encontre dispon&iacute;vel qualquer campo <i>Value</i> , o primeiro campo dispon&iacute;vel inteiro ou de string ser&aacute; utilizado. Caso n&atilde;o existam campos v&aacute;lidos, o campo ObjectID (por exemplo, OID ou FID, dependendo do tipo de entrada de elementos) ser&aacute; utilizado.
             </p>
         </div>
     </div>

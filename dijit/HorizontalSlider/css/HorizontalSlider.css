@@ -40,4 +40,5 @@
 .esriHorizontalSlider .dijitRuleLabel {
   z-index: 2;
   font-size: 12px;
+  white-space: nowrap;
 }

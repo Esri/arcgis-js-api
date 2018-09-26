@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/Deferred","dojo/when","dojo/on"],function(n,e,o){var r=6e4,t={};return t.waitForLoad=function(t){function u(){return t.updating&&i("update-end",6e4)}function i(e,r){function u(n){i&&i.remove(),c&&clearTimeout(c),n?d.resolve():d.reject(new Error("The map can't be loaded."))}var i,c,d=new n;return i=o.once(t,e,function(){u(!0)}),c=setTimeout(function(){u(!1)},r),d.promise}return e(function(){return!t.loaded&&i("load",r)}(),function(){return e(u(),function(){return t})})},t});

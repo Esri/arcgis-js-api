@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Å_Choose flow direction layer_________ö",pourPointLayerLabel:"Å_Choose pour point raster or feature layer_____________ö",pourPointField:"Å_Choose pour point field________ö",resultLayerName:"Å_Result layer name______ö",outputLayerName:"Å_Watershed of ${layername}_________ö",itemDescription:"Å_Feature layer generated from running the Summarize center and dispersion on ${layerName}____________________________ö. ",itemTags:"Å_Analysis Result, Watershed, ${layername} ${fieldname}_________________ö",itemSnippet:"Å_Feature layer generated from Watershed_____________ö."});
+define({inputLayerLabel:"Trieu la capa de direcció del flux",pourPointLayerLabel:"Trieu el ràster de punt de fluïdesa o la capa d'entitats",pourPointField:"Trieu el camp de punt de fluïdesa",resultLayerName:"Nom de la capa de resultats",outputLayerName:"Conca hidrogràfica de ${layername}",itemDescription:"Capa d'entitats generada en executar la solució Resumir centre i dispersió a ${LayerName}. ",itemTags:"Resultat de l'anàlisi, Conca hidrogràfica, ${layername} ${fieldname}",itemSnippet:"Capa d'entitats generada a partir de Conca hidrogràfica."});

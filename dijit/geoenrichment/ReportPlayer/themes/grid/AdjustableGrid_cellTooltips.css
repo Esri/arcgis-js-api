@@ -18,7 +18,7 @@
     overflow-x: hidden;
 }
 
-.esriGEAdjustableGrid_cellTooltip_expressionVariable {
+.esriGEAdjustableGrid_cellTooltip_expression .esriGEAdjustableGrid_cellTooltip_expressionVariable {
     border: 1px solid #b2b2b2;
     background-color: white;
     margin: 10px;
@@ -30,7 +30,7 @@
     vertical-align: middle;
 }
 
-.esriGEAdjustableGrid_cellTooltip_expressionNumber {
+.esriGEAdjustableGrid_cellTooltip_expression .esriGEAdjustableGrid_cellTooltip_expressionNumber {
     border: 1px solid #b2b2b2;
     background-color: white;
     margin: 10px;
@@ -41,7 +41,7 @@
     font-size: 18px;
 }
 
-.esriGEAdjustableGrid_cellTooltip_expressionOperator {
+.esriGEAdjustableGrid_cellTooltip_expression .esriGEAdjustableGrid_cellTooltip_expressionOperator {
     border: 1px solid #b2b2b2;
     background-color: rgb(169,169,169);
     color: white;

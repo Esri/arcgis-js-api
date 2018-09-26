@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({binsLabel:"Å_Choose the type of bins that will be used to build the multi-variable grid_______________________ö",layersAttrLabel:"Å_Choose input layers and variables that you would like to include in the grid________________________ö",itemDescription:"Å_Feature layer generated from running the Build Multi-Variable Grid_____________________ö.",itemTags:"Å_Analysis Result, Build Multi-Variable Grid______________ö",itemSnippet:"Å_Feature layer generated from Build Multi-Variable Grid_________________ö",addVariables:"Å_Add Variables_____ö"});
+define({binsLabel:"Trieu el tipus de bins que s'utilitzaran per crear la quadrícula de diverses variables",layersAttrLabel:"Trieu les capes i variables d'entrada que voleu incloure a la quadrícula",itemDescription:"Capa d'entitats generada en executar Crea una quadrícula de diverses variables.",itemTags:"Resultat de l'anàlisi, Crea una quadrícula de diverses variables",itemSnippet:"Capa d'entitats generada amb Crea una quadrícula de diverses variables",addVariables:"Afegeix variables"});

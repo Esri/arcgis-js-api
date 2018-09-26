@@ -44,7 +44,7 @@
         <p>Verktygsl&aring;dan Analys av geoobjekt inneh&aring;ller en rad verktyg som du kan f&aring; &aring;tkomst till och anv&auml;nda. &Aring;tg&auml;rderna finns ordnade nedan i kategorier. Kategorierna &auml;r logiska grupperingar och p&aring;verkar inte hur du f&aring;r &aring;tkomst till eller anv&auml;nder &aring;tg&auml;rderna p&aring; n&aring;got s&auml;tt.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Summera data</h2>
         <hr/>
         <p>Dessa verktyg ber&auml;knar totalt antal, l&auml;ngd, yta och enkel beskrivande statistik f&ouml;r geoobjekt och deras attribut inom omr&aring;den eller n&auml;ra andra geoobjekt.
@@ -56,6 +56,8 @@
                 <li> <b>Summera n&auml;ra</b> ber&auml;knar statistik f&ouml;r geoobjekt och deras attribut som finns inom ett angivet avst&aring;nd.
                 </li>
                 <li> <b>Summera inom</b> ber&auml;knar statistik f&ouml;r omr&aring;desgeoobjekt och attribut som &ouml;verlappar varandra.
+                </li>
+                <li> <b>Summera mitt och spridning</b> ber&auml;knar centrala geoobjekt och riktningsf&ouml;rdelningar.
                 </li>
             </ul>
             
@@ -149,6 +151,32 @@
                     <li>Med ett lager f&ouml;r avrinningsomr&aring;den och ett lager med markanv&auml;ndningsomr&aring;den enligt markanv&auml;ndningstyp kan du ber&auml;kna den totala arealen f&ouml;r de olika markanv&auml;ndningstyperna f&ouml;r varje avrinningsomr&aring;de. 
                     </li>
                     <li>Med ett lager f&ouml;r fastigheter i ett l&auml;n och ett lager kommungr&auml;nser kan du sammanfatta snittv&auml;rdet f&ouml;r de tomma fastigheterna i varje kommun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summera mitt och spridning</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Summera mitt och spridning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Detta verktyg anv&auml;nder punktgeoobjekt till att ber&auml;kna medelcentrum, mediancentrum eller ellips (distribution). Exempel:
+                <ul>
+                    <li>Givet ett lager med mittpunkter i en kvartersgrupp kan det centrala geoobjektet viktat med befolkning anv&auml;ndas f&ouml;r att identifiera vilken konst i staden som &auml;r den mest l&auml;ttillg&auml;ngliga f&ouml;r ett konstmuseum.
+                    </li>
+                    <li>Givet ett lager med &auml;lgobservationer &ouml;ver flera &aring;r i en park kan medelcentrum anv&auml;ndas f&ouml;r att se var &auml;lgarna samlas p&aring; sommaren och vintern.
+                    </li>
+                    <li>Givet ett lager &ouml;ver brandincidenter kan medelcentrum anv&auml;ndas f&ouml;r att m&auml;ta den centrala tendensen i br&auml;nderna utan att p&aring;verkas av perifera avvikelser.
+                    </li>
+                    <li>Givet ett lager med grundvattenprover kan en ellips anv&auml;ndas f&ouml;r att best&auml;mma hur ett smitt&auml;mne sprids.
                     </li>
                 </ul>
                 
@@ -357,6 +385,8 @@
                 </li>
                 <li> <b>Hitta avvikelser</b> fastst&auml;ller om det finns statistiskt signifikanta avvikelser i det geografiska m&ouml;nstret f&ouml;r dina data.
                 </li>
+                <li> <b>Hitta punktkluster</b> hittar kluster av punktgeoobjekt i bakgrundsbrus baserat p&aring; deras rumsliga f&ouml;rdelning.
+                </li>
                 <li> <b>Interpoleringspunkter</b> f&ouml;ruts&auml;ger v&auml;rden p&aring; nya platser baserat p&aring; m&auml;tningar fr&aring;n en samling punkter.
                 </li>
             </ul>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Det h&auml;r verktyget skapar en karta som visar statistiskt signifikant klustring och geografiska avvikelser i dina data. Anv&auml;nd verktyget f&ouml;r att identifiera geoobjekt som har v&auml;rden som skiljer sig signifikant fr&aring;n sina grannar. Du kan till exempel anv&auml;nda verktyget f&ouml;r att uppt&auml;cka onormala utgiftsm&ouml;nster, fastst&auml;lla var de skarpaste gr&auml;nserna g&aring;r mellan v&auml;lst&aring;nd och fattigdom i ett unders&ouml;kningsomr&aring;de, eller fastst&auml;lla om det finns l&auml;n i USA d&auml;r den f&ouml;rv&auml;ntade livsl&auml;ngden &auml;r ovanligt kort j&auml;mf&ouml;rt med de angr&auml;nsande.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitta punktkluster</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Hitta punktkluster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget uppt&auml;cker omr&aring;den d&auml;r punkter &auml;r koncentrerade och d&auml;r de &auml;r separerade av omr&aring;den som &auml;r tomma eller glesa. Punkter som inte ing&aring;r i ett kluster &auml;r m&auml;rkta som brus.
             </p>
             <br/>
         </div>

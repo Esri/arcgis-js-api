@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>GeoAnalytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
+            <ul>
+                <li> <b>Aggregate Points</b>
+                </li>
+                <li> <b>Build Multi-Variable Grid</b>
+                </li>
+                <li> <b>Join Features</b>
+                </li>
+                <li> <b>Reconstruct Tracks</b>
+                </li>
+                <li> <b>Summarize Attributes</b>
+                </li>
+                <li> <b>Summarize Within</b>
+                </li>
+                <li> <b>Geocode Locations from Table</b>
+                </li>
+                <li> <b>Detect Incidents</b>
+                </li>
+                <li> <b>Find Similar Locations</b>
+                </li>
+                <li> <b>Calculate Density</b>
+                </li>
+                <li> <b>Find Point Clusters</b>
+                </li>
+                <li> <b>Find Hot Spots</b>
+                </li>
+                <li> <b>Create Buffers</b>
+                </li>
+                <li> <b>Append Data</b>
+                </li>
+                <li> <b>Calculate Field</b>
+                </li>
+                <li> <b>Copy to Data Store</b>
+                </li>
+                <li> <b>Overlay Layers</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>GeoAnalytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Summarize Data</h2>
+        <hr/>
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+            <ul>
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                </li>
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
+                </li>
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
+                </li>
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
+                </li>
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pontok összevonása</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Pontok &ouml;sszevon&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using a layer of point features and either a layer of area features or bins defined by a specified distance, this tool determines which points fall within each area or bin and calculates statistics about all the points within each area or bin. You may optionally apply time slicing with this tool. 
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>A bűnt&eacute;nyek pontszerűen megadott hely&eacute;t alapul v&eacute;ve kisz&aacute;m&iacute;thatja a megy&eacute;nk&eacute;nt vagy m&aacute;s k&ouml;zigazgat&aacute;si k&ouml;rzetenk&eacute;nt előfordult bűnt&eacute;nyek sz&aacute;m&aacute;t.
+                    </li>
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100-kilometer bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Többváltozós táblázat felépítése</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Az Adat hozz&aacute;fűz&eacute;se munkafolyamat&aacute;nak diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Build Multi-Variable Grid tool generates a grid of square or hexagonal bins and calculates variables for each bin based on the proximity of one or more input layers.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Given multiple layers of public transportation infrastructure, what part of the city is least accessible by public transportation?
+                    </li>
+                    <li>Given layers of waterways, such as lakes and rivers, what is the name of the water body closest to each  location in the U.S.?
+                    </li>
+                    <li>Given a layer of household income, where in the U.S. is the variation of income in the surrounding 50 miles the greatest?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vektoros elemek összekapcsolása</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Vektoros elemek &ouml;sszekapcsol&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
+                    </li>
+                    <li>Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nyomvonal-rekonstrukció</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruct Tracks">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using a time-enabled layer of point  or polygon features that represent an  <code>instant</code> in time, this tool determines which input features belong in a track and will order the inputs sequentially in time. Statistics are optionally calculated for the input features within each track.
+            </p>
+            <p> The following are examples:
+                <ul>
+                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
+                    </li>
+                    <li>Use GPS measurements of ships, to reconstruct ship paths as lines.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Attribútumok összefoglalása</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Using either feature or tabular data, this tool summarizes statistics for specified fields.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Given locations of grocery stores with a field  <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
+                    </li>
+                    <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Területen belüli statisztika</h2></td>
+                    <td>
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Summarize Within">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Megkeresi azokat a ter&uuml;leteket (&eacute;s ter&uuml;letr&eacute;szeket), ahol k&eacute;t r&eacute;teg &aacute;tfedi egym&aacute;st, &eacute;s kisz&aacute;m&iacute;tja a fedv&eacute;ny statisztikai adatait.  
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a  f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
+                    </li>
+                    <li>Egy megye parcell&aacute;it &eacute;s telep&uuml;l&eacute;shat&aacute;rait tartalmaz&oacute; r&eacute;teg eset&eacute;n &ouml;sszes&iacute;theti a telep&uuml;l&eacute;seken bel&uuml;li szabad parcell&aacute;k &aacute;tlagos &eacute;rt&eacute;keit.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="regularsize">
+        <h2>Helyek keresése</h2>
+        <hr/>
+        <p>These tools are used to identify areas that meet a number of different criteria you specify.   
+            <ul>
+                <li> <b>Detect Incidents</b> works with time-enabled layers to determine which features meet a specified condition.
+                </li>
+                <li> <b>Geocode Locations from Table</b> converts addresses into coordinates.
+                </li>
+                <li>A  <b>Hasonl&oacute; helyek keres&eacute;se</b> a megadott krit&eacute;riumokon alapul&oacute; egy vagy t&ouml;bb vonatkoztat&aacute;si helyhez hasonl&oacute; helyeket keres.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Incidensek észlelése</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Incidensek &eacute;szlel&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool works with a time-enabled layer of points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify. 
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Detect hurricane measurements that are Category 4 hurricanes based on a wind speed attribute.
+                    </li>
+                    <li>Using GPS measurements of ship movement with a field representing the ship speed, find measurements that are greater than 1.5 times the mean of the previous five measurements.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geokódolási helyszínek táblázatból</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geok&oacute;dol&aacute;si helysz&iacute;nek t&aacute;bl&aacute;zatb&oacute;l">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A c&iacute;meket koordin&aacute;t&aacute;kk&aacute; alak&iacute;tja &aacute;t. Use this tool on big data file share tables.
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hasonló helyek keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Hasonl&oacute; helyek keres&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
+            </p>
+            <p>The following are examples: 
+                <ul>
+                    <li>Find the ten most similar stores by examining the number of employees and the annual sales.
+                    </li>
+                    <li>Find the 100 most similar cities by examining the relationship between population, annual growth, and tax revenue.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Mintázatok elemzése</h2>
+        <hr/>
+        <p> These tools help you identify, quantify, and visualize spatial patterns in your data.
+            <ul>
+                <li>A  <b>Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa</b> bizonyos jelens&eacute;gek ismert mennyis&eacute;geit ter&iacute;ti sz&eacute;t a t&eacute;rk&eacute;pen.
+                </li>
+                <li>A  <b>Hot spotok keres&eacute;se</b> meghat&aacute;rozza a statisztikailag szignifik&aacute;ns klaszterez&eacute;st az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
+                </li>
+                <li> <b>Find Point Clusters</b> finds clusters of point features in surrounding noise based on their spatial distribution.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sűrűség számítása</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;ny r&eacute;teg mutatja azokat a ter&uuml;leteket, ahol a k&oacute;rh&aacute;zak k&ouml;nnyen vagy nehezen &eacute;rhetők el &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
+                    </li>
+                    <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi erdőtűz helysz&iacute;nek alapj&aacute;n.
+                    </li>
+                    <li>A nagyobb fő&uacute;tvonalakt&oacute;l t&aacute;vol &eacute;lő k&ouml;z&ouml;ss&eacute;gek hely&eacute;nek meghat&aacute;roz&aacute;sa, annak megtervez&eacute;s&eacute;hez, hogy hol &eacute;p&uuml;ljenek &uacute;j utak.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pontklaszterek keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Pontklaszterek keres&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Find Point Clusters tool  finds clusters of point features in surrounding noise based on their spatial distribution.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Find clusters of pest-infested households to help target eradication efforts.  
+                    </li>
+                    <li>Inform and act on rescue and evacuation needs  based on the size and location of the clusters using geolocated tweets following natural hazards or terror attacks.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hot spotok keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Hot spotok keres&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+                <ul>
+                    <li>Val&oacute;ban klaszterezettek a kiv&aacute;lasztott pontok (bűnt&eacute;nyek, f&aacute;k, k&ouml;zleked&eacute;si balesetek)?  Hogyan tudhatja biztosan?
+                    </li>
+                    <li>Val&oacute;ban statisztikailag szignifik&aacute;ns hot spotra bukkant (kiad&aacute;sok, gyermekhaland&oacute;s&aacute;g, k&ouml;vetkezetesen magas vizsgapontsz&aacute;mok), vagy m&aacute;st sugallna a t&eacute;rk&eacute;p, ha megv&aacute;ltoztatn&aacute; a jelk&eacute;pez&eacute;s m&oacute;dj&aacute;t?
+                    </li>
+                </ul>
+                A Hot spotok keres&eacute;se eszk&ouml;z seg&iacute;t megb&iacute;zhat&oacute; v&aacute;laszt tal&aacute;lni az ilyen k&eacute;rd&eacute;sekre.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Közelség használata</h2>
+        <hr/>
+        <p>These tools help answer one of the most common questions posed in spatial analysis: What is near what?
+            <ul>
+                <li> <b>Create Buffers</b> creates areas of a specified distance from features.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buffer létrehozása</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Buffer l&eacute;trehoz&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
+                    </li>
+                    <li>Given areas representing countries, buffer each country by 200 nautical miles to determine the maritime boundary.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Manage Data</h2>
+        <hr/>
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
+            <ul>
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                </li>
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
+                </li>
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Másolás az adattárba</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="M&aacute;sol&aacute;s az adatt&aacute;rba">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    </li>
+                    <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mező kiszámítása</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Mező kisz&aacute;m&iacute;t&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
+                    </li>
+                    <li>Create a new field to categorize hazard levels based on field values such as  <i>windspeed</i> and <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Fedvényműveletek</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Fedv&eacute;nyműveletek">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A fedv&eacute;ny k&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egyetlen r&eacute;tegben.  Overlay is used to answer one of the most basic questions of geography, What is on top of what? The following are examples:
+                <ul>
+                    <li>What parcels are within the 100-year flood plain? (Bel&uuml;l, vagy m&aacute;sk&eacute;pp fogalmazva rajta.)
+                          
+                    </li>
+                    <li>Milyen felsz&iacute;nhaszn&aacute;lat t&iacute;pust tal&aacute;lunk milyen talajt&iacute;puson?
+                         
+                    </li>
+                    <li>Milyen kutak tal&aacute;lhat&oacute;k elhagyott katonai b&aacute;zisokon?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Adat hozzáfűzése</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Az Adat hozz&aacute;fűz&eacute;se munkafolyamat&aacute;nak diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Update your 2018_Sales feature layer each month as your reports become available. 
+                    </li>
+                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
+                    </li>
+                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

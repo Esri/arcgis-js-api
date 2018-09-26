@@ -44,8 +44,7 @@
         <h2>Identifier des emplacements existants</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Identifier des emplacements existants"></h2>
         <hr/>
-    <p>Cet outil permet de s&eacute;lectionner des entit&eacute;s existantes dans votre zone d'&eacute;tude r&eacute;pondant &agrave; une s&eacute;rie de crit&egrave;res que vous d&eacute;finissez. Ces crit&egrave;res peuvent reposer sur des requ&ecirc;tes attributaires (par exemple, des parcelles vacantes) et des requ&ecirc;tes spatiales (par exemple, &agrave; moins d'un mile d'une rivi&egrave;re).
-
+    <p>Cet outil permet de s&eacute;lectionner des entit&eacute;s existantes dans votre zone d'&eacute;tude r&eacute;pondant &agrave; une s&eacute;rie de crit&egrave;res que vous d&eacute;finissez. Ces crit&egrave;res peuvent reposer sur des requ&ecirc;tes attributaires (par exemple, des parcelles vacantes) et des requ&ecirc;tes spatiales (par exemple, &agrave; moins d'un mile d'une rivi&egrave;re). 
     </p>
     <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s de la couche en entr&eacute;e qui sont visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
     </p>
@@ -67,25 +66,27 @@
         <div>
             <p>Cliquez sur le bouton  <b>Ajouter une expression</b> pour d&eacute;finir une expression.  Vous pouvez ajouter plusieurs expressions. Apr&egrave;s avoir entr&eacute; les expressions et cliqu&eacute; sur le bouton <b>Ex&eacute;cuter l'analyse</b>, les entit&eacute;s de votre couche en entr&eacute;e sont filtr&eacute;es &agrave; travers chaque expression.  Les d'entit&eacute;s qui respectent toutes les expressions sont &eacute;crites dans la couche r&eacute;sultat.
             </p>
-            <p>Vous pouvez cr&eacute;er deux types &eacute;l&eacute;mentaires d'expressions&nbsp;: attributaires et spatiales. Les expressions attributaires sont des requ&ecirc;tes sur des valeurs de champs, telles que  <code>o&ugrave; le nom est 'San Francisco'</code>.  Il existe quatre types d'expressions spatiales :
+            <p>Vous pouvez cr&eacute;er deux types d&rsquo;expressions de base&nbsp;; attributaires et spatiales. Les expressions attributaires sont des requ&ecirc;tes sur des valeurs de champs, telles que  <code>o&ugrave; le nom est 'San Francisco'</code>.  Il existe quatre types d'expressions spatiales :
                 <ul>
                     <li> <b>&agrave; une certaine distance de</b> : l'entit&eacute; doit se trouver &agrave; une certaine distance d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les parcelles qui se situent &agrave; moins de 500&nbsp;m&egrave;tres du fleuve Los Angeles.
                     </li>
-                    <li> <b>englobe enti&egrave;rement</b> : l'entit&eacute; doit englober l'int&eacute;gralit&eacute; d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les bassins versants qui englobent enti&egrave;rement des parcelles industrielles. Aucune partie de la parcelle ne peut se trouver en dehors du bassin versant.
+                    <li> <b>englobe enti&egrave;rement</b> : l'entit&eacute; doit englober l'int&eacute;gralit&eacute; d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les bassins qui contiennent compl&egrave;tement des parcelles destin&eacute;es &agrave; un usage industriel. Aucune partie de la parcelle ne peut se trouver en dehors du bassin versant.
                     </li>
-                    <li> <b>compl&egrave;tement dans</b> : l'entit&eacute; doit &ecirc;tre enti&egrave;rement entour&eacute;e d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les zones scolaires qui se trouvent enti&egrave;rement dans la limite d'une ville. Aucune partie de la zone scolaire ne peut se trouver en dehors de la limite de la ville.
+                    <li> <b>compl&egrave;tement dans</b> : l'entit&eacute; doit &ecirc;tre enti&egrave;rement entour&eacute;e d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les secteurs scolaires qui se trouvent compl&egrave;tement dans les limites d&rsquo;une ville. Aucune partie de la zone scolaire ne peut se trouver en dehors de la limite de la ville.
                     </li>
-                    <li> <b>intersecte</b> : l'entit&eacute; contient une partie d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les parcelles qui intersectent des fleuves. Toutes les parties du fleuve qui traversent la parcelle, ou qui touchent la limite de la parcelle, intersectent la parcelle.
+                    <li> <b>intersecte</b> : l'entit&eacute; contient une partie d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les parcelles qui intersectent des rivi&egrave;res.  Toutes les parties du fleuve qui traversent la parcelle, ou qui touchent la limite de la parcelle, intersectent la parcelle.
+                    </li>
+                    <li> <b>le plus proche de</b>&nbsp;: l&rsquo;entit&eacute; doit &ecirc;tre la plus proche d&rsquo;une entit&eacute; d&rsquo;une autre couche.  Par exemple, recherchez le restaurant le plus proche de chaque h&ocirc;tel.
                     </li>
                 </ul>
                 
             </p>
-            <p>Une n&eacute;gation correspond &agrave; chaque expression spatiale :  <b>pas &agrave; une certaine distance de</b>, <b>n'englobe pas enti&egrave;rement</b>, <b>pas compl&egrave;tement dans</b> et <b>n'intersecte pas</b>.
+            <p>Chaque expression spatiale poss&egrave;de une n&eacute;gation correspondante, &agrave; l&rsquo;exception de  <b>le plus proche de</b>; <b>non dans une distance de</b>, <b>ne contient pas compl&egrave;tement</b>, <b>non compl&egrave;tement dans</b> et <b>n&rsquo;intersecte pas</b>.
             </p> 
         </div>
     </div>
     <div id="OuputName">
-        <div><h2>Nom de la couche résultat</h2></div>
+        <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
             <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.

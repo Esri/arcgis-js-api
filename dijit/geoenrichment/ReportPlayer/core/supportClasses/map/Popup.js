@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","esri/dijit/Popup"],function(i,h){return i(h,{visibleWhenEmpty:!1,popupLayerId:"popupLayer",enableHighlight:function(i){this.inherited(arguments),this._forceMoveGraphic(i)},updateHighlight:function(i,h){this.inherited(arguments),this._forceMoveGraphic(i)},disableHighlight:function(i){this._highlighted&&this._highlighted.getLayer()&&this._highlighted.getLayer().remove(this._highlighted),this.inherited(arguments)},_forceMoveGraphic:function(i){if(this._highlighted){var h=i.getLayer(this.popupLayerId);h&&(i.graphics.remove(this._highlighted),h.add(this._highlighted))}}})});
+define(["dojo/_base/declare","esri/geometry/ScreenPoint","esri/dijit/Popup"],function(i,e,h){return i(h,{visibleWhenEmpty:!1,popupLayerId:"popupLayer",enableHighlight:function(i){this.inherited(arguments),this._forceMoveGraphic(i)},updateHighlight:function(i,e){this.inherited(arguments),this._forceMoveGraphic(i)},disableHighlight:function(i){this._highlighted&&this._highlighted.getLayer()&&this._highlighted.getLayer().remove(this._highlighted),this.inherited(arguments)},_forceMoveGraphic:function(i){if(this._highlighted){var e=i.getLayer(this.popupLayerId);e&&(i.graphics.remove(this._highlighted),e.add(this._highlighted))}},_setPosition:function(i){var h=this.getPlayerZoomScale()||1,t=i.x/h,r=i.y/h;return this.inherited(arguments,[new e(t,r)])},getPlayerZoomScale:function(){}})});

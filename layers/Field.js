@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./RangeDomain","./CodedValueDomain"],function(e,t,i,a,n,s,l){var o=e(null,{declaredClass:"esri.layers.Field",constructor:function(e){if(e&&t.isObject(e)){this.name=e.name,this.type=e.type,this.alias=e.alias,this.length=e.length,this.editable=e.editable,this.nullable=e.nullable;var i=e.domain;if(i&&t.isObject(i))switch(i.type){case"range":this.domain=new s(i);break;case"codedValue":this.domain=new l(i)}}},toJson:function(){return n.fixJson({name:this.name,type:this.type,alias:this.alias,length:this.length,editable:this.editable,nullable:this.nullable,domain:this.domain?this.domain.toJson():null})},toJSON:function(){return this.toJson()}});return i("extend-esri")&&t.setObject("layers.Field",o,a),o});

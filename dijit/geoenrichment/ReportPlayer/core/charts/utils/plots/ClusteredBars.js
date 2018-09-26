@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","./_ClusteredBarsBase"],function(e,r){return e(r,{_drawBar:function(e,r,t,i,s,a,l,o){this._drawBarBackground(e,r,t,i,s,a,l,o);var n=this._plotFill(i.series.fill,s,a);n=this._shapeFill(n,t);var d=this.createRect(l,e,t).setFill(n).setStroke(i.series.stroke);return l.dyn.fill=d.getFill(),l.dyn.stroke=d.getStroke(),{shape:d,rect:t}},_drawBarBackground:function(e,r,t,i,s,a,l,o){if(i.series.showColumnBarBackground){var n=r[r.valueProp],d={x:n<0?a.l:a.l+o,y:t.y,width:n<0?o:s.width-a.l-o-a.r,height:t.height};this.createRect(l,e,d).setFill(i.series.columnBarBackgroundColor)}}})});

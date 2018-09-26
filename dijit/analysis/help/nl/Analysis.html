@@ -44,7 +44,7 @@
         <p>De toolbox Objectanalyse omvat een aantal tools die u kunt openen en gebruiken. Deze taken zijn hieronder gerangschikt in categorie&euml;n; de categorie&euml;n zijn logische groeperingen en hebben geen enkele invloed op de manier waarop de taken worden geopend of gebruikt.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Gegevens samenvatten</h2>
         <hr/>
         <p>Deze tools berekenen totale tellingen, lengtes, gebieden en eenvoudige beschrijvende statistieken van objecten en hun attributen binnen oppervlakken of dicht bij andere objecten.
@@ -56,6 +56,8 @@
                 <li> <b>Samenvatten in de buurt van</b> berekent statistieken voor objecten en hun attributen die zich binnen een specifieke afstand bevinden.
                 </li>
                 <li> <b>Samenvatten in</b>  berekent statistieken voor gebiedsobjecten en attributen die elkaar overlappen.
+                </li>
+                <li> <b>Samenvatten centrum en spreiding</b> berekent centrale objecten en richtingsverdelingen.
                 </li>
             </ul>
             
@@ -98,13 +100,13 @@
 <hr/>
             <p>Objecten koppelen brengt attributen over van &eacute;&eacute;n laag of tabel naar een andere op basis van ruimtelijke en attribuutrelaties. Bijvoorbeeld:
                 <ul>
-                    <li>Voeg gemeenschappelijke grens- of demografische informatie toe aan uw incidentdata.
+                    <li>Gemeenschappelijke demografische of grensinformatie aan uw incidentdata toevoegen.
                     </li>
                     <li>Identificeer de dichtstbijzijnde faciliteiten bij een bekende locatie.
                     </li>
-                    <li>Bepaal het aantal woningen die in overstromingsgebied liggen.
+                    <li>Bepalen hoe veel woningen in overstromingsgebieden liggen.
                     </li>
-                    <li>Identificeer gemeenschappelijke habitats voor verschillende soorten wilde dieren.
+                    <li>Gedeelde habitats voor verschillende soorten wilde dieren identificeren.
                     </li>
                 </ul>
                 
@@ -149,6 +151,32 @@
                     <li>Er is een kaartlaag met stroomgebieden en een laag met landgebruikgebieden per type landgebruik; bereken het totale oppervlak van het landgebruiktype voor elk stroomgebied. 
                     </li>
                     <li>Vat de gemiddelde waarde van vrije percelen in elke stad samen op basis van een laag met percelen in een provincie en een laag met stadsgrenzen.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Samenvatten centrum en spreiding</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Samenvatten centrum en spreiding">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool gebruikt puntkenmerken om de centrale functie, het gemiddelde centrum, het middencentrum of de ellips (verdeling) te berekenen. Bijvoorbeeld:
+                <ul>
+                    <li>Aan de hand van een laag blokgroeicentrro&iuml;den zou de centrale, naar bevolkingsomvang gewogen functie kunnen worden gebruikt om te bepalen welke stadskunst het meest toegankelijk is voor een podiumkunstencentrum.
+                    </li>
+                    <li>Gegeven een laag van elandwaarnemingen binnen een park over meerdere jaren, gemiddelde centrum kan worden gebruikt om te zien waar de elanden samenkomen in de zomer en winter.
+                    </li>
+                    <li>Bij een laag brandincidenten kan met het middencentrum de centrale tendens van de branden worden gemeten, zonder te worden be&iuml;nvloed door perifere uitschieters.
+                    </li>
+                    <li>Bij een laag grondwaterputmonsters kan met behulp van een ellips worden bepaald hoe een verontreiniging zich verspreidt.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Patronen analyseren</h2>
         <hr/>
         <p>Deze tools helpen u ruimtelijke patronen in uw gegevens te identificeren, kwantificeren en visualiseren.  
@@ -356,6 +384,8 @@
                 <li>Met  <b>Hotspots zoeken</b> wordt statistisch significante clustering in het ruimtelijke patroon van uw gegevens ge&iuml;dentificeerd.
                 </li>
                 <li>De tool  <b>Afwijkingen</b> vinden bepaalt of er sprake is van statistisch significante afwijkingen in het ruimtelijke patroon van uw data.
+                </li>
+                <li>Het  <b>Puntclusters zoeken</b> zoekt clusters van puntfeatures binnen omringend geluid gebaseerd op hun ruimtelijke distributie.
                 </li>
                 <li> <b>Punten interpoleren</b> voorspelt waarden op nieuwe locaties op basis van metingen die worden gevonden in een verzameling van punten.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Deze tool maakt een kaart met alle statistisch significante clusters en ruimtelijke afwijkingen in uw data. Gebruik deze tool om objecten te identificeren die waarden hebben die aanzienlijk verschillen van de aangrenzende waarden.  U kunt deze tool bijvoorbeeld gebruiken om abnormale uitgavepatronen te zoeken, bepalen waar de scherpste grenzen tussen welvaart en armoede liggen in een studiegebied of bepalen of er provincies in de Verenigde Staten zijn met ongewoon lage levensverwachting t.o.v. de aangrenzende provincies.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Puntclusters zoeken</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Puntclusters zoeken">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool detecteert gebieden waar punten geconcentreerd zijn en waar ze gescheiden worden door gebieden die leeg of schaars zijn. Punten die geen deel uitmaken van een cluster worden aangeduid als ruis.
             </p>
             <br/>
         </div>

@@ -126,6 +126,7 @@
 
 .esriSymbolStyler .esriIconSelect .dijitButtonContents {
   width: 100%;
+  overflow: hidden;
 }
 
 .esriSymbolStyler .esriIconSelect {

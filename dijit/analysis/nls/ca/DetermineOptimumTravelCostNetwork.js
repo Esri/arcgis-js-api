@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Å_Choose raster or feature location layer to determine travel paths between_______________________ö",inputCostRasterLabel:"Å_Choose travel cost raster layer__________ö",outputOptimumNetworkName:"Å_Result distance layer name_________ö",outputNeighborNetworkName:"Å_Result direction layer name (optional)____________ö",outputLayerName:"Å_Determine optimum travel cost of ${layername}_______________ö",itemDescription:"Å_Feature layer generated from running the Determine optimum travel cost network on ${layerName}______________________________ö. ",itemTags:"Å_Analysis Result, Determine Optimum Travel Cost Network, ${layername} ${fieldname}_________________________ö",itemSnippet:"Å_Feature layer generated from Determine Optimum Travel Cost Network_____________________ö."});
+define({inputLayerLabel:"Trieu la capa d'ubicació de ràster o entitat per determinar les rutes de viatge entre",inputCostRasterLabel:"Trieu la capa ràster de cost de viatge",outputOptimumNetworkName:"Nom de la capa de polilínia de les rutes òptimes de resultats",outputNeighborNetworkName:"Nom de la capa de polilínia de les rutes veïnes de resultats (opcional)",outputLayerName:"Determina el cost de viatge òptim de ${layername}",itemDescription:"Capa d'entitats generada en executar Determina la xarxa de cost de viatge òptima a ${layername}. ",itemTags:"Anàlisi de resultats, Determina la xarxa de cost de viatge òptima, ${layername} ${fieldname}",itemSnippet:"Capa d'entitats generada en executar Determina la xarxa de cost de viatge òptima."});

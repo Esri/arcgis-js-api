@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/Hidden.html"],function(e,t,a,d,i,n){var o=e(i,{templateString:n});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.eainfo.Hidden",o,d),o});

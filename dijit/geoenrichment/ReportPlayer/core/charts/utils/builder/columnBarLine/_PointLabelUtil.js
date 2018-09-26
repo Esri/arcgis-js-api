@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/number","../utils/ChartDataUtil","../../ChartTypes","esri/dijit/geoenrichment/utils/ObjectUtil"],function(e,n,t,i){return{getPointLabel:function(e,t){return e.captionFieldInfo?n.getCaptionValue(e,t):e.label||""},createPointToLabelMap:function(e){e._pointIndexToLabelMap={}},updatePointIndexToLabelMap:function(e,n,t,i){var o=e._pointIndexToLabelMap[n];void 0!==o&&""!==o||(e._pointIndexToLabelMap[n]=this.getPointLabel(t,i))},getXAxisLabelFunc:function(e){return function(n,t,i){var o=e._pointIndexToLabelMap&&e._pointIndexToLabelMap[t];return void 0!==o?o:n}},getYAxisLabelFunc:function(n,o,a){function r(e){var t=n.getAxis("y").opt;return e-t.majorTickStep<t.min||e+t.majorTickStep>t.max}return function(n,u,p){return t.isColumnBarLike(a)&&o.renderColumnBarsInOppositeDirections&&(u=Math.abs(u)),o.yAxis.showPercentIndicator&&r(u)?e.format(u/100,{places:0,type:"percent"}):i.formatNumber(u)}}}});

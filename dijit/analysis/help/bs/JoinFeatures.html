@@ -124,9 +124,12 @@
         <div><h2>Odaberite radnju pridruživanja</h2></div>
         <hr/>
         <div>
-            <p>Određuje kako će se tretirati pridruživanja između ciljnog sloja i sloja za pridruživanje ako se otkrije da vi&scaron;e geoobjekata u sloju za pridruživanje ima jednaku relaciju s ciljnim slojem. Sljedeće su dvije radnje pridruživanja za odabir:
+            <p>Određuje kako će se tretirati pridruživanja između ciljnog sloja i sloja za pridruživanje ako se otkrije da vi&scaron;e geoobjekata u sloju za pridruživanje ima jednaku relaciju s ciljnim slojem. U nastavku su dvije radnje pridruživanja koje možete odabrati:
                 <ul>
-                    <li> <b>Pridruži jedan s jednim</b>&ndash;Ova opcija pridružuje prvi podudarajući geoobjekt sloja za pridruživanje prvom podudarajućem geoobjektu u ciljnom sloju. Ako želite i ako su dodane statistike, pridruženi geoobjekti koji se podudaraju sažet će se na svaki geoobjekt u ciljnom sloju.  Zbroj pridruženih geoobjekata dodat će se prema standardnoj postavci.
+                    <li> <b>Pridruži jedan s jednim</b> &ndash; ova opcija pridružuje geoobjekte u ciljnom sloju jednom geoobjektu u sloju za pridruživanje. Način pridruživanja geoobjekta određuje se na temelju parametra <b>Dodavanje statistike</b> ili parametra <b>Definiranje zadržanog zapisa</b>. Ako se upotrebljava <b>Dodavanje statistike</b>, svi pridruženi geoobjekti koji se podudaraju sažet će se na svaki geoobjekt u ciljnom sloju. Zbroj pridruženih geoobjekata dodat će se prema standardnoj postavci.
+Ako se upotrebljava <b>Definiranje zadržanog zapisa</b>,
+možete odabrati želite li zadržati prvi zapis koji se podudara (zadano) ili zapis koji se podudara na temelju izraza. Izraz može upotrebljavati brojčano polje
+(opcija za najveći ili najmanji zapis) ili polje s datumom (opcija za najnoviji ili najstariji).
                     </li>
                     <li> <b>Pridruži jedan s vi&scaron;e</b>&ndash;Ova opcija pridružuje sve geoobjekte sloja za pridruživanje koji se podudaraju s ciljnim slojem.  Sloj rezultata sadržavat će vi&scaron;e zapisa ciljnog geoobjekta.
                     </li>
@@ -171,10 +174,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Pohrani kao hostirani prikaz sloja geoobjekata</h2></div>
+        <div><h2>Stvori rezultate kao hostirani prikaz sloja geoobjekata</h2></div>
         <hr/>
         <div>
-            <p>Pohranjivanje rezultata kao hostiranog prikaza sloja geoobjekata omogućuje ažuriranje podataka kako se mijenjaju izvori podataka. Hostirani prikazi sloja geoobjekata koji sadrže pridruživanja bit će samo za čitanje i neće tro&scaron;iti kredite za analizu i pohranu. 
+            <p>Stvaranje rezultata kao hostiranog prikaza sloja geoobjekata omogućuje ažuriranje podataka kako se mijenjaju izvori podataka. Hostirani prikazi sloja geoobjekata koji sadrže pridruživanja bit će samo za čitanje i neće tro&scaron;iti kredite za analizu i pohranu. 
+            </p>
+            <p>Možete stvoriti hostirani prikaz sloja geoobjekata iz rezultata analize ako su ispunjeni svi uvjeti u nastavku:
+                <ul>
+                    <li>Vlasnik ste obaju slojeva.
+                    </li>
+                    <li>Oba su sloja hostirani slojevi geoobjekata.
+                    </li>
+                    <li>Izvr&scaron;avate pridruživanje na temelju atributa.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

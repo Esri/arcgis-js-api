@@ -7,6 +7,8 @@
 @import url('./grid/AdjustableGrid.css');
 @import url('./grid/AdjustableGrid_cellTooltips.css');
 @import url('./grid/AdjustableGrid_pageLayout.css');
+@import url('./grid/AdjustableGrid_resizableColumns.css');
+@import url('./grid/AdjustableGrid_sorting.css');
 
 @import url('./infographics/DynamicInfographics.css');
 @import url('./infographics/InfographicContainer.css');
@@ -15,7 +17,10 @@
 @import url('./infographics/AreaDetailsInfographic.css');
 @import url('./infographics/ComparisonTableInfographic.css');
 @import url('./infographics/LocatorTableInfographic.css');
+@import url('./infographics/PaginatableTableInfographic.css');
 @import url('./infographics/SimpleInfographic.css');
 @import url('./infographics/SimpleInfographic_dataDrilling.css');
 @import url('./infographics/SimpleInfographic_dataDrillingSlide.css');
 @import url('./infographics/SimpleInfographic_dataDrillingZoom.css');
+
+@import url('./ComparisonSelect.css');

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Najdi lokacije</h2><p/>
+        <h2>Najdi obstoječe lokacije</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Najdi lokacije"></h2>
         <hr/>
     <p>To orodje izbere obstoječe geoobjekte na va&scaron;em &scaron;tudijskem območju, ki ustrezajo vrsti navedenih kriterijev. Ti kriteriji lahko temeljijo na atributnih poizvedbah (na primer, neizkori&scaron;čene parcele) in prostorskih poizvedbah (na primer, znotraj enega kilometra od reke). 
@@ -66,20 +66,22 @@
         <div>
             <p>Kliknite gumb <b>Dodaj izraz</b>, da določite izraz. Dodate lahko več izrazov. Po vnosu izraza in kliku gumba <b>Zaženi analizo</b> se geoobjekti v va&scaron;em vhodnem sloju filtrirajo z vsakim izrazom. Tisti geoobjekti, ki ustrezajo vsem izrazom, so zapisani v sloju z rezultati.
             </p>
-            <p>Obstajata dva osnovna tipa izrazov, ki jih lahko ustvarite; atributni in prostorski. Atributni izrazi so poizvedbe po vrednostih polj, kot so  <code>kjer je ime &raquo;San Francisco&laquo;</code>. Obstajajo &scaron;tirje tipi prostorskih izrazov:
+            <p>Obstajata dva osnovna tipa izrazov, ki jih lahko ustvarite; atributni in prostorski. Atributni izrazi so poizvedbe po vrednostih poljih, kot npr.  <code>kjer je ime &raquo;San Francisco&laquo;</code>. Obstajajo &scaron;tirje tipi prostorskih izrazov:
                 <ul>
                     <li> <b>znotraj razdalje</b>: geoobjekt mora biti znotraj razdalje do geoobjekta v drugem sloju. Na primer, najde parcele, ki so znotraj razdalje 500 metrov od reke Los Angeles.
                     </li>
-                    <li> <b>v celoti vsebuje</b>: geoobjekt mora vsebovati celoten geoobjekt v drugem sloju. Na primer, najde razvodja, ki v celoti vsebujejo parcele v območju za industrijsko uporabo. Noben del parcele ne sme biti zunaj razvodja.
+                    <li> <b>v celoti vsebuje</b>: geoobjekt mora vsebovati celoten geoobjekt iz drugega sloja. Na primer, najde razvodja, ki v celoti vsebujejo parcele v območju za industrijsko uporabo. Noben del parcele ne sme biti zunaj razvodja.
                     </li>
-                    <li> <b>v celoti znotraj</b>: geoobjekt mora biti popolnoma obkrožen z geoobjektom v drugem sloju. Na primer, najde &scaron;olska okrožja, ki so v celoti znotraj meja mesta. Noben del &scaron;olskega okrožja ne sme biti zunaj meja mesta.
+                    <li> <b>v celoti znotraj</b>: geoobjekt mora biti popolnoma obkrožen z geoobjektom iz drugega sloja. Na primer, najde &scaron;olska okrožja, ki so v celoti znotraj meja mesta. Noben del &scaron;olskega okrožja ne sme biti zunaj meja mesta.
                     </li>
                     <li> <b>seka</b>: geoobjekt vsebuje del geoobjekta v drugem sloju. Na primer, najde parcele, ki se sekajo z rekami. Vsak del reke, ki prečka parcelo ali se dotika meje parcele, seka parcelo.
+                    </li>
+                    <li> <b>Najbližje</b>: geoobjekt mora biti najbližje geoobjektu v drugem sloju. Na primer, najdi zelenico, ki je najbližje posameznemu hotelu.
                     </li>
                 </ul>
                 
             </p>
-            <p>Vsak prostorski izraz ima ustrezno negacijo;  <b>ni znotraj razdalje</b>, <b>ne vsebuje v celoti</b>, <b>ni v celoti znotraj</b> in <b>ne seka</b>.
+            <p>Vsak prostorski izraz ima ustrezno negacijo, razen  <b>najbližje</b>, <b>ni znotraj razdalje</b>, <b>ne vsebuje v celoti</b>, <b>ni v celoti znotraj</b> in <b>ne seka</b>.
             </p> 
         </div>
     </div>

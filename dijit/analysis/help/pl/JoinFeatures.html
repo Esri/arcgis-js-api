@@ -73,7 +73,7 @@
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Wybierz typ złączenia</h2></div>
+        <div><h2>Wybierz typ połączenia</h2></div>
         <hr/>
         <div>
             <p>Można zastosować złączenie przestrzenne, złączenie atrybutowe lub kombinację tych dw&oacute;ch typ&oacute;w. 
@@ -121,12 +121,12 @@
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Wybierz operację złączenia</h2></div>
+        <div><h2>Wybierz operację połączenia</h2></div>
         <hr/>
         <div>
             <p>Określa, w jaki spos&oacute;b będą obsługiwane złączenia między warstwą docelową i warstwą złączenia, jeśli w warstwie złączenia zostanie znalezionych wiele obiekt&oacute;w o takich samych relacjach z warstwą docelową. Można wybrać jedną z dw&oacute;ch następujących operacji złączenia:
                 <ul>
-                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć pierwszy pasujący obiekt w warstwie złączenia z pierwszym pasującym obiektem warstwy docelowej. Opcjonalnie, jeśli dodano statystyki, dopasowane złączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba złączonych obiekt&oacute;w.
+                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć obiekty w warstwie docelowej z pojedynczym obiektem w warstwie złączenia. To, jak warstwy są łączone, zależy od parametru <b>Dodaj statystyki</b> lub <b>Zdefiniuj zachowywany rekord</b>. Opcjonalnie, jeśli używana jest opcja <b>Dodaj statystyki</b>, dopasowane połączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba złączonych obiekt&oacute;w.Jeśli używana jest opcja <b>Zdefiniuj zachowywany rekord</b>, można wybrać opcję zachowania pierwszego zgodnego rekordu (opcja domyślna) lub zachowania zgodnego rekordu na podstawie wyrażenia. W wyrażeniu można użyć pola liczbowego (opcja największego lub najmniejszego rekordu) lub pola danych (opcja najnowszego lub najstarszego rekordu).
                     </li>
                     <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala złączyć pierwszy pasujący obiekt w warstwie złączenia z pierwszym pasującym obiektem warstwy docelowej. Warstwa wynikowa będzie zawierać wiele rekord&oacute;w obiektu docelowego.
                     </li>
@@ -171,10 +171,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Przechowywanie wyników w postaci widoku hostowanej warstwy obiektowej</h2></div>
+        <div><h2>Tworzenie wyników w postaci widoku hostowanej warstwy obiektowej</h2></div>
         <hr/>
         <div>
-            <p>Wyniki przechowywane w postaci widoku hostowanej warstwy obiektowej pozostają aktualne, gdy zmienia się źr&oacute;dło danych.  Widoki hostowanej warstwy obiektowej zawierające złączenia są widokami tylko do odczytu, a ich analizowanie i przechowywanie nie powoduje wykorzystania kredyt&oacute;w. 
+            <p>Wyniki utworzone w postaci widoku hostowanej warstwy obiektowej pozostają aktualne, gdy zmienia się źr&oacute;dło danych. Widoki hostowanej warstwy obiektowej zawierające złączenia są widokami tylko do odczytu, a ich analizowanie i przechowywanie nie powoduje wykorzystania kredyt&oacute;w. 
+            </p>
+            <p>Widok hostowanej warstwy obiektowej można utworzyć na podstawie wynik&oacute;w analizy, gdy spełnione są wszystkie następujące warunki:
+                <ul>
+                    <li>Obie warstwy są Twoją własnością.
+                    </li>
+                    <li>Obie warstwy są hostowanymi warstwami obiektowymi.
+                    </li>
+                    <li>Wykonywane jest złączenie na podstawie atrybut&oacute;w.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

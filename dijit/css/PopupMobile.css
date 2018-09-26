@@ -44,7 +44,7 @@
   width: 260px;
 }
 
-.esriPopupMobile a {
+.esriPopupMobile a[href] {
   color: #336699;
   text-decoration: underline;
 }

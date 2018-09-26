@@ -55,22 +55,24 @@
         <div><h2>Derivare locaţii noi care se potrivesc cu următoarele expresii</h2></div>
         <hr/>
         <div>
-            <p>Faceţi clic pe butonul  <b>Adăugare expresie</b> pentru a defini o expresie.  Puteţi adăuga mai multe expresii. După ce introduceţi expresiile şi faceţi clic pe butonul <b>Executare analiză</b>, obiectele spaţiale din stratul tematic de analiză sunt filtrate prin fiecare expresie.  Porţiunile obiectelor spaţiale care satisfac toate expresiile sunt scrise &icirc;n stratul tematic rezultat.
+            <p>Faceţi clic pe butonul  <b>Adăugare expresie</b> pentru a defini o expresie.  Puteţi adăuga mai multe expresii.  După ce introduceţi expresiile şi faceţi clic pe butonul <b>Executare analiză</b>, obiectele spaţiale din stratul tematic de analiză sunt filtrate prin fiecare expresie.  Porţiunile obiectelor spaţiale care satisfac toate expresiile sunt scrise &icirc;n stratul tematic rezultat.
             </p>
-            <p>Există două tipuri de bază pentru expresiile pe care le puteţi crea: de atribute şi spaţiale. Expresiile de atribute sunt interogări asupra valorilor de c&acirc;mp, cum ar fi  <code>acolo unde numele este &bdquo;San Francisco&rdquo;</code>.  Există patru tipuri de expresii spaţiale:
+            <p>Există două tipuri de bază pentru expresiile pe care le puteţi crea: de atribute şi spaţiale.  Expresiile de atribute sunt interogări asupra valorilor de c&acirc;mp, cum ar fi  <code>acolo unde numele este &bdquo;San Francisco&rdquo;</code>.  Există patru tipuri de expresii spațiale:
                 <ul>
                     <li> <b>&icirc;n cadrul unei distanţe de</b>: porţiuni dintr-un obiect spaţial trebuie să se afle &icirc;n cadrul unei distanţe faţă de un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiţi porţiunile parcelelor care se află pe o rază de 500 de metri faţă de r&acirc;ul Los Angeles.
                     </li>
                     <li> <b>conţine &icirc;n mod complet</b>: obiectul spaţial trebuie să conţină &icirc;n &icirc;ntregime un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiți cumpenele apelor care conțin &icirc;n mod complet parcele destinate utilizării industriale. Nicio parte a parcelei nu se poate situa &icirc;n afara cumpenei apelor.
                     </li>
-                    <li> <b>&icirc;n mod complet &icirc;n cadrul</b>: obiectul spaţial trebuie să fie &icirc;nconjurat &icirc;n &icirc;ntregime de un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiți districtele școlare care se află &icirc;n mod complet &icirc;n interiorul limitelor unui oraș. Nicio parte a districtului școlar nu se poate situa &icirc;n afara limitei orașului.
+                    <li> <b>&icirc;n mod complet &icirc;n cadrul</b>: obiectul spaţial trebuie să fie &icirc;nconjurat &icirc;n &icirc;ntregime de un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiți districtele școlare care se află &icirc;n mod complet &icirc;n interiorul limitelor unui oraș.  Nicio parte a districtului școlar nu se poate situa &icirc;n afara limitei orașului.
                     </li>
-                    <li> <b>intersectare</b>: obiectul spaţial sau porţiunile obiectului spaţial trebuie să se suprapună sau să se intersecteze cu un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiţi suprafeţe de vegetaţie arsă din mai multe incendii survenite &icirc;ntr-un parc naţional. Suprafeţe arse din afara graniţelor parcului nu vor fi incluse.
+                    <li> <b>intersectare</b>: obiectul spaţial sau porţiunile obiectului spaţial trebuie să se suprapună sau să se intersecteze cu un obiect spaţial dintr-un alt strat tematic.  De exemplu, găsiţi suprafeţe de vegetaţie arsă din mai multe incendii survenite &icirc;ntr-un parc naţional.   Suprafeţele arse din afara graniţelor parcului nu vor fi incluse.
+                    </li>
+                    <li> <b>cel mai apropiat</b>: obiectul spațial trebuie să fie cel mai apropiat de un alt obiect spațial dintr-un alt strat tematic.  De exemplu, găsiți spațiul verde care este cel mai apropiat de fiecare școală.
                     </li>
                 </ul>
                 
             </p>
-            <p>Fiecare expresie spaţială are un corespondent negativ:  <b>nu se află &icirc;n cadrul unei distanţe faţă de</b>, <b>nu conţine &icirc;n mod complet</b>, <b>nu se află &icirc;n mod complet &icirc;n</b> şi <b>nu se intersectează cu</b>.
+            <p>Fiecare expresie spațială are un corespondent negativ, cu excepția  <b>cel mai apropiat</b>; <b>nu se află &icirc;n cadrul unei distanțe de</b>, <b>nu conține &icirc;n mod complet</b>, <b>nu se află &icirc;n mod complet &icirc;n</b> și <b>nu se intersectează cu</b>.
             </p> 
         </div>
     </div>

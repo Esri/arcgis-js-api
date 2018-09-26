@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή raster ή θεματικού επιπέδου θέσης στοιχείων για υπολογισμό της απόστασης ως",maxDistanceLabel:"Μέγιστη απόσταση προς υπολογισμό (προαιρετικά)",outputCellSize:"Μέγεθος εξαγόμενου κελιού (προαιρετικό)",resultDistLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου απόστασης",resultDirectionLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου κατεύθυνσης (προαιρετικά)",resultAllocationLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου εκχώρησης (προαιρετικά)",outputLayerName:"Υπολογισμένη απόσταση στο θεματικό επίπεδο ${layername}",allocationFieldLabel:"Επιλογή πεδίου εκχώρησης (προαιρετικά)",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της επιλογής «Υπολογισμός απόστασης» για το θεματικό επίπεδο ${layerName}. ",itemTags:"Αποτέλεσμα ανάλυσης, Υπολογισμός απόστασης, ${layername} ${fieldname}",itemSnippet:"Δημιουργήθηκε feature layer από την επιλογή «Υπολογισμός απόστασης»."});

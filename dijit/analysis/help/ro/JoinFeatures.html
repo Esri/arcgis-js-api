@@ -46,9 +46,9 @@
         <hr/>
     <p>Unire obiecte spațiale funcționează cu două straturi tematice și unește atribute dintr-un obiect spațial &icirc;n altul &icirc;n baza relațiilor spațiale și de atribute. Instrumentul determină toate obiectele spațiale de intrare care respectă condițiile de unire și atașează stratul tematic de unire la stratul tematic țintă. 
     </p>
-    <p>Unire obiecte spațiale pot fi aplicată punctelor, liniilor, suprafețelor și tabelelor. Pentru o unire spațială datele dvs. trebuie să aibă o geometrie. 
+    <p>Unire obiecte spațiale poate fi aplicată punctelor, liniilor, suprafețelor și tabelelor. Pentru o unire spațială, datele dvs. trebuie să aibă o geometrie. 
     </p>
-    <p>Dacă se bifează  <b>Utilizare extindere curentă a hărții</b>, vor fi analizate numai obiectele spațiale vizibile &icirc;n extinderea curentă a hărții.  Dacă nu se bifează, vor fi analizate toate obiectele spațiale at&acirc;t din stratul tematic țintă, c&acirc;t și din stratul tematic de unire, chiar dacă se află &icirc;n afara extinderii curente a hărții.
+    <p>Dacă se bifează  <b>Utilizare extindere curentă a hărții</b>, vor fi analizate numai obiectele spațiale vizibile &icirc;n extinderea curentă a hărții.  Dacă nu se bifează, vor fi analizate toate obiectele spațiale, at&acirc;t din stratul tematic țintă, c&acirc;t și din stratul tematic de unire, chiar dacă se află &icirc;n afara extinderii curente a hărții.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -78,9 +78,9 @@
         <div>
             <p>Puteți aplica o unire spațială, o unire de atribute sau o combinație a acestora. 
                 <ul>
-                    <li> <b>Spațială</b> - Utilizează o relație spațială specificată pentru unirea obiectelor spațiale. Aceasta necesită ca ambele straturi tematice să aibă o geometrie.
+                    <li> <b>Spațială</b>&mdash;Utilizează o relație spațială specificată pentru unirea obiectelor spațiale. Aceasta necesită ca ambele straturi tematice să aibă o geometrie.
                     </li>
-                    <li> <b>Atribut</b> - Unește obiecte spațiale &icirc;n baza c&acirc;mpurilor egale..
+                    <li> <b>Atribut</b>&mdash;Unește obiecte spațiale &icirc;n baza c&acirc;mpurilor egale.
                     </li>
                 </ul>
                 
@@ -95,15 +95,15 @@
         <div>
             <p>Relația spațială care va determina dacă obiectele spațiale sunt unite unele cu altele. Relațiile disponibile vor depinde de tipul de geometrie (punct, linie, suprafețe) care este utilizat pentru obiectele spațiale de intrare. Printre relațiile disponibile, se numără următoarele:
                 <ul>
-                    <li> <b>Identic cu</b> - Obiectele spațiale din stratul tematic țintă vor fi potrivite dacă sunt identice cu obiectele spațiale din stratul tematic de unire.
+                    <li> <b>Identic cu</b>&mdash;Obiectele spațiale din stratul tematic țintă vor fi potrivite dacă sunt identice cu obiectele spațiale din stratul tematic de unire.
                     </li>
-                    <li> <b>Intersectează</b> - Obiectele spațiale din stratul tematic țintă vor fi potrivite dacă se intersectează cu obiectele spațiale din stratul tematic de unire.
+                    <li> <b>Intersectează</b>&mdash;Obiectele spațiale din stratul tematic țintă vor fi potrivite dacă se intersectează cu obiectele spațiale din stratul tematic de unire.
                     </li>
-                    <li> <b>Conține complet</b> - Obiectele spațiale vor fi potrivite dacă obiectele spațiale din stratul tematic țintă conțin complet obiecte spațiale din stratul tematic de unire.
+                    <li> <b>Conține complet</b>&mdash;Obiectele spațiale vor fi potrivite dacă obiectele spațiale din stratul tematic țintă conțin complet obiecte spațiale din stratul tematic de unire.
                     </li>
-                    <li> <b>Complet &icirc;n interior</b> - Obiectele spațiale vor fi potrivite dacă obiectele spațiale din stratul tematic țintă se află complet &icirc;n interiorul obiectelor spațiale din stratul tematic de unire.
+                    <li> <b>Complet &icirc;n interior</b>&mdash;Obiectele spațiale vor fi potrivite dacă obiectele spațiale din stratul tematic țintă se află complet &icirc;n interiorul obiectelor spațiale din stratul tematic de unire.
                     </li>
-                    <li> <b>La o distanță de cel mult</b> - Obiectele spațiale din stratul tematic țintă vor fi potrivite se află la o distanță specificată de obiectele spațiale din stratul tematic de unire.
+                    <li> <b>La o distanță de cel mult</b>&mdash;Obiectele spațiale din stratul tematic țintă vor fi potrivite dacă se află la o distanță specificată de obiectele spațiale din stratul tematic de unire.
                     </li>
                 </ul>
                 
@@ -126,14 +126,17 @@
         <div>
             <p>Determină cum vor fi gestionate unirile dintre stratul tematic țintă și cel de unire dacă se descoperă că mai multe obiecte spațiale din stratul tematic de unire au aceeași relație cu stratul tematic țintă. Cele două operații de unire dintre care să alegeți sunt următoarele:
                 <ul>
-                    <li> <b>Unire unu la unu</b> - Această opțiune unește primul obiect spațial potrivit din stratul tematic de unire cu primul obiect spațial potrivit din stratul tematic țintă. Opțional, dacă sunt adăugate statistici, obiectele spațiale potrivite unite vor fi rezumate &icirc;n fiecare obiect spațial din stratul tematic țintă.  Numărul obiectelor spațiale unite va fi adăugat &icirc;n mod implicit.
+                    <li> <b>Unire unu la unu</b>&mdash;Această opțiune unește obiectele spațiale din stratul tematic țintă cu un singur obiect spațial din stratul tematic unit. Modul &icirc;n care obiectele spațiale sunt unite este determinat de parametrul <b>Adăugare statistici</b> sau <b>Definire &icirc;nregistrare păstrată</b>. Dacă se utilizează <b>Adăugare statistici</b>, toate obiectele spațiale potrivite unite vor fi rezumate &icirc;n fiecare obiect spațial din stratul tematic țintă. Numărul obiectelor spațiale unite va fi adăugat &icirc;n mod implicit.
+Dacă se utilizează <b>Definire &icirc;nregistrare păstrată</b>, 
+puteți alege să păstrați prima &icirc;nregistrare care se potrivește (implicit) sau să păstrați o &icirc;nregistrare care se potrivește pe baza unei expresii O expresie poate utiliza un c&acirc;mp numeric
+(opțiune pentru cea mai mare sau cea mai mică &icirc;nregistrare) sau un c&acirc;mp de date (opțiune pentru cea mai nouă sau cea mai veche).
                     </li>
-                    <li> <b>Unire unu la mai multe</b> &ndash; Această opțiune unește toate obiectele spațiale corespunzătoare din stratul tematic de unire cu stratul tematic țintă. Stratul tematic rezultat va conține &icirc;nregistrări multiple ale obiectului spațial țintă.
+                    <li> <b>Unire unu la mai multe</b>&mdash;Această opţiune uneşte toate obiectele spaţiale corespunzătoare din stratul tematic de unire cu stratul tematic ţintă.  Stratul tematic rezultat va conține &icirc;nregistrări multiple ale obiectului spațial țintă.
                     </li>
                 </ul>
                 
             </p>
-            <p>De exemplu, să presupunem că doriți să găsiți supermarketurile aflate pe o rază de 5 kilometri față de o piață pentru fermieri.   &Icirc;n acest caz, stratul tematic care este unit are un singur obiect spațial care reprezintă piața pentru fermieri, iar obiectele spațiale care sunt unite reprezintă supermarketurile care au atribute precum v&acirc;nzările totale anuale. Prin intermediul instrumentului  <b>Unire obiecte spațiale</b>, aflați că cinci supermarketuri &icirc;ndeplinesc respectivele criterii. Dacă specificați o operațiune de unire de tip <b>Unire unu la mai multe</b>, veți avea cinci obiecte spațiale &icirc;n rezultatul dvs., fiecare r&acirc;nd reprezent&acirc;nd piața pentru fermieri și un supermarket. Dacă specificați o relație de tip <b>Unire unu la unu</b> și selectați o statistică, ați avea un obiect spațial reprezent&acirc;nd piața pentru fermieri și informațiile rezumate despre supermarketuri, precum numărul (5) și alte statistici opționale cum ar fi suma v&acirc;nzărilor anuale.
+            <p>De exemplu, să presupunem că doriți să găsiți supermarketurile aflate pe o rază de 5 kilometri față de o piață pentru fermieri.   &Icirc;n acest caz, stratul tematic care este unit are un singur obiect spațial care reprezintă piața pentru fermieri, iar obiectele spațiale care sunt unite reprezintă supermarketurile care au atribute precum v&acirc;nzările totale anuale. Prin intermediul instrumentului  <b>Unire obiecte spațiale</b>, aflați că cinci supermarketuri &icirc;ndeplinesc respectivele criterii. Dacă specificați o operațiune de unire de tip <b>Unire unu la mai multe</b>, veți avea cinci obiecte spațiale &icirc;n rezultatul dvs., fiecare r&acirc;nd reprezent&acirc;nd piața pentru fermieri și un supermarket. Dacă specificați o relație de tip <b>Unire unu la unu</b> și selectați o statistică, veți avea un obiect spațial reprezent&acirc;nd piața pentru fermieri și informațiile rezumate despre supermarketuri, precum numărul (5) și alte statistici opționale, cum ar fi suma v&acirc;nzărilor anuale.
             </p>
         </div>
     </div>
@@ -141,7 +144,7 @@
         <div><h2>Adăugare statistici (opțional)</h2></div>
         <hr/>
         <div>
-            <p>Dacă a fost selectată opțiunea  <b>Unire unu la unu</b>, pentru c&acirc;mpuri numerice, puteți rezuma și calcula statisticile din obiectele spațiale unite. &Icirc;n mod implicit, numărul de obiecte spațiale potrivite unite va fi calculat și adăugat la stratul tematic rezultat. Dacă alegeți să nu adăugați statistici suplimentare, primul obiect spațial potrivit din stratul tematic de unire va fi unit cu primul obiect spațial potrivit din stratul tematic țintă. Puteți calcula una sau mai multe dintre următoarele:
+            <p>Dacă a fost selectată opțiunea  <b>Unire unu la unu</b>, pentru c&acirc;mpuri numerice, puteți rezuma și calcula statisticile din obiectele spațiale unite.   &Icirc;n mod implicit, numărul de obiecte spațiale potrivite unite va fi calculat și adăugat la stratul tematic rezultat. Dacă alegeți să nu adăugați statistici suplimentare, primul obiect spațial potrivit din stratul tematic de unire va fi unit cu primul obiect spațial potrivit din stratul tematic țintă. Puteți calcula una sau mai multe dintre următoarele:
             </p>
             <ul>
                 <li>Sumă
@@ -171,10 +174,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Stocare ca vizualizare a stratului tematic de obiecte spațiale găzduite</h2></div>
+        <div><h2>Creare rezultate ca vizualizare a stratului tematic de obiecte spațiale găzduite</h2></div>
         <hr/>
         <div>
-            <p>Stocarea rezultatelor ca vizualizare a stratului tematic de obiecte spațiale găzduite permite ca datele să răm&acirc;nă actualizate pe măsură ce datele privind sursa se schimbă.  Vizualizările straturilor tematice de obiecte spațiale găzduite care conțin uniri vor fi disponibile doar pentru citire și nu consumă credite pentru analiză și stocare. 
+            <p>Crearea rezultatelor ca vizualizare a stratului tematic de obiecte spațiale găzduite permite ca datele să răm&acirc;nă actualizate pe măsură ce datele privind sursa se schimbă. Vizualizările straturilor tematice de obiecte spațiale găzduite care conțin uniri vor fi disponibile doar pentru citire și nu consumă credite pentru analiză și stocare. 
+            </p>
+            <p>Puteți crea o vizualizare a stratului tematic de obiecte spațiale găzduit pe baza rezultatelor analizei &icirc;n cazul &icirc;n care sunt &icirc;ndeplinite toate condițiile următoare:
+                <ul>
+                    <li>Sunteți proprietarul ambelor straturi tematice.
+                    </li>
+                    <li>Ambele straturi tematice sunt straturi tematice de obiecte spațiale găzduite.
+                    </li>
+                    <li>Efectuați o unire bazată pe atribute.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

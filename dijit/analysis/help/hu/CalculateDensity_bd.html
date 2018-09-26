@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sűrűség számítása</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa"></h2>
+        <hr/>
+    <p>A Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa eszk&ouml;z sűrűs&eacute;gt&eacute;rk&eacute;pet hoz l&eacute;tre pontszerű vektoros elemekből egy bizonyos (a pontok attrib&uacute;tumai &aacute;ltal k&eacute;pviselt) jelens&eacute;g ismert mennyis&eacute;geit kiterjesztve a t&eacute;rk&eacute;pen. Az eredm&eacute;ny a legkev&eacute;sb&eacute; sűrűtől a legsűrűbbig terjedő kateg&oacute;ri&aacute;kba sorolt ter&uuml;leteket tartalmaz&oacute; r&eacute;teg.   
+
+    </p>
+    <p>Pont bemenet eset&eacute;n az egyes pontok feleljenek meg egy bizonyos esem&eacute;ny vagy incidens hely&eacute;nek, &eacute;s az eredm&eacute;ny r&eacute;teg megjelen&iacute;ti az egys&eacute;gnyi ter&uuml;letre eső incidensek sz&aacute;m&aacute;t.  Az &uacute;j helyen a nagyobb sűrűs&eacute;g&eacute;rt&eacute;k azt jelenti, hogy t&ouml;bb pont tal&aacute;lhat&oacute; az adott hely k&ouml;zel&eacute;ben.  Sok esetben az eredm&eacute;ny r&eacute;teg j&ouml;vőbeni esem&eacute;nyek kock&aacute;zat&aacute;t megjelen&iacute;tő felsz&iacute;nk&eacute;nt &eacute;rtelmezhető. Ha p&eacute;ld&aacute;ul a bemenő pontok vill&aacute;mcsap&aacute;sok hely&eacute;nek felelnek meg, akkor az eredm&eacute;ny r&eacute;teg a j&ouml;vőbeni vill&aacute;mcsap&aacute;sok kock&aacute;zat&aacute;t megjelen&iacute;tő felsz&iacute;nk&eacute;nt &eacute;rtelmezhető.
+    </p>
+    <p>Az eszk&ouml;z ezenk&iacute;v&uuml;l az al&aacute;bbiakra is haszn&aacute;lhat&oacute;:
+        <ul>
+            <li>Bűncselekm&eacute;nyek sűrűs&eacute;gi t&eacute;rk&eacute;p&eacute;nek l&eacute;trehoz&aacute;sa, seg&iacute;tve ezzel a rendőrs&eacute;gnek az erőforr&aacute;sokat azokra a ter&uuml;letekre csoportos&iacute;tani, ahol nagy ar&aacute;ny&uacute; a bűn&ouml;z&eacute;s.
+            </li>
+            <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;ny r&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
+            </li>
+            <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi helysz&iacute;ne alapj&aacute;n.
+            </li>
+            <li>A nagyobb fő&uacute;tvonalakt&oacute;l t&aacute;vol &eacute;lő k&ouml;z&ouml;ss&eacute;gek hely&eacute;nek meghat&aacute;roz&aacute;sa, annak megtervez&eacute;s&eacute;hez, hogy hol &eacute;p&uuml;ljenek &uacute;j utak.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Válassza ki azt a pontréteget, amelyből ki szeretné számítani a sűrűséget</h2></div>
+        <hr/>
+        <div>
+            <p>A pontr&eacute;teg, amelyből ki szeretn&eacute; sz&aacute;m&iacute;tani a sűrűs&eacute;get.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Válasszon egy vagy több mezőt a sűrűség kiszámításához (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Adja meg az egyes helyeken bek&ouml;vetkezett balesetek sz&aacute;m&aacute;t meghat&aacute;roz&oacute; mezőt vagy mezőket.  V&aacute;rosokat k&eacute;pviselő pontok eset&eacute;n p&eacute;ld&aacute;ul a v&aacute;ros n&eacute;pess&eacute;g&eacute;nek megfelelő mezőt haszn&aacute;lhat sz&aacute;ml&aacute;l&oacute; mezők&eacute;nt, &eacute;s az eredm&eacute;ny&uuml;l kapott n&eacute;psűrűs&eacute;g r&eacute;teg nagyobb n&eacute;psűrűs&eacute;get fog sz&aacute;ml&aacute;lni a nagyobb n&eacute;pess&eacute;gű v&aacute;rosok k&ouml;zel&eacute;ben.
+            </p>
+            <p>Az eszk&ouml;z mindig kisz&aacute;m&iacute;tja a pontok darabsz&aacute;m&aacute;nak sűrűs&eacute;g&eacute;t.   Ha nincs kiv&aacute;lasztva mező, akkor az eszk&ouml;z felt&eacute;telezi, hogy az egyes helyek egyetlen &eacute;rt&eacute;ket k&eacute;pviselnek.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Válassza ki a gyűjtő alakját</h2></div>
+        <hr/>
+        <div>
+            <p>Azoknak a gyűjtőknek az alakja, amelyekbe a pontokat &ouml;sszes&iacute;ti, &eacute;s amelyeket a sűrűs&eacute;g kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;l.
+            </p>
+            <p>Analysis using  <b>Square</b> or <b>Hexagon</b> bins requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Válassza ki az összevonási gyűjtőméretet</h2></div>
+        <hr/>
+        <div>
+            <p>A l&eacute;trehozott gyűjtők m&eacute;rete. N&eacute;gysz&ouml;g alak&uacute; gyűjtő eset&eacute;n a m&eacute;ret a n&eacute;gysz&ouml;g magass&aacute;g&aacute;t jel&ouml;li. Hatsz&ouml;g alak&uacute; gyűjtő eset&eacute;n a m&eacute;ret a hatsz&ouml;g (p&aacute;rhuzamos oldalakt&oacute;l m&eacute;rt) magass&aacute;g&aacute;t jel&ouml;li.
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Válassza ki az alkalmazandó sűrűségsúlyozást</h2></div>
+        <hr/>
+        <div>
+            <p>A sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sakor alkalmazott s&uacute;lyoz&aacute;s t&iacute;pusa. K&eacute;tf&eacute;le lehetős&eacute;g k&ouml;z&uuml;l v&aacute;laszthat:
+                <ul>
+                    <li> <b>Egys&eacute;ges</b> &ndash; ter&uuml;letenk&eacute;nt sz&aacute;m&iacute;t nagys&aacute;grendet.
+                    </li>
+                    <li> <b>Kernel</b> &ndash; egy kernelf&uuml;ggv&eacute;ny seg&iacute;ts&eacute;g&eacute;vel illeszt kisim&iacute;tott k&uacute;pfel&uuml;letet minden egyes pontra.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Válassza ki a szomszédság méretét</h2></div>
+        <hr/>
+        <div>
+            <p>A sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt ter&uuml;let m&eacute;rete. A szomsz&eacute;ds&aacute;g m&eacute;ret&eacute;nek nagyobbnak kell lennie a gyűjtő m&eacute;ret&eacute;n&eacute;l.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Válassza ki a kimeneti mértékegységeket a sűrűséghez</h2></div>
+        <hr/>
+        <div>
+            <p>A sűrűs&eacute;g&eacute;rt&eacute;kek k&iacute;v&aacute;nt kimeneti m&eacute;rt&eacute;kegys&eacute;gei. Alap&eacute;rtelmez&eacute;s szerint n&eacute;gyzetkilom&eacute;terre vagy n&eacute;gyzetm&eacute;rf&ouml;ldre van &aacute;ll&iacute;tva a profilban meghat&aacute;rozott alap&eacute;rtelmezett m&eacute;rt&eacute;kegys&eacute;gtől f&uuml;ggően. Ha a sűrűs&eacute;g&eacute;rt&eacute;kek nagyon kicsik, n&ouml;velheti a ter&uuml;leti m&eacute;rt&eacute;kegys&eacute;gek nagys&aacute;grendj&eacute;t (p&eacute;ld&aacute;ul n&eacute;gyzetm&eacute;terről n&eacute;gyzetkilom&eacute;terre), hogy nagyobb &eacute;rt&eacute;keket kapjon. Az &eacute;rt&eacute;kek csak az eredm&eacute;nyek m&eacute;retar&aacute;ny&aacute;t m&oacute;dos&iacute;tj&aacute;k.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Sűrűség számítása időbeli lépések használatával (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
+                <ul>
+                    <li> <b>Time step interval</b>
+                    </li>
+                    <li> <b>How often to repeat the time step</b>
+                    </li>
+                    <li> <b>Time to align the time steps to</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to <code>1 week</code>. 
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Időbeli lépés intervalluma</h2></div>
+        <hr/>
+        <div>
+            <p>The interval of time used for generating time steps.  <b>Time step interval</b> can be used alone or with the <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameter.
+            </p>
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Az időbeli lépés ismétlésének gyakorisága</h2></div>
+        <hr/>
+        <div>
+            <p> The step used for calculating a time step. <b>How often to repeat the time step</b> can be used alone, with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
+            </p>
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Az időbeli lépések igazításához használt idő</h2></div>
+        <hr/>
+        <div>
+            <p>The date and time used to align time slicing. Time stepping will start at and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
+            </p>
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (WKID)</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Adattár választása</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+                <ul>
+                    <li>You can use results in portal-to-portal collaboration.
+                    </li>
+                    <li>You can enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created in <b>My Content</b> and added to the map. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. If the layer already exists, the tool will fail.
+            </p>
+            <p>Az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mezőben megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

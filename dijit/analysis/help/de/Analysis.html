@@ -44,7 +44,7 @@
         <p>Die Toolbox &quot;Feature-Analyse&quot; enth&auml;lt eine Reihe von Werkzeugen, auf die Sie zugreifen und die Sie nutzen k&ouml;nnen.  Diese Tasks sind nachfolgend in Kategorien organisiert. Die Kategorien sind lediglich logische Gruppen und haben keinerlei Auswirkungen darauf, wie Sie auf die Tasks zugreifen oder sie verwenden.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Daten zusammenfassen</h2>
         <hr/>
         <p>Mit diesen Werkzeugen werden Gesamtzahlen, L&auml;ngen, Fl&auml;chen und grundlegende beschreibende Statistiken von Features und ihren Attributen innerhalb von Fl&auml;chen oder in der N&auml;he anderer Features berechnet.
@@ -56,6 +56,8 @@
                 <li> <b>Zusammenfassen (in der N&auml;he)</b> berechnet Statistiken f&uuml;r Features und ihre Attribute, die sich innerhalb einer angegebenen Entfernung befinden.
                 </li>
                 <li> <b>Zusammenfassen (innerhalb)</b> berechnet Statistiken f&uuml;r Fl&auml;chen-Features und Attribute, die sich &uuml;berlappen.
+                </li>
+                <li> <b>Zentrierung und Verteilung zusammenfassen</b> berechnet zentrale Features und Richtungsverteilungen.
                 </li>
             </ul>
             
@@ -144,11 +146,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ermittelt Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. Beispiel:
+            <p>Findet Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. Beispiel:
                 <ul>
                     <li>Ermitteln Sie anhand eines Layers mit Abflussgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet. 
                     </li>
                     <li>Fassen Sie den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammen.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zentrierung und Verteilung zusammenfassen</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Zentrierung und Verteilung zusammenfassen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug verwendet Punkt-Features, um das zentrale Feature, den Mittelwert f&uuml;r den Mittelpunkt, den Medianwert f&uuml;r den Mittelpunkt oder die Ellipse (Verteilung) zu berechnen. Beispiel:
+                <ul>
+                    <li>Wenn Sie &uuml;ber einen Layer f&uuml;r Schwerpunkte der Blockgruppen verf&uuml;gen, kann mit dem zentralen, anhand der Bev&ouml;lkerungszahlen gewichteten Feature ermittelt werden, in welchem Teil der Stadt ein Zentrum f&uuml;r darstellende K&uuml;nste am besten zu erreichen w&auml;re.
+                    </li>
+                    <li>Angenommen, Sie verf&uuml;gen &uuml;ber einen Layer f&uuml;r Elchbeobachtungen in einem Park f&uuml;r einen Zeitraum von mehreren Jahren, so kann anhand des Mittelwertes f&uuml;r den Mittelpunkt festgestellt werden, wo die Elche sich im Sommer und im Winter versammeln.
+                    </li>
+                    <li>Wenn Sie einen Layer f&uuml;r Brandereignisse haben, kann anhand des Medianwertes f&uuml;r den Mittelpunkt die zentrale Tendenz der Feuer ohne Beeintr&auml;chtigung durch Ausrei&szlig;er der Peripherie gemessen werden.
+                    </li>
+                    <li>Ist ein Layer f&uuml;r Stichproben von Grundwasserbrunnen vorhanden, kann mithilfe einer Ellipse ermittelt werden, wie eine Verunreinigung sich verbreitet.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Muster analysieren</h2>
         <hr/>
         <p>Mit diesen Werkzeugen k&ouml;nnen Sie r&auml;umliche Muster in Daten identifizieren, quantifizieren und visualisieren.  
@@ -356,6 +384,8 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 <li>Mit  <b>Hot-Spots suchen</b> werden statistisch signifikante Cluster im r&auml;umlichen Muster Ihrer Daten identifiziert.
                 </li>
                 <li>Mit dem Werkzeug  <b>Ausrei&szlig;er suchen</b> wird ermittelt, ob die r&auml;umlichen Muster in den Daten statistisch signifikante Ausrei&szlig;er aufweisen.
+                </li>
+                <li>Das Werkzeug  <b>Punkt-Cluster suchen</b> findet Cluster aus Punkt-Features im Datenrauschen des Umfelds basierend auf deren r&auml;umlicher Verteilung.
                 </li>
                 <li>Mit dem Werkzeug  <b>Punkte interpolieren</b> k&ouml;nnen Sie Werte an neuen Positionen basierend auf Messwerten aus einer Sammlung von Punkten vorhersagen.
                 </li>
@@ -374,7 +404,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Das Werkzeug &quot;Dichte berechnen&quot; verwendet bekannte Mengen einiger Ph&auml;nomene und verteilt sie auf der Karte. Mit diesem Werkzeug k&ouml;nnen beispielsweise Konzentrationen von Blitzeinschl&auml;gen oder Tornados, die Erreichbarkeit von Gesundheitseinrichtungen und Bev&ouml;lkerungsdichten angezeigt werden.
+            <p>Das Werkzeug &quot;Dichte berechnen&quot; verwendet bekannte Mengen eines bestimmten Ph&auml;nomens und verteilt sie auf der Karte. Mit diesem Werkzeug k&ouml;nnen beispielsweise Konzentrationen von Blitzeinschl&auml;gen oder Tornados, die Erreichbarkeit von Gesundheitseinrichtungen und Bev&ouml;lkerungsdichten angezeigt werden.
             </p>
             <br/>
         </div>
@@ -405,6 +435,21 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             </table>
 <hr/>
             <p>Dieses Werkzeug erstellt eine Karte mit statistisch signifikanten Clustern und r&auml;umlichen Ausrei&szlig;ern, die in den Daten vorhanden sind. Verwenden Sie dieses Werkzeug, um Features mit Werten zu ermitteln, die erheblich von ihren Nachbarn abweichen.  Mit diesem Werkzeug k&ouml;nnen Sie beispielsweise herausfinden, wo anomales Ausgabeverhalten zu beobachten ist, ermitteln, wo die sch&auml;rfsten Grenzen zwischen Reichtum und Armut in einem Untersuchungsgebiet liegen oder ob in den USA Landkreise mit ungew&ouml;hnlich niedriger Lebenserwartung im Vergleich zu ihren Nachbarschaften vorhanden sind.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Punkt-Cluster suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Punkt-Cluster suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug erkennt Fl&auml;chen, auf denen Punkte konzentriert auftreten und auf denen sie durch leere Fl&auml;chen oder Fl&auml;chen mit geringer Dichte getrennt sind. Punkte, die nicht Teil eines Clusters sind, werden als Rauschen gekennzeichnet.
             </p>
             <br/>
         </div>

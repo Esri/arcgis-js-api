@@ -57,7 +57,7 @@
         <div>
             <p>Klik p&aring; knappen  <b>Tilf&oslash;j udtryk</b> for at definere et udtryk. Du kan tilf&oslash;je flere udtryk. N&aring;r du har angivet udtrykkene og klikket p&aring; knappen <b>K&oslash;r analyse</b>, filtreres objekterne i dit analyselag gennem hvert udtryk. Den del af objekterne, der opfylder alle udtryk, skrives til resultatlaget.
             </p>
-            <p>Der er to grundl&aelig;ggende typer udtryk, du kan oprette: attribut og rumlig. Attributudtryk er foresp&oslash;rgsler om feltv&aelig;rdier, f.eks.  <code>hvor navn er &quot;San Francisco&quot;</code>. Der er fire typer spatiale udtryk:
+            <p>Der er to grundl&aelig;ggende typer udtryk, du kan oprette: attribut og rumlig. Attributudtryk er foresp&oslash;rgsler om feltv&aelig;rdier, f.eks.  <code>hvor navn er &quot;San Francisco&quot;</code>. Der er fire typer rumlige udtryk:
                 <ul>
                     <li> <b>inden for en afstand p&aring;</b>: dele af en feature inden for en afstand af en feature i et andet lag. F.eks. find den andel af parceller, der ligger inden for 500 meter fra Los Angeles River.
                     </li>
@@ -67,10 +67,12 @@
                     </li>
                     <li> <b>gennemsk&aelig;rer</b>: objektet eller dele af objektet skal overlappe eller gennemsk&aelig;re et objekt i et andet lag. Find f.eks. omr&aring;der med br&aelig;ndt vegetation efter flere brande i en nationalpark. Afbr&aelig;ndte omr&aring;der uden for parkens gr&aelig;nser medtages ikke.
                     </li>
+                    <li> <b>t&aelig;ttest p&aring;</b>: objektet skal v&aelig;re t&aelig;ttest p&aring; et objekt i et andet lag. Eksempel: Find det gr&oslash;nne omr&aring;de, der er t&aelig;ttest p&aring; hver skole.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Hvert rumligt udtryk har en tilsvarende negation (n&aelig;gtelse);  <b>ikke inden for en afstand af</b>, <b>indeholder ikke alle</b>, <b>ikke helt omgivet</b> og <b>gennemsk&aelig;rer ikke</b>.
+            <p>Hvert rumligt udtryk har en tilsvarende negation (n&aelig;gtelse), undtagen  <b>t&aelig;ttest p&aring;</b>; <b>ikke inden for en afstand af</b>, <b>indeholder ikke fuldst&aelig;ndigt</b>, <b>ikke helt inde i</b> og <b>gennemsk&aelig;rer ikke</b>.
             </p> 
         </div>
     </div>

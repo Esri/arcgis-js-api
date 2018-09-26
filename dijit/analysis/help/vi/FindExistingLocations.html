@@ -41,11 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Tìm kiếm các Vị trí Hiện tại</h2><p/>
+        <h2>Tìm các Vị trí Hiện tại</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="T&igrave;m kiếm c&aacute;c Vị tr&iacute; Hiện tại"></h2>
         <hr/>
-    <p>C&ocirc;ng cụ n&agrave;y lựa chọn c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu v&agrave; đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng một dặm).
-
+    <p>C&ocirc;ng cụ n&agrave;y lựa chọn c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu v&agrave; đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng một dặm). 
     </p>
     <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong lớp đầu v&agrave;o v&agrave; trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả c&aacute;c đối tượng sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
     </p>
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>giao cắt</b>: đối tượng n&agrave;y phải chứa một phần của một đối tượng tại một lớp kh&aacute;c. V&iacute; dụ, t&igrave;m c&aacute;c l&ocirc; đất giao cắt s&ocirc;ng. Bất kỳ phần n&agrave;o của s&ocirc;ng đi qua l&ocirc; đất, hoặc chạm v&agrave;o ranh giới l&ocirc; đất đều sẽ giao cắt l&ocirc; đất.
                     </li>
+                    <li> <b>gần nhất với</b>: Đối tượng phải gần nhất với một đối tượng ở một lớp kh&aacute;c. V&iacute; dụ, t&igrave;m nh&agrave; h&agrave;ng gần kh&aacute;ch sạn nhất.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Mỗi biểu thức kh&ocirc;ng gian c&oacute; một ph&eacute;p phủ định tương ứng;  <b>kh&ocirc;ng nằm trong khoảng c&aacute;ch</b>, <b>kh&ocirc;ng ho&agrave;n to&agrave;n chứa</b>, <b>kh&ocirc;ng ho&agrave;n to&agrave;n trong</b> v&agrave; <b>kh&ocirc;ng giao cắt</b>.
+            <p>Mỗi biểu thức kh&ocirc;ng gian c&oacute; một ph&eacute;p phủ định tương ứng, ngoại trừ  <b>gần nhất</b>; <b>kh&ocirc;ng nằm trong khoảng c&aacute;ch</b>, <b>kh&ocirc;ng ho&agrave;n to&agrave;n chứa</b>, <b>kh&ocirc;ng ho&agrave;n to&agrave;n trong</b> v&agrave; <b>kh&ocirc;ng giao cắt</b>.
             </p> 
         </div>
     </div>

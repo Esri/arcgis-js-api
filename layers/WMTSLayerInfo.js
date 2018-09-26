@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(t,i,e,l){var n=t(null,{declaredClass:"esri.layers.WMTSLayerInfo",identifier:null,tileMatrixSet:null,format:null,style:null,tileInfo:null,title:null,fullExtent:null,initialExtent:null,description:null,dimension:null,constructor:function(t){t&&(this.title=t.title,this.tileMatrixSet=t.tileMatrixSet,this.format=t.format,this.style=t.style,this.tileInfo=t.tileInfo,this.fullExtent=t.fullExtent,this.initialExtent=t.initialExtent,this.identifier=t.identifier,this.description=t.description,this.dimension=t.dimension)}});return e("extend-esri")&&i.setObject("layers.WMTSLayerInfo",n,l),n});

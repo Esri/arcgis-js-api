@@ -44,7 +44,7 @@
         <p>A caixa de ferramentas An&aacute;lise de Elementos cont&eacute;m uma s&eacute;rie de ferramentas &agrave;s quais pode aceder e que pode utilizar.  Estas tarefas encontram-se agrupadas abaixo em categorias; as categorias s&atilde;o simplesmente agrupamentos l&oacute;gicos e n&atilde;o afetam de modo algum o modo como acede ou utiliza as tarefas.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir Dados</h2>
         <hr/>
         <p>Esta ferramenta calcula as contagens totais, comprimentos, &aacute;reas, e estat&iacute;sticas descritivas b&aacute;sicas de elementos e dos seus atributos dentro de &aacute;reas ou de elementos vizinhos.
@@ -56,6 +56,8 @@
                 <li> <b>Resumir Pr&oacute;ximo</b> c&aacute;lcula estat&iacute;sticas para elementos e seus atributos que est&atilde;o dentro de uma distancia especifica.
                 </li>
                 <li> <b>Resumir Dentro</b> calcula estat&iacute;sticas para elementos e atributos que se sobrep&otilde;em uns aos outros da &aacute;rea
+                </li>
+                <li> <b>Resumir Centro e DIspers&atilde;o</b> calcula elementos centrais e distribui&ccedil;&otilde;es direcionais.
                 </li>
             </ul>
             
@@ -91,7 +93,7 @@
                 <tbody><tr>
                     <td><h2>Ligar Elementos</h2></td>
                     <td>
-                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Ligar Elementos">
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Unir Elementos">
                     </td>
                 </tr></tbody>
             </table>
@@ -149,6 +151,32 @@
                     <li>Dada uma camada com a &aacute;rea da watershed e uma camada de uso do solo com as &aacute;reas por tipo de uso, calcular &aacute;rea total do tipo de uso do solo para cada watershed. 
                     </li>
                     <li>Tendo em conta uma camada de parcelas num concelho e uma camada de limites urbanos, resumir o valor m&eacute;dio de parcelas vazias dentro de cada cidade.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Centro e Dispersão</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Resumir Centro e Dispers&atilde;o">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta utiliza elementos de ponto para calcular o elemento central, centro m&eacute;dio, centro mediano, ou elipse (distribui&ccedil;&atilde;o). Por exemplo:
+                <ul>
+                    <li>Tendo em conta uma camada de centr&oacute;ides de grupo de bloco, o elemento central  ponderado por popula&ccedil;&atilde;o poderia ser utilizado para identificar a parte da cidade mais acess&iacute;vel para um centro de artes performativas.
+                    </li>
+                    <li>Tendo em conta uma camada de observa&ccedil;&otilde;es de alces num parque ao longo de v&aacute;rios anos, o centro m&eacute;dio pode ser utilizado para ver onde os alces se congregam no ver&atilde;o e no inverno.
+                    </li>
+                    <li>Tendo em conta uma camada de incidentes de inc&ecirc;ndios, o centro m&eacute;dio pode ser utilizado para medir a tend&ecirc;ncia central dos inc&ecirc;ndios sem serem afetados por valores at&iacute;picos perif&eacute;ricos.
+                    </li>
+                    <li>Tendo em conta uma camada de amostras de &aacute;gua de po&ccedil;os, pode ser utilizada uma elipse para determinar como um contaminante est&aacute; a espalhar-se.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analisar Modelos</h2>
         <hr/>
         <p>Estas ferramentas ajudam-no a identificar, quantificar, e visualizar modelos espaciais nos seus dados.  
@@ -356,6 +384,8 @@
                 <li> <b>Localizar Hot Spots</b> permite identificar clustering com relev&acirc;ncia estat&iacute;stica no padr&atilde;o espacial dos dados.
                 </li>
                 <li> <b>Encontrar Valores At&iacute;picos</b> determina se existem valores at&iacute;picos com relev&acirc;ncia estat&iacute;stica no padr&atilde;o espacial dos seus dados.
+                </li>
+                <li> <b>Encontrar Clusters de Ponto</b> encontra clusters de elementos de ponto em ru&iacute;do circundante com base na respetiva distribui&ccedil;&atilde;o espacial.
                 </li>
                 <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseados em medi&ccedil;&otilde;es encontradas numa colec&ccedil;&atilde;o de pontos.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Esta ferramenta cria um mapa que mostra quaisquer clusters e valores at&iacute;picos com relev&acirc;ncia estat&iacute;stica presentes nos dados. Utilize esta ferramenta para identificar elementos que t&ecirc;m valores que s&atilde;o significativamente diferentes dos valores vizinhos.  Pode utilizar esta ferramenta, por exemplo, para encontrar padr&otilde;es de despesa an&oacute;malos, determinar onde se encontram os limites mais acentuados entre riqueza e pobreza numa &aacute;rea de estudo ou determinar se existem condados nos Estados Unidos com n&iacute;veis de esperan&ccedil;a de vida excecionalmente reduzidos em compara&ccedil;&atilde;o com os respetivos estados vizinhos.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Clusters de Ponto</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Encontrar Clusters de Ponto">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta deteta &aacute;reas em que os pontos se encontram concentrados e onde s&atilde;o separados por &aacute;reas vazias ou dispersas. Pontos que n&atilde;o pertencem a um cluster s&atilde;o rotulados como ru&iacute;do.
             </p>
             <br/>
         </div>

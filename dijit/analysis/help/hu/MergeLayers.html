@@ -44,16 +44,16 @@
         <h2>Rétegek összeillesztése</h2><p/>
         <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="R&eacute;tegek &ouml;sszeilleszt&eacute;se"></h2>
         <hr/>
-    <p>Ez az eszk&ouml;z k&eacute;t r&eacute;teg vektoros elemeit egy &uacute;j r&eacute;tegbe m&aacute;solja.    Az &ouml;sszes &ouml;sszeilleszteni k&iacute;v&aacute;nt r&eacute;tegnek ugyanolyan t&iacute;pus&uacute; vektoros elemeket kell tartalmazniuk (pontok, vonalak vagy ter&uuml;letek).  Lehetős&eacute;g van annak szab&aacute;lyoz&aacute;s&aacute;ra, mik&eacute;nt t&ouml;rt&eacute;njen a bemenő r&eacute;tegek mezőinek &ouml;sszekapcsol&aacute;sa &eacute;s m&aacute;sol&aacute;sa.  P&eacute;ld&aacute;ul:
+    <p>Ez az eszk&ouml;z k&eacute;t r&eacute;teg vektoros elemeit egy &uacute;j r&eacute;tegbe m&aacute;solja.    Az &ouml;sszes egyes&iacute;teni k&iacute;v&aacute;nt r&eacute;tegnek ugyanolyan t&iacute;pus&uacute; vektoros elemeket kell tartalmaznia (pontok, vonalak vagy ter&uuml;letek).  Lehetős&eacute;g van annak szab&aacute;lyoz&aacute;s&aacute;ra, mik&eacute;nt t&ouml;rt&eacute;njen a bemenő r&eacute;tegek mezőinek &ouml;sszekapcsol&aacute;sa &eacute;s m&aacute;sol&aacute;sa.  P&eacute;ld&aacute;ul:
         <ul>
             <li>Van h&aacute;rom r&eacute;tegem: Anglia, Wales &eacute;s Sk&oacute;cia, &eacute;s szeretn&eacute;k egyetlen r&eacute;teget k&eacute;sz&iacute;teni Nagy-Britanni&aacute;r&oacute;l. 
             </li>
-            <li>Van 12 r&eacute;tegem, &eacute;s mindegyik tartalmazza a szomsz&eacute;dos telep&uuml;l&eacute;sek f&ouml;ldhivatali inform&aacute;ci&oacute;j&aacute;t.  Szeretn&eacute;m &ouml;sszekapcsolni őket egyetlen r&eacute;tegg&eacute;, csak azokat a mezőket megtartva, amelyek neve &eacute;s t&iacute;pusa azonos a 12 bemenő r&eacute;tegen.
+            <li>Van 12 r&eacute;tegem, &eacute;s mindegyik tartalmazza a szomsz&eacute;dos telep&uuml;l&eacute;sek csomaginform&aacute;ci&oacute;j&aacute;t.  Szeretn&eacute;m &ouml;sszekapcsolni őket egyetlen r&eacute;tegg&eacute;, csak azokat a mezőket megtartva, amelyek neve &eacute;s t&iacute;pusa azonos a 12 bemenő r&eacute;tegen.
             </li>
         </ul>
         
     </p>
-    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;s</b> bejel&ouml;l&eacute;s&eacute;vel a program csak az aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;sen l&aacute;that&oacute; vektoros elemeket illeszti &ouml;ssze.  Ha nincs bejel&ouml;lve, az elemz&eacute;s minden vektoros elemet &ouml;sszeilleszt mindk&eacute;t r&eacute;tegen, akkor is, ha k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;sen.
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;s</b> bejel&ouml;l&eacute;s&eacute;vel a program csak az aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;sen l&aacute;that&oacute; vektoros elemeket egyes&iacute;ti.  Ha nincs bejel&ouml;lve, az elemz&eacute;s mindk&eacute;t r&eacute;teget egyes&iacute;ti, akkor is, ha k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;p kiterjed&eacute;sen.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -61,7 +61,7 @@
         <div><h2>Réteg kiválasztása</h2></div>
         <hr/>
         <div>
-            <p>Az al&aacute;bb megadott r&eacute;teggel &ouml;sszeillesztendő pont, vonal vagy ter&uuml;let vektoros elem. 
+            <p>Az al&aacute;bb megadott r&eacute;teggel egyes&iacute;tendő pont, vonal vagy ter&uuml;let vektoros elem. 
             </p>
         </div>
     </div>
@@ -88,10 +88,12 @@
                 </ul>
                 
             </p>
+            <p>Ha mindk&eacute;t mező azonos n&eacute;vvel &eacute;s adatt&iacute;pussal tartalmaz egy mezőt, akkor a rendszer mindk&eacute;t mező tartalm&aacute;t egyetlen, az adott nevű mezőben egyes&iacute;ti. Ez nem vonatkozik azokra a mezőkre, amelyek eset&eacute;ben a rendszer az  <b>Egyez&eacute;s</b> felt&eacute;telt haszn&aacute;lja az <b>Egyes&uuml;lő mezők m&oacute;dos&iacute;t&aacute;sa</b> param&eacute;terben.
+            </p>
         </div>
     </div>
     <div id="OutputName">
-        <div><h2>Eredmény réteg neve</h2></div>
+        <div><h2>Eredményréteg neve</h2></div>
         <hr/>
         <div>
             <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve.  Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.

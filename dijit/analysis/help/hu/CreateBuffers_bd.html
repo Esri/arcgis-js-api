@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Buffer létrehozása</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Buffer l&eacute;trehoz&aacute;sa"></h2>
+        <hr/>
+    <p>A buffer egy pont, vonal vagy ter&uuml;let vektoros elemtől egy meghat&aacute;rozott t&aacute;vols&aacute;got lefedő ter&uuml;let. 
+    </p>
+    <p>A bufferekkel &aacute;ltal&aacute;ban egy&eacute;b eszk&ouml;z&ouml;kkel tov&aacute;bb elemezhető ter&uuml;letek hozhat&oacute;k l&eacute;tre. A Milyen &eacute;p&uuml;letek tal&aacute;lhat&oacute;k az iskol&aacute;t&oacute;l 1 m&eacute;rf&ouml;ld&ouml;n bel&uuml;l? k&eacute;rd&eacute;s megv&aacute;laszol&aacute;s&aacute;hoz p&eacute;ld&aacute;ul l&eacute;trehozhatunk egy 1 m&eacute;rf&ouml;ldes buffert az iskola k&ouml;r&uuml;l, &eacute;s a bufferre fedv&eacute;nyk&eacute;nt r&aacute;helyezhetj&uuml;k az &eacute;p&uuml;letek alaprajzait tartalmaz&oacute; r&eacute;teget. A v&eacute;geredm&eacute;ny az iskol&aacute;t&oacute;l 1 m&eacute;rf&ouml;ld&ouml;n bel&uuml;l tal&aacute;lhat&oacute; &eacute;p&uuml;leteket tartalmaz&oacute; r&eacute;teg.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Válassza ki azt a réteget, amelyre a buffert alkalmazni szeretné</h2></div>
+        <hr/>
+        <div>
+            <p>A bufferelni k&iacute;v&aacute;nt pont, vonal vagy ter&uuml;let vektoros elemek. A bemenő r&eacute;tegeknek vet&uuml;leti koordin&aacute;ta-rendszerben kell lenni&uuml;k, vagy az alkalmazott t&eacute;rbeli referenci&aacute;t vet&uuml;leti koordin&aacute;ta-rendszerre kell &aacute;ll&iacute;tani az  <b>Elemz&eacute;si k&ouml;rnyezetek</b> seg&iacute;ts&eacute;g&eacute;vel.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Válassza ki az alkalmazni kívánt buffer típusát</h2></div>
+        <hr/>
+        <div>
+            <p>H&aacute;romf&eacute;lek&eacute;ppen hat&aacute;rozhat&oacute; meg a buffer m&eacute;rete a bemeneti vektoros elemekhez: 
+                <ul>
+                    <li>Az &ouml;sszes vektoros elemre alkalmazott t&aacute;vols&aacute;g megad&aacute;sa.
+                    </li>
+                    <li>A bemenő r&eacute;teg t&aacute;vols&aacute;g&eacute;rt&eacute;ket tartalmaz&oacute; mezőj&eacute;nek megad&aacute;sa. Sz&ouml;veges vagy numerikus mezőt haszn&aacute;lhat. Ha nincs megadva line&aacute;ris egys&eacute;g, a program a t&eacute;rbeli referencia m&eacute;rt&eacute;kegys&eacute;geit alkalmazza. F&ouml;ldrajzi koordin&aacute;ta-rendszer haszn&aacute;lata eset&eacute;n a m&eacute;rt&eacute;kegys&eacute;g n&eacute;lk&uuml;li mezőt m&eacute;terben &eacute;rtelmezi. 
+                    </li>
+                    <li>T&ouml;bb mezővel &eacute;s matematikai oper&aacute;torral rendelkező kifejez&eacute;s l&eacute;trehoz&aacute;sa. Ha p&eacute;ld&aacute;ul a(z)  <i>wind_speed</i> nevű mező &eacute;rt&eacute;k&eacute;nek 10-szeres&eacute;vel rendelkező buffert szeretne l&eacute;trehozni, adja hozz&aacute; a k&ouml;vetkező kifejez&eacute;st: <i>$feature[&quot;wind_speed&quot;] x 10</i>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Válassza ki a bufferelési módszert</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>S&iacute;kbeli</b> &eacute;s a <b>Geod&eacute;ziai</b> m&oacute;dszer haszn&aacute;lata k&ouml;z&ouml;tt v&aacute;laszthat. A <b>S&iacute;kbeli</b> m&oacute;dszer gyorsabb lehet, &eacute;s vet&uuml;leti adatok helyi elemz&eacute;s&eacute;hez megfelelő. A <b>Geod&eacute;ziai</b> m&oacute;dszer nagy ter&uuml;letekhez &eacute;s b&aacute;rmilyen f&ouml;ldrajzi koordin&aacute;ta-rendszerhez megfelelő.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Válassza ki az összeolvasztási módszer típusát</h2></div>
+        <hr/>
+        <div>
+            <p>Az &ouml;sszeolvaszt&aacute;si m&oacute;dszer megad&aacute;s&aacute;nak lehetős&eacute;gei.   Ha &ouml;sszeolvaszt&aacute;si m&oacute;dszert v&aacute;laszt, lehetős&eacute;ge lesz t&ouml;bb r&eacute;szből &aacute;ll&oacute; vagy egyr&eacute;szes ter&uuml;leteket l&eacute;trehozni, &eacute;s a megadott mezők alapj&aacute;n statisztik&aacute;kat sz&aacute;m&iacute;tani.
+                <ul>
+                    <li> <b>Mind</b> &ndash; mindegyik vektoros elemet &ouml;sszeolvasztja. Ha a t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemek megengedettek, minden vektoros elemet egyetlen vektoros elembe olvaszt &ouml;ssze. Ha a t&ouml;bb r&eacute;szből &aacute;ll&oacute; elemek nincsenek megengedve, akkor a szomsz&eacute;dos vagy &aacute;tfedő vektoros elemeket olvasztja &ouml;ssze.
+                    </li>
+                    <li> <b>Mezők</b> &ndash; az azonos megadott mezőt vagy mezőkombin&aacute;ci&oacute;kat haszn&aacute;l&oacute; vektoros elemeket olvasztja &ouml;ssze. Ha a t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemek megengedettek, az &ouml;sszes azonos mezővel rendelkező vektoros elemet egyetlen vektoros elembe olvasztja &ouml;ssze. Ha a t&ouml;bb r&eacute;szből &aacute;ll&oacute; elemek nincsenek megengedve, akkor az azonos mezővel rendelkező, szomsz&eacute;dos vagy &aacute;tfedő vektoros elemeket olvasztja &ouml;ssze.
+                    </li>
+                    <li> <b>Egyik sem</b> &ndash; egyik vektoros elemet sem olvasztja &ouml;ssze.  Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Több részből álló vektoros elemek engedélyezése</h2></div>
+        <hr/>
+        <div>
+            <p>Be&aacute;ll&iacute;t&aacute;s, amellyel megadhatja, hogy az eredm&eacute;ny egyr&eacute;szes vagy t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemeket tartalmazzon. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Bejel&ouml;lve &ndash; az elemz&eacute;s eredm&eacute;nyei t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemeket tartalmaznak.   
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; az elemz&eacute;s eredm&eacute;nyei egyr&eacute;sze vektoros elemeket tartalmaznak. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statisztika hozzáadása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
+                <ul>
+                    <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
+                    </li>
+                    <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
+                    </li>
+                    <li>Mean&mdash;The mean of numeric values. The mean of [0, 2, null] is 1.
+                    </li>
+                    <li>Min&mdash;The minimum value of a numeric field. The minimum of [0, 2, null] is 0. 
+                    </li>
+                    <li>Max&mdash;The maximum value of a numeric field. The maximum value of [0, 2, null] is 2.
+                    </li>
+                    <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
+                    </li>
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,0,1,1] is 0.25.
+                    </li>
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You can calculate the following on string fields:
+                <ul>
+                    <li>Count&mdash;The number of nonnull strings.
+                    </li>
+                    <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
+                    </li>
+                </ul>
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store adattár kiválasztása az eredmények mentéséhez</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+                <ul>
+                    <li>You can use results in portal-to-portal collaboration.
+                    </li>
+                    <li>You can enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created in <b>My Content</b> and added to the map. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. If the layer already exists, the tool will fail.
+            </p>
+            <p>Az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mezőben megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

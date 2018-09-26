@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["require","exports","./renderers/ClassBreaksRenderer","./renderers/HeatmapRenderer","./renderers/Renderer","./renderers/SimpleRenderer","./renderers/UniqueValueRenderer","./renderers/support/jsonUtils"],function(e,r,n,d,s,a,i,R){function t(e){return e instanceof r.BaseRenderer}Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=n,r.HeatmapRenderer=d,r.BaseRenderer=s,r.SimpleRenderer=a,r.UniqueValueRenderer=i,r.isRenderer=t,r.fromJSON=R.fromJSON});

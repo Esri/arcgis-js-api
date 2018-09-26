@@ -47,7 +47,7 @@
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Datu kopsavilkums</h2>
         <hr/>
-        <p>&Scaron;ie rīki aprēķina elementu kopskaitu, garumu, teritoriju un pamata apraksto&scaron;o statistiku un to atribūtus teritorijās vai citus elementu tuvumā.
+        <p>&Scaron;ie rīki aprēķina elementu kopskaitu, garumu, laukumu un pamata apraksto&scaron;o statistiku un to atribūtus teritorijās vai citus elementu tuvumā.
             <ul>
                 <li> <b>Sakopotie punkti</b> aprēķina statistiku par punktiem, kas iekrīt norādītajās teritorijās.
                 </li>
@@ -55,7 +55,9 @@
                 </li>
                 <li> <b>Tuvējo elementu kopsavilkums</b> aprēķina statistiku par elementiem un to atribūtiem, kas atrodas norādītajā attālumā.
                 </li>
-                <li> <b>Iek&scaron;ējo elementu kopsavilkums</b> aprēķina tādu teritorijas elementu un to atribūtu statistiku, kas viens otru pārklāj.
+                <li> <b>Iek&scaron;ējo elementu kopsavilkums</b> aprēķina tādu laukumu elementu un to atribūtu statistiku, kas viens otru pārklāj.
+                </li>
+                <li> <b>Apkopot centru un izkliedi</b> aprēķina centrālos elementus un virzienu sadalījumu.
                 </li>
             </ul>
             
@@ -76,9 +78,9 @@
 <hr/>
             <p>Lietojot punktu un teritorijas elementu slāni, &scaron;is rīks nosaka, kuri punkti ietilpst kurā teritorijā, un aprēķina statistiku par visiem punktiem katrā teritorijā. Piemēram:
                 <ul>
-                    <li>Ja ir dotas kriminālnoziegumu veik&scaron;anas vietas, aprēķina noziegumu skaitu apgabalā vai citā administratīvajā vienībā.
+                    <li>Ja ir dotas kriminālnoziegumu veik&scaron;anas vietas, aprēķina noziegumu skaitu rajonā vai citā administratīvajā vienībā.
                     </li>
-                    <li>Nosaka lielāko un mazāko fran&scaron;īzes ieņēmumu izvietojumu pa &scaron;tatiem.
+                    <li>Nosaka augstākos un zemākos fran&scaron;īzes ieņēmumu novietojumus pa &scaron;tatiem.
                     </li>
                 </ul>
                 
@@ -100,7 +102,7 @@
                 <ul>
                     <li>Datiem par negadījumiem pievienojiet informāciju par kopīgu robežu vai demogrāfiju.
                     </li>
-                    <li>Identificējiet zināmam izvietojumam tuvākās iestādes un būves.
+                    <li>Identificējiet zināmam novietojumam tuvākās iestādes un būves.
                     </li>
                     <li>Nosakiet, cik mājokļu atrodas plūdu apdraudētās teritorijās.
                     </li>
@@ -124,9 +126,9 @@
 <hr/>
             <p>Atrod elementus, kas atrodas noteiktā attālumā no ievades slāņa elementiem. Attālumu var izmērīt taisnā līnijā vai pa ceļo&scaron;anas veida ceļiem. Statistika tiek aprēķināta par tuvējiem elementiem. Piemēram:
                 <ul>
-                    <li>Aprēķina kopējo iedzīvotāju skaitu piecu minū&scaron;u attālumā no piedāvātā jaunā veikala izvietojuma.
+                    <li>Aprēķina kopējo iedzīvotāju skaitu piecu minū&scaron;u attālumā no piedāvātā jaunā veikala novietojuma.
                     </li>
-                    <li>Aprēķina uzbrauktuvju skaitu uz automaģistrālēm piecu minū&scaron;u attālumā no piedāvātā jaunā veikala izvietojuma, lai to izmantotu kā veikala pieejamības mēru.
+                    <li>Aprēķina uzbrauktuvju skaitu uz automaģistrālēm piecu minū&scaron;u attālumā no piedāvātā jaunā veikala novietojuma, lai to izmantotu kā veikala pieejamības mēru.
                     </li>
                 </ul>
                 
@@ -144,11 +146,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Atrod teritorijas (un teritoriju daļas), kas pārklājas starp diviem slāņiem un aprēķina statistiku par pārklā&scaron;anos. Piemēram:
+            <p>Atrod laukumus (un laukumu daļas), kas pārklājas starp diviem slāņiem un aprēķina statistiku par pārklā&scaron;anos. Piemēram:
                 <ul>
-                    <li>Ja ir dots ūdens&scaron;ķirtnes teritoriju slānis un zemes izmanto&scaron;anas slānis pēc zemes izmanto&scaron;anas veida, aprēķina kopējo zemes izmanto&scaron;anas veida platību katrā ūdens&scaron;ķirtnes teritorijā. 
+                    <li>Ja ir dots ūdens&scaron;ķirtnes teritoriju slānis un zemes lietojuma slānis pēc zemes lietojuma veida, aprēķina kopējo zemes lietojuma veida platību katrā ūdens&scaron;ķirtnes teritorijā. 
                     </li>
-                    <li>Ņemot vērā parceļu slāni apgabalā un pilsētas robežu slāni, apkopo  brīvo parceļu vidējo vērtību katrā pilsētā.
+                    <li>Ņemot vērā zemes gabalu slāni apgabalā un pilsētas robežu slāni, apkopo  brīvo zemes gabalu vidējo vērtību katrā pilsētā.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Apkopot centru un izkliedi</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Apkopot centru un izkliedi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks izmanto punktu elementus, lai aprēķinātu centrālo elementu, vidējo centru, mediānas centru vai elipsi (sadalījumu). Piemēram:
+                <ul>
+                    <li>Izmantojot slāni ar bloka grupas centroīdiem, pēc iedzīvotāju skaita vērtētais centrālais elements var tikt izmantots, lai identificētu, kuri pilsētas mākslas objekti ir vispieejamākie izpildītājmākslas centram.
+                    </li>
+                    <li>Izmantojot datu slāni par aļņu novērojumiem parkā vairāku gadu garumā, vidējais centrs var tikt izmantots, lai novērotu, kur aļņi pulcējas vasarā un ziemā.
+                    </li>
+                    <li>Izmantojot ar uguns negadījumiem saistīto slāni, madiānas centrs var tikt izmantots, lai izmērītu ugunsgrēku centrālo tendenci, neņemot vērā izleco&scaron;ās perifērijas vērtības.
+                    </li>
+                    <li>Izmantojot gruntsūdens aku paraugu slāni, elipse var tikt izmantota, lai noteiktu, kā izplatās piesārņojums.
                     </li>
                 </ul>
                 
@@ -259,9 +287,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Iegūt jaunu izvietojumu</h2></td>
+                    <td><h2>Iegūt jaunus novietojumus</h2></td>
                     <td>
-                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Iegūt jaunu izvietojumu">
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Iegūt jaunus novietojumus">
                     </td>
                 </tr></tbody>
             </table>
@@ -289,9 +317,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Atrast pašreizējo izvietojumu</h2></td>
+                    <td><h2>Atrast pašreizējo novietojumu</h2></td>
                     <td>
-                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Atrast pa&scaron;reizējo izvietojumu">
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Atrast pa&scaron;reizējo novietojumu">
                     </td>
                 </tr></tbody>
             </table>
@@ -356,7 +384,9 @@
                 </li>
                 <li> <b>Atrast izleco&scaron;ās vērtības</b>nosaka, vai jūsu telpiskajos datos ir kādas statistiski nozīmīgas izleco&scaron;ās vērtības
                 </li>
-                <li>Rīks  <b>Interpolēt punktus</b> sniedz iespēju prognozēt vērtības jaunos izvietojumos, pamatojoties uz mērījumiem no punktu kolekcijas.
+                <li>Rīks  <b>Atrast punktu klasterus</b>atrod punktu elementu klasterus apkārtējā troksnī, ņemot vērā to telpisko sadalījumu.
+                </li>
+                <li>Rīks  <b>Interpolēt punktus</b> sniedz iespēju prognozēt vērtības jaunos novietojumos, pamatojoties uz mērījumiem no punktu kolekcijas.
                 </li>
             </ul>
             
@@ -407,6 +437,21 @@
             </p>
             <br/>
         </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atrast punktu klasterus</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Atrast punktu klasterus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks nosaka teritorijas, kur ir koncentrēti punkti un kur tos atdala tuk&scaron;i vai izkliedēti laukumi. Klasterim nepiedero&scaron;ie punkti tiek atzīmēti kā troksnis.
+            </p>
+            <br/>
+        </div>
         <div id="InterpolatePointsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -418,7 +463,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&Scaron;is rīks sniedz iespēju prognozēt vērtības jaunos izvietojumos, pamatojoties uz mērījumiem no punktu kolekcijas. Rīks izmanto punkta datus ar vērtībām katrā punktā un atgriež teritorijas, ko klasificē prognozētās vērtības. Varat izmantot &scaron;o rīku, piemēram, lai prognozētu lietusgāžu līmeni ūdens&scaron;ķirtnē, pamatojoties uz mērījumiem, kas iegūti no atsevi&scaron;ķām lietus mērierīcēm.
+            <p>&Scaron;is rīks sniedz iespēju prognozēt vērtības jaunos novietojumos, pamatojoties uz mērījumiem no punktu kolekcijas. Rīks izmanto punkta datus ar vērtībām katrā punktā un atgriež teritorijas, ko klasificē prognozētās vērtības. Varat izmantot &scaron;o rīku, piemēram, lai prognozētu lietusgāžu līmeni ūdens&scaron;ķirtnē, pamatojoties uz mērījumiem, kas iegūti no atsevi&scaron;ķām lietus mērierīcēm.
             </p>
             <br/>
         </div>

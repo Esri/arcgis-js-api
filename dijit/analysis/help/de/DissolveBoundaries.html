@@ -66,9 +66,9 @@
         <div>
             <p>Sie k&ouml;nnen eine dieser beiden Methoden ausw&auml;hlen, um Fl&auml;chen-Features zusammenzuf&uuml;hren:
                 <ul>
-                    <li> <b>&Uuml;berlappende oder benachbarte Fl&auml;chen</b> &ndash; Mindestens zwei Fl&auml;chen, deren Grenzen sich &uuml;berlappen, werden zu einer Fl&auml;che zusammengef&uuml;hrt.  Au&szlig;erdem werden benachbarte Fl&auml;chen (d.&nbsp;h. sie haben eine gemeinsame Grenze) zu einer Fl&auml;che zusammengef&uuml;hrt.
+                    <li> <b>&Uuml;berlappende oder benachbarte Fl&auml;chen</b>: Mindestens zwei Fl&auml;chen, deren Grenzen sich &uuml;berlappen, werden zu einer Fl&auml;che zusammengef&uuml;hrt.  Au&szlig;erdem werden benachbarte Fl&auml;chen (d.&nbsp;h. sie haben eine gemeinsame Grenze) zu einer Fl&auml;che zusammengef&uuml;hrt.
                     </li>
-                    <li> <b>Fl&auml;chen mit dem gleichen Feldwert</b> &ndash; Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze aufweisen, werden zu einer Fl&auml;che zusammengef&uuml;hrt, wenn sie den gleichen Feldwert aufweisen.
+                    <li> <b>Fl&auml;chen mit dem gleichen Feldwert</b>: Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze aufweisen, werden zu einer Fl&auml;che zusammengef&uuml;hrt, wenn sie den gleichen Feldwert aufweisen.
                         <p>Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Feld  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Feldes <i>State_Name</i> zusammenf&uuml;hren. Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben. Der Ergebnis-Layer zeigt Bundeslandgrenzen.
                         </p>
                     </li>
@@ -83,7 +83,7 @@
         <div><h2>Multipart-Features erstellen</h2></div>
         <hr/>
         <div>
-            <p>In ArcGIS eine digitale Darstellung eines Ortes oder Objekts, der bzw. das aus mehreren Teilen besteht, jedoch als ein Feature definiert ist, da es einen Satz von Attributen referenziert. Bei einem Layer mit Bundesstaaten kann beispielsweise der Bundesstaat Hawaii als Multipart-Feature betrachtet werden, da dessen separate geometrische Teile als ein Bundesstaat klassifiziert werden. Bei einem Multipart-Feature kann es sich um einen Punkt, eine Linie oder ein Polygon handeln. Dieser boolesche Parameter bietet zwei Optionen:
+            <p>In ArcGIS eine digitale Darstellung eines Ortes oder Objekts, der bzw. das aus mehreren Teilen besteht, jedoch als ein Feature definiert ist, da es einen Satz von Attributen referenziert. Bei einem Layer mit Bundesstaaten kann beispielsweise der Bundesstaat Hawaii als Multipart-Feature betrachtet werden, da dessen separate geometrische Teile als ein Bundesstaat klassifiziert werden. Dieser boolesche Parameter bietet zwei Optionen:
                 <ul>
                     <li>True (aktiviert): Der Ausgabeservice kann Multipart-Features enthalten.
                     </li>
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div id="SummaryFields">
-        <div><h2>Statistiken hinzufügen</h2></div>
+        <div><h2>Statistik hinzufügen</h2></div>
         <hr/>
         <div>
             <p>Wenn Fl&auml;chen zusammengef&uuml;hrt werden, k&ouml;nnen Sie deren Attribute zusammenfassen. Wenn Sie beispielsweise die Grenze zwischen Landkreisen auf Grundlage von  <i>State_Name</i> zusammenf&uuml;hren und jeder Landkreis &uuml;ber ein <i>Population</i>-Feld verf&uuml;gt, k&ouml;nnen Sie die Summe der <i>Population</i> f&uuml;r das Bundesland berechnen.
@@ -103,23 +103,23 @@
             <p>Die verf&uuml;gbaren Statistiktypen lauten:
             </p>
             <ul>
-                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld wird hinzugef&uuml;gt.
+                <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld wird hinzugef&uuml;gt.
                     
 
                 </li>
-                <li> <b>Durchschnitt</b> &ndash; Der Mittelwert f&uuml;r das angegebene Feld wird berechnet.
+                <li> <b>Durchschnitt</b>: Der Mittelwert f&uuml;r das angegebene Feld wird berechnet.
                     
 
                 </li>
-                <li> <b>Minimum</b> &ndash; Der kleinste Wert aller Datens&auml;tze des angegebenen Feldes wird ermittelt.
+                <li> <b>Minimum</b>: Der kleinste Wert aller Datens&auml;tze des angegebenen Feldes wird ermittelt.
                     
 
                 </li>
-                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert aller Datens&auml;tze des angegebenen Feldes wird ermittelt.
+                <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert aller Datens&auml;tze des angegebenen Feldes wird ermittelt.
                     
 
                 </li>
-                <li> <b>Standard Abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld wird ermittelt
+                <li> <b>Standard- Abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld wird ermittelt
                     
 
                 </li>

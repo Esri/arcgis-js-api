@@ -55,7 +55,9 @@
                 </li>
                 <li> <b>Ringkas Sekitar</b> menghitung statistik untuk fitur-fitur dan atributnya yang berada dalam jarak yang sudah ditentukan.
                 </li>
-                <li> <b>Ringkas di Dalam</b> menghitung statistik untuk fitur dan atribut area yang saling tumpang tindih.
+                <li> <b>Ringkas di Dalam</b> menghitung statistik untuk fitur dan atribut area yang saling bertumpang tindih.
+                </li>
+                <li> <b>Ringkas Pusat dan Penyebaran</b> menghitung fitur pusat dan distribusi arah.
                 </li>
             </ul>
             
@@ -74,9 +76,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Dengan menggunakan layer titik dan layer area, alat ini menentukan titik-titik mana yang masuk di dalam setiap area dan menghitung statistik seputar semua titik di masing-masing area tersebut. Contoh:
+            <p>Dengan menggunakan layer feature titik dan layer feature area, alat ini menentukan titik-titik mana yang masuk di dalam setiap area dan menghitung statistik seputar semua titik di masing-masing area tersebut. Contoh:
                 <ul>
-                    <li>Dengan mengetahui lokasi titik insiden kejahatan, hitung jumlah kejahatan per negara atau wilayah administratif lainnya.
+                    <li>Dengan mengetahui lokasi titik insiden kejahatan, hitung jumlah kejahatan per daerah atau wilayah administratif lainnya.
                     </li>
                     <li>Temukan pemasukan tertinggi dan terendah untuk lokasi waralaba menurut negara bagian.
                     </li>
@@ -133,7 +135,7 @@
             </p>
             <br/>
         </div>
-        <div id="SummarizeWithinTool" class="largesize">
+        <div id="SummarizeWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -146,9 +148,35 @@
 <hr/>
             <p>Menemukan area (dan bagian-bagian area) yang overlap antara dua layer dan menghitung statistik seputar tumpang tindih tersebut. Contoh:
                 <ul>
-                    <li>Dengan mengetahui layer batas daerah aliran sungai dan layer penggunaan lahan menurut jenis penggunaan lahan, hitunglah luas total dari jenis penggunaan lahan untuk setiap daerah aliran sungai. 
+                    <li>Dengan mengetahui layer daerah batas air dan layer penggunaan lahan menurut jenis penggunaan lahan, hitung luas total dari jenis penggunaan lahan untuk setiap batas air. 
                     </li>
-                    <li>Dengan mengetahui layer persil bangunan bagian wilayah di suatu kawasan dan layer batas kota, hitunglah nilai rata-rata dari persil bangunan yang ada di dalam setiap kota.
+                    <li>Dengan layer persil di suatu daerah dan layer batas kota, ringkas nilai rata-rata dari persil yang ada di dalam setiap kota.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ringkas Pusat dan Penyebaran</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Ringkas Pusat dan Penyebaran">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menggunakan fitur titik untuk menghitung fitur pusat, rata-rata, pusat median, atau elips (distribusi). Contoh:
+                <ul>
+                    <li>Dengan adanya layer centroid kelompok blok, fitur pusat yang dihitung bobotnya menurut populasi dapat digunakan untuk mengidentifikasi seni kota mana yang paling mudah diakses untuk pusat seni pertunjukan.
+                    </li>
+                    <li>Dengan adanya layer pengamatan rusa dalam sebuah taman selama beberapa tahun, pusat rata-rata dapat digunakan untuk melihat lokasi berkumpulnya rusa di musim panas dan musim dingin.
+                    </li>
+                    <li>Dengan adanya layer insiden kebakaran, pusat median dapat digunakan untuk mengukur kecenderungan pusat dari kebakaran tanpa dipengaruhi oleh pencilan pinggiran.
+                    </li>
+                    <li>Dengan adanya layer sampel sumur air tanah, elips dapat digunakan untuk menentukan cara penyebaran kontaminan.
                     </li>
                 </ul>
                 
@@ -289,7 +317,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Temukan Lokasi yang Ada</h2></td>
+                    <td><h2>Cari Lokasi yang Ada</h2></td>
                     <td>
                     <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Cari Lokasi yang Ada">
                     </td>
@@ -348,15 +376,17 @@
     <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Analisis Pola</h2>
         <hr/>
-        <p>Alat ini membantu Anda mengidentifikasi, kuantifikasi, dan visualisasi pola-pola spasial pada data Anda.  
+        <p>Alat ini membantu Anda mengidentifikasi, mengkuantifikasi, dan memvisualisasi pola-pola spasial pada data Anda.  
             <ul>
                 <li> <b>Hitung Kepadatan</b> mengambil kuantitas dari suatu fenomena dan menyebarkan kuantitas ini pada peta.
                 </li>
-                <li> <b>Temukan Hot Spot</b> secara statistik mengidentifikasi pengelompokan penting dalam pola ruang data Anda.
+                <li> <b>Temukan Hot Spot</b> mengidentifikasi pembuatan klaster yang signifikan secara statistik dalam pola spasial data Anda.
                 </li>
-                <li> <b>Temukan Pencilan</b> menentukan apakah ada kluster yang signifikan secara statistik pada pola spasial data Anda.
+                <li> <b>Temukan Pencilan</b> menentukan apakah ada klaster yang signifikan secara statistik pada pola spasial data Anda.
                 </li>
-                <li> <b>Interpolasi Titik</b> memprediksi nilai-nilai di lokasi baru berdasarkan pengukuran yang ditemukan pada sekumpulan titik.
+                <li> <b>Temukan Klaster Titik</b> menemukan klaster fitur titik dalam kebisingan di sekitar berdasarkan distribusi spasialnya.
+                </li>
+                <li> <b>Interpolasikan Titik</b> memprediksi nilai-nilai di lokasi baru berdasarkan pengukuran yang ditemukan pada sekumpulan titik.
                 </li>
             </ul>
             
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Alat ini membuat peta yang memperlihatkan pengelompokan kluster yang signifikan secara statistik dan pencilan spasial yang ada pada data Anda. Gunakan alat ini untuk mengidentifikasi fitur yang memiliki nilai yang sangat berbeda dengan nilai di sekitar.  Anda dapat menggunakan alat ini, misalnya, untuk menemukan pola pengeluaran yang menyimpang, menentukan batas tertajam antara kemakmuran dan kemiskinan di area studi, atau menentukan apakah terdapat daerah di Amerika Serikat dengan harapan hidup sangat rendah dibandingkan dengan daerah di sekitar.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Temukan Klaster Titik</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Temukan Klaster Titik">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini mendeteksi lokasi titik dipusatkan dan lokasi titik dipisahkan menurut area yang kosong atau jarang-jarang. Titik yang bukan bagian dari klaster akan diberi label sebagai kebisingan.
             </p>
             <br/>
         </div>

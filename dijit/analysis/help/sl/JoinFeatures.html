@@ -126,9 +126,9 @@
         <div>
             <p>Določa, kako bodo obravnavani spoji med ciljnim in spojitvenim slojem, če bo več geoobjektov v spojitvenem sloju imelo enako relacijo s ciljnim slojem. V nadaljevanju sta dva načina spajanja, med katerimi lahko izbirate:
                 <ul>
-                    <li> <b>Spoji enega z enim</b> &ndash; Ta možnost spoji prvi ujemajoči geoobjekt v spojitvenem sloju s prvim ujemajočim geoobjektom v ciljnem sloju. Če po želji dodate statistiko, bodo ujemajoči spojeni geoobjekti povzeti na vsak geoobjekt v ciljnem sloju. Vsota spojenih geoobjektov bo dodana privzeto.
+                    <li> <b>Spoji enega z enim</b> &ndash; Ta možnost spoji geoobjekte v ciljnem sloju v en geoobjekt v spojitvenem sloju. Kako so spojeni geoobjekti je doloženo s parametrom <b>Dodaj statistiko</b> ali <b>Določi, kateri zapis se hrani</b>. Če je uporabljen parameter <b>Dodaj statistiko</b>, bodo vsi ujemajoči spojeni geoobjekti povzeti na vsak geoobjekt v ciljnem sloju. Vsota spojenih geoobjektov bo dodana privzeto.Če je uporabljan parameter <b>Določi, kateri zapis se hrani</b>, lahko izberete shranjevanje prvega ujemajočega izpisa (privzeto) ali pa shranjevanje izpisa na podlagi izraza. Izraz lahko uporabi &scaron;tevilsko polje (možnost za največje ali najmanj&scaron;e izpise) ali podatkovno polje (možnost za najnovej&scaron;ega in najstarej&scaron;ega).
                     </li>
-                    <li> <b>Spoji enega z večimi</b> Ta možnost spoji vse ujemajoče geoobjekte v spojitvenem sloju s ciljnim slojem. Sloj z rezultati bo vseboval več zapisov ciljnega geobjekta.
+                    <li> <b>Spoji enega z večimi</b>&mdash;Ta možnost spoji vse ujemajoče geoobjekte v spojitvenem sloju s ciljnim slojem. Sloj z rezultati bo vseboval več zapisov ciljnega geobjekta.
                     </li>
                 </ul>
                 
@@ -141,7 +141,7 @@
         <div><h2>Dodaj statistiko (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Če je izbrana možnost  <b>Spoji enega z enim</b>, lahko za &scaron;tevilska polja povzamete in izračunate statistiko na spojenih geoobjektih. Privzeto bo izračunana vsota ujemajočih spojenih geoobjektov in dodana sloju z rezultati. Če se odločite, da ne boste dodali dodatne statistike, bo prvi ujemajoči geoobjekt v spojitvenem sloju spojen s prvim ujemajočim geoobjektov v ciljnem sloju. Izračunate lahko eno ali več od naslednjega:
+            <p>Če je izbrana možnost  <b>Spoji enega z enim</b>, lahko za &scaron;tevilska polja povzamete in izračunate statistiko na spojenih geoobjektih. Privzeto bo izračunana vsota ujemajočih spojenih geoobjektov in dodana sloju z rezultati. Če se odločite, da ne boste dodali dodatne statistike, bo prvi ujemajoči geoobjekt v spojitvenem sloju spojen s prvim ujemajočim geoobjektom v ciljnem sloju. Izračunate lahko eno ali več od naslednjega:
             </p>
             <ul>
                 <li>Vsota
@@ -171,10 +171,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Shranite kot pogled gostujočega geoobjektnega sloja</h2></div>
+        <div><h2>Ustvari rezultate kot pogled sloja gostujočega geoobjekta</h2></div>
         <hr/>
         <div>
-            <p>Shranjevanje rezultatov kot pogleda gostujočega goobjektnega sloja omogoča, da ostanejo podatki posodobljeni kljub spremembam izvornih podatkov. Pogled gostujočega geoobjektnega sloja, ki vsebuje spoje, bo samo za branje in ne porablja kreditov za analizo in shranjevanje. 
+            <p>Ustvarjanje rezultatov kot pogleda gostujočega goobjektnega sloja omogoča, da ostanejo podatki posodobljeni kljub spremembam izvornih podatkov. Pogledi gostujočega geoobjektnega sloja, ki vsebujejo spoje, bodo samo za branje in ne porabljajo kreditov za analizo in shranjevanje. 
+            </p>
+            <p>Ustvarite lahko pogled gostujočega geoobjektnega sloja iz rezultatov analize, če so izpolnjeni vsi naslednji pogoji:
+                <ul>
+                    <li>Ste lastnik obeh slojev.
+                    </li>
+                    <li>Oba sloja sta gostujoča geoobjektna sloja.
+                    </li>
+                    <li>Izvajate spajanje na podlagi atributa.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

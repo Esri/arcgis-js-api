@@ -210,11 +210,42 @@
     cursor: pointer;
     margin-left: 5px;
     margin-right: 5px;
+    display: none;
 }
 
     .ShoppingCart .ShoppingCartRowEditButton:hover {
         background-image: url('./images/edit/editIcon_over.svg');
     }
+
+.ShoppingCart .ShoppingCartRow:hover .ShoppingCartRowEditButton {
+    display: inline-block;
+}
+
+
+
+.ShoppingCart .ShoppingCartRowReplaceButton {
+    background-image: url('./images/replace/replaceIcon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: none;
+}
+
+    .ShoppingCart .ShoppingCartRowReplaceButton:hover {
+        background-image: url('./images/replace/replaceIcon_over.svg');
+    }
+
+.ShoppingCart .ShoppingCartRow:hover .ShoppingCartRowReplaceButton {
+    display: inline-block;
+}
 
 
 

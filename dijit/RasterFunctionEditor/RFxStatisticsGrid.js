@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/has","dojo/_base/lang","dojo/_base/array","dojo/i18n!../../nls/jsapi","../../kernel","./RFxBandMatrix"],function(t,e,i,s,n,a,r){var o=t("esriRFxStatisticsGrid",[r],{constructor:function(){var t=n.common;t=i.mixin(t,n.widgets.rasterFunctionEditor),this.displayNames=[t.min,t.max,t.mean,t.rfxStatisticsGrid.stdDev],this.nCols=4,this.inherited(arguments)},_updateValue:function(){if(this._store&&this._grid){var t,e,i=this._store.data;t=this.value&&this.value.elements?{elements:[]}:[],s.every(i,function(i,s){if(s===i.length-1)return!1;e={min:i[0],max:i[1],mean:i[2],standardDeviation:i[3]},t.elements?t.elements.push(e):t.push(e)},this),this.value=t}},_setStoreData:function(t){if(!(t&&t.length||t&&t.elements&&t.elements.length))return void this._store.setData([]);var e=[];t=t.elements||t,s.forEach(t,function(t,i){e[i]={id:i+1,idNum:i+1,0:t.min,1:t.max,2:t.mean,3:t.standardDeviation}}),this._store.setData(e)}});return e("extend-esri")&&i.setObject("dijit.RasterFunctionEditor.RFxStatisticsGrid",o,a),o});

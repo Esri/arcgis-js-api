@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(r){var a={};return a.getCalculatorOrScriptFieldInfo=function(a,e,l){if(!a)return null;if(e.variableProvider.isPlayerOnly){var i=e.variableProvider.toCalculator(a);if(!i)return console.log("Can't create a dummy calculator for => "+a),null;l=l||{},l.calculatorName=i.variable.calculatorName;var t=r.createFieldInfoFromCalculator(i,e.variableProvider,l);return t.name=i.variable.fieldName,t.templateName=i.variable.templateName,t}var o=e.queryMetaDataFunc(a);if(!o)return null;var n=a.substr(0,a.indexOf("."));return l=l||{},l.calculatorName=n,o.isMissing?r.createFieldInfoFromMissingVariable(o):o.isScript?r.createFieldInfoFromScript(o,e.variableProvider,l):r.createFieldInfoFromCalculator(o,e.variableProvider,l)},a});
+define(["../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(a){var e={};return e.getCalculatorOrScriptFieldInfo=function(e,r,l){if(!e)return null;if(r.variableProvider.isPlayerOnly){var i=r.variableProvider.toCalculator(e);if(!i)return console.log("Can't create a dummy calculator for => "+e),null;l=l||{},l.calculatorName=i.variable.calculatorName;var t=a.createFieldInfoFromCalculator(i,r.variableProvider,l);return t.name=i.variable.fieldName,t.templateName=i.variable.templateName,t}var o=r.queryMetaDataFunc(e),n=e.substr(0,e.indexOf("."));return l=l||{},l.calculatorName=n,o?o.isScript?a.createFieldInfoFromScript(o,r.variableProvider,l):a.createFieldInfoFromCalculator(o,r.variableProvider,l):a.createFieldInfoFromMissingVariable(e)},e});

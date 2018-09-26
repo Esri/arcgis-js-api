@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți rasterul sau stratul tematic al locației obiectelor spațiale pentru a calcula distanța până la",maxDistanceLabel:"Distanța maximă de calculat (opțional)",outputCellSize:"Dimensiunea celulei de ieșire (opțional)",resultDistLayerName:"Nume strat tematic de distanță rezultat (opțional)",resultDirectionLayerName:"Nume strat tematic de direcție rezultat (opțional)",resultAllocationLayerName:"Nume strat tematic de alocare rezultat (opțional)",outputLayerName:"Distanța calculată de ${layername}",allocationFieldLabel:"Alegeți câmpul de alocare (opțional)",itemDescription:"Strat tematic de obiecte spațiale generat din rularea opțiunii Calculare distanța pe ${inputLayername}. ",itemTags:"Rezultatul analizei, Calculare distanță, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat de opțiunea Calculare distanță."});

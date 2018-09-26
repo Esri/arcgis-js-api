@@ -57,6 +57,8 @@
                 </li>
                 <li> <b>Povzemi znotraj</b> izračuna statistiko za poligonske geoobjekte in atribute, ki se prekrivajo.
                 </li>
+                <li> <b>Povzemi sredi&scaron;če in disperzijo</b> izračuna osrednje geoobjekte in smerne razporeditve.
+                </li>
             </ul>
             
         </p>
@@ -149,6 +151,32 @@
                     <li>Če imate poligonska sloja razvodij in rabe tal, lahko izračunajte skupno kmetijsko povr&scaron;ino po tipih rabe tal za vsako razvodje. 
                     </li>
                     <li>Če imate sloj parcel v okrožju in sloj mej mesta, povzemite povprečno vrednost nepozidanih parcel v vsakem mestu.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Povzemi središče in disperzijo</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Povzemi sredi&scaron;če in disperzijo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje uporabi točkovne geoobjekte, da izračuna osrednji geoobjekt, sredi&scaron;če povprečja, sredi&scaron;če mediane ali elipso (razporeditev). Na primer:
+                <ul>
+                    <li>Upo&scaron;tevaje sloj blokovne skupine centroidov je osrednji geoobjekt, utežen s prebivalstvom, lahko uporabljen za identifikacijo, kateri del mesta je najlažje dostopen za center uprizoritvenih umetnosti.
+                    </li>
+                    <li>Upo&scaron;tevaje sloj večletnega opazovanja severnih jelenov v parku je sredi&scaron;če povprečja mogoče uporabiti za določanje, kje se severni jeleni združujejo poleti in kje pozimi.
+                    </li>
+                    <li>Upo&scaron;tevaje sloj požarov je sredi&scaron;če mediane mogoče uporabiti za merjenje osrednje tendence požarov, ne da bi na to vplivali periferni osamelci.
+                    </li>
+                    <li>Upo&scaron;tevaje sloj vzorcev podtalnih izvirov je mogoče uporabiti elipso za določitev, kako se &scaron;iri onesnaževalec.
                     </li>
                 </ul>
                 
@@ -289,7 +317,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Najdi lokacije</h2></td>
+                    <td><h2>Najdi obstoječe lokacije</h2></td>
                     <td>
                     <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Najdi lokacije">
                     </td>
@@ -356,6 +384,8 @@
                 </li>
                 <li> <b>Najdi osamelce</b> izračuna, ali obstajajo statistično značilni osamelci v prostorskem vzorcu va&scaron;ih podatkov.
                 </li>
+                <li> <b>Najdi gruče točk</b> Poi&scaron;če točke ali točkovne geoobjekte znotraj okoli&scaron;kih celic glede na njihovo prostorsko razporeditev.
+                </li>
                 <li> <b>Interpolacija točk</b> predvidi vrednosti na novih lokacijah glede na merjene vrednosti zbirk točk.
                 </li>
             </ul>
@@ -403,7 +433,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>To orodje ustvari karto s prikazom vseh statistično značilnih gruč in prostorskih osamelcev, prisotnih v va&scaron;ih podatkih. To orodje uporabite za identifikacijo geoobjektov, ki imajo značilno različne vrednosti od sosednjih.To orodje lahko na primer uporabite, da najdete nepravilne vzorce porabe, ugotovite, kje so najostrej&scaron;e meje med bogastvom in rev&scaron;čino na &scaron;tudijskem območju ali določite, če obstajajo okrožja z neobičajno nizko pričakovano življenjsko dobo v primerjavi s sosednjimi okrožji.
+            <p>To orodje ustvari karto s prikazom vseh statistično značilnih gruč in prostorskih osamelcev, prisotnih v va&scaron;ih podatkih. To orodje uporabite za identifikacijo geoobjektov, ki imajo značilno različne vrednosti od sosednjih. To orodje lahko na primer uporabite, da najdete nepravilne vzorce porabe, ugotovite, kje so najostrej&scaron;e meje med bogastvom in rev&scaron;čino na &scaron;tudijskem območju ali določite, če obstajajo okrožja z neobičajno nizko pričakovano življenjsko dobo v primerjavi s sosednjimi okrožji.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Najdi gruče točk</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Find Point Clusters">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje zazna območja, kjer so točke koncentrirane in ločene po poligonih, ki so prazni ali razpr&scaron;eni. Točke, ki niso del gruče, so označene kot &scaron;um.
             </p>
             <br/>
         </div>

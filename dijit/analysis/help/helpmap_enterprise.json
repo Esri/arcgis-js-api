@@ -65,6 +65,9 @@
             "toolDescription": "Dissolve_Boundaries/019300000163000000",
             "multiPartFeatures": "Dissolve_Boundaries/019300000163000000"
         },
+        "DissolveBoundaries_bd": {
+          "toolDescription": "Dissolve_Boundaries/0193000001v9000000"
+        },
         "DetectIncidents_bd": {
             "toolDescription": "Detect_Incidents/0193000001n4000000"
         },

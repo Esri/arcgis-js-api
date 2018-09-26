@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/on","dojo/keys","dojox/gesture/swipe","../ReportPlayerState","esri/dijit/geoenrichment/utils/MouseUtil"],function(e,i,o,t,n,s){return e(null,{_initKeyboardSwipeNavigation:function(){var e=this;if(this.allowKeyboardNavigation)this.own(i(window,"keyup",function(i){var t=e.getCurrentReportContainer();t&&s.isMouseOver(e.domNode)&&(i.keyCode===o.RIGHT_ARROW?t.showNextSlide():i.keyCode===o.LEFT_ARROW&&t.showPreviousSlide())}));else if(this.allowSwipeNavigation){var r=!0,a=0;this.own(i(document.body,t,function(i){var o=e.getCurrentReportContainer();r&&o&&(a+=i.dx,Math.abs(a)>10&&(r=!1,setTimeout(function(){r=!0},200),o[a<0?"showNextSlide":"showPreviousSlide"](),a=0),setTimeout(function(){a=0},100))}))}this.showCloseButton&&this.own(i(window,"keyup",function(e){this.getWaitingPromise()||n.isViewingDataDrillingZoom||e.keyCode===o.ESCAPE&&this._onClose()}.bind(this)))}})});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({clustersLabel:"Finn klyngene for laget ${inputLayerName}.",chooseLayerLabel:"Velg laget det skal finnes klynger for",minClusterPtsLabel:"Minimum antall punkt som regnes som en klynge",limitSearchLabel:"Begrens søkeområdet til (valgfritt)",limitSearchReqLabel:"Begrens søkeområdet til",outputLayerName:"Finn klynger for ${inputLayerName}",itemDescription:"Geoobjektslag generert ved kjøring av løsningen Finn punktklynger for ${inputLayerName}.",itemTags:"Analyseresultat, Finn punktklynger, ${inputLayerName}",itemSnippet:"Geoobjektslag generert fra Finn punktklynger"});

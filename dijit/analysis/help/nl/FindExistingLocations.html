@@ -44,8 +44,7 @@
         <h2>Bestaande locaties zoeken</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Bestaande locaties zoeken"></h2>
         <hr/>
-    <p>Met deze tool selecteert u bestaande objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier).
-
+    <p>Met deze tool selecteert u bestaande objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier). 
     </p>
     <p>Als  <b>Huidig extent van de kaart gebruiken</b> is aangevinkt, worden alleen de objecten in de invoerlaag die binnen het huidige extent van de kaart zichtbaar zijn, geanalyseerd. Als de optie niet is aangevinkt, worden alle objecten geanalyseerd, zelfs als deze zich buiten de huidige extent van de kaart bevinden.
     </p>
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>kruist</b>: het object bevat een deel van een object in een andere laag. Bijvoorbeeld: zoek naar percelen die rivieren kruisen. Elk deel van de rivier dat door het perceel loopt of de grens van het perceel raakt, kruist het perceel.
                     </li>
+                    <li> <b>dichtstbijzijnd</b>: het object moet het dichtstbij een object in een andere laag zijn. Bijvoorbeeld, vindt het hotel dat het dichtstbij bij elk hotel is.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Elke ruimtelijke expressie heeft een overeenkomende negatie:  <b>niet binnen een afstand van</b>, <b>bevat niet volledig</b>, <b>niet volledig binnen</b> en <b>kruist niet</b>.
+            <p>Elke ruimtelijke expressie heeft een overeenkomende negatie, behalve  <b>dichtstbijzijnd</b>; <b>niet binnen een afstand van</b>, <b>bevat niet volledig</b>, <b>niet volledig binnen</b> en <b>kruist niet</b>.
             </p> 
         </div>
     </div>

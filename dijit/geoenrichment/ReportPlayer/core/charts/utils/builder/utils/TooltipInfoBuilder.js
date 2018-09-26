@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["./ChartDataUtil"],function(a){var e={};return e.getTooltipInfo=function(e,l,i,t,n,u,r,o,b,s,f,m,L,c){function v(e,l){return a.formatNumber(e||0,void 0!==l?{dataLabelsDecimals:l}:b,void 0,s)}return{value:e,label:l,color:f,seriesLabel:i,valueLabel:v(e),sumValueLabel:v(u),minValueLabel:v(t),maxValueLabel:v(n),avgValueLabel:v(o),weightValueLabel:r?v(Math.abs(e)/r*100,2)+"%":"",formatFunc:v,isUnavailableData:isNaN(e),conditionalStyling:m,fieldInfo:L,isPrimarySeries:c,getGroup:null}},e});
+define(["./ChartDataUtil"],function(e){var a={};return a.getTooltipInfo=function(a){function i(i,l){return e.formatNumber(i||0,void 0!==l?{dataLabelsDecimals:l}:void 0!==a.decimals?{dataLabelsDecimals:a.decimals}:a.fieldInfo&&void 0!==a.fieldInfo.decimals?{dataLabelsDecimals:a.fieldInfo.decimals}:a.visualProperties,void 0,a.chartType)}var l=a.isMultiFeature?a.absSumInAreasValue:a.absSumInSeriesValue;return{isMultiFeature:a.isMultiFeature,value:a.yValue,label:a.pointLabel,color:a.color,seriesLabel:a.seriesLabel,valueLabel:i(a.yValue),sumValueLabel:i(a.isMultiFeature?a.sumInAreasValue:a.sumInSeriesValue),minValueLabel:i(a.isMultiFeature?a.minInAreasValue:a.minInSeriesValue),maxValueLabel:i(a.isMultiFeature?a.maxInAreasValue:a.maxInSeriesValue),avgValueLabel:i(a.isMultiFeature?a.avgInAreasValue:a.avgInSeriesValue),weightValueLabel:l?i(Math.abs(a.yValue)/l*100,2)+"%":"",formatFunc:i,isUnavailableData:isNaN(a.yValue),conditionalStyling:a.conditionalStyling,fieldInfo:a.fieldInfo,isThisAreaSpecific:a.isThisAreaSpecific,isThisAreaSingleSeries:a.isThisAreaSingleSeries,getGroup:null}},a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Wybierz raster źródłowej warstwy obiektowej, z którego mają zostać określone ścieżki",inputCostRasterLabel:"Wybierz warstwę rastrową kosztów podróży",inputDestinationLayerLabel:"Wybierz raster lub docelową warstwę obiektową, do których mają prowadzić ścieżki",pathTypeLabel:"Wybierz typ ścieżek do określenia (opcjonalne)",bestSingle:"Najlepsza pojedyncza",eachCell:"Do każdej komórki",eachZone:"Do każdej strefy",outputPolylineName:"Nazwa polilinii wynikowej",outputLayerName:"Optymalny koszt podróży jako polilinia warstw ${layername}",drawDestinationPointLayerName:"Punkty docelowe",drawSourcePointLayerName:"Punkty źródłowe",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Określ ścieżkę kosztów podróży jako polilinię dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Określ ścieżkę kosztów podróży jako polilinię, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana z narzędzia Określ ścieżkę kosztów podróży jako polilinię."});

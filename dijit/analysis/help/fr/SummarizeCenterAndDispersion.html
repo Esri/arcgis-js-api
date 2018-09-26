@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Synthétiser le centre et la dispersion</h2><p/>
         <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="Synth&eacute;tiser le centre et la dispersion"></h2>
         <hr/>
@@ -58,7 +58,7 @@ Il peut servir &agrave; r&eacute;pondre &agrave; des questions du type&nbsp;:
         </ul>
         
     </p>
-    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue courante de la carte)</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s de la couche de points en entr&eacute;e visibles au sein de l&rsquo;&eacute;tendue actuelle de la carte sont analys&eacute;es. Si l&rsquo;option n&rsquo;est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s de la couche de points en entr&eacute;e sont analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l&rsquo;&eacute;tendue actuelle de la carte.
+    <p>Si l&rsquo;option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s de la couche en entr&eacute;e visibles dans la carte actuelle seront analys&eacute;es. Si l&rsquo;option n&rsquo;est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent dans la couche en entr&eacute;e sont analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l&rsquo;&eacute;tendue courante de la carte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,7 +66,7 @@ Il peut servir &agrave; r&eacute;pondre &agrave; des questions du type&nbsp;:
         <div><h2>Choisir une couche à décrire</h2></div>
         <hr/>
         <div>
-            <p>La couche de points qui servira &agrave; trouver les entit&eacute;s centrales et les distributions directionnelles.
+            <p>La couche ponctuelle, lin&eacute;aire ou surfacique qui sera utilis&eacute;e pour rechercher les entit&eacute;s centrales et les distributions directionnelles.
             </p>
         </div>
     </div>
@@ -77,13 +77,13 @@ Il peut servir &agrave; r&eacute;pondre &agrave; des questions du type&nbsp;:
             <p>M&eacute;thode pour synth&eacute;tiser le centre et la dispersion. 
             </p>
             <ul>
-                <li>Entit&eacute; centrale&nbsp;: identifie l&rsquo;entit&eacute; situ&eacute;e le plus au centre dans une couche de points.
+                <li>Entit&eacute; centrale&nbsp;: identifie l&rsquo;entit&eacute; situ&eacute;e le plus au centre dans un jeu de donn&eacute;es.
                 </li>
                 <li>Centre moyen&nbsp;: identifie le centre g&eacute;ographique (ou centre de concentration) d&rsquo;un ensemble d&rsquo;entit&eacute;s.
                 </li>
                 <li>Centre m&eacute;dian&nbsp;: identifie l&rsquo;emplacement qui minimise la distance euclidienne globale vers toutes les entit&eacute;s d&rsquo;un jeu de donn&eacute;es.
                 </li>
-                <li>Ellipse&nbsp;: cr&eacute;e des ellipses de l&rsquo;&eacute;cart type pour r&eacute;capituler les caract&eacute;ristiques spatiales d&rsquo;entit&eacute;s g&eacute;ographiques&nbsp;: tendance centrale, dispersion et tendances directionnelles. La taille de l&rsquo;ellipse est de 1, 2, ou 3&nbsp;&eacute;carts types.
+                <li>Ellipse&nbsp;: cr&eacute;e des ellipses de l&rsquo;&eacute;cart type pour r&eacute;capituler les caract&eacute;ristiques spatiales d&rsquo;entit&eacute;s g&eacute;ographiques&nbsp;: tendance centrale, dispersion et tendances directionnelles. Les ellipses peuvent &ecirc;tre dimensionn&eacute;es en 1, 2 ou 3&nbsp;&eacute;carts types.
                 </li>
             </ul>
             

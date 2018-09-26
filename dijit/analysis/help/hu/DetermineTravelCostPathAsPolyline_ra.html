@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Útiköltség-útvonal meghatározása vonalláncként</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa vonall&aacute;nck&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
+        <hr/>
+    <p>This tool calculates the least cost polyline path between sources and known destinations.
+    </p>
+    <p>Az alkalmaz&aacute;s&aacute;ra az al&aacute;bbi p&eacute;ld&aacute;k hozhat&oacute;k:
+        <ul>
+            <li>Egy &uacute;j &uacute;t legjobb &uacute;tvonal&aacute;nak megkeres&eacute;se &eacute;p&iacute;t&eacute;si k&ouml;lts&eacute;geket illetően.
+                
+
+            </li>
+            <li>A k&ouml;vetendő &uacute;tvonal meghat&aacute;roz&aacute;sa sz&aacute;mos k&uuml;lv&aacute;rosi helysz&iacute;nről (kiindul&oacute;pont) a legk&ouml;zelebbi bev&aacute;s&aacute;rl&oacute;k&ouml;zpontig (c&eacute;l&aacute;llom&aacute;s).
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az elemz&eacute;s csak azokat a bemenő r&eacute;tegeken l&eacute;vő helyeket foglalja mag&aacute;ban, amelyek l&aacute;that&oacute;k az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen. Ha nincs bejel&ouml;lve, akkor mindk&eacute;t bemenő r&eacute;teg &ouml;sszes hely&eacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Válassza ki a raszteres vagy vektoros kiindulópont-réteget, ahonnan az útvonalakat meg kívánja határozni</h2></div>
+        <hr/>
+        <div>
+            <p>Egy k&eacute;pszolg&aacute;ltat&aacute;s vagy vektoros adatszolg&aacute;ltat&aacute;s, amely azonos&iacute;tja azokat a cell&aacute;kat, ahonnan indulva meghat&aacute;roz&aacute;sra ker&uuml;l a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonal a legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; c&eacute;l&aacute;llom&aacute;sig.
+            </p>
+            <p>Ha a bemenet k&eacute;pszolg&aacute;ltat&aacute;s, a bemenet &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező cell&aacute;kb&oacute;l &aacute;ll (a nulla &eacute;rv&eacute;nyes &eacute;rt&eacute;k), m&iacute;g a t&ouml;bbi cell&aacute;hoz a NincsAdat &eacute;rt&eacute;ket kell rendelni.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Raszteres útiköltségréteg kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the impedance or cost to move planimetrically through each cell.
+            </p>
+            <p>The value at each cell location represents the cost-per-unit distance for moving through the cell. Each cell location value is multiplied by the cell resolution while also compensating for diagonal movement to obtain the total cost of passing through the cell.
+            </p>
+            <p>The values of the cost raster can be integer or floating point, but they cannot be negative or zero (you cannot have a negative or zero cost).
+            </p>
+        </div>
+    </div>
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Bemeneti raszteres vagy vektoros célállomások</h2></div>
+        <hr/>
+        <div>
+            <p>A t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt c&eacute;l&aacute;llom&aacute;sokat meghat&aacute;roz&oacute; bemenet. A r&eacute;teg lehet raszteres vagy vektoros.
+            </p>
+            <p>Ha a bemenet k&eacute;pszolg&aacute;ltat&aacute;s, a bemenet &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező cell&aacute;kb&oacute;l &aacute;ll (a nulla &eacute;rv&eacute;nyes &eacute;rt&eacute;k), m&iacute;g a t&ouml;bbi cell&aacute;hoz a NincsAdat &eacute;rt&eacute;ket kell rendelni.
+            </p>
+        </div>
+    </div>
+    <div id="outputPolylineName">
+        <div><h2>Eredményül kapott vonalláncréteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mezőben megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>A meghatározandó útvonalak típusának kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Meghat&aacute;rozza a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &eacute;rt&eacute;kek &eacute;s z&oacute;n&aacute;k &eacute;rtelmez&eacute;s&eacute;nek m&oacute;dj&aacute;t a k&ouml;lts&eacute;g&uacute;tvonal sz&aacute;m&iacute;t&aacute;sakor.
+            </p>
+            <ul>
+                <li>Legjobb egyed&uuml;l&aacute;ll&oacute; &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes cella vagy hely eset&eacute;n a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat a kiindul&oacute;pontba tart&oacute; legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalak minimum&aacute;val rendelkező helyből sz&aacute;rmaztatja. Ez az alap&eacute;rtelmez&eacute;s
+                    
+
+                </li>
+                <li>Mindegyik cell&aacute;ba &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő, &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező &ouml;sszes cella vagy hely eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő cell&aacute;k mindegyik&eacute;t k&uuml;l&ouml;n kezeli, &eacute;s mindegyik kiindul&oacute;cell&aacute;hoz meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat.
+                    
+
+                </li>
+                <li>Mindegyik z&oacute;n&aacute;ba &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes z&oacute;na eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva az egyes z&oacute;n&aacute;k legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonala a z&oacute;n&aacute;ban a legkisebb k&ouml;lts&eacute;gs&uacute;lyozott t&aacute;vols&aacute;ggal rendelkező cell&aacute;n&aacute;l vagy helyn&eacute;l kezdődik.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</div>
+</html>

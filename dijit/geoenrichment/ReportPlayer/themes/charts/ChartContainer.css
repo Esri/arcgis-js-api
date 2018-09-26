@@ -5,6 +5,10 @@
     display: inline-block;
 }
 
+    .esriGEReportPlayer_chartContainer svg {
+        touch-action: auto !important;
+    }
+
 .chartContainer_chartContainerWithAxis {
     position: relative;
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["./_TableRowFixer"],function(r){var t={};return t.collectHiddenCells=function(t,n){var a={};return t&&t.forEach(function(t,e){var i=0;r.fixTr(t,e,a,n),t.tags&&t.tags.forEach(function(r){for(;a[i+"_"+e];)i++;var t=Number(r.attributes&&r.attributes.colspan),n=Number(r.attributes&&r.attributes.rowspan);if(t>1||n>1)for(var o=t||1,u=n||1,f=i;f<i+o;f++)for(var c=e;c<e+u;c++)f===i&&c===e||(a[f+"_"+c]=!0);i++})}),a},t.isHidden=function(r,t,n){return r[t+"_"+n]},t});

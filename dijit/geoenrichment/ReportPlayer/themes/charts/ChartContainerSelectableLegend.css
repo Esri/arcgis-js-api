@@ -37,10 +37,30 @@
         text-decoration: inherit;
     }
 
+    .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRoot_unselected .selectableLegendRootLabel {
+        opacity: 0.3;
+    }
+
+    
+
+    .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRoot .selectableLegendRootCheckbox {
+        position: relative;
+        top: -1px;
+        opacity: 0;
+    }
+
+    .esriGEReportPlayer_chartContainer .esriGESelectableLegend:hover .selectableLegendRootCheckbox {
+        opacity: 1;
+    }
+
 
 
 .esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRootColorRect {
     border-radius: 50%;
+}
+
+.esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRoot_unselected .selectableLegendRootColorRect {
+    opacity: 0.3;
 }
 
 

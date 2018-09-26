@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Выберите растровый или векторный слой источников для вычисления путей от них",inputCostRasterLabel:"Выберите растровый слой стоимости перемещения",inputDestinationLayerLabel:"Выберите растровый или векторный слой назначения для вычисления путей",pathTypeLabel:"Выберите тип определяемых путей (дополнительно)",bestSingle:"Один наилучший",eachCell:"До каждой ячейки",eachZone:"До каждой зоны",outputPolylineName:"Имя итоговой полилинии",outputLayerName:"Оптимальная стоимость перемещения в виде полилинии ${layername}",drawDestinationPointLayerName:"Целевые точки",drawSourcePointLayerName:"Исходные точки",itemDescription:"Векторный слой, созданный инструментом Определить путь стоимости перемещения в виде полилинии для ${layerName}. ",itemTags:"Результат анализа, Определить путь стоимости перемещения в виде полилинии, ${layername} ${fieldname}",itemSnippet:"Векторный слой, созданный инструментом Определить путь стоимости перемещения в виде полилинии."});

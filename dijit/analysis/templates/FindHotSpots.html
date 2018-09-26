@@ -311,7 +311,7 @@
                 </tr>
                 <tr data-dojo-attach-point="_cellSizeRow">
                   <td style="padding-right:0;margin-top:1.0em;idth:50%;">
-                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="constraints:{min:0},intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_cellSizeInput" style="width:75%;">
+                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="constraints:{min:0.000001},intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_cellSizeInput" style="width:75%;">
                   </td>
                   <td colspan="2" style="padding-left:0.25em;margin-top:1.0em;width:50%;">
                     <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_cellSizeUnits" style="width:80%;table-layout:fixed;">
@@ -333,7 +333,7 @@
                 </tr>
                 <tr data-dojo-attach-point="_distanceBandRow">
                   <td style="padding-right:0;margin-top:1.0em;idth:50%;">
-                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="constraints:{min:0},intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_dbandInput" style="width:75%;">
+                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="constraints:{min:0.000001},intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_dbandInput" style="width:75%;">
                   </td>
                   <td colspan="2" style="padding-left:0.25em;margin-top:1.0em;width:50%;">
                     <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_dbandUnits" style="width:80%;table-layout:fixed;">
@@ -382,7 +382,7 @@
       <span data-dojo-attach-point="_bodyNode"></span>
     </div>    
     <div class="esriExtentCreditsCtr">
-      <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+      <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
      <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
        <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
          ${i18n.useMapExtent}

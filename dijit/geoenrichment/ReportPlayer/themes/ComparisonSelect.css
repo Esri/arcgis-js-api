@@ -1,0 +1,83 @@
+
+
+
+.esriGEComparisonSelect_addButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    background-image: url("./images/add/addIcon.svg");
+    cursor: pointer;
+    opacity: 0;
+    float: right;
+}
+
+.listItem:hover .esriGEComparisonSelect_addButton {
+    opacity: 1;
+}
+
+.esriGEComparisonSelect_addButton:hover:not(.disabled) {
+    background-image: url("./images/add/addIcon_over.svg");
+}
+
+.listItem:hover .esriGEComparisonSelect_addButton.disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+
+
+.esriGEComparisonSelect_removeButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    background-image: url("./images/closeWindow.svg");
+    cursor: pointer;
+    opacity: 0;
+    float: right;
+}
+
+.listItem:hover .esriGEComparisonSelect_removeButton {
+    opacity: 1;
+}
+
+.esriGEComparisonSelect_removeButton:hover:not(.disabled) {
+    background-image: url("./images/closeWindow_over.svg");
+}
+
+.listItem:hover .esriGEComparisonSelect_removeButton.disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+
+
+.esriGEComparisonSelect_infoIcon {
+    background-image: url("./images/infoIconGray.svg");
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0;
+    float: right;
+}
+
+.listItem:hover .esriGEComparisonSelect_infoIcon {
+    opacity: 1;
+}
+
+
+
+.esriGEComparisonSelectListMobile .esriGEComparisonSelect_addButton,
+.esriGEComparisonSelectListMobile .esriGEComparisonSelect_removeButton {
+    opacity: 1;
+}
+
+    .esriGEComparisonSelectListMobile .esriGEComparisonSelect_addButton.disabled,
+    .esriGEComparisonSelectListMobile .esriGEComparisonSelect_removeButton.disabled {
+        opacity: 0.3;
+        cursor: default;
+    }

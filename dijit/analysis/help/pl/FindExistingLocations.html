@@ -44,10 +44,9 @@
         <h2>Znajdź istniejące lokalizacje</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Znajdź istniejące lokalizacje"></h2>
         <hr/>
-    <p>Narzędzie to umożliwia wybieranie w badanym obszarze takich istniejących obiekt&oacute;w, kt&oacute;re spełniają podane kryteria. Kryteria można tworzyć na podstawie zapytań o&nbsp;atrybut (na przykład działki, kt&oacute;re są wolne) oraz zapytań przestrzennych (na przykład w&nbsp;odległości do jednego kilometra od rzeki).
-
+    <p>Narzędzie to umożliwia wybieranie w badanym obszarze takich istniejących obiekt&oacute;w, kt&oacute;re spełniają podane kryteria. Kryteria można tworzyć na podstawie zapytań o&nbsp;atrybut (na przykład działki, kt&oacute;re są wolne) oraz zapytań przestrzennych (na przykład w&nbsp;odległości do jednego kilometra od rzeki). 
     </p>
-    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu</b>, przeanalizowane zostaną jedynie obiekty w&nbsp;warstwie wejściowej widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowane zostaną wszystkie obiekty, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, przeanalizowane zostaną jedynie obiekty w&nbsp;warstwie wejściowej widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowane zostaną wszystkie obiekty, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>przecina się</b>: obiekt zawiera część obiektu z innej warstwy. Na przykład znajdź działki przecinające się z&nbsp;rzekami. Jako przecinające się z działką uznawane są wszelkie odcinki rzeki, kt&oacute;re przechodzą przez działkę lub stykają się z jej granicami.
                     </li>
+                    <li> <b>najbliższy</b>: obiekt musi znajdować się najbliżej obiektu w innej warstwie. Na przykład, można znaleźć restauracje znajdujące się najbliżej poszczeg&oacute;lnych hoteli.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Każde wyrażenie przestrzenne ma swoje zaprzeczenie:  <b>nie w&nbsp;odległości do</b>, <b>nie całkowicie zawiera</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecina się</b>.
+            <p>Każde wyrażenie przestrzenne ma swoje zaprzeczenie, z wyjątkiem wyrażenia  <b>najbliższy</b>: <b>nie w&nbsp;odległości do</b>, <b>nie całkowicie zawiera</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecina się</b>.
             </p> 
         </div>
     </div>

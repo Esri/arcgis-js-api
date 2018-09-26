@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["./AttrUtil"],function(e){return{parse:function(r,a,t){if(!r||!r.features.length)return[];var n=[],s={},u=0;return r.features.forEach(function(r){var i=function(r){var n=r.attributes.ID||r.attributes.AREA_ID;if(!n)return null;void 0===s[n]&&(s[n]=u++);var i={};for(var o in r.attributes){var f=t?t(o):o;f&&(i[f]=r.attributes[o])}return e.cleanUpAttrs(i),{name:a,attrs:i,areaIndex:s[n]}}(r);if(i){var o=n[i.areaIndex]=n[i.areaIndex]||{};o[i.name]?o[i.name].comparisonLevels.push(i.attrs):o[i.name]={data:i.attrs,comparisonLevels:[]}}}),console.log("FeatureSetPareser.js => areaData:"),console.log(n),n}}});
+define(["./AttrUtil"],function(r){var a={ID_FIELDS:["ID","AREA_ID"],parse:function(e,t,n){if(!e||!e.features.length)return[];var s=[],u={},i=0;return e.features.forEach(function(e){var o=function(e){var s=e.attributes[a.ID_FIELDS[0]]||e.attributes[a.ID_FIELDS[1]];if(!s)return null;void 0===u[s]&&(u[s]=i++);var o={};for(var f in e.attributes){var l=n?n(f):f;l&&(o[l]=e.attributes[f])}return r.cleanUpAttrs(o),{name:t,attrs:o,areaIndex:u[s]}}(e);if(o){var f=s[o.areaIndex]=s[o.areaIndex]||{};f[o.name]?f[o.name].comparisonLevels.push(o.attrs):f[o.name]={data:o.attrs,comparisonLevels:[]}}}),console.log("FeatureSetPareser.js => areaData:"),console.log(s),s}};return a});

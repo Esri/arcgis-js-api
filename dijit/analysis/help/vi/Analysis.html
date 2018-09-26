@@ -57,6 +57,8 @@
                 </li>
                 <li> <b>Tổng hợp trong Phạm vi</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c đối tượng v&ugrave;ng v&agrave; c&aacute;c thuộc t&iacute;nh chồng lắp l&ecirc;n nhau.
                 </li>
+                <li> <b>Tổng hợp Độ tập trung v&agrave; Ph&acirc;n t&aacute;n</b> t&iacute;nh to&aacute;n c&aacute;c đối tượng trung t&acirc;m v&agrave; ph&acirc;n phối định hướng.
+                </li>
             </ul>
             
         </p>
@@ -76,7 +78,7 @@
 <hr/>
             <p>Sử dụng một lớp c&aacute;c đối tượng dạng điểm v&agrave; một lớp c&aacute;c đối tượng dạng v&ugrave;ng, c&ocirc;ng cụ n&agrave;y sẽ gi&uacute;p x&aacute;c định c&aacute;c điểm nằm trong từng khu vực v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về tất cả c&aacute;c điểm trong mỗi khu vực đ&oacute;. V&iacute; dụ:
                 <ul>
-                    <li>Giả sử c&aacute;c vị tr&iacute; điểm c&oacute; tỷ lệ tội phạm, đếm số lượng tội phạm trong mỗi quận hoặc địa giới h&agrave;nh ch&iacute;nh kh&aacute;c.
+                    <li>Giả sử c&oacute; c&aacute;c vị tr&iacute; điểm đại diện cho c&aacute;c sự cố li&ecirc;n quan đến tội phạm, h&atilde;y đếm số lượng tội phạm c&oacute; trong mỗi quận hoặc ranh giới h&agrave;nh ch&iacute;nh kh&aacute;c.
                     </li>
                     <li>T&igrave;m doanh thu cao nhất v&agrave; thấp nhất cho c&aacute;c vị tr&iacute; bầu cử theo tiểu bang.
                     </li>
@@ -144,11 +146,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&igrave;m c&aacute;c khu vực (v&agrave; một phần của khu vực) chồng l&ecirc;n giữa hai lớp v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho lớp phủ n&agrave;y. V&iacute; dụ:
+            <p>T&igrave;m c&aacute;c khu vực (v&agrave; c&aacute;c phần của khu vực) chồng l&ecirc;n giữa hai lớp v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho lớp phủ n&agrave;y. V&iacute; dụ:
                 <ul>
                     <li>Với một lớp c&aacute;c phạm vi lưu vực s&ocirc;ng v&agrave; một lớp c&aacute;c khu vực sử dụng đất theo loại h&igrave;nh sử dụng đất, h&atilde;y t&iacute;nh to&aacute;n tổng diện t&iacute;ch c&aacute;c loại đất sử dụng cho từng lưu vực. 
                     </li>
-                    <li>Cho một lớp l&ocirc; đất trong một quận v&agrave; một lớp ranh giới th&agrave;nh phố, h&atilde;y tổng kết gi&aacute; trị trung b&igrave;nh c&aacute;c l&ocirc; đất trống trong mỗi th&agrave;nh phố.
+                    <li>Cho một lớp thửa đất trong một quận v&agrave; một lớp ranh giới th&agrave;nh phố, h&atilde;y tổng kết gi&aacute; trị trung b&igrave;nh c&aacute;c thửa đất trống trong mỗi th&agrave;nh phố.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tổng hợp Độ tập trung và Phân tán</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Tổng hợp Độ tập trung v&agrave; Ph&acirc;n t&aacute;n">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y sử dụng c&aacute;c đối tượng điểm để t&iacute;nh to&aacute;n đối tượng trung t&acirc;m, độ tập trung trung b&igrave;nh, độ b&igrave;nh qu&acirc;n tập trung, hoặc h&igrave;nh elip (ph&acirc;n phối). V&iacute; dụ:
+                <ul>
+                    <li>Cho một lớp trọng t&acirc;m cụm khối, đối tượng trung t&acirc;m c&oacute; trọng số theo d&acirc;n số c&oacute; thể được d&ugrave;ng để x&aacute;c định m&ocirc;n nghệ thuật của thị x&atilde; c&oacute; khả năng tiếp cận nhất cho một trung t&acirc;m nghệ thuật biểu diễn.
+                    </li>
+                    <li>Cho một lớp c&aacute;c quan s&aacute;t lo&agrave;i nai sừng tấm trong một c&ocirc;ng vi&ecirc;n qua nhiều năm, c&oacute; thể sử dụng độ tập trung trung b&igrave;nh để xem nơi nai sừng tấm tụ tập v&agrave;o m&ugrave;a h&egrave; v&agrave; m&ugrave;a đ&ocirc;ng.
+                    </li>
+                    <li>Cho một lớp c&aacute;c vụ hỏa hoạn, c&oacute; thể sử độ b&igrave;nh qu&acirc;n tập trung để đo lường xu hướng tập trung của hỏa hoạn m&agrave; kh&ocirc;ng bị ảnh hưởng bởi c&aacute;c ngoại lệ ngoại vi.
+                    </li>
+                    <li>Cho một lớp c&aacute;c mẫu giếng nước ngầm, c&oacute; thể sử dụng một h&igrave;nh elip để x&aacute;c định chất g&acirc;y &ocirc; nhiễm đang lan rộng như thế n&agrave;o.
                     </li>
                 </ul>
                 
@@ -290,7 +318,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Tìm kiếm các Vị trí Hiện tại</h2></td>
+                    <td><h2>Tìm các Vị trí Hiện tại</h2></td>
                     <td>
                     <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="T&igrave;m kiếm c&aacute;c Vị tr&iacute; Hiện tại">
                     </td>
@@ -347,7 +375,7 @@
             <br/>
         </div>
     <div id="AnalyzePatternsCategory" class="largesize">
-        <h2>Phân tích Xu hướng</h2>
+        <h2>Phân tích Các mô hình</h2>
         <hr/>
         <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn x&aacute;c định, định lượng v&agrave; trực quan h&oacute;a m&ocirc; h&igrave;nh kh&ocirc;ng gian trong dữ liệu của bạn.  
             <ul>
@@ -356,6 +384,8 @@
                 <li> <b>T&igrave;m Điểm N&oacute;ng</b> x&aacute;c định những cụm điểm c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn.
                 </li>
                 <li>C&ocirc;ng cụ  <b>T&igrave;m Ngoại lệ</b> sẽ x&aacute;c định xem c&oacute; những ngoại lệ n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn.
+                </li>
+                <li> <b>T&igrave;m Cụm điểm</b> sẽ t&igrave;m c&aacute;c cụm đối tượng điểm trong phạm vi nhiễu xung quanh căn cứ tr&ecirc;n ph&acirc;n bổ kh&ocirc;ng gian của ch&uacute;ng.
                 </li>
                 <li> <b>Nội suy Điểm</b> dự đo&aacute;n c&aacute;c gi&aacute; trị tại c&aacute;c vị tr&iacute; mới dựa tr&ecirc;n đo lường từ một bộ sưu tập điểm.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>C&ocirc;ng cụ n&agrave;y tạo một bản đồ hiển thị bất kỳ nh&oacute;m v&agrave; ngoại lệ kh&ocirc;ng gian n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong dữ liệu của bạn. Sử dụng c&ocirc;ng cụ n&agrave;y để x&aacute;c định những đối tượng c&oacute; gi&aacute; trị kh&aacute;c biệt đ&aacute;ng kể so với c&aacute;c v&ugrave;ng l&acirc;n cận. Bạn c&oacute; thể sử dụng c&ocirc;ng cụ n&agrave;y để t&igrave;m ra c&aacute;c xu hướng ti&ecirc;u d&ugrave;ng bất thường, x&aacute;c định đ&acirc;u l&agrave; ranh giới r&otilde; r&agrave;ng giữa gi&agrave;u c&oacute; v&agrave; đ&oacute;i ngh&egrave;o trong khu vực nghi&ecirc;n cứu hoặc x&aacute;c định c&oacute; quận n&agrave;o tại Hoa Kỳ c&oacute; tuổi thọ dự t&iacute;nh thấp bất thường so với c&aacute;c v&ugrave;ng l&acirc;n cận kh&ocirc;ng.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tìm Cụm điểm</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="T&igrave;m Cụm điểm">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y ph&aacute;t hiện c&aacute;c khu vực m&agrave; c&aacute;c điểm tập trung v&agrave; nơi ch&uacute;ng ph&acirc;n t&aacute;ch theo khu vực trống hoặc thưa thớt. C&aacute;c điểm kh&ocirc;ng thuộc cụm được d&aacute;n nh&atilde;n l&agrave; nhiễu.
             </p>
             <br/>
         </div>

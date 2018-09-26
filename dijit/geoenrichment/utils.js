@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define([],function(){return{getCeiling:function(t,n){if(0===t)return 0;var r;t<0?(t=-t,r=-1):r=1;var a=Math.pow(10,Math.ceil(Math.log(t)/Math.LN10)-1),e=2*Math.ceil(t/a/2)*a;return n&&Math.log(e)/Math.LN10%1==0&&(e*=2),e*r},supportsComparison:function(t,n){return"OneVar"==t||"Tapestry"!=t&&n}}});

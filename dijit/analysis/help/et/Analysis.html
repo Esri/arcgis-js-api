@@ -44,7 +44,7 @@
         <p>Objektide anal&uuml;&uuml;s t&ouml;&ouml;riistakast sisaldab mitmesuguseid t&ouml;&ouml;riistu, mida saab valida ja kasutada. Toimingud on jaotatud j&auml;rgmistesse kategooriatesse; need on ainult loogilised grupid, mis ei m&otilde;juta seda, kuidas te t&ouml;&ouml;riistu valite v&otilde;i kasutate.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Summeeri andmeid</h2>
         <hr/>
         <p>Need t&ouml;&ouml;riistad arvutavad teatud kindlas alas v&otilde;i teiste objektide l&auml;heduses asuvate objektide ja nende atribuutide koguarvud, pikkused, alad ning p&otilde;hilised kirjeldavad statistikud.
@@ -56,6 +56,8 @@
                 <li> <b>Summeeri ligidusest</b> arvutab m&auml;&auml;ratud vahemaa raadiusse j&auml;&auml;vate objektide ja nende atribuutide statistikud.
                 </li>
                 <li> <b>Summeeri piirides</b> arvutab alas &uuml;ksteistega kattuvate objektide ja atribuutide statistikud.
+                </li>
+                <li> <b>Summeeri kese ja hajumine</b> arvutab keskme objektid ja suunajaotused.
                 </li>
             </ul>
             
@@ -74,7 +76,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Punktobjektide kihti ja pindobjektide kihti kasutades oskab see t&ouml;&ouml;riist m&auml;&auml;ratleda igasse alasse j&auml;&auml;vad punktid ja arvutada statistikud k&otilde;igi igas alas asuvate punktide kohta. N&auml;ited:
+            <p>Punktobjektide kihti ja pindobjektide kihti kasutades oskab see t&ouml;&ouml;riist m&auml;&auml;ratleda igasse alasse j&auml;&auml;vad punktid ja arvutada statistikud k&otilde;igi igas alas asuvate punktide kohta. N&auml;ited.
                 <ul>
                     <li>Kuritegevusega seotud intsidentide punktasukohtade sisestamisel loendab t&ouml;&ouml;riist kuritegude arvu maakonna v&otilde;i muu haldusjaotuse kohta.
                     </li>
@@ -96,7 +98,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Funktsioon Liida objektid kannab ruumiliste v&otilde;i atribuutide seaste p&otilde;hjal &uuml;he kihi v&otilde;i tabeli atribuudid &uuml;le teise kihti v&otilde;i tabelisse. N&auml;ited:
+            <p>Funktsioon Liida objektid kannab ruumiliste v&otilde;i atribuutide seaste p&otilde;hjal &uuml;he kihi v&otilde;i tabeli atribuudid &uuml;le teise kihti v&otilde;i tabelisse. N&auml;ited.
                 <ul>
                     <li>Saate lisada &uuml;hise piiri- v&otilde;i demograafilise teabe juhtumite andmetesse.
                     </li>
@@ -122,7 +124,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Leiab objektid, mis j&auml;&auml;vad sisendkihis m&auml;&auml;ratud objektide raadiusesse. Vahemaad saab m&otilde;&otilde;ta nii lineaarselt kui ka liikumisviiside alusel. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistika. N&auml;ited:
+            <p>Leiab objektid, mis j&auml;&auml;vad sisendkihis m&auml;&auml;ratud objektide raadiusesse. Vahemaad saab m&otilde;&otilde;ta nii lineaarselt kui ka liikumisviiside alusel. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistika. N&auml;ited.
                 <ul>
                     <li>Saate arvutada uue kaupluse jaoks plaanitud asukohast viie minuti raadiuses asuvate elanike arvu.
                     </li>
@@ -144,11 +146,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Leiab kahe kihi alusel alad (ja alade osad), mis omavahel kattuvad ning arvutab kattuva osa statistikud. N&auml;ited:
+            <p>Leiab kahe kihi alusel alad (ja alade osad), mis omavahel kattuvad ning arvutab kattuva osa statistikud. N&auml;ited.
                 <ul>
                     <li>Kui Teil on valgalade kiht ja maakasutuse alade kiht maakasutuse t&uuml;&uuml;bi j&auml;rgi, saate arvutada maakasutust&uuml;&uuml;pide pindala iga valgala kohta. 
                     </li>
                     <li>Kui teil on maakonna maa&uuml;ksuste kiht ja linnapiiride kiht, saate arvutada vabade maa&uuml;ksuste keskmise v&auml;&auml;rtuse igas linnas.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Keskme ja hajumise summeerimine</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Keskme ja hajumise summeerimine">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;iist kasutab punktobjekte, et arvutada keskme objekt, keskmine kese, mediaani kese v&otilde;i ellips (jaotus). N&auml;ited.
+                <ul>
+                    <li>Plokir&uuml;hma tsentroidide antud kihi korral v&otilde;ib kasutada elanike arvuga kaalutud keskme objekti, et m&auml;&auml;rata, mis t&uuml;&uuml;pi linn on k&otilde;ige juurdep&auml;&auml;setavam esituskunstide keskusena.
+                    </li>
+                    <li>Pargis elavate p&otilde;trade mitmeaastase vaatluse kihi korral v&otilde;ib keskme objekti kasutada selleks, et vaadata p&otilde;trade populatsiooni suvel ja talvel.
+                    </li>
+                    <li>Tule&otilde;nnetuste puhul v&otilde;ib mediaani keset kasutada selleks, et m&otilde;&otilde;ta tulekahjude keskset tendentsi ilma, et seda m&otilde;jutaksid perifeersed v&otilde;&otilde;rv&auml;&auml;rtused.
+                    </li>
+                    <li>P&otilde;hjavee n&auml;idiskaevude korral saab kasutada ellipsit, et m&auml;&auml;rata saasteaine levik.
                     </li>
                 </ul>
                 
@@ -345,7 +373,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analüüsi mustreid</h2>
         <hr/>
         <p>Need t&ouml;&ouml;riistad aitavad teil andmetes ruumilisi mustreid tuvastada, m&otilde;&otilde;ta ja visualiseerida.  
@@ -355,6 +383,8 @@
                 <li> <b>Leia tulipunktid</b> funktsioon m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid.
                 </li>
                 <li> <b>Leia v&otilde;&otilde;rv&auml;&auml;rtused</b>  m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi v&otilde;&otilde;rv&auml;&auml;rtusi.
+                </li>
+                <li>T&ouml;&ouml;vahend  <b>Otsi punktklastreid</b>  leiab &uuml;mbritseva m&uuml;ra hulgast punktobjektide  klastrid nende ruumilise jaotuse p&otilde;hjal.
                 </li>
                 <li> <b>Interpoleeri punktid</b> prognoosib uute asukohtade v&auml;&auml;rtusi olemasolevate punktide m&otilde;&otilde;tmistulemuste p&otilde;hjal.
                 </li>
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Selle t&ouml;&ouml;riistaga saate luua kaardi, kus on n&auml;ha teie andmetes leiduvad statistiliselt olulised klastrid ja ruumilised v&otilde;&otilde;rv&auml;&auml;rtused. Selle t&ouml;&ouml;riista abil saate tuvastada objektid, mille v&auml;&auml;rtused erinevad m&auml;rkimisv&auml;&auml;rselt naabrite omast. T&ouml;&ouml;riista saate kasutada n&auml;iteks anomaalsete kulutuste mustri leidmiseks, kontrastsemate piiride m&auml;&auml;ratlemiseks uuringuala j&otilde;ukuse ja vaesuse vahel v&otilde;i selleks, et m&auml;&auml;ratleda, kas Ameerika &Uuml;hendriikides on naabritega v&otilde;rreldes maakondi, kus on ebatavaliselt madal keskmine eluiga.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Otsi punktklastreid</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Otsi punktklastreid">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist leiab alad, kus punktid on kontsentreeritud ja kus neid eraldavad t&uuml;hjad v&otilde;i h&otilde;redad alad. Klastrisse mittekuuluvad punktid on sildistatud m&uuml;rana.
             </p>
             <br/>
         </div>

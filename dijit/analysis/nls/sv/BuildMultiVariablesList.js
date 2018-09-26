@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Välj ett indatalager",addAVar:"Lägg till en variabel",distToNearest:"Avstånd till närmaste",attrOfInterest:"Närmastes attribut",summaryNearby:"Översikt över närmaste",summaryIntersecting:"Översikt över korsande",distToNearestLabel:"Avståndet från klassens centrum till närmaste geoobjekt i indatalagret",attrOfInterestLabel:"Värdet i ett visst fält i närmaste geoobjekt från indatalagret",summaryNearbyLabel:"En statistisk beräkning av alla geoobjekt som hittas med angivet avstånd från klassens centrum",summaryIntersectingLabel:"En siffra som beräknas på alla geoobjekt som skär klassen",maxDistancefromCtr:"Maximalt avstånd från klassens centrum",fieldToIncude:"Fält som ska ingå",statstoCalculate:"Statistik som ska beräknas",summFeatuesWithin:"Summera geoobjekt inom",layerChangeWarnMsg:"Tillagda variabler för detta indatalager tas bort om indatalagret ändras",validationErrorMsg:"Korrigera valideringsfel innan du lägger till en ny variabel",atleastOneVarMsg:"Lägg till minst en variabel i det valda lagret"});

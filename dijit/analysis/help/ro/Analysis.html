@@ -44,7 +44,7 @@
         <p>Caseta de instrumente Analiză obiecte spaţiale conţine o serie de instrumente pe care le puteţi accesa şi utiliza.  Aceste activităţi sunt aranjate mai jos &icirc;n categorii; categoriile sunt pur şi simplu grupări logice şi nu afectează &icirc;n niciun fel modul &icirc;n care accesaţi sau utilizaţi operaţiunile.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Sumarizare date</h2>
         <hr/>
         <p>Aceste instrumente calculează numărul total, lungimile, suprafeţele şi statistici descriptive de bază ale obiectelor spaţiale şi atributelor lor din suprafeţe sau din apropierea altor obiecte spaţiale.
@@ -56,6 +56,8 @@
                 <li> <b>Rezumare &icirc;n apropiere</b> calculează statistici privind obiectele spaţiale şi atributele acestora care se situează &icirc;ntr-o anumită distanţă.
                 </li>
                 <li> <b>Sumarizare &icirc;n interiorul</b> calculează statistici privind obiectele spaţiale şi atributele din zonă care se suprapun reciproc.
+                </li>
+                <li> <b>Centru de rezumare și dispersare</b> calculează obiectele spațiale centrale și distribuirile direcționale.
                 </li>
             </ul>
             
@@ -149,6 +151,32 @@
                     <li>Av&acirc;nd un strat tematic de zone cumpănă de ape şi un strat tematic de zone cu terenuri utilizate clasificate &icirc;n funcţie de tipul utilizării, calculaţi suprafaţa totală pentru fiecare tip de utilizare a terenului aferent fiecărei cumpene de ape. 
                     </li>
                     <li>Av&acirc;nd un strat tematic de parcele dintr-un judeţ şi un strat tematic de limite ale localităţilor, rezumaţi valoarea medie a parcelelor libere din fiecare localitate.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Centru de rezumare și dispersare</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Centru de rezumare și dispersare">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument folosește obiectele spaţiale de tip punct pentru a calcula obiectul spațial central, centrul mediu, centrul median sau elipsa (distribuția). De exemplu:
+                <ul>
+                    <li>Av&acirc;nd un strat tematic de centre de greutate ale unui grup de blocuri, obiectul spațial central ponderat după populație poate fi folosit pentru a identifica spațiul artistic din oras care este cel mai accesibil pentru un centru de artele spectacolului.
+                    </li>
+                    <li>Av&acirc;nd un strat tematic cu apariții ale elanilor &icirc;ntr-un parc pe mai mulți ani, centrul mediu poate fi folosit pentru a vedea unde se adună elanii vara și iarna.
+                    </li>
+                    <li>Av&acirc;nd un strat tematic de incendii, centrul mediu poate fi folosit pentru a măsura tendința centrală a incendiilor fără a fi afectat de elementele periferice.
+                    </li>
+                    <li>Av&acirc;nd un strat tematic de probe de puțuri de apă freatică, o elipsă poate fi folosită pentru a stabili cum se &icirc;mprăștie un agent de contaminare.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analiză tendinţe</h2>
         <hr/>
         <p>Aceste instrumente vă ajută să identificaţi, cuantificaţi şi vizualizaţi modele spaţiale din datele dvs.  
@@ -356,6 +384,8 @@
                 <li> <b>Găsire puncte de interes</b> identifică grupări semnificative statistic din modelul spaţial al datelor dvs.
                 </li>
                 <li>Instrumentul  <b>Găsire valori excepţionale</b> va determina dacă există valori excepţionale semnificative din punct de vedere statistic &icirc;n modelul spaţial al datelor dvs.
+                </li>
+                <li> <b>Instrumentul Găsiți fascicule de puncte</b> găsește fascicule de obiecte spaţiale de tip punct &icirc;n zgomotul &icirc;nconjurător pe baza distribuției lor spațiale.
                 </li>
                 <li> <b>Interpolare puncte</b> prezice valori &icirc;n locaţii noi pe baza măsurătorilor găsite &icirc;ntr-o colecţie de puncte.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Acest instrument creează o hartă care prezintă toate grupările şi valorile spaţiale excepţionale semnificative statistic, prezente &icirc;n datele dvs. Utilizaţi acest instrument pentru a identifica obiectele spaţiale ale căror valori sunt semnificativ diferite de cele ale obiectelor &icirc;nvecinate.  Puteţi utiliza acest instrument, de exemplu, pentru a găsi anomaliile din modelele de cheltuieli, a determina unde există cele mai clare graniţe &icirc;ntre bunăstare şi sărăcie &icirc;ntr-o zonă studiată sau a determina dacă există judeţe din Rom&acirc;nia &icirc;n care speranţa de viaţă este neobişnuit de scăzută &icirc;n comparaţie cu judeţele &icirc;nvecinate.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Găsiți fascicule de puncte</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Găsiți fascicule de puncte">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument detectează zonele &icirc;n care sunt concentrate punctele și unde sunt separate prin zone goale sau rare. Punctele care nu sunt parte din fascicul sunt etichetate ca zgomot.
             </p>
             <br/>
         </div>

@@ -44,8 +44,7 @@
         <h2>Hitta befintliga platser</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Hitta befintliga platser"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget markerar befintliga geoobjekt i unders&ouml;kningsomr&aring;det som uppfyller en rad kriterier du anger. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel inom en kilometer fr&aring;n en flod).
-
+    <p>Det h&auml;r verktyget markerar befintliga geoobjekt i unders&ouml;kningsomr&aring;det som uppfyller en rad kriterier du anger. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel inom en kilometer fr&aring;n en flod). 
     </p>
     <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, analyseras bara de geoobjekt i indatalagret som visas i den aktuella kartutbredningen. Om alternativet inte markeras analyseras alla geoobjekt, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
     </p>
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>korsar</b>: geoobjektet inneh&aring;ller en del av ett geoobjekt i ett annat lager. Exempel: hitta fastigheter som korsar floder. Alla delar av floden som g&aring;r genom fastigheten eller r&ouml;r vid fastighetsgr&auml;nsen korsar fastigheten.
                     </li>
+                    <li> <b>n&auml;rmast</b>: geoobjektet m&aring;ste vara n&auml;rmast ett geoobjekt i ett annat lager. Hitta till exempel den restaurang som ligger n&auml;rmast varje hotell.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Varje geografiskt uttryck har en motsvarande negation:  <b>inte inom ett avst&aring;nd fr&aring;n</b>, <b>inneh&aring;ller inte helt</b>, <b>inte helt inom</b> och <b>korsar inte</b>.
+            <p>Varje geografiskt uttryck har en motsvarande negation, med undantag f&ouml;r  <b>n&auml;rmast</b>: <b>inte inom ett avst&aring;nd fr&aring;n</b>, <b>inneh&aring;ller inte helt</b>, <b>inte helt inom</b> och <b>korsar inte</b>.
             </p> 
         </div>
     </div>

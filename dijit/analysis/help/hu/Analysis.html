@@ -57,6 +57,8 @@
                 </li>
                 <li>A  <b>Ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;s</b> kisz&aacute;m&iacute;tja a ter&uuml;let egym&aacute;st &aacute;tfedő ter&uuml;let vektoros elemeinek &eacute;s attrib&uacute;tumainak statisztikai adatait.
                 </li>
+                <li> <b>Summarize Center and Dispersion</b> calculates central features and directional distributions.
+                </li>
             </ul>
             
         </p>
@@ -149,6 +151,32 @@
                     <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a  f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
                     </li>
                     <li>Egy megye parcell&aacute;it &eacute;s telep&uuml;l&eacute;shat&aacute;rait tartalmaz&oacute; r&eacute;teg eset&eacute;n &ouml;sszes&iacute;theti a telep&uuml;l&eacute;seken bel&uuml;li szabad parcell&aacute;k &aacute;tlagos &eacute;rt&eacute;keit.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Középpont és szóródás összefoglalása</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="K&ouml;z&eacute;ppont &eacute;s sz&oacute;r&oacute;d&aacute;s &ouml;sszefoglal&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool uses point features to calculate the central feature, mean center, median center, or ellipse (distribution). P&eacute;ld&aacute;ul:
+                <ul>
+                    <li>Given a layer of block group centroids, the central feature weighted by population could be used to identify which art of town is the most accessible for a performing arts center.
+                    </li>
+                    <li>Given a layer of elk observations within a park over several years, mean center can be used to see where the elk congregate in summer and winter.
+                    </li>
+                    <li>Given a layer of fire incidents, the median center can be used to measure the central tendency of the fires without being affected by peripheral outliers.
+                    </li>
+                    <li>Given a layer of groundwater well samples, an ellipse can be used to determine how a contaminant is spreading.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             <br/>
         </div>
     <div id="AnalyzePatternsCategory" class="largesize">
-        <h2>Minták elemzése</h2>
+        <h2>Mintázatok elemzése</h2>
         <hr/>
         <p>Az al&aacute;bbi eszk&ouml;z&ouml;k seg&iacute;tenek azonos&iacute;tani, mennyis&eacute;gileg meghat&aacute;rozni &eacute;s megjelen&iacute;teni az adatok t&eacute;rbeli mint&aacute;zatait.  
             <ul>
@@ -355,6 +383,8 @@
                 <li>A  <b>Hot spotok keres&eacute;se</b> meghat&aacute;rozza a statisztikailag szignifik&aacute;ns klaszterez&eacute;st az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
                 </li>
                 <li>A  <b>Kiugr&oacute; &eacute;rt&eacute;kek keres&eacute;se</b> meghat&aacute;rozza, hogy tal&aacute;lhat&oacute;k-e statisztikailag szignifik&aacute;ns kiugr&oacute; &eacute;rt&eacute;kek az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
+                </li>
+                <li> <b>Find Point Clusters</b> finds clusters of point features within surrounding noise based on their spatial distribution.
                 </li>
                 <li>A  <b>Pontok interpol&aacute;l&aacute;sa</b> pontgyűjtem&eacute;nyekben tal&aacute;lt m&eacute;rt &eacute;rt&eacute;kek alapj&aacute;n előrejelzi az &eacute;rt&eacute;keket az &uacute;j helyeken.
                 </li>
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Ez az eszk&ouml;z egy t&eacute;rk&eacute;pet hoz l&eacute;tre, amely megjelen&iacute;ti az adatokban tal&aacute;lhat&oacute;, statisztikailag szignifik&aacute;ns klasztereket &eacute;s kiugr&oacute; &eacute;rt&eacute;keket. Az eszk&ouml;z haszn&aacute;lat&aacute;val azonos&iacute;thatja azokat a vektoros elemeket, amelyek &eacute;rt&eacute;kei szignifik&aacute;nsan elt&eacute;rnek a szomsz&eacute;dos vektoros elemek &eacute;rt&eacute;keitől.  Az eszk&ouml;z haszn&aacute;lat&aacute;val kereshet p&eacute;ld&aacute;ul szokatlan p&eacute;nzk&ouml;lt&eacute;si mint&aacute;zatokat, meghat&aacute;rozhatja, hol a leg&eacute;lesebbek a hat&aacute;rvonalak a j&oacute;m&oacute;d &eacute;s a szeg&eacute;nys&eacute;g k&ouml;z&ouml;tt a minta ter&uuml;leten, vagy meghat&aacute;rozhatja, hogy vannak-e az Egyes&uuml;lt &Aacute;llamokban olyan megy&eacute;k, amelyekben szokatlanul alacsony a v&aacute;rhat&oacute; &eacute;lettartam a szomsz&eacute;d megy&eacute;kkel &ouml;sszehasonl&iacute;tva.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pontklaszterek keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Pontklaszterek keres&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool detects areas where points are concentrated and where they are separated by areas that are empty or sparse. Points that are not part of a cluster are labeled as noise.
             </p>
             <br/>
         </div>

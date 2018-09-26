@@ -52,7 +52,7 @@
             <label class="esriAnalysisStepsLabel">${i18n.chooseDissolveLabel}</label>			
           </td>
           <td class="shortTextInput" width="1%">
-            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_analysisFieldHelpLink" esriHelpTopic="DissolveFields"></a> 
+            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_dissolveFieldsHelpNode" esriHelpTopic="DissolveFields"></a> 
           </td> 
         </tr>
         <tr>
@@ -84,28 +84,27 @@
             </label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="multiPartFeatures"></a> 
+            <a href="#" data-dojo-attach-point="_multipartHelpNode" class='esriFloatTrailing helpIcon' esriHelpTopic="multiPartFeatures"></a> 
           </td>
         </tr>      
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
-            <label class="esriAnalysisStepsLabel">${i18n.summarizeLabel}</label>
+            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_summaryLabel" >${i18n.summarizeLabel}</label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="SummaryFields"></a> 
+            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_summaryFieldsHelpNode" esriHelpTopic="SummaryFields"></a> 
           </td>             
         </tr>
-        <tr data-dojo-attach-point="_afterStatsRow">
-          <td colspan="3" class="clear"></td>
-        </tr>             
+        <tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget" 
+        data-dojo-props="layer:'', showGeoAnalyticsParams:${showGeoAnalyticsParams}, emptyValue:'', addAsRow:true">            
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="OutputName"></a> 
+            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_outputNameHelpNode" esriHelpTopic="OutputName"></a> 
           </td>             
         </tr>
         <tr>
@@ -126,7 +125,7 @@
     </div>
     <div data-dojo-attach-point="_aggregateToolContentButtons" style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
       <div class="esriExtentCreditsCtr">
-        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
          <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
            ${i18n.useMapExtent}

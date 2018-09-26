@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/dom-construct"],function(e,t){var i={};return i.renderFloatingTables=function(i,o,d,n){var a=n?i.backgroundFloatingTablesNode:i.foregroundFloatingTablesNode;if(t.empty(a),!o)return null;var l={};l.class="esriGEAbsoluteStretched adjustableGrid_floatingTablesSection",l.initialWidth=i.getAllowedWidth(),l.json=o,l.viewModel=i.viewModel,l.theme=i.theme,l.hasFixedLayout=!1,l.parentWidget=i,e.mixin(l,d);var r=i.viewModel.layoutBuilder.createElement("section",l,a);return r.setResizedHeight(i.getHeight()),r.setViewMode(i.getViewMode(),i.getSpecificViewMode()),r},i});
+define(["dojo/_base/lang","dojo/dom-construct"],function(e,i){var t={};return t.renderFloatingTables=function(t,n,o,a){var d=a?t.backgroundFloatingTablesNode:t.foregroundFloatingTablesNode;if(i.empty(d),!n)return null;var r={};r.class="esriGEAbsoluteStretched adjustableGrid_floatingTablesSection",r.initialWidth=t.getAllowedWidth(),r.json=n,r.viewModel=t.viewModel,r.theme=t.theme,r.hasFixedLayout=!1,r.parentWidget=t,r.currentFeatureIndex=t.currentFeatureIndex,r.initialViewMode=t.getViewMode(),r.initialSpecificViewMode=t.getSpecificViewMode(),e.mixin(r,o);var l=t.viewModel.layoutBuilder.createElement("section",r,d);return l.setResizedHeight(t.getHeight()),l},t});

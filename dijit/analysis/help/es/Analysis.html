@@ -44,7 +44,7 @@
         <p>La caja de herramientas An&aacute;lisis de entidades contiene una serie de herramientas a las que puede acceder y utilizar.  Estas tareas se clasifican en categor&iacute;as; las categor&iacute;as son simplemente agrupaciones l&oacute;gicas y no afectan en modo alguno a la forma en que accede o utiliza las tareas.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir datos</h2>
         <hr/>
         <p>Estas herramientas calculan recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos que se encuentran dentro de &aacute;reas o cerca de otras entidades.
@@ -56,6 +56,8 @@
                 <li> <b>Resumir cerca de</b> calcula estad&iacute;sticas de entidades y sus atributos que se encuentran dentro de una distancia especificada.
                 </li>
                 <li> <b>Resumir dentro de</b> calcula estad&iacute;sticas de entidades de &aacute;rea y atributos que se superponen entre s&iacute;.
+                </li>
+                <li> <b>Resumir centro y dispersi&oacute;n</b> calcula entidades centrales y distribuciones direccionales.
                 </li>
             </ul>
             
@@ -146,9 +148,35 @@
 <hr/>
             <p>Busca &aacute;reas (y porciones de &aacute;reas) que se superponen entre dos capas y calcula estad&iacute;sticas sobre la superposici&oacute;n. Por ejemplo:
                 <ul>
-                    <li>Dada una capa de &aacute;reas de cuencas hidrogr&aacute;ficas y una capa de &aacute;reas de uso del suelo, calcula la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica. 
+                    <li>Dada una capa de &aacute;reas de cuencas hidrogr&aacute;ficas y una capa de &aacute;reas de uso del suelo, calcule la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica. 
                     </li>
-                    <li>Dada una capa de parcelas de un condado y una capa de l&iacute;mites de ciudades, resume el valor medio de las parcelas vac&iacute;as en cada ciudad.
+                    <li>Dada una capa de parcelas de un condado y una capa de l&iacute;mites de ciudades, resuma el valor medio de las parcelas vac&iacute;as en cada ciudad.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir centro y dispersión</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Resumir centro y dispersi&oacute;n">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta utiliza entidades de puntos para calcular la entidad central, el centro medio, el centro mediano o la elipse (distribuci&oacute;n). Por ejemplo:
+                <ul>
+                    <li>Considerando una capa de centroides de grupo de bloques, la entidad central ponderada por poblaci&oacute;n podr&iacute;a usarse para identificar qu&eacute; parte de la ciudad es la m&aacute;s accesible para un centro de artes esc&eacute;nicas.
+                    </li>
+                    <li>Considerando una capa de observaciones del alce dentro de un parque durante varios a&ntilde;os, el centro medio puede utilizarse para ver d&oacute;nde se congrega el alce en verano y en invierno.
+                    </li>
+                    <li>Considerando una capa de incidentes de incendios, el centro mediano puede utilizarse para medir la tendencia central de los incendios sin verse afectada por valores at&iacute;picos perif&eacute;ricos.
+                    </li>
+                    <li>Considerando una capa de muestras de pozos de aguas subterr&aacute;neas, la elipse se puede utilizar para determinar el modo de propagaci&oacute;n de un contaminante.
                     </li>
                 </ul>
                 
@@ -346,16 +374,18 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analizar patrones</h2>
         <hr/>
-        <p>Estas herramientas te ayudan a identificar, cuantificar y visualizar los patrones espaciales de tus datos.  
+        <p>Estas herramientas le ayudan a identificar, cuantificar y visualizar los patrones espaciales de sus datos.  
             <ul>
                 <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las expande a trav&eacute;s del mapa.
                 </li>
                 <li> <b>Buscar puntos calientes</b> identifica clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
                 </li>
                 <li> <b>Buscar valores at&iacute;picos</b> determina si hay alg&uacute;n valor at&iacute;pico estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
+                </li>
+                <li> <b>Buscar cl&uacute;steres de puntos</b> encuentra cl&uacute;steres de entidades de punto dentro del ruido colindante en funci&oacute;n de su distribuci&oacute;n espacial.
                 </li>
                 <li> <b>Interpolar puntos</b> predice los valores de las nuevas ubicaciones en funci&oacute;n de las mediciones encontradas en un conjunto de puntos.
                 </li>
@@ -404,7 +434,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Esta herramienta crea un mapa que muestra agrupaciones y valores at&iacute;picos espaciales estad&iacute;sticamente significativos presentes en sus datos. Utilice esta herramienta para identificar entidades que tenga valores considerablemente distintos a sus vecinos.  Por ejemplo, puede utilizar esta herramienta para buscar patrones de gasto an&oacute;malos, determinar d&oacute;nde est&aacute;n los l&iacute;mites m&aacute;s marcados entre riqueza y pobreza en un &aacute;rea de estudio o determinar si hay condados en Estados Unidos con una esperanza de vida excepcionalmente baja en comparaci&oacute;n con sus vecinos.
+            <p>Esta herramienta crea un mapa que muestra agrupaciones y valores at&iacute;picos espaciales estad&iacute;sticamente significativos presentes en sus datos. Utilice esta herramienta para identificar entidades que tengan valores considerablemente distintos a sus vecinos.  Por ejemplo, puede utilizar esta herramienta para buscar patrones de gasto an&oacute;malos, determinar d&oacute;nde est&aacute;n los l&iacute;mites m&aacute;s marcados entre riqueza y pobreza en un &aacute;rea de estudio o determinar si hay condados en Estados Unidos con una esperanza de vida excepcionalmente baja en comparaci&oacute;n con sus vecinos.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar clústeres de puntos</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Buscar cl&uacute;steres de puntos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta detecta en qu&eacute; &aacute;reas existen concentraciones de puntos y d&oacute;nde est&aacute;n separados por &aacute;reas vac&iacute;as o con escasos puntos. Los puntos que no forman parte de un cl&uacute;ster se etiquetan como ruido.
             </p>
             <br/>
         </div>

@@ -46,7 +46,7 @@
         <hr/>
     <p>Poligoni koji se preklapaju ili koji dijele zajedničku granicu međusobno se spajaju da bi oblikovali jedinstveni poligon.    
     </p>
-    <p>Možete upravljati koje će se granice spojiti tako da odredite polje. Na primjer, ako imate sloj okruga i ako svaki okrug ima atribut  <i>State_Name</i>, možete ukloniti granice upotrebom atributa <i>State_Name</i>. Okruzi koji su jedan pored drugog međusobno će se spojiti ako imaju istu vrijednost za <i>State_Name</i>. Konačni je rezultat sloj državnih granica.
+    <p>Možete upravljati koje će se granice spojiti tako da odredite polje. Na primjer, ako imate sloj općina i ako svaka općina ima atribut  <i>State_Name</i>, možete ukloniti granice upotrebom atributa <i>State_Name</i>. Susjedne općine će se spojiti ako imaju istu vrijednost za <i>State_Name</i>. Konačni je rezultat sloj granica županija.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -69,13 +69,13 @@
                     <li> <b>Poligoni koji se preklapaju ili su jedno pored drugog</b> &ndash; dva ili vi&scaron;e poligona čije se granice preklapaju spojit će se u jedan poligon. Osim toga, poligoni koji su jedan pored drugoga (tj. dijele zajedničku granicu) spojit će se u jedan poligon.
                     </li>
                     <li> <b>Poligoni s istim vrijednostima polja</b> &ndash; poligoni koji se preklapaju ili dijele zajedničku granicu spojit će se u jedan poligon ako imaju istu vrijednost polja.
-                        <p>Na primjer, ako imate sloj okruga i ako svaki okrug ima polje  <i>State_Name</i>, možete ukloniti granice upotrebom polja <i>State_Name</i>. Okruzi koji su jedan pored drugog međusobno će se spojiti ako imaju istu vrijednost za <i>State_Name</i>. Konačni je rezultat sloj državnih granica.
+                        <p>Na primjer, ako imate sloj općina i ako svaka općina ima atribut  <i>State_Name</i>, možete ukloniti granice upotrebom atributa <i>State_Name</i>. Susjedne općine će se spojiti ako imaju istu vrijednost za <i>State_Name</i>. Konačni je rezultat sloj granica županija.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Ako je označena opcija  <b>Upotrijebit trenutačni obuhvat karte</b>, uklonit će se samo geoobjekti u ulaznom sloju koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, uklonit će se svi geoobjekti u ulaznom sloju, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+            <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, uklonit će se samo geoobjekti u ulaznom sloju koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, uklonit će se svi geoobjekti u ulaznom sloju, čak i ako se nalaze izvan trenutačnog obuhvata karte.
             </p>
         </div>
     </div>
@@ -83,7 +83,7 @@
         <div><h2>Stvori geoobjekte od više dijelova</h2></div>
         <hr/>
         <div>
-            <p>Digitalni prikaz mjesta ili objekta u ArcGIS-u koji imaju vi&scaron;e od jednog dijela, ali su definirani kao jedan geoobjekt jer referencira jedan skup atributa. U sloju država, primjerice, Havaji se mogu smatrati geoobjektom od vi&scaron;e dijelova jer se pojedinačni geometrijski dijelovi smatraju jednom državom. Geoobjekt od vi&scaron;e dijelova može biti točkasti, linijski ili poligonalni. Ovaj booleovski parametar nudi dvije opcije:
+            <p>Digitalni prikaz mjesta ili objekta u ArcGIS-u koji imaju vi&scaron;e od jednog dijela, ali su definirani kao jedan geoobjekt jer referencira jedan skup atributa. U sloju država, primjerice, Havaji se mogu smatrati geoobjektom od vi&scaron;e dijelova jer se pojedinačni geometrijski dijelovi smatraju jednom državom. Ovaj booleovski parametar nudi dvije opcije:
                 <ul>
                     <li>Istinito (označeno): izlazna usluga može sadržavati geoobjekte od vi&scaron;e dijelova.
                     </li>
@@ -98,7 +98,7 @@
         <div><h2>Dodaj statistiku</h2></div>
         <hr/>
         <div>
-            <p>Kada se poligoni spoje, možete sažeti njihove atribute. Na primjer, ako razgrađujete granicu između okruga na temelju  <i>State_Name</i>, a svaki okrug ima polje <i>Population</i>, možete izračunati ukupni zbroj za polje <i>Population</i> države.
+            <p>Kada se poligoni spoje, možete sažeti njihove atribute. Na primjer, ako razgrađujete granicu između općina na temelju  <i>State_Name</i>, a svaka općina ima polje <i>Population</i>, možete izračunati ukupni zbroj za polje <i>Population</i> županije.
             </p>
             <p>Dostupne vrste statistika su sljedeće:
             </p>

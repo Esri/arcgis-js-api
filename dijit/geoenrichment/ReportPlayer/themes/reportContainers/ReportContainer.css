@@ -1,4 +1,4 @@
-
+ 
 
 .esriGEReportPlayer_reportContainer {
 }
@@ -24,10 +24,6 @@
         height: auto;
         text-align: left;
         display: inline-block;
-    }
-
-    .esriGEReportPlayer_reportContainer.reportContainerPreviewMode .reportElement:hover .reportElement_coverElement {
-        background-color: rgba(0, 145, 251, 0.1) !important;
     }
 
     .esriGEReportPlayer_reportContainer.reportContainerPreviewMode .horizontalRuler {

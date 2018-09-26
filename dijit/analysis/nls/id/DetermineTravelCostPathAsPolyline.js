@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Pilih raster feature layer sumber untuk menentukan jalur dari",inputCostRasterLabel:"Pilih layer raster biaya perjalanan",inputDestinationLayerLabel:"Pilih raster atau feature layer tujuan untuk menentukan jalur ke",pathTypeLabel:"Pilih jenis jalur yang akan ditentukan (opsional)",bestSingle:"Tunggal Terbaik",eachCell:"Untuk Setiap Sel",eachZone:"Untuk Setiap Zona",outputPolylineName:"Nama polyline hasil",outputLayerName:"Biaya perjalanan optimal sebagai polyline ${layername}",drawDestinationPointLayerName:"Titik tujuan",drawSourcePointLayerName:"Titik sumber",itemDescription:"Feature layer yang dihasilkan dari menjalankan Tentukan Jalur Biaya Perjalanan sebagai Polyline pada ${layerName}. ",itemTags:"Hasil Analisis, Tentukan Jalur Biaya Perjalanan sebagai Polyline, ${layername} ${fieldname}",itemSnippet:"Feature layer yang dihasilkan dari Tentukan Jalur Biaya Perjalanan sebagai Polyline."});

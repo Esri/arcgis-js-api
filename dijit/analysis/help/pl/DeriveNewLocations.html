@@ -52,7 +52,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="Expression">
-        <div><h2>Wprowadź nowe lokalizacje spełniające następujące wyrażenie(-a)</h2></div>
+        <div><h2>Wyznacz nowe lokalizacje spełniające następujące wyrażenie(-a)</h2></div>
         <hr/>
         <div>
             <p>Kliknij przycisk  <b>Dodaj wyrażenie</b>, aby zdefiniować wyrażenie. Można dodać wiele wyrażeń. Po wprowadzeniu wyrażeń i&nbsp;kliknięciu przycisku <b>Uruchom analizę</b> obiekty w&nbsp;warstwie analizy filtrowane są według każdego z&nbsp;wyrażeń. Części obiekt&oacute;w spełniające warunki wszystkich wyrażeń zapisywane są w&nbsp;warstwie wynikowej.
@@ -67,10 +67,12 @@
                     </li>
                     <li> <b>przecina się</b>: obiekt lub części obiektu muszą nakładać się na obiekt w innej warstwie lub go przecinać. Na przykład znajdź obszary z&nbsp;roślinnością spaloną w&nbsp;wyniku wielu pożar&oacute;w w&nbsp;granicach parku narodowego. Spalone obszary poza granicami parku narodowego nie będą uwzględnione.
                     </li>
+                    <li> <b>najbliższy</b>: obiekt musi znajdować się najbliżej obiektu w innej warstwie. Na przykład, można znaleźć parki znajdujące się najbliżej poszczeg&oacute;lnych szk&oacute;ł.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Każde wyrażenie przestrzenne ma swoje zaprzeczenie:  <b>nie w&nbsp;odległości do</b>, <b>nie całkowicie zawiera</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecina się</b>.
+            <p>Każde wyrażenie przestrzenne ma swoje zaprzeczenie, z wyjątkiem wyrażenia  <b>najbliższy</b>: <b>nie w&nbsp;odległości do</b>, <b>nie całkowicie zawiera</b>, <b>nie całkowicie wewnątrz</b> oraz <b>nie przecina się</b>.
             </p> 
         </div>
     </div>

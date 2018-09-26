@@ -24,7 +24,7 @@
   width: 270px;
   z-index: 1;
 }
-.esriPopup a {
+.esriPopup a[href] {
   color: #336699;
   text-decoration: underline;
 }

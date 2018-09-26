@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({root:{chooseInputLayer:"Choose an input layer",addAVar:"Add a variable",distToNearest:"Distance to Nearest",attrOfInterest:"Attribute of Nearest",summaryNearby:"Summary of Nearby",summaryIntersecting:"Summary of Intersecting",distToNearestLabel:"The distance from the bin center to the nearest feature in the input layer",attrOfInterestLabel:"The value of a specified field from the nearest feature from the input layer",summaryNearbyLabel:"A statistic calculate on all featues found with the specified distance of the bin center",summaryIntersectingLabel:"A statistic calculated on all featues that intersect the bin",maxDistancefromCtr:"Maximum distance from bin center",fieldToIncude:"Field to include",statstoCalculate:"Statistic to calculate",summFeatuesWithin:"Summarize fetaures within",layerChangeWarnMsg:"Added variables for this input layer will be removed if the input layer is changed",validationErrorMsg:"Fix the validation errors before adding new variable",atleastOneVarMsg:"Add at least one variable to this selected layer"},ar:1,bs:1,ca:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,hi:1,hr:1,hu:1,id:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sr:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1});

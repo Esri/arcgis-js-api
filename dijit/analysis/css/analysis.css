@@ -593,6 +593,20 @@ td.subsectionLineDivider {
   width: 49%;
 }
 
+.esriAnalysis .mediumDivInput {
+  width: 40%;
+}
+
+.esriAnalysis .mediumDivInput .dijitInputField{
+  width: 100%;
+}
+
+.esriAnalysis .mediumDivInput .dijitSelectLabel{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 95%
+}
+
 .esriAnalysis .longInput {
   width: 85%;
   table-layout:fixed;
@@ -686,7 +700,7 @@ td.subsectionLineDivider {
 
 .esriAnalysis .attrSelect div.dijitReset.dijitInputField.dijitButtonText , 
 .esriAnalysis .statsSelect div.dijitReset.dijitInputField.dijitButtonText { 
-  width: 99%;
+  width: 85%;
   overflow: hidden;
   text-align: left;
 } 
@@ -829,6 +843,10 @@ td.subsectionLineDivider {
 
 
 
+.esriAnalysis .esriTableFixedLayout {
+  table-layout: fixed;
+}
+
 .esriAnalysis .esriMediumlabel3{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -843,15 +861,20 @@ td.subsectionLineDivider {
 .esriAnalysis .esriVeryShortlabel .dijitSelectLabel{
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 80px;
+  max-width: 95%;
 }
+
+.esriAnalysis .attributeJoin .dijitButtonText{
+  width: 80%;
+}
+
 .esriAnalysis .optionsTable {
   width: 100%;
 }
+
 .esriAnalysis .optionsClose .optionsTable {
   display: none;
 }
-
 
 .esriAnalysis .optionsOpen .optionsTable {
   display: table;
@@ -1241,6 +1264,10 @@ td.subsectionLineDivider {
 
 .esriAnalysis .esriRemapgrid .dgrid-resize-header-container {
   padding-left: 3px;
+}
+
+.esriAnalysis .esriRemapgrid table.dgrid-row-table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09)
 }
 
 .esriAnalysis .EnrichOptionsPage_Fields .dgrid-row.dgrid-row-odd { background-color:#ffffff !important; }
@@ -2050,6 +2077,11 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 .one-width {
   width: 100%;
 }
+
+.width-90{
+  width: 90%;
+}
+
 .strict-onebythree-width{
   width: 33.33% !important;
 }
@@ -2400,4 +2432,9 @@ button[disabled] {
   .esriAnalysis.esriMultiVariableForm .statsSelect span.dijitReset.dijitInline.dijitSelectLabel.dijitValidationTextBoxLabel {
     width: 86%;
     overflow: hidden;
+  }
+
+  .fullSpread{
+    width: 100%;
+    height: 100%;
   }

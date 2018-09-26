@@ -61,7 +61,6 @@
             </td>
           </tr>
           <tr>
-          <tr>
             <td colspan="3" class="clear"></td>
           </tr>
           <tr>
@@ -113,7 +112,7 @@
           <tr>
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
-              <label class="esriAnalysisStepsLabel"" data-dojo-attach-point="_addStatsLabel">${i18n.addStats}</label>
+              <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_addStatsLabel">${i18n.addStats}</label>
             </td>
             <td class="shortTextInput">
               <a href="#" class="esriFloatTrailing helpIcon" data-dojo-attach-point="_addStatsHelpLink" esriHelpTopic="StatisticsNoLayer"></a>
@@ -132,7 +131,7 @@
               <select class="longInput esriLongLabel esriLeadingMargin1" data-dojo-type="dijit.form.Select"  data-dojo-props="style:{width:'65%', tableLayout: 'fixed', overflowX:'hidden'}" data-dojo-attach-event="onChange:_handleShapeUnitsChange" data-dojo-attach-point="_shapeUnitsSelect"></select>
            </td>
          </tr>         
-         <!--<tr>
+         <!-- <tr>
            <td colspan="3">
               <label class="longTextInput">
                 <div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_addStatesCheck" data-dojo-attach-event="onChange:_handleStatsCheckChange" data-dojo-props="checked:'true'"></div>
@@ -140,11 +139,10 @@
               </label>
               <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="KeepBoundaryNoPoints"></a>
            </td>           
-          </tr>-->           
-          <tr data-dojo-attach-point="_afterStatsRow">
-            <td colspan="3" class="clear"></td>
-          </tr>
-          
+          </tr> -->           
+          <tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget" 
+            data-dojo-props="layer:'', showGeoAnalyticsParams:${showGeoAnalyticsParams}, emptyValue:'', addAsRow:true">
+          </tr>   
           <tr>
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
@@ -211,7 +209,7 @@
      </div>
     <div data-dojo-attach-point="_aggregateToolContentButtons" style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
       <div class="esriExtentCreditsCtr">
-        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
+        <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
          <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
            ${i18n.useMapExtent}

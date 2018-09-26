@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define([],function(){var e={};return e.isNumericField=function(e){switch(e&&e.type){case"esriFieldTypeSmallInteger":case"esriFieldTypeInteger":return"i";case"esriFieldTypeSingle":case"esriFieldTypeDouble":return"f"}return!1},e.isStringField=function(e){return e&&"esriFieldTypeString"==e.type||!1},e.isDateField=function(e){return e&&"esriFieldTypeDate"==e.type||!1},e.canShowField=function(i,r){if(!i||!i.name||"esriFieldTypeOID"===i.type)return!1;if("esriFieldTypeDate"===i.type)return"d";var t=e.isNumericField(i)||e.isStringField(i);return"f"===t&&!1===i.editable?null:(void 0===r&&(r=/^(OBJECTID|OID|FID)$/i),(!r||!r.test(i.name))&&(!0===t?"s":t))},e});
+define([],function(){var e={};e.isNumericField=function(e){switch(e&&e.type){case"esriFieldTypeSmallInteger":case"esriFieldTypeInteger":return"i";case"esriFieldTypeSingle":case"esriFieldTypeDouble":return"f"}return!1},e.isStringField=function(e){return e&&"esriFieldTypeString"==e.type||!1},e.isDateField=function(e){return e&&"esriFieldTypeDate"==e.type||!1};var i=/^(SHAPE__Area|SHAPE__Length)$/;return e.canShowField=function(r,t){if(!r||!r.name||"esriFieldTypeOID"===r.type)return!1;if("esriFieldTypeDate"===r.type)return"d";var n=e.isNumericField(r)||e.isStringField(r);return"f"===n&&!1===r.editable&&i.test(r.name)?null:(void 0===t&&(t=/^(OBJECTID|OID|FID)$/i),(!t||!t.test(r.name))&&(!0===n?"s":n))},e});

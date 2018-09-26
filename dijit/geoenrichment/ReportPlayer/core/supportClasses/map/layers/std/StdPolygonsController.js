@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+
+define(["dojo/_base/declare","dojo/Deferred","dojo/on","dojo/sniff","dojo/promise/all","dijit/Destroyable","esri/dijit/geoenrichment/ReportPlayer/countryConfig"],function(e,t,r,s,i,n,a){return e(n,{_calculatorName:null,_hasRegisteredLayers:!1,constructor:function(e){this._calculatorName=e,this._layerIndexes={},this._rendererJsons={},this._mapInfos={},this._graphicLayerInfos={}},getCalculatorName:function(){return this._calculatorName},_rendererJsons:null,getRendererJson:function(e){return this._rendererJsons[e]},setRendererJson:function(e,t){this._rendererJsons[e]=t},_layerIndexes:null,getLayerIndex:function(e,t){var r=a.getGeographiesModel().getLevels(),s=-1;return r.some(function(e,r){if(e.id===t)return s=r,!0}),this._layerIndexes[e]+s/r.length},setLayerIndex:function(e,t){this._layerIndexes[e]=t},_mapInfos:null,getMapInfo:function(e){return this._mapInfos[e]},getMapInfos:function(){var e=[];for(var t in this._mapInfos)e.push(this._mapInfos[t]);return e},setMapInfo:function(e,t){this._mapInfos[e]=t},_attributeFields:null,getAttributeFields:function(){return this._attributeFields},setAttributeFields:function(e){this._attributeFields=e},_shownFeatureAttributes:null,_featuresChangedHandlers:null,getShownFeatureAttributes:function(){return this._shownFeatureAttributes},setShownFeaturesChangedListener:function(e){this._featuresChangedHandlers=this._featuresChangedHandlers||[],this._featuresChangedHandlers.push(e)},setShownFeatureAttributes:function(e){this._shownFeatureAttributes=e,this._featuresChangedHandlers&&this._featuresChangedHandlers.forEach(function(e){e()})},_allFeatureAttributes:null,_loadAllFeaturesHandlers:null,getAllFeatureAttributes:function(){return this._allFeatureAttributes},setAllFeatureAttributes:function(e){this._allFeatureAttributes=e},setLoadAllFeaturesListener:function(e){this._loadAllFeaturesHandlers=this._loadAllFeaturesHandlers||[],this._loadAllFeaturesHandlers.push(e)},loadAllFeatures:function(){return this._loadAllFeaturesHandlers&&i(this._loadAllFeaturesHandlers.map(function(e){return e()}))},_highlightTableForAttributesFunc:null,_registerTableDfd:null,registerTable:function(e){return this._highlightTableForAttributesFunc=e.highlightTableForAttributes,this._registerTableDfd=new t,this._hasRegisteredLayers&&this._registerTableDfd.resolve(),this._registerTableDfd.promise},_graphicLayerInfos:null,setStdPolygonsLayer:function(e,t,r,s){this._unSetInfo(e);var i={graphicsLayer:t,getGraphicForAttributesFunc:s.getGraphicForAttributesFunc,setGraphicHighlightedFunc:s.setGraphicHighlightedFunc,layerMouseOverHandle:null,layerMouseOutHandle:null,highlightedGraphic:null};this._graphicLayerInfos[e]=i,this._addLayerListeners(i,r),this._hasRegisteredLayers||(this._hasRegisteredLayers=!0,this._registerTableDfd&&this._registerTableDfd.resolve())},_addLayerListeners:function(e,t){var i,n=this,a=e.graphicsLayer;e.layerMouseOverHandle=r(s("touch")?t:a,s("touch")?"mouse-down, mouse-move":"mouse-move",function(t){t.graphic&&t.graphic._graphicsLayer===a&&i!==t.graphic&&(e.layerMouseOutHandle&&e.layerMouseOutHandle.remove(),e.layerMouseOutHandle=null,i&&e.setGraphicHighlightedFunc(i,!1),i=t.graphic,n._highlightTableForAttributesFunc(i.attributes),e.setGraphicHighlightedFunc(i,!0),e.layerMouseOutHandle=r.once(a,"mouse-out",function(t){n._highlightTableForAttributesFunc(null),i&&e.setGraphicHighlightedFunc(i,!1),i=null}))})},highlightGraphicForAttributes:function(e){for(var t in this._graphicLayerInfos){var r=this._graphicLayerInfos[t];if(r.highlightedGraphic&&(r.setGraphicHighlightedFunc(r.highlightedGraphic,!1),r.highlightedGraphic=null),e){var s=r.getGraphicForAttributesFunc(e);s&&(r.setGraphicHighlightedFunc(s,!0),r.highlightedGraphic=s)}}},_unSetInfo:function(e){var t=this._graphicLayerInfos[e];delete this._graphicLayerInfos[e],t&&(t.layerMouseOverHandle&&t.layerMouseOverHandle.remove(),t.layerMouseOutHandle&&t.layerMouseOutHandle.remove())},_unSetLayers:function(){Object.keys(this._graphicLayerInfos).forEach(this._unSetInfo.bind(this)),this._graphicLayerInfos={}},destroy:function(){this._unSetLayers()}})});

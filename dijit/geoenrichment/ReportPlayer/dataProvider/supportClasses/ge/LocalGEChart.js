@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","./LocalGEBase"],function(t,e){return t(e,{_cacheData:!0,constructor:function(t,e){this._initGE(null,e,t.calculatorName)},getFieldValueAt:function(t,e){var a=this.getData(),n=a.features[e];return n&&n.attributes[t]||0}})});
+define(["dojo/_base/declare","./LocalGEBase","../AreaDataUtil"],function(a,e,t){return a(e,{_cacheData:!0,_areaIdToFeatureCache:null,constructor:function(a,e,r,i){var o;if(r){var s=t.combineAreaDataObjectCalculators(e,a,{removeDuplicates:!0});o={},o[a]={data:s.thisAreas[0],comparisonLevels:s.comparisonLevels}}else o=e[i||0];this._initGE(null,o,a)},getFieldValueAt:function(a,e){if(!this._areaIdToFeatureCache){this._areaIdToFeatureCache=[];this.getData().features.forEach(function(a){a.attributes.StdGeographyID&&(this._areaIdToFeatureCache[a.attributes.StdGeographyID]=a)},this)}var t=this._areaIdToFeatureCache[e];return t&&t.attributes[a]||0}})});

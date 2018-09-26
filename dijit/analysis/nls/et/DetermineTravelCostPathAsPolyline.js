@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Valige rasterkiht või vektorkiht, et määratleda teekonnad",inputCostRasterLabel:"Valige reisikulu rasterkiht",inputDestinationLayerLabel:"Valige raster või objekti sihtkoha kiht, et määratleda teed sihtkohta",pathTypeLabel:"Valige määratletavate teede tüüp (valikuline)",bestSingle:"Parim üksik",eachCell:"Igale pikslile",eachZone:"Igale tsoonile",outputPolylineName:"Tulemi murdjoone nimi",outputLayerName:"Kihi ${layername} optimaalne reisikulu murdjoonena",drawDestinationPointLayerName:"Sihtpunktid",drawSourcePointLayerName:"Lähtepunktid",itemDescription:"Objektikihi loomiseks kasutati kihil ${layerName} tööriista „Määratle reisikulu tee murdjoonena“. ",itemTags:"Analüüsi tulemus, Määratle reisikulu tee murdjoonena, ${layername} ${fieldname}",itemSnippet:"Objektikihi loomiseks kasutati tööriista „Määratle reisikulu tee murdjoonena“."});

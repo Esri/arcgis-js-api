@@ -17,49 +17,6 @@
 
 
 
-.esriGEReportPlayer_section .templateMapImage {
-    background-position: center;
-    background-size: cover;
-}
-
-    .esriGEReportPlayer_section .templateMapImage.templateImageWithThumbnail {
-        background-size: auto;
-    }
-
-.esriGEReportPlayer_section .templateLiveMap .esriAttributionItem,
-.esriGEReportPlayer_section .templateLiveMap .esriAttributionLastItem {
-    display: none !important;
-}
-
-
-.esriGEReportPlayer_section .templateLiveMap .esriSimpleSliderTR {
-    top: 35px;
-    right: 15px;
-}
-
-
-
-.esriGEReportPlayer_mapLegend {
-    position: absolute !important;
-    background-color: white;
-    min-width: 70px;
-    max-width: 200px;
-    overflow-y: auto;
-    cursor: move;
-    font-size: 10px; 
-    color: #4d4d4d;
-}
-
-    .esriGEReportPlayer_mapLegend .esriLegendService {
-        padding: 5px;
-    }
-
-    .esriGEReportPlayer_mapLegend .esriLegendServiceLabel {
-        word-break: break-word;
-    }
-
-
-
 .esriGEReportPlayer_section .shapeContainer_svgContainer {
     overflow: hidden;
     white-space: nowrap;

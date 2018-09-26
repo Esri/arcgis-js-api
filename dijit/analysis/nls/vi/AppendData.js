@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Chọn lớp để thêm vào",inputWarningLabel:"Cảnh báo: Lớp bạn thêm vào sẽ được sửa đổi.",inputHostedLayerWarning:"Lớp đã chọn không phải là lớp đối tượng được lưu trữ. Vui lòng chọn lớp đối tượng được lưu trữ để đổ vào.",appendLayerLabel:"Chọn lớp để thêm",filterLabel:"Thêm tất cả đối tượng hoặc xác định một tập hợp con (tùy chọn)",fieldMappingLabel:"Chọn cách thức thêm các trường (tùy chọn)",inputField:"Trường đầu vào",appendValue:"Thêm giá trị",expression:"Biểu thức"});

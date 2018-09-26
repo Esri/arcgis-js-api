@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["./ColumnDataUtil","./ColumnModifier","./ColumnsProcessor"],function(e,l,d,t){var i={};return i.recalcColumns=d.recalcColumns,i.recalcColumnsTableJson=d.recalcColumnsTableJson,i.adjustColumnWidth=l.adjustColumnWidth,i.getAffectedCells=l.getAffectedCells,i.getFieldWidth=e.getFieldWidth,i.setFieldWidth=e.setFieldWidth,i.calcFieldWidth=e.calcFieldWidth,i.recalcGridWidth=e.recalcGridWidth,i});
+define(["./ColumnDataUtil","./ColumnModifier","./ColumnsProcessor"],function(e,l,d){var t={};return t.recalcColumns=d.recalcColumns,t.recalcColumnsTableJson=d.recalcColumnsTableJson,t.adjustColumnWidth=l.adjustColumnWidth,t.getAffectedCells=l.getAffectedCells,t.getFieldWidth=e.getFieldWidth,t.setFieldWidth=e.setFieldWidth,t.calcFieldWidth=e.calcFieldWidth,t.recalcGridWidth=e.recalcGridWidth,t});

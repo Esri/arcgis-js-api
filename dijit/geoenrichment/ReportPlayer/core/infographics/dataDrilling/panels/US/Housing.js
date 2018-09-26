@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["../../ChartBuilder"],function(e){var l={};return l.renterExpenses={states:"n,a,i",defaultState:"a",fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Renter Expenses",points:[{label:"Renter's Insurance",fullName:"HousingHousehold.X3038_X"},{label:"Rent-Maint & Repair Services",fullName:"HousingHousehold.X3039_X"},{label:"Rent-Maint & Repair Material",fullName:"HousingHousehold.X3040_X"},{label:"Rent-Paint/Wallpaper & Supplies",fullName:"HousingHousehold.X3041_X"},{label:"Rent-Paint & Paper Tools/Equip",fullName:"HousingHousehold.X3042_X"},{label:"Rent-Other Supplies & Equip",fullName:"HousingHousehold.X3043_X"}],visualProps:{sorting:"Descending"}})}},l});

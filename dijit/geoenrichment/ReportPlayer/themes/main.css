@@ -12,7 +12,9 @@
 @import url('./reportContainers/ReportContainerStack.css');
 
 @import url('./ImagesAndShapes.css');
+@import url('./ImagesAndShapes_map.css');
 @import url('./SectionDynamicSettings.css');
+@import url('./SectionDynamicSettings_corrections.css');
 @import url('./TemplateSections.css');
 @import url('./PageOptionsDialog.css');
 @import url('./ConditionalStyleLegend.css');

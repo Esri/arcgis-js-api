@@ -126,7 +126,9 @@
         <div>
             <p>Meghat&aacute;rozza a c&eacute;l &eacute;s az &ouml;sszekapcsolt r&eacute;teg k&ouml;z&ouml;tti &ouml;sszekapcsol&aacute;s kezel&eacute;s&eacute;t, ha az &ouml;sszekapcsolt r&eacute;teg t&ouml;bb vektoros eleme kapcsol&oacute;dik azonos m&oacute;don a c&eacute;l r&eacute;teghez. Az al&aacute;bbi k&eacute;t &ouml;sszekapcsol&aacute;si művelet k&ouml;z&uuml;l v&aacute;laszthat:
                 <ul>
-                    <li> <b>Egy az egyhez &ouml;sszekapcsol&aacute;s</b> &ndash; ez az opci&oacute; az &ouml;sszekapcsolt r&eacute;teg első egyező vektoros elem&eacute;t &ouml;sszekapcsolja a c&eacute;l r&eacute;teg első egyező vektoros elem&eacute;vel.  Statisztikai adatok hozz&aacute;ad&aacute;sakor k&iacute;v&aacute;ns&aacute;g szerint a p&aacute;ros&iacute;tott, &ouml;sszekapcsolt vektoros elemek a c&eacute;l r&eacute;teg egyes vektoros elemeihez &ouml;sszes&iacute;thetők.  Az &ouml;sszekapcsolt vektoros elemek sz&aacute;m&aacute;nak hozz&aacute;ad&aacute;sa alap&eacute;rtelmez&eacute;s szerint megt&ouml;rt&eacute;nik.
+                    <li> <b>Join one to one</b>&mdash; This option joins the features in the target layer to a single feature in the join layer. How features are joined is determined by the <b>Add statistics</b> parameter or <b>Define which record is kept</b> parameter. If <b>Add statistics</b> is used, all matched joined features will be summarized to each feature in the target layer. Az &ouml;sszekapcsolt vektoros elemek sz&aacute;m&aacute;nak hozz&aacute;ad&aacute;sa alap&eacute;rtelmez&eacute;s szerint megt&ouml;rt&eacute;nik.If <b>Define which record is kept</b>
+ is used, you can choose to either keep the first matching record (default) or to keep a matching record based on an expression. An expression can use either a numeric field
+(option for largest or smallest record) or a date field (option for newest or oldest).
                     </li>
                     <li> <b>Egy a sokhoz &ouml;sszekapcsol&aacute;s</b> &ndash; ez az opci&oacute; az &ouml;sszekapcsolt r&eacute;teg &ouml;sszes egyező vektoros elem&eacute;t &ouml;sszekapcsolja a c&eacute;l r&eacute;teggel.  Az eredm&eacute;ny r&eacute;teg a c&eacute;l vektoros elem t&ouml;bb bejegyz&eacute;s&eacute;t fogja tartalmazni.
                     </li>
@@ -161,7 +163,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Eredményréteg neve</h2></div>
+        <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
             <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve.  Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
@@ -171,10 +173,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Tárolás központilag tárolt vektoros réteges nézetként</h2></div>
+        <div><h2>Create results as hosted feature layer view</h2></div>
         <hr/>
         <div>
-            <p>Az eredm&eacute;nyek k&ouml;zpontilag t&aacute;rolt vektoros r&eacute;teges n&eacute;zetk&eacute;nt val&oacute; t&aacute;rol&aacute;sa lehetőv&eacute; teszi az adatok naprak&eacute;szen tart&aacute;s&aacute;t a forr&aacute;sadatok v&aacute;ltoz&aacute;s&aacute;nak megfelelően.  Az &ouml;sszekapcsol&aacute;sokat tartalmaz&oacute; k&ouml;zpontilag t&aacute;rolt vektoros r&eacute;teges n&eacute;zetek csak olvashat&oacute;k lesznek, valamint elemz&eacute;s&uuml;k &eacute;s t&aacute;rol&aacute;suk nem ker&uuml;l kreditekbe. 
+            <p>Creating results as a hosted feature layer view allows the data to stay up-to-date as the source data changes.  Az &ouml;sszekapcsol&aacute;sokat tartalmaz&oacute; k&ouml;zpontilag t&aacute;rolt vektoros r&eacute;teges n&eacute;zetek csak olvashat&oacute;k lesznek, valamint elemz&eacute;s&uuml;k &eacute;s t&aacute;rol&aacute;suk nem ker&uuml;l kreditekbe. 
+            </p>
+            <p>You can create a hosted feature layer view from the analysis results if all of the following conditions are met:
+                <ul>
+                    <li>You are the owner of both layers.
+                    </li>
+                    <li>Both layers are hosted feature layers.
+                    </li>
+                    <li>You are performing an attribute based join.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

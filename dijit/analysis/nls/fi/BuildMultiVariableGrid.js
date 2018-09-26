@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({binsLabel:"Valitse niiden lohkojen tyyppi, joita käytetään useita muuttujia sisältävän ruudukon luomiseen",layersAttrLabel:"Valitse lähtöaineiston karttatasot ja muuttujat, jotka haluat sisällyttää ruudukkoon",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Luo useita muuttujia sisältävä ruudukko -toiminto.",itemTags:"Analyysitulos, Luo useita muuttujia sisältävä ruudukko",itemSnippet:"Kohdekarttataso, joka on luotu Luo useita muuttujia sisältävä ruudukko -toiminnolla",addVariables:"Lisää muuttujia"});

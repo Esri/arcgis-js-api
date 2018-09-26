@@ -126,7 +126,7 @@
         <div>
             <p>Hiermit wird ermittelt, wie Verbindungen zwischen dem Ziel- und dem Join-Layer verarbeitet werden, wenn mehrere Features im Join-Layer dieselbe Beziehung mit dem Ziel-Layer aufweisen, mit dem sie verbunden sind. Es stehen folgende zwei Verbindungsvorg&auml;nge zur Auswahl:
                 <ul>
-                    <li> <b>Eins zu eins verbinden</b>: Mit dieser Option wird das erste &uuml;bereinstimmende Feature im Join-Layer mit dem ersten &uuml;bereinstimmenden Feature im Ziel-Layer verbunden.  Beim Hinzuf&uuml;gen von Statistiken k&ouml;nnen abgeglichene verbundene Features optional in jedem Feature des Ziel-Layers zusammengefasst werden.  Die Anzahl der verbundenen Features wird standardm&auml;&szlig;ig hinzugef&uuml;gt.
+                    <li> <b>Eins zu eins verbinden</b>: Mit dieser Option werden die Features im Ziel-Layer mit jeweils einem Feature im Join-Layer verbunden. Wie die Features verbunden werden, wird mit dem Parameter <b>Statistiken hinzuf&uuml;gen</b> oder dem Parameter <b>Festlegen, welcher Datensatz erhalten bleibt</b> festgelegt. Wird <b>Statistiken hinzuf&uuml;gen</b> verwendet, werden alle abgeglichenen verbundenen Features in den jeweiligen Features des Ziel-Layers zusammengefasst. Die Anzahl der verbundenen Features wird standardm&auml;&szlig;ig hinzugef&uuml;gt. Wird <b>Festlegen, welcher Datensatz erhalten bleibt</b> verwendet, k&ouml;nnen Sie ausw&auml;hlen, ob der erste abgeglichene Datensatz erhalten bleibt (Standardeinstellung) oder ob ein abgeglichener Datensatz basierend auf einem Ausdruck beibehalten wird. F&uuml;r einen Ausdruck kann entweder ein numerisches Feld (Option f&uuml;r den kleinsten oder gr&ouml;&szlig;ten Datensatz) oder ein Datumsfeld (Option f&uuml;r den neuesten oder &auml;ltesten Datensatz) verwendet werden.
                     </li>
                     <li> <b>Eins zu vielen verbinden</b>: Mit dieser Option werden alle &uuml;bereinstimmenden Features im Join-Layer mit dem Ziel-Layer verbunden.  Der Ergebnis-Layer enth&auml;lt mehrere Datens&auml;tze des Ziel-Features.
                     </li>
@@ -171,10 +171,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Als Sicht eines gehosteten Feature-Layers speichern</h2></div>
+        <div><h2>Erstellen von Ergebnissen als Sicht eines gehosteten Feature-Layers</h2></div>
         <hr/>
         <div>
-            <p>Wenn Sie die Ergebnisse als Sicht eines gehosteten Feature-Layers speichern, bleiben die Daten im Falle von &Auml;nderungen an den Quelldaten aktuell. Sichten gehosteter Feature-Layer, die Verbindungen enthalten, sind schreibgesch&uuml;tzt. F&uuml;r die Analyse und das Speichern werden keine Credits verbraucht. 
+            <p>Wenn Sie die Ergebnisse als Sicht eines gehosteten Feature-Layers erstellen, bleiben die Daten im Falle von &Auml;nderungen an den Quelldaten aktuell. Sichten gehosteter Feature-Layer, die Verbindungen enthalten, sind schreibgesch&uuml;tzt. F&uuml;r die Analyse und das Speichern werden keine Credits verbraucht. 
+            </p>
+            <p>Sie k&ouml;nnen aus den Analyseergebnissen eine Sicht eines gehosteten Feature-Layers erstellen, wenn alle der folgenden Bedingungen erf&uuml;llt werden:
+                <ul>
+                    <li>Sie sind der Besitzer der beiden Layer.
+                    </li>
+                    <li>Beide Layer sind gehostete Feature-Layer.
+                    </li>
+                    <li>Sie f&uuml;hren eine auf Attributen basierende Verkn&uuml;pfung durch.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

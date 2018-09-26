@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["./GridDataUtil","../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(e,o){return{syncParentFieldInfoWithElementState:function(i,n){if(i&&n){var t=e.getFieldInfo(i);t&&(t.isChart||(t.isImage?e.setFieldInfo(i,o.createFieldInfoFromImage(n.toJson(),n.imageTriggerJson)):t.isShape?e.setFieldInfo(i,o.createFieldInfoFromShape(n.toJson())):t.isReportSection?e.setFieldInfo(i,o.createFieldInfoFromSection(n.toJson())):t.isInfographic&&e.setFieldInfo(i,o.createFieldInfoFromInfographic(n.toJson()))))}}}});

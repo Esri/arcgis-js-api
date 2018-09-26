@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valitse rasteri tai kohdesijainnin karttataso etäisyyden laskemiseksi kohteeseen",maxDistanceLabel:"Laskettava enimmäisetäisyys (valinnainen)",outputCellSize:"Tulosaineiston solukoko (valinnainen)",resultDistLayerName:"Tuloksena olevan etäisyyskarttatason nimi",resultDirectionLayerName:"Tuloksena olevan suuntakarttatason nimi (valinnainen)",resultAllocationLayerName:"Tuloksena olevan allokaatiokarttatason nimi (valinnainen)",outputLayerName:"Karttatason ${layername} laskettu etäisyys",allocationFieldLabel:"Valitse allokointikenttä (valinnainen)",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Laske etäisyys karttatasossa ${layerName}. ",itemTags:"Analyysin tulos, Laske etäisyys, ${layername}, ${fieldname}",itemSnippet:"Laske etäisyys -toiminnolla luotu kohdekarttataso."});

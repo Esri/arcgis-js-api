@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Report Player Sample JS API 3.24</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.25/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.25/esri/css/esri.css">
+
+    <script src="https://js.arcgis.com/3.25/"></script>
+
+    <script>
+    </script>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-size: 13px;
+            font-family: "Avenir Next";
+        }
+    </style>
+
+    <script>
+
+        require([
+            "dojo/when",
+
+            "esri/IdentityManager",
+            "esri/arcgis/OAuthInfo",
+            "esri/urlUtils",
+
+            "esri/dijit/geoenrichment/ReportPlayer/ReportPlayer",
+            "esri/dijit/geoenrichment/ReportPlayer/PlayerResizeModes",
+            "esri/dijit/geoenrichment/ReportPlayer/PlayerThemes",
+            "esri/dijit/geoenrichment/ReportPlayer/DataProviderGE",
+            "esri/dijit/geoenrichment/ReportPlayer/PlayerCommands",
+
+            "dojo/domReady!"
+        ],
+            function (
+                when,
+
+                esriId,
+                ArcGISOAuthInfo,
+                urlUtils,
+
+                ReportPlayer,
+                PlayerResizeModes,
+                PlayerThemes,
+                DataProviderGE,
+                PlayerCommands
+            ) {
+
+                // All requests to geoenrich.arcgis.com, arcgis.com will proxy to the proxyUrl defined in this object.
+                urlUtils.addProxyRule({
+                    urlPrefix: "geoenrich.arcgis.com",
+                    proxyUrl: "/Proxy/proxy.ashx"
+                });
+
+                urlUtils.addProxyRule({
+                    urlPrefix: "www.arcgis.com",
+                    proxyUrl: "/Proxy/proxy.ashx"
+                });
+
+                var PORTAL_URL = "https://www.arcgis.com";
+
+                var analysisJson = [{
+                    "name": "Area name",
+                    "shortName": "Area name (short)",
+                    "description": "Area description",
+                    "address": "Area address",
+                    "latitude": "Area Lat.",
+                    "longitude": "Area Long.",
+                    "feature": {
+                        "geometry": {
+                            "rings": [
+                                [
+                                    [-8238372.646123883, 4971599.356069453],
+                                    [-8236117.753789412, 4970600.8973874515],
+                                    [-8235730.791333708, 4968556.206880769],
+                                    [-8240211.912117044, 4969607.216019718],
+                                    [-8238372.646123883, 4971599.356069453]
+                                ]
+                            ],
+                            "spatialReference": {
+                                "wkid": 102100
+                            }
+                        },
+                        "attributes": {
+                            "ATTR_1": 1000.12345,
+                            "ATTR_2": 2000.12345,
+                            "ATTR_3": 3000.12345
+                        },
+                        "symbol": {
+                            "color": [
+                                255 * Math.random(),
+                                255 * Math.random(),
+                                255 * Math.random(),
+                                50
+                            ],
+                            "outline": {
+                                "color": [
+                                    255 * Math.random(),
+                                    255 * Math.random(),
+                                    255 * Math.random(),
+                                    255
+                                ],
+                                "width": 1.5,
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid"
+                            },
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid"
+                        },
+
+                        // emulate attributes
+
+                        "infoTemplate": {
+                            "fieldInfos": [
+                                {
+                                    "fieldName": "ATTR_1",
+                                    "label": "Attribute 1",
+                                    "format": { places: 1 },
+                                    "visible": true
+                                },
+                                {
+                                    "fieldName": "ATTR_2",
+                                    "label": "Attribute 2",
+                                    "format": { places: 2 },
+                                    "visible": true
+                                },
+                                {
+                                    "fieldName": "ATTR_3",
+                                    "label": "Attribute 3",
+                                    "format": { places: 3 },
+                                    "visible": true
+                                }
+                            ]
+                        }
+                    }
+                }];
+
+                //--------------------------------------------------------------------------
+                //
+                //  Methods: run player
+                //
+                //--------------------------------------------------------------------------
+
+                var runReport = function () {
+
+                    var dataProvider = new DataProviderGE();
+                    dataProvider.registerCommand(PlayerCommands.PDF);
+                    dataProvider.registerCommand(PlayerCommands.IMAGE);
+                    dataProvider.registerCommand(PlayerCommands.PRINT);
+                    dataProvider.registerCommand(PlayerCommands.DYNAMIC_HTML);
+
+                    var player = new ReportPlayer({
+                        isSlidesView: false,
+                        theme: PlayerThemes.DARK,
+                        dataProvider: dataProvider,
+                        resizeMode: PlayerResizeModes.FIT_WINDOW,
+                        config: {
+                            esriDijitCssUrl: "https://js.arcgis.com/3.25/dijit/themes/claro/claro.css",
+                            esriCssUrl: "https://js.arcgis.com/3.25/esri/css/esri.css",
+                            playerSourceRootUrl: "https://js.arcgis.com/3.25/" 
+                        }
+                    }).placeAt(playerDiv);
+
+                    var params = {
+                        portalUrl: PORTAL_URL,
+                        countryID: "US",
+                        reportID: "demographic-summary",
+                        analysisAreas: analysisJson
+                    };
+
+                    when(player.playReport(params, { waitUntilAllContentIsReady: true }), function () {
+
+                        // Automatically download an image of the generated infographic report
+                        when(player.executeCommand(PlayerCommands.IMAGE, {
+                            skipSavingFile: false // true - Array of image files { name: String, data: Blob } will be returned, false - files will be downloaded
+                        }), function (imageFiles) {
+                            alert(imageFiles);
+                            // work with image files
+                        });
+
+                    });
+                }
+
+                runReport();
+            });
+
+    </script>
+</head>
+
+<body class="claro">
+    <div id="playerDiv"></div>
+</body>
+
+</html>

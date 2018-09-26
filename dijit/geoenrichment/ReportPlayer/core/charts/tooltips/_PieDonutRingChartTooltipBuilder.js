@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildPieDonutRingChartTooltip:function(i,o){l.addTitle(o,i.label,i.color);var r=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);if(l.addRowOffset(r),i.isUnavailableData)l.addLabel(t.unavailableData,r);else{l.addLabel(e.substitute(t.pieChartTooltip_label,{value:i.valueLabel,total:i.sumValueLabel}),r);var d=l.buildStatLabels(i,o,t.weight,t.minValue,t.maxValue,t.avgValue);l.formatTable(d)}}}});

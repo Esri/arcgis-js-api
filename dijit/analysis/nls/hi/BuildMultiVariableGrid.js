@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({binsLabel:"मल्टी-वेरिएबल ग्रिड को बनाने के लिए उपयोग की जाने वाली बिन के प्रकार को चुनें",layersAttrLabel:"ऐसी इनपुट लेयर और वेरिएबल चुनें, जिन्हें आप ग्रिड में शामिल करना चाहते हैं",itemDescription:"बिल्ड मल्टी-वेरिएबल ग्रिड चलाने से जनरेट की गई फ़ीचर लेयर।",itemTags:"विश्लेषण के परिणाम, मल्टी-वेरिएबल ग्रिड बनाएं",itemSnippet:"बिल्ड मल्टी-वेरिएबल ग्रिड से जनरेट हुई फ़ीचर लेयर",addVariables:"वेरिएबल जोड़ें"});

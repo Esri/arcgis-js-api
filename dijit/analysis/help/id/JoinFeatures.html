@@ -126,7 +126,10 @@
         <div>
             <p>Menentukan bagaimana gabungan antara layer target dan layer gabungan akan ditangani jika terdapat beberapa fitur pada layer gabungan memiliki hubungan yang sama dengan layer target. Berikut ini adalah dua operasi penggabungan yang dapat dipilih:
                 <ul>
-                    <li> <b>Gabungkan satu ke satu</b>&mdash;Opsi ini menggabungkan fitur pertama yang cocok di layer penggabungan dengan fitur pertama yang cocok di layer sasaran.  Atau, jika statistik ditambahkan, fitur gabungan yang cocok akan diringkas ke setiap fitur di layer sasaran.  Jumlah fitur gabungan akan ditambahkan secara default.
+                    <li> <b>Gabungkan satu ke satu</b>&mdash; Opsi ini menggabungkan fitur di layer target ke fitur tunggal di layer gabungan. Bagaimana fitur digabungkan ditentukan oleh parameter <b>Tambahkan statistik</b> atau parameter <b>Tentukan catatan mana yang disimpan</b>. Jika <b>Tambahkan statistik</b> digunakan, semua fitur gabungan yang cocok akan diringkas ke setiap fitur di layer sasaran. Jumlah fitur gabungan akan ditambahkan secara default.
+Jika <b>Tentukan catatan mana yang disimpan</b>
+ digunakan, Anda dapat memilih untuk menyimpan cacatan pertama yang cocok (default) atau untuk menyimpan catatan yang cocok berdasarkan ekspresi. Ekspresi dapat menggunakan baik kolom numerik
+(opsi untuk catatan terbesar atau terkecil) maupun kolom tanggal (opsi untuk terbaru atau terlama).
                     </li>
                     <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target.  Layer hasil akan berisi beberapa rekaman fitur target.
                     </li>
@@ -150,9 +153,9 @@
                 </li>
                 <li>Maksimum
                 </li>
-                <li>Rata-rata
+                <li>Rata-Rata
                 </li>
-                <li>Simpangan Baku
+                <li>Deviasi Standar
                 </li>
             </ul>
             
@@ -171,10 +174,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Simpan sebagai tampilan feature layer yang di-host</h2></div>
+        <div><h2>Buat hasil sebagai tampilan feature layer yang di-host</h2></div>
         <hr/>
         <div>
-            <p>Menyimpan hasil sebagai tampilan feature layer yang di-host memungkinkan data untuk tetap diperbarui seiring dengan perubahan data sumber.  Tampilan feature layer yang di-host yang berisi gabungan akan bersifat baca-saja dan tidak menggunakan kredit untuk analisis dan penyimpanan. 
+            <p>Membuat hasil sebagai tampilan feature layer yang di-host memungkinkan data untuk tetap diperbarui seiring dengan perubahan data sumber.  Tampilan feature layer yang di-host yang berisi gabungan akan bersifat baca-saja dan tidak menggunakan kredit untuk analisis dan penyimpanan. 
+            </p>
+            <p>Anda dapat membuat tampilan feature layer yang di-host dari hasil analisis jika persyaratan berikut ini terpenuhi:
+                <ul>
+                    <li>Anda adalah pemilik kedua layer.
+                    </li>
+                    <li>Kedua layer adalah feature layer yang di-host.
+                    </li>
+                    <li>Anda melakukan gabungan berdasarkan atribut.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

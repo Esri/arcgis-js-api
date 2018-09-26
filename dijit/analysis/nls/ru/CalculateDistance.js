@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите растровый или векторный слой местоположений для вычисления расстояний",maxDistanceLabel:"Максимальное вычисляемое значение (дополнительно)",outputCellSize:"Размер выходной ячейки (дополнительно)",resultDistLayerName:"Имя итогового слоя расстояния",resultDirectionLayerName:"Имя итогового слоя направления (дополнительно)",resultAllocationLayerName:"Имя итогового слоя распределения (дополнительно)",outputLayerName:"Вычисленное расстояние ${layername}",allocationFieldLabel:"Выберите поле распределения (дополнительно)",itemDescription:"Векторный слой, созданный инструментом Вычислить расстояние для ${Layername}. ",itemTags:"Результат анализа, CalculateDistance, ${layername}, ${fieldname}",itemSnippet:"Векторный слой, полученный инструментом CalculateDistance."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Å_Choose flow direction layer_________ö",pourPointLayerLabel:"Å_Choose pour point raster or feature layer_____________ö",pourPointField:"Å_Choose pour point field________ö",resultLayerName:"Å_Result layer name______ö",outputLayerName:"Å_Watershed of ${layername}_________ö",itemDescription:"Å_Feature layer generated from running the Summarize center and dispersion on ${layerName}____________________________ö. ",itemTags:"Å_Analysis Result, Watershed, ${layername} ${fieldname}_________________ö",itemSnippet:"Å_Feature layer generated from Watershed_____________ö."});
+define({inputLayerLabel:"Áramlási irány réteg kiválasztása",pourPointLayerLabel:"Kifolyási pont raszter vagy vektoros elem réteg kiválasztása",pourPointField:"Kifolyási pont mező kiválasztása",resultLayerName:"Eredmény réteg neve",outputLayerName:"${layername} vízgyűjtő területe",itemDescription:"A Középpont és szóródás összefoglalása ${layerName} rétegen történő futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Vízgyűjtő terület, ${layername}, ${fieldname}",itemSnippet:"A vízgyűjtő terület alapján létrehozott vektoros réteg."});

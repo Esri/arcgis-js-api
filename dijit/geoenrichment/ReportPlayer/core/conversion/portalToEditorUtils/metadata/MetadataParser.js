@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./DemographicCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],function(a,r,e,s,t){var l={};return l.parseMetadataXML=function(l,o,c){c.log&&c.log(l.data);var u=a.parseXml(l.data);u&&u.tags&&(t.parseTradeAreaCalculators(u,c),r.parseDemographicCalculators(u,o,c),e.parseLocatorCalculators(u,o,c),s.parseMapCalculators(u,o))},l});

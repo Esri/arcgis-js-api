@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/Deferred","dojo/promise/all","esri/dijit/geoenrichment/utils/DataUtil","./DataResource","./FileContent"],function(e,t,n,r,a,o){function i(e,n,a){return a=a||function(e){return o.getContentConversionType(r.getContentType(e))},n.getFileContent(!0).then(function(n){var r=a(e,n);if(r){var o;switch(r){case"json":case"text":if(o=decodeURIComponent(escape(n.data)),"json"==r)try{o=JSON.parse(o)}catch(e){return t.reject(e)}break;case"base64":o=n.getBase64Data();break;default:o=n.data}return{name:e,data:o}}})}var s=e(null,{items:null,constructor:function(){this.items=[]},addDataResource:function(e,t){this.items.push({name:e,resource:t})},addFileResource:function(e,t,n){"object"==typeof t&&(t instanceof ArrayBuffer||t.buffer instanceof ArrayBuffer)?t=t.buffer||t:(t=o.fromFileData(e,t,n).data,t=r.binaryStringToByteArray(t).buffer),this.addDataResource(e,new a(t))},getResourceFiles:function(e){return n(this.items.map(function(t){return i(t.name,t.resource,e)}))}});return s.getResourceFile=i,s});

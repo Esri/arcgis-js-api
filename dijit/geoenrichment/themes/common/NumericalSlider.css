@@ -1,53 +1,54 @@
 .esriGENumericalSlider {
 }
 
-.esriGENumericalSliderContainer {
-    width: 125px;
-    height: 30px;
-    display: inline-block;
-    position: relative;
-    bottom: 2px;
-    float: left;
-}
-
-.esriGENumericalSliderMinValueTextBox,
-.esriGENumericalSliderMaxValueTextBox {
-    width: 65px;
-    margin-top: 3px;
-    margin-right: 4px;
-    margin-left: 4px;
-    float: left;
-}
-
-    .esriGENumericalSliderMinValueTextBox .dijitTextBox,
-    .esriGENumericalSliderMaxValueTextBox .dijitTextBox {
-        width: 65px;
+    .esriGENumericalSlider .esriGENumericalSliderContainer {
+        width: 125px;
+        height: 30px;
+        display: inline-block;
+        position: relative;
+        bottom: 2px;
+        float: left;
     }
 
-.dj_rtl .esriGENumericalSliderContainer,
-.dj_rtl .esriGENumericalSliderMinValueTextBox,
-.dj_rtl .esriGENumericalSliderMaxValueTextBox {
+    .esriGENumericalSlider .esriGENumericalSliderMinValueTextBox,
+    .esriGENumericalSlider .esriGENumericalSliderMaxValueTextBox {
+        width: 65px;
+        margin-top: 3px;
+        margin-right: 4px;
+        margin-left: 4px;
+        float: left;
+    }
+
+        .esriGENumericalSlider .esriGENumericalSliderMinValueTextBox .dijitTextBox,
+        .esriGENumericalSlider .esriGENumericalSliderMaxValueTextBox .dijitTextBox {
+            width: 65px;
+        }
+
+.dj_rtl .esriGENumericalSlider.esriGENumericalSliderContainer,
+.dj_rtl .esriGENumericalSlider .esriGENumericalSliderMinValueTextBox,
+.dj_rtl .esriGENumericalSlider .esriGENumericalSliderMaxValueTextBox {
     float: right;
 }
 
-.esriGENumericalSliderContainer .dojoxRangeSlider {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSlider {
     position: relative;
 }
 
-.esriGENumericalSliderContainer .dijitSliderButtonContainerH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderButtonContainerH {
     padding: 0 2px 0 2px;
 }
 
-.esriGENumericalSliderContainer .dijitSliderH, .esriGENumericalSliderContainer .dijitSliderBarH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderH,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderBarH {
     height: 20px;
 }
 
-.esriGENumericalSliderContainer .dijitSliderBumperH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderBumperH {
     height: 20px !important;
     width: 0px !important;
 }
 
-.esriGENumericalSliderContainer .dijitSliderImageHandleH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderImageHandleH {
     
     background-image: url("./images/sliderThumb.svg");
     height: 20px;
@@ -57,48 +58,49 @@
     background-position: 3px 4px !important;
 }
 
-.esriGENumericalSliderContainer .dijitSlider .dijitSliderProgressBarH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSlider .dijitSliderProgressBarH {
     opacity: 0;
 }
 
-.esriGENumericalSliderContainer .dijitSliderRemainingBarH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderRemainingBarH {
     background-color: transparent !important;
     z-index: 10;
 }
 
-.esriGENumericalSliderContainer .dojoxRangeSliderBarContainer {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSliderBarContainer {
     border-bottom: 1px #767766 solid;
 }
 
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBarH,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderLeftBumper,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarH,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRightBumper,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBar,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderBottomBumper,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarV,
-.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderTopBumper .esriGENumericalSliderContainer .dijitSliderProgressBarH,
-.esriGENumericalSliderContainer .dijitSliderLeftBumper,
-.esriGENumericalSliderContainer .dijitSliderRemainingBarH,
-.esriGENumericalSliderContainer .dijitSliderRightBumper,
-.esriGENumericalSliderContainer .dijitSliderProgressBar,
-.esriGENumericalSliderContainer .dijitSliderBottomBumper,
-.esriGENumericalSliderContainer .dijitSliderRemainingBarV,
-.esriGENumericalSliderContainer .dijitSliderTopBumper {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBarH,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderLeftBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarH,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRightBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBar,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderBottomBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarV,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderTopBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderProgressBarH,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderLeftBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderRemainingBarH,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderRightBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderProgressBar,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderBottomBumper,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderRemainingBarV,
+.esriGENumericalSlider .esriGENumericalSliderContainer .dijitSliderTopBumper {
     border: 0px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-.esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderMoveableH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderMoveableH {
     margin-left: -10px;
 }
 
-.esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
+.esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
     left: 0;
 }
 
-.dj_rtl .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
+.dj_rtl .esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
     right: 0px;
 }

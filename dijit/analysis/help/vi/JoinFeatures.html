@@ -126,7 +126,9 @@
         <div>
             <p>X&aacute;c định c&aacute;ch m&agrave; c&aacute;c kết nối giữa lớp mục ti&ecirc;u v&agrave; lớp kết nối sẽ được xử l&yacute; nếu nhiều đối tượng trong lớp kết nối được ph&aacute;t hiện c&oacute; mối quan hệ giống với lớp mục ti&ecirc;u. Bạn c&oacute; thể lựa chọn một trong hai phương thức kết nối:
                 <ul>
-                    <li> <b>Kết nối một - một</b>&mdash;T&ugrave;y chọn n&agrave;y sẽ kết nối đối tượng ph&ugrave; hợp đầu ti&ecirc;n trong lớp kết nối với đối tượng ph&ugrave; hợp đầu ti&ecirc;n trong lớp mục ti&ecirc;u. T&ugrave;y chọn, nếu c&aacute;c dữ liệu thống k&ecirc; được th&ecirc;m v&agrave;o, c&aacute;c đối tượng được kết nối ph&ugrave; hợp sẽ được tổng hợp th&agrave;nh từng đối tượng trong lớp mục ti&ecirc;u. Số lượng c&aacute;c đối tượng được kết nối sẽ được mặc định th&ecirc;m v&agrave;o.
+                    <li> <b>Kết nối một - một</b>&mdash; T&ugrave;y chọn n&agrave;y kết nối c&aacute;c t&iacute;nh năng trong lớp mục ti&ecirc;u với một đối tượng duy nhất trong lớp kết nối. C&aacute;ch kết nối c&aacute;c t&iacute;nh năng được x&aacute;c định bằng tham số <b>Th&ecirc;m số liệu thống k&ecirc;</b> hoặc tham số <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b>. Nếu <b>Th&ecirc;m số liệu thống k&ecirc;</b> được sử dụng, tất cả đối tượng được kết nối ph&ugrave; hợp sẽ được tổng hợp th&agrave;nh từng đối tượng trong lớp mục ti&ecirc;u. Số lượng c&aacute;c đối tượng được kết nối sẽ được mặc định th&ecirc;m v&agrave;o.Nếu <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b>
+được sử dụng, bạn c&oacute; thể chọn giữ bản ghi khớp đầu ti&ecirc;n (mặc định) hoặc chọn giữ bản ghi khớp dựa tr&ecirc;n biểu thức. Biểu thức c&oacute; thể sử dụng trường số
+(t&ugrave;y chọn cho bản ghi lớn nhất hoặc nhỏ nhất) hoặc trường ng&agrave;y (t&ugrave;y chọn mới nhất hoặc cũ nhất).
                     </li>
                     <li> <b>Kết nối một - nhiều</b>&mdash;T&ugrave;y chọn n&agrave;y sẽ kết nối tất cả c&aacute;c đối tượng ph&ugrave; hợp trong lớp kết nối với lớp mục ti&ecirc;u. Lớp kết quả sẽ chứa nhiều bản ghi của đối tượng mục ti&ecirc;u.
                     </li>
@@ -171,10 +173,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Lưu trữ lớp đối tượng địa lý dưới dạng chế độ hiển thị</h2></div>
+        <div><h2>Tạo các kết quả dưới dạng hiển thị lớp đối tượng được lưu trữ</h2></div>
         <hr/>
         <div>
-            <p>Lưu trữ kết quả lớp đối tượng địa l&yacute; dưới chế độ hiển thị sẽ cho ph&eacute;p dữ liệu lu&ocirc;n được cập nhật khi dữ liệu nguồn thay đổi.  Lớp đối tượng địa l&yacute; dưới dạng chế độ hiển thị chứa c&aacute;c kết nối sẽ chỉ đọc v&agrave; kh&ocirc;ng thể sử dụng credits để ph&acirc;n t&iacute;ch v&agrave; lưu trữ. 
+            <p>Tạo kết quả lớp đối tượng địa l&yacute; dưới chế độ hiển thị sẽ cho ph&eacute;p dữ liệu lu&ocirc;n được cập nhật khi dữ liệu nguồn thay đổi. Lớp đối tượng địa l&yacute; dưới dạng chế độ hiển thị chứa c&aacute;c kết nối sẽ chỉ đọc v&agrave; kh&ocirc;ng thể sử dụng credits để ph&acirc;n t&iacute;ch v&agrave; lưu trữ. 
+            </p>
+            <p>Bạn c&oacute; thể tạo lớp đối tượng địa l&yacute; dưới chế độ hiển thị từ kết quả ph&acirc;n t&iacute;ch nếu đ&aacute;p ứng tất cả c&aacute;c điều kiện sau:
+                <ul>
+                    <li>Bạn l&agrave; chủ sở hữu của cả hai lớp.
+                    </li>
+                    <li>Cả hai lớp đều l&agrave; lớp đối tượng được lưu trữ.
+                    </li>
+                    <li>Bạn đang thực hiện một kết nối dựa tr&ecirc;n thuộc t&iacute;nh.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

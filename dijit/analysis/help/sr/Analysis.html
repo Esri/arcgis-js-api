@@ -44,18 +44,20 @@
         <p>Okvir sa alatkama za analizu geoobjekata sadrži brojne alatke kojima možete da pristupite i da ih koristite.  Ovi zadaci su ispod uređeni u kategorije; kategorije su jednostavno logička grupisanja i nikako ne utiču na način na koji pristupate ili koristite ove zadatke.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Sumiraj podatke</h2>
         <hr/>
         <p>Ove alatke izračunavaju ukupan broj, dužinu, oblasti i osnovnu opisnu statistiku za geoobjekte i njihove atribute unutar oblasti ili blizu drugih geoobjekata.
             <ul>
-                <li> <b>Grupisanje tačaka</b> izračunava statistiku za tačke koje spadaju u navedene oblasti.
+                <li> <b>Grupisanje tačaka</b> izračunava statistiku o tačkama koje padaju unutar navedenih oblasti.
                 </li>
                 <li> <b>Pridruživanje geoobjekata</b> prebacuje atribute iz jednog sloja ili tabele u drugu na osnovu prostornih veza i veza među atributima.
                 </li>
-                <li> <b>Sumiranje za objekte u blizini</b> izračunava statistiku za geoobjekte i njihove atribute koji su unutar navedene razdaljine.
+                <li> <b>Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata</b> izračunava statistiku za geoobjekte i njihove atribute koji su unutar navedene razdaljine.
                 </li>
-                <li> <b>Sumiraj u okviru opsega</b> izračunava statistiku za geoobjekte i atribute oblasti koji se međusobno preklapaju.
+                <li> <b>Sumiraj vrednosti za objekte unutar definisanog opsega</b> izračunava statistiku za geoobjekte i atribute oblasti koji se međusobno preklapaju.
+                </li>
+                <li> <b>Sumiraj centar i disperziju</b> izračunava centralne geoobjekte i usmerene distribucije.
                 </li>
             </ul>
             
@@ -74,11 +76,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Koristeći sloj tačkastih geoobjekata i sloj geoobjekata oblasti, ovaj alat određuje koje tačke spadaju u okviru svake oblasti i izračunava statistiku za sve tačke u okviru svake oblasti. Na primer:
+            <p>Koristeći sloj tačkastih geoobjekata i sloj geoobjekata oblasti, ova alatka određuje koje tačke padaju unutar svake oblasti i izračunava statistiku o svim tačkama unutar svake oblasti. Na primer:
                 <ul>
                     <li>S obzirom na lokacije tačaka i kriminalne incidente, izbrojite kriminalna dela po okrugu ili drugoj administrativnoj oblasti.
                     </li>
-                    <li>Nađite najvi&scaron;e i najniže prihode za lokacije fran&scaron;ize po državi.
+                    <li>Pronađite najvi&scaron;e i najniže prihode za lokacije fran&scaron;ize po državi.
                     </li>
                 </ul>
                 
@@ -124,7 +126,7 @@
 <hr/>
             <p>Pronalazi geoobjekte koji su unutar navedene razdaljine od geoobjekata u prvom ulaznom sloju. Razdaljina može da se meri duž pravih linija ili održivih putanja režima putovanja. Statistika se zatim izračunava za obližnje geoobjekte. Na primer:
                 <ul>
-                    <li>Izračunajte ukupnu populaciju koja je obuhvaćena obla&scaron;ću od najvi&scaron;e pet minuta od predložene lokacije nove prodavnice.
+                    <li>Izračunajte ukupnu populaciju koja je najvi&scaron;e na pet minuta od predložene lokacije nove prodavnice.
                     </li>
                     <li>Izračunajte broj izlaza na autoput unutar petominutne vožnje od predložene lokacije nove prodavnice, &scaron;to će se koristiti kao mera pristupačnosti prodavnice.
                     </li>
@@ -149,6 +151,32 @@
                     <li>S obzirom na dati sloj oblasti vododelnice i sloj oblasti upotrebe zemlji&scaron;ta po tipu upotrebe zemlji&scaron;ta, izračunajte ukupnu povr&scaron;inu tipa upotrebe zemlji&scaron;ta za svaku vododelnicu. 
                     </li>
                     <li>S obzirom na dati sloj sa parcelama u okrugu i sloj granica grada, sumirajte prosečnu vrednost praznih parcela unutar svakog grada.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumiraj centar i disperziju</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Sumiraj centar i disperziju">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ova alatka koristi tačkaste geoobjekte za izračunavanje centralnog geoobjekta, srednjeg centra, srednje vrednosti centra ili elipsu (distribucija). Na primer:
+                <ul>
+                    <li>Ako se uzme u obzir sloj teži&scaron;ta grupe blokova, centralni geoobjekat ponderisan po populaciji može da se koristi za prepoznavanje koja vrsta umetnosti u gradu je najpristupačnija kao centar izvođačke umetnosti.
+                    </li>
+                    <li>Ako se uzme u obzir sloj posmatranja losova u parku tokom nekoliko godina, srednja vrednost može da se koristi za prikaz gde se losovi okupljaju leti i u zimu.
+                    </li>
+                    <li>Ako se u obzir uzme sloj nezgoda sa vatrom, srednja vrednost centra može da se koristi za merenje centralne tendencije požara bez uticaja perifernih odstupanja.
+                    </li>
+                    <li>Ako se u obzir uzme sloj uzoraka iz podzemnih izdana, elipsa može da se koristi za određivanje kako se zagađivač &scaron;iri.
                     </li>
                 </ul>
                 
@@ -356,6 +384,8 @@
                 </li>
                 <li>Alatka  <b>Pronađi odstupanja</b> će odrediti da li postoje statistički značajna odstupanja u prostornom obrascu va&scaron;ih podataka.
                 </li>
+                <li>Alatka  <b>Pronađi klastere tačaka</b> pronalazi klastere tačkastih geoobjekata unutar okružujuće buke na osnovu njihove prostorne distribucije.
+                </li>
                 <li> <b>Interpolacija tačaka</b> predviđa vrednosti na novim lokacijama na osnovu merenja pronađenih u kolekciji tačaka.
                 </li>
             </ul>
@@ -404,6 +434,21 @@
             </table>
 <hr/>
             <p>Ova alatka kreira mapu prikazujući sve statističke značajne klastere i prostorna odstupanja predstavljene u va&scaron;im podacima. Ovu alatku koristite za identifikovanje geoobjekata čije se vrednosti značajno razlikuju od suseda.  Na primer, ovu alatku možete da koristite za pronalaženje neuobičajenih obrazaca tro&scaron;enja, određivanje gde su najo&scaron;trije granice između bogatstva i siroma&scaron;tva u okviru proučavane oblasti ili za određivanje da li u Sjedinjenim Američkim Država postoje okruzi sa neuobičajeno kratkim prosečnim životnim vekom u odnosu na susede.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pronađi klastere tačaka</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Pronađi klastere tačaka">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ova alatka detektuje oblasti na kojima su tačke koncentrisane i gde se odvajaju prema oblastima koje su prazne ili retke. Tačke koje nisu deo klastera su obeležene kao buka.
             </p>
             <br/>
         </div>
@@ -565,7 +610,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Svedi granice</h2></td>
+                    <td><h2>Stapanje granica</h2></td>
                     <td>
                     <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Svedi granice">
                     </td>
@@ -599,7 +644,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Objedinjavanje slojeva</h2></td>
+                    <td><h2>Spoji slojeve</h2></td>
                     <td>
                     <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Spoji slojeve">
                     </td>

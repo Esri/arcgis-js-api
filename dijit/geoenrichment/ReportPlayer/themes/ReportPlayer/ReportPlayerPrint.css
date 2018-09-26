@@ -35,8 +35,7 @@
     display: none !important;
 }
 
-.esriGEReportPlayerInPrinting > .reportPlayer_header,
-.esriGEReportPlayerInPrinting > .reportPlayer_sidePageNavigator {
+.esriGEReportPlayerInPrinting .reportPlayer_sidePageNavigator {
     display: none !important;
 }
 
@@ -90,6 +89,7 @@
 }
 
 .esriGEReportPlayerPrintNode .sectionDynamicSettings_settingsButton,
+.esriGEReportPlayerPrintNode .sectionDynamicSettings_filterButton,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButton,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButtonIcon {
     display: none !important;
@@ -119,7 +119,7 @@
 }
 
 .esriGEReportPlayerPrintNode .esriGEOnDemandSelect .onDemandSelect_selectedLabel {
-    margin: 0px !important;
+    margin-right: 8px;
     color: inherit;
 }
 

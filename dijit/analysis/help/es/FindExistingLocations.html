@@ -44,8 +44,7 @@
         <h2>Buscar ubicaciones existentes</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Buscar ubicaciones existentes"></h2>
         <hr/>
-    <p>Esta herramienta selecciona entidades existentes en el &aacute;rea de estudio que cumplen una serie de criterios especificados. Estos criterios se pueden basar en consultas de atributos (por ejemplo, parcelas que est&aacute;n vac&iacute;as) y consultas espaciales (por ejemplo, a un kil&oacute;metro de un r&iacute;o).
-
+    <p>Esta herramienta selecciona entidades existentes en el &aacute;rea de estudio que cumplen una serie de criterios especificados. Estos criterios se pueden basar en consultas de atributos (por ejemplo, parcelas que est&aacute;n vac&iacute;as) y consultas espaciales (por ejemplo, a un kil&oacute;metro de un r&iacute;o). 
     </p>
     <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n las entidades de la capa de entrada que est&eacute;n visibles en la extensi&oacute;n de mapa actual.  Si no se ha activado, se analizar&aacute;n todas las entidades, aunque est&eacute;n fuera de la extensi&oacute;n del mapa actual.
     </p>
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>intersectar</b>: la entidad contiene una parte de una entidad en otra capa.  Por ejemplo, encontrar parcelas que intersecan r&iacute;os. Cualquier parte del r&iacute;o que pase por la parcela o toque el l&iacute;mite de la parcela interseca con ella.
                     </li>
+                    <li> <b>m&aacute;s cercano a</b>: la entidad debe ser la m&aacute;s cercana a una entidad de otra capa.  Por ejemplo, encuentre el restaurante m&aacute;s cercano a cada hotel.
+                    </li>
                 </ul>
                 
             </p>
-            <p>A cada expresi&oacute;n espacial le corresponde una negaci&oacute;n;  <b>no dentro de una distancia de</b>, <b>no contiene totalmente</b>, <b>no completamente dentro</b> y <b>no intersectar</b>.
+            <p>Cada expresi&oacute;n espacial tiene una negaci&oacute;n correspondiente, con la excepci&oacute;n de  <b>m&aacute;s cercano a</b>; <b>fuera de una distancia de</b>, <b>no contiene completamente</b>, <b>no completamente dentro</b> y <b>no interseca</b>.
             </p> 
         </div>
     </div>

@@ -42,11 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Sujungti elementus</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Jungti elementus"></h2>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Sujungti elementus"></h2>
         <hr/>
     <p>Jungti elementus veikia su dviem sluoksniais ir sujungia vieno elemento atributus su kito elemento atributais, atsižvelgdamas į erdvinius ir atributų ry&scaron;ius. Įrankis nustato visus įvesties elementus, atitinkančius nurodytas sujungimo sąlygas ir prideda sujungimo sluoksnį prie tikslinio sluoksnio. 
     </p>
-    <p>Įrankį Jungti elementus galima taikyti ta&scaron;kams, linijoms, plotams ir lentelėms. Erdvinis sujungimas reikalauja, kad jūsų duomenys turėtų geometrinius požymius. 
+    <p>Įrankį Sujungti elementus galima taikyti ta&scaron;kams, linijoms, plotams ir lentelėms. Erdvinis sujungimas reikalauja, kad jūsų duomenys turėtų geometrinius požymius. 
     </p>
     <p>Jei parinktis  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojami tik dabartiniame žemėlapyje matomi elementai. Jei nepažymėta, bus analizuojami visi abiejų (tikslinio ir prijungto) sluoksnių elementai, net jei jie yra už esamos žemėlapio aprėpties.
     </p>
@@ -114,7 +114,7 @@
         <div><h2>Atributų sujungimas</h2></div>
         <hr/>
         <div>
-            <p>Atributų ry&scaron;ys nustatys, ar elementus galima sujungti vieną su kitu. Elementai atitinka, kai lauko reik&scaron;mės jungtiniame sluoksnyje yra lygios lauko reik&scaron;mėms tiksliniame sluoksnyje. 
+            <p>Atributų ry&scaron;ys, kuris nustatys ar elementus galima sujungti vieną su kitu. Elementai atitinka, kai lauko reik&scaron;mės jungtiniame sluoksnyje yra lygios lauko reik&scaron;mėms tiksliniame sluoksnyje. 
             </p>
             <p>Pavyzdžiui, turite vienos apygardos gyventojų adresų (įskaitant lauką  <i>ZIP</i>) geografinį sluoksnį ir sveikatos būklės demografinių duomenų lentelių rinkinį pagal pa&scaron;to kodą (įskaitant lauką <i>HEALTHZIP</i>). Galite sujungti sveikatos būklės duomenų rinkinį su gyventojų duomenimis pagal atitinkančius laukus <i>ZIP</i> su <i>HEALTHZIP</i> ir bus pateiktas gyventojų sluoksnio rezultatas su atitinkamais sveikatos būklės duomenimis.
             </p>
@@ -126,7 +126,8 @@
         <div>
             <p>Nustato, kaip bus apdorojami tikslinio ir jungtinio sluoksnio sujungimai, jei aptinkama, kad keli jungtinio sluoksnio elementai turi tokius pat ry&scaron;ius tiksliniame sluoksnyje. Toliau pateikiamos dvi sujungimo operacijos, i&scaron; kurių galite rinktis.
                 <ul>
-                    <li> <b>Sujungti vieną su vienu</b> &ndash; &scaron;i operacija prijungia pirmąjį atitinkantį jungtinio sluoksnio elementą prie pirmojo atitinkančio tikslinio sluoksnio elemento. Pasirinktinai, jeigu įtraukiama statistika, atitinkantys sujungti elementai bus apibendrinti pagal kiekvieną tikslinio sluoksnio elementą.  Sujungtų elementų skaičius bus įtrauktas pagal numatytuosius nustatymus.
+                    <li> <b>Sujungti vieną su vienu</b> &ndash; &scaron;i parinktis sujungia tikslinio sluoksnio elementus į vieną elementą bendrame sluoksnyje. Kaip elementai sujungiami nustatoma parametru <b>Pridėti statistiką</b> arba <b>Nustatyti, kuris įra&scaron;as paliekamas</b>. Jei naudojamas parametras <b>Pridėti statistiką</b>, visi atitinkantys sujungtus elementus įra&scaron;ai bus apibendrinti tiksliniame sluoksnyje. Sujungtų elementų skaičius bus įtrauktas pagal numatytuosius nustatymus.Jei naudojamas parametras <b>Nustatyti, kuris įra&scaron;as paliekamas</b>, galite pasirinkti palikti pirmąjį suderintą įra&scaron;ą (numatytasis nustatymas) arba suderintą įra&scaron;ą pagal i&scaron;rai&scaron;ką. I&scaron;rai&scaron;koje gali būti naudojamas skaitinis laukas
+(parinktis didžiausiam arba mažiausiam įra&scaron;ui) arba datos laukas (parinktis naujausiam arba seniausiam).
                     </li>
                     <li> <b>Sujungti vieną su daugeliu</b> &ndash; &scaron;i operacija prijungia visus atitinkančius jungtinio sluoksnio elementus prie tikslinio sluoksnio. Rezultatų sluoksnyje bus keli tikslinio elemento įra&scaron;ai.
                     </li>
@@ -152,7 +153,7 @@
                 </li>
                 <li>Vidurkis
                 </li>
-                <li>Standartinis nuokrypis
+                <li>Standartinį nuokrypį
                 </li>
             </ul>
             
@@ -171,10 +172,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Saugoti kaip talpinimą elementų peržiūros sluoksnį</h2></div>
+        <div><h2>Kurti rezultatus kaip talpinamą elementų sluoksnio peržiūrą</h2></div>
         <hr/>
         <div>
-            <p>I&scaron;saugojus rezultatus kaip talpinimą elementų peržiūros sluoksnį, jo duomenys bus atnaujinami, kai pasikeis &scaron;altinio duomenys. Talpinimas elementų peržiūros sluoksnis, kuriame yra jungčių, bus skirtas tik skaitymui ir nenaudos kreditų analizuojant ir saugant jį turinyje. 
+            <p>Sukūrus rezultatus kaip talpinimą elementų peržiūros sluoksnį, jo duomenys bus atnaujinami, kai pasikeis &scaron;altinio duomenys. Talpinimas elementų peržiūros sluoksnis, kuriame yra jungčių, bus skirtas tik skaitymui ir nenaudos kreditų analizuojant ir saugant jį turinyje. 
+            </p>
+            <p>Talpinamą elementų sluoksnio rodinį galima sukurti naudojant analizės rezultatus, jei i&scaron;pildomos &scaron;ios sąlygos:
+                <ul>
+                    <li>Esate abiejų sluoksnių savininkas.
+                    </li>
+                    <li>Abu sluoksniai yra talpinami elementų sluoksniai.
+                    </li>
+                    <li>Atliekate sujungimą, pagrįstą atributais.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

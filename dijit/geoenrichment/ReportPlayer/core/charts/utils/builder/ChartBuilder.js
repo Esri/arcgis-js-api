@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/ReportPlayer/config","../ChartTypes","./round/RoundChartBuilder","./columnBarLine/ColumnBarLineChartBuilder","esri/dijit/geoenrichment/utils/ObjectUtil"],function(n,r,i,e,t){var a={};return a.supportConditionalStyling=function(n){return r.isConditionalStylingEnabled(n)},a.getChartBuilder=function(n){return r.isRoundChart(n)?i:e},a.checkSeriesAreValid=function(r){return!n.charts.showErrorIfHasUnavailableData||!r.some(function(n){return n.data.some(function(n){return n.isUnavailableData})})},a});
+define(["esri/dijit/geoenrichment/ReportPlayer/config","../ChartTypes","./round/RoundChartBuilder","./columnBarLine/ColumnBarLineChartBuilder"],function(n,r,e,i){var t={};return t.supportConditionalStyling=function(n){return r.isConditionalStylingEnabled(n)},t.getChartBuilder=function(n){return r.isRoundChart(n)?e:i},t.checkSeriesAreValid=function(r){return!n.charts.showErrorIfHasUnavailableData||!r.some(function(n){return n.data.some(function(n){return n.isUnavailableData})})},t});

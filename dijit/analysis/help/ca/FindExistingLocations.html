@@ -46,7 +46,7 @@
         <hr/>
     <p>Aquesta eina selecciona les entitats existents de l'&agrave;rea d'estudi que compleixen una s&egrave;rie de criteris que especifiqueu. Aquests criteris poden basar-se en consultes d'atributs (per exemple, parcel&middot;les que estan buides) i consultes espacials (per exemple, parcel&middot;les que es troben com a m&agrave;xim a una milla d'un riu). 
     </p>
-    <p>Si s'ha activat  <b>Utilitza l'extensi&oacute; del mapa actual</b>, nom&eacute;s s'analitzaran les entitats de la capa d'entrada que siguin visibles a l'extensi&oacute; de mapa actual.  Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les entitats, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, nom&eacute;s s'analitzaran les entitats de la capa d'entrada que siguin visibles a l'extensi&oacute; del mapa actual.  Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les entitats, encara que estiguin fora de l'extensi&oacute; de mapa actual.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -76,10 +76,12 @@
                     </li>
                     <li> <b>s'interseca</b>: l'entitat cont&eacute; una part d'una entitat d'una altra capa.  Per exemple, troba parcel&middot;les que s'intersequen amb rius.  Qualsevol part del riu que passi per la parcel&middot;la, o en toqui els l&iacute;mits, s'hi interseca.
                     </li>
+                    <li> <b>m&eacute;s proper</b>: l'entitat &eacute;s la m&eacute;s propera a una entitat d'una altra capa.  Per exemple, troba el restaurant m&eacute;s proper a cada hotel.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Cada expressi&oacute; espacial t&eacute; una negaci&oacute; corresponent:  <b>fora d'una dist&agrave;ncia de</b>, <b>no cont&eacute; completament</b>, <b>no completament dins</b> i <b>no s'interseca</b>.
+            <p>Cada expressi&oacute; espacial t&eacute; una negaci&oacute; corresponent, amb l'excepci&oacute; de  <b>m&eacute;s proper</b>; <b>fora d'una dist&agrave;ncia de</b>, <b>no cont&eacute; completament</b>, <b>no completament dins</b> i <b>no s'interseca</b>.
             </p> 
         </div>
     </div>

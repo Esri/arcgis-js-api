@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/dom-construct"],function(e,o){var r={};return r.renderBackground=function(e,o,t){return r._renderSection(e,o,t,!0)},r.renderForeground=function(e,o,t){return r._renderSection(e,o,t,!1)},r._renderSection=function(r,t,n,d){if(o.empty(d?r.backgroundNode:r.foregroundNode),!t)return null;var i={};i.class="esriGEAbsoluteStretched "+(d?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection"),i.initialWidth=r.getAllowedWidth(),i.json=t,i.viewModel=r.viewModel,i.theme=r.theme,i.hasFixedLayout=!1,i.parentWidget=r,e.mixin(i,n);var u=r.viewModel.layoutBuilder.createElement("section",i,d?r.backgroundNode:r.foregroundNode);return u.setResizedHeight(r.getHeight()),u.setViewMode(r.getViewMode(),r.getSpecificViewMode()),u},r});
+define(["dojo/_base/lang","dojo/dom-construct"],function(e,r){var n={};return n.renderBackground=function(e,r,t){return n._renderSection(e,r,t,!0)},n.renderForeground=function(e,r,t){return n._renderSection(e,r,t,!1)},n._renderSection=function(n,t,i,o){if(r.empty(o?n.backgroundNode:n.foregroundNode),!t)return null;var d={};d.class="esriGEAbsoluteStretched "+(o?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection"),d.initialWidth=n.getAllowedWidth(),d.json=t,d.viewModel=n.viewModel,d.theme=n.theme,d.hasFixedLayout=!1,d.parentWidget=n,d.currentFeatureIndex=n.currentFeatureIndex,d.initialViewMode=n.getViewMode(),d.initialSpecificViewMode=n.getSpecificViewMode(),e.mixin(d,i);var u=n.viewModel.layoutBuilder.createElement("section",d,o?n.backgroundNode:n.foregroundNode);return u.setResizedHeight(n.getHeight()),u},n});

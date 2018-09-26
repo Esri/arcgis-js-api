@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Detayları Birleştirme</h2><p/>
+        <h2>Detayları Birleştir</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Detayları Birleştir"></h2>
         <hr/>
-    <p>Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil;, belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmanla birleştirir. 
+    <p>Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil;, belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmana ekler. 
     </p>
     <p>Detayları Birleştir noktalara, &ccedil;izgilere, alanlara ve tablolara uygulanabilir. Mekansal birleşim verilerinizin bir geometrisi olmasını gerektirir. 
     </p>
-    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir. İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
+    <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita kapsamında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir. İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,7 @@
         <div><h2>Hedef katman seç</h2></div>
         <hr/>
         <div>
-            <p>Birleşim katmanından alacağı &ouml;znitelikleri kendi tablosuna ekleyecek olan hedef katman.
+            <p>Alacağı &ouml;znitelikleri kendi tablosuna eklenen birleşim katmanından alan hedef katman.
             </p>
             <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> veya <b>analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p> 
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Birleştirme türünü/türlerini seçin</h2></div>
+        <div><h2>Birleşim türünü/türlerini seçin</h2></div>
         <hr/>
         <div>
             <p>Bir mekansal birleşim, &ouml;znitelik birleşimi veya bu ikisinin kombinasyonunu uygulayabilirsiniz. 
@@ -101,7 +101,7 @@
                     </li>
                     <li> <b>Tamamen kapsar</b>; hedef katmandaki detaylar birleşim katmanındaki detayların tamamını kapsıyorsa detaylar eşleştirilir.
                     </li>
-                    <li> <b>Tamamen i&ccedil;inde</b>; hedef katmandaki detaylar birleşim katmanındaki detayların tamamen i&ccedil;indeyse detaylar eşleştirilir.
+                    <li> <b>T&uuml;m&uuml;yle i&ccedil;inde</b>; hedef katmandaki detaylar birleşim katmanındaki detayların tamamen i&ccedil;indeyse detaylar eşleştirilir.
                     </li>
                     <li> <b>Yakınlık mesafesi</b>; hedef katmandaki detaylar birleşim katmanındaki detaylara belirtilen mesafeden daha yakınsa detaylar eşleştirilir.
                     </li>
@@ -111,7 +111,7 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Öznitelik birleştirme</h2></div>
+        <div><h2>Öznitelik birleştir</h2></div>
         <hr/>
         <div>
             <p>Detayların birbirine birleştirilip birleştirilmeyeceğini belirleyen &ouml;znitelik ilişkisi. Birleşim katmanındaki alan değerleri, hedef katman i&ccedil;indeki alan değerlerine eşit olduğunda detaylar eşleştirilir. 
@@ -121,12 +121,12 @@
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Birleştirme işlemini seçin</h2></div>
+        <div><h2>Birleşim işlemini seçin</h2></div>
         <hr/>
         <div>
             <p>Birleşim katmanında aynı hedef katman ilişkisine sahip birden &ccedil;ok detayın bulunması durumunda, hedef ve birleşim katmanı arasındaki birleştirmelerin nasıl yapılacağını belirler. Aşağıda arasından se&ccedil;im yapabileceğiniz iki birleştirme işlemi sunulmaktadır:
                 <ul>
-                    <li> <b>Bire bir birleştir</b>; bu se&ccedil;enek birleşim katmanındaki ilk eşleşen detayı, hedef katmandaki ilk eşleşen detayla birleştirir.  İsteğe bağlı olarak istatistikler eklenirse, eşleşen birleşim detayları hedef katmandaki her detayda &ouml;zetlenir.  Birleşim detayı sayısı varsayılan olarak eklenir.
+                    <li> <b>Bire bir birleştir</b>&mdash; Bu se&ccedil;enek hedef katmandaki detayları, birleşim katmanındaki tek bir detay ile birleştirir. Detayların nasıl birleştirileceği, <b>İstatistik ekle</b> parametresi veya <b>Hangi kaydın tutulduğunu tanımla</b> parametresiyle belirlenir. <b>İstatistik ekle</b> parametresi kullanıldığında eşleşen birleşim detayları hedef katmandaki her detayda &ouml;zetlenir. Birleşim detayı sayısı varsayılan olarak eklenir. <b>Hangi kaydın tutulduğunu tanımla</b> kullanılırsa, ilk eşleşen kaydı (varsayılan) tutmayı veya eşleşen bir kaydı bir ifadeye g&ouml;re tutmayı se&ccedil;ebilirsiniz. Bir ifade, bir sayısal alan (en b&uuml;y&uuml;k veya en k&uuml;&ccedil;&uuml;k kayıt se&ccedil;eneği) veya bir tarih alanı (en yeni veya en eski se&ccedil;eneği) kullanabilir.
                     </li>
                     <li> <b>Bire &ccedil;ok birleştir</b>; bu se&ccedil;enek birleşim katmanında hedef katmanla eşleşen t&uuml;m detayları birleştirir.  Sonu&ccedil; katmanı hedef detayın birden &ccedil;ok kaydını i&ccedil;erir.
                     </li>
@@ -171,10 +171,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Barındırılan detay katman görünümü olarak sakla</h2></div>
+        <div><h2>Sonuçları barındırılan detay katman görünümü olarak oluştur</h2></div>
         <hr/>
         <div>
-            <p>Sonu&ccedil;ları barındırılan bir detay katman g&ouml;r&uuml;n&uuml;m&uuml; olarak saklamak, kaynak veriler değiştik&ccedil;e verilerin g&uuml;ncel kalmasını sağlar. Barındırılan detay katman g&ouml;r&uuml;n&uuml;mleri, salt okunurdur ve analiz ve depolama i&ccedil;in kredi kullanmaz. 
+            <p>Sonu&ccedil;ları barındırılan bir detay katman g&ouml;r&uuml;n&uuml;m&uuml; olarak oluşturmak, kaynak veriler değiştik&ccedil;e verilerin g&uuml;ncel kalmasını sağlar. Barındırılan detay katman g&ouml;r&uuml;n&uuml;mleri, salt okunurdur ve analiz ve depolama i&ccedil;in kredi kullanmaz. 
+            </p>
+            <p>Aşağıdaki koşulların t&uuml;m&uuml;n&uuml;n karşılanması koşuluyla, analiz sonu&ccedil;larından barındırılan bir detay katmanı g&ouml;r&uuml;n&uuml;m&uuml; oluşturabilirsiniz:
+                <ul>
+                    <li>Her iki katmanın da sahibi sizsiniz.
+                    </li>
+                    <li>Her iki katman da barındırılan detay katmanıdır.
+                    </li>
+                    <li>Bir &ouml;znitelik tabanlı birleştirme ger&ccedil;ekleştiriyorsunuz.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

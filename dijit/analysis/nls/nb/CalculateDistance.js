@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Velg raster- eller geoobjektslokasjonslaget som skal brukes til å beregne avstanden til",maxDistanceLabel:"Maksimum avstand som skal beregnes (valgfritt)",outputCellSize:"Utdatacellestørrelse (valgfritt)",resultDistLayerName:"Navn på resulterende avstandslag",resultDirectionLayerName:"Navn på resulterende retningslag (valgfritt)",resultAllocationLayerName:"Navn på resulterende allokeringslag (valgfritt)",outputLayerName:"Beregnet avstand for ${layername}",allocationFieldLabel:"Velg tildelingsfelt (valgfritt)",itemDescription:"Geoobjektslag generert ved kjøring av Beregn avstand på ${layerName}. ",itemTags:"Analyseresultat, Beregn avstand, ${layername} ${fieldname}",itemSnippet:"Geoobjektslag generert av Beregn avstand"});

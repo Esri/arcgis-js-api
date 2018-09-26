@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","esri/geometry/Extent","esri/geometry/Polygon"],function(r,t,e){var n={getNumberOfPoints:function(r){if(!r)return 0;Array.isArray(r)||(r=[r]);var t=0;return r.forEach(function(r){t+=n.getGeometryPointCount(r.geometry||r)}),t},getGeometryPointCount:function(r){if(!r)return 0;var t=0,e=r.rings||r.paths;return!e&&r.points&&(e=[r.points]),e?e.forEach(function(r){t+=r&&r.length||0}):t+="x"in r?1:2,t}};return n});
+define([],function(){var n={getNumberOfPoints:function(t){if(!t)return 0;Array.isArray(t)||(t=[t]);var r=0;return t.forEach(function(t){r+=n.getGeometryPointCount(t.geometry||t)}),r},getGeometryPointCount:function(n){if(!n)return 0;var t=0,r=n.rings||n.paths;return!r&&n.points&&(r=[n.points]),r?r.forEach(function(n){t+=n&&n.length||0}):t+="x"in n?1:2,t}};return n});

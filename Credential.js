@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/has","./kernel","./IdentityManagerBase"],function(e,n,a,r){var d=e(r.Credential,{});return n("extend-esri")&&(a.Credential=d),d});

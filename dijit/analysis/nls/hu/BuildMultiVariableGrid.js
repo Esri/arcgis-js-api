@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({binsLabel:"Å_Choose the type of bins that will be used to build the multi-variable grid_______________________ö",layersAttrLabel:"Å_Choose input layers and variables that you would like to include in the grid________________________ö",itemDescription:"Å_Feature layer generated from running the Build Multi-Variable Grid_____________________ö.",itemTags:"Å_Analysis Result, Build Multi-Variable Grid______________ö",itemSnippet:"Å_Feature layer generated from Build Multi-Variable Grid_________________ö",addVariables:"Å_Add Variables_____ö"});
+define({binsLabel:"A többváltozós táblázat felépítéséhez használt gyűjtők típusának kiválasztása",layersAttrLabel:"A táblázatban használni kívánt bemenő rétegek és változók kiválasztása",itemDescription:"A többváltozós rácsháló felépítése függvény futtatásából létrehozott vektoros réteg.",itemTags:"Az elemzés végeredménye, többváltozós rácsháló felépítése",itemSnippet:"A többváltozós rácsháló felépítése függvény alapján létrehozott vektoros réteg",addVariables:"Változók hozzáadása"});

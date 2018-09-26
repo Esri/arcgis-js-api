@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Detetar Incidentes</h2><p/>
-        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detect Incidentes"></h2>
+        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detetar Incidentes"></h2>
         <hr/>
     <p>Esta ferramenta funciona com uma camada com componente temporal ativa, de pontos, linhas ou &aacute;reas ou tabelas que representem um instante no tempo. Ao utilizar elementos ordenados sequencialmente, a que chamamos trilhos, esta ferramenta determina que elementos s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es especificadas por si. 
     </p>
@@ -50,7 +50,7 @@
     </p>
     <p>Por exemplo, suponha que tem medi&ccedil;&otilde;es de GPS de furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS regista o nome e localiza&ccedil;&atilde;o do furac&atilde;o, hora da grava&ccedil;&atilde;o e a velocidade do vento. Utilizando estes campos, poderia criar um incidente em que qualquer medi&ccedil;&atilde;o com uma velocidade de vento superior a 208 km/h &eacute; um incidente denominado  <code>Catastr&oacute;fico</code>. Ao n&atilde;o definir uma condi&ccedil;&atilde;o de fim, o incidente terminaria se o elemento deixasse de corresponder &agrave; condi&ccedil;&atilde;o inicial (a velocidade do vento abranda para menos do que 208).
     </p>
-    <p>Recorrendo a outro exemplo, suponha que est&aacute; a monitorizar concentra&ccedil;&otilde;es de um produto qu&iacute;mico no fornecimento de &aacute;gual local, utilizando um campo chamado  <code>contanimateLevel</code>. Sabe que os n&iacute;veis recomendados s&atilde;o inferiores a 0,01 mg/L, e os n&iacute;veis perigosos s&atilde;o superiores 0.03 mg/L. Para detetar incidentes em que um valor acima de 0.03mg/L &eacute; um incidente e mant&eacute;m-se um incidente at&eacute; que os n&iacute;veis de contamina&ccedil;&atilde;o voltem ao normal, criar&aacute; um incidente utilizando uma condi&ccedil;&atilde;o inicial de <code>contanimateLevel &gt; 0.03</code> e uma condi&ccedil;&atilde;o final de <code>contanimateLevel &lt; 0.01</code>. Esta a&ccedil;&atilde;o ir&aacute; marcar qualquer sequ&ecirc;ncia em que os valores excedem 0.03mg/L at&eacute; que regressem a um valor inferior a 0.01.
+    <p>Recorrendo a outro exemplo, suponha que est&aacute; a monitorizar concentra&ccedil;&otilde;es de um produto qu&iacute;mico no fornecimento de &aacute;gua local, utilizando um campo chamado  <code>contaminateLevel</code>. Sabe que os n&iacute;veis recomendados s&atilde;o inferiores a 0,01 mg/L, e os n&iacute;veis perigosos s&atilde;o superiores 0.03 mg/L. Para detetar incidentes em que um valor acima de 0.03mg/L &eacute; um incidente e mant&eacute;m-se um incidente at&eacute; que os n&iacute;veis de contamina&ccedil;&atilde;o voltem ao normal, criar&aacute; um incidente utilizando uma condi&ccedil;&atilde;o inicial de <code>contaminateLevel &gt; 0.03</code> e uma condi&ccedil;&atilde;o final de <code>contaminateLevel &lt; 0.01</code>. Esta a&ccedil;&atilde;o ir&aacute; marcar qualquer sequ&ecirc;ncia em que os valores excedem 0.03mg/L at&eacute; que regressem a um valor inferior a 0.01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Selecionar um ou mais campos para identificar trilhos</h2></div>
         <hr/>
         <div>
-            <p> Os campos que representam o identificador de trilhos. Pode utilizar um campo ou v&aacute;rios campos para representar valores &uacute;nicos de trilhos.
+            <p>Os campos que representam o identificador de trilhos. Pode utilizar um campo ou v&aacute;rios campos para representar valores &uacute;nicos de trilhos.
             </p>
             <p>Por exemplo, caso estivesse a reconstruir trilhos de furac&otilde;es, poderia utilizar os nome dos furac&atilde;o como o campo de trilho.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>Por exemplo, suponha que pretende ser alertado quando a soma dos campos  <code>concentration_1</code> e <code>concentration_2</code> &eacute; superior a <code>concentration_3</code>.   Para fazer isto, aplique uma condi&ccedil;&atilde;o de <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
             </p>
+            <p>Caso estivesse interessado no modo como as concentra&ccedil;&otilde;es mudaram ao longo do tempo, e pretendesse ser alertado quando a atual  <code>concentration_1</code> fosse superior &agrave;s duas anteriores medi&ccedil;&otilde;es de <code>concentration_2</code> poderia utilizar uma express&atilde;o como <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Opcionalmente, adicione uma condi&ccedil;&atilde;o utilizando o builder de express&otilde;es para determinar o final de um incidente. Caso a condi&ccedil;&atilde;o de fim que especificar seja verdadeira, o elemento deixar&aacute; de ser um incidente. Caso n&atilde;o especifique uma condi&ccedil;&atilde;o de fim, um incidente termina quando a condi&ccedil;&atilde;o inicial deixa de ser verdadeira.    
             </p>
             <p>Por exemplo, suponha que pretende ser alertado quando a soma dos campos    <code>concentration_1</code> e <code>concentration_2</code> &eacute; superior a <code>concentration_3</code>, e pretenda que o incidente termine caso <code>concentration_4</code> seja inferior a <code>concentration_1</code>. Para fazer isto, aplique uma condi&ccedil;&atilde;o inicial de <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> e uma condi&ccedil;&atilde;o de fim de <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+            <p>Caso pretendesse que um incidente terminasse quando a m&eacute;dia da atual  <code>concentration_1</code> e das quatro anteriores medi&ccedil;&otilde;es fosse superior &agrave; da primeira medi&ccedil;&atilde;o, poderia utilizar uma express&atilde;o como <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> O nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>

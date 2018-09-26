@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/_base/lang"],function(a){var r={};r.STATIC="static",r.ATTACHMENTS="attachments",r.AREA_DETAILS="areaDetails",r.INTERESTING_FACTS="interestingFacts",r.LOCATOR_TABLE="locatorTable",r.COMPARISON_TABLE="comparisonTable";var e={AGE_PYRAMID:"AgePyramid",TAPESTRY:"Tapestry",RELATED_VARS:"RelatedVariables",ONE_VAR:"OneVar"},t={};for(var n in e)t[e[n]]=!0;a.mixin(r,e);var T={};for(var n in r)T[r[n]]=!0;return r.isDynamic=function(a){return t[a]},r.isSupported=function(a){return T[a]},r.fixTapestryNameToWidget=function(a){return"TapestryNEW"===a?"Tapestry":a},r.fixTapestryNameToData=function(a){return"Tapestry"===a?"TapestryNEW":a},r});
+define(["dojo/_base/lang"],function(r){var t={};t.STATIC="static",t.ATTACHMENTS="attachments",t.AREA_DETAILS="areaDetails",t.INTERESTING_FACTS="interestingFacts",t.LOCATOR_TABLE="locatorTable",t.COMPARISON_TABLE="comparisonTable";var a={AGE_PYRAMID:"AgePyramid",TAPESTRY:"Tapestry",RELATED_VARS:"RelatedVariables",ONE_VAR:"OneVar"},e={};for(var n in a)e[a[n]]=!0;r.mixin(t,a);var T={};for(var n in t)T[t[n]]=!0;return t.isDynamic=function(r){return e[r]},t.isSupported=function(r){return T[r]},t.fixTapestryNameToWidget=function(r){return"TapestryNEW"===r?"Tapestry":r},t.fixTapestryNameToData=function(r){return"Tapestry"===r?"TapestryNEW":r},t.supportsMultiFeature=function(r){return"OneVar"===r||r===t.COMPARISON_TABLE||r===t.LOCATOR_TABLE||r===t.ATTACHMENTS||r===t.AREA_DETAILS},t.supportsComparison=function(r){return r&&"Tapestry"!==r},t});

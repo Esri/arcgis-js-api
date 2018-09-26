@@ -2,17 +2,11 @@
 
 
 .esriGEAreaDetailsInfographic {
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
     
 
-    .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolder {
-        text-align: center;
-    }
-
-    .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderImage {
+    .esriGEAreaDetailsInfographic .paginatableTableInfographic_noDataPlaceHolderImage {
         background-image: url("../images/emptySectionIcon.svg");
         background-repeat: no-repeat;
         background-position: center;
@@ -21,16 +15,4 @@
         width: 250px;
         height: 139px;
         opacity: 0.5;
-    }
-
-    .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderLabel {
-        text-align: center;
-        font-style: italic;
-        margin-top: 5px;
-        color: #AAAAAA;
-    }
-
-    
-    .esriGEAreaDetailsInfographic .areaDetails_contentDiv {
-        position: relative;
     }

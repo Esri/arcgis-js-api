@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Şunlardan yolları belirlemek için raster veya detay kaynağı katmanı seçin",inputCostRasterLabel:"Seyahat maliyeti raster katmanı seçin",inputDestinationLayerLabel:"Şuraya giden yolları belirlemek için raster veya detay hedef katmanı seçin",pathTypeLabel:"Belirlenecek yol türlerini seçin (isteğe bağlı)",bestSingle:"En İyi Tek",eachCell:"Her Hücreye",eachZone:"Her Bölgeye",outputPolylineName:"Sonuç çoklu çizgi adı",outputLayerName:"${Layername} katmanının çoklu çizgisi olarak optimum seyahat maliyeti",drawDestinationPointLayerName:"Hedef noktalar",drawSourcePointLayerName:"Kaynak noktalar",itemDescription:"Detay katmanı, ${layerName} katmanı üzerinde Seyahat Maliyeti Yolunu Çoklu Çizgi Olarak Belirle çalıştırılarak oluşturuldu. ",itemTags:"Analiz Sonucu, Seyahat Maliyeti Yolunu Çoklu Çizgi Olarak Belirle, ${layername} ${fieldname}",itemSnippet:"Detay katmanı Seyahat Maliyeti Yolunu Çoklu Çizgi Olarak Belirle ile oluşturuldu."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/iso/AbstractObject","../../../form/iso/ObjectReference","../gmd/extent/GeographicDescription","../gmd/extent/GeographicElement","../gmd/extent/TemporalElement","../gmd/extent/VerticalElement","dojo/text!./templates/ServiceExtent.html","../../../../../kernel"],function(e,t,r,n,i,o,a,m,c,s,d,l){var g=e(n,{templateString:d});return r("extend-esri")&&t.setObject("dijit.metadata.types.gemini.srv.ServiceExtent",g,l),g});

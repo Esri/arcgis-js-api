@@ -4,21 +4,8 @@
     position: relative;
 }
 
-    .esriGEReportPlayer_infographicsPage .infographicsPage_reportSectionsBlock {
-        position: relative;
-    }
-
     .esriGEReportPlayer_infographicsPage .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode {
         overflow-y: auto;
-    }
-
-        .esriGEReportPlayer_infographicsPage .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
-            background-color: white;
-            overflow: hidden;
-        }
-
-    .esriGEReportPlayer_infographicsPage .infographicsPage_sectionsContainer {
-        overflow: auto;
     }
 
     
@@ -34,7 +21,7 @@
     }
 
     .esriGEReportPlayer_infographicsPage .infographicPage_infographicRootSectionNode {
-        overflow: hidden;
+        
         position: relative;
         transform-origin: 50% 50%;
         display: inline-block;

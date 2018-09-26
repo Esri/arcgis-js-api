@@ -126,7 +126,8 @@
         <div>
             <p>Avg&ouml;r hur f&ouml;reningar mellan m&aring;l- och f&ouml;reningslagret hanteras om det hittas flera geoobjekt i f&ouml;reningslagret som har samma relation till m&aring;llagret. F&ouml;ljande &auml;r de tv&aring; f&ouml;renings&aring;tg&auml;rder man kan v&auml;lja mellan:
                 <ul>
-                    <li> <b>F&ouml;rena ett till ett</b> &ndash; Det h&auml;r alternativet f&ouml;renar det f&ouml;rsta matchande geoobjektet i f&ouml;reningslagret med det f&ouml;rsta matchande geoobjektet i m&aring;llagret.  Om statistik l&auml;ggs till kan du v&auml;lja att matchade f&ouml;renade geoobjekt summeras till varje geoobjekt i m&aring;llagret.  Antalet matchade f&ouml;renade geoobjekt l&auml;ggs till som standard.
+                    <li> <b>F&ouml;rena ett till ett</b> &ndash; Det h&auml;r alternativet f&ouml;renar geoobjekten i m&aring;llagret till ett enda geoobjekt i f&ouml;reningslagret. Hur geoobjekten f&ouml;renas best&auml;ms av parametern <b>L&auml;gg till statistik</b> eller parametern <b>Definiera vilken post som beh&aring;lls</b>. Om <b>L&auml;gg till statistik</b> anv&auml;nds, summeras alla matchade f&ouml;renade geoobjekt till varje geoobjekt i m&aring;llagret. Antalet matchade f&ouml;renade geoobjekt l&auml;ggs till som standard.Om <b>Definiera vilken post som beh&aring;lls</b>
+anv&auml;nds kan du v&auml;lja att antingen beh&aring;lla den f&ouml;rsta matchade posten (standard) eller att beh&aring;lla en matchad post baserat p&aring; ett uttryck. Uttryck kan antingen anv&auml;nda ett numeriskt f&auml;lt (alternativ f&ouml;r st&ouml;rsta eller minsta post) eller ett datumf&auml;lt (alternativ f&ouml;r nyast eller &auml;ldst).
                     </li>
                     <li> <b>F&ouml;rena ett till m&aring;nga</b> &ndash; Det h&auml;r alternativet f&ouml;renar alla matchande geoobjekt i f&ouml;reningslagret till m&aring;llagret. Resultatlagret kommer att inneh&aring;lla flera poster av m&aring;lgeoobjektet.
                     </li>
@@ -171,10 +172,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Lagra som en driftad geoobjektlagervy</h2></div>
+        <div><h2>Skapa resultaten som en driftad geoobjektlagervy</h2></div>
         <hr/>
         <div>
-            <p>Genom att lagra resultaten som en driftad geoobjektlagervy kan data h&aring;llas uppdaterade n&auml;r k&auml;lldata &auml;ndras.  Driftade geoobjektlagervyer som inneh&aring;ller f&ouml;reningar &auml;r skrivskyddade och f&ouml;rbrukar inte krediter f&ouml;r analys och lagring. 
+            <p>Genom att skapa resultaten som en driftad geoobjektlagervy kan data h&aring;llas uppdaterade n&auml;r k&auml;lldata &auml;ndras. Driftade geoobjektlagervyer som inneh&aring;ller f&ouml;reningar &auml;r skrivskyddade och f&ouml;rbrukar inte krediter f&ouml;r analys och lagring. 
+            </p>
+            <p>Du kan skapa en driftad geoobjektlagervy utifr&aring;n analysresultaten om alla de f&ouml;ljande villkoren &auml;r uppfyllda:
+                <ul>
+                    <li>Du &auml;r &auml;gare till b&aring;da lagren.
+                    </li>
+                    <li>B&aring;da lagren &auml;r driftade geoobjektlager.
+                    </li>
+                    <li>Du utf&ouml;r en attributbaserad f&ouml;rening.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

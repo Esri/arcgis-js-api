@@ -48,7 +48,7 @@
     </p>
     <p>Uneix les entitats es pot aplicar a punts, l&iacute;nies, &agrave;rees i taules. Per a una uni&oacute; espacial, &eacute;s necessari que les dades tinguin una geometria. 
     </p>
-    <p>Si s'ha activat  <b>Utilitza l'extensi&oacute; del mapa actual</b>, nom&eacute;s s'analitzaran les entitats que siguin visibles a l'extensi&oacute; de mapa actual.  Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les entitats de la capa de dest&iacute; i la d'uni&oacute;, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, nom&eacute;s s'analitzaran les entitats que siguin visibles a l'extensi&oacute; del mapa actual.  Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les entitats de la capa de dest&iacute; i la d'uni&oacute;, encara que estiguin fora de l'extensi&oacute; de mapa actual.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -126,14 +126,16 @@
         <div>
             <p>Determina com es gestiona la uni&oacute; entre la capa de dest&iacute; i la d'uni&oacute; si a la capa d'uni&oacute; hi ha diverses entitats que tenen la mateixa relaci&oacute; amb la capa de dest&iacute;. Aquestes s&oacute;n les dues operacions d'uni&oacute; que podeu triar:
                 <ul>
-                    <li> <b>Uneix un a un</b>: aquesta opci&oacute; uneix la primera entitat coincident de la capa d'uni&oacute; amb la primera entitat coincident de la capa de dest&iacute;.  Opcionalment, si s'afegeixen estad&iacute;stiques, les entitats unides coincidents es resumiran per a cada entitat de la capa de dest&iacute;.  El recompte d'entitats unides s'afegir&agrave; per defecte.
+                    <li> <b>Uneix un a un</b>: aquesta opci&oacute; uneix diferents entitats de la capa de dest&iacute; en una &uacute;nica entitat a la capa unida. La manera com s'uneixen les entitats ve determinada pel par&agrave;metre <b>Afegeix estad&iacute;stiques</b> o pel par&agrave;metre <b>Defineix quin registre es guarda</b>. Si es fa servir el par&agrave;metre <b>Afegeix estad&iacute;stiques</b>, totes les entitats unides coincidents es resumiran en cada entitat de la capa de dest&iacute;. El recompte d'entitats unides s'afegir&agrave; per defecte.Si es fa servir l'opci&oacute; <b>Defineix quin registre es guarda</b>
+, es pot triar si es vol guardar el primer registre coincident (per defecte) o si es vol guardar un registre coincident basant-se en una expressi&oacute;. Una expressi&oacute; pot utilitzar un camp num&egrave;ric
+(opci&oacute; entre el registre m&eacute;s gran o el m&eacute;s petit) o b&eacute; un camp de data (opci&oacute; entre el m&eacute;s nou o el m&eacute;s antic).
                     </li>
                     <li> <b>Uneix un a diversos</b>: aquesta opci&oacute; uneix totes les entitats coincidents de la capa d'uni&oacute; amb la capa de dest&iacute;.  La capa de resultats contindr&agrave; diversos registres de l'entitat de dest&iacute;.
                     </li>
                 </ul>
                 
             </p>
-            <p>Per exemple, suposem que voleu trobar supermercats en un radi de 5 quil&ograve;metres d'un mercat agr&iacute;cola.   En aquest cas, la capa d'uni&oacute; t&eacute; una &uacute;nica entitat que representa un mercat agr&iacute;cola, i les entitats d'uni&oacute; representen les botigues d'alimentaci&oacute; locals que tenen atributs com ara el total de vendes anuals. Mitjan&ccedil;ant l'eina  <b>Uneix les entitats</b>, veureu que hi ha cinc botigues d'alimentaci&oacute; que compleixen aquests criteris. Si especifiqueu la operaci&oacute; d'uni&oacute; <b>Uneix un a diversos</b>, obtindreu cinc entitats al resultat, on cada fila representa el mercat agr&iacute;cola i un supermercat. Si especifiqueu una relaci&oacute; d' <b>Uneix un a un</b> i seleccioneu una estad&iacute;stica, obtindreu una entitat que representar&agrave; el mercat agr&iacute;cola i la informaci&oacute; resumida dels supermercats &mdash;per exemple, el recompte (5)&mdash; i altres estad&iacute;stiques opcionals, com ara la suma de les vendes anuals.
+            <p>Per exemple, suposem que voleu trobar supermercats en un radi de 5 quil&ograve;metres d'un mercat agr&iacute;cola.   En aquest cas, la capa d'uni&oacute; t&eacute; una &uacute;nica entitat que representa un mercat agr&iacute;cola, i les entitats d'uni&oacute; representen les botigues d'alimentaci&oacute; locals que tenen atributs com ara el total de vendes anuals. Mitjan&ccedil;ant l'eina  <b>Uneix les entitats</b>, veureu que hi ha cinc botigues d'alimentaci&oacute; que compleixen aquests criteris. Si especifiqueu l'operaci&oacute; d'uni&oacute; <b>Uneix un a diversos</b>, obtindreu cinc entitats al resultat, on cada fila representar&agrave; el mercat agr&iacute;cola i un supermercat. Si especifiqueu una relaci&oacute; d' <b>Uneix un a un</b> i seleccioneu una estad&iacute;stica, obtindreu una entitat que representar&agrave; el mercat agr&iacute;cola i la informaci&oacute; resumida dels supermercats &mdash;per exemple, el recompte (5)&mdash; i altres estad&iacute;stiques opcionals, com ara la suma de les vendes anuals.
             </p>
         </div>
     </div>
@@ -150,7 +152,7 @@
                 </li>
                 <li>M&agrave;xim
                 </li>
-                <li>Mig
+                <li>Mitjana
                 </li>
                 <li>Desviaci&oacute; est&agrave;ndard
                 </li>
@@ -171,10 +173,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Emmagatzema com una visualització de capa d'entitats allotjada</h2></div>
+        <div><h2>Crea els resultats com una vista de capa d'entitats allotjada</h2></div>
         <hr/>
         <div>
-            <p>L'emmagatzematges dels resultats com una visualitzaci&oacute; de capa d'entitats allotjada permet que les dades es mantinguin actualitzades a mesura que canvien les dades d'origen.  Les visualitzacions de capa d'entitats allotjada que contenen unions seran nom&eacute;s de lectura i no consumiran cr&egrave;dits per a l'an&agrave;lisi i l'emmagatzematge. 
+            <p>La creaci&oacute; dels resultats com una vista de capa d'entitats allotjada permet que les dades es mantinguin actualitzades en cas que es produeixin canvis en les dades d'origen.  Les vistes de capes d'entitats allotjades que contenen unions seran nom&eacute;s de lectura i no consumiran cr&egrave;dits per a l'an&agrave;lisi i l'emmagatzematge. 
+            </p>
+            <p>Podreu crear una vista de capa d'entitats allotjada des dels resultats de l'an&agrave;lisi si es compleixen totes les condicions seg&uuml;ents:
+                <ul>
+                    <li>Sou el propietari d'ambdues capes.
+                    </li>
+                    <li>Totes dues capes s&oacute;n capes d'entitats allotjades.
+                    </li>
+                    <li>Esteu duent a terme una uni&oacute; basada en els atributs.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

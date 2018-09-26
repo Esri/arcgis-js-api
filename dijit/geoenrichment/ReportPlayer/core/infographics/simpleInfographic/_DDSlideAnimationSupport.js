@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/dom-class","dojo/dom-style","./SimpleInfographicViewModes","esri/dijit/geoenrichment/utils/DomUtil","esri/dijit/geoenrichment/utils/animation/AnimationUtil"],function(i,e,o,n,t,d){return i(null,{_showSlideTransition:function(i,a){function s(){i===n.VIEW_MAIN?(t.show(l.mainViewDiv),t.hide(l.dataDrillingViewDiv)):(t.show(l.dataDrillingViewDiv),t.hide(l.mainViewDiv)),l._mode=i,e[i===n.VIEW_DATA_DRILLING?"add":"remove"](l.domNode,"isDrillingData"),e.remove(l.domNode,"isShowingAnimation"),l.onViewModeChanged(i)}var l=this;if(this._mode!==i)return e.add(this.domNode,"isShowingAnimation"),e.add(this.dataDrillingViewDiv,"isSlideAnimation esriGEAbsoluteStretched"),a?(t.show([this.mainViewDiv,this.dataDrillingViewDiv]),d.animateSlide(this.mainViewDiv,this.dataDrillingViewDiv,{leftToRight:i===n.VIEW_DATA_DRILLING,width:o.get(this.domNode,"width"),onEnd:s})):void s()}})});

@@ -126,7 +126,9 @@
         <div>
             <p>Fastsetter hvordan koblinger mellom m&aring;l- og koblingslagene blir h&aring;ndtert hvis flere geoobjekter i m&aring;llaget viser seg &aring; ha det samme forholdet til m&aring;llaget. Det er to koblingsoperasjoner &aring; velge mellom:
                 <ul>
-                    <li> <b>Koble en til en</b> &ndash; Dette alternativet kobler det f&oslash;rste samsvarende geoobjektet i koblingslaget til det f&oslash;rste samsvarende geoobjektet i m&aring;llaget. Hvis det legges til statistikk, blir samsvarende koblede geoobjekter summert til hvert geoobjekt i m&aring;llaget. Antallet koblede geoobjekter legges til som standard.
+                    <li> <b>Koble en til en</b> &ndash;&nbsp;Dette alternativet kobler geoobjektene i m&aring;llaget til ett enkelt geoobjekt i koblingslaget. M&aring;ten geoobjekter kobles sammen p&aring;, bestemmes av parameteren <b>Legg til statistikk</b> eller parameteren <b>Angi hvilken post som skal beholdes</b>. Hvis <b>Legg til statistikk</b> brukes, blir alle samsvarende koblede geoobjekter summert til hvert geoobjekt i m&aring;llaget. Antallet koblede geoobjekter legges til som standard.Hvis <b>Angi hvilken post som skal beholdes</b>
+brukes, kan du velge enten &aring; bruke den f&oslash;rste samsvarende posten (standard) eller &aring; beholde en samsvarende post basert p&aring; et uttrykk. Et uttrykk kan bruke enten et numerisk felt
+(alternativ for st&oslash;rste eller minste post) eller et datofelt (alternativ for nyeste eller eldste).
                     </li>
                     <li> <b>Koble en til mange</b> &ndash; Dette alternativet kobler alle samsvarende geoobjekter i koblingslaget til m&aring;llaget.  Det resulterende laget inneholder flere poster av geoobjektet.
                     </li>
@@ -171,10 +173,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Lagre som en hostet geoobjektlagvisning</h2></div>
+        <div><h2>Opprett resultater som hostet geoobjektlagvisning</h2></div>
         <hr/>
         <div>
-            <p>N&aring;r du lagrer resultatene som en hostet geoobjektlagvisning, oppdateres dataene n&aring;r kildedataene endres.  Hostede geoobjektlagvisninger som inneholder tilknytninger, vil v&aelig;re skivebeskyttet og bruker ikke credits til analyse og lagring. 
+            <p>N&aring;r du oppretter resultatene som en hostet geoobjektlagvisning, oppdateres dataene n&aring;r kildedataene endres. Hostede geoobjektlagvisninger som inneholder tilknytninger, vil v&aelig;re skivebeskyttet og bruker ikke credits til analyse og lagring. 
+            </p>
+            <p>Du kan opprette en hostet geoobjektlagvisning fra analyseresultatene hvis alle f&oslash;lgende betingelser er oppfylt:
+                <ul>
+                    <li>Du eier begge lagene.
+                    </li>
+                    <li>Begge lagene er hostede geoobjektlag.
+                    </li>
+                    <li>Du foretar en attributtbasert kobling.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

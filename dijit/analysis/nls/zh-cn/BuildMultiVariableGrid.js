@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({binsLabel:"选择将用于构建多变量格网的条柱类型",layersAttrLabel:"选择要包含在格网中的输入图层和变量",itemDescription:"运行构建多变量格网时生成的要素图层。",itemTags:"分析结果，构建多变量格网",itemSnippet:"构建多变量格网生成的要素图层",addVariables:"添加变量"});

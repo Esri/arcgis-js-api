@@ -44,18 +44,20 @@
         <p>Detay Analizi ara&ccedil; kutusunda erişiminize ve kullanımınıza a&ccedil;ık bir grup ara&ccedil; bulunur.  Bu g&ouml;revler aşağıda kategorilere ayrılmıştır; kategoriler basit mantıksal gruplandırmalardır ve g&ouml;revlere erişim veya kullanım bi&ccedil;iminizi herhangi bir şekilde etkilemez.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Veriyi Özetle</h2>
         <hr/>
         <p>Bu ara&ccedil;lar, alanlardaki detayların ya da yakın diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
             <ul>
-                <li> <b>Noktaları Birleştir</b>, belirtilen alanlar i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
+                <li> <b>Noktaları K&uuml;mele</b>, belirtilen alanlar i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
                 </li>
                 <li> <b>Detayları Birleştir</b>; mekan ve &ouml;znitelik ilişkilerine bağlı olarak &ouml;znitelikleri bir katmandan veya tablodan bir diğerine aktarır.
                 </li>
                 <li> <b>Yakındakini &Ouml;zetle</b>, belirtilen bir mesafedeki &ouml;zelliklerin istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
                 </li>
-                <li> <b>Dahilinde &Ouml;zetle</b>, alanın birbiriyle &ouml;rt&uuml;şen detayların ve &ouml;zniteliklerinin istatistiklerini hesaplar.
+                <li> <b>İ&ccedil;inde &Ouml;zetle</b>, alanın birbiriyle &ouml;rt&uuml;şen detayların ve &ouml;zniteliklerinin istatistiklerini hesaplar.
+                </li>
+                <li> <b>Merkez ve Dağılımı &Ouml;zetle</b>, merkezi detayları ve y&ouml;nsel dağılımları hesaplar.
                 </li>
             </ul>
             
@@ -89,7 +91,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Detayları Birleştirme</h2></td>
+                    <td><h2>Detayları Birleştir</h2></td>
                     <td>
                     <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Detayları Birleştir">
                     </td>
@@ -149,6 +151,32 @@
                     <li>Bir boşaltma havzası alanları katmanı ve arazi kullanım t&uuml;r&uuml;ne g&ouml;re bir arazi kullanım alanları katmanı verildiğinde, her boşaltma havzası i&ccedil;in arazi kullanım t&uuml;r&uuml;n&uuml;n toplam y&uuml;z &ouml;l&ccedil;&uuml;m&uuml;n&uuml; hesaplayın. 
                     </li>
                     <li>Bir il&ccedil;edeki parsellerin bir katmanı ve şehir sınırlarının bir katmanı verildiğinde, her bir şehir dahilindeki boş parsellerin ortalama değerini &ouml;zetleyin.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Merkez ve Dağılımı Özetle</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Merkez ve Dağılımı &Ouml;zetle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil; merkez detayını, ortalama merkezi, medyan merkezi veya elipsi (dağılımı) hesaplamak i&ccedil;in nokta detaylarını kullanır. &Ouml;rneğin:
+                <ul>
+                    <li>Bir ağırlık merkezi blok grup katmanı belli olduğunda, n&uuml;fusa g&ouml;re ağırlıklandırılmış merkez detayı, bir sahne sanatları merkezi i&ccedil;in şehirde en &ccedil;ok hangi sanatın erişilebilir olduğunu tanımlamak i&ccedil;in kullanılabilir.
+                    </li>
+                    <li>Bir park i&ccedil;inde birka&ccedil; yıl boyunca yapılan bir elk geyiği g&ouml;zlemleri katmanı belli olduğunda, elklerin yaz ve kış aylarında nerelerde toplandıklarını g&ouml;rmek i&ccedil;in ortalama merkez kullanılabilir.
+                    </li>
+                    <li>Bir yangın olayları katmanı belli olduğunda, orta merkez, &ccedil;evresel dışsallıklardan etkilenmeden yangınların merkezi eğilimlerini &ouml;l&ccedil;mek i&ccedil;in kullanılabilir.
+                    </li>
+                    <li>Bir yeraltı suyu kuyu numuneleri belli olduğunda, bir kirleticinin nasıl yayıldığını belirlemek i&ccedil;in bir elips kullanılabilir.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Modelleri Analiz Et</h2>
         <hr/>
         <p>Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur.  
@@ -356,6 +384,8 @@
                 <li> <b>Etkin Nokta Bul</b> aracı, verilerinizin mekansal modelindeki istatistiksel a&ccedil;ıdan anlamlı olan k&uuml;melenmeyi tanımlar.
                 </li>
                 <li> <b>Aykırı Değerleri Bul</b>, verilerinizin mekansal modelinde istatistiksel olarak anlamlı olan aykırı değerler bulunup bulunmadığını belirler.
+                </li>
+                <li> <b>Nokta K&uuml;melerini Bul</b> aracı, ortam g&uuml;r&uuml;lt&uuml;s&uuml;ndeki nokta &ouml;zellikli k&uuml;melerini mekansal dağılımlarına g&ouml;re bulur.
                 </li>
                 <li> <b>Nokta Ara Değerlerini Hesaplama</b> aracı, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin eder.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Bu ara&ccedil;, verilerinizde bulunan istatistiksel a&ccedil;ıdan anlamlı k&uuml;meleri ve mekansal aykırı değerleri g&ouml;steren bir harita oluşturur. Bu aracı kullanarak komşularından &ouml;nemli miktarda farklı olan değerlere sahip detayları tanımlayabilirsiniz.  Bu aracı kullanarak &ouml;rneğin, anormal harcama modellerini bulabilir, belirli bir araştırma alanı i&ccedil;in zenginlik ve yoksulluk arasında en belirgin farkların nerede bulunduğunu belirleyebilir veya komşularıyla kıyaslandığında ABD i&ccedil;inde anormal derecede d&uuml;ş&uuml;k ortalama yaşam s&uuml;resine sahip b&ouml;lgeler olup olmadığını tespit edebilirsiniz.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nokta Kümelerini Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Nokta K&uuml;melerini Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, noktaların yoğunlaştığı ve boş veya seyrek olan alanlar ile ayrıldığı alanları algılar. Bir k&uuml;menin par&ccedil;ası olmayan noktalar g&uuml;r&uuml;lt&uuml; olarak etiketlenir.
             </p>
             <br/>
         </div>
@@ -568,7 +613,7 @@
                 <tbody><tr>
                     <td><h2>Sınırları Bütünleştir</h2></td>
                     <td>
-                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sınırları Birleştir">
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sınırları B&uuml;t&uuml;nleştir">
                     </td>
                 </tr></tbody>
             </table>

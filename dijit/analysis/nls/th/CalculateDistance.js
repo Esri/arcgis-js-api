@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกแรสเตอร์หรือชั้นข้อมูลที่ตั้งของฟีเจอร์เพื่อคำนวณระยะทางไปยัง",maxDistanceLabel:"ระยะทางสูงสุดในการคำนวณ (ไม่บังคับ)",outputCellSize:"ขนาดเซลล์ผลลัพธ์ (ตัวเลือก)",resultDistLayerName:"ชื่อชั้นข้อมูลระยะทางของผลลัพธ์",resultDirectionLayerName:"ชื่อชั้นข้อมูลระยะทางของผลลัพธ์ (ไม่บังคับ)",resultAllocationLayerName:"ชื่อชั้นข้อมูลการจัดสรรผลลัพธ์ (ไม่บังคับ)",outputLayerName:"ระยะทางที่คำนวณของ ${layername}",allocationFieldLabel:"เลือกฟิลด์การจัดสรร (ไม่บังคับ)",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้คำนวณระยะทางใน {layerName} ",itemTags:"ผลการวิเคราะห์, คำนวณระยะทาง, ${layername} ${fieldname}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากคำนวณระยะทาง"});

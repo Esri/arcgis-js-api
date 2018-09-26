@@ -44,8 +44,7 @@
         <h2>Finn eksisterende plasseringer</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Finn eksisterende plasseringer"></h2>
         <hr/>
-    <p>Med dette verkt&oslash;yet velges eksisterende geoobjekter i studieomr&aring;det som oppfyller en rekke med kriterier som du har angitt. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og romlige sp&oslash;rringer (for eksempel innenfor 1,6 kilometer fra en elv).
-
+    <p>Med dette verkt&oslash;yet velges eksisterende geoobjekter i studieomr&aring;det som oppfyller en rekke med kriterier som du har angitt. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og romlige sp&oslash;rringer (for eksempel innenfor 1,6 kilometer fra en elv). 
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det bare geoobjektene i inndatalaget som er synlige innenfor gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, blir alle geoobjektene analysert, selv om de ligger utenfor den gjeldende kartutstrekningen.
     </p>
@@ -77,10 +76,12 @@
                     </li>
                     <li> <b>intersects</b>: geoobjektet inneholder en del av et geoobjekt i et annet lag. Du kan for eksempel finne tomter som krysser elver. Eventuelle deler av elven som g&aring;r over tomten, eller inntil tomtegrensen, krysser tomten.
                     </li>
+                    <li> <b>n&aelig;rmest</b>: geoobjektet m&aring; v&aelig;re n&aelig;rmest et geoobjekt i et annet lag. For eksempel: Finn restauranten som ligger n&aelig;rmest hvert hotell.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Hvert romlige uttrykk har en tilsvarende negasjon:  <b>ikke innenfor en avstand p&aring;</b>, <b>omfatter ikke hele</b>, <b>ikke helt innenfor</b> og <b>krysser ikke</b>.
+            <p>Hvert romlige uttrykk har en tilsvarende negasjon, med unntak av  <b>n&aelig;rmest</b>; <b>ikke innenfor en avstand p&aring;</b>, <b>inneholder ikke hele</b>, <b>ikke helt innenfor</b>, og <b>krysser ikke</b>.
             </p> 
         </div>
     </div>

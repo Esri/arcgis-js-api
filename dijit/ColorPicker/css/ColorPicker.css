@@ -288,3 +288,8 @@
   right: -100%;
   left: 0;
 }
+
+.esriColorPicker .esriSwatch--focused {
+  border: 2px solid;
+  transition: none;
+}

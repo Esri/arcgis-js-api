@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/Deferred","require"],function(e,r){var n,t={},i={};return t.initialize=function(){return n?n.promise:(n=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],function(e,r,t,o,s,a){i.document=e,i.chart=r,i.infographic=t,i.section=o,i.field=s,a.init().then(n.resolve)}),n.promise)},t.getParser=function(e){return i[e]},t});

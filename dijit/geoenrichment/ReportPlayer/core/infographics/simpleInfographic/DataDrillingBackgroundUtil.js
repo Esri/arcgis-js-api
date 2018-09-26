@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/dom-style","esri/dijit/geoenrichment/utils/ColorUtil","../../themes/BackgroundThemeUtil"],function(e,o,n){var t={};return t.setUpDDPanelBackgroundColor=function(t){if(t.infographicJson){var r=t.viewModel.getStaticInfographicDefaultStyles(t.theme),i=t.viewModel.getDocumentDefaultStyles(t.theme);[t.infographicJson.style.backgroundColor,r&&r.backgroundColor,i.backgroundColor].some(function(n){if(n&&!o.isTransparent(n))return e.set(t.node,"backgroundColor",n),!0})||n.applyBackgroundImageFromSettings(t.node,i.backgroundImage)}},t});
+define(["dojo/dom-class","esri/dijit/geoenrichment/utils/ColorUtil","../../themes/BackgroundThemeUtil"],function(e,o,r){var n={};return n.setUpDDPanelBackgroundColor=function(n){if(n.infographicJson){var t=n.viewModel.getStaticInfographicDefaultStyles(n.theme),a=n.viewModel.getDocumentDefaultStyles(n.theme);[n.infographicJson.style.backgroundColor,t&&t.backgroundColor,a.backgroundColor].some(function(r){if(r&&!o.isTransparent(r))return n.node.style.backgroundColor=r,e.remove(n.node,"playerThemeDark playerThemeLight"),e.add(n.node,o.isLightColor(r)?"playerThemeLight":"playerThemeDark"),!0})||r.applyBackgroundImageFromSettings(n.node,a.backgroundImage)}},n});

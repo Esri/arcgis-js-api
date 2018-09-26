@@ -4,7 +4,7 @@
 }
 
     .esriGEFlowList .listItem {
-        padding: 3px 5px 5px 10px;
+        padding: 3px 5px 5px 5px;
         display: block;
         white-space: nowrap;
         background-color: transparent;

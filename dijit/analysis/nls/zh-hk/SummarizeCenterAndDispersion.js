@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"選擇要說明的圖層",summaryTypes:"摘要類型",centralFeature:"中央圖徵",meanCenter:"平均值中心",medianCenter:"中位數中心",ellipse:"橢圓形",weightBy:"加權依據 (選用)",groupBy:"群組依據 (選用)",resultLayerName:"結果圖層名稱",outputLayerName:"說明 ${layerName} 的分佈情況",none:"無",itemDescription:"在 ${layerName} 上執行摘要中心和離差所產生的圖徵圖層。 ",itemTags:"分析結果，摘要中心和離差，${layerName}",itemSnippet:"從摘要中心和離差中產生的圖徵圖層"});

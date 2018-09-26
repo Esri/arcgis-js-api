@@ -44,7 +44,7 @@
         <p>Kohdeanalyysi-ty&ouml;kalulaatikossa on monia ty&ouml;kaluja, joita voit k&auml;ytt&auml;&auml;. N&auml;m&auml; teht&auml;v&auml;t on j&auml;rjestetty luokkiin. Luokat ovat yksinkertaisia loogisia ryhmi&auml;, ja ne eiv&auml;t vaikuta teht&auml;vien k&auml;ytt&ouml;&ouml;n mill&auml;&auml;n tavalla.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Aineiston yhteenveto</h2>
         <hr/>
         <p>N&auml;m&auml; ty&ouml;kalut laskevat kokonaism&auml;&auml;r&auml;t, -pituudet, -pinta-alat ja perustilastotietoja alueilla oleville tai muiden kohteiden l&auml;hell&auml; oleville kohteille ja niiden attribuuteille.
@@ -56,6 +56,8 @@
                 <li> <b>Yhteenveto l&auml;hist&ouml;st&auml;</b> laskee m&auml;&auml;ritetyn et&auml;isyyden sis&auml;ll&auml; sijaitsevien kohteiden ja niiden attribuuttien tilastotiedot.
                 </li>
                 <li> <b>Yhteenveto alueesta</b> laskee tilastotiedot alueen kohteille ja attribuuteille, jotka ovat toistensa p&auml;&auml;ll&auml;.
+                </li>
+                <li> <b>Laadi yhteenveto keskikohdasta ja hajonnasta</b> laskee keskeiset ominaisuudet ja suuntaisjakaumat
                 </li>
             </ul>
             
@@ -149,6 +151,32 @@
                     <li>Jos k&auml;yt&ouml;ss&auml; ovat vesijakoalueiden karttataso ja maank&auml;ytt&ouml;tyypin mukaisten maank&auml;ytt&ouml;alueiden karttataso, ty&ouml;kalu laskee tietyn maank&auml;ytt&ouml;aluetyypin kokonaispinta-alan eekkerein&auml; kullekin vesijakoalueelle. 
                     </li>
                     <li>Jos k&auml;yt&ouml;ss&auml; ovat piirikunnan kiinteist&ouml;jen karttataso ja kaupunkien rajojen karttataso, ty&ouml;kalu tekee yhteenvedon siit&auml;, mik&auml; on kunkin kaupungin sis&auml;ll&auml; olevien vapaiden kiinteist&ouml;jen keskim&auml;&auml;r&auml;inen arvo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Laadi yhteenveto keskikohdasta ja hajonnasta</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Laadi yhteenveto keskikohdasta ja hajonnasta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee pistekohteiden avulla keskikohteen, keskim&auml;&auml;r&auml;isen keskipisteen, mediaanikeskipisteen tai ellipsin (jakauman). Esimerkki:
+                <ul>
+                    <li>Kun otetaan huomioon kortteliryhm&auml;n keskipisteiden karttataso, v&auml;est&ouml;n painottamaa keskikohdetta voisi k&auml;ytt&auml;&auml; sen tunnistamiseen, mik&auml; kaupunginosa on helppop&auml;&auml;syisin esitt&auml;v&auml;n taiteen keskukselle.
+                    </li>
+                    <li>Kun otetaan huomioon puistossa useamman vuoden aikana tehtyjen hirvihavaintojen karttataso, keskim&auml;&auml;r&auml;isen keskipisteen avulla voi n&auml;hd&auml;, miss&auml; hirvet kokoontuvat kes&auml;isin ja talvisin.
+                    </li>
+                    <li>Kun otetaan huomioon tulipalojen karttataso. Mediaanikeskipisteen avulla voi laskea tulipalojen keskittyneisyyden &auml;&auml;rihavaintoja lukuun ottamatta.
+                    </li>
+                    <li>Kun otetaan huomioon pohjavesil&auml;hteist&auml; otetut n&auml;ytteet, ellipsin avulla voi m&auml;&auml;ritt&auml;&auml; saasteen levinneisyyden.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analysoi kaavat</h2>
         <hr/>
         <p>N&auml;iden ty&ouml;kalujen avulla voit tunnistaa, m&auml;&auml;ritt&auml;&auml; ja visualisoida tiedoistasi tila-avaruuden malleja.  
@@ -356,6 +384,8 @@
                 <li> <b>Etsi kuumat alueet</b> tunnistaa tilastollisesti merkitt&auml;v&auml;t ryp&auml;&auml;t tietojesi tila-avaruuden mallista.
                 </li>
                 <li> <b>Etsi &auml;&auml;rihavaintoja</b> selvitt&auml;&auml;, onko tietojen tilamallinnuksessa tilastollisesti merkitt&auml;v&auml;sti poikkeavia havaintoja.
+                </li>
+                <li> <b>Etsi pisteklustereita</b> etsii pistekohdeklustereita ymp&auml;r&ouml;iv&auml;st&auml; kohinasta sijainnin jakauman perusteella.
                 </li>
                 <li> <b>Interpoloi pisteet</b> ennustaa uusien sijaintien arvoja ker&auml;tyist&auml; pisteist&auml; l&ouml;ytyvien mittausten perusteella.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>T&auml;m&auml; ty&ouml;kalu luo kartan, jossa n&auml;kyv&auml;t kaikki tietojesi sis&auml;lt&auml;m&auml;t tilastollisesti merkitt&auml;v&auml;t tila-avaruuden &auml;&auml;rihavainnot. T&auml;m&auml;n ty&ouml;kalun avulla voit selvitt&auml;&auml;, mitk&auml; kohteet poikkeavat merkitt&auml;v&auml;sti ymp&auml;rist&ouml;st&auml;&auml;n. Ty&ouml;kalun avulla voit esimerkiksi etsi&auml; ep&auml;normaaleja kulutuksia, &auml;killisimm&auml;t muutokset k&ouml;yhien ja vauraiden alueiden v&auml;lill&auml; tutkimusalueella tai alueet, joilla elinaikaodote on selv&auml;sti naapurialueita pienempi.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etsi pisteklustereita</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Etsi pisteklustereita">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu havaitsee alueet, mihin pisteet ovat keskittyneet ja miss&auml; tyhj&auml;t tai harvat alueet ovat erottaneet ne toisistaan. Klusteriin kuulumattomat pisteet merkit&auml;&auml;n meluksi.
             </p>
             <br/>
         </div>

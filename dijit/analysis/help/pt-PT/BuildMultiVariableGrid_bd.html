@@ -41,32 +41,32 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Build Multi-Variable Grid</h2><p/>
-        <h2><img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" alt="Append Data workflow diagram"></h2>
+        <h2>Construi Grelha Multivariável</h2><p/>
+        <h2><img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" alt="Diagrama de fluxo de trabalho Anexar Dados"></h2>
         <hr/>
-    <p>The Build Multi-Variable Grid tool works with one or more layers of point, line, or polygon features. The tool generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer. These values can include the following variables: 
+    <p>A ferramenta Construir Grelha Multivari&aacute;vel funciona com uma ou mais camadas de elementos de ponto, linha ou pol&iacute;gono. A ferramenta gera uma grelha de caixas quadradas ou hexagonais e calcula valores para cada caixa com base na proximidade de cada camada de entrada. Estes valores podem incluir as seguintes vari&aacute;veis: 
 
     </p>
     <p>
         <ul>
-            <li> <b>Distance to Nearest</b>&mdash;The distance from each bin to the nearest feature
+            <li> <b>Dist&acirc;ncia para Mais Pr&oacute;ximo</b>&mdash;A dist&acirc;ncia entre cada caixa e o elemento mais pr&oacute;ximo
             </li>
-            <li> <b>Attribute of Nearest</b>&mdash;A field value of the feature nearest to each bin
+            <li> <b>Atributo de Mais Pr&oacute;ximo</b>&mdash;Um valor de campo do elemento mais pr&oacute;ximo de cada caixa
             </li>
-            <li> <b>Summary of Nearby</b>&mdash;A specified statistic of all features within a distance of each bin
+            <li> <b>Resumo de Proximidade</b>&mdash;Uma estat&iacute;stica especificada de todos os elementos a determinada dist&acirc;ncia de cada caixa
             </li>
-            <li> <b>Summary of Intersecting</b>&mdash;A specified statistic of all features that intersect each bin
+            <li> <b>Resumo de Interse&ccedil;&otilde;es</b>&mdash;Uma estat&iacute;stica especificada de todos os elementos que intersetam cada caixa
             </li>
         </ul>
         
     </p>
-    <p>Only variables you specify will be included in the result layer. These variables can help you understand the proximity and distribution of your data. The results can help you begin to answer questions such as the following:
+    <p>Apenas vari&aacute;veis que especificar ser&atilde;o inclu&iacute;das na camada resultante. Estas vari&aacute;veis podem ajud&aacute;-lo a compreender a proximidade e distribui&ccedil;&atilde;o dos seus dados. Os resultados podem ajud&aacute;-lo a come&ccedil;ar a responder a quest&otilde;es tais como as seguintes:
         <ul>
-            <li>Given multiple layers of public transportation infrastructure, what part of the city is least accessible by public transportation?
+            <li>Tendo em conta v&aacute;rias camadas de infraestruturas de transportes p&uacute;blicos, que parte da cidade &eacute; menos acess&iacute;vel com recurso a transportes p&uacute;blicos?
             </li>
-            <li>Given layers of waterways, such as lakes and rivers, what is the name of the water body closest to each  location in the U.S.?
+            <li>Tendo em conta camadas de vias aqu&aacute;ticas, tais como lagos e rios, qual &eacute; o nome do corpo aqu&aacute;tico mais pr&oacute;ximo de cada localiza&ccedil;&atilde;o nos E.U.A.?
             </li>
-            <li>Given a layer of household income, where in the U.S. is the variation of income in the surrounding 50 miles the greatest?
+            <li>Tendo em conta a camada de rendimento familiar, em que os E.U.A. representam a varia&ccedil;&atilde;o de rendimento, em que parte dos E.U.A. se encontra a maior varia&ccedil;&atilde;o de rendimento nas 50 milhas circundantes?
             </li>
         </ul>
         
@@ -74,54 +74,49 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="binType">
-        <div><h2>Choose the type of bins that will be used to build the multi-variable grid</h2></div>
+        <div><h2>Selecione o tipo de caixas que serão utilizadas para construir a grelha multivariável</h2></div>
         <hr/>
         <div>
              
-            <p>The 
-type and size of bins that will be used to create  the multi-variable grid. For the  <b>Square</b> option, the number and units specified determine the height and length of the square. For the <b>Hexagon</b> option, the number and units specified  determine the distance between parallel sides.
+            <p>O tipo e o tamanho das caixas que ser&atilde;o utilizadas para criar a grelha multivari&aacute;vel Para a op&ccedil;&atilde;o  <b>Quadrado</b> , o n&uacute;mero e unidades especificados determinam a altura e o comprimento do quadrado. Para a op&ccedil;&atilde;o <b>Hex&aacute;gono</b> , o n&uacute;mero e unidades especificados determinam a dist&acirc;ncia entre lados paralelos.
             </p>
-            <p>This analysis uses bins and requires a projected coordinate system. You can set the  <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
+            <p>Esta an&aacute;lise utiliza caixas e requer um sistema de coordenadas projetado. Pode definir o  <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas de processamento n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr An&aacute;lise</b> .
             </p>
         </div>
     </div>
     <div id="variableCalculations">
-        <div><h2>Choose input layers and variables that you would like to include in the grid</h2></div>
+        <div><h2>Selecione camadas de entrada e variáveis que pretende incluir na grelha</h2></div>
         <hr/>
         <div>
-            <p>Click the  add button ( <b>+</b>) to open the <b>Add Variables</b> window and add a layer to your analysis. In the <b>Add Variables</b> window, choose an input layer and configure the variables you want to calculate for that input layer.
+            <p>Clique no bot&atilde;o  adicionar ( <b>+</b>) para abrir a janela <b>Adicionar Vari&aacute;veis</b> e adicionar uma camada &agrave; sua an&aacute;lise. Na janela <b>Adicionar Vari&aacute;veis</b> , selecione uma camada de entrada e configure as vari&aacute;veis que pretende calcular para essa camada de entrada.
             </p>
-            <p>Once you have chosen and configured the variables you want to calculate, the layer will be listed in the tool window with any other selected layers. Click the edit button  for any layer to open the  <b>Add Variables</b> window and see all variables configured for that layer. Click the delete button for any layer to remove that layer and all related variables from analysis.
+            <p>Ap&oacute;s ter escolhido e configurado as vari&aacute;veis que pretende calcular, a camada ser&aacute; listada na janela da ferramenta com quaisquer outras camadas selecionadas. Clique no bot&atilde;o editar em qualquer camada para abrir a janela  <b>Adicionar Vari&aacute;veis</b> e visualizar todas as vari&aacute;veis configuradas para essa camada. Clique no bot&atilde;o eliminar em qualquer camada para remover essa camada e todas as vari&aacute;veis relacionadas da an&aacute;lise.
             </p>
         </div>
     </div>
     <div id="addVariablesWindow">
-        <div><h2>Add Variables</h2></div>
+        <div><h2>Adicionar variáveis</h2></div>
         <hr/>
         <div>
-            <p>This window allows you to  choose an input layer and configure the variables you want to calculate for that input layer. To begin, use the  <b>Choose an input layer</b> drop-down menu to select the point, polygon, or line layer you want to add to your analysis.
+            <p>Esta janela permite-lhe selecionar uma camada de entrada e configurar as vari&aacute;veis que pretende calcular para essa camada de entrada. Para come&ccedil;ar, utilize o menu pendente  <b>Selecionar uma camada de entrada</b> para selecionar a camada de ponto, pol&iacute;gono ou linha que pretende adicionar &agrave; sua an&aacute;lise.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
             </p>
-            <p>Once you have chosen an input layer, click the  <b>Add a variable</b> button to open a new variable for editing. You must provide a unique name for each variable. This will be the name of the field that is created in the attribute table of the result layer.
+            <p>Ap&oacute;s ter selecionado uma camada de entrada, clique no bot&atilde;o  <b>Adicionar uma vari&aacute;vel</b> para abrir uma nova vari&aacute;vel para edi&ccedil;&atilde;o. Tem de atribuir um nome &uacute;nico a cada vari&aacute;vel. Este ser&aacute; o nome do campo que &eacute; criado na tabela de atributos da camada resultante.
             </p>
-            <p>Use the drop-down menu to select the type of variable to add. Each variable type must be configured with a unique set of parameters, and all parameters are required.
+            <p>Utilize o menu pendente para selecionar o tipo de vari&aacute;vel a adicionar. Cada tipo de vari&aacute;vel tem de ser configurado com um conjunto de par&acirc;metros &uacute;nico, e todos os par&acirc;metros s&atilde;o obrigat&oacute;rios.
             </p>
-            <p>Once you have added all desired variables for the chosen layer, click the  <b>Add</b> button to save the variables.
+            <p>Ap&oacute;s ter adicionado todas as vari&aacute;veis pretendidas para a camada selecionada, clique no bot&atilde;o  <b>Adicionar</b> para guardar as vari&aacute;veis.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created in <b>My
-Content</b> and added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists, the tool will fail.
+            <p> O nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify
-the name of a folder in <b>My Content</b> where the result will be
-saved.
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>
         </div>
     </div>

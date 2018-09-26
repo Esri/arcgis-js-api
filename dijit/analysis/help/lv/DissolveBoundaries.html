@@ -46,7 +46,7 @@
         <hr/>
     <p>Laukumi, kas pārklājas, kam ir kopīga robežu, tiek apvienoti, izveidojot vienu laukumu.    
     </p>
-    <p>Jūs varat kontrolēt, kuras robežas tiek apvienotas, norādot lauku. Piemēram, ja jums ir apgabalu slānis un katram slānim ir atribūts  <i>State_Name</i>, jūs varat iz&scaron;ķīdināt robežas, lietojot atribūtu <i>State_Name</i>.  Apgabali, kas pieskaras, tiks apvienoti kopā, ja tiem ir vienāda vērtība laukā <i>State_Name</i>. Rezultāts ir robežu slānis.
+    <p>Jūs varat kontrolēt, kuras robežas tiek apvienotas, norādot lauku. Piemēram, ja jums ir apgabalu slānis un katram slānim ir atribūts  <i>State_Name</i>, jūs varat iz&scaron;ķīdināt robežas, lietojot atribūtu <i>State_Name</i>.  Laukumi, kas pieskaras, tiks apvienoti kopā, ja tiem ir vienāda vērtība laukā <i>State_Name</i>.  Rezultāts ir robežu slānis.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,7 +66,7 @@
         <div>
             <p>Jūs varat izvēlēties vienu no divām metodēm lai apvienotu laukumu elementus:
                 <ul>
-                    <li> <b>Laukumi, kas daļēji pārklājas vai atrodas kaimiņos</b>&nbsp;&mdash; divi vai vairāki laukumi, kuru robežas savstarpēji pārklājas tiks apvienoti vienā laukumā.  Papildus, laukumi, kas atrodas kaimiņos (tas ir, tiem ir kopēja robeža), tiks apvienoti vienā laukumā.
+                    <li> <b>Laukumi, kas daļēji pārklājas vai atrodas blakus</b>&nbsp;&mdash; divi vai vairāki laukumi, kuru robežas savstarpēji pārklājas, tiks apvienoti vienā laukumā.  Papildus, laukumi, kas atrodas blakus (tas ir, tiem ir kopēja robeža), tiks apvienoti vienā laukumā.
                     </li>
                     <li> <b>Laukumi ar vienādu lauka vērtību</b>&nbsp;&mdash; apgabali, kas daļēji pārklājas vai kuriem ir kopēja robeža, tiks apvienoti vienā laukumā, ja tiem ir vienādas lauku vērtības.
                         <p>Piemēram, ja jums ir laukumu slānis un katram slānim ir lauks  <i>State_Name</i>, jūs varat sapludināt robežas, izmantojot lauku <i>State_Name</i>.  Laukumi, kas pieskaras, tiks apvienoti kopā, ja tiem ir vienāda vērtība laukā <i>State_Name</i>.  Rezultāts ir robežu slānis.
@@ -75,7 +75,7 @@
                 </ul>
                 
             </p>
-            <p>Ja ir atzīmēta iespēja  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks sapludināti tikai tie elementi ievades slānī , kas ir redzami pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, visi elementi ievades slānī tiks noņemti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+            <p>Ja ir atzīmēta iespēja  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks sapludināti tikai ievades slāņa redzamās daļas elementi pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, visi elementi ievades slānī tiks noņemti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
             </p>
         </div>
     </div>
@@ -83,7 +83,7 @@
         <div><h2>Izveidot vairākdaļu elementus</h2></div>
         <hr/>
         <div>
-            <p>Platformā ArcGIS tādas vietas vai objekta, kam ir vairākas daļas, digitāls attēlojums tiek definēts kā viens elements, jo tas atsaucas uz vienu atribūtu kopu. Piemēram, &scaron;tatu slānī Havaju &scaron;tatu var uzskatīt par vairākdaļu elementu, jo tā atsevi&scaron;ķās ģeometriskās daļas ir klasificētas kā vienots &scaron;tats. Vairākdaļu elements var būt punkts, līnija vai laukums. &Scaron;im binārās izvēles parametram ir divas tālāk norādītās opcijas.
+            <p>Platformā ArcGIS tādas vietas vai objekta, kam ir vairākas daļas, digitāls attēlojums tiek definēts kā viens elements, jo tas atsaucas uz vienu atribūtu kopu. Piemēram, &scaron;tatu slānī Havaju &scaron;tatu var uzskatīt par vairākdaļu elementu, jo tā atsevi&scaron;ķās ģeometriskās daļas ir klasificētas kā vienots &scaron;tats. &Scaron;im binārās izvēles parametram ir divas tālāk norādītās opcijas.
                 <ul>
                     <li>Patiess (atzīmēts): izvades serviss var ietvert vairākdaļu elementus.
                     </li>
@@ -98,7 +98,7 @@
         <div><h2>Pievienot statistikas datus</h2></div>
         <hr/>
         <div>
-            <p>Ja areāli ir apvienoti, jūs varat apkopot to atribūtus. Piemēram, ja jūs iz&scaron;ķīdināt robežu starp apgabaliem atkarībā no lauka  <i>State_Name</i> vērtības un katram apgabalam ir lauks <i>Population</i>, jūs varat aprēķināt lauka <i>Population</i> summu &scaron;tatam.
+            <p>Ja teritorijas ir apvienotas, jūs varat apkopot to atribūtus. Piemēram, ja jūs iz&scaron;ķīdināt robežu starp apgabaliem atkarībā no lauka  <i>State_Name</i> vērtības un katram apgabalam ir lauks <i>Population</i>, jūs varat aprēķināt lauka <i>Population</i> summu &scaron;tatam.
             </p>
             <p>Pieejamie statistikas tipi ir:
             </p>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/OrderingProcess.html","./OrderingProcessElements"],function(e,t,r,s,i,o){var a=e(i,{templateString:o});return r("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.distribution.OrderingProcess",a,s),a});

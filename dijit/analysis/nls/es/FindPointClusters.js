@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({clustersLabel:"Buscar los clústeres, para la capa ${inputLayerName}.",chooseLayerLabel:"Elegir la capa cuyos clústeres se buscarán",minClusterPtsLabel:"Número mínimo de puntos que se deben considerar como un clúster",limitSearchLabel:"Limitar el rango de búsqueda a (opcional)",limitSearchReqLabel:"Limitar el rango de búsqueda a",outputLayerName:"Buscar clústeres para ${inputLayerName}",itemDescription:"Capa de entidades generada al ejecutar la solución Buscar clústeres de puntos para ${inputLayerName}.",itemTags:"Resultado de análisis, Buscar clústeres de puntos, ${inputLayerName}",itemSnippet:"Capa de entidades generada de Buscar clústeres de puntos"});

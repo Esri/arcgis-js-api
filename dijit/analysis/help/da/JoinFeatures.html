@@ -126,7 +126,9 @@
         <div>
             <p>Bestemmer, hvordan tilknytninger mellem destinations- og tilknytningslaget h&aring;ndteres, hvis det viser sig, at flere objekter i tilknytningslaget har den samme relation i forhold til destinationslaget. Du kan v&aelig;lge mellem disse to tilknytningshandlinger:
                 <ul>
-                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter det f&oslash;rste matchende objekt i tilknytningslaget til det f&oslash;rste matchende objekt i destinationslaget. Hvis der tilf&oslash;jes statistik, er der mulighed for, at matchede tilknyttede objekter kan summeres i forhold til hvert objekt i destinationslaget.  Antallet af tilknyttede objekter tilf&oslash;jes som standard.
+                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter objekterne i destinationslaget til et enkelt objekt i tilknytningslaget. M&aring;den, objekter knyttes sammen p&aring;, bestemmes af parameteren <b>Tilf&oslash;j statistik</b> eller parameteren <b>Defin&eacute;r, hvilken post der beholdes</b>. Hvis <b>Tilf&oslash;j statistik</b> benyttes, summeres alle matchede tilknyttede objekter for hvert objekt i destinationslaget. Antallet af tilknyttede objekter tilf&oslash;jes som standard.Hvis <b>Defin&eacute;r, hvilken post der beholdes</b>
+ benyttes, kan du v&aelig;lge at beholde enten den f&oslash;rste post, der matcher, eller beholde en post, der matcher, p&aring; basis af et udtryk. Et udtryk kan bruge enten et numerisk felt 
+(mulighed for st&oslash;rste eller mindste post) eller et datofelt (mulighed for nyeste eller &aelig;ldste).
                     </li>
                     <li> <b>Tilknyt &eacute;n-til-mange</b> &ndash; Denne indstilling knytter alle matchende objekter i tilknytningslaget til destinationslaget. Resultatlaget vil indeholde flere poster fra destinationslaget.
                     </li>
@@ -171,10 +173,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Gem som en "hosted" vektorlag-visning</h2></div>
+        <div><h2>Opret resultater som hosted vektorlag-visning</h2></div>
         <hr/>
         <div>
-            <p>N&aring;r du gemmer resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres.  &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede, og de vil ikke forbruge credits i forbindelse med analyse og lagring. 
+            <p>N&aring;r du opretter resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres. &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede, og de vil ikke forbruge credits i forbindelse med analyse og lagring. 
+            </p>
+            <p>Du kan oprette en hosted vektorlag-visning ud fra analyseresultaterne, hvis alle f&oslash;lgende betingelser er opfyldt:
+                <ul>
+                    <li>Du er ejer af begge lag.
+                    </li>
+                    <li>Begeg lag er hostede vektorlag.
+                    </li>
+                    <li>Du udf&oslash;rer en attribut-baseret tilknytning.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

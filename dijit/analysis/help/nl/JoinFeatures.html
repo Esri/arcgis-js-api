@@ -126,7 +126,7 @@
         <div>
             <p>Bepaalt hoe koppelingen tussen de doel- en koppelingslaag behandeld zullen worden als meerdere objecten in de koppelingslaag dezelfde relatie t.o.v. de doellaag blijken te hebben. De volgende zijn de twee koppelbewerkingen om uit te kiezen:
                 <ul>
-                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt het eerste overeenkomende object in de koppelingslaag toe aan het eerste overeenkomende object in de doellaag. Optioneel, als statistieken worden toegevoegd, worden overeenkomende gekoppelde objecten samengevat voor elk object in de doellaag. Het aantal verbonden objecten wordt standaard toegevoegd.
+                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt het object in de doellaag toe aan een enkel object in de koppelingslaag. Hoe objecten worden toegevoegd, wordt bepaald door de <b>Voeg statistieken toe</b>-parameter of door de <b>Bepaal welke records worden bewaard</b> parameter. Als <b>Statistieken toevoegen</b> wordt gebruikt, worden alle overeenkomende gekoppelde objecten samengevat voor elk object in de doellaag. Het aantal verbonden objecten wordt standaard toegevoegd.Als <b>Bepaal welke records worden bewaard</b> wordt gebruikt, kunt u ervoor kiezen om het eerste overeenkomende record (standaardinstelling) of een overeenkomend record gebaseerd op een expressie te gebruiken. Een expressie kan zowel een numeriek veld (optie voor grootste of kleinste record) als een datumveld (optie voor nieuwste of oudste) gebruiken.
                     </li>
                     <li> <b>E&eacute;n-aan-veel koppelen</b>&mdash;Deze optie voegt alle overeenkomende objecten in de koppelingslaag toe aan de doellaag.  De resultaatlaag bevat dan meerdere records van het doelobject.
                     </li>
@@ -171,10 +171,21 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Een weergave van een gehoste objectlaag opslaan</h2></div>
+        <div><h2>Resultaten aanmaken als gehoste objectlaagweergave</h2></div>
         <hr/>
         <div>
-            <p>Door resultaten op te slaan als een weergave van een gehoste objectlaag, kunnen de gegevens up-to-date blijven indien de brongegevens veranderen. De weergaven van gehoste objectlagen met samenvoegingen zijn alleen-lezen en verbruiken geen credits voor analyse en opslag. 
+            <p>Door resultaten aan te maken als een weergave van een gehoste objectlaag, kunnen de gegevens up-to-date blijven indien de brongegevens veranderen. De weergaven van gehoste objectlagen met samenvoegingen zijn alleen-lezen en verbruiken geen credits voor analyse en opslag. 
+            </p>
+            <p>U kunt een gehoste objectlaag aanmaken van de analyseresultaten als aan alle volgende voorwaarden is voldaan:
+                <ul>
+                    <li>U bent de eigenaar van beide lagen.
+                    </li>
+                    <li>Beide lagen zijn gehoste objectlagen.
+                    </li>
+                    <li>U voert een op attributen gebaseerde verbinding uit.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+
+    <title>Gestures test</title>
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-size: 13px;
+            font-family: "Avenir Next";
+        }
+    </style>
+
+    <script>
+
+        var util = {};
+
+        util.preventDefaultSiteBehavior = function () {
+            document.body.style.touchAction = "none";
+        };
+
+        // params.onZoomIn()
+        // params.onZoomOut()
+        //
+        // returns a signal with remove() method.
+        util.enableGesturesOnNode = function (node, params) {
+            if (!node)
+                return;
+
+            util.preventDefaultSiteBehavior();
+
+            // More info about pointer events:
+            // Code was provided by https://github.com/mdn/dom-examples/blob/master/pointerevents/Pinch_zoom_gestures.html
+
+            // Log events flag
+            var logEvents = false;
+            // Global vars to cache event state
+            var evCache = [];
+            var prevDiff = -1;
+            // Logging/debugging functions
+            function log(prefix, ev) {
+            };
+
+            function pointerdown_handler(ev) {
+                // The pointerdown event signals the start of a touch interaction.
+                // This event is cached to support 2-finger gestures
+                evCache.push(ev);
+                log("pointerDown", ev);
+            };
+
+            function pointermove_handler(ev) {
+                // This function implements a 2-pointer horizontal pinch/zoom gesture.
+                //
+                // If the distance between the two pointers has increased => zoom in,
+                // distance is decreasing => zoom out.
+                log("pointerMove", ev);
+                // Find this event in the cache and update its record with this event
+                for (var i = 0; i < evCache.length; i++) {
+                    if (ev.pointerId == evCache[i].pointerId) {
+                        evCache[i] = ev;
+                        break;
+                    }
+                }
+                // If two pointers are down, check for pinch gestures
+                if (evCache.length == 2) {
+                    // Calculate the distance between the two pointers
+                    var curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
+                    if (prevDiff > 0) {
+                        if (curDiff > prevDiff) {
+                            // The distance between the two pointers has increased
+                            log("Pinch moving OUT -> Zoom in", ev);
+                            params.onZoomOut();
+                        }
+                        if (curDiff < prevDiff) {
+                            // The distance between the two pointers has decreased
+                            log("Pinch moving IN -> Zoom out", ev);
+                            params.onZoomIn();
+                        }
+                    }
+                    // Cache the distance for the next move event
+                    prevDiff = curDiff;
+                }
+            };
+
+            function pointerup_handler(ev) {
+                log(ev.type, ev);
+                // Remove this pointer from the cache
+                for (var i = 0; i < evCache.length; i++) {
+                    if (evCache[i].pointerId == ev.pointerId) {
+                        evCache.splice(i, 1);
+                        break;
+                    }
+                }
+
+                // If the number of pointers down is less than two then reset diff tracker
+                if (evCache.length < 2)
+                    prevDiff = -1;
+            };
+
+            // Install event handlers for the pointer target (node)
+            node.onpointerdown = pointerdown_handler;
+            node.onpointermove = pointermove_handler;
+            // Use same handler for pointer{up,cancel,out,leave} events since
+            // the semantics for these events - in this app - are the same.
+            node.onpointerup = pointerup_handler;
+            node.onpointercancel = pointerup_handler;
+            node.onpointerout = pointerup_handler;
+            node.onpointerleave = pointerup_handler;
+
+            return {
+                remove: function () {
+                    evCache = null;
+                    node.onpointerdown = function () { };
+                    node.onpointermove = function () { };
+                    node.onpointerup = function () { };
+                    node.onpointercancel = function () { };
+                    node.onpointerout = function () { };
+                    node.onpointerleave = function () { };
+                }
+            };
+        };
+
+        window.onload = function () {
+            util.enableGesturesOnNode(targetDiv, {
+                onZoomIn: function () {
+                    targetDiv.style.width = targetDiv.clientWidth * 1.2 + "px";
+                    targetDiv.style.height = targetDiv.clientHeight * 1.2 + "px";
+                },
+                onZoomOut: function () {
+                    targetDiv.style.width = targetDiv.clientWidth / 1.2 + "px";
+                    targetDiv.style.height = targetDiv.clientHeight / 1.2 + "px";
+                }
+            });
+        };
+
+    </script>
+</head>
+<body class="claro">
+    <div style="margin:10px">Pinch in/out to zoom</div>
+    <div id="targetDiv" style="background-color:red;width:200px;height:200px;"></div>
+</body>
+</html>

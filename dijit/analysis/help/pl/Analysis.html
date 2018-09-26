@@ -57,6 +57,8 @@
                 </li>
                 <li>Za pomocą narzędzia  <b>Sumuj w obrębie</b> można obliczyć dane statystyczne nakładających się na siebie obiekt&oacute;w i atrybut&oacute;w znajdujących się na danym obszarze.
                 </li>
+                <li>Za pomocą narzędzia  <b>Sumuj wyśrodkowanie i rozproszenie</b> można obliczyć obiekty centralne i rozkłady kierunkowe.
+                </li>
             </ul>
             
         </p>
@@ -74,7 +76,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Narzędzie to służy do pracy z&nbsp;warstwą obiekt&oacute;w punktowych oraz warstwą obiekt&oacute;w obszarowych i&nbsp;pozwala ustalić, kt&oacute;re punkty znajdują się w&nbsp;obrębie poszczeg&oacute;lnych obszar&oacute;w, a&nbsp;także obliczyć statystyki wszystkich punkt&oacute;w w&nbsp;każdym obszarze. Na przykład,
+            <p>Narzędzie to służy do pracy z&nbsp;warstwą obiekt&oacute;w punktowych oraz warstwą obiekt&oacute;w obszarowych i&nbsp;pozwala ustalić, kt&oacute;re punkty znajdują się w&nbsp;obrębie poszczeg&oacute;lnych obszar&oacute;w, a&nbsp;także obliczyć statystyki wszystkich punkt&oacute;w w&nbsp;każdym obszarze. Przykład:
                 <ul>
                     <li>Na podstawie miejsc wystąpienia przestępstw oblicz liczbę przestępstw w&nbsp;danym powiecie lub innej jednostce podziału administracyjnego.
                     </li>
@@ -96,7 +98,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Za pomocą narzędzia Połącz obiekty można przenieść atrybuty z jednej warstwy lub tabeli do innej na podstawie relacji przestrzennych i atrybutowych. Na przykład,
+            <p>Za pomocą narzędzia Połącz obiekty można przenieść atrybuty z jednej warstwy lub tabeli do innej na podstawie relacji przestrzennych i atrybutowych. Przykład:
                 <ul>
                     <li>Dołącz wsp&oacute;lną granicę lub informacje demograficzne do danych zdarzenia.
                     </li>
@@ -122,7 +124,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Umożliwia wyszukiwanie obiekt&oacute;w znajdujących się w&nbsp;określonej odległości od obiekt&oacute;w w&nbsp;warstwie wejściowej. Odległość może być mierzona wzdłuż linii prostych lub optymalnych tras trybu podr&oacute;ży. W&oacute;wczas można obliczyć dane statystyczne dla pobliskich obiekt&oacute;w. Na przykład,
+            <p>Umożliwia wyszukiwanie obiekt&oacute;w znajdujących się w&nbsp;określonej odległości od obiekt&oacute;w w&nbsp;warstwie wejściowej. Odległość może być mierzona wzdłuż linii prostych lub optymalnych tras trybu podr&oacute;ży. W&oacute;wczas można obliczyć dane statystyczne dla pobliskich obiekt&oacute;w. Przykład:
                 <ul>
                     <li>Oblicz całkowitą wielkość populacji w zasięgu pięciu minut od zaproponowanej nowej lokalizacji sklepu.
                     </li>
@@ -144,11 +146,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Umożliwia wyszukiwanie obszar&oacute;w (i&nbsp;części obszar&oacute;w) nakładających się na siebie dw&oacute;ch warstw i&nbsp;obliczenie statystyk dotyczących ich pokrycia. Na przykład,
+            <p>Umożliwia wyszukiwanie obszar&oacute;w (i&nbsp;części obszar&oacute;w) nakładających się na siebie dw&oacute;ch warstw i&nbsp;obliczenie statystyk dotyczących ich pokrycia. Przykład:
                 <ul>
                     <li>Mając warstwę zlewni i warstwę obszar&oacute;w użytkowania terenu według typu użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni. 
                     </li>
                     <li>Podsumuj średnią wartość działek na sprzedaż w&nbsp;obrębie każdego miasta na podstawie warstwy z&nbsp;działkami w&nbsp;danym powiecie oraz warstwy z&nbsp;granicami miejskimi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumuj wyśrodkowanie i rozproszenie</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Sumuj wyśrodkowanie i rozproszenie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie używa obiekt&oacute;w punktowych do obliczenia obiektu centralnego, średniego środka, środka mediany lub elipsy (rozkładu). Przykład:
+                <ul>
+                    <li>Mając dostępną warstwę centroid&oacute;w grupy blok&oacute;w, można użyć obiektu centralnego ważonego ze względu na populację w celu identyfikacji najbardziej dostępnego obiektu sztuki miejskiej dla centrum sztuki widowiskowej.
+                    </li>
+                    <li>Mając dostępną warstwę łosi zaobserwowanych w okresie kilku lat w parku, można użyć średniego środka do określenia miejsca gromadzenia się łosi latem i zimą.
+                    </li>
+                    <li>Mając dostępną warstwę pożar&oacute;w, można użyć środka mediany do określenia tendencji centralnej pożar&oacute;w niezakł&oacute;conej przez zbędne elementy odstające.
+                    </li>
+                    <li>Mając dostępną warstwę pr&oacute;bek w&oacute;d gruntowych, można użyć elipsy do określenia sposobu rozprzestrzeniania się zanieczyszczeń.
                     </li>
                 </ul>
                 
@@ -346,7 +374,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analiza zależności przestrzennych</h2>
         <hr/>
         <p>Narzędzia te pomagają w&nbsp;identyfikacji, ocenie ilościowej oraz przestrzennej wizualizacji trend&oacute;w istniejących w&nbsp;danych.  
@@ -356,6 +384,8 @@
                 <li> <b>Narzędzie Znajdź lokalizacje hot spot</b> identyfikuje statystycznie istotne zgrupowania w zależnościach przestrzennych Twoich danych.
                 </li>
                 <li>Za pomocą narzędzia  <b>Znajdź elementy odstające</b> można sprawdzić, czy zależności przestrzenne występujące w danych zawierają statystycznie istotne elementy odstające.
+                </li>
+                <li>Narzędzie  <b>Znajdź klastry punkt&oacute;w</b> znajduje klastry obiekt&oacute;w punktowych wśr&oacute;d otaczającego szumu w oparciu o ich rozkład przestrzenny.
                 </li>
                 <li>Narzędzie  <b>Interpoluj punkty</b> służy do przewidywania wartości w&nbsp;nowych lokalizacjach na podstawie pomiar&oacute;w wykonanych na zbiorze punkt&oacute;w.
                 </li>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Za pomocą tego narzędzia tworzona jest mapa zawierająca statystycznie istotne klastry i przestrzenne elementy odstające występujące w danych. Za pomocą tego narzędzia można identyfikować obiekty o wartościach istotnie r&oacute;żniących się od wartości obiekt&oacute;w sąsiadujących.  Używając tego narzędzia, można znaleźć nietypowe wzorce wydatk&oacute;w, określić, gdzie w badanym obszarze występuje największe rozwarstwienie ekonomiczne lub sprawdzić, czy w Stanach Zjednoczonych istnieją hrabstwa o nietypowo niskiej wartości oczekiwanej średniej długości życia w por&oacute;wnaniu do sąsiednich hrabstw.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź klastry punktów</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Znajdź klastry punkt&oacute;w">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie wykrywa obszary koncentracji punkt&oacute;w oraz dzielące je obszary puste lub o niskim zagęszczeniu. Punkty niebędące częścią klastra są oznaczane jako szum.
             </p>
             <br/>
         </div>

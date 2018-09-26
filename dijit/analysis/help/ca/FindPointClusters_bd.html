@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Cerca clústers de punts</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Cerca cl&uacute;sters de punts"></h2>
+        <hr/>
+    <p>L'eina  Cerca cl&uacute;sters de punts cerca cl&uacute;sters d'entitats de punts dins del soroll de l'entorn en funci&oacute; de la seva distribuci&oacute; espacial.
+    </p>
+    <p>Una organitzaci&oacute; no governamental estudia una malaltia de transmissi&oacute; per plagues concreta. T&eacute; un dataset de punts que representa les unitats familiars d'una &agrave;rea d'estudi, de les quals algunes estan infectades i altres no. Mitjan&ccedil;ant l'eina  Cerca cl&uacute;sters de punts, un analista pot determinar els cl&uacute;sters d'unitats familiars infectades per ajudar a precisar una &agrave;rea i iniciar el tractament i l'exterminaci&oacute; de les plagues.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Trieu la capa per a la qual es cercaran els clústers</h2></div>
+        <hr/>
+        <div>
+            <p>Capa de punts on es cercaran els cl&uacute;sters.  Les capes s'han de trobar en una refer&egrave;ncia espacial projectada o tenir una refer&egrave;ncia espacial de processament definida en un sistema de coordenades projectades mitjan&ccedil;ant els  <b>entorns d'an&agrave;lisi</b>.
+            </p>
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Examina les capes</b> al final de la llista desplegable per cercar al vostre contingut una capa d'entitats o un dataset de recursos compartits de fitxers de dades massives.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Nombre mínim de punts que es considerarà un clúster</h2></div>
+        <hr/>
+        <div>
+            <p>Nombre m&iacute;nim d'entitats per classificar un cl&uacute;ster.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Limita l'interval de cerca a</h2></div>
+        <hr/>
+        <div>
+            <p>Dist&agrave;ncia m&agrave;xima per considerar que les entitats formen part del mateix cl&uacute;ster.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p> Nom de la capa que es crear&agrave; a <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, l'eina no funcionar&agrave;.
+            </p>
+            <p>Mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta d' <b>El meu contingut</b> on es desar&agrave; el resultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

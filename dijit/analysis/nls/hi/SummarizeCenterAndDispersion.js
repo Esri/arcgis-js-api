@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({inputLayerLabel:"वर्णन करने के लिए कोई लेयर चुनें",summaryTypes:"सारांश प्रकार",centralFeature:"केंद्रीय विशेषता",meanCenter:"माध्य केंद्र",medianCenter:"माध्यिका केंद्र",ellipse:"अंडाकार",weightBy:"इसके द्वारा भारित (वैकल्पिक)",groupBy:"समूह द्वारा (वैकल्पिक)",resultLayerName:"परिणामी लेयर का नाम",outputLayerName:"${layerName} के वितरण का वर्णन करें",none:"कोई नहीं",itemDescription:"सारांश केंद्र को चलाने से जेनरेट की गई लेयर और प्रसार को ${layerName} पर प्रदर्शित करें। ",itemTags:"विश्लेषण के परिणाम, सारांश केंद्र और प्रसार, ${layerName}",itemSnippet:"सारांश केंद्र और प्रसार से जेनरेट की गई लेयर प्रदर्शित करें"});

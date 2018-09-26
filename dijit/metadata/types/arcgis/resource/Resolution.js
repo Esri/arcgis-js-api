@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/Resolution.html"],function(e,t,o,a,s,r){var i=e(s,{templateString:r});return o("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.resource.Resolution",i,a),i});

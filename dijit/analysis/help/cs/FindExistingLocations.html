@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Najít stávající lokality (Find Existing Locations)</h2><p/>
+        <h2>Najít stávající lokality</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Naj&iacute;t st&aacute;vaj&iacute;c&iacute; lokality"></h2>
         <hr/>
     <p>Tento n&aacute;stroj vybere st&aacute;vaj&iacute;c&iacute; prvky v z&aacute;jmov&eacute; oblasti, kter&eacute; splňuj&iacute; stanoven&yacute; soubor krit&eacute;ri&iacute;. Tato krit&eacute;ria mohou b&yacute;t založena na požadavc&iacute;ch na atributy (např. parcely, kter&eacute; jsou voln&eacute;) a prostorov&yacute;ch požadavc&iacute;ch (např&iacute;klad do vzd&aacute;lenosti 1 km od řeky). 
@@ -76,10 +76,12 @@
                     </li>
                     <li> <b>prot&iacute;n&aacute;</b>: prvek obsahuje č&aacute;st prvku jin&eacute; vrstvy.  Můžete např&iacute;klad vyhledat parcely, kter&eacute; prot&iacute;naj&iacute; řeky. Parcelu prot&iacute;naj&iacute; v&scaron;echny řeky, kter&eacute; proch&aacute;z&iacute; parcelou nebo kter&eacute; se dot&yacute;kaj&iacute; jej&iacute;ho &uacute;zem&iacute;.
                     </li>
+                    <li> <b>nejbl&iacute;že k</b>: prvek mus&iacute; b&yacute;t nejbl&iacute;že k prvku jin&eacute; vrstvy. Můžete např&iacute;klad vyhledat restauraci, kter&aacute; je nejbl&iacute;že ke každ&eacute;mu hotelu.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Ke v&scaron;em prostorov&yacute;m př&iacute;kazům existuj&iacute; tak&eacute; odpov&iacute;daj&iacute;c&iacute; negace:  <b>nen&iacute; ve vzd&aacute;lenosti</b>, <b>neobsahuje zcela</b>, <b>nen&iacute; zcela uvnitř</b> a <b>neprot&iacute;n&aacute;</b>.
+            <p>Ke v&scaron;em prostorov&yacute;m př&iacute;kazům existuj&iacute; tak&eacute; odpov&iacute;daj&iacute;c&iacute; negace, s v&yacute;jimkou  <b>nejbl&iacute;že k</b>; <b>nen&iacute; ve vzd&aacute;lenosti</b>, <b>neobsahuje zcela</b>, <b>nen&iacute; zcela uvnitř</b> a <b>neprot&iacute;n&aacute;</b>.
             </p> 
         </div>
     </div>

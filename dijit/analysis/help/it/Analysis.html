@@ -44,7 +44,7 @@
         <p>La casella degli strumenti Analizza feature contiene diversi strumenti disponibili per l'utilizzo.  Queste attivit&agrave; sono organizzate in categorie, ovvero semplici raggruppamenti logici che non influiscono sul modo in cui si accede a tali attivit&agrave; o le si utilizza.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Riepiloga dati</h2>
         <hr/>
         <p>Questi strumenti consentono di calcolare totali, lunghezze, aree e statistiche descrittive di base di feature e dei relativi attributi in aree o altre feature vicine.
@@ -56,6 +56,8 @@
                 <li> <b>Riepiloga nelle vicinanze</b> consente di calcolare le statistiche per feature e per i relativi attributi entro una distanza specificata.
                 </li>
                 <li> <b>Riepiloga entro</b> consente di calcolare le statistiche per le feature di area e per gli attributi sovrapposti tra loro.
+                </li>
+                <li> <b>Riepiloga centro e dispersione</b> consente di calcolare feature centrali e distribuzioni direzionali.
                 </li>
             </ul>
             
@@ -149,6 +151,32 @@
                     <li>Dati un layer di aree spartiacque e un layer di aree di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ogni spartiacque. 
                     </li>
                     <li>Dati un layer di particelle in una regione e un layer di confini di citt&agrave;, &egrave; possibile riepilogare il valore medio delle particelle non occupate in ogni citt&agrave;.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Riepiloga centro e dispersione</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Riepiloga centro e dispersione">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento utilizza feature puntuali per calcolare feature centrale, centro medio, centro mediano o ellisse (distribuzione). Ad esempio:
+                <ul>
+                    <li>Dato un layer di centroidi del gruppo di blocchi, &egrave; possibile usare la feature centrale ponderata dalla popolazione per identificare quale arte della citt&agrave; &egrave; la pi&ugrave; accessibile per un centro di arti dello spettacolo.
+                    </li>
+                    <li>Dato un layer di osservazioni degli alci all'interno di un parco per diversi anni, &egrave; possibile usare il centro medio per vedere dove si radunano gli alci in estate e in inverno.
+                    </li>
+                    <li>Dato un layer di incendi, &egrave; possibile usare il centro mediano per misurare la tendenza centrale degli incendi senza includere le periferie.
+                    </li>
+                    <li>Dato un layer di campioni di pozzi di acque sotterranee, &egrave; possibile utilizzare un'ellisse per determinare come si diffonde un contaminante.
                     </li>
                 </ul>
                 
@@ -262,7 +290,7 @@
                 <tbody><tr>
                     <td><h2>Deriva nuove località</h2></td>
                     <td>
-                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Deriva nuove localit&agrave;">
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Deriva nuove posizioni">
                     </td>
                 </tr></tbody>
             </table>
@@ -292,7 +320,7 @@
                 <tbody><tr>
                     <td><h2>Trova località esistenti</h2></td>
                     <td>
-                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Trova localit&agrave; esistenti">
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Trova posizioni esistenti">
                     </td>
                 </tr></tbody>
             </table>
@@ -357,6 +385,8 @@
                 </li>
                 <li> <b>Trova outlier</b> consente di determinare la presenza di outlier statisticamente rilevanti nel modello spaziale dei dati.
                 </li>
+                <li> <b>Trova cluster punti</b> trova i cluster di feature punto entro il disturbo circostante in base alla loro distribuzione spaziale.
+                </li>
                 <li> <b>Interpolazione punti</b> consente di prevedere i valori in corrispondenza di nuove posizioni sulla base delle misurazioni trovate in una raccolta di punti.
                 </li>
             </ul>
@@ -405,6 +435,21 @@
             </table>
 <hr/>
             <p>Questo strumento consente di creare una mappa che illustra gli eventuali cluster e gli outlier spaziali di rilevanza statistica presenti nei dati. Utilizzare questo strumento per identificare feature i cui valori sono significativamente diversi dai loro vicini &igrave;.  &Egrave; possibile utilizzare questo strumento, ad esempio, per individuare modelli di spesa anomali, determinare dove si trovano i confini pi&ugrave; netti tra affluenza e povert&agrave; in un'area di studio o determinare se ci sono contee negli Stati Uniti con aspettativa di vita insolitamente bassa rispetto ai lori vicini.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trova cluster punti</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Trova cluster punti">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento rileva le aree in cui i punti sono concentrati e in cui sono separati da aree vuote o sparse. I punti che non fanno parte di un cluster sono etichettati come disturbo.
             </p>
             <br/>
         </div>
@@ -600,7 +645,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Unisci layer</h2></td>
+                    <td><h2>Unisci Layer</h2></td>
                     <td>
                     <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Unisci layer">
                     </td>

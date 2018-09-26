@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
 define({binsLabel:"Scegli il tipo di bin da utilizzare per creare la griglia multi-variabile",layersAttrLabel:"Scegli i layer di input e le variabili da includere nella griglia",itemDescription:"Feature Layer generato dall'esecuzione di Crea griglia multi-variabile.",itemTags:"Risultato di analisi, Crea griglia multi-variabile",itemSnippet:"Feature Layer generato da Crea griglia multi-variabile",addVariables:"Aggiungi variabili"});

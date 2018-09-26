@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["../../../ConversionUtil"],function(t){var e={};return e.portalToEditor=function(e,i){return{type:e.attributes.type,style:{width:t.ptToPx(e.attributes.width),height:t.ptToPx(e.attributes.height)},sectionJson:i.parsers.getParser("section").parseSection(e.tags[0],i)}},e});
+define(["../../../../sections/SectionTypes","../../../ConversionUtil"],function(t,e){var s={};return s.portalToEditor=function(s,a){var r,i,o=s.attributes.name,n=a.templateJson.metadata.comparisonCalculatorsHash[o];return s.tags.forEach(function(e){e.attributes.type===t.INFOGRAPHIC_HEADER?r=e:i=e}),{calculatorName:o,type:s.attributes.type,variablesInColumns:s.attributes.variablesInColumns,showThisAreas:s.attributes.showThisAreas,levels:n&&n.levels||[],style:{width:e.ptToPx(s.attributes.width),height:e.ptToPx(s.attributes.height)},titleSectionJson:r&&a.parsers.getParser("section").parseSection(r,a),dataSectionJson:a.parsers.getParser("section").parseSection(i,a)}},s});

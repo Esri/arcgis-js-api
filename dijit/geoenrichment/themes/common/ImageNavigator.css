@@ -229,7 +229,7 @@
 .esriGEImageNavigator .imageNavigator_noImagePlaceHolderLabel {
     text-align: center;
     font-style: italic;
-    margin-top: 5px;
+    margin-top: 15px;
     color: #AAAAAA;
 }
 
@@ -255,4 +255,19 @@
 
 .esriGEImageNavigator.hasNoImages .imageNavigator_showAllImagesButton {
     display: none;
+}
+
+
+
+.esriGEImageNavigator.mobile .imageNavigator_prevImageButton,
+.esriGEImageNavigator.mobile .imageNavigator_nextImageButton {
+    opacity: 1;
+}
+
+.esriGEImageNavigator.mobile .imageNavigator_showAllImagesButton {
+    opacity: 1;
+}
+
+.esriGEImageNavigator.mobile .imageNavigator_imageContainerOuter .imageNavigator_imageNoteContainerDiv {
+    opacity: 1;
 }
