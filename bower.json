@@ -11,8 +11,8 @@
     "tests"
   ],
   "dependencies": {
-    "dojo": "Esri/dojo#v1.13.0/esri-3.25.0",
-    "dojox": "Esri/dojox#v1.13.0/esri-3.25.0",
+    "dojo": "Esri/dojo#v1.14.0/esri-3.26.0",
+    "dojox": "Esri/dojox#v1.14.0/esri-3.26.0",
     "dijit": "Esri/dijit#v1.14.0/esri-3.26.0",
     "util": "Esri/dojo-util#v1.14.0/esri-3.26.0",
     "dgrid": "Esri/dgrid#0.3.17/esri-3.20.0",
