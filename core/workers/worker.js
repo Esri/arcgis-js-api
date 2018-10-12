@@ -22,4 +22,155 @@
 //
 // See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-function mapDelete(e,o){e.delete(o)}function receiveMessage(e){return e&&e.data?"string"==typeof e.data?JSON.parse(e.data):e.data:null}function invokeStaticMessage(e,o){var r=require("dojo/Deferred"),t=globalId++,a=new r(function(o){self.postMessage({type:CANCEL,methodName:e,jobId:t}),mapDelete(outgoing,t)});return outgoing.set(t,a),self.postMessage({type:INVOKE,methodName:e,jobId:t,data:o}),a.promise}function messageHandler(e){var o=receiveMessage(e);if(o){var r=o.jobId;switch(o.type){case CONFIGURE:var t=o.configure;if(configured)return;self.dojoConfig=t.loaderConfig,self.importScripts(t.loaderUrl),"function"==typeof require.config&&require.config(t.loaderConfig),require(["esri/config"],function(e){for(var o in t.esriConfig)Object.prototype.hasOwnProperty.call(t.esriConfig,o)&&(e[o]=t.esriConfig[o]);self.postMessage({type:CONFIGURED})});break;case OPEN:var a=o.modulePath;require(["esri/core/workers/RemoteClient",a],function(e,o){var t=e.connect(o);self.postMessage({type:OPENED,jobId:r,data:t},[t])});break;case RESPONSE:if(outgoing.has(r)){var s=outgoing.get(r);mapDelete(outgoing,r),o.error?s.reject(JSON.parse(o.error)):s.resolve(o.data)}}}}var globalId=0,outgoing=new Map,configured=!1,HANDSHAKE=0,CONFIGURE=1,CONFIGURED=2,OPEN=3,OPENED=4,RESPONSE=5,INVOKE=6,CANCEL=7;self.addEventListener("message",messageHandler),self.postMessage({type:HANDSHAKE});
+/* eslint-env worker */
+
+var globalId = 0;
+var outgoing = new Map();
+var configured = false;
+
+// to handshake with worker the main thread
+var HANDSHAKE = 0;
+// to configure the worker
+var CONFIGURE = 1;
+// for worker to indicated it's configured
+var CONFIGURED = 2;
+// to open a connection
+var OPEN = 3;
+// response a connection
+var OPENED = 4;
+// to send a response to a call
+var RESPONSE = 5;
+// to invoke a method on the other side
+var INVOKE = 6;
+// to cancel a call
+var CANCEL = 7;
+
+function mapDelete(map, key) {
+  /*eslint-disable */
+  map["delete"](key);
+  /*eslint-enable */
+}
+
+function receiveMessage(event) {
+  if (!event || !event.data) {
+    return null;
+  }
+  if (typeof event.data === "string") {
+    return JSON.parse(event.data);
+  }
+  return event.data;
+}
+
+/*eslint-disable */
+function invokeStaticMessage(methodName, data) {
+  // Deferred has already been loaded at this point
+  var Deferred = require("dojo/Deferred");
+  var jobId = globalId++;
+
+  var deferred = new Deferred(function(reason) {
+    // post a cancel message in order to cancel on the main thread
+    self.postMessage({
+      type: CANCEL,
+      methodName: methodName,
+      jobId: jobId
+    });
+
+    mapDelete(outgoing, jobId);
+  });
+
+  outgoing.set(jobId, deferred);
+
+  // post to main thread
+  self.postMessage({
+    type: INVOKE,
+    methodName: methodName,
+    jobId: jobId,
+    data: data
+  });
+
+  return deferred.promise;
+}
+/*eslint-enable */
+
+function messageHandler(event /* FmkMessageEvent */) {
+  var message = receiveMessage(event);
+
+  if (!message) {
+    return;
+  }
+
+  var jobId = message.jobId;
+
+  switch (message.type) {
+
+    // Configure the AMD loader
+    case CONFIGURE:
+      var configuration = message.configure;
+
+      if (configured) {
+        return;
+      }
+
+      self.dojoConfig = configuration.loaderConfig;
+      self.importScripts(configuration.loaderUrl);
+
+      if (typeof require.config === "function") {
+        require.config(configuration.loaderConfig);
+      }
+
+      require([
+        "esri/config"
+      ], function(esriConfig) {
+        for (var name in configuration.esriConfig) {
+          if (Object.prototype.hasOwnProperty.call(configuration.esriConfig, name)) {
+            esriConfig[name] = configuration.esriConfig[name];
+          }
+        }
+        self.postMessage({
+          type: CONFIGURED
+        });
+      });
+      break;
+
+  // Loads a module
+  case OPEN:
+    var modulePath = message.modulePath;
+
+    require([
+      "esri/core/workers/RemoteClient",
+      modulePath
+    ],
+    function(RemoteClient, Module) {
+      var port = RemoteClient.connect(Module);
+
+      self.postMessage({
+        type: OPENED,
+        jobId: jobId,
+        data: port
+      }, [port]);
+    });
+    break;
+
+  // response to a static message
+  case RESPONSE:
+    if (outgoing.has(jobId)) {
+      var deferred = outgoing.get(jobId);
+
+      mapDelete(outgoing, jobId);
+
+      if (message.error) {
+        deferred.reject(JSON.parse(message.error));
+      }
+      else {
+        deferred.resolve(message.data);
+      }
+    }
+
+    break;
+  }
+}
+
+self.addEventListener("message", messageHandler);
+
+// Handshake with the main thread
+self.postMessage({ type: HANDSHAKE });

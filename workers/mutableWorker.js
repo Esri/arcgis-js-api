@@ -22,4 +22,82 @@
 //
 // See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-!function(a){function s(a){var s,t,r=a.data;if(r.action){switch(r.action){case"import-script":try{Array.isArray(r.url)||(r.url=[r.url]),e.importScripts.apply(e,r.url),t=!0}catch(a){s=a,postMessage({msgId:r.msgId,urls:r.url,status:"debug",message:"import failed - "+a.message})}break;case"add-callback":try{e.importScripts(r.url);var c=e[r.cbName||"main"];if(!c){s={message:(r.cbName||"main")+" was not found in "+r.url};break}e.postMessage=function(a){return function(s,e){!1!==c(s)&&(e?a(s,e):a(s))}}(e.postMessage),t=!0}catch(a){s=a}}if(t){var i={msgId:r.msgId,success:!0,action:r.action,actionUrl:r.url};"add-callback"==r.action&&(i.cbName=r.cbName||"main"),postMessage(i)}else s&&postMessage({status:"error",msgId:r.msgId,message:s.message,action:r.action})}}var e=a;e.__mutable||e.addEventListener("message",s,!1),e.__mutable=!0}(self);
+/* global self: true, postMessage: true */
+(function(context) {
+  var self = context;
+
+  function actionHandler(evt) {
+    var msg = evt.data;
+    var error, success;
+    if (msg.action) {
+      switch (msg.action) {
+        case "import-script":
+          try {
+            if (!Array.isArray(msg.url)) {
+              msg.url = [msg.url];
+            }
+            self.importScripts.apply(self, msg.url);
+            success = true;
+          }
+          catch (err) {
+            error = err;
+            postMessage({msgId: msg.msgId, urls: msg.url, status: "debug", message: "import failed - " + err.message});
+          }
+          break;
+        case "add-callback":
+          try {
+            self.importScripts(msg.url);
+            var cb = self[msg.cbName || "main"];
+            if (!cb) {
+              error = {
+                message: (msg.cbName || "main") + " was not found in " + msg.url
+              };
+              break;
+            }
+            self.postMessage = (function(origPostMessage) {
+              return function(msg, transfers) {
+                if (cb(msg) !== false) {
+                  /*stupid IE can't handle undefined/null transfers argument*/
+                  if (transfers) {
+                    origPostMessage(msg, transfers);
+                  }
+                  else {
+                    origPostMessage(msg);
+                  }
+                }
+              };
+            })(self.postMessage);
+            success = true;
+          }
+          catch (err) {
+            error = err;
+          }
+          break;
+      }
+      if (success) {
+        var pbMsg = {
+          msgId: msg.msgId,
+          success: true,
+          action: msg.action,
+          actionUrl: msg.url
+        };
+        if (msg.action == "add-callback") {
+          pbMsg.cbName = (msg.cbName || "main");
+        }
+        postMessage(pbMsg);
+      }
+      else if (error) {
+        postMessage({
+          status: "error",
+          msgId: msg.msgId,
+          message: error.message,
+          action: msg.action
+        });
+      }
+    }
+  }
+  if (!self.__mutable) {
+    self.addEventListener("message", actionHandler, false);
+  }
+  self.__mutable = true;
+})(self);
