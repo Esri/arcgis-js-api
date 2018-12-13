@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({other:"Прочее",sumOfCategories:"Сумма категорий",predominantCategory:"Преобладающая категория",strengthOfPredominance:"Значимость преобладания",ageInfo_years:"Возраст в годах c ${startTime} до ${endTime}",ageInfo_months:"Возраст в месяцах c ${startTime} до ${endTime}",ageInfo_days:"Возраст в днях c ${startTime} до ${endTime}",ageInfo_hours:"Возраст в часах c ${startTime} до ${endTime}",ageInfo_minutes:"Возраст в минутах c ${startTime} до ${endTime}",ageInfo_seconds:"Возраст в секундах c ${startTime} до ${endTime}",relationship:{legendTitle:"Отношение",HL:"Высокий – Низкий",HH:"Высокий – Высокий",LL:"Низкий – Низкий",LH:"Низкий – Высокий",HM:"Высокий – Средний",ML:"Средний – Низкий",MM:"Средний – Средний",MH:"Средний – Высокий",LM:"Низкий – Средний",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Средний – Умеренный",M2M2:"Средний – Средний",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Умеренный – Умеренный",M1M2:"Умеренный – Средний",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}});

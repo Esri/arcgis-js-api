@@ -56,7 +56,8 @@ import Widget = require("esri/widgets/Widget");
 import NavigationToggleViewModel = require("esri/widgets/NavigationToggle/NavigationToggleViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
@@ -228,7 +229,7 @@ class NavigationToggle extends declared(Widget) {
   @aliasOf("viewModel.toggle")
   toggle(): void {}
 
-  render() {
+  render(): VNode {
     const disabled = this.get<string>("viewModel.state") === "disabled";
     const panSelected = this.get<string>("viewModel.navigationMode") === "pan";
 
@@ -274,7 +275,7 @@ class NavigationToggle extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggle() {
+  private _toggle(): void {
     this.toggle();
   }
 }

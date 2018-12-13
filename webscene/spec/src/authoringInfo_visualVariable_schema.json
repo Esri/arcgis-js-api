@@ -2,7 +2,7 @@
   "title": "AuthoringInfo Visual Variable",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "This visual variable is different from `sizeInfo`, `colorInfo`, `transparencyInfo`, and `rotationInfo` as it is an array of visual variables pertaining specifically to authoringInfo and not directly on the [renderer](renderer.md).",
+  "description": "This visual variable pertains specifically to [authoringInfo](authoringInfo.md) and is different from visual variables directly on the [renderer](renderer.md).",
   "properties": {
     "endTime": {
       "description": "A Unix stamp. Both `startTime` or `endTime` can be fields. If this is the case, their names must be different.",
@@ -86,91 +86,109 @@
       {
         "title": "Attribute Transparency",
         "description": "Allows displaying features with different levels of opacity.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "transparencyInfo",
-              "minSliderValue": 0.0003,
-              "maxSliderValue": 23.8951
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "transparencyInfo",
+                "minSliderValue": 0.0003,
+                "maxSliderValue": 23.8951
+              }
+            ]
+          }
         }
       },
       {
         "title": "Continuous Size Renderer",
         "description": "If a layer contains date values, it is possible to use a sequence of proportional symbols to view dates sequentially on a scene.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "sizeInfo",
-              "minSliderValue": 1,
-              "maxSliderValue": 14928.5396
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "minSliderValue": 1,
+                "maxSliderValue": 14928.5396
+              }
+            ]
+          }
         }
       },
       {
         "title": "Continuous Color Renderer",
         "description": "If a layer contains date values, it is possible to use color to view data sequentially from new to old or before and after a key date.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "colorInfo",
-              "minSliderValue": 1,
-              "maxSliderValue": 14928.5396,
-              "theme": "high-to-low"
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "colorInfo",
+                "minSliderValue": 1,
+                "maxSliderValue": 14928.5396,
+                "theme": "high-to-low"
+              }
+            ]
+          }
         }
       },
       {
         "title": "Age-Size Renderer",
         "description": "If a layer contains date or time values, it is possible to use a sequence of proportional symbols to view the age of features. Age reflects the length of time (in seconds, minutes, hours, days, months, or years) from a start date or time to an end date or time.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "sizeInfo",
-              "minSliderValue": -129.2625,
-              "maxSliderValue": 234.7374,
-              "units": "days",
-              "startTime": "DATE",
-              "endTime": 1471970511924,
-              "field": "DATE"
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "minSliderValue": -129.2625,
+                "maxSliderValue": 234.7374,
+                "units": "days",
+                "startTime": "DATE",
+                "endTime": 1471970511924,
+                "field": "DATE"
+              }
+            ]
+          }
         }
       },
       {
         "title": "Age-Color Renderer",
         "description": "If a layer contains date or time values, it is possible to use color to represent the age of features. Age reflects the length of time (in seconds, minutes, hours, days, months, or years) from a start date or time to an end date or time.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "colorInfo",
-              "minSliderValue": -129.2625,
-              "maxSliderValue": 234.7374,
-              "units": "days",
-              "startTime": "DATE",
-              "endTime": 1471970511924,
-              "field": "DATE",
-              "theme": "high-to-low"
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "colorInfo",
+                "minSliderValue": -129.2625,
+                "maxSliderValue": 234.7374,
+                "units": "days",
+                "startTime": "DATE",
+                "endTime": 1471970511924,
+                "field": "DATE",
+                "theme": "high-to-low"
+              }
+            ]
+          }
         }
       },
       {
         "title": "Compare Renderer (special color renderer)",
         "description": "This style allows mapping the ratio between two numbers and expresses that relationship as percentages, simple ratios, or overall percentage.",
+        "schema": "authoringInfo_schema.json",
         "code": {
-          "visualVariables": [
-            {
-              "type": "colorInfo",
-              "minSliderValue": 0.0003858501658018686,
-              "maxSliderValue": 23.89513157894737,
-              "theme": "above-and-below",
-              "style": "ratio"
-            }
-          ]
+          "authoringInfo": {
+            "visualVariables": [
+              {
+                "type": "colorInfo",
+                "minSliderValue": 0.0003858501658018686,
+                "maxSliderValue": 23.89513157894737,
+                "theme": "above-and-below",
+                "style": "ratio"
+              }
+            ]
+          }
         }
       },
       {

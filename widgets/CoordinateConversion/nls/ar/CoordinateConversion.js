@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"إضافة تحويل",captureMode:"وضع الالتقاط",changeCoordinateDisplay:"تغيير عرض الإحداثيات",convert:"تحويل",conversionOutputSuffix:"ناتج التحويل",copySuccessMessage:"الإحداثيات المنسوخة إلى الحافظة",defaultPattern:"إعادة التعيين للوضع الافتراضي",goTo:"انتقال إلى الموقع",inputCoordTitle:"الإحداثيات المدخلة",invalidCoordinate:"إحداثيات غير صالحة",liveMode:"وضع مباشر",locationOffBasemap:"الإحداثيات المدخلة خارج مدى خريطة الأساس",noBasemap:"لا توجد خريطة أساس.",noLocation:"لا يوجد موضع",removeConversion:"إزالة التحويل",selectFormat:"تحديد التنسيق",settingsTitle:"إعدادات التنسيق"});

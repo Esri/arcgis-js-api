@@ -56,8 +56,9 @@
 
 // dojo
 import domGeometry = require("dojo/dom-geometry");
+import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Popup/nls/Popup";
-import { END, HOME, ESCAPE, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW } from "dojo/keys";
+import { DOWN_ARROW, END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from "dojo/keys";
 
 // esri
 import Graphic = require("esri/Graphic");
@@ -92,7 +93,6 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Popup
 import {
   Action,
-  ActionEvent,
   Alignment,
   DockOptions,
   DockOptionsBreakpoint,
@@ -106,14 +106,14 @@ import {
 import PopupViewModel = require("esri/widgets/Popup/PopupViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
 import {
   accessibleHandler,
-  tsx,
-  renderable,
-  vmEvent,
+  isWidget,
   isWidgetBase,
-  isWidget
+  renderable,
+  tsx,
+  vmEvent
 } from "esri/widgets/support/widget";
 import widgetUtils = require("esri/widgets/support/widgetUtils");
 
@@ -131,11 +131,10 @@ const CSS = {
   iconDockToRight: "esri-icon-dock-right",
   iconClose: "esri-icon-close",
   iconUndock: "esri-icon-minimize",
-  iconFeatureMenu: "esri-icon-layer-list",
   iconCheckMark: "esri-icon-check-mark",
   iconLoading: "esri-icon-loading-indicator",
-  iconZoom: "esri-icon-zoom-in-magnifying-glass",
   iconDefaultAction: "esri-icon-default-action",
+  iconActionsMenu: "esri-icon-handle-horizontal",
   rotating: "esri-rotating",
   // base
   base: "esri-popup",
@@ -144,6 +143,8 @@ const CSS = {
   main: "esri-popup__main-container",
   loadingContainer: "esri-popup__loading-container",
   // global modifiers
+  isCollapsible: "esri-popup--is-collapsible",
+  isCollapsed: "esri-popup--is-collapsed",
   shadow: "esri-popup--shadow",
   isDocked: "esri-popup--is-docked",
   isDockedTopLeft: "esri-popup--is-docked-top-left",
@@ -159,14 +160,16 @@ const CSS = {
   alignTopRight: "esri-popup--aligned-top-right",
   alignBottomRight: "esri-popup--aligned-bottom-right",
   isFeatureMenuOpen: "esri-popup--feature-menu-open",
+  isActionsMenuOpen: "esri-popup--actions-menu-open",
   hasFeatureUpdated: "esri-popup--feature-updated",
   // header and content
   header: "esri-popup__header",
   headerButtons: "esri-popup__header-buttons",
+  headerContainer: "esri-popup__header-container",
+  headerContainerButton: "esri-popup__header-container--button",
   headerTitle: "esri-popup__header-title",
-  headerTitleButton: "esri-popup__header-title--button",
   content: "esri-popup__content",
-  featureButtons: "esri-popup__feature-buttons",
+  footer: "esri-popup__footer",
   // buttons
   button: "esri-popup__button",
   buttonDisabled: "esri-popup__button--disabled",
@@ -175,6 +178,8 @@ const CSS = {
   icon: "esri-popup__icon",
   iconDock: "esri-popup__icon--dock-icon",
   // actions
+  singleActionContainer: "esri-popup__single-action-container",
+  actionsMenuButton: "esri-popup__actions-menu-button",
   actions: "esri-popup__actions",
   action: "esri-popup__action",
   actionImage: "esri-popup__action-image",
@@ -186,7 +191,7 @@ const CSS = {
   pointerDirection: "esri-popup__pointer-direction",
   // navigation
   navigation: "esri-popup__navigation",
-  navigationButtons: "esri-popup__navigation-buttons",
+  navigationWithSingleAction: "esri-popup__navigation--with-single-action",
   // pagination
   paginationPrevious: "esri-popup__pagination-previous",
   paginationNext: "esri-popup__pagination-next",
@@ -194,7 +199,6 @@ const CSS = {
   paginationPreviousIconRTL: "esri-popup__pagination-previous-icon--rtl",
   paginationNextIconLTR: "esri-popup__pagination-next-icon",
   paginationNextIconRTL: "esri-popup__pagination-next-icon--rtl",
-  paginationText: "esri-popup__pagination-page-text",
   // feature menu
   featureMenu: "esri-popup__feature-menu",
   featureMenuList: "esri-popup__feature-menu-list",
@@ -204,10 +208,10 @@ const CSS = {
   featureMenuNote: "esri-popup__feature-menu-note",
   featureMenuSelected: "esri-popup__feature-menu-item--selected",
   featureMenuButton: "esri-popup__feature-menu-button",
-  featureMenuTitle: "esri-popup__feature-menu-title"
+  featureMenuTitle: "esri-popup__feature-menu-title",
+  // collapse button
+  collapseButton: "esri-popup__collapse-button"
 };
-
-const ZOOM_TO_ACTION_ID = "zoom-to";
 
 const DOCK_OPTIONS: DockOptions = {
   buttonEnabled: true,
@@ -218,6 +222,8 @@ const DOCK_OPTIONS: DockOptions = {
 };
 
 const WIDGET_KEY_PARTIAL = "esri-popup";
+
+const ACTIONS_KEY = "actions";
 
 function buildKey(element: string, index?: number): string {
   if (index === undefined) {
@@ -286,12 +292,10 @@ class Popup extends declared(Widget) {
    */
   constructor(params?: any) {
     super();
-  }
 
-  postInitialize() {
     this._addSelectedFeatureIndexHandle();
 
-    this.own(
+    this.own([
       watchUtils.watch<ScreenPoint>(this, "viewModel.screenLocation", () =>
         this._positionContainer()
       ),
@@ -360,13 +364,21 @@ class Popup extends declared(Widget) {
         () => this._setContentFromFeatureWidget()
       ),
 
-      watchUtils.on<ActionEvent>(this, "viewModel", "trigger-action", (event) =>
-        this._zoomToAction(event)
-      )
-    );
+      watchUtils.whenFalse(this, "collapsed", () => {
+        if (
+          this.get("viewModel.view.widthBreakpoint") !== "xsmall" ||
+          !this.visible ||
+          !this.collapseEnabled
+        ) {
+          return;
+        }
+
+        this.viewModel.centerAtLocation();
+      })
+    ]);
   }
 
-  destroy() {
+  destroy(): void {
     this._destroyFeatureWidgets();
     this._destroySpinner();
     this._handles && this._handles.destroy();
@@ -387,17 +399,21 @@ class Popup extends declared(Widget) {
 
   private _featureMenuNode: HTMLElement = null;
 
+  private _actionsMenuNode: HTMLElement = null;
+
   private _focusContainer = false;
 
   private _focusDockButton = false;
 
   private _focusFeatureMenuButton = false;
 
+  private _focusActionsMenuButton = false;
+
   private _focusFirstFeature = false;
 
-  private _handles: Handles = new Handles();
+  private _focusFirstAction = false;
 
-  private _displayActionTextLimit = 2;
+  private _handles: Handles = new Handles();
 
   private _pointerOffsetInPx = 16;
 
@@ -479,6 +495,25 @@ class Popup extends declared(Widget) {
   actions: Collection<Action> = null;
 
   //----------------------------------
+  //  actionsMenuOpen
+  //----------------------------------
+
+  /**
+   * @todo document
+   */
+
+  @property({
+    dependsOn: ["viewModel.visible"]
+  })
+  @renderable()
+  set actionsMenuOpen(value: boolean) {
+    this._set("actionsMenuOpen", !!value);
+  }
+  get actionsMenuOpen(): boolean {
+    return this.viewModel.visible ? this._get("actionsMenuOpen") : false;
+  }
+
+  //----------------------------------
   //  alignment
   //----------------------------------
 
@@ -517,6 +552,33 @@ class Popup extends declared(Widget) {
    */
   @aliasOf("viewModel.autoCloseEnabled")
   autoCloseEnabled: boolean = null;
+
+  //----------------------------------
+  //  autoOpenEnabled
+  //----------------------------------
+
+  /**
+   * This property indicates to the `Popup` that it needs to allow or disallow the click
+   * event propagation.
+   *
+   * Use `view.popup.autoOpenEnabled = false;` when needing to stop the click event propagation.
+   *
+   * @instance
+   * @name autoOpenEnabled
+   * @type {boolean}
+   * @default true
+   * @since 4.10
+   *
+   * @example
+   * view.popup.autoOpenEnabled = false;
+   * view.on("click", function(event) {
+   *   view.popup.open({
+   *     // Set the popup
+   *   });
+   * });
+   */
+  @aliasOf("viewModel.autoOpenEnabled")
+  autoOpenEnabled: boolean = null;
 
   //----------------------------------
   //  content
@@ -1065,6 +1127,7 @@ class Popup extends declared(Widget) {
     type: PopupViewModel
   })
   @renderable([
+    "viewModel.view.widthBreakpoint",
     "viewModel.allActions",
     "viewModel.screenLocation",
     "viewModel.screenLocationEnabled",
@@ -1131,7 +1194,7 @@ class Popup extends declared(Widget) {
    *
    * @see [Popup.visible](#visible)
    */
-  close() {
+  close(): void {
     this.visible = false;
   }
 
@@ -1219,10 +1282,19 @@ class Popup extends declared(Widget) {
     this._handles.remove(SELECTED_INDEX_HANDLE_KEY);
 
     const featureMenuOpen = options ? !!options.featureMenuOpen : false;
+    const actionsMenuOpen = options ? !!options.actionsMenuOpen : false;
+    const collapsed = options ? !!options.collapsed : false;
 
     const setOptions: PopupOpenOptions = {
+      collapsed,
+      actionsMenuOpen,
       featureMenuOpen
     };
+
+    if (this.get("viewModel.view.widthBreakpoint") === "xsmall") {
+      setOptions.collapsed = true;
+      options.updateLocationEnabled = true;
+    }
 
     this.set(setOptions);
 
@@ -1253,7 +1325,7 @@ class Popup extends declared(Widget) {
    * If the popup is partially out of view, the view will move to fully show the popup.
    * If the popup is fully out of view, the view will move to the popup's location.
    */
-  reposition() {
+  reposition(): void {
     this.renderNow();
     this._positionContainer();
     this._setCurrentAlignment();
@@ -1272,8 +1344,9 @@ class Popup extends declared(Widget) {
     return null;
   }
 
-  render() {
+  render(): VNode {
     const {
+      actionsMenuOpen,
       collapsed,
       collapseEnabled,
       dockEnabled,
@@ -1292,18 +1365,21 @@ class Popup extends declared(Widget) {
       title
     } = this.viewModel;
 
+    const actionsCount = allActions && allActions.length;
     const featureNavigationVisible = featureCount > 1 && featureNavigationEnabled;
     const isFeatureMenuOpen = featureCount > 1 && featureMenuOpen;
-    const contentVisible = collapseEnabled && !isFeatureMenuOpen && collapsed;
-    const actionsCount = allActions && allActions.length;
+    const isActionsMenuOpen = actionsCount > 1 && actionsMenuOpen;
+    const contentCollapsed = collapseEnabled && !isFeatureMenuOpen && collapsed;
     const pageText =
       featureNavigationVisible && this._getPageText(featureCount, selectedFeatureIndex);
     const contentNode = this._renderContent();
-    const isRtl = widgetUtils.isRtl();
+    const isRtl = widgetUtils.isRTL();
     const hasContent = this.get("selectedFeatureWidget")
       ? this.get("selectedFeatureWidget.viewModel.waitingForContent") ||
         this.get("selectedFeatureWidget.viewModel.content")
       : contentNode;
+
+    const widthBreakpoint = this.get("viewModel.view.widthBreakpoint");
 
     const dockTitle = dockEnabled ? i18n.undock : i18n.dock;
 
@@ -1314,21 +1390,12 @@ class Popup extends declared(Widget) {
         key={buildKey("loading-container")}
         role="presentation"
         class={CSS.loadingContainer}
-        aria-label={i18n.loading}
-        title={i18n.loading}
+        aria-label={i18nCommon.loading}
+        title={i18nCommon.loading}
       >
         <span aria-hidden="true" class={this.classes(CSS.icon, CSS.iconLoading, CSS.rotating)} />
       </div>
     ) : null;
-
-    const featureMenuIconClasses = {
-      [CSS.iconFeatureMenu]: !isFeatureMenuOpen,
-      [CSS.iconClose]: isFeatureMenuOpen
-    };
-
-    const featureMenuIconNode = (
-      <span aria-hidden="true" class={this.classes(CSS.icon, featureMenuIconClasses)} />
-    );
 
     const previousIconClasses = {
       [CSS.iconRightTriangleArrow]: isRtl,
@@ -1399,23 +1466,20 @@ class Popup extends declared(Widget) {
         aria-haspopup="true"
         aria-controls={featureMenuId}
         aria-expanded={featureMenuOpen}
-        aria-label={i18n.menu}
-        title={i18n.menu}
+        aria-label={i18nCommon.menu}
+        title={i18nCommon.menu}
       >
-        {featureMenuIconNode}
+        {pageText}
       </div>
     );
 
-    const paginationTextNode = <div class={CSS.paginationText}>{pageText}</div>;
-
-    const navigationButtonsNode = featureNavigationVisible ? (
-      <div class={CSS.navigationButtons} enterAnimation={featureUpdatedAnim}>
-        {paginationPreviousButtonNode}
-        {paginationTextNode}
-        {paginationNextButtonNode}
-        {loadingContainerNode || featureMenuToggleNode}
-      </div>
-    ) : null;
+    const navigationButtonsNode = featureNavigationVisible
+      ? [
+          paginationPreviousButtonNode,
+          loadingContainerNode || featureMenuToggleNode,
+          paginationNextButtonNode
+        ]
+      : null;
 
     const wouldDockTo = this._wouldDockTo();
 
@@ -1434,50 +1498,60 @@ class Popup extends declared(Widget) {
       <span aria-hidden="true" class={this.classes(dockIconClasses, CSS.icon)} />
     );
 
-    const dockButtonNode = this.get("dockOptions.buttonEnabled") ? (
-      <div
-        role="button"
-        aria-label={dockTitle}
-        title={dockTitle}
-        tabIndex={0}
-        bind={this}
-        onclick={this._toggleDockEnabled}
-        onkeydown={this._toggleDockEnabled}
-        afterCreate={this._focusDockButtonNode}
-        afterUpdate={this._focusDockButtonNode}
-        class={this.classes(CSS.button, CSS.buttonDock)}
-      >
-        {dockIconNode}
-      </div>
-    ) : null;
+    const dockButtonNode =
+      widthBreakpoint !== "xsmall" && this.get("dockOptions.buttonEnabled") ? (
+        <div
+          role="button"
+          aria-label={dockTitle}
+          title={dockTitle}
+          tabIndex={0}
+          bind={this}
+          onclick={this._toggleDockEnabled}
+          onkeydown={this._toggleDockEnabled}
+          afterCreate={this._focusDockButtonNode}
+          afterUpdate={this._focusDockButtonNode}
+          class={this.classes(CSS.button, CSS.buttonDock)}
+        >
+          {dockIconNode}
+        </div>
+      ) : null;
 
-    const canBeCollapsed =
-      collapseEnabled && title && (hasContent || actionsCount || featureNavigationVisible);
-    const titleClasses = {
-      [CSS.headerTitleButton]: canBeCollapsed
+    const canBeCollapsed = !!(
+      collapseEnabled &&
+      title &&
+      (hasContent || actionsCount || featureNavigationVisible)
+    );
+
+    const containerClasses = {
+      [CSS.headerContainerButton]: canBeCollapsed
     };
 
     const titleRole = canBeCollapsed ? "button" : "heading";
 
-    const titleLabel = canBeCollapsed ? (contentVisible ? i18n.expand : i18n.collapse) : "";
+    const titleLabel = canBeCollapsed
+      ? contentCollapsed
+        ? i18nCommon.expand
+        : i18nCommon.collapse
+      : "";
 
     const titleId = `${this.id}-popup-title`;
 
     const titleNode = title ? (
-      <h2
-        class={this.classes(CSS.headerTitle, titleClasses)}
+      <div
+        class={this.classes(CSS.headerContainer, containerClasses)}
         key={title}
         enterAnimation={featureUpdatedAnim}
         id={titleId}
         role={titleRole}
         aria-label={titleLabel}
         title={titleLabel}
-        bind={this}
         tabIndex={canBeCollapsed ? 0 : -1}
+        bind={this}
         onclick={this._toggleCollapsed}
         onkeydown={this._toggleCollapsed}
-        innerHTML={title}
-      />
+      >
+        <h2 class={CSS.headerTitle} innerHTML={title} />
+      </div>
     ) : null;
 
     const closeIconNode = <span aria-hidden="true" class={this.classes(CSS.icon, CSS.iconClose)} />;
@@ -1490,8 +1564,8 @@ class Popup extends declared(Widget) {
         onclick={this._close}
         onkeydown={this._close}
         class={CSS.button}
-        aria-label={i18n.close}
-        title={i18n.close}
+        aria-label={i18nCommon.close}
+        title={i18nCommon.close}
       >
         {closeIconNode}
       </div>
@@ -1510,7 +1584,7 @@ class Popup extends declared(Widget) {
     const contentId = `${this.id}-popup-content`;
 
     const contentNodeContainer =
-      hasContent && !contentVisible ? (
+      hasContent && !contentCollapsed ? (
         <article
           key={content}
           enterAnimation={featureUpdatedAnim}
@@ -1522,47 +1596,98 @@ class Popup extends declared(Widget) {
       ) : null;
 
     const showButtonsTop =
-      !contentVisible &&
-      (currentAlignment === "bottom-left" ||
-        currentAlignment === "bottom-center" ||
-        currentAlignment === "bottom-right" ||
-        currentDockPosition === "top-left" ||
-        currentDockPosition === "top-center" ||
-        currentDockPosition === "top-right");
+      currentAlignment === "bottom-left" ||
+      currentAlignment === "bottom-center" ||
+      currentAlignment === "bottom-right" ||
+      currentDockPosition === "top-left" ||
+      currentDockPosition === "top-center" ||
+      currentDockPosition === "top-right";
 
     const showButtonsBottom =
-      !contentVisible &&
-      (currentAlignment === "top-left" ||
-        currentAlignment === "top-center" ||
-        currentAlignment === "top-right" ||
-        currentDockPosition === "bottom-left" ||
-        currentDockPosition === "bottom-center" ||
-        currentDockPosition === "bottom-right");
+      currentAlignment === "top-left" ||
+      currentAlignment === "top-center" ||
+      currentAlignment === "top-right" ||
+      currentDockPosition === "bottom-left" ||
+      currentDockPosition === "bottom-center" ||
+      currentDockPosition === "bottom-right";
 
-    const actionsNode = !isFeatureMenuOpen ? (
-      <div key={buildKey("actions")} class={CSS.actions}>
-        {this._renderActions()}
+    const actionsMenuLabel = actionsMenuOpen ? i18nCommon.close : i18nCommon.open;
+
+    const singleAction = this._getSingleAction();
+    const singleActionNode =
+      singleAction &&
+      this._renderAction({ action: singleAction, index: 0, key: ACTIONS_KEY, singleButton: true });
+
+    const singleActionContainer = singleActionNode ? (
+      <div key="single-action-container" class={CSS.singleActionContainer}>
+        {singleActionNode}
       </div>
     ) : null;
 
+    const actionsMenuToggleNode =
+      !singleActionNode && actionsCount ? (
+        <div
+          key={buildKey("actions-menu-button")}
+          class={this.classes(CSS.button, CSS.actionsMenuButton)}
+          role="button"
+          id={`${this.id}-actions-menu-button`}
+          aria-haspopup="true"
+          aria-controls={actionsMenuOpen ? `${this.id}-actions-menu` : null}
+          tabIndex={0}
+          bind={this}
+          onclick={this._toggleActionsMenu}
+          onkeydown={this._toggleActionsMenu}
+          afterCreate={this._focusActionsMenuButtonNode}
+          afterUpdate={this._focusActionsMenuButtonNode}
+          aria-label={actionsMenuLabel}
+          title={actionsMenuLabel}
+        >
+          <span aria-hidden="true" class={CSS.iconActionsMenu} />
+        </div>
+      ) : null;
+
+    const navigationNodeClasses = {
+      [CSS.navigationWithSingleAction]: actionsCount === 1
+    };
+
     const navigationNode = (
-      <section key={buildKey("navigation")} class={CSS.navigation}>
+      <section
+        key={buildKey("navigation")}
+        class={this.classes(CSS.navigation, navigationNodeClasses)}
+      >
         {navigationButtonsNode}
       </section>
     );
 
-    const featureButtonsNode =
+    const footerNode =
       featureNavigationVisible || actionsCount ? (
-        <div key={buildKey("feature-buttons")} class={CSS.featureButtons}>
-          {actionsNode}
+        <div key={buildKey("feature-buttons")} class={CSS.footer}>
           {navigationNode}
+          {actionsMenuToggleNode}
+          {singleActionContainer}
         </div>
+      ) : null;
+
+    const actionsNode =
+      actionsCount && actionsMenuOpen ? (
+        <ul
+          id={`${this.id}-actions-menu`}
+          role="menu"
+          aria-labelledby={`${this.id}-actions-menu-button`}
+          key={buildKey("actions")}
+          class={CSS.actions}
+          bind={this}
+          onkeyup={this._handleActionMenuKeyup}
+          afterCreate={this._actionsMenuNodeUpdated}
+          afterUpdate={this._actionsMenuNodeUpdated}
+        >
+          {this._renderActions()}
+        </ul>
       ) : null;
 
     const featureMenuNode = this._renderFeatureMenuNode(
       featureWidgets,
       selectedFeatureIndex,
-      isFeatureMenuOpen,
       featureMenuId
     );
 
@@ -1596,7 +1721,9 @@ class Popup extends declared(Widget) {
     const layerId = this.get("selectedFeature.layer.id");
 
     const mainContainerClasses = {
-      [CSS.shadow]: dockEnabled
+      [CSS.shadow]: dockEnabled,
+      [CSS.isCollapsible]: canBeCollapsed,
+      [CSS.isCollapsed]: contentCollapsed
     };
 
     const baseClasses = {
@@ -1614,13 +1741,14 @@ class Popup extends declared(Widget) {
       [CSS.isDockedBottomLeft]: visible && currentDockPosition === "bottom-left",
       [CSS.isDockedBottomCenter]: visible && currentDockPosition === "bottom-center",
       [CSS.isDockedBottomRight]: visible && currentDockPosition === "bottom-right",
-      [CSS.isFeatureMenuOpen]: visible && isFeatureMenuOpen
+      [CSS.isFeatureMenuOpen]: visible && isFeatureMenuOpen,
+      [CSS.isActionsMenuOpen]: visible && isActionsMenuOpen
     };
 
-    const menuTopNode = showButtonsTop ? menuNode : null;
-    const menuBottomNode = showButtonsBottom ? menuNode : null;
-    const buttonsTopNode = showButtonsTop ? featureButtonsNode : null;
-    const buttonsBottomNode = showButtonsBottom ? featureButtonsNode : null;
+    const menuTopNode = showButtonsTop ? [menuNode, actionsNode] : null;
+    const menuBottomNode = showButtonsBottom ? [menuNode, actionsNode] : null;
+    const buttonsTopNode = showButtonsTop ? footerNode : null;
+    const buttonsBottomNode = showButtonsBottom ? footerNode : null;
 
     const mainContainerNode = (
       <div
@@ -1665,11 +1793,29 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _getSingleAction(): Action {
+    const { allActions } = this.viewModel;
+
+    if (allActions.length !== 1) {
+      return;
+    }
+
+    return allActions.find((action) => action.type === "button");
+  }
+
   private _featureMenuOpenChanged(value: boolean): void {
     if (value) {
       this._focusFirstFeature = true;
     } else {
       this._focusFeatureMenuButton = true;
+    }
+  }
+
+  private _actionsMenuOpenChanged(value: boolean): void {
+    if (value) {
+      this._focusFirstAction = true;
+    } else {
+      this._focusActionsMenuButton = true;
     }
   }
 
@@ -1692,14 +1838,26 @@ class Popup extends declared(Widget) {
 
     if (keyCode === ESCAPE) {
       event.stopPropagation();
+      this._focusFeatureMenuButton = true;
       this.featureMenuOpen = false;
+      this.scheduleRender();
+    }
+  }
+
+  private _handleActionMenuKeyup(event: KeyboardEvent): void {
+    const { keyCode } = event;
+
+    if (keyCode === ESCAPE) {
+      event.stopPropagation();
+      this._focusActionsMenuButton = true;
+      this.actionsMenuOpen = false;
+      this.scheduleRender();
     }
   }
 
   private _handleFeatureMenuItemKeyup(event: KeyboardEvent): void {
     const { keyCode } = event;
     const { _featureMenuNode } = this;
-    const count = this.get<number>("features.length");
     const node = event.currentTarget as Element;
     const featureIndex = node["data-feature-index"] as number;
 
@@ -1708,6 +1866,7 @@ class Popup extends declared(Widget) {
     }
 
     const items = _featureMenuNode.querySelectorAll("li");
+    const count = items.length;
 
     if (keyCode === UP_ARROW) {
       event.stopPropagation();
@@ -1742,6 +1901,52 @@ class Popup extends declared(Widget) {
     }
   }
 
+  private _handleActionMenuItemKeyup(event: KeyboardEvent): void {
+    const { keyCode } = event;
+    const { _actionsMenuNode } = this;
+    const node = event.currentTarget as Element;
+    const actionIndex = node["data-action-index"] as number;
+
+    if (!_actionsMenuNode) {
+      return;
+    }
+
+    const items = _actionsMenuNode.querySelectorAll("li");
+    const count = items.length;
+
+    if (keyCode === UP_ARROW) {
+      event.stopPropagation();
+      const previousIndex = actionIndex - 1;
+      const value = (previousIndex + count) % count;
+      const previousElement = items[value] as HTMLElement;
+      previousElement.focus();
+      return;
+    }
+
+    if (keyCode === DOWN_ARROW) {
+      event.stopPropagation();
+      const nextIndex = actionIndex + 1;
+      const value = (nextIndex + count) % count;
+      const nextElement = items[value] as HTMLElement;
+      nextElement.focus();
+      return;
+    }
+
+    if (keyCode === HOME) {
+      event.stopPropagation();
+      const firstElement = items[0] as HTMLElement;
+      firstElement.focus();
+      return;
+    }
+
+    if (keyCode === END) {
+      event.stopPropagation();
+      const lastElement = items[items.length - 1] as HTMLElement;
+      lastElement.focus();
+      return;
+    }
+  }
+
   private _handleMainKeyup(event: KeyboardEvent): void {
     const { keyCode } = event;
 
@@ -1754,14 +1959,6 @@ class Popup extends declared(Widget) {
       event.stopPropagation();
       this.next();
     }
-  }
-
-  private _zoomToAction(event: ActionEvent): void {
-    if (!event.action || event.action.disabled || event.action.id !== ZOOM_TO_ACTION_ID) {
-      return;
-    }
-
-    this.viewModel.zoomToLocation();
   }
 
   private _spinnerEnabledChange(spinnerEnabled: boolean): void {
@@ -1801,26 +1998,23 @@ class Popup extends declared(Widget) {
     };
   }
 
-  private _renderAction(
-    action: Action,
-    actionIndex: number,
-    total: number,
-    actionsKey: string
-  ): any {
+  private _renderAction(options: {
+    action: Action;
+    index: number;
+    key: string;
+    singleButton?: boolean;
+  }): VNode {
+    const { action, index, key, singleButton } = options;
+
     const actionHandle = watchUtils.watch(
       action,
       ["active", "className", "disabled", "id", "title", "image", "visible"],
       () => this.scheduleRender()
     );
 
-    this._handles.add(actionHandle, actionsKey);
+    this._handles.add(actionHandle, key);
 
     const selectedFeatureAttributes = this.get("selectedFeature.attributes");
-
-    if (action.id === ZOOM_TO_ACTION_ID) {
-      action.title = i18n.zoom;
-      action.className = CSS.iconZoom;
-    }
 
     const { title: actionTitle, className: actionClassName, image: actionImage } = action;
 
@@ -1857,14 +2051,24 @@ class Popup extends declared(Widget) {
       [CSS.buttonDisabled]: action.disabled
     };
 
-    const textNode =
-      total <= this._displayActionTextLimit ? (
-        <span key="text" class={CSS.actionText}>
-          {subActionTitle}
-        </span>
-      ) : null;
+    const textNode = (
+      <span key="text" class={CSS.actionText}>
+        {subActionTitle}
+      </span>
+    );
 
-    return action.visible ? (
+    const iconNode = (
+      <span
+        key="icon"
+        aria-hidden="true"
+        class={this.classes(CSS.icon, iconClasses)}
+        styles={this._getIconStyles(subActionImage)}
+      />
+    );
+
+    const actionNodes = [iconNode, textNode];
+
+    const baseNode = singleButton ? (
       <div
         key={action}
         role="button"
@@ -1872,25 +2076,37 @@ class Popup extends declared(Widget) {
         title={subActionTitle}
         aria-label={subActionTitle}
         class={this.classes(CSS.button, buttonClasses)}
+        onkeyup={this._handleActionMenuItemKeyup}
         bind={this}
-        data-action-index={actionIndex}
+        data-action-index={index}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
       >
-        <span
-          key={"icon"}
-          aria-hidden="true"
-          class={this.classes(CSS.icon, iconClasses)}
-          styles={this._getIconStyles(subActionImage)}
-        />
-        {textNode}
+        {actionNodes}
       </div>
-    ) : null;
+    ) : (
+      <li
+        key={action}
+        role="menuitem"
+        tabIndex={0}
+        title={subActionTitle}
+        aria-label={subActionTitle}
+        class={this.classes(CSS.button, buttonClasses)}
+        onkeyup={this._handleActionMenuItemKeyup}
+        bind={this}
+        data-action-index={index}
+        onclick={this._triggerAction}
+        onkeydown={this._triggerAction}
+      >
+        {actionNodes}
+      </li>
+    );
+
+    return action.visible ? baseNode : null;
   }
 
-  private _renderActions(): any {
-    const actionsKey = "actions";
-    this._handles.remove(actionsKey);
+  private _renderActions(): VNode {
+    this._handles.remove(ACTIONS_KEY);
 
     const { allActions } = this.viewModel;
 
@@ -1898,11 +2114,9 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    const totalActions = allActions.length;
-
     const actionNodes = allActions
       .map((action, index) => {
-        return this._renderAction(action, index, totalActions, actionsKey);
+        return this._renderAction({ action, index, key: ACTIONS_KEY });
       })
       .toArray();
 
@@ -1920,12 +2134,13 @@ class Popup extends declared(Widget) {
   }
 
   private _selectedFeatureIndexUpdated(value: number, oldValue: number): void {
-    const { featureCount, featureMenuOpen } = this;
+    const { featureCount } = this;
 
-    if (!featureCount || !featureMenuOpen || value === oldValue || value === -1) {
+    if (!featureCount || value === oldValue || value === -1) {
       return;
     }
 
+    this.actionsMenuOpen = false;
     this.featureMenuOpen = false;
   }
   private _updateFeatureWidget(): void {
@@ -2152,9 +2367,8 @@ class Popup extends declared(Widget) {
   private _renderFeatureMenuItemNode(
     featureWidget: Feature,
     featureWidgetIndex: number,
-    selectedFeatureIndex: number,
-    featureMenuOpen: boolean
-  ): any {
+    selectedFeatureIndex: number
+  ): VNode {
     const isSelectedFeature = featureWidgetIndex === selectedFeatureIndex;
 
     const itemClasses = {
@@ -2170,7 +2384,7 @@ class Popup extends declared(Widget) {
       />
     ) : null;
 
-    const titleNode = <span innerHTML={featureWidget.title || i18n.untitled} />;
+    const titleNode = <span innerHTML={featureWidget.title || i18nCommon.untitled} />;
 
     return (
       <li
@@ -2195,9 +2409,8 @@ class Popup extends declared(Widget) {
   private _renderFeatureMenuNode(
     featureWidgets: Feature[],
     selectedFeatureIndex: number,
-    featureMenuOpen: boolean,
     featureMenuId: string
-  ): any {
+  ): VNode {
     return featureWidgets.length > 1 ? (
       <ol
         class={CSS.featureMenuList}
@@ -2212,8 +2425,7 @@ class Popup extends declared(Widget) {
           return this._renderFeatureMenuItemNode(
             featureWidget,
             featureWidgetIndex,
-            selectedFeatureIndex,
-            featureMenuOpen
+            selectedFeatureIndex
           );
         })}
       </ol>
@@ -2222,7 +2434,7 @@ class Popup extends declared(Widget) {
 
   private _determineCurrentDockPosition(): string {
     const view = this.get<MapView | SceneView>("viewModel.view");
-    const defaultDockPosition = widgetUtils.isRtl() ? "top-left" : "top-right";
+    const defaultDockPosition = widgetUtils.isRTL() ? "top-left" : "top-right";
 
     if (!view) {
       return defaultDockPosition;
@@ -2239,7 +2451,7 @@ class Popup extends declared(Widget) {
     return defaultDockPosition;
   }
 
-  private _renderContent(): any {
+  private _renderContent(): VNode {
     const content = this.get("viewModel.content");
 
     if (typeof content === "string") {
@@ -2525,12 +2737,36 @@ class Popup extends declared(Widget) {
     }
   }
 
+  private _actionsMenuNodeUpdated(element: HTMLElement): void {
+    this._actionsMenuNode = element;
+
+    if (!element || !this._focusFirstAction) {
+      return;
+    }
+
+    this._focusFirstAction = false;
+    const items = element.querySelectorAll("li");
+    if (items.length) {
+      const firstItem = items[0] as HTMLElement;
+      firstItem.focus();
+    }
+  }
+
   private _focusFeatureMenuButtonNode(element: HTMLDivElement): void {
     if (!this._focusFeatureMenuButton) {
       return;
     }
 
     this._focusFeatureMenuButton = false;
+    element.focus();
+  }
+
+  private _focusActionsMenuButtonNode(element: HTMLDivElement): void {
+    if (!this._focusActionsMenuButton) {
+      return;
+    }
+
+    this._focusActionsMenuButton = false;
     element.focus();
   }
 
@@ -2631,7 +2867,16 @@ class Popup extends declared(Widget) {
   private _toggleFeatureMenu(): void {
     const toggleValue = !this.featureMenuOpen;
     this._featureMenuOpenChanged(toggleValue);
+    this.actionsMenuOpen = false;
     this.featureMenuOpen = toggleValue;
+  }
+
+  @accessibleHandler()
+  private _toggleActionsMenu(): void {
+    const toggleValue = !this.actionsMenuOpen;
+    this._actionsMenuOpenChanged(toggleValue);
+    this.featureMenuOpen = false;
+    this.actionsMenuOpen = toggleValue;
   }
 
   @accessibleHandler()
@@ -2644,6 +2889,8 @@ class Popup extends declared(Widget) {
       action.value = !action.value;
     }
 
+    this.actionsMenuOpen = false;
+
     this.viewModel.triggerAction(actionIndex);
   }
 
@@ -2655,6 +2902,9 @@ class Popup extends declared(Widget) {
     if (!isNaN(featureIndex)) {
       this.viewModel.selectedFeatureIndex = featureIndex;
     }
+
+    this._focusFeatureMenuButton = true;
+    this.scheduleRender();
   }
 
   @accessibleHandler()

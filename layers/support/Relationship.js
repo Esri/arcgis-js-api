@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/kebabDictionary","../../core/accessorSupport/decorators"],function(e,r,o,t,n,a,i){var p=a({esriRelCardinalityOneToOne:"one-to-one",esriRelCardinalityOneToMany:"one-to-many",esriRelCardinalityManyToMany:"many-to-many"});return function(e){function r(r){var o=e.call(this,r)||this;return o.cardinality=null,o.id=null,o.keyField=null,o.name=null,o.relatedTableId=null,o}return o(r,e),t([i.property({json:{read:p.read,write:p.write}})],r.prototype,"cardinality",void 0),t([i.property({json:{read:!0,write:!0}})],r.prototype,"id",void 0),t([i.property({json:{read:!0,write:!0}})],r.prototype,"keyField",void 0),t([i.property({json:{read:!0,write:!0}})],r.prototype,"name",void 0),t([i.property({json:{read:!0,write:!0}})],r.prototype,"relatedTableId",void 0),r=t([i.subclass("esri.layers.support.Relationship")],r)}(i.declared(n))});

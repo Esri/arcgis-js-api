@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../../Color","../../../../core/screenUtils"],function(e,t,n,i){function r(e){return e&&e.enabled&&e.edges||null}function l(e,t,n){return o(e,r(t),n)}function o(e,t,r){if(!t)return null;var l=n.toUnitRGBA(t.color),o=r.opacity,a=r.slicePlaneEnabled;switch(t.type){case"solid":return e.createSolidEdgeMaterial({color:l,size:i.pt2px(t.size),extensionLength:i.pt2px(t.extensionLength),opacity:o,slicePlaneEnabled:a});case"sketch":return e.createSketchEdgeMaterial({color:l,size:i.pt2px(t.size),extensionLength:i.pt2px(t.extensionLength),opacity:o,slicePlaneEnabled:a})}}Object.defineProperty(t,"__esModule",{value:!0}),t.createMaterial=l,t.createMaterialFromEdges=o});
+define(["require","exports","../../../../Color","../../../../core/compilerUtils","../../../../core/compilerUtils","../../../../core/screenUtils","../../../../core/libs/gl-matrix-2/gl-matrix"],function(e,t,r,i,n,o,c){function l(e){return e&&e.enabled&&e.edges||null}function a(e,t,r){return s(e,l(t),r)}function s(e,t,l){if(i.isNone(t))return null;var a=c.vec4f64.fromArray(r.toUnitRGBA(t.color)),s=l.opacity;switch(t.type){case"solid":return e.createSolidEdgeMaterial({color:a,size:o.pt2px(t.size),extensionLength:o.pt2px(t.extensionLength),opacity:s});case"sketch":return e.createSketchEdgeMaterial({color:a,size:o.pt2px(t.size),extensionLength:o.pt2px(t.extensionLength),opacity:s});default:n.neverReached(t)}}Object.defineProperty(t,"__esModule",{value:!0}),t.createMaterial=a,t.createMaterialFromEdges=s});

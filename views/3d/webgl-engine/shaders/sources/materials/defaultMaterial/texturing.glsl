@@ -21,12 +21,6 @@ float coverageCorrectionFactor(vec2 uv) {
 #endif
 }
 
-#ifdef ALPHA_COVERAGE_CORRECTION
-  #define ALPHA_THRESHOLD 0.5
-#else
-  #define ALPHA_THRESHOLD 0.33
-#endif
-
 vec4 textureAtlasLookup(sampler2D tex, vec2 uv, vec4 region, vec2 texSize) {
   //[umin, vmin, umax, vmax]
   vec2 atlasScale = region.zw - region.xy;

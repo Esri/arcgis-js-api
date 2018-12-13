@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"Μέτρηση",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση εμβαδού δεν υποστηρίζεται στο MapView.",perimeterLength:"Περίμετρος",area:"Εμβαδόν",unit:"Μονάδα",notApplicable:"Δ/Υ",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό σύστημα",imperial:"Βρετανικό σύστημα","square-kilometers":"Τετραγωνικά χιλιόμετρα","square-meters":"Τετραγωνικά μέτρα","square-miles":"Τετραγωνικά μίλια","square-inches":"Τετραγωνικές ίντσες","square-feet":"Τετραγωνικά πόδια","square-yards":"Τετραγωνικές γιάρδες","square-us-feet":"Τετραγωνικά πόδια (ΗΠΑ)",acres:"Έικρ",ares:"Άρια",hectares:"Εκτάρια"}});
+define({title:"Μέτρηση",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση εμβαδού 3D υποστηρίζεται μόνο στο SceneView.",perimeterLength:"Περίμετρος",area:"Εμβαδόν",unit:"Μονάδα",notApplicable:"Δ/Υ",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό σύστημα",imperial:"Βρετανικό σύστημα","square-kilometers":"Τετραγωνικά χιλιόμετρα","square-meters":"Τετραγωνικά μέτρα","square-miles":"Τετραγωνικά μίλια","square-inches":"Τετραγωνικές ίντσες","square-feet":"Τετραγωνικά πόδια","square-yards":"Τετραγωνικές γιάρδες","square-us-feet":"Τετραγωνικά πόδια (ΗΠΑ)",acres:"Έικρ",ares:"Άρια",hectares:"Εκτάρια"}});

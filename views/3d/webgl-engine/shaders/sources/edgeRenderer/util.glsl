@@ -55,7 +55,7 @@ ComponentData readComponentData() {
 }
 
 vec3 modelToWorldNormal(vec3 normal) {
-  return (uModel * vec4(normal, 0)).xyz;
+  return (uModel * vec4(normal, 0.0)).xyz;
 }
 
 vec3 silhouetteWorldNormal(vec3 normalA, vec3 normalB) {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Attivazione/disattivazione navigazione",toggle:"Attiva/disattiva per eseguire pan o rotazione in 3D"});

@@ -53,14 +53,32 @@ import TooltipConstructor = dojox.charting.action2d.TooltipConstructor;
 import Graphic = require("esri/Graphic");
 
 // esri.core
+import { substitute } from "esri/core/lang";
 import promiseUtils = require("esri/core/promiseUtils");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
-// esri.portal
-import { AttachmentInfo, ContentElement, FieldInfo, MediaInfo } from "esri/portal/jsonTypes";
+// esri.layers.support
+import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
+
+// esri.support
+import { ContentElement } from "esri/support/ContentElement";
+import FieldInfo = require("esri/support/FieldInfo");
+
+// esri.support.ContentElement
+import AttachmentsContentElement = require("esri/support/ContentElement/Attachments");
+import FieldsContentElement = require("esri/support/ContentElement/Fields");
+import MediaContentElement = require("esri/support/ContentElement/Media");
+import TextContentElement = require("esri/support/ContentElement/Text");
+
+// esri.support.ContentElement.Media
+import ImageMedia = require("esri/support/ContentElement/Media/Image");
+import { MediaInfo, MediaChartInfo } from "esri/support/ContentElement/Media/types";
+
+// esri.support.ContentElement.Media.Chart
+import ChartValue = require("esri/support/ContentElement/Media/Chart/Value");
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -71,14 +89,14 @@ import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Feature
 import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
-import { FeatureMediaInfo, FeatureChartOption, FeatureValue } from "esri/widgets/Feature/interfaces";
 
 // esri.widgets.Feature.support
 import attachmentUtils = require("esri/widgets/Feature/support/attachmentUtils");
 
 // esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
 import uriUtils = require("esri/widgets/support/uriUtils");
-import { accessibleHandler, tsx, renderable, isWidget, isWidgetBase } from "esri/widgets/support/widget";
+import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -89,6 +107,7 @@ const CSS = {
   iconMedia: "esri-icon-media",
   iconChart: "esri-icon-chart",
   esriTable: "esri-widget__table",
+  esriWidget: "esri-widget",
   // popup renderer
   base: "esri-feature",
   // containers and content
@@ -98,8 +117,8 @@ const CSS = {
   icon: "esri-feature__icon",
   content: "esri-feature__content",
   contentElement: "esri-feature__content-element",
-  // text element
   text: "esri-feature__text",
+  lastEditedInfo: "esri-feature__last-edited-info",
   // global modifiers
   showMediaPagination: "esri-feature--media-pagination-visible",
   // attachment element
@@ -204,11 +223,11 @@ class Feature extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own(watchUtils.init(this, "viewModel.content", () => this._setupMediaRefreshTimers()));
   }
 
-  destroy() {
+  destroy(): void {
     this._clearMediaRefreshTimers();
     this._activeMediaMap.clear();
     this._activeMediaMap = null;
@@ -266,7 +285,6 @@ class Feature extends declared(Widget) {
    *     "count": 126
    *   },
    *   symbol: new SimpleMarkerSymbol({
-   *     type: "simple-marker",
    *     style: "square",
    *     color: "blue",
    *     size: "8px"
@@ -337,7 +355,7 @@ class Feature extends declared(Widget) {
   @property({
     type: FeatureViewModel
   })
-  @renderable(["viewModel.waitingForContent", "viewModel.content"])
+  @renderable(["viewModel.waitingForContent", "viewModel.content", "viewModel.lastEditInfo"])
   viewModel = new FeatureViewModel();
 
   //--------------------------------------------------------------------------
@@ -346,17 +364,21 @@ class Feature extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const loadingNode = (
       <div key={buildKey("loading-container")} class={CSS.loadingSpinnerContainer}>
         <span class={this.classes(CSS.iconLoading, CSS.spinner)} />
       </div>
     );
 
-    const content = this.viewModel.waitingForContent ? loadingNode : this._renderContent();
+    const { waitingForContent } = this.viewModel;
+
+    const content = waitingForContent
+      ? loadingNode
+      : [this._renderContent(), this._renderLastEditInfo()];
 
     return (
-      <div class={CSS.base}>
+      <div class={this.classes(CSS.base, CSS.esriWidget)}>
         <div class={CSS.container}>
           <div class={CSS.main}>{content}</div>
         </div>
@@ -434,7 +456,7 @@ class Feature extends declared(Widget) {
     this._chartMap.clear();
   }
 
-  private _renderContent(): any {
+  private _renderContent(): VNode {
     this._destroyCharts();
     const content = this.viewModel.content;
     const contentKey = "content";
@@ -476,10 +498,11 @@ class Feature extends declared(Widget) {
     }
   }
 
-  private _renderContentElement(contentElement: ContentElement, contentElementIndex: number): any {
-    const elementType = contentElement.type;
-
-    switch (elementType) {
+  private _renderContentElement(
+    contentElement: ContentElement,
+    contentElementIndex: number
+  ): VNode {
+    switch (contentElement.type) {
       case "attachments":
         return this._renderAttachments(contentElement, contentElementIndex);
       case "fields":
@@ -493,7 +516,7 @@ class Feature extends declared(Widget) {
     }
   }
 
-  private _renderAttachmentInfo(options: AttachmentInfoOptions): any {
+  private _renderAttachmentInfo(options: AttachmentInfoOptions): VNode {
     const { attachmentInfo, supportsResizeAttachments } = options;
 
     const { contentType, name, url } = attachmentInfo;
@@ -522,9 +545,8 @@ class Feature extends declared(Widget) {
         <a class={CSS.attachmentsItemLink} href={url} target="_blank">
           <div class={this.classes(attachmentsItemMaskClasses, CSS.attachmentsItemMask)}>
             <img
-              alt={name}
+              alt=""
               class={this.classes(attachmentsItemImageClasses, CSS.attachmentsItemImage)}
-              title={name}
               src={thumbnail}
             />
             <span class={CSS.attachmentsItemImageOverlay}>
@@ -537,7 +559,10 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderAttachments(contentElement: ContentElement, contentElementIndex: number): any {
+  private _renderAttachments(
+    contentElement: AttachmentsContentElement,
+    contentElementIndex: number
+  ): VNode {
     const { displayType, attachmentInfos } = contentElement;
 
     const hasAttachments = attachmentInfos && attachmentInfos.length;
@@ -583,7 +608,7 @@ class Feature extends declared(Widget) {
     return `&lrm;${value}`;
   }
 
-  private _renderFieldInfo(fieldInfo: FieldInfo, contentElementIndex: number): any {
+  private _renderFieldInfo(fieldInfo: FieldInfo, contentElementIndex: number): VNode {
     const viewModel = this.viewModel;
     const { formattedAttributes } = viewModel;
     const availableFormattedAttributes = formattedAttributes
@@ -621,7 +646,7 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderFields(contentElement: ContentElement, contentElementIndex: number): any {
+  private _renderFields(contentElement: FieldsContentElement, contentElementIndex: number): VNode {
     const fieldInfos = contentElement.fieldInfos;
 
     return fieldInfos ? (
@@ -643,6 +668,9 @@ class Feature extends declared(Widget) {
   }
 
   private _shouldOpenInNewTab(url: string = ""): boolean {
+    if (!url) {
+      return;
+    }
     // Returns false if the given url uses "mailto" or "tel" protocol.
     // This is to prevent adding blank target to such links, thereby
     // preventing browsers from opening a blank tab enroute to opening the
@@ -725,7 +753,7 @@ class Feature extends declared(Widget) {
     this.scheduleRender();
   }
 
-  private _setRefreshTimeout(contentElementIndex: number, mediaInfo: MediaInfo): void {
+  private _setRefreshTimeout(contentElementIndex: number, mediaInfo: ImageMedia): void {
     const { refreshInterval, value } = mediaInfo;
 
     if (!refreshInterval) {
@@ -741,16 +769,18 @@ class Feature extends declared(Widget) {
     this._refreshTimers.set(contentElementIndex, timerId);
   }
 
-  private _renderMediaInfoType(mediaInfo: FeatureMediaInfo, contentElementIndex: number): any {
-    const { value, title = "", type, refreshInterval } = mediaInfo;
-    const { sourceURL, linkURL } = value;
+  private _renderMediaInfoType(mediaInfo: MediaInfo, contentElementIndex: number): VNode {
+    const { title = "" } = mediaInfo;
 
-    if (type === "image") {
+    if (mediaInfo.type === "image") {
+      const info = mediaInfo;
+      const { value, refreshInterval } = info;
+      const { sourceURL, linkURL } = value;
       const linkOpenInNewTab = this._shouldOpenInNewTab(linkURL);
       const linkTarget = linkOpenInNewTab ? "_blank" : "_self";
-      const mediaInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
-      const timestamp = mediaInfo ? mediaInfo.timestamp : 0;
-      const imgSrc = mediaInfo ? mediaInfo.sourceURL : sourceURL;
+      const refreshIntervalInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
+      const timestamp = refreshIntervalInfo ? refreshIntervalInfo.timestamp : 0;
+      const imgSrc = refreshIntervalInfo ? refreshIntervalInfo.sourceURL : sourceURL;
 
       const imageNode = (
         <img
@@ -770,7 +800,7 @@ class Feature extends declared(Widget) {
       ) : null;
 
       return linkNode ? linkNode : imageNode;
-    } else if (type.indexOf("chart") !== -1) {
+    } else if (mediaInfo.type.indexOf("chart") !== -1) {
       return (
         <div
           key={buildKey("chart", contentElementIndex)}
@@ -787,7 +817,8 @@ class Feature extends declared(Widget) {
   }
 
   private _getChartDependencies(divElement: HTMLDivElement): void {
-    const mediaInfo = divElement["data-media-info"] as FeatureMediaInfo;
+    const mediaInfo = divElement["data-media-info"] as MediaChartInfo;
+
     const contentElementIndex = divElement["data-content-element-index"] as number;
     const value = mediaInfo.value;
     const theme = value.theme || "Claro";
@@ -827,7 +858,7 @@ class Feature extends declared(Widget) {
     chartDiv: HTMLDivElement,
     contentElementIndex: number,
     type: MediaInfoType,
-    value: FeatureValue,
+    value: ChartValue,
     Chart2D: Chart2DConstructor,
     ChartTooltip: TooltipConstructor,
     ThemeClass: T
@@ -850,7 +881,7 @@ class Feature extends declared(Widget) {
           type: "Pie",
           labels: false
         });
-        chart.addSeries("Series A", value.chartOptions);
+        chart.addSeries("Series A", value.series);
         break;
       case "line-chart":
         chart.addPlot("default", {
@@ -868,10 +899,10 @@ class Feature extends declared(Widget) {
           vertical: true,
           fixUpper: "minor"
         });
-        value.chartOptions.forEach((info: FeatureChartOption, idx: number) => {
+        value.series.forEach((info, idx) => {
           info.x = idx + 1;
         });
-        chart.addSeries("Series A", value.chartOptions);
+        chart.addSeries("Series A", value.series);
         break;
       case "column-chart":
         chart.addPlot("default", {
@@ -883,7 +914,7 @@ class Feature extends declared(Widget) {
           vertical: true,
           fixUpper: "minor"
         });
-        chart.addSeries("Series A", value.chartOptions);
+        chart.addSeries("Series A", value.series);
         break;
       case "bar-chart":
         chart.addPlot("default", {
@@ -902,7 +933,7 @@ class Feature extends declared(Widget) {
           majorLabels: false,
           minorLabels: false
         });
-        chart.addSeries("Series A", value.chartOptions);
+        chart.addSeries("Series A", value.series);
         break;
     }
     const chartTooltip = new ChartTooltip(chart);
@@ -914,7 +945,7 @@ class Feature extends declared(Widget) {
     });
   }
 
-  private _renderMediaInfo(mediaInfo: FeatureMediaInfo, contentElementIndex: number): any {
+  private _renderMediaInfo(mediaInfo: MediaInfo, contentElementIndex: number): VNode {
     this._destroyChart(contentElementIndex);
 
     const mediaTypeNode = this._renderMediaInfoType(mediaInfo, contentElementIndex);
@@ -946,7 +977,7 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderMediaStatsItem(label: string, total: number, stat: MediaStat): any {
+  private _renderMediaStatsItem(label: string, total: number, stat: MediaStat): VNode {
     const mediaIconClasses =
       stat === "chart"
         ? this.classes(CSS.mediaChartIcon, CSS.iconChart)
@@ -960,7 +991,10 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderMediaPageButton(direction: MediaPageDirection, contentElementIndex: number): any {
+  private _renderMediaPageButton(
+    direction: MediaPageDirection,
+    contentElementIndex: number
+  ): VNode {
     const isPrevious = direction === "previous";
     const title = isPrevious ? i18n.previous : i18n.next;
     const buttonClasses = isPrevious
@@ -1010,8 +1044,8 @@ class Feature extends declared(Widget) {
     }
   }
 
-  private _renderMedia(contentElement: ContentElement, contentElementIndex: number): any {
-    const mediaInfos = contentElement.mediaInfos as FeatureMediaInfo[];
+  private _renderMedia(contentElement: MediaContentElement, contentElementIndex: number): VNode {
+    const mediaInfos = contentElement.mediaInfos as MediaInfo[];
     const mediaStats = this._getMediaStats(mediaInfos);
     const total = mediaStats.total;
     const mediaClasses = {
@@ -1054,7 +1088,43 @@ class Feature extends declared(Widget) {
     ) : null;
   }
 
-  private _renderText(contentElement: ContentElement, contentElementIndex: number): any {
+  private _renderLastEditInfo(): VNode {
+    const { lastEditInfo } = this.viewModel;
+
+    if (!lastEditInfo) {
+      return null;
+    }
+
+    const { date, user } = lastEditInfo;
+
+    const nlsString =
+      lastEditInfo.type === "edit"
+        ? user
+          ? i18n.lastEditedByUser
+          : i18n.lastEdited
+        : user
+          ? i18n.lastCreatedByUser
+          : i18n.lastCreated;
+
+    const text = substitute(
+      {
+        date,
+        user
+      },
+      nlsString
+    );
+
+    return (
+      <div
+        key={buildKey("edit-info-element")}
+        class={this.classes(CSS.lastEditedInfo, CSS.contentElement)}
+      >
+        {text}
+      </div>
+    );
+  }
+
+  private _renderText(contentElement: TextContentElement, contentElementIndex: number): VNode {
     const hasText = contentElement.text;
 
     return hasText ? (
@@ -1071,7 +1141,7 @@ class Feature extends declared(Widget) {
     node.appendChild(content);
   }
 
-  private _getMediaStats(mediaInfos: FeatureMediaInfo[]): MediaStats {
+  private _getMediaStats(mediaInfos: MediaInfo[]): MediaStats {
     let images = 0,
       charts = 0;
     mediaInfos.forEach((mediaInfo) => {

@@ -14,8 +14,7 @@
         "tint",
         "replace",
         "multiply"
-      ],
-      "default": "tint"
+      ]
     },
     "transparency": {
       "type": "integer",

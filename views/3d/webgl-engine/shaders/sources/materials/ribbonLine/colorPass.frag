@@ -1,3 +1,4 @@
+#include <util/enableExtensions.glsl>
 #include <util/fsPrecision.glsl>
 #include <util/slice.glsl>
 
@@ -19,5 +20,5 @@ void main() {
   }
 #endif
 
-  gl_FragColor = eColor * vColor;
+  gl_FragColor = highlightSlice(eColor * vColor, vpos);
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../../webgl/FramebufferObject"],function(t,e,r){return function(){function t(t){this._rctx=t,this.fbo=null,this.viewportToRestore=null}return t.prototype.dispose=function(){this.fbo&&(this.fbo.dispose(),this.fbo=null)},Object.defineProperty(t.prototype,"framebuffer",{get:function(){return this.fbo},enumerable:!0,configurable:!0}),t.prototype.prepareHighlightPass=function(t){var e=this._rctx,r=e.gl,o=t.fullViewport,i=o[2],s=o[3];this.updateFBO(i,s),this.viewportToRestore=o,this._rctx.setViewport(0,0,i,s),e.bindFramebuffer(this.fbo),e.setClearColor(0,0,0,0),e.clear(r.COLOR_BUFFER_BIT|r.DEPTH_BUFFER_BIT)},t.prototype.finish=function(t){var e=this._rctx;e.bindFramebuffer(t),e.setViewport(this.viewportToRestore[0],this.viewportToRestore[1],this.viewportToRestore[2],this.viewportToRestore[3])},t.prototype.updateFBO=function(t,e){this.fbo?this.fbo.resize(t,e):this.fbo=r.createWithAttachments(this._rctx,{target:3553,pixelFormat:6408,dataType:32819,samplingMode:9729,wrapMode:33071,width:t,height:e},{colorTarget:0,depthStencilTarget:1})},t}()});

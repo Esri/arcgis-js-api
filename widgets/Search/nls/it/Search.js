@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Cercare",searchButtonTitle:"Ricerca",clearButtonTitle:"Cancella ricerca",placeholder:"Trova indirizzo o luogo",searchIn:"Cerca in",all:"tutte le",allPlaceholder:"Trova indirizzo o luogo",emptyValue:"Immettere un termine di ricerca.",untitledResult:"Senza titolo",untitledSource:"Origine senza titolo",noResults:"Nessun risultato",noResultsFound:"Nessun risultato trovato.",noResultsFoundForValue:"Nessun risultato trovato per {value}.",showMoreResults:"Mostra altri risultati",hideMoreResults:"Nascondi",searchResult:"Risultato ricerca",moreResultsHeader:"Altri risultati",useCurrentLocation:"Usa posizione corrente"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../../../geometry/support/aaBoundingRect","../../../../tasks/support/QuantizationParameters"],function(e,t,r,i){return function(){function e(e){this.layer=e.layer,this.tileInfo=e.tileInfo}return e.prototype.fetch=function(e){return this._queryTile(e)},e.prototype._queryTile=function(e){return this.layer.queryFeatures(this._createQuery(e))},e.prototype._createQuery=function(e){this.tileInfo.updateTileInfo(e);var t=this.tileInfo.spatialReference,i=this.layer.createQuery();return i.geometry=r.toExtent(e.extent,t),i.outSpatialReference=t,this._setResolutionParams(i,e),i},e.prototype._setResolutionParams=function(e,t){var r=this.layer,o=r.geometryType;if("polyline"===o||"polygon"===o){var n=this.tileInfo.lodAt(t.level),a=n.resolution;"polyline"===o&&(e.maxAllowableOffset=a),r.get("capabilities.query.supportsQuantization")&&(e.quantizationParameters=new i.default({mode:"view",originPosition:"upper-left",tolerance:a,extent:r.fullExtent}))}},e}()});

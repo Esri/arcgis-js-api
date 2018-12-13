@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({statsAvg:"Vidutiniškai : ${avg}",count:"Skaičius: ${count}",percent:"${num} %",high:"Aukštas",low:"Žemas",color:{changeMinMaxToolTIp:"Įvesti reikšmę.",handleToolTip:"Pritaikyti duomenų reikšmes spalvoms.",maxValueToolTip:"Įvesti didžiausią numatomą duomenų reikšmę.",minValueToolTip:"Įvesti mažiausią numatomą duomenų reikšmę.",changeSymbol:"Keisti simbolį"},size:{handleToolTip:"Pritaikyti duomenų reikšmes simbolių dydžiui.",sizeInputBoxLines:"Nustatykite linijos storį nuo 0 iki 18 pikselių.",sizeInputBoxPoints:"Nustatykite simbolio dydį nuo 1 iki 120 pikselių."}});

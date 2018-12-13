@@ -20,13 +20,13 @@ void main(void) {
 
   vec3 vpos = projectAux.posModel;
   if (rejectBySlice(vpos)) {
-    gl_Position = vec4(1e38, 1e38, 1e38, 1);
+    gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
     return;
   }
 
 #ifdef OCCL_TEST
   if (!testVisibilityHUD(endPoint)) {
-    gl_Position = vec4(1e38, 1e38, 1e38, 1);
+    gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
     return;
   }
 #endif

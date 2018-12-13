@@ -128,7 +128,6 @@
                 "rows": 256,
                 "cols": 256,
                 "dpi": 96,
-                "format": "png8",
                 "compressionQuality": 0,
                 "origin": {
                   "x": -20037508.342787,

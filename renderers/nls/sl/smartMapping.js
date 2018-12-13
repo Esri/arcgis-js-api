@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({other:"Drugo",sumOfCategories:"Vsota kategorij",predominantCategory:"Prevladujoča kategorija",strengthOfPredominance:"Moč prevlade",ageInfo_years:"Starost, v letih, od {startTime} do {endTime}",ageInfo_months:"Starost, v mesecih, od {startTime} do {endTime}",ageInfo_days:"Starost, v dnevih, od {startTime} do {endTime}",ageInfo_hours:"Starost, v urah, od {startTime} do {endTime}",ageInfo_minutes:"Starost, v minutah, od {startTime} do {endTime}",ageInfo_seconds:"Starost, v sekundah, od {startTime} do {endTime}",relationship:{legendTitle:"Relacija",HL:"Visoko – nizko",HH:"Visoko – visoko",LL:"Nizko – nizko",LH:"Nizko – visoko",HM:"Visoko – srednje",ML:"Srednje – nizko",MM:"Srednje – srednje",MH:"Srednje – visoko",LM:"Nizko – srednje",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Srednje – blago",M2M2:"Srednje – srednje",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Blago – blago",M1M2:"Blago – srednje",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}});

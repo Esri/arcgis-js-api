@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({addTags:"Thêm từ khóa",noTagsFound:"Không trùng với từ khóa nào hiện có.",required:"Yêu cầu một hoặc nhiều thẻ."});

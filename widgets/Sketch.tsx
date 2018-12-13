@@ -1,0 +1,1313 @@
+/**
+ * Sketch widget provides a simple UI for creating and updating graphics on the 2D {@link module:esri/views/MapView}. This
+ * significantly minimizes the code required for working with graphics in the view.
+ * It is intended to be used with {@link module:esri/Graphic graphics} stored in its [layer](#layer) property.
+ *
+ * By default, the Sketch widget provides out-of-the-box tools for creating and updating graphics with {@link module:esri/geometry/Point point},
+ * {@link module:esri/geometry/Polyline polyline}, {@link module:esri/geometry/Polygon polygon}, {@link module:esri/geometry/Polygon rectangle}
+ * and {@link module:esri/geometry/Polygon circle} geometries.
+ *
+ * [![sketch-geometries](../../assets/img/apiref/widgets/sketch/sketch-widget.gif)](../sample-code/sketch-geometries/index.html)
+ *
+ * >>> esri-read-more
+ * <a name="create-graphics"></a>
+ * Pointer and keyboard gestures for creating graphics with different geometries are described in the tables below.
+ *
+ * #### Creating point graphics
+ *
+ * Gesture | Action |
+ * ---------|---------|
+ * Left-click | Adds a point graphic at the pointer location. |
+ * C | Adds a point graphic at the pointer location. |
+ *
+ * #### Creating polyline and polygon graphics
+ *
+ * Gesture | Action |
+ * ---------|---------|
+ * Left-click | Adds a vertex at the pointer location.|
+ * Left-drag | Adds a vertex for each pointer move. |
+ * F | Adds a vertex to the polyline or polygon graphic. |
+ * C | Completes the polyline or polygon graphic sketch. |
+ * Z | Incrementally undo actions recorded in the stack. |
+ * R | Incrementally redo actions recorded in the stack. |
+ * Ctrl+Left-click or drag | Forces new vertices to be parallel or perpendicular to the previous vertex. |
+ * Left-click on the first vertex | Completes the polygon graphic sketch. |
+ *
+ * #### Creating polygon graphics with predefined shapes
+ *
+ * The following keyboard shortcuts apply when creating polygon graphics with predefined shapes.
+ *
+ * Gesture | Action |
+ * ------- | ------ |
+ * Left-click+Drag | Creates a `rectangle` graphic with dimensions based on the bounding box between initial click and cursor location. Creates a `circle` graphic with radius based on the distance between initial click and cursor location. |
+ * Ctrl+Left-click+Drag | Changes the shape from a `rectangle` to a `square` or from a `circle` to an `ellipse`. |
+ * Alt+Left-click+Drag | Creates a `rectangle` graphic with a center at initial click, and dimensions based on the distance between the initial click to the cursor location. Creates a `circle` graphic with a radius based on the bounding box between the initial click and the cursor location.
+ * Ctrl+Alt+Left-click+Drag | Combines the behavior described above. |
+ *
+ * <a name="update-graphics"></a>
+ * #### Updating graphics
+ *
+ * The Sketch widget provides users with the ability to move, rotate, scale or reshape graphics during an update operation.
+ * To begin updating, `Left-click` on a graphic. Use `Shift+Left-click` to add more graphics to the selection, for bulk updating.
+ * Once graphics are selected, the following actions can be performed.
+ *
+ * Gesture | Action | Example |
+ * ---------|---------|----------|
+ * Left-click a graphic | Select a graphic to move, rotate or scale.| ![Select a Graphic](../../assets/img/apiref/widgets/sketch/sketch-box-mode.gif) |
+ * Shift+Left-click graphics | Select multiple graphics to move, rotate or scale.| ![Select graphics](../../assets/img/apiref/widgets/sketch/sketch-graphics.gif) |
+ * Drag the graphic | Move the graphic.| ![Drag a Geometry](../../assets/img/apiref/widgets/sketch/sketch-box-move.gif) |
+ * Drag the graphic by `rotate` handle | Rotate the graphic.| ![Rotate a Graphic](../../assets/img/apiref/widgets/sketch/sketch-rotate.gif) |
+ * Drag the graphic by `scale` handle | Scale the graphic.| ![Scale a graphic](../../assets/img/apiref/widgets/sketch/sketch-scale.gif) |
+ * Z | Incrementally undo actions recorded in the stack. | ![Undo update](../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif) |
+ * R| Incrementally redo actions recorded in the stack. | ![Redo update](../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif) |
+ * Left-click on view (not the graphic) | Complete the graphic update. | ![Sketch Update Complete](../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif) |
+ *
+ * The following update operations can be performed on a single graphic.
+ * Gesture | Action | Example |
+ * ---------|---------|----------|
+ * Left-click the graphic | Select the graphic to move or reshape.| ![Select a Graphic](../../assets/img/apiref/widgets/sketch/sketch-reshape-mode.gif) |
+ * Drag the graphic | Move the graphic.| ![Drag a Graphic](../../assets/img/apiref/widgets/sketch/sketch-drag.gif) |
+ * Left-click on a ghost vertex| Add a new vertex. | ![Add a Vertex](../../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif) |
+ * Left-click on a vertex| Select a vertex. | ![Select a Vertex](../../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif) |
+ * Ctrl+Left-click on vertices | Select or unselect multiple vertices. | ![Select Vertices](../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif) |
+ * Drag the selected vertex | Move a vertex or vertices. | ![Drag vertices](../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif) |
+ * Right-click on a vertex | Delete a vertex. | ![Delete a Vertex](../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif) |
+ * Select multiple vertices and press `Backspace` or `Delete` button | Delete multiple vertices. | ![Delete Vertices](../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif) |
+ *
+ * >>>
+ *
+ * @module module:esri/widgets/Sketch
+ *
+ * @since 4.10
+ * @see [Sketch.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Sketch.tsx)
+ * @see [Sketch.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Sketch.scss)
+ * @see module:esri/widgets/Sketch/SketchViewModel
+ * @see [Sample - Sketch temporary geometries](../sample-code/sketch-geometries/index.html)
+ * @see [Sample - Sketch update validation](../sample-code/sketch-update-validation/index.html)
+ * @see [Sample - Query statistics by geometry](../sample-code/featurelayerview-query-geometry/index.html)
+ *
+ * @example
+ * // Create a new instance of sketch widget and set
+ * // its required parameters
+ * var sketch = new Sketch({
+ *   layer: graphicsLayer,
+ *   view: view
+ * });
+ *
+ * // Listen to sketch widget's create event.
+ * sketch.on("create", function(event) {
+ *   // check if the create event's state has changed to complete indicating
+ *   // the graphic create operation is completed.
+ *   if (event.state === "complete") {
+ *     // remove the graphic from the layer. Sketch adds
+ *     // the completed graphic to the layer by default.
+ *     polygonGraphicsLayer.remove(event.graphic);
+ *
+ *     // use the graphic.geometry to query features that intersect it
+ *     selectFeatures(event.graphic.geometry);
+ *   }
+ * });
+ */
+
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
+
+// dojo
+import * as i18n from "dojo/i18n!esri/widgets/Sketch/nls/Sketch";
+
+// esri
+import Graphic = require("esri/widgets/../Graphic");
+
+// esri.core
+import Collection = require("esri/core/Collection");
+import { substitute } from "esri/core/lang";
+
+// esri.core.accessorSupport
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+
+// esri.layers
+import GraphicsLayer = require("esri/widgets/../layers/GraphicsLayer");
+
+// esri.views
+import MapView = require("esri/views/MapView");
+
+// esri.widgets
+import Widget = require("esri/widgets/Widget");
+
+// esri.widgets.Sketch
+import SketchViewModel = require("esri/widgets/Sketch/SketchViewModel");
+
+// esri.widgets.Sketch.support
+import {
+  CreateEvent,
+  CreateOptions,
+  SketchTool,
+  State,
+  UpdateEvent,
+  UpdateOptions,
+  UpdateTool
+} from "esri/widgets/Sketch/support/interfaces";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+
+const CSS = {
+  // sketch classes
+  base: "esri-sketch",
+  verticalLayout: "esri-sketch--vertical",
+  panel: "esri-sketch__panel",
+  infoPanel: "esri-sketch__info-panel",
+  section: "esri-sketch__section",
+  toolSection: "esri-sketch__tool-section",
+  infoSection: "esri-sketch__info-section",
+  infoCountSection: "esri-sketch__info-count-section",
+  featureCountBadge: "esri-sketch__feature-count-badge",
+  featureCountText: "esri-sketch__feature-count-text",
+  featureCountNumber: "esri-sketch__feature-count-number",
+
+  // button classes
+  button: "esri-sketch__button",
+  selectedButton: "esri-sketch__button--selected",
+
+  // icon classes
+  pointIcon: "esri-icon-map-pin",
+  polygonIcon: "esri-icon-polygon",
+  polylineIcon: "esri-icon-polyline",
+  multipointIcon: "esri-icon-handle-vertical",
+  circleIcon: "esri-icon-radio-unchecked",
+  rectangleIcon: "esri-icon-checkbox-unchecked",
+  panIcon: "esri-icon-pan",
+  cursorIcon: "esri-icon-cursor",
+  resetIcon: "esri-icon-trash",
+  undoIcon: "esri-icon-undo",
+  redoIcon: "esri-icon-redo",
+
+  // common
+  esriWidget: "esri-widget",
+  widgetIcon: "esri-icon-edit",
+  disabled: "esri-disabled"
+};
+
+type Layout = "vertical" | "horizontal";
+
+@subclass("esri.widgets.Sketch")
+class Sketch extends declared(Widget) {
+  //--------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Fires when a user starts sketching a graphic, is actively sketching a graphic and completes sketching a graphic.
+   *
+   * @event module:esri/widgets/Sketch#create
+   * @property {module:esri/Graphic} graphic - The graphic that is being created.
+   * @property {string} state - The current state of the event.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * start | State changes to `start` when the first vertex is created. Not applicable when creating `points`.
+   * active | State is `active` while graphic is being created. Not applicable when creating `points`.
+   * complete | State changes to `complete` after the [complete()](#complete) method is called, when the user double clicks, presses the C key or clicks the first vertex of the `polygon` while creating a graphic. When `point` is created, the create event is fired with the `complete` state.
+   * cancel | State changes to `cancel` if the [create()](#create) or [reset()](#reset) methods are called during the create operation and before the state changes to `complete`.
+   *
+   * @property {string} tool - Name of the create tool.
+   *
+   * **Possible Values:** point | polyline | polygon | rectangle | circle
+   *
+   * @property {module:esri/widgets/Sketch~CreateToolEventInfo} toolEventInfo - Returns additional information associated with
+   * the create operation such as where the user is clicking the view or where the user is moving the cursor to.
+   * Value of this parameter changes to `null` when the `create` event's `state` changes to `complete` or `cancel`.
+   *
+   * @property {string} type - The type of the event. For this event, the type is always `create`.
+   *
+   * @example
+   * // Listen to sketch widget's create event.
+   * sketch.on("create", function(event) {
+   *   // check if the create event's state has changed to complete indicating
+   *   // the graphic create operation is completed.
+   *   if (event.state === "complete") {
+   *     // remove the graphic from the layer. Sketch adds
+   *     // the completed graphic to the layer by default.
+   *     polygonGraphicsLayer.remove(event.graphic);
+   *
+   *     // use the graphic.geometry to query features that intersect it
+   *     selectFeatures(event.graphic.geometry);
+   *   }
+   * });
+   */
+
+  /**
+   * Fires when the user starts updating graphics, is actively updating graphics, and completes updating graphics.
+   *
+   * @event module:esri/widgets/Sketch#update
+   * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated.
+   * @property {string} state - The state of the event.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * start | State changes to `start` when a graphic is selected to be updated.
+   * active | State is `active` while graphics are being updated and `toolEventInfo` parameter is not `null`.
+   * complete | State changes to `complete` after graphics are updated.
+   * cancel | State changes to `cancel` when graphics are selected and then unselected without any updates, or when the [update](#update), [create](#create) or [reset](#reset) method is called before the `update` event's `state` changes to `complete`.
+   *
+   * @property {string} tool - Name of the update operation tool.
+   *
+   * **Possible Values:**  move | transform | reshape
+   *
+   * @property {module:esri/widgets/Sketch~UpdateToolEventInfo} toolEventInfo - Returns additional information associated
+   * with the update operation that is taking place for the selected graphics and what stage it is at. Value of this parameter
+   * changes to `null` when the `update` event's `state` changes to `complete`.
+   *
+   * @example
+   * // Listen to sketch's update event to show relevant data in a chart
+   * // as the graphics are being moved
+   * sketch.on("update", onMove);
+   *
+   * // Point graphics at the center and edge of the buffer polygon are being moved.
+   * // Recalculate the buffer with updated geometry and run the query stats using
+   * // the updated buffer and update the chart.
+   * function onMove(event) {
+   *   // If the edge graphic is moving, keep the center graphic
+   *   // at its initial location. Only move edge graphic to resize the buffer.
+   *   if (event.toolEventInfo && event.toolEventInfo.mover.attributes.edge) {
+   *     const toolType = event.toolEventInfo.type;
+   *     if (toolType === "move-start") {
+   *       centerGeometryAtStart = centerGraphic.geometry;
+   *     }
+   *     // keep the center graphic at its initial location when edge point is moving
+   *     else if (toolType === "move" || toolType === "move-stop") {
+   *       centerGraphic.geometry = centerGeometryAtStart;
+   *     }
+   *   }
+   *
+   *   // the center or edge graphic is being moved, recalculate the buffer
+   *   const vertices = [
+   *     [centerGraphic.geometry.x, centerGraphic.geometry.y],
+   *     [edgeGraphic.geometry.x, edgeGraphic.geometry.y]
+   *   ];
+   *
+   *   // client-side stats query of features that intersect the buffer
+   *   calculateBuffer(vertices);
+   *
+   *   // user is clicking on the view... call update method with the center and edge graphics
+   *   if ((event.state === "cancel" || event.state === "complete")) {
+   *     sketch.update({
+   *       tool: "move",
+   *       graphics: [edgeGraphic, centerGraphic]
+   *     });
+   *   }
+   * }
+   */
+
+  /**
+   * Fires in response to redo action during creation of a new graphic or updating existing graphics.
+   *
+   * @event module:esri/widgets/Sketch#redo
+   * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
+   * @property {string} tool - Name of the create or update tool that is active.
+   *
+   * **Possible Values:** point | polyline | polygon | rectangle | circle | move | transform | reshape
+   *
+   * @property {string} type - The type of the event. For this event, the type is always `redo`.
+   */
+
+  /**
+   * Fires in response to undo action during creation of a new graphic or updating existing graphics.
+   *
+   * @event module:esri/widgets/Sketch#undo
+   * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
+   * @property {string} tool - Name of the create or update tool that is active.
+   *
+   * **Possible Values:** point | polyline | polygon | rectangle | circle | move | transform | reshape
+   *
+   * @property {string} type - The type of the event. For this event, the type is always `undo`.
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [create](#event:create) event when the graphic
+   * is being created. It returns {@link module:esri/widgets/Sketch~VertexAddEventInfo}
+   * when the user clicks the view or {@link module:esri/widgets/Sketch~CursorUpdateEventInfo} or when the user moves the cursor.
+   *
+   * @typedef {module:esri/widgets/Sketch~VertexAddEventInfo | module:esri/widgets/Sketch~CursorUpdateEventInfo} module:esri/widgets/Sketch~CreateToolEventInfo
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update) event when the user is updating graphics.
+   *
+   * @typedef {module:esri/widgets/Sketch~MoveEventInfo | module:esri/widgets/Sketch~ReshapeEventInfo | module:esri/widgets/Sketch~RotateEventInfo | module:esri/widgets/Sketch~ScaleEventInfo | module:esri/widgets/Sketch~VertexAddEventInfo | module:esri/widgets/Sketch~VertexRemoveEventInfo} module:esri/widgets/Sketch~UpdateToolEventInfo
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [create](#event:create)
+   * event when the user moves the cursor on the view while the graphic is being created.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~CursorUpdateEventInfo
+   *
+   * @property {string} type - Type is always `cursor-update`.
+   *
+   * @property {number[]} coordinates - An array of numbers representing the coordinates of the cursor location.
+   *
+   * @example
+   * // listen to create event
+   * sketch.on("create", function(event){
+   *   // respond to create event while the cursor is being moved on the view.
+   *   const eventInfo = event.toolEventInfo;
+   *   if (eventInfo && eventInfo.type === "cursor-update"){
+   *     console.log(eventInfo.type, eventInfo.coordinates[0], eventInfo.coordinates[1]);
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [create](#event:create)
+   * or [update](#event:update) event when the user adds vertices to the graphic being created or updated.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~VertexAddEventInfo
+   *
+   * @property {string} type - Type is always `vertex-add`.
+   *
+   * @property {module:esri/Graphic[]} added - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
+   * representing the vertices that were added.
+   *
+   * @example
+   * // listen to create event
+   * sketch.on("create", function(event){
+   *   // check if vertices are being added to the graphic that is being updated.
+   *   if (event.toolEventInfo && event.toolEventInfo.type === "vertex-add"){
+   *     const addedPoint = event.toolEventInfo.added[0].geometry;
+   *     console.log(event.toolEventInfo.type, addedPoint.x, addedPoint.y);
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update) event
+   * when the user is removing vertices from the graphic.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~VertexRemoveEventInfo
+   *
+   * @property {string} type - Type is always `vertex-remove`.
+   *
+   * @property {module:esri/Graphic[]} removed - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
+   * representing the vertices that were removed.
+   *
+   * @example
+   * // listen to update event
+   * sketch.on("update", function(event){
+   *   // check if vertices are being added to the graphic that is being updated.
+   *   const eventInfo = event.toolEventInfo;
+   *   if (eventInfo && eventInfo.type === "vertex-remove"){
+   *     const removedPoint = eventInfo.removed[0].geometry;
+   *     console.log(eventInfo.type, removedPoint.x,removedPoint.y);
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * event while the user is moving the graphics. It returns additional information associated with the move operation
+   * and what stage it is at.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~MoveEventInfo
+   *
+   * @property {string} type - Returns information indicating the stage of the move operation.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * move-start | The type changes to `move-start` at the start of `move` operation.
+   * move | The type changes to `move` while graphics are being moved.
+   * move-stop | The type changes to `move-stop` once graphics are moved.
+   *
+   * @property {number} dx - Number of pixels moved on the x-axis from the last known position.
+   * @property {number} dy - Number of pixels moved on the y-axis from the last known position.
+   * @property {module:esri/Graphic} mover - The instance of the graphic that is being moved.
+   *
+   * @example
+   * // listen to update event
+   * sketch.on("update", function(event){
+   *   // check if the graphics are done being moved, printout dx, dy parameters to the console.
+   *   const eventInfo = event.toolEventInfo;
+   *   if (eventInfo && eventInfo.type.includes("move")){
+   *     console.log(eventInfo.type, eventInfo.dx, eventInfo.dy);
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * event while the user is reshaping the graphics. It returns additional information associated with the reshape operation
+   * and what stage it is at.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~ReshapeEventInfo
+   *
+   * @property {string} type - Returns information indicating the stage of the reshape operation.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * reshape-start | The type changes to `reshape-start` at the start of `reshape` operation.
+   * reshape | The type changes to `reshape` while graphics are being reshaped.
+   * reshape-stop | The type changes to `reshape-stop` once graphics are reshaped.
+   *
+   * @example
+   * // listen to update event
+   * sketch.on("update", function(event){
+   *   // check if the graphics are done being reshaped, printout updated graphic's geometry and reshape stage.
+   *   const eventInfo = event.toolEventInfo;
+   *   if (eventInfo && eventInfo.type.includes("reshape")) {
+   *     console.log(eventInfo.type, event.graphics[0].geometry);
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * event while the user is rotating the graphics. It returns additional information associated with the rotate operation
+   * and what stage it is at.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~RotateEventInfo
+   *
+   * @property {string} type - Returns information indicating the stage of the rotate operation.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * rotate-start | The type changes to `rotate-start` at the start of `rotate` operation.
+   * rotate | The type changes to `rotate` while graphics are being rotated.
+   * rotate-stop | The type changes to `rotate-stop` once graphics are rotated.
+   *
+   * @property {number} angle - Angle of rotation in degrees.
+   * @example
+   * // listen to update event
+   * sketch.on("update", function(event){
+   *   if (evt.tool === "transform") {
+   *     if (event.toolEventInfo) {
+   *       const info = evt.toolEventInfo,
+   *       type = info.type;
+   *
+   *       // rotate events only
+   *       if (type.includes("rotate")) {
+   *         // check if the rotation angle exceeded 45
+   *         if (info.angle > 45) {
+   *           // complete the graphic update operation
+   *           sketch.complete();
+   *         }
+   *       }
+   *     }
+   *   }
+   * });
+   */
+
+  /**
+   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * event while the user is scaling or resizing the graphics. It returns additional information associated with the scale
+   * operation and what stage it is at.
+   *
+   * @typedef {Object} module:esri/widgets/Sketch~ScaleEventInfo
+   *
+   * @property {string} type - Returns information indicating the stage of the scale operation.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * scale-start | The type changes to `scale-start` at the start of scale or resize operation.
+   * scale | The type changes to `scale` while graphics are being scaled or resized.
+   * scale-stop | The type changes to `scale-stop` once graphics are scaled or resized.
+   *
+   * @property {number} xScale - The x scale factor used to enlarge or shrink the geometry.
+   * @property {number} yScale - The y scale factor used to enlarge or shrink the geometry.
+   */
+
+  /**
+   * @extends module:esri/widgets/Widget
+   * @constructor
+   * @alias module:esri/widgets/Sketch
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
+   *                                that may be passed into the constructor.
+   *
+   * @example
+   * // typical usage
+   * var sketch = new Sketch({
+   *   layer: layer,
+   *   view: view
+   * });
+   */
+  constructor(params?: any) {
+    super();
+  }
+
+  postInitialize(): void {
+    this.own([
+      this.viewModel.on("create", () => this.scheduleRender()),
+      this.viewModel.on("update", () => this.scheduleRender()),
+      this.viewModel.on("create", (event) => this._onOperationComplete(event)),
+      this.viewModel.on("update", (event) => this._onOperationComplete(event)),
+      this.viewModel.on("undo", () => this.scheduleRender()),
+      this.viewModel.on("redo", () => this.scheduleRender()),
+      this.viewModel.on("reset", () => this.scheduleRender())
+    ]);
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Returns the name of the active tool associated with the Sketch widget instance.
+   *
+   * **Possible Values:** point | polyline | polygon | circle | rectangle | move | transform | reshape
+   *
+   * @name activeTool
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @aliasOf("viewModel.activeTool")
+  @renderable()
+  activeTool: SketchTool = null;
+
+  //----------------------------------
+  //  createGraphic
+  //----------------------------------
+
+  /**
+   * The graphic that is being created.
+   *
+   * @name createGraphic
+   * @instance
+   * @type {module:esri/Graphic}
+   * @readonly
+   */
+  @aliasOf("viewModel.createGraphic")
+  @renderable()
+  createGraphic: Graphic = null;
+
+  //----------------------------------
+  //  defaultUpdateOptions
+  //----------------------------------
+
+  /**
+   * Default update options set for the Sketch widget. Update options set on this property will be overwritten if the update options are changed
+   * when [update()](#update) method is called.
+   *
+   * @name defaultUpdateOptions
+   * @instance
+   *
+   * @property {string} tool - Name of update tool. The default tool is `transform`.
+   * @property {module:esri/Graphic[]} graphics - An array of graphics to be updated. Only graphics added to [layer](#layer) property can be updated.
+   * @property {boolean} [enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics.
+   * @property {boolean} [enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics.
+   * @property {boolean} [preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
+   * must be set `true` when setting this property to `true`.
+   * @property {boolean} [toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
+   * @instance
+   * @type {Object}
+   * @readonly
+   * @ignore
+   *
+   */
+  @aliasOf("viewModel.defaultUpdateOptions")
+  @renderable()
+  defaultUpdateOptions: UpdateOptions;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The Sketch widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  layer
+  //----------------------------------
+
+  /**
+   * The {@link module:esri/layers/GraphicsLayer} associated with the Sketch widget. The Sketch widget adds new {@link module:esri/Graphic graphics} to this layer or can only update graphics
+   * stored in this layer.
+   *
+   * @name layer
+   * @instance
+   * @type {module:esri/layers/GraphicsLayer}
+   *
+   */
+  @aliasOf("viewModel.layer")
+  @renderable()
+  layer: GraphicsLayer = null;
+
+  //----------------------------------
+  //  layout
+  //----------------------------------
+
+  /**
+   * Determines the layout/orientation of the Sketch widget.
+   *
+   * **Possible Values:** vertical | horizontal
+   *
+   * @name layout
+   * @since 4.10
+   * @instance
+   * @default horizontal
+   * @type {string}
+   */
+  @property({ value: "horizontal" })
+  @renderable()
+  set layout(value: Layout) {
+    if (value !== "vertical") {
+      value = "horizontal";
+    }
+
+    this._set("layout", value);
+  }
+
+  //----------------------------------
+  //  state
+  //----------------------------------
+
+  /**
+   * The Sketch widget's state.
+   *
+   * **Possible Values:** ready | disabled | active
+   *
+   * @name state
+   * @instance
+   * @type {string}
+   * @readonly
+   *
+   */
+  @aliasOf("viewModel.state")
+  @renderable()
+  state: State = null;
+
+  //----------------------------------
+  //  updateGraphics
+  //----------------------------------
+
+  /**
+   * An array of {@link module:esri/Graphic graphics} that are being updated by the Sketch widget.
+   *
+   * @name updateGraphics
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/Graphic>}
+   * @readonly
+   */
+  @aliasOf("viewModel.updateGraphics")
+  @renderable(["updateGraphics", "updateGraphics.length"])
+  updateGraphics: Collection<Graphic> = new Collection();
+
+  //----------------------------------
+  //  view
+  //----------------------------------
+
+  /**
+   * A reference to the {@link module:esri/views/MapView}. Set this to link the Sketch widget to a specific view.
+   *
+   * @name view
+   * @instance
+   * @type {module:esri/views/MapView}
+   */
+  @aliasOf("viewModel.view")
+  @renderable()
+  view: MapView = null;
+
+  //----------------------------------
+  //  viewModel
+  //----------------------------------
+
+  /**
+   * The view model for the Sketch widget. This is a class that contains all the logic
+   * (properties and methods) that controls this widget's behavior. See the
+   * {@link module:esri/widgets/Sketch/SketchViewModel} class to access
+   * all properties and methods on the Sketch widget.
+   *
+   * @name viewModel
+   * @instance
+   * @type {module:esri/widgets/Sketch/SketchViewModel}
+   */
+  @property()
+  @renderable("viewModel.state")
+  @vmEvent(["create", "update", "undo", "redo", "reset"])
+  viewModel: SketchViewModel = new SketchViewModel();
+
+  //----------------------------------
+  //  widgetLabel
+  //----------------------------------
+
+  /**
+   * The Sketch widget's default label.
+   *
+   * @name widgetLabel
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  widgetLabel: string = i18n.title;
+
+  //--------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Create a graphic with a geometry specified in `tool`. When first vertex of the graphic is added,
+   * [create](#event:create) event will start firing.
+   *
+   * **Note:** Creating a circle geometry does not work in all spatial references.
+   *
+   * @since 4.10
+   * @method create
+   * @instance
+   *
+   * @param {string} tool - Name of the create tool. Specifies the geometry type for the graphic to be created.
+   *
+   * **Possible Values:** point | polyline | polygon | rectangle | circle
+   *
+   * @param {Object} [createOptions] - Options for the graphic to be created.
+   *
+   * @param {string} [createOptions.mode] - Specifies how the graphic can be created. The create mode applies only when creating
+   * `polygon`, `polyline`, `rectangle` and `circle` geometries.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * hybrid | Vertices are added while the pointer is clicked or dragged. Applies to and is the default for `polygon` and `polyline`.
+   * freehand | Vertices are added while the pointer is dragged. Applies to `polygon`, `polyline` `rectangle` and `circle`. Default for `rectangle` and `circle`.
+   * click | Vertices are added when the pointer is clicked.
+   *
+   * @example
+   * // Call create method to create a polygon with freehand mode.
+   * sketch.create("polygon", { mode: "freehand" });
+   *
+   * // listen to create event, only respond when event's state changes to complete
+   * sketch.on("create", function(event) {
+   *   if (event.state === "complete") {
+   *     // remove the graphic from the layer associated with the Sketch widget
+   *     // instead use the polygon that user created to query features that
+   *     // intersect it.
+   *     polygonGraphicsLayer.remove(event.graphic);
+   *     selectFeatures(event.graphic.geometry);
+   *   }
+   * });
+   */
+
+  @aliasOf("viewModel.create")
+  create(options: CreateOptions): void {}
+
+  /**
+   * Initializes an update operation for the specified graphic(s) and fires [update](#event:update) event.
+   *
+   * @method update
+   * @instance
+   * @param {module:esri/Graphic[]} graphics - An array of graphics to be updated. Only graphics added to the Sketch widget's [layer](#layer) property can be updated.
+   * @param {Object} [updateOptions] - Update options for the graphics to be updated.
+   * @param {string} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * transform | The *default* tool for graphics with {@link module:esri/geometry/Polygon polygon} and {@link module:esri/geometry/Polyline polyline} geometries. It allows one or multiple graphics to be scaled, rotated and moved by default. Its default behavior can be changed by setting `enableRotation`, `enableScaling` or `preserveAspectRatio` properties when calling `update` method or setting them on [defaultUpdateOptions](#defaultUpdateOptions) property when the Sketch widget initializes. This tool does not apply if selected graphics have only {@link module:esri/geometry/Point point} geometries.
+   * reshape | It allows the entire graphic or individual vertices of the graphic to be moved. Vertices can be added or removed. This tool can only be used with one graphic and the graphic's geometry has to be {@link module:esri/geometry/Polygon polygon} or {@link module:esri/geometry/Polyline polyline}.
+   * move | The *default* tool for graphics with {@link module:esri/geometry/Point point} geometries. It should be used for specific cases where you just want to move selected `polygon` and `polyline` graphics without additional options. Additionally, the `move` tool does not support toggling to different modes, since `move` operation is already built into both `transform` and `reshape` tools by default.
+   *
+   * @param {boolean} [updateOptions.enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
+   * @param {boolean} [updateOptions.enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
+   * @param {boolean} [updateOptions.preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
+   * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform`.
+   * @param {boolean} [updateOptions.toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
+   *
+   * @example
+   * // start update operation for the selected graphic
+   * // with transform tool. Only allow uniform scaling operation.
+   * sketch.update([selectedGraphic], {
+   *   tool: "transform",
+   *   enableRotation: false,
+   *   enableScaling: true,
+   *   preserveAspectRatio: true,
+   *   toggleToolOnClick: false
+   * });
+   *
+   * @example
+   * // Listen to sketch's update event to validate graphic's
+   * // location while it is being reshaped or moved
+   * sketch.on("update", onGraphicUpdate);
+   * function onGraphicUpdate(event) {
+   *   // get the graphic as it is being updated
+   *   const graphic = event.graphics[0];
+   *   // check if the graphic is intersecting school buffers
+   *   intersects = geometryEngine.intersects(buffers, graphic.geometry);
+   *
+   *   // change the graphic symbol to valid or invalid symbol
+   *   // depending the graphic location
+   *   graphic.symbol = (intersects) ? invalidSymbol : validSymbol
+   *
+   *   // check if the update event's the toolEventInfo.type is move-stop or reshape-stop
+   *   // user finished moving or reshaping the graphic, call complete method.
+   *   // This changes update event state to complete.
+   *   const toolType = event.toolEventInfo.type;
+   *   if (event.toolEventInfo && (toolType === "move-stop" || toolType === "reshape-stop")) {
+   *     if (!intersects) {
+   *       sketch.complete();
+   *     }
+   *   } else if ((event.state === "cancel" || event.state === "complete")) {
+   *       // graphic update has been completed or cancelled
+   *       // if the graphic is in a bad spot, call sketch's update method again
+   *       // giving user a chance to correct the location of the graphic
+   *       if ((!contains) || (intersects)) {
+   *         sketch.update({
+   *           tool: "reshape",
+   *           graphics: [graphic],
+   *           toggleToolOnClick: false
+   *         });
+   *       }
+   *   }
+   * }
+   */
+  @aliasOf("viewModel.update")
+  update(options: UpdateOptions): void {}
+
+  /**
+   * Completes the active operation and fires the [create](#event:create) or [update](#event:update) event
+   * and changes the event's state to `complete`. If called in midst of create operation, `complete()` finishes
+   * the active create operation and keeps the valid geometry.
+   *
+   * @method complete
+   * @instance
+   *
+   */ @aliasOf("viewModel.complete")
+  complete(): void {}
+
+  /**
+   * Cancels the active operation and fires the [create](#event:create) or [update](#event:update) event
+   * and changes the event's state to `cancel`.
+   *
+   * @since 4.10
+   * @method cancel
+   * @instance
+   *
+   */
+  @aliasOf("viewModel.cancel")
+  cancel(): void {}
+
+  /**
+   * Incrementally undo actions recorded in the stack. Calling this method will fire the
+   * [undo](#event:undo) event.
+   *
+   * @method undo
+   * @instance
+   *
+   */
+  @aliasOf("viewModel.undo")
+  undo(): void {}
+
+  /**
+   * Incrementally redo actions recorded in the stack. Calling this method will fire the
+   * [redo](#event:redo) event.
+   *
+   * @method redo
+   * @instance
+   *
+   */
+  @aliasOf("viewModel.redo")
+  redo(): void {}
+
+  /**
+   * Resets the Sketch widget to prepare for another create operation.
+   * Reset discards the current sketch, if called in middle of create operation.
+   *
+   * @method reset
+   * @instance
+   */
+  reset(): void {
+    this.viewModel.reset();
+    this.view.focus();
+  }
+
+  render(): VNode {
+    const { state } = this.viewModel;
+    const classes = this.classes(
+      CSS.base,
+      CSS.esriWidget,
+      state === "disabled" ? CSS.disabled : null,
+      this.layout === "vertical" ? CSS.verticalLayout : null
+    );
+
+    return (
+      <div aria-label={i18n.widgetLabel} class={classes}>
+        <div class={CSS.panel}>{this.renderTopPanelContents()}</div>
+        <div class={this.classes(CSS.panel, CSS.infoPanel)}>{this.renderInfoPanelContents()}</div>
+      </div>
+    );
+  }
+
+  protected renderTopPanelContents(): VNode {
+    return [
+      <div class={this.classes(CSS.section, CSS.toolSection)}>
+        {this.renderNavigationButtons()}
+      </div>,
+      <div class={this.classes(CSS.section, CSS.toolSection)}>{this.renderDrawButtons()}</div>,
+      <div class={this.classes(CSS.section, CSS.toolSection)}>{this.renderMenuButtons()}</div>
+    ];
+  }
+
+  protected renderInfoPanelContents(): VNode {
+    if (this.updateGraphics.length) {
+      return [
+        <div
+          class={this.classes(CSS.section, CSS.infoSection, CSS.infoCountSection)}
+          key="feature-count-container"
+        >
+          {this.renderFeatureCount()}
+        </div>,
+        <div class={this.classes(CSS.section, CSS.infoSection)} key="delete-button-container">
+          {this.renderDeleteButton()}
+        </div>
+      ];
+    }
+  }
+
+  protected renderFeatureCount(): VNode {
+    const {
+      layout,
+      updateGraphics: { length: count }
+    } = this;
+
+    const countLabel = substitute({ count }, count === 1 ? i18n.featureCount : i18n.featuresCount);
+
+    return (
+      <div class={CSS.featureCountBadge} aria-label={countLabel}>
+        <span class={CSS.featureCountNumber}>{layout === "vertical" ? count : countLabel}</span>
+      </div>
+    );
+  }
+
+  protected renderDeleteButton(): VNode {
+    const title = i18n.deleteFeature;
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(CSS.button, CSS.resetIcon)}
+        onclick={this._deleteGraphic}
+        title={title}
+      />
+    );
+  }
+
+  protected renderNavigationButtons(): VNode {
+    return [this.renderTransformButton(), this.renderReshapeButton()];
+  }
+
+  protected renderTransformButton(): VNode {
+    const title = i18n.move;
+    const classes = [CSS.button, CSS.panIcon];
+    const defaultTool = this.viewModel.defaultUpdateOptions.tool;
+    const isActive = !!(this.activeTool === "transform" || this.activeTool === "move");
+
+    if ((this.state === "ready" && defaultTool === "transform") || isActive) {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateTransformTool}
+        title={title}
+      />
+    );
+  }
+
+  protected renderReshapeButton(): VNode {
+    const title = i18n.reshape;
+    const classes = [CSS.button, CSS.cursorIcon];
+    const defaultTool = this.viewModel.defaultUpdateOptions.tool;
+    const isDisabled = this.updateGraphics.length > 1;
+
+    if ((this.state === "ready" && defaultTool === "reshape") || this.activeTool === "reshape") {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateReshapeTool}
+        disabled={isDisabled}
+        title={title}
+      />
+    );
+  }
+
+  protected renderDrawButtons(): VNode {
+    return [
+      this.renderPointButton(),
+      this.renderPolylineButton(),
+      this.renderPolygonButton(),
+      this.renderRectangleButton(),
+      this.renderCircleButton()
+    ];
+  }
+
+  protected renderPointButton(): VNode {
+    const title = i18n.drawPoint;
+    const classes = [CSS.button, CSS.pointIcon];
+
+    if (this.activeTool === "point") {
+      classes.push(CSS.selectedButton);
+    }
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateCreatePoint}
+        title={title}
+      />
+    );
+  }
+
+  protected renderPolygonButton(): VNode {
+    const title = i18n.drawPolygon;
+    const classes = [CSS.button, CSS.polygonIcon];
+
+    if (this.activeTool === "polygon") {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateCreatePolygon}
+        title={title}
+      />
+    );
+  }
+
+  protected renderPolylineButton(): VNode {
+    const title = i18n.drawPolyline;
+    const classes = [CSS.button, CSS.polylineIcon];
+
+    if (this.activeTool === "polyline") {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateCreatePolyline}
+        title={title}
+      />
+    );
+  }
+
+  protected renderCircleButton(): VNode {
+    const title = i18n.drawCircle;
+    const classes = [CSS.button, CSS.circleIcon];
+
+    if (this.activeTool === "circle") {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateCreateCircle}
+        title={title}
+      />
+    );
+  }
+
+  protected renderRectangleButton(): VNode {
+    const title = i18n.drawRectangle;
+    const classes = [CSS.button, CSS.rectangleIcon];
+
+    if (this.activeTool === "rectangle") {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._activateCreateRectangle}
+        title={title}
+      />
+    );
+  }
+
+  protected renderMenuButtons(): VNode {
+    return [this.renderUndoButton(), this.renderRedoButton()];
+  }
+
+  protected renderUndoButton(): VNode {
+    const title = i18n.undo;
+    const isDisabled = !this.viewModel.canUndo();
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(CSS.button, CSS.undoIcon)}
+        disabled={isDisabled}
+        onclick={this._undo}
+        title={title}
+      />
+    );
+  }
+
+  protected renderRedoButton(): VNode {
+    const title = i18n.redo;
+    const isDisabled = !this.viewModel.canRedo();
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(CSS.button, CSS.redoIcon)}
+        disabled={isDisabled}
+        onclick={this._redo}
+        title={title}
+      />
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
+
+  private _isUpdateToolActive(): boolean {
+    return !!(
+      this.activeTool === "transform" ||
+      this.activeTool === "reshape" ||
+      this.activeTool === "move"
+    );
+  }
+
+  private _deleteGraphic(): void {
+    if (this.state === "active") {
+      const graphics = this.updateGraphics.toArray();
+      this.layer.removeMany(graphics);
+      this.reset();
+    }
+  }
+
+  private _onOperationComplete(event: CreateEvent | UpdateEvent): void {
+    // Reset the default tool when an operation finishes
+    if (event.state === "complete" || event.state === "cancel") {
+      this._modifyDefaultUpdateTool("transform");
+    }
+  }
+
+  // Resets the default update tool
+  private _modifyDefaultUpdateTool(tool: UpdateTool): void {
+    if (this.viewModel.defaultUpdateOptions) {
+      this.viewModel.defaultUpdateOptions.tool = tool;
+    }
+  }
+
+  private _activateTransformTool(): void {
+    // Create tool is active - reset the widget
+    if (this.state === "active" && !this._isUpdateToolActive()) {
+      this.viewModel.reset();
+    }
+    // Reshape tool is active - toggle tool
+    else if (this.activeTool === "reshape") {
+      this.viewModel.toggleUpdateTool();
+    }
+
+    // Set the default update tool to 'transform'
+    this._modifyDefaultUpdateTool("transform");
+    this.view.focus();
+  }
+
+  private _activateReshapeTool(): void {
+    // Create tool is active - reset the widget
+    if (this.state === "active" && !this._isUpdateToolActive()) {
+      this.viewModel.reset();
+    }
+
+    // Transform tool is active - toggle tool
+    // -- Reshape workflow only supports one graphic
+    if (this.activeTool === "transform" && this.updateGraphics.length === 1) {
+      this.viewModel.toggleUpdateTool();
+    }
+
+    // Set the default update tool to 'reshape' temporarily
+    this._modifyDefaultUpdateTool("reshape");
+    this.view.focus();
+  }
+
+  private _activateCreatePoint(): void {
+    this.viewModel.create("point");
+    this.view.focus();
+  }
+
+  private _activateCreatePolygon(): void {
+    this.viewModel.create("polygon");
+    this.view.focus();
+  }
+
+  private _activateCreatePolyline(): void {
+    this.viewModel.create("polyline");
+    this.view.focus();
+  }
+
+  private _activateCreateCircle(): void {
+    this.viewModel.create("circle");
+    this.view.focus();
+  }
+
+  private _activateCreateRectangle(): void {
+    this.viewModel.create("rectangle");
+    this.view.focus();
+  }
+
+  private _undo(): void {
+    this.undo();
+    this.view.focus();
+  }
+
+  private _redo(): void {
+    this.redo();
+    this.view.focus();
+  }
+}
+
+export = Sketch;

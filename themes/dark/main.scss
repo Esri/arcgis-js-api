@@ -4,18 +4,17 @@
 // Hex values from
 // @import "../base/colors/scss/variables_dark.scss";
 // ↳ https://github.com/Esri/calcite-colors.git
-$text_color: #d1d1d1; // $Calcite_Gray_700 (dark)
-$background_color: #242424; // $Calcite_Gray_050 (dark)
-$anchor_color: #9e9e8e; // $Calcite_Gray_050 (dark)
-$interactive_text_color: #adadad; // $Calcite_Gray_600 (dark)
+$font-color: #d1d1d1; // $Calcite_Gray_700 (dark)
+$background-color: #242424; // $Calcite_Gray_050 (dark)
+$interactive-font-color: #adadad; // $Calcite_Gray_600 (dark)
 
-$header_color: $text_color;
+$heading-color: $font-color;
 
-$button_color: #adadad;
-$button_color--inverse: $background_color;
+$button-color: #adadad;
+$button-color--inverse: $background-color;
 
 // Selected
-$selected_border_color: #d1d1d1;
-$selected_background_color: #000000;
+$border-color--active: $interactive-font-color;
+$background-color--active: #000000;
 
 @import "../base/core";

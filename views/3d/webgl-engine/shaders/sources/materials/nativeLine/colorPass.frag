@@ -1,3 +1,4 @@
+#include <util/enableExtensions.glsl>
 #include <util/fsPrecision.glsl>
 #include <util/slice.glsl>
 
@@ -7,5 +8,5 @@ varying vec3 vpos;
 void main() {
   discardBySlice(vpos);
 
-  gl_FragColor = color;
+  gl_FragColor = highlightSlice(color, vpos);
 }

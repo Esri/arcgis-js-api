@@ -11,9 +11,19 @@
         "center",
         "bottom",
         "origin",
-        "top"
+        "top",
+        "relative"
       ],
       "default": "origin"
+    },
+    "anchorPosition": {
+      "type": "array",
+      "description": "When `anchor` equals `relative`, this property specifies the positioning of the object relative to the geometry as a fraction of the symbol layer's bounding box. Otherwise it is ignored.",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
     },
     "depth": {
       "type": "number",
@@ -67,7 +77,7 @@
     "additionalInformation": "- [Size property interaction](static/objectSymbolLayerSize.md)\n- [Anchor and `origin`](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-ObjectSymbol3DLayer.html#anchor) in ArcGIS API for JavaScript.",
     "examples": [
       {
-        "title": "Object Symbol",
+        "title": "Object symbol layer",
         "code": {
           "symbolLayers": [
             {
@@ -89,7 +99,7 @@
         }
       },
       {
-        "title": "Object Symbol with 3-axis rotation",
+        "title": "Object symbol layer with 3-axis rotation",
         "code": {
           "symbolLayers": [
             {
@@ -109,6 +119,34 @@
               "heading": 12,
               "tilt": 10,
               "roll": 5
+            }
+          ]
+        }
+      },
+      {
+        "title": "Object symbol layer with relative anchor",
+        "description": "Places a diamond symbol such that its Southern tip coincides with the point geometry (assuming ENU coordinates).",
+        "code": {
+          "symbolLayers": [
+            {
+              "type": "Object",
+              "resource": {
+                "primitive": "diamond"
+              },
+              "width": 10000,
+              "anchor": "relative",
+              "anchorPosition": [
+                0,
+                -0.5,
+                0
+              ],
+              "material": {
+                "color": [
+                  128,
+                  255,
+                  0
+                ]
+              }
             }
           ]
         }

@@ -42,7 +42,7 @@ import * as i18n from "dojo/i18n!esri/widgets/BasemapToggle/nls/BasemapToggle";
 import Basemap = require("esri/Basemap");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -54,7 +54,8 @@ import Widget = require("esri/widgets/Widget");
 import BasemapToggleViewModel = require("esri/widgets/BasemapToggle/BasemapToggleViewModel");
 
 // esri.widgets.support
-import { vmEvent, renderable, tsx, accessibleHandler } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS: any = {
   base: "esri-basemap-toggle esri-widget",
@@ -230,7 +231,7 @@ class BasemapToggle extends declared(Widget) {
   @aliasOf("viewModel.toggle")
   toggle(): void {}
 
-  render() {
+  render(): VNode {
     const vm = this.viewModel;
     const activeBasemap = vm.state === "disabled" ? null : vm.activeBasemap;
     const nextBasemap = vm.state === "disabled" ? null : vm.nextBasemap;
@@ -278,7 +279,7 @@ class BasemapToggle extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggle() {
+  private _toggle(): void {
     this.toggle();
   }
 }

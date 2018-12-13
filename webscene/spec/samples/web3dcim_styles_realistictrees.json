@@ -3,10 +3,8 @@
     {
       "id": "148e1a43abe-layer5",
       "listMode": "show",
-      "opacity": 1,
       "title": "Realistic Trees",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers11/FeatureServer/3",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -22,11 +20,11 @@
               {
                 "type": "sizeInfo",
                 "field": "idInt",
-                "minDataValue": 0,
+                "axis": "height",
                 "maxDataValue": 82,
-                "minSize": 20,
                 "maxSize": 100,
-                "axis": "height"
+                "minDataValue": 0,
+                "minSize": 20
               }
             ],
             "field1": "styleitemname",
@@ -81,10 +79,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e1faf0-layer-214",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -96,48 +92,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419728000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 287.3892665738078,
-      "scale": 1221.2493234603091,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 497927.7035039764,
-        "y": 6789475.195557251,
-        "z": 0.000023302622139453888
-      },
       "camera": {
         "position": {
           "spatialReference": {

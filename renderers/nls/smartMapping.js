@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({root:{other:"Other",sumOfCategories:"Sum of categories",predominantCategory:"Predominant category",strengthOfPredominance:"Strength of predominance",ageInfo_years:"Age, in years, from {startTime} to {endTime}",ageInfo_months:"Age, in months, from {startTime} to {endTime}",ageInfo_days:"Age, in days, from {startTime} to {endTime}",ageInfo_hours:"Age, in hours, from {startTime} to {endTime}",ageInfo_minutes:"Age, in minutes, from {startTime} to {endTime}",ageInfo_seconds:"Age, in seconds, from {startTime} to {endTime}",relationship:{legendTitle:"Relationship",HL:"High - Low",HH:"High - High",LL:"Low - Low",LH:"Low - High",HM:"High - Medium",ML:"Medium - Low",MM:"Medium - Medium",MH:"Medium - High",LM:"Low - Medium",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Medium - Mild",M2M2:"Medium - Medium",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Mild - Mild",M1M2:"Mild - Medium",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}},ar:1,bs:1,ca:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,hi:1,hr:1,hu:1,id:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sl:1,sr:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1});

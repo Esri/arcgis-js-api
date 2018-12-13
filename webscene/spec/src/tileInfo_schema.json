@@ -18,26 +18,6 @@
       "type": "number",
       "description": "The dpi of the tiling scheme."
     },
-    "format": {
-      "type": "string",
-      "description": "Image format of the cached tiles.",
-      "enum": [
-        "jpg",
-        "png",
-        "png24",
-        "png32",
-        "png8",
-        "pdf",
-        "bmp",
-        "gif",
-        "svg",
-        "svgz",
-        "emf",
-        "ps",
-        "mixed",
-        "lerc"
-      ]
-    },
     "lods": {
       "type": "array",
       "description": "An array of levels of detail that define the tiling scheme.",

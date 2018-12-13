@@ -1,0 +1,48 @@
+.btn-ftr-chip__label {
+  background-color: #efefef;
+  padding: .25em .5em;
+  border-radius: 3px;
+  font-size: .85em;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 0.25rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0; }
+  html[dir="rtl"] .btn-ftr-chip__label {
+    margin-left: 0.25rem; }
+  html[dir="rtl"] .btn-ftr-chip__label {
+    margin-right: 0;
+    margin-left: 0.25rem; }
+    html[dir="rtl"] html[dir="rtl"] .btn-ftr-chip__label {
+      margin-right: 0.25rem; }
+
+.btn-ftr-chip__label--dark {
+  background-color: #f4f4f4; }
+
+.btn-ftr-chip__remove {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  margin-left: 0.25rem;
+  margin-right: 0rem;
+  cursor: pointer;
+  color: #959595; }
+  html[dir="rtl"] .btn-ftr-chip__remove {
+    margin-right: 0.25rem; }
+  html[dir="rtl"] .btn-ftr-chip__remove {
+    margin-left: 0rem; }
+  .btn-ftr-chip__remove:hover {
+    color: #de2900; }
+
+.btn-ftr-chip__svg {
+  fill: currentColor;
+  pointer-events: none;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  padding-right: .15em; }

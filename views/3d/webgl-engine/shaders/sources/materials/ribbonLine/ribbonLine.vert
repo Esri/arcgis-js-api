@@ -68,7 +68,7 @@ void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
         pos = mix(prev, pos, interp(vnp, prev, pos));
         next = pos;
       } else {
-        pos = vec4(0, 0, 0, 1);
+        pos = vec4(0.0, 0.0, 0.0, 1.0);
       }
     }
     //next in front of ncp
@@ -77,7 +77,7 @@ void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
         pos = mix(pos, next, interp(vnp, pos, next));
         prev = pos;
       } else {
-        pos = vec4(0, 0, 0, 1);
+        pos = vec4(0.0, 0.0, 0.0, 1.0);
       }
     }
   } else {

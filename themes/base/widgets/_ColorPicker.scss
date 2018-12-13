@@ -1,7 +1,7 @@
 @mixin colorPicker() {
   .esri-color-picker {
-    font-size: $text_size_small;
-    color: $interactive_text_color;
+    font-size: $font-size--small;
+    color: $interactive-font-color;
     text-shadow: none;
     width: 226px;
   }
@@ -16,15 +16,15 @@
 
   .esri-color-picker.esri-container {
     display: inline-block;
-    padding: $cap_spacing $side_spacing;
-    background-color: $background_color;
+    padding: $cap-spacing $side-spacing;
+    background-color: $background-color;
   }
 
   .esri-color-picker .esri-hex-input {
     display: inline-block;
-    color: $interactive_text_color;
+    color: $interactive-font-color;
     width: 5.6em;
-    border: 1px solid $border_color;
+    border: 1px solid $border-color;
     direction: ltr;
     text-transform: uppercase;
     vertical-align: middle;
@@ -64,8 +64,8 @@
   .esri-color-picker .esri-swatch-empty {
     position: relative;
     overflow: hidden;
-    border: solid 1px $border_color;
-    background-color: $background_color;
+    border: solid 1px $border-color;
+    background-color: $background-color;
     transition: border-color 0.25s ease-in-out;
   }
 
@@ -81,7 +81,7 @@
   .esri-color-picker .esri-palette-options .esri-palette-toggle {
     position: absolute;
     right: 0;
-    color: $interactive_text_color;
+    color: $interactive-font-color;
     vertical-align: middle;
     box-shadow: none;
     border: none;
@@ -147,8 +147,8 @@
   }
 
   .esri-color-picker .esri-palette.esri-recent:empty {
-    background-color: $background_hover_color;
-    box-shadow: 0 0 0 1px $border_color;
+    background-color: $background-color--offset;
+    box-shadow: 0 0 0 1px $border-color;
     width: 15px;
     height: 15px;
   }
@@ -180,7 +180,7 @@
     height: 4px;
     cursor: pointer;
     box-shadow: none;
-    background-color: $border_color;
+    background-color: $border-color;
     border-radius: 0px;
     border: none;
     transition: background-color 250ms ease-in-out;
@@ -189,22 +189,22 @@
   .esri-color-picker .esri-transparency-slider[type="range"]::-webkit-slider-thumb {
     box-shadow: none;
     border: none;
-    height: floor($button_height/2);
+    height: $button-height--half;
     width: 10px;
     border-radius: 2px;
-    background-color: $interactive_text_color;
+    background-color: $interactive-font-color;
     cursor: pointer;
     -webkit-appearance: none;
-    margin-top: floor($button_height/5) * -1;
+    margin-top: $button-height--fifth * -1;
     transition: background-color 250ms ease-in-out;
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"][disabled]::-webkit-slider-runnable-track {
-    background-color: rgba($disabled_color, $disabled_opacity);
+    background-color: rgba($interactive-font-color--disabled, $opacity--disabled);
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"][disabled]::-webkit-slider-thumb {
-    background-color: $disabled_color;
+    background-color: $interactive-font-color--disabled;
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"][disabled],
@@ -214,11 +214,11 @@
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"][disabled] + .esri-color-picker-ticks {
-    color: $disabled_color;
+    color: $interactive-font-color--disabled;
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"]:focus::-webkit-slider-runnable-track {
-    background-color: $border_color;
+    background-color: $border-color;
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"]::-moz-range-track,
@@ -227,7 +227,7 @@
     height: 4px;
     cursor: pointer;
     box-shadow: none;
-    background-color: $border_color;
+    background-color: $border-color;
     border: none;
     border-radius: 0px;
     border: none;
@@ -238,16 +238,16 @@
   .esri-color-picker .esri-transparency-slider[type="range"]::-ms-thumb {
     box-shadow: none;
     border: none;
-    height: floor($button_height/2);
+    height: $button-height--half;
     width: 10px;
     border-radius: 2px;
-    background: $interactive_text_color;
+    background: $interactive-font-color;
     cursor: pointer;
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"]::-ms-fill-lower,
   .esri-color-picker .esri-transparency-slider[type="range"]::-ms-fill-upper {
-    background: $border_color;
+    background: $border-color;
     border: none;
     border-radius: 0px;
     box-shadow: none;
@@ -255,7 +255,7 @@
 
   .esri-color-picker .esri-transparency-slider[type="range"]:focus::-ms-fill-lower,
   .esri-color-picker .esri-transparency-slider[type="range"]:focus::-ms-fill-upper {
-    background: $border_color;
+    background: $border-color;
   }
 
   .esri-color-picker .esri-palette.esri-container.esri-alt .esri-palette {
@@ -278,7 +278,7 @@
   }
 
   .esri-color-picker .esri-container .esri-palette {
-    margin: floor($cap_spacing/2) 0;
+    margin: $cap-spacing--half 0;
   }
 
   .dijitRtl .esri-color-picker .esri-palette {
@@ -293,7 +293,7 @@
   }
 
   .esri-color-picker .esri-color-picker-ticks {
-    margin-top: floor($cap_spacing * 0.75);
+    margin-top: $cap-spacing--half;
     display: flex;
     justify-content: space-between;
     transition: color 250ms ease-in-out;

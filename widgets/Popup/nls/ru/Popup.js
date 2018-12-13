@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Приблизить к",next:"Следующий объект",previous:"Предыдущий объект",close:"Закрыть",dock:"Пристань",undock:"Открепить",menu:"Меню",untitled:"Без имени",pageText:"{index} из {total}",selectedFeature:"Выбранный объект",selectedFeatures:"{total} результатов",loading:"Загрузка",collapse:"Свернуть",expand:"Развернуть"});
+define({zoom:"Приблизить к",next:"Следующий объект",previous:"Предыдущий объект",dock:"Пристань",undock:"Открепить",pageText:"{index} из {total}",selectedFeature:"Выбранный объект",selectedFeatures:"{total} результатов"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({empty:"- boş -",validationErrors:{cannotBeNull:"Bir değer girin",outsideRange:"Değer şunların arasında olmalıdır: {min} â€“ {max}",invalidCodedValue:"Değer listelenen değerlerden biri olmalıdır.",invalidType:"Geçerli bir değer değil"}});

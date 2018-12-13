@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/kebabDictionary","../core/accessorSupport/decorators","./support/ElevationInfo","./support/Symbol3DMaterial"],function(e,t,r,o,p,n,i,a,l){var c=n.strict()({Icon:"icon",Object:"object",Line:"line",Path:"path",Fill:"fill",Extrude:"extrude",Text:"text"}),s=function(e){function t(t){var r=e.call(this)||this;return r.enabled=!0,r.material=null,r.type=null,r}return r(t,e),t.prototype.writeEnabled=function(e,t,r){e||(t[r]=e)},o([i.property({type:Boolean,json:{read:{source:"enable"},write:{target:"enable"}}})],t.prototype,"enabled",void 0),o([i.writer("enabled")],t.prototype,"writeEnabled",null),o([i.property({type:a,json:{read:!1,write:!1}})],t.prototype,"elevationInfo",void 0),o([i.property({type:l.default,json:{write:!0}})],t.prototype,"material",void 0),o([i.property({type:c.apiValues,readOnly:!0,json:{read:!1,write:{ignoreOrigin:!0,writer:c.write}}})],t.prototype,"type",void 0),t=o([i.subclass("esri.symbols.Symbol3DLayer")],t)}(i.declared(p));return function(e){e.typeJSONDictionary=c}(s||(s={})),s});

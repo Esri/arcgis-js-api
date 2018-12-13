@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Otsing",searchButtonTitle:"Otsi",clearButtonTitle:"Tühjenda otsing",placeholder:"Otsi aadressi või kohta",searchIn:"Otsi",all:"Kõik",allPlaceholder:"Otsi aadressi või kohta",emptyValue:"Sisestage otsingutermin.",untitledResult:"Pealkirjata",untitledSource:"Pealkirjata allikas",noResults:"Tulemusi pole",noResultsFound:"Tulemeid ei leitud.",noResultsFoundForValue:"Väärtuse {value} jaoks ei leitud tulemusi.",showMoreResults:"Kuva veel tulemusi",hideMoreResults:"Peida",searchResult:"Otsi tulemusi",moreResultsHeader:"Veel tulemusi",useCurrentLocation:"Kasuta praegust asukohta"});

@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "layer3",
-      "opacity": 1,
       "title": "USA Income tiled map",
       "url": "https://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Household_Income/MapServer",
-      "visibility": true,
       "minScale": 591657527.591555,
       "maxScale": 72223.819286,
       "layerType": "ArcGISTiledMapServiceLayer"
@@ -15,10 +13,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -30,48 +26,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426450221000,
         "displayUTCOffset": -8
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 0,
-      "scale": 28981607.515556563,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": -13646535.434513489,
-        "y": 5645195.429466888,
-        "z": -290.2658104291186
-      },
       "camera": {
         "position": {
           "spatialReference": {

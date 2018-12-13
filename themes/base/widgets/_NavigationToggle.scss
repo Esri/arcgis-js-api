@@ -6,9 +6,9 @@ $earmark_size: 6px !default;
     flex-flow: column nowrap;
     &:hover,
     &:focus {
-      background-color: $background_hover_color;
+      background-color: $background-color--hover;
       .esri-navigation-toggle__button {
-        color: $interactive_text_color--hover;
+        color: $interactive-font-color--hover;
       }
     }
   }
@@ -17,7 +17,7 @@ $earmark_size: 6px !default;
     flex-flow: row nowrap;
     .esri-navigation-toggle__button--rotate {
       border-top: none;
-      border-left: solid 1px $border_color;
+      border-left: solid 1px $border-color;
     }
   }
 
@@ -29,7 +29,7 @@ $earmark_size: 6px !default;
       @include earmarkStem();
       opacity: 0;
       border-width: 0 $earmark_size $earmark_size 0;
-      border-color: transparent $interactive_text_color--hover transparent transparent;
+      border-color: transparent $interactive-font-color--hover transparent transparent;
     }
     &:hover,
     &:focus {
@@ -38,7 +38,7 @@ $earmark_size: 6px !default;
   }
 
   .esri-navigation-toggle__button--rotate {
-    border-top: solid 1px $border_color;
+    border-top: solid 1px $border-color;
   }
 
   .esri-navigation-toggle__button--pan {
@@ -46,7 +46,7 @@ $earmark_size: 6px !default;
   }
 
   .esri-navigation-toggle__button--active {
-    color: $interactive_text_color--hover;
+    color: $interactive-font-color--hover;
     &:before {
       opacity: 1;
     }
@@ -54,8 +54,8 @@ $earmark_size: 6px !default;
 
   .esri-navigation-toggle.esri-disabled {
     .esri-navigation-toggle__button {
-      background-color: $background_color;
-      color: $disabled_color;
+      background-color: $background-color;
+      color: $interactive-font-color--disabled;
       cursor: auto;
       &:before {
         opacity: 0;
@@ -67,14 +67,14 @@ $earmark_size: 6px !default;
     .esri-navigation-toggle--horizontal {
       .esri-navigation-toggle__button--rotate {
         border-left: none;
-        border-right: solid 1px $border_color;
+        border-right: solid 1px $border-color;
       }
     }
 
     .esri-navigation-toggle__button {
       &:before {
         border-width: $earmark_size $earmark_size 0 0;
-        border-color: $interactive_text_color--hover transparent transparent transparent;
+        border-color: $interactive-font-color--hover transparent transparent transparent;
         right: auto;
         left: 1px;
       }

@@ -21,12 +21,28 @@
       "type": "object",
       "$ref": "colorRamp_schema.json"
     },
+    "field1": {
+      "$ref": "field_authoringInfo_schema.json"
+    },
+    "field2": {
+      "$ref": "field_authoringInfo_schema.json"
+    },
     "fields": {
       "type": "array",
       "description": "An array of string values representing field names used for creating predominance renderers.",
       "items": {
         "type": "string"
       }
+    },
+    "focus": {
+      "type": "string",
+      "description": "Optional. Used for Relationship renderer. If not set, the legend will default to being square.",
+      "enum": [
+        "HH",
+        "HL",
+        "LH",
+        "LL"
+      ]
     },
     "lengthUnit": {
       "type": "string",
@@ -45,6 +61,12 @@
         "decimal-degrees"
       ]
     },
+    "numClasses": {
+      "type": "integer",
+      "description": "Number of classes to be associated with the relationship. Used for Relationship renderer.",
+      "minimum": 2,
+      "maximum": 4
+    },
     "standardDeviationInterval": {
       "type": "number",
       "description": "Use this property if the classificationMethod is `esriClassifyStandardDeviation`.",
@@ -61,6 +83,7 @@
         "classedSize",
         "classedColor",
         "predominance",
+        "relationship",
         "univariateColorSize"
       ]
     },
@@ -146,6 +169,44 @@
                 "theme": "high-to-low"
               }
             ]
+          }
+        }
+      },
+      {
+        "title": "Relationship Renderer",
+        "code": {
+          "authoringInfo": {
+            "classificationMethod": "esriClassifyQuantile",
+            "field1": {
+              "field": "VOTE_TURNOUT",
+              "classBreakInfos": [
+                {
+                  "minValue": 1.0844,
+                  "maxValue": 54.0946
+                },
+                {
+                  "minValue": 54.0946,
+                  "maxValue": 4083.8235
+                }
+              ]
+            },
+            "field2": {
+              "field": "MP06026a_B",
+              "normalizationField": "TOTPOP_CY",
+              "classBreakInfos": [
+                {
+                  "minValue": 0.101322,
+                  "maxValue": 0.197619
+                },
+                {
+                  "minValue": 0.197619,
+                  "maxValue": 0.266094
+                }
+              ]
+            },
+            "focus": "HH",
+            "numClasses": 2,
+            "type": "relationship"
           }
         }
       }

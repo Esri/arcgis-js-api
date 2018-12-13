@@ -1,0 +1,45 @@
+{
+  "title": "AuthoringInfo Field",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Contains information about an attribute field relating to Relationship renderers.",
+  "properties": {
+    "classBreakInfos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "classBreakInfo_authoringInfo_schema.json"
+      }
+    },
+    "field": {
+      "type": "string",
+      "description": "Attribute field used for renderer."
+    },
+    "normalizationField": {
+      "type": "string",
+      "description": "Attribute field used to normalize the data."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "code": {
+          "field1": {
+            "field": "VOTE_TURNOUT",
+            "classBreakInfos": [
+              {
+                "minValue": 1.0844,
+                "maxValue": 54.0946
+              },
+              {
+                "minValue": 54.0946,
+                "maxValue": 4083.8235
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

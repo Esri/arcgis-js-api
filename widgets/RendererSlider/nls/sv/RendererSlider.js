@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({statsAvg:"Genomsnitt: ${avg}",count:"Antal: ${count}",percent:"${num}%",high:"Hög",low:"Låg",color:{changeMinMaxToolTIp:"Ange ett värde.",handleToolTip:"Matcha datavärden till färger.",maxValueToolTip:"Ange det största förväntade datavärdet.",minValueToolTip:"Ange det minsta förväntade datavärdet.",changeSymbol:"Byta symbol"},size:{handleToolTip:"Matcha datavärden till symbolstorlekar.",sizeInputBoxLines:"Ange linjetjocklek från 0 till 18 pixlar.",sizeInputBoxPoints:"Ange symbolstorlek från 1 till 120 pixlar"}});

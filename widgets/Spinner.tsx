@@ -20,7 +20,8 @@ import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.support
 import AnchorElementViewModel = require("esri/widgets/support/AnchorElementViewModel");
-import { tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { renderable, tsx } from "esri/widgets/support/widget";
 
 interface SpinnerShowOptions {
   promise?: IPromise<any>;
@@ -45,13 +46,13 @@ class Spinner extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own([
       watchUtils.watch<boolean>(this, "visible", (visible) => this._visibleChange(visible))
     ]);
   }
 
-  destroy() {
+  destroy(): void {
     this._cancelAnimationPromise();
   }
 
@@ -123,7 +124,7 @@ class Spinner extends declared(Widget) {
     this.visible = false;
   }
 
-  render() {
+  render(): VNode {
     const { visible } = this;
     const { screenLocation } = this.viewModel;
     const hasScreenLocation = !!screenLocation;

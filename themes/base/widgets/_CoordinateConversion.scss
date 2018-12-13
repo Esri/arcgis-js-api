@@ -1,18 +1,18 @@
 @mixin coordinateConversion() {
   .esri-coordinate-conversion {
     cursor: default;
-    font-size: $text_size_small;
+    font-size: $font-size--small;
     position: relative;
     width: 400px;
     .esri-select option[disabled] {
-      color: $disabled_color;
+      color: $interactive-font-color--disabled;
     }
   }
   .esri-coordinate-conversion.esri-disabled {
     pointer-events: none;
-    color: $disabled_color;
+    color: $interactive-font-color--disabled;
     [class*="esri-icon-"]:before {
-      color: $disabled_color;
+      color: $interactive-font-color--disabled;
     }
   }
   .esri-coordinate-conversion--no-basemap {
@@ -21,8 +21,8 @@
   }
   .esri-coordinate-conversion--capture-mode {
     .esri-coordinate-conversion__mode-toggle {
-      color: $selected_border_color;
-      background: $background_hover_color;
+      color: $interactive-font-color;
+      background: $background-color--offset;
     }
   }
   .esri-coordinate-conversion__conversion-list {
@@ -40,25 +40,25 @@
   }
   .esri-coordinate-conversion__display:hover,
   .esri-coordinate-conversion__select-row:hover {
-    background-color: $background_hover_color;
+    background-color: $background-color--hover;
   }
   .esri-coordinate-conversion__button {
     margin: 0 0 0 auto;
-    color: $interactive_text_color;
-    border-color: $interactive_text_color;
-    background-color: $background_color;
+    color: $interactive-font-color;
+    border-color: $interactive-font-color;
+    background-color: $background-color;
     width: 30%;
   }
   .esri-coordinate-conversion__button:hover {
-    color: $background_color;
-    background-color: $interactive_text_color;
-    border-color: $interactive_text_color;
+    color: $background-color;
+    background-color: $interactive-font-color;
+    border-color: $interactive-font-color;
   }
   .esri-coordinate-conversion__input-group {
     align-items: center;
     display: flex;
     width: 80%;
-    margin: $cap_spacing auto $cap_spacing auto;
+    margin: $cap-spacing auto $cap-spacing auto;
     label {
       display: flex;
       align-items: center;
@@ -68,8 +68,8 @@
     width: 100%;
     margin: 0;
     padding: 0 0.5em;
-    border: 1px solid $border_color;
-    font-size: $text_size_small;
+    border: 1px solid $border-color;
+    font-size: $font-size--small;
     height: 2em;
   }
   .esri-coordinate-conversion__input-coordinate--rejected {
@@ -88,7 +88,7 @@
     flex-direction: column;
     align-items: center;
     width: 60%;
-    margin-top: $cap_spacing;
+    margin-top: $cap-spacing;
   }
   .esri-coordinate-conversion__settings-group > * {
     margin-bottom: 0.5em;
@@ -100,7 +100,7 @@
     width: 100%;
   }
   .esri-coordinate-conversion__settings-group:last-child {
-    margin-bottom: floor($cap_spacing/2);
+    margin-bottom: $cap-spacing--half;
     text-align: center;
     width: 100%;
   }
@@ -108,7 +108,7 @@
     min-height: 1.25em;
   }
   .esri-coordinate-conversion__row {
-    padding: 0 $side_spacing 0 $side_spacing;
+    padding: 0 $side-spacing 0 $side-spacing;
     display: flex;
     align-items: center;
     height: 3em;
@@ -126,7 +126,7 @@
   .esri-coordinate-conversion__pattern-input {
     padding: 4px;
     width: 100%;
-    height: $button_height;
+    height: $button-height;
   }
   .esri-coordinate-conversion__tools {
     flex: 0 0 auto;
@@ -143,7 +143,7 @@
   }
   .esri-coordinate-conversion__select-row {
     font-size: inherit;
-    background: $background_color;
+    background: $background-color;
     height: 2em;
     margin: 0;
     text-align-last: center;
@@ -151,7 +151,7 @@
     padding: 0 0.5em 0 0.5em;
   }
   .esri-coordinate-conversion__conversions-view {
-    margin: floor($cap_spacing/2) 0 floor($cap_spacing/2) 0;
+    margin: $cap-spacing--half 0 $cap-spacing--half 0;
   }
   .esri-ui-top-right .esri-coordinate-conversion__conversions-view,
   .esri-ui-top-left .esri-coordinate-conversion__conversions-view,
@@ -177,8 +177,8 @@
   }
   .esri-coordinate-conversion__heading {
     width: 100%;
-    height: $button_height;
-    background-color: $background_active_color;
+    height: $button-height;
+    background-color: $background-color--offset;
     display: flex;
     align-items: center;
     .esri-widget__heading {
@@ -189,15 +189,15 @@
       margin-left: 0;
       top: 0;
       left: 0;
-      background-color: $background_active_color;
+      background-color: $background-color--offset;
     }
     .esri-coordinate-conversion__back-button:hover {
-      background-color: $background_color;
+      background-color: $background-color;
     }
   }
   .esri-coordinate-conversion__popup {
     animation: esri-fade-in 250ms linear;
-    color: $interactive_text_color--inverse;
+    color: $interactive-font-color--inverse;
     white-space: nowrap;
     z-index: 1;
     position: absolute;
@@ -207,7 +207,7 @@
     white-space: inherit;
     text-align: center;
     transform: translate(-50%, -50%);
-    background-color: $background_inverse_color;
+    background-color: $background-color--inverse;
     opacity: 0.8;
     padding: 1em;
   }

@@ -2,7 +2,6 @@
   "operationalLayers": [
     {
       "id": "14bad63ad52-layer3",
-      "opacity": 1,
       "title": "circle",
       "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
       "visibility": false,
@@ -45,7 +44,6 @@
     },
     {
       "id": "14bad63aed8-layer4",
-      "opacity": 1,
       "title": "square",
       "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
       "visibility": false,
@@ -87,7 +85,6 @@
     },
     {
       "id": "14bad63aef3-layer5",
-      "opacity": 1,
       "title": "cross",
       "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
       "visibility": false,
@@ -122,7 +119,6 @@
     },
     {
       "id": "14bad63af23-layer6",
-      "opacity": 1,
       "title": "x",
       "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
       "visibility": false,
@@ -165,10 +161,8 @@
     },
     {
       "id": "14bad63af4c-layer7",
-      "opacity": 1,
       "title": "kite",
       "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "drawingInfo": {
@@ -211,10 +205,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -226,48 +218,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426436005000,
         "displayUTCOffset": -4
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 359.1253840667117,
-      "scale": 14540945.207473813,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": -7031874.522175635,
-        "y": 2119982.9038947327,
-        "z": -101.63259159494191
-      },
       "camera": {
         "position": {
           "spatialReference": {

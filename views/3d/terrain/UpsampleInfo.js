@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ObjectPool","../lib/gl-matrix"],function(t,i,e,s){return function(){function t(t,i,e,o){this.scale=0,this.tile=null,this.offset=s.vec2d.create(),void 0!==t&&this.init(t,i,e,o)}return t.prototype.init=function(t,i,e,s){this.tile=t,this.offset[0]=i,this.offset[1]=e,this.scale=s},t.prototype.dispose=function(){this.tile=null,this.offset[0]=0,this.offset[1]=0,this.scale=0},t.Pool=new e(t),t}()});
+define(["require","exports","../../../core/ObjectPool","../../../core/libs/gl-matrix-2/gl-matrix"],function(t,i,e,s){return function(){function t(t,i,e,o){this.scale=0,this.tile=null,this.offset=s.vec2f64.create(),void 0!==t&&this.init(t,i,e,o)}return t.prototype.init=function(t,i,e,s){this.tile=t,this.offset[0]=i,this.offset[1]=e,this.scale=s},t.prototype.dispose=function(){this.tile=null,this.offset[0]=0,this.offset[1]=0,this.scale=0},t.Pool=new e(t),t}()});

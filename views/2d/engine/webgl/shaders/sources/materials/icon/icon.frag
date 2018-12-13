@@ -19,10 +19,6 @@ varying mediump float v_outlineWidth;
 varying highp vec4 v_id;
 #endif // ID
 
-#ifdef HEATMAP
-varying mediump float v_heatmapWeight;
-#endif // HEATMAP
-
 const float softEdgeRatio = 1.0; // use blur here if needed
 
 void main()
@@ -57,13 +53,8 @@ void main()
     gl_FragColor = v_transparency * fillPixelColor;
   }
 #else // not an SDF
-  lowp vec4 texColor = texture2D(u_texture, v_tex);
-
-#ifdef HEATMAP
-  texColor.r *= v_heatmapWeight;
-#endif // HEATMAP
-
-  gl_FragColor = v_transparency * texColor;
+   lowp vec4 texColor = texture2D(u_texture, v_tex);
+   gl_FragColor = v_transparency * texColor;
 #endif // SDF
 
 #ifdef HIGHLIGHT

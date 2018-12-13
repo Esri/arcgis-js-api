@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({statsAvg:"Ortalama: ${avg}",count:"Sayı: ${count}",percent:"%${num}",high:"Yüksek",low:"Düşük",color:{changeMinMaxToolTIp:"Değer girin.",handleToolTip:"Veri değerlerini renklerle eşleştirin.",maxValueToolTip:"Beklenen en büyük veri değerini girin.",minValueToolTip:"Beklenen en küçük veri değerini girin.",changeSymbol:"Simge değiştir"},size:{handleToolTip:"Veri değerlerini simge boyutuna eşleştirin.",sizeInputBoxLines:"Çizgi kalınlığını 0 - 18 piksel arasında ayarlayın.",sizeInputBoxPoints:"Simge boyutunu 1 - 120 piksel arasında ayarla"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","./RenderPass","./RenderSlot"],function(e,l,t,n){return function(){function e(){this.camera=null,this.pixelRatio=1,this.depth=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=t.MATERIAL,this.shadowMap=null,this.slot=n.BACKGROUND,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.sliceHelper=null,this.stencilRenderingHelper=null,this.framebufferTex=null,this.rctx=null,this.options=null,this.renderOccludedOnly=!1}return Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return this.pass===t.MATERIAL_HIGHLIGHT},enumerable:!0,configurable:!0}),e}()});
+define(["require","exports"],function(e,l){return function(){function e(){this.camera=null,this.pixelRatio=1,this.depth=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=0,this.shadowMap=null,this.slot=0,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.sliceHelper=null,this.stencilRenderingHelper=null,this.framebufferTex=null,this.rctx=null,this.options=null,this.renderOccludedOnly=!1}return Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return 4===this.pass},enumerable:!0,configurable:!0}),e}()});

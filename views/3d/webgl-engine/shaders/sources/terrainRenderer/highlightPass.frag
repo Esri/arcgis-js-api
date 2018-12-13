@@ -18,7 +18,7 @@ void main() {
     // Here we have to write black, instead of discarding the fragment in order to overwrite
     // the highlights which might have been written by skirts of other tiles.
     // As a consequence skirts are not visible, but terrain overwrites draped highlights.
-    gl_FragColor = vec4(0,0,0,0);
+    gl_FragColor = vec4(0.0);
     return;
   }
 

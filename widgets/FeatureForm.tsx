@@ -1,7 +1,8 @@
 /**
  * The FeatureForm widget displays attributes of a feature. This widget
  * renders input fields based on the feature's attributes and whether
- * the field allows editing. Use this widget,
+ * the field allows editing. You can configure field groupings to aid in display
+ * and organization of form data. Use this widget,
  * in combination with {@link module:esri/layers/FeatureLayer#applyEdits FeatureLayer.applyEdits},
  * to enable an end user to update a feature's attribute on a specified
  * editable feature layer(s).
@@ -24,11 +25,11 @@
  *
  * @see [FeatureForm.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureForm.tsx)
  * @see [FeatureForm.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureForm.scss)
+ * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
  * @see [Sample - Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
  * @see module:esri/widgets/FeatureForm/FeatureFormViewModel
  * @see module:esri/widgets/FeatureForm/FieldConfig
  * @see module:esri/widgets/FeatureForm/InputField
- * @see module:esri/widgets/FeatureForm/FieldOptions
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
  *
@@ -64,12 +65,14 @@ import { FieldValue, getFieldRange, Range } from "esri/layers/support/fieldUtils
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.FeatureForm
-import FormViewModel = require("esri/widgets/FeatureForm/FeatureFormViewModel");
+import FeatureFormViewModel = require("esri/widgets/FeatureForm/FeatureFormViewModel");
 import FieldConfig = require("esri/widgets/FeatureForm/FieldConfig");
 import InputField = require("esri/widgets/FeatureForm/InputField");
+import InputFieldGroup = require("esri/widgets/FeatureForm/InputFieldGroup");
 import { Attributes } from "esri/widgets/FeatureForm/interfaces";
 
 // esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
 import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 interface FormattedDateParts {
@@ -98,9 +101,17 @@ const CSS = {
   inputInvalid: "esri-feature-form__input--invalid",
   inputIconInvalid: "esri-feature-form__input-icon--invalid",
   errorMessage: "esri-feature-form__field-error-message",
+  description: "esri-feature-form__description-text",
   dateInputPart: "esri-feature-form__date-input-part",
   dateInputContainer: "esri-feature-form__date-input-container",
   dateFormatHint: "esri-feature-form__date-format-hint",
+
+  group: "esri-feature-form__group",
+  groupLabel: "esri-feature-form__group-label",
+  groupDescription: "esri-feature-form__group-description",
+  groupCollapsed: "esri-feature-form__group--collapsed",
+  groupSequential: "esri-feature-form__group--sequential",
+  groupActive: "esri-feature-form__group--active",
 
   // icon
   errorIcon: "esri-icon-notice-triangle",
@@ -116,7 +127,11 @@ const defaultDateFormat = {
   timePattern: "h:mm:ss a"
 };
 
-@subclass("esri.widgets.Form")
+function isGroupField(value: any): value is InputFieldGroup {
+  return value && value.inputFields;
+}
+
+@subclass("esri.widgets.FeatureForm")
 class FeatureForm extends declared(Widget) {
   /**
    * Fires when a field value is updated.
@@ -185,18 +200,14 @@ class FeatureForm extends declared(Widget) {
    *   container: "formDiv", // HTML div
    *   feature: graphic, // Pass in feature
    *   // Configure fields to display
-   *   fieldConfig: [
+   *   fieldConfig: [ // Autocasts as FieldConfig
    *     {
    *       name: "Incident_desc",
-   *       options: {
-   *         label: "Description"
-   *       }
+   *       label: "Description"
    *     },
    *     {
    *       name: "Incident_Address",
-   *       options: {
-   *         label: "Contact"
-   *       }
+   *       label: "Contact"
    *      }]
    * });
    */
@@ -205,15 +216,36 @@ class FeatureForm extends declared(Widget) {
 
     this._handleFormKeyDown = this._handleFormKeyDown.bind(this);
     this._handleInputBlur = this._handleInputBlur.bind(this);
+    this._handleInputFocus = this._handleInputFocus.bind(this);
     this._handleNumberInputMouseDown = this._handleNumberInputMouseDown.bind(this);
     this._handleInputKeyDown = this._handleInputKeyDown.bind(this);
     this._handleOptionChange = this._handleOptionChange.bind(this);
+    this._handleCollapsedGroupClick = this._handleCollapsedGroupClick.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._afterScrollerCreateOrUpdate = this._afterScrollerCreateOrUpdate.bind(this);
   }
 
-  postInitialize() {
-    this.own(this.watch("feature", () => (this._featureChanged = true)));
+  postInitialize(): void {
+    this.own(
+      this.watch("feature", () => {
+        const [first] = this.viewModel.inputFields;
+        this._activeInput = isGroupField(first) ? first.inputFields[0] : first;
+
+        this._fieldFocusNeeded = true;
+      }),
+
+      (this.on as FeatureFormViewModel["on"])("submit", (event) => {
+        if (event.invalid.length > 0) {
+          const [invalidFieldName] = event.invalid;
+          const invalidInput = this.viewModel.findField(invalidFieldName);
+
+          this._activeInput = invalidInput;
+          this._fieldFocusNeeded = true;
+
+          this.scheduleRender();
+        }
+      })
+    );
   }
   //--------------------------------------------------------------------------
   //
@@ -221,9 +253,11 @@ class FeatureForm extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _featureChanged: boolean = false;
+  private _fieldFocusNeeded: boolean = false;
 
   private _activeDateEdit: DateEditParts = null;
+
+  private _activeInput: InputField = null;
 
   //--------------------------------------------------------------------------
   //
@@ -264,8 +298,12 @@ class FeatureForm extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Array of field configuration objects. This is where you specify what fields to
-   * display and how you wish to display them.
+   * Array of individual or grouped field configuration objects. This is where you specify what fields to
+   * display and how you wish to display them. It is possible to configure individual
+   * or {@link module:esri/widgets/FeatureForm/FieldGroupConfig grouped fields}. For an example of individual field configurations,
+   * please refer to the [Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
+   * sample. For an example of grouped field configurations, please refer to the
+   * [Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html) sample.
    *
    * ::: esri-md class="panel trailer-1"
    * When not set, all fields except for `editor`, `globalID`, and `objectID` fields will be included,
@@ -273,26 +311,85 @@ class FeatureForm extends declared(Widget) {
    * :::
    *
    * @name fieldConfig
-   * @type {Array<module:esri/widgets/FeatureForm/FieldConfig>}
+   * @type {module:esri/widgets/FeatureForm/FieldConfig[] | module:esri/widgets/FeatureForm/FieldGroupConfig[]}
    * @instance
+   * @autocast
    *
    * @example
-   * fieldConfig: [
-   *   {
-   *     name: "Incident_desc",
-   *     options: {
+   * // Individual field configurations without grouping
+   * const featureForm = new FeatureForm({
+   *   container: "formDiv",
+   *   feature: graphic, // Pass in feature
+   *   // Configure fields to display without grouping
+   *   fieldConfig: [ // autocasts as FieldConfig
+   *     {
+   *       name: "Incident_desc",
    *       label: "Description"
-   *     }
-   *   },
-   *   {
-   *     name: "Incident_Address",
-   *     options: {
+   *     },{
+   *       name: "Incident_Address",
    *       label: "Contact"
-   *     }
+   *    }]
+   * });
+   *
+   * @example
+   * // Grouped field configurations
+   * const featureForm = new FeatureForm({
+   *   container: "formDiv",
+   *   feature: graphic,
+   *   fieldConfig: [{ // autocasts to FieldGroupConfig
+   *     label: "Inspector", // group 1
+   *     description: "Inspector information",
+   *     // Individual field configurations within the group
+   *     fieldConfig: [{
+   *       name: "inspector",
+   *       label: "Name"
+   *     },
+   *     {
+   *       name: "inspemail",
+   *       label: "Email address"
+   *     }]
+   *    }, {
+   *     label: "Business", // group 2
+   *     description: "Business information",
+   *     // Individual field configurations within the group
+   *     fieldConfig: [{
+   *       name: "placename",
+   *       label: "Business name"
+   *     }, {
+   *       name: "firstname",
+   *       label: "First name"
+   *     }]
    *   }]
+   * });
    */
   @aliasOf("viewModel.fieldConfig")
   fieldConfig: FieldConfig[] = null;
+
+  //----------------------------------
+  //  groupDisplay
+  //----------------------------------
+
+  /**
+   * Defines how groups will be displayed to the user.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * all | All groups will be expanded.
+   * sequential | A single group will be expanded at a time.
+   *
+   * @name groupDisplay
+   * @type {string}
+   * @default all
+   * @instance
+   * @since 4.10
+   *
+   * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
+   */
+  @property()
+  @renderable()
+  groupDisplay: "all" | "sequential" = "all";
 
   //----------------------------------
   //  layer
@@ -354,7 +451,7 @@ class FeatureForm extends declared(Widget) {
   @property()
   @renderable(["viewModel.inputFields", "viewModel.state"])
   @vmEvent(["value-change", "submit"])
-  viewModel: FormViewModel = new FormViewModel();
+  viewModel: FeatureFormViewModel = new FeatureFormViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -410,7 +507,7 @@ class FeatureForm extends declared(Widget) {
     return null;
   }
 
-  render() {
+  render(): VNode {
     const { state } = this.viewModel;
 
     return (
@@ -426,7 +523,7 @@ class FeatureForm extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  protected renderForm(): any {
+  protected renderForm(): VNode {
     return (
       <form
         class={CSS.form}
@@ -439,29 +536,76 @@ class FeatureForm extends declared(Widget) {
     );
   }
 
-  protected renderFields(): any {
+  protected renderFields(): VNode {
     const {
-      viewModel: { inputFields, layer }
+      viewModel: { inputFields }
     } = this;
 
-    return inputFields.map((inputField: InputField) => {
-      const { label, type } = inputField;
-
-      return (
-        <label key={`${layer.id}-${inputField.name}`} class={CSS.label}>
-          {[
-            label,
-            type !== "unsupported"
-              ? this.renderInputField(inputField)
-              : this.renderUnsupportedField(inputField),
-            this.renderAuxiliaryText(inputField)
-          ]}
-        </label>
-      );
-    });
+    return inputFields.map(
+      (inputField, index) =>
+        isGroupField(inputField)
+          ? this.renderGroup(inputField, index)
+          : this.renderLabeledField(inputField)
+    );
   }
 
-  protected renderInputField(inputField: InputField): any {
+  protected renderGroup(inputFieldGroup: InputFieldGroup, index: number): VNode {
+    const { description, label, inputFields: inputs } = inputFieldGroup;
+
+    const isGroupActive = this._activeInput && this._activeInput.group === inputFieldGroup;
+
+    const id = `${this.id}_group_${index}`;
+    const labelId = `${this.id}_group-label_${index}`;
+    const descriptionId = `${this.id}_group-description_${index}`;
+
+    const descriptionNode = description ? (
+      <p class={this.classes(CSS.groupDescription, CSS.description)} id={descriptionId}>
+        {description}
+      </p>
+    ) : null;
+
+    const sequential = this.groupDisplay === "sequential";
+
+    return (
+      <fieldset
+        class={this.classes(
+          CSS.group,
+          sequential ? CSS.groupSequential : null,
+          !sequential || isGroupActive ? null : CSS.groupCollapsed,
+          isGroupActive ? CSS.groupActive : null
+        )}
+        aria-labelledby={labelId}
+        aria-describedby={description ? descriptionId : ""}
+        data-group={inputFieldGroup}
+        id={id}
+        onclick={this._handleCollapsedGroupClick}
+      >
+        <div class={CSS.groupLabel} id={labelId}>
+          {label}
+        </div>
+        {descriptionNode}
+        {inputs.map((inputField) => this.renderLabeledField(inputField))}
+      </fieldset>
+    );
+  }
+
+  protected renderLabeledField(inputField: InputField): VNode {
+    const { label, layer, type } = inputField;
+
+    return (
+      <label key={`${layer.id}-${inputField.name}`} class={CSS.label}>
+        {[
+          label,
+          type !== "unsupported"
+            ? this.renderInputField(inputField)
+            : this.renderUnsupportedField(inputField),
+          this.renderAuxiliaryText(inputField)
+        ]}
+      </label>
+    );
+  }
+
+  protected renderInputField(inputField: InputField): VNode {
     const { viewModel } = this;
     const { domain, editable, name, type } = inputField;
     const value = viewModel.getValue(name);
@@ -492,7 +636,7 @@ class FeatureForm extends declared(Widget) {
   protected renderDateInputField(
     value: FieldValue,
     props: ReturnType<FeatureForm["getCommonInputProps"]>
-  ): any {
+  ): VNode {
     const { date: dateFormatHint, time: timeFormatHint } = this._formatDate(0);
     const commonHintId = `${this.id}-${props.key}`;
     const dateFormatHintId = `${commonHintId}-date`;
@@ -533,7 +677,7 @@ class FeatureForm extends declared(Widget) {
     );
   }
 
-  protected renderUnsupportedField(inputField: InputField): any {
+  protected renderUnsupportedField(inputField: InputField): VNode {
     const value = this.viewModel.getValue(inputField.name);
 
     return (
@@ -550,7 +694,7 @@ class FeatureForm extends declared(Widget) {
     value: FieldValue,
     values: { value: FieldValue; name: string }[],
     props: ReturnType<FeatureForm["getCommonInputProps"]>
-  ): any {
+  ): VNode {
     let isNotOutlierValue = false;
 
     const options = values.map((v) => {
@@ -593,7 +737,7 @@ class FeatureForm extends declared(Widget) {
     );
   }
 
-  protected renderAuxiliaryText(inputField: InputField): any {
+  protected renderAuxiliaryText(inputField: InputField): VNode {
     if (!inputField.valid) {
       return (
         <div key="error-message">
@@ -604,10 +748,15 @@ class FeatureForm extends declared(Widget) {
     }
 
     if (inputField.valid && inputField.description) {
-      return <div key="description">{inputField.description}</div>;
+      return (
+        <div key="description" class={CSS.description}>
+          {inputField.description}
+        </div>
+      );
     }
   }
 
+  // tslint:disable-next-line:typedef
   protected getCommonInputProps(inputField: InputField) {
     const { viewModel } = this;
     const { editable, name, required, maxLength, hint, type, valid } = inputField;
@@ -630,6 +779,7 @@ class FeatureForm extends declared(Widget) {
       disabled,
       value: value == null ? "" : `${value}`,
       "data-field": inputField,
+      onfocus: this._handleInputFocus,
       onblur: this._handleInputBlur,
       onkeydown: this._handleInputKeyDown,
       onmousedown: type === "number" ? this._handleNumberInputMouseDown : null,
@@ -675,10 +825,18 @@ class FeatureForm extends declared(Widget) {
   private _afterScrollerCreateOrUpdate(node: HTMLElement): void {
     const inputField: InputField = node["data-field"];
 
-    if (this._featureChanged && inputField.editable) {
+    const shouldAutoFocusField =
+      inputField.editable && this._fieldFocusNeeded && this._activeInput === inputField;
+
+    if (shouldAutoFocusField) {
+      this._fieldFocusNeeded = false;
       node.focus();
-      this._featureChanged = false;
     }
+  }
+
+  private _handleInputFocus(event: FocusEvent): void {
+    const input = event.target as HTMLInputElement;
+    this._activeInput = input["data-field"] as InputField;
   }
 
   private _handleInputBlur(event: FocusEvent): void {
@@ -791,7 +949,7 @@ class FeatureForm extends declared(Widget) {
     this.scheduleRender();
   }
 
-  private _updateFieldValue(input: HTMLInputElement | HTMLSelectElement) {
+  private _updateFieldValue(input: HTMLInputElement | HTMLSelectElement): void {
     const inputField: InputField = input["data-field"];
     this.viewModel.setValue(inputField.name, this._parseValue(input));
   }
@@ -865,6 +1023,19 @@ class FeatureForm extends declared(Widget) {
 
   private _handleOptionChange(event: Event): void {
     this._updateFieldValue(event.target as HTMLSelectElement);
+    this.scheduleRender();
+  }
+
+  protected _handleCollapsedGroupClick(event: Event): void {
+    const group = (event.currentTarget as HTMLFieldSetElement)["data-group"] as InputFieldGroup;
+
+    if (!group || (this._activeInput && this._activeInput.group === group)) {
+      return;
+    }
+
+    this._activeInput = group.inputFields[0];
+    this._fieldFocusNeeded = true;
+
     this.scheduleRender();
   }
 

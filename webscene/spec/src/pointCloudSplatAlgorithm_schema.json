@@ -4,10 +4,6 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Render points using sizes depending on point density.",
   "properties": {
-    "minSize": {
-      "type": "number",
-      "description": "Minimum display space point size in points"
-    },
     "scaleFactor": {
       "type": "number",
       "description": "Scale factor to applied to the computed point size (in real world)"

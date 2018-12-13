@@ -94,6 +94,29 @@ mat4 getVVRotation(float rotationValue) {
               0,     0, 1, 0,
               0,     0, 0, 1);
 }
+
+mat3 getVVRotationMat3(float rotationValue) {
+  // YF TODO: if the symbol has rotation we need to combine the symbo's rotation with the VV one
+  if (isNan(rotationValue)) {
+    return mat3(1, 0, 0,
+                0, 1, 0,
+                0, 0, 1);
+  }
+
+  float rotation = rotationValue;
+  if (u_vvRotationType == 1.0) {
+    rotation = 90.0 - rotation;
+  }
+
+  float angle = C_DEG_TO_RAD * -rotation;
+
+  float sinA = sin(angle);
+  float cosA = cos(angle);
+
+  return mat3(cosA, -sinA, 0,
+             sinA, cosA, 0,
+              0,    0,    1);
+}
 #endif // VV_ROTATION
 
 #ifdef VV_COLOR

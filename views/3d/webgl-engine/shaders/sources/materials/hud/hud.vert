@@ -2,6 +2,7 @@
 #include <util/alignPixel.glsl>
 #include <util/hud.glsl>
 #include <util/visualVariables.glsl>
+#include <util/slice.glsl>
 
 uniform vec2 screenOffset;
 uniform vec2 anchorPos;
@@ -32,6 +33,12 @@ void main(void) {
   ProjectHUDAux projectAux;
   vec4 posProj = projectPositionHUD(projectAux);
 
+  if (rejectBySlice(projectAux.posModel)) {
+    // Project outside of clip plane
+    gl_Position = vec4(1e038, 1e038, 1e038, 1.0);
+    return;
+  }
+
   vec2 inputSize;
 
 #ifdef SCREEN_SIZE_PERSPECTIVE
@@ -55,7 +62,7 @@ void main(void) {
 #endif
 
   vec2 combinedSize = inputSize * pixelRatio;
-  vec4 quadOffset = vec4(0);
+  vec4 quadOffset = vec4(0.0);
 
 #if defined(OCCL_TEST) || defined(BINARY_HIGHLIGHT_OCCLUSION)
   bool visible = testVisibilityHUD(posProj);
@@ -112,7 +119,7 @@ voccluded = visible ? 0.0 : 1.0;
     vtc = vec2(.0);
 
 #ifdef DEBUG_DRAW_BORDER
-    debugBorderCoords = vec3(0);
+    debugBorderCoords = vec3(0.0);
 #endif
 
   }

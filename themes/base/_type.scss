@@ -1,20 +1,19 @@
 // Font
-$font_family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 
 // Text
-$line_height: 1.3em !default;
-$text_size: 14px !default;
-$text_size_small: 12px !default;
-$text_weight_title: 600 !default;
-$text_weight_header: 600 !default;
-$text_weight_bold: 600 !default;
-$text_weight_normal: 400 !default;
-$title_text_size: 16px !default;
-$h1_text_size: 20px !default;
-$h2_text_size: 16px !default;
-$lt_h2_text_size: 14px !default;
-$body_text_size: 12px !default;
-$icon_text_size: 16px !default;
-$table_text_size: 14px !default;
-$caption_text_size: 10px !default;
-$button_text_size: 16px !default;
+$line-height: 1.3em !default;
+$base-font-size: 14px !default;
+$font-size: $base-font-size !default;
+
+$font-size__h1: round($base-font-size * 1.428) !default; //1.428em
+$font-size__h2: round($base-font-size * 1.142) !default; //1.142em
+$font-size__lt-h2: $base-font-size !default;
+$font-size__body: round($base-font-size * 0.857) !default; //0.857em
+$font-size--small: round($base-font-size * 0.857) !default;
+
+$font-size__header-text: round($base-font-size * 1.143) !default; //1.142em
+
+$font-weight: 400 !default;
+$font-weight__heading: 600 !default;
+$font-weight__bold: 600 !default;

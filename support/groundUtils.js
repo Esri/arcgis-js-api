@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../Ground","../core/Logger","../core/accessorSupport/ensureType","../layers/ElevationLayer"],function(e,r,o,i,n,a){function t(e){var i;if("string"==typeof e)if(e in r.groundElevationLayers){var t=r.groundElevationLayers[e],s=new a({id:t.id,url:t.url});i=new o({layers:[s]})}else l.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else i=n.default(o,e);return i}Object.defineProperty(r,"__esModule",{value:!0});var l=i.getLogger("esri.support.groundUtils");r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"},"world-topobathymetry":{id:"worldTopoBathymetry",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/TopoBathy3D/ImageServer"}},r.ensureType=t});

@@ -44,8 +44,8 @@
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Search/nls/Search";
 import {
-  copyKey,
   BACKSPACE,
+  copyKey,
   DELETE,
   DOWN_ARROW,
   END,
@@ -72,7 +72,7 @@ import esriLang = require("esri/core/lang");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.portal
 import Portal = require("esri/portal/Portal");
@@ -99,8 +99,8 @@ import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer"
 import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
-import { accessibleHandler, renderable, tsx, storeNode, vmEvent } from "esri/widgets/support/widget";
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, storeNode, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-search esri-widget",
@@ -140,7 +140,7 @@ const CSS = {
   header: "esri-widget__heading",
   locate: "esri-icon-locate-circled",
   menu: "esri-menu",
-  menuHeader: "esri-header",
+  menuHeader: "esri-menu__header",
   loadingIcon: "esri-icon-loading-indicator esri-rotating",
   searchIcon: "esri-icon-search",
   dropdownIcon: "esri-icon-down-arrow esri-search__sources-button--down",
@@ -364,7 +364,7 @@ class Search extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.viewModel.popupTemplate = this._popupTemplate;
 
     this.own(
@@ -381,7 +381,7 @@ class Search extends declared(Widget) {
     );
   }
 
-  destroy() {
+  destroy(): void {
     this._handles.destroy();
     this._handles = null;
 
@@ -848,6 +848,10 @@ class Search extends declared(Widget) {
    * Any combination of these sources may be used
    * together in the same instance of the Search widget.
    *
+   * ::: esri-md class="panel trailer-1"
+   * Feature layers created from client-side graphics are not supported.
+   * :::
+   *
    * @name sources
    * @autocast
    * @instance
@@ -1052,7 +1056,7 @@ class Search extends declared(Widget) {
    *
    * @method
    */
-  focus() {
+  focus(): void {
     if (!this._inputNode) {
       return;
     }
@@ -1067,7 +1071,7 @@ class Search extends declared(Widget) {
    *
    * @method
    */
-  blur(event?: FocusEvent) {
+  blur(event?: FocusEvent): void {
     if (!this._inputNode) {
       return;
     }
@@ -1146,7 +1150,7 @@ class Search extends declared(Widget) {
     return suggestPromise;
   }
 
-  render() {
+  render(): VNode {
     const vm = this.viewModel;
 
     const {
@@ -1537,7 +1541,7 @@ class Search extends declared(Widget) {
     );
   }
 
-  private _storeRelatedTarget(event: FocusEvent) {
+  private _storeRelatedTarget(event: FocusEvent): void {
     this._relatedTarget = event.relatedTarget as HTMLElement;
   }
 
@@ -1789,7 +1793,7 @@ class Search extends declared(Widget) {
         : i18n.untitledSource;
   }
 
-  private _getSuggestionHeaderNode(sourceIndex: number) {
+  private _getSuggestionHeaderNode(sourceIndex: number): VNode {
     const name = this._getSourceName(sourceIndex);
     return (
       <div key={`esri-search__suggestion-header-${sourceIndex}`} class={CSS.menuHeader}>
@@ -1808,14 +1812,14 @@ class Search extends declared(Widget) {
     suggestion: SuggestResult,
     suggestionIndex: number,
     sourceIndex: number
-  ): any {
+  ): VNode {
     const vm = this.viewModel;
     const { searchTerm } = vm;
     if (searchTerm) {
       const { text } = suggestion;
       const resultText = text || (i18n.untitledResult as string);
       const containsHTML = regexContainsHTML.test(resultText);
-      const matches: any = [];
+      const matches: VNode[] = [];
       if (containsHTML) {
         matches.push(<div innerHTML={resultText} />);
       } else {
@@ -1849,7 +1853,7 @@ class Search extends declared(Widget) {
     }
   }
 
-  private _getSourceNode(sourceIndex: number): any {
+  private _getSourceNode(sourceIndex: number): VNode {
     const itemClasses = {
       [CSS.activeSource]: sourceIndex === this.viewModel.activeSourceIndex
     };
@@ -1871,7 +1875,7 @@ class Search extends declared(Widget) {
     );
   }
 
-  private _renderSearchResultsContent() {
+  private _renderSearchResultsContent(): SearchResultRenderer {
     this._searchResultRenderer.showMoreResultsOpen = false;
     this._searchResultRenderer.viewModel = this.viewModel;
     return this._searchResultRenderer;

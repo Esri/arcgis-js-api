@@ -3,10 +3,8 @@
     {
       "id": "Paraglide_Track_Lines",
       "listMode": "show",
-      "opacity": 1,
       "title": "Paraglide Track Lines",
       "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -39,10 +37,8 @@
     {
       "id": "148b3f6788a-layer5",
       "listMode": "show",
-      "opacity": 1,
       "title": "Paraglide Track Cylinders",
       "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -77,10 +73,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -92,48 +86,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426418695000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 2.487473418445404,
-      "scale": 315519.5790720974,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 969995.5507821087,
-        "y": 5901358.033714125,
-        "z": 1341.5689475666732
-      },
       "camera": {
         "position": {
           "spatialReference": {

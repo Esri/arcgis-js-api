@@ -47,6 +47,7 @@ import { ENTER } from "dojo/keys";
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import global = require("esri/core/global");
 import Logger = require("esri/core/Logger");
 
 // esri.core.accessorSupport
@@ -74,7 +75,7 @@ import Conversion = require("esri/widgets/CoordinateConversion/support/Conversio
 import Format = require("esri/widgets/CoordinateConversion/support/Format");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
 import { renderable, tsx, accessibleHandler, storeNode } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
@@ -403,7 +404,7 @@ class CoordinateConversion extends declared(Widget) {
     return null;
   }
 
-  render(): any {
+  render(): VNode {
     const state = this.get("viewModel.state"),
       noBasemapAlert =
         state === "disabled" ? (
@@ -483,8 +484,8 @@ class CoordinateConversion extends declared(Widget) {
     const coordinate = target["data-conversion"].displayCoordinate;
 
     // IE 11
-    if ("clipboardData" in window) {
-      window["clipboardData"].setData("text", coordinate);
+    if ("clipboardData" in global) {
+      (global.clipboardData as DataTransfer).setData("text", coordinate);
     } else {
       event.clipboardData.setData("text/plain", coordinate);
     }
@@ -597,7 +598,7 @@ class CoordinateConversion extends declared(Widget) {
     }
   }
 
-  private _renderConversion(conversion: Conversion, index: number): any {
+  private _renderConversion(conversion: Conversion, index: number): VNode {
     const widgetId = this.id,
       rowId = `${widgetId}__list-item-${index}`,
       rowLabel = `${conversion.format.name} ${i18n.conversionOutputSuffix}`,
@@ -655,7 +656,7 @@ class CoordinateConversion extends declared(Widget) {
     ) : null;
   }
 
-  private _renderCopyButton(conversion: Conversion): any {
+  private _renderCopyButton(conversion: Conversion): VNode {
     return (
       <li
         aria-label={i18nCommon.copy}
@@ -674,7 +675,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderFirstConversion(conversion: Conversion, rowId: string): any {
+  private _renderFirstConversion(conversion: Conversion, rowId: string): VNode {
     const widgetId = this.id;
 
     const expandButtonClasses = {
@@ -727,7 +728,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderInputForm(): any {
+  private _renderInputForm(): VNode {
     const selectFormat = this._conversionFormat || this.conversions.getItemAt(0).format,
       selectIndex = this.formats.findIndex((format) => format.name === selectFormat.name),
       widgetId = this.id,
@@ -822,7 +823,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderConversionsView(): any {
+  private _renderConversionsView(): VNode {
     const widgetId = this.id,
       listId = `${widgetId}__${CSS.conversionList}`,
       addRowTools = this._renderPrimaryTools(),
@@ -877,7 +878,7 @@ class CoordinateConversion extends declared(Widget) {
     formats: Collection<Format>,
     skipDisabled?: boolean,
     selectedIndex?: number
-  ): any {
+  ): VNode {
     const firstConversion = this.conversions.getItemAt(0);
 
     return formats
@@ -893,6 +894,7 @@ class CoordinateConversion extends declared(Widget) {
             aria-label={format.name}
             data-format={format}
             disabled={disabled}
+            key={format.name}
             selected={index === selectedIndex}
             value={format.name}
           >
@@ -903,7 +905,7 @@ class CoordinateConversion extends declared(Widget) {
       .toArray();
   }
 
-  private _renderPopup(): any {
+  private _renderPopup(): VNode {
     return (
       <div class={CSS.popup} role="alert">
         {this._popupMessage}
@@ -911,7 +913,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderPrimaryTools(): any {
+  private _renderPrimaryTools(): VNode {
     const modeTitle = this.mode === "live" ? i18n.captureMode : i18n.liveMode;
 
     return (
@@ -955,7 +957,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderSettings(): any {
+  private _renderSettings(): VNode {
     const widgetId = this.id,
       patternId = `${widgetId}__${CSS.patternInput}`,
       headerId = `${widgetId}__${CSS.patternInput}__header`,
@@ -1043,7 +1045,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderTools(index: number, conversion: Conversion, rowId: string): any {
+  private _renderTools(index: number, conversion: Conversion, rowId: string): VNode {
     const copyButton =
       conversion.displayCoordinate && this.mode === "capture"
         ? this._renderCopyButton(conversion)

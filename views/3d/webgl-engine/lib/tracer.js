@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./webgl-debug","../../../webgl/capabilities/isWebGL2Context"],function(e,n,t,u){function o(){n.enabled&&(b=[])}function r(e){n.enabled&&null!=b&&b.push(e)}function i(){if(n.enabled){var e=b;return b=null,e&&(c.forEach(function(n){return n(e)}),c.length=0),e}}function l(e){return n.enabled?u.default(e)?(console.warn("WebGL tracer is not supported on a WebGL2 Context"),e):t.makeDebugContext(e,void 0,function(e,u){n.enabled&&b&&b.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")}):e}function a(e){c.push(e)}Object.defineProperty(n,"__esModule",{value:!0});var b=null,c=[];n.enabled=!1,n.begin=o,n.trace=r,n.end=i,n.instrumentContext=l,n.request=a});

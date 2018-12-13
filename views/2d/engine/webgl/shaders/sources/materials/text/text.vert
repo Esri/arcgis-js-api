@@ -10,20 +10,13 @@ attribute vec4 a_texFontSize; // 4 (4 x unsigned byte) texture coordinatesm and 
 
 attribute lowp float  a_visible; // a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
 
-// the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
-// relative to the tile's upper left corner
-// the extrusion vector.
-uniform highp mat4 u_transformMatrix;
-// the extrude matrix which is responsible for the 'anti-zoom' as well as the rotation
-uniform highp mat4 u_extrudeMatrix;
-// u_normalized_origin is the tile's upper left corner given in normalized coordinates
-uniform highp vec2 u_normalized_origin;
-// the size of the mosaic given in pixels
 uniform vec2 u_mosaicSize;
 uniform float u_pixelRatio;
 
-// the opacity of the layer
-uniform mediump float u_opacity;
+// T: TileCoords -> DisplayCoords
+// Premultiplies DisplayMat3 * ViewMat3 * ScreenMat3
+uniform highp mat3 u_dvsMat3;
+uniform highp mat3 u_displayMat3;
 
 varying mediump vec4 v_color;
 varying mediump float v_antialiasingWidth;
@@ -38,7 +31,7 @@ varying lowp float v_transparency;
 // the vertex offsets are given in integers, therefore in order to maintain a reasonable precission we multiply the values
 // by 16 and then at the shader devide by the same number
 const float offsetPrecision = 1.0 / 8.0;
-const float outlineScale = 1.0 / 10.0;
+const float outlineScale = 1.0 / 5.0;
 const float sdfFontSize = 24.0;
 
 // maximum SDF distance of 8 pixels represent the distance values that range from -2 inside the geometry to 6 on the outside.
@@ -61,42 +54,46 @@ void main()
   // we use the list significant bit of the position in order to store the indication whethe the vertex is of a halow of a glyph
   mediump float halo = mod(a_pos, 2.0).x;
 
+  float fontSize = a_texFontSize.z;
+  float scale = 1.0;
+
 #if defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
-#ifdef VV_SIZE_MIN_MAX_VALUE
-  // vv size override the original symbol's size
-  vec2 size = vec2(getVVMinMaxSize(a_vv.x, a_texFontSize.z));
-#endif // VV_SIZE_MIN_MAX_VALUE
+  #ifdef VV_SIZE_MIN_MAX_VALUE
+    // vv size override the original symbol's size
+    vec2 size = vec2(getVVMinMaxSize(a_vv.x, a_texFontSize.z));
+  #endif // VV_SIZE_MIN_MAX_VALUE
 
-#ifdef VV_SIZE_SCALE_STOPS
-  vec2 size = vec2(u_vvSizeScaleStopsValue);
-#endif // VV_SIZE_SCALE_STOPS
+  #ifdef VV_SIZE_SCALE_STOPS
+    vec2 size = vec2(u_vvSizeScaleStopsValue);
+  #endif // VV_SIZE_SCALE_STOPS
 
-#ifdef VV_SIZE_FIELD_STOPS
-  vec2 size = vec2(getVVStopsSize(a_vv.x, a_texFontSize.z));
-#endif // VV_SIZE_FIELD_STOPS
+  #ifdef VV_SIZE_FIELD_STOPS
+    vec2 size = vec2(getVVStopsSize(a_vv.x, a_texFontSize.z));
+  #endif // VV_SIZE_FIELD_STOPS
 
-#ifdef VV_SIZE_UNIT_VALUE
-  vec2 size = vec2(getVVUnitValue(a_vv.x, a_texFontSize.z));
-#endif // VV_SIZE_UNIT_VALUE
+  #ifdef VV_SIZE_UNIT_VALUE
+    vec2 size = vec2(getVVUnitValue(a_vv.x, a_texFontSize.z));
+  #endif // VV_SIZE_UNIT_VALUE
 
-  float fontSize = size.x;
-#else // this generic case, no VV
-  float fontSize = a_texFontSize.z;
+    scale = size.x / fontSize;
+    fontSize = size.x;
+
 #endif // defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
   float fontScale = fontSize / sdfFontSize;
-  // we need to scale the extrude matrix by the font-scale in order to get the right text size
-  mat4 extrudeMatrix = fontScale * u_extrudeMatrix;
-
-  // If the label rotates with the map, and if the rotated label is upside down, hide it
-  //gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), z, 1.0) + extrudeMatrix * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
+  vec3 pos = vec3(floor(a_pos * 0.5), 1.0);
+  vec3 offset = vec3(offsetPrecision * a_vertexOffset * scale, 0.0);
 
 #ifdef VV_ROTATION
-  gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), z, 1.0) + extrudeMatrix * getVVRotation(a_vv.w) * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
+  vec3 glyphOffset = u_displayMat3 * getVVRotationMat3(a_vv.w) * offset;
 #else
-  gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), z, 1.0) + extrudeMatrix * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
+  vec3 glyphOffset = u_displayMat3 * offset;
 #endif // VV_ROTATION
+
+  vec3 v_pos = u_dvsMat3 * pos + glyphOffset;
+  gl_Position = vec4(v_pos.xy, z, 1.0);
+
 
   v_tex = a_texFontSize.xy / u_mosaicSize;
   v_antialiasingWidth = 0.105 * sdfFontSize / fontSize / u_pixelRatio;
@@ -106,7 +103,7 @@ void main()
 #ifdef VV_OPACITY
   v_transparency = getVVOpacity(a_vv.z);
 #else
-  v_transparency = u_opacity;
+  v_transparency = 1.0;
 #endif // VV_OPACITY
 
 #ifdef VV_COLOR

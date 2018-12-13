@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({empty:"- ריק -",validationErrors:{cannotBeNull:"הזן ערך",outsideRange:"הערך אמור להיות בין: {min} â€“ {max}",invalidCodedValue:"הערך אמור להיות אחד מהערכים שברשימה.",invalidType:"ערך לא חוקי"}});

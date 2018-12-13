@@ -65,7 +65,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Locate/nls/Locate";
 import Graphic = require("esri/Graphic");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -77,8 +77,8 @@ import Widget = require("esri/widgets/Widget");
 import LocateViewModel = require("esri/widgets/Locate/LocateViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
-import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-locate esri-widget--button esri-widget",
@@ -378,7 +378,7 @@ class Locate extends declared(Widget) {
   @aliasOf("viewModel.locate")
   locate(): void {}
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
     const isLocating = state === "locating";
 
@@ -420,7 +420,7 @@ class Locate extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _locate() {
+  private _locate(): void {
     const { viewModel } = this;
 
     viewModel.state === "locating" ? viewModel.cancelLocate() : viewModel.locate();

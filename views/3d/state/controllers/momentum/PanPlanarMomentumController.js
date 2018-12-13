@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../lib/gl-matrix","./MomentumController"],function(t,e,n,r,o){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,n){var o=t.call(this,e,4)||this;return o.momentum=n,o.tmpPan=r.vec3d.create(),o}return n(e,t),e.prototype.momentumStep=function(t,e){var n=this.momentum.value(t);r.vec3d.scale(this.momentum.direction,n,this.tmpPan),r.vec3d.subtract(e.eye,this.tmpPan),r.vec3d.subtract(e.center,this.tmpPan),e.markViewDirty(),this.constraintOptions.interactionDirection=this.tmpPan},e}(o.MomentumController);e.PanPlanarMomentumController=i});
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/gl-matrix","./MomentumController"],function(t,e,n,r,o){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,n){var o=t.call(this,e,4)||this;return o.momentum=n,o.tmpPan=r.vec3f64.create(),o}return n(e,t),e.prototype.momentumStep=function(t,e){var n=this.momentum.value(t);r.vec3.scale(this.tmpPan,this.momentum.direction,n),r.vec3.subtract(e.eye,e.eye,this.tmpPan),r.vec3.subtract(e.center,e.center,this.tmpPan),e.markViewDirty(),this.constraintOptions.interactionDirection=this.tmpPan},e}(o.MomentumController);e.PanPlanarMomentumController=i});

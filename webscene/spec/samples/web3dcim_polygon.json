@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "14bad7b7d42-layer3",
-      "opacity": 1,
       "title": "floating Polygons",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -80,10 +78,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -95,47 +91,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419731000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 339.3756897078476,
-      "scale": 32874.90249481636,
-      "targetGeometry": {
-        "spatialReference": {
-          "wkid": 102100
-        },
-        "x": 500445.96155041497,
-        "y": 6787314.707354402,
-        "z": 2.578166937455535
-      },
       "camera": {
         "position": {
           "spatialReference": {

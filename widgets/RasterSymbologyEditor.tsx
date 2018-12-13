@@ -23,7 +23,7 @@ import Memory = require("dojo/store/Memory");
 import lang = require("esri/core/lang");
 
 // esri.core.accessorSupport
-import { subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -32,6 +32,7 @@ import Widget = require("esri/widgets/Widget");
 import RasterSymbologyEditorViewModel = require("esri/widgets/RasterSymbologyEditor/RasterSymbologyEditorViewModel");
 
 // esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
 import { renderable, tsx } from "esri/widgets/support/widget";
 
 declare const ColorRampSelector: any;
@@ -92,12 +93,12 @@ class RasterSymbologyEditor extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  postInitialize(params?: any) {
+  postInitialize(params?: any): void {
     this.defaultParams = this.viewModel.getDefaultRenderParameters();
     this._createUIComponents();
   }
 
-  destroy() {
+  destroy(): void {
     this._components.forEach((item) => {
       if (item) {
         item.destroy();
@@ -204,7 +205,7 @@ class RasterSymbologyEditor extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { symbologyType, stretchType } = this;
     const { stretch, rgb, uniqueValue, discrete } = RasterSymbologyEditorViewModel.SymbologyTypes;
 

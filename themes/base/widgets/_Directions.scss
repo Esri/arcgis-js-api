@@ -1,42 +1,43 @@
 @mixin directions() {
   $border_size: 2px;
+  $directions-height--max: 420px !default;
 
   .esri-directions {
-    color: $text_color;
+    color: $font-color;
   }
 
   .esri-directions__panel-content {
-    padding: $cap_spacing 0;
+    padding: $cap-spacing 0;
   }
 
   .esri-directions__sign-in-panel {
-    color: $interactive_text_color;
+    color: $interactive-font-color;
     display: flex;
     justify-content: center;
   }
 
   .esri-directions__section {
-    margin-top: $cap_spacing;
-    margin-bottom: $cap_spacing;
+    margin-top: $cap-spacing;
+    margin-bottom: $cap-spacing;
   }
 
   .esri-directions__section-splitter {
     width: 100%;
-    margin: floor($cap_spacing * 1.5) 0;
-    border-top: 1px solid $border_color;
+    margin: $cap-spacing--plus-half 0;
+    border-top: 1px solid $border-color;
   }
 
   .esri-directions__travel-modes-select,
   .esri-directions__departure-time {
-    margin: 0 $side_spacing floor($cap_spacing * 0.5);
-    width: calc(100% - #{$side_spacing * 2});
+    margin: 0 $side-spacing $cap-spacing--half;
+    width: calc(100% - #{$side-spacing--double});
   }
 
   .esri-directions__panel-content--sign-in,
   .esri-directions__panel-content--loading,
   .esri-directions__panel-content--error {
-    min-height: $panel_max_height;
-    color: $interactive_text_color;
+    min-height: $directions-height--max;
+    color: $interactive-font-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +50,8 @@
   }
 
   .esri-directions__warning-card {
-    border-top: solid 2px $error_border_color;
-    color: $interactive_text_color;
+    border-top: solid 2px $border-color--error;
+    color: $interactive-font-color;
     @include defaultBoxShadow();
     padding: 12px;
     margin: 20px auto;
@@ -58,7 +59,7 @@
   }
 
   .esri-directions__warning-header {
-    color: $error_border_color;
+    color: $font-color--error;
     display: flex;
     margin-bottom: 6px;
   }
@@ -70,7 +71,7 @@
 
   .esri-directions__warning-message {
     color: inherit;
-    font-weight: $text-weight_bold;
+    font-weight: $font-weight;
   }
 
   .esri-directions__departure-time-controls {
@@ -122,7 +123,7 @@
 
   .esri-directions__content-title {
     margin-top: 0;
-    padding: 0 $cap_spacing;
+    padding: 0 $cap-spacing;
     align-self: flex-start;
   }
 
@@ -163,14 +164,15 @@
   }
 
   .esri-directions__stop-row--target {
-    border-top-color: $text_color;
+    border-top-color: $font-color;
   }
 
   .esri-directions__stop-row-ghost {
-    font-family: $font_family;
-    background-color: $background_color;
-    width: $panel_width - (8px * 2);
-    padding: 8px;
+    font-family: $font-family;
+    font-size: $font-size--small;
+    background-color: $background-color;
+    width: $panel-width;
+    padding: $cap-spacing--quarter $side-spacing--quarter;
     position: absolute;
 
     // fake drop-shadow now since setDragImage doesn't show box-shadow :'(
@@ -180,19 +182,19 @@
   }
 
   .esri-directions__stop-underline {
-    border-top: 1px solid $border_color;
+    border-top: 1px solid $border-color;
   }
 
   .esri-directions__stop-handle {
-    padding-left: floor($side_spacing * 0.5);
+    padding-left: $side-spacing--half;
   }
 
   .esri-directions__stop-input:hover .esri-directions__stop-underline {
-    border-color: $text_color;
+    border-color: $font-color;
   }
 
   .esri-directions .esri-search__input:focus + .esri-directions__stop-underline {
-    border-color: $selected_border_color;
+    border-color: $border-color--hover;
   }
 
   .esri-directions__stop-underline--drag-in-process {
@@ -216,7 +218,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: $cap_spacing;
+    padding-top: $cap-spacing;
     cursor: pointer;
   }
 
@@ -251,7 +253,7 @@
     display: flex;
     flex-grow: 0.1;
     justify-content: space-between;
-    padding-right: floor($side_spacing * 0.5);
+    padding-right: $side-spacing--half;
   }
 
   .esri-directions__stop-row:first-child {
@@ -301,7 +303,7 @@
     justify-content: space-around;
     width: 100%;
     cursor: pointer;
-    padding: $cap_spacing $side_spacing 0;
+    padding: $cap-spacing $side-spacing 0;
   }
 
   .esri-directions__costs-details {
@@ -320,17 +322,17 @@
   .esri-directions__costs-value,
   .esri-directions__other-costs-total,
   .esri-directions__vertical-splitter {
-    color: $interactive_text_color;
+    color: $interactive-font-color;
     font-size: 1.5em;
     line-height: 1.5;
   }
 
   .esri-directions__vertical-splitter {
-    border: 1px solid transparentize($text_color, 0.8);
+    border: 1px solid transparentize($font-color, 0.8);
   }
 
   .esri-directions__horizontal-splitter {
-    border-top: 1px solid $border_color;
+    border-top: 1px solid $border-color;
     flex-grow: 0.95;
   }
 
@@ -344,20 +346,20 @@
 
   .esri-directions__maneuver {
     display: flex;
-    padding: floor($cap_spacing * 0.75) $side_spacing floor($cap_spacing * 0.75) floor($side_spacing * 1.25);
+    padding: $cap-spacing $side-spacing $cap-spacing $side-spacing--plus-half;
     border: none;
-    border-left: $border_size_active solid transparent;
+    border-left: $border-size--active solid transparent;
     cursor: pointer;
   }
 
   .esri-directions__maneuver:hover,
   .esri-directions__maneuver:focus {
-    background-color: $background_offset_color;
+    background-color: $background-color--hover;
   }
 
   .esri-directions__maneuver--active {
-    border-color: $selected_border_color;
-    background-color: $background_offset_color;
+    border-color: $border-color--active;
+    background-color: $background-color--active;
   }
 
   .esri-directions__maneuver-list {
@@ -367,11 +369,11 @@
 
   .esri-directions__maneuver-section-header {
     display: flex;
-    padding: 0 $side_spacing;
+    padding: 0 $side-spacing;
   }
 
   .esri-directions__maneuver-section-header [class*="esri-icon"] {
-    padding-top: floor($cap_spacing * 0.2);
+    padding-top: $cap-spacing--quarter;
   }
 
   .esri-directions__maneuver-section-header-toggle-button {
@@ -379,7 +381,7 @@
   }
 
   .esri-directions__maneuver-section-title {
-    padding: 0 floor($side_spacing * 0.5) floor($cap_spacing * 0.5);
+    padding: 0 $side-spacing--half $cap-spacing--half;
   }
 
   .esri-directions__maneuver-section-toggle {
@@ -387,14 +389,14 @@
   }
 
   .esri-directions__maneuver-icon {
-    fill: $text_color;
+    fill: $font-color;
     margin-right: 4px;
     width: 24px;
     height: 24px;
   }
 
   .esri-directions__maneuver-costs {
-    margin-top: 8px;
+    margin-top: $cap-spacing--half;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -403,7 +405,7 @@
 
   .esri-directions__cost--intermediate,
   .esri-directions__cost--cumulative {
-    font-size: $text_size_small;
+    font-size: $font-size--small;
   }
 
   .esri-directions__maneuver-costs-container {
@@ -425,9 +427,9 @@
   }
 
   .esri-directions__disclaimer {
-    font-size: $text_size_small;
-    color: $header_color;
-    padding: 0 $side_spacing;
+    font-size: $font-size--small;
+    color: $heading-color;
+    padding: 0 $side-spacing;
   }
 
   // search overrides

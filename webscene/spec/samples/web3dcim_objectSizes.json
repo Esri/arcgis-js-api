@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "1493d0f043f-layer2",
-      "opacity": 1,
       "title": "cylinder",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "popupInfo": {
         "showAttachments": false,
@@ -18,10 +16,8 @@
           {
             "fieldName": "ORIG_FID",
             "label": "ORIG_FID",
-            "isEditable": false,
             "tooltip": "",
-            "visible": false,
-            "stringFieldOption": "textbox"
+            "visible": false
           }
         ],
         "title": "Cylinder: {ORIG_FID}"
@@ -247,10 +243,8 @@
     },
     {
       "id": "14bad760cec-layer3",
-      "opacity": 1,
       "title": "tree",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -485,10 +479,8 @@
           {
             "fieldName": "ORIG_FID",
             "label": "ORIG_FID",
-            "isEditable": false,
             "tooltip": "",
-            "visible": false,
-            "stringFieldOption": "textbox"
+            "visible": false
           }
         ],
         "title": "Tree {ORIG_FID}"
@@ -499,10 +491,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e1e776-layer-144",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -511,33 +501,22 @@
     "elevationLayers": []
   },
   "ground": {
-    "transparency": 0,
-    "layers": []
+    "layers": [],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419727000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 336.0219780807092,
-      "scale": 8579.55832182653,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 499325.45274557377,
-        "y": 6793082.354949235,
-        "z": -849.4409048110247
-      },
       "camera": {
         "position": {
           "spatialReference": {

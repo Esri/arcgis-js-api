@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./IdGen","./ModelContentType"],function(e,t,i,r){return function(){function e(t){this.supportsEdges=!1,this._parentStage=null,this._visible=!0,this._renderOccluded=!1,this._renderPriority=0,this.id=e._idGen.gen(t)}return Object.defineProperty(e.prototype,"parentStage",{get:function(){return this._parentStage},enumerable:!0,configurable:!0}),e.prototype.addParentStage=function(e){this._parentStage=e},e.prototype.removeParentStage=function(e){this._parentStage=null},Object.defineProperty(e.prototype,"visible",{get:function(){return this._visible},set:function(e){e!==this._visible&&(this._visible=e,this.notifyDirty("matChanged"))},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"renderOccluded",{get:function(){return this._renderOccluded},set:function(e){e!==this._renderOccluded&&(this._renderOccluded=e,this.notifyDirty("matChanged"))},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"renderPriority",{get:function(){return this._renderPriority},set:function(e){e!==this._renderPriority&&(this._renderPriority=e,this.notifyDirty("matChanged"))},enumerable:!0,configurable:!0}),e.prototype.isVisible=function(){return this._visible},e.prototype.notifyDirty=function(e){this.parentStage&&this.parentStage.notifyDirty(r.MATERIAL,this,e)},e._idGen=new i,e}()});

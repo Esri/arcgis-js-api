@@ -3,17 +3,13 @@
     {
       "id": "14bad55ecc2-layer1",
       "listMode": "show",
-      "opacity": 1,
       "title": "points",
-      "visibility": true,
       "layers": [
         {
           "id": "148c17b3c12-layer9",
           "listMode": "show",
-          "opacity": 1,
           "title": "draped drive col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -28,22 +24,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -51,10 +47,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 8,
-                    "maxSize": 32
+                    "maxSize": 32,
+                    "minDataValue": 1,
+                    "minSize": 8
                   }
                 ],
                 "symbol": {
@@ -84,10 +80,8 @@
         {
           "id": "14bad55ede9-layer6",
           "listMode": "show",
-          "opacity": 1,
           "title": "points driven col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -103,22 +97,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -126,10 +120,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 8,
-                    "maxSize": 32
+                    "maxSize": 32,
+                    "minDataValue": 1,
+                    "minSize": 8
                   }
                 ],
                 "symbol": {
@@ -159,10 +153,8 @@
         {
           "id": "14bad55eddd-layer5",
           "listMode": "show",
-          "opacity": 1,
           "title": "spheres driven col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -178,22 +170,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -201,10 +193,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "all",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 16,
-                    "maxSize": 256
+                    "maxSize": 256,
+                    "minDataValue": 1,
+                    "minSize": 16
                   }
                 ],
                 "symbol": {
@@ -235,10 +227,8 @@
         {
           "id": "14bad55ee17-layer7",
           "listMode": "show",
-          "opacity": 1,
           "title": "trees driven col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -254,22 +244,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -277,10 +267,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "all",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 30,
-                    "maxSize": 300
+                    "maxSize": 300,
+                    "minDataValue": 1,
+                    "minSize": 30
                   }
                 ],
                 "symbol": {
@@ -299,17 +289,13 @@
     {
       "id": "14bad55ece0-layer2",
       "listMode": "show",
-      "opacity": 1,
       "title": "lines",
-      "visibility": true,
       "layers": [
         {
           "id": "14bad55ee48-layer8",
           "listMode": "show",
-          "opacity": 1,
           "title": "draped drive col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -324,22 +310,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -347,10 +333,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 0.5,
-                    "maxSize": 10
+                    "maxSize": 10,
+                    "minDataValue": 1,
+                    "minSize": 0.5
                   }
                 ],
                 "symbol": {
@@ -377,10 +363,8 @@
         {
           "id": "14bad55ee4f-layer9",
           "listMode": "show",
-          "opacity": 1,
           "title": "line drive col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -396,22 +380,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -419,10 +403,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 0.5,
-                    "maxSize": 10
+                    "maxSize": 10,
+                    "minDataValue": 1,
+                    "minSize": 0.5
                   }
                 ],
                 "symbol": {
@@ -449,10 +433,8 @@
         {
           "id": "14bad55ee93-layer10",
           "listMode": "show",
-          "opacity": 1,
           "title": "ribbon drive col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -468,22 +450,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -491,10 +473,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 0.5,
-                    "maxSize": 10
+                    "maxSize": 10,
+                    "minDataValue": 1,
+                    "minSize": 0.5
                   }
                 ],
                 "symbol": {
@@ -521,10 +503,8 @@
         {
           "id": "14bad55eea2-layer11",
           "listMode": "show",
-          "opacity": 1,
           "title": "tube drive col size",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -540,22 +520,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
@@ -563,10 +543,10 @@
                     "type": "sizeInfo",
                     "field": "driverFloat",
                     "axis": "width",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 0.1,
-                    "maxSize": 6
+                    "maxSize": 6,
+                    "minDataValue": 1,
+                    "minSize": 0.1
                   }
                 ],
                 "symbol": {
@@ -597,17 +577,13 @@
     {
       "id": "14bad55ecfa-layer3",
       "listMode": "show",
-      "opacity": 1,
       "title": "polygons",
-      "visibility": true,
       "layers": [
         {
           "id": "14bad55eebe-layer12",
           "listMode": "show",
-          "opacity": 1,
           "title": "draped drive col",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -622,22 +598,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   }
@@ -674,10 +650,8 @@
         {
           "id": "14bad55ef46-layer15",
           "listMode": "show",
-          "opacity": 1,
           "title": "polygons drive col",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -693,22 +667,22 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           0,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           0,
                           255,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   }
@@ -751,10 +725,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e18ec8-layer-12",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -766,48 +738,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419730000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 336.9493562423394,
-      "scale": 26885.6833039255,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 501055.7760751304,
-        "y": 6784733.56634904,
-        "z": 0.00016805436462163925
-      },
       "camera": {
         "position": {
           "spatialReference": {

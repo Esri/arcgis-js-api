@@ -7,6 +7,7 @@
   box-sizing: border-box;
   pointer-events: none;
   overflow: hidden;
+  font-size: $font-size;
 
   .esri-component {
     pointer-events: auto;
@@ -75,7 +76,7 @@
 
 .esri-ui-top-right .esri-component,
 .esri-ui-top-left .esri-component {
-  margin-bottom: $view_ui_spacing;
+  margin-bottom: $view-ui-spacing;
 }
 
 .esri-ui-bottom-left {
@@ -83,7 +84,7 @@
   left: 0;
 
   .esri-component {
-    margin-right: $view_ui_spacing;
+    margin-right: $view-ui-spacing;
   }
 }
 
@@ -92,7 +93,7 @@
   right: 0;
 
   .esri-component {
-    margin-left: $view_ui_spacing;
+    margin-left: $view-ui-spacing;
   }
 }
 

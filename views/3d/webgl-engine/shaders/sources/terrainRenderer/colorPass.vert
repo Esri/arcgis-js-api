@@ -54,7 +54,7 @@ void main(void) {
 #ifdef SPHERICAL
   vnormal = normalize(vpos + origin);
 #else
-  vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
+  vnormal = vec3(0.0, 0.0, 1.0); // WARNING: up-axis dependent code
 #endif
 
 vec2 uv = uv0;

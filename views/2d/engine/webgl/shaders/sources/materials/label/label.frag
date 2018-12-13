@@ -7,7 +7,6 @@ uniform mediump float u_pixelRatio;
 varying mediump float v_antialiasingWidth;
 varying mediump float v_edgeDistanceOffset;
 varying mediump vec2 v_tex;
-varying lowp float v_transparency;
 
 #ifdef ID
 varying mediump float v_fadeStep;
@@ -34,11 +33,12 @@ void main()
   lowp float dist = texture2D(u_texture, v_tex).a;
 
   // the edge distance if a factor of the outline width
-  float glyphEdgeDistance = 0.75 - v_edgeDistanceOffset;
+  // We cap this to 0.25 to prevent this from becomming negative / running into the glyph boundaries
+  float glyphEdgeDistance = max(0.75 - v_edgeDistanceOffset, 0.25);
 
   // use a smooth-step in order to calculate the geometry of the shape given by the distance field
-  lowp float sdfAlpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_transparency;
+  lowp float sdfAlpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist);
 
-  gl_FragColor = fadeAlpha * sdfAlpha * v_transparency * v_color;
+  gl_FragColor = fadeAlpha * sdfAlpha * v_color;
 #endif
 }

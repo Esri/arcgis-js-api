@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./Programs","../../../webgl/programUtils"],function(e,t,r,a){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(){this._cache=new Array(8);for(var e=0;e<8;e++)this._cache[e]={}}return e.prototype.dispose=function(){this._programRepo&&(this._programRepo.dispose(),this._programRepo=null)},e.prototype.getProgram=function(e,t,r){var a=this._cache[e];if(!a[t]){var i=this._programRepo.getProgram(this._getProgramTemplate(e),r);a[t]=i}return a[t]},e.prototype.getProgramAttributes=function(e){switch(e){case 0:return r.background.attributes;case 5:return r.circle.attributes;case 1:return r.fill.attributes;case 4:return r.icon.attributes;case 3:return r.line.attributes;case 2:return r.outline.attributes;case 6:return r.text.attributes;case 7:return r.tileInfo.attributes}},e.prototype.initialize=function(e){this._programRepo||(this._programRepo=new a.ProgramCache(e))},e.prototype._getProgramTemplate=function(e){switch(e){case 0:return r.background;case 5:return r.circle;case 1:return r.fill;case 4:return r.icon;case 3:return r.line;case 2:return r.outline;case 6:return r.text;case 7:return r.tileInfo}},e}();t.default=i});

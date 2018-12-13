@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/Error","../../../../../../core/Logger","../../util/Matcher"],function(e,r,a,n,t){function s(e,r,n,s,u){switch(e.type){case"simple":return t.default.fromSimpleRenderer(e,r,n);case"unique-value":case"uniqueValue":return t.MapMatcher.fromUVRenderer(e,r,n,s,u);case"class-breaks":case"classBreaks":return t.IntervalMatcher.fromCBRenderer(e,r,n,s,u);default:return c.error(new a("mapview-mesh:invalid-renderer","Unable to handle unknown renderer type")),null}}Object.defineProperty(r,"__esModule",{value:!0});var c=n.getLogger("esri/views/2d/engine/webgl/mesh/factories/matcherUtils");r.createMatcher=s});
+define(["require","exports","../../../../../../core/Error","../../../../../../core/Logger","../../util/Matcher"],function(e,r,t,a,s){Object.defineProperty(r,"__esModule",{value:!0});var c=a.getLogger("esri/views/2d/engine/webgl/mesh/factories/matcherUtils");r.createMatcher=function(e,r,a,n){switch(e.type){case"simple":return s.default.fromSimpleRenderer(e,r,a);case"unique-value":case"uniqueValue":return s.MapMatcher.fromUVRenderer(e,r,a,n);case"class-breaks":case"classBreaks":return s.IntervalMatcher.fromCBRenderer(e,r,a,n);default:return c.error(new t("mapview-mesh:invalid-renderer","Unable to handle unknown renderer type")),null}}});

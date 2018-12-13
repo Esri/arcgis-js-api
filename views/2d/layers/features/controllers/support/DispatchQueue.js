@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../../core/promiseUtils"],function(t,e,i){Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){this._action=null,this._queue=[],this._refs=1}return t.prototype.up=function(){this._refs++},t.prototype.down=function(){return 0===--this._refs},t.prototype.destroy=function(){this._queue.length=0,this._action&&(this._action.cancel(),this._action=null)},t.prototype.enqueue=function(t){if(!this._action)return void this._setAction(t);this._queue.push(t)},t.prototype.flush=function(){var t=this._action;if(!t)return i.resolve();var e=this._queue.reduce(function(t,e){return t.then(e)},t);return this._action=e.then(this._handleNext.bind(this)),this._queue.length=0,e},t.prototype.hasAction=function(){return!!this._action},t.prototype._setAction=function(t){this._action=t().then(this._handleNext.bind(this))},t.prototype._handleNext=function(){if(!this._queue.length)return void(this._action=null);this._setAction(this._queue.shift())},t}();e.default=n});

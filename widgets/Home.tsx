@@ -39,7 +39,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Home/nls/Home";
 import Viewpoint = require("esri/Viewpoint");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -51,8 +51,8 @@ import Widget = require("esri/widgets/Widget");
 import HomeViewModel = require("esri/widgets/Home/HomeViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
-import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-home esri-widget--button esri-widget",
@@ -250,7 +250,7 @@ class Home extends declared(Widget) {
     return null;
   }
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
     const rootClasses = {
       [CSS.disabled]: state === "disabled"
@@ -286,7 +286,7 @@ class Home extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _go() {
+  private _go(): void {
     const { viewModel } = this;
 
     viewModel.state === "going-home" ? viewModel.cancelGo() : viewModel.go();

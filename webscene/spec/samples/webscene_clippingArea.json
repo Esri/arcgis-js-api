@@ -3,10 +3,8 @@
     {
       "id": "14bad723b9a-layer1",
       "listMode": "show",
-      "opacity": 1,
       "title": "points",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -45,10 +43,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e1e3fd-layer-132",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -57,8 +53,8 @@
     "elevationLayers": []
   },
   "ground": {
-    "transparency": 0,
-    "layers": []
+    "layers": [],
+    "transparency": 0
   },
   "clippingArea": {
     "geometry": {
@@ -73,30 +69,19 @@
     },
     "clip": true
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419727000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 315.29588074135785,
-      "scale": 1161.2458444070492,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 497679.24676351127,
-        "y": 6789321.409406257,
-        "z": 0
-      },
       "camera": {
         "position": {
           "spatialReference": {

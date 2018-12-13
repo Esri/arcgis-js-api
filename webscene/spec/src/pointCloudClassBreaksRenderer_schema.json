@@ -66,8 +66,7 @@
             "type": "pointCloudClassBreaksRenderer",
             "pointSizeAlgorithm": {
               "type": "pointCloudSplatAlgorithm",
-              "scaleFactor": 1,
-              "minSize": 4
+              "scaleFactor": 1
             },
             "pointsPerInch": 10,
             "field": "ELEVATION",

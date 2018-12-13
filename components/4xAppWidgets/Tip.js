@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","dojo/i18n!../../nls/common","dojo/i18n!./Tip/nls/resources","../../core/accessorSupport/decorators","../../widgets/Widget","./Tip/TipViewModel","../../widgets/support/widget"],function(e,i,t,s,r,o,n,d,p,a){"use strict";var l={base:"esri-tip",dismissed:"esri-tip--dismissed",imageFrame:"esri-tip__image-frame",widgetIcon:"esri-icon-lightbulb",tipHeader:"esri-tip__header",tipHeading:"esri-tip__heading",tipDismiss:"esri-tip__dismiss",noTip:"esri-tip__no-tip",main:"esri-tip__main",image:"esri-tip__image",infoBlock:"esri-tip__info-block",content:"esri-tip__content",source:"esri-tip__source",esriWidget:"esri-widget",iconClose:"esri-icon-close",disabled:"esri-disabled",header:"esri-widget__header",heading:"esri-widget__heading",headerDismiss:"esri-widget__header-button"};return function(e){function i(i){var t=e.call(this)||this;return t.compact=!0,t.iconClass=l.widgetIcon,t.label=o.widgetLabel,t.dismissible=!0,t.dismissed=null,t.viewModel=new p,t}return t(i,e),i.prototype.render=function(){var e,i=this,t=i.dismissed,s=i.tip,r=(e={},e[l.disabled]=!s,e[l.dismissed]=t,e),o=t?null:s?this._renderTip():this._renderNoTip();return a.tsx("div",{key:"base",class:this.classes(l.base,l.esriWidget,r)},o)},i.prototype._renderNoTip=function(){return a.tsx("div",{key:"no-tip",class:l.noTip},o.noTip)},i.prototype._renderTipSource=function(){var e=this.tip.source;if(!e||this.compact)return null;var i=e.title,t=e.url,s=i||o.defaultSourceTitle;return t?a.tsx("a",{key:"tip-source",class:l.source,target:"_blank",href:t},s):null},i.prototype._renderContent=function(){var e=this.tip.content;return"string"==typeof e?a.tsx("div",{class:l.content,key:e,innerHTML:e}):"object"==typeof e&&e.render&&"function"==typeof e.render?a.tsx("div",{class:l.content,key:e},e.render()):e instanceof HTMLElement?a.tsx("div",{class:l.content,key:e,bind:e,afterCreate:this._attachToNode}):void 0},i.prototype._attachToNode=function(e){var i=this;e.appendChild(i)},i.prototype._renderTipIcon=function(){return this.compact?a.tsx("span",{class:l.widgetIcon}):null},i.prototype._renderTitle=function(){var e=this.tip.title;return e?a.tsx("h2",{key:"title",class:this.classes(l.heading,l.tipHeading)},this._renderTipIcon(),e):null},i.prototype._renderImage=function(){var e=this.tip,i=e.image,t=e.title;return i&&!this.compact?a.tsx("div",{class:l.imageFrame},a.tsx("img",{alt:t,class:l.image,src:i})):null},i.prototype._renderDismiss=function(){return this.dismissible?a.tsx("button",{key:"dismiss",bind:this,onclick:this._dismiss,onkeydown:this._dismiss,class:this.classes(l.headerDismiss,l.tipDismiss),"aria-label":r.close,title:r.close},a.tsx("span",{"aria-hidden":"true",class:l.iconClose})):null},i.prototype._renderHeader=function(){return a.tsx("header",{class:this.classes(l.header,l.tipHeader)},this._renderTitle(),this._renderDismiss())},i.prototype._renderInfoBlock=function(){return a.tsx("div",{class:l.infoBlock},this._renderContent(),this._renderTipSource())},i.prototype._renderMain=function(){return a.tsx("div",{class:l.main},this._renderInfoBlock())},i.prototype._renderTip=function(){return[this._renderHeader(),this._renderImage(),this._renderMain()]},i.prototype._dismiss=function(){this.viewModel.dismissed=!0},s([n.property()],i.prototype,"compact",void 0),s([n.property()],i.prototype,"iconClass",void 0),s([n.property()],i.prototype,"label",void 0),s([a.renderable(),n.property()],i.prototype,"dismissible",void 0),s([n.aliasOf("viewModel.dismissed")],i.prototype,"dismissed",void 0),s([n.aliasOf("viewModel.tip")],i.prototype,"tip",void 0),s([n.property({type:p}),a.renderable(["viewModel.dismissed","viewModel.tip.content","viewModel.tip.image","viewModel.tip.source.url","viewModel.tip.source.title","viewModel.tip.title"])],i.prototype,"viewModel",void 0),s([a.accessibleHandler()],i.prototype,"_dismiss",null),i=s([n.subclass("esri.widgets.Tip")],i)}(n.declared(d))});

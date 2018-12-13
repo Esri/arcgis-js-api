@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({widgetLabel:"Individua",title:"Trova posizione personale"});
+define({widgetLabel:"Individua",title:"Trova posizione personale",currentLocation:"Posizione corrente",timestamp:"Timestamp",latitude:"Latitudine",longitude:"Longitudine",accuracy:"Precisione",altitude:"Altitudine",altitudeAccuracy:"Precisione altitudine",heading:"Intestazione",speed:"Velocità"});

@@ -1,0 +1,30 @@
+.load-icon__icon {
+  display: inline-block;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem; }
+  html[dir="rtl"] .load-icon__icon {
+    padding-right: 0.25rem; }
+  html[dir="rtl"] .load-icon__icon {
+    padding-left: 0.25rem; }
+
+.load-icon__svg {
+  fill: currentColor;
+  pointer-events: none;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  padding-right: .15em;
+  color: #0079c1;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

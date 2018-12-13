@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Järjehoidjad",goToBookmark:"Ava järjehoidja",noBookmarksHeading:"Järjehoidjad puuduvad",noBookmarksDescription:"Lisage oma kaardile järjehoidjad; need kuvatakse siin.",disabledHeading:"Järjehoidjad on keelatud",disabledDescription:"Järjehoidjate lubamiseks lisage kaardivaade."});

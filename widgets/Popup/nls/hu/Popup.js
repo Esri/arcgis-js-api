@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Nagyítás/kicsinyítés erre:",next:"Következő vektoros elem",previous:"Előző vektoros elem",close:"Bezárás",dock:"Dokkolás",undock:"Dokkolás megszüntetése",menu:"Menü",untitled:"Cím nélkül",pageText:"{index} / {total}",selectedFeature:"Kijelölt vektoros elem",selectedFeatures:"{total} eredmény",loading:"Betöltés",collapse:"Összecsukás",expand:"Kibontás"});
+define({zoom:"Nagyítás/kicsinyítés erre:",next:"Következő vektoros elem",previous:"Előző vektoros elem",dock:"Dokkolás",undock:"Dokkolás megszüntetése",pageText:"{index} / {total}",selectedFeature:"Kijelölt vektoros elem",selectedFeatures:"{total} eredmény"});

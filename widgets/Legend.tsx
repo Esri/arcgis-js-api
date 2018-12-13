@@ -66,7 +66,7 @@ import Handles = require("esri/core/Handles");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.core.accessorSupport.decorators
 import { cast } from "esri/core/accessorSupport/decorators/cast";
@@ -90,6 +90,7 @@ import Classic = require("esri/widgets/Legend/styles/Classic");
 import ActiveLayerInfo = require("esri/widgets/Legend/support/ActiveLayerInfo");
 
 // esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
 import { renderable } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -124,14 +125,14 @@ class Legend extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own(
       watchUtils.on(this, "activeLayerInfos", "change", () => {
         return this._refreshActiveLayerInfos(this.activeLayerInfos);
       }),
 
       watchUtils.init<LegendStyle>(this, "style", (value, oldValue) => {
-        if (oldValue) {
+        if (oldValue && value !== oldValue) {
           oldValue.destroy();
         }
 
@@ -146,7 +147,7 @@ class Legend extends declared(Widget) {
     );
   }
 
-  destroy() {
+  destroy(): void {
     this._handles.destroy();
     this._handles = null;
   }
@@ -388,7 +389,7 @@ class Legend extends declared(Widget) {
   //
   //-------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return this.style.render();
   }
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Marcadors",goToBookmark:"Ves al marcador",noBookmarksHeading:"No hi ha cap marcador",noBookmarksDescription:"Afegiu marcadors al mapa i es mostraran aquí.",disabledHeading:"Marcadors deshabilitats",disabledDescription:"Afegiu un MapView per habilitar els marcadors."});

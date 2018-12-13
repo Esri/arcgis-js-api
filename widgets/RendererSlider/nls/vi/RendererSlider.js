@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({statsAvg:"Trung bình : ${avg}",count:"Số lượng: ${count}",percent:"${num}%",high:"Cao",low:"Thấp",color:{changeMinMaxToolTIp:"Nhập vào một giá trị.",handleToolTip:"Khớp giá trị dữ liệu với màu sắc.",maxValueToolTip:"Nhập vào giá trị dữ liệu mong muốn lớn nhất.",minValueToolTip:"Nhập vào giá trị dữ liệu mong muốn nhỏ nhất.",changeSymbol:"Thay đổi ký hiệu"},size:{handleToolTip:"Khớp giá trị dữ liệu với kích cỡ ký hiệu.",sizeInputBoxLines:"Đặt độ dày của đường thẳng từ 0 đến 18 điểm ảnh.",sizeInputBoxPoints:"Đặt kích cỡ ký hiệu từ 1 đến 120 điểm ảnh"}});

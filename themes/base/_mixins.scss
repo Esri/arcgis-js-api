@@ -8,6 +8,10 @@
   @include boxShadow("0 1px 2px rgba(0, 0, 0, 0.3)");
 }
 
+@mixin borderBoxShadow() {
+  box-shadow: 0 0 0 1px rgba($interactive-font-color, 0.3);
+}
+
 @mixin pointerStyle($width, $height) {
   content: "";
   position: absolute;
@@ -16,7 +20,7 @@
 }
 
 @mixin outlineStyle() {
-  outline: 2px solid $focus_outline_color;
+  outline: 2px solid $interactive-font-color;
   outline-offset: 2px;
   z-index: 1;
 }
@@ -80,23 +84,110 @@
   }
 }
 
-@mixin _loopingProgressBar($width) {
-  @keyframes looping-progresss-bar-ani {
-    #{0%} {
-      left: 0%;
-      width: 0%;
+@mixin measurementWidgetStyles($selector) {
+  .#{$selector}__panel--error {
+    color: $font-color--error;
+    padding: 0 $side-spacing;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .#{$selector}__hint {
+    padding: 0 $side-spacing;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .#{$selector}__hint-text {
+    margin: $cap-spacing 0;
+    padding: 0;
+  }
+
+  .#{$selector}__measurement {
+    padding: $cap-spacing $side-spacing;
+    margin: $cap-spacing 0;
+    background-color: $background-color--offset;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .#{$selector}__measurement-item {
+    display: flex;
+    padding-bottom: $cap-spacing;
+    flex-flow: column;
+  }
+
+  .#{$selector}__measurement-item--disabled {
+    display: flex;
+    color: rgba($font-color, $opacity--disabled);
+  }
+
+  .#{$selector}__measurement-item-title {
+    padding-bottom: $cap-spacing--quarter;
+  }
+
+  .#{$selector}__measurement-item-value {
+    font-weight: $font-weight__bold;
+  }
+
+  .#{$selector}__settings {
+    display: flex;
+    justify-content: space-between;
+    padding: $cap-spacing--half $side-spacing;
+  }
+
+  .#{$selector}__units {
+    display: flex;
+    flex: 0 1 48%;
+    flex-flow: column;
+    padding: 0;
+    animation: esri-fade-in 250ms ease-in-out;
+    &:only-child {
+      flex: 1 0 100%;
     }
-    #{$width} {
-      left: 0%;
-      width: $width;
+  }
+
+  .#{$selector}__units-select-wrapper {
+    width: 100%;
+  }
+
+  .#{$selector}__units-select {
+    width: 100%;
+    padding-left: 0.5em;
+    padding-right: 2.7em;
+  }
+
+  .#{$selector}__actions {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0 $side-spacing;
+  }
+
+  html[dir="rtl"] {
+    .#{$selector}__units-select {
+      padding-left: 2.7em;
+      padding-right: 0.5em;
     }
-    #{100-$width} {
-      left: 100% - $width;
-      width: $width;
-    }
-    #{100%} {
-      left: 100%;
-      width: 0%;
-    }
+  }
+}
+
+@mixin loopingProgressBar($selector) {
+  #{$selector}:before,
+  #{$selector}:after {
+    content: "";
+    opacity: 1;
+    position: absolute;
+    height: 2px;
+    top: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  #{$selector}:before {
+    background-color: $border-color;
+    width: 100%;
+    z-index: 1;
+  }
+  #{$selector}:after {
+    background-color: $interactive-font-color;
+    width: $looping-progress-bar-width;
+    z-index: 2;
+    animation: looping-progresss-bar-ani $looping-progress-bar-params;
   }
 }

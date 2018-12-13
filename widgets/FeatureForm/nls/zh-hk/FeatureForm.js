@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({empty:"- 空 -",validationErrors:{cannotBeNull:"請輸入一個值",outsideRange:"值必須介於: {min} â€“ {max}",invalidCodedValue:"值必須是其中一個列出值。",invalidType:"不是有效值"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"Izmjeri",hint:"Započnite mjerenje tako da kliknete na scenu za postavljanje prve točke",unsupported:"Izravno mjerenje linije nije podržano u pregledniku karte.",distance:"Udaljenost",direct:"Izravno",horizontal:"Vodoravni",vertical:"Uspravno",unit:"Jedinica",newMeasurement:"Novo mjerenje",units:{metric:"Metrički",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stupnjevi"}});
+define({title:"Izmjeri",hint:"Započnite mjerenje tako da kliknete na scenu za postavljanje prve točke",unsupported:"Izravno mjerenje 3D linijske udaljenosti podržano je samo u pregledniku scene.",distance:"Udaljenost",direct:"Izravno",horizontal:"Vodoravni",vertical:"Uspravno",unit:"Jedinica",newMeasurement:"Novo mjerenje",units:{metric:"Metrički",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stupnjevi"}});

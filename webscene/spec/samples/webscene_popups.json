@@ -3,17 +3,14 @@
     {
       "id": "14bad844eb5-layer1",
       "listMode": "show",
-      "opacity": 1,
       "title": "draped",
       "visibility": false,
       "layers": [
         {
           "id": "ParaglideTrack",
           "listMode": "show",
-          "opacity": 1,
           "title": "icon",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 2000000,
@@ -67,50 +64,44 @@
               {
                 "fieldName": "OBJECTID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "Elevation",
-                "label": "Elevation",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Elevation",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance",
-                "label": "Distance",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Distance",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance_km",
-                "label": "Distance_km",
                 "isEditable": true,
+                "label": "Distance_km",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -119,10 +110,8 @@
         {
           "id": "14bad845072-layer9",
           "listMode": "show",
-          "opacity": 1,
           "title": "line",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -165,102 +154,91 @@
               {
                 "fieldName": "OID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "FolderPath",
-                "label": "FolderPath",
                 "isEditable": true,
+                "label": "FolderPath",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "SymbolID",
-                "label": "SymbolID",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "SymbolID",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "AltMode",
-                "label": "AltMode",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "AltMode",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Base",
-                "label": "Base",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Base",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Clamped",
-                "label": "Clamped",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Clamped",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Extruded",
-                "label": "Extruded",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Extruded",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Snippet",
-                "label": "Snippet",
                 "isEditable": true,
+                "label": "Snippet",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "PopupInfo",
-                "label": "PopupInfo",
                 "isEditable": true,
+                "label": "PopupInfo",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -269,10 +247,8 @@
         {
           "id": "14bad845165-layer12",
           "listMode": "show",
-          "opacity": 1,
           "title": "area",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -322,82 +298,67 @@
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
-                "label": "OBJECTID",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "OBJECTID",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "TITLE",
                 "label": "Title",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "VISIBLE",
-                "label": "Visible",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "Visible",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "DESCRIPTION",
                 "label": "Description",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "IMAGE_URL",
                 "label": "Image URL",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "IMAGE_LINK_URL",
                 "label": "Image Link URL",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "DATE",
-                "label": "DATE",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": false,
                 "format": {
-                  "dateFormat": "longMonthDayYear"
+                  "dateFormat": "longMonthDayYear",
+                  "digitSeparator": false
                 },
-                "stringFieldOption": "textbox"
+                "label": "DATE",
+                "tooltip": "",
+                "visible": false
               },
               {
                 "fieldName": "TYPEID",
-                "label": "Type ID",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "Type ID",
+                "tooltip": "",
+                "visible": true
               }
             ],
             "title": "Areas: {TITLE}"
@@ -410,17 +371,13 @@
     {
       "id": "14bad844ecc-layer2",
       "listMode": "show",
-      "opacity": 1,
       "title": "non-draped",
-      "visibility": true,
       "layers": [
         {
           "id": "14bad84506c-layer8",
           "listMode": "show",
-          "opacity": 1,
           "title": "icon",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 2000000,
@@ -474,50 +431,44 @@
               {
                 "fieldName": "OBJECTID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "Elevation",
-                "label": "Elevation",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Elevation",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance",
-                "label": "Distance",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Distance",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance_km",
-                "label": "Distance_km",
                 "isEditable": true,
+                "label": "Distance_km",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -526,10 +477,8 @@
         {
           "id": "14bad84502c-layer6",
           "listMode": "show",
-          "opacity": 1,
           "title": "object",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 2000000,
@@ -576,50 +525,44 @@
               {
                 "fieldName": "OBJECTID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "Elevation",
-                "label": "Elevation",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Elevation",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance",
-                "label": "Distance",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Distance",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance_km",
-                "label": "Distance_km",
                 "isEditable": true,
+                "label": "Distance_km",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -628,10 +571,8 @@
         {
           "id": "14bad845077-layer10",
           "listMode": "show",
-          "opacity": 1,
           "title": "tree",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 2000000,
@@ -646,10 +587,10 @@
                   {
                     "type": "sizeInfo",
                     "field": "elevation",
-                    "minDataValue": 2000,
                     "maxDataValue": 4000,
-                    "minSize": 300,
-                    "maxSize": 600
+                    "maxSize": 600,
+                    "minDataValue": 2000,
+                    "minSize": 300
                   }
                 ],
                 "symbol": {
@@ -672,50 +613,44 @@
               {
                 "fieldName": "OBJECTID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "Elevation",
-                "label": "Elevation",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Elevation",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance",
-                "label": "Distance",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Distance",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Distance_km",
-                "label": "Distance_km",
                 "isEditable": true,
+                "label": "Distance_km",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -724,10 +659,8 @@
         {
           "id": "148b220bf55-layer5",
           "listMode": "show",
-          "opacity": 1,
           "title": "tube",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -770,102 +703,91 @@
               {
                 "fieldName": "OID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "FolderPath",
-                "label": "FolderPath",
                 "isEditable": true,
+                "label": "FolderPath",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "SymbolID",
-                "label": "SymbolID",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "SymbolID",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "AltMode",
-                "label": "AltMode",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "AltMode",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Base",
-                "label": "Base",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Base",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Clamped",
-                "label": "Clamped",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Clamped",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Extruded",
-                "label": "Extruded",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Extruded",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Snippet",
-                "label": "Snippet",
                 "isEditable": true,
+                "label": "Snippet",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "PopupInfo",
-                "label": "PopupInfo",
                 "isEditable": true,
+                "label": "PopupInfo",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -874,10 +796,8 @@
         {
           "id": "14bad845032-layer7",
           "listMode": "show",
-          "opacity": 1,
           "title": "line",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -920,102 +840,91 @@
               {
                 "fieldName": "OID",
                 "label": "OID",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "Name",
-                "label": "Name",
                 "isEditable": true,
+                "label": "Name",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "FolderPath",
-                "label": "FolderPath",
                 "isEditable": true,
+                "label": "FolderPath",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "SymbolID",
-                "label": "SymbolID",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "SymbolID",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "AltMode",
-                "label": "AltMode",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "AltMode",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Base",
-                "label": "Base",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 2,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 2
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Base",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Clamped",
-                "label": "Clamped",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Clamped",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Extruded",
-                "label": "Extruded",
-                "isEditable": true,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "isEditable": true,
+                "label": "Extruded",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "Snippet",
-                "label": "Snippet",
                 "isEditable": true,
+                "label": "Snippet",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "PopupInfo",
-                "label": "PopupInfo",
                 "isEditable": true,
+                "label": "PopupInfo",
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -1024,10 +933,8 @@
         {
           "id": "148b22b560e-layer10",
           "listMode": "show",
-          "opacity": 1,
           "title": "area",
           "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -1078,82 +985,67 @@
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
-                "label": "OBJECTID",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "OBJECTID",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "TITLE",
                 "label": "Title",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": true,
-                "stringFieldOption": "textbox"
+                "visible": true
               },
               {
                 "fieldName": "VISIBLE",
-                "label": "Visible",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "Visible",
+                "tooltip": "",
+                "visible": true
               },
               {
                 "fieldName": "DESCRIPTION",
                 "label": "Description",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "IMAGE_URL",
                 "label": "Image URL",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "IMAGE_LINK_URL",
                 "label": "Image Link URL",
-                "isEditable": false,
                 "tooltip": "",
-                "visible": false,
-                "stringFieldOption": "textbox"
+                "visible": false
               },
               {
                 "fieldName": "DATE",
-                "label": "DATE",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": false,
                 "format": {
-                  "dateFormat": "longMonthDayYear"
+                  "dateFormat": "longMonthDayYear",
+                  "digitSeparator": false
                 },
-                "stringFieldOption": "textbox"
+                "label": "DATE",
+                "tooltip": "",
+                "visible": false
               },
               {
                 "fieldName": "TYPEID",
-                "label": "Type ID",
-                "isEditable": false,
-                "tooltip": "",
-                "visible": true,
                 "format": {
-                  "places": 0,
-                  "digitSeparator": true
+                  "digitSeparator": true,
+                  "places": 0
                 },
-                "stringFieldOption": "textbox"
+                "label": "Type ID",
+                "tooltip": "",
+                "visible": true
               }
             ],
             "title": "Areas: {TITLE}"
@@ -1168,10 +1060,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -1183,48 +1073,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426418579000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 6.505679808255081,
-      "scale": 118992.00600284427,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 1024400.4230441265,
-        "y": 5958993.679320423,
-        "z": 918.4135030088946
-      },
       "camera": {
         "position": {
           "spatialReference": {

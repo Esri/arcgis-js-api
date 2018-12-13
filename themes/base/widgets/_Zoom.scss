@@ -9,7 +9,7 @@
           border-top: none;
         }
         &:first-child {
-          border-left: solid 1px $border_color;
+          border-left: solid 1px $border-color;
         }
       }
     }
@@ -19,7 +19,7 @@
         margin-bottom: 0;
       }
       &:last-child {
-        border-top: solid 1px $border_color;
+        border-top: solid 1px $border-color;
       }
     }
   }
@@ -32,7 +32,7 @@
             border-top: none;
           }
           &:last-child {
-            border-left: solid 1px $border_color;
+            border-left: solid 1px $border-color;
           }
         }
       }

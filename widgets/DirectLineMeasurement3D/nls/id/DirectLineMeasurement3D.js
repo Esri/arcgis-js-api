@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"Ukur",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran garis langsung tidak didukung di MapView.",distance:"Jarak",direct:"Langsung",horizontal:"Horizontal",vertical:"Vertikal",unit:"Unit",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil Laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});
+define({title:"Ukur",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran garis langsung 3D hanya didukung dalam SceneView.",distance:"Jarak",direct:"Langsung",horizontal:"Horizontal",vertical:"Vertikal",unit:"Unit",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil Laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});

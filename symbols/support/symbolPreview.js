@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","./previewSymbol2D","./previewSymbol3D","./previewWebStyleSymbol"],function(e,r,l,i,t){function o(e,r){switch(e.type){case"web-style":return t.previewWebStyleSymbol(e,o,r);case"label-3d":case"line-3d":case"mesh-3d":case"point-3d":case"polygon-3d":return i.previewSymbol3D(e,r);default:return l.previewSymbol2D(e,r)}}Object.defineProperty(r,"__esModule",{value:!0}),r.renderPreviewHTML=o});
+define(["require","exports","../../core/compilerUtils","./previewSymbol2D","./previewSymbol3D","./previewWebStyleSymbol"],function(e,r,l,i,c,s){function t(e,r){switch(e.type){case"web-style":return s.previewWebStyleSymbol(e,t,r);case"label-3d":case"line-3d":case"mesh-3d":case"point-3d":case"polygon-3d":return c.previewSymbol3D(e,r);case"simple-marker":case"simple-line":case"simple-fill":case"picture-marker":case"picture-fill":case"text":return i.previewSymbol2D(e,r);default:l.neverReached(e)}}Object.defineProperty(r,"__esModule",{value:!0}),r.renderPreviewHTML=t});

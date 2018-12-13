@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"Измерение",hint:"Начать измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение примой линии не поддерживается в виде карты.",distance:"Расстояние",direct:"По прямой",horizontal:"Горизонтально",vertical:"Вертикальная",unit:"Единица измерения",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские",kilometers:"километры",meters:"Метры",miles:"Миль",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"DMS",degrees:"Градусы"}});
+define({title:"Измерение",hint:"Начать измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение прямой 3D-линии поддерживается только в виде сцены.",distance:"Расстояние",direct:"По прямой",horizontal:"Горизонтально",vertical:"Вертикальная",unit:"Единица измерения",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские",kilometers:"километры",meters:"Метры",miles:"Миль",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"DMS",degrees:"Градусы"}});

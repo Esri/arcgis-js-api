@@ -204,7 +204,7 @@ vec4 projectPositionHUD(out ProjectHUDAux aux) {
 
 #ifndef CENTER_OFFSET_UNITS_SCREEN
   // Apply x/y in view space, but z in screen space (i.e. along posView direction)
-  aux.posView += vec3(centerOffset.x, centerOffset.y, 0);
+  aux.posView += vec3(centerOffset.x, centerOffset.y, 0.0);
 
   // Same material all have same z != 0.0 condition so should not lead to
   // branch fragmentation and will save a normalization if it's not needed

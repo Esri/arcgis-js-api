@@ -33,9 +33,11 @@ $include_RasterSymbologyEditor: $include_widgets !default;
 $include_RendererSlider: $include_widgets !default;
 $include_ScaleBar: $include_widgets !default;
 $include_Search: $include_widgets !default;
+$include_Sketch: $include_widgets !default;
 $include_Slice: $include_widgets !default;
 $include_Spinner: $include_widgets !default;
 $include_Tags: $include_widgets !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
+$include_FeatureTemplates: $include_widgets !default;
 $include_TimePicker: $include_widgets !default;
 $include_Zoom: $include_widgets !default;
 
@@ -44,9 +46,10 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "fonts/avenir-next/avenir-next.scss";
 @import "icons/style.scss";
 
-@import "colorVariables";
+@import "color";
 @import "type";
 @import "sizes";
+@import "layout";
 @import "mixins";
 
 @import "View";
@@ -84,9 +87,14 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/RendererSlider";
 @import "widgets/ScaleBar";
 @import "widgets/Search";
+@import "widgets/Sketch";
 @import "widgets/SearchResultRenderer";
 @import "widgets/Slice";
 @import "widgets/Spinner";
 @import "widgets/Tags";
+@import "widgets/FeatureTemplates";
 @import "widgets/TimePicker";
 @import "widgets/Zoom";
+
+// animations
+@import "animation";

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Symbol3DLayer","./edges/utils","./support/Symbol3DFillMaterial","./support/Symbol3DOutline"],function(e,t,o,l,r,i,n,s,p){return function(e){function t(t){var o=e.call(this)||this;return o.type="fill",o.material=null,o.outline=null,o.edges=null,o}o(t,e),i=t,t.prototype.clone=function(){return new i({edges:this.edges&&this.edges.clone(),enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),outline:this.outline&&this.outline.clone()})};var i;return l([r.enumeration.serializable()({Fill:"fill"})],t.prototype,"type",void 0),l([r.property({type:s.default})],t.prototype,"material",void 0),l([r.property({type:p.default,json:{write:!0}})],t.prototype,"outline",void 0),l([r.property(n.symbol3dEdgesProperty)],t.prototype,"edges",void 0),t=i=l([r.subclass("esri.symbols.FillSymbol3DLayer")],t)}(r.declared(i))});

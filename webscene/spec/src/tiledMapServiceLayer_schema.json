@@ -66,7 +66,7 @@
     },
     "visibility": {
       "type": "boolean",
-      "description": "Boolean property determining whether the layer is initially visible in the web scene.",
+      "description": "Boolean property determining whether the layer is initially visible in the map.",
       "default": true
     }
   },

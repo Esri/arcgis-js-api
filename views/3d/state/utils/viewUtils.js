@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../lib/gl-matrix","../../support/mathUtils"],function(e,t,r,c){function i(e,t,i){e.worldUpAtPosition(t,o),r.vec3d.subtract(i,t,d);var n=r.vec3d.length(d);return 0===n?0:c.acos(r.vec3d.dot(d,o)/n)}Object.defineProperty(t,"__esModule",{value:!0}),t.viewAngle=i;var o=r.vec3d.create(),d=r.vec3d.create()});
+define(["require","exports","../../../../core/libs/gl-matrix-2/gl-matrix","../../support/mathUtils"],function(e,t,r,c){function i(e,t,i){e.worldUpAtPosition(t,o),r.vec3.subtract(a,i,t);var n=r.vec3.length(a);return 0===n?0:c.acos(r.vec3.dot(a,o)/n)}Object.defineProperty(t,"__esModule",{value:!0}),t.viewAngle=i;var o=r.vec3f64.create(),a=r.vec3f64.create()});

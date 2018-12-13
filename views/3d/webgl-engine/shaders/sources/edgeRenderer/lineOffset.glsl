@@ -15,7 +15,7 @@
   }
 
   float calculateLinePressureSketch() {
-    return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0, 0.5)));
+    return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0.0, 0.5)));
   }
 
 #endif

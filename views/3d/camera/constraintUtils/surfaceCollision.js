@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../intersectionUtils","../../lib/gl-matrix"],function(e,r,t,i){function n(e,r,n,l){void 0===n&&(n=0),void 0===l&&(l=r);var a=e.state.constraints;if(r!==l&&l.copyFrom(r),!a.collision.enabled)return!1;var c=t.surfaceElevationBelowEye(e,r),d=e.renderCoordsHelper.getAltitude(r.eye),s=a.collision.elevationMargin,v=c+s;if(d>=v)return!1;var u=i.vec3d.length(l.eye);if(i.vec3d.subtract(l.center,l.eye,o),e.renderCoordsHelper.setAltitude(v,l.eye),1===n)i.vec3d.add(l.eye,o,l.center);else if(2===n){var y=(u-d+v)/u;i.vec3d.scale(l.center,y)}return l.markViewDirty(),!0}Object.defineProperty(r,"__esModule",{value:!0}),r.apply=n;var o=i.vec3d.create()});
+define(["require","exports","../../../../core/libs/gl-matrix-2/gl-matrix","../intersectionUtils"],function(e,r,t,i){function n(e,r,n,c){void 0===n&&(n=0),void 0===c&&(c=r);var l=e.state.constraints;if(r!==c&&c.copyFrom(r),!l.collision.enabled)return!1;var a=i.surfaceElevationBelowEye(e,r),s=e.renderCoordsHelper.getAltitude(r.eye),v=l.collision.elevationMargin,d=a+v;if(s>=d)return!1;var u=t.vec3.length(c.eye);if(t.vec3.subtract(o,c.center,c.eye),e.renderCoordsHelper.setAltitude(d,c.eye),1===n)t.vec3.add(c.center,c.eye,o);else if(2===n){var f=(u-s+d)/u;t.vec3.scale(c.center,c.center,f)}return c.markViewDirty(),!0}Object.defineProperty(r,"__esModule",{value:!0}),r.apply=n;var o=t.vec3f64.create()});

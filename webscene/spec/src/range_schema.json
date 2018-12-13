@@ -1,7 +1,7 @@
 {
   "title": "Range",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Range object",
+  "description": "Range object.",
   "properties": {
     "interactionMode": {
       "type": "string",

@@ -32,7 +32,7 @@
 import * as i18n from "dojo/i18n!esri/widgets/Fullscreen/nls/Fullscreen";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -44,7 +44,8 @@ import Widget = require("esri/widgets/Widget");
 import FullscreenViewModel = require("esri/widgets/Fullscreen/FullscreenViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-fullscreen esri-widget--button esri-widget",
@@ -139,7 +140,7 @@ class Fullscreen extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
 
     const rootClasses = {
@@ -177,7 +178,7 @@ class Fullscreen extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggle() {
+  private _toggle(): void {
     this.viewModel.toggle();
   }
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({statsAvg:"ค่าเฉลี่ย : ${avg}",count:"จำนวน : ${count}",percent:"${num}%",high:"สูง",low:"ต่ำ",color:{changeMinMaxToolTIp:"พิมพ์ด้วยค่า",handleToolTip:"เชื่อมค่าของข้อมูลไปยังสี",maxValueToolTip:"พิมพ์ค่าข้อมูลที่มากที่สุด",minValueToolTip:"พิมพ์ค่าข้อมูลที่น้อยที่สุด",changeSymbol:"เปลี่ยนสัญลักษณ์"},size:{handleToolTip:"เชื่อมค่าของข้อมูลกับขนาดสัญลักษณ์",sizeInputBoxLines:"ตั้งค่าความหนาของเส้นจาก 0 ถึง 18 พิกเซล",sizeInputBoxPoints:"ตั้งค่าขนาดของสัญลักษณ์จาก 1 ถึง 120 พิกเซล"}});

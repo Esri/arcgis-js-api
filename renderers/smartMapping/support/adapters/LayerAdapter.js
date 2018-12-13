@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,t,p,s,c){return function(e){function r(r){return e.call(this)||this}return o(r,e),t([c.property()],r.prototype,"geometryType",void 0),t([c.property()],r.prototype,"objectIdField",void 0),t([c.property()],r.prototype,"outFields",void 0),t([c.property()],r.prototype,"supportsSQLExpression",void 0),t([c.property()],r.prototype,"hasQueryEngine",void 0),r=t([c.subclass()],r)}(c.declared(p,s))});

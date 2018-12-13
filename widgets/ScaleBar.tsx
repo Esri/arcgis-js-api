@@ -61,7 +61,8 @@ import Widget = require("esri/widgets/Widget");
 import ScaleBarViewModel = require("esri/widgets/ScaleBar/ScaleBarViewModel");
 
 // esri.widgets.support
-import { tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { renderable, tsx } from "esri/widgets/support/widget";
 
 type ScaleBarStyle = "line" | "ruler";
 type ScaleBarUnit = MapUnitType | "dual";
@@ -114,7 +115,7 @@ class ScaleBar extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own([whenTrue(this, "view.stationary", () => this.scheduleRender())]);
   }
 
@@ -161,14 +162,14 @@ class ScaleBar extends declared(Widget) {
   /**
    * Units to use for the scale bar.
    * When using `dual`, the scale bar displays both metric and non-metric units.
-   * Metric values shows either kilometers or meters depending on the scale, and similarly non-metric values shows miles and feet depending on the scale.
+   * Metric values show either kilometers or meters depending on the scale, and non-metric values show either miles or feet depending on the scale.
    *
    * **Possible Values:** non-metric | metric | dual
    *
    * @name unit
    * @instance
    * @type {string}
-   * @default non-metric (i.e. miles and feet)
+   * @default non-metric
    */
   @property()
   @renderable()
@@ -221,7 +222,7 @@ class ScaleBar extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const isDisabled = this.get("viewModel.state") === "disabled";
 
     const baseClasses = {
@@ -281,7 +282,7 @@ class ScaleBar extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderRuler(scaleBarProps: ScaleBarProperties): any {
+  private _renderRuler(scaleBarProps: ScaleBarProperties): VNode {
     const length = double(Math.round(scaleBarProps.length));
     const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
@@ -306,7 +307,7 @@ class ScaleBar extends declared(Widget) {
     );
   }
 
-  private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): any {
+  private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): VNode {
     const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 

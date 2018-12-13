@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "14e50d823c4-layer-4",
-      "opacity": 1,
       "title": "Census",
       "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "drawingInfo": {
@@ -15,32 +13,32 @@
               {
                 "type": "sizeInfo",
                 "field": "POP07_SQMI",
-                "minSize": 40000,
+                "maxDataValue": 1000,
                 "maxSize": 1000000,
                 "minDataValue": 1,
-                "maxDataValue": 1000
+                "minSize": 40000
               },
               {
                 "type": "colorInfo",
                 "field": "POP07_SQMI",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       255,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 1000,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1000
                   }
                 ]
               }
@@ -70,10 +68,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -85,48 +81,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426442365000,
         "displayUTCOffset": -5
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 11.388663637165507,
-      "scale": 16212354.327215007,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": -10616927.165443046,
-        "y": 3591048.5756827914,
-        "z": 121155.44433725625
-      },
       "camera": {
         "position": {
           "spatialReference": {

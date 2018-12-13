@@ -15,13 +15,13 @@ vec3 calculateVPos() {
 #endif
 
 vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {
-  float viewDistance = length((view * vec4(worldPos, 1)).xyz);
+  float viewDistance = length((view * vec4(worldPos, 1.0)).xyz);
   float verticalOffsetOffsetDistance = verticalOffset.x * viewDistance;
 
 #ifdef VIEWING_MODE_GLOBAL
   vec3 worldNormal = normalize(worldPos + localOrigin);
 #else
-  vec3 worldNormal = vec3(0, 0, 1);
+  vec3 worldNormal = vec3(0.0, 0.0, 1.0);
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE

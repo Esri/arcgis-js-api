@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Llegenda",points:"Punts",lines:"Línies",polygons:"Polígons",creatingLegend:"S'està creant la llegenda",noLegend:"No hi ha cap llegenda",dotValue:"1 punt = {value} {unit}",currentObservations:"Observacions actuals",previousObservations:"Observacions anteriors",high:"Alt",low:"Baix",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nusos",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} dividit per {normField}",showNormPct:"{field} com a percentatge del total",showRatio:"Proporció entre {field} i {normField}",showRatioPercent:"{field} com a percentatge de {normField}",showRatioPercentTotal:"{field} com a percentatge de {field} i {normField}"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({empty:"- prazno -",validationErrors:{cannotBeNull:"Unesite vrednost",outsideRange:"Vrednost bi trebalo da bude između: {min} â€“ {max}",invalidCodedValue:"Vrednost bi trebalo da bude jedna od navedenih vrednosti.",invalidType:"Nije važeća vrednost"}});

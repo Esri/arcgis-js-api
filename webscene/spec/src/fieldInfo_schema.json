@@ -15,7 +15,8 @@
     },
     "isEditable": {
       "type": "boolean",
-      "description": "A Boolean determining whether users can edit this field. Not applicable to Arcade expressions."
+      "description": "A Boolean determining whether users can edit this field. Not applicable to Arcade expressions.",
+      "default": false
     },
     "label": {
       "type": "string",
@@ -30,7 +31,8 @@
         "max",
         "min",
         "stddev",
-        "sum"
+        "sum",
+        "var"
       ]
     },
     "stringFieldOption": {
@@ -40,7 +42,8 @@
         "textbox",
         "textarea",
         "richtext"
-      ]
+      ],
+      "default": "textbox"
     },
     "tooltip": {
       "type": "string",
@@ -62,6 +65,7 @@
             "label": "Postcode",
             "isEditable": false,
             "visible": false,
+            "statisticType": "count",
             "stringFieldOption": "textbox"
           }
         }

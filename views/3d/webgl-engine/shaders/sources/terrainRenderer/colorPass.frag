@@ -3,6 +3,7 @@
 #include <util/sceneLighting.glsl>
 #include <util/screenSizePerspective.glsl>
 #include <util/shadow.glsl>
+#include <util/slice.glsl>
 #include <terrainRenderer/overlay.glsl>
 
 uniform vec3 lightDirection;
@@ -55,6 +56,7 @@ varying float screenSizeCosAngle;
 const vec3 ambient = vec3(0.2,0.2,0.2);
 const vec3 diffuse = vec3(0.8,0.8,0.8);
 const float diffuseHardness = 2.5;
+const float sliceOpacity = 0.2;
 
 #ifdef OVERLAY
 uniform sampler2D overlay0Tex;
@@ -114,6 +116,7 @@ void main() {
   vec3 d = (1.0 - shadow/1.8) * diffuse * k;
 
   float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
+
   vec4 tileColor = texture2D(tex, vtc) * opacity;
 
 #ifdef OVERLAY
@@ -122,6 +125,10 @@ void main() {
   // tileColor and overlayTexCols have pre-multiplied alpha
   tileColor = tileColor * (1.0 - overlayColor.a) + overlayColor;
 #endif
+
+  if (rejectBySlice(vpos)) {
+    tileColor *= sliceOpacity;
+  }
 
   vec3 atm = vec3(0.0);
 #ifdef ATMOSPHERE
@@ -147,16 +154,16 @@ void main() {
   float perspectiveScale = screenSizePerspectiveScaleFloat(1.0, screenSizeCosAngle, screenSizeDistanceToCamera, screenSizePerspective);
 
   if (perspectiveScale <= 0.25) {
-    gl_FragColor = mix(gl_FragColor, vec4(1, 0, 0, 1), perspectiveScale * 4.0);
+    gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 0.0, 1.0), perspectiveScale * 4.0);
   }
   else if (perspectiveScale <= 0.5) {
-    gl_FragColor = mix(gl_FragColor, vec4(0, 0, 1, 1), (perspectiveScale - 0.25) * 4.0);
+    gl_FragColor = mix(gl_FragColor, vec4(0.0, 0.0, 1.0, 1.0), (perspectiveScale - 0.25) * 4.0);
   }
   else if (perspectiveScale >= 0.99) {
-    gl_FragColor = mix(gl_FragColor, vec4(0, 1, 0, 1), 0.2);
+    gl_FragColor = mix(gl_FragColor, vec4(0.0, 1.0, 0.0, 1.0), 0.2);
   }
   else {
-    gl_FragColor = mix(gl_FragColor, vec4(1, 0, 1, 1), (perspectiveScale - 0.5) * 2.0);
+    gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 1.0, 1.0), (perspectiveScale - 0.5) * 2.0);
   }
 
 #endif
@@ -191,4 +198,6 @@ void main() {
 #endif
 
 #endif // defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
+
+  gl_FragColor = highlightSlice(gl_FragColor, vpos);
 }

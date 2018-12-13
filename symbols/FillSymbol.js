@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["./Symbol","./SimpleLineSymbol"],function(e,l){return e.createSubclass({declaredClass:"esri.symbols.FillSymbol",properties:{outline:{type:l,json:{read:{default:null},write:!0}},type:null}})});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/kebabDictionary","../core/accessorSupport/decorators","./SimpleLineSymbol","./Symbol"],function(e,r,t,o,l,p,i,s){var n=l({esriSFS:"simple-fill",esriPFS:"picture-fill"});return function(e){function r(r){var t=e.call(this,r)||this;return t.outline=null,t.type=null,t}return t(r,e),o([p.property({type:i,json:{default:null,write:!0}})],r.prototype,"outline",void 0),o([p.property({type:n.apiValues,readOnly:!0,json:{type:n.jsonValues}})],r.prototype,"type",void 0),r=o([p.subclass("esri.symbols.FillSymbol")],r)}(p.declared(s))});

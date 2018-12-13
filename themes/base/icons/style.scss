@@ -1037,4 +1037,22 @@
     color: $fill-color;
   }
 }
+.esri-icon-undo {
+  &:before {
+    content: unicode($esri-icon-undo);
+    color: $fill-color;
+  }
+}
+.esri-icon-redo {
+  &:before {
+    content: unicode($esri-icon-redo); 
+    color: $fill-color;
+  }
+}
+.esri-icon-cursor {
+  &:before {
+    content: unicode($esri-icon-cursor); 
+    color: $fill-color;
+  }
+}
 

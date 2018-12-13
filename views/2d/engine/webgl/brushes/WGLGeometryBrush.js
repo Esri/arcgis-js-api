@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/extendsHelper","./WGLBrush","../util/iterator"],function(e,t,r,i,n){Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),t.prototype.draw=function(e,t){var r=this;if(t.canDisplay){var i=this.getGeometryType(),o=t.getDisplayList(e.drawPhase),u=t.getGeometry(i);u&&n.forEachIter(o.ofType(i),function(i){return r.drawGeometry(e,t,i,u)})}},t}(i.default);t.default=o});
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","./WGLBrush"],function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});var i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),t.prototype.draw=function(t,r){var n=this;if(r.canDisplay){var e=this.getGeometryType(),i=r.getDisplayList(t.drawPhase),o=r.getGeometry(e);o&&i.byType(e,function(e){n.drawGeometry(t,r,e,o)})}},t}(n.default);t.default=i});

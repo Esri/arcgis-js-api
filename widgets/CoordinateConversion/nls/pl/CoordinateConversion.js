@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Dodaj konwersję",captureMode:"Tryb przechwytywania",changeCoordinateDisplay:"Zmień wyświetlanie współrzędnych",convert:"Zmień",conversionOutputSuffix:"dane wynikowe konwersji",copySuccessMessage:"Współrzędne zostały skopiowane do schowka",defaultPattern:"Przywróć wartości domyślne",goTo:"Przejdź do lokalizacji",inputCoordTitle:"Współrzędne wejściowe",invalidCoordinate:"Niewłaściwe współrzędne",liveMode:"Tryb Na żywo",locationOffBasemap:"Współrzędne wejściowe są poza zasięgiem mapy bazowej",noBasemap:"Brak mapy bazowej.",noLocation:"Brak pozycji",removeConversion:"Usuń konwersję",selectFormat:"Wybierz format",settingsTitle:"Ustawienia formatu"});

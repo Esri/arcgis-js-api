@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({streets:"Gator",satellite:"Imagery",hybrid:"Bilder med etiketter",terrain:"Terräng med etiketter",topo:"Topografisk",gray:"Ljusgrå bakgrundskarta","dark-gray":"Mörkgrå bakgrundskarta",oceans:"Hav","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Världstäckande vägkarta (natt)","streets-relief-vector":"Världstäckande vägkarta (med relief)","streets-navigation-vector":"Världstäckande navigeringskarta"});

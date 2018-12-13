@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","./geometry/Extent","./geometry/Geometry","./geometry/Mesh","./geometry/Multipoint","./geometry/Point","./geometry/Polygon","./geometry/Polyline","./geometry/ScreenPoint","./geometry/SpatialReference","./geometry/support/jsonUtils"],function(e,t,o,r,n,i,y,m,l,g,s,f){function u(e){return e instanceof t.BaseGeometry}Object.defineProperty(t,"__esModule",{value:!0}),t.Extent=o,t.BaseGeometry=r,t.Mesh=n,t.Multipoint=i,t.Point=y,t.Polygon=m,t.Polyline=l,t.ScreenPoint=g,t.SpatialReference=s,t.isGeometry=u,t.fromJSON=f.fromJSON});
+define(["require","exports","./core/kebabDictionary","./geometry/Extent","./geometry/Geometry","./geometry/Mesh","./geometry/Multipoint","./geometry/Point","./geometry/Polygon","./geometry/Polyline","./geometry/ScreenPoint","./geometry/SpatialReference","./geometry/support/jsonUtils"],function(e,o,t,r,i,n,y,l,m,s,p,g,a){function P(e){return e instanceof o.BaseGeometry}Object.defineProperty(o,"__esModule",{value:!0}),o.Extent=r,o.BaseGeometry=i,o.Mesh=n,o.Multipoint=y,o.Point=l,o.Polygon=m,o.Polyline=s,o.ScreenPoint=p,o.SpatialReference=g,o.isGeometry=P,o.fromJSON=a.fromJSON,o.typeKebabDictionary=t.strict()({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon",esriGeometryEnvelope:"extent",mesh:"mesh"}),o.featureGeometryTypeKebabDictionary=t.strict()({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon"})});

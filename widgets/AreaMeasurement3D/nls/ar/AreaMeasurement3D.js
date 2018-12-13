@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"قياس",hint:"بدأ في القياس عن طريق النقر في المشهد لوضع النقطة الأولى الخاصة بك",unsupported:"قياس المنطقة غير مدعوم في MapView.",perimeterLength:"محيط الشكل",area:"المنطقة",unit:"وحدة",notApplicable:"لا يوجد",newMeasurement:"قياس جديد",units:{metric:"متري",imperial:"الامبراطورية","square-kilometers":"كيلومتر مربع","square-meters":"أمتار مربعة","square-miles":"ميل مربع","square-inches":"بوصات مربعة","square-feet":"قدم مربع","square-yards":"ياردات مربعة","square-us-feet":"قدم مربع (الولايات المتحدة)",acres:"فدان",ares:"آرس",hectares:"هكتار"}});
+define({title:"قياس",hint:"بدأ في القياس عن طريق النقر في المشهد لوضع النقطة الأولى الخاصة بك",unsupported:"قياس المنطقة ثلاثية الأبعاد مدعوم فقط في SceneView.",perimeterLength:"محيط الشكل",area:"المنطقة",unit:"وحدة",notApplicable:"لا يوجد",newMeasurement:"قياس جديد",units:{metric:"متري",imperial:"الامبراطورية","square-kilometers":"كيلومتر مربع","square-meters":"أمتار مربعة","square-miles":"ميل مربع","square-inches":"بوصات مربعة","square-feet":"قدم مربع","square-yards":"ياردات مربعة","square-us-feet":"قدم مربع (الولايات المتحدة)",acres:"فدان",ares:"آرس",hectares:"هكتار"}});

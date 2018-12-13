@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,o,s,i,p){return function(e){function r(r){var t=e.call(this)||this;return t.id=null,t.title=null,t.description=null,t.legendUrl=null,t}t(r,e),s=r,r.prototype.clone=function(){var e=new s;return this.hasOwnProperty("description")&&(e.description=this.description),this.hasOwnProperty("id")&&(e.id=this.id),this.hasOwnProperty("isDefault")&&(e.isDefault=this.isDefault),this.hasOwnProperty("keywords")&&(e.keywords=this.keywords&&this.keywords.slice()),this.hasOwnProperty("legendUrl")&&(e.legendUrl=this.legendUrl),this.hasOwnProperty("title")&&(e.title=this.title),e};var s;return o([p.property({json:{read:{source:"id"}}})],r.prototype,"id",void 0),o([p.property({json:{read:{source:"title"}}})],r.prototype,"title",void 0),o([p.property({json:{read:{source:"abstract"}}})],r.prototype,"description",void 0),o([p.property({json:{read:{source:"legendUrl"}}})],r.prototype,"legendUrl",void 0),o([p.property({json:{read:{source:"isDefault"}}})],r.prototype,"isDefault",void 0),o([p.property({json:{read:{source:"keywords"}}})],r.prototype,"keywords",void 0),r=s=o([p.subclass("esri.layer.support.WMTSStyle")],r)}(p.declared(i))});

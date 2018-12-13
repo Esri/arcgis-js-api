@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "14badc221ef-layer1",
-      "opacity": 1,
       "title": "UVRenderer defaultSymbol",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -20,33 +18,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -63,10 +61,8 @@
     },
     {
       "id": "14badc22204-layer3",
-      "opacity": 1,
       "title": "UVRenderer from themShape styleUrl",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -81,33 +77,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -120,10 +116,8 @@
     },
     {
       "id": "14badc221fd-layer2",
-      "opacity": 1,
       "title": "simpleRenderer with styleSymbolReference",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -138,38 +132,38 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "height",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "height"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "sizeInfo",
-                "minSize": 50,
-                "axis": "widthAndDepth"
+                "axis": "widthAndDepth",
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -185,7 +179,6 @@
     },
     {
       "id": "14badc2224e-layer6",
-      "opacity": 1,
       "title": "styleSymbolReference schem. Tree",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -203,33 +196,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "height",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "height"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -246,7 +239,6 @@
     },
     {
       "id": "14badc22255-layer7",
-      "opacity": 1,
       "title": "styleSymbolReference real. Tree",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -264,11 +256,11 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "height",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "height"
+                "minDataValue": 5,
+                "minSize": 50
               }
             ],
             "defaultSymbol": {
@@ -286,10 +278,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -301,48 +291,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419733000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 326.0164127450096,
-      "scale": 15452.525348369445,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 498465.81416876963,
-        "y": 6783272.939468486,
-        "z": 2.7392569053918123
-      },
       "camera": {
         "position": {
           "spatialReference": {

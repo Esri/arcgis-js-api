@@ -44,7 +44,7 @@
 import * as i18n from "dojo/i18n!esri/widgets/Compass/nls/Compass";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -57,8 +57,8 @@ import Widget = require("esri/widgets/Widget");
 import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
-import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-compass esri-widget--button esri-widget",
@@ -193,7 +193,7 @@ class Compass extends declared(Widget) {
   @aliasOf("viewModel.reset")
   reset(): void {}
 
-  render() {
+  render(): VNode {
     const { orientation, state } = this.viewModel;
 
     const disabled = state === "disabled",
@@ -240,7 +240,7 @@ class Compass extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _reset() {
+  private _reset(): void {
     this.viewModel.reset();
   }
 

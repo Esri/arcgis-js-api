@@ -150,7 +150,7 @@ vec4 calculateGeometricOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, 
 
 #ifdef SILHOUETTE
 
-  gl_Position = isSilhouetteEdge(viewPosV0, aNormalA, aNormalB) ? projPos : vec4(10, 10, 10, 1);
+  gl_Position = isSilhouetteEdge(viewPosV0, aNormalA, aNormalB) ? projPos : vec4(10.0, 10.0, 10.0, 1.0);
 
 #else /* SILHOUETTE */
 
@@ -161,13 +161,13 @@ vec4 calculateGeometricOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, 
 #if (MODE == MODE_UBER)
 
   if (unpackedAttributes.type <= 0.0 && lineLengthPixels <= 3.0) {
-    gl_Position = vec4(10, 10, 10, 1);
+    gl_Position = vec4(10.0, 10.0, 10.0, 1.0);
   }
 
 #elif (MODE == MODE_SKETCH)
 
   if (lineLengthPixels <= 3.0) {
-    gl_Position = vec4(10, 10, 10, 1);
+    gl_Position = vec4(10.0, 10.0, 10.0, 1.0);
   }
 
 #endif

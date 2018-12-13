@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../core/has"],function(e,r,t){function n(e){var r=e&&e.symbolLayers;return!!r&&r.some(function(e){var r=e.type;return"object"===r||"path"===r||"extrude"===r})}function o(e,r){var n=r.resource.href;return!t("esri-canvas-svg-support")&&e.styleOrigin&&s.test(n)?n.replace(s,"/resource/png/$1.png"):n}Object.defineProperty(r,"__esModule",{value:!0}),r.isVolumetricSymbol=n,r.getIconHref=o;var s=/\/resource\/(.*?)\.svg$/});
+define(["require","exports","./utils"],function(e,r,l){function o(e,r){if(e){var o=e.get("layer.opacity")||e.get("sourceLayer.opacity");if(e.symbol){var t=e.symbol.clone();return l.applyColorToSymbol(t,null,o),t}var y=e.get("layer.renderer")||e.get("sourceLayer.renderer");if(y&&"getDisplayedSymbol"in y)return y.getDisplayedSymbol(e,r)}}Object.defineProperty(r,"__esModule",{value:!0}),r.getDisplayedSymbol=o});

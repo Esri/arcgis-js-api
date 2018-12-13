@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","dojo/Deferred","dojo/errors/CancelError"],function(e,r,t,s){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){this._deferreds=[],this._values=[]}return e.prototype.push=function(e){var r=new t;return this._deferreds.push(r),this._values.push(e),r.promise},e.prototype.unshift=function(e){var r=new t;return this._deferreds.unshift(r),this._values.unshift(e),r.promise},e.prototype.length=function(){return this._deferreds.length},e.prototype.process=function(){this._deferreds.shift().resolve(this._values.shift())},e.prototype.cancelAll=function(){for(var e=new s,r=0,t=this._deferreds;r<t.length;r++){t[r].cancel(e)}this._deferreds.length=0,this._values.length=0},e}();r.IdleQueue=n});
+define(["require","exports","dojo/errors/CancelError","../../../../core/promiseUtils"],function(e,r,t,s){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){this._deferreds=[],this._values=[]}return e.prototype.push=function(e){var r=this;return s.create(function(t,s){r._deferreds.push({resolve:t,reject:s}),r._values.push(e)})},e.prototype.unshift=function(e){var r=this;return s.create(function(t,s){r._deferreds.unshift({resolve:t,reject:s}),r._values.unshift(e)})},e.prototype.length=function(){return this._deferreds.length},e.prototype.process=function(){this._deferreds.shift().resolve(this._values.shift())},e.prototype.cancelAll=function(){for(var e=new t,r=0,s=this._deferreds;r<s.length;r++){s[r].reject(e)}this._deferreds.length=0,this._values.length=0},e}();r.IdleQueue=n});

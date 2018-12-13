@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({printNotes:"Unesite beleške ovde",printDisclaimer:"Uputstva za navigaciju data su samo za svrhe planiranja i podležu <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Uslovima korišćenja kompanije Esri</a>. Dinamičko stanje na putevima može da dovede do toga da se tačnost razlikuje od vaših uputstava za navigaciju, što mora da bude uzeto u obzir zajedno sa znakovima i zakonskim ograničenjima. Vi preuzimate sve rizike upotrebe.",printoutError:"Izgleda da je došlo do greške."});

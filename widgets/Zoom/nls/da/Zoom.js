@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({widgetLabel:"Zoom",zoomIn:"Zoom In",zoomOut:"Zoom Out"});
+define({widgetLabel:"Zoom",zoomIn:"Zoom ind",zoomOut:"Zoom ud"});

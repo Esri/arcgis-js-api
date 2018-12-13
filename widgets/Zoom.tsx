@@ -35,7 +35,7 @@
 import * as i18n from "dojo/i18n!esri/widgets/Zoom/nls/Zoom";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -48,7 +48,8 @@ import IconButton = require("esri/widgets/Zoom/IconButton");
 import ZoomViewModel = require("esri/widgets/Zoom/ZoomViewModel");
 
 // esri.widgets.support
-import { tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-zoom esri-widget",
@@ -79,7 +80,7 @@ class Zoom extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this._zoomInButton = new IconButton({
       action: this.zoomIn,
       iconClass: CSS.zoomInIcon,
@@ -211,7 +212,7 @@ class Zoom extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const vm = this.viewModel;
     const rootClasses = {
       [CSS.horizontalLayout]: this.layout === "horizontal"

@@ -50,7 +50,23 @@ uniform float ambientBoostFactor;
 
 vec3 evaluateSceneLighting(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight) {
   // evaluate the main light
-  float dotVal = mix(clamp(-dot(normal, lightingMainDirection), 0.0, 1.0), 1.0, lightingFixedFactor);
+  #if defined(TREE_RENDERING)
+    // Special case for tree rendering:
+    // We shift the Lambert lobe to the back, allowing it to reach part of the hemisphere
+    // facing away from the light. The idea is to get an effect where light is transmitted
+    // through the tree.
+    float minDot = -0.5;
+    float dotRange = 1.0 - minDot;
+    float dotNormalization = 0.66; // guessed & hand tweaked value, for an exact value we could precompute an integral over the sphere
+
+    float dotVal = dotNormalization * (clamp(-dot(normal, lightingMainDirection), 1.0 - dotRange, 1.0) - minDot) * (1.0 / dotRange);
+  #else
+    float dotVal = clamp(-dot(normal, lightingMainDirection), 0.0, 1.0);
+  #endif
+
+  // move lighting towards (1.0, 1.0, 1.0) if requested
+  dotVal = mix(dotVal, 1.0, lightingFixedFactor);
+
   vec3 mainLight = (1.0 - shadow) * lightingMainIntensity * dotVal;
 
   // evaluate the sh ambient light
@@ -119,7 +135,7 @@ vec3 sceneLightingAdditionalLightGlobal(vec3 worldPos, float ssao, out float add
 #ifdef VIEWING_MODE_GLOBAL
     float vndl = -dot(normalize(worldPos), lightingMainDirection);
 #else
-    float vndl = -dot(vec3(0,0,1), lightingMainDirection);
+    float vndl = -dot(vec3(0.0, 0.0, 1.0), lightingMainDirection);
 #endif
 
   additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Pesquisar",searchButtonTitle:"Pesquisar",clearButtonTitle:"limpar pesquisa",placeholder:"Encontrar um endereço ou local",searchIn:"Pesquisar em",all:"Todos",allPlaceholder:"Encontrar um endereço ou local",emptyValue:"Por favor, introduza um termo de pesquisa.",untitledResult:"Sem título",untitledSource:"Fonte sem título",noResults:"Sem resultados",noResultsFound:"Não foram encontrados resultados.",noResultsFoundForValue:"Não foram encontrados resultados para {value}.",showMoreResults:"Mostrar mais resultados",hideMoreResults:"Ocultar",searchResult:"Pesquisar recultados",moreResultsHeader:"Mais resultados",useCurrentLocation:"Utilizar localização atual"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({goToPreviousMonth:"Eiti į ankstesnį mėnesį",goToNextMonth:"Eiti į kitą mėnesį",goToPreviousYear:"Eiti į ankstesnius metus",goToNextYear:"Eiti į kitus metus"});

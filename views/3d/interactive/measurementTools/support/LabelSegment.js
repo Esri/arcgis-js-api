@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","./viewUtils","../../../lib/gl-matrix"],function(t,e,i,s){return function(){function t(){this.origin=s.vec3d.create(),this.start=s.vec3d.create(),this.end=s.vec3d.create()}return t.prototype.update=function(t,e,r){if(s.vec3d.set(t,this.start),s.vec3d.set(e,this.end),r)switch(r){case"start":s.vec3d.set(this.start,this.origin);break;case"center":i.midpoint([t,e],this.origin);break;case"end":s.vec3d.set(this.end,this.origin);break;default:s.vec3d.set(r,this.origin)}else i.midpoint([t,e],this.origin)},t}()});
+define(["require","exports","../../../../../core/libs/gl-matrix-2/gl-matrix","./viewUtils"],function(i,t,e,r){return function(){function i(){this.origin=e.vec3f64.create(),this.start=e.vec3f64.create(),this.end=e.vec3f64.create()}return i.prototype.update=function(i,t,c){if(e.vec3.copy(this.start,i),e.vec3.copy(this.end,t),c)switch(c){case"start":e.vec3.copy(this.origin,this.start);break;case"center":r.midpoint([i,t],this.origin);break;case"end":e.vec3.copy(this.origin,this.end);break;default:e.vec3.copy(this.origin,c)}else r.midpoint([i,t],this.origin)},i}()});

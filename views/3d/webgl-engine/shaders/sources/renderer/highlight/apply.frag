@@ -20,7 +20,7 @@ varying vec2 uv;
 
 void main() {
   #if defined(GRID_OPTIMIZATION) && defined(GRID_DEBUG)
-    gl_FragColor = vec4(uv, 0, 1.0);
+    gl_FragColor = vec4(uv, 0.0, 1.0);
   #else
     // Read the highlight intensity from the blurred highlight image
     vec4 blurredHighlightValue = texture2D(tex, uv);

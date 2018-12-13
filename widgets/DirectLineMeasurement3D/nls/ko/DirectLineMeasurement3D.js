@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"측정",hint:"첫 번째 지점을 배치하기 위해 씬을 클릭하여 측정 시작",unsupported:"맵 뷰에서 직선 측정이 지원되지 않습니다.",distance:"거리(Distance)",direct:"직접",horizontal:"수평",vertical:"수직",unit:"단위",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식",kilometers:"킬로미터",meters:"m",miles:"마일",inches:"인치",feet:"피트",yards:"야드","nautical-miles":"해리","us-feet":"피트(미국)","degrees-minutes-seconds":"DMS",degrees:"도"}});
+define({title:"측정",hint:"첫 번째 지점을 배치하기 위해 씬을 클릭하여 측정 시작",unsupported:"씬 뷰에서는 3D 직선 라인 측정만 지원됩니다.",distance:"거리(Distance)",direct:"직접",horizontal:"수평",vertical:"수직",unit:"단위",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식",kilometers:"킬로미터",meters:"m",miles:"마일",inches:"인치",feet:"피트",yards:"야드","nautical-miles":"해리","us-feet":"피트(미국)","degrees-minutes-seconds":"DMS",degrees:"도"}});

@@ -19,7 +19,21 @@
     "layerDefinition": {
       "type": "object",
       "description": "A layerDefinition object defining the attribute schema and drawing information for the layer.",
-      "$ref": "layerDefinition_schema.json"
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "definitionExpression": {},
+            "drawingInfo": {},
+            "elevationInfo": {},
+            "featureReduction": {},
+            "rangeInfos": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerType": {
       "type": "string",

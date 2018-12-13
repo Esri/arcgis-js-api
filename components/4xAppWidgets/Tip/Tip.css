@@ -1,0 +1,172 @@
+@keyframes esri-fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translate3D(0, -5px, 0); }
+  25% {
+    opacity: 0;
+    transform: translate3D(0, -5px, 0); }
+  100% {
+    opacity: 1;
+    transform: translate3D(0, 0, 0); } }
+
+@keyframes esri-fade-in {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes esri-fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale3D(0.95, 0.95, 1); }
+  100% {
+    opacity: 1;
+    transform: scale3D(1, 1, 1); } }
+
+@keyframes panel-advance {
+  0% {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale(0.99); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1); } }
+
+@keyframes panel-retreat {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0) scale(0.99); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1); } }
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+@keyframes panel-advance--rtl {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0) scale(0.99); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1); } }
+
+@keyframes panel-retreat--rtl {
+  0% {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale(0.99); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1); } }
+
+.esri-widget__header {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex: 1 0 100%;
+  padding: 12px 0 12px 15px;
+  justify-content: space-between;
+  min-height: 48px;
+  width: 100%; }
+  .esri-widget__header .esri-widget__heading {
+    align-items: center;
+    color: #6e6e6e;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 48px); }
+  .esri-widget__header-button {
+    -webkit-appearance: none;
+    align-items: center;
+    align-self: stretch;
+    background-color: transparent;
+    border: none;
+    color: #6e6e6e;
+    cursor: pointer;
+    display: flex;
+    flex: 0 0 48px;
+    justify-content: center;
+    padding: 0;
+    width: 48px; }
+
+.esri-widget__heading {
+  color: #4c4c4c;
+  margin: 0 0 0.5rem 0; }
+
+h1.esri-widget__heading {
+  font-size: 20px; }
+
+h2.esri-widget__heading {
+  font-size: 16px; }
+
+h3.esri-widget__heading,
+h4.esri-widget__heading,
+h5.esri-widget__heading,
+h6.esri-widget__heading {
+  font-size: 14px; }
+
+.esri-widget__footer {
+  width: 100%; }
+
+.esri-widget__footer-pagination {
+  align-items: center;
+  color: #6e6e6e;
+  display: flex;
+  justify-content: center; }
+  .esri-widget__footer-pagination-previous-button, .esri-widget__footer-pagination-next-button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 4px;
+    margin: 6px 7px;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 125ms ease-in-out;
+    width: 32px;
+    height: 32px; }
+    .esri-widget__footer-pagination-previous-button:hover, .esri-widget__footer-pagination-previous-button:focus, .esri-widget__footer-pagination-next-button:hover, .esri-widget__footer-pagination-next-button:focus {
+      background-color: #f0f0f0;
+      color: #2e2e2e; }
+
+.esri-tip {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 380px;
+  padding: 0 0 12px 0; }
+  .esri-tip--dismissed {
+    display: none; }
+  .esri-tip__header {
+    padding-left: 15px; }
+  .esri-tip__heading {
+    font-weight: 400; }
+  .esri-tip__image-frame {
+    width: 25%;
+    padding: 0 0 0 15px; }
+    .esri-tip__image-frame .esri-tip__image {
+      width: 100%; }
+  .esri-tip__main {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    width: 70%; }
+  .esri-tip__info-block {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding: 0 15px; }
+  .esri-tip__content {
+    color: #6e6e6e;
+    padding-bottom: 12px; }
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+html[dir="rtl"] .esri-tip__header {
+  padding-left: 0;
+  padding-right: 15px; }
+
+html[dir="rtl"] .esri-tip__image-frame {
+  padding-left: 0;
+  padding-right: 15px; }

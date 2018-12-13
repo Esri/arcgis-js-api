@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({attach:"المرفقات",fields:"حقول",fieldsSummary:"قائمة البيانات الجدولية والقيم",media:"الوسائط",next:"التالي",numCharts:"عدد المخططات",numImages:"عدد الصور",noTitle:"بلا عنوان",previous:"السابق"});
+define({attach:"المرفقات",fields:"حقول",fieldsSummary:"قائمة البيانات الجدولية والقيم",media:"الوسائط",next:"التالي",numCharts:"عدد المخططات",numImages:"عدد الصور",noTitle:"بلا عنوان",previous:"السابق",lastEdited:"آخر تحرير في {date}.",lastCreated:"تم الإنشاء في {date}.",lastEditedByUser:"آخر تحرير من قبل {user} في {date}.",lastCreatedByUser:"تم الإنشاء من قبل {user} في {date}."});

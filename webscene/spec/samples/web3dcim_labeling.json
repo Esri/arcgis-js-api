@@ -3,17 +3,13 @@
     {
       "id": "148d2db8ed5-layer3",
       "listMode": "show",
-      "opacity": 1,
       "title": "points",
-      "visibility": true,
       "layers": [
         {
           "id": "148d2db901a-layer9",
           "listMode": "show",
-          "opacity": 1,
           "title": "labels objects (valueExpressionInfo.expression)",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 0,
@@ -63,32 +59,32 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           128,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           255,
                           255,
                           255,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
                   {
                     "type": "sizeInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 8,
-                    "maxSize": 32
+                    "maxSize": 32,
+                    "minDataValue": 1,
+                    "minSize": 8
                   }
                 ],
                 "symbol": {
@@ -119,10 +115,8 @@
         {
           "id": "148d2db901a-layer8",
           "listMode": "show",
-          "opacity": 1,
           "title": "labels objects (field)",
           "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
-          "visibility": true,
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "minScale": 0,
@@ -173,32 +167,32 @@
                     "field": "driverFloat",
                     "stops": [
                       {
-                        "value": 1,
                         "color": [
                           255,
                           128,
                           0,
                           255
-                        ]
+                        ],
+                        "value": 1
                       },
                       {
-                        "value": 6,
                         "color": [
                           255,
                           255,
                           255,
                           255
-                        ]
+                        ],
+                        "value": 6
                       }
                     ]
                   },
                   {
                     "type": "sizeInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
                     "maxDataValue": 6,
-                    "minSize": 8,
-                    "maxSize": 32
+                    "maxSize": 32,
+                    "minDataValue": 1,
+                    "minSize": 8
                   }
                 ],
                 "symbol": {
@@ -235,10 +229,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e1c498-layer-79",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -250,48 +242,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419728000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 283.15978896502367,
-      "scale": 7690.581250115071,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 501073.62270952924,
-        "y": 6785568.220676354,
-        "z": 2.882750150747597
-      },
       "camera": {
         "position": {
           "spatialReference": {

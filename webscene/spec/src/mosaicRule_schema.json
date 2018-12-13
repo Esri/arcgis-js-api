@@ -89,7 +89,7 @@
     },
     "where": {
       "type": "string",
-      "description": "Deprecated. Use `layerDefinition.definitionExpression` instead."
+      "description": "<em>Deprecated. Use `layerDefinition.definitionExpression` instead.</em>"
     }
   },
   "required": [

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Slāņu saraksts",noItemsToDisplay:"Pašreiz nav vienību, ko rādīt.",layerInvisibleAtScale:"Nav redzams pašreizējā mērogā",layerError:"Ielādējot šo slāni, radās kļūda",untitledLayer:"Slānis bez nosaukuma"});

@@ -1,0 +1,1 @@
+#define SYMBOL_ALPHA_CUTOFF 0.001

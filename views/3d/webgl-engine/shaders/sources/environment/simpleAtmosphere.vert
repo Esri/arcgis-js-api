@@ -28,7 +28,7 @@ void main(void) {
 
   vec3 pos = position;
   float ndotl = lightDirection.z;
-  vtc = vec2(0, position.z+0.05);
+  vtc = vec2(0.0, position.z+0.05);
 
 #else
 

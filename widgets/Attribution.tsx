@@ -38,7 +38,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Attribution/nls/Attribution";
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -50,7 +50,8 @@ import Widget = require("esri/widgets/Widget");
 import AttributionViewModel = require("esri/widgets/Attribution/AttributionViewModel");
 
 // esri.widgets.support
-import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-attribution esri-widget",
@@ -85,7 +86,7 @@ class Attribution extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own(watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender()));
   }
 
@@ -225,7 +226,7 @@ class Attribution extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const classes = {
       [CSS.open]: this._isOpen
     };
@@ -254,7 +255,7 @@ class Attribution extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderSourcesNode(): any {
+  private _renderSourcesNode(): VNode {
     const isOpen = this._isOpen;
     const interactive = this._isInteractive();
     const sourceTabIndex = interactive ? 0 : -1;

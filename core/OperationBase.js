@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["./declare"],function(e){return e(null,{declaredClass:"esri.core.OperationBase",type:"not implemented",label:"not implemented",constructor:function(e){e=e||{},e.label&&(this.label=e.label)},performUndo:function(){console.log("performUndo has not been implemented")},performRedo:function(){console.log("performRedo has not been implemented")}})});

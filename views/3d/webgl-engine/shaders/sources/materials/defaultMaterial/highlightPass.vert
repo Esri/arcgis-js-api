@@ -29,10 +29,13 @@ void main(void) {
 
 #ifdef INSTANCED_DOUBLE_PRECISION
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
+#ifdef IOS_SAFARI_FIX
+  originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
+#endif
   vpos -= originDelta;
 
 #ifdef VERTICAL_OFFSET
-  vec3 centerPos = model * localCenter().xyz;
+  vec3 centerPos = model * localCenter().xyz + originDelta;
   vpos += calculateVerticalOffset(centerPos, localOrigin);
 #endif
 #else /* INSTANCED_DOUBLE_PRECISION */
@@ -42,7 +45,7 @@ void main(void) {
 #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
 
-  gl_Position = proj * view * vec4(vpos, 1);
+  gl_Position = proj * view * vec4(vpos, 1.0);
 
 #ifdef TEXTURING
 #ifndef FLIPV

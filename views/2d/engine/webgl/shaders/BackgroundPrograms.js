@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,r,a){Object.defineProperty(r,"__esModule",{value:!0}),r.background={name:"background",shaders:{vertexShader:a.resolveIncludes("background/background.vert"),fragmentShader:a.resolveIncludes("background/background.frag")},attributes:{a_pos:0}}});

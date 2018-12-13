@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Pietuvināt",next:"Nākošais elements",previous:"Iepriekšējs elements",close:"Aizvērt",dock:"Dokot",undock:"Atdokot",menu:"Izvēlne",untitled:"Bez virsraksta",pageText:"{index} no {total}",selectedFeature:"Atlasītais elements",selectedFeatures:"{total} rezultāti",loading:"Ielādē",collapse:"Sakļaut",expand:"Izvērst"});
+define({zoom:"Pietuvināt",next:"Nākošais elements",previous:"Iepriekšējs elements",dock:"Dokot",undock:"Atdokot",pageText:"{index} no {total}",selectedFeature:"Atlasītais elements",selectedFeatures:"{total} rezultāti"});

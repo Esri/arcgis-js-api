@@ -5,6 +5,9 @@
   "description": "Operational layers contain your data. Usually, a basemap sits beneath your operational layers to give them geographic context.",
   "oneOf": [
     {
+      "$ref": "buildingSceneLayer_schema.json"
+    },
+    {
       "$ref": "csvLayer_schema.json"
     },
     {

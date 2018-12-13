@@ -18,7 +18,7 @@ void main() {
   #ifdef SPHERICAL
     vec3 vnormal = normalize(position + origin);
   #else
-    vec3 vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
+    vec3 vnormal = vec3(0.0, 0.0, 1.0); // WARNING: up-axis dependent code
   #endif
 
   vec2 uv = uv0;

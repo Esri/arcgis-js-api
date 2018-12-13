@@ -1,19 +1,19 @@
+/**
+ * NOTE:
+ *   Overlay items are drawn using canvas when using the takeScreenshot
+ *   API. Please take care that the visual styles stay the same. Most styling
+ *   should happen using inline styles, while the CSS should be concerned with
+ *   positioning only.
+ */
 .esri-text-overlay-item {
   display: block;
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
 
-  color: white;
-  font-size: $text_size;
-  font-family: $font_family;
-  line-height: $line_height;
-
-  text-shadow: 0 0 1px black;
-
-  background: rgba(0, 0, 0, 0.6);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  font-size: $font-size;
+  font-family: $font-family;
+  line-height: $line-height;
 }
 
 .esri-text-overlay-item-anchor-bottom {

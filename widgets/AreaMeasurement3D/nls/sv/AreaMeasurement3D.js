@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({title:"Mät",hint:"Börja mäta genom att klicka i scenen för att placera den första punkten",unsupported:"Areamätning stöds inte i MapView.",perimeterLength:"Omkrets",area:"Område",unit:"Enhet",notApplicable:"saknas",newMeasurement:"Ny mätning",units:{metric:"Metriska",imperial:"Imperial","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmil (engelska)","square-inches":"Kvadrattum","square-feet":"Kvadratfot","square-yards":"Square Yards","square-us-feet":"Kvadratfot (USA)",acres:"Tunnland",ares:"Ar",hectares:"Hektar"}});
+define({title:"Mät",hint:"Börja mäta genom att klicka i scenen för att placera den första punkten",unsupported:"3D-areamätning stöds bara i SceneView.",perimeterLength:"Omkrets",area:"Område",unit:"Enhet",notApplicable:"saknas",newMeasurement:"Ny mätning",units:{metric:"Metriska",imperial:"Imperial","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmil (engelska)","square-inches":"Kvadrattum","square-feet":"Kvadratfot","square-yards":"Square Yards","square-us-feet":"Kvadratfot (USA)",acres:"Tunnland",ares:"Ar",hectares:"Hektar"}});

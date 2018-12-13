@@ -46,7 +46,7 @@ import { CollectionChangeEvent } from "esri/core/interfaces";
 import { on, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -63,7 +63,8 @@ import { BasemapsSource } from "esri/widgets/BasemapGallery/interfaces";
 import BasemapGalleryItem = require("esri/widgets/BasemapGallery/support/BasemapGalleryItem");
 
 // esri.widgets.support
-import { accessibleHandler, tsx, renderable } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const DEFAULT_BASEMAP_IMAGE = require.toUrl("../themes/base/images/basemap-toggle-64.svg");
 
@@ -111,7 +112,7 @@ class BasemapGallery extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     const handles = this._handles;
 
     this.own([
@@ -260,7 +261,7 @@ class BasemapGallery extends declared(Widget) {
   //
   //-------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const sourceLoading = this.get("source.state") === "loading";
     const isDisabled = this.get("viewModel.state") === "disabled";
     const items = this.get<Collection<BasemapGalleryItem>>("viewModel.items")
@@ -301,7 +302,7 @@ class BasemapGallery extends declared(Widget) {
   //-------------------------------------------------------------------
 
   @accessibleHandler()
-  private _handleClick(event: Event) {
+  private _handleClick(event: Event): void {
     const item = event.currentTarget["data-item"] as BasemapGalleryItem;
 
     if (item.state === "ready") {
@@ -309,11 +310,12 @@ class BasemapGallery extends declared(Widget) {
     }
   }
 
-  private _renderBasemapGalleryItem(item: BasemapGalleryItem): any {
+  private _renderBasemapGalleryItem(item: BasemapGalleryItem): VNode {
     const thumbnailUrl = item.get<string>("basemap.thumbnailUrl");
     const thumbnailSource = thumbnailUrl || DEFAULT_BASEMAP_IMAGE;
     const title = item.get<string>("basemap.title");
-    const tooltip = item.get<string>("error.message") || title;
+    const snippet = item.get<string>("basemap.portalItem.snippet");
+    const tooltip = item.get<string>("error.message") || snippet || title;
     const tabIndex = item.state === "ready" ? 0 : -1;
     const isSelected = this.viewModel.basemapEquals(item.basemap, this.activeBasemap);
 

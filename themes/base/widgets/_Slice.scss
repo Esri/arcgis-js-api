@@ -1,7 +1,7 @@
 @mixin slice() {
   .esri-slice__container {
     position: relative;
-    padding: $cap_spacing $side_spacing;
+    padding: $cap-spacing 0;
     overflow-y: auto;
     a {
       text-decoration: none;
@@ -9,7 +9,65 @@
   }
 
   .esri-slice__hint {
-    padding-bottom: 12px;
+    padding: 0 $side-spacing;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .esri-slice__hint-text {
+    margin: $cap-spacing 0;
+    padding: 0;
+  }
+
+  .esri-slice__exclude-button {
+    margin-bottom: $cap-spacing;
+  }
+
+  .esri-slice__settings {
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    padding: $cap-spacing--half $side-spacing $cap-spacing $side-spacing;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .esri-slice__layer-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-bottom: $cap-spacing--half;
+  }
+
+  .esri-slice__cross {
+    margin-right: $side-spacing--half;
+    color: inherit;
+    position: relative;
+    top: 2px;
+  }
+
+  .esri-slice__panel--error {
+    color: $font-color--error;
+    padding: 0 $side-spacing;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .esri-slice__actions {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0 $side-spacing;
+  }
+
+  html[dir="rtl"] {
+    .esri-slice__cross {
+      margin-right: 0;
+      margin-left: $side-spacing--half;
+    }
   }
 }
 

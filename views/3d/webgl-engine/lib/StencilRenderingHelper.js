@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./Util"],function(t,e,n){return function(){function t(t){this._enabled=!1,this._rctx=t}return Object.defineProperty(t.prototype,"enabled",{get:function(){return this._enabled},set:function(t){t?this.enable():this.disable()},enumerable:!0,configurable:!0}),t.prototype.prepareStencilWritePass=function(){n.assert(this.enabled);var t=this._rctx;t.setStencilFunction(519,1,255),t.setStencilOp(7680,7680,7681),t.setStencilWriteMask(255)},t.prototype.finish=function(){if(this.enabled){var t=this._rctx;t.setStencilFunction(519,0,0),t.setStencilOp(7680,7680,7680)}},t.prototype.enableStencilRead=function(){if(this.enabled){this._rctx.setStencilFunction(517,1,255)}},t.prototype.disableStencilRead=function(){if(this.enabled){this._rctx.setStencilFunction(519,0,0)}},t.prototype.enable=function(){this._enabled=!0,this._rctx.setStencilTestEnabled(!0)},t.prototype.disable=function(){this._enabled=!1,this._rctx.setStencilTestEnabled(!1)},t}()});

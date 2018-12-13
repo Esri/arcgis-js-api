@@ -13,10 +13,11 @@
     width: 0;
     height: 0;
     z-index: 1;
-    margin: 0 floor($side_spacing * 0.25);
+    margin: 0 $side-spacing--quarter;
     @include defaultBoxShadow();
     transition: opacity 250ms ease-in-out, margin 250ms ease-in-out;
     overflow: hidden;
+    visibility: hidden;
   }
 
   .esri-ui-top-left .esri-expand__content,
@@ -51,8 +52,9 @@
     width: auto;
     height: auto;
     overflow: visible;
-    margin-left: floor($side_spacing * 0.7);
-    margin-right: floor($side_spacing * 0.7);
+    margin-left: $side-spacing--half;
+    margin-right: $side-spacing--half;
+    visibility: visible;
   }
 
   .esri-expand__content .esri-widget {
@@ -61,29 +63,29 @@
 
   .esri-expand__icon-number {
     position: absolute;
-    top: floor($button_height/6) * -1;
+    top: $button-height--fifth * -1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $text_size_small;
+    font-size: $font-size--small;
     line-height: 1em;
     padding: 0.125em 0.333em;
-    height: floor($button_height/2);
-    border-radius: floor($button_height/2);
-    background-color: $interactive_text_color;
-    color: $background_color;
+    height: $button-height--half;
+    border-radius: $button-height--half;
+    background-color: $interactive-font-color;
+    color: $background-color;
     transform-origin: 50%;
     animation: expand-number-intro-ani 1000ms ease-in-out;
   }
 
   .esri-ui-top-left .esri-expand__icon-number,
   .esri-ui-bottom-left .esri-expand__icon-number {
-    right: floor($button_width/5) * -1;
+    right: $button-width--fifth * -1;
   }
 
   .esri-ui-top-right .esri-expand__icon-number,
   .esri-ui-bottom-right .esri-expand__icon-number {
-    left: floor($button_width/5) * -1;
+    left: $button-width--fifth * -1;
   }
 
   .esri-ui-bottom-right .esri-expand__icon-number--expanded,
@@ -103,22 +105,22 @@
   // Max heights
   .esri-view-height-greater-than-medium {
     .esri-ui-corner .esri-component .esri-expand__content {
-      max-height: $gt_medium_height;
+      max-height: $view-height--gt-medium__component-max-height;
     }
   }
   .esri-view-height-medium {
     .esri-ui-corner .esri-component .esri-expand__content {
-      max-height: $medium_height;
+      max-height: $view-height--medium__component-max-height;
     }
   }
   .esri-view-height-small {
     .esri-ui-corner .esri-component .esri-expand__content {
-      max-height: $small_height;
+      max-height: $view-height--small__component-max-height;
     }
   }
   .esri-view-height-xsmall {
     .esri-ui-corner .esri-component .esri-expand__content {
-      max-height: $xsmall_height;
+      max-height: $view-height--xsmall__component-max-height;
     }
   }
 
@@ -181,7 +183,7 @@
       bottom: 0;
       margin: 0;
       height: 100%;
-      background: $background_color;
+      background: $background-color;
       z-index: 1;
       overflow: auto;
 
@@ -220,7 +222,7 @@
 
       .esri-expand__container--expanded {
         width: 75%;
-        max-width: $panel_width;
+        max-width: $panel-width;
         animation: expand-slide-rtl-ani 300ms forwards;
       }
     }
@@ -235,7 +237,7 @@
 
       .esri-expand__container--expanded {
         width: 75%;
-        max-width: $panel_width;
+        max-width: $panel-width;
         animation: expand-slide-ltr-ani 300ms forwards;
       }
     }

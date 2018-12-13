@@ -14,20 +14,11 @@ attribute vec4 a_sizeAndOutlineWidth;
 
 attribute float a_visible; // a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
 
-// the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
-// relative to the tile's upper left corner
-// the extrusion vector.
-uniform highp mat4 u_transformMatrix;
-// the extrude matrix which is responsible for the 'anti-zoom' as well as the rotation
-uniform highp mat4 u_extrudeMatrix;
-// u_normalized_origin is the tile's upper left corner given in normalized coordinates
-uniform highp vec2 u_normalized_origin;
+uniform highp mat3 u_dvsMat3;
+uniform highp mat3 u_displayMat3;
 
 // the size of the mosaic given in pixels
 uniform vec2 u_mosaicSize;
-
-// the opacity of the layer given by the painter
-uniform mediump float u_opacity;
 
 // the interpolated texture coordinate value to be used by the fragment shader in order to sample the sprite texture
 varying mediump vec2 v_tex;
@@ -48,11 +39,6 @@ varying mediump float v_outlineWidth;
 #ifdef ID
 varying highp vec4 v_id;
 #endif // ID
-
-#ifdef HEATMAP
-attribute float a_heatmapWeight;
-varying mediump float v_heatmapWeight;
-#endif // HEATMAP
 
 // import the VV inputs and functions (they are #ifdefed, so if the proper #define is not set it will end-up being a no-op)
 #include <materials/icon/vvUniforms.glsl>
@@ -91,15 +77,10 @@ void main()
 
   // make sure to preserve the aspect ratio of the symbol
   vec2 size = vec2(h * a_size.x / a_size.y, h);
-  vec2 offset = a_offset * size / a_size;
+  vec3 offset = vec3(a_offset * size / a_size, 0.0);
   v_size = size;
 #else
-#ifdef HEATMAP
-  // reconstruct the kernel size
-  a_size = 9.0 * a_size + 1.0;
-#endif // HEATMAP
-
-  vec2 offset = a_offset;
+  vec3 offset = vec3(a_offset, 0.0);
   v_size = a_size;
 #endif // defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
@@ -107,16 +88,21 @@ void main()
   offset *= 2.0;
 #endif // SDF
 
+
 #ifdef VV_ROTATION
-  gl_Position = vec4(u_normalized_origin, depth, 0.0) + u_transformMatrix * vec4(a_pos, delta_z, 1.0) + u_extrudeMatrix * getVVRotation(a_vv.w) * vec4(offset, 0.0, 0.0);
+  // If we have a rotation VV, we need to rotate our offset
+  offset = u_displayMat3 * getVVRotationMat3(a_vv.w) * offset;
 #else
-  gl_Position = vec4(u_normalized_origin, depth, 0.0) + u_transformMatrix * vec4(a_pos, delta_z, 1.0) + u_extrudeMatrix * vec4(offset, 0.0, 0.0);
+  offset = u_displayMat3 * offset;
 #endif // VV_ROTATION
+  vec3 pos = u_dvsMat3 * vec3(a_pos, 1.0) + offset;
+
+  gl_Position = vec4(pos.xy, delta_z, 1.0);
 
 #ifdef VV_OPACITY
   v_transparency = getVVOpacity(a_vv.z);
 #else
-  v_transparency = u_opacity;
+  v_transparency = 1.0;
 #endif // VV_OPACITY
 
 #ifdef VV_COLOR
@@ -130,14 +116,11 @@ void main()
 
 #ifdef SDF
   v_outlineColor = a_outlineColor;
-  v_outlineWidth = a_sizeAndOutlineWidth.z;
+  // YF: in practice v_size.x and v_size.y are identical since we're mostly dealing with sms
+  v_outlineWidth = min(a_sizeAndOutlineWidth.z, max(v_size.x - 0.99, 0.0));
 #endif // SDF
 
 #ifdef ID
   v_id = a_id;
 #endif // ID
-
-#ifdef HEATMAP
-  v_heatmapWeight = a_heatmapWeight;
-#endif // HEATMAP
 }

@@ -3,7 +3,7 @@ import { Fill } from "dojox/gfx";
 
 // esri
 import Color = require("../Color");
-import { Point, Extent, SpatialReference } from "../geometry";
+import { Extent, Point, SpatialReference, Polygon, Polyline } from "../geometry";
 import Graphic = require("../Graphic");
 import PopupTemplate = require("../PopupTemplate");
 import { Symbol } from "../symbols";
@@ -283,6 +283,7 @@ interface SizeRampStop {
   value?: any;
   symbol: Symbol;
   size?: number;
+  outlineSize?: number;
   preview?: HTMLElement;
 }
 
@@ -350,4 +351,76 @@ export interface Contributors extends MaxKeyOwner, Array<Contributor> {}
 
 export interface AttributionData extends MaxKeyOwner {
   contributors?: Contributors;
+}
+
+export interface VertexDrag {
+  /** Index of the polygon vertex being dragged. */
+  index: number;
+  /** Original position of the dragged vertex. */
+  origin: Point;
+}
+
+export type AreaUnit =
+  | "metric"
+  | "imperial"
+  | "square-inches"
+  | "square-feet"
+  | "square-yards"
+  | "square-miles"
+  | "square-us-feet"
+  | "square-meters"
+  | "square-kilometers"
+  | "acres"
+  | "ares"
+  | "hectares";
+
+export type MeasurementMode = "auto" | "planar" | "geodesic";
+
+export type MeasurementState = "disabled" | "ready" | "measuring";
+
+export interface AreaMeasurement {
+  geometry: Polygon;
+  area: number;
+  perimeter: number;
+}
+
+export interface AreaMeasurementLabel {
+  area: string;
+  perimeter: string;
+}
+
+export type LinearUnit =
+  | "imperial"
+  | "metric"
+  | "inches"
+  | "feet"
+  | "yards"
+  | "miles"
+  | "nautical-miles"
+  | "meters"
+  | "kilometers"
+  | "us-feet";
+
+export interface LinearMeasurement {
+  geometry: Polyline;
+  length: number;
+}
+
+export interface LinearMeasurementPalette {
+  handleWidth: number;
+  handleColor: number[];
+
+  pathWidth: number;
+  pathPrimaryColor: number[];
+  pathSecondaryColor: number[];
+}
+
+export interface AreaMeasurementPalette {
+  handleWidth: number;
+  handleColor: number[];
+
+  pathWidth: number;
+  pathColor: number[];
+
+  fillColor: number[];
 }

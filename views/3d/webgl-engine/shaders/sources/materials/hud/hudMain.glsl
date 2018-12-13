@@ -53,7 +53,7 @@
 
 #ifdef DEBUG_DRAW_BORDER
    float isBorder = float(any(lessThan(debugBorderCoords.xy, vec2(debugBorderCoords.z))) || any(greaterThan(debugBorderCoords.xy, vec2(1.0 - debugBorderCoords.z))));
-   gl_FragColor = mix(gl_FragColor, vec4(1, 0, 1, 1), isBorder);
+   gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder);
 #endif
 
   if (gl_FragColor.a < 0.1) {

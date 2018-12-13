@@ -9,14 +9,15 @@
  *
  * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}. Instead, see {@link module:esri/views/SceneView#takeScreenshot SceneView.takeScreenshot()}.
  * * {@link module:esri/layers/VectorTileLayer} printing requires ArcGIS Server 10.5.1 or later.
+ * * {@link module:esri/layers/support/LabelClass Labels} currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
+ * * {@link module:esri/layers/ImageryLayer} cannot be printed with ArcGIS Server 10.5.1 or earlier, or any Printing Service published with ArcMap.
+ * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
+ * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
+ * the URL to these symbols must be accessible to the print server for it to work properly.
  * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
  * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
  * This has some limitations related to large size printing quality and a dependency on browser window height/width ratio.
- * * Labels currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
- * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
- * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
- * the URL to these symbols must be accessible to the print server for it to work properly.
  * :::
  *
  * @module esri/widgets/Print
@@ -54,7 +55,7 @@ import urlUtils = require("esri/core/urlUtils");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.tasks.support
 import PrintTemplate = require("esri/tasks/support/PrintTemplate");
@@ -71,6 +72,7 @@ import PrintViewModel = require("esri/widgets/Print/PrintViewModel");
 import TemplateOptions = require("esri/widgets/Print/TemplateOptions");
 
 // esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
@@ -190,7 +192,7 @@ class Print extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own([
       watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
         const { format, layout } = this.templateOptions;
@@ -488,7 +490,7 @@ class Print extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const {
       attributionEnabled,
       author,
@@ -955,7 +957,7 @@ class Print extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderLoader(): any {
+  private _renderLoader(): VNode {
     const classes = {
       [CSS.loader]: this._awaitingServerResponse
     };
@@ -1128,7 +1130,7 @@ class Print extends declared(Widget) {
     }
   }
 
-  private _renderExportedLink(exportedLinksArray: FileLink[]): any {
+  private _renderExportedLink(exportedLinksArray: FileLink[]): VNode {
     return exportedLinksArray.map((exportedLink) => {
       const anchorClasses = {
         [CSS.anchorDisabled]: exportedLink.state === "pending" || exportedLink.state === "error"

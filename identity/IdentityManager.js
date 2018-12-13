@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["./IdentityManagerDialog","../kernel","./OAuthSignInHandler","../core/declare"],function(e,n,i,r){var a=new e;return n.id=r.safeMixin(a,i),n.id});
+define(["require","exports","../kernel","../core/declare","./IdentityManagerDialog","./OAuthSignInHandler"],function(e,n,r,i,a,t){var d=new a,l=i.safeMixin(d,t);return r.id=l,l});

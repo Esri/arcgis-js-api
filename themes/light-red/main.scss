@@ -4,22 +4,20 @@
 @import "../base/colors/scss/variables.scss";
 // ↳ https://github.com/Esri/calcite-colors.git
 
-$text_color: $Calcite_Gray_700;
-$background_color: $Calcite_Red_150;
-$anchor_color: $Calcite_Gray_700;
-$anchor_hover_color: $Calcite_Gray_650;
-$interactive_text_color: $Calcite_Gray_650;
-$interactive_text_color--hover: $Calcite_Gray_700;
+$font-color: $Calcite_Gray_700;
+$background-color: $Calcite_Red_150;
+$interactive-font-color: $Calcite_Gray_650;
+$interactive-font-color--hover: $Calcite_Gray_700;
 
-$button_color: $Calcite_Red_200;
-$button_color--inverse: #000;
+$button-color: $Calcite_Red_200;
+$button-color--inverse: #000;
 
 // Inverse
-$interactive_text_color--inverse: darken($text_color, 12%);
-$background_inverse_color: $Calcite_Red_200;
+$interactive-font-color--inverse: darken($font-color, 12%);
+$background-color--inverse: $Calcite_Red_200;
 
 // Selected
-$selected_border_color: $interactive_text_color;
-$selected_background_color: $Calcite_Red_100;
+$border-color--active: $interactive-font-color;
+$background-color--active: $Calcite_Red_100;
 
 @import "../base/core";

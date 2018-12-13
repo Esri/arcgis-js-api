@@ -46,7 +46,7 @@ import Widget = require("esri/widgets/Widget");
 import BookmarksViewModel = require("esri/widgets/Bookmarks/BookmarksViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -126,14 +126,14 @@ class Bookmarks extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own([
       watchUtils.on(this, "viewModel.bookmarks", "change", () => this._bookmarksChanged()),
       watchUtils.init(this, "viewModel.bookmarks", () => this._bookmarksChanged())
     ]);
   }
 
-  destroy() {
+  destroy(): void {
     this._handles.destroy();
     this._handles = null;
   }
@@ -251,7 +251,7 @@ class Bookmarks extends declared(Widget) {
     return null;
   }
 
-  render() {
+  render(): VNode {
     const { state } = this.viewModel;
 
     const bookmarkListNode =
@@ -276,7 +276,7 @@ class Bookmarks extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderLoading(): any {
+  private _renderLoading(): VNode {
     return (
       <div class={CSS.loaderContainer} key="loader">
         <div class={CSS.loader} />
@@ -284,7 +284,7 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderDisabled(): any {
+  private _renderDisabled(): VNode {
     return (
       <div
         key="bookmarks-disabled"
@@ -296,7 +296,7 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderNoBookmarksContainer(): any {
+  private _renderNoBookmarksContainer(): VNode {
     return (
       <div class={CSS.noBookmarksContainer} key="no-bookmarks">
         <svg class={CSS.noBookmarksImage} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -311,7 +311,7 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderBookmarksContainer(bookmarks: Collection<Bookmark>): any {
+  private _renderBookmarksContainer(bookmarks: Collection<Bookmark>): VNode {
     return (
       <ul key="bookmark-list" aria-label={i18n.widgetLabel} class={CSS.bookmarkList}>
         {bookmarks.map((bookmark) => this._renderBookmark(bookmark)).toArray()}
@@ -319,7 +319,7 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderBookmarks(): any {
+  private _renderBookmarks(): VNode {
     const { bookmarks } = this.viewModel;
 
     const validBookmarks = bookmarks.filter(Boolean);
@@ -329,7 +329,7 @@ class Bookmarks extends declared(Widget) {
       : this._renderNoBookmarksContainer();
   }
 
-  private _renderBookmark(bookmark: Bookmark): any {
+  private _renderBookmark(bookmark: Bookmark): VNode {
     const { activeBookmark } = this.viewModel;
     const { name, thumbnail } = bookmark;
 

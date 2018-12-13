@@ -2,7 +2,6 @@
   "operationalLayers": [
     {
       "id": "14badc782cd-layer1",
-      "opacity": 1,
       "title": "uvrenderer name:EsriIconsStyle",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -20,32 +19,32 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
                 "maxDataValue": 50,
-                "minSize": 15,
-                "maxSize": 30
+                "maxSize": 30,
+                "minDataValue": 5,
+                "minSize": 15
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -58,7 +57,6 @@
     },
     {
       "id": "14badc78302-layer3",
-      "opacity": 1,
       "title": "simpleRenderer name:Circle",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -76,32 +74,32 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
                 "maxDataValue": 50,
-                "minSize": 15,
-                "maxSize": 30
+                "maxSize": 30,
+                "minDataValue": 5,
+                "minSize": 15
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -117,7 +115,6 @@
     },
     {
       "id": "14badc782fb-layer2",
-      "opacity": 1,
       "title": "uv name:themShapes",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -135,33 +132,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -174,10 +171,8 @@
     },
     {
       "id": "14badc78344-layer6",
-      "opacity": 1,
       "title": "simple name:invCone",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -192,38 +187,38 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "height",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "height"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "sizeInfo",
-                "minSize": 50,
-                "axis": "width"
+                "axis": "width",
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -239,10 +234,8 @@
     },
     {
       "id": "14badc7834b-layer7",
-      "opacity": 1,
       "title": "uv url:themShapes",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "minScale": 0,
@@ -257,33 +250,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -296,7 +289,6 @@
     },
     {
       "id": "14badc78355-layer8",
-      "opacity": 1,
       "title": "simple url:diamond",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -314,33 +306,33 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -356,7 +348,6 @@
     },
     {
       "id": "14badc783c8-layer9",
-      "opacity": 1,
       "title": "uv name: tree style",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers11/FeatureServer/3",
       "visibility": false,
@@ -374,11 +365,11 @@
               {
                 "type": "sizeInfo",
                 "field": "OBJECTID",
-                "minDataValue": 1,
+                "axis": "height",
                 "maxDataValue": 82,
-                "minSize": 1,
                 "maxSize": 20,
-                "axis": "height"
+                "minDataValue": 1,
+                "minSize": 1
               }
             ],
             "field1": "styleitemname",
@@ -389,7 +380,6 @@
     },
     {
       "id": "14badc783d9-layer10",
-      "opacity": 1,
       "title": "simple name:Frangula",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -407,11 +397,11 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               }
             ],
             "symbol": {
@@ -425,7 +415,6 @@
     },
     {
       "id": "14badc783e7-layer11",
-      "opacity": 1,
       "title": "uv name:themTrees",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers11/FeatureServer/3",
       "visibility": false,
@@ -443,33 +432,33 @@
               {
                 "type": "sizeInfo",
                 "field": "OBJECTID",
-                "minDataValue": 1,
+                "axis": "height",
                 "maxDataValue": 82,
-                "minSize": 1,
                 "maxSize": 20,
-                "axis": "height"
+                "minDataValue": 1,
+                "minSize": 1
               },
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
                 "stops": [
                   {
-                    "value": 15,
                     "color": [
                       0,
                       0,
                       255,
                       255
-                    ]
+                    ],
+                    "value": 15
                   },
                   {
-                    "value": 50,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 50
                   }
                 ]
               }
@@ -482,7 +471,6 @@
     },
     {
       "id": "14badc783f9-layer12",
-      "opacity": 1,
       "title": "simple name:ThemFrangula",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
       "visibility": false,
@@ -500,11 +488,11 @@
               {
                 "type": "sizeInfo",
                 "field": "z_accuracy",
-                "minDataValue": 5,
+                "axis": "all",
                 "maxDataValue": 50,
-                "minSize": 50,
                 "maxSize": 200,
-                "axis": "all"
+                "minDataValue": 5,
+                "minSize": 50
               }
             ],
             "symbol": {
@@ -521,10 +509,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -536,48 +522,35 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419733000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 326.0164127450096,
-      "scale": 15459.438301615384,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 498467.41086081637,
-        "y": 6783275.305877065,
-        "z": 1.246153051033616
-      },
       "camera": {
         "position": {
           "spatialReference": {

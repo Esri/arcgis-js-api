@@ -2,10 +2,8 @@
   "operationalLayers": [
     {
       "id": "14bad95c0e3-layer3",
-      "opacity": 1,
       "title": "World Time Zones (Cities)",
       "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/0",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "definitionExpression": "POP_RANK<4",
@@ -16,10 +14,10 @@
               {
                 "type": "sizeInfo",
                 "field": "POP_RANK",
-                "minDataValue": 1,
                 "maxDataValue": 5,
-                "minSize": 60000,
-                "maxSize": 10000
+                "maxSize": 10000,
+                "minDataValue": 1,
+                "minSize": 60000
               }
             ],
             "symbol": {
@@ -49,18 +47,14 @@
     },
     {
       "id": "14bad95c164-layer4",
-      "opacity": 1,
       "title": "World Time Zones (Regions)",
       "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/2",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer"
     },
     {
       "id": "14bad95c16e-layer5",
-      "opacity": 1,
       "title": "World Time Zones",
       "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "drawingInfo": {
@@ -1166,10 +1160,8 @@
     "baseMapLayers": [
       {
         "id": "worldTopoBase",
-        "opacity": 1,
         "title": "World Topo Map",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -1181,47 +1173,34 @@
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
     ]
   },
   "ground": {
-    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
         "listMode": "show",
         "title": "Terrain3D",
         "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-        "visibility": true,
         "layerType": "ArcGISTiledElevationServiceLayer"
       }
-    ]
+    ],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 0,
-      "scale": 70115896.39023209,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": -0.09504164755344391,
-        "y": 7176653.900901916,
-        "z": -85.02851448114961
-      },
       "camera": {
         "position": {
           "spatialReference": {

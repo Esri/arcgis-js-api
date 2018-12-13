@@ -5,7 +5,7 @@
   "description": "Defines the look and feel of popup windows when a user clicks or queries a feature.",
   "properties": {
     "description": {
-      "description": "A string that appears in the body of the popup window as a description. It is also possible to specify the description as HTML-formatted content.",
+      "description": "A string that appears in the body of the popup window as a description. A basic subset of HTML may also be used to enrich the text. The supported HTML for ArcGIS Online can be seen in the [Supported HTML](https://doc.arcgis.com/en/arcgis-online/reference/supported-html.htm) page.",
       "oneOf": [
         {
           "type": "string"
@@ -60,6 +60,11 @@
     "showAttachments": {
       "type": "boolean",
       "description": "Indicates whether attachments will be loaded for feature layers that have attachments."
+    },
+    "showLastEditInfo": {
+      "type": "boolean",
+      "description": "Indicates whether popup will display information about when and who last edited the feature. Applicable only to layers that have been configured to keep track of such information.",
+      "default": true
     },
     "title": {
       "type": "string",

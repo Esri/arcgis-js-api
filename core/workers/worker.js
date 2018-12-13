@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 /* eslint-env worker */
 
@@ -46,9 +46,7 @@ var INVOKE = 6;
 var CANCEL = 7;
 
 function mapDelete(map, key) {
-  /*eslint-disable */
-  map["delete"](key);
-  /*eslint-enable */
+  map["delete"](key); // eslint-disable-line
 }
 
 function receiveMessage(event) {
@@ -61,13 +59,18 @@ function receiveMessage(event) {
   return event.data;
 }
 
-/*eslint-disable */
-function invokeStaticMessage(methodName, data) {
+// eslint-disable-next-line no-unused-vars
+function invokeStaticMessage(methodName, data, options) {
   // Deferred has already been loaded at this point
+  var signal = options && options.signal;
   var Deferred = require("dojo/Deferred");
   var jobId = globalId++;
 
-  var deferred = new Deferred(function(reason) {
+  var abortHandler = function() {
+    if (!outgoing.has(jobId)) {
+      return;
+    }
+
     // post a cancel message in order to cancel on the main thread
     self.postMessage({
       type: CANCEL,
@@ -76,7 +79,22 @@ function invokeStaticMessage(methodName, data) {
     });
 
     mapDelete(outgoing, jobId);
-  });
+
+    if (!deferred.isCanceled()) {
+      deferred.cancel();
+    }
+
+    if (signal) {
+      signal.removeEventListener("abort", abortHandler);
+    }
+  };
+
+  if (signal) {
+    signal.addEventListener("abort", abortHandler);
+  }
+
+  // TODO promise-migration: just use Promise and rely on signal
+  var deferred = new Deferred(abortHandler);
 
   outgoing.set(jobId, deferred);
 
@@ -90,7 +108,6 @@ function invokeStaticMessage(methodName, data) {
 
   return deferred.promise;
 }
-/*eslint-enable */
 
 function messageHandler(event /* FmkMessageEvent */) {
   var message = receiveMessage(event);

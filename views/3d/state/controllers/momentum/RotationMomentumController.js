@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../lib/gl-matrix","./MomentumController","../../utils/navigationUtils"],function(e,t,n,o,r,i){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(t,n,r,i){var u=e.call(this,t,2)||this;return u.momentum=n,u.axis=o.vec3d.create(),u.center=o.vec3d.create(),o.vec3d.set(i,u.axis),o.vec3d.set(r,u.center),u}return n(t,e),t.prototype.momentumStep=function(e,t){var n=this.momentum.value(e);i.applyRotation(t,this.center,this.axis,n)},t}(r.MomentumController);t.RotationMomentumController=u});
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/gl-matrix","./MomentumController","../../utils/navigationUtils","../../../support/geometryUtils"],function(e,t,o,r,n,i,l){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,o,n,i){var l=e.call(this,t,2)||this;return l.momentum=o,l.axis=r.vec3f64.create(),l.center=r.vec3f64.create(),r.vec3.copy(l.axis,i),r.vec3.copy(l.center,n),l}return o(t,e),t.prototype.momentumStep=function(e,t){var o=this.momentum.value(e);i.applyRotation(t,this.center,l.axisAngle.wrapAxisAngle(this.axis,o))},t}(n.MomentumController);t.RotationMomentumController=a});

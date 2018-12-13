@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../lib/gl-matrix","../../support/geometryUtils/boundedPlane"],function(e,r,t,n){function i(e){return function(r,i,u){return t.vec3d.lerp(r,i,u,o),!n.extrusionContainsPoint(e,o)}}Object.defineProperty(r,"__esModule",{value:!0}),r.sliceFilterPredicate=i;var o=t.vec3d.create()});
+define(["require","exports","../../../../core/libs/gl-matrix-2/gl-matrix","../../support/geometryUtils/boundedPlane"],function(e,r,t,i){function n(e){return function(r,n,u){return t.vec3.lerp(o,r,n,u),!i.extrusionContainsPoint(e,o)}}Object.defineProperty(r,"__esModule",{value:!0}),r.sliceFilterPredicate=n;var o=t.vec3f64.create()});

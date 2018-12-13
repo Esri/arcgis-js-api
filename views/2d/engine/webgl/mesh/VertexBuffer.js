@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../Utils"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t,r){this.data=e,this.stride=t,this.vertexCount=r}return e.decode=function(t){return new e(r.allocateTypedArrayBufferwithData(t.data,t.stride),t.stride,t.vertexCount)},e}();t.default=n;var f=function(){function e(e,t,r){this.geometryType=e,this.indexBuffer=new Uint32Array(t),this.namedBuffers=r}return e.decode=function(t){var r=t.geometryType,f=t.indexBuffer,i={};for(var u in t.namedBuffers)i[u]=n.decode(t.namedBuffers[u]);return new e(r,f,i)},e}();t.VertexBuffers=f});
+define(["require","exports","../Utils"],function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0});var i=function(){function r(e,r,t){this.data=e,this.stride=r,this.vertexCount=t}return r.decode=function(e){return new r(t.allocateTypedArrayBufferwithData(e.data,e.stride),e.stride,e.vertexCount)},r.fromVertexVector=function(e){return new r(t.allocateTypedArrayBufferwithData(e.data.buffer(),e.stride),e.stride,e.vertexCount)},r}();r.default=i;var n=function(){function o(e,r,t){this.geometryType=e,this.indexBuffer=new Uint32Array(r),this.namedBuffers=t}return o.decode=function(e){var r=e.geometryType,t=e.indexBuffer,n={};for(var f in e.namedBuffers)n[f]=i.decode(e.namedBuffers[f]);return new o(r,t,n)},o.fromVertexVectors=function(e){var r=e.geometryType,t=e.indexVector.buffer(),n={};for(var f in e.namedVectors)n[f]=i.fromVertexVector(e.namedVectors[f]);return new o(r,t,n)},o}();r.VertexBuffers=n});

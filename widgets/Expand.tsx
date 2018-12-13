@@ -35,7 +35,7 @@ import _WidgetBase = require("dijit/_WidgetBase");
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -47,7 +47,8 @@ import Widget = require("esri/widgets/Widget");
 import ExpandViewModel = require("esri/widgets/Expand/ExpandViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, renderable, tsx, isWidgetBase, isWidget } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
 
 type ContentSource = string | HTMLElement | Widget | _WidgetBase;
 
@@ -429,7 +430,7 @@ class Expand extends declared(Widget) {
     this.viewModel.expanded = !this.viewModel.expanded;
   }
 
-  render() {
+  render(): VNode {
     const expanded = this.viewModel.expanded;
     const { mode } = this;
     const expandTooltip = this.expandTooltip || i18nCommon.expand;
@@ -517,11 +518,11 @@ class Expand extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggle() {
+  private _toggle(): void {
     this.toggle();
   }
 
-  private _renderContent(): any {
+  private _renderContent(): VNode {
     const content = this.content;
 
     if (typeof content === "string") {
@@ -543,7 +544,7 @@ class Expand extends declared(Widget) {
     return null;
   }
 
-  private _attachToNode(this: HTMLElement, node: HTMLElement) {
+  private _attachToNode(this: HTMLElement, node: HTMLElement): void {
     const content: HTMLElement = this;
     node.appendChild(content);
   }

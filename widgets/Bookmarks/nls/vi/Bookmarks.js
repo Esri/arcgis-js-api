@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Đánh dấu",goToBookmark:"Đi đến mục đánh dấu",noBookmarksHeading:"Không có Đánh dấu",noBookmarksDescription:"Thêm mục đánh dấu vào bản đồ của bạn và chúng sẽ xuất hiện ở đây.",disabledHeading:"Đánh dấu bị vô hiệu hóa",disabledDescription:"Thêm MapView để kích hoạt đánh dấu."});

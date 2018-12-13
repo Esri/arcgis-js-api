@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/screenUtils","../../core/accessorSupport/decorators","./materialUtils"],function(e,r,o,t,p,l,s,c,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=s.px2pt(1),r}o(r,e),l=r,r.prototype.clone=function(){return new l({color:this.color?this.color.clone():null,size:this.size})};var l;return t([c.property(n.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([c.property(n.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([c.subclass("esri.symbols.support.Symbol3DOutline")],r)}(c.declared(l));r.Symbol3DOutline=i,r.default=i});

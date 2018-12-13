@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Jelmagyarázat",points:"Pontok",lines:"Vonalak",polygons:"Polygonok",creatingLegend:"Jelmagyarázat létrehozása",noLegend:"Nincs jelmagyarázat",dotValue:"1 pont = {value} {unit}",currentObservations:"Jelenlegi megfigyelések",previousObservations:"Előző megfigyelések",high:"Magas",low:"Alacsony",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"csomó",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} osztva a(z) {normField} értékével",showNormPct:"{field} az összes százalékaként",showRatio:"A(z) {field} és a(z) {normField} aránya",showRatioPercent:"{field} a(z) {normField} százalékaként",showRatioPercentTotal:"{field} a(z) {field} és {normField} százalékaként"});

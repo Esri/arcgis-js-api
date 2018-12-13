@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","./recognizers/Drag","./recognizers/PointerClickHoldAndDrag","./recognizers/SingleAndDoubleClick","./recognizers/VerticalTwoFingerDrag"],function(e,r,i,n,o,l){Object.defineProperty(r,"__esModule",{value:!0}),r.defaults=[n.PointerClickHoldAndDrag,o.SingleAndDoubleClick,i.Drag,l.VerticalTwoFingerDrag]});

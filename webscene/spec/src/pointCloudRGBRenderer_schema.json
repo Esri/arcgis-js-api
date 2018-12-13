@@ -12,17 +12,6 @@
       "type": "string",
       "description": "The name of the field that is used for the renderer."
     },
-    "fieldTransformType": {
-      "type": "string",
-      "description": "A transform that is applied to the field value before evaluating the renderer.",
-      "enum": [
-        "none",
-        "lowFourBit",
-        "highFourBit",
-        "absoluteValue",
-        "moduloTen"
-      ]
-    },
     "pointSizeAlgorithm": {
       "description": "",
       "$ref": "pointSizeAlgorithm_schema.json"

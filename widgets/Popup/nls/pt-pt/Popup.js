@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Aplicar zoom a",next:"Próxima elemento",previous:"Elemento anterior",close:"Fechar",dock:"Doca",undock:"Desencaixar",menu:"Menu",untitled:"Sem título",pageText:"{index} do {total}",selectedFeature:"Elemento selecionado",selectedFeatures:"{total} resultados",loading:"A Carregar",collapse:"Recolher",expand:"Expandir"});
+define({zoom:"Aplicar zoom a",next:"Próxima elemento",previous:"Elemento anterior",dock:"Doca",undock:"Desencaixar",pageText:"{index} do {total}",selectedFeature:"Elemento selecionado",selectedFeatures:"{total} resultados"});

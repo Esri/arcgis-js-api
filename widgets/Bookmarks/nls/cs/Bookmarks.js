@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({widgetLabel:"Záložky",goToBookmark:"Jít na záložku",noBookmarksHeading:"Žádné záložky",noBookmarksDescription:"Přidejte záložky na vaši mapu a budou zobrazeny zde.",disabledHeading:"Záložky deaktivovány",disabledDescription:"Pro aktivování záložek přidejte MapView."});

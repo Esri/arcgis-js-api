@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Εστίαση",next:"Επόμενο στοιχείο",previous:"Προηγούμενο στοιχείο",close:"Κλείσιμο",dock:"Αγκύρωση",undock:"Αναίρεση αγκύρωσης",menu:"Μενού",untitled:"Χωρίς τίτλο",pageText:"{index} από {total}",selectedFeature:"Επιλεγμένο στοιχείο",selectedFeatures:"{total} αποτελέσματα",loading:"Φόρτωση",collapse:"Σύμπτυξη",expand:"Ανάπτυξη"});
+define({zoom:"Εστίαση",next:"Επόμενο στοιχείο",previous:"Προηγούμενο στοιχείο",dock:"Αγκύρωση",undock:"Αναίρεση αγκύρωσης",pageText:"{index} από {total}",selectedFeature:"Επιλεγμένο στοιχείο",selectedFeatures:"{total} αποτελέσματα"});

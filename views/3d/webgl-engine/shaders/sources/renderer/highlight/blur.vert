@@ -19,7 +19,7 @@ void main() {
     // and if no coverage detected, create degenerate triangle
     vec4 cov = texture2D(coverageTex, uv0);
     if (cov.r == 0.0) {
-      gl_Position = vec4(0,0,0,0);
+      gl_Position = vec4(0.0);
     }
 
     // create texture coordinate for blur center

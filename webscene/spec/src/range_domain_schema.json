@@ -2,7 +2,7 @@
   "title": "rangeDomain",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Range domain specifies a range of valid values for a field",
+  "description": "Range domain specifies a range of valid values for a field.",
   "properties": {
     "name": {
       "type": "string",

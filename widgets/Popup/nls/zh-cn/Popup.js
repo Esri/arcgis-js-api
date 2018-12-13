@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"缩放至",next:"下一个要素",previous:"上一个要素",close:"关闭",dock:"停靠",undock:"未停靠",menu:"菜单",untitled:"无标题",pageText:"{index}/{total}",selectedFeature:"所选要素",selectedFeatures:"{total} 条结果",loading:"加载",collapse:"折叠",expand:"展开"});
+define({zoom:"缩放至",next:"下一个要素",previous:"上一个要素",dock:"停靠",undock:"未停靠",pageText:"{index}/{total}",selectedFeature:"所选要素",selectedFeatures:"{total} 条结果"});

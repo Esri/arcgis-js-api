@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../../core/kebabDictionary"],function(e,o,r){Object.defineProperty(o,"__esModule",{value:!0});var i=r({PDF:"pdf",PNG32:"png32",PNG8:"png8",JPG:"jpg",GIF:"gif",EPS:"eps",SVG:"svg",SVGZ:"svgz"});o.fromJSON=i.fromJSON.bind(i),o.toJSON=i.toJSON.bind(i)});

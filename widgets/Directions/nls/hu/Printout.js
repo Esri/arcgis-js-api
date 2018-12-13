@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({printNotes:"Itt jegyzeteket írhat be",printDisclaimer:"Az útvonalterveket csak tervezési célokra adjuk meg, és vonatkoznak rájuk <a href='http://www.esri.com/legal/licensing-translations' target=’_blank’>Az Esri használati feltételei</a>. Fennállhatnak olyan dinamikus útviszonyok, amelyek a pontosság útvonaltervtől való eltérését okozhatják, és amelyeket a közúti jelzésekkel, valamint a jogi korlátozásokkal együtt figyelembe kell venni. A felhasználás minden kockázatát Ön viseli.",printoutError:"Úgy néz ki, hogy hiba történt."});

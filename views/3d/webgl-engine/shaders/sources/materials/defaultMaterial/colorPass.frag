@@ -4,12 +4,7 @@
 #include <util/sceneLighting.glsl>
 
 #ifdef TEXTURING
-uniform sampler2D tex;
-uniform vec2 texSize;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-varying vec4 regionV;
-#endif
+#include <materials/defaultMaterial/texturingInputs.glsl>
 #endif
 
 uniform vec3 camPos;
@@ -54,6 +49,10 @@ varying float linearDepth;
 #include <util/shadow.glsl>
 #endif
 
+#ifdef TREE_RENDERING
+  uniform mat4 view;
+#endif
+
 #ifdef TEXTURING
 #include <materials/defaultMaterial/texturing.glsl>
 #endif
@@ -66,11 +65,13 @@ void main() {
 #ifdef TEXTURING
   vec4 texColor = textureLookup(tex, vtc);
 
-  if (texColor.a * coverageCorrectionFactor(vtc) < ALPHA_THRESHOLD) {
+#ifdef TEXTURE_ALPHA_TEST
+  if (texColor.a * coverageCorrectionFactor(vtc) < textureAlphaCutoff) {
     discard;
   }
+#endif
 #else /* TEXTURING */
-  vec4 texColor = vec4(1,1,1,1);
+  vec4 texColor = vec4(1.0);
 #endif /* TEXTURING */
 
   vec3 viewDir = vpos - camPos;
@@ -81,7 +82,7 @@ void main() {
 #ifdef VIEWING_MODE_GLOBAL
   vec3 normal = normalize(vpos + localOrigin);
 #else
-  vec3 normal = vec3(0,0,1);
+  vec3 normal = vec3(0.0, 0.0, 1.0);
 #endif
 #else
 #ifdef DOUBLESIDED
@@ -128,12 +129,29 @@ void main() {
 #endif
   albedo_+= 0.25 * specular; // don't completely ignore specular for now
 
-#ifdef TRANSPARENCY_DISCARD
-  if (opacity_ < 0.001) {
-    discard;
-  }
-#endif
+  vec3 shadingNormal = normal;
 
-  vec3 shadedColor = evaluateSceneLighting(normal, albedo_, shadow, 1.0 - ssao, additionalLight);
-  gl_FragColor = vec4(shadedColor, opacity_);
+  #ifdef TREE_RENDERING
+    // make sure we use unflipped normal
+    shadingNormal = normalize(vnormal);
+
+    // make tree 20% brighter
+    albedo_ *= 1.2;
+
+    // view forward vector in global coordinates
+    vec3 viewForward = - vec3(view[0][2], view[1][2], view[2][2]);
+
+    // factor indicating how aligned the lighting direction and view axis are
+    float alignmentLightView = clamp(dot(-viewForward, lightingMainDirection), 0.0, 1.0);
+
+    // we approximate the tree crown transmittance based on view direction and tree crown normal
+    float transmittance = 1.0 - clamp(dot(-viewForward, shadingNormal), 0.0, 1.0);
+
+    float treeRadialFalloff = vcolor.r;
+    float backLightFactor = 0.5 * treeRadialFalloff * alignmentLightView * transmittance * (1.0 - shadow);
+    additionalLight += backLightFactor * lightingMainIntensity;
+  #endif
+
+  vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+  gl_FragColor = highlightSlice(vec4(shadedColor, opacity_), vpos);
 }

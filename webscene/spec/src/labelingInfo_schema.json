@@ -5,7 +5,7 @@
   "properties": {
     "labelExpression": {
       "type": "string",
-      "description": "Defines the expression for text of labels. Deprecated on FeatureLayer, Use `labelExpressionInfo` instead."
+      "description": "Defines the expression for text of labels. <em>Deprecated on FeatureLayer, Use `labelExpressionInfo` instead.</em>"
     },
     "labelExpressionInfo": {
       "type": "object",

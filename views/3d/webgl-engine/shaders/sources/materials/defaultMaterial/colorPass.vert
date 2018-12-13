@@ -74,42 +74,13 @@ varying mediump float colorMixMode; // varying int is not supported in WebGL
 attribute vec4 instanceFeatureAttribute;
 #endif
 
+#include <materials/defaultMaterial/colorMixMode.glsl>
 #include <materials/defaultMaterial/commonFunctions.glsl>
+#include <materials/defaultMaterial/constants.glsl>
 #include <materials/defaultMaterial/localCenter.glsl>
 #include <materials/defaultMaterial/localNormal.glsl>
-#include <materials/defaultMaterial/colorMixMode.glsl>
 
 void main() {
-  vpos = calculateVPos();
-
-#ifdef INSTANCED_DOUBLE_PRECISION
-  vnormal = normalize(modelNormal * localNormal().xyz);
-
-  vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
-  vpos -= originDelta;
-
-#ifdef VERTICAL_OFFSET
-  vec3 centerPos = model * localCenter().xyz;
-  vpos += calculateVerticalOffset(centerPos, localOrigin);
-#endif
-#else /* INSTANCED_DOUBLE_PRECISION */
-  vnormal = normalize((modelNormal * localNormal()).xyz);
-
-#ifdef VERTICAL_OFFSET
-  vec3 centerPos = (model * localCenter()).xyz;
-  vpos += calculateVerticalOffset(centerPos, localOrigin);
-#endif
-#endif /* INSTANCED_DOUBLE_PRECISION */
-
-  gl_Position = proj * view * vec4(vpos, 1.0);
-
-#ifdef RECEIVE_SHADOWS
-  // Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'
-  // (i.e. the perspective interpolation of 'gl_Position.w'). Precision
-  // issues on iPad/iPhone with the 'w' component require the depth to be
-  // passed as varying to properly drive the cascading shadow map index.
-  linearDepth = gl_Position.w;
-#endif
 
 #ifdef VERTEXCOLORS
   vcolor = color * 0.003921568627451; // = 1/255
@@ -120,29 +91,72 @@ void main() {
 #ifdef INSTANCEDCOLOR
   vcolorExt *= instanceColor;
 #endif
+
 #ifdef VV_COLOR
   vcolorExt *= vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
 #endif
+
 #ifdef SYMBOLVERTEXCOLORS
   int symbolColorMixMode;
   vcolorExt *= decodeSymbolColor(symbolColor, symbolColorMixMode) * 0.003921568627451; // = 1/255;
   colorMixMode = float(symbolColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
 #endif
+
 #ifdef COMPONENTCOLORS
   int symbolColorMixMode;
   vcolorExt *= decodeSymbolColor(readComponentColor() * 255.0, symbolColorMixMode) * 0.003921568627451; // = 1/255;
   colorMixMode = float(symbolColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
 #endif
 
+  if (vcolorExt.a < SYMBOL_ALPHA_CUTOFF) {
+    // Discard this vertex
+    gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
+  }
+  else {
+    vpos = calculateVPos();
+
+#ifdef INSTANCED_DOUBLE_PRECISION
+  vnormal = normalize(modelNormal * localNormal().xyz);
+
+  vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
+  #ifdef IOS_SAFARI_FIX
+    originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
+  #endif
+  vpos -= originDelta;
+
+  #ifdef VERTICAL_OFFSET
+    vec3 centerPos = model * localCenter().xyz + originDelta;
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+  #endif
+#else /* INSTANCED_DOUBLE_PRECISION */
+  vnormal = normalize((modelNormal * localNormal()).xyz);
+  #ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * localCenter()).xyz;
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+  #endif
+#endif /* INSTANCED_DOUBLE_PRECISION */
+
+    gl_Position = proj * view * vec4(vpos, 1.0);
+  }
+
+#ifdef RECEIVE_SHADOWS
+  // Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'
+  // (i.e. the perspective interpolation of 'gl_Position.w'). Precision
+  // issues on iPad/iPhone with the 'w' component require the depth to be
+  // passed as varying to properly drive the cascading shadow map index.
+  linearDepth = gl_Position.w;
+#endif
+
+
 #ifdef TEXTURING
-#ifndef FLIPV
-  vtc = uv0;
-#else
-  vtc = vec2(uv0.x, 1.0-uv0.y);
-#endif
-#ifdef TEXTURE_ATLAS
-  regionV = region;
-#endif
+  #ifndef FLIPV
+    vtc = uv0;
+  #else
+    vtc = vec2(uv0.x, 1.0-uv0.y);
+  #endif
+  #ifdef TEXTURE_ATLAS
+    regionV = region;
+  #endif
 #endif /* TEXTURING */
 
 }

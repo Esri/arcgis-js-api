@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Symbol3DLayer","./support/IconSymbol3DLayerResource","./support/materialUtils","./support/Symbol3DOutline"],function(e,t,o,r,i,n,l,p,s){return function(e){function t(t){var o=e.call(this)||this;return o.material=null,o.resource=null,o.type="icon",o.size=12,o.anchor=void 0,o.outline=void 0,o}o(t,e),n=t,t.prototype.clone=function(){return new n({anchor:this.anchor,enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),outline:this.outline&&this.outline.clone(),resource:this.resource&&this.resource.clone(),size:this.size})};var n;return r([i.property()],t.prototype,"material",void 0),r([i.property({type:l.default,json:{write:!0}})],t.prototype,"resource",void 0),r([i.enumeration.serializable()({Icon:"icon"})],t.prototype,"type",void 0),r([i.property(p.screenSizeProperty)],t.prototype,"size",void 0),r([i.enumeration.serializable()({center:"center",left:"left",right:"right",top:"top",bottom:"bottom",topLeft:"top-left",topRight:"top-right",bottomLeft:"bottom-left",bottomRight:"bottom-right"})],t.prototype,"anchor",void 0),r([i.property({type:s.default,json:{write:!0}})],t.prototype,"outline",void 0),t=n=r([i.subclass("esri.symbols.IconSymbol3DLayer")],t)}(i.declared(n))});

@@ -80,7 +80,7 @@ void main(void) {
   float currentPixelDepth = getDepthLinear(depthMap, nearFar, uv);
 
   if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
-    gl_FragColor = vec4(0);
+    gl_FragColor = vec4(0.0);
     return;
   }
 

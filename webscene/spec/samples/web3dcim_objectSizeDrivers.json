@@ -3,10 +3,8 @@
     {
       "id": "14bad723b9a-layer1",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, xyz, range",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -20,33 +18,33 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
+                "axis": "all",
                 "maxDataValue": 9,
-                "minSize": 1,
                 "maxSize": 9,
-                "axis": "all"
+                "minDataValue": 1,
+                "minSize": 1
               },
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -78,10 +76,8 @@
     {
       "id": "14bad723bb9-layer2",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, xyz, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -95,30 +91,30 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "all"
+                "axis": "all",
+                "valueUnit": "meters"
               },
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -150,10 +146,8 @@
     {
       "id": "14bad723d2c-layer4",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, xy, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -167,8 +161,8 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "widthAndDepth"
+                "axis": "widthAndDepth",
+                "valueUnit": "meters"
               },
               {
                 "type": "sizeInfo",
@@ -180,22 +174,22 @@
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -227,10 +221,8 @@
     {
       "id": "14bad723d51-layer5",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, z, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -249,30 +241,30 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "height"
+                "axis": "height",
+                "valueUnit": "meters"
               },
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -304,10 +296,8 @@
     {
       "id": "14bad723d88-layer6",
       "listMode": "show",
-      "opacity": 1,
       "title": "tree, xyz, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -321,30 +311,30 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "all"
+                "axis": "all",
+                "valueUnit": "meters"
               },
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -361,10 +351,8 @@
     {
       "id": "14bad723fc3-layer7",
       "listMode": "show",
-      "opacity": 1,
       "title": "tree, xy, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -378,8 +366,8 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "widthAndDepth"
+                "axis": "widthAndDepth",
+                "valueUnit": "meters"
               },
               {
                 "type": "sizeInfo",
@@ -391,22 +379,22 @@
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -423,10 +411,8 @@
     {
       "id": "14bad7241f3-layer8",
       "listMode": "show",
-      "opacity": 1,
       "title": "tree, z, unit",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -440,8 +426,8 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
-                "axis": "height"
+                "axis": "height",
+                "valueUnit": "meters"
               },
               {
                 "type": "sizeInfo",
@@ -453,22 +439,22 @@
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -485,10 +471,8 @@
     {
       "id": "14bad723bx9-layer2",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, xy, unit, valRep:radius",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -502,9 +486,9 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
+                "axis": "widthAndDepth",
                 "valueRepresentation": "radius",
-                "axis": "widthAndDepth"
+                "valueUnit": "meters"
               },
               {
                 "type": "sizeInfo",
@@ -516,22 +500,22 @@
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -563,10 +547,8 @@
     {
       "id": "14bad723bz9-layer2",
       "listMode": "show",
-      "opacity": 1,
       "title": "cylinder, xy, unit, valRep:area",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
-      "visibility": true,
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -580,9 +562,9 @@
               {
                 "type": "sizeInfo",
                 "field": "ORIG_FID",
-                "valueUnit": "meters",
+                "axis": "widthAndDepth",
                 "valueRepresentation": "area",
-                "axis": "widthAndDepth"
+                "valueUnit": "meters"
               },
               {
                 "type": "sizeInfo",
@@ -594,22 +576,22 @@
                 "field": "ORIG_FID",
                 "stops": [
                   {
-                    "value": 1,
                     "color": [
                       255,
                       0,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 1
                   },
                   {
-                    "value": 9,
                     "color": [
                       0,
                       255,
                       0,
                       255
-                    ]
+                    ],
+                    "value": 9
                   }
                 ]
               }
@@ -643,10 +625,8 @@
     "baseMapLayers": [
       {
         "id": "14df2e1e3fd-layer-132",
-        "opacity": 1,
         "title": "World Imagery",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "visibility": true,
         "layerType": "ArcGISTiledMapServiceLayer"
       }
     ],
@@ -655,33 +635,22 @@
     "elevationLayers": []
   },
   "ground": {
-    "transparency": 0,
-    "layers": []
+    "layers": [],
+    "transparency": 0
   },
-  "version": "1.11",
+  "version": "1.13",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.8",
+  "authoringAppVersion": "4.10",
   "initialState": {
     "environment": {
-      "atmosphereEnabled": true,
-      "starsEnabled": true,
       "lighting": {
         "datetime": 1426419727000,
         "displayUTCOffset": 0
-      }
+      },
+      "atmosphereEnabled": true,
+      "starsEnabled": true
     },
     "viewpoint": {
-      "rotation": 339.01725046430977,
-      "scale": 12805.289266619104,
-      "targetGeometry": {
-        "spatialReference": {
-          "latestWkid": 3857,
-          "wkid": 102100
-        },
-        "x": 499934.11606402136,
-        "y": 6795298.16024665,
-        "z": -860.6913391966373
-      },
       "camera": {
         "position": {
           "spatialReference": {

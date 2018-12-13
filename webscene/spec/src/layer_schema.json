@@ -13,9 +13,14 @@
       "description": "An object that provides interactive filters.",
       "$ref": "definitionEditor_schema.json"
     },
+    "disablePopup": {
+      "type": "boolean",
+      "description": "Indicates whether to allow a client to ignore the popups defined on the layer. The popupInfo object could be saved in the map or item.",
+      "default": false
+    },
     "featureSet": {
       "type": "object",
-      "description": "A featureSet object containing the geometry and attributes of the features in the layer. Used with feature collections only.",
+      "description": "A featureSet object containing the geometry and attributes of the features in the layer.",
       "$ref": "featureSet_schema.json"
     },
     "field": {
@@ -24,25 +29,37 @@
       "$ref": "field_schema.json"
     },
     "id": {
-      "type": "string",
-      "description": "A string indicating the index position of the layer in the map service or feature collection."
+      "type": "number",
+      "description": "The layer id, as a numeric value."
     },
     "layerDefinition": {
       "type": "object",
       "description": "The layerDefinition object defines the attribute schema and drawing information for the layer.",
       "$ref": "layerDefinition_schema.json"
     },
+    "layerItemId": {
+      "type": "string",
+      "description": "The associated query layer's itemId. Only available when there is a `layerUrl`.  You will see this if [popups are configured](https://doc.arcgis.com/en/arcgis-online/manage-data/publish-tiles-from-features.htm) on it."
+    },
     "layerUrl": {
       "type": "string",
-      "description": "A string URL to a service that should be used for all queries against the layer. Used with hosted tiled map services on ArcGIS Online when there is an associated feature service that allows for queries."
+      "description": "A URL to a service that should be used for all queries against the layer."
     },
     "maxScale": {
       "type": "number",
-      "description": "Represents the maximum scale at which the layer definition will be applied."
+      "description": "A number representing the maximum scale at which the layer will be visible. The number is the scale's denominator."
     },
     "minScale": {
       "type": "number",
-      "description": "Represents the minimum scale at which the layer definition will be applied."
+      "description": "A number representing the minimum scale at which the layer will be visible. The number is the scale's denominator."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the layer."
+    },
+    "nextObjectId": {
+      "type": "integer",
+      "description": "Iterates within a featureset. Number objectId value is incremented 1 based on last Object ID defined for the feature in a featureset. Used with feature collections."
     },
     "parentLayerId": {
       "type": "number",
@@ -53,9 +70,14 @@
       "description": "A popupInfo object defining the popup window content for the layer.",
       "$ref": "popupInfo_schema.json"
     },
+    "showLabels": {
+      "type": "boolean",
+      "description": "A Boolean indicating if the layer should display labels in client applications.",
+      "default": true
+    },
     "showLegend": {
       "type": "boolean",
-      "description": "Indicates whether to allow map authors the ability to control what layers should be shown in a client's legend.",
+      "description": "A Boolean indicating if the layer should be shown in the legend in client applications.",
       "default": true
     },
     "subLayer": {

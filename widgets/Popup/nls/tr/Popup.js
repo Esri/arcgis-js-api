@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({zoom:"Şuna Yakınlaştır",next:"Sonraki detay",previous:"Önceki detay",close:"Kapat",dock:"Kenet",undock:"Bağlantıdan çıkar",menu:"menü",untitled:"Başlıksız",pageText:"{index} / {total}",selectedFeature:"Seçilen detay",selectedFeatures:"{total} sonuç",loading:"Yükleniyor",collapse:"Daralt",expand:"Genişlet"});
+define({zoom:"Şuna Yakınlaştır",next:"Sonraki detay",previous:"Önceki detay",dock:"Kenet",undock:"Bağlantıdan çıkar",pageText:"{index} / {total}",selectedFeature:"Seçilen detay",selectedFeatures:"{total} sonuç"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../core/kebabDictionary","../../geometry/support/jsonUtils"],function(e,t,s){var i=t({esriGeometryOffsetBevelled:"bevelled",esriGeometryOffsetMitered:"mitered",esriGeometryOffsetRounded:"rounded"}),o=t({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return e.createSubclass({declaredClass:"esri.tasks.support.OffsetParameters",properties:{bevelRatio:null,geometries:null,offsetDistance:null,offsetHow:null,offsetUnit:null},toJSON:function(){var e={};if(this.geometries&&this.geometries.length>0){var t=this.geometries.map(function(e){return e.toJSON()});e.geometries=JSON.stringify({geometryType:s.getJsonType(this.geometries[0]),geometries:t}),e.sr=JSON.stringify(this.geometries[0].spatialReference.toJSON())}return this.bevelRatio&&(e.bevelRatio=this.bevelRatio),this.offsetDistance&&(e.offsetDistance=this.offsetDistance),this.offsetHow&&(e.offsetHow=i.toJSON(this.offsetHow)),this.offsetUnit&&(e.offsetUnit=o.toJSON(this.offsetUnit)),e}})});

@@ -7,7 +7,7 @@ const float MAX_RGBA_FLOAT =
   255.0 / 256.0 / 256.0 / 256.0 / 256.0;
 
 // Factors to convert to fixed point, i.e. factors (256^0, 256^1, 256^2, 256^3)
-const vec4 fixedPointFactors = vec4(1, 256, 256 * 256, 256 * 256 * 256);
+const vec4 fixedPointFactors = vec4(1.0, 256.0, 256.0 * 256.0, 256.0 * 256.0 * 256.0);
 
 vec4 float2rgba(const float value) {
   // Make sure value is in the domain we can represent

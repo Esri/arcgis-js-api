@@ -1,21 +1,21 @@
 @mixin date-picker() {
-  $section_margin: floor($cap_spacing * 0.75);
-  $cell_border: 1px solid $border_color;
+  $section_margin: $cap-spacing--half;
+  $cell_border: 1px solid $border-color;
 
   .esri-date-picker {
     display: inline-flex;
     position: relative;
     align-items: center;
-    border: 1px solid $border_color;
-    background-color: $background_color;
+    border: 1px solid $border-color;
+    background-color: $background-color;
   }
 
   .esri-date-picker__calendar {
     @include defaultBoxShadow();
 
     position: absolute;
-    background-color: $background_color;
-    top: $cap_spacing * 3;
+    background-color: $background-color;
+    top: $cap-spacing * 3;
     left: 0;
     padding: $section_margin;
     z-index: 1;
@@ -37,23 +37,23 @@
   }
 
   .esri-date-picker__date {
-    margin: 0 $cap_spacing 0 0;
+    margin: 0 $cap-spacing 0 0;
   }
 
   .esri-date-picker__calendar-toggle {
     border: none;
-    font-size: $text_size;
+    font-size: $font-size;
     width: 100%;
     margin: 0;
     padding: 0 0.5em;
-    height: $button_height;
-    color: $text_color;
+    height: $button-height;
+    color: $font-color;
   }
 
   .esri-date-picker .esri-date-picker__month-dropdown {
     border: none;
     width: auto;
-    font-weight: $text_weight_header;
+    font-weight: $font-weight__heading;
     padding-right: 2.3em;
   }
 
@@ -64,8 +64,8 @@
   }
 
   .esri-date-picker__day-item--header {
-    background: $list_header_color;
-    font-weight: $text_weight_header;
+    background: $background-color--offset;
+    font-weight: $font-weight__heading;
     cursor: auto;
   }
 
@@ -89,24 +89,24 @@
   }
 
   .esri-date-picker__day-item--nearby-month {
-    color: $disabled_color;
+    color: $interactive-font-color--disabled;
   }
 
   .esri-date-picker__day-item--today {
-    color: $selected_border_color;
+    color: $border-color--active;
   }
 
   .esri-date-picker__day-item--active {
-    background: $border_color;
+    background: $border-color;
   }
 
   .esri-date-picker__month-picker {
-    font-weight: $text_weight_header;
+    font-weight: $font-weight__heading;
     justify-content: space-between;
   }
 
   .esri-date-picker__year-picker-item {
-    color: $text_color;
+    color: $font-color;
     padding: $section_margin;
     margin: 0 4px;
     cursor: pointer;
@@ -114,19 +114,19 @@
 
   .esri-date-picker__day-item--selected,
   .esri-date-picker__year-picker-item--selected {
-    color: $interactive_text_color--inverse;
-    background-color: $selected_border_color;
+    color: $interactive-font-color--inverse;
+    background-color: $border-color--active;
     cursor: auto;
   }
 
   html[dir="rtl"] {
     .esri-date-picker__calendar {
       left: 0;
-      right: $docked_margin;
+      right: $side-spacing;
     }
 
     .esri-date-picker__date {
-      margin: 0 0 0 $cap_spacing;
+      margin: 0 0 0 $cap-spacing;
     }
   }
 }

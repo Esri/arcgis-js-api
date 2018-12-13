@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({lblItem:"öğe",title:"Oturum Aç",info:"{server} {resource} üzerindeki öğeye erişmek için oturum açın",oAuthInfo:"Devam etmek için oturum açın.",lblUser:"Kullanıcı adı:",lblPwd:"Parola:",lblOk:"Tamam",lblSigning:"Oturum açılıyor...",lblCancel:"İptal",errorMsg:"Geçersiz kullanıcı adı/parola. Tekrar deneyin.",invalidUser:"Girdiğiniz kullanıcı adı veya parola doğru değil.",forbidden:"Kullanıcı adı ve parola geçerli, ancak bu kaynağa erişiminiz yok.",noAuthService:"Kimlik doğrulama servisine erişilemiyor."});

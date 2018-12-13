@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["require","exports","../../core/Error","../../core/Logger","../../layers/graphics/OptimizedFeatureSet","./pbfFeatureServiceParser"],function(e,r,t,a,u,s){function i(e){try{var r=s.parseFeatureQuery(e),a=r.queryResult.featureResult;if(a&&a.features&&a.features.length&&a.objectIdFieldName)for(var i=a.objectIdFieldName,n=0,f=a.features;n<f.length;n++){var l=f[n];l.attributes&&(l.objectId=l.attributes[i])}return a}catch(e){var p=new t("query:parsing-pbf","Error while parsing FeatureSet PBF payload",{error:e});return o.error(p),new u.default}}Object.defineProperty(r,"__esModule",{value:!0});var o=a.getLogger("esri.tasks.operations.pbfQueryUtils");r.parsePBFFeatureQuery=i});
+define(["require","exports","./pbfFeatureServiceParser"],function(e,r,t){function u(e,r){var u=t.parseFeatureQuery(e,r),a=u.queryResult.featureResult;if(a&&a.features&&a.features.length&&a.objectIdFieldName)for(var s=a.objectIdFieldName,f=0,i=a.features;f<i.length;f++){var n=i[f];n.attributes&&(n.objectId=n.attributes[s])}return a}Object.defineProperty(r,"__esModule",{value:!0}),r.parsePBFFeatureQuery=u});

@@ -1,7 +1,7 @@
 {
   "title": "Range Information",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Range Information",
+  "description": "Range Information.",
   "properties": {
     "currentRangeExtent": {
       "type": "array",

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({widgetLabel:"Localitza",title:"Cerca la meva ubicació"});
+define({widgetLabel:"Localitza",title:"Cerca la meva ubicació",currentLocation:"Ubicació actual",timestamp:"Marca de temps",latitude:"Latitud",longitude:"Longitud",accuracy:"Precisió",altitude:"Altitud",altitudeAccuracy:"Precisió de l'altitud",heading:"Capçalera",speed:"Velocitat"});

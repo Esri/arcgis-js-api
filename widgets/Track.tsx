@@ -51,7 +51,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Track/nls/Track";
 import Graphic = require("esri/Graphic");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import View = require("esri/views/View");
@@ -63,8 +63,8 @@ import Widget = require("esri/widgets/Widget");
 import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
-import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-track esri-widget--button esri-widget",
@@ -369,7 +369,7 @@ class Track extends declared(Widget) {
   @aliasOf("viewModel.stop")
   stop(): void {}
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
 
     const rootClasses = {
@@ -412,7 +412,7 @@ class Track extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggleTracking() {
+  private _toggleTracking(): void {
     const vm = this.viewModel;
     if (!vm) {
       return;

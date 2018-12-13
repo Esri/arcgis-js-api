@@ -1,0 +1,130 @@
+.btn-svg__button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  display: inline-block;
+  cursor: pointer; }
+  .btn-svg__button:hover {
+    color: #005e95; }
+  .btn-svg__button > svg {
+    vertical-align: middle;
+    fill: currentColor; }
+  html[dir="rtl"] .btn-svg__button {
+    transform: scaleX(-1); }
+
+.btn-svg__button--tooltip {
+  position: relative;
+  cursor: pointer;
+  overflow: visible; }
+  .btn-svg__button--tooltip:after {
+    content: attr(aria-label);
+    position: absolute;
+    z-index: 1000000;
+    display: none;
+    padding: 0.3875rem 0.775rem;
+    font-size: 0.875rem;
+    line-height: 1.55rem;
+    color: #ffffff;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: pre;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 3px; }
+  .btn-svg__button--tooltip:before {
+    content: "";
+    position: absolute;
+    z-index: 1000001;
+    display: none;
+    width: 0;
+    height: 0;
+    color: rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    border: 5px solid transparent; }
+  .btn-svg__button--tooltip:hover, .btn-svg__button--tooltip:active, .btn-svg__button--tooltip:focus {
+    text-decoration: none; }
+    .btn-svg__button--tooltip:hover:before, .btn-svg__button--tooltip:hover:after, .btn-svg__button--tooltip:active:before, .btn-svg__button--tooltip:active:after, .btn-svg__button--tooltip:focus:before, .btn-svg__button--tooltip:focus:after {
+      display: inline-block; }
+  .btn-svg__button--tooltip:focus:before, .btn-svg__button--tooltip:focus:after {
+    display: none; }
+  .btn-svg__button--tooltip:hover:before, .btn-svg__button--tooltip:hover:after {
+    display: inline-block; }
+
+.btn-svg__button--tooltip-left:after {
+  top: auto;
+  right: 100%;
+  margin-right: 5px;
+  bottom: 50%;
+  margin-bottom: inherit;
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  transform: translateY(50%); }
+  html[dir="rtl"] .btn-svg__button--tooltip-left:after {
+    right: auto;
+    left: 100%;
+    margin-right: 0;
+    margin-left: 5px; }
+
+.btn-svg__button--tooltip-left:before {
+  top: 50%;
+  bottom: 50%;
+  left: -5px;
+  margin-top: -5px;
+  border-left-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 5px solid transparent; }
+  html[dir="rtl"] .btn-svg__button--tooltip-left:before {
+    left: auto;
+    right: -5px;
+    margin-right: 0;
+    border-left-color: transparent;
+    border-right-color: rgba(0, 0, 0, 0.75); }
+
+.btn-svg__button--tooltip-right:after {
+  top: auto;
+  right: auto;
+  bottom: 50%;
+  left: 100%;
+  margin-left: 5px;
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  transform: translateY(50%); }
+  html[dir="rtl"] .btn-svg__button--tooltip-right:after {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 5px; }
+
+.btn-svg__button--tooltip-right:before {
+  top: 50%;
+  right: -5px;
+  bottom: 50%;
+  margin-top: -5px;
+  margin-right: 0;
+  border-right-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 5px solid transparent; }
+  html[dir="rtl"] .btn-svg__button--tooltip-right:before {
+    left: -5px;
+    right: auto;
+    border-left-color: rgba(0, 0, 0, 0.75);
+    border-right-color: transparent; }
+
+.btn-svg__button--tooltip-top:after {
+  top: auto;
+  right: 50%;
+  bottom: 100%;
+  margin-bottom: 5px; }
+
+.btn-svg__button--tooltip-top:before {
+  top: -5px;
+  right: 50%;
+  bottom: auto;
+  margin-right: -5px;
+  border-top-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 5px solid transparent; }

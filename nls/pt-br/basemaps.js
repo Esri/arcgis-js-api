@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({streets:"Ruas",satellite:"Imagem",hybrid:"Imagem com Rótulos",terrain:"Terreno com Rótulos",topo:"Topográfico",gray:"Tela Cinza Claro","dark-gray":"Tela Cinza Escuro",oceans:"Oceanos","national-geographic":"Geográfico Nacional",osm:"OpenStreetMap","streets-night-vector":"Mapa de Ruas Mundial (Noite)","streets-relief-vector":"Mapa de Ruas Mundial (com Relevo)","streets-navigation-vector":"Mapa de Navegação Mundial"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({addTags:"Legg til tagger",noTagsFound:"Ingen eksisterende merker samsvarer.",required:"Ett eller flere merker kreves."});

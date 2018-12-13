@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define({printNotes:"Opmerkingen hier invoeren",printDisclaimer:"Een routebeschrijving dient alleen voor planningdoeleinden en is onderhevig aan <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri's gebruiksvoorwaarden</a>. Er kunnen dynamische wegomstandigheden bestaan waardoor uw routebeschrijving kan afwijken. U moet hiermee rekening houden, net als met verkeersborden en wettelijke beperkingen. Het gebruik is volledig op eigen risico.",printoutError:"Er lijkt een fout te zijn opgetreden."});

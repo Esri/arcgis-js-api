@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,s,t){Object.defineProperty(r,"__esModule",{value:!0}),r.blendLayers={name:"blend-layers",shaders:{vertexShader:t.resolveIncludes("misc/blendLayers.vert"),fragmentShader:t.resolveIncludes("misc/blendLayers.frag")},attributes:s.Default3D},r.simple={name:"simple",shaders:{vertexShader:t.resolveIncludes("misc/simple.vert"),fragmentShader:t.resolveIncludes("misc/simple.frag")},attributes:s.Default3D},r.texOnly={name:"tex-only",shaders:{vertexShader:t.resolveIncludes("misc/texOnly.vert"),fragmentShader:t.resolveIncludes("misc/texOnly.frag")},attributes:s.Default3D},r.showDepth={name:"show-depth",shaders:{vertexShader:t.resolveIncludes("misc/showDepth.vert"),fragmentShader:t.resolveIncludes("misc/showDepth.frag")},attributes:s.Default3D}});

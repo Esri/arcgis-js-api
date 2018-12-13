@@ -1,6 +1,6 @@
 @mixin scaleBar() {
-  $dark_color: $interactive_text_color;
-  $light_color: $background_color;
+  $dark_color: $interactive-font-color;
+  $light_color: $background-color;
 
   $block_width: 25%;
   $block_height: 50%;
@@ -122,10 +122,10 @@
   }
 
   .esri-scale-bar__label {
-    font-size: $text_size_small;
+    font-size: $font-size--small;
     text-shadow: 0 0 1px $light_color, 0 0 1px $light_color, 0 0 1px $light_color;
-    color: $text_color;
-    font-weight: $text_weight_title;
+    color: $font-color;
+    font-weight: $font-weight__heading;
     white-space: nowrap;
     padding: 0.5em 0 0.7em 0;
   }

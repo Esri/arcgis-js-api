@@ -1,5 +1,4 @@
 precision lowp float;
-uniform lowp float u_opacity;
 
 #ifdef PATTERN
 uniform lowp sampler2D u_texture;
@@ -26,9 +25,9 @@ void main()
   mediump vec2 samplePos = mix(v_tlbr.xy, v_tlbr.zw, normalizedTextureCoord);
   // sample the sprite mosaic
   lowp vec4 color = texture2D(u_texture, samplePos);
-  gl_FragColor = u_opacity * v_opacity * v_color * color;
+  gl_FragColor = v_opacity * v_color * color;
 #else
-  gl_FragColor = u_opacity * v_opacity * v_color;
+  gl_FragColor = v_opacity * v_color;
 #endif // PATTERN
 
 #ifdef HIGHLIGHT

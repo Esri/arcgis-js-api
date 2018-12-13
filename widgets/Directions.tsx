@@ -97,7 +97,7 @@ import RouteSections = require("esri/widgets/Directions/support/RouteSections");
 import TimePicker = require("esri/widgets/Directions/support/TimePicker");
 
 // esri.widgets.support
-type GoToOverride = __esri.GoToOverride;
+import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
@@ -236,7 +236,7 @@ class Directions extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     this.own([
       init(this, "viewModel.lastRoute", () => {
         this._routeSections.routePath = this.get<Graphic[]>("viewModel.directionLines");
@@ -291,7 +291,7 @@ class Directions extends declared(Widget) {
     ]);
   }
 
-  destroy() {
+  destroy(): void {
     this._datePicker.destroy();
     this._timePicker.destroy();
 
@@ -566,7 +566,7 @@ class Directions extends declared(Widget) {
   @aliasOf("viewModel.zoomToRoute")
   zoomToRoute(): void {}
 
-  render() {
+  render(): VNode {
     return <div class={this.classes(CSS.base, CSS.scroller)}>{this._renderPanelContent()}</div>;
   }
 
@@ -576,7 +576,7 @@ class Directions extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderPanelContent(): any {
+  private _renderPanelContent(): VNode {
     const {
       viewModel: { state }
     } = this;
@@ -607,7 +607,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderReadyContent(): any {
+  private _renderReadyContent(): VNode {
     return [
       this._renderStopsContainer(),
       this._renderTravelModeOptions(),
@@ -618,7 +618,7 @@ class Directions extends declared(Widget) {
     ];
   }
 
-  private _renderSignIn(): any {
+  private _renderSignIn(): VNode {
     return (
       <div key="sign-in" class={CSS.signInContent}>
         <h2 class={this.classes(CSS.heading, CSS.contentTitle)}>{i18n.widgetLabel}</h2>
@@ -640,7 +640,7 @@ class Directions extends declared(Widget) {
     this.viewModel.load();
   }
 
-  private _renderTravelModeOptions(): any {
+  private _renderTravelModeOptions(): VNode {
     const { travelModes } = this.viewModel;
 
     if (travelModes.length === 0) {
@@ -677,7 +677,7 @@ class Directions extends declared(Widget) {
     this.viewModel.selectedTravelMode = option["data-mode"];
   }
 
-  private _renderStopsContainer(): any {
+  private _renderStopsContainer(): VNode {
     return (
       <div class={CSS.section} key="esri-directions__stops-container" role="group">
         {this._renderStops()}
@@ -685,7 +685,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderDepartureTimeControls(): any {
+  private _renderDepartureTimeControls(): VNode {
     const startTimeIsNow = this._departureTime === NOW;
     const title = i18n.departureTime;
 
@@ -710,7 +710,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderStops(): any {
+  private _renderStops(): VNode {
     const stops = this._stops;
     const rows: any[] = stops.toArray().map((stop, i) => {
       const numStops = stops.length;
@@ -1009,15 +1009,15 @@ class Directions extends declared(Widget) {
     });
 
     return {
-      remove: function() {
+      remove: function(): void {
         surfaceClickHandle.remove();
         viewClickHandle.remove();
       },
-      pause: function() {
+      pause: function(): void {
         surfaceClickHandle.pause();
         viewClickHandle.pause();
       },
-      resume: function() {
+      resume: function(): void {
         surfaceClickHandle.resume();
         viewClickHandle.resume();
       }
@@ -1051,7 +1051,7 @@ class Directions extends declared(Widget) {
     this._addNewPlaceholder();
   }
 
-  private _addNewPlaceholder() {
+  private _addNewPlaceholder(): void {
     if (this._newPlaceholderStop) {
       return;
     }
@@ -1194,7 +1194,7 @@ class Directions extends declared(Widget) {
     this.viewModel.departureTime = joinedTime.toDate();
   }
 
-  private _renderTimeControls(): any {
+  private _renderTimeControls(): VNode {
     return (
       <div class={CSS.departureTimeControls} key="esri-directions__time-controls" role="group">
         {this._datePicker.render()}
@@ -1203,11 +1203,11 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderSectionSplitter(): any {
+  private _renderSectionSplitter(): VNode {
     return <div class={CSS.sectionSplitter} />;
   }
 
-  private _renderDisclaimer(): any {
+  private _renderDisclaimer(): VNode {
     const link = `<a class="${
       CSS.anchor
     }" href="http://www.esri.com/legal/software-license" target="_blank">${i18n.esriTerms}</a>`;
@@ -1216,7 +1216,7 @@ class Directions extends declared(Widget) {
     return <div class={CSS.disclaimer} innerHTML={disclaimer} key="esri-directions__disclaimer" />;
   }
 
-  private _renderDirectionsContainer(): any {
+  private _renderDirectionsContainer(): VNode {
     return (
       <div
         class={this.classes(CSS.directionsSection, CSS.section)}
@@ -1227,11 +1227,11 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderLoader(): any {
+  private _renderLoader(): VNode {
     return <div class={CSS.loader} key="loader" />;
   }
 
-  private _renderWarningCard(): any {
+  private _renderWarningCard(): VNode {
     return (
       <div class={CSS.warningCard} role="alert">
         <div class={CSS.warningHeader}>
@@ -1243,7 +1243,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderDirectionsContainerContent(): any {
+  private _renderDirectionsContainerContent(): VNode {
     const { lastRoute: directions, state } = this.viewModel;
     const hasError = state === "error";
     const isRouting = state === "routing";
@@ -1274,7 +1274,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderPlaceholder(): any {
+  private _renderPlaceholder(): VNode {
     return (
       <svg class={CSS.emptyIllustration} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
         <path
@@ -1285,11 +1285,11 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderMessage(text: string): any {
+  private _renderMessage(text: string): VNode {
     return <h3>{text}</h3>;
   }
 
-  private _renderRouteActions(): any {
+  private _renderRouteActions(): VNode {
     return (
       <div class={CSS.routeActions}>
         <button
@@ -1305,7 +1305,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _renderManeuverSections(): any {
+  private _renderManeuverSections(): VNode {
     const { sections } = this._routeSections;
 
     return (
@@ -1396,7 +1396,7 @@ class Directions extends declared(Widget) {
     section.open = !section.open;
   }
 
-  private _renderCosts(): any {
+  private _renderCosts(): VNode {
     const directionLines = this.get<Graphic[]>("viewModel.directionLines");
     const last = directionLines[directionLines.length - 1];
     const now = moment(last.attributes.arriveTimeUTC);
@@ -1441,7 +1441,7 @@ class Directions extends declared(Widget) {
   }
 
   @accessibleHandler()
-  private _handleSummaryInteraction(): any {
+  private _handleSummaryInteraction(): void {
     this._activeManeuver = null;
     this._focusedManeuver = null;
     this.viewModel.clearHighlights();
@@ -1516,7 +1516,7 @@ class Directions extends declared(Widget) {
     }
   }
 
-  private _renderManeuver(maneuver: Maneuver): any {
+  private _renderManeuver(maneuver: Maneuver): VNode {
     const cumulativeCosts = "";
     let intermediateCosts: string;
 
@@ -1599,7 +1599,7 @@ class Directions extends declared(Widget) {
     );
   }
 
-  private _getIconPath(maneuverType: string) {
+  private _getIconPath(maneuverType: string): string {
     const iconName = toIconName(maneuverType);
     const iconFormat = window.devicePixelRatio === 2 ? "@2x" : "";
 

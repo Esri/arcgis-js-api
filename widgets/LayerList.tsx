@@ -33,7 +33,7 @@ import Handles = require("esri/core/Handles");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.support.actions
 import ActionButton = require("esri/support/actions/ActionButton");
@@ -52,7 +52,8 @@ import ListItem = require("esri/widgets/LayerList/ListItem");
 import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
 
 // esri.widgets.support
-import { vmEvent, renderable, tsx, accessibleHandler } from "esri/widgets/support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   // layerlist classes
@@ -171,7 +172,7 @@ class LayerList extends declared(Widget) {
     super();
   }
 
-  postInitialize() {
+  postInitialize(): void {
     const operationalItems = this.operationalItems;
 
     this.own(
@@ -179,7 +180,7 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  destroy() {
+  destroy(): void {
     this._handles.destroy();
     this._handles = null;
   }
@@ -398,7 +399,7 @@ class LayerList extends declared(Widget) {
   @aliasOf("viewModel.triggerAction")
   triggerAction(action: Action, item: ListItem): void {}
 
-  render() {
+  render(): VNode {
     const items = this._getItems();
     const state = this.get("viewModel.state");
 
@@ -425,11 +426,18 @@ class LayerList extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _getItems() {
+  private _getItems(): ListItem[] {
     return this.operationalItems.toArray().filter((item) => this.errorsVisible || !item.error);
   }
 
-  private _renderItem(item: ListItem, parent: ListItem): any {
+  private _getSingleActionButton(item: ListItem): ActionButton {
+    return item.actionsSections
+      .reduce((item) => item)
+      .filter((item) => item && item.type === "button")
+      .getItemAt(0) as ActionButton;
+  }
+
+  private _renderItem(item: ListItem, parent: ListItem): VNode {
     const widgetId = this.id;
     const uid = `${widgetId}_${item.uid}`;
     const actionsUid = `${uid}_actions`;
@@ -475,28 +483,35 @@ class LayerList extends declared(Widget) {
 
     const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
 
-    const actionsMenuIcon = actionsCount ? (
-      <div
-        key={`esri-layer-list__actions-menu-toggle`}
-        data-item={item}
-        bind={this}
-        onclick={this._toggleActionsOpen}
-        onkeydown={this._toggleActionsOpen}
-        class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
-        tabindex="0"
-        role="button"
-        aria-controls={actionsUid}
-        aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}
-      >
-        <span aria-hidden="true" class={CSS.iconEllipses} />
-      </div>
-    ) : null;
+    const singleAction = actionsCount === 1 && this._getSingleActionButton(item);
+    const singleActionNode = singleAction
+      ? this._renderAction({ item, action: singleAction, singleAction: true })
+      : null;
+
+    const actionsMenuIcon =
+      !singleAction && actionsCount ? (
+        <div
+          key={`actions-menu-toggle`}
+          data-item={item}
+          bind={this}
+          onclick={this._toggleActionsOpen}
+          onkeydown={this._toggleActionsOpen}
+          class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
+          tabindex="0"
+          role="button"
+          aria-controls={actionsUid}
+          aria-label={actionsMenuTitle}
+          title={actionsMenuTitle}
+        >
+          <span aria-hidden="true" class={CSS.iconEllipses} />
+        </div>
+      ) : null;
 
     const actionsMenu =
-      actionsCount || contentActionNode ? (
+      actionsMenuIcon || contentActionNode || singleActionNode ? (
         <div key={`esri-layer-list__actions-menu`} class={CSS.actionsMenu}>
           {contentActionNode}
+          {singleActionNode}
           {actionsMenuIcon}
         </div>
       ) : null;
@@ -505,7 +520,7 @@ class LayerList extends declared(Widget) {
       ? this._renderActionsSections(item, item.actionsSections, actionsUid)
       : null;
 
-    const children: any = hasChildren ? (
+    const children: VNode = hasChildren ? (
       <ul
         key={`esri-layer-list__list-items`}
         id={listUid}
@@ -567,7 +582,7 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): any {
+  private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
     const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
@@ -612,7 +627,7 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _renderPanelButton(panel: ListItemPanel): any {
+  private _renderPanelButton(panel: ListItemPanel): VNode {
     const { className, open, title, image } = panel;
 
     const actionClass = !image && !className ? CSS.iconDefaultAction : className;
@@ -756,7 +771,7 @@ class LayerList extends declared(Widget) {
     item: ListItem,
     actionsSections: Sections,
     actionsUid: string
-  ): any {
+  ): VNode {
     const actionSectionsArray = actionsSections.toArray();
 
     const actionSection = actionSectionsArray.map((actionSection) => {
@@ -781,12 +796,17 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _renderActionSection(item: ListItem, actionSection: Actions): any {
+  private _renderActionSection(item: ListItem, actionSection: Actions): VNode {
     const actionSectionArray = actionSection && actionSection.toArray();
-    return actionSectionArray.map((action) => this._renderAction(item, action));
+    return actionSectionArray.map((action) => this._renderAction({ item, action }));
   }
 
-  private _renderAction(item: ListItem, action: Action): any {
+  private _renderAction(options: {
+    item: ListItem;
+    action: Action;
+    singleAction?: boolean;
+  }): VNode {
+    const { item, action, singleAction } = options;
     const iconStyles = this._getIconImageStyles(action);
 
     const { active, className, disabled, title } = action;
@@ -795,7 +815,8 @@ class LayerList extends declared(Widget) {
       action.type === "button" && !action.image && !className ? CSS.iconDefaultAction : className;
 
     const buttonClasses = {
-      [CSS.action]: action.type !== "toggle",
+      [CSS.actionsMenuItem]: singleAction && action.type === "button",
+      [CSS.action]: !singleAction && action.type !== "toggle",
       [CSS.actionToggle]: action.type === "toggle",
       [CSS.actionToggleOn]: action.type === "toggle" && action.value,
       [CSS.disabledElement]: disabled
@@ -809,6 +830,38 @@ class LayerList extends declared(Widget) {
 
     if (actionClass) {
       iconClasses[actionClass] = true;
+    }
+
+    const iconNode = (
+      <span
+        aria-hidden="true"
+        class={this.classes(CSS.actionIcon, iconClasses)}
+        styles={iconStyles}
+      />
+    );
+
+    const titleNode = !singleAction ? <span class={CSS.actionTitle}>{title}</span> : null;
+
+    const actionContentNodes = [iconNode, titleNode];
+
+    if (singleAction) {
+      return (
+        <div
+          bind={this}
+          data-item={item}
+          data-action={action}
+          role="button"
+          key={action}
+          onclick={this._triggerAction}
+          onkeydown={this._triggerAction}
+          classes={buttonClasses}
+          tabindex="0"
+          title={title}
+          aria-label={title}
+        >
+          {actionContentNodes}
+        </div>
+      );
     }
 
     return (
@@ -825,12 +878,7 @@ class LayerList extends declared(Widget) {
         title={title}
         aria-label={title}
       >
-        <span
-          aria-hidden="true"
-          class={this.classes(CSS.actionIcon, iconClasses)}
-          styles={iconStyles}
-        />
-        <span class={CSS.actionTitle}>{title}</span>
+        {actionContentNodes}
       </li>
     );
   }

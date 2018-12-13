@@ -28,10 +28,37 @@
       "type": "array",
       "description": "An array of layer objects defining the styling, geometry, and attribute information for the features.",
       "items": {
-        "type": "object",
-        "$ref": "layer_schema.json"
+        "allOf": [
+          {
+            "$ref": "layer_schema.json"
+          },
+          {
+            "properties": {
+              "defaultVisibility": {},
+              "disablePopup": {},
+              "id": {},
+              "layerDefinition": {},
+              "maxScale": {},
+              "minScale": {},
+              "name": {},
+              "parentLayerId": {},
+              "popupInfo": {},
+              "showLabels": {},
+              "showLegend": {},
+              "subLayerIds": {}
+            },
+            "additionalProperties": false
+          }
+        ]
       },
       "uniqueItems": true
+    },
+    "listMode": {
+      "type": "string",
+      "enum": [
+        "show",
+        "hide"
+      ]
     },
     "maxScale": {
       "type": "number",
@@ -58,11 +85,6 @@
     "showLegend": {
       "type": "boolean",
       "description": "Boolean value indicating whether to display the layer in the legend. Default value is `true`.",
-      "default": true
-    },
-    "timeAnimation": {
-      "type": "boolean",
-      "description": "This property is applicable to layers that support time. If 'true', timeAnimation is enabled.",
       "default": true
     },
     "title": {

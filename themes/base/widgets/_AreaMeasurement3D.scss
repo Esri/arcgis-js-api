@@ -1,16 +1,23 @@
 @mixin areaMeasurement3D() {
   .esri-area-measurement-3d__container {
     position: relative;
-    padding: $cap_spacing $side_spacing;
+    padding: $cap-spacing 0;
     overflow-y: auto;
     a {
       text-decoration: none;
     }
   }
 
+  .esri-area-measurement-3d__measurement {
+    padding: $cap-spacing $side-spacing;
+    margin: $cap-spacing 0;
+    background-color: $background-color--offset;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
   .esri-area-measurement-3d__header {
     position: relative;
-    font-size: $body_text_size;
+    font-size: $font-size__body;
     align-items: flex-start;
     justify-content: space-between;
     display: flex;
@@ -19,8 +26,8 @@
 
   .esri-area-measurement-3d__header-title,
   h1.esri-area-measurement-3d__header-title {
-    font-size: $title_text_size;
-    font-weight: $text_weight_title;
+    font-size: $font-size__header-text;
+    font-weight: $font-weight__bold;
     padding: 8px 0;
     margin: 0;
     display: block;
@@ -29,64 +36,7 @@
     text-align: left;
   }
 
-  .esri-area-measurement-3d__hint {
-    padding-bottom: 12px;
-  }
-
-  .esri-area-measurement-3d__panel--error {
-    color: $error_text_color;
-  }
-
-  .esri-area-measurement-3d__measurement {
-  }
-
-  .esri-area-measurement-3d__measurement-item {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .esri-area-measurement-3d__measurement-item--disabled {
-    display: flex;
-    color: rgba($text_color, $disabled_opacity);
-  }
-
-  .esri-area-measurement-3d__measurement-item-title {
-    flex: 1;
-    line-height: 24px;
-  }
-
-  .esri-area-measurement-3d__measurement-item-value {
-    flex: 1;
-    line-height: 24px;
-  }
-
-  .esri-area-measurement-3d__units {
-    display: flex;
-    padding-bottom: 12px;
-    align-items: baseline;
-  }
-
-  .esri-area-measurement-3d__units-label {
-    flex: 1;
-    line-height: 24px;
-  }
-
-  .esri-area-measurement-3d__units-select-wrapper {
-    flex: 1;
-  }
-
-  .esri-area-measurement-3d__units-select {
-    width: 100%;
-    padding-left: 0.5em;
-    padding-right: 2.7em;
-  }
-
-  html[dir="rtl"] {
-    .esri-area-measurement-3d__units-select {
-      padding-left: 2.7em;
-      padding-right: 0.5em;
-    }
-  }
+  @include measurementWidgetStyles("esri-area-measurement-3d");
 }
 
 @if $include_AreaMeasurement3D == true {

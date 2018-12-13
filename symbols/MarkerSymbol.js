@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define(["../core/declare","../core/screenUtils","./Symbol"],function(e,t,r){return e(r,{declaredClass:"esri.symbols.MarkerSymbol",properties:{angle:{value:0,json:{read:function(e){return e&&-1*e},write:function(e,t){t.angle=e&&-1*e}}},type:{},xoffset:{value:0,cast:t.toPt,json:{write:!0}},yoffset:{value:0,cast:t.toPt,json:{write:!0}},size:{value:9,cast:function(e){return"auto"===e?e:t.toPt(e)},json:{write:!0}}}})});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/kebabDictionary","../core/screenUtils","../core/accessorSupport/decorators","./Symbol"],function(e,r,t,o,p,s,n,i){var a=p({esriSMS:"simple-marker",esriPMS:"picture-marker"});return function(e){function r(r){var t=e.call(this,r)||this;return t.angle=0,t.type=null,t.xoffset=0,t.yoffset=0,t.size=9,t}return t(r,e),o([n.property({type:Number,json:{read:function(e){return e&&-1*e},write:function(e,r){return r.angle=e&&-1*e}}})],r.prototype,"angle",void 0),o([n.property({type:a.apiValues,readOnly:!0,json:{type:a.jsonValues}})],r.prototype,"type",void 0),o([n.property({type:Number,cast:s.toPt,json:{write:!0}})],r.prototype,"xoffset",void 0),o([n.property({type:Number,cast:s.toPt,json:{write:!0}})],r.prototype,"yoffset",void 0),o([n.property({type:Number,cast:function(e){return"auto"===e?e:s.toPt(e)},json:{write:!0}})],r.prototype,"size",void 0),r=o([n.subclass("esri.symbols.MarkerSymbol")],r)}(n.declared(i))});

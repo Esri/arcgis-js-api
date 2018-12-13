@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,s,t){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){return"#define SAMPLES "+e.samples+"\n"},n=function(e){return"#define RADIUS "+e.radius+"\n"};r.ssaoPass={name:"ssao",shaders:function(e){return{vertexShader:t.resolveIncludes("util/quad.vert"),fragmentShader:a(e)+t.resolveIncludes("renderer/ssao/ssao.frag")}},attributes:s.Default3D},r.blurPass={name:"ssao-blur",shaders:function(e){return{vertexShader:t.resolveIncludes("util/quad.vert"),fragmentShader:n(e)+t.resolveIncludes("renderer/ssao/blur.frag")}},attributes:s.Default3D}});

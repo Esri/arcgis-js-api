@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
 
-define({widgetLabel:"Εντοπισμός",title:"Εύρεση της τοποθεσίας μου"});
+define({widgetLabel:"Εντοπισμός",title:"Εύρεση της τοποθεσίας μου",currentLocation:"Τρέχουσα τοποθεσία",timestamp:"Χρονική σήμανση",latitude:"Γεωγραφικό πλάτος",longitude:"Γεωγραφικό μήκος",accuracy:"Ακρίβεια",altitude:"Υψόμετρο",altitudeAccuracy:"Ακρίβεια υψομέτρου",heading:"Επικεφαλίδα",speed:"Ταχύτητα"});
