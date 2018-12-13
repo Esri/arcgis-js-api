@@ -90,6 +90,7 @@
 
 .esriGEReportPlayerPrintNode .sectionDynamicSettings_settingsButton,
 .esriGEReportPlayerPrintNode .sectionDynamicSettings_filterButton,
+.esriGEReportPlayerPrintNode .sectionDynamicSettings_exportButton,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButton,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButtonIcon {
     display: none !important;

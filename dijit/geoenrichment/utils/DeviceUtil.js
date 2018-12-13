@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define([],function(){var e={};return e.isMobileDevice=function(){return navigator.userAgent&&-1!==navigator.userAgent.indexOf(" Mobile")},e});
+define(["dojo/sniff"],function(e){var n={},i=navigator.userAgent&&-1!==navigator.userAgent.indexOf(" Mobile"),o=!i&&e("touch");return n.isMobileDevice=function(){return i},n.isPCWithTouchScreen=function(){return o},n.isLandscape=function(){return 90===Math.abs(window.orientation)},n.press=i?"touchstart":"mousedown",n.release=i?"touchend":"mouseup",n.click=i?"touchend":"click",n.clickOrRelease=i?"touchend":"click, mouseup",n});

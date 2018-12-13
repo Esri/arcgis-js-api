@@ -55,3 +55,19 @@
 .playerThemeDark .esriGEPageNavigator {
     color: white;
 }
+
+
+
+.esriGEReportPlayerMobile .esriGEReportPlayer_reportContainerPagination > div > .esriGEReportPlayer_infographicsPage > .esriGEReportPlayer_reportContainerGrid > .Pagination > .Pagination_PageAndArrows > .Pagination_Items {
+    left: 0px;
+    right: 0px;
+}
+
+.esriGEReportPlayerMobile .esriGEReportPlayer_reportContainerPagination .reportContainerPagination_pageNavigatorDiv {
+    left: auto;
+    right: 5px;
+    height: auto;
+    bottom: 5px;
+    background-color: gray;
+    padding: 3px;
+}

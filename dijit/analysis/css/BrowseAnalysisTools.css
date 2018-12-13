@@ -84,7 +84,9 @@
   
 }
 
-.esriBrowseAnalysisTools .template-info-showing .rft-info-panel-description p {
+.esriBrowseAnalysisTools .template-info-showing .rft-info-panel-description {
+  
+  max-height: 25em;
+  overflow-y: auto;
   height: auto;
-  max-height: 80%;
 }

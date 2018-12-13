@@ -1,3 +1,5 @@
+@import url('./Shared.css');
+
 @import url('./ReportPlayer/ReportPlayer.css');
 @import url('./ReportPlayer/PlayerToolbar.css');
 @import url('./ReportPlayer/PlayerToolbar_mobile.css');

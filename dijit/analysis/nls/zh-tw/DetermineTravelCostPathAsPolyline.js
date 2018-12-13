@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({inputSourceLayerLabel:"選擇圖徵來源圖層點陣以決定路徑來源",inputCostRasterLabel:"選擇行進成本點陣圖層",inputDestinationLayerLabel:"選擇點陣或圖徵目的地圖層以決定路徑目的地",pathTypeLabel:"選擇要決定的路徑類型 (選用)",bestSingle:"最佳單一",eachCell:"到每個儲存格",eachZone:"到每個區域",outputPolylineName:"結果折線名稱",outputLayerName:"作為 ${layername} 之折線的最佳行進成本",drawDestinationPointLayerName:"目的地點",drawSourcePointLayerName:"來源點",itemDescription:"在 ${layerName} 上執行「將行進成本路徑判定為折線」所產生的圖徵圖層。 ",itemTags:"分析結果，將行進成本路徑判定為折線，${layername} ${fieldname}",itemSnippet:"從「將行進成本路徑判定為折線」產生的圖徵圖層。"});
+define({inputSourceLayerLabel:"選擇點陣或圖徵來源圖層以決定路徑來源",inputCostRasterLabel:"選擇行進成本點陣圖層",inputDestinationLayerLabel:"選擇點陣或圖徵目的地圖層以決定路徑目的地",pathTypeLabel:"選擇要決定的路徑類型 (選用)",bestSingle:"最佳單一",eachCell:"到每個儲存格",eachZone:"到每個區域",outputPolylineName:"結果折線名稱",outputLayerName:"作為 ${layername} 之折線的最佳行進成本",drawDestinationPointLayerName:"目的地點",drawSourcePointLayerName:"來源點",itemDescription:"在 ${layerName} 上執行「將行進成本路徑判定為折線」所產生的圖徵圖層。 ",itemTags:"分析結果，將行進成本路徑判定為折線，${layername} ${fieldname}",itemSnippet:"從「將行進成本路徑判定為折線」產生的圖徵圖層。"});

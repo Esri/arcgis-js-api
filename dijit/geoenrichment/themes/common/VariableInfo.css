@@ -13,3 +13,7 @@
 .VariableInfo_Spacer {
     height:0.5em;
 }
+
+.VariableInfo_Value {
+    max-width: 250px;
+} 

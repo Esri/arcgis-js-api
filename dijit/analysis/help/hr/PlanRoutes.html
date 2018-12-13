@@ -67,7 +67,7 @@
     </p>
     <p>Izlazni rezultat Planiranje ruta uključuje sloj postaja koje su kodirane po rutama kojima su dodijeljene, sloj ruta koji prikazuje najkraći put za posjećivanje dodijeljene postaje i, ovisno o tome ako se do neke postaje nije moglo doći, sloj nedodijeljenih postaja. 
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzeti u obzir u analizi.  Ako opcija nije označena, svi geoobjekti u sloju unosa uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzeti u obzir u analizi. Ako opcija nije označena, svi geoobjekti u ulaznom sloju uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -87,7 +87,7 @@
         <div><h2>Način putovanja za rute</h2></div>
         <hr/>
         <div>
-            <p>Izaberite svoj način putovanja.  Izlazne rute pratit će ceste ili staze i po&scaron;tovati primjenjiva pravila, kao &scaron;to su jednosmjerne ulice i nezakonita skretanja prilikom vožnje ili vožnje kamiona.  Dostupne načine putovanja određuje administrator va&scaron;e organizacije.  
+            <p>Izaberite svoj način putovanja.  Izlazne rute pratit će ceste ili staze i po&scaron;tovati primjenjiva pravila, kao &scaron;to su jednosmjerne ulice i nezakonita skretanja prilikom vožnje ili vožnje kamiona. Dostupne načine putovanja određuje administrator va&scaron;e organizacije.  
             </p>
         </div>
     </div>
@@ -131,6 +131,20 @@
             <p>Za određivanje ruta svim vozilima do zajedničke zavr&scaron;ne točke koja nije početna točka, odznačite opciju  <b>Povratak na početak</b> i dodajte točku na karti ili izaberite sloj koji sadrži samo jednu točku.
             </p>
             <p>Da biste zavr&scaron;ili rute na jedinstvenim lokacijama, odznačite opciju  <b>Povratak na početak</b> i izaberite sloj koji sadrži vi&scaron;e od jedne točke. Broj vozila mora biti isti kao broj točki u odabranom sloju. Na popisu padajućeg izbornika <b>Polje ID-a rute</b> izaberite polje koje na jedinstveni način identificira individualne rute, vozila ili vozače. Ako vozila kreću s vi&scaron;e lokacija i zavr&scaron;avaju na vi&scaron;e lokacija, ID-ovi rute odabrani za početne i zavr&scaron;ne slojeve moraju se podudarati.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj slojeve ograničenja</h2></div>
+        <hr/>
+        <div>
+            <p> Navedite jedan ili vi&scaron;e geoobjekata koji će funkcionirati kao privremena ograničenja (drugim riječima, barijere) kad se krećete odgovarajućim ulicama. Možete navesti ograničenja upotrebom točkastih, linijskih ili poligonalnih geoobjekata.
+            </p>
+            <p>Točkasto ograničenje može predstavljati sru&scaron;eno stablo, nesreću, sru&scaron;eni dalekovod ili bilo &scaron;to &scaron;to u potpunosti blokira promet na određenom mjestu u ulici. Kretanje je dopu&scaron;teno po ulici, ali ne kroz ograničenje. Možete navesti do 250 geoobjekata koji će funkcionirati kao točkasta ograničenja.
+            </p>
+            <p>Linijsko ograničenje sprječava kretanje svugdje gdje ograničenje presijeca ulice. Na primjer, povorka ili prosvjed koji zaustavljaju promet kroz nekoliko dijelova ulica mogu se modelirati pomoću linijskog ograničenja. Ako broj geoobjekata na ulici koji presijecaju linijska ograničenja prema&scaron;uje 500, alat će javiti da je do&scaron;lo do pogre&scaron;ke.
+            </p>
+            <p>Poligonsko ograničenje sprječava kretanje svugdje gdje poligon presijeca ulice. Ova vrsta ograničenja može se upotrijebiti za modeliranje poplavljenih područja ulične mreže gdje kretanje cestom nije moguće. Ako broj geoobjekata na ulici koji presijecaju poligonska ograničenja prema&scaron;uje 2000, alat će javiti da je do&scaron;lo do pogre&scaron;ke.
             </p>
         </div>
     </div>

@@ -134,6 +134,20 @@
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Aggiungere layer delle barriere</h2></div>
+        <hr/>
+        <div>
+            <p> Specificare una o pi&ugrave; feature che agiscano come restrizioni temporanee (in altre parole, barriere) mentre si viaggia sulle strade sottostanti. &Egrave; possibile specificare le barriere utilizzando feature puntuali, lineari o poligonali.
+            </p>
+            <p>Una barriera puntuale pu&ograve; essere un albero caduto, un incidente, una linea elettrica fuori uso o qualsiasi elemento che blocchi completamente il traffico in un punto specifico sulla strada. &Egrave; possibile viaggiare sulla strada ma non &egrave; possibile attraversare la barriera. &Egrave; possibile specificare fino a 250 feature affinch&eacute; fungano da barriere puntuali.
+            </p>
+            <p>Una barriera lineare impedisce di viaggiare lungo il perimetro di intersezione tra la barriera e le strade. Per esempio, tramite una barriera lineare, &egrave; possibile creare un corteo o una protesta in grado di bloccare il traffico interessando vari segmenti di strade. Se il numero di feature di strade che si intersecano con tutte le barriere lineari supera il numero 500, lo strumento restituir&agrave; un errore.
+            </p>
+            <p>Una barriera poligonale impedisce di viaggiare all&rsquo;interno di tutta l&rsquo;area di intersezione tra il poligono e le strade. &Egrave; possibile utilizzare questo tipo di barriera per creare alluvioni che coprano aree di rete di strade, rendendo impossibile la circolazione stradale. Se il numero di feature di strade che si intersecano con tutte le barriere poligonali supera il numero 2000, lo strumento restituir&agrave; un errore.
+            </p>
+        </div>
+    </div>
     <div id="routeCount">
         <div><h2>Numero massimo di veicoli per itinerario</h2></div>
         <hr/>
@@ -211,10 +225,10 @@
         </div>
     </div>
     <div id="resultsLayer">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p>Nome del feature layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il feature layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il feature layer conterr&agrave; un layer per ciascuno dei seguenti elementi: itinerari e fermate assegnate e non assegnate quando alcune fermate di input non possono essere assegnate agli itinerari.
+            <p>Nome del Feature Layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il Feature Layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il feature layer conterr&agrave; un layer per ciascuno dei seguenti elementi: itinerari e fermate assegnate e non assegnate quando alcune fermate di input non possono essere assegnate agli itinerari.
             </p>
             <p>Se si seleziona  <b>Includi layer percorso</b>, anche ogni percorso incluso nei risultati viene salvato come layer percorso. Un layer percorso include tutte le informazioni relative a un percorso specifico, ad esempio le fermate assegnate al percorso e le direzioni di viaggio. La creazione dei layer percorso risulta utile se si desidera condividere i singoli percorsi con altri membri nell'organizzazione oppure se si desidera modificare ulteriormente i percorsi utilizzando il pulsante <b>Indicazioni</b> nel Map Viewer. I layer percorso utilizzano il nome fornito per il feature layer come prefisso, mentre il nome percorso generato nell'ambito dell'analisi viene aggiunto per creare un nome univoco per ogni layer percorso.
             </p>

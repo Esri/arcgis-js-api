@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({inputSourceLayerLabel:"选择栅格或要素源图层以确定路径的起始点",inputCostRasterLabel:"选择行程成本栅格图层",inputDestinationLayerLabel:"选择栅格或要素目的地图层以确定路径的终点",pathTypeLabel:"选择要确定的路径类型(可选)",bestSingle:"最佳单一",eachCell:"到每个像元",eachZone:"到每个区域",outputPolylineName:"结果折线名称",outputLayerName:"最佳行程成本为 ${layername} 的折线",drawDestinationPointLayerName:"${layername} 的最佳行程成本折线",drawSourcePointLayerName:"源点",itemDescription:"通过在 ${layerName} 上运行确定行程成本路径为折线生成的要素图层。 ",itemTags:"分析结果，确定行程成本路径为折线，${layername} ${fieldname}",itemSnippet:"通过确定行程成本路径为折线生成的要素图层。"});
+define({inputSourceLayerLabel:"选择栅格或要素源图层以确定路径起点",inputCostRasterLabel:"选择行程成本栅格图层",inputDestinationLayerLabel:"选择栅格或要素目的地图层以确定路径的终点",pathTypeLabel:"选择要确定的路径类型(可选)",bestSingle:"最佳单一",eachCell:"到每个像元",eachZone:"到每个区域",outputPolylineName:"结果折线名称",outputLayerName:"最佳行程成本为 ${layername} 的折线",drawDestinationPointLayerName:"${layername} 的最佳行程成本折线",drawSourcePointLayerName:"源点",itemDescription:"通过在 ${layerName} 上运行确定行程成本路径为折线生成的要素图层。 ",itemTags:"分析结果，确定行程成本路径为折线，${layername} ${fieldname}",itemSnippet:"通过确定行程成本路径为折线生成的要素图层。"});

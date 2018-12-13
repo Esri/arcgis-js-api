@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define({clustersLabel:"针对 ${inputLayerName} 图层查找聚类。",chooseLayerLabel:"选择要查找聚类的图层",minClusterPtsLabel:"将视为聚类的最小点数",limitSearchLabel:"将搜索范围限制为(可选)",limitSearchReqLabel:"将搜索范围限制为",outputLayerName:"查找 ${inputLayerName} 的聚类",itemDescription:"通过对 ${inputLayerName} 运行查找点聚类解决方案生成的要素图层。",itemTags:"分析结果、查找点聚类、${inputLayerName}",itemSnippet:"通过查找点聚类生成的要素图层"});
+define({clustersLabel:"针对 ${inputLayerName} 图层查找聚类。",chooseLayerLabel:"选择要查找聚类的图层",minClusterPtsLabel:"将视为聚类的最小点数",limitSearchLabel:"将搜索范围限制为(可选)",limitSearchReqLabel:"将搜索范围限制为",outputLayerName:"查找 ${inputLayerName} 的聚类",itemDescription:"通过对 ${inputLayerName} 运行查找点聚类解决方案生成的要素图层。",itemTags:"分析结果、查找点聚类、${inputLayerName}",itemSnippet:"通过查找点聚类生成的要素图层",chooseClusteringMethod:"选择要使用的聚类方法",dbscanLabel:"定义的距离(DBSCAN)",hdbscanLabel:"自调整(HDBSCAN)"});

@@ -92,13 +92,13 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
             <p>Al elegir  <b>Tiempo de conducci&oacute;n</b>, <b>Tiempo de conducci&oacute;n (medio rural)</b> o <b>Tiempo en cami&oacute;n</b>, dispone de distintas opciones para medir el tiempo de recorrido.
                 <ul>
                     <li>
-                        <p>Desactiva  <b>Utilizar tr&aacute;fico</b> para encontrar los centros m&aacute;s cercanos basados en velocidades de viaje predeterminadas tales como los l&iacute;mites de velocidad en lugar de en velocidades fluctuantes ocasionadas por el cambio en las condiciones del tr&aacute;fico.
+                        <p>Desactive  <b>Utilizar tr&aacute;fico</b> para encontrar los centros m&aacute;s cercanos basados en velocidades de viaje predeterminadas tales como los l&iacute;mites de velocidad en lugar de en velocidades fluctuantes ocasionadas por el cambio en las condiciones del tr&aacute;fico.
                         </p>
                         <p>Esta es la opci&oacute;n que debe elegir si desea conocer las ubicaciones cercanas en general, pero no obligatoriamente las condiciones de tr&aacute;fico dadas m&aacute;s cercanas para una hora y un d&iacute;a espec&iacute;fico.
                         </p>
                     </li>
                     <li>
-                        <p>Activa  <b>Utilizar tr&aacute;fico</b> para buscar las ubicaciones m&aacute;s cercanas bas&aacute;ndose en una hora de inicio dada y unas condiciones de tr&aacute;fico variables. Si adem&aacute;s elige la opci&oacute;n <b>Tr&aacute;fico en directo</b>, la hora de salida desde las ubicaciones de partida se establece en la hora actual, y se toman como referencia las velocidades de tr&aacute;fico actuales y previstas de los sensores y las fuentes para determinar cu&aacute;les son las entidades m&aacute;s cercanas. Las velocidades de tr&aacute;fico previstas se calculan en funci&oacute;n de las velocidades de tr&aacute;fico en directo, las velocidades hist&oacute;ricas y eventos actuales como las condiciones meteorol&oacute;gicas. Las velocidades de tr&aacute;fico se predicen con 12 horas de antelaci&oacute;n, de modo que puede mover la barra deslizante para establecer la hora de salida hasta 12 horas antes.
+                        <p>Active  <b>Utilizar tr&aacute;fico</b> para buscar las ubicaciones m&aacute;s cercanas bas&aacute;ndose en una hora de inicio dada y unas condiciones de tr&aacute;fico variables. Si adem&aacute;s elige la opci&oacute;n <b>Tr&aacute;fico en directo</b>, la hora de salida desde las ubicaciones de partida se establece en la hora actual, y se toman como referencia las velocidades de tr&aacute;fico actuales y previstas de los sensores y las fuentes para determinar cu&aacute;les son las entidades m&aacute;s cercanas. Las velocidades de tr&aacute;fico previstas se calculan en funci&oacute;n de las velocidades de tr&aacute;fico en directo, las velocidades hist&oacute;ricas y eventos actuales como las condiciones meteorol&oacute;gicas. Las velocidades de tr&aacute;fico se predicen con 12 horas de antelaci&oacute;n, de modo que puede mover la barra deslizante para establecer la hora de salida hasta 12 horas antes.
                         </p>
                         <p>Utiliza esta configuraci&oacute;n de tr&aacute;fico en directo para averiguar a qu&eacute; entidades se puede llegar en el tiempo m&aacute;s corto posible saliendo ahora, dentro de una hora, etc.
                         </p>
@@ -112,9 +112,23 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
                         </p>
                     </li>
                 </ul>
-                Ten en cuenta que cuando un veh&iacute;culo empieza el recorrido desde un punto, el tiempo transcurre y las condiciones de tr&aacute;fico cambian. Esta herramienta tiene en cuenta estas variaciones si se activa <b>Utilizar tr&aacute;fico</b>; sin embargo, no todas las regiones admiten tr&aacute;fico. Haga clic en el v&iacute;nculo <b>Ver disponibilidad</b> de la herramienta para averiguar si est&aacute; disponible en su &aacute;rea de estudio. 
+                Tenga en cuenta que cuando un veh&iacute;culo empieza el recorrido desde un punto, el tiempo transcurre y las condiciones de tr&aacute;fico cambian. Esta herramienta tiene en cuenta estas variaciones si se activa <b>Utilizar tr&aacute;fico</b>; sin embargo, no todas las regiones admiten tr&aacute;fico. Haga clic en el v&iacute;nculo <b>Ver disponibilidad</b> de la herramienta para averiguar si est&aacute; disponible en su &aacute;rea de estudio. 
             </p>
             <p> <b>Tiempo en cami&oacute;n</b> puede utilizar velocidades de viaje din&aacute;micas basadas en el tr&aacute;fico, pero solo hasta el l&iacute;mite de velocidad permitido para camiones. Por ejemplo, si la velocidad din&aacute;mica de una calle basada en el tr&aacute;fico en directo es de 65 millas por hora, pero el l&iacute;mite de velocidad para camiones en esa calle es de 55 millas por hora, el c&aacute;lculo utilizar&aacute; 55 millas por hora para esa calle.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Agregar capas de barrera</h2></div>
+        <hr/>
+        <div>
+            <p> Especifique una o varias entidades que act&uacute;en como restricciones temporales (es decir, barreras) al viajar por las calles subyacentes. Puede especificar las barreras mediante entidades poligonales, de puntos o l&iacute;neas.
+            </p>
+            <p>Una barrera de punto puede modelar un &aacute;rbol ca&iacute;do, un accidente, una l&iacute;nea el&eacute;ctrica ca&iacute;da o cualquier cosa que bloquee completamente el tr&aacute;fico en una posici&oacute;n concreta a lo largo de la calle. Se permite el desplazamiento por la calle, pero no por la barrera. Puede especificar hasta 250 entidades para que act&uacute;en como barreras de punto.
+            </p>
+            <p>Una barrera de l&iacute;nea proh&iacute;be viajar a cualquier punto en que la barrera interseque las calles. Por ejemplo, un desfile o una protesta que bloquee el tr&aacute;fico por varios segmentos de calle se puede modelar con una barrera de l&iacute;nea. Si el n&uacute;mero de las entidades de calle intersecadas por todas las barreras de l&iacute;nea supera 500, la herramienta devuelve un error.
+            </p>
+            <p>Una barrera de pol&iacute;gono proh&iacute;be viajar a cualquier punto en que el pol&iacute;gono interseque las calles. Un uso de este tipo de barrera consiste en modelar inundaciones cubriendo &aacute;reas de la red de calles que hacen inviables los viajes por carretera. Si el n&uacute;mero de las entidades de calle intersecadas por todas las barreras de pol&iacute;gono excede 2.000, la herramienta devuelve un error.
             </p>
         </div>
     </div>
@@ -122,7 +136,7 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
         <div><h2>Para cada ubicación de la capa de entrada</h2></div>
         <hr/>
         <div>
-            <p>Tambi&eacute;n dispones de dos opciones para limitar la b&uacute;squeda de las ubicaciones m&aacute;s cercanas. Una opci&oacute;n es limitar la b&uacute;squeda a un n&uacute;mero m&aacute;ximo de ubicaciones cercanas por ubicaci&oacute;n de partida. Puede buscar el parque m&aacute;s cercano, los dos m&aacute;s cercanos, etc. La otra opci&oacute;n es establecer un tiempo o una distancia de b&uacute;squeda m&aacute;ximo.
+            <p>Tambi&eacute;n dispone de dos opciones para limitar la b&uacute;squeda de las ubicaciones m&aacute;s cercanas. Una opci&oacute;n es limitar la b&uacute;squeda a un n&uacute;mero m&aacute;ximo de ubicaciones cercanas por ubicaci&oacute;n de partida. Puede buscar el parque m&aacute;s cercano, los dos m&aacute;s cercanos, etc. La otra opci&oacute;n es establecer un tiempo o una distancia de b&uacute;squeda m&aacute;ximo.
             </p>
             <p>Si las opciones se desactivan, el n&uacute;mero m&aacute;ximo de ubicaciones cercanas para buscar es 100 (el l&iacute;mite de la herramienta) y el intervalo de b&uacute;squeda es ilimitado.
             </p>

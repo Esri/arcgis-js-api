@@ -93,8 +93,10 @@
         </tr>
         <tr data-dojo-attach-point="_useTrafficLabelRow">
           <td style="padding:0" colspan="3">
-            <div style="width;100%" data-dojo-type="esri/dijit/analysis/TrafficTime" data-dojo-attach-point="_trafficTimeWidget"></div>
+            <div style="width:100%" data-dojo-type="esri/dijit/analysis/TrafficTime" data-dojo-attach-point="_trafficTimeWidget"></div>
           </td>
+        </tr>
+        <tr data-dojo-type="esri/dijit/analysis/components/AddBarrierLayers/AddBarrierLayers" data-dojo-attach-point="_addBarrierLayersComponent" data-dojo-props="showGeoAnalyticsParams: ${showGeoAnalyticsParams}">
         </tr>
         <tr>
           <td colspan="2">

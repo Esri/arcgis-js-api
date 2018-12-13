@@ -110,7 +110,6 @@
                     "esri/geometry/ScreenPoint",
                     "esri/layers/GraphicsLayer",
                     "esri/dijit/InfoWindowLite",
-                    //"esri/dijit/PopupTemplate",
                     //"esri/urlUtils",
 
                     "esri/dijit/geoenrichment/OnDemandSelect",
@@ -140,7 +139,6 @@
                    ScreenPoint,
                    GraphicsLayer,
                    InfoWindowLite,
-                   //PopupTemplate,
                    //urlUtils,
 
                    OnDemandSelect,
@@ -191,18 +189,14 @@
                            var viewModeSelector = new OnDemandSelect({
                                listClass: "esriGEOnDemandSelectSpacedOut"
                            }).placeAt(viewModeSelectorDiv);
-                           if (isMobile) {
-                               viewModeSelector.set("options", [
-                                   { value: PlayerViewModes.PANELS_IN_SLIDES, label: "Slide view" },
-                                   { value: PlayerViewModes.PANELS_IN_STACK, label: "Stacked slide view" }
-                               ]);
-                               viewModeSelector.set("value", PlayerViewModes.PANELS_IN_SLIDES);
-                           }
+                           if (isMobile) 
+                               viewModeSelectorBlock.style.display = "none"; // automatic for mobile
                            else {
                                viewModeSelector.set("options", [
                                    { value: PlayerViewModes.FULL_PAGES, label: "Full screen" },
                                    { value: PlayerViewModes.PANELS_IN_SLIDES, label: "Slide view" },
-                                   { value: PlayerViewModes.PANELS_IN_STACK, label: "Stacked slide view" }
+                                   { value: PlayerViewModes.PANELS_IN_STACK, label: "Stacked slide view" },
+                                   { value: PlayerViewModes.PANELS_IN_ROW, label: "Flow slide view" }
                                ]);
                                viewModeSelector.set("value", PlayerViewModes.FULL_PAGES);
                            }
@@ -345,7 +339,13 @@
                                        "FRONTAGE": 800,
                                        "PARKING": 300,
                                        "BUILDING_DATE": new Date().getTime(),
-                                       "url": "https://www.sandiego.com/sites/sandiego.com/files/styles/gallery_listing_full/public/content/gallery/images/national-city-11_c.jpg"
+                                       "url": "https://www.sandiego.com/sites/sandiego.com/files/styles/gallery_listing_full/public/content/gallery/images/national-city-11_c.jpg",
+                                       "url2": "http://www.sdcold.com/images/aerialncmt04b.jpg",
+                                       "url3": "https://www.joc.com/sites/default/files/field_feature_image/san%20diego%20national%20city%20terminal.jpg",
+                                       "url4": "https://www.sdinjury.com/wp-content/uploads/2017/02/National_City.jpg",
+                                       "url5": "http://www.hotel-r.net/im/hotel/asia/pk/national-city-hotel-11.jpg",
+                                       "url6": "https://d2nuhorlnps36p.cloudfront.net/images/Hotels/best-western-plus-marina-gateway-hotel-images-05689/hotel/05689_004_pool.jpg?sfvrsn=0",
+                                       "url7": "https://media-cdn.tripadvisor.com/media/photo-s/04/94/2f/2a/niederfrank-s.jpg"
                                    }
                                }));
 
@@ -516,7 +516,7 @@
                                                    "feature": g
                                                };
                                            }),
-                                           // for multi-feature reports like "Multi-ring Comparison"
+                                           // for multi-feature reports like "Multi-area Comparison"
                                            combinedAreasInfo: {
                                                address: graphics[0].attributes.NAME + " et al.",
                                                description: graphics.length + " polygon areas"
@@ -568,17 +568,25 @@
                                                },
                                                getAttachmentsForAreaAt: function (areaIndex) {
                                                    var attributes = graphics[areaIndex].attributes;
-                                                   return [
-                                                       {
+                                                   var urls = [];
+                                                   attributes.url && urls.push(attributes.url);
+                                                   attributes.url2 && urls.push(attributes.url2);
+                                                   attributes.url3 && urls.push(attributes.url3);
+                                                   attributes.url4 && urls.push(attributes.url4);
+                                                   attributes.url5 && urls.push(attributes.url5);
+                                                   attributes.url6 && urls.push(attributes.url6);
+                                                   attributes.url7 && urls.push(attributes.url7);
+                                                   return urls.map(function (url) {
+                                                       return {
                                                            description: "Image for " + attributes.NAME,
                                                            getThumbnail: function () {
-                                                               return attributes.url;
+                                                               return url;
                                                            },
                                                            getAttachmentUrl: function () {
-                                                               return attributes.url;
+                                                               return url;
                                                            }
-                                                       }
-                                                   ];
+                                                       };
+                                                   });
                                                }
                                            }
                                        }).then(function () {
@@ -625,11 +633,11 @@
         <div id="topToolbarHelperText" class="topToolbarLabel"></div>
         <div class="dijitInline" style="white-space:nowrap;">
             <div class="dijitInline topToolbarLabel">Template:</div>
-            <div class="dijitInline topToolbarItem" id="templateSelectorDiv"></div>
+            <div id="templateSelectorDiv" class="dijitInline topToolbarItem"></div>
         </div>
-        <div class="dijitInline" style="white-space:nowrap;">
+        <div id="viewModeSelectorBlock" class="dijitInline" style="white-space:nowrap;">
             <div class="dijitInline topToolbarLabel">View infographic in:</div>
-            <div class="dijitInline topToolbarItem" id="viewModeSelectorDiv"></div>
+            <div id="viewModeSelectorDiv" class="dijitInline topToolbarItem"></div>
         </div>
     </div>
     <div id="mapDiv"></div>

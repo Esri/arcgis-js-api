@@ -354,6 +354,9 @@
 .esriViewPopup .esriDateValue {
   text-transform: capitalize;
 }
+.esriViewPopup .charNewLine {
+  white-space: pre-wrap;
+}
 .esriViewPopup .statusSection {
   text-align: center;
 }

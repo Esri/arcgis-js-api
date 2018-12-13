@@ -6,19 +6,6 @@
 
     
 
-    .esriGEPaginatableTableInfographic .paginatableTableInfographic_noDataPlaceHolder {
-        text-align: center;
-    }
-
-    .esriGEPaginatableTableInfographic .paginatableTableInfographic_noDataPlaceHolderLabel {
-        text-align: center;
-        font-style: italic;
-        margin-top: 5px;
-        color: #AAAAAA;
-    }
-
-    
-
     .esriGEPaginatableTableInfographic .paginatableTableInfographic_contentDiv {
         position: relative;
     }

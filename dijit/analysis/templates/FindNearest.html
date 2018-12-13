@@ -87,7 +87,12 @@
             <td colspan="3" style="padding:0;">
               <div style="width:100%;" class="esriFloatLeading esriTrailingMargin3" data-dojo-type="esri/dijit/analysis/TrafficTime" data-dojo-attach-point="_trafficTimeWidget"></div>
             </td>
-          </tr>          
+          </tr> 
+          <tr data-dojo-type="esri/dijit/analysis/components/AddBarrierLayers/AddBarrierLayers" data-dojo-attach-point="_addBarrierLayersComponent" data-dojo-props="showGeoAnalyticsParams: ${showGeoAnalyticsParams}">
+          </tr>
+          <tr>
+            <td colspan="3" class="clear"></td>
+          </tr>        
           <tr>
             <td colspan="3">
               <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_addStatsHelpLink" esriHelpTopic="Cutoffs"></a>
@@ -111,7 +116,7 @@
          </tr>
          <tr>
            <td colspan="3" style="padding-bottom:0.25;padding-top:0.25;">
-             <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin2"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1,constraints: { min:1, max:100, places:0 }"/>
+             <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin2"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1"/>
            </td>
          </tr>
          <tr>

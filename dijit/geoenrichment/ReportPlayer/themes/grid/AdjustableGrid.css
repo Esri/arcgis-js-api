@@ -82,3 +82,8 @@
     width: 0px !important;
     height: 0px !important;
 }
+
+.esriGEAdjustableGrid .floatingTableSimpleElement.isImage,
+.esriGEAdjustableGrid .floatingTableSimpleElement.isShape {
+    pointer-events: none;
+}

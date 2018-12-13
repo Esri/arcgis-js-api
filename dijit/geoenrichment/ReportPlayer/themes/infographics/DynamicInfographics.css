@@ -8,3 +8,10 @@
 .dynamicInfographic_viewDiv .RelatedVariables_ComparisonDiv {
     text-align: right;
 }
+
+
+
+.OneVarMultiComparison_Row.OneVarMultiComparison_Row_highlighted,
+.OneVarMultiComparison_CurrentRow.OneVarMultiComparison_Row_highlighted {
+    background-color: rgba(0, 145, 251, 0.2) !important;
+}

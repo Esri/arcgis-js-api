@@ -60,67 +60,23 @@
 
 
 
-.esriGEReportPlayerMobile .map .esriMapContainer .fixedPan {
+.map .mapNavigationLockButton {
     position: absolute;
-    background-image: url('../../themes/common/images/paginationArrows/LeftArrowWhite.svg');
+    background-image: url('./images/lock/lockWhite.svg');
     display: block;
     background-color: rgba(100, 100, 100, 0.75);
     background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     background-position: center;
-    background-size: 10px;
+    background-size: 24px;
     overflow: hidden;
     cursor: pointer;
     z-index: 50 !important; 
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panUp {
-    top: 0px;
-    transform: rotate(90deg);
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panUpperRight {
-    display: none;
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panRight {
     right: 0px;
-    background-image: url('../../themes/common/images/paginationArrows/RightArrowWhite.svg');
+    top: 165px;
 }
 
-.esriGEReportPlayerMobile .map .esriMapContainer .panLowerRight {
-    right: 0px;
-    bottom: 0px;
-    background-size: 20px;
-    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
-    transform: rotate(180deg);
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panDown {
-    bottom: 0px;
-    transform: rotate(-90deg);
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panLowerLeft {
-    left: 0px;
-    bottom: 0px;
-    background-size: 20px;
-    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
-    transform: rotate(-90deg);
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panLeft {
-    left: 0px;
-}
-
-.esriGEReportPlayerMobile .map .esriMapContainer .panUpperLeft {
-    left: 0px;
-    top: 0px;
-    background-size: 20px;
-    background-image: url('../../themes/common/images/paginationArrows/UpperLeftArrowWhite.svg');
-}
-
-.esriGEReportPlayerMobile .esriControlsBR.withPanArrows {
-    right: 35px;
+.map .mapNavigationLockButton.unlocked {
+    background-image: url('./images/lock/unlockWhite.svg');
 }

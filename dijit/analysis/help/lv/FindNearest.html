@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Atrast tuvējo</h2><p/>
-        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Atrast tuvējo"></h2>
+        <h2>Atrast tuvāko</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Atrast tuvāko"></h2>
         <hr/>
     <p>&Scaron;is rīks atrod tuvāk eso&scaron;os elementus un, pēc izvēles, pārskata un sarindo attālumu līdz tuvākajiem elementiem. Lai atrastu tuvāk eso&scaron;o, rīks var veikt mērījumu, izmantojot vai nu lineāro attālumu, vai atlasīto ceļo&scaron;anas veidu. Ir iespējams ierobežot tuvāk eso&scaron;o elementu skaitu, vai meklē&scaron;anas diapazonu, kurā meklēt. &Scaron;ī rīka rezultāti var palīdzēt jums atbildēt uz &scaron;āda veida jautājumiem:
         <ul>
@@ -67,15 +67,15 @@
         <div><h2>Izvēlieties slāni, kurā tiks atrastas tuvāk esošās vietas</h2></div>
         <hr/>
         <div>
-            <p>Atrast tuvējo mēra attālumu no elementiem jūsu slānī, kuru norādāt &scaron;eit (sākuma novietojums), līdz vietām, kuras norādāt nākamajā parametrā.  Rīks atbalsta līdz  5000 elementiem katrā slānī. 
+            <p>Atrast tuvāko mēra attālumu no elementiem jūsu slānī, kuru norādāt &scaron;eit (sākuma novietojums), līdz vietām, kuras norādāt nākamajā parametrā.  Rīks atbalsta līdz  5000 elementiem katrā slānī. 
             </p>
         </div>
     </div>
     <div id="NearbyLocationsLayer">
-        <div><h2>Atrast tuvējo novietojumu:</h2></div>
+        <div><h2>Atrast tuvāko novietojumu:</h2></div>
         <hr/>
         <div>
-            <p>Atrast tuvējo veic mērījumu no katra elementa pirmajā slānī līdz novietojumiem &scaron;ajā slānī. Rīks atbalsta līdz  5000 novietojumiem katrā slānī. </p>
+            <p>Atrast tuvāko veic mērījumu no katra elementa pirmajā slānī līdz novietojumiem &scaron;ajā slānī. Rīks atbalsta līdz  5000 novietojumiem katrā slānī. </p>
             <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
             </p>
         </div>
@@ -117,8 +117,22 @@
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Pievienot barjeras slāņus</h2></div>
+        <hr/>
+        <div>
+            <p> Norādiet vienu vai vairākus elementus, kas darbojas kā īslaicīgi ierobežojumi (citiem vārdiem sakot: kā barjeras), braucot pa ielām. Varat norādīt barjeras, izmantojot punkta, līnijas vai laukuma elementus.
+            </p>
+            <p>Punkta barjera var modelēt nokritu&scaron;u koku, negadījumu, pārrautu elektropārvades līniju vai jebko citu, kas pilnībā bloķē satiksmi konkrētā ielas vietā. Brauk&scaron;ana ir atļauta pa ielu, ne&scaron;ķērsojot barjeru. Varat norādīt līdz 250&nbsp;elementiem, kas darbosies kā punkta barjeras.
+            </p>
+            <p>Līnijas barjera aizliedz braukt jebkur, kur barjera &scaron;ķērso ielas. Piemēram: parādi vai protesta gājienu, kas bloķē satiksmi vairākās ielās, var attēlot kā līnijas barjeru. Ja ielas elementu skaits, ko &scaron;ķērso visas līnijas barjeras, pārsniedz&nbsp;500, rīks uzrāda kļūdu.
+            </p>
+            <p>Laukuma barjera aizliedz braukt jebkur, kur laukums &scaron;ķērso ielas. Viens &scaron;ādu barjeru lietojuma veids ir attēlot plūdus, kas pārklāj ielu tīklu un padara ceļus neizbraucamus. Ja laukuma barjeras &scaron;ķērsoto ielas elementu skaits pārsniedz&nbsp;2000, rīks uzrāda kļūdu.
+            </p>
+        </div>
+    </div>
     <div id="Cutoffs">
-        <div><h2>Katrai vietai ievades slānī</h2></div>
+        <div><h2>Katram novietojumam ievades slānī</h2></div>
         <hr/>
         <div>
             <p>Jums ir divas opcijas, kā ierobežot meklē&scaron;anu līdz tuvāk eso&scaron;ajiem novietojumiem. Viena opcija starta vietas atra&scaron;anai ir ierobežot maksimālo tuvāko novietojumu skaitu. Jūs varat atrast vienu tuvāko parku, divus tuvākos, un tā tālāk. Otra opcija ir noteikt maksimālo meklē&scaron;anas attālumu vai brauk&scaron;anas laiku.

@@ -5,6 +5,7 @@
     .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicRow {
         text-align: center;
         position: relative;
+        white-space: normal;
     }
 
     .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionNode {
@@ -12,4 +13,10 @@
         position: relative;
         border: 1px solid #dddddd;
         transform-origin: 0 0;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicsPageStack.isHorizontal {
+        white-space: nowrap;
     }

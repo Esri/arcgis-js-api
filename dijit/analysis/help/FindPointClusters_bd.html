@@ -66,6 +66,25 @@ extermination of pests.
             </p>
         </div>
     </div>
+    <div id="clusterMethod">
+        <div><h2>Choose the clustering method to use</h2></div>
+        <hr/>
+        <div>
+            <p>The clustering method that will be used to distinguish clusters of point features from surrounding noise. You can choose to use a defined distance or self-adjusting clustering algorithm.
+            </p>
+            <p>Defined distance (DBSCAN) uses a specified search range to separate dense clusters from sparser
+noise. Defined distance (DBSCAN) is faster but is only
+appropriate if there is a very clear search range to use that works
+well to define all clusters that may be present. Defined distance (DBSCAN) finds
+clusters that have similar densities.
+            </p>
+            <p>Self-adjusting (HDBSCAN) does not require a search range to be specified but it is a more time consuming method. Self-adjusting (HDBSCAN) finds
+clusters of points similar to Defined distance (DBSCAN) but uses varying search ranges
+allowing for clusters with varying densities.
+
+            </p>
+        </div>
+    </div>
     <div id="minFeaturesCluster">
         <div><h2>Minimum number of points to be considered a cluster</h2></div>
         <hr/>

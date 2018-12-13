@@ -1,0 +1,11 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+	 height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<g id="icon_Name">
+</g>
+<g id="icons">
+	<path fill="#FFFFFF" d="M13,7V5c0-2.7568359-2.2431641-5-5-5S3,2.2431641,3,5v2C2.4500122,7,2,7.4500122,2,8v7
+		c0,0.5499878,0.4500122,1,1,1h10c0.5499878,0,1-0.4500122,1-1V8C14,7.4500122,13.5499878,7,13,7z M4,5c0-2.2000122,1.7999878-4,4-4
+		s4,1.7999878,4,4v2h-1V5c0-1.6542969-1.3457031-3-3-3S5,3.3457031,5,5v2H4V5z M10,5v2H6V5c0-1.1025391,0.8969727-2,2-2
+		S10,3.8974609,10,5z M13,15H3V8h10V15z M8,14H7V9h1v1h1v1H8v1h1v1H8V14z"/>
+</g>
+</svg>

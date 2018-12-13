@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["dojo/when","../../../infographics/InfographicTypes"],function(n,e){var t={};return t.provideComparisonSettings=function(t){var r=t.getInfographic();return r&&r.getType()===e.COMPARISON_TABLE?n(r.getContentInitPromise(),function(){var e=r.getInnerInfographic();return n(e.getStatRanges(),function(n){return{statRanges:e.getNumAreasTotal()>1&&n,isChartView:e.isChartView(),comparisonTableInfographic:e}})}):null},t});
+define(["dojo/aspect","dojo/when","../../../infographics/InfographicTypes"],function(n,t,e){var r={};return r.provideComparisonSettings=function(r){var o=r.getInfographic();return o&&o.getType()===e.COMPARISON_TABLE?t(o.getContentInitPromise(),function(){var e=o.getInnerInfographic();return t(e.getFilterRanges(),function(t){var r={filterRanges:e.getNumAreasTotal()>1&&t,isChartView:e.isChartView(),getNumAreasTotal:function(){return e.getNumAreasTotal()},getNumAreasShown:function(){return e.getNumAreasShown()},onContentUpdated:function(){}};return n.after(e,"onContentUpdated",function(){r.onContentUpdated()}),r})}):null},r});

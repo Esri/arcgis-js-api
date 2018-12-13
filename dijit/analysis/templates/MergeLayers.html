@@ -52,7 +52,7 @@
               <label class="esriAnalysisStepsLabel">${i18n.chooseMergeLayer}</label>
             </td>  
             <td class="shortTextInput padBottom0">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="MergeLayer"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="MergeLayer" data-dojo-attach-point="_esriHelpMergeLayer"></a>
             </td>
           </tr>
           <tr>    
@@ -66,19 +66,18 @@
               <label class="esriAnalysisStepsLabel">${i18n.mergeFieldsLabel}</label>
             </td>
             <td class="shortTextInput padBottom0">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="MergingAttributes"></a> 
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="MergingAttributes" data-dojo-attach-point="_esriHelpMergingAttributes"></a> 
             </td>          
           </tr>  
-          <tr data-dojo-attach-point="_afterMergeFieldsRow">
-            <td colspan="3" class="clear"></td>
-          </tr>          
+          <tr data-dojo-type="esri/dijit/analysis/components/AddMergingAttributes" data-dojo-attach-point="_mergingAttributesWidget" data-dojo-props="showGeoAnalyticsParams:${showGeoAnalyticsParams}, addAsRow:true">
+          </tr>        
  	      <tr>
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
             </td>
             <td class="shortTextInput padBottom0">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="OutputName"></a> 
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="OutputName" data-dojo-attach-point="_esriHelpOutputName"></a> 
             </td>             
           </tr>
           <tr>

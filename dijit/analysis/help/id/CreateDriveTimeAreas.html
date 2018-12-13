@@ -122,11 +122,25 @@
             </p>
             <p>Perhatikan bahwa saat kendaraan melaju keluar dari suatu titik, waktu berlalu dan kondisi lalu lintas berubah. Alat Area Waktu Mengemudi berlaku untuk variasi ini ketika Anda memilih  <b>Waktu Mengemudi</b> dan mencentang <b>Gunakan Lalu Lintas</b>; namun tidak semua wilayah mendukung lalu lintas. Klik tautan <b>Lihat ketersediaan</b> pada alat untuk mengetahui apakah opsi ini ditawarkan di area studi Anda.
             </p>
-            <p> <b>Waktu Mengemudi Truk</b> dapat menggunakan kecepatan perjalanan dinamis pada lalu lintas tetapi hanya hingga batas kecepatan truk legal. Contoh, jika kecepatan dinamis suatu jalan berdasarkan lalu lintas langsung adalah 65 mil per jam, penghitungan akan menggunakan 55 mil per jam untuk jalan tersebut.
+            <p> <b>Waktu Mengemudi Truk</b> dapat menggunakan kecepatan perjalanan dinamis pada lalu lintas tetapi hanya hingga batas kecepatan truk legal. Contoh, jika kecepatan dinamis suatu jalan berdasarkan lalu lintas langsung adalah 65 mil per jam tetapi batas kecepatan truk untuk jalan tersebut adalah 55 mil per jam, penghitungan akan menggunakan 55 mil per jam untuk jalan tersebut.
             </p>
             <p> <b>Waktu Berjalan</b> dan <b>Jarak Berjalan</b> menggunakan kecepatan tetap 5 kilometer per jam (3,1 mil per jam) dan menyusuri trotoar setapak juga jalan yang dirancang (sambil mengesampingkan aturan bagi kendaraan otomotif, seperti jalan satu arah). </p>
             <p> <b>Jarak Mengemudi Truk</b> menggunakan kecepatan tetap dan mengikuti aturan yang berlaku bagi truk berat sedangkan <b>Jarak Mengemudi</b> dan <b>Jarak Mengemudi Pedesaan</b> menggunakan kecepatan tetap dan mengikuti aturan yang berlaku bagi kendaraan, misalnya mobil.
             </p> 
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Tambah Layer Penghalang</h2></div>
+        <hr/>
+        <div>
+            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            </p>
+            <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
+            </p>
+            <p>Penghalang garis melarang perjalanan ke mana pun penghalang berpotongan dengan jalan. Misalnya, parade atau demonstrasi yang memblokir lalu lintas di beberapa segmen jalan dapat direpresentasikan dengan penghalang garis. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang garis melebihi 500, alat mengembalikan suatu kesalahan.
+            </p>
+            <p>Penghalang poligon melarang perjalanan ke mana pun poligon berpotongan dengan jalan. Salah satu kegunaan penghalang tipe ini adalah untuk merepresentasikan area dari jaringan jalan yang tertutup banjir dan menyebabkan perjalanan ke sana tidak memungkinkan. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang poligon melebihi 2000, alat mengembalikan suatu kesalahan.
+            </p>
         </div>
     </div>
     <div id="DissolveType">
@@ -152,7 +166,7 @@
         <div>
             <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Dengan menggunakan kotak tarik-turun  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

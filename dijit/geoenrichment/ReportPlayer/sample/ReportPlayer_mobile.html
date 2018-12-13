@@ -32,8 +32,6 @@
                 require([
                     "esri/dijit/geoenrichment/ReportPlayer/ReportPlayer",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerThemes",
-                    "esri/dijit/geoenrichment/ReportPlayer/PlayerResizeModes",
-                    "esri/dijit/geoenrichment/ReportPlayer/PlayerViewModes",
                     "esri/dijit/geoenrichment/utils/signIn/SignInHelper",
                     "esri/dijit/geoenrichment/utils/UrlUtil",
 
@@ -42,8 +40,6 @@
                function (
                    ReportPlayer,
                    PlayerThemes,
-                   PlayerResizeModes,
-                   PlayerViewModes,
                    SignInHelper,
                    UrlUtil
                    ) {
@@ -75,6 +71,11 @@
                    if (typeof combinedAreasInfoJson === "string")
                        combinedAreasInfoJson = JSON.parse(combinedAreasInfoJson);
 
+                   // DEV
+
+                   window._dev_emulateMultiTouch = getUrlVar("emulateMultiTouch") === "true";
+                   window._dev_logTouch = getUrlVar("logTouch") === "true";
+
                    // default parameters
 
                    var DEFAULTS = {
@@ -95,8 +96,6 @@
                            // initialize the player
 
                            var player = new ReportPlayer({
-                               viewMode: viewMode || PlayerViewModes.PANELS_IN_STACK,
-                               resizeMode: resizeMode || PlayerResizeModes.FIT_WINDOW,
                                showToolbarInPopup: true,
                                theme: DEFAULTS.theme
                            }).placeAt(playerDiv)
@@ -142,6 +141,9 @@
                                        }
                                    }
                                ];
+
+                           if (window._dev_logTouch || window._dev_emulateMultiTouch)
+                               analysisAreasJson.length = 1;
 
                            // play report
 

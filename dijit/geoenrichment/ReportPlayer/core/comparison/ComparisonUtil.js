@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/utils/ObjectUtil"],function(e){var i={};return i.valueFormatFunction=function(i,r){return void 0===i||"string"==typeof i?i:e.formatNumber(i,{places:r.decimals,preserveTrailingZeroes:!0})},i});
+define(["esri/dijit/geoenrichment/utils/ObjectUtil","dojo/i18n!esri/nls/jsapi"],function(e,i){i=i.geoenrichment.dijit.ReportPlayer.ReportPlayer;var r={};return r.valueFormatFunction=function(r,n){return n&&n.isMissing?i.missingVariable:void 0===r||"string"==typeof r?r:e.formatNumber(r,{places:n.decimals,preserveTrailingZeroes:!0})},r});

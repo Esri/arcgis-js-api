@@ -248,7 +248,7 @@ esri/layers/rasterFormats/Jpg.js
 Extracted from pdf.js project.
 pdf.js: A general-purpose, web standards-based platform for parsing and rendering PDFs.
 https://github.com/mozilla/pdf.js
-Version 0.8.0, April 10, 2015
+Version 1.10.88, October 27, 2017
 
 Copyright 2014 Mozilla Foundation
 
@@ -261,6 +261,7 @@ distributed under the License is distributed on an 'AS IS' BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
 This code was forked from https://github.com/notmasteryet/jpgjs. The original
 version was created by github user notmasteryet
 

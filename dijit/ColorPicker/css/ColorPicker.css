@@ -91,7 +91,8 @@
 
 .esriColorPicker .esriPaletteOptions {
   padding: 6px 0 0;
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .esriColorPicker .esriPaletteOptions .esriSwatchEmpty {
@@ -99,8 +100,7 @@
 }
 
 .esriColorPicker .esriPaletteOptions .esriPaletteToggle {
-  position: absolute;
-  right: 0;
+  margin-left: auto;
   vertical-align: middle;
   box-shadow: none;
   border: none;
@@ -108,8 +108,8 @@
 }
 
 .dijitRtl .esriColorPicker .esriPaletteOptions .esriPaletteToggle {
-  left: 0;
-  right: auto;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .esriColorPicker .esriMiddle .esriPaletteOptions .dijit.esriPaletteToggle .dijitButtonNode {

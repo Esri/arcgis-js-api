@@ -34,16 +34,17 @@
     height: 16px;
     background-image: url("./images/closeWindow.svg");
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
     float: right;
 }
 
-.listItem:hover .esriGEComparisonSelect_removeButton {
-    opacity: 1;
-}
+    .esriGEComparisonSelect_removeButton:hover:not(.disabled) {
+        background-image: url("./images/closeWindow_over.svg");
+    }
 
-.esriGEComparisonSelect_removeButton:hover:not(.disabled) {
-    background-image: url("./images/closeWindow_over.svg");
+.listItem .esriGEComparisonSelect_removeButton.disabled {
+    opacity: 0;
+    cursor: default;
 }
 
 .listItem:hover .esriGEComparisonSelect_removeButton.disabled {

@@ -177,6 +177,10 @@
     vertical-align: middle;
 }
 
+.ShoppingCart .ShoppingCartRowLabel_missing {
+    color: red;
+}
+
 .ShoppingCart .ShoppingCartRowSpacer {
     width: 3px;
 }

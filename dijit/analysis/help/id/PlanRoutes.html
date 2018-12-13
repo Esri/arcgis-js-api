@@ -87,7 +87,7 @@
         <div><h2>Mode perjalanan untuk rute</h2></div>
         <hr/>
         <div>
-            <p>Pilih mode perjalanan Anda.  Rute output akan mengikuti jalan raya atau jalan pejalan kaki dan menaati aturan yang berlaku, seperti jalan satu arah dan larangan memutar untuk berkendara. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.  
+            <p>Pilih mode perjalanan Anda.  Rute output akan mengikuti jalan raya atau jalan pejalan kaki dan menaati aturan yang berlaku, seperti jalan satu arah dan larangan berputar untuk berkendara atau mengemudi truk. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.  
             </p>
         </div>
     </div>
@@ -131,6 +131,20 @@
             <p>Untuk menetapkan rute bagi semua kendaraan ke titik akhir yang sama yang bukan merupakan titik awal, hapus centang  <b>Kembali ke titik awal</b> dan tambahkan titik ke peta atau pilih layer yang berisi persis satu titik.
             </p>
             <p>Untuk membuat rute berakhir di lokasi unik, hapus centang  <b>Kembali ke titik awal</b> dan pilih layer yang berisi lebih dari satu titik. Jumlah kendaraan harus sama dengan jumlah titik di layer yang dipilih. Pada daftar tarik-turun <b>Kolom ID Rute</b>, pilih kolom yang secara unik mengidentifikasi masing-masing rute, kendaraan, atau pengemudi. Jika rute kendaraan mulai dari banyak lokasi dan berakhir juga di banyak lokasi, ID rute yang dipilih untuk layer mulai dan akhir harus cocok.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Tambah Layer Penghalang</h2></div>
+        <hr/>
+        <div>
+            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            </p>
+            <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
+            </p>
+            <p>Penghalang garis melarang perjalanan ke mana pun penghalang berpotongan dengan jalan. Misalnya, parade atau demonstrasi yang memblokir lalu lintas di beberapa segmen jalan dapat direpresentasikan dengan penghalang garis. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang garis melebihi 500, alat mengembalikan suatu kesalahan.
+            </p>
+            <p>Penghalang poligon melarang perjalanan ke mana pun poligon berpotongan dengan jalan. Salah satu kegunaan penghalang tipe ini adalah untuk merepresentasikan area dari jaringan jalan yang tertutup banjir dan menyebabkan perjalanan ke sana tidak memungkinkan. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang poligon melebihi 2000, alat mengembalikan suatu kesalahan.
             </p>
         </div>
     </div>

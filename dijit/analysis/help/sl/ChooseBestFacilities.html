@@ -132,7 +132,7 @@
         </div>
     </div>
     <div id="measure">
-        <div><h2>Izmeri</h2></div>
+        <div><h2>Izmera</h2></div>
         <hr/>
         <div>
             <p>Kot pri drugih orodjih, ki v analizo vključujejo potovanje, lahko določite, ali se potovanje meri z razdaljo ali časom in izberete različne načine potovanja, kot so hoja, trajanje vožnje, razdalja vožnje po neasfaltiranih cestah in tako naprej. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Pri uporabi  <b>časa vožnje z avtom</b>, <b>časa vožnje po neasfaltiranih cestah</b> ali <b>časa vožnje s tovornjakom</b> lahko poljubno vključite promet na določen dan v tednu in čas v dnevu.
@@ -147,9 +147,9 @@
         <div>
             <p>Točkovni geoobjekti, ki predstavljajo lokacije s povpra&scaron;evanjem po storitvah, ki jih ponujajo lokacije storitev. Orodje te lokacije povpra&scaron;evanja dodeli ustreznim lokacijam storitev glede na izbrani cilj.
             </p>
-            <p>Lokacije povpra&scaron;evanj imajo pripadajočo količino povpra&scaron;evanj. Če imajo vse lokacije povpra&scaron;evanj isto povpra&scaron;evanje, uporabite konstanto za določanje vrednosti.Če se količina povpra&scaron;evanj po lokacijah spreminja, uporabite polje Sloj lokacij povpra&scaron;evanj, da določite vrednost za vsako lokacijo povpra&scaron;evanja.
+            <p>Lokacije povpra&scaron;evanj imajo pripadajočo količino povpra&scaron;evanj. Če imajo vse lokacije povpra&scaron;evanj isto povpra&scaron;evanje, uporabite konstanto za določanje vrednosti. Če se količina povpra&scaron;evanj po lokacijah spreminja, uporabite polje Sloj lokacij povpra&scaron;evanj, da določite vrednost za vsako lokacijo povpra&scaron;evanja.
             </p>
-            <p>Povpra&scaron;evanja bodo dodeljevana lokacijam storitev, dokler ne bodo dodeljena vsa povpra&scaron;evanja, ne glede na to kako daleč so lokacije povpra&scaron;evanj od lokacij storitev. Sloju lokacij povpra&scaron;evanj lahko dodelite maksimalni doseg potovanja za ustvarjanje mejne vrednosti razdalje ali časa &ndash; katerekoli lokacije povpra&scaron;evanj zunaj mejne vrednosti ne bodo dodeljene. Če imajo vse lokacije povpra&scaron;evanj isti maksimalni potovalni doseg, uporabite konstanto za določanje vrednosti.Če se maksimalni doseg potovanja po lokacijah spreminja, uporabite polje Sloj lokacij povpra&scaron;evanja, da določite vrednost za vsako lokacijo povpra&scaron;evanja.
+            <p>Povpra&scaron;evanja bodo dodeljevana lokacijam storitev, dokler ne bodo dodeljena vsa povpra&scaron;evanja, ne glede na to kako daleč so lokacije povpra&scaron;evanj od lokacij storitev. Sloju lokacij povpra&scaron;evanj lahko dodelite maksimalni doseg potovanja za ustvarjanje mejne vrednosti razdalje ali časa &ndash; katerekoli lokacije povpra&scaron;evanj zunaj mejne vrednosti ne bodo dodeljene. Če imajo vse lokacije povpra&scaron;evanj isti maksimalni potovalni doseg, uporabite konstanto za določanje vrednosti. Če se maksimalni doseg potovanja po lokacijah spreminja, uporabite polje Sloj lokacij povpra&scaron;evanja, da določite vrednost za vsako lokacijo povpra&scaron;evanja.
             </p>
             <p>Če je tip cilja  <b>Pokrij odstotek povpra&scaron;evanja</b>, morate določiti minimalni odstotek povpra&scaron;evanj, za katerega želite, da ga lokacije storitev zajamejo.
             </p>
@@ -185,6 +185,20 @@
             </p>  
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj sloje ovire</h2></div>
+        <hr/>
+        <div>
+            <p> Določi eno ali več funkcij, ki imajo vlogo začasnih omejitev (z drugimi besedami pregrad) pri potovanju po osnovnih ulicah. Pregrado je mogoče določiti z uporabo funkcij točke, črte ali poligona.
+            </p>
+            <p>Točkovna ovira lahko prikazuje padlo drevo, nesrečo, padlo električno linijo oziroma kar koli, kar popolnoma blokira promet na določeni točki vzdolž ulice. Potovanje po ulici je dovoljeno, vendar ne skozi oviro. Do 250 funkcij lahko opredelite kot točkovne ovire.
+            </p>
+            <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo funkcij ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
+            </p>
+            <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo funkcij ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
@@ -193,7 +207,7 @@
             </p>
             <p>Sloj z rezultati bo vseboval vse od naslednjega: lokacije storitve, ki imajo dodeljena povpra&scaron;evanja, lokacije povpra&scaron;evanja, ki so dodeljene lokacijam storitev, in dodeljene linije, ki povezujejo lokacije povpra&scaron;evanj z dodeljenimi lokacijami storitev. Dodeljene linije so izrisane kot zračne razdalje, vendar potovalni čas ali razdalja med lokacijo storitve in lokacijo povpra&scaron;evanja vedno temelji na načinu potovanja, ki ga navedete in ne uporablja zračnih razdalj.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

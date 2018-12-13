@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+
+define(["require","exports","dojo/Deferred","./shared"],function(e,r,n,t){"use strict";function a(e){return e=+e,isFinite(e)?e-e%1||(e<0?-0:0===e?e:0):e}function c(e){for(var r=0,n=0;n<e.length;n++)r+=e[n];return r/e.length}function l(e){for(var r=c(e),n=0,t=0;t<e.length;t++)n+=Math.pow(r-e[t],2);return n/e.length}function u(e){for(var r=c(e),n=0,t=0;t<e.length;t++)n+=Math.pow(r-e[t],2);return n/(e.length-1)}function o(e){for(var r=0,n=0;n<e.length;n++)r+=e[n];return r}function i(e,r){for(var n=[],a={},c=[],l=0;l<e.length;l++){if(void 0!==e[l]&&null!==e[l]){var u=e[l];if(t.isNumber(u)||t.isString(u))void 0===a[u]&&(n.push(u),a[u]=1);else{for(var o=!1,i=0;i<c.length;i++)!0===t.equalityTest(c[i],u)&&(o=!0);!1===o&&(c.push(u),n.push(u))}}if(n.length>=r&&-1!==r)return n}return n}function s(e){switch(e.toLowerCase()){case"distinct":return"distinct";case"avg":case"mean":return"avg";case"min":return"min";case"sum":return"sum";case"max":return"max";case"stdev":case"stddev":return"stddev";case"var":case"variance":return"var";case"count":return"count"}return""}function v(e,r,n){switch(void 0===n&&(n=1e3),e.toLowerCase()){case"distinct":return i(r,n);case"avg":case"mean":return c(r);case"min":return Math.min.apply(Math,r);case"sum":return o(r);case"max":return Math.max.apply(Math,r);case"stdev":case"stddev":return Math.sqrt(l(r));case"var":case"variance":return l(r);case"count":return r.length}return 0}function h(e,r,a){var c=new n;return g(e,r,a,!0).then(t.callback(function(e){0===e.length?c.resolve(null):c.resolve(Math.min.apply(Math,e))},c),t.errback(c)),c.promise}function f(e,r,a){var c=new n;return g(e,r,a,!0).then(t.callback(function(e){0===e.length?c.resolve(null):c.resolve(Math.max.apply(Math,e))},c),t.errback(c)),c.promise}function b(e,r,l){var u=new n,o="";return!1===r.isSingleField()&&(o=r.predictType(e.fields,null)),g(e,r,l,!0).then(t.callback(function(e){if(0===e.length)u.resolve(null);else{var r=c(e);null===r&&u.resolve(r),"integer"===o?u.resolve(a(r)):u.resolve(r)}},u),t.errback(u)),u.promise}function d(e,r,a){var c=new n;return g(e,r,a,!0).then(t.callback(function(e){0===e.length?c.resolve(null):c.resolve(u(e))},c),t.errback(c)),c.promise}function k(e,r,a){var c=new n;return g(e,r,a,!0).then(t.callback(function(e){0===e.length?c.resolve(null):c.resolve(Math.sqrt(u(e)))},c),t.errback(c)),c.promise}function m(e,r,a){var c=new n;return g(e,r,a,!0).then(t.callback(function(e){0===e.length?c.resolve(null):c.resolve(o(e))},c),t.errback(c)),c.promise}function p(e,r){var a=new n;try{e.iterator(r).count().then(t.callback(function(e){a.resolve(e)},a),t.errback(a))}catch(e){a.reject(e)}return a.promise}function g(e,r,a,c){void 0===c&&(c=!1);var l=new n;try{w(e.iterator(a),[],r,c).then(t.callback(function(e){l.resolve(e)},l),t.errback(l))}catch(e){l.reject(e)}return l.promise}function w(e,r,a,c){var l=new n;return e.next().then(t.callback(function(n){null!==n?a.calculateValueDeferred(n).then(t.callback(function(n){null===n?!1===c&&(r[r.length]=n):r[r.length]=n,w(e,r,a,c).then(t.callback(function(e){l.resolve(e)},l),t.errback(l))},l),t.errback(l)):l.resolve(r)},l),t.errback(l)),l.promise}function M(e,r,a,c){void 0===a&&(a=1e3),void 0===c&&(c=null);var l=new n;return y(e,r,a,c).then(t.callback(function(e){l.resolve(e)},l),t.errback(l)),l.promise}function y(e,r,a,c){var l=new n;try{x(e.iterator(c),{},[],r,a).then(t.callback(function(e){l.resolve(e)},l),t.errback(l))}catch(e){l.reject(e)}return l.promise}function x(e,r,a,c,l){var u=new n;return e.next().then(t.callback(function(n){null!==n?c.calculateValueDeferred(n).then(t.callback(function(n){void 0!==n&&null!==n&&void 0===r[n]&&(a.push(n),r[n]=1),a.length>=l&&-1!==l?u.resolve(a):x(e,r,a,c,l).then(t.callback(function(e){u.resolve(a)},u),t.errback(u))},u),t.errback(u)):u.resolve(a)},u),t.errback(u)),u.promise}Object.defineProperty(r,"__esModule",{value:!0}),r.decodeStatType=s,r.calculateStat=v,r.min=h,r.max=f,r.mean=b,r.variance=d,r.stdev=k,r.sum=m,r.count=p,r.distinct=M});

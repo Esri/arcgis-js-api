@@ -12,6 +12,7 @@
     .esriGEReportPlayer_section .sectionDynamicSettings_toolbar.needsTopOffset {
         top: -19px;
         right: 4px;
+        transform-origin: 0% 0% !important; 
     }
 
 .esriGEReportPlayer_section .sectionDynamicSettings_buttonBar.hasMultipleButtons {
@@ -24,7 +25,7 @@
 
 
 
-.esriGEReportPlayer_section .sectionDynamicSettings_settingsButton {
+.sectionDynamicSettings_buttonBar .sectionDynamicSettings_settingsButton {
     width: 32px;
     height: 32px;
     background-size: 24px;
@@ -32,9 +33,10 @@
     background-repeat: no-repeat;
     background-image: url("./images/gearWhite.svg");
     cursor: pointer;
+    position: relative;
 }
 
-.esriGEReportPlayer_section .sectionDynamicSettings_filterButton {
+.sectionDynamicSettings_buttonBar .sectionDynamicSettings_filterButton {
     background-image: url("./images/filterWhite.svg");
     background-size: 22px;
     width: 32px;
@@ -42,6 +44,26 @@
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    position: relative;
+}
+
+
+
+.sectionDynamicSettings_buttonBar .sectionDynamicSettings_filtersOnIndicator {
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    background-color: rgb(255, 159, 51);
+    color: white;
+    text-align: center;
+    font-size: 11px;
+    height: 15px;
+    line-height: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 0px 3px;
+    z-index: 1000;
 }
 
 
@@ -66,8 +88,9 @@
     .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList {
     }
 
-        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .listItem div:first-child {
-            width: 100px;
+        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .listItem div:nth-child(2) {
+            min-width: 100px;
+            margin-right: 10px;
         }
 
         .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .upButton,
@@ -78,6 +101,8 @@
             height: 8px;
             background-size: 7px;
             background-position: center;
+            float: right;
+            margin-top: 5px;
         }
 
         .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .downButton {

@@ -64,19 +64,6 @@
 
 
 
-.esriGEComparisonTableInfographic .comparisonTableInfographic_noDataPlaceHolder {
-    text-align: center;
-}
-
-.esriGEComparisonTableInfographic .comparisonTableInfographic_noDataPlaceHolderLabel {
-    text-align: center;
-    font-style: italic;
-    margin-top: 5px;
-    color: #AAAAAA;
-}
-
-
-
 .esriGEComparisonTableInfographic .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .fieldCellHighlightScreen {
     background-color: rgba(0, 145, 251, 0.2) !important;
     pointer-events: none;

@@ -238,14 +238,14 @@
 .esriGEImageNavigator .imageNavigator_showAllImagesButton {
     background-repeat: no-repeat;
     background-size: contain;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background-image: url("./images/squares.svg");
     display: inline-block;
     cursor: pointer;
     position: absolute;
-    top: 3px;
-    right: 3px;
+    top: 0px;
+    right: 0px;
     opacity: 0;
 }
 
@@ -259,13 +259,28 @@
 
 
 
-.esriGEImageNavigator.mobile .imageNavigator_prevImageButton,
+.esriGEImageNavigator.mobile .imageNavigator_prevImageButton {
+    opacity: 1;
+    width: 60px;
+    height: 100px;
+    background-size: 24px;
+    background-position: 40% center;
+    left: 0px;
+}
+
 .esriGEImageNavigator.mobile .imageNavigator_nextImageButton {
     opacity: 1;
+    width: 60px;
+    height: 100px;
+    background-position: 60% center;
+    background-size: 24px;
+    right: 0px;
 }
 
 .esriGEImageNavigator.mobile .imageNavigator_showAllImagesButton {
     opacity: 1;
+    width: 32px;
+    height: 32px;
 }
 
 .esriGEImageNavigator.mobile .imageNavigator_imageContainerOuter .imageNavigator_imageNoteContainerDiv {

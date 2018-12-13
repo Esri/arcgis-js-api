@@ -67,7 +67,7 @@
     </p>
     <p>Rezultat iz Načrtuj poti vsebuje sloj postankov, ki so kodirani po dodeljenih poteh, sloj poti, ki prikazuje najkraj&scaron;e poti za obisk dodeljenih postankov ter sloj nedodeljenih postankov, če do katerih postankov ni bilo mogoče priti. 
     </p>
-    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo v analizi upo&scaron;tevani samo geoobjekti, vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo upo&scaron;tevani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo v analizi upo&scaron;tevani samo geoobjekti, vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo upo&scaron;tevani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -87,7 +87,7 @@
         <div><h2>Potovalni način za poti</h2></div>
         <hr/>
         <div>
-            <p>Izberite svoj način potovanja. Izhodne poti bodo sledile cestam ali pe&scaron;potem in upo&scaron;tevale veljavna pravila, kot so enosmerne ceste in prepovedana zavijanja pri vožnji osebnega ali tovornega vozila. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije.  
+            <p>Izberite svoj način potovanja. Izhodne poti bodo sledile cestam ali pe&scaron;potem in upo&scaron;tevale veljavna pravila, kot so enosmerne ceste in nedovoljeno obračanje osebnega ali tovornega vozila. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije.  
             </p>
         </div>
     </div>
@@ -103,7 +103,7 @@
             </p>
             <p>Ko je navedenih več lokacij, mora vsako vozilo biti povezano s svojo točko. &Scaron;tevilo vozil se mora ujemati s &scaron;tevilom točk na sloju. Izberite sloj z več točkami in iz spustnega menija  <b>Polje ID poti</b> navedite polje, ki enolično določa posamezne poti, vozila ali voznike.
             </p>
-            <p>Začetni čas je enak za vse poti. Časovni pas za začetni čas je enak časovnemu pasu, kjer se nahaja začetna točka ali točke, tako da se prepričajte, da je čas, ki ga vnesete, lokalni čas. Na primer, predpostavite, da ste v pacifi&scaron;kem standardnem času (UTC&ndash;8:00) in vozila, ki jih usmerjate, se nahajajo v gorskem standardnem času (UTC&ndash;7:00). Trenutno je 9:30 PST (10:30MST) in va&scaron;a vozila morajo začeti svojo pot čez 30 minut, začetni čas boste nastavili na 11:00. 
+            <p>Začetni čas je enak za vse poti. Časovni pas za začetni čas je enak časovnemu pasu, kjer se nahaja začetna točka ali točke, tako da se prepričajte, da je čas, ki ga vnesete, lokalni čas. Na primer, predpostavite, da ste v pacifi&scaron;kem standardnem času (UTC&ndash;8:00) in vozila, ki jih usmerjate, se nahajajo v gorskem standardnem času (UTC&ndash;7:00). Trenutno je 9:30 PST (10:30 MST) in va&scaron;a vozila morajo začeti svojo pot čez 30 minut, začetni čas boste nastavili na 11:00. 
             </p>
             <p>Če se va&scaron;a vozila odpravijo iz različnih časovnih pasov, začetni čas ne more biti istočasen; namesto tega je narejen odmik. Na primer, če se ena pot začne iz točke v PST in druga pot se začne iz MST in vi kot začetni čas vnesete 11:00, se bo pot v PST začela ob 11:00 PST in pot v MST se bo začela ob 11:00 MST &ndash; enourna razlika.
             </p>
@@ -134,8 +134,22 @@
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj sloje ovire</h2></div>
+        <hr/>
+        <div>
+            <p> Določi eno ali več funkcij, ki imajo vlogo začasnih omejitev (z drugimi besedami pregrad) pri potovanju po osnovnih ulicah. Pregrado je mogoče določiti z uporabo funkcij točke, črte ali poligona.
+            </p>
+            <p>Točkovna ovira lahko prikazuje padlo drevo, nesrečo, padlo električno linijo oziroma kar koli, kar popolnoma blokira promet na določeni točki vzdolž ulice. Potovanje po ulici je dovoljeno, vendar ne skozi oviro. Do 250 funkcij lahko opredelite kot točkovne ovire.
+            </p>
+            <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo funkcij ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
+            </p>
+            <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo funkcij ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
+            </p>
+        </div>
+    </div>
     <div id="routeCount">
-        <div><h2>Največje število vozil za usmerjanje</h2></div>
+        <div><h2>Maksimalno število vozil za pot</h2></div>
         <hr/>
         <div>
             <p>Navedite &scaron;tevilo vozil, ki so na voljo za obisk postankov. Orodje podpira do  100 vozil. 
@@ -145,12 +159,12 @@
         </div>
     </div>
     <div id="maxStopsPerRoute">
-        <div><h2>Največje število postankov na vozilo</h2></div>
+        <div><h2>Maksimalno število postankov na vozilo</h2></div>
         <hr/>
         <div>
             <p>To je eden izmed dveh parametrov, ki uravnava celotno obremenitev po poteh. Lahko navedete vrednost med 1 in  200. 
             </p>
-            <p>Z zmanj&scaron;anjem največjega &scaron;tevila postankov, ki so lahko dodeljeni vsakemu vozilu, je bolj verjetno, da bodo vozila imela enako &scaron;tevilo dodeljenih postankov. To omogoča enakomernej&scaron;e obremenitve voznikov.Vendar pa je njegova pomanjkljivost ta, da lahko privede do manj učinkovite re&scaron;itve.
+            <p>Z zmanj&scaron;anjem največjega &scaron;tevila postankov, ki so lahko dodeljeni vsakemu vozilu, je bolj verjetno, da bodo vozila imela enako &scaron;tevilo dodeljenih postankov. To omogoča enakomernej&scaron;e obremenitve voznikov. Vendar pa je njegova pomanjkljivost ta, da lahko privede do manj učinkovite re&scaron;itve.
             </p>
             <p>S povečanjem &scaron;tevila postankov na vozilo ima orodje več svobode najti učinkovitej&scaron;e re&scaron;itve; vendar pa je lahko obremenitev neenakomerno porazdeljena med vozniki in vozili. Upo&scaron;tevajte, da lahko uravnavate obremenitve po času kot tudi po &scaron;tevilu postankov z navajanjem vrednosti parametra  <b>Omeji skupen čas poti na vozilo</b>.
             </p>
@@ -214,7 +228,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>Ime geoobjektnega sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Če geoobjektni sloj že obstaja, se bo od vas zahtevalo, da vnesete drugo ime. Geoobjektni sloj bo vseboval sloj za vse izmed naslednjega: poti, dodeljene postanke in nedodeljene postanke (v primeru, ko nekaj vhodnih postankov ne more biti dodeljenih nobeni poti).
+            <p>Ime geoobjektnega sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Če geoobjektni sloj že obstaja, boste morali navesti drugo ime. Geoobjektni sloj bo vseboval sloj za vse izmed naslednjega: poti, dodeljene postanke in nedodeljene postanke (v primeru, ko nekaj vhodnih postankov ne more biti dodeljenih nobeni poti).
             </p>
             <p>Če izberete  <b>Vključi usmerjevalne sloje</b>, se vsaka pot iz rezultata prav tako shrani kot usmerjevalni sloj. Usmerjevalni sloj vsebuje vse informacije za določeno pot, kot so dodeljeni postanki, kot tudi navodila za pot. Ustvarjanje usmerjevalnega sloja je uporabno, če želite deliti posamezne poti z drugimi člani v va&scaron;i organizaciji ali če želite nadalje spremeniti poti s pomočjo gumba <b>Navodila za pot</b> v pregledovalniku kart. Usmerjevalni sloj uporablja samodejno generirano enolično ime, ki je sestavljeno iz predpone imena vhodnega geoobjektnega sloja.
             </p>

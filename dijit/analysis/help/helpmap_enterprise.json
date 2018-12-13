@@ -79,6 +79,9 @@
             "toolDescription": "Extract_Data/0193000000z0000000",
             "InputLayers": "Extract_Data/0193000000z0000000"
         },
+        "FindCentroids": {
+          "toolDescription": "Find_Centroids/0193000001tt000000/ "
+        },
         "FindExistingLocations": {
             "toolDescription": "Find_Existing_Locations/0193000000z1000000",
             "Expression": "Find_Existing_Locations/0193000000z1000000"
@@ -133,6 +136,12 @@
         },
         "MergeLayers": {
             "toolDescription": "Merge_Layers/019300000179000000"
+        },
+        "MergeLayers_bd": {
+            "toolDescription": "Merge_Layers/02ss0000018m000000"
+        },
+        "ClipLayer_bd": {
+            "toolDescription": "Clip_Layer/02ss0000017w000000"
         },
         "OverlayLayers": {
             "toolDescription": "Overlay_Layers/019300000168000000",

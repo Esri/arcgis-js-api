@@ -130,6 +130,20 @@ representing the destination or destinations to which the origins should connect
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Add Barrier Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Specify one or more features that act as temporary restrictions (in other words,  barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            </p>
+            <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
+            </p>
+            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceed 500, the tool returns an error.
+            </p>
+            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceed 2000, the tool returns an error.
+            </p>
+        </div>
+    </div>
     <div id="outputLayer">
         <div><h2>Result layer name</h2></div>
         <hr/>

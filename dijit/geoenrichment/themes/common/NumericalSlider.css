@@ -104,3 +104,8 @@
 .dj_rtl .esriGENumericalSlider .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
     right: 0px;
 }
+
+.esriGENumericalSlider_statisticsContainerBlock {
+    position: absolute;
+    background-color: #CCCCCC;
+}

@@ -88,7 +88,7 @@
         </div>
     </div>
     <div id="minimizeTravel">
-        <div><h2>Minimalizovat přepravu</h2></div>
+        <div><h2>Minimalizovat cestu</h2></div>
         <hr/>
         <div>
             <p>Tento c&iacute;l použijte v př&iacute;padě, že chcete naj&iacute;t zař&iacute;zen&iacute; tak, aby byla minimalizov&aacute;na celkov&aacute; doba j&iacute;zdy nebo vzd&aacute;lenost mezi um&iacute;stěn&iacute;mi s popt&aacute;vkou a zař&iacute;zen&iacute;mi.
@@ -177,12 +177,26 @@
         <div>
             <p>Bodov&eacute; prvky představuj&iacute;c&iacute; um&iacute;stěn&iacute;, kter&aacute; funguj&iacute; jako zař&iacute;zen&iacute;, protože poskytuj&iacute; určitou službu. Na rozd&iacute;l od požadovan&yacute;ch zař&iacute;zen&iacute;, kter&aacute; obvykle odpov&iacute;daj&iacute; existuj&iacute;c&iacute;m um&iacute;stěn&iacute;m, kandid&aacute;tsk&aacute; zař&iacute;zen&iacute; obvykle představuj&iacute; um&iacute;stěn&iacute;, ve kter&yacute;ch budou vybudov&aacute;na nebo um&iacute;stěna nov&aacute; zař&iacute;zen&iacute;.
             </p>
-            <p>V z&aacute;vislosti na c&iacute;li va&scaron;&iacute; anal&yacute;zy bude nutn&eacute; specifikovat počet kandid&aacute;tn&iacute;ch zař&iacute;zen&iacute;, kter&aacute; budou zvolena z množiny kandid&aacute;tů. Pokud zad&aacute;te požadovan&aacute; i kandid&aacute;tn&iacute; zař&iacute;zen&iacute;, n&aacute;stroj nejprve použije zař&iacute;zen&iacute; ve  <b>vrstvě požadovan&yacute;ch zař&iacute;zen&iacute;</b> a až pot&eacute; zař&iacute;zen&iacute; ve <b>Vrstvě kandid&aacute;tn&iacute;ch zař&iacute;zen&iacute;.</b>.
+            <p>V z&aacute;vislosti na c&iacute;li va&scaron;&iacute; anal&yacute;zy bude nutn&eacute; specifikovat počet kandid&aacute;tsk&yacute;ch zař&iacute;zen&iacute;, kter&aacute; budou zvolena z množiny kandid&aacute;tů. Pokud zad&aacute;te požadovan&aacute; i kandid&aacute;tsk&aacute; zař&iacute;zen&iacute;, n&aacute;stroj nejprve použije zař&iacute;zen&iacute; ve  <b>vrstvě požadovan&yacute;ch zař&iacute;zen&iacute;</b> a až pot&eacute; zař&iacute;zen&iacute; ve <b>Vrstvě kandid&aacute;tsk&yacute;ch zař&iacute;zen&iacute;.</b>.
             </p>
-            <p>Kandid&aacute;tn&iacute; zař&iacute;zen&iacute; mohou m&iacute;t neomezenou kapacitu (mohou naplnit ve&scaron;kerou přiřazenou popt&aacute;vku), př&iacute;padně omezenou kapacitu. Maj&iacute;-li v&scaron;echna zař&iacute;zen&iacute; stejnou omezenou kapacitu (třeba počet dom&aacute;cnost&iacute;, kter&eacute; může obsluhovat pož&aacute;rn&iacute; stanice &ndash; např. 4 000), zadejte konstantn&iacute; hodnotu. Pokud se kapacita jednotliv&yacute;ch zař&iacute;zen&iacute; li&scaron;&iacute; (např&iacute;klad počet dostupn&yacute;ch m&iacute;st pro studenty prvn&iacute;ho ročn&iacute;ku na různ&yacute;ch středn&iacute;ch &scaron;kol&aacute;ch), vyplňte pro každ&eacute; zař&iacute;zen&iacute; pole obsahuj&iacute;c&iacute; hodnotu kapacity.
+            <p>Kandid&aacute;tsk&aacute; zař&iacute;zen&iacute; mohou m&iacute;t neomezenou kapacitu (mohou uspokojit ve&scaron;kerou přiřazenou popt&aacute;vku) nebo mohou m&iacute;t omezenou kapacitu.Maj&iacute;-li v&scaron;echna zař&iacute;zen&iacute; stejnou omezenou kapacitu (třeba počet dom&aacute;cnost&iacute;, kter&eacute; může obsluhovat pož&aacute;rn&iacute; stanice &ndash; např. 4 000), zadejte konstantn&iacute; hodnotu. Pokud se kapacita jednotliv&yacute;ch zař&iacute;zen&iacute; li&scaron;&iacute; (např&iacute;klad počet dostupn&yacute;ch m&iacute;st pro studenty prvn&iacute;ho ročn&iacute;ku na různ&yacute;ch středn&iacute;ch &scaron;kol&aacute;ch), vyplňte pro každ&eacute; zař&iacute;zen&iacute; pole obsahuj&iacute;c&iacute; hodnotu kapacity.
             </p>
-            <p>Tento n&aacute;stroj podporuje až 1 000 prvků ve  <b>vrstvě kandid&aacute;tn&iacute;ch zař&iacute;zen&iacute;</b>.
+            <p>Tento n&aacute;stroj podporuje až 1 000 prvků ve  <b>vrstvě kandid&aacute;tsk&yacute;ch zař&iacute;zen&iacute;</b>.
             </p>  
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Přidat vrstvy překážek</h2></div>
+        <hr/>
+        <div>
+            <p> Zadejte jeden nebo v&iacute;ce prvků, kter&eacute; budou sloužit jako dočasn&aacute; omezen&iacute; (přek&aacute;žky) pohybu po př&iacute;slu&scaron;n&yacute;ch pozemn&iacute;ch komunikac&iacute;ch. Přek&aacute;žky můžete zadat pomoc&iacute; bodov&yacute;ch, liniov&yacute;ch nebo polygonov&yacute;ch prvků.
+            </p>
+            <p>Bodovou přek&aacute;žku lze použ&iacute;t k modelov&aacute;n&iacute; spadl&eacute;ho stromu, nehody, spadl&eacute;ho elektrick&eacute;ho veden&iacute; nebo jak&eacute;koli př&iacute;činy zastaven&iacute; dopravy v konkr&eacute;tn&iacute;m m&iacute;stě komunikace. Pohyb je povolen po komunikaci, zat&iacute;mco pohyb skrz přek&aacute;žku nen&iacute; možn&yacute;. Můžete určit až 250 prvků, kter&eacute; budou sloužit jako bodov&eacute; přek&aacute;žky.
+            </p>
+            <p>Liniov&aacute; přek&aacute;žka br&aacute;n&iacute; pohybu v&scaron;ude tam, kde prot&iacute;n&aacute; komunikace. Např&iacute;klad, průvod nebo protest, kter&yacute; zablokuje dopravu např&iacute;č několika ulicemi, může b&yacute;t modelov&aacute;n pomoc&iacute; liniov&eacute; přek&aacute;žky. Pokud v&scaron;echny liniov&eacute; přek&aacute;žky prot&iacute;naj&iacute; dohromady v&iacute;ce než 500 prvků pozemn&iacute; komunikace, n&aacute;stroj vr&aacute;t&iacute; chybu.
+            </p>
+            <p>Polygonov&aacute; přek&aacute;žka br&aacute;n&iacute; pohybu v&scaron;ude tam, kde polygon prot&iacute;n&aacute; komunikace. Př&iacute;kladem použit&iacute; tohoto typu přek&aacute;žky je modelov&aacute;n&iacute; z&aacute;plav, jež postihuj&iacute; č&aacute;sti komunikačn&iacute; s&iacute;tě takov&yacute;m způsobem, že pohyb v těchto &uacute;sec&iacute;ch je znemožněn. Pokud v&scaron;echny polygonov&eacute; přek&aacute;žky prot&iacute;naj&iacute; dohromady v&iacute;ce než 2 000 prvků pozemn&iacute; komunikace, n&aacute;stroj vr&aacute;t&iacute; chybu.
+            </p>
         </div>
     </div>
     <div id="outputName">

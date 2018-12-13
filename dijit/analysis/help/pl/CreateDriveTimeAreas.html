@@ -95,7 +95,7 @@
         <div><h2>Zmierz</h2></div>
         <hr/>
         <div>
-            <p>Najpierw należy wybrać typ podr&oacute;ży (samochodem osobowym, samochodem ciężarowym lub pieszo) i&nbsp;mierzoną wielkość (czas bądź odległość). Dostępne typy podr&oacute;żowania są określane przez administratora instytucji. Po wybraniu typu podr&oacute;ży i&nbsp;mierzonej wielkości należy wpisać maksymalny czas trwania lub odległość  5 godz. (300 min) lub  300 mil (482.80 km). 
+            <p>Najpierw należy wybrać typ podr&oacute;ży (samochodem osobowym, samochodem ciężarowym lub pieszo) i&nbsp;mierzoną wielkość (czas bądź odległość). Dostępne tryby podr&oacute;żowania są określane przez administratora instytucji. Po wybraniu typu podr&oacute;ży i&nbsp;mierzonej wielkości należy wpisać maksymalny czas trwania lub odległość  5 godz. (300 min) lub  300 mil (482.80 km). 
             </p>
             <p>Po wybraniu narzędzia  <b>Czas przejazdu</b>, <b>Czas przejazdu w obszarach wiejskich</b> lub <b>Czas przejazdu samochodem ciężarowym</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
                 <ul>
@@ -127,6 +127,20 @@
             <p>Opcje  <b>Czas &mdash; pieszo</b> oraz <b>Odległość &mdash; pieszo</b> używają stałej prędkości wynoszącej 5 kilometr&oacute;w na godzinę (3.1 mil na godzinę) oraz tras przebiegających pasażami dla pieszych oraz wyznaczonymi ulicami (jednocześnie ignorują reguły obowiązujące kierowc&oacute;w, na przykład znaki informujące o&nbsp;drogach jednokierunkowych). </p>
             <p>Narzędzie  <b>Odległość dla samochodu ciężarowego</b> korzysta ze stałych prędkości i uwzględnia zasady ruchu drogowego obowiązujące kierowc&oacute;w samochod&oacute;w ciężarowych, podczas gdy narzędzia <b>Długość trasy</b> i <b>Długość trasy w obszarach wiejskich</b> używają stałych prędkości i uwzględniają zasady ruchu drogowego obowiązujące kierowc&oacute;w samochod&oacute;w osobowych.
             </p> 
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj warstwy barier</h2></div>
+        <hr/>
+        <div>
+            <p> Podaj jeden lub większą liczbę obiekt&oacute;w, kt&oacute;re pełnią rolę ograniczeń tymczasowych (innymi słowy barier) utrudniających podr&oacute;żowanie po ulicach, na kt&oacute;rych się znajdują. Bariery można definiować przy użyciu obiekt&oacute;w punktowych, liniowych lub poligonowych.
+            </p>
+            <p>Bariera punktowa może modelować powalone drzewo, wypadek, zerwaną linię energetyczną lub inny obiekt, kt&oacute;ry całkowicie blokuje ruch drogowy w określonej pozycji wzdłuż ulicy. Na tej ulicy ruch drogowy jest dozwolony, ale jest blokowany przez barierę. Można zdefiniować do 250 obiekt&oacute;w pełniących rolę barier punktowych.
+            </p>
+            <p>Bariery liniowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie przecinają się z ulicą. Przy użyciu bariery liniowej można na przykład modelować paradę lub marsz protestacyjny, kt&oacute;ry blokuje ruch drogowy na kilku odcinkach ulic. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery liniowe przekracza 500, narzędzie zwraca błąd.
+            </p>
+            <p>Bariery poligonowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie poligon przecina się z ulicą. Przy użyciu barier tego typu można na przykład modelować powodzie występujące na obszarach sieci ulicznej, kt&oacute;re uniemożliwią ruch drogowy w danym rejonie. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery poligonowe przekracza 2000, narzędzie zwraca błąd.
+            </p>
         </div>
     </div>
     <div id="DissolveType">

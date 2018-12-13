@@ -28,7 +28,7 @@
         display: inline-block;
         vertical-align: top;
         position: relative;
-        overflow: visible;
+        overflow: hidden;
     }
 
     .esriGEReportPlayer_reportContainerGrid .reportContainerGrid_gridZoomScalableContainer {

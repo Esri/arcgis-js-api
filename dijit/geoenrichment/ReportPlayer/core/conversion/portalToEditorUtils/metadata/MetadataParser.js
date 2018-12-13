@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./DemographicCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],function(a,r,e,s,t){var l={};return l.parseMetadataXML=function(l,o,c){c.log&&c.log(l.data);var u=a.parseXml(l.data);u&&u.tags&&(t.parseTradeAreaCalculators(u,c),r.parseDemographicCalculators(u,o,c),e.parseLocatorCalculators(u,o,c),s.parseMapCalculators(u,o))},l});
+define(["dojo/promise/all","esri/dijit/geoenrichment/utils/JsonXmlConverter","./DataCollectionsCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],function(a,r,e,t,l,o){var s={};return s.parseMetadataXML=function(s,n,c){c.log&&c.log(s.data);var u=r.parseXml(s.data);if(u&&u.tags)return a([o.parseTradeAreaCalculators(u,c),e.parseDataCollectionsCalculators(u,n,c),t.parseLocatorCalculators(u,n,c)]).then(function(){return l.parseMapCalculators(u,n,c)})},s});

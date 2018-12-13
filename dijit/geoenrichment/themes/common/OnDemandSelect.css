@@ -70,6 +70,7 @@
 .esriGEOnDemandSelectFlowListPopup {
     background-color: transparent;
     margin-top: 1px;
+    overflow-y: visible !important;
 }
 
 .esriGEOnDemandSelectFlowList {

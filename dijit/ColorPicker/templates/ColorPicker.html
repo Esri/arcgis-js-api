@@ -1,4 +1,4 @@
-<div class="${css.container}" aria-label="Color Picker">
+<div class="${css.container}" aria-label="${labels.widgetLabel}">
   <div class="${css.header}" data-dojo-attach-point="dap_header" tabindex="0">
     <span class="${css.swatchPreview} ${css.container}">
       <span class="${css.swatch} ${css.swatchTransparencyBackground}"></span>
@@ -20,7 +20,7 @@
              class="${css.palette}" role="grid"></div>
       </div>
       <div class="${css.paletteOptions}">
-        <input type="text" aria-label="Selected color" data-dojo-type="dijit/form/TextBox"
+        <input type="text" aria-label="${labels.selectedColor}" data-dojo-type="dijit/form/TextBox"
                data-dojo-attach-point="dap_hexInput" class="${css.hexInput}" />
         <input class="${css.paletteToggle}" type="button"
                data-dojo-type="dijit/form/ToggleButton"

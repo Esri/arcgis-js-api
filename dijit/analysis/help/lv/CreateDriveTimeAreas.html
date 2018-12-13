@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Izveidot braukšanas laika laukumus</h2><p/>
-        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Izveidot brauk&scaron;anas laika laukumus"></h2>
+        <h2>Izveidot braukšanas laika teritorijas</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Izveidot brauk&scaron;anas laika teritorijas"></h2>
         <hr/>
     <p>Izveidot brauk&scaron;anas laika laukumus izveido teritorijas, kuras var sasniegt noteiktā brauk&scaron;anas laikā, brauk&scaron;anas attālumā, ie&scaron;anas attālumā u.tml. Gar ceļiem vai takām tiek mērīts no viena vai vairākiem punktiem (līdz 1000), lai izveidotu slāni, kas var palīdzēt atbildēt uz sekojo&scaron;iem jautājumiem:
         <ul>
@@ -79,7 +79,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Izvēlieties punktu slāni, lai aprēķinātu braukšanas laikus tuvumā esošajām teritorijām</h2></div>
+        <div><h2>Izvēlieties punktu slāni, lai aprēķinātu brauciena laikus tuvumā esošajās teiritorijās</h2></div>
         <hr/>
         <div>
             <p>Punktu elementi, ap kuriem tiks aprēķināta teritorija. Varat izvēlēties pārvieto&scaron;anās veidu (vieglā automa&scaron;īna, smagā automa&scaron;īna vai ie&scaron;ana kājām) un mērījumu (laiks vai attālums).
@@ -129,8 +129,22 @@
             </p> 
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Pievienot barjeras slāņus</h2></div>
+        <hr/>
+        <div>
+            <p> Norādiet vienu vai vairākus elementus, kas darbojas kā īslaicīgi ierobežojumi (citiem vārdiem sakot: kā barjeras), braucot pa ielām. Varat norādīt barjeras, izmantojot punkta, līnijas vai laukuma elementus.
+            </p>
+            <p>Punkta barjera var modelēt nokritu&scaron;u koku, negadījumu, pārrautu elektropārvades līniju vai jebko citu, kas pilnībā bloķē satiksmi konkrētā ielas vietā. Brauk&scaron;ana ir atļauta pa ielu, ne&scaron;ķērsojot barjeru. Varat norādīt līdz 250&nbsp;elementiem, kas darbosies kā punkta barjeras.
+            </p>
+            <p>Līnijas barjera aizliedz braukt jebkur, kur barjera &scaron;ķērso ielas. Piemēram: parādi vai protesta gājienu, kas bloķē satiksmi vairākās ielās, var attēlot kā līnijas barjeru. Ja ielas elementu skaits, ko &scaron;ķērso visas līnijas barjeras, pārsniedz&nbsp;500, rīks uzrāda kļūdu.
+            </p>
+            <p>Laukuma barjera aizliedz braukt jebkur, kur laukums &scaron;ķērso ielas. Viens &scaron;ādu barjeru lietojuma veids ir attēlot plūdus, kas pārklāj ielu tīklu un padara ceļus neizbraucamus. Ja laukuma barjeras &scaron;ķērsoto ielas elementu skaits pārsniedz&nbsp;2000, rīks uzrāda kļūdu.
+            </p>
+        </div>
+    </div>
     <div id="DissolveType">
-        <div><h2>Laukumi no dažādiem punktiem</h2></div>
+        <div><h2>Teritorijas no dažādiem punktiem</h2></div>
         <hr/>
         <div>
             <p>Izvēlieties kā koplietotās teritorijas no dažādiem ievades punktiem tiek apstrādātas, kad tās sasniedz viena otru. Tie var:

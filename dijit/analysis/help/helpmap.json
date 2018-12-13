@@ -61,6 +61,9 @@
             "toolDescription": "extract-data.htm",
             "InputLayers": "extract-data.htm"
         },
+        "FindCentroids": {
+          "toolDescription": "find-centroids.htm"
+        },
         "FindExistingLocations": {
             "toolDescription": "find-existing-locations.htm",
             "Expression": "find-existing-locations.htm"

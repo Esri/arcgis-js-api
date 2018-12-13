@@ -96,7 +96,7 @@
         <hr/>
         <div>
             
-            <p>Wybierz czy połączyć punkty początkowe z&nbsp;punktami docelowymi z&nbsp;zastosowaniem odległości w&nbsp;linii prostej, czy trybu podr&oacute;żowania. Trasy wynikowe będą obejmować drogi lub pasaże i&nbsp;respektować obowiązujące zasady, takie jak drogi jednokierunkowe i&nbsp;skręty w&nbsp;niedozwolonych miejscach dla samochod&oacute;w osobowych i&nbsp;samochod&oacute;w ciężarowych. Dostępne typy podr&oacute;żowania są określane przez administratora instytucji.  
+            <p>Wybierz czy połączyć punkty początkowe z&nbsp;punktami docelowymi z&nbsp;zastosowaniem odległości w&nbsp;linii prostej, czy trybu podr&oacute;żowania. Trasy wynikowe będą obejmować drogi lub pasaże i&nbsp;respektować obowiązujące zasady, takie jak drogi jednokierunkowe i&nbsp;skręty w&nbsp;niedozwolonych miejscach dla samochod&oacute;w osobowych i&nbsp;samochod&oacute;w ciężarowych. Dostępne tryby podr&oacute;żowania są określane przez administratora instytucji.  
             </p>
             <p>Po wybraniu narzędzia  <b>Czas przejazdu</b>, <b>Czas przejazdu w obszarach wiejskich</b> lub <b>Czas przejazdu samochodem ciężarowym</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
                 <ul>
@@ -125,6 +125,20 @@
             <p>Uwaga: kiedy pojazd wyjeżdża z&nbsp;punktu początkowego, upływa czas i&nbsp;zmieniają się warunki drogowe. Narzędzie Połącz punkty początkowe z&nbsp;docelowymi uwzględnia te zmienne, jeśli zaznaczono opcję  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>, jednak nie wszystkie regiony przekazują dane o&nbsp;ruchu drogowym. Aby dowiedzieć się, czy ta usługa jest obsługiwana na badanym obszarze, w oknie narzędzia kliknij łącze <b>Sprawdź dostępność</b>.
             </p>
             <p>Narzędzie  <b>Czas przejazdu samochodem ciężarowym</b> może korzystać z dynamicznych prędkości podr&oacute;ży ustalanych na podstawie danych o ruchu drogowym, przy czym nie będą przekraczane wynikające z przepis&oacute;w ograniczenia prędkości obowiązujące dla samochod&oacute;w ciężarowych. Jeśli na przykład dynamiczna prędkość ustalona dla danej drogi na podstawie danych o aktualnym natężeniu ruchu drogowego wynosi 105 km/h, ale ograniczenie prędkości dla samochod&oacute;w ciężarowych na tej drodze to 90 km/h, w obliczeniach zostanie użyta wartość 90 km/h.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj warstwy barier</h2></div>
+        <hr/>
+        <div>
+            <p> Podaj jeden lub większą liczbę obiekt&oacute;w, kt&oacute;re pełnią rolę ograniczeń tymczasowych (innymi słowy barier) utrudniających podr&oacute;żowanie po ulicach, na kt&oacute;rych się znajdują. Bariery można definiować przy użyciu obiekt&oacute;w punktowych, liniowych lub poligonowych.
+            </p>
+            <p>Bariera punktowa może modelować powalone drzewo, wypadek, zerwaną linię energetyczną lub inny obiekt, kt&oacute;ry całkowicie blokuje ruch drogowy w określonej pozycji wzdłuż ulicy. Na tej ulicy ruch drogowy jest dozwolony, ale jest blokowany przez barierę. Można zdefiniować do 250 obiekt&oacute;w pełniących rolę barier punktowych.
+            </p>
+            <p>Bariery liniowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie przecinają się z ulicą. Przy użyciu bariery liniowej można na przykład modelować paradę lub marsz protestacyjny, kt&oacute;ry blokuje ruch drogowy na kilku odcinkach ulic. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery liniowe przekracza 500, narzędzie zwraca błąd.
+            </p>
+            <p>Bariery poligonowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie poligon przecina się z ulicą. Przy użyciu barier tego typu można na przykład modelować powodzie występujące na obszarach sieci ulicznej, kt&oacute;re uniemożliwią ruch drogowy w danym rejonie. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery poligonowe przekracza 2000, narzędzie zwraca błąd.
             </p>
         </div>
     </div>

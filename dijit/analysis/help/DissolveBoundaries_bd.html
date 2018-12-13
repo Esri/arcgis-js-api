@@ -44,9 +44,9 @@
         <h2>Dissolve Boundaries</h2><p/>
         <h2><img src="./images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Dissolve Boundaries"></h2>
         <hr/>
-    <p>Areas that overlap or share a common boundary or attribute value are merged together to form a single area.
+    <p>Areas that overlap or share a common boundary or attribute value are merged to form a single area.
     </p>
-    <p>You can control which boundaries are merged by specifying a field. For example, if you have a layer of counties, and each county has a  <i>State_Name</i> attribute, you can dissolve boundaries using the <i>State_Name</i> attribute.  Counties will be merged together if they have the same value for <i>State_Name</i>.  The end result is a layer of state boundaries.
+    <p>You can control which boundaries are merged by specifying a field. For example, if you have a layer of counties, and each county has a  <pre>State_Name</pre> attribute, you can dissolve boundaries using the <pre>State_Name</pre> attribute.  Counties will be merged if they have the same <pre>State_Name</pre> value.  The result is a layer of state boundaries.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,11 +65,13 @@
         <div><h2>Choose dissolve method</h2></div>
         <hr/>
         <div>
+            <p>Specifies the method used to dissolve the fields.
+            </p>
             <p>You can choose one of two methods for merging area features:
                 <ul>
-                    <li> <b>Areas that overlap or are adjacent</b>&mdash;Two or more areas whose boundaries overlap each other will be merged into one area.  In addition, areas that are adjacent (that is, they share a common boundary) will be merged into one area.
+                    <li> <b>Areas that overlap or are adjacent</b>&mdash;Two or more areas whose boundaries overlap will be merged into one area.  In addition, areas that are adjacent (that is, they share a common boundary) will be merged into one area.
                     </li>
-                    <li> <b>Areas with the same field value</b>&mdash;Areas will be merged into one area if they have the same field value.
+                    <li> <b>Areas with the same field value</b>&mdash;Two or more areas will be merged into one area if they have the same field value.
                     </li>
                 </ul>
                 
@@ -77,21 +79,21 @@
         </div>
     </div>
     <div id="multipart">
-        <div><h2>Allow multipart features</h2></div>
+        <div><h2>Create multipart features</h2></div>
         <hr/>
         <div>
             <p>Multipart is a representation of a place or thing that has
 more than one part but is defined as one feature because it
 references one set of attributes. In a layer of states, for
-example, the state of Hawaii could be considered a multipart
+example, Hawaii could be considered a multipart
 feature because its separate geometric parts are classified as a
 single state.
             </p>
-            <p> <b>Allow multipart features</b> offers two options:
+            <p> <b>Create multipart features</b> offers two options:
                 <ul>
-                    <li>True (checked)&mdash; the output service can contain multipart features.
+                    <li>True (checked)&mdash; The output service can contain multipart features.
                     </li>
-                    <li>False (unchecked)&mdash; the output service will only contain single-part features, and individual features will be created for each part. This is the default.
+                    <li>False (unchecked)&mdash; The output service will only contain single-part features, and individual features will be created for each part. This is the default.
                     </li>
                 </ul>
                 
@@ -102,7 +104,7 @@ single state.
         <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
-            <p>When areas are merged, you can summarize their attribute values with meaningful statistics.  For example, if you are dissolving the boundary between counties based on  <i>State_Name</i>, and each county has a <i>Population</i> field, you could calculate the sum of <i>Population</i> for the state.
+            <p>When areas are merged, you can summarize their attribute values with meaningful statistics.  For example, if you are dissolving the boundary between counties based on  <pre>State_Name</pre>, and each county has a <i>Population</i> field, you could calculate the sum of <pre>Population</pre> for the state.
             </p>
             <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
                 <ul>

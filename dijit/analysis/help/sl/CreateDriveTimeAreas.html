@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Ustvari območja časa vožnje</h2><p/>
+        <h2>Ustvari območja potovalnega časa</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Ustvari območja časa vožnje"></h2>
         <hr/>
     <p>Orodje Ustvari območja časa vožnje omogoča ustvarjanje območij, ki jih je mogoče doseči v navedenem času vožnje, razdalji vožnje, razdalji hoje in tako naprej. Meri od ene ali več točk (do 1.000) vzdolž cest ali pe&scaron;poti, da ustvari sloj, ki vam lahko pomaga odgovoriti na vpra&scaron;anja, kot so:
@@ -74,12 +74,12 @@
         <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
         </table>
     </p>
-    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo za ustvarjanje območij časa vožnje in razdalje vožnje uporabljeni samo poligoni, ki so vidni znotraj trenutnega obsega karte.Če je možnost odkljukana, bodo uporabljeni vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo za ustvarjanje območij časa vožnje in razdalje vožnje uporabljeni samo poligoni, ki so vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo uporabljeni vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Izberite točkovni sloj, okoli katerega bodo izračunana območja časa vožnje</h2></div>
+        <div><h2>Izberite točkovni sloj, okoli katerega bodo izračunana območja potovalnega časa</h2></div>
         <hr/>
         <div>
             <p>Točkovni geoobjekti, okoli katerih bo izračunan poligon. Izberete lahko način izračuna poligona na podlagi načina potovanja (vožnja z osebnim ali s tovornim vozilom ali hoja) in merjenje (čas ali razdalja).
@@ -92,12 +92,12 @@
         </div>
     </div>
     <div id="MeasurementMethod">
-        <div><h2>Izmeri</h2></div>
+        <div><h2>Izmera</h2></div>
         <hr/>
         <div>
             <p>Izberite svoj način potovanja (vožnja z osebnimi ali s tovornimi vozili ali hoja) in merjenja (čas ali razdalja). Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Po izbiri načina in merjenja, vnesite trajanje ali razdaljo do  5 ur (300 minut) ali  300 milj (482,80 kilometrov). 
             </p>
-            <p>Ko izberete  <b>čas vožnje z avtom</b>, <b>čas vožnje po neasfaltiranih cestah</b> ali <b>čas vožnje s tovornjakom</b>, lahko izberete način merjenja časa vožnje.
+            <p>Ko izberete  <b>čas vožnje</b>, <b>čas vožnje po neasfaltiranih cestah</b> ali <b>čas vožnje s tovornjakom</b>, lahko izberete način merjenja časa vožnje.
                 <ul>
                     <li>
                         <p>Odkljukajte  <b>Uporabi promet</b>, da ustvari območja časa vožnje na podlagi hitrostnih omejitev. To je možnost, ki jo izberete, če želite splo&scaron;no območje časa vožnje in ne tisto, ki je izračunano z uporabo spreminjajočih se prometnih razmer za določen čas odhoda.
@@ -129,6 +129,20 @@
             </p> 
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj sloje ovire</h2></div>
+        <hr/>
+        <div>
+            <p> Določi eno ali več funkcij, ki imajo vlogo začasnih omejitev (z drugimi besedami pregrad) pri potovanju po osnovnih ulicah. Pregrado je mogoče določiti z uporabo funkcij točke, črte ali poligona.
+            </p>
+            <p>Točkovna ovira lahko prikazuje padlo drevo, nesrečo, padlo električno linijo oziroma kar koli, kar popolnoma blokira promet na določeni točki vzdolž ulice. Potovanje po ulici je dovoljeno, vendar ne skozi oviro. Do 250 funkcij lahko opredelite kot točkovne ovire.
+            </p>
+            <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo funkcij ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
+            </p>
+            <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo funkcij ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
+            </p>
+        </div>
+    </div>
     <div id="DissolveType">
         <div><h2>Območja iz različnih točk</h2></div>
         <hr/>
@@ -152,7 +166,7 @@
         <div>
             <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

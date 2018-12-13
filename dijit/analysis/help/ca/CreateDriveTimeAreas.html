@@ -120,13 +120,27 @@
                 </ul>
                 
             </p>
-            <p>Teniu en compte que, quan un vehicle s'allunya del punt, el temps passa i les condicions de tr&agrave;nsit canvien. L'eina &Agrave;rees de temps de recorregut t&eacute; en compte aquestes variacions quan trieu  <b>Temps de conducci&oacute;</b> i activeu <b>Utilitza el tr&agrave;nsit</b>. Aix&ograve; no obstant, no totes les regions s&oacute;n compatibles amb el tr&agrave;nsit. Feu clic a l'enlla&ccedil; <b>Mostra la disponibilitat</b> a l'eina per saber si est&agrave; disponible a la vostra &agrave;rea d'estudi.
+            <p>Teniu en compte que, quan un vehicle s'allunya d'un punt, el temps passa i les condicions de tr&agrave;nsit canvien. L'eina &Agrave;rees de temps de recorregut t&eacute; en compte aquestes variacions quan trieu  <b>Temps de conducci&oacute;</b> i activeu <b>Utilitza el tr&agrave;nsit</b>. Aix&ograve; no obstant, no totes les regions s&oacute;n compatibles amb el tr&agrave;nsit. Feu clic a l'enlla&ccedil; <b>Mostra la disponibilitat</b> a l'eina per saber si est&agrave; disponible a la vostra &agrave;rea d'estudi.
             </p>
             <p> <b>Temps en cami&oacute;</b> pot utilitzar velocitats de viatge din&agrave;miques en funci&oacute; del tr&agrave;nsit, per&ograve; nom&eacute;s fins al l&iacute;mit de velocitat legal del cami&oacute;. Per exemple, si la velocitat din&agrave;mica per a una via en funci&oacute; del tr&agrave;nsit en temps real &eacute;s de 65 milles per hora, per&ograve; el l&iacute;mit de velocitat del cami&oacute; per a la via &eacute;s de 55 milles per hora, el c&agrave;lcul utilitzar&agrave; les 55 milles per hora per a la via.
             </p>
             <p> <b>Temps caminant</b> i <b>Dist&agrave;ncia caminant</b> utilitzen una velocitat fixa de 5 quil&ograve;metres per hora (3,1 milles per hora) i segueixen els camins de vianants i els carrers designats (alhora que ignora les regles que afecten els autom&ograve;bils, com ara carrers de sentit &uacute;nic). </p>
             <p> <b>Dist&agrave;ncia en cami&oacute;</b> utilitza una velocitat fixa i segueix les regles que s'apliquen als camions pesats, mentre que <b>Dist&agrave;ncia de conducci&oacute;</b> i <b>Dist&agrave;ncia de conducci&oacute; rural</b> utilitzen velocitats fixes i segueixen les regles que s'apliquen als autom&ograve;bils, com ara els cotxes.
             </p> 
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Afegeix capes de barrera</h2></div>
+        <hr/>
+        <div>
+            <p> Especifiqueu una o diverses entitats que actu&iuml;n com a restriccions temporals (en altres termes, barreres) quan viatgeu per carrers subjacents. Podeu especificar les barreres amb entitats de punt, l&iacute;nia o pol&iacute;gon.
+            </p>
+            <p>Una barrera de punt pot mostrar un arbre caigut, un accident, una l&iacute;nia el&egrave;ctrica fora de servei o qualsevol element que bloquegi completament el tr&agrave;nsit en un punt espec&iacute;fic del carrer. Es pot viatjar pel carrer, per&ograve; no creuar la barrera. Podeu especificar fins a 250 entitats perqu&egrave; actu&iuml;n com a barreres de punt.
+            </p>
+            <p>Una barrera de l&iacute;nia prohibeix viatjar per qualsevol lloc on la barrera s'intersequi amb els carrers. Per exemple, una desfilada o manifestaci&oacute; que bloquegi el tr&agrave;nsit en diversos segments del carrer es pot mostrar amb una barrera de l&iacute;nia. Si el nombre d'entitats de carrer amb qu&egrave; s'intersequen totes les barreres de l&iacute;nia &eacute;s superior a 500, l'eina retornar&agrave; un error.
+            </p>
+            <p>Una barrera de pol&iacute;gon prohibeix viatjar per qualsevol lloc on el pol&iacute;gon s'intersequi amb els carrers. Un dels usos d'aquest tipus de barrera &eacute;s mostrar les inundacions que cobreixen &agrave;rees de la xarxa de carrers i que impedeixen el viatge per carretera. Si el nombre d'entitats de carrer amb qu&egrave; s'intersequen totes les barreres de pol&iacute;gon &eacute;s superior a 2.000, l'eina retornar&agrave; un error.
+            </p>
         </div>
     </div>
     <div id="DissolveType">

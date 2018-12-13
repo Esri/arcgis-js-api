@@ -92,13 +92,13 @@
         </div>
     </div>
     <div id="measurementType">
-        <div><h2>Izmeri</h2></div>
+        <div><h2>Izmera</h2></div>
         <hr/>
         <div>
             
             <p>Izberite, ali boste izhodi&scaron;ča povezali s cilji glede na oddaljenost po zračni razdalji ali načinu potovanja. Izhodne poti bodo sledile cestam ali pe&scaron;potem in upo&scaron;tevale veljavna pravila, kot so enosmerne ceste in nedovoljeno obračanje osebnega ali tovornega vozila. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije.  
             </p>
-            <p>Ko izberete  <b>čas vožnje z avtom</b>, <b>čas vožnje po neasfaltiranih cestah</b> ali <b>čas vožnje s tovornjakom</b>, lahko izberete način merjenja časa vožnje.
+            <p>Ko izberete  <b>čas vožnje</b>, <b>čas vožnje po neasfaltiranih cestah</b> ali <b>čas vožnje s tovornjakom</b>, lahko izberete način merjenja časa vožnje.
                 <ul>
                     <li>
                         <p>Odkljukajte  <b>Uporabi promet</b>, da najdete najhitrej&scaron;e poti na podlagi hitrostnih omejitev.
@@ -107,7 +107,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Obkljukajte  <b>Uporabi promet</b>, da najdete najhitrej&scaron;e poti na podlagi podanega časa začetka in spreminjajočih se prometnih razmer. Če izberete tudi možnost <b>Trenutni promet</b>, se čas odhoda iz izhodi&scaron;č nastavi na trenuten čas, trenutne in predvidene hitrosti prometa pa prihajajo od senzorjev in vsebin, da se ustvarijo poti. Predvidene hitrosti prometa se izračunajo glede na hitrost trenutnega prometa, pretekle hitrosti in trenutne dogodke, kot je vreme. Hitrosti prometa so predvidene 12 ur v prihodnost, da lahko premaknete drsnik in nastavite čas odhoda do  12 ur vnaprej. </p>
+                        <p>Obkljukajte  <b>Uporabi promet</b>, da najdete najhitrej&scaron;e poti na podlagi podanega časa začetka in spreminjajočih se prometnih razmer. Če izberete tudi možnost <b>Trenutni promet</b>, se čas odhoda iz izhodi&scaron;č nastavi na trenuten čas, trenutne in predvidene hitrosti prometa pa prihajajo od senzorjev in vsebin, da se ustvarijo poti. Predvidene hitrosti prometa se izračunajo glede na hitrosti trenutnega prometa, pretekle hitrosti in trenutne dogodke, kot je vreme. Hitrosti prometa so predvidene 12 ur v prihodnost, da lahko premaknete drsnik in nastavite čas odhoda do  12 ur vnaprej. </p>
                         <p>Uporabite te nastavitve trenutnega prometa, da izveste trajanje vožnje, če se odpravite zdaj, čez eno uro in tako naprej.
                         </p>
                     </li>
@@ -124,7 +124,21 @@
             </p>
             <p>Upo&scaron;tevajte, da ko vozilo pelje stran od izhodi&scaron;ča, se trenutni čas in prometne razmere spreminjajo. Orodje Poveži izhodi&scaron;ča s cilji upo&scaron;teva te spremembe, če obkljukate možnost  <b>Uporabi promet</b>; vse regije ne podpirajo prometa. Kliknite povezavo <b>Glej razpoložljivost</b> na orodju, da preverite, ali je na voljo na va&scaron;em &scaron;tudijskem območju.
             </p>
-            <p>Pri  <b>času vožnje s tovornjakom</b> se lahko uporabljajo dinamične hitrosti vožnje na podlagi prometa, a le do z zakonom dovoljene omejitve hitrosti za tovornjake. Na primer, če je dinamična hitrost za ulico na podlagi trenutnega prometa 65 km/h, omejitev hitrosti za tovornjake na tej ulici pa je 50 km/h, bo pri izračunu uporabljena hitrost 50 km/h za to ulico.
+            <p>Pri  <b>času vožnje s tovornjakom</b> se lahko uporabljajo dinamične hitrosti vožnje na podlagi prometa, a le do z zakonom dovoljene omejitve hitrosti za tovornjake. Na primer, če je dinamična hitrost za ulico na podlagi trenutnega prometa 65 km/h, omejitev hitrosti za tovornjake na tej ulici pa je 50 km/h na uro, bo pri izračunu uporabljena hitrost 50 km/h za to ulico.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj sloje ovire</h2></div>
+        <hr/>
+        <div>
+            <p> Določi eno ali več funkcij, ki imajo vlogo začasnih omejitev (z drugimi besedami pregrad) pri potovanju po osnovnih ulicah. Pregrado je mogoče določiti z uporabo funkcij točke, črte ali poligona.
+            </p>
+            <p>Točkovna ovira lahko prikazuje padlo drevo, nesrečo, padlo električno linijo oziroma kar koli, kar popolnoma blokira promet na določeni točki vzdolž ulice. Potovanje po ulici je dovoljeno, vendar ne skozi oviro. Do 250 funkcij lahko opredelite kot točkovne ovire.
+            </p>
+            <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo funkcij ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
+            </p>
+            <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo funkcij ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
             </p>
         </div>
     </div>
@@ -132,7 +146,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>Ime geoobjektnega sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Če geoobjektni sloj že obstaja, boste morali navesti drugo ime. Geoobjektni sloj bo vseboval sloj za vsako od naslednjega: poti, nedodeljena izhodi&scaron;ča in nedodeljene cilje, ko nekaterih izhodi&scaron;č ni mogoče povezati z njihovimi cilji.
+            <p>Ime geoobjektnega sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Če geoobjektni sloj že obstaja, boste morali navesti drugo ime. Geoobjektni sloj bo vseboval sloj za vsako od naslednjega: poti, nedodeljena izhodi&scaron;ča in nedodeljene cilje, ko nekaterih izhodi&scaron;č ni mogoče povezati z njihovimi cilji.
             </p>
             <p>Če izberete  <b>Vključi usmerjevalne sloje</b>, se vsaka pot iz rezultata prav tako shrani kot usmerjevalni sloj. Usmerjevalni sloj vsebuje vse informacije za določeno pot, kot so dodeljeni postanki, kot tudi navodila za pot. Ustvarjanje usmerjevalnega sloja je uporabno, če želite deliti posamezne poti z drugimi člani v va&scaron;i organizaciji ali če želite nadalje spremeniti poti s pomočjo gumba <b>Navodila za pot</b> v pregledovalniku kart. Usmerjevalni sloj uporablja samodejno generirano enolično ime, ki je sestavljeno iz predpone imena vhodnega geoobjektnega sloja.
             </p>

@@ -60,6 +60,8 @@
             <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_travelModeSelect" class="esriLeadingMargin1 longInput esriLongLabel esriAnalysisDriveMode">
           </td>          
         </tr>
+        <tr data-dojo-type="esri/dijit/analysis/components/AddBarrierLayers/AddBarrierLayers" data-dojo-attach-point="_addBarrierLayersComponent" data-dojo-props="showGeoAnalyticsParams: ${showGeoAnalyticsParams}">
+        </tr>
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
@@ -154,7 +156,7 @@
         <tr>
           <td colspan="3" style="padding-bottom:0.25em;padding-top:0.25em;">
               <label class="esriLeadingMargin1">
-              <input type="text" class="" style="width:30%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-attach-event="onChange:_handleRoutesInputChange" data-dojo-props="intermediateChanges:true,smallDelta:1, constraints:{min:1,max:100,places:0},required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_routesInput"></input>
+              <input type="text" class="" style="width:30%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-attach-event="onChange:_handleRoutesInputChange" data-dojo-props="intermediateChanges:true,smallDelta:1,required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_routesInput"></input>
               ${i18n.vehicles}</label>            
           </td>
         </tr>
@@ -170,7 +172,7 @@
         <tr>
           <td colspan="3" style="padding-bottom:0.25em;padding-top:0.25em;">
               <label class="esriLeadingMargin1">
-              <input type="text" class="" style="width:30%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,smallDelta:1, constraints:{min:1,max:200,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_maxPtsRouteInput"></input>
+              <input type="text" class="" style="width:30%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,smallDelta:1, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_maxPtsRouteInput"></input>
               ${i18n.stops}</label>            
           </td>
         </tr>
@@ -204,7 +206,7 @@
                 <tr>
                   <td>
                     <div class="esriLeadingMargin1 esriTrailingMargin025">
-                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:0, smallDelta:1, constraints:{min:0,max:1440,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_servStopMinutesInput"></input>
+                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:0, smallDelta:1, constraints:{min:0,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_servStopMinutesInput"></input>
                       ${i18n.minutesSmall}
                     </div>
                   </td>
@@ -236,7 +238,7 @@
                 <tr>
                   <td>
                     <div class="esriLeadingMargin1 esriTrailingMargin025">
-                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:8, smallDelta:1, constraints:{min:0,max:1000,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_hoursInput"></input>
+                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:8, smallDelta:1, constraints:{min:0,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_hoursInput"></input>
                       ${i18n.hoursSmall}
                     </div>
                   </td>

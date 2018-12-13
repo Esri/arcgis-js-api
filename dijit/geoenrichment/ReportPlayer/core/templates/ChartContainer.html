@@ -1,6 +1,10 @@
 ﻿<div class="esriGEReportPlayer_chartContainer">
     <div data-dojo-attach-point="chartLabel" class="chartContainer_chartLabel TrimWithEllipses"></div>
 
+    <div data-dojo-attach-point="noDataPlaceHolder" class="esriGENoDataPlaceHolder">
+        <div class="esriGENoDataPlaceHolderLabel">${nls.noChartData}</div>
+    </div>
+
     <div data-dojo-attach-point="chartNormalViewDiv">
         <div class="chartContainer_chartContainerWithAxis" data-dojo-attach-point="chartContainerWithAxis">
             <div data-dojo-attach-point="chartContainerDiv"></div>
@@ -14,4 +18,5 @@
     </div>
 
     <div data-dojo-attach-point="errorDiv" class="esriGEReportPlayerErrorMessage">${nls.chartLoadError}</div>
+    <div data-dojo-attach-point="missingVariablesDiv" class="chartContainer_missingVariablesMessage">${nls.chartContainerMissingVariables}</div>
 </div>

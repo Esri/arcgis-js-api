@@ -134,6 +134,20 @@
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Ajouter des couches d’interruptions</h2></div>
+        <hr/>
+        <div>
+            <p> Pr&eacute;cisez une ou plusieurs entit&eacute;s qui agissent comme restrictions temporaires (en d&rsquo;autres termes, les interruptions) lors du d&eacute;placement dans les rues sous-jacentes. Vous pouvez pr&eacute;ciser les interruptions &agrave; l&rsquo;aide d&rsquo;entit&eacute;s ponctuelles, lin&eacute;aires ou surfaciques.
+            </p>
+            <p>Une interruption ponctuelle peut mod&eacute;liser un arbre au sol, un accident, une ligne &eacute;lectrique &agrave; terre, ou tout &eacute;l&eacute;ment qui bloque le trafic &agrave; un emplacement donn&eacute; dans la rue. Le d&eacute;placement est autoris&eacute; sur la rue, hormis franchir l&rsquo;interruption. Vous pouvez pr&eacute;ciser jusqu&rsquo;&agrave; 250&nbsp;&eacute;l&eacute;ments comme interruptions ponctuelles.
+            </p>
+            <p>Une interruption lin&eacute;aire interdit le d&eacute;placement l&agrave; o&ugrave; l&rsquo;interruption intersecte les rues. Par exemple, un d&eacute;fil&eacute; ou une manifestation qui bloque la circulation sur plusieurs segments de rue peut &ecirc;tre mod&eacute;lis&eacute; avec une interruption lin&eacute;aire. Si le nombre d&rsquo;entit&eacute;s de rue intersect&eacute;es par toutes les interruptions lin&eacute;aires d&eacute;passe&nbsp;500, l&rsquo;outil renvoie une erreur.
+            </p>
+            <p>Une interruption polygonale interdit le d&eacute;placement l&agrave; o&ugrave; le polygone intersecte les rues. Une utilisation de ce type d&rsquo;interruption consiste &agrave; mod&eacute;liser les inondations couvrant les zones du r&eacute;seau routier et &agrave; identifier la circulation sur la route comme impossible &agrave; ces emplacements pr&eacute;cis. Si le nombre d&rsquo;entit&eacute;s de rue intersect&eacute;es par toutes les interruptions polygonales est sup&eacute;rieur &agrave;&nbsp;2&nbsp;000, l&rsquo;outil renvoie une erreur.
+            </p>
+        </div>
+    </div>
     <div id="routeCount">
         <div><h2>Nombre maximum de véhicules à acheminer</h2></div>
         <hr/>
@@ -150,7 +164,7 @@
         <div>
             <p>Il s'agit d'un des deux param&egrave;tres qui &eacute;quilibrent la charge de travail globale parmi les itin&eacute;raires. Vous pouvez sp&eacute;cifier une valeur comprise entre 1 et  200. 
             </p>
-            <p>En r&eacute;duisant le nombre maximum d'arr&ecirc;ts pouvant &ecirc;tre attribu&eacute;s &agrave; chaque v&eacute;hicule, les v&eacute;hicules ont plus de chance de se voir attribuer un nombre &eacute;gal d'arr&ecirc;ts. Ceci permet d'&eacute;quilibrer la charge de travail parmi les conducteurs. L'inconv&eacute;nient toutefois est que la solution engendr&eacute;e risque d'&ecirc;tre moins efficace.
+            <p>En r&eacute;duisant le nombre maximum d'arr&ecirc;ts pouvant &ecirc;tre attribu&eacute;s &agrave; chaque v&eacute;hicule, les v&eacute;hicules ont plus de chance de se voir attribuer un nombre &eacute;gal d'arr&ecirc;ts. Ceci permet d&rsquo;&eacute;quilibrer la charge de travail parmi les conducteurs. L'inconv&eacute;nient toutefois est que la solution engendr&eacute;e risque d'&ecirc;tre moins efficace.
             </p>
             <p>En augmentant le nombre d'arr&ecirc;ts par v&eacute;hicule, l'outil a plus de libert&eacute; pour trouver des solutions plus efficaces. Cependant, la charge de travail risque d'&ecirc;tre r&eacute;partie de mani&egrave;re in&eacute;gale parmi les chauffeurs et les v&eacute;hicules. Notez que vous pouvez &eacute;quilibrer la charge de travail en fonction du temps aussi bien qu'en fonction du nombre d'arr&ecirc;ts, en attribuant une valeur au param&egrave;tre  <b>Limiter le temps de trajet total par v&eacute;hicule</b>.
             </p>

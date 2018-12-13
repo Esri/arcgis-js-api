@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.26/esri/copyright.txt for details.
 
-define([],function(){return{RESET:"reset",FIT_PAGE:"fitPage",FIT_PAGE_WIDTH:"fitPageWidth"}});
+define([],function(){return{RESET:"reset",FIT_PAGE:"fitPage",FIT_PAGE_WIDTH:"fitPageWidth",FIT_PAGE_HEIGHT:"fitPageHeight"}});

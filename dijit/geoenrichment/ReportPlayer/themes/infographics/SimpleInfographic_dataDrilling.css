@@ -36,6 +36,7 @@
 
 .simpleInfographic_dataDrillingViewDiv {
     position: absolute;
+    min-height: 0px;
 }
 
     

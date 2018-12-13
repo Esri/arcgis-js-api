@@ -185,6 +185,20 @@
             </p>  
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Tambah Layer Penghalang</h2></div>
+        <hr/>
+        <div>
+            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            </p>
+            <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
+            </p>
+            <p>Penghalang garis melarang perjalanan ke mana pun penghalang berpotongan dengan jalan. Misalnya, parade atau demonstrasi yang memblokir lalu lintas di beberapa segmen jalan dapat direpresentasikan dengan penghalang garis. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang garis melebihi 500, alat mengembalikan suatu kesalahan.
+            </p>
+            <p>Penghalang poligon melarang perjalanan ke mana pun poligon berpotongan dengan jalan. Salah satu kegunaan penghalang tipe ini adalah untuk merepresentasikan area dari jaringan jalan yang tertutup banjir dan menyebabkan perjalanan ke sana tidak memungkinkan. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang poligon melebihi 2000, alat mengembalikan suatu kesalahan.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
@@ -193,7 +207,7 @@
             </p>
             <p>Layer hasil akan berisi sebuah layer untuk masing-masing berikut: fasilitas yang memiliki permintaan ditetapkan kepadanya, lokasi permintaan yang dialokasikan ke fasilitas, dan garis alokasi yang menghubungkan lokasi permintaan ke fasilitas yang ditetapkannya. Garis alokasi digambarkan sebagai garis lurus; namun, waktu perjalanan atau jarak perjalanan antar fasilitas dan lokasi permintaan selalu berdasarkan mode perjalanan yang Anda tentukan dan tidak menggunakan jarak garis lurus.
             </p>
-            <p>Dengan menggunakan kotak tarik-turun  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

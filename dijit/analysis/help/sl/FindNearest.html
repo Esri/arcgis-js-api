@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Najdi najbližje</h2><p/>
+        <h2>Poišči najbližje</h2><p/>
         <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Najdi najbližje"></h2>
         <hr/>
     <p>To orodje najde najbližje geoobjekte ter jih razvrsti po razdalji do najbližjih geoobjektov. Da najde najbližje, lahko orodje meri po zračni razdalji ali z izbranim načinom potovanja. Obstajajo možnosti za omejitev &scaron;tevila najbližjih geobjektov za iskanje ali iskalnega dosega, v katerem se jih i&scaron;če. Rezultati tega orodja vam lahko pomagajo odgovoriti na naslednje vrste vpra&scaron;anj:
@@ -81,7 +81,7 @@
         </div>
     </div>
     <div id="MeasurementMethod">
-        <div><h2>Meritev</h2></div>
+        <div><h2>Izmera</h2></div>
         <hr/>
         <div>
             <p>Izberite iskanje najbližjih lokacij na podlagi zračne razdalje ali izbranega načina potovanja. Načini potovanja so omogočeni samo, ko va&scaron; vhodni sloj vsebuje točke. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Ko uporabljate enega izmed načinov potovanja, so meritve narejene vzdolž cest ali pe&scaron;poti in upo&scaron;tevajo veljavna pravila, kot so enosmerne ulice, prepovedano zavijanje itd.
@@ -114,6 +114,20 @@
                 Upo&scaron;tevajte, da ko vozilo pelje stran od točke, se trenutni čas in prometne razmere spreminjajo. To orodje upo&scaron;teva te spremembe, če obkljukate možnost <b>Uporabi promet</b>; vendar vse regije ne podpirajo prometnih podatkov. Kliknite povezavo <b>Glej razpoložljivost</b> na orodju, da preverite, ali je na voljo na va&scaron;em &scaron;tudijskem območju. 
             </p>
             <p>Pri  <b>času vožnje s tovornjakom</b> se lahko uporabljajo dinamične hitrosti vožnje na podlagi prometa, a le do z zakonom dovoljene omejitve hitrosti za tovornjake. Na primer, če je dinamična hitrost za ulico na podlagi trenutnega prometa 65 km/h, omejitev hitrosti za tovornjake na tej ulici pa je 50 km/h na uro, bo pri izračunu uporabljena hitrost 50 km/h za to ulico.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Dodaj sloje ovire</h2></div>
+        <hr/>
+        <div>
+            <p> Določi eno ali več funkcij, ki imajo vlogo začasnih omejitev (z drugimi besedami pregrad) pri potovanju po osnovnih ulicah. Pregrado je mogoče določiti z uporabo funkcij točke, črte ali poligona.
+            </p>
+            <p>Točkovna ovira lahko prikazuje padlo drevo, nesrečo, padlo električno linijo oziroma kar koli, kar popolnoma blokira promet na določeni točki vzdolž ulice. Potovanje po ulici je dovoljeno, vendar ne skozi oviro. Do 250 funkcij lahko opredelite kot točkovne ovire.
+            </p>
+            <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo funkcij ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
+            </p>
+            <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo funkcij ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
             </p>
         </div>
     </div>

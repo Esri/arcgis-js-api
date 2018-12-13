@@ -284,3 +284,8 @@
   margin: 14px;
   font-size: 12px;
 }
+
+.esriAnalysis .layerChooseCtr {
+  width: 70%;
+  min-width: 100px;
+}

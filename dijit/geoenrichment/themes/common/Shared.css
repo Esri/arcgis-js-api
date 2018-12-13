@@ -24,6 +24,14 @@
     cursor: default;
 }
 
+.esriGENonInteractable {
+    pointer-events: none !important;
+}
+
+    .esriGENonInteractable div {
+        pointer-events: none !important;
+    }
+
 .esriGEAbsoluteStretched {
     position: absolute;
     left: 0px;

@@ -46,6 +46,23 @@
               <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-props="required:true" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
             </td>
           </tr>
+          <tr data-dojo-attach-point="_clusterMethodLblRow">
+            <td colspan="2">
+              <label data-dojo-attach-point="_labelTwo" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
+              <label class="esriAnalysisStepsLabel">${i18n.chooseClusteringMethod}</label>
+            </td>
+            <td class="shortTextInput">
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="clusterMethod"></a>
+            </td>
+          </tr>
+          <tr data-dojo-attach-point="_clusterMethodSelectRow">
+            <td colspan="3" style="padding-bottom:0.25;padding-top:0.25;">
+              <select data-dojo-type="dijit/form/Select"  class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-attach-event="onChange:_handleClusterMethodChange" data-dojo-attach-point="_clusterMethodSelect">
+                <option value="DBSCAN">${i18n.dbscanLabel}</option>
+                <option value="HDBSCAN">${i18n.hdbscanLabel}</option>
+              </select>
+            </td>
+          </tr>
           <tr>
             <td colspan="3" class="clear"></td>
           </tr>
@@ -60,7 +77,7 @@
           </tr>
           <tr>
             <td colspan="3" style="padding-bottom:0.25;padding-top:0.25;">
-              <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin2"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1,value:2, constraints: { min:2, places:0 }, required:true">
+              <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin1"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1,value:2, constraints: { min:2, places:0 }, required:true">
                 <label>${i18n.points}</label>
               </input>
             </td>
@@ -70,7 +87,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
+              <label data-dojo-attach-point="_labelThree" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
               <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_forLocationLabel">${i18n.limitSearchLabel}</label>
             </td>
             <td class="shortTextInput">
@@ -79,10 +96,10 @@
           </tr>
          <tr>
             <td style="padding-right:0;padding-top:0;width:30%;">
-              <input type="text" class="esriLeadingMargin2" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDistValueChange" data-dojo-props="intermediateChanges:true,invalidMessage:'${i18n.distanceMsg}',constraints:{min:0.000001}" data-dojo-attach-point="_searchCutoffInput" class="esriLeadingMargin1"  style="width:60%;">
+              <input type="text" class="esriLeadingMargin1" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDistValueChange" data-dojo-props="intermediateChanges:true,invalidMessage:'${i18n.distanceMsg}',constraints:{min:0.000001}" data-dojo-attach-point="_searchCutoffInput" class="esriLeadingMargin1"  style="width:60%;">
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-top:0;width:60%;">
-              <select class="mediumInput esriMediumlabel esriAnalysisSelect esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleUnitsChange" data-dojo-attach-point="_distanceUnitsSelect" style="width:65%;table-layout:fixed;">
+              <select class="mediumInput esriMediumlabel esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleUnitsChange" data-dojo-attach-point="_distanceUnitsSelect" style="width:65%;table-layout:fixed;">
               </select>
             </td>
           </tr>
@@ -91,7 +108,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_outputNumberLabel">${i18n.fourLabel}</label>
+              <label data-dojo-attach-point="_labelFour" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_outputNumberLabel">${i18n.fourLabel}</label>
               <label class="longTextInput esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
             </td>
             <td class="shortTextInput">
@@ -121,6 +138,10 @@
          <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
            ${i18n.useMapExtent}
        </label>
+      </div>
+      <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
+        <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg"></a>
+        <span data-dojo-attach-point="_bodyNode"></span>
       </div>
       <button data-dojo-type="dijit/form/Button" type="submit" data-dojo-attach-point="_saveBtn" class="esriLeadingMargin4 esriAnalysisSubmitButton" data-dojo-attach-event="onClick:_handleSaveBtnClick">
           ${i18n.runAnalysis}

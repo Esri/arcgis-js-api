@@ -3,37 +3,51 @@
 
 
 
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation .simpleInfographic_backToMainViewButton {
+.simpleInfographic_dataDrillingViewDiv.isSlideAnimation .simpleInfographic_topToolbar {
+    text-align: right;
+}
+
+
+
+.isSlideAnimation .simpleInfographic_dynamicSettingsToolbarRoot .sectionDynamicSettings_buttonBar > div {
+    background-color: rgba(100, 100, 100, 0.75);
+}
+
+
+
+.simpleInfographic_dataDrillingViewDiv.isSlideAnimation .simpleInfographic_exportButton {
+    background-image: url("../images/commands/exportWhite.svg");
     background-repeat: no-repeat;
-    background-size: 20px;
     background-position: center;
-    width: 25px;
-    height: 25px;
-    background-image: url("../images/closeWindowWhite.svg");
-    display: inline-block;
+    background-size: 24px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
-    position: absolute;
-    right: 2px;
-    top: 0px;
-    background-color: gray;
-    border-radius: 20px;
-}
-
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation.hasMultipleDrillingOptions .simpleInfographic_backToMainViewButton,
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation.hasChartSettingsButton .simpleInfographic_backToMainViewButton {
-    right: 30px;
-}
-
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation.hasMultipleDrillingOptions.hasChartSettingsButton .simpleInfographic_backToMainViewButton {
-    right: 60px;
+    background-color: rgba(100, 100, 100, 0.75);
 }
 
 
 
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation.hasMultipleDrillingOptions .simpleInfographic_drillingOptionsButton {
-    display: block;
+.simpleInfographic_dataDrillingViewDiv.isSlideAnimation .simpleInfographic_printButton {
+    background-image: url("../images/commands/printWhite.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: rgba(100, 100, 100, 0.75);
 }
 
-.simpleInfographic_dataDrillingViewDiv.isSlideAnimation.hasChartSettingsButton .simpleInfographic_drillingOptionsButton {
-    right: 30px;
+
+
+.simpleInfographic_dataDrillingViewDiv.isSlideAnimation .simpleInfographic_backToMainViewButton {
+    background-image: url("../images/closeWindowWhite.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: rgba(100, 100, 100, 0.75);
 }

@@ -132,7 +132,7 @@
     color: white;
 }
 
-    .esriGEPlayerToolbar.playerThemeDark .playerToolbar_commandButtonsContainer .esriGEDisabledContent {
+    .esriGEPlayerToolbar.playerThemeDark .esriGEDisabledContent {
         background-color: #0079C1;
     }
 
@@ -143,7 +143,7 @@
     color: #4d4d4d;
 }
 
-    .esriGEPlayerToolbar.playerThemeLight .playerToolbar_commandButtonsContainer .esriGEDisabledContent {
+    .esriGEPlayerToolbar.playerThemeLight .esriGEDisabledContent {
         background-color: #EEEEEE;
     }
 
@@ -151,10 +151,10 @@
 
 .esriGEReportPlayer .playerToolbar_outerButton {
     background-color: #0079C1;
-    background-size: 16px;
+    background-size: 24px;
     background-position: center;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     padding: 0px;
     min-width: 0px;
     background-repeat: no-repeat;

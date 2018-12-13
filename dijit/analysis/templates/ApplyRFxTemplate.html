@@ -80,6 +80,26 @@
         </tbody>
       </table>
     </div>
+    <div>
+      <table class="esriRasterAnalysisPreviewTable">
+        <tr>
+          <td>
+            <label class="esriAnalysisSwitchControl">
+              <input type="checkbox" data-dojo-attach-point="_previewBtn" data-dojo-attach-event="onClick:_handlePreviewBtnClick">
+              <span class="esriAnalysisSwitchControlSlider"></span>
+            </label>
+          </td>
+          <td>
+            <span>${i18n.showPreview}</span>
+          </td>
+          <td>
+            <div data-dojo-attach-point="esriAnalysisPreviewError" class="esriAnalysisPreviewError"></div>
+            <div data-dojo-attach-point="esriAnalysisPreviewWarning" class="esriAnalysisPreviewWarning"></div>
+            <div data-dojo-attach-point="esriAnalysisPreviewLoading" class="esriAnalysisPreviewLoading"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
     <div style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
       <div class="esriExtentCreditsCtr">
         <a class="esriFloatTrailing esriSmallFont" href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>

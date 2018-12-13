@@ -5,46 +5,30 @@
 .esriGEConditionalStylingLegend_row {
     white-space: nowrap;
     position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
 }
 
-.esriGEConditionalStylingLegend_symbol {
+.esriGEConditionalStylingLegend_text {
     padding: 5px;
-    border: 1px #CCCCCC;
 }
 
 .esriGEConditionalStylingLegend_symbolImage {
-    background-size: 50px;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
 }
 
 .esriGEConditionalStylingLegend_symbolChart {
+    padding: 5px;
     width: 6px;
     height: 6px;
     border-radius: 10px;
 }
 
-.esriGEConditionalStylingLegend_matchIndicator {
-    background-image: url("./images/arrows/rightArrow.svg");
-    background-size: 8px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 8px;
-    height: 8px;
-    position: absolute;
-    left: -15px;
-}
-
-.esriGEConditionalStylingLegend_text .esriGEConditionalStylingLegend_matchIndicator {
-    top: 8px;
-}
-
-.esriGEConditionalStylingLegend_chart .esriGEConditionalStylingLegend_matchIndicator {
-    top: 4px;
-}
-
-.esriGEConditionalStylingLegend_image .esriGEConditionalStylingLegend_matchIndicator {
-    top: 27px;
+.esriGEConditionalStylingLegend_currentValue {
+    background-color: #EEEEEE;
 }

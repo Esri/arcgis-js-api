@@ -117,6 +117,20 @@
             </p>
         </div>
     </div>
+    <div id="barrier_layers">
+        <div><h2>Adăugare straturi tematice tip barieră</h2></div>
+        <hr/>
+        <div>
+            <p> Specificați unul sau mai multe obiecte spațiale care acționează ca restricții temporare (cu alte cuvinte, bariere) atunci c&acirc;nd vă deplasați pe străzile subiacente. Puteți specifica barierele utiliz&acirc;nd obiecte spațiale de tip punct, linie sau poligon.
+            </p>
+            <p>O barieră de tip punct poate reprezenta modelul unui copac căzut, al unui accident, al unui cablu electric căzut sau al oricărui element care blochează complet traficul &icirc;ntr-o anumită poziție de pe stradă. Deplasarea este permisă pe stradă, dar nu &icirc;n afara barierei. Puteți specifica p&acirc;nă la 250 de obiecte spațiale care să acționeze ca bariere tip punct.
+            </p>
+            <p>O barieră tip linie interzice deplasarea &icirc;n orice punct &icirc;n care bariera se intersectează cu străzile. De exemplu, o paradă sau un protest care blochează traficul pe mai multe segmente de stradă pot fi modelate cu o barieră tip linie. Dacă numărul de obiecte spațiale de stradă intersectate de toate barierele tip linie depășește 500, instrumentul returnează o eroare.
+            </p>
+            <p>O barieră tip poligon interzice deplasarea &icirc;n orice punct &icirc;n care poligonul se intersectează cu străzile. Un mod de utilizare a acestui tip de barieră este să se modeleze inundațiile care acoperă suprafețele rețelei de străzi și să se facă imposibilă deplasarea pe traseul respectiv. Dacă numărul de obiecte spațiale de stradă intersectate de toate barierele tip poligon depășește 2000, instrumentul returnează o eroare.
+            </p>
+        </div>
+    </div>
     <div id="Cutoffs">
         <div><h2>Pentru fiecare locație din stratul de intrare</h2></div>
         <hr/>
@@ -137,11 +151,11 @@
         <div>
             <p>Acesta este numele stratului tematic de obiecte spațiale care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă. Dacă stratul tematic de obiecte spațiale rezultat există deja, vi se va solicita să furnizați un alt nume. Stratul tematic de obiecte spațiale va conține două straturi: unul reprezent&acirc;nd locațiile cele mai apropiate și al doilea cu liniile care leagă locațiile de intrare de locațiile cele mai apropiate.
             </p>
-            <p>Dacă selectaţi  <b>Includere straturi tematice de rute</b>, fiecare rută din rezultat este salvată şi ca strat tematic de rute. Un strat tematic de rute include toate informaţiile pentru o anumită rută, cum ar fi opririle alocate rutei şi indicaţiile de deplasare. Crearea straturilor tematice de rute este utilă dacă doriţi să partajaţi rutele individuale cu alţi membri din organizaţia dvs. sau dacă doriţi să modificaţi mai mult rutele utiliz&acirc;nd butonul <b>Indicaţii</b> din aplicaţia de vizualizare a hărţilor. Straturile tematice de rute utilizează numele furnizat pentru stratul tematic de obiecte spaţiale ca prefix şi numele de rută generat ca parte din analiză este adăugat pentru a crea un nume unic pentru fiecare strat tematic de rută.
+            <p>Dacă selectați  <b>Includere straturi tematice de rute</b>, fiecare rută din rezultat este salvată și ca strat tematic de rute. Un strat tematic de rute include toate informațiile pentru o anumită rută, cum ar fi opririle alocate rutei și indicațiile de deplasare. Crearea straturilor tematice de rute este utilă dacă doriți să partajați rutele individuale cu alți membri din organizația dvs. sau dacă doriți să modificați mai mult rutele utiliz&acirc;nd butonul <b>Indicații</b> din aplicația de vizualizare a hărților. Straturile tematice de rute utilizează numele furnizat pentru stratul tematic de obiecte spațiale ca prefix și numele de rută generat ca parte din analiză este adăugat pentru a crea un nume unic pentru fiecare strat tematic de rută.
             </p>
-            <p>Numărul maxim de straturi tematice de rute care pot fi create este de  1.000. Dacă rezultatul conţine mai mult de  1.000 de rute şi opţiunea  <b>Includere straturi tematice de rute</b> este bifată, instrumentul va crea doar serviciul de obiecte spaţiale de ieşire.
+            <p>Numărul maxim de straturi tematice de rute care pot fi create este de  1.000. Dacă rezultatul conține mai mult de  1.000 de rute și opțiunea  <b>Includere straturi tematice de rute</b> este bifată, instrumentul va crea doar serviciul de obiecte spațiale de ieșire.
             </p>
-            <p>Utiliz&acirc;nd lista derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care vor fi salvate stratul tematic de obiecte spaţiale şi straturile tematice de rute, dacă sunt create.
+            <p>Utiliz&acirc;nd lista derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care vor fi salvate stratul tematic de obiecte spațiale și straturile tematice de rute, dacă sunt create.
             </p>
         </div>
     </div>

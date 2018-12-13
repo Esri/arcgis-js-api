@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Temukan Terdekat</h2><p/>
-        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Temukan Terdekat"></h2>
+        <h2>Temukan yang Terdekat</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Temukan yang Terdekat"></h2>
         <hr/>
     <p>Alat ini akan mencari fitur terdekat dan juga akan melaporkan serta memberikan peringkat jarak ke fitur di dekatnya. Untuk menemukan apa saja yang terdekat, alat ini dapat mengukur jarak baik menggunakan garis lurus atau mode perjalanan yang dipilih. Ada beberapa opsi untuk membatasi jumlah atau rentang pencarian terhadap fitur terdekat yang ingin dicari. Hasil dari alat ini dapat membantu Anda menjawab jenis pertanyaan berikut:
         <ul>
             <li>Taman apa yang paling dekat dari sini?
             </li>
-            <li>Rumah sakit terdekat mana yang dapat dijangkau dengan waktu berkendara tersingkat? Berapa lama perjalanan pada hari Selasa jam 5:30 sore saat jam sibuk?
+            <li>Rumah sakit terdekat mana yang dapat dijangkau dengan waktu mengemudi tersingkat? Berapa lama perjalanan pada hari Selasa jam 5:30 sore saat jam sibuk?
             </li>
             <li>Berapa jarak jalan antara kota besar tersebut?
             </li>
@@ -114,6 +114,20 @@
                 Perhatikan bahwa saat kendaraan melaju keluar dari suatu titik, waktu berlalu dan kondisi lalu lintas berubah. Alat ini akan memperhitungkan semua perubahan tersebut jika Anda mencentang <b>Gunakan lalu lintas</b>; meskipun demikian, tidak semua wilayah mendukung lalu lintas. Klik tautan <b>Lihat ketersediaan</b> pada alat untuk mengetahui apakah opsi ini ditawarkan di area studi Anda. 
             </p>
             <p> <b>Waktu Mengemudi Truk</b> dapat menggunakan kecepatan perjalanan dinamis pada lalu lintas tetapi hanya hingga batas kecepatan truk legal. Contoh, jika kecepatan dinamis suatu jalan berdasarkan lalu lintas langsung adalah 65 mil per jam tetapi batas kecepatan truk untuk jalan tersebut adalah 55 mil per jam, penghitungan akan menggunakan 55 mil per jam untuk jalan tersebut.
+            </p>
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Tambah Layer Penghalang</h2></div>
+        <hr/>
+        <div>
+            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            </p>
+            <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
+            </p>
+            <p>Penghalang garis melarang perjalanan ke mana pun penghalang berpotongan dengan jalan. Misalnya, parade atau demonstrasi yang memblokir lalu lintas di beberapa segmen jalan dapat direpresentasikan dengan penghalang garis. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang garis melebihi 500, alat mengembalikan suatu kesalahan.
+            </p>
+            <p>Penghalang poligon melarang perjalanan ke mana pun poligon berpotongan dengan jalan. Salah satu kegunaan penghalang tipe ini adalah untuk merepresentasikan area dari jaringan jalan yang tertutup banjir dan menyebabkan perjalanan ke sana tidak memungkinkan. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang poligon melebihi 2000, alat mengembalikan suatu kesalahan.
             </p>
         </div>
     </div>
