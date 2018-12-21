@@ -1,5 +1,8 @@
+const highp float nanValue = 1e-30;
+
 bool isNan(float val) {
-  return !( val < 0.0 || 0.0 < val || val == 0.0 );
+  return (val == nanValue);
+  //return !(val < 0.0 || -1.0 < (val - 1.0) || val == 0.0);
 }
 
 #ifdef VV_OPACITY
