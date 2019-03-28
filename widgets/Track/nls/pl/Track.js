@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Ścieżka",startTracking:"Zacznij śledzić moją lokalizację",stopTracking:"Przestań śledzić moją lokalizację"});

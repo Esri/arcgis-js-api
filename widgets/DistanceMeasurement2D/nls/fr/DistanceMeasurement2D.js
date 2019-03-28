@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Mesurer",hint:"Commencez les mesures en cliquant sur la carte pour placer le premier point",unsupported:"La mesure de la distance 2D est uniquement prise en charge dans la vue cartographique.",distance:"Distance",newMeasurement:"Nouvelle mesure",mode:"Mode",modes:{auto:"Automatique",planar:"plane",geodesic:"Géodésique"},unit:"Unité",units:{metric:"Métriques",imperial:"Impériales",kilometers:"Kilomètres",meters:"Mètres",miles:"Milles",inches:"Pouces",feet:"Pieds",yards:"Yards","nautical-miles":"Milles nautiques","us-feet":"Pieds (US)","degrees-minutes-seconds":"DMS",degrees:"Degrés"}});

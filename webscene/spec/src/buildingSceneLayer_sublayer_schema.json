@@ -28,6 +28,15 @@
         }
       ]
     },
+    "listMode": {
+      "type": "string",
+      "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
+      "enum": [
+        "show",
+        "hide",
+        "hide-children"
+      ]
+    },
     "opacity": {
       "type": "number",
       "description": "The degree of transparency applied to the sublayer on the client side, where 0 is full transparency and 1 is no transparency. This is multiplied with the opacity of the containing layers.",

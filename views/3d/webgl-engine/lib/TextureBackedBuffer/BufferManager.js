@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","./ManagedTextureBackedBuffer"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var u=function(){function e(e,t){void 0===t&&(t=1),this.rctx=e,this.fieldCount=t,this.buffers=[]}return e.prototype.garbageCollect=function(){this.buffers=this.buffers.filter(function(e){return 0!==e.activeCount||(e.dispose(),!1)})},e.prototype.getBuffer=function(e){for(var t=0,u=this.buffers;t<u.length;t++){var f=u[t];if(f.availableCount>=e)return f}if(e>r.MAX_INDEX_COUNT)return null;var n=new r.ManagedTextureBackedBuffer(this.rctx,this.fieldCount);return this.buffers.push(n),n},e.prototype.updateTextures=function(){for(var e=0,t=this.buffers;e<t.length;e++){t[e].textureBuffer.updateTexture()}},e}();t.BufferManager=u});

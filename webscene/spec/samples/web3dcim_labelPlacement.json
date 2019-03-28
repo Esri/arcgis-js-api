@@ -110,48 +110,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687c3b-layer5",
@@ -258,48 +217,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687c43-layer6",
@@ -406,48 +324,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687cd3-layer11",
@@ -554,48 +431,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687ccc-layer10",
@@ -702,48 +538,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         }
       ],
       "layerType": "GroupLayer",
@@ -864,48 +659,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687d29-layer12",
@@ -1017,48 +771,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687d34-layer13",
@@ -1170,48 +883,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687e49-layer14",
@@ -1323,48 +995,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687ee5-layer15",
@@ -1476,48 +1107,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         }
       ],
       "layerType": "GroupLayer",
@@ -1639,48 +1229,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad687fab-layer17",
@@ -1792,48 +1341,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad688076-layer18",
@@ -1945,48 +1453,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad68816d-layer20",
@@ -2098,48 +1565,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         },
         {
           "id": "14bad6880f7-layer19",
@@ -2251,48 +1677,7 @@
               }
             }
           },
-          "showLabels": true,
-          "popupInfo": {
-            "showAttachments": false,
-            "popupElements": [
-              {
-                "type": "fields"
-              }
-            ],
-            "fieldInfos": [
-              {
-                "fieldName": "idInt",
-                "label": "idInt",
-                "visible": true
-              },
-              {
-                "fieldName": "id",
-                "label": "id",
-                "visible": true
-              },
-              {
-                "fieldName": "style",
-                "label": "style",
-                "visible": true
-              },
-              {
-                "fieldName": "filename",
-                "label": "filename",
-                "visible": true
-              },
-              {
-                "fieldName": "styleitemname",
-                "label": "styleitemname",
-                "visible": true
-              },
-              {
-                "fieldName": "ORIG_FID",
-                "label": "ORIG_FID",
-                "visible": true
-              }
-            ],
-            "title": "drivers4"
-          }
+          "showLabels": true
         }
       ],
       "layerType": "GroupLayer",
@@ -2332,9 +1717,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.13",
+  "version": "1.15",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.10",
+  "authoringAppVersion": "4.11",
   "initialState": {
     "environment": {
       "lighting": {

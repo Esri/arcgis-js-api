@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Mõõda",hint:"Mõõtmise alustamiseks klõpsake kohta, kuhu soovite asetada oma esimese punkti",unsupported:"2D-kauguse mõõtmist toetab ainult MapView.",distance:"Vahemaa",newMeasurement:"Uus mõõtmine",mode:"Režiim",modes:{auto:"Automaatne",planar:"Tasapinnaline",geodesic:"Geodeetiline"},unit:"Ühik",units:{metric:"Meetriline",imperial:"Briti",kilometers:"km",meters:"m",miles:"mi",inches:"Tolli",feet:"ft",yards:"Jardi","nautical-miles":"Meremiili","us-feet":"Jalga (USA)","degrees-minutes-seconds":"DMS",degrees:"kraadid"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Skiltis",cancel:"Atšaukti",hint:"Pradėkite dalyti į skiltis spustelėdami ir vilkdami ant scenos paviršiaus",excludeHint:"Jei norite neįtraukti sluoksnio į skiltį, pasirinkite jį rodinyje",unsupported:"Skiltis nepalaikoma žemėlapio peržiūroje.",multipleDisabled:"Vienu metu gali būti aktyvi tik viena skiltis",newSlice:"Nauja skiltis",excludedLayers:"Neįtraukti sluoksniai",pickLayer:"Pasirinkite sluoksnį iš rodinio",excludeLayer:"Neįtraukti sluoksnio į skiltį",includeLayer:"Įtraukti sluoksnį į skiltį",ground:"Paviršius"});

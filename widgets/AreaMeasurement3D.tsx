@@ -230,7 +230,7 @@ class AreaMeasurement3D extends declared(Widget) {
     const isActive = this.viewModel.active;
     const isDisabled = this.viewModel.state === "disabled";
     const isReady = this.viewModel.state === "ready";
-    const isMeasuring = this.viewModel.state === "measuring";
+    const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
     const measurement = this.viewModel.measurement;
 
     const hintNode =
@@ -302,17 +302,16 @@ class AreaMeasurement3D extends declared(Widget) {
     const unitsSelectNode = (
       <div class={CSS.unitsSelectWrapper}>
         <select class={CSS.unitsSelect} id={unitsId} onchange={this._changeUnit} bind={this}>
-          {this.viewModel.unitOptions.map(
-            (unit) =>
-              unit === this.viewModel.unit ? (
-                <option key={unit} value={unit} selected>
-                  {i18n.units[unit]}
-                </option>
-              ) : (
-                <option key={unit} value={unit}>
-                  {i18n.units[unit]}
-                </option>
-              )
+          {this.viewModel.unitOptions.map((unit) =>
+            unit === this.viewModel.unit ? (
+              <option key={unit} value={unit} selected>
+                {i18n.units[unit]}
+              </option>
+            ) : (
+              <option key={unit} value={unit}>
+                {i18n.units[unit]}
+              </option>
+            )
           )}
         </select>
       </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({streets:"Ielas",satellite:"Attēli",hybrid:"Attēli ar nosaukumiem",terrain:"Reljefs ar nosaukumiem",topo:"Topogrāfiskā",gray:"Gaiši pelēka pamatne","dark-gray":"Tumši pelēka pamatne",oceans:"Okeāni","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Pasaules ielu karte (nakts)","streets-relief-vector":"Pasaules ielu karte (ar reljefu)","streets-navigation-vector":"Pasaules navigācijas karte"});

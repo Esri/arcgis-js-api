@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/libs/gl-matrix-2/gl-matrix"],function(e,v,o){var r;return function(e){e.Default={vvSizeEnabled:!1,vvSizeMinSize:o.vec3f32.fromValues(1,1,1),vvSizeMaxSize:o.vec3f32.fromValues(100,100,100),vvSizeOffset:o.vec3f32.fromValues(0,0,0),vvSizeFactor:o.vec3f32.fromValues(1,1,1),vvSizeValue:o.vec3f32.fromValues(1,1,1),vvColorEnabled:!1,vvColorValues:[0,0,0,0,0,0,0,0],vvColorColors:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],vvSymbolAnchor:[0,0,0],vvSymbolRotation:[0,0,0]}}(r||(r={})),r});
+define(["require","exports","../../../../core/libs/gl-matrix-2/mat4f64","../../../../core/libs/gl-matrix-2/vec3f32"],function(e,v,a,i){var o;return function(e){e.Default={vvSizeEnabled:!1,vvSizeMinSize:i.vec3f32.fromValues(1,1,1),vvSizeMaxSize:i.vec3f32.fromValues(100,100,100),vvSizeOffset:i.vec3f32.fromValues(0,0,0),vvSizeFactor:i.vec3f32.fromValues(1,1,1),vvSizeValue:i.vec3f32.fromValues(1,1,1),vvColorEnabled:!1,vvColorValues:[0,0,0,0,0,0,0,0],vvColorColors:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],vvOpacityEnabled:!1,vvOpacityValues:[0,0,0,0,0,0,0,0],vvOpacityOpacities:[1,1,1,1,1,1,1,1],vvSymbolAnchor:[0,0,0],vvSymbolRotationMatrix:a.mat4f64.create()}}(o||(o={})),o});

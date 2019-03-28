@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Seccionar",cancel:"Cancelar",hint:"Começar a seccionar clicando e arrastando sobre uma superfície na cena",excludeHint:"Recolher uma camada na vista para a excluir da secção",unsupported:"A função Seccionar não é suportada em MapView.",multipleDisabled:"Apenas pode estar ativa uma secção de cada vez.",newSlice:"Nova secção",excludedLayers:"Camadas excluídas",pickLayer:"Recolher uma camada da vista",excludeLayer:"Excluir camada da secção",includeLayer:"Incluir camada na secção",ground:"Chão"});

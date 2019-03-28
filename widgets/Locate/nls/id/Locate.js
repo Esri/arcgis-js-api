@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Temukan",title:"Temukan lokasi saya",currentLocation:"Lokasi saat ini",timestamp:"Stempel waktu",latitude:"Garis Lintang",longitude:"Garis Bujur",accuracy:"Akurasi",altitude:"Ketinggian",altitudeAccuracy:"Akurasi ketinggian",heading:"Heading",speed:"Kecepatan"});

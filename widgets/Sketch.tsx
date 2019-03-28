@@ -1,6 +1,6 @@
 /**
- * Sketch widget provides a simple UI for creating and updating graphics on the 2D {@link module:esri/views/MapView}. This
- * significantly minimizes the code required for working with graphics in the view.
+ * Sketch widget provides a simple UI for creating and updating graphics on a {@link module:esri/views/MapView} or
+ * a {@link module:esri/views/SceneView}. This significantly minimizes the code required for working with graphics in the view.
  * It is intended to be used with {@link module:esri/Graphic graphics} stored in its [layer](#layer) property.
  *
  * By default, the Sketch widget provides out-of-the-box tools for creating and updating graphics with {@link module:esri/geometry/Point point},
@@ -8,6 +8,15 @@
  * and {@link module:esri/geometry/Polygon circle} geometries.
  *
  * [![sketch-geometries](../../assets/img/apiref/widgets/sketch/sketch-widget.gif)](../sample-code/sketch-geometries/index.html)
+ *
+ * ::: esri-md class="panel trailer-1"
+ * **Known Limitations**
+ *
+ * * Graphics with polyline or polygon geometries can not be rotated or scaled in a {@link module:esri/views/SceneView}.
+ * * Graphics with geometries where {@link module:esri/geometry/Geometry#hasZ hasZ} is `true` will be ignored by [update()](#update)
+ *   in a {@link module:esri/views/SceneView}.
+ * * Multipoint geometry can only be created in a {@link module:esri/views/MapView}.
+ * :::
  *
  * >>> esri-read-more
  * <a name="create-graphics"></a>
@@ -30,7 +39,7 @@
  * C | Completes the polyline or polygon graphic sketch. |
  * Z | Incrementally undo actions recorded in the stack. |
  * R | Incrementally redo actions recorded in the stack. |
- * Ctrl+Left-click or drag | Forces new vertices to be parallel or perpendicular to the previous vertex. |
+ * Spacebar+Left-drag | Pan the view while creating a polyline or polygon graphic.
  * Left-click on the first vertex | Completes the polygon graphic sketch. |
  *
  * #### Creating polygon graphics with predefined shapes
@@ -53,26 +62,36 @@
  *
  * Gesture | Action | Example |
  * ---------|---------|----------|
- * Left-click a graphic | Select a graphic to move, rotate or scale.| ![Select a Graphic](../../assets/img/apiref/widgets/sketch/sketch-box-mode.gif) |
- * Shift+Left-click graphics | Select multiple graphics to move, rotate or scale.| ![Select graphics](../../assets/img/apiref/widgets/sketch/sketch-graphics.gif) |
- * Drag the graphic | Move the graphic.| ![Drag a Geometry](../../assets/img/apiref/widgets/sketch/sketch-box-move.gif) |
- * Drag the graphic by `rotate` handle | Rotate the graphic.| ![Rotate a Graphic](../../assets/img/apiref/widgets/sketch/sketch-rotate.gif) |
- * Drag the graphic by `scale` handle | Scale the graphic.| ![Scale a graphic](../../assets/img/apiref/widgets/sketch/sketch-scale.gif) |
- * Z | Incrementally undo actions recorded in the stack. | ![Undo update](../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif) |
- * R| Incrementally redo actions recorded in the stack. | ![Redo update](../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif) |
- * Left-click on view (not the graphic) | Complete the graphic update. | ![Sketch Update Complete](../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif) |
+ * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-box-mode.gif" width="400px"> |
+ * Shift+Left-click graphics | Select multiple graphics to move, rotate or scale.| <img alt="Select graphics" src="../../assets/img/apiref/widgets/sketch/sketch-graphics.gif" width="400px"> |
+ * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-box-move.gif" width="400px"> |
+ * Drag rotate handle | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-rotate.gif" width="400px"> |
+ * Drag scale handle | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-scale.gif" width="400px"> |
+ * Z | Incrementally undo actions recorded in the stack. | <img alt="Undo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
+ * R | Incrementally redo actions recorded in the stack. | <img alt="Redo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
+ * Left-click on view (not the graphic) | Complete the graphic update. | <img alt="Sketch update complete" src="../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif" width="400px"> |
  *
- * The following update operations can be performed on a single graphic.
+ * The following update operations can be performed on a single polyline or polygon graphic:
+ *
  * Gesture | Action | Example |
  * ---------|---------|----------|
- * Left-click the graphic | Select the graphic to move or reshape.| ![Select a Graphic](../../assets/img/apiref/widgets/sketch/sketch-reshape-mode.gif) |
- * Drag the graphic | Move the graphic.| ![Drag a Graphic](../../assets/img/apiref/widgets/sketch/sketch-drag.gif) |
- * Left-click on a ghost vertex| Add a new vertex. | ![Add a Vertex](../../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif) |
- * Left-click on a vertex| Select a vertex. | ![Select a Vertex](../../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif) |
- * Ctrl+Left-click on vertices | Select or unselect multiple vertices. | ![Select Vertices](../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif) |
- * Drag the selected vertex | Move a vertex or vertices. | ![Drag vertices](../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif) |
- * Right-click on a vertex | Delete a vertex. | ![Delete a Vertex](../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif) |
- * Select multiple vertices and press `Backspace` or `Delete` button | Delete multiple vertices. | ![Delete Vertices](../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif) |
+ * Left-click on a graphic | Select a graphic to move or reshape.| <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-reshape-mode.gif" width="400px"> |
+ * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-drag.gif" width="400px"> |
+ * Left-click on a ghost vertex| Add a new vertex. | <img alt="Add a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif" width="400px"> |
+ * Left-click on a vertex| Select a vertex. | <img alt="Select a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif" width="400px"> |
+ * Ctrl+Left-click on vertices | Select or unselect multiple vertices. | <img alt="Select vertices" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
+ * Drag vertex | Move the selected vertex or vertices. | <img alt="Drag vertices" src="../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif" width="400px"> |
+ * Right-click on a vertex | Delete a vertex. | <img alt="Delete a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif" width="400px"> |
+ * Select multiple vertices and press `Backspace` or `Delete` button | Delete multiple vertices. | <img alt="Delete vertices" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
+ *
+ * The following update operations can be performed on a single graphic with point geometry in a {@link module:esri/views/SceneView}, if the graphic uses a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}:
+ *
+ * Gesture | Action | Example |
+ * ---------|---------|----------|
+ * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-update-point-3D.gif" width="400px"> |
+ * Drag inner handle | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-move-point.gif" width="400px"> |
+ * Drag outer handle sideways | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-rotate-point.gif" width="400px"> |
+ * Drag outer handle inwards or outwards | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-scale-point.gif" width="400px"> |
  *
  * >>>
  *
@@ -130,6 +149,7 @@ import GraphicsLayer = require("esri/widgets/../layers/GraphicsLayer");
 
 // esri.views
 import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -141,6 +161,8 @@ import SketchViewModel = require("esri/widgets/Sketch/SketchViewModel");
 import {
   CreateEvent,
   CreateOptions,
+  CreateTool,
+  DeleteEvent,
   SketchTool,
   State,
   UpdateEvent,
@@ -191,6 +213,10 @@ const CSS = {
 
 type Layout = "vertical" | "horizontal";
 
+interface Sketch extends Widget {
+  on(type: "delete", listener: (event: DeleteEvent) => void): IHandle;
+}
+
 @subclass("esri.widgets.Sketch")
 class Sketch extends declared(Widget) {
   //--------------------------------------------------------------------------
@@ -198,6 +224,19 @@ class Sketch extends declared(Widget) {
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
+
+  /**
+   * Fires when a user deletes selected graphics by clicking the `Delete feature` button on the Sketch widget.
+   *
+   * @since 4.11
+   * @event module:esri/widgets/Sketch#delete
+   * @property {module:esri/Graphic[]} graphics - An array of deleted graphics.
+   * @property {string} tool - Name of the tool that was active when graphics are deleted.
+   *
+   * **Possible Values:** | move | reshape | transform |
+   *
+   * @property {string} type - The type of the event. For this event, the type is always `delete`.
+   */
 
   /**
    * Fires when a user starts sketching a graphic, is actively sketching a graphic and completes sketching a graphic.
@@ -261,6 +300,7 @@ class Sketch extends declared(Widget) {
    *
    * **Possible Values:**  move | transform | reshape
    *
+   * @property {string} type - The type of the event. For this event, the type is always `update`.
    * @property {module:esri/widgets/Sketch~UpdateToolEventInfo} toolEventInfo - Returns additional information associated
    * with the update operation that is taking place for the selected graphics and what stage it is at. Value of this parameter
    * changes to `null` when the `update` event's `state` changes to `complete`.
@@ -606,23 +646,24 @@ class Sketch extends declared(Widget) {
    *
    * @name defaultUpdateOptions
    * @instance
+   * @since 4.11
    *
-   * @property {string} tool - Name of update tool. The default tool is `transform`.
-   * @property {module:esri/Graphic[]} graphics - An array of graphics to be updated. Only graphics added to [layer](#layer) property can be updated.
-   * @property {boolean} [enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics.
-   * @property {boolean} [enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics.
+   * @property {string} [tool] - Name of the update tool. The default tool is `transform` for graphics with polygon and polyline geometries and `move` for graphics with point and multipoint geometries.
+   *                             However, if a graphic with point geometry uses a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}, the default tool is `transform`.
+   * @property {boolean} [enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
+   * @property {boolean} [enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
+   * @property {boolean} [multipleSelectionEnabled=true] - Indicates whether more than one selection can be made at once. This pertains to shift+click interaction with the `transform` tool.
    * @property {boolean} [preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
-   * must be set `true` when setting this property to `true`.
+   * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform` and is always `true` when transforming points that use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}.
    * @property {boolean} [toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
    * @instance
    * @type {Object}
    * @readonly
-   * @ignore
    *
    */
   @aliasOf("viewModel.defaultUpdateOptions")
   @renderable()
-  defaultUpdateOptions: UpdateOptions;
+  defaultUpdateOptions: UpdateOptions = null;
 
   //----------------------------------
   //  iconClass
@@ -634,7 +675,6 @@ class Sketch extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -721,15 +761,15 @@ class Sketch extends declared(Widget) {
   //----------------------------------
 
   /**
-   * A reference to the {@link module:esri/views/MapView}. Set this to link the Sketch widget to a specific view.
+   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the Sketch widget to a specific view.
    *
    * @name view
    * @instance
-   * @type {module:esri/views/MapView}
+   * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: MapView = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -775,8 +815,6 @@ class Sketch extends declared(Widget) {
    * Create a graphic with a geometry specified in `tool`. When first vertex of the graphic is added,
    * [create](#event:create) event will start firing.
    *
-   * **Note:** Creating a circle geometry does not work in all spatial references.
-   *
    * @since 4.10
    * @method create
    * @instance
@@ -815,14 +853,15 @@ class Sketch extends declared(Widget) {
    */
 
   @aliasOf("viewModel.create")
-  create(options: CreateOptions): void {}
+  create(tool: CreateTool, options?: CreateOptions): void {}
 
   /**
    * Initializes an update operation for the specified graphic(s) and fires [update](#event:update) event.
    *
+   * @since 4.10
    * @method update
    * @instance
-   * @param {module:esri/Graphic[]} graphics - An array of graphics to be updated. Only graphics added to the Sketch widget's [layer](#layer) property can be updated.
+   * @param {module:esri/Graphic | module:esri/Graphic[]} graphics - A graphic or an array of graphics to be updated. Only graphics added to SketchViewModel's [layer](#layer) property can be updated.
    * @param {Object} [updateOptions] - Update options for the graphics to be updated.
    * @param {string} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics.
    *
@@ -830,15 +869,17 @@ class Sketch extends declared(Widget) {
    *
    * Value | Description |
    * ----- | ----------- |
-   * transform | The *default* tool for graphics with {@link module:esri/geometry/Polygon polygon} and {@link module:esri/geometry/Polyline polyline} geometries. It allows one or multiple graphics to be scaled, rotated and moved by default. Its default behavior can be changed by setting `enableRotation`, `enableScaling` or `preserveAspectRatio` properties when calling `update` method or setting them on [defaultUpdateOptions](#defaultUpdateOptions) property when the Sketch widget initializes. This tool does not apply if selected graphics have only {@link module:esri/geometry/Point point} geometries.
-   * reshape | It allows the entire graphic or individual vertices of the graphic to be moved. Vertices can be added or removed. This tool can only be used with one graphic and the graphic's geometry has to be {@link module:esri/geometry/Polygon polygon} or {@link module:esri/geometry/Polyline polyline}.
-   * move | The *default* tool for graphics with {@link module:esri/geometry/Point point} geometries. It should be used for specific cases where you just want to move selected `polygon` and `polyline` graphics without additional options. Additionally, the `move` tool does not support toggling to different modes, since `move` operation is already built into both `transform` and `reshape` tools by default.
+   * transform | This is the *default* tool for graphics with a {@link module:esri/geometry/Polygon polygon} geometry, {@link module:esri/geometry/Polyline polyline} geometry or graphics that use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer} with a {@link module:esri/geometry/Point point} geometry. It allows one or multiple graphics to be scaled, rotated and moved by default. Its default behavior can be changed by setting the `enableRotation`, `enableScaling` or `preserveAspectRatio` arguments when calling the `update` method or setting them on the [defaultUpdateOptions](#defaultUpdateOptions) property when the Sketch widget initializes.
+   * reshape | This tool allows the entire graphic or individual vertices of the graphic to be moved. Vertices can be added or removed. This tool can only be used with a single graphic that has a {@link module:esri/geometry/Polygon polygon} or {@link module:esri/geometry/Polyline polyline} geometry.
+   * move | This is the *default* tool for graphics with a {@link module:esri/geometry/Point point} geometry that do not use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}. It should be used for specific cases where you just want to move selected `polygon` and `polyline` graphics without additional options. Additionally, the `move` tool does not support toggling to different modes, since the `move` operation is built into both the `transform` and `reshape` tools by default.
    *
    * @param {boolean} [updateOptions.enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
    * @param {boolean} [updateOptions.enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
    * @param {boolean} [updateOptions.preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
-   * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform`.
+   * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform` and is always `true` when transforming points that use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}.
    * @param {boolean} [updateOptions.toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
+   *
+   * @return {Promise<void>} Resolves when the requested update tool has been loaded and is ready to use.
    *
    * @example
    * // start update operation for the selected graphic
@@ -887,8 +928,9 @@ class Sketch extends declared(Widget) {
    *   }
    * }
    */
-  @aliasOf("viewModel.update")
-  update(options: UpdateOptions): void {}
+  update(graphicOrGraphics: Graphic | Graphic[], options?: UpdateOptions): Promise<void> {
+    return this.viewModel.update(graphicOrGraphics, options);
+  }
 
   /**
    * Completes the active operation and fires the [create](#event:create) or [update](#event:update) event
@@ -1222,9 +1264,13 @@ class Sketch extends declared(Widget) {
 
   private _deleteGraphic(): void {
     if (this.state === "active") {
-      const graphics = this.updateGraphics.toArray();
-      this.layer.removeMany(graphics);
-      this.reset();
+      const { activeTool, layer, updateGraphics } = this;
+      const graphics = updateGraphics.toArray();
+
+      layer.removeMany(graphics);
+
+      this.reset(); // Resets 'activeTool'
+      this.emit("delete", { graphics, tool: activeTool, type: "delete" });
     }
   }
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Κατάτμηση",cancel:"Ακύρωση",hint:"Ξεκινήστε να κάνετε κατάτμηση κάνοντας κλικ και σύροντας πάνω σε μια επιφάνεια της 3D προβολής",excludeHint:"Επιλέξτε ένα θεματικό επίπεδο στην προβολή για να το αποκλείσετε από την κατάτμηση",unsupported:"Η κατάτμηση δεν υποστηρίζεται στο MapView.",multipleDisabled:"Μόνο ένα τμήμα μπορεί να είναι ενεργό κάθε φορά",newSlice:"Νέα κατάτμηση",excludedLayers:"Εξαιρούμενα θεματικά επίπεδα",pickLayer:"Επιλογή θεματικού επιπέδου από την προβολή",excludeLayer:"Αποκλεισμός θεματικού επιπέδου από την κατάτμηση",includeLayer:"Συμπερίληψη θεματικού επιπέδου στην κατάτμηση",ground:"Έδαφος"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t,i,n){var r=e.call(this,"esri.views.3d.input.handlers.SingleKeyResetTilt",i,n)||this;return r.view=t,r.key=i,r}return i(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0})},t}(n.SingleKey);t.SingleKeyResetTilt=r});

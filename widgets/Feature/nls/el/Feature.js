@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({attach:"Συνημμένα",fields:"Πεδία",fieldsSummary:"Λίστα γνωρισμάτων και τιμών",media:"Πολυμέσα",next:"Επόμενο",numCharts:"Αριθμός γραφημάτων",numImages:"Αριθμός εικόνων",noTitle:"Χωρίς τίτλο",previous:"Προηγούμενο",lastEdited:"Τελευταία επεξεργασία στις {date}.",lastCreated:"Δημιουργήθηκε στις {date}.",lastEditedByUser:"Τελευταία επεξεργασία από τον χρήστη {user} στις {date}.",lastCreatedByUser:"Δημιουργήθηκε από τον χρήστη {user} στις {date}."});
+define({attach:"Συνημμένα",fields:"Πεδία",fieldsSummary:"Λίστα γνωρισμάτων και τιμών",media:"Πολυμέσα",next:"Επόμενο",noTitle:"Χωρίς τίτλο",previous:"Προηγούμενο",lastEdited:"Τελευταία επεξεργασία στις {date}.",lastCreated:"Δημιουργήθηκε στις {date}.",lastEditedByUser:"Τελευταία επεξεργασία από τον χρήστη {user} στις {date}.",lastCreatedByUser:"Δημιουργήθηκε από τον χρήστη {user} στις {date}."});

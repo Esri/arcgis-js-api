@@ -237,7 +237,6 @@ class Locate extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -407,7 +406,7 @@ class Locate extends declared(Widget) {
         aria-label={title}
         title={title}
       >
-        <span aria-hidden="true" class={this.classes(CSS.icon, CSS.locate, iconClasses)} />
+        <span aria-hidden="true" class={this.classes(CSS.icon, iconClasses)} />
         <span class={CSS.text}>{i18n.title}</span>
       </div>
     );

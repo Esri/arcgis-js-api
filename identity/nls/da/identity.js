@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({lblItem:"element",title:"Log ind",info:"Log ind for at få adgang til elementet på {server} {resource}",oAuthInfo:"Log ind for at fortsætte.",lblUser:"Brugernavn:",lblPwd:"Adgangskode:",lblOk:"OK",lblSigning:"Logger ind...",lblCancel:"Annullér",errorMsg:"Ugyldigt brugernavn/adgangskode. Prøv igen.",invalidUser:"Indtastet brugernavn eller adgangskode er ikke korrekt.",forbidden:"Brugernavn og adgangskode er gyldigt, men du har ikke adgang til denne resource.",noAuthService:"Kan ikke få adgang til godkendelsestjenesten."});
+define({lblItem:"element",title:"Log ind",info:"Log ind for at få adgang til elementet på {server} {resource}",oAuthInfo:"Log ind på {server}.",lblUser:"Brugernavn:",lblPwd:"Adgangskode:",lblOk:"OK",lblSigning:"Logger ind...",lblCancel:"Annullér",errorMsg:"Ugyldigt brugernavn/adgangskode. Prøv igen.",invalidUser:"Indtastet brugernavn eller adgangskode er ikke korrekt.",forbidden:"Brugernavn og adgangskode er gyldigt, men du har ikke adgang til denne resource.",noAuthService:"Kan ikke få adgang til godkendelsestjenesten."});

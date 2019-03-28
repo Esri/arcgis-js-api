@@ -1,5 +1,6 @@
+#include <util/enableExtensions.glsl>
 #include <util/fsPrecision.glsl>
-#include <renderer/ssao/common.glsl>
+#include <util/depth.glsl>
 
 #ifndef SAMPLES
 #define SAMPLES 4
@@ -77,7 +78,7 @@ void main(void) {
   //float randomPatternRotationAngle = float((3 * ssC.x ^ ssC.y + ssC.x * ssC.y) * 10);
   vec3 fres = normalize((texture2D(rnm, uv * rnmScale).xyz * 2.0) - vec3(1.0));
 
-  float currentPixelDepth = getDepthLinear(depthMap, nearFar, uv);
+  float currentPixelDepth = linearDepth(depthMap, uv, nearFar);
 
   if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
     gl_FragColor = vec4(0.0);
@@ -118,7 +119,7 @@ void main(void) {
     vec2 tc = vec2(gl_FragCoord.xy + offset);
     if (tc.x < 0.0 || tc.y < 0.0 || tc.x > screenDimensions.x || tc.y > screenDimensions.y) continue;
     vec2 tcTap = tc/screenDimensions;
-    float occluderFragmentDepth = getDepthLinear(depthMap, nearFar, tcTap);
+    float occluderFragmentDepth = linearDepth(depthMap, tcTap, nearFar);
 
     if (isTerrain) {
       bool isTerrainTap = texture2D(normalMap, tcTap).w<0.5;

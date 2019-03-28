@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({empty:"- κενό -",validationErrors:{cannotBeNull:"Εισαγάγετε μια τιμή",outsideRange:"Η τιμή πρέπει να είναι από {min} έως {max}.",invalidCodedValue:"Η τιμή πρέπει να είναι μία από τις παρατιθέμενες.",invalidType:"Μη έγκυρη τιμή"}});

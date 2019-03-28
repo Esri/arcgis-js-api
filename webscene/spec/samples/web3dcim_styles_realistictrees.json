@@ -31,47 +31,6 @@
             "styleName": "EsriRealisticTreesStyle"
           }
         }
-      },
-      "popupInfo": {
-        "showAttachments": false,
-        "popupElements": [
-          {
-            "type": "fields"
-          }
-        ],
-        "fieldInfos": [
-          {
-            "fieldName": "OBJECTID",
-            "label": "OBJECTID",
-            "visible": true
-          },
-          {
-            "fieldName": "id",
-            "label": "id",
-            "visible": true
-          },
-          {
-            "fieldName": "style",
-            "label": "style",
-            "visible": true
-          },
-          {
-            "fieldName": "filename",
-            "label": "filename",
-            "visible": true
-          },
-          {
-            "fieldName": "styleitemname",
-            "label": "styleitemname",
-            "visible": true
-          },
-          {
-            "fieldName": "ORIG_FID",
-            "label": "ORIG_FID",
-            "visible": true
-          }
-        ],
-        "title": "drivers4"
       }
     }
   ],
@@ -108,9 +67,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.13",
+  "version": "1.15",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.10",
+  "authoringAppVersion": "4.11",
   "initialState": {
     "environment": {
       "lighting": {

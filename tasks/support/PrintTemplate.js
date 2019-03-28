@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 /**
        * Defines the layout elements. It's an object with the following properties:
@@ -32,8 +32,8 @@
        *
        * **Possible Values:** `Miles` | `Kilometers` | `Meters` | `Feet`
        * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of {@link module:esri/tasks/support/LegendLayer} containing the id's of the layers that
-       * will be included in the legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) will be present in the legend. To specify
-       * that no layers will be included in the legend set `legendLayer = []`.
+       * will be included in the legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) except {@link module:esri/layers/GraphicsLayer}
+       * will be present in the legend. To specify that no layers will be included in the legend set `legendLayer = []`.
        * @property {Object[]} customTextElements - An array of name-value pairs. Use this property to update the text for custom text elements
        * on the page layout. Values must be strings.
        *

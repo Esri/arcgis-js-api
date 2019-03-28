@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","./meshUtils/georeference","./meshUtils/merge"],function(e,r,t,n,o,c,i){function u(r,c,i){return n(this,void 0,void 0,function(){var n;return t(this,function(t){switch(t.label){case 0:return[4,o.create(function(r){return e(["./meshUtils/elevation"],r)})];case 1:return n=t.sent(),[4,n.create(r,c,i)];case 2:return[2,t.sent()]}})})}function s(e,r,t){return c.georeference(e,r,t)}function f(e,r,t){return c.ungeoreference(e,r,t)}function a(e){return i.merge(e)}Object.defineProperty(r,"__esModule",{value:!0}),r.createFromElevation=u,r.georeference=s,r.ungeoreference=f,r.merge=a});
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","../Mesh","./meshUtils/georeference","./meshUtils/merge"],function(e,r,n,t,o,i,c,u){function s(r,i,c){return t(this,void 0,void 0,function(){var t;return n(this,function(n){switch(n.label){case 0:return[4,o.create(function(r){return e(["./meshUtils/elevation"],r)})];case 1:return t=n.sent(),[2,t.create(r,i,c)]}})})}function f(e,r,n){return c.georeference(e,r,n)}function a(e,r,n){return c.ungeoreference(e,r,n)}function l(e){return new i(u.merge(e))}Object.defineProperty(r,"__esModule",{value:!0}),r.createFromElevation=s,r.georeference=f,r.ungeoreference=a,r.merge=l});

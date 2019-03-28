@@ -107,6 +107,27 @@
             }
           ]
         }
+      },
+      {
+        "title": "constant colorInfo",
+        "description": "visual Variable with constant color",
+        "code": {
+          "visualVariables": [
+            {
+              "type": "colorInfo",
+              "stops": [
+                {
+                  "color": [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       }
     ]
   }

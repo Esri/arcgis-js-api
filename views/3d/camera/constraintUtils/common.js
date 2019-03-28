@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/libs/gl-matrix-2/gl-matrix","../../support/mathUtils"],function(t,n,i,a){function e(t,n){return 0!=(t&n)}function r(t,n,i,a,e,r){0!==t&&(i?(r.min=Math.min(r.min,n),r.max=Math.max(r.max,n)):null!=a?(r.min-=Math.max(0,(n-r.min)*(1-a)),r.max+=Math.max(0,(n-r.max)*(1-a))):e&&(r.min-=Math.max(0,n-r.min-e),r.max+=Math.max(0,n-r.max-e)))}function o(t,n,e,r,o){return e||(e=n.viewForward),i.vec3.copy(o,e),i.vec3.scale(o,o,a.sign(i.vec3.dot(e,r))),o}Object.defineProperty(n,"__esModule",{value:!0}),n.hasConstraintType=e,n.adjustRangeForInteraction=r,n.defaultApplyOptions={selection:0,interactionType:0,interactionFactor:0,interactionStartCamera:null,interactionDirection:null,tiltMode:0},n.interactionDirectionTowardsConstraintMinimization=o});
+define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../support/mathUtils"],function(t,n,i,a){function e(t,n){return 0!=(t&n)}function o(t,n,i,a,e,o){0!==t&&(i?(o.min=Math.min(o.min,n),o.max=Math.max(o.max,n)):null!=a?(o.min-=Math.max(0,(n-o.min)*(1-a)),o.max+=Math.max(0,(n-o.max)*(1-a))):e&&(o.min-=Math.max(0,n-o.min-e),o.max+=Math.max(0,n-o.max-e)))}function r(t,n,e,o,r){return e||(e=n.viewForward),i.vec3.copy(r,e),i.vec3.scale(r,r,a.sign(i.vec3.dot(e,o))),r}Object.defineProperty(n,"__esModule",{value:!0}),n.hasConstraintType=e,n.adjustRangeForInteraction=o,n.defaultApplyOptions={selection:0,interactionType:0,interactionFactor:0,interactionStartCamera:null,interactionDirection:null,tiltMode:0},n.interactionDirectionTowardsConstraintMinimization=r});

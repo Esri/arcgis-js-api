@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./PointCloudFilter"],function(e,r,t,n,o,i,u){return function(e){function r(r){var t=e.call(this)||this;return t.includedReturns=[],t.type="return",t}t(r,e),u=r,r.prototype.clone=function(){return new u({field:this.field,includedReturns:o.clone(this.includedReturns)})};var u;return n([i.property({type:[["firstOfMany","last","lastOfMany","single"]],json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"includedReturns",void 0),n([i.property({type:["return"],json:{type:["pointCloudReturnFilter"]}})],r.prototype,"type",void 0),r=u=n([i.subclass("esri.layers.pointCloudFilters.PointCloudReturnFilter")],r)}(i.declared(u))});

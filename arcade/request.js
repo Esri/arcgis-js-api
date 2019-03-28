@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","dojo/Deferred","../request"],function(e,n,o,t){function r(e,n,r,s,i){if(void 0===i&&(i=null),null!==i){var u=new o;return i.getToken().then(function(o){try{if(e=e+="?token="+o,"get"===s.toLowerCase())t(e,{responseType:"json",query:n}).then(function(e){u.resolve(e)},function(e){u.reject(e)});else{if(n)for(var i in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(i)+"="+encodeURIComponent(n[i]);t(e,{method:"post",query:r,responseType:"json"}).then(function(e){u.resolve(e)},function(e){u.reject(e)})}}catch(e){u.reject(e)}},function(e){u.reject(e)}),u.promise}if("get"===s.toLowerCase())return t(e,{responseType:"json",query:n});if(n)for(var c in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(c)+"="+encodeURIComponent(n[c]);return t(e,{method:"post",responseType:"json",query:r})}Object.defineProperty(n,"__esModule",{value:!0}),n.serviceRequest=r});
+define(["require","exports","../request"],function(e,n,o){function r(e,n,r,t,s){if(void 0===s&&(s=null),null!==s)return s.getToken().then(function(s){if(e=e+="?token="+s,"get"===t.toLowerCase())return o(e,{responseType:"json",query:n});if(n)for(var u in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(u)+"="+encodeURIComponent(n[u]);return o(e,{method:"post",query:r,responseType:"json"})});if("get"===t.toLowerCase())return o(e,{responseType:"json",query:n});if(n)for(var u in n)e.indexOf("?")>-1?e+="&":e+="?",e+=encodeURIComponent(u)+"="+encodeURIComponent(n[u]);return o(e,{method:"post",responseType:"json",query:r})}Object.defineProperty(n,"__esModule",{value:!0}),n.serviceRequest=r});

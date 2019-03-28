@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Mitta",hint:"Aloita mittaus napsauttamalla karttaa ja sijoita ensimmäinen pisteesi",unsupported:"Kaksiulotteista alueen mittausta tuetaan vain MapView-sovelluksessa.",perimeter:"Ympärysmitta",area:"Alue",newMeasurement:"Uusi mittaus",mode:"Tila",modes:{auto:"Autom",planar:"Planaarinen",geodesic:"Geodeettinen"},unit:"Yksikkö",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä","square-kilometers":"Neliökilometriä","square-meters":"Neliömetriä","square-miles":"Neliömailia","square-inches":"Neliötuumaa","square-feet":"Neliöjalkaa","square-yards":"Neliöjaardia","square-us-feet":"Neliöjalkaa (Yhdysvallat)",acres:"Eekkeriä",ares:"Aaria",hectares:"Hehtaaria"}});

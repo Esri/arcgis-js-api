@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Géosignets",goToBookmark:"Accéder à un géosignet",noBookmarksHeading:"Aucun géosignet",noBookmarksDescription:"Les géosignets que vous ajoutez à votre carte apparaîtront ici.",disabledHeading:"Géosignets désactivés",disabledDescription:"Ajouter une vue cartographique pour activer les géosignets."});

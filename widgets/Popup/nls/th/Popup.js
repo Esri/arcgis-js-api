@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"ขยายไป",next:"ฟีเจอร์ต่อไป",previous:"ฟีเจอร์ก่อนหน้า",dock:"เรือ",undock:"ปลด",pageText:"{index} ของ {total}",selectedFeature:"ฟีเจอร์ที่เลือก",selectedFeatures:"{total} ผลลัพธ์"});
+define({zoom:"ขยายไป",next:"ฟีเจอร์ต่อไป",previous:"ฟีเจอร์ก่อนหน้า",dock:"เรือ",undock:"ปลด",pageText:"{index} ของ {total}",selectedFeature:"ฟีเจอร์ที่เลือก",selectedFeatures:"{total} ผลลัพธ์",tooManyFields:"ชั้นข้อมูลนี้มีฟิล์ดข้อมูลมากเกินไปบางคนจะไม่สามารถแสดงได้"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Preklapanje navigacije",toggle:"Prebacuj se između kretanja po slici ili rotacije u 3D"});

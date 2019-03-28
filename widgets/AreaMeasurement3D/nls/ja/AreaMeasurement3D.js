@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"計測",hint:"シーンで始点となる位置をクリックし、計測を開始します",unsupported:"SceneView では 3D の面積計測のみがサポートされています。",perimeterLength:"周長",area:"面積",unit:"単位",notApplicable:"n/a",newMeasurement:"新しい計測",units:{metric:"メートル法",imperial:"ヤード・ポンド法","square-kilometers":"平方キロメートル","square-meters":"平方メートル","square-miles":"平方マイル","square-inches":"平方インチ","square-feet":"平方フィート","square-yards":"平方ヤード","square-us-feet":"平方フィート (米国)",acres:"エーカー",ares:"アール",hectares:"ヘクタール"}});

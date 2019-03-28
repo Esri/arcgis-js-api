@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Aplica el zoom a",next:"Entitat següent",previous:"Entitat anterior",dock:"Acobla",undock:"Desacobla",pageText:"{index} de {total}",selectedFeature:"Entitat seleccionada",selectedFeatures:"{total} resultats"});
+define({zoom:"Aplica el zoom a",next:"Entitat següent",previous:"Entitat anterior",dock:"Acobla",undock:"Desacobla",pageText:"{index} de {total}",selectedFeature:"Entitat seleccionada",selectedFeatures:"{total} resultats",tooManyFields:"La capa té massa camps i alguns no es mostraran."});

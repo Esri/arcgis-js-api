@@ -84,6 +84,15 @@
   }
 }
 
+@mixin wordbreak() {
+  /* For Firefox */
+  white-space: pre-wrap;
+  word-break: break-all;
+
+  /* For Chrome and IE */
+  word-wrap: break-word;
+}
+
 @mixin measurementWidgetStyles($selector) {
   .#{$selector}__panel--error {
     color: $font-color--error;

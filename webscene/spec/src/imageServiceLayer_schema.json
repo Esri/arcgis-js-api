@@ -68,7 +68,8 @@
         },
         {
           "properties": {
-            "definitionExpression": {}
+            "definitionExpression": {},
+            "drawingInfo": {}
           },
           "additionalProperties": false
         }
@@ -111,7 +112,7 @@
     },
     "noDataInterpretation": {
       "type": "string",
-      "description": "A string value of interpretation of noData setting. Default is 'esriNoDataMatchAny' when noData is a number, and 'esriNoDataMatchAll' when noData is an array.",
+      "description": "A string value of interpretation of noData setting. Default is `esriNoDataMatchAny` when noData is a number, and `esriNoDataMatchAll` when noData is an array.",
       "enum": [
         "esriNoDataMatchAny",
         "esriNoDataMatchAll"
@@ -189,7 +190,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "",
+        "title": "Image Service with renderingRule",
         "code": {
           "operationalLayers": [
             {
@@ -217,6 +218,80 @@
                 "mosaicMethod": "esriMosaicSeamline",
                 "mosaicOperation": "MT_BLEND"
               }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Image Service with renderer",
+        "code": {
+          "operationalLayers": [
+            {
+              "id": "f297e8f3d9ad4a12997b814d767d4b23",
+              "title": "Elevation\\mn30_grd_m2_sml",
+              "visibility": false,
+              "opacity": 1,
+              "url": "https://kukui.esri.com:6443/arcgis/rest/services/Elevation/mn30_grd_m2_sml/ImageServer",
+              "layerType": "ArcGISImageServiceLayer",
+              "compressionQuality": 75,
+              "layerDefinition": {
+                "drawingInfo": {
+                  "renderer": {
+                    "type": "rasterStretch",
+                    "stretchType": "percentClip",
+                    "dra": false,
+                    "gamma": [
+                      1
+                    ],
+                    "useGamma": false,
+                    "minPercent": 0.5,
+                    "maxPercent": 0.5,
+                    "colorRamp": {
+                      "type": "multipart",
+                      "colorRamps": [
+                        {
+                          "type": "algorithmic",
+                          "algorithm": "esriCIELabAlgorithm",
+                          "fromColor": [
+                            138,
+                            29,
+                            94,
+                            255
+                          ],
+                          "toColor": [
+                            145,
+                            190,
+                            253,
+                            255
+                          ]
+                        },
+                        {
+                          "type": "algorithmic",
+                          "algorithm": "esriHSVAlgorithm",
+                          "fromColor": [
+                            255,
+                            255,
+                            115,
+                            255
+                          ],
+                          "toColor": [
+                            230,
+                            0,
+                            0,
+                            255
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "mosaicRule": {
+                "mosaicMethod": "esriMosaicCenter",
+                "ascending": true,
+                "mosaicOperation": "MT_FIRST"
+              },
+              "interpolation": "RSP_BilinearInterpolation"
             }
           ]
         }

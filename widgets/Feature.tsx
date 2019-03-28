@@ -10,7 +10,11 @@
  * @see [Feature.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Feature.scss)
  * @see [Sample - Feature widget](../sample-code/widgets-feature/index.html)
  * @see module:esri/widgets/Feature/FeatureViewModel
+ * @see module:esri/widgets/Popup
  * @see module:esri/views/ui/DefaultUI
+ * @see module:esri/PopupTemplate
+ * @see [Arcade Profiles: Popop](https://developers.arcgis.com/arcade/guide/profiles/#popup)
+ * @see [Arcade - expression language](https://developers.arcgis.com/javascript/latest/guide/arcade/index.html)
  *
  * @example
  * // Create graphic
@@ -26,7 +30,8 @@
  *
  * var feature = new Feature({
  *   graphic: graphic,
- *   view: view
+ *   map: map,
+ *   spatialReference: spatialReference
  * });
  *
  * view.ui.add(feature, "top-right");
@@ -35,54 +40,42 @@
 
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
 
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/Feature/nls/Feature";
 import { LEFT_ARROW, RIGHT_ARROW } from "dojo/keys";
 
-// dojox.charting.Chart2DConstructor
-import Chart2DConstructor = dojox.charting.Chart2DConstructor;
-
-// dojox.charting.ThemeConstructor
-import ThemeConstructor = dojox.charting.ThemeConstructor;
-
-// dojox.charting.action2d.TooltipConstructor
-import TooltipConstructor = dojox.charting.action2d.TooltipConstructor;
-
 // esri
+import { SpatialReference } from "esri/geometry";
 import Graphic = require("esri/Graphic");
+import EsriMap = require("esri/Map");
 
 // esri.core
 import { substitute } from "esri/core/lang";
-import promiseUtils = require("esri/core/promiseUtils");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers.support
 import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
+import { getExifValue } from "esri/layers/support/exifUtils";
 
-// esri.support
-import { ContentElement } from "esri/support/ContentElement";
-import FieldInfo = require("esri/support/FieldInfo");
+// esri.popup
+import { Content as ContentElement } from "esri/popup/content";
+import FieldInfo = require("esri/popup/FieldInfo");
 
-// esri.support.ContentElement
-import AttachmentsContentElement = require("esri/support/ContentElement/Attachments");
-import FieldsContentElement = require("esri/support/ContentElement/Fields");
-import MediaContentElement = require("esri/support/ContentElement/Media");
-import TextContentElement = require("esri/support/ContentElement/Text");
+// esri.popup.content
+import AttachmentsContent = require("esri/popup/content/AttachmentsContent");
+import FieldsContent = require("esri/popup/content/FieldsContent");
+import ImageMediaInfo = require("esri/popup/content/ImageMediaInfo");
+import MediaContent = require("esri/popup/content/MediaContent");
+import TextContent = require("esri/popup/content/TextContent");
 
-// esri.support.ContentElement.Media
-import ImageMedia = require("esri/support/ContentElement/Media/Image");
-import { MediaInfo, MediaChartInfo } from "esri/support/ContentElement/Media/types";
-
-// esri.support.ContentElement.Media.Chart
-import ChartValue = require("esri/support/ContentElement/Media/Chart/Value");
-
-// esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+// esri.popup.content.support
+import ChartMediaInfoValue = require("esri/popup/content/support/ChartMediaInfoValue");
+import { MediaInfo, MediaChartInfo } from "esri/popup/content/support/mediaInfoTypes";
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -92,11 +85,50 @@ import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
 
 // esri.widgets.Feature.support
 import attachmentUtils = require("esri/widgets/Feature/support/attachmentUtils");
+import { getOrientationStyles } from "esri/widgets/Feature/support/featureUtils";
 
 // esri.widgets.support
+import { AM4Charts, PieChart, XYChart } from "esri/widgets/support/chartTypes";
+import { loadChartsModule } from "esri/widgets/support/chartUtils";
 import { VNode } from "esri/widgets/support/interfaces";
 import uriUtils = require("esri/widgets/support/uriUtils");
 import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
+
+type ChartOptions = {
+  chartDiv: HTMLDivElement;
+  contentElementIndex: number;
+  type: MediaInfoChartType;
+  value: ChartMediaInfoValue;
+  chartsModule: AM4Charts;
+};
+
+interface VisibleContentElements {
+  attachments?: boolean;
+  fields?: boolean;
+  media?: boolean;
+  text?: boolean;
+}
+
+interface VisibleElements {
+  title?: boolean;
+  content?: boolean | VisibleContentElements;
+  lastEditedInfo?: boolean;
+}
+
+type MediaInfoChartType = "pie-chart" | "line-chart" | "column-chart" | "bar-chart";
+type MediaPageDirection = "previous" | "next";
+
+interface MediaInfoMap {
+  timestamp: number;
+  sourceURL: string;
+}
+
+interface AttachmentInfoOptions {
+  attachmentInfo: AttachmentInfo;
+  attachmentInfoIndex: number;
+  supportsResizeAttachments: boolean;
+  contentElement: ContentElement;
+}
 
 const CSS = {
   // common
@@ -104,14 +136,13 @@ const CSS = {
   iconLoading: "esri-icon-loading-indicator esri-rotating",
   iconLeftTriangleArrow: "esri-icon-left-triangle-arrow",
   iconRightTriangleArrow: "esri-icon-right-triangle-arrow",
-  iconMedia: "esri-icon-media",
-  iconChart: "esri-icon-chart",
   esriTable: "esri-widget__table",
   esriWidget: "esri-widget",
   // popup renderer
   base: "esri-feature",
   // containers and content
   container: "esri-feature__size-container",
+  title: "esri-feature__title",
   main: "esri-feature__main-container",
   btn: "esri-feature__button",
   icon: "esri-feature__icon",
@@ -154,46 +185,19 @@ const CSS = {
   mediaNext: "esri-feature__media-next",
   mediaNextIconLTR: "esri-feature__media-next-icon",
   mediaNextIconRTL: "esri-feature__media-next-icon--rtl",
-  mediaSummary: "esri-feature__media-summary",
-  mediaCount: "esri-feature__media-count",
-  mediaImageSummary: "esri-feature__media-image-summary",
-  mediaImageIcon: "esri-feature__media-image-icon",
   mediaChart: "esri-feature__media-chart",
-  mediaChartSummary: "esri-feature__media-chart-summary",
-  mediaChartIcon: "esri-feature__media-chart-icon",
   // loading
   loadingSpinnerContainer: "esri-feature__loading-container",
   spinner: "esri-feature__loading-spinner"
 };
 
-type MediaInfoType = "image" | "pie-chart" | "line-chart" | "column-chart" | "bar-chart";
-type MediaStat = "image" | "chart";
-type MediaPageDirection = "previous" | "next";
-
-interface MediaInfoMap {
-  timestamp: number;
-  sourceURL: string;
-}
-
-interface MediaStats {
-  total: number;
-  images: number;
-  charts: number;
-}
-
-interface ChartModules {
-  chart: any;
-  tooltip: any;
-}
-
-interface AttachmentInfoOptions {
-  attachmentInfo: AttachmentInfo;
-  attachmentInfoIndex: number;
-  supportsResizeAttachments: boolean;
-  contentElement: ContentElement;
-}
-
 const WIDGET_KEY_PARTIAL = "esri-feature";
+
+const DEFAULT_VISIBLE_ELEMENTS = {
+  title: true,
+  content: true,
+  lastEditedInfo: true
+};
 
 function buildKey(element: string, index?: number): string {
   if (index === undefined) {
@@ -231,7 +235,6 @@ class Feature extends declared(Widget) {
     this._clearMediaRefreshTimers();
     this._activeMediaMap.clear();
     this._activeMediaMap = null;
-    this._cancelChartModules();
     this._destroyCharts();
   }
 
@@ -241,11 +244,9 @@ class Feature extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _chartMap: Map<number, ChartModules> = new Map();
+  private _chartMap: Map<number, XYChart | PieChart> = new Map();
 
   private _activeMediaMap: Map<number, number> = new Map();
-
-  private _chartRequirePromise: IPromise<void> = null;
 
   private _refreshTimers: Map<number, number> = new Map();
 
@@ -253,16 +254,49 @@ class Feature extends declared(Widget) {
 
   //--------------------------------------------------------------------------
   //
-  //  Properties
+  // Type definitions
   //
   //--------------------------------------------------------------------------
 
-  //----------------------------------
-  //  contentEnabled
-  //----------------------------------
+  //--------------------------------------------------------------------------
+  //
+  // VisibleElements typedef
+  //
+  //--------------------------------------------------------------------------
 
-  @aliasOf("viewModel.contentEnabled")
-  contentEnabled: boolean = null;
+  /**
+   * @typedef module:esri/widgets/Feature~VisibleElements
+   *
+   * @property {boolean} [title] - Indicates whether the title associated with the feature displays.
+   * Default value is `true`.
+   * @property {boolean | module:esri/widgets/Feature~VisibleContentElements} [content] - Indicates
+   * whether content for the Feature displays, can also indicate the specific types of content elements
+   * by setting it via {@link module:esri/widgets/Feature~VisibleContentElements}. The default value
+   * is `true`, everything displays.
+   * @property {boolean} [lastEditInfo] - Indicates whether [lastEditInfo](esri-widgets-Feature-FeatureViewModel.html#lastEditInfo) is displayed
+   * within the feature. Default value is `true`.
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  // VisibleContentElements typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * @typedef module:esri/widgets/Feature~VisibleContentElements
+   *
+   * @property {boolean} [attachments] - Indicates whether to display any {@link module:esri/popup/content/AttachmentsContent} elements. Default is `true`.
+   * @property {boolean} [fields] - Indicates whether to display any {@link module:esri/popup/content/FieldsContent} elements. Default is `true`.
+   * @property {boolean} [media] - Indicates whether to display any {@link module:esri/popup/content/MediaContent} elements. Default is `true`.
+   * @property {boolean} [text] - Indicates whether to display any {@link module:esri/popup/content/TextContent} elements. Default is `true`.
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  //--------------------------------------------------------------------------
 
   //----------------------------------
   //  graphic
@@ -275,6 +309,7 @@ class Feature extends declared(Widget) {
    * @instance
    * @type {module:esri/Graphic}
    * @default null
+   * @see [PopupTemplate.content](esri-PopupTemplate.html#content)
    *
    * @example
    * var graphic = new Graphic({
@@ -304,37 +339,113 @@ class Feature extends declared(Widget) {
   graphic: Graphic = null;
 
   //----------------------------------
+  //  defaultPopupTemplateEnabled
+  //---------------------------------
+
+  /**
+   * Enables automatic creation of a popup template for layers
+   * that have popups enabled but no popupTemplate defined.
+   * Automatic popup templates are supported for layers that support
+   * the `createPopupTemplate` method.
+   * (Supported for {@link module:esri/layers/FeatureLayer},
+   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer},
+   * {@link module:esri/layers/StreamLayer}, and {@link module:esri/layers/ImageryLayer}).
+   *
+   * @name defaultPopupTemplateEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.11
+   */
+
+  @aliasOf("viewModel.defaultPopupTemplateEnabled")
+  defaultPopupTemplateEnabled: boolean = false;
+
+  //----------------------------------
+  //  spatialReference
+  //----------------------------------
+
+  /**
+   * The spatial reference used for [Arcade](https://developers.arcgis.com/arcade) operations.
+   *
+   * @name spatialReference
+   * @instance
+   * @since 4.11
+   * @type {module:esri/geometry/SpatialReference}
+   * @default null
+   * @see [Type system](https://developers.arcgis.com/arcade/guide/types/#featuresetcollection)
+   * @see [Arcade Profiles: Popop](https://developers.arcgis.com/arcade/guide/profiles/#popup)
+   *
+   */
+  @aliasOf("viewModel.spatialReference")
+  spatialReference: SpatialReference = null;
+
+  //----------------------------------
   //  title
   //----------------------------------
 
   /**
-   * The title for the feature.
+   * The title for the feature. You can disable this via the [visibleElements](#visibleElements) property.
    *
    * @name title
    * @instance
    * @type {string}
-   * @default null
    * @readonly
+   * @default null
    *
    */
   @aliasOf("viewModel.title")
   title: string = null;
 
   //----------------------------------
-  //  view
+  //  visibleElements
   //----------------------------------
 
   /**
-   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+   * The visible elements that are displayed within the widget's [graphic.popupTemplate.content](esri-PopupTemplate.html#content).
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   * See the {@link module:esri/PopupTemplate#content PopupTemplate.content} documentation
+   * for additional information on how these elements work.
    *
-   * @name view
+   * @name visibleElements
    * @instance
-   * @type {(module:esri/views/MapView | module:esri/views/SceneView)}
-   * @default null
+   * @type {module:esri/widgets/Feature~VisibleElements}
+   * @since 4.11
+   * @autocast { "value": "Object[]" }
+   * @see [PopupTemplate.content](esri-PopupTemplate.html#content)
    */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
-  @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
+  //----------------------------------
+  //  map
+  //----------------------------------
+
+  /**
+   * A reference to the {@link module:esri/views/View view's} {@link module:esri/Map}. Use this property
+   * when needing to get access to the underlying layers within the map. This can then be used
+   * within [Arcade](https://developers.arcgis.com/arcade) expressions.
+   *
+   * @name map
+   * @instance
+   * @type {module:esri/Map}
+   * @default null
+   * @since 4.11
+   * @see [Type system](https://developers.arcgis.com/arcade/guide/types/#featuresetcollection)
+   * @see [Arcade Profiles: Popop](https://developers.arcgis.com/arcade/guide/profiles/#popup)
+   *
+   * @example
+   * // The building footprints repreent the buildings that intersect a clicked parcel
+   * let buildingFootprints = Intersects($feature, FeatureSetByName($map, "Building Footprints"));
+   */
+  @aliasOf("viewModel.map")
+  map: EsriMap = null;
 
   //----------------------------------
   //  viewModel
@@ -371,30 +482,34 @@ class Feature extends declared(Widget) {
       </div>
     );
 
-    const { waitingForContent } = this.viewModel;
+    const { visibleElements } = this;
+    const { waitingForContent, title } = this.viewModel;
 
-    const content = waitingForContent
-      ? loadingNode
-      : [this._renderContent(), this._renderLastEditInfo()];
+    const titleNode = visibleElements.title ? <h4 class={CSS.title} innerHTML={title} /> : null;
+
+    const contentNode = !!visibleElements.content ? (
+      <div class={CSS.main}>{[this._renderContent(), this._renderLastEditInfo()]}</div>
+    ) : null;
 
     return (
       <div class={this.classes(CSS.base, CSS.esriWidget)}>
         <div class={CSS.container}>
-          <div class={CSS.main}>{content}</div>
+          {titleNode}
+          {waitingForContent ? loadingNode : contentNode}
         </div>
       </div>
     );
   }
 
   /**
-   * Paginates to a specified [media](esri-PopupTemplate.html#media) info object. For example,
-   * you may have [media](esri-PopupTemplate.html#media) content which contains
+   * Paginates to a specified [media](esri-popup-content-MediaContent.html) info object. For example,
+   * you may have [media](esri-popup-content-MediaContent.html) content which contains
    * multiple `mediaInfos`. This method allows you to specify the index of the `mediaInfos`
    * you wish to display.
    *
    * @method
-   * @param {number} contentElementIndex - The index position of the [media](esri-PopupTemplate.html#media) content element to be updated.
-   * @param {number} mediaInfoIndex - The index position of the [media](esri-PopupTemplate.html#media) info object you wish to display.
+   * @param {number} contentElementIndex - The index position of the [media](esri-popup-content-MediaContent.html) content element to be updated.
+   * @param {number} mediaInfoIndex - The index position of the [media](esri-popup-content-MediaContent.html) info object you wish to display.
    *
    */
   goToMedia(contentElementIndex: number, mediaInfoIndex: number): void {
@@ -402,10 +517,10 @@ class Feature extends declared(Widget) {
   }
 
   /**
-   * Paginates to the next [media](esri-PopupTemplate.html#media) info.
+   * Paginates to the next [media](esri-popup-content-MediaContent.html) info.
    *
    * @method
-   * @param {number} contentElementIndex - The index position of the [media](esri-PopupTemplate.html#media) content element.
+   * @param {number} contentElementIndex - The index position of the [media](esri-popup-content-MediaContent.html) content element.
    *
    */
   nextMedia(contentElementIndex: number): void {
@@ -413,11 +528,11 @@ class Feature extends declared(Widget) {
   }
 
   /**
-   * Paginates to the previous [media](esri-PopupTemplate.html#media) info in the specified
-   * [media](esri-PopupTemplate.html#media) content element.
+   * Paginates to the previous [media](esri-popup-content-MediaContent.html) info in the specified
+   * [media](esri-popup-content-MediaContent.html) content element.
    *
    * @method
-   * @param {number} contentElementIndex - The index position of the [media](esri-PopupTemplate.html#media) content element.
+   * @param {number} contentElementIndex - The index position of the [media](esri-popup-content-MediaContent.html) content element.
    */
   previousMedia(contentElementIndex: number): void {
     this._pageContentElementMedia(contentElementIndex, "previous");
@@ -429,37 +544,18 @@ class Feature extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _cancelChartModules(): void {
-    const { _chartRequirePromise } = this;
-
-    if (_chartRequirePromise) {
-      _chartRequirePromise.cancel();
-    }
-
-    this._chartRequirePromise = null;
-  }
-
-  private _destroyChart(contentElementIndex: number): void {
-    const mapItem = this._chartMap.get(contentElementIndex);
-    if (mapItem) {
-      mapItem.chart.destroy();
-      mapItem.tooltip.destroy();
-    }
-    this._chartMap.delete(contentElementIndex);
-  }
-
   private _destroyCharts(): void {
-    this._chartMap.forEach((mapItem) => {
-      mapItem.chart.destroy();
-      mapItem.tooltip.destroy();
-    });
+    this._chartMap.forEach((chart) => chart.dispose());
     this._chartMap.clear();
   }
 
   private _renderContent(): VNode {
-    this._destroyCharts();
     const content = this.viewModel.content;
     const contentKey = "content";
+
+    if (!content) {
+      return null;
+    }
 
     if (typeof content === "string") {
       return <div key={buildKey(`${contentKey}-string`)} innerHTML={content} />;
@@ -502,6 +598,15 @@ class Feature extends declared(Widget) {
     contentElement: ContentElement,
     contentElementIndex: number
   ): VNode {
+    const { visibleElements } = this;
+
+    if (
+      typeof visibleElements.content !== "boolean" &&
+      !visibleElements.content[contentElement.type]
+    ) {
+      return null;
+    }
+
     switch (contentElement.type) {
       case "attachments":
         return this._renderAttachments(contentElement, contentElementIndex);
@@ -519,9 +624,17 @@ class Feature extends declared(Widget) {
   private _renderAttachmentInfo(options: AttachmentInfoOptions): VNode {
     const { attachmentInfo, supportsResizeAttachments } = options;
 
-    const { contentType, name, url } = attachmentInfo;
+    const { contentType, exifInfo, name, url } = attachmentInfo;
 
     const thumbSize = 48;
+
+    const orientation = getExifValue({
+      exifName: "Exif IFD0",
+      tagName: "Orientation",
+      exifInfo
+    });
+
+    const imageStyles = getOrientationStyles(orientation as number);
 
     const hasSupportedImageFormat =
       supportsResizeAttachments && attachmentUtils.isSupportedImage(contentType);
@@ -545,6 +658,7 @@ class Feature extends declared(Widget) {
         <a class={CSS.attachmentsItemLink} href={url} target="_blank">
           <div class={this.classes(attachmentsItemMaskClasses, CSS.attachmentsItemMask)}>
             <img
+              styles={imageStyles}
               alt=""
               class={this.classes(attachmentsItemImageClasses, CSS.attachmentsItemImage)}
               src={thumbnail}
@@ -560,7 +674,7 @@ class Feature extends declared(Widget) {
   }
 
   private _renderAttachments(
-    contentElement: AttachmentsContentElement,
+    contentElement: AttachmentsContent,
     contentElementIndex: number
   ): VNode {
     const { displayType, attachmentInfos } = contentElement;
@@ -597,14 +711,14 @@ class Feature extends declared(Widget) {
 
   private _forceLTR(value: number | string): string {
     /*
-    * We use "&lrm;" when displaying numeric attribute field
-    * values. We can use it to force LTR text direction - regardless of whether
-    * the page is in LTR or RTL mode. Even in LTR mode, a number can be surrounded
-    * by English or RTL scripts - but we need the number to be displayed in LTR
-    * direction.
-    * When not forced, minus sign of negative numbers is displayed after
-    * the number - we want to avoid this.
-    */
+     * We use "&lrm;" when displaying numeric attribute field
+     * values. We can use it to force LTR text direction - regardless of whether
+     * the page is in LTR or RTL mode. Even in LTR mode, a number can be surrounded
+     * by English or RTL scripts - but we need the number to be displayed in LTR
+     * direction.
+     * When not forced, minus sign of negative numbers is displayed after
+     * the number - we want to avoid this.
+     */
     return `&lrm;${value}`;
   }
 
@@ -646,7 +760,7 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderFields(contentElement: FieldsContentElement, contentElementIndex: number): VNode {
+  private _renderFields(contentElement: FieldsContent, contentElementIndex: number): VNode {
     const fieldInfos = contentElement.fieldInfos;
 
     return fieldInfos ? (
@@ -747,13 +861,13 @@ class Feature extends declared(Widget) {
   private _updateMediaInfoTimestamp(sourceURL: string, contentElementIndex: number): void {
     const timestamp = Date.now();
     this._mediaInfo.set(contentElementIndex, {
-      timestamp: timestamp,
+      timestamp,
       sourceURL: this._getImageSource(sourceURL, timestamp)
     });
     this.scheduleRender();
   }
 
-  private _setRefreshTimeout(contentElementIndex: number, mediaInfo: ImageMedia): void {
+  private _setRefreshTimeout(contentElementIndex: number, mediaInfo: ImageMediaInfo): void {
     const { refreshInterval, value } = mediaInfo;
 
     if (!refreshInterval) {
@@ -769,7 +883,12 @@ class Feature extends declared(Widget) {
     this._refreshTimers.set(contentElementIndex, timerId);
   }
 
-  private _renderMediaInfoType(mediaInfo: MediaInfo, contentElementIndex: number): VNode {
+  private _renderMediaInfoType(options: {
+    mediaInfo: MediaInfo;
+    contentElementIndex: number;
+    activeMediaIndex: number;
+  }): VNode {
+    const { mediaInfo, contentElementIndex, activeMediaIndex } = options;
     const { title = "" } = mediaInfo;
 
     if (mediaInfo.type === "image") {
@@ -787,7 +906,7 @@ class Feature extends declared(Widget) {
           alt={title}
           key={
             /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
-            buildKey(`media-image-${timestamp}`, contentElementIndex)
+            buildKey(`media-image-${timestamp}-${contentElementIndex}`, activeMediaIndex)
           }
           src={imgSrc}
         />
@@ -800,155 +919,148 @@ class Feature extends declared(Widget) {
       ) : null;
 
       return linkNode ? linkNode : imageNode;
-    } else if (mediaInfo.type.indexOf("chart") !== -1) {
+    }
+    if (mediaInfo.type.indexOf("chart") !== -1) {
       return (
         <div
-          key={buildKey("chart", contentElementIndex)}
+          key={buildKey(`media-chart-${contentElementIndex}`, activeMediaIndex)}
           bind={this}
           data-media-info={mediaInfo}
           data-content-element-index={contentElementIndex}
           class={CSS.mediaChart}
           afterCreate={this._getChartDependencies}
-          afterUpdate={this._getChartDependencies}
         />
       );
     }
     return undefined;
   }
 
-  private _getChartDependencies(divElement: HTMLDivElement): void {
-    const mediaInfo = divElement["data-media-info"] as MediaChartInfo;
-
-    const contentElementIndex = divElement["data-content-element-index"] as number;
+  private _getChartDependencies(chartDiv: HTMLDivElement): void {
+    const mediaInfo = chartDiv["data-media-info"] as MediaChartInfo;
+    const contentElementIndex = chartDiv["data-content-element-index"] as number;
     const value = mediaInfo.value;
-    const theme = value.theme || "Claro";
-    const type = mediaInfo.type as MediaInfoType;
+    const type = mediaInfo.type;
 
-    let formattedTheme = theme;
-    if (typeof theme === "string") {
-      // Convert dots in legacy module names to AMD slashes
-      formattedTheme = theme.replace(/\./g, "/");
-    }
-
-    this._cancelChartModules();
-
-    this._chartRequirePromise = promiseUtils
-      .create<any[]>((resolve) =>
-        require([
-          "dojox/charting/Chart2D",
-          "dojox/charting/action2d/Tooltip",
-          `dojox/charting/themes/${formattedTheme}`
-        ], (...modules) => resolve(modules))
-      )
-      .then(([Chart2D, ChartTooltip, Theme]) => {
-        this._renderChart(
-          divElement,
-          contentElementIndex,
-          type,
-          value,
-          Chart2D,
-          ChartTooltip,
-          Theme
-        );
-        this._chartRequirePromise = null;
+    loadChartsModule().then((amCharts4Index) => {
+      this._renderChart({
+        chartDiv,
+        contentElementIndex,
+        type,
+        value,
+        chartsModule: amCharts4Index
       });
+    });
   }
 
-  private _renderChart<T extends ThemeConstructor>(
-    chartDiv: HTMLDivElement,
-    contentElementIndex: number,
-    type: MediaInfoType,
-    value: ChartValue,
-    Chart2D: Chart2DConstructor,
-    ChartTooltip: TooltipConstructor,
-    ThemeClass: T
-  ): void {
-    const chart = new Chart2D(chartDiv, {
-      margins: {
-        l: 4,
-        t: 4,
-        r: 4,
-        b: 4
+  private _createPieChart(options: ChartOptions): PieChart {
+    const { chartDiv, chartsModule: amCharts4Index } = options;
+    const { am4core, am4charts } = amCharts4Index;
+
+    const chart = am4core.create(chartDiv, am4charts.PieChart);
+
+    const series = chart.series.push(new am4charts.PieSeries());
+    series.labels.template.disabled = true;
+    series.ticks.template.disabled = true;
+    series.dataFields.value = "y";
+    series.dataFields.category = "x";
+
+    return chart;
+  }
+
+  private _createXYChart(options: ChartOptions): XYChart {
+    const { chartDiv, type, value, chartsModule: amCharts4Index } = options;
+    const { am4core, am4charts } = amCharts4Index;
+
+    const chart = am4core.create(chartDiv, am4charts.XYChart);
+
+    const enableScrollbar = value.series.length > 15;
+
+    if (type === "column-chart") {
+      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "x";
+      categoryAxis.renderer.labels.template.disabled = true;
+
+      chart.yAxes.push(new am4charts.ValueAxis());
+
+      const series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.valueY = "y";
+      series.dataFields.categoryX = "x";
+
+      chart.cursor = new am4charts.XYCursor();
+
+      if (enableScrollbar) {
+        chart.scrollbarX = new am4core.Scrollbar();
       }
-    });
-    if (ThemeClass) {
-      chart.setTheme(ThemeClass);
     }
 
-    switch (type) {
-      case "pie-chart":
-        chart.addPlot("default", {
-          type: "Pie",
-          labels: false
-        });
-        chart.addSeries("Series A", value.series);
-        break;
-      case "line-chart":
-        chart.addPlot("default", {
-          type: "Markers"
-        });
-        chart.addAxis("x", {
-          min: 0,
-          majorTicks: false,
-          minorTicks: false,
-          majorLabels: false,
-          minorLabels: false
-        });
-        chart.addAxis("y", {
-          includeZero: true,
-          vertical: true,
-          fixUpper: "minor"
-        });
-        value.series.forEach((info, idx) => {
-          info.x = idx + 1;
-        });
-        chart.addSeries("Series A", value.series);
-        break;
-      case "column-chart":
-        chart.addPlot("default", {
-          type: "Columns",
-          gap: 3
-        });
-        chart.addAxis("y", {
-          includeZero: true,
-          vertical: true,
-          fixUpper: "minor"
-        });
-        chart.addSeries("Series A", value.series);
-        break;
-      case "bar-chart":
-        chart.addPlot("default", {
-          type: "Bars",
-          gap: 3
-        });
-        chart.addAxis("x", {
-          includeZero: true,
-          fixUpper: "minor",
-          minorLabels: false
-        });
-        chart.addAxis("y", {
-          vertical: true,
-          majorTicks: false,
-          minorTicks: false,
-          majorLabels: false,
-          minorLabels: false
-        });
-        chart.addSeries("Series A", value.series);
-        break;
-    }
-    const chartTooltip = new ChartTooltip(chart);
-    chart.render();
+    if (type === "bar-chart") {
+      const categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "x";
+      categoryAxis.renderer.inversed = true;
+      categoryAxis.renderer.labels.template.disabled = true;
 
-    this._chartMap.set(contentElementIndex, {
-      chart,
-      tooltip: chartTooltip
-    });
+      chart.xAxes.push(new am4charts.ValueAxis());
+
+      const series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.valueX = "y";
+      series.dataFields.categoryY = "x";
+
+      chart.cursor = new am4charts.XYCursor();
+
+      if (enableScrollbar) {
+        chart.scrollbarY = new am4core.Scrollbar();
+      }
+    }
+
+    if (type === "line-chart") {
+      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "x";
+      categoryAxis.renderer.labels.template.disabled = true;
+
+      chart.yAxes.push(new am4charts.ValueAxis());
+
+      const series = chart.series.push(new am4charts.LineSeries());
+      series.dataFields.categoryX = "x";
+      series.dataFields.valueY = "y";
+
+      chart.cursor = new am4charts.XYCursor();
+
+      if (enableScrollbar) {
+        chart.scrollbarX = new am4core.Scrollbar();
+      }
+    }
+
+    return chart;
   }
 
-  private _renderMediaInfo(mediaInfo: MediaInfo, contentElementIndex: number): VNode {
-    this._destroyChart(contentElementIndex);
+  private _renderChart(options: ChartOptions): void {
+    const { contentElementIndex, type, value, chartsModule: amCharts4Index } = options;
+    const { am4core } = amCharts4Index;
 
-    const mediaTypeNode = this._renderMediaInfoType(mediaInfo, contentElementIndex);
+    am4core.useTheme(amCharts4Index.am4themes_animated);
+
+    const chart =
+      type === "pie-chart" ? this._createPieChart(options) : this._createXYChart(options);
+
+    chart.data = value.series.map((entry) => ({
+      x: entry.tooltip,
+      y: entry.y
+    }));
+
+    this._chartMap.set(contentElementIndex, chart);
+  }
+
+  private _renderMediaInfo(options: {
+    mediaInfo: MediaInfo;
+    contentElementIndex: number;
+    activeMediaIndex: number;
+  }): VNode {
+    const { mediaInfo, contentElementIndex, activeMediaIndex } = options;
+    const mediaTypeNode = this._renderMediaInfoType({
+      mediaInfo,
+      contentElementIndex,
+      activeMediaIndex
+    });
 
     const titleNode = mediaInfo.title ? (
       <div
@@ -974,20 +1086,6 @@ class Feature extends declared(Widget) {
         {titleNode}
         {captionNode}
       </div>
-    );
-  }
-
-  private _renderMediaStatsItem(label: string, total: number, stat: MediaStat): VNode {
-    const mediaIconClasses =
-      stat === "chart"
-        ? this.classes(CSS.mediaChartIcon, CSS.iconChart)
-        : this.classes(CSS.mediaImageIcon, CSS.iconMedia);
-
-    return (
-      <li class={CSS.mediaImageSummary}>
-        <span aria-hidden="true" class={mediaIconClasses} />
-        <span class={CSS.mediaCount} aria-label={label}>{`(${total})`}</span>
-      </li>
     );
   }
 
@@ -1044,16 +1142,12 @@ class Feature extends declared(Widget) {
     }
   }
 
-  private _renderMedia(contentElement: MediaContentElement, contentElementIndex: number): VNode {
+  private _renderMedia(contentElement: MediaContent, contentElementIndex: number): VNode {
     const mediaInfos = contentElement.mediaInfos as MediaInfo[];
-    const mediaStats = this._getMediaStats(mediaInfos);
-    const total = mediaStats.total;
+    const total = (mediaInfos && mediaInfos.length) || 0;
     const mediaClasses = {
-      [CSS.showMediaPagination]: mediaStats.total > 1
+      [CSS.showMediaPagination]: total > 1
     };
-
-    const mediaStatsNode = this._renderMediaStatsItem(i18n.numImages, mediaStats.images, "image");
-    const chartStatsNode = this._renderMediaStatsItem(i18n.numCharts, mediaStats.charts, "chart");
 
     const previousButtonNode = this._renderMediaPageButton("previous", contentElementIndex);
     const nextButtonNode = this._renderMediaPageButton("next", contentElementIndex);
@@ -1072,16 +1166,16 @@ class Feature extends declared(Widget) {
         onkeyup={this._handleMediaKeyup}
         class={this.classes(CSS.media, CSS.contentElement, mediaClasses)}
       >
-        <ul class={CSS.mediaSummary}>
-          {mediaStatsNode}
-          {chartStatsNode}
-        </ul>
         <div
           key={buildKey("media-element-container", contentElementIndex)}
           class={CSS.mediaContainer}
         >
           {previousButtonNode}
-          {this._renderMediaInfo(mediaInfos[activeMediaIndex], contentElementIndex)}
+          {this._renderMediaInfo({
+            mediaInfo: mediaInfos[activeMediaIndex],
+            contentElementIndex,
+            activeMediaIndex
+          })}
           {nextButtonNode}
         </div>
       </div>
@@ -1089,9 +1183,10 @@ class Feature extends declared(Widget) {
   }
 
   private _renderLastEditInfo(): VNode {
+    const { visibleElements } = this;
     const { lastEditInfo } = this.viewModel;
 
-    if (!lastEditInfo) {
+    if (!lastEditInfo || !visibleElements.lastEditedInfo) {
       return null;
     }
 
@@ -1103,8 +1198,8 @@ class Feature extends declared(Widget) {
           ? i18n.lastEditedByUser
           : i18n.lastEdited
         : user
-          ? i18n.lastCreatedByUser
-          : i18n.lastCreated;
+        ? i18n.lastCreatedByUser
+        : i18n.lastCreated;
 
     const text = substitute(
       {
@@ -1124,7 +1219,7 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderText(contentElement: TextContentElement, contentElementIndex: number): VNode {
+  private _renderText(contentElement: TextContent, contentElementIndex: number): VNode {
     const hasText = contentElement.text;
 
     return hasText ? (
@@ -1139,24 +1234,6 @@ class Feature extends declared(Widget) {
   private _attachToNode(this: HTMLElement, node: HTMLElement): void {
     const content = this;
     node.appendChild(content);
-  }
-
-  private _getMediaStats(mediaInfos: MediaInfo[]): MediaStats {
-    let images = 0,
-      charts = 0;
-    mediaInfos.forEach((mediaInfo) => {
-      const type = mediaInfo.type;
-      if (type === "image") {
-        images++;
-      } else if (type.indexOf("chart") !== -1) {
-        charts++;
-      }
-    });
-    return {
-      total: charts + images,
-      images,
-      charts
-    };
   }
 
   private _setContentElementMedia(contentElementIndex: number, pagedMediaIndex: number): void {

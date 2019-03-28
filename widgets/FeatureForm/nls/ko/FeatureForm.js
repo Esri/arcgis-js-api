@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({empty:"- 비어 있음 -",validationErrors:{cannotBeNull:"값을 입력하세요.",outsideRange:"{min} â€“ {max} 사이의 값이어야 합니다.",invalidCodedValue:"값은 나열된 값 중 하나여야 합니다.",invalidType:"유효한 값이 아님"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Opmål",hint:"Start måling ved at klikke i kortet for at placere det første punkt",unsupported:"2D-områdemåling understøttes kun i MapView.",perimeter:"Omkreds",area:"Område",newMeasurement:"Ny måling",mode:"Tilstand",modes:{auto:"Auto",planar:"Plan",geodesic:"Geodætisk"},unit:"Enhed",units:{metric:"Metrisk",imperial:"Britiske","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfod","square-yards":"Kvadratyard","square-us-feet":"Kvadratfod (USA)",acres:"Acres",ares:"Acres",hectares:"Hektarer"}});

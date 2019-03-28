@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Šabloni geoobjekata",filterPlaceholder:"Tipovi filtera",noMatches:"Nijedna stavka nije pronađena",noItems:"Nema šablona za prikaz"});

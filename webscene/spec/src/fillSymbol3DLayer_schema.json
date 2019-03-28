@@ -4,6 +4,11 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "FillSymbol3DLayer is used to render the surfaces of flat 2D Polygon geometries and 3D volumetric meshes in a SceneView.",
   "properties": {
+    "castShadows": {
+      "type": "boolean",
+      "description": "Boolean to control the shadow casting behaviour of the rendered geometries.",
+      "default": true
+    },
     "edges": {
       "type": "object",
       "description": "Specifies an edge visualization style. Only affects MeshSymbol3D.",

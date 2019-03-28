@@ -156,7 +156,6 @@ class Bookmarks extends declared(Widget) {
    * @name bookmarks
    * @instance
    * @type {module:esri/core/Collection<module:esri/webmap/Bookmark>}
-   * @readonly
    */
   @aliasOf("viewModel.bookmarks")
   bookmarks: Collection<Bookmark> = null;
@@ -178,7 +177,6 @@ class Bookmarks extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -193,7 +191,6 @@ class Bookmarks extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label = i18n.widgetLabel;
@@ -258,8 +255,8 @@ class Bookmarks extends declared(Widget) {
       state === "disabled"
         ? this._renderDisabled()
         : state === "loading"
-          ? this._renderLoading()
-          : this._renderBookmarks();
+        ? this._renderLoading()
+        : this._renderBookmarks();
 
     const baseClasses = {
       [CSS.disabled]: state === "disabled"
@@ -372,11 +369,9 @@ class Bookmarks extends declared(Widget) {
 
     _handles.remove(itemsKey);
 
-    const handles = bookmarks.map((bookmark) => {
-      return watchUtils.watch(bookmark, ["active", "name", "thumbnail.url"], () =>
-        this.scheduleRender()
-      );
-    });
+    const handles = bookmarks.map((bookmark) =>
+      watchUtils.watch(bookmark, ["active", "name", "thumbnail.url"], () => this.scheduleRender())
+    );
 
     _handles.add(handles, itemsKey);
 

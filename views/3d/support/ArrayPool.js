@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,r){Object.defineProperty(r,"__esModule",{value:!0});var o=function(){function t(t,r){void 0===r&&(r=50),this.arrayConstructor=t,this.maxPoolSizePerCount=r,this.pool={}}return t.prototype.get=function(t){var r=this.pool[t];r||(r={ptr:0,data:new Array(this.maxPoolSizePerCount)},this.pool[t]=r);var o;return r.ptr>0?(o=r.data[--r.ptr],r.data[r.ptr]=null):o=new this.arrayConstructor(t),o},t.prototype.put=function(t){var r=this.pool[t.length];r.ptr<r.data.length&&(r.data[r.ptr++]=t)},t}();r.ArrayPool=o});
+define(["require","exports","../../../core/PooledArray"],function(e,o,t){Object.defineProperty(o,"__esModule",{value:!0});var r=function(){function e(e){this.arrayConstructor=e,this._pool=new Map}return e.prototype.get=function(e){var o=this._pool.get(e);if(!o||0===o.length)try{return new this.arrayConstructor(e)}catch(o){var t=window.performance&&window.performance.memory,r="";throw t&&(r="\n  totalJSHeapSize: "+t.totalJSHeapSize+", usedJSHeapSize: "+t.usedJSHeapSize+", jsHeapSizeLimit: "+t.jsHeapSizeLimit),console.log("Array allocation of size "+e+" failed: "+o+r),o}return o.pop()},e.prototype.put=function(e){var o=this._pool.get(e.length);o||(o=new t({shrink:!0}),this._pool.set(e.length,o)),o.push(e)},e.prototype.clear=function(){this._pool.clear()},e}();o.ArrayPool=r});

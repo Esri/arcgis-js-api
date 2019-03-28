@@ -22,6 +22,7 @@
 
   .esri-feature-form__input {
     margin-top: $cap-spacing--third;
+    width: 100%;
 
     // for textarea
     resize: horizontal;
@@ -65,6 +66,10 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+
+    &:first-child .esri-feature-form__input {
+      border-right: none;
+    }
   }
 
   .esri-feature-form__date-format-hint {
@@ -86,7 +91,8 @@
     border: none;
     border-left: $group-border-width solid $border-color;
     padding: 0 $cap-spacing--half;
-    margin-bottom: $cap-spacing;
+    margin: $cap-spacing--half $side-spacing--half;
+    min-inline-size: unset;
     transition: border-color 250ms;
 
     .esri-feature-form__label {
@@ -109,6 +115,7 @@
     cursor: pointer;
 
     .esri-feature-form__label {
+      pointer-events: none;
       opacity: 0;
       height: 0;
       margin: 0;
@@ -125,6 +132,13 @@
     .esri-feature-form__group {
       border-left: none;
       border-right: $group-border-width solid $border-color;
+    }
+    .esri-feature-form__date-input-part {
+      
+      &:first-child .esri-feature-form__input {
+        border-right: 1px solid $border-color;
+        border-left: none;
+      }
     }
   }
 }

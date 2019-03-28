@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({attach:"แนบ",fields:"ฟิลด์",fieldsSummary:"รายการของข้อมูลเชิงบรรยายและค่าของข้อมูล",media:"สื่อ",next:"ถัดไป",numCharts:"จำนวนของแผนที่",numImages:"จำนวนของรูป",noTitle:"ไม่มีชื่อเรื่อง",previous:"ก่อนหน้า",lastEdited:"แก้ไขล่าสุดเมื่อ {date}",lastCreated:"สร้างขึ้นเมื่อ {date}",lastEditedByUser:"แก้ไขล่าสุดโดย {user} เมื่อ {date}",lastCreatedByUser:"สร้างขึ้นโดย {user} เมื่อ {date}"});
+define({attach:"แนบ",fields:"ฟิลด์",fieldsSummary:"รายการของข้อมูลเชิงบรรยายและค่าของข้อมูล",media:"สื่อ",next:"ถัดไป",noTitle:"ไม่มีชื่อเรื่อง",previous:"ก่อนหน้า",lastEdited:"แก้ไขล่าสุดเมื่อ {date}",lastCreated:"สร้างขึ้นเมื่อ {date}",lastEditedByUser:"แก้ไขล่าสุดโดย {user} เมื่อ {date}",lastCreatedByUser:"สร้างขึ้นโดย {user} เมื่อ {date}"});

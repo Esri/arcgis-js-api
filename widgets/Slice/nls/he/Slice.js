@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"חתך",cancel:"בטל",hint:"התחל בפילוח על-ידי לחיצה וגרירה על משטח בסצנה",excludeHint:"בחר שכבה בתצוגה כדי למנוע את הכללתה בפלח",unsupported:"פילוח לא נתמך ב-MapView.",multipleDisabled:"רק פלח אחד יכול להיות פעיל בכל פעם.",newSlice:"פלח חדש",excludedLayers:"שכבות שאינן נכללות",pickLayer:"בחר שכבה מהתצוגה",excludeLayer:"מנע את הכללת השכבה בפלח",includeLayer:"כלול שכבה בפלח",ground:"קרקע"});

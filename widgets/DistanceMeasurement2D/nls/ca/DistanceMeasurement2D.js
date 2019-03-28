@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Mesura",hint:"Per iniciar la mesura, feu clic al mapa i col·loqueu el primer punt",unsupported:"La mesura de distància 2D només s'admet al MapView.",distance:"Distància",newMeasurement:"Mesura nova",mode:"Mode",modes:{auto:"Automàtic",planar:"Pla",geodesic:"Geodèsic"},unit:"Unitat",units:{metric:"Sistema mètric",imperial:"Sistema imperial",kilometers:"Quilòmetres",meters:"Metres",miles:"Milles",inches:"Polzades",feet:"Peus",yards:"Iardes","nautical-miles":"Milles nàutiques","us-feet":"Peus (EUA)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});

@@ -13,6 +13,7 @@
  * alpha in [  1 -  85]: tint
  * alpha in [ 86 - 170]: replace
  * alpha in [171 - 255]: multiply
+ * 
  */
 vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
   float symbolAlpha = 0.0;
@@ -21,24 +22,21 @@ vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
   const float maxReplace = 170.0;
   const float scaleAlpha = 3.0;
 
-  if (symbolColor.a == 0.0) {
+  if (symbolColor.a > maxReplace) {
+    colorMixMode = 1;  // multiply
+    symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);
+  } else if (symbolColor.a > maxTint) {
+    colorMixMode = 3; // replace
+    symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);
+  } else if (symbolColor.a > 0.0) {
+    colorMixMode = 0; // tint
+    symbolAlpha = scaleAlpha * symbolColor.a;
+  } else {
     colorMixMode = 1; // fully transparent -> multiply
     symbolAlpha = 0.0;
   }
-  else if (symbolColor.a <= maxTint) {
-    colorMixMode = 0; // tint
-    symbolAlpha = scaleAlpha * symbolColor.a;
-  }
-  else if (symbolColor.a <= maxReplace) {
-    colorMixMode = 3; // replace
-    symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);
-  }
-  else {
-    colorMixMode = 1;  // multiply
-    symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);
-  }
 
-  return vec4(symbolColor.rgb, symbolAlpha);
+  return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);
 }
 
 vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {

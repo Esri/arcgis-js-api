@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({empty:"- üres -",validationErrors:{cannotBeNull:"Adjon meg egy értéket",outsideRange:"Az értéknek a következők között kell lennie: {min} â€“ {max}",invalidCodedValue:"Az érték a listában szereplő értékek egyike lehet.",invalidType:"Nem érvényes érték"}});

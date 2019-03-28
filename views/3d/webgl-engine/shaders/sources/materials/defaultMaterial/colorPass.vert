@@ -2,41 +2,35 @@
 
 #include <materials/defaultMaterial/commonInputs.glsl>
 
+#define VERTEX_SHADER
+#include <materials/defaultMaterial/vertexTangents.glsl>
+
 #ifdef INSTANCEDCOLOR
 attribute vec4 instanceColor;
 #endif
 attribute vec3 position;
-#ifdef COMPRESSED_NORMALS
-attribute vec2 normalCompressed;
-#else
-attribute vec3 normal;
+
+#if (NORMALS == NORMALS_COMPRESSED)
+  attribute vec2 normalCompressed;
+  varying vec3 vnormal;
+#elif (NORMALS == NORMALS_DEFAULT)
+  attribute vec3 normal;
+  varying vec3 vnormal;
 #endif
+
 varying vec3 vpos;
-varying vec3 vnormal;
 
 #ifdef TEXTURING
-attribute vec2 uv0;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-attribute vec4 region;
-varying vec4 regionV;
-#endif
+    attribute vec2 uv0;
+    varying vec2 vtc;
+  #ifdef TEXTURE_ATLAS
+    attribute vec4 region;
+    varying vec4 regionV;
+  #endif
 #endif
 
 #ifdef COMPONENTCOLORS
-uniform sampler2D uComponentColorTex;
-uniform vec2 uComponentColorTexInvDim;
-
-attribute float componentIndex;
-
-vec4 readComponentColor() {
-  float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;
-  vec2 indexCoord = vec2(
-    mod(normalizedIndex, 1.0),
-    (floor(normalizedIndex) + 0.5) * uComponentColorTexInvDim.y
-  );
-  return texture2D(uComponentColorTex, indexCoord);
-}
+#include <materials/defaultMaterial/componentColors.glsl>
 #endif
 
 #ifdef RECEIVE_SHADOWS
@@ -116,7 +110,9 @@ void main() {
     vpos = calculateVPos();
 
 #ifdef INSTANCED_DOUBLE_PRECISION
-  vnormal = normalize(modelNormal * localNormal().xyz);
+  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+    vnormal = normalize(modelNormal * localNormal().xyz);
+  #endif
 
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
   #ifdef IOS_SAFARI_FIX
@@ -129,12 +125,19 @@ void main() {
     vpos += calculateVerticalOffset(centerPos, localOrigin);
   #endif
 #else /* INSTANCED_DOUBLE_PRECISION */
-  vnormal = normalize((modelNormal * localNormal()).xyz);
+  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+    vnormal = normalize((modelNormal * localNormal()).xyz);
+  #endif
+
   #ifdef VERTICAL_OFFSET
     vec3 centerPos = (model * localCenter()).xyz;
     vpos += calculateVerticalOffset(centerPos, localOrigin);
   #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
+
+    #if defined(VERTEX_TANGENTS)
+      transformVertexTangent(mat3(modelNormal));
+    #endif
 
     gl_Position = proj * view * vec4(vpos, 1.0);
   }

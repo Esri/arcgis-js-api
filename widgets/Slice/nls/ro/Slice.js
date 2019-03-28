@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Segmentare",cancel:"Anulare",hint:"Începeți să segmentați făcând clic și trăgând o suprafață în scenă",excludeHint:"Selectați un strat tematic din vizualizare care să fie exclus din segment",unsupported:"Segmentarea nu este acceptată în MapView.",multipleDisabled:"Poate fi activ un singur segment la un moment dat",newSlice:"Segment nou",excludedLayers:"Straturi tematice excluse",pickLayer:"Selectați un strat tematic din vizualizare",excludeLayer:"Excludeți stratul tematic din segment",includeLayer:"Includeți stratul tematic în segment",ground:"Sol"});

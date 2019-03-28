@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","./Container","./webgl/enums"],function(e,r,t,n,a,i){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r.prototype.doRender=function(r){this.visible&&r.drawPhase===i.WGLDrawPhase.MAP&&e.prototype.doRender.call(this,r)},r.prototype.renderChildren=function(e){var r=this,t=r.stage.painter,n=r.children,a=e.drawPhase;this.sortChildren(function(e,r){return r.resolution-e.resolution}),e.drawPhase=i.WGLDrawPhase.CLIP,t.startStencilBurn();for(var o=0,s=n.length;o<s;o++){var l=n[o];l.attached&&l.visible&&(t.stencilRef=o,l.processRender(e))}e.drawPhase=a,t.startStencilDraw();for(var o=0,s=n.length;o<s;o++){var l=n[o];l.attached&&l.visible&&(t.stencilRef=o,l.processRender(e))}t.endStencilDraw()},r}(a.Container);r.BitmapContainer=o});

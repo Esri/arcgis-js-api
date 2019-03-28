@@ -6,7 +6,7 @@
   "properties": {
     "orderByFields": {
       "type": "array",
-      "description": "Array of orderByFields objects indicating the field display order for the related records and whether they should be sorted in ascending <code>'asc'</code> or descending <code>'desc'</code> order.",
+      "description": "Array of orderByFields objects indicating the field display order for the related records and whether they should be sorted in ascending `asc` or descending `desc` order.",
       "items": {
         "type": "object",
         "$ref": "orderByFields_schema.json"

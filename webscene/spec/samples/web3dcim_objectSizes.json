@@ -5,23 +5,6 @@
       "title": "cylinder",
       "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers6/FeatureServer/1",
       "layerType": "ArcGISFeatureLayer",
-      "popupInfo": {
-        "showAttachments": false,
-        "popupElements": [
-          {
-            "type": "fields"
-          }
-        ],
-        "fieldInfos": [
-          {
-            "fieldName": "ORIG_FID",
-            "label": "ORIG_FID",
-            "tooltip": "",
-            "visible": false
-          }
-        ],
-        "title": "Cylinder: {ORIG_FID}"
-      },
       "layerDefinition": {
         "drawingInfo": {
           "renderer": {
@@ -467,23 +450,6 @@
             ]
           }
         }
-      },
-      "popupInfo": {
-        "showAttachments": false,
-        "popupElements": [
-          {
-            "type": "fields"
-          }
-        ],
-        "fieldInfos": [
-          {
-            "fieldName": "ORIG_FID",
-            "label": "ORIG_FID",
-            "tooltip": "",
-            "visible": false
-          }
-        ],
-        "title": "Tree {ORIG_FID}"
       }
     }
   ],
@@ -504,9 +470,9 @@
     "layers": [],
     "transparency": 0
   },
-  "version": "1.13",
+  "version": "1.15",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.10",
+  "authoringAppVersion": "4.11",
   "initialState": {
     "environment": {
       "lighting": {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../camera/constraintUtils","../AnimationController","../../../webgl-engine/lib/Camera"],function(e,t,n,i,r,o){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,n){var i=e.call(this)||this;return i.view=t,i.beginCamera=new o,i.elapsedTimeSec=0,i.constraintOptions={selection:15,interactionType:4,interactionFactor:0,interactionStartCamera:new o,interactionDirection:null,tiltMode:0},i}return n(t,e),Object.defineProperty(t.prototype,"steppingFinished",{get:function(){return this.momentum.isFinished(this.elapsedTimeSec)},enumerable:!0,configurable:!0}),t.prototype.onControllerStart=function(t){this.beginCamera.copyFrom(t),this.constraintOptions.interactionStartCamera=this.beginCamera,e.prototype.onControllerStart.call(this,t)},t.prototype.stepController=function(e,t){t.copyViewFrom(this.beginCamera),this.elapsedTimeSec+=e,this.momentumStep(this.elapsedTimeSec,t),i.applyAll(this.view,t,this.constraintOptions)},t}(r.AnimationController);t.MomentumController=a});

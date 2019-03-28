@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Yer işaretleri",goToBookmark:"Yer imine git",noBookmarksHeading:"Hiçbir Yer İşareti Yok",noBookmarksDescription:"Haritanıza yer imleri eklediğinizde burada görüneceklerdir.",disabledHeading:"Yer İmleri Devre Dışı Bırakıldı",disabledDescription:"Yer imlerini etkinleştirmek için bir MapView ekleyin."});

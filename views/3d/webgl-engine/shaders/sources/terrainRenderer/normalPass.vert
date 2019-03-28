@@ -14,7 +14,7 @@ varying vec3 vnormal;
 varying vec3 vpos;
 
 void main(void) {
-#ifdef SPHERICAL
+#if VIEWING_MODE == VIEWING_MODE_GLOBAL
   vec4 normal = vec4(normalize(position + origin), 1.0);
 #else
   vec4 normal = vec4(0.0, 0.0, 1.0, 1.0);

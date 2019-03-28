@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","./engine/Stage","./LabelManager","./layers/support/GraphicsView2D","./navigation/MapViewNavigation"],function(e,a,i,t,n,r){Object.defineProperty(a,"__esModule",{value:!0}),a.Stage=i.Stage,a.LabelManager=t.default,a.GraphicsView2D=n.default,a.MapViewNavigation=r.default});
+define(["require","exports","./engine/Stage","./LabelManager","./layers/support/GraphicsView2D","./navigation/MapViewNavigation","./engine/magnifier/MagnifierView2D"],function(e,a,i,n,t,r,g){Object.defineProperty(a,"__esModule",{value:!0}),a.Stage=i.Stage,a.LabelManager=n.default,a.GraphicsView2D=t.default,a.MapViewNavigation=r.default,a.MagnifierView2D=g.default});

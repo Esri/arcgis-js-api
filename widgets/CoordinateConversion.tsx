@@ -551,7 +551,7 @@ class CoordinateConversion extends declared(Widget) {
         (conversion) => conversion.format === format
       );
       this._previewConversion = new Conversion({
-        format: format,
+        format,
         position: {
           location: this.currentLocation,
           coordinate: existingConversion && existingConversion.position.coordinate

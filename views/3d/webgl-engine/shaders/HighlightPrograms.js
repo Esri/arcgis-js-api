@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,t,l,a){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){return a.glslifyDefineMap({GRID_OPTIMIZATION:e.gridOptimization,GAUSSIAN_SAMPLES:e.gaussianSamples})},n=function(e){return a.glslifyDefineMap({GRID_OPTIMIZATION:e.gridOptimization,GRID_DEBUG:e.gridDebug})};r.downsamplePass={name:"highlight-downsample",shaders:{vertexShader:l.resolveIncludes("renderer/highlight/downsample.vert"),fragmentShader:l.resolveIncludes("renderer/highlight/downsample.frag")},attributes:t.Default3D},r.blurPass={name:"highlight-blur",shaders:function(e){return{vertexShader:i(e)+l.resolveIncludes("renderer/highlight/blur.vert"),fragmentShader:i(e)+l.resolveIncludes("renderer/highlight/blur.frag")}},attributes:t.Default3D},r.applyPass={name:"highlight-apply",shaders:function(e){return{vertexShader:n(e)+l.resolveIncludes("renderer/highlight/apply.vert"),fragmentShader:n(e)+l.resolveIncludes("renderer/highlight/apply.frag")}},attributes:t.Default3D}});

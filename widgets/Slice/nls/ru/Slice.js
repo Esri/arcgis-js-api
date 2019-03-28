@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Срез",cancel:"Отмена",hint:"Начните выполнять срезы, щелкая и передвигая их поверхности в сцене",excludeHint:"Выберите слой в виде, чтобы исключить его из среза",unsupported:"Срезы не поддерживаются в виде карты.",multipleDisabled:"Одновременно может быть активным только один срез",newSlice:"Новый срез",excludedLayers:"Исключенные слои",pickLayer:"Выберите слой из вида",excludeLayer:"Исключить слой из среза",includeLayer:"Включить слой в срез",ground:"Земля"});

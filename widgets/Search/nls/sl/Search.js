@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Išči",searchButtonTitle:"Išči",clearButtonTitle:"Počisti iskanje",placeholder:"Najdi naslov ali kraj",searchIn:"Poišči v",all:"Vse",allPlaceholder:"Najdi naslov ali kraj",emptyValue:"Vnesite iskalni izraz.",untitledResult:"Neimenovano",untitledSource:"Neimenovan vir",noResults:"Ni rezultatov",noResultsFound:"Ni najdenih rezultatov.",noResultsFoundForValue:"Ni najdenih rezultatov za {value}.",showMoreResults:"Prikaži več rezultatov",hideMoreResults:"Skrij",searchResult:"Iskani rezultat",moreResultsHeader:"Več rezultatov",useCurrentLocation:"Uporabi trenutno lokacijo"});

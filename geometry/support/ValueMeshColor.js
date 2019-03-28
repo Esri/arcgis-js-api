@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/lang","../../core/accessorSupport/decorators","./MeshColor"],function(e,r,o,t,p,l,u,n){return function(e){function r(r){var o=e.call(this)||this;return o.type="value",o.value=null,o}o(r,e),n=r,r.prototype.clone=function(){return new n({value:l.clone(this.value)})};var n;return t([u.property()],r.prototype,"type",void 0),t([u.property({type:p})],r.prototype,"value",void 0),r=n=t([u.subclass("esri.geometry.support.ValueMeshColor")],r)}(u.declared(n.default))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/lang","../../core/Logger","../../core/accessorSupport/decorators","./MeshColor"],function(e,r,o,t,p,s,l,u,a){var n=l.getLogger("esri.geometry.support.ValueMeshColor");return function(e){function r(r){var o=e.call(this)||this;return o.type="value",o.value=null,n.warn("esri/geometry/support/ValueMeshColor is deprecated since version 4.11. Use esri/Color instead."),o}o(r,e),l=r,r.prototype.clone=function(){return new l({value:s.clone(this.value)})};var l;return t([u.property()],r.prototype,"type",void 0),t([u.property({type:p})],r.prototype,"value",void 0),r=l=t([u.subclass("esri.geometry.support.ValueMeshColor")],r)}(u.declared(a.default))});

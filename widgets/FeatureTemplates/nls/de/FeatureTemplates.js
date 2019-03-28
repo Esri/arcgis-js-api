@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Feature-Vorlagen",filterPlaceholder:"Filtertypen",noMatches:"Keine Elemente gefunden",noItems:"Keine anzuzeigenden Vorlagen"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Collection","../../core/JSONSupport","../../core/accessorSupport/decorators","./SearchLayer"],function(e,r,t,o,n,p,i,l){var s=n.ofType(l);return function(e){function r(r){var t=e.call(this,r)||this;return t.enabled=!0,t.hintText=null,t.layers=new s,t}t(r,e),n=r,r.prototype.clone=function(){return new n({enabled:this.enabled,hintText:this.hintText,layers:this.layers?this.layers.clone():null})};var n;return o([i.property({type:Boolean,json:{write:!0,default:!0}})],r.prototype,"enabled",void 0),o([i.property({type:String,json:{write:!0}})],r.prototype,"hintText",void 0),o([i.property({type:s,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"layers",void 0),r=n=o([i.subclass("esri.webscene.applicationProperties.Search")],r)}(i.declared(p))});

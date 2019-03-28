@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/tsSupport/decorateHelper","../../../../geometry/Extent"],function(e,t,r,n,o){function a(e,t,r){var n=r.get("state.resolution"),a="number"==typeof n?n:1,x=t*a,i=e.clone().offset(-x,-x),c=e.clone().offset(x,x),f=r.spatialReference;return new o({xmin:Math.min(i.x,c.x),ymin:Math.min(i.y,c.y),xmax:Math.max(i.x,c.x),ymax:Math.max(i.y,c.y),spatialReference:f})}Object.defineProperty(t,"__esModule",{value:!0}),t.createQueryGeometry=a});

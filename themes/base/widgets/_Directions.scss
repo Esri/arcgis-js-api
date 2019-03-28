@@ -37,6 +37,7 @@
   .esri-directions__panel-content--loading,
   .esri-directions__panel-content--error {
     min-height: $directions-height--max;
+    margin: 0 $cap-spacing;
     color: $interactive-font-color;
     display: flex;
     align-items: center;

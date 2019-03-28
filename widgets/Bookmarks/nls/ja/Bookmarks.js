@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"ブックマーク",goToBookmark:"ブックマークに移動",noBookmarksHeading:"ブックマークがありません",noBookmarksDescription:"マップにブックマークを追加すると、そのブックマークがここに表示されます。",disabledHeading:"ブックマークが無効になっています",disabledDescription:"マップ ビューを追加してブックマークを有効にします。"});

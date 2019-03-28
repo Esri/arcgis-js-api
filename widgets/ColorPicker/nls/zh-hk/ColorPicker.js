@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({transparency:"幻燈片",suggested:"建議",recent:"最近",more:"更多資訊",moreColorsTooltip:"檢視更多顏色。",paletteTooltip:"選擇顏色。",noColorTooltip:"無顏色",hexInputTooltip:"以十六進位記數法表示的自訂顔色 (#FFFF00)。"});

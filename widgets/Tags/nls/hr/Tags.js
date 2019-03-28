@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({addTags:"Dodajte oznake",noTagsFound:"Ne podudaraju se postojeće oznake.",required:"Potrebna je jedna ili više oznaka."});

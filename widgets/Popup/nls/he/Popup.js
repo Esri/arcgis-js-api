@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"התמקד אל",next:"הישות הבאה",previous:"ישות קודמת",dock:"עגן",undock:"בטל עיגון",pageText:"{index} מתוך {total}",selectedFeature:"בחר ישות",selectedFeatures:"{total} תוצאות"});
+define({zoom:"התמקד אל",next:"הישות הבאה",previous:"ישות קודמת",dock:"עגן",undock:"בטל עיגון",pageText:"{index} מתוך {total}",selectedFeature:"בחר ישות",selectedFeatures:"{total} תוצאות",tooManyFields:"שכבה זו כוללת יותר מדי שדות, חלקם לא יוצגו."});

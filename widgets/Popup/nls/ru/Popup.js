@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Приблизить к",next:"Следующий объект",previous:"Предыдущий объект",dock:"Пристань",undock:"Открепить",pageText:"{index} из {total}",selectedFeature:"Выбранный объект",selectedFeatures:"{total} результатов"});
+define({zoom:"Приблизить к",next:"Следующий объект",previous:"Предыдущий объект",dock:"Пристань",undock:"Открепить",pageText:"{index} из {total}",selectedFeature:"Выбранный объект",selectedFeatures:"{total} результатов",tooManyFields:"Слой содержит чрезмерно большое число полей, некоторые из них не будут отображены."});

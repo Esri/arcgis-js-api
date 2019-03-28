@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({attach:"附件",fields:"欄位",fieldsSummary:"屬性和值的清單",media:"媒體",next:"下一步",numCharts:"圖表數目",numImages:"圖像數目",noTitle:"未命名",previous:"上一步",lastEdited:"上次編輯日期為 {date}。",lastCreated:"建立日期為 {date}。",lastEditedByUser:"上次編輯日期為 {date}，由 {user} 執行。",lastCreatedByUser:"由 {user} 在 {date} 建立。"});
+define({attach:"附件",fields:"欄位",fieldsSummary:"屬性和值的清單",media:"媒體",next:"下一步",noTitle:"未命名",previous:"上一步",lastEdited:"上次編輯日期為 {date}。",lastCreated:"建立日期為 {date}。",lastEditedByUser:"上次編輯日期為 {date}，由 {user} 執行。",lastCreatedByUser:"由 {user} 在 {date} 建立。"});

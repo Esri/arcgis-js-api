@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/gl-matrix","./MomentumController","../../utils/navigationUtils"],function(e,t,o,m,n,i){Object.defineProperty(t,"__esModule",{value:!0});var r=m.vec3f64.create(),u=m.vec3f64.create(),a=function(e){function t(t,o){var m=e.call(this,t,4)||this;return m.momentum=o,m}return o(t,e),t.prototype.momentumStep=function(e,t){var o=this.momentum.value1(e),n=this.momentum.value2(e);m.vec3.copy(u,t.eye),m.vec3.normalize(u,u),m.vec3.cross(this.momentum.axis2,u,this.momentum.axis1),i.applyRotationWithTwoAxes(t,r,this.momentum.axis1,o,this.momentum.axis2,n)},t}(n.MomentumController);t.PanSphericalMomentumController=a});
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./MomentumController","../../utils/navigationUtils"],function(e,t,o,m,n,i,r){Object.defineProperty(t,"__esModule",{value:!0});var u=n.vec3f64.create(),s=n.vec3f64.create(),a=function(e){function t(t,o){var m=e.call(this,t,4)||this;return m.momentum=o,m}return o(t,e),t.prototype.momentumStep=function(e,t){var o=this.momentum.value1(e),n=this.momentum.value2(e);m.vec3.copy(s,t.eye),m.vec3.normalize(s,s),m.vec3.cross(this.momentum.axis2,s,this.momentum.axis1),r.applyRotationWithTwoAxes(t,u,this.momentum.axis1,o,this.momentum.axis2,n)},t}(i.MomentumController);t.PanSphericalMomentumController=a});

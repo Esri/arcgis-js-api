@@ -45,6 +45,15 @@
       "type": "string",
       "description": "A URL to a service that should be used for all queries against the layer."
     },
+    "listMode": {
+      "type": "string",
+      "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
+      "enum": [
+        "show",
+        "hide",
+        "hide-children"
+      ]
+    },
     "maxScale": {
       "type": "number",
       "description": "A number representing the maximum scale at which the layer will be visible. The number is the scale's denominator."

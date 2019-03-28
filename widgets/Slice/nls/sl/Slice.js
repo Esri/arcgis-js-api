@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Prečni prerez",cancel:"Prekliči",hint:"Začnite izdelovati prečni prerez, tako da kliknete in povlečete na površino v 3D-prizoru.",excludeHint:"Izberite sloj v pogledu, da ga izključite iz prečnega prereza",unsupported:"Prečni prerez ni podprt v pregledovalniku kart.",multipleDisabled:"Hkrati je lahko aktiven samo en prečni prerez.",newSlice:"Nov prečni prerez",excludedLayers:"Izključeni sloji",pickLayer:"Izberi sloj iz pogleda",excludeLayer:"Izključi sloj iz prečnega prereza",includeLayer:"Vključi sloj v prečni prerez.",ground:"Tla"});

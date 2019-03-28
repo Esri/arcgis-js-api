@@ -7,6 +7,10 @@
 #include <materials/defaultMaterial/texturingInputs.glsl>
 #endif
 
+#define FRAGMENT_SHADER
+#include <materials/defaultMaterial/vertexTangents.glsl>
+#include <materials/defaultMaterial/textureNormals.glsl>
+
 uniform vec3 camPos;
 uniform vec3 localOrigin;
 
@@ -38,7 +42,11 @@ uniform vec4 viewportPixelSz;
 #endif
 
 varying vec3 vpos;
-varying vec3 vnormal;
+
+#if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+  varying vec3 vnormal;
+#endif
+
 #if defined(VERTEXCOLORS)
 varying vec4 vcolor;
 #endif
@@ -65,11 +73,11 @@ void main() {
 #ifdef TEXTURING
   vec4 texColor = textureLookup(tex, vtc);
 
-#ifdef TEXTURE_ALPHA_TEST
-  if (texColor.a * coverageCorrectionFactor(vtc) < textureAlphaCutoff) {
-    discard;
-  }
-#endif
+  #if defined(TEXTURE_ALPHA_PREMULTIPLIED)
+    texColor.rgb /= texColor.a;
+  #endif
+
+  discardOrAdjustTextureAlpha(texColor);
 #else /* TEXTURING */
   vec4 texColor = vec4(1.0);
 #endif /* TEXTURING */
@@ -79,20 +87,24 @@ void main() {
   // compute normal
   // TODO: this is not in sync with the normal pass
 #ifdef GROUND_NORMAL_SHADING
-#ifdef VIEWING_MODE_GLOBAL
-  vec3 normal = normalize(vpos + localOrigin);
+  #if VIEWING_MODE == VIEWING_MODE_GLOBAL
+    vec3 normal = normalize(vpos + localOrigin);
+  #else
+    vec3 normal = vec3(0.0, 0.0, 1.0);
+  #endif
 #else
-  vec3 normal = vec3(0.0, 0.0, 1.0);
-#endif
-#else
-#ifdef DOUBLESIDED
-  vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
-#elif defined(WINDINGORDERDOUBLESIDED)
-  vec3 normal = gl_FrontFacing ? vnormal : -vnormal;
-#else
-  vec3 normal = vnormal;
-#endif
-  normal = normalize(normal);
+  #if (NORMALS == NORMALS_SCREEN_DERIVATIVE)
+    vec3 normal = normalize(cross(dFdx(vpos),dFdy(vpos)));
+  #else
+    #ifdef DOUBLESIDED
+      vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
+    #elif defined(WINDINGORDERDOUBLESIDED)
+      vec3 normal = gl_FrontFacing ? vnormal : -vnormal;
+    #else
+      vec3 normal = vnormal;
+    #endif
+    normal = normalize(normal);
+  #endif
 #endif
 
   // compute ssao
@@ -111,7 +123,7 @@ void main() {
   float shadow = 0.0;
 #ifdef RECEIVE_SHADOWS
   shadow = evalShadow(vpos, linearDepth, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
-#elif defined(VIEWING_MODE_GLOBAL)
+#elif VIEWING_MODE == VIEWING_MODE_GLOBAL
   // at global scale (and in global scenes) we fall back to this approximation
   // to shadow objects on the dark side of the earth
   shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);
@@ -129,7 +141,13 @@ void main() {
 #endif
   albedo_+= 0.25 * specular; // don't completely ignore specular for now
 
-  vec3 shadingNormal = normal;
+
+  #if defined(TEXTURE_NORMALS)
+    mat3 tangentSpace = computeTangentSpace(normal);
+    vec3 shadingNormal = computeTextureNormal(tangentSpace);
+  #else
+    vec3 shadingNormal = normal;
+  #endif
 
   #ifdef TREE_RENDERING
     // make sure we use unflipped normal

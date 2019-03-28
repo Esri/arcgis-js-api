@@ -224,7 +224,7 @@ class Slice extends declared(Widget) {
     const isActive = this.viewModel.active;
     const isDisabled = this.viewModel.state === "disabled";
     const isReady = this.viewModel.state === "ready";
-    const isSlicing = this.viewModel.state === "slicing";
+    const isSlicing = this.viewModel.state === "slicing" || this.viewModel.state === "sliced";
     const isExcludeMode = this.layersMode === "exclude";
 
     const buttonClasses = [CSS.button, isDisabled && CSS.buttonDisabled];

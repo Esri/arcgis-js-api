@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../InputHandler"],function(e,t,n,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t){var n=e.call(this,!0)||this;return n._onChange=t,n._value="mouse",n.registerIncoming("pointer-down",function(e){var t="touch"===e.data.native.pointerType;n._setValue(t?"touch":"mouse")}),n._moveHandler=n.registerIncoming("pointer-move",function(e){var t="touch"===e.data.native.pointerType;n._setValue(t?"touch":"mouse")}),n._moveHandler.pause(),n}return n(t,e),t.prototype._setValue=function(e){e!==this._value&&("touch"===e?this._moveHandler.resume():this._moveHandler.pause(),this._value=e,this._onChange(e))},t}(o.InputHandler);t.LatestPointerType=r});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Tegnforklaring",points:"Punkt",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Oppretter tegnforklaring",noLegend:"Ingen tegnforklaring",dotValue:"1 prikk = {value} {unit}",currentObservations:"Gjeldende observasjoner",previousObservations:"Tidligere observasjoner",high:"Høy",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knop",esriFeetPerSecond:"ft/sek",esriMilesPerHour:"mph",showNormField:"{field} delt på {normField}",showNormPct:"{field} som en prosent av totalen",showRatio:"Forholdet mellom {field} til {normField}",showRatioPercent:"{field} som en prosent av {normField}",showRatioPercentTotal:"field} som en prosent av {field} og {normField}"});

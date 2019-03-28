@@ -44,8 +44,13 @@ uniform sampler2D u_texture;
 // value of 1). Note also that we are using the SIMD (single instruction, multiple
 // data) capabilities of the GPU to compute four different gaussian kernels, one
 // for each sigma.
-mediump vec4 gauss(mediump vec2 dir) {
+mediump vec4 gauss4(mediump vec2 dir) {
   return exp(-dot(dir, dir) / (2.0 * u_sigmas * u_sigmas));
+}
+
+// Same as above but uses only channel 3, aka `w`, aka `q`, aka `a`.
+mediump float gauss1(mediump vec2 dir) {
+  return exp(-dot(dir, dir) / (2.0 * u_sigmas[3] * u_sigmas[3]));
 }
 
 mediump vec4 selectChannel(mediump vec4 sample) {
@@ -53,11 +58,11 @@ mediump vec4 selectChannel(mediump vec4 sample) {
 }
 
 // Sample the input texture and accumulated its gaussian weighted value and the
-// total weight.
-void accumGauss(mediump float i, inout mediump vec4 tot, inout mediump vec4 weight) {
+// total weight; operates on all four channels.
+void accumGauss4(mediump float i, inout mediump vec4 tot, inout mediump vec4 weight) {
   // Computes the gaussian weights, one for each sigma.
   // Note that u_direction.xy is [1, 0] when blurring horizontally and [0, 1] when blurring vertically.
-  mediump vec4 w = gauss(i * u_direction.xy);
+  mediump vec4 w = gauss4(i * u_direction.xy);
 
   // Accumumates the values.
   // Note that u_direction.xy is [1/WIDTH, 0] when blurring horizontally and [0, 1/HEIGHT] when blurring vertically.
@@ -67,31 +72,43 @@ void accumGauss(mediump float i, inout mediump vec4 tot, inout mediump vec4 weig
   weight += w;
 }
 
+// Sample the input texture and accumulated its gaussian weighted value and the
+// total weight; operates on a single channel.
+void accumGauss1(mediump float i, inout mediump float tot, inout mediump float weight) {
+  // Computes the gaussian weights, using only the last sigma.
+  // Note that u_direction.xy is [1, 0] when blurring horizontally and [0, 1] when blurring vertically.
+  mediump float w = gauss1(i * u_direction.xy);
+
+  // Accumumates the values.
+  // Note that u_direction.xy is [1/WIDTH, 0] when blurring horizontally and [0, 1/HEIGHT] when blurring vertically.
+  tot += selectChannel(texture2D(u_texture, v_texcoord + i * u_direction.zw))[3] * w;
+
+  // Accumulates the weights.
+  weight += w;
+}
+
 void main(void) {
   // Initialize accumulated values and weights to zero.
-  mediump vec4 tot = vec4(0.0, 0.0, 0.0, 0.0);
-  mediump vec4 weight = vec4(0.0, 0.0, 0.0, 0.0);
+  mediump float tot = 0.0;
+  mediump float weight = 0.0;
 
   // Accumulates enough samples. These will be taken
   // horizontally or vertically depending on the value
   // of u_direction.
-  accumGauss(-5.0, tot, weight);
-  accumGauss(-4.0, tot, weight);
-  accumGauss(-3.0, tot, weight);
-  accumGauss(-2.0, tot, weight);
-  accumGauss(-1.0, tot, weight);
-  accumGauss(0.0, tot, weight);
-  accumGauss(1.0, tot, weight);
-  accumGauss(2.0, tot, weight);
-  accumGauss(3.0, tot, weight);
-  accumGauss(4.0, tot, weight);
-  accumGauss(5.0, tot, weight);
+  accumGauss1(-4.0, tot, weight);
+  accumGauss1(-3.0, tot, weight);
+  accumGauss1(-2.0, tot, weight);
+  accumGauss1(-1.0, tot, weight);
+  accumGauss1(0.0, tot, weight);
+  accumGauss1(1.0, tot, weight);
+  accumGauss1(2.0, tot, weight);
+  accumGauss1(3.0, tot, weight);
+  accumGauss1(4.0, tot, weight);
 
-  // Compute blurred values.
-  mediump vec4 rgba = tot / weight;
-
-  // Return the values. Note that each channel will contain
-  // the result of a different blur operation, one for each
-  // of the four chosen sigma.
-  gl_FragColor = vec4(rgba);
+  // Originally we were performing 4 blurs in parallel;
+  // Now we store the only result in the alpha component.
+  // dari8942: In theory we could disable writing to rgb
+  // using a color mask but I don't really feel like messing
+  // with that now.
+  gl_FragColor = vec4(0.0, 0.0, 0.0, tot / weight);
 }

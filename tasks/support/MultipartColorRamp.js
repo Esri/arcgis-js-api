@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["./ColorRamp"],function(t){return t.createSubclass({declaredClass:"esri.tasks.support.MultipartColorRamp",properties:{colorRamps:[],type:"multipart"},toJSON:function(){return{type:"multipart",colorRamps:this.colorRamps.map(function(t){return t.toJSON()})}}})});
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/lang","../../core/accessorSupport/decorators","./AlgorithmicColorRamp","./ColorRamp"],function(r,o,t,e,p,c,l,s){return function(r){function o(o){var t=r.call(this)||this;return t.colorRamps=null,t.type="multipart",t}e(o,r),s=o,o.prototype.clone=function(){return new s({colorRamps:p.clone(this.colorRamps)})};var s;return t([c.property({type:[l],json:{write:!0}})],o.prototype,"colorRamps",void 0),t([c.property({type:["multipart"]})],o.prototype,"type",void 0),o=s=t([c.subclass("esri.tasks.support.MultipartColorRamp")],o)}(c.declared(s))});

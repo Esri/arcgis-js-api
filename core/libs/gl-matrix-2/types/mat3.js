@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,n){function r(e){return e instanceof Float32Array&&e.length>=9}function t(e){return Array.isArray(e)&&e.length>=9}function i(e){return r(e)||t(e)}Object.defineProperty(n,"__esModule",{value:!0}),n.isMat3f32=r,n.isMat3f64=t,n.isMat3=i});

@@ -44,6 +44,11 @@
         "hide"
       ]
     },
+    "path": {
+      "type": "string",
+      "description": "For offline data, a path to point cloud layer data in a scene layer package file. A URI format is used, starting with `file:` followed by a file system path with an extension of `.slpk`. A relative path must be from the file which defines the layer. For example `file:../p20/zurich.slpk`.",
+      "pattern": "^file:.+\\.slpk$"
+    },
     "showLegend": {
       "type": "boolean",
       "description": "Boolean value indicating whether to display the layer in the legend. Default value is `true`.",
@@ -64,11 +69,23 @@
       "default": true
     }
   },
-  "required": [
-    "id",
-    "layerType",
-    "title",
-    "url"
+  "anyOf": [
+    {
+      "required": [
+        "id",
+        "layerType",
+        "title",
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "id",
+        "layerType",
+        "path",
+        "title"
+      ]
+    }
   ],
   "additionalProperties": false,
   "esriDocumentation": {

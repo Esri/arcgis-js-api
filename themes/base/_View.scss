@@ -80,10 +80,6 @@
    * Supported cursors:
    * default, crosshair, help, move, pointer, progress, grab, grabbing
    */
-  .esri-view-surface[data-cursor="default"] {
-    cursor: default;
-  }
-
   .esri-view-surface[data-cursor="copy"] {
     cursor: copy;
   }

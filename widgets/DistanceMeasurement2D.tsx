@@ -152,7 +152,6 @@ class DistanceMeasurement2D extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -167,7 +166,6 @@ class DistanceMeasurement2D extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.title;
@@ -307,7 +305,7 @@ class DistanceMeasurement2D extends declared(Widget) {
     const isActive = this.viewModel.active;
     const isDisabled = this.viewModel.state === "disabled";
     const isReady = this.viewModel.state === "ready";
-    const isMeasuring = this.viewModel.state === "measuring";
+    const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
     const label = this.viewModel.measurementLabel;
 
     const hintNode =
@@ -323,8 +321,8 @@ class DistanceMeasurement2D extends declared(Widget) {
       </section>
     ) : null;
 
-    const measurementLabelNode = (title: string, value: string, key: string) => {
-      return value ? (
+    const measurementLabelNode = (title: string, value: string, key: string) =>
+      value ? (
         <div key={`${key}-enabled`} class={CSS.measurementItem}>
           <span class={CSS.measurementItemTitle}>{title}</span>
           <span class={CSS.measurementItemValue}>{value}</span>
@@ -338,7 +336,6 @@ class DistanceMeasurement2D extends declared(Widget) {
           <span class={CSS.measurementItemTitle}>{title}</span>
         </div>
       );
-    };
 
     const measurementNode = isMeasuring ? (
       <section key="measurement" class={CSS.measurement}>

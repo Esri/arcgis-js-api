@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({empty:"- 空です -",validationErrors:{cannotBeNull:"値を入力してください。",outsideRange:"値は {min} ～ {max} である必要があります",invalidCodedValue:"値は、リストされた値の 1 つである必要があります 。",invalidType:"有効な値ではありません"}});

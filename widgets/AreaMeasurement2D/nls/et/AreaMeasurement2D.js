@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Mõõda",hint:"Mõõtmise alustamiseks klõpsake kohta, kuhu soovite asetada oma esimese punkti",unsupported:"2D-pindala mõõtmist toetab ainult MapView.",perimeter:"Ümbermõõt",area:"Piirkond",newMeasurement:"Uus mõõtmine",mode:"Režiim",modes:{auto:"Automaatne",planar:"Tasapinnaline",geodesic:"Geodeetiline"},unit:"Ühik",units:{metric:"Meetriline",imperial:"Briti","square-kilometers":"Ruutkilomeetrit","square-meters":"ruutmeetrit","square-miles":"Ruutmiili","square-inches":"ruuttolli","square-feet":"ruutjalga","square-yards":"ruutjardi","square-us-feet":"ruutjalga (USA)",acres:"aakrit",ares:"Aari",hectares:"hektarit"}});

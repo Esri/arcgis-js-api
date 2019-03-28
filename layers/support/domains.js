@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","./CodedValueDomain","./Domain","./InheritedDomain","./RangeDomain"],function(e,a,n,i,o,r){function u(e,a){return null===l(e,a)}function l(e,a){switch(e.type){case"range":var n="range"in e?e.range[0]:e.minValue,i="range"in e?e.range[1]:e.maxValue;if(+a<n||+a>i)return m.VALUE_OUT_OF_RANGE;break;case"coded-value":case"codedValue":if(null==e.codedValues||e.codedValues.every(function(e){return null==e||e.code!==a}))return m.INVALID_CODED_VALUE}return null}function d(e){if(e&&"range"===e.type){return{min:"range"in e?e.range[0]:e.minValue,max:"range"in e?e.range[1]:e.maxValue}}}function t(e){return e&&e.type?"range"===e.type?a.RangeDomain.fromJSON(e):"codedValue"===e.type?a.CodedValueDomain.fromJSON(e):null:null}Object.defineProperty(a,"__esModule",{value:!0}),a.CodedValueDomain=n,a.DomainBase=i,a.InheritedDomain=o,a.RangeDomain=r;var m;!function(e){e.VALUE_OUT_OF_RANGE="domain-validation-error::value-out-of-range",e.INVALID_CODED_VALUE="domain-validation-error::invalid-coded-value"}(m=a.DomainValidationError||(a.DomainValidationError={})),a.isValidDomainValue=u,a.validateDomainValue=l,a.types={key:"type",base:a.DomainBase,typeMap:{range:a.RangeDomain,"coded-value":a.CodedValueDomain}},a.getDomainRange=d,a.fromJSON=t});

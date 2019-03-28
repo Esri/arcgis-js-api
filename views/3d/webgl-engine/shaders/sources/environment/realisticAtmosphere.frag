@@ -14,10 +14,14 @@ const float fKmESun = 0.015;        // Km * ESun = 0.005 * 15
 // Radii
 uniform vec4 v4Radii; // (fInnerRadius, fInnerRadius^2, fOuterRadius, fOuterRadius^2)
 
-float fInnerRadius = v4Radii[0];   // The inner (planetary) radius
-float fInnerRadius2 = v4Radii[1];  // fInnerRadius^2
-float fOuterRadius = v4Radii[2];   // The outer (atmosphere) radius
-float fOuterRadius2 = v4Radii[3];  // fOuterRadius^2
+// The inner (planetary) radius
+#define fInnerRadius v4Radii[0]
+// fInnerRadius^2
+#define fInnerRadius2 v4Radii[1]
+// The outer (atmosphere) radius
+#define fOuterRadius v4Radii[2]
+// fOuterRadius^2
+#define fOuterRadius2 v4Radii[3]
 
 // Atmosphere parameters:
 // fScale:                    1.0 / (fOuterRadius - fInnerRadius)
@@ -32,21 +36,24 @@ float fOuterRadius2 = v4Radii[3];  // fOuterRadius^2
 uniform vec4 v4AtmosParams1; // (fScale, fScaleDepth, fScaleOverScaleDepth, fOneOverScaleDepth)
 uniform vec4 v4AtmosParams2; // (g, fScaleDepthBlue, fScaleOverScaleDepthBlue, fOneOverScaleDepthBlue)
 
-float fScale = v4AtmosParams1.x;
-vec2 v2ScaleDepth = vec2(v4AtmosParams1.y,v4AtmosParams2.y);//fScaleDepth, fScaleDepthBlue
-vec2 v2ScaleOverScaleDepth = vec2(v4AtmosParams1.z,v4AtmosParams2.z);//fScaleOverScaleDepth, fScaleOverScaleDepthBlue
-vec2 v2OneOverScaleDepth = vec2(v4AtmosParams1.w,v4AtmosParams2.w);//fOneOverScaleDepth, fOneOverScaleDepthBlue
+#define fScale v4AtmosParams1.x
+// fScaleDepth, fScaleDepthBlue
+#define v2ScaleDepth vec2(v4AtmosParams1.y,v4AtmosParams2.y)
+// fScaleOverScaleDepth, fScaleOverScaleDepthBlue
+#define v2ScaleOverScaleDepth vec2(v4AtmosParams1.z,v4AtmosParams2.z)
+// fOneOverScaleDepth, fOneOverScaleDepthBlue
+#define v2OneOverScaleDepth vec2(v4AtmosParams1.w,v4AtmosParams2.w)
 
 #ifndef HAZE
 uniform vec4 v4AtmosParams3; // (g2, fMiePhaseCoefficients, fLowerAlphaBlendBound, fOneOverOuterRadiusMinusAlphaBlendBound)
 uniform float fInnerFadeDistance;
 uniform float fAltitudeFade;
 
-float g = v4AtmosParams2.x;
-float g2 = v4AtmosParams3.x;
-float fMiePhaseCoefficients = v4AtmosParams3.y;
-float fLowerAlphaBlendBound = v4AtmosParams3.z;
-float fOneOverOuterRadiusMinusAlphaBlendBound = v4AtmosParams3.w;
+#define fg v4AtmosParams2.x
+#define fg2 v4AtmosParams3.x
+#define fMiePhaseCoefficients v4AtmosParams3.y
+#define fLowerAlphaBlendBound v4AtmosParams3.z
+#define fOneOverOuterRadiusMinusAlphaBlendBound v4AtmosParams3.w
 #endif
 
 // Camera
@@ -54,10 +61,14 @@ uniform vec3 v3CameraPos;     // The camera's current position
 uniform vec2 nearFar;
 
 uniform vec4 v4SphereComp;              // (fCameraHeight, fCameraHeight2, fC, fCSur)
-float fCameraHeight = v4SphereComp[0];  // The camera's current height
-float fCameraHeight2 = v4SphereComp[1]; // fCameraHeight^2
-float fC = v4SphereComp[2];             // fCameraHeight2 - fOuterRadius2; // C = ||o-c||^2 - r^2
-float fCSur = v4SphereComp[3];          // fCameraHeight2 - (fInnerRadius2 - 63756370000.0); // C = ||o-c||^2 - r^2
+// The camera's current height
+#define fCameraHeight v4SphereComp[0]
+// fCameraHeight^2
+#define fCameraHeight2 v4SphereComp[1]
+// fCameraHeight2 - fOuterRadius2; // C = ||o-c||^2 - r^2
+#define fC v4SphereComp[2]
+// fCameraHeight2 - (fInnerRadius2 - 63756370000.0); // C = ||o-c||^2 - r^2
+#define fCSur v4SphereComp[3]
 
 // Camera HDR
 #ifdef HAZE
@@ -88,7 +99,8 @@ const int maxSamples = 5;
 #else
   const float fOneOverGamma = 0.454545; // Gamma = 2.2
 #endif
-  const vec3 v3OneOverGamma = vec3(fOneOverGamma);
+
+const vec3 v3OneOverGamma = vec3(fOneOverGamma);
 
 // ToneMapping operators
 vec3 expTM(vec3 inputColor,float exposure){
@@ -358,7 +370,7 @@ void main() {
     vec3 v3ColorBlue = colorCoefficients *v3FrontColorBlue;
 #else
     vec3 v3RayleighCoefficients = (fScaledLength*0.75 * fOnePlusCos2*fKrESun)*v3InvWavelength;
-    float fMieCoefficients = fScaledLength*fKmESun * fMiePhaseCoefficients * fOnePlusCos2 / pow(1.0 + g2 - 2.0*g*fCos, 1.5);
+    float fMieCoefficients = fScaledLength*fKmESun * fMiePhaseCoefficients * fOnePlusCos2 / pow(1.0 + fg2 - 2.0*fg*fCos, 1.5);
 
     // Calculate the attenuation factor for the ground
     vec3 v3Color = v3RayleighCoefficients * v3FrontColor + fMieCoefficients * v3FrontColor;

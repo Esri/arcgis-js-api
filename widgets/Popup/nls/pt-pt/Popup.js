@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Aplicar zoom a",next:"Próxima elemento",previous:"Elemento anterior",dock:"Doca",undock:"Desencaixar",pageText:"{index} do {total}",selectedFeature:"Elemento selecionado",selectedFeatures:"{total} resultados"});
+define({zoom:"Aplicar zoom a",next:"Próxima elemento",previous:"Elemento anterior",dock:"Doca",undock:"Desencaixar",pageText:"{index} do {total}",selectedFeature:"Elemento selecionado",selectedFeatures:"{total} resultados",tooManyFields:"Esta camada possui demasiados campos.alguns não serão exibidos."});

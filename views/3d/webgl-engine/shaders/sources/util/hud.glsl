@@ -20,6 +20,8 @@ uniform float polygonOffset;
 uniform float cameraGroundRelative;
 uniform float pixelRatio;
 
+uniform float perDistancePixelRatio;
+
 #ifdef VERTICAL_OFFSET
 
 // [ screenLength, distanceFactor, minWorldLength, maxWorldLength ]
@@ -75,7 +77,7 @@ float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCos
   float pointGroundSign = sign(pointGroundDistance);
 
   if (pointGroundSign == 0.0) {
-    pointGroundSign = 1.0;
+    pointGroundSign = cameraGroundRelative;
   }
 
   // cameraGroundRelative is -1 if camera is below ground, 1 if above ground
@@ -102,6 +104,41 @@ float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCos
   }
 
   return groundRelative;
+}
+
+/**
+ * Apply small vertical offset along world normal to reduce flickering. The offset
+ * is distance based is approximately half of a pixel in the plane parallel to the
+ * view at the HUD origin.
+ *
+ * @param normalModel {vec3} the normal in model/world space.
+ * @param posModel {vec3} (inout) the position in model/world space. This value will
+ *   be updated with the additional vertical offset.
+ * @param posView {vec3} (inout) the position in view space. This value is used to
+ *   determine the distance to the HUD origin and will also be updated with the
+ *   additional vertical offset.
+ *
+ * Dependencies:
+ *
+ *   Uniforms:
+ *     - perDistancePixelRatio: world units per distance per pixel.
+ *     - cameraGroundRelative: indicates whether camera is above (1) or below (-1) ground.
+ *     - viewNormal: the view normal transformation.
+ */
+void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {
+  float distanceToCamera = length(posView);
+
+  // Compute offset in world units for a half pixel shift
+  float pixelOffset = distanceToCamera * perDistancePixelRatio * 0.5;
+
+  // Apply offset along normal in the direction away from the ground surface
+  vec3 modelOffset = normalModel * cameraGroundRelative * pixelOffset;
+
+  // Apply the same offset also on the view space position
+  vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;
+
+  posModel += modelOffset;
+  posView += viewOffset;
 }
 
 /**
@@ -157,6 +194,8 @@ vec4 projectPositionHUD(out ProjectHUDAux aux) {
   aux.posModel = (model * vec4(position, 1.0)).xyz;
   aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;
   aux.vnormal = (modelNormal * vec4(normal, 1.0)).xyz;
+
+  applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);
 
   // Screen sized offset in world space, used for example for line callouts
   // Note: keep this implementation in sync with the CPU implementation, see

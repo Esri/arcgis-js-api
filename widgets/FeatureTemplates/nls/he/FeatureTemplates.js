@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"תבניות ישויות",filterPlaceholder:"סנן ישויות מקושרות",noMatches:"לא נמצאו פריטים",noItems:"אין תבניות להצגה"});

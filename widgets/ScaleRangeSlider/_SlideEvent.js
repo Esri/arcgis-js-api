@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["../../core/declare"],function(e){return e(null,{declaredClass:"esri.dijit.ScaleRangeSlider._SlideEvent",_events:["onMouseMove","onFirstMove",{name:"onMoveStop",hookTo:"destroy"}],postCreate:function(){this.inherited(arguments),this._extendMover(this._movable),this._extendMover(this._movableBar,"rangebar"),this._extendMover(this._movableMax,"max")},_extendMover:function(e,t){if(e){var o=e.mover,n=this._events,i={};n.forEach(function(n){var r,a,s,v,d,h,l;"object"==typeof n?(a=n.name,r=n.hookTo):a=n,s=o.prototype[a]||function(){},v=t||"",d="slide"+v+"-"+a.toLowerCase(),h=function(){s.apply(this,arguments),this.widget.emit(d,{movable:e})},r&&(l=o.prototype[r],i[r]=function(){l.apply(this,arguments),h.apply(this,arguments)}),i[a]=h}),o.extend(i)}}})});

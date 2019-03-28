@@ -23,7 +23,7 @@ import MapView = require("../views/MapView");
 import SceneView = require("../views/SceneView");
 
 // esri.widgets.Search
-import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
+import LayerSearchSource = require("./Search/LayerSearchSource");
 import LocatorSearchSource = require("./Search/LocatorSearchSource");
 import SearchViewModel = require("./Search/SearchViewModel");
 
@@ -33,7 +33,7 @@ interface Axes {
   z?: number;
 }
 
-export type SupportedSearchSource = LocatorSearchSource | FeatureLayerSearchSource;
+export type SupportedSearchSource = LocatorSearchSource | LayerSearchSource;
 
 export type ActiveMenu = "none" | "suggestion" | "source" | "warning";
 
@@ -46,7 +46,7 @@ export interface SearchProperties {
   allPlaceholder: string;
   autoNavigate: boolean;
   autoSelect: boolean;
-  defaultSource: LocatorSearchSource | FeatureLayerSearchSource;
+  defaultSource: SupportedSearchSource;
   maxResults: number;
   maxSuggestions: number;
   minSuggestCharacters: number;
@@ -56,7 +56,7 @@ export interface SearchProperties {
   searchAllEnabled: boolean;
   searchTerm: string;
   selectedResult: SearchResult;
-  sources: Collection<LocatorSearchSource | FeatureLayerSearchSource>;
+  sources: Collection<SupportedSearchSource>;
   suggestionsEnabled: boolean;
   view: MapView | SceneView;
   viewModel: SearchViewModel;
@@ -71,7 +71,7 @@ export interface SearchResult {
 }
 
 export interface SearchResults<T> {
-  source: LocatorSearchSource | FeatureLayerSearchSource;
+  source: SupportedSearchSource;
   sourceIndex: number;
   error?: EsriError;
   results?: T[];
@@ -203,7 +203,7 @@ type SymbolTableElementType = ImageSymbolTableElementInfo | SymbolTableElementIn
 
 interface SymbolTableElement {
   type: "symbol-table";
-  title?: RendererTitle | string;
+  title?: RendererTitle | DotDensityTitle | string;
   infos: SymbolTableElementType[];
   legendType?: string;
 }
@@ -268,6 +268,11 @@ interface RendererTitle {
   field: string;
   normField: string;
   normByPct: boolean;
+}
+
+interface DotDensityTitle {
+  value: number;
+  unit?: string;
 }
 
 interface RampTitle {
@@ -376,7 +381,7 @@ export type AreaUnit =
 
 export type MeasurementMode = "auto" | "planar" | "geodesic";
 
-export type MeasurementState = "disabled" | "ready" | "measuring";
+export type MeasurementState = "disabled" | "ready" | "measuring" | "measured";
 
 export interface AreaMeasurement {
   geometry: Polygon;

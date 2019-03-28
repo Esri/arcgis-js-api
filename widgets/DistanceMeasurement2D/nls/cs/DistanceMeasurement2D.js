@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Měření",hint:"Začněte měření kliknutím na mapu pro umístění prvního bodu",unsupported:"Měření vzdálenosti ve 2D je podporováno pouze v MapView.",distance:"Vzdálenost",newMeasurement:"Nové měření",mode:"Režim",modes:{auto:"Automatický",planar:"Rovinný",geodesic:"Geodetický"},unit:"Jednotky",units:{metric:"Metrické",imperial:"Imperiální",kilometers:"kilometry",meters:"metry",miles:"míle",inches:"palce",feet:"stopy",yards:"yardy","nautical-miles":"námořní míle","us-feet":"Stopy (US)","degrees-minutes-seconds":"DMS",degrees:"stupně"}});

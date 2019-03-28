@@ -1,5 +1,6 @@
+#include <util/enableExtensions.glsl>
 #include <util/fsPrecision.glsl>
-#include <renderer/ssao/common.glsl>
+#include <util/depth.glsl>
 
 #ifndef RADIUS
 #define RADIUS 4
@@ -14,7 +15,7 @@ uniform vec2 blurSize;
 uniform float g_BlurFalloff;
 uniform float projScale;
 
-uniform vec2    nearFar;
+uniform vec2 nearFar;
 //set z scaling, used to prevent division in ortho mode
 uniform vec2 zScale;
 
@@ -22,7 +23,7 @@ varying vec2 uv;
 
 float BlurFunction(vec2 uv, float r, float center_d, inout float w_total, float sharpness) {
   float c = texture2D(tex, uv).r;
-  float d = getDepthLinear(depthMap, nearFar, uv);
+  float d = linearDepth(depthMap, uv, nearFar);
 
   float ddiff = d - center_d;
 
@@ -37,9 +38,9 @@ void main(void) {
   float b = 0.0;
   float w_total = 0.0;
 
-  float center_d =  getDepthLinear(depthMap, nearFar, uv);
+  float center_d = linearDepth(depthMap, uv, nearFar);
 
-  float sharpness = -0.05*projScale/(center_d*zScale.x+zScale.y);
+  float sharpness = -0.05 * projScale/(center_d*zScale.x+zScale.y);
   for (int r = -RADIUS; r <= RADIUS; ++r) {
     float rf = float(r);
     vec2 uvOffset = uv + rf*blurSize;

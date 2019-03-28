@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.transformTexture={name:"transform-texture",shaders:{vertexShader:t.resolveIncludes("raster/transform.vert"),fragmentShader:t.resolveIncludes("raster/texture.frag")},attributes:{a_position:0,a_texcoord:1}},r.transformSolid={name:"transform-solid",shaders:{vertexShader:t.resolveIncludes("raster/transform.vert"),fragmentShader:t.resolveIncludes("raster/solid.frag")},attributes:{a_position:0}}});

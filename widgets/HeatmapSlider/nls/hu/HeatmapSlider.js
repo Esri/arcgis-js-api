@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({statsAvg:"Átlag: ${avg}",count:"Szám: ${count}",percent:"${num}%",high:"Magas",low:"Alacsony",color:{changeMinMaxToolTIp:"Írjon be egy értéket.",handleToolTip:"Adatértékek leképezése színekre.",maxValueToolTip:"Írja be a legnagyobb várható adatértéket.",minValueToolTip:"Írja be a legkisebb várható adatértéket.",changeSymbol:"Szimbólum módosítása"},size:{handleToolTip:"Adatértékek leképezése szimbólumméretre.",sizeInputBoxLines:"Állítsa be a vonalvastagságot 0 és 18 pixel között.",sizeInputBoxPoints:"Állítsa be a szimbólumméretet 1 és 120 pixel között"}});

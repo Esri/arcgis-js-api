@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,r){return function(){function e(e){void 0===e&&(e=null),this.url="//route.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World/solveServiceArea",this.credentials=null,this.impedanceAttributeNames=[{serviceValue:"TravelTime",entryName:"traveltime"},{serviceValue:"TruckTravelTime",entryName:"trucktraveltime"},{serviceValue:"WalkTime",entryName:"walktime"},{serviceValue:"Miles",entryName:"miles"},{serviceValue:"Kilometers",entryName:"kilometers"}],this.defaultImpledanceAttributeName="TravelTime",this.credentials=e}return e}()});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Acercar a",next:"Entidad siguiente",previous:"Entidad anterior",dock:"Acoplar",undock:"Desacoplar",pageText:"{index} de {total}",selectedFeature:"Entidad seleccionada",selectedFeatures:"{total} resultados"});
+define({zoom:"Acercar a",next:"Entidad siguiente",previous:"Entidad anterior",dock:"Acoplar",undock:"Desacoplar",pageText:"{index} de {total}",selectedFeature:"Entidad seleccionada",selectedFeatures:"{total} resultados",tooManyFields:"La capa tiene demasiados campos, algunos no se mostrarán."});

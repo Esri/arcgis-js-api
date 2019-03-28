@@ -40,6 +40,9 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
+// @dojo.framework.shim
+import { from } from "@dojo/framework/shim/array";
+
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Search/nls/Search";
@@ -58,7 +61,6 @@ import {
   TAB,
   UP_ARROW
 } from "dojo/keys";
-import query = require("dojo/query");
 import regexp = require("dojo/regexp");
 
 // esri
@@ -88,13 +90,12 @@ import {
   SearchResponse,
   SearchResult,
   SearchResults,
-  SuggestResult
+  SuggestResult,
+  SupportedSearchSource
 } from "esri/widgets/interfaces";
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Search
-import FeatureLayerSearchSource = require("esri/widgets/Search/FeatureLayerSearchSource");
-import LocatorSearchSource = require("esri/widgets/Search/LocatorSearchSource");
 import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer");
 import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
 
@@ -362,10 +363,6 @@ class Search extends declared(Widget) {
    */
   constructor(value?: any) {
     super();
-  }
-
-  postInitialize(): void {
-    this.viewModel.popupTemplate = this._popupTemplate;
 
     this.own(
       watchUtils.watch(this, "searchTerm", (value) => {
@@ -377,7 +374,16 @@ class Search extends declared(Widget) {
           this.activeMenu = "none";
         }
       }),
-      watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges())
+      watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges()),
+      watchUtils.init(this, ["viewModel.popupTemplate", "viewModel.popupTemplate.content"], () => {
+        const content = this.get("viewModel.popupTemplate.content");
+        const defaultVMContent = "{Match_addr}";
+
+        // use search result renderer widget
+        if (content === defaultVMContent) {
+          this.viewModel.popupTemplate.content = this._renderSearchResultsContent.bind(this);
+        }
+      })
     );
   }
 
@@ -416,11 +422,6 @@ class Search extends declared(Widget) {
 
   private _suggestPromise: IPromise<SearchResults<SuggestResult>[]> = null;
 
-  private _popupTemplate: PopupTemplate = new PopupTemplate({
-    title: i18n.searchResult,
-    content: this._renderSearchResultsContent.bind(this)
-  });
-
   private _relatedTarget: HTMLElement = null;
 
   //--------------------------------------------------------------------------
@@ -434,8 +435,14 @@ class Search extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document
-   * @ignore
+   * The current active menu of the Search widget.
+   *
+   * **Possible Values:** none | suggestion | source | warning
+   *
+   * @name activeMenu
+   * @instance
+   * @type {string}
+   * @default none
    */
   @property()
   @renderable()
@@ -447,17 +454,17 @@ class Search extends declared(Widget) {
 
   /**
    * The [source](#sources) object currently selected. Can be either a
-   * {@link module:esri/widgets/Search/FeatureLayerSearchSource} or a {@link module:esri/widget/Search/LocatorSearchSource}.
+   * {@link module:esri/widgets/Search/LayerSearchSource} or a {@link module:esri/widget/Search/LocatorSearchSource}.
    *
    * @name activeSource
    * @instance
    * @default null
-   * @type {module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource}
+   * @type {module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource}
    * @readonly
    */
   @aliasOf("viewModel.activeSource")
   @renderable()
-  activeSource: LocatorSearchSource | FeatureLayerSearchSource = null;
+  activeSource: SupportedSearchSource = null;
 
   //----------------------------------
   //  activeSourceIndex
@@ -495,6 +502,28 @@ class Search extends declared(Widget) {
   allPlaceholder: string = null;
 
   //----------------------------------
+  //  allSources
+  //----------------------------------
+
+  //----------------------------------
+  //  allSources
+  //----------------------------------
+  /**
+   * The combined collection of {@link module:esri/widgets/Search/SearchViewModel#defaultSources defaultSources}
+   * and {@link module:esri/widgets/Search/SearchViewModel#sources sources}.
+   * The {@link module:esri/widgets/Search/SearchViewModel#defaultSources defaultSources}
+   * displays first in the Search UI.
+   *
+   * @name allSources
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
+   * @readonly
+   * @since 4.8
+   */
+  @aliasOf("viewModel.allSources")
+  allSources: Collection<SupportedSearchSource> = null;
+
+  //----------------------------------
   //  autoNavigate
   //----------------------------------
 
@@ -527,6 +556,28 @@ class Search extends declared(Widget) {
   autoSelect: boolean = null;
 
   //----------------------------------
+  //  defaultSources
+  //----------------------------------
+  /**
+   * A read-only property that is a {@link module:esri/core/Collection Collection}
+   * of {@link module:esri/widgets/Search/LayerSearchSource}
+   * and/or {@link module:esri/widgets/Search/LocatorSearchSource}. This property
+   * may contain [ArcGIS Portal](https://enterprise.arcgis.com/en/portal/)
+   * [locators](http://enterprise.arcgis.com/en/server/latest/publish-services/windows/geocode-services.htm)
+   * and any web map or web scene [configurable search sources](http://doc.arcgis.com/en/arcgis-online/create-maps/configure-feature-search.htm).
+   *
+   * This property is used to populate the Search UI if the {@link module:esri/widgets/Search/SearchViewModel#sources sources} property is not set.
+   *
+   * @name defaultSources
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
+   * @readonly
+   * @since 4.8
+   */
+  @aliasOf("viewModel.defaultSources")
+  defaultSources: Collection<SupportedSearchSource> = null;
+
+  //----------------------------------
   //  goToOverride
   //----------------------------------
 
@@ -544,7 +595,6 @@ class Search extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -577,7 +627,6 @@ class Search extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -617,6 +666,7 @@ class Search extends declared(Widget) {
   /**
    * The default distance in meters used to reverse geocode (if not specified by source).
    *
+   * @deprecated since version 4.11.
    * @type {number}
    * @ignore
    */
@@ -693,12 +743,12 @@ class Search extends declared(Widget) {
   //----------------------------------
 
   /**
-   * A customized PopupTemplate for the selected feature.
-   * Note that specifying a wildcard {*} for the popupTemplate will return all fields in addition to search-specific fields.
+   * A customized {@link module:esri/PopupTemplate} for the selected feature.
+   * Note that any {@link module:esri/PopopTemplate templates}
+   * defined on [allSources](#allSources) take precedence over those defined directly on the template.
    *
    * @name popupTemplate
    * @instance
-   * @default null
    * @type {module:esri/PopupTemplate}
    */
   @aliasOf("viewModel.popupTemplate")
@@ -842,7 +892,7 @@ class Search extends declared(Widget) {
    * to search for the [view](#view) specified by the Search widget instance.
    * There are two types of sources:
    *
-   * * {@link module:esri/widgets/Search/FeatureLayerSearchSource}
+   * * {@link module:esri/widgets/Search/LayerSearchSource}
    * * {@link module:esri/widgets/Search/LocatorSearchSource}
    *
    * Any combination of these sources may be used
@@ -855,7 +905,7 @@ class Search extends declared(Widget) {
    * @name sources
    * @autocast
    * @instance
-   * @type {module:esri/core/Collection<module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
+   * @type {module:esri/core/Collection<module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
    *
    * @example
    * // Default sources[] when sources is not specified
@@ -949,7 +999,7 @@ class Search extends declared(Widget) {
    * searchWidget.sources.push({ ... });  //new source
    */
   @aliasOf("viewModel.sources")
-  sources: Collection<LocatorSearchSource | FeatureLayerSearchSource> = null;
+  sources: Collection<SupportedSearchSource> = null;
 
   //----------------------------------
   //  suggestions
@@ -1141,9 +1191,7 @@ class Search extends declared(Widget) {
         this._scrollToTopSuggestion();
         return suggestResponse;
       })
-      .catch(() => {
-        return null;
-      });
+      .catch(() => null);
 
     this._suggestPromise = suggestPromise;
 
@@ -1482,7 +1530,7 @@ class Search extends declared(Widget) {
       return;
     }
 
-    const list = this._sourceListNode ? query<HTMLElement>("li", this._sourceListNode) : null;
+    const list = this._sourceListNode ? this._sourceListNode.getElementsByTagName("li") : null;
 
     if (!list) {
       return;
@@ -1586,7 +1634,7 @@ class Search extends declared(Widget) {
       keyCode === SHIFT;
 
     const list = this._suggestionListNode
-      ? query<HTMLElement>("li", this._suggestionListNode)
+      ? this._suggestionListNode.getElementsByTagName("li")
       : null;
 
     if (isIgnorableKey) {
@@ -1655,7 +1703,7 @@ class Search extends declared(Widget) {
     event.stopPropagation();
     event.preventDefault();
 
-    const list = this._sourceListNode ? query<HTMLElement>("li", this._sourceListNode) : null;
+    const list = this._sourceListNode ? this._sourceListNode.getElementsByTagName("li") : null;
 
     if (!list) {
       return;
@@ -1667,8 +1715,10 @@ class Search extends declared(Widget) {
   }
 
   private _handleSourceKeyup(event: KeyboardEvent): void {
-    const node = event.target as HTMLElement;
-    const list = this._sourceListNode ? query<HTMLElement>("li", this._sourceListNode) : null;
+    const node = event.target as HTMLLIElement;
+    const list = this._sourceListNode
+      ? from(this._sourceListNode.getElementsByTagName("li"))
+      : null;
     const { keyCode } = event;
 
     if (keyCode === ESCAPE) {
@@ -1715,9 +1765,9 @@ class Search extends declared(Widget) {
   }
 
   private _handleSuggestionKeyup(event: KeyboardEvent): void {
-    const node = event.target as HTMLElement;
+    const node = event.target as HTMLLIElement;
     const list = this._suggestionListNode
-      ? query<HTMLElement>("li", this._suggestionListNode)
+      ? from(this._suggestionListNode.getElementsByTagName("li"))
       : null;
     const itemIndex = list.indexOf(node);
     const { keyCode } = event;
@@ -1789,8 +1839,8 @@ class Search extends declared(Widget) {
     return sourceIndex === SearchViewModel.ALL_INDEX
       ? i18n.all
       : source
-        ? source.name || i18n.untitledSource
-        : i18n.untitledSource;
+      ? source.name || i18n.untitledSource
+      : i18n.untitledSource;
   }
 
   private _getSuggestionHeaderNode(sourceIndex: number): VNode {

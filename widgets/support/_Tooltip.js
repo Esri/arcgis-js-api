@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["../../core/declare","../../core/lang","dijit/Tooltip","dojo/dom"],function(t,o,i,n){return t(null,{declaredClass:"esri.widgets.support._Tooltip",constructor:function(){this._tooltips=[]},startup:function(){this.inherited(arguments),this._started||this._tooltips.forEach(function(t){t.startup()})},destroy:function(){this._tooltips.forEach(function(t){t.destroy()}),this._tooltips=null},_tooltips:null,createTooltips:function(t){t.forEach(function(t){this.createTooltip(t.node,t.label)},this)},createTooltip:function(t,n){var e,r,s=this._getConnectId(t);s&&(e="object"==typeof n?o.mixin({},n,{connectId:s}):{connectId:s,label:n},r=new i(e),this._started&&r.startup(),this._tooltips.push(r))},findTooltip:function(t){var o,i,n,e=this._getNode(t);if(t){o=this._tooltips,i=o.length;for(var r=0;r<i;r++)if(n=o[r],Array.isArray(n.connectId)?n.connectId.indexOf(e)>-1:n.connectId===e)return n}},_getConnectId:function(t){var o,i;if(t){if(Array.isArray(t)){if(o=[],t.forEach(function(t){(i=this._getNode(t))&&o.push(i)},this),0===o.length)return}else if(!(o=this._getNode(t)))return;return o}},_getNode:function(t){return n.byId(t.domNode||t)}})});

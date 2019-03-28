@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Messen",hint:"Beginnen Sie die Messung, indem Sie in die Szene klicken, um den ersten Punkt zu positionieren.",unsupported:"Die 3D-Flächenmessung wird nur in SceneView unterstützt.",perimeterLength:"Umfang",area:"Fläche",unit:"Einheit",notApplicable:"nicht zutreffend",newMeasurement:"Neue Messung",units:{metric:"Metrisch",imperial:"Britisch","square-kilometers":"Quadratkilometer","square-meters":"Quadratmeter","square-miles":"Quadratmeilen","square-inches":"Quadratzoll","square-feet":"Quadratfuß","square-yards":"Quadratyards","square-us-feet":"Quadratfuß (US)",acres:"Acres",ares:"Ar",hectares:"Hektar"}});

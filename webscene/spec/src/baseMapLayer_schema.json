@@ -14,6 +14,9 @@
       "$ref": "openStreetMapLayer_schema.json"
     },
     {
+      "$ref": "rasterDataLayer_schema.json"
+    },
+    {
       "$ref": "tiledImageServiceLayer_schema.json"
     },
     {

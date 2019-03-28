@@ -104,9 +104,11 @@ html[dir="rtl"] {
   .esri-ui-top-right {
     align-items: flex-start;
   }
-  .esri-ui-bottom-left,
-  .esri-ui-bottom-right {
+  .esri-ui-bottom-left {
     flex-direction: row-reverse;
+  }
+  .esri-ui-bottom-right {
+    flex-direction: row;
   }
 }
 

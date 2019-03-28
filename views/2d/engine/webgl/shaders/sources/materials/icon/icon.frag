@@ -1,25 +1,32 @@
 precision mediump float;
 
+#include <materials/constants.glsl>
+#include <materials/utils.glsl>
+#include <util/encoding.glsl>
+#include <materials/effects.glsl>
+#include <materials/constants.glsl>
+
 uniform lowp sampler2D u_texture;
 
 varying lowp vec2 v_tex;
 varying lowp float v_transparency;
 varying mediump vec2 v_size;
 varying lowp vec4 v_color;
+varying float v_visible;
 
 #ifdef SDF
 varying lowp vec4 v_outlineColor;
 varying mediump float v_outlineWidth;
-
-// we need the conversion function from RGBA to float
-#include <util/encoding.glsl>
+varying float v_overridingOutlineColor;
 #endif // SDF
+
+#ifdef HIGHLIGHT
+varying float v_isThinGeometry;
+#endif // HIGHLIGHT
 
 #ifdef ID
 varying highp vec4 v_id;
 #endif // ID
-
-const float softEdgeRatio = 1.0; // use blur here if needed
 
 void main()
 {
@@ -31,18 +38,24 @@ void main()
 
   // the soft edge ratio is about 1.5 pixels allocated for the soft edge.
   float size = max(v_size.x, v_size.y);
-  float dist = d * size * softEdgeRatio;
+  float dist = d * size * SOFT_EDGE_RATIO;
 
   // set the fragment's transparency according to the distance from the edge
   fillPixelColor *= clamp(0.5 - dist, 0.0, 1.0);
 
+  float outlineWidth = v_outlineWidth;
+
+  #ifdef HIGHLIGHT
+    outlineWidth = max(outlineWidth, 4.0 * v_isThinGeometry);
+  #endif
+
   // count for the outline
   // therefore tint the entire icon area.
-  if (v_outlineWidth > 0.25) {
-    lowp vec4 outlinePixelColor = v_outlineColor;
+  if (outlineWidth > 0.25) {
+    lowp vec4 outlinePixelColor = v_overridingOutlineColor * v_color + (1.0 - v_overridingOutlineColor) * v_outlineColor;
 
     // outlines can't be larger than the size of the symbol
-    float clampedOutlineSize = min(v_outlineWidth, size);
+    float clampedOutlineSize = min(outlineWidth, size);
 
     outlinePixelColor *= clamp(0.5 - abs(dist) + clampedOutlineSize * 0.5, 0.0, 1.0);
 
@@ -54,7 +67,7 @@ void main()
   }
 #else // not an SDF
    lowp vec4 texColor = texture2D(u_texture, v_tex);
-   gl_FragColor = v_transparency * texColor;
+   gl_FragColor = v_transparency * getEffectColor(texColor, v_visible);
 #endif // SDF
 
 #ifdef HIGHLIGHT

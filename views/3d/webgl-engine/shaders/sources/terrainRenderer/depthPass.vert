@@ -14,7 +14,7 @@ varying float depth;
 varying vec3 vpos;
 
 void main(void) {
-#ifdef SPHERICAL
+#if VIEWING_MODE == VIEWING_MODE_GLOBAL
   vec3 normal = normalize(position + origin);
 #else
   vec3 normal = vec3(0.0, 0.0, 1.0);

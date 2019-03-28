@@ -1111,7 +1111,7 @@ class RasterSymbologyEditor extends declared(Widget) {
           idProperty: "index"
         });
         bandSelects[idx].set({
-          store: store,
+          store,
           value: selectedIdx
         });
       });

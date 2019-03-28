@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,r){return function(){function e(e,r){this.material=e,this.programRep=r}return e.prototype.dispose=function(){},Object.defineProperty(e.prototype,"materialId",{get:function(){return this.material.id},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"renderOccluded",{get:function(){return this.material.renderOccluded},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"renderPriority",{get:function(){return this.material.renderPriority},enumerable:!0,configurable:!0}),e.prototype.isVisible=function(){return this.material.isVisible()},e.prototype.getPrograms=function(){return[this.getProgram()]},e}()});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./ManagingDisposable"],function(t,e,r,i){return function(t){function e(e,r){var i=t.call(this)||this;return i.material=e,i.programRep=r,i}return r(e,t),e.prototype.isVisible=function(){return this.material.isVisible()},e.prototype.isVisibleInPass=function(t){return this.material.isVisibleInPass(t)},e.prototype.getPrograms=function(){return[this.getProgram()]},e.prototype.getDrawMode=function(){return 4},e.prototype.release=function(t,e){},e}(i.ManagingDisposable)});

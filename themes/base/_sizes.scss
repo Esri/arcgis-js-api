@@ -2,7 +2,7 @@
 
 $border-size--active: 4px !default;
 $icon-size: 16px !default;
-$border-radius: 4px !default;
+$border-radius: 2px !default;
 
 /////////////////////////
 // Button
@@ -28,6 +28,12 @@ $button-height--plus-half: floor($button-height * 1.5) !default;
 // button : double
 $button-width--double: floor($button-width * 2) !default;
 $button-height--double: floor($button-height * 2) !default;
+
+
+/////////////////////////
+// List Items
+$list-item-height: 48px !default;
+$list-item-height--three-quarters: floor($list-item-height * 3/4) !default;
 
 /////////////////////////
 // Toggle

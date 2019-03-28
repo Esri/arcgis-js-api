@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","../../geometry/Point","./FeatureSet"],function(e,l,t){return e.createSubclass({declaredClass:"esri.tasks.support.ImageServiceIdentifyResult",properties:{catalogItemVisibilities:null,catalogItems:{value:null,type:t},location:{value:null,type:l},name:null,objectId:null,properties:null,value:null}})});

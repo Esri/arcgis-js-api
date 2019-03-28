@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","./Error"],function(t,o,r){Object.defineProperty(o,"__esModule",{value:!0});var e=function(){function t(t,o,r){void 0===r&&(r=""),this.major=t,this.minor=o,this._context=r}return t.prototype.lessThan=function(t,o){return this.major<t||t===this.major&&this.minor<o},t.prototype.since=function(t,o){return!this.lessThan(t,o)},t.prototype.validate=function(t){if(this.major!==t.major){var o=this._context&&this._context+":",e=this._context&&this._context+" ";throw new r(o+"unsupported-version","Required major "+e+"version is '"+this.major+"', but got '${version.major}.${version.minor}'",{version:t})}},t.prototype.clone=function(){return new t(this.major,this.minor,this._context)},t.parse=function(o,e){void 0===e&&(e="");var n=o.split("."),i=n[0],s=n[1],a=/^\s*\d+\s*$/;if(!i||!i.match||!i.match(a)){var h=e&&e+":";throw new r(h+"invalid-version","Expected major version to be a number, but got '${version}'",{version:o})}if(!s||!s.match||!s.match(a)){var h=e&&e+":";throw new r(h+"invalid-version","Expected minor version to be a number, but got '${version}'",{version:o})}return new t(parseInt(i,10),parseInt(s,10),e)},t}();o.Version=e});

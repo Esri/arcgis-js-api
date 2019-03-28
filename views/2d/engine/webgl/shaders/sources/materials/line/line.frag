@@ -1,5 +1,8 @@
 precision lowp float;
 
+#include <util/encoding.glsl>
+#include <materials/constants.glsl>
+
 uniform lowp float u_blur;
 uniform mediump float u_antialiasing;
 
@@ -20,22 +23,17 @@ varying highp float v_accumulatedDistance;
 #ifdef SDF
 const float sdfPatternHalfWidth = 15.5; // YF: assumed that the width will be set to 31
 const float widthFactor = 2.0;
-
-// we need the conversion function from RGBA to float
-#include <util/encoding.glsl>
 #endif // SDF
 
 #ifdef ID
 varying highp vec4 v_id;
 #endif // ID
 
-// include the thin line parameters (thinLineHalfWidth and thinLineWidthFactor)
-#include <materials/line/constants.glsl>
 
 void main()
 {
   // for now assume that a thin line is a line which is under 2 pixels (1 pixels on either sides of the centerline)
-  mediump float thinLineFactor = max(thinLineWidthFactor * step(v_lineHalfWidth, thinLineHalfWidth), 1.0);
+  mediump float thinLineFactor = max(THIN_LINE_WIDTH_FACTOR * step(v_lineHalfWidth, THIN_LINE_HALF_WIDTH), 1.0);
 
   // dist represent the distance of the fragment from the line. 1.0 or -1.0 will be the values on the edge of the line,
   // and any value in between will be inside the line (the sign represent the direction - right or left).
@@ -46,7 +44,7 @@ void main()
   // when it is a thin line then use a slightly shallower slope in order to add more feathering
   lowp float alpha = clamp(thinLineFactor * (v_lineHalfWidth - fragDist) / (u_blur + thinLineFactor - 1.0), 0.0, 1.0);
 
-#if defined(SDF)
+#if defined(SDF) && !defined(HIGHLIGHT) // When we render the highlight, we want to treat the line as if it was solid
   mediump float lineHalfWidth = widthFactor * v_lineHalfWidth;
   mediump float lineWidthRatio = lineHalfWidth / sdfPatternHalfWidth;
   mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * lineHalfWidth) / (lineWidthRatio * v_patternSize.x), 1.0);
@@ -63,7 +61,7 @@ void main()
 
   lowp vec4 fillPixelColor = v_transparency * alpha * clamp(0.5 - dist, 0.0, 1.0) * v_color;
   gl_FragColor = fillPixelColor;
-#elif defined(PATTERN)
+#elif defined(PATTERN) && !defined(HIGHLIGHT)  // When we render the highlight, we want to treat the line as if it was solid
   // we need to calculate the relative portion of the line texture along the line given the accumulated distance along the line
   // The computed value should is anumber btween 0 and 1 which will later be used to interpolate btween the BR and TL values
   mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * v_lineHalfWidth) / v_patternSize.x, 1.0);

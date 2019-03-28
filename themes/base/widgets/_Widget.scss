@@ -167,7 +167,11 @@
     }
     tr {
       a {
-        color: $font-color;
+        color: $interactive-font-color;
+        &:hover,
+        &:focus {
+          color: $interactive-font-color--hover;
+        }
       }
       td,
       th {

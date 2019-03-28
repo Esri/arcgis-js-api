@@ -52,6 +52,7 @@
     "no-caller": 2,
     "no-cond-assign": 2,
     "no-debugger": 2,
+    "no-dupe-keys": 2,
     "no-empty": [
       2,
       {

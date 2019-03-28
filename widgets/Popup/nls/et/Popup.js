@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Suumi",next:"Järgmine objekt",previous:"Eelmine objekt",dock:"Doki",undock:"Doki lahti",pageText:"{index} / {total}",selectedFeature:"Valitud objekt",selectedFeatures:"{total} tulemust"});
+define({zoom:"Suumi",next:"Järgmine objekt",previous:"Eelmine objekt",dock:"Doki",undock:"Doki lahti",pageText:"{index} / {total}",selectedFeature:"Valitud objekt",selectedFeatures:"{total} tulemust",tooManyFields:"Selles kihis on liiga palju välju. Mõnda neist ei kuvata."});

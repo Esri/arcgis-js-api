@@ -15,7 +15,7 @@ varying vec3 vpos;
 varying vec4 vtcOverlay;
 
 void main() {
-  #ifdef SPHERICAL
+  #if VIEWING_MODE == VIEWING_MODE_GLOBAL
     vec3 vnormal = normalize(position + origin);
   #else
     vec3 vnormal = vec3(0.0, 0.0, 1.0); // WARNING: up-axis dependent code

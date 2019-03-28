@@ -25,7 +25,7 @@ void main() {
   discardBySlice(vpos);
 
 #ifdef TEXTURING
-  if (textureLookup(tex, vtc).a * coverageCorrectionFactor(vtc) < ALPHA_THRESHOLD) {
+  if (textureLookup(tex, vtc).a < ALPHA_THRESHOLD) {
     discard;
   }
 #endif

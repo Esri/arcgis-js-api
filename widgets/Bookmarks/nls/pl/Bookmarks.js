@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Zakładki",goToBookmark:"Przejdź do zakładki",noBookmarksHeading:"Brak zakładek",noBookmarksDescription:"Dodaj zakładki do swojej mapy, a będą widoczne tutaj.",disabledHeading:"Wyłączono zakładki",disabledDescription:"Dodaj składnik MapView, aby włączyć zakładki."});

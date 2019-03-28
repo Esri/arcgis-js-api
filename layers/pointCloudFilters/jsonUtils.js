@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../core/object","../../core/Warning","./PointCloudBitfieldFilter","./PointCloudReturnFilter","./PointCloudValueFilter"],function(e,t,n,r,i,o,u){function l(e){return e?p[e.type]||null:null}function a(e,t,n){if(e&&Array.isArray(e))return e.map(function(e){var t=l(e);if(t){var i=new t;return i.read(e,n),i}n&&n.messages&&e&&n.messages.push(new r("point-cloud-filter:unsupported","Point cloud filters of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:n}))})}function f(e,t,r,i){var o=e.map(function(e){return e.write({},i)});n.setDeepValue(r,o,t)}function d(e){var t=l(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudValueFilter:u,pointCloudBitfieldFilter:i,pointCloudReturnFilter:o};t.read=a,t.write=f,t.fromJSON=d});

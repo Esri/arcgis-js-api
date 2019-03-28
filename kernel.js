@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","./core/promiseUtils","./core/has","dojo/main"],function(e,n,r,t){return function(){var e=t.config,n=void 0!==e.useDeferredInstrumentation,s=e.has&&void 0!==e.has["config-deferredInstrumentation"],o=e.has&&void 0!==e.has["config-useDeferredInstrumentation"];n||s||o||(r.add("config-deferredInstrumentation",!1,!0,!0),r.add("config-useDeferredInstrumentation",!1,!0,!0))}(),{version:"4.10",workerMessages:{request:function(r){return n.create(function(n){e(["./request"],n)}).then(function(e){var n=r.options||{};return n.responseType="array-buffer",e(r.url,n)}).then(function(e){return{result:{data:e.data,ssl:e.ssl},transferList:[e.data]}})}}}});
+define(["require","./core/promiseUtils","./core/has","dojo/main"],function(e,n,r,t){return function(){var e=t.config,n=void 0!==e.useDeferredInstrumentation,s=e.has&&void 0!==e.has["config-deferredInstrumentation"],o=e.has&&void 0!==e.has["config-useDeferredInstrumentation"];n||s||o||(r.add("config-deferredInstrumentation",!1,!0,!0),r.add("config-useDeferredInstrumentation",!1,!0,!0))}(),{version:"4.11",workerMessages:{request:function(r){return n.create(function(n){e(["./request"],n)}).then(function(e){var n=r.options||{};return n.responseType="array-buffer",e(r.url,n)}).then(function(e){return{result:{data:e.data,ssl:e.ssl},transferList:[e.data]}})}}}});

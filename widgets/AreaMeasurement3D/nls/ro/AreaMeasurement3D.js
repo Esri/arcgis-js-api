@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Măsurare",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea suprafeței 3D este acceptată doar în SceneView.",perimeterLength:"Perimetru",area:"Suprafaţă",unit:"Unitate",notApplicable:"n/a",newMeasurement:"Măsurătoare nouă",units:{metric:"Metric",imperial:"Englez","square-kilometers":"Kilometri pătraţi","square-meters":"Metri pătraţi","square-miles":"Mile pătrate","square-inches":"Inci pătraţi","square-feet":"Ft pătraţi","square-yards":"Yarzi pătraţi","square-us-feet":"Picioare pătrate (SUA)",acres:"Acri",ares:"Ari",hectares:"Hectare"}});

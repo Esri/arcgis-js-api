@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Szelet",cancel:"Mégse",hint:"A szeletelés megkezdéséhez kattintson, és húzzon el egy felszínt a 3D térképen",excludeHint:"Válasszon egy réteget a nézetben, hogy kizárja a szeletből",unsupported:"A szeletelést nem támogatja a MapView.",multipleDisabled:"Egyszerre csak egy szelet lehet aktív",newSlice:"Új szelet",excludedLayers:"Kizárt rétegek",pickLayer:"Válasszon ki egy réteget a nézetből",excludeLayer:"Réteg kizárása a szeletből",includeLayer:"Réteg belefoglalása a szeletbe",ground:"Felszín"});

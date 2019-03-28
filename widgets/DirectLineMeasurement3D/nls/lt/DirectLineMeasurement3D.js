@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Matuoti",hint:"Spustelėkite norimoje scenos vietoje",unsupported:"Trimatis tiesioginės linijos matavimas palaikomas tik scenos peržiūroje.",distance:"Atstumas",direct:"Įžambinė",horizontal:"Horizontalė",vertical:"Vertikalė",unit:"Matavimo vienetai",newMeasurement:"Matuoti iš naujo",units:{metric:"Metriniai",imperial:"Imperiniai",kilometers:"Kilometrai",meters:"Metrai",miles:"Mylios",inches:"Coliai",feet:"Pėdos",yards:"Jardai","nautical-miles":"Jūrmylės","us-feet":"Pėdos (JAV)","degrees-minutes-seconds":"Laipsniai, Minutės, Sekundės",degrees:"Laipsniai"}});

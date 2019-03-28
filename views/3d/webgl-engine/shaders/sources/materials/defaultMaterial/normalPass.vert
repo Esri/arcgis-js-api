@@ -4,10 +4,13 @@
 
 uniform mat4 viewNormal;
 attribute vec3 position;
-#ifdef COMPRESSED_NORMALS
-attribute vec2 normalCompressed;
-#else
-attribute vec3 normal;
+
+#if (NORMALS == NORMALS_COMPRESSED)
+  attribute vec2 normalCompressed;
+  varying vec3 vnormal;
+#elif (NORMALS == NORMALS_DEFAULT)
+  attribute vec3 normal;
+  varying vec3 vnormal;
 #endif
 
 #ifdef TEXTURING
@@ -19,7 +22,7 @@ varying vec4 regionV;
 #endif
 #endif
 
-varying vec3 vnormal;
+
 varying vec3 vpos;
 
 #include <util/visualVariables.glsl>
@@ -36,25 +39,30 @@ void main(void) {
   vpos = calculateVPos();
 
 #ifdef INSTANCED_DOUBLE_PRECISION
-  vnormal = normalize((viewNormal * vec4(modelNormal * localNormal().xyz, 1.0)).xyz);
+  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+    vnormal = normalize((viewNormal * vec4(modelNormal * localNormal().xyz, 1.0)).xyz);
+  #endif
 
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
-#ifdef IOS_SAFARI_FIX
-  originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
-#endif
+
+  #ifdef IOS_SAFARI_FIX
+    originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
+  #endif
   vpos -= originDelta;
 
-#ifdef VERTICAL_OFFSET
-  vec3 centerPos = model * localCenter().xyz + originDelta;
-  vpos += calculateVerticalOffset(centerPos, localOrigin);
-#endif
+  #ifdef VERTICAL_OFFSET
+    vec3 centerPos = model * localCenter().xyz + originDelta;
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+  #endif
 #else /* INSTANCED_DOUBLE_PRECISION */
-  vnormal = normalize((viewNormal * modelNormal * localNormal()).xyz);
+  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+    vnormal = normalize((viewNormal * modelNormal * localNormal()).xyz);
+  #endif
 
-#ifdef VERTICAL_OFFSET
-  vec3 centerPos = (model * localCenter()).xyz;
-  vpos += calculateVerticalOffset(centerPos, localOrigin);
-#endif
+  #ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * localCenter()).xyz;
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+  #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
 
   gl_Position = proj * view * vec4(vpos, 1.0);

@@ -132,7 +132,7 @@ vec3 sceneLightingAdditionalLightGlobal(vec3 worldPos, float ssao, out float add
   // heuristic lighting model originally used in the terrain shading
   // now used to generated additional ambient light
 
-#ifdef VIEWING_MODE_GLOBAL
+#if VIEWING_MODE == VIEWING_MODE_GLOBAL
     float vndl = -dot(normalize(worldPos), lightingMainDirection);
 #else
     float vndl = -dot(vec3(0.0, 0.0, 1.0), lightingMainDirection);

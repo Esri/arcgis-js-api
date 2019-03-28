@@ -54,120 +54,13 @@
             }
           }
         }
-      },
-      "popupInfo": {
-        "showAttachments": false,
-        "popupElements": [
-          {
-            "type": "fields"
-          }
-        ],
-        "fieldInfos": [
-          {
-            "fieldName": "objectid",
-            "label": "objectid",
-            "visible": true
-          },
-          {
-            "fieldName": "beginlifespan_date",
-            "label": "beginLifespan_date",
-            "visible": true
-          },
-          {
-            "fieldName": "status",
-            "label": "Construction status",
-            "visible": true
-          },
-          {
-            "fieldName": "description",
-            "label": "description",
-            "visible": true
-          },
-          {
-            "fieldName": "name",
-            "label": "name",
-            "visible": true
-          },
-          {
-            "fieldName": "subtype",
-            "label": "subtype",
-            "visible": true
-          },
-          {
-            "fieldName": "buildingfid",
-            "label": "Building Feature ID",
-            "visible": true
-          },
-          {
-            "fieldName": "usage",
-            "label": "usage",
-            "visible": true
-          },
-          {
-            "fieldName": "attribution",
-            "label": "Attribution/Source",
-            "visible": true
-          },
-          {
-            "fieldName": "roofform",
-            "label": "Roof form",
-            "visible": true
-          },
-          {
-            "fieldName": "builddate",
-            "label": "BuildDate",
-            "visible": true
-          },
-          {
-            "fieldName": "levelsaboveground",
-            "label": "Levels above ground",
-            "visible": true
-          },
-          {
-            "fieldName": "totalheight",
-            "label": "Total height",
-            "visible": true
-          }
-        ],
-        "title": "Proposed for Demolition"
       }
     },
     {
       "id": "14c4ab69790-layer19",
       "title": "New Buildings",
       "url": "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer/layers/0",
-      "layerType": "ArcGISSceneServiceLayer",
-      "popupInfo": {
-        "showAttachments": false,
-        "popupElements": [
-          {
-            "type": "fields"
-          }
-        ],
-        "fieldInfos": [
-          {
-            "fieldName": "objectid",
-            "label": "OBJECTID",
-            "visible": true
-          },
-          {
-            "fieldName": "name",
-            "label": "name",
-            "visible": true
-          },
-          {
-            "fieldName": "randomseed",
-            "label": "randomSeed",
-            "visible": true
-          },
-          {
-            "fieldName": "shape__id",
-            "label": "SHAPE__ID",
-            "visible": true
-          }
-        ],
-        "title": "New Buildings"
-      }
+      "layerType": "ArcGISSceneServiceLayer"
     }
   ],
   "baseMap": {
@@ -203,9 +96,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.13",
+  "version": "1.15",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.10",
+  "authoringAppVersion": "4.11",
   "presentation": {
     "slides": [
       {

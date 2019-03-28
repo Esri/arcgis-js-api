@@ -51,7 +51,7 @@ varying float screenSizeCosAngle;
 void main(void) {
   vpos = position;
 
-#ifdef SPHERICAL
+#if VIEWING_MODE == VIEWING_MODE_GLOBAL
   vnormal = normalize(vpos + origin);
 #else
   vnormal = vec3(0.0, 0.0, 1.0); // WARNING: up-axis dependent code

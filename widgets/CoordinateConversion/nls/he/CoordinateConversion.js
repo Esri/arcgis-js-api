@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"הוסף המרה",captureMode:"מצב לכידה",changeCoordinateDisplay:"שנה תצוגת קואורדינטות",convert:"המר",conversionOutputSuffix:"פלט המרה",copySuccessMessage:"הקואורדינטה הועתקה ללוח",defaultPattern:"אפס לברירת המחדל",goTo:"עבור למיקום",inputCoordTitle:"הזן קואורדינטה",invalidCoordinate:"קורדיאנטה לא חוקית",liveMode:"מצב זמן אמת",locationOffBasemap:"הקואורדינטה שהוזנה נמצאת מחוץ לתחום של מפת הבסיס",noBasemap:"אין מפת בסיס.",noLocation:"אין מיקום",removeConversion:"הסר המרה",selectFormat:"בחר פורמט",settingsTitle:"הגדרות פורמט"});

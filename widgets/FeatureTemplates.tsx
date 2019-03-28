@@ -13,7 +13,6 @@
  *
  * @module esri/widgets/FeatureTemplates
  * @since 4.10
- * @beta
  *
  * @see [FeatureTemplates.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTemplates.tsx)
  * @see [FeatureTemplates.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureTemplates.scss)
@@ -36,17 +35,18 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
+// @dojo.framework.shim
+import IntersectionObserver from "@dojo/framework/shim/IntersectionObserver";
+
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
 
 // esri.core
 import HandleOwner = require("esri/core/HandleOwner");
+import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
-
-// esri.core.libs.intersection-observer
-import "../core/libs/intersection-observer/intersection-observer";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
@@ -57,46 +57,34 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.FeatureTemplates
 import FeatureTemplatesViewModel = require("esri/widgets/FeatureTemplates/FeatureTemplatesViewModel");
 import { Filter, GroupByType } from "esri/widgets/FeatureTemplates/interfaces";
+import { ItemList } from "esri/widgets/FeatureTemplates/ItemList";
 import TemplateItem = require("esri/widgets/FeatureTemplates/TemplateItem");
 import TemplateItemGroup = require("esri/widgets/FeatureTemplates/TemplateItemGroup");
 
 // esri.widgets.support
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
-
-// maquette
-import { VNode } from "maquette";
-
-const thumbnailsKey = "thumbnails";
+import { VNode } from "esri/widgets/support/interfaces";
+import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-feature-templates",
-  list: "esri-feature-templates__list",
-  section: "esri-feature-templates__section",
-  scroller: "esri-feature-templates__scroller",
-  sectionHeader: "esri-feature-templates__section-header",
-  item: "esri-feature-templates__list-item",
-  itemSelected: "esri-feature-templates__list-item--selected",
-  itemContainer: "esri-feature-templates__list-item-container",
-  itemLabel: "esri-feature-templates__list-item-label",
-  itemIcon: "esri-feature-templates__list-item-icon",
-  noMatchesMessage: "esri-feature-templates__no-matches-message",
-  noItemsMessage: "esri-feature-templates__no-items-message",
-  filterContainer: "esri-feature-templates__filter-container",
-  filterPlaceholder: "esri-feature-templates__filter-placeholder",
-  filterInput: "esri-feature-templates__filter-input",
-  filterPlaceholderText: "esri-feature-templates__filter-placeholder-text",
   loader: "esri-feature-templates__loader",
-
-  // icon
-  searchIcon: "esri-icon-search",
+  itemIcon: "esri-feature-templates__list-item-icon",
 
   // common
-  widget: "esri-widget",
-  heading: "esri-widget__heading",
-  input: "esri-input"
+  widget: "esri-widget"
 };
 
-interface FeatureTemplates extends Widget, HandleOwner {}
+function isGroup(itemOrGroup: any): itemOrGroup is TemplateItemGroup {
+  return itemOrGroup.items;
+}
+
+function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string {
+  if (isGroup(itemOrGroup)) {
+    return itemOrGroup.uid;
+  }
+
+  return itemOrGroup.layer.id;
+}
 
 @subclass("esri.widgets.FeatureTemplates")
 class FeatureTemplates extends declared(Widget, HandleOwner) {
@@ -188,6 +176,8 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
 
   /**
    * Fires when a {@link module:esri/widgets/FeatureTemplates/TemplateItem template item} is selected.
+   * This occurs when the associated view model's {@link module:esri/widgets/FeatureTemplates/FeatureTemplatesViewModel#select select} method
+   * is called.
    *
    * @event module:esri/widgets/FeatureTemplates#select
    * @property {module:esri/widgets/FeatureTemplates/TemplateItem} item - The selected template item.
@@ -251,20 +241,26 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
   constructor(params?: any) {
     super();
 
-    this._handleItemClick = this._handleItemClick.bind(this);
-    this._handleInputChange = this._handleInputChange.bind(this);
+    this.renderItemIcon = this.renderItemIcon.bind(this);
     this._afterItemCreateOrUpdate = this._afterItemCreateOrUpdate.bind(this);
     this._afterItemRemoved = this._afterItemRemoved.bind(this);
-    this._afterRootCreate = this._afterRootCreate.bind(this);
   }
 
   postInitialize(): void {
-    const nameBasedFilter: Filter = ({ name }) =>
-      !this._filterText || name.toLowerCase().indexOf(this._filterText.toLowerCase()) > -1;
+    const nameBasedFilter: Filter = ({ label }) =>
+      !this.filterText || label.toLowerCase().indexOf(this.filterText.toLowerCase()) > -1;
 
-    if (!this.filterFunction) {
-      this.filterFunction = nameBasedFilter;
-    }
+    this.own(
+      init<this>(this, "viewModel", (value, oldValue) => {
+        if (value && !value.filterFunction) {
+          this.filterFunction = nameBasedFilter;
+        }
+
+        if (oldValue && oldValue !== value && oldValue.filterFunction === nameBasedFilter) {
+          oldValue.filterFunction = null;
+        }
+      })
+    );
   }
 
   destroy(): void {
@@ -280,9 +276,28 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
   //
   //--------------------------------------------------------------------------
 
-  private _iconIntersectionObserver: IntersectionObserver;
+  private _iconIntersectionObserver: IntersectionObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const node = entry.target;
 
-  private _filterText: string = null;
+          if (!node["data-has-icon"]) {
+            node["data-has-icon"] = true;
+            const item = node["data-item"] as TemplateItem;
+
+            item.fetchThumbnail().then(() => {
+              if (item.thumbnail) {
+                node.appendChild(item.thumbnail);
+              }
+            });
+          }
+
+          observer.unobserve(node);
+        }
+      });
+    }
+  );
 
   //--------------------------------------------------------------------------
   //
@@ -343,6 +358,21 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
    */
   @aliasOf("viewModel.filterFunction")
   filterFunction: Filter = null;
+
+  //----------------------------------
+  //  filterText
+  //----------------------------------
+
+  /**
+   * Text used to filter items.
+   *
+   * @name filterText
+   * @instance
+   * @type string
+   */
+  @property()
+  @renderable()
+  filterText: string = "";
 
   //----------------------------------
   //  groupBy
@@ -443,6 +473,7 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
    */
   @property()
   @renderable(["viewModel.items", "viewModel.state"])
+  @vmEvent("select")
   viewModel: FeatureTemplatesViewModel = new FeatureTemplatesViewModel();
 
   //--------------------------------------------------------------------------
@@ -453,52 +484,38 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
 
   render(): VNode {
     const {
-      _filterText,
+      filterText,
+      filterEnabled,
       viewModel: { items, state }
     } = this;
 
     return (
-      <div
-        class={this.classes(CSS.base, CSS.widget)}
-        aria-label={i18n.widgetLabel}
-        afterCreate={this._afterRootCreate}
-      >
+      <div class={this.classes(CSS.base, CSS.widget)} aria-label={i18n.widgetLabel}>
         {state === "loading"
           ? this.renderLoader()
           : state === "ready"
-            ? items.length === 0 && !_filterText
-              ? this.renderNoItems()
-              : [this.filterEnabled ? this.renderFilterInput() : null, this.renderItems()]
-            : null}
+          ? ItemList<TemplateItem>({
+              id: this.id,
+              identify: getItemOrGroupId,
+              filterText,
+              items,
+              messages: {
+                filterPlaceholder: i18n.filterPlaceholder,
+                noItems: i18n.noItems,
+                noMatches: i18n.noMatches
+              },
+              filterEnabled,
+              onItemSelect: (item) => {
+                this.viewModel.select(item);
+              },
+              onFilterChange: (value) => {
+                this.filterText = value;
+                this.viewModel.refresh();
+              },
+              renderIcon: this.renderItemIcon
+            })
+          : null}
       </div>
-    );
-  }
-
-  private _afterRootCreate(node: Element): void {
-    this._iconIntersectionObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const node = entry.target;
-
-            if (!node["data-has-icon"]) {
-              node["data-has-icon"] = true;
-              const item = node["data-item"] as TemplateItem;
-
-              item.fetchThumbnail().then(() => {
-                if (item.thumbnail) {
-                  node.appendChild(item.thumbnail);
-                }
-              });
-            }
-
-            observer.unobserve(node);
-          }
-        });
-      },
-      {
-        root: node
-      }
     );
   }
 
@@ -508,128 +525,17 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
   //
   //--------------------------------------------------------------------------
 
-  protected renderFilterInput(): VNode {
-    const placeholderId = `${this.id}-placeholder`;
-
+  protected renderItemIcon({ item }: { item: TemplateItem }): VNode {
     return (
-      <div class={CSS.filterContainer} key="filter">
-        <input
-          aria-labelledby={placeholderId}
-          class={this.classes(CSS.input, CSS.filterInput)}
-          oninput={this._handleInputChange}
-          type="search"
-        />
-        {!this._filterText ? (
-          <div class={CSS.filterPlaceholder} id={placeholderId} key="placeholder">
-            <span class={CSS.searchIcon} aria-hidden="true" />
-            <div class={CSS.filterPlaceholderText}>{i18n.filterPlaceholder}</div>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-
-  protected renderItems(): VNode {
-    const { filterFunction, items, groupBy } = this.viewModel;
-
-    this.handles.remove(thumbnailsKey);
-
-    if (filterFunction && items.length === 0) {
-      return (
-        <div class={CSS.noMatchesMessage} key="no-matches">
-          {i18n.noMatches}
-        </div>
-      );
-    }
-
-    if (groupBy === "none") {
-      return (
-        <ul class={this.classes(CSS.list, CSS.scroller)} key="item-container">
-          {items.map((item) => this.renderItem(item as TemplateItem))}
-        </ul>
-      );
-    }
-
-    return this.renderItemSections(items as TemplateItemGroup[]);
-  }
-
-  protected renderItemSections(groups: TemplateItemGroup[]): VNode {
-    return (
-      <div class={CSS.scroller} key="item-container">
-        {groups.map((group) => this.renderItemSection(group))}
-      </div>
-    );
-  }
-
-  protected renderItemSection(group: TemplateItemGroup): VNode {
-    const headingId = `${group.uid}-heading`;
-
-    return (
-      <section aria-labelledby={headingId} class={CSS.section} key={group.name}>
-        <div aria-level="1" id={headingId} role="heading" class={this.classes(CSS.sectionHeader)}>
-          {this.renderLabel(group.name)}
-        </div>
-        <ul class={CSS.list}>{group.items.map((item) => this.renderItem(item, group))}</ul>
-      </section>
-    );
-  }
-
-  protected renderItem(item: TemplateItem, group?: TemplateItemGroup): VNode {
-    this.handles.add(item.watch("thumbnail", () => this.scheduleRender()), thumbnailsKey);
-
-    const key = `${item.layer.uid}__${item.label}`;
-
-    return (
-      <li
-        aria-level={group ? "2" : ""}
-        class={CSS.item}
+      <span
+        key="icon"
+        class={CSS.itemIcon}
+        afterCreate={this._afterItemCreateOrUpdate}
+        afterUpdate={this._afterItemCreateOrUpdate}
+        afterRemoved={this._afterItemRemoved}
         data-item={item}
-        key={key}
-        onclick={this._handleItemClick}
-        onkeydown={this._handleItemClick}
-        tabIndex={0}
-      >
-        <div class={CSS.itemContainer}>
-          <div
-            class={CSS.itemIcon}
-            afterCreate={this._afterItemCreateOrUpdate}
-            afterUpdate={this._afterItemCreateOrUpdate}
-            afterRemoved={this._afterItemRemoved}
-            data-item={item}
-            data-has-icon={false}
-          />
-          <div class={CSS.itemLabel}>{this.renderLabel(item.label)}</div>
-        </div>
-      </li>
-    );
-  }
-
-  protected renderLabel(label: string): VNode | string {
-    const { _filterText } = this;
-
-    if (!_filterText) {
-      return label;
-    }
-
-    const lowercasedLabel = label.toLowerCase();
-    const lowercasedFilter = _filterText.toLowerCase();
-
-    const filterStartIndex = lowercasedLabel.indexOf(lowercasedFilter);
-
-    if (filterStartIndex === -1) {
-      return label;
-    }
-
-    const start = label.substring(0, filterStartIndex);
-    const match = label.substr(filterStartIndex, _filterText.length);
-    const end = label.substring(filterStartIndex + _filterText.length);
-
-    return (
-      <span>
-        {start}
-        <strong>{match}</strong>
-        {end}
-      </span>
+        data-has-icon={false}
+      />
     );
   }
 
@@ -637,34 +543,11 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
     return <div class={CSS.loader} key="loader" />;
   }
 
-  protected renderNoItems(): VNode {
-    return (
-      <div class={CSS.noItemsMessage} key="no-items">
-        <h2 class={CSS.heading}>{i18n.noItems}</h2>
-      </div>
-    );
-  }
-
   //--------------------------------------------------------------------------
   //
   //  Private Methods
   //
   //--------------------------------------------------------------------------
-
-  @accessibleHandler()
-  protected _handleItemClick(event: Event): void {
-    const listItem = event.currentTarget as HTMLLIElement;
-    const item = listItem["data-item"] as TemplateItem;
-
-    this.emit("select", { item, template: item.template });
-  }
-
-  protected _handleInputChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-
-    this._filterText = input.value;
-    this.viewModel.refresh();
-  }
 
   protected _afterItemCreateOrUpdate(node: HTMLElement): void {
     this._iconIntersectionObserver.observe(node);

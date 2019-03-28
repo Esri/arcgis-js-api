@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Μέτρηση",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στον χάρτη για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση εμβαδού 2D υποστηρίζεται μόνο στο MapView.",perimeter:"Περίμετρος",area:"Εμβαδόν",newMeasurement:"Νέα μέτρηση",mode:"Λειτουργία",modes:{auto:"Αυτόματο",planar:"Μετρικό",geodesic:"Γεωδαιτικό"},unit:"Μονάδα",units:{metric:"Μετρικό σύστημα",imperial:"Βρετανικό σύστημα","square-kilometers":"Τετραγωνικά χιλιόμετρα","square-meters":"Τετραγωνικά μέτρα","square-miles":"Τετραγωνικά μίλια","square-inches":"Τετραγωνικές ίντσες","square-feet":"Τετραγωνικά πόδια","square-yards":"Τετραγωνικές γιάρδες","square-us-feet":"Τετραγωνικά πόδια (ΗΠΑ)",acres:"Έικρ",ares:"Άρια",hectares:"Εκτάρια"}});

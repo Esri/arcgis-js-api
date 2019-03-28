@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Zoom a",next:"Oggetto feature seguente",previous:"Oggetto feature precedente",dock:"Banchina",undock:"Disancora",pageText:"{index} di {total}",selectedFeature:"Feature selezionata",selectedFeatures:"{total} risultati"});
+define({zoom:"Zoom a",next:"Oggetto feature seguente",previous:"Oggetto feature precedente",dock:"Banchina",undock:"Disancora",pageText:"{index} di {total}",selectedFeature:"Feature selezionata",selectedFeatures:"{total} risultati",tooManyFields:"Questo layer contiene troppi campi, alcuni non verranno visualizzati."});

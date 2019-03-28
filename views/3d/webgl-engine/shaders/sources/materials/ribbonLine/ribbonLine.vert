@@ -6,6 +6,7 @@ uniform mat4 model;
 
 uniform float extLineWidth;
 uniform float nearPlane;
+uniform float pixelRatio;
 
 attribute vec3 position;
 attribute vec2 uv0;
@@ -121,7 +122,7 @@ if (uv0.y == 0.0) {
 else {
 #endif
 
-float lineWidth = extLineWidth + size;
+float lineWidth = (extLineWidth + size) * pixelRatio;
 
 #ifdef SCREENSCALE
 

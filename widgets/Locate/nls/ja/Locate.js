@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"場所検索",title:"現在の場所を検索",currentLocation:"現在位置",timestamp:"タイムスタンプ",latitude:"緯度",longitude:"経度",accuracy:"正確度",altitude:"高度",altitudeAccuracy:"高度の精度",heading:"方位角",speed:"速度"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../geometry/support/jsonUtils"],function(e,t){return e.createSubclass({declaredClass:"esri.tasks.support.ImageServiceIdentifyParameters",properties:{geometry:null,mosaicRule:null,noData:null,renderingRule:null,pixelSizeX:null,pixelSizeY:null,pixelSize:null,returnGeometry:!1,returnCatalogItems:!0,timeExtent:null},toJSON:function(e){var i=e&&e.geometry||this.geometry,l={geometry:i,returnGeometry:this.returnGeometry,returnCatalogItems:this.returnCatalogItems,mosaicRule:this.mosaicRule?JSON.stringify(this.mosaicRule.toJSON()):null,renderingRule:this.renderingRule?JSON.stringify(this.renderingRule.toJSON()):null};i&&(l.geometryType=t.getJsonType(i));var r=this.timeExtent;return l.time=r?r.toJSON().join(","):null,null!=this.pixelSizeX&&null!=this.pixelSizeY?l.pixelSize=JSON.stringify({x:parseFloat(this.pixelSizeX),y:parseFloat(this.pixelSizeY)}):this.pixelSize&&(l.pixelSize=this.pixelSize?JSON.stringify(this.pixelSize.toJSON()):null),l}})});

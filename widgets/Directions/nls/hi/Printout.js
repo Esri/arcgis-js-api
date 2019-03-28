@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({printNotes:"यहाँ नोट डालें",printDisclaimer:"दिशा-निर्देश केवल नियोजन उद्देश्यों के लिए प्रदान किए गए हैं एवं <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri के उपयोग की शर्तों के अधीन हैं.</a> गतिशील सड़क की स्थितियाँ मौजूद हो सकती हैं जो सटीकता को आपके दिशा-निर्देशों से भिन्न होने का कारण बन सकती हैं और इन्हें चिह्नों एवं कानूनी प्रतिबंधों के साथ-साथ ध्यान में रखा जाना चाहिए. आप उपयोग से संबंधित सभी जोखिम अपनाते हैं.",printoutError:"एक त्रुटि हुई प्रतीत होती है।"});

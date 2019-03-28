@@ -41,16 +41,8 @@ vec4 readComponentColor() {
 varying float linearDepth;
 #endif
 
-#ifdef VERTEXCOLORS
-attribute vec4 color;
-#endif
-
 #ifdef SYMBOLVERTEXCOLORS
 attribute vec4 symbolColor;
-#endif
-
-#if defined(VERTEXCOLORS)
-varying vec4 vcolor;
 #endif
 
 // Workaround for https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/13452
@@ -60,6 +52,8 @@ varying vec4 vcolor;
 // This should be further cleaned up later with through the following issue:
 // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12763
 uniform vec4 externalColor;
+// the vertex color variable will contain vvColor and/or vvOpacity or 1,1,1,1
+varying vec4 vcolor;
 varying vec4 vcolorExt;
 
 #if defined(SYMBOLVERTEXCOLORS) || defined(COMPONENTCOLORS)
@@ -68,7 +62,7 @@ varying mediump float colorMixMode; // varying int is not supported in WebGL
 
 #include <materials/pathMaterial/visualVariables.glsl>
 
-#if defined(VV_SIZE) || defined(VV_COLOR)
+#if defined(VV_SIZE) || defined(VV_COLOR) || defined(VV_OPACITY)
 attribute vec4 auxpos2;
 #endif
 
@@ -91,15 +85,18 @@ void main() {
   linearDepth = gl_Position.w;
 #endif
 
-#ifdef VERTEXCOLORS
-  vcolor = color * 0.003921568627451; // = 1/255
-#endif
-
   vcolorExt = externalColor;
 
+  vcolor = vec4(1.0, 1.0, 1.0, 1.0);
 #ifdef VV_COLOR
-  vcolorExt *= vvGetColor(auxpos2, vvColorValues, vvColorColors);
+  vcolor = vvGetColor(auxpos2, vvColorValues, vvColorColors);
 #endif
+#ifdef VV_OPACITY
+  // there might be opacity values in vvColor but according to the logic in graphicUtils.mixinColorAndOpacity,
+  // this value will be overridden by vvOpacity so we do the same here
+  vcolor.a = vvGetOpacity(auxpos2, vvOpacityValues, vvOpacityOpacities);
+#endif
+
 
 #ifdef SYMBOLVERTEXCOLORS
   int symbolColorMixMode;

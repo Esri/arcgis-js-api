@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,s,t){Object.defineProperty(r,"__esModule",{value:!0}),r.compositePass={name:"offscreen-composite",shaders:{vertexShader:t.resolveIncludes("renderer/offscreen/offscreen.vert"),fragmentShader:t.resolveIncludes("renderer/offscreen/offscreen.frag")},attributes:s.Default3D},r.compositeTransparentToHUDVisibilityPass={name:"offscreen-composite-transparent-to-hud-visibility",shaders:{vertexShader:t.resolveIncludes("renderer/offscreen/offscreen.vert"),fragmentShader:t.resolveIncludes("renderer/offscreen/transparentToHUDVisibility.frag")},attributes:s.Default3D}});
+define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,s,o){Object.defineProperty(r,"__esModule",{value:!0}),r.composite={name:"offscreen-composite",shaders:{vertexShader:o.resolveIncludes("renderer/offscreen/offscreen.vert"),fragmentShader:o.resolveIncludes("renderer/offscreen/composite.frag")},attributes:s.Default3D},r.compositeTransparentToHUDVisibility={name:"offscreen-composite-transparent-to-hud-visibility",shaders:{vertexShader:o.resolveIncludes("renderer/offscreen/offscreen.vert"),fragmentShader:o.resolveIncludes("renderer/offscreen/compositeTransparentToHUDVisibility.frag")},attributes:s.Default3D},r.compositeOccluded={name:"offscreen-composite-occluded",shaders:{vertexShader:o.resolveIncludes("renderer/offscreen/offscreen.vert"),fragmentShader:o.resolveIncludes("renderer/offscreen/compositeOccluded.frag")},attributes:s.Default3D}});

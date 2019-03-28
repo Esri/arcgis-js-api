@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Λίστα θεματικών επιπέδων",noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});

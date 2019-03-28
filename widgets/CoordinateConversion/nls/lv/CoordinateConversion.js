@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"Z",south:"D",east:"A",west:"R"},addConversion:"Pievienot konvertēšanu",captureMode:"Ievākšanas režīms",changeCoordinateDisplay:"Mainīt koordinātu attēlošanu",convert:"Konvertēt",conversionOutputSuffix:"konvertēšanas izvade",copySuccessMessage:"Koordināta tika kopēta starpliktuvē",defaultPattern:"Atiestatīt uz noklusējumu",goTo:"Doties uz novietojumu",inputCoordTitle:"Ievadīt koordinātu",invalidCoordinate:"Nederīga koordināta",liveMode:"Tiešsaistes režīms",locationOffBasemap:"Ievades koordināta atrodas ārpus pamatkartes pārklājuma",noBasemap:"Bez pamatkartes",noLocation:"Bez vietas",removeConversion:"Noņemt konvertēšanu",selectFormat:"Atlasīt formātu",settingsTitle:"Formāta iestatījumi"});

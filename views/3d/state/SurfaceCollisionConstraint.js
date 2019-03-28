@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/Handles","../../../core/accessorSupport/decorators","../camera/constraintUtils","../camera/intersectionUtils"],function(e,t,r,n,a,i,o,s,l){Object.defineProperty(t,"__esModule",{value:!0});var c=function(e){function t(t){var r=e.call(this)||this;return r.handles=new i,r}return r(t,e),t.prototype.initialize=function(){var e=this;this.handles.add(this.view.basemapTerrain.on("elevation-change",function(t){return e.handleElevationChangeEvent(t)}))},t.prototype.destroy=function(){this.handles&&(this.handles.destroy(),this.handles=null)},t.prototype.handleElevationChangeEvent=function(e){if(this.view.state.cameraController)return!1;var t=this.view.state,r=t.camera;l.eyeWithinExtent(this.view,r,e.extent,e.spatialReference)&&this.applyToCurrentCamera()},t.prototype.applyToCurrentCamera=function(){var e=this;this.view.state.updateCamera(function(t){s.applySurfaceCollision(e.view,t,1)})},n([o.property({constructOnly:!0})],t.prototype,"view",void 0),t=n([o.subclass("esri.views.3d.state.ElevationCollisionConstraint")],t)}(o.declared(a));t.SurfaceCollisionConstraint=c,t.default=c});

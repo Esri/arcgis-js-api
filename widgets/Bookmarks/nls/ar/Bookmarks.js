@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"إشارات مرجعية",goToBookmark:"انتقال إلى الإشارة المرجعية",noBookmarksHeading:"لا توجد إشارات مرجعية",noBookmarksDescription:"أضف إشارات مرجعية إلى الخريطة التي ستظهر هنا.",disabledHeading:"تم تعطيل الإشارات المرجعية",disabledDescription:"أضف MapView لتمكين الإشارات المرجعية."});

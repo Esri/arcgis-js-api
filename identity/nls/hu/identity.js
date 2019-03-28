@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({lblItem:"elem",title:"Bejelentkezés",info:"Jelentkezzen be, hogy hozzáférjen a(z) {server} {resource} eleméhez",oAuthInfo:"Jelentkezzen be a folytatáshoz.",lblUser:"Felhasználónév:",lblPwd:"Jelszó:",lblOk:"OK",lblSigning:"Bejelentkezés...",lblCancel:"Mégse",errorMsg:"Érvénytelen felhasználónév/jelszó. Próbálkozzon újra.",invalidUser:"A megadott felhasználónév vagy jelszó helytelen.",forbidden:"A felhasználónév és a jelszó érvényes, de ehhez az erőforráshoz nincs hozzáférése.",noAuthService:"A hitelesítési szolgáltatás nem érhető el."});
+define({lblItem:"elem",title:"Bejelentkezés",info:"Jelentkezzen be, hogy hozzáférjen a(z) {server} {resource} eleméhez",oAuthInfo:"Jelentkezzen be a(z) {server} kiszolgálóra.",lblUser:"Felhasználónév:",lblPwd:"Jelszó:",lblOk:"OK",lblSigning:"Bejelentkezés...",lblCancel:"Mégse",errorMsg:"Érvénytelen felhasználónév/jelszó. Próbálkozzon újra.",invalidUser:"A megadott felhasználónév vagy jelszó helytelen.",forbidden:"A felhasználónév és a jelszó érvényes, de ehhez az erőforráshoz nincs hozzáférése.",noAuthService:"A hitelesítési szolgáltatás nem érhető el."});

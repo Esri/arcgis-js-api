@@ -130,7 +130,6 @@ class Home extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -146,7 +145,6 @@ class Home extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;

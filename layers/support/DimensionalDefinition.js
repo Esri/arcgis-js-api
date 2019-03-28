@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],function(e,r,o,t,i,n,s){return function(e){function r(r){var o=e.call(this)||this;return o.variableName=null,o.dimensionName=null,o.values=[],o.isSlice=!1,o}o(r,e),i=r,r.prototype.clone=function(){return new i({variableName:this.variableName,dimensionName:this.dimensionName,values:n.clone(this.values),isSlice:this.isSlice})};var i;return t([s.property({type:String,json:{write:!0}})],r.prototype,"variableName",void 0),t([s.property({type:String,json:{write:!0}})],r.prototype,"dimensionName",void 0),t([s.property({json:{write:!0}})],r.prototype,"values",void 0),t([s.property({type:Boolean,json:{write:!0}})],r.prototype,"isSlice",void 0),r=i=t([s.subclass("esri.layers.support.DimensionalDefinition")],r)}(s.declared(i))});

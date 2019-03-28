@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../doublePrecisionUtils"],function(e,r,a){function t(e,r){var a={};return a[0]=r.aquire(e),a[3]=r.aquireDepthShadowMap(e),a[2]=r.aquireNormal(e),a[1]=r.aquireDepth(e),a[4]=r.aquireHighlight(e),a}function i(e,r){r.release(e.id),r.releaseDepthShadowMap(e.id),r.releaseNormal(e.id),r.releaseDepth(e.id),r.releaseHighlight(e.id)}function l(e,r,t,i,l){o[0]=e.get(r,0),o[1]=e.get(r,1),o[2]=e.get(r,2),a.encodeDoubleArray(o,s,3),t.set(l,0,s[0]),i.set(l,0,s[1]),t.set(l,1,s[2]),i.set(l,1,s[3]),t.set(l,2,s[4]),i.set(l,2,s[5])}Object.defineProperty(r,"__esModule",{value:!0}),r.acquireGLMaterials=t,r.releaseGLMaterials=i,r.encodeDoubleVec3=l;var o=new Float64Array(3),s=new Float32Array(6)});
+define(["require","exports","../doublePrecisionUtils"],function(e,r,a){function t(e,r){var a={};return a[0]=r.aquire(e,"color"),a[3]=r.aquire(e,"depthShadowMap"),a[2]=r.aquire(e,"normal"),a[1]=r.aquire(e,"depth"),a[4]=r.aquire(e,"highlight"),a}function i(e,r){r.release(e.id,"color"),r.release(e.id,"depthShadowMap"),r.release(e.id,"normal"),r.release(e.id,"depth"),r.release(e.id,"highlight")}function o(e,r,t,i,o){l[0]=e.get(r,0),l[1]=e.get(r,1),l[2]=e.get(r,2),a.encodeDoubleArray(l,n,3),t.set(o,0,n[0]),i.set(o,0,n[1]),t.set(o,1,n[2]),i.set(o,1,n[3]),t.set(o,2,n[4]),i.set(o,2,n[5])}Object.defineProperty(r,"__esModule",{value:!0}),r.acquireGLMaterials=t,r.releaseGLMaterials=i,r.encodeDoubleVec3=o;var l=new Float64Array(3),n=new Float32Array(6)});

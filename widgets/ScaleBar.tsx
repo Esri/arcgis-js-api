@@ -42,13 +42,11 @@ import domGeometry = require("dojo/dom-geometry");
 import * as i18n from "dojo/i18n!esri/widgets/ScaleBar/nls/ScaleBar";
 
 // esri.core
+import { createScreenPoint } from "esri/core/screenUtils";
 import { whenTrue } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
-
-// esri.geometry
-import ScreenPoint = require("esri/geometry/ScreenPoint");
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -349,7 +347,7 @@ class ScaleBar extends declared(Widget) {
 
     if (vm) {
       const { x, y } = domGeometry.position(node, true);
-      vm.scaleComputedFrom = new ScreenPoint({ x, y });
+      vm.scaleComputedFrom = createScreenPoint(x, y);
     }
   }
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"סימניות",goToBookmark:"עבור לסימניה",noBookmarksHeading:"אין סימניות",noBookmarksDescription:"הוסף סימניות למפה שלך והן יופיעו כאן.",disabledHeading:"הסימניות מושבתות",disabledDescription:"הוסף MapView כדי לאפשר סימניות."});

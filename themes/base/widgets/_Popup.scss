@@ -16,7 +16,6 @@
   $action-menu__width--max: 50% !default;
   $action-size: $button-width--half !default;
   $action-size--image: $button-width--half !default;
-  $single-action-width: 25% !default;
   $footer-button__border-radius: 2px !default;
 
   .esri-ui {
@@ -111,8 +110,7 @@
     padding: $cap-spacing $side-spacing;
     margin: 0 auto 0 0;
     display: block;
-    word-break: break-word;
-    word-wrap: break-word;
+    @include wordbreak();
   }
   .esri-popup__content {
     display: flex;
@@ -254,19 +252,33 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0 auto 0 $single-action-width;
+    margin: 0 auto 0 33%;
     padding: 0;
     justify-content: center;
-    width: $single-action-width * 2;
+    width: 34%;
     &:only-child {
       width: 100%;
       margin: 0;
     }
   }
-  .esri-popup__single-action-container {
+  .esri-popup__inline-actions-container {
     display: flex;
     justify-content: flex-end;
-    width: $single-action-width;
+    width: 33%;
+    align-items: center;
+    overflow: visible;
+    .esri-popup__action {
+      flex: 0 0;
+      flex-basis: calc(100% - #{$side-spacing});
+      padding-right: 0;
+      padding-left: 0;
+      margin-right: $side-spacing;
+      margin-left: $side-spacing--half;
+    }
+    .esri-popup__icon,
+    [class*="esri-icon"] {
+      margin: 0 $side-spacing--quarter;
+    }
   } ///////////////
   // FEATURE MENU
   .esri-popup__feature-menu {
@@ -391,11 +403,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    margin: $cap-spacing--half 0;
     flex: 0 0 $action-size--image;
   }
   .esri-popup__action-text {
-    margin: 0 $side-spacing--half;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -603,7 +613,7 @@
       border-right: solid 1px rgba(0, 0, 0, 0.25);
     }
     .esri-popup__navigation {
-      margin: 0 25% 0 auto;
+      margin: 0 33% 0 auto;
       &:only-child {
         margin: 0;
       }
@@ -611,6 +621,10 @@
     .esri-popup__actions {
       right: auto;
       left: 0;
+    }
+    .esri-popup__inline-actions-container .esri-popup__action {
+      margin-right: $side-spacing--half;
+      margin-left: $side-spacing;
     }
     .esri-popup--is-docked .esri-popup__loading-container {
       order: 0;

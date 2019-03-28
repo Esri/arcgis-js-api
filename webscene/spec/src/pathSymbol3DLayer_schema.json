@@ -4,6 +4,11 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "PathSymbol3DLayer renders Polyline geometries using a volumetric 3D tube with a LineSymbol3D in a SceneView.",
   "properties": {
+    "castShadows": {
+      "type": "boolean",
+      "description": "Boolean to control the shadow casting behaviour of the rendered geometries.",
+      "default": true
+    },
     "enable": {
       "type": "boolean"
     },

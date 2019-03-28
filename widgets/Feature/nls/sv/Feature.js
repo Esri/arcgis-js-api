@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({attach:"Bilagor",fields:"Fält",fieldsSummary:"Lista med attribut och värden",media:"Media",next:"Nästa",numCharts:"Antal diagram",numImages:"Antal bilder",noTitle:"Namnlös",previous:"Föregående",lastEdited:"Senast redigerad den {date}.",lastCreated:"Skapad den {date}.",lastEditedByUser:"Senast redigerad av {user} den {date}.",lastCreatedByUser:"Skapad av {user} den {date}."});
+define({attach:"Bilagor",fields:"Fält",fieldsSummary:"Lista med attribut och värden",media:"Media",next:"Nästa",noTitle:"Namnlös",previous:"Föregående",lastEdited:"Senast redigerad den {date}.",lastCreated:"Skapad den {date}.",lastEditedByUser:"Senast redigerad av {user} den {date}.",lastCreatedByUser:"Skapad av {user} den {date}."});

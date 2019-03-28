@@ -64,6 +64,11 @@
       "maximum": 1,
       "default": 1
     },
+    "path": {
+      "type": "string",
+      "description": "For offline data, a path to a geodatabase file. A URI format is used starting with `file:` followed by a file system path with a `.geodatabase` extension. A query parameter `itemId` must also be present specifying the ID of a table in the geodatabase's `GDB_ServiceItems` table. A relative path must be from the file which defines the layer. For example `file:../p20/northamerica.geodatabase?itemId=1`.",
+      "pattern": "^file:.+\\.geodatabase\\?itemId=\\d+$"
+    },
     "popupInfo": {
       "type": "object",
       "description": "A popupInfo object defining the content of popup windows when you click or query a feature.",

@@ -14,6 +14,7 @@
  * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
  * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
  * the URL to these symbols must be accessible to the print server for it to work properly.
+ * * Printing layers rendered with the {@link module:esri/renderers/DotDensityRenderer} will create a client-side image of the layer in the printout.
  * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
  * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
@@ -332,6 +333,8 @@ class Print extends declared(Widget) {
 
   private _pendingExportScroll = false;
 
+  private _previousTitleOrFilename: string = "";
+
   private _rootNode: HTMLElement = null;
 
   private _awaitingServerResponse = false;
@@ -368,7 +371,6 @@ class Print extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -384,7 +386,6 @@ class Print extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -980,7 +981,7 @@ class Print extends declared(Widget) {
 
     return new FileLink({
       name: titleText,
-      extension: extension,
+      extension,
       count: this._exportedFileNameMap[fileName]
     });
   }
@@ -1190,13 +1191,15 @@ class Print extends declared(Widget) {
     });
   }
 
-  private _resetInputValue(): void {
-    this.templateOptions.title = "";
+  private _swapInputValue(): void {
+    const previous = this._previousTitleOrFilename;
+    this._previousTitleOrFilename = this.templateOptions.title;
+    this.templateOptions.title = previous;
   }
 
   @accessibleHandler()
   private _toggleLayoutPanel(e: Event): void {
-    this._resetInputValue();
+    this._swapInputValue();
 
     const target = e.target as HTMLSelectElement;
     this._layoutTabSelected = target.getAttribute("data-tab-id") === "layoutTab";

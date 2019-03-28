@@ -191,7 +191,6 @@ class BasemapGallery extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;

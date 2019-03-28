@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function r(e,t){return t&&t.xoffset?Math.max(e,Math.abs(t.xoffset)):t&&t.yoffset?Math.max(e,Math.abs(t.yoffset)):e}function f(e){if(!e)return 6;if("simple"===e.type)return r(6,e.symbol);if("unique-value"===e.type){var t=6;return e.uniqueValueInfos.forEach(function(e){t=r(t,e.symbol)}),t}if("class-breaks"===e.type){var f=6;return e.classBreakInfos.forEach(function(e){f=r(f,e.symbol)}),f}return 6}Object.defineProperty(t,"__esModule",{value:!0}),t.calculateTolerance=f});
+define(["require","exports"],function(e,t){function r(e,t){return t&&t.xoffset?Math.max(e,Math.abs(t.xoffset)):t&&t.yoffset?Math.max(e,Math.abs(t.yoffset)):e}function f(e){if(!e)return 6;if("simple"===e.type)return r(6,e.symbol);if("unique-value"===e.type){var t=6;return e.uniqueValueInfos.forEach(function(e){t=r(t,e.symbol)}),t}if("class-breaks"===e.type){var f=6;return e.classBreakInfos.forEach(function(e){f=r(f,e.symbol)}),f}return e.type,6}Object.defineProperty(t,"__esModule",{value:!0}),t.calculateTolerance=f});

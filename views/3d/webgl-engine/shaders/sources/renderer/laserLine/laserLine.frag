@@ -1,6 +1,6 @@
 #include <util/enableExtensions.glsl>
 #include <util/fsPrecision.glsl>
-#include <util/encoding.glsl>
+#include <util/depth.glsl>
 
 //--------------------------------------------------------------------------
 // Uniforms
@@ -44,13 +44,6 @@ varying vec2 uv;
 //--------------------------------------------------------------------------
 
 #define INFINITY 100000.0
-
-
-
-// reconstruct depth value from linear depth map
-float linearDepth(vec2 uv) {
-  return -(rgba2float(texture2D(depthMap, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);
-}
 
 // reconstruct position in view space
 vec3 reconstructPosition(vec2 fragCoord, float depth) {
@@ -109,7 +102,7 @@ vec4 laserLineProfile(float dist) {
 
 void main() {
   // do not draw laserline on background
-  float depth = linearDepth(uv);
+  float depth = linearDepth(depthMap, uv, nearFar);
   if (-depth == nearFar[0]) {
     discard;
   }

@@ -127,9 +127,9 @@ class Legend extends declared(Widget) {
 
   postInitialize(): void {
     this.own(
-      watchUtils.on(this, "activeLayerInfos", "change", () => {
-        return this._refreshActiveLayerInfos(this.activeLayerInfos);
-      }),
+      watchUtils.on(this, "activeLayerInfos", "change", () =>
+        this._refreshActiveLayerInfos(this.activeLayerInfos)
+      ),
 
       watchUtils.init<LegendStyle>(this, "style", (value, oldValue) => {
         if (oldValue && value !== oldValue) {
@@ -172,15 +172,14 @@ class Legend extends declared(Widget) {
 
   /**
    * Collection of {@link module:esri/widgets/Legend/support/ActiveLayerInfo} objects used by the legend view to
-   * display data in the legend. The legend widget watches this property to hide or display the layer legend when
+   * display data in the legend. The legend widget watches this property to hide or display the layer's legend when
    * an {@link module:esri/widgets/Legend/support/ActiveLayerInfo} is removed from or added to this collection.
    *
    * @name activeLayerInfos
    * @instance
    *
-   * @type {module:esri/core/Collection<Object>}
+   * @type {module:esri/core/Collection<module:esri/widgets/Legend/support/ActiveLayerInfo>}
    * @autocast { "value": "Object[]" }
-   * @ignore
    */
   @aliasOf("viewModel.activeLayerInfos")
   @renderable()
@@ -227,7 +226,6 @@ class Legend extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -243,7 +241,6 @@ class Legend extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -260,7 +257,7 @@ class Legend extends declared(Widget) {
    * @name layerInfos
    * @instance
    *
-   * @type {object[]}
+   * @type {Object[]}
    *
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
@@ -374,7 +371,6 @@ class Legend extends declared(Widget) {
    *
    * @name viewModel
    * @instance
-   * @ignore
    *
    * @type {module:esri/widgets/Legend/LegendViewModel}
    * @autocast

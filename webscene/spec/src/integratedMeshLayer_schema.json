@@ -48,6 +48,11 @@
       "maximum": 1,
       "default": 1
     },
+    "path": {
+      "type": "string",
+      "description": "For offline data, a path to integrated mesh data in a scene layer package file. A URI format is used, starting with `file:` followed by a file system path with an extension of `.slpk`. A relative path must be from the file which defines the layer. For example `file:../p20/edinburgh.slpk`.",
+      "pattern": "^file:.+\\.slpk$"
+    },
     "title": {
       "type": "string",
       "description": "A user-friendly string title for the layer that can be used in a table of contents. If this is not included, a title is derived from the service."
@@ -63,11 +68,23 @@
       "default": true
     }
   },
-  "required": [
-    "id",
-    "layerType",
-    "title",
-    "url"
+  "anyOf": [
+    {
+      "required": [
+        "id",
+        "layerType",
+        "title",
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "id",
+        "layerType",
+        "path",
+        "title"
+      ]
+    }
   ],
   "additionalProperties": false,
   "esriDocumentation": {

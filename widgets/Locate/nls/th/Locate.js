@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"ระบุตำแหน่ง",title:"ค้นหาตำแหน่งของฉัน",currentLocation:"ตำแหน่งปัจจุบัน",timestamp:"บันทึกเวลา",latitude:"ละติจูด",longitude:"ลองจิจูด",accuracy:"ความถูกต้อง",altitude:"ระดับความสูง",altitudeAccuracy:"ความแม่นยำของระดับความสูง",heading:"หัวเรื่อง",speed:"ความเร็ว"});

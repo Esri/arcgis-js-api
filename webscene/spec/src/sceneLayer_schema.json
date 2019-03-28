@@ -57,6 +57,11 @@
       "maximum": 1,
       "default": 1
     },
+    "path": {
+      "type": "string",
+      "description": "For offline data, a path to a scene layer package file. A URI format is used, starting with `file:` followed by a file system path with an extension of `.slpk`. A relative path must be from the file which defines the layer. For example `file:../p20/northamerica.slpk`.",
+      "pattern": "^file:.+\\.slpk$"
+    },
     "popupInfo": {
       "type": "object",
       "description": "A popupInfo object defining the content of pop-up windows when you click or query a feature.",
@@ -92,11 +97,23 @@
       "default": true
     }
   },
-  "required": [
-    "id",
-    "layerType",
-    "title",
-    "url"
+  "anyOf": [
+    {
+      "required": [
+        "id",
+        "layerType",
+        "title",
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "id",
+        "layerType",
+        "path",
+        "title"
+      ]
+    }
   ],
   "additionalProperties": false,
   "esriDocumentation": {

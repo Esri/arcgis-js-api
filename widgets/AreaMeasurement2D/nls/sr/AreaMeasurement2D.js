@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Merenja",hint:"Otpočnite merenja klikom na mapu kako biste namestili prvu tačku",unsupported:"Merenje 2D površine je podržano samo u aplikaciji MapView.",perimeter:"Obim",area:"Površina",newMeasurement:"Novo merenje",mode:"Režim",modes:{auto:"Automatski",planar:"Planarno",geodesic:"Geodetski"},unit:"Jedinica",units:{metric:"Metrika",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inč","square-feet":"Kvadratne stope","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratne stope (SAD)",acres:"Akeri",ares:"Ari",hectares:"Hektari"}});

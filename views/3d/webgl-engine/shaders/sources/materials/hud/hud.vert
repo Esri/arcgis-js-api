@@ -7,6 +7,11 @@
 uniform vec2 screenOffset;
 uniform vec2 anchorPos;
 
+// textureCoordinateScaleFactor can be used when there is a uniform texture scaling per material.
+// This is used in the case where we enforce a POT texture (for mipmaps) and the effective
+// texture is only in a subregion of the full POT texture.
+uniform vec2 textureCoordinateScaleFactor;
+
 #ifdef SCREEN_SIZE_PERSPECTIVE
 uniform vec4 screenSizePerspective;
 #endif
@@ -107,7 +112,7 @@ voccluded = visible ? 0.0 : 1.0;
 
     gl_Position = posProj;
 
-    vtc = uv;
+    vtc = uv * textureCoordinateScaleFactor;
 
 #ifdef DEBUG_DRAW_BORDER
     debugBorderCoords = vec3(uv01, 1.0 / combinedSize);

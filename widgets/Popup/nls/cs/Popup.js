@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Přiblížit na",next:"Další prvek",previous:"Předchozí prvek",dock:"Ukotvit",undock:"Zrušit ukotvení",pageText:"{index} z {total}",selectedFeature:"Vybraný prvek",selectedFeatures:"{total} výsledků"});
+define({zoom:"Přiblížit na",next:"Další prvek",previous:"Předchozí prvek",dock:"Ukotvit",undock:"Zrušit ukotvení",pageText:"{index} z {total}",selectedFeature:"Vybraný prvek",selectedFeatures:"{total} výsledků",tooManyFields:"Tato vrstva obsahuje příliš mnoho polí. Některá z nich se nezobrazí."});

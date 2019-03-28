@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Tarkenna kohteeseen",next:"Seuraava kohde",previous:"Edellinen kohde",dock:"Kiinnitä",undock:"Irrota",pageText:"{index}/{total}",selectedFeature:"Valittu kohde",selectedFeatures:"{total} tulosta"});
+define({zoom:"Tarkenna kohteeseen",next:"Seuraava kohde",previous:"Edellinen kohde",dock:"Kiinnitä",undock:"Irrota",pageText:"{index}/{total}",selectedFeature:"Valittu kohde",selectedFeatures:"{total} tulosta",tooManyFields:"Tässä karttatasossa on liian monta kenttää, eikä osaa niistä näytetä."});

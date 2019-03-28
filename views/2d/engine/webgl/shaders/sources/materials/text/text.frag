@@ -20,7 +20,11 @@ void main()
   // the edge distance if a factor of the outline width
   // We cap this to 0.25 to prevent this from becomming negative / running into the glyph boundaries
   float glyphEdgeDistance = max(0.75 - v_edgeDistanceOffset, 0.25);
-  
+
+  #ifdef HIGHLIGHT
+    glyphEdgeDistance /= 2.0;
+  #endif
+
   // use a smooth-step in order to calculate the geometry of the shape given by the distance field
   lowp float alpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_transparency;
 

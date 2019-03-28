@@ -12,7 +12,7 @@
 #endif
 
 #ifdef VV_CUSTOM_MODEL_MATRIX
-  uniform mat3 vvSymbolRotation;
+  uniform mat3 vvSymbolRotationMatrix;
 #endif
 
 #ifdef VV_CUSTOM_MODEL_MATRIX
@@ -39,12 +39,12 @@
 // Applying the model matrix
 #ifdef VV_CUSTOM_MODEL_MATRIX
   vec4 vvTransformPosition(vec3 position, vec4 featureAttribute) {
-    return vec4(vvSymbolRotation * (vvGetScale(featureAttribute) * (position + vvSymbolAnchor)), 1.0);
+    return vec4(vvSymbolRotationMatrix * (vvGetScale(featureAttribute) * (position + vvSymbolAnchor)), 1.0);
   }
 
   vec4 vvTransformNormal(vec3 normal, vec4 featureAttribute) {
     // Normal transform is the inverse transpose of model transform
-    return vec4(vvSymbolRotation * normal / vvGetScale(featureAttribute), 1.0);
+    return vec4(vvSymbolRotationMatrix * normal / vvGetScale(featureAttribute), 1.0);
   }
 #endif
 

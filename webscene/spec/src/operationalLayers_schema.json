@@ -23,10 +23,16 @@
       "$ref": "integratedMeshLayer_schema.json"
     },
     {
+      "$ref": "kmlLayer_schema.json"
+    },
+    {
       "$ref": "mapServiceLayer_schema.json"
     },
     {
       "$ref": "pointCloudLayer_schema.json"
+    },
+    {
+      "$ref": "rasterDataLayer_schema.json"
     },
     {
       "$ref": "sceneLayer_schema.json"

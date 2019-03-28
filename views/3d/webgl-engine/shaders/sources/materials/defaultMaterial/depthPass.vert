@@ -26,8 +26,24 @@ attribute vec4 instanceFeatureAttribute;
 #include <materials/defaultMaterial/commonFunctions.glsl>
 #include <materials/defaultMaterial/localCenter.glsl>
 
+#if defined(COMPONENTCOLORS)
+#include <materials/defaultMaterial/componentColors.glsl>
+#endif
+
+
 void main(void) {
   vpos = calculateVPos();
+
+
+
+#if defined(COMPONENTCOLORS)
+  if( !readComponentCastShadowsFlag() ){
+    // discard vertex so that it doesnt show up in depth buffer
+    gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
+  }else
+  {
+#endif
+
 
 #ifdef INSTANCED_DOUBLE_PRECISION
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
@@ -51,6 +67,10 @@ void main(void) {
 
   gl_Position = proj * eye;
   depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
+
+#if defined(COMPONENTCOLORS)
+  } // if readComponentCastShadowsFlag==true
+#endif
 
 #ifdef TEXTURING
 #ifndef FLIPV

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define({zoom:"Zoom til",next:"Næste objekt",previous:"Forrige objekt",dock:"Placér i dock",undock:"Fradock",pageText:"{index} af {total}",selectedFeature:"Valgt objekt",selectedFeatures:"{total} resultater"});
+define({zoom:"Zoom til",next:"Næste objekt",previous:"Forrige objekt",dock:"Placér i dock",undock:"Fradock",pageText:"{index} af {total}",selectedFeature:"Valgt objekt",selectedFeatures:"{total} resultater",tooManyFields:"Dette lag indeholder for mange felter, nogle vil ikke blive vist."});

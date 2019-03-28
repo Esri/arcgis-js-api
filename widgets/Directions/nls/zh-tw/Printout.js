@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({printNotes:"在此處輸入注釋",printDisclaimer:"提供的方向僅供規劃之用，並受 <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri 使用條款</a>的限制。可能存在動態路況，導致您的方向與實際方向有所偏差，您必須將實際交通標誌和法律約束列入考慮。您將自行承擔所有的使用風險。",printoutError:"似乎發生錯誤。"});

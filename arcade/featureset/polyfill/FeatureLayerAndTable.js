@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Error","../../../core/accessorSupport/decorators","../../../layers/FeatureLayer"],function(e,r,t,a,o,u,s){return function(e){function r(r){var t=e.call(this,r)||this;return t.handleAsTable=!1,t}return t(r,e),r.prototype._verifySource=function(){if(this._hasMemorySource()){if(this.url)throw new o("feature-layer:mixed-source-and-url","FeatureLayer cannot be created with both an in-memory source and a url")}else if(!this.url)throw new o("feature-layer:source-or-url-required","FeatureLayer requires either a url, a valid portal item or a source")},r=a([u.subclass("esri.arcade.featureset.polyfill.FeatureLayerAndTable")],r)}(u.declared(s))});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","./renderers/ClassBreaksRenderer","./renderers/HeatmapRenderer","./renderers/Renderer","./renderers/SimpleRenderer","./renderers/UniqueValueRenderer","./renderers/support/jsonUtils"],function(e,r,n,d,s,a,i,R){function t(e){return e instanceof r.BaseRenderer}Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=n,r.HeatmapRenderer=d,r.BaseRenderer=s,r.SimpleRenderer=a,r.UniqueValueRenderer=i,r.isRenderer=t,r.fromJSON=R.fromJSON});
+define(["require","exports","./renderers/ClassBreaksRenderer","./renderers/DotDensityRenderer","./renderers/HeatmapRenderer","./renderers/Renderer","./renderers/SimpleRenderer","./renderers/StretchRenderer","./renderers/UniqueValueRenderer","./renderers/support/jsonUtils"],function(e,r,n,d,s,a,t,i,R,p){function u(e){return e instanceof r.BaseRenderer}Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=n,r.DotDensityRenderer=d,r.HeatmapRenderer=s,r.BaseRenderer=a,r.SimpleRenderer=t,r.StretchRenderer=i,r.UniqueValueRenderer=R,r.isRenderer=u,r.read=p.read,r.write=p.write,r.fromJSON=p.fromJSON,r.rendererTypes={key:"type",base:r.BaseRenderer,typeMap:{heatmap:r.HeatmapRenderer,simple:r.SimpleRenderer,"unique-value":r.UniqueValueRenderer,"class-breaks":r.ClassBreaksRenderer,"dot-density":r.DotDensityRenderer}}});

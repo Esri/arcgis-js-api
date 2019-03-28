@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["../request","../core/lang","../geometry/support/normalizeUtils","./Task","./support/ImageServiceIdentifyResult"],function(e,t,r,n,s){return n.createSubclass({declaredClass:"esri.tasks.ImageServiceIdentifyTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(n,s){var i=n.geometry?[n.geometry]:[];return r.normalizeCentralMeridian(i).then(function(r){var i=this._encode(t.mixin({},this.parsedUrl.query,{f:"json"},n.toJSON({geometry:r&&r[0]}))),a={query:i};return(this.requestOptions||s)&&(a=t.mixin({},this.requestOptions,s,a)),e(this.parsedUrl.path,a)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){return s.fromJSON(e.data)}})});

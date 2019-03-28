@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({printNotes:"Indtast noter her",printDisclaimer:"Vejledninger gives udelukkende med henblik på planlægning og er underlagt <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri's Vilkår for brug</a>. Dynamiske vejforhold kan forekomme og kan bevirke, at nøjagtigheden er forskellig fra dine vejledninger, hvilket du bør tage højde for sammen med signaler og juridiske restriktioner. Du påtager dig det fulde ansvar for anvendelsen.",printoutError:"Der ser ud til at have været en fejl."});

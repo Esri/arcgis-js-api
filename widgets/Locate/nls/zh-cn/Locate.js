@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"定位",title:"查找我的位置",currentLocation:"当前位置",timestamp:"时间戳",latitude:"纬度",longitude:"经度",accuracy:"精度",altitude:"高度角",altitudeAccuracy:"高度精度",heading:"标头",speed:"速度"});

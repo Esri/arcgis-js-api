@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/VectorStack"],function(e,c,t){Object.defineProperty(c,"__esModule",{value:!0}),c.sv2d=t.VectorStack.createVec2f64(),c.sv3d=t.VectorStack.createVec3f64(),c.sv4d=t.VectorStack.createVec4f64(),c.sm4d=t.VectorStack.createMat4f64(),c.sq4d=t.VectorStack.createQuatf64()});
+define(["require","exports","../../../core/VectorStack"],function(e,t,c){Object.defineProperty(t,"__esModule",{value:!0}),t.sv2d=c.VectorStack.createVec2f64(),t.sv3d=c.VectorStack.createVec3f64(),t.sv4d=c.VectorStack.createVec4f64(),t.sm3d=c.VectorStack.createMat3f64(),t.sm4d=c.VectorStack.createMat4f64(),t.sq4d=c.VectorStack.createQuatf64()});

@@ -4,7 +4,6 @@
 
 //  Main Colors Vars
 $font-color: $Calcite_Gray_700 !default;
-$heading-color: $Calcite_Gray_600 !default;
 $interactive-font-color: $Calcite_Gray_550 !default;
 
 $background-color: $Calcite_Gray_050 !default;
@@ -31,11 +30,13 @@ $button-color--hover: darken($button-color, 10%) !default;
 $button-color--inverse: $interactive-font-color--inverse !default;
 
 // Other
+$heading-color: $font-color !default;
 $bacground-color--overlay: rgba(0, 0, 0, 0.7) !default;
 $opacity--disabled: 0.4 !default;
 $interactive-font-color--disabled: rgba($interactive-font-color, $opacity--disabled) !default;
 $font-color--placeholder: rgba($font-color, $opacity--disabled) !default;
-$border-color: rgba($font-color, 0.25) !default;
+$border-color: $Calcite_Gray_300 !default;
+$border-color--subtle: $Calcite_Gray_200 !default;
 
 // Error
 $border-color--error: $Calcite_Vibrant_Red_200 !default;

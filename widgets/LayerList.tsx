@@ -168,7 +168,7 @@ class LayerList extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor() {
+  constructor(params?: any) {
     super();
   }
 
@@ -210,7 +210,6 @@ class LayerList extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -263,7 +262,6 @@ class LayerList extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -450,7 +448,7 @@ class LayerList extends declared(Widget) {
 
     const errorMessage = hasError ? i18n.layerError : "";
 
-    const visibilityMode = item.visibilityMode;
+    const { visibilityMode } = item;
 
     const childItems = item.children && item.children.toArray();
 
@@ -529,7 +527,7 @@ class LayerList extends declared(Widget) {
         role={visibilityMode === exclusive ? "radiogroup" : "group"}
         hidden={item.open ? null : true}
       >
-        {childItems.map((childItem, childKey) => this._renderItem(childItem, item))}
+        {childItems.map((childItem) => this._renderItem(childItem, item))}
       </ul>
     ) : null;
 
@@ -774,13 +772,11 @@ class LayerList extends declared(Widget) {
   ): VNode {
     const actionSectionsArray = actionsSections.toArray();
 
-    const actionSection = actionSectionsArray.map((actionSection) => {
-      return (
-        <ul key={actionSection} class={CSS.actionsList}>
-          {this._renderActionSection(item, actionSection)}
-        </ul>
-      );
-    });
+    const actionSection = actionSectionsArray.map((actionSection) => (
+      <ul key={actionSection} class={CSS.actionsList}>
+        {this._renderActionSection(item, actionSection)}
+      </ul>
+    ));
 
     return (
       <div

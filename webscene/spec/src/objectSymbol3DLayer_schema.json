@@ -25,6 +25,11 @@
       "minItems": 3,
       "maxItems": 3
     },
+    "castShadows": {
+      "type": "boolean",
+      "description": "Boolean to control the shadow casting behaviour of the rendered geometries.",
+      "default": true
+    },
     "depth": {
       "type": "number",
       "description": "Object depth in meters, positive only",
@@ -147,6 +152,22 @@
                   0
                 ]
               }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Object symbol layer with casting shadows disabled",
+        "code": {
+          "symbolLayers": [
+            {
+              "type": "Object",
+              "resource": {
+                "primitive": "cone"
+              },
+              "width": 50,
+              "height": 100,
+              "castShadows": false
             }
           ]
         }

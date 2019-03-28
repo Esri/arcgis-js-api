@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 var profile = (function() {
   var testResourceRe = /^esri\/(.*\/)?tests\//,
@@ -29,7 +29,7 @@ var profile = (function() {
     onlineFolderRe = /^esri\/arcgisonline\//i,
     mobileFolderRe = /^esri\/mobile\//i,
     discoveryFolderRe = /^esri\/discovery\//i,
-    metadataFolderRe = /^esri\/widgets\/metadata\//i,
+    amcharts4FolderRe = /^esri\/libs\/amcharts4\/(?!index)/i,
 
     copyOnly = function(filename, mid) {
       var mids = {
@@ -38,7 +38,6 @@ var profile = (function() {
         "esri/esri.js":               1,
         "esri/core/workers/worker":   1,
         "esri/geometry/geometryenginewebworker": 1,
-        "esri/libs/MindFusion/index": 1,
         "esri/workers/requestWorker": 1,
         "esri/workers/mutableWorker": 1,
         "esri/workers/indexWorker":   1,
@@ -47,7 +46,7 @@ var profile = (function() {
       };
 
       return (
-        metadataFolderRe.test(mid) ||
+        amcharts4FolderRe.test(mid) ||
         (mid in mids)
       );
     },

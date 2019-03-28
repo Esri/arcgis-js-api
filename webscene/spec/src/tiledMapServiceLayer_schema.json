@@ -23,11 +23,34 @@
         "ArcGISTiledMapServiceLayer"
       ]
     },
+    "layers": {
+      "type": "array",
+      "description": "An array of layer objects defining a URL for queries and the popup window content.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "layer_schema.json"
+          },
+          {
+            "properties": {
+              "disablePopup": {},
+              "id": {},
+              "popupInfo": {},
+              "showLegend": {}
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "uniqueItems": true
+    },
     "listMode": {
       "type": "string",
+      "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
       "enum": [
         "show",
-        "hide"
+        "hide",
+        "hide-children"
       ]
     },
     "maxScale": {
@@ -46,6 +69,11 @@
       "minimum": 0,
       "maximum": 1,
       "default": 1
+    },
+    "path": {
+      "type": "string",
+      "description": "For offline data, a path to a tile package file. A URI format is used, starting with `file:` followed by a file system path with an extension of `.tpk` or `.tpkx`. A relative path must be from the file which defines the layer. For example `file:../p20/northamerica.tpk`.",
+      "pattern": "^file:.+\\.tpkx?$"
     },
     "refreshInterval": {
       "type": "number",
@@ -70,11 +98,23 @@
       "default": true
     }
   },
-  "required": [
-    "id",
-    "layerType",
-    "title",
-    "url"
+  "anyOf": [
+    {
+      "required": [
+        "id",
+        "layerType",
+        "title",
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "id",
+        "layerType",
+        "path",
+        "title"
+      ]
+    }
   ],
   "additionalProperties": false,
   "esriDocumentation": {

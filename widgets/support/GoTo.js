@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(r,e,o,t,p,i){return function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.goToOverride=null,e.view=null,e}return o(e,r),e.prototype.callGoTo=function(r){var e=this.view;return this.goToOverride?this.goToOverride(e,r):e.goTo(r.target,r.options)},t([i.property()],e.prototype,"goToOverride",void 0),t([i.property()],e.prototype,"view",void 0),e=t([i.subclass("esri.widgets.support.GoTo")],e)}(i.declared(p))});

@@ -12,14 +12,6 @@
  *
  * Any types of customizations made to the underlying functionality of the widget should be handled via its [viewModel](#viewModel) property.
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- *
- * The Directions widget is currently in its beta release. It should be noted that it is not yet
- * at full parity with the functionality provided in the [3.x version of the Directions widget](../../3/jsapi/directions-amd.html)
- * and is subject to change.
- * :::
- *
  * @example
  * var directionsWidget = new Directions({
  *   view: view
@@ -72,6 +64,7 @@ import Symbol = require("esri/symbols/Symbol");
 // esri.views
 import MapView = require("esri/views/MapView");
 import SceneView = require("esri/views/SceneView");
+import { Cursor } from "esri/views/View";
 
 // esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "esri/widgets/interfaces";
@@ -324,13 +317,13 @@ class Directions extends declared(Widget) {
 
   private _focusedManeuver: Maneuver;
 
-  private _handles = new Handles();
+  private _handles = new Handles<any>();
 
   private _ghost: HTMLElement;
 
   private _newPlaceholderStop: PlaceholderStop = null;
 
-  private _previousCursor: string;
+  private _previousCursor: Cursor;
 
   private _routeSections: RouteSections = new RouteSections();
 
@@ -366,7 +359,6 @@ class Directions extends declared(Widget) {
    * @name iconClass
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   iconClass = CSS.widgetIcon;
@@ -382,7 +374,6 @@ class Directions extends declared(Widget) {
    * @name label
    * @instance
    * @type {string}
-   * @readonly
    */
   @property()
   label: string = i18n.widgetLabel;
@@ -476,7 +467,7 @@ class Directions extends declared(Widget) {
    * @property {boolean} [resultGraphicEnabled=false] - Indicates whether to show a graphic on the map for the selected source.
    * @property {boolean} [searchAllEnabled] - Indicates whether to display the option to search all sources.
    * @property {string} [searchTerm] - The value of the search box input text string.
-   * @property {module:esri/core/Collection<module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>} [sources] - Specifies the sources
+   * @property {module:esri/core/Collection<module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>} [sources] - Specifies the sources
    * to search in the [view](#view).
    * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions as the user enters input text in the widget.
    * @property {module:esri/views/MapView | module:esri/views/SceneView} [view] - The view of the widget.
@@ -595,10 +586,10 @@ class Directions extends declared(Widget) {
     const content = signInPending
       ? this._renderSignIn()
       : failed
-        ? this._renderMessage(i18n.serviceError)
-        : initializing
-          ? this._renderLoader()
-          : this._renderReadyContent();
+      ? this._renderMessage(this._getErrorMessage())
+      : initializing
+      ? this._renderLoader()
+      : this._renderReadyContent();
 
     return (
       <div class={this.classes(CSS.panelContent, panelClasses)} role={role}>
@@ -992,7 +983,7 @@ class Directions extends declared(Widget) {
 
     this._handles.add(
       init(search, "searchTerm", (term) => {
-        view.cursor = term.length === 0 ? "copy" : previousCursor;
+        view.cursor = term.length === 0 ? ("copy" as Cursor) : previousCursor;
       }),
       REGISTRY_KEYS.awaitingViewClickStop
     );
@@ -1009,15 +1000,15 @@ class Directions extends declared(Widget) {
     });
 
     return {
-      remove: function(): void {
+      remove(): void {
         surfaceClickHandle.remove();
         viewClickHandle.remove();
       },
-      pause: function(): void {
+      pause(): void {
         surfaceClickHandle.pause();
         viewClickHandle.pause();
       },
-      resume: function(): void {
+      resume(): void {
         surfaceClickHandle.resume();
         viewClickHandle.resume();
       }
@@ -1238,7 +1229,7 @@ class Directions extends declared(Widget) {
           <span class={CSS.warningIcon} aria-hidden="true" />
           <div class={this.classes(CSS.heading, CSS.warningHeading)}>{i18nCommon.warning}</div>
         </div>
-        <div class={CSS.warningMessage}>{i18n.serviceError}</div>
+        <div class={CSS.warningMessage}>{this._getErrorMessage()}</div>
       </div>
     );
   }
@@ -1446,6 +1437,20 @@ class Directions extends declared(Widget) {
     this._focusedManeuver = null;
     this.viewModel.clearHighlights();
     this.zoomToRoute();
+  }
+
+  private _getErrorMessage(): string {
+    const { error } = this.viewModel;
+
+    if (error.name === "directions-view-model:unable-to-route") {
+      return i18n.errors.unableToRoute;
+    }
+
+    if (error.name === "directions-view-model:service-metadata-unavailable") {
+      return i18n.errors.unableToLoadServiceMetadata;
+    }
+
+    return i18n.errors.unknownError;
   }
 
   private _overrideDefaultSources(search: Search): void {

@@ -1,6 +1,8 @@
 @mixin expand() {
   .esri-expand {
     overflow: visible;
+    min-height: $button-height;
+    min-width: $button-width;
   }
 
   .esri-expand__container {

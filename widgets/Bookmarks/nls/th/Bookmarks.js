@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"บุ๊คมาร์ค",goToBookmark:"ไปที่บุ๊กมาร์ก",noBookmarksHeading:"ไม่มีบุ๊คมาร์ค",noBookmarksDescription:"เพิ่มบุ๊กมาร์กลงในแผนที่ของคุณ จากนั้นบุ๊กมาร์กจะปรากฏขึ้นที่นี่",disabledHeading:"ปิดใช้งานบุ๊กมาร์กแล้ว",disabledDescription:"เพิ่มมุมมองแผนที่เพื่อเปิดใช้งานบุ๊กมาร์ก"});

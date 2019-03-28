@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({statsAvg:"Keskmine : ${avg}",count:"Koguarv: ${count}",percent:"${num}%",high:"Kõrge",low:"Madal",color:{changeMinMaxToolTIp:"Saate sisestada väärtuse.",handleToolTip:"Saate andmeväärtused värvidega ühildada.",maxValueToolTip:"Saate sisestada suurima eeldatava andmeväärtuse.",minValueToolTip:"Saate sisestada vähima eeldatava andmeväärtuse.",changeSymbol:"Muuda sümbolit"},size:{handleToolTip:"Saate andmeväärtused vastendada sümboli suurusega.",sizeInputBoxLines:"Määrake joone paksuseks 0–18 pikslit.",sizeInputBoxPoints:"Määrake sümboli suuruseks 1–120 pikslit"}});

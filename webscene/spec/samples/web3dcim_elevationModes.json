@@ -778,9 +778,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.13",
+  "version": "1.15",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.10",
+  "authoringAppVersion": "4.11",
   "initialState": {
     "environment": {
       "lighting": {

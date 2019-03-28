@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","@dojo/framework/shim/Set"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(){this._pool=[],this._set=new r.default}return e.prototype.acquire=function(){if(0===this._pool.length)return new r.default;var e=this._pool.pop();return this._set.delete(e),e},e.prototype.release=function(e){e&&!this._set.has(e)&&(e.clear(),this._pool.length<5e4&&(this._pool.push(e),this._set.add(e)))},e.acquire=function(){return n.acquire()},e.release=function(e){return n.release(e)},e}();t.default=o;var n=new o});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,e){function a(t,e,a){var n=t.safeWidth,r=t.width,u=t.values,l=t.noDataValue,o=i(t.dy*(t.y1-a),0,n),h=i(t.dx*(e-t.x0),0,n),s=Math.floor(o),d=Math.floor(h),f=s*r+d,p=f+r,v=u[f],c=u[p],y=u[f+1],D=u[p+1];if(v!==l&&c!==l&&y!==l&&D!==l){var m=o-s,w=h-d,x=v+(y-v)*w;return x+(c+(D-c)*w-x)*m}}function i(t,e,a){return t<e?e:t>a?a:t}Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(t,e){this.tile=t,this.update(e)}return t.prototype.update=function(t){if(!t)return void(this.samplerData=null);var e=this.tile.extent;this.samplerData={values:t.values,width:t.width,height:t.height,safeWidth:.99999999*(t.width-1),noDataValue:t.noDataValue,dx:(t.width-1)/(e[2]-e[0]),dy:(t.width-1)/(e[3]-e[1]),x0:e[0],y1:e[3]}},t.prototype.sample=function(t,e){if(this.samplerData)return a(this.samplerData,t,e)},t}();e.ElevationTile=n,e.sample=a,e.default=n});

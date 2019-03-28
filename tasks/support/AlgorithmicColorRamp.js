@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
-define(["../../Color","./ColorRamp"],function(o,r){return r.createSubclass({declaredClass:"esri.tasks.support.AlgorithmicColorRamp",properties:{algorithm:null,fromColor:{value:null,type:o},toColor:{value:null,type:o},type:"algorithmic"},toJSON:function(){var r;switch(this.algorithm.toLowerCase()){case"cie-lab":r="esriCIELabAlgorithm";break;case"hsv":r="esriHSVAlgorithm";break;case"lab-lch":r="esriLabLChAlgorithm"}var l={type:"algorithmic",algorithm:r};return l.fromColor=o.toJSON(this.fromColor),l.toColor=o.toJSON(this.toColor),l}})});
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../Color","../../core/lang","../../core/accessorSupport/decorators","./ColorRamp"],function(o,r,t,e,l,i,p,a){return function(o){function r(r){var t=o.call(this)||this;return t.algorithm=null,t.fromColor=null,t.toColor=null,t.type="algorithmic",t}e(r,o),a=r,r.prototype.clone=function(){return new a({fromColor:i.clone(this.fromColor),toColor:i.clone(this.toColor),algorithm:this.algorithm})};var a;return t([p.enumeration.serializable()({esriCIELabAlgorithm:"cie-lab",esriHSVAlgorithm:"hsv",esriLabLChAlgorithm:"lab-lch"})],r.prototype,"algorithm",void 0),t([p.property({type:l,json:{write:!0}})],r.prototype,"fromColor",void 0),t([p.property({type:l,json:{write:!0}})],r.prototype,"toColor",void 0),t([p.property({type:["algorithmic"]})],r.prototype,"type",void 0),r=a=t([p.subclass("esri.tasks.support.AlgorithmicColorRamp")],r)}(p.declared(a))});

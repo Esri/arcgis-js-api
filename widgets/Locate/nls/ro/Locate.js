@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Localizare",title:"Găsire locaţie proprie",currentLocation:"Locație curentă",timestamp:"Marcaj temporal",latitude:"Latitudine",longitude:"Longitudine",accuracy:"Precizie",altitude:"Altitudine",altitudeAccuracy:"Precizia altitudinii",heading:"Antet",speed:"Viteză"});

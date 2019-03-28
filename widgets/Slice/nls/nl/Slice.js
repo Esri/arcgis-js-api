@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({title:"Doorsnede maken",cancel:"Afbreken",hint:"Begin met het maken van een doorsnede door te klikken en te slepen op een oppervlakte in de scene",excludeHint:"Kies een laag in de viewer om uit te sluiten van de doorsnede",unsupported:"Doorsnedes worden niet ondersteund in MapView.",multipleDisabled:"Er kan slechts één doorsnede per keer actief zijn",newSlice:"Nieuwe doorsnede",excludedLayers:"Uitgesloten lagen",pickLayer:"Selecteer een laag vanaf de viewer",excludeLayer:"Laag uitsluiten van de doorsnede",includeLayer:"Laag toevoegen aan de doorsnede",ground:"Grond"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,t,n,i){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){return i.glslifyDefineMap({HAZE:e.haze})};r.program={name:"realistic-atmosphere-color",shaders:function(e){return{vertexShader:o(e)+n.resolveIncludes("environment/realisticAtmosphere.vert"),fragmentShader:o(e)+n.resolveIncludes("environment/realisticAtmosphere.frag")}},attributes:t.Default3D}});

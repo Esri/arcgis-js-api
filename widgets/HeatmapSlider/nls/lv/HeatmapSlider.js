@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({statsAvg:"Vidējs: ${avg}",count:"Skaits: ${count}",percent:"${num}%",high:"Augsts",low:"Zems",color:{changeMinMaxToolTIp:"Ierakstiet vērtību.",handleToolTip:"Saskaņojiet datu vērtības ar krāsām.",maxValueToolTip:"Ierakstiet lielāko paredzēto datu vērtību.",minValueToolTip:"Ierakstiet mazāko paredzēto datu vērtību.",changeSymbol:"Mainīt simbolu"},size:{handleToolTip:"Saskaņojiet datu vērtības ar simbola lielumu.",sizeInputBoxLines:"Iestatīt līnijas biezumu no 0 līdz 18 pikseļiem.",sizeInputBoxPoints:"Iestatīt simbola lielumu no 1 līdz 120 pikseļiem"}});

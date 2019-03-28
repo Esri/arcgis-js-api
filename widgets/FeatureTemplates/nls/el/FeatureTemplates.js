@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Πρότυπα στοιχείου",filterPlaceholder:"Τύποι φίλτρων",noMatches:"Δεν βρέθηκαν αντικείμενα.",noItems:"Κανένα πρότυπο προς εμφάνιση"});

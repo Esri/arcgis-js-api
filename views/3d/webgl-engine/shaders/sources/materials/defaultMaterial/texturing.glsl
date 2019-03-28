@@ -7,20 +7,6 @@ float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {
   return max(0.0, 0.5 * log2(deltaMaxSqr));
 }
 
-// based on https://medium.com/@bgolus/anti-aliased-alpha-test-the-esoteric-alpha-to-coverage-8b177335ae4f
-float coverageCorrectionFactor(vec2 uv) {
-#ifdef ALPHA_COVERAGE_CORRECTION
-  const float MipScale = 0.25;
-  uv *= texSize;
-#ifdef TEXTURE_ATLAS
-  uv *= region.zw - region.xy;
-#endif
-  return 1.0 + max(0.0, calcMipMapLevel(dFdx(uv), dFdy(uv))) * MipScale;
-#else
-  return 1.0;
-#endif
-}
-
 vec4 textureAtlasLookup(sampler2D tex, vec2 uv, vec4 region, vec2 texSize) {
   //[umin, vmin, umax, vmax]
   vec2 atlasScale = region.zw - region.xy;
@@ -53,4 +39,36 @@ vec4 textureLookup(sampler2D tex, vec2 uv) {
   return texture2D(tex, uv);
 #endif
 }
+
+/**
+ * Based on the texture alpha mode:
+ * - discards fragments if necessary
+ * - adjusts read texture alpha if necessary
+ */
+void discardOrAdjustTextureAlpha(inout vec4 texColor) {
+  // if the texture alpha mode is set to "mask"
+  // the resulting alpha is either 0.0 (discard) or 1.0
+  #if defined(TEXTURE_ALPHA_MODE_MASK)
+    if (texColor.a < textureAlphaCutoff) {
+      discard;
+    } else {
+      texColor.a = 1.0;
+    }
+  // if the texture alpha mode is set to "maskBlend"
+  // the resulting alpha is either 0.0 (discard) or untouched for further use in blending
+  #elif defined(TEXTURE_ALPHA_MODE_MASK_BLEND)
+    if (texColor.a < textureAlphaCutoff) {
+      discard;
+    }
+  // if the texture alpha mode is set to "opaque"
+  // the resulting alpha is always 1.0
+  #elif defined(TEXTURE_ALPHA_MODE_OPAQUE)
+    texColor.a = 1.0;
+  // for "blend" we don't need to do anyting
+  #else // defined(TEXTURE_ALPHA_MODE_BLEND)
+
+  #endif
+}
+
+
 

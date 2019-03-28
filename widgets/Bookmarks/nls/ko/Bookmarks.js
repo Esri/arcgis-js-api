@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"책갈피",goToBookmark:"책갈피로 이동",noBookmarksHeading:"책갈피 없음",noBookmarksDescription:"맵에 책갈피를 추가하여 표시합니다.",disabledHeading:"책갈피 비활성화",disabledDescription:"MapView를 추가하여 책갈피를 활성화합니다."});

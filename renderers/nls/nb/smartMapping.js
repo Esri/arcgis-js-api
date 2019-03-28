@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({other:"Annet",sumOfCategories:"Sum for kategorier",predominantCategory:"Dominerende kategori",strengthOfPredominance:"Dominansgrad",ageInfo_years:"Alder, i år, fra {startTime} til {endTime}",ageInfo_months:"Alder, i måneder, fra {startTime} til {endTime}",ageInfo_days:"Alder, i dager, fra {startTime} til {endTime}",ageInfo_hours:"Alder, i timer, fra {startTime} til {endTime}",ageInfo_minutes:"Alder, i minutter, fra {startTime} til {endTime}",ageInfo_seconds:"Alder, i sekunder, fra {startTime} til {endTime}",relationship:{legendTitle:"Relasjon",HL:"Høy - lav",HH:"Høy - høy",LL:"Lav - lav",LH:"Lav - høy",HM:"Høy - middels",ML:"Middels - lav",MM:"Middels - middels",MH:"Middels - høy",LM:"Lav - middels",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Middels - mild",M2M2:"Middels - middels",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Mild - mild",M1M2:"Mild - middels",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}});

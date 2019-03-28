@@ -12,21 +12,19 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * The FeatureForm widget is currently in its beta release. It should be noted
- * that it is not yet at full parity with the functionality provided in the 3.x
+ * The FeatureForm widget is not yet at full parity with the functionality provided in the 3.x
  * [AttributeInspector](https://developers.arcgis.com/javascript/3/jsapi/attributeinspector-amd.html)
- * widget and is subject to change. For example, there is
- * currently no support for editing attachments or related feature attributes.
+ * widget. For example, there is currently no support for editing attachments or related feature attributes.
  * :::
  *
  * @module esri/widgets/FeatureForm
  * @since 4.9
- * @beta
  *
  * @see [FeatureForm.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureForm.tsx)
  * @see [FeatureForm.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureForm.scss)
  * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
  * @see [Sample - Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
+ * @see [Sample - Advanced Attribute Editing](../sample-code/editing-featureform-fieldvisibility/index.html)
  * @see module:esri/widgets/FeatureForm/FeatureFormViewModel
  * @see module:esri/widgets/FeatureForm/FieldConfig
  * @see module:esri/widgets/FeatureForm/InputField
@@ -59,7 +57,7 @@ import FeatureLayer = require("esri/layers/FeatureLayer");
 
 // esri.layers.support
 import { getDomainRange } from "esri/layers/support/domains";
-import { FieldValue, getFieldRange, Range } from "esri/layers/support/fieldUtils";
+import { FieldValue, getFieldRange, NumericRange } from "esri/layers/support/fieldUtils";
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -118,6 +116,7 @@ const CSS = {
 
   // common
   widget: "esri-widget",
+  panel: "esri-widget--panel",
   input: "esri-input",
   select: "esri-select"
 };
@@ -220,7 +219,7 @@ class FeatureForm extends declared(Widget) {
     this._handleNumberInputMouseDown = this._handleNumberInputMouseDown.bind(this);
     this._handleInputKeyDown = this._handleInputKeyDown.bind(this);
     this._handleOptionChange = this._handleOptionChange.bind(this);
-    this._handleCollapsedGroupClick = this._handleCollapsedGroupClick.bind(this);
+    this._handleGroupClick = this._handleGroupClick.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._afterScrollerCreateOrUpdate = this._afterScrollerCreateOrUpdate.bind(this);
   }
@@ -229,7 +228,8 @@ class FeatureForm extends declared(Widget) {
     this.own(
       this.watch("feature", () => {
         const [first] = this.viewModel.inputFields;
-        this._activeInput = isGroupField(first) ? first.inputFields[0] : first;
+        const groupOrInput = isGroupField(first) ? first.inputFields[0] : first;
+        this._activeInputName = groupOrInput && groupOrInput.name;
 
         this._fieldFocusNeeded = true;
       }),
@@ -237,9 +237,8 @@ class FeatureForm extends declared(Widget) {
       (this.on as FeatureFormViewModel["on"])("submit", (event) => {
         if (event.invalid.length > 0) {
           const [invalidFieldName] = event.invalid;
-          const invalidInput = this.viewModel.findField(invalidFieldName);
 
-          this._activeInput = invalidInput;
+          this._activeInputName = invalidFieldName;
           this._fieldFocusNeeded = true;
 
           this.scheduleRender();
@@ -257,7 +256,7 @@ class FeatureForm extends declared(Widget) {
 
   private _activeDateEdit: DateEditParts = null;
 
-  private _activeInput: InputField = null;
+  private _activeInputName: string = null;
 
   //--------------------------------------------------------------------------
   //
@@ -306,8 +305,8 @@ class FeatureForm extends declared(Widget) {
    * [Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html) sample.
    *
    * ::: esri-md class="panel trailer-1"
-   * When not set, all fields except for `editor`, `globalID`, and `objectID` fields will be included,
-   * otherwise it is up to the developer to set the right field(s) to override and display.
+   * When not set, all fields except for `editor`, `globalID`, `objectID`, and system maintained area and length fields will be included.
+   * Otherwise, it is up to the developer to set the right field(s) to override and display.
    * :::
    *
    * @name fieldConfig
@@ -321,7 +320,7 @@ class FeatureForm extends declared(Widget) {
    *   container: "formDiv",
    *   feature: graphic, // Pass in feature
    *   // Configure fields to display without grouping
-   *   fieldConfig: [ // autocasts as FieldConfig
+   *   fieldConfig: [ // Autocasts as FieldConfig
    *     {
    *       name: "Incident_desc",
    *       label: "Description"
@@ -336,8 +335,8 @@ class FeatureForm extends declared(Widget) {
    * const featureForm = new FeatureForm({
    *   container: "formDiv",
    *   feature: graphic,
-   *   fieldConfig: [{ // autocasts to FieldGroupConfig
-   *     label: "Inspector", // group 1
+   *   fieldConfig: [{ // Autocasts to FieldGroupConfig
+   *     label: "Inspector", // Group 1
    *     description: "Inspector information",
    *     // Individual field configurations within the group
    *     fieldConfig: [{
@@ -349,7 +348,7 @@ class FeatureForm extends declared(Widget) {
    *       label: "Email address"
    *     }]
    *    }, {
-   *     label: "Business", // group 2
+   *     label: "Business", // Group 2
    *     description: "Business information",
    *     // Individual field configurations within the group
    *     fieldConfig: [{
@@ -511,7 +510,7 @@ class FeatureForm extends declared(Widget) {
     const { state } = this.viewModel;
 
     return (
-      <div class={this.classes(CSS.base, CSS.widget)}>
+      <div class={this.classes(CSS.base, CSS.widget, CSS.panel)}>
         {state === "ready" ? this.renderForm() : null}
       </div>
     );
@@ -541,18 +540,18 @@ class FeatureForm extends declared(Widget) {
       viewModel: { inputFields }
     } = this;
 
-    return inputFields.map(
-      (inputField, index) =>
-        isGroupField(inputField)
-          ? this.renderGroup(inputField, index)
-          : this.renderLabeledField(inputField)
+    return inputFields.map((inputField, index) =>
+      isGroupField(inputField)
+        ? this.renderGroup(inputField, index)
+        : this.renderLabeledField(inputField)
     );
   }
 
   protected renderGroup(inputFieldGroup: InputFieldGroup, index: number): VNode {
     const { description, label, inputFields: inputs } = inputFieldGroup;
 
-    const isGroupActive = this._activeInput && this._activeInput.group === inputFieldGroup;
+    const activeInput = this.viewModel.findField(this._activeInputName);
+    const isGroupActive = activeInput && activeInput.group === inputFieldGroup;
 
     const id = `${this.id}_group_${index}`;
     const labelId = `${this.id}_group-label_${index}`;
@@ -565,6 +564,7 @@ class FeatureForm extends declared(Widget) {
     ) : null;
 
     const sequential = this.groupDisplay === "sequential";
+    const ariaExpanded = !sequential ? undefined : isGroupActive ? "true" : "false";
 
     return (
       <fieldset
@@ -574,11 +574,13 @@ class FeatureForm extends declared(Widget) {
           !sequential || isGroupActive ? null : CSS.groupCollapsed,
           isGroupActive ? CSS.groupActive : null
         )}
+        aria-expanded={ariaExpanded}
         aria-labelledby={labelId}
         aria-describedby={description ? descriptionId : ""}
         data-group={inputFieldGroup}
         id={id}
-        onclick={this._handleCollapsedGroupClick}
+        key={index}
+        onclick={this._handleGroupClick}
       >
         <div class={CSS.groupLabel} id={labelId}>
           {label}
@@ -587,6 +589,22 @@ class FeatureForm extends declared(Widget) {
         {inputs.map((inputField) => this.renderLabeledField(inputField))}
       </fieldset>
     );
+  }
+
+  private _getFocusableInput(direction: "forward" | "backward", input: InputField): InputField {
+    const inputs = this.viewModel._allInputFields;
+    const allInputs = direction === "forward" ? inputs : inputs.slice().reverse();
+    const searchStartIndex = allInputs.indexOf(input) + 1;
+
+    for (let i = searchStartIndex; i < allInputs.length; i++) {
+      const current = allInputs[i];
+
+      if (current.visible && current.editable) {
+        return current;
+      }
+    }
+
+    return null;
   }
 
   protected renderLabeledField(inputField: InputField): VNode {
@@ -805,7 +823,7 @@ class FeatureForm extends declared(Widget) {
     this.scheduleRender();
   }
 
-  private _getNumberFieldConstraints(field: InputField): Range {
+  private _getNumberFieldConstraints(field: InputField): NumericRange {
     const constraints = getDomainRange(field.domain) || getFieldRange(field.field);
 
     if (
@@ -824,9 +842,10 @@ class FeatureForm extends declared(Widget) {
 
   private _afterScrollerCreateOrUpdate(node: HTMLElement): void {
     const inputField: InputField = node["data-field"];
+    const activeInput = this.viewModel.findField(this._activeInputName);
 
     const shouldAutoFocusField =
-      inputField.editable && this._fieldFocusNeeded && this._activeInput === inputField;
+      inputField.editable && this._fieldFocusNeeded && activeInput === inputField;
 
     if (shouldAutoFocusField) {
       this._fieldFocusNeeded = false;
@@ -836,7 +855,7 @@ class FeatureForm extends declared(Widget) {
 
   private _handleInputFocus(event: FocusEvent): void {
     const input = event.target as HTMLInputElement;
-    this._activeInput = input["data-field"] as InputField;
+    this._activeInputName = (input["data-field"] as InputField).name;
   }
 
   private _handleInputBlur(event: FocusEvent): void {
@@ -869,6 +888,14 @@ class FeatureForm extends declared(Widget) {
       return;
     }
 
+    this._commitValue(input);
+
+    this.scheduleRender();
+  }
+
+  private _commitValue(input: HTMLInputElement): void {
+    const inputField: InputField = input["data-field"] as InputField;
+
     if (this._activeDateEdit) {
       const { date: dateEdits, time: timeEdits } = this._activeDateEdit;
       const dateValue: string = this._getDateEditValue(inputField, "date");
@@ -891,8 +918,6 @@ class FeatureForm extends declared(Widget) {
     } else {
       this._updateFieldValue(input);
     }
-
-    this.scheduleRender();
   }
 
   private _getDateEditValue(inputField: InputField, part: "date" | "time"): string {
@@ -919,7 +944,39 @@ class FeatureForm extends declared(Widget) {
   }
 
   private _handleInputKeyDown(event: KeyboardEvent): void {
-    const { key, altKey, ctrlKey, metaKey } = event;
+    const { key, altKey, ctrlKey, metaKey, shiftKey } = event;
+
+    if (key === "Tab") {
+      const input = event.target as HTMLInputElement;
+      const inputField = input["data-field"] as InputField;
+      const direction = shiftKey ? "backward" : "forward";
+      const datePart = input.getAttribute("data-date-part") as keyof FormattedDateParts;
+
+      const movingToOtherInputField = !(
+        (direction === "backward" && datePart === "time") ||
+        (direction === "forward" && datePart === "date")
+      );
+
+      if (!movingToOtherInputField) {
+        return;
+      }
+
+      this._commitValue(input);
+      const latestInputField = this.viewModel.findField(inputField.name);
+      const nextInputFocusTarget = this._getFocusableInput(direction, latestInputField);
+
+      this._activeInputName = nextInputFocusTarget && nextInputFocusTarget.name;
+
+      if (nextInputFocusTarget) {
+        event.preventDefault();
+        this._fieldFocusNeeded = true;
+      } else {
+        // ensure to-be-removed fields are removed to lose browser focus
+        this.renderNow();
+      }
+
+      return;
+    }
 
     if (key !== "Enter") {
       const input = event.target as HTMLInputElement;
@@ -1026,14 +1083,17 @@ class FeatureForm extends declared(Widget) {
     this.scheduleRender();
   }
 
-  protected _handleCollapsedGroupClick(event: Event): void {
-    const group = (event.currentTarget as HTMLFieldSetElement)["data-group"] as InputFieldGroup;
+  protected _handleGroupClick(event: Event): void {
+    const fieldSet = event.currentTarget as HTMLFieldSetElement;
+    const ariaExpanded = fieldSet.getAttribute("aria-expanded");
 
-    if (!group || (this._activeInput && this._activeInput.group === group)) {
+    // ignore clicks if group is not collapsible or already expanded
+    if (ariaExpanded !== "false") {
       return;
     }
 
-    this._activeInput = group.inputFields[0];
+    const group = fieldSet["data-group"] as InputFieldGroup;
+    this._activeInputName = group.inputFields[0].name;
     this._fieldFocusNeeded = true;
 
     this.scheduleRender();

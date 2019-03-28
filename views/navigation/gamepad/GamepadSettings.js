@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators","../../input/gamepad/GamepadInputDevice"],function(e,o,r,t,p,n,a){return function(e){function o(){var o=e.call(this)||this;return o.enabled=!0,o.device=null,o.mode="pan",o.tiltDirection="forward-down",o.velocityFactor=1,o}return r(o,e),t([n.property({type:Boolean,nonNullable:!0})],o.prototype,"enabled",void 0),t([n.property({type:a})],o.prototype,"device",void 0),t([n.property({type:["pan","zoom"],nonNullable:!0})],o.prototype,"mode",void 0),t([n.property({type:["forward-down","forward-up"],nonNullable:!0})],o.prototype,"tiltDirection",void 0),t([n.property({type:Number,nonNullable:!0})],o.prototype,"velocityFactor",void 0),o=t([n.subclass("esri.views.navigation.gamepad.GamepadSettings")],o)}(n.declared(p))});

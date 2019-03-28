@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,i,n,t){Object.defineProperty(r,"__esModule",{value:!0});var s=function(e){return t.glslifyDefineMap({WALL:e.wall,SCREENSCALE:e.screenScale,STIPPLE:e.stipple,SLICE:e.slice})};r.colorPass={name:"ribbon-line-color",shaders:function(e){return{vertexShader:s(e)+n.resolveIncludes("materials/ribbonLine/ribbonLine.vert"),fragmentShader:s(e)+n.resolveIncludes("materials/ribbonLine/colorPass.frag")}},attributes:i.Default3D},r.highlightPass={name:"ribbon-line-highlight",shaders:function(e){return{vertexShader:s(e)+n.resolveIncludes("materials/ribbonLine/ribbonLine.vert"),fragmentShader:s(e)+n.resolveIncludes("materials/ribbonLine/highlightPass.frag")}},attributes:i.Default3D}});

@@ -1,5 +1,10 @@
 precision mediump float;
 
+#include <materials/constants.glsl>
+#include <materials/utils.glsl>
+#include <materials/vv.glsl>
+#include <materials/effects.glsl>
+
 attribute vec2 a_pos;
 attribute vec4 a_id;
 attribute vec4 a_color;
@@ -7,131 +12,109 @@ attribute vec4 a_offsetAndNormal;
 attribute vec2 a_accumulatedDistanceAndHalfWidth;
 attribute vec4 a_tlbr;
 attribute vec4 a_segmentDirection;
+attribute float  a_visible;                // a one byte controlling the visibility of the vertex (separate buffer)
 
-attribute float  a_visible; // a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
+#ifdef VV
+attribute highp vec3 a_vv;
+#endif
 
-// T: TileCoords -> DisplayCoords
-// Premultiplies DisplayMat3 * ViewMat3 * ScreenMat3
-uniform highp mat3 u_dvsMat3;
-// T: ScreenCoords -> DisplayCoords
-// Premultiplies DisplayMat3 * ViewMat3
-uniform highp mat3 u_dvMat3;
-
+uniform highp mat3 u_dvsMat3;              // premultiplies DisplayMat3 * ViewMat3 * ScreenMat3
+uniform highp mat3 u_displayViewMat3;     // premultiplies DisplayMat3 * ViewMat3
 uniform mediump float u_zoomFactor;
 uniform mediump float u_antialiasing;
 
-// the interpolated normal to the line. the information is packed into the two LSBs of the vertex coordinate
-varying mediump vec2 v_normal;
+varying mediump vec2 v_normal;             // interpolated normal to the line. packed into the two LSBs of the vertex coordinate
 varying mediump float v_lineHalfWidth;
 varying lowp vec4 v_color;
 varying lowp float v_transparency;
 
-const float scale = 1.0 / 31.0;
-#ifdef SDF
+#ifdef ID
+varying highp vec4 v_id;
+#endif
+
+#ifdef PATTERN
+uniform mediump vec2 u_mosaicSize;
+
+varying mediump vec4 v_tlbr;               // normalized pattern coordinates [0, 1]
+varying mediump vec2 v_patternSize;
+#endif
+
+#if defined(PATTERN) || defined(SDF)
+varying highp float v_accumulatedDistance; // we need to accumulated distance only if it is a pattern or an SDF line
+#endif
+
+#if defined(SDF) && !defined(HIGHLIGHT) // When we render the highlight, we want to treat the line as if it was solid
 const float widthFactor = 2.0;
 #else
 const float widthFactor = 1.0;
 #endif
 
-
-#ifdef PATTERN
-uniform mediump vec2 u_mosaicSize;
-
-varying mediump vec4 v_tlbr; // normalized pattern coordinates [0, 1]
-varying mediump vec2 v_patternSize;
-#endif // PATTERN
-
-// we need to accumulated distance only if it is a pattern or an SDF line
-#if defined(PATTERN) || defined(SDF)
-varying highp float v_accumulatedDistance;
-#endif // PATTERN SDF
-
-#ifdef ID
-varying highp vec4 v_id;
-#endif // ID
-
-// import the VV inputs and functions (they are #ifdefed, so if the proper #define is not set it will end-up being a no-op)
-#include <materials/line/vvUniforms.glsl>
-#include <materials/line/vvFunctions.glsl>
-
-// include the thin line parameters (thinLineHalfWidth and thinLineWidthFactor)
-#include <materials/line/constants.glsl>
+const float scale = 1.0 / 31.0;
 
 void main()
 {
-// size VV block
-#if defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
+  float a_bitset = a_segmentDirection.w;
 
-#ifdef VV_SIZE_MIN_MAX_VALUE
-  mediump float lineHalfWidth = 0.5 * getVVMinMaxSize(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
-#endif // VV_SIZE_MIN_MAX_VALUE
+  float isColorLocked = getBit(a_bitset, 0);
+  float lineHalfWidth = a_accumulatedDistanceAndHalfWidth.y * scale;
 
-#ifdef VV_SIZE_SCALE_STOPS
-  mediump float lineHalfWidth = 0.5 * u_vvSizeScaleStopsValue;
-#endif // VV_SIZE_SCALE_STOPS
+  v_transparency = 1.0;
+  v_color = a_color;
+  v_normal = a_offsetAndNormal.zw * scale;
 
-#ifdef VV_SIZE_FIELD_STOPS
-  mediump float lineHalfWidth = 0.5 * getVVStopsSize(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
-#endif // VV_SIZE_FIELD_STOPS
-
-#ifdef VV_SIZE_UNIT_VALUE
-  mediump float lineHalfWidth = 0.5 * getVVUnitValue(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
-#endif // VV_SIZE_UNIT_VALUE
-
-#else // no VV
-  mediump float lineHalfWidth = a_accumulatedDistanceAndHalfWidth.y * scale;
-#endif // defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
+#ifdef ID
+  v_id = a_id;
+#endif
 
 #ifdef VV_OPACITY
-v_transparency = getVVOpacity(a_vv.z);
-#else
-v_transparency = 1.0;
-#endif // VV_OPACITY
+  v_transparency = getVVOpacity(a_vv.z);
+#endif
 
 #ifdef VV_COLOR
-v_color = getVVColor(a_vv.y, a_color);
-#else
-v_color = a_color;
-#endif // VV_COLOR
+  v_color = getVVColor(a_vv.y, v_color, isColorLocked);
+#endif
 
-  // make sure to clip the vertices in case that the width of the line is 0 (or negative),
-  // or in case that the line is not visible
-  float z = 2.0 * (step(lineHalfWidth, 0.0) + (1.0 - a_visible));
+#ifdef VV_SIZE
+  lineHalfWidth = 0.5 * getVVSize(2.0 * lineHalfWidth, a_vv.x);
+#endif
+
+#ifdef PATTERN
+  v_tlbr = a_tlbr / u_mosaicSize.xyxy;
+  v_patternSize = vec2(a_tlbr.z - a_tlbr.x, a_tlbr.w - a_tlbr.y);
+#endif
+
+  // make sure to clip the vertices in case that the width of the line is 0 (or negative)
+  float z = 2.0 * step(lineHalfWidth, 0.0);
 
   // add an antialiasing distance. We use 0.2 rather than 0.5 in order to match the SVG renderer
   // also limit the total line width to 1.3 pixels. Below this value lines don't look good compared
   // to the SVG renderer
-  lineHalfWidth = max(lineHalfWidth, 0.45) + 0.2 * u_antialiasing;
+  v_lineHalfWidth = max(lineHalfWidth, 0.45) + 0.2 * u_antialiasing;
+
+
+#ifdef HIGHLIGHT
+  v_lineHalfWidth = max(v_lineHalfWidth, 2.0);
+#endif
 
   // for now assume that a thin line is a line which is under 2 pixels (1 pixels on either sides
   // of the centerline) in practice, a thin line is a line who's half width vary from 0.45px to
   // the value of thinLineHalfWidth, as the value is claped in line 221 above
-  mediump float thinLineFactor = max(thinLineWidthFactor * step(lineHalfWidth, thinLineHalfWidth), 1.0);
-
-  v_lineHalfWidth = lineHalfWidth;
+  mediump float thinLineFactor = max(THIN_LINE_WIDTH_FACTOR * step(v_lineHalfWidth, THIN_LINE_HALF_WIDTH), 1.0);
 
   // calculate the relative distance from the centerline to the edge of the line. Since offset is
   // given in integers (for the sake of using less attribute memory, we need to scale it back to
   // the original range of ~ [0, 1]) in a case of a thin line we move each vertex twice as far
-  mediump vec2 dist = thinLineFactor * widthFactor * lineHalfWidth * a_offsetAndNormal.xy * scale;
-
-  vec3 offset = u_dvMat3 * vec3(dist, 0.0);
-  vec3 v_pos = u_dvsMat3 * vec3(a_pos.xy, 1.0) + offset;
-
-  gl_Position = vec4(v_pos.xy, z, 1.0);
-
-  v_normal = a_offsetAndNormal.zw * scale;
+  mediump vec2 dist = thinLineFactor * widthFactor * v_lineHalfWidth * a_offsetAndNormal.xy * scale;
 
 #if defined(PATTERN) || defined(SDF)
   v_accumulatedDistance = a_accumulatedDistanceAndHalfWidth.x + dot(scale * a_segmentDirection.xy, dist / u_zoomFactor);
-#endif // PATTERN || SDF
+#endif
 
-#ifdef PATTERN
-v_tlbr = vec4(a_tlbr.x / u_mosaicSize.x, a_tlbr.y / u_mosaicSize.y, a_tlbr.z / u_mosaicSize.x, a_tlbr.w / u_mosaicSize.y);
-v_patternSize = vec2(a_tlbr.z - a_tlbr.x, a_tlbr.w - a_tlbr.y);
-#endif // PATTERN
+  vec3 offset = u_displayViewMat3 * vec3(dist, 0.0);
+  vec3 v_pos = u_dvsMat3 * vec3(a_pos.xy, 1.0) + offset;
+  vec3 pos = vec3(v_pos.xy, z);
 
-#ifdef ID
-v_id = a_id;
-#endif // ID
+  applyFilter(v_color, pos, a_visible);
+
+  gl_Position = vec4(pos, 1.0);
 }

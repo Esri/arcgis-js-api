@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define({widgetLabel:"Danh sách Lớp",noItemsToDisplay:"Hiện không có mục nào để hiển thị.",layerInvisibleAtScale:"Không hiển thị ở tỷ lệ hiện tại",layerError:"Đã xảy ra lỗi khi tải lớp này",untitledLayer:"Lớp chưa có tiêu đề"});

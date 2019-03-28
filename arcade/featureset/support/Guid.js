@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.10/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,n){function r(t){for(var n="",r=0;r<t;r++)n+=(65536*(1+Math.random())|0).toString(16).substring(1);return n}var e=new RegExp("^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$","i");return function(){function t(n){if(this.value="",!n)throw new TypeError("Invalid argument; `value` has no value.");this.value=t.EMPTY,n&&n instanceof t?this.value=n.toString():n&&"[object String]"===Object.prototype.toString.call(n)&&t.isGuid(n)&&(this.value=n)}return t.prototype.equals=function(n){return t.isGuid(n)&&this.value===n},t.prototype.isEmpty=function(){return this.value===t.EMPTY},t.prototype.toString=function(){return this.value},t.prototype.toJSON=function(){return this.value},t.isGuid=function(n){return n&&(n instanceof t||e.test(n.toString()))},t.create=function(){return new t([r(2),r(1),r(1),r(1),r(3)].join("-"))},t.raw=function(){return[r(2),r(1),r(1),r(1),r(3)].join("-")},t.EMPTY="00000000-0000-0000-0000-000000000000",t}()});
