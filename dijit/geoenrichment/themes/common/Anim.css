@@ -1,7 +1,6 @@
 .Anim_Common {
     animation-duration: 0.3s;
     -webkit-animation-duration: 0.3s;
-
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 }

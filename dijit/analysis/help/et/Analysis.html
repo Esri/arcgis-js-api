@@ -257,7 +257,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vaatepiirkonna loomine</h2></td>
+                    <td><h2>Loo vaateväli</h2></td>
                     <td>
                     <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Vaatepiirkonna loomine">
                     </td>
@@ -592,11 +592,13 @@
     <div id="ManageDataCategory" class="largesize">
         <h2>Halda andmeid</h2>
         <hr/>
-        <p>Need t&ouml;&ouml;vahendid on m&otilde;eldud kasutamiseks geoandmetega seotud t&ouml;&ouml;tlustel ning nende ettevalmistamiseks mitmesugusteks anal&uuml;&uuml;sideks.  
+        <p>Need t&ouml;&ouml;riistad on ette n&auml;htud kasutamiseks geoandmetega seotud t&ouml;&ouml;tlustel ning nende ettevalmistamiseks mitmesugusteks anal&uuml;&uuml;sideks.  
             <ul>
                 <li> <b>Sulanda piirajad</b> &uuml;hendab omavahel alad, mis jagavad &uuml;hist piiri ja sama atribuudiv&auml;&auml;rtust.
                 </li>
                 <li> <b>Andmete v&auml;ljav&otilde;te</b> koostab uue andmestiku l&auml;htuvalt olemasolevast kihist tehtud objektide v&auml;ljav&otilde;ttele.
+                </li>
+                <li> <b>Genereeri mosaiigid</b> loob teie andmete ulatuse p&otilde;hjal mosaiigid.
                 </li>
                 <li> <b>&Uuml;henda kihid</b> kopeerib k&otilde;ik kahe v&otilde;i enama kihi objektid uude tulemkihti.
                 </li>
@@ -619,7 +621,7 @@
 <hr/>
             <p>&Uuml;hist piiri omavad v&otilde;i kattuvuses olevad alad liidetakse &uuml;heks tervikuks.    
             </p>
-            <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. N&auml;iteks kui Teil on kasutada maakondade kiht, milles igal maakonnal on atribuut  <i>State_Name</i>, saate piiride &uuml;leminekud sulatada atribuudi <i>State_Name</i> kaudu.  K&uuml;lgnevad maakonnad &uuml;hendatakse kokku juhul, kui nende atribuudi <i>State_Name</i> v&auml;&auml;rtus on sama.  L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
+            <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. Kui teil on n&auml;iteks maakondade kiht ja igal maakonnal on atribuut  <i>State_Name</i>, saate piirajad sulandada atribuudiga <i>State_Name</i>.  K&uuml;lgnevad maakonnad &uuml;hendatakse, kui neil on v&auml;ljal <i>State_Name</i> sama v&auml;&auml;rtus. L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
             </p>
             <br/>
         </div>
@@ -640,6 +642,21 @@
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genereeri mosaiigid</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Genereeri mosaiigid">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Genereerib mosaiigid uuringualas, mis p&otilde;hineb m&auml;&auml;ratud kujundil ja suurusel.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -653,7 +670,7 @@
 <hr/>
             <p>Kopeerib kahe kihi objektid uude tulemkihti, n&auml;iteks:
                 <ul>
-                    <li>Teil on kasutada kolm kihti Saaremaa, Hiiumaa ja L&auml;&auml;nemaa maakondade kohta ning Te soovite nende alusel luua &uuml;hte terviklikku kihti L&auml;&auml;ne-Eesti maakondadest. 
+                    <li>Teil on kasutada kolm kihti Saare, Hiiu ja L&auml;&auml;ne maakondade kohta ning Te soovite nende alusel luua &uuml;hte terviklikku kihti L&auml;&auml;ne-Eesti maakondadest. 
                     </li>
                     <li>Teil on 12 kihti ning iga kiht sisaldab infot omavahel k&uuml;lgnevate elamurajoonide katastri&uuml;ksuste kohta. Te soovite k&otilde;iki neid &uuml;hendada &uuml;heks tervikuks, j&auml;ttes tulemusse alles vaid selle osa, kus kihi v&auml;ljas olev nimi ja t&uuml;&uuml;p langevad kokku.
                     </li>

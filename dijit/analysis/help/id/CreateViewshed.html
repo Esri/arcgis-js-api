@@ -41,16 +41,16 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Buat Jarak Pandang</h2><p/>
+        <h2>Buat Area Pandang</h2><p/>
         <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Buat Jarak Pandang"></h2>
         <hr/>
-    <p>Alat Buat Jarak Pandang menciptakan area tempat pengamat dapat melihat benda di tanah. Titik pengamat input dapat mewakili pengamat (misalnya orang yang berada di tanah atau pengawas suatu menara pemadam kebakaran) atau objek yang diamati (misalnya turbin angin, menara air, kendaraan, atau orang lain). Area hasilnya adalah area tempat pengamat dapat melihat objek yang diamati dan sebaliknya; objek yang diamati dapat melihat pengamat.
+    <p>Alat Buat Jarak Pandang menciptakan area tempat pengamat yang dapat melihat benda di tanah. Titik pengamat input dapat mewakili pengamat (misalnya orang yang berada di tanah atau pengawas suatu menara pemadam kebakaran) atau objek yang diamati (misalnya turbin angin, menara air, kendaraan, atau orang lain). Area hasilnya adalah area tempat pengamat dapat melihat objek yang diamati dan sebaliknya; objek yang diamati dapat melihat pengamat.
     </p>
-    <p>Namun pengamat dan objek yang diamati dapat memiliki ketinggian di atas tanah, dan ketinggian ini digunakan untuk menentukan visibilitas. Contohnya, jarak pandang yang dihitung untuk turbin 400 kaki dan orang setinggi enam kaki berdiri di atas tanah umumnya akan lebih besar dari jarak pandang yang dihitung untuk turbin 200 kaki dan orang setinggi enam kaki.
+    <p>Baik pengamat maupun objek yang diamati dapat memiliki ketinggian di atas tanah, dan ketinggian ini digunakan untuk menentukan visibilitas. Contohnya, jarak pandang yang dihitung untuk turbin 400 kaki dan orang setinggi enam kaki berdiri di atas tanah umumnya akan lebih besar dari jarak pandang yang dihitung untuk turbin 200 kaki dan orang setinggi enam kaki.
     </p>
     <p>Catat bahwa perhitungan batas air tidak berlaku untuk halangan seperti pohon atau bangunan. Anda dapat menganggap perhitungan tersebut yang berlangsung di atas tanah tanpa ada apa pun kecuali pengamat dan objek yang diamati.
     </p>
-    <p>Layer hasilnya mengandung fitur area yang menampilkan area yang visibel. Kolom  <i>Frekuensi</i> mencatat jumlah titik pengamat yang dapat melihat masing-masing area. Contoh, jika Anda memiliki lima titik input, masing-masing mewakili satu menara pengawas kebakaran, kolom <i>Frekuensi</i> akan memiliki nilai antara satu dan lima; area yang memiliki nilai satu hanya dapat dilihat oleh satu menara, dan area dengan nilai lima dapat dilihat oleh seluruh menara. Layer hasilnya juga mengandung kolom <i>DEMResolution</i>, yang mencatat resolusi dari model elevasi digital (DEM) yang digunakan untuk membuat jarak pandang.
+    <p>Layer hasilnya mengandung fitur area yang menampilkan area yang visibel. Kolom  <i>Frequency</i> mencatat jumlah titik pengamat yang dapat melihat masing-masing area. Contoh, jika Anda memiliki lima titik input, masing-masing mewakili satu menara pengawas kebakaran, kolom <i>Frequency</i> akan memiliki nilai antara satu dan lima; area yang memiliki nilai satu hanya dapat dilihat oleh satu menara, dan area dengan nilai lima dapat dilihat oleh seluruh menara. Layer hasilnya juga mengandung kolom <i>DEMResolution</i>, yang mencatat resolusi dari model elevasi digital (DEM) yang digunakan untuk membuat jarak pandang.
     </p>
     <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya titik pengamat yang visibel dalam jangkauan peta saat ini yang akan dianalisis.  Jika tidak dicentang, seluruh titik pengamat pada layer input akan dianalisis, meskipun berada di luar cakupan peta saat ini.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Tinggi objek lain di atas tanah</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah ketinggian struktur atau orang di tanah yang digunakan untuk menciptakan visibilitas. Hasil jarak pandang adalah area tempat titik pengamat dapat melihat objek lainnya.  Jangkauan visibel peta Anda saat ini (Sama seperti Tampilan). 
+            <p>Ini adalah ketinggian struktur atau orang di tanah yang digunakan untuk menciptakan visibilitas. Hasil jarak pandang adalah area tempat titik pengamat dapat melihat objek lainnya.  Kebalikannya juga benar; benda lain dapat melihat titik pengamat. 
             </p>
             <p>
                 <ul>
@@ -107,9 +107,11 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+            <p> Menjalankan alat ini tidak memakan kredit.
             </p>
         </div>
     </div>

@@ -46,7 +46,8 @@
         <hr/>
     <p>Det h&auml;r verktyget arbetar med ett lager punktgeoobjekt och ett lager omr&aring;desgeoobjekt. F&ouml;rst avg&ouml;rs vilka punkter som hamnar inom respektive omr&aring;de. Efter att den geografiska analysen f&ouml;r punkter inom olika omr&aring;den &auml;r f&auml;rdig, ber&auml;knas statistik f&ouml;r alla punkter i respektive omr&aring;de. Den mest grundl&auml;ggande statistiken &auml;r r&auml;kningen av antalet punkter i omr&aring;det, men du kan &auml;ven skaffa annan statistik. 
     </p>
-    <p>Anta till exempel att du har punktgeoobjekt i form av platser f&ouml;r kaf&eacute;er och omr&aring;desgeoobjekt i form av l&auml;n, och nu vill summera kaffef&ouml;rs&auml;ljningen per l&auml;n. Om vi antar att kaf&eacute;erna har attributet  <i>TOTAL_SALES</i> kan du ber&auml;kna summan av alla <i>TOTAL_SALES</i> i varje l&auml;n, minsta och h&ouml;gsta <i>TOTAL_SALES</i> i varje l&auml;n eller standardavvikelsen f&ouml;r all f&ouml;rs&auml;ljning i respektive l&auml;n.
+    <p>Anta till exempel att du har punktgeoobjekt i form av platser f&ouml;r kaf&eacute;er och omr&aring;desgeoobjekt i form av l&auml;n, och nu vill summera kaffef&ouml;rs&auml;ljningen per l&auml;n. Om vi antar att kaf&eacute;erna har attributet  <i>TOTAL_SALES</i> kan du ber&auml;kna summan av alla <i>TOTAL_SALES</i> i varje l&auml;n eller minsta och h&ouml;gsta <i>TOTAL_SALES</i>
+ i varje l&auml;n eller standardavvikelsen f&ouml;r all f&ouml;rs&auml;ljning i respektive l&auml;n.
     </p>
     <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, analyseras bara de geoobjekt i indatapunktlagret och omr&aring;deslagret som visas i den aktuella kartutbredningen. Om alternativet inte &auml;r markerat analyseras alla geoobjekt i b&aring;de indatapunktlagret och omr&aring;deslagret, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
     </p>
@@ -89,13 +90,15 @@
             <p>Du kan ber&auml;kna statistik om attributen i indatapunktlagret, till exempel summa, medelv&auml;rde, minsta v&auml;rde, h&ouml;gsta v&auml;rde och standardavvikelse. Resultatlagret inneh&aring;ller ett nytt attribut f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik (en ny listruta visas).
  
             </p>
+            <p>Om lagret som ska summeras inte har n&aring;gra nummerf&auml;lt kommer ingen ytterligare statistik att vara tillg&auml;nglig.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Välj fält att gruppera efter</h2></div>
         <hr/>
         <div>
-            <p> Du kan skapa statistiska grupper med hj&auml;lp av ett attribut i indatapunktlagret. Om du till exempel aggregerar brott inom olika grannskap kan du anv&auml;nda attributet <i>Crime_type</i> med fem olika brottstyper. Varje unik brottstyp utg&ouml;r en grupp, och den statistik du v&auml;ljer ber&auml;knas f&ouml;r varje unikt v&auml;rde f&ouml;r attributet <i>Crime_type</i>. Statistiken f&ouml;r varje grupp visas i resultatlagrets popupf&ouml;nster tillsammans med antalet punkter. N&auml;r du v&auml;ljer ett grupperingsattribut skapas tv&aring; resultat: resultatlagret och en resultattabell som inneh&aring;ller statistik f&ouml;r varje unik grupp.
+            <p> Du kan skapa statistiska grupper med hj&auml;lp av ett attribut i indatapunktlagret. Om du till exempel f&ouml;renar brott inom olika grannskap kan du ha attributet <i>Crime_type</i> med fem olika brottstyper.  Varje unik brottstyp utg&ouml;r en grupp, och den statistik du v&auml;ljer ber&auml;knas f&ouml;r varje unikt v&auml;rde f&ouml;r attributet <i>Crime_type</i>.  Statistiken f&ouml;r varje grupp visas i resultatlagrets popupf&ouml;nster tillsammans med antalet punkter. N&auml;r du v&auml;ljer ett grupperingsattribut skapas tv&aring; resultat: resultatlagret och en resultattabell som inneh&aring;ller statistik f&ouml;r varje unik grupp.
             </p>
         </div>
     </div>
@@ -113,7 +116,7 @@
         <div><h2>Lägg till procenttal</h2></div>
         <hr/>
         <div>
-            <p>Den h&auml;r kryssrutan aktiveras n&auml;r du v&auml;ljer ett f&auml;lt att gruppera efter.    V&auml;lj  <b>L&auml;gg till procenttal</b> om du vill ta reda p&aring; procenttalet f&ouml;r varje attributv&auml;rde inom varje grupp.  Ett nytt f&auml;lt l&auml;ggs till i resultattabellen som inneh&aring;ller procenttalet f&ouml;r varje attributv&auml;rde inom varje grupp.   Om du &auml;ven markerar <b>L&auml;gg till minoritet, majoritet</b> l&auml;ggs tv&aring; ytterligare f&auml;lt till i resultatlagret som inneh&aring;ller procenttalen f&ouml;r minoritetens och majoritetens attributv&auml;rden inom varje grupp.
+            <p>Den h&auml;r kryssrutan aktiveras n&auml;r du v&auml;ljer ett f&auml;lt att gruppera efter. V&auml;lj  <b>L&auml;gg till procenttal</b> om du vill ta reda p&aring; procenttalet f&ouml;r varje attributv&auml;rde inom varje grupp. Ett nytt f&auml;lt l&auml;ggs till i resultattabellen som inneh&aring;ller procenttalet f&ouml;r varje attributv&auml;rde inom varje grupp. Om du &auml;ven markerar <b>L&auml;gg till minoritet, majoritet</b> l&auml;ggs tv&aring; ytterligare f&auml;lt till i resultatlagret som inneh&aring;ller procenttalen f&ouml;r minoritetens och majoritetens attributv&auml;rden inom varje grupp.
             </p>
         </div>
     </div>
@@ -121,7 +124,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du att ange ett annat namn.
+            <p>Det h&auml;r &auml;r namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagernamnet redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

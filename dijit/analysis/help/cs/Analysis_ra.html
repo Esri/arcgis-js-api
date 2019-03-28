@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů moment&aacute;lně dostupn&eacute; pro webov&eacute; uživatele  Portal for ArcGIS jsou  <b>Sumarizovat data</b>, <b>Analyzovat vzory</b>, <b>Analyzovat obr&aacute;zek</b>, <b>Analyzovat ter&eacute;n</b> a <b>Spravovat data</b>.
+        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů aktu&aacute;lně dostupn&eacute; přes  Portal for ArcGIS webovou uživatelskou službu  <b>Shrnout data</b>, <b>Anal&yacute;za prostorov&eacute;ho uspoř&aacute;d&aacute;n&iacute;</b>, <b>Obalov&eacute; z&oacute;ny, vzd&aacute;lenost</b>, <b>Analyzovat sn&iacute;mek</b>, <b>Analyzovat ter&eacute;n</b>, <b>Spravovat data</b>, and <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Použít šablonu rastrových funkcí</h2></td>
+                    <td><h2>Použít šablonu rastrových funkcí (Apply Raster Function Template)</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Použ&iacute;t &scaron;ablonu rastrov&yacute;ch funkc&iacute;">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Vytvořit novou datovou sadu prvků z&nbsp;existuj&iacute;c&iacute; rastrov&eacute; datov&eacute; sady.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Sada nástrojů Deep Learningu</h2>
+        <hr/>
+        <p>Tyto n&aacute;stroje detekuj&iacute; specifick&eacute; prvky na sn&iacute;mku nebo klasifikuj&iacute; pixely v rastrov&eacute; datov&eacute; sadě. Deep learning je typem metody strojov&eacute;ho učen&iacute; uměl&eacute; inteligence, kter&aacute; detekuje prvky na sn&iacute;mc&iacute;ch pomoc&iacute; v&iacute;ce vrstev v neutr&aacute;ln&iacute;ch s&iacute;t&iacute;ch, kde každ&aacute; vrstva je schopna extrahovat jeden nebo v&iacute;ce jedinečn&yacute;ch prvků na sn&iacute;mku. Tento n&aacute;stroj využ&iacute;v&aacute; modely, kter&eacute; byly učeny pro detekov&aacute;n&iacute; prvků v programech deep learningu třet&iacute; strany&mdash;jako např&iacute;klad TensorFlow, CNTK a Keras&mdash;a v&yacute;stupn&iacute; prvky nebo mapy tř&iacute;dy.
+            <ul>
+                <li> <b>Klasifikovat pixely pomoc&iacute; deep learningu (Classify Pixels Using Deep Learning)</b> vytv&aacute;ř&iacute; rastr pomoc&iacute; učen&eacute;ho modelu deep learningu.
+                </li>
+                <li> <b>Detekovat objekty pomoc&iacute; deep learningu (Detect Objects Using Deep Learning)</b> vytv&aacute;ř&iacute; tř&iacute;du prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne ve vstupn&iacute;m rastru pomoc&iacute; učen&eacute;ho modelu deep learningu.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikovat pixely pomocí deep learningu (Classify Pixels Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasifikovat pixely pomoc&iacute; deep learningu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Spust&iacute; model &scaron;kolen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; klasifikovan&eacute;ho rastru se tř&iacute;dou popisků přiřazenou ke každ&eacute;mu platn&eacute;mu pixelu.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detekovat objekty pomocí deep learningu (Detect Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detekovat objekty pomoc&iacute; deep learningu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Spust&iacute; model &scaron;kolen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; tř&iacute;dy prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne. Prvky mohou b&yacute;t ohraničuj&iacute;c&iacute; v&yacute;řezy nebo polygony kolem nalezen&yacute;ch objektů, nebo body ve středech objektů.
             </p>
             <br/>
         </div>

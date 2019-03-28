@@ -70,7 +70,8 @@
         <div><h2>Ogranicz zakres wyszukiwania do (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Maksymalna odległość pozwalająca uznać obiekty za część tego samego klastra. Jeśli to pole pozostanie puste, jako domyślna odległość zostanie użyta największa wartość podstawowej odległości znaleziona w zestawie danych przy pominięciu przedziału 1% najwyższych wartości (nie będą uwzględniane skrajne odległości podstawowe). 
+            
+            <p>Maksymalna odległość pozwalająca uznać obiekty za część tego samego klastra. Jeśli dla tej opcji nie podano wartości, w narzędziu zostanie uruchomiony proces HDBSCAN, kt&oacute;ry rozdziela klastry o r&oacute;żnej gęstości od rzadszego szumu przy użyciu r&oacute;żnych odległości. Jeśli wartość jest podana, w narzędziu zostanie uruchomiony proces DBSCAN, kt&oacute;ry rozdziela gęste klastry od rzadszego szumu przy użyciu podanej odległości.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli ta nazwa warstwy już istnieje, wyświetlona zostanie prośba o podanie innej nazwy.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>Używając menu rozwijanego  <b>Zapisz wynik w</b>, można wskazać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym zostanie zapisany wynik.
             </p>
         </div>
     </div>

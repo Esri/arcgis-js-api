@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlēties aprakstāmo slāni",summaryTypes:"Kopsavilkuma veidi",centralFeature:"Centrālais elements",meanCenter:"Vidējais centrs",medianCenter:"Mediānas centrs",ellipse:"Elipse",weightBy:"Vērtēt pēc (pēc izvēles)",groupBy:"Grupēt pēc (pēc izvēles)",resultLayerName:"Rezultātu slāņa nosaukums",outputLayerName:"Aprakstīt slāņa ${layerName} izplatīšanu",none:"Neviens",itemDescription:"Elementu slānis ir ģenerēts, palaižot risinājumu Apkopot centru un dispersiju slānī ${layerName}. ",itemTags:"Analīzes rezultāts, Apkopot centru un dispersiju, ${layerName}",itemSnippet:"Elementu slānis ir ģenerēts no risinājuma Apkopot centru un dispersiju."});

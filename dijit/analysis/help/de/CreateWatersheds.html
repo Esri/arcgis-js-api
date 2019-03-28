@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Wassereinzugsgebiete erstellen</h2><p/>
-        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Wassereinzugsgebiete erstellen"></h2>
+        <h2>Abflussgbiete erstellen</h2><p/>
+        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Abflussgebiete erstellen"></h2>
         <hr/>
     <p>Dieses Werkzeug ermittelt f&uuml;r jeden Punkt in Ihrem Eingabe-Layer das Wassereinzugsgebiet bzw. die flussaufw&auml;rts gelegene, beitragende Fl&auml;che. 
     </p>
@@ -50,15 +50,15 @@
     </p>
     <p>Die Position Ihrer Eingabepunkte ist wichtig.  Wenn sie nicht exakt auf einer Drainageleitung liegen, fallen die sich ergebenden Wassereinzugsgebiete eventuell sehr klein aus und sind f&uuml;r Ihre Analyse nicht von Nutzen. Die  <b>Suchentfernung zur n&auml;chsten Drainage</b> kann verwendet werden, um die Position Ihrer Eingabepunkte anzupassen, damit sie direkt auf eine Drainageleitung fallen. So k&ouml;nnen Sie das Wassereinzugsgebiet finden, dessen Wasser zu dem Punkt flie&szlig;t, der auf der Drainageleitung liegt.  Die angepassten Positionen zur Ermittlung der Wassereinzugsgebiete werden in den Ausgabe-Layer geschrieben. Ihre Eingabepunkte werden nicht ge&auml;ndert.
     </p>
-    <p>Das Ergebnis ist ein Gruppen-Layer mit zwei Layern: die Wassereinzugsgebiete und die angepassten Punkte, die zur Berechnung der Wassereinzugsgebiete verwendet wurden.     
+    <p>Das Ergebnis ist ein Gruppen-Layer mit zwei Layern: die Abflussgebiete und die angepassten Punkte, die zur Berechnung der Abflussgebiete verwendet wurden.     
     </p>
     <p>Die sich ergebenden Wassereinzugsgebiete verf&uuml;gen &uuml;ber alle Attribute Ihrer Eingabepunkte sowie diese zus&auml;tzlichen Attribute:     
         <ul>
-            <li> <i>PourPtID</i> &ndash; Enth&auml;lt den ID-Wert des Eingabepunktes
+            <li> <i>PourPtID</i>: Enth&auml;lt den ID-Wert des Eingabepunktes.
             </li>
-            <li> <i>Fl&auml;che in Quadratkilometern</i> &ndash; Enth&auml;lt die Fl&auml;che des flussaufw&auml;rts liegenden Wassereinzugsgebiets in Quadratkilometern
+            <li> <i>Area Square Kilometers</i>: Enth&auml;lt die Fl&auml;che des flussaufw&auml;rts liegenden Abflussgebiets in Quadratkilometern.
             </li>
-            <li> <i>Beschreibung</i> und <i>DataResolution</i> &ndash; Enthalten Informationen, die sich auf die zur Berechnung der Verfolgung verwendeten hydrologischen Daten beziehen
+            <li> <i>Description</i> und <i>DataResolution</i>: Enthalten Informationen, die sich auf die zur Berechnung der Verfolgung verwendeten hydrologischen Daten beziehen.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Punkt-Features zum Berechnen von Wassereinzugsgebieten</h2></div>
+        <div><h2>Punkt-Features zum Berechnen von Abflussgebieten</h2></div>
         <hr/>
         <div>
             <p>F&uuml;r jeden Punkt wird ein Wassereinzugsgebiet (die flussaufw&auml;rts gelegene, beitragende Fl&auml;che) berechnet.  
@@ -93,9 +93,11 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+            <p> F&uuml;r die Ausf&uuml;hrung dieses Werkzeugs werden keine Credits verbraucht.
             </p>
         </div>
     </div>

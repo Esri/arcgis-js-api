@@ -37,15 +37,15 @@
     right: auto;
 }
 
-    .esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementLeft:not(.isChartDataInTableView) .chartContainer_comparisonSelectBlock .chartContainer_comparisonLabel {
-        margin: 0px;
-        margin-bottom: 5px;
-        display: block;
-    }
+.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementLeft:not(.isChartDataInTableView) .chartContainer_comparisonSelectBlock .chartContainer_comparisonLabel {
+    margin: 0px;
+    margin-bottom: 5px;
+    display: block;
+}
 
-    .esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementLeft:not(.isChartDataInTableView) .chartContainer_comparisonSelectBlock .chartContainer_comparisonSelectDiv {
-        display: block;
-    }
+.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementLeft:not(.isChartDataInTableView) .chartContainer_comparisonSelectBlock .chartContainer_comparisonSelectDiv {
+    display: block;
+}
 
 
 
@@ -73,36 +73,17 @@
 
 
 
-.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementTop .chartContainer_legendContainer {
-    text-align: center;
-}
-
-.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementTop .esriGEMinMaxLegend {
-}
-
-    .esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementTop .esriGEMinMaxLegend .esriGEMinMaxLegend_variableBlock {
-        display: inline-block;
-        vertical-align: middle;
-        width: 45%;
-        margin-left: 2%;
-        margin-right: 2%;
-        text-align: left;
-    }
-
-
-
+.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementTop .chartContainer_legendContainer,
 .esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementBottom .chartContainer_legendContainer {
     text-align: center;
 }
 
-.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementBottom .esriGEMinMaxLegend {
+.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementTop .esriGEMinMaxLegend .esriGEMinMaxLegend_variableBlock,
+.esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementBottom .esriGEMinMaxLegend .esriGEMinMaxLegend_variableBlock {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: left;
 }
-
-    .esriGEReportPlayer_chartContainer.hasMinMaxLegend.legendPlacementBottom .esriGEMinMaxLegend .esriGEMinMaxLegend_variableBlock {
-        display: inline-block;
-        vertical-align: middle;
-        width: 45%;
-        margin-left: 2%;
-        margin-right: 2%;
-        text-align: left;
-    }

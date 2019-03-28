@@ -44,7 +44,8 @@
         <h2>Copiar en Data Store</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copiar en Data Store"></h2>
         <hr/>
-    <p>Esta herramienta tomar&aacute; una capa de entrada y la copiar&aacute; en un data store. Los datos se copiar&aacute;n en el  ArcGIS Data Store y se almacenar&aacute;n en su data store relacional o espaciotemporal. </p>
+    <p>Esta herramienta tomar&aacute; una capa de entrada y la copiar&aacute; en un data store. Puede copiar los resultados en  ArcGIS Data Store (big data store espaciotemporal o relacional) y se crear&aacute; una capa en su portal, o bien puede copiar los resultados en un recurso compartido de archivos de big data. 
+    </p>
     <p>Por ejemplo, podr&iacute;a copiar entidades que est&aacute;n almacenadas en un  <code>archivo compartido de Big Data</code> en un <code>data store relacional</code> y especificar que solo se copien las entidades que est&eacute;n dentro de la extensi&oacute;n de mapa actual. Esto crear&iacute;a un servicio de entidades alojadas solo con aquellas entidades incluidas en la extensi&oacute;n de mapa especificada.
     </p>
     </div>
@@ -55,7 +56,7 @@
         <div>
             <p>La capa o tabla que se copiar&aacute;. 
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
             </p>
         </div>
     </div>
@@ -68,14 +69,25 @@
         </div>
     </div>
     <div id="outputDataStore">
-        <div><h2>Elija el ArcGIS Data Store en el que desea copiar</h2></div>
+        <div><h2>Elegir el data store en el que desea copiar</h2></div>
         <hr/>
         <div>
-            <p>El data store en el que se copiar&aacute; la capa. Este par&aacute;metro anular&aacute; la selecci&oacute;n en los  <b>Entornos de an&aacute;lisis</b> Las opciones son las siguientes:
+            <p>El data store en el que se copiar&aacute; la capa. Este par&aacute;metro invalidar&aacute; la selecci&oacute;n en los  <b>Entornos de an&aacute;lisis</b>. Estas son las opciones:
                 <ul>
-                    <li> <b>Espaciotemporal</b>: es el valor predeterminado.
+                    <li> <b>ArcGIS Data Store</b> ArcGIS Data Store <ul>
+                            <li> <b>Espaciotemporal</b>: es el valor predeterminado.
+                            </li>
+                            <li> <b>Relacional</b>
+                            </li>
+                        </ul>
+                        
                     </li>
-                    <li> <b>Relacional</b>.
+                    <li> <b>Plantillas de salida de recurso compartido de archivos de big data</b>
+                        <ul>
+                            <li>Una lista de las plantillas de recursos compartidos de archivos de big data disponibles en el formato  <b>bigDataFileShareName-templateName</b>. Las plantillas de recursos compartidos de archivos de big data se deben configurar antes de ejecutar la herramienta.
+                            </li>
+                        </ul>
+                        
                     </li>
                 </ul>
                 
@@ -86,9 +98,9 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p> El nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            <p> El nombre de la capa que se crear&aacute;.  Si escribe en un ArcGIS Data Store, sus resultados se guardar&aacute;n en  <b>Mi contenido</b> y se agregar&aacute;n al mapa. Si escribe en un recurso compartido de archivos de big data, sus resultados se almacenar&aacute;n en el recurso compartido de archivos de big data y se agregar&aacute;n a su manifiesto. No se agregar&aacute;n al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>Cuando escriba en  ArcGIS Data Store (big data store espaciotemporal o relacional) con el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

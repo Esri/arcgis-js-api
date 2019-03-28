@@ -44,7 +44,7 @@
         <h2>Növényzeti monitoring</h2><p/>
         <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="N&ouml;v&eacute;nyzeti monitoring eszk&ouml;z port&aacute;lhoz"></h2>
         <hr/>
-    <p>This tool performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
+    <p>Ez az eszk&ouml;z sz&aacute;mtani műveletet hajt v&eacute;gre egy t&ouml;bbs&aacute;vos raszteres r&eacute;teg s&aacute;vjain, &eacute;s az adatok alapj&aacute;n felt&aacute;rja a minta ter&uuml;let n&ouml;v&eacute;nyzettel bor&iacute;tott r&eacute;sz&eacute;t.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -84,7 +84,7 @@ A PVI egy veget&aacute;ci&oacute;s indexhez hasonl&oacute;, de &eacute;rz&eacute
 
                 </li>
                 <li>Soil-Adjusted Vegetation Index &mdash; 
-A SAVI olyan veget&aacute;ci&oacute;s index, amely talajf&eacute;nyess&eacute;g-korrekci&oacute;s t&eacute;nyező seg&iacute;ts&eacute;g&eacute;vel igyekszik kik&uuml;sz&ouml;b&ouml;lni a talaj f&eacute;nyess&eacute;g&eacute;nek hat&aacute;sait. Ilyet gyakran haszn&aacute;lnak sz&aacute;raz ter&uuml;leteken, ahol alacsony a n&ouml;v&eacute;nyzeti fedetts&eacute;g.
+A SAVI olyan veget&aacute;ci&oacute;s index, amely talajsz&iacute;n-korrekci&oacute;s t&eacute;nyező seg&iacute;ts&eacute;g&eacute;vel igyekszik kik&uuml;sz&ouml;b&ouml;lni a talaj sz&iacute;n&eacute;nek hat&aacute;sait. Ilyet gyakran haszn&aacute;lnak sz&aacute;raz ter&uuml;leteken, ahol alacsony a n&ouml;v&eacute;nyzeti fedetts&eacute;g.
 
                 </li>
                 <li>Sultan's Formula &mdash; 
@@ -114,7 +114,7 @@ A Transformed-SAVI olyan veget&aacute;ci&oacute;s index, amely a talajf&eacute;n
         <div>
             <p>A talajvonal lejt&eacute;se. A lejt&eacute;s (meredeks&eacute;g) a megk&ouml;zel&iacute;tőleg line&aacute;ris kapcsolat a NIR &eacute;s a l&aacute;that&oacute; v&ouml;r&ouml;s s&aacute;v k&ouml;z&ouml;tt egy sz&oacute;r&aacute;sdiagramon.
             </p>
-            <p>Ez a param&eacute;ter csak a transzform&aacute;lt talajhoz igaz&iacute;tott veget&aacute;ci&oacute;s index m&oacute;dszerhez &eacute;rv&eacute;nyes.
+            <p>Ez a param&eacute;ter csak a transzform&aacute;lt SAVI m&oacute;dszerhez &eacute;rv&eacute;nyes.
             </p>
         </div>
     </div>
@@ -126,7 +126,7 @@ A Transformed-SAVI olyan veget&aacute;ci&oacute;s index, amely a talajf&eacute;n
             </p>
             <p> <code>(a = NIR - sRed)</code> , amikor a l&aacute;that&oacute; v&ouml;r&ouml;s &eacute;rt&eacute;ke 0.
             </p> 
-            <p>Ez a param&eacute;ter csak a transzform&aacute;lt talajhoz igaz&iacute;tott veget&aacute;ci&oacute;s index m&oacute;dszerhez &eacute;rv&eacute;nyes.
+            <p>Ez a param&eacute;ter csak a transzform&aacute;lt SAVI m&oacute;dszerhez &eacute;rv&eacute;nyes.
             </p>
         </div>
     </div>
@@ -143,11 +143,11 @@ A Transformed-SAVI olyan veget&aacute;ci&oacute;s index, amely a talajf&eacute;n
                         
  
                     </li>
-                    <li>0,5 = z&ouml;ld n&ouml;v&eacute;nyzettel k&ouml;zepesen fedett ter&uuml;letek
+                    <li>0,5 = z&ouml;ld n&ouml;v&eacute;nyzettel k&ouml;zepesen benőtt ter&uuml;letek
                         
  
                     </li>
-                    <li>0 = z&ouml;ld n&ouml;v&eacute;nyzettel erősen fedett ter&uuml;letek
+                    <li>0 = z&ouml;ld n&ouml;v&eacute;nyzettel sűrűn fedett ter&uuml;letek
                         
 
                     </li>
@@ -170,9 +170,9 @@ A Transformed-SAVI olyan veget&aacute;ci&oacute;s index, amely a talajf&eacute;n
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
-            <p>Az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mezőben megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>
         </div>
     </div>

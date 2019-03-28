@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analiza rastera omogućuje vam da izvr&scaron;ite analizu velikih skupova podataka rastera s pomoću programa  ArcGIS Image Server. To vam omogućuje da brže analizirate vi&scaron;e podataka s pomoću snage poslužitelja. Trenutačno dostupni skupovi alata putem korisničkog iskustva  Portal for ArcGIS jesu  <b>Sažmi podatke</b>, <b>Analiziraj uzorke</b>, <b>Analiziraj sliku</b>, <b>Analiziraj teren</b> i <b>Upravljanje podacima</b>.
+        <p>Analiza rastera omogućuje vam da izvr&scaron;ite analizu velikih skupova podataka rastera s pomoću programa  ArcGIS Image Server. To vam omogućuje da brže analizirate vi&scaron;e podataka s pomoću snage poslužitelja. Skupovi alata koji su trenutačno dostupni putem korisničkog iskustva  Portal for ArcGIS na jesu  <b>Sažmi podatke</b>, <b>Analiziraj uzorke</b>, <b>Upotrijebi blizinu</b>, <b>Analiziraj sliku</b>, <b>Analiziraj teren</b>, <b>Upravljaj podacima</b> i <b>Duboko učenje</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Primjena predloška funkcije rastera</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Primjena predlo&scaron;ka funkcije rastera">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Stvorite novi skup podataka geoobjekta iz postojećeg skupa podataka rastera.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>Skup alata za duboko učenje</h2>
+        <hr/>
+        <p>Ti se alati upotreblajvaju za otkrivanje specifičnih geoobjekata na slici ili za klasificiranje piksela u skupu podataka rastera. Duboko učenje vrsta je metode učenja umjetne inteligencije koja otkriva geoobjekte u snimkama pomoću vi&scaron;e slojeva u neuronskim mrežama gdje je svaki sloj sposoban izdvojiti jedan ili vi&scaron;e jedinstvenih geoobjekata na slici. Ovi alati upotrebljavaju modele koji su obučeni za otkrivanje specifičnih geoobjekata u okvirima dubokog učenja treće strane &ndash; kao &scaron;to su TensorFlow, CNTK i Keras &ndash; te izlaznim geoobjektima ili kartama razreda.
+            <ul>
+                <li> <b>Klasificiranje piksela pomoću dubokog učenja</b> stvara klasificirani raster pomoću obučenog modela dubokog učenja.
+                </li>
+                <li> <b>Otkrivanje objekata pomoću dubokog učenja</b> proizvodi razred geoobjekata koji sadrži objekte koje nađe u ulaznom rasteru pomoću obučenog model dubokog učenja.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasificiranje piksela pomoću dubokog učenja</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasificiranje piksela pomoću dubokog učenja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pokreće obučeni model dubokog učenja na ulaznom rasteru kako bi proizveo klasificirani raster, a svaki važeći piksel ima dodijeljenu oznaku razreda.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Otkrivanje objekata pomoću dubokog učenja</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Otkrivanje objekata pomoću dubokog učenja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>pokreće obučeni model dubokog učenja na ulaznom rasteru kako bi proizveo razred geoobjekata koji sadrži objekte koje pronađe. Geoobjekti mogu biti granični okviri ili poligoni oko pronađenih objekata ili točaka u sredi&scaron;tima objekata.
             </p>
             <br/>
         </div>

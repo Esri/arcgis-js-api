@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi kaavat</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b> ja <b>Hallitse aineistoa</b>.
+        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi kaavat</b>, <b>K&auml;yt&auml; l&auml;heisyytt&auml;</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b>, <b>Hallitse aineistoa</b> ja <b>Syv&auml;oppiminen</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Käytä rasteritoiminnon mallia</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="K&auml;yt&auml; rasteritoiminnon mallia">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Luo uusi kohdeaineistoryhm&auml; aiemmin luodusta rasteriaineistoryhm&auml;st&auml;.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Syväoppimisen työkalusarja</h2>
+        <hr/>
+        <p>N&auml;iden ty&ouml;kalujen avulla voit havaita tiettyj&auml; kohteita kuvassa tai luokitella rasteriaineistoryhm&auml;n pikseleit&auml;. Syv&auml;oppiminen on er&auml;&auml;nlainen teko&auml;lyn koneoppimismenetelm&auml;, joka havaitsee kohteita kuva-aineistossa k&auml;ytt&auml;m&auml;ll&auml; useita karttatasoja neuroverkoissa, joissa kukin karttataso kykenee poimimaan v&auml;hint&auml;&auml;n yhden kohteen kuvasta. N&auml;iss&auml; ty&ouml;kaluissa k&auml;ytet&auml;&auml;n malleja, jotka on koulutettu havaitsemaan tiettyj&auml; kohteita kolmannen osapuolen syv&auml;oppimiskehyksiss&auml; &ndash; kuten TensorFlow, CNTK ja Keras &ndash; ja ty&ouml;kalut tulostavat kohteita tai luokkakarttoja.
+            <ul>
+                <li> <b>Luokittele pikselit syv&auml;oppimisen avulla</b> tuottaa luokitellun rasterin k&auml;ytt&auml;m&auml;ll&auml; koulutettua syv&auml;oppimismallia.
+                </li>
+                <li> <b>Havaitse objektit syv&auml;oppimisen avulla</b> tuottaa kohdeluokan, joka sis&auml;lt&auml;&auml; l&auml;ht&ouml;aineiston rasterista l&ouml;yt&auml;m&auml;ns&auml; objektit, k&auml;ytt&auml;m&auml;ll&auml; syv&auml;oppimismallia.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luokittele pikselit syväoppimisen avulla</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Luokittele pikselit syv&auml;oppimisen avulla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Havaitse objektit syväoppimisen avulla</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Havaitse objektit syv&auml;oppimisen avulla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

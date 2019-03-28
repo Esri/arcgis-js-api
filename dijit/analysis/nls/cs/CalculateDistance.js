@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolte rastrovou vrstvu nebo vrstvu umístění prvků pro výpočet vzdálenosti k",maxDistanceLabel:"Maximální vzdálenost pro výpočet (volitelné)",outputCellSize:"Výstupní velikost buňky (volitelné)",resultDistLayerName:"Název výsledné vrstvy vzdálenosti",resultDirectionLayerName:"Název výsledné vrstvy směru (volitelné)",resultAllocationLayerName:"Název výsledné vrstvy přiřazení (volitelné)",outputLayerName:"Vypočtená vzdálenost pro ${layername}",allocationFieldLabel:"Zvolit pole přiřazení (volitelné)",itemDescription:"Vrstva prvků vygenerovaná nástrojem Vypočítat vzdálenost pro ${layerName}. ",itemTags:"Výsledek analýzy, Vypočítat vzdálenost, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Vypočítat vzdálenost."});

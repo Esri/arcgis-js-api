@@ -50,7 +50,7 @@
     </p>
     <p>Beachten Sie, dass bei der Berechnung des Sichtfeldes keine Hindernisse wie B&auml;ume oder Geb&auml;ude ber&uuml;cksichtigt werden. Man kann sich das Ganze so vorstellen, dass die Berechnung f&uuml;r ein Gebiet durchgef&uuml;hrt wird, in dem sich lediglich der Beobachter und die beobachteten Objekte befinden.
     </p>
-    <p>Der Ergebnis-Layer enth&auml;lt Fl&auml;chen-Features, die sichtbare Fl&auml;chen darstellen. Das Feld  <i>H&auml;ufigkeit</i> enth&auml;lt die Anzahl der Beobachterpunkte, die jede Fl&auml;che sehen k&ouml;nnen. Bei f&uuml;nf Eingabepunkten etwa, von denen jeder einen Feuerwachturm darstellt, werden im Feld <i>H&auml;ufigkeit</i> Werte zwischen &quot;Eins&quot; und &quot;F&uuml;nf&quot; angezeigt. Fl&auml;chen mit dem Wert &quot;Eins&quot; sind nur von einem Turm aus sichtbar, Fl&auml;chen mit dem Wert &quot;F&uuml;nf&quot; sind von allen T&uuml;rmen aus sichtbar. Der Ergebnis-Layer enth&auml;lt au&szlig;erdem das Feld <i>DEMResolution</i>, das die Aufl&ouml;sung des digitalen H&ouml;henmodells (DHM) enth&auml;lt, das zur Erstellung der Sichtfelder verwendet wird.
+    <p>Der Ergebnis-Layer enth&auml;lt Fl&auml;chen-Features, die sichtbare Fl&auml;chen darstellen. Das Feld  <i>Frequency</i> enth&auml;lt die Anzahl der Beobachterpunkte, von denen aus jede Fl&auml;che gesehen werden kann. Bei f&uuml;nf Eingabepunkten etwa, die jeweils einen Feuerwachturm darstellen, werden im Feld <i>Frequency</i> Werte zwischen eins und f&uuml;nf angezeigt. Fl&auml;chen mit dem Wert &quot;Eins&quot; sind nur von einem Turm aus sichtbar, Fl&auml;chen mit dem Wert &quot;F&uuml;nf&quot; sind von allen T&uuml;rmen aus sichtbar. Der Ergebnis-Layer enth&auml;lt au&szlig;erdem das Feld <i>DEMResolution</i>, das die Aufl&ouml;sung des digitalen H&ouml;henmodells (DEM) enth&auml;lt, mit dem die Sichtfelder erstellt werden.
     </p>
     <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Beobachterpunkte analysiert, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Beobachterpunkte im Eingabe-Layer analysiert, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
     </p>
@@ -107,9 +107,11 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+            <p> F&uuml;r die Ausf&uuml;hrung dieses Werkzeugs werden keine Credits verbraucht.
             </p>
         </div>
     </div>

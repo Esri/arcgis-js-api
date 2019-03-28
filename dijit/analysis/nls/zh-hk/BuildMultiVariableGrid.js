@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({binsLabel:"選擇將用來建立多變數網格的容器類型",layersAttrLabel:"選擇網格要包含的輸入圖層和變數。",itemDescription:"執行「建立多變數網格」所產生的圖徵圖層。",itemTags:"分析結果，建立多變數網格",itemSnippet:"建立多變數網格所產生的圖徵圖層",addVariables:"新增變數"});

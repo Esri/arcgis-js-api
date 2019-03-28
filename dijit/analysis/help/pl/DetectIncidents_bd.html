@@ -44,7 +44,7 @@
         <h2>Wykryj zdarzenia</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Wykryj zdarzenia"></h2>
         <hr/>
-    <p>To narzędzie działa z zawierającą dane czasowe warstwą punkt&oacute;w, linii, obszar&oacute;w lub tabel reprezentujących momenty w czasie. Za pomocą uporządkowanych sekwencyjnie obiekt&oacute;w nazywanych ścieżkami narzędzie to wskazuje obiekty będące interesującymi zdarzeniami. Zdarzenia są określane na podstawie podanych warunk&oacute;w. 
+    <p> To narzędzie działa z zawierającą dane czasowe warstwą punkt&oacute;w, linii, obszar&oacute;w lub tabel reprezentujących momenty w czasie. Za pomocą uporządkowanych sekwencyjnie obiekt&oacute;w nazywanych ścieżkami narzędzie to wskazuje obiekty będące interesującymi zdarzeniami. Zdarzenia są określane na podstawie podanych warunk&oacute;w.
     </p>
     <p>Najpierw, przy użyciu jednego lub większej liczby p&oacute;l, narzędzie ustala, kt&oacute;re obiekty należą do ścieżki. Na podstawie danych czasowych poszczeg&oacute;lnych obiekt&oacute;w ścieżki są porządkowane sekwencyjnie, a następnie stosowany jest warunek zdarzenia. Obiekty spełniające warunek początkowy zdarzenia zostają oznaczone jako zdarzenie. Opcjonalnie można zastosować warunek końcowy zdarzenia. Gdy warunek końcowy jest spełniony, obiekt przestaje być zdarzeniem. Wyniki są zwracane wraz z oryginalnymi obiektami &mdash; z nowymi kolumnami zawierającymi nazwy zdarzeń &mdash; i wskazują, kt&oacute;ry obiekt spełnia warunek zdarzenia. Można zwr&oacute;cić wszystkie oryginalne obiekty lub tylko te, kt&oacute;re są zdarzeniami.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Punkty, linie, obszary lub tabele, kt&oacute;re będą używane do wyszukiwania zdarzeń. Warstwa wejściowa musi zawierać dane czasowe oraz obiekty reprezentujące momenty w czasie, jak r&oacute;wnież jedno lub większą liczbę p&oacute;l, za pomocą kt&oacute;rych można identyfikować ścieżki.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Tworzenie warunku wyrażenia wskazującego zakończenie zdarzenia</h2></div>
+        <div><h2>Utwórz warunek wyrażenia wskazujący zakończenie zdarzenia (opcjonalnie)</h2></div>
         <hr/>
         <div>
             <p>Opcjonalnie za pomocą kreatora wyrażeń dodaj warunek określający zakończenie zdarzenia. Jeśli podany warunek końcowy będzie spełniony, obiekt przestanie być zdarzeniem. Jeśli nie określi się warunku końcowego, zdarzenie kończy się w momencie, gdy warunek początkowy przestanie być spełniany.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Wybierz sposób reprezentowania danych wynikowych</h2></div>
+        <div><h2>Pokaż mi</h2></div>
         <hr/>
         <div>
             <p>We wszystkich metodach wynikowych do obiekt&oacute;w oryginalnych dołączane są pola. Istnieją dwa sposoby określania zwracanych obiekt&oacute;w:
                 <ul>
-                    <li> <b>Zwracaj tylko zdarzenia</b> &mdash; zwracane są wyłącznie obiekty będące zdarzeniami. Żadne obiekty, kt&oacute;re nie zostały uznane za zdarzenia, nie zostaną zwr&oacute;cone.
+                    <li> <b>Wszystkie obiekty</b> &mdash; jest to metoda domyślna. Zwracane są wszystkie obiekty w warstwie wejściowej.
                     </li>
-                    <li> <b>Zwracaj wszystkie obiekty</b> &mdash; jest to metoda domyślna. Zwracane są wszystkie obiekty w warstwie wejściowej.
+                    <li> <b>Tylko zdarzenia</b> &mdash; zwracane są wyłącznie obiekty będące zdarzeniami. Żadne obiekty, kt&oacute;re nie zostały uznane za zdarzenia, nie zostaną zwr&oacute;cone.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Zanalizuj dane z przedziałami czasu (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Wskaż, czy chcesz wykrywać zdarzenia przy użyciu przedział&oacute;w czasu, co spowoduje podzielenie obiekt&oacute;w wejściowych na segmenty w celu analizy. W przypadku użycia przedział&oacute;w czasu należy ustawić określony przedział i opcjonalnie ustawić czas referencyjny. Jeśli czas referencyjny nie zostanie ustawiony, przyjęty zostanie 1&nbsp;stycznia 1970&nbsp;r. 
+            </p>
+            <p>Jeśli na przykład granica czasu zostanie ustawiona na 1&nbsp;dzień, począwszy od 9:00 rano w dniu 1&nbsp;stycznia 1990, to każda ścieżka będzie obcinana dla każdego dnia o godz. 9:00 rano i analizowana w tym segmencie. 
+            </p>
+            <p>Użycie przedział&oacute;w czasu to prosty spos&oacute;b na skr&oacute;cenie czasu przetwarzania, ponieważ pozwala szybko tworzyć mniejsze ścieżki na potrzeby analizy. Jeśli podział na powtarzalne przedziały czasu ma sens w danej analizie, jest to zalecana metoda w przypadku przetwarzania dużych zbior&oacute;w danych.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie Moje zasoby. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>
         </div>
     </div>

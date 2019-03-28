@@ -273,9 +273,9 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Wassereinzugsgebiete erstellen</h2></td>
+                    <td><h2>Abflussgbiete erstellen</h2></td>
                     <td>
-                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Wassereinzugsgebiete erstellen">
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Abflussgebiete erstellen">
                     </td>
                 </tr></tbody>
             </table>
@@ -363,7 +363,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Verfolgung flussabwärts</h2></td>
+                    <td><h2>Flussabwärts verfolgen</h2></td>
                     <td>
                     <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Verfolgung flussabw&auml;rts">
                     </td>
@@ -590,7 +590,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Daten verwalten</h2>
         <hr/>
         <p>Diese Werkzeuge werden f&uuml;r die t&auml;gliche Verwaltung geographischer Daten und zum Kombinieren von Daten vor Analysen herangezogen.  
@@ -598,6 +598,8 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 <li> <b>Grenzen zusammenf&uuml;hren</b> f&uuml;hrt Fl&auml;chen mit gemeinsamer Grenze und gemeinsamem Attributwert zusammen.
                 </li>
                 <li> <b>Daten extrahieren</b> erstellt neue Datasets, indem Features aus vorhandenen Daten extrahiert werden.
+                </li>
+                <li> <b>Mosaike generieren</b> erstellt Mosaike basierend auf der Ausdehnung Ihrer Daten.
                 </li>
                 <li> <b>Layer zusammenf&uuml;hren</b> kopiert alle Features aus mindestens zwei vorhandenen Layern in einen neuen Layer.
                 </li>
@@ -609,7 +611,7 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
             
         </p>
     </div>
-        <div id="DissolveBoundariesTool" class="largesize">
+        <div id="DissolveBoundariesTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -622,7 +624,7 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
 <hr/>
             <p>Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze haben, werden zu einer Fl&auml;che zusammengef&uuml;hrt.    
             </p>
-            <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden. Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> aufl&ouml;sen.  Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben.  Das Endresultat ist ein Layer der Bundeslandgrenzen.
+            <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden. Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> zusammenf&uuml;hren. Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben. Der Ergebnis-Layer zeigt Bundeslandgrenzen.
             </p>
             <br/>
         </div>
@@ -643,6 +645,21 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mosaike generieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Mosaike generieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Generiert Mosaike in einem Untersuchungsgebiet basierend auf der festgelegten Form und Gr&ouml;&szlig;e.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -656,7 +673,7 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
 <hr/>
             <p>Kopiert Features aus mindestens zwei vorhandenen Layern in einen neuen Layer. Beispiel:
                 <ul>
-                    <li>Sie verf&uuml;gen &uuml;ber drei Layer, f&uuml;r England, Wales und Schottland, und Sie m&ouml;chten einen einzelnen Gro&szlig;britannien-Layer erstellen. 
+                    <li>Sie verf&uuml;gen &uuml;ber drei Layer, f&uuml;r England, Wales und Schottland, und Sie m&ouml;chten einen Layer von Gesamt-Gro&szlig;britannien erstellen. 
                     </li>
                     <li>Sie verf&uuml;gen &uuml;ber 12 Layer, die jeweils Flurst&uuml;cksinformationen f&uuml;r zusammenh&auml;ngende Stadtgebiete enthalten. Sie m&ouml;chten sie zu einem einzelnen Layer zusammenf&uuml;hren und nur die Attribute beibehalten, die in den 12 Eingabe-Layern den gleichen Namen und Typ aufweisen.
                     </li>
@@ -686,7 +703,7 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
                     <li>Welche Landnutzung liegt &uuml;ber welchem Bodentyp?
                          
                     </li>
-                    <li>Welche Quellen befinden sich in aufgegebenen milit&auml;rischen Einrichtungen?
+                    <li>Welche Quellen befinden sich auf verlassenen Milit&auml;rst&uuml;tzpunkten?
                     </li>
                 </ul>
                 

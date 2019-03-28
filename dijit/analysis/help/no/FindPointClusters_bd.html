@@ -46,7 +46,7 @@
         <hr/>
     <p>Verkt&oslash;yet  Finn punktklynger finner klynger av punktgeoobjekter med omgivelsesst&oslash;y basert p&aring; deres geografiske fordeling.
     </p>
-    <p>En frivillig organisasjon studerer en bestemt sykdom som smitter via skadedyr. Den har et punktdatasett som representerer husholdninger i et studieomr&aring;de. Noen av dem er infisert, andre ikke. Ved &aring; bruke verkt&oslash;yet  Finn punktklynger kan en analytiker p&aring;vise klynger av infiserte husholdninger for &aring; finne det eksakte omr&aring;det der det b&oslash;r settes i gang behandling og utryddelse av skadedyrene.
+    <p>Et eksempel kan v&aelig;re en frivillig organisasjon studerer en bestemt sykdom som smitter via skadedyr. Den har et punktdatasett som representerer husholdninger i et studieomr&aring;de. Noen av dem er infisert, andre ikke. Ved &aring; bruke verkt&oslash;yet  Finn punktklynger kan en analytiker p&aring;vise klynger av infiserte husholdninger for &aring; finne det eksakte omr&aring;det der det b&oslash;r settes i gang behandling og utryddelse av skadedyrene.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,19 @@
         <div>
             <p>Punktlaget som klyngene blir funnet i. Lagene m&aring; v&aelig;re i en projisert geografisk referanse eller ha en geografisk referanse for behandling satt til et projisert koordinatsystem som bruker  <b>Analysemilj&oslash;er</b>.
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten, for &aring; bla gjennom innholdet p&aring; et fildelingsomr&aring;de for stordata eller et geoobjektlag.
+            </p>
+        </div>
+    </div>
+    <div id="clusterMethod">
+        <div><h2>Velg klyngemetoden som skal brukes</h2></div>
+        <hr/>
+        <div>
+            <p>Klyngemetoden som skal brukes til &aring; skjelne mellom klynger av punktgeoobjekter og omgivelsesst&oslash;y. Du kan velge &aring; bruke en definert avstand eller en selvjusterende klyngealgoritme.
+            </p>
+            <p>Definert avstand (DBSCAN) bruker et angitt s&oslash;keomr&aring;de til &aring; skjelne mellom tette klynger og mer spredt st&oslash;y. Definert avstand (DBSCAN) er raskere, men egner seg bare dersom det kan brukes et sv&aelig;rt tydelig s&oslash;keomr&aring;de som fungerer godt for &aring; definere alle klynger som kan v&aelig;re til stede. Definert avstand (DBSCAN) finner klynger med lignende tetthet.
+            </p>
+            <p>Selvjusterende (HDBSCAN) krever ikke at det angis et s&oslash;keomr&aring;de, men er en mer tidkrevende metode. Selvjusterende (HDBSCAN) finner klynger av punkter p&aring; en lignende m&aring;te som definert avstand (DBSCAN), men bruker variable s&oslash;keomr&aring;der og tar med i beregningen klynger med varierende tetthet. 
             </p>
         </div>
     </div>
@@ -64,7 +76,16 @@
         <div><h2>Minimum antall punkt som regnes som en klynge</h2></div>
         <hr/>
         <div>
-            <p>Minimum antall geoobjekter i en klynge.
+            <p>Denne parameteren brukes forskjellig ut fra hvilken klyngemetode som er valgt:
+            </p>
+            <p>
+                <ul>
+                    <li>Definert avstand (DBSCAN) &ndash;&nbsp;angir antallet geoobjekter som m&aring; befinne seg innenfor en gitt avstand til et punkt, for at punktet skal begynne &aring; danne en klynge. Avstanden defineres ved hjelp av parameteren  <b>Begrens s&oslash;keomr&aring;det til</b>.
+                    </li>
+                    <li>Selvjusterende (HDBSCAN) &ndash;&nbsp;angir antallet geoobjekter som ligger n&aelig;r hvert punkt (inkludert selve punktet) og vil bli tatt med i beregningen av tetthet. Dette tallet er ogs&aring; den minste tillatte klyngest&oslash;rrelsen ved ekstrahering av klynger.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -72,7 +93,7 @@
         <div><h2>Begrens søkeområdet til</h2></div>
         <hr/>
         <div>
-            <p>Maksimal avstand for &aring; anse geoobjekter som tilh&oslash;rende samme klynge.
+            <p>N&aring;r definert avstand (DBSCAN) brukes, er denne parameteren avstanden  <b>Minimum antall punkt som regnes som en klynge</b> m&aring; ligge innenfor. Denne parameteren brukes ikke n&aring;r selvjusterende (HDBSCAN) er valgt som klyngemetode.
             </p>
         </div>
     </div>
@@ -80,9 +101,9 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Navnet p&aring; laget som opprettes i <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes. Hvis du skriver til en ArcGIS Data Store, blir resultatene dine lagret i  <b>Mitt innhold</b> og lagt til kartet. Hvis du skriver til et fildelingsomr&aring;de for stordata, blir resultatene lagret i fildelingsomr&aring;det for stordata og lagt til dets innholdsoversikt. De blir ikke lagt til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
-            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            <p>N&aring;r du skriver til  ArcGIS Data Store (fildelingsomr&aring;de for relasjons- eller geotemporale stordata) via rullegardinlisten  <b>Lagre resultat i</b>, kan du angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatet skal lagres i.
             </p>
         </div>
     </div>

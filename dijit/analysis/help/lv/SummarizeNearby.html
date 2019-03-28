@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Apkopot tuvējo</h2><p/>
-        <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Apkopot tuvējo"></h2>
+        <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Apkopot blakus"></h2>
         <hr/>
     <p>&Scaron;is rīks atrod un apkopo elementus, kas atrodas noteiktā attālumā no pirmā ievades slāņa elementiem. Attālumu var izmērīt kā lineāro attālumu vai izmantojot atlasīto ceļo&scaron;anas veidu. Ceļo&scaron;anas veida opcijas ir brauk&scaron;anas attālums, brauk&scaron;anas laiks, brauk&scaron;anas attālums ar kravas automa&scaron;īnu, brauk&scaron;anas laiks ar kravas automa&scaron;īnu, ie&scaron;anas attālums un ie&scaron;anas laiks. Statistika tiek aprēķināta par tuvējiem elementiem. Piemēram:
         <ul>
@@ -112,6 +112,8 @@
                 </li>
             </ul>
             
+            <p>Ja apkopojamam slānim nav skaitļu lauku, papildu statistika nebūs pieejama.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Ja apkopojamam slānim nav skaitļu lauku, papildu statistika nebūs pieejama.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,6 +162,8 @@
                 </li>
             </ul>
             
+            <p>Ja apkopojamam slānim nav skaitļu lauku, papildu statistika nebūs pieejama.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -181,13 +187,15 @@
             
             <p>Atkarībā no apkopojamo elementu veida varat aprēķināt kopējo tuvumā eso&scaron;o punktu skaitu, kopējo tuvumā eso&scaron;o līniju garumu vai kopējo tuvumā eso&scaron;o elementu apgabalu.
             </p>
+            <p>Ja apkopojamam slānim nav skaitļu lauku, papildu statistika nebūs pieejama.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Izvēlieties lauku, pēc kura grupēt</h2></div>
         <hr/>
         <div>
-            <p> &Scaron;is ir tuvējo elementu atribūts, ko varat lietot, lai aprēķinātu statistiku atsevi&scaron;ķi katrai unikālajai atribūta vērtībai. Piemēram, pieņemsim, ka pirmais ievades līmenis (līmenis, no kura tiek aprēķināti attālumi) satur neapbūvētus zemes gabalus pārdo&scaron;anai un jūsu tuvējie elementi ir ēkas.  Viens no ēku atribūtiem ir <i>UseType</i>, kas satur dažādas vērtības, piemēram, MAZUMTIRDZNIECĪBA, DZĪVOJAMAIS, RAŽO&Scaron;ANA, PUBLISKAIS un tā tālāk.  Lai raksturotu dažādos ēku lieto&scaron;anas veidus pie katra neapbūvētā zemes gabala, varat aprēķināt kopējo katra unikālā ēku pielietojuma laukumu divu kilometru rādiusā ap neapbūvētajiem zemes gabaliem, izmantojot <i>izmantot tipu</i> kā grupu pēc atribūta.   Katras grupas statistika, kā arī netālu eso&scaron;o elementu skaits tiks parādīti rezultātu slāņa uznirsto&scaron;ajā logā.
+            <p> &Scaron;is ir tuvējo elementu atribūts, ko varat lietot, lai aprēķinātu statistiku atsevi&scaron;ķi katrai unikālajai atribūta vērtībai. Piemēram, pieņemsim, ka pirmais ievades līmenis (līmenis, no kura tiek aprēķināti attālumi) satur neapbūvētus zemes gabalus pārdo&scaron;anai un jūsu tuvējie elementi ir ēkas.  Viens no ēkas atribūtiem ir <i>UseType</i>, kas ietver tādas vērtības kā MAZUMTIRDZNIECĪBA, DZĪVOJAMĀS ĒKAS, RAŽO&Scaron;ANA, SABIEDRISKĀS ĒKAS u.tml. Lai raksturotu apbūves veidu pie katra brīvā zemes gabala, jūs varat aprēķināt kopējo platību katram unikālajam ēku veidam divu kilometru attālumā no brīvajiem zemes gabaliem, izmantojot <i>UseType</i> kā grupu pēc atribūta. Katras grupas statistika, kā arī netālu eso&scaron;o elementu skaits tiks parādīti rezultātu slāņa uznirsto&scaron;ajā logā.
             </p>    
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Tas ir slāņa nosaukums, kas tiks izveidots lapā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            <p>Tas ir slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slāņa nosaukums jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamajā sarakstlodziņā, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamā saraksta izvēlnē, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
             </p>
         </div>
     </div>

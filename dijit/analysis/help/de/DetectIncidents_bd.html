@@ -44,7 +44,7 @@
         <h2>Ereignisse ermitteln</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Ereignisse ermitteln"></h2>
         <hr/>
-    <p>Dieses Werkzeug arbeitet mit einem Layer aus Punkten, Linien, Fl&auml;chen oder Tabellen, der ein Layer mit aktivierten Zeiteigenschaften ist und einen Zeitpunkt darstellt. Mit sequenziell angeordneten Features, sogenannten Spuren, ermittelt dieses Werkzeug die Features, die die gew&uuml;nschten Ereignisse enthalten. Ereignisse werden durch Bedingungen, die Sie angeben, bestimmt. 
+    <p> Dieses Werkzeug arbeitet mit einem Layer aus Punkten, Linien, Fl&auml;chen oder Tabellen, der ein Layer mit aktivierten Zeiteigenschaften ist und einen Zeitpunkt darstellt. Mit sequenziell angeordneten Features, sogenannten Spuren, ermittelt dieses Werkzeug die Features, die die gew&uuml;nschten Ereignisse enthalten. Ereignisse werden durch Bedingungen, die Sie angeben, bestimmt.
     </p>
     <p>Zuerst ermittelt das Werkzeug anhand bestimmter Felder, welche Features zu einer Spur geh&ouml;ren. Unter Verwendung der Zeit jedes Features werden die Spuren sequenziell sortiert und die Ereignisbedingungen angewendet. Features, die die Startbedingung f&uuml;r ein Ereignis erf&uuml;llen, werden als Ereignis markiert. Zus&auml;tzlich k&ouml;nnen Sie eine Endbedingung f&uuml;r ein Ereignis anwenden. Sobald die Endbedingung erf&uuml;llt ist, ist das Feature kein Ereignis mehr. Die Ergebnisse werden dann mit den urspr&uuml;nglichen Features zuz&uuml;glich einer neuen Spalte mit dem Ereignisnamen zur&uuml;ckgegeben und geben an, welches Feature die Ereignisbedingung erf&uuml;llt. Sie k&ouml;nnen festlegen, dass alle urspr&uuml;nglichen Features oder nur die Features, die Ereignisse sind, zur&uuml;ckgegeben werden.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Die Punkte, Linien, Fl&auml;chen oder Tabellen, die zum Ermitteln der Ereignisse verwendet werden sollen. Der Eingabe-Layer muss ein Layer mit aktivierten Zeiteigenschaften sein, der Features enth&auml;lt, die einen Zeitpunkt darstellen. Au&szlig;erdem muss mindestens ein Feld enthalten sein, das zum Identifizieren von Spuren verwendet werden kann.
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Eine Ausdrucksbedingung erstellen, um das Ende eines Ereignisses zu kennzeichnen</h2></div>
+        <div><h2>Eine Ausdrucksbedingung erstellen, um das Ende eines Ereignisses zu kennzeichnen (optional)</h2></div>
         <hr/>
         <div>
             <p>Mit dem Ausdruck-Generator k&ouml;nnen Sie eine Bedingung hinzuf&uuml;gen, um zu bestimmen, wann ein Ereignis endet. Wenn die von Ihnen angegebene Endbedingung erf&uuml;llt ist, ist das Feature kein Ereignis mehr. Wenn Sie keine Endbedingung angegeben haben, endet ein Ereignis, sobald die Startbedingung nicht mehr erf&uuml;llt ist.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Auswählen, wie die Ausgabe dargestellt werden soll</h2></div>
+        <div><h2>Anzeigen:</h2></div>
         <hr/>
         <div>
-            <p>Bei allen Ausgabemethoden werden Felder an die urspr&uuml;nglichen Features angeh&auml;ngt. Zum Bestimmen, welche Features zur&uuml;ckgegeben werden, gibt es zwei M&ouml;glichkeiten:
+            <p>Bei allen Ausgabemethoden werden Felder an die urspr&uuml;nglichen Features angeh&auml;ngt. Zur Festlegung, welche Features zur&uuml;ckgegeben werden, gibt es zwei M&ouml;glichkeiten:
                 <ul>
-                    <li> <b>Nur Ereignisse zur&uuml;ckgeben</b>: Bei dieser Methode werden nur die Features, die Ereignisse sind, zur&uuml;ckgegeben. Features, die nicht als Ereignisse identifiziert wurden, werden nicht zur&uuml;ckgegeben.
+                    <li> <b>Alle Features</b>: Dies ist die Standardeinstellung. Alle Features in der Eingabe werden zur&uuml;ckgegeben.
                     </li>
-                    <li> <b>Alle Features zur&uuml;ckgeben</b>: Dies ist die Standardeinstellung. Alle Features in der Eingabe werden zur&uuml;ckgegeben.
+                    <li> <b>Nur Ereignisse</b>: Bei dieser Methode werden nur die Features, die Ereignisse sind, zur&uuml;ckgegeben. Features, die nicht als Ereignisse identifiziert wurden, werden nicht zur&uuml;ckgegeben.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Daten mit Zeitintervallen analysieren (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Legen Sie fest, ob Ereignisse mithilfe von Zeitintervallen erkannt werden sollen, die Ihre Eingabe-Features f&uuml;r die Analyse segmentieren. Wenn Sie Zeitintervalle verwenden, m&uuml;ssen Sie das zu verwendende Zeitintervall und optional die Bezugszeit festlegen. Wird keine Bezugszeit festgelegt, wird der 1.&nbsp;Januar&nbsp;1970 verwendet. 
+            </p>
+            <p>Wenn Sie die Zeitgrenze beispielsweise auf 1&nbsp;Tag festlegen, beginnend am 1.&nbsp;Januar&nbsp;1990 um 9:00&nbsp;Uhr, wird jede Spur f&uuml;r jeden Tag um 9:00&nbsp;Uhr abgeschnitten und innerhalb dieses Segments analysiert. 
+            </p>
+            <p>Zeitintervalle sind eine bequeme M&ouml;glichkeit, die Rechenzeit zu beschleunigen, da kleinere Spuren schnell f&uuml;r die Analyse erstellt werden. Wenn die Unterteilung nach einem wiederholt auftretenden Zeitintervall sinnvoll f&uuml;r Ihre Analyse ist, ist sie f&uuml;r die Big-Data-Verarbeitung zu empfehlen.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Der Name des Layers, der erstellt wird.  Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und  ihrem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>Wenn Sie &uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> in ArcGIS Data Store (Big Data Store vom Typ &quot;relational&quot; oder &quot;spatiotemporal&quot;) schreiben, k&ouml;nnen Sie den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert wird.
             </p>
         </div>
     </div>

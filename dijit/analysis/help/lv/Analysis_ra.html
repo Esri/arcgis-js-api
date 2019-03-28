@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku komplekti, kas &scaron;obrīd pieejami  Portal for ArcGIS tīmekļa lietotājiem ietver  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b> un <b>Pārvaldīt datus</b>.
+        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku kopas, kas pa&scaron;laik ir pieejamas, izmantojot  Portal for ArcGIS tīmekļa lietotāju pieredzi, ir  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Izmantot tuvumu</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b>, <b>Pārvaldīt datus</b> un <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Lietot rastra funkciju sagatavi</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Lietot rastra funkciju sagatavi">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Izveidojiet jaunu elementu datu kopu no eso&scaron;ās rastra datu kopas.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>Rīku komplekta Deep Learning</h2>
+        <hr/>
+        <p>&Scaron;ie rīki tiek izmantoti, lai noteiktu specifiskas attēla iezīmes vai klasificētu pikseļus rastra datu kopā. Deep Learning ir mākslīgā intelekta ma&scaron;īnmācību metode, kas nosaka elementus attēlos, izmantojot vairākus slāņus neironu tīklos, kur katrs slānis spēj izvilkt vienu vai vairākus unikālus attēla elementus. &Scaron;ie rīki izmanto modeļus, kas ir trenēti noteikt īpa&scaron;as iezīmes tre&scaron;ās puses Deep Learning struktūrās, piemēram, TensorFlow, CNTK un Keras&mdash;un izvades elementus vai klases kartes.
+            <ul>
+                <li> <b>Klasificēt pikseļus, izmantojot Deep Learning,</b> veido klasificētu rastru, izmantojot Deep Learning modeli.
+                </li>
+                <li> <b>Noteikt objektus, izmantojot Deep Learning,</b> uzveido elementu klasi, kas satur objektus, kurus tā atrod ievades rastrā, izmantojot trenētu Deep Learning modeli.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Funkcija Klasificēt pikseļus, izmantojot Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasificēt pikseļus, izmantojot Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tiek palaists trenēts Deep Learning modelis uz ievades rastra, lai radītu klasificētu rastru, kuram katram derīgajam pikselim ir pie&scaron;ķirta klases atzīme.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Funkcija Noteikt objektus, izmantojot Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Noteikt objektus, izmantojot Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tiek palaists trenēts Deep Learning modelis uz ievades rastra, lai izveidotu funkciju klasi, kurā ir atrastie objekti. &Scaron;ie elementi var būt lodziņi vai laukumi ap atrastajiem objektiem vai punkti objektu centros.
             </p>
             <br/>
         </div>

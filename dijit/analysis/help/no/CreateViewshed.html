@@ -41,16 +41,16 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Create Viewshed</h2><p/>
-        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Create Viewshed"></h2>
+        <h2>Opprett synsfelt</h2><p/>
+        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Opprett synsfelt"></h2>
         <hr/>
-    <p>Verkt&oslash;yet Create Viewshed oppretter omr&aring;der der en observat&oslash;r kan se objekter p&aring; bakken. Inndatapunktene kan enten representere observat&oslash;rer (for eksempel mennesker p&aring; bakken eller utsiktsposter i et brannt&aring;rn) eller observerte objekter (som vindturbiner, hydranter, kj&oslash;ret&oslash;yer eller andre mennesker). Resultatomr&aring;dene er de omr&aring;dene der observat&oslash;rene kan se de observerte objektene og omvendt &ndash; de observerte objektene kan se observat&oslash;rene.
+    <p>Verkt&oslash;yet Opprett synsfelt oppretter omr&aring;der der en observat&oslash;r kan se objekter p&aring; bakken. Inndatapunktene kan enten representere observat&oslash;rer (for eksempel mennesker p&aring; bakken eller utsiktsposter i et brannt&aring;rn) eller observerte objekter (som vindturbiner, hydranter, kj&oslash;ret&oslash;yer eller andre mennesker). Resultatomr&aring;dene er de omr&aring;dene der observat&oslash;rene kan se de observerte objektene og omvendt &ndash; de observerte objektene kan se observat&oslash;rene.
     </p>
     <p>B&aring;de observat&oslash;rene og de observerte objektene kan ha en h&oslash;yde over bakken, og disse h&oslash;ydene brukes til &aring; fastsl&aring; synligheten. Et synsfelt som er beregnet for 120 meter h&oslash;ye vindturbiner og personer p&aring; 1,80 meter som st&aring;r p&aring; bakken, vil for eksempel vanligvis v&aelig;re st&oslash;rre enn et synsfelt beregnet for 60 meter h&oslash;ye vindturbiner og personer p&aring; 1,80 meter.
     </p>
-    <p>V&aelig;r oppmerksom p&aring; at det ikke tas hensyn til hindringer som tr&aelig;r eller bygninger, n&aring;r synligheten beregnes. Du kan tenke deg at beregningen skjer p&aring; bar bakke der det ikke finnes noe annet enn observat&oslash;ren og de observerte objektene.
+    <p>V&aelig;r oppmerksom p&aring; at det ikke tas hensyn til hindringer som tr&aelig;r eller bygninger, n&aring;r synsfelt beregnes. Du kan tenke deg at beregningen skjer p&aring; bar bakke der det ikke finnes noe annet enn observat&oslash;ren og de observerte objektene.
     </p>
-    <p>Resultatlaget inneholder omr&aring;degeoobjekter som representerer synlige omr&aring;der. Feltet  <i>Frekvens</i> registrerer antall observat&oslash;rpunkter som kan se hvert omr&aring;de. Hvis du for eksempel har fem inndatapunkter som hver representerer et brannt&aring;rn, inneholder feltet <i>Frekvens</i>, kan en verdi mellom &eacute;n og fem. Omr&aring;der med verdien &eacute;n, kan kun se ett t&aring;rn, og omr&aring;der med verdien fem, kan se alle t&aring;rnene. Resultatlaget inneholder ogs&aring; feltet <i>DEMResolution</i> som registrerer oppl&oslash;sningen p&aring; den digitale h&oslash;ydemodellen (DEM) som brukes til &aring; opprette synsfeltene.
+    <p>Resultatlaget inneholder omr&aring;degeoobjekter som representerer synlige omr&aring;der. Feltet  <i>Frequency</i> registrerer antall observat&oslash;rpunkter som kan se hvert omr&aring;de. Hvis du for eksempel har fem inndatapunkter som hver representerer et brannt&aring;rn, inneholder feltet <i>Frequency</i> en verdi mellom &eacute;n og fem. Omr&aring;der med verdien &eacute;n, kan kun se ett t&aring;rn, og omr&aring;der med verdien fem, kan se alle t&aring;rnene. Resultatlaget inneholder ogs&aring; feltet <i>DEMResolution</i> som registrerer oppl&oslash;sningen p&aring; den digitale h&oslash;ydemodellen (DEM) som brukes til &aring; opprette synsfeltene.
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun observat&oslash;rpunktene som vises i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle observat&oslash;rpunktene i inndatalaget, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
@@ -60,8 +60,7 @@
         <div><h2>Punktgeoobjekter som representerer observatørlokasjoner</h2></div>
         <hr/>
         <div>
-            <p>Punktgeoobjektene som skal brukes som observat&oslash;rlokasjoner.
-
+            <p>Punktgeoobjektene som skal brukes som observat&oslash;rlokasjoner. 
             </p>
             <p class="OnlineOnly">I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag i levende atlas</b> eller <b>Velg analyselag</b> som du finner nederst i rullegardinlisten. Dette &aring;pner et galleri som inneholder en samling lag som vil v&aelig;re nyttige i mange analyser. 
             </p>
@@ -76,7 +75,7 @@
         </div>
     </div>
     <div id="TargetHeight">
-        <div><h2>Height of other objects on the ground</h2></div>
+        <div><h2>Høyden på andre objekter på bakken</h2></div>
         <hr/>
         <div>
             <p>Dette er h&oslash;yden p&aring; konstruksjoner eller mennesker p&aring; bakken som brukes til &aring; fastsette synlighet. Det resulterende synsfeltet er de omr&aring;dene der et observat&oslash;rpunkt kan se disse andre objektene. Og motsatt &ndash; der de andre objektene kan se et observat&oslash;rpunkt. 
@@ -108,9 +107,11 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p>Dette er navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede finnes, blir du bedt om &aring; oppgi et annet navn.
+            <p>Dette er navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis lagnavnet finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
-            <p>Bruk rullegardinlisten  <b>Lagre resultat i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            <p>Bruk rullegardinmenyen  <b>Lagre resultat i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+            <p> Det brukes ikke credits n&aring;r du kj&oslash;rer dette verkt&oslash;yet.
             </p>
         </div>
     </div>

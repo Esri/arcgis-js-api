@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/on","dojo/sniff"],function(c,e,t){var o=t("touch"),n=function(c,t,n,u){if(o){var a;switch(t){case"click":a="touchstart,click";break;case"mousedown":a="touchstart,mousedown";break;case"mouseup":a="touchend,mouseup";break;case"clickend":a="touchend,click";break;default:return e(c,t,n,u)}var i=!1;return e(c,a,function(c){"touchstart"===c.type||"touchend"===c.type?(n.call(this,c),i=!0,setTimeout(function(){i=!1},500)):i||n.call(this,c)},u)}return"clickend"==t&&(t="click"),e(c,t,n,u)};return c.mixin(n,e)});

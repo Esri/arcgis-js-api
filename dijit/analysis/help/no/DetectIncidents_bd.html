@@ -44,7 +44,7 @@
         <h2>Identifiser hendelser</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Identifiser hendelser"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med punkter, linjer, omr&aring;der eller tabeller som representerer et &oslash;yeblikk i tid. Ved &aring; bruke sekvensielt ordnede geoobjekter, kalt spor, fastsetter dette verkt&oslash;yet hvilke geoobjekter som er hendelser av interesse. Hendelser fastsettes av betingelser du angir. 
+    <p> Dette verkt&oslash;yet fungerer med et tidsaktivert lag med punkter, linjer, polygoner eller tabeller som representerer et &oslash;yeblikk i tid. Ved &aring; bruke sekvensielt ordnede geoobjekter, kalt spor, fastsetter dette verkt&oslash;yet hvilke geoobjekter som er hendelser av interesse. Hendelser fastsettes av betingelser du angir.
     </p>
     <p>Verkt&oslash;yet fastsetter hvilke geoobjekter som tilh&oslash;rer et spor ved &aring; bruke et eller flere felt. Ved &aring; bruke tiden for hvert geoobjekt ordnes sporene sekvensielt, og hendelsesbetingelsen brukes. Geoobjekter som oppfyller startbetingelsen for hendelsen, merkes som en hendelse. Du kan velge &aring; bruke en sluttbetingelse for hendelse; n&aring;r sluttbetingelsen er sann, er ikke geoobjektet lenger en hendelse. Resultatene returneres med de opprinnelige geoobjektene &ndash; med nye kolonner som representerer hendelsesnavnet &ndash; og angir hvilket geoobjekt som oppfyller hendelsesbetingelsen. Du kan returnere alle opprinnelige geoobjekter eller bare geoobjektene som er hendelser.
     </p>
@@ -58,9 +58,9 @@
         <div><h2>Velg laget du vil identifisere hendelser i</h2></div>
         <hr/>
         <div>
-            <p>Punktene, linjene, omr&aring;dene eller tabellene som skal brukes til &aring; finne hendelser. Inndatalaget m&aring; tidsaktiveres med geoobjekter som representerer et &oslash;yeblikk i tid, og det m&aring; ha et eller flere felt som kan brukes til &aring; identifisere spor.
+            <p>Punktene, linjene, polygonene eller tabellene som skal brukes til &aring; finne hendelser. Inndatalaget m&aring; tidsaktiveres med geoobjekter som representerer et &oslash;yeblikk i tid, og det m&aring; ha et eller flere felt som kan brukes til &aring; identifisere spor.
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten, for &aring; bla gjennom innholdet p&aring; et fildelingsomr&aring;de for stordata eller et geoobjektlag.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Bygg et betingelsesuttrykk for å angi slutten på en hendelse</h2></div>
+        <div><h2>Bygg et betingelsesuttrykk for å angi slutten på en hendelse (valgfritt)</h2></div>
         <hr/>
         <div>
             <p>Du kan ogs&aring; legge til en betingelse med Expression Builder for &aring; fastsette slutten p&aring; en hendelse. Hvis sluttbetingelsen du angir er sann, er geoobjektet ikke lenger en hendelse. Hvis du ikke angir en sluttbetingelse, slutter hendelsen n&aring;r startbetingelsen ikke lenger er sann.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Velg hvordan du vil at utdataene skal representeres</h2></div>
+        <div><h2>Vis meg</h2></div>
         <hr/>
         <div>
             <p>Alle utdatametoder vil f&oslash;ye felt til de opprinnelige geoobjektene. Det er to m&aring;ter &aring; fastsette hvilke geoobjekter som returneres:
                 <ul>
-                    <li> <b>Returner bare hendelser</b> &ndash; Denne metoden vil bare returnere geoobjektene som er hendelser. Geoobjekter som ikke registreres som hendelser, vil ikke bli returnert.
+                    <li> <b>Alle geoobjekter</b> &ndash;&nbsp;Dette er standard. Alle geoobjekter i inndataene vil bli returnert.
                     </li>
-                    <li> <b>Returner alle geoobjekter</b> &ndash; Dette er standard. Alle geoobjekter i inndataene vil bli returnert.
+                    <li> <b>Bare hendelser</b> &ndash;&nbsp;Denne metoden vil bare returnere geoobjektene som er hendelser. Geoobjekter som ikke registreres som hendelser, vil ikke bli returnert.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyser data med tidsintervaller (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Angi om du vil registrere hendelser ved hjelp av tidsintervaller som segmenterer inndatageoobjektene for analyse. Hvis du bruker tidsintervaller, m&aring; du angi tidsintervallet du vil bruke, og eventuelt ogs&aring; referansetidspunktet. Hvis du ikke angir et referansetidspunkt, brukes 1.&nbsp;januar&nbsp;1970. 
+            </p>
+            <p>Hvis du for eksempel setter tidsgrensen til 1&nbsp;dag som starter kl. 09:00 1.&nbsp;januar&nbsp;1990, trunkeres hvert spor kl. 09:00 for hver dag og analyseres innenfor det segmentet. 
+            </p>
+            <p>Tidsintervaller er en rask m&aring;te &aring; akselerere tidsberegning p&aring;, ettersom det raskt oppretter mindre spor til analyse. Hvis inndeling etter et repeterende tidsintervall gir mening i analysen din, anbefales det for behandling av stordata.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Navnet p&aring; laget som opprettes i <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes. Hvis du skriver til en ArcGIS Data Store, blir resultatene dine lagret i  <b>Mitt innhold</b> og lagt til kartet. Hvis du skriver til et fildelingsomr&aring;de for stordata, blir resultatene lagret i fildelingsomr&aring;det for stordata og lagt til dets innholdsoversikt. De blir ikke lagt til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
-            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            <p>N&aring;r du skriver til  ArcGIS Data Store (fildelingsomr&aring;de for relasjons- eller geotemporale stordata) via rullegardinlisten  <b>Lagre resultat i</b>, kan du angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatet skal lagres i.
             </p>
         </div>
     </div>

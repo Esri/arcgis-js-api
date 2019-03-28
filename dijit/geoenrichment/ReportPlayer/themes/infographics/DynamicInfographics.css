@@ -1,13 +1,29 @@
 
-
-
-.dynamicInfographic_viewDiv .Tapestry_Details_Image div:first-child {
-    background-size: cover;
+.esriGE_dynamicInfographic {
+    overflow: hidden;
 }
 
-.dynamicInfographic_viewDiv .RelatedVariables_ComparisonDiv {
-    text-align: right;
-}
+    
+
+    .esriGE_dynamicInfographic .Tapestry_Details_Image div:first-child {
+        background-size: cover;
+    }
+
+    .esriGE_dynamicInfographic .RelatedVariables_ComparisonDiv {
+        text-align: right;
+    }
+
+    
+
+    
+
+    .esriGE_dynamicInfographic .AgePyramid_MinMax {
+        top: 0px;
+    }
+
+    .esriGE_dynamicInfographic .BaseWidget_Title {
+        font-weight: normal;
+    }
 
 
 

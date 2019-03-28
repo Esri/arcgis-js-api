@@ -59,7 +59,7 @@
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Jumlah titik minimum untuk dapat dianggap sebagai klaster</h2></div>
+        <div><h2>Jumlah titik minimal untuk dapat dianggap sebagai klaster</h2></div>
         <hr/>
         <div>
             <p>Jumlah fitur minimum untuk dapat dianggap sebagai klaster.  Klaster apa pun dengan fitur yang lebih sedikit daripada yang disediakan akan dianggap sebagai kebisingan. 
@@ -70,7 +70,8 @@
         <div><h2>Batasi rentang pencarian menjadi (opsional)</h2></div>
         <hr/>
         <div>
-            <p>Jarak maksimum untuk mempertimbangkan fitur menjadi bagian dari klaster yang sama.  Jika dibiarkan kosong, jarak default yang digunakan akan menjadi jarak skor tertinggi yang ditemukan di set data, kecuali jarak inti di bagian atas 1% (tidak termasuk jarak inti yang paling ekstrem). 
+            
+            <p>Jarak maksimum untuk mempertimbangkan fitur menjadi bagian dari klaster yang sama.  Jika dibiarkan kosong, alat akan menjalankan HDBSCAN, yang menggunakan beragam jarak untuk memisahkan klaster beragam densitas dari derau tersebar. Jika nilai disediakan, alat akan menjalankan DBSCAN, yang menggunakan jarak tertentu untuk memisahkan klaster padat dari derau tersebar.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

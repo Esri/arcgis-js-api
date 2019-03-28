@@ -112,6 +112,8 @@
                 </li>
             </ul>
             
+            <p>Als de samen te vatten laag geen numerieke velden heeft, zijn de aanvullende statistieken niet beschikbaar.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Als de samen te vatten laag geen numerieke velden heeft, zijn de aanvullende statistieken niet beschikbaar.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,13 +162,15 @@
                 </li>
             </ul>
             
+            <p>Als de samen te vatten laag geen numerieke velden heeft, zijn de aanvullende statistieken niet beschikbaar.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
         <div><h2>Voeg statistieken toe van de samen te vatten laag</h2></div>
         <hr/>
         <div>
-            <p>Eens u een samen te vatten laag kiest, kunt u optioneel statistieken berekenen van alle numerieke attributen van de punten, lijnen of oppervlakten. 
+            <p>Zodra u een samen te vatten laag kiest, kunt u optioneel statistieken berekenen van alle numerieke attributen van de punten, lijnen of oppervlakten. 
             </p>
             <ul>
                 <li> <b>Som</b>&mdash;De totale waarde voor het opgegeven veld
@@ -181,13 +187,15 @@
             
             <p>Afhankelijk van de objecttypes die u samenvat, kunt u het totale aantal van dichtstbijzijnde punten, totale lengte van lijnen of totale oppervlakte van nabijgelegen objecten berekenen.
             </p>
+            <p>Als de samen te vatten laag geen numerieke velden heeft, zijn de aanvullende statistieken niet beschikbaar.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Kies veld om op te groeperen</h2></div>
         <hr/>
         <div>
-            <p> Dit is een attribuut van de objecten in de buurt die u kunt gebruiken om statistieken afzonderlijk te berekenen voor elke unieke attribuutwaarde. Stel bijvoorbeeld dat uw eerste invoerlaag (de laag waarvan afstanden worden gemeten) lege landpercelen bevat die te koop zijn, en dat uw objecten in de buurt footprints van gebouwen zijn. Een van de attributen van de footprint van gebouwen is <i>UseType</i> met waarden zoals RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC, enzovoort. Als u de samenstelling van de gebruiksfunctie van gebouwen bij elk leeg perceel wilt karakteriseren, kunt u het totale oppervlak berekenen voor elk afzonderlijk type gebruiksfunctie binnen twee kilometer van de lege percelen, met <i>UseType</i> als groep per attribuut. De statistieken voor elke groep en het aantal objecten in de buurt worden weergegeven in de pop-up van de resultaatlaag.
+            <p> Dit is een attribuut van de objecten in de buurt die u kunt gebruiken om statistieken afzonderlijk te berekenen voor elke unieke attribuutwaarde. Stel bijvoorbeeld dat uw eerste invoerlaag (de laag waarvan afstanden worden gemeten) lege landpercelen bevat die te koop zijn, en dat uw objecten in de buurt bedekkingsgebieden van gebouwen zijn. Een van de attributen van de bouwlocaties is <i>UseType</i>, met waarden zoals RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC, enzovoort. Als u de mengeling van bouwlocatietypen bij elk leeg perceel wilt karakteriseren, kunt u het totale gebied berekenen voor elk afzonderlijk type bouwlocatie binnen twee kilometer van de lege percelen, met <i>UseType</i> als groep per attribuut. De statistieken voor elke groep en het aantal objecten in de buurt worden weergegeven in de pop-up van de resultaatlaag.
             </p>    
         </div>
     </div>
@@ -195,7 +203,7 @@
         <div><h2>Minderheid, meerderheid toevoegen</h2></div>
         <hr/>
         <div>
-            <p>Dit selectievakje wordt ingeschakeld als u een veld kiest om te groeperen. Als u wilt weten welke attribuutwaarden binnen elke groep in de minderheid zijn (minst dominant) of in de meerderheid (meest dominant) binnen de afstand of tijd die u hebt opgegeven, selecteer dan  <b>Minderheid, meerderheid toevoegen</b>. Als u <b>Minderheid, meerderheid toevoegen</b> selecteert, worden er twee nieuwe velden toegevoegd aan uw resultaatlaag. Als u ook <b>Percentages toevoegen</b> worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
+            <p>Dit selectievakje wordt ingeschakeld als u een veld kiest om te groeperen. Als u wilt weten welke attribuutwaarden binnen elke groep in de minderheid zijn (minst dominant) of in de meerderheid (meest dominant) binnen de afstand of tijd die u hebt opgegeven, selecteer dan  <b>Minderheid, meerderheid toevoegen</b>. Als u <b>Minderheid, meerderheid toevoegen</b> selecteert, worden er twee nieuwe velden toegevoegd aan uw resultaatlaag. Als u ook <b>Percentages toevoegen</b> selecteert, worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
             </p>
             <ul>
                 <li>Als u nabijgelegen punten samenvat, worden waarden in de minderheid en meerderheid berekend op basis van het aantal punten binnen de afstand of tijd die u hebt opgegeven.
@@ -212,7 +220,7 @@
         <div><h2>Percentages toevoegen</h2></div>
         <hr/>
         <div>
-            <p>Dit selectievakje wordt ingeschakeld als u een veld kiest om te groeperen.    Selecteer  <b>Percentages toevoegen</b>   als u het percentage wilt zoeken van elke attribuutwaarde binnen elke groep.  Er wordt een nieuw veld toegevoegd aan de resultaattabel met de percentages van elke attribuutwaarde binnen elke groep.   Als <b>Minderheid, meerderheid toevoegen</b> ook geselecteerd is, worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
+            <p>Dit selectievakje wordt ingeschakeld als u een veld kiest om te groeperen. Selecteer  <b>Percentages toevoegen</b> als u het percentage wilt zoeken van elke attribuutwaarde binnen elke groep. Er wordt een nieuw veld toegevoegd aan de resultaattabel met de percentages van elke attribuutwaarde binnen elke groep. Als <b>Minderheid, meerderheid toevoegen</b> ook geselecteerd is, worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
             </p>
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laagnaam al bestaat, wordt u gevraagd een nieuwe naam te verschaffen.
             </p>
-            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            <p>Met behulp van het vervolgkeuzemenu  <b>Resultaat opslaan in</b> kunt u de naam van een map opgeven in <b>Mijn Content</b> waar het resultaat wordt opgeslagen.
             </p>
         </div>
     </div>

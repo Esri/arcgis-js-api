@@ -10,7 +10,20 @@
   padding-top: 5px; 
 }
 
-.esriLegendLayer { 
+.esriStretchLegend {
+  width: 5%;
+  height: 80px;
+}
+
+.esriStretchLegendGradientLabel {
+  height: 40px;
+  padding: 1px;
+  width: 30px;
+}
+
+.esriStretchLegendSingleGradient {
+  padding: 0;
+  width: 65%;
 }
 
 .esriLegendSubFragment {

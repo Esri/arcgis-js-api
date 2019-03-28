@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","./LocalGEBase","../AreaDataUtil"],function(e,a,i,t){return e(i,{_fieldNameToFieldInfoCache:null,_variableIdToFieldInfoCache:null,constructor:function(e,i,r,l,n){this._fieldNameToFieldInfoCache={},this._variableIdToFieldInfoCache={},e.fieldInfos.forEach(function(e){this._fieldNameToFieldInfoCache[e.name]=e,this._variableIdToFieldInfoCache[e.variableID]=e},this);var o=e.calcData.calculatorName;this._skipThisArea=r&&i.length>1;var c;if(this._skipThisArea){var s=t.combineAreaDataObjectCalculators(i,o,{removeDuplicates:!0}),d=s.thisAreas.map(function(e,i){var t=a.mixin({},e);return t.StdGeographyName=l[i],t.isThisArea=!0,t});c={},c[o]={data:d.shift(),comparisonLevels:d.concat(s.comparisonLevels)}}else c=i[n||0];this._initGE(e.calcData.variables,c,o)},_propulateAttributesFromAreaData:function(e,a){for(var i in a){var t=this._fieldNameToFieldInfoCache[i];t?e[t.variableID]=a[i]:e[i]=a[i]}},_createField:function(e,a){var i=this.inherited(arguments),t=this._variableIdToFieldInfoCache[e];return t?(i.alias=t.alias,i.decimals=t.decimals,i.units=t.showPercent?"pct":t.showCurrency?"currency":i.units,i.type=t.type||i.type):i.noVariableField=!0,i},_filterAttributeField:function(e){return!e.noVariableField}})});

@@ -53,7 +53,7 @@
         </ul>
         
     </p>
-    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong lớp ph&acirc;n t&iacute;ch v&agrave; lớp cần tổng hợp trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. 
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong lớp đầu v&agrave;o v&agrave; lớp cần tổng kết trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. 
  Nếu bỏ chọn, tất cả c&aacute;c tổng hợp trong cả lớp đầu v&agrave;o v&agrave; lớp cần tổng hợp sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng ở ngo&agrave;i phạm vi bản đồ hiện tại.
     </p>
     </div>
@@ -81,7 +81,7 @@
         </div>
     </div>
     <div id="StatisticsPoint">
-        <div><h2>Thêm số liệu thống kê từ lớp tóm tắt</h2></div>
+        <div><h2>Thêm số liệu thống kê từ lớp tổng kết</h2></div>
         <hr/>
         <div>
             <p>Bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c điểm thuộc phạm vi ranh giới của c&aacute;c đối tượng. 
@@ -101,6 +101,8 @@
                 </li>
             </ul>
             
+            <p>Nếu lớp tổng kết kh&ocirc;ng c&oacute; bất kỳ trường số n&agrave;o, dữ liệu thống k&ecirc; bổ sung sẽ kh&ocirc;ng khả dụng.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -124,6 +126,8 @@
                 </li>
             </ul>
             
+            <p>Nếu lớp tổng kết kh&ocirc;ng c&oacute; bất kỳ trường số n&agrave;o, dữ liệu thống k&ecirc; bổ sung sẽ kh&ocirc;ng khả dụng.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -147,6 +151,8 @@
                 </li>
             </ul>
             
+            <p>Nếu lớp tổng kết kh&ocirc;ng c&oacute; bất kỳ trường số n&agrave;o, dữ liệu thống k&ecirc; bổ sung sẽ kh&ocirc;ng khả dụng.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -170,6 +176,8 @@
             
             <p>T&ugrave;y theo loại đối tượng m&agrave; bạn đang tổng kết, bạn c&oacute; thể t&iacute;nh tổng số điểm, tổng chiều d&agrave;i đường hoặc tổng diện t&iacute;ch.
             </p>
+            <p>Nếu lớp tổng kết kh&ocirc;ng c&oacute; bất kỳ trường số n&agrave;o, dữ liệu thống k&ecirc; bổ sung sẽ kh&ocirc;ng khả dụng.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
@@ -178,7 +186,7 @@
         <div>
             <p>Đ&acirc;y l&agrave; một thuộc t&iacute;nh của chức năng  <b>Tổng kết</b> c&aacute;c đối tượng m&agrave; bạn c&oacute; thể sử dụng để t&iacute;nh to&aacute;n c&aacute;c số liệu thống k&ecirc; ri&ecirc;ng biệt cho từng gi&aacute; trị thuộc t&iacute;nh duy nhất. 
  V&iacute; dụ, giả sử đầu v&agrave;o đầu ti&ecirc;n c&oacute; chứa ranh giới th&agrave;nh phố v&agrave; tổng kết của c&aacute;c đối tượng l&agrave; c&aacute;c l&ocirc; đất. 
- Một trong c&aacute;c thuộc t&iacute;nh của l&ocirc; đất l&agrave; <i>Trạng th&aacute;i</i> c&oacute; chứa hai gi&aacute; trị: ĐỂ TRỐNG v&agrave; Đ&Atilde; D&Ugrave;NG. Để t&iacute;nh to&aacute;n tổng diện t&iacute;ch l&ocirc; đất trống v&agrave; đ&atilde; d&ugrave;ng trong ranh giới c&aacute;c th&agrave;nh phố, sử dụng <i>Trạng th&aacute;i</i> gom nh&oacute;m theo thuộc t&iacute;nh. Số liệu thống k&ecirc; cho từng nh&oacute;m, cũng như số lượng c&aacute;c đối tượng, sẽ được hiển thị trong cửa sổ pop-up.
+ Một trong c&aacute;c thuộc t&iacute;nh của l&ocirc; đất l&agrave; <i>Status</i> c&oacute; chứa hai gi&aacute; trị: ĐỂ TRỐNG v&agrave; Đ&Atilde; D&Ugrave;NG. Để t&iacute;nh to&aacute;n tổng diện t&iacute;ch l&ocirc; đất trống v&agrave; đ&atilde; d&ugrave;ng trong ranh giới c&aacute;c th&agrave;nh phố, sử dụng <i>Status</i> gom nh&oacute;m theo thuộc t&iacute;nh. Số liệu thống k&ecirc; cho từng nh&oacute;m, cũng như số lượng c&aacute;c đối tượng, sẽ được hiển thị trong cửa sổ pop-up.
             </p>
         </div>
     </div>
@@ -203,7 +211,7 @@
         <div><h2>Thêm phần trăm</h2></div>
         <hr/>
         <div>
-            <p>&Ocirc; vu&ocirc;ng lựa chọn n&agrave;y được bật khi bạn chọn một trường để nh&oacute;m theo.    Chọn  <b>Th&ecirc;m tỷ lệ phần trăm</b> nếu bạn muốn t&igrave;m tỷ lệ phần trăm của từng gi&aacute; trị thuộc t&iacute;nh tổng từng nh&oacute;m.  Một trường mới sẽ được th&ecirc;m v&agrave;o bảng kết quả v&agrave; chứa tỷ lệ phần trăm của từng gi&aacute; trị thuộc t&iacute;nh trong từng nh&oacute;m.   Nếu bạn chọn <b>Th&ecirc;m thiểu số, đa số</b>, hai trường bổ sung sẽ được th&ecirc;m v&agrave;o lớp kết quả v&agrave; chứa tỷ lệ phần trăm c&aacute;c gi&aacute; trị thuộc t&iacute;nh thiểu số v&agrave; đa số trong mỗi nh&oacute;m.
+            <p>Hộp chọn n&agrave;y được bật khi bạn chọn một trường để nh&oacute;m theo. Chọn  <b>Th&ecirc;m tỷ lệ phần trăm</b> nếu bạn muốn t&igrave;m tỷ lệ phần trăm của từng gi&aacute; trị thuộc t&iacute;nh tổng từng nh&oacute;m. Một trường mới sẽ được th&ecirc;m v&agrave;o bảng kết quả v&agrave; chứa tỷ lệ phần trăm của từng gi&aacute; trị thuộc t&iacute;nh trong từng nh&oacute;m. Nếu bạn chọn <b>Th&ecirc;m thiểu số, đa số</b>, hai trường bổ sung sẽ được th&ecirc;m v&agrave;o lớp kết quả v&agrave; chứa tỷ lệ phần trăm c&aacute;c gi&aacute; trị thuộc t&iacute;nh thiểu số v&agrave; đa số trong mỗi nh&oacute;m.
             </p>
         </div>
     </div>
@@ -211,9 +219,9 @@
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu t&ecirc;n lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
-            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> menu thả xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong phần <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
             </p>
         </div>
     </div>

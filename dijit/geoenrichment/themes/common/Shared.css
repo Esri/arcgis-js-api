@@ -40,6 +40,12 @@
     bottom: 0px;
 }
 
+.esriGEContentVerticalAlignMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .esriGEClickable {
     cursor: pointer;
 }
@@ -160,4 +166,23 @@
     z-index: -1000 !important;
     left: 0px;
     top: 0px;
+}
+
+
+
+
+.esriGEStart {
+    text-align: left;
+}
+
+.dj_rtl .esriGEStart {
+    text-align: right;
+}
+
+.esriGEEnd {
+    text-align: right;
+}
+
+.dj_rtl .esriGEEnd {
+    text-align: left;
 }

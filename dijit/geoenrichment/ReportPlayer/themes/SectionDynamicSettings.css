@@ -68,13 +68,15 @@
 
 
 
-.esriGEReportPlayer_sectionDynamicSettings {
+.esriGEReportPlayer_sectionDynamicSettings,
+.esriGEReportPlayer_sectionDynamicFilter {
     background-color: white;
     min-width: 100px;
     padding-bottom: 5px;
 }
 
-    .esriGEReportPlayer_sectionDynamicSettings .sectionDynamicSettings_row {
+    .esriGEReportPlayer_sectionDynamicSettings .sectionDynamicSettings_row,
+    .esriGEReportPlayer_sectionDynamicFilter .sectionDynamicFilter_row {
         padding: 10px;
     }
 
@@ -132,7 +134,6 @@
 
 
 .esriGEReportPlayer_sectionDynamicRefineFilters {
-    text-align: left;
 }
 
     .esriGEReportPlayer_sectionDynamicRefineFilters .sectionDynamicRefineFilters_row {
@@ -146,12 +147,6 @@
     .esriGEReportPlayer_sectionDynamicRefineFilters .esriGENumericalSliderLabel {
         padding-bottom: 5px;
     }
-
-
-
-.esriGEReportPlayer_sectionDynamicComparisonSettings {
-    text-align: left;
-}
 
 
 

@@ -131,16 +131,16 @@ representing the destination or destinations to which the origins should connect
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Add Barrier Layers</h2></div>
+        <div><h2>Select barrier layers</h2></div>
         <hr/>
         <div>
-            <p> Specify one or more features that act as temporary restrictions (in other words,  barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            <p> One or more features that act as temporary restrictions (barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
             </p>
             <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
             </p>
-            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceed 500, the tool returns an error.
+            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
             </p>
-            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceed 2000, the tool returns an error.
+            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
             </p>
         </div>
     </div>
@@ -150,11 +150,11 @@ representing the destination or destinations to which the origins should connect
         <div>
             <p>The name of the feature layer that will be created in  <b>My Content</b> and added to the map. If the feature layer already exists, you will be asked to provide another name. The feature layer will contain a layer for each of the following: routes, unassigned origins, and unassigned destinations when some origins cannot be connected to their destinations.
             </p>
-            <p>If you select  <b>Include route layers</b>, each route from the result is also saved as a route layer. A route layer includes all the information for a particular route such as the stops assigned to the route as well as the travel directions. Creating  route layers is useful if you want to share the individual routes with other members in your organization or if you wish to further modify the routes using the <b>Directions</b> button in the map viewer. The route layers use the name provided for the feature layer  as a prefix and the route name generated as part of the analysis, is added to create a unique name for each route layer.
+            <p>If you select  <b>Include route layers</b>, each route from the result is also saved as a route layer. A route layer includes all the information for a particular route, such as the stops assigned to the route as well as the travel directions. Creating  route layers is useful if you want to share the individual routes with other members in your organization or to further modify the routes using the <b>Directions</b> button in the map viewer. The route layers use the name provided for the feature layer  as a prefix and the route name generated as part of the analysis, which is added to create a unique name for each route layer.
             </p>
             <p>The maximum number of route layers that can be created is  1,000. If the result contains more than  1,000 routes and  <b>Include route layers</b> is checked, the tool will only create the output feature service.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down list, you can specify the name of a folder in <b>My Content</b> where the feature layer and the route layers, if created, will be saved.
+            <p>Using the  <b>Save result in</b> drop-down menu, you can specify the name of a folder in <b>My Content</b> where the feature layer and the route layers, if created, will be saved.
             </p>
         </div>
     </div>

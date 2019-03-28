@@ -590,13 +590,15 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
-        <h2>Upravljanje podacima</h2>
+        <h2>Upravljaj podacima</h2>
         <hr/>
         <p>Ovi se alati upotrebljavaju za svakodnevno upravljanje geografskim podacima i kombiniranje podataka prije analize.  
             <ul>
                 <li> <b>Ukloni granice</b> spaja povr&scaron;ine koje dijele zajedničku granicu i zajedničku atributnu vrijednost.
                 </li>
                 <li> <b>Izdvoji podatke</b> stvara nove skupove podataka izdvajanjem geoobjekata iz postojećih podataka.
+                </li>
+                <li> <b>Generiranje teselacija</b> stvara teselacije na temelju obuhvata podataka.
                 </li>
                 <li> <b>Spoji slojeve</b> kopira sve geoobjekte iz dva ili vi&scaron;e postojećih slojeva u novi sloj.
                 </li>
@@ -619,7 +621,7 @@
 <hr/>
             <p>Poligoni koji se preklapaju ili koji dijele zajedničku granicu međusobno se spajaju da bi oblikovali jedinstveni poligon.    
             </p>
-            <p>Možete upravljati koje će se granice spojiti tako da odredite polje. Na primjer, ako imate sloj okruga i ako svaki okrug ima atribut  <i>State_Name</i>, možete ukloniti granice uporabom atributa <i>State_Name</i>.  Okruzi koji su jedan pored drugog međusobno će se spojiti ako imaju istu vrijednost za <i>State_Name</i>.  Konačni rezultat je sloj državnih granica.
+            <p>Možete upravljati koje će se granice spojiti tako da odredite polje. Na primjer, ako imate sloj općina i ako svaka općina ima atribut  <i>State_Name</i>, možete ukloniti granice upotrebom atributa <i>State_Name</i>. Susjedne općine će se spojiti ako imaju istu vrijednost za <i>State_Name</i>. Konačni je rezultat sloj granica županija.
             </p>
             <br/>
         </div>
@@ -637,6 +639,21 @@
             <p>Stvara zip datoteku, CSV ili KMZ iz podataka s va&scaron;ih slojeva i povr&scaron;ine interesa koju odredite.
             </p>
             <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generiranje teselacija</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generiranje teselacija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Generira teselacije preko radnog područja na temelju određenog oblika i veličine.
             </p>
             <br/>
         </div>

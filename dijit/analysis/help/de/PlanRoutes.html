@@ -92,7 +92,7 @@
         </div>
     </div>
     <div id="startLayer">
-        <div><h2>Startpunkt von Routen</h2></div>
+        <div><h2>Routen beginnen an Stopps</h2></div>
         <hr/>
         <div>
             <p>Legen Sie fest, wo und wann die Fahrzeuge ihre Routen starten.
@@ -110,7 +110,7 @@
         </div>
     </div>
     <div id="endLayer">
-        <div><h2>Endpunkt von Routen</h2></div>
+        <div><h2>Routen enden an Stopps</h2></div>
         <hr/>
         <div>
             <p>Legen Sie fest, wo die Fahrzeuge ihre Routen beenden.
@@ -135,16 +135,16 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Barriere-Layer hinzufügen</h2></div>
+        <div><h2>Barriere-Layer auswählen</h2></div>
         <hr/>
         <div>
-            <p> Geben Sie mindestens ein Feature an, das als Einschr&auml;nkung (also Barriere) bei der Fahrt auf den zugrunde liegenden Stra&szlig;en fungiert. Sie k&ouml;nnen die Barrieren anhand von Punkt-, Linien- oder Polygon-Features angeben.
+            <p> Mindestens ein Feature, das als vor&uuml;bergehende Einschr&auml;nkung (also Barriere) bei der Fahrt auf den zugrunde liegenden Stra&szlig;en fungiert Sie k&ouml;nnen die Barrieren anhand von Punkt-, Linien- oder Polygon-Features angeben.
             </p>
             <p>Eine Punkt-Barriere kann zum Modellieren eines umgefallenen Baumes, eines Unfalls, einer herabh&auml;ngenden Stromleitung oder eines beliebigen anderen Objekts, das den Verkehr an einer bestimmten Position auf der Stra&szlig;e blockiert, verwendet werden. Die Fahrt auf der Stra&szlig;e ist zul&auml;ssig, jedoch nicht die Fahrt durch die Barriere. Sie k&ouml;nnen bis zu 250&nbsp;Features, die als Punkt-Barrieren fungieren, hinzuf&uuml;gen.
             </p>
             <p>Eine Linien-Barriere unterbindet den Verkehr an allen Punkten, an denen die Barriere Stra&szlig;en schneidet. Mit einer Linien-Barriere kann beispielsweise eine Parade oder Demonstration modelliert werden, die den Verkehr &uuml;ber mehrere Stra&szlig;enz&uuml;ge hinweg blockiert. Wenn die Anzahl der Stra&szlig;en-Features, die sich mit allen Linien-Barrieren schneiden, 500 &uuml;berschreitet, gibt das Werkzeug einen Fehler zur&uuml;ck
             </p>
-            <p>Eine Polygon-Barriere unterbindet den Verkehr an allen Punkten, an denen das Polygon Stra&szlig;en schneidet. Dieser Barrierentyp wird beispielsweise verwendet, um &uuml;berflutete Bereiche des Stra&szlig;ennetzes zu modellieren und den Stra&szlig;enverkehr in diesen Bereichen zu sperren. Wenn die Anzahl der Stra&szlig;en-Features, die sich mit allen Polygon-Barrieren schneiden, 2.000 &uuml;berschreitet, gibt das Werkzeug einen Fehler zur&uuml;ck
+            <p>Eine Polygon-Barriere unterbindet den Verkehr an allen Punkten, an denen das Polygon Stra&szlig;en schneidet. Dieser Barrierentyp wird beispielsweise verwendet, um &uuml;berflutete Bereiche des Stra&szlig;ennetzes zu modellieren und den Stra&szlig;enverkehr in diesen Bereichen zu sperren. Wenn die Anzahl der Stra&szlig;en-Features, die sich mit allen Polygon-Barrieren schneiden, 2000 &uuml;berschreitet, gibt das Werkzeug einen Fehler zur&uuml;ck
             </p>
         </div>
     </div>
@@ -230,9 +230,9 @@
         <div>
             <p>Der Name des Feature-Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Wenn der Feature-Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben. Der Feature-Layer enth&auml;lt einen Layer f&uuml;r jedes der folgenden Elemente: Routen, zugewiesene Stopps und nicht zugewiesene Stopps, wenn einige Eingabestopps nicht zu bestimmten Routen zugewiesen werden konnten.
             </p>
-            <p>Wenn Sie  <b>Routen-Layer einbeziehen</b> ausw&auml;hlen, wird jede Route des Ergebnisses auch als Routen-Layer gespeichert. Ein Routen-Layer umfasst alle Informationen einer bestimmten Route wie zum Beispiel die Stopps, die der Route zugewiesen sind, oder die Wegbeschreibungen. Das Erstellen von Routen-Layern ist n&uuml;tzlich, wenn Sie die einzelnen Routen mit anderen Mitgliedern in Ihrer Organisation teilen oder wenn Sie die Routen mithilfe der Schaltfl&auml;che <b>Wegbeschreibung</b> im Map Viewer weiter bearbeiten m&ouml;chten. F&uuml;r den Namen der Routen-Layer wird der Name des angegebenen Feature-Layers verwendet. Der Routenname, der als Teil der Analyse generiert wurde, wird hinzugef&uuml;gt, um einen eindeutigen Namen f&uuml;r jeden Routen-Layer zu erstellen.
+            <p>Wenn Sie  <b>Routen-Layer einbeziehen</b> ausw&auml;hlen, wird jede Route des Ergebnisses auch als Routen-Layer gespeichert. Ein Routen-Layer umfasst alle Informationen einer bestimmten Route wie zum Beispiel die Stopps, die der Route zugewiesen sind, oder die Wegbeschreibungen. Das Erstellen von Routen-Layern ist n&uuml;tzlich, wenn Sie die einzelnen Routen f&uuml;r andere Mitglieder in Ihrer Organisation freigeben oder wenn Sie die Routen mithilfe der Schaltfl&auml;che <b>Wegbeschreibung</b> im Map Viewer weiter bearbeiten m&ouml;chten. F&uuml;r die Namen der Routen-Layer wird der Name des angegebenen Feature-Layers als Pr&auml;fix verwendet. Dazu hinzugef&uuml;gt wird der Routenname, der bei der Analyse generiert wurde, um einen eindeutigen Namen f&uuml;r jeden Routen-Layer zu erstellen.
             </p>
-            <p>&Uuml;ber die Dropdown-Liste  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> zum Speichern des Feature-Layers und des Routen-Layers (bei Erstellung) angeben.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, um darin den Feature-Layer und die ggf. erstellten Routen-Layer zu speichern.
             </p>
         </div>
     </div>

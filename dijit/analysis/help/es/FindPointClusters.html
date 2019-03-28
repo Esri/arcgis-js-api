@@ -70,7 +70,8 @@
         <div><h2>Limitar el rango de búsqueda a (opcional)</h2></div>
         <hr/>
         <div>
-            <p>La distancia m&aacute;xima dentro de la cual se considera que las entidades forman parte del mismo cl&uacute;ster.  Si se deja en blanco, la distancia predeterminada utilizada ser&aacute; la distancia de n&uacute;cleo m&aacute;s alta encontrada en el dataset y se excluyen aquellas distancias de n&uacute;cleo que se encuentren dentro del 1% superior (excluidas las distancias de n&uacute;cleo m&aacute;s extremas). 
+            
+            <p>La distancia m&aacute;xima dentro de la cual se considera que las entidades forman parte del mismo cl&uacute;ster.  Si se deja en blanco, la herramienta ejecutar&aacute; HDBSCAN, que utiliza distancias variables para separar cl&uacute;steres de densidades variables del ruido m&aacute;s disperso. Si se proporciona un valor, la herramienta ejecutar&aacute; DBSCAN, que utiliza una distancia especificada para separar los cl&uacute;steres densos del ruido m&aacute;s disperso.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y el nombre de la capa de entrada. Si el nombre de capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>Con el men&uacute; desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

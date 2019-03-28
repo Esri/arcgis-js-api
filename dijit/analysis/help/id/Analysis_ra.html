@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analisis Raster memungkinkan Anda untuk melakukan analisis rangkaian data raster besar dengan menggunakan ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server. Rangkaian alat yang saat ini tersedia melalui pengalaman pengguna web Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, dan <b>Kelola Data</b>.
+        <p>Analisis Raster memungkinkan Anda melakukan analisis terhadap set data raster dengan jumlah banyak menggunakan  ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server. Rangkaian alat saat ini tersedia melalui pengalaman pengguna web  Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Gunakan Kedekatan Jarak</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, <b>Kelola Data</b>, dan <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Terapkan Template Fungsi Raster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Terapkan Template Fungsi Raster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Buat rangkaian data fitur baru dari rangkaian data raster yang sudah ada
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Deep Learning Rangkaian Alat</h2>
+        <hr/>
+        <p>Peralatan ini 	digunakan untuk mendeteksi fitur spesifik dalam sebuah gambar atau untuk mengklasifikasikan piksel dalam set data raster. Deep learning adalah jenis metode pembelajaran mesin cerdas buatan yang mendeteksi fitur dalam pencitraan menggunakan beberapa layer dalam jaringan neural di mana setiap layer mampu mengekstrak satu fitur unik atau lebih dalam gambar. Peralatan ini menggunakan model yang telah dilatih untuk mendeteksi fitur spesifik dalam kerangka kerja deep learning pihak ketiga&mdash;seperti TensorFlow, CNTK, dan Keras&mdash;serta fitur output atau peta kelas.
+            <ul>
+                <li> <b>Klasifikasikan Piksel Menggunakan Deep Learning</b> menghasilkan raster yang diklasifikasi menggunakan model deep learning terlatih.
+                </li>
+                <li> <b>Deteksi Objek Menggunakan Deep Learning</b> menghasilkan kelas fitur yang berisi objek yang ditemukannya dalam raster input menggunakan model deep learning terlatih.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikasikan Piksel Menggunakan Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasifikasikan Piksel Menggunakan Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menjalankan model deep learning terlatih pada raster input untuk menghasilkan raster yang diklasifikasikan, dengan setiap piksel valid memiliki label kelas yang ditetapkan.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Deteksi Objek Menggunakan Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Deteksi Objek Menggunakan Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menjalankan model deep learning terlatih pada sebuah raster input untuk menghasilkan sebuah kelas fitur berisi objek yang ditemukannya. Fitur tersebut bisa jadi kotak atau poligon keliling di sekitar objek yang ditemukan, atau titik di tengah objek.
             </p>
             <br/>
         </div>

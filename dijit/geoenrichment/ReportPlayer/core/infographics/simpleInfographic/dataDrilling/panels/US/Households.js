@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["../../ChartBuilder","../../../../../charts/utils/ChartTypes"],function(e,a){var l={};return l.avgHouseholdSize={fieldInfo:{isInfographic:!0,infographicJson:{type:"OneVar",variables:["KeyGlobalFacts.AVGHHSZ"]}}},l.householdsWithNoVehicles={states:"n,p",fieldInfo:{isChart:!0,chartJson:e.createChart({type:a.COLUMN,title:"Households with No Vehicles Available (ACS)",points:[{label:"Owner Occupied HHs",fullName:"AtRisk.ACSOVEH0"},{label:"Renter HHs",fullName:"vehiclesavailable.ACSRVEH0"}]})}},l});
+define(["../../ChartBuilder","../../../../../charts/utils/ChartTypes"],function(e,s){var l={};return l.avgHouseholdSize={fieldInfo:{isInfographic:!0,infographicJson:{type:"OneVar",variables:["KeyGlobalFacts.AVGHHSZ"]}}},l.householdsWithNoVehicles={states:"n,p",stateSettings:{n:{yAxisTitle:"Number of households"},p:{yAxisTitle:"Percent of households"}},fieldInfo:{isChart:!0,chartJson:e.createChart({type:s.COLUMN,title:"Households with No Vehicles Available (ACS)",points:[{label:"Owner Occupied HHs",fullName:"AtRisk.ACSOVEH0"},{label:"Renter HHs",fullName:"vehiclesavailable.ACSRVEH0"}]})}},l});

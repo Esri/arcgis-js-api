@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다.  Portal for ArcGIS 웹 UX에서 제공되고 있는 도구모음은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>이미지 분석</b>, <b>지형 분석</b>, <b>데이터 관리</b>입니다.
+        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다. 현재  Portal for ArcGIS 웹 UX에서 제공되는 도구집합은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>인접도 사용</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>, <b>딥러닝</b>입니다.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>래스터 함수 템플릿 적용</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="래스터 함수 템플릿 적용(Apply Raster Function Template)">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>기존 래스터 데이터셋에서 새 피처 데이터셋을 생성합니다.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="smallsize">
+        <h2>딥러닝 도구집합</h2>
+        <hr/>
+        <p>이러한 도구는 이미지의 특정 피처를 감지하거나 래스터 데이터셋의 픽셀을 분류하는 데 사용됩니다. 딥러닝은 인공 지능 머신 러닝 방법의 유형으로, 각 레이어가 하나 이상의 고유한 피처를 이미지에서 추출할 수 있는 신경망에서 다중 레이어를 사용하여 이미지의 피처를 감지합니다. 이러한 도구는 TensorFlow, CNTK, Keras와 같은 서드 파티 딥러닝 프레임워크의 특정 피처와 결과 피처, 클래스 맵을 감지하도록 교육된 모델을 사용합니다.
+            <ul>
+                <li> <b>딥러닝을 사용하여 픽셀 분류</b>는 숙련된 딥러닝 모델을 사용하여 분류된 래스터를 생성합니다.
+                </li>
+                <li> <b>딥러닝을 사용하여 객체 감지</b>는 숙련된 딥러닝 모델을 사용하여 입력 래스터에서 찾는 객체를 포함하는 피처 클래스를 생성합니다.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>딥러닝을 사용하여 픽셀 분류(Classify Pixels Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="딥러닝을 사용하여 픽셀 분류">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>딥러닝을 사용하여 객체 감지(Detect Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="딥러닝을 사용하여 객체 감지">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

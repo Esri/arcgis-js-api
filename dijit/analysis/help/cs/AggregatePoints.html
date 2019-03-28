@@ -46,8 +46,7 @@
         <hr/>
     <p>Tento n&aacute;stroj pracuje s vrstvou bodov&yacute;ch prvků a s vrstvou plo&scaron;n&yacute;ch prvků. Nejdř&iacute;ve urč&iacute;, jak&eacute; body spadaj&iacute; do jednotliv&yacute;ch oblast&iacute;. Po určen&iacute; těchto prostorov&yacute;ch vztahů pak vypoč&iacute;t&aacute; statistick&eacute; &uacute;daje v&scaron;ech bodů v&nbsp;oblasti a přiřad&iacute; je př&iacute;slu&scaron;n&eacute; oblasti. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet bodů v&nbsp;oblasti, ale vypoč&iacute;tat lze i jin&eacute; statistiky. 
     </p>
-    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te k&nbsp;dispozici bodov&eacute; prvky um&iacute;stěn&iacute; kav&aacute;ren a prvky oblasti krajů. Chcete shrnout prodej k&aacute;vy podle krajů. Za předpokladu, že maj&iacute; kav&aacute;rny atribut  <i>TOTAL_SALES</i>, můžete pro jednotliv&eacute; kraje vypoč&iacute;tat součet v&scaron;ech hodnot atributů <i>TOTAL_SALES</i>, minim&aacute;ln&iacute; či maxim&aacute;ln&iacute; hodnotu atributu <i>TOTAL_SALES</i>,
- př&iacute;padně směrodatnou odchylku celkov&yacute;ch tržeb.
+    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te k&nbsp;dispozici bodov&eacute; prvky um&iacute;stěn&iacute; kav&aacute;ren a prvky oblasti krajů. Chcete shrnout prodej k&aacute;vy podle krajů. Za předpokladu, že maj&iacute; kav&aacute;rny atribut  <i>TOTAL_SALES</i>, můžete pro jednotliv&eacute; kraje vypoč&iacute;tat součet v&scaron;ech hodnot atributů <i>TOTAL_SALES</i>, minim&aacute;ln&iacute; či maxim&aacute;ln&iacute; hodnotu atributu <i>TOTAL_SALES</i>, př&iacute;padně směrodatnou odchylku celkov&eacute;ho prodeje.
     </p>
     <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze prvky ve vstupn&iacute; bodov&eacute; vrstvě a vrstvě oblasti, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy.  Pokud toto pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky ve vstupn&iacute; bodov&eacute; vrstvě a vrstvě oblasti, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo rozsah aktu&aacute;ln&iacute; mapy.
     </p>
@@ -90,13 +89,15 @@
             <p>Umožňuje poč&iacute;tat statistiky atributů ve vstupn&iacute; bodov&eacute; vrstvě, např&iacute;klad součet, průměr, minimum, maximum a směrodatnou odchylku. V&yacute;sledn&aacute; vrstva bude obsahovat nov&yacute; atribut pro každou vypoč&iacute;tanou statistiku. Lze přidat libovoln&yacute; počet statistik zvolen&iacute;m atributu a statistiky (objev&iacute; se nov&yacute; rozbalovac&iacute; seznam).
  
             </p>
+            <p>Pokud vrstva, kter&aacute; m&aacute; b&yacute;t sumarizov&aacute;na, nem&aacute; ž&aacute;dn&aacute; č&iacute;seln&aacute; pole, nebudou dal&scaron;&iacute; statistiky k dispozici.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Vybrat pole k seskupení</h2></div>
         <hr/>
         <div>
-            <p> Umožňuje vytv&aacute;řet statistick&eacute; skupiny pomoc&iacute; atributu ve vstupn&iacute; bodov&eacute; vrstvě.    Pokud např&iacute;klad seskupujete trestn&eacute; činy v hranic&iacute;ch čtvrt&iacute;, můžete m&iacute;t atribut <i>Crime_type</i> obsahuj&iacute;c&iacute; pět různ&yacute;ch typů trestn&yacute;ch činů.  Každ&yacute; jedinečn&yacute; typ trestn&eacute;ho činu tvoř&iacute; skupinu. Statistiky, kter&eacute; zvol&iacute;te, budou vypočteny pro každou jedinečnou hodnotu atributu <i>Crime_type</i>.  Statistiky pro každou skupinu se spolu s počtem bodů zobraz&iacute; ve vyskakovac&iacute;m okně v&yacute;sledn&eacute; vrstvy. Pokud zvol&iacute;te atribut seskupov&aacute;n&iacute;, budou vytvořeny dva druhy v&yacute;sledků: v&yacute;sledn&aacute; vrstva a v&yacute;sledn&aacute; tabulka obsahuj&iacute;c&iacute; statistiku každ&eacute; jedinečn&eacute; skupiny.
+            <p> Umožňuje vytv&aacute;řet statistick&eacute; skupiny pomoc&iacute; atributu ve vstupn&iacute; bodov&eacute; vrstvě.    Pokud např&iacute;klad agregujete trestn&eacute; činy v hranic&iacute;ch čtvrt&iacute;, můžete m&iacute;t atribut <i>Crime_type</i> obsahuj&iacute;c&iacute; pět různ&yacute;ch typů trestn&yacute;ch činů. Každ&yacute; jedinečn&yacute; typ trestn&eacute;ho činu tvoř&iacute; skupinu. Statistiky, kter&eacute; zvol&iacute;te, budou vypočteny pro každou jedinečnou hodnotu atributu <i>Crime_type</i>.  Statistiky pro každou skupinu se spolu s počtem bodů zobraz&iacute; ve vyskakovac&iacute;m okně v&yacute;sledn&eacute; vrstvy. Pokud zvol&iacute;te atribut seskupov&aacute;n&iacute;, budou vytvořeny dva druhy v&yacute;sledků: v&yacute;sledn&aacute; vrstva a v&yacute;sledn&aacute; tabulka obsahuj&iacute;c&iacute; statistiku každ&eacute; jedinečn&eacute; skupiny.
             </p>
         </div>
     </div>
@@ -122,9 +123,9 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
-            <p>Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            <p>Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud n&aacute;zev vrstvy již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            <p>V rozbalovac&iacute; nab&iacute;dce  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>
         </div>
     </div>

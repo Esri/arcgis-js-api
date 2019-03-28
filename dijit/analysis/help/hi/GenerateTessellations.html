@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>टेस्सेलेशन उत्पन्न करें</h2><p/>
+        <h2><img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" alt="टेस्सेलेशन उत्पन्न करें"></h2>
+        <hr/>
+    <p>यह टूल निर्दिष्ट आकृति और आकार के आधार पर किसी अध्ययन पर टेसेलेशन जनरेट करता है।
+    </p>
+    <p>इस टूल के लिए  <b>मौजूदा मैप सीमा का उपयोग करें</b> चेकबॉक्स अक्षम होता है क्योंकि टेसेलेशन जनरेट करने के लिए प्रयुक्त सीमा का नियंत्रण <b>सीमा निर्धारित करें</b> पैरामीटर द्वारा किया जाता है।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="binType">
+        <div><h2>आकार चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>उस टेसेलेशन की आकृति या ज्यामीति जिसे आप बनाना चाहते हैं।  उपलब्ध आकृतियां  <code>वर्ग</code>, <code>हेक्सॉगॉन (षटकोण)</code>, <code>ट्रांसवर्स हेक्सागॉन</code>, <code>त्रिभुज</code>, या <code>डायमंड</code> है।
+            </p>
+        </div>
+    </div>
+    <div id="extentLayer">
+        <div><h2>अध्ययन-क्षेत्र निर्धारित करें</h2></div>
+        <hr/>
+        <div>
+            <p>उस क्षेत्र की सीमा जिसे टेसेलेशन द्वारा कवर किया जाएगा।  सीमा का निर्धारण मौजूदा मैप सीमा, मौजूदा लेयर की सीमा का उपयोग करके या प्रयुक्त किए जाने वाले क्षेत्र को सीमा के रूप में आरेखित करके किया जाएगा।
+            </p>
+            <p>अगर फ़ीचर लेयर का चयन, सीमा निर्धारित करने के लिए कर लिया गया है, तो केवल इंटरसेक्टिंग टेसेलेशन बनाए रखने के विकल्प को सक्षम किया जाएगा।  इसे चेक किए जाने पर केवल उन्हीं टेसेलेशन को जो निर्दिष्ट सीमा लेयर को कवर करते हैं या उसमें निर्दिष्ट फ़ीचर के साथ इंटरसेक्ट करते हैं, परिणामी टेसेलेशन लेयर में जनरेट किया जाएगा। 
+            </p>
+            <p>
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>चेक नहीं किया गया
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-141880D1-A748-4F7B-B700-0036CA9ACCE1-web.png" alt="पूर्ण सीमा का कवरेज">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>चेक किया गया
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-F43D993E-5881-4A35-A4AE-4221EDD48374-web.png" alt="फ़ीचर कवरेज">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="binSize">
+        <div><h2>निर्दिष्ट करके बिन का आकार परिभाषित करें</h2></div>
+        <hr/>
+        <div>
+            <p>हर सेल का आकार।  सेल के आकार का निर्धारण वर्ग यूनिट का निर्धारण करके या निम्न मापों का उपयोग करके परिकलित दूरी निर्दिष्ट करके किया जा सकता है, जहां d = दूरी है: 
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>वर्ग
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-4DCDA345-EA0F-46AA-975D-27455F13AAA7-web.png" alt="वर्ग टेसेलेशन">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>षट्कोण
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-5A685C3F-B984-4B5E-8E8A-1EE7AB7FC434-web.png" alt="हेक्सॉगॉन टेसेलेशन">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>ट्रांसवर्स हेक्सॉगॉन
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-61A8B883-A581-4A8D-9D77-57CEA96D9598-web.png" alt="ट्रांसवर्स हेक्सॉगॉन टेसेलेशन">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>त्रिभुज
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-08AB7A29-A0E7-4210-8462-7550DC99A2F2-web.png" alt="त्रिभुज टेसेलेशन">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>हीरा
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-165A71F1-381F-4699-97FA-F83C30AC96E7-web.png" alt="डायमंड टेसेलेशन">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="tessellationPolygonLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>परिणाम इसमें सहेजें</b> ड्राप-डाउन मेनू का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणाम सहेजा जाएगा।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

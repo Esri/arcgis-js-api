@@ -70,7 +70,8 @@
         <div><h2>Limita l'interval de cerca a (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Dist&agrave;ncia m&agrave;xima per considerar que les entitats formen part del mateix cl&uacute;ster.  Si es deixa en blanc, la dist&agrave;ncia per defecte utilitzada ser&agrave; la dist&agrave;ncia principal m&eacute;s gran trobada al dataset, excloses les 1% primeres dist&agrave;ncies principals (les m&eacute;s extremes). 
+            
+            <p>Dist&agrave;ncia m&agrave;xima per considerar que les entitats formen part del mateix cl&uacute;ster.  Si es deixa en blanc, l'eina executar&agrave; HDBSCAN, que utilitza dist&agrave;ncies variables per separar cl&uacute;sters de densitats variables del soroll m&eacute;s dispers. Si es proporciona un valor, l'eina executar&agrave; DBSCAN, que utilitza una dist&agrave;ncia especificada per separar cl&uacute;sters densos del soroll m&eacute;s dispers.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa.  El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que escriviu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa.  El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si el nom de la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
-            <p>Mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta d' <b>El meu contingut</b> on es desar&agrave; el resultat.
+            <p>Mitjan&ccedil;ant el men&uacute; desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta d' <b>El meu contingut</b> on es desar&agrave; el resultat.
             </p>
         </div>
     </div>

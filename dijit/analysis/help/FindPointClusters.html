@@ -73,8 +73,8 @@ finds clusters of point features within surrounding noise based on their spatial
         <div><h2>Limit the search range to (optional)</h2></div>
         <hr/>
         <div>
-            <p>The maximum distance to consider features to be part of the same cluster.  If left blank, the default distance used will be the highest core distance found in the dataset, excluding those core distances in the top 1% (excluding the most extreme core distances).
-
+            
+            <p>The maximum distance to consider features to be part of the same cluster.   If left blank, the tool will run HDBSCAN, which uses varying distances to separate clusters of varying densities from sparser noise. If a value is given, the tool will run DBSCAN, which uses a specified distance to separate dense clusters from sparser noise.
             </p>
         </div>
     </div>
@@ -82,9 +82,9 @@ finds clusters of point features within surrounding noise based on their spatial
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
             </p>
         </div>
     </div>

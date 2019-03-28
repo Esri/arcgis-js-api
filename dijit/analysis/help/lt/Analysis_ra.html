@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrų analizė leidžia analizuoti didelius rastro duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų.  Portal for ArcGIS internetinės paskyros vartotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai:  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Analizuoti vaizdus</b>, <b>Analizuoti reljefą</b> ir <b>Valdyti duomenis</b>.
+        <p>Rastrų analizė leidžia analizuoti didelius rastro duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų.  Portal for ArcGIS internetinės paskyros vartotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai:  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Naudoti gretimybes</b>, <b>Analizuoti vaizdą</b>, <b>Analizuoti reljefą</b>, <b>Valdyti duomenis</b> ir <b>Gilusis mokymasis</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Taikyti rastrų funkcijos šabloną</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Taikyti rastrų funkcijos &scaron;abloną">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Sukurti naują elementų duomenų rinkinį i&scaron; esamo rastrinio duomenų rinkinio.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Įrankių grupė Gilusis mokymasis</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai 	naudojami aptikti tam tikrus vaizdo elementus arba klasifikuoti rastrinio duomenų rinkinio pikselius. Gilusis mokymasis yra dirbtinio intelekto ma&scaron;ininio mokymosi metodas, kuris aptinka elementus vaizduose naudodamas kelis neuroninių tinklų sluoksnius, i&scaron; kurių kiekvienas gali gauti vieną ar daugiau unikalių vaizdo elementų. Tokie įrankiai naudoja modelius, kurie jau apmokyti aptikti tam tikrus elementus trečiųjų &scaron;alių giliojo mokymosi sistemose, pavyzdžiui, TensorFlow, CNTK ir Keras, ir i&scaron;vesties elementuose arba klasių žemėlapiuose.
+            <ul>
+                <li> <b>Pikselių klasifikavimas naudojant gilųjį mokymąsi</b> pateikia klasifikuotą rastrą, naudodamas apmokytą giliojo mokymosi modelį.
+                </li>
+                <li> <b>Objektų aptikimas naudojant gilųjį mokymąsi</b> pateikia elementų klasę, kurioje yra objektai, kuriuos įrankis rado įvesties rastre naudodamas apmokytą giliojo mokymosi modelį.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikuoti pikselius naudojant gilųjį mokymąsi</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasifikuoti pikselius naudojant gilųjį mokymąsi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Įvesties rastrui paleidžia apmokytą giliojo mokymosi modelį, kad sukurtų klasifikuotą rastrą, ir kiekvienam tinkamam pikseliui priskiriama klasės žymė.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aptikti objektus naudojant gilųjį mokymąsi</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Aptikti objektus naudojant gilųjį mokymąsi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Įvesties rastrui naudoja apmokytą giliojo mokymosi modelį, kad sukurtų elementų klasę, kurioje yra įrankio rasti objektai. Elementai gali būti apriboti plotai arba poligonai aplink rastus objektus, arba ta&scaron;kai objektų centruose.
             </p>
             <br/>
         </div>

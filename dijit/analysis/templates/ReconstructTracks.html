@@ -108,37 +108,23 @@
           <tr>
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fiveLabel}</label>
-              <label class="esriAnalysisStepsLabel">${i18n.durSplit}</label>
+              <label class="esriAnalysisStepsLabel">${i18n.splitTracksLabel}</label>
             </td>
             <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeSplit"></a> 
-            </td>             
+               <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="splitTracks"></a> 
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_distSplitCheck" data-dojo-attach-event="onChange:_handleDistSplitCheckChange"></input>
+                ${i18n.distSplit}
+              </label>
+            </td>
           </tr>
           <tr>
             <td style="padding-right:0;padding-bottom:0;width:50%;">
-              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="constraints:{min:1,places:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
-            </td>
-            <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
-              <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleDistUnitsChange" data-dojo-attach-point="_durSplitUnitsSelect" style="width:80%;table-layout:fixed;">
-              </select>
-            </td>
-          </tr>
-  
-          <tr>
-            <td colspan="3" class="clear"></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.sixLabel}</label>
-              <label class="esriAnalysisStepsLabel">${i18n.distSplit}</label>
-            </td>
-            <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="distanceSplit"></a>
-            </td>             
-          </tr>
-          <tr>
-            <td style="padding-right:0;padding-bottom:0;width:50%;">
-              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="constraints:{min:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_distSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="constraints:{min:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_distSplitValue" class="esriLeadingMargin2"  style="width:75%;"/>
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
               <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_distSplitUnitsSelect" style="width:80%;table-layout:fixed;">
@@ -150,6 +136,36 @@
                 <option value="Kilometers">${i18n.kilometers}</option>
                 <option value="Meters">${i18n.meters}</option>
               </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_timeSplitCheck" data-dojo-props="checked:false" data-dojo-attach-event="onChange:_handleTimeSplitCheckChange"></input>
+                ${i18n.timeSplit}
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-right:0;padding-bottom:0;width:50%;">
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="constraints:{min:1,places:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin2"  style="width:75%;"/>
+            </td>
+            <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
+              <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleDistUnitsChange" data-dojo-attach-point="_durSplitUnitsSelect" style="width:80%;table-layout:fixed;">
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_timeIntervalCheck" data-dojo-attach-event="onChange:_handleTimeIntervalCheckChange"></input>
+                ${i18n.timeIntervalSplit}
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div style="width:100%;height:100%;" data-dojo-attach-point="_timeBoundarySelect" data-dojo-type="esri/dijit/analysis/components/TimeBoundarySelect/TimeBoundarySelect"></div>
             </td>
           </tr>
           <tr>

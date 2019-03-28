@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite sloj lokacije rastera ili geoobjekta od kojeg želite da izračunate rastojanje",maxDistanceLabel:"Maksimalno rastojanje za izračunavanje (opciono)",outputCellSize:"Veličina izlazne ćelije (opciono)",resultDistLayerName:"Naziv sloja sa rezultatima rastojanja",resultDirectionLayerName:"Naziv sloja sa rezultatima uputstava za navigaciju (opciono)",resultAllocationLayerName:"Naziv sloja sa rezultatima dodele (opciono)",outputLayerName:"Izračunato rastojanje za ${layername}",allocationFieldLabel:"Odaberite sloj za dodelu (opciono)",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Izračunaj rastojanje na ${layerName}. ",itemTags:"Rezultat analize, CalculateDistance, ${layername}, ${fieldname}",itemSnippet:"Sloj geoobjekata nastao iz CalculateDistance."});

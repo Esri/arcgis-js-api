@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>क्लिप लेयर</h2><p/>
+        <h2><img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" alt="क्लिप लेयर"></h2>
+        <hr/>
+    <p>क्लिप लेयर टूल इनपुट पॉइंट, लाइन, या क्षेत्र सुविधाओं को निष्कर्षित करता है, जो क्लिप क्षेत्रों को ओवरले करती हैं। आउटपुट, रुचि के क्षेत्रों पर आधारित आपका इनपुट डेटा होता है। टूल की उपयोगिता के उदाहरण निम्नलिखित हैं:
+        <ul>
+            <li>नेब्रास्का राज्य के अंतर्गत प्रमुख नदियां कौन-सी हैं?
+                  
+            </li>
+            <li>तटवर्ती बांध के क्षेत्र के अंतर्गत कौन से मकान आते हैं?
+            </li>
+            <li>किस तूफ़ान से 2011 में भूस्खलन आएगा?
+                 
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>जोड़ने के लिए सुविधाएँ चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>पॉइंट, लाइन, या क्षेत्र लेयर जिसे क्लिप किया जाएगा। आप इन फ़ीचर का एक सबसेट बनाएंगे।
+            </p>
+            <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>विश्लेषण लेयर चुनें</b> चुन सकते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="clipLayer">
+        <div><h2>सुविधा जोड़ने के लिए क्षेत्र चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>वह क्षेत्र लेयर जिसमें आप इनपुट लेयर फ़ीचर क्लिप करेंगे।  इन क्षेत्रों से सबसेट सीमाएं निर्धारित होंगीं।
+            </p>
+            <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>विश्लेषण लेयर चुनें</b> चुन सकते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p> उ स लेयर का नाम जिसे बनाया जाएगा। अगर आप ArcGIS Data Storeपर लिख रहे हैं, तो आपके परिणामों को  <b>मेरी सामग्री</b> में सहेजा जाएगा और उन्हें मैप पर जोड़ा जाएगा। अगर आप बिग डेटा फ़ाइल शेयर पर लिख रहे हैं, तो, आपके परिणामों को बिग डेटा फ़ाइल शेयर में संग्रहित किया जाएगा और इसके मैनिफेस्ट में जोड़ा जाएगा। उसे मैप में नहीं जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से मौजूद है, तो टूल असफल हो जायेगा।
+            </p>
+            <p> ArcGIS Data Store(रिलेशनल या स्पेशियोटेम्पोरल बिग डेटा स्टोर) पर इसमें  <b>परिणाम सहेजें</b> ड्रॉप डाउन बॉक्स का उपयोग करके लिखते समय, आप <b>मेरी सामग्री</b> में फ़ोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणाम सहेजा जाएगा।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

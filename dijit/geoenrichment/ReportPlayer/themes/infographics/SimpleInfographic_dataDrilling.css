@@ -14,7 +14,7 @@
     font-weight: normal;
     font-style: normal;
     text-decoration: none;
-    min-width: 150px;
+    min-width: 100px;
 }
 
     .esriGESimpleInfographic .simpleInfographic_drillDataButton:hover {
@@ -32,6 +32,10 @@
     background-size: 24px;
     width: 24px;
     height: 24px;
+}
+
+.esriGESimpleInfographic .simpleInfographic_drillDataButtonLabel {
+    word-break: break-word;
 }
 
 .simpleInfographic_dataDrillingViewDiv {

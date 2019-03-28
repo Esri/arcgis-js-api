@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define([],function(){var e={};return e.combineQueryString=function(r){var n="";return r.type&&(n+='type:"'+r.type+'"'),r.typeKeywords&&(Array.isArray(r.typeKeywords[0])?n+=" typekeywords:("+r.typeKeywords.map(function(r){return e.combineTypeKeywords(r)}).join(" OR ")+")":n+=" typekeywords:"+e.combineTypeKeywords(r.typeKeywords,r.typeKeywordsNot)),r.owner&&(n+=" owner:"+r.owner),r.isShared&&(n+=' (access:"shared" OR access:"org")'),r.ownerNot&&(n+=" NOT owner:"+r.ownerNot),n},e.combineTypeKeywords=function(r,n){return r=e._combineArray(r),n?(n=e._combineArray(n),"("+r+" NOT "+n+")"):r},e._combineArray=function(e){return"string"==typeof e?"("===e.charAt(0)||'"'===e.charAt(0)?e:'"'+e+'"':1===e.length?'"'+e[0]+'"':"("+e.map(function(e){return'"'+e+'"'}).join(" ")+")"},e});

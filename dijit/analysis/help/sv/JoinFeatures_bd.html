@@ -58,7 +58,7 @@
             </p>
             <p>Analyser som anv&auml;nder den geografiska relationen  <b>N&auml;ra</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b> .
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>F&ouml;reningslagret med de attribut som ska l&auml;ggas till i m&aring;llagret.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
             </p>
         </div>
     </div>
@@ -263,7 +263,7 @@
         <div><h2>Välj datalager</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
+            <p>GeoAnalytics-resultat sparas i ett datalager och visas som ett geoobjektlager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
                 <ul>
                     <li>Du kan anv&auml;nda resultaten i portal-till-portal-samarbeten.
                     </li>
@@ -280,9 +280,9 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som ska skapas.  Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
-            <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>
         </div>
     </div>

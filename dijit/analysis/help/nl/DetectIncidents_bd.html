@@ -44,7 +44,7 @@
         <h2>Incidenten Detecteren</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Incidenten Detecteren"></h2>
         <hr/>
-    <p>Deze tool werkt met een tijdgeschakelde laag van punten, lijnen, gebieden of tabellen die een tijdsmoment vertegenwoordigen. Met behulp van opeenvolgend geordende functies, oftewel tracks, bepaalt deze tool welke objecten interessante incidenten zijn. Incidenten worden bepaald door de voorwaarden die u opgeeft. 
+    <p> Deze tool werkt met een tijdgeschakelde laag van punten, lijnen, gebieden of tabellen die een tijdsmoment vertegenwoordigen. Met behulp van opeenvolgend geordende functies, oftewel tracks, bepaalt deze tool welke objecten interessante incidenten zijn. Incidenten worden bepaald door de voorwaarden die u opgeeft.
     </p>
     <p>Eerst bepaalt de tool met een of meer velden welke objecten bij een tracks horen. Met behulp van de tijd bij elk object worden de tracks opeenvolgend gerangschikt en wordt de incidentvoorwaarde toegepast. Objecten die voldoen aan de startincidentvoorwaarde worden gemarkeerd als een incident. U kunt optioneel een eindincidentvoorwaarde toepassen. Wanneer de eindvoorwaarde waar is, is het object geen incident meer. De resultaten worden geretourneerd met de originele objecten (met nieuwe kolommen die de naam van het incident vertegenwoordigen) en geven aan welk object aan de incidentvoorwaarde voldoet. U kunt alle originele objecten of alleen de objecten die incidenten zijn, retourneren.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>De punten, lijnen, gebieden of tabellen die worden gebruikt om incidenten te zoeken. De invoerlaag moet tijdsbewust zijn met objecten die een moment in de tijd vertegenwoordigen, evenals een of meer velden die kunnen worden gebruikt om tracks te identificeren.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Bouw een expressievoorwaarde om het einde van een incident aan te geven</h2></div>
+        <div><h2>Bouw een expressievoorwaarde om het einde van een incident te impliceren (optioneel)</h2></div>
         <hr/>
         <div>
             <p>Voeg optioneel een voorwaarde toe met behulp van de expressiebouwer om het einde van een incident te bepalen. Als de eindvoorwaarde die u opgeeft waar is, is het object niet langer een incident. Als u geen eindvoorwaarde opgeeft, eindigt een incident als de startvoorwaarde niet langer geldt.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Selecteer hoe u de resultaten wilt weergeven</h2></div>
+        <div><h2>Laat zien</h2></div>
         <hr/>
         <div>
             <p>Alle uitvoermethoden voegen velden toe aan de originele objecten. Er zijn twee manieren om te bepalen welke objecten worden geretourneerd:
                 <ul>
-                    <li> <b>Alleen incidenten retourneren</b>-Deze methode retourneert alleen objecten die incidenten zijn. Objecten die geen incidenten blijken te zijn, worden niet geretourneerd.
+                    <li> <b>Alle objecten</b>&mdash;Dit is standaard. Alle objecten in de invoer worden geretourneerd.
                     </li>
-                    <li> <b>Alle objecten retourneren</b>-Dit is standaard. Alle objecten in de invoer worden geretourneerd.
+                    <li> <b>Alleen incidenten</b>&mdash;Deze methode retourneert alleen objecten die incidenten zijn. Objecten die geen incidenten blijken te zijn, worden niet geretourneerd.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyseer gegevens met tijdsintervallen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Geef aan of u incidenten wilt detecteren met tijdsintervallen die uw invoerobjecten segmenteren voor analyse. Als u tijdsintervallen gebruikt, moet u het tijdsinterval dat u wilt gebruiken instellen en optioneel de referentietijd instellen. Als u geen referentietijd instelt, wordt 1 januari 1970 gebruikt. 
+            </p>
+            <p>Als u bijvoorbeeld de tijdgrens instelt als 1 dag, beginnend om 9:00 op 1 januari 1990, dan wordt elke track afgekapt om 9.00 uur voor elke dag en geanalyseerd binnen dat segment. 
+            </p>
+            <p>Het gebruik van tijdsintervallen is een snelle manier om de rekentijd te versnellen, omdat het snel kleinere tracks voor analyse cre&euml;ert. Als splitsen met een terugkerend tijdsinterval zinvol is voor uw analyse, is het aan te raden voor de verwerking van big data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> De naam van de laag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store,  schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
-            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
             </p>
         </div>
     </div>

@@ -44,7 +44,7 @@
         <h2>Rekonstruér spor</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstru&eacute;r spor"></h2>
         <hr/>
-    <p>Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag best&aring;ende af enten punkt- eller omr&aring;de-objekter, der repr&aelig;senterer et  <code>&oslash;jeblik</code> i tiden.   Det bestemmer f&oslash;rst, hvilke objekter der tilh&oslash;rer et spor ved hj&aelig;lp af en identifikator. Ved at benytte tid i forhold til hver position arrangeres sporene i r&aelig;kkef&oslash;lge og transformeres til en linje eller et omr&aring;de, der repr&aelig;senterer bev&aelig;gelsen over tid. Input kan evt. placeres i en buffer, der udg&oslash;res af et felt, som vil oprette et omr&aring;de ved hver position. Disse bufferpunkter, eller input- omr&aring;der, forbindes derefter i r&aelig;kkef&oslash;lge for at oprette et spor som et omr&aring;de, hvor bredden repr&aelig;senterer attributten for interesse. De resulterende spor har en start- og en sluttid, som i tidssammenh&aelig;ng repr&aelig;senterer det f&oslash;rste og sidste spor i et givent spor. N&aring;r sporene oprettes, beregnes der statistik vedr&oslash;rende inputobjekterne, og de statistiske data knyttes til outputsporet. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af punkterne i omr&aring;det, men der kan ogs&aring; beregnes andre statistiske data.
+    <p> Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag best&aring;ende af enten punkt- eller omr&aring;de-objekter, der repr&aelig;senterer et <code>&oslash;jeblik</code> i tiden. Det bestemmer f&oslash;rst, hvilke objekter der tilh&oslash;rer et spor ved hj&aelig;lp af en identifikator. Ved at benytte tid i forhold til hver position arrangeres sporene i r&aelig;kkef&oslash;lge og transformeres til en linje eller et omr&aring;de, der repr&aelig;senterer bev&aelig;gelsen over tid. Input kan evt. placeres i en buffer, der udg&oslash;res af et felt, som vil oprette et omr&aring;de ved hver position. Disse bufferpunkter, eller input- omr&aring;der, forbindes derefter i r&aelig;kkef&oslash;lge for at oprette et spor som et omr&aring;de, hvor bredden repr&aelig;senterer attributten for interesse. De resulterende spor har en start- og en sluttid, som i tidssammenh&aelig;ng repr&aelig;senterer det f&oslash;rste og sidste spor i et givent spor. N&aring;r sporene oprettes, beregnes der statistik vedr&oslash;rende inputobjekterne, og de statistiske data knyttes til outputsporet. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af punkterne i omr&aring;det, men der kan ogs&aring; beregnes andre statistiske data.
     </p>
     <p>Objekter i tidsafh&aelig;ngige lag kan vises p&aring; en af f&oslash;lgende to m&aring;der:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Punkt- eller omr&aring;de-lag, der rekonstrueres til spor. Inputlaget skal v&aelig;re tidsaktiveret med objekter, der repr&aelig;senterer et &oslash;jeblik i tiden. Laget skal v&aelig;re placeret i et projiceret koordinatsystem, eller den spatiale reference til behandling skal v&aelig;re indstillet til et projiceret koordinatsystem ved hj&aelig;lp af  <b>Analysemilj&oslash;erne</b>, hvis der anvendes en buffer.
             </p>
-            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Opdelte spor (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan opdele spor ved hj&aelig;lp af tre forskellige metoder. Du kan bruge en kombination af ingen, alle eller nogle af opdelingsmetoderne. 
+            </p>
+            <p>Opdeling kan udf&oslash;res p&aring; f&oslash;lgende m&aring;der:
+                <ul>
+                    <li> <b>Baseret p&aring; en afstand mellem inputs</b> - Hvis inputpunkter eller -omr&aring;der har en st&oslash;rre afstand mellem sig end den angivne afstand, vil de blive opdelt i forskellige spor. Hvis du f.eks. har angivet en afstand p&aring; 10 kilometer, bliver sekventielle punkter, som er st&oslash;rre end 10 kilometer, separate spor.
+                    </li>
+                    <li> <b>Baseret p&aring; tid mellem inputs</b> - Hvis inputpunkter eller -omr&aring;der har en st&oslash;rre varighed mellem sig end tidsintervallet, bliver de opdelt i forskellige spor. Hvis du f.eks. har punktobjekter, der repr&aelig;senterer flyvninger, hvor sporingsfeltet udg&oslash;r flyets ID. Dette fly kunne foretage adskillige flyvninger, som alle ville v&aelig;re repr&aelig;senteret af et enkelt spor.  Hvis du vidste, at der var en pause p&aring; 1 time mellem hver flyvning, kunne du benytte <code>1 time</code> som din sporopdeling, hvorefter hver flyvning ville blive opdelt og derved f&aring; sit eget spor.
+                    </li>
+                    <li> <b>Ved definerede tidsintervaller</b> - Opdeling med regelm&aelig;ssige intervaller, angivet ved et tidsinterval og et referencetidspunkt. Hvis du ikke angiver et referencetidspunkt, benyttes 1. januar 1970. Hvis du f.eks. har angivet 1 &aring;r med referencetidspunktet 2. februar 1990 kl. 10:00, deler du sporene ved 2. februar 1990 kl. 10:00, 2. februar 1991 og forts&aelig;tter med intervaller p&aring; et &aring;r.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Hvis du angiver flere opdelingmuligheder, opdeles sporene, n&aring;r en eller flere betingelser er opfyldt. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Vælg en afstand, som spor skal opdeles efter (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p> Den afstand, der benyttes til at opdele spor. Hvis inputpunkter eller -omr&aring;der har st&oslash;rre afstand mellem sig end angivet af afstandsopdelingen, vil de blive opdelt i forskellige spor.
+            <p>Den afstand, der benyttes til at opdele spor. Hvis inputpunkter eller -omr&aring;der har en st&oslash;rre afstand mellem sig end angivet af afstandsopdelingen, vil de blive opdelt i forskellige spor.
             </p>
             <p>Hvis du angiver en tidsopdeling og en afstandsopdeling, opdeles sporene, n&aring;r den ene eller begge betingelser er opfyldt. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Vælg et ArcGIS-datalager, som resultaterne kan gemmes i</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytic-resultater lagres i et ArcGIS-datalager og vises som et vektorlag i  Portal for ArcGIS. I de fleste tilf&aelig;lde b&oslash;r resultaterne blive lagret i et spatiotemporalt datalager, hvilket ogs&aring; er standarden. I nogle tilf&aelig;lde er det at lagre resultaterne i et relationsdatalager en god mulighed. Her er &aring;rsagerne til, at du m&aring;ske &oslash;nsker at lagre resultaterne i et relationsdatalager: 
+            <p>GeoAnalytic-resultater lagres i et datalager og vises som et vektorlag i  Portal for ArcGIS. I de fleste tilf&aelig;lde b&oslash;r resultaterne blive lagret i et spatiotemporalt datalager, hvilket ogs&aring; er standarden. I nogle tilf&aelig;lde er det at lagre resultaterne i et relationsdatalager en god mulighed. Her er &aring;rsagerne til, at du m&aring;ske &oslash;nsker at lagre resultaterne i et relationsdatalager: 
                 <ul>
                     <li>Du kan  bruge resultaterne i portalen-til-portalsamarbejde.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Navnet p&aring; det lag, som oprettes under <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            <p> Navnet p&aring; det lag, som oprettes. Hvis du skriver til et ArcGIS Data Store, bliver  dine resultater gemt i  <b>Mit indhold</b> og f&oslash;jet til kortet. Hvis du skriver til en big data-fildeling, bliver dine resultater gemt i big data-fildelingen og f&oslash;jet til dens manifest. De bliver ikke f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
             </p>
-            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            <p>N&aring;r du skriver til   ArcGIS Data Store  (relationelt eller spatiotemporalt big data-lager) ved hj&aelig;lp af rullelisten  <b>Gem resultat i </b>, kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet gemmes.
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor. Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari web del  Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b> i <b>Administra les dades</b>.
+        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor. Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari web del  Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Utilitza la proximitat</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b>, <b>Administra les dades</b> i <b>Aprenentatge profund</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Aplica la plantilla de funció de ràster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplica la plantilla de funci&oacute; de r&agrave;ster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Creeu un nou dataset d'entitats a partir d'un dataset r&agrave;ster existent.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Aprenentatge profund del conjunt d'eines</h2>
+        <hr/>
+        <p>Aquestes eines 	s'utilitzen per detectar entitats espec&iacute;fiques en una imatge o per classificar els p&iacute;xels en un dataset r&agrave;ster. L'aprenentatge profund &eacute;s un tipus de m&egrave;tode d'aprenentatge autom&agrave;tic d'intel&middot;lig&egrave;ncia artificial que detecta entitats a les imatges mitjan&ccedil;ant diverses capes de xarxes neuronals, on cada capa &eacute;s capa&ccedil; d'extreure una o diverses entitats &uacute;niques de la imatge. Aquestes eines utilitzen els models que s'han format per detectar entitats espec&iacute;fiques als marcs d'aprenentatge profund de tercers, com ara el TensorFlow, el CNTK i el Keras, i proporcionar entitats o mapes de classes.
+            <ul>
+                <li> <b>Classifica els p&iacute;xels amb Aprenentatge profund</b> produeix un r&agrave;ster classificat mitjan&ccedil;ant un model d'aprenentatge profund format.
+                </li>
+                <li> <b>Detecta objectes amb Aprenentatge profund</b> produeix una classe d'entitat que cont&eacute; objectes que cerca en un r&agrave;ster d'entrada mitjan&ccedil;ant un model d'aprenentatge profund format.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classifica els píxels amb Aprenentatge profund</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classifica els p&iacute;xels amb Aprenentatge profund">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir un r&agrave;ster classificat, on cada p&iacute;xel v&agrave;lid t&eacute; una etiqueta de classe assignada.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detecta objectes amb Aprenentatge profund</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detecta objectes amb Aprenentatge profund">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir una classe d'entitat que contingui els objectes que troba. Les entitats poden ser quadres de delimitaci&oacute; o pol&iacute;gons al voltant dels objectes trobats, o b&eacute; punts als centres dels objectes.
             </p>
             <br/>
         </div>

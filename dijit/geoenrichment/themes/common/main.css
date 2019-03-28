@@ -3,7 +3,6 @@
 @import url(BaseSelectComparison.css);
 @import url(BaseWidget.css);
 @import url(BufferOptions.css);
-@import url(DataBrowser.css);
 @import url(Favorites.css);
 @import url(Grid.css);
 @import url(InfographicsCarousel.css);
@@ -13,8 +12,8 @@
 @import url(Pagination.css);
 @import url(RelatedVariables.css);
 @import url(SearchTextBox.css);
-@import url(ShoppingCart.css);
 @import url(Tapestry.css);
+@import url(Prizm5.css);
 @import url(TriStateItem.css);
 @import url(VariableInfo.css);
 @import url(VariableToggle.css);
@@ -28,3 +27,4 @@
 @import url(../light/OneVar.css);
 @import url(../light/RelatedVariables.css);
 @import url(../light/Tapestry.css);
+@import url(../light/Prizm5.css);

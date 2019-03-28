@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>गहन शिक्षण का उपयोग कर पिक्सेल वर्गीकृत करें</h2><p/>
+        <h2><img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" alt="गहन शिक्षण का उपयोग कर पिक्सेल वर्गीकृत करें"></h2>
+        <hr/>
+    <p>यह टूल, आउटपुट रास्टर पर, वर्गीकृत रास्टर बनाने के लिए प्रशिक्षित गहन शिक्षण मॉडल संचालित करता है और प्रत्येक मान्य पिक्सेल का एक असाइन किया गया वर्ग लेबल होता है।
+    </p>
+    <p>अगर  <b>मौजूदा मानचित्र सीमा का उपयोग करें</b> चेक किया गया है, तो केवल उसी रास्टर क्षेत्र का विश्लेषण किया जाएगा, जो कि मौजूदा मानचित्र सीमा में दृश्यमान है। अगर इसे चेक नहीं किया जाता है, तो संपूर्ण रास्टर का विश्लेषण किया जाएगा, भले ही वह मौजूदा मानचित्र सीमा के बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>पिक्सेल वर्गीकृत करने के लिए प्रयुक्त की गई छवि चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>वर्गीकृत किया जाने वाला इनपुट चित्र।
+            </p>
+            <p>यह कोई चित्र सेवा, URL, रास्टर लेयर, या कोई चित्र सेवा लेयर हो सकती है।
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>पिक्सेल वर्गीकृत करने के लिए उपयोग किए गए गहन शिक्षण मॉडल का चयन करें</h2></div>
+        <hr/>
+        <div>
+            <p>इनपुट गहन शिक्षण पैकेज ( <code>.dlpk</code>) आइटम।
+            </p>
+            <p>गहन शिक्षण पैकेज Esri मॉडल डेफ़िनिशन JSON फ़ाइल ( <code>.emd</code>), गहन शिक्षण बाइनरी मॉडल फ़ाइल और वैकल्पिक रूप से प्रयुक्त किए जाने वाले Python रास्टर फ़ंक्शन से मिलकर बना है।
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>गहन शिक्षण मॉडल तर्क निर्दिष्ट करें</h2></div>
+        <hr/>
+        <div>
+            <p>फ़ंक्शन तर्क Python रास्टर फ़ंक्शन में निर्धारित हैं जिनका संदर्भ इनपुट मॉडल द्वारा दिया गया है। यही वह स्थान है जहां आप अनुमानों और परिशोधन के लिए आपकी सूची के अतिरिक्त गहन शिक्षण पैरामीटर और तर्क जैसे संवेदनशीलता का समायोजन करने के लिए विश्वसनीयता थ्रेशोल्ड को सूचीबद्ध करते हैं।
+            </p>
+            <p>तर्कों के नाम, रास्टर विश्लेषण सर्वर पर टूल द्वारा Python मॉड्यूल से पढ़कर उपलब्ध किए जाते हैं।
+            </p>  
+            <p> 
+            </p>
+        </div>
+    </div>
+    <div id="outputClassifiedRaster">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से ही मौजूद है, तो आपको दूसरा नाम प्रदान करने के लिए संकेत किया जाएगा।
+            </p>
+            <p>आप  <b>मेरी सामग्री</b> में फ़ोल्डर का नाम निर्दिष्ट कर सकते हैं जहां परिणामों को <b>इसमें परिणाम सहेजें</b> ड्रॉप-डाउन बॉक्स का उपयोग करके सहेजा जाएगा।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab  ArcGIS Image Serveriga anal&uuml;&uuml;sida suuri rasterandmestikke. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid. Hetkel  Portal for ArcGISis kasutamiseks saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmeid</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b> ja <b>Halda andmeid</b>.
+        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab  ArcGIS Image Serveriga anal&uuml;&uuml;sida suuri rasterandmestikke. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid. Hetkel portaalis  Portal for ArcGIS kasutamiseks saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmed</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Kasuta l&auml;hedust</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b>, <b>Halda andmeid </b> ja <b>S&uuml;va&otilde;pe</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Rakenda rasterfunktsiooni mall</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Rakenda rasterfunktsiooni mall">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Loob olemasoleva rasterkihi sisuandmetest uue vektorkihi.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Tööriistakomplekti süvaõpe</h2>
+        <hr/>
+        <p>Neid t&ouml;&ouml;riistu kasutatakse pildi spetsiaalsete objektide tuvastamiseks v&otilde;i pikslite klassifitseerimiseks rastri andmestikus. S&uuml;va&otilde;pe on tehisintellektiga masina &otilde;petusmeetodi t&uuml;&uuml;p, mis tuvastab pildiandmete objekte, kasutades neurov&otilde;rkude mitut kihti, kus iga kiht on v&otilde;imeline v&auml;ljendama pildi &uuml;ht v&otilde;i mitut unikaalset objekti. Need t&ouml;&ouml;riistad kasutavad mudeleid, mida on &otilde;petatud tuvastama spetsiifilisi objekte muude v&auml;ljat&ouml;&ouml;tajate s&uuml;va&otilde;ppe raamistikes &mdash; n&auml;iteks TensorFlow&rsquo;s, CNTK-s ja Keras&rsquo;is &mdash; ning v&auml;ljundobjektidel v&otilde;i klassikaartidel.
+            <ul>
+                <li> <b>Pikslite klassifitseerimine s&uuml;va&otilde;ppe teel</b> valmistab klassifitseeritud rastri, kasutades &otilde;petatud s&uuml;va&otilde;ppemudelit.
+                </li>
+                <li> <b>Objektide tuvastamine s&uuml;va&otilde;ppe teel</b> valmistab objektiklassi, mis sisaldab objekte, mida ta leiab sisendrastris, kasutades &otilde;petatud s&uuml;va&otilde;ppemudelit.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pikslite klassifitseerimine süvaõppe teel</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Pikslite klassifitseerimine s&uuml;va&otilde;ppe teel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&auml;itab &otilde;petatud s&uuml;va&otilde;petusmudelit sisendrastril, et luua klassifitseeritud raster, kus igal pikslile on m&auml;&auml;ratud klassisilt.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objektide tuvastamine süvaõppe teel</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Objektide tuvastamine s&uuml;va&otilde;ppe teel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&auml;itab &otilde;petatud s&uuml;va&otilde;petusmudelit sisendrastril, et luua objektiklass, mis sisaldab leitud objekte. Objektid v&otilde;ivad olla leitud objektide &uuml;mber paiknevad piiratud alad v&otilde;i hulknurgad v&otilde;i objektide keskkohas paiknevad punktid.
             </p>
             <br/>
         </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Raster analysis allows you to perform analysis of large raster datasets using the  ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server. The toolsets currently available through the  Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, and <b>Manage Data</b>.
+        <p>Raster analysis allows you to perform analysis of large raster datasets using the  ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server. The toolsets currently available through the  Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Use Prxoimity</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, <b>Manage Data</b>, and <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -220,6 +220,7 @@
                 <tbody><tr>
                     <td><h2>Apply Raster Function Template</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Apply Raster Function Template">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,6 +413,49 @@
             </table>
 <hr/>
             <p>Create a new feature dataset from an existing raster dataset.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>Toolset Deep Learning</h2>
+        <hr/>
+        <p>These tools 	are used to detect specific features in an image or to classify pixels in a raster dataset. Deep learning is a type of artificial intelligence machine learning   method that detects features in imagery using multiple layers in neural networks where each layer is capable of extracting one or more unique features in the image. These  tools consume the  models that have been trained to detect specific features in third-party deep learning frameworks&mdash;such as TensorFlow, CNTK and Keras&mdash;and output features or class maps.
+            <ul>
+                <li> <b>Classify Pixels Using Deep Learning</b> produces a  classified raster using a trained deep learning model.
+                </li>
+                <li> <b>Detect Objects Using Deep Learning</b> produces a feature class containing objects it finds in an input raster using a trained deep learning model.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classify Pixels Using Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classify Pixels Using Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detect Objects Using Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detect Objects Using Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

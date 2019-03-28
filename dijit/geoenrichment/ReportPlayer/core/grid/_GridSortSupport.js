@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","./coreUtils/sorting/GridSortUtil"],function(n,t){return n(null,{canSortCellFunc:null,getSorting:function(){return t.getSorting(this)},setSorting:function(n,o){t.setSorting(this,n,o)},getSortRowIndexMapping:function(){return t.getSortRowIndexMapping(this)},onSortingChanged:function(n){}})});

@@ -44,7 +44,7 @@
         <h2>Reconstruir Caminhos</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir Caminhos"></h2>
         <hr/>
-    <p>Esta ferramenta funciona com uma camada de fei&ccedil;&otilde;es de &aacute;rea ou ponto habilitada ao tempo que representa um  <code>momento</code> no tempo. Ela primeiro determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um identificador. Com a utiliza&ccedil;&atilde;o do tempo em cada localiza&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e transformados em uma linha ou &aacute;rea representando o caminho de movimento com o passar do tempo. Opcionalmente, a entrada pode ter o buffer gerado por um campo, que criar&aacute; uma  &aacute;rea em cada localiza&ccedil;&atilde;o. Estes pontos com buffer  ou &aacute;reas de entrada  , s&atilde;o ent&atilde;o ligadas consecutivamente para criar um caminho como uma &aacute;rea onde a largura &eacute; representante do atributo de interesse. Os caminhos resultantes t&ecirc;m um tempo inicial e final, que representa a primeira e &uacute;ltima fei&ccedil;&atilde;o temporariamente em um caminho fornecido. Quando os caminhos s&atilde;o criados, as estat&iacute;sticas sobre as fei&ccedil;&otilde;es de entrada s&atilde;o calculadas e atribu&iacute;das para o caminho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de pontos dentro da &aacute;rea, mas outras estat&iacute;sticas podem ser calculadas tamb&eacute;m.
+    <p> Esta ferramenta funciona com uma camada habilitada ao tempo de fei&ccedil;&otilde;es de &aacute;rea ou ponto que representa um <code>instante</code> no tempo.   Ela primeiro determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um identificador. Com a utiliza&ccedil;&atilde;o do tempo em cada localiza&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e transformados em uma linha ou &aacute;rea representando o caminho de movimento com o passar do tempo. Opcionalmente, a entrada pode ser armazenada em buffer por um campo, o que criar&aacute; uma &aacute;rea em cada local. Estes pontos com buffer  ou &aacute;reas de entrada, s&atilde;o ent&atilde;o ligados consecutivamente para criar um caminho como uma &aacute;rea onde a largura &eacute; representante do atributo de interesse. Os caminhos resultantes t&ecirc;m um tempo inicial e final, que representa a primeira e &uacute;ltima fei&ccedil;&atilde;o temporariamente em um caminho fornecido. Quando os caminhos s&atilde;o criados, as estat&iacute;sticas sobre as fei&ccedil;&otilde;es de entrada s&atilde;o calculadas e atribu&iacute;das para o caminho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de pontos dentro da &aacute;rea, mas outras estat&iacute;sticas podem ser calculadas tamb&eacute;m.
     </p>
     <p>Fei&ccedil;&otilde;es nas camads habilitadas ao tempo podem ser representadas em uma de duas maneiras:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Por exemplo, suponha que voc&ecirc; tenha medi&ccedil;&otilde;es de GPS dos furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS registra o nome do furac&atilde;o, local, tempo de registro e velocidade do vento. Com estas informa&ccedil;&otilde;es, voc&ecirc; pode criar caminhos para cada furac&atilde;o utilizando o nome da identifica&ccedil;&atilde;o do caminho e caminhos para cada furac&atilde;o que ser&aacute; gerado. Adicionalmente, voc&ecirc; pode calcular estat&iacute;stica como a velocidade do vento m&eacute;dia, m&aacute;xima e m&iacute;nimo de cada furac&atilde;o, como tamb&eacute;m a contagem das medi&ccedil;&otilde;es dentro de cada caminho.
     </p>
-    <p>Com a utiliza&ccedil;&atilde;o do mesmo exemplo, voc&ecirc; pode criar o buffer dos seus caminhos pela velocidade do vento. Isto ir&aacute; criar um buffer de cada medi&ccedil;&atilde;o pelo campo da velocidade do vento neste local e ligar as &aacute;reas com buffer, criando uma  &aacute;rea representativa do caminho, como tamb&eacute;m as altera&ccedil;&otilde;es na velocidade do vento quando os furac&otilde;es progredirem.   
+    <p>Com a utiliza&ccedil;&atilde;o do mesmo exemplo, voc&ecirc; pode criar o buffer dos seus caminhos pela velocidade do vento. Isto ir&aacute; criar um buffer de cada medi&ccedil;&atilde;o pelo campo da velocidade do vento neste local e ligar as &aacute;reas com buffer, criando uma  &aacute;rea representativa do caminho, como tamb&eacute;m, as altera&ccedil;&otilde;es na velocidade do vento quando os furac&otilde;es progredirem.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,9 +65,9 @@
         <div><h2>Escolher feições para reconstruir caminhos</h2></div>
         <hr/>
         <div>
-            <p>A camada de ponto ou de  &aacute;rea que ser&aacute; reconstru&iacute;da nos caminhos. A camada de entrada deve ser habilitada ao tempo com fei&ccedil;&otilde;es que representam um instante no tempo. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
+            <p>A camada de ponto ou de &aacute;rea que ser&aacute; reconstru&iacute;da nos caminhos. A camada de entrada deve ser habilitada ao tempo com fei&ccedil;&otilde;es que representam um instante no tempo. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -97,7 +97,7 @@
             </p>
             <p>Uma equa&ccedil;&atilde;o como  <code>$feature.windspeed * 1000</code> aplicaria um buffer de 1.000 multiplicado pelo campo <i>windspeed</i>. Voc&ecirc; pode utilizar mais de um campo no calculador de buffer.
             </p>
-            <p> Voc&ecirc; tamb&eacute;m pode especificar uma express&atilde;o de caminho ciente. Por exemplo, voc&ecirc; pode calcular a soma do valor do campo <i>windspeed</i> da fei&ccedil;&atilde;o atual e anterior, duas fei&ccedil;&otilde;es com uma equa&ccedil;&atilde;o como <code>$track.field(windspeed).history(-3)</code>. Em cada localiza&ccedil;&atilde;o, a soma da atual <i>windspeed</i>, e anterior, duas medidas seriam calculadas e gerados o buffer.
+            <p> Voc&ecirc; tamb&eacute;m pode especificar uma express&atilde;o com informa&ccedil;&otilde;es do caminho. Por exemplo, voc&ecirc; pode calcular a soma do valor do campo <i>windspeed</i> da fei&ccedil;&atilde;o atual e anterior, duas fei&ccedil;&otilde;es com uma equa&ccedil;&atilde;o como <code>$track.field(windspeed).history(-3)</code>. Em cada localiza&ccedil;&atilde;o, a soma da atual <i>windspeed</i>, e anterior, duas medidas seriam calculadas e gerados o buffer.
             </p>
         </div>
     </div>
@@ -105,7 +105,7 @@
         <div><h2>Selecionar um tempo para dividir caminhos (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Tempo utilzado para dividir caminhos. Se pontos ou &aacute;reas de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
+            <p>Tempo utilizado para dividir caminhos. Se pontos ou &aacute;reas de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que a divis&atilde;o de tempo, eles ser&atilde;o divididos em caminhos diferentes.
             </p>
             <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
             </p>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Dividir por caminhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Voc&ecirc; pode dividir os caminhos utilizando tr&ecirc;s m&eacute;todos diferentes. Voc&ecirc; pode utilizar uma combina&ccedil;&atilde;o de nenhum, todos ou alguns dos m&eacute;todos de divis&atilde;o. 
+            </p>
+            <p>As divis&otilde;es podem ser conclu&iacute;das das seguintes maneiras:
+                <ul>
+                    <li> <b>Baseado em uma dist&acirc;ncia entre entradas</b>&mdash;Se pontos ou &aacute;reas de entrada tiverem uma dist&acirc;ncia mais longa entre eles do que a dist&acirc;ncia especificada, eles ser&atilde;o divididos em caminhos diferentes. Por exemplo, se voc&ecirc; especificou uma dist&acirc;ncia de 10 quil&ocirc;metros, pontos sequenciais maiores que 10 quil&ocirc;metros ser&atilde;o caminhos separados.
+                    </li>
+                    <li> <b>Baseado em um tempo entre entradas</b>&mdash;Se pontos ou &aacute;reas de entrada tiverem uma dura&ccedil;&atilde;o maior entre eles do que a divis&atilde;o de tempo, eles ser&atilde;o divididos em caminhos diferentes. Por exemplo, se tivesse fei&ccedil;&otilde;es de ponto representando voos de aeronaves, onde o campo de pista era o ID da aeronave. Esta aeronave poderia fazer viagens m&uacute;ltiplas e seria representada como um caminho.  Se voc&ecirc; soubesse que h&aacute; uma pausa de 1 hora entre os voos, voc&ecirc; poderia utilizar <code>1 hora</code> j&aacute; que seu caminho divide e cada voo seria dividido em seu pr&oacute;prio caminho.
+                    </li>
+                    <li> <b>Em intervalos de tempo definidos</b>&mdash;Dividir utilizando intervalos regulares, especificados por um intervalo de tempo e um tempo de refer&ecirc;ncia. Se voc&ecirc; n&atilde;o especificar um hor&aacute;rio de refer&ecirc;ncia, 1&ordm; de Janeiro de 1970 ser&aacute; utilizado. Por exemplo, se voc&ecirc; especificou 1 ano com um hor&aacute;rio de refer&ecirc;ncia de 2 de Fevereiro de 1990 &agrave;s 10:00, voc&ecirc; dividiria os caminhos em 2 de Fevereiro de 1990 &agrave;s 10:00, 2 de Fevereiro de 1991 &agrave;s 10:00 e continuaria em intervalos de ano.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Se voc&ecirc; especificar v&aacute;rias op&ccedil;&otilde;es de divis&atilde;o, os caminhos ser&atilde;o divididos quando uma ou mais condi&ccedil;&otilde;es forem atendidas. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Selecionar uma distância para dividir caminhos (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Dist&acirc;ncia utilizada para dividir caminhos. Se pontos ou &aacute;reas de entrada tiverem uma dist&acirc;ncia mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
+            <p>Dist&acirc;ncia utilizada para dividir caminhos. Se os pontos ou &aacute;reas de entrada tiverem uma dist&acirc;ncia maior entre eles do que a divis&atilde;o de dist&acirc;ncia, eles ser&atilde;o divididos em caminhos diferentes.
             </p>
             <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
             </p>
@@ -165,7 +186,7 @@ Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 
         <div><h2>Escolher um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos, salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em to um armazenamento de dados relacional: 
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados em um armazenamento de dados e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos, salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em  um armazenamento de dados relacional: 
                 <ul>
                     <li>Voc&ecirc; pode  utilizar os resultados no portal-para-colabora&ccedil;&atilde;o do portal.
                     </li>
@@ -182,9 +203,9 @@ Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> O nome da camada que ser&aacute; criada.  Se voc&ecirc; estiver gravando em um ArcGIS Data Store, seus resultados ser&atilde;o salvos em  <b>Meu Conte&uacute;do</b> e adicionados no mapa. Se voc&ecirc; estiver gravando em um compartilhamento do arquivo de grandes dados, seus resultados ser&atilde;o armazenados compartilhamento do arquivo de grandes dados  e adicionados em seu   manifesto. N&atilde;o ser&atilde;o adicionados no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            <p>Ao gravar no  ArcGIS Data Store  (armazenamento de grandes dados de espa&ccedil;o-tempo ou relacional) utilizando a caixa suspensa  <b>Salvar resultados em</b> , voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>
         </div>
     </div>

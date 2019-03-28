@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/on","dojo/sniff","esri/dijit/geoenrichment/utils/DeviceUtil"],function(e,o,i){var n={};return n.onLayerMouseOver=function(n,u,r){var t=i.isMobileDevice(),s=t?n:o("touch")?u:n,v=t?"mouse-over":o("touch")?"mouse-down, mouse-move":"mouse-move";return e(s,v,r)},n});

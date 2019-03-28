@@ -47,7 +47,7 @@
     <p>The  Find Point Clusters tool 
 finds clusters of point features within surrounding noise based on their spatial distribution.
     </p>
-    <p>A nongovernmental organization is  studying a particular pest-borne
+    <p>For example, a nongovernmental organization is  studying a particular pest-borne
 disease. It has a point dataset representing households in a
 study area, some of which are infested, and some of which are not. By
 using the  Find Point Clusters tool, an analyst can determine clusters of
@@ -62,7 +62,7 @@ extermination of pests.
         <div>
             <p>The point layer that clusters will be found in.  Layers must be in a projected spatial reference or have a processing spatial reference set to a projected coordinate system using  <b>Analysis Environments</b>.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -79,7 +79,7 @@ well to define all clusters that may be present. Defined distance (DBSCAN) finds
 clusters that have similar densities.
             </p>
             <p>Self-adjusting (HDBSCAN) does not require a search range to be specified but it is a more time consuming method. Self-adjusting (HDBSCAN) finds
-clusters of points similar to Defined distance (DBSCAN) but uses varying search ranges
+clusters of points similar to defined distance (DBSCAN) but uses varying search ranges
 allowing for clusters with varying densities.
 
             </p>
@@ -89,7 +89,16 @@ allowing for clusters with varying densities.
         <div><h2>Minimum number of points to be considered a cluster</h2></div>
         <hr/>
         <div>
-            <p>The minimum number of features to seed a cluster.
+            <p>This parameter is used differently depending on the clustering method chosen:
+            </p>
+            <p>
+                <ul>
+                    <li>Defined distance (DBSCAN)&mdash;specifies the number of features that must be found within a certain distance  of a point for that point to start to form  a cluster. The distance is defined using the  <b>Limit the search range to</b> parameter.
+                    </li>
+                    <li>Self-adjusting (HDBSCAN)&mdash;specifies the number of features neighboring each point (including the point itself) that will be considered when estimating density. This number is also the minimum cluster size allowed when extracting clusters.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -97,7 +106,7 @@ allowing for clusters with varying densities.
         <div><h2>Limit the search range to</h2></div>
         <hr/>
         <div>
-            <p>The maximum distance to consider features to be part of the same cluster.
+            <p>When using defined distance (DBSCAN), this parameter is the distance within which the  <b>Minimum number of points to be considered a cluster</b> must be found. This parameter is not used when self-adjusting (HDBSCAN) is chosen as the clustering method to use.
             </p>
         </div>
     </div>
@@ -105,11 +114,11 @@ allowing for clusters with varying densities.
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created in <b>My
-Content</b> and added to the map. The default name is based on the
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be
 saved.
             </p>

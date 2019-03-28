@@ -1,7 +1,10 @@
+.Infographics_Tapestry table {
+    font-size: 11px;
+}
 
 .Tapestry_Main_Table {
     margin-top: 12px;
-    background: #4c4c4c;
+    background-color: #4c4c4c;
     border-spacing: 0;
 }
 
@@ -17,13 +20,13 @@
     font-weight: bold;
 }
 
-.dj_rtl .Tapestry_Main_Pct{
+.dj_rtl .Tapestry_Main_Pct {
     padding: 0 15px 0 0;
     border-right: 1px solid #6c6d70;
     border-left: none;
 }
 
-.Tapestry_Main_PctLabel{
+.Tapestry_Main_Pct_Label {
     color: #A6A8AB;
     font-size: 65%;
     vertical-align: top;
@@ -39,9 +42,9 @@
     font-weight: bold;
 }
 
-    .dj_rtl .Tapestry_Main_Name{
-        padding: 0 8px 0 0;
-    }
+.dj_rtl .Tapestry_Main_Name {
+    padding: 0 8px 0 0;
+}
 
 .Tapestry_Main_Value {
     vertical-align: top;
@@ -53,17 +56,17 @@
 }
 
 .Tapestry_Main_Arrow div {
-    background: url("images/upDown.png") no-repeat center;
+    background: url("./images/upDown.svg") no-repeat center;
     background-position: 7px 0;
     width: 32px;
     height: 32px;
-    margin-right: 5px;
     margin: 15px 5px 0 0;
 }
 
-.dj_rtl .Tapestry_Main_Arrow div{
+.dj_rtl .Tapestry_Main_Arrow div {
     margin: 15px 0 0 5px;
 }
+
 .clicked .Tapestry_Main_Arrow div {
     background-position: -20px 0;
 }
@@ -73,27 +76,29 @@
     border-bottom: 2px solid #444444;
 }
 
-    .Tapestry_Main_Button.Tapestry_Details_Image{
+    .Tapestry_Main_Button.Tapestry_Details_Image {
         padding: 10px 0 10px 12px;
         text-align: left;
     }
 
-    .dj_rtl .Tapestry_Main_Button.Tapestry_Details_Image{
-        text-align: right;
-        padding: 10px 12px 10px 0;
-    }
+.dj_rtl .Tapestry_Main_Button.Tapestry_Details_Image {
+    text-align: right;
+    padding: 10px 12px 10px 0;
+}
 
-    .clicked .Tapestry_Main_Button{
-        border-bottom: none !important;
-    }
+.clicked .Tapestry_Main_Button {
+    border-bottom: none !important;
+}
 
-.Tapestry_LifeMode .LifeModeColor { color: #F7F8F8; }
+.Tapestry_LifeMode .LifeModeColor {
+    color: #F7F8F8;
+}
 
-.Tapestry_LifeMode:hover{
+.Tapestry_LifeMode:hover {
     background-color: #595959;
 }
 
-.Tapestry_LifeMode .Tapestry_Details_Image div:first-child{
+.Tapestry_LifeMode .Tapestry_Details_Image div:first-child {
     width: 55.55px;
     height: 55.55px;
 }
@@ -120,21 +125,7 @@
 .Tapestry_Details_Table {
     padding-bottom: 10px;
     width: 100%;
-    border-bottom: 2px solid #4c4c4c;
-}
-
-.Tapestry_Details_Title div,
-.Tapestry_Details_Title a {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.Tapestry_Details_Title a {
-    color: #fff;
-}
-
-.dj_rtl .Tapestry_Details_Title {
-    text-align: right;
+    border-bottom: 2px solid #444444;
 }
 
 .Tapestry_thumbnail_Code {
@@ -152,28 +143,25 @@
     color: #4c4c4c;
 }
 
-.dj_rtl .Tapestry_thumbnail_Code{
+.dj_rtl .Tapestry_thumbnail_Code {
     margin: 5px 55px 0 0;
 }
 
-.Tapestry_Details_Name.Wizard_Link {
-    display: inline-block;
-    margin: 0 0 0 10px;
-    background-image: url("images/acrobat.png");
+.Tapestry_Details_LinkIcon {
+    margin: 0 5px 0 10px;
+    background-image: url("./images/acrobat.svg");
     background-repeat: no-repeat;
-    padding-left: 20px;
-    color: #7FBBDF;
-    height: 20px;
-    line-height: 20px;
-    float: left;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
 }
 
-.dj_rtl .Tapestry_Details_Name.Wizard_Link {
-    margin: 0 10px 0 0;
-    padding-right: 20px;
-    padding-left: 0;
-    float: right;
-    background-position: 140px 0; 
+.dj_rtl .Tapestry_Details_LinkIcon {
+    margin: 0 10px 0 5px;
+}
+
+.Tapestry_Details_Link.Wizard_Link {
+    color: #7FBBDF;
 }
 
 .Tapestry_Details_FieldCell {
@@ -182,12 +170,12 @@
     vertical-align: bottom;
 }
 
-    .Tapestry_Details_FieldCell > div {
-        padding: 1px 5px;
-        border-left: 2px solid #A6A8AB;
-    }
+.Tapestry_Details_FieldCellContent {
+    padding: 1px 5px;
+    border-left: 2px solid #A6A8AB;
+}
 
-.dj_rtl .Tapestry_Details_FieldCell > div {
+.dj_rtl .Tapestry_Details_FieldCellContent {
     border-width: 0 2px 0 0;
 }
 
@@ -196,8 +184,13 @@
     margin: 2px 0;
 }
 
+.Tapestry_Details_SubLabel {
+    color: #A6A8AB;
+}
+
 .Tapestry_Details_Image {
     text-align: center;
+    color: #FFFFFF;
 }
 
     .Tapestry_Details_Image div:first-child {
@@ -213,75 +206,275 @@
         background-position: -85px 0;
     }
 
-    .Tapestry_Details_Image.code_01A div:first-child { background-image: url("images/tapestry/01A.png"); }
-    .Tapestry_Details_Image.code_01B div:first-child { background-image: url("images/tapestry/01B.png"); }
-    .Tapestry_Details_Image.code_01C div:first-child { background-image: url("images/tapestry/01C.png"); }
-    .Tapestry_Details_Image.code_01D div:first-child { background-image: url("images/tapestry/01D.png"); }
-    .Tapestry_Details_Image.code_01E div:first-child { background-image: url("images/tapestry/01E.png"); }
-    .Tapestry_Details_Image.code_02A div:first-child { background-image: url("images/tapestry/02A.png"); }
-    .Tapestry_Details_Image.code_02B div:first-child { background-image: url("images/tapestry/02B.png"); }
-    .Tapestry_Details_Image.code_02C div:first-child { background-image: url("images/tapestry/02C.png"); }
-    .Tapestry_Details_Image.code_02D div:first-child { background-image: url("images/tapestry/02D.png"); }
-    .Tapestry_Details_Image.code_03A div:first-child { background-image: url("images/tapestry/03A.png"); }
-    .Tapestry_Details_Image.code_03B div:first-child { background-image: url("images/tapestry/03B.png"); }
-    .Tapestry_Details_Image.code_03C div:first-child { background-image: url("images/tapestry/03C.png"); }
-    .Tapestry_Details_Image.code_04A div:first-child { background-image: url("images/tapestry/04A.png"); }
-    .Tapestry_Details_Image.code_04B div:first-child { background-image: url("images/tapestry/04B.png"); }
-    .Tapestry_Details_Image.code_04C div:first-child { background-image: url("images/tapestry/04C.png"); }
-    .Tapestry_Details_Image.code_05A div:first-child { background-image: url("images/tapestry/05A.png"); }
-    .Tapestry_Details_Image.code_05B div:first-child { background-image: url("images/tapestry/05B.png"); }
-    .Tapestry_Details_Image.code_05C div:first-child { background-image: url("images/tapestry/05C.png"); }
-    .Tapestry_Details_Image.code_05D div:first-child { background-image: url("images/tapestry/05D.png"); }
-    .Tapestry_Details_Image.code_05E div:first-child { background-image: url("images/tapestry/05E.png"); }
-    .Tapestry_Details_Image.code_06A div:first-child { background-image: url("images/tapestry/06A.png"); }
-    .Tapestry_Details_Image.code_06B div:first-child { background-image: url("images/tapestry/06B.png"); }
-    .Tapestry_Details_Image.code_06C div:first-child { background-image: url("images/tapestry/06C.png"); }
-    .Tapestry_Details_Image.code_06D div:first-child { background-image: url("images/tapestry/06D.png"); }
-    .Tapestry_Details_Image.code_06E div:first-child { background-image: url("images/tapestry/06E.png"); }
-    .Tapestry_Details_Image.code_06F div:first-child { background-image: url("images/tapestry/06F.png"); }
-    .Tapestry_Details_Image.code_07A div:first-child { background-image: url("images/tapestry/07A.png"); }
-    .Tapestry_Details_Image.code_07B div:first-child { background-image: url("images/tapestry/07B.png"); }
-    .Tapestry_Details_Image.code_07C div:first-child { background-image: url("images/tapestry/07C.png"); }
-    .Tapestry_Details_Image.code_07D div:first-child { background-image: url("images/tapestry/07D.png"); }
-    .Tapestry_Details_Image.code_07E div:first-child { background-image: url("images/tapestry/07E.png"); }
-    .Tapestry_Details_Image.code_07F div:first-child { background-image: url("images/tapestry/07F.png"); }
-    .Tapestry_Details_Image.code_08A div:first-child { background-image: url("images/tapestry/08A.png"); }
-    .Tapestry_Details_Image.code_08B div:first-child { background-image: url("images/tapestry/08B.png"); }
-    .Tapestry_Details_Image.code_08C div:first-child { background-image: url("images/tapestry/08C.png"); }
-    .Tapestry_Details_Image.code_08D div:first-child { background-image: url("images/tapestry/08D.png"); }
-    .Tapestry_Details_Image.code_08E div:first-child { background-image: url("images/tapestry/08E.png"); }
-    .Tapestry_Details_Image.code_08F div:first-child { background-image: url("images/tapestry/08F.png"); }
-    .Tapestry_Details_Image.code_08G div:first-child { background-image: url("images/tapestry/08G.png"); }
-    .Tapestry_Details_Image.code_09A div:first-child { background-image: url("images/tapestry/09A.png"); }
-    .Tapestry_Details_Image.code_09B div:first-child { background-image: url("images/tapestry/09B.png"); }
-    .Tapestry_Details_Image.code_09C div:first-child { background-image: url("images/tapestry/09C.png"); }
-    .Tapestry_Details_Image.code_09D div:first-child { background-image: url("images/tapestry/09D.png"); }
-    .Tapestry_Details_Image.code_09E div:first-child { background-image: url("images/tapestry/09E.png"); }
-    .Tapestry_Details_Image.code_09F div:first-child { background-image: url("images/tapestry/09F.png"); }
-    .Tapestry_Details_Image.code_10A div:first-child { background-image: url("images/tapestry/10A.png"); }
-    .Tapestry_Details_Image.code_10B div:first-child { background-image: url("images/tapestry/10B.png"); }
-    .Tapestry_Details_Image.code_10C div:first-child { background-image: url("images/tapestry/10C.png"); }
-    .Tapestry_Details_Image.code_10D div:first-child { background-image: url("images/tapestry/10D.png"); }
-    .Tapestry_Details_Image.code_10E div:first-child { background-image: url("images/tapestry/10E.png"); }
-    .Tapestry_Details_Image.code_11A div:first-child { background-image: url("images/tapestry/11A.png"); }
-    .Tapestry_Details_Image.code_11B div:first-child { background-image: url("images/tapestry/11B.png"); }
-    .Tapestry_Details_Image.code_11C div:first-child { background-image: url("images/tapestry/11C.png"); }
-    .Tapestry_Details_Image.code_11D div:first-child { background-image: url("images/tapestry/11D.png"); }
-    .Tapestry_Details_Image.code_11E div:first-child { background-image: url("images/tapestry/11E.png"); }
-    .Tapestry_Details_Image.code_12A div:first-child { background-image: url("images/tapestry/12A.png"); }
-    .Tapestry_Details_Image.code_12B div:first-child { background-image: url("images/tapestry/12B.png"); }
-    .Tapestry_Details_Image.code_12C div:first-child { background-image: url("images/tapestry/12C.png"); }
-    .Tapestry_Details_Image.code_12D div:first-child { background-image: url("images/tapestry/12D.png"); }
-    .Tapestry_Details_Image.code_13A div:first-child { background-image: url("images/tapestry/13A.png"); }
-    .Tapestry_Details_Image.code_13B div:first-child { background-image: url("images/tapestry/13B.png"); }
-    .Tapestry_Details_Image.code_13C div:first-child { background-image: url("images/tapestry/13C.png"); }
-    .Tapestry_Details_Image.code_13D div:first-child { background-image: url("images/tapestry/13D.png"); }
-    .Tapestry_Details_Image.code_13E div:first-child { background-image: url("images/tapestry/13E.png"); }
-    .Tapestry_Details_Image.code_14A div:first-child { background-image: url("images/tapestry/14A.png"); }
-    .Tapestry_Details_Image.code_14B div:first-child { background-image: url("images/tapestry/14B.png"); }
-    .Tapestry_Details_Image.code_14C div:first-child { background-image: url("images/tapestry/14C.png"); }
+    .Tapestry_Details_Image.code_01A div:first-child {
+        background-image: url("./images/tapestry/01A.png");
+    }
 
-.Collapsed .Tapestry_Details_Name {
+    .Tapestry_Details_Image.code_01B div:first-child {
+        background-image: url("./images/tapestry/01B.png");
+    }
+
+    .Tapestry_Details_Image.code_01C div:first-child {
+        background-image: url("./images/tapestry/01C.png");
+    }
+
+    .Tapestry_Details_Image.code_01D div:first-child {
+        background-image: url("./images/tapestry/01D.png");
+    }
+
+    .Tapestry_Details_Image.code_01E div:first-child {
+        background-image: url("./images/tapestry/01E.png");
+    }
+
+    .Tapestry_Details_Image.code_02A div:first-child {
+        background-image: url("./images/tapestry/02A.png");
+    }
+
+    .Tapestry_Details_Image.code_02B div:first-child {
+        background-image: url("./images/tapestry/02B.png");
+    }
+
+    .Tapestry_Details_Image.code_02C div:first-child {
+        background-image: url("./images/tapestry/02C.png");
+    }
+
+    .Tapestry_Details_Image.code_02D div:first-child {
+        background-image: url("./images/tapestry/02D.png");
+    }
+
+    .Tapestry_Details_Image.code_03A div:first-child {
+        background-image: url("./images/tapestry/03A.png");
+    }
+
+    .Tapestry_Details_Image.code_03B div:first-child {
+        background-image: url("./images/tapestry/03B.png");
+    }
+
+    .Tapestry_Details_Image.code_03C div:first-child {
+        background-image: url("./images/tapestry/03C.png");
+    }
+
+    .Tapestry_Details_Image.code_04A div:first-child {
+        background-image: url("./images/tapestry/04A.png");
+    }
+
+    .Tapestry_Details_Image.code_04B div:first-child {
+        background-image: url("./images/tapestry/04B.png");
+    }
+
+    .Tapestry_Details_Image.code_04C div:first-child {
+        background-image: url("./images/tapestry/04C.png");
+    }
+
+    .Tapestry_Details_Image.code_05A div:first-child {
+        background-image: url("./images/tapestry/05A.png");
+    }
+
+    .Tapestry_Details_Image.code_05B div:first-child {
+        background-image: url("./images/tapestry/05B.png");
+    }
+
+    .Tapestry_Details_Image.code_05C div:first-child {
+        background-image: url("./images/tapestry/05C.png");
+    }
+
+    .Tapestry_Details_Image.code_05D div:first-child {
+        background-image: url("./images/tapestry/05D.png");
+    }
+
+    .Tapestry_Details_Image.code_05E div:first-child {
+        background-image: url("./images/tapestry/05E.png");
+    }
+
+    .Tapestry_Details_Image.code_06A div:first-child {
+        background-image: url("./images/tapestry/06A.png");
+    }
+
+    .Tapestry_Details_Image.code_06B div:first-child {
+        background-image: url("./images/tapestry/06B.png");
+    }
+
+    .Tapestry_Details_Image.code_06C div:first-child {
+        background-image: url("./images/tapestry/06C.png");
+    }
+
+    .Tapestry_Details_Image.code_06D div:first-child {
+        background-image: url("./images/tapestry/06D.png");
+    }
+
+    .Tapestry_Details_Image.code_06E div:first-child {
+        background-image: url("./images/tapestry/06E.png");
+    }
+
+    .Tapestry_Details_Image.code_06F div:first-child {
+        background-image: url("./images/tapestry/06F.png");
+    }
+
+    .Tapestry_Details_Image.code_07A div:first-child {
+        background-image: url("./images/tapestry/07A.png");
+    }
+
+    .Tapestry_Details_Image.code_07B div:first-child {
+        background-image: url("./images/tapestry/07B.png");
+    }
+
+    .Tapestry_Details_Image.code_07C div:first-child {
+        background-image: url("./images/tapestry/07C.png");
+    }
+
+    .Tapestry_Details_Image.code_07D div:first-child {
+        background-image: url("./images/tapestry/07D.png");
+    }
+
+    .Tapestry_Details_Image.code_07E div:first-child {
+        background-image: url("./images/tapestry/07E.png");
+    }
+
+    .Tapestry_Details_Image.code_07F div:first-child {
+        background-image: url("./images/tapestry/07F.png");
+    }
+
+    .Tapestry_Details_Image.code_08A div:first-child {
+        background-image: url("./images/tapestry/08A.png");
+    }
+
+    .Tapestry_Details_Image.code_08B div:first-child {
+        background-image: url("./images/tapestry/08B.png");
+    }
+
+    .Tapestry_Details_Image.code_08C div:first-child {
+        background-image: url("./images/tapestry/08C.png");
+    }
+
+    .Tapestry_Details_Image.code_08D div:first-child {
+        background-image: url("./images/tapestry/08D.png");
+    }
+
+    .Tapestry_Details_Image.code_08E div:first-child {
+        background-image: url("./images/tapestry/08E.png");
+    }
+
+    .Tapestry_Details_Image.code_08F div:first-child {
+        background-image: url("./images/tapestry/08F.png");
+    }
+
+    .Tapestry_Details_Image.code_08G div:first-child {
+        background-image: url("./images/tapestry/08G.png");
+    }
+
+    .Tapestry_Details_Image.code_09A div:first-child {
+        background-image: url("./images/tapestry/09A.png");
+    }
+
+    .Tapestry_Details_Image.code_09B div:first-child {
+        background-image: url("./images/tapestry/09B.png");
+    }
+
+    .Tapestry_Details_Image.code_09C div:first-child {
+        background-image: url("./images/tapestry/09C.png");
+    }
+
+    .Tapestry_Details_Image.code_09D div:first-child {
+        background-image: url("./images/tapestry/09D.png");
+    }
+
+    .Tapestry_Details_Image.code_09E div:first-child {
+        background-image: url("./images/tapestry/09E.png");
+    }
+
+    .Tapestry_Details_Image.code_09F div:first-child {
+        background-image: url("./images/tapestry/09F.png");
+    }
+
+    .Tapestry_Details_Image.code_10A div:first-child {
+        background-image: url("./images/tapestry/10A.png");
+    }
+
+    .Tapestry_Details_Image.code_10B div:first-child {
+        background-image: url("./images/tapestry/10B.png");
+    }
+
+    .Tapestry_Details_Image.code_10C div:first-child {
+        background-image: url("./images/tapestry/10C.png");
+    }
+
+    .Tapestry_Details_Image.code_10D div:first-child {
+        background-image: url("./images/tapestry/10D.png");
+    }
+
+    .Tapestry_Details_Image.code_10E div:first-child {
+        background-image: url("./images/tapestry/10E.png");
+    }
+
+    .Tapestry_Details_Image.code_11A div:first-child {
+        background-image: url("./images/tapestry/11A.png");
+    }
+
+    .Tapestry_Details_Image.code_11B div:first-child {
+        background-image: url("./images/tapestry/11B.png");
+    }
+
+    .Tapestry_Details_Image.code_11C div:first-child {
+        background-image: url("./images/tapestry/11C.png");
+    }
+
+    .Tapestry_Details_Image.code_11D div:first-child {
+        background-image: url("./images/tapestry/11D.png");
+    }
+
+    .Tapestry_Details_Image.code_11E div:first-child {
+        background-image: url("./images/tapestry/11E.png");
+    }
+
+    .Tapestry_Details_Image.code_12A div:first-child {
+        background-image: url("./images/tapestry/12A.png");
+    }
+
+    .Tapestry_Details_Image.code_12B div:first-child {
+        background-image: url("./images/tapestry/12B.png");
+    }
+
+    .Tapestry_Details_Image.code_12C div:first-child {
+        background-image: url("./images/tapestry/12C.png");
+    }
+
+    .Tapestry_Details_Image.code_12D div:first-child {
+        background-image: url("./images/tapestry/12D.png");
+    }
+
+    .Tapestry_Details_Image.code_13A div:first-child {
+        background-image: url("./images/tapestry/13A.png");
+    }
+
+    .Tapestry_Details_Image.code_13B div:first-child {
+        background-image: url("./images/tapestry/13B.png");
+    }
+
+    .Tapestry_Details_Image.code_13C div:first-child {
+        background-image: url("./images/tapestry/13C.png");
+    }
+
+    .Tapestry_Details_Image.code_13D div:first-child {
+        background-image: url("./images/tapestry/13D.png");
+    }
+
+    .Tapestry_Details_Image.code_13E div:first-child {
+        background-image: url("./images/tapestry/13E.png");
+    }
+
+    .Tapestry_Details_Image.code_14A div:first-child {
+        background-image: url("./images/tapestry/14A.png");
+    }
+
+    .Tapestry_Details_Image.code_14B div:first-child {
+        background-image: url("./images/tapestry/14B.png");
+    }
+
+    .Tapestry_Details_Image.code_14C div:first-child {
+        background-image: url("./images/tapestry/14C.png");
+    }
+
+.Collapsed .Tapestry_Details_Link {
     font-size: 110%;
 }
 
@@ -297,7 +490,8 @@ span.Tapestry_LifeMode2.LifeModeBorder,
 
 span.Tapestry_LifeMode3.LifeModeBorder,
 .Tapestry_LifeMode3.LifeModeBorder div {
- border-color: #9FD2F1; }
+    border-color: #9FD2F1;
+}
 
 span.Tapestry_LifeMode4.LifeModeBorder,
 .Tapestry_LifeMode4.LifeModeBorder div {
@@ -352,4 +546,10 @@ span.Tapestry_LifeMode13.LifeModeBorder,
 span.Tapestry_LifeMode14.LifeModeBorder,
 .Tapestry_LifeMode14.LifeModeBorder div {
     border-color: #ACB671;
+}
+
+
+
+.Tapestry_noSegmentsDiv {
+    font-style: italic;
 }

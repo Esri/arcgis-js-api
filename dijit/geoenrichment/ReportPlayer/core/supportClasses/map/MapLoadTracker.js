@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["dojo/Deferred","dojo/when","dojo/on"],function(n,e,o){var r=6e4,t={};return t.waitForLoad=function(t){function u(){return t.updating&&i("update-end",6e4)}function i(e,r){function u(n){i&&i.remove(),c&&clearTimeout(c),n?d.resolve():d.reject(new Error("The map can't be loaded."))}var i,c,d=new n;return i=o.once(t,e,function(){u(!0)}),c=setTimeout(function(){u(!1)},r),d.promise}return e(function(){return!t.loaded&&i("load",r)}(),function(){return e(u(),function(){return t})})},t});
+define(["esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when","dojo/on"],function(e,n,r){var t=6e4,o={};return o.waitForLoad=function(o){function i(){return o.updating&&u("update-end",6e4)}function u(n,t){function i(e){u&&u.remove(),c&&clearTimeout(c),e?d.resolve():d.reject(new Error("The map can't be loaded."))}var u,c,d=new e;return u=r.once(o,n,function(){i(!0)}),c=setTimeout(function(){i(!1)},t),d.promise}return n(function(){return!o.loaded&&u("load",t)}(),function(){return n(i(),function(){return o})})},o});

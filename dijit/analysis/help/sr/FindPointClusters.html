@@ -59,7 +59,7 @@
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Minimalni broj tačaka koje se uzimaju u razmatranje za klaster</h2></div>
+        <div><h2>Minimalan broj tačaka koje se smatraju klasterom</h2></div>
         <hr/>
         <div>
             <p>Minimalni broj geoobjekata za početnu vrednost klastera. Bilo koji klaster sa manje geoobjekata od navedenog, biće smatran kao buka. 
@@ -70,7 +70,8 @@
         <div><h2>Ograničite opseg pretrage na (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Maksimalno rastojanje između geoobjekata za koje se smatra da su delovi istog klastera. Ako se ostavi prazno, kori&scaron;ćena podrazumevana razdaljina biće najveća ključna razdaljina pronađena u skupu podataka, isključujući one ključne razdaljine u prvih 1% (isključujući najekstremnije ključne razdaljine). 
+            
+            <p>Maksimalno rastojanje između geoobjekata za koje se smatra da su delovi istog klastera. Ako se ostavi prazno, alat će pokrenuti HDBSCAN, koji koristi promenljiva rastojanja za odvajanje klastera promenljivih gustina od ređeg &scaron;uma. Ako je data vrednost, alat će pokrenuti DBSCAN, koji koristi navedeno rastojanje za odvajanje gustih klastera od ređeg &scaron;uma.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p>Ovo je naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            <p>Ovo je naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako naziv sloja već postoji, bićete upitani da unesete drugi naziv.
             </p>
-            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            <p>Koristeći padajući meni  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Wybierz warstwę wejściową",addAVar:"Dodaj zmienną",distToNearest:"Odległość do najbliższego",attrOfInterest:"Atrybut najbliższego",summaryNearby:"Podsumowanie dla pobliskich",summaryIntersecting:"Podsumowanie dla przecinających się",distToNearestLabel:"Odległość od środka kosza do najbliższego obiektu w warstwie wejściowej",attrOfInterestLabel:"Wartość podanego pola z najbliższego obiektu z warstwy wejściowej",summaryNearbyLabel:"Statystyka obliczana dla wszystkich obiektów znalezionych w podanej odległości od środka kosza",summaryIntersectingLabel:"Statystyka obliczona dla wszystkich obiektów przecinających kosz",maxDistancefromCtr:"Maksymalna odległość od środka kosza",fieldToIncude:"Pole do uwzględnienia",statstoCalculate:"Statystyka do obliczenia",summFeatuesWithin:"Podsumuj obiekty w ramach",layerChangeWarnMsg:"Jeśli warstwa wejściowa zostanie zmieniona, zmienne dodane do tej warstwy wejściowej zostaną usunięte",validationErrorMsg:"Przed dodaniem nowej zmiennej popraw błędy sprawdzania poprawności",atleastOneVarMsg:"Dodaj co najmniej jedną zmienną do tej wybranej warstwy"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir la capa de ubicación de entidad o ráster respecto a la cual se calculará la distancia",maxDistanceLabel:"Distancia máxima a calcular (opcional)",outputCellSize:"Tamaño de celda de salida (opcional)",resultDistLayerName:"Nombre de la capa de resultados de distancia",resultDirectionLayerName:"Nombre de la capa de resultados de dirección (opcional)",resultAllocationLayerName:"Nombre de la capa de resultados de asignación (opcional)",outputLayerName:"Distancia calculada de ${layername}",allocationFieldLabel:"Elegir campo de asignación (opcional)",itemDescription:"Capa de entidades generada al ejecutar Calcular distancia en ${layerName}. ",itemTags:"Resultados del análisis, CalculateDistance, ${layername} ${fieldname}",itemSnippet:"Capa de entidades generada a partir de CalculateDistance."});

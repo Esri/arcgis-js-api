@@ -70,15 +70,16 @@
         <div><h2>Ograniči raspon pretraživanja na (neobavezno)</h2></div>
         <hr/>
         <div>
-            <p>Maksimalna udaljenost da bi se geoobjekti smatrali dijelom istog klastera. Ako ostane prazna, zadana kori&scaron;tena udaljenost bit će najvi&scaron;a temeljna udaljenost u skupu podataka, pri čemu se isključuju temeljne udaljenosti u vr&scaron;nih 1&nbsp;% (isključuju se najekstremnije temeljne udaljenosti). 
+            
+            <p>Maksimalna udaljenost da bi se geoobjekti smatrali dijelom istog klastera. Ako se ostavi praznim, alat će pokrenuti HDBSCAN koji upotrebljava razne udaljenosti za razdvajanje klastera različitih gustoća od manje buke. Ako se navede vrijednost, alat će pokrenuti DBSCAN koji upotrebljava određenu udaljenost za razdvajanje gustih klastera od manje buke.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
-            <p>Ovo je naziv sloja koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti.  Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            <p>Ovo je naziv sloja koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti.  Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako naziv sloja već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
             </p>

@@ -69,9 +69,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>포인트 집약 (Aggregate Points)</h2></td>
+                    <td><h2>포인트 집계(Aggregate Points)</h2></td>
                     <td>
-                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="포인트 집약">
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="포인트 집계">
                     </td>
                 </tr></tbody>
             </table>
@@ -91,9 +91,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>조인 피처</h2></td>
+                    <td><h2>조인 피처 (Join Features)</h2></td>
                     <td>
-                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="조인 피처">
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="조인 피처(Join Features)">
                     </td>
                 </tr></tbody>
             </table>
@@ -117,7 +117,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>다음 주변 요약 (Summarize Nearby)</h2></td>
+                    <td><h2>다음 주변 요약(Summarize Nearby)</h2></td>
                     <td>
                     <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="다음 주변 요약">
                     </td>
@@ -139,7 +139,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>다음 범위 내 요약 (Summarize Within)</h2></td>
+                    <td><h2>다음 범위 내 요약(Summarize Within)</h2></td>
                     <td>
                     <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="다음 범위 내 요약">
                     </td>
@@ -258,7 +258,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>가시권역 생성</h2></td>
+                    <td><h2>가시권역 생성(Create Viewshed)</h2></td>
                     <td>
                     <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="가시권역 생성">
                     </td>
@@ -273,7 +273,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>유역 생성</h2></td>
+                    <td><h2>유역 생성(Create Watersheds)</h2></td>
                     <td>
                     <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="유역 생성">
                     </td>
@@ -363,7 +363,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>하류 추적</h2></td>
+                    <td><h2>하류 추적(Trace Downstream)</h2></td>
                     <td>
                     <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="하류 추적">
                     </td>
@@ -596,8 +596,8 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
-        <h2>데이터 관리</h2>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>데이터 관리하기</h2>
         <hr/>
         <p>지리 데이터의 일상적인 관리 및 분석 전 데이터 통합에 사용되는 도구입니다.  
             <ul>
@@ -605,9 +605,11 @@
                 </li>
                 <li> <b>데이터 추출</b> - 기존 데이터에서 피처를 추출하여 새 데이터셋을 생성합니다.
                 </li>
+                <li> <b>공간 분할 생성</b> - 데이터의 범위를 기반으로 공간 분할을 생성합니다.
+                </li>
                 <li> <b>레이어 병합</b> - 둘 이상의 기존 레이어에 있는 모든 피처를 하나의 새 레이어에 복사합니다.
                 </li>
-                <li> <b>레이어 중첩</b> - 둘 이상의 레이어를 하나의 단일 레이어로 결합합니다.  맵 스택을 살펴보고 스택에서 확인한 모든 정보를 포함하는 단일 맵을 생성하는 작업을 중첩이라고 생각하면 됩니다.
+                <li> <b>레이어 중첩</b> - 둘 이상의 레이어를 하나의 단일 레이어로 결합합니다.  여러 맵을 포개어 모든 정보를 포함하는 단일 맵을 생성하는 작업을 중첩이라고 생각하면 됩니다.
                 </li>
             </ul>
             
@@ -626,7 +628,7 @@
 <hr/>
             <p>공통 경계를 공유하거나 중첩되는 영역이 병합되어 단일 영역을 형성합니다.    
             </p>
-            <p>필드를 지정하여 병합할 경계를 제어할 수 있습니다. 예를 들어 카운티 레이어가 있는 경우 각 카운티에  <i>State_Name</i> 속성이 있으면 <i>State_Name</i> 속성을 사용하여 경계를 디졸브할 수 있습니다.  인접 카운티는 <i>State_Name</i> 값이 같은 경우에 병합됩니다.  이 도구에서 생성되는 최종 결과는 주 경계 레이어입니다.
+            <p>필드를 지정하여 병합할 경계를 제어할 수 있습니다. 예를 들어 카운티 레이어가 있는 경우 각 카운티에  <i>State_Name</i> 속성이 있으면 <i>State_Name</i> 속성을 사용하여 경계를 디졸브할 수 있습니다.  인접 카운티는 <i>State_Name</i> 값이 동일한 경우에 병합됩니다.  이 도구에서 생성되는 최종 결과는 주 경계 레이어입니다.
             </p>
             <br/>
         </div>
@@ -644,6 +646,21 @@
             <p>지정한 관심 영역 및 레이어의 데이터에 대한 zip 파일, CSV 또는 KMZ를 생성합니다.
             </p>
             <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>공간 분할 생성(Generate Tessellations)</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="공간 분할 생성(Generate Tessellations)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>지정된 쉐이프와 크기를 기반으로 연구 영역에 공간 분할을 생성합니다.
             </p>
             <br/>
         </div>
@@ -680,13 +697,15 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>중첩은 둘 이상의 레이어를 하나의 단일 레이어로 결합합니다.  여러 맵을 포개어 모든 정보를 포함하는 단일 맵을 생성하는 작업을 중첩이라고 생각하면 됩니다. 예를 들면 다음과 같습니다.
+            <p>중첩은 둘 이상의 레이어를 하나의 단일 레이어로 결합합니다. 여러 맵을 포개어 모든 정보를 포함하는 단일 맵을 생성하는 작업을 중첩이라고 생각하면 됩니다. 예를 들면 다음과 같습니다.
                 <ul>
-                    <li>100년 홍수 지역 내에 있는 필지는 무엇입니까?(여기에서 '내에 있다'는 '겹침'을 의미하는 또 다른 표현 방법)
+                    <li>100년 홍수 지역 내에 있는 필지는 무엇입니까? (&lsquo;내에 있다'는 '겹침'을 의미하는 또 다른 표현 방식임)
+                          
                     </li>
                     <li>어떤 도시 내에 어떤 도로가 있습니까?
                     </li>
                     <li>토질 유형별 토지 이용 현황이 어떻습니까?
+                         
                     </li>
                     <li>버려진 군사 기지에 어떤 우물이 있습니까?
                     </li>

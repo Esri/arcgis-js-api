@@ -83,11 +83,11 @@
         <div><h2>Povzemi najbližje geoobjekte s pomočjo</h2></div>
         <hr/>
         <div>
-            <p> Določite lahko, katero vrsto merjenja razdalje želite uporabiti, bodisi zračno razdaljo ali izbran način potovanja. Načini potovanja so omogočeni samo, ko prvi vhodni sloj (sloj, od katerega so izmerjene razdalje) vsebuje točke. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Ko uporabljate enega izmed načinov potovanja, so meritve narejene vzdolž cest ali pe&scaron;poti in upo&scaron;tevajo veljavna pravila, kot so enosmerne ceste, nedovoljeno zavijanje itd. <b>Čas vožnje z avtom</b>, <b>čas vožnje po neasfaltiranih cestah</b> in <b>čas vožnje s tovornjakom</b> upo&scaron;tevajo va&scaron;o izbiro hitrosti potovanja, bodisi tiste na podlagi trenutnega bodisi običajnega prometa. Trenutne hitrosti se zbirajo prek trenutnih odčitkov tipal, med tem ko se običajne hitrosti izračunajo iz preteklih povprečij.
+            <p> Določite lahko, katero vrsto merjenja razdalje želite uporabiti, bodisi zračno razdaljo ali izbran način potovanja. Načini potovanja so omogočeni samo, ko prvi vhodni sloj (sloj, od katerega so izmerjene razdalje) vsebuje točke. Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Ko uporabljate enega izmed načinov potovanja, so meritve narejene vzdolž cest ali pe&scaron;poti in upo&scaron;tevajo veljavna pravila, kot so enosmerne ceste, nedovoljeno zavijanje itd. <b>Čas vožnje z avtom</b>, <b>čas vožnje po neasfaltiranih cestah</b> in <b>čas vožnje s tovornjakom</b> upo&scaron;tevajo va&scaron;o izbiro hitrosti potovanja, bodisi tiste na podlagi trenutnega bodisi običajnega prometa. Trenutne hitrosti se zbirajo prek trenutnih odčitkov senzorjev, medtem ko se običajne hitrosti izračunajo iz preteklih povprečij.
             </p>
             <p>Vnesete lahko več razdalj. Geoobjekti, ki so znotraj (ali so enaki) razdaljam, ki ste jih vnesli, bodo povzeti.  
             </p>
-            <p>Če je izbirno polje  <b>Vrni omejitvena območja</b> obkljukano, bo vrnilo sloj z rezultati območij, ki so določeni z meritvijo razdalje. Sloj z rezultati bo vseboval vse zahtevane povzete informacije. Na primer, če pri povzemanju točk v bližini uporabljate <b>Zračno razdaljo</b> 8 kilometrov, bo va&scaron; rezultat vseboval območja s polmerom 8 kilometrov okoli vhodnih geoobjektov in vse povzete informacije, kot so &scaron;tevilo točk in vse dodane statistike. Če je možnost odkljukana, bo sloj rezultatov vrnil enake geoobjekte prvega vhodnega geoobjekta z vsemi zahtevanimi povzetimi informacijami.
+            <p>Če je izbirno polje  <b>Vrni omejitvena območja</b> obkljukano, bo vrnilo sloj z rezultati območij, ki so določeni z meritvijo razdalje. Sloj z rezultati bo vseboval vse zahtevane povzete informacije. Na primer, če pri povzemanju točk v bližini uporabljate <b>zračno razdaljo</b> 8 kilometrov, bo va&scaron; rezultat vseboval območja s polmerom 8 kilometrov okoli vhodnih geoobjektov in vse povzete informacije, kot so &scaron;tevilo točk in vse dodane statistike. Če je možnost odkljukana, bo sloj rezultatov vrnil enake geoobjekte prvega vhodnega geoobjekta z vsemi zahtevanimi povzetimi informacijami.
             </p>
         </div>
     </div>
@@ -112,6 +112,8 @@
                 </li>
             </ul>
             
+            <p>Če sloj za povzetek nima nobenega &scaron;tevila polj, dodatna statistika ne bo na voljo.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Če sloj za povzetek nima nobenega &scaron;tevila polj, dodatna statistika ne bo na voljo.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,6 +162,8 @@
                 </li>
             </ul>
             
+            <p>Če sloj za povzetek nima nobenega &scaron;tevila polj, dodatna statistika ne bo na voljo.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -181,13 +187,15 @@
             
             <p>Odvisno od tipov geoobjektov, ki jih povzemate, lahko izračunate skupno &scaron;tevilo točk v bližini, skupno dolžino linij v bližini ali celotno povr&scaron;ino poligonskih geoobjektov v bližini.
             </p>
+            <p>Če sloj za povzetek nima nobenega &scaron;tevila polj, dodatna statistika ne bo na voljo.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Izberi polje za skupinjenje po</h2></div>
         <hr/>
         <div>
-            <p> To je atribut geoobjektov v bližini, ki jih lahko uporabljate za izračun statistike posebej za vsako enolično atributno vrednost. Na primer, predpostavite, da va&scaron; prvi vhodni sloj (sloj, od katerega so merjene razdalje) vsebuje nepozidana zemlji&scaron;ča parcel, ki so naprodaj in va&scaron;i geoobjekti v bližini so obrisi stavb. Eden izmed atributov obrisov stavb je <i>Raba</i>, ki vsebuje vrednosti, kot so TRGOVINA, STANOVANJA, PROIZVODNJA, JAVNO itd. Za označitev me&scaron;ane rabe stavb v bližini vsake nepozidane parcele, lahko izračunate skupno povr&scaron;ino za vsak tip rabe stavb znotraj dveh kilometrov od nepozidanih parcel s pomočjo <i>Rabe</i> za skupinjenje po atributu. Statistika za vsako skupino ter &scaron;tevilo geoobjektov v bližini bosta prikazana v pojavnem oknu sloja z rezultati.
+            <p> To je atribut geoobjektov v bližini, ki jih lahko uporabljate za izračun statistike posebej za vsako enolično atributno vrednost. Na primer, predpostavite, da va&scaron; prvi vhodni sloj (sloj, od katerega so merjene razdalje) vsebuje nepozidana zemlji&scaron;ča parcel, ki so naprodaj in va&scaron;i geoobjekti v bližini so obrisi stavb. Eden izmed atributov obrisov stavb je <i>UseType</i>, ki vsebuje vrednosti, kot so TRGOVINA, STANOVANJA, PROIZVODNJA, JAVNO itd. Za označitev me&scaron;ane rabe stavb v bližini vsake nepozidane parcele, lahko izračunate skupno povr&scaron;ino za vsak tip rabe stavb znotraj dveh kilometrov od nezazidanih parcel s pomočjo <i>UseType</i> za skupinjenje po atributu. Statistika za vsako skupino ter &scaron;tevilo geoobjektov v bližini bosta prikazana v pojavnem oknu sloja z rezultati.
             </p>    
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

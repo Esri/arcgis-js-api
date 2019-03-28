@@ -46,24 +46,30 @@
         <hr/>
     <p>&Scaron;is rīks nosaka plūsmas ceļu jeb taku lejteces virzienā no jūsu ievades slāņa punktiem.
     </p>
-    <p>Piemēram, pieņemsim, ka jums ir punktu elementi, kas apzīmē piesārņojuma avotus, un jūs vēlaties noteikt, kurp jūsu pētāmajā apgabalā piesārņojums aizplūdīs. Varat izmantot straumes lejteces izseko&scaron;anas rīku, lai noteiktu piesārņojuma virzī&scaron;anās ceļu. &Scaron;o ceļu var sadalīt arī atsevi&scaron;ķos līnijas segmentos, norādot attāluma vērtības un vienības. Atgrieztā līnija var būt plūsmas ceļa kopējais garums, norādītais maksimālais ceļa garums vai apgabala elementiem, piemēram, izpētes apgabalam, piesaistīts garums. Bieži vien, ja tiek atgriezts kopējais ceļa garums, tas būs ceļ&scaron; no avota līdz pat okeānam.
+    <p>Piemēram, pieņemsim, ka jums ir punktu elementi, kas apzīmē piesārņojuma avotus, un jūs vēlaties noteikt, kurp jūsu pētāmajā apgabalā piesārņojums aizplūdīs. Varat izmantot straumes lejteces izseko&scaron;anas rīku, lai noteiktu piesārņojuma virzī&scaron;anās ceļu. &Scaron;o ceļu var sadalīt arī atsevi&scaron;ķos līnijas segmentos, norādot attāluma vērtības un vienības. Atgrieztā līnija var būt plūsmas ceļa kopējais garums, norādītais maksimālais ceļa garums vai teritorijas elementiem, piemēram, izpētes teritorijai, piesaistīts garums. Bieži vien, ja tiek atgriezts kopējais ceļa garums, tas būs ceļ&scaron; no iztekas avota līdz pat okeānam.
     </p>
-    <p>Rezultāts ir līnija, kas apzīmē lejteces ceļu. Ja ir norādīts opcijas  <b>Sadalīt ceļu līniju segmentos</b> attālums, ceļa līnija tiks sadalīta vairākās līnijās, no kurām katra būs norādītajā garumā. Piemēram, ja ievades punkts apzīmē piesārņojuma ra&scaron;anās vietu un upe, kurā tas nokļūst, plūst ar ātrumu 0,6&nbsp;jūdzes stundā jeb 15&nbsp;jūdzes dienā, jūs varētu sadalīt upi 15&nbsp;jūdžu segmentos. Ceļa sadalī&scaron;ana 15&nbsp;jūdžu posmos aptuveni parādīs, kurā vietā piesārņojums katru dienu būs nokļuvis. Līnija tiks apzīmēta, izmantojot no attāluma atkarīgas krāsu pārejas un attāluma atzīmes no ceļa sākuma. 
+    <p>Rezultāts ir līnija, kas apzīmē lejteces ceļu. Ja ir norādīts opcijas  <b>Sadalīt ceļu līniju segmentos</b> attālums, ceļa līnija tiks sadalīta vairākās līnijās, no kurām katra būs norādītajā garumā. Piemēram, ja ievades punkts apzīmē piesārņojuma ra&scaron;anās vietu un upe, kurā tas nokļūst, plūst ar ātrumu 0,6&nbsp;jūdzes stundā jeb 15&nbsp;jūdzes dienā, jūs varētu sadalīt upi 15&nbsp;jūdžu segmentos. Ceļa sadalī&scaron;ana 15&nbsp;jūdžu posmos aptuveni parādīs, kurā vietā piesārņojums katru dienu būs nokļuvis. Līnija tiks apzīmēta, izmantojot no attāluma atkarīgas krāsu pārejas un attāluma atzīmes no ceļa sākuma.
     </p>
-    <p>Rezultāta ceļam būs visi jūsu ievades punktu atribūti, kā arī papildu atribūti.     
+    <p>Rezultāta ceļam būs visi jūsu ievades punktu atribūti, kā arī papildu atribūti. 
         <ul>
-            <li> <i>Punkta ID</i>&nbsp;&mdash; satur ID vērtību no ievades punkta.
+            <li> <i>PointID</i>&mdash;satur ID vērtību no ievades punkta.
+                
+
             </li>
-            <li> <i>Garums Km</i>&nbsp;&mdash; satur kopējo lejteces ceļa garumu kilometros.
+            <li> <i>LengthKm</i>&mdash;satur kopējo lejteces ceļa garumu kilometros.
+                
+
             </li>
-            <li> <i>Apraksts</i> un <i>datu iz&scaron;ķirtspēja</i>&nbsp;&mdash; satur informāciju, kas attiecas uz hidroloģiskajiem datiem, kas tiek izmantoti ceļa aprēķinā&scaron;anai.
+            <li> <i>Description</i> un <i>DataResolution</i>&mdash;satur informāciju, kas attiecas uz hidroloģiskajiem datiem, kas tika izmantoti, lai aprēķinātu ceļu.
+                
+
             </li>
-            <li> <i>No distances</i> un <i>uz distamci</i>&nbsp;&mdash; satur katra līnijas segmenta sākuma un beigu attālumus.  &Scaron;ie atribūti tiek rakstīti tad, ja tiek izmantota opcija <b>Sadalīt ceļu līniju segmentos</b>.
+            <li> <i>FromDistance</i> un <i>ToDistance</i>&mdash;satur katra līnijas segmenta sākuma un beigu attālumus. &Scaron;ie atribūti tiek rakstīti tad, ja tiek izmantota opcija <b>Sadalīt ceļu līniju segmentos</b>.
             </li>
         </ul>
         
     </p>
-    <p>Ja ir atzīmēta iespēja  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai ievades slāņa redzamās daļas elementi pa&scaron;reizējā kartes pārklājumā.  Ja nav iezīmēts, tad tiks izmantoti visi ievades slāņa elementi, pat ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    <p>Ja ir atzīmēta iespēja  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai ievades slāņa redzamās daļas elementi pa&scaron;reizējā kartes pārklājumā. Ja nav iezīmēts, tad tiks izmantoti visi ievades slāņa elementi, pat ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -71,7 +77,7 @@
         <div><h2>Punktu elementi, kas izmantojami kā sākumpunkti katram lejteces ceļam</h2></div>
         <hr/>
         <div>
-            <p>Punktu elementi, kas izmantojami kā sākumpunkti lejteces ceļam.  Izvade saturēs katra ievades punkta līniju. 
+            <p>Punktu elementi, kas izmantojami kā sākumpunkti lejteces ceļam.  Izvade saturēs līniju katram punktam.
             </p>
             <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
             </p>
@@ -81,15 +87,15 @@
         <div><h2>Sadalīt izsekošanu līnijas segmentos</h2></div>
         <hr/>
         <div>
-            <p>Ceļa līnija tiks sadalīta vairākās līnijās, no kurām katra būs norādītajā garumā. Piemēram, ja ievades punkts apzīmē piesārņojuma ra&scaron;anās vietu un upe, kurā tas nokļūst, plūst ar ātrumu 0,6&nbsp;jūdzes stundā jeb 15&nbsp;jūdzes dienā, jūs varētu sadalīt upi 15&nbsp;jūdžu segmentos. Ceļa sadalī&scaron;ana 15&nbsp;jūdžu posmos aptuveni parādīs, kurā vietā piesārņojums katru dienu būs nokļuvis. Līnija tiks apzīmēta, izmantojot no attāluma atkarīgas krāsu pārejas un attāluma atzīmes no ceļa sākuma. Rezultāta ceļam būs vairāki līniju segmenti, un katram no tiem būs lauki  <i>No distances</i> un <i>uz distanci</i>.
-            </p> 
+            <p>Ceļa līnija tiks sadalīta vairākās līnijās, no kurām katra būs norādītajā garumā. Piemēram, ja ievades punkts apzīmē piesārņojuma ra&scaron;anās vietu un upe, kurā tas nokļūst, plūst ar ātrumu 0,6&nbsp;jūdzes stundā jeb 15&nbsp;jūdzes dienā, jūs varētu sadalīt upi 15&nbsp;jūdžu segmentos. Ceļa sadalī&scaron;ana 15&nbsp;jūdžu posmos aptuveni parādīs, kurā vietā piesārņojums katru dienu būs nokļuvis. Līnija tiks apzīmēta, izmantojot no attāluma atkarīgas krāsu pārejas un attāluma atzīmes no ceļa sākuma. Rezultāta ceļam būs vairāki līniju segmenti, un katram no tiem būs lauki  <i>FromDistance</i> un <i>ToDistance</i>.
+            </p>
         </div>
     </div>
     <div id="MaxDistance">
         <div><h2>Maksimālais izsekošanas attālums</h2></div>
         <hr/>
         <div>
-            <p>Nosaka kopējo atgrieztās līnijas garumu. Ja norādāt apgabala elementus, pie kā fiksēt ceļu, rezultāts tiks fiksēts pie &scaron;ī apgabala elementa neatkarīgi no &scaron;eit ievadītā attāluma.
+            <p>Nosaka kopējo atgrieztās līnijas garumu. Ja norādāt teritorijas elementus, pie kā fiksēt ceļu, rezultāts tiks fiksēts pie &scaron;īs teritorijas elementa neatkarīgi no &scaron;eit ievadītā attāluma.
             </p>
         </div>
     </div>
@@ -97,17 +103,19 @@
         <div><h2>Izgriezt izvadi uz</h2></div>
         <hr/>
         <div>
-            <p>Vai nu uzzīmējiet, vai norādiet tā apgabala slāni, pie kā vēlaties fiksēt ceļu. Piemēram, ja vēlaties izsekot rezultātam tikai savā izpētes rajonā, piemēram, apgabalā, kā ievadi izmantojiet apgabala elementu, lai ceļ&scaron; beigtos pie apgabala robežas.   
+            <p>Vai nu uzzīmējiet, vai norādiet tās teritorijas slāni, pie kā vēlaties fiksēt ceļu. Piemēram, ja vēlaties izsekot rezultātam tikai savā izpētes teritorijā, piemēram, novadā, kā ievadi izmantojiet apgabala elementu, lai ceļ&scaron; beigtos pie novada robežas.
             </p>
         </div>
     </div>
     <div id="OutputTrace">
-        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Tas ir slāņa nosaukums, kas tiks izveidots lapā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            <p>Tas ir slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slāņa nosaukums jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamajā sarakstlodziņā, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamā saraksta izvēlnē, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            </p>
+            <p> &Scaron;ī rīka izmanto&scaron;ana nepatērē kredītu.
             </p>
         </div>
     </div>

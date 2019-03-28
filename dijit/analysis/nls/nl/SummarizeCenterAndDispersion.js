@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies een laag om te beschrijven",summaryTypes:"Samenvattingstypes",centralFeature:"Centraal object",meanCenter:"Gemiddeld centrum",medianCenter:"Mediaanmidden",ellipse:"Ellips",weightBy:"Gewicht per (optioneel)",groupBy:"Groeperen per (optioneel)",resultLayerName:"Resultaat laagnaam",outputLayerName:"Beschrijf distributie van ${layerName}",none:"Geen",itemDescription:"Objectlaag die is gegenereerd door uitvoering van Samenvatting centrum en spreiding op ${layerName}. ",itemTags:"Analyseresultaat, samenvatten centrum en spreiding, ${layerName}",itemSnippet:"Objectlaag die is gegenereerd door uitvoering van Samenvatting centrum en spreiding"});

@@ -44,7 +44,7 @@
         <h2>Zaznaj incidente</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Zaznaj incidente"></h2>
         <hr/>
-    <p>To orodje deluje s časovno omogočenim slojem točk, linij, poligonov ali tabel, ki predstavljajo trenutek v času. Z uporabo zaporedno razvr&scaron;čenih geoobjektov, imenovanih sledi, to orodje določa, kateri geoobjekti so interesni incidenti. Incidenti so določeni s pogoji, ki jih sami navedete. 
+    <p> To orodje deluje s časovno omogočenim slojem točk, linij, poligonov ali tabel, ki predstavljajo trenutek v času. Z uporabo zaporedno razvr&scaron;čenih geoobjektov, imenovanih sledi, to orodje določa, kateri geoobjekti so interesni incidenti. Incidenti so določeni s pogoji, ki jih sami navedete.
     </p>
     <p>Najprej orodje s pomočjo enega ali več polj določi, kateri geoobjekti pripadajo sledi. Z uporabo časa pri vsakem geoobjektu se sledi razvr&scaron;čajo po vrstnem redu in se uporabi pogoj incidenta. Geoobjekti, ki izpolnjujejo začetne pogoje incidenta, so označeni kot incident. Po želji lahko uporabite končni pogoj incidenta, in sicer ko je končni pogoj resničen, geoobjekt ni več incident. Vrnjeni bodo rezultati z izhodi&scaron;čnimi geoobjekti &ndash; z novimi stolpci, ki predstavljajo ime incidenta &ndash; in bodo opredelili, kateri geoobjekt izpolnjuje pogoj incidenta. Vrnete lahko vse izhodi&scaron;čne geoobjekte ali samo geoobjekte, ki so incidenti.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Točke, linije, poligoni ali tabele, ki se bodo uporabljali za iskanje incidentov. Vhodni sloj mora biti časovno omogočen z geoobjekti, ki predstavljajo trenutek v času, prav tako morajo imeti eno ali več polj, ki jih je mogoče uporabiti za identifikacijo sledi.
             </p>
-            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Prebrskaj sloje</b>, da poi&scaron;čete svojo vsebino za delitev datotek velikih podatkov ali geoobjektni sloj.
+            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Izdelajte pogojni izraz, da označite konec incidenta</h2></div>
+        <div><h2>Izgradite pogoj izraza, ki označuje zaključek incidenta (izbirno)</h2></div>
         <hr/>
         <div>
             <p>Po želji dodajte pogoj s pomočjo graditelja izrazov, da določite konec incidenta. Če je končni pogoj, ki ste ga navedli, resničen, geoobjekt ni več incident. Če niste navedli končnega pogoja, se incident konča, ko začetni pogoj ni več resničen.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Izberite način prikaza rezultata</h2></div>
+        <div><h2>Pokaži mi</h2></div>
         <hr/>
         <div>
             <p>Z vsemi metodami rezultatov bodo polja dodana izhodi&scaron;čnim geoobjektom. Na dva načina je mogoče določiti, kateri geoobjekti bodo vrnjeni:
                 <ul>
-                    <li> <b>Vrni samo incidente</b> &ndash; s to metodo bodo vrnjeni geoobjekti, ki so incidenti. Vsi geoobjekti, za katere ni ugotovljeno, da so incidenti, ne bodo vrnjeni.
+                    <li> <b>Vsi geoobjekti</b> &ndash; to je privzeto. Vrnjeni bodo vsi geoobjekti v vhodu.
                     </li>
-                    <li> <b>Vrni vse geoobjekte</b> &ndash; to je privzeto. Vrnjeni bodo vsi geoobjekti v vhodu.
+                    <li> <b>Samo incidenti</b> &ndash; s to metodo bodo vrnjeni geoobjekti, ki so incidenti. Vsi geoobjekti, za katere ni ugotovljeno, da so incidenti, ne bodo vrnjeni.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizirajte podatke s časovnimi intervali (po želji)</h2></div>
+        <hr/>
+        <div>
+            <p>Določite, ali želite incidente zaznati s časovnimi intervali, ki segmentirajo va&scaron;e vhodne geoobjekte za analizo. Če boste uporabili časovne intervale, morate nastaviti časovni interval, ki ga želite uporabiti, in po želji nastaviti referenčni čas. Če referenčnega časa ne nastavite, bo uporabljen Jan 1, 1970. 
+            </p>
+            <p>Na primer, če nastavite časovno omejitev na en dan, ki se začne 1. januarja 1990 ob 9.00 zjutraj, bo vsaka sled odrezana ob 9.00 zjutraj vsak dan in analizirana v tem segmentu. 
+            </p>
+            <p>S časovnimi intervali lahko hitro pospe&scaron;ite čas izračunavanja, saj hitro ustvarja manj&scaron;e sledi za analizo. Če je za va&scaron;o analizo ustrezna razdelitev s ponavljajočim se časovnim intervalom, se ta priporoča za procesiranje velikih podatkov.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p> Ime sloja, ki bo ustvarjen v odseku <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
+            <p> To je ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani v skupino. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
+            <p>Ko zapisujete v  ArcGIS Data Store (relacijsko ali prostorsko-časovno shrambo velikih podatkov) s pomočjo spustnega menija  <b>Shrani rezultat v</b>, lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

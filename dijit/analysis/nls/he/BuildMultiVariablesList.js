@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({chooseInputLayer:"בחר שכבת קלט",addAVar:"הוסף משתנה",distToNearest:"מרחק אל הישות הקרובה ביותר",attrOfInterest:"מאפיין הישות הקרובה ביותר",summaryNearby:"סיכום ישות סמוכה",summaryIntersecting:"סיכום ישויות חותכות",distToNearestLabel:"המרחק בין מרכז ה-Bin והישות הקרובה ביותר בשכבת הקלט",attrOfInterestLabel:"הערך של שדה שצוין מהישות הקרובה ביותר בשכבת הקלט",summaryNearbyLabel:"נתון סטטיסטי המחושב בכל הישויות שנמצאו במרחק שצוין ממרכז ה-Bin",summaryIntersectingLabel:"נתון סטטיסטי המחושב בכל הישויות שחותכות את ה-Bin",maxDistancefromCtr:"המרחק המרבי ממרכז ה-Bin",fieldToIncude:"שדה להכללה",statstoCalculate:"נתון סטטיסטי לחישוב",summFeatuesWithin:"סכם ישויות בתוך",layerChangeWarnMsg:"המשתנים שנוספו לשכבת קלט זו יוסרו אם שכבת הקלט תוחלף",validationErrorMsg:"תקן את שגיאות האימות לפני שתוסיף משתנה חדש",atleastOneVarMsg:"הוסף משתנה אחד לפחות לשכבה שנבחרה"});

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>गहन शिक्षण का उपयोग कर वस्तुओं का पता लगाएं</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="गहन शिक्षण का उपयोग कर वस्तुओं का पता लगाएं"></h2>
+        <hr/>
+    <p>यह टूल इनपुट रास्टर पर प्रशिक्षित गहन शिक्षण मॉडल चलाता है ताकि वह इसे मिलने वाले ऑब्जेक्ट को धारित करने वाली फ़ीचर श्रेणी बना सके। फ़ीचर, मिले ऑब्जेक्ट के बाउंडिंग बॉक्स या पॉलीगॉन हो सकते हैं या ऑब्जेक्ट के केंद्रों पर मौजूद पॉइंट हो सकते हैं।
+    </p>
+    <p>अगर  <b>मौजूदा मानचित्र सीमा का उपयोग करें</b> चेक किया गया है, तो केवल उसी रास्टर क्षेत्र का विश्लेषण किया जाएगा, जो मौजूदा मानचित्र सीमा के अंतर्गत दृश्यमान है। यह अनचेक होने पर पूरे रास्टर का विश्लेषण किया जाएगा, भले ही वह मौजूदा मैप सीमा के बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>वस्तुओं का पता लगाने के लिए छवि चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>ऑब्जेक्ट का पता लगाने के लिए प्रयुक्त इनपुट चित्र।
+            </p> 
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>वस्तुओं का पता लगाने के लिए इस्तेमाल होने वाले गहन शिक्षण मॉडल का चयन करें</h2></div>
+        <hr/>
+        <div>
+            <p>इनपुट गहन शिक्षण पैकेज ( <code>.dlpk</code>) आइटम।
+            </p>
+            <p>गहन शिक्षण पैकेज Esri मॉडल डेफ़िनिशन JSON फ़ाइल ( <code>.emd</code>), गहन शिक्षण बाइनरी मॉडल फ़ाइल और वैकल्पिक रूप से प्रयुक्त किए जाने वाले Python रास्टर फ़ंक्शन से मिलकर बना है।
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>गहन शिक्षण मॉडल तर्क निर्दिष्ट करें</h2></div>
+        <hr/>
+        <div>
+            <p>फ़ंक्शन तर्क Python रास्टर फ़ंक्शन में निर्धारित हैं जिनका संदर्भ इनपुट मॉडल द्वारा दिया गया है। यही वह स्थान है जहां आप अनुमानों और परिशोधन के लिए आपकी सूची के अतिरिक्त गहन शिक्षण पैरामीटर और तर्क जैसे संवेदनशीलता का समायोजन करने के लिए विश्वसनीयता थ्रेशोल्ड को सूचीबद्ध करते हैं।
+            </p>
+            <p>तर्कों के नाम, रास्टर विश्लेषण सर्वर पर टूल द्वारा Python मॉड्यूल से पढ़कर उपलब्ध किए जाते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="runNMS">
+        <div><h2>आउटपुट से डुप्लिकेट फीचर्स को निकालें (वैकल्पिक)</h2></div>
+        <hr/>
+        <div>
+            <p>यह गैर अधिकतम अवरोध निष्पादित करता है, जहां डुप्लिकेट ऑब्जेक्ट की पहचान की जाती है और कम विश्वास वाले मूल्य की डुप्लिकेट सुविधा को निकाल दिया जाता है। 
+                <ul>
+                    <li>अनचेक किया गया&mdash;ऐसे सभी ऑब्जेक्ट जिनका पता लगाया गया है, वे आउटपुट फ़ीचर वर्ग में होंगे। यह डिफ़ॉल्ट है।
+                        
+
+                    </li>
+                    <li>चेक किया गया&mdash;यह उन डुप्लिकेट ऑब्जेक्ट को निकालता है, जिनका पता लगाया गया है।
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="confidenceScoreField">
+        <div><h2>आत्मविश्वास स्कोर फ़ील्ड</h2></div>
+        <hr/>
+        <div>
+            <p>फ़ीचर सेवा का वह फ़ील्ड जिसमें ऑब्जेक्ट का पता लगाने की विधि द्वारा दिए गए आउटपुट के रूप में विश्वसनीयता के स्कोर शामिल होते हैं।
+            </p>
+            <p>यह पैरामीटर तब आवश्यक होता है, जब आप  <b>गैर अधिकतम अवरोध</b> पैरामीटर को चेक करते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="classValueField">
+        <div><h2>वर्ग मान फ़ील्ड</h2></div>
+        <hr/>
+        <div>
+            <p>आउटपुट फ़ीचर सेवा में वर्ग मान फ़ील्ड। अगर इसे निर्दिष्ट नहीं किया गया है, तो टूल, मानक वर्ग मान फ़ील्ड  <i>Classvalue</i> और <i>Value</i> का उपयोग करेगा। अगर ये फ़ील्ड मौजूद नहीं हैं, तो सभी फ़ीचर को एक ही ऑब्जेक्ट वर्ग के रूप में माना जाएगा।
+            </p>
+        </div>
+    </div>
+    <div id="maxOverlapRatio">
+        <div><h2>अधिकतम ओवरलैप अनुपात</h2></div>
+        <hr/>
+        <div>
+            <p>दो ओवरलैपिंग फ़ीचर के लिए अधिकतम ओवरलैप अनुपात जिसे यूनियन क्षेत्र पर प्रतिच्छेद क्षेत्र के अनुपात के रूप में निर्धारित किया जाता है। डिफ़ॉल्ट 0 होता है।
+            </p>
+        </div>
+    </div>
+    <div id="outputObjects">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से ही मौजूद है, तो आपको दूसरा नाम प्रदान करने के लिए संकेत किया जाएगा।
+            </p>
+            <p>आप  <b>मेरी सामग्री</b> में फ़ोल्डर का नाम निर्दिष्ट कर सकते हैं जहां परिणामों को <b>इसमें परिणाम सहेजें</b> ड्रॉप-डाउन बॉक्स का उपयोग करके सहेजा जाएगा।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

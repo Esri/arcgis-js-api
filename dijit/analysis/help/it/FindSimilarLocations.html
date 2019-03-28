@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Trova località simili</h2><p/>
-        <h2><img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" alt="Trova localit&agrave; simili"></h2>
+        <h2>Trova Posizioni Simili</h2><p/>
+        <h2><img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" alt="Trova posizioni simili"></h2>
         <hr/>
     <p>In base ai criteri specificati, lo strumento Trova localit&agrave; simili consente di valutare la somiglianza di localit&agrave; presenti nel layer di ricerca candidati con una o pi&ugrave; localit&agrave; di riferimento. Questo strumento consente di rispondere a domande quali:
         <ul>
@@ -51,7 +51,7 @@
             <li>Sulla base delle caratteristiche dei villaggi colpiti pi&ugrave; duramente da un'infezione, quali altri villaggi sono ad alto rischio?
             </li>
         </ul>
-        Per rispondere a simili domande, &egrave; necessario specificare le localit&agrave; di riferimento, le localit&agrave; di ricerca candidate e i campi che rappresentano i criteri da abbinare. Il primo layer di input deve contenere le localit&agrave; di riferimento o da utilizzare per il confronto.  Pu&ograve; ad esempio trattarsi di un layer contenente i negozi con fatturato migliore oppure i villaggi colpiti pi&ugrave; duramente dall'infezione. Si deve quindi specificare il layer contenente le localit&agrave; di ricerca candidate. Pu&ograve; trattarsi di tutti i negozi o di tutti gli altri villaggi. &Egrave; infine necessario identificare uno o pi&ugrave; campi da utilizzare per misurare la somiglianza. Lo strumento Trova localit&agrave; simili classificher&agrave; quindi tutte le localit&agrave; di ricerca candidate in base alla percentuale di somiglianza con le localit&agrave; di riferimento sulla base dei valori specificati in tutti i campi selezionati.
+        Per rispondere a simili domande, &egrave; necessario specificare le localit&agrave; di riferimento, le localit&agrave; di ricerca candidate e i campi che rappresentano i criteri da abbinare. Il primo layer di input deve contenere le localit&agrave; di riferimento o da utilizzare per il confronto.  Pu&ograve; ad esempio trattarsi di un layer contenente i negozi con fatturato migliore oppure i villaggi colpiti pi&ugrave; duramente dall'infezione. Si deve quindi specificare il layer contenente le posizioni di ricerca candidate. Pu&ograve; trattarsi di tutti i negozi o di tutti gli altri villaggi. &Egrave; infine necessario identificare uno o pi&ugrave; campi da utilizzare per misurare la somiglianza. Lo strumento Trova localit&agrave; simili classificher&agrave; quindi tutte le localit&agrave; di ricerca candidate in base alla percentuale di somiglianza con le localit&agrave; di riferimento sulla base dei valori specificati in tutti i campi selezionati.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,9 @@
         <div>
             <p>&Egrave; possibile visualizzare tutte le localit&agrave; di ricerca candidate classificate a partire da quella pi&ugrave; simile a quella meno simile oppure specificare il numero di risultati desiderati. 
                 <ul>
-                    <li> <b>tutte le localit&agrave; da quella pi&ugrave; simile a quella meno simile</b>: tutte le feature presenti nel layer di ricerca candidati verranno inclusi nel layer dei risultati in ordine di classificazione.
+                    <li> <b>Tutte le localit&agrave; da quella pi&ugrave; simile a quella meno simile</b>: tutte le feature presenti nel layer di ricerca candidati verranno inclusi nel layer dei risultati in ordine di classificazione
                     </li>
-                    <li> <b>i primi </b> <code>1</code>: specificare il numero di candidati pi&ugrave; simili includere nel layer dei risultati.
+                    <li> <b>Il numero di posizioni restituite</b>: specificare il numero di candidati pi&ugrave; simili da includere nel layer dei risultati. L&rsquo;input predefinito &egrave; 1.
                     </li>
                 </ul>
                 
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div id="OutputName">
-        <div><h2>Nome layer risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
             <p>Specificare un nome per il layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Questo layer dei risultati conterr&agrave; le localit&agrave; di riferimento e il numero di localit&agrave; di ricerca candidate specificate. Se il nome del layer dei risultati esiste gi&agrave;, verr&agrave; chiesto di rinominarlo.

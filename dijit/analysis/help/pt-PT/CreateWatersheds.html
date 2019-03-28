@@ -42,23 +42,23 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Criar Watersheds</h2><p/>
-        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Criar Bacias Hidrogr&aacute;ficas"></h2>
+        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Criar Watersheds"></h2>
         <hr/>
     <p>Esta ferramenta determina a bacia hidrogr&aacute;fica, ou &aacute;rea de contribui&ccedil;&atilde;o a montante, para cada ponto na sua camada de entrada. 
     </p>
     <p>Por exemplo, suponha que tem pontos de elementos que representam locais de contamina&ccedil;&atilde;o pela &aacute;gua e quer encontrar as prov&aacute;veis fontes de contamina&ccedil;&atilde;o. Uma vez que a fonte da contamina&ccedil;&atilde;o deve estar em algum lugar dentro do montante da bacia hidrogr&aacute;fica do ponto, teria de usar esta ferramenta para definir as Watersheds que cont&ecirc;m as fontes de contaminantes.
     </p>
-    <p>A localiza&ccedil;&atilde;o dos seus pontos de entrada &eacute; importante.  Se eles n&atilde;o est&atilde;o localizados exactamente numa linha de drenagem, as Watersheds resultantes podem ser muito pequenas e n&atilde;o s&atilde;o &uacute;teis para a sua an&aacute;liseA   <b>Dist&acirc;ncia de pesquisa at&eacute; &agrave; drenagem mais pr&oacute;xima</b> pode ser utilizada para ajustar a localiza&ccedil;&atilde;o dos seus dados de entrada de forma a que estes se localizem numa linha de drenagem e assim encontrar a bacia hidrogr&aacute;fica que flui para o ponto localizado na linha de drenagem.  As localiza&ccedil;&otilde;es ajustadas utilizadas para encontrar as bacias hidrogr&aacute;ficas s&atilde;o escritas na camada de sa&iacute;da - os seus pontos de entrada n&atilde;o s&atilde;o modificados.
+    <p>A localiza&ccedil;&atilde;o dos seus pontos de entrada &eacute; importante.  Se eles n&atilde;o est&atilde;o localizados exactamente numa linha de drenagem, as Watersheds resultantes podem ser muito pequenas e n&atilde;o s&atilde;o &uacute;teis para a sua an&aacute;lise A   <b>Dist&acirc;ncia de pesquisa at&eacute; &agrave; drenagem mais pr&oacute;xima</b> pode ser utilizada para ajustar a localiza&ccedil;&atilde;o dos seus dados de entrada de forma a que estes se localizem numa linha de drenagem e assim encontrar a bacia hidrogr&aacute;fica que flui para o ponto localizado na linha de drenagem.  As localiza&ccedil;&otilde;es ajustadas utilizadas para encontrar as bacias hidrogr&aacute;ficas s&atilde;o escritas na camada de sa&iacute;da - os seus pontos de entrada n&atilde;o s&atilde;o modificados.
     </p>
     <p>O resultado &eacute; uma camada de grupo que cont&eacute;m duas camadas: as Watersheds e os pontos ajustados usados para calcular as Watersheds.     
     </p>
     <p>As bacias hidrogr&aacute;ficas resultantes ter&atilde;o todos os atributos dos seus pontos de entrada assim como estes atributos adicionais.     
         <ul>
-            <li> <i>PourIDPonto</i>&mdash;Cont&eacute;m o valor ID do ponto de entrada.
+            <li> <i>PourPtID</i> &mdash; Cont&eacute;m o valor da ID do ponto de entrada
             </li>
-            <li> <i>AreaKm2</i>&mdash;Cont&eacute;m a &aacute;rea em quil&oacute;metros quadrados da bacia hidrogr&aacute;fica a montante
+            <li> <i>Area Square Kilometers</i> &mdash; Cont&eacute;m a &aacute;rea em quil&oacute;metros quadrados da bacia hidrogr&aacute;fica a montante
             </li>
-            <li> <i>Descricao</i> e <i>DataResolucao</i>&mdash;Cont&eacute;m informa&ccedil;&atilde;o pertencente aos dados hidrol&oacute;gicos utilizados para calcular o tra&ccedil;o
+            <li> <i>Description</i> e <i>DataResolution</i> &mdash; Cont&ecirc;m informa&ccedil;&atilde;o pertencente aos dados hidrol&oacute;gicos utilizados para calcular o tra&ccedil;o
             </li>
         </ul>
         
@@ -93,9 +93,11 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que forne&ccedil;a outro nome.
+            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se o nome da camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            <p>Ao utilizar o menu suspenso  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+            <p> Executar esta ferramenta n&atilde;o consome cr&eacute;ditos.
             </p>
         </div>
     </div>

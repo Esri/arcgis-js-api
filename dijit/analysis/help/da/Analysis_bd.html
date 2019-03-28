@@ -41,41 +41,54 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics distribuerer analytisk arbejde p&aring; tv&aelig;rs af din ArcGIS GeoAnalytics-server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte flere maskiners styrke. F&oslash;lgende v&aelig;rkt&oslash;jer er tilg&aelig;ngelige i &oslash;jeblikket:
-            <ul>
-                <li> <b>Aggreg&eacute;r punkter</b>
+        <p> GeoAnalytics distribuerer analytisk arbejde p&aring; tv&aelig;rs af din ArcGIS GeoAnalytics Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere med flere maskiner. F&oslash;lgende v&aelig;rkt&oslash;jer er tilg&aelig;ngelige: <ul>
+                <li> Aggreg&eacute;r punkter
                 </li>
-                <li> <b>Opret multivariabel-gitter</b>
+                <li> Opret multivariabel-gitter
                 </li>
-                <li> <b>Forbind objekter</b>
+                <li> Beskriv datas&aelig;t
                 </li>
-                <li> <b>Rekonstru&eacute;r spor</b>
+                <li> Forbind objekter
                 </li>
-                <li> <b>Summ&eacute;r attributter</b>
+                <li> Rekonstru&eacute;r spor
                 </li>
-                <li> <b>Summ&eacute;r inden for</b>
+                <li> Summ&eacute;r attributter
                 </li>
-                <li> <b>Geokode-positioner fra tabel</b>
+                <li> Summ&eacute;r inden for
                 </li>
-                <li> <b>Registr&eacute;r h&aelig;ndelser</b>
+                <li> Geokode-positioner fra tabel
                 </li>
-                <li> <b>Find lignende steder</b>
+                <li> Berig fra multivariabel-gitter
                 </li>
-                <li> <b>Beregn t&aelig;thed</b>
+                <li> Registr&eacute;r h&aelig;ndelser
                 </li>
-                <li> <b>Find punktklynger</b>
+                <li> Find lignende steder
                 </li>
-                <li> <b>Find hotspots</b>
+                <li> Beregn t&aelig;thed
                 </li>
-                <li> <b>Opret buffere</b>
+                <li> Find punktklynger
                 </li>
-                <li> <b>Tilknyt data</b>
+                <li> Find hotspots
                 </li>
-                <li> <b>Beregn felt</b>
+                <li> Forest-baseret klassifikation og regression
                 </li>
-                <li> <b>Kopi&eacute;r til datalager</b>
+                <li> Generaliseret line&aelig;r regression
                 </li>
-                <li> <b>Overlay-lag</b>
+                <li> Opret buffere
+                </li>
+                <li> Tilknyt data
+                </li>
+                <li> Beregn felt
+                </li>
+                <li> Kopi&eacute;r til datalager
+                </li>
+                <li> Overlay af lag
+                </li>
+                <li> Opl&oslash;s gr&aelig;nser
+                </li>
+                <li> Flet lag
+                </li>
+                <li> Kliplag 
                 </li>
             </ul>
             
@@ -84,21 +97,23 @@
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Summér data</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p> Summ&eacute;r data-v&aelig;rkt&oslash;jss&aelig;ttet indeholder v&aelig;rkt&oslash;jer, der beregner samlet antal, l&aelig;ngde, omr&aring;de og basal beskrivende statistik for objekter og deres attributter inden for omr&aring;der eller i n&aelig;rheden af andre objekter.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
-                <li> <b>Aggreg&eacute;r punkter</b> beregner statistik om punkter, der falder inden for angivne omr&aring;der eller beholdere.
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li> <b>V&aelig;rkt&oslash;jet Opret multivariabel-gitter </b> genererer et gitter med kvadratiske eller sekskantede beholdere og beregner v&aelig;rdier for hver beholder baseret p&aring; n&aelig;rheden af hvert inputlag.
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
-                <li> <b>Forbind objekter</b> beregner statistik om objekter, der deler en geografisk, tidsbestemt eller attributbaseret relation med andre objekter.
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
-                <li> <b>Rekonstru&eacute;r spor</b> beregner statistik om punkter eller polygoner, der tilh&oslash;rer det samme spor, og rekonstruerer input til spor.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li> <b>Summ&eacute;r attributter</b> beregner statistik om objekt- eller tabeldata, der har f&aelig;lles attributter.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li> <b>Summ&eacute;r inden for</b> beregner statistik for omr&aring;deobjekter og -attributter, der overlapper hinanden.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
             </ul>
             
@@ -154,6 +169,32 @@
             </p>
             <br/>
         </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beskriv datasæt</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Workflow-diagram for Beskriv datas&aelig;t">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Opsumm&eacute;r input-objekter med statistik, eksempellag og visualisering. Du kan v&aelig;lge et eksempellag eller udstr&aelig;kningslag som output.
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Referer til beregnede oversigtsstatistikker for at se, hvilke v&aelig;rdier dit datas&aelig;t indeholder.
+                    </li>
+                    <li>I stedet for at tegne hele datas&aelig;ttet, kan du oprette et unders&aelig;t-lag for at visualisere objekter og deres attributter, n&aring;r de tilf&oslash;jes til et kort.
+                    </li>
+                    <li>Spar tid og ressourcer og k&oslash;r analyse p&aring; et eksempellag, f&oslash;r du k&oslash;rer analyse p&aring; hele datas&aelig;ttet.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="JoinFeaturesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -191,11 +232,11 @@
 <hr/>
             <p>Ved at benytte et et tidsafh&aelig;ngigt lag best&aring;ende af enten punkt- eller polygonobjekter, der repr&aelig;senterer et  <code>&oslash;jeblik</code> i tiden, bestemmer dette v&aelig;rkt&oslash;j, hvilke objekter der tilh&oslash;rer et spor, og det arrangerer inputtene i r&aelig;kkef&oslash;lge i tiden. Du kan efter eget valg beregne statistik for inputobjekterne i hvert spor.
             </p>
-            <p> F&oslash;lgende ereksempler:
+            <p>F&oslash;lgende ereksempler:
                 <ul>
                     <li>Ved angivelse af punktpositioner og tidspunkt for m&aring;linger af orkaner kan du beregne orkanens middel- og maksimumvindhastighed.
                     </li>
-                    <li>Brug GPS-m&aring;linger for skibe med henblik p&aring; at rekonstruere skibsruter som linjer.
+                    <li>Brug GPS-m&aring;linger for skibe med henblik p&aring; at rekonstruere skibsruter som linjer. 
                     </li>
                 </ul>
                 
@@ -213,7 +254,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Ved at benytte enten vektordata eller tabeldata beregner dette v&aelig;rkt&oslash;j statistik for angivne felter.
+            <p>Ved at benytte enten vektordata eller tabeldata beregner dette v&aelig;rkt&oslash;j statistik for angivne felter. 
             </p>
             <p>F&oslash;lgende ereksempler:
                 <ul>
@@ -328,16 +369,20 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analysér mønstre</h2>
         <hr/>
-        <p> Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at identificere, kvantificere og visualisere geografiske m&oslash;nstre i dine data.
+        <p>  Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at identificere, kvantificere og visualisere geografiske m&oslash;nstre i dine data.
             <ul>
                 <li> <b>Beregn t&aelig;thed</b> tager kendte kvantiteter af visse f&aelig;nomener og spreder dem p&aring; kortet.
                 </li>
                 <li> <b>Find hotspots</b> identificerer statistisk signifikante klynger i det geografiske m&oslash;nster i dine data.
                 </li>
                 <li> <b>Find punktklynger</b> finder klynger af punktobjekter inden for omgivende st&oslash;j baseret p&aring; deres spatiale distribution.
+                </li>
+                <li> <b>Forest-baseret klassifikation og regression</b> opretter modeller og genererer prognoser ved hj&aelig;lp af en tilpasning af Leo Breiman's random forest-algoritme, som er en overv&aring;get maskinl&aelig;ringsmetode.
+                </li>
+                <li> <b>Generaliseret line&aelig;r regression</b> genererer prognoser eller modellerer en afh&aelig;ngig variabel med hensyn til dens relation til et s&aelig;t forklarende variabler.
                 </li>
             </ul>
             
@@ -415,6 +460,62 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Forest-baseret klassifikation og regression</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Workflow-diagram for Forest-baseret klassifikation og regression ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>V&aelig;rkt&oslash;jet Forest-baseret klassifikation og regression modellerer og genererer prognoser ved hj&aelig;lp af en tilpasning af Leo Breiman's random forest-algoritme, som er en overv&aring;get maskinl&aelig;ringsmetode.
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Hvis du har data om forekomster af s&oslash;gr&aelig;s samt en r&aelig;kke milj&oslash;forklarende variabler, der er repr&aelig;senteret som b&aring;de attributter, der er blevet beriget ved hj&aelig;lp af en multivariabel-grid til beregning af afstande til fabrikker, og st&oslash;rre havne, kan fremtidig forekomst af s&oslash;gr&aelig;s forudsiges ud fra fremskrivninger for de p&aring;g&aelig;ldende milj&oslash;forklarende variabler.
+                          
+                    </li>
+                    <li>Du har data om afgr&oslash;deudbytte for hundredvis af g&aring;rde over hele landet, samt andre attributter for hver af disse g&aring;rde (antal ansatte, areal osv.). Ved hj&aelig;lp af disse data kan du give et skabe et s&aelig;t objekter, der repr&aelig;senterer g&aring;rde, hvor du ikke kender afgr&oslash;deudbyttet (men har alle de andre variabler), og oprette en prognose for afgr&oslash;deudbyttet.
+                    </li>
+                    <li>Boligv&aelig;rdier kan forudsiges ud fra prisen p&aring; huse, der er solgt i indev&aelig;rende &aring;r. Salgsprisen p&aring; boliger, der er blevet solgt, samt oplysninger om antal v&aelig;relser, afstand til skoler, afstand til vigtige hovedveje, gennemsnitsindkomst og kriminalitet kan bruges til at forudsige salgspriser for lignende boliger.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generaliseret lineær regression</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Workflow-diagram for Generaliseret line&aelig;r regression">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>V&aelig;rkt&oslash;jet Generaliseret line&aelig;r regression   genererer prognoser eller modellerer en afh&aelig;ngig variabel med hensyn til dens relation til et s&aelig;t forklarende variabler. Dette v&aelig;rkt&oslash;j kan bruges til at tilpasse kontinuerlige (OLS), bin&aelig;re (logistiske) og t&aelig;llem&aelig;ssige (Poisson) modeller.
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Hvilke demografiske egenskaber bidrager til h&oslash;j grad af udnyttelse af offentlige transportmidler?
+                    </li>
+                    <li>Er der et positivt forhold mellem h&aelig;rv&aelig;rk og indbrud?
+                    </li>
+                    <li>Hvilke variabler forudsiger effektivt m&aelig;ngden af opkald til alarmcentralen? Hvad er den forventede eftersp&oslash;rgsel efter n&oslash;dhj&aelig;lpsressourcer p&aring; baggrund af fremtidige projektioner?
+                    </li>
+                    <li>Hvilke variable p&aring;virker lave f&oslash;dselsrater?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Anvend nærhed</h2>
         <hr/>
@@ -450,18 +551,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Håndtér data</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Manage Data</h2>
         <hr/>
-        <p>Disse v&aelig;rkt&oslash;jer bruges til den daglige h&aring;ndtering af geografiske data og tabeldata. 
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
-                <li> <b>Tilknyt data</b> knytter objekter til et eksisterende &quot;hosted&quot; vektorlag.
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
                 </li>
-                <li> <b>Beregn felt</b> opretter et nyt felt eller redigerer et eksisterende felt samt opretter et nyt lag i dit indhold.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Kopi&eacute;r til datalager</b> kopierer data til dit ArcGIS Data Store og opretter et lag i dit indhold. 
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
                 </li>
-                <li> <b>Overlay af lag</b> kombinerer to eller flere lag til et enkelt lag.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -513,6 +620,54 @@
             </p>
             <br/>
         </div>
+        <div id="ClipLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kliplag</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="Kliplag">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Klip leverer input-objekter fra definerede interesseomr&aring;der. Output-resultatet bliver en undergruppe af input-objekter. 
+            </p>
+            <p>F&oslash;lgende er eksempler: 
+                <ul>
+                    <li>Opret en undergruppe af risikobeh&aelig;ftede bygninger, der ligger i oversv&oslash;mmelsesomr&aring;der.
+                    </li>
+                    <li>Find ud af, hvilke veje, der g&aring;r gennem dine potentielle udviklingsomr&aring;der.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Opløs grænser</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Opl&oslash;s gr&aelig;nser">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Fletter omr&aring;deobjekter, der sk&aelig;rer hinanden eller deler en feltv&aelig;rdi for at oprette tilst&oslash;dende objekter eller objekter med flere dele.
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Opret et enkelt objekt, der repr&aelig;senterer delstaten Hawaii, ved at opl&oslash;se gr&aelig;nserne mellem &oslash;erne, der udg&oslash;r Hawaii.
+                    </li>
+                    <li>Kombiner ensartede unders&oslash;gelsesomr&aring;der baseret p&aring; jordtype for at f&aring; et output-datas&aelig;t af tilst&oslash;dende jordtyper.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="OverlayLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -524,9 +679,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Overlay kombinerer to eller flere lag til et enkelt lag. Overlay benyttes til at besvare et af de mest grundl&aelig;ggende sp&oslash;rgsm&aring;l inden for geografien: &quot;Hvad ligger oven p&aring; hvad?&rdquo;F&oslash;lgende ereksempler:
+            <p>Kombinerer to eller flere lag til et enkelt lag.  Overlay benyttes til at besvare et af de mest grundl&aelig;ggende sp&oslash;rgsm&aring;l inden for geografien: Hvad ligger oven p&aring; hvad?
+            </p>
+            <p>F&oslash;lgende ereksempler:
                 <ul>
-                    <li>Hvilke parceller ligger inden for 100 &aring;rs oversv&oslash;mmelsesomr&aring;de? (Inden for er bare en anden m&aring;de at sige p&aring;)
+                    <li>Hvilke parceller ligger inden for 100-&aring;rsoversv&oslash;mmelsesomr&aring;det? (Inden for er bare en anden m&aring;de at sige p&aring;)
                           
                     </li>
                     <li>Hvilken slags jordbrug ligger p&aring; hvilken slags jord?
@@ -553,11 +710,68 @@
             <p>Tilf&oslash;jer objekter til et eksisterende hosted lag i dit indhold i  ArcGIS Enterprise. </p>
             <p>F&oslash;lgende ereksempler:
                 <ul>
-                    <li>Opdater dit 2018_Sales-vektorlag hver m&aring;ned, efterh&aring;nden som dine rapporter bliver tilg&aelig;ngelige. 
+                    <li>Opdater dit 2018_Sales-vektorlag hver m&aring;ned, efterh&aring;nden som dine rapporter bliver tilg&aelig;ngelige.
                     </li>
                     <li>Tilknyt datas&aelig;t med sporing af orkaner fra &aring;rene 2016 og 2017 til et masterdatas&aelig;t for orkaner.
                     </li>
                     <li>Saml og tilknyt datas&aelig;t fra flere kilder med forskellige skemaer ved hj&aelig;lp af brugerdefineret felt-mapping.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Flet lag</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Flet lag">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kombinerer to vektorlag for at oprette et enkelt resultatlag. Alle felter fra flettelaget vil som standard blive medtaget. Du kan ogs&aring; angive brugerdefinerede fletteregler for at definere resultatskemaet.  
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Flet tre lag, der indeholder demografiske oplysninger fra England, Wales og Skotland for at oprette et enkelt lag for Storbritannien.
+                    </li>
+                    <li>Kombiner to lag indeholdende oplysninger om parceller for sammenh&aelig;ngende byomr&aring;der. Behold kun de felter, der har samme navn og type i de to lag.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Databerigelse</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at unders&oslash;ge omr&aring;ders karakter.
+            <ul>
+                <li> <b>Berig fra multivariabel-gitter</b> forbinder attributter fra et multivariabel-gitterlag med et punktlag.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Berig fra multivariabel-gitter</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="Berig fra multivariabel-gitter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Forbinder effektivt attributter fra et multivariabel-gitter med et punktlag, s&aring; du hurtigt kan tilf&oslash;je en stor og forskelligartet samling af oplysninger til punktdata til brug i yderligere spatial analyse. 
+            </p>
+            <p>F&oslash;lgende er eksempler:
+                <ul>
+                    <li>Hvis du har et lag, der indeholder millioner af str&oslash;mbrud, kan du berige h&aelig;ndelsesobjekterne med information om typisk brug, milj&oslash;risici og infrastrukturforhold for at studere forholdet mellem disse faktorer og frekvensen af str&oslash;mbrud. 
                     </li>
                 </ul>
                 

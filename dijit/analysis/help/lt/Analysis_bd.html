@@ -41,41 +41,54 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics paskirsto analizės užduotis jūsų ArcGIS GeoAnalytics serveryje. Tokiu būdu galima greičiau analizuoti didelius duomenų kiekius pasitelkus kelis įrenginius. &Scaron;iuo metu pasiekiami įrankiai:
-            <ul>
-                <li> <b>Agreguoti ta&scaron;kus</b>
+        <p> GeoAnalytics paskirsto analizės užduotis jūsų ArcGIS GeoAnalytics Server. Tokiu būdu galima greičiau analizuoti didelius duomenų kiekius pasitelkus kelis įrenginius. &Scaron;iuo metu pasiekiami įrankiai: <ul>
+                <li> Aggreguoti ta&scaron;kus
                 </li>
-                <li> <b>Kurti kelių kintamųjų tinklelį</b>
+                <li> Kurti kelių kintamųjų tinklelį
                 </li>
-                <li> <b>Sujungti elementus</b>
+                <li> Apra&scaron;yti duomenų rinkinį
                 </li>
-                <li> <b>Atkurti trajektorijas</b>
+                <li> Sujungti elementus
                 </li>
-                <li> <b>Kurti atributų suvestinę</b>
+                <li> Atkurti trajektorijas
                 </li>
-                <li> <b>Sumuoti viduje</b>
+                <li> Kurti atributų suvestinę
                 </li>
-                <li> <b>Geokoduoti vietoves i&scaron; lentelės</b>
+                <li> Sumuoti viduje
                 </li>
-                <li> <b>Aptikti įvykius</b>
+                <li> Geokoduoti vietoves i&scaron; lentelės
                 </li>
-                <li> <b>Rasti pana&scaron;ias vietas</b>
+                <li> Praturtinti i&scaron; kelių kintamųjų tinklelio
                 </li>
-                <li> <b>Apskaičiuoti tankį</b>
+                <li> Aptikti incidentus
                 </li>
-                <li> <b>Rasti ta&scaron;kų sankaupas</b>
+                <li> Rasti pana&scaron;ias vietas
                 </li>
-                <li> <b>Rasti kar&scaron;tąsias teritorijas</b>
+                <li> Apskaičiuoti tankį
                 </li>
-                <li> <b>Kurti buferius</b>
+                <li> Rasti ta&scaron;kų sankaupas
                 </li>
-                <li> <b>Pridėti duomenų</b>
+                <li> Rasti kar&scaron;tąsias teritorijas
                 </li>
-                <li> <b>Skaičiuoti lauko reik&scaron;mes</b>
+                <li> Medžių schema paremta klasifikacija ir regresija
                 </li>
-                <li> <b>Kopijuoti į duomenų saugyklą</b>
+                <li> Generalizuota linijinė regresija
                 </li>
-                <li> <b>Perdengti sluoksnius</b>
+                <li> Kurti buferius
+                </li>
+                <li> Pridėti duomenis
+                </li>
+                <li> Skaičiuoti lauko reik&scaron;mes
+                </li>
+                <li> Kopijuoti į duomenų bazę
+                </li>
+                <li> Perdengti sluoksnius
+                </li>
+                <li> Sulieti ribas
+                </li>
+                <li> Sujungti sluoksnius
+                </li>
+                <li> I&scaron;kirpti sluoksnį 
                 </li>
             </ul>
             
@@ -84,21 +97,23 @@
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Sumuoti duomenis</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p> Duomenų sumavimo rinkinyje yra įrankių, galinčių apskaičiuoti bendrą elementų (ir jų atributų), esančių tam tikroje teritorijoje ar &scaron;alia kitų objektų, kiekį, ilgius, plotus ir pagrindinius apra&scaron;omosios statistikos rodiklius.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
-                <li>Įrankis  <b>Agreguoti ta&scaron;kus</b> apskaičiuoja ta&scaron;kų, patenkančių į nurodytus plotus ar zonas, statistiką.
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li>Įrankis  <b>Kurti kelių kintamųjų tinklelį</b> generuoja keturkampių arba &scaron;e&scaron;iakampių tinklelį ir apskaičiuoja kiekvieno daugiakampio reik&scaron;mes pagal kiekvieno įvesties sluoksnio artumą.
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
-                <li>Įrankis  <b>Sujungti elementus</b> apskaičiuoja elementų, turinčių erdvinių, laiko ar atributų ry&scaron;ių su kitais elementais, statistiką.
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
-                <li>Įrankis  <b>Atkurti trajektorijas</b> apskaičiuoja ta&scaron;kų ir poligonų, kurie priklauso tai pačiai trajektorijai, statistiką ir atkuria trajektorijų įvestis.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li>Įrankis  <b>Sumuoti atributus</b> apskaičiuoja elementų arba lentelės duomenų, turinčių tokius pačius atributus, statistiką.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li>Įrankis  <b>Sumuoti viduje</b> apskaičiuoja persidengiančių elementų ir jų atributų statistiką.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
             </ul>
             
@@ -154,6 +169,32 @@
             </p>
             <br/>
         </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aprašyti duomenų rinkinį</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Apra&scaron;yti duomenų rinkinio darbo eigos diagramą">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Apibendrina įvesties elementus statistiniais duomenimis, pavyzdiniais sluoksniais ir vizualizacijomis. Kaip i&scaron;vestį galite pasirinkti pavyzdinį sluoksnį arba aprėpties sluoksnį.
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Nurodykite suskaičiuotą santraukos statistiką, kad būtų ai&scaron;kiau, kokios reik&scaron;mės jūsų duomenų rinkinyje.
+                    </li>
+                    <li>Užuot vaizdavę visą duomenų rinkinį, sukurkite poaibio sluoksnį, kuris vizualizuoja elementus ir jų atributus, kai pridedate jų į žemėlapį.
+                    </li>
+                    <li>Sutaupykite laiko ir i&scaron;teklių, atlikdami analizę su pavyzdiniu sluoksniu prie&scaron; analizuodami visą duomenų rinkinį.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="JoinFeaturesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -191,11 +232,11 @@
 <hr/>
             <p>Naudodami laiko  <code>tarpsnį</code> simbolizuojančių  ta&scaron;kinių arba plotinių elementų sluoksnį &scaron;iuo įrankiu galite nustatyti, kurie įvesties elementai priklauso stebėsenai, ir i&scaron;rikiuoti įvestis pagal laiką. Galima apskaičiuoti kiekvienos stebėsenos įvesties elementų statistinius duomenis.
             </p>
-            <p> Toliau pateikiami pavyzdžiai:
+            <p>Toliau pateikiami pavyzdžiai:
                 <ul>
                     <li>Turėdami i&scaron;matuotus uraganų vietos ir laiko ta&scaron;kus, galite apskaičiuoti vidutinį uragano vėjo greitį ir maksimalų vėjo slėgį.
                     </li>
-                    <li>Norėdami atkurti laivų kelius kaip linijas, naudokite laivų GPS matavimus.
+                    <li>Norėdami atkurti laivų kelius kaip linijas,naudokite laivų GPS matavimus. 
                     </li>
                 </ul>
                 
@@ -213,7 +254,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Naudodami elementą arba lentelės duomenis &scaron;iuo įrankiu galite apskaičiuoti konkrečių laukų suvestinius statistinius duomenis.
+            <p>Naudodami elementą arba lentelės duomenis, &scaron;iuo įrankiu galite apskaičiuoti konkrečių laukų suvestinius statistinius duomenis. 
             </p>
             <p>Toliau pateikiami pavyzdžiai:
                 <ul>
@@ -241,9 +282,9 @@
             </p>
             <p>Toliau pateikiami pavyzdžiai:
                 <ul>
-                    <li>Turint baseinų plotų sluoksnį ir žemėnaudos plotų sluoksnį galima pagal žemėnaudos tipą apskaičiuoti bendrą kiekvieno baseino žemėnaudos plotą. 
+                    <li>Turint baseinų plotų sluoksnį ir žemėnaudos plotų sluoksnį, galima pagal žemėnaudos tipą apskaičiuoti bendrą kiekvieno baseino žemėnaudos plotą. 
                     </li>
-                    <li>Turint sklypų ir savivaldybių sluoksnius apskaičiuoti neužstatytų sklypų kiekvienoje savivaldybėje skaičių.
+                    <li>Turint sklypų ir savivaldybių sluoksnius, galima apskaičiuoti neužstatytų sklypų kiekvienoje savivaldybėje skaičių.
                     </li>
                 </ul>
                 
@@ -276,7 +317,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&Scaron;is įrankis veikia kartu su ta&scaron;kų, linijų, plotų arba lentelių sluoksniu, kuris nurodo konkretų laiko momentą. Naudodamas i&scaron; eilės i&scaron;dėstytus elementus (trajektorijas), &scaron;is įrankis nustato, kurie elementai yra dominantys įvykiai. Įvykiai nustatomi pagal jūsų nurodytas sąlygas. 
+            <p>&Scaron;is įrankis veikia kartu su ta&scaron;kų, linijų, plotų arba lentelių sluoksniu, kuris nurodo konkretų laiko momentą. Naudodamas i&scaron; eilės i&scaron;dėstytus elementus (trajektorijas), &scaron;is įrankis nustato, kurie elementai yra dominantys incidentai. Incidentai nustatomi pagal jūsų nurodytas sąlygas. 
             </p>
             <p>Toliau pateikiami pavyzdžiai:
                 <ul>
@@ -328,16 +369,20 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Dėsningumų analizavimas</h2>
+    <div id="AnalyzePatternsCategory" class="largesize">
+        <h2>Analizuoti dėsningumus</h2>
         <hr/>
-        <p> &Scaron;ie įrankiai leidžia nustatyti, įvertinti ir atvaizduoti erdvinius duomenų dėsningumus.
+        <p>  &Scaron;ie įrankiai leidžia nustatyti, įvertinti ir atvaizduoti erdvinius duomenų dėsningumus.
             <ul>
                 <li> <b>Apskaičiuoti tankį</b> naudoja kiekybinę rei&scaron;kinio informaciją ir ją atvaizduoja žemėlapyje.
                 </li>
                 <li> <b>Rasti kar&scaron;tuosius ta&scaron;kus</b> identifikuoja statisti&scaron;kai reik&scaron;mingas elementų sankaupas.
                 </li>
                 <li>Įrankis  <b>Rasti ta&scaron;kų sankaupas</b> randa ta&scaron;kų elementų sankaupas juos supančioje aplinkoje (triuk&scaron;me) pagal jų pasiskirstymą erdvėje.
+                </li>
+                <li> <b>Medžių schema paremta klasifikacija ir regresija</b> kuria modelius ir generuoja prognozes pagal Leo Breimano atsitiktinio mi&scaron;ko algoritmą, prižiūrimą ma&scaron;ininio mokymo metodą.
+                </li>
+                <li> <b>Generalizuota linijinė regresija</b> generuoja prognozes arba modeliuoja priklausomą kintamąjį pagal jo ry&scaron;ius su paai&scaron;kinančių kintamųjų rinkiniu.
                 </li>
             </ul>
             
@@ -415,6 +460,62 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Medžių schema paremta klasifikacija ir regresija</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Medžių schema paremtos klasifikacijos ir regresijos darbo eigos diagrama">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Įrankis Medžių schema paremta klasifikacija ir regresija  kuria modelius ir generuoja prognozes pagal Leo Breimano atsitiktinio mi&scaron;ko algoritmą, prižiūrimą ma&scaron;ininio mokymo metodą.
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Turėdami jūros dumblių stebėjimų duomenis ir įvairius aplinkos paai&scaron;kinamuosius kintamuosius, reprezentuojamus kaip abu atributus, kurie praturtinti naudojant kelių kintamųjų tinklelį skaičiuoti atstumus iki prie&scaron; srovę esančių gamyklų bei pagrindinių uostų, galite prognozuoti būsimą jūros dumblių atsiradimą pagal ateities prognozes tiems patiems aplinkos paai&scaron;kinantiems kintamiesiems.
+                          
+                    </li>
+                    <li>Tarkime, kad turite pasėlių na&scaron;umo duomenis i&scaron; &scaron;imtų &scaron;alies ūkių kartu su kitais kiekvieno i&scaron; tų ūkių atributais (darbuotojų skaičius, plotas ir t. t.). Naudodami &scaron;iuos duomenis, galite sukurti elementų rinkinį, reprezentuojantį ūkius, kurių pasėlių na&scaron;umo neturite (tačiau turite visus kitus kintamuosius) ir prognozuoti jų pasėlių na&scaron;umą.
+                    </li>
+                    <li>Būsto kainas galima prognozuoti pagal per einamuosius metus parduotų namų kainas. Parduotų namų kainos kartu su informacija apie miegamųjų skaičių, atstumą nuo mokyklų, pagrindinių greitkelių, vidutines pajamas ir nusikalstamumą gali būti naudojamos prognozuojant pana&scaron;ių namų pardavimo kainas.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generalizuota linijinė regresija</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Genralizuotos linijinės regresijos darbo eigos diagrama">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Įrankis Generalizuota linijinė regresija  generuoja prognozes arba modeliuoja priklausomą kintamąjį pagal jo ry&scaron;ius su paai&scaron;kinančių kintamųjų rinkiniu. &Scaron;is įrankis gali būti naudojamas pritaikyti i&scaron;tisinius (OLS), dvejetainius (logistinius) ir skaičiavimo (Puasono) modelius.
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Kokie demografiniai rodikliai prisideda prie didelio vie&scaron;ojo transporto naudojimo?
+                    </li>
+                    <li>Ar yra teigiamas ry&scaron;ys tarp vandalizmo ir apiplė&scaron;imų?
+                    </li>
+                    <li>Kokie kintamieji veiksmingai prognozuoja pagalbos skambučių kiekį? Atsižvelgiant į ateities prognozes, koks yra numatomas reagavimo į ekstremalias situacijas i&scaron;teklių poreikis?
+                    </li>
+                    <li>Kokie kintamieji veikia mažą gimstamumą?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Gretimybių naudojimas</h2>
         <hr/>
@@ -450,18 +551,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Valdyti duomenis</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Manage Data</h2>
         <hr/>
-        <p>&Scaron;ie įrankiai naudojami bendro pobūdžio geografinių duomenų ir lentelėse pateikiamų duomenų valdymui. 
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
-                <li>Įrankis  <b>Pridėti duomenis</b> prideda duomenis į esamą talpinamą elementų sluoksnį.
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
                 </li>
-                <li>Įrankis  <b>Skaičiuoti lauko reik&scaron;mes</b> sukuria naują lauką arba pakeičia esamą lauką ir sukuria naują sluoksnį jūsų turinyje.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li>Įrankis  <b>Kopijuoti į duomenų saugyklą</b> nukopijuoja duomenis į jūsų ArcGIS Data Store ir sukuria sluoksnį turinyje. 
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
                 </li>
-                <li>Įrankis  <b>Perdengti sluoksnius</b> apjungia dviejų ar daugiau sluoksnių informaciją į vieną sluoksnį.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -513,6 +620,54 @@
             </p>
             <br/>
         </div>
+        <div id="ClipLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Iškirpti sluoksnį</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="I&scaron;kirpti sluoksnį">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>I&scaron;kerpa įvesties elementus i&scaron; apibrėžtų dominančių teritorijų. I&scaron;vesties rezultatas bus įvesties elementų poaibis. 
+            </p>
+            <p>Toliau pateikiami pavyzdžiai: 
+                <ul>
+                    <li>Sukurkite poaibį į užtvindymo zonos teritorijas patenkančių pastatų, kuriems kyla grėsmė.
+                    </li>
+                    <li>Nustatykite, kurie pagrindiniai keliai eina per potencialios plėtros teritorijas.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sulieti ribas</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sulieti ribas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sujungia teritorijos elementus, kurie kertasi arba turi bendrą lauko reik&scaron;mę, ir sukuria gretutinius arba kelių dalių elementus.
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Sukurkite vieną Havajų valstiją rodantį elementą, suliedami Havajų salų ribas.
+                    </li>
+                    <li>Sujunkite pana&scaron;ias analizuojamas teritorijas pagal dirvos tipą ir sukurkite gretutinių dirvos tipų i&scaron;vestinį sluoksnį.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="OverlayLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -524,7 +679,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Perdengimas sujungia du arba daugiau sluoksnių į vieną sluoksnį. Perdengimas naudojamas atsakyti į vieną pagrindinių geografijos klausimų &bdquo;kas yra ant ko?&ldquo; Toliau pateikiami pavyzdžiai:
+            <p>Apjungia dviejų ar daugiau sluoksnių informaciją į vieną sluoksnį. Perdengimas naudojamas atsakyti į vieną pagrindinių geografijos klausimų &bdquo;kas yra ant ko?&ldquo; 
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
                 <ul>
                     <li>Kurie sklypai patenka į per paskutinius 100 metų potvynių užliejamą teritoriją? (Patenka yra kitas būdas pasakyti yra vir&scaron;)
                           
@@ -553,11 +710,68 @@
             <p>Prideda elementų į esamą talpinamą sluoksnį jūsų turinyje  ArcGIS Enterprise. </p>
             <p>Toliau pateikiami pavyzdžiai:
                 <ul>
-                    <li>Atnaujinkite savo 2018_Sales elementų sluoksnį kiekvieną mėnesį, kai bus prieinamos jūsų ataskaitos. 
+                    <li>Atnaujinkite savo 2018_Sales elementų sluoksnį kiekvieną mėnesį, kai bus prieinamos jūsų ataskaitos.
                     </li>
                     <li>Pridėkite uraganų trajektorijų duomenų 2016 ir 2017 m. rinkinius į pagrindinį uraganų duomenų rinkinį.
                     </li>
                     <li>Surinkite ir pridėkite duomenų rinkinius i&scaron; įvairių &scaron;altinių su skirtingomis schemomis, naudodami adaptuotą laukų susiejimą.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sujungti sluoksnius</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Sujungti sluoksnius">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sujungia du elementų sluoksnius ir sukuria vieną rezultatų sluoksnį. Visi sluoksnių sujungimo rezultatai įtraukiami pagal numatytuosius nustatymus, arba galite nurodyti adaptuotas sujungimo taisykles, apra&scaron;ančias rezultato schemą.  
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Sujunkite tris sluoksnius, kuriuose yra Anglijos, Velso ir &Scaron;kotijos demografiniai rodikliai, sudarydami vieną Didžiosios Britanijos sluoksnį.
+                    </li>
+                    <li>Sujunkite du sluoksnius, kuriuose yra dviejų gretimų miestelių siuntų informacija, i&scaron;saugodami tik tuos laukus, kurie abiejuose sluoksniuose turi tokį patį pavadinimą ir tipą.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Praturtinti duomenis</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai leidžia gauti daugiau informacijos apie teritorijas.
+            <ul>
+                <li> <b>Praturtinti i&scaron; kelių kintamųjų tinklelio</b> sujungia atributus i&scaron; kelių kintamųjų tinklelio į ta&scaron;kų sluoksnį.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Praturtinti iš kelių kintamųjų tinklelio</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="Praturtinti i&scaron; kelių kintamųjų tinklelio">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Efektyviai sujungia atributus i&scaron; kelių kintamųjų tinklelio į ta&scaron;kų sluoksnį ir leidžia greitai pridėti daug įvairios informacijos į ta&scaron;kų duomenis, kad būtų galima naudoti tolesnei erdvinei analizei. 
+            </p>
+            <p>Toliau pateikiami pavyzdžiai:
+                <ul>
+                    <li>Turėdami sluoksnį, kuriame yra milijonai energijos tiekimo nutraukimo atvejų, praturtinkite elementus informacija apie tipi&scaron;ką naudojimą, aplinkos riziką ir infrastruktūros sąlygas, kad būtų galima analizuoti ry&scaron;į tarp &scaron;ių veiksnių ir energijos dingimo dažnumo. 
                     </li>
                 </ul>
                 

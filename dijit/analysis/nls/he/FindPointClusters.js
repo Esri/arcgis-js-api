@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({clustersLabel:"מצא את האשכולות עבור השכבה ‎${inputLayerName}‎.",chooseLayerLabel:"בחר את השכבה שעבורה יש למצוא אשכולות",minClusterPtsLabel:"מספר הנקודות המינימלי כדי להיחשב לאשכול",limitSearchLabel:"הגבל את טווח החיפוש ל- (אופציונלי)",limitSearchReqLabel:"הגבל את טווח החיפוש אל",outputLayerName:"מצא אשכולות עבור ‎${inputLayerName}‎",itemDescription:"שכבת הישויות נוצרה מהרצת פתרון איתור אשכולות הנקודות עבור ‎${inputLayerName}‎.",itemTags:"תוצאת ניתוח, איתור אשכולות נקודות, ${inputLayerName}",itemSnippet:"שכבת הישויות נוצרה מאיתור אשכולות נקודות",chooseClusteringMethod:"בחר את שיטת האשכולות שבה תרצה להשתמש",dbscanLabel:"מרחק מוגדר (DBSCAN)",hdbscanLabel:"התאמה עצמית (HDBSCAN)"});

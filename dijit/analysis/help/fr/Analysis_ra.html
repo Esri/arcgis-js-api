@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>L'analyse raster vous permet d'analyser des jeux de donn&eacute;es raster volumineux &agrave; l'aide d' ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur. Les jeux d'outils actuellement disponibles via l'exp&eacute;rience utilisateur Web de  Portal for ArcGIS sont  <b>Synth&eacute;tiser les donn&eacute;es</b>, <b>Analyser la r&eacute;partition spatiale</b>, <b>Analyser l'image</b>, <b>Analyser le MNT</b> et <b>G&eacute;rer les donn&eacute;es</b>.
+        <p>L'analyse raster vous permet d'analyser des jeux de donn&eacute;es raster volumineux &agrave; l'aide d' ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur. Les jeux d&rsquo;outils actuellement disponibles via l&rsquo;exp&eacute;rience utilisateur web de  Portal for ArcGIS sont  <b>Synth&eacute;tiser les donn&eacute;es</b>, <b>Analyser la r&eacute;partition spatiale</b>, <b>Utiliser la proximit&eacute;</b>, <b>Analyser l&rsquo;image</b>, <b>Analyser le MNT</b>, <b>G&eacute;rer les donn&eacute;es</b> et <b>Apprentissage profond</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Appliquer un modèle de fonction raster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Appliquer un mod&egrave;le de fonction raster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Cr&eacute;e un nouveau jeu de donn&eacute;es d'entit&eacute; &agrave; partir d'un jeu de donn&eacute;es raster existant.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Jeu d’outils Apprentissage profond</h2>
+        <hr/>
+        <p>Ces outils permettent de d&eacute;tecter les entit&eacute;s sp&eacute;cifiques sur une image ou de classifier les pixels dans un jeu de donn&eacute;es raster. L&rsquo;apprentissage profond est un type de m&eacute;thode d&rsquo;apprentissage automatique bas&eacute;e sur l&rsquo;intelligence artificielle qui d&eacute;tecte les images &agrave; l&rsquo;aide de plusieurs couches figurant dans des r&eacute;seaux neuronaux, chaque couche &eacute;tant capable d&rsquo;extraire une ou plusieurs entit&eacute;s uniques dans l&rsquo;image. Ces outils exploitent les mod&egrave;les qui ont &eacute;t&eacute; form&eacute;s &agrave; d&eacute;tecter des entit&eacute;s sp&eacute;cifiques dans les structures d&rsquo;apprentissage profond ind&eacute;pendantes (TensorFlow, CNTK et Keras, par exemple) et produisent des entit&eacute;s ou des cartes de classe.
+            <ul>
+                <li>L&rsquo;outil  <b>Classer des pixels &agrave; l&rsquo;aide d&rsquo;un outil d&rsquo;apprentissage profond</b> produit un raster class&eacute; &agrave; l&rsquo;aide d&rsquo;un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute;.
+                </li>
+                <li>L&rsquo;outil  <b>D&eacute;tecter des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond</b> produit une classe d&rsquo;entit&eacute;s contenant les objets qu&rsquo;il d&eacute;tecte dans un raster en entr&eacute;e &agrave; l&rsquo;aide d&rsquo;un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute;.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classer des pixels à l’aide de l’apprentissage en profondeur</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classer des pixels &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer un raster class&eacute;, une &eacute;tiquette de classe &eacute;tant attribu&eacute;e &agrave; chaque pixel valide.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Détecter des objets à l’aide de l’apprentissage en profondeur</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="D&eacute;tecter des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer une classe d&rsquo;entit&eacute;s contenant les objets qu&rsquo;il trouve. Les entit&eacute;s peuvent correspondre &agrave; des emprises ou des polygones autour des objets trouv&eacute;s ou encore des points situ&eacute;s aux centres des objets.
             </p>
             <br/>
         </div>

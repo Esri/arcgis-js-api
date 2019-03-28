@@ -63,7 +63,7 @@
         <div>
             <p>Il layer areale che verr&agrave; utilizzato per riepilogare le feature che rientrano nei suoi confini. 
             </p>
-            <p>&Egrave; possibile scegliere tra un layer areale fornito dall'utente e i contenitori generati durante l'esecuzione dello strumento.Quando si generano i contenitori, nel caso di  <b>Quadrato</b>, il numero e le unit&agrave; specificate determinano l'altezza e la lunghezza del quadrato. Nel caso di <b>Esagono</b>, il numero e le unit&agrave; specificate determinano la distanza tra i lati paralleli.
+            <p>&Egrave; possibile scegliere tra un layer areale fornito e i contenitori generati quando lo strumento &egrave; in esecuzione.   Quando si generano i contenitori, nel caso di  <b>Quadrato</b>, il numero e le unit&agrave; specificate determinano l'altezza e la lunghezza del quadrato. Nel caso di <b>Esagono</b>, il numero e le unit&agrave; specificate determinano la distanza tra i lati paralleli.
             </p>
             <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
@@ -100,6 +100,8 @@
                 </li>
             </ul>
             
+            <p>Se il layer da riepilogare non contiene nessun campo numerico, le statistiche aggiuntive non saranno disponibili.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -123,6 +125,8 @@
                 </li>
             </ul>
             
+            <p>Se il layer da riepilogare non contiene nessun campo numerico, le statistiche aggiuntive non saranno disponibili.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -146,6 +150,8 @@
                 </li>
             </ul>
             
+            <p>Se il layer da riepilogare non contiene nessun campo numerico, le statistiche aggiuntive non saranno disponibili.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -169,13 +175,15 @@
             
             <p>In base ai tipi di feature che si stanno riepilogando, &egrave; possibile calcolare il conteggio totale di punti, la lunghezza totale delle linee o l'area totale.
             </p>
+            <p>Se il layer da riepilogare non contiene nessun campo numerico, le statistiche aggiuntive non saranno disponibili.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Scegli il campo in base a cui raggruppare</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; un attributo delle feature di tipo  <b>Riepiloga</b> utilizzabile per calcolare separatamente le statistiche di ciascun valore di attributo univoco.Ad esempio, si supponga che il primo layer di input contenga confini di citt&agrave; e che le feature di riepilogo corrispondano a lotti.  Uno degli attributi dei lotti &egrave; <i>Stato</i> e contiene due valori: NON OCCUPATO e OCCUPATO. Per calcolare l'area totale dei lotti occupati e non occupati entro i confini delle citt&agrave;, utilizzare <i>Stato</i> come gruppo per attributo. Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature incluse in ogni confine di area, verranno visualizzate nel popup del layer dei risultati.
+            <p>Questo &egrave; un attributo delle feature di tipo  <b>Riepiloga</b> utilizzabile per calcolare separatamente le statistiche di ciascun valore di attributo univoco. Ad esempio, si supponga che il primo layer di input contenga confini di citt&agrave; e che le feature di riepilogo corrispondano a lotti.  Uno degli attributi dei lotti &egrave; <i>Status</i> e contiene due valori: NON OCCUPATO e OCCUPATO. Per calcolare l'area totale dei lotti occupati e non occupati entro i confini delle citt&agrave;, utilizzare <i>Status</i> come gruppo per attributo. Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature incluse in ogni confine di area, verranno visualizzate nel popup del layer dei risultati.
             </p>
         </div>
     </div>
@@ -183,7 +191,7 @@
         <div><h2>Aggiungi minoranza, maggioranza</h2></div>
         <hr/>
         <div>
-            <p>Questa casella di controllo &egrave; abilitata quando si seleziona un campo in base a cui raggruppare. Se si desidera trovare i valori di attributo che in ciascun gruppo costituiscono la minoranza (meno dominanti) o la maggioranza (pi&ugrave; dominanti) in ogni confine del primo layer di input, selezionare  <b>Aggiungi minoranza, maggioranza</b>.   Quando si seleziona <b>Aggiungi minoranza, maggioranza</b>, vengono aggiunti due nuovi campial layer dei risultati.   Se si seleziona anche <b>Aggiungi percentuali</b>, al layer dei risultati vengono aggiunti altri due campi che contengono le percentuali relative ai valori degli attributi di minoranza e maggioranza all'interno di ciascun gruppo.
+            <p>Questa casella di controllo &egrave; abilitata quando si seleziona un campo in base a cui raggruppare. Se si desidera trovare i valori di attributo che in ciascun gruppo costituiscono la minoranza (meno dominanti) o la maggioranza (pi&ugrave; dominanti) in ogni confine del primo layer di input, selezionare  <b>Aggiungi minoranza, maggioranza</b>.   Quando si seleziona <b>Aggiungi minoranza, maggioranza</b>, vengono aggiunti due nuovi campi al layer dei risultati.   Se si seleziona anche <b>Aggiungi percentuali</b>, vengono aggiunti altri due campi, al layer dei risultati, che contengono le percentuali relative ai valori degli attributi di minoranza e maggioranza all'interno di ciascun gruppo.
             </p>
             <ul>
                 <li>Se si intende riepilogare punti, i valori di minoranza e maggioranza vengono calcolati sulla base del numero di punti in ogni area di confine nel layer areale di input.  
@@ -200,7 +208,7 @@
         <div><h2>Aggiungi percentuali</h2></div>
         <hr/>
         <div>
-            <p>Questa casella di controllo &egrave; abilitata quando si seleziona un campo in base a cui raggruppare. Selezionare  <b>Aggiungi percentuali</b> se si desidera trovare la percentuale di ogni valore di attributo in ogni gruppo. Un nuovo campo viene aggiunto alla tabella dei risultati contenente le percentuali di ogni valore di attributo in ogni gruppo. Se si seleziona anche <b>Aggiungi minoranza, maggioranza</b>, al layer dei risultati vengono aggiunti altri due campi contenenti le percentuali relative ai valori degli attributi di minoranza e maggioranza all'interno di ciascun gruppo.
+            <p>Questa casella di controllo &egrave; abilitata quando si seleziona un campo in base a cui raggruppare. Selezionare  <b>Aggiungi percentuali</b> se si desidera trovare la percentuale di ogni valore di attributo in ogni gruppo.  Un nuovo campo viene aggiunto alla tabella dei risultati contenente le percentuali di ogni valore di attributo in ogni gruppo. Se si seleziona anche <b>Aggiungi minoranza, maggioranza</b>, al layer dei risultati vengono aggiunti altri due campi contenenti le percentuali relative ai valori degli attributi di minoranza e maggioranza all&rsquo;interno di ciascun gruppo.
             </p>
         </div>
     </div>
@@ -208,9 +216,9 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            <p>Questo &egrave; il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il nome del layer esiste gi&agrave;, verr&agrave; richiesto di fornire un altro nome.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare il men&ugrave; a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({clustersLabel:"Suchen Sie für den Layer ${inputLayerName} nach Clustern.",chooseLayerLabel:"Wählen Sie den Layer aus, für den nach Clustern gesucht wird.",minClusterPtsLabel:"Minimale Anzahl von Punkten, die als Cluster gelten",limitSearchLabel:"Suchbereich begrenzen auf (optional)",limitSearchReqLabel:"Suchbereich begrenzen auf",outputLayerName:"Für ${inputLayerName} nach Clustern suchen",itemDescription:"Über 'Punkt-Cluster suchen' für ${inputLayerName} erstellter Feature-Layer.",itemTags:"Analyseergebnis, Punkt-Cluster suchen, ${inputLayerName}",itemSnippet:"Aus 'Punkt-Cluster suchen' erstellter Feature-Layer",chooseClusteringMethod:"Zu verwendende Methode der Cluster-Bildung auswählen",dbscanLabel:"Definierte Entfernung (DBSCAN)",hdbscanLabel:"Automatische Anpassung (HDBSCAN)"});

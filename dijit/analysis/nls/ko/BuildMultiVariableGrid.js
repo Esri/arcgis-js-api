@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({binsLabel:"다중 변수 격자를 만드는 데 사용되는 그룹의 유형 선택",layersAttrLabel:"격자에 포함할 입력 레이어 및 변수 선택",itemDescription:"다중 변수 격자 만들기를 실행하여 생성된 피처 레이어입니다.",itemTags:"분석 결과, 다중 변수 격자 만들기",itemSnippet:"다중 변수 격자 만들기를 통해 생성된 피처 레이어",addVariables:"변수 추가"});

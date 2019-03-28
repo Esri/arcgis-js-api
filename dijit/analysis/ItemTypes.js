@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/has","../../kernel"],function(e,a,r){var i={BIGDATA:"Big Data File Share",CSV:"CSV",XLS:"Microsoft Excel",FS:"Feature Service",MS:"Map Service",IS:"Image Service",FLAYER:"Feature Layer",BDATAFEATURE:"featureClass",TABLE:"Table",BTABLE:"table",FLAYERVIEW:"FeatureLayerView",MVGRID:"Multi-Variable Grid"};return a("extend-esri")&&e.setObject("dijit.analysis.itemTypes",i,r),i});
+define(["dojo/_base/lang","dojo/has","../../kernel"],function(e,a,r){var t={BIGDATA:"Big Data File Share",CSV:"CSV",XLS:"Microsoft Excel",FS:"Feature Service",MS:"Map Service",IS:"Image Service",FLAYER:"Feature Layer",BDATAFEATURE:"featureClass",TABLE:"Table",BTABLE:"table",FLAYERVIEW:"FeatureLayerView",MVGRID:"Multi-Variable Grid",GPSERVICE:"Geoprocessing Service",RFT:"Raster function template",BDFSTEMPLATE:"bdfstemplate"};return a("extend-esri")&&e.setObject("dijit.analysis.itemTypes",t,r),t});

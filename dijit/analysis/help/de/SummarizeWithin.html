@@ -48,7 +48,7 @@
         <ul>
             <li>Anhand eines Layers mit Grenzen von Abflussgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet ermitteln. 
             </li>
-            <li>Anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt zusammenfassen.
+            <li>Fassen Sie anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt zusammen.
             </li>
         </ul>
         
@@ -63,14 +63,14 @@
         <div>
             <p>Der Fl&auml;chen-Layer, anhand dessen Features zusammengefasst werden, die innerhalb seiner Grenzen liegen. 
             </p>
-            <p>Sie k&ouml;nnen zwischen einem Fl&auml;chen-Layer, den Sie bereitstellen, oder zwischen Abschnitten ausw&auml;hlen, die beim Ausf&uuml;hren des Werkzeugs erstellt werden. Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und L&auml;nge des Quadrats an. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
+            <p>Sie k&ouml;nnen zwischen einem Fl&auml;chen-Layer, den Sie bereitstellen, oder zwischen Abschnitten ausw&auml;hlen, die beim Ausf&uuml;hren des Werkzeugs erstellt werden. Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und Breite des Quadrats. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
             </p>
             <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Layer für die Zusammenfassung auswählen</h2></div>
+        <div><h2>Einen Layer für die Zusammenfassung auswählen</h2></div>
         <hr/>
         <div>
             <p>Features in diesem Layer, die innerhalb der Grenzen der Features im oben genannten Eingabe-Layer liegen, werden zusammengefasst. 
@@ -85,7 +85,7 @@
         <div>
             <p>Sie k&ouml;nnen auch die Statistiken f&uuml;r numerische Attribute der Punkte berechnen, die innerhalb der Grenzen von Features liegen. 
             </p>
-            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl von Punkten</b> aktiviert ist, wird die Gesamtzahl der Punkte innerhalb jeder Fl&auml;chengrenze berechnet.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Punkte zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
+            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl der Punkte</b> aktiviert ist, wird die Gesamtzahl der Punkte innerhalb jeder Fl&auml;chengrenze berechnet.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Punkte zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
             </p>
             <ul>
                 <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld.
@@ -96,10 +96,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -119,10 +121,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -142,10 +146,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -163,11 +169,13 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
             <p>Je nach Feature-Typen, die Sie zusammenfassen, k&ouml;nnen Sie die Gesamtzahl der Punkte, die Gesamtl&auml;nge der Linien oder die Gesamtfl&auml;che berechnen.
+            </p>
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
             </p>
         </div>
     </div>
@@ -175,7 +183,7 @@
         <div><h2>Feld für die Gruppierung auswählen</h2></div>
         <hr/>
         <div>
-            <p>Dies ist ein Attribut der  <b>Feldstatistik</b>-Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen der erste Eingabe-Layer enth&auml;lt beispielsweise Stadtgrenzen und die Zusammenfassungs-Features sind Flurst&uuml;cke.  Eines der Attribute der Flurst&uuml;cke lautet <i>Status</i> und enth&auml;lt zwei Werte: &quot;VACANT&quot; und &quot;OCCUPIED&quot;. Um die Gesamtfl&auml;che unbebauter oder bebauter Flurst&uuml;cke innerhalb der Grenzen einer Stadt zu berechnen, verwenden Sie <i>Status</i> als Attribut, nach dem gruppiert werden soll. Die Statistik f&uuml;r jede Gruppe und die Anzahl der Features innerhalb jeder Fl&auml;chengrenze werden im Pop-up des Ergebnis-Layers angezeigt.
+            <p>Dies ist ein Attribut der  <b>Feldstatistik</b>-Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen der erste Eingabe-Layer enth&auml;lt beispielsweise Stadtgrenzen und die Zusammenfassungs-Features sind Flurst&uuml;cke.  Eines der Attribute der Flurst&uuml;cke lautet <i>Status</i> und enth&auml;lt zwei Werte: &quot;VACANT&quot; und &quot;OCCUPIED&quot;. Um die Gesamtfl&auml;che unbebauter bzw. bebauter Flurst&uuml;cke innerhalb der Grenzen einer Stadt zu berechnen, verwenden Sie <i>Status</i> als Attribut, nach dem gruppiert werden soll. Die Statistik f&uuml;r jede Gruppe und die Anzahl der Features innerhalb jeder Fl&auml;chengrenze werden im Pop-up des Ergebnis-Layers angezeigt.
             </p>
         </div>
     </div>
@@ -208,9 +216,9 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>
         </div>
     </div>

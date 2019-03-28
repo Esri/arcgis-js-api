@@ -81,7 +81,7 @@ area that defines which features will be included in the output ZIP or CSV file.
                 <ul>
                     <li>The current visible extent of your map ( <b>Same as Display</b>).
                     </li>
-                    <li>One of the layers in your table of contents.
+                    <li>One of the layers in your table of contents. If the selected layer is point or line features, the extent of the layer will be used as the study area.
                     </li>
                     <li>Draw an area  to define the study area.
                     </li>
@@ -104,6 +104,19 @@ area that defines which features will be included in the output ZIP or CSV file.
             <p>Format of the data that will be extracted. When exporting line or area features to CSV files, only non-spatial attributes are extracted.  When exporting point features, both the spatial and non-spatial attributes are extracted.  
             </p>
             <p>Extracted data will use the Web Mercator 1984 projection.  For CSV files,  <i>Lat</i> and <i>Long</i> fields will be appended to the data with coordinates in Web Mercator 1984.
+            </p> 
+            <p>The following output formats are supported:
+                <ul>
+                    <li>Comma separated value (CSV)&mdash; <code>.csv</code> or <code>.zip</code>
+                    </li>
+                    <li>File geodatabase&mdash; <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML)&mdash; <code>.kmz</code> or <code>.zip</code>
+                    </li>
+                    <li>Shapefile&mdash; <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

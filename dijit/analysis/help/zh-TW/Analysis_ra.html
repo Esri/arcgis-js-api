@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過  Portal for ArcGIS Web 使用者使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>分析圖片</b>、 <b>分析地形</b>和 <b>管理資料</b>。
+        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過  Portal for ArcGIS Web 使用者體驗所使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>使用鄰域</b>、 <b>分析圖片</b>、 <b>分析地形</b>、 <b>管理資料</b>和 <b>深度學習</b>。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>套用點陣函數樣板</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="套用點陣函數樣板">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>從現有的點陣資料集建立新的圖徵資料集。
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="smallsize">
+        <h2>工具集深度學習</h2>
+        <hr/>
+        <p>這些工具是用來偵測圖片中的特定圖徵，或用來分類點陣資料集內的像素。深度學習是一種人工智慧機器學習方法，可在類神經網路中使用多個圖層來偵測影像的圖徵，其中的每個圖層可擷取圖片中一或多個唯一圖徵。這些工具利用經過培訓的模型，可用來偵測第三方深度學習架構（例如 TensorFlow、CNTK 和 Keras）中的特定圖徵，並輸出圖徵或類別地圖。
+            <ul>
+                <li> <b>使用深度學習以分類像素</b>可使用培訓的深度學習模型來產生分類的點陣。
+                </li>
+                <li> <b>使用深度學習以偵測物件</b>可使用培訓的深度學習模型來產生圖徵類別，包含它在輸入點陣中找到的物件。
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用深度學習以分類像素</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="使用深度學習以分類像素">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用深度學習以偵測物件</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="使用深度學習以偵測物件">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

@@ -46,8 +46,7 @@
         <hr/>
     <p>Dieses Werkzeug kann mit einem Punkt-Feature-Layer und einem Fl&auml;chen-Feature-Layer verwendet werden. Es ermittelt zun&auml;chst, welche Punkte in den einzelnen Fl&auml;chen liegen. Nachdem diese r&auml;umliche Beziehung der Punkte in diesen Fl&auml;chen bestimmt wurde, werden Statistiken zu allen Punkten in der Fl&auml;che berechnet und der Fl&auml;che zugewiesen. Die einfachste Statistik ist die Anzahl der Punkte innerhalb der Fl&auml;che. Sie k&ouml;nnen jedoch auch andere Statistiken abrufen. 
     </p>
-    <p>Angenommen, Sie verf&uuml;gen &uuml;ber Punkt-Features f&uuml;r Caf&eacute;standorte und Fl&auml;chen-Features f&uuml;r Landkreise und Sie m&ouml;chten die Umsatzzahlen der Caf&eacute;s nach Landkreis zusammenfassen. Angenommen, die Caf&eacute;s weisen das Attribut  <i>TOTAL_SALES</i> auf und Sie k&ouml;nnen die Summe aller <i>TOTAL_SALES</i> in jedem Landkreis oder den Minimal- bzw. Maximalwert f&uuml;r <i>TOTAL_SALES</i>
- in jedem Landkreis oder die Standardabweichung s&auml;mtlicher Umsatzzahlen in jedem Landkreis abrufen.
+    <p>Angenommen, Sie verf&uuml;gen &uuml;ber Punkt-Features f&uuml;r Caf&eacute;standorte und Fl&auml;chen-Features f&uuml;r Landkreise und Sie m&ouml;chten die Umsatzzahlen der Caf&eacute;s nach Landkreis zusammenfassen. Angenommen, die Caf&eacute;s weisen das Attribut  <i>TOTAL_SALES</i> auf, dann k&ouml;nnen Sie f&uuml;r die einzelnen Landkreise entweder die Gesamtsumme f&uuml;r <i>TOTAL_SALES</i>, den Minimal- bzw. Maximalwert f&uuml;r <i>TOTAL_SALES</i> oder die Standardabweichung f&uuml;r den Gesamtumsatz abrufen.
     </p>
     <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabepunkt-Layer und im Fl&auml;chen-Layer analysiert, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabepunkt-Layer und im Fl&auml;chen-Layer analysiert, wenn sie sich au&szlig;erhalb der aktuellen Ausdehnung befinden.
     </p>
@@ -69,7 +68,7 @@
         <div>
             <p>Der Fl&auml;chen-Layer, zu dem die Punkte aggregiert werden. Alle Punkte, die innerhalb der Grenzen von Fl&auml;chen in diesem Layer liegen, werden gez&auml;hlt und optional anhand der von Ihnen ausgew&auml;hlten Statistiken zusammengefasst.  
             </p>
-            <p>Sie k&ouml;nnen zwischen einem Fl&auml;chen-Layer, den Sie bereitstellen, oder zwischen Abschnitten ausw&auml;hlen, die beim Ausf&uuml;hren des Werkzeugs erstellt werden. Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und L&auml;nge des Quadrats an. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
+            <p>Sie k&ouml;nnen zwischen einem Fl&auml;chen-Layer, den Sie bereitstellen, oder zwischen Abschnitten ausw&auml;hlen, die beim Ausf&uuml;hren des Werkzeugs erstellt werden. Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und Breite des Quadrats. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
             </p>
             <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
@@ -90,13 +89,15 @@
             <p>Sie k&ouml;nnen Statistiken zu Attributen des Eingabe-Punkt-Layers wie &quot;Summe&quot;, &quot;Durchschnitt&quot;, &quot;Minimum&quot;, &quot;Maximum&quot; und &quot;Standardabweichung&quot; berechnen. Der Ergebnis-Layer enth&auml;lt f&uuml;r jede berechnete Statistik ein neues Attribut. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden (es wird ein neues Dropdown-Feld angezeigt).
  
             </p>
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Feld für die Gruppierung auswählen</h2></div>
         <hr/>
         <div>
-            <p> Sie k&ouml;nnen statistische Gruppen mithilfe eines Attributs im Eingabepunkt-Layer erstellen.    Wenn Sie beispielsweise Straftaten zu Nachbarschaftsgebieten aggregieren, verf&uuml;gen Sie m&ouml;glicherweise &uuml;ber das Attribut <i>Crime_type</i> mit f&uuml;nf verschiedenen Arten von Straftaten.  Jede Art von Straftat bildet eine Gruppe und die Statistiken, die Sie ausw&auml;hlen, werden f&uuml;r jeden Einzelwert von <i>Crime_type</i> berechnet.  Die Statistik f&uuml;r jede Gruppe und die Anzahl der Punkte werden im Pop-up des Ergebnis-Layers angezeigt. Wenn Sie ein Gruppierungsattribut ausw&auml;hlen, werden zwei Ergebnisse erstellt: der Ergebnis-Layer und eine Ergebnistabelle mit den Statistiken f&uuml;r jede Einzelgruppe.
+            <p> Sie k&ouml;nnen statistische Gruppen mithilfe eines Attributs im Eingabepunkt-Layer erstellen.    Wenn Sie beispielsweise Straftaten an Nachbarschaftsgrenzen aggregieren, haben Sie m&ouml;glicherweise das Attribut <i>Crime_type</i> mit f&uuml;nf verschiedenen Arten von Straftaten angelegt. Jede Art von Straftat bildet eine Gruppe und die Statistiken, die Sie ausw&auml;hlen, werden f&uuml;r jeden Einzelwert von <i>Crime_type</i> berechnet. Die Statistik f&uuml;r jede Gruppe und die Anzahl der Punkte werden im Pop-up des Ergebnis-Layers angezeigt. Wenn Sie ein Gruppierungsattribut ausw&auml;hlen, werden zwei Ergebnisse erstellt: der Ergebnis-Layer und eine Ergebnistabelle mit den Statistiken f&uuml;r jede Einzelgruppe.
             </p>
         </div>
     </div>
@@ -122,9 +123,9 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>يُتيح لك تحليل البيانات النقطية تنفيذ تحليل لمجموعات البيانات النقطية الكبيرة باستخدام  ArcGIS Image Server. وهو ما يُتيح لك تحليل مزيد من البيانات باستخدام قوة الخادم. مجموعات الأدوات المتوفرة حاليًا في تجربة مستخدم ويب  Portal for ArcGIS هي  <b>تلخيص البيانات</b>و <b>تحليل البيانات</b>و <b>تحليل الصورة</b>و <b>تحليل التضاريس</b>و <b>إدارة البيانات</b>.
+        <p>يُتيح لك تحليل البيانات النقطية تنفيذ تحليل لمجموعات البيانات النقطية الكبيرة باستخدام  ArcGIS Image Server. وهو ما يُتيح لك تحليل مزيد من البيانات باستخدام قوة الخادم. مجموعات الأدوات المتوفرة حاليًا في تجربة مستخدم ويب  Portal for ArcGIS هي  <b>تلخيص البيانات</b> و <b>تحليل الأنماط</b> و <b>استخدام التقريب</b> و <b>تحليل الصورة</b> و <b>تحليل التضاريس</b> و <b>إدارة البيانات</b> و <b>التعلم الشامل</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>تطبيق قالب وظيفة البيانات النقطية</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="تطبيق قالب دالة البيانات النقطية">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>إنشاء مجموعة بيانات معالم جديدة من مجموعة بيانات نقطية حالية.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>مجموعة أدوات التعلم الشامل</h2>
+        <hr/>
+        <p>تُستخدم هذه الأدوات 	لاكتشاف معالم معينة في صورة أو لتصنيف وحدات البكسل في مجموعة بيانات نقطية. التعلم الشامل هو نوع من التعلم الآلي بذكاء اصطناعي يكتشف المعالم في الصور باستخدام طبقات متعددة في الشبكات العصبية حيث كل طبقة قادرة على استخراج معلم فريد أو أكثر في الصورة. تستخدم هذه الأدوات الطرق التي تم التدريب عليها لاكتشاف معالم معينة في أطر التعلم الشامل الخارجية&mdash;مثل TensorFlow وCNTK وKeras&mdash;وإخراج المعالم أو تصنيف الخرائط.
+            <ul>
+                <li>تُنتج أداة  <b>تصنيف وحدات البكسل باستخدام التعلم الشامل</b> بيانات نقطية مصنفة باستخدام نموذج تعلم شامل مدرب.
+                </li>
+                <li>تُنتج أداة  <b>اكتشاف الكائنات باستخدام التعلم الشامل</b> تصنيف معلم يحتوي على كائنات توجد مجموعة بيانات نقطية للإدخال باستخدام نموذج تعلم شامل ومدرب.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>تصنيف وحدات البكسل باستخدام التعلم الشامل</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="تصنيف وحدات البكسل باستخدام التعلم الشامل">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>اكتشاف الكائنات باستخدام التعلم الشامل</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="اكتشاف الكائنات باستخدام التعلم الشامل">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

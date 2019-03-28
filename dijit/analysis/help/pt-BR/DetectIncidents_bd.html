@@ -44,7 +44,7 @@
         <h2>Detectar Incidentes</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar Incidentes"></h2>
         <hr/>
-    <p>Esta ferramenta funciona com uma camada de pontos, linhas, &aacute;reas ou tabelas habilitadas ao tempo que representa um instante no tempo. Utilizando fei&ccedil;&otilde;es ordenadas sequencialmente, denominadas trilhas, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados pelas condi&ccedil;&otilde;es que voc&ecirc; especifica. 
+    <p> Esta ferramenta funciona com uma camada de pontos, linhas, &aacute;reas ou tabelas habilitadas ao tempo que representa um instante no tempo.   Utilizando fei&ccedil;&otilde;es ordenadas sequencialmente, denominadas trilhas, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados pelas condi&ccedil;&otilde;es que voc&ecirc; especifica.
     </p>
     <p>Primeiro, a ferramenta determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um ou mais campos. Com a utiliza&ccedil;&atilde;o do tempo em cada fei&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e a condi&ccedil;&atilde;o do incidente &eacute; aplicada. As fei&ccedil;&otilde;es que atendem a condi&ccedil;&atilde;o de incidente inicial s&atilde;o marcadas como um incidente. Voc&ecirc; pode opcionalmente aplicar uma condi&ccedil;&atilde;o de incidente final; quando a condi&ccedil;&atilde;o final for verdadeira, a fei&ccedil;&atilde;o n&atilde;o &eacute; mais um incidente.  Os resultados ser&atilde;o retornados com as fei&ccedil;&otilde;es originais&mdash;com novas colunas representando o nome do incidente&mdash;e indica quais fei&ccedil;&otilde;es atendem a condi&ccedil;&atilde;o de incidente. Voc&ecirc; pode retornar para todas as fei&ccedil;&otilde;es originais ou somente as fei&ccedil;&otilde;es que s&atilde;o incidentes.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Os pontos, linhas, &aacute;reas ou tabelas que ser&atilde;o utilizados para localizar incidentes. A camada de entrada deve ser de tempo habilitado com fei&ccedil;&otilde;es que representam um momento no tempo, como tamb&eacute;m ter um ou mais campos que podem ser utilizados para identificar caminhos.
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Construir uma condição de expressão para significar o fim de um incidente</h2></div>
+        <div><h2>Construir uma condição de expressão para significar o fim de um incidente (opcional)</h2></div>
         <hr/>
         <div>
             <p>Opcionalmente, adicione uma condi&ccedil;&atilde;o utilizando o construtor de express&atilde;o para determinar o fim de um incidente. Se a condi&ccedil;&atilde;o final que voc&ecirc; especifica for verdadeira, a fei&ccedil;&atilde;o n&atilde;o &eacute; mais um incidente. Se voc&ecirc; n&atilde;o especificar uma condi&ccedil;&atilde;o final, um incidente final quando a condi&ccedil;&atilde;o inicial n&atilde;o for mais verdadeira.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Selecionar como deseja a saída representada</h2></div>
+        <div><h2>Mostre-me</h2></div>
         <hr/>
         <div>
             <p>Todos os m&eacute;todos de sa&iacute;da ir&atilde;o anexar campos das fei&ccedil;&otilde;es originais. H&aacute; dois caminhos para determinar quais fei&ccedil;&otilde;es s&atilde;o retornadas:
                 <ul>
-                    <li> <b>Somente retornar incidentes</b>&mdash;Este m&eacute;todo somente retornar&aacute; as fei&ccedil;&otilde;es que s&atilde;o incidentes. Quaisquer fei&ccedil;&otilde;es que n&atilde;o s&atilde;o localizadas para serem incidentes n&atilde;o ser&atilde;o retornadas.
+                    <li> <b>Todas as fei&ccedil;&otilde;es</b>&mdash;Este &eacute; o padr&atilde;o. Todas as fei&ccedil;&otilde;es na entrada ser&atilde;o retornadas.
                     </li>
-                    <li> <b>Retornar todas as fei&ccedil;&otilde;es</b>&mdash;Este &eacute; o padr&atilde;o. Todas as fei&ccedil;&otilde;es na entrada ser&atilde;o retornadas.
+                    <li> <b>Somente incidentes</b>&mdash;Este m&eacute;todo somente retornar&aacute; as fei&ccedil;&otilde;es que s&atilde;o incidentes. Quaisquer fei&ccedil;&otilde;es que n&atilde;o s&atilde;o localizadas para serem incidentes n&atilde;o ser&atilde;o retornadas.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analisar dados com intervalos de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se voc&ecirc; deseja detectar incidentes utilizando intervalos de tempo que segmentam suas fei&ccedil;&otilde;es de entrada para an&aacute;lise. Se voc&ecirc; utilizar intervalos de tempo, dever&aacute; definir o intervalo de tempo que deseja utilizar e, opcionalmente, definir o hor&aacute;rio de refer&ecirc;ncia. Se voc&ecirc; n&atilde;o definir um hor&aacute;rio de refer&ecirc;ncia, 1&ordm; de Janeiro de 1970 ser&aacute; utilizado. 
+            </p>
+            <p>Por exemplo, se voc&ecirc; definir o limite de tempo como 1 dia, come&ccedil;ando &agrave;s 9:00 AM do dia 1&ordm; de Janeiro de 1990, cada caminho ser&aacute; truncado &agrave;s 9:00 am para todos os dias e analisado neste segmento. 
+            </p>
+            <p>O uso de intervalos de tempo &eacute; uma maneira r&aacute;pida de acelerar o tempo de computa&ccedil;&atilde;o, pois cria rapidamente caminhos menores para an&aacute;lise. Se a divis&atilde;o por um intervalo de tempo recorrente fizer sentido para sua an&aacute;lise, &eacute; recomendado para o processamento de grandes dados.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> O nome da camada que ser&aacute; criada.  Se voc&ecirc; estiver gravando em um ArcGIS Data Store, seus resultados ser&atilde;o salvos em  <b>Meu Conte&uacute;do</b> e adicionados no mapa. Se voc&ecirc; estiver gravando em um compartilhamento do arquivo de grandes dados, seus resultados ser&atilde;o armazenados compartilhamento do arquivo de grandes dados  e adicionados em seu   manifesto. N&atilde;o ser&atilde;o adicionados no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            <p>Ao gravar no  ArcGIS Data Store  (armazenamento de grandes dados de espa&ccedil;o-tempo ou relacional) utilizando a caixa suspensa  <b>Salvar resultados em</b> , voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>
         </div>
     </div>

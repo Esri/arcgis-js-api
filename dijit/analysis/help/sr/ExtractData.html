@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Ekstrahuj podatke</h2><p/>
-        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="Ekstrakcija podataka"></h2>
+        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="Ekstrahuj podatke"></h2>
         <hr/>
     <p>Pomoću ove alatke možete da izaberete i preuzmete podatke za određenu oblast interesovanja. Slojevi koje selektujete biće dodati u ZIP, CSV ili KMZ datoteku.
     </p>
@@ -79,7 +79,7 @@
                 <ul>
                     <li>Trenutni vidljivi obuhvat va&scaron;e mape ( <b>Isto kao Prikaz</b>).
                     </li>
-                    <li>Jedan od slojeva u va&scaron;em sadržaju.
+                    <li>Jedan od slojeva u va&scaron;em sadržaju. Ako je izabrani sloj tačkasti ili linijski geoobjekat, obuhvat sloja će se koristiti kao oblast ispitivanja.
                     </li>
                     <li>Nacrtajte oblast da biste definisali oblast ispitivanja.
                     </li>
@@ -102,6 +102,19 @@
             <p>Format podataka koji će biti izdvojeni. Kada izvozite linijske geoobjekte ili geoobjekte oblasti u CSV datoteke, biće izdvojeni samo neprostorni atributi. Kada izvozite tačkaste geoobjekte, biće izdvojeni prostorni i neprostorni atributi.  
             </p>
             <p>Izdvojeni podaci će koristiti Web Mercator 1984 projekciju.  Za CSV datoteke, polja  <i>Lat</i> i <i>Long</i> će se primenjivati na podatke sa koordinatama u Web Mercator 1984.
+            </p> 
+            <p>Podržani su sledeći formati izlaznih rezultata:
+                <ul>
+                    <li>Vrednosti razdvojene zarezom (CSV) &ndash;  <code>.csv</code> ili <code>.zip</code>
+                    </li>
+                    <li>Baza geopodataka datoteke &ndash;  <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML) &ndash;  <code>.kmz</code> ili <code>.zip</code>
+                    </li>
+                    <li>Shapefile datoteka &ndash;  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -111,7 +124,7 @@
         <div>
             <p>Ovo je ime stavke koja će biti dodata u  <b>Moj sadržaj</b>.  Ime stavke je zasnovano na izabranom <b>Formatu izlaznih podataka</b>. Ako stavka već postoji, bićete upitani da unesete drugo ime.
             </p>
-            <p>Koristeći padajuće polje  <b>Sačuvaj rezultat u</b> možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
             </p>
         </div>
     </div>

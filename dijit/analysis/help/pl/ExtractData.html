@@ -80,7 +80,7 @@ kt&oacute;re obiekty zostaną uwzględnione w&nbsp;wynikowym pliku ZIP lub CSV. 
                 <ul>
                     <li>Bieżący widoczny zasięg mapy ( <b>Tak jak w widoku</b>).
                     </li>
-                    <li>Jedna z&nbsp;warstw w&nbsp;tabeli zawartości.
+                    <li>Jedna z&nbsp;warstw w&nbsp;tabeli zawartości. Jeśli wybrana warstwa jest warstwą obiekt&oacute;w punktowych lub liniowych, jako analizowany obszar użyty zostanie zasięg warstwy.
                     </li>
                     <li>Narysuj obszar, aby zdefiniować analizowany obszar.
                     </li>
@@ -103,6 +103,19 @@ kt&oacute;re obiekty zostaną uwzględnione w&nbsp;wynikowym pliku ZIP lub CSV. 
             <p>Format danych, kt&oacute;re zostaną wydzielone. Podczas eksportowania obiekt&oacute;w liniowych lub powierzchniowych do pliku CSV wydzielane są wyłącznie atrybuty nieprzestrzenne. Podczas eksportowania obiekt&oacute;w punktowych, eksportowane są zar&oacute;wno atrybuty przestrzenne, jak i nieprzestrzenne.  
             </p>
             <p>Wydzielone dane będą używać odwzorowania Web Mercator 1984.  W przypadku plik&oacute;w CSV do danych zostaną dołączone pola  <i>Lat</i> (Szerokość geograficzna) i <i>Long</i> (Długość geograficzna) zawierające wsp&oacute;łrzędne w układzie wsp&oacute;łrzędnych Web Mercator 1984.
+            </p> 
+            <p>Obsługiwane są następujące formaty wynikowe:
+                <ul>
+                    <li>Wartości rozdzielane przecinkami (CSV) &mdash;  <code>.csv</code> lub <code>.zip</code>
+                    </li>
+                    <li>Geobaza plikowa &mdash;  <code>.zip</code>
+                    </li>
+                    <li>Plik KML (Keyhole Markup Language) &mdash;  <code>.kmz</code> lub <code>.zip</code>
+                    </li>
+                    <li>Plik shape &mdash;  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Velg geoobjekter som skal klippes",filterSelectLabel:"Klipp alle geoobjekter, eller definer et delsett (valgfritt)",targetArea:"Velg område det skal klippes",outputLayerName:"Klipp ut ${inputLayerName} til ${clipLayerName}",itemDescription:"Geoobjektlag generert ved å kjøre Klipp-løsninger Geoobjekter fra ${inputLayerName} ble klippet til ${clipLayerName}.",itemTags:"Analyseresultat, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Geoobjektlag generert fra Klipp lag"});

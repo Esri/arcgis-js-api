@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher feições para recortar",filterSelectLabel:"Recortar todas as feições ou definir um subconjunto (opcional)",targetArea:"Escolher área para recortar",outputLayerName:"Recortar ${inputLayerName} para ${clipLayerName}",itemDescription:"Camada de feição gerada ao executar as soluções de Recortar. As feições de ${inputLayerName} foram recortadas para ${clipLayerName}.",itemTags:"Resultado de Análise, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Camada de feição gerada de Recortar Camada"});

@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="smallsize">
+    <div id="toolDescription" class="regularsize">
         <h2>Merge Layers</h2><p/>
         <h2><img src="./images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="Merge Layers"></h2>
         <hr/>
-    <p>The Merge Layers tool combines two feature layers to create a single output layer.
-
+    <p>This tool combines two feature layers to create a single output layer.    The layers to be merged must have the same geometry type and time type.  You can control how the fields from the input layers are joined and copied.  For example:
+        <ul>
+            <li>I have three layers for England, Wales, and Scotland and I want a single layer of Great Britain. 
+            </li>
+            <li>I have 2 layers and each contains parcel information for contiguous townships.  I want to join them together into a single layer, keeping only the fields that have the same name and type on the 2 input layers.
+            </li>
+        </ul>
+        
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -90,11 +96,11 @@ to merge</h2></div>
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created in <b>My
-Content</b> and added to the map. The default name is based on the
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be
 saved.
             </p>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A an&aacute;lise de raster permite a voc&ecirc; executar an&aacute;lises de grandes conjuntos de dados raster utilizando o  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b> e <b>Gerenciar Dados</b>.
+        <p>A an&aacute;lise de raster permite a voc&ecirc; executar an&aacute;lises de grandes conjuntos de dados raster utilizando o  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Utilizar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerenciar Dados</b> e <b>Aprendizado Detalhado</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Aplicar Modelo de Função de Raster</h2></td>
+                    <td><h2>Aplicar Modelo de Função do Raster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplicar Modelo de Fun&ccedil;&atilde;o do Raster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Cria um novo conjunto de dados raster a partir de um conjunto de dados de fei&ccedil;&otilde;es existentes.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Conjunto de Ferramentas do Aprendizado Detalhado</h2>
+        <hr/>
+        <p>Estas ferramentas s&atilde;o utilizadas para detectar fei&ccedil;&otilde;es espec&iacute;ficas em uma imagem ou para classificar pixels em um conjunto de dados raster. Aprendizado detalhado &eacute; um tipo de m&eacute;todo de aprendizado autom&aacute;tico de intelig&ecirc;ncia artificial que detecta fei&ccedil;&otilde;es em imagens utilizando v&aacute;rias camadas em redes neurais, onde cada camada &eacute; capaz de extrair uma ou mais fei&ccedil;&otilde;es exclusivas da imagem. Estas ferramentas consomem os modelos que foram treinados para detectar fei&ccedil;&otilde;es espec&iacute;ficas em estruturas de aprendizado detalhado de terceiros&mdash;como TensorFlow, CNTK e Keras&mdash;e mapas de classe ou fei&ccedil;&otilde;es de sa&iacute;da.
+            <ul>
+                <li> <b>Classificar Pixels Utilizando Aprendizado Detalhado</b> produz uma raster classificada utilizando um modelo de aprendizado detalhado treinado.
+                </li>
+                <li> <b>Detectar Objetos Utilizando Aprendizado Detalhado</b> produz uma classe de fei&ccedil;&atilde;o contendo objetos que encontra em uma imagem de entrada utilizando um modelo de aprendizado detalhado treinado.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classificar Pixels Utilizando Aprendizado Detalhado</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classificar Pixels Utilizando Aprendizado Detalhado">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detectar Objetos Utilizando Aprendizado Detalhado</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detectar Objetos Utilizando Aprendizado Detalhado">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

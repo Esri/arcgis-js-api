@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolte vrstvu směru odtoku",pourPointLayerLabel:"Zvolte rastrovou vrstvu nebo vrstvu prvků uzávěrového profilu",pourPointField:"Zvolte pole uzávěrového profilu",resultLayerName:"Název výsledné vrstvy",outputLayerName:"Povodí ${layername}",itemDescription:"Vrstva prvků vygenerovaná spuštěním řešení Sumarizovat středovou hodnotu a rozptýlení pro ${inputLayername}. ",itemTags:"Výsledek analýzy, Povodí, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Povodí."});

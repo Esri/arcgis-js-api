@@ -16,13 +16,8 @@
     }
 
     .esriGEPageOptionsDialog .pageOptionsDialog_infoIcon {
-        background-image: url("./images/infoIconGray.svg");
         height: 20px;
         width: 20px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: inline-block;
-        cursor: pointer;
     }
 
     .esriGEPageOptionsDialog .pageOptionsDialog_actionButtonsBlock {

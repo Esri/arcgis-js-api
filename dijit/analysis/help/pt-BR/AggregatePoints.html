@@ -46,8 +46,7 @@
         <hr/>
     <p>Esta ferramenta trabalha com uma camada de fei&ccedil;&otilde;es de ponto e uma camada de fei&ccedil;&otilde;es de &aacute;rea. Ela primeiro determina quais pontos caem dentro de cada &aacute;rea. Ap&oacute;s determinar este relacionamento espacial do ponto na &aacute;rea, as estat&iacute;sticas sobre todos os pontos na &aacute;rea s&atilde;o calculadas e atribu&iacute;das para a &aacute;rea. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem do n&uacute;mero de pontos dentro da &aacute;rea, mas voc&ecirc; tamb&eacute;m pode obter outras estat&iacute;sticas. 
     </p>
-    <p>Por exemplo, suponha que voc&ecirc; tenha fei&ccedil;&otilde;es de ponto dos locais das cafeterias e fei&ccedil;&otilde;es de &aacute;rea dos munic&iacute;pios, e voc&ecirc; deseja resumir as vendas de caf&eacute; por munic&iacute;pio. Assumindo que as cafeterias t&ecirc;m um atributo  <i>TOTAL_SALES</i>, voc&ecirc; pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada munic&iacute;pio ou o <i>TOTAL_SALES</i> m&iacute;nimo ou m&aacute;ximo
- dentro de cada munic&iacute;pio, ou o desvio padr&atilde;o de todas as vendas dentro de cada munic&iacute;pio.
+    <p>Por exemplo, suponha que voc&ecirc; tenha fei&ccedil;&otilde;es de ponto dos locais das cafeterias e fei&ccedil;&otilde;es de &aacute;rea dos munic&iacute;pios, e voc&ecirc; deseja resumir as vendas de caf&eacute; por munic&iacute;pio. Assumindo que as cafeterias t&ecirc;m um atributo  <i>TOTAL_SALES</i> , voc&ecirc; pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada munic&iacute;pio ou o m&iacute;nimo ou m&aacute;ximo <i>TOTAL_SALES</i> dentro de cada munic&iacute;pio, ou o desvio padr&atilde;o de todas as vendas dentro de cada munic&iacute;pio.
     </p>
     <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente as fei&ccedil;&otilde;es na camada de ponto de entrada e camada de &aacute;rea vis&iacute;vel dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas.  Se n&atilde;o estiver selecionada, todas as fei&ccedil;&otilde;es em ambas a camada de ponto de entrada e a camada de &aacute;rea ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
     </p>
@@ -90,13 +89,15 @@
             <p>Voc&ecirc; pode calcular estat&iacute;sticas sobre atributos da camada de ponto de entrada como soma, m&eacute;dia, m&iacute;nimo, m&aacute;ximo e desvio padr&atilde;o. A camada resultante conter&aacute; um novo atributo para cada estat&iacute;stica calculada. Qualquer n&uacute;mero de estat&iacute;stica pode ser adicionado ao escolher um atributo e estat&iacute;stica (uma nova caixa suspensa aparecer&aacute;).
  
             </p>
+            <p>Se a camada para resumir n&atilde;o tiver quaisquer campos de n&uacute;mero, a estat&iacute;stica adicional n&atilde;o estar&aacute; dispon&iacute;vel.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Escolher campo para agrupar por</h2></div>
         <hr/>
         <div>
-            <p> Voc&ecirc; pode criar grupos de estat&iacute;stica utilizando um atributo na camada de ponto de entrada.    Por exemplo, se voc&ecirc; estiver agregando crimes para limites do bairro, voc&ecirc; poder&aacute; ter um atributo <i>Crime_type</i> com cinco diferentes tipos de crimes.  Cada um dos tipos de crime formam um grupo, e a estat&iacute;stica que voc&ecirc; escolher ser&aacute; calculada para cada valor &uacute;nico de <i>Crime_type</i>.  A estat&iacute;stica para cada grupo, como tamb&eacute;m, a contagem de pontos, ser&aacute; exibida no pop-up da camada resultante. Quando voc&ecirc; escolher um atributo do grupo, dois resultados ser&atilde;o criados: a camada resultante e uma tabela resultante contendo a estat&iacute;stica para cada um dos grupos.
+            <p> Voc&ecirc; pode criar grupos de estat&iacute;stica utilizando um atributo na camada de ponto de entrada.    Por exemplo, se voc&ecirc; estiver agregando crimes para limites do bairro, voc&ecirc; poder&aacute; ter um atributo <i>Crime_type</i> com cinco diferentes tipos de crime. Cada um dos tipos de crime formam um grupo, e a estat&iacute;stica que voc&ecirc; escolher ser&aacute; calculada para cada valor &uacute;nico de <i>Crime_type</i>. A estat&iacute;stica para cada grupo, como tamb&eacute;m, a contagem de pontos, ser&aacute; exibida no pop-up da camada resultante. Quando voc&ecirc; escolher um atributo do grupo, dois resultados ser&atilde;o criados: a camada resultante e uma tabela resultante contendo a estat&iacute;stica para cada um dos grupos.
             </p>
         </div>
     </div>
@@ -114,7 +115,7 @@
         <div><h2>Adicionar porcentagens</h2></div>
         <hr/>
         <div>
-            <p>Esta caixa de sele&ccedil;&atilde;o &eacute; habilitada quando voc&ecirc; escolhe um campo para agrupar. Selecione  <b>Adicionar porcentagens</b> se voc&ecirc; deseja encontrar a porcentagem de cada valor de atributo dentro de cada grupo. Um novo campo &eacute; adicionado na tabela resultante contendo as porcentagens de cada valor de atributo dentro de cada grupo. Se <b>Adicionar minoria, maioria</b> tamb&eacute;m estiver selecionado, dois campos adicionais ser&atilde;o adicionados na camada resultante contendo as porcentagens dos valores de atributo da minoria e maioria dentro de cada grupo.
+            <p>Esta caixa de sele&ccedil;&atilde;o &eacute; habilitada quando voc&ecirc; escolhe um campo para agrupar. Selecione  <b>Adicionar porcentagens</b> se desejar localizar a porcentagem de cada valor de atributo dentro de cada grupo.  Um novo campo &eacute; adicionado na tabela resultante contendo as porcentagens de cada valor de atributo dentro de cada grupo. Se <b>Adicionar minoria, maioria</b> tamb&eacute;m for selecionado, dois campos adicionais ser&atilde;o adicionados na camada resultante contendo as porcentagens dos valores de atributo da minoria e maioria dentro de cada grupo.
             </p>
         </div>
     </div>
@@ -122,9 +123,9 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se o nome da camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            <p>Ao utilizar o menu suspenso  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>
         </div>
     </div>

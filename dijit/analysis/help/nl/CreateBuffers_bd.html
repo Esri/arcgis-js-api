@@ -56,7 +56,7 @@
         <div>
             <p>De punt-, lijn- of gebiedsobjecten om te bufferen. De invoerlagen moeten in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b>.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
             </p>
         </div>
     </div>
@@ -126,7 +126,7 @@
         <div>
             <p> U kunt statistieken berekenen over objecten die zijn samengevat.U kunt het volgende berekenen in numerieke velden:
                 <ul>
-                    <li>Count&mdash;Berekent het aantal non-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
+                    <li>Count&mdash;Berekent het aantal niet-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
                     <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
@@ -160,7 +160,7 @@
         <div><h2>Kies een ArcGIS Data Store om de resultaten in op te slaan</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+            <p>GeoAnalytic-resultaten worden opgeslagen in een datastore en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data store en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
                 <ul>
                     <li>U kunt resultaten gebruiken in portaal-tot-portaal samenwerking.
                     </li>
@@ -169,7 +169,7 @@
                 </ul>
                 
             </p>
-            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken.
+            <p>U moet geen gebruik maken van een relationele data-store als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-store om grote hoeveelheden gegevens te verwerken.
             </p>
         </div>
     </div>
@@ -177,9 +177,9 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> De naam van de laag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store,  schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
-            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
             </p>
         </div>
     </div>

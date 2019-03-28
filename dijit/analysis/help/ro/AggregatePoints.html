@@ -46,8 +46,8 @@
         <hr/>
     <p>Acest instrument funcţionează cu un strat tematic de obiecte spaţiale punct şi cu un strat tematic de obiecte spaţiale suprafaţă. Acesta determină &icirc;nt&acirc;i ce puncte se &icirc;ncadrează &icirc;n fiecare suprafaţă. După determinarea acestei relaţii spaţiale punct - suprafaţă, sunt calculate date statistice privind toate punctele din suprafaţă şi, apoi, sunt atribuite suprafeţei. Cea mai simplă statistică este calculul numărului de puncte din suprafaţă, &icirc;nsă mai puteţi obţine şi alte statistici. 
     </p>
-    <p>De exemplu, să presupunem că aveţi obiecte spaţiale punct reprezent&acirc;nd locaţii de cafenele şi obiecte spaţiale suprafaţă reprezent&acirc;nd judeţe şi doriţi un rezumat al v&acirc;nzărilor de cafea pe judeţe. Presupun&acirc;nd că pentru cafenele există un atribut  <i>TOTAL_SALES</i>, puteţi obţine suma pentru toate atributele <i>TOTAL_SALES</i> din fiecare judeţ sau valoarea minimă sau maximă a atributului <i>TOTAL_SALES</i>
- din fiecare judeţ sau abaterea standard a v&acirc;nzărilor totale din fiecare judeţ.
+    <p>De exemplu, să presupunem că aveţi obiecte spaţiale punct reprezent&acirc;nd locaţii de cafenele şi obiecte spaţiale suprafaţă reprezent&acirc;nd judeţe şi doriţi un rezumat al v&acirc;nzărilor de cafea pe judeţe. Presupun&acirc;nd că fiecare cafenea are un atribut  <i>TOTAL_SALES</i>, puteți obține suma tuturor <i>TOTAL_SALES</i> din fiecare județ sau valoarea minimă sau maximă <i>TOTAL_SALES</i>
+ din fiecare județ sau abaterea standard a v&acirc;nzărilor totale din fiecare județ.
     </p>
     <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spaţiale din stratul tematic cu puncte de intrare şi stratul tematic poligon vizibil din extinderea curentă a hărţii.  Dacă nu se bifează, vor fi analizate toate obiectele spaţiale at&acirc;t din stratul tematic de puncte de intrare, c&acirc;t şi din stratul tematic poligon, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
     </p>
@@ -90,13 +90,15 @@
             <p>Puteţi calcula statistici despre atribute ale stratului tematic punct de intrare, precum sumă, medie, minim, maxim şi abatere standard. Stratul tematic rezultat va conţine un atribut nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică (va apărea o nouă casetă derulantă).
  
             </p>
+            <p>Dacă stratul tematic de rezumat nu are niciun c&acirc;mp de numere, statisticile suplimentare nu vor fi disponibile.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Alegere câmp după care să se facă gruparea</h2></div>
         <hr/>
         <div>
-            <p> Puteţi crea grupuri statistice utiliz&acirc;nd un atribut din stratul tematic de puncte de intrare.    De exemplu, dacă &icirc;nsumaţi infracţiunile după graniţele cartierului, aţi putea avea un atribut <i>Crime_type</i> cu cinci tipuri diferite de infracţiuni.  Fiecare tip particular de infracţiune formează un grup, iar statisticile alese se vor calcula pentru fiecare valoare unică de <i>Crime_type</i>.  Statistica pentru fiecare punct &icirc;mpreună cu numărul de puncte vor fi afişate &icirc;n fereastra pop-up a stratului tematic rezultat. C&acirc;nd alegeţi un atribut de grupare, sunt create două rezultate: stratul tematic rezultat şi un tabel rezultat ce conţine statisticile pentru fiecare grup unic.
+            <p> Puteţi crea grupuri statistice utiliz&acirc;nd un atribut din stratul tematic de puncte de intrare.    De exemplu, dacă &icirc;nsumați infracțiunile după granițele cartierului, ați putea avea un atribut <i>Crime_type</i> cu cinci tipuri diferite de infracțiuni. Fiecare tip particular de infracțiune formează un grup, iar statisticile alese se vor calcula pentru fiecare valoare unică de <i>Crime_type</i>.  Statistica pentru fiecare punct &icirc;mpreună cu numărul de puncte vor fi afişate &icirc;n fereastra pop-up a stratului tematic rezultat. C&acirc;nd alegeţi un atribut de grupare, sunt create două rezultate: stratul tematic rezultat şi un tabel rezultat ce conţine statisticile pentru fiecare grup unic.
             </p>
         </div>
     </div>
@@ -114,7 +116,7 @@
         <div><h2>Adăugare procente</h2></div>
         <hr/>
         <div>
-            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea. Selectaţi  <b>Adăugare procentaje</b> dacă doriţi să aflaţi procentajul fiecărei valori de atribut din fiecare grup. &Icirc;n tabelul de rezultate este adăugat un nou c&acirc;mp, care conţine procentajele fiecărei valori de atribut din fiecare grup. Dacă este bifată şi opţiunea <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri cu procentajele valorilor de atribute aflate &icirc;n minoritate şi majoritate &icirc;n fiecare grup.
+            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea.    Selectați  <b>Adăugare procentaje</b> dacă doriți să aflați procentajul fiecărei valori de atribut din fiecare grup. &Icirc;n tabelul de rezultate este adăugat un nou c&acirc;mp care conţine procentajele fiecărei valori de atribut din fiecare grup. Dacă este bifată și opțiunea <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri cu procentajele valorilor de atribute aflate &icirc;n minoritate și majoritate &icirc;n fiecare grup.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
+            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă numele stratului tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd meniul derul&acirc;nd  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

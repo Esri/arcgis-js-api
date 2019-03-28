@@ -44,8 +44,8 @@
         <h2>Detect Incidents</h2><p/>
         <h2><img src="./images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detect Incidents"></h2>
         <hr/>
-    <p>This tool works with a time-enabled layer of
-points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify. 
+    <p> This tool works with a time-enabled layer of
+points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify.
     </p>
     <p>First, the tool
 determines which features belong to a track using one or more fields. Using the time at each feature, the tracks are ordered sequentially and the incident condition is applied. Features that meet the starting incident condition are marked as an incident. You can optionally apply an ending incident condition; when the end condition is true, the feature is no longer an incident.  The results will be returned with the original features&mdash;with new columns representing the incident name&mdash;and indicate which feature meets the incident condition. You can return all original features or only the features that are incidents.
@@ -62,7 +62,7 @@ determines which features belong to a track using one or more fields. Using the 
         <div>
             <p>The points, lines, areas, or tables that will be used to find incidents. The input layer must be time enabled with features that represent an instant in time, as well as have one or more fields that can be used to identify tracks.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -90,7 +90,7 @@ You can use one field or multiple fields to represent unique values of tracks.
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Build an expression condition to signify the end of an incident</h2></div>
+        <div><h2>Build an expression condition to signify the end of an incident (optional)</h2></div>
         <hr/>
         <div>
             <p>Optionally add a condition using the expression builder to determine the end of an incident. If the end condition you specify is true, the feature is no longer an incident. If you do not specify an end condition, an incident ends when the start condition is no longer true.    
@@ -102,17 +102,29 @@ You can use one field or multiple fields to represent unique values of tracks.
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Select how you want the output represented</h2></div>
+        <div><h2>Show me</h2></div>
         <hr/>
         <div>
             <p>All output methods will append fields to the original features. There are two ways to determine which features are returned:
                 <ul>
-                    <li> <b>Only return incidents</b>&mdash;This method will only return the features that are incidents. Any features that are not found to be incidents will not be returned.
+                    <li> <b>All features</b>&mdash;This is the default. All features in the input will be returned.
                     </li>
-                    <li> <b>Return all features</b>&mdash;This is the default. All features in the input will be returned.
+                    <li> <b>Only incidents</b>&mdash;This method will only return the features that are incidents. Any features that are not found to be incidents will not be returned.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyze data with time intervals (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specify if you want to detect incidents using time intervals which segment your input features for analysis. If you use time intervals you must set the time interval you want to use, and optionally set the reference time. If you don't set a reference time, Jan 1, 1970 will be used. 
+            </p>
+            <p>For example, if you set the time boundary to be 1 day, starting at 9:00 AM on January 1st, 1990, than each track will be truncated at 9:00 am for every day and analyzed within that segment. 
+            </p>
+            <p>Using time intervals is a fast way to accelerate computing time, as it quickly creates smaller tracks for analysis. If splitting by a reoccurring time interval makes sense for your analysis, it is recommend for big data processing.
             </p>
         </div>
     </div>
@@ -120,11 +132,11 @@ You can use one field or multiple fields to represent unique values of tracks.
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created in <b>My
-Content</b> and added to the map. The default name is based on the
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be
 saved.
             </p>

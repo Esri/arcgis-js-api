@@ -1,5 +1,4 @@
-.Grid_Measure
-{
+.Grid_Measure {
     width: 100%;
     height: 100%;
     -moz-box-sizing: border-box;
@@ -7,8 +6,7 @@
     box-sizing: border-box;
 }
 
-.GridCell_Measure
-{
+.GridCell_Measure {
     position: absolute !important;
     display: inline-block !important;
     top: 0 !important;

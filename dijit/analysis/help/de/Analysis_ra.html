@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird. Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von  Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b> und <b>Daten verwalten</b>.
+        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird. Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von  Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Nachbarschaftsanalyse verwenden</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b>, <b>Daten verwalten</b> und <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Vorlage für Raster-Funktionen anwenden</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Vorlage f&uuml;r Raster-Funktionen anwenden">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Erstellt ein neues Feature-Dataset aus einem vorhandenen Raster-Dataset.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Toolset "Deep Learning"</h2>
+        <hr/>
+        <p>Mit diesen Werkzeugen k&ouml;nnen bestimmte Features in einem Bild erkannt oder Pixel in einem Raster-Dataset klassifiziert werden. Deep Learning ist eine Art maschinelles Lernverfahren der k&uuml;nstlichen Intelligenz, bei dem mehrere Layer in neuralen Netzwerken verwendet werden, in denen die einzelnen Layer in der Lage sind, mindestens ein eindeutiges Feature im Bild zu extrahieren. Diese Werkzeuge verwenden die Modelle, die f&uuml;r die Erkennung bestimmter Features in Deep-Learning-Frameworks von Drittanbietern, wie etwa TensorFlow, CNTK und Keras, sowie in Ausgabe-Features oder Klassenkarten trainiert wurden.
+            <ul>
+                <li> <b>Pixel mit Deep Learning klassifizieren</b> erzeugt ein klassifiziertes Raster mithilfe eines trainierten Deep-Learning-Modells.
+                </li>
+                <li> <b>Objekte mit Deep Learning ermitteln</b> erzeugt eine Feature-Class mit Objekten, die mithilfe eines Deep-Learning-Modells in einem Eingabe-Raster gefunden werden.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pixel mit Deep Learning klassifizieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Pixel mit Deep Learning klassifizieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>F&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung eines klassifizierten Rasters aus, wobei jedem g&uuml;ltigen Pixel eine Klassenbeschriftung zugewiesen ist.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objekte mit Deep Learning ermitteln</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Objekte mit Deep Learning ermitteln">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>F&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung einer Feature-Class aus, die die gefundenen Objekte enth&auml;lt. Bei den Features kann es sich um Rahmen oder Polygone um die gefundenen Objekte oder um Punkte im Mittelpunkt der Objekte handeln.
             </p>
             <br/>
         </div>

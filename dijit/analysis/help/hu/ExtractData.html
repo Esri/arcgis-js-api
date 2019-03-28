@@ -75,11 +75,11 @@
         <div><h2>Minta terület</h2></div>
         <hr/>
         <div>
-            <p>A ter&uuml;let, amelyik meghat&aacute;rozza, hogy mely vektoros elemeket fogja tartalmazni a kimeneti ZIP- vagy CSV-f&aacute;jl.Az al&aacute;bbiak k&ouml;z&uuml;l v&aacute;laszthat:
+            <p>A ter&uuml;let, amely meghat&aacute;rozza a kimeneti ZIP- vagy CSV-f&aacute;jlban tartalmazott vektoros elemeket. Az al&aacute;bbiak k&ouml;z&uuml;l v&aacute;laszthat:
                 <ul>
                     <li>A t&eacute;rk&eacute;p pillanatnyilag l&aacute;that&oacute; kiterjed&eacute;se ( <b>Kijelzővel azonos</b>).
                     </li>
-                    <li>Az egyik r&eacute;teg a tartalomjegyz&eacute;k.
+                    <li>Az egyik r&eacute;teg a tartalomjegyz&eacute;k. Ha a kiv&aacute;lasztott r&eacute;teg pontszerű vagy vonalas vektoros elem, akkor a r&eacute;teg kiterjed&eacute;se lesz a vizsg&aacute;lati ter&uuml;let.
                     </li>
                     <li>Rajzoljon egy ter&uuml;letet a minta ter&uuml;let meghat&aacute;roz&aacute;s&aacute;hoz.
                     </li>
@@ -102,6 +102,19 @@
             <p>A kinyerhető adatok form&aacute;tuma. Vonal vagy ter&uuml;let vektoros elemek CSV-f&aacute;jlba t&ouml;rt&eacute;nő export&aacute;l&aacute;sakor az eszk&ouml;z csak a nem t&eacute;rbeli attrib&uacute;tumokat nyeri ki.  Pontszerű vektor elemek export&aacute;l&aacute;sakor az eszk&ouml;z a t&eacute;rbeli &eacute;s nem t&eacute;rbeli attrib&uacute;tumokat egyar&aacute;nt kinyeri.  
             </p>
             <p>A kinyert adatokban a Web Mercator 1984 vet&uuml;let lesz alkalmazva.  CSV-f&aacute;jlok eset&eacute;n a(z)  <i>Lat</i> &eacute;s <i>Long</i> mezők hozz&aacute; lesznek fűzve az adatokhoz a Web Mercator 1984 koordin&aacute;t&aacute;kkal.
+            </p> 
+            <p>Az al&aacute;bbi kimeneti form&aacute;tumok t&aacute;mogatottak:
+                <ul>
+                    <li>Vesszővel tagolt &eacute;rt&eacute;kek (CSV)&mdash; <code>.csv</code> vagy <code>.zip</code>
+                    </li>
+                    <li>F&aacute;jl-geoadatb&aacute;zis&mdash; <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML)&mdash; <code>.kmz</code> vagy <code>.zip</code>
+                    </li>
+                    <li>Shapefile&mdash; <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

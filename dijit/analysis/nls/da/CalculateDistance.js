@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg det raster- eller vektorpositionslag, der skal beregnes afstand til",maxDistanceLabel:"Maksimal afstand, der skal beregnes (valgfrit)",outputCellSize:"Størrelse på outputcelle (valgfrit)",resultDistLayerName:"Navn på det resulterende afstandslag",resultDirectionLayerName:"Navn på det resulterende retningslag (valgfrit)",resultAllocationLayerName:"Navn på det resulterende allokeringslag (valgfrit)",outputLayerName:"Beregnet afstand for ${layername}",allocationFieldLabel:"Vælg allokeringsfelt (valgfrit)",itemDescription:"Vektorlag genereret ud fra kørsel af Beregn afstand for ${layerName}. ",itemTags:"Analyseresultat, Beregn afstand, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra Beregn afstand."});

@@ -64,7 +64,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Valitse karttataso, josta lähimmät sijainnit löytyvät</h2></div>
+        <div><h2>Määritä aloitussijainnit</h2></div>
         <hr/>
         <div>
             <p>Hae l&auml;hin -toiminto mittaa et&auml;isyyden t&auml;ss&auml; m&auml;&auml;ritt&auml;m&auml;si kohteen pisteist&auml; (l&auml;ht&ouml;sijainneista) sijainteihin, jotka m&auml;&auml;rit&auml;t seuraavassa parametrissa. Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n  5 000 kohdetta kussakin karttatasossa. 
@@ -118,16 +118,16 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Lisää esteiden karttatasot</h2></div>
+        <div><h2>Valitse esteiden karttatasot</h2></div>
         <hr/>
         <div>
-            <p> M&auml;&auml;rit&auml; v&auml;hint&auml;&auml;n yksi kohde, joka toimii tilap&auml;isen&auml; rajoitteena (toisin sanoen esteen&auml;) liikuttaessa taustalla olevilla kaduilla. Voit m&auml;&auml;ritt&auml;&auml; esteet k&auml;ytt&auml;m&auml;ll&auml; piste-, viiva- tai aluekohteita.
+            <p> V&auml;hint&auml;&auml;n yksi kohde, joka toimii tilap&auml;isen&auml; rajoitteena (esteen&auml;) liikuttaessa taustalla olevilla kaduilla. Voit m&auml;&auml;ritt&auml;&auml; esteet k&auml;ytt&auml;m&auml;ll&auml; piste-, viiva- tai aluekohteita.
             </p>
             <p>Piste-este voi mallintaa kaatunutta puuta, onnettomuutta, katkennutta s&auml;hk&ouml;linjaa tai mit&auml; tahansa, joka katkaisee liikenteen tietyss&auml; kohdassa kadulla. Liikkuminen on sallittu kadulla, mutta ei esteen kohdalla. Voit m&auml;&auml;ritt&auml;&auml; enint&auml;&auml;n 250 piste-esteen&auml; toimivaa kohdetta.
             </p>
-            <p>Viivaeste est&auml;&auml; liikkumisen miss&auml; tahansa kohdassa, jossa este riste&auml;&auml; katujen kanssa. Esimerkiksi paraatia tai mielenosoitusta, joka est&auml;&auml; liikenteen usealla katuosuudella, voidaan mallintaa viivaesteell&auml;. Jos kaikkien viivaesteiden leikkaamien katukohteiden m&auml;&auml;r&auml; ylitt&auml;&auml; 500:n, ty&ouml;kalu palauttaa virheen.
+            <p>Viivaeste est&auml;&auml; liikkumisen miss&auml; tahansa kohdassa, jossa este riste&auml;&auml; katujen kanssa. Esimerkiksi paraatia tai mielenosoitusta, joka est&auml;&auml; liikenteen usealla katuosuudella, voidaan mallintaa viivaesteell&auml;. Jos kaikkien viivaesteiden leikkaamien katukohteiden m&auml;&auml;r&auml; on yli 500, ty&ouml;kalu palauttaa virheen.
             </p>
-            <p>Alue-este est&auml;&auml; liikkumisen miss&auml; tahansa kohdassa, jossa alue riste&auml;&auml; katujen kanssa. T&auml;m&auml;ntyyppist&auml; estett&auml; voi k&auml;ytt&auml;&auml; esimerkiksi sellaisten katuverkoston kattavien tulvien mallintamiseen, jotka tekev&auml;t liikkumisen kaduilla mahdottomaksi. Jos kaikkien alue-esteiden leikkaamien katukohteiden m&auml;&auml;r&auml; ylitt&auml;&auml; 2 000:n, ty&ouml;kalu palauttaa virheen.
+            <p>Alue-este est&auml;&auml; liikkumisen miss&auml; tahansa kohdassa, jossa alue riste&auml;&auml; katujen kanssa. T&auml;m&auml;ntyyppist&auml; estett&auml; voi k&auml;ytt&auml;&auml; esimerkiksi sellaisten katuverkoston kattavien tulvien mallintamiseen, jotka tekev&auml;t liikkumisen kaduilla mahdottomaksi. Jos kaikkien alue-esteiden leikkaamien katukohteiden m&auml;&auml;r&auml; on yli 2 000, ty&ouml;kalu palauttaa virheen.
             </p>
         </div>
     </div>
@@ -151,11 +151,11 @@
         <div>
             <p>Sen kohdekarttatason nimi, joka luodaan kohtaan  <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Jos kohdekarttataso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi. Kohdekarttataso sis&auml;lt&auml;&auml; kaksi karttatasoa: yhdell&auml; tasolla ovat l&auml;himm&auml;t sijainnit ja toisella ovat viivat, jotka yhdist&auml;v&auml;t annetut sijainnit l&auml;himpiin sijainteihin.
             </p>
-            <p>Jos valitset  <b>Sis&auml;llyt&auml; reittikarttatasot</b> -vaihtoehdon, kukin tulosten reitti tallennetaan my&ouml;s reittikarttatasona. Reittikarttataso sis&auml;lt&auml;&auml; kaikki tietyn reitin tiedot, kuten reittiin m&auml;&auml;ritetyt pys&auml;hdykset sek&auml; matkustussuunnat. Reittikarttatasojen luonnista on hy&ouml;ty&auml;, jos haluat jakaa yksitt&auml;iset reitit organisaatiosi muiden j&auml;senten kanssa tai jos haluat muokata reittej&auml; k&auml;ytt&auml;m&auml;ll&auml; kartankatseluohjelman <b>Reittiohjeet</b>-painiketta. Reittikarttatasot k&auml;ytt&auml;v&auml;t kohdekarttatasolle m&auml;&auml;ritetty&auml; nime&auml; etuliitteen&auml; ja reitin nime&auml;, joka on luotu analyysin aikana. N&auml;in saadaan aikaan yksil&ouml;llinen nimi kullekin reittikarttatasolle.
+            <p>Jos valitset  <b>Sis&auml;llyt&auml; reittikarttatasot</b> -vaihtoehdon, kukin tulosten reitti tallennetaan my&ouml;s reittikarttatasona. Reittikarttataso sis&auml;lt&auml;&auml; kaikki tietyn reitin tiedot, kuten reittiin m&auml;&auml;ritetyt pys&auml;hdykset sek&auml; matkustussuunnat. Reittikarttatasojen luonnista on hy&ouml;ty&auml;, jos haluat jakaa yksitt&auml;iset reitit organisaatiosi muiden j&auml;senten kanssa tai muokata reittej&auml; k&auml;ytt&auml;m&auml;ll&auml; kartankatseluohjelman <b>Reittiohjeet</b>-painiketta. Reittikarttatasot k&auml;ytt&auml;v&auml;t kohdekarttatasolle m&auml;&auml;ritetty&auml; nime&auml; etuliitteen&auml; ja reitin nime&auml;, joka on luotu analyysin aikana. N&auml;in saadaan aikaan yksil&ouml;llinen nimi kullekin reittikarttatasolle.
             </p>
             <p>Reittikarttatasoja voi luoda enint&auml;&auml;n  1 000. Jos tulos sis&auml;lt&auml;&auml; yli  1 000 reitti&auml; ja  <b>Sis&auml;llyt&auml; reittikarttatasot</b> on valittu, ty&ouml;kalu luo vain tulosaineiston kohdepalvelun.
             </p>
-            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -luettelon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon kohdekarttataso ja reittikarttatasot (jos sellaiset luodaan) tallennetaan.
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon kohdekarttataso ja reittikarttatasot (jos sellaiset luodaan) tallennetaan.
             </p>
         </div>
     </div>

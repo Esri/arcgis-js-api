@@ -64,7 +64,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Pasirinkite sluoksnį, kuriame bus ieškoma artimiausių vietų</h2></div>
+        <div><h2>Nurodykite pradžios padėtis</h2></div>
         <hr/>
         <div>
             <p>Įrankis Rasti artimiausią i&scaron;matuoja atstumą nuo jūsų čia nurodyto sluoksnio elementų (i&scaron;vykimo vietos) iki jūsų kitame parametre nurodytų vietų.  Kiekviename sluoksnyje gali būti iki  5 000 elementų. 
@@ -118,16 +118,16 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Pridėti kliūčių sluoksnius</h2></div>
+        <div><h2>Pasirinkti kliūčių sluoksnius</h2></div>
         <hr/>
         <div>
-            <p> Nurodykite vieną ar daugiau elementų, kurie veikia kaip laikini apribojimai (kitaip tariant, kliūtys) keliaujant esamomis gatvėmis. Kliūtis galite nurodyti naudodami ta&scaron;kinius, linijinius arba plotinius elementus.
+            <p> Vienas ar daugiau elementų, kurie veikia kaip laikini apribojimai (kliūtys) keliaujant esamomis gatvėmis. Kliūtis galite nurodyti naudodami ta&scaron;ko, linijos arba ploto elementus.
             </p>
             <p>Ta&scaron;kinė kliūtis gali reik&scaron;ti nukritusį medį, avariją, nukritusį elektros laidą ar bet kokį kitą objektą, kuris visi&scaron;kai užblokavęs eismą konkrečioje gatvės vietoje. Galima judėti gatve, tačiau ne per &scaron;ią kliūtį. Galite nurodyti iki 250 elementų, rei&scaron;kiančių ta&scaron;kines kliūtis.
             </p>
             <p>Linijinė kliūtis neleidžia keliauti niekur, kur &scaron;i kliūtis kerta gatves. Pavyzdžiui, kaip linijinė kliūtis gali būti pažymėtas paradas ar protestas, blokuojantis eismą keliuose gatvės segmentuose. Jei visų linijinių kliūčių kertamų gatvių elementų skaičius vir&scaron;ija 500, įrankis pateikia klaidą.
             </p>
-            <p>Plotinė kliūtis neleidžia keliauti niekur, kur &scaron;is plotas kerta gatves. Vienas i&scaron; galimų tokio tipo kliūties panaudojimų yra pažymėti potvynius, apimančius tam tikras gatvių tinklo dalis ir neleidžiančius jomis keliauti. Jei visų plotinių kliūčių kertamų gatvių elementų skaičius vir&scaron;ija 2 000, įrankis pateikia klaidą.
+            <p>Plotinė kliūtis neleidžia keliauti niekur, kur &scaron;is plotas kerta gatves. Vienas i&scaron; galimų tokio tipo kliūties panaudojimų yra pažymėti potvynius, apimančius tam tikras gatvių tinklo dalis ir neleidžiančius jomis keliauti. Jei visų poligono kliūčių kertamų gatvių elementų skaičius vir&scaron;ija 2 000, įrankis pateikia klaidą.
             </p>
         </div>
     </div>
@@ -151,11 +151,11 @@
         <div>
             <p>Tai elemento sluoksnis, kuris bus sukurtas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Jei toks elemento sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą. Elemento sluoksnį sudarys du sluoksniai: vienas sluoksnis, atvaizduojantis artimiausiais vietas, ir antras, atvaizduojantis linijas, jungiančias įvesties ir artimiausias vietas.
             </p>
-            <p>Jei pasirinksite  <b>Įtraukti mar&scaron;ruto sluoksnius</b>, kiekvienas rezultato mar&scaron;rutas taip pat bus įra&scaron;ytas kaip mar&scaron;ruto sluoksnis. Mar&scaron;ruto sluoksnis apima visą konkretaus mar&scaron;ruto informaciją, pvz., stoteles, priskirtas mar&scaron;rutui, taip pat kelionės kryptis. Sukurti mar&scaron;ruto sluoksnius naudinga, jei norite bendrinti individualius mar&scaron;rutus su kitais organizacijos nariais arba jei norite toliau modifikuoti mar&scaron;rutus naudodami žemėlapių peržiūros priemonės mygtuką <b>Kryptys</b>. Mar&scaron;ruto sluoksniai naudoja pateiktą elementų sluoksnio pavadinimą kaip prefiksą, o mar&scaron;ruto pavadinimas, sugeneruojamas kaip analizės dalis, pridedamas kuriant unikalų kiekvieno mar&scaron;ruto sluoksnį.
+            <p>Jei pasirinksite  <b>Įtraukti mar&scaron;ruto sluoksnius</b>, kiekvienas rezultato mar&scaron;rutas taip pat bus įra&scaron;ytas kaip mar&scaron;ruto sluoksnis. Mar&scaron;ruto sluoksnis apima visą konkretaus mar&scaron;ruto informaciją, pvz., stoteles, priskirtas mar&scaron;rutui, taip pat kelionės kryptis. Sukurti mar&scaron;ruto sluoksnius naudinga, jei norite bendrinti individualius mar&scaron;rutus su kitais organizacijos nariais arba toliau modifikuoti mar&scaron;rutus naudodami žemėlapių peržiūros priemonės mygtuką <b>Kryptys</b>. Mar&scaron;ruto sluoksniai naudoja pateiktą elementų sluoksnio pavadinimą kaip prefiksą, o mar&scaron;ruto pavadinimas, sugeneruojamas kaip analizės dalis, pridedamas kuriant unikalų kiekvieno mar&scaron;ruto sluoksnio pavadinimą.
             </p>
             <p>Mar&scaron;rutų sluoksnių, kuriuos galima sukurti, maksimalus skaičius yra  1 000. Jei gaunamas rezultatas yra didesnis negu  1 000 mar&scaron;rutų ir yra pažymėta  <b>Įtraukti mar&scaron;rutų sluoksnius</b>, įrankis sukurs tik i&scaron;vesties elementų paslaugą.
             </p>
-            <p>I&scaron;plečiamame sąra&scaron;e pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kuriame bus i&scaron;saugotas elementų sluoksnis ir mar&scaron;ruto sluoksnis (jei jie bus sukurti), pavadinimą.
+            <p>I&scaron;plečiamajame meniu pasirinkę  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kuriame bus i&scaron;saugotas elementų sluoksnis ir mar&scaron;ruto sluoksnis (jei jie bus sukurti), pavadinimą.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({binsLabel:"Pilih jenis wadah yang akan digunakan untuk membangun grid multivariabel",layersAttrLabel:"Pilih layer dan variabel input yang akan Anda sertakan dalam grid",itemDescription:"Feature layer yang dihasilkan dari menjalankan Build Multi-Variable Grid.",itemTags:"Hasil Analisis, Build Multi-Variable Grid",itemSnippet:"Feature layer yang dihasilkan dari Build Multi-Variable Grid.",addVariables:"Tambah Variabel"});

@@ -131,6 +131,10 @@
     max-height: 400px;
 }
 
+.esriGEOnDemandSelectVeryTallList500.esriGEOnDemandSelectFlowList {
+    max-height: 500px;
+}
+
 .esriGEOnDemandSelectVeryTallList600.esriGEOnDemandSelectFlowList {
     max-height: 600px;
 }

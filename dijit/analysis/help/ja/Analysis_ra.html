@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、および <b>[データの管理]</b> です。
+        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[近接エリアの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、 <b>[データの管理]</b>、および <b>[ディープ ラーニング]</b>です。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>ラスター関数テンプレートの適用</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="ラスター関数テンプレートの適用">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>既存のラスター データセットから新しいフィーチャ データセットを作成します。
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>ツールセット: ディープ ラーニング</h2>
+        <hr/>
+        <p>これらのツールは、イメージ内の特定のフィーチャを検出するためや、ラスター データセット内のピクセルを分類するために使用されます。ディープ ラーニングは、人工知能機械学習手法の一種であり、各レイヤーが画像内の 1 つ以上の一意なフィーチャを抽出できるニューラル ネットワークで複数のレイヤーを使用して画像内のフィーチャを検出します。これらのツールは、トレーニングされたモデルを使用して、サード パーティのディープ ラーニング フレームワーク (TensorFlow、CNTK、Keras など) で特定のフィーチャを検出し、フィーチャまたは分類マップを出力します。
+            <ul>
+                <li> <b>[ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、分類済みのラスターを生成します。
+                </li>
+                <li> <b>[ディープ ラーニングを使用したオブジェクトの検出 (Detect Objects Using Deep Learning)]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、入力ラスターで検出したオブジェクトを含むフィーチャクラスを作成します。
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>入力ラスターにトレーニング済みディープ ラーニング モデルを実行して、有効な各ピクセルにクラス ラベルを割り当てた分類済みラスターを作成します。
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ディープ ラーニングを使用したオブジェクトの検出 (Detect Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="ディープ ラーニングを使用したオブジェクトの検出 (Detect Objects Using Deep Learning)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>入力ラスターにトレーニング済みディープ ラーニング モデルを実行して、検出したオブジェクトを含むフィーチャクラスを作成します。フィーチャには、検出されたオブジェクトの周囲の境界四角形やポリゴン、またはオブジェクトの中心のポイントを指定できます。
             </p>
             <br/>
         </div>

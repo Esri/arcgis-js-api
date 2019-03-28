@@ -57,9 +57,6 @@
     display: none !important;
 }
 
-.esriGEReportPlayerPrintNode .dynamicInfographic_viewDiv {
-}
-
 .esriGEReportPlayerPrintNode .Wizard_Link {
     display: none !important;
 }
@@ -98,7 +95,8 @@
 
 
 
-.esriGEReportPlayerPrintNode .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderImage {
+.esriGEReportPlayerPrintNode .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderImage,
+.esriGEReportPlayerPrintNode .esriGEAreaDetailsInfographic .paginatableTableInfographic_noDataPlaceHolderImage {
     display: none !important;
 }
 

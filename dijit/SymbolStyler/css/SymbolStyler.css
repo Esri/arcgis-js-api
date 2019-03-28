@@ -165,7 +165,7 @@
 
 .esriSymbolStyler .esriLinePattern,
 .esriIconSelectMenu .esriLinePattern {
-  background: url("../images/line-patterns.png") repeat-x;
+  background: url("../images/line-patterns.png") no-repeat;
   height: 15px;
   width: 100%;
 }
@@ -195,6 +195,30 @@
 
 [class*=esriIconSelect] .longdashdotdot {
   background-position: 0 -60px;
+}
+
+[class*=esriIconSelect] .longdash {
+  background-position: 0 -75px;
+}
+
+[class*=esriIconSelect] .longdashdot {
+  background-position: 0 -90px;
+}
+
+[class*=esriIconSelect] .shortdash {
+  background-position: 0 -105px;
+}
+
+[class*=esriIconSelect] .shortdot {
+  background-position: 0 -120px;
+}
+
+[class*=esriIconSelect] .shortdashdot {
+  background-position: 0 -135px;
+}
+
+[class*=esriIconSelect] .shortdashdotdot {
+  background-position: 0 -150px;
 }
 
 [class*=esriIconSelect] .none {

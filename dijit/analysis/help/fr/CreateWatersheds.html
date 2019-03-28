@@ -46,19 +46,19 @@
         <hr/>
     <p>Cet outil d&eacute;termine le bassin versant, ou surface de captation en amont, de chaque point dans votre couche en entr&eacute;e. 
     </p>
-    <p>Supposons par exemple que vous ayez des entit&eacute;s ponctuelles repr&eacute;sentant des emplacements de pollution de l'eau et que vous souhaitiez trouver les &eacute;ventuelles sources de pollution. Puisque la source de la pollution doit se trouver quelque part dans le bassin versant en amont du point, cet outil vous permet de d&eacute;finir les bassins versants contenant les sources du polluant.
+    <p>Supposons par exemple que vous ayez des entit&eacute;s ponctuelles repr&eacute;sentant des emplacements de pollution de l&rsquo;eau et que vous souhaitiez trouver les sources de pollution probables. Puisque la source de la pollution doit se trouver quelque part dans le bassin versant en amont du point, cet outil vous permet de d&eacute;finir les bassins versants contenant les sources du polluant.
     </p>
-    <p>La localisation de vos points en entr&eacute;e est importante.  S'ils ne sont pas situ&eacute;s pr&eacute;cis&eacute;ment sur une ligne de drainage, les bassins versants r&eacute;sultants peuvent &ecirc;tre tr&egrave;s petits et ne pas s'av&eacute;rer tr&egrave;s utiles pour votre analyse. La fonction  <b>Chercher la distance par rapport au drainage le plus proche</b> permet d'ajuster l'emplacement de vos points en entr&eacute;e de sorte qu'ils tombent pr&eacute;cis&eacute;ment sur une ligne de drainage afin de trouver le bassin versant qui s'&eacute;coule dans le point situ&eacute; sur la ligne de drainage.  Les emplacements ajust&eacute;s utilis&eacute;s pour rechercher les bassins versants sont &eacute;crits dans la couche en sortie&nbsp;; vos points en entr&eacute;e ne sont pas modifi&eacute;s.
+    <p>La localisation de vos points en entr&eacute;e est importante.  S&rsquo;ils ne sont pas situ&eacute;s pr&eacute;cis&eacute;ment sur une ligne de drainage, les bassins versants r&eacute;sultants peuvent &ecirc;tre tr&egrave;s petits et ne pas s&rsquo;av&eacute;rer tr&egrave;s utiles dans le cadre de votre analyse. La fonction  <b>Chercher la distance par rapport au drainage le plus proche</b> permet d'ajuster l'emplacement de vos points en entr&eacute;e de sorte qu'ils tombent pr&eacute;cis&eacute;ment sur une ligne de drainage afin de trouver le bassin versant qui s'&eacute;coule dans le point situ&eacute; sur la ligne de drainage.  Les emplacements ajust&eacute;s utilis&eacute;s pour rechercher les bassins versants sont &eacute;crits dans la couche en sortie&nbsp;; vos points en entr&eacute;e ne sont pas modifi&eacute;s.
     </p>
     <p>Le r&eacute;sultat est un groupe de couches contenant deux couches&nbsp;: les bassins versants et les points ajust&eacute;s utilis&eacute;s pour calculer les bassins versants.     
     </p>
-    <p>Les bassins versants r&eacute;sultants auront tous les attributs de vos points en entr&eacute;e ainsi que les attributs suppl&eacute;mentaires suivants&nbsp;: 
+    <p>Les bassins versants r&eacute;sultants auront tous les attributs de vos points en entr&eacute;e ainsi que les attributs suppl&eacute;mentaires suivants&nbsp;:     
         <ul>
-            <li> <i>PourPtID</i>&nbsp;: contient la valeur d'ID provenant du point en entr&eacute;e.
+            <li> <i>PourPtID</i>&nbsp;: contient la valeur d&rsquo;ID provenant du point en entr&eacute;e
             </li>
-            <li> <i>Area Square Kilometers</i>&nbsp;: contient la zone en kilom&egrave;tres carr&eacute;s du bassin versant en amont
+            <li> <i>Area Square Kilometers</i>&nbsp;: contient la surface en kilom&egrave;tres carr&eacute;s du bassin versant en amont
             </li>
-            <li> <i>Description</i> et <i>DataResolution</i>&nbsp;: contiennent des informations appartenant aux donn&eacute;es hydrologiques utilis&eacute;es pour calculer le parcours.
+            <li> <i>Description</i> et <i>DataResolution</i>&nbsp;: contiennent des informations appartenant aux donn&eacute;es hydrologiques utilis&eacute;es pour calculer le parcours
             </li>
         </ul>
         
@@ -85,17 +85,19 @@
             </p>
             <p>Pour utiliser l'emplacement exact de votre point en entr&eacute;e, sp&eacute;cifiez une distance de recherche &eacute;gale &agrave; z&eacute;ro.  
             </p>
-            <p>&Agrave; des fins d'analyse, les lignes de drainage ont &eacute;t&eacute; pr&eacute;-calcul&eacute;es par Esri selon des mod&egrave;les hydrologiques standard. Si aucune ligne de drainage ne se trouve au sein de la distance de recherche, l'emplacement contenant la plus forte accumulation de flux dans la distance de recherche est utilis&eacute;.
+            <p>&Agrave; des fins d&rsquo;analyse, les lignes de drainage ont &eacute;t&eacute; pr&eacute;-calcul&eacute;es par Esri selon des mod&egrave;les hydrologiques standard. Si aucune ligne de drainage ne se trouve au sein de la distance de recherche, l'emplacement contenant la plus forte accumulation de flux dans la distance de recherche est utilis&eacute;.
             </p> 
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Nom de la couche résultat</h2></div>
+        <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si le nom de la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>Le menu d&eacute;roulant  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My Content (Mon contenu)</b> dans lequel sera enregistr&eacute; le r&eacute;sultat.
+            </p>
+            <p> L&rsquo;ex&eacute;cution de cet outil n&rsquo;entra&icirc;ne aucune consommation de cr&eacute;dits.
             </p>
         </div>
     </div>

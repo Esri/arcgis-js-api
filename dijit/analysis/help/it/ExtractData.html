@@ -79,7 +79,7 @@
                 <ul>
                     <li>L'estensione visibile corrente della mappa ( <b>Come visualizzato</b>).
                     </li>
-                    <li>Uno dei layer del sommario che contiene feature area.
+                    <li>Uno dei layer del sommario che contiene feature area. Se il layer selezionato &egrave; con feature puntuali o lineari, si user&agrave; l'estensione del layer come area di studio.
                     </li>
                     <li>Tracciare una o pi&ugrave; aree da utilizzare.
                     </li>
@@ -102,6 +102,19 @@
             <p>Formato dei dati che verranno estratti. Quando si esportano feature linea o area in file CSV, vengono estratti solo gli attributi non spaziali. Quando si esportano feature puntuali, vengono estratti sia gli attributi spaziali che quelli non spaziali.  
             </p>
             <p>I dati estratti utilizzeranno una proiezione di Web Mercator 1984.  Per i file CSV, i campi  <i>Lat</i> e <i>Long</i> verranno aggiunti ai dati con le coordinate su Web Mercator 1984.
+            </p> 
+            <p>Sono supportati i seguenti formati di output:
+                <ul>
+                    <li>Comma separated value (CSV):  <code>.csv</code> o <code>.zip</code>
+                    </li>
+                    <li>File geodatabase:  <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML):  <code>.kmz</code> o <code>.zip</code>
+                    </li>
+                    <li>Shapefile:  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

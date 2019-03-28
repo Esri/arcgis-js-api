@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Synthétiser - A l'intérieur</h2><p/>
+        <h2>Synthétiser - A l’intérieur</h2><p/>
         <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Synth&eacute;tiser - A l&rsquo;int&eacute;rieur"></h2>
         <hr/>
     <p>Cet outil recherche les entit&eacute;s (et parties d'entit&eacute;s) qui se trouvent au sein des limites des surfaces dans la premi&egrave;re couche en entr&eacute;e.  Par exemple&nbsp;:
@@ -100,6 +100,8 @@
                 </li>
             </ul>
             
+            <p>Si la couche &agrave; synth&eacute;tiser ne contient aucun champ num&eacute;rique, les statistiques suppl&eacute;mentaires ne seront pas disponibles.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -123,6 +125,8 @@
                 </li>
             </ul>
             
+            <p>Si la couche &agrave; synth&eacute;tiser ne contient aucun champ num&eacute;rique, les statistiques suppl&eacute;mentaires ne seront pas disponibles.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -146,6 +150,8 @@
                 </li>
             </ul>
             
+            <p>Si la couche &agrave; synth&eacute;tiser ne contient aucun champ num&eacute;rique, les statistiques suppl&eacute;mentaires ne seront pas disponibles.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -169,13 +175,15 @@
             
             <p>Selon les types d'entit&eacute;s que vous synth&eacute;tisez, vous pouvez calculer le nombre total de points, la longueur totale des lignes ou la surface totale.
             </p>
+            <p>Si la couche &agrave; synth&eacute;tiser ne contient aucun champ num&eacute;rique, les statistiques suppl&eacute;mentaires ne seront pas disponibles.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Choisir le champ de regroupement</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit d'un attribut des entit&eacute;s &agrave;  <b>synth&eacute;tiser</b> qui permet de calculer les statistiques s&eacute;par&eacute;ment pour chaque valeur attributaire unique. Supposons par exemple que la premi&egrave;re couche en entr&eacute;e contiennent les limites de ville et que les entit&eacute;s &agrave; synth&eacute;tiser soient des parcelles.  Un des attributs des parcelles est <i>Status</i>, qui contient deux valeurs&nbsp;: VACANT et OCCUPIED. Pour calculer la surface totale des parcelles vacantes et occup&eacute;es au sein des limites des villes, utilisez <i>Status (Statut)</i> comme groupe par attribut. Les statistiques de chaque groupe, ainsi que le nombre total d'entit&eacute;s au sein de chaque limite de zone, appara&icirc;tront dans la fen&ecirc;tre contextuelle de la couche de r&eacute;sultat.
+            <p>Il s'agit d'un attribut des entit&eacute;s &agrave;  <b>synth&eacute;tiser</b> qui permet de calculer les statistiques s&eacute;par&eacute;ment pour chaque valeur attributaire unique. Supposons par exemple que la premi&egrave;re couche en entr&eacute;e contiennent les limites de ville et que les entit&eacute;s &agrave; synth&eacute;tiser soient des parcelles.  L&rsquo;un des attributs des parcelles est <i>Status</i>. Il contient deux valeurs&nbsp;: VACANT et OCCUPIED. Pour calculer la surface totale des parcelles vacantes et occup&eacute;es au sein des limites des villes, utilisez <i>Status</i> comme groupe par attribut. Les statistiques de chaque groupe, ainsi que le nombre total d'entit&eacute;s au sein de chaque limite de zone, appara&icirc;tront dans la fen&ecirc;tre contextuelle de la couche de r&eacute;sultat.
             </p>
         </div>
     </div>
@@ -200,7 +208,7 @@
         <div><h2>Ajouter des pourcentages</h2></div>
         <hr/>
         <div>
-            <p>Cette case &agrave; cocher est activ&eacute;e lorsque vous s&eacute;lectionnez un champ de regroupement. S&eacute;lectionnez  <b>Ajouter des pourcentages</b> si vous souhaitez conna&icirc;tre le pourcentage de chaque valeur attributaire au sein de chaque groupe. Un nouveau champ est ajout&eacute; &agrave; la table de r&eacute;sultat, contenant les pourcentages de chaque valeur attributaire au sein de chaque groupe. Si l'option <b>Ajouter des pourcentages</b> est &eacute;galement s&eacute;lectionn&eacute;e, deux champs suppl&eacute;mentaires sont ajout&eacute;s &agrave; la couche de r&eacute;sultat, contenant les pourcentages des valeurs attributaires minoritaires et majoritaires au sein de chaque groupe.
+            <p>Cette case &agrave; cocher est activ&eacute;e lorsque vous s&eacute;lectionnez un champ de regroupement. S&eacute;lectionnez  <b>Add percentages (Ajouter des pourcentages)</b> si vous souhaitez conna&icirc;tre le pourcentage de chaque valeur attributaire au sein de chaque groupe. Un nouveau champ est ajout&eacute; &agrave; la table de r&eacute;sultat&nbsp;; il contient les pourcentages de chaque valeur attributaire au sein de chaque groupe. Si l&rsquo;option <b>Add minority, majority (Ajouter une minorit&eacute;, majorit&eacute;)</b> est &eacute;galement s&eacute;lectionn&eacute;e, deux champs suppl&eacute;mentaires sont ajout&eacute;s &agrave; la couche de r&eacute;sultats&nbsp;; ils contiennent les pourcentages des valeurs attributaires minoritaires et majoritaires au sein de chaque groupe.
             </p>
         </div>
     </div>
@@ -208,9 +216,9 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si le nom de la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>Le menu d&eacute;roulant  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My Content (Mon contenu)</b> dans lequel sera enregistr&eacute; le r&eacute;sultat.
             </p>
         </div>
     </div>

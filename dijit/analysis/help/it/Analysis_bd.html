@@ -41,64 +41,79 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics distribuisce il lavoro di analisi in tutto il server ArcGIS GeoAnalytics. Ci&ograve; consente di analizzare un maggior numero di dati pi&ugrave; velocemente sfruttando la potenza di pi&ugrave; computer. Al momento sono disponibili i seguenti strumenti:
-            <ul>
-                <li> <b>Aggrega Punti</b>
+        <p> GeoAnalytics distribuisce il lavoro di analisi in tutto il ArcGIS GeoAnalytics Server. Ci&ograve; consente di analizzare un maggior numero di dati pi&ugrave; velocemente con pi&ugrave; computer. Sono disponibili i seguenti strumenti: <ul>
+                <li> Aggrega punti
                 </li>
-                <li> <b>Crea griglia multi-variabile</b>
+                <li> Crea griglia multi-variabile
                 </li>
-                <li> <b>Join delle feature</b>
+                <li> Descrivi dataset
                 </li>
-                <li> <b>Ricostruisci tracce</b>
+                <li> Join delle feature
                 </li>
-                <li> <b>Riepiloga attributi</b>
+                <li> Ricostruisci tracce
                 </li>
-                <li> <b>Riepiloga entro</b>
+                <li> Riepiloga attributi
                 </li>
-                <li> <b>Geocodifica posizioni da tabella</b>
+                <li> Riepiloga entro
                 </li>
-                <li> <b>Rileva Eventi</b>
+                <li> Geocodifica localit&agrave; da tabella
                 </li>
-                <li> <b>Trova posizioni simili</b>
+                <li> Aggiungi dati da griglia multi-variabile
                 </li>
-                <li> <b>Calcolo densit&agrave;</b>
+                <li> Rileva Eventi
                 </li>
-                <li> <b>Trova cluster punti</b>
+                <li> Trova posizioni simili
                 </li>
-                <li> <b>Trova hot spot</b>
+                <li> Calcolo Densit&agrave;
                 </li>
-                <li> <b>Crea buffer</b>
+                <li> Trova cluster punti
                 </li>
-                <li> <b>Aggiungi dati</b>
+                <li> Trova hot spot
                 </li>
-                <li> <b>Calcola campo</b>
+                <li> Classificazione e regressione basate sulla foresta
                 </li>
-                <li> <b>Copia in Data Store</b>
+                <li> Regressione lineare generalizzata
                 </li>
-                <li> <b>Sovrapponi layer</b>
+                <li> Crea Buffer
+                </li>
+                <li> Aggiungi dati
+                </li>
+                <li> Calcola Campo
+                </li>
+                <li> Copia in Data Store
+                </li>
+                <li> Sovrapponi layer
+                </li>
+                <li> Dissolvi confini
+                </li>
+                <li> Unisci layer
+                </li>
+                <li> Ritaglia layer 
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics si concentra sull'analisi di dati di grandi dimensioni, con una particolare enfasi su i modelli sia spaziali che temporali. 
+        <p>GeoAnalytics si concentra sull'analisi di dati di grandi volumi, con una particolare enfasi sui modelli sia spaziali che temporali. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Riepiloga dati</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p> Il set di strumenti Riepiloga dati contiene strumenti che consentono di calcolare totali, lunghezze, aree e statistiche descrittive di base di feature e dei relativi attributi in aree o altre feature vicine.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
-                <li> <b>Aggrega punti</b> consente di calcolare le statistiche su punti inclusi in aree o contenitori specifici.
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li> <b>Crea una griglia di bin multi-variabile</b> genera una griglia di bin quadrati o esagonali e calcola le variabili per ciascun bin in base alla prossimit&agrave; di uno o pi&ugrave; layer di input.
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
-                <li> <b>Join delle feature</b> consente di calcolare le statistiche su feature che condividono una relazione spaziale, temporale o di attributi con altre feature.
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
-                <li> <b>Ricostruisci tracce</b> consente di calcolare statistiche su punti o poligoni che appartengono alla stessa traccia e di ricostruire gli input in tracce.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li> <b>Riepiloga attributi</b> consente di calcolare le statistiche su feature o dati tabulari che condividono attributi.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li> <b>Riepiloga entro</b> consente di calcolare le statistiche per le feature di area e per gli attributi sovrapposti tra loro.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
             </ul>
             
@@ -139,15 +154,41 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Lo strumento Crea griglia multi-variabile genera una griglia di bin quadrati o esagonali e calcola le variabili per ciascun bin in base alla prossimit&agrave; di uno o pi&ugrave; layer di input.
+            <p>Lo strumento Crea griglia multi-variabile genera una griglia di contenitori quadrati ed esagonali e calcola le variabili per ciascun contenitore in base alla vicinanza di uno o pi&ugrave; layer di input.
             </p>
             <p>Di seguito sono riportati degli esempi:
                 <ul>
-                    <li>Dati vari layer di infrastrutture di trasporto pubblico, quale parte della citt&agrave; &egrave; meno accessibile con i mezzi pubblici?
+                    <li>Considerando pi&ugrave; layer di infrastrutture di trasporto pubblico, che parte della citt&agrave; &egrave; meno accessibile con trasporto pubblico?
                     </li>
-                    <li>Dati i layer di corsi fluviali, come laghi e fiumi, qual &egrave; il nome del corso d'acqua pi&ugrave; vicino a ogni localit&agrave; negli Stati Uniti?
+                    <li>Considerando layer di acque navigabili, come laghi e fiumi, come si chiama il corso d'acqua pi&ugrave; vicino a ciascuna localit&agrave; degli Stati Uniti?
                     </li>
-                    <li>Dato uno layer di reddito familiare, dove &egrave; la maggiore differenza di reddito nelle 50 miglia circostanti negli Stati Uniti?
+                    <li>Considerando un layer di reddito familiare, che zona degli Stati Uniti registra la maggiore variazione di reddito nelle 50 miglia circostanti?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Descrivi dataset</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Diagramma del flusso di lavoro di Descrivi dataset">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Riepilogare feature di input come statistiche, layer di esempio e visualizzazioni. &Egrave; possibile scegliere di emettere un layer di esempio o layer di estensione.
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Fare riferimento alle statistiche di riepilogo calcolate per comprendere quali valori contiene il dataset.
+                    </li>
+                    <li>Anzich&eacute; disegnare l'intero dataset, creare un layer di sottoinsieme per visualizzare le feature e i loro attributi quando vengono aggiunte a una mappa.
+                    </li>
+                    <li>Risparmiare tempo e risorse ed eseguire un'analisi su un layer di esempio prima di eseguire l'analisi sull'intero dataset.
                     </li>
                 </ul>
                 
@@ -191,11 +232,11 @@
 <hr/>
             <p>Utilizzando un layer di punti abilitati per variazioni temporali o feature poligonali che rappresentano un  <code>istante</code> nel tempo, questo strumento determina quali feature di input appartengono a una traccia e ordiner&agrave; gli input in modo sequenziale nel tempo. Le statistiche vengono calcolate facoltativamente per le feature di input all'interno di ogni traccia.
             </p>
-            <p> Di seguito sono riportati degli esempi:
+            <p>Di seguito sono riportati degli esempi:
                 <ul>
                     <li>Date le posizioni puntuali e l'ora delle misurazioni degli uragani, calcolare la velocit&agrave; media del vento e la pressione massima del vento dell'uragano.
                     </li>
-                    <li>Usa misurazioni GPS di navi per ricostruire percorsi navali come linee.
+                    <li>Usare misurazioni GPS di navi per ricostruire percorsi navali come linee. 
                     </li>
                 </ul>
                 
@@ -213,7 +254,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Utilizzando feature o dati tabulari, questo strumento riepiloga le statistiche per campi specifici.
+            <p>Utilizzando feature o dati tabulari, questo strumento riepiloga le statistiche per campi specifici. 
             </p>
             <p>Di seguito sono riportati degli esempi:
                 <ul>
@@ -328,16 +369,20 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analizza modelli</h2>
         <hr/>
-        <p> Questi strumenti consentono di identificare, quantificare e visualizzare i modelli spaziali nei dati.
+        <p>  Questi strumenti consentono di identificare, quantificare e visualizzare i modelli spaziali nei dati.
             <ul>
                 <li> <b>Calcolo densit&agrave;</b> consente di valutare quantit&agrave; note di alcuni fenomeni e di diffondere tali quantit&agrave; nella mappa.
                 </li>
                 <li> <b>Trova hot spot</b> consente di identificare cluster di rilevanza statistica nel modello spaziale dei dati.
                 </li>
-                <li> <b>Trova cluster punti</b> trova i cluster di feature punto entro il disturbo circostante in base alla loro distribuzione spaziale.
+                <li> <b>Trova cluster punti</b> trova i cluster di feature puntuali entro il disturbo circostante in base alla loro distribuzione spaziale.
+                </li>
+                <li> <b>Classificazione e regressione basate sulla foresta</b> crea modelli e genera previsioni utilizzando un adattamento dell'algoritmo della foresta causale di Leo Breiman, un metodo di apprendimento automatico revisionato.
+                </li>
+                <li> <b>Regressione lineare generalizzata</b> genera previsioni o modella una variabile dipendente in base alla sua relazione con un set di variabili esplicative.
                 </li>
             </ul>
             
@@ -415,6 +460,62 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classificazione e regressione basate sulla foresta</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Diagramma del flusso di lavoro di Classificazione e regressione basate sulla foresta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Lo strumento Classificazione e regressione basate sulla foresta modella e genera previsioni utilizzando un adattamento dell'algoritmo della foresta causale di Leo Breiman, un metodo di apprendimento automatico revisionato
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Considerando dei dati sulla comparsa di praterie, nonch&eacute; il numero di variabili esplicative ambientali rappresentate sia come attributi cui siano stati aggiunti dati usando una griglia multi-variabile per calcolare le distanze dalle fabbriche a monte sia come porti principali, la comparsa futura di praterie pu&ograve; essere prevista sulla base di proiezioni future per quelle stesse variabili esplicative ambientali.
+                          
+                    </li>
+                    <li>Supponiamo di disporre di dati di raccolti di centinaia di fattorie in tutto il paese insieme ad altri attributi per ciascuna di quelle fattorie (numero di dipendenti, superficie in acri e cos&igrave; via). Usando questi dati, &egrave; possibile fornire una serie di feature che rappresentano fattorie in cui non si ha un raccolto (ma si hanno tutte le altre variabili) ed eseguire una previsione sul raccolto.
+                    </li>
+                    <li>I valori delle abitazioni possono essere previsti sulla base dei prezzi delle case vendute nell'anno attuale. Il prezzo di vendita delle case vendute pu&ograve; essere usato insieme alle informazioni sul numero di stanze da letto, sulla distanza da scuole, sulla vicinanza ad autostrade principali, sul reddito medio e sui conteggi dei crimini per prevedere i prezzi di vendita di case simili.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Regressione lineare generalizzata</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Diagramma del flusso di lavoro di Regressione lineare generalizzata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Lo strumento Regressione lineare generalizzata  genera previsioni o modella una variabile dipendente in base alla sua relazione con un set di variabili esplicative. Questo strumento pu&ograve; essere usato per adattare modelli continui (OLS), binari (logistici) e di conteggio (Poisson).
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Quali caratteristiche demografiche contribuiscono a tassi elevati di utilizzo del trasporto pubblico?
+                    </li>
+                    <li>Esiste una relazione positiva tra vandalismo e furti in appartamento?
+                    </li>
+                    <li>Quali variabili prevedono efficacemente il volume di chiamate al numero di emergenza?  Considerate le proiezioni future, qual &egrave; la richiesta prevista per le risorse di soccorso di emergenza?
+                    </li>
+                    <li>Quali variabili incidono sulla bassa frequenza di nascite?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Usa prossimità</h2>
         <hr/>
@@ -450,18 +551,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Gestisci dati</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Manage Data</h2>
         <hr/>
-        <p>Questi strumenti vengono utilizzati per la gestione quotidiana dei dati geografici e tabulari. 
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
-                <li> <b>Aggiungi dati</b> aggiunge Feature ad un Hosted Feature Layer esistente.
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
                 </li>
-                <li> <b>Calcola campo</b> crea un nuovo campo o modifica il campo esistente e crea un nuovo layer nei contenuti.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Copia su Data Store</b> copia i dati sul ArcGIS Data Store e crea un layer nei tuoi contenuti. 
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
                 </li>
-                <li> <b>Sovrapponi layer</b> combina due o pi&ugrave; layer in un unico layer.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -513,6 +620,54 @@
             </p>
             <br/>
         </div>
+        <div id="ClipLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ritaglia layer</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="Ritaglia layer">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ritaglia feature di input da aree di interesse definite. Il risultato di output sar&agrave; un sottoinsieme di feature di input. 
+            </p>
+            <p>Di seguito sono riportati degli esempi: 
+                <ul>
+                    <li>Creare un sottoinsieme di edifici a rischio che rientrano in aree della pianura alluvionale.
+                    </li>
+                    <li>Stabilire quali strade principali attraversano le aree di sviluppo potenziali.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dissolvi Boundary</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Dissolvi Boundary">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unisce feature areali che intersecano o condividono un valore di campo comune per creare feature contigue o multiparte.
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Creare una feature singola che rappresenta lo stato di Hawaii dissolvendo i confini delle isole hawaiane.
+                    </li>
+                    <li>Combinare aree di studio simili sulla base del tipo di terreno per emettere un dataset sul tipo di terreno contiguo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="OverlayLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -524,9 +679,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione costituisce la risposta ad una delle pi&ugrave; elementari domande di geografia, ovvero &quot;Cosa sta sopra e cosa sta sotto?&quot; Di seguito sono riportati degli esempi:
+            <p>Combina due o pi&ugrave; layer in un unico layer. La sovrapposizione costituisce la risposta ad una delle pi&ugrave; elementari domande di geografia, ovvero &quot;Cosa sta sopra e cosa sta sotto?&quot; 
+            </p>
+            <p>Di seguito sono riportati degli esempi:
                 <ul>
-                    <li>Quali lotti di terreno sono inclusi nella pianura soggetta a esondazioni ogni 100 anni? da 100 anni?
+                    <li>Quali lotti di terreno sono inclusi nella pianurasoggetta a esondazioni ogni 100 anni? da 100 anni?
                           
                     </li>
                     <li>Quale uso del suolo si fa di un determinato tipo di terreno?
@@ -553,11 +710,68 @@
             <p>Aggiunge feature ad un layer hosted esistente nei contenuti in  ArcGIS Enterprise. </p>
             <p>Di seguito sono riportati degli esempi:
                 <ul>
-                    <li>Aggiornare il feature layer 2018_Sales ogni mese in quanto i report diventano disponibili. 
+                    <li>Aggiornare il feature layer 2018_Sales ogni mese in quanto i report diventano disponibili.
                     </li>
                     <li>Aggiungere dataset di monitoraggio degli uragani degli anni 2016 e 2017 in un dataset sugli uragani master.
                     </li>
                     <li>Raccogliere e aggiungere dataset da varie origini con schemi diversi utilizzando la mappatura dei campi personalizzata.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Unisci Layer</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Unisci layer">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Combina due feature layer per creare un unico layer risultante. Tutti i campi del layer di unione saranno inclusi per impostazione predefinita; in alternativa, &egrave; possibile specificare delle regole personalizzate di unione per definire lo schema risultante.  
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Unire tre layer contenenti informazioni demografiche dall'Inghilterra, dal Galles e dalla Scozia per creare un unico layer della Gran Bretagna.
+                    </li>
+                    <li>Combinare due layer contenenti informazioni catastali relative a municipalit&agrave; contigue, tenendo solo i campi che presentano lo stesso nome e lo stesso tipo nei due layer.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Miglioramento dati</h2>
+        <hr/>
+        <p>Questi strumenti consentono di esplorare le caratteristiche delle aree.
+            <ul>
+                <li> <b>Aggiungi dati da griglia multi-variabile</b> unisce gli attributi da un layer di una griglia multi-variabile a un layer puntuale.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggiungi dati da griglia multi-variabile</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="Aggiungi dati da griglia multi-variabile">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unisce efficacemente gli attributi di una griglia multi-variabile in un layer puntuale, consentendo di aggiungere rapidamente una raccolta grande e variegata di informazioni ai dati puntuali da usare in ulteriori analisi spaziali. 
+            </p>
+            <p>Di seguito sono riportati degli esempi:
+                <ul>
+                    <li>Considerando un layer contenente milioni di eventi di black-out elettrici, aggiungere alle feature degli eventi informazioni sull'uso tipico, rischi ambientali e condizioni delle infrastrutture al fine di studiare la relazione tra tali fattori e la frequenza di black-out elettrici. 
                     </li>
                 </ul>
                 

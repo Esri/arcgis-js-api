@@ -44,7 +44,7 @@
         <h2>Traceringen reconstrueren</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Traceringen reconstrueren"></h2>
         <hr/>
-    <p>Deze tool werkt met een tijdingeschakelde laag van punt- of gebiedsobjecten die een  <code>moment</code> in de tijd te vertegenwoordigen. Het bepaalt eerst welke objecten tot een tracering behoren met behulp van een identificatie. Met behulp van de tijd op elke locatie, worden de traceringen op volgorde gezet en omgevormd tot een lijn of gebied die het pad van de beweging in de tijd weergeeft. Eventueel kan de input worden gebufferd door een veld, dat een gebied op elke locatie cre&euml;ert. Deze gebufferde punten, of als de input gebieden zijn, worden vervolgens samengevoegd als een gebied waarbij de breedte representatief is voor het attribuut van belang. De resulterende traceringen een begin- en een eindtijd, die tijdelijk het eerste en het laatste object in een bepaalde tracering vertegenwoordigen. Wanneer de traceringen gemaakt zijn, worden de statistieken over de inputobjecten worden berekend en toegekend aan de outputtracering. De meest eenvoudige statistiek is het aantal punten binnen het gebied, maar andere statistieken kunnen ook worden berekend.
+    <p> Deze tool werkt met een tijdingeschakelde laag van punt- of gebiedsobjecten die een <code>moment</code> in de tijd vertegenwoordigen. Het bepaalt eerst welke objecten tot een tracering behoren met behulp van een identificatie. Met behulp van de tijd op elke locatie, worden de tracks op volgorde gezet en omgevormd tot een lijn of gebied die het pad van de beweging in de tijd weergeeft. Eventueel kan de input worden gebufferd door een veld, dat een gebied op elke locatie cre&euml;ert. Deze gebufferde punten of als de inputgebieden worden vervolgens samengevoegd om een track te cre&euml;ren als een gebied waarbij de breedte representatief is voor het betreffende attribuut. De resulterende tracks hebben een begin- en een eindtijd, die tijdelijk het eerste en het laatste object in een bepaalde track vertegenwoordigen. Wanneer de tracks gemaakt zijn, worden de statistieken over de inputobjecten berekend en toegekend aan de outputtracering. De meest eenvoudige statistiek is het aantal punten binnen het gebied, maar andere statistieken kunnen ook worden berekend.
     </p>
     <p>Objecten in tijdingeschakelde lagen kunnen worden weergegeven op twee manieren:
         <ul>
@@ -55,9 +55,9 @@
         </ul>
         
     </p>
-    <p>Stel bijvoorbeeld voor dat u GPS-metingen van orkanen hebt elke 10 minuten. Elke GPS-meting registreert de naam van de orkaan, de locatie, het tijdstip van de opname en de windsnelheid. Met deze informatie kunt u traceringen cre&euml;ren voor elke orkaan met de naam voor traceringsidentificatie en traceringen voor elke orkaan worden gegenereerd. Daarnaast kunt u statistieken berekenen, zoals het gemiddelde, max. en minimale windsnelheid van elke orkaan, evenals het aantal metingen binnen elke tracering.
+    <p>Stel bijvoorbeeld voor dat u GPS-metingen van orkanen hebt elke 10 minuten. Elke GPS-meting registreert de naam van de orkaan, de locatie, het tijdstip van de opname en de windsnelheid. Met deze informatie kunt u tracks cre&euml;ren voor elke orkaan met de naam voor traceringsidentificatie en traceringen voor elke orkaan worden gegenereerd. Daarnaast kunt u statistieken berekenen, zoals het gemiddelde, max. en minimale windsnelheid van elke orkaan, evenals het aantal metingen binnen elke tracks.
     </p>
-    <p>Met behulp van hetzelfde voorbeeld kunt u uw traceringen bufferen door de windsnelheid. Dit buffert elke meting door het windsnelheidveld op die locatie en voegt de gebufferde gebieden samen, maakt een gebiedvertegenwoordiging van het traceringpad alsmede van de veranderingen in windsnelheid als de orkanen verder trekken.   
+    <p>Met behulp van hetzelfde voorbeeld kunt u uw traceringen bufferen door de windsnelheid. Dit buffert elke meting door het windsnelheidveld op die locatie en voegt de gebufferde gebieden samen, maakt een gebied dat representatief is voor de track en voor veranderingen in windsnelheid bij het verder trekken van de orkanen.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,9 +65,9 @@
         <div><h2>Kies de features om traceringen uit te reconstrueren</h2></div>
         <hr/>
         <div>
-            <p>De punt- of gebiedlaag die gereconstrueerd wordt in traceringen. Voor de inputlaag moet de tijd zijn ingeschakeld met objecten die een moment in de tijd vertegenwoordigen. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b> als een buffer wordt toegepast.
+            <p>De punt- of gebiedlaag die gereconstrueerd wordt in tracks. Voor de inputlaag moet de tijd zijn ingeschakeld met objecten die een moment in de tijd vertegenwoordigen. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b> als een buffer wordt toegepast.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
             </p>
         </div>
     </div>
@@ -77,7 +77,7 @@
         <div>
             <p>De velden die de traceringsidentifier vertegenwoordigen. 
             </p>
-            <p>Bijvoorbeeld als u de sporen van orkanen reconstrueert, kunt u de naam van de orkaan gebruiken als het traceringsveld.
+            <p>Bijvoorbeeld als u de sporen van orkanen reconstrueert, kunt u de naam van de orkaan gebruiken als het trackveld.
             </p>
         </div>
     </div>
@@ -105,7 +105,7 @@
         <div><h2>Selecteer een tijd om traceringen op te splitsen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Tijd gebruikt om traceringen te splitsen. Als inputpunten of -gebieden een langere duur tussen hen hebben dan de gesplitste tijd dan worden ze opgesplitst in verschillende traceringen.
+            <p>Tijd gebruikt om traceringen te splitsen. Als invoerpunten of -gebieden een langere duur tussen zich hebben dan de gesplitste tijd, dan worden ze opgesplitst in verschillende tracks.
             </p>
             <p>Als u een tijd en afstand specificeert om op te splitsen, worden tracks gesplitst als aan &eacute;&eacute;n of beide voorwaarden is voldaan. 
             </p>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Splitsen van tracks (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>U kunt tracks op drie verschillende manieren splitsen. U kunt een combinatie van geen, alle of sommige splitsmethoden gebruiken. 
+            </p>
+            <p>Splits kunnen op de volgende manieren worden voltooid:
+                <ul>
+                    <li> <b>Gebaseerd op een afstand tussen invoeren</b>&mdash;Als invoerpunten of -gebieden een langere afstand tussen zich hebben dan de gespecificeerde afstand, dan worden ze opgesplitst in verschillende tracks. Als u bijvoorbeeld een afstand van 10 kilometer hebt opgegeven, zijn opeenvolgende punten van meer dan 10 kilometer afzonderlijke tracks.
+                    </li>
+                    <li> <b>Gebaseerd op een tijd tussen invoeren</b>&mdash;Als invoerpunten of -gebieden een langer duren dan de gespecificeerde tijd, dan worden ze opgesplitst in verschillende tracks Stel u voor dat u bijvoorbeeld puntobjecten hebt die vliegtuigvluchten voorstellen en het trackingveld is het ID van het vliegtuig. Dit toestel kan meerdere reizen maken en wordt weergegeven als &eacute;&eacute;n tracering. Als u weet dat er een pauze van 1 uur is tussen de vluchten, kunt u gebruik maken van <code>1 uur</code> als traceringssplitsing en elke vlucht wordt dan gesplitst in een eigen tracering.
+                    </li>
+                    <li> <b>Op gedefinieerde tijdsintervallen</b>&mdash;Splitsen met regelmatige intervallen, gespecificeerd door een tijdsinterval en een referentietijd. Als u geen referentietijd opgeeft, wordt 1 januari 1970 gebruikt. Als u bijvoorbeeld 1 jaar hebt opgegeven met een referentietijd van 2 februari 1990 om 10.00 uur, zou u tracks splitsen op 2 februari 1990 om 10.00 uur, 2 februari 1991 om 10.00 uur en doorgaan met intervallen van &eacute;&eacute;n jaar.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Als u meerdere splitsopties selecteert, worden tracks gesplitst als aan &eacute;&eacute;n of beide voorwaarden is voldaan. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Selecteer een afstand om traceringen op te splitsen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p> Tijd gebruikt om tracks te splitsen. Als invoerpunten of -gebieden een langere afstand tussen zich hebben dan de gesplitste afstand, dan worden ze opgesplitst in verschillende tracks.
+            <p>Afstand gebruikt om tracks te splitsen. Als invoerpunten of -gebieden een langere afstand tussen zich hebben dan de gesplitste afstand, dan worden ze opgesplitst in verschillende tracks.
             </p>
             <p>Als u een tijd en afstand specificeert om op te splitsen, worden tracks gesplitst als aan &eacute;&eacute;n of beide voorwaarden is voldaan. 
             </p>
@@ -129,7 +150,7 @@
         <div>
             <p> U kunt statistieken berekenen over objecten die zijn samengevat.U kunt het volgende berekenen in numerieke velden:
                 <ul>
-                    <li>Count&mdash;Berekent het aantal non-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
+                    <li>Count&mdash;Berekent het aantal niet-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
                     <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
@@ -163,7 +184,7 @@
         <div><h2>Kies een ArcGIS Data Store om de resultaten in op te slaan</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+            <p>GeoAnalytic-resultaten worden opgeslagen in een datastore en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data store en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
                 <ul>
                     <li>U kunt resultaten gebruiken in portaal-tot-portaal samenwerking.
                     </li>
@@ -172,7 +193,7 @@
                 </ul>
                 
             </p>
-            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken.
+            <p>U moet geen gebruik maken van een relationele data-store als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-store om grote hoeveelheden gegevens te verwerken.
             </p>
         </div>
     </div>
@@ -180,9 +201,9 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> De naam van de laag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store,  schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
-            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
             </p>
         </div>
     </div>

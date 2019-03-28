@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj raster eller geoobjektplatslager för att beräkna avståndet till",maxDistanceLabel:"Maximalt avstånd att beräkna (valfritt)",outputCellSize:"Utdatacellstorlek (valfritt)",resultDistLayerName:"Resultatavståndslagrets namn",resultDirectionLayerName:"Resultatriktningslagrets namn (valfritt)",resultAllocationLayerName:"Resultattilldelningslagrets namn (valfritt)",outputLayerName:"Beräknat avstånd för ${layername}",allocationFieldLabel:"Välj tilldelningsfält (valfritt)",itemDescription:"Geoobjektlager som genererats genom körning av Beräkna avstånd på ${layerName}. ",itemTags:"Analysresultat, Beräknat avstånd, ${layername}, ${fieldname}",itemSnippet:"Geoobjektlager som genererats av Beräkna avstånd."});

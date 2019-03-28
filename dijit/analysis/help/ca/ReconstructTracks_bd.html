@@ -44,7 +44,7 @@
         <h2>Reconstrueix els recorreguts</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstrueix els recorreguts"></h2>
         <hr/>
-    <p>Aquesta eina funciona amb una capa d'entitats de punts o &agrave;rees que t&eacute; la funci&oacute; de temps habilitada i que representa un  <code>instant</code> de temps.   En primer lloc, determina quines entitats pertanyen a un recorregut mitjan&ccedil;ant un identificador. Mitjan&ccedil;ant l'hora de cada ubicaci&oacute;, els recorreguts s'ordenen de manera seq&uuml;encial i es transformen en una l&iacute;nia o una &agrave;rea que representa la ruta del moviment a trav&eacute;s del temps. De manera opcional, es pot crear una &agrave;rea d'influ&egrave;ncia de l'entrada mitjan&ccedil;ant un camp, que crear&agrave; una &agrave;rea a cada ubicaci&oacute;. Despr&eacute;s, aquests punts amb &agrave;rea d'influ&egrave;ncia o &agrave;rees d'entrada s'uneixen de manera seq&uuml;encial per crear un recorregut com una &agrave;rea on l'amplada representa l'atribut d'inter&egrave;s. Els recorreguts resultants tenen hores d'inici i final, que representen temporalment les entitats primera i &uacute;ltima d'un recorregut determinat. Quan es creen els recorreguts, les estad&iacute;stiques sobre les entitats d'entrada es calculen i s'assignen al recorregut de sortida. L'estad&iacute;stica m&eacute;s b&agrave;sica &eacute;s el recompte de punts dins de l'&agrave;rea, per&ograve; tamb&eacute; es poden calcular altres estad&iacute;stiques.
+    <p> Aquesta eina funciona amb una capa d'entitats de punts o &agrave;rees que t&eacute; la funci&oacute; de temps habilitada i que representa un <code>instant</code> de temps.   En primer lloc, determina quines entitats pertanyen a un recorregut mitjan&ccedil;ant un identificador. Mitjan&ccedil;ant l'hora de cada ubicaci&oacute;, els recorreguts s'ordenen de manera seq&uuml;encial i es transformen en una l&iacute;nia o una &agrave;rea que representa la ruta del moviment a trav&eacute;s del temps. De manera opcional, es pot crear una &agrave;rea d'influ&egrave;ncia de l'entrada mitjan&ccedil;ant un camp, que crear&agrave; una &agrave;rea a cada ubicaci&oacute;. Despr&eacute;s, aquests punts amb &agrave;rea d'influ&egrave;ncia o &agrave;rees d'entrada s'uneixen de manera seq&uuml;encial per crear un recorregut com una &agrave;rea on l'amplada representa l'atribut d'inter&egrave;s. Els recorreguts resultants tenen hores d'inici i final, que representen temporalment les entitats primera i &uacute;ltima d'un recorregut determinat. Quan es creen els recorreguts, les estad&iacute;stiques sobre les entitats d'entrada es calculen i s'assignen al recorregut de sortida. L'estad&iacute;stica m&eacute;s b&agrave;sica &eacute;s el recompte de punts dins de l'&agrave;rea, per&ograve; tamb&eacute; es poden calcular altres estad&iacute;stiques.
     </p>
     <p>Les entitats de les capes amb la funci&oacute; de temps habilitada es poden representar de dues maneres diferents:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Capa de punts o d'&agrave;rees que es reconstruiran en recorreguts. La capa d'entrada ha tenir la funci&oacute; de temps habilitada i entitats que representin un instant de temps. La capa d'entrada s'ha de trobar en un sistema de coordenades projectades o ha de tenir la refer&egrave;ncia espacial de processament definida en un sistema de coordenades projectades mitjan&ccedil;ant els  <b>entorns d'an&agrave;lisi</b> si s'ha aplicat una &agrave;rea d'influ&egrave;ncia.
             </p>
-            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Examina les capes</b> al final de la llista desplegable per cercar al vostre contingut una capa d'entitats o un dataset de recursos compartits de fitxers de dades massives.
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b> al final de la llista desplegable per cercar al vostre contingut una capa d'entitats o un dataset de recursos compartits de fitxers de dades massives.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Divideix recorreguts (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Podeu dividir recorreguts mitjan&ccedil;ant tres m&egrave;todes diferents. Podeu utilitzar una combinaci&oacute; que inclogui tots, algun o cap dels m&egrave;todes de divisi&oacute;. 
+            </p>
+            <p>Les divisions es poden completar de les maneres seg&uuml;ents:
+                <ul>
+                    <li> <b>Basat en una dist&agrave;ncia entre entrades</b>: si la dist&agrave;ncia entre els punts o les &agrave;rees d'entrada supera la dist&agrave;ncia especificada, aquests es dividiran en recorreguts diferents. Per exemple, si heu especificat una dist&agrave;ncia de 10 quil&ograve;metres, els punts seq&uuml;encials de m&eacute;s de 10 quil&ograve;metres seran recorreguts independents.
+                    </li>
+                    <li> <b>Basat en un temps entre entrades</b>: si la durada entre els punts o les &agrave;rees d'entrada &eacute;s m&eacute;s llarga que la divisi&oacute; de temps, aquests es dividiran en recorreguts diferents. Per exemple, si teniu entitats de punts que representen vols d'avi&oacute;, on el camp de recorregut &eacute;s l'ID de l'avi&oacute;. L'avi&oacute; pot fer diversos viatges que representarien un recorregut.  Si sabeu que hi ha una pausa d'una hora entre els vols, podeu utilitzar el valor <code>1 hora</code> com a divisi&oacute; de recorregut i cada vol es dividir&agrave; en el seu propi recorregut.
+                    </li>
+                    <li> <b>A intervals de temps definits</b>: la divisi&oacute; s'ha fet amb intervals regulars, amb l'especificaci&oacute; d'un interval de temps i un temps de refer&egrave;ncia. Si no especifiqueu un temps de refer&egrave;ncia, s'utilitzar&agrave; l'1 de gener de 1970. Per exemple, si heu especificat 1 any amb el temps de refer&egrave;ncia 2 de febrer de 1990 a les 10:00, els recorreguts es dividiran el 2 de febrer de 1990 a les 10:00, el 2 de febre de 1991 a les 10:00 i aix&iacute; successivament amb intervals d'un any.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Si especifiqueu diverses opcions de divisi&oacute;, els recorreguts es dividiran quan es donin una o diverses condicions. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Seleccioneu una distància amb la qual dividir els recorreguts (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Dist&agrave;ncia utilitzada per dividir recorreguts. Si la dist&agrave;ncia entre els punts o les &agrave;rees d'entrada supera la divisi&oacute; de dist&agrave;ncia, aquests es dividiran en recorreguts diferents.
+            <p>Dist&agrave;ncia utilitzada per dividir recorreguts. Si la dist&agrave;ncia entre els punts o les &agrave;rees d'entrada supera la divisi&oacute; de dist&agrave;ncia, aquests es dividiran en recorreguts diferents.
             </p>
             <p>Si especifiqueu una divisi&oacute; de temps i una divisi&oacute; de dist&agrave;ncia, els recorreguts es dividiran quan es doni una de les condicions o totes dues. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Trieu un ArcGIS Data Store on desar els resultats</h2></div>
         <hr/>
         <div>
-            <p>Els resultats del GeoAnalytics s'emmagatzemen en un ArcGIS Data Store i s'exposen com una capa d'entitats al  Portal for ArcGIS. En la majoria dels casos, conv&eacute; emmagatzemar els resultats en un magatzem de dades espaciotemporal, que &eacute;s l'opci&oacute; per defecte. En alguns casos, desar els resultats al magatzem de dades relacional &eacute;s una bona opci&oacute;. A continuaci&oacute; teniu alguns motius pels quals &eacute;s bona idea desar els resultats al magatzem de dades relacional: 
+            <p>Els resultats del GeoAnalytics s'emmagatzemen en un magatzem de dades i s'exposen com una capa d'entitats al  Portal for ArcGIS. En la majoria dels casos, conv&eacute; emmagatzemar els resultats en un magatzem de dades espaciotemporal, que &eacute;s l'opci&oacute; per defecte. En alguns casos, desar els resultats al magatzem de dades relacional &eacute;s una bona opci&oacute;. A continuaci&oacute; teniu alguns motius pels quals &eacute;s bona idea desar els resultats al magatzem de dades relacional: 
                 <ul>
                     <li>Podeu utilitzar els resultats en la col&middot;laboraci&oacute; de portal a portal.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
-            <p> Nom de la capa que es crear&agrave; a <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, l'eina no funcionar&agrave;.
+            <p> Nom de la capa que es crear&agrave;.  Si esteu escrivint en un ArcGIS Data Store, els resultats es desaran a  <b>El meu contingut</b> i s'afegiran al mapa. Si esteu escrivint en un recurs compartit de fitxers de dades massives, els resultats s'emmagatzemaran en aquest recurs i s'afegiran al seu manifest. No s'afegiran al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, l'eina no funcionar&agrave;.
             </p>
-            <p>Mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta d' <b>El meu contingut</b> on es desar&agrave; el resultat.
+            <p>Si escriviu a l' ArcGIS Data Store (magatzem de dades massives relacional o espaciotemporal) mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta a <b>El meu contingut</b>, on es desar&agrave; el resultat.
             </p>
         </div>
     </div>

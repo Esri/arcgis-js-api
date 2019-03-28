@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["dojo/dom-construct","../ChartContainer","./ThemeCalculator"],function(e,t,n){var a={};return a.createChartPage=function(a,r){var o,c=a.json,u=a.creationParams,i=u.viewModel.getChartDefaultStyles(u.theme);return u.chartTheme=n.getThemeForSettings(c,i),r=r||t,o=new r(u,a.node?e.create("div",null,a.node):void 0),"function"==typeof a.placeFunc&&a.placeFunc(o),o.updateChart(c),o},a});
+define(["dojo/dom-construct","../ChartContainer","./ThemeCalculator","./ChartJsonUtil"],function(e,t,a,n){var r={};return r.createChartPage=function(r,o){var i,c=r.json,l=r.creationParams;n.provideDefaultValueForMissing(c),c=n.cleanUpJson(c,l.viewModel.isGraphicStyle);var u=l.viewModel.getChartDefaultStyles(l.theme);return l.chartTheme=a.getThemeForSettings(c,u,l.isEditMode),o=o||t,i=new o(l,r.node?e.create("div",null,r.node):void 0),"function"==typeof r.placeFunc&&r.placeFunc(i),i.updateChart(c),i},r});

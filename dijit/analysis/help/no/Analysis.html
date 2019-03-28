@@ -258,9 +258,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Viewshed</h2></td>
+                    <td><h2>Opprett synsfelt</h2></td>
                     <td>
-                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Create Viewshed">
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Opprett synsfelt">
                     </td>
                 </tr></tbody>
             </table>
@@ -273,9 +273,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Watersheds</h2></td>
+                    <td><h2>Opprett vannskille</h2></td>
                     <td>
-                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Create Watersheds">
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Opprett vannskille">
                     </td>
                 </tr></tbody>
             </table>
@@ -363,9 +363,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Spor medstrøm</h2></td>
+                    <td><h2>Spor nedstrøms</h2></td>
                     <td>
-                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Spor nedstr&oslash;m">
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Spor nedstr&oslash;ms">
                     </td>
                 </tr></tbody>
             </table>
@@ -590,7 +590,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Administrer data</h2>
         <hr/>
         <p>Disse verkt&oslash;yene brukes b&aring;de til daglig administrasjon av geografiske data og til &aring; kombinere data f&oslash;r det utf&oslash;res analyser.  
@@ -599,9 +599,11 @@
                 </li>
                 <li> <b>Ekstraher data</b> oppretter nye datasett ved &aring; trekke ut geoobjekter fra eksisterende data.
                 </li>
+                <li> <b>Generer tesseleringer</b> oppretter tesseleringer basert p&aring; utstrekningen av dataene dine.
+                </li>
                 <li> <b>Sl&aring; sammen lag</b> kopierer alle geoobjektene fra to eller flere eksisterende lag til et nytt lag.
                 </li>
-                <li> <b>Legg lag opp&aring;</b> kombinerer to eller flere lag til ett lag.  Et overlegg blir som om du ser ned gjennom en stabel med kart som ligger opp&aring; hverandre, og oppretter et enkelt kart som inneholder all den informasjonen som finnes i hele kartstabelen.
+                <li> <b>Legg lag opp&aring;</b> sl&aring;r sammen to eller flere lag til ett lag. Et overlegg blir som om du ser ned gjennom en stabel med kart som ligger opp&aring; hverandre, og oppretter et enkelt kart som inneholder all den informasjonen som finnes i hele kartstabelen.
                 </li>
             </ul>
             
@@ -620,7 +622,7 @@
 <hr/>
             <p>Omr&aring;der som overlapper eller har en felles grense, sl&aring;s sammen til et enkelt omr&aring;de.    
             </p>
-            <p>Du kan kontrollere hvilke grenser som sl&aring;s sammen, ved &aring; angi et felt. Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-attributt, kan du viske ut grensene ved hjelp av <i>State_Name</i>-attributtet.  Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>.  Sluttresultatet blir et lag med statsgrenser.
+            <p>Du kan kontrollere hvilke grenser som sl&aring;s sammen, ved &aring; angi et felt. Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-attributt, kan du viske ut grensene ved hjelp av <i>State_Name</i>-attributtet.  Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>. Sluttresultatet blir et lag med delstatsgrenser.
             </p>
             <br/>
         </div>
@@ -641,6 +643,21 @@
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generer tesseleringer</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generer tesseleringer">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Genererer tesseleringer over et studieomr&aring;de basert p&aring; angitt form og st&oslash;rrelse.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -656,7 +673,7 @@
                 <ul>
                     <li>Hvis du har tre lag for England, Wales og Skottland, og du vil ha et enkelt lag for Storbritannia. 
                     </li>
-                    <li>Du har 12 lag, og hvert lag inneholder tomteinformasjon for tilst&oslash;tende kommuner.  Du vil sl&aring; lagene sammen til ett lag og kun beholde attributtene som har samme navn og type i de 12 inndatalagene.
+                    <li>Du har 12 lag, og hvert lag inneholder tomteinformasjon for tilst&oslash;tende kommuner. Du vil sl&aring; lagene sammen til ett lag og kun beholde attributtene som har samme navn og type i de 12 inndatalagene.
                     </li>
                 </ul>
                 
@@ -674,7 +691,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Overlegg sl&aring;r sammen to eller flere lag til ett lag.  Et overlegg blir som om du ser ned gjennom en stabel med kart som ligger opp&aring; hverandre, og oppretter et enkelt kart som inneholder all informasjon som finnes i hele kartstabelen, for eksempel:
+            <p>Overlegg sl&aring;r sammen to eller flere lag til ett lag. Et overlegg blir som om du ser ned gjennom en stabel med kart som ligger opp&aring; hverandre, og oppretter et enkelt kart som inneholder all informasjon som finnes i hele kartstabelen, for eksempel:
                 <ul>
                     <li>Hvilke tomter ligger innenfor flomsonen for hundre&aring;rsflom? (Innenfor betyr det samme som opp&aring;.)
                           

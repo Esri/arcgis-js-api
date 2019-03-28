@@ -91,6 +91,9 @@
             "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
             "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
         },
+        "GenerateTessellations": {
+            "toolDescription": "generate-tessellations.htm"
+        },
         "GeocodeLocationsfromTable": {
             "toolDescription": "geocode-locations-from-table.htm",
             "geocodeServiceURL": "geocode-locations-from-table.htm"

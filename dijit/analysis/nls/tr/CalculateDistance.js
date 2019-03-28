@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Uzaklığı hesaplamak için raster veya detay konum katmanı seçin",maxDistanceLabel:"Hesaplanacak maksimum uzaklık (isteğe bağlı)",outputCellSize:"Çıktı hücresi boyutu (isteğe bağlı)",resultDistLayerName:"Sonuç uzaklık katman adı",resultDirectionLayerName:"Sonuç yön katman adı (isteğe bağlı)",resultAllocationLayerName:"Sonuç tahsis katman adı (isteğe bağlı)",outputLayerName:"${Layername} katmanının Hesaplanan Uzaklığı",allocationFieldLabel:"Tahsis alanını seçin (isteğe bağlı)",itemDescription:"${layerName} üzerinde Uzaklık Hesapla çalıştırılarak oluşturulan detay katmanı. ",itemTags:"Analiz Sonucu, UzaklıkHesapla, ${layername} ${fieldname}",itemSnippet:"UzaklıkHesapla ile oluşturulan detay katmanı."});

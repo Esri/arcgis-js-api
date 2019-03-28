@@ -92,7 +92,7 @@
     }
 
 .esriGEReportPlayer .playerToolbar_closeButtonOuter {
-    background-image: url("../images/closeWindowBigWhite.svg");
+    background-image: url("../images/close/closeWindowBigWhite.svg");
 }
 
 
@@ -118,11 +118,11 @@
 
 
 .esriGEPlayerToolbar.playerThemeDark .playerToolbar_closeButton {
-    background-image: url("../images/closeWindowBigWhite.svg");
+    background-image: url("../images/close/closeWindowBigWhite.svg");
 }
 
 .esriGEPlayerToolbar.playerThemeLight .playerToolbar_closeButton {
-    background-image: url("../images/closeWindowBig.svg");
+    background-image: url("../images/close/closeWindowBig.svg");
 }
 
 

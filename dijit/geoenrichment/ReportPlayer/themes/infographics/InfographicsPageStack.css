@@ -6,6 +6,7 @@
         text-align: center;
         position: relative;
         white-space: normal;
+        overflow: hidden;
     }
 
     .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionNode {

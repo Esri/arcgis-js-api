@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika. Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;nje  Portal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b> in <b>Upravljaj podatke</b>.
+        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika. Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;nje  Portal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Uporabi bližino</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b>, <b>Upravljaj podatke</b> in <b>Globoko učenje</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Uporabi predlogo rastrske funkcije</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Uporabi predlogo rastrske funkcije">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Ustvarite nov geoobjektni sklop podatkov iz obstoječega rastrskega sklopa podatkov.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>Komplet orodja Globoko učenje</h2>
+        <hr/>
+        <p>Ta orodja se uporabljajo za zaznavanje določenih geoobjektov v sliki ali za klasificiranje pikslov v rastrskem sklopu podatkov. Globoko učenje je tip metode strojnega učenja umetne inteligence, ki zaznava geoobjekte v slikovju s pomočjo več slojev v nevronskih mrežah, kjer je vsak sloj sposoben ekstrahirati enega ali več edinstvenih geoobjektov na sliki. Ta orodja porabljajo modele, ki so bili naučeni zaznavanja določenih geoobjektov v ogrodju globokega učenja drugega proizvajalca, kot so TensorFlow, CNTK in Keras, ter izhodnih geoobjektov ali kart razreda.
+            <ul>
+                <li> <b>Klasificiraj piksle z globokim učenjem</b> ustvarja klasificiran raster s pomočjo naučenega modela globokega učenja.
+                </li>
+                <li> <b>Zaznaj objekte z globokim učenjem</b> ustvarja geoobjektni razred, ki vsebuje objekte, ki jih najde v vhodnem rastru s pomočjo naučenega modela globokega učenja.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasificiraj piksle z globokim učenjem</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasificiraj piksle z globokim učenjem">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo klasificiranega rastra in vsak veljavni slikovni piksel ima dodeljeno oznako razreda.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zaznaj objekte z globokim učenjem</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Zaznaj objekte z globokim učenjem">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo geoobjektnega razreda, ki vsebuje objekte, ki jih najde. Geoobjekti so lahko prostorski obsegi ali poligoni okoli najdenih objektov ali točke na sredi&scaron;čih objektov.
             </p>
             <br/>
         </div>

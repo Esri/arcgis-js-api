@@ -44,7 +44,7 @@
         <h2>Detetar Incidentes</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detetar Incidentes"></h2>
         <hr/>
-    <p>Esta ferramenta funciona com uma camada com componente temporal ativa, de pontos, linhas ou &aacute;reas ou tabelas que representem um instante no tempo. Ao utilizar elementos ordenados sequencialmente, a que chamamos trilhos, esta ferramenta determina que elementos s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es especificadas por si. 
+    <p> Esta ferramenta funciona com uma camada ativada por tempo de pontos, linhas, &aacute;reas ou tabelas que representa um instante no tempo.   Ao utilizar elementos ordenados sequencialmente, a que chamamos trilhos, esta ferramenta determina que elementos s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es especificadas por si.
     </p>
     <p>Primeiro, a ferramenta determina que elementos pertencem a um trilho, utilizando um ou mais campos. Utilizando a hora de cada elemento, os trilhos s&atilde;o ordenados sequencialmente e a condi&ccedil;&atilde;o de incidente &eacute; aplicada. Elementos que correspondem &agrave; condi&ccedil;&atilde;o incidente inicial s&atilde;o marcadas como um incidente. Opcionalmente, pode aplicar uma condi&ccedil;&atilde;o de incidente final; quando a condi&ccedil;&atilde;o de fim &eacute; verdadeira, o elemento deixa de ser um incidente.  Os resultados ser&atilde;o devolvidos com os elementos originais&mdash;com novas colunas que representam o nome do incidente&mdash;e indicam que elemento corresponde &agrave; condi&ccedil;&atilde;o de incidente. Pode devolver todos os incidentes originais ou apenas os elementos que s&atilde;o incidentes.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Os pontos, linhas, &aacute;reas ou tabelas que ser&atilde;o utilizados para encontrar incidentes. A camada de entrada tem de ter a compoenente temporal ativa com elementos que representam um instante no tempo, bem como ter um ou mais campos que podem ser utilizados para identificar trilhos.
             </p>
-            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Construir uma condição de expressão para significar o final de um incidente</h2></div>
+        <div><h2>Construir uma condição de expressão para significar o fim de um incidente (opcional)</h2></div>
         <hr/>
         <div>
             <p>Opcionalmente, adicione uma condi&ccedil;&atilde;o utilizando o builder de express&otilde;es para determinar o final de um incidente. Caso a condi&ccedil;&atilde;o de fim que especificar seja verdadeira, o elemento deixar&aacute; de ser um incidente. Caso n&atilde;o especifique uma condi&ccedil;&atilde;o de fim, um incidente termina quando a condi&ccedil;&atilde;o inicial deixa de ser verdadeira.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Selecione como pretende que a saída seja representada</h2></div>
+        <div><h2>Mostre-me</h2></div>
         <hr/>
         <div>
             <p>Todos os m&eacute;todos de sa&iacute;da anexar&atilde;o campos aos elementos originais. Existem duas formas de determinar que elementos s&atilde;o devolvidos:
                 <ul>
-                    <li> <b>Devolver apenas incidentes</b>&mdash;Este m&eacute;todo devolver&aacute; apenas os elementos que s&atilde;o incidentes. Quaisquer elementos que n&atilde;o sejam incidentes n&atilde;o ser&atilde;o devolvidos.
+                    <li> <b>Todos os elementos</b>&mdash;Isto &eacute; o padr&atilde;o. Todos os elementos da entrada ser&atilde;o devolvidos.
                     </li>
-                    <li> <b>Devolver todos os elementos</b>&mdash;&Eacute; a predefini&ccedil;&atilde;o. Todos os elementos da entrada ser&atilde;o devolvidos.
+                    <li> <b>Apenas incidentes</b>&mdash;Este m&eacute;todo apenas devolver&aacute; os elementos que s&atilde;o incidentes. Quaisquer elementos que n&atilde;o sejam incidentes n&atilde;o ser&atilde;o devolvidos.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analisar dados com intervalos de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se pretende detetar incidentes utilizando intervalos de tempo que segmentam os seus elementos de entrada para an&aacute;lise. Se utiliza intervalos de tempo tem de definir o intervalo de tempo que pretende utilizar, e opcionalmente definir o momento de refer&ecirc;ncia. Se n&atilde;o definir um momento de refer&ecirc;ncia ser&aacute; utilizado 1 de janeiro de 1970. 
+            </p>
+            <p>Por exemplo, se definir que o limite de tempo &eacute; de 1 dia, come&ccedil;ando &agrave;s 9:00 AM de 1 de janeiro de 1990, ent&atilde;o cada trilho ser&aacute; truncado &agrave;s 9:00 AM de cada dia e analisado dentro desse segmento. 
+            </p>
+            <p>Utilizar intervalos de tempo &eacute; uma forma r&aacute;pida de acelerar o tempo de c&aacute;lculo, visto que isso cria rapidamente trilhos mais pequenos para an&aacute;lise. Se a divis&atilde;o por um intervalo de tempo recorrente faz sentido para a sua an&aacute;lise, isso &eacute; recomendado para o processamento de big data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> O nome da camada que ser&aacute; criada.  Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o gravados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados numa partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            <p>Ao escrever para   ArcGIS Data Store  (armazenamento relacional ou espaciotemporal de dados big data) utilizando a caixa suspensa  <b>Guardar resultado em</b> pode especificar o nome de uma pasta em <b>O Meu Conte&uacute;do</b>, onde ser&aacute; armazenado o resultado.
             </p>
         </div>
     </div>

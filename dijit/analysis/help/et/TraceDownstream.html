@@ -48,22 +48,28 @@
     </p>
     <p>Oletagem n&auml;iteks, et Teil on hulk punktobjekte, mis t&auml;histavad vee saastumise allikaid, ja soovite kindlaks teha, kuhu Teie uuringualas saastumine k&otilde;ige t&otilde;en&auml;olisemalt voolab. Allavoolu j&auml;lituse t&ouml;&ouml;riistaga saate kindlaks m&auml;&auml;rata saastumise tee. J&auml;lituse saab jaotada ka individuaalseteks joonsegmentideks, m&auml;&auml;rates vahemaa v&auml;&auml;rtuse ja &uuml;hikud. Tagastatav joon v&otilde;ib v&otilde;rduda voolutee kogupikkusega, olla m&auml;&auml;ratud maksimaalne j&auml;lgimise pikkus v&otilde;i olla m&auml;&auml;ratud alaobjektidega (nt Teie uuringuala). Voolutee kogupikkuse tagastamise korral on see sageli m&otilde;&otilde;detud allikast alates kuni mereni v&auml;lja.
     </p>
-    <p>Tulemuseks on allavooluj&auml;litust t&auml;histav joon. Kui seade  <b>T&uuml;kelda j&auml;litus joonsegmentideks</b> jaoks on m&auml;&auml;ratud vahemaa v&auml;&auml;rtus, t&uuml;keldatakse j&auml;litusjoon mitmeks jooneks, millest iga&uuml;ks on m&auml;&auml;ratud pikkusega.  Kui Teie sisendpunkt n&auml;iteks t&auml;histab saastumiskohta ja j&otilde;gi, kuhu see voolab, liigub kiirusega 1 km tunnis ehk 24 km p&auml;evas, v&otilde;iksite j&otilde;e t&uuml;keldada 24 km segmentideks. J&auml;lituse t&uuml;keldamisel 24 km intervalliga n&auml;ete ligikaudselt seda, kuhu saastumine iga p&auml;evaga liigub. Joone jaoks kasutatakse vahemaast l&auml;htuvalt erinevaid v&auml;rve ja vahemaa t&auml;histatakse j&auml;lituse algusest alates kaugust n&auml;itavate siltidega. 
+    <p>Tulemuseks on allavooluj&auml;litust t&auml;histav joon. Kui seade  <b>T&uuml;kelda j&auml;litus joonsegmentideks</b> jaoks on m&auml;&auml;ratud vahemaa v&auml;&auml;rtus, t&uuml;keldatakse j&auml;litusjoon mitmeks jooneks, millest iga&uuml;ks on m&auml;&auml;ratud pikkusega.  Kui Teie sisendpunkt n&auml;iteks t&auml;histab saastumiskohta ja j&otilde;gi, kuhu see voolab, liigub kiirusega 1 km tunnis ehk 24 km p&auml;evas, v&otilde;iksite j&otilde;e t&uuml;keldada 24 km segmentideks. J&auml;lituse t&uuml;keldamisel 24 km intervalliga n&auml;ete ligikaudselt seda, kuhu saastumine iga p&auml;evaga liigub. Joone jaoks kasutatakse vahemaast l&auml;htuvalt erinevaid v&auml;rve ja vahemaa t&auml;histatakse j&auml;lituse algusest alates kaugust n&auml;itavate siltidega.
     </p>
-    <p>Tulemuseks saadud j&auml;litusel on k&otilde;ik teie sisendpunktide atribuudid koos t&auml;iendavate atribuutidega.     
+    <p>Tulemuseks saadud j&auml;litusel on k&otilde;ik teie sisendpunktide atribuudid koos t&auml;iendavate atribuutidega. 
         <ul>
-            <li> <i>PunktiID</i> &ndash; sisaldab sisendpunkti ID-v&auml;&auml;rtust.
+            <li> <i>PointID</i>&mdash; sisaldab sisendpunkti ID-v&auml;&auml;rtust.
+                
+
             </li>
-            <li> <i>PikkusKm</i>&ndash; sisaldab kogu allavoolu j&auml;lituse pikkust kilomeetrites.
+            <li> <i>LengthKm</i>&mdash; sisaldab kogu allavoolu j&auml;lituse pikkust kilomeetrites.
+                
+
             </li>
-            <li> <i>Kirjeldus</i> ja <i>AndmeResolutsioon</i>  &ndash; sisaldavad j&auml;lgimise arvutamiseks kasutatud h&uuml;droloogiliste andmetega seotud teavet.
+            <li> <i>Description</i> ja <i>DataResolution</i>&mdash; sisaldavad j&auml;lgimise arvutamiseks kasutatud h&uuml;droloogiliste andmetega seotud teavet.
+                
+
             </li>
-            <li> <i>Kauguselt</i> ja <i>Kauguseni</i> &ndash; sisaldavad kaugust iga joonsegmendini ja -segmendist.  Need atribuudid kirjutatakse juhul, kui seade <b>T&uuml;kelda j&auml;litus joonsegmentideks</b> on kasutusel.
+            <li> <i>FromDistance</i> ja <i>ToDistance</i>&mdash; sisaldavad kaugust iga joonsegmendini ja -segmendist. Need atribuudid kirjutatakse juhul, kui seade <b>T&uuml;kelda j&auml;litus joonsegmentideks</b> on kasutusel.
             </li>
         </ul>
         
     </p>
-    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, kasutatakse anal&uuml;&uuml;simiseks ainult neid sisendkihi punktobjekte, mis on praegu kaardil n&auml;ha.  Kui vastav tingimus on v&auml;lja l&uuml;litatud, kasutatakse anal&uuml;&uuml;sil k&otilde;iki sisendkihis olevaid objekte s&otilde;ltumata asjaolust, kas need on anal&uuml;&uuml;si k&auml;ivitamise hetkel ekraanil n&auml;htavad v&otilde;i mitte.
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, kasutatakse anal&uuml;&uuml;simiseks ainult neid sisendkihi punktobjekte, mis on praegu kaardil n&auml;ha. Kui vastav tingimus on v&auml;lja l&uuml;litatud, kasutatakse anal&uuml;&uuml;sil k&otilde;iki sisendkihis olevaid objekte s&otilde;ltumata asjaolust, kas need on anal&uuml;&uuml;si k&auml;ivitamise hetkel ekraanil n&auml;htavad v&otilde;i mitte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -71,7 +77,7 @@
         <div><h2>Punktobjektid kasutamiseks iga allavoolu raja alguskohana</h2></div>
         <hr/>
         <div>
-            <p>Punktobjektid kasutamiseks allavoolu raja alguskohana.  V&auml;ljundis on iga sisendpunkti kohta &uuml;ks rida. 
+            <p>Punktobjektid kasutamiseks allavoolu raja alguskohana.  V&auml;ljundis on iga sisendpunkti kohta &uuml;ks rida.
             </p>
             <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
@@ -81,8 +87,8 @@
         <div><h2>Tükelda jälitus joonsegmentideks</h2></div>
         <hr/>
         <div>
-            <p>J&auml;litusjoon t&uuml;keldatakse mitmeks jooneks, millest iga&uuml;ks on m&auml;&auml;ratud pikkusega. Kui Teie sisendpunkt n&auml;iteks t&auml;histab saastumiskohta ja j&otilde;gi, kuhu see voolab, liigub kiirusega 1 km tunnis ehk 24 km p&auml;evas, v&otilde;iksite j&otilde;e t&uuml;keldada 24 km segmentideks. J&auml;lituse t&uuml;keldamisel 24 km intervalliga n&auml;ete ligikaudselt seda, kuhu saastumine iga p&auml;evaga liigub. Joone jaoks kasutatakse vahemaast l&auml;htuvalt erinevaid v&auml;rve ja vahemaa t&auml;histatakse j&auml;lituse algusest alates kaugust n&auml;itavate siltidega. Tulemuseks saadud j&auml;litus koosneb mitmest joonsegmendist, mis k&otilde;ik sisaldavad v&auml;lju  <i>Kauguselt</i> ja <i>Kauguseni</i>.
-            </p> 
+            <p>J&auml;litusjoon t&uuml;keldatakse mitmeks jooneks, millest iga&uuml;ks on m&auml;&auml;ratud pikkusega. Kui Teie sisendpunkt n&auml;iteks t&auml;histab saastumiskohta ja j&otilde;gi, kuhu see voolab, liigub kiirusega 1 km tunnis ehk 24 km p&auml;evas, v&otilde;iksite j&otilde;e t&uuml;keldada 24 km segmentideks. J&auml;lituse t&uuml;keldamisel 24 km intervalliga n&auml;ete ligikaudselt seda, kuhu saastumine iga p&auml;evaga liigub. Joone jaoks kasutatakse vahemaast l&auml;htuvalt erinevaid v&auml;rve ja vahemaa t&auml;histatakse j&auml;lituse algusest alates kaugust n&auml;itavate siltidega. Tulemuseks saadud j&auml;litus koosneb mitmest joonsegmendist, mis k&otilde;ik sisaldavad v&auml;lju  <i>FromDistance</i> ja <i>ToDistance</i>.
+            </p>
         </div>
     </div>
     <div id="MaxDistance">
@@ -97,7 +103,7 @@
         <div><h2>Lõika tulemus</h2></div>
         <hr/>
         <div>
-            <p>Joonistage v&otilde;i sisestage selle ala kiht, millega soovite j&auml;lituse piiritleda. Kui soovite n&auml;iteks j&auml;lituse tulemuse piiritleda ainult oma uuringualaga (nt oma maakonnaga), kasutage sisendina oma maakonna objekti. Sel juhul peatub j&auml;litus maakonna piiril.   
+            <p>Joonistage v&otilde;i sisestage selle ala kiht, millega soovite j&auml;lituse piiritleda. Kui soovite n&auml;iteks j&auml;lituse tulemuse piiritleda ainult oma uuringualaga (nt oma maakonnaga), kasutage sisendina oma maakonna objekti. Sel juhul peatub j&auml;litus maakonna piiril.
             </p>
         </div>
     </div>
@@ -105,9 +111,11 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui samanimeline kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemus salvestatakse.
+            </p>
+            <p> Selle t&ouml;&ouml;riista k&auml;itamine ei kasuta krediiti.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["esri/geometry/jsonUtils","esri/tasks/FeatureSet"],function(e,t){var r={};return r.createFeatureSetFromGraphics=function(r,n){var a=[];n||(n=function(e){return e});var u=null,s=null;r&&r.forEach(function(t,r){!u&&t.geometry&&(u=t.geometry.spatialReference,s=e.getJsonType(t.geometry)),(t=n(t,r))&&(t.attributes||(t.attributes={}),a.push(t))});var i=new t;return i.features=a,i.spatialReference=u,i.geometryType=s,i},r});

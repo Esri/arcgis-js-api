@@ -1,38 +1,38 @@
 .VariableToggleButtonGroup {
     display: inline-block;
     border: none;
-    height:21px;
-    vertical-align:top;
+    height: 21px;
+    vertical-align: top;
 }
 
-.VariableToggleButtonGroup span {
-    font-size: 12px;
-    margin: 0;
-}
+    .VariableToggleButtonGroup span {
+        font-size: 12px;
+        margin: 0;
+    }
 
-.VariableToggleButtonGroup .dijitButtonText {
-    position:relative;
-    bottom:2px;
-    min-width: 20px;
-}
+    .VariableToggleButtonGroup .dijitButtonText {
+        position: relative;
+        bottom: 2px;
+        min-width: 20px;
+    }
 
-.VariableToggleButtonGroup .dijitButtonNode {
-    border-color: #A4A3A4 !important;
-}
+    .VariableToggleButtonGroup .dijitButtonNode {
+        border-color: #A4A3A4 !important;
+    }
 
-.VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonContents {
-    height: 19px;
-    line-height: 19px;
-}
+    .VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonContents {
+        height: 19px;
+        line-height: 19px;
+    }
 
-.VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonNode {
-    padding: 0;
-    color: #444444;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-    margin-left: -1px;
-    margin-right: 0px;
-}
+    .VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonNode {
+        padding: 0;
+        color: #444444;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        margin-left: -1px;
+        margin-right: 0px;
+    }
 
 .dj_rtl .VariableToggleButtonGroup .dijitToggleButton.esriGroupButton .dijitButtonNode {
     margin-left: 0px;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите слой направления потока",pourPointLayerLabel:"Выберите растровый или векторный слой точек устьев",pourPointField:"Выберите поле точек устьев",resultLayerName:"Имя слоя результата",outputLayerName:"Водосборная область ${layername}",itemDescription:"Векторный слой, созданный решением Суммированный центр и дисперсия для ${Layername}. ",itemTags:"Результат анализа, Водосборная область , ${layername}, ${fieldname}",itemSnippet:"Векторный слой, полученный инструментом Водосборная область."});

@@ -272,7 +272,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Kreiraj slivnice</h2></td>
+                    <td><h2>Kreiraj vododelnice</h2></td>
                     <td>
                     <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Kreiraj vododelnice">
                     </td>
@@ -598,6 +598,8 @@
                 </li>
                 <li> <b>Ekstrakcija podataka</b> kreira nove skupove podataka izdvajanjem geoobjekata iz va&scaron;ih postojećih podataka.
                 </li>
+                <li> <b>Generi&scaron;i teselacije</b> kreira teselacije na osnovu obuhvata va&scaron;ih podataka.
+                </li>
                 <li> <b>Spoji slojeve</b> kopira sve geoobjekte iz dva ili vi&scaron;e postojećih slojeva u novi sloj.
                 </li>
                 <li> <b>Preklapanje slojeva</b> kombinuje dva ili vi&scaron;e slojeva u jedan sloj. O preklapanju možete da razmi&scaron;ljate kao o gledanju kroz naslagane mape i kreiranju jedne mape koja sadrži sve informacije pronađene u naslaganim mapama.
@@ -619,7 +621,7 @@
 <hr/>
             <p>Oblasti koje se preklapaju ili dele zajedničku granicu spajaju se da bi formirale jednu oblast.    
             </p>
-            <p>Možete da kontroli&scaron;ete koje se granice spajaju definisanjem polja po kom će se vr&scaron;iti spajanje. Na primer, ako imate sloj sa okruzima, a svaki okrug ima atribut  <i>Ime_države</i>, možete da svedete granice koristeći atribut <i>Ime_države</i>. Susedni okruzi biće spojeni ako imaju istu vrednost za atribut <i>Ime_države</i>. Krajnji rezultat je sloj sa državnim granicama.
+            <p>Možete da kontroli&scaron;ete koje se granice spajaju definisanjem polja po kom će se vr&scaron;iti spajanje. Na primer, ako imate sloj sa okruzima, a svaki okrug ima atribut  <i>State_Name</i>, možete da svedete granice koristeći atribut <i>State_Name</i>.  Susedni okruzi biće spojeni ako imaju istu vrednost za atribut <i>State_Name</i>.  Krajnji rezultat je sloj sa državnim granicama.
             </p>
             <br/>
         </div>
@@ -629,7 +631,7 @@
                 <tbody><tr>
                     <td><h2>Ekstrahuj podatke</h2></td>
                     <td>
-                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Ekstrakcija podataka">
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Ekstrahuj podatke">
                     </td>
                 </tr></tbody>
             </table>
@@ -637,6 +639,21 @@
             <p>Kreira zip, CSV ili KMZ datoteku od podataka iz slojeva i oblasti interesovanja koju navedete.
             </p>
             <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generiši teselacije</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generi&scaron;i teselacije">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Generi&scaron;e teselacije preko oblasti ispitivanja na osnovu navedenog oblika i veličine.
             </p>
             <br/>
         </div>
@@ -675,7 +692,7 @@
 <hr/>
             <p>Preklapanje kombinuje dva ili vi&scaron;e slojeva u jedan sloj. O preklapanju možete da razmi&scaron;ljate kao o gledanju kroz naslagane mape i kreiranju jedne mape koja sadrži sve informacije pronađene u naslaganim mapama, na primer:
                 <ul>
-                    <li>Koje parcele su unutar 100-godi&scaron;njeg vodoplavnog područja? (Unutar je drugi način da se kaže iznad.)
+                    <li>Koje parcele su unutar 100-godi&scaron;njeg vodoplavnog područja? (Unutar je samo drugi način da se kaže iznad.)
                           
                     </li>
                     <li>Koji putevi su unutar kojih okruga?

@@ -41,64 +41,79 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics distribuye el trabajo de an&aacute;lisis por su ArcGIS GeoAnalytics Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia de varios equipos. Actualmente est&aacute;n disponibles las siguientes herramientas:
-            <ul>
-                <li> <b>Consolidar puntos</b>
+        <p> GeoAnalytics distribuye el trabajo de an&aacute;lisis por su ArcGIS GeoAnalytics Server. Esto le permite analizar m&aacute;s datos con mayor rapidez y con varios equipos. Est&aacute;n disponibles las siguientes herramientas: <ul>
+                <li> Consolidar puntos
                 </li>
-                <li> <b>Crear cuadr&iacute;cula multivariable</b>
+                <li> Crear cuadr&iacute;cula multivariable
                 </li>
-                <li> <b>Unir entidades</b>
+                <li> Describir dataset
                 </li>
-                <li> <b>Reconstruir recorridos</b>
+                <li> Unir entidades
                 </li>
-                <li> <b>Resumir atributos</b>
+                <li> Reconstruir recorridos
                 </li>
-                <li> <b>Resumir dentro de</b>
+                <li> Resumir atributos
                 </li>
-                <li> <b>Geocodificar ubicaciones de tabla</b>
+                <li> Resumir dentro de
                 </li>
-                <li> <b>Detectar incidentes</b>
+                <li> Geocodificar ubicaciones de tabla
                 </li>
-                <li> <b>Buscar ubicaciones similares</b>
+                <li> Enriquecer con cuadr&iacute;cula multivariable
                 </li>
-                <li> <b>Calcular densidad</b>
+                <li> Detectar incidentes
                 </li>
-                <li> <b>Buscar cl&uacute;steres de puntos</b>
+                <li> Buscar ubicaciones similares
                 </li>
-                <li> <b>Buscar puntos calientes</b>
+                <li> Calcular densidad
                 </li>
-                <li> <b>Crear zonas de influencia</b>
+                <li> Buscar cl&uacute;steres de puntos
                 </li>
-                <li> <b>Incorporar datos</b>
+                <li> Buscar puntos calientes
                 </li>
-                <li> <b>Calcular campo</b>
+                <li> Clasificaci&oacute;n y regresi&oacute;n basadas en bosque
                 </li>
-                <li> <b>Copiar en Data Store</b>
+                <li> Regresi&oacute;n lineal generalizada
                 </li>
-                <li> <b>Superponer capas</b>
+                <li> Crear zonas de influencia
+                </li>
+                <li> Incorporar datos
+                </li>
+                <li> Calcular campo
+                </li>
+                <li> Copiar en data store
+                </li>
+                <li> Superponer capas
+                </li>
+                <li> Disolver l&iacute;mites
+                </li>
+                <li> Fusionar capas
+                </li>
+                <li> Recortar capa 
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics se centra en analizar datos grandes incidiendo en los patrones espaciales y temporales. 
+        <p>GeoAnalytics se centra en analizar grandes cantidades de datos incidiendo en los patrones espaciales y temporales. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Resumir datos</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p> El conjunto de herramientas Resumir datos contiene herramientas que calculan recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos dentro de &aacute;reas o cerca de otras entidades.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
-                <li> <b>Consolidar puntos</b> calcula estad&iacute;sticas acerca de los puntos que se encuentran dentro de las &aacute;reas o bins especificados.
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li> <b>Crear cuadr&iacute;cula multivariable</b> genera una cuadr&iacute;cula de bins cuadrados o hexagonales y calcula valores para cada bin bas&aacute;ndose en la proximidad de cada capa de entrada.
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
-                <li> <b>Unir entidades</b> calcula estad&iacute;sticas sobre las entidades que comparten una relaci&oacute;n espacial, temporal o de atributos con otras entidades.
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
-                <li> <b>Reconstruir pistas</b> calcula estad&iacute;sticas sobre los puntos o pol&iacute;gonos que pertenecen a la misma pista y reconstruye entradas en pistas.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li> <b>Resumir atributos</b> calcula estad&iacute;sticas sobre los datos de entidades o tabulares que comparten atributos.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li> <b>Resumir dentro de</b> calcula estad&iacute;sticas de entidades de &aacute;rea y atributos que se superponen entre s&iacute;.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
             </ul>
             
@@ -154,6 +169,32 @@
             </p>
             <br/>
         </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Describir dataset</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Diagrama del flujo de trabajo de Describir dataset">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Resume entidades de entrada con estad&iacute;sticas, capas de muestra y visualizaci&oacute;n. Puede elegir que se genere una capa de muestra o una capa de extensi&oacute;n.
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Hace referencia a estad&iacute;sticas de resumen calculadas para comprender los valores que contiene su dataset.
+                    </li>
+                    <li>En lugar de dibujar todo el dataset, crea una capa de subconjunto para visualizar entidades y sus atributos cuando se agrega a un mapa.
+                    </li>
+                    <li>Le permite ahorrar tiempo y recursos, y ejecuta an&aacute;lisis en una capa de muestra antes de ejecutarlos en el dataset completo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="JoinFeaturesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -191,11 +232,11 @@
 <hr/>
             <p>Utilizando una capa de entidades de puntos o poligonales con la funci&oacute;n de tiempo habilitada que representa un  <code>instante</code> en el tiempo, esta herramienta determina qu&eacute; entidades de entrada pertenecen a un recorrido y ordena las entradas secuencialmente en el tiempo. Opcionalmente, se calculan estad&iacute;sticas para las entidades de entrada dentro de cada recorrido.
             </p>
-            <p> A continuaci&oacute;n se muestran algunos ejemplos:
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Dadas unas ubicaciones de puntos y mediciones sobre el momento en que se produjo el hurac&aacute;n, calcula la velocidad media del viento y la presi&oacute;n m&aacute;xima del viento del hurac&aacute;n.
                     </li>
-                    <li>Utilizar mediciones GPS de barcos para reconstruir las rutas de los barcos como l&iacute;neas.
+                    <li>Utiliza mediciones GPS de barcos para reconstruir las rutas de los barcos como l&iacute;neas. 
                     </li>
                 </ul>
                 
@@ -213,7 +254,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Utilizando datos de entidades o tabulares, esta herramienta resume estad&iacute;sticas para campos espec&iacute;ficos.
+            <p>Utilizando datos de entidades o tabulares, esta herramienta resume estad&iacute;sticas para campos espec&iacute;ficos. 
             </p>
             <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
@@ -328,16 +369,20 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analizar patrones</h2>
         <hr/>
-        <p> Estas herramientas le ayudan a identificar, cuantificar y visualizar los patrones espaciales de sus datos.
+        <p>  Estas herramientas le ayudan a identificar, cuantificar y visualizar los patrones espaciales de sus datos.
             <ul>
                 <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las expande a trav&eacute;s del mapa.
                 </li>
                 <li> <b>Buscar puntos calientes</b> identifica clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
                 </li>
                 <li> <b>Buscar cl&uacute;steres de puntos</b> encuentra cl&uacute;steres de entidades de punto dentro del ruido colindante en funci&oacute;n de su distribuci&oacute;n espacial.
+                </li>
+                <li> <b>Clasificaci&oacute;n y regresi&oacute;n basadas en bosque</b> crea modelos y genera predicciones mediante una adaptaci&oacute;n del algoritmo de bosque aleatorio de Leo Breiman, que es un m&eacute;todo de aprendizaje de m&aacute;quina supervisado.
+                </li>
+                <li> <b>Regresi&oacute;n lineal generalizada</b> genera predicciones o modela una variable dependiente en t&eacute;rminos de su relaci&oacute;n con un conjunto de variables explicativas.
                 </li>
             </ul>
             
@@ -415,6 +460,62 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Clasificación y regresión basadas en bosque</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Diagrama del flujo de trabajo de Clasificaci&oacute;n y regresi&oacute;n basadas en bosque">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Clasificaci&oacute;n y regresi&oacute;n basadas en bosque modela y genera predicciones mediante una adaptaci&oacute;n del algoritmo de bosque aleatorio de Leo Breiman, que es un m&eacute;todo de aprendizaje de m&aacute;quina supervisado
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Considerando los datos sobre la presencia de posidonia, as&iacute; como numerosas variables explicativas representadas como atributos enriquecidos con una cuadr&iacute;cula multivariable para calcular las distancias hasta f&aacute;bricas aguas arriba y puertos importantes, es posible predecir la presencia futura de posidonia bas&aacute;ndose en proyecciones futuras de esas mismas variables explicativas medioambientales.
+                          
+                    </li>
+                    <li>Imag&iacute;nese que dispone de datos del rendimiento de los cultivos de cientos de granjas de todo el pa&iacute;s, as&iacute; como otros atributos sobre cada una de esas granjas (n&uacute;mero de empleados, extensi&oacute;n, etc.). Con estos datos, puede proporcionar un conjunto de entidades que representan las granjas para las que no tiene datos sobre el rendimiento de cultivo (pero para las que s&iacute; tiene el resto de variables) y hacer una predicci&oacute;n sobre el rendimiento de los cultivos.
+                    </li>
+                    <li>Es posible predecir el valor de la vivienda en funci&oacute;n de los precios de las viviendas vendidas en el a&ntilde;o en curso. Puede utilizar el precio de venta de las viviendas vendidas, as&iacute; como informaci&oacute;n sobre el n&uacute;mero de habitaciones, la distancia hasta las escuelas, la proximidad a carreteras importantes, el nivel medio de ingresos y los recuentos de delitos, para predecir los precios de venta de viviendas similares.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Regresión lineal generalizada</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Diagrama del flujo de trabajo de Regresi&oacute;n lineal generalizada">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Regresi&oacute;n lineal generalizada  genera predicciones o modela una variable dependiente en t&eacute;rminos de su relaci&oacute;n con un conjunto de variables explicativas.  Esta herramienta se puede usar para ajustarse a modelos continuos (OLS), binarios (log&iacute;sticos) y de recuento (Poisson).
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>&iquest;Qu&eacute; caracter&iacute;sticas demogr&aacute;ficas contribuyen a las altas tasas de uso del transporte p&uacute;blico?
+                    </li>
+                    <li>&iquest;Hay una relaci&oacute;n positiva entre vandalismo y robo con fuerza en casas?
+                    </li>
+                    <li>&iquest;Qu&eacute; variables prev&eacute;n de manera efectiva el volumen de llamadas al 911? Dadas las proyecciones futuras, &iquest;cu&aacute;l es la demanda esperada para los recursos de respuesta de emergencia?
+                    </li>
+                    <li>&iquest;Qu&eacute; variables afectan a las tasas de natalidad bajas?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Utilizar proximidad</h2>
         <hr/>
@@ -450,18 +551,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Administrar datos</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Manage Data</h2>
         <hr/>
-        <p>Estas herramientas se utilizan para la administraci&oacute;n diaria de datos geogr&aacute;ficos y tabulares. 
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
-                <li> <b>Incorporar datos</b> incorpora entidades a una capa de entidades alojada existente.
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
                 </li>
-                <li> <b>Calcular campo</b> crea un campo nuevo o modifica uno existente y crea una capa nueva en su contenido.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Copiar a Data Store</b> copia datos en su ArcGIS Data Store y crea una capa en su contenido. 
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
                 </li>
-                <li> <b>Superponer capas</b> combina dos o m&aacute;s capas en una sola capa.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -513,6 +620,54 @@
             </p>
             <br/>
         </div>
+        <div id="ClipLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Recortar capa</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="Recortar capa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Recorta las entidades de entrada a partir de &aacute;reas de inter&eacute;s definidas. El resultado de salida ser&aacute; un subconjunto de entidades de entrada. 
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos: 
+                <ul>
+                    <li>Crear un subconjunto de edificios en riesgo que est&aacute;n dentro de &aacute;reas de inundaci&oacute;n.
+                    </li>
+                    <li>Determinar qu&eacute; carreteras importantes pasan por sus posibles &aacute;reas de desarrollo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Disolver límites</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Disolver l&iacute;mites">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Fusiona entidades de &aacute;rea que intersecan o comparten un valor de campo para crear entidades multiparte o contiguas.
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Crear una sola entidad que represente el estado de Haw&aacute;i disolviendo para ello los l&iacute;mites de la isla de Haw&aacute;i.
+                    </li>
+                    <li>Combinar &aacute;reas de estudio similares basadas en el tipo de suelo para generar un dataset de tipo de suelo contiguo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="OverlayLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -524,9 +679,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Superposici&oacute;n combina dos o m&aacute;s capas en una sola capa. La superposici&oacute;n se utiliza para responder a una de las preguntas geogr&aacute;ficas m&aacute;s sencillas: &iquest;Qu&eacute; est&aacute; encima de qu&eacute;? A continuaci&oacute;n se muestran algunos ejemplos:
+            <p>Combina dos o m&aacute;s capas en una sola capa.  La superposici&oacute;n se utiliza para responder a una de las preguntas geogr&aacute;ficas m&aacute;s sencillas: &iquest;Qu&eacute; est&aacute; encima de qu&eacute;? 
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
-                    <li>&iquest;Qu&eacute; parcelas est&aacute;n dentro de la llanura inundable con una probabilidad de inundaci&oacute;n anual de un 1 %? (&quot;Dentro de&quot; es solo otra forma de decir &quot;encima de&quot;.)
+                    <li>&iquest;Qu&eacute; parcelas est&aacute;n dentro de la llanuraaluvial de 100 a&ntilde;os? (&quot;Dentro de&quot; es solo otra forma de decir &quot;encima de&quot;.)
                           
                     </li>
                     <li>&iquest;Qu&eacute; uso del suelo est&aacute; encima de qu&eacute; tipo de suelo?
@@ -553,11 +710,68 @@
             <p>Incorpora entidades a una capa existente alojada en su contenido de  ArcGIS Enterprise. </p>
             <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
-                    <li>Actualice su capa de entidades 2018_Sales cada mes a medida que los informes est&eacute;n disponibles. 
+                    <li>Actualice su capa de entidades 2018_Sales cada mes a medida que los informes est&eacute;n disponibles.
                     </li>
                     <li>Incorpore datasets de rastreo de huracanes de los a&ntilde;os 2016 y 2017 en un dataset de huracanes maestro.
                     </li>
                     <li>Recopile e incorpore datasets de varios or&iacute;genes con distintos esquemas mediante la asignaci&oacute;n de campos personalizada.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Fusionar capas</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Fusionar capas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Combina dos capas de entidades para crear una &uacute;nica capa de resultados. Todos los campos de la capa de fusi&oacute;n se incluir&aacute;n de forma predeterminada; tambi&eacute;n puede especificar reglas de fusi&oacute;n personalizadas para definir el esquema resultante.  
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Fusionar tres capas que contienen informaci&oacute;n demogr&aacute;fica de Inglaterra, Gales y Escocia para crear una &uacute;nica capa de Gran Breta&ntilde;a.
+                    </li>
+                    <li>Combinar dos capas que contienen informaci&oacute;n de parcelas de municipios contiguos, conservando &uacute;nicamente los campos que tengan el mismo nombre y tipo en ambas capas.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Enriquecimiento de datos</h2>
+        <hr/>
+        <p>Estas herramientas ayudan a explorar el car&aacute;cter de las &aacute;reas.
+            <ul>
+                <li> <b>Enriquecer con cuadr&iacute;cula multivariable</b> une atributos de una capa de cuadr&iacute;cula multivariable a una capa de puntos.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Enriquecer con cuadrícula multivariable</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="Enriquecer con cuadr&iacute;cula multivariable">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Une de forma eficiente atributos de una cuadr&iacute;cula multivariable a una capa de puntos, lo que le permite agregar r&aacute;pidamente una colecci&oacute;n de informaci&oacute;n grande y diversa a datos de puntos para su uso en an&aacute;lisis espaciales posteriores. 
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Dada una capa que contiene millones de incidentes de corte de suministro el&eacute;ctrico, enriquece las entidades de incidentes con informaci&oacute;n sobre el uso t&iacute;pico, riesgos medioambientales y estado de la infraestructura para estudiar la relaci&oacute;n entre estos factores y la frecuencia del corte del suministro el&eacute;ctrico. 
                     </li>
                 </ul>
                 

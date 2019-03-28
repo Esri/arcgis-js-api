@@ -13,13 +13,18 @@
     "arrayOfRasterStatistics": "arrayofrasterstatistics",
     "arrayOfRasterHistogram": "arrayofrasterhistogram",
     "table": "table",
+    "color": "color",
+    "field": "field",
+    "scale": "scale",
     "rasterStatisticsArray": "rasterstatisticsarray",
     "rasterHistogramArray": "rasterhistogramarray",
     "featureClass": "featureclass",
     "geometry": "geometry",
     "extent": "extent",
     "rasterInfo": "rasterinfo",
-    "cellSize": "cellsize"
+    "cellSize": "cellsize",
+    "propertySet": "propertyset",
+    "spatialReference": "spatialReference"
   },
   "enums": {
     "colorSchemeTypes": [
@@ -840,6 +845,42 @@
       {
         "key": 8,
         "label": "${rasterFunctions.enumLabels.bandArithmeticMethodSultan}"
+      },
+       {
+        "key": 9,
+        "label": "${rasterFunctions.enumLabels.vari}"
+      },
+      {
+        "key": 10,
+        "label": "${rasterFunctions.enumLabels.gndvi}"
+      },
+      {
+        "key": 11,
+        "label": "${rasterFunctions.enumLabels.sr}"
+      },
+       {
+        "key": 12,
+        "label": "${rasterFunctions.enumLabels.ndvire}"
+      },
+      {
+        "key": 13,
+        "label": "${rasterFunctions.enumLabels.srre}"
+      },
+      {
+        "key": 14,
+        "label": "${rasterFunctions.enumLabels.mtvi2}"
+      },
+       {
+        "key": 15,
+        "label": "${rasterFunctions.enumLabels.rtviCore}"
+      },
+      {
+        "key": 16,
+        "label": "${rasterFunctions.enumLabels.cire}"
+      },
+      {
+        "key": 17,
+        "label": "${rasterFunctions.enumLabels.cig}"
       }
     ],
     "pyStdTemperatureUnitTypes": [
@@ -1079,7 +1120,600 @@
         "key": 41,
         "label": "${rasterFunctions.enumLabels.localATan2}"
       }
-    ]
+    ],
 
+    "cellStatisticsTypes": [{
+      "key": 38,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMajority}"
+    },
+    {
+      "key": 39,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMax}"
+    },
+    {
+      "key": 40,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMean}"
+    },
+    {
+      "key": 41,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMedian}"
+    },
+    {
+      "key": 42,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMin}"
+    },
+    {
+      "key": 43,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMinority}"
+    },
+    {
+      "key": 47,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsRange}"
+    },
+    {
+      "key": 54,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsStdDev}"
+    },
+    {
+      "key": 55,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsSum}"
+    },
+    {
+      "key": 58,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsVariety}"
+    },
+    {
+      "key": 66,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMajorityIgnoreND}"
+    },
+    {
+      "key": 67,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMaxIgnoreND}"
+    },
+    {
+      "key": 68,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMeanIgnoreND}"
+    },
+    {
+      "key": 69,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMedianIgnoreND}"
+    },
+    {
+      "key": 70,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMinIgnoreND}"
+    },
+    {
+      "key": 71,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsMinorityIgnoreND}"
+    },
+    {
+      "key": 72,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsRangeIgnoreND}"
+    },
+    {
+      "key": 73,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsStdDevIgnoreND}"
+    },
+    {
+      "key": 74,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsSumIgnoreND}"
+    },
+    {
+      "key": 75,
+      "label": "${rasterFunctions.enumLabels.localCellStatisticsVarietyIgnoreND}"
+    }
+  ],
+
+    "remapDefinitionTypes": [
+      {
+        "key": false,
+        "label": "${rasterFunctions.enumLabels.remapDefTypeList}"
+      }
+    ],
+
+    "remapTableTypes": [
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.remapTableTypeSimple}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.remapTableTypeDynamic}"
+      },
+      {
+         "key": 3,
+         "label": "${rasterFunctions.enumLabels.remapTableTypeReassignment}"
+      }
+    ],
+
+    "gpsaDistanceMethods": [
+      {
+        "key": "PLANAR",
+        "label": "${rasterFunctions.enumLabels.planar}"
+      },
+      {
+        "key": "GEODESIC",
+        "label": "${rasterFunctions.enumLabels.geodesic}"
+      }
+    ],
+
+    "geometricCorrectionMethods": [
+      {
+        "key": false,
+        "label": "${rasterFunctions.enumLabels.geomCorrectionByConstZ}"
+      },
+      {
+        "key": true,
+        "label": "${rasterFunctions.enumLabels.geomCorrectionByDEM}"
+      }
+    ],
+
+    "esriRadarCalibrations": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.radarCalibBetaNought}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.radarCalibSigmaNought}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.radarCalibGammaNought}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.none}"
+      }
+    ],
+
+    "esriSpeckleFilterTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.speckleFilterTypeLee}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.speckleFilterTypeEnhancedLee}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.speckleFilterTypeFrost}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.speckleFilterTypeKuan}"
+      }
+    ],
+
+    "esriSpeckleFilterKernelTypes": [
+      {
+        "key": 0,
+        "label": "3x3"
+      },
+      {
+        "key": 1,
+        "label": "5x5"
+      },
+      {
+        "key": 2,
+        "label": "7x7"
+      },
+      {
+        "key": 3,
+        "label": "9x9"
+      },
+      {
+        "key": 4,
+        "label": "11x11"
+      }
+    ],
+
+    "esriSpeckleNoiseModelTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.speckleNoiseModelMul}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.speckleNoiseModelAdd}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.speckleNoiseModelAddnMul}"
+      }
+    ],
+
+    
+    "esriMosaicOperatorTypes": [
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeFirst}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeLast}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMin}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMax}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMean}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeBlend}"
+      }
+    ],
+
+    "gpsaNibbleValues": [
+      {
+        "key": "ALL_VALUES",
+        "label": "${rasterFunctions.enumLabels.yes}"
+      },
+      {
+        "key": "DATA_ONLY",
+        "label": "${rasterFunctions.enumLabels.no}"
+      }
+    ],
+
+    "gpsaNibbleNoData": [
+       {
+        "key": "PROCESS_NODATA",
+        "label": "${rasterFunctions.enumLabels.yes}"
+      },
+      {
+        "key": "PRESERVE_NODATA",
+        "label": "${rasterFunctions.enumLabels.no}"
+      }
+    ],
+
+    "esriSwathInterpolationMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.interpolateIrregularDataNearest}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.interpolateIrregularDataBilinear}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.interpolateIrregularDataTinningLinear}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.interpolateIrregularDataTinningNaturalNeighbor}"
+      }
+    ],
+
+     "gpsaOutputDataType": [
+       {
+        "key": "FLOAT",
+        "label": "${rasterFunctions.enumLabels.localFloat}"
+      },
+      {
+        "key": "INTEGER",
+        "label": "${rasterFunctions.enumLabels.integer}"
+      }
+    ],
+
+    "gpsaFlowDirectionType": [
+       {
+        "key": "D8",
+        "label": "${rasterFunctions.enumLabels.rfxD8}"
+      },
+      {
+        "key": "MFD",
+        "label": "${rasterFunctions.enumLabels.rfxMFD}"
+      },
+       {
+        "key": "Dinf",
+        "label": "${rasterFunctions.enumLabels.dinf}"
+      }
+    ],
+
+    "gpsaForceFlow": [
+      {
+        "key": "FORCE",
+        "label": "${rasterFunctions.enumLabels.yes}"
+      },
+      {
+        "key": "NORMAL",
+        "label": "${rasterFunctions.enumLabels.no}"
+      }
+    ],
+
+    "gpsaFlowDistanceType": [
+      {
+        "key": "VERTICAL",
+        "label": "${rasterFunctions.enumLabels.vertical}"
+      },
+      {
+        "key": "HORIZONTAL",
+        "label": "${rasterFunctions.enumLabels.horizontal}"
+      }
+    ],
+
+    "gpsaTravelDirections": [
+      {
+        "key": "FROM_SOURCE",
+        "label": "${rasterFunctions.enumLabels.fromSource}"
+      },
+      {
+        "key": "TO_SOURCE",
+        "label": "${rasterFunctions.enumLabels.toSource}"
+      }
+    ],
+
+    "colorspaceConversionTypes": [
+    {
+      "key": 0,
+      "label": "${rasterFunctions.enumLabels.colorspaceConversionRgbToHsv}"
+    },
+    {
+      "key": 1,
+      "label": "${rasterFunctions.enumLabels.colorspaceConversionHsvToRgb}"
+    }
+    ],
+
+    "pansharpeningTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.pansharpenTypeIHS}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.pansharpenTypeBrovey}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.pansharpenTypeEsri}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.pansharpenTypeMean}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.pansharpenTypeGramSchmidt}"
+      }
+    ],
+
+    "esriGAFocalStatisticsTypes": [
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.mean}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.majority}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.maximum}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.median}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.minimum}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.minority}"
+      },
+      {
+        "key": 7,
+        "label": "${rasterFunctions.enumLabels.range}"
+      },
+      {
+        "key": 8,
+        "label": "${rasterFunctions.enumLabels.stdDeviation}"
+      },
+      {
+        "key": 9,
+        "label": "${rasterFunctions.enumLabels.sum}"
+      },
+      {
+        "key": 10,
+        "label": "${rasterFunctions.enumLabels.variety}"
+      }
+    ],
+
+    "esriFocalNeighborhoodTypes": [
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.rectangleNeighborhood}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.circleNeighborhood}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.annulusNeighborhood}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.wedgeNeighborhood}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.irregularNeighborhood}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.weightNeighborhood}"
+      }
+    ],
+
+    "gpsaNumberNeighborCells": [
+      {
+        "key": "FOUR",
+        "label": "${rasterFunctions.enumLabels.four}"
+      },
+      {
+        "key": "EIGHT",
+        "label": "${rasterFunctions.enumLabels.eight}"
+      }
+    ],
+
+    "gpsaZoneConnectivity": [
+      {
+        "key": "WITHIN",
+        "label": "${rasterFunctions.enumLabels.within}"
+      },
+      {
+        "key": "CROSS",
+        "label": "${rasterFunctions.enumLabels.cross}"
+      }
+    ],
+    "gpsaAddLink": [
+      {
+        "key": "ADD_LINK",
+        "label": "${rasterFunctions.enumLabels.addLink}"
+      },
+      {
+        "key": "NO_LINK",
+        "label": "${rasterFunctions.enumLabels.noLink}"
+      }
+    ]
+  },
+
+  "kernelTypesInfo" : {
+    "255": {
+      "rows": 0,
+      "columns": 0
+    },
+    "0": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, -1, -1, 2, 2, 2, -1, -1, -1]
+    },
+    "1": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, 2, -1, -1, 2, -1, -1, 2, -1]
+    },
+    "2": {
+      "rows": 3,
+      "columns": 3,
+      "value": [2, -1, -1, -1, 2, -1, -1, -1, 2]
+    },
+    "3": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, -1, 2, -1, 2, -1, 2, -1, -1]
+    },
+    "4": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, -2, -1, 0, 0, 0, 1, 2, 1]
+    },
+    "5": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, 0, 1, -2, 0, 2, -1, 0, 1]
+    },
+    "6": {
+      "rows": 3,
+      "columns": 3,
+      "value": [1, 0, -1, 2, 0, -2, 1, 0, -1]
+    },
+    "7": {
+      "rows": 3,
+      "columns": 3,
+      "value": [1, 2, 1, 0, 0, 0, -1, -2, -1]
+    },
+    "8": {
+      "rows": 3,
+      "columns": 3,
+      "value": [0, -1, -2, 1, 0, -1, 2, 1, 0]
+    },
+    "9": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-2, -1, 0, -1, 0, 1, 0, 1, 2]
+    },
+    "10": {
+      "rows": 3,
+      "columns": 3,
+      "value": [
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111,
+        0.111111111111111
+      ]
+    },
+    "11": {
+      "rows": 3,
+      "columns": 3,
+      "value": [1, 2, 1, 2, 4, 2, 1, 2, 1]
+    },
+    "12": {
+      "rows": 5,
+      "columns": 5,
+      "value": [1, 1, 1, 1, 1, 1, 4, 4, 4, 1, 1, 4, 12, 4, 1, 1, 4, 4, 4, 1, 1, 1, 1, 1, 1]
+    },
+    "13": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, -1, -1, -1, 9, -1, -1, -1, -1]
+    },
+    "14": {
+      "rows": 5,
+      "columns": 5,
+      "value": [-1, -3, -4, -3, -1, -3, 0, 6, 0, -3, -4, 6, 21, 6, -4, -3, 0, 6, 0, -3, -1, -3, -4, -3, -1]
+    },
+    "15": {
+      "rows": 3,
+      "columns": 3,
+      "value": [0, -1, 0, -1, 4, -1, 0, -1, 0]
+    },
+    "16": {
+      "rows": 5,
+      "columns": 5,
+      "value": [0, 0, -1, 0, 0, 0, -1, -2, -1, 0, -1, -2, 17, -2, -1, 0, -1, -2, -1, 0, 0, 0, -1, 0, 0]
+    },
+    "17": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, -2, -1, 0, 0, 0, 1, 2, 1]
+    },
+    "18": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-1, 0, 1, -2, 0, 2, -1, 0, 1]
+    },
+    "19": {
+      "rows": 3,
+      "columns": 3,
+      "value": [0, -0.25, 0, -0.25, 2, -0.25, 0, -0.25, 0]
+    },
+    "20": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-0.25, -0.25, -0.25, -0.25, 3, -0.25, -0.25, -0.25, -0.25]
+    },
+    "21": {
+      "rows": 3,
+      "columns": 3,
+      "value": [-0.627, 0.352, -0.627, 0.352, 2.923, 0.352, -0.627, 0.352, -0.627]
+    }
   }
+
 }

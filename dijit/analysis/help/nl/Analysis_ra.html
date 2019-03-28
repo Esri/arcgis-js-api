@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van de  ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS web user experience zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Afbeelding analyseren</b>, <b>Terrein analyseren</b> en <b>Gegevens beheren</b>.
+        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van de  ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS web user experience zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Nabijheid gebruiken</b>, <b>Beeld analyseren</b>, <b>Terrein analyseren</b>, <b>Gegevens beheren</b> en <b>deep learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -216,8 +216,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Template rasterfunctie toepassen</h2></td>
+                    <td><h2>Rasterfunctie-template toepassen</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Rasterfunctie-template toepassen">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Maak een nieuwe objectdataset van een bestaande rasterdataset.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Deep learningtoolset</h2>
+        <hr/>
+        <p>Deze tools worden gebruikt om specifieke objecten in een afbeelding te detecteren of om pixels in een rasterdataset te classificeren. Deep learning is een methode om kunstmatige intelligentie te leren, waarbij objecten in satellietbeelden worden gedetecteerd met behulp van meerdere lagen in neurale netwerken, waarbij elke laag in staat is om een ​​of meer unieke objecten in de afbeelding te extraheren. Deze tools gebruiken de modellen die zijn getraind om specifieke objecten in deep learningkaders van derden te detecteren, zoals TensorFlow, CNTK en Keras, en uitvoerobjecten of klassekaarten.
+            <ul>
+                <li> <b>Pixels classificeren met deep learning</b> produceert een ​​geclassificeerd raster met behulp van een getraind deep learningmodel.
+                </li>
+                <li> <b>Objecten classificeren met deep learning</b> produceert een feature class met objecten die het vindt in een invoerraster met behulp van een getraind deep learningmodel.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pixels classificeren met behulp van deep learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Pixels classificeren met behulp van deep learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Voert een getraind deep learningmodel uit op een invoerraster om een ​​geclassificeerd raster te produceren, waarbij aan elke geldige pixel een klasselabel is toegewezen.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objecten detecteren met behulp van deep learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Objecten detecteren met behulp van deep learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Voert een getraind deep learningmodel uit op een invoerraster om een ​​feature class te produceren die de gevonden objecten bevat. De objecten kunnen selectiekaders of vlakken zijn rond de gevonden objecten of wijzen naar de middelpunten van de objecten.
             </p>
             <br/>
         </div>

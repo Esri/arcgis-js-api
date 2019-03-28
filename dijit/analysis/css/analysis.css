@@ -31,6 +31,10 @@
   text-indent: 0.25em;
 }
 
+.esriAnalysis .dijitComboBox {
+  width: 100%;
+}
+
 .esriAnalysis .margin0 {
   margin: 0;
 }
@@ -289,6 +293,18 @@
   background-image: url("../images/ClipLayer32.png");
 }
 
+.generateTessellationsIcon {
+  background-image: url("../images/GenerateTesselations32.png");
+}
+
+.generalizedLinearRegressionIcon {
+  background-image: url("../images/GeneralizedLinearRegression32.png");
+}
+
+.forestBasedClassificationAndRegressionIcon {
+  background-image: url("../images/ForestBasedClassificationAndRegression32.png");
+}
+
 .buildMultiVariableGridIcon {
   background-image: url("../images/BuildMulti-VariableGrid32.png");
 }
@@ -302,7 +318,7 @@
 }
 
 .enrichMVGridIcon {
-  background-image: url("../images/BuildMulti-VariableGrid32.png"); 
+  background-image: url("../images/EnrichFromMultiVariableGrid32.png");
 }
 
 .eraseLayersDisabledIcon {
@@ -361,6 +377,18 @@
 
 .mergeLayersIcon {
   background-image: url("../images/MergeLayers32.png");
+}
+
+.describeDatasetIcon{
+  background-image: url("../images/DecribeData32.png");
+}
+
+.sampleLayerIcon {
+  background-image: url("../images/GaxDescribeDatasetSample32.png");
+}
+
+.extentLayerIcon{
+  background-image: url("../images/GaxDescribeDatasetExtent32.png");
 }
 
 .dissolveBoundariesIcon {
@@ -613,6 +641,10 @@ td.subsectionLineDivider {
 
 .esriAnalysis .longInput {
   width: 85%;
+  table-layout:fixed;
+}
+
+.esriAnalysis .longInputGP {
   table-layout:fixed;
 }
 
@@ -922,6 +954,19 @@ td.subsectionLineDivider {
   background-color: #50ad4e;
 }
 
+.esriMultiSelect .dojoxCheckedMultiSelectWrapper {
+  width: 95%;
+  border: 1px solid #CBCBCB !important;
+}
+
+.esriAnalysis .formBorderBottom{
+  border-bottom: 1px solid #CBCBCB;
+}
+
+.esriMultiSelect .dojoxMultiSelectItemLabel {
+  margin-left: 0.25em;
+}
+
 .bufferIcon {
   background-repeat: no-repeat;
   background-size: 100%;
@@ -1100,12 +1145,52 @@ td.subsectionLineDivider {
   background-image: url("../images/Polygon32.png");
 }
 
+.hexagonBinIcon {
+  background-image: url("../images/Hexagon32.png");
+}
+
 .squareBinIcon {
   background-image: url("../images/Square32.png");
 }
 
-.hexagonBinIcon {
-  background-image: url("../images/Hexagon32.png");
+.continuousDataIcon {
+  background-image: url("../images/ContinuousTypeData32.png");
+}
+
+.binaryDataIcon {
+  background-image: url("../images/BinaryTypeData32.png");
+}
+
+.countDataIcon {
+  background-image: url("../images/CountTypeData32.png");
+}
+
+.mlFitIcon {
+  background-image: url("../images/MLTools_Fit32.png");
+}
+
+.mlFitAndPredictIcon {
+  background-image: url("../images/MLTools_Predict32.png");
+}
+
+.squareBinTessIcon {
+  background-image: url("../images/SquareTesselation32.png");
+}
+
+.transverseHexagonBinTessIcon {
+  background-image: url("../images/TransverseHexagonTesselation32.png");
+}
+
+.regularHexagonBinTessIcon {
+  background-image: url("../images/RegularHexagonTesselation32.png");
+}
+
+.diamondBinTessIcon {
+  background-image: url("../images/DiamondTesselation32.png");
+}
+
+.triangleBinTessIcon {
+  background-image: url("../images/TriangleTesselation32.png");
 }
 
 .spatialJoinIcon {
@@ -1120,11 +1205,19 @@ td.subsectionLineDivider {
   background-image: url("../images/Attribute32.png");
 }
 
+.classifyPixelsUsingDeepLearningIcon {
+  background-image: url("../images/ClassifyPixelsUsingDeepLearning32.png");
+}
+
+.detectObjectsUsingDeepLearningIcon {
+  background-image: url("../images/DetectObjectsUsingDeepLearning32.png");
+}
+
 .btn-container {
-  padding:5px 0px;
-  position:relative;
-  width:100px;
-  margin:auto;
+  padding: 5px 0px;
+  position: relative;
+  width: 100px;
+  margin: auto;
 }
 
 .btn1 {
@@ -1193,6 +1286,7 @@ td.subsectionLineDivider {
 
 .soria .esriAnalysis .dijitButtonNode .dijitArrowButtonInner {
   margin: 0 2px;
+  margin-top: 3px;
 }
 
 .esriAnalysis .dijitInputInner {
@@ -1377,6 +1471,16 @@ td.subsectionLineDivider {
   margin: 0.25px;    
 }
 
+.esriAnalysis .warningIcon {
+  background-image: url(../../../../dijit/themes/nihilo/images/warning.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  float: right;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;
+}
+
 .esriAnalysis .esriAnalysisUngroupIcon {
   background-image: url("../images/ClausesUngroup16.png");
   background-repeat: no-repeat;
@@ -1557,7 +1661,6 @@ td.subsectionLineDivider {
 .esriAnalysis .esriExtentLabel {
   font-size:smaller;
   display: inline-block;
- 
 }
 
 .esriAnalysis .esriExtentCreditsCtr {
@@ -1859,6 +1962,13 @@ td.subsectionLineDivider {
   margin-top:6px;
 }
 
+.esriAnalysis .separatorLine {
+  clear: both;
+  border-bottom: #CCC thin solid;
+  height: 1px;
+  width: 100%;
+}
+
 
 .esriAnalysis .breadcrumbs {
   font-weight: 400;
@@ -2137,6 +2247,10 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 
 .width-90{
   width: 90%;
+}
+
+.width-50 {
+  width: 50%;
 }
 
 .strict-onebythree-width{
@@ -2421,6 +2535,13 @@ button[disabled] {
   .esriAnalysis.card .card-toggle:checked + .card-lbl-toggle + .card-content {
     max-height: 300px;
   }
+
+  .explanatoryDiv {
+    max-height: 175px;
+    min-height: 100px;
+    overflow: auto;
+    border: 1px solid #CBCBCB;
+  }
   
   .esriAnalysis.card .card-toggle:checked + .card-lbl-toggle {
     border-bottom-right-radius: 0;
@@ -2503,8 +2624,8 @@ button[disabled] {
   background-image: url(../../images/warning.png);
   background-repeat: no-repeat;
   display: none;
-  height: 34px;
-  width: 27px;
+  height: 20px;
+  width: 20px;
   align-self: center;
 }
 
@@ -2536,4 +2657,29 @@ button[disabled] {
 
 .esriAnalysis .buildMVGAddVariableCtr {
   width: 18%;
+}
+
+.esriAnalysis .verticalCenter{
+  vertical-align: middle;
+}
+
+.esriAnalysis .breakWord {
+  word-break: break-word;
+}
+
+.esriAnalysis .esriRemapgridRowAddDiv {
+  padding: 1px;
+  width: 100%;
+}
+
+.esriAnalysis .breakWord {
+  word-break: break-word;
+}
+
+.esriAnalysis .webtoolbtn .dijitButtonNode {
+  width: 100%;
+}
+
+.esriAnalysis .webtoolbtn.dijitButton {
+  padding: .3em 0 .3em !important;
 }

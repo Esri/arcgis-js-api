@@ -46,7 +46,7 @@
         <hr/>
     <p>Esta ferramenta encontra clusters de elementos de pontos no ruido circundante com base na sua distribui&ccedil;&atilde;o espacial.
     </p>
-    <p>Se a op&ccedil;&atilde;o  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, apenas os elementos presentes na camada de pontos de entrada, na atual extens&atilde;o de mapa, ser&atilde;o analisados. Se n&atilde;o marcar a op&ccedil;&atilde;o, ser&atilde;o analisados todos os elementos na camada de de pontos de entrada, mesmo que estejam fora da extens&atilde;o atual do mapa.
+    <p>Se a op&ccedil;&atilde;o  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, apenas os elementos presentes na camada de pontos de entrada, na atual extens&atilde;o de mapa, ser&atilde;o analisados. Se n&atilde;o marcar a op&ccedil;&atilde;o, ser&atilde;o analisados todos os elementos na camada de pontos de entrada, mesmo que estejam fora da extens&atilde;o atual do mapa.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -70,7 +70,8 @@
         <div><h2>Limitar o intervalo de pesquisa para (opcional)</h2></div>
         <hr/>
         <div>
-            <p>A dist&acirc;ncia m&aacute;xima para considerar elementos como parte do mesmo cluster. Se for deixado em branco, a dist&acirc;ncia padr&atilde;o utilizada ser&aacute; a dist&acirc;ncia central mais elevada encontrada no conjunto de dados, excluindo as dist&acirc;ncias centrais no top 1% (excluindo as dist&acirc;ncias centrais mais extremas). 
+            
+            <p>A dist&acirc;ncia m&aacute;xima para considerar elementos como parte do mesmo cluster. Se deixado em branco, a ferramenta executar&aacute; HDBSCAN, que utiliza v&aacute;rias dist&acirc;ncias para separar agrupamentos de v&aacute;rias densidades de ru&iacute;do reduzido. Se deixado em branco, a ferramenta executar&aacute; DBSCAN, que utiliza uma dist&acirc;ncia espec&iacute;fica para separar agrupamentos densos de ru&iacute;do reduzido.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que forne&ccedil;a outro nome.
+            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se o nome da camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            <p>Ao utilizar o menu suspenso  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
             </p>
         </div>
     </div>

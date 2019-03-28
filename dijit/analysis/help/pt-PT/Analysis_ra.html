@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A an&aacute;lise raster permite-lhe efetuar an&aacute;lise de conjuntos de dados de grandes dimens&otilde;es utilizando o  ArcGIS Image Server. Isto permite-lhe analisar mais dados, mais depressa, aproveitando a pot&ecirc;ncia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de utilizador web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, e <b>Gerir Dados</b>.
+        <p>A an&aacute;lise raster permite-lhe efetuar an&aacute;lise de conjuntos de dados de grandes dimens&otilde;es utilizando o  ArcGIS Image Server. Isto permite-lhe analisar mais dados, mais depressa, aproveitando a pot&ecirc;ncia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de utilizador web  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Usar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerir Dados</b> e <b>Aprendizagem Profunda</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Aplicar Modelo de Função Raster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplicar Modelo de Fun&ccedil;&atilde;o Raster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Criar um novo conjunto de dados de elementos a partir de um conjunto de dados raster existente.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Conjunto de ferramentas Aprendizagem Profunda</h2>
+        <hr/>
+        <p>Estas ferramentas 	s&atilde;o utilizadas para detetar elementos espec&iacute;ficos numa imagem ou para classificar p&iacute;xeis num conjunto de dados raster. Aprendizagem profunda &eacute; um tipo de m&eacute;todo de aprendizagem m&aacute;quina de intelig&ecirc;ncia artificial, que deteta elementos nas imagens utilizando m&uacute;ltiplas camadas nas liga&ccedil;&otilde;es neuronais, onde cada camada &eacute; capaz de extrair um ou mais elementos &uacute;nicos na imagem. Estas ferramentas consomem os modelos que foram treinados a detetar elementos espec&iacute;ficos em estruturas de aprendizagem profunda de terceiros&mdash;tal como o TensorFlow, o CNTK e o Keras e emitem elementos ou mapas de classe.
+            <ul>
+                <li> <b>Classificar P&iacute;xeis Utilizando Aprendizagem Profunda</b> produz um raster classificado utilizando um modelo treinado de aprendizagem profunda.
+                </li>
+                <li> <b>Detetar Objetos Utilizando Aprendizagem Profunda</b> produz uma classe de elementos contendo objetos que encontra num raster de entrada utilizando um modelo treinado de aprendizagem profunda.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classificar Píxeis Utilizando Aprendizagem Profunda</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classificar P&iacute;xeis Utilizando Aprendizagem Profunda">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Executa um modelo treinado de aprendizagem profunda num raster de entrada para produzir um raster classificado, com cada p&iacute;xel v&aacute;lido tendo uma classe de r&oacute;tulos atribu&iacute;da.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detetar Objetos Utilizando Aprendizagem Profunda</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detetar Objetos Utilizando Aprendizagem Profunda">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Executa um modelo treinado de aprendizagem profunda num raster de entrada para produzir uma classe de elementos que cont&eacute;m os objetos que encontra. Os elementos podem ser caixas delimitadoras ou pol&iacute;gonos em torno dos objetos encontrados ou pontos no centro dos objetos.
             </p>
             <br/>
         </div>

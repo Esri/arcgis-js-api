@@ -44,7 +44,7 @@
         <h2>Detectar incidentes</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar incidentes"></h2>
         <hr/>
-    <p>Esta herramienta funciona con una capa de puntos, l&iacute;neas, &aacute;reas o tablas con la funci&oacute;n de tiempo habilitada que representa un instante en el tiempo.   Si utiliza entidades ordenadas secuencialmente, denominadas recorridos, esta herramienta determina qu&eacute; entidades son incidentes de inter&eacute;s. Los incidentes se determinan atendiendo a las condiciones que usted especifique. 
+    <p> Esta herramienta funciona con una capa de puntos, l&iacute;neas, &aacute;reas o tablas con la funci&oacute;n de tiempo habilitada que representa un instante en el tiempo.   Si utiliza entidades ordenadas secuencialmente, denominadas recorridos, esta herramienta determina qu&eacute; entidades son incidentes de inter&eacute;s. Los incidentes se determinan atendiendo a las condiciones que usted especifique.
     </p>
     <p>Primero, la herramienta determina qu&eacute; entidades pertenecen a un recorrido utilizando uno o varios campos. Al utilizar la hora de cada entidad, los recorridos se ordenan secuencialmente y la condici&oacute;n del incidente se aplica. Las entidades que cumplan la condici&oacute;n inicial de incidente se marcan como incidentes. Opcionalmente, puede aplicar una condici&oacute;n final de incidente; cuando la condici&oacute;n final se cumpla, la entidad deja de ser un incidente.  Los resultados se devolver&aacute;n con las entidades originales (con columnas nuevas que representen el nombre del incidente) e indican qu&eacute; entidad cumple la condici&oacute;n de incidente. Puede devolver todas las entidades originales o solo las entidades que sean incidentes.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Los puntos, l&iacute;neas, &aacute;reas o tablas que se utilizar&aacute;n para buscar incidentes. La capa de entrada debe tener habilitada la funci&oacute;n de tiempo, con entidades que representen un instante en el tiempo, as&iacute; como uno o varios campos que se puedan utilizar para identificar recorridos.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Crear una condición de expresión para marcar el fin de un incidente</h2></div>
+        <div><h2>Crear una condición de expresión para marcar el fin de un incidente (opcional)</h2></div>
         <hr/>
         <div>
             <p>Opcionalmente, puede agregar una condici&oacute;n con el constructor de expresiones para determinar el final de un incidente. Si la condici&oacute;n que especifica se cumple, la entidad deja de ser un incidente. Si no especifica ninguna condici&oacute;n final, el incidente termina cuando la condici&oacute;n inicial ya no se cumple.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Seleccionar cómo desea representar la salida</h2></div>
+        <div><h2>Mostrar</h2></div>
         <hr/>
         <div>
             <p>Todos los m&eacute;todos de salida incorporar&aacute;n campos a las entidades originales. Existen dos formas de determinar qu&eacute; entidades se devuelven:
                 <ul>
-                    <li> <b>Devolver solo incidentes</b>: este m&eacute;todo devolver&aacute; &uacute;nicamente las entidades que sean incidentes. No se devolver&aacute;n aquellas entidades que no se consideren incidentes.
+                    <li> <b>Todas las entidades</b>: esta es la opci&oacute;n predeterminada. Se devolver&aacute;n todas las entidades de la entrada.
                     </li>
-                    <li> <b>Devolver todas las entidades</b>: esta es la opci&oacute;n predeterminada. Se devolver&aacute;n todas las entidades de la entrada.
+                    <li> <b>Solo incidentes</b>: este m&eacute;todo devolver&aacute; &uacute;nicamente las entidades que sean incidentes. No se devolver&aacute;n aquellas entidades que no se consideren incidentes.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizar datos con intervalos de tiempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique si desea detectar incidentes con intervalos de tiempo que segmentan las entidades de entrada para el an&aacute;lisis. Si utiliza intervalos de tiempo, debe establecer el intervalo de tiempo que desee utilizar y, si lo desea, establecer el tiempo de referencia. Si no establece ning&uacute;n tiempo de referencia, se utilizar&aacute; el 1 de enero de 1970. 
+            </p>
+            <p>Por ejemplo, si establece el l&iacute;mite de tiempo en 1 d&iacute;a, a partir de las 9:00 AM del 1 de enero de 1990, cada recorrido se truncar&aacute; a las 9:00 AM para cada d&iacute;a y se analizar&aacute; dentro de ese segmento. 
+            </p>
+            <p>El uso de intervalos de tiempo es una forma r&aacute;pida de acelerar el tiempo de procesamiento, ya que crea r&aacute;pidamente recorridos m&aacute;s peque&ntilde;os para el an&aacute;lisis. Si a su an&aacute;lisis le conviene dividir por un intervalo de tiempo recurrente, le recomendamos que lo haga para procesar big data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p> El nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            <p> El nombre de la capa que se crear&aacute;.  Si escribe en un ArcGIS Data Store, sus resultados se guardar&aacute;n en  <b>Mi contenido</b> y se agregar&aacute;n al mapa. Si escribe en un recurso compartido de archivos de big data, sus resultados se almacenar&aacute;n en el recurso compartido de archivos de big data y se agregar&aacute;n a su manifiesto. No se agregar&aacute;n al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>Cuando escriba en  ArcGIS Data Store (big data store espaciotemporal o relacional) con el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

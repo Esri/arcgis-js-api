@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({binsLabel:"Choisir le type de groupe qui sera utilisé pour construire le carroyage à plusieurs variables",layersAttrLabel:"Choisir les couches et variables en entrée à inclure dans le carroyage",itemDescription:"Couche d’entités générée par l’exécution de l’outil Construire un carroyage à plusieurs variables.",itemTags:"Résultat d’analyse, Construire un carroyage à plusieurs variables",itemSnippet:"Couche d’entités générée avec Construire un carroyage à plusieurs variables",addVariables:"Ajouter des variables"});

@@ -14,23 +14,41 @@
 }
 
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRoot {
-        height: 13px;
-        padding: 2px 3px 2px 3px;
+        padding-top: 3px;
+        padding-bottom: 3px;
         text-decoration: inherit;
         white-space: nowrap;
     }
 
+    
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect {
-        width: 10px;
-        height: 10px;
         margin-left: 2px;
         margin-right: 2px;
+        box-sizing: border-box;
     }
 
-        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.selectableLegendRootColorRectWithBorder {
-            width: 8px;
-            height: 8px;
+        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.square {
+            width: 10px;
+            height: 10px;
         }
+
+        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.rectangle {
+            width: 15px;
+            height: 6px;
+        }
+
+        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.line {
+            width: 15px;
+            height: 2px;
+        }
+
+    
 
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootLabel {
         max-width: 200px;
@@ -43,10 +61,17 @@
 
     
 
+    .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootValue {
+        text-decoration: inherit;
+    }
+
+    
+
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRoot .selectableLegendRootCheckbox {
         position: relative;
-        top: -1px;
+        vertical-align: middle;
         opacity: 0;
+        margin-right: 5px;
     }
 
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend:hover .selectableLegendRootCheckbox {
@@ -56,7 +81,7 @@
 
 
 .esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRootColorRect {
-    border-radius: 50%;
+    margin-right: 5px;
 }
 
 .esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRoot_unselected .selectableLegendRootColorRect {
@@ -67,59 +92,12 @@
 
 
 
-.esriGEReportPlayer_chartContainer.legendPlacementLeft .esriGESelectableLegend {
-    text-align: right;
-}
-
-    .esriGEReportPlayer_chartContainer.legendPlacementLeft .esriGESelectableLegend .selectableLegendRoot {
-        width: auto !important;
-    }
-
-
-
-.esriGEReportPlayer_chartContainer.legendPlacementRight .chartContainer_legendContainer {
-    text-align: right;
-}
-
-.esriGEReportPlayer_chartContainer.legendPlacementRight .esriGESelectableLegend {
-    text-align: left;
-}
-
-    .esriGEReportPlayer_chartContainer.legendPlacementRight .esriGESelectableLegend .selectableLegendRoot {
-        width: auto !important;
-    }
-
-
-
-.esriGEReportPlayer_chartContainer.legendPlacementTop .chartContainer_legendContainer {
-    text-align: center;
-}
-
-.esriGEReportPlayer_chartContainer.legendPlacementTop .esriGESelectableLegend {
-    text-align: left;
-}
-
-    .esriGEReportPlayer_chartContainer.legendPlacementTop .esriGESelectableLegend .selectableLegendRoot {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-
-
+.esriGEReportPlayer_chartContainer.legendPlacementTop .chartContainer_legendContainer,
 .esriGEReportPlayer_chartContainer.legendPlacementBottom .chartContainer_legendContainer {
     text-align: center;
 }
 
+.esriGEReportPlayer_chartContainer.legendPlacementTop .esriGESelectableLegend,
 .esriGEReportPlayer_chartContainer.legendPlacementBottom .esriGESelectableLegend {
     text-align: left;
 }
-
-    .esriGEReportPlayer_chartContainer.legendPlacementBottom .esriGESelectableLegend .selectableLegendRoot {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-        .esriGEReportPlayer_chartContainer.legendPlacementBottom .esriGESelectableLegend .selectableLegendRoot .selectableLegendRootCheckbox {
-            position: relative;
-            top: -1px;
-        }

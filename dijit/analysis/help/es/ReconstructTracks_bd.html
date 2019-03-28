@@ -44,7 +44,7 @@
         <h2>Reconstruir recorridos</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir recorridos"></h2>
         <hr/>
-    <p>Esta herramienta trabaja con una capa con la funci&oacute;n de tiempo habilitada de entidades de puntos o de &aacute;rea que representan un  <code>instante</code> en el tiempo.   Primero determina qu&eacute; entidades pertenecen a un recorrido utilizando un identificador. Utilizando el tiempo en cada ubicaci&oacute;n, los recorridos se ordenan secuencialmente y se transforman en una l&iacute;nea o &aacute;rea que representa la ruta del movimiento en el tiempo. Opcionalmente, se puede crear una zona de influencia de la entrada mediante un campo, que crear&aacute; un &aacute;rea en cada ubicaci&oacute;n. Estos puntos con zona de influencia o &aacute;reas de entrada se unen a continuaci&oacute;n secuencialmente para crear un recorrido como &aacute;rea all&iacute; donde el ancho represente el atributo de inter&eacute;s. Los recorridos resultantes tendr&aacute;n un tiempo de inicio y finalizaci&oacute;n, que representar&aacute;n, temporalmente, la primera y la &uacute;ltima entidad en una determinada recorrido. Cuando se crean los recorridos, se calculan estad&iacute;sticas sobre las entidades de entrada y se asignan al recorrido de salida. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de puntos dentro del &aacute;rea, pero se pueden calcular tambi&eacute;n otras estad&iacute;sticas.
+    <p> Esta herramienta trabaja con una capa con la funci&oacute;n de tiempo habilitada de entidades de puntos o de &aacute;rea que representan un <code>instante</code> en el tiempo.   Primero determina qu&eacute; entidades pertenecen a un recorrido utilizando un identificador. Utilizando el tiempo en cada ubicaci&oacute;n, los recorridos se ordenan secuencialmente y se transforman en una l&iacute;nea o &aacute;rea que representa la ruta del movimiento en el tiempo. Opcionalmente, se puede crear una zona de influencia de la entrada mediante un campo, que crear&aacute; un &aacute;rea en cada ubicaci&oacute;n. Estos puntos con zona de influencia o &aacute;reas de entrada se unen a continuaci&oacute;n secuencialmente para crear un recorrido como &aacute;rea all&iacute; donde el ancho represente el atributo de inter&eacute;s. Los recorridos resultantes tendr&aacute;n un tiempo de inicio y finalizaci&oacute;n, que representar&aacute;n, temporalmente, la primera y la &uacute;ltima entidad en una determinada recorrido. Cuando se crean los recorridos, se calculan estad&iacute;sticas sobre las entidades de entrada y se asignan al recorrido de salida. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de puntos dentro del &aacute;rea, pero se pueden calcular tambi&eacute;n otras estad&iacute;sticas.
     </p>
     <p>Las entidades en capas con la funci&oacute;n de tiempo habilitada se pueden representar de una de estas dos formas:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>La capa de puntos o &aacute;rea que se reconstruir&aacute; en recorridos. La capa de entrada debe ser una capa con tiempo habilitado que represente un instante en el tiempo. La capa debe estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante  <b>Entornos de an&aacute;lisis</b> si se aplica una zona de influencia.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
-    <div id="distanceSplit">
-        <div><h2>Seleccionar una distancia para dividir los recorridos por (opcional)</h2></div>
+    <div id="splitTracks">
+        <div><h2>Dividir recorridos (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Distancia utilizada para dividir recorridos. Si los puntos o &aacute;reas de entrada tienen una distancia entre ellos m&aacute;s amplia que la divisi&oacute;n de la distancia, se dividir&aacute;n en diferentes recorridos.
+            <p>Puede dividir recorridos con tres m&eacute;todos distintos. Puede no usar ning&uacute;n m&eacute;todo de divisi&oacute;n, o bien utilizar todos o algunos de ellos. 
+            </p>
+            <p>Las divisiones se pueden completar de las siguientes maneras:
+                <ul>
+                    <li> <b>En funci&oacute;n de la distancia entre entradas</b>: si los puntos o &aacute;reas de entrada tienen una distancia entre ellos m&aacute;s amplia que la distancia especificada, se dividir&aacute;n en diferentes recorridos. Por ejemplo, si especific&oacute; una distancia de 10 kil&oacute;metros, los puntos secuenciales mayores que 10 kil&oacute;metros ser&iacute;an recorridos separados.
+                    </li>
+                    <li> <b>En funci&oacute;n del tiempo entre entradas</b>: si los puntos o &aacute;reas de entrada tienen una duraci&oacute;n superior entre ellos a la divisi&oacute;n del tiempo, se dividir&aacute;n en diferentes recorridos. Por ejemplo, si tuviera entidades de puntos que representan vuelos de aeronaves, donde el campo de recorrido es el Id. de la aeronave, esta aeronave podr&iacute;a realizar varios viajes y se representar&iacute;a como un recorrido.  Si supiera que existe un descanso de 1 hora entre los vuelos, podr&iacute;a utilizar <code>1 hora</code> como valor para la divisi&oacute;n del recorrido y cada vuelo se dividir&iacute;a entre su propio recorrido.
+                    </li>
+                    <li> <b>A intervalos de tiempo definidos</b>: se divide utilizando intervalos regulares, especificados por un intervalo de tiempo y un tiempo de referencia. Si no especifica ning&uacute;n tiempo de referencia, se utilizar&aacute; el 1 de enero de 1970. Por ejemplo, si especific&oacute; 1 a&ntilde;o con el 2 de febrero de 1990 a las 10:00 como tiempo de referencia, dividir&iacute;a los recorridos el 2 de febrero de 1990 a las 10:00, el 2 de febrero de 1991 a las 10:00, y as&iacute; sucesivamente en intervalos de un a&ntilde;o.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Si especifica varias opciones de divisi&oacute;n, los recorridos se dividir&aacute;n cuando se cumplan una o varias condiciones. 
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Seleccionar una distancia entre la que dividir los recorridos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Distancia utilizada para dividir recorridos. Si los puntos o &aacute;reas de entrada tienen una distancia entre ellos m&aacute;s amplia que la divisi&oacute;n de la distancia, se dividir&aacute;n en diferentes recorridos.
             </p>
             <p>Si especifica una divisi&oacute;n de tiempo y otra de distancia, los recorridos se dividir&aacute;n cuando se cumplan una o ambas condiciones. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Seleccionar un ArcGIS Data Store en el que guardar los resultados</h2></div>
         <hr/>
         <div>
-            <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el data store relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que guardar los resultados en el data store relacional es una buena idea: 
+            <p>Los resultados de GeoAnalytics se almacenan en un data store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el data store relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que guardar los resultados en el data store relacional es una buena idea: 
                 <ul>
                     <li>Puede usar los resultados en una colaboraci&oacute;n de portal a portal.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p> El nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            <p> El nombre de la capa que se crear&aacute;.  Si escribe en un ArcGIS Data Store, sus resultados se guardar&aacute;n en  <b>Mi contenido</b> y se agregar&aacute;n al mapa. Si escribe en un recurso compartido de archivos de big data, sus resultados se almacenar&aacute;n en el recurso compartido de archivos de big data y se agregar&aacute;n a su manifiesto. No se agregar&aacute;n al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>Cuando escriba en  ArcGIS Data Store (big data store espaciotemporal o relacional) con el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

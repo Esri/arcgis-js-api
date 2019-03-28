@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp af  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke. De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via  Portal for ArcGIS, er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b> og <b>Administr&eacute;r data</b>.
+        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp af  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke. De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via  Portal for ArcGIS, er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Anvend n&aelig;rhed</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b>, <b>Administr&eacute;r data</b> og <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Anvend rasterfunktionsskabelon</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Anvend rasterfunktionsskabelon">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Opret et nyt vektordatas&aelig;t ud fra et eksisterende rasterdatas&aelig;t.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Værktøjer til Deep Learning</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer 	bruges til at registrere specifikke objekter i et billede eller til at klassificere pixels i et rasterdatas&aelig;t. Deep Learning er en maskinl&aelig;ringsmetode, der benytter sig af kunstig intelligens. Den registrerer objekter i billeder ved hj&aelig;lp af flere lag i neurale netv&aelig;rk, hvor hvert lag er i stand til at udtr&aelig;kke et eller flere unikke objekter i billedet. Disse v&aelig;rkt&oslash;jer bruger de modeller, der er blevet tr&aelig;net til at registrere specifikke objekter i tredjeparts Deep Learning-frameworks - f.eks. TensorFlow, CNTK og Keras - og output er objekter eller klassekort.
+            <ul>
+                <li> <b>Klassificer pixels ved hj&aelig;lp af Deep Learning</b> producerer en klassificeret raster ved hj&aelig;lp af en tr&aelig;net Deep Learning-model.
+                </li>
+                <li> <b>Registrer objekter ved hj&aelig;lp af Deep Learning</b> producerer en objektklasse, der indeholder objekter, som den finder i en inputraster ved hj&aelig;lp af en tr&aelig;net Deep Learning-model.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassificer pixels ved hjælp af Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klassificer pixels ved hj&aelig;lp af Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en klassificeret raster, hvor hver gyldig pixel har f&aring;et tildelt en klasseetiket.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Registrer objekter ved hjælp af Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Registrer objekter ved hj&aelig;lp af Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en objektklasse, der indeholder de objekter, den finder. Objekterne kan v&aelig;re afgr&aelig;nsende kasser eller polygoner rundt om de objekter, der findes, eller de kan pege p&aring; objekternes centrum.
             </p>
             <br/>
         </div>

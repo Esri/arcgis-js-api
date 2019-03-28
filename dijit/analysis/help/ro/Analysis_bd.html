@@ -41,64 +41,79 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics distribuie lucrările de analiză pe serverul dvs. ArcGIS GeoAnalytics. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea puterii mai multor echipamente. Următoarele instrumente sunt disponibile &icirc;n prezent:
-            <ul>
-                <li> <b>&Icirc;nsumare puncte</b>
+        <p> GeoAnalytics distribuie efortul de analiză &icirc;n cadrul serverului dvs. ArcGIS GeoAnalytics. ArcGIS GeoAnalytics Server. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea  puterii mai multor echipamente. Sunt disponibile următoarele instrumente : <ul>
+                <li> &Icirc;nsumare puncte
                 </li>
-                <li> <b>Contruiește grilă multi-variabilă</b>
+                <li> Creare grilă cu variabile multiple
                 </li>
-                <li> <b>Unire obiecte spaţiale</b>
+                <li> Descriere set de date
                 </li>
-                <li> <b>Reconstruire trasee</b>
+                <li> Unire obiecte spaţiale
                 </li>
-                <li> <b>Sumarizare atribute</b>
+                <li> Reconstruire trasee
                 </li>
-                <li> <b>Rezumat &icirc;n</b>
+                <li> Rezumare atribute
                 </li>
-                <li> <b>Locaţii geocodificate din tabel</b>
+                <li> Rezumat &icirc;n
                 </li>
-                <li> <b>Detecţie incidente</b>
+                <li> Locaţii geocodificate din tabel
                 </li>
-                <li> <b>Găsire locaţii similare</b>
+                <li> &Icirc;mbogățire din grilă cu variabile multiple
                 </li>
-                <li> <b>Calcul densitate</b>
+                <li> Detecţie incidente
                 </li>
-                <li> <b>Găsiți fascicule de puncte</b>
+                <li> Găsire locaţii similare
                 </li>
-                <li> <b>Găsire puncte de interes</b>
+                <li> Calcul densitate
                 </li>
-                <li> <b>Creare buffere</b>
+                <li> Find Point Clusters
                 </li>
-                <li> <b>Completare date</b>
+                <li> Găsire puncte de interes
                 </li>
-                <li> <b>Calcul c&acirc;mp</b>
+                <li> Clasificare și regresie pe baza unei păduri de arbori decizionali
                 </li>
-                <li> <b>Copiaţi &icirc;n depozitul de date</b>
+                <li> Regresie liniară generalizată
                 </li>
-                <li> <b>Suprapunere straturi tematice</b>
+                <li> Creare buffere
+                </li>
+                <li> Completare date
+                </li>
+                <li> Calculare c&acirc;mp
+                </li>
+                <li> Copiere &icirc;n depozitul de date
+                </li>
+                <li> Suprapunere straturi tematice
+                </li>
+                <li> Dizolvare graniţe
+                </li>
+                <li> Unificare straturi tematice
+                </li>
+                <li> Decupare strat tematic 
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics se concentrează asupra analizei datelor de mari dimensiuni cu accent pe modelele spaţiale şi temporale. 
+        <p>GeoAnalytics se concentrează asupra analizei cantităților mari de date cu accent pe modelele spaţiale şi temporale. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Sumarizare date</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p> Setul de instrumente Sumarizare date conține instrumente care calculează numărul total, lungimile, suprafețele și statistici descriptive de bază ale obiectelor spațiale și atributelor lor din suprafețe sau din apropierea altor obiecte spațiale.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
-                <li> <b>&Icirc;nsumare puncte</b> calculează statistici despre punctele care se &icirc;ncadrează &icirc;n suprafețe sau coșuri specificate.
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li> <b>Creare grilă cu variabile multiple</b> generează o grilă de coșuri pătrate sau hexagonale și calculează valorile pentru fiecare coș pe baza proximității fircărui strat tematic de intrare.
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
-                <li> <b>Unire obiecte spațiale</b> calculează statistici despre obiecte spațiale care &icirc;mpărtășesc o relație spațială, temporală sau de atribut cu alte obiecte spațiale.
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
-                <li> <b>Reconstruire trasee</b> calculează statisticile despre puncte sau poligoane care aparțin aceluiași traseu și reconstruiește intrările &icirc;n trasee.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li> <b>Sumarizare atribute</b> calculează statistici despre obiectul spațial sau datele tabulare care au atribute comune.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li> <b>Sumarizare &icirc;n interior</b> calculează statistici privind obiectele spațiale și atributele din zonă care se suprapun reciproc.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
             </ul>
             
@@ -119,7 +134,7 @@
             </p>
             <p>C&acirc;teva exemple:
                 <ul>
-                    <li>Se dau locaţiile punctuale ale infracţiunilor. Aflaţi numărul de infracţiuni pe judeţ sau pe altă unitate administrativă.
+                    <li>Se dau locațiile punctuale ale infracțiunilor. Aflați numărul de infracțiuni pe județ sau pe altă unitate administrativă.
                     </li>
                     <li>Găsiţi cele mai mari şi cele mai mici venituri lunare pentru locaţiile aflate &icirc;n franciză, utiliz&acirc;nd coșuri de 100-kilometri.
                     </li>
@@ -148,6 +163,32 @@
                     <li>Av&acirc;nd &icirc;n vedere straturile tematice de căi navigabile, cum ar fi lacurile și r&acirc;urile, care este denumirea corpului de apă cel mai apropiat de fiecare localizare din SUA?
                     </li>
                     <li>Av&acirc;nd &icirc;n vedere un strat tematic de venituri pe gospodărie, unde &icirc;n SUA se găsește cea mai mare variația a veniturilor pe o rază de 50 mile?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Descriere set de date</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Diagrama fluxului de lucru a instrumentului Descriere set de date">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Rezumați obiectele spațiale de intrare cu statistica, straturi tematice eșantion și vizualizare. Puteți alege să realizați un strat tematic eșantion sau un strat tematic de extindere.
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Consultați statistica sumară calculată pentru a &icirc;nțelege ce valori conține setul de date.
+                    </li>
+                    <li>&Icirc;n loc să desenați &icirc;ntregul set de date, creați un strat tematic subset pentru a vizualiza obiectele spațiale și atributele acestora atunci c&acirc;nd sunt adăugate pe o hartă.
+                    </li>
+                    <li>Economisiți timp și resurse și executați analiza pe un strat tematic eșantion &icirc;nainte de a executa analiza pe &icirc;ntregul set de date.
                     </li>
                 </ul>
                 
@@ -184,18 +225,18 @@
                 <tbody><tr>
                     <td><h2>Reconstruire trasee</h2></td>
                     <td>
-                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruire Trasee">
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruire trasee">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Utiliz&acirc;nd un strat tematic legat de timp cu obiecte spaţiale de tip punct sau poligon care reprezintă un  <code>instantaneu</code> &icirc;n timp, acest instrument determină obiectele spaţiale introduse care pot fi incluse &icirc;ntr-o monitorizare şi vor ordona cronologic elementele introduse. Statisticile sunt calculate opţional pentru obiectele spaţiale introduse din fiecare monitorizare.
             </p>
-            <p> C&acirc;teva exemple:
+            <p>C&acirc;teva exemple:
                 <ul>
                     <li>Odată ce aveţi locaţii punctuale şi orele măsurătorilor unui uragan, puteţi calcula viteza medie a v&acirc;ntului şi presiunea eoliană maximă a uraganului.
                     </li>
-                    <li>Folosiţi măsurătorile GPS ale navelor pentru a reconstrui traseele ca linii.
+                    <li>Folosiţi măsurătorile GPS ale navelor pentru a reconstrui traseele ca linii. 
                     </li>
                 </ul>
                 
@@ -213,7 +254,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Utiliz&acirc;nd fie obiecte spaţiale, fie date tabelare, acest instrument rezumă datele statistice ale c&acirc;mpurilor specificate.
+            <p>Utiliz&acirc;nd fie obiecte spaţiale, fie date tabelare, acest instrument rezumă datele statistice ale c&acirc;mpurilor specificate. 
             </p>
             <p>C&acirc;teva exemple:
                 <ul>
@@ -241,9 +282,9 @@
             </p>
             <p>C&acirc;teva exemple:
                 <ul>
-                    <li>Av&acirc;nd un strat tematic de zone cumpănă de ape şi un strat tematic de zone cu terenuri utilizate clasificate &icirc;n funcţie de tipul utilizării, calculaţi suprafaţa totală pentru fiecare tip de utilizare a terenului aferent fiecărei cumpene de ape. 
+                    <li>Av&acirc;nd un strat tematic de zone cumpănă de ape și un strat tematic de zone cu terenuri utilizate clasificate &icirc;n funcție de tipul utilizării, calculați suprafața totală pentru fiecare tip de utilizare a terenului aferent fiecărei cumpene de ape. 
                     </li>
-                    <li>Av&acirc;nd un strat tematic de parcele dintr-un judeţ şi un strat tematic de limite ale localităţilor, rezumaţi valoarea medie a parcelelor libere din fiecare localitate.
+                    <li>Av&acirc;nd un strat tematic de parcele dintr-un județ și un strat tematic de limite ale localităților, rezumați valoarea medie a parcelelor libere din fiecare localitate.
                     </li>
                 </ul>
                 
@@ -328,16 +369,20 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Analiză tendinţe</h2>
+    <div id="AnalyzePatternsCategory" class="largesize">
+        <h2>Analizare tendințe</h2>
         <hr/>
-        <p> Aceste instrumente vă ajută să identificaţi, cuantificaţi şi vizualizaţi modele spaţiale din datele dvs.
+        <p>  Aceste instrumente vă ajută să identificaţi, cuantificaţi şi vizualizaţi modele spaţiale din datele dvs.
             <ul>
                 <li> <b>Calcul densitate</b> ia cantităţi cunoscute ale unui fenomen şi le răsp&acirc;ndeşte pe hartă.
                 </li>
                 <li> <b>Găsire puncte de interes</b> identifică grupări semnificative statistic din modelul spaţial al datelor dvs.
                 </li>
-                <li> <b>Instrumentul Găsiți fascicule de puncte</b> găsește fascicule de obiecte spaţiale de tip punct &icirc;n zgomotul &icirc;nconjurător pe baza distribuției lor spațiale..
+                <li> <b>Instrumentul Găsiți fascicule de puncte</b> găsește fascicule de obiecte spaţiale de tip punct &icirc;n zgomotul &icirc;nconjurător pe baza distribuției lor spațiale.
+                </li>
+                <li> <b>Clasificarea și regresia pe baza unei păduri de arbori decizionali</b> modelează și generează predicții folosind o adaptare a algoritmului Leo Breiman pentru o pădure aleatoare, care reprezintă o metodă de machine learning supervizată.
+                </li>
+                <li> <b>Regresie liniară generalizată</b> generează predicții sau modelează o variabilă dependentă &icirc;n ceea ce privește relația sa cu un set de variabile explicative.
                 </li>
             </ul>
             
@@ -415,6 +460,62 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Clasificare și regresie pe baza unei păduri de arbori decizionali</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Diagrama fluxului de lucru &icirc;n Clasificarea și regresia pe baza unei păduri de arbori decizionali">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Instrumentul de clasificare și regresie pe baza unei păduri de arbori decizionali modelează și generează predicții folosind o adaptare a algoritmului lui Leo Breiman bazat pe o pădure aleatoare, care reprezintă o metodă de machine learning supervizată
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Date fiind datele privind răsp&acirc;ndirea ierbii de mare, precum și o serie de variabile explicative de mediu reprezentate ca atribute care au fost &icirc;mbogățite cu ajutorul unei rețele cu variabile multiple pentru a calcula distanțele față de fabricile din amonte și porturile principale, se poate anticipa apariția ierbii de mare pe proiecții viitoare pentru aceleași variabile explicative de mediu.
+                          
+                    </li>
+                    <li>Să presupunem că aveți date privind randamentul culturilor la sute de ferme din țară, &icirc;mpreună cu alte atribute la fiecare dintre aceste ferme (numărul de angajați, suprafața de teren și așa mai departe). Folosind aceste date, puteți oferi un set de caracteristici reprezent&acirc;nd ferme &icirc;n care nu aveți randament (dar aveți toate celelalte variabile) și să faceți o predicție asupra randamentului culturilor.
+                    </li>
+                    <li>Valorile locuințelor pot fi estimate pe baza prețurilor la casele care au fost v&acirc;ndute &icirc;n anul curent. Prețul de v&acirc;nzare al locuințelor v&acirc;ndute &icirc;mpreună cu informații despre numărul de camere, distanța față de școli, apropierea de autostrăzile majore, venitul mediu și numărul de infracțiuni pot fi folosite pentru a prezice prețurile de v&acirc;nzare ale unor locuințe similare.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Regresie liniară generalizată</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Diagramă de flux de lucru RegresieLiniarăGeneralizată">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Instrumentul de regresie liniară generalizată generează predicții sau modelează o variabilă dependentă &icirc;n ceea ce privește relația sa cu un set de variabile explicative. Acest instrument poate fi utilizat pentru a se potrivi modelelor (OLS), binare (logistice) și de numărare (Poisson).
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Ce caracteristici demografice contribuie la creșterea ratei de utilizare a transportului public?
+                    </li>
+                    <li>Există o relație pozitivă &icirc;ntre vandalism și efracție?
+                    </li>
+                    <li>Care variabile prezic &icirc;n mod efectiv volumul de apeluri la 112? Av&acirc;nd &icirc;n vedere proiecțiile viitoare, care este cererea așteptată de resurse de răspuns la situații de urgență?
+                    </li>
+                    <li>Ce variabile afectează rata scăzută a natalității?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Utilizare proximitate</h2>
         <hr/>
@@ -450,18 +551,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Administrare date</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Manage Data</h2>
         <hr/>
-        <p>Aceste instrumente sunt utilizate pentru administrarea cotidiană a datelor geografice și tabelare. 
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
-                <li> <b>Completare date</b> adaugă obiecte spațiale la un strat tematic de obiecte spațiale existent care este găzduit.
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
                 </li>
-                <li> <b>Calculare c&acirc;mp</b> creează un c&acirc;mp nou sau modifică un c&acirc;mp existent și creează un strat tematic nou &icirc;n conținutul dvs.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Copiere &icirc;n depozitul de date</b> copiază datele &icirc;n ArcGIS Data Store și creează un strat tematic &icirc;n conținutul dvs. 
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
                 </li>
-                <li> <b>Suprapunere straturi tematice</b> combină două sau mai multe straturi tematice &icirc;ntr-un singur strat tematic.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -513,6 +620,54 @@
             </p>
             <br/>
         </div>
+        <div id="ClipLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atașare strat tematic</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="Decupare strat tematic">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Decupează obiectele spațiale de intrare din zone definite de interes. Rezultatul va fi un subset al obiectelor spațiale de intrare. 
+            </p>
+            <p>C&acirc;teva exemple: 
+                <ul>
+                    <li>Creați un subset de clădiri cu risc care se &icirc;ncadrează &icirc;n zonele inundabile.
+                    </li>
+                    <li>Determinați care drumuri principale trec prin zonele dvs. potențiale de dezvoltare.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dizolvare graniţe</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Dizolvare graniţe">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unește obiectele spațiale de suprafață care se intersectează sau care &icirc;mpărtășesc o valoare comună a unui c&acirc;mp pentru a obiecte spațiale continue sau cu componente multiple.
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Creați un singur obiect spațial reprezent&acirc;nd statul Hawaii prin dizolvarea granițelor insulelor Hawaii.
+                    </li>
+                    <li>Combinați zone de studiu similare pe baza tipului de sol pentru a obține un set de date continuu pentru tipul de sol.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="OverlayLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -524,9 +679,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Suprapunerea combină două sau mai multe straturi tematice &icirc;ntr-un singur strat tematic. Suprapunerea este utilizată pentru a răspunde la una dintre cele mai simple &icirc;ntrebări din geografie, Ce este deasupra a ce? C&acirc;teva  exemple:
+            <p>Combină două sau mai multe straturi tematice &icirc;ntr-un singur strat tematic. Suprapunerea este utilizată pentru a răspunde la una dintre cele mai simple &icirc;ntrebări din geografie, Ce este deasupra a ce? 
+            </p>
+            <p>C&acirc;teva  exemple:
                 <ul>
-                    <li>Ce parcele se află &icirc;n lunca de 100 de ani? (&bdquo;&Icirc;n&rdquo; este doar un alt mod de a spune &bdquo;Pe&rdquo;.)
+                    <li>Ce parcele se află de 100 de ani &icirc;n luncăinundabilă? (&bdquo;&Icirc;n&rdquo; este doar un alt mod de a spune &bdquo;Pe&rdquo;.)
                           
                     </li>
                     <li>Ce utilizare a terenului se află pe ce tip de sol?
@@ -553,11 +710,68 @@
             <p>Completează obiecte spațiale pe un strat tematic găzduit existent din conținutul dvs. din ArcGIS Enterprise. </p>
             <p>C&acirc;teva exemple:
                 <ul>
-                    <li>Actualizați-vă stratul tematic de obiecte spațiale  2018_Sales &icirc;n fiecare lună pe măsură ce rapoartele dvs. devin disponibile. 
+                    <li>Actualizați-vă stratul tematic de obiecte spațiale  2018_Sales &icirc;n fiecare lună pe măsură ce rapoartele dvs. devin disponibile.
                     </li>
                     <li>Completați seturi de date a traseelor uraganelor din anii 2016 și 2017 &icirc;ntr-un set central de date privind uraganele.
                     </li>
                     <li>Colectați și completați seturi de date din diverse surse cu diverse scheme folosind cartografierea &icirc;n c&acirc;mp personalizată.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Unificare straturi tematice</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Unificare straturi tematice">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Combină două straturi tematice de obiecte spațiale pentru a crea un singur strat tematic. Toate c&acirc;mpurile din stratul tematic de unificare vor fi incluse &icirc;n mod implicit sau puteți specifica reguli de unificare personalizate pentru a defini schema rezultată.  
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Unificați trei straturi tematice care conțin informații demografice din Anglia, Țara Galilor și Scoția pentru a crea un singur strat tematic al Marii Britanii.
+                    </li>
+                    <li>Combinați două straturi care conțin informații despre parcele pentru localități &icirc;nvecinate, păstr&acirc;nd numai c&acirc;mpurile care au același nume și același tip &icirc;n cele două straturi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Îmbogățire date</h2>
+        <hr/>
+        <p>Aceste instrumente vă ajută să exploraţi caracterul suprafeţelor.
+            <ul>
+                <li> <b>&Icirc;mbogățire din grilă cu variabile multiple</b> unește atribute dintr-un strat tematic grilă cu variabile multiple &icirc;ntr-un strat tematic cu obiecte de tip punct.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Îmbogățire din grilă cu variabile multiple</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="&Icirc;mbogățire din grilă cu variabile multiple">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unește eficient atributele provenite dintr-o grilă cu variabile multiple &icirc;ntr-un strat tematic cu puncte, permiț&acirc;ndu-vă să adăugați rapid  multe și diverse informații la datele de tip punct pentru a fi utilizate &icirc;n analiza spațială ulterioară. 
+            </p>
+            <p>C&acirc;teva exemple:
+                <ul>
+                    <li>Dat fiind un strat tematic care are milioane de incidente de cădere de tensiune, &icirc;mbogățiți obiectele spațiale cu informații despre utilizarea tipică, riscurile privind mediul, și condițiile de infrastructură pentru a studia relația dintre acești factori și frecveța căderilor de tensiune. 
                     </li>
                 </ul>
                 

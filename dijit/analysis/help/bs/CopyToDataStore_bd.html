@@ -40,11 +40,12 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="smallsize">
+    <div id="toolDescription" class="regularsize">
         <h2>Kopiraj u spremnik podataka</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopiraj u spremnik podataka"></h2>
         <hr/>
-    <p>Ovaj će alat uzeti ulazni sloj i kopirati ga u spremnik podataka. Podaci će se kopirati u  ArcGIS Data Store i pohranit će se u va&scaron; spremnik relacijskih ili prostorno-vremenskih podataka. </p>
+    <p>Ovaj će alat uzeti ulazni sloj i kopirati ga u spremnik podataka. Možete kopirati rezultate u  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka) i stvorit će se sloj u va&scaron;em portalu ili možete kopirati rezultate u dijeljenje datoteka velikih podataka. 
+    </p>
     <p>Na primjer, geoobjekte koji su pohranjeni u  <code>dijeljenje datoteka velikih podataka</code> možete kopirati u <code>spremnik relacijskih podataka</code> i odrediti da će se kopirati samo geoobjekti unutar trenutačnog obuhvata karte. To će stvoriti hostiranu uslugu geoobjekta sa samo onim geoobjektima koji su bili unutar naznačenog obuhvata karte.
     </p>
     </div>
@@ -55,7 +56,7 @@
         <div>
             <p>Sloj ili tablica koji će se kopirati. 
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
             </p>
         </div>
     </div>
@@ -68,14 +69,25 @@
         </div>
     </div>
     <div id="outputDataStore">
-        <div><h2>Odaberite ArcGIS Data Store za kopiranje</h2></div>
+        <div><h2>Izaberite spremnik podataka u koji ćete kopirati</h2></div>
         <hr/>
         <div>
-            <p>Spremnik podataka u koji će se kopirati sloj. Ovaj će parametar nadjačati odabir u  <b>Okruženju za analizu</b> Opcije su sljedeće:
+            <p>Spremnik podataka u koji će se kopirati sloj. Ovaj će parametar nadjačati odabir u  <b>Okruženjima za analizu</b> Opcije su sljedeće:
                 <ul>
-                    <li> <b>Prostorno-vremenski</b> &ndash; ovo je zadano.
+                    <li> <b>ArcGIS Data Store</b> ArcGIS Data Store <ul>
+                            <li> <b>Prostorno-vremenski</b> &ndash; ovo je zadano.
+                            </li>
+                            <li> <b>Relacijski</b>
+                            </li>
+                        </ul>
+                        
                     </li>
-                    <li> <b>Relacijski</b>.
+                    <li> <b>Izlazni predlo&scaron;ci dijeljenja datoteka velikih podataka</b>
+                        <ul>
+                            <li>Popis dostupnih predložaka dijeljenja datoteka velikih podataka u formatu  <b>bigDataFileShareName-templateName</b>. Prije pokretanja alata moraju se konfigurirati predlo&scaron;ci dijeljenja datoteka velikih podataka.
+                            </li>
+                        </ul>
+                        
                     </li>
                 </ul>
                 
@@ -86,9 +98,9 @@
         <div><h2>Naziv sloja rezultata</h2></div>
         <hr/>
         <div>
-            <p> Naziv sloja koji će se stvoriti u stavci <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
             </p>
-            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            <p>Kada pi&scaron;ete na  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka), upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
             </p>
         </div>
     </div>

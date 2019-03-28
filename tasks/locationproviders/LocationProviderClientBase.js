@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["../../declare","dojo/Deferred","dojo/promise/all","../../graphic","./LocationProviderBase","../../SpatialReference","../../geometry/jsonUtils"],function(e,t,n,o,r,i,a){var c=100;return e("esri.tasks.locationproviders.LocationProviderClientBase",r,{inSpatialReference:null,constructor:function(e){this.inSpatialReference||(this.inSpatialReference=new i(4326))},_locate:function(e,o){function r(){setTimeout(function(){for(var t=+new Date+c,u=[];t>+new Date&&f<e.length;){var p=e[f],h=l.getGeometry(p);p.geometry=h,h&&u.push(p),++f}o.outSpatialReference?i.push(l._project(u,o.outSpatialReference).then(function(){a=a.concat(u),s.progress(u)})):(a=a.concat(u),s.progress(u)),f<e.length?r():n(i).then(function(){s.resolve(a)})},25)}var i=[],a=[],s=new t,l=this,f=0;return r(),s.promise}})});

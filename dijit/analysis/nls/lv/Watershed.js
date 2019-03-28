@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlieties plūsmas virziena slāni",pourPointLayerLabel:"Izvēlieties lietņa punkta rastru vai elementu slāni",pourPointField:"Izvēlieties lietņa punkta lauku",resultLayerName:"Rezultātu slāņa nosaukums",outputLayerName:"${layername} ūdensšķirtne",itemDescription:"Elementu slānis ir ģenerēts, palaižot risinājumu Apkopot centru un izkliedi slānī ${layerName}. ",itemTags:"Analīzes rezultāts, Ūdensšķirtne, ${layername} ${fieldname}",itemSnippet:"Elementu slānis ģenerēts, izmantojot vienumu Ūdensšķirtne."});

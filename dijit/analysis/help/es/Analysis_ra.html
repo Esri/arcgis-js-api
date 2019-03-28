@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>An&aacute;lisis de r&aacute;ster le permite realizar an&aacute;lisis de datasets r&aacute;ster grandes utilizando el  ArcGIS Image Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia del servidor. Los conjuntos de herramientas que actualmente est&aacute;n disponibles mediante la experiencia de usuario web de  Portal for ArcGIS son:  <b>Resumir datos</b>, <b>Analizar patrones</b>, <b>Analizar imagen</b>, <b>Analizar terreno</b> y <b>Administrar datos</b>.
+        <p>An&aacute;lisis de r&aacute;ster le permite realizar an&aacute;lisis de datasets r&aacute;ster grandes utilizando el  ArcGIS Image Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia del servidor. Los conjuntos de herramientas que actualmente est&aacute;n disponibles mediante la experiencia de usuario web de  Portal for ArcGIS son:  <b>Resumir datos</b>, <b>Analizar patrones</b>, <b>Utilizar proximidad</b>, <b>Analizar imagen</b>, <b>Analizar terreno</b>, <b>Administrar datos</b> y <b>Aprendizaje profundo</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Aplicar plantilla de función de ráster</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplicar plantilla de funci&oacute;n r&aacute;ster">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Crea un nuevo dataset de entidades a partir de un dataset r&aacute;ster existente.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Conjunto de herramientas Aprendizaje profundo</h2>
+        <hr/>
+        <p>Estas herramientas 	se utilizan para detectar entidades espec&iacute;ficas en una imagen o clasificar p&iacute;xeles en un dataset r&aacute;ster. El aprendizaje profundo es un m&eacute;todo de aprendizaje de m&aacute;quina de inteligencia artificial que detecta entidades en im&aacute;genes con varias capas en redes neuronales, en las que cada capa puede extraer una o varias entidades &uacute;nicas de la imagen. Estas herramientas utilizan modelos entrenados para detectar entidades espec&iacute;ficas en marcos de aprendizaje profundo de terceros, tales como TensorFlow, CNTK y Keras, y generan entidades o mapas de clases.
+            <ul>
+                <li> <b>Clasificar p&iacute;xeles con aprendizaje profundo</b> genera un r&aacute;ster clasificado utilizando un modelo de aprendizaje profundo entrenado.
+                </li>
+                <li> <b>Detectar objetos con aprendizaje profundo</b> genera una clase de entidad que contiene los objetos que encuentra en un r&aacute;ster de entrada con un modelo de aprendizaje profundo entrenado.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Clasificar píxeles con aprendizaje profundo</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Clasificar p&iacute;xeles con aprendizaje profundo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar un r&aacute;ster clasificado, donde cada p&iacute;xel v&aacute;lido tiene asignada una etiqueta de clase.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detectar objetos con aprendizaje profundo</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detectar objetos con aprendizaje profundo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar una clase de entidad con los objetos que encuentre. Las entidades pueden ser cuadros o pol&iacute;gonos de delimitaci&oacute;n alrededor de los objetos encontrados o puntos en el centro de los objetos.
             </p>
             <br/>
         </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["dojo/promise/all","esri/dijit/geoenrichment/utils/JsonXmlConverter","./DataCollectionsCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],function(a,r,e,t,l,o){var s={};return s.parseMetadataXML=function(s,n,c){c.log&&c.log(s.data);var u=r.parseXml(s.data);if(u&&u.tags)return a([o.parseTradeAreaCalculators(u,c),e.parseDataCollectionsCalculators(u,n,c),t.parseLocatorCalculators(u,n,c)]).then(function(){return l.parseMapCalculators(u,n,c)})},s});
+define(["esri/dijit/geoenrichment/promise/all","esri/dijit/geoenrichment/utils/JsonXmlConverter","./DataCollectionsCalculatorsParser","./LocatorCalculatorsParser","./map/MapCalculatorsParser","./TradeAreaCalculatorsParser"],function(a,r,e,t,l,o){var s={};return s.parseMetadataXML=function(s,n,c){c.log&&c.log(s.data);var i=r.parseXml(s.data);if(i&&i.tags)return a([o.parseTradeAreaCalculators(i,c),e.parseDataCollectionsCalculators(i,n,c),t.parseLocatorCalculators(i,n,c)]).then(function(){return l.parseMapCalculators(i,n,c)})},s});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vaatepiirkonna loomine</h2><p/>
+        <h2>Loo vaateväli</h2><p/>
         <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Vaatepiirkonna loomine"></h2>
         <hr/>
     <p>Vaatev&auml;lja loomise t&ouml;&ouml;riistaga saate luua alad, kus vaatleja saab n&auml;ha maapinnal olevaid objekte. Sisendivaatluse punktid v&otilde;ivad t&auml;histada kas vaatlejaid (nt maapinnal v&otilde;i vaatetornis asuvaid inimesi) v&otilde;i vaadeldavaid objekte (nt tuuleturbiinid, veetornid, s&otilde;idukid v&otilde;i teised inimesed). Tulemuseks saadud alad on piirkonnad, kus vaatlejad n&auml;evad vaadeldavaid objekte ja vastupidi, vaadeldavad objektid n&auml;evad vaatlejaid.
@@ -50,7 +50,7 @@
     </p>
     <p>Pange t&auml;hele, et vaatev&auml;lja arvutamisel ei v&otilde;eta arvesse takistusi (nt puid v&otilde;i hooneid). Arvutamisel l&auml;htutakse sisuliselt lagedast maapinnast, kus pole peale vaatleja ja vaadeldavate objektide mitte midagi muud.
     </p>
-    <p>Tulemkiht sisaldab n&auml;htavaid piirkondi kujutavaid pindobjekte. V&auml;ljal  <i>Sagedus</i>  registreeritakse iga ala n&auml;gevate anal&uuml;&uuml;sipunktide arv. Kui teil on n&auml;iteks viis sisendpunkti, millest iga&uuml;ks t&auml;histab tulet&otilde;rje vaatlustorni, kuvatakse v&auml;ljal <i>Sagedus</i> v&auml;&auml;rtused vahemikus &uuml;ks kuni viis; alasid, mille v&auml;&auml;rtus on &uuml;ks, saab n&auml;ha ainult &uuml;hest tornist, samas kui alasid, mille v&auml;&auml;rtus on viis, n&auml;eb k&otilde;igist tornidest. Tulemkiht sisaldab ka v&auml;lja <i>DEMResolutsioon</i>, millel registreeritakse vaatev&auml;ljade loomiseks kasutatud digitaalse k&otilde;rgusmudeli (DEM) resolutsiooni.
+    <p>Tulemkiht sisaldab n&auml;htavaid piirkondi kujutavaid pindobjekte. V&auml;ljal  <i>Frequency</i> registreeritakse iga ala n&auml;gevate seisupunktide arv. Kui teil on n&auml;iteks viis sisendpunkti, millest iga&uuml;ks t&auml;histab tulet&otilde;rje vaatlustorni, kuvatakse v&auml;ljal <i>Frequency</i> v&auml;&auml;rtused vahemikus &uuml;ks kuni viis: alasid, mille v&auml;&auml;rtus on &uuml;ks, saab n&auml;ha ainult &uuml;hest tornist, samas kui alasid, mille v&auml;&auml;rtus on viis, n&auml;eb k&otilde;igist tornidest. Tulemkiht sisaldab ka v&auml;lja <i>DEMResolution</i>, millel registreeritakse vaatev&auml;ljade loomiseks kasutatud digitaalse k&otilde;rgusmudeli (DEM) resolutsioon.
     </p>
     <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, luuakse anal&uuml;&uuml;s ainult nende vaatluspunktide kohta, mis on kaardil praegu n&auml;htavad.  Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid vaatluspunkte ka siis, kui neid pole praegu kaardil n&auml;ha.
     </p>
@@ -107,9 +107,11 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui samanimeline kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemus salvestatakse.
+            </p>
+            <p> Selle t&ouml;&ouml;riista k&auml;itamine ei kasuta krediiti.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/dom-construct","dojo/dom-style","dojo/has","../../../kernel","./Templated","dojo/text!./templates/OptionalLabel.html"],function(e,t,i,c,o,s,d,h,n){var l=e([h],{checkedAttr:"",label:null,templateString:n,postCreate:function(){this.inherited(arguments),null!=this.checkedAttr&&this.checkedAttr.length>0&&this.setChecked(!0),this.connectAriaClickable(this.switchNode,t.hitch(this,this._onClick))},_onClick:function(){var e=i.contains(this.switchNode,"checked");this.setChecked(!e),this.onClick(!e)},onClick:function(e){},setChecked:function(e){e?i.add(this.switchNode,"checked"):i.remove(this.switchNode,"checked")}});return s("extend-esri")&&t.setObject("dijit.metadata.base.OptionalLabel",l,d),l});

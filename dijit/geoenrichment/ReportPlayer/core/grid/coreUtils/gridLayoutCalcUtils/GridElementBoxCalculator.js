@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define([],function(){function t(t,l,e,c,r){function i(t){return c&&void 0!==c.places?Number(t.toFixed(c.places)):t}if(!l||!e)return null;for(var n=a.calculator[r?"getFieldWidth":"calcFieldWidth"](t,l,e),u=a.calculator[r?"getDataHeight":"calcDataHeight"](t,l,e),o=0,d=0,f=a.calculator.fieldToColumn(t,e),g=0;g<f.index;g++)o+=a.calculator.getFieldWidth(t,l,t.columns[g].field);for(g=0;g<l.index;g++)d+=a.calculator.getDataHeight(t,t.store.data[g],e);return{x:i(o),y:i(d),w:i(n),h:i(u)}}var a={};return a.calculator=null,a.calcCellBox=function(a,l){return t(a.parentGrid,a.gridData,a.column.field,l,!1)},a.calcDataBox=function(a,l,e,c){return t(a,l,e,c,!0)},a});

@@ -1,6 +1,10 @@
 
 
 
+.esriGEImageNavigator {
+    font-size: 13px;
+}
+
 .esriGEImageNavigator .imageNavigator_imageContainerOuter {
     position: relative;
 }

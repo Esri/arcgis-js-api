@@ -70,7 +70,8 @@
         <div><h2>Limitarea intervalului de căutare la (opţional)</h2></div>
         <hr/>
         <div>
-            <p>Distanța maximă la care se consideră că obiectele spațiale fac parte din același fascicul. Dacă este lăsată necompletată, distanţa implicită folosită va fi cea mai mare distanță de bază găsită &icirc;n fișa de date, exclusiv acele distanțe de bază din partea superioară de 1% (excluz&acirc;nd distanțele de bază extreme). 
+            
+            <p>Distanța maximă la care se consideră că obiectele spațiale fac parte din același fascicul. Dacă este lăsată necompletată, instrumentul va rula HDBSCAN, care utilizează diverse distanțe pentru a separa grupările de densități variate din sunetul rar. Dacă este menționată o valoare, instrumentul va rula DBSCAN, care utilizează o anumită distanță pentru a separa grupările de densități variate din sunetul rar.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
+            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă numele stratului tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd meniul derul&acirc;nd  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

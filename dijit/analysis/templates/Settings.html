@@ -205,11 +205,7 @@
           </td>
         </tr>
         <tr data-dojo-attach-point="_selectDataStore">
-          <td  colspan="3">
-            <select class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_datastoreSelect" data-dojo-attach-event="onChange:_handleDSSelectChange">
-              <option value="GDB">${i18n.relationalDS}</option>
-              <option value="BDS" selected="true">${i18n.spatialDS}</option>
-            </select>
+          <td  colspan="2" data-dojo-attach-point="_dataStoreTd">
           </td>
         </tr>
         <tr data-dojo-attach-point="_rasterLblRow">
@@ -246,6 +242,42 @@
         <tr data-dojo-attach-point="_maskSelRow">
           <td colspan="2">
             <select  class="esriLeadingMargin1 longInput esriLongLabel"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="_maskSelect" data-dojo-attach-event="onChange:_handleMaskSelectChange"></select>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_processorLblRow">
+          <td class="esriAlignLeading esriAnalysisTitle" colspan="3">
+            <label class="esriAnalysisStepsLabel">${i18n.processorType}</label>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_processorTypeLblRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1">${i18n.processorType}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="processorType"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_processorTypeSelRow">
+          <td colspan="2">
+            <select class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_processorTypeSelect" data-dojo-attach-event="onChange:_handleProcessorTypeSelectChange"></select>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_parallelProcessingLblRow">
+          <td class="esriAlignLeading esriAnalysisTitle" colspan="3">
+            <label class="esriAnalysisStepsLabel">${i18n.parallelProcessingLabel}</label>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_parallelProcessingFactorLblRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1">${i18n.parallelProcessingFactor}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="parallelProcessingFactor"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_parallelProcessingFactorNumRow">
+          <td colspan="2">
+            <input class="esriLeadingMargin1 mediumInput esriMediumLabel" type="text" data-dojo-attach-point="_parallelProcessingFactorInput" data-dojo-type="dijit/form/TextBox" data-dojo-attach-event="onChange:_handleparallelProcessingFactorInputChange"></input>
           </td>
         </tr>
       </tbody>

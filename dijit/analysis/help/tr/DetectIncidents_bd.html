@@ -44,7 +44,7 @@
         <h2>Olayları Algıla</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Olayları Algıla"></h2>
         <hr/>
-    <p>Bu ara&ccedil;, zamana bağlı olarak nokta,&ccedil;izgi,alan veya tabloların zamanla etkinleştirilmiş bir katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
+    <p> Bu ara&ccedil;, zamana bağlı olarak nokta, &ccedil;izgi, alan veya tabloların zamanla etkinleştirilmiş bir katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir.
     </p>
     <p>&Ouml;nce, ara&ccedil; bir veya daha fazla alan kullanarak hangi detayların bir par&ccedil;aya ait olduğunu belirler. Her detaydaki zamanı kullanarak par&ccedil;alar sıralı olarak d&uuml;zenlenir ve olay koşulu uygulanır. Başlangı&ccedil;taki olay koşulunu karşılayan detaylar bir olay olarak işaretlenir. İsteğe bağlı olarak biten bir olay koşulunu uygulayabilirsiniz; son koşul doğru olduğunda, detay artık bir olay değildir. Sonu&ccedil;lar, olay ismini temsil eden yeni s&uuml;tunlarla birlikte orijinal detaylarla birlikte getirilir ve hangi detayın olay koşullarını karşıladığını g&ouml;sterir. T&uuml;m orijinal detayları veya sadece olay olan detayları geri y&uuml;kleyebilirsiniz.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Olayları bulmak i&ccedil;in kullanılacak noktalar, &ccedil;izgiler, alanlar/b&ouml;lgeler veya tablolar. Girdi katmanı, zamanda bir anı temsil eden detaylarla birlikte zaman etkin olmalı ve par&ccedil;aları tanımlamak i&ccedil;in kullanılabilecek bir veya daha fazla alana sahip olmalıdır.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Analiz Katmanını Se&ccedil;</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Bir olayın bitişini belirtmek için bir ifade koşulu oluşturun</h2></div>
+        <div><h2>Bir olayın sonunu belirtmek için bir ifade koşulu oluşturun (isteğe bağlı)</h2></div>
         <hr/>
         <div>
             <p>İsteğe bağlı olarak bir olayın bitişini belirlemek i&ccedil;in ifade oluşturucuyu kullanarak bir koşul ekleyin. Belirttiğiniz bitiş koşulu doğruysa, detay artık bir olay değildir. Bir bitiş koşulu belirtmezseniz bir olay, başlangı&ccedil; koşulu artık doğru olmadığında sona erer.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Çıktının nasıl temsil edilmesini istediğinizi seçin</h2></div>
+        <div><h2>Bana göster</h2></div>
         <hr/>
         <div>
             <p>T&uuml;m &ccedil;ıktı y&ouml;ntemleri, alanları orijinal detayların sonuna ekleyecektir. Hangi detayların getirileceğini belirlemenin iki yolu vardır:
                 <ul>
-                    <li> <b>Yalnızca olayları getir</b>&mdash;Bu y&ouml;ntem, yalnızca olay olan detayları getirir. Olay olmadığı tespit edilen herhangi bir detay getirilmez.
+                    <li> <b>T&uuml;m detaylar</b>&mdash;Bu varsayılandır. Girdideki t&uuml;m detaylar getirilir.
                     </li>
-                    <li> <b>T&uuml;m detayları getir</b>&mdash;Bu varsayılandır. Girdideki t&uuml;m detaylar getirilir.
+                    <li> <b>Yalnızca olaylar</b>&mdash;Bu y&ouml;ntem, yalnızca olay olan detayları getirir. Olay olmadığı tespit edilen herhangi bir detay getirilmez.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Zaman aralıkları arasında verileri analiz edin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi detaylarınızı analiz i&ccedil;in segmentlere ayıran zaman aralıklarını kullanarak olayları tespit etmek isteyip istemediğinizi belirtin. Zaman aralıklarını kullanıyorsanız, kullanmak istediğiniz zaman aralığını ayarlamanız gerekir ve isteğe bağlı olarak referans zamanını da ayarlayabilirsiniz. Bir referans zamanı ayarlamadığınızda, 1 Ocak 1970 kullanılacaktır. 
+            </p>
+            <p>&Ouml;rneğin, zaman sınırını 1 g&uuml;n olarak ayarlarsanız, 1 Ocak 1990&rsquo;da saat 09:00&rsquo;dan başlayarak her iz, her g&uuml;n saat 09:00&rsquo;da kesilir ve o segment i&ccedil;inde analiz edilir. 
+            </p>
+            <p>Zaman aralıklarını kullanmak, hesaplama s&uuml;resini hızlandırmanın hızlı bir yoludur, &ccedil;&uuml;nk&uuml; analiz i&ccedil;in daha k&uuml;&ccedil;&uuml;k izler oluşturur. Tekrar eden bir zaman aralığına b&ouml;l&uuml;nmesi analiziniz i&ccedil;in anlamlıysa, b&uuml;y&uuml;k veri işleme i&ccedil;in &ouml;nerilir.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p>  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            <p> Oluşturulacak katmanın adı. Bir ArcGIS Data Store&lsquo;a yazdığınızda, sonu&ccedil;larınız  <b>İ&ccedil;eriğime</b> kaydedilir ve haritaya eklenir. Bir b&uuml;y&uuml;k veri dosya paylaşımına yazdığınızda,  sonu&ccedil;larınız b&uuml;y&uuml;k veri dosya paylaşımı i&ccedil;ine kaydedilir ve   manifestosuna eklenir.  haritaya eklenmez. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
             </p>
-            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            <p> ArcGIS Data Store&lsquo;a yazarken (ilişkisel ya da mekan-zamansal b&uuml;y&uuml;k veri deposu)  <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>
         </div>
     </div>

@@ -79,9 +79,9 @@
                 <ul>
                     <li>die aktuell sichtbare Ausdehnung der Karte ( <b>Gleich wie Anzeige</b>)
                     </li>
-                    <li>einer der Layer in Ihrem Inhaltsverzeichnis
+                    <li>einer der Layer in Ihrem Inhaltsverzeichnis Wenn es sich bei dem ausgew&auml;hlten Layer um Punkt- oder Linien-Features handelt, dient die Ausdehnung des Layers als Untersuchungsgebiet.
                     </li>
-                    <li>Festlegen einer Fl&auml;che zum Definieren des Interessenbereichs
+                    <li>Eine Fl&auml;che zum Definieren des Interessenbereichs festlegen
                     </li>
                 </ul>
                  Alle Features, die sich vollst&auml;ndig innerhalb der Kartenausdehnung befinden, werden extrahiert. F&uuml;r Features, die die Grenze der Kartenausdehnung kreuzen oder &uuml;berschneiden, sich jedoch nicht vollst&auml;ndig innerhalb der Ausdehnung befinden, sind zwei Optionen verf&uuml;gbar:
@@ -102,6 +102,19 @@
             <p>Das Format der Daten, die extrahiert werden. Beim Exportieren von Linien- oder Fl&auml;chen-Features in CSV-Dateien werden nur nicht r&auml;umliche Attribute extrahiert. Beim Exportieren von Punkt-Features werden sowohl r&auml;umliche als auch nicht r&auml;umliche Attribute extrahiert.  
             </p>
             <p>F&uuml;r extrahierte Daten wird die Projektion &quot;1984 Web Mercator&quot; verwendet. F&uuml;r CSV-Dateien werden an die Daten mit Koordinaten des Typs &quot;1984 Web Mercator&quot; die Felder  <i>Lat</i> und <i>Long</i> angeh&auml;ngt.
+            </p> 
+            <p>Die folgenden Ausgabeformate werden unterst&uuml;tzt:
+                <ul>
+                    <li>Comma Separated Values (CSV):  <code>.csv</code> oder <code>.zip</code>
+                    </li>
+                    <li>File-Geodatabase:  <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML):  <code>.kmz</code> oder <code>.zip</code>
+                    </li>
+                    <li>Shapefile:  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

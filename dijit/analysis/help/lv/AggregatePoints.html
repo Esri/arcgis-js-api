@@ -46,16 +46,14 @@
         <hr/>
     <p>&Scaron;is rīks darbojas ar punktu elementu slāni un teritorijas elementu slāni. Vispirms tiek noteikts, kuri punkti ietilpst katrā laukumā. Pēc tam, kad ir noteikta punktu skaita apgabalā telpiskā attiecība, tiek aprēķināta un pie&scaron;ķirta statistika par visiem punktiem laukumā. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet jūs varat iegūt arī citu statistiku. 
     </p>
-    <p>Pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi un apgabala laukumu elementi un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus apgabalā. Pieņemot, ka kafijas veikaliem ir atribūts  <i>TOTAL_SALES</i>, varat iegūt visu summu
-vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo vērtību <i>TOTAL_SALES</i>
- katra apgabala ietvaros, vai standarta novirzi no visām pārdo&scaron;anām katra apgabala ietvaros.
+    <p>Pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi un apgabala laukumu elementi un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus apgabalā. Pieņemot, ka kafijas veikaliem ir  <i>TOTAL_SALES</i> atribūts, jūs varat iegūt summu no visiem <i>TOTAL_SALES</i> katrā apgabalā, vai minimumu, vai maksimumu <i>TOTAL_SALES</i> katrā apgabalā, vai standarta novirzi no visām pārdo&scaron;anām katra apgabala ietvaros.
     </p>
     <p>Ja ir atzīmēts  <b>Izmantot eso&scaron;o kartes pārklājumu</b>, elementi tiks analizēti tikai ievades punkta slānī un apgabala slānī, kas redzams pa&scaron;reizējā kartes pārklājuma ietvaros.  Ja nav atzīmēts, tiks analizēti visi elementi abos slāņos, arī ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="pointLayer">
-        <div><h2>Izvēlieties slāni, kas satur apgabalos apkopojamos punktus</h2></div>
+        <div><h2>Izvēlieties slāni, kas satur laukumos apkopojamos punktus</h2></div>
         <hr/>
         <div>
             <p>Punktu slānis,kas tiks apkopots apgabalos.
@@ -65,7 +63,7 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         </div>
     </div>
     <div id="polygonLayer">
-        <div><h2>Izvēlieties slāni, kas satur apkopošanas apgabalus</h2></div>
+        <div><h2>Izvēlieties slāni, kas satur apkopojamos laukumus</h2></div>
         <hr/>
         <div>
             <p>Apgabala slānis, kuram tiks apkopoti punkti. Visi punkti, kas ietilpst &scaron;ī slāņa apgabala robežās, tiks saskaitīti un pēc izvēles apkopoti, izmantojot jūsu izvēlēto statistiku.  
@@ -77,7 +75,7 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         </div>
     </div>
     <div id="KeepBoundaryNoPoints">
-        <div><h2>Paturēt laukumus bez punktiem</h2></div>
+        <div><h2>Paturēt teritorijas bez punktiem</h2></div>
         <hr/>
         <div>
             <p>Nosaka, vai laukumi, kuros nav attēloti punkti, tiek rādīti rezultātu slānī. Ja opcija nav atzīmēta, laukumi bez punktiem rezultātos netiks rādīti. Ja atzīmēsiet izvēles rūtiņu, rezultātā tiks ietvertas teritorijas bez punktiem.  
@@ -91,13 +89,15 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
             <p>Jūs varat aprēķināt statistiku par ievades punktu slāņa atribūtiem, piemēram, summa, vidējais, minimums, maksimums un standarta novirze. Rezultātu slānī ir ietverts jauns atribūts par katru aprēķināto statistiku. Jebkurus statistikas datus var pievienot, izvēloties atribūtu un statistikas datus (parādīsies jauns nolaižamais lodziņ&scaron;).
  
             </p>
+            <p>Ja apkopojamam slānim nav skaitļu lauku, papildu statistika nebūs pieejama.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Izvēlieties lauku, pēc kura grupēt</h2></div>
         <hr/>
         <div>
-            <p> Varat izveidot statistiskās grupas, izmantojot kādu atribūtu ievades punkta slānī.    Piemēram, ja jūs apkopojat noziegumus apkārtnes robežās, jums var būt atribūts <i>Crime_type</i> ar pieciem dažādiem noziegumu tipiem.  Katrs unikālais noziegumu tips veido grupu, un jūsu izvēlētā statistika tiks aprēķināta par katru unikālo vērtību no <i>Crime_type</i>.  Katras grupas statistika, kā arī punktu skaits tiks parādīti rezultātu slāņa uznirsto&scaron;ajā logā. Kad jūs izvēlaties grupēt atribūtus, tiks izveidoti divi rezultāti: rezultātu slānis un rezultātu tabula, kurā ietilpst katras unikālās grupas statistika.
+            <p> Varat izveidot statistiskās grupas, izmantojot kādu atribūtu ievades punkta slānī.    Piemēram, ja jūs apkopojat noziegumus apkārtnes robežās, jums var būt atribūts <i>Crime_type</i> ar pieciem dažādiem noziegumu tipiem. Katrs unikāls noziegumu tips veido grupu, un jūsu izvēlētā statistika tiks aprēķināta katrai unikālajai <i>Crime_type</i> vērtībai. Katras grupas statistika, kā arī punktu skaits tiks parādīti rezultātu slāņa uznirsto&scaron;ajā logā. Kad jūs izvēlaties grupēt atribūtus, tiks izveidoti divi rezultāti: rezultātu slānis un rezultātu tabula, kurā ietilpst katras unikālās grupas statistika.
             </p>
         </div>
     </div>
@@ -123,9 +123,9 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Tas ir slāņa nosaukums, kas tiks izveidots lapā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            <p>Tas ir slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slāņa nosaukums jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamajā sarakstlodziņā, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamā saraksta izvēlnē, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
             </p>
         </div>
     </div>

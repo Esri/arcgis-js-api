@@ -21,7 +21,7 @@
     }
 
     .esriGEReportPlayer_infographicsPage .infographicPage_infographicRootSectionNode {
-        
+        overflow: hidden;
         position: relative;
         transform-origin: 50% 50%;
         display: inline-block;

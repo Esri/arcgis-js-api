@@ -64,7 +64,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Velg laget som de nærmeste lokasjonene skal finnes fra</h2></div>
+        <div><h2>Angi startlokasjonene</h2></div>
         <hr/>
         <div>
             <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra geoobjektene i laget du angir her (startlokasjonene), til lokasjonene du angir i den neste parameteren. Verkt&oslash;yet st&oslash;tter opptil  5 000 geoobjekter i hvert lag. 
@@ -118,14 +118,14 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Legg til hindringslag</h2></div>
+        <div><h2>Velg hindringslag</h2></div>
         <hr/>
         <div>
-            <p> Angi ett eller flere geoobjekter som fungerer som midlertidige begrensninger (med andre ord hindringer) for trafikken i de underliggende gatene. Du kan angi hindringer ved hjelp av punkt-, linje- eller polygongeoobjekter.
+            <p> Ett eller flere geoobjekter som fungerer som midlertidige begrensninger (hindringer) under transport p&aring; de underliggende gatene. Du kan angi hindringer ved hjelp av punkt-, linje- eller polygongeoobjekter.
             </p>
             <p>En punkthindring kan v&aelig;re et veltet tre, en ulykke, en kraftledning som er falt ned, eller andre ting som blokkerer trafikken helt p&aring; et bestemt sted i gaten. Gaten er ikke stengt for trafikk, men det er ikke mulig &aring; passere hindringen. Du kan angi opptil 250 geoobjekter som fungerer som punkthindringer.
             </p>
-            <p>En linjehindring hindrer trafikk der hindringen krysser gatene. En linjehindring kan for eksempel v&aelig;re en parade eller protestmarsj som blokkerer trafikken over flere gatesegmenter. Hvis antallet gategeoobjekter som krysses av alle linjehindringene, overstiger 500, returnerer verkt&oslash;yet en feil.
+            <p>En linjehindring hindrer trafikk der hindringen krysser gatene. En linjehindring kan for eksempel v&aelig;re en parade eller protestmarsj som blokkerer trafikken over flere gatesegmenter. Hvis antallet gategeoobjekter som krysses av alle linjehindringene overstiger 500, returnerer verkt&oslash;yet en feil.
             </p>
             <p>En polygonhindring hindrer trafikk der polygonet krysser gatene. Denne typen hindring kan for eksempel brukes til &aring; modellere oversv&oslash;mte omr&aring;der som dekker deler av gatenettet og gj&oslash;r det umulig &aring; ferdes p&aring; gatene. Hvis antallet gategeoobjekter som krysses av alle polygonhindringene overstiger 2000, returnerer verkt&oslash;yet en feil.
             </p>
@@ -151,11 +151,11 @@
         <div>
             <p>Dette er navnet p&aring; geoobjektlaget som opprettes i   <b>Mitt innhold</b> og legges til kartet. Hvis geoobjektlaget allerede finnes, blir du bedt om &aring; oppgi et annet navn. Geoobjektlaget inneholder to lag. Det ene laget representerer de n&aelig;rmeste lokasjonene, og det andre laget representerer linjene som forbinder inndatalokasjonene med de n&aelig;rmeste lokasjonene.
             </p>
-            <p>Hvis du velger  <b>Inkluder rutelag</b>, lagres hver rute fra resultatet ogs&aring; som et rutelag. Et rutelag inneholder all informasjon for en bestemt rute, f.eks. stoppestedene som er tildelt langs ruten og reiseretningene. Det er nyttig &aring; opprette rutelag hvis du &oslash;nsker &aring; dele de enkelte rutene med andre medlemmer i organisasjonen eller hvis du &oslash;nsker &aring; modifisere rutene ytterligere med <b>Beskrivelser</b>-knappen i kartvisningen. Rutelagene bruker navnet som er oppgitt for geoobjektlaget som et prefiks, og rutenavnet som genereres som en del av analysen, blir lagt for &aring; skape et unikt navn for hvert rutelag.
+            <p>Hvis du velger  <b>Inkluder rutelag</b>, lagres hver rute fra resultatet ogs&aring; som et rutelag. Et rutelag inneholder all informasjon for en bestemt rute, for eksempel tildelte stoppesteder langs ruten og reiseretningene. Det er praktisk &aring; opprette rutelag hvis du &oslash;nsker &aring; dele de enkelte rutene med andre medlemmer i organisasjonen eller hvis du vil modifisere rutene ytterligere ved hjelp av knappen for beskrivelser i kartvisningen. <b></b> Rutelagene bruker navnet som er oppgitt for geoobjektlaget som et prefiks, og rutenavnet som genereres som en del av analysen, blir lagt til for &aring; skape et unikt navn for hvert rutelag.
             </p>
             <p>Maksimalt antall rutelag som kan opprettes, er  1 000. Hvis resultatet inneholder mer enn  1 000 ruter og  <b>Inkluder rutelag</b> er valgt, oppretter verkt&oslash;yet bare utdatageoobjekttjenesten.
             </p>
-            <p>Bruk rullegardinlisten  <b>Lagre resultatet i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som geoobjektlaget og rutelagene, hvis de er opprettet, skal lagres i.
+            <p>Bruk rullegardinmenyen  <b>Lagre resultatet i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som geoobjektlaget og rutelagene &ndash; hvis de er opprettet &ndash; vil bli lagret.
             </p>
         </div>
     </div>

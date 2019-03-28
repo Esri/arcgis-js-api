@@ -44,7 +44,7 @@
         <h2>Aptikti incidentus</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Aptikti incidentus"></h2>
         <hr/>
-    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kų, linijų, plotų arba lentelių sluoksniu, kuris nurodo konkretų laiko momentą. Naudodamas i&scaron; eilės i&scaron;dėstytus elementus (trajektorijas), &scaron;is įrankis nustato, kurie elementai yra dominantys incidentai. Incidentai nustatomi pagal jūsų nurodytas sąlygas. 
+    <p> &Scaron;is įrankis veikia kartu su ta&scaron;kų, linijų, plotų arba lentelių sluoksniu, kuris nurodo konkretų laiko momentą. Naudodamas i&scaron; eilės i&scaron;dėstytus elementus (trajektorijas), &scaron;is įrankis nustato, kurie elementai yra dominantys incidentai. Incidentai nustatomi pagal jūsų nurodytas sąlygas.
     </p>
     <p>Pirmiausia, naudodamas vieną ar kelis laukus, įrankis nustato, kurie elementai priklauso trajektorijai. Naudojant laiką kiekviename elemente, trajektorijos i&scaron;dėstomos eilės tvarka ir pritaikoma incidento sąlyga. Incidento pradžios sąlygą atitinkantys elementai pažymimi kaip incidentas. Taip pat galite pritaikyti incidento pabaigos sąlygą: kai pabaigos sąlygos reik&scaron;mė yra true (teisinga), elementas nebėra incidentas.  Rezultatai bus pateikti su pradiniais elementais (naujuose stulpeliuose bus pateiktas incidento pavadinimas) ir nurodys, kuris elementas atitinka incidento sąlygą. Galite pateikti visus pradinius elementus arba tik tuos elementus, kurie yra incidentai.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Ta&scaron;kai, linijos, plotai arba lentelės, kurios bus naudojamos incidentams rasti. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką, bei vienas arba keli laukai, kuriuos būtų galima naudoti trajektorijoms nustatyti.
             </p>
-            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Pasirinkti analizės sluoksnį</b>, kad galėtumėte turinyje ie&scaron;koti didelių duomenų rinkinio arba elemento sluoksnio.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Sukurkite išraiškos sąlygą, nurodančią incidento pabaigą</h2></div>
+        <div><h2>Kurti išraiškos sąlygą, reiškiančią incidento pabaigą (neprivaloma)</h2></div>
         <hr/>
         <div>
             <p>Norėdami nustatyti incidento pabaigą, galite įtraukti sąlygą naudodami i&scaron;rai&scaron;kų kūrimo priemonę. Jei jūsų nurodytos pabaigos sąlygos reik&scaron;mė true (teisinga), elementas nebėra incidentas. Jei nenurodote pabaigos sąlygos, incidentas pasibaigs, kai pradžios sąlygos reik&scaron;mė nebebus true (teisinga).    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Pasirinkite, kaip turi būti pateikiama išvestis</h2></div>
+        <div><h2>Rodyti</h2></div>
         <hr/>
         <div>
             <p>Visi i&scaron;vesties metodai pridės laukus prie pradinių elementų. Yra du būdai nustatyti, kurie elementai pateikiami:
                 <ul>
-                    <li> <b>Pateikti tik incidentus</b> &ndash; &scaron;is metodas pateiks tik tuos elementus, kurie yra incidentai. Jei nebus nustatyta, kad elementas yra incidentas, jis nebus pateiktas.
+                    <li> <b>Visi elementai</b> &ndash; &scaron;is metodas yra numatytasis. Bus pateikiami visi įvesties elementai.
                     </li>
-                    <li> <b>Pateikti visus elementus</b> &ndash; &scaron;is metodas yra numatytasis. Bus pateikiami visi įvesties elementai.
+                    <li> <b>Tik incidentai</b> &ndash; &scaron;is metodas pateiks tik tuos elementus, kurie yra incidentai. Jei nebus nustatyta, kad elementas yra incidentas, jis nebus pateiktas.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizuoti duomenis su laiko intervalais (nebūtina)</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite, ar norite aptikti incidentus naudodami laiko intervalus, kurie segmentuoja jūsų įvesties elementus analizei. Jei naudosite laiko intervalus, turite nustatyti norimą naudoti laiko intervalą ir (nebūtina) nustatyti atskaitos laiką. Jei nenustatysite atskaitos laiko, bus naudojama 1970 m. sausio 1 d. 
+            </p>
+            <p>Pavyzdžiui, jei nustatysite laiko ribą kaip 1 dieną, o pradžios ta&scaron;ką 1990 m. sausio 1 d. 9:00 val., kiekviena trajektorija bus sutrumpinta kasdien 9:00 val. ir analizuojama tame segmente. 
+            </p>
+            <p>Laiko intervalų naudojimas yra paprastas būdas paspartinti skaičiavimo laiką, nes taip greitai sukuriamos mažesnės trajektorijos analizei. Jei padalinimas į pasikartojančius laiko intervalus logi&scaron;kai tinkamas jūsų analizei, rekomenduojama tai padaryti apdorojant didelius duomenis.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p> Sluoksnio, kuris bus sukurtas puslapyje <b>Turinys</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            <p> Pavadinimas sluoksnio, kuris bus sukurtas. Jei įra&scaron;ote į ArcGIS Data Store, jūsų rezultatai bus įra&scaron;yti į  <b>Turinį</b> ir įtraukti į žemėlapį. Jei įra&scaron;ote į didelių duomenų failo bendrinimą, jūsų rezultatai bus saugomi didelių duomenų failo bendrinime ir pridedami į jo deklaraciją. Jie nebus įtraukti į žemėlapį. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
             </p>
-            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            <p>Kai ra&scaron;ote į   ArcGIS Data Store  (releacinių arba erdvėlaikinių didelių duomenų saugyklą) naudodami i&scaron;&scaron;okantįjį meniu  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
             </p>
         </div>
     </div>

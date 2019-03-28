@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolha uma camada para ser descrita",summaryTypes:"Tipos de resumos",centralFeature:"Feição central",meanCenter:"Centro médio",medianCenter:"Centro da mediana",ellipse:"Elipse",weightBy:"Peso por (opcional)",groupBy:"Agrupar por (opcional)",resultLayerName:"Nome da camada resultante",outputLayerName:"Descrever distribuição de ${layerName}",none:"Nenhum",itemDescription:"Camada de feição gerada a partir da execução de Resumir centro e dispersão em ${layerName}. ",itemTags:"Resultado de Análise, Resumir centro e dispersão, ${layerName}",itemSnippet:"Camada de feição gerada a partir de Resumir centro e dispersão"});

@@ -1,35 +1,34 @@
 
 
 
-.esriGEReportPlayer_section .templateMapImage {
-    background-position: center;
-    background-size: cover;
+.esriGEReportPlayer .templateLiveMap .esriMapContainer {
+    z-index: 0; 
 }
 
-    .esriGEReportPlayer_section .templateMapImage.templateImageWithThumbnail {
-        background-size: auto;
-    }
 
-.esriGEReportPlayer_section .templateLiveMap .esriAttributionItem,
-.esriGEReportPlayer_section .templateLiveMap .esriAttributionLastItem {
+
+.esriGEReportPlayer .templateLiveMap .esriAttributionItem,
+.esriGEReportPlayer .templateLiveMap .esriAttributionLastItem {
     display: none !important;
 }
 
 
 
 
-.esriGEReportPlayer_section .templateLiveMap .esriSimpleSliderTR {
-    top: 40px;
+.esriGEReportPlayer .esriSimpleSliderTR {
+    top: 45px;
     border-radius: 0px;
-    right: 0px;
+    right: 5px;
+    z-index: 50 !important; 
 }
 
 
 
 .esriGEReportPlayer .HomeButton {
     position: absolute;
-    top: 113px;
-    right: 0px;
+    top: 118px;
+    right: 5px;
+    z-index: 50 !important; 
 }
 
     .esriGEReportPlayer .HomeButton .home {
@@ -60,7 +59,7 @@
 
 
 
-.map .mapNavigationLockButton {
+.esriGEReportPlayer .mapNavigationLockButton {
     position: absolute;
     background-image: url('./images/lock/lockWhite.svg');
     display: block;
@@ -73,10 +72,10 @@
     overflow: hidden;
     cursor: pointer;
     z-index: 50 !important; 
-    right: 0px;
-    top: 165px;
+    right: 5px;
+    top: 170px;
 }
 
-.map .mapNavigationLockButton.unlocked {
-    background-image: url('./images/lock/unlockWhite.svg');
-}
+    .esriGEReportPlayer .mapNavigationLockButton.unlocked {
+        background-image: url('./images/lock/unlockWhite.svg');
+    }

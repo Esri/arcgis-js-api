@@ -53,7 +53,7 @@
         </ul>
         
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang,yang akan dianalisis serta diringkas hanya fitur-fitur pada layer input dan layer yang terlihat di jangkauan peta saat ini. Jika tidak dicentang, semua fitur pada layer input dan layer yang akan diringkas akan dianalisis meskipun berada di luar jangkauan peta saat ini.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, yang akan dianalisis serta diringkas hanya fitur-fitur pada layer input dan layer yang terlihat di jangkauan peta saat ini. Jika tidak dicentang, semua fitur pada layer input dan layer yang akan diringkas akan dianalisis meskipun berada di luar jangkauan peta saat ini.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Pilih layer yang akan diringkas</h2></div>
+        <div><h2>Pilih layer untuk diringkas</h2></div>
         <hr/>
         <div>
             <p>Fitur-fitur pada layer ini, yang masuk dalam jarak tertentu di fitur-fitur pada layer yang dimaksud, akan diringkas. 
@@ -112,13 +112,15 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
         <div><h2>Tambahkan statistik dari layer yang akan diringkas</h2></div>
         <hr/>
         <div>
-            <p>Anda dapat memilih untuk menghitung statistik untuk atribut numerik dari titik-titik di sekitar. 
+            <p>Anda dapat memilih untuk menghitung statistik untuk atribut numerik dari garis-garis di sekitar. 
             </p>
             <p>Jika kotak centang  <b>Total panjang</b> dicentang, maka akan menghitung total panjang garis sekitar. Selain itu, Anda dapat menghitung statistik untuk kolom numerik dari garis-garis di sekitar.
             </p>
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,6 +162,8 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -181,13 +187,15 @@
             
             <p>Bergantung pada jenis fitur yang Anda ringkas, Anda dapat menghitung total jumlah titik di sekitarnya, total panjang garis di sekitar, atau total area sekitar.
             </p>
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Pilih kolom untuk dikelompokkan</h2></div>
         <hr/>
         <div>
-            <p> Ini adalah atribut dari fitur di sekitar yang dapat Anda gunakan untuk menghitung statistik secara terpisah untuk setiap nilai atribut yang unik. Sebagai contoh, misalkan layer input pertama Anda (layer dari mana jarak diukur) memuat bagian wilayah lahan kosong yang akan dijual dan fitur-fitur sekitar Anda adalah jejak bangunan. Salah satu atribut dari jejak bangunan tersebut adalah <i>Gunakan jenis</i>, yang mengandung nilai-nilai seperti RITEL, TEMPAT TINGGAL, PABRIK, PUBLIK, dan sebagainya. Untuk mencirikan berbagai jenis penggunaan bangunan di sekitar persil kosong, Anda dapat menghitung total area dari setiap jenis yang unik dari penggunaan bangunan pada jarak dua kilometer dari setiap persil yang kosong dengan menggunakan <i>Gunakan Jenis</i> sebagai atribut pengelompokan. Statistik untuk setiap kelompok serta jumlah fitur sekitar akan ditampilkan di pop-up layer hasil.
+            <p> Ini adalah atribut dari fitur di sekitar yang dapat Anda gunakan untuk menghitung statistik secara terpisah untuk setiap nilai atribut yang unik. Sebagai contoh, misalkan layer input pertama Anda (layer dari mana jarak diukur) memuat bagian wilayah lahan kosong yang akan dijual dan fitur-fitur sekitar Anda adalah jejak bangunan. Salah satu atribut dari jejak bangunan tersebut adalah <i>UseType</i>, yang mengandung nilai-nilai seperti RITEL, TEMPAT TINGGAL, PABRIK, PUBLIK, dan sebagainya.  Untuk mencirikan berbagai jenis penggunaan bangunan di sekitar persil kosong, Anda dapat menghitung total area dari setiap jenis yang unik dari penggunaan bangunan pada jarak dua kilometer dari setiap persil yang kosong dengan menggunakan <i>UseType</i> sebagai atribut pengelompokan.   Statistik untuk setiap kelompok serta jumlah fitur sekitar akan ditampilkan di pop-up layer hasil.
             </p>    
         </div>
     </div>
@@ -212,7 +220,7 @@
         <div><h2>Tambahkan persentase</h2></div>
         <hr/>
         <div>
-            <p>Kotak centang ini diaktifkan bila Anda memilih kolom untuk pengelompokan.    Pilih  <b>Tambahkan persentase</b> jika Anda ingin menemukan persentase dari setiap nilai atribut di dalam setiap kelompok.  Sebuah kolom baru ditambahkan ke tabel hasil yang memuat persentase dari masing-masing nilai atribut di dalam setiap kelompok.   Jika <b>Tambahkan minoritas, mayoritas</b> juga dicentang, dua kolom lagi akan ditambahkan ke layer hasil yang memuat persentase dari nilai atribut minoritas dan mayoritas di dalam setiap kelompok.
+            <p>Kotak centang ini aktif bila Anda memilih kolom untuk pengelompokan. Pilih  <b>Tambahkan persentase</b> jika Anda ingin melihat nilai persentase dari setiap nilai atribut di dalam setiap kelompok. Kolom baru telah ditambahkan ke dalam tabel hasil yang memuat nilai persentase dari masing-masing nilai atribut di dalam setiap kelompok. Jika <b>Tambahkan minoritas, mayoritas</b> juga dicentang, dua kolom lagi akan ditambahkan ke layer hasil yang memuat persentase dari nilai atribut minoritas dan mayoritas di dalam setiap kelompok.
             </p>
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

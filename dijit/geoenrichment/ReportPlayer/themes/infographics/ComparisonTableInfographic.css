@@ -48,7 +48,7 @@
     height: 18px;
     background-size: 12px;
     background-position: center;
-    background-image: url("../images/closeWindowWhite.svg");
+    background-image: url("../images/close/closeWindowWhite.svg");
     cursor: pointer;
     opacity: 0;
     border-radius: 50%;

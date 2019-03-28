@@ -79,7 +79,7 @@
                 <ul>
                     <li>Trenutačni vidljivi obuhvat va&scaron;e karte ( <b>Isto kao zaslon</b>).
                     </li>
-                    <li>Jedan od slojeva iz va&scaron;e tablice sadržaja.
+                    <li>Jedan od slojeva iz va&scaron;e tablice sadržaja. Ako odabrani sloj sadrži točkaste ili linijske geoobjekte, obuhvat sloja upotrijebit će se kao radno područje.
                     </li>
                     <li>Nacrtajte poligon za određivanje radnog područja.
                     </li>
@@ -102,6 +102,19 @@
             <p>Format podataka koji će se izdvojiti. Kada izdvajate linijske ili poligonalne geoobjekte u CSV datoteke, izdvajaju se samo neprostorni atributi. Prilikom izdvajanja točkastih geoobjekata, izdvajaju se prostorni i neprostorni atributi.  
             </p>
             <p>Izdvojeni podaci koristit će se projekcijom Web Mercator 1984. Za CSV datoteke polja  <i>Lat</i> i <i>Long</i> priložit će se podacima s koordinatama u Web Mercatoru 1984.
+            </p> 
+            <p>Podržani su sljedeći izlazni formati:
+                <ul>
+                    <li>Vrijednost odvojena zarezom (CSV) &ndash;  <code>.csv</code> ili <code>.zip</code>
+                    </li>
+                    <li>Geobaza podataka &ndash;  <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML) &ndash;  <code>.kmz</code> ili <code>.zip</code>
+                    </li>
+                    <li>Shapefile &ndash;  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

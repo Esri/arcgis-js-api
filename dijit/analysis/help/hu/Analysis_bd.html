@@ -41,46 +41,59 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>GeoAnalytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
-            <ul>
-                <li> <b>Aggregate Points</b>
+        <p> A geoanalitika elosztja az elemz&eacute;si feladatot itt: ArcGIS GeoAnalytics Server. &Iacute;gy t&ouml;bb g&eacute;p erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. Jelenleg az al&aacute;bbi eszk&ouml;z&ouml;k &eacute;rhetők el: <ul>
+                <li> Pontok &ouml;sszevon&aacute;sa
                 </li>
-                <li> <b>Build Multi-Variable Grid</b>
+                <li> T&ouml;bbv&aacute;ltoz&oacute;s t&aacute;bl&aacute;zat fel&eacute;p&iacute;t&eacute;se
                 </li>
-                <li> <b>Join Features</b>
+                <li> Adathalmaz le&iacute;r&aacute;sa
                 </li>
-                <li> <b>Reconstruct Tracks</b>
+                <li> Vektoros elemek &ouml;sszekapcsol&aacute;sa
                 </li>
-                <li> <b>Summarize Attributes</b>
+                <li> Nyomvonal-rekonstrukci&oacute;
                 </li>
-                <li> <b>Summarize Within</b>
+                <li> Attrib&uacute;tumok &ouml;sszefoglal&aacute;sa
                 </li>
-                <li> <b>Geocode Locations from Table</b>
+                <li> Ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;s
                 </li>
-                <li> <b>Detect Incidents</b>
+                <li> Geok&oacute;dol&aacute;si helysz&iacute;nek t&aacute;bl&aacute;zatb&oacute;l
                 </li>
-                <li> <b>Find Similar Locations</b>
+                <li> Bőv&iacute;t&eacute;s t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l
                 </li>
-                <li> <b>Calculate Density</b>
+                <li> Incidensek &eacute;szlel&eacute;se
                 </li>
-                <li> <b>Find Point Clusters</b>
+                <li> Hasonl&oacute; helyek keres&eacute;se
                 </li>
-                <li> <b>Find Hot Spots</b>
+                <li> Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa
                 </li>
-                <li> <b>Create Buffers</b>
+                <li> Pontklaszterek keres&eacute;se
                 </li>
-                <li> <b>Append Data</b>
+                <li> Hot spotok keres&eacute;se
                 </li>
-                <li> <b>Calculate Field</b>
+                <li> Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute;
                 </li>
-                <li> <b>Copy to Data Store</b>
+                <li> Generaliz&aacute;lt line&aacute;ris regresszi&oacute;
                 </li>
-                <li> <b>Overlay Layers</b>
+                <li> Buffer l&eacute;trehoz&aacute;sa
+                </li>
+                <li> Adat hozz&aacute;fűz&eacute;se
+                </li>
+                <li> Mező kisz&aacute;m&iacute;t&aacute;sa
+                </li>
+                <li> M&aacute;sol&aacute;s az adatt&aacute;rba
+                </li>
+                <li> Fedv&eacute;nyműveletek
+                </li>
+                <li> Hat&aacute;rok &ouml;sszeolvaszt&aacute;sa
+                </li>
+                <li> R&eacute;tegek &ouml;sszeilleszt&eacute;se
+                </li>
+                <li> Kiv&aacute;g&aacute;si r&eacute;teg 
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
+        <p>A geoanalitika elsősorban nagy mennyis&eacute;gű adatot elemez, kiemelten figyelve a t&eacute;rbeli &eacute;s időbeli mint&aacute;kat. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -91,6 +104,8 @@
                 <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
                 <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
+                </li>
+                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
                 </li>
                 <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
@@ -115,13 +130,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using a layer of point features and either a layer of area features or bins defined by a specified distance, this tool determines which points fall within each area or bin and calculates statistics about all the points within each area or bin. You may optionally apply time slicing with this tool. 
+            <p>Ez az eszk&ouml;z egy pont-t&iacute;pus&uacute; vektoros elemeket tartalmaz&oacute; r&eacute;teg &eacute;s vagy egy ter&uuml;let vektoros elemeket tartalmaz&oacute; r&eacute;teg vagy meghat&aacute;rozott t&aacute;vols&aacute;ggal defini&aacute;lt gyűjtők haszn&aacute;lat&aacute;val meghat&aacute;rozza, hogy mely pontok esnek az egyes ter&uuml;leteken vagy gyűjtők&ouml;n bel&uuml;l, &eacute;s kisz&aacute;m&iacute;tja az &ouml;sszes pont statisztikai adatait az egyes ter&uuml;leteken vagy gyűjtők&ouml;n bel&uuml;l. Ezzel az eszk&ouml;zzel időszeleteket is haszn&aacute;lhat. 
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>A bűnt&eacute;nyek pontszerűen megadott hely&eacute;t alapul v&eacute;ve kisz&aacute;m&iacute;thatja a megy&eacute;nk&eacute;nt vagy m&aacute;s k&ouml;zigazgat&aacute;si k&ouml;rzetenk&eacute;nt előfordult bűnt&eacute;nyek sz&aacute;m&aacute;t.
                     </li>
-                    <li>Find the highest and lowest monthly revenues for franchise locations using 100-kilometer bins.
+                    <li>Megkeresheti a franchise &uuml;zletek &aacute;ltal el&eacute;rt legnagyobb &eacute;s legkisebb havi bev&eacute;telt 100 kilom&eacute;teres gyűjtőket haszn&aacute;lva.
                     </li>
                 </ul>
                 
@@ -139,15 +154,41 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Build Multi-Variable Grid tool generates a grid of square or hexagonal bins and calculates variables for each bin based on the proximity of one or more input layers.
+            <p>A T&ouml;bbv&aacute;ltoz&oacute;s t&aacute;bl&aacute;zat fel&eacute;p&iacute;t&eacute;se eszk&ouml;z n&eacute;gysz&ouml;g vagy hatsz&ouml;g alak&uacute; gyűjtőket tartalmaz&oacute; r&aacute;csh&aacute;l&oacute;t hoz l&eacute;tre, &eacute;s mindegyik gyűjtőh&ouml;z v&aacute;ltoz&oacute;kat sz&aacute;m&iacute;t egy vagy t&ouml;bb bemenő r&eacute;teg k&ouml;zels&eacute;ge alapj&aacute;n.
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Given multiple layers of public transportation infrastructure, what part of the city is least accessible by public transportation?
+                    <li>Tegy&uuml;k fel, hogy adva van t&ouml;bb, t&ouml;megk&ouml;zleked&eacute;si infrastrukt&uacute;r&aacute;t tartalmaz&oacute; r&eacute;teg. A v&aacute;ros melyik r&eacute;sze a legnehezebben el&eacute;rhető t&ouml;megk&ouml;zleked&eacute;ssel?
                     </li>
-                    <li>Given layers of waterways, such as lakes and rivers, what is the name of the water body closest to each  location in the U.S.?
+                    <li>Tegy&uuml;k fel, hogy adva vannak v&iacute;zi utakat tartalmaz&oacute; r&eacute;tegek. Mi a neve az egyes helyekhez legk&ouml;zelebb eső v&iacute;zt&ouml;megnek az Egyes&uuml;lt &Aacute;llamokban?
                     </li>
-                    <li>Given a layer of household income, where in the U.S. is the variation of income in the surrounding 50 miles the greatest?
+                    <li>Tegy&uuml;k fel, hogy adva van egy, a h&aacute;ztart&aacute;sok j&ouml;vedelm&eacute;t tartalmaz&oacute; r&eacute;teg. Az Egyes&uuml;lt &Aacute;llamokban hol a legnagyobb a j&ouml;vedelmek vari&aacute;ci&oacute;ja a k&ouml;rnyező 50 m&eacute;rf&ouml;lden bel&uuml;l?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DescribeDatasetTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Adathalmaz leírása</h2></td>
+                    <td>
+                    <img src="../images/GUID-972BB93A-AEF8-4701-9890-7AE52391CA69-web.png" class="titleImage" alt="Adathalmaz munkafolyamat le&iacute;r&aacute;sa diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bemeneti vektoros elemek &ouml;sszegz&eacute;se statisztik&aacute;kkal, mintar&eacute;tegekkel &eacute;s vizualiz&aacute;l&aacute;ssal. Kimenetnek v&aacute;laszthat egy mintar&eacute;teget vagy egy kiterjed&eacute;si r&eacute;teget.
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Hivatkoz&aacute;s a kisz&aacute;m&iacute;tott &ouml;sszes&iacute;tő statisztik&aacute;kra annak meg&aacute;llap&iacute;t&aacute;s&aacute;ra, milyen &eacute;rt&eacute;keket tartalmaz az adathalmaz.
+                    </li>
+                    <li>A teljes adathalmaz rajzol&aacute;sa helyett hozzon l&eacute;tre egy r&eacute;szcsoport-r&eacute;teget a vektoros elemek &eacute;s attrib&uacute;tumaik vizualiz&aacute;l&aacute;s&aacute;ra, amikor azok hozz&aacute;ad&aacute;sra ker&uuml;lnek a t&eacute;rk&eacute;phez.
+                    </li>
+                    <li>Takar&iacute;tson meg időt &eacute;s forr&aacute;sokat, &eacute;s mielőtt a teljes adathalmazon futtatna elemz&eacute;st, futtasson elemz&eacute;st egy mintar&eacute;tegen.
                     </li>
                 </ul>
                 
@@ -165,13 +206,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
+            <p>Vektoros r&eacute;tegeket vagy t&aacute;bl&aacute;zatos adatokat haszn&aacute;lva vektoros elemeket &eacute;s rekordokat kapcsolhat &ouml;ssze a bemenő r&eacute;tegek vagy t&aacute;bl&aacute;zatok k&ouml;z&ouml;tti egyedi kapcsolatok alapj&aacute;n.  Az &ouml;sszekapcsol&aacute;sokat t&eacute;rbeli, időbeli &eacute;s attrib&uacute;tumok k&ouml;z&ouml;tti kapcsolatok hat&aacute;rozz&aacute;k meg, &eacute;s ak&aacute;r &ouml;sszes&iacute;tő statisztik&aacute;k is sz&aacute;m&iacute;that&oacute;k.  
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
+                    <li>Tegy&uuml;k fel, hogy rendelkez&eacute;sre &aacute;llnak bűncselekm&eacute;nyek helyei &eacute;s időpontjai; kapcsolja &ouml;ssze a bűncselekm&eacute;nyek adatait &ouml;nmagukkal, t&eacute;rbeli kapcsolatot meghat&aacute;rozva olyan bűncselekm&eacute;nyek k&ouml;z&ouml;tt, amelyek egym&aacute;st&oacute;l 1 kilom&eacute;ter t&aacute;vols&aacute;gon bel&uuml;l &eacute;s 1 &oacute;r&aacute;n bel&uuml;l t&ouml;rt&eacute;ntek, &eacute;s &aacute;llap&iacute;tsa meg, hogy t&ouml;rt&eacute;nt-e egym&aacute;shoz t&eacute;rben &eacute;s időben k&ouml;zeli bűncselekm&eacute;nyek sorozata.
                     </li>
-                    <li>Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
+                    <li>Tegy&uuml;k fel, hogy rendelkez&eacute;sre &aacute;ll egy ir&aacute;ny&iacute;t&oacute;sz&aacute;mokhoz kapcsolt demogr&aacute;fiai adatokat tartalmaz&oacute; t&aacute;bl&aacute;zat &eacute;s lak&oacute;&eacute;p&uuml;leteket le&iacute;r&oacute; ter&uuml;let vektoros elemek; kapcsolja &ouml;ssze a demogr&aacute;fiai inform&aacute;ci&oacute;kat a lakc&iacute;mekkel, hogy a lakc&iacute;mek is rendelkezzenek ugyanezekkel az inform&aacute;ci&oacute;kkal.
                     </li>
                 </ul>
                 
@@ -184,18 +225,18 @@
                 <tbody><tr>
                     <td><h2>Nyomvonal-rekonstrukció</h2></td>
                     <td>
-                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruct Tracks">
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Nyomvonal-rekonstrukci&oacute;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using a time-enabled layer of point  or polygon features that represent an  <code>instant</code> in time, this tool determines which input features belong in a track and will order the inputs sequentially in time. Statistics are optionally calculated for the input features within each track.
+            <p>Ez az eszk&ouml;z  <code>időpillanatot</code> le&iacute;r&oacute;, pontszerű vagy polygon vektoros elemek időb&eacute;lyeggel ell&aacute;tott r&eacute;teg&eacute;t haszn&aacute;lva meghat&aacute;rozza, hogy a bemeneti vektoros elemek k&ouml;z&uuml;l melyek tartoznak egy nyomvonalhoz, &eacute;s időbeli sorrendbe rendezi a bemeneteket. Lehetős&eacute;g van a bemeneti vektoros elemek statisztik&aacute;inak kisz&aacute;m&iacute;t&aacute;s&aacute;ra is az egyes nyomvonalakon bel&uuml;l.
             </p>
-            <p> The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
+                    <li>Egy hurrik&aacute;nra vonatkoz&oacute;an adott helyekből &eacute;s időpontokb&oacute;l sz&aacute;m&iacute;tsa ki a hurrik&aacute;n &aacute;tlagos sz&eacute;lsebess&eacute;g&eacute;t &eacute;s legnagyobb sz&eacute;lnyom&aacute;s&aacute;t.
                     </li>
-                    <li>Use GPS measurements of ships, to reconstruct ship paths as lines.
+                    <li>Haj&oacute;kra vonatkoz&oacute; GPS-m&eacute;r&eacute;sekből rekonstru&aacute;lja vonal form&aacute;j&aacute;ban a haj&oacute; &uacute;tvonalait. 
                     </li>
                 </ul>
                 
@@ -208,18 +249,18 @@
                 <tbody><tr>
                     <td><h2>Attribútumok összefoglalása</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes diagram">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Attrib&uacute;tumok &ouml;sszefoglal&aacute;sa diagram">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Using either feature or tabular data, this tool summarizes statistics for specified fields.
+            <p>Ez az eszk&ouml;z vektoros elemek vagy t&aacute;bl&aacute;zatos adatok alapj&aacute;n &ouml;sszes&iacute;tő statisztik&aacute;kat k&eacute;sz&iacute;t meghat&aacute;rozott mezőkh&ouml;z. 
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Given locations of grocery stores with a field  <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
+                    <li>Tegy&uuml;k fel, hogy a(z)  <i>COMPANY_NAME</i> mezőben rendelkez&eacute;sre &aacute;llnak &eacute;lelmiszerboltok helyei; &ouml;sszes&iacute;tse a boltokat a v&aacute;llalat neve alapj&aacute;n, &eacute;s sz&aacute;m&iacute;tson kis statisztik&aacute;kat mindegyik v&aacute;llalathoz.
                     </li>
-                    <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
+                    <li>Tegy&uuml;k fel, hogy a(z)  <i>COMPANY_NAME</i> &eacute;s <i>COUNTY</i> mezőkkel rendelkező t&aacute;bl&aacute;zatban rendelkez&eacute;sre &aacute;llnak &eacute;lelmiszerboltok helyei; &ouml;sszes&iacute;tse a boltokat a v&aacute;llalat neve &eacute;s a megye alapj&aacute;n, &eacute;s sz&aacute;m&iacute;tson kis statisztik&aacute;kat mindegyik v&aacute;llalathoz &eacute;s megy&eacute;hez.
                     </li>
                 </ul>
                 
@@ -230,18 +271,18 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Területen belüli statisztika</h2></td>
+                    <td><h2>Területen belüli összegzés</h2></td>
                     <td>
-                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Summarize Within">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;s">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Megkeresi azokat a ter&uuml;leteket (&eacute;s ter&uuml;letr&eacute;szeket), ahol k&eacute;t r&eacute;teg &aacute;tfedi egym&aacute;st, &eacute;s kisz&aacute;m&iacute;tja a fedv&eacute;ny statisztikai adatait.  
+            <p>Megkeresi azokat a ter&uuml;leteket (&eacute;s ter&uuml;letr&eacute;szeket), ahol k&eacute;t r&eacute;teg &aacute;tfedi egym&aacute;st, &eacute;s kisz&aacute;m&iacute;tja a fedv&eacute;ny statisztikai adatait. 
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a  f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
+                    <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati t&iacute;pusokat tartalmaz&oacute; r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
                     </li>
                     <li>Egy megye parcell&aacute;it &eacute;s telep&uuml;l&eacute;shat&aacute;rait tartalmaz&oacute; r&eacute;teg eset&eacute;n &ouml;sszes&iacute;theti a telep&uuml;l&eacute;seken bel&uuml;li szabad parcell&aacute;k &aacute;tlagos &eacute;rt&eacute;keit.
                     </li>
@@ -253,11 +294,11 @@
     <div id="FindLocationsCategory" class="regularsize">
         <h2>Helyek keresése</h2>
         <hr/>
-        <p>These tools are used to identify areas that meet a number of different criteria you specify.   
+        <p>Ezekkel az eszk&ouml;z&ouml;kkel az &Ouml;n &aacute;ltal megadott k&uuml;l&ouml;nf&eacute;le krit&eacute;riumokat kiel&eacute;g&iacute;tő ter&uuml;letek azonos&iacute;that&oacute;k.   
             <ul>
-                <li> <b>Detect Incidents</b> works with time-enabled layers to determine which features meet a specified condition.
+                <li>Az  <b>Incidensek &eacute;szlel&eacute;se</b> időb&eacute;lyeggel ell&aacute;tott r&eacute;tegek seg&iacute;ts&eacute;g&eacute;vel &aacute;llap&iacute;tja meg, hogy melyik vektoros elemek felelnek meg egy meghat&aacute;rozott felt&eacute;telnek.
                 </li>
-                <li> <b>Geocode Locations from Table</b> converts addresses into coordinates.
+                <li>A  <b>Geok&oacute;dol&aacute;si helysz&iacute;nek t&aacute;bl&aacute;zatb&oacute;l</b> c&iacute;meket koordin&aacute;t&aacute;kk&aacute; alak&iacute;t.
                 </li>
                 <li>A  <b>Hasonl&oacute; helyek keres&eacute;se</b> a megadott krit&eacute;riumokon alapul&oacute; egy vagy t&ouml;bb vonatkoztat&aacute;si helyhez hasonl&oacute; helyeket keres.
                 </li>
@@ -276,13 +317,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool works with a time-enabled layer of points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify. 
+            <p>Ez az eszk&ouml;z pontok, vonalak, ter&uuml;letek vagy t&aacute;bl&aacute;zatok időb&eacute;lyeggel ell&aacute;tott, egy időpillanatot le&iacute;r&oacute; r&eacute;teg&eacute;vel dolgozik.   Az eszk&ouml;z nyomvonalnak nevezett, sorba rendezett vektoros elemeket haszn&aacute;lva meg&aacute;llap&iacute;tja, hogy melyik vektoros elemek &eacute;rdeklőd&eacute;sre sz&aacute;mot tart&oacute; incidensek. Az incidensek fogalm&aacute;t az &Ouml;n &aacute;ltal meghat&aacute;rozott felt&eacute;telek szabj&aacute;k meg. 
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Detect hurricane measurements that are Category 4 hurricanes based on a wind speed attribute.
+                    <li>4. kateg&oacute;ri&aacute;j&uacute; hurrik&aacute;nok felismer&eacute;se hurrik&aacute;nok m&eacute;rt adataib&oacute;l a sz&eacute;lsebess&eacute;g attrib&uacute;tum alapj&aacute;n.
                     </li>
-                    <li>Using GPS measurements of ship movement with a field representing the ship speed, find measurements that are greater than 1.5 times the mean of the previous five measurements.
+                    <li>Egy haj&oacute; mozg&aacute;s&aacute;nak GPS-m&eacute;r&eacute;seit haszn&aacute;lva a haj&oacute; sebess&eacute;g&eacute;t le&iacute;r&oacute; mezőből keresse meg azokat a m&eacute;r&eacute;seket, amelyek &eacute;rt&eacute;ke nagyobb, mint az előző &ouml;t m&eacute;r&eacute;s &aacute;tlag&aacute;nak 1,5-szerese.
                     </li>
                 </ul>
                 
@@ -300,11 +341,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A c&iacute;meket koordin&aacute;t&aacute;kk&aacute; alak&iacute;tja &aacute;t. Use this tool on big data file share tables.
+            <p>A c&iacute;meket koordin&aacute;t&aacute;kk&aacute; alak&iacute;tja &aacute;t. Ezt az eszk&ouml;zt big data-f&aacute;jlmegoszt&oacute; t&aacute;bl&aacute;zatokon haszn&aacute;lja.
             </p>
             <br/>
         </div>
-        <div id="FindSimilarLocationsTool" class="regularsize">
+        <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -315,29 +356,33 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
+            <p>Az eszk&ouml;z hasonl&oacute; helyeket keres a megadott krit&eacute;riumok alapj&aacute;n &uacute;gy, hogy megm&eacute;ri a vizsg&aacute;lt lehets&eacute;ges keres&eacute;si r&eacute;teg helyeinek egy vagy t&ouml;bb vonatkoztat&aacute;si helyhez val&oacute; hasonl&oacute;s&aacute;g&aacute;t. 
             </p>
-            <p>The following are examples: 
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők: 
                 <ul>
-                    <li>Find the ten most similar stores by examining the number of employees and the annual sales.
+                    <li>Keresse meg az egym&aacute;shoz legink&aacute;bb hasonl&iacute;t&oacute; t&iacute;z boltot az alkalmazottak sz&aacute;m&aacute;t &eacute;s az &eacute;ves &aacute;rbev&eacute;telt vizsg&aacute;lva.
                     </li>
-                    <li>Find the 100 most similar cities by examining the relationship between population, annual growth, and tax revenue.
+                    <li>Keresse meg az egym&aacute;shoz legink&aacute;bb hasonl&iacute;t&oacute; 100 v&aacute;rost a n&eacute;pess&eacute;g, az &eacute;ves n&ouml;veked&eacute;s &eacute;s az ad&oacute;bev&eacute;telek k&ouml;z&ouml;tti kapcsolatot vizsg&aacute;lva.
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Mintázatok elemzése</h2>
         <hr/>
-        <p> These tools help you identify, quantify, and visualize spatial patterns in your data.
+        <p>  Az al&aacute;bbi eszk&ouml;z&ouml;k seg&iacute;tenek azonos&iacute;tani, mennyis&eacute;gileg meghat&aacute;rozni &eacute;s megjelen&iacute;teni az adatok t&eacute;rbeli mint&aacute;zatait.
             <ul>
                 <li>A  <b>Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa</b> bizonyos jelens&eacute;gek ismert mennyis&eacute;geit ter&iacute;ti sz&eacute;t a t&eacute;rk&eacute;pen.
                 </li>
                 <li>A  <b>Hot spotok keres&eacute;se</b> meghat&aacute;rozza a statisztikailag szignifik&aacute;ns klaszterez&eacute;st az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
                 </li>
-                <li> <b>Find Point Clusters</b> finds clusters of point features in surrounding noise based on their spatial distribution.
+                <li>A  <b>Pontklaszterek keres&eacute;se</b> pontszerű vektoros elemek klasztereit keresi a k&ouml;rnyező zajban a t&eacute;rbeli eloszl&aacute;suk alapj&aacute;n.
+                </li>
+                <li>Az  <b>Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; eszk&ouml;z</b> modelleket hoz l&eacute;tre, &eacute;s előrejelz&eacute;seket gener&aacute;l Leo Breiman v&eacute;letlen erdő algoritmus&aacute;nak adapt&aacute;ci&oacute;j&aacute;t alkalmazva, amely egy fel&uuml;gyelt g&eacute;pi tanul&aacute;si m&oacute;dszer
+                </li>
+                <li>A  <b>Generaliz&aacute;lt line&aacute;ris regresszi&oacute;</b> előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.
                 </li>
             </ul>
             
@@ -354,13 +399,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
+            <p>A Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa eszk&ouml;z sűrűs&eacute;gt&eacute;rk&eacute;pet hoz l&eacute;tre pont-t&iacute;pus&uacute; vektoros elemekből egy bizonyos (a pontok attrib&uacute;tumai &aacute;ltal k&eacute;pviselt) jelens&eacute;g ismert mennyis&eacute;geit kiterjesztve a t&eacute;rk&eacute;pen. Az eredm&eacute;ny a sűrűs&eacute;get &aacute;br&aacute;zol&oacute; ter&uuml;leteket tartalmaz&oacute; r&eacute;teg.
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;ny r&eacute;teg mutatja azokat a ter&uuml;leteket, ahol a k&oacute;rh&aacute;zak k&ouml;nnyen vagy nehezen &eacute;rhetők el &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
+                    <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;nyr&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
                     </li>
-                    <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi erdőtűz helysz&iacute;nek alapj&aacute;n.
+                    <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi helysz&iacute;ne alapj&aacute;n.
                     </li>
                     <li>A nagyobb fő&uacute;tvonalakt&oacute;l t&aacute;vol &eacute;lő k&ouml;z&ouml;ss&eacute;gek hely&eacute;nek meghat&aacute;roz&aacute;sa, annak megtervez&eacute;s&eacute;hez, hogy hol &eacute;p&uuml;ljenek &uacute;j utak.
                     </li>
@@ -369,7 +414,7 @@
             </p>
             <br/>
         </div>
-        <div id="FindPointClustersTool" class="regularsize">
+        <div id="FindPointClustersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -380,13 +425,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Find Point Clusters tool  finds clusters of point features in surrounding noise based on their spatial distribution.
+            <p>A Pontklaszterek keres&eacute;se eszk&ouml;z pontszerű vektoros elemek klasztereit keresi a k&ouml;rnyező zajban a t&eacute;rbeli eloszl&aacute;suk alapj&aacute;n.
             </p>
-            <p>The following are examples:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Find clusters of pest-infested households to help target eradication efforts.  
+                    <li>Keresse meg a k&aacute;rtevők &aacute;ltal el&aacute;rasztott h&aacute;ztart&aacute;sok klasztereit a c&eacute;lzott irt&aacute;s előseg&iacute;t&eacute;s&eacute;hez.  
                     </li>
-                    <li>Inform and act on rescue and evacuation needs  based on the size and location of the clusters using geolocated tweets following natural hazards or terror attacks.
+                    <li>K&eacute;sz&iacute;tsen t&aacute;j&eacute;koztat&aacute;st &eacute;s seg&iacute;tse a ment&eacute;si &eacute;s evaku&aacute;l&aacute;si munk&aacute;t a klaszeterek m&eacute;rete &eacute;s elhelyezked&eacute;se alapj&aacute;n f&ouml;ldrajzi helyhez kapcsolt tweetek seg&iacute;ts&eacute;g&eacute;vel term&eacute;szeti katasztr&oacute;f&aacute;k &eacute;s terroristat&aacute;mad&aacute;sok ut&aacute;n.
                     </li>
                 </ul>
                 
@@ -404,7 +449,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+            <p>A Hot spotok keres&eacute;se eszk&ouml;zzel meghat&aacute;rozhat&oacute;, hogy l&eacute;teznek-e statisztikailag szignifik&aacute;ns klaszterek az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban. 
                 <ul>
                     <li>Val&oacute;ban klaszterezettek a kiv&aacute;lasztott pontok (bűnt&eacute;nyek, f&aacute;k, k&ouml;zleked&eacute;si balesetek)?  Hogyan tudhatja biztosan?
                     </li>
@@ -415,18 +460,74 @@
             </p>
             <br/>
         </div>
+        <div id="ForestBasedClassificationAndRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Erdő alapú osztályozás és regresszió</h2></td>
+                    <td>
+                    <img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" class="titleImage" alt="Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; munkafolyamat&aacute;nak diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Az Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; eszk&ouml;z modelleket hoz l&eacute;tre, &eacute;s előrejelz&eacute;seket gener&aacute;l Leo Breiman v&eacute;letlen erdő algoritmus&aacute;nak adapt&aacute;ci&oacute;j&aacute;t alkalmazva, amely egy fel&uuml;gyelt g&eacute;pi tanul&aacute;si m&oacute;dszer
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Ha vannak adataink a tengerifű előfordul&aacute;s&aacute;r&oacute;l, tov&aacute;bb&aacute; vannak attrib&uacute;tumk&eacute;nt reprezent&aacute;lt k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;ink (amelyeket  t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l bőv&iacute;tett&uuml;nk, kisz&aacute;m&iacute;tva az &aacute;r ir&aacute;ny&aacute;val ellent&eacute;tes ir&aacute;nyban tal&aacute;lhat&oacute; gy&aacute;rak &eacute;s nagy kik&ouml;tők t&aacute;vols&aacute;g&aacute;t), akkor előrejelz&eacute;st tudunk k&eacute;sz&iacute;teni a tengerifű j&ouml;vőbeli előfordul&aacute;s&aacute;r&oacute;l a k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;k j&ouml;vőre t&ouml;rt&eacute;nő kivet&iacute;t&eacute;s&eacute;vel.
+                          
+                    </li>
+                    <li>Tegy&uuml;k fel, hogy vannak term&eacute;sre vonatkoz&oacute; adataink az orsz&aacute;g k&uuml;l&ouml;nb&ouml;ző r&eacute;szein tal&aacute;lhat&oacute; t&ouml;bb sz&aacute;z farm vonatkoz&aacute;s&aacute;ban, valamint vannak egy&eacute;b attrib&uacute;tumaink a farmok vonatkoz&aacute;s&aacute;ban (munkv&aacute;llal&oacute;k sz&aacute;ma, f&ouml;ldter&uuml;let stb). Ezen adatok haszn&aacute;lat&aacute;val olyan vektoros elemeket hozhatunk l&eacute;tre, amelyek azokat a farmokat reprezent&aacute;lj&aacute;k, ahol nincs term&eacute;sadat (de az &ouml;sszes t&ouml;bbi v&aacute;ltoz&oacute; megvan), &eacute;s előrejelz&eacute;st k&eacute;sz&iacute;thet&uuml;nk a term&eacute;sről.
+                    </li>
+                    <li>Lak&aacute;sokra vonatkoz&oacute; &eacute;rt&eacute;keket jelezhet&uuml;nk előre a foly&oacute; &eacute;vben eladott lak&aacute;sok &aacute;ra alapj&aacute;n. Az adatok alapj&aacute;n (lak&aacute;sok elad&aacute;si &aacute;ra, h&aacute;l&oacute;szob&aacute;k sz&aacute;ma, iskol&aacute;kt&oacute;l val&oacute; t&aacute;vols&aacute;g, nagyobb fő&uacute;tvonalakt&oacute;l val&oacute; t&aacute;vols&aacute;g, &aacute;tlagj&ouml;vedelem, bűncselekm&eacute;nyek sz&aacute;ma) előrejelezhetj&uuml;k a hasonl&oacute; lak&aacute;sok elad&aacute;si &aacute;r&aacute;t.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generalizált lineáris regresszió</h2></td>
+                    <td>
+                    <img src="../images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="Generaliz&aacute;lt line&aacute;ris regresszi&oacute; munkafolyamat diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A Generaliz&aacute;lt line&aacute;ris regresszi&oacute; eszk&ouml;z  előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.  Az eszk&ouml;z haszn&aacute;lhat&oacute; folytonos (OLS), bin&aacute;ris (logisztikus modell) &eacute;s sz&aacute;m&iacute;t&aacute;si modellek (Poisson-modell) illeszt&eacute;s&eacute;re.
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Milyen demogr&aacute;fiai jellemzők j&aacute;rulnak hozz&aacute; a t&ouml;megk&ouml;zleked&eacute;s haszn&aacute;lat&aacute;nak magas szintj&eacute;hez?
+                    </li>
+                    <li>Van &ouml;sszef&uuml;gg&eacute;s a vandalizmus &eacute;s a bet&ouml;r&eacute;sek k&ouml;z&ouml;tt?
+                    </li>
+                    <li>Milyen v&aacute;ltoz&oacute;kkal lehet hat&eacute;konyan megj&oacute;solni a 911-es seg&eacute;lyh&iacute;v&oacute;hoz befut&oacute; h&iacute;v&aacute;sok sz&aacute;m&aacute;t?  A j&ouml;vőre t&ouml;rt&eacute;nő kivet&iacute;t&eacute;sek alapj&aacute;n mekkora sz&uuml;ks&eacute;glet v&aacute;rhat&oacute; a v&eacute;szhelyzeti v&aacute;laszad&aacute;si forr&aacute;sokra?
+                    </li>
+                    <li>Milyen v&aacute;ltoz&oacute;kkal f&uuml;gg &ouml;ssze az alacsony sz&uuml;let&eacute;ssz&aacute;m?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Közelség használata</h2>
         <hr/>
-        <p>These tools help answer one of the most common questions posed in spatial analysis: What is near what?
+        <p>Ezek az eszk&ouml;z&ouml;k seg&iacute;tenek v&aacute;laszt adni a t&eacute;rbeli elemz&eacute;sn&eacute;l leggyakrabban feltett k&eacute;rd&eacute;sek egyik&eacute;re: Mi mihez van k&ouml;zel?
             <ul>
-                <li> <b>Create Buffers</b> creates areas of a specified distance from features.
+                <li>A  <b>Buffer l&eacute;trehoz&aacute;sa</b> eszk&ouml;z vektoros elemektől meghat&aacute;rozott t&aacute;vols&aacute;gra l&eacute;vő ter&uuml;letek hoz l&eacute;tre.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CreateBuffersTool" class="regularsize">
+        <div id="CreateBuffersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -437,20 +538,20 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
+            <p>A buffer egy pontszerű, vonalas vagy polygon t&iacute;pus&uacute; vektoros elemtől egy meghat&aacute;rozott t&aacute;vols&aacute;got lefedő ter&uuml;let.
             </p>
-            <p>The following are examples:
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
+                    <li>Line&aacute;ris foly&oacute;t reprezent&aacute;l&oacute; vektoros elemeket haszn&aacute;lva k&eacute;sz&iacute;tsen mindegyik v&iacute;zfoly&aacute;shoz az adott v&iacute;zfoly&aacute;s sz&eacute;less&eacute;g&eacute;nek 50-szeres&eacute;t kitevő buffert, &eacute;s hat&aacute;rozza meg az &aacute;rt&eacute;r hat&aacute;rvonal&aacute;t.
                     </li>
-                    <li>Given areas representing countries, buffer each country by 200 nautical miles to determine the maritime boundary.  
+                    <li>Orsz&aacute;gokat le&iacute;r&oacute; ter&uuml;letekből k&eacute;sz&iacute;tsen mindegyik orsz&aacute;ghoz 200 tengeri m&eacute;rf&ouml;ldnek megfelelő buffert, &eacute;s hat&aacute;rozza meg a tengeri hat&aacute;rvonalat.  
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Manage Data</h2>
         <hr/>
         <p>These tools are used for the day-to-day management of geographic and tabular data. 
@@ -459,7 +560,13 @@
                 </li>
                 <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
+                </li>
                 <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                </li>
+                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
                 </li>
                 <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
@@ -467,7 +574,7 @@
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="regularsize">
+        <div id="CopyToDataStoreTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -478,19 +585,19 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
-            <p>The following are examples:
+            <p>Egy bemenő vektoros r&eacute;teget vagy t&aacute;bl&aacute;zatot egy  ArcGIS Data Store adatt&aacute;rba m&aacute;sol, &eacute;s egy r&eacute;teget hoz l&eacute;tre a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    <li> <code>.csv</code>-f&aacute;jlok gyűjtem&eacute;ny&eacute;nek m&aacute;sol&aacute;sa big data-f&aacute;jlmegoszt&oacute;ba a t&eacute;rbeli-időbeli adatt&aacute;rba megjelen&iacute;t&eacute;s &eacute;rdek&eacute;ben.
                     </li>
-                    <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    <li>Az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s t&eacute;rbeli-időbeli adatt&aacute;rban t&aacute;rolt vektoros elemeinek m&aacute;sol&aacute;sa a rel&aacute;ci&oacute;s adatt&aacute;rba.
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-        <div id="CalculateFieldTool" class="regularsize">
+        <div id="CalculateFieldTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -501,12 +608,60 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
-            <p>The following are examples:
+            <p>&Eacute;rt&eacute;keket sz&aacute;m&iacute;t ki egy &uacute;j vagy l&eacute;tező mezőh&ouml;z, &eacute;s egy r&eacute;teget hoz l&eacute;tre a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
+                    <li>Egy l&eacute;tező,  <i>total</i> nevű mező m&oacute;dos&iacute;t&aacute;sa a(z) <i>total_2016</i>, <i>total_2017</i> &eacute;s <i>total_2018</i> mezőkben szereplő bev&eacute;telek &ouml;sszeg&eacute;re.
                     </li>
-                    <li>Create a new field to categorize hazard levels based on field values such as  <i>windspeed</i> and <i>pollutant</i>.
+                    <li>Egy &uacute;j mező l&eacute;trehoz&aacute;sa a vesz&eacute;lyess&eacute;gi szintek besorol&aacute;s&aacute;ra a(z)  <i>windspeed</i> &eacute;s <i>pollutant</i> &eacute;rt&eacute;kekhez hasonl&oacute; mező&eacute;rt&eacute;kek alapj&aacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ClipLayerTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kivágási réteg</h2></td>
+                    <td>
+                    <img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" class="titleImage" alt="Kiv&aacute;g&aacute;si r&eacute;teg">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Meghat&aacute;rozott vizsg&aacute;lati ter&uuml;letekről kiv&aacute;g bemeneti vektoros elemeket. Kimeneti eredm&eacute;ny: a bemeneti vektoros elemek r&eacute;szcsoportja. 
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők: 
+                <ul>
+                    <li>Hozzon l&eacute;tre r&eacute;szcsoportot azokb&oacute;l a vesz&eacute;lyeztetett &eacute;p&uuml;letekből, amelyek &aacute;rt&eacute;ri ter&uuml;leten tal&aacute;lhat&oacute;k.
+                    </li>
+                    <li>Hat&aacute;rozza meg, mely főutak haladnak &aacute;t a potenci&aacute;lis fejleszt&eacute;si ter&uuml;leteken.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="DissolveBoundariesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Határok összeolvasztása</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Hat&aacute;rok &ouml;sszeolvaszt&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Olyan ter&uuml;leti vektoros elemek &ouml;sszeilleszt&eacute;se, amelyek metszenek egy k&ouml;z&ouml;s mező&eacute;rt&eacute;ket, vagy osztoznak azon, &ouml;sszef&uuml;ggő vagy t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemekl&eacute;trehoz&aacute;s&aacute;ra.
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>A Hawaii-szigetek hat&aacute;rainak &ouml;sszeolvaszt&aacute;s&aacute;val hozzon l&eacute;tre egy vektoros elemet, amely Hawaii &aacute;llamot reprezent&aacute;lja.
+                    </li>
+                    <li>Illesszen &ouml;ssze talajt&iacute;pus szempontj&aacute;b&oacute;l hasonl&oacute; vizsg&aacute;lati ter&uuml;leteket, hogy kimenetk&eacute;nt egy &ouml;ssszef&uuml;ggő talajt&iacute;pus-adathalmazt kapjon.
                     </li>
                 </ul>
                 
@@ -524,12 +679,14 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A fedv&eacute;ny k&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egyetlen r&eacute;tegben.  Overlay is used to answer one of the most basic questions of geography, What is on top of what? The following are examples:
+            <p>K&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egyetlen r&eacute;tegben.  A fedv&eacute;nyek seg&iacute;ts&eacute;g&eacute;vel a legalapvetőbb f&ouml;ldrajzi k&eacute;rd&eacute;sek egyike v&aacute;laszolhat&oacute; meg: Mi tal&aacute;lhat&oacute; min? 
+            </p>
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>What parcels are within the 100-year flood plain? (Bel&uuml;l, vagy m&aacute;sk&eacute;pp fogalmazva rajta.)
+                    <li>Milyen parcell&aacute;k tal&aacute;lhat&oacute;k a 100 &eacute;v visszat&eacute;r&eacute;si idejű &aacute;rt&eacute;ren bel&uuml;l? (Bel&uuml;l, vagy m&aacute;sk&eacute;pp fogalmazva rajta.)
                           
                     </li>
-                    <li>Milyen felsz&iacute;nhaszn&aacute;lat t&iacute;pust tal&aacute;lunk milyen talajt&iacute;puson?
+                    <li>Milyen felsz&iacute;nhaszn&aacute;lat t&iacute;pus tartozik az egyes talajt&iacute;pusokhoz?
                          
                     </li>
                     <li>Milyen kutak tal&aacute;lhat&oacute;k elhagyott katonai b&aacute;zisokon?
@@ -550,14 +707,71 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
-            <p>The following are examples:
+            <p>Vektoros elemeket fűz egy megl&eacute;vő t&aacute;rolt r&eacute;teghez a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
+            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Update your 2018_Sales feature layer each month as your reports become available. 
+                    <li>A 2018_&aacute;rbev&eacute;tel vektoros r&eacute;teg friss&iacute;t&eacute;se minden h&oacute;napban, amint a besz&aacute;mol&oacute;k el&eacute;rhetőv&eacute; v&aacute;lnak.
                     </li>
-                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
+                    <li>Hurrik&aacute;nok k&ouml;vet&eacute;s&eacute;re haszn&aacute;lt, 2016. &eacute;s 2017. &eacute;vi adathalmazok hozz&aacute;fűz&eacute;se a hurrik&aacute;nok t&ouml;rzsadathalmaz&aacute;hoz.
                     </li>
-                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
+                    <li>Adathalmazok gyűjt&eacute;se t&ouml;bb, elt&eacute;rő s&eacute;m&aacute;val rendelkező forr&aacute;sb&oacute;l, &eacute;s hozz&aacute;fűz&eacute;s egyedi mezőlek&eacute;pez&eacute;s seg&iacute;ts&eacute;g&eacute;vel.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rétegek összeillesztése</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="R&eacute;tegek &ouml;sszeilleszt&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&eacute;t vektoros r&eacute;teget &ouml;sszeillesztve hoz l&eacute;tre egy eredm&eacute;nyr&eacute;teget. Alap&eacute;rtelmez&eacute;sben az egyes&iacute;t&eacute;si r&eacute;teg &ouml;sszes mezőj&eacute;t tartalmazza, vagy megadhat egy&eacute;ni &ouml;sszeilleszt&eacute;si szab&aacute;lyokat az eredm&eacute;nys&eacute;ma defini&aacute;l&aacute;s&aacute;ra.  
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Van h&aacute;rom r&eacute;teg, amelyek Anglia, Wales &eacute;s Sk&oacute;cia demogr&aacute;fiai adatait tartalmazz&aacute;k, &eacute;s ezeket &ouml;sszeillesztve szeretn&eacute;k egyetlen r&eacute;teget k&eacute;sz&iacute;teni Nagy-Britanni&aacute;r&oacute;l.
+                    </li>
+                    <li>K&eacute;t r&eacute;teg &ouml;sszeilleszt&eacute;se, amelyek tartalmazz&aacute;k a szomsz&eacute;dos telep&uuml;l&eacute;sek csomaginform&aacute;ci&oacute;j&aacute;t, csak azokat a mezőket megtartva, amelyeknek a k&eacute;t r&eacute;tegben ugyanaz a neve &eacute;s a t&iacute;pusa.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Adatbővítés</h2>
+        <hr/>
+        <p>Ezek az eszk&ouml;z&ouml;k seg&iacute;tenek megismerni a ter&uuml;letek jelleg&eacute;t.
+            <ul>
+                <li>A  <b>Bőv&iacute;t&eacute;s t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l</b>t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l sz&aacute;rmaz&oacute; attrib&uacute;tumokat kapcsol &ouml;ssze egy pontszerű r&eacute;teggel.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichFromMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Bővítés többváltozós rácshálóból</h2></td>
+                    <td>
+                    <img src="../images/GUID-AC3885D9-F068-4C09-8B7F-5694E77D9F65-web.png" class="titleImage" alt="Bőv&iacute;t&eacute;s t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Hat&eacute;konyan kapcsol &ouml;ssze t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l sz&aacute;rmaz&oacute; attrib&uacute;tumokat egy pontszerű r&eacute;teggel, &iacute;gy lehetőv&eacute; t&eacute;ve inform&aacute;ci&oacute;k nagy &eacute;s k&uuml;l&ouml;nb&ouml;ző gyűjtem&eacute;ny&eacute;nek pontadathoz t&ouml;rt&eacute;nő gyors hozz&aacute;ad&aacute;s&aacute;t tov&aacute;bbi t&eacute;rbeli elemz&eacute;sekhez val&oacute; felhaszn&aacute;l&aacute;s c&eacute;lj&aacute;ra. 
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Ha van egy t&ouml;bb milli&oacute; &aacute;ramkimarad&aacute;si incidenst tartalmaz&oacute; r&eacute;teg, bőv&iacute;tse az incidens vektoros elemeit a tipikus haszn&aacute;latra, a k&ouml;rnyezeti kock&aacute;zatokra &eacute;s az infrastruktur&aacute;lis felt&eacute;telekre vonatkoz&oacute; inform&aacute;ci&oacute;kkal, hogy tanulm&aacute;nyozhassa ezen t&eacute;nyezők &eacute;s az &aacute;ramkimarad&aacute;s gyakoris&aacute;ga k&ouml;z&ouml;tti &ouml;sszef&uuml;gg&eacute;seket. 
                     </li>
                 </ul>
                 

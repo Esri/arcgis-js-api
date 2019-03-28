@@ -44,7 +44,7 @@
         <h2>Detekovat události (Detect Incidents)</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detekovat ud&aacute;losti"></h2>
         <hr/>
-    <p>Tento n&aacute;stroj pracuje s&nbsp;časovou vrstvou bodů, lini&iacute;, ploch nebo tabulek, kter&aacute; představuje okamžik v čase. Tento n&aacute;stroj použ&iacute;v&aacute; sekvenčně uspoř&aacute;dan&eacute; prvky, zvan&eacute; stopy, a určuje, kter&eacute; prvky jsou ud&aacute;losti, jež jsou předmětem z&aacute;jmu. Ud&aacute;losti jsou určeny podm&iacute;nkami, kter&eacute; specifikujete. 
+    <p> Tento n&aacute;stroj pracuje s&nbsp;časovou vrstvou bodů, lini&iacute;, ploch nebo tabulek, kter&aacute; představuje okamžik v čase. Tento n&aacute;stroj použ&iacute;v&aacute; sekvenčně uspoř&aacute;dan&eacute; prvky, zvan&eacute; stopy, a určuje, kter&eacute; prvky jsou ud&aacute;losti, jež jsou předmětem z&aacute;jmu. Ud&aacute;losti jsou určeny podm&iacute;nkami, kter&eacute; specifikujete.
     </p>
     <p>Za prv&eacute;, n&aacute;stroj určuje, kter&eacute; prvky patř&iacute; ke stopě s použit&iacute;m jednoho nebo v&iacute;ce pol&iacute;. Každ&yacute; prvek je spojen&yacute; s časem, stopy jsou uspoř&aacute;d&aacute;ny sekvenčně, a je použita podm&iacute;nka ud&aacute;losti. Prvky, kter&eacute; splňuj&iacute; poč&aacute;tečn&iacute; podm&iacute;nku ud&aacute;losti, jsou označeny jako ud&aacute;lost. Volitelně můžete použ&iacute;t podm&iacute;nku ukončen&iacute; ud&aacute;losti; když je podm&iacute;nka ukončen&iacute; pravdiv&aacute;, prvek již nen&iacute; ud&aacute;lost&iacute;.  V&yacute;sledky budou vr&aacute;ceny s původn&iacute;mi prvky&mdash;s nov&yacute;mi sloupci, jež představuj&iacute; n&aacute;zev ud&aacute;losti&mdash;a indikuj&iacute;, kter&yacute; prvek splňuje podm&iacute;nku ud&aacute;losti Můžete vr&aacute;tit v&scaron;echny původn&iacute; prvky nebo jen prvky, kter&eacute; jsou ud&aacute;lostmi.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Body, linie, plochy nebo tabulky, kter&eacute; budou použity pro vyhled&aacute;n&iacute; ud&aacute;lost&iacute;. Vstupn&iacute; vrstva mus&iacute; b&yacute;t časov&aacute; vrstva s prvky, kter&eacute; představuj&iacute; okamžik v čase, a maj&iacute; jedno nebo v&iacute;ce pol&iacute;, kter&aacute; lze použ&iacute;t pro identifikaci stop.
             </p>
-            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Zvolit vrstvu anal&yacute;zy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Vytvořit podmínku výrazu pro vyznačení konce události</h2></div>
+        <div><h2>Vytvořit podmínku výrazu pro vyznačení počátku události (volitelné)</h2></div>
         <hr/>
         <div>
             <p>Volitelně přidejte podm&iacute;nku, s použit&iacute;m n&aacute;stroje pro sestaven&iacute; v&yacute;razů, k určen&iacute; konce ud&aacute;losti. Jestliže je v&aacute;mi specifikovan&aacute; konečn&aacute; podm&iacute;nka pravdiv&aacute;, prvek už nen&iacute; ud&aacute;lost&iacute;. Pokud nespecifikujete konečnou podm&iacute;nku, ud&aacute;lost skonč&iacute;, když poč&aacute;tečn&iacute; podm&iacute;nka už nebude pravdiv&aacute;.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Zvolte si, jak chcete mít prezentován výstup</h2></div>
+        <div><h2>Ukaž mi</h2></div>
         <hr/>
         <div>
             <p>V&scaron;echny metody v&yacute;stupu dopln&iacute; k původn&iacute;m prvkům pole Existuj&iacute; dva způsoby, jak určit, kter&eacute; prvky budou vraceny:
                 <ul>
-                    <li> <b>Vracet pouze ud&aacute;losti</b>&mdash;Tato metoda bude vracet pouze prvky, kter&eacute; jsou ud&aacute;lostmi. Jak&eacute;koliv prvky, u nichž se zjist&iacute;, že nejsou ud&aacute;lostmi, budou vr&aacute;ceny.
+                    <li> <b>V&scaron;echny prvky</b>&mdash;Toto je v&yacute;choz&iacute; nastaven&iacute;. V&scaron;echny prvky na vstupu budou vr&aacute;ceny.
                     </li>
-                    <li> <b>Vracet v&scaron;echny prvky</b>&mdash;Toto je v&yacute;choz&iacute; nastaven&iacute;. V&scaron;echny prvky na vstupu budou vr&aacute;ceny.
+                    <li> <b>Pouze ud&aacute;losti</b>&mdash;Tato metoda bude vracet pouze prvky, kter&eacute; jsou ud&aacute;lostmi. Jak&eacute;koliv prvky, u nichž se zjist&iacute;, že nejsou ud&aacute;lostmi, budou vr&aacute;ceny.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyzovat data s časovými intervaly (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Zadejte, jestli chcete nal&eacute;zt ud&aacute;losti pomoc&iacute; časov&yacute;ch intervalů, kter&eacute; provedou segmentaci va&scaron;ich vstupn&iacute;ch prvků pro anal&yacute;zu. Pokud použ&iacute;v&aacute;te časov&eacute; intervaly, mus&iacute;te nastavit časov&yacute; interval, kter&yacute; chcete použ&iacute;vat, a volitelně nastavit referenčn&iacute; čas. Pokud nenastav&iacute;te referenčn&iacute; čas, bude použito 1. ledna 1970. 
+            </p>
+            <p>Např&iacute;klad, pokud nastav&iacute;te časovou hranici na 1 den, zač&iacute;t od 9:00 1. ledna, 1990, potom každ&aacute; stopa bude zkr&aacute;cena v 9:00 pro každ&yacute; den a analyzov&aacute;na v tomto segmentu. 
+            </p>
+            <p>Použ&iacute;v&aacute;n&iacute; časov&yacute;ch intervalů představuje rychl&yacute; způsob zv&yacute;&scaron;en&iacute; doby v&yacute;počtu, protože rychle vytv&aacute;ř&iacute; men&scaron;&iacute; stopy k anal&yacute;ze. Pokud rozdělen&iacute; pomoc&iacute; znovu nastal&eacute;ho časov&eacute;ho intervalu m&aacute; smysl pro va&scaron;i anal&yacute;zu, doporučuje se pro zpracov&aacute;n&iacute; velk&yacute;ch dat.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
-            <p> N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            <p> N&aacute;zev vytv&aacute;řen&eacute; vrstvy. Pokud zapisujete ArcGIS Data Store, va&scaron;e v&yacute;sledky budou uloženy v  <b>Můj obsah</b> a přid&aacute;ny na mapu. Pokud zapisujete sd&iacute;len&yacute; soubor velk&yacute;ch dat, va&scaron;e v&yacute;sledky budou uloženy ve sd&iacute;len&eacute;m souboru velk&yacute;ch dat a přid&aacute;ny do jejich manifestu.  Nebudou přid&aacute;ny na mapu. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
             </p>
-            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            <p>Když zapisujete do   ArcGIS Data Store  (datov&eacute; &uacute;loži&scaron;tě relačn&iacute;ch a časoprostorov&yacute;ch velk&yacute;ch dat) pomoc&iacute; rozbalovac&iacute;ho seznamu  <b>Uložit v&yacute;sledek do</b> , můžete zadat n&aacute;zev složky v <b>Můj obsah</b>, kde budou v&yacute;sledky uloženy.
             </p>
         </div>
     </div>

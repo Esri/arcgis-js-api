@@ -70,7 +70,8 @@
         <div><h2>Suchbereich begrenzen auf (optional)</h2></div>
         <hr/>
         <div>
-            <p>Die maximale Entfernung, bei der Features demselben Cluster angeh&ouml;ren k&ouml;nnen. Wenn die Option leer gelassen wird, wird als Standardentfernung die gr&ouml;&szlig;te Kernentfernung, die im Dataset gefunden wurde, verwendet, wobei die Kernentfernungen in den obersten 1 % (d. h. die extremsten Kernentfernungen) ausgeschlossen werden. 
+            
+            <p>Die maximale Entfernung, bei der Features demselben Cluster angeh&ouml;ren k&ouml;nnen. Wird nichts angegeben, f&uuml;hrt das Werkzeug den Algorithmus &quot;HDBSCAN&quot; aus, wobei Cluster variierender Dichten anhand von unterschiedlichen Entfernungen vom schw&auml;cheren Rauschen getrennt werden. Wird ein Wert angegeben, f&uuml;hrt das Werkzeug den Algorithmus &quot;DBSCAN&quot; aus, wobei dichte Cluster anhand einer angegebenen Entfernung vom schw&auml;cheren Rauschen getrennt werden.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>
         </div>
     </div>

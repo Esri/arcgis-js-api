@@ -5,35 +5,40 @@
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    pointer-events: none;
 }
 
 
 
 
-.esriGEReportPlayer_section .floatingElementContainer.esriGEAdjustableGridValueField {
+.floatingElementContainer.esriGEAdjustableGridValueField {
     overflow: visible;
 }
 
 
 
-.esriGEReportPlayer_section .shapeContainer_svgContainer {
+.esriGEAdjustableGridValueField .shapeContainer_svgContainer {
     overflow: hidden;
     white-space: nowrap;
 }
 
-.esriGEReportPlayer_section .shapeContainer_svgContainerBackground {
+.esriGEAdjustableGridValueField .shapeContainer_svgContainerBackground {
     opacity: 0.3;
 }
 
-.esriGEReportPlayer_section .shapeContainer_svgContainerElement {
+.esriGEAdjustableGridValueField .shapeContainer_svgContainerElement {
     position: absolute;
     top: 0px;
 }
 
+    .esriGEAdjustableGridValueField .shapeContainer_svgContainerElement > svg {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
 
 
-.esriGEReportPlayer_section .shapeContainer_svgPlaceholder {
+
+.esriGEAdjustableGridValueField .shapeContainer_svgPlaceholder {
     background-image: url("./images/addShape.svg");
     background-position: center;
     background-size: contain;
@@ -42,11 +47,11 @@
     height: inherit;
 }
 
-.esriGEReportPlayer_section .valueField_valueBlock:hover .shapeContainer_svgPlaceholder {
+.esriGEAdjustableGridValueField .valueField_valueBlock:hover .shapeContainer_svgPlaceholder {
     background-image: url("./images/addShape_over.svg");
 }
 
-.esriGEReportPlayer_section .shapeContainer_svgPlaceholderText {
+.esriGEAdjustableGridValueField .shapeContainer_svgPlaceholderText {
     margin-top: -10px;
     width: 100%;
     text-align: center;

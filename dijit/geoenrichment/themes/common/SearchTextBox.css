@@ -8,10 +8,6 @@
         width: auto;
     }
 
-    .searchTextBox .dijitInputContainer {
-        
-    }
-
     .searchTextBox .dijitInputInner::-ms-clear {
         display: none;
     }

@@ -272,7 +272,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ustvari razvodja</h2></td>
+                    <td><h2>Ustvari razvodje</h2></td>
                     <td>
                     <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Ustvari razvodja">
                     </td>
@@ -347,7 +347,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Najdi podobne lokacije</h2></td>
+                    <td><h2>Poišči podobne lokacije</h2></td>
                     <td>
                     <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Najdi podobne lokacije">
                     </td>
@@ -443,7 +443,7 @@
                 <tbody><tr>
                     <td><h2>Najdi gruče točk</h2></td>
                     <td>
-                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Find Point Clusters">
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Najdi gruče točk">
                     </td>
                 </tr></tbody>
             </table>
@@ -598,6 +598,8 @@
                 </li>
                 <li> <b>Ekstrakcija podatkov</b> ustvari nove sklope podatkov, tako da izvleče geoobjekte iz va&scaron;ih obstoječih podatkov.
                 </li>
+                <li>Orodje  <b>Ustvari teselacije</b> ustvarja teselacije glede na obseg va&scaron;ih podatkov.
+                </li>
                 <li> <b>Združi sloje</b> kopira vse geoobjekte iz dveh ali več obstoječih slojev v nov sloj.
                 </li>
                 <li> <b>Prekrij sloje</b> združi dva ali več slojev v enojen sloj. Prekrivanje si lahko predstavljate kot gledanje skozi skupek kart in ustvarjanje enojne karte, ki vsebuje vse informacije, ki se nahajajo v skupku.
@@ -619,7 +621,7 @@
 <hr/>
             <p>Poligoni, ki se prekrivajo ali si delijo skupno mejo, so med seboj združeni v enojen poligon.    
             </p>
-            <p>Katere meje so združene lahko nadzirate tako, da navedete polje. Na primer, če imate sloj parcel in ima vsaka parcela atribut  <i>Raba</i>, lahko razgradite meje posameznih parcel s pomočjo atributa <i>Raba</i>.Sosednje parcele bodo združene, če imajo enako vrednost atributa <i>Raba</i>. Končni rezultat je sloj območij z enako rabo tal.
+            <p>Katere meje se združijo lahko nadzirate tako, da navedete polje. Na primer, če imate sloj okrožij in ima vsako okrožje atribut  <i>State_Name</i>, lahko razgradite meje posameznih okrožij s pomočjo atributa <i>State_Name</i>. Sosednja okrožja bodo združena, če imajo enako vrednost atributa <i>State_Name</i>. Končni rezultat je sloj območij z enako rabo tal.
             </p>
             <br/>
         </div>
@@ -627,9 +629,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Izvleci podatke</h2></td>
+                    <td><h2>Ekstrakcija podatkov</h2></td>
                     <td>
-                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Izvleci podatke">
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Ekstrahiraj podatke">
                     </td>
                 </tr></tbody>
             </table>
@@ -637,6 +639,21 @@
             <p>Ustvari datoteko zip, CSV ali KMZ iz podatkov  va&scaron;ih slojev in interesnega območja, ki ga navedete.
             </p>
             <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ustvari teselacije</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Ustvari teselacije">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ustvarja teselacije čez &scaron;tudijsko območje na podlagi določene oblike in velikosti.
             </p>
             <br/>
         </div>
@@ -673,12 +690,12 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Prekrivanje združuje dva ali več slojev v en posamezni sloj. Prekrivanje si lahko predstavljate kot gledanje skozi skupek kart in ustvarjanje enojne karte, ki vsebuje vse informacije, ki se nahajajo v skupku, naprimer: 
+            <p>Prekrivanje združuje dva ali več slojev v en posamezni sloj. Prekrivanje si lahko predstavljate kot gledanje skozi skupek kart in ustvarjanje enojne karte, ki vsebuje vse informacije, ki se nahajajo v skupku, naprimer:
                 <ul>
-                    <li>Katere parcele se nahajajo znotraj poplavnega območja s 100-letno povratno dobo poplav? (Znotraj je samo drug način, da se pove na nečem.)
+                    <li>Katere parcele se nahajajo znotraj poplavnega območja s 100-letno povratno dobo poplav? (Znotraj je samo drug način, da se pove nad nečim.)
                           
                     </li>
-                    <li>Katere ceste se nahajajo znotraj katerih držav?
+                    <li>Katere ceste se nahajajo na plazovith tleh?
                     </li>
                     <li>Kak&scaron;na raba tal je na katerem talnemu tipu?
                          

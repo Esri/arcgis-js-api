@@ -1,5 +1,5 @@
 
- .DataBrowser {
+.DataBrowser {
     font-size: 13px;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -12,32 +12,32 @@
     color: #2892CD;
 }
 
-    .DataBrowser .dgrid-selected {
-        background: none;
-    }
+.DataBrowser .dgrid-selected {
+    background: none;
+}
 
-    .DataBrowser .dgrid-row {
-        white-space: nowrap;
-        cursor: default;
-    }
+.DataBrowser .dgrid-row {
+    white-space: nowrap;
+    cursor: default;
+}
 
-    .DataBrowser .ShoppingCart .Label {
-        color: #9b9b9b;
-    }
+.DataBrowser .ShoppingCart .Label {
+    color: #9b9b9b;
+}
 
-    .DataBrowser .ShoppingCart .ShoppingCart_CounterDiv {
-        font-weight: 600;
-        font-size: 1.1em;
-    }
+.DataBrowser .ShoppingCart .ShoppingCart_CounterDiv {
+    font-weight: 600;
+    font-size: 1.1em;
+}
 
-    .DataBrowser .Wizard_Buttons {
-        margin: 0 15px;
-    }
+.DataBrowser .Wizard_Buttons {
+    margin: 0 15px;
+}
 
-        .DataBrowser .Wizard_Buttons .Wizard_Button {
-            margin: 5px;
-            float: right;
-        }
+    .DataBrowser .Wizard_Buttons .Wizard_Button {
+        margin: 5px;
+        float: right;
+    }
 
 .dj_rtl .DataBrowser .Wizard_Buttons .Wizard_Button {
     float: left;
@@ -487,7 +487,7 @@
 .DataCategoryImage.DataCategoryImage_supplyanddemand {
     background-image: url(./images/analysis/Categories_SupplyAndDemand.svg);
 }
-    
+
 .dj_ie8 .DataCategoryImage.DataCategoryImage_supplyanddemand {
     background-image: url(./images/analysis/Categories_SupplyAndDemand.png);
 }
@@ -501,7 +501,7 @@
 .DataCategoryImage.DataCategoryImage_spending {
     background-image: url(./images/analysis/Categories_Spending.svg);
 }
-    
+
 .dj_ie8 .DataCategoryImage.DataCategoryImage_spending {
     background-image: url(./images/analysis/Categories_Spending.png);
 }
@@ -836,7 +836,7 @@
     right: 20px;
     left: 20px;
     width: auto;
-    max-width:350px;
+    max-width: 350px;
 }
 
 .DataCategoriesPage_Pagination {

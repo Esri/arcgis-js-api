@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige rasterkiht või vektorkiht, et arvutada kaugus",maxDistanceLabel:"Arvutatav maksimumkaugus (valikuline)",outputCellSize:"Väljundpiksli suurus (valikuline)",resultDistLayerName:"Kauguse tulemkihi nimi",resultDirectionLayerName:"Suuna tulemkihi nimi (valikuline)",resultAllocationLayerName:"Määramise tulemkihi nimi (valikuline)",outputLayerName:"Kihi ${layername} arvutatud kaugus",allocationFieldLabel:"Vali paiknemist kirjeldav väli (valikuline)",itemDescription:"Objektikiht loodi kihi ${layerName} kauguse arvutamise kaudu. ",itemTags:"Analüüsi tulemus, Arvuta kaugus, ${layername} ${fieldname}",itemSnippet:"Objektikiht loodi kauguse arvutamise kaudu."});

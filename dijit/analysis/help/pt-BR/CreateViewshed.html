@@ -44,13 +44,13 @@
         <h2>Criar Panorama</h2><p/>
         <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Criar Panorama"></h2>
         <hr/>
-    <p>A ferramenta Criar Panorama cria &aacute;reas onde um observador pode visualizar objetos na superf&iacute;cie. Os pontos do observador de entrada podem representar tanto observadores (como as pessoas na superf&iacute;cie ou vigias em uma torre de inc&ecirc;ndio) ou objetos observados (como turbinas e&oacute;licas, torres de &aacute;gua, ve&iacute;culos ou outras pessoas). As &aacute;reas resultantes s&atilde;o aquelas &aacute;reas onde os observadores podem visualizar os objetos observados e vice-versa: os objetos observados podem visualizar os observadores.
+    <p>A ferramenta Criar Panorama cria &aacute;reas onde um observador pode visualizar objetos na superf&iacute;cie. Os pontos do observador de entrada podem representar observadores (como as pessoas na superf&iacute;cie ou vigias em uma torre de inc&ecirc;ndio) ou objetos observados (como turbinas e&oacute;licas, torres de &aacute;gua, ve&iacute;culos ou outras pessoas). As &aacute;reas resultantes s&atilde;o aquelas &aacute;reas onde os observadores podem visualizar os objetos observados e vice-versa: os objetos observados podem visualizar os observadores.
     </p>
     <p>Ambos os observadores e os objetos observados podem ter uma altura acima da superf&iacute;cie e estas alturas s&atilde;o utilizadas para determinar a visibilidade. Por exemplo, um panorama computado de turbinas de ventos de 400 p&eacute;s e pessoas de seis p&eacute;s de altura no solo normalmente ser&atilde;o maiores que um panorama computado para turbinas de 200 p&eacute;s e pessoas de seis p&eacute;s de altura.
     </p>
     <p>Note que o c&aacute;lculo do panorama n&atilde;o leva em conta as obstru&ccedil;&otilde;es tais como, &aacute;rvores ou edif&iacute;cios. Voc&ecirc; pode pensar sobre o c&aacute;lculo como acontecendo na superf&iacute;cie destitu&iacute;da de qualquer coisa exceto o observador e os objetos observados.
     </p>
-    <p>A camada resultante cont&eacute;m fei&ccedil;&otilde;es de &aacute;rea representando &aacute;reas vis&iacute;veis. O campo  <i>Frequ&ecirc;ncia</i> registra o n&uacute;mero de pontos do observador que pode visualizar cada &aacute;rea. Por exemplo, se voc&ecirc; tiver cinco pontos de entrada, cada um representando uma torre de vigia de inc&ecirc;ndio, o campo <i>Frequ&ecirc;ncia</i> ter&aacute; valores entre um e cinco; &aacute;reas com um valor de um podem somente ser visualizadas por uma torre e &aacute;reas com um valor de cinco podem ser visualizadas por todas as torres. A camada resultante tamb&eacute;m cont&eacute;m o campo <i>Resolu&ccedil;&atilde;o do DEM</i>, que registra a resolu&ccedil;&atilde;o do modelo de eleva&ccedil;&atilde;o digital (DEM) utilizado para criar o panorama.
+    <p>A camada resultante cont&eacute;m fei&ccedil;&otilde;es de &aacute;rea representando &aacute;reas vis&iacute;veis. O campo  <i>Frequency</i> registra o n&uacute;mero de pontos do observador que pode visualizar cada &aacute;rea. Por exemplo, se voc&ecirc; tiver cinco pontos de entrada, cada um representando uma torre de vigia de inc&ecirc;ndio, o campo <i>Frequency</i> ter&aacute; valores entre um e cinco; &aacute;reas com um valor de um podem somente ser visualizadas por uma torre e &aacute;reas com um valor de cinco podem ser visualizadas por todas as torres. A camada resultante tamb&eacute;m cont&eacute;m o campo <i>DEMResolution</i>, que registra a resolu&ccedil;&atilde;o do modelo de eleva&ccedil;&atilde;o digital (DEM) utilizado para criar o panorama.
     </p>
     <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente os pontos do observador que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisados.  Se n&atilde;o selecionada, todos os pontos do observador na camada de entrada ser&atilde;o analisados, mesmo que estiverem fora da extens&atilde;o de mapa atual.
     </p>
@@ -60,8 +60,7 @@
         <div><h2>Feições de ponto que representam locais do observador</h2></div>
         <hr/>
         <div>
-            <p>As fei&ccedil;&otilde;es de ponto para utilizar como os locais do observador.
-
+            <p>As fei&ccedil;&otilde;es de ponto para utilizar como os locais do observador. 
             </p>
             <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> ou <b>Escolher  Camada de An&aacute;lise</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p>
@@ -108,9 +107,11 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se o nome da camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            <p>Ao utilizar o menu suspenso  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+            <p> A execu&ccedil;&atilde;o desta ferramenta n&atilde;o consome cr&eacute;ditos.
             </p>
         </div>
     </div>

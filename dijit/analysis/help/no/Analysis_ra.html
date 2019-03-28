@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;yene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b> og <b>Administrer data</b>.
+        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;ysettene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Bruk n&aelig;rhet</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b>, <b>Administrer data</b> og <b>Dyp l&aelig;ring</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Bruk rasterfunksjonsmal</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Bruk rasterfunksjonsmal">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Opprett et nytt geoobjektdatasett fra et eksisterende rasterdatasett.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Verktøysettet Dyp læring</h2>
+        <hr/>
+        <p>Disse verkt&oslash;yene brukes til &aring; p&aring;vise bestemte elementer i et bilde eller til &aring; klassifisere piksler i et rasterdatasett. Dyp l&aelig;ring er en form for kunstig intelligens-basert maskinl&aelig;ringsmetode som p&aring;viser karakteristiske elementer i bildemateriale ved hjelp av flere lag i nevrale nettverk der hvert enkelt lag er i stand til &aring; trekke ut ett eller flere unike elementer i bildet. Disse verkt&oslash;yene bruker modeller som er blitt trent opp til &aring; p&aring;vise bestemte elementer i tredjeparts rammeverk for dyp l&aelig;ring &ndash;&nbsp;eksempelvis TensorFlow, CNTK og Keras&nbsp;&ndash; og resultere i geoobjekter eller kart over klasser som utdata.
+            <ul>
+                <li> <b>Klassifiser piksler ved hjelp av dyp l&aelig;ring</b> produserer et klassifisert raster ved hjelp av en opptrent modell for dyp l&aelig;ring.
+                </li>
+                <li> <b>P&aring;vis objekter ved hjelp av dyp l&aelig;ring</b> produserer en geoobjektklasse den finner i et inndataraster ved hjelp av en opptrent modell for dyp l&aelig;ring.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassifiser piksler ved hjelp av dyp læring</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klassifiser piksler ved hjelp av dyp l&aelig;ring">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere et klassifisert raster, og hver gyldige piksel har en tilordnet klassemerking.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Påvis objekter ved hjelp av dyp læring</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="P&aring;vis objekter ved hjelp av dyp l&aelig;ring">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere en geoobjektklasse som inneholder objektene det finner. Geoobjektene kan v&aelig;re avgrensende rammer eller polygoner rundt objektene som er funnet, eller punkter i objektenes sentrum.
             </p>
             <br/>
         </div>

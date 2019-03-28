@@ -7,6 +7,14 @@
     overflow: hidden;
 }
 
+    
+
+    
+    .esriGESimpleInfographic > div > .esriGEReportPlayer_section {
+        width: 0px !important;
+        height: 0px !important;
+    }
+
     .esriGESimpleInfographic .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField.hasNumericVariableFieldInfo > .valueField_contentBlock > .valueField_valueBlock > .valueField_valueLabel {
         white-space: nowrap;
     }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({addBarriers:"Vælg grænselag",pointBarrier:"Punktgrænser",lineBarrier:"Linjegrænser",polygonBarrier:"Polygongrænser",choosePointBarrier:"Vælg punktgrænselag",chooseLineBarrier:"Vælg linjegrænselag",choosePolygonBarrier:"Vælg polygongrænselag",selectPointBarrier:"Vælg punktgrænser",selectLineBarrier:"Vælg linjegrænser",selectPolygonBarrier:"Vælg polygongrænser"});

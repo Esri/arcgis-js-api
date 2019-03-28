@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבת רסטר או שכבת מיקומים של ישויות כדי לחשב את המרחק אליהם",maxDistanceLabel:"מרחק מרבי לחישוב (אופציונלי)",outputCellSize:"פלט גודל תא (אופציונלי)",resultDistLayerName:"הצג בתוצאה את שם שכבת המרחק",resultDirectionLayerName:"הצג בתוצאה את שם שכבת הכיוון (אופציונלי)",resultAllocationLayerName:"הצג בתוצאה את שם שכבת ההקצאה (אופציונלי)",outputLayerName:"המרחק המחושב של ‎${layername}‎",allocationFieldLabel:"בחר שדה הקצאה (אופציונלי)",itemDescription:"שכבת הישויות נוצרה מהפעלה של חישוב המרחק בשכבה ‎${layerName}‎. ",itemTags:"תוצאת הניתוח, CalculateDistance, ‏‎${layername}‎, ‏‎${fieldname}",itemSnippet:"שכבת הישויות נוצרה באמצעות CalculateDistance."});

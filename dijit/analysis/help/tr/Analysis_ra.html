@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b> ve <b>Veriyi Y&ouml;net</b>.
+        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>Yakınlık Kullan</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b>, <b>Veriyi Y&ouml;net</b> ve <b>Derin &Ouml;ğrenme</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Raster İşlev Şablonunu Uygula</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Raster Fonksiyon Şablonunu Uygula">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Mevcut bir raster veri k&uuml;mesinden yeni bir detay veri k&uuml;mesi oluşturun.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Derin Öğrenme Araç Seti</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar g&ouml;r&uuml;nt&uuml;deki belirli detayları tespit etmek veya bir raster veri k&uuml;mesindeki pikselleri sınıflandırmak i&ccedil;in kullanılır. Derin &ouml;ğrenme, g&ouml;r&uuml;nt&uuml;deki detayları, her bir katmanın g&ouml;r&uuml;nt&uuml;de bir veya daha fazla benzersiz detay &ccedil;ıkarabildiği sinir ağlarındaki &ccedil;oklu katmanları kullanarak algılayan bir t&uuml;r yapay zeka makinesi &ouml;ğrenme y&ouml;ntemidir. Bu ara&ccedil;lar, TensorFlow, CNTK ve Keras gibi &uuml;&ccedil;&uuml;nc&uuml; taraf derin &ouml;ğrenme &ccedil;er&ccedil;evelerindeki belirli detayları ve &ccedil;ıktı detaylarını veya sınıf haritalarını belirlemek i&ccedil;in eğitilmiş modelleri kullanır.
+            <ul>
+                <li> <b>Derin &Ouml;ğrenme Kullanarak Pikselleri Sınıflandır</b>, eğitilmiş bir derin &ouml;ğrenme modeli kullanarak sınıflandırılmış bir raster &uuml;retir.
+                </li>
+                <li> <b>Derin &Ouml;ğrenme Kullanarak Nesneleri Algıla</b>, eğitilmiş bir derin &ouml;ğrenme modeli kullanarak bir girdi rasterında bulduğu nesneleri i&ccedil;eren bir detay sınıfı &uuml;retir.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Derin Öğrenme Kullanarak Pikselleri Sınıflandır</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Derin &Ouml;ğrenme Kullanarak Pikselleri Sınıflandır">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Derin Öğrenme Kullanarak Nesneleri Algıla</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Derin &Ouml;ğrenme Kullanarak Nesneleri Algıla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

@@ -44,7 +44,7 @@
         <h2>Tuvasta juhtumid</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Tuvasta juhtumid"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist kasutab ajateadlikku punktide, joonte, alade v&otilde;i tabelite kihti, mis kujutab endast &uuml;hte ajahetke. T&ouml;&ouml;riist m&auml;&auml;ratleb j&auml;rjestatud objektide (radade) abil, millised objektid on huvipakkuvad juhtumid. Juhtumid m&auml;&auml;ratletakse teie m&auml;&auml;ratud tingimuste alusel. 
+    <p> See t&ouml;&ouml;riist kasutab ajateadlikku punktide, joonte, alade v&otilde;i tabelite kihti, mis kujutab endast &uuml;hte ajahetke.   T&ouml;&ouml;riist m&auml;&auml;ratleb j&auml;rjestatud objektide (radade) abil, millised objektid on huvipakkuvad juhtumid. Juhtumid m&auml;&auml;ratletakse teie m&auml;&auml;ratud tingimuste alusel.
     </p>
     <p>K&otilde;igepealt teeb t&ouml;&ouml;riist &uuml;he v&otilde;i mitme v&auml;lja abil kindlaks, millised objektid raja juurde kuuluvad. Rajad j&auml;rjestatakse iga objekti aja alusel ja rakendatakse juhtumi tingimus. Objektid, mis vastavad algava juhtumi tingimusele, m&auml;rgitakse juhtumiteks. Soovi korral saate rakendada ka l&otilde;ppeva juhtumi tingimuse; kui l&otilde;putingimus on t&otilde;ene, ei ole objekt enam juhtum. Tulemused tagastatakse koos algsete objektidega (koos uute veergudega, mis sisaldavad juhtumi nime) ja need n&auml;itavad, millised objektid vastavad juhtumi tingimusele. Saate tagastada kas k&otilde;ik algsed objektid v&otilde;i ainult need objektid, mis on juhtumid.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Punktid, jooned, alad v&otilde;i tabelid, mida kasutatakse juhtumite otsimiseks. Sisendkiht peab olema ajateadlik koos objektidega, mis kujutavad endast ajahetke, ja sellel peab olema v&auml;hemalt &uuml;ks v&auml;li, mida saab kasutada radade tuvastamiseks.
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Koostage juhtumi lõppu märkiv avaldise tingimus</h2></div>
+        <div><h2>Koostage juhtumi lõppu märkiv avaldise tingimus (valikuline)</h2></div>
         <hr/>
         <div>
             <p>Saate avaldisekoosturi abil lisada tingimuse juhtumi l&otilde;pu m&auml;&auml;ratlemiseks. Kui m&auml;&auml;ratud tingimus on t&otilde;ene, ei ole objekt enam juhtum. Kui te l&otilde;putingimust ei m&auml;&auml;ra, l&otilde;peb juhtum siis, kui algustingimus ei ole enam t&otilde;ene.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Valige, kuidas soovite väljundi esitada</h2></div>
+        <div><h2>Näita</h2></div>
         <hr/>
         <div>
             <p>K&otilde;ik v&auml;ljundmeetodid lisavad v&auml;ljad algsetele objektidele. Tagastatavate objektide m&auml;&auml;ratlemiseks on kaks v&otilde;imalust.
                 <ul>
-                    <li> <b>Tagasta ainult juhtumid</b> &ndash; see meetod tagastab ainult need objektid, mis on juhtumid. Objekte, mida juhtumitena ei tuvastata, ei tagastata.
-                    </li>
                     <li> <b>Tagasta k&otilde;ik objektid</b> &ndash; vaikimisi on valitud see. Tagastatakse k&otilde;ik sisendi objektid.
+                    </li>
+                    <li> <b>Tagasta ainult juhtumid</b> &ndash; see meetod tagastab ainult need objektid, mis on juhtumid. Objekte, mida juhtumitena ei tuvastata, ei tagastata.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analüüsi andmeid ajaintervallidega (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake, kui soovite tuvastada juhtumid, mil kasutatakse ajaintervalle, mis segmenteerivad teie sisendobjektid anal&uuml;&uuml;si jaoks. Kui kasutate ajaintervalle, peate seadistama kasutatava ajaintervalli ja valikuliselt seadma viiteaja. Kui te ei seadista viiteaega, kasutatakse 1. jaanuari 1970. 
+            </p>
+            <p>Kui seate ajapiiriks n&auml;iteks 1. p&auml;eva, mis algab 1. jaanuaril 1990. aastal kell 9.00, siis k&auml;rbitakse iga p&auml;ev kell 9.00 k&otilde;iki radasid ja anal&uuml;&uuml;sitakse neid selle segmendi piires. 
+            </p>
+            <p>Ajaintervallide kasutamine on kiire viis arvutusaja l&uuml;hendamiseks, sest sel juhul luuakse anal&uuml;&uuml;si jaoks kiiresti v&auml;iksemad rajad. Kui korduva ajaintervalli jaotamine on teie anal&uuml;&uuml;si jaoks m&otilde;ttekas, siis on see soovitatav mahukate andmete t&ouml;&ouml;tlemise puhul.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> Selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> Loodavakihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale  ja lisatakse  selle manifestifailile. Seda  ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            <p>Kui salvestate admelattu   ArcGIS Data Store (relatsioonilisse v&otilde;i ajalisruumilisse andmelattu), kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>
         </div>
     </div>

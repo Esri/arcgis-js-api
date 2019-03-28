@@ -109,10 +109,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -132,10 +134,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -155,10 +159,12 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -176,11 +182,13 @@
                 </li>
                 <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard- abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
             <p>Je nach Feature-Typen, die Sie zusammenfassen, k&ouml;nnen Sie die Gesamtzahl nahe gelegener Punkte, die Gesamtl&auml;nge nahe gelegener Linien oder die Gesamtfl&auml;che nahe gelegener Fl&auml;chen-Features berechnen.
+            </p>
+            <p>Wenn der entsprechende Layer keine Zahlenfelder aufweist, sind keine zus&auml;tzlichen Statistiken verf&uuml;gbar.
             </p>
         </div>
     </div>
@@ -188,7 +196,7 @@
         <div><h2>Feld für die Gruppierung auswählen</h2></div>
         <hr/>
         <div>
-            <p> Dies ist ein Attribut der nahe gelegenen Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen, der erste Eingabe-Layer (der Layer, von dem aus Entfernungen gemessen werden) enth&auml;lt freie Flurst&uuml;cke, die zum Verkauf stehen, und Ihre nahe gelegenen Features sind Geb&auml;udegrundrisse.  Eines der Attribute der Geb&auml;udegrundrisse ist <i>UseType</i>, das Werte wie RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC usw. enth&auml;lt.  Um die unterschiedlichen Geb&auml;udenutzungen in der N&auml;he der einzelnen, unbebauten Flurst&uuml;cke zu charakterisieren, k&ouml;nnen Sie die Gesamtfl&auml;che jedes eindeutigen Geb&auml;udetyps im Umkreis von zwei Kilometern von den unbebauten Flurst&uuml;cken berechnen, indem Sie <i>UseType</i> als Attribut ausw&auml;hlen, nach dem gruppiert werden soll.   Die Statistiken f&uuml;r jede Gruppe und die Anzahl der nahe gelegenen Features werden im Pop-up des Ergebnis-Layers angezeigt.
+            <p> Dies ist ein Attribut der nahe gelegenen Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen, der erste Eingabe-Layer (der Layer, von dem aus Entfernungen gemessen werden) enth&auml;lt freie Flurst&uuml;cke, die zum Verkauf stehen, und Ihre nahe gelegenen Features sind Geb&auml;udegrundrisse.  Eines der Attribute der Geb&auml;ude-Footprints ist <i>UseType</i>, das Werte wie &quot;RETAIL&quot;, &quot;RESIDENTIAL&quot;, &quot;MANUFACTURING&quot;, &quot;PUBLIC&quot; usw. enth&auml;lt. Um die unterschiedlichen Arten von Geb&auml;udenutzung in der N&auml;he der einzelnen unbebauten Flurst&uuml;cke zu charakterisieren, k&ouml;nnen Sie die Gesamtfl&auml;che jedes eindeutigen Typs von Geb&auml;udenutzung im Umkreis von zwei Kilometern um die unbebauten Flurst&uuml;cke berechnen. W&auml;hlen Sie dazu <i>UseType</i> als Attribut aus, nach dem gruppiert werden soll. Die Statistiken f&uuml;r jede Gruppe und die Anzahl der nahe gelegenen Features werden im Pop-up des Ergebnis-Layers angezeigt.
             </p>    
         </div>
     </div>
@@ -221,9 +229,9 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>
         </div>
     </div>

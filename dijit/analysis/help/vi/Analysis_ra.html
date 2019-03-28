@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Ph&acirc;n t&iacute;ch Raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c tập dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>T&oacute;m tắt Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch C&aacute;c m&ocirc; h&igrave;nh</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b> v&agrave; <b>Quản l&yacute; Dữ liệu</b>.
+        <p>Ph&acirc;n t&iacute;ch Raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c tập dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>Tổng kết Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch C&aacute;c m&ocirc; h&igrave;nh</b>, <b>Sử dụng V&ugrave;ng l&acirc;n cận</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b>, <b>Quản l&yacute; Dữ liệu</b> v&agrave; <b>Deep Learning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -216,8 +216,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Áp dụng Mẫu Chức năng Raster</h2></td>
+                    <td><h2>Áp dụng Raster Function Template</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="&Aacute;p dụng Raster Function Template">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Tạo một tập dữ liệu đối tượng mới từ tập dữ liệu raster hiện c&oacute;.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Bộ công cụ Deep Learning</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được sử dụng để ph&aacute;t hiện đối tượng cụ thể trong h&igrave;nh ảnh hoặc để ph&acirc;n loại pixel trong bộ dữ liệu raster. Deep learning l&agrave; một loại phương ph&aacute;p học m&aacute;y tr&iacute; th&ocirc;ng minh nh&acirc;n tạo sử dụng nhiều lớp trong mạng lưới thần kinh nơi m&agrave; trong đ&oacute; mỗi lớp c&oacute; khả năng tr&iacute;ch xuất một hoặc nhiều đối tượng duy nhất trong h&igrave;nh ảnh để ph&aacute;t hiện c&aacute;c đối tượng trong h&igrave;nh ảnh. Những c&ocirc;ng cụ n&agrave;y sử dụng c&aacute;c m&ocirc; h&igrave;nh đ&atilde; được đ&agrave;o tạo để ph&aacute;t hiện đối tượng cụ thể trong c&aacute;c deep learning framework của b&ecirc;n thứ ba&mdash;như TensorFlow, CNTK v&agrave; Keras&mdash;v&agrave; c&aacute;c đối tượng đầu ra hoặc bản đồ lớp.
+            <ul>
+                <li> <b>Ph&acirc;n loại Pixel sử dụng Deep Learning</b> sử dụng một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo để tạo ra một raster được ph&acirc;n loại.
+                </li>
+                <li> <b>Ph&aacute;t hiện Đối tượng sử dụng Deep Learning</b> sử dụng một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo để tạo ra một lớp đối tượng chứa c&aacute;c đối tượng m&agrave; n&oacute; t&igrave;m thấy trong một raster đầu v&agrave;o.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Phân loại Pixel sử dụng Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Ph&acirc;n loại Pixel sử dụng Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Chạy một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo tr&ecirc;n một raster đầu v&agrave;o để tạo ra một raster được ph&acirc;n loại, theo đ&oacute; mỗi pixel hợp lệ c&oacute; được g&aacute;n một nh&atilde;n lớp.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Phát hiện Đối tượng sử dụng Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Ph&aacute;t hiện Đối tượng sử dụng Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Chạy m&ocirc; h&igrave;nh deep learning tr&ecirc;n một raster đầu v&agrave;o để tạo ra một lớp đối tượng chứa c&aacute;c đối tượng m&agrave; n&oacute; t&igrave;m thấy. Đối tượng c&oacute; thể l&agrave; c&aacute;c v&ugrave;ng bao hoặc đa gi&aacute;c quanh c&aacute;c đối tượng t&igrave;m thấy, hoặc c&aacute;c điểm ở t&acirc;m của đối tượng.
             </p>
             <br/>
         </div>

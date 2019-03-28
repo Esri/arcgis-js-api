@@ -46,8 +46,7 @@
         <hr/>
     <p>See t&ouml;&ouml;riist t&ouml;&ouml;tab punktobjektide kihi ja pindobjektide kihi alusel. T&ouml;&ouml;riist tuvastab esmalt, millised punktid langevad igasse alasse. P&auml;rast vastavasse pindobjekti j&auml;&auml;vate punktide koguarvu m&auml;&auml;ramist arvutatakse ala k&otilde;ikide punktide statistika. K&otilde;ige lihtsam statistika on punktide arv alas, kuid kasutada v&otilde;ib ka muud statistikat. 
     </p>
-    <p>Kirjeldatud meetodit saab kasutada n&auml;iteks olukorras, kui teil on olemas kohvikute asukohad ja pindobjektid teatud maakonnas ning soovite summeerida selle alusel kohvikute m&uuml;&uuml;gitulu maakondade kaupa. Eeldades, et kohvikutel on  <i>TOTAL_SALES</i> atribuut, saate arvutada atribuudi <i>TOTAL_SALES</i> kogusumma igas haldus&uuml;ksuses v&otilde;i leida atribuudi <i>TOTAL_SALES</i>
- miinimumi v&otilde;i maksimumi v&otilde;i m&uuml;&uuml;gituluga seotud standardh&auml;lbe iga vastava haldus&uuml;ksuse kohta.
+    <p>Kirjeldatud meetodit saab kasutada n&auml;iteks olukorras, kui teil on olemas kohvikute asukohad ja pindobjektid teatud maakonnas ning soovite summeerida selle alusel kohvikute m&uuml;&uuml;gitulu maakondade kaupa. Eeldades, et kohvikute kihil on m&auml;&auml;ratud atribuut  <i>TOTAL_SALES</i>, saate selle kaudu summeerida atribuudi <i>TOTAL_SALES</i> v&auml;&auml;rtused igas haldus&uuml;ksuses v&otilde;i leida atribuudi <i>TOTAL_SALES</i> miinimumi ja/v&otilde;i maksimumi igas haldus&uuml;ksuses v&otilde;i m&uuml;&uuml;gitulu standardh&auml;lbe vastavas haldus&uuml;ksuses.
     </p>
     <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, kasutatakse anal&uuml;&uuml;sil ainult neid sisendpunkti- ja alakihi objekte, mis on praegu kaardil n&auml;htavad.  Kui see ruut pole m&auml;rgitud, anal&uuml;&uuml;sitakse k&otilde;iki sisendpunkti- ja alakihi objekte ka siis, kui neid pole praegu kuvataval kaardi osal n&auml;ha.
     </p>
@@ -90,13 +89,15 @@
             <p>Atribuutide sisu alusel on v&otilde;imalik arvutada j&auml;rgmisi statistilisi karakteristikuid: summa, keskmine, miinimum, maksimum ja standardh&auml;lve. Tulemkiht sisaldab t&auml;iendavaid atribuute valitud statistika kohta, mis anal&uuml;&uuml;sil arvutati. Soovitud statistikat on v&otilde;imalik selleks ette n&auml;htud rippmen&uuml;&uuml; kaudu lisada ja eemaldada.
  
             </p>
+            <p>Kui summeeritav kiht ei sisalda arvuv&auml;lju, pole lisastatistika saadaval.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Vali väli, mille järgi rühmitada</h2></div>
         <hr/>
         <div>
-            <p> Saate koostada statistilisi gruppe, kasutades sisendpunktikihis olevat atribuuti.     N&auml;iteks kui agregeerite kuritegusid naabruskonna piiride alusel, v&otilde;ib atribuut <i>Crime_type</i> olla kirjeldatud viie erineva kuriteoliigiga.  Iga eraldi kuriteoliik formeerib grupi ja lisab statistika, mis arvestab atribuudi <i>Crime_type</i> iga unikaalset v&auml;&auml;rtust  Iga grupi statistika ja punktide arv kuvatakse tulemkihi h&uuml;pikaknas. Kui valite atribuudi grupeerimise, luuakse kaks tulemust: tulemikiht ja -tabel, mis sisaldab statistikat iga unikaalse grupi kohta.
+            <p> Saate koostada statistilisi gruppe, kasutades sisendpunktikihis olevat atribuuti.     Kui agregeerite n&auml;iteks kuritegusid naabruskonnapiiride alusel, v&otilde;ib atribuut <i>Crime_type</i> olla kirjeldatud viie erineva kuriteoliigiga. Iga omaette kuriteoliik moodustab grupi; teie valitav statistika arvutatakse atribuudi <i>Crime_type</i> iga ainuv&auml;&auml;rtuse jaoks. Iga grupi statistika ja punktide arv kuvatakse tulemkihi h&uuml;pikaknas. Kui valite atribuudi grupeerimise, luuakse kaks tulemust: tulemikiht ja -tabel, mis sisaldab statistikat iga unikaalse grupi kohta.
             </p>
         </div>
     </div>
@@ -122,9 +123,9 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui samanimeline kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemus salvestatakse.
             </p>
         </div>
     </div>

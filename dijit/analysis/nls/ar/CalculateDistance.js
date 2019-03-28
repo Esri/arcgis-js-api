@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختر الطبقة النقطية أو طبقة موقع المعلم لحساب المسافة إلى",maxDistanceLabel:"أقصى مسافة لحساب (اختياري)",outputCellSize:"حجم الخلية الناتجة (اختياري)",resultDistLayerName:"اسم طبقة المسافة الناتجة",resultDirectionLayerName:"اسم طبقة الاتجاه الناتجة (اختياري)",resultAllocationLayerName:"اسم طبقة التخصيص الناتجة (اختياري)",outputLayerName:"مسافة ${layername} المحسوبة",allocationFieldLabel:"اسم حقل التخصيص (اختياري)",itemDescription:"طبقة الميزة تم إنشاؤها من تشغيل حساب المسافة على ${layerName}. ",itemTags:"نتيجة التحليلات، حساب المسافة، ${layername} ${fieldname}",itemSnippet:"طبقة الميزة تم إنشاؤها من حساب المسافة."});

@@ -79,7 +79,7 @@
                 <ul>
                     <li>Gjeldende synlige kartutstrekning ( <b>Samme som skjerm</b>).
                     </li>
-                    <li>Ett av lagene i innholdsfortegnelsen.
+                    <li>Ett av lagene i innholdsfortegnelsen. Hvis det valgte laget er punkt- eller linjebaserte geoobjekter, blir lagets utstrekning brukt som studieomr&aring;de.
                     </li>
                     <li>Tegn et omr&aring;de for &aring; definere studieomr&aring;det.
                     </li>
@@ -99,9 +99,22 @@
         <div><h2>Utdataformat</h2></div>
         <hr/>
         <div>
-            <p>Formatet p&aring; dataene som trekkes ut. N&aring;r du eksporterer linje- eller omr&aring;degeoobjekter til CSV-filer, er det bare ikke-geografiske attributter som trekkes ut. N&aring;r du eksporterer punktgeoobjekter, trekkes b&aring;de romlige og ikke-romlige attributter ut.  
+            <p>Formatet p&aring; dataene som trekkes ut. N&aring;r du eksporterer linjer eller polygoner til CSV-filer, er det bare ikke-geografiske attributter som trekkes ut. N&aring;r du eksporterer punktgeoobjekter, trekkes b&aring;de romlige og ikke-romlige attributter ut.  
             </p>
             <p>Dataene som trekkes ut, bruker Web Mercator 1984-projeksjon.  For CSV-filer legges feltene  <i>Lat</i> og <i>Long</i> ved dataene med koordinater i Web Mercator 1984.
+            </p> 
+            <p>F&oslash;lgende utdataformater st&oslash;ttes:
+                <ul>
+                    <li>Kommadelt fil (CSV) &ndash;  <code>.csv</code> eller <code>.zip</code>
+                    </li>
+                    <li>Filgeodatabase &ndash;  <code>.zip</code>
+                    </li>
+                    <li>KML-fil (Keyhole Markup Language) &ndash;  <code>.kmz</code> eller <code>.zip</code>
+                    </li>
+                    <li>Shapefile &ndash;  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

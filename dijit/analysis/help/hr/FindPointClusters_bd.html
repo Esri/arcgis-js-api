@@ -46,7 +46,7 @@
         <hr/>
     <p>Alat  Pronađi klastere točaka pronalazi klastere točkastih geoobjekata unutar okolnih podataka na temelju njihove prostorne distribucije.
     </p>
-    <p>Nevladina organizacija proučava određenu bolest koju prenose nametnici. Ima točkasti skup podataka koji predstavlja kućanstva u radnom području od kojih su neka zaražena, a neka nisu. Upotrebom alata  Pronađi klastere točaka analitičar može odrediti klastere zaraženih kućanstava kako bi se pomoglo odrediti područje za početak tretiranja i istrebljivanja nametnika.
+    <p>Primjerice, nevladina organizacija proučava određenu bolest koju prenose nametnici. Ima točkasti skup podataka koji predstavlja kućanstva u radnom području od kojih su neka zaražena, a neka nisu. Upotrebom alata  Pronađi klastere točaka analitičar može odrediti klastere zaraženih kućanstava kako bi se pomoglo odrediti područje za početak tretiranja i istrebljivanja nametnika.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,19 @@
         <div>
             <p>Točkasti sloj u kojem se nalaze klasteri. Slojevi moraju biti u predviđenoj prostornoj referenci ili imati prostornu referencu koja se obrađuje postavljenu u predviđenom koordinatnom sustavu pomoću  <b>Okruženja za analizu</b>.
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            </p>
+        </div>
+    </div>
+    <div id="clusterMethod">
+        <div><h2>Izaberite metodu klastera za upotrebu</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda klastera koja će se upotrijebiti za razlikovanje klastera točkastih geoobjekata od okolne buke. Možete odabrati definiranu udaljenost ili algoritam za grupiranje koji se samostalno prilagođava.
+            </p>
+            <p>Definirana udaljenost (DBSCAN) upotrebljava određeni raspon pretraživanja za razdvajanje gustih klastera od slabije buke. Definirana je udaljenost (DBSCAN) brža, ali je prikladna samo ako postoji vrlo jasan raspon pretraživanja koji je dobar za definiranje svih klastera koji mogu biti prisutni. Definirana udaljenost (DBSCAN) pronalazi klastere koji imaju slične gustoće.
+            </p>
+            <p>Samostalna prilagodba (HDBSCAN) ne zahtijeva određivanje raspona pretraživanja, ali to je metoda koja zahtijeva vi&scaron;e vremena. Samostalna prilagodba (HDBSCAN) pronalazi klastere točaka sličnih definiranoj udaljenosti (DBSCAN), ali koristi različite raspone pretraživanja koji omogućuju klastere različitih gustoća. 
             </p>
         </div>
     </div>
@@ -64,7 +76,16 @@
         <div><h2>Minimalni broj točaka koji će se smatrati klasterom</h2></div>
         <hr/>
         <div>
-            <p>Minimalni broj geoobjekata za nastanak klastera.
+            <p>Ovaj se parametar upotrebljava drugačije, ovisno o odabranoj metodi grupiranja:
+            </p>
+            <p>
+                <ul>
+                    <li>Definirana udaljenost (DBSCAN) &ndash; određuje broj geoobjekata koji se mora naći unutar određene udaljenosti od točke za tu točku kako bi se počeo formirati klaster. Udaljenost se definira pomoću parametra  <b>Ograniči raspon pretraživanja na</b>.
+                    </li>
+                    <li>Samostalna prilagodba  (HDBSCAN) &ndash; određuje broj geoobjekata koji se nalazi pored svake točke (uključujući i samu točku) koji će se uzeti u obzir pri procjeni gustoće. Taj je broj i najmanja dopu&scaron;tena veličina klastera pri izdvajanju klastera.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -72,7 +93,7 @@
         <div><h2>Ograniči raspon pretraživanja na</h2></div>
         <hr/>
         <div>
-            <p>Maksimalna udaljenost da bi se geoobjekti smatrali dijelom istog klastera.
+            <p>Kada se koristi definirana udaljenost (DBSCAN), ovaj parametar je udaljenost unutar koje se mora pronaći  <b>minimalni broj točaka koji će se smatrati klasterom</b>. Ovaj se parametar ne upotrebljava kada se kao metoda grupiranja odabere samostalna prilagodba (HDBSCAN).
             </p>
         </div>
     </div>
@@ -80,9 +101,9 @@
         <div><h2>Naziv sloja rezultata</h2></div>
         <hr/>
         <div>
-            <p> Naziv sloja koji će se stvoriti u stavci <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
             </p>
-            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            <p>Kada pi&scaron;ete na  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka), upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
             </p>
         </div>
     </div>

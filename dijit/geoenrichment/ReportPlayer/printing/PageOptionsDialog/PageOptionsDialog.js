@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/aspect","./PageOptionsDialogContent","dijit/Dialog","esri/dijit/geoenrichment/ReportPlayer/PlayerCommands","dojo/i18n!esri/nls/jsapi"],function(i,n,o,t,e,a){a=a.geoenrichment.dijit.ReportPlayer.PageOptionsDialog;var l;return i(null,{_dialog:null,show:function(i){function d(i){g._dialog&&(l=s.getSettings(),i&&g.onCancel(),g._dialog.destroy(),g._dialog=null)}var g=this;if(!this._dialog||!this._dialog.open){var s=new o({onPrint:function(){g.onPrint(s.getSettings()),d(!1)},onCancel:function(){d(!0)}});this._dialog=new t({title:i.commandId===e.PRINT?a.dialogTitlePrint:a.dialogTitleExport,content:s}),this._dialog.own(s),this._dialog.show(),this._dialog.own(n.after(this._dialog,"hide",function(){d(!0)})),s.update(i),l&&s.setState(l)}},onPrint:function(i){},onCancel:function(){}})});

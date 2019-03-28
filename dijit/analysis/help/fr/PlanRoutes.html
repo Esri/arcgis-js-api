@@ -92,7 +92,7 @@
         </div>
     </div>
     <div id="startLayer">
-        <div><h2>Les itinéraires commencent à</h2></div>
+        <div><h2>Les itinéraires commencent aux arrêts</h2></div>
         <hr/>
         <div>
             <p>Indiquez le lieu et l'heure auxquels les v&eacute;hicules d&eacute;butent leurs itin&eacute;raires.
@@ -110,7 +110,7 @@
         </div>
     </div>
     <div id="endLayer">
-        <div><h2>Les itinéraires se terminent à</h2></div>
+        <div><h2>Les itinéraires se terminent aux arrêts</h2></div>
         <hr/>
         <div>
             <p>Indiquez l'endroit o&ugrave; les v&eacute;hicules terminent leurs itin&eacute;raires.
@@ -135,16 +135,16 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Ajouter des couches d’interruptions</h2></div>
+        <div><h2>Sélectionner les couches d’interruptions</h2></div>
         <hr/>
         <div>
-            <p> Pr&eacute;cisez une ou plusieurs entit&eacute;s qui agissent comme restrictions temporaires (en d&rsquo;autres termes, les interruptions) lors du d&eacute;placement dans les rues sous-jacentes. Vous pouvez pr&eacute;ciser les interruptions &agrave; l&rsquo;aide d&rsquo;entit&eacute;s ponctuelles, lin&eacute;aires ou surfaciques.
+            <p> Une ou plusieurs entit&eacute;s qui agissent comme restrictions temporaires (en d&rsquo;autres termes, les interruptions) lors du d&eacute;placement dans les rues sous-jacentes. Vous pouvez pr&eacute;ciser les interruptions &agrave; l&rsquo;aide d&rsquo;entit&eacute;s ponctuelles, lin&eacute;aires ou surfaciques.
             </p>
             <p>Une interruption ponctuelle peut mod&eacute;liser un arbre au sol, un accident, une ligne &eacute;lectrique &agrave; terre, ou tout &eacute;l&eacute;ment qui bloque le trafic &agrave; un emplacement donn&eacute; dans la rue. Le d&eacute;placement est autoris&eacute; sur la rue, hormis franchir l&rsquo;interruption. Vous pouvez pr&eacute;ciser jusqu&rsquo;&agrave; 250&nbsp;&eacute;l&eacute;ments comme interruptions ponctuelles.
             </p>
             <p>Une interruption lin&eacute;aire interdit le d&eacute;placement l&agrave; o&ugrave; l&rsquo;interruption intersecte les rues. Par exemple, un d&eacute;fil&eacute; ou une manifestation qui bloque la circulation sur plusieurs segments de rue peut &ecirc;tre mod&eacute;lis&eacute; avec une interruption lin&eacute;aire. Si le nombre d&rsquo;entit&eacute;s de rue intersect&eacute;es par toutes les interruptions lin&eacute;aires d&eacute;passe&nbsp;500, l&rsquo;outil renvoie une erreur.
             </p>
-            <p>Une interruption polygonale interdit le d&eacute;placement l&agrave; o&ugrave; le polygone intersecte les rues. Une utilisation de ce type d&rsquo;interruption consiste &agrave; mod&eacute;liser les inondations couvrant les zones du r&eacute;seau routier et &agrave; identifier la circulation sur la route comme impossible &agrave; ces emplacements pr&eacute;cis. Si le nombre d&rsquo;entit&eacute;s de rue intersect&eacute;es par toutes les interruptions polygonales est sup&eacute;rieur &agrave;&nbsp;2&nbsp;000, l&rsquo;outil renvoie une erreur.
+            <p>Une interruption polygonale interdit le d&eacute;placement l&agrave; o&ugrave; le polygone intersecte les rues. Une utilisation de ce type d&rsquo;interruption consiste &agrave; mod&eacute;liser les inondations couvrant les zones du r&eacute;seau routier et &agrave; identifier la circulation sur la route comme impossible &agrave; ces emplacements pr&eacute;cis. Si le nombre d&rsquo;entit&eacute;s de rue intersect&eacute;es par toutes les interruptions polygonales est sup&eacute;rieur &agrave; 2&nbsp;000, l&rsquo;outil renvoie une erreur.
             </p>
         </div>
     </div>
@@ -230,9 +230,9 @@
         <div>
             <p>Le nom de la couche d'entit&eacute;s qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Si la couche d'entit&eacute;s existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom. La couche d'entit&eacute;s contiendra une couche pour chacun des &eacute;l&eacute;ments suivants&nbsp;: itin&eacute;raires, arr&ecirc;ts attribu&eacute;s et arr&ecirc;ts non attribu&eacute;s lorsque certains arr&ecirc;ts n'ont pas pu &ecirc;tre attribu&eacute;s &agrave; un itin&eacute;raire.
             </p>
-            <p>Si vous s&eacute;lectionnez  <b>Inclure les couches d'itin&eacute;raires</b>, chaque itin&eacute;raire du r&eacute;sultat est &eacute;galement enregistr&eacute; en tant que couche d'itin&eacute;raires. Une couche d'itin&eacute;raires comprend toutes les informations associ&eacute;es &agrave; un itin&eacute;raire en particulier, telles que les arr&ecirc;ts attribu&eacute;s &agrave; l'itin&eacute;raire et les feuilles de route. La cr&eacute;ation de couches d'itin&eacute;raires est utile si vous voulez partager les itin&eacute;raires individuels avec d'autres membres de votre organisation ou si vous souhaitez modifier davantage les itin&eacute;raires &agrave; l'aide du bouton <b>Feuille de route</b> dans la visionneuse de carte. Les couches d'itin&eacute;raires utilisent le nom fourni pour la couche d'entit&eacute;s comme pr&eacute;fixe, et le nom de l'itin&eacute;raire g&eacute;n&eacute;r&eacute; dans le cadre de l'analyse est ajout&eacute; pour conf&eacute;rer un nom unique &agrave; chaque couche d'itin&eacute;raires.
+            <p>Si vous s&eacute;lectionnez  <b>Inclure les couches d'itin&eacute;raires</b>, chaque itin&eacute;raire du r&eacute;sultat est &eacute;galement enregistr&eacute; en tant que couche d'itin&eacute;raires. Une couche d&rsquo;itin&eacute;raire comprend toutes les informations associ&eacute;es &agrave; un itin&eacute;raire en particulier, telles que les arr&ecirc;ts attribu&eacute;s &agrave; l&rsquo;itin&eacute;raire et les feuilles de route. La cr&eacute;ation de couches d&rsquo;itin&eacute;raire est utile si vous voulez partager les itin&eacute;raires individuels avec d&rsquo;autres membres de votre organisation ou si vous souhaitez poursuivre la modification des itin&eacute;raires &agrave; l&rsquo;aide du bouton <b>Directions (Feuille de route)</b> dans la visionneuse de carte. Les couches d&rsquo;itin&eacute;raire utilisent le nom fourni pour la couche d&rsquo;entit&eacute;s comme pr&eacute;fixe, et le nom de l&rsquo;itin&eacute;raire g&eacute;n&eacute;r&eacute; dans le cadre de l&rsquo;analyse qui est ajout&eacute; pour conf&eacute;rer un nom unique &agrave; chaque couche d&rsquo;itin&eacute;raire.
             </p>
-            <p>La liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; la couche d'entit&eacute;s et les couches d'itin&eacute;raires, si elles sont cr&eacute;&eacute;es, seront enregistr&eacute;es.
+            <p>Le menu d&eacute;roulant  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My Content (Mon contenu)</b> dans lequel la couche d&rsquo;entit&eacute;s et les couches d&rsquo;itin&eacute;raire, si elles sont cr&eacute;&eacute;es, seront enregistr&eacute;es.
             </p>
         </div>
     </div>

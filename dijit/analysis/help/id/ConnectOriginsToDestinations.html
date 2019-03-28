@@ -105,7 +105,7 @@
                     <li>
                         <p>Hapus centang  <b>Gunakan Lalu Lintas</b> untuk menemukan rute tercepat berdasarkan kecepatan tetap.
                         </p>
-                        <p>Ini adalah opsi untuk memilih jika Anda menginginkan pengukuran waktu mengemudi secara umum, bukan yang dihitung menggunakan kondisi lalu lintas yang berubah untuk waktu keberangkatan spesifik.
+                        <p>Ini adalah opsi untuk dipilih jika Anda menginginkan pengukuran waktu mengemudi secara umum, bukan yang dihitung menggunakan kondisi lalu lintas yang berubah untuk waktu keberangkatan spesifik.
                         </p>
                     </li>
                     <li>
@@ -116,9 +116,9 @@
                     <li>
                         <p>Dengan mencentang  <b>Gunakan Lalu Lintas</b> dan memilih <b>Lalu Lintas berdasarkan kondisi khusus</b> hari dan waktu, alat tersebut menemukan rute tercepat berdasarkan kecepatan rata-rata historis untuk setiap interval lima menit lintas minggu secara rutin. Hasil menyertakan lalu lintas tapi menghapus pengaruh kondisi dan peristiwa lalu lintas saat ini, yang mungkin beragam secara signifikan dari norma.
                         </p>
-                        <p>Anda dapat menggunakan pengaturan lalu lintas historis untuk menanyakan, misalnya, &quot;Berapa lama secara umum waktu yang diperlukan untuk mencapai tujuan ini ketika berangkat pukul 11:30 a.m. pada hari Rabu?&quot;
+                        <p>Anda dapat menggunakan pengaturan lalu lintas historis untuk menanyakan, misalnya, &quot;Berapa lama secara umum waktu yang diperlukan untuk mencapai tujuan ini ketika berangkat pukul 11:30 siang pada hari Rabu?&quot;
                         </p>
-                        <p>Waktu yang Anda tetapkan merujuk pada zona waktu tempat asal Anda berada. Jadi jika Anda menetapkan waktu ke pukul 8:00 a.m. dan memiliki dua asal, satu di Kota New York dan lainnya di Los Angeles, rute akan dibuat untuk waktu keberangkatan pukul 8:00 a.m. Waktu Timur dan 8:00 pagi Waktu Pasifik, masing-masing.
+                        <p>Waktu yang Anda tetapkan merujuk pada zona waktu tempat asal Anda berada. Jadi jika Anda menetapkan waktu ke pukul 8:00 pagi dan memiliki dua asal, satu di Kota New York dan lainnya di Los Angeles, rute akan dibuat untuk waktu keberangkatan pukul 8:00 pagi. Waktu Timur dan 8:00 pagi Waktu Pasifik, masing-masing.
                         </p>
                     </li>
                 </ul>
@@ -131,10 +131,10 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Tambah Layer Penghalang</h2></div>
+        <div><h2>Pilih layer penghalang</h2></div>
         <hr/>
         <div>
-            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            <p> Satu atau lebih fitur yang bertindak sebagai pembatas sementara (penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, atau poligon.
             </p>
             <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
             </p>
@@ -148,13 +148,13 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Nama feature layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Jika feature layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain. Feature layer akan mengandung layer untuk masing-masing dari: rute, asal yang belum ditentukan, dan tujuan yang belum ditentukan ketika beberapa asal tidak dapat dihubungkan dengan tujuannya.
+            <p>Nama feature layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Jika feature layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain. Feature layer akan berisi layer untuk masing-masing berikut: rute, asal yang belum ditentukan, dan tujuan yang belum ditentukan ketika beberapa asal tidak dapat dihubungkan dengan tujuannya.
             </p>
-            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individu dengan anggota lain di organisasi Anda atau jika Anda ingin memodifikasi rute lebih lanjut dengan menggunakan tombol <b>Arah</b> pada penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
+            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individu dengan anggota lain di organisasi Anda atau untuk memodifikasi rute lebih lanjut dengan menggunakan tombol <b>Arah</b> pada penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, yang ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
             </p>
             <p>Jumlah maksimum layer rute yang dapat dibuat adalah 1.000. Jika hasil berisi lebih dari 1.000 rute dan  <b>Sertakan layer rute</b> dicentang, maka alat hanya akan membuat feature service output.
             </p>
-            <p> <b>Simpan hasil</b> dengan menggunakan kotak tarik-turun, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil. Jika feature layer dan layer rute dibuat, juga akan disimpan disini.
+            <p> <b>Simpan hasil</b> dengan menggunakan menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil. Jika feature layer dan layer rute dibuat, juga akan disimpan disini.
             </p>
         </div>
     </div>

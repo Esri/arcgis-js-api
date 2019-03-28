@@ -16,6 +16,7 @@
         background-color: rgba(0,0,0,0.01); 
         text-align: right;
         padding-top: 10px;
+        font-size: 0px; 
     }
 
 
@@ -57,7 +58,7 @@
     background-position: center;
     width: 24px;
     height: 24px;
-    background-image: url("../images/closeWindowWhite.svg");
+    background-image: url("../images/close/closeWindowWhite.svg");
     cursor: pointer;
 }
 

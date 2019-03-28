@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>栅格分析允许使用  ArcGIS Image Server 执行大型栅格数据集分析。该工具允许通过整合服务器能力以更快地分析更多数据。当前可通过  Portal for ArcGIS web 用户体验获取的工具集包括<b>汇总数据</b>、 <b>分析模式</b>、 <b>分析影像</b>、 <b>分析 Terrain</b> 和 <b>管理数据</b>。
+        <p>栅格分析允许使用  ArcGIS Image Server 执行大型栅格数据集分析。该工具允许通过整合服务器能力以更快地分析更多数据。当前可通过  Portal for ArcGIS web 用户体验获取的工具集包括：<b>汇总数据</b>、 <b>分析模式</b>、 <b>邻近分析</b>、 <b>分析影像</b>、 <b>分析 Terrain</b>、 <b>管理数据</b>和 <b>深度学习</b>。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>应用栅格函数模板</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="应用栅格函数模板">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>根据现有栅格数据集创建新要素数据集。
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="smallsize">
+        <h2>工具集深度学习</h2>
+        <hr/>
+        <p>这些工具可用于检测影像中的特定要素或对栅格数据集中的像素进行分类。深度学习是一种人工智能机器学习方法，可以使用神经网络中的多个图层检测影像中的要素，其中每个图层都能提取影像中的一个或多个唯一要素。这些工具使用经过训练的模型检测第三方深度学习框架（例如 TensorFlow、CNTK 和 Keras）中的特定要素和输出要素或类地图。
+            <ul>
+                <li> <b>使用深度学习对像素进行分类</b>可以使用经过训练的深度学习模型生成分类栅格。
+                </li>
+                <li> <b>使用深度学习检测对象</b>可以使用经过训练的深度学习模型生成要素类，该要素类包含输入栅格中的对象。
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用深度学习对像素进行分类</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="使用深度学习对像素进行分类">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>用于运行输入栅格上的训练深度学习模型，以生成分类栅格，其中每个有效像素都被分配了一个类标注。
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用深度学习检测对象</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="使用深度学习检测对象">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>用于运行输入栅格上的训练深度学习模型，以生成包含其找到对象的要素类。这些要素可以是所找到对象周围的边界框或面，也可以是对象中心的点。
             </p>
             <br/>
         </div>

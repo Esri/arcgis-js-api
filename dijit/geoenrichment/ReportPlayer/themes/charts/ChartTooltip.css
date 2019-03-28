@@ -27,8 +27,7 @@
         margin-right: 20px;
     }
 
-.esriGEChartContainer_chartTooltip_masterTooltip,
-.esriGEChartContainer_chartTooltip_containerNode {
+.esriGEChartContainer_chartTooltip_masterTooltip {
     width: auto !important;
     max-width: initial !important;
 }

@@ -590,7 +590,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Hallitse aineistoa</h2>
         <hr/>
         <p>N&auml;it&auml; ty&ouml;kaluja k&auml;ytet&auml;&auml;n sek&auml; maantieteellisten tietojen p&auml;ivitt&auml;isess&auml; hallinnassa ett&auml; tietojen yhdist&auml;misess&auml; ennen analyysi&auml;.  
@@ -599,9 +599,11 @@
                 </li>
                 <li> <b>Pura aineisto</b> luo uusia tiedostoja hakemalla kohteet olemassa olevista tiedoistasi.
                 </li>
+                <li> <b>Luo tesseloinnit</b> luo tesseloinnit aineiston laajuuden perusteella.
+                </li>
                 <li> <b>Yhdist&auml; karttatasot</b> kopioi kaikki kohteet kahdesta tai useammasta olemassa olevasta karttatasosta uuteen karttatasoon.
                 </li>
-                <li> <b>P&auml;&auml;llekk&auml;isyysanalyysi</b>-ty&ouml;kalu yhdist&auml;&auml; kaksi tai useampia karttatasoja yhdeksi tasoksi.  P&auml;&auml;llekk&auml;isyysanalyysi yhdist&auml;&auml; tavallaan karttapinon kaikkien karttojen tiedot yhteen karttaan.
+                <li> <b>Kerrostasot</b>&nbsp;yhdist&auml;&auml; v&auml;hint&auml;&auml;n kaksi karttatasoa yhdeksi karttatasoksi. P&auml;&auml;llekk&auml;isyysanalyysi yhdist&auml;&auml; tavallaan karttapinon kaikkien karttojen tiedot yhteen karttaan.
                 </li>
             </ul>
             
@@ -620,7 +622,7 @@
 <hr/>
             <p>P&auml;&auml;llekk&auml;iset tai yhteisen rajan jakavat alueet yhdistet&auml;&auml;n yhdeksi alueeksi.    
             </p>
-            <p>M&auml;&auml;ritt&auml;m&auml;ll&auml; kent&auml;n voi m&auml;&auml;ritt&auml;&auml;, mitk&auml; rajat yhdistet&auml;&auml;n. Esimerkiksi jos taso koostuu piirikunnista ja jos jokainen piirikunta sis&auml;lt&auml;&auml; ominaisuuden  <i>State_Name</i>, voit sulauttaa rajoja k&auml;ytt&auml;m&auml;ll&auml; ominaisuutta <i>State_Name</i>.  Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama arvo ominaisuudelle <i>State_Name</i>.  Tuloksena on osavaltion rajojen mukainen taso.
+            <p>M&auml;&auml;ritt&auml;m&auml;ll&auml; kent&auml;n voi m&auml;&auml;ritt&auml;&auml;, mitk&auml; rajat yhdistet&auml;&auml;n. Jos taso koostuu esimerkiksi Yhdysvaltain piirikunnista ja jokainen piirikunta sis&auml;lt&auml;&auml;  <i>State_Name</i>-ominaisuuden, voit sulauttaa rajoja k&auml;ytt&auml;m&auml;ll&auml; <i>State_Name</i>-ominaisuutta. Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama <i>State_Name</i>-ominaisuuden  arvo. Tuloksena on osavaltion rajojen mukainen taso.
             </p>
             <br/>
         </div>
@@ -641,6 +643,21 @@
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luo tesseloinnit</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Luo tesseloinnit">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Luo tesseloinnit tutkimusalueesta m&auml;&auml;ritetyn muodon ja koon perusteella.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -656,7 +673,7 @@
                 <ul>
                     <li>Haluan yhdist&auml;&auml; tasot Englanti, Wales ja Skotlanti yhdeksi Iso-Britannia-nimiseksi tasoksi. 
                     </li>
-                    <li>Minulla on 12 tasoa, ja jokainen sis&auml;lt&auml;&auml; kaupunkien katkeamattomat kiinteist&ouml;tiedot.  voit haluat yhdist&auml;&auml; ne yhdeksi ainoaksi karttatasoksi s&auml;ilytt&auml;en vain ne attribuutit, joilla on sama nimi ja tyyppi kaikissa 12 karttatasossa.
+                    <li>Minulla on 12 tasoa, ja jokainen sis&auml;lt&auml;&auml; kaupunkien katkeamattomat kiinteist&ouml;tiedot. voit haluat yhdist&auml;&auml; ne yhdeksi ainoaksi karttatasoksi s&auml;ilytt&auml;en vain ne attribuutit, joilla on sama nimi ja tyyppi kaikissa 12 karttatasossa.
                     </li>
                 </ul>
                 
@@ -674,7 +691,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>P&auml;&auml;llekk&auml;isyysanalyysi yhdist&auml;&auml; kaksi tai useampia karttatasoja yhteen karttatasoon.  Karttatasokerros on tavallaan kuin karttapino, jonka alimmassa kartassa n&auml;kyv&auml;t kaikkien pinon karttojen yhdistetyt tiedot. Karttatasokerrosten avulla voit vastata esim. seuraaviin kysymyksiin:
+            <p>P&auml;&auml;llekk&auml;isyysanalyysi yhdist&auml;&auml; kaksi tai useampia karttatasoja yhteen karttatasoon. Karttatasokerros on tavallaan kuin karttapino, jonka alimmassa kartassa n&auml;kyv&auml;t kaikkien pinon karttojen yhdistetyt tiedot. Karttatasokerrosten avulla voit vastata esim. seuraaviin kysymyksiin:
                 <ul>
                     <li>Mitk&auml; kiinteist&ouml;t ovat edellisten 100 vuoden aikana tulvineen alueen sis&auml;ll&auml;? (Sis&auml;ll&auml; on vain toinen tapa ilmaista p&auml;&auml;llekk&auml;isyytt&auml;)?
                           

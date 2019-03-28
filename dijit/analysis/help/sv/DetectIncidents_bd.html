@@ -44,7 +44,7 @@
         <h2>Identifiera händelser</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Identifiera h&auml;ndelser"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med punkter, linjer, omr&aring;den eller tabeller som representerar ett &ouml;gonblick i tiden. Genom att anv&auml;nda geoobjekt som ordnats i tidsordning, s&aring; kallade sp&aring;r, avg&ouml;r det h&auml;r verktyget vilka geoobjekt som utg&ouml;r h&auml;ndelser som &auml;r intressanta att hitta. Villkoren som du anger avg&ouml;r vad som betraktas som h&auml;ndelser. 
+    <p> Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med punkter, linjer, omr&aring;den eller tabeller som representerar ett &ouml;gonblick i tiden. Genom att anv&auml;nda geoobjekt som ordnats i tidsordning, s&aring; kallade sp&aring;r, avg&ouml;r det h&auml;r verktyget vilka geoobjekt som utg&ouml;r h&auml;ndelser som &auml;r intressanta att hitta. Villkoren som du anger avg&ouml;r vad som betraktas som h&auml;ndelser.
     </p>
     <p>F&ouml;rst avg&ouml;r verktyget vilka geoobjekt som h&ouml;r till ett sp&aring;r med hj&auml;lp av ett eller flera f&auml;lt. Genom att anv&auml;nda tidsangivelsen f&ouml;r varje geoobjekt ordnas sp&aring;ren i tidsordning och villkoret f&ouml;r h&auml;ndelsen till&auml;mpas. Geoobjekt som uppfyller startvillkoret f&ouml;r h&auml;ndelsen markeras som en h&auml;ndelse. Om du vill kan du till&auml;mpa ett slutvillkor f&ouml;r h&auml;ndelsen; n&auml;r slutvillkoret &auml;r sant &auml;r geoobjektet inte l&auml;ngre en h&auml;ndelse.  Resultaten returneras med de ursprungliga geoobjekten, d&auml;r nya kolumner representerar h&auml;ndelsenamnet som en indikation p&aring; vilka geoobjekt som uppfyller villkoret f&ouml;r h&auml;ndelsen. Du kan returnera alla ursprungliga geoobjekt eller bara de geoobjekt som &auml;r h&auml;ndelser.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Punkterna, linjerna, omr&aring;dena eller tabellerna som ska anv&auml;ndas f&ouml;r att hitta h&auml;ndelser. Indatalagret m&aring;ste vara tidsaktiverat med geoobjekt som representerar ett &ouml;gonblick i tiden, och det m&aring;ste dessutom ha ett eller flera f&auml;lt som kan anv&auml;ndas f&ouml;r identifiering av sp&aring;r.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Bygg ett uttrycksvillkor för att ange slutet på en händelse</h2></div>
+        <div><h2>Bygg ett uttrycksvillkor för att ange slutet för händelsen (valfritt)</h2></div>
         <hr/>
         <div>
             <p>Om du vill kan du l&auml;gga till ett villkor med hj&auml;lp av uttrycksskaparen f&ouml;r att fastst&auml;lla slutet p&aring; en h&auml;ndelse. Om slutvillkoret som du anger &auml;r sant &auml;r geoobjektet inte l&auml;ngre en h&auml;ndelse. Om du inte anger ett slutvillkor avslutas en h&auml;ndelse n&auml;r startvillkoret inte l&auml;ngre &auml;r sant.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Välj hur du vill att utdata ska representeras</h2></div>
+        <div><h2>Visa mig</h2></div>
         <hr/>
         <div>
             <p>I alla metoder bifogas f&auml;lten till de ursprungliga geoobjekten. Det finns tv&aring; s&auml;tt att avg&ouml;ra vilka geoobjekt som returneras:
                 <ul>
-                    <li> <b>Returnera bara h&auml;ndelser</b>&ndash; Med den h&auml;r metoden returneras bara s&aring;dana geoobjekt som &auml;r h&auml;ndelser. Geoobjekt som inte uppfyller villkoren f&ouml;r h&auml;ndelser returneras inte.
+                    <li> <b>Alla geoobjekt</b> &ndash; Det h&auml;r &auml;r standardinst&auml;llningen. Alla geoobjekt i inmatningen returneras.
                     </li>
-                    <li> <b>Returnera alla geoobjekt</b> &ndash; Det h&auml;r &auml;r standardinst&auml;llningen. Alla geoobjekt i inmatningen returneras.
+                    <li> <b>Bara h&auml;ndelser</b> &ndash; Med den h&auml;r metoden returneras bara s&aring;dana geoobjekt som &auml;r h&auml;ndelser. Geoobjekt som inte uppfyller villkoren f&ouml;r h&auml;ndelser returneras inte.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analysera data med tidsintervall (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ange om du vill uppt&auml;cka h&auml;ndelser genom att anv&auml;nda tidsintervall som segmenterar dina indatageoobjekt f&ouml;r analys. Om du anv&auml;nder tidsintervall m&aring;ste du st&auml;lla in tidsintervallet som du vill anv&auml;nda och eventuellt ocks&aring; referenstiden. Om du inte st&auml;ller in en referenstid anv&auml;nds 1 jan 1970. 
+            </p>
+            <p>Om du till exempel st&auml;ller in tidsgr&auml;nsen till 1 dag, med start kl. 09.00 den 1 januari 1990, kommer varje sp&aring;r att kortas ned kl. 09.00 varje dag och analyseras inom det segmentet. 
+            </p>
+            <p>Att anv&auml;nda tidsintervaller &auml;r ett enkelt s&auml;tt att snabba p&aring; ber&auml;kningstiden, eftersom det snabbt skapar mindre sp&aring;r f&ouml;r analys. Om det verkar vettigt att dela med &aring;terkommande tidsintervall f&ouml;r analysen rekommenderas det f&ouml;r behandling av big data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som ska skapas.  Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
-            <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>
         </div>
     </div>

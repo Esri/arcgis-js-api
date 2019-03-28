@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b> och <b>Hantera data</b>.
+        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Anv&auml;nd n&auml;rhet</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b>, <b>Hantera data</b> och <b>Djupinl&auml;rning</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -218,6 +218,7 @@
                 <tbody><tr>
                     <td><h2>Tillämpa rasterfunktionsmall</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Till&auml;mpa rasterfunktionsmall">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Skapa ett nytt geoobjektsdataset fr&aring;n ett befintligt rasterdataset.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Verktygssetet Djupinlärning</h2>
+        <hr/>
+        <p>De h&auml;r verktygen anv&auml;nds f&ouml;r att uppt&auml;cka specifika geoobjekt i en bild eller f&ouml;r att klassificera pixlar i ett rasterdataset. Djupinl&auml;rning &auml;r en typ av maskininl&auml;rningsmetod med artificiell intelligens som uppt&auml;cker geoobjekt i bilder med flera lager i neurala n&auml;tverk d&auml;r varje lager kan extrahera ett eller flera unika geoobjekt i bilden. Verktygen f&ouml;rbrukar de modeller som har tr&auml;nats att uppt&auml;cka specifika geoobjekt i djupinl&auml;rningsramverk fr&aring;n tredje part, t.ex. TensorFlow, CNTK och Keras, och utdatageoobjekt eller klasskartor.
+            <ul>
+                <li> <b>Klassificera pixlar med djupinl&auml;rning</b> skapar ett klassificerat raster med en tr&auml;nad djupinl&auml;rningsmodell.
+                </li>
+                <li> <b>Identifiera objekt med djupinl&auml;rning</b> skapar en geoobjektklass som inneh&aring;ller objekt den hittar i ett indataraster med hj&auml;lp av en tr&auml;nad djupinl&auml;rningsmodell.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassificera pixlar med djupinlärning</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klassificera pixlar med djupinl&auml;rning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Identifiera objekt med djupinlärning</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Identifiera objekt med djupinl&auml;rning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
             </p>
             <br/>
         </div>

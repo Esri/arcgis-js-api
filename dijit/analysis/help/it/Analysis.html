@@ -69,7 +69,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Aggrega punti</h2></td>
+                    <td><h2>Aggrega Punti</h2></td>
                     <td>
                     <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Aggrega Punti">
                     </td>
@@ -258,9 +258,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Crea campo di vista</h2></td>
+                    <td><h2>Crea Campo di Vista</h2></td>
                     <td>
-                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Crea campo di vista">
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Crea Campo di Visuale">
                     </td>
                 </tr></tbody>
             </table>
@@ -275,7 +275,7 @@
                 <tbody><tr>
                     <td><h2>Crea spartiacque</h2></td>
                     <td>
-                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Crea spartiacque">
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Crea Spartiacque">
                     </td>
                 </tr></tbody>
             </table>
@@ -348,9 +348,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Trova località simili</h2></td>
+                    <td><h2>Trova Posizioni Simili</h2></td>
                     <td>
-                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Trova localit&agrave; simili">
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Trova posizioni simili">
                     </td>
                 </tr></tbody>
             </table>
@@ -365,7 +365,7 @@
                 <tbody><tr>
                     <td><h2>Traccia Downstream</h2></td>
                     <td>
-                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Traccia a valle">
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Traccia Direzione della Corrente">
                     </td>
                 </tr></tbody>
             </table>
@@ -590,7 +590,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Gestisci dati</h2>
         <hr/>
         <p>Questi strumenti vengono utilizzati per la gestione quotidiana dei dati geografici e per combinare i dati prima dell'analisi.  
@@ -599,9 +599,11 @@
                 </li>
                 <li> <b>Estrai dati</b> consente di creare nuovi dataset estraendo le feature dai dati esistenti.
                 </li>
+                <li> <b>Genera tassellazioni</b> consente di creare tassellazioni sulla base dell'estensione dei dati.
+                </li>
                 <li> <b>Unisci layer</b> consente di copiare in un nuovo layer tutte le feature di due o pi&ugrave; layer esistenti.
                 </li>
-                <li> <b>Sovrapponi layer</b> consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe e alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo.
+                <li> <b>Sovrapponi layer</b> consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe ed alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo.
                 </li>
             </ul>
             
@@ -620,7 +622,7 @@
 <hr/>
             <p>Le aree che si sovrappongono o che condividono un confine comune vengono unite per formare una singola area.    
             </p>
-            <p>Per controllare i confini che verranno uniti, specificare un campo. Ad esempio, se si dispone di un layer di regioni e ciascuna regione dispone di un attributo  <i>State_Name</i>, &egrave; possibile dissolvere i confini utilizzando l'attributo <i>State_Name</i>. Le regioni adiacenti vengono unite se presentano lo stesso valore per <i>State_Name</i>. Il risultato finale &egrave; un layer di confini di stato.
+            <p>Per controllare i confini che verranno uniti, specificare un campo. Ad esempio, se si dispone di un layer di regioni, e ciascuna regione dispone di un attributo  <i>State_Name</i>, &egrave; possibile dissolvere i Boundary utilizzando l'attributo <i>State_Name</i>.  Le regioni adiacenti vengono unite se presentano lo stesso valore per <i>State_Name</i>.  Il risultato finale &egrave; un layer di confini di stato.
             </p>
             <br/>
         </div>
@@ -641,6 +643,21 @@
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genera tassellazioni</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Genera tassellazioni">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Genera tassellazioni in un'area di studio sulla base di una forma e di una dimensione specificate.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -652,7 +669,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Consente di copiare in un nuovo layer le feature di due o pi&ugrave; layer esistenti, ad esempio:
+            <p>Consente di copiare in un nuovo layer le feature di due o pi&ugrave; layer esistenti. Ad esempio:
                 <ul>
                     <li>Si dispone di tre per Inghilterra, Galles e Scozia e si desidera ottenere un singolo layer della Gran Bretagna. 
                     </li>
@@ -674,7 +691,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe e alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo, ad esempio:
+            <p>Consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe e alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo. Ad esempio:
                 <ul>
                     <li>Quali lotti sono compresi nella pianura alluvionale da 100 anni?
                           

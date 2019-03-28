@@ -92,7 +92,7 @@
                 </li>
                 <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
                 </li>
-                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer
+                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
                 </li>
                 <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
                 </li>
@@ -100,6 +100,8 @@
                 </li>
             </ul>
             
+            <p>&Ouml;zetlenecek katmanın sayı alanı yoksa, ek istatistikler kullanılamaz.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -123,6 +125,8 @@
                 </li>
             </ul>
             
+            <p>&Ouml;zetlenecek katmanın sayı alanı yoksa, ek istatistikler kullanılamaz.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -146,6 +150,8 @@
                 </li>
             </ul>
             
+            <p>&Ouml;zetlenecek katmanın sayı alanı yoksa, ek istatistikler kullanılamaz.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -155,13 +161,13 @@
             <p>&Ouml;zetlenecek bir katman se&ccedil;tikten sonra, girdi alanı katmanı i&ccedil;inde kalan noktaların, &ccedil;izgileri veya alanların sayısal &ouml;zniteliklerine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz. 
             </p>
             <ul>
-                <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
+                <li> <b>Toplam</b> - Belirtilen alanın toplam değeri
                 </li>
-                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması.
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması
                 </li>
-                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
+                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer
                 </li>
-                <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
+                <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer
                 </li>
                 <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
                 </li>
@@ -169,14 +175,16 @@
             
             <p>&Ouml;zetlediğiniz detay t&uuml;rlerine bağlı olarak toplam nokta sayısını, toplam &ccedil;izgi uzunluğunu veya toplam alanı hesaplayabilirsiniz.
             </p>
+            <p>&Ouml;zetlenecek katmanın sayı alanı yoksa, ek istatistikler kullanılamaz.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Gruplanacak alanları seçme kriteri</h2></div>
         <hr/>
         <div>
-            <p>Bu,  <b>&Ouml;zetle</b> detayının bir &ouml;zniteliğidir ve istatistikleri her bir tek &ouml;znitelik değeri i&ccedil;in ayrı hesaplamak amacıyla kullanılır. &Ouml;rneğin, ilk girdi katmanının şehir sınırlarını i&ccedil;erdiğini ve &ouml;zet detaylarının parseller olduğunu varsayalım.  Parsellerin &ouml;zniteliklerinden biri olan <i>Durum</i> iki değer i&ccedil;erir: VACANT ve OCCUPIED. Şehirlerin sınırları dahilinde kalan boş ve dolu parsellerin toplam alanını hesaplamak i&ccedil;in <i>Durum</i> &ouml;ğesini gruplandırma &ouml;zniteliği olarak kullanın.
- Her alan sınırının i&ccedil;indeki detay sayısının yanı sıra, her grubun istatistikleri de a&ccedil;ılan sonu&ccedil; katmanında g&ouml;r&uuml;nt&uuml;lenir.
+            <p>Bu,  <b>&Ouml;zetle</b> detayının bir &ouml;zniteliğidir ve istatistikleri her bir tek &ouml;znitelik değeri i&ccedil;in ayrı hesaplamak amacıyla kullanılır. &Ouml;rneğin, ilk girdi katmanının şehir sınırlarını i&ccedil;erdiğini ve &ouml;zet detaylarının parseller olduğunu varsayalım.  Parsellerin &ouml;zniteliklerinden biri olan <i>Status</i> iki değer i&ccedil;erir: BOŞ ve DOLU 
+ Şehirlerin sınırları dahilinde kalan boş ve dolu parsellerin toplam alanını hesaplamak i&ccedil;in <i>Status</i> &ouml;ğesini gruplandırma &ouml;zniteliği olarak kullanın. Her alan sınırının i&ccedil;indeki detay sayısının yanı sıra, her grubun istatistikleri de a&ccedil;ılan sonu&ccedil; katmanında g&ouml;r&uuml;nt&uuml;lenir.
             </p>
         </div>
     </div>
@@ -201,7 +209,7 @@
         <div><h2>Yüzde ekle</h2></div>
         <hr/>
         <div>
-            <p>Gruplandırma &ouml;l&ccedil;&uuml;t&uuml; olarak bir alan belirlediğinizde bu onay kutusu etkinleştirilir. Her gruptaki her &ouml;znitelik değerinin y&uuml;zdesini bulmak isterseniz,  <b>Y&uuml;zde ekle</b> &ouml;ğesini belirleyin. Her gruptaki her &ouml;znitelik değerinin y&uuml;zdesini i&ccedil;eren sonu&ccedil; tablosuna yeni bir alan eklenir. <b>Azınlık, &ccedil;oğunluk ekle</b> &ouml;ğesi de se&ccedil;ili durumdaysa, her gruptaki azınlık ve &ccedil;oğunluk &ouml;znitelik değerlerinin y&uuml;zdelerini bulunduran sonu&ccedil; katmanına iki ilave alan eklenir.
+            <p>Gruplandırma &ouml;l&ccedil;&uuml;t&uuml; olarak bir alan belirlediğinizde bu onay kutusu etkinleştirilir. Her grup i&ccedil;inde her &ouml;zniteliğin değerini bulmak istiyorsanız  <b>Y&uuml;zde ekle</b> &ouml;gesini se&ccedil;in. Her gruptaki her &ouml;znitelik değerinin y&uuml;zdesini i&ccedil;eren sonu&ccedil; tablosuna yeni bir alan eklenir. Ayrıca <b>Azınlık, &ccedil;oğunluk ekle</b> &ouml;ğesini de se&ccedil;erseniz, her gruptaki azınlık ve &ccedil;oğunluk &ouml;znitelik değerlerinin y&uuml;zdelerini bulunduran sonu&ccedil; katmanına iki ilave alan eklenir.
             </p>
         </div>
     </div>
@@ -209,9 +217,9 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman adı zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
-            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır men&uuml;s&uuml;n&uuml; kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>
         </div>
     </div>

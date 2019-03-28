@@ -46,8 +46,8 @@
         <hr/>
     <p>To orodje deluje s sloji točkovnih in poligonskih geoobjektov. Najprej določi, katere točke padejo v posamezen poligon. Po določitvi prostorske relacije točk v poligonu se izračunajo statistike vseh točk znotraj poligona in se dodelijo poligonu. Najosnovnej&scaron;a statistika je &scaron;tetje točk znotraj poligona, vendar lahko pridobite tudi druge statistike. 
     </p>
-    <p>Na primer, predpostavimo, da imate točkovne geoobjekte lokacij kavarn in poligonske geoobjekte okrožij ter želite povzeti prodajo kave po okrožjih. Predpostavljamo, da imajo kavarne atribut  <i>SKUPNA_PRODAJA</i> in lahko dobite vsoto atributa <i>SKUPNA_PRODAJA</i> znotraj vsakega okrožja, minimalno ali maksimalno vrednost atributa <i>SKUPNA_PRODAJA</i>
-znotraj vsakega okrožja ali standardni odklon za vso prodajo v posameznem okrožju.
+    <p>Na primer, predpostavimo, da imate točkovne geoobjekte lokacij kavarn in poligonske geoobjekte okrožij ter želite povzeti prodajo kave po okrožjih. Predpostavljamo, da imajo kavarne atribut   <i>TOTAL_SALES</i>, iz katerega lahko pridobite vsoto vseh atributov <i>TOTAL_SALES</i> znotraj vsakega okrožja, minimalno ali maksimalno vrednost atributa <i>TOTAL_SALES</i>
+ ali standardni odklon za vso prodajo v posameznem okrožju.
     </p>
     <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo analizirani samo geoobjekti vhodnega točkovnega in poligonskega sloja, ki so vidni znotraj trenutnega obsega karte. Če možnost ni odkljukana, bodo analizirani vsi geoobjekti tako točkovnega kot poligonskega sloja, tudi če so zunaj trenutnega obsega karte.
     </p>
@@ -76,10 +76,10 @@ znotraj vsakega okrožja ali standardni odklon za vso prodajo v posameznem okro�
         </div>
     </div>
     <div id="KeepBoundaryNoPoints">
-        <div><h2>Obdrži poligone brez točk</h2></div>
+        <div><h2>Obdrži območja brez točk</h2></div>
         <hr/>
         <div>
-            <p>Določa, ali se bodo poligoni brez točk pojavili v sloju z rezultati. Če je odkljukano, se poligoni brez točk ne bodo pojavili v rezultatih. Če je obkljukano, se bodo poligoni brez točk pojavili v rezultatih.  
+            <p>Določa, ali se bodo območja brez točk pojavila v sloju z rezultati. Če je odkljukano, se območja brez točk ne bodo pojavila v rezultatih. Če je obkljukano, se bodo območja brez točk pojavila v rezultatih.  
             </p>
         </div>
     </div>
@@ -90,13 +90,15 @@ znotraj vsakega okrožja ali standardni odklon za vso prodajo v posameznem okro�
             <p>Izračunate lahko statistiko atributov vhodnega točkovnega sloja, kot so vsota, povprečna vrednost, minimum, maksimum in standardni odklon. Sloj z rezultati bo vseboval novi atribut za vsako izračunano statistiko. Z izbiro atributov in statistik (pojavil se bo nov spustni meni) je mogoče dodati katerokoli statistiko.
  
             </p>
+            <p>Če sloj za povzetek nima nobenega &scaron;tevila polj, dodatna statistika ne bo na voljo.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Izberi polje za skupinjenje po</h2></div>
         <hr/>
         <div>
-            <p> Z uporabo atributov iz vhodnega točkovnega sloja lahko ustvarite statistične skupine. Na primer, če agregirate kriminal po mejah četrtnih skupnosti, imate lahko atribut <i>Tip_zlocina</i> s petimi različnimi tipi kriminala. Vsak enolični tip kriminala tvori skupino. Statistike, ki jih boste izbrali, bodo izračunane za vsako enolično vrednost <i>Tip_zlocina</i>. Statistike za vsako skupino ter se&scaron;tevek točk bodo prikazani v pojavnem oknu sloja z rezultati. Ko izberete skupinski atribut, se ustvarita dva tipa rezultatov: sloj z rezultati in tabela z rezultati, ki vsebujeta statistike za vsako enolično skupino.
+            <p> Z uporabo atributov iz vhodnega točkovnega sloja lahko ustvarite statistične skupine. Na primer, če agregirate kriminal po mejah četrtnih skupnosti, imate lahko atribut <i>Crime_type</i> s petimi različnimi tipi kriminala.  Vsak enolični tip kriminala tvori skupino. Statistike, ki jih boste izbrali, bodo izračunane za vsako enolično vrednost <i>Crime_type</i>.  Statistike za vsako skupino ter se&scaron;tevek točk bodo prikazani v pojavnem oknu sloja z rezultati. Ko izberete skupinski atribut, se ustvarita dva tipa rezultatov: sloj z rezultati in tabela z rezultati, ki vsebujeta statistike za vsako enolično skupino.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@ znotraj vsakega okrožja ali standardni odklon za vso prodajo v posameznem okro�
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

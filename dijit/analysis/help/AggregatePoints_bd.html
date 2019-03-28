@@ -68,7 +68,7 @@ the area, but you can get other statistics as well.
         <div>
             <p>The point layer that will aggregate into the areas.  Point layers that are aggregated into  <b>Square </b> or <b>Hexagon</b> bins must have the processing spatial reference set to a projected coordinate system using the <b>Analysis Environments</b>.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -201,7 +201,7 @@ the area, but you can get other statistics as well.
         <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -218,11 +218,11 @@ the area, but you can get other statistics as well.
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created in <b>My
-Content</b> and added to the map. The default name is based on the
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be
 saved.
             </p>

@@ -46,7 +46,7 @@
         <hr/>
     <p>Alat ini mencari fitur (dan bagian-bagian dari fitur) yang berada di dalam batas wilayah pada layer input pertama. Contoh:
         <ul>
-            <li>Dengan mengetahui batas air dan layer batas penggunaan lahan menurut jenis penggunaan lahan, hitung luas total dari jenis penggunaan lahan untuk setiap batas air. 
+            <li>Dengan layer batas Daerah Aliran Sungai dan batas penggunaan lahan berdasarkan jenis penggunaannya, dapat dihitung luas total penggunaan lahan untuk setiap Daerah Aliran Sungai. 
             </li>
             <li>Dengan mengetahui layer bagian persil di suatu daerah dan layer batas kota, ringkaslah nilai rata-rata dari bagian persil yang kosong di dalam setiap batas kota.
             </li>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Pilih layer yang akan diringkas</h2></div>
+        <div><h2>Pilih layer untuk diringkas</h2></div>
         <hr/>
         <div>
             <p>Fitur-fitur pada layer ini yang masuk di dalam batas-batas fitur pada layer input di atas akan diringkas. 
@@ -100,6 +100,8 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -123,6 +125,8 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -146,6 +150,8 @@
                 </li>
             </ul>
             
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -168,6 +174,8 @@
             </ul>
             
             <p>Bergantung pada jenis fitur yang Anda ringkas, Anda dapat menghitung total jumlah titik, total panjang garis, atau total area.
+            </p>
+            <p>Jika layer yang akan diringkas tidak memiliki kolom angka apa pun, statistik tambahan tidak akan tersedia.
             </p>
         </div>
     </div>
@@ -200,7 +208,7 @@
         <div><h2>Tambahkan persentase</h2></div>
         <hr/>
         <div>
-            <p>Kotak centang ini diaktifkan bila Anda memilih kolom untuk pengelompokan.    Pilih  <b>Tambahkan persentase</b> jika Anda ingin menemukan persentase dari setiap nilai atribut di dalam setiap kelompok.  Sebuah kolom baru ditambahkan ke tabel hasil yang memuat persentase dari masing-masing nilai atribut di dalam setiap kelompok.   Jika <b>Tambahkan minoritas, mayoritas</b> juga dicentang, dua kolom lagi akan ditambahkan ke layer hasil yang memuat persentase dari nilai atribut minoritas dan mayoritas di dalam setiap kelompok.
+            <p>Kotak centang ini aktif bila Anda memilih kolom untuk pengelompokan. Pilih  <b>Tambahkan persentase</b> jika Anda ingin melihat nilai persentase dari setiap nilai atribut di dalam setiap kelompok. Kolom baru telah ditambahkan ke dalam tabel hasil yang memuat nilai persentase dari masing-masing nilai atribut di dalam setiap kelompok. Jika <b>Tambahkan minoritas, mayoritas</b> juga dicentang, dua kolom lagi akan ditambahkan ke layer hasil yang memuat persentase dari nilai atribut minoritas dan mayoritas di dalam setiap kelompok.
             </p>
         </div>
     </div>
@@ -208,9 +216,9 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

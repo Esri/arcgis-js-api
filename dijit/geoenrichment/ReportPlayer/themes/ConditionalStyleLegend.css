@@ -32,3 +32,11 @@
 .esriGEConditionalStylingLegend_currentValue {
     background-color: #EEEEEE;
 }
+
+
+
+.esriGEConditionalStylingLegend_row > div:first-child {
+    background-repeat: no-repeat;
+    background-image: url("./images/transparentBackground.png");
+    background-size: 100px;
+}

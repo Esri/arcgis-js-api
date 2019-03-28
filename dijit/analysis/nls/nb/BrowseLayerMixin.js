@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define({defaultAnaysisLayerTitle:"Velg analyselag i levende atlas",customAnalysisLayerTitle:"Velg analyselag",searchPlaceholderText:"Søk analyselag i levende atlas",searchCustomPlaceholderText:"Søk analyselag",mainActionTitle:"Velg",customActionName:"Velg og legg til i kart",customeSectionName:"Analyse av levende atlas-gruppe",Categories:"Kategorier",boundaries:"Grenser",places:"Steder",boundariesAndPlaces:"Grenser og steder",hexbins:"Hexbins",transportation:"Transport",point:"Punktlag",line:"Polylinjelag",polygon:"Polygonlag"});
+define({defaultAnaysisLayerTitle:"Velg analyselag i levende atlas",customAnalysisLayerTitle:"Velg analyselag",searchPlaceholderText:"Søk analyselag i levende atlas",searchCustomPlaceholderText:"Søk analyselag",mainActionTitle:"Velg",customActionName:"Velg og legg til i kart",customeSectionName:"Living Atlas-analyselag",Categories:"Kategorier",boundaries:"Grenser",places:"Steder",boundariesAndPlaces:"Grenser og steder",hexbins:"Hexbins",transportation:"Transport",point:"Punktlag",line:"Polylinjelag",polygon:"Polygonlag",pointFilterName:"Punkt",lineFilterName:"Polylinje",polygonFilterName:"Polygon",multiPointFilterName:"Multipunkt",geometryFilterName:"Geometri",featureLayerName:"Geoobjektlag",tableLayerName:"Tabell",itemTypeFilterName:"Elementtype",instantFilterName:"Umiddelbar",intervalFilterName:"Intervall",timeFilterName:"Tid",edit:"Rediger",boundaryLayers:"Grenselag fra Esri",customAnalysisGroupName:"Organisasjonsanalysegruppe"});

@@ -70,7 +70,8 @@
         <div><h2>Rajoita hakualue arvoon (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p>Enimm&auml;iset&auml;isyys, joka kattaa samaan klusteriin kuuluvat kohteet. Jos t&auml;m&auml; j&auml;tet&auml;&auml;n tyhj&auml;ksi, oletuset&auml;isyys on pisin aineistoryhm&auml;st&auml; l&ouml;ytyv&auml; peruset&auml;isyys ylimm&auml;n 1 prosentin peruset&auml;isyyksi&auml; lukuun ottamatta (&auml;&auml;rimm&auml;iset peruset&auml;isyydet pois lukien). 
+            
+            <p>Enimm&auml;iset&auml;isyys, joka kattaa samaan klusteriin kuuluvat kohteet. Jos t&auml;m&auml; j&auml;tet&auml;&auml;n tyhj&auml;ksi, ty&ouml;kalu suorittaa HDBSCAN-toiminnon, joka erottaa vaihtelevien et&auml;isyyksien avulla vaihtelevien tiheyksien klusterit harvasta kohinasta. Jos arvo annetaan, ty&ouml;kalu suorittaa DBSCAN-toiminnon, joka erottaa m&auml;&auml;ritetyn et&auml;isyyden avulla tihe&auml;t klusterit harvasta kohinasta.
             </p>
         </div>
     </div>
@@ -78,7 +79,7 @@
         <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
-            <p>Sen tason nimi, joka luodaan kohtaan  <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            <p>Sen tason nimi, joka luodaan kohtaan  <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttatason nimi on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
             <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
             </p>

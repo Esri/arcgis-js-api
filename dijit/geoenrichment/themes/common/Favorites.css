@@ -25,9 +25,10 @@
 .FavoriteItemChecked {
     background-position: -15px;
 }
-.FavoriteItemChecked.small {
-    background-position: -13px;
-}
+
+    .FavoriteItemChecked.small {
+        background-position: -13px;
+    }
 
 .FavoriteItem:hover {
     background-position: -30px;

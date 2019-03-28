@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({addBarriers:"Izberi sloje ovire",pointBarrier:"Točkovne ovire",lineBarrier:"Linijske ovire",polygonBarrier:"Poligonske ovire",choosePointBarrier:"Izberi sloj točkovne ovire",chooseLineBarrier:"Izberi sloj linijske ovire",choosePolygonBarrier:"Izberi sloj poligonske ovire",selectPointBarrier:"Izberi točkovne ovire",selectLineBarrier:"Izberi linijske ovire",selectPolygonBarrier:"Izberi poligonske ovire"});

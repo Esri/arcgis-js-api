@@ -44,7 +44,7 @@
         <h2>Ricostruisci Tracce</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Ricostruisci tracce"></h2>
         <hr/>
-    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o areali che rappresentano un  <code>istante</code> nel tempo. Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un&rsquo;area che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creata un&rsquo;area in ciascuna posizione. Questi punti bufferizzati o le aree di input vengono uniti in modo sequenziale per creare una traccia in forma di area laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
+    <p> Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o areali che rappresentano un <code>istante</code> nel tempo. Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un'area che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creata un'area in ciascuna posizione. Questi punti bufferizzati o le aree di input vengono uniti in modo sequenziale per creare una traccia in forma di area laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
     </p>
     <p>Le feature abilitate per variazioni temporali possono essere rappresentate in due modi diversi:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Si supponga, ad esempio, di avere misurazioni GPS di uragani ogni 10 minuti. Ogni misurazione GPS registra il nome dell'uragano, la posizione, l'ora di registrazione e la velocit&agrave; del vento. Con queste informazioni, &egrave; possibile creare tracce per ciascun uragano utilizzando il nome per identificare la traccia. Per ogni uragano verranno generate tracce. Inoltre, &egrave; possibile calcolare statistiche come la velocit&agrave; media, massima e minima del vento di ciascun uragano, nonch&eacute; il numero delle misurazioni all'interno di ciascuna traccia.
     </p>
-    <p>Utilizzando lo stesso esempio, &egrave; possibile eseguire il buffer delle tracce in funzione della velocit&agrave; del vento. Verr&agrave; eseguito il buffer di ciascuna misurazione in funzione del campo della velocit&agrave; del vento in tale posizione e verranno unite le aree bufferizzate, creando un&rsquo;area che rappresenta la traiettoria della traccia e le modifiche alla velocit&agrave; del vento e al procedere degli uragani.   
+    <p>Utilizzando lo stesso esempio, &egrave; possibile eseguire il buffer delle tracce in funzione della velocit&agrave; del vento. Verr&agrave; eseguito il buffer di ciascuna misurazione in funzione del campo della velocit&agrave; del vento in tale posizione e verranno unite le aree bufferizzate, creando un'area che rappresenta la traiettoria della traccia e le modifiche alla velocit&agrave; del vento e al procedere degli uragani.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,9 +65,9 @@
         <div><h2>Scegliere le feature da cui ricostruire le tracce</h2></div>
         <hr/>
         <div>
-            <p>Il layer di punti o area che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
+            <p>Il layer puntuale o areale che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
@@ -97,7 +97,7 @@
             </p>
             <p>Un'equazione come  <code>$feature.windspeed * 1000</code> applicherebbe un buffer di 1000 moltiplicato per il campo <i>windspeed</i>. &Egrave; possibile utilizzare pi&ugrave; di un campo nel calcolatore del buffer.
             </p>
-            <p> &Egrave; inoltre possibile specificare una espressione che prende in considerazione le tracce. Ad esempio, si supponga di calcolare la somma del valore di campo <i>windspeed</i> per la feature attuale e le due feature precedenti con un'equazione quale <code>$track.field(windspeed).history(-3)</code>. In ciascuna posizione, la somma di <i>windspeed</i> attuale e le due misurazioni precedenti vengono calcolate e bufferizzate.
+            <p> &Egrave; inoltre possibile specificare un'espressione che prende in considerazione le tracce. Ad esempio, si supponga di calcolare la somma del valore di campo <i>windspeed</i> per la feature attuale e le due feature precedenti con un'equazione quale <code>$track.field(windspeed).history(-3)</code>. In ciascuna posizione, la somma di <i>windspeed</i> attuale e le due misurazioni precedenti vengono calcolate e bufferizzate.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Suddividi tracce (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>&Egrave; possibile suddividere le tracce usando tre metodi diversi. &Egrave; possibile usare una combinazione di nessuno, tutti o alcuni dei metodi di suddivisone. 
+            </p>
+            <p>Le suddivisioni possono essere completate nei seguenti modi:
+                <ul>
+                    <li> <b>In base alla distanza tra input</b>: se i punti o i poligoni di input presentano tra di loro una distanza pi&ugrave; lunga della distanza specificata, verranno suddivisi in tracce differenti. Ad esempio, se si &egrave; specificata una distanza di 10 chilometri, i punti sequenziali superiori a 10 chilometri saranno tracce separate.
+                    </li>
+                    <li> <b>In base al tempo tra input</b>: se i punti o i poligoni di input presentano una durata pi&ugrave; lunga rispetto alla suddivisione temporale, verranno suddivisi in tracce differenti. Ad esempio, se si hanno feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia.  Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
+                    </li>
+                    <li> <b>A intervalli di tempo definiti</b>: suddivisione mediante intervalli regolari, specificati da un intervallo di tempo e un riferimento temporale. Se non si specifica un riferimento temporale, si user&agrave; il 1 gennaio 1970. Ad esempio, se si &egrave; specificato 1 anno con il 2 febbraio 1990 alle 10:00 come riferimento temporale, si suddivideranno le tracce in 2 febbraio 1990 alle 10:00, 2 febbraio 1991 alle 10:00 e cos&igrave; via a intervalli di un anno.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Se si specificano pi&ugrave; opzioni di suddivisione, le tracce vengono suddivise quando si soddisfano una o pi&ugrave; condizioni. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Selezionare una distanza per suddividere le tracce (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p> Distanza utilizzata per suddividere le tracce. Se i punti o le aree di input presentano una distanza pi&ugrave; lunga della divisione della distanza, verranno suddivisi in tracce differenti.
+            <p>Distanza utilizzata per suddividere le tracce. Se i punti o le aree di input presentano una distanza pi&ugrave; lunga della divisione della distanza, verranno suddivisi in tracce differenti.
             </p>
             <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati di GeoAnalytics sono memorizzati in un data store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
                     <li>&Egrave; possibile utilizzare i risultati in una collaborazione tra portali.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato.  Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

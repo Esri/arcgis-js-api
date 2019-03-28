@@ -44,7 +44,7 @@
         <h2>Viewshed maken</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Tool Viewshed maken"></h2>
         <hr/>
-    <p>Deze tool identificeert de gebieden die een waarnemer kan zien, met inachtname van de oppervlaktetopografie. De invoerpuntlocaties kunnen ofwel waarnemers vertegenwoordigen  (zoals mensen op de grond of controleurs in een brandtoren), of geobserveerde objecten (zoals windturbines, watertorens, voertuigen of andere mensen). De resultaten bepalen de gebieden die gezien kunnen worden vanaf de waarneemlocaties.
+    <p>Deze tool identificeert de gebieden die een waarnemer kan zien, met inachtname van de oppervlaktetopografie. De invoerpuntlocaties kunnen ofwel waarnemers vertegenwoordigen (zoals mensen op de grond of controleurs in een brandtoren), of geobserveerde objecten (zoals windturbines, watertorens, voertuigen of andere mensen). De resultaten bepalen de gebieden die gezien kunnen worden vanaf de waarneemlocaties.
     </p>
     <p>Zowel de waarnemers als de waargenomen objecten kunnen een hoogte boven de grond hebben en deze hoogten worden gebruikt bij het bepalen van de zichtbaarheid. Bijvoorbeeld, een viewshed die is berekend voor windturbines van 120 meter en mensen van 1.80 m. die op de grond staan is meestal groter dan een viewshed die is berekend voor turbines van 100 meter en mensen van 1.70 meter.
     </p>
@@ -98,7 +98,7 @@ Deze methode is geoptimaliseerd voor nauwkeurigheid in de resultaten, ten koste 
         <div>
             <p>Voer een cut-offafstand in waar de berekening van de zichtbare gebieden moet stoppen. Verder dan deze afstand is het niet bepaald of de waarnemerpunten en de andere objecten elkaar kunnen zien.
             </p>
-            <p>U kunt een numerieke waarde opgeven die een lineaire afstand vertegenwoordigt of een numeriek veld selecteren van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moeten de waarden in het veld in dezelfde eenheid zijn als de XY-eenheid van het invoerhoogte-oppervlak.
+            <p>U kunt ofwel een numerieke waarde opgeven die een lineaire afstand vertegenwoordigt of een numeriek veld selecteren van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moeten de waarden in het veld in dezelfde eenheid zijn als de xy-eenheid van het invoerhoogte-oppervlak.
             </p>
             <p>Merk op dat grote waarden de rekentijd laten toenemen. Tenzij anders vermeld, wordt een standaard maximale afstand berekend op basis van de resolutie en de omvang van het invoerhoogte-oppervlak.
             </p>
@@ -119,7 +119,7 @@ Deze methode is geoptimaliseerd voor nauwkeurigheid in de resultaten, ten koste 
         <div>
             <p>Voer een afstand in waar de berekening van de zichtbare gebieden moet beginnen. Cellen op het oppervlak dichterbij dan deze afstand zijn niet zichtbaar in de uitvoer maar kunnen nog steeds de zichtbaarheid van de cellen blokkeren tussen de minimale en de maximale kijkafstand.
             </p>
-            <p>U kunt een numerieke waarde opgeven die een lineaire afstand vertegenwoordigt of een numeriek veld selecteren van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moeten de waarden in het veld in dezelfde eenheid zijn als de XY-eenheid van het invoerhoogte-oppervlak.
+            <p>U kunt ofwel een numerieke waarde opgeven die een lineaire afstand vertegenwoordigt of een numeriek veld selecteren van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moeten de waarden in het veld in dezelfde eenheid zijn als de xy-eenheid van het invoerhoogte-oppervlak.
             </p>
             <p>Deze parameter wordt gebruikt voor het regelen van het analysegebied van de viewshed op een bepaalde afstand van de waarnemer. Bijvoorbeeld, als u de zichtbaarheid evalueert vanaf de top van een gebouw tot een verderop gelegen park, dan kunt u een minimale kijkafstand instellen en gebieden uitsluiten die dichtbij liggen en niet belangrijk zijn om een betere verwerkingssnelheid te krijgen.
             </p>
@@ -165,7 +165,7 @@ Deze methode is geoptimaliseerd voor nauwkeurigheid in de resultaten, ten koste 
         <div>
             <p>Voer de hoogte boven de grond in voor uw waarnemerlocaties.
             </p> 
-            <p>U kunt een numerieke waarde opgeven voor de hoogte of een veld van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moet de waarde in het veld in dezelfde eenheid zijn als de Z-eenheid van het invoerhoogte-oppervlak.
+            <p>U kunt een numerieke waarde opgeven voor de hoogte of een veld van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moet de waarde in het veld in dezelfde eenheid zijn als de z-eenheid van het invoerhoogte-oppervlak.
             </p>
             <p>De standaard is 6 voet. Als u kijkt vanaf een hooggelegen locatie, zoals een uitkijktoren of een hoog gebouw, gebruik dan die hoogte. Tijdens de viewshedberekening wordt deze waarde toegevoegd aan de waarnemerhoogte als dit is gespecificeerd; anders wordt het toegevoegd aan de ge&iuml;nterpoleerde oppervlak z-waarde.
             </p>
@@ -184,7 +184,7 @@ Deze methode is geoptimaliseerd voor nauwkeurigheid in de resultaten, ten koste 
         <div>
             <p>Voer de hoogte in van structuren of mensen op de grond gebruikt om de zichtbaarheid vast te stellen.
             </p>
-            <p>U kunt een numerieke waarde opgeven voor de hoogte of een veld van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moet de waarde in het veld in dezelfde eenheid zijn als de Z-eenheid van het invoerhoogte-oppervlak.
+            <p>U kunt een numerieke waarde opgeven voor de hoogte of een veld van de invoerwaarnemerobjecten. Als een veld wordt opgegeven, moet de waarde in het veld in dezelfde eenheid zijn als de z-eenheid van het invoerhoogte-oppervlak.
             </p>
             <p>De resulterende viewshed identificeert gebieden waar een waarnemerpunt deze andere objecten op de grond kan zien. Het omgekeerde is ook waar; de objecten op de grond kunnen een waarnemerpunt zien. 
             </p>
@@ -232,7 +232,7 @@ Deze methode is geoptimaliseerd voor nauwkeurigheid in de resultaten, ten koste 
         <div>
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
-            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
             </p>
         </div>
     </div>

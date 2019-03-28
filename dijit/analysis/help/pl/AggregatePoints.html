@@ -46,7 +46,7 @@
         <hr/>
     <p>Narzędzie do pracy z warstwą obiekt&oacute;w punktowych oraz warstwą obiekt&oacute;w powierzchniowych. Pierwszą operacją jest przyporządkowanie punkt&oacute;w do poszczeg&oacute;lnych obszar&oacute;w. Po określeniu tej zależności przestrzennej między punktami i obszarami wykonywane są obliczenia statystyczne dotyczące wszystkich punkt&oacute;w na obszarze, a następnie statystyki te są przypisywane do danego obszaru. Najbardziej podstawowym obliczeniem statystycznym jest liczba punkt&oacute;w przypadająca na dany obszar, jednak można uzyskać r&oacute;wnież inne statystyki. 
     </p>
-    <p>Przyjmijmy na przykład, że mamy obiekty punktowe reprezentujące lokalizację kawiarni oraz obiekty powierzchniowe reprezentujące powiaty i chcemy uzyskać podsumowanie sprzedaży kawy w powiatach. Zakładając, że kawiarnie mają atrybut  <i>TOTAL_SALES</i>, możemy obliczyć sumę wszystkich atrybut&oacute;w <i>TOTAL_SALES</i> dla każdego powiatu lub wyznaczyć minimalną bądź maksymalną wartość <i>TOTAL_SALES</i> w&nbsp;każdym z&nbsp;nich, a&nbsp;także odchylenie standardowe dla poszczeg&oacute;lnych powiat&oacute;w.
+    <p>Przyjmijmy na przykład, że mamy obiekty punktowe reprezentujące lokalizację kawiarni oraz obiekty powierzchniowe reprezentujące powiaty i chcemy uzyskać podsumowanie sprzedaży kawy w powiatach. Zakładając, że kawiarnie mają atrybut  <i>TOTAL_SALES</i>, można obliczyć sumę wszystkich atrybut&oacute;w <i>TOTAL_SALES</i> w każdym powiecie lub wyznaczyć minimalną bądź maksymalną wartość <i>TOTAL_SALES</i> w&nbsp;każdym z&nbsp;nich, a&nbsp;także odchylenie standardowe sprzedaży w poszczeg&oacute;lnych powiatach.
     </p>
     <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, w&nbsp;analizie wezmą udział jedynie obiekty w&nbsp;wejściowej warstwie punktowej i&nbsp;warstwie obszaru widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, analizowane będą wszystkie obiekty w&nbsp;wejściowej warstwie punktowej i&nbsp;warstwie obszaru, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
     </p>
@@ -90,13 +90,15 @@
 zawiera nowy atrybut dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną statystykę danych liczbowych poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej (wyświetlone zostanie nowa rozwijana lista).
  
             </p>
+            <p>Jeśli warstwa do podsumowania nie zawiera żadnych p&oacute;l liczbowych, dodatkowe statystyki nie będą dostępne.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Wybierz pole, według którego wykonane będzie grupowanie</h2></div>
         <hr/>
         <div>
-            <p> Można tworzyć grupy statystyczne za pomocą atrybut&oacute;w w&nbsp;wejściowej warstwie punktowej. Na przykład, jeśli wykonujesz agregację obejmującą przestępstwa w&nbsp;sąsiednich granicach, możesz mieć atrybut <i>Crime_type</i> z pięcioma r&oacute;żnymi rodzajami przestępstw. Każdy unikalny typ przestępstwa stanowi odrębną grupę, a na podstawie wybranej przez Ciebie statystyki zostaną obliczone dane statystyczne dla każdej unikalnej wartości atrybutu <i>Crime_type</i>. Statystyki dotyczące każdej z&nbsp;grup oraz liczba punkt&oacute;w zostaną wyświetlone w&nbsp;oknie podręcznym warstwy wynikowej. W&nbsp;wyniku wybrania atrybutu grupowania tworzone są dwa elementy: warstwa wynikowa oraz tabela wynik&oacute;w zawierająca statystyki dla każdej unikalnej grupy.
+            <p> Można tworzyć grupy statystyczne za pomocą atrybut&oacute;w w&nbsp;wejściowej warstwie punktowej. Jeśli na przykład agregowane są przestępstwa w&nbsp;granicach dzielnicy, można zastosować atrybut <i>Crime_type</i> z&nbsp;pięcioma r&oacute;żnymi rodzajami przestępstw. Każdy unikalny typ przestępstwa stanowi odrębną grupę, a wybrane przez Ciebie statystyki zostaną obliczone&nbsp;dla każdej unikalnej wartości atrybutu <i>Crime_type</i>. Statystyki dotyczące każdej z&nbsp;grup oraz liczba punkt&oacute;w zostaną wyświetlone w&nbsp;oknie podręcznym warstwy wynikowej. W&nbsp;wyniku wybrania atrybutu grupowania tworzone są dwa elementy: warstwa wynikowa oraz tabela wynik&oacute;w zawierająca statystyki dla każdej unikalnej grupy.
             </p>
         </div>
     </div>
@@ -114,7 +116,7 @@ zawiera nowy atrybut dla każdego wykonanego obliczenia statystycznego. Dodać m
         <div><h2>Dodaj wartości procentowe</h2></div>
         <hr/>
         <div>
-            <p>To pole wyboru zostaje aktywowane po wybraniu pola, według kt&oacute;rego wykonywane jest grupowanie.    Jeżeli chcesz sprawdzić, jaką wartość procentową stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup, zaznacz opcję  <b>Dodaj wartości procentowe</b>.  Do tabeli wynik&oacute;w zostanie dodane nowe pole zawierające wartości procentowe, jakie stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z grup.   Jeżeli wybierzesz także opcję <b>Dodaj mniejszość, większość</b>, do warstwy wynikowej zostaną dodane dwa dodatkowe pola z&nbsp;procentowym podziałem dominujących i&nbsp;niedominujących wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup.
+            <p>To pole wyboru jest aktywowane po wybraniu pola, według kt&oacute;rego jest wykonywane grupowanie. Jeżeli chcesz sprawdzić, jaką wartość procentową stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup, zaznacz opcję  <b>Dodaj wartości procentowe</b>. Do tabeli wynik&oacute;w zostanie dodane nowe pole zawierające wartości procentowe, jakie stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z grup. Jeżeli wybierzesz także opcję <b>Dodaj mniejszość, większość</b>, do warstwy wynikowej zostaną dodane dwa dodatkowe pola z&nbsp;procentowym podziałem dominujących i&nbsp;niedominujących wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@ zawiera nowy atrybut dla każdego wykonanego obliczenia statystycznego. Dodać m
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli ta nazwa warstwy już istnieje, wyświetlona zostanie prośba o podanie innej nazwy.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>Używając menu rozwijanego  <b>Zapisz wynik w</b>, można wskazać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym zostanie zapisany wynik.
             </p>
         </div>
     </div>

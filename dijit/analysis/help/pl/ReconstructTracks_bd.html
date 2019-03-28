@@ -44,7 +44,7 @@
         <h2>Rekonstruuj ścieżki</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruuj ścieżki"></h2>
         <hr/>
-    <p>To narzędzie działa z zawierającą dane czasowe warstwą obiekt&oacute;w punktowych lub powierzchniowych reprezentujących  <code>moment</code> w czasie. Najpierw narzędzie ustala przy użyciu identyfikatora to, kt&oacute;re obiekty należą do ścieżki. Ścieżki są porządkowane sekwencyjnie przy użyciu czasu w każdej lokalizacji i przekształcane w linię lub obszar reprezentujący ścieżkę przemieszczania się z biegiem czasu. Opcjonalnie dane wejściowe mogą być buforowane według pola, co spowoduje utworzenie obszaru w każdej lokalizacji. Te buforowane punkty lub obszary wejściowe są następnie sekwencyjnie łączone w celu utworzenia ścieżki w postaci obszaru, kt&oacute;rego szerokość reprezentuje interesujący użytkownika atrybut. Wynikowe ścieżki mają czas rozpoczęcia i czas zakończenia, kt&oacute;re czasowo reprezentują pierwszy i ostatni obiekt ścieżki. Podczas tworzenia ścieżek statystyki dotyczące obiekt&oacute;w wejściowych są obliczane i przypisywane do ścieżki wynikowej. Najbardziej podstawowym obliczeniem statystycznym jest ustalenie liczby punkt&oacute;w przypadających na dany obszar, jednak można obliczyć r&oacute;wnież inne statystyki.
+    <p> To narzędzie działa z zawierającą dane czasowe warstwą obiekt&oacute;w punktowych lub powierzchniowych reprezentujących <code>moment</code> w czasie. Najpierw narzędzie ustala przy użyciu identyfikatora to, kt&oacute;re obiekty należą do ścieżki. Ścieżki są porządkowane sekwencyjnie przy użyciu czasu w każdej lokalizacji i przekształcane w linię lub obszar reprezentujący ścieżkę przemieszczania się z biegiem czasu. Opcjonalnie dane wejściowe mogą być buforowane według pola, co spowoduje utworzenie obszaru w każdej lokalizacji. Te buforowane punkty lub obszary wejściowe są następnie sekwencyjnie łączone w celu utworzenia ścieżki w postaci obszaru, kt&oacute;rego szerokość reprezentuje interesujący użytkownika atrybut. Wynikowe ścieżki mają czas rozpoczęcia i czas zakończenia, kt&oacute;re czasowo reprezentują pierwszy i ostatni obiekt ścieżki. Podczas tworzenia ścieżek statystyki dotyczące obiekt&oacute;w wejściowych są obliczane i przypisywane do ścieżki wynikowej. Najbardziej podstawowym obliczeniem statystycznym jest ustalenie liczby punkt&oacute;w przypadających na dany obszar, jednak można obliczyć r&oacute;wnież inne statystyki.
     </p>
     <p>Obiekty na warstwach z danymi czasowymi mogą być reprezentowane na jeden z dw&oacute;ch sposob&oacute;w:
         <ul>
@@ -65,9 +65,9 @@
         <div><h2>Wybierz obiekty do rekonstrukcji ścieżek</h2></div>
         <hr/>
         <div>
-            <p>Warstwa punktowa lub obszarowa, kt&oacute;ra zostanie zrekonstruowana do postaci ścieżki. Warstwa wejściowa musi zawierać dane czasowe z obiektami reprezentującymi moment w czasie. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
+            <p>Warstwa punktowa lub powierzchniowa, kt&oacute;ra zostanie zrekonstruowana do postaci ścieżki. Warstwa wejściowa musi zawierać dane czasowe z obiektami reprezentującymi moment w czasie. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -105,7 +105,7 @@
         <div><h2>Wybierz okno czasowe do dzielenia ścieżek (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Czas używany do dzielenia ścieżek. Jeśli okres między wejściowymi punktami lub obszaramijest dłuższy niż okno czasowe, zostaną one podzielone na r&oacute;żne ścieżki.
+            <p>Czas używany do dzielenia ścieżek. Jeśli okres między wejściowymi punktami lub obszarami jest dłuższy niż okno czasowe, zostaną one podzielone na r&oacute;żne ścieżki.
             </p>
             <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
             </p>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Podziel ścieżki (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Ścieżki można dzielić trzema r&oacute;żnymi metodami. Można nie dzielić ścieżek w og&oacute;le albo podzielić je z użyciem wszystkich bądź tylko niekt&oacute;rych metod. 
+            </p>
+            <p>Istnieją następujące sposoby wykonania podziału:
+                <ul>
+                    <li> <b>Na podstawie odległości między elementami wejściowymi</b> &mdash; jeśli odległość między wejściowymi punktami lub obszarami jest większa niż podana, zostaną one podzielone na r&oacute;żne ścieżki. Jeśli na przykład zostanie podana odległość wynosząca 10 kilometr&oacute;w, w&oacute;wczas występujące sekwencyjnie punkty odległe od siebie o więcej niż 10&nbsp;km będą należeć do osobnych ścieżek.
+                    </li>
+                    <li> <b>Na podstawie czasu między elementami wejściowymi</b> &mdash; jeśli przedział czasu między wejściowymi punktami lub obszarami jest dłuższy niż podane okno czasowe, zostaną one podzielone na osobne ścieżki. Mogą na przykład istnieć obiekty punktowe reprezentujące loty, w przypadku kt&oacute;rych polem ścieżki jest identyfikator samolotu. Samolot może wykonać wiele lot&oacute;w, kt&oacute;re będą reprezentowane przez jedną ścieżkę.  Jeśli wiesz, że między lotami występują 1-godzinne przerwy, możesz użyć okna czasowego o wartości <code>1 godzina</code>, dzięki czemu każdy lot będzie miał przypisaną własną ścieżkę.
+                    </li>
+                    <li> <b>W zdefiniowanych przedziałach czasu</b> &mdash; podział w regularnych odstępach czasu, określony przez przedział czasu i czas referencyjny. Jeśli czas referencyjny nie zostanie podany, przyjęty zostanie 1&nbsp;stycznia 1970&nbsp;r. Jeśli na przykład podany zostanie 1&nbsp;rok z czasem referencyjnym 2&nbsp;lutego 1990 roku, godz. 10:00, ścieżki będą dzielone 2&nbsp;lutego 1990 roku o godzinie 10:00, 2&nbsp;lutego 1991 roku o godzinie 10:00 itd. w odstępach jednorocznych.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W przypadku określenia wielu opcji podziału ścieżki będą dzielone przy spełnieniu jednego lub większej liczby warunk&oacute;w. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Wybierz odległość do dzielenia ścieżek (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p> Odległość używana do dzielenia ścieżek. Jeśli odległość między wejściowymi punktami lub obszarami jest większa niż podział odległości, zostaną one podzielone na r&oacute;żne ścieżki.
+            <p>Odległość używana do dzielenia ścieżek. Jeśli odległość między wejściowymi punktami lub obszarami jest większa niż podział odległości, zostaną one podzielone na r&oacute;żne ścieżki.
             </p>
             <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w magazynie danych i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Wyniki mogą być używane w ramach kooperacji między portalami.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie Moje zasoby. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>
         </div>
     </div>

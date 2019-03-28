@@ -129,16 +129,16 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Adicionar Camadas de Barreira</h2></div>
+        <div><h2>Selecionar camadas de barreira</h2></div>
         <hr/>
         <div>
-            <p> Especifique uma ou mais fei&ccedil;&otilde;es que atuam como restri&ccedil;&otilde;es tempor&aacute;rias (em outras palavras,  barreiras) ao viajar nas ruas subjacentes. Voc&ecirc; pode especificar as barreiras utilizando fei&ccedil;&otilde;es de ponto, linha ou pol&iacute;gono.
+            <p> Uma ou mais fei&ccedil;&otilde;es que atuam como restri&ccedil;&otilde;es tempor&aacute;rias (barreiras) ao viajar nas ruas subjacentes. Voc&ecirc; pode especificar as barreiras utilizando fei&ccedil;&otilde;es de ponto, linha ou pol&iacute;gono.
             </p>
             <p>Uma barreira de ponto pode modelar uma &aacute;rvore ca&iacute;da, um acidente, uma linha el&eacute;trica ca&iacute;da ou qualquer coisa que bloqueie completamente o tr&aacute;fego em uma posi&ccedil;&atilde;o espec&iacute;fica da rua. A viagem &eacute; permitida na rua mas n&atilde;o pela barreira. Voc&ecirc; pode especificar at&eacute; 250 fei&ccedil;&otilde;es para atuar como barreiras de ponto.
             </p>
-            <p>Uma barreira de linha pro&iacute;be a viaje em qualquer lugar que a barreira interseccionar as ruas. Por exemplo, uma parada ou protesto que bloqueia o tr&aacute;fego atrav&eacute;s de diversos segmentos de rua podem ser modelados com uma barreira de linha. Se o n&uacute;mero de fei&ccedil;&otilde;es de rua cruzadas por todas as barreiras de linha exceder 500, a ferramenta retornar&aacute; um erro.
+            <p>Uma barreira de linha pro&iacute;be a viaje em qualquer lugar que a barreira interseccionar as ruas. Por exemplo, uma parada ou protesto que bloqueia o tr&aacute;fego atrav&eacute;s de diversos segmentos de rua podem ser modelados com uma barreira de linha. Se o n&uacute;mero de fei&ccedil;&otilde;es de rua interseccionadas por todas as barreiras de linha exceder 500, a ferramenta retornar&aacute; um erro.
             </p>
-            <p>Uma barreira de pol&iacute;gono pro&iacute;be a viaje em qualquer pol&iacute;gono que interseccionar as ruas. Um uso deste tipo de barreira &eacute; a modelagem de inunda&ccedil;&otilde;es que cobrem &aacute;reas da rede de ruas que impossibilitam a viagem nestas ruas. Se o n&uacute;mero de fei&ccedil;&otilde;es de ruas cruzado por todas as barreiras de pol&iacute;gono exceder 2000, a ferramenta retornar&aacute; um erro.
+            <p>Uma barreira de pol&iacute;gono pro&iacute;be a viaje em qualquer pol&iacute;gono que interseccionar as ruas. Um uso deste tipo de barreira &eacute; a modelagem de inunda&ccedil;&otilde;es que cobrem &aacute;reas da rede de ruas que impossibilitam a viagem nestas ruas. Se o n&uacute;mero de fei&ccedil;&otilde;es de rua interseccionadas por todas as barreiras de pol&iacute;gono exceder 2000, a ferramenta retornar&aacute; um erro.
             </p>
         </div>
     </div>
@@ -148,11 +148,11 @@
         <div>
             <p>O nome da camada de fei&ccedil;&atilde;o que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. Se a camada de fei&ccedil;&atilde;o j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome. A camada de fei&ccedil;&atilde;o resultante conter&aacute; uma camada para cada um dos seguintes: rotas, origens e destinos n&atilde;o atribu&iacute;dos quando algumas origens n&atilde;o podem ser conectadas a seus destinos.
             </p>
-            <p>Se voc&ecirc; selecionar  <b>Incluir camadas de rota</b>, cada rota do resultado tamb&eacute;m ser&aacute; salva como uma camada de rota. Uma camada de rota inclui todas as informa&ccedil;&otilde;es para uma rota em particular, como as paradas atribu&iacute;das &agrave; rota, como tamb&eacute;m, as dire&ccedil;&otilde;es do percurso. A cria&ccedil;&atilde;o de camadas de rota &eacute; &uacute;til se voc&ecirc; deseja compartilhar as rotas individuais com outros membros na sua organiza&ccedil;&atilde;o ou se deseja modificar ainda mais as rotas utilizando o bot&atilde;o <b>Dire&ccedil;&otilde;es</b> no visualizador de mapa. As camadas de rota utilizam o nome fornecido para a camada de fei&ccedil;&atilde;o como um prefixo e o nome da rota gerado como parte da an&aacute;lise &eacute; adicionado para criar um nome &uacute;nico para cada camada de rota.
+            <p>Se voc&ecirc; selecionar  <b>Incluir camadas de rota</b>, cada rota do resultado tamb&eacute;m ser&aacute; salva como uma camada de rota. Uma camada de rota inclui todas as informa&ccedil;&otilde;es para uma rota em particular, como as paradas atribu&iacute;das &agrave; rota, como tamb&eacute;m, as dire&ccedil;&otilde;es do percurso. A cria&ccedil;&atilde;o de camadas de rota &eacute; &uacute;til se voc&ecirc; deseja compartilhar as rotas individuais com outros membros na sua organiza&ccedil;&atilde;o ou para modificar ainda mais as rotas utilizando o bot&atilde;o <b>Dire&ccedil;&otilde;es</b> no visualizador de mapa. As camadas de rota utilizam o nome fornecido para a camada de fei&ccedil;&atilde;o como um prefixo e o nome da rota gerado como parte da an&aacute;lise, que &eacute; adicionado para criar um nome &uacute;nico para cada camada de rota.
             </p>
             <p>O n&uacute;mero m&aacute;ximo de camadas de rota que pode ser criado &eacute;  1.000. Se o resultado contiver mais que  1.000 rotas e a op&ccedil;&atilde;o  <b>Incluir camadas de rota</b> estiver marcada, a ferramenta somente criar&aacute; o servi&ccedil;o de fei&ccedil;&atilde;o de sa&iacute;da.
             </p>
-            <p>Com a utiliza&ccedil;&atilde;o da lista suspensa  <b>Salvar resultado em</b>, voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde a camada de fei&ccedil;&atilde;o e as camadas de rota, se criadas, ser&atilde;o salvas.
+            <p>Com a utiliza&ccedil;&atilde;o do menu suspenso  <b>Salvar resultado em</b>, voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde a camada de fei&ccedil;&atilde;o e as camadas de rota, se criadas, ser&atilde;o salvas.
             </p>
         </div>
     </div>

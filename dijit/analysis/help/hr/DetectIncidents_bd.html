@@ -44,7 +44,7 @@
         <h2>Otkrivanje incidenata</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Otkrivanje incidenata"></h2>
         <hr/>
-    <p>Ovaj alat radi s ovremenjenim slojem točaka, linija, područja ili tablica koji predstavljaju instancu u vremenu. Pomoću geoobjekata poredanih po redu, a koji se zovu tragovi, ovaj alat utvrđuje koji su geoobjekti incidenti interesa. Incidenti se utvrđuju uvjetima koje odredite. 
+    <p> Ovaj alat radi s ovremenjenim slojem točaka, linija, područja ili tablica koji predstavljaju instancu u vremenu. Pomoću geoobjekata poredanih po redu, a koji se zovu tragovi, ovaj alat utvrđuje koji su geoobjekti incidenti interesa. Incidenti se utvrđuju uvjetima koje odredite.
     </p>
     <p>Prvo, alat utvrđuje koji geoobjekti pripadaju tragu pomoću jednog ili vi&scaron;e polja. Pomoću vremena na svakom geoobjektu, tragovi se redaju po redu i primjenjuje se uvjet incidenta. Geoobjekti koji ispunjavaju uvjet početnog incidenta označeni su kao incident. Ako želite, možete primijeniti uvjet zavr&scaron;nog incidenta jer kad je istinit zavr&scaron;ni uvjet, geoobjekt vi&scaron;e nije incident.  Rezultati će se vratiti s izvornim geoobjektima &mdash; s novim stupcima koji predstavljaju naziv incidenta &mdash; i označiti koji geoobjekt ispunjava uvjet incidenta. Možete vratiti sve izvorne geoobjekte ili samo geoobjekte koji su incidenti.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Točke, linije, područja ili tablica koje će se upotrijebiti za pronalazak incidenata. Ulazni sloj mora biti ovremenjen s geoobjektima koji predstavljaju instancu u vremenu te mora imati jedno ili vi&scaron;e polja koji se mogu upotrijebiti za utvrđivanje tragova.
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Izradite uvjet izraza kojim će se označiti kraj incidenta</h2></div>
+        <div><h2>Izradite uvjet izraza kojim će se označiti kraj incidenta (neobavezno)</h2></div>
         <hr/>
         <div>
             <p>Ako želite, dodajte uvjet pomoću sastavljača izraza da biste utvrdili kraj incidenta. Ako je zavr&scaron;ni uvjet koji odredite istinit, geoobjekt vi&scaron;e nije incident. Ako ne odredite zavr&scaron;ni uvjet, incident zavr&scaron;ava kad početni uvjet vi&scaron;e nije istinit.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Odaberite kako želite da se predstave izlazni podaci</h2></div>
+        <div><h2>Pokaži mi</h2></div>
         <hr/>
         <div>
             <p>Sve metode izlaznih podataka dodat će polja izvornim geoobjektima. Postoje dva načina za utvrđivanje koji će se geoobjekti vratiti:
                 <ul>
-                    <li> <b>Vrati samo incidente</b> &mdash; Ova će metoda vratiti samo geoobjekte koji su incidenti. Svi geoobjekti koji nisu incidenti neće se vratiti.
+                    <li> <b>Svi geoobjekti</b> &ndash; ovo je zadana postavka. Vratit će se svi geoobjekti u unosu.
                     </li>
-                    <li> <b>Vrati sve geoobjekte</b> &mdash; Ovo je zadana postavka. Vratit će se svi geoobjekti u unosu.
+                    <li> <b>Samo incidenti</b> &ndash; ova će metoda vratiti samo geoobjekte koji su incidenti. Svi geoobjekti koji nisu incidenti neće se vratiti.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizirajte podatke s vremenskim intervalima (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Odredite želite li otkriti incidente pomoću vremenskih intervala koji segmentiraju ulazne geoobjekte za analizu. Ako upotrebljavate vremenske intervale, morate postaviti vremenski interval koji želite upotrijebiti i opcionalno postaviti referentno vrijeme. Ako ne postavite referentno vrijeme, upotrijebit će se 1. siječnja 1970. 
+            </p>
+            <p>Primjerice, ako postavite vremensku granicu na 1 dan, počev&scaron;i od 9:00 sati 1. siječnja 1990., onda će se svaki trag skratiti u 9:00 za svaki dan i analizirati unutar tog segmenta. 
+            </p>
+            <p>Upotreba vremenskih intervala brz je način za ubrzavanje vremena računanja jer brzo stvara manje tragove za analizu. Ako dijeljenje ponavljajućim vremenskim intervalom ima smisla za va&scaron;u analizu, preporučuje se za obradu velikih podataka.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Naziv sloja rezultata</h2></div>
         <hr/>
         <div>
-            <p> Naziv sloja koji će se stvoriti u stavci <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
             </p>
-            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            <p>Kada pi&scaron;ete na  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka), upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
             </p>
         </div>
     </div>

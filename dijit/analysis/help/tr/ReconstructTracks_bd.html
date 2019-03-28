@@ -42,9 +42,9 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>İzleri Yeniden Oluşturma</h2><p/>
-        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="İzleri Yeniden Oluşturma"></h2>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="İzleri Yeniden Oluştur"></h2>
         <hr/>
-    <p>Bu ara&ccedil;, zamanda bir  <code>anı</code> g&ouml;steren nokta veya alan detaylarının zaman etkin bir katmanı ile &ccedil;alışır. &Ouml;ncelikle bir tanımlayıcı kullanarak hangi detayların bir ize ait olduğunu belirler. Her konumdaki zaman kullanılarak izler sıralı olarak dizilir ve zaman i&ccedil;indeki hareket yolunu g&ouml;steren bir &ccedil;izgiye veya alana d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. İsteğe bağlı olarak, girdi her konumda bir alan oluşturmak &uuml;zere bir alan tarafından tamponlanabilir. Bu tamponlanan noktalar ya da girdi alanları, sıralı olarak birleştirilerek genişliğin ilgi &ouml;zniteliğini g&ouml;sterdiği bir alan olarak iz oluşturulur. Sonu&ccedil;ta ortaya &ccedil;ıkan izlerin bir başlangı&ccedil; ve bitiş saatleri vardır ve bunlar verilen bir izde zamansal olarak ilk ve son detayları g&ouml;sterir. İzler oluşturulduğunda, girdi detayları hakkındaki istatistikler hesaplanır ve &ccedil;ıktı izine atanır. En temel istatistik alan i&ccedil;indeki nokta sayısıdır, ancak diğer istatistikleri de hesaplayabilirsiniz.
+    <p> Bu ara&ccedil;, zamanda bir <code>anı</code> g&ouml;steren nokta veya alan detaylarının zaman etkin bir katmanı ile &ccedil;alışır. &Ouml;ncelikle bir tanımlayıcı kullanarak hangi detayların bir ize ait olduğunu belirler. Her konumdaki zaman kullanılarak izler sıralı olarak dizilir ve zaman i&ccedil;indeki hareket yolunu g&ouml;steren bir &ccedil;izgiye veya alana d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. İsteğe bağlı olarak, girdi her konumda bir alan oluşturmak &uuml;zere bir alan tarafından tamponlanabilir. Bu tamponlanan noktalar ya da girdi alanları, sıralı olarak birleştirilerek genişliğin ilgi &ouml;zniteliğini g&ouml;sterdiği bir alan olarak iz oluşturulur. Sonu&ccedil;ta ortaya &ccedil;ıkan izlerin bir başlangı&ccedil; ve bitiş saatleri vardır ve bunlar verilen bir izde zamansal olarak ilk ve son detayları g&ouml;sterir. İzler oluşturulduğunda, girdi detayları hakkındaki istatistikler hesaplanır ve &ccedil;ıktı izine atanır. En temel istatistik alan i&ccedil;indeki nokta sayısıdır, ancak diğer istatistikleri de hesaplayabilirsiniz.
     </p>
     <p>Zaman etkin katmanlardaki detaylar aşağıdaki iki y&ouml;ntemden biriyle g&ouml;sterilebilir:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>İzlerde yeniden oluşturulacak nokta veya alan katmanı. Girdi katmanı, zamanda bir anı g&ouml;steren detaylarla zamana duyarlı olarak d&uuml;zenlenmelidir. Katmanın izd&uuml;ş&uuml;mlenmiş bir koordinat sisteminde olması gerekir veya bir tampon uygulandığında işlemci mekansal referans  <b>Analiz Ortamları</b> kullanılarak izd&uuml;ş&uuml;mlenmiş bir koordinat sistemine ayarlanmalıdır.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Analiz Katmanını Se&ccedil;</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>İzleri böl (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>İzleri &uuml;&ccedil; farklı y&ouml;ntem kullanarak b&ouml;lebilirsiniz. B&ouml;lme y&ouml;ntemlerinin hi&ccedil;birini, t&uuml;m&uuml;n&uuml; ya da bazılarını kullanabilirsiniz. 
+            </p>
+            <p>B&ouml;lme işlemi aşağıdaki şekillerde tamamlanabilir:
+                <ul>
+                    <li> <b>Girdiler arasındaki mesafeye g&ouml;re</b>&mdash;Girdi noktaları veya alanları arasında belirtilen mesafeden daha b&uuml;y&uuml;k bir mesafe bulunuyorsa, bunlar farklı izlere ayrılır. &Ouml;rneğin, 10 km&rsquo;lik bir mesafe belirlediyseniz, 10 kilometreden daha b&uuml;y&uuml;k sıralı noktalar ayrı izler olarak oluşturulur.
+                    </li>
+                    <li> <b>Girdiler arasındaki s&uuml;reye g&ouml;re</b>&mdash;Girdi noktaları veya alanları arasında zaman diliminden daha uzun bir s&uuml;re bulunuyorsa, bunlar farklı izlere ayrılır. &Ouml;rneğin, iz alanının u&ccedil;ak kimliği olarak kullanıldığı havayolu u&ccedil;uşlarını g&ouml;steren nokta detaylarınızın olduğunu varsayın. Bu u&ccedil;ak, birden &ccedil;ok u&ccedil;uş yapabilir ve bu bir tek izde g&ouml;sterilebilir.  U&ccedil;uşlar arasında 1 saatlik bir boşluk olduğunu bildiğinizde, iz ayırıcınız olarak <code>1 saat</code> değerini kullanarak, her u&ccedil;uşun kendi izine ayrılmasını sağlayabilirsiniz.
+                    </li>
+                    <li> <b>Tanımlanan zaman aralıklarında</b>&mdash;Bir zaman aralığı ve bir referans zaman tarafından belirtilen d&uuml;zenli aralıklarla b&ouml;ler. Bir referans zamanı ayarlamadığınızda, 1 Ocak 1970 kullanılacaktır. &Ouml;rneğin, 1 yılı referans zamanı 2 Şubat 1990 saat 10:00 olacak şekilde belirttiyseniz, izleri 2 Şubat 1990 saat 10:00, 2 Şubat 1991 saat 10:00&rsquo;da b&ouml;ler ve bir yıllık aralıklarla devam edersiniz.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Birden fazla b&ouml;lme se&ccedil;eneği belirlediğinizde izler, bir veya her iki koşul da sağlandığında ayrılır. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>İzleri ayırmak için kullanılacak mesafeyi seçin (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p> Par&ccedil;aları ayırmak i&ccedil;in kullanılan mesafe. Girdi noktaları veya alanları arasında mesafe diliminden daha geniş bir mesafe bulunuyorsa, bunlar farklı izlere ayrılır.
+            <p>İzleri ayırmak i&ccedil;in kullanılan mesafe. Girdi noktaları veya alanları arasında mesafe diliminden daha geniş bir mesafe bulunuyorsa, bunlar farklı izlere ayrılır.
             </p>
             <p>Bir zaman dilimi ve bir mesafe dilimi belirlerseniz, bir veya her iki koşul da sağlandığında par&ccedil;alar ayrılır. 
             </p>
@@ -160,11 +181,10 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Sonuçların kaydedileceği bir ArcGIS Data Store seçin</h2></div>
+        <div><h2>Sonuçların kaydedileceği bir ArcGIS Veri Deposu seçin</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics sonu&ccedil;ları, bir ArcGIS Data Store&rsquo;da saklanır ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. 
-Pek &ccedil;ok durumda sonu&ccedil;ların mekan-zamansal b&uuml;y&uuml;k veri deposuna depolanması gerekir ve bu varsayılan ayardır. Bazı durumlarda, sonu&ccedil;ların ilişkisel veri deposuna kaydedilmesi iyi bir se&ccedil;enektir. Sonu&ccedil;ların ilişkisel veri deposuna  saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 
+            <p>GeoAnalytics sonu&ccedil;ları,  bir veri deposunda saklanır ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. Pek &ccedil;ok durumda sonu&ccedil;ların mekan-zamansal b&uuml;y&uuml;k veri deposuna depolanması gerekir ve bu varsayılan ayardır. Bazı durumlarda, sonu&ccedil;ların ilişkisel veri deposuna kaydedilmesi iyi bir se&ccedil;enektir. Sonu&ccedil;ların ilişkisel veri deposuna  saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 
                 <ul>
                     <li>Bu sonu&ccedil;ları, portaldan-portala işbirliğinde kullanabilirsiniz.
                     </li>
@@ -181,9 +201,9 @@ Pek &ccedil;ok durumda sonu&ccedil;ların mekan-zamansal b&uuml;y&uuml;k veri de
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p>  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            <p> Oluşturulacak katmanın adı. Bir ArcGIS Data Store&lsquo;a yazdığınızda, sonu&ccedil;larınız  <b>İ&ccedil;eriğime</b> kaydedilir ve haritaya eklenir. Bir b&uuml;y&uuml;k veri dosya paylaşımına yazdığınızda,  sonu&ccedil;larınız b&uuml;y&uuml;k veri dosya paylaşımı i&ccedil;ine kaydedilir ve   manifestosuna eklenir.  haritaya eklenmez. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
             </p>
-            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            <p> ArcGIS Data Store&lsquo;a yazarken (ilişkisel ya da mekan-zamansal b&uuml;y&uuml;k veri deposu)  <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>
         </div>
     </div>

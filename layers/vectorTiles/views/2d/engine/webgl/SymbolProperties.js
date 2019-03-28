@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/ObjectPool"],function(o,t,h){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function o(){this.color=[0,0,0,0],this.haloColor=[0,0,0,0],this.haloSize=0,this.size=12,this.angle=0,this.offsetX=0,this.offsetY=0,this.hAnchor=0,this.vAnchor=0}return o.prototype.acquire=function(o,t,h,i,s,e,r,l,n){this.color=o,this.haloColor=t,this.haloSize=h,this.size=i,this.angle=s,this.offsetX=e,this.offsetY=r,this.hAnchor=l,this.vAnchor=n},o.prototype.release=function(){this.color[0]=this.color[1]=this.color[2]=this.color[3]=0,this.haloColor[0]=this.haloColor[1]=this.haloColor[2]=this.haloColor[3]=0,this.haloSize=0,this.size=0,this.angle=0,this.offsetX=0,this.offsetY=0,this.hAnchor=0,this.vAnchor=0},o.pool=new h(o),o}();t.TextProperties=i});

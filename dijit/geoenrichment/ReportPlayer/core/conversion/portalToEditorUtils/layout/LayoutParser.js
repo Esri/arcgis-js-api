@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./GraphicReportSectionsParser","./ClassicReportSectionsParser"],function(e,r,s){var a={};return a.parseReportXML=function(a){a.log(a.file.data);var i=e.parseXml(a.file.data);a.parsers.getParser("document").parseDocument(i,a),a.isGraphicReport?r.parseSectionsGraphic(i,a):s.parseSectionsClassic(i,a)},a});

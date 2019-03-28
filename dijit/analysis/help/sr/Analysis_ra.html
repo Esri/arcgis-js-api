@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasterska analiza vam omogućava da izvr&scaron;ite analizu velikih rasterskih skupova podataka kori&scaron;ćenjem  ArcGIS Image Server. Ovo vam omogućava da analizirate podatke brže koristeći snagu servera. Skupovi alatki koji su trenutno dostupni preko  Portal for ArcGIS korisničkog veb iskustva su  <b>Sumiraj podatke</b>, <b>Analiza obrazaca</b>, <b>Analiziraj snimak</b>, <b>Analiziraj teren</b> i <b>Upravljaj podacima</b>.
+        <p>Rasterska analiza vam omogućava da izvr&scaron;ite analizu velikih rasterskih skupova podataka kori&scaron;ćenjem  ArcGIS Image Server. Ovo vam omogućava da analizirate podatke brže koristeći snagu servera. Skupovi alatki koji su trenutno dostupni preko  Portal for ArcGIS korisničkog veb iskustva su  <b>Sumiraj podatke</b>, <b>Analiza obrazaca</b>, <b>Koristi bliskost</b>, <b>Analiziraj snimak</b>, <b>Analiziraj teren</b>, <b>Upravljaj podacima</b> i <b>Detaljno učenje</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -212,12 +212,13 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
+        <div id="ApplyRFxTemplateTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Primeni šablon rasterske funkcije</h2></td>
                     <td>
+                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Primeni &scaron;ablon rasterske funkcije">
                     </td>
                 </tr></tbody>
             </table>
@@ -408,6 +409,49 @@
             </table>
 <hr/>
             <p>Kreirajte novi skup podataka geoobjekta od postojećeg rasterskog skupa podataka.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Skup alatki Detaljno učenje</h2>
+        <hr/>
+        <p>Ove alatke 	se koriste za otkrivanje određenih geoobjekata na snimku ili za klasifikaciju piksela u rasterskom skupu podataka. Detaljno učenje je vrsta metoda ma&scaron;inskog učenja ve&scaron;tačke inteligencije koji otkriva geoobjekte na snimcima koristeći vi&scaron;estruke slojeve u neuronskim mrežama gde je svaki sloj u stanju da ekstrahuje jedan ili vi&scaron;e jedinstvenih geoobjekata na snimku. Ove alatke tro&scaron;e modele koji su obučeni za otkrivanje određenih geoobjekata u radnim okvirima za detaljno učenje nezavisnih proizvođača &ndash; kao &scaron;to je TensorFlow, CNTK i Keras &ndash; i izlaznih geoobjekata ili mapa klasa.
+            <ul>
+                <li> <b>Klasifikuj piksele pomoću detaljnog učenja</b> proizvodi klasifikovani raster koristeći obučeni model detaljnog učenja.
+                </li>
+                <li> <b>Otkrij objekte pomoću detaljnog učenja</b> proizvodu klasu geoobjekata koja sadrži objekte koje pronađe u ulaznom rasteru pomoću obučenog modela detaljnog učenja.
+                </li>
+            </ul>
+             
+        </p>
+    </div>
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikuj piksele pomoću detaljnog učenja</h2></td>
+                    <td>
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasifikuj piksele pomoću detaljnog učenja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasifikovani raster, gde svaki važeći piksel ima dodeljenu oznaku klase.
+            </p>
+            <br/>
+        </div>
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Otkrij objekte pomoću detaljnog učenja</h2></td>
+                    <td>
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Otkrij objekte pomoću detaljnog učenja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasu geoobjekata koja sadrži objekte koje pronađe. Geoobjekti mogu biti granična polja ili poligoni oko pronađenih objekata, ili tačke u centrima objekata.
             </p>
             <br/>
         </div>

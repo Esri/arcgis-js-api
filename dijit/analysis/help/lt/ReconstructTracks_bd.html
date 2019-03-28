@@ -44,7 +44,7 @@
         <h2>Atkurti trajektorijas</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Atkurti trajektorijas"></h2>
         <hr/>
-    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kiniu arba plotiniu elementų sluoksniu, kuriame įgalintos laiko žymos, nurodančios konkretų laiko  <code>momentą</code>.   Pirmiausia įrankis pagal identifikatorių nustato, kurie elementai priklauso trajektorijai. Pagal kiekvienos vietos laiką trajektorijos dalys i&scaron;dėstomos nuosekliai, o pati trajektorija i&scaron;rei&scaron;kiama linija arba.plotu, parodančiu judėjimo laike kelią. Pasirinktinai įvesties duomenis galima buferizuoti įtraukiant lauką, kuris sukurs plotą aplink kiekvieną vietą. Tada &scaron;ie buferizuoti ta&scaron;kai (arba įvesties plotai) nuosekliai sujungiami, kad sukurtų plotinę trajektoriją, kurios plotis nurodo dominantį atributą. Gautos trajektorijos turi pradžios ir pabaigos laiką, kuris laikinai nurodo pirmąjį ir paskutinįjį duotosios trajektorijos elementą. Sukūrus trajektorijas, apskaičiuojama įvesties elementų statistika, kuri priskiriama i&scaron;vesties trajektorijai. Pats paprasčiausias apskaičiuojamas statistinis rodiklis &ndash; ta&scaron;kų skaičius plote, tačiau galite apskaičiuoti ir kitokius rodiklius.
+    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kiniu arba  plotiniu elementų sluoksniu, kuriame įgalintos laiko žymos, nurodančios konkretų laiko <code>momentą</code>. Pirmiausia įrankis pagal identifikatorių nustato, kurie elementai priklauso trajektorijai. Pagal kiekvienos vietos laiką trajektorijos dalys i&scaron;dėstomos nuosekliai, o pati trajektorija i&scaron;rei&scaron;kiama linija arba plotu, parodančiu judėjimo laike kelią. Pasirinktinai įvesties duomenis galima buferizuoti įtraukiant lauką, kuris sukurs plotą aplink kiekvieną vietą. Tada &scaron;ie buferizuoti ta&scaron;kai (arba įvesties plotai) nuosekliai sujungiami, kad sukurtų plotinę trajektoriją, kurios plotis nurodo dominantį atributą. Gautos trajektorijos turi pradžios ir pabaigos laiką, kuris laikinai nurodo pirmąjį ir paskutinįjį duotosios trajektorijos elementą. Sukūrus trajektorijas, apskaičiuojama įvesties elementų statistika, kuri priskiriama i&scaron;vesties trajektorijai. Pats paprasčiausias apskaičiuojamas statistinis rodiklis &ndash; ta&scaron;kų skaičius plote, tačiau galite apskaičiuoti ir kitokius rodiklius.
     </p>
     <p>Elementai sluoksniuose, kuriuose palaikomos laiko žymos, gali būti dviejų tipų:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Ta&scaron;kinis arba plotinis sluoksnis, kuriam bus atkurta trajektorija. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
             </p>
-            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Pasirinkti analizės sluoksnį</b>, kad galėtumėte turinyje ie&scaron;koti didelių duomenų rinkinio arba elemento sluoksnio.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Trajektorijų skaidymas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Galite trimis skirtingais metodais skaidyti trajektorijas. Galite naudoti jokių, visų arba kai kurių skaidymo metodų derinius. 
+            </p>
+            <p>Skaidyti galima &scaron;iais būdais:
+                <ul>
+                    <li> <b>Pagal atstumą tarp įvesties</b> &ndash; jei atstumas tarp įvesties ta&scaron;kų ar plotų yra didesnis nei nurodytas atstumas, jie bus padalinti į mažesnes trajektorijas. Pavyzdžiui, jei nurodysite 10 km atstumą, tolesni ta&scaron;kai, kurių nuotolis didesnis nei 10 km, bus atskiros trajektorijos.
+                    </li>
+                    <li> <b>Pagal laiką tarp įvesties</b> &ndash; jei trukmė tarp įvesties ta&scaron;kų ar plotų yra ilgesnė negu laiko intervalas, jie bus padalinti į mažesnes trajektorijas. Pavyzdžiui, jei turite ta&scaron;kinius elementus, rodančius lėktuvo skrydžius, kur trajektorijos lauke nurodytas lėktuvo ID. &Scaron;is lėktuvas gali atlikti kelis skydžius, kurie būtų parodyti kaip viena trajektorija.  Jei žinotumėte, kad tarp skrydžių buvo 1 valandos pertrauka, galėtumėte panaudoti <code>1 valandos</code> laiko intervalą, ir kiekvienas skrydis būtų padalintas į atskiras trajektorijas.
+                    </li>
+                    <li> <b>Apibrėžtais laiko intervalais</b> &ndash; suskaidyta naudojant reguliarius intervalus, pagal nurodytą laiko intervalą ir atskaitos laiką. Jei nenurodysite atskaitos laiko, bus naudojama 1970 m. sausio 1 d. Pavyzdžiui, jei nurodėte 1 metus, o atskaitos laikas &ndash; 1990 m. vasario 2 d. 10:00 val., trajektorijas suskaidysite ties 1990 m. vasario 2 d. 10:00 val., 1991 m. vasario 2 d. 10:00 val. ir taip toliau vienų metų intervalais.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Jei nurodysite kelis skaidymo variantus, trajektorijos bus skaidomos, kai bus patenkinta viena arba daugiau sąlygų. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Pasirinkite atstumą, kurio intervalais bus suskaidytos trajektorijos (neprivaloma)</h2></div>
         <hr/>
         <div>
-            <p> Atstumas, pagal kurį bus suskaidytos trajektorijos. Jei atstumas tarp įvesties ta&scaron;kų ar plotų yra didesnis nei atstumo intervalas, jie bus padalinti į mažesnes trajektorijas.
+            <p>Atstumas, pagal kurį bus suskaidytos trajektorijos. Jei atstumas tarp įvesties ta&scaron;kų ar plotų yra didesnis nei atstumo intervalas, jie bus padalinti į mažesnes trajektorijas.
             </p>
             <p>Jei nurodysite laiko ir atstumo intervalą, trajektorijos bus skaidomos, kai bus patenkinta viena arba abi sąlygos. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Pasirinkite ArcGIS Data Store, kad įrašytumėte rezultatus į</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi  Portal for ArcGIS kaip elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas.  Kai kuriais atvejais, galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įra&scaron;yti į releacinių duomenų saugyklą: 
+            <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi  Portal for ArcGIS kaip elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas. Kai kuriais atvejais, galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įra&scaron;yti į releacinių duomenų saugyklą: 
                 <ul>
                     <li>Galite rezultatus naudoti dviejų portalų bendradarbiavime.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p> Sluoksnio, kuris bus sukurtas puslapyje <b>Turinys</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            <p> Pavadinimas sluoksnio, kuris bus sukurtas. Jei įra&scaron;ote į ArcGIS Data Store, jūsų rezultatai bus įra&scaron;yti į  <b>Turinį</b> ir įtraukti į žemėlapį. Jei įra&scaron;ote į didelių duomenų failo bendrinimą, jūsų rezultatai bus saugomi didelių duomenų failo bendrinime ir pridedami į jo deklaraciją. Jie nebus įtraukti į žemėlapį. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
             </p>
-            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            <p>Kai ra&scaron;ote į   ArcGIS Data Store  (releacinių arba erdvėlaikinių didelių duomenų saugyklą) naudodami i&scaron;&scaron;okantįjį meniu  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
             </p>
         </div>
     </div>

@@ -44,7 +44,7 @@
         <h2>Registrér hændelser</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Registr&eacute;r h&aelig;ndelser"></h2>
         <hr/>
-    <p>Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag best&aring;ende af punkter, linjer, omr&aring;der eller tabeller, der repr&aelig;senterer et &oslash;jeblik i tiden. Ved at benytte objekter, der er ordnet i r&aelig;kkef&oslash;lge, ogs&aring; kaldet spor, bestemmer dette v&aelig;rkt&oslash;j, hvilke objekter der repr&aelig;senterer h&aelig;ndelser af interesse. H&aelig;ndelserne bestemmes ud fra de betingelser, du angiver. 
+    <p> Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag best&aring;ende af punkter, linjer, omr&aring;der eller tabeller, der repr&aelig;senterer et &oslash;jeblik i tiden. Ved at benytte objekter, der er ordnet i r&aelig;kkef&oslash;lge, ogs&aring; kaldet spor, bestemmer dette v&aelig;rkt&oslash;j, hvilke objekter der repr&aelig;senterer h&aelig;ndelser af interesse. H&aelig;ndelserne bestemmes ud fra de betingelser, du angiver.
     </p>
     <p>F&oslash;rst bestemmer v&aelig;rkt&oslash;jet, hvilke objekter der tilh&oslash;rer et spor, ved at benytte et eller flere felter. Ved at benytte tid i forhold til hvert objekt arrangeres sporene i r&aelig;kkef&oslash;lge og h&aelig;ndelsesbetingelsen anvendes. De objekter, der opfylder start-h&aelig;ndelsesbetingelsen, markeres som en h&aelig;ndelse. Du kan ogs&aring; v&aelig;lge at anvende en slut-h&aelig;ndelsesbetingelse; n&aring;r slutbetingelsen er sand, er objektet ikke l&aelig;ngere en h&aelig;ndelse.  Resultaterne vil blive returneret sammen med de oprindelige objekter  &ndash; med nye kolonner, der repr&aelig;senterer h&aelig;ndelsesnavnet &ndash; og angive, hvilke objekter der opfylder h&aelig;ndelsesbetingelsen. Du kan returnere alle de oprindelige objekter eller kun de objekter, der er h&aelig;ndelser.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>De punkter, linjer, omr&aring;der og tabeller, der vil blive anvendt til at identificere h&aelig;ndelser. Input-laget skal v&aelig;re tidsafh&aelig;ngigt og indeholde objekter, der repr&aelig;senterer et &oslash;jeblik i tiden, og der skal desuden v&aelig;re et eller flere felter, der kan bruges til at identificere spor.
             </p>
-            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Opret et betingelsesudtryk, der betegner slutningen på en hændelse</h2></div>
+        <div><h2>Opret en udtryksbetingelse, der betegner slutningen på en hændelse (valgfrit)</h2></div>
         <hr/>
         <div>
             <p>Du kan v&aelig;lge at tilf&oslash;je et udtryk ved at bruge Expression Builder-programmet til at definere slutningen p&aring; en h&aelig;ndelse. Hvis den slutbetingelse, som du angiver, er sand, er objektet ikke l&aelig;ngere en h&aelig;ndelse. Hvis du ikke angiver en slutbetingelse, slutter en h&aelig;ndelse, n&aring;r startbetingelsen ikke l&aelig;ngere er sand.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Vælg, hvordan du ønsker at få outputtet vist</h2></div>
+        <div><h2>Vis mig</h2></div>
         <hr/>
         <div>
             <p>Alle output-metoder vil knytte felter til de oprindelige objekter. Der er to m&aring;der, hvorp&aring; du kan bestemme, hvilke objekter der skal returneres:
                 <ul>
-                    <li> <b>Return&eacute;r kun h&aelig;ndelser</b>&mdash;Denne metode vil kun returnere de objekter, der er h&aelig;ndelser. Eventuelle objekter, der ikke er h&aelig;ndelser, vil ikke blive returneret.
+                    <li> <b>Alle objekter</b> &ndash; Dette er standardindstillingen. Alle objekter i inputtet vil blive returneret.
                     </li>
-                    <li> <b>Return&eacute;r alle objekter</b>&mdash;Dette er standardindstillingen. Alle objekter i inputtet vil blive returneret.
+                    <li> <b>Kun h&aelig;ndelser</b> &ndash; Denne metode vil kun returnere de objekter, der er h&aelig;ndelser. Eventuelle objekter, der ikke er h&aelig;ndelser, vil ikke blive returneret.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analysér data med tidsintervaller (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv, om du vil registrere h&aelig;ndelser ved hj&aelig;lp af tidsintervaller, som vil segmentere dine inputobjekter til analyse. Hvis du bruger tidsintervaller, skal du angive det tidsinterval, du vil bruge, og evt. indstille referencetidspunktet. Hvis du ikke angiver et referencetidspunkt, benyttes 1. januar 1970. 
+            </p>
+            <p>Hvis du f.eks. indstiller tidsgr&aelig;nsen til at v&aelig;re 1 dag, der begynder kl. 9.00 den 1. januar 1990, bliver hvert spor afkortet klokken 9:00 for hver dag og analyseret inden for dette segment. 
+            </p>
+            <p>Brug af tidsintervaller er en hurtig m&aring;de at nedbringe beregningstiden, da der hurtigt oprettes mindre spor til analyse. Hvis opsplitning ved et tilbagevendende tidsinterval giver mening for din analyse, anbefales det behandling af big data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Navnet p&aring; det lag, som oprettes under <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            <p> Navnet p&aring; det lag, som oprettes. Hvis du skriver til et ArcGIS Data Store, bliver  dine resultater gemt i  <b>Mit indhold</b> og f&oslash;jet til kortet. Hvis du skriver til en big data-fildeling, bliver dine resultater gemt i big data-fildelingen og f&oslash;jet til dens manifest. De bliver ikke f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
             </p>
-            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            <p>N&aring;r du skriver til   ArcGIS Data Store  (relationelt eller spatiotemporalt big data-lager) ved hj&aelig;lp af rullelisten  <b>Gem resultat i </b>, kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet gemmes.
             </p>
         </div>
     </div>

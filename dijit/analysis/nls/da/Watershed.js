@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg vandløbsretningslag",pourPointLayerLabel:"Vælg punktraster eller vektorlag for vandløbsretning",pourPointField:"Vælg punktfelt for vandløbsretning",resultLayerName:"Navn på resultatlag",outputLayerName:"Vandskel for ${layername}",itemDescription:"Vektorlag genereret ud fra kørsel af Summér center og spredning for ${layerName}. ",itemTags:"Analyseresultat, Vandskel, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra Vandskel."});

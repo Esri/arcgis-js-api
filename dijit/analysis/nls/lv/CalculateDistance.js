@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlieties rastru vai elementu novietojuma slāni, lai aprēķinātu attālumu līdz",maxDistanceLabel:"Maksimālais aprēķināmais attālums (pēc izvēles)",outputCellSize:"Izvades šūnas lielums (pēc izvēles)",resultDistLayerName:"Rezultātā iegūtā attāluma slāņa nosaukums",resultDirectionLayerName:"Rezultātā iegūtā virziena slāņa nosaukums (pēc izvēles)",resultAllocationLayerName:"Rezultātā piešķirtā slāņa nosaukums (pēc izvēles)",outputLayerName:"Slāņa ${Layername} aprēķinātais attālums",allocationFieldLabel:"Izvēlieties piešķiršanas lauku (pēc izvēles)",itemDescription:"Elementu slānis ģenerēts, izmantojot risinājumu Aprēķināt attālumu slānim ${layerName}. ",itemTags:"Analīzes rezultāts, aprēķināt attālumu, ${layername} ${fieldname}",itemSnippet:"Elementu slānis ģenerēts, izmantojot vienumu Aprēķināt attālumu."});

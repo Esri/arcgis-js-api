@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Görüş Alanı Oluştur</h2><p/>
+        <h2>Görüş Alanı Oluşturma</h2><p/>
         <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="G&ouml;r&uuml;ş Alanı Oluştur"></h2>
         <hr/>
     <p>G&ouml;r&uuml;ş Alanı Oluştur aracı bir g&ouml;zlemcinin zemindeki nesneleri g&ouml;rebileceği alanlar oluşturur. Girdi g&ouml;zlemci noktaları g&ouml;zlemcileri (yerdeki kişiler veya yangın kulesindeki n&ouml;bet&ccedil;ileri) veya g&ouml;zlemlenen nesneleri (r&uuml;zgar t&uuml;rbinleri, su kuleleri, ara&ccedil;lar veya diğer insanlar) temsil edebilir. Sonu&ccedil; alanları, g&ouml;zlemcilerin g&ouml;zlenen nesneleri veya tam tersi durumun ger&ccedil;ekleştiği ve g&ouml;zlemlenen nesnelerin g&ouml;zlemcileri g&ouml;rebildiği alanlardır.
@@ -50,7 +50,7 @@
     </p>
     <p>G&ouml;r&uuml;ş alanı hesaplamasının ağa&ccedil; veya bina gibi engelleri dikkate almadığına dikkat edin. Hesaplamanın yalnızca g&ouml;zlemci ve g&ouml;zlemlenen nesneleri dikkate alan salt zemin tabanlı olarak yapıldığını kabul edebilirsiniz.
     </p>
-    <p>Sonu&ccedil; katmanı g&ouml;r&uuml;n&uuml;r alanları temsil eden alan detaylarını kapsar. <i>Frekans</i> alanı, her alanı g&ouml;rebilen g&ouml;zlemci noktası sayısını kaydeder. &Ouml;rneğin, her biri bir yangın g&ouml;zetleme kulesini temsil eden beş girdi noktanız varsa, <i>Frekans</i> alanı, bir ve beş arasında değer alacaktır; bir değerini taşıyan alanlar yalnızca bir kule tarafından, beş değerini taşıyan alanlar da t&uuml;m kuleler tarafından g&ouml;r&uuml;lebilir. Sonu&ccedil; katmanında ayrıca <i>DEMResolution</i> alanı bulunur; bu alan g&ouml;r&uuml;ş alanı oluşturmak i&ccedil;in kullanılan dijital y&uuml;kselti modeli (DEM) &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml;n&uuml; kaydeder.
+    <p>Sonu&ccedil; katmanı g&ouml;r&uuml;n&uuml;r alanları temsil eden alan detaylarını kapsar.  <i>Frequency</i> alanı, her alanı g&ouml;rebilen g&ouml;zlemci noktası sayısını kaydeder. &Ouml;rneğin, her biri bir yangın g&ouml;zetleme kulesini temsil eden beş girdi noktanız varsa, <i>Frequency</i> alanı, bir ve beş arasında değer alacaktır; bir değerini taşıyan alanlar yalnızca bir kule tarafından, beş değerini taşıyan alanlar da t&uuml;m kuleler tarafından g&ouml;r&uuml;lebilir. Sonu&ccedil; katmanında ayrıca <i>DEMResolution</i> alanı bulunur; bu alan g&ouml;r&uuml;ş alanı oluşturmak i&ccedil;in kullanılan dijital y&uuml;kselti modeli (DEM) &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml;n&uuml; kaydeder.
     </p>
     <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, yalnızca ge&ccedil;erli harita yayılımı dahilinde g&ouml;r&uuml;n&uuml;r olan g&ouml;zlemci noktaları analiz edilir.  İşaretli değilse, girdi katmanındaki t&uuml;m g&ouml;zlemci noktaları, ge&ccedil;erli harita yayılımının dışında bile olsa analiz edilir.
     </p>
@@ -60,8 +60,7 @@
         <div><h2>Gözlemci konumlarını temsil eden nokta detayları</h2></div>
         <hr/>
         <div>
-            <p>G&ouml;zlemci konumları olarak kullanılacak nokta detayları.
-
+            <p>G&ouml;zlemci konumları olarak kullanılacak nokta detayları. 
             </p>
             <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> veya <b>analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
@@ -79,7 +78,7 @@
         <div><h2>Yerdeki diğer nesnelerin yüksekliği</h2></div>
         <hr/>
         <div>
-            <p>Bu, g&ouml;r&uuml;n&uuml;rl&uuml;ğ&uuml; ayarlamak i&ccedil;in kullanılan yerdeki yapı veya insanların y&uuml;ksekliğidir. Sonu&ccedil;ta olarak ortaya &ccedil;ıkan g&ouml;r&uuml;ş alanları, diğer nesneleri g&ouml;rebilen bir g&ouml;zlemci noktasının bulunduğu alanlardır.  Bunun tersi de doğrudur, diğer nesneler de bir g&ouml;zlemci noktasını g&ouml;rebilir. 
+            <p>Bu, g&ouml;r&uuml;n&uuml;rl&uuml;ğ&uuml; ayarlamak i&ccedil;in kullanılan yerdeki yapı veya insanların y&uuml;ksekliğidir. Sonu&ccedil; olarak ortaya &ccedil;ıkan g&ouml;r&uuml;ş alanları, diğer nesneleri g&ouml;rebilen bir g&ouml;zlemci noktasının bulunduğu alanlardır. Bunun tersi de doğrudur, diğer nesneler de bir g&ouml;zlemci noktasını g&ouml;rebilir. 
             </p>
             <p>
                 <ul>
@@ -108,9 +107,11 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman adı zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
-            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır men&uuml;s&uuml;n&uuml; kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+            <p> Bu aracın &ccedil;alıştırılması kredi harcamaz.
             </p>
         </div>
     </div>

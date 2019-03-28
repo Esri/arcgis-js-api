@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Ustvari razvodja</h2><p/>
+        <h2>Ustvari razvodje</h2><p/>
         <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Ustvari razvodja"></h2>
         <hr/>
     <p>To orodje določi razvodje ali gorvodno prispevno območje za posamezne točke v va&scaron;em vhodnem sloju. 
@@ -54,21 +54,21 @@
     </p>
     <p>Dobljena razvodja bodo imela vse atribute va&scaron;ih vhodnih točk ter te dodatne atribute:     
         <ul>
-            <li> <i>PourID</i> &ndash; Vsebuje vrednost ID-ja vhodne točke.
+            <li> <i>PourPtID</i> &ndash; vsebuje vrednost ID-ja za vhodno točko
             </li>
-            <li> <i>Povr&scaron;ina v kvadratnih kilometrih</i> &ndash; Vsebuje povr&scaron;ine v kvadratnih kilometrih gorvodnega razvodja
+            <li> <i>Area Square Kilometers</i> &ndash; vsebuje povr&scaron;ine v kvadratnih kilometrih gorvodnega razvodja.
             </li>
-            <li> <i>Opis</i> in <i>DataResolution</i> &ndash; Vsebujeta informacije s hidrolo&scaron;kimi podatki, uporabljenimi za izračun sledi
+            <li> <i>Description</i> in <i>DataResolution</i> &ndash; vsebujeta informacije s hidrolo&scaron;kimi podatki, uporabljenimi za izračun sledi.
             </li>
         </ul>
         
     </p>
-    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo za izraču razvodij uporabljeni samo geoobjekti, vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo za izračun razvodij uporabljeni samo geoobjekti, vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Točkovni geoobjekti za uporabo za izračun razvodij</h2></div>
+        <div><h2>Točkovni geoobjekti za izračun razvodij</h2></div>
         <hr/>
         <div>
             <p>Za vsako točko bo izračunano razvodje (gorvodno prispevno območje).  
@@ -93,9 +93,11 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            </p>
+            <p> Uporaba tega orodja ne porablja kreditov.
             </p>
         </div>
     </div>

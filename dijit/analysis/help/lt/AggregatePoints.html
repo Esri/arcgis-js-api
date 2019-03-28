@@ -46,8 +46,7 @@
         <hr/>
     <p>&Scaron;is įrankis veikia su sluoksniu, sudarytu i&scaron; ta&scaron;kų elementų, ir sluoksniu, sudarytu i&scaron; plotų elementų. Pirmiausia jis nustato, kurie ta&scaron;kai patenka į kiekvieną plotą. Nustačius plotų ir į juos patenkančių ta&scaron;kų erdvinį ry&scaron;į, apskaičiuojama ir plotui priskiriama visų jo ta&scaron;kų statistika. Pats paprasčiausias apskaičiuojamas rodiklis &ndash; ta&scaron;kų skaičius, tačiau galite apskaičiuoti ir kitus statistinius rodiklius. 
     </p>
-    <p>Pavyzdžiui, jūs turite kavinių ta&scaron;kinius elementus ir seniūnijų plotinius elementus ir norite sužinoti kiekvienos seniūnijos kavinių apyvartas. Jei kavinės turi atributą  <i>TOTAL_SALES</i>, galite gauti visų <i>TOTAL_SALES</i> reik&scaron;mių sumą kiekvienoje seniūnijoje, arba <i>TOTAL_SALES</i> minimumo ar maksimumo reik&scaron;mes
- kiekvienoje seniūnijoje, arba standartinį pardavimų nuokrypį.
+    <p>Pavyzdžiui, jūs turite kavinių ta&scaron;kinius elementus ir seniūnijų plotinius elementus ir norite sužinoti kiekvienos seniūnijos kavinių apyvartas. Jei kavinės turi  <i>TOTAL_SALES</i> atributą, galite gauti visų <i>TOTAL_SALES</i> reik&scaron;mių sumą arba <i>TOTAL_SALES</i> minimumo ar maksimumo reik&scaron;mes, arba standartinio nuokrypio reik&scaron;mę kiekvienoje seniūnijoje.
     </p>
     <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> yra pažymėta, bus analizuojami tik įvesties ta&scaron;kų sluoksnio ir plotų sluoksnio elementai, patenkantys į esamo žemėlapio aprėptį.  Jei nepažymėta, bus analizuojami visi įvesties ta&scaron;kų sluoksnio ir plotų sluoksnio elementai net jei jie yra už esamos žemėlapio aprėpties ribų.
     </p>
@@ -90,13 +89,15 @@
             <p>Galite apskaičiuoti tokius ta&scaron;kų atributų statistinius rodiklius, kaip sumą, vidurkį, minimumą, maksimumą bei standartinį nuokrypį. Rezultato sluoksnis turės naujus atributus kiekvienam apskaičiuotam statistiniam rodikliui. Pasirinktiems atributams gali būti apskaičiuotas norimas statistinių rodiklių skaičius (pasirinkite i&scaron; sąra&scaron;o).
  
             </p>
+            <p>Jei sumavimo sluoksnyje nėra skaičiaus laukų, papildoma statistika nebus prieinama.
+            </p>
         </div>
     </div>
     <div id="GroupByField">
         <div><h2>Pasirinkite grupavimo lauką</h2></div>
         <hr/>
         <div>
-            <p> Nurodydami atributą i&scaron; įvesties ta&scaron;kų sluoksnio galite kurti statistines grupes.    Pavyzdžiui, jei agreguojate nusikaltimus į rajonų ribas, galite turėti atributą <i>Crime_type</i> su penkiais skirtingais nusikaltimų tipais.  Kiekvienas unikalus nusikaltimo tipas sudaro grupę ir jūsų pasirinkti statistiniai rodikliai bus suskaičiuoti kiekvienai unikaliai <i>Crime_type</i> reik&scaron;mei.  Kiekvienos grupės statistika ir ta&scaron;kų kiekis bus rodomi rezultatų sluoksnio i&scaron;kylančiame lange. Kai nurodote grupavimo atributą, sukuriami du rezultatai: rezultato sluoksnis ir rezultato lentelė su statistinių rodiklių įverčiais kiekvienai grupei.
+            <p> Nurodydami atributą i&scaron; įvesties ta&scaron;kų sluoksnio galite kurti statistines grupes.    Pavyzdžiui, jei agreguojate nusikaltimus į rajonų ribas, galite turėti atributą <i>Crime_type</i> su penkiais skirtingais nusikaltimų tipais. Kiekvienas unikalus nusikaltimo tipas sudaro grupę ir jūsų pasirinkti statistiniai rodikliai bus suskaičiuoti kiekvienai unikaliai <i>Crime_type</i> reik&scaron;mei. Kiekvienos grupės statistika ir ta&scaron;kų kiekis bus rodomi rezultatų sluoksnio i&scaron;kylančiame lange. Kai nurodote grupavimo atributą, sukuriami du rezultatai: rezultato sluoksnis ir rezultato lentelė su statistinių rodiklių įverčiais kiekvienai grupei.
             </p>
         </div>
     </div>
@@ -122,9 +123,9 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Tai sluoksnio, kuris bus sukurtas ir patalpintas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą.
+            <p>Tai sluoksnio, kuris bus sukurtas ir patalpintas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnio pavadinimas jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą.
             </p>
-            <p>Naudodami i&scaron;plečiamo meniu parinktį  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            <p>I&scaron;plečiamajame meniu pasirinkę  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
             </p>
         </div>
     </div>

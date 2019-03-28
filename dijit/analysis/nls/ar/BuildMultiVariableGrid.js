@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({binsLabel:"اختر نوع الخانات التي سيتم استخدامها لبناء الشبكة متعددة المتغيرات",layersAttrLabel:"اختر الطبقات والمتغيرات المدخلة التي تريد إدراجها في الشبكة",itemDescription:"طبقة الميزات المنشأة من تشغيل بناء شبكة متعددة المتغيرات.",itemTags:"نتائج التحليلات، بناء شبكة متعددة المتغيرات",itemSnippet:"طبقة الملامح المنشأة من بناء شبكة متعددة المتغيرات",addVariables:"إضافة متغيرات"});

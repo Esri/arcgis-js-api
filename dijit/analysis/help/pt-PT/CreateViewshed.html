@@ -50,7 +50,7 @@
     </p>
     <p>Note-se que o c&aacute;lculo do Viewshed n&atilde;o tem em conta as obstru&ccedil;&otilde;es, como &aacute;rvores ou edif&iacute;cios. Pode pensar na computa&ccedil;&atilde;o como ocorrendo em terreno &quot;nu&quot; desprovido de qualquer coisa, exceptuando o observador e os objectos observados.
     </p>
-    <p>A camada de resultados cont&eacute;m elementos de &aacute;rea que representam &aacute;reas vis&iacute;veis. O campo  <i>Frequ&ecirc;ncia</i> guarda o n&uacute;mero de pontos de observa&ccedil;&atilde;o que podem ver cada &aacute;rea. Por exemplo, se tiver cinco pontos de entrada, cada um representando uma torre de controlo de inc&ecirc;ndios, o campo <i>Frequ&ecirc;ncia</i> ter&aacute; valores entre um e cinco; &aacute;reas com o valor um apenas podem ser observadas por uma torre, e &aacute;reas com valor cinco podem ser observadas por todas as torres. A camada de resultados tamb&eacute;m cont&eacute;m o campo <i>Resolu&ccedil;&atilde;o do MDE</i> , que guarda a resolu&ccedil;&atilde;o do Modelo Digital de Eleva&ccedil;&atilde;o (MDE) utilizado para criar os viewsheds.
+    <p>A camada de resultados cont&eacute;m elementos de &aacute;rea que representam &aacute;reas vis&iacute;veis. O campo  <i>Frequency</i> regista o n&uacute;mero de pontos de observa&ccedil;&atilde;o que podem ver cada &aacute;rea. Por exemplo, se tem cinco pontos de entrada, cada representando uma torre de vigia de inc&ecirc;ndios, o campo <i>Frequency</i> ter&aacute; valores entre o um e o cinco; &aacute;reas com valor de um apenas podem ser vistas por uma torre, e &aacute;reas com o valor de cinco podem ser vistas por todas as torres. A camada resultante tamb&eacute;m cont&eacute;m o campo <i>DEMResolution</i>, que grava a resolu&ccedil;&atilde;o do modelo digital de eleva&ccedil;&atilde;o (DEM) usado para criar os Viewsheds.
     </p>
     <p>Se marcar a op&ccedil;&atilde;o  <b>Utilizar a extens&atilde;o atual do mapa</b> , ser&atilde;o analisados apenas os pontos de observa&ccedil;&atilde;o que se encontrem vis&iacute;veis na atual extens&atilde;o do mapa ser&atilde;o analisados.  Se n&atilde;o marcar a op&ccedil;&atilde;o, ser&atilde;o analisados todos os pontos de observa&ccedil;&atilde;o da camada de entrada, mesmo que estejam fora da extens&atilde;o atual do mapa.
     </p>
@@ -60,8 +60,7 @@
         <div><h2>Elementos pontos que representam pontos de observação</h2></div>
         <hr/>
         <div>
-            <p>Os elementos pontos a utilizar como localiza&ccedil;&otilde;es de observa&ccedil;&atilde;o.
-
+            <p>Os elementos pontos a utilizar como localiza&ccedil;&otilde;es de observa&ccedil;&atilde;o. 
             </p>
             <p class="OnlineOnly">Al&eacute;m de escolher uma camada para o seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise do Living Atlas</b> ou <b>Escolher Camada de An&aacute;lise</b> que se encontra no final da lista. Esta abre uma galeria contendo um conjunto de camadas &uacute;teis para v&aacute;rias an&aacute;lises. 
             </p>
@@ -89,7 +88,7 @@
                     </li>
                     <li>Se os seus pontos de observa&ccedil;&atilde;o representam miradouros ao longo das estradas e caminhos e voc&ecirc; pretende determinar onde aerogeradores de 400 p&eacute;s ou mais de altura podem ser observados, introduza 400 p&eacute;s como valor de altura.  O resultado &eacute; essas &aacute;reas em que uma pessoa que est&aacute; numa vista panor&acirc;mica pode ver uma turbina e&oacute;lica a pelo menos 400 p&eacute;s de altura.
                     </li>
-                    <li>Se os seus pontos de observa&ccedil;&atilde;o representam miradouros e voc&ecirc; pretende determinar a quantidade de &aacute;rea de terreno que &eacute; poss&iacute;vel observar por algu&eacute;m no miradouro, introduza zero.  O resultado &eacute; que essas &aacute;reas podem ser vistas a partir do miradouro.   
+                    <li>Se os seus pontos de observa&ccedil;&atilde;o representam miradouros e voc&ecirc; pretende determinar a quantidade de &aacute;rea de terreno que &eacute; poss&iacute;vel observar por algu&eacute;m no miradouro, introduza zero.  O resultado &eacute; que essas &aacute;reas podem ser vistas a partir do miradouro.  
                     </li>
                 </ul>
                 
@@ -108,9 +107,11 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que forne&ccedil;a outro nome.
+            <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se o nome da camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            <p>Ao utilizar o menu suspenso  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+            <p> Executar esta ferramenta n&atilde;o consome cr&eacute;ditos.
             </p>
         </div>
     </div>

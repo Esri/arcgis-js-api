@@ -44,7 +44,7 @@
         <h2>Summarize Nearby</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Rezumat &icirc;n apropiere"></h2>
         <hr/>
-    <p>This tool finds and summarizes features that are within a specified distance of features in the first input layer.  Distanţa poate fi măsurată ca distanţă &icirc;n linie dreaptă sau folosind un mod de deplasare selectat.  Opţiunile modului de deplasare sunt distanţa de deplasare cu autoturismul, timpul de deplasare cu autoturismul, distanţa de deplasare cu camionul, timpul de deplasare cu camionul, distanţa de deplasare pe jos şi timpul de deplasare pe jos.   Apoi sunt calculate statistici pentru obiectele spaţiale din apropiere. De exemplu
+    <p>This tool finds and summarizes features that are within a specified distance of features in the first input layer.  Distanţa poate fi măsurată ca distanţă &icirc;n linie dreaptă sau folosind un mod de deplasare selectat.  Opţiunile modului de deplasare sunt distanţa de deplasare cu autoturismul, timpul de deplasare cu autoturismul, distanţa de deplasare cu camionul, timpul de deplasare cu camionul, distanţa de deplasare pe jos şi timpul de deplasare pe jos.   Apoi sunt calculate statistici pentru obiectele spațiale din apropiere. De exemplu
         <ul>
             <li>Calculaţi populaţia totală pe o rază de cinci minute de conducere faţă de o nouă locaţie de magazin propusă.
             </li>
@@ -83,7 +83,7 @@
         <div><h2>Realizare rezumat pentru cele mai apropiate obiecte spațiale prin intermediul</h2></div>
         <hr/>
         <div>
-            <p> Puteţi defini tipul de măsurare a distanţei pe care doriţi să &icirc;l utilizaţi, folosind o distanţă &icirc;n linie dreaptă sau un mod de deplasare selectat. Modurile de deplasare sunt activate doar atunci c&acirc;nd primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine puncte.  Modurile de deplasare disponibile sunt determinate de administratorul organizaţiei dvs. C&acirc;nd utilizaţi unul dintre modurile de deplasare, măsurătorile se fac de-a lungul drumurilor sau traseelor pietonale şi respectă regulile &icirc;n vigoare, cum ar fi sensurile unice, interdicţiile de schimbare a direcţiei şi aşa mai departe. <b>Driving Time</b>, <b>Rural Driving Time</b> and <b>Trucking Time</b> honors your choice of travel speeds, either those based on live traffic or typical traffic. Vitezele &icirc;n timp real sunt colectate prin valori prelevate de la senzorii actuali, iar vitezele tipice sunt calculate pe baza mediilor istorice.
+            <p> Puteţi defini tipul de măsurare a distanţei pe care doriţi să &icirc;l utilizaţi, folosind o distanţă &icirc;n linie dreaptă sau un mod de deplasare selectat. Modurile de deplasare sunt activate doar atunci c&acirc;nd primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine puncte.  Modurile de deplasare disponibile sunt determinate de administratorul organizației dvs. C&acirc;nd utilizaţi unul dintre modurile de deplasare, măsurătorile se fac de-a lungul drumurilor sau traseelor pietonale şi respectă regulile &icirc;n vigoare, cum ar fi sensurile unice, interdicţiile de schimbare a direcţiei şi aşa mai departe. <b>Driving Time</b>, <b>Rural Driving Time</b> and <b>Trucking Time</b> honors your choice of travel speeds, either those based on live traffic or typical traffic. Vitezele &icirc;n timp real sunt colectate prin valori prelevate de la senzorii actuali, iar vitezele tipice sunt calculate pe baza mediilor istorice.
             </p>
             <p>Puteţi introduce mai multe distanţe. Vor fi rezumate obiectele spaţiale care se &icirc;ncadrează &icirc;n distanţele pe care le introduceţi.  
             </p>
@@ -112,6 +112,8 @@
                 </li>
             </ul>
             
+            <p>Dacă stratul tematic de rezumat nu are niciun c&acirc;mp de numere, statisticile suplimentare nu vor fi disponibile.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Dacă stratul tematic de rezumat nu are niciun c&acirc;mp de numere, statisticile suplimentare nu vor fi disponibile.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,6 +162,8 @@
                 </li>
             </ul>
             
+            <p>Dacă stratul tematic de rezumat nu are niciun c&acirc;mp de numere, statisticile suplimentare nu vor fi disponibile.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -181,13 +187,15 @@
             
             <p>&Icirc;n funcţie de tipurile de obiecte spaţiale pe care le sumarizaţi, puteţi calcula numărul total de puncte din apropiere, lungimile totale ale liniilor din apropiere sau suprafaţa totală a obiectelor spaţiale de suprafaţă din apropiere.
             </p>
+            <p>Dacă stratul tematic de rezumat nu are niciun c&acirc;mp de numere, statisticile suplimentare nu vor fi disponibile.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Alegere câmp după care să se facă gruparea</h2></div>
         <hr/>
         <div>
-            <p> Acesta este un atribut al obiectelor spaţiale din apropiere, pe care &icirc;l puteţi utiliza pentru a calcula statistici separate pentru fiecare valoare de atribut unică. De exemplu, să presupunem că primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine parcele de teren libere de v&acirc;nzare şi obiectele dvs. spaţiale din apropiere sunt amprente de clădiri.  Unul din atributele amprentelor de clădiri este <i>UseType</i>, care conţine valori precum RETAIL (Comerţ), RESIDENTIAL (Rezidenţial), MANUFACTURING (Producţie), PUBLIC (Interes public) şi aşa mai departe.  Pentru a caracteriza amestecul de utilizări ale clădirilor din apropierea fiecărei parcele libere, puteţi calcula suprafaţa totală pentru fiecare tip unic de utilizare a clădirilor de pe o rază de doi kilometri faţă de parcelele libere, utiliz&acirc;nd <i>UseType</i> drept atribut de grupare.   Statistica pentru fiecare punct &icirc;mpreună cu numărul de obiecte spaţiale din apropiere vor fi afişate &icirc;n fereastra pop-up a stratului tematic rezultat.
+            <p> Acesta este un atribut al obiectelor spaţiale din apropiere, pe care &icirc;l puteţi utiliza pentru a calcula statistici separate pentru fiecare valoare de atribut unică. De exemplu, să presupunem că primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine parcele de teren libere de v&acirc;nzare şi obiectele dvs. spaţiale din apropiere sunt amprente de clădiri.  Unul din atributele amprentelor de clădiri este <i>UseType</i>, care conține valori precum RETAIL (Comerț), RESIDENTIAL (Rezidențial), MANUFACTURING (Producție), PUBLIC (Interes public) și așa mai departe. Pentru a caracteriza amestecul de utilizări ale clădirilor din apropierea fiecărei parcele libere, puteți calcula suprafața totală pentru fiecare tip unic de utilizare a clădirilor de pe o rază de doi kilometri față de parcelele libere, utiliz&acirc;nd <i>UseType</i> drept atribut de grupare. Statistica pentru fiecare punct &icirc;mpreună cu numărul de obiecte spaţiale din apropiere vor fi afişate &icirc;n fereastra pop-up a stratului tematic rezultat.
             </p>    
         </div>
     </div>
@@ -212,7 +220,7 @@
         <div><h2>Adăugare procente</h2></div>
         <hr/>
         <div>
-            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea. Selectaţi  <b>Adăugare procentaje</b> dacă doriţi să aflaţi procentajul fiecărei valori de atribut din fiecare grup. &Icirc;n tabelul de rezultate este adăugat un nou c&acirc;mp, care conţine procentajele fiecărei valori de atribut din fiecare grup. Dacă este bifată şi opţiunea <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri cu procentajele valorilor de atribute aflate &icirc;n minoritate şi majoritate &icirc;n fiecare grup.
+            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea.    Selectați  <b>Adăugare procentaje</b> dacă doriți să aflați procentajul fiecărei valori de atribut din fiecare grup. &Icirc;n tabelul de rezultate este adăugat un nou c&acirc;mp care conţine procentajele fiecărei valori de atribut din fiecare grup. Dacă este bifată și opțiunea <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri cu procentajele valorilor de atribute aflate &icirc;n minoritate și majoritate &icirc;n fiecare grup.
             </p>
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
+            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă numele stratului tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd meniul derul&acirc;nd  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

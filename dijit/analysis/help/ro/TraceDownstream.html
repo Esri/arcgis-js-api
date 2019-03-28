@@ -48,22 +48,28 @@
     </p>
     <p>De exemplu, să presupunem că aveţi obiecte spaţiale punctuale reprezent&acirc;nd surse de contaminare şi doriţi să stabiliţi &icirc;ncotro se va scurge contaminarea &icirc;n cadrul zonei dvs. de studiu. Puteţi utiliza Traiectoria &icirc;n aval pentru a identifica traseul pe care &icirc;l va urma contaminarea.  De asemenea, această traiectorie poate fi &icirc;mpărţită &icirc;n segmente liniare individuale, specific&acirc;nd o valoare şi unităţi de măsură pentru distanţă. Linia rezultată poate reprezenta lungimea totală a traseului de scurgere, o lungime maximă specificată a traiectoriei sau obiectele spaţiale fixate la zonă, cum ar fi zona dvs. de studiu.   &Icirc;n multe cazuri, dacă rezultă lungimea totală a traseului de scurgere, aceasta va fi egală cu &icirc;ntreaga distanţă de sursă p&acirc;nă la ocean.
     </p>
-    <p>Rezultatul este o linie care reprezintă traseul &icirc;n aval.  Dacă se specifică o distanţă pentru  <b>&Icirc;mpărţire traiectorie &icirc;n segmente liniare</b>, linia trasată va fi divizată &icirc;n linii multiple, fiecare linie av&acirc;nd lungimea specificată.  De exemplu, dacă punctul dvs. de intrare reprezintă o scurgere contaminantă, iar r&acirc;ul/fluviul &icirc;n care se deversează are o viteză de deplasare de 0,6 mile (0,97 km) pe oră sau 15 mile (24 km) pe zi, este de dorit să &icirc;mpărţiţi r&acirc;ul/fluviul &icirc;n segmente de 15 mile (24 km).  &Icirc;mpărţirea traiectoriei &icirc;n intervale de 15 mile (24 km) va indica distanţa aproximativă de deplasare a scurgerii &icirc;n fiecare zi.    Linia va fi reprezentată simbolic prin culori gradate, &icirc;n funcţie de distanţă, şi va fi marcată cu distanţa de la &icirc;nceputul traiectoriei. 
+    <p>Rezultatul este o linie care reprezintă traseul &icirc;n aval.  Dacă se specifică o distanţă pentru  <b>&Icirc;mpărţire traiectorie &icirc;n segmente liniare</b>, linia trasată va fi divizată &icirc;n linii multiple, fiecare linie av&acirc;nd lungimea specificată.  De exemplu, dacă punctul dvs. de intrare reprezintă o scurgere contaminantă, iar r&acirc;ul/fluviul &icirc;n care se deversează are o viteză de deplasare de 0,6 mile (0,97 km) pe oră sau 15 mile (24 km) pe zi, este de dorit să &icirc;mpărţiţi r&acirc;ul/fluviul &icirc;n segmente de 15 mile (24 km).  &Icirc;mpărţirea traiectoriei &icirc;n intervale de 15 mile (24 km) va indica distanţa aproximativă de deplasare a scurgerii &icirc;n fiecare zi.    Linia va fi reprezentată simbolic prin culori gradate, &icirc;n funcţie de distanţă, şi va fi marcată cu distanţa de la &icirc;nceputul traiectoriei.
     </p>
-    <p>Traiectoria rezultată va avea toate atributele punctelor de intrare, c&acirc;t şi atribute suplimentare.     
+    <p>Traiectoria rezultată va avea toate atributele punctelor de intrare, c&acirc;t şi atribute suplimentare. 
         <ul>
             <li> <i>PointID</i> - Conţine valoarea ID de la punctul de intrare.
+                
+
             </li>
             <li> <i>LengthKm</i> - Conţine lungimea &icirc;n kilometri pentru traiectoria totală &icirc;n aval.
+                
+
             </li>
             <li> <i>Description</i> şi <i>DataResolution</i> - Conţine informaţii legate de datele hidrologice folosite pentru a calcula traiectoria.
+                
+
             </li>
-            <li> <i>FromDistance</i> şi <i>ToDistance</i> - Conţine distanţa de la şi p&acirc;nă la a fiecărui segment liniar.  Aceste atribute sunt scrise dacă se utilizează funcţia <b>&Icirc;mpărţire traiectorie &icirc;n segmente liniare</b>.
+            <li> <i>FromDistance</i> și <i>ToDistance</i> - Conţine distanţa de la şi p&acirc;nă la a fiecărui segment liniar. Aceste atribute sunt scrise dacă se utilizează funcţia <b>&Icirc;mpărţire traiectorie &icirc;n segmente liniare</b>.
             </li>
         </ul>
         
     </p>
-    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spaţiale punctuale din stratul tematic de intrare care sunt vizibile din extinderea curentă a hărţii.  Dacă nu se bifează, vor fi utilizate toate obiectele spaţiale din stratul tematic introdus, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spațiale punctuale din stratul tematic de intrare care sunt vizibile din extinderea curentă a hărții. Dacă nu se bifează, vor fi utilizate toate obiectele spațiale din stratul tematic introdus, chiar dacă se află &icirc;n afara extinderii curente a hărții.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -71,7 +77,7 @@
         <div><h2>Obiectele spaţiale punctuale care vor fi utilizate ca locaţii de start pentru fiecare traiectorie în aval</h2></div>
         <hr/>
         <div>
-            <p>Obiectele spaţiale punctuale care vor fi utilizate ca locaţii de start pentru traiectoria &icirc;n aval.  Ieşirea va conţine o linie pentru fiecare punct de intrare. 
+            <p>Obiectele spaţiale punctuale care vor fi utilizate ca locaţii de start pentru traiectoria &icirc;n aval.  Ieşirea va conţine o linie pentru fiecare punct de intrare.
             </p>
             <p class="OnlineOnly">&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Alegere strat tematic de analiză din atlasul actualizat</b> sau <b>Alegere strat tematic de analiză</b> care se găsesc &icirc;n partea inferioară a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
             </p>
@@ -81,8 +87,8 @@
         <div><h2>Împărțire traiectorie în segmente liniare</h2></div>
         <hr/>
         <div>
-            <p>Linia de traiectorie va fi &icirc;mpărţită &icirc;n linii multiple, fiecare av&acirc;nd lungimea specificată.   De exemplu, dacă punctul dvs. de intrare reprezintă o scurgere contaminantă, iar r&acirc;ul/fluviul &icirc;n care se deversează are o viteză de deplasare de 0,6 mile (0,97 km) pe oră sau 15 mile (24 km) pe zi, este de dorit să &icirc;mpărţiţi r&acirc;ul/fluviul &icirc;n segmente de 15 mile (24 km).  &Icirc;mpărţirea traiectoriei &icirc;n intervale de 15 mile (24 km) va indica distanţa aproximativă de deplasare a scurgerii &icirc;n fiecare zi.    Linia va fi reprezentată simbolic prin culori gradate, &icirc;n funcţie de distanţă, şi va fi marcată cu distanţa de la &icirc;nceputul traiectoriei.  Traiectoria rezultată va avea segmente liniare multiple, fiecare conţin&acirc;nd c&acirc;mpurile  <i>FromDistance</i> şi <i>ToDistance</i>.
-            </p> 
+            <p>Linia de traiectorie va fi &icirc;mpărţită &icirc;n linii multiple, fiecare av&acirc;nd lungimea specificată.   De exemplu, dacă punctul dvs. de intrare reprezintă o scurgere contaminantă, iar r&acirc;ul/fluviul &icirc;n care se deversează are o viteză de deplasare de 0,6 mile (0,97 km) pe oră sau 15 mile (24 km) pe zi, este de dorit să &icirc;mpărţiţi r&acirc;ul/fluviul &icirc;n segmente de 15 mile (24 km).  &Icirc;mpărţirea traiectoriei &icirc;n intervale de 15 mile (24 km) va indica distanţa aproximativă de deplasare a scurgerii &icirc;n fiecare zi.    Linia va fi reprezentată simbolic prin culori gradate, &icirc;n funcţie de distanţă, şi va fi marcată cu distanţa de la &icirc;nceputul traiectoriei. Traiectoria rezultată va avea segmente liniare multiple, fiecare conţin&acirc;nd c&acirc;mpurile  <i>FromDistance</i> și <i>ToDistance</i>.
+            </p>
         </div>
     </div>
     <div id="MaxDistance">
@@ -97,7 +103,7 @@
         <div><h2>Decupare rezultat la</h2></div>
         <hr/>
         <div>
-            <p>Trasaţi sau furnizaţi un strat tematic al zonei &icirc;n care doriţi să fie fixată traiectoria.  De exemplu, dacă doriţi doar ca rezultatul traiectoriei să se afle &icirc;n zona dvs. de studiu, cum ar fi judeţul dvs., utilizaţi obiectul spaţial al judeţului dvs., astfel &icirc;nc&acirc;t traiectoria să se oprească la limita judeţului.   
+            <p>Trasaţi sau furnizaţi un strat tematic al zonei &icirc;n care doriţi să fie fixată traiectoria.  De exemplu, dacă doriţi doar ca rezultatul traiectoriei să se afle &icirc;n zona dvs. de studiu, cum ar fi judeţul dvs., utilizaţi obiectul spaţial al judeţului dvs., astfel &icirc;nc&acirc;t traiectoria să se oprească la limita judeţului.
             </p>
         </div>
     </div>
@@ -105,9 +111,11 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
+            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> și adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului și numele stratului tematic de intrare. Dacă numele stratului tematic rezultat există deja, vi se va solicita să furnizați un alt nume.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd meniul derul&acirc;nd  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+            <p> Rularea acestui instrument nu consumă credite.
             </p>
         </div>
     </div>

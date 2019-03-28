@@ -10,16 +10,17 @@
         overflow-y: auto;
         width: inherit;
         text-align: center;
+        font-size: 0px; 
     }
 
     .esriGEReportPlayer_reportContainerGrid .reportContainerGrid_stackContainer {
         position: relative;
         overflow: visible;
         min-height: 100px;
-        border: 1px solid #b2b2b2;
         height: auto;
         text-align: left;
         display: inline-block;
+        font-size: 13px; 
     }
 
     
@@ -29,6 +30,8 @@
         vertical-align: top;
         position: relative;
         overflow: hidden;
+        outline: 1px solid #b2b2b2;
+        margin-top: 1px;
     }
 
     .esriGEReportPlayer_reportContainerGrid .reportContainerGrid_gridZoomScalableContainer {

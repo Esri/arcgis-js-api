@@ -79,7 +79,7 @@
                 <ul>
                     <li>地圖的目前可見範圍（ <b>與顯示內容相同</b>）。
                     </li>
-                    <li>內容列表中的某個圖層。
+                    <li>內容列表中的某個圖層。如果所選圖層是點或線圖徵，則會將圖層的範圍作為研究區域。
                     </li>
                     <li>繪製一個區域以定義研究區域。
                     </li>
@@ -102,6 +102,19 @@
             <p>待擷取資料的格式。在將線圖徵或區域圖徵匯出為 CSV 檔案時，只擷取非空間屬性。匯出點圖徵時，擷取空間和非空間屬性。
             </p>
             <p>擷取的資料將使用 Web Mercator 1984 投影。對於 CSV 檔案，會將  <i>Lat</i> 和 <i>Long</i> 欄位附加到 Web Mercator 1984 中具有座標的資料。
+            </p> 
+            <p>支援下列輸出格式：
+                <ul>
+                    <li>逗號分隔值 (CSV) -  <code>.csv</code> 或 <code>.zip</code>
+                    </li>
+                    <li>檔案地理資料庫 -  <code>.zip</code>
+                    </li>
+                    <li>Keyhole 標記語言 (KML) -  <code>.kmz</code> 或 <code>.zip</code>
+                    </li>
+                    <li>Shapefile -  <code>.zip</code>
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

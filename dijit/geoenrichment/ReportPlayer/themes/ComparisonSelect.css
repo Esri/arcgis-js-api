@@ -32,14 +32,14 @@
     background-size: contain;
     width: 16px;
     height: 16px;
-    background-image: url("./images/closeWindow.svg");
+    background-image: url("./images/close/closeWindow.svg");
     cursor: pointer;
     opacity: 1;
     float: right;
 }
 
     .esriGEComparisonSelect_removeButton:hover:not(.disabled) {
-        background-image: url("./images/closeWindow_over.svg");
+        background-image: url("./images/close/closeWindow_over.svg");
     }
 
 .listItem .esriGEComparisonSelect_removeButton.disabled {
@@ -55,13 +55,6 @@
 
 
 .esriGEComparisonSelect_infoIcon {
-    background-image: url("./images/infoIconGray.svg");
-    height: 16px;
-    width: 16px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-    cursor: pointer;
     opacity: 0;
     float: right;
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
-define(["dojo/Deferred","dojo/when"],function(e,n){return{invoke:function(o,i,t,u,_){o.__invokeTimeoutIDs||(o.__invokeTimeoutIDs={});var d=o.__invokeTimeoutIDs[i];if(d){if(null==t||!1===u)return d.dfd.promise;clearTimeout(d.handle)}return d||(d=o.__invokeTimeoutIDs[i]={dfd:new e}),d.handle=setTimeout(function(){delete o.__invokeTimeoutIDs[i],n(_?o[i].apply(o,_):o[i](),function(e){d.dfd.resolve(e)},function(e){d.dfd.reject(e)})},t||0),d.dfd.promise},hasPendingInvoke:function(e,n){return!(!e.__invokeTimeoutIDs||!e.__invokeTimeoutIDs[n])},cancelInvoke:function(e,n){e.__invokeTimeoutIDs&&e.__invokeTimeoutIDs[n]&&(clearTimeout(e.__invokeTimeoutIDs[n].handle),delete e.__invokeTimeoutIDs[n])}}});
+define(["esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when"],function(e,i){return{invoke:function(n,o,t,u,_){n.__invokeTimeoutIDs||(n.__invokeTimeoutIDs={});var r=n.__invokeTimeoutIDs[o];if(r){if(null==t||!1===u)return r.dfd.promise;clearTimeout(r.handle)}return r||(r=n.__invokeTimeoutIDs[o]={dfd:new e}),r.handle=setTimeout(function(){delete n.__invokeTimeoutIDs[o],i(_?n[o].apply(n,_):n[o](),function(e){r.dfd.resolve(e)},function(e){r.dfd.reject(e)})},t||0),r.dfd.promise},hasPendingInvoke:function(e,i){return!(!e.__invokeTimeoutIDs||!e.__invokeTimeoutIDs[i])},cancelInvoke:function(e,i){e.__invokeTimeoutIDs&&e.__invokeTimeoutIDs[i]&&(clearTimeout(e.__invokeTimeoutIDs[i].handle),delete e.__invokeTimeoutIDs[i])}}});

@@ -112,6 +112,8 @@
                 </li>
             </ul>
             
+            <p>Jeśli warstwa do podsumowania nie zawiera żadnych p&oacute;l liczbowych, dodatkowe statystyki nie będą dostępne.
+            </p>
         </div>
     </div>
     <div id="StatisticsLine">
@@ -135,6 +137,8 @@
                 </li>
             </ul>
             
+            <p>Jeśli warstwa do podsumowania nie zawiera żadnych p&oacute;l liczbowych, dodatkowe statystyki nie będą dostępne.
+            </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
@@ -158,6 +162,8 @@
                 </li>
             </ul>
             
+            <p>Jeśli warstwa do podsumowania nie zawiera żadnych p&oacute;l liczbowych, dodatkowe statystyki nie będą dostępne.
+            </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
@@ -181,13 +187,15 @@
             
             <p>W zależności od rodzaju sumowanych obiekt&oacute;w istnieje możliwość obliczenia całkowitej liczby pobliskich punkt&oacute;w, całkowitej długości pobliskich linii lub całkowitej powierzchni pobliskiego obszaru.
             </p>
+            <p>Jeśli warstwa do podsumowania nie zawiera żadnych p&oacute;l liczbowych, dodatkowe statystyki nie będą dostępne.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Wybierz pole, według którego wykonane będzie grupowanie</h2></div>
         <hr/>
         <div>
-            <p> Jest to atrybut pobliskich obiekt&oacute;w, kt&oacute;rego można użyć, aby obliczyć dane statystyczne dla każdej unikalnej wartości tego atrybutu. Zał&oacute;żmy na przykład, że pierwsza warstwa wynikowa (warstwa, od kt&oacute;rej są mierzone odległości) zawiera wolne działki na sprzedaż, a&nbsp;pobliskie obiekty to budynki. Jednym z atrybut&oacute;w budynk&oacute;w jest <i>UseType</i>, kt&oacute;ry zawiera wartości takie jak HANDLOWY, MIESZKALNY, PRODUKCYJNY, PUBLICZNY itd. Aby scharakteryzować r&oacute;żnorodność zastosowań budynk&oacute;w w pobliżu każdej wolnej działki, można obliczyć całkowitą powierzchnię każdego unikalnego typu użytkowania budynku w promieniu dw&oacute;ch kilometr&oacute;w od wolnych działek, z zastosowaniem <i>UseType</i> jako grupy według atrybut&oacute;w. Statystyki dotyczące każdej z&nbsp;grup oraz liczba bliskich obiekt&oacute;w zostaną wyświetlone w&nbsp;oknie podręcznym warstwy wynikowej.
+            <p> Jest to atrybut pobliskich obiekt&oacute;w, kt&oacute;rego można użyć, aby obliczyć dane statystyczne dla każdej unikalnej wartości tego atrybutu. Zał&oacute;żmy na przykład, że pierwsza warstwa wynikowa (warstwa, od kt&oacute;rej są mierzone odległości) zawiera wolne działki na sprzedaż, a&nbsp;pobliskie obiekty to budynki. Jednym z&nbsp;atrybut&oacute;w budynk&oacute;w jest <i>UseType</i>, kt&oacute;ry zawiera takie wartości, jak HANDLOWY (RETAIL), MIESZKALNY (RESIDENTIAL), PRODUKCYJNY (MANUFACTURING), PUBLICZNY (PUBLIC) itd. Aby scharakteryzować r&oacute;żnorodność zastosowań budynk&oacute;w w&nbsp;pobliżu każdej wolnej działki, można obliczyć całkowitą powierzchnię każdego unikalnego typu użytkowania budynku w&nbsp;promieniu dw&oacute;ch kilometr&oacute;w od wolnych działek z&nbsp;zastosowaniem parametru <i>UseType</i> jako parametru grupowania według atrybut&oacute;w. Statystyki dotyczące każdej z&nbsp;grup oraz liczba bliskich obiekt&oacute;w zostaną wyświetlone w&nbsp;oknie podręcznym warstwy wynikowej.
             </p>    
         </div>
     </div>
@@ -212,7 +220,7 @@
         <div><h2>Dodaj wartości procentowe</h2></div>
         <hr/>
         <div>
-            <p>To pole wyboru zostaje aktywowane po wybraniu pola, według kt&oacute;rego wykonywane jest grupowanie.    Jeżeli chcesz sprawdzić, jaką wartość procentową stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup, zaznacz opcję  <b>Dodaj wartości procentowe</b>.  Do tabeli wynik&oacute;w zostanie dodane nowe pole zawierające wartości procentowe, jakie stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z grup.   Jeżeli wybierzesz także opcję <b>Dodaj mniejszość, większość</b>, do warstwy wynikowej zostaną dodane dwa dodatkowe pola z&nbsp;procentowym podziałem dominujących i&nbsp;niedominujących wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup.
+            <p>To pole wyboru jest aktywowane po wybraniu pola, według kt&oacute;rego jest wykonywane grupowanie. Jeżeli chcesz sprawdzić, jaką wartość procentową stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup, zaznacz opcję  <b>Dodaj wartości procentowe</b>. Do tabeli wynik&oacute;w zostanie dodane nowe pole zawierające wartości procentowe, jakie stanowią poszczeg&oacute;lne wartości atrybut&oacute;w w&nbsp;każdej z grup. Jeżeli wybierzesz także opcję <b>Dodaj mniejszość, większość</b>, do warstwy wynikowej zostaną dodane dwa dodatkowe pola z&nbsp;procentowym podziałem dominujących i&nbsp;niedominujących wartości atrybut&oacute;w w&nbsp;każdej z&nbsp;grup.
             </p>
         </div>
     </div>
@@ -220,9 +228,9 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli ta nazwa warstwy już istnieje, wyświetlona zostanie prośba o podanie innej nazwy.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>Używając menu rozwijanego  <b>Zapisz wynik w</b>, można wskazać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym zostanie zapisany wynik.
             </p>
         </div>
     </div>

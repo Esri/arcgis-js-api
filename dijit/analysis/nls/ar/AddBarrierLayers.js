@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({addBarriers:"تحديد طبقات العوائق",pointBarrier:"العوائق النقطية",lineBarrier:"العوائق الخطية",polygonBarrier:"عوائق المضلع",choosePointBarrier:"اختيار طبقة العوائق النقطية",chooseLineBarrier:"اختيار طبقة العوائق الخطية",choosePolygonBarrier:"اختيار طبقة عوائق المضلع",selectPointBarrier:"تحديد العوائق النقطية",selectLineBarrier:"تحديد العوائق الخطية",selectPolygonBarrier:"تحديد عوائق المضلع"});

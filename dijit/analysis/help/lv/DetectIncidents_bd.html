@@ -44,7 +44,7 @@
         <h2>Noteikt negadījumus</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Noteikt negadījumus"></h2>
         <hr/>
-    <p>&Scaron;is rīks darbojas ar laika iespējotu punktu, līniju, laukumu vai tabulu elementu slāni, kas apzīmē laika mirkli.  Izmantojot secīgi sakārtotus elementus, ko dēvē par mar&scaron;rutiem, &scaron;is rīks nosaka, kādi elementi ir interesējo&scaron;ie atgadījumi. Negadījumus nosaka pēc jūsu norādītajiem kritērijiem. 
+    <p> &Scaron;is rīks darbojas ar laika iespējotu punktu, līniju, laukumu vai tabulu elementu slāni, kas apzīmē laika mirkli. Izmantojot secīgi sakārtotus elementus, ko dēvē par mar&scaron;rutiem, &scaron;is rīks nosaka, kādi elementi ir interesējo&scaron;ie atgadījumi. Negadījumus nosaka pēc jūsu norādītajiem kritērijiem.
     </p>
     <p>Vispirms rīks nosaka, kādi elementi attiecas uz mar&scaron;rutu, izmantojot vienu vai vairākus laukus. Izmantojot laiku katrā elementā, mar&scaron;ruti tiek sakārtoti secīgi, piemērojot negadījuma stāvokli. Elementi, kas atbilst sākotnējam negadījuma stāvoklim, tiek atzīmēti kā negadījums. Varat papildus lietot negadījuma beigu stāvokli; kad beigu stāvoklis ir patiess (true), elements vairs nav negadījums Rezultāti tiks uzrādīti ar sākotnējiem elementiem&nbsp;&mdash; ar jaunām kolonnām, kas norāda negadījuma nosaukumu&nbsp;&mdash; norādot, kur&scaron; elements atbilst negadījuma stāvoklim. Ir iespējams uzrādīt visus sākotnējos elementus vai tikai tos elementus, kas ir negadījumi.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Punkti, līnijas, laukumi vai tabulas, kas tiks izmantoti negadījumu atra&scaron;anai. Ievades slānim jābūt ar laiku pamatotam un ar elementiem, kas parāda laika mirkli, kā arī ar vienu vai vairākiem laukiem, ko var izmantot mar&scaron;rutu noteik&scaron;anai.
             </p>
-            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Izveidojiet izteiksmes nosacījumu, lai raksturotu negadījuma beigas.</h2></div>
+        <div><h2>Izveidojiet izteiksmes stāvokli, lai raksturotu negadījuma izbeigšanos (pēc izvēles)</h2></div>
         <hr/>
         <div>
             <p>Papildus pievienojiet stāvokli, izmantojot izteiksmes veidotāju, lai noteiktu negadījuma beig&scaron;anos. Ja beigu stāvoklis, ko norādāt, ir atbilsto&scaron;s, elements vairs nav negadījums. Ja nenorādāt beigu stāvokli, negadījums beidzas tad, ja sākuma nosacījums vairs netiek izpildīts.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Izvēlieties, kā parādīt rezultātu</h2></div>
+        <div><h2>Parādīt</h2></div>
         <hr/>
         <div>
             <p>Visas izvades metodes pievienos laukus sākotnējiem elementiem. Pastāv divi veidi, kā noteikt, kuri elementi tiek uzrādīti:
                 <ul>
-                    <li> <b>Uzrādīt tikai negadījumus</b>&nbsp;&mdash; &scaron;ī metode uzrādīs tikai tos elementus, kas ir negadījumi. Elementi, kas netika noteikti kā negadījumi, netiks uzrādīti.
+                    <li> <b>Visi elementi</b>&nbsp;&mdash; &scaron;is ir noklusējuma iestatījums. Tiks uzrādīti visi elementi ievadē.
                     </li>
-                    <li> <b>Uzrādīt visus elementus</b>&nbsp;&mdash; &scaron;is ir noklusējuma iestatījums. Tiks uzrādīti visi elementi ievadē.
+                    <li> <b>Tikai negadījumi</b>&nbsp;&mdash; &scaron;ī metode uzrādīs tikai tos elementus, kas ir negadījumi. Elementi, kas netika noteikti kā negadījumi, netiks uzrādīti.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizēt datus ar laika intervāliem (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet, vai vēlaties noteikt incidentus, izmantojot laika intervālus, kas segmentē jūsu ievades elementus analīzei. Ja izmantojat laika intervālus, ir jāiestata vajadzīgais laika intervāls un pēc izvēles jānorāda atsauces laiks. Ja nenorādāt atsauces laiku, tiks izmantots 1970. gada 1. janvāris. 
+            </p>
+            <p>Piemēram, ja iestatāt laika robežu 1 diena, sākot ar 9:00 no rīta 1990. gada 1. janvārī, tad katra ieraksta vērtība tiks saīsināta 9:00 no rīta katrai dienai un analizēta &scaron;ajā segmentā. 
+            </p>
+            <p>Laika intervālu izmanto&scaron;ana ir ātrs veids, kā paātrināt skaitļo&scaron;anas laiku, jo tas ātri rada īsākos mar&scaron;rutus analīzei. Ja analīzei ir lietderīgi sadalīt ar atkārtotiem intervāliem, tas ir ieteicams lielai datu apstrādei.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p> Tā slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            <p> Slāņa nosaukums, kas tiks izveidots. Ja rakstāt uz ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstā uz lielu datu failu koplietojumu,, rezultāti tiks saglabāti lielajā datu failu koplietojumā un pievienot  tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
             </p>
-            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika lielo datu krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
             </p>
         </div>
     </div>

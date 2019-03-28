@@ -44,7 +44,7 @@
         <h2>Rekonstruēt maršrutus</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruēt mar&scaron;rutus"></h2>
         <hr/>
-    <p>&Scaron;is rīks darbojas ar laikam iespējotu punktu vai laukumu elementu slāni, kas apzīmē laika  <code>momentu</code>.   Tas vispirms nosaka, kuri elementi pieder mar&scaron;rutam, izmantojot identifikatoru. Izmantojot laiku katrā novietojumā, mar&scaron;ruti tiek secīgi sakārtoti un pārveidoti par līniju vai laukumu, kas apzīmē kustības ceļu laika gaitā. Pēc izvēles ievades laukam var tikt izveidota buferzona, kas katrā novietojumā izveidos  laukumu. &Scaron;ie buferzonu punkti vai laukumu ievades tiek secīgi savienoti, lai izveidotu mar&scaron;rutu kālaukumu, kura platums pārstāv interesējo&scaron;o atribūtu. Rezultātu mar&scaron;rutiem ir sākuma un beigu laiks, kas temporāli apzīmē pirmo un pēdējo noteikta mar&scaron;ruta elementu. Kad mar&scaron;ruti tiek izveidoti, tiek aprēķināta ievades elementu statistika un pie&scaron;ķirta izvades mar&scaron;rutam. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet iespējams aprēķināt arī citu statistiku.
+    <p> &Scaron;is rīks darbojas ar laikā iespējotu punktu vai laukumu elementu, kas apzīmē <code>laika</code> momentu. Tas vispirms nosaka, kuri elementi pieder mar&scaron;rutam, izmantojot identifikatoru. Izmantojot laiku katrā novietojumā, mar&scaron;ruti tiek secīgi sakārtoti un pārveidoti par līniju vai laukumu, kas apzīmē kustības ceļu laika gaitā. Pēc izvēles ievades laukam var tikt izveidota buferzona, kas katrā novietojumā izveidos laukumu. &Scaron;ie buferzonu punkti vai laukumu ievades tiek secīgi savienoti, lai izveidotu mar&scaron;rutu kā laukumu, kura platums pārstāv interesējo&scaron;o atribūtu. Rezultātu mar&scaron;rutiem ir sākuma un beigu laiks, kas temporāli apzīmē pirmo un pēdējo noteikta mar&scaron;ruta elementu. Kad mar&scaron;ruti tiek izveidoti, tiek aprēķināta ievades elementu statistika un pie&scaron;ķirta izvades mar&scaron;rutam. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet iespējams aprēķināt arī citu statistiku.
     </p>
     <p>Laika iespējotu slāņu elementus var apzīmēt vienā no diviem veidiem:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Punktu vai laukumu slānis, kas tiks rekonstruēts mar&scaron;rutos. Ievades slānim ir jābūt aktivizētam laikam ar elementiem, kas apzīmē laika momentu. Slānim ir jābūt plānotajā koordinātu sistēmā, vai, ja tiek lietota buferzona, apstrādes telpiskā atskaite ir jāiestata uz plānoto koordinātu sistēmu, izmantojot  <b>Analīzes darba vidi</b>.
             </p>
-            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
             </p>
         </div>
     </div>
@@ -113,11 +113,32 @@
             </p>
         </div>
     </div>
+    <div id="splitTracks">
+        <div><h2>Sašķelti maršruti (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Ierakstus var sa&scaron;ķelt, izmantojot trīs dažādas metodes. Var neizmantot nevienu, visas vai kādu no sa&scaron;ķel&scaron;anas metodēm. 
+            </p>
+            <p>Sa&scaron;ķel&scaron;anu var veikt &scaron;ādi:
+                <ul>
+                    <li> <b>Pamatojoties uz attālumu starp ievadēm</b>&mdash;Ja ievades punktiem vai laukumiem starp tiem ir pla&scaron;āks attālums nekā noteiktais attālums, tie tiks sadalīti dažādos mar&scaron;rutos. Piemēram, ja ir norādīts 10 kilometru attālums, secīgie punkti, kas lielāki par 10 kilometriem, būtu atsevi&scaron;ķi mar&scaron;ruti.
+                    </li>
+                    <li> <b>Pamatojoties uz attālumu starp ievadēm</b>&mdash;Ja ievades punkti vai laukumi ir garāki nekā laika sadalījums, tie tiek sadalīti dažādos mar&scaron;rutos. Piemēram, ja ir punkta elementi, kas raksturo gaisa kuģu lidojumus, kur mar&scaron;ruta lauks ir lidma&scaron;īnas ID. &Scaron;ī lidma&scaron;īna var veikt vairākus lidojumus, kas tiks apzīmēti kā viens mar&scaron;ruts. Ja zināt, ka starp lidojumiem ir 1&nbsp;stundas pārtraukums, varat izmantot <code>1&nbsp;stundu</code> kā mar&scaron;rutu dalījumu, un katrs lidojums tiek sadalīts atsevi&scaron;ķā mar&scaron;rutā.
+                    </li>
+                    <li> <b>Noteiktos laika intervālos</b>&mdash;Sa&scaron;ķelt, izmantojot regulārus intervālus, ko nosaka laika intervāls un atsauces laiks. Ja nenorādāt atsauces laiku, tiks izmantots 1970. gada 1. janvāris. Piemēram, ja norādījāt 1 gadu ar atsauces laiku, kas ir 1990. gada 2. februāris plkst. 10:00, tad mar&scaron;rutus sadalītu kā 1990. gada 2. februāris plkst. 10:00, 1991. gada 2. februāris un turpinātos pa viena gada intervāliem.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ja norādāt vairākas sa&scaron;ķel&scaron;anas opcijas, tad, izpildot vienu vai vairākus nosacījumus, mar&scaron;ruti tiks sa&scaron;ķelti. 
+            </p>
+        </div>
+    </div>
     <div id="distanceSplit">
         <div><h2>Izvēlēties attālumu, pēc kura sadalīt maršrutus (pēc izvēles)</h2></div>
         <hr/>
         <div>
-            <p> Mar&scaron;rutu sadalei izmantotais attālums. Ja attālums starp ievades punktiem un laukumiem ir lielāks par attāluma dalījumu, tie tiks sadalīti atsevi&scaron;ķos mar&scaron;rutos.
+            <p>Mar&scaron;rutu sa&scaron;ķel&scaron;anai izmantotais attālums. Ja attālums starp ievades punktiem vai laukumiem ir platāks par attāluma dalījumu, tie tiks sadalīti atsevi&scaron;ķos mar&scaron;rutos.
             </p>
             <p>Ja norādāt laika sadalījumu un attāluma sadalījumu, mar&scaron;ruti tiks sadalīti, kad tiks panākta atbilstība vienam vai abiem stāvokļiem. 
             </p>
@@ -163,7 +184,7 @@
         <div><h2>Izvēlieties ArcGIS Data Store, lai saglabātu rezultātus</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics rezultāti tiek glabāti ArcGIS Datu krātuvē un tiek parādīti kā elementu slānis  Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos, noderīga iespēja ir rezultātu glabā&scaron;ana saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai  saistītajā datu krātuvē: 
+            <p>GeoAnalytics rezultāti tiek saglabāti datukrātuvē un parādīti kā elementa slānis  Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos, noderīga iespēja ir rezultātu glabā&scaron;ana saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai  saistītajā datu krātuvē: 
                 <ul>
                     <li>Jūs varat izmantot rezultātus portāla sadarbībā ar portālu.
                     </li>
@@ -180,9 +201,9 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p> Tā slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            <p> Slāņa nosaukums, kas tiks izveidots. Ja rakstāt uz ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstā uz lielu datu failu koplietojumu,, rezultāti tiks saglabāti lielajā datu failu koplietojumā un pievienot  tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
             </p>
-            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika lielo datu krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
             </p>
         </div>
     </div>

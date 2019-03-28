@@ -44,7 +44,7 @@
         <h2>Rileva Eventi</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Rileva Eventi"></h2>
         <hr/>
-    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di punti, linee, aree o tabelle che rappresentano un istante nel tempo. L&rsquo;uso di feature ordinate in sequenza, denominate tracce, questo strumento determina quali feature sono eventi di interesse. Gli eventi vengono determinati dalle condizioni specificate. 
+    <p> Questo strumento funziona con un layer abilitato per variazioni temporali di punti, linee, aree o tabelle che rappresentano un istante nel tempo. L&rsquo;uso di feature ordinate in sequenza, denominate tracce, questo strumento determina quali feature sono eventi di interesse. Gli eventi vengono determinati dalle condizioni specificate.
     </p>
     <p>Innanzitutto, lo strumento determina le feature che appartengono ad una traccia utilizzando uno o pi&ugrave; campi. Utilizzando il tempo per ciascuna feature, le tracce vengono ordinate in sequenza e viene applicata la condizione di evento. Le feature che soddisfano la condizione di evente iniziale sono contrassegnate come evento. Opzionalmente, &egrave; possibile applicare una condizione di evento finale; quando la condizione finale &egrave; vera, la feature non &egrave; pi&ugrave; un evento. I risultati vengono restituiti con le feature originali, con nuove colonne che rappresentano il nome dell'evento, e indicano la feature che soddisfa la condizione di evento. &Egrave; possibile restituire tutte le feature originali o solo le feature che sono eventi.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Punti, linee, aree o tabelle utilizzati per trovare eventi. Il layer di input deve essere abilitato per variazioni temporali con feature che rappresentano un istante nel tempo e dispone di uno o pi&ugrave; campi che possono essere utilizzati per identificare tracce.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Costruire una condizione di espressione per segnalare la fine di un evento</h2></div>
+        <div><h2>Costruire una condizione di espressione per indicare la fine di un incidente (opzionale)</h2></div>
         <hr/>
         <div>
             <p>Opzionalmente, aggiungere una condizione utilizzando il generatore di espressioni per determinare la fine di un evento. Se la condizione finale specificata &egrave; vera, la feature non &egrave; pi&ugrave; un evento. Se non si specifica una condizione finale, un evento termina quando la condizione di avvio non &egrave; pi&ugrave; vera.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Selezionare il modo in cui rappresentare l’output</h2></div>
+        <div><h2>Mostra</h2></div>
         <hr/>
         <div>
             <p>Tutti i metodi di output aggiungono campi alle feature originali. Vi sono due metodi per determinare le feature da restituire:
                 <ul>
-                    <li> <b>Restituisce solo eventi</b>&mdash;Questo metodo restituisce solo le feature che sono eventi. Tutte le feature non rilevate come eventi non vengono resituite.
+                    <li> <b>Tutte le feature</b>: &egrave; l'impostazione predefinita. Tutte le feature nell&rsquo;input vengono restituite.
                     </li>
-                    <li> <b>Restituisce tutte le feature</b>&mdash;&Egrave; l&rsquo;impostazione predefinita. Tutte le feature nell&rsquo;input vengono restituite.
+                    <li> <b>Solo eventi</b>: questo metodo restituisce solo le feature che sono eventi. Tutte le feature non rilevate come eventi non vengono resituite.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizzare dati con intervalli di tempo (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare se si desidera rilevare gli eventi usando intervalli di tempo che segmentano le feature di input per l'analisi. Se si utilizzano intervalli di tempo, &egrave; necessario impostare l'intervallo di tempo da usare e, facoltativamente, impostare un riferimento temporale. Se non si imposta un riferimento temporale, si user&agrave; il 1 gennaio 1970. 
+            </p>
+            <p>Ad esempio, se si imposta come confine temporale 1 giorno, a partire dalle 9:00 del 1&ordm; gennaio 1990, ogni traccia sar&agrave; troncata alle 9:00 di ogni giorno e analizzata all'interno di tale segmento. 
+            </p>
+            <p>L'utilizzo di intervalli di tempo &egrave; un modo rapido per accelerare il tempo di calcolo, perch&eacute; crea rapidamente tracce pi&ugrave; piccole per l'analisi. Se per l'analisi &egrave; conveniente dividere in base a un intervallo di tempo ricorrente, si consiglia per l'elaborazione di Big Data.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato.  Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

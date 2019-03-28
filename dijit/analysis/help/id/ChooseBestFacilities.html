@@ -135,7 +135,7 @@
         <div><h2>Ukur</h2></div>
         <hr/>
         <div>
-            <p>Sebagaimana juga dengan alat lain yang melibatkan perjalanan dalam analisis, Anda dapat menentukan apakah perjalanan diukur menggunakan jarak atau waktu, dan dapat memilih dari berbagai mode perjalanan seperti waktu berjalan, waktu mengemudi, jarak mengemudi pedesaan, dan sebagainya. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda. Ketika menggunakan  <b>Waktu Mengemudi</b>, <b>Waktu Mengemudi Pedesaan</b>, atau <b>Waktu Mengemudi Truk</b> Anda dapat secara opsional menyertakan lalu lintas untuk hari pada minggu tertentu dan waktu hari itu.
+            <p>Sebagaimana juga dengan alat lain yang melibatkan perjalanan dalam analisis, Anda dapat menentukan apakah perjalanan diukur menggunakan jarak atau waktu, dan dapat memilih dari berbagai mode perjalanan seperti waktu berjalan kaki, waktu mengemudi, jarak mengemudi pedesaan, dan sebagainya. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda. Ketika menggunakan  <b>Waktu Mengemudi</b>, <b>Waktu Mengemudi Pedesaan</b>, atau <b>Waktu Mengemudi Truk</b> Anda dapat secara opsional menyertakan lalu lintas untuk hari pada minggu tertentu dan waktu hari itu.
             </p>
             <p> Untuk secara akurat mengalokasikan lokasi permintaan ke fasilitas, Anda menentukan apakah perjalanan adalah dari fasilitas ke lokasi permintaan (misalnya dari stasiun pemadam kebakaran) atau dari lokasi permintaan ke fasilitas (sebagaimana dengan pengguna perpustakaan ke perpustakaan). Pilih Fasilitas Terbaik akan memperhitungkan arah perjalanan dalam jalan satu arah, baik Anda dapat membelok dari satu jalan ke jalan lainnya, baik persimpangan tidak memiliki belokan ke kiri, dan sebagainya, tergantung apakah perjalanan ke luar dari fasilitas ke lokasi permintaan, atau ke dalam dari lokasi permintaan ke fasilitas.
             </p>
@@ -149,7 +149,7 @@
             </p>
             <p>Lokasi permintaan memiliki jumlah permintaan terkait. Gunakan konstanta untuk menentukan nilai jika semua lokasi permintaan memiliki permintaan yang sama. Jika jumlah permintaan beragam menurut lokasi permintaan, gunakan kolom Layer Lokasi Permintaan untuk menentukan nilai bagi setiap lokasi permintaan.
             </p>
-            <p>Permintaan akan dialokasikan ke fasilitas hingga semua permintaan sudah dialokasikan, tanpa memandang seberapa jauh lokasi permintaan dari fasilitas. Anda dapat menetapkan rentang perjalanan maksimal ke Layer Lokasi Permintaan untuk membuat pemotongan jarak atau waktu &mdash;lokasi mana saja di luar nilai pemotongan tidak akan dialokasikan. Gunakan konstanta untuk menentukan nilai jika semua lokasi permintaan memiliki rentang perjalanan maksimal yang sama. Jika rentang perjalanan maksimal beragam menurut lokasi permintaan, gunakan kolom Layer Lokasi Permintaan untuk menentukan nilai bagi setiap lokasi permintaan.
+            <p>Permintaan akan dialokasikan ke fasilitas hingga semua permintaan sudah dialokasikan, tanpa memandang seberapa jauh lokasi permintaan dari fasilitas. Anda dapat menetapkan rentang perjalanan maksimal ke Layer Lokasi Permintaan untuk membuat pemotongan jarak atau waktu&mdash;lokasi mana saja di luar nilai pemotongan tidak akan dialokasikan. Gunakan konstanta untuk menentukan nilai jika semua lokasi permintaan memiliki rentang perjalanan maksimal yang sama. Jika rentang perjalanan maksimal beragam menurut lokasi permintaan, gunakan kolom Layer Lokasi Permintaan untuk menentukan nilai bagi setiap lokasi permintaan.
             </p>
             <p>Jika tipe tujuan adalah  <b>Cakup persentase permintaan</b>, Anda perlu menentukan persentase minimal permintaan yang Anda inginkan agar ditangkap oleh fasilitas.
             </p>
@@ -186,10 +186,10 @@
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Tambah Layer Penghalang</h2></div>
+        <div><h2>Pilih layer penghalang</h2></div>
         <hr/>
         <div>
-            <p> Tentukan satu atau lebih fitur yang bertindak sebagai pembatas sementara (dalam kata lain, penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, or poligon.
+            <p> Satu atau lebih fitur yang bertindak sebagai pembatas sementara (penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, atau poligon.
             </p>
             <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
             </p>
@@ -203,11 +203,11 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Layer hasil akan berisi sebuah layer untuk masing-masing berikut: fasilitas yang memiliki permintaan ditetapkan kepadanya, lokasi permintaan yang dialokasikan ke fasilitas, dan garis alokasi yang menghubungkan lokasi permintaan ke fasilitas yang ditetapkannya. Garis alokasi digambarkan sebagai garis lurus; namun, waktu perjalanan atau jarak perjalanan antar fasilitas dan lokasi permintaan selalu berdasarkan mode perjalanan yang Anda tentukan dan tidak menggunakan jarak garis lurus.
+            <p>Layer hasil akan berisi sebuah layer untuk masing-masing berikut: fasilitas yang memiliki permintaan ditetapkan kepadanya, lokasi permintaan yang dialokasikan ke fasilitas, dan garis alokasi yang menghubungkan lokasi permintaan ke fasilitas yang ditetapkannya. Garis alokasi digambarkan sebagai garis lurus; namun, waktu perjalanan atau jarak perjalanan antara fasilitas dan lokasi permintaan selalu berdasarkan mode perjalanan yang Anda tentukan dan tidak menggunakan jarak garis lurus.
             </p>
-            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

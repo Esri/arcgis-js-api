@@ -44,7 +44,7 @@
         <h2>Otkrij incidente</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Otkrij incidente"></h2>
         <hr/>
-    <p>Ova alatka radi sa vremenski omogućenim slojem tačaka, linija, oblasti ili tabela koji predstavljaju trenutak u vremenu. Kori&scaron;ćenjem redom poređanih geoobjekata, zvanih staze, ova alatka određuje koji geoobjekti su incidenti od značaja. Incidenti se određuju uslovima koje vi određujete. 
+    <p> Ova alatka radi sa vremenski omogućenim slojem tačaka, linija, oblasti ili tabela koji predstavljaju trenutak u vremenu.   Kori&scaron;ćenjem redom poređanih geoobjekata, zvanih staze, ova alatka određuje koji geoobjekti su incidenti od značaja. Incidenti se određuju uslovima koje vi određujete.
     </p>
     <p>Prvo alatka određuje koji geoobjekti pripadaju stazi koristeći jedno ili vi&scaron;e polja. Kori&scaron;ćenjem vremena na svakom geoobjektu, staze su redom poređane i primenjuje se uslov incidenta. Geoobjekti koji ispunjavanju početni uslov incidenta se označavaju kao incident. Opciono možete da primenite zavr&scaron;ni uslov incidenta; kada je zavr&scaron;ni uslov tačan, geoobjekat vi&scaron;e nije incident.  Rezultati će se vratiti sa originalnim geoobjektima &ndash; sa novim kolonama koje predstavljaju naziv incidenta &ndash; i označiti koji geoobjekat ispunjava uslov incidenta. Možete da vratite sve originalne geoobjekte ili samo geoobjekte koji su incidenti.
     </p>
@@ -60,7 +60,7 @@
         <div>
             <p>Tačke, linije, oblasti ili tabele koje će se koristiti za pronalaženje incidenata. Ulazni sloj mora da bude vremenski omogućen sa geoobjektima koji predstavljaju trenutak u vremenu, kao i sa jednim ili vi&scaron;e polja koje je moguće iskoristiti za identifikovanje staza.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div><h2>Izaberite jedno ili više polja za identifikovanje staza</h2></div>
         <hr/>
         <div>
-            <p>Polja koja predstavljaju identifikator staza.Možete da koristite jedno polje ili vi&scaron;e polja za predstavljanje jedinstvene vrednosti staza.
+            <p>Polja koja predstavljaju identifikator staza. Možete da koristite jedno polje ili vi&scaron;e polja za predstavljanje jedinstvene vrednosti staza.
             </p>
             <p>Na primer, ako biste rekonstruisali staze uragana, mogli biste da koristite ime uragana kao polje staze.
             </p>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div id="endConditionExpression">
-        <div><h2>Izradite uslovni izraz da označite završetak incidenta</h2></div>
+        <div><h2>Izradite uslovni izraz da označite završetak incidenta (opciono)</h2></div>
         <hr/>
         <div>
             <p>Opciono dodajte uslov kori&scaron;ćenjem alatke za izradu izraza da biste odredili zavr&scaron;etak incidenta. Ako je zavr&scaron;ni uslov koji navedete tačan, geoobjekat vi&scaron;e nije incident. Ako ne navedete zavr&scaron;ni uslov, incident se zavr&scaron;ava kada početni uslov vi&scaron;e nije tačan.    
@@ -99,17 +99,29 @@
         </div>
     </div>
     <div id="outputMode">
-        <div><h2>Izaberite način na koji želite da bude predstavljen izlaz</h2></div>
+        <div><h2>Prikaži mi</h2></div>
         <hr/>
         <div>
             <p>Svi izlazni metodi će dodati polja originalnim geoobjektima. Postoje dva načina za određivanje koji se geoobjekti vraćaju:
                 <ul>
-                    <li> <b>Vrati samo incidente</b> &ndash; Ovaj metod će vratiti samo geoobjekte koji su incidenti. Nijedan geoobjekat za koji se ne utvrdi da je incident neće biti vraćen.
+                    <li> <b>Svi geoobjekti</b> &ndash; Ovo je podrazumevano. Svi geoobjekti sa ulaza će biti vraćeni.
                     </li>
-                    <li> <b>Vrati sve geoobjekte</b> &ndash;Ovo je podrazumevano. Svi geoobjekti sa ulaza će biti vraćeni.
+                    <li> <b>Samo incidenti</b> &ndash; Ovaj metod će vratiti samo geoobjekte koji su incidenti. Nijedan geoobjekat za koji se ne utvrdi da je incident neće biti vraćen.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizirajte podatke sa vremenskim intervalima (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite ako želite da otkrijete incidente koristeći vremenske intervale koji segmentiraju va&scaron;e ulazne geoobjekte za analizu. Ako koristite vremenske intervale, morate da podesite vremenski interval koji želite da koristite i opciono podesite referentno vreme. Ako ne podesite referentno vreme, koristiće se 1. januar 1970. 
+            </p>
+            <p>Na primer, ako podesite da vremenska granica bude 1 dan, počev&scaron;i od 9:00 AM 1. januara 1990, tada će svaka traka biti skraćena u 9:00 za svaki dan i analizirana u okviru tog segmenta. 
+            </p>
+            <p>Kori&scaron;ćenje vremenskih intervala je brz način za ubrzavanje vremena izračunavanja, jer brzo kreira manje staze za analizu. Ako deljenje vremenskim intervalom koji se ponavlja ima smisla za va&scaron;u analizu, ono se preporučuje za obradu velikih podataka.
             </p>
         </div>
     </div>
@@ -117,9 +129,9 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Naziv sloja koji će biti kreiran u opciji <b>Moj sadržaj</b> i dodat mapi. Ako sloj već postoji, alatka će otkazati.
+            <p> Ime sloja koji će se kreirati. Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
             </p>
-            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            <p>Prilikom upisa u  ArcGIS Data Store (skladi&scaron;te relacionih ili prostorno-vremenskih velikih podataka) koristeći padajuće polje  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> gde će rezultat biti sačuvan.
             </p>
         </div>
     </div>

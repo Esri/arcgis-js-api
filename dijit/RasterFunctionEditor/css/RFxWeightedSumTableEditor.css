@@ -2,7 +2,7 @@
   width: 3em;
 }
 
-.esriRFxWeightedSumTableEditor .field-idNum.dgrid-sortable {
+.esriRFxWeightedSumTableEditor th.field-idNum {
   width: 2.75em;
 }
 
@@ -10,7 +10,7 @@
   width: 4em;
 }
 
-.esriRFxWeightedSumTableEditor .field-weight.dgrid-sortable {
+.esriRFxWeightedSumTableEditor th.field-weight {
   width: 3.7em;
 }
 

@@ -42,9 +42,9 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Najdi gruče točk</h2><p/>
-        <h2><img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" alt="Find Point Clusters"></h2>
+        <h2><img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" alt="Najdi gruče točk"></h2>
         <hr/>
-    <p>To orodje poi&scaron;če gruče ali točkovne geoobjekte znotraj okoli&scaron;kih celic glede na njihovo prostorsko razporeditev.
+    <p>To orodje poi&scaron;če gruče točkovnih geoobjektov znotraj okoli&scaron;kega &scaron;uma glede na njihovo prostorsko razporeditev.
     </p>
     <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirani samo točkovni geoobjekti v vhodnem sloju znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirani vsi geoobjekti v vhodnem točkovnem sloju, tudi če so zunaj trenutnega obsega karte.
     </p>
@@ -70,7 +70,8 @@
         <div><h2>Omejite iskalni doseg na (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Maksimalna razdalja, pri kateri so geoobjekti obravnavani kot del iste gruče. Če je prazno, bo privzeto uporabljena največja osnovna razdalja, ki jo je mogoče najti v sklopu podatkov brez tistih osnovnih razdalj, ki sodijo v zgornji 1 % (brez najbolj ekstremnih osnovnih razdalj). 
+            
+            <p>Maksimalna razdalja, pri kateri so geoobjekti obravnavani kot del iste gruče. Če pustite prazno, bo orodje zagnalo HDBSCAN, ki uporablja različne razdalje za ločevanje gruč različnih gostot iz manj obsežnega &scaron;uma. Če je dana vrednost, bo orodje zagnalo DBSCAN, ki uporablja navedeno razdaljo za ločevanje gostih gruč od manj obsežnega &scaron;uma.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.
             </p>
-            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moja vsebina</b>, kjer bo shranjen rezultat.
+            <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>
         </div>
     </div>

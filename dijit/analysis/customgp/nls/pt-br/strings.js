@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocessamento",_featureAction_ReceiveFeatureSet:"Configurar como entrada de ",requiredInfo:"é exigido.",drawnOnMap:"O resultado está desenhado no mapa.",noToolConfig:"Nenhuma tarefa de geoprocessamento pré-configurada disponível.",useUrlForGPInput:"URL",useUploadForGPInput:"Carregar arquivo",selectFileToUpload:"Selecionar arquivo...",rasterFormat:"Formato de dados raster",noFileSelected:"Nenhum arquivo selecionado!",uploadSuccess:"Arquivo carregado com sucesso!",showLayerContent:"Mostrar conteúdo da camada",invalidUrl:"Url de serviço da feição inválido",urlPlaceholder:"URL de conjunto da feição",addShapefile:"Adicionar Shapefile",generateShapefileError:"Gerar erro de shapefile, verifique: ",cleared:"O resultado foi apagado.",enlargeView:"Aumentar visualização",exportOutput:"Exportar",emptyResult:"O resultado está vazio.",useSelectedFeatureset:"Utilize as feições resultantes.",closeSelectedFeatureset:"Apague e utilize a opção de entrada configurada."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../kernel"],function(o,e,n,s){var l=o(null,{debugEnabled:!0,constructor:function(o){e.mixin(this,o)},debug:function(){window.console&&this.debugEnabled&&(console.debug?console.debug(arguments):console.log&&console.log(arguments))},error:function(o){window.console&&(console.error?o?console.error(o):console.error(arguments):console.log&&console.log(arguments))},info:function(){window.console&&(console.info?console.info(arguments):console.log&&console.log(arguments))},log:function(){window.console&&console.log&&console.log(arguments)},warn:function(){window.console&&(console.warn?console.warn(arguments):console.log&&console.log(arguments))},_test:function(){this.debug("Debug message."),this.log("Log message."),this.info("Info message."),this.warn("Warn message."),this.error(new Error("Error message."),"additionalArgument"),console.error(new Error("Error2 message2."),"additionalArgument")}});return n("extend-esri")&&e.setObject("dijit.metadata.context.Logger",l,s),l});

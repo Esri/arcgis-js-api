@@ -70,7 +70,8 @@
         <div><h2>Limiter la plage de recherche à (facultatif)</h2></div>
         <hr/>
         <div>
-            <p>La distance maximale pour appartenir &agrave; un m&ecirc;me agr&eacute;gat. Si elle n&rsquo;est pas indiqu&eacute;e, la distance par d&eacute;faut utilis&eacute;e correspond &agrave; la distance-noyau la plus &eacute;lev&eacute;e dans le jeu de donn&eacute;es, en excluant les distances-noyau figurant dans le 1&nbsp;% sup&eacute;rieur (les distances-noyau les plus extr&ecirc;mes). 
+            
+            <p>Distance maximale &agrave; prendre en compte pour consid&eacute;rer que les entit&eacute;s appartiennent &agrave; un m&ecirc;me agr&eacute;gat. Si le champ est laiss&eacute; vide, l&rsquo;outil ex&eacute;cute HDBSCAN qui utilise des distances variables pour s&eacute;parer les agr&eacute;gats de diverses densit&eacute;s du bruit plus clairsem&eacute;. Si une valeur est donn&eacute;e, l&rsquo;outil ex&eacute;cute DBSCAN qui utilise la distance sp&eacute;cifi&eacute;e pour s&eacute;parer les agr&eacute;gats denses du bruit plus clairsem&eacute;.
             </p>
         </div>
     </div>
@@ -78,9 +79,9 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si le nom de la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>Le menu d&eacute;roulant  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My Content (Mon contenu)</b> dans lequel sera enregistr&eacute; le r&eacute;sultat.
             </p>
         </div>
     </div>

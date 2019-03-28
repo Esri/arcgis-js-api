@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.26/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],function(a,e,l){return l=l.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildLineChartTooltip:function(i,r){var o=[];e.addTitle(r,i.label);var t=a.create("div",{class:"chartTooltip_row esriGERowHigh"},r);e.addColor(i.color,t),o.push(e.addLabel(e.buildSeriesLabel(i),t)),e.addValue(i.valueLabel,t);var d;d=i.isMultiFeature?e.buildStatLabels(i,r,l.weightInAreas,l.minValueInAreas,l.maxValueInAreas,l.avgValueInAreas):e.buildStatLabels(i,r,l.weightInSeries,l.minValueInSeries,l.maxValueInSeries,l.avgValueInSeries),o=o.concat(d),i.getGroup().forEach(function(t){if(i!==t){var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},r);e.addColor(t.color,d),o.push(e.addLabel(e.buildSeriesLabel(t),d)),t.isUnavailableData?e.addValue(l.unavailableData,d):e.addValue(t.valueLabel,d)}}),e.formatTable(o)}}});

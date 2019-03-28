@@ -590,8 +590,8 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
-        <h2>Administrér data</h2>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Håndtér data</h2>
         <hr/>
         <p>Disse v&aelig;rkt&oslash;jer bruges b&aring;de til den daglige h&aring;ndtering af geografiske data og til at kombinere data inden analyse.  
             <ul>
@@ -599,9 +599,11 @@
                 </li>
                 <li> <b>Udtr&aelig;k data</b> opretter nye datas&aelig;t ved at tr&aelig;kke objekter ud af dine eksisterende data.
                 </li>
+                <li> <b>Generer underopdelinger</b> opretter underopdelinger baseret p&aring; udstr&aelig;kningen af dine data.
+                </li>
                 <li> <b>Flet lag</b> kopierer alle objekter fra to eller flere eksisterende lag til et nyt lag.
                 </li>
-                <li> <b>Overlay af lag</b> kombinerer to eller flere lag til et enkelt lag.  Man kan betragte overlay som at se gennem en stak kort og oprette et enkelt kort, der indeholder alle de oplysninger, der er i stakken af kort.
+                <li> <b>Overlay af lag</b> kombinerer to eller flere lag til et enkelt lag. Man kan betragte overlay som at se gennem en stak kort og oprette et enkelt kort, der indeholder alle de oplysninger, der er i stakken af kort.
                 </li>
             </ul>
             
@@ -620,7 +622,7 @@
 <hr/>
             <p>Omr&aring;der, der overlapper eller deler en f&aelig;lles gr&aelig;nse, flettes sammen, s&aring; de udg&oslash;r &eacute;t omr&aring;de.    
             </p>
-            <p>Du kan styre, hvilke gr&aelig;nser der skal flettes ved at angive et felt Hvis du f.eks. har et lag best&aring;ende af amter, og hvert amt har en  <i>State_Name</i>-attribut, kan du opl&oslash;se gr&aelig;nserne vha. attributten <i>State_Name</i>.  Naboamter flettes sammen, hvis de har samme v&aelig;rdi for <i>State_Name</i>.  Slutresultatet er et lag best&aring;ende af landegr&aelig;nser.
+            <p>Du kan styre, hvilke gr&aelig;nser der skal flettes ved at angive et felt Hvis du f.eks. har et lag best&aring;ende af regioner, og hver region har en  <i>State_Name</i>-attribut, kan du opl&oslash;se gr&aelig;nserne vha. attributten <i>State_Name</i>.  Naboregioner flettes sammen, hvis de har samme v&aelig;rdi for <i>State_Name</i>.  Slutresultatet er et lag best&aring;ende af landegr&aelig;nser.
             </p>
             <br/>
         </div>
@@ -641,6 +643,21 @@
             </p>
             <br/>
         </div>
+        <div id="GenerateTessellationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generer underopdelinger</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generer underopdelinger">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Genererer underopdelinger ud fra et studieomr&aring;de, der er baseret p&aring; en specificeret form og st&oslash;rrelse.
+            </p>
+            <br/>
+        </div>
         <div id="MergeLayersTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -656,7 +673,7 @@
                 <ul>
                     <li>Jeg har tre lag for England, Wales og Skotland, og jeg vil gerne have et enkelt lag for Storbritannien. 
                     </li>
-                    <li>Jeg har 12 lag, og hvert lag indeholder parcel-information for tilst&oslash;dende distrikter.  Jeg vil gerne l&aelig;gge dem sammen til et enkelt lag og kun bevare de attributter, der har sammen navn og type i de 12 input-lag.
+                    <li>Jeg har 12 lag, og hvert lag indeholder parcel-information for tilst&oslash;dende distrikter. Jeg vil gerne l&aelig;gge dem sammen til et enkelt lag og kun bevare de attributter, der har sammen navn og type i de 12 input-lag.
                     </li>
                 </ul>
                 
@@ -674,7 +691,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Overlay kombinerer to eller flere lag til et enkelt lag.  Man kan betragte overlay som at se gennem en stak kort og oprette et enkelt kort, der indeholder alle de oplysninger, der er i stakken af kort, f.eks.:
+            <p>Overlay kombinerer to eller flere lag til et enkelt lag. Man kan betragte overlay som at se gennem en stak kort og oprette et enkelt kort, der indeholder alle de oplysninger, der er i stakken af kort, f.eks.:
                 <ul>
                     <li>Hvilke parceller ligger inden for den 100-&aring;rige flodslette? (Inden for er bare en anden m&aring;de at sige p&aring;)
                           
