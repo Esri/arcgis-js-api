@@ -122,8 +122,8 @@ const CSS = {
 };
 
 const defaultDateFormat = {
-  datePattern: "M/d/y",
-  timePattern: "h:mm:ss a"
+  datePattern: "yyyy-MM-dd",
+  timePattern: "HH:mm:ss"
 };
 
 function isGroupField(value: any): value is InputFieldGroup {
@@ -655,7 +655,6 @@ class FeatureForm extends declared(Widget) {
     value: FieldValue,
     props: ReturnType<FeatureForm["getCommonInputProps"]>
   ): VNode {
-    const { date: dateFormatHint, time: timeFormatHint } = this._formatDate(0);
     const commonHintId = `${this.id}-${props.key}`;
     const dateFormatHintId = `${commonHintId}-date`;
     const timeFormatHintId = `${commonHintId}-time`;
@@ -667,29 +666,24 @@ class FeatureForm extends declared(Widget) {
           <input
             aria-label={inputField.label}
             aria-describedby={dateFormatHintId}
-            type="text"
+            type="type"
             {...props}
             data-date-part="date"
             class={this.classes(props.class, CSS.inputDate)}
             value={this._formatDate(value as number).date}
           />
-          <div class={CSS.dateFormatHint} id={dateFormatHintId}>
-            {dateFormatHint}
-          </div>
         </div>
         <div class={CSS.dateInputPart}>
           <input
             aria-describedby={timeFormatHintId}
             aria-label={inputField.label}
-            type="text"
+            type="time"
+            step="1"
             {...props}
             data-date-part="time"
             class={this.classes(props.class, CSS.inputTime)}
             value={this._formatDate(value as number).time}
           />
-          <div class={CSS.dateFormatHint} id={timeFormatHintId}>
-            {timeFormatHint}
-          </div>
         </div>
       </div>
     );
