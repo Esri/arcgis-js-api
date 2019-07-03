@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({basic:"基本形狀",preview:"預覽",shape:"形狀",fill:"填充(F)",outline:"清單",px:"像素",pixels:"像素",meters:"公尺",symbolSize:"符號大小",symbolSizeTooltip:"將符號大小設定為 ${min} 到 ${max} ${units}。",useImage:"使用圖像",useImageTooltip:"使用自訂圖像。",imageUrlInputTooltip:"為取得最佳效果，請使用不大於 120 x 120 像素的正方形圖像（PNG、GIF 或 JPEG）。其它尺寸將調整至最適尺寸。",imageUrlInputPlaceholder:"http://<image URL>",selectCategoryTooltip:"選擇類別。",imageLoadError:"無法載入影像。",symbolLoadError:"無法載入符號。",noSymbolsAvailable:"沒有可用的符號",noTitle:"沒有可用的標題",noFillTooltip:"無填充",symbolTransparencyTooltip:"符號透明度",lineWidth:"線寬度",lineWidthTooltip:"將線寬度設定為 ${min} 到 ${max} ${units}。",pattern:"模式",patternTooltip:"線類型",flipColors:"翻轉顔色(F)",flipColorsTooltip:"反向色帶。",noOutlineTooltip:"無輪廓",saturation:"飽和度",saturationTooltip:"調整顏色強度。",selectRampTooltip:"選擇色帶。",circle:"圓形",square:"正方形",cross:"十字形",x:"X",kite:"風箏形",triangle:"三角形",sphere:"球體",cylinder:"圓柱",tallCylinder:"高圓柱",cube:"立方體",tallCube:"高立方體",cone:"毬果",tallCone:"高圓錐",invertedCone:"倒錐形",diamond:"菱形",tetrahedron:"四面體"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Legenda",points:"Točke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Stvaranje legende",noLegend:"Bez legende",dotValue:"1 točka = {value} {unit}",currentObservations:"Trenutačne primjedbe",previousObservations:"Prethodne primjedbe",high:"Visoko",low:"Nisko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"čvorovi",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} podijeljeno s {normField}",showNormPct:"{field} kao postotak ukupne vrijednosti",showRatio:"Omjer {field} prema {normField}",showRatioPercent:"{field} kao postotak od {normField}",showRatioPercentTotal:"{field} kao postotak od {field} i {normField}"});

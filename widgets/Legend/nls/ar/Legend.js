@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"وسيلة الإيضاح",points:"النقاط",lines:"خطوط",polygons:"المضلعات",creatingLegend:"إنشاء وسيلة إيضاح",noLegend:"بدون وسيلة إيضاح",dotValue:"نقطة واحدة = {value} {unit}",currentObservations:"الملاحظات الحالية",previousObservations:"الملاحظات السابقة",high:"ارتفاع",low:"منخفض",esriMetersPerSecond:"متر/ثانية",esriKilometersPerHour:"كم/ساعة",esriKnots:"عقدة",esriFeetPerSecond:"قدم/ثانية",esriMilesPerHour:"ميل/ثانية",showNormField:"{field} مقسومًا على {normField}",showNormPct:"{field} كنسبة مئوية من الإجمالي",showRatio:"نسبة {field} إلى {normField}",showRatioPercent:"{field} كنسبة مئوية من {normField}",showRatioPercentTotal:"{field} كنسبة مئوية من {field} و{normField}"});

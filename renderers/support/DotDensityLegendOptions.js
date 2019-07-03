@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,n,o,p){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.unit=null,r}n(r,e),o=r,r.prototype.clone=function(){return new o({unit:this.unit})};var o;return t([p.property({type:String,json:{write:!0}})],r.prototype,"unit",void 0),r=o=t([p.subclass("esri.renderers.support.DotDensityLegendOptions")],r)}(p.declared(o))});

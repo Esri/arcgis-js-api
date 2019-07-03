@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Bokmerker",goToBookmark:"Gå til bokmerke",noBookmarksHeading:"Ingen bokmerker",noBookmarksDescription:"Legg til bokmerker i kartet, så vises de her.",disabledHeading:"Bokmerker deaktivert",disabledDescription:"Legg til MapView for å aktivere bokmerker."});
+define({addBookmark:"Legg til bokmerke",disabledHeading:"Bokmerker deaktivert",disabledDescription:"Legg til MapView for å aktivere bokmerker.",goToBookmark:"Gå til bokmerke",noBookmarksHeading:"Ingen bokmerker",noBookmarksDescription:"Legg til bokmerker i kartet, så vises de her.",title:"Tittel",addPlaceholder:"Skriv inn tittel på bokmerke",addingBookmark:"Legge til bokmerke",widgetLabel:"Bokmerker"});

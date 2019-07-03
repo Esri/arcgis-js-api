@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","dojo/i18n!./ClassedColorSlider/nls/ClassedColorSlider","../../core/accessorSupport/decorators","../../renderers/support/ClassBreakInfo","./SmartMappingSliderBase","./ClassedColorSlider/ClassedColorSliderViewModel","./../support/widget"],function(e,r,i,t,s,o,l,n,a,d,p){var c={base:"esri-classed-color-slider",rampElement:"esri-classed-color-slider__ramp",sliderContainer:"esri-classed-color-slider__slider-container",histogramContainer:"esri-classed-color-slider__histogram-container",esriWidget:"esri-widget",esriWidgetPanel:"esri-widget--panel",widgetIcon:"esri-icon-edit",disabled:"esri-disabled"};return function(e){function r(r){var i=e.call(this)||this;return i._bgFillId=null,i._rampFillId=null,i.breaks=null,i.label=o.widgetLabel,i.viewModel=new d,i._bgFillId=i.id+"-bg-fill",i._rampFillId=i.id+"-linear-gradient",i}t(r,e),i=r,r.fromRendererResult=function(e,r){var t=e.renderer.classBreakInfos,s=t.map(function(e){var r=e.symbol,i=r.color;return{min:e.minValue,max:e.maxValue,color:i}});return new i({breaks:s,histogramConfig:{bins:r?r.bins:[]}})},r.prototype.updateClassBreakInfos=function(e){var r=this.breaks;return r.length!==e.length?void console.error("Number of input breakInfos must match number of slider breaks: "+r.length):e.map(function(e,i){var t=e.symbol;return t.color=r[i].color,new n.default({minValue:r[i].min,maxValue:r[i].max,symbol:t})})},r.prototype.updateFromRendererResult=function(e,r){var i=e.renderer.classBreakInfos,t=i.map(function(e){var r=e.symbol,i=r.color;return{min:e.minValue,max:e.maxValue,color:i}});this.set({breaks:t,histogramConfig:{bins:r?r.bins:[]}})},r.prototype.render=function(){var e=this,r=e.state,i=e.label,t=this.classes(c.base,c.esriWidget,c.esriWidgetPanel,"disabled"===r?c.disabled:null);return p.tsx("div",{"aria-label":i,class:t},"disabled"!==r?this.renderContent():null)},r.prototype.renderContent=function(){return this.slider.extraNodes=[this.renderRamp(),this.renderHistogram()],p.tsx("div",{class:c.sliderContainer},this.slider.render())},r.prototype.renderRamp=function(){var e=this,r=e._bgFillId,i=e._rampFillId;return p.tsx("div",{class:c.rampElement},p.tsx("svg",{xmlns:"http://www.w3.org/2000/svg"},p.tsx("defs",null,this.renderRampFillDefinition(),this.renderBackgroundFillDefinition()),p.tsx("rect",{x:"0",y:"0",fill:"url(#"+r+")",height:"100%",width:"100%"}),p.tsx("rect",{x:"0",y:"0",fill:"url(#"+i+")",height:"100%",width:"100%"})))},r.prototype.renderHistogram=function(){return this.histogramConfig?p.tsx("div",{class:c.histogramContainer},this.histogram.render()):null},r.prototype.renderRampFillDefinition=function(){return p.tsx("linearGradient",{id:this._rampFillId,x1:"0",x2:"0",y1:"0",y2:"1"},this.renderRampFillStops())},r.prototype.renderBackgroundFillDefinition=function(){return p.tsx("pattern",{id:this._bgFillId,patternUnits:"userSpaceOnUse",x:"0",y:"0",width:"15",height:"15"},p.tsx("image",{x:"0",y:"0",width:"15",height:"15",href:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgaGVpZ2h0PSIxNiIgd2lkdGg9IjE2Ij48cGF0aCBkPSJNMCAwIEw4IDAgTDggOCBMMCA4IFoiIGZpbGw9IiNjY2MiIC8+PHBhdGggZD0iTTAgMCBMOCAwIEw4IDggTDAgOCBaIiBmaWxsPSIjZmZmIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLDgpIiAvPjxwYXRoIGQ9Ik0wIDAgTDggMCBMOCA4IEwwIDggWiIgZmlsbD0iI2NjYyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOCw4KSIgLz48cGF0aCBkPSJNMCAwIEw4IDAgTDggOCBMMCA4IFoiIGZpbGw9IiNmZmYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDgsMCkiIC8+PC9zdmc+"}))},r.prototype.renderRampFillStops=function(){var e=this;return this.viewModel.getStopInfo().reverse().map(function(r,i){return e.renderStop(r,i)})},r.prototype.renderStop=function(e,r){var i=this.getPropsForStop(e),t=i.color,s=i.offset;return p.tsx("stop",{key:r+"-stop",offset:s,"stop-color":t})};var i;return s([l.aliasOf("viewModel.breaks")],r.prototype,"breaks",void 0),s([l.property()],r.prototype,"label",void 0),s([l.property(),p.renderable(["viewModel.breaks","viewModel.hasTimeData","viewModel.labelFormatFunction","viewModel.max","viewModel.min","viewModel.values"])],r.prototype,"viewModel",void 0),r=i=s([l.subclass("esri.widgets.smartMapping.ClassedColorSlider")],r)}(l.declared(a.SmartMappingSliderBase))});

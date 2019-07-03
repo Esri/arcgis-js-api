@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({transparency:"Läbipaistvus",suggested:"Soovitatud",recent:"Hiljutine",more:"Veel",moreColorsTooltip:"Kuva veel värve.",paletteTooltip:"Valige värv.",noColorTooltip:"Värvi pole",hexInputTooltip:"Kohandatud värv kuueteistkümnendvormingus (#FFFF00)."});

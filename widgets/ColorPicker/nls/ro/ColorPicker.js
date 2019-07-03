@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({transparency:"Transparenţă",suggested:"Sugerat",recent:"Recente",more:"Mai mult",moreColorsTooltip:"Consultaţi mai multe culori.",paletteTooltip:"Selectați o culoare.",noColorTooltip:"Nicio culoare",hexInputTooltip:"O culoare particularizată cu notație hexadecimală (#FFFF00)."});

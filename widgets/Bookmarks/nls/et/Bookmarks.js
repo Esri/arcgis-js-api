@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Järjehoidjad",goToBookmark:"Ava järjehoidja",noBookmarksHeading:"Järjehoidjad puuduvad",noBookmarksDescription:"Lisage oma kaardile järjehoidjad; need kuvatakse siin.",disabledHeading:"Järjehoidjad on keelatud",disabledDescription:"Järjehoidjate lubamiseks lisage kaardivaade."});
+define({addBookmark:"Lisa järjehoidja",disabledHeading:"Järjehoidjad on keelatud",disabledDescription:"Järjehoidjate lubamiseks lisage kaardivaade.",goToBookmark:"Ava järjehoidja",noBookmarksHeading:"Järjehoidjad puuduvad",noBookmarksDescription:"Lisage oma kaardile järjehoidjad; need kuvatakse siin.",title:"Pealkiri",addPlaceholder:"Sisestage järjehoidja nimi",addingBookmark:"Järjehoidja lisamine",widgetLabel:"Järjehoidjad"});

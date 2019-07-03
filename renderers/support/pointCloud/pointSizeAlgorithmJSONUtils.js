@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/Warning","./PointSizeFixedSizeAlgorithm","./PointSizeSplatAlgorithm"],function(e,n,t,i,r){function o(e){return e?a[e.type]||null:null}function u(e,n,i){var r=o(e);if(r){var u=new r;return u.read(e,i),u}return i&&i.messages&&e&&i.messages.push(new t("pointsizealgorithm:unsupported","Point size algorithms of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:i})),null}function l(e){var n=o(e);return n?n.fromJSON(e):null}Object.defineProperty(n,"__esModule",{value:!0});var a={pointCloudFixedSizeAlgorithm:i.default,pointCloudSplatAlgorithm:r.default};n.read=u,n.fromJSON=l});

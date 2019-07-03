@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","dojo/keys"],function(e,n,t){function r(){return function(e,n){return{value:u(e[n])}}}function o(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function u(e){return function(n){for(var r=[],u=1;u<arguments.length;u++)r[u-1]=arguments[u];if(o(n))return void(n.keyCode!==t.ENTER&&n.keyCode!==t.SPACE||(n.preventDefault(),n.target.click()));e.call.apply(e,[this,n].concat(r))}}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=r});
+define(["require","exports"],function(e,n){function t(){return function(e,n){return{value:u(e[n])}}}function r(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function u(e){return function(n){for(var t=[],u=1;u<arguments.length;u++)t[u-1]=arguments[u];if(r(n))return void("Enter"!==n.key&&" "!==n.key||(n.preventDefault(),n.target.click()));e.call.apply(e,[this,n].concat(t))}}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=t});

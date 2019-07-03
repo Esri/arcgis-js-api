@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./ManagingDisposable"],function(t,e,r,i){return function(t){function e(e,r){var i=t.call(this)||this;return i.material=e,i.programRep=r,i}return r(e,t),e.prototype.isVisible=function(){return this.material.isVisible()},e.prototype.isVisibleInPass=function(t){return this.material.isVisibleInPass(t)},e.prototype.getPrograms=function(){return[this.getProgram()]},e.prototype.getDrawMode=function(){return 4},e.prototype.release=function(t,e){},e}(i.ManagingDisposable)});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./AutoDisposable"],function(t,e,r,i){return function(t){function e(e,r){var i=t.call(this)||this;return i.material=e,i.programRep=r,i}return r(e,t),e.prototype.isVisible=function(){return this.material.isVisible()},e.prototype.isVisibleInPass=function(t){return this.material.isVisibleInPass(t)},e.prototype.getPrograms=function(){return[this.getProgram()]},e.prototype.getDrawMode=function(){return 4},e.prototype.release=function(t,e){},e.prototype.updateAnimation=function(t){return!!this.material.animationSupported&&(this.animate(t),!0)},e}(i.AutoDisposable)});

@@ -1,8 +1,10 @@
 /**
- * The Directions Widget provides a way to build driving and walking directions using ArcGIS online and custom
+ * The Directions Widget provides a way to build driving and walking directions using ArcGIS Online and custom
  * Network Analysis Route services. Similar to how the {@link module:esri/tasks/RouteTask} works, this widget
- * generates a route finding a least-cost path between multiple points using a specified network. The resulting
- * directions are displayed with detailed turn-by-turn instructions.
+ * generates a route finding a least-cost path between multiple points using a specified network. When searching
+ * for an address, the location of the points used to navigate depends on the `locationType` of the [Search properties](#SearchProperties).
+ * The default value will be `"street"` for any locator source that does not define a `locationType`. The
+ * resulting directions are displayed with detailed turn-by-turn instructions.
  *
  * The widget wraps pre-built search functionality directly within it so all you need to do is reference the widget
  * within your application. The routing service defaults to the [Esri World Route service](http://www.arcgis.com/home/item.html?id=1feb41652c5c4bd2ba5c60df2b4ea2c4).
@@ -45,21 +47,24 @@ import * as i18n from "dojo/i18n!esri/widgets/Directions/nls/Directions";
 
 // esri
 import Graphic = require("esri/Graphic");
+import { substitute, formatDate, formatNumber } from "esri/intl";
 import moment = require("esri/moment");
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { on, pausable } from "esri/core/events";
 import Handles = require("esri/core/Handles");
 import { PausableHandle } from "esri/core/interfaces";
-import { substitute } from "esri/core/lang";
-import { on, pausable } from "esri/core/on";
-import { init, watch, when, whenOnce } from "esri/core/watchUtils";
+import { init, watch, on as watchOn, when, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.symbols
 import Symbol = require("esri/symbols/Symbol");
+
+// esri.tasks.support
+import RouteResultsContainer = require("esri/tasks/support/RouteResultsContainer");
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -204,6 +209,28 @@ function getFirstResult(response: SearchResponse<SearchResults<SearchResult>>): 
 
 function getDefaultStops(): [PlaceholderStop, PlaceholderStop] {
   return [{}, {}];
+}
+
+const etaTimeFormatOptions = {
+  hour: "numeric",
+  minute: "numeric"
+};
+
+const gmtOffsetFormatOptions = {
+  minimumIntegerDigits: 2
+};
+
+function formatGMTOffset(date: Date): string {
+  const timeZoneOffset = date.getTimezoneOffset();
+  const sign = timeZoneOffset > 0 ? "-" : "+";
+  const minutesInHour = 60;
+  const offsetInHours = Math.abs(Math.floor(timeZoneOffset / minutesInHour));
+  const offsetInMinutes = Math.abs(Math.floor(timeZoneOffset) % minutesInHour);
+
+  return `GMT${sign}${formatNumber(offsetInHours, gmtOffsetFormatOptions)}${formatNumber(
+    offsetInMinutes,
+    gmtOffsetFormatOptions
+  )}`;
 }
 
 const defaultDelayInMs = 100;
@@ -379,6 +406,46 @@ class Directions extends declared(Widget) {
   label: string = i18n.widgetLabel;
 
   //----------------------------------
+  //  lastRoute
+  //----------------------------------
+
+  /**
+   * The most recent route result. Returns an object containing properties for any barriers used when generating the route, messages
+   * that may arise when solving the route, and finally an array of returned {@link module:esri/tasks/support/RouteResult RouteResults}.
+   *
+   * @name lastRoute
+   * @instance
+   * @type {Object}
+   * @since 4.12
+   * @readonly
+   * @default null
+   *
+   * @property {module:esri/Graphic[]} barriers  - Array of graphics representing the point barriers. For a list of properties returned for each barrier,
+   * see the [barriers](https://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/barriers.htm) help documentation.
+   * @property {Object[]} messages - An array of messages serialized to JSON.
+   * @property {string} messages.description - A descriptive message of the returned mesage.
+   * @property {number} messages.type - Number indicating the message type returned from the service. This number correlates to one of the
+   * possible values listed below.
+   * Number | Value
+   * ------|------------
+   * 0 | informative
+   * 1 | process-definition
+   * 2 | process-start
+   * 3 | process-stop
+   * 50 | warning
+   * 100 | error
+   * 101 | empty
+   * 200 | abort
+   * @property {module:esri/Graphic[]} polygonBarriers - Array of graphics representing the polygon barriers. For a list of properties returned for each barrier,
+   * see the [barriers](https://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/barriers.htm) help documentation.
+   * @property {module:esri/Graphic[]} polylineBarriers - Array of graphics representing the polygon barriers. For a list of properties returned for each barrier,
+   * see the [barriers](https://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/barriers.htm) help documentation.
+   * @property {module:esri/tasks/support/RouteResult} routeResults - An array of {@link module:esri/tasks/support/RouteResult RouteResults}.
+   */
+  @aliasOf("viewModel.lastRoute")
+  lastRoute: RouteResultsContainer = null;
+
+  //----------------------------------
   //  maxStops
   //----------------------------------
 
@@ -458,6 +525,8 @@ class Directions extends declared(Widget) {
    * @property {string} [allPlaceholder] - String value used as a hint for input text when searching on multiple sources.
    * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the selected result once selected.
    * @property {boolean} [autoSelect] - Indicates whether to automatically select and zoom to the first geocoded result.
+   * @property {string} [locationType] - Define the type of location, either `"street"` or `"rooftop"`.
+   * The default value will be `"street"` for any locator source that does not define a locationType.
    * @property {number} [maxResults=6] - Indicates the maximum number of search results to return.
    * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions to return for the widget's input.
    * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters required before querying for a suggestion.
@@ -738,15 +807,15 @@ class Directions extends declared(Widget) {
         (numStops > 2 && nextIsLast && nextStopIsValid) ||
         (numStops > 2 && isLast && !stop.result);
       const shouldHideClearIcon = numStops === 2 || (numStops === 3 && !lastStopIsValid) || newRow;
-      const draggable = newRow ? "false" : "true";
+      const draggable = !newRow;
 
       const search = this._acquireSearch(stop);
 
       const { removeStop: removeStopTitle, reverseStops: reverseStopsTitle, unlocated } = i18n;
-      const label = substitute(
-        { number: i + 1, label: stop.result ? stop.result.name : unlocated },
-        i18n.stopLabelTemplate
-      );
+      const label = substitute(i18n.stopLabelTemplate, {
+        number: i + 1,
+        label: stop.result ? stop.result.name : unlocated
+      });
       const stopListItemId = `${this.id}__stop--${i}`;
 
       const centerOnStopEnabled =
@@ -1202,7 +1271,7 @@ class Directions extends declared(Widget) {
     const link = `<a class="${
       CSS.anchor
     }" href="http://www.esri.com/legal/software-license" target="_blank">${i18n.esriTerms}</a>`;
-    const disclaimer = substitute({ esriTerms: link }, i18n.disclaimer);
+    const disclaimer = substitute(i18n.disclaimer, { esriTerms: link });
 
     return <div class={CSS.disclaimer} innerHTML={disclaimer} key="esri-directions__disclaimer" />;
   }
@@ -1390,14 +1459,18 @@ class Directions extends declared(Widget) {
   private _renderCosts(): VNode {
     const directionLines = this.get<Graphic[]>("viewModel.directionLines");
     const last = directionLines[directionLines.length - 1];
-    const now = moment(last.attributes.arriveTimeUTC);
-    const time = now.format("LT");
-    const gmt = now.format("[GMT]ZZ");
+    const arriveTime = new Date(last.attributes.arriveTimeUTC);
+
     const costSummary = this._costSummary.set({
       directionsViewModel: this.viewModel
     });
+
     const title = i18n.zoomToRoute;
-    const eta = substitute({ time: `<strong>${time}</strong>`, gmt }, i18n.etaTemplate);
+    const time = formatDate(arriveTime, etaTimeFormatOptions);
+    const eta = substitute(i18n.etaTemplate, {
+      time: `<strong>${time}</strong>`,
+      gmt: `${formatGMTOffset(arriveTime)}`
+    });
     const primaryCostsTitle = i18n.primaryCosts;
     const secondaryCostsTitle = i18n.secondaryCosts;
     const etaTitle = i18n.eta;
@@ -1453,6 +1526,11 @@ class Directions extends declared(Widget) {
     return i18n.errors.unknownError;
   }
 
+  private _normalizeSearchSources(search: Search): void {
+    this._overrideDefaultSources(search);
+    this._ensureLocationTypeOnLocatorSources(search);
+  }
+
   private _overrideDefaultSources(search: Search): void {
     const placeholder = search.view
       ? i18n.searchFieldPlaceholder
@@ -1461,6 +1539,20 @@ class Directions extends declared(Widget) {
     search.viewModel.defaultSources.forEach((source) => {
       source.placeholder = placeholder;
       source.autoNavigate = false;
+    });
+  }
+
+  private _ensureLocationTypeOnLocatorSources({ allSources }: Search): void {
+    if (allSources.length === 0) {
+      return;
+    }
+
+    // ensuring route-appropriate locationType default
+    // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/20496
+    allSources.forEach((source) => {
+      if ("locator" in source && source.locator && source.locationType === null) {
+        source.locationType = "street";
+      }
     });
   }
 
@@ -1481,9 +1573,11 @@ class Directions extends declared(Widget) {
       ...this.searchProperties
     });
 
+    this._normalizeSearchSources(search);
+
     this._handles.add(
       [
-        search.watch("defaultSources", () => this._overrideDefaultSources(search)),
+        watchOn(search, "allSources", "change", () => this._normalizeSearchSources(search)),
         search.on("select-result", () => {
           stop.result = search.selectedResult;
 

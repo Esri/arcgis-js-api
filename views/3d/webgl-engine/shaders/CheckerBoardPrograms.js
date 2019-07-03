@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,a,o){Object.defineProperty(r,"__esModule",{value:!0}),r.colorPass={name:"checker-board-color",shaders:{vertexShader:o.resolveIncludes("materials/checkerBoard/checkerBoard.vert"),fragmentShader:o.resolveIncludes("materials/checkerBoard/checkerBoard.frag")},attributes:a.Default3D}});

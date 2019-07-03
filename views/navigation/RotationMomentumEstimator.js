@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/extendsHelper","./MomentumEstimator"],function(t,e,o,a){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,o,a,i){return void 0===e&&(e=3),void 0===o&&(o=.01),void 0===a&&(a=.95),void 0===i&&(i=12),t.call(this,e,o,a,i)||this}return o(e,t),e.prototype.add=function(e,o){if(this.value.hasLastValue){for(var a=this.value.lastValue,i=e-a;i>Math.PI;)i-=2*Math.PI;for(;i<-Math.PI;)i+=2*Math.PI;e=a+i}t.prototype.add.call(this,e,o)},e}(a.MomentumEstimator);e.RotationMomentumEstimator=i});

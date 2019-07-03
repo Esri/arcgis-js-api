@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/has"],function(e,t,s){Object.defineProperty(t,"__esModule",{value:!0}),s.add("esri-svg-classlist","classList"in SVGElement.prototype);var n=function(){function e(e){this._node=e}return e.prototype.add=function(e){var t=this._node;t.className.baseVal=(t.className.baseVal+" "+e).trim()},e.prototype.contains=function(e){return this._node.className.baseVal.split(" ").indexOf(e)>-1},e.prototype.remove=function(e){for(var t=this._node,s="",n=0,o=t.className.baseVal.split(" ");n<o.length;n++){var a=o[n];a!==e&&(s+=a+" ")}t.className.baseVal=s.trim()},e.prototype.toggle=function(e,t){var s,n=this.contains(e);return s=n?!0!==t&&"remove":!1!==t&&"add",s&&this[s](e),void 0!==t?t:!n},e}();t.DOMTokenListSubset=n,s("esri-svg-classlist")||Object.defineProperty(SVGElement.prototype,"classList",{get:function(){return new n(this)}})});

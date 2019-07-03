@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function r(e){if(e)return e.get("sourceLayer")||e.get("layer")}function a(e){var t=o[e];return t?{transform:"rotate("+t.rotate+"deg) scaleX("+t.scaleX+")"}:{}}Object.defineProperty(t,"__esModule",{value:!0});var o={1:{rotate:0,scaleX:1},2:{rotate:0,scaleX:-1},3:{rotate:180,scaleX:1},4:{rotate:180,scaleX:-1},5:{rotate:90,scaleX:-1},6:{rotate:90,scaleX:1},7:{rotate:-90,scaleX:-1},8:{rotate:-90,scaleX:1}};t.getSourceLayer=r,t.getOrientationStyles=a});
+define(["require","exports"],function(e,r){function t(e){if(e)return e.get("sourceLayer")||e.get("layer")}Object.defineProperty(r,"__esModule",{value:!0}),r.getSourceLayer=t});

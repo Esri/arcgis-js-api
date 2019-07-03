@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Σελ/κτες",goToBookmark:"Μετάβαση στον σελιδοδείκτη",noBookmarksHeading:"Δεν υπάρχουν σελιδοδείκτες",noBookmarksDescription:"Προσθέστε στον χάρτη σας σελιδοδείκτες που θα εμφανίζονται εδώ.",disabledHeading:"Οι σελιδοδείκτες είναι απενεργοποιημένοι",disabledDescription:"Προσθέστε ένα MapView για να ενεργοποιήσετε τους σελιδοδείκτες."});
+define({addBookmark:"Προσθήκη σελιδοδείκτη",disabledHeading:"Οι σελιδοδείκτες είναι απενεργοποιημένοι",disabledDescription:"Προσθέστε ένα MapView για να ενεργοποιήσετε τους σελιδοδείκτες.",goToBookmark:"Μετάβαση στον σελιδοδείκτη",noBookmarksHeading:"Δεν υπάρχουν σελιδοδείκτες",noBookmarksDescription:"Προσθέστε στον χάρτη σας σελιδοδείκτες που θα εμφανίζονται εδώ.",title:"Τίτλος",addPlaceholder:"Καταχωρίστε τίτλο σελιδοδείκτη.",addingBookmark:"Προσθήκη σελιδοδείκτη σε εξέλιξη",widgetLabel:"Σελ/κτες"});

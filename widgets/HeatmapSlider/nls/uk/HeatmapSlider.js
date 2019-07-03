@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({statsAvg:"Середнє: ${avg}",count:"Кількість: ${count}",percent:"${num}%",high:"Високе",low:"Низьке",color:{changeMinMaxToolTIp:"Введіть значення.",handleToolTip:"Співвіднести значення даних з кольорами.",maxValueToolTip:"Введіть найбільше очікуване значення даних.",minValueToolTip:"Введіть найменше очікуване значення даних.",changeSymbol:"Змінити символ"},size:{handleToolTip:"Співвіднести значення даних з розміром символу.",sizeInputBoxLines:"Задати товщину ліній від 0 до 18 пікселів.",sizeInputBoxPoints:"Задати товщину ліній від 1 до 120 пікселів"}});

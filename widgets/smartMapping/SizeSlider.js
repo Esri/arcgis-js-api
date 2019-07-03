@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","dojo/i18n!./SizeSlider/nls/SizeSlider","../../core/maybe","../../core/accessorSupport/decorators","../../renderers/visualVariables/SizeVariable","../../renderers/visualVariables/support/SizeStop","./SmartMappingSliderBase","./SizeSlider/SizeSliderViewModel","./support/utils","./../support/widget"],function(e,i,t,r,s,a,o,l,n,d,p,u,m,v){var h={base:"esri-size-slider",rampElement:"esri-size-slider__ramp",sliderContainer:"esri-size-slider__slider-container",histogramContainer:"esri-size-slider__histogram-container",esriWidget:"esri-widget",esriWidgetPanel:"esri-widget--panel",widgetIcon:"esri-icon-edit",disabled:"esri-disabled"};return function(e){function i(i){var t=e.call(this)||this;return t._backgroundFillColor="#e0e0e0",t._fillColor="#959595",t._maxRampFillWidth=1,t._minRampFillWidth=.2,t._rampNode=null,t.label=a.widgetLabel,t.stops=null,t.viewModel=new u,t}r(i,e),t=i,i.fromRendererResult=function(e,i){var r=e.visualVariables,s=e.statistics,a=s.avg,o=s.max,l=s.min,n=s.stddev,d=r[0],p=m.getSizesFromVariable(d),u=p[0],v=p[1];return new t({max:o,min:l,stops:[{value:d.minDataValue,size:v},{value:d.maxDataValue,size:u}],histogramConfig:{average:a,standardDeviation:n,bins:i?i.bins:[]}})},i.prototype.updateFromRendererResult=function(e,i){var t=e.visualVariables,r=e.statistics,s=r.avg,a=r.max,o=r.min,l=r.stddev,n=t[0],d=m.getSizesFromVariable(n),p=d[0],u=d[1];this.set({max:a,min:o,stops:[{value:n.minDataValue,size:u},{value:n.maxDataValue,size:p}],histogramConfig:{average:s,standardDeviation:l,bins:i?i.bins:[]}})},i.prototype.updateVisualVariable=function(e){var i=e.clone(),t=this.stops;if(!e||!t)return null;if(i.stops)return i.stops=t,i;var r=t[0],s=t[t.length-1],a=i.maxSize,o=i.minSize;if(a instanceof n){var l=a.stops,d=s.size/l[0].size,p=l.map(function(e){return e.size*=d,e});a.stops=p}else a=s.size;if(o instanceof n){var u=o.stops,m=r.size/u[0].size,p=u.map(function(e){return e.size*=m,e});o.stops=p}else o=r.size;return i.set({maxDataValue:s.value,minDataValue:r.value,maxSize:a,minSize:o}),i},i.prototype.updateFromVisualVariable=function(e){if(e){var i=e.maxDataValue,t=e.minDataValue,r=e.stops;if(r)this.stops=r;else{var s=m.getSizesFromVariable(e),a=s[0],o=s[1];this.stops=[new d({value:t,size:o}),new d({value:i,size:a})]}}},i.prototype.render=function(){var e=this,i=e.viewModel.state,t=e.label,r=this.classes(h.base,h.esriWidget,h.esriWidgetPanel,"disabled"===i?h.disabled:null);return v.tsx("div",{"aria-label":t,class:r},"disabled"===i?null:this.renderContent())},i.prototype.renderContent=function(){return this.slider.extraNodes=[this.renderRamp(),this.renderHistogram()],v.tsx("div",{class:h.sliderContainer},this.slider.render())},i.prototype.renderRamp=function(){return v.tsx("div",{afterCreate:v.storeNode,bind:this,class:h.rampElement,"data-node-ref":"_rampNode"},this.renderSVG())},i.prototype.renderSVG=function(){if(this._rampNode)return v.tsx("svg",{xmlns:"http://www.w3.org/2000/svg"},v.tsx("rect",{x:"0",y:"0",fill:this._backgroundFillColor,height:"100%",width:"100%"}),this.renderPath())},i.prototype.renderPath=function(){var e=this._rampNode,i=e.offsetHeight,t=void 0===i?0:i,r=e.offsetWidth,s=void 0===r?0:r;if(o.isSome(t)&&o.isSome(s)){var a=this,l=a.max,n=a.min,d=a.stops,p=a.values,u=a._fillColor,h=a._maxRampFillWidth,c=a._minRampFillWidth,g=[h,c];d[0].size<d[d.length-1].size&&g.reverse();var f=g[0],b=g[1],z=p[0],S=p[1],x=m.getPathForSizeStops({bottomValue:z,bottomWidth:f,max:l,min:n,pathHeight:t,pathWidth:s,topValue:S,topWidth:b});return v.tsx("path",{d:x,fill:u})}},i.prototype.renderHistogram=function(){return this.histogramConfig?v.tsx("div",{class:h.histogramContainer},this.histogram.render()):null};var t;return s([l.property()],i.prototype,"label",void 0),s([l.aliasOf("viewModel.stops")],i.prototype,"stops",void 0),s([l.property(),v.renderable(["viewModel.hasTimeData","viewModel.labelFormatFunction","viewModel.max","viewModel.min","viewModel.stops","viewModel.values"])],i.prototype,"viewModel",void 0),i=t=s([l.subclass("esri.widgets.smartMapping.SizeSlider")],i)}(l.declared(p.SmartMappingSliderBase))});

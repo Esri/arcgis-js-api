@@ -20,19 +20,19 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 /**
              * The time info provides information such as date fields that store
              * {@link module:esri/layers/support/TimeInfo#startField start}
              * and {@link module:esri/layers/support/TimeInfo#endField end} time
-             * for each feature and the {@link module:esri/layers/support/TimeInfo#timeExtent total time span}
-             * for the layer. The `timeInfo` and its `startField` and `endField` properties must be set at the
+             * for each feature and the {@link module:esri/layers/support/TimeInfo#fullTimeExtent full time extent}
+             * for the layer. The `timeInfo` along with its `startField` and `endField` properties must be set at the
              * time of layer initialization if it is being set for
              * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer} or
              * {@link module:esri/layers/FeatureLayer} initialized from
              * [client-side features](esri-layers-FeatureLayer.html#creating-a-featurelayer).
-             * The {@link module:esri/layers/support/TimeInfo#timeExtent total time span} for the timeInfo is
+             * The {@link module:esri/layers/support/TimeInfo#fullTimeExtent full time extent} for the timeInfo is
              * automatically calculated based on `start` and `end` fields.
              * The timeInfo parameters cannot be changed after the layer is {@link module:esri/layers/FeatureLayer#load loaded}.
              *
@@ -64,4 +64,4 @@
              * });
              */
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","../../layers/support/TimeInfo","../support/fieldUtils"],function(e,r,t,o,s,i,n,p){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),Object.defineProperty(r.prototype,"timeInfo",{set:function(e){p.fixTimeInfoFields(e,this.fields),this._set("timeInfo",e)},enumerable:!0,configurable:!0}),o([i.property({value:null,type:n,json:{write:!0}})],r.prototype,"timeInfo",null),r=o([i.subclass("esri.layers.mixins.TemporalLayer")],r)}(i.declared(s))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../TimeExtent","../../core/Accessor","../../core/accessorSupport/decorators","../../layers/support/TimeInfo","../support/fieldUtils"],function(e,t,r,o,i,n,p,s,l){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.timeExtent=null,t.useViewTime=!0,t}return r(t,e),Object.defineProperty(t.prototype,"timeInfo",{set:function(e){l.fixTimeInfoFields(e,this.fields),this._set("timeInfo",e)},enumerable:!0,configurable:!0}),o([p.property({type:i,json:{write:!1}})],t.prototype,"timeExtent",void 0),o([p.property({value:null,type:s,json:{write:!0,origins:{"web-scene":{read:!1,write:!1}}}})],t.prototype,"timeInfo",null),o([p.property({type:Boolean,json:{write:!1}})],t.prototype,"useViewTime",void 0),t=o([p.subclass("esri.layers.mixins.TemporalLayer")],t)}(p.declared(n))});

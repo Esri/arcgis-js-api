@@ -30,22 +30,30 @@
   }
 
   .esri-bookmarks__bookmark {
-    padding: $cap-spacing--half $side-spacing--half;
-    border-top: 1px solid $border-color;
-    cursor: pointer;
+    border-bottom: 1px solid $border-color;
     position: relative;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  .esri-bookmarks__bookmark-button {
+    border: none;
+    border-color: transparent;
+    background-color: transparent;
+    padding: $cap-spacing--half $side-spacing;
+    color: $interactive-font-color;
+    cursor: pointer;
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
-    transition: background-color 250ms ease-in-out;
+    transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
 
     &:hover {
       background-color: $background-color--hover;
-    }
-
-    &:first-child {
-      border-top: none;
+      color: $interactive-font-color--hover;
     }
   }
 
@@ -63,11 +71,8 @@
     }
   }
 
-  .esri-bookmarks__bookmark-icon {
-    padding: 0 $side-spacing--half;
-  }
-
   .esri-bookmarks__bookmark-name {
+    font-size: $font-size--small;
     flex: 1;
     overflow: hidden;
     padding: $cap-spacing 0;
@@ -75,19 +80,92 @@
     word-break: break-word;
   }
 
-  .esri-bookmarks__bookmark-container {
+  .esri-bookmarks__bookmark-image-container {
     align-items: center;
     display: flex;
     justify-content: center;
-    height: $button-height--double;
     overflow: hidden;
     margin-right: $side-spacing--half;
-    width: $button-width--double;
+    max-width: $button-width--double;
   }
 
   .esri-bookmarks__image {
+    max-width: $button-width--double;
+  }
+
+  .esri-bookmarks_edit-bookmark-button {
+    color: $interactive-font-color;
+  }
+
+  .esri-bookmarks__add-bookmark {
+    background-color: $background-color--offset;
+    padding: $cap-spacing--half $side-spacing--half;
+  }
+
+  .esri-bookmarks__add-bookmark-button {
+    border-radius: $border-radius;
+    font-size: $font-size--small;
+    justify-content: flex-start;
+    padding: $cap-spacing $side-spacing--quarter;
+    transition: background-color 250ms ease-in-out;
+    &:hover {
+      background-color: $background-color;
+      text-decoration: none;
+      @include defaultBoxShadow();
+    }
+  }
+
+  .esri-bookmarks__add-bookmark-icon {
+    font-size: $font-size;
+    padding-left: $side-spacing--quarter;
+    padding-right: $side-spacing--quarter;
+  }
+
+  .esri-bookmarks__authoring-card {
+    background-color: $background-color--offset;
+    padding: $cap-spacing--half $side-spacing--half;
+    animation: esri-fade-in-down 250ms ease-in-out;
+  }
+
+  .esri-bookmarks__authoring-form {
+    display: flex;
+    flex-flow: column;
+    padding: $cap-spacing $side-spacing;
+    background-color: $background-color;
+    @include defaultBoxShadow();
+    border-radius: $border-radius;
+  }
+
+  .esri-bookmarks__authoring-label {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .esri-bookmarks__authoring-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $cap-spacing--half;
+    .esri-button {
+      font-size: $font-size--small;
+      min-height: $button-height--half;
+      width: 33%;
+    }
+    .esri-bookmarks__authoring-delete-button {
+      color: $font-color--error;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+      width: auto;
+    }
+  }
+
+  .esri-widget__no-bookmark-icon {
+    font-size: $button-height;
+    line-height: $button-height--double;
+    width: $button-height--double;
     height: $button-height--double;
-    min-width: $button-height--double;
+    display: inline-block;
+    text-align: center;
   }
 
   .esri-bookmarks--fade-in {
@@ -108,6 +186,10 @@
     .esri-bookmarks__bookmark-container {
       margin-right: 0;
       margin-left: $side-spacing--half;
+    }
+    .esri-bookmarks__authoring-actions .esri-bookmarks__authoring-delete-button {
+      margin-right: 0;
+      margin-left: auto;
     }
   }
 }

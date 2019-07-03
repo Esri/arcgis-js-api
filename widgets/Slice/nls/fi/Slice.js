@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Viipalointi",cancel:"Peruuta",hint:"Aloita viipalointi napsauttamalla ja vetämällä maiseman pinnassa",excludeHint:"Jätä karttataso pois viipaleesta valitsemalla se näkymästä",unsupported:"Viipalointia ei tueta MapView-sovelluksessa.",multipleDisabled:"Vain yksi viipale voi olla aktiivisena kerralla",newSlice:"Uusi viipale",excludedLayers:"Poisjätetyt karttatasot",pickLayer:"Valitse karttataso näkymästä",excludeLayer:"Jätä karttataso pois viipaleesta",includeLayer:"Sisällytä karttataso viipaleeseen",ground:"Maanpinta"});

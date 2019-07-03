@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","./utils"],function(r,n,o){function t(r,n,o,t){return i(r,n,o,t.coords[0],t.coords[1])}function e(r,n,t,e,u,f){var s=o.getStride(u,f),l=e.coords,a=e.lengths;if(!a)return!1;for(var c=0,d=0;c<a.length;c++,d+=s)if(!i(r,n,t,l[d],l[d+1]))return!1;return!0}function i(r,n,t,e,i){if(!r)return!1;for(var f=o.getStride(n,t),s=r.coords,l=r.lengths,a=!1,c=0,d=0,g=l;d<g.length;d++){var v=g[d];a=u(a,s,f,c,v,e,i),c+=v*f}return a}function u(r,n,o,t,e,i,u){for(var f=r,s=t,l=t,a=t+e*o;l<a;l+=o){s=l+o,s===a&&(s=t);var c=n[l],d=n[l+1],g=n[s],v=n[s+1];(d<u&&v>=u||v<u&&d>=u)&&c+(u-d)/(v-d)*(g-c)<i&&(f=!f)}return f}Object.defineProperty(n,"__esModule",{value:!0}),n.polygonContainsPoint=t,n.polygonContainsMultipoint=e,n.polygonContainsCoords=i});
+define(["require","exports"],function(n,r){function o(n,r){return n?r?4:3:r?3:2}function t(n,r,o,t){return i(n,r,o,t.coords[0],t.coords[1])}function e(n,r,t,e,u,f){var s=o(u,f),c=e.coords,a=e.lengths;if(!a)return!1;for(var l=0,d=0;l<a.length;l++,d+=s)if(!i(n,r,t,c[d],c[d+1]))return!1;return!0}function i(n,r,t,e,i){if(!n)return!1;for(var f=o(r,t),s=n.coords,c=n.lengths,a=!1,l=0,d=0,g=c;d<g.length;d++){var v=g[d];a=u(a,s,f,l,v,e,i),l+=v*f}return a}function u(n,r,o,t,e,i,u){for(var f=n,s=t,c=t,a=t+e*o;c<a;c+=o){s=c+o,s===a&&(s=t);var l=r[c],d=r[c+1],g=r[s],v=r[s+1];(d<u&&v>=u||v<u&&d>=u)&&l+(u-d)/(v-d)*(g-l)<i&&(f=!f)}return f}Object.defineProperty(r,"__esModule",{value:!0}),r.polygonContainsPoint=t,r.polygonContainsMultipoint=e,r.polygonContainsCoords=i});

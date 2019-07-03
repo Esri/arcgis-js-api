@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({title:"Izmērīt",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",unsupported:"3D platības mērīšana tiek atbalstīta tikai skatā SceneView (Scēnas skats).",perimeterLength:"Perimetrs",area:"Platība",unit:"Mērvienība",notApplicable:"N/P",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā","square-kilometers":"Kvadrātkilometri","square-meters":"Kvadrātmetri","square-miles":"Kvadrātjūdzes","square-inches":"Kvadrātcollas","square-feet":"Kvadrātpēdas","square-yards":"Kvadrātjardi","square-us-feet":"Kvadrātpēdas (ASV)",acres:"Akri",ares:"Laukumi",hectares:"Hektāri"}});
+define({title:"Izmērīt",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",unsupported:"3D platības mērīšana tiek atbalstīta tikai skatā SceneView (Scēnas skats).",perimeterLength:"Perimetrs",area:"Laukums",unit:"Mērvienība",notApplicable:"N/P",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā","square-kilometers":"Kvadrātkilometri","square-meters":"Kvadrātmetri","square-miles":"Kvadrātjūdzes","square-inches":"Kvadrātcollas","square-feet":"Kvadrātpēdas","square-yards":"Kvadrātjardi","square-us-feet":"Kvadrātpēdas (ASV)",acres:"Akri",ares:"Āri",hectares:"Hektāri"}});

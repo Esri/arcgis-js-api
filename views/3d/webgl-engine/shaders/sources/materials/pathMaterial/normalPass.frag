@@ -5,27 +5,8 @@
 varying vec3 vnormal;
 varying vec3 vpos;
 
-#ifdef TEXTURING
-uniform sampler2D tex;
-uniform vec2 texSize;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-varying vec4 regionV;
-#endif
-#endif
-
-#ifdef TEXTURING
-#include <materials/pathMaterial/texturing.glsl>
-#endif
-
 void main() {
   discardBySlice(vpos);
-
-#ifdef TEXTURING
-  if (textureLookup(tex, vtc).a < ALPHA_THRESHOLD) {
-    discard;
-  }
-#endif
 
   vec3 normal = normalize(vnormal);
   if (gl_FrontFacing == false) normal = -normal;

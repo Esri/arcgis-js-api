@@ -227,8 +227,7 @@ class FeatureForm extends declared(Widget) {
   postInitialize(): void {
     this.own(
       this.watch("feature", () => {
-        const [first] = this.viewModel.inputFields;
-        const groupOrInput = isGroupField(first) ? first.inputFields[0] : first;
+        const groupOrInput = this._getFocusableInput("forward");
         this._activeInputName = groupOrInput && groupOrInput.name;
 
         this._fieldFocusNeeded = true;
@@ -467,7 +466,7 @@ class FeatureForm extends declared(Widget) {
    *
    * @returns {Object} An object of key-value pairs of field names with their values.
    *
-   * @see [submit](#event:submit) event
+   * @see [submit](#event-submit) event
    * @see [submit()](#submit) method
    *
    * @example
@@ -491,7 +490,7 @@ class FeatureForm extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Fires the [submit](#event:submit) event.
+   * Fires the [submit](#event-submit) event.
    *
    * @example
    * // Listen for when 'submit' is called on the FeatureForm.
@@ -591,10 +590,10 @@ class FeatureForm extends declared(Widget) {
     );
   }
 
-  private _getFocusableInput(direction: "forward" | "backward", input: InputField): InputField {
+  private _getFocusableInput(direction: "forward" | "backward", input?: InputField): InputField {
     const inputs = this.viewModel._allInputFields;
     const allInputs = direction === "forward" ? inputs : inputs.slice().reverse();
-    const searchStartIndex = allInputs.indexOf(input) + 1;
+    const searchStartIndex = input ? allInputs.indexOf(input) + 1 : 0;
 
     for (let i = searchStartIndex; i < allInputs.length; i++) {
       const current = allInputs[i];

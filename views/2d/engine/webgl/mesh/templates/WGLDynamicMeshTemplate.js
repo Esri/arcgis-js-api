@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/extendsHelper","./WGLMeshTemplate"],function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});var a=function(t){function e(){var e=t.call(this)||this;return e._materialCache=new Map,e}return r(e,t),e}(n.default);t.default=a});
+define(["require","exports","../../../../../../core/tsSupport/extendsHelper","../../../../../../core/Logger","../../../../../../core/promiseUtils","../../../../../../symbols/cim/cimAnalyzer","./WGLMeshTemplate"],function(e,r,t,a,l,m,i){Object.defineProperty(r,"__esModule",{value:!0});var u=a.getLogger("esri.views.2d.engine.webgl.WGLDynamicMeshTemplate"),n=function(a){function e(e){var r=a.call(this)||this;return r._materialCache=new Map,r._dynamicPropertyMap=new Map,r._cimLayer=e,r}return t(e,a),e.prototype.analyze=function(e,r,a,t){var i=this._materialCache,n=this._cimLayer.materialHash;if(!n)return u.error("A Dynamic mesh template must have a material hash function!"),l.reject(null);var s=n(r,a,t);if(i.has(s)){var c=i.get(s);return l.resolve(c)}var o=m.analyzeCIMResource(r,this._cimLayer.cim,this._cimLayer.materialOverrides);return o.mosaicHash=s,e.getCIMMosaicItem(o).then(function(e){return i.set(s,e),e})},e}(i.default);r.default=n});

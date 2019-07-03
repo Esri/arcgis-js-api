@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/asyncUtils","../../core/Warning"],function(e,r,t,n,i,o){function s(e,r){return n(this,void 0,void 0,function(){var n,s,a;return t(this,function(t){switch(t.label){case 0:return n=e&&e.getAtOrigin&&e.getAtOrigin("renderer",r.origin),n&&"unique-value"===n.type&&n.styleOrigin?[4,i.result(n.populateFromStyle())]:[3,2];case 1:s=t.sent(),!1===s.ok&&(a=s.error,r&&r.messages&&r.messages.push(new o("renderer:style-reference","Failed to create unique value renderer from style reference: "+a.message,{error:a,context:r})),e.clear("renderer",r.origin)),t.label=2;case 2:return[2]}})})}Object.defineProperty(r,"__esModule",{value:!0}),r.loadStyleRenderer=s});
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/asyncUtils","../../core/promiseUtils","../../core/Warning"],function(e,r,t,n,o,i,s){function a(e,r,a){return n(this,void 0,void 0,function(){var n,l,u;return t(this,function(t){switch(t.label){case 0:return n=e&&e.getAtOrigin&&e.getAtOrigin("renderer",r.origin),n&&"unique-value"===n.type&&n.styleOrigin?[4,o.result(n.populateFromStyle())]:[3,2];case 1:l=t.sent(),i.throwIfAborted(a),!1===l.ok&&(u=l.error,r&&r.messages&&r.messages.push(new s("renderer:style-reference","Failed to create unique value renderer from style reference: "+u.message,{error:u,context:r})),e.clear("renderer",r.origin)),t.label=2;case 2:return[2]}})})}Object.defineProperty(r,"__esModule",{value:!0}),r.loadStyleRenderer=a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","./shaderRepository","../../../../../webgl/ShaderCompiler"],function(e,r,n,o){Object.defineProperty(r,"__esModule",{value:!0});var t=new o(function(e){var r=n;return e.split("/").forEach(function(e){r&&(r=r[e])}),r});r.resolveIncludes=function(e){return t.resolveIncludes(e)}});
+define(["require","exports","../../../../../webgl","./shaderRepository"],function(e,r,n,o){Object.defineProperty(r,"__esModule",{value:!0});var t=new n.ShaderCompiler(function(e){var r=o;return e.split("/").forEach(function(e){r&&(r=r[e])}),r});r.resolveIncludes=function(e){return t.resolveIncludes(e)}});

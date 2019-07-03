@@ -37,11 +37,8 @@ uniform float u_vvOpacities[8];
 uniform lowp float u_vvRotationType;
 #endif // VV_ROTATION
 
-const highp float nanValue = 1e-30;
-
 bool isNan(float val) {
-  return (val == nanValue);
-  //return !( val < 0.0 || 0.0 < val || val == 0.0 );
+  return (val == NAN_MAGIC_NUMBER);
 }
 
 #ifdef VV_SIZE_MIN_MAX_VALUE
@@ -91,8 +88,8 @@ float getVVUnitValue(float sizeValue, float fallback) {
 
 #ifdef VV_OPACITY
 const int VV_OPACITY_N = 8;
-float getVVOpacity(float opacityValue) {
-  if (isNan(opacityValue)) {
+float getVVOpacity(float opacityValue, float isOpacityLocked) {
+  if (isNan(opacityValue) || isOpacityLocked == 1.0) {
     return 1.0;
   }
 

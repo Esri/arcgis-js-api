@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({streets:"Utcák",satellite:"Távérzékelt felvétel",hybrid:"Távérzékelt felvétel felirattal",terrain:"Domborzati térkép felirattal",topo:"Topográfiai térkép",gray:"Világosszürke váztérkép","dark-gray":"Sötétszürke váztérkép",oceans:"Óceánok","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Világ Úthálózat Térkép (éjszaka)","streets-relief-vector":"Világ Úthálózat Térkép (domborzattal)","streets-navigation-vector":"Világ Navigációs Térkép"});

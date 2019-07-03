@@ -2,8 +2,6 @@
 
 #include <materials/pathMaterial/commonInputs.glsl>
 
-attribute vec3 position;
-attribute vec4 auxpos1; // direction offset
 #ifdef COMPRESSED_NORMALS
 attribute vec2 normalCompressed;
 #else
@@ -11,15 +9,6 @@ attribute vec3 normal;
 #endif
 varying vec3 vpos;
 varying vec3 vnormal;
-
-#ifdef TEXTURING
-attribute vec2 uv0;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-attribute vec4 region;
-varying vec4 regionV;
-#endif
-#endif
 
 #ifdef COMPONENTCOLORS
 uniform sampler2D uComponentColorTex;
@@ -60,12 +49,6 @@ varying vec4 vcolorExt;
 varying mediump float colorMixMode; // varying int is not supported in WebGL
 #endif
 
-#include <materials/pathMaterial/visualVariables.glsl>
-
-#if defined(VV_SIZE) || defined(VV_COLOR) || defined(VV_OPACITY)
-attribute vec4 auxpos2;
-#endif
-
 #include <materials/pathMaterial/commonFunctions.glsl>
 #include <materials/pathMaterial/localNormal.glsl>
 #include <materials/pathMaterial/colorMixMode.glsl>
@@ -86,16 +69,7 @@ void main() {
 #endif
 
   vcolorExt = externalColor;
-
-  vcolor = vec4(1.0, 1.0, 1.0, 1.0);
-#ifdef VV_COLOR
-  vcolor = vvGetColor(auxpos2, vvColorValues, vvColorColors);
-#endif
-#ifdef VV_OPACITY
-  // there might be opacity values in vvColor but according to the logic in graphicUtils.mixinColorAndOpacity,
-  // this value will be overridden by vvOpacity so we do the same here
-  vcolor.a = vvGetOpacity(auxpos2, vvOpacityValues, vvOpacityOpacities);
-#endif
+  vcolor = getColor();
 
 
 #ifdef SYMBOLVERTEXCOLORS
@@ -109,17 +83,4 @@ void main() {
   vcolorExt *= decodeSymbolColor(readComponentColor() * 255.0, symbolColorMixMode) * 0.003921568627451; // = 1/255;
   colorMixMode = float(symbolColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
 #endif
-
-#ifdef TEXTURING
-  // the v coordinate is stored in auxpos1.w
-#ifndef FLIPV
-  vtc = vec2(uv0.x, auxpos1.w);
-#else
-  vtc = vec2(uv0.x, 1.0-auxpos1.w);
-#endif
-#ifdef TEXTURE_ATLAS
-  regionV = region;
-#endif
-#endif /* TEXTURING */
-
 }

@@ -17,14 +17,11 @@
     },
     "values": {
       "type": "array",
-      "description": "List of string or number values used to classifiy points.",
+      "description": "List of string values used to classify points.",
       "items": {
         "oneOf": [
           {
             "type": "string"
-          },
-          {
-            "type": "number"
           }
         ]
       }

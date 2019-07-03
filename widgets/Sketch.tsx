@@ -70,6 +70,7 @@
  * Z | Incrementally undo actions recorded in the stack. | <img alt="Undo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
  * R | Incrementally redo actions recorded in the stack. | <img alt="Redo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
  * Left-click on view (not the graphic) | Complete the graphic update. | <img alt="Sketch update complete" src="../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif" width="400px"> |
+ * Press `Delete` key | Remove the selected graphic(s) from the [layer](#layer). | <img alt="Sketch delete graphic" src="../../assets/img/apiref/widgets/sketch/sketch-delete-graphic.gif" width="400px">
  *
  * The following update operations can be performed on a single polyline or polygon graphic:
  *
@@ -82,7 +83,7 @@
  * Ctrl+Left-click on vertices | Select or unselect multiple vertices. | <img alt="Select vertices" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
  * Drag vertex | Move the selected vertex or vertices. | <img alt="Drag vertices" src="../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif" width="400px"> |
  * Right-click on a vertex | Delete a vertex. | <img alt="Delete a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif" width="400px"> |
- * Select multiple vertices and press `Backspace` or `Delete` button | Delete multiple vertices. | <img alt="Delete vertices" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
+ * Select multiple vertices and press `Backspace` or `Delete` key | Delete multiple vertices. | <img alt="Delete vertices" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
  *
  * The following update operations can be performed on a single graphic with point geometry in a {@link module:esri/views/SceneView}, if the graphic uses a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}:
  *
@@ -131,15 +132,19 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
+// @dojo.framework.shim
+import Set from "@dojo/framework/shim/Set";
+
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/Sketch/nls/Sketch";
 
 // esri
+import { substitute } from "esri/intl";
 import Graphic = require("esri/widgets/../Graphic");
 
 // esri.core
 import Collection = require("esri/core/Collection");
-import { substitute } from "esri/core/lang";
+import Evented = require("esri/core/Evented");
 
 // esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
@@ -213,9 +218,11 @@ const CSS = {
 
 type Layout = "vertical" | "horizontal";
 
-interface Sketch extends Widget {
-  on(type: "delete", listener: (event: DeleteEvent) => void): IHandle;
+interface SketchEvents {
+  delete: DeleteEvent;
 }
+
+interface Sketch extends Evented.IEvented<SketchEvents> {}
 
 @subclass("esri.widgets.Sketch")
 class Sketch extends declared(Widget) {
@@ -252,7 +259,7 @@ class Sketch extends declared(Widget) {
    * start | State changes to `start` when the first vertex is created. Not applicable when creating `points`.
    * active | State is `active` while graphic is being created. Not applicable when creating `points`.
    * complete | State changes to `complete` after the [complete()](#complete) method is called, when the user double clicks, presses the C key or clicks the first vertex of the `polygon` while creating a graphic. When `point` is created, the create event is fired with the `complete` state.
-   * cancel | State changes to `cancel` if the [create()](#create) or [reset()](#reset) methods are called during the create operation and before the state changes to `complete`.
+   * cancel | State changes to `cancel` if the [create()](#create) or [cancel()](#cancel) methods are called during the create operation and before the state changes to `complete`.
    *
    * @property {string} tool - Name of the create tool.
    *
@@ -294,7 +301,7 @@ class Sketch extends declared(Widget) {
    * start | State changes to `start` when a graphic is selected to be updated.
    * active | State is `active` while graphics are being updated and `toolEventInfo` parameter is not `null`.
    * complete | State changes to `complete` after graphics are updated.
-   * cancel | State changes to `cancel` when graphics are selected and then unselected without any updates, or when the [update](#update), [create](#create) or [reset](#reset) method is called before the `update` event's `state` changes to `complete`.
+   * cancel | State changes to `cancel` when graphics are selected and then unselected without any updates, or when the [update()](#update), [create()](#create) or [cancel()](#cancel) method is called before the `update` event's `state` changes to `complete`.
    *
    * @property {string} tool - Name of the update operation tool.
    *
@@ -371,7 +378,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [create](#event:create) event when the graphic
+   * This information is returned as `toolEventInfo` parameter for the [create](#event-create) event when the graphic
    * is being created. It returns {@link module:esri/widgets/Sketch~VertexAddEventInfo}
    * when the user clicks the view or {@link module:esri/widgets/Sketch~CursorUpdateEventInfo} or when the user moves the cursor.
    *
@@ -379,13 +386,13 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update) event when the user is updating graphics.
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update) event when the user is updating graphics.
    *
    * @typedef {module:esri/widgets/Sketch~MoveEventInfo | module:esri/widgets/Sketch~ReshapeEventInfo | module:esri/widgets/Sketch~RotateEventInfo | module:esri/widgets/Sketch~ScaleEventInfo | module:esri/widgets/Sketch~VertexAddEventInfo | module:esri/widgets/Sketch~VertexRemoveEventInfo} module:esri/widgets/Sketch~UpdateToolEventInfo
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [create](#event:create)
+   * This information is returned as `toolEventInfo` parameter for the [create](#event-create)
    * event when the user moves the cursor on the view while the graphic is being created.
    *
    * @typedef {Object} module:esri/widgets/Sketch~CursorUpdateEventInfo
@@ -406,8 +413,8 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [create](#event:create)
-   * or [update](#event:update) event when the user adds vertices to the graphic being created or updated.
+   * This information is returned as `toolEventInfo` parameter for the [create](#event-create)
+   * or [update](#event-update) event when the user adds vertices to the graphic being created or updated.
    *
    * @typedef {Object} module:esri/widgets/Sketch~VertexAddEventInfo
    *
@@ -428,7 +435,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update) event
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update) event
    * when the user is removing vertices from the graphic.
    *
    * @typedef {Object} module:esri/widgets/Sketch~VertexRemoveEventInfo
@@ -451,7 +458,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update)
    * event while the user is moving the graphics. It returns additional information associated with the move operation
    * and what stage it is at.
    *
@@ -483,7 +490,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update)
    * event while the user is reshaping the graphics. It returns additional information associated with the reshape operation
    * and what stage it is at.
    *
@@ -511,7 +518,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update)
    * event while the user is rotating the graphics. It returns additional information associated with the rotate operation
    * and what stage it is at.
    *
@@ -550,7 +557,7 @@ class Sketch extends declared(Widget) {
    */
 
   /**
-   * This information is returned as `toolEventInfo` parameter for the [update](#event:update)
+   * This information is returned as `toolEventInfo` parameter for the [update](#event-update)
    * event while the user is scaling or resizing the graphics. It returns additional information associated with the scale
    * operation and what stage it is at.
    *
@@ -607,7 +614,10 @@ class Sketch extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Returns the name of the active tool associated with the Sketch widget instance.
+   * When creating new graphics (for example after [create()](#create) has been called),
+   * this property reflects the create tool being used. When updating graphics
+   * (for example after [update()](#update) has been called), this property reflects the
+   * update tool being used. If no create or update operation is in progress, this is `null`.
    *
    * **Possible Values:** point | polyline | polygon | circle | rectangle | move | transform | reshape
    *
@@ -619,6 +629,34 @@ class Sketch extends declared(Widget) {
   @aliasOf("viewModel.activeTool")
   @renderable()
   activeTool: SketchTool = null;
+
+  //----------------------------------
+  //  availableCreateTools
+  //----------------------------------
+
+  /**
+   * Property controlling the visibility and order of create tool buttons.
+   *
+   * @name availableCreateTools
+   * @since 4.12
+   * @instance
+   * @default ["point", "polyline", "polygon", "rectangle", "circle"]
+   * @type {string[]}
+   */
+  @property({
+    cast: (tools: string[]): CreateTool[] => {
+      if (!tools || !tools.length) {
+        return null;
+      }
+
+      const validTools = ["point", "polyline", "polygon", "rectangle", "circle"];
+      const validToolsSet = new Set([...validTools]);
+
+      return tools.filter((toolName) => validToolsSet.has(toolName)) as CreateTool[];
+    }
+  })
+  @renderable()
+  availableCreateTools: CreateTool[] = ["point", "polyline", "polygon", "rectangle", "circle"];
 
   //----------------------------------
   //  createGraphic
@@ -676,8 +714,21 @@ class Sketch extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property() iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The Sketch widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
   @property()
-  iconClass = CSS.widgetIcon;
+  label: string = i18n.title;
 
   //----------------------------------
   //  layer
@@ -790,21 +841,6 @@ class Sketch extends declared(Widget) {
   @vmEvent(["create", "update", "undo", "redo", "reset"])
   viewModel: SketchViewModel = new SketchViewModel();
 
-  //----------------------------------
-  //  widgetLabel
-  //----------------------------------
-
-  /**
-   * The Sketch widget's default label.
-   *
-   * @name widgetLabel
-   * @instance
-   * @type {string}
-   * @readonly
-   */
-  @property()
-  widgetLabel: string = i18n.title;
-
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -812,14 +848,14 @@ class Sketch extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Create a graphic with a geometry specified in `tool`. When first vertex of the graphic is added,
-   * [create](#event:create) event will start firing.
+   * Create a graphic with the geometry specified in the `tool` parameter. When the first vertex of the graphic is added,
+   * the [create](#event-create) event will start firing. The provided `tool` will become the [activeTool](#activeTool).
    *
    * @since 4.10
    * @method create
    * @instance
    *
-   * @param {string} tool - Name of the create tool. Specifies the geometry type for the graphic to be created.
+   * @param {string} tool - Name of the create tool. Specifies the geometry for the graphic to be created.
    *
    * **Possible Values:** point | polyline | polygon | rectangle | circle
    *
@@ -856,14 +892,14 @@ class Sketch extends declared(Widget) {
   create(tool: CreateTool, options?: CreateOptions): void {}
 
   /**
-   * Initializes an update operation for the specified graphic(s) and fires [update](#event:update) event.
+   * Initializes an update operation for the specified graphic(s) and fires [update](#event-update) event.
    *
    * @since 4.10
    * @method update
    * @instance
    * @param {module:esri/Graphic | module:esri/Graphic[]} graphics - A graphic or an array of graphics to be updated. Only graphics added to SketchViewModel's [layer](#layer) property can be updated.
    * @param {Object} [updateOptions] - Update options for the graphics to be updated.
-   * @param {string} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics.
+   * @param {string} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics. The provided tool will become the [activeTool](#activeTool).
    *
    * **Possible Values:**
    *
@@ -933,8 +969,8 @@ class Sketch extends declared(Widget) {
   }
 
   /**
-   * Completes the active operation and fires the [create](#event:create) or [update](#event:update) event
-   * and changes the event's state to `complete`. If called in midst of create operation, `complete()` finishes
+   * Completes the active operation and fires the [create](#event-create) or [update](#event-update) event
+   * and changes the event's state to `complete`. If called in the middle of a create operation, `complete()` finishes
    * the active create operation and keeps the valid geometry.
    *
    * @method complete
@@ -944,8 +980,9 @@ class Sketch extends declared(Widget) {
   complete(): void {}
 
   /**
-   * Cancels the active operation and fires the [create](#event:create) or [update](#event:update) event
-   * and changes the event's state to `cancel`.
+   * Cancels the active operation and fires the [create](#event-create) or [update](#event-update) event
+   * and changes the event's state to `cancel`. If called in the middle of a create operation, `cancel()` discards
+   * the partially created graphic.
    *
    * @since 4.10
    * @method cancel
@@ -957,7 +994,7 @@ class Sketch extends declared(Widget) {
 
   /**
    * Incrementally undo actions recorded in the stack. Calling this method will fire the
-   * [undo](#event:undo) event.
+   * [undo](#event-undo) event.
    *
    * @method undo
    * @instance
@@ -968,7 +1005,7 @@ class Sketch extends declared(Widget) {
 
   /**
    * Incrementally redo actions recorded in the stack. Calling this method will fire the
-   * [redo](#event:redo) event.
+   * [redo](#event-redo) event.
    *
    * @method redo
    * @instance
@@ -983,6 +1020,7 @@ class Sketch extends declared(Widget) {
    *
    * @method reset
    * @instance
+   * @deprecated since version 4.12. Use {@link module:esri/widgets/Sketch#cancel cancel()} instead.
    */
   reset(): void {
     this.viewModel.reset();
@@ -990,7 +1028,10 @@ class Sketch extends declared(Widget) {
   }
 
   render(): VNode {
-    const { state } = this.viewModel;
+    const {
+      viewModel: { state },
+      label
+    } = this;
     const classes = this.classes(
       CSS.base,
       CSS.esriWidget,
@@ -999,7 +1040,7 @@ class Sketch extends declared(Widget) {
     );
 
     return (
-      <div aria-label={i18n.widgetLabel} class={classes}>
+      <div aria-label={label} class={classes}>
         <div class={CSS.panel}>{this.renderTopPanelContents()}</div>
         <div class={this.classes(CSS.panel, CSS.infoPanel)}>{this.renderInfoPanelContents()}</div>
       </div>
@@ -1007,12 +1048,19 @@ class Sketch extends declared(Widget) {
   }
 
   protected renderTopPanelContents(): VNode {
+    const sectionClasses = this.classes(CSS.section, CSS.toolSection);
+    const { availableCreateTools } = this;
+
     return [
-      <div class={this.classes(CSS.section, CSS.toolSection)}>
+      <div key="navigation-button-container" class={sectionClasses}>
         {this.renderNavigationButtons()}
       </div>,
-      <div class={this.classes(CSS.section, CSS.toolSection)}>{this.renderDrawButtons()}</div>,
-      <div class={this.classes(CSS.section, CSS.toolSection)}>{this.renderMenuButtons()}</div>
+      availableCreateTools && availableCreateTools.length ? (
+        <div class={sectionClasses}>{this.renderDrawButtons()}</div>
+      ) : null,
+      <div key="menu-button-container" class={sectionClasses}>
+        {this.renderMenuButtons()}
+      </div>
     ];
   }
 
@@ -1038,7 +1086,7 @@ class Sketch extends declared(Widget) {
       updateGraphics: { length: count }
     } = this;
 
-    const countLabel = substitute({ count }, count === 1 ? i18n.featureCount : i18n.featuresCount);
+    const countLabel = substitute(count === 1 ? i18n.featureCount : i18n.featuresCount, { count });
 
     return (
       <div class={CSS.featureCountBadge} aria-label={countLabel}>
@@ -1066,7 +1114,7 @@ class Sketch extends declared(Widget) {
   }
 
   protected renderTransformButton(): VNode {
-    const title = i18n.move;
+    const title = i18n.transform;
     const classes = [CSS.button, CSS.panIcon];
     const defaultTool = this.viewModel.defaultUpdateOptions.tool;
     const isActive = !!(this.activeTool === "transform" || this.activeTool === "move");
@@ -1109,13 +1157,27 @@ class Sketch extends declared(Widget) {
   }
 
   protected renderDrawButtons(): VNode {
-    return [
-      this.renderPointButton(),
-      this.renderPolylineButton(),
-      this.renderPolygonButton(),
-      this.renderRectangleButton(),
-      this.renderCircleButton()
-    ];
+    return this.availableCreateTools.map((toolName) => {
+      if (toolName === "point") {
+        return this.renderPointButton();
+      }
+
+      if (toolName === "polyline") {
+        return this.renderPolylineButton();
+      }
+
+      if (toolName === "polygon") {
+        return this.renderPolygonButton();
+      }
+
+      if (toolName === "rectangle") {
+        return this.renderRectangleButton();
+      }
+
+      if (toolName === "circle") {
+        return this.renderCircleButton();
+      }
+    });
   }
 
   protected renderPointButton(): VNode {
@@ -1269,8 +1331,8 @@ class Sketch extends declared(Widget) {
 
       layer.removeMany(graphics);
 
-      this.reset(); // Resets 'activeTool'
-      this.emit("delete", { graphics, tool: activeTool, type: "delete" });
+      this.cancel(); // Resets 'activeTool'
+      this.emit("delete", { graphics, tool: activeTool as UpdateTool, type: "delete" });
     }
   }
 
@@ -1291,7 +1353,7 @@ class Sketch extends declared(Widget) {
   private _activateTransformTool(): void {
     // Create tool is active - reset the widget
     if (this.state === "active" && !this._isUpdateToolActive()) {
-      this.viewModel.reset();
+      this.viewModel.cancel();
     }
     // Reshape tool is active - toggle tool
     else if (this.activeTool === "reshape") {
@@ -1306,7 +1368,7 @@ class Sketch extends declared(Widget) {
   private _activateReshapeTool(): void {
     // Create tool is active - reset the widget
     if (this.state === "active" && !this._isUpdateToolActive()) {
-      this.viewModel.reset();
+      this.viewModel.cancel();
     }
 
     // Transform tool is active - toggle tool

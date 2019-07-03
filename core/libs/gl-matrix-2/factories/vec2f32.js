@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,r){function n(){return new Float32Array(2)}function t(e){var r=new Float32Array(2);return r[0]=e[0],r[1]=e[1],r}function a(e,r){var n=new Float32Array(2);return n[0]=e,n[1]=r,n}function o(e,r){return new Float32Array(e,r,2)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=n,r.clone=t,r.fromValues=a,r.createView=o});
+define(["require","exports"],function(n,r){function e(){return new Float32Array(2)}function t(n){var r=new Float32Array(2);return r[0]=n[0],r[1]=n[1],r}function u(n,r){var e=new Float32Array(2);return e[0]=n,e[1]=r,e}function o(n,r){return new Float32Array(n,r,2)}function i(){return e()}function a(){return u(1,1)}function c(){return u(1,0)}function f(){return u(0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.clone=t,r.fromValues=u,r.createView=o,r.zeros=i,r.ones=a,r.unitX=c,r.unitY=f,r.ZEROS=i(),r.ONES=a(),r.UNIT_X=c(),r.UNIT_Y=f()});

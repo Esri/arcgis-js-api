@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Список шарів",noItemsToDisplay:"На поточний момент немає елементів для відображення.",layerInvisibleAtScale:"Невидимий в поточному масштабі",layerError:"При завантаженні цього шару виникла помилка",untitledLayer:"Шар без заголовку"});

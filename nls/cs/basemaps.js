@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({streets:"Ulice",satellite:"Snímky",hybrid:"Snímky s popisky",terrain:"Terén s popisky",topo:"Topografická",gray:"Světle šedý podklad","dark-gray":"Tmavě šedý podklad",oceans:"Oceány","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mapa světa s uliční sítí (noc)","streets-relief-vector":"Mapa světa s uliční sítí (s reliéfem)","streets-navigation-vector":"Navigační mapa světa"});

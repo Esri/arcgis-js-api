@@ -11,6 +11,7 @@ import { Symbol } from "../symbols";
 // esri.core
 import Collection = require("../core/Collection");
 import EsriError = require("../core/Error");
+import { Maybe } from "../core/maybe";
 
 // esri.layers
 import Layer = require("../layers/Layer");
@@ -19,6 +20,7 @@ import Layer = require("../layers/Layer");
 import GeometryService = require("../tasks/GeometryService");
 
 // esri.views
+import { LayerView } from "../views/layers";
 import MapView = require("../views/MapView");
 import SceneView = require("../views/SceneView");
 
@@ -63,7 +65,7 @@ export interface SearchProperties {
 }
 
 export interface SearchResult {
-  extent: Extent;
+  extent: Maybe<Extent>;
   feature: Graphic;
   name: string;
   key: string;
@@ -219,6 +221,7 @@ interface SymbolTableElementInfo {
 interface ImageSymbolTableElementInfo {
   label?: string;
   src: string;
+  preview?: HTMLImageElement;
   opacity: number;
   width?: number;
   height?: number;
@@ -325,9 +328,9 @@ interface ZoomConditions {
   readonly canZoomOut: boolean;
 }
 
-interface AttributionItem<L extends Layer = Layer> {
+interface AttributionItem {
   readonly text: string;
-  readonly layer: L;
+  readonly layerView: LayerView;
 }
 
 type BoundingBox = [number, number, number, number];

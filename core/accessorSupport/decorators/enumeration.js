@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../kebabDictionary","./property"],function(e,r,n,t){function i(e){return t.property({type:e})}Object.defineProperty(r,"__esModule",{value:!0}),r.enumeration=i,function(e){function r(){return function(e){var r=e instanceof n.KebabDictionary?e:new n.KebabDictionary(e,{ignoreUnknown:!0});return t.property({type:r.apiValues,json:{type:r.jsonValues,read:{reader:r.read},write:{writer:r.write}}})}}e.serializable=r}(i=r.enumeration||(r.enumeration={}))});
+define(["require","exports","../../jsonMap","./property"],function(e,n,r,t){function o(e){return t.property({type:e})}Object.defineProperty(n,"__esModule",{value:!0}),n.enumeration=o,function(e){function n(){return function(e,n){void 0===n&&(n={ignoreUnknown:!0});var o=e instanceof r.JSONMap?e:new r.JSONMap(e,n);return t.property({type:n&&n.ignoreUnknown?o.apiValues:String,json:{type:o.jsonValues,read:{reader:o.read},write:{writer:o.write}}})}}e.serializable=n}(o=n.enumeration||(n.enumeration={}))});

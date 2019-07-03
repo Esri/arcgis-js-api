@@ -2,6 +2,14 @@
  * Provides a simple widget to present the {@link module:esri/views/View} or a user-defined {@link HTMLElement} using the entire screen.
  *
  * ::: esri-md class="panel trailer-1"
+ * **Note:**
+ *
+ * The default background color of the view in fullscreen mode is black.
+ * The background color can be changed in CSS using `.esri-view:fullscreen` selector.
+ * The background color defined on `.esri-view` and [WebMap.initialViewProperties](../api-reference/esri-WebMap.html#initialViewProperties) will also be used in fullscreen mode.
+ * :::
+ *
+ * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
  * * The Fullscreen widget only works with browsers that implement

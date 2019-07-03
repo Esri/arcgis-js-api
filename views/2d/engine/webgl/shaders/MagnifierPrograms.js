@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","./sources/resolver"],function(e,r,i){Object.defineProperty(r,"__esModule",{value:!0}),r.magnifier={name:"magnifier",shaders:{vertexShader:i.resolveIncludes("magnifier/magnifier.vert"),fragmentShader:i.resolveIncludes("magnifier/magnifier.frag")},attributes:{a_pos:0}}});
+define(["require","exports","../../../../webgl","./sources/resolver"],function(e,r,i,a){Object.defineProperty(r,"__esModule",{value:!0}),r.magnifier={name:"magnifier",shaders:{vertexShader:a.resolveIncludes("magnifier/magnifier.vert"),fragmentShader:a.resolveIncludes("magnifier/magnifier.frag")},attributes:{a_pos:0}},r.createMagnifierProgram=function(e){return i.createProgram(e,r.magnifier)}});

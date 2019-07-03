@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function o(e){var t=e.symbol&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;return t&&t.length>0&&t.some(function(e){return"object"===e.type})&&"point"===e.geometry.type&&"graphics"===e.layer.type}Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphic=o});
+define(["require","exports","../../../../../core/maybe"],function(e,o,t){function r(e){var o=t.isSome(e.symbol)&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;return!!o&&o.length>0&&o.some(function(e){return"object"===e.type})&&t.isSome(e.geometry)&&"point"===e.geometry.type&&"graphics"===e.layer.type}Object.defineProperty(o,"__esModule",{value:!0}),o.isSupportedGraphic=r});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"Β",south:"Ν",east:"A",west:"Δ"},addConversion:"Προσθήκη μετατροπής",captureMode:"Λειτουργία καταγραφής",changeCoordinateDisplay:"Αλλαγή τρόπου παρουσίασης συντεταγμένων",convert:"Μετατροπή",conversionOutputSuffix:"αποτέλεσμα μετατροπής",copySuccessMessage:"Επιτυχής αντιγραφή συντεταγμένης στο πρόχειρο",defaultPattern:"Επαναφορά στην προεπιλεγμένη ρύθμιση",goTo:"Μετάβαση στην τοποθεσία",inputCoordTitle:"Καταχώριση συντεταγμένης",invalidCoordinate:"Μη έγκυρη συντεταγμένη",liveMode:"Ζωντανή λειτουργία",locationOffBasemap:"Η καταχωρισμένη συντεταγμένη είναι εκτός της έκτασης του υποβάθρου.",noBasemap:"Δεν υπάρχει κανένα υπόβαθρο.",noLocation:"Καμία θέση",removeConversion:"Κατάργηση μετατροπής",selectFormat:"Επιλογή μορφής",settingsTitle:"Ρυθμίσεις μορφοποίησης"});

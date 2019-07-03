@@ -9,11 +9,12 @@
  * @see [Feature.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Feature.tsx)
  * @see [Feature.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Feature.scss)
  * @see [Sample - Feature widget](../sample-code/widgets-feature/index.html)
+ * @see [Sample - Feature widget in a side panel](../sample-code/widgets-feature-sidepanel/index.html)
  * @see module:esri/widgets/Feature/FeatureViewModel
  * @see module:esri/widgets/Popup
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/PopupTemplate
- * @see [Arcade Profiles: Popop](https://developers.arcgis.com/arcade/guide/profiles/#popup)
+ * @see [Arcade Profiles: Popup](https://developers.arcgis.com/arcade/guide/profiles/#popup)
  * @see [Arcade - expression language](https://developers.arcgis.com/javascript/latest/guide/arcade/index.html)
  *
  * @example
@@ -44,15 +45,15 @@
 
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/Feature/nls/Feature";
-import { LEFT_ARROW, RIGHT_ARROW } from "dojo/keys";
 
 // esri
 import { SpatialReference } from "esri/geometry";
 import Graphic = require("esri/Graphic");
+import { substitute } from "esri/intl";
 import EsriMap = require("esri/Map");
 
 // esri.core
-import { substitute } from "esri/core/lang";
+import { eventKey } from "esri/core/events";
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
@@ -60,7 +61,6 @@ import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorS
 
 // esri.layers.support
 import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
-import { getExifValue } from "esri/layers/support/exifUtils";
 
 // esri.popup
 import { Content as ContentElement } from "esri/popup/content";
@@ -75,7 +75,10 @@ import TextContent = require("esri/popup/content/TextContent");
 
 // esri.popup.content.support
 import ChartMediaInfoValue = require("esri/popup/content/support/ChartMediaInfoValue");
-import { MediaInfo, MediaChartInfo } from "esri/popup/content/support/mediaInfoTypes";
+import { MediaChartInfo, MediaInfo } from "esri/popup/content/support/mediaInfoTypes";
+
+// esri.views
+import View = require("esri/views/View");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -85,7 +88,6 @@ import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
 
 // esri.widgets.Feature.support
 import attachmentUtils = require("esri/widgets/Feature/support/attachmentUtils");
-import { getOrientationStyles } from "esri/widgets/Feature/support/featureUtils";
 
 // esri.widgets.support
 import { AM4Charts, PieChart, XYChart } from "esri/widgets/support/chartTypes";
@@ -93,6 +95,7 @@ import { loadChartsModule } from "esri/widgets/support/chartUtils";
 import { VNode } from "esri/widgets/support/interfaces";
 import uriUtils = require("esri/widgets/support/uriUtils");
 import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
+import { isRTL } from "esri/widgets/support/widgetUtils";
 
 type ChartOptions = {
   chartDiv: HTMLDivElement;
@@ -127,7 +130,7 @@ interface AttachmentInfoOptions {
   attachmentInfo: AttachmentInfo;
   attachmentInfoIndex: number;
   supportsResizeAttachments: boolean;
-  contentElement: ContentElement;
+  contentElement: AttachmentsContent;
 }
 
 const CSS = {
@@ -191,21 +194,11 @@ const CSS = {
   spinner: "esri-feature__loading-spinner"
 };
 
-const WIDGET_KEY_PARTIAL = "esri-feature";
-
 const DEFAULT_VISIBLE_ELEMENTS = {
   title: true,
   content: true,
   lastEditedInfo: true
 };
-
-function buildKey(element: string, index?: number): string {
-  if (index === undefined) {
-    return `${WIDGET_KEY_PARTIAL}__${element}`;
-  }
-
-  return `${WIDGET_KEY_PARTIAL}__${element}-${index}`;
-}
 
 @subclass("esri.widgets.Feature")
 class Feature extends declared(Widget) {
@@ -441,11 +434,25 @@ class Feature extends declared(Widget) {
    * @see [Arcade Profiles: Popop](https://developers.arcgis.com/arcade/guide/profiles/#popup)
    *
    * @example
-   * // The building footprints repreent the buildings that intersect a clicked parcel
+   * // The building footprints represent the buildings that intersect a clicked parcel
    * let buildingFootprints = Intersects($feature, FeatureSetByName($map, "Building Footprints"));
    */
   @aliasOf("viewModel.map")
   map: EsriMap = null;
+
+  //----------------------------------
+  //  view
+  //----------------------------------
+
+  /**
+   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+   *
+   * @name view
+   * @instance
+   * @type {module:esri/views/MapView | module:esri/views/SceneView}
+   */
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -477,7 +484,7 @@ class Feature extends declared(Widget) {
 
   render(): VNode {
     const loadingNode = (
-      <div key={buildKey("loading-container")} class={CSS.loadingSpinnerContainer}>
+      <div key={"loading-container"} class={CSS.loadingSpinnerContainer}>
         <span class={this.classes(CSS.iconLoading, CSS.spinner)} />
       </div>
     );
@@ -544,6 +551,13 @@ class Feature extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _buildKey(id: string, ...extraIdentifiers: (string | number)[]): string {
+    const featureId = this.get<string>("viewModel.graphic.uid") || "0";
+    const argString = extraIdentifiers.join("-");
+
+    return `${id}__${featureId}-${argString}`;
+  }
+
   private _destroyCharts(): void {
     this._chartMap.forEach((chart) => chart.dispose());
     this._chartMap.clear();
@@ -558,36 +572,28 @@ class Feature extends declared(Widget) {
     }
 
     if (typeof content === "string") {
-      return <div key={buildKey(`${contentKey}-string`)} innerHTML={content} />;
+      return <div key={`${contentKey}-string`} innerHTML={content} />;
     }
 
     if (isWidget(content)) {
-      return <div key={buildKey(`${contentKey}-widget`)}>{content.render()}</div>;
+      return <div key={`${contentKey}-widget`}>{content.render()}</div>;
     }
 
     if (content instanceof HTMLElement) {
       return (
-        <div
-          key={buildKey(`${contentKey}-html-element`)}
-          bind={content}
-          afterCreate={this._attachToNode}
-        />
+        <div key={`${contentKey}-html-element`} bind={content} afterCreate={this._attachToNode} />
       );
     }
 
     if (isWidgetBase(content)) {
       return (
-        <div
-          key={buildKey(`${contentKey}-dijit`)}
-          bind={content.domNode}
-          afterCreate={this._attachToNode}
-        />
+        <div key={`${contentKey}-dijit`} bind={content.domNode} afterCreate={this._attachToNode} />
       );
     }
 
     if (Array.isArray(content)) {
       return content.length ? (
-        <div key={buildKey(`${contentKey}-content-elements`)}>
+        <div key={`${contentKey}-content-elements`}>
           {content.map(this._renderContentElement, this)}
         </div>
       ) : null;
@@ -622,19 +628,19 @@ class Feature extends declared(Widget) {
   }
 
   private _renderAttachmentInfo(options: AttachmentInfoOptions): VNode {
-    const { attachmentInfo, supportsResizeAttachments } = options;
+    const { attachmentInfo, supportsResizeAttachments, contentElement } = options;
+    const { displayType } = contentElement;
+    const { contentType, orientationInfo, name, url } = attachmentInfo;
+    const thumbSize = displayType === "preview" ? 128 : 48;
 
-    const { contentType, exifInfo, name, url } = attachmentInfo;
+    const transform = orientationInfo
+      ? [
+          orientationInfo.rotation ? `rotate(${orientationInfo.rotation}deg)` : "",
+          orientationInfo.mirrored ? "scaleX(-1)" : ""
+        ].join(" ")
+      : "";
 
-    const thumbSize = 48;
-
-    const orientation = getExifValue({
-      exifName: "Exif IFD0",
-      tagName: "Orientation",
-      exifInfo
-    });
-
-    const imageStyles = getOrientationStyles(orientation as number);
+    const imageStyles = transform ? { transform } : {};
 
     const hasSupportedImageFormat =
       supportsResizeAttachments && attachmentUtils.isSupportedImage(contentType);
@@ -691,7 +697,7 @@ class Feature extends declared(Widget) {
 
     return hasAttachments ? (
       <div
-        key={buildKey("attachments-element")}
+        key={"attachments-element"}
         class={this.classes(CSS.attachments, CSS.contentElement, attachmentsClasses)}
       >
         <div class={CSS.attachmentsTitle}>{i18n.attach}</div>
@@ -723,8 +729,7 @@ class Feature extends declared(Widget) {
   }
 
   private _renderFieldInfo(fieldInfo: FieldInfo, contentElementIndex: number): VNode {
-    const viewModel = this.viewModel;
-    const { formattedAttributes } = viewModel;
+    const { formattedAttributes } = this.viewModel;
     const availableFormattedAttributes = formattedAttributes
       ? formattedAttributes.content[contentElementIndex] || formattedAttributes.global
       : null;
@@ -745,14 +750,14 @@ class Feature extends declared(Widget) {
     };
 
     return (
-      <tr key={buildKey("fields-element-info-row", contentElementIndex)}>
+      <tr key={this._buildKey("fields-element-info-row", contentElementIndex)}>
         <th
-          key={buildKey("fields-element-info-row-header", contentElementIndex)}
+          key={this._buildKey("fields-element-info-row-header", contentElementIndex)}
           class={CSS.fieldHeader}
           innerHTML={fieldLabel}
         />
         <td
-          key={buildKey("fields-element-info-row-data", contentElementIndex)}
+          key={this._buildKey("fields-element-info-row-data", contentElementIndex)}
           class={this.classes(CSS.fieldData, valueCellClasses)}
           innerHTML={formattedFieldValue}
         />
@@ -765,15 +770,15 @@ class Feature extends declared(Widget) {
 
     return fieldInfos ? (
       <div
-        key={buildKey("fields-element", contentElementIndex)}
+        key={this._buildKey("fields-element", contentElementIndex)}
         class={this.classes(CSS.fields, CSS.contentElement)}
       >
         <table
           class={CSS.esriTable}
           summary={i18n.fieldsSummary}
-          key={buildKey("fields-element-table", contentElementIndex)}
+          key={this._buildKey("fields-element-table", contentElementIndex)}
         >
-          <tbody key={buildKey("fields-element-table-body", contentElementIndex)}>
+          <tbody key={this._buildKey("fields-element-table-body", contentElementIndex)}>
             {fieldInfos.map((fieldInfo) => this._renderFieldInfo(fieldInfo, contentElementIndex))}
           </tbody>
         </table>
@@ -904,10 +909,8 @@ class Feature extends declared(Widget) {
       const imageNode = (
         <img
           alt={title}
-          key={
-            /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
-            buildKey(`media-image-${timestamp}-${contentElementIndex}`, activeMediaIndex)
-          }
+          /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
+          key={this._buildKey("media-image", contentElementIndex, activeMediaIndex, timestamp)}
           src={imgSrc}
         />
       );
@@ -923,7 +926,7 @@ class Feature extends declared(Widget) {
     if (mediaInfo.type.indexOf("chart") !== -1) {
       return (
         <div
-          key={buildKey(`media-chart-${contentElementIndex}`, activeMediaIndex)}
+          key={this._buildKey("media-chart", contentElementIndex, activeMediaIndex)}
           bind={this}
           data-media-info={mediaInfo}
           data-content-element-index={contentElementIndex}
@@ -957,12 +960,16 @@ class Feature extends declared(Widget) {
     const { am4core, am4charts } = amCharts4Index;
 
     const chart = am4core.create(chartDiv, am4charts.PieChart);
+    chart.rtl = isRTL();
 
     const series = chart.series.push(new am4charts.PieSeries());
     series.labels.template.disabled = true;
     series.ticks.template.disabled = true;
     series.dataFields.value = "y";
     series.dataFields.category = "x";
+    series.tooltip.label.wrap = true;
+    series.tooltip.label.maxWidth = 150;
+    series.tooltip.label.rtl = chart.rtl;
 
     return chart;
   }
@@ -972,6 +979,7 @@ class Feature extends declared(Widget) {
     const { am4core, am4charts } = amCharts4Index;
 
     const chart = am4core.create(chartDiv, am4charts.XYChart);
+    chart.rtl = isRTL();
 
     const enableScrollbar = value.series.length > 15;
 
@@ -979,6 +987,15 @@ class Feature extends declared(Widget) {
       const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
+      categoryAxis.tooltip.label.wrap = true;
+      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.rtl = chart.rtl;
+
+      // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
+      // https://amcharts.zendesk.com/hc/en-us/requests/45087
+      categoryAxis.tooltip.events.on("sizechanged", () => {
+        categoryAxis.tooltip.dy = -categoryAxis.tooltip.contentHeight;
+      });
 
       chart.yAxes.push(new am4charts.ValueAxis());
 
@@ -999,6 +1016,16 @@ class Feature extends declared(Widget) {
       categoryAxis.renderer.inversed = true;
       categoryAxis.renderer.labels.template.disabled = true;
 
+      categoryAxis.tooltip.label.wrap = true;
+      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.rtl = chart.rtl;
+
+      // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
+      // https://amcharts.zendesk.com/hc/en-us/requests/45087
+      categoryAxis.tooltip.events.on("sizechanged", () => {
+        categoryAxis.tooltip.dx = categoryAxis.tooltip.contentWidth;
+      });
+
       chart.xAxes.push(new am4charts.ValueAxis());
 
       const series = chart.series.push(new am4charts.ColumnSeries());
@@ -1016,6 +1043,15 @@ class Feature extends declared(Widget) {
       const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
+      categoryAxis.tooltip.label.wrap = true;
+      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.rtl = chart.rtl;
+
+      // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
+      // https://amcharts.zendesk.com/hc/en-us/requests/45087
+      categoryAxis.tooltip.events.on("sizechanged", () => {
+        categoryAxis.tooltip.dy = -categoryAxis.tooltip.contentHeight;
+      });
 
       chart.yAxes.push(new am4charts.ValueAxis());
 
@@ -1064,7 +1100,7 @@ class Feature extends declared(Widget) {
 
     const titleNode = mediaInfo.title ? (
       <div
-        key={buildKey("media-title", contentElementIndex)}
+        key={this._buildKey("media-title", contentElementIndex)}
         class={CSS.mediaItemTitle}
         innerHTML={mediaInfo.title}
       />
@@ -1072,15 +1108,21 @@ class Feature extends declared(Widget) {
 
     const captionNode = mediaInfo.caption ? (
       <div
-        key={buildKey("media-caption", contentElementIndex)}
+        key={this._buildKey("media-caption", contentElementIndex)}
         class={CSS.mediaItemCaption}
         innerHTML={mediaInfo.caption}
       />
     ) : null;
 
     return (
-      <div key={buildKey("media-container", contentElementIndex)} class={CSS.mediaItemContainer}>
-        <div key={buildKey("media-item-container", contentElementIndex)} class={CSS.mediaItem}>
+      <div
+        key={this._buildKey("media-container", contentElementIndex)}
+        class={CSS.mediaItemContainer}
+      >
+        <div
+          key={this._buildKey("media-item-container", contentElementIndex)}
+          class={CSS.mediaItem}
+        >
           {mediaTypeNode}
         </div>
         {titleNode}
@@ -1104,12 +1146,12 @@ class Feature extends declared(Widget) {
     const RTLIconClasses = isPrevious
       ? this.classes(CSS.icon, CSS.mediaPreviousIconRTL, CSS.iconRightTriangleArrow)
       : this.classes(CSS.icon, CSS.mediaNextIconRTL, CSS.iconLeftTriangleArrow);
-    const keyName = isPrevious ? "previous" : "next";
+    const keyName = isPrevious ? "media-previous" : "media-next";
     const buttonClick = isPrevious ? this._previousClick : this._nextClick;
 
     return (
       <div
-        key={buildKey(keyName, contentElementIndex)}
+        key={this._buildKey(keyName, contentElementIndex)}
         title={title}
         tabIndex={0}
         role="button"
@@ -1129,14 +1171,14 @@ class Feature extends declared(Widget) {
   private _handleMediaKeyup(event: KeyboardEvent): void {
     const node = event.currentTarget as Element;
     const elementIndex = node["data-content-element-index"] as number;
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === LEFT_ARROW) {
+    if (key === "ArrowLeft") {
       event.stopPropagation();
       this.previousMedia(elementIndex);
     }
 
-    if (keyCode === RIGHT_ARROW) {
+    if (key === "ArrowRight") {
       event.stopPropagation();
       this.nextMedia(elementIndex);
     }
@@ -1160,14 +1202,14 @@ class Feature extends declared(Widget) {
 
     return total ? (
       <div
-        key={buildKey("media-element", contentElementIndex)}
+        key={this._buildKey("media-element", contentElementIndex)}
         data-content-element-index={contentElementIndex}
         bind={this}
         onkeyup={this._handleMediaKeyup}
         class={this.classes(CSS.media, CSS.contentElement, mediaClasses)}
       >
         <div
-          key={buildKey("media-element-container", contentElementIndex)}
+          key={this._buildKey("media-element-container", contentElementIndex)}
           class={CSS.mediaContainer}
         >
           {previousButtonNode}
@@ -1201,19 +1243,13 @@ class Feature extends declared(Widget) {
         ? i18n.lastCreatedByUser
         : i18n.lastCreated;
 
-    const text = substitute(
-      {
-        date,
-        user
-      },
-      nlsString
-    );
+    const text = substitute(nlsString, {
+      date,
+      user
+    });
 
     return (
-      <div
-        key={buildKey("edit-info-element")}
-        class={this.classes(CSS.lastEditedInfo, CSS.contentElement)}
-      >
+      <div key={"edit-info-element"} class={this.classes(CSS.lastEditedInfo, CSS.contentElement)}>
         {text}
       </div>
     );
@@ -1224,7 +1260,7 @@ class Feature extends declared(Widget) {
 
     return hasText ? (
       <div
-        key={buildKey("text-element", contentElementIndex)}
+        key={this._buildKey("text-element", contentElementIndex)}
         innerHTML={contentElement.text}
         class={this.classes(CSS.text, CSS.contentElement)}
       />

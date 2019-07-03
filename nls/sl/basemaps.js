@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({streets:"Ulice",satellite:"Slikovje",hybrid:"Slikovje z napisi",terrain:"Relief z napisi",topo:"Topografska karta",gray:"Svetlo sivo platno","dark-gray":"Temno sivo platno",oceans:"Oceani","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Karta ulic (nočni pogled)","streets-relief-vector":"Karta ulic (z reliefom)","streets-navigation-vector":"Navigacijska karta"});

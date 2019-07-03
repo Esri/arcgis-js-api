@@ -18,8 +18,10 @@ import SceneView = require("esri/views/SceneView");
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
 
+// esri.widgets.Spinner
+import SpinnerViewModel = require("esri/widgets/Spinner/SpinnerViewModel");
+
 // esri.widgets.support
-import AnchorElementViewModel = require("esri/widgets/support/AnchorElementViewModel");
 import { VNode } from "esri/widgets/support/interfaces";
 import { renderable, tsx } from "esri/widgets/support/widget";
 
@@ -53,7 +55,7 @@ class Spinner extends declared(Widget) {
   }
 
   destroy(): void {
-    this._cancelAnimationPromise();
+    this._animationPromise = null;
   }
 
   //--------------------------------------------------------------------------
@@ -81,22 +83,21 @@ class Spinner extends declared(Widget) {
   view: MapView | SceneView = null;
 
   //----------------------------------
-  //  visible
-  //----------------------------------
-
-  @property()
-  @renderable()
-  visible: boolean = false;
-
-  //----------------------------------
   //  viewModel
   //----------------------------------
 
   @property({
-    type: AnchorElementViewModel
+    type: SpinnerViewModel
   })
   @renderable(["viewModel.screenLocation", "viewModel.screenLocationEnabled"])
-  viewModel = new AnchorElementViewModel();
+  viewModel = new SpinnerViewModel();
+
+  //----------------------------------
+  //  visible
+  //----------------------------------
+
+  @aliasOf("viewModel.visible")
+  visible: boolean = false;
 
   //--------------------------------------------------------------------------
   //
@@ -148,28 +149,26 @@ class Spinner extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _cancelAnimationPromise(): void {
-    const { _animationPromise } = this;
-
-    if (_animationPromise) {
-      _animationPromise.cancel();
-    }
-
-    this._animationPromise = null;
-  }
-
   private _visibleChange(visible: boolean): void {
     if (visible) {
       this.viewModel.screenLocationEnabled = true;
       return;
     }
 
-    this._cancelAnimationPromise();
+    const animationPromise = promiseUtils.after(this._animationDelay);
 
-    this._animationPromise = promiseUtils.after(this._animationDelay).then(() => {
-      this.viewModel.screenLocationEnabled = false;
-      this._animationPromise = null;
-    });
+    this._animationPromise = animationPromise;
+
+    animationPromise
+      .catch(() => {})
+      .then(() => {
+        if (this._animationPromise !== animationPromise) {
+          return;
+        }
+
+        this.viewModel.screenLocationEnabled = false;
+        this._animationPromise = null;
+      });
   }
 
   private _getPositionStyles(): HashMap<string> {

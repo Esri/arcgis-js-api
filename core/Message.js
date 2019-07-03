@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","dojo/string"],function(t,n,e){return function(){function t(n,i,s){this instanceof t&&(this.name=n,this.message=i&&e.substitute(i,s,function(t){return null==t?"":t})||"",this.details=s)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()});
+define(["require","exports","./object"],function(t,e,n){function r(t,e){return t.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,function(t,r,i){if(""===r)return"$";var o=n.getDeepValue(r,e),u=null==o?"":o;if(void 0===u)throw new Error('could not find key "'+r+'" in template');return u.toString()})}return function(){function t(e,n,i){this instanceof t&&(this.name=e,this.message=n&&r(n,i)||"",this.details=i)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()});

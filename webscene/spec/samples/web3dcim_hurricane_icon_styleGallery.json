@@ -20,6 +20,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Icon",
                   "material": {
                     "color": [
                       128,
@@ -27,7 +28,6 @@
                       255
                     ]
                   },
-                  "type": "Icon",
                   "resource": {
                     "primitive": "circle"
                   },
@@ -125,6 +125,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       255,
@@ -132,7 +133,6 @@
                       0
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "cylinder"
                   },
@@ -165,6 +165,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       0,
@@ -172,7 +173,6 @@
                       0
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "sphere"
                   },
@@ -219,9 +219,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

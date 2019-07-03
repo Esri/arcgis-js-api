@@ -3,7 +3,11 @@
  * {@link module:esri/views/MapView#rotation rotation}
  * or {@link module:esri/Camera#heading camera heading}. Clicking the Compass widget
  * rotates the view to face north (heading = 0). This widget is added to a {@link module:esri/views/SceneView}
- * by default.
+ * by default. The icon for the Compass widget is determined based upon the view's
+ * {@link module:esri/views/SceneView#spatialReference spatial reference}. If the view's
+ * {@link module:esri/views/View#spatialReference spatial reference} is not Web Mercator
+ * or WGS84 a dial icon will be used, however when the spatial reference is Web Mercator or WGS84 the
+ * icon will be a north arrow.
  *
  * ![Compass for Web Mercator and WGS84](../../assets/img/apiref/widgets/compass.png)
  * ![Compass for other spatial references](../../assets/img/apiref/widgets/compass-other-sr.png)

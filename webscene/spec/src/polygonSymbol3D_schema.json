@@ -19,10 +19,16 @@
             "$ref": "extrudeSymbol3DLayer_schema.json"
           },
           {
+            "$ref": "waterSymbol3DLayer_schema.json"
+          },
+          {
             "$ref": "iconSymbol3DLayer_schema.json"
           },
           {
             "$ref": "objectSymbol3DLayer_schema.json"
+          },
+          {
+            "$ref": "textSymbol3DLayer_schema.json"
           },
           {
             "description": "<em>Deprecated</em>, use [fillSymbol3DLayer with outline](fillSymbol3DLayer.md) instead",

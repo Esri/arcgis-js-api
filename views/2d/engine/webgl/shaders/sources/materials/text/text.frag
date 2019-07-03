@@ -1,16 +1,8 @@
-precision lowp float;
+precision mediump float;
+
+#include <materials/text/common.glsl>
 
 uniform lowp sampler2D u_texture;
-
-varying mediump vec4 v_color;
-varying mediump float v_antialiasingWidth;
-varying mediump float v_edgeDistanceOffset;
-varying mediump vec2 v_tex;
-varying lowp float v_transparency;
-
-#ifdef ID
-varying highp vec4 v_id;
-#endif // ID
 
 void main()
 {
@@ -26,7 +18,7 @@ void main()
   #endif
 
   // use a smooth-step in order to calculate the geometry of the shape given by the distance field
-  lowp float alpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_transparency;
+  lowp float alpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_opacity;
 
   gl_FragColor = alpha * v_color;
 

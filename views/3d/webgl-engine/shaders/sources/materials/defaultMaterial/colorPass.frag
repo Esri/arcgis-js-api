@@ -3,9 +3,7 @@
 #include <util/slice.glsl>
 #include <util/sceneLighting.glsl>
 
-#ifdef TEXTURING
 #include <materials/defaultMaterial/texturingInputs.glsl>
-#endif
 
 #define FRAGMENT_SHADER
 #include <materials/defaultMaterial/vertexTangents.glsl>
@@ -42,6 +40,7 @@ uniform vec4 viewportPixelSz;
 #endif
 
 varying vec3 vpos;
+varying vec3 localvpos;
 
 #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
   varying vec3 vnormal;
@@ -61,6 +60,23 @@ varying float linearDepth;
   uniform mat4 view;
 #endif
 
+// Material PBR parameters
+#ifdef USE_PBR
+    uniform float roughnessFactor;
+    uniform float metalnessFactor;
+    uniform vec3 emissionFactor;
+
+  #ifdef PBR_TEX_METALLNESS_ROUGHNESS
+    uniform sampler2D texMetallicRoughness;
+  #endif
+  #ifdef PBR_TEX_EMISSION
+    uniform sampler2D texEmission;
+  #endif
+  #ifdef PBR_TEX_OCCLUSION
+    uniform sampler2D texOcclusion;
+  #endif
+#endif
+
 #ifdef TEXTURING
 #include <materials/defaultMaterial/texturing.glsl>
 #endif
@@ -70,7 +86,7 @@ varying float linearDepth;
 void main() {
   discardBySlice(vpos);
 
-#ifdef TEXTURING
+#if defined(TEXTURING) && defined(TEXTURE_COLOR)
   vec4 texColor = textureLookup(tex, vtc);
 
   #if defined(TEXTURE_ALPHA_PREMULTIPLIED)
@@ -94,7 +110,7 @@ void main() {
   #endif
 #else
   #if (NORMALS == NORMALS_SCREEN_DERIVATIVE)
-    vec3 normal = normalize(cross(dFdx(vpos),dFdy(vpos)));
+    vec3 normal = normalize(cross(dFdx(localvpos),dFdy(localvpos)));
   #else
     #ifdef DOUBLESIDED
       vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
@@ -107,6 +123,27 @@ void main() {
   #endif
 #endif
 
+#ifdef USE_PBR
+    float roughness = roughnessFactor;
+    float metalness = metalnessFactor;
+
+  #ifdef PBR_TEX_METALLNESS_ROUGHNESS
+    vec3 metalicRoughness = texture2D(texMetallicRoughness, vtc).rgb;
+
+    roughness *= metalicRoughness.g ;
+    metalness *= metalicRoughness.b ;
+  #endif
+
+    vec3 emission = emissionFactor;
+  #ifdef PBR_TEX_EMISSION
+    emission *= texture2D(texEmission, vtc).rgb;
+  #endif
+
+    float bakedOcclusion = 1.0;
+  #ifdef PBR_TEX_OCCLUSION
+    bakedOcclusion *= texture2D(texOcclusion, vtc).r;
+  #endif
+#endif
   // compute ssao
 #ifdef RECEIVE_SSAO
   float ssao = texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
@@ -115,6 +152,9 @@ void main() {
   float ssao = 1.0;
 #endif
 
+#ifdef USE_PBR
+  ssao *= bakedOcclusion;
+#endif
   // At global scale we create some additional ambient light based on the main light to simulate global illumination
   float additionalAmbientScale;
   vec3 additionalLight = sceneLightingAdditionalLightGlobal(vpos + localOrigin, ssao, additionalAmbientScale);
@@ -139,11 +179,14 @@ void main() {
   vec3 albedo_ = mixExternalColor(matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
   float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));
 #endif
-  albedo_+= 0.25 * specular; // don't completely ignore specular for now
 
 
   #if defined(TEXTURE_NORMALS)
-    mat3 tangentSpace = computeTangentSpace(normal);
+    #ifdef VERTEX_TANGENTS
+      mat3 tangentSpace = computeTangentSpace(normal);
+    #else
+      mat3 tangentSpace = computeTangentSpace(normal, vpos, vtc);
+    #endif
     vec3 shadingNormal = computeTextureNormal(tangentSpace);
   #else
     vec3 shadingNormal = normal;
@@ -170,6 +213,11 @@ void main() {
     additionalLight += backLightFactor * lightingMainIntensity;
   #endif
 
-  vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+  #ifdef USE_PBR
+    vec3 normalGround = normalize(vpos + localOrigin);
+    vec3 shadedColor = evaluateSceneLightingPBR(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight, viewDir, normalGround, roughness, metalness, emission);
+  #else
+    vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+  #endif
   gl_FragColor = highlightSlice(vec4(shadedColor, opacity_), vpos);
 }

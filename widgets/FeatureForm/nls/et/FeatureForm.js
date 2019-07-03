@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- tühi -",validationErrors:{cannotBeNull:"Palun sisestage väärtus",outsideRange:"Väärtus peab olema vahemikus: {min} â€“ {max}",invalidCodedValue:"Väärtus peab olema üks nimetatud väärtustest.",invalidType:"See väärtus ei kehti"}});
+define({empty:"- tühi -",validationErrors:{cannotBeNull:"Palun sisestage väärtus",outsideRange:"Väärtus peab olema vahemikus: {min} kuni {max}",invalidCodedValue:"Väärtus peab olema üks nimetatud väärtustest.",invalidType:"See väärtus ei kehti"}});

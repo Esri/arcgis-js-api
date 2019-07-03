@@ -1,21 +1,11 @@
-precision lowp float;
+precision mediump float;
+
+#include <materials/label/common.glsl>
 
 uniform mediump sampler2D u_referenceTex;
 uniform mediump vec2 u_screenSize;
-uniform mediump float u_pixelRatio;
-
-varying mediump float v_antialiasingWidth;
-varying mediump float v_edgeDistanceOffset;
-varying mediump vec2 v_tex;
-
-#ifdef ID
-varying mediump float v_fadeStep;
-#else
+uniform highp float u_pixelRatio;
 uniform lowp sampler2D u_texture;
-varying mediump vec4 v_color;
-#endif // ID
-
-const vec3 epsilon = vec3(1.0 / 255.0, 1.0 / 255.0, 1.0 / 255.0);
 
 void main()
 {

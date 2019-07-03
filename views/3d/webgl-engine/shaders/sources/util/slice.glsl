@@ -79,7 +79,12 @@ vec4 applySliceHighlight(vec4 color, vec3 pos) {
 
 #define rejectBySlice(_pos_) sliceByPlane(_pos_)
 #define discardBySlice(_pos_) { if (sliceByPlane(_pos_)) discard; }
+
+#ifdef SLICE_HIGHLIGHT_DISABLED
+#define highlightSlice(_color_, _pos_) (_color_)
+#else
 #define highlightSlice(_color_, _pos_) applySliceHighlight(_color_, _pos_)
+#endif
 
 #else // SLICE
 

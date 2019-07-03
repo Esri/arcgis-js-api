@@ -13,7 +13,6 @@ import NumberSpinner = require("dijit/form/NumberSpinner");
 import NumberTextBox = require("dijit/form/NumberTextBox");
 
 // dojo
-import domConstruct = require("dojo/dom-construct");
 import * as i18n from "dojo/i18n!esri/widgets/RasterSymbologyEditor/nls/RasterSymbologyEditor";
 
 // dojo.store
@@ -822,127 +821,127 @@ class RasterSymbologyEditor extends declared(Widget) {
 
   private _placeSymbologySelect(node: Element): void {
     if (this._symbologySelect) {
-      domConstruct.place(this._symbologySelect.domNode, node);
+      node.appendChild(this._symbologySelect.domNode);
     }
   }
 
   private _placeStretchStatisticsCheckbox(node: Element): void {
     if (this._stretchStatisticsCheckBox) {
-      domConstruct.place(this._stretchStatisticsCheckBox.domNode, node);
+      node.appendChild(this._symbologySelect.domNode);
     }
   }
 
   private _placeBandSelect(node: Element): void {
     if (this._bandSelect) {
-      domConstruct.place(this._bandSelect.domNode, node);
+      node.appendChild(this._bandSelect.domNode);
     }
   }
 
   private _placeStretchTypeSelect(node: Element): void {
     if (this._stretchTypeSelect) {
-      domConstruct.place(this._stretchTypeSelect.domNode, node);
+      node.appendChild(this._stretchTypeSelect.domNode);
     }
   }
 
   private _placeColorRampSelect(node: Element): void {
     if (this._stretchColorRampSelect) {
-      domConstruct.place(this._stretchColorRampSelect.domNode, node);
+      node.appendChild(this._stretchColorRampSelect.domNode);
     }
   }
 
   private _placeBandCombinationPresetSelect(node: Element): void {
     if (this._bandCombinationPresetSelect) {
-      domConstruct.place(this._bandCombinationPresetSelect.domNode, node);
+      node.appendChild(this._bandCombinationPresetSelect.domNode);
     }
   }
 
   private _placeRedBandSelect(node: Element): void {
     if (this._redBandSelect) {
-      domConstruct.place(this._redBandSelect.domNode, node);
+      node.appendChild(this._redBandSelect.domNode);
     }
   }
 
   private _placeGreenBandSelect(node: Element): void {
     if (this._colorSchemeTitlePane) {
-      domConstruct.place(this._greenBandSelect.domNode, node);
+      node.appendChild(this._greenBandSelect.domNode);
     }
   }
 
   private _placeBlueBandSelect(node: Element): void {
     if (this._blueBandSelect) {
-      domConstruct.place(this._blueBandSelect.domNode, node);
+      node.appendChild(this._blueBandSelect.domNode);
     }
   }
 
   private _placeNoDataInput(node: Element): void {
     if (this._noDataInput) {
-      domConstruct.place(this._noDataInput.domNode, node);
+      node.appendChild(this._noDataInput.domNode);
     }
   }
 
   private _placeMinPercentInput(node: Element): void {
     if (this._minPercentInput) {
-      domConstruct.place(this._minPercentInput.domNode, node);
+      node.appendChild(this._minPercentInput.domNode);
     }
   }
 
   private _placeMaxPercentInput(node: Element): void {
     if (this._maxPercentInput) {
-      domConstruct.place(this._maxPercentInput.domNode, node);
+      node.appendChild(this._maxPercentInput.domNode);
     }
   }
 
   private _placeStandardDeviationsInput(node: Element): void {
     if (this._standardDeviationsInput) {
-      domConstruct.place(this._standardDeviationsInput.domNode, node);
+      node.appendChild(this._standardDeviationsInput.domNode);
     }
   }
 
   private _placeGammaInput(node: Element): void {
     if (this._gammaInput) {
-      domConstruct.place(this._gammaInput.domNode, node);
+      node.appendChild(this._gammaInput.domNode);
     }
   }
 
   private _placeUniqueValueFieldSelect(node: Element): void {
     if (this._uniqueValueFieldSelect) {
-      domConstruct.place(this._uniqueValueFieldSelect.domNode, node);
+      node.appendChild(this._uniqueValueFieldSelect.domNode);
     }
   }
 
   private _placeUniqueValueColorSchemeSelect(node: Element): void {
     if (this._uniqueValueColorSchemeSelect) {
-      domConstruct.place(this._uniqueValueColorSchemeSelect.domNode, node);
+      node.appendChild(this._uniqueValueColorSchemeSelect.domNode);
     }
   }
 
   private _placeUniqueValueNoDataInput(node: Element): void {
     if (this._uniqueValueNoDataInput) {
-      domConstruct.place(this._uniqueValueNoDataInput.domNode, node);
+      node.appendChild(this._uniqueValueNoDataInput.domNode);
     }
   }
 
   private _placeUniqueValuesGrid(node: Element): void {
     if (this._uniqueValuesGrid) {
-      domConstruct.place(this._uniqueValuesGrid.domNode, node);
+      node.appendChild(this._uniqueValuesGrid.domNode);
     }
   }
 
   private _placeDiscreteColorSchemeSelect(node: Element): void {
     if (this._discreteColorSchemeSelect) {
-      domConstruct.place(this._discreteColorSchemeSelect.domNode, node);
+      node.appendChild(this._discreteColorSchemeSelect.domNode);
     }
   }
 
   private _placeDiscreteNoDataInput(node: Element): void {
     if (this._discreteNoDataInput) {
-      domConstruct.place(this._discreteNoDataInput.domNode, node);
+      node.appendChild(this._discreteNoDataInput.domNode);
     }
   }
 
   private _placeDiscreteNColorsInput(node: Element): void {
     if (this._discreteNColorsInput) {
-      domConstruct.place(this._discreteNColorsInput.domNode, node);
+      node.appendChild(this._discreteNColorsInput.domNode);
     }
   }
 

@@ -1,0 +1,177 @@
+@mixin timeSlider() {
+  $widget-height: 88px;
+  $widget-min-width: 400px;
+  $time-slider-tick-color: $border-color--contrast !default;
+  $time-slider-track-color: $button-color;
+  $time-slider-border-color: $border-color;
+
+  .esri-time-slider {
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    min-width: $widget-min-width;
+    height: $widget-height;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  // This is a fix specifically for IE11. Without it ticks and tick labels are severely displaced.
+  .esri-time-slider .esri-slider .esri-slider__content {
+    height: 2px;
+  }
+
+  .esri-time-slider--time-window .esri-slider__segment-1,
+  .esri-time-slider--cumulative-from-start .esri-slider__segment-0,
+  .esri-time-slider--cumulative-from-end .esri-slider__segment-1 {
+    background-color: $time-slider-track-color;
+    height: 8px;
+    margin-top: -3px;
+  }
+
+  .esri-time-slider .esri-slider--horizontal .esri-slider__track {
+    height: 4px;
+  }
+
+  .esri-time-slider .esri-slider__min {
+    width: 110px;
+    padding: 0;
+    font-size: $font-size__body;
+    font-weight: $font-weight;
+    line-height: $base-font-size;
+    white-space: pre;
+    text-align: right;
+    margin: 0;
+    padding: 0 30px 0 0;
+  }
+
+  .esri-time-slider .esri-slider__max {
+    width: 110px;
+    padding: 0;
+    font-size: $font-size__body;
+    font-weight: $font-weight;
+    line-height: $base-font-size;
+    white-space: pre;
+    text-align: left;
+    margin: 0;
+    padding: 0 0 0 30px;
+  }
+
+  .esri-time-slider .esri-slider__min:hover,
+  .esri-time-slider .esri-slider__max:hover {
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  .esri-time-slider .esri-slider {
+    margin-top: -10px;
+  }
+
+  .esri-time-slider .esri-slider__tick.minorTick {
+    background: $time-slider-tick-color;
+    height: 2px;
+    width: 1px;
+  }
+
+  .esri-time-slider .esri-slider__tick.majorTick {
+    background: $time-slider-tick-color;
+    height: 5px;
+    width: 1px;
+  }
+
+  .esri-time-slider .esri-slider__tick-label.majorLabel {
+    font-size: $font-size__body;
+    font-weight: $font-weight__bold;
+    margin-top: 15px;
+    white-space: nowrap;
+  }
+
+  .esri-time-slider__play {
+    flex: none;
+    width: 64px;
+    height: $widget-height;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid $time-slider-border-color;
+  }
+
+  .esri-time-slider__play-icon,
+  .esri-time-slider__pause-icon {
+    font-size: 24px;
+  }
+
+  .esri-time-slider__dates {
+    height: $widget-height;
+    width: 110px;
+    flex: none;
+    font-size: $font-size__body;
+    font-weight: $font-weight;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid $time-slider-border-color;
+    line-height: $font-size__body;
+  }
+
+  .esri-time-slider__time-extent-date {
+    font-weight: $font-weight__bold;
+    color: $button-color;
+  }
+
+  .esri-time-slider__time-extent-time {
+    color: $button-color;
+  }
+
+  .esri-time-slider__time-extent-separator {
+    font-size: $font-size__h2;
+    line-height: $font-size__h2;
+  }
+
+  .esri-time-slider__dates > div {
+    flex: none;
+  }
+
+  .esri-time-slider__track {
+    flex: auto;
+    height: $widget-height;
+    padding: 0 0 0 0;
+  }
+
+  .esri-time-slider__previous {
+    flex: none;
+    width: 42px;
+    height: $widget-height;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid $time-slider-border-color;
+  }
+
+  .esri-time-slider__previous-icon {
+    font-size: 30px;
+    margin-right: -10px;
+  }
+
+  .esri-time-slider__next {
+    flex: none;
+    width: 42px;
+    border-style: none;
+    height: $widget-height;
+  }
+
+  .esri-time-slider__next-icon {
+    font-size: 30px;
+    margin-left: -10px;
+  }
+}
+
+@if $include_TimeSlider == true {
+  @include timeSlider();
+}

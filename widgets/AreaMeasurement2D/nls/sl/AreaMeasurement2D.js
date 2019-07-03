@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({title:"Izmera",hint:"Začnite meriti tako, da kliknete na karto in postavite vašo prvo točko",unsupported:"2D-meritev površine je podprta samo v pregledovalniku kart.",perimeter:"Obseg",area:"Površina",newMeasurement:"Nova meritev",mode:"Način",modes:{auto:"Samodejno",planar:"Planarno",geodesic:"Geodetsko"},unit:"Enota",units:{metric:"Metrično",imperial:"Anglosaško","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni palci","square-feet":"Kvadratni čevlji","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratni čevlji (ZDA)",acres:"Akri",ares:"Ari",hectares:"Hektari"}});
+define({title:"Izmeri",hint:"Začnite meriti tako, da kliknete na karto in postavite vašo prvo točko",unsupported:"2D-meritev površine je podprta samo v pregledovalniku kart.",perimeter:"Obseg",area:"Površina",newMeasurement:"Nova meritev",mode:"Način",modes:{auto:"Samodejno",planar:"Planarno",geodesic:"Geodetsko"},unit:"Enota",units:{metric:"Metrično",imperial:"Anglosaško","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni palci","square-feet":"Kvadratni čevlji","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratni čevlji (ZDA)",acres:"Akri",ares:"Ari",hectares:"Hektari"}});

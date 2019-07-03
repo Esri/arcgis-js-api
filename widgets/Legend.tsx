@@ -190,11 +190,15 @@ class Legend extends declared(Widget) {
   //----------------------------------
 
   /**
-   * boolean that tells to show the basemaps or not in the legend
+   * Indicates whether to show the {@link module:esri/Basemap} layers in the Legend.
    *
+   * @name basemapLegendVisible
+   * @instance
    * @type {boolean}
    * @default false
-   * @private
+   *
+   * @example
+   * legend.basemapLegendVisible = true;
    */
   @aliasOf("viewModel.basemapLegendVisible")
   @renderable()

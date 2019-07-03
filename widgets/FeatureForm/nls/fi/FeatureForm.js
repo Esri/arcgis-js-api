@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- tyhjä -",validationErrors:{cannotBeNull:"Kirjoita arvo",outsideRange:"Arvon on oltava välillä {min}â€“{max}",invalidCodedValue:"Arvon on oltava jokin luetelluista arvoista.",invalidType:"Ei ole kelvollinen arvo"}});
+define({empty:"- tyhjä -",validationErrors:{cannotBeNull:"Kirjoita arvo",outsideRange:"Arvon on oltava välillä min}–{max}",invalidCodedValue:"Arvon on oltava jokin luetelluista arvoista.",invalidType:"Ei ole kelvollinen arvo"}});

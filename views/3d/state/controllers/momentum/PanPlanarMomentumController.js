@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./MomentumController"],function(t,e,n,r,o,i){Object.defineProperty(e,"__esModule",{value:!0});var m=function(t){function e(e,n){var r=t.call(this,e,4)||this;return r.momentum=n,r.tmpPan=o.vec3f64.create(),r}return n(e,t),e.prototype.momentumStep=function(t,e){var n=this.momentum.value(t);r.vec3.scale(this.tmpPan,this.momentum.direction,n),r.vec3.subtract(e.eye,e.eye,this.tmpPan),r.vec3.subtract(e.center,e.center,this.tmpPan),e.markViewDirty(),this.constraintOptions.interactionDirection=this.tmpPan},e}(i.MomentumController);e.PanPlanarMomentumController=m});

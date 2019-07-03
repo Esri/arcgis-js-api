@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"Š"},addConversion:"Dodaj konverzaciju",captureMode:"Režim snimanja",changeCoordinateDisplay:"Promeni prikaz koordinata",convert:"Pretvori",conversionOutputSuffix:"izlaz konverzije",copySuccessMessage:"Koordinata kopirana u ostavu",defaultPattern:"Resetuj na podrazumevane vrednosti",goTo:"Idi na lokaciju",inputCoordTitle:"Unesena koordinata",invalidCoordinate:"Nevažeća koordinata",liveMode:"Režim uživo",locationOffBasemap:"Unesena koordinata je van obuhvata pozadinske mape",noBasemap:"Nema pozadinske mape.",noLocation:"Nema pozicije",removeConversion:"Ukloni konverziju",selectFormat:"Izaberi format",settingsTitle:"Postavke formata"});

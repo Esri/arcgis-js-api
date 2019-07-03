@@ -24,6 +24,7 @@ varying vec4 regionV;
 
 
 varying vec3 vpos;
+varying vec3 vPositionView;
 
 #include <util/visualVariables.glsl>
 
@@ -49,23 +50,19 @@ void main(void) {
     originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
   #endif
   vpos -= originDelta;
-
-  #ifdef VERTICAL_OFFSET
-    vec3 centerPos = model * localCenter().xyz + originDelta;
-    vpos += calculateVerticalOffset(centerPos, localOrigin);
-  #endif
 #else /* INSTANCED_DOUBLE_PRECISION */
   #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
     vnormal = normalize((viewNormal * modelNormal * localNormal()).xyz);
   #endif
-
-  #ifdef VERTICAL_OFFSET
-    vec3 centerPos = (model * localCenter()).xyz;
-    vpos += calculateVerticalOffset(centerPos, localOrigin);
-  #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
 
-  gl_Position = proj * view * vec4(vpos, 1.0);
+  #ifdef VERTICAL_OFFSET
+    vpos += calculateVerticalOffset(vpos, localOrigin);
+  #endif
+
+  vPositionView = (view * vec4(vpos, 1.0)).xyz;
+
+  gl_Position = proj * vec4(vPositionView, 1.0);
 
 #ifdef TEXTURING
 #ifndef FLIPV

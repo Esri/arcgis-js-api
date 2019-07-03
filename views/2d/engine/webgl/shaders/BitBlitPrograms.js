@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.bitBlit={name:"bitBlit",shaders:{vertexShader:r.resolveIncludes("bitBlit/bitBlit.vert"),fragmentShader:r.resolveIncludes("bitBlit/bitBlit.frag")},attributes:{a_pos:0,a_tex:1}}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver","../../../webgl/programUtils"],function(e,r,a,n){Object.defineProperty(r,"__esModule",{value:!0});var t=function(e){return n.glslifyDefineMap({MODE:{value:e.mode,options:{solid:"MODE_SOLID",sketch:"MODE_SKETCH",uber:"MODE_UBER"}},SILHOUETTE:e.silhouette,ANTIALIASING:e.antialiasing,SLICE:e.slice})};r.program={name:"edges",shaders:function(e){return{vertexShader:t(e)+a.resolveIncludes("edgeRenderer/edgeRenderer.vert"),fragmentShader:t(e)+a.resolveIncludes("edgeRenderer/edgeRenderer.frag")}},attributes:{aPosition0:0,aPosition1:1,aComponentIndex:2,aPackedAttributes:3,aVariantOffset:4,aVariantStroke:5,aVariantExtension:6,aNormal:7,aNormalA:7,aNormalB:8,aSideness:9}}});

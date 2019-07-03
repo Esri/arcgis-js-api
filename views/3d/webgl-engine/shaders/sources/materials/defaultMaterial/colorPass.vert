@@ -19,8 +19,9 @@ attribute vec3 position;
 #endif
 
 varying vec3 vpos;
+varying vec3 localvpos;
 
-#ifdef TEXTURING
+#ifdef TEXTURE_COORDINATES
     attribute vec2 uv0;
     varying vec2 vtc;
   #ifdef TEXTURE_ATLAS
@@ -108,6 +109,7 @@ void main() {
   }
   else {
     vpos = calculateVPos();
+    localvpos = vpos - view[3].xyz;
 
 #ifdef INSTANCED_DOUBLE_PRECISION
   #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
@@ -119,21 +121,15 @@ void main() {
     originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
   #endif
   vpos -= originDelta;
-
-  #ifdef VERTICAL_OFFSET
-    vec3 centerPos = model * localCenter().xyz + originDelta;
-    vpos += calculateVerticalOffset(centerPos, localOrigin);
-  #endif
 #else /* INSTANCED_DOUBLE_PRECISION */
   #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
     vnormal = normalize((modelNormal * localNormal()).xyz);
   #endif
-
-  #ifdef VERTICAL_OFFSET
-    vec3 centerPos = (model * localCenter()).xyz;
-    vpos += calculateVerticalOffset(centerPos, localOrigin);
-  #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
+
+    #ifdef VERTICAL_OFFSET
+      vpos += calculateVerticalOffset(vpos, localOrigin);
+    #endif
 
     #if defined(VERTEX_TANGENTS)
       transformVertexTangent(mat3(modelNormal));

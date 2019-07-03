@@ -230,7 +230,7 @@ class Track extends declared(Widget) {
   //----------------------------------
   /**
    * Indicates the scale to set on the view when navigating to the position of the geolocated
-   * result once a location is returned from the [track](#event:track) event.
+   * result once a location is returned from the [track](#event-track) event.
    * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
    * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
    * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
@@ -412,11 +412,11 @@ class Track extends declared(Widget) {
   @accessibleHandler()
   private _toggleTracking(): void {
     const vm = this.viewModel;
-    if (!vm) {
+    if (!vm || vm.state === "feature-unsupported" || vm.state === "disabled") {
       return;
     }
 
-    if (vm.tracking) {
+    if (vm.state === "tracking" || vm.state === "waiting") {
       this.viewModel.stop();
       return;
     }

@@ -23,6 +23,7 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
+import i18nCommon = require("dojo/i18n!esri/nls/common");
 import i18n = require("dojo/i18n!esri/widgets/Bookmarks/nls/Bookmarks");
 
 // esri.core
@@ -47,32 +48,59 @@ import BookmarksViewModel = require("esri/widgets/Bookmarks/BookmarksViewModel")
 
 // esri.widgets.support
 import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-bookmarks esri-widget--panel",
   loaderContainer: "esri-bookmarks__loader-container",
   loader: "esri-bookmarks__loader",
   fadeIn: "esri-bookmarks--fade-in",
+
   bookmarkList: "esri-bookmarks__list",
+
   bookmark: "esri-bookmarks__bookmark",
-  bookmarkContainer: "esri-bookmarks__bookmark-container",
+  bookmarkButton: "esri-bookmarks__bookmark-button",
+  bookmarkImageContainer: "esri-bookmarks__bookmark-image-container",
   bookmarkIcon: "esri-bookmarks__bookmark-icon",
   bookmarkImage: "esri-bookmarks__image",
   bookmarkName: "esri-bookmarks__bookmark-name",
   bookmarkActive: "esri-bookmarks__bookmark--active",
+
   noBookmarksContainer: "esri-widget__content--empty",
   noBookmarksHeader: "esri-bookmarks__no-bookmarks-heading",
-  noBookmarksImage: "esri-widget__content-icon--empty",
+  noBookmarksIcon: "esri-widget__no-bookmark-icon",
   noBookmarksDescription: "esri-bookmarks__no-bookmarks-description",
+
   disabledContainer: "esri-bookmarks__disabled-container",
   disabledHeading: "esri-bookmarks__disabled-heading",
   disabledDescription: "esri-bookmarks__disabled-description",
+
+  addingBookmark: "esri-bookmarks__adding-bookmark",
+
+  addBookmark: "esri-bookmarks__add-bookmark",
+  addBookmarkButton: "esri-bookmarks__add-bookmark-button",
+  addBookmarkIcon: "esri-bookmarks__add-bookmark-icon",
+
+  authoringCard: "esri-bookmarks__authoring-card",
+  authoringForm: "esri-bookmarks__authoring-form",
+  authoringLabel: "esri-bookmarks__authoring-label",
+  authoringActions: "esri-bookmarks__authoring-actions",
+  authoringInputInvalid: "esri-bookmarks__authoring-input--invalid",
+  authoringDeleteButton: "esri-bookmarks__authoring-delete-button",
+  authoringCancelButton: "esri-bookmarks__authoring-cancel-button",
+
   // common
   esriWidget: "esri-widget",
+  esriButton: "esri-button",
+  esriButtonTertiary: "esri-button--tertiary",
+  esriInput: "esri-input",
+  iconPlus: "esri-icon-plus",
+  iconEdit: "esri-icon-edit",
   widgetIcon: "esri-icon-bookmark",
   header: "esri-widget__heading",
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  loading: "esri-icon-loading-indicator",
+  rotating: "esri-rotating"
 };
 
 @subclass("esri.widgets.Bookmarks")
@@ -127,10 +155,7 @@ class Bookmarks extends declared(Widget) {
   }
 
   postInitialize(): void {
-    this.own([
-      watchUtils.on(this, "viewModel.bookmarks", "change", () => this._bookmarksChanged()),
-      watchUtils.init(this, "viewModel.bookmarks", () => this._bookmarksChanged())
-    ]);
+    this.own([watchUtils.init(this, "viewModel.bookmarks", () => this._bookmarksInitialized())]);
   }
 
   destroy(): void {
@@ -138,7 +163,29 @@ class Bookmarks extends declared(Widget) {
     this._handles = null;
   }
 
+  //--------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  //--------------------------------------------------------------------------
+
   private _handles: Handles = new Handles();
+
+  private _addInputNode: HTMLInputElement = null;
+
+  private _editInputNode: HTMLInputElement = null;
+
+  private _addBookmarkButtonNode: HTMLButtonElement = null;
+
+  private _focusAddBookmarkButton = false;
+
+  private _addBookmark = false;
+
+  private _editBookmark: Bookmark = null;
+
+  private _invalidEntry = false;
+
+  private _creatingBookmark = false;
 
   //--------------------------------------------------------------------------
   //
@@ -159,6 +206,17 @@ class Bookmarks extends declared(Widget) {
    */
   @aliasOf("viewModel.bookmarks")
   bookmarks: Collection<Bookmark> = null;
+
+  //----------------------------------
+  //  editingEnabled
+  //----------------------------------
+
+  /**
+   * @todo document
+   */
+  @renderable()
+  @property()
+  editingEnabled = false;
 
   //----------------------------------
   //  goToOverride
@@ -227,7 +285,7 @@ class Bookmarks extends declared(Widget) {
   @property({
     type: BookmarksViewModel
   })
-  @renderable(["activeBookmark", "state"])
+  @renderable(["activeBookmark", "state", "bookmarks"])
   @vmEvent(["select-bookmark"])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
@@ -269,11 +327,11 @@ class Bookmarks extends declared(Widget) {
 
   //--------------------------------------------------------------------------
   //
-  //  Private Methods
+  //  Protected Methods
   //
   //--------------------------------------------------------------------------
 
-  private _renderLoading(): VNode {
+  protected _renderLoading(): VNode {
     return (
       <div class={CSS.loaderContainer} key="loader">
         <div class={CSS.loader} />
@@ -281,7 +339,7 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderDisabled(): VNode {
+  protected _renderDisabled(): VNode {
     return (
       <div
         key="bookmarks-disabled"
@@ -293,42 +351,93 @@ class Bookmarks extends declared(Widget) {
     );
   }
 
-  private _renderNoBookmarksContainer(): VNode {
+  protected _renderNoBookmarksContainer(): VNode {
     return (
       <div class={CSS.noBookmarksContainer} key="no-bookmarks">
-        <svg class={CSS.noBookmarksImage} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <path
-            fill="currentColor"
-            d="M26 30.435L16.5 24.1 7 30.435V1h19zm-9.5-7.536l8.5 5.666V2H8v26.565z"
-          />
-        </svg>
+        <span aria-hidden="true" class={this.classes(CSS.noBookmarksIcon, CSS.widgetIcon)} />
         <h1 class={this.classes(CSS.header, CSS.noBookmarksHeader)}>{i18n.noBookmarksHeading}</h1>
         <p class={CSS.noBookmarksDescription}>{i18n.noBookmarksDescription}</p>
       </div>
     );
   }
 
-  private _renderBookmarksContainer(bookmarks: Collection<Bookmark>): VNode {
+  protected _renderAddBookmarkLoading(): VNode {
+    return (
+      <li key="adding-bookmark" class={CSS.addingBookmark}>
+        <span aria-hidden="true" class={this.classes(CSS.loading, CSS.rotating)} />
+        {i18n.addingBookmark}
+      </li>
+    );
+  }
+
+  protected _renderBookmarkItems(bookmarks: Collection<Bookmark>): VNode[] {
+    if (!bookmarks) {
+      return null;
+    }
+
+    return bookmarks
+      .map((bookmark) =>
+        this.editingEnabled && this._editBookmark && bookmark && this._editBookmark === bookmark
+          ? this._renderEditingBookmark(bookmark)
+          : this._renderBookmark(bookmark)
+      )
+      .toArray();
+  }
+
+  protected _renderBookmarksContainer(bookmarks: Collection<Bookmark>): VNode {
+    const addBookmarkNode = this.editingEnabled
+      ? this._creatingBookmark
+        ? this._renderAddBookmarkLoading()
+        : this._addBookmark
+        ? this._renderAddingBookmark()
+        : this._renderAddBookmarkButton()
+      : null;
+
     return (
       <ul key="bookmark-list" aria-label={i18n.widgetLabel} class={CSS.bookmarkList}>
-        {bookmarks.map((bookmark) => this._renderBookmark(bookmark)).toArray()}
+        {this._renderBookmarkItems(bookmarks)}
+        {addBookmarkNode}
       </ul>
     );
   }
 
-  private _renderBookmarks(): VNode {
-    const { bookmarks } = this.viewModel;
-
-    const validBookmarks = bookmarks.filter(Boolean);
-
-    return validBookmarks.length
-      ? this._renderBookmarksContainer(validBookmarks)
-      : this._renderNoBookmarksContainer();
+  protected _renderAddBookmarkButton(): VNode {
+    return (
+      <li key="add-bookmark-item" class={CSS.addBookmark}>
+        <button
+          class={this.classes(CSS.esriButton, CSS.esriButtonTertiary, CSS.addBookmarkButton)}
+          onclick={this._showAddBookmarkForm}
+          afterCreate={this._storeAddBookmarkButton}
+          afterUpdate={this._storeAddBookmarkButton}
+          data-node-ref="_addBookmarkButtonNode"
+          bind={this}
+        >
+          <span aria-hidden="true" class={this.classes(CSS.addBookmarkIcon, CSS.iconPlus)} />
+          {i18n.addBookmark}
+        </button>
+      </li>
+    );
   }
 
-  private _renderBookmark(bookmark: Bookmark): VNode {
+  protected _renderBookmarks(): VNode {
+    const { bookmarks } = this.viewModel;
+
+    const validBookmarks = bookmarks && bookmarks.filter(Boolean);
+
+    const hasBookmarks = validBookmarks && validBookmarks.length;
+
+    const bookmarksNode =
+      hasBookmarks || this.editingEnabled ? this._renderBookmarksContainer(validBookmarks) : null;
+    const noBookmarksNode = !hasBookmarks ? this._renderNoBookmarksContainer() : null;
+
+    return [noBookmarksNode, bookmarksNode];
+  }
+
+  protected _renderBookmark(bookmark: Bookmark): VNode {
     const { activeBookmark } = this.viewModel;
+
     const { name, thumbnail } = bookmark;
+    const title = name || i18nCommon.untitled;
 
     const bookmarkClasses = {
       [CSS.bookmarkActive]: activeBookmark === bookmark
@@ -337,33 +446,153 @@ class Bookmarks extends declared(Widget) {
     const imageSource = (thumbnail && thumbnail.url) || "";
 
     const imageNode = imageSource ? (
-      <div class={CSS.bookmarkContainer}>
-        <img src={imageSource} alt={name} class={CSS.bookmarkImage} />
-      </div>
+      <img src={imageSource} alt="" class={CSS.bookmarkImage} />
     ) : (
       <span aria-hidden="true" class={this.classes(CSS.bookmarkIcon, CSS.widgetIcon)} />
     );
 
+    const imageContainerNode = <div class={CSS.bookmarkImageContainer}>{imageNode}</div>;
+
+    const editContainer = this.editingEnabled ? (
+      <div key="edit-container">
+        <button
+          title={i18nCommon.edit}
+          aria-label={i18nCommon.edit}
+          data-bookmark-item={bookmark}
+          onclick={this._showEditBookmarkForm}
+          bind={this}
+          class={this.classes(CSS.esriButton, CSS.esriButtonTertiary)}
+        >
+          <span aria-hidden="true" class={CSS.iconEdit} />
+        </button>
+      </div>
+    ) : null;
+
     return (
-      <li
-        bind={this}
-        data-bookmark-item={bookmark}
-        class={this.classes(CSS.bookmark, bookmarkClasses)}
-        onclick={this._goToBookmark}
-        onkeydown={this._goToBookmark}
-        tabIndex={0}
-        role="button"
-        title={i18n.goToBookmark}
-        aria-label={name}
-      >
-        {imageNode}
-        <span class={CSS.bookmarkName}>{name}</span>
+      <li key={bookmark} class={this.classes(CSS.bookmark, bookmarkClasses)}>
+        <button
+          bind={this}
+          data-bookmark-item={bookmark}
+          onclick={this._goToBookmark}
+          class={CSS.bookmarkButton}
+        >
+          {imageContainerNode}
+          <span class={CSS.bookmarkName}>{title}</span>
+          {editContainer}
+        </button>
       </li>
     );
   }
 
+  protected _renderEditingBookmark(bookmark: Bookmark): VNode {
+    return (
+      <li key="edit-bookmark-form" class={CSS.authoringCard}>
+        <form class={CSS.authoringForm} onsubmit={this._editBookmarkSubmit} bind={this}>
+          <label class={CSS.authoringLabel}>
+            {i18n.title}
+            <input
+              required
+              bind={this}
+              class={this.classes(
+                CSS.esriInput,
+                this._invalidEntry ? CSS.authoringInputInvalid : null
+              )}
+              type="text"
+              value={bookmark.name}
+              afterCreate={this._storeEditInput}
+              afterUpdate={this._focusEditInput}
+              data-bookmark-item={bookmark}
+              data-node-ref="_editInputNode"
+              placeholder={i18n.addPlaceholder}
+            />
+          </label>
+          <div class={CSS.authoringActions}>
+            <input
+              type="button"
+              value={i18nCommon.delete}
+              class={this.classes(
+                CSS.esriButton,
+                CSS.esriButtonTertiary,
+                CSS.authoringDeleteButton
+              )}
+              data-bookmark-item={bookmark}
+              onclick={this._deleteBookmark}
+              bind={this}
+            />
+            <input
+              type="button"
+              value={i18nCommon.cancel}
+              class={this.classes(CSS.esriButton, CSS.esriButtonTertiary)}
+              onclick={this._hideEditBookmarkForm}
+              bind={this}
+            />
+            <input class={CSS.esriButton} type="submit" value={i18nCommon.save} />
+          </div>
+        </form>
+      </li>
+    );
+  }
+
+  protected _renderAddingBookmark(): VNode {
+    return (
+      <li key="add-bookmark-form" class={CSS.authoringCard}>
+        <form class={CSS.authoringForm} onsubmit={this._addBookmarkSubmit} bind={this}>
+          <label class={CSS.authoringLabel}>
+            {i18n.title}
+            <input
+              required
+              bind={this}
+              class={this.classes(
+                CSS.esriInput,
+                this._invalidEntry ? CSS.authoringInputInvalid : null
+              )}
+              type="text"
+              afterCreate={this._storeAddInput}
+              afterUpdate={this._focusAddInput}
+              data-node-ref="_addInputNode"
+              value=""
+              placeholder={i18n.addPlaceholder}
+            />
+          </label>
+          <div class={this.classes(CSS.authoringActions)}>
+            <input
+              type="button"
+              value={i18nCommon.cancel}
+              class={this.classes(
+                CSS.esriButton,
+                CSS.esriButtonTertiary,
+                CSS.authoringCancelButton
+              )}
+              onclick={this._hideAddBookmarkForm}
+              bind={this}
+            />
+            <input class={CSS.esriButton} type="submit" value={i18nCommon.add} />
+          </div>
+        </form>
+      </li>
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
+
+  private _bookmarksInitialized(): void {
+    const bookmarksKey = "bookmarks-init";
+    const { _handles } = this;
+
+    _handles.remove(bookmarksKey);
+
+    _handles.add(
+      watchUtils.on(this, "viewModel.bookmarks", "change", () => this._bookmarksChanged()),
+      bookmarksKey
+    );
+  }
+
   private _bookmarksChanged(): void {
-    const itemsKey = "items";
+    const itemsKey = "bookmarks-change";
     const { bookmarks } = this.viewModel;
     const { _handles } = this;
 
@@ -378,10 +607,129 @@ class Bookmarks extends declared(Widget) {
     this.scheduleRender();
   }
 
-  @accessibleHandler()
+  private _showAddBookmarkForm(): void {
+    this._editBookmark = null;
+    this._addBookmark = true;
+    this.scheduleRender();
+  }
+
+  private _hideAddBookmarkForm(): void {
+    this._invalidEntry = false;
+    this._addBookmark = false;
+    this._creatingBookmark = false;
+    this._focusAddBookmarkButton = true;
+    this.scheduleRender();
+  }
+
+  private _showEditBookmarkForm(event: Event): void {
+    event.stopPropagation();
+
+    const node = event.currentTarget as Element;
+    const bookmark = node["data-bookmark-item"] as Bookmark;
+
+    this._addBookmark = false;
+    this._editBookmark = bookmark;
+    this.scheduleRender();
+  }
+
+  private _hideEditBookmarkForm(): void {
+    this._invalidEntry = false;
+    this._editBookmark = null;
+    this.scheduleRender();
+  }
+
+  private _addBookmarkSubmit(event: Event): void {
+    event.preventDefault();
+
+    const { _addInputNode } = this;
+
+    const name = _addInputNode && _addInputNode.value.trim();
+
+    if (!name) {
+      this._invalidEntry = true;
+      this.scheduleRender();
+      return;
+    }
+
+    this._creatingBookmark = true;
+    this.scheduleRender();
+
+    this.viewModel.createBookmark().then((bookmark) => {
+      bookmark.name = name;
+
+      this.viewModel.bookmarks.add(bookmark);
+
+      this._hideAddBookmarkForm();
+    });
+  }
+
+  private _editBookmarkSubmit(event: Event): void {
+    event.preventDefault();
+
+    const { _editInputNode, _editBookmark } = this;
+
+    const name = _editInputNode && _editInputNode.value.trim();
+
+    if (!name) {
+      this._invalidEntry = true;
+      this.scheduleRender();
+      return;
+    }
+
+    _editBookmark.name = name;
+
+    this._hideEditBookmarkForm();
+  }
+
+  private _storeAddBookmarkButton(node: HTMLButtonElement): void {
+    this._addBookmarkButtonNode = node;
+
+    this._focusAddBookmark();
+  }
+
+  private _storeEditInput(node: HTMLInputElement): void {
+    this._editInputNode = node;
+
+    this._focusEditInput();
+  }
+
+  private _storeAddInput(node: HTMLInputElement): void {
+    this._addInputNode = node;
+
+    this._focusAddInput();
+  }
+
+  private _focusAddInput(): void {
+    this._addInputNode && this._addInputNode.focus();
+  }
+
+  private _focusAddBookmark(): void {
+    if (this._addBookmarkButtonNode && this._focusAddBookmarkButton) {
+      this._focusAddBookmarkButton = false;
+      this._addBookmarkButtonNode.focus();
+    }
+  }
+
+  private _focusEditInput(): void {
+    this._editInputNode && this._editInputNode.focus();
+  }
+
+  private _deleteBookmark(event: Event): void {
+    event.stopPropagation();
+
+    const node = event.currentTarget as Element;
+    const bookmark = node["data-bookmark-item"] as Bookmark;
+
+    this.viewModel.bookmarks.remove(bookmark);
+  }
+
   private _goToBookmark(event: Event): void {
     const node = event.currentTarget as Element;
     const bookmark = node["data-bookmark-item"] as Bookmark;
+
+    this._hideAddBookmarkForm();
+    this._hideEditBookmarkForm();
+
     this.viewModel.goTo(bookmark);
   }
 }

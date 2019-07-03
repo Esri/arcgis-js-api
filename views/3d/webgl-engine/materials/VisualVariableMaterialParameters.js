@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/libs/gl-matrix-2/mat4f64","../../../../core/libs/gl-matrix-2/vec3f32"],function(e,v,a,i){var o;return function(e){e.Default={vvSizeEnabled:!1,vvSizeMinSize:i.vec3f32.fromValues(1,1,1),vvSizeMaxSize:i.vec3f32.fromValues(100,100,100),vvSizeOffset:i.vec3f32.fromValues(0,0,0),vvSizeFactor:i.vec3f32.fromValues(1,1,1),vvSizeValue:i.vec3f32.fromValues(1,1,1),vvColorEnabled:!1,vvColorValues:[0,0,0,0,0,0,0,0],vvColorColors:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],vvOpacityEnabled:!1,vvOpacityValues:[0,0,0,0,0,0,0,0],vvOpacityOpacities:[1,1,1,1,1,1,1,1],vvSymbolAnchor:[0,0,0],vvSymbolRotationMatrix:a.mat4f64.create()}}(o||(o={})),o});
+define(["require","exports","../../../../core/libs/gl-matrix-2/mat3f64","../../../../core/libs/gl-matrix-2/vec3f32"],function(e,v,a,i){var o;return function(e){e.Default={vvSizeEnabled:!1,vvSizeMinSize:i.vec3f32.fromValues(1,1,1),vvSizeMaxSize:i.vec3f32.fromValues(100,100,100),vvSizeOffset:i.vec3f32.fromValues(0,0,0),vvSizeFactor:i.vec3f32.fromValues(1,1,1),vvSizeValue:i.vec3f32.fromValues(1,1,1),vvColorEnabled:!1,vvColorValues:[0,0,0,0,0,0,0,0],vvColorColors:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],vvOpacityEnabled:!1,vvOpacityValues:[0,0,0,0,0,0,0,0],vvOpacityOpacities:[1,1,1,1,1,1,1,1],vvSymbolAnchor:[0,0,0],vvSymbolRotationMatrix:a.mat3f64.create()}}(o||(o={})),o});

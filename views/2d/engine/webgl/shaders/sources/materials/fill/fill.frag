@@ -2,11 +2,7 @@ precision highp float;
 
 #include <materials/constants.glsl>
 
-#ifdef ID
-
 varying highp vec4 v_id;
-
-#endif // ID
 
 #ifdef PATTERN
 
@@ -38,11 +34,9 @@ float max4(vec4 target) {
 void main() {
 
 #ifdef ID
-
   gl_FragColor = v_id;
 
 #elif defined(PATTERN)
-
   // normalize the calculated texture coordinate such that it fits in the range of 0 to 1.
   mediump vec2 normalizedTextureCoord = mod(v_tileTextureCoord, 1.0);
   // interpolate the image coordinate between the top-left and the bottom right to get the actual position to sample.
@@ -54,7 +48,6 @@ void main() {
   gl_FragColor = v_opacity * v_color * color;
 
 #elif defined(DOT_DENSITY) && !defined(HIGHLIGHT)
-
   vec4 textureThresholds0 = texture2D(u_dotTextures[0], v_dotTextureCoords);
   vec4 textureThresholds1 = texture2D(u_dotTextures[1], v_dotTextureCoords);
 
@@ -62,7 +55,6 @@ void main() {
   vec4 difference1 = v_dotThresholds[1] - textureThresholds1;
 
 #ifdef DD_DOT_BLENDING
-
   vec4 isPositive0 = step(0.0, difference0);
   vec4 isPositive1 = step(0.0, difference1);
 
@@ -79,7 +71,6 @@ void main() {
   gl_FragColor = greaterThanZero * dotColor + lessThanEqZero * u_dotBackgroundColor;
 
 #else
-
   float diffMax = max(max4(difference0), max4(difference1));
   float lessThanZero = step(diffMax, 0.0);
   float greaterOrEqZero = 1.0 - lessThanZero;
@@ -94,14 +85,11 @@ void main() {
 #endif
 
 #else
-
   gl_FragColor = v_opacity * v_color;
 
 #endif // PATTERN
 
 #ifdef HIGHLIGHT
-
   gl_FragColor.a = 1.0;
-
 #endif // HIGHLIGHT
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Isečak",cancel:"Otkaži",hint:"Otpočnite isecanje tako što ćete kliknuti i prevući površinu u sceni",excludeHint:"Izaberite sloj u prikazu da biste ga izostavili iz isečka",unsupported:"Isečak nije podržan u aplikaciji MapView.",multipleDisabled:"U datom trenutku može biti aktivan samo jedan isečak",newSlice:"Novi isečak",excludedLayers:"Izostavljeni slojevi",pickLayer:"Izaberite sloj sa prikaza",excludeLayer:"Izostavite sloj iz isečka",includeLayer:"Uključite sloj u isečak",ground:"Tlo"});

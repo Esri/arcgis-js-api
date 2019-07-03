@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","./sources/resolver","../../../../webgl/programUtils"],function(e,r,t,a){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){var r="";r+=e[0].toUpperCase();for(var t=1;t<e.length;t++){var a=e[t];a===a.toUpperCase()?(r+="_",r+=a):r+=a.toUpperCase()}return r},o=function(e){var r={};for(var t in e){r[n(t)]=e[t]}return a.glslifyDefineMap(r)};r.createProgramTemplate=function(r,e){return{name:r,attributes:e,shaders:function(e){return{vertexShader:o(e)+t.resolveIncludes("materials/"+r+"/"+r+".vert"),fragmentShader:o(e)+t.resolveIncludes("materials/"+r+"/"+r+".frag")}}}}});
+define(["require","exports","../../../../webgl","./sources/resolver"],function(e,r,a,t){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){var r="";r+=e[0].toUpperCase();for(var t=1;t<e.length;t++){var a=e[t];a===a.toUpperCase()?(r+="_",r+=a):r+=a.toUpperCase()}return r},o=function(e){var r={};for(var t in e){r[n(t)]=e[t]}return a.glslifyDefineMap(r)};r.createProgramTemplate=function(r,e){return{name:r,attributes:e,shaders:function(e){return{vertexShader:o(e)+t.resolveIncludes("materials/"+r+"/"+r+".vert"),fragmentShader:o(e)+t.resolveIncludes("materials/"+r+"/"+r+".frag")}}}}});

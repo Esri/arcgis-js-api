@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","./materialUtils"],function(e,r,t,o,n,p,s){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.screenLength=0,r.minWorldLength=0,r}t(r,e),n=r,r.prototype.clone=function(){return new n({screenLength:this.screenLength,minWorldLength:this.minWorldLength,maxWorldLength:this.maxWorldLength})};var n;return o([p.property(s.screenSizeProperty)],r.prototype,"screenLength",void 0),o([p.property({type:Number,json:{write:!0,default:0}})],r.prototype,"minWorldLength",void 0),o([p.property({type:Number,json:{write:!0}})],r.prototype,"maxWorldLength",void 0),r=n=o([p.subclass("esri.symbols.support.Symbol3DVerticalOffset")],r)}(p.declared(n));r.Symbol3DVerticalOffset=i,r.default=i});

@@ -52,7 +52,7 @@
 #endif
 
 #ifdef DEBUG_DRAW_BORDER
-   float isBorder = float(any(lessThan(debugBorderCoords.xy, vec2(debugBorderCoords.z))) || any(greaterThan(debugBorderCoords.xy, vec2(1.0 - debugBorderCoords.z))));
+   float isBorder = float(any(lessThan(debugBorderCoords.xy, debugBorderCoords.zw)) || any(greaterThan(debugBorderCoords.xy, 1.0 - debugBorderCoords.zw)));
    gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder);
 #endif
 

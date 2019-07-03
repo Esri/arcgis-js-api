@@ -10,7 +10,7 @@
   }
 
   .esri-editor__header {
-    padding: 0 $side-spacing;
+    padding: 0 $side-spacing--three-quarters;
     font-size: $font-size__header-text;
     border-bottom: $border;
     display: flex;
@@ -29,7 +29,7 @@
     padding: $cap-spacing--half $side-spacing--half 0;
     justify-content: center;
     align-items: flex-start;
-    flex-grow: 1;
+    flex: 1 1 auto;
     min-height: 20vh;
     display: flex;
     flex-direction: row;
@@ -83,6 +83,21 @@
     flex: 1 1 auto;
   }
 
+  .esri-editor__back-button {
+    display: flex;
+    width: $button-width;
+    height: $button-height;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: $background-color--offset-subtle;
+    transition: background-color 125ms ease-in-out;
+    &:hover {
+      background-color: $background-color--hover;
+      color: $interactive-font-color--hover;
+    }
+  }
+
   .esri-editor__controls {
     border-top: $border;
     padding: $cap-spacing $side-spacing;
@@ -96,7 +111,7 @@
   }
 
   .esri-editor__feature-list-item {
-    @include boxShadow(0 1px 0 #{$border-color});
+    @include cardBoxShadow();
     padding: $cap-spacing $side-spacing--quarter;
     background-color: $background-color;
     cursor: pointer;
@@ -207,10 +222,6 @@
     flex: 0 0 auto;
   }
 
-  .esri-editor__warning-option--primary {
-    font-weight: bold;
-  }
-
   .esri-editor__warning-option--positive {
     color: $button-color;
   }
@@ -238,10 +249,6 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-  }
-
-  .esri-button--disabled {
-    pointer-events: none;
   }
 
   @include loopingProgressBar(".esri-editor__progress-bar");

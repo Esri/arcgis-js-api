@@ -241,7 +241,7 @@ class Home extends declared(Widget) {
    * value of [viewpoint](#viewpoint).
    *
    * @method
-   * @see [Event: go](#event:go)
+   * @see [Event: go](#event-go)
    */
   @aliasOf("viewModel.go")
   go(): IPromise<void> {

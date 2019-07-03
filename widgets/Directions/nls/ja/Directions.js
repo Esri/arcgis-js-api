@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"ルート案内",advancedOptions:"高度な設定",disclaimer:"Use subject to {esriTerms}.",esriTerms:"Esri の利用規約",travelMode:"移動モード",viewActive:"マップをクリックするとストップが追加されます",showStop:"このストップを表示",addStopTitle:"新しいストップの追加",addStop:"ストップの地点",removeStop:"ストップの削除",reverseStops:"ストップの反転",dndHandle:"ドラッグして訪問順序を変更",serviceTime:"サービス時間",serviceDistance:"サービス距離",leaveNow:"今すぐ移動",departBy:"出発時間",departureTime:"出発時間",zoomToRoute:"ルートにズーム",printDescription:"ルート案内の印刷",gmt:"GMT",stop:"停止",stopLabelTemplate:"ストップ {number} ({label})",unlocated:"未配置(U)",searchFieldPlaceholder:"検索またはマップをクリック",viewlessSearchFieldPlaceholder:"検索",directionsPlaceholder:"ルートはここに表示されます。",etaTemplate:"{time} {gmt}",eta:"推定到着時間",distanceTemplate:"{distance} {units}",cumulativeCosts:"累積コスト",intermediateCosts:"中間コスト",optimizeRoute:"ルートの最適化",optimizingRoute:"ルートの最適化",clearRoute:"ルートの消去",signInRequired:"サインインが必要です",time:{min:"分",hr:"時間"},units:{kilometers:{name:"キロメートル",abbr:"km"},meters:{name:"メートル",abbr:"m"},miles:{name:"マイル",abbr:"マイル"},feet:{name:"フィート",abbr:"ft"},yards:{name:"ヤード",abbr:"yd"},nauticalMiles:{name:"海里",abbr:"nm"}},traffic:{average:"通常",none:"交通情報なし",heavy:"多い交通量",light:"少ない交通量"},errors:{unableToLoadServiceMetadata:"ルート サービスを読み込めません。 これは、サービスにアクセスできないことが原因と考えられます。",unableToRoute:"ストップ間のルート検索はできません。",unknownError:"エラーが発生しているようです。"}});

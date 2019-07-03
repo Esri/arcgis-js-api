@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","../../geometry/Point","./FeatureSet"],function(e,l,t){return e.createSubclass({declaredClass:"esri.tasks.support.ImageServiceIdentifyResult",properties:{catalogItemVisibilities:null,catalogItems:{value:null,type:t},location:{value:null,type:l},name:null,objectId:null,properties:null,value:null}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Point","./FeatureSet"],function(e,t,o,r,p,i,s,l){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.catalogItemVisibilities=null,t.catalogItems=null,t.location=null,t.name=null,t.objectId=null,t.processedValues=null,t.properties=null,t.value=null,t}return o(t,e),r([i.property({json:{write:!0}})],t.prototype,"catalogItemVisibilities",void 0),r([i.property({type:l,json:{write:!0}})],t.prototype,"catalogItems",void 0),r([i.property({type:s,json:{write:!0}})],t.prototype,"location",void 0),r([i.property({json:{write:!0}})],t.prototype,"name",void 0),r([i.property({json:{write:!0}})],t.prototype,"objectId",void 0),r([i.property({json:{write:!0}})],t.prototype,"processedValues",void 0),r([i.property({json:{write:!0}})],t.prototype,"properties",void 0),r([i.property({json:{write:!0}})],t.prototype,"value",void 0),t=r([i.subclass("esri.tasks.support.ImageServiceIdentifyResult")],t)}(i.declared(p))});

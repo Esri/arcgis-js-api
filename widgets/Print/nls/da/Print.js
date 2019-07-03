@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Udskriv",title:"Titel",fileName:"Filnavn",titlePlaceHolder:"Titel på fil",fileNamePlaceHolder:"Filnavn",formatDefaultOption:"Vælg format",fileFormatTitle:"Filformat",layoutTitle:"Sideopsætning",layoutDefaultOption:"Vælg sideopsætning",scale:"Indstil skala",scaleLabel:"målestok",reset:"nulstil",author:"Forfatter",copyright:"Copyright",legend:"Medtag forklaring",lock:"lås",swap:"ombyt",panelToggle:"Panel-skift",advancedOptions:"Avancerede indstillinger",width:"Bredde",height:"Højde",dpi:"DPI",attribution:"Inkludér attribution",layoutTab:"Layout",mapOnlyTab:"Kun kort",untitled:"uden titel",pending:"Eksporterer",ready:"Åbn denne/dette",linkReady:"Åbn i nyt vindue.",error:"Vælg denne/dette for at fjerne den/det.",sceneViewError:"Udskrivning understøttes ikke i SceneView.",serviceError:"Der ser ud til at have været en fejl.",export:"Eksportér",exportDescription:"Eksport. Eksporterede filer vil blive vist nedenfor.",exportText:"Eksporterede filer",exportHint:"Dine eksporterede filer vil blive vist her.","a3-landscape":"A3 På langs","a3-portrait":"A3 På højkant","a4-landscape":"A4 På langs","a4-portrait":"A4 På højkant","letter-ansi-a-landscape":"Letter ANSI A På langs","letter-ansi-a-portrait":"Letter ANSI A På højkant","tabloid-ansi-b-landscape":"Tabloid ANSI B På langs","tabloid-ansi-b-portrait":"Tabloid ANSI B På højkant"});

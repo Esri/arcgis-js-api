@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","./has"],function(e,n,r){function u(e){return null!=e}function o(e){return null==e}function t(e,n){return u(e)?n(e):null}function l(e){return e}function c(e){return o(e)&&r("dojo-debug-messages")&&console.error("Expected value to not be null",(new Error).stack),e}Object.defineProperty(n,"__esModule",{value:!0}),n.isSome=u,n.isNone=o,n.map=t,n.unwrap=l,n.expect=c});
+define(["require","exports","./has"],function(n,r,e){function u(n){return null!=n}function t(n){return null==n}function o(n,r){return u(n)?r(n):null}function a(n){return n}function f(n,r){return u(n)?n:"function"==typeof r?r():r}function l(n){return t(n)&&(e("dojo-debug-messages")||e("esri-2d-debug"))&&console.error("Expected value to not be null",(new Error).stack),n}function i(n,r){var e=new Array;return n.forEach(function(n){var t=r(n);u(t)&&e.push(t)}),e}function c(n,r){for(var e=new Array,u=0,t=n;u<t.length;u++){var o=t[u];e.push(s(o,null,r))}return e}function p(n,r){for(var e=0,u=n;e<u.length;e++){s(u[e],null,r)}}function s(n,r,e){return u(n)?e(n):r}function h(n,r){return u(n)?r(n):null}function v(n,r){for(var e=0,t=n;e<t.length;e++){var o=t[e],a=r(o);if(u(a))return a}return null}function m(n){for(var r=[],e=1;e<arguments.length;e++)r[e-1]=arguments[e];for(var u=n,t=0;t<r.length&&u;)u=u[r[t++]];return u}Object.defineProperty(r,"__esModule",{value:!0}),r.isSome=u,r.isNone=t,r.applySome=o,r.unwrap=a,r.unwrapOr=f,r.expect=l,r.mapSome=i,r.mapMany=c,r.forEachSome=p,r.mapOr=s,r.andThen=h,r.mapSomeFirst=v,r.get=m});

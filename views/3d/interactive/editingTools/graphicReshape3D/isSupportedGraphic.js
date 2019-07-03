@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/maybe"],function(e,o,r){function t(e){return r.isSome(e)&&("polygon"===e.type||"polyline"===e.type)}function n(e){return t(e.geometry)}Object.defineProperty(o,"__esModule",{value:!0}),o.isSupportedGeometry=t,o.isSupportedGraphic=n});

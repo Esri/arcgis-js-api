@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Obeleživači",goToBookmark:"Idi na obeleživač",noBookmarksHeading:"Nema obeleživača",noBookmarksDescription:"Dodajte obeleživače svojoj mapi i oni će se pojaviti ovde.",disabledHeading:"Obeleživači onemogućeni",disabledDescription:"Dodajte MapView da omogućite obeleživače."});
+define({addBookmark:"Dodaj obeleživač",disabledHeading:"Obeleživači onemogućeni",disabledDescription:"Dodajte MapView da omogućite obeleživače.",goToBookmark:"Idi na obeleživač",noBookmarksHeading:"Nema obeleživača",noBookmarksDescription:"Dodajte obeleživače svojoj mapi i oni će se pojaviti ovde.",title:"Naslov",addPlaceholder:"Unesi naslov obeleživača",addingBookmark:"Dodavanje obeleživača",widgetLabel:"Obeleživači"});

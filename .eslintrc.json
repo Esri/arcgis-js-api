@@ -5,6 +5,7 @@
   },
   "globals": {
     "ArrayBuffer": false,
+    "DataView": false,
     "Float32Array": false,
     "Float64Array": false,
     "Int8Array": false,

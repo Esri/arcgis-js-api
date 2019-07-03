@@ -1,114 +1,66 @@
 precision mediump float;
 
-#include <materials/constants.glsl>
-#include <materials/utils.glsl>
-#include <materials/vv.glsl>
-#include <materials/effects.glsl>
-
-attribute vec2 a_pos;
-attribute vec4 a_vertexOffsetAndTex;
-attribute vec4 a_id;                   // objectId in RGBA components
 attribute vec4 a_color;
 attribute vec4 a_outlineColor;
 attribute vec4 a_sizeAndOutlineWidth;
-attribute float a_visible;             // one byte controlling the vertex visibility (separate buffer)
+attribute vec2 a_vertexOffset;
+attribute vec4 a_texAndBitSet;
 
-#ifdef VV
-attribute highp vec4 a_vv;
+#include <materials/vcommon.glsl>
+#include <materials/icon/common.glsl>
+
+vec2 getMarkerSize(inout vec2 offset, inout vec2 baseSize, inout float outlineSize, in float referenceSize, in float bitSet) {
+#ifdef VV_SIZE
+  //float f = getSize(baseSize.y) / baseSize.y; // ratio by which vv resizes the marker
+  //float sizeFactor = baseSize.y / referenceSize; // ratio for multilayer symbols
+  float r = getSize(baseSize.y) / referenceSize;
+  baseSize.xy *= r;
+  offset.xy *= r;
+  float scaleSymbolProportionally = getBit(bitSet, 3);
+  outlineSize *= scaleSymbolProportionally * (r - 1.0) + 1.0;
 #endif
+  return baseSize;
+}
 
-uniform highp mat3 u_dvsMat3;
-uniform highp mat3 u_displayMat3;
-uniform highp mat3 u_displayViewMat3;
-uniform vec2 u_mosaicSize;            // mosaic size in pixels
-
-varying lowp vec4 v_color;
-varying mediump vec2 v_tex;           // texture coordinates used to sample the sprite atlas
-varying lowp float v_transparency;    // the calculated transparency to be applied by the fragment shader.
-varying mediump vec2 v_size;          // icon size in px
-varying float v_visible;
-
-#ifdef SDF
-varying lowp vec4 v_outlineColor;
-varying mediump float v_outlineWidth;
-varying float v_overridingOutlineColor;
-#endif
-
-#ifdef HIGHLIGHT
-varying float v_isThinGeometry;
-#endif // HIGHLIGHT
-
-#ifdef ID
-varying highp vec4 v_id;
-#endif
-
-vec2 getMarkerSize(inout vec2 offset, in vec2 baseSize, in float vvSize) {
-  float f = getVVSize(baseSize.y, vvSize);
-  vec2 size = vec2(f * baseSize.x / baseSize.y, f);
-
-  offset *= (size / baseSize);
-  return size;
+vec3 getOffset(in vec2 in_offset, float a_bitSet) {
+  float isMapAligned = getBit(a_bitSet, 0);
+  vec3  offset       = getRotation() * vec3(in_offset, 0.0);
+  return getMatrix(isMapAligned) * offset;
 }
 
 void main()
 {
-  vec2 offset = a_vertexOffsetAndTex.xy;
-  vec2 a_tex = a_vertexOffsetAndTex.zw + SIGNED_BYTE_TO_UNSIGNED;
-  vec2 a_size = a_sizeAndOutlineWidth.xy;
-  float a_bitset = a_sizeAndOutlineWidth.w;
+  INIT;
 
-  float isMapAligned = getBit(a_bitset, 0);
-  float isColorLocked = getBit(a_bitset, 1);
-  float isThinGeometry = getBit(a_bitset, 2);
-  mat3 offsetMat3 = isMapAligned * u_displayViewMat3 + (1.0 - isMapAligned) * u_displayMat3;
+  vec2  a_size   = a_sizeAndOutlineWidth.xy * a_sizeAndOutlineWidth.xy / 256.0;
+  vec2  a_offset = a_vertexOffset / 16.0;
+  vec2  a_tex    = a_texAndBitSet.xy; // + SIGNED_BYTE_TO_UNSIGNED;
+  float a_outlineSize = a_sizeAndOutlineWidth.z * a_sizeAndOutlineWidth.z / 256.0;
+  float a_bitSet = a_texAndBitSet.z;
 
-  v_transparency = 1.0;
-  v_color = a_color;
-  v_size = a_size;
-  v_tex = a_tex / u_mosaicSize; // texture coords and transparency
-  v_visible = a_visible;
-
-#ifdef ID
-  v_id = a_id;
-#endif
-
-#ifdef VV_OPACITY
-  v_transparency = getVVOpacity(a_vv.z);
-#endif
-
-#ifdef VV_COLOR
-  v_color = getVVColor(a_vv.y, a_color, isColorLocked);
-#endif // VV_COLOR
-
-#ifdef VV_SIZE
-  v_size = getMarkerSize(offset, a_size, a_vv.x);
-#endif
-
-#ifdef VV_ROTATION
-  offset = (getVVRotationMat3(a_vv.w) * vec3(offset, 0.0)).xy;
-#endif
+  // MG: We should try and unify the bitset, here isColorLocked is the second bit.
+  // Somewhat ugly to have to pass the index to getColor
+  v_color    = getColor(a_color, a_bitSet, 1);
+  v_opacity  = getOpacity(a_bitSet, 1);
+  v_size     = getMarkerSize(a_offset, a_size, a_outlineSize, a_sizeAndOutlineWidth.w * a_sizeAndOutlineWidth.w / 256.0, a_bitSet);
+  v_id       = norm(a_id);
+  v_filters  = getFilterFlags();
+  v_tex      = a_tex / u_mosaicSize; // texture coords and transparency
+  v_pos      = u_dvsMat3 * vec3(a_pos, 1.0) + getOffset(a_offset, a_bitSet);
 
 #ifdef SDF
+  v_isThin   = getBit(a_bitSet, 2);
   #ifdef VV_COLOR
     // this is true only if we have SDF and color VV
-    v_overridingOutlineColor = isThinGeometry;
+    v_overridingOutlineColor = v_isThin;
   #else
     v_overridingOutlineColor = 0.0;
   #endif
 
-  offset *= 2.0;
-  v_outlineColor = getEffectColor(a_outlineColor, a_visible);
-  // YF: in practice v_size.x and v_size.y are identical since we're mostly dealing with sms
-  v_outlineWidth = min(a_sizeAndOutlineWidth.z, max(v_size.x - 0.99, 0.0));
+  v_outlineWidth = min(a_outlineSize, max(max(v_size.x, v_size.y) - 0.99, 0.0));
+  v_outlineColor = getEffectColor(a_outlineColor, v_filters);
+  v_distRatio = a_texAndBitSet.w / 126.0; // 126 = 64.0 (encoding) * internal sdf ratio 126/64 (texture size = 126 / geom size = 64)
 #endif
 
-#ifdef HIGHLIGHT
-  v_isThinGeometry = isThinGeometry;
-#endif
-
-  vec3 pos = u_dvsMat3 * vec3(a_pos, 1.0) + offsetMat3 * vec3(offset, 0.0);
-
-  applyFilter(v_color, pos, a_visible);
-
-  gl_Position = vec4(pos, 1.0);
+  gl_Position = vec4(applyFilter(v_color, v_pos, v_filters), 1.0);
 }

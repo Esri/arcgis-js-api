@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./MomentElementViewModel"],function(e,r,t,o,n,s){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=o([n.subclass("esri.widgets.Directions.CalendarViewModel")],r)}(n.declared(s))});

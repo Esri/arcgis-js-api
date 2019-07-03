@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Mät",hint:"Börja mäta genom att klicka i kartan för att placera den första punkten",unsupported:"2D-avståndsmätning stöds bara i MapView.",distance:"Avstånd",newMeasurement:"Ny mätning",mode:"Läge",modes:{auto:"Auto",planar:"Plan",geodesic:"Geodetisk"},unit:"Enhet",units:{metric:"Metriska",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mile",inches:"Tum",feet:"Fot",yards:"Yard","nautical-miles":"Nautiska mil","us-feet":"Fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

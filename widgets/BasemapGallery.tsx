@@ -324,11 +324,6 @@ class BasemapGallery extends declared(Widget) {
       [CSS.itemError]: item.state === "error"
     };
 
-    const loader =
-      item.state === "loading" ? (
-        <div class={CSS.loader} key="esri-basemap-gallery__loader" />
-      ) : null;
-
     return (
       <li
         aria-selected={isSelected}
@@ -341,7 +336,6 @@ class BasemapGallery extends declared(Widget) {
         tabIndex={tabIndex}
         title={tooltip}
       >
-        {loader}
         <img alt="" class={CSS.itemThumbnail} src={thumbnailSource} />
         <div class={CSS.itemTitle}>{title}</div>
       </li>

@@ -125,11 +125,11 @@
     },
     "maxScale": {
       "type": "number",
-      "description": "Represents the maximum scale at which the layer definition will be applied."
+      "description": "Represents the maximum scale (most zoomed in) at which the layer is visible in the view. If the web scene is zoomed in beyond this scale, the layer will not be visible. A value of 0 means the layer does not have a maximum scale. If set, the maxScale value should always be smaller than the minScale value, and greater than or equal to the service specification."
     },
     "minScale": {
       "type": "number",
-      "description": "Represents the minimum scale at which the layer definition will be applied."
+      "description": "Represents the minimum scale (most zoomed out) at which the layer is visible in the view. If the web scene is zoomed out beyond this scale, the layer will not be visible. A value of 0 means the layer does not have a minimum scale. If set, the minScale value should always be larger than the maxScale value, and lesser than or equal to the service specification."
     },
     "name": {
       "type": "string",

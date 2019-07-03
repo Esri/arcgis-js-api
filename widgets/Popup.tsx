@@ -45,6 +45,7 @@
  * @see [Sample - Dock positions with popup](../sample-code/popup-docking-position/index.html)
  * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
  * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
+ * @see [Sample - Popup with edit action](../sample-code/popup-editaction/index.html)
  * @see [Sample - Popup with DOM node](../sample-code/popup-domnode/index.html)
  * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
  * @see module:esri/widgets/Popup/PopupViewModel
@@ -57,20 +58,19 @@
 /// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
 
 // dojo
-import domGeometry = require("dojo/dom-geometry");
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Popup/nls/Popup";
-import { DOWN_ARROW, END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from "dojo/keys";
 
 // esri
 import { SpatialReference } from "esri/geometry";
 import Graphic = require("esri/Graphic");
+import { substitute } from "esri/intl";
 import EsriMap = require("esri/Map");
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
-import esriLang = require("esri/core/lang");
 import Logger = require("esri/core/Logger");
 import { create } from "esri/core/promiseUtils";
 import { ScreenPoint } from "esri/core/screenUtils";
@@ -174,6 +174,9 @@ const CSS = {
   headerTitle: "esri-popup__header-title",
   content: "esri-popup__content",
   footer: "esri-popup__footer",
+  footerHasPagination: "esri-popup__footer--has-pagination",
+  footerHasActions: "esri-popup__footer--has-actions",
+  footerHasActionsMenu: "esri-popup__footer--has-actions-menu",
   // buttons
   button: "esri-popup__button",
   buttonDisabled: "esri-popup__button--disabled",
@@ -286,8 +289,8 @@ async function loadFeatureWidget(): Promise<FeatureModule> {
 
 const declaredClass = "esri.widgets.Popup";
 const logger = Logger.getLogger(declaredClass);
-const ACTIONS_SHOW_MENU_THRESHOLD = 2;
-const ACTIONS_HIDE_TEXT_THRESHOLD = 2;
+const MAX_INLINE_ACTIONS = 3;
+const MAX_INLINE_ACTIONS_WITH_PAGINATION = MAX_INLINE_ACTIONS - 1;
 
 @subclass(declaredClass)
 class Popup extends declared(Widget) {
@@ -397,7 +400,6 @@ class Popup extends declared(Widget) {
     this._destroySpinner();
     this._handles && this._handles.destroy();
     this._handles = null;
-    this.viewModel = null;
   }
 
   //--------------------------------------------------------------------------
@@ -456,11 +458,11 @@ class Popup extends declared(Widget) {
    * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
    * they appear in the array.
    *
-   * The [trigger-action](#event:trigger-action) event fires each time an action in the popup is clicked.
+   * The [trigger-action](#event-trigger-action) event fires each time an action in the popup is clicked.
    * This event should be used to execute custom code for each action clicked. For example, if you would
    * like to add a `zoom-out` action to the popup that zooms the view out several LODs, you would
    * define the zoom-out code in a separate function. Then you would call the custom `zoom-out` function
-   * in the [trigger-action](#event:trigger-action) event handler. See the sample code
+   * in the [trigger-action](#event-trigger-action) event handler. See the sample code
    * snippet below for more details on how this works.
    *
    * Actions are defined with the properties listed in the {@link module:esri/support/actions/ActionButton} or {@link module:esri/support/actions/ActionToggle} classes.
@@ -474,6 +476,7 @@ class Popup extends declared(Widget) {
    *
    * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
    * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
+   * @see [Sample - Popup with edit action](../sample-code/popup-editaction/index.html)
    *
    * @example
    * // Defines an action to zoom out from the selected feature
@@ -518,37 +521,15 @@ class Popup extends declared(Widget) {
    */
 
   @property({
-    dependsOn: ["viewModel.visible", "actionsMenuEnabled"]
+    dependsOn: ["viewModel.visible"]
   })
   @renderable()
   set actionsMenuOpen(value: boolean) {
     this._set("actionsMenuOpen", !!value);
   }
   get actionsMenuOpen(): boolean {
-    return this.viewModel.visible && this.actionsMenuEnabled ? this._get("actionsMenuOpen") : false;
+    return this.viewModel.visible ? this._get("actionsMenuOpen") : false;
   }
-
-  //----------------------------------
-  //  actionsMenuEnabled
-  //----------------------------------
-
-  /**
-   * Indicates whether [actions](#actions) within the popup should display in a menu item.
-   *
-   * | actionsMenuEnabled = false | actionsMenuEnabled = true |
-   * | -------------------------- | ------------------------- |
-   * | ![actions49](../../assets/img/guide/whats-new/410/popup-actions-49.png) | ![actions410](../../assets/img/guide/whats-new/410/popup-actions-410.png) |
-   *
-   * @name actionsMenuEnabled
-   * @instance
-   * @type {boolean}
-   * @default true
-   * @since 4.11
-   * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
-   */
-  @property()
-  @renderable()
-  actionsMenuEnabled = true;
 
   //----------------------------------
   //  alignment
@@ -627,6 +608,11 @@ class Popup extends declared(Widget) {
    * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer},
    * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer},
    * {@link module:esri/layers/StreamLayer} and {@link module:esri/layers/ImageryLayer}).
+   *
+   * ::: esri-md class="panel trailer-1"
+   * Starting with version 4.12, {@link module:esri/PopupTemplate} content can no longer be set using a
+   * wildcard, e.g. `*`. Instead, set the `defaultPopupTemplateEnabled` property to `true`.
+   * :::
    *
    * @instance
    * @name defaultPopupTemplateEnabled
@@ -874,9 +860,7 @@ class Popup extends declared(Widget) {
   //  featureMenuOpen
   //----------------------------------
 
-  /**
-   * @todo document
-   */
+  // This property works when used as a param of the `popup.open()` method
 
   @property({
     dependsOn: ["viewModel.visible"]
@@ -1302,6 +1286,8 @@ class Popup extends declared(Widget) {
    * @param {string} [options.title] - Sets the [title](#title) of the popup.
    * @param {string | HTMLElement | module:esri/widgets/Widget} [options.content] - Sets the the [content](#content) of the popup.
    * @param {module:esri/geometry/Geometry} [options.location] - Sets the popup's [location](#location), which is the geometry used to position the popup.
+   * @param {boolean} [options.fetchFeatures=false] - When `true`, indicates the popup should fetch the content of this feature and display it. If no {@link module:esri/PopupTemplate} exists, a default template is created for the layer if
+   * [defaultPopupTemplateEnabled](#defaultPopupTemplateEnabled) = `true`. In order for this option to work, there must be a valid `view` and `location` set.
    * @param {module:esri/Graphic[]} [options.features] - Sets the popup's [features](#features), which populate the title and content of the popup based on each graphic's {@link module:esri/PopupTemplate}.
    * @param {Promise[]} [options.promises] - Sets pending [promises](#promises) on the popup. The popup will display once the promises resolve. Each promise must resolve to an array of {@link module:esri/Graphic Graphics}.
    * @param {boolean} [options.featureMenuOpen=false] - **Since:** 4.5 <br> This property enables multiple features in a popup to display in a list rather than displaying the first selected feature. Setting this to `true`
@@ -1317,6 +1303,14 @@ class Popup extends declared(Widget) {
    *    content: "This is a point of interest"  // content displayed in the popup
    *   });
    * });
+   *
+   * @example
+   *  view.on("click", function(event){
+   *    view.popup.open({
+   *      location: event.mapPoint,  // location of the click on the view
+   *      fetchFeatures: true // display the content for the selected feature if a popupTemplate is defined.
+   *    });
+   *  });
    *
    * @example
    * view.popup.open({
@@ -1348,7 +1342,6 @@ class Popup extends declared(Widget) {
 
     if (this.get("viewModel.view.widthBreakpoint") === "xsmall") {
       setOptions.collapsed = true;
-      options.updateLocationEnabled = true;
     }
 
     this.set(setOptions);
@@ -1387,7 +1380,7 @@ class Popup extends declared(Widget) {
   }
 
   /**
-   * Triggers the [trigger-action](#event:trigger-action) event and executes the [action](#actions)
+   * Triggers the [trigger-action](#event-trigger-action) event and executes the [action](#actions)
    * at the specified index in the [actions](#actions) array.
    *
    * @param {number} actionIndex - The index of the [action](#actions) to execute.
@@ -1408,12 +1401,10 @@ class Popup extends declared(Widget) {
       featureMenuOpen,
       featureNavigationEnabled,
       featureWidgets,
-      visible,
-      actionsMenuEnabled
+      visible
     } = this;
 
     const {
-      allActions,
       content,
       featureCount,
       pendingPromisesCount,
@@ -1421,10 +1412,14 @@ class Popup extends declared(Widget) {
       title
     } = this.viewModel;
 
-    const actionsCount = allActions && allActions.length;
     const featureNavigationVisible = featureCount > 1 && featureNavigationEnabled;
-    const isFeatureMenuOpen = featureCount > 1 && featureMenuOpen;
-    const isActionsMenuOpen = actionsCount > 1 && actionsMenuOpen;
+    const inlineActionCount = featureNavigationVisible
+      ? MAX_INLINE_ACTIONS_WITH_PAGINATION
+      : MAX_INLINE_ACTIONS;
+    const dividedActions = this._divideActions(inlineActionCount);
+    const { inlineActions, menuActions } = dividedActions;
+    const isFeatureMenuOpen = featureNavigationVisible && featureMenuOpen;
+    const isActionsMenuOpen = menuActions.length > 1 && actionsMenuOpen;
     const pageText =
       featureNavigationVisible && this._getPageText(featureCount, selectedFeatureIndex);
     const contentNode = this._renderContent();
@@ -1664,64 +1659,40 @@ class Popup extends declared(Widget) {
 
     const actionsMenuLabel = actionsMenuOpen ? i18nCommon.close : i18nCommon.open;
 
-    const inlineActions = this._getInlineActions();
+    const actionsMenuToggleNode = menuActions.length ? (
+      <div
+        key={buildKey("actions-menu-button")}
+        class={this.classes(CSS.button, CSS.actionsMenuButton)}
+        role="button"
+        id={`${this.id}-actions-menu-button`}
+        aria-haspopup="true"
+        aria-controls={actionsMenuOpen ? `${this.id}-actions-menu` : null}
+        tabIndex={0}
+        bind={this}
+        onclick={this._toggleActionsMenu}
+        onkeydown={this._toggleActionsMenu}
+        afterCreate={this._focusActionsMenuButtonNode}
+        afterUpdate={this._focusActionsMenuButtonNode}
+        aria-label={actionsMenuLabel}
+        title={actionsMenuLabel}
+      >
+        <span aria-hidden="true" class={CSS.iconActionsMenu} />
+      </div>
+    ) : null;
+
     const inlineActionsNodes =
-      inlineActions &&
+      inlineActions.length &&
       inlineActions.toArray().map((action, index) =>
         this._renderAction({
           action,
           index,
           key: ACTIONS_KEY,
-          type: "inline",
-          showText: inlineActions.length < ACTIONS_HIDE_TEXT_THRESHOLD
+          type: "inline"
         })
       );
 
-    const inlineActionsContainer = inlineActionsNodes ? (
-      <div key="inline-actions-container" class={CSS.inlineActionsContainer}>
-        {inlineActionsNodes}
-      </div>
-    ) : null;
-
-    const actionsMenuToggleNode =
-      actionsMenuEnabled && actionsCount && !inlineActionsContainer ? (
-        <div
-          key={buildKey("actions-menu-button")}
-          class={this.classes(CSS.button, CSS.actionsMenuButton)}
-          role="button"
-          id={`${this.id}-actions-menu-button`}
-          aria-haspopup="true"
-          aria-controls={actionsMenuOpen ? `${this.id}-actions-menu` : null}
-          tabIndex={0}
-          bind={this}
-          onclick={this._toggleActionsMenu}
-          onkeydown={this._toggleActionsMenu}
-          afterCreate={this._focusActionsMenuButtonNode}
-          afterUpdate={this._focusActionsMenuButtonNode}
-          aria-label={actionsMenuLabel}
-          title={actionsMenuLabel}
-        >
-          <span aria-hidden="true" class={CSS.iconActionsMenu} />
-        </div>
-      ) : null;
-
-    const navigationNode = featureNavigationVisible ? (
-      <section key={buildKey("navigation")} class={this.classes(CSS.navigation)}>
-        {navigationButtonsNode}
-      </section>
-    ) : null;
-
-    const footerNode =
-      featureNavigationVisible || actionsCount ? (
-        <div key={buildKey("feature-buttons")} class={CSS.footer}>
-          {navigationNode}
-          {actionsMenuToggleNode}
-          {inlineActionsContainer}
-        </div>
-      ) : null;
-
-    const actionsNode =
-      actionsCount && actionsMenuOpen ? (
+    const menuActionsNode =
+      menuActions.length && actionsMenuOpen ? (
         <ul
           id={`${this.id}-actions-menu`}
           role="menu"
@@ -1733,8 +1704,43 @@ class Popup extends declared(Widget) {
           afterCreate={this._actionsMenuNodeUpdated}
           afterUpdate={this._actionsMenuNodeUpdated}
         >
-          {this._renderActions()}
+          {menuActions.toArray().map((action, index) =>
+            this._renderAction({
+              action,
+              index: index + inlineActionCount,
+              key: ACTIONS_KEY,
+              type: "menu-item"
+            })
+          )}
         </ul>
+      ) : null;
+
+    const inlineActionsContainer = inlineActionsNodes ? (
+      <div key="inline-actions-container" class={CSS.inlineActionsContainer}>
+        {inlineActionsNodes}
+        {actionsMenuToggleNode}
+        {menuActionsNode}
+      </div>
+    ) : null;
+
+    const navigationNode = featureNavigationVisible ? (
+      <section key={buildKey("navigation")} class={this.classes(CSS.navigation)}>
+        {navigationButtonsNode}
+      </section>
+    ) : null;
+
+    const footerClasses = {
+      [CSS.footerHasPagination]: featureNavigationVisible,
+      [CSS.footerHasActions]: !!inlineActions.length,
+      [CSS.footerHasActionsMenu]: !!menuActions.length
+    };
+
+    const footerNode =
+      featureNavigationVisible || inlineActions.length ? (
+        <div key={buildKey("feature-buttons")} class={this.classes(CSS.footer, footerClasses)}>
+          {inlineActionsContainer}
+          {navigationNode}
+        </div>
       ) : null;
 
     const featureMenuNode = this._renderFeatureMenuNode(
@@ -1743,14 +1749,11 @@ class Popup extends declared(Widget) {
       featureMenuId
     );
 
-    const infoText = esriLang.substitute(
-      {
-        total: featureWidgets.length
-      },
-      i18n.selectedFeatures
-    );
+    const infoText = substitute(i18n.selectedFeatures, {
+      total: featureWidgets.length
+    });
 
-    const menuNode = (
+    const featureMenuSectionNode = (
       <section key={buildKey("menu")} class={CSS.featureMenu}>
         <h2 class={CSS.featureMenuHeader}>{infoText}</h2>
         <nav
@@ -1797,8 +1800,8 @@ class Popup extends declared(Widget) {
       [CSS.isActionsMenuOpen]: visible && isActionsMenuOpen
     };
 
-    const menuTopNode = showButtonsTop ? [menuNode, actionsNode] : null;
-    const menuBottomNode = showButtonsBottom ? [menuNode, actionsNode] : null;
+    const menuTopNode = showButtonsTop ? featureMenuSectionNode : null;
+    const menuBottomNode = showButtonsBottom ? featureMenuSectionNode : null;
     const buttonsTopNode = showButtonsTop ? footerNode : null;
     const buttonsBottomNode = showButtonsBottom ? footerNode : null;
 
@@ -1845,15 +1848,18 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _getInlineActions(): Collection<Action> {
-    const { actionsMenuEnabled } = this;
+  private _divideActions(
+    inlineActionCount: number
+  ): {
+    inlineActions: Collection<Action>;
+    menuActions: Collection<Action>;
+  } {
     const { allActions } = this.viewModel;
 
-    if (actionsMenuEnabled && allActions.length >= ACTIONS_SHOW_MENU_THRESHOLD) {
-      return;
-    }
-
-    return allActions;
+    return {
+      inlineActions: allActions.slice(0, inlineActionCount),
+      menuActions: allActions.slice(inlineActionCount)
+    };
   }
 
   private _featureMenuOpenChanged(value: boolean): void {
@@ -1887,9 +1893,9 @@ class Popup extends declared(Widget) {
   }
 
   private _handleFeatureMenuKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === ESCAPE) {
+    if (key === "Escape") {
       event.stopPropagation();
       this._focusFeatureMenuButton = true;
       this.featureMenuOpen = false;
@@ -1898,9 +1904,9 @@ class Popup extends declared(Widget) {
   }
 
   private _handleActionMenuKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === ESCAPE) {
+    if (key === "Escape") {
       event.stopPropagation();
       this._focusActionsMenuButton = true;
       this.actionsMenuOpen = false;
@@ -1909,7 +1915,7 @@ class Popup extends declared(Widget) {
   }
 
   private _handleFeatureMenuItemKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
     const { _featureMenuNode } = this;
     const node = event.currentTarget as Element;
     const featureIndex = node["data-feature-index"] as number;
@@ -1921,7 +1927,7 @@ class Popup extends declared(Widget) {
     const items = _featureMenuNode.querySelectorAll("li");
     const count = items.length;
 
-    if (keyCode === UP_ARROW) {
+    if (key === "ArrowUp") {
       event.stopPropagation();
       const previousIndex = featureIndex - 1;
       const value = (previousIndex + count) % count;
@@ -1930,7 +1936,7 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    if (keyCode === DOWN_ARROW) {
+    if (key === "ArrowDown") {
       event.stopPropagation();
       const nextIndex = featureIndex + 1;
       const value = (nextIndex + count) % count;
@@ -1939,14 +1945,14 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    if (keyCode === HOME) {
+    if (key === "Home") {
       event.stopPropagation();
       const firstElement = items[0] as HTMLElement;
       firstElement.focus();
       return;
     }
 
-    if (keyCode === END) {
+    if (key === "End") {
       event.stopPropagation();
       const lastElement = items[items.length - 1] as HTMLElement;
       lastElement.focus();
@@ -1955,7 +1961,7 @@ class Popup extends declared(Widget) {
   }
 
   private _handleActionMenuItemKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
     const { _actionsMenuNode } = this;
     const node = event.currentTarget as Element;
     const actionIndex = node["data-action-index"] as number;
@@ -1967,7 +1973,7 @@ class Popup extends declared(Widget) {
     const items = _actionsMenuNode.querySelectorAll("li");
     const count = items.length;
 
-    if (keyCode === UP_ARROW) {
+    if (key === "ArrowUp") {
       event.stopPropagation();
       const previousIndex = actionIndex - 1;
       const value = (previousIndex + count) % count;
@@ -1976,7 +1982,7 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    if (keyCode === DOWN_ARROW) {
+    if (key === "ArrowDown") {
       event.stopPropagation();
       const nextIndex = actionIndex + 1;
       const value = (nextIndex + count) % count;
@@ -1985,14 +1991,14 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    if (keyCode === HOME) {
+    if (key === "Home") {
       event.stopPropagation();
       const firstElement = items[0] as HTMLElement;
       firstElement.focus();
       return;
     }
 
-    if (keyCode === END) {
+    if (key === "End") {
       event.stopPropagation();
       const lastElement = items[items.length - 1] as HTMLElement;
       lastElement.focus();
@@ -2001,14 +2007,14 @@ class Popup extends declared(Widget) {
   }
 
   private _handleMainKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === LEFT_ARROW) {
+    if (key === "ArrowLeft") {
       event.stopPropagation();
       this.previous();
     }
 
-    if (keyCode === RIGHT_ARROW) {
+    if (key === "ArrowRight") {
       event.stopPropagation();
       this.next();
     }
@@ -2056,9 +2062,8 @@ class Popup extends declared(Widget) {
     index: number;
     key: string;
     type: "menu-item" | "inline";
-    showText: boolean;
   }): VNode {
-    const { action, index, key, type, showText } = options;
+    const { action, index, key, type } = options;
 
     const actionHandle = watchUtils.watch(
       action,
@@ -2076,15 +2081,15 @@ class Popup extends declared(Widget) {
 
     const subActionTitle =
       actionTitle && selectedFeatureAttributes
-        ? esriLang.substitute(selectedFeatureAttributes, actionTitle)
+        ? substitute(actionTitle, selectedFeatureAttributes)
         : actionTitle;
     const subActionClass =
       actionClass && selectedFeatureAttributes
-        ? esriLang.substitute(selectedFeatureAttributes, actionClass)
+        ? substitute(actionClass, selectedFeatureAttributes)
         : actionClass;
     const subActionImage =
       actionImage && selectedFeatureAttributes
-        ? esriLang.substitute(selectedFeatureAttributes, actionImage)
+        ? substitute(actionImage, selectedFeatureAttributes)
         : actionImage;
 
     const iconClasses = {
@@ -2105,11 +2110,11 @@ class Popup extends declared(Widget) {
       [CSS.buttonDisabled]: action.disabled
     };
 
-    const textNode = showText ? (
+    const textNode = (
       <span key="text" class={CSS.actionText}>
         {subActionTitle}
       </span>
-    ) : null;
+    );
 
     const iconNode = (
       <span
@@ -2160,24 +2165,6 @@ class Popup extends declared(Widget) {
     return action.visible ? baseNode : null;
   }
 
-  private _renderActions(): VNode {
-    this._handles.remove(ACTIONS_KEY);
-
-    const { allActions } = this.viewModel;
-
-    if (!allActions) {
-      return;
-    }
-
-    const actionNodes = allActions
-      .map((action, index) =>
-        this._renderAction({ action, index, key: ACTIONS_KEY, type: "menu-item", showText: true })
-      )
-      .toArray();
-
-    return actionNodes;
-  }
-
   private _addSelectedFeatureIndexHandle(): void {
     const selectedFeatureIndexHandle = watchUtils.watch<number>(
       this,
@@ -2216,8 +2203,7 @@ class Popup extends declared(Widget) {
     const { features, featureWidgets } = this;
 
     if (!features || !features.length) {
-      featureWidgets.forEach((featureWidget) => featureWidget.destroy());
-      this._set("featureWidgets", []);
+      this._destroyFeatureWidgets();
       return;
     }
 
@@ -2336,9 +2322,9 @@ class Popup extends declared(Widget) {
       ? cssPropertyToInteger(mainComputedStyle.getPropertyValue("height"))
       : 0;
 
-    const contentBox = domGeometry.getContentBox(containerNode);
-    const popupWidth = contentBox.w + pointerOffset;
-    const popupHeight = Math.max(contentBox.h, contentMaxHeight, contentHeight) + pointerOffset;
+    const { height, width } = containerNode.getBoundingClientRect();
+    const popupWidth = width + pointerOffset;
+    const popupHeight = Math.max(height, contentMaxHeight, contentHeight) + pointerOffset;
 
     const isOutsideViewRight = this._isOutsideView({
       popupHeight,
@@ -2524,7 +2510,7 @@ class Popup extends declared(Widget) {
       return <div key={content} innerHTML={content} />;
     }
 
-    if (isWidget(content)) {
+    if (isWidget(content) && !content.destroyed) {
       return <div key={content}>{content.render()}</div>;
     }
 
@@ -2552,8 +2538,8 @@ class Popup extends declared(Widget) {
     }
 
     const { screenLocation } = this.viewModel;
-    const domGeometryBox = domGeometry.getContentBox(containerNode);
-    const positionStyle = this._calculatePositionStyle(screenLocation, domGeometryBox);
+    const { width } = containerNode.getBoundingClientRect();
+    const positionStyle = this._calculatePositionStyle(screenLocation, width);
 
     if (!positionStyle) {
       return;
@@ -2637,7 +2623,7 @@ class Popup extends declared(Widget) {
 
   private _calculatePositionStyle(
     screenLocation: ScreenPoint,
-    domGeometryBox: dojo.DomGeometryBox
+    domWidth: number
   ): PopupPositionStyle {
     const { dockEnabled, view } = this;
 
@@ -2654,11 +2640,11 @@ class Popup extends declared(Widget) {
       };
     }
 
-    if (!screenLocation || !domGeometryBox) {
+    if (!screenLocation || !domWidth) {
       return;
     }
 
-    const width = this._calculateFullWidth(domGeometryBox.w);
+    const width = this._calculateFullWidth(domWidth);
     const position = this._calculateAlignmentPosition(
       screenLocation.x,
       screenLocation.y,
@@ -2878,19 +2864,16 @@ class Popup extends declared(Widget) {
   }
 
   private _getPageText(featureCount: number, selectedFeatureIndex: number): string {
-    return esriLang.substitute(
-      {
-        index: selectedFeatureIndex + 1,
-        total: featureCount
-      },
-      i18n.pageText
-    );
+    return substitute(i18n.pageText, {
+      index: selectedFeatureIndex + 1,
+      total: featureCount
+    });
   }
 
   private _destroySpinner(): void {
     const { _spinner, view } = this;
     if (_spinner) {
-      view && view.ui.remove(this._spinner, SPINNER_KEY);
+      view && view.ui && view.ui.remove(this._spinner, SPINNER_KEY);
       _spinner.destroy();
       this._spinner = null;
     }
@@ -2969,6 +2952,7 @@ class Popup extends declared(Widget) {
       this.viewModel.selectedFeatureIndex = featureIndex;
     }
 
+    this.featureMenuOpen = false;
     this._focusFeatureMenuButton = true;
     this.scheduleRender();
   }

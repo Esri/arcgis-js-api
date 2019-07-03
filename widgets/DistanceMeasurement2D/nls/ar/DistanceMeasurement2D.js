@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"قياس",hint:"ابدأ بالقياس بالنقر على الخريطة لوضع النقطة الأولى",unsupported:"قياس المسافة ثنائية الأبعاد مدعوم فقط في MapView.",distance:"المسافة",newMeasurement:"قياس جديد",mode:"وضع",modes:{auto:"تلقائي",planar:"مسطح",geodesic:"جيوديسي"},unit:"وحدة",units:{metric:"متري",imperial:"الامبراطورية",kilometers:"كيلومتر",meters:"أمتار",miles:"أميال",inches:"بوصة",feet:"قدم",yards:"ياردة","nautical-miles":"ميل بحري","us-feet":"قدم (الولايات المتحدة)","degrees-minutes-seconds":"درجة دقيقة ثانية",degrees:"الدرجات"}});

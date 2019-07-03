@@ -8,6 +8,7 @@
  * **Known Limitations**
  *
  * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}. Instead, see {@link module:esri/views/SceneView#takeScreenshot SceneView.takeScreenshot()}.
+ * * There is no current support for printing {@link module:esri/views/layers/FeatureLayerView#highlight highlighted features}. Instead, see {@link module:esri/views/MapView#takeScreenshot MapView.takeScreenshot()}.
  * * {@link module:esri/layers/VectorTileLayer} printing requires ArcGIS Server 10.5.1 or later.
  * * {@link module:esri/layers/support/LabelClass Labels} currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
  * * {@link module:esri/layers/ImageryLayer} cannot be printed with ArcGIS Server 10.5.1 or earlier, or any Printing Service published with ArcMap.

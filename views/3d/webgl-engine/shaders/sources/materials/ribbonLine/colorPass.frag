@@ -2,7 +2,7 @@
 #include <util/fsPrecision.glsl>
 #include <util/slice.glsl>
 
-uniform vec4 eColor;
+uniform vec4 symbolColor;
 varying vec4 vColor;
 varying vec2 vtc;
 varying vec3 vpos;
@@ -20,5 +20,5 @@ void main() {
   }
 #endif
 
-  gl_FragColor = highlightSlice(eColor * vColor, vpos);
+  gl_FragColor = highlightSlice(symbolColor * vColor, vpos);
 }

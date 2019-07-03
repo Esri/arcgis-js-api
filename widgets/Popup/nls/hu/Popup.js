@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({zoom:"Nagyítás/kicsinyítés erre:",next:"Következő vektoros elem",previous:"Előző vektoros elem",dock:"Dokkolás",undock:"Dokkolás megszüntetése",pageText:"{index} / {total}",selectedFeature:"Kijelölt vektoros elem",selectedFeatures:"{total} eredmény",tooManyFields:"Ez a réteg túl sok mezőt tartalmaz, és néhány nem lesz látható."});

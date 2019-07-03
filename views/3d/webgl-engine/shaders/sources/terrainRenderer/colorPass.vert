@@ -1,5 +1,6 @@
 #include <util/vsPrecision.glsl>
 #include <terrainRenderer/skirts.glsl>
+#include <materials/water/normalsUtils.glsl>
 
 uniform mat4 proj;
 uniform mat4 view;
@@ -11,6 +12,10 @@ uniform float skirtScale;
 attribute vec3 position;
 attribute vec2 uv0;
 
+// ---------------------
+// This shader runs on the varying limit for IOS, so 
+// if more varyings are needed we have to start packing them
+// ---------------------
 varying vec3 vnormal;
 varying vec3 vpos;
 varying vec2 vtc;
@@ -25,8 +30,6 @@ varying vec2 vuv;
 
 #ifdef ATMOSPHERE
 uniform vec3 lightDirection;
-varying vec3 wpos;
-varying vec3 wview;
 varying vec3 wnormal;
 varying vec3 wlight;
 #endif
@@ -37,6 +40,8 @@ varying vec3 wlight;
 uniform vec4 overlayTexOffset;
 uniform vec4 overlayTexScale;
 varying vec4 vtcOverlay;
+varying vec3 tbnTangent;
+varying vec3 tbnBiTangent;
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
@@ -50,18 +55,12 @@ varying float screenSizeCosAngle;
 
 void main(void) {
   vpos = position;
+  vnormal = getLocalUp(vpos, origin);
 
-#if VIEWING_MODE == VIEWING_MODE_GLOBAL
-  vnormal = normalize(vpos + origin);
-#else
-  vnormal = vec3(0.0, 0.0, 1.0); // WARNING: up-axis dependent code
-#endif
-
-vec2 uv = uv0;
-vpos = applySkirts(uv, vpos, vnormal, skirtScale);
+  vec2 uv = uv0;
+  vpos = applySkirts(uv, vpos, vnormal, skirtScale);
 
 #ifdef ATMOSPHERE
-  wpos = (view * vec4(vpos, 1.0)).xyz;
   wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
   wlight = (view  * vec4(lightDirection, 1.0)).xyz;
 #endif
@@ -95,5 +94,13 @@ vpos = applySkirts(uv, vpos, vnormal, skirtScale);
 
 #ifdef OVERLAY
   vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
+  // calculate the vertex tangents and bitangents
+  #if VIEWING_MODE == VIEWING_MODE_GLOBAL
+    tbnTangent = normalize(cross(vec3(0.0, 0.0, 1.0), vnormal));
+    tbnBiTangent = normalize(cross(vnormal, tbnTangent));
+  #else
+    tbnTangent = vec3(1.0, 0.0, 0.0);
+    tbnBiTangent = normalize(cross(vnormal, tbnTangent));
+  #endif
 #endif
 }

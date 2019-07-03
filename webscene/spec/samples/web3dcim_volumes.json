@@ -13,14 +13,14 @@
               "type": "MeshSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Fill",
                   "material": {
                     "color": [
                       192,
                       192,
                       255
                     ]
-                  },
-                  "type": "Fill"
+                  }
                 }
               ]
             }
@@ -41,14 +41,14 @@
               "type": "MeshSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Fill",
                   "material": {
                     "color": [
                       255,
                       0,
                       0
                     ]
-                  },
-                  "type": "Fill"
+                  }
                 }
               ]
             }
@@ -96,9 +96,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "presentation": {
     "slides": [
       {

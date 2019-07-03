@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- leer -",validationErrors:{cannotBeNull:"Geben Sie einen Wert ein",outsideRange:"Wert sollte im folgenden Bereich liegen: {min}–{max}",invalidCodedValue:"Der Wert sollte einem der aufgeführten Werte entsprechen.",invalidType:"Kein gültiger Wert"}});
+define({empty:"- leer -",validationErrors:{cannotBeNull:"Geben Sie einen Wert ein",outsideRange:"Wert sollte zwischen {min} und {max} liegen",invalidCodedValue:"Der Wert sollte einem der aufgeführten Werte entsprechen.",invalidType:"Kein gültiger Wert"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- tom -",validationErrors:{cannotBeNull:"Indtast en værdi.",outsideRange:"Værdien skal være mellem: {min} â€“ {max}",invalidCodedValue:"Værdien skal være en af de angivne værdier.",invalidType:"Ikke en gyldig værdi"}});
+define({empty:"- tom -",validationErrors:{cannotBeNull:"Indtast en værdi.",outsideRange:"Værdien skal være mellem {min} og {max}",invalidCodedValue:"Værdien skal være en af de angivne værdier.",invalidType:"Ikke en gyldig værdi"}});

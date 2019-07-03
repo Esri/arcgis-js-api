@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Coupe",cancel:"Annuler",hint:"Commencez à découper en cliquant et en faisant glisser le curseur sur une surface de la scène",excludeHint:"Choisir une couche dans la vue pour l’exclure de la découpe",unsupported:"La découpe n’est pas prise en charge dans la vue cartographique.",multipleDisabled:"Une seule découpe peut être activée à la fois.",newSlice:"Nouvelle découpe",excludedLayers:"Couches exclues",pickLayer:"Choisir une couche dans la vue",excludeLayer:"Exclure une couche de la découpe",includeLayer:"Inclure une couche dans la découpe",ground:"Sol"});

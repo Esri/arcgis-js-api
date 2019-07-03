@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Řez",cancel:"Storno",hint:"Začněte řezat kliknutím a přetažením na povrch ve scéně",excludeHint:"Vyberte vrstvu v zobrazení, která bude vyloučena z řezu",unsupported:"Řez není podporován v MapView.",multipleDisabled:"V jednu chvíli může být aktivní pouze jeden řez",newSlice:"Nový řez",excludedLayers:"Vyloučené vrstvy",pickLayer:"Vybrat vrstvu ze zobrazení",excludeLayer:"Vyloučit vrstvu z řezu",includeLayer:"Zahrnout vrstvu do řezu",ground:"Základ"});

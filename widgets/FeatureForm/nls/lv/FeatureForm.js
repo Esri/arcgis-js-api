@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- tukšs -",validationErrors:{cannotBeNull:"Lūdzu ievadiet vērtību",outsideRange:"Vērtībai jābūt diapazonā {min}–{max}",invalidCodedValue:"Vērtībai jāatbilst kādai no uzskaitītajām vērtībām.",invalidType:"Nav derīga vērtība"}});
+define({empty:"- tukšs -",validationErrors:{cannotBeNull:"Lūdzu ievadiet vērtību",outsideRange:"Vērtībai jābūt diapazonā no {min} līdz {max}",invalidCodedValue:"Vērtībai jāatbilst kādai no uzskaitītajām vērtībām.",invalidType:"Nav derīga vērtība"}});

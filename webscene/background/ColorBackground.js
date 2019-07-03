@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/assignHelper","../../Color","../../core/accessorSupport/decorators","../../symbols/support/materialUtils","./Background"],function(r,o,e,t,n,c,l,p,s){var a=n({},p.colorAndTransparencyProperty,{nonNullable:!0});return function(r){function o(o){var e=r.call(this)||this;return e.type="color",e.color=new c([0,0,0,1]),e}e(o,r),n=o,o.prototype.clone=function(){return new n(this.cloneProperties())},o.prototype.cloneProperties=function(){return{color:this.color.clone()}};var n;return t([l.enumeration.serializable()({color:"color"})],o.prototype,"type",void 0),t([l.property(a)],o.prototype,"color",void 0),o=n=t([l.subclass("esri.webscene.background.ColorBackground")],o)}(l.declared(s))});

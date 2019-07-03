@@ -29,6 +29,8 @@
             "drawingInfo": {},
             "elevationInfo": {},
             "featureReduction": {},
+            "minScale": {},
+            "maxScale": {},
             "rangeInfos": {}
           },
           "additionalProperties": false

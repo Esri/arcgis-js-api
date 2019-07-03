@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,o,l,t){Object.defineProperty(r,"__esModule",{value:!0});var s=function(e){return t.glslifyDefineMap({VERTEX_COLORS:e.vertexColors,SLICE:e.slice})};r.colorPass={name:"color-color",shaders:function(e){return{vertexShader:s(e)+l.resolveIncludes("materials/color/color.vert"),fragmentShader:s(e)+l.resolveIncludes("materials/color/color.frag")}},attributes:o.Default3D}});

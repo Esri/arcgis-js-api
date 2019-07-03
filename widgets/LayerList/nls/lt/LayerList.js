@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Sluoksniai",noItemsToDisplay:"Šiuo metu nėra rodytinų elementų.",layerInvisibleAtScale:"Nematoma naudojant dabartinį mastelį",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});

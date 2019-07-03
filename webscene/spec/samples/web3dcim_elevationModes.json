@@ -46,6 +46,7 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
                         "material": {
                           "color": [
                             255,
@@ -53,7 +54,6 @@
                             0
                           ]
                         },
-                        "type": "Text",
                         "size": 12
                       }
                     ]
@@ -66,6 +66,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           0,
@@ -74,7 +75,6 @@
                         ],
                         "transparency": 40
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -116,6 +116,7 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
                         "material": {
                           "color": [
                             255,
@@ -123,7 +124,6 @@
                             0
                           ]
                         },
-                        "type": "Text",
                         "size": 12
                       }
                     ]
@@ -136,6 +136,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           0,
@@ -144,7 +145,6 @@
                         ],
                         "transparency": 40
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -185,6 +185,7 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
                         "material": {
                           "color": [
                             255,
@@ -192,7 +193,6 @@
                             0
                           ]
                         },
-                        "type": "Text",
                         "size": 12
                       }
                     ]
@@ -205,6 +205,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           0,
@@ -213,7 +214,6 @@
                         ],
                         "transparency": 40
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -254,6 +254,7 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
                         "material": {
                           "color": [
                             255,
@@ -261,7 +262,6 @@
                             0
                           ]
                         },
-                        "type": "Text",
                         "size": 12
                       }
                     ]
@@ -274,6 +274,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           0,
@@ -282,7 +283,6 @@
                         ],
                         "transparency": 40
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -324,6 +324,7 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
                         "material": {
                           "color": [
                             255,
@@ -331,7 +332,6 @@
                             0
                           ]
                         },
-                        "type": "Text",
                         "size": 12
                       }
                     ]
@@ -344,6 +344,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Object",
                       "material": {
                         "color": [
                           0,
@@ -352,7 +353,6 @@
                         ],
                         "transparency": 40
                       },
-                      "type": "Object",
                       "resource": {
                         "primitive": "sphere"
                       },
@@ -400,6 +400,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           255,
@@ -407,7 +408,6 @@
                           0
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -442,6 +442,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           128,
@@ -449,7 +450,6 @@
                           0
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -478,6 +478,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           128,
@@ -485,7 +486,6 @@
                           128
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -513,6 +513,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           128,
@@ -520,7 +521,6 @@
                           0
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -548,6 +548,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           128,
@@ -555,7 +556,6 @@
                           0
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -584,6 +584,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           128,
@@ -591,7 +592,6 @@
                           255
                         ]
                       },
-                      "type": "Line",
                       "size": 4
                     }
                   ]
@@ -618,6 +618,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Path",
                       "material": {
                         "color": [
                           128,
@@ -625,8 +626,8 @@
                           128
                         ]
                       },
-                      "type": "Path",
-                      "size": 50
+                      "width": 50,
+                      "height": 50
                     }
                   ]
                 }
@@ -670,6 +671,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -678,7 +680,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           255,
@@ -715,6 +716,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -723,7 +725,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           255,
@@ -778,9 +779,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Legenda",points:"Titik",lines:"Garis",polygons:"Polygon",creatingLegend:"Membuat legenda",noLegend:"Tidak ada legenda",dotValue:"1 Titik = {value} {unit}",currentObservations:"Observasi saat ini",previousObservations:"Observasi sebelumnya",high:"Tinggi",low:"Rendah",esriMetersPerSecond:"m/dtk",esriKilometersPerHour:"km/j",esriKnots:"knot",esriFeetPerSecond:"kaki/dtk",esriMilesPerHour:"mph",showNormField:"{field} dibagi oleh {normField}",showNormPct:"{field} sebagai persentase dari total",showRatio:"Rasio {field} ke {normField}",showRatioPercent:"{field} sebagai persentase dari {normField}",showRatioPercentTotal:"{field} sebagai persentase dari {field} dan {normField}"});

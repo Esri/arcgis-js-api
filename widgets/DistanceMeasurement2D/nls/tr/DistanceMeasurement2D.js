@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için haritaya tıklayarak ölçüme başlayın",unsupported:"2B alan ölçümü sadece MapView’da desteklenir.",distance:"Mesafe",newMeasurement:"Yeni Ölçüm",mode:"Mod",modes:{auto:"Otomatik",planar:"Düzlemsel",geodesic:"Jeodezik"},unit:"Birim",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz Mili","us-feet":"Fit (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

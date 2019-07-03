@@ -246,7 +246,7 @@ class Locate extends declared(Widget) {
   //----------------------------------
   /**
    * Indicates the scale to set on the view when navigating to the position of the geolocated
-   * result once a location is returned from the [track](#event:track) event.
+   * result once a location is returned from the [track](#event-track) event.
    * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
    * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
    * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
@@ -360,7 +360,7 @@ class Locate extends declared(Widget) {
    * Animates the view to the user's location.
    *
    * @return {Promise<Object>} Resolves to an object with the same specification as the event
-   *                   object defined in the [locate event](#event:locate).
+   *                   object defined in the [locate event](#event-locate).
    *
    * @method
    *

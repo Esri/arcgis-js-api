@@ -4,6 +4,10 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Additional options available for the popup layer.",
   "properties": {
+    "returnTopmostRaster": {
+      "type": "boolean",
+      "description": "Indicates whether or not only the topmost raster should be displayed."
+    },
     "showNoDataRecords": {
       "type": "boolean",
       "description": "Indicates whether or not the NoData records should be displayed."

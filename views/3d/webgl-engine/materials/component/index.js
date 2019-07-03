@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./ComponentMaterial","./VertexBufferLayout"],function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});!function(e){function t(e,t,n){return new r.ComponentMaterial(e,t,n)}e.create=t,e.vertexBufferLayout=n.createVertexBufferLayout}(t.ComponentMaterial||(t.ComponentMaterial={}))});

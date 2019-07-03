@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/assignHelper"],function(e,r,t){function a(e){switch(e.ESRI_externalColorMixMode){case"multiply":case"tint":case"ignore":break;default:e.ESRI_externalColorMixMode="tint"}return e}Object.defineProperty(r,"__esModule",{value:!0});var o={baseColorFactor:[1,1,1,1],metallicFactor:1,roughnessFactor:1},i={pbrMetallicRoughness:o,emissiveFactor:[0,0,0],alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1},l={ESRI_externalColorMixMode:"tint"};r.material=function(e){void 0===e&&(e={});var r=t({},o,e.pbrMetallicRoughness),n=a(t({},l,e.extras));return t({},i,e,{pbrMetallicRoughness:r,extras:n})};var n={magFilter:9729,minFilter:9987,wrapS:10497,wrapT:10497};r.textureSampler=function(e){return t({},n,e)}});

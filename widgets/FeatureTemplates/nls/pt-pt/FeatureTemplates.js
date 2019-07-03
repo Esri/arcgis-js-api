@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Modelos de elementos",filterPlaceholder:"Tipos de filtros",noMatches:"Não foram encontrados itens",noItems:"Não existam modelos para exibir"});

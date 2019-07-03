@@ -1,5 +1,7 @@
 /**
  * The LayerList widget provides a way to display a list of layers, and switching on/off their visibility.
+ * To hide layers in the map from the LayerList widget, set the
+ * {@link module:esri/layers/Layer#listMode listMode} property on the layer(s) to `hide`.
  *
  * @module esri/widgets/LayerList
  * @since 4.2
@@ -22,6 +24,7 @@
 
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
 
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
@@ -55,6 +58,8 @@ import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
+const ListItemCollection = Collection.ofType<ListItem>(ListItem);
+
 const CSS = {
   // layerlist classes
   base: "esri-layer-list esri-widget esri-widget--panel",
@@ -70,6 +75,7 @@ const CSS = {
   itemInvisibleAtScale: "esri-layer-list__item--invisible-at-scale",
   itemUpdating: "esri-layer-list__item--updating",
   itemChildren: "esri-layer-list__item--has-children",
+  itemSelectable: "esri-layer-list__item--selectable",
   itemContainer: "esri-layer-list__item-container",
   actionsMenu: "esri-layer-list__item-actions-menu",
   actionsMenuItem: "esri-layer-list__item-actions-menu-item",
@@ -215,29 +221,6 @@ class LayerList extends declared(Widget) {
   iconClass = CSS.widgetIcon;
 
   //----------------------------------
-  //  statusIndicatorsVisible
-  //----------------------------------
-
-  /**
-   * Option for enabling status indicators, which indicate whether or not each layer
-   * is loading resources.
-   *
-   * @name statusIndicatorsVisible
-   * @instance
-   *
-   * @type {boolean}
-   * @default true
-   * @since 4.5
-   *
-   * @example
-   * // disable status indicators for all layers listed in LayerList
-   * layerList.statusIndicatorsVisible = false;
-   */
-  @property()
-  @renderable()
-  statusIndicatorsVisible = true;
-
-  //----------------------------------
   //  errorsVisible
   //----------------------------------
 
@@ -333,6 +316,9 @@ class LayerList extends declared(Widget) {
 
   /**
    * A collection of {@link module:esri/widgets/LayerList/ListItem}s representing operational layers.
+   * To hide layers from the LayerList widget, set the
+   * {@link module:esri/layers/Layer#listMode listMode} property on the layer(s) to `hide`.
+   *
    * @name operationalItems
    * @instance
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
@@ -343,6 +329,68 @@ class LayerList extends declared(Widget) {
   @aliasOf("viewModel.operationalItems")
   @renderable()
   operationalItems: Collection<ListItem> = null;
+
+  //----------------------------------
+  //  selectionEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether list items may be selected by the user. When the user
+   * selects an item, it will become available in the [selectedItems](#selectedItems)
+   * property.
+   *
+   * @name selectionEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   *
+   * @see [selectedItems](#selectedItems)
+   */
+  @property()
+  @renderable()
+  selectionEnabled = false;
+
+  //----------------------------------
+  //  selectedItems
+  //----------------------------------
+
+  /**
+   * A collection of selected {@link module:esri/widgets/LayerList/ListItem}s representing operational layers
+   * selected by the user.
+   *
+   * @name selectedItems
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   * @readonly
+   *
+   * @see [selectionEnabled](#selectionEnabled)
+   */
+  @property()
+  @renderable()
+  selectedItems: Collection<ListItem> = new ListItemCollection();
+
+  //----------------------------------
+  //  statusIndicatorsVisible
+  //----------------------------------
+
+  /**
+   * Option for enabling status indicators, which indicate whether or not each layer
+   * is loading resources.
+   *
+   * @name statusIndicatorsVisible
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   * @since 4.5
+   *
+   * @example
+   * // disable status indicators for all layers listed in LayerList
+   * layerList.statusIndicatorsVisible = false;
+   */
+  @property()
+  @renderable()
+  statusIndicatorsVisible = true;
 
   //----------------------------------
   //  view
@@ -388,7 +436,7 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Triggers the [trigger-action](#event:trigger-action) event and executes
+   * Triggers the [trigger-action](#event-trigger-action) event and executes
    * the given {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle}.
    *
    * @param {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} - The action to execute.
@@ -443,9 +491,8 @@ class LayerList extends declared(Widget) {
     const titleKey = `${uid}__title`;
 
     const childrenLen = item.children.length;
-    const hasChildren = !!childrenLen;
     const hasError = !!item.error;
-
+    const hasChildren = !!childrenLen && !hasError;
     const errorMessage = hasError ? i18n.layerError : "";
 
     const { visibilityMode } = item;
@@ -462,9 +509,10 @@ class LayerList extends declared(Widget) {
 
     const itemClasses = {
       [CSS.itemChildren]: hasChildren,
-      [CSS.itemError]: !!errorMessage,
+      [CSS.itemError]: !!hasError,
       [CSS.itemUpdating]: item.updating && !parent && this.statusIndicatorsVisible,
-      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale
+      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
+      [CSS.itemSelectable]: this.selectionEnabled
     };
 
     const actionsCount = this._countActions(item.actionsSections);
@@ -560,14 +608,41 @@ class LayerList extends declared(Widget) {
 
     const errorBlock = hasError ? (
       <div key={`esri-layer-list__error`} class={CSS.errorMessage} role="alert">
-        <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
         <span>{errorMessage}</span>
       </div>
     ) : null;
 
+    const isSelected = this.selectedItems.indexOf(item) > -1;
+
+    const itemContainerProps = this.selectionEnabled
+      ? {
+          bind: this,
+          onclick: this._toggleSelection,
+          onkeydown: this._toggleSelection,
+          "data-item": item,
+          tabIndex: 0,
+          "aria-checked": isSelected ? "true" : "false",
+          role: "checkbox",
+          "aria-labelledby": titleKey
+        }
+      : {
+          bind: undefined,
+          onclick: undefined,
+          onkeydown: undefined,
+          "data-item": undefined,
+          tabIndex: undefined,
+          "aria-checked": undefined,
+          role: undefined,
+          "aria-labelledby": undefined
+        };
+
     return (
       <li key={item} class={this.classes(CSS.item, itemClasses)} aria-labelledby={titleKey}>
-        <div key={`esri-layer-list__list-item-container`} class={CSS.itemContainer}>
+        <div
+          key={`esri-layer-list__list-item-container`}
+          class={CSS.itemContainer}
+          {...itemContainerProps}
+        >
           {toggleChildren}
           {itemLabel}
           {actionsMenu}
@@ -581,6 +656,7 @@ class LayerList extends declared(Widget) {
   }
 
   private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
+    const { selectionEnabled } = this;
     const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
@@ -591,7 +667,7 @@ class LayerList extends declared(Widget) {
       [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
     };
 
-    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "checkbox";
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
     const title = item.title || i18n.untitledLayer;
     const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
     const titleNode = (
@@ -600,28 +676,59 @@ class LayerList extends declared(Widget) {
       </span>
     );
 
-    return parentVisibilityMode === inherited ? (
-      <div key={item} class={CSS.label}>
-        {titleNode}
-      </div>
-    ) : (
-      <div
-        key={item}
-        onclick={this._labelClick}
-        onkeydown={this._labelClick}
-        data-item={item}
-        data-parent-visibility={parentVisibilityMode}
-        tabindex="0"
-        aria-checked={item.visible ? "true" : "false"}
-        role={toggleRole}
-        aria-labelledby={titleKey}
-        class={CSS.label}
-      >
-        <span class={CSS.toggleVisible}>
-          <span class={this.classes(CSS.toggleVisibleIcon, toggleIconClasses)} aria-hidden="true" />
+    const visibilityIconNode = (
+      <span class={this.classes(CSS.toggleVisibleIcon, toggleIconClasses)} aria-hidden="true" />
+    );
+
+    const toggleProps = {
+      bind: this,
+      onclick: this._toggleVisibility,
+      onkeydown: this._toggleVisibility,
+      "data-item": item,
+      "data-parent-visibility": parentVisibilityMode,
+      tabIndex: 0,
+      "aria-checked": item.visible ? "true" : "false",
+      role: toggleRole,
+      "aria-labelledby": titleKey
+    };
+
+    const noToggleProps: Object = {
+      bind: undefined,
+      onclick: undefined,
+      onkeydown: undefined,
+      "data-item": undefined,
+      "data-parent-visibility": undefined,
+      tabIndex: undefined,
+      "aria-checked": undefined,
+      role: undefined,
+      "aria-labelledby": undefined
+    };
+
+    const iconProps = selectionEnabled ? toggleProps : noToggleProps;
+    const labelProps = selectionEnabled ? noToggleProps : toggleProps;
+
+    const labelNode = (
+      <div key={item} class={CSS.label} {...labelProps}>
+        <span class={CSS.toggleVisible} {...iconProps}>
+          {visibilityIconNode}
         </span>
         {titleNode}
       </div>
+    );
+
+    const hasError = !!item.error;
+
+    const errorIconNode = hasError ? (
+      <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
+    ) : null;
+
+    return parentVisibilityMode === inherited || hasError ? (
+      <div key={item} class={CSS.label}>
+        {errorIconNode}
+        {titleNode}
+      </div>
+    ) : (
+      labelNode
     );
   }
 
@@ -884,12 +991,12 @@ class LayerList extends declared(Widget) {
   }
 
   private _getIconImageStyles(source: Action | ListItemPanel): HashMap<string> {
-    const image = (source.declaredClass =
-      "esri.widgets.LayerList.ListItemPanel" ||
+    const image =
+      source.declaredClass === "esri.widgets.LayerList.ListItemPanel" ||
       source.declaredClass === "esri.support.Action.ActionButton" ||
       source.declaredClass === "esri.support.Action.ActionToggle"
         ? (source as ActionButton | ActionToggle | ListItemPanel).image
-        : null);
+        : null;
 
     return {
       "background-image": image ? `url("${image}")` : null
@@ -908,6 +1015,7 @@ class LayerList extends declared(Widget) {
     }
 
     item.actionsOpen = toggledValue;
+    event.stopPropagation();
   }
 
   @accessibleHandler()
@@ -918,6 +1026,8 @@ class LayerList extends declared(Widget) {
     if (panel) {
       panel.open = !panel.open;
     }
+
+    event.stopPropagation();
   }
 
   @accessibleHandler()
@@ -931,16 +1041,18 @@ class LayerList extends declared(Widget) {
     }
 
     this.triggerAction(action, item);
+    event.stopPropagation();
   }
 
   @accessibleHandler()
-  private _labelClick(event: Event): void {
+  private _toggleVisibility(event: Event): void {
     const node = event.currentTarget as Element;
     const parentVisibilityMode = node.getAttribute("data-parent-visibility");
     const item = node["data-item"];
     if (!(parentVisibilityMode === VISIBILITY_MODES.exclusive && item.visible)) {
       item.visible = !item.visible;
     }
+    event.stopPropagation();
   }
 
   @accessibleHandler()
@@ -948,6 +1060,32 @@ class LayerList extends declared(Widget) {
     const node = event.currentTarget as Element;
     const item = node["data-item"];
     item.open = !item.open;
+    event.stopPropagation();
+  }
+
+  @accessibleHandler()
+  private _toggleSelection(event: MouseEvent | KeyboardEvent): void {
+    const isControlSelection = event.metaKey || event.ctrlKey;
+    const node = event.currentTarget as Element;
+    const item = node["data-item"] as ListItem;
+    const { selectedItems } = this;
+    const found = selectedItems.indexOf(item) > -1;
+
+    const { length } = selectedItems;
+    const singleMatch = found && length === 1;
+
+    if (isControlSelection) {
+      found ? selectedItems.remove(item) : selectedItems.add(item);
+      return;
+    }
+
+    if (length && !singleMatch) {
+      selectedItems.removeAll();
+      selectedItems.add(item);
+      return;
+    }
+
+    found ? selectedItems.remove(item) : selectedItems.add(item);
   }
 }
 

@@ -81,7 +81,7 @@
 
   .esri-directions__departure-time-controls .esri-date-picker,
   .esri-directions__departure-time-controls .esri-time-picker {
-    flex: 1 50%;
+    flex: 1 50% auto;
     border-top: 0;
   }
 
@@ -130,7 +130,7 @@
 
   .esri-directions__summary {
     display: flex;
-    flex: 1;
+    flex: 1 1 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;

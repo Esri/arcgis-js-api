@@ -21,7 +21,9 @@
         },
         {
           "properties": {
-            "elevationInfo": {}
+            "elevationInfo": {},
+            "minScale": {},
+            "maxScale": {}
           },
           "additionalProperties": false
         }

@@ -132,7 +132,6 @@
               "popupInfo": {
                 "title": "Facilities: {description}",
                 "fieldInfos": [],
-                "description": null,
                 "showAttachments": true,
                 "mediaInfos": []
               }
@@ -144,14 +143,7 @@
               "visibility": true,
               "opacity": 1,
               "title": "Feature Service",
-              "itemId": "f6df665cdf3d45e094e0e2379cf90f1c",
-              "popupInfo": {
-                "title": "Damage to Residential Buildings: {firstname}",
-                "fieldInfos": [],
-                "description": null,
-                "showAttachments": true,
-                "mediaInfos": []
-              }
+              "itemId": "f6df665cdf3d45e094e0e2379cf90f1c"
             }
           ]
         }

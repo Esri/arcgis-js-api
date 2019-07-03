@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({root:{widgetLabel:"Legend",points:"Points",lines:"Lines",polygons:"Polygons",creatingLegend:"Creating legend",noLegend:"No legend",dotValue:"1 Dot = {value} {unit}",currentObservations:"Current observations",previousObservations:"Previous observations",high:"High",low:"Low",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knots",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} divided by {normField}",showNormPct:"{field} as a percent of the total",showRatio:"Ratio of {field} to {normField}",showRatioPercent:"{field} as a percent of {normField}",showRatioPercentTotal:"{field} as a percent of {field} and {normField}"},ar:1,bs:1,ca:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,hi:1,hr:1,hu:1,id:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sl:1,sr:1,sv:1,th:1,tr:1,uk:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1});

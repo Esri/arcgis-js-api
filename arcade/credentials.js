@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../core/promiseUtils"],function(e,n,r){return function(){function e(){this._username="",this._password="",this._token=null}return e.fromUserName=function(n,r,t){var o=new e;return o._username=n,o._password=r,o._token=null,o},e.fromArcadeDictionary=function(n){var r=new e;return n.hasField("username")&&(r._username=n.field("username")),n.hasField("password")&&(r._password=n.field("password")),n.hasField("token")&&(r._token=n.field("token")),r},e.fromToken=function(n){var r=new e;return r._token=n,r},Object.defineProperty(e.prototype,"username",{get:function(){return this._username},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"password",{get:function(){return this._password},enumerable:!0,configurable:!0}),e.prototype.getToken=function(){var e=this;return r.create(function(n,r){null===e._token?r("No Token Provided"):n(e._token)})},e}()});

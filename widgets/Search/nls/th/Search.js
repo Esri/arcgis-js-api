@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"ค้นหา",searchButtonTitle:"ค้นหา",clearButtonTitle:"ลบคำค้นหา",placeholder:"ค้นหาที่อยู่หรือสถานที่",searchIn:"ค้นหาใน",all:"ทั้งหมด",allPlaceholder:"ค้นหาที่อยู่หรือสถานที่",emptyValue:"กรุณากรอกคำค้นหา",untitledResult:"ไม่มีหัวเรื่อง",untitledSource:"แหล่งข้อมูลที่ไม่มีชื่อ",noResults:"ไม่มีผลลัพธ์",noResultsFound:"ไม่พบผลลัพธ์",noResultsFoundForValue:"ไม่พบผลลัลัพธ์สำหรับ {value}.",showMoreResults:"แสดงผลลัพธ์เพิ่ม",hideMoreResults:"ซ่อน",searchResult:"ผลลัพธ์การค้นหา",moreResultsHeader:"ผลลัพธ์เพิ่มเติม",useCurrentLocation:"ใช้ตำแหน่งที่ตั้งปัจจุบัน"});

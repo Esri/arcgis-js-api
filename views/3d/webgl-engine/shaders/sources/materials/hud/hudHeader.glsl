@@ -18,5 +18,5 @@ varying float voccluded;
 #endif
 
 #ifdef DEBUG_DRAW_BORDER
-varying vec3 debugBorderCoords;
+varying vec4 debugBorderCoords;
 #endif

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({zoom:"Zooma till",next:"Nästa geoobjekt",previous:"Föregående geoobjekt",dock:"Docka",undock:"Frigör",pageText:"{index} av {total}",selectedFeature:"Valt geoobjekt",selectedFeatures:"{total} resultat",tooManyFields:"Det här lagret har för många fält. Några kommer inte att visas."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Könyvjelzők",goToBookmark:"Ugrás könyvjelzőre",noBookmarksHeading:"Nincs könyvjelző",noBookmarksDescription:"Adjon hozzá könyvjelzőket a térképéhez, és azok itt fognak megjelenni.",disabledHeading:"Könyvjelzők letiltva",disabledDescription:"MapView hozzáadása a könyvjelzők engedélyezéséhez."});
+define({addBookmark:"Könyvjelző hozzáadása",disabledHeading:"Könyvjelzők letiltva",disabledDescription:"MapView hozzáadása a könyvjelzők engedélyezéséhez.",goToBookmark:"Ugrás könyvjelzőre",noBookmarksHeading:"Nincs könyvjelző",noBookmarksDescription:"Adjon hozzá könyvjelzőket a térképéhez, és azok itt fognak megjelenni.",title:"Cím",addPlaceholder:"Adja meg a könyvjelző címét",addingBookmark:"Könyvjelző hozzáadása",widgetLabel:"Könyvjelzők"});

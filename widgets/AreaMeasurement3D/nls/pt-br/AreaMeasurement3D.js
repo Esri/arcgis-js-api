@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Medir",hint:"Inicie a medição clicando na cena para posicionar seu primeiro ponto",unsupported:"A medição de área 3D é suportada somente no SceneView.",perimeterLength:"Perímetro",area:"Área",unit:"Unidade",notApplicable:"n/a",newMeasurement:"Nova Medição",units:{metric:"Métrico",imperial:"Imperial","square-kilometers":"Quilômetros Quadrados","square-meters":"Metros Quadrados","square-miles":"Milhas Quadradas","square-inches":"Polegadas Quadradas","square-feet":"Pés Quadrados","square-yards":"Jardas Quadradas","square-us-feet":"Pés Quadrados (US)",acres:"Acres",ares:"Ares",hectares:"Hectares"}});

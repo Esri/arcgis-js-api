@@ -25,6 +25,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           255,
@@ -33,7 +34,6 @@
                         ],
                         "transparency": 10
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -53,13 +53,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -126,6 +126,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           0,
@@ -134,7 +135,6 @@
                         ],
                         "transparency": 30
                       },
-                      "type": "Line",
                       "size": 3
                     }
                   ]
@@ -143,13 +143,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OID",
@@ -263,6 +263,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -271,7 +272,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           255,
@@ -288,13 +288,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -392,6 +392,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Icon",
                       "material": {
                         "color": [
                           255,
@@ -400,7 +401,6 @@
                         ],
                         "transparency": 10
                       },
-                      "type": "Icon",
                       "resource": {
                         "primitive": "circle"
                       },
@@ -420,13 +420,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -493,6 +493,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Object",
                       "material": {
                         "color": [
                           128,
@@ -501,7 +502,6 @@
                         ],
                         "transparency": 10
                       },
-                      "type": "Object",
                       "resource": {
                         "primitive": "sphere"
                       },
@@ -514,13 +514,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -602,13 +602,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -675,6 +675,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Path",
                       "material": {
                         "color": [
                           0,
@@ -683,8 +684,8 @@
                         ],
                         "transparency": 30
                       },
-                      "type": "Path",
-                      "size": 300
+                      "width": 300,
+                      "height": 300
                     }
                   ]
                 }
@@ -692,13 +693,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OID",
@@ -812,6 +813,7 @@
                   "type": "LineSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Line",
                       "material": {
                         "color": [
                           0,
@@ -820,7 +822,6 @@
                         ],
                         "transparency": 30
                       },
-                      "type": "Line",
                       "size": 5
                     }
                   ]
@@ -829,13 +830,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OID",
@@ -950,6 +951,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -958,7 +960,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           255,
@@ -975,13 +976,13 @@
             }
           },
           "popupInfo": {
-            "showAttachments": true,
             "popupElements": [
               {
                 "type": "attachments",
                 "displayType": "list"
               }
             ],
+            "showAttachments": true,
             "fieldInfos": [
               {
                 "fieldName": "OBJECTID",
@@ -1089,9 +1090,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Bật/tắt Điều hướng",toggle:"Chuyển đổi để dịch chuyển hoặc xoay dưới dạng 3D"});

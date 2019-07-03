@@ -1,0 +1,7 @@
+@mixin classedSizeSlider() {
+  @include smartMappingSlider(esri-classed-size-slider);
+}
+
+@if $include_ClassedSizeSlider == true {
+  @include classedSizeSlider();
+}

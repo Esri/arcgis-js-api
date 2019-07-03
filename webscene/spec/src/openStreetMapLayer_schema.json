@@ -13,10 +13,6 @@
       "type": "boolean",
       "description": "Applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
     },
-    "itemId": {
-      "type": "string",
-      "description": "String containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
-    },
     "layerType": {
       "type": "string",
       "description": "String indicating the layer type.",

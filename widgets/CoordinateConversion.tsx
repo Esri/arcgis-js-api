@@ -43,15 +43,15 @@
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/CoordinateConversion/nls/CoordinateConversion";
-import { ENTER } from "dojo/keys";
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { eventKey } from "esri/core/events";
 import global = require("esri/core/global");
 import Logger = require("esri/core/Logger");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
 import Point = require("esri/geometry/Point");
@@ -76,7 +76,7 @@ import Format = require("esri/widgets/CoordinateConversion/support/Format");
 
 // esri.widgets.support
 import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, accessibleHandler, storeNode } from "esri/widgets/support/widget";
+import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
 
@@ -494,10 +494,10 @@ class CoordinateConversion extends declared(Widget) {
   }
 
   private _processUserInput(event: KeyboardEvent | MouseEvent): void {
-    const { keyCode } = event as KeyboardEvent,
+    const key = eventKey(event as KeyboardEvent),
       vm = this.viewModel;
 
-    if (keyCode === ENTER || !keyCode) {
+    if (key === "Enter" || !key) {
       const format = this._coordinateInput["data-format"] as Format,
         userInput = this._coordinateInput.value;
 

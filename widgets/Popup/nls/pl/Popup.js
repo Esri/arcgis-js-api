@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({zoom:"Powiększ do",next:"Następny obiekt",previous:"Poprzedni obiekt",dock:"Dokuj",undock:"Wyłącz dokowanie",pageText:"{index} z {total}",selectedFeature:"Wybrany obiekt",selectedFeatures:"Liczba wyników: {total}",tooManyFields:"Ta warstwa zawiera zbyt wiele pól i niektóre nie będą wyświetlane."});

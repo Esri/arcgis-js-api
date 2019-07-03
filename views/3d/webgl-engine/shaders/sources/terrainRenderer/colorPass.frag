@@ -6,6 +6,7 @@
 #include <util/slice.glsl>
 #include <terrainRenderer/overlay.glsl>
 
+uniform vec3 camPos;
 uniform vec3 lightDirection;
 uniform vec3 viewDirection;
 uniform sampler2D depthTex;
@@ -40,8 +41,6 @@ varying vec2 vuv;
 #endif
 
 #ifdef ATMOSPHERE
-varying vec3 wpos;
-varying vec3 wview;
 varying vec3 wnormal;
 varying vec3 wlight;
 #endif
@@ -59,10 +58,14 @@ const float diffuseHardness = 2.5;
 const float sliceOpacity = 0.2;
 
 #ifdef OVERLAY
-uniform sampler2D overlay0Tex;
-uniform sampler2D overlay1Tex;
+uniform sampler2D ovInnerColorTex;
+uniform sampler2D ovOuterColorTex;
+uniform sampler2D ovInnerWaterTex;
+uniform sampler2D ovOuterWaterTex;
 uniform float overlayOpacity;
 varying vec4 vtcOverlay;
+varying vec3 tbnTangent;
+varying vec3 tbnBiTangent;
 #endif
 
 #ifdef RECEIVE_SHADOWS
@@ -88,7 +91,8 @@ vec3 atmosphere(vec3 lightPos, vec3 normal, vec3 view) {
 
   float ldn = dot(Ln, Nn);
   float diffComp = max(0.0, ldn);
-  float vdn = 1.0 - dot(view, Nn);
+  // clamp necessary here because values might cause flickering: #21549
+  float vdn = clamp(1.0 - dot(view, Nn), 0.0, 1.0);
   float ndv = dot(view, Ln);
 
   vec3 diffContrib = surfaceColor * diffComp;
@@ -103,6 +107,8 @@ vec3 atmosphere(vec3 lightPos, vec3 normal, vec3 view) {
   return (diffContrib + specularContrib) * rollOff;
 }
 #endif
+
+const float GAMMA_EXP = 0.4545454545; // 1.0 / 2.2
 
 void main() {
   vec3 a = ambient;
@@ -120,9 +126,9 @@ void main() {
   vec4 tileColor = texture2D(tex, vtc) * opacity;
 
 #ifdef OVERLAY
-  vec4 overlayColor = getOverlayColor(overlay0Tex, overlay1Tex, vtcOverlay, overlayOpacity);
-
-  // tileColor and overlayTexCols have pre-multiplied alpha
+  // This is the information from the overlay. The .w channel contains
+  // the overlay specification.
+  vec4 overlayColor  = overlayOpacity * getOverlayColor(ovInnerColorTex, ovOuterColorTex, vtcOverlay);
   tileColor = tileColor * (1.0 - overlayColor.a) + overlayColor;
 #endif
 
@@ -147,6 +153,24 @@ void main() {
   vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
 
   gl_FragColor = vec4(evaluateSceneLighting(normal, albedo, shadow, 1.0 - ssao, additionalLight), tileColor.a);
+
+#ifdef OVERLAY
+  // For draped water overlays we have to mix between the scene light hitting the ground and 
+  // the water color in case of draped transparent surfaces. 
+  vec4 overlayWaterMask = getOverlayColor(ovInnerWaterTex, ovOuterWaterTex, vtcOverlay);
+  // for water polygons we use the length to guess if this normal got interpolated by
+  // the mipmap and filtering process, e.g. at the border of a polygon.
+  // These pixel are creating an unintended outline bevause of normal vs. default water mask 0,0,0 values. 
+  float waterNormalLength = length(overlayWaterMask);
+  if (waterNormalLength > 0.95) {
+    mat3 tbnMatrix = mat3(tbnTangent, tbnBiTangent, vnormal);
+    vec4 waterColor = overlayOpacity * getOverlayWaterColor(tileColor, overlayWaterMask, overlayColor, vpos, shadow, vnormal, camPos, tbnMatrix);
+    // un-gamma the ground color to mix in linear space
+    vec4 groundColor = vec4(pow(gl_FragColor.rgb, vec3(2.2)), gl_FragColor.w);
+    waterColor = mix(groundColor, waterColor, waterColor.a);
+    gl_FragColor = vec4(pow(waterColor.rgb, vec3( GAMMA_EXP )), waterColor.a);
+  }
+#endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
   // This is only used for debug rendering the screenSize perspective

@@ -23,9 +23,11 @@ $background-color--active: $Calcite_Highlight_Blue_100 !default;
 
 // Offset
 $background-color--offset: offset-background-color($background-color, 4%);
+$background-color--offset-subtle: offset-background-color($background-color, 2.75%);
 
 // Buttons
 $button-color: $Calcite_Highlight_Blue_350 !default;
+$button-color--bright: $Calcite_Blue_a100 !default;
 $button-color--hover: darken($button-color, 10%) !default;
 $button-color--inverse: $interactive-font-color--inverse !default;
 
@@ -35,9 +37,15 @@ $bacground-color--overlay: rgba(0, 0, 0, 0.7) !default;
 $opacity--disabled: 0.4 !default;
 $interactive-font-color--disabled: rgba($interactive-font-color, $opacity--disabled) !default;
 $font-color--placeholder: rgba($font-color, $opacity--disabled) !default;
-$border-color: $Calcite_Gray_300 !default;
-$border-color--subtle: $Calcite_Gray_200 !default;
+$border-color: rgba($interactive-font-color, 0.3) !default;
+$border-color--subtle: rgba($interactive-font-color, 0.15) !default;
+$border-color--contrast: rgba($interactive-font-color, 0.4) !default;
 
 // Error
 $border-color--error: $Calcite_Vibrant_Red_200 !default;
 $font-color--error: $Calcite_Red_a250 !default;
+$background-color--error: rgba($font-color--error, 0.1);
+
+// Smart Mapping Sliders
+$smartmapping-slider__thumb-background-color: $interactive-font-color !default;
+$smartmapping-slider__ramp-stroke-color: $interactive-font-color !default;

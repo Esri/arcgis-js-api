@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Izmeri",hint:"Začnite meriti tako, da kliknete na 3D-prizor in postavite vašo prvo točko",unsupported:"3D-meritev neposredne linije je podprta samo v pregledovalniku 3D-prizorov.",distance:"Razdalja",direct:"Neposredno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Enota",newMeasurement:"Nova meritev",units:{metric:"Metrično",imperial:"Anglosaško",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Palci",feet:"Čevlji",yards:"Jardi","nautical-miles":"Navtične milje","us-feet":"Čevlji (ZDA)","degrees-minutes-seconds":"DMS",degrees:"Stopinje"}});

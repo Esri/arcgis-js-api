@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({statsAvg:"Rata-rata: ${avg}",count:"Jumlah: ${count}",percent:"${num}%",high:"Tinggi",low:"Rendah",color:{changeMinMaxToolTIp:"Tipe dalam sebuah nilai.",handleToolTip:"Nilai data yang cocok dengan warna.",maxValueToolTip:"Ketikkan nilai data terbesar yang diinginkan.",minValueToolTip:"Ketikkan nilai data terkecil yang diinginkan.",changeSymbol:"Ubah simbol"},size:{handleToolTip:"Cocokkan nilai data dengan ukuran simbol.",sizeInputBoxLines:"Tetapkan ketebalan garis dari 0 hingga 18 piksel.",sizeInputBoxPoints:"Tetapkan ukuran simbol dari 1 hingga 120 piksel"}});

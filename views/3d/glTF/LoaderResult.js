@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/assignHelper"],function(e,r,o){function t(e){return void 0===e&&(e={}),o({color:[1,1,1],opacity:1,alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1,castShadows:!0,receiveShadows:!0,receiveAmbientOcclustion:!0,textureColor:null,textureNormal:null,colorMixMode:"multiply"},e)}function a(e,r){return void 0===r&&(r={}),{data:e,parameters:o({wrap:o({s:10497,t:10497},r.wrap),noUnpackFlip:!0,mipmap:!1},r)}}Object.defineProperty(r,"__esModule",{value:!0}),r.makeMaterialParameters=t,r.makeTextureSource=a});
+define(["require","exports","../../../core/tsSupport/assignHelper"],function(e,t,r){function o(e){return void 0===e&&(e={}),r({color:[1,1,1],opacity:1,alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1,castShadows:!0,receiveShadows:!0,receiveAmbientOcclustion:!0,textureColor:null,textureNormal:null,textureOcclusion:null,textureEmissive:null,textureMetallicRoughness:null,emissiveFactor:[0,0,0],metallicFactor:1,roughnessFactor:1,colorMixMode:"multiply"},e)}function a(e,t){return void 0===t&&(t={}),{data:e,parameters:r({wrap:r({s:10497,t:10497},t.wrap),noUnpackFlip:!0,mipmap:!1},t)}}Object.defineProperty(t,"__esModule",{value:!0}),t.makeMaterialParameters=o,t.makeTextureSource=a});

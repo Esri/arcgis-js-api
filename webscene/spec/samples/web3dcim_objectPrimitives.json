@@ -13,6 +13,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       255,
@@ -20,7 +21,6 @@
                       0
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "sphere"
                   },
@@ -75,6 +75,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       128,
@@ -82,7 +83,6 @@
                       128
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "cube"
                   },
@@ -110,6 +110,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       245,
@@ -117,7 +118,6 @@
                       0
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "invertedCone"
                   },
@@ -144,6 +144,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       0,
@@ -151,7 +152,6 @@
                       255
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "cone"
                   },
@@ -178,6 +178,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       255,
@@ -185,7 +186,6 @@
                       0
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "diamond"
                   },
@@ -213,6 +213,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       0,
@@ -220,7 +221,6 @@
                       255
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "tetrahedron"
                   },
@@ -268,9 +268,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "presentation": {
     "slides": [
       {

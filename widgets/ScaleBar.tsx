@@ -3,7 +3,7 @@
  * The widget respects various coordinate systems and displays units in metric or non-metric values.
  * Metric values shows either kilometers or meters depending on the scale, and likewise non-metric values shows miles and feet depending on the scale.
  * When working with Web Mercator or geographic coordinate systems the scale bar takes into account projection distortion and dynamically adjusts the scale bar.
- * The ScaleBar sample, which uses a map using the Web Mercator projection, shows this behavior.
+ * The [ScaleBar widget sample](../sample-code/widgets-scalebar/index.html), which uses a map that has the Web Mercator projection, shows this behavior.
  * Open the sample and note that as you pan the map south towards the equator the scale bar gets shorter and as you pan north it gets longer.
  *
  * When the scale bar is inside the map, the actual location of the scale bar is used to calculate the scale.
@@ -38,7 +38,6 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import domGeometry = require("dojo/dom-geometry");
 import * as i18n from "dojo/i18n!esri/widgets/ScaleBar/nls/ScaleBar";
 
 // esri.core
@@ -70,6 +69,8 @@ const CSS = {
   labelContainer: "esri-scale-bar__label-container",
   rulerLabelContainer: "esri-scale-bar__label-container--ruler",
   lineLabelContainer: "esri-scale-bar__label-container--line",
+  topLabelContainer: "esri-scale-bar__label-container--top",
+  bottomLabelContainer: "esri-scale-bar__label-container--bottom",
   label: "esri-scale-bar__label",
   line: "esri-scale-bar__line",
   topLine: "esri-scale-bar__line--top",
@@ -264,7 +265,8 @@ class ScaleBar extends declared(Widget) {
 
     return (
       <div
-        afterCreate={this._handleRootCreation}
+        afterCreate={this._handleRootCreateOrUpdate}
+        afterUpdate={this._handleRootCreateOrUpdate}
         bind={this}
         class={this.classes(CSS.base, baseClasses)}
       >
@@ -298,7 +300,6 @@ class ScaleBar extends declared(Widget) {
         </div>
         <div class={this.classes(CSS.labelContainer, CSS.rulerLabelContainer)}>
           <div class={CSS.label}>0</div>
-          <div class={CSS.label}>{scaleBarProps.value}</div>
           <div class={CSS.label}>{unitLabel}</div>
         </div>
       </div>
@@ -308,10 +309,13 @@ class ScaleBar extends declared(Widget) {
   private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): VNode {
     const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
-
+    const labelContainerClasses = {
+      [CSS.topLabelContainer]: labelPosition === "top",
+      [CSS.bottomLabelContainer]: labelPosition === "bottom"
+    };
     const label = (
       <div
-        class={this.classes(CSS.labelContainer, CSS.lineLabelContainer)}
+        class={this.classes(CSS.labelContainer, CSS.lineLabelContainer, labelContainerClasses)}
         key="esri-scale-bar__label"
       >
         <div class={CSS.label}>{unitLabel}</div>
@@ -342,11 +346,14 @@ class ScaleBar extends declared(Widget) {
     );
   }
 
-  private _handleRootCreation(node: Element): void {
+  private _handleRootCreateOrUpdate(node: Element): void {
     const vm = this.viewModel;
 
     if (vm) {
-      const { x, y } = domGeometry.position(node, true);
+      const rect = node.getBoundingClientRect();
+      const x = rect.left + window.pageXOffset;
+      const y = rect.top + window.pageYOffset;
+
       vm.scaleComputedFrom = createScreenPoint(x, y);
     }
   }

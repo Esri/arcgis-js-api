@@ -30,7 +30,6 @@ $basemap_toggle_size: $button-width--double !default;
   }
 
   .esri-basemap-toggle__container {
-    z-index: 2;
     @include defaultBoxShadow();
   }
 
@@ -45,14 +44,12 @@ $basemap_toggle_size: $button-width--double !default;
   .esri-basemap-toggle__image--secondary {
     margin-top: $basemap_toggle_offset;
     margin-left: $basemap_toggle_offset;
-    z-index: 1;
     @include defaultBoxShadow();
     animation: esri-basemap-slide 2000ms ease-in-out;
   }
 
   .esri-basemap-toggle__image-overlay {
     position: absolute;
-    z-index: 3;
     width: 100%;
     height: 100%;
     transition: background-color 125ms ease-in-out;
@@ -84,7 +81,6 @@ $basemap_toggle_size: $button-width--double !default;
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 5;
         width: 100%;
         height: 100%;
         content: "";

@@ -17,6 +17,7 @@
               "type": "LineSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Line",
                   "material": {
                     "color": [
                       0,
@@ -25,7 +26,6 @@
                     ],
                     "transparency": 30
                   },
-                  "type": "Line",
                   "size": 3
                 }
               ]
@@ -51,6 +51,7 @@
               "type": "LineSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Path",
                   "material": {
                     "color": [
                       255,
@@ -59,8 +60,8 @@
                     ],
                     "transparency": 30
                   },
-                  "type": "Path",
-                  "size": 300
+                  "width": 300,
+                  "height": 300
                 }
               ]
             }
@@ -102,9 +103,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

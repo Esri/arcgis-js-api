@@ -27,6 +27,7 @@
  * @see [Editor.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Editor.scss)
  * @see [Sample - Edit features with the Editor widget](../sample-code/widgets-editor-basic/index.html)
  * @see [Sample - Editor widget with configurations](../sample-code/widgets-editor-configurable/index.html)
+ * @see [Sample - Popup with edit action](../sample-code/popup-editaction/index.html)
  * @see module:esri/widgets/Editor/EditorViewModel
  * @see module:esri/widgets/Editor/Workflow
  * @see module:esri/views/ui/DefaultUI
@@ -53,15 +54,15 @@ import Map from "@dojo/framework/shim/Map";
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Editor/nls/Editor";
 import * as i18nTemplates from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
-import { ENTER, SPACE } from "dojo/keys";
 
 // esri
 import { Polygon, Polyline } from "esri/geometry";
 import Graphic = require("esri/Graphic");
+import { substitute } from "esri/intl";
 
 // esri.core
+import { eventKey } from "esri/core/events";
 import HandleOwner = require("esri/core/HandleOwner");
-import { substitute } from "esri/core/lang";
 import { init, on, watch, whenNot } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -76,6 +77,7 @@ import MapView = require("esri/views/MapView");
 // esri.widgets
 import FeatureForm = require("esri/widgets/FeatureForm");
 import FeatureTemplates = require("esri/widgets/FeatureTemplates");
+import Spinner = require("esri/widgets/Spinner");
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Editor
@@ -233,13 +235,26 @@ class Editor extends declared(Widget, HandleOwner) {
       init(this, "viewModel", (viewModel) => {
         this._featureForm.viewModel = viewModel ? viewModel.featureFormViewModel : null;
         this._featureTemplates.viewModel = viewModel ? viewModel.featureTemplatesViewModel : null;
+        this._spinner.viewModel = viewModel ? viewModel.spinnerViewModel : null;
       }),
 
-      on<CreateEvent>(this, "viewModel.sketchViewModel", "create", (event) => {
-        if (event.state === "active") {
-          // re-render as 'new' graphic is sketched to get appropriate tip
-          this.scheduleRender();
+      init(this, "view", (view, oldView) => {
+        const key = `editor-${this.id}-spinner`;
+
+        if (oldView) {
+          oldView.ui.remove(this._spinner, key);
         }
+
+        view &&
+          view.ui.add(this._spinner, {
+            key,
+            position: "manual"
+          });
+      }),
+
+      on<CreateEvent>(this, "viewModel.sketchViewModel", "create", () => {
+        // re-render to get appropriate tip for 'in-progress' sketch graphic
+        this.scheduleRender();
       }),
 
       on(this, "viewModel.activeWorkflow", "cancel-request", ({ controller }) => {
@@ -288,7 +303,7 @@ class Editor extends declared(Widget, HandleOwner) {
 
         this._prompt = {
           title: i18n.errorWarningTitle,
-          message: substitute({ errorMessage: error.message }, i18n.errorWarningMessageTemplate),
+          message: substitute(i18n.errorWarningMessageTemplate, { errorMessage: error.message }),
           options: [
             {
               label: i18n.retry,
@@ -314,6 +329,11 @@ class Editor extends declared(Widget, HandleOwner) {
     ]);
   }
 
+  destroy(): void {
+    this._featureForm.destroy();
+    this._featureTemplates.destroy();
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Variables
@@ -328,6 +348,8 @@ class Editor extends declared(Widget, HandleOwner) {
 
   private _prompt: Prompt = null;
 
+  private _spinner: Spinner = new Spinner();
+
   //--------------------------------------------------------------------------
   //
   // Type definitions
@@ -341,7 +363,7 @@ class Editor extends declared(Widget, HandleOwner) {
   //--------------------------------------------------------------------------
 
   /**
-   * The information needed for creating a new feature.
+   * This object provides the feature template and layer for creating a new feature.
    *
    * @typedef module:esri/widgets/Editor~CreationInfo
    *
@@ -402,7 +424,7 @@ class Editor extends declared(Widget, HandleOwner) {
    * overridden if it is set here in the [supportingWidgetDefaults](#supportingWidgetDefaults) property.
    * :::
    * @property {string} [featureForm.groupDisplay] - String indicating the
-   * {@link module:esri/widgets/FeatureForm#groupDisplay [groupDisplay]} and how they will be displayed to the end user.
+   * {@link module:esri/widgets/FeatureForm#groupDisplay groupDisplay} and how they will be displayed to the end user.
    *
    * @property {Object} [featureTemplates] - An object containing properties specific for customizing
    * the {@link module:esri/widgets/FeatureTemplates} widget.
@@ -415,7 +437,7 @@ class Editor extends declared(Widget, HandleOwner) {
    *
    * @property {Object} [sketch] - An object containing properties specific for customizng the
    * {@link module:esri/widgets/Sketch} widget.
-   * @property {Object} [sketch.updateOptions] - An object containing the {@link module:esri/widgets/Sketch#update updateOptions}
+   * @property {Object} [sketch.defaultUpdateOptions] - An object containing the `defaultUpdateOptions`
    * for the {@link module:esri/widgets/Sketch} widget.
    * @property {module:esri/symbols/SimpleMarkerSymbol} [sketch.markerSymbol] - The marker symbol used to symbolize any
    * point feature updates.
@@ -600,7 +622,7 @@ class Editor extends declared(Widget, HandleOwner) {
   /**
    * The view model for this widget. This is a class that contains all the logic
    * (properties and methods) that controls this widget's behavior. See the
-   * {@link module:esri/widgets/Editor/EditorToggleViewModel} class to access
+   * {@link module:esri/widgets/Editor/EditorViewModel} class to access
    * all properties and methods on the widget.
    *
    * @name viewModel
@@ -645,7 +667,8 @@ class Editor extends declared(Widget, HandleOwner) {
    * @instance
    *
    * @param {module:esri/widgets/Editor~CreationInfo} creationInfo - An object containing
-   * information needed to create a new feature using the Editor widget.
+   * information needed to create a new feature using the Editor widget. This object
+   * provides the feature template and layer for creating a new feature.
    */
   @aliasOf("viewModel.startCreateWorkflowAtFeatureCreation")
   startCreateWorkflowAtFeatureCreation(
@@ -688,6 +711,7 @@ class Editor extends declared(Widget, HandleOwner) {
    * @instance
    *
    * @param {module:esri/Graphic[]} candidates - An array of features to be updated.
+   * This is only relevant when there are multiple candidates to update.
    *
    */
   @aliasOf("viewModel.startUpdateWorkflowAtMultipleFeatureSelection")
@@ -789,13 +813,6 @@ class Editor extends declared(Widget, HandleOwner) {
         <div key="content" class={CSS.content}>
           {this._featureTemplates.render()}
         </div>
-        {this.renderControls([
-          {
-            label: i18nCommon.back,
-            type: "secondary",
-            clickHandler: this._handleDone
-          }
-        ])}
       </div>
     );
   }
@@ -816,11 +833,6 @@ class Editor extends declared(Widget, HandleOwner) {
         type: "primary",
         disabled,
         clickHandler: this._handleSave
-      },
-      {
-        label: i18nCommon.back,
-        type: "secondary",
-        clickHandler: this._handleBack
       }
     ];
 
@@ -841,7 +853,7 @@ class Editor extends declared(Widget, HandleOwner) {
           {featureFormViewModel.inputFields.length > 0
             ? this._featureForm.render()
             : this.renderMessage(
-                substitute({ button: primaryButtonLabel }, i18n.clickToFinishTemplate)
+                substitute(i18n.clickToFinishTemplate, { button: primaryButtonLabel })
               )}
         </div>
         {this.renderControls(controls)}
@@ -856,13 +868,6 @@ class Editor extends declared(Widget, HandleOwner) {
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
           {this.renderMessage(i18n.selectFeatureToEdit)}
         </div>
-        {this.renderControls([
-          {
-            label: i18nCommon.back,
-            type: "secondary",
-            clickHandler: this._handleDone
-          }
-        ])}
       </div>
     );
   }
@@ -873,9 +878,13 @@ class Editor extends declared(Widget, HandleOwner) {
 
   protected renderFeatureCreation(): VNode {
     const { viewModel } = this;
+    const sketchVM = viewModel.sketchViewModel;
     const workflow = viewModel.activeWorkflow as CreateWorkflow;
     const layer = workflow.data.creationInfo.layer;
-    const tip = this._getSketchingTip(layer.geometryType, viewModel.sketchViewModel.createGraphic);
+    const validInProgressGraphic =
+      sketchVM.canUndo() && sketchVM.createGraphic ? sketchVM.createGraphic : null;
+
+    const tip = this._getSketchingTip(layer.geometryType, validInProgressGraphic);
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">
@@ -883,13 +892,6 @@ class Editor extends declared(Widget, HandleOwner) {
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
           {this.renderMessage(tip)}
         </div>
-        {this.renderControls([
-          {
-            label: i18nCommon.back,
-            type: "secondary",
-            clickHandler: this._handleBack
-          }
-        ])}
       </div>
     );
   }
@@ -946,7 +948,9 @@ class Editor extends declared(Widget, HandleOwner) {
               key={index}
               onclick={action}
               onkeydown={(event: KeyboardEvent) => {
-                if (event.keyCode === ENTER || event.keyCode === SPACE) {
+                const key = eventKey(event);
+
+                if (key === "Enter" || key === " ") {
                   event.preventDefault();
                   action.call(null);
                 }
@@ -1061,7 +1065,7 @@ class Editor extends declared(Widget, HandleOwner) {
 
     const workflow = activeWorkflow as UpdateWorkflow;
     const candidates = workflow.data.candidates;
-    const title = substitute({ total: candidates.length }, i18n.multipleFeaturesTemplate);
+    const title = substitute(i18n.multipleFeaturesTemplate, { total: candidates.length });
 
     type Item = { label: string; id: string; data: any };
 
@@ -1140,13 +1144,6 @@ class Editor extends declared(Widget, HandleOwner) {
             }
           })}
         </div>
-        {this.renderControls([
-          {
-            label: i18nCommon.back,
-            type: "secondary",
-            clickHandler: this._handleBack
-          }
-        ])}
       </div>
     );
   }
@@ -1191,7 +1188,7 @@ class Editor extends declared(Widget, HandleOwner) {
 
     return (
       (displayField && attributes[displayField]) ||
-      substitute({ id: attributes[objectIdField] }, i18n.untitledFeatureTemplate)
+      substitute(i18n.untitledFeatureTemplate, { id: attributes[objectIdField] })
     );
   }
 
@@ -1202,7 +1199,7 @@ class Editor extends declared(Widget, HandleOwner) {
       message: i18n.deleteWarningMessage,
       options: [
         {
-          label: i18n.keep,
+          label: i18n.keepFeature,
           type: "neutral",
           action: () => (this._prompt = null)
         },
@@ -1264,21 +1261,23 @@ class Editor extends declared(Widget, HandleOwner) {
       stepId === "editing-new-feature" ||
       (stepId === "editing-existing-feature" && data.edits.modified)
     ) {
-      const title = i18n.cancelWarningTitle;
       const message =
-        type === "create" ? i18n.cancelCreateWarningMessage : i18n.cancelUpdateWarningMessage;
+        type === "create" ? i18n.cancelAddWarningMessage : i18n.cancelEditWarningMessage;
+      const title = type === "create" ? i18n.cancelAddTitle : i18n.cancelEditTitle;
+      const continueOption = type === "create" ? i18n.continueAdding : i18n.continueEditing;
+      const discardOption = type === "create" ? i18n.discardFeature : i18n.discardEdits;
 
       this._prompt = {
         title,
         message,
         options: [
           {
-            label: i18n.keep,
+            label: continueOption,
             type: "neutral",
             action: () => (this._prompt = null)
           },
           {
-            label: i18n.discard,
+            label: discardOption,
             type: "negative",
             action: () => {
               goBack();

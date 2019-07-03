@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./ResourceController","./MemoryController"],function(e,o,r,n){Object.defineProperty(o,"__esModule",{value:!0}),o.newResourceController=r.newResourceController,o.newMemoryController=n.newMemoryController;!function(e){e.TERRAIN="terrain",e.SCENE="scene",e.SYMBOLOGY="symbology"}(o.ClientType||(o.ClientType={}))});

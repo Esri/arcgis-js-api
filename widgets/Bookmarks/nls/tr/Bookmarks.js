@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Yer işaretleri",goToBookmark:"Yer imine git",noBookmarksHeading:"Hiçbir Yer İşareti Yok",noBookmarksDescription:"Haritanıza yer imleri eklediğinizde burada görüneceklerdir.",disabledHeading:"Yer İmleri Devre Dışı Bırakıldı",disabledDescription:"Yer imlerini etkinleştirmek için bir MapView ekleyin."});
+define({addBookmark:"Yer imi ekle",disabledHeading:"Yer İmleri Devre Dışı Bırakıldı",disabledDescription:"Yer imlerini etkinleştirmek için bir MapView ekleyin.",goToBookmark:"Yer imine git",noBookmarksHeading:"Hiçbir Yer İşareti Yok",noBookmarksDescription:"Haritanıza yer imleri eklediğinizde burada görüneceklerdir.",title:"Unvan",addPlaceholder:"Yer imi başlığı gir",addingBookmark:"Yer imi ekleme",widgetLabel:"Yer işaretleri"});

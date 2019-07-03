@@ -14,6 +14,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Icon",
                   "material": {
                     "color": [
                       255,
@@ -22,7 +23,6 @@
                     ],
                     "transparency": 100
                   },
-                  "type": "Icon",
                   "resource": {
                     "primitive": "circle"
                   },
@@ -56,6 +56,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Icon",
                   "material": {
                     "color": [
                       192,
@@ -63,7 +64,6 @@
                       192
                     ]
                   },
-                  "type": "Icon",
                   "resource": {
                     "primitive": "square"
                   },
@@ -131,6 +131,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Icon",
                   "material": {
                     "color": [
                       255,
@@ -138,7 +139,6 @@
                       255
                     ]
                   },
-                  "type": "Icon",
                   "resource": {
                     "primitive": "x"
                   },
@@ -172,6 +172,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Icon",
                   "material": {
                     "color": [
                       255,
@@ -179,7 +180,6 @@
                       255
                     ]
                   },
-                  "type": "Icon",
                   "resource": {
                     "primitive": "kite"
                   },
@@ -234,9 +234,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

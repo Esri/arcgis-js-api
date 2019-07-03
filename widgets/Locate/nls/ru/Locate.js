@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Найти местоположение",title:"Найти мое местоположение",currentLocation:"Текущее местоположение",timestamp:"Временная отметка",latitude:"Широта",longitude:"Долгота",accuracy:"Точность",altitude:"Высота",altitudeAccuracy:"Точность высоты",heading:"Направление",speed:"Скорость"});

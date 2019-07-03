@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Lociraj",title:"Najdi mojo lokacijo",currentLocation:"Trenutna lokacija",timestamp:"Časovni žig",latitude:"Geografska širina",longitude:"Geografska dolžina",accuracy:"Natančnost",altitude:"Višina nad tlemi",altitudeAccuracy:"Natančnost višine nad tlemi",heading:"Glava",speed:"Hitrost"});

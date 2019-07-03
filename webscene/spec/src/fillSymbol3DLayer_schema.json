@@ -18,7 +18,7 @@
       "type": "boolean"
     },
     "material": {
-      "$ref": "material_schema.json"
+      "$ref": "materialColorMixMode_schema.json"
     },
     "outline": {
       "$ref": "outline_schema.json"
@@ -49,7 +49,8 @@
                   255,
                   0,
                   0
-                ]
+                ],
+                "colorMixMode": "replace"
               }
             }
           ]

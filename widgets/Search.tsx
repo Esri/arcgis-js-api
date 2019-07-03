@@ -46,31 +46,17 @@ import { from } from "@dojo/framework/shim/array";
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Search/nls/Search";
-import {
-  BACKSPACE,
-  copyKey,
-  DELETE,
-  DOWN_ARROW,
-  END,
-  ENTER,
-  ESCAPE,
-  HOME,
-  LEFT_ARROW,
-  RIGHT_ARROW,
-  SHIFT,
-  TAB,
-  UP_ARROW
-} from "dojo/keys";
 import regexp = require("dojo/regexp");
 
 // esri
 import Graphic = require("esri/Graphic");
+import { substitute } from "esri/intl";
 import PopupTemplate = require("esri/PopupTemplate");
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
-import esriLang = require("esri/core/lang");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
@@ -128,7 +114,6 @@ const CSS = {
   suggestionListCurrentLocation: "esri-search__suggestions-list--current-location",
   sourcesMenu: "esri-search__sources-menu",
   source: "esri-search__source",
-  activeSource: "esri-search__source--active",
   warningMenu: "esri-search__warning-menu",
   warningMenuBody: "esri-search__warning-body",
   warningMenuHeader: "esri-search__warning-header",
@@ -141,6 +126,9 @@ const CSS = {
   header: "esri-widget__heading",
   locate: "esri-icon-locate-circled",
   menu: "esri-menu",
+  menuList: "esri-menu__list",
+  menuItem: "esri-menu__list-item",
+  menuItemActive: "esri-menu__list-item--active",
   menuHeader: "esri-menu__header",
   loadingIcon: "esri-icon-loading-indicator esri-rotating",
   searchIcon: "esri-icon-search",
@@ -416,11 +404,9 @@ class Search extends declared(Widget) {
 
   private _suggestionListNode: HTMLDivElement = null;
 
-  private _searchResultRenderer = new SearchResultRenderer({
-    container: document.createElement("div")
-  });
+  private _searchResultRenderer = new SearchResultRenderer();
 
-  private _suggestPromise: IPromise<SearchResults<SuggestResult>[]> = null;
+  private _suggestPromise: IPromise<SearchResponse<SearchResults<SuggestResult>>> = null;
 
   private _relatedTarget: HTMLElement = null;
 
@@ -544,7 +530,7 @@ class Search extends declared(Widget) {
    * Indicates whether to automatically select and zoom to the first geocoded result. If `false`, the
    * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
    * operation will still geocode the input string, but the top result will not be selected. To work with the
-   * geocoded results, you can set up a [search-complete](#event:search-complete) event handler and get the results
+   * geocoded results, you can set up a [search-complete](#event-search-complete) event handler and get the results
    * through the event object.
    *
    * @name autoSelect
@@ -612,6 +598,23 @@ class Search extends declared(Widget) {
    * @type {boolean | Function}
    * @default true
    * @since 4.8
+   *
+   * @example
+   * // includeDefaultSources passed as a boolean value
+   * var searchWidget = new Search({
+   *   view: view,
+   *   sources: [customSearchSource],
+   *   includeDefaultSources: false
+   * });
+   *
+   * // includeDefaultSources passed as a function
+   * var searchWidget = new Search({
+   *   view: view,
+   *   sources: [customSearchSource],
+   *   includeDefaultSources: function(sourcesResponse) {
+   *     return sourcesResponse.defaultSources;
+   *   }
+   * });
    */
   @aliasOf("viewModel.includeDefaultSources")
   includeDefaultSources: boolean = null;
@@ -658,20 +661,6 @@ class Search extends declared(Widget) {
   @renderable()
   @aliasOf("viewModel.locationEnabled")
   locationEnabled: boolean = null;
-
-  //----------------------------------
-  //  locationToAddressDistance
-  //----------------------------------
-
-  /**
-   * The default distance in meters used to reverse geocode (if not specified by source).
-   *
-   * @deprecated since version 4.11.
-   * @type {number}
-   * @ignore
-   */
-  @aliasOf("viewModel.locationToAddressDistance")
-  locationToAddressDistance: number = null;
 
   //----------------------------------
   //  maxResults
@@ -744,7 +733,7 @@ class Search extends declared(Widget) {
 
   /**
    * A customized {@link module:esri/PopupTemplate} for the selected feature.
-   * Note that any {@link module:esri/PopopTemplate templates}
+   * Note that any {@link module:esri/PopupTemplate templates}
    * defined on [allSources](#allSources) take precedence over those defined directly on the template.
    *
    * @name popupTemplate
@@ -874,7 +863,7 @@ class Search extends declared(Widget) {
    * @instance
    * @type {module:esri/widgets/Search~SearchResult}
    *
-   * @see [Event: select-result](#event:select-result)
+   * @see [Event: select-result](#event-select-result)
    * @see [select()](#select)
    * @readonly
    */
@@ -905,7 +894,7 @@ class Search extends declared(Widget) {
    * @name sources
    * @autocast
    * @instance
-   * @type {module:esri/core/Collection<module:esri/widgets/Search/LayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
+   * @type {module:esri/core/Collection<module:esri/widgets/Search/SearchSource>}
    *
    * @example
    * // Default sources[] when sources is not specified
@@ -915,10 +904,6 @@ class Search extends declared(Widget) {
    *     singleLineFieldName: "SingleLine",
    *     outFields: ["Addr_type"],
    *     name: "ArcGIS World Geocoding Service",
-   *     localSearchOptions: {
-   *       minScale: 300000,
-   *       distance: 50000
-   *     },
    *     placeholder: i18n.placeholder,
    *     resultSymbol: {
    *        type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
@@ -939,17 +924,13 @@ class Search extends declared(Widget) {
    *   locator: new Locator({ url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
    *   singleLineFieldName: "SingleLine",
    *   name: "Custom Geocoding Service",
-   *   localSearchOptions: {
-   *     minScale: 300000,
-   *     distance: 50000
-   *   },
    *   placeholder: "Search Geocoder",
    *   maxResults: 3,
    *   maxSuggestions: 6,
    *   suggestionsEnabled: false,
    *   minSuggestCharacters: 0
    * }, {
-   *   featureLayer: new FeatureLayer({
+   *   layer: new FeatureLayer({
    *     url: "https://services.arcgis.com/DO4gTjwJVIJ7O9Ca/arcgis/rest/services/GeoForm_Survey_v11_live/FeatureServer/0",
    *     outFields: ["*"]
    *   }),
@@ -965,7 +946,7 @@ class Search extends declared(Widget) {
    *   minSuggestCharacters: 0
    * },
    * {
-   *   featureLayer: new FeatureLayer({
+   *   layer: new FeatureLayer({
    *     outFields: ["*"]
    *   }),
    *   placeholder: "esri",
@@ -1182,16 +1163,32 @@ class Search extends declared(Widget) {
   suggest(query?: string): IPromise<SearchResponse<SearchResults<SuggestResult>>> {
     this._cancelSuggest();
 
-    const suggestPromise = this.viewModel
+    const suggestPromise: IPromise<SearchResponse<SearchResults<SuggestResult>>> = this.viewModel
       .suggest(query)
       .then((suggestResponse) => {
+        if (this._suggestPromise !== suggestPromise) {
+          return;
+        }
+
+        this._suggestPromise = null;
+
         if (suggestResponse.numResults) {
           this.activeMenu = "suggestion";
         }
+
         this._scrollToTopSuggestion();
+
         return suggestResponse;
       })
-      .catch(() => null);
+      .catch(() => {
+        if (this._suggestPromise !== suggestPromise) {
+          return;
+        }
+
+        this._suggestPromise = null;
+
+        return null;
+      });
 
     this._suggestPromise = suggestPromise;
 
@@ -1283,7 +1280,7 @@ class Search extends declared(Widget) {
     const locationSuggestGroupNode = showSuggestGroupNode ? (
       <ul
         key={`esri-search__suggestion-list-current-location`}
-        class={this.classes(CSS.suggestionList, CSS.suggestionListCurrentLocation)}
+        class={this.classes(CSS.menuList, CSS.suggestionList, CSS.suggestionListCurrentLocation)}
       >
         <li
           bind={this}
@@ -1291,6 +1288,7 @@ class Search extends declared(Widget) {
           onkeydown={this._handleUseCurrentLocationClick}
           onkeyup={this._handleSuggestionKeyup}
           role="menuitem"
+          class={CSS.menuItem}
           tabindex="-1"
         >
           <span aria-hidden="true" role="presentation" class={CSS.locate} />{" "}
@@ -1318,7 +1316,10 @@ class Search extends declared(Widget) {
           );
 
           const suggestionListContainerNode = suggestResultCount ? (
-            <ul key={`esri-search__suggestion-list-${sourceIndex}`} class={CSS.suggestionList}>
+            <ul
+              key={`esri-search__suggestion-list-${sourceIndex}`}
+              class={this.classes(CSS.menuList, CSS.suggestionList)}
+            >
               {suggestItemsNodes}
             </ul>
           ) : null;
@@ -1368,12 +1369,9 @@ class Search extends declared(Widget) {
     );
 
     const notFoundText = trimmedSearchTerm
-      ? esriLang.substitute(
-          {
-            value: `"${searchTerm}"`
-          },
-          i18n.noResultsFoundForValue
-        )
+      ? substitute(i18n.noResultsFoundForValue, {
+          value: `"${searchTerm}"`
+        })
       : i18n.noResultsFound;
 
     const warningNode =
@@ -1431,7 +1429,7 @@ class Search extends declared(Widget) {
     ) : null;
 
     const sourcesListNode = hasMultipleSources ? (
-      <ul bind={this} afterCreate={storeNode} data-node-ref="_sourceListNode">
+      <ul bind={this} afterCreate={storeNode} data-node-ref="_sourceListNode" class={CSS.menuList}>
         {allItemNode}
         {sourceList.map((source, sourceIndex) => this._getSourceNode(sourceIndex))}
       </ul>
@@ -1506,9 +1504,9 @@ class Search extends declared(Widget) {
   }
 
   private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === END || keyCode === HOME) {
+    if (key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home") {
       event.preventDefault();
       event.stopPropagation();
       this.activeMenu = "source";
@@ -1536,8 +1534,8 @@ class Search extends declared(Widget) {
       return;
     }
 
-    const { keyCode } = event as KeyboardEvent;
-    const focusNode = keyCode === END ? list[list.length - 1] : list[0];
+    const key = eventKey(event as KeyboardEvent);
+    const focusNode = key === "End" ? list[list.length - 1] : list[0];
     focusNode && focusNode.focus();
   }
 
@@ -1606,32 +1604,28 @@ class Search extends declared(Widget) {
   }
 
   private _cancelSuggest(): void {
-    const suggestPromise = this._suggestPromise;
-
-    if (suggestPromise) {
-      suggestPromise.cancel();
-    }
-
     this._suggestPromise = null;
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
-    const { keyCode } = event;
-    if (keyCode === TAB || keyCode === ESCAPE || (event.shiftKey && keyCode === TAB)) {
+    const key = eventKey(event);
+
+    if (key === "Tab" || key === "Escape" || (event.shiftKey && key === "Tab")) {
       this._cancelSuggest();
     }
   }
 
   private _handleInputKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
+
     const isIgnorableKey =
       event.ctrlKey ||
       event.metaKey ||
-      keyCode === copyKey ||
-      keyCode === LEFT_ARROW ||
-      keyCode === RIGHT_ARROW ||
-      keyCode === ENTER ||
-      keyCode === SHIFT;
+      key === "Copy" ||
+      key === "ArrowLeft" ||
+      key === "ArrowRight" ||
+      key === "Enter" ||
+      key === "Shift";
 
     const list = this._suggestionListNode
       ? this._suggestionListNode.getElementsByTagName("li")
@@ -1641,22 +1635,22 @@ class Search extends declared(Widget) {
       return;
     }
 
-    if (keyCode === TAB || keyCode === ESCAPE || (event.shiftKey && keyCode === TAB)) {
+    if (key === "Tab" || key === "Escape" || (event.shiftKey && key === "Tab")) {
       this._cancelSuggest();
 
-      if (keyCode === ESCAPE) {
+      if (key === "Escape") {
         this.activeMenu = "none";
       }
 
       return;
     }
 
-    if ((keyCode === UP_ARROW || keyCode === DOWN_ARROW) && list) {
+    if ((key === "ArrowUp" || key === "ArrowDown") && list) {
       this.activeMenu = "suggestion";
       event.stopPropagation();
       event.preventDefault();
       this._cancelSuggest();
-      const focusIndex = keyCode === UP_ARROW ? list.length - 1 : 0;
+      const focusIndex = key === "ArrowUp" ? list.length - 1 : 0;
       const focusNode = list[focusIndex];
       focusNode && focusNode.focus();
       return;
@@ -1694,9 +1688,9 @@ class Search extends declared(Widget) {
   }
 
   private _handleSourceMenuButtonKeyup(event: KeyboardEvent): void {
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode !== UP_ARROW && keyCode !== DOWN_ARROW && keyCode !== HOME && keyCode !== END) {
+    if (key !== "ArrowUp" && key !== "ArrowDown" && key !== "Home" && key !== "End") {
       return;
     }
 
@@ -1709,7 +1703,7 @@ class Search extends declared(Widget) {
       return;
     }
 
-    const cursorIndex = keyCode === UP_ARROW || keyCode === END ? list.length - 1 : 0;
+    const cursorIndex = key === "ArrowUp" || key === "End" ? list.length - 1 : 0;
     const focusNode = list[cursorIndex];
     focusNode && focusNode.focus();
   }
@@ -1719,9 +1713,9 @@ class Search extends declared(Widget) {
     const list = this._sourceListNode
       ? from(this._sourceListNode.getElementsByTagName("li"))
       : null;
-    const { keyCode } = event;
+    const key = eventKey(event);
 
-    if (keyCode === ESCAPE) {
+    if (key === "Escape") {
       this._focus("none");
       this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
       return;
@@ -1730,24 +1724,24 @@ class Search extends declared(Widget) {
     if (list) {
       const itemIndex = list.indexOf(node);
 
-      if (keyCode === HOME || keyCode === END || keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+      if (key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown") {
         event.stopPropagation();
         event.preventDefault();
       }
 
-      if (keyCode === HOME) {
+      if (key === "Home") {
         const homeFocusNode = list[0];
         homeFocusNode && homeFocusNode.focus();
         return;
       }
 
-      if (keyCode === END) {
+      if (key === "End") {
         const endFocusNode = list[list.length - 1];
         endFocusNode && endFocusNode.focus();
         return;
       }
 
-      if (keyCode === UP_ARROW) {
+      if (key === "ArrowUp") {
         const previousItemIndex = itemIndex - 1;
         const previousFocusNode =
           previousItemIndex < 0 ? this._sourceMenuButtonNode : list[previousItemIndex];
@@ -1755,7 +1749,7 @@ class Search extends declared(Widget) {
         return;
       }
 
-      if (keyCode === DOWN_ARROW) {
+      if (key === "ArrowDown") {
         const nextItemIndex = itemIndex + 1;
         const nextFocusNode =
           nextItemIndex >= list.length ? this._sourceMenuButtonNode : list[nextItemIndex];
@@ -1770,37 +1764,37 @@ class Search extends declared(Widget) {
       ? from(this._suggestionListNode.getElementsByTagName("li"))
       : null;
     const itemIndex = list.indexOf(node);
-    const { keyCode } = event;
+    const key = eventKey(event);
 
     this._cancelSuggest();
 
-    if (keyCode === BACKSPACE || keyCode === DELETE) {
+    if (key === "Backspace" || key === "Delete") {
       this._focus();
       return;
     }
 
-    if (keyCode === ESCAPE) {
+    if (key === "Escape") {
       this._focus("none");
       return;
     }
 
     if (list) {
-      if (keyCode === HOME || keyCode === END || keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+      if (key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown") {
         event.stopPropagation();
         event.preventDefault();
       }
 
-      if (keyCode === HOME) {
+      if (key === "Home") {
         const homeFocusNode = list[0];
         homeFocusNode && homeFocusNode.focus();
       }
 
-      if (keyCode === END) {
+      if (key === "End") {
         const endFocusNode = list[list.length - 1];
         endFocusNode && endFocusNode.focus();
       }
 
-      if (keyCode === UP_ARROW) {
+      if (key === "ArrowUp") {
         const previousItemIndex = itemIndex - 1;
         const previousFocusNode =
           previousItemIndex < 0 ? list[list.length - 1] : list[previousItemIndex];
@@ -1808,7 +1802,7 @@ class Search extends declared(Widget) {
         return;
       }
 
-      if (keyCode === DOWN_ARROW) {
+      if (key === "ArrowDown") {
         const nextItemIndex = itemIndex + 1;
         const nextFocusNode = nextItemIndex >= list.length ? list[0] : list[nextItemIndex];
         nextFocusNode && nextFocusNode.focus();
@@ -1895,6 +1889,7 @@ class Search extends declared(Widget) {
           key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
           data-suggestion={suggestion}
           role="menuitem"
+          class={CSS.menuItem}
           tabindex="-1"
         >
           {matches}
@@ -1905,7 +1900,7 @@ class Search extends declared(Widget) {
 
   private _getSourceNode(sourceIndex: number): VNode {
     const itemClasses = {
-      [CSS.activeSource]: sourceIndex === this.viewModel.activeSourceIndex
+      [CSS.menuItemActive]: sourceIndex === this.viewModel.activeSourceIndex
     };
 
     return (
@@ -1917,7 +1912,7 @@ class Search extends declared(Widget) {
         onkeyup={this._handleSourceKeyup}
         data-source-index={sourceIndex}
         role="menuitem"
-        class={this.classes(CSS.source, itemClasses)}
+        class={this.classes(CSS.source, CSS.menuItem, itemClasses)}
         tabindex="-1"
       >
         {this._getSourceName(sourceIndex)}

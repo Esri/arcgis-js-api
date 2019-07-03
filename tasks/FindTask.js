@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["../request","../core/lang","./Task","./support/FindResult"],function(e,r,s,t){return s.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(s,t){var n=this._encode(r.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON()));this.gdbVersion&&(n.gdbVersion=this.gdbVersion);var i={query:n};return(this.requestOptions||t)&&(i=r.mixin({},this.requestOptions,t,i)),e(this.parsedUrl.path,i).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,s=r.results||[];return r.results=s.map(function(e){return t.fromJSON(e)}),r}})});

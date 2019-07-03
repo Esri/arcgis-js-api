@@ -2,32 +2,19 @@ precision lowp float;
 
 #include <util/encoding.glsl>
 #include <materials/constants.glsl>
+#include <materials/line/common.glsl>
 
 uniform lowp float u_blur;
-uniform mediump float u_antialiasing;
-
-varying mediump vec2 v_normal;
-varying mediump float v_lineHalfWidth;
-varying lowp vec4 v_color;
-varying lowp float v_transparency;
+uniform mediump float u_zoomFactor;
 
 #if defined(PATTERN) || defined(SDF)
 uniform sampler2D u_texture;
-uniform mediump float u_zoomFactor;
-
-varying mediump vec4 v_tlbr; // normalized pattern coordinates [0, 1]
-varying mediump vec2 v_patternSize;
-varying highp float v_accumulatedDistance;
 #endif // PATTERN SDF
 
 #ifdef SDF
 const float sdfPatternHalfWidth = 15.5; // YF: assumed that the width will be set to 31
 const float widthFactor = 2.0;
 #endif // SDF
-
-#ifdef ID
-varying highp vec4 v_id;
-#endif // ID
 
 
 void main()
@@ -59,7 +46,7 @@ void main()
   // the distance is a proportional to the line width
   float dist = d * lineHalfWidth;
 
-  lowp vec4 fillPixelColor = v_transparency * alpha * clamp(0.5 - dist, 0.0, 1.0) * v_color;
+  lowp vec4 fillPixelColor = v_opacity * alpha * clamp(0.5 - dist, 0.0, 1.0) * v_color;
   gl_FragColor = fillPixelColor;
 #elif defined(PATTERN) && !defined(HIGHLIGHT)  // When we render the highlight, we want to treat the line as if it was solid
   // we need to calculate the relative portion of the line texture along the line given the accumulated distance along the line
@@ -83,10 +70,10 @@ void main()
   // get the color from the texture
   lowp vec4 color = texture2D(u_texture, texCoord);
 
-  gl_FragColor = v_transparency * alpha * v_color * color;
+  gl_FragColor = v_opacity * alpha * v_color * color;
 #else // solid line (no texture, no pattern)
   // output the fragment color
-  gl_FragColor = v_transparency * alpha * v_color;
+  gl_FragColor = v_opacity * alpha * v_color;
 #endif // SDF
 
 #ifdef HIGHLIGHT

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./factories/quat2f32"],function(e,t,f){Object.defineProperty(t,"__esModule",{value:!0}),t.quat2f32=f});

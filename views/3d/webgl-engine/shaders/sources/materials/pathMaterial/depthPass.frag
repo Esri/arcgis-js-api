@@ -7,27 +7,8 @@
 varying float depth;
 varying vec3 vpos;
 
-#ifdef TEXTURING
-uniform sampler2D tex;
-uniform vec2 texSize;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-varying vec4 regionV;
-#endif
-#endif
-
-#ifdef TEXTURING
-#include <materials/pathMaterial/texturing.glsl>
-#endif
-
 void main() {
   discardBySlice(vpos);
-
-#ifdef TEXTURING
-  if (textureLookup(tex, vtc).a < ALPHA_THRESHOLD) {
-    discard;
-  }
-#endif
 
 #ifndef BIAS_SHADOWMAP
   gl_FragColor = float2rgba(depth);

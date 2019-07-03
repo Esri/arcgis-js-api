@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../request"],function(e,t,r){function n(e){for(var t=atob(e.split(",")[1]),r=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(t.length),o=new Uint8Array(n),i=0;i<t.length;i++)o[i]=t.charCodeAt(i);return new Blob([n],{type:r})}function o(e){return r(e,{responseType:"image"}).then(function(e){return e.data})}Object.defineProperty(t,"__esModule",{value:!0}),t.dataURItoBlob=n,t.requestImage=o});
+define(["require","exports","../../../core/tsSupport/assignHelper","../../../request"],function(e,t,r,n){function o(e){for(var t=atob(e.split(",")[1]),r=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(t.length),o=new Uint8Array(n),i=0;i<t.length;i++)o[i]=t.charCodeAt(i);return new Blob([n],{type:r})}function i(e,t){return n(e,r({responseType:"image"},t)).then(function(e){return e.data})}Object.defineProperty(t,"__esModule",{value:!0}),t.dataURItoBlob=o,t.requestImage=i});

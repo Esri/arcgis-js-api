@@ -18,8 +18,7 @@
     },
     "wkid": {
       "type": "number",
-      "description": "The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system.",
-      "default": 102100
+      "description": "The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system."
     },
     "wkt": {
       "type": "string",

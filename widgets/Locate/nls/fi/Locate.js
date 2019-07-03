@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Paikanna",title:"Etsi sijaintini",currentLocation:"Nykyinen sijainti",timestamp:"Aikaleima",latitude:"Leveysaste",longitude:"Pituusaste",accuracy:"Tarkkuus",altitude:"Korkeus",altitudeAccuracy:"Korkeuden tarkkuus",heading:"Suunta",speed:"Nopeus"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Megkeresés",title:"Saját helyzet megkeresése",currentLocation:"Aktuális hely",timestamp:"Időbélyeg",latitude:"Szélesség",longitude:"Hosszúság",accuracy:"Pontosság",altitude:"Magasság",altitudeAccuracy:"Magassági pontosság",heading:"Mozgási irány",speed:"Sebesség"});

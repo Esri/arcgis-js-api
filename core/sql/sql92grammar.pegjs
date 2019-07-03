@@ -351,7 +351,7 @@ extract_field
    = KW_YEAR / KW_MONTH / KW_DAY / KW_HOUR / KW_MINUTE / KW_SECOND
 
 literal
-  = literal_string / literal_numeric / literal_bool /literal_null / literal_date / literal_timestamp
+  = literal_string / literal_numeric / literal_bool /literal_null / literal_date / literal_timestamp / literal_interval
 
 literal_timestamp
    = KW_TIMESTAMP __  stringdate:literal_string_or_param {
@@ -362,6 +362,172 @@ literal_timestamp
 
    }
 
+literal_interval = KW_INTERVAL __ op:("-" / "+" ) __  intervalvalue:literal_string_or_param __ qualifier:literal_interval_qualifier {
+ 		return {
+        type  : "interval",
+        value: intervalvalue,
+        qualifier: qualifier,
+        op: op
+      };
+	}
+  / KW_INTERVAL __  intervalvalue:literal_string_or_param __ qualifier:literal_interval_qualifier {
+      return {
+        type  : "interval",
+        value: intervalvalue,
+        qualifier: qualifier, 
+        op: ""
+      };
+ }
+      
+literal_interval_qualifier = start:interval_start_field __ KW_TO __ end:interval_end_field {
+ return {
+        type  : "interval-qualifier",
+        start: start, 
+        end: end
+      };
+} /  interval_single_datetime_field
+
+
+interval_start_field = period:interval_non_second_period __ LPAREN __ precision:interval_leading_field_precision __ RPAREN {
+ return {
+        type  : "interval-period",
+        period: period.value, 
+        precision: precision,
+        secondary: null
+      };
+}  
+/ period:interval_non_second_period {
+ return {
+        type  : "interval-period",
+        period: period.value,
+        precision: null, 
+        secondary: null
+      };
+}
+
+interval_end_field = period:interval_non_second_period {
+return {
+        type  : "interval-period",
+        period: period.value, 
+        precision: null, 
+        secondary: null
+      };
+} 
+/ KW_SECOND __ LPAREN __ precision:interval_leading_field_precision __ COMMA __ frac:interval_fractional_seconds_precision __ RPAREN  {
+ return {
+        type  : "interval-period",
+        period: "second", 
+        precision: precision, 
+        secondary: frac
+      };
+}
+/ KW_SECOND __ LPAREN __ precision:interval_leading_field_precision __ RPAREN  {
+ return {
+        type  : "interval-period",
+        period: "second", 
+        precision: precision, 
+        secondary: null
+      };
+}
+/ KW_SECOND {
+ return {
+        type  : "interval-period",
+        period: "second", 
+        precision: null , 
+        secondary: null
+      };
+}
+
+
+interval_single_datetime_field = period:interval_non_second_period __ LPAREN __ precision:interval_fractional_seconds_precision __ RPAREN  {
+ return {
+        type  : "interval-period",
+        period: period.value,
+        precision: precision, 
+        secondary: null
+      };
+}
+/ period:interval_non_second_period {
+ return {
+        type  : "interval-period",
+        period: period.value,
+        precision: null, 
+        secondary: null
+      };
+}
+/ KW_SECOND __ LPAREN __ precision:interval_leading_field_precision __ COMMA __ frac:interval_fractional_seconds_precision __ RPAREN  {
+ return {
+        type  : "interval-period",
+        period: "second", 
+        precision: precision, 
+        secondary: frac
+      };
+}
+/ KW_SECOND __ LPAREN __ precision:interval_fractional_seconds_precision __ RPAREN  {
+ return {
+        type  : "interval-period",
+        period: "second",
+        precision: precision,
+        secondary: null
+      };
+}
+/ KW_SECOND {
+ return {
+        type  : "interval-period",
+         period: "second", 
+         precision: null, 
+         secondary: null
+      };
+}
+   
+
+
+intervalperiod = interval_non_second_period / KW_SECOND {
+      return {
+        type  : "string",
+        value : "second"
+      }
+    }
+ 
+interval_non_second_period = KW_DAY {
+      return {
+        type  : "string",
+        value : "day"
+      }
+    }
+  / KW_HOUR {
+      return {
+        type  : "string",
+        value : "hour"
+      }
+    }
+  / KW_MINUTE {
+      return {
+        type  : "string",
+        value : "minute"
+      }
+    }
+ / KW_MONTH {
+      return {
+        type  : "string",
+        value : "month"
+      }
+    }
+/ KW_YEAR {
+      return {
+        type  : "string",
+        value : "year"
+      }
+    }
+    
+
+interval_fractional_seconds_precision = digits_:digits {
+	return parseFloat(digits_);
+}
+
+interval_leading_field_precision = digits_:digits {
+	return parseFloat(digits_);
+}
 
 literal_date
    = KW_DATE __  stringdate:literal_string_or_param {
@@ -541,6 +707,8 @@ KW_LEADING   = "LEADING"i   !ident_part    { return "LEADING";    }
 KW_TRAILING  = "TRAILING"i  !ident_part    { return "TRAILING";    }
 KW_BOTH      = "BOTH"i      !ident_part    { return "BOTH";    }
 
+KW_TO  		 = "TO"i      !ident_part    { return "TO";     }
+KW_INTERVAL  = "INTERVAL"i      !ident_part    { return "INTERVAL";     }
 KW_YEAR      = "YEAR"i      !ident_part    { return "YEAR";     }
 KW_MONTH     = "MONTH"i     !ident_part    { return "MONTH";     }
 KW_DAY       = "DAY"i       !ident_part    { return "DAY";     }

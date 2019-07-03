@@ -7,6 +7,8 @@ uniform vec3 localOrigin;
 uniform mat4 model;
 uniform mat4 modelNormal;
 
-uniform float size;
+attribute vec3 position; // origin
+attribute mat3 pathGeometryInfo;// additional information for reconstructing vertex positions on the fly
+
 
 // ---------------------------------------------- ++

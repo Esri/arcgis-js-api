@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"คำอธิบายสัญลักษณ์",points:"จุด",lines:"เส้น",polygons:"พื้นที่รูปปิด",creatingLegend:"สร้างสัญลักษณ์",noLegend:"ไม่มีสัญลักษณ์",dotValue:"1 จุด = {value} {unit}",currentObservations:"จุดสังเกตปัจจุบัน",previousObservations:"จุดสังเกตก่อนนี้",high:"สูง",low:"ต่ำ",esriMetersPerSecond:"เมตร/วินาที",esriKilometersPerHour:"กิโลเมตร/ชั่วโมง",esriKnots:"น็อต",esriFeetPerSecond:"ฟุต/วินาที",esriMilesPerHour:"ไมล์ ต่อ ชั่วโมง",showNormField:"{field} หารด้วย {normField}",showNormPct:"{field} เป็นร้อยละของทั้งหมด",showRatio:"อัตราส่วนของ {field} ไปยัง {normField}",showRatioPercent:"{field} เป็นร้อยละของ {normField}",showRatioPercentTotal:"{field} เป็นร้อยละของ {field} และ {normField}"});

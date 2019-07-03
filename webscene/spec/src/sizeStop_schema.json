@@ -3,6 +3,10 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A `sizeStop` object describes the size of the symbol at various values of the expression.",
   "properties": {
+    "label": {
+      "type": "string",
+      "description": "Value if a label is needed on the legend for a stop."
+    },
     "size": {
       "type": "number",
       "description": "Specifies the marker size to use for the specified value."

@@ -26,3 +26,16 @@ const float PLACEMENT_PADDING = 8.0;
 const float EPSILON = 0.0000001; 
 
 const int MAX_FILTER_COUNT = 2;
+
+const int ATTR_DATA_FILTER = 0;
+const int ATTR_DATA_VV = 1;
+const int ATTR_DATA_DD0 = 1;
+const int ATTR_DATA_DD1 = 2;
+
+const int ATTR_VV_SIZE = 0;
+const int ATTR_VV_COLOR = 1;
+const int ATTR_VV_OPACITY = 2;
+const int ATTR_VV_ROTATION = 3;
+
+const highp float NAN_MAGIC_NUMBER = 1e-30;
+

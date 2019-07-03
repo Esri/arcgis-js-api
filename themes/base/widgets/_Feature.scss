@@ -1,6 +1,9 @@
 @mixin feature() {
-  $attachment-icon-size: 32px !default;
-  $attachment-icon-container-size: ($attachment-icon-size + 10) !default;
+  $attachment-icon-size: $button-height !default;
+  $attachment-icon-container-width: $button-width * 2 !default;
+  $attachment-icon-container-height: $button-height * 2 !default;
+  $attachment-image-container-width: 100% !default;
+  $attachment-image-container-height: $button-height * 3 !default;
 
   .esri-feature__title {
     font-size: $font-size;
@@ -58,6 +61,7 @@
   }
   .esri-feature img {
     max-width: 100%;
+    max-height: 100%;
   }
   .esri-feature figcaption {
     font-size: $font-size--small;
@@ -117,8 +121,8 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    width: $attachment-icon-container-size;
-    height: $attachment-icon-container-size;
+    width: $attachment-icon-container-width;
+    height: $attachment-icon-container-height;
   }
   .esri-feature__attachment-item-mask--icon {
     background-color: $background-color--offset;
@@ -139,7 +143,7 @@
     right: 0;
     top: 0;
     transition: opacity 125ms;
-    z-index: 1;
+    z-index: 2;
   }
   .esri-feature__attachments-link-icon {
     font-size: 15px;
@@ -200,9 +204,25 @@
     }
     .esri-feature__attachments-item {
       width: 50%;
+      &:only-child {
+        margin-left: 25%;
+        margin-right: 25%;
+      }
+    }
+    .esri-feature__attachment-item-mask {
+      width: $attachment-image-container-width;
+      height: $attachment-image-container-height;
+      background-color: $background-color--offset;
+      @include borderBoxShadow();
+      padding: $cap-spacing--half $side-spacing--half;
+    }
+    .esri-feature__attachments-image {
+      max-width: unset;
+      width: auto;
+      max-height: 100%;
     }
     .esri-feature__attachments-item-link {
-      align-items: baseline;
+      align-items: center;
       flex-flow: row wrap;
       justify-content: center;
       padding: $cap-spacing $side-spacing--half;

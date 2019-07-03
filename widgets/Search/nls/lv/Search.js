@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Meklēt",searchButtonTitle:"Meklēšana",clearButtonTitle:"Notīrīt meklēšanas gadījumu",placeholder:"Atrast adresi vai vietu",searchIn:"Meklēt šeit:",all:"Visi",allPlaceholder:"Atrast adresi vai vietu",emptyValue:"Ievadiet meklēšanas kritēriju.",untitledResult:"Bez virsraksta",untitledSource:"Avots bez nosaukuma",noResults:"Bez rezultātiem",noResultsFound:"Netika atrasts neviens rezultāts.",noResultsFoundForValue:"Vērtībai {value} netika atrasts neviens rezultāts.",showMoreResults:"Rādīt vairāk rezultātu",hideMoreResults:"Paslēpt",searchResult:"Meklēšanas rezultāts",moreResultsHeader:"Vairāk rezultātu",useCurrentLocation:"Lietot pašreizējo atrašanās vietu"});

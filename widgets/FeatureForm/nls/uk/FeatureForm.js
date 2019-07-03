@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- пусто -",validationErrors:{cannotBeNull:"Введіть значення",outsideRange:"Значення має знаходитися в діапазоні: {min} â€“ {max}",invalidCodedValue:"Значення має бути одним з перелічених значень.",invalidType:"Не припустиме значення"}});
+define({empty:"- пусто -",validationErrors:{cannotBeNull:"Введіть значення",outsideRange:"Значення має знаходитися в діапазоні від {min} до {max}",invalidCodedValue:"Значення має бути одним з перелічених значень.",invalidType:"Не припустиме значення"}});

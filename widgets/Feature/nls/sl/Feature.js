@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({attach:"Priloge",fields:"Polj",fieldsSummary:"Seznam atributov in vrednosti",media:"Omrežja",next:"Naslednji",noTitle:"Neimenovano",previous:"Prejšnji",lastEdited:"Nazadnje urejeno dne {date}.",lastCreated:"Ustvarjeno dne {date}.",lastEditedByUser:"Nazadnje uredil {user} dne {date}.",lastCreatedByUser:"Ustvaril {user} dne {date}."});

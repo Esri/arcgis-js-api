@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({zoom:"Parodyti visą",next:"Kitas elementas",previous:"Ankstesnis elementas",dock:"Prijungti",undock:"Atjungti",pageText:"{index} iš {total}",selectedFeature:"Pasirinktas elementas",selectedFeatures:"{total} rezultatai",tooManyFields:"Šis sluoksnis turi per daug laukų, kai kurie jų nebus rodomi."});

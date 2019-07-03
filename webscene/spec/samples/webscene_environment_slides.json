@@ -13,6 +13,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       50,
@@ -20,7 +21,6 @@
                       50
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "sphere"
                   },
@@ -68,9 +68,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "presentation": {
     "slides": [
       {

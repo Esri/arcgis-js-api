@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../moment","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,t,r,o,p,c,s){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.value=p(),t}return r(t,e),t.prototype.castValue=function(e){return p(e)},o([s.property()],t.prototype,"state",void 0),o([s.property()],t.prototype,"value",void 0),o([s.cast("value")],t.prototype,"castValue",null),t=o([s.subclass("esri.widgets.Directions.MomentElementViewModel")],t)}(s.declared(c))});

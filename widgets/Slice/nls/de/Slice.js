@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Ausschneiden",cancel:"Abbrechen",hint:"Mit dem Ausschneiden durch Klicken und Ziehen auf eine Fläche in der Szene beginnen",excludeHint:"Layer in der Ansicht zum Ausschließen aus dem Ausschnitt auswählen",unsupported:"Ausschneiden wird in MapView nicht unterstützt.",multipleDisabled:"Es kann immer nur ein Ausschnitt aktiv sein.",newSlice:"Neuer Ausschnitt",excludedLayers:"Ausgeschlossene Layer",pickLayer:"Layer aus der Ansicht auswählen",excludeLayer:"Layer aus Ausschnitt ausschließen",includeLayer:"Layer in Ausschnitt einbeziehen",ground:"Boden"});

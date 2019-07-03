@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Marcadores",goToBookmark:"Ir para marcador",noBookmarksHeading:"Nenhum Marcador",noBookmarksDescription:"Adicione marcadores ao seu mapa e os mesmos aparecerão aqui.",disabledHeading:"Marcadores Desativados",disabledDescription:"Adicione uma MapView para ativar marcadores."});
+define({addBookmark:"Adicionar marcador",disabledHeading:"Marcadores Desativados",disabledDescription:"Adicione uma MapView para ativar marcadores.",goToBookmark:"Ir para marcador",noBookmarksHeading:"Nenhum Marcador",noBookmarksDescription:"Adicione marcadores ao seu mapa e os mesmos aparecerão aqui.",title:"Título",addPlaceholder:"Introduzir título do marcador",addingBookmark:"Adicionar marcador",widgetLabel:"Marcadores"});

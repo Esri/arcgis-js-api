@@ -4,6 +4,8 @@
     background-color: $background-color--offset;
     padding: $cap-spacing--half $side-spacing--half;
     overflow-y: auto;
+    display: flex;
+    flex-flow: column;
   }
   .esri-layer-list__list {
     list-style: none;
@@ -22,6 +24,18 @@
   .esri-layer-list__list--root {
     margin: 0;
   }
+  .esri-layer-list__item--selectable .esri-layer-list__item-container {
+    cursor: pointer;
+    &:hover {
+      border-left-color: $border-color;
+    }
+  }
+  .esri-layer-list__item-container[aria-checked="true"] {
+    border-left-color: $border-color--active;
+    &:hover {
+      border-left-color: $border-color--active;
+    }
+  }
   .esri-layer-list__item-container ~ .esri-layer-list__list .esri-layer-list__item {
     border-bottom-width: 0;
   }
@@ -35,15 +49,12 @@
     padding: 0;
   }
   .esri-layer-list__item-container {
+    border-left: $border-size--active solid transparent;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     padding: $cap-spacing $side-spacing--half $cap-spacing ($side-spacing + 5);
-  }
-  .esri-layer-list__item--invisible-at-scale > .esri-layer-list__item-container {
-    padding-top: $cap-spacing--half;
-    padding-bottom: $cap-spacing--half;
-    border-bottom-color: rgba($font-color, 0.1);
+    transition: border-color 250ms ease-in-out;
   }
   .esri-layer-list__item--invisible-at-scale .esri-layer-list__item-title {
     color: $interactive-font-color--disabled;
@@ -88,6 +99,7 @@
     line-height: $line-height;
     word-break: break-word;
     overflow-wrap: break-word;
+    transition: color 125ms ease-in-out;
   }
   .esri-layer-list__item-error-message {
     display: flex;
@@ -95,32 +107,34 @@
     visibility: hidden;
     height: 0;
     margin-top: -1px;
-    padding: 0 $side-spacing;
+    padding: $cap-spacing--quarter $side-spacing--half;
     overflow: hidden;
-    background-color: $background-color;
-    color: $Calcite_Red_a200;
+    background-color: $background-color--error;
+    color: $font-color--error;
     font-size: $font-size--small;
     transition: transform 250ms ease-in-out;
     transform: scale(1, 0);
+    animation: esri-fade-in-down 250ms ease-in-out;
     transform-origin: center top;
   }
   .esri-layer-list__item-error-message [class^="esri-icon-"],
   .esri-layer-list__item-error-message [class*="esri-icon-"] {
     margin-right: 0.3rem;
   }
-  .esri-layer-list__item--error .esri-layer-list__item-error-message {
-    visibility: visible;
-    height: auto;
-    padding-bottom: $cap-spacing;
-    border-bottom: 1px solid $border-color;
-    transform: scale(1, 1);
+  .esri-layer-list__item--error {
+    .esri-layer-list__item-error-message {
+      visibility: visible;
+      height: auto;
+      transform: scale(1, 1);
+    }
   }
   .esri-layer-list__item-toggle {
     padding: 0 $side-spacing--quarter;
     cursor: pointer;
     color: $interactive-font-color;
   }
-  .esri-layer-list__item-label[aria-checked="false"] .esri-layer-list__item-toggle-icon {
+  .esri-layer-list__item-label[aria-checked="false"] .esri-layer-list__item-toggle-icon,
+  .esri-layer-list__item-toggle[aria-checked="false"] .esri-layer-list__item-toggle-icon {
     opacity: 0.6;
   }
   @include loopingProgressBar(".esri-layer-list__item--updating");

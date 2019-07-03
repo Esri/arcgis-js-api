@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({attach:"Adjuntos",fields:"Campos",fieldsSummary:"Lista de atributos y valores",media:"Multimedia",next:"Siguiente",noTitle:"Sin título",previous:"Anterior",lastEdited:"Última edición el {date}.",lastCreated:"Creado el {date}.",lastEditedByUser:"Última edición por {user} el {date}.",lastCreatedByUser:"Creado por {user} el {date}."});

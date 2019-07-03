@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Đo lường",hint:"Bắt đầu đo bằng cách bấm vào bản đồ để đặt điểm đầu tiên",unsupported:"Tính toán diện tích 2D chỉ được hỗ trợ trong MapView.",perimeter:"Chu vi",area:"Vùng/Diện tích",newMeasurement:"Phép đo Mới",mode:"Chế độ",modes:{auto:"Tự động",planar:"Phẳng",geodesic:"Trắc địa"},unit:"Đơn vị",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh","square-kilometers":"Kilômét vuông","square-meters":"Mét vuông","square-miles":"Dặm vuông","square-inches":"Inch Vuông","square-feet":"Feet vuông","square-yards":"Thước Vuông","square-us-feet":"Feet vuông (Mỹ)",acres:"Acre",ares:"Are",hectares:"Hecta"}});

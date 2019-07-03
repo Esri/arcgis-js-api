@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/assignHelper","../../Color","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(o,r,e,t,c,p,l,n){return function(o){function r(r){var e=o.call(this)||this;return e.type="color",e.color=new p([0,0,0,1]),e}e(r,o),c=r,r.prototype.clone=function(){return new c({color:this.color&&this.color.clone()||null})};var c;return t([n.enumeration.serializable()({color:"color"})],r.prototype,"type",void 0),t([n.property({type:p})],r.prototype,"color",void 0),r=c=t([n.subclass("esri.webmap.background.ColorBackground")],r)}(n.declared(l))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/assignHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],function(r,o,e,t,c,n,p,s,l){return function(r){function o(o){var e=r.call(this)||this;return e.color=new n([0,0,0,1]),e}e(o,r),c=o,o.prototype.clone=function(){return new c(s.clone({color:this.color}))};var c;return t([l.property({type:n,json:{write:!0}})],o.prototype,"color",void 0),o=c=t([l.subclass("esri.webmap.background.ColorBackground")],o)}(l.declared(p))});

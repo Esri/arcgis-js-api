@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({zoom:"Pietuvināt",next:"Nākošais elements",previous:"Iepriekšējs elements",dock:"Dokot",undock:"Atdokot",pageText:"{index} no {total}",selectedFeature:"Atlasītais elements",selectedFeatures:"{total} rezultāti",tooManyFields:"Šajā slānī ir pārāk daudz lauku. Daži lauki netiks parādīti."});

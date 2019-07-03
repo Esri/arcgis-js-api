@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"要素模板",filterPlaceholder:"过滤器类型",noMatches:"未找到任何项目",noItems:"没有要显示的模板"});

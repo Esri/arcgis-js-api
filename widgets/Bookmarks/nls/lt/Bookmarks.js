@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Žymos",goToBookmark:"Eiti į žymą",noBookmarksHeading:"Žymų nėra",noBookmarksDescription:"Pridėkite žymų į savo žemėlapį, jos bus ten rodomos.",disabledHeading:"Žymos išjungtos",disabledDescription:"Pridėkite MapView, kad įgalintumėte žymas."});
+define({addBookmark:"Pridėti žymą",disabledHeading:"Žymos išjungtos",disabledDescription:"Pridėkite MapView, kad įgalintumėte žymas.",goToBookmark:"Eiti į žymą",noBookmarksHeading:"Žymų nėra",noBookmarksDescription:"Pridėkite žymų į savo žemėlapį, jos bus ten rodomos.",title:"Pavadinimas",addPlaceholder:"Įveskite žymos pavadinimą",addingBookmark:"Žymos pridėjimas",widgetLabel:"Žymos"});

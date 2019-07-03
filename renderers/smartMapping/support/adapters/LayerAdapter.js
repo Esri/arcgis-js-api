@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,t,p,c,s){return function(e){function r(r){return e.call(this)||this}return o(r,e),t([s.property()],r.prototype,"geometryType",void 0),t([s.property()],r.prototype,"objectIdField",void 0),t([s.property()],r.prototype,"supportsSQLExpression",void 0),t([s.property()],r.prototype,"hasQueryEngine",void 0),r=t([s.subclass()],r)}(s.declared(p,c))});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,p,t,s,c){return function(e){function r(r){return e.call(this)||this}return o(r,e),p([c.property()],r.prototype,"geometryType",void 0),p([c.property()],r.prototype,"objectIdField",void 0),p([c.property()],r.prototype,"supportsSQLExpression",void 0),p([c.property()],r.prototype,"hasQueryEngine",void 0),p([c.property()],r.prototype,"minScale",void 0),p([c.property()],r.prototype,"maxScale",void 0),p([c.property()],r.prototype,"fullExtent",void 0),r=p([c.subclass("esri.renderers.smartMapping.support.adapters.LayerAdapter")],r)}(c.declared(t,s))});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"División en zonas",cancel:"Cancelar",hint:"Para empezar a crear la zona, haga clic y arrastre en una superficie de la escena",excludeHint:"Elija una capa de la vista para excluirla de la división en zonas",unsupported:"La división en zonas no se admite en MapView.",multipleDisabled:"Solo puede estar activa una zona cada vez",newSlice:"Nueva división en zonas",excludedLayers:"Capas excluidas",pickLayer:"Elija una capa de la vista",excludeLayer:"Excluir capa de la zona",includeLayer:"Incluir capa en la zona",ground:"Suelo"});

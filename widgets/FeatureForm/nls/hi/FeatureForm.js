@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- खाली -",validationErrors:{cannotBeNull:"कृपया कोई मान दर्ज करें",outsideRange:"मान इनके बीच का होना चाहिए: {min} â€“ {max}",invalidCodedValue:"मान नीचे दिए गए सूचीबद्ध मानों में से एक होना चाहिए।",invalidType:"कोई मान्य संख्या नहीं है"}});
+define({empty:"- खाली -",validationErrors:{cannotBeNull:"कृपया कोई मान दर्ज करें",outsideRange:"मान {min} और {max} के बीच का होना चाहिए",invalidCodedValue:"मान नीचे दिए गए सूचीबद्ध मानों में से एक होना चाहिए।",invalidType:"कोई मान्य संख्या नहीं है"}});

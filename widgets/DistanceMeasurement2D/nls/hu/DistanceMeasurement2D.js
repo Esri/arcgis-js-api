@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({title:"Mérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a térképbe az első pont elhelyezéséhez",unsupported:"A 2D távolság mérését csak a MapView támogatja.",distance:"Távolság",newMeasurement:"Új mérés",mode:"Mód",modes:{auto:"Automatikus",planar:"Síkbeli",geodesic:"Geodéziai"},unit:"Mértékegység",units:{metric:"Metrikus",imperial:"Angolszász",kilometers:"Kilométer",meters:"Méter",miles:"Mérföld",inches:"Hüvelyk",feet:"Láb",yards:"Yard","nautical-miles":"Tengeri mérföld","us-feet":"Láb (US)","degrees-minutes-seconds":"DMS",degrees:"Fok"}});

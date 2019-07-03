@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/screenUtils","../../state/controllers/RotateController","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,r,n,o,a,i){Object.defineProperty(t,"__esModule",{value:!0});var l=function(e){function t(t,r,n,o){var a=e.call(this,!0)||this;return a.view=t,a.pointerAction=r,a.pivotPoint=n,a.registerIncoming("drag",o,function(e){return a.handleDrag(e)}),a}return r(t,e),t.prototype.handleDrag=function(e){var t=e.data;if(!(t.pointers.size>1)&&i.eventMatchesMousePointerAction(e.data,this.pointerAction)){var r=n.createScreenPointArray(t.center.x,t.center.y);switch(t.action){case"start":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.cameraController=new o.RotateController(this.view,this.view.sceneIntersectionHelper,this.pivotPoint),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(r);break;case"update":this.cameraController&&this.cameraController.update(r);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}e.stopPropagation()}},t}(a.InputHandler);t.DragRotate=l});

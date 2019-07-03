@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/kebabDictionary"],function(e,t,o){function i(e){return r.toJSON(e)}Object.defineProperty(t,"__esModule",{value:!0});var r=new o.default({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon",esriGeometryMultiPatch:"multipatch"});t.toJSONGeometryType=i});
+define(["require","exports","../../../../core/jsonMap"],function(e,o,t){function i(e){return r.toJSON(e)}Object.defineProperty(o,"__esModule",{value:!0});var r=new t.default({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon",esriGeometryMultiPatch:"multipatch"});o.toJSONGeometryType=i});

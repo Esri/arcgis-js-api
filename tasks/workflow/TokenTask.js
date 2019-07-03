@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["../../request","../../core/lang","./WMBaseTask","./support/Util"],function(e,r,s,t){var n=new t;return s.createSubclass({declaredClass:"esri.tasks.workflow.TokenTask",properties:{url:{}},parseTokens:function(s,t){var a=this.parsedUrl.path+"/tokens/parseTokens",o={job:s.jobId,stringtoparse:s.stringToParse,user:n._formatDomainUsername(s.user),f:"json"},i=this._encode(r.mixin({},this.parsedUrl.query,o)),u=this._generateOptions(i,t);return e(a,u).then(function(e){return e.data.output})}})});

@@ -23,7 +23,9 @@
           "properties": {
             "drawingInfo": {},
             "elevationInfo": {},
-            "filters": {}
+            "filters": {},
+            "minScale": {},
+            "maxScale": {}
           },
           "additionalProperties": false
         }

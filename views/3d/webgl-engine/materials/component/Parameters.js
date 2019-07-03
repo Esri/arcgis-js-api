@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/assignHelper","../../lib/TextureBackedBuffer/TextureBackedBuffer"],function(e,r,a,n){function l(e){return!(e instanceof n.TextureBackedBuffer)}function o(e){return a({baseColor:t,baseColorOpacity:1,baseColorTexture:null,doubleSidedShading:!1,normals:"screen-space",cullFace:"back",componentData:c,receiveSSAO:!0,forceTransparency:null,slicePlaneEnabled:!1,polygonOffsetEnabled:!1,writeStencil:!1,layerOpacity:1},e)}Object.defineProperty(r,"__esModule",{value:!0}),r.isUniformComponentData=l,r.fillDefaults=o;var t=[1,1,1],c={externalColor:[1,1,1,1],externalColorMixMode:"multiply",castShadows:!0}});
+define(["require","exports","../../../../../core/tsSupport/assignHelper","../../lib/TextureBackedBuffer/TextureBackedBuffer"],function(e,r,a,n){function l(e){return!(e instanceof n.TextureBackedBuffer)}function o(e){return a({baseColor:t,baseColorOpacity:1,baseColorTexture:null,doubleSidedShading:!1,normals:"screen-space",cullFace:"back",componentData:c,receiveSSAO:!0,forceTransparency:null,slicePlaneEnabled:!1,polygonOffsetEnabled:!1,writeStencil:!1,readStencil:!1,layerOpacity:1},e)}Object.defineProperty(r,"__esModule",{value:!0}),r.isUniformComponentData=l,r.fillDefaults=o;var t=[1,1,1],c={externalColor:[1,1,1,1],externalColorMixMode:"multiply",castShadows:!0}});

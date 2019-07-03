@@ -1,6 +1,6 @@
 // Sizes & Placement
 
-$border-size--active: 4px !default;
+$border-size--active: 3px !default;
 $icon-size: 16px !default;
 $border-radius: 2px !default;
 
@@ -28,7 +28,6 @@ $button-height--plus-half: floor($button-height * 1.5) !default;
 // button : double
 $button-width--double: floor($button-width * 2) !default;
 $button-height--double: floor($button-height * 2) !default;
-
 
 /////////////////////////
 // List Items
@@ -82,6 +81,10 @@ $spinning-loader-size: $icon-size !default;
 $side-spacing: 15px !default;
 $cap-spacing: 12px !default;
 
+// spacing : three quarters
+$side-spacing--three-quarters: floor($side-spacing * 3/4) !default;
+$cap-spacing--three-quarters: floor($cap-spacing * 3/4) !default;
+
 // spacing : half
 $side-spacing--half: floor($side-spacing / 2) !default;
 $cap-spacing--half: floor($cap-spacing / 2) !default;
@@ -109,3 +112,17 @@ $cap-spacing--double: floor($cap-spacing * 2) !default;
 /////////////////////////
 // View UI
 $view-ui-spacing: 10px !default;
+
+/////////////////////////
+// Smart Mapping Sliders
+$smartmapping-slider__width: 260px !default;
+$smartmapping-slider__base-height: 240px !default;
+$smartmapping-slider__ramp-width: 30px !default;
+$smartmapping-slider__ramp-stroke-width: 1px !default;
+$smartmapping-slider__ramp-path-stroke-width: 0.5px !default;
+$smartmapping-slider__histogram-width: 120px !default;
+$smartmapping-slider__range-input-height: 40px !default;
+
+$smartmapping-slider__thumb-size: 12px !default;
+$smartmapping-slider__thumb-size--offset: round($smartmapping-slider__thumb-size/2) !default;
+$smartmapping-slider__thumb-pointer-size: round($smartmapping-slider__thumb-size/2) !default;

@@ -1,0 +1,7 @@
+@mixin opacitySlider() {
+  @include smartMappingSlider(esri-opacity-slider);
+}
+
+@if $include_OpacitySlider == true {
+  @include opacitySlider();
+}

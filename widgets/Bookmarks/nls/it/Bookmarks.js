@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Segnalibri",goToBookmark:"Vai a segnalibro",noBookmarksHeading:"Nessun segnalibro",noBookmarksDescription:"Aggiungere segnalibri alla mappa per farli apparire qui.",disabledHeading:"Segnalibri disabilitati",disabledDescription:"Aggiungere un MapView per abilitare i segnalibri."});
+define({addBookmark:"Aggiungi segnalibro",disabledHeading:"Segnalibri disabilitati",disabledDescription:"Aggiungere un MapView per abilitare i segnalibri.",goToBookmark:"Vai a segnalibro",noBookmarksHeading:"Nessun segnalibro",noBookmarksDescription:"Aggiungere segnalibri alla mappa per farli apparire qui.",title:"Titolo",addPlaceholder:"Immettere il titolo del segnalibro",addingBookmark:"Aggiunta del segnalibro in corso",widgetLabel:"Segnalibri"});

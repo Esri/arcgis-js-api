@@ -1,30 +1,42 @@
 #include <util/vsPrecision.glsl>
+#include <materials/ribbonLine/inputs.glsl>
+
+
+const float PI = 3.1415926535897932384626433832795;
 
 uniform mat4 proj;
 uniform mat4 view;
 uniform mat4 model;
 
-uniform float extLineWidth;
 uniform float nearPlane;
 uniform float pixelRatio;
 
 attribute vec3 position;
+
+// The subdivision factor helps realizing round joins and caps. The round geometry is created by adding additional
+// vertices. The subdivisionFactor indicates which of the subdivided vertices the shader is working with so that
+// the vertex can be pushed into the right place.
+attribute float subdivisionFactor;
+
+// They uv0.y value is used to encode whether we are dealing with a vertex on the left or right side of the line,
+// the start- or endvertex of a line segment and and start or end cap. The encoding is as follows:
+// sign(uv0.y) -> left (<0) or right (>0)
+// abs(uv0.y):
+//    1: join, endVertex
+//    2: join, startVertex
+//    4: cap, startVertex <- startCap
+//    5: cap, endVertex <- endCap
 attribute vec2 uv0;
-attribute vec4 color;
 
 varying vec2 vtc;
 varying vec4 vColor;
 varying vec3 vpos;
 
-attribute float size;
-
-#ifndef WALL
 uniform float miterLimit;
 attribute vec3 auxpos1;
 attribute vec3 auxpos2;
-#endif
 
-#ifdef SCREENSCALE
+
 uniform vec2 screenSize;
 
 vec4 toScreenCoords(vec3 vertex) {
@@ -33,37 +45,27 @@ vec4 toScreenCoords(vec3 vertex) {
   return vClipSpace/abs(vClipSpace.w);
 }
 
-#define VECTYPE vec2
-#define ZEROVEC vec2(0.0, 0.0)
 #define PERPENDICULAR(v) vec2(v.y, -v.x);
 #define ISOUTSIDE (left.x * right.y - left.y * right.x)*uv0.y > 0.0
 
-#else //ifdef SCREENSCALE
-
-#define VECTYPE vec3
-#define ZEROVEC vec3(0.0, 0.0, 0.0)
-// these macros are only valid for "strip" type lines:
-#define PERPENDICULAR(v) cross(up/*vec3(0.0, 1.0, 0.0)*/, v)
-#define ISOUTSIDE dot(cross(left, right), up/*vec3(0.0, 1.0, 0.0)*/)*uv0.y < 0.0
-
-#endif //ifdef SCREENSCALE
 
 float interp(float ncp, vec4 a, vec4 b) {
   return (-ncp - a.z) / (b.z - a.z);
 }
 
-#ifdef SCREENSCALE
+vec2 rotate(vec2 v, float a) {
+	float s = sin(a);
+	float c = cos(a);
+	mat2 m = mat2(c, -s, s, c);
+	return m * v;
+}
 
-void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
+void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next, in bool isStartVertex) {
   float vnp = nearPlane*0.99;
-
-  //We have four vertices per point on the line. Start and end vertices
-  //are treated differently --> d > 0, d < 0
-  float d = abs(uv0.y) - 1.1;
 
   //current pos behind ncp --> we need to clip
   if(pos.z > -nearPlane) {
-    if (d < 0.0) {
+    if (!isStartVertex) {
       //previous in front of ncp
       if(prev.z < -nearPlane) {
         pos = mix(prev, pos, interp(vnp, prev, pos));
@@ -73,7 +75,7 @@ void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
       }
     }
     //next in front of ncp
-    if(d > 0.0) {
+    if(isStartVertex) {
       if(next.z < -nearPlane) {
         pos = mix(pos, next, interp(vnp, pos, next));
         prev = pos;
@@ -106,109 +108,148 @@ void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
   prev /= prev.w;
 }
 
-#endif // SCREENSCALE
 
 void main(void) {
   vpos = (model * vec4(position, 1.0)).xyz;
 
-#ifdef SCREENSCALE
-// Check for special value of uv0.y which is used by the Renderer when graphics
-// are removed before the VBO is recompacted. If this is the case, then we just
-// project outside of clip space.
-if (uv0.y == 0.0) {
-  // Project out of clip space
-  gl_Position = vec4(1e038, 1e038, 1e038, 1.0);
-}
-else {
-#endif
+  // Check for special value of uv0.y which is used by the Renderer when graphics
+  // are removed before the VBO is recompacted. If this is the case, then we just
+  // project outside of clip space.
+  if (uv0.y == 0.0) {
+    // Project out of clip space
+    gl_Position = vec4(1e038, 1e038, 1e038, 1.0);
+  }
+  else {
+    bool isStartVertex = abs(abs(uv0.y)-3.0) == 1.0;
+    bool isJoin = abs(uv0.y)-3.0 < 0.0;
+    
 
-float lineWidth = (extLineWidth + size) * pixelRatio;
 
-#ifdef SCREENSCALE
+    float lineWidth = getSize() * pixelRatio;
 
-#if 0
-  vec4 pos = toScreenCoords(position.xyz);
-  vec2 left = (pos - toScreenCoords(auxpos1)).xy;
-  vec2 right = (toScreenCoords(auxpos2) - pos).xy;
+
+
+    vec4 pos  = view * vec4((model * vec4(position.xyz, 1.0)).xyz, 1.0);
+    vec4 prev = view * vec4((model * vec4(auxpos1.xyz, 1.0)).xyz, 1.0);
+    vec4 next = view * vec4((model * vec4(auxpos2.xyz, 1.0)).xyz, 1.0);
+
+    clipAndTransform(pos, prev, next, isStartVertex);
+
+    vec2 left = (pos - prev).xy;
+    vec2 right = (next - pos).xy;
+
+
+    float leftLen = length(left);
+    left = (leftLen > 0.001) ? left/leftLen : vec2(0.0, 0.0);
+
+    float rightLen = length(right);
+    right = (rightLen > 0.001) ? right/rightLen : vec2(0.0, 0.0);
+
+    vec2 capDisplacementDir = vec2(0, 0);
+    vec2 joinDisplacementDir = vec2(0, 0);
+    float displacementLen = lineWidth;
+
+    if( isJoin ){
+
+      // JOIN handling ---------------------------------------------------
+      // determine if vertex is on the "outside or "inside" of the join
+      bool isOutside = ISOUTSIDE;
+
+
+      // compute miter join position first
+      joinDisplacementDir = normalize(left + right);
+      joinDisplacementDir = PERPENDICULAR(joinDisplacementDir);
+
+      // computer miter stretch
+      if (leftLen > 0.001 && rightLen > 0.001) {
+        float nDotSeg = dot(joinDisplacementDir, left);
+        displacementLen /= length(nDotSeg*left - joinDisplacementDir);
+
+        // limit displacement of inner vertices
+        if (!isOutside) {
+          displacementLen = min(displacementLen, min(leftLen, rightLen)/abs(nDotSeg));
+        }
+      }
+
+      if (isOutside && (displacementLen > miterLimit*lineWidth)) {
+#ifdef JOIN_ROUND
+
+        vec2 startDir;
+        vec2 endDir;
+
+        if (leftLen < 0.001) {
+          startDir = right;
+        }
+        else{
+          startDir = left;
+        }
+        startDir = normalize(startDir);
+        startDir = PERPENDICULAR(startDir);
+        
+        if (rightLen < 0.001) {
+          endDir = left;
+        }
+        else{
+          endDir = right;
+        }
+        endDir = normalize(endDir);
+        endDir = PERPENDICULAR(endDir);
+
+        float rotationAngle = acos(clamp(dot(startDir, endDir), -1.0, 1.0));
+        joinDisplacementDir = rotate( startDir, -sign(uv0.y)*subdivisionFactor*rotationAngle );
+
+        displacementLen = lineWidth;
 #else
-  vec4 pos  = view * vec4((model * vec4(position.xyz, 1.0)).xyz, 1.0);
-  vec4 prev = view * vec4((model * vec4(auxpos1.xyz, 1.0)).xyz, 1.0);
-  vec4 next = view * vec4((model * vec4(auxpos2.xyz, 1.0)).xyz, 1.0);
+        // convert to bevel join if miterLimit is exceeded
+        if (leftLen < 0.001) {
+          joinDisplacementDir = right;
+        }
+        else if (rightLen < 0.001) {
+          joinDisplacementDir = left;
+        }
+        else {
+          joinDisplacementDir = isStartVertex ? right : left;
+        }
+        joinDisplacementDir = normalize(joinDisplacementDir);
+        joinDisplacementDir = PERPENDICULAR(joinDisplacementDir);
+        displacementLen = lineWidth;
+#endif // if JOIN_ROUND
+      }
+    } else {
+      // CAP handling ---------------------------------------------------
+      if (leftLen < 0.001) {
+        joinDisplacementDir = right;
+      }
+      else if (rightLen < 0.001) {
+        joinDisplacementDir = left;
+      }
+      else {
+        joinDisplacementDir = isStartVertex ? right : left;
+      }
+      joinDisplacementDir = normalize(joinDisplacementDir);
+      joinDisplacementDir = PERPENDICULAR(joinDisplacementDir);
+      displacementLen = lineWidth;
 
-  clipAndTransform(pos, prev, next);
+      capDisplacementDir = isStartVertex ? -right : left;
 
-  vec2 left = (pos - prev).xy;
-  vec2 right = (next - pos).xy;
-#endif
-
-#else // ifdef SCREENSCALE
-  vec4 pos = vec4(position, 1.0);
-#ifndef WALL
-  vec3 left = position.xyz - auxpos1;
-  vec3 right = auxpos2 - position.xyz;
-  vec3 up = normalize(position.xyz);
-#endif // ifndef WALL
-#endif // ifdef SCREENSCALE
-
-#ifdef WALL
-  float displacementLen = lineWidth;
-  vec3 displacementDir = normalize(position.xyz);//vec3(0.0, 1.0, 0.0);
-#else // ifdef WALL
-
-  float leftLen = length(left);
-  left = (leftLen > 0.001) ? left/leftLen : ZEROVEC;
-
-  float rightLen = length(right);
-  right = (rightLen > 0.001) ? right/rightLen : ZEROVEC;
-
-  // determine if vertex is on the "outside or "inside" of the join
-  bool isOutside = ISOUTSIDE;
-
-  // compute miter join position first
-  float displacementLen = lineWidth;
-  VECTYPE displacementDir = normalize(left + right);
-  displacementDir = PERPENDICULAR(displacementDir);
-  if (leftLen > 0.001 && rightLen > 0.001) {
-    float nDotSeg = dot(displacementDir, left);
-    displacementLen /= length(nDotSeg*left - displacementDir);
-
-    // limit displacement of inner vertices
-    if (!isOutside) {
-      displacementLen = min(displacementLen, min(leftLen, rightLen)/abs(nDotSeg));
+  #ifdef CAP_ROUND
+      float angle = subdivisionFactor*PI*0.5;
+      joinDisplacementDir *= cos(angle);
+      capDisplacementDir *= sin(angle);
+  #else
+      // butt and square cap
+      capDisplacementDir *= subdivisionFactor;
+  #endif
     }
+
+
+
+    pos.xy += joinDisplacementDir * sign(uv0.y) * displacementLen;
+    pos.xy += capDisplacementDir * displacementLen;
+    pos.xy /= screenSize;
+
+    vtc = uv0;
+    vColor = getColor();
+    gl_Position = pos;
   }
-
-  if (isOutside && (displacementLen > miterLimit*lineWidth)) {
-    // convert to bevel join if miterLimit is exceeded
-    if (leftLen < 0.001) {
-      displacementDir = right;
-    }
-    else if (rightLen < 0.001) {
-      displacementDir = left;
-    }
-    else {
-      displacementDir = (abs(uv0.y) - 1.1 < 0.0) ? left : right;
-    }
-    displacementDir = normalize(displacementDir);
-    displacementDir = PERPENDICULAR(displacementDir);
-    displacementLen = lineWidth;
-  }
-
-#endif // ifdef WALL
-
-#ifdef SCREENSCALE
-  pos.xy += displacementDir * floor(uv0.y + 0.5) * displacementLen;
-  pos.xy /= screenSize;
-#else
-  pos.xyz += displacementDir * floor(uv0.y + 0.5) * displacementLen;
-  pos = proj * view * model * pos;
-#endif
-
-  vtc = uv0;
-  vColor = color * 0.003921568627451; // = 1/255
-  gl_Position = pos;
-
-#ifdef SCREENSCALE
-  }
-#endif
 }

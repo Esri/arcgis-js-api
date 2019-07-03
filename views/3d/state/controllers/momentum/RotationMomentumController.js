@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./MomentumController","../../utils/navigationUtils","../../../support/geometryUtils"],function(e,t,o,r,n,i,c,l){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,o,i,c){var l=e.call(this,t,2)||this;return l.momentum=o,l.axis=n.vec3f64.create(),l.center=n.vec3f64.create(),r.vec3.copy(l.axis,c),r.vec3.copy(l.center,i),l}return o(t,e),t.prototype.momentumStep=function(e,t){var o=this.momentum.value(e);c.applyRotation(t,this.center,l.axisAngle.wrapAxisAngle(this.axis,o))},t}(i.MomentumController);t.RotationMomentumController=a});

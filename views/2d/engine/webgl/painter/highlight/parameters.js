@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,i){Object.defineProperty(i,"__esModule",{value:!0}),i.SIGMAS=[void 0,void 0,void 0,1],i.ALPHA_TO_RGBA_CHANNEL_SELECTOR_MATRIX=[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],i.RGBA_TO_RGBA_CHANNEL_SELECTOR_MATRIX=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],i.SHADE_TEXTURE_SIZE=256,i.HIGHLIGHT_SIZING={outlineWidth:.7,outerHaloWidth:.7,innerHaloWidth:.7,outlinePosition:0}});

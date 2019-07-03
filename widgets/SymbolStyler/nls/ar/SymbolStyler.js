@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({basic:"أشكال رئيسية",preview:"معاينة",shape:"الشكل",fill:"ملء",outline:"الحدود",px:"بكسل",pixels:"وحدات البكسل",meters:"أمتار",symbolSize:"حجم الرمز",symbolSizeTooltip:"تعيين حجم الرمز من ${min} إلى ${max} ${units}.",useImage:"استخدام صورة",useImageTooltip:"استخدام صورة مُخصصة.",imageUrlInputTooltip:"لأفضل النتائج، استخدم صورة مُربّعة (PNG أو GIF أو JPEG) لا تزيد عن 120 × 120 بكسل. وسيتم ضبط الأحجام الأخرى لكي تكون مناسبة.",imageUrlInputPlaceholder:"http://<image URL>",selectCategoryTooltip:"تحديد فئة.",imageLoadError:"يتعذر تحميل الصورة.",symbolLoadError:"يتعذر تحميل الرموز.",noSymbolsAvailable:"لا تتوفر رموز",noTitle:"لا يوجد عنوان",noFillTooltip:"لا توجد تعبئة",symbolTransparencyTooltip:"شفافية الرمز",lineWidth:"عرض الخط",lineWidthTooltip:"تعيين عرض الخط من ${min} إلى ${max} ${units}.",pattern:"النمط",patternTooltip:"نوع الخط",flipColors:"انعكاس الألوان",flipColorsTooltip:"عكس منحدر الألوان",noOutlineTooltip:"لا يوجد مخطط تفصيلي",saturation:"إشباع",saturationTooltip:"ضبط كثافة اللون.",selectRampTooltip:"تحديد منحدر الالوان.",circle:"دائرة",square:"مربع",cross:"شكل متصالب",x:"X",kite:"طائرة ورقية",triangle:"مثلث",sphere:"كرة",cylinder:"اسطوانة",tallCylinder:"اسطوانة طويلة",cube:"مكعب",tallCube:"مكعب طويل",cone:"مخروط",tallCone:"شكل مخروطي طويل",invertedCone:"شكل مخروطي معكوس",diamond:"معين",tetrahedron:"رباعي السطوح"});

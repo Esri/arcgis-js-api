@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.RasterData",properties:{format:null,itemId:{value:null,json:{read:{source:"itemID"},write:{target:"itemID"}}},url:null}})});

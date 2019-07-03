@@ -1,7 +1,7 @@
 precision mediump float;
 
 // Texture coordinates.
-varying vec2 v_texcoord;
+varying highp vec2 v_texcoord;
 
 // Texture sampler.
 uniform sampler2D u_texture;

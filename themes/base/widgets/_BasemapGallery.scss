@@ -1,4 +1,6 @@
 @mixin basemapGallery() {
+  $basemap-thumbnail-size: $button-height--double !default;
+
   .esri-basemap-gallery {
     color: $font-color;
     background-color: $background-color;
@@ -68,9 +70,17 @@
   }
 
   .esri-basemap-gallery__item-thumbnail {
-    height: $button-height--double;
+    height: $basemap-thumbnail-size;
     width: auto;
     box-shadow: 0 0 0 1px $border-color;
+  }
+
+  @supports (object-fit: cover) {
+    .esri-basemap-gallery__item-thumbnail {
+      height: $basemap-thumbnail-size;
+      width: $basemap-thumbnail-size;
+      object-fit: cover;
+    }
   }
 
   .esri-basemap-gallery__item-title {

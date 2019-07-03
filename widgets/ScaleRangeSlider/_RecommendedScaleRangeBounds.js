@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["./recommendedScales","../../core/declare"],function(e,n){return n(null,{declaredClass:"esri.dijit.ScaleRangeSlider._RecommendedScaleRangeBounds",beyondMinScale:function(n){var a=this.get("firstRange"),c=a.minScale,d=e.getRecommendedScale(a.id)||a.maxScale;return n<=c&&n>d},beyondMaxScale:function(n){var a=this.get("lastRange"),c=a.maxScale;return n<(e.getRecommendedScale(a.id)||a.minScale)&&n>=c}})});

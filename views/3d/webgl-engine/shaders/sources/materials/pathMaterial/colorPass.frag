@@ -3,15 +3,6 @@
 #include <util/slice.glsl>
 #include <util/sceneLighting.glsl>
 
-#ifdef TEXTURING
-uniform sampler2D tex;
-uniform vec2 texSize;
-varying vec2 vtc;
-#ifdef TEXTURE_ATLAS
-varying vec4 regionV;
-#endif
-#endif
-
 uniform vec3 camPos;
 uniform vec3 localOrigin;
 
@@ -53,23 +44,12 @@ varying float linearDepth;
 #include <util/shadow.glsl>
 #endif
 
-#ifdef TEXTURING
-#include <materials/pathMaterial/texturing.glsl>
-#endif
-
 #include <materials/pathMaterial/colorMixMode.glsl>
 
 void main() {
   discardBySlice(vpos);
 
-#ifdef TEXTURING
-  vec4 texColor = textureLookup(tex, vtc);
-  if (texColor.a < ALPHA_THRESHOLD) {
-    discard;
-  }
-#else /* TEXTURING */
   vec4 texColor = vec4(1.0);
-#endif /* TEXTURING */
 
   vec3 viewDir = vpos - camPos;
 

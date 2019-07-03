@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({streets:"도로",satellite:"이미지",hybrid:"이미지(레이블 포함)",terrain:"터레인(레이블 포함)",topo:"지형",gray:"연한 회색 캔버스","dark-gray":"진한 회색 캔버스",oceans:"해양","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"도로 맵(야간)","streets-relief-vector":"도로 맵(릴리프 포함)","streets-navigation-vector":"내비게이션 맵"});
+define({streets:"Street",satellite:"Imagery",hybrid:"Imagery(Label)",terrain:"Terrain(Label)",topo:"Topographic",gray:"LightGrayCanvas","dark-gray":"DarkGrayCanvas",oceans:"Ocean","national-geographic":"NationalGeographic",osm:"OpenStreetMap","streets-night-vector":"WorldStreetMap(Night)","streets-relief-vector":"WorldStreetMap(Relief)","streets-navigation-vector":"WorldNavigationMap"});

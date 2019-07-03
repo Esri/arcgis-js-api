@@ -22,7 +22,19 @@
         {
           "properties": {
             "definitionExpression": {},
-            "drawingInfo": {}
+            "drawingInfo": {
+              "allOf": [
+                {
+                  "$ref": "drawingInfo_schema.json"
+                },
+                {
+                  "properties": {
+                    "renderer": {}
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
           },
           "additionalProperties": false
         }
@@ -30,11 +42,10 @@
     },
     "listMode": {
       "type": "string",
-      "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
+      "description": "To show or hide the sublayer in the layer list.",
       "enum": [
         "show",
-        "hide",
-        "hide-children"
+        "hide"
       ]
     },
     "opacity": {

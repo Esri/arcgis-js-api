@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 /* eslint-env worker */
 
@@ -28,6 +28,9 @@ var globalId = 0;
 var outgoing = new Map();
 var configured = false;
 
+//
+// /!\ The values for each constant match the ones declared in utils.ts
+//
 // to handshake with worker the main thread
 var HANDSHAKE = 0;
 // to configure the worker
@@ -43,10 +46,16 @@ var RESPONSE = 5;
 // to invoke a method on the other side
 var INVOKE = 6;
 // to cancel a call
-var CANCEL = 7;
+var ABORT = 7;
 
 function mapDelete(map, key) {
   map["delete"](key); // eslint-disable-line
+}
+
+function createAbortError() {
+  var error = new Error("AbortError");
+  error.dojoType = "cancel";
+  return error;
 }
 
 function receiveMessage(event) {
@@ -66,43 +75,47 @@ function invokeStaticMessage(methodName, data, options) {
   var Deferred = require("dojo/Deferred");
   var jobId = globalId++;
 
-  var abortHandler = function() {
-    if (!outgoing.has(jobId)) {
+  var abort = function() {
+    var outJob = outgoing.get(jobId);
+
+    if (!outJob) {
       return;
     }
 
+    mapDelete(outgoing, jobId);
+
     // post a cancel message in order to cancel on the main thread
     self.postMessage({
-      type: CANCEL,
-      methodName: methodName,
+      type: ABORT,
       jobId: jobId
     });
 
-    mapDelete(outgoing, jobId);
-
-    if (!deferred.isCanceled()) {
-      deferred.cancel();
-    }
-
-    if (signal) {
-      signal.removeEventListener("abort", abortHandler);
-    }
+    outJob.reject(createAbortError());
   };
 
-  if (signal) {
-    signal.addEventListener("abort", abortHandler);
-  }
-
   // TODO promise-migration: just use Promise and rely on signal
-  var deferred = new Deferred(abortHandler);
+  var deferred = new Deferred(abort);
+
+  if (signal) {
+    if (signal.aborted) {
+      return deferred.reject(createAbortError());
+    }
+
+    signal.addEventListener("abort", function() {
+      abort();
+      deferred.reject(createAbortError());
+    });
+  }
 
   outgoing.set(jobId, deferred);
 
   // post to main thread
   self.postMessage({
     type: INVOKE,
-    methodName: methodName,
     jobId: jobId,
+    methodName: methodName,
+    // TODO promise migration: change to abortable: signal != null
+    abortable: true,
     data: data
   });
 

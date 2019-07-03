@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({widgetLabel:"Penanda Lokasi",goToBookmark:"Buka penanda lokasi",noBookmarksHeading:"Tidak Ada Penanda Lokasi",noBookmarksDescription:"Tambahkan penanda lokasi ke peta Anda sehingga akan muncul di sini.",disabledHeading:"Penanda Lokasi Dinonaktifkan",disabledDescription:"Tambahkan MapView untuk mengaktifkan penanda lokasi."});
+define({addBookmark:"Tambahkan penanda lokasi",disabledHeading:"Penanda Lokasi Dinonaktifkan",disabledDescription:"Tambahkan MapView untuk mengaktifkan penanda lokasi.",goToBookmark:"Buka penanda lokasi",noBookmarksHeading:"Tidak Ada Penanda Lokasi",noBookmarksDescription:"Tambahkan penanda lokasi ke peta Anda sehingga akan muncul di sini.",title:"Judul",addPlaceholder:"Masukkan judul penanda lokasi",addingBookmark:"Menambahkan penanda lokasi",widgetLabel:"Penanda Lokasi"});

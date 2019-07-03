@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"搜索",searchButtonTitle:"搜索",clearButtonTitle:"清除搜索",placeholder:"查找地址或地点",searchIn:"搜索范围",all:"全部",allPlaceholder:"查找地址或地点",emptyValue:"请输入搜索词。",untitledResult:"无标题",untitledSource:"无标题资源",noResults:"无结果",noResultsFound:"未找到结果。",noResultsFoundForValue:"未找到 {value} 的结果。",showMoreResults:"显示更多结果",hideMoreResults:"隐藏",searchResult:"搜索结果",moreResultsHeader:"更多结果",useCurrentLocation:"使用当前位置"});

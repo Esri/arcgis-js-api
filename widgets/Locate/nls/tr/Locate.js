@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Konumla",title:"Konumumu bul",currentLocation:"Geçerli konum",timestamp:"Zaman damgası",latitude:"Enlem",longitude:"Boylam",accuracy:"Doğruluk",altitude:"Yükseklik",altitudeAccuracy:"Yükseklik hassasiyeti",heading:"Başlık",speed:"Hız"});

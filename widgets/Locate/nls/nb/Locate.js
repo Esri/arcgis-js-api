@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Finn",title:"Finn min lokasjon",currentLocation:"Gjeldende sted",timestamp:"Tidsstempel",latitude:"Breddegrad",longitude:"Lengdegrad",accuracy:"Nøyaktighet",altitude:"Høyde",altitudeAccuracy:"Høydenøyaktighet",heading:"Topptekst",speed:"Hastighet"});

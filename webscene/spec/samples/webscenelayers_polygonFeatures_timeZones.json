@@ -24,6 +24,7 @@
               "type": "PointSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Object",
                   "material": {
                     "color": [
                       255,
@@ -31,7 +32,6 @@
                       255
                     ]
                   },
-                  "type": "Object",
                   "resource": {
                     "primitive": "sphere"
                   },
@@ -65,6 +65,7 @@
               "type": "PolygonSymbol3D",
               "symbolLayers": [
                 {
+                  "type": "Fill",
                   "material": {
                     "color": [
                       128,
@@ -73,7 +74,6 @@
                     ],
                     "transparency": 50
                   },
-                  "type": "Fill",
                   "outline": {
                     "color": [
                       128,
@@ -92,6 +92,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           1,
@@ -100,7 +101,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -120,6 +120,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -128,7 +129,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -148,6 +148,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -156,7 +157,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -176,6 +176,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           241,
@@ -184,7 +185,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -204,6 +204,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           165,
@@ -212,7 +213,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -232,6 +232,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           177,
@@ -240,7 +241,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -260,6 +260,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           110,
@@ -268,7 +269,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -288,6 +288,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           76,
@@ -296,7 +297,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -316,6 +316,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -324,7 +325,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -344,6 +344,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -352,7 +353,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -372,6 +372,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           106,
@@ -380,7 +381,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -400,6 +400,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           72,
@@ -408,7 +409,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -428,6 +428,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           1,
@@ -436,7 +437,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -456,6 +456,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -464,7 +465,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -484,6 +484,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -492,7 +493,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -512,6 +512,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           241,
@@ -520,7 +521,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -540,6 +540,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           165,
@@ -548,7 +549,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -568,6 +568,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           177,
@@ -576,7 +577,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -596,6 +596,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           110,
@@ -604,7 +605,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -624,6 +624,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           76,
@@ -632,7 +633,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -652,6 +652,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -660,7 +661,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -680,6 +680,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -688,7 +689,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -708,6 +708,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           106,
@@ -716,7 +717,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -736,6 +736,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           72,
@@ -744,7 +745,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -764,6 +764,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           1,
@@ -772,7 +773,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -792,6 +792,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -800,7 +801,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -820,6 +820,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -828,7 +829,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -848,6 +848,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           241,
@@ -856,7 +857,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -876,6 +876,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           165,
@@ -884,7 +885,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -904,6 +904,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           177,
@@ -912,7 +913,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -932,6 +932,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           110,
@@ -940,7 +941,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -960,6 +960,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           76,
@@ -968,7 +969,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -988,6 +988,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -996,7 +997,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1016,6 +1016,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -1024,7 +1025,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1044,6 +1044,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           106,
@@ -1052,7 +1053,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1072,6 +1072,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           72,
@@ -1080,7 +1081,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1100,6 +1100,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           252,
@@ -1108,7 +1109,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1128,6 +1128,7 @@
                   "type": "PolygonSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Fill",
                       "material": {
                         "color": [
                           255,
@@ -1136,7 +1137,6 @@
                         ],
                         "transparency": 50
                       },
-                      "type": "Fill",
                       "outline": {
                         "color": [
                           128,
@@ -1189,9 +1189,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

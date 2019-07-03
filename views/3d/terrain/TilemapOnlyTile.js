@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./TerrainConst","./TilePerLayerInfo"],function(e,r,a,n){return function(){function e(e,r){this.lij=e,this._pool=r,this.layerInfo=new Array(a.LayerClass.COUNT),this.parent=null}return e.prototype.hasDataAvailable=function(e,r,a){var n=this.layerInfo[a][r].tilemap;return!n||"unavailable"!==n.getAvailability(e.lij[1],e.lij[2])},e.prototype.modifyLayers=function(e,r,a){for(var t=this.layerInfo[a],i=r.length,o=new Array(i),l=0;l<i;l++){var y=r[l];o[l]=y>-1?t[y]:n.TilePerLayerInfo.makeEmptyLayerInfo(a,this._pool)}this.layerInfo[a]=o},e}()});

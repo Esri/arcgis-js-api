@@ -30,6 +30,12 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
+                        "font": {
+                          "family": "Arial",
+                          "style": "italic",
+                          "weight": "bold"
+                        },
                         "material": {
                           "color": [
                             255,
@@ -37,12 +43,6 @@
                             0
                           ],
                           "transparency": 50
-                        },
-                        "type": "Text",
-                        "font": {
-                          "family": "Arial",
-                          "style": "italic",
-                          "weight": "bold"
                         },
                         "size": 32,
                         "text": "default"
@@ -91,6 +91,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Object",
                       "material": {
                         "color": [
                           0,
@@ -98,7 +99,6 @@
                           0
                         ]
                       },
-                      "type": "Object",
                       "resource": {
                         "primitive": "sphere"
                       },
@@ -138,6 +138,12 @@
                     "type": "LabelSymbol3D",
                     "symbolLayers": [
                       {
+                        "type": "Text",
+                        "font": {
+                          "family": "Arial",
+                          "style": "italic",
+                          "weight": "bold"
+                        },
                         "material": {
                           "color": [
                             255,
@@ -145,12 +151,6 @@
                             0
                           ],
                           "transparency": 50
-                        },
-                        "type": "Text",
-                        "font": {
-                          "family": "Arial",
-                          "style": "italic",
-                          "weight": "bold"
                         },
                         "size": 32,
                         "text": "default"
@@ -199,6 +199,7 @@
                   "type": "PointSymbol3D",
                   "symbolLayers": [
                     {
+                      "type": "Object",
                       "material": {
                         "color": [
                           0,
@@ -206,7 +207,6 @@
                           0
                         ]
                       },
-                      "type": "Object",
                       "resource": {
                         "primitive": "sphere"
                       },
@@ -258,9 +258,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.15",
+  "version": "1.16",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.11",
+  "authoringAppVersion": "4.12",
   "initialState": {
     "environment": {
       "lighting": {

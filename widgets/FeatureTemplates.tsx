@@ -3,7 +3,7 @@
  * {@link module:esri/layers/FeatureLayer#templates templates} from one or more {@link module:esri/layers/FeatureLayer feature layers}.
  * In addition to displaying feature layer templates, it is also possible to [filter](#filterFunction) and [group](#groupBy) templates
  * for an easier editing experience. The widget listens for an end user to select a specific {@link esri/widgets/FeatureTemplates/TemplateItem template}
- * in the widget. Its [select](#event:select)
+ * in the widget. Its [select](#event-select)
  * event is fired and the resulting template information is returned. This widget can be used in conjunction with
  * {@link module:esri/layers/FeatureLayer#applyEdits FeatureLayer.applyEdits} to enable an end user to
  * update one of its feature layers.
@@ -104,9 +104,9 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
    * to remove it.
    *
    * @example
-   * // Filter and display templates only if their names contain the word `Street`
+   * // Filter and display templates only if their labels contain the word `Street`
    * function myFilterFunction(filter) {
-   *   let containsName = filter.name.includes("Street");
+   *   let containsName = filter.label.includes("Street");
    *   return containsName;
    * }
    *
@@ -342,9 +342,9 @@ class FeatureTemplates extends declared(Widget, HandleOwner) {
    * @instance
    *
    * @example
-   * // Filter and display templates only if their names contain the word `Street`
+   * // Filter and display templates only if their labels contain the word `Street`
    * function myFilterFunction(filter) {
-   *   let containsName = filter.name.includes("Street");
+   *   let containsName = filter.label.includes("Street");
    *   return containsName;
    * }
    *

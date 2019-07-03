@@ -17,7 +17,7 @@ uniform vec4 screenSizePerspective;
 #endif
 
 #ifdef DEBUG_DRAW_BORDER
-varying vec3 debugBorderCoords;
+varying vec4 debugBorderCoords;
 #endif
 
 attribute vec2 uv0;
@@ -115,7 +115,7 @@ voccluded = visible ? 0.0 : 1.0;
     vtc = uv * textureCoordinateScaleFactor;
 
 #ifdef DEBUG_DRAW_BORDER
-    debugBorderCoords = vec3(uv01, 1.0 / combinedSize);
+    debugBorderCoords = vec4(uv01, 1.5 / combinedSize);
 #endif
 
     vsize = inputSize;
@@ -124,7 +124,7 @@ voccluded = visible ? 0.0 : 1.0;
     vtc = vec2(.0);
 
 #ifdef DEBUG_DRAW_BORDER
-    debugBorderCoords = vec3(0.0);
+    debugBorderCoords = vec4(0.5, 0.5, 1.5 / combinedSize);
 #endif
 
   }

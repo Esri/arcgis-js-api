@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({printNotes:"Introducir notas aquí",printDisclaimer:"Las indicaciones se proporcionan exclusivamente a efectos de planificación y están sujetas a los <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>términos de uso de Esri</a>. Las condiciones reales de las carreteras pueden afectar a la precisión de las indicaciones y se deben tener en cuenta junto con la señalización y las restricciones legales. El usuario asume todos los riesgos derivados del uso.",printoutError:"Parece que se ha producido un error."});

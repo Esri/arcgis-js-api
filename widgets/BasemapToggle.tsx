@@ -261,12 +261,12 @@ class BasemapToggle extends declared(Widget) {
         tabIndex={0}
         title={i18n.toggle}
       >
+        <div class={this.classes(CSS.container, CSS.secondaryBasemapImage)}>
+          <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
+        </div>
         <div class={CSS.container}>
           <div class={CSS.image} styles={getThumbnailStyles(nextBasemap)} />
           {titleNode}
-        </div>
-        <div class={this.classes(CSS.container, CSS.secondaryBasemapImage)}>
-          <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
         </div>
       </div>
     );

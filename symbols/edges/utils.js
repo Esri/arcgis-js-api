@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","./Edges3D","./SketchEdges3D","./SolidEdges3D"],function(e,r,t,s,d){function n(e,r,t){if(!e)return e;switch(e.type){case"solid":var n=new d;return n.read(e,t),n;case"sketch":var n=new s;return n.read(e,t),n}}Object.defineProperty(r,"__esModule",{value:!0}),r.read=n,r.symbol3dEdgesProperty={types:{key:"type",base:t,typeMap:{solid:d,sketch:s}},json:{read:n,write:!0}}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({other:"Andere",sumOfCategories:"Summe der Kategorien",predominantCategory:"Vorherrschende Kategorie",strengthOfPredominance:"Stärke der Dominanz",ageInfo_years:"Alter, in Jahren, von {startTime} bis {endTime}",ageInfo_months:"Alter, in Monaten, von {startTime} bis {endTime}",ageInfo_days:"Alter, in Tagen, von {startTime} bis {endTime}",ageInfo_hours:"Alter, in Stunden, von {startTime} bis {endTime}",ageInfo_minutes:"Alter, in Minuten, von {startTime} bis {endTime}",ageInfo_seconds:"Alter, in Sekunden, von {startTime} bis {endTime}",relationship:{legendTitle:"Beziehung",HL:"Hoch – Niedrig",HH:"Hoch – Hoch",LL:"Niedrig – Niedrig",LH:"Niedrig – Hoch",HM:"Hoch – Mittel",ML:"Mittel – Niedrig",MM:"Mittel – Mittel",MH:"Mittel – Hoch",LM:"Niedrig – Mittel",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Mittel – Schwach",M2M2:"Mittel – Mittel",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Schwach – Schwach",M1M2:"Schwach – Mittel",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}});

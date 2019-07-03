@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({attach:"附件",fields:"字段",fieldsSummary:"属性和值列表",media:"媒体",next:"下一页",noTitle:"无标题",previous:"上一页",lastEdited:"最后编辑于 {date}。",lastCreated:"创建于 {date}。",lastEditedByUser:"最后由 {user} 在 {date} 编辑。",lastCreatedByUser:"由 {user} 在 {date} 创建。"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,n,i,o){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,n){var i=e.call(this,!0)||this;return i.view=t,i.registerIncoming("double-click",n,function(e){return i._handleDoubleClick(e,n)}),i}return n(t,e),t.prototype._handleDoubleClick=function(e,t){o.eventMatchesPointerAction(e.data,"primary")&&(e.stopPropagation(),t?this.view.mapViewNavigation.zoomOut([e.data.x,e.data.y]):this.view.mapViewNavigation.zoomIn([e.data.x,e.data.y]))},t}(i.InputHandler);t.DoubleClickZoom=a});

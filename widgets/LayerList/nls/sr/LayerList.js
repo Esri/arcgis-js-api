@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista slojeva",noItemsToDisplay:"Trenutno nema stavki za prikaz.",layerInvisibleAtScale:"Nevidljivo pri trenutnoj razmeri",layerError:"Došlo je do greške prilikom učitavanja ovog sloja",untitledLayer:"Sloj bez naslova"});

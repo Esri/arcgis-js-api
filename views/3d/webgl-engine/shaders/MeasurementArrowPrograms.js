@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,t,a){Object.defineProperty(r,"__esModule",{value:!0}),r.colorPass={name:"measurement-arrow-color",shaders:{vertexShader:a.resolveIncludes("materials/measurementArrow/measurementArrow.vert"),fragmentShader:a.resolveIncludes("materials/measurementArrow/measurementArrow.frag")},attributes:t.Default3D}});

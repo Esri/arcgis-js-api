@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({attach:"अनुलग्नक",fields:"फ़ील्ड",fieldsSummary:"विशेषताओं और मानों की सूची",media:"मीडिया",next:"अगला",noTitle:"शीर्षकरहित",previous:"पिछला",lastEdited:"आखिरी बार {date} को संपादित किया गया।",lastCreated:"{date} को बनाया गया।",lastEditedByUser:"{date} को {user} द्वारा आखिरी बार संपादित किया गया।",lastCreatedByUser:"{date} को {user} द्वारा बनाया गया।"});

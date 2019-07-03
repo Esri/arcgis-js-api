@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"Ö",west:"V"},addConversion:"Lägg till konvertering",captureMode:"Inspelningsläge",changeCoordinateDisplay:"Ändra visningen av koordinater",convert:"Omvandla",conversionOutputSuffix:"utdata för konvertering",copySuccessMessage:"Koordinat kopierad till Urklipp",defaultPattern:"Återställ till standard",goTo:"Gå till plats",inputCoordTitle:"Indatakoordinat",invalidCoordinate:"Ogiltig koordinat",liveMode:"Live-läge",locationOffBasemap:"Indatakoordinat är utanför baskartans utbredning",noBasemap:"Ingen baskarta.",noLocation:"Inget läge",removeConversion:"Ta bort konvertering",selectFormat:"Välj format",settingsTitle:"Formatinställningar"});

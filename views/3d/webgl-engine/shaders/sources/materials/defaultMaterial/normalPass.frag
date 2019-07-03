@@ -7,6 +7,7 @@
 #endif
 
 varying vec3 vpos;
+varying vec3 vPositionView;
 
 #if defined(TEXTURING)
   #include <materials/defaultMaterial/texturingInputs.glsl>
@@ -22,7 +23,7 @@ void main() {
   #endif
 
 #if (NORMALS == NORMALS_SCREEN_DERIVATIVE)
-  vec3 normal = normalize(cross(dFdx(vpos),dFdy(vpos)));
+  vec3 normal = normalize(cross(dFdx(vPositionView),dFdy(vPositionView)));
 #else
   vec3 normal = normalize(vnormal);
   if (gl_FrontFacing == false) normal = -normal;

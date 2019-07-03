@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
-define({empty:"- trống -",validationErrors:{cannotBeNull:"Vui lòng nhập một giá trị",outsideRange:"Giá trị phải nằm trong khoảng: {min} â€“ {max}",invalidCodedValue:"Giá trị phải là một trong các giá trị được liệt kê.",invalidType:"Không phải là giá trị hợp lệ"}});
+define({empty:"- trống -",validationErrors:{cannotBeNull:"Vui lòng nhập một giá trị",outsideRange:"Giá trị phải nằm trong khoảng {min} và {max}",invalidCodedValue:"Giá trị phải là một trong các giá trị được liệt kê.",invalidType:"Không phải là giá trị hợp lệ"}});

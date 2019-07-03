@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.11/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,s,t){Object.defineProperty(r,"__esModule",{value:!0}),r.blendLayers={name:"blend-layers",shaders:{vertexShader:t.resolveIncludes("misc/blendLayers.vert"),fragmentShader:t.resolveIncludes("misc/blendLayers.frag")},attributes:s.Default3D},r.texOnly={name:"tex-only",shaders:{vertexShader:t.resolveIncludes("misc/texOnly.vert"),fragmentShader:t.resolveIncludes("misc/texOnly.frag")},attributes:s.Default3D}});

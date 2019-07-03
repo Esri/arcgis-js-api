@@ -15,7 +15,25 @@
     },
     "heightUnit": {
       "type": "string",
-      "description": "The unit of the vertical coordinate system.<a href=\"#heightUnit\"><sup>1</sup></a>"
+      "description": "The unit of the vertical coordinate system.<a href=\"#heightUnit\"><sup>1</sup></a>",
+      "enum": [
+        "150-kilometers",
+        "50-kilometers",
+        "benoit-1895-b-chain",
+        "clarke-foot",
+        "clarke-link",
+        "clarke-yard",
+        "foot",
+        "gold-coast-foot",
+        "indian-1937-yard",
+        "indian-yard",
+        "meter",
+        "sears-1922-truncated-chain",
+        "sears-chain",
+        "sears-foot",
+        "sears-yard",
+        "us-foot"
+      ]
     },
     "vertCRS": {
       "type": "string",
