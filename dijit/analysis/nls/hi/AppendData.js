@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"जोड़ने के लिए लेयर चुनें",inputWarningLabel:"चेतावनी: वह लेयर जिसके साथ आप जुड़े हैं, उसमें संशोधन किया जाएगा।",inputHostedLayerWarning:"चुनी गयी लेयर होस्टेड फीचर लेयर नहीं थी। कृपया जोड़ने के लिए एक होस्टेड फीचर लेयर चुनें।",appendLayerLabel:"जोड़ने के लिए लेयर चुनें",filterLabel:"सभी फीचर्स जोड़ें या कोई सबसेट निर्धारित करें (वैकल्पिक)",fieldMappingLabel:"फ़ील्ड जोड़ने का तरीका चुनें (वैकल्पिक)",inputField:"फ़ील्ड इनपुट करें",appendValue:"मान जोड़ें",expression:"व्यंजक"});

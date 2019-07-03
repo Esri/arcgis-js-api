@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","esri/dijit/geoenrichment/when","../printing/PrintableContainer"],function(n,i,t){return n(null,{_getPrintableContainer:function(n){var e=this,r=new t(this,this._viewModel);return n.onShowWaiting=function(n){e._showWaiting(n)},i(r.initialize(n),function(n){return n||i(r.stop(),function(){return null})})},_getPrintDialogSettings:function(){return new t(this,this._viewModel).getPrintDialogSettings()}})});
+define(["require","dojo/_base/declare","esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when"],function(n,e,i,t){function r(){var e=new i;return n(["../printing/PrintableContainer"],function(n){e.resolve(n)}),e.promise}return e(null,{_getPrintableContainer:function(n){var e=this;return r().then(function(i){var r=new i(e,e._viewModel);return n.onShowWaiting=function(n){e._showWaiting(n)},t(r.initialize(n),function(n){return n||t(r.stop(),function(){return null})})})},_getPrintDialogSettings:function(){var n=this;return r().then(function(e){return new e(n,n._viewModel).getPrintDialogSettings()})}})});

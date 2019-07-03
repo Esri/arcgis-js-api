@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({binsLabel:"Selecione o tipo de caixas que serão utilizadas para construir a grelha multivariável",layersAttrLabel:"Selecione camadas de entrada e variáveis que pretende incluir na grelha",itemDescription:"Camada de elementos gerada a partir da execução de Construir Grelha Multivariável.",itemTags:"Resultado de Análise, Construir Grelha Multivariável",itemSnippet:"Camada de elementos gerada a partir de Construir Grelha Multivariável.",addVariables:"Adicionar variáveis"});

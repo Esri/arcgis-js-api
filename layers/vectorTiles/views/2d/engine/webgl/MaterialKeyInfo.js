@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,i){return function(){function t(){this.sdf=!1,this.vvSizeMinMaxValue=!1,this.vvSizeScaleStops=!1,this.vvSizeFieldStops=!1,this.vvSizeUnitValue=!1,this.vvColor=!1,this.vvRotation=!1,this.vvOpacity=!1,this.visibility=!1,this.pattern=!1,this.heatmap=!1}return t.prototype.copy=function(t){this.geometryType=t.geometryType,this.sdf=t.sdf,this.vvSizeMinMaxValue=t.vvSizeMinMaxValue,this.vvSizeScaleStops=t.vvSizeScaleStops,this.vvSizeFieldStops=t.vvSizeFieldStops,this.vvSizeUnitValue=t.vvSizeUnitValue,this.vvColor=t.vvColor,this.vvRotation=t.vvRotation,this.vvOpacity=t.vvOpacity,this.visibility=t.visibility,this.pattern=t.pattern,this.heatmap=t.heatmap},t.prototype.hasVV=function(){return void 0===this._hasVV&&(this._hasVV=this.vvColor||this.vvOpacity||this.vvRotation||this.vvSizeMinMaxValue||this.vvSizeScaleStops||this.vvSizeFieldStops||this.vvSizeUnitValue),this._hasVV},t.prototype.hasVVSize=function(){return this.vvSizeMinMaxValue||this.vvSizeFieldStops||this.vvSizeScaleStops||this.vvSizeUnitValue},t.prototype.hasVVColor=function(){return this.vvColor},t.prototype.hasVVRotation=function(){return this.vvRotation},t.prototype.hasVVOpacity=function(){return this.vvOpacity},t}()});

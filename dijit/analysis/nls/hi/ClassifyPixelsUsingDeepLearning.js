@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({toolDefine:"डीप लर्निंग का उपयोग कर पिक्सेल वर्गीकृत करें",outputLayerName:"${layername}_classified",modelLabel:"पिक्सेल वर्गीकृत करने के लिए उपयोग किए गए डीप लर्निंग मॉडल का चयन करें",modelArgsLabel:"डीप लर्निंग मॉडल तर्क निर्दिष्ट करें",nameLabel:"नाम",valueLabel:"मान",queryModelArgsMsg:"मॉडल तर्क पूछताछ...",analysisLayerLabel:"पिक्सेल वर्गीकृत करने के लिए प्रयुक्त की गई छवि चुनें",itemDescription:"डीप लर्निंग का उपयोग कर वर्गीकृत पिक्सल से उत्पन्न विश्लेषण छवि सेवा",itemTags:"रास्टर विश्लेषण परिणाम, डीप लर्निंग का उपयोग करके पिक्सल वर्गीकृत करें, ${layername}",itemSnippet:"डीप लर्निंग का उपयोग कर वर्गीकृत पिक्सल से उत्पन्न विश्लेषण छवि सेवा"});

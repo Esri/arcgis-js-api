@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/MaskUtil"],function(e){var n={};return n.encodeXML=function(n){return e.maskWithUnicodeXML(String(n).replace(/&nbsp;/g,"&#160;"))},n});

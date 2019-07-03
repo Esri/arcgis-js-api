@@ -21,34 +21,6 @@
     }
 
     
-    .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect {
-        margin-left: 2px;
-        margin-right: 2px;
-        box-sizing: border-box;
-    }
-
-        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.square {
-            width: 10px;
-            height: 10px;
-        }
-
-        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.circle {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.rectangle {
-            width: 15px;
-            height: 6px;
-        }
-
-        .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootColorRect.line {
-            width: 15px;
-            height: 2px;
-        }
-
-    
 
     .esriGEReportPlayer_chartContainer .esriGESelectableLegend .selectableLegendRootLabel {
         max-width: 200px;
@@ -80,11 +52,11 @@
 
 
 
-.esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRootColorRect {
+.esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .esriGEReportPlayerChartLegendSymbol {
     margin-right: 5px;
 }
 
-.esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRoot_unselected .selectableLegendRootColorRect {
+.esriGEReportPlayer_chartContainer.graphicReportChart .esriGESelectableLegend .selectableLegendRoot_unselected .esriGEReportPlayerChartLegendSymbol {
     opacity: 0.3;
 }
 

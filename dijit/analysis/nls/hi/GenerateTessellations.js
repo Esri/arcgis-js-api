@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({chooseShape:"आकार चुनें",defineExtent:"सीमा को परिभाषित करें",defineBin:"निर्दिष्ट करके बिन का आकार परिभाषित करें",area:"क्षेत्र",distance:"दूरी",resultLayerName:"परिणामी लेयर का नाम",hexagon:"षट्कोण",transverseHexagon:"अनुप्रस्थ षट्कोण",square:"वर्ग",triangle:"त्रिभुज",diamond:"हीरा",sameAsDisplay:"डिस्प्ले के समान",emptyBinSize:"बिन का आकार खाली नहीं हो सकता है",currentExtent:"मौजूदा विस्तार",intersectExtent:"केवल प्रतिच्छेदी टेस्सेलेशनस रखें",outputLayerName:"टेस्सेलेशनस को ${extentLayerName} पर उत्पन्न करें",itemDescription:"${extentLayerName} से विस्तार का उपयोग गया था।",itemTags:"विश्लेषण परिणाम, टेस्सेलेशनस उत्पन्न करें, ${extentLayerName}",itemSnippet:"जनरेट टेस्सेलेशनस से उत्पन्न फीचर लेयर।"});

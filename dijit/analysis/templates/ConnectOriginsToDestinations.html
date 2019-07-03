@@ -42,8 +42,11 @@
           </td>
         </tr> 
         <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
-          <td  colspan="3" style="padding-top:0;">
+          <td  colspan="2" style="padding-top:0;">
             <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-props="required:true" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
+          </td>
+          <td>
+            <span class="warningIcon hide" data-dojo-attach-point="_originsZeroCountWarning" tabindex="0"></span>
           </td>
         </tr> 
         <tr>
@@ -56,9 +59,13 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="2">
             <select class="longInput esriLeadingMargin1 esriLongLabel"  style="height:90%;" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleDestinationLayerChange" data-dojo-props="required:true" data-dojo-attach-point="_destPointLyrSelect">
             </select>
+          </td>
+          <td>
+            <span class="warningIcon hide" data-dojo-attach-point="_destinationsZeroCountWarning" tabindex="0"></span>
+            <span class="warningIcon hide" data-dojo-attach-point="_unequalFeatureCountsWarning" tabindex="0"></span>
           </td>
         </tr>
         <tr>
@@ -95,12 +102,7 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
-              <!--<a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" title='${i18n.close}'  data-dojo-attach-event="onclick:_handleCloseMsg">
-              </a>-->
-              <span data-dojo-attach-point="_bodyNode"></span>
-            </div>             
+            </table>            
           </td>
         </tr>
         <tr>
@@ -166,7 +168,7 @@
       <div class="esriExtentCreditsCtr">
         <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
-         <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
+         <input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true" data-dojo-attach-event="onChange:_handleExtentCheckChange"/>
            ${i18n.useMapExtent}
        </label>
       </div>

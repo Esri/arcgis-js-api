@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../InputText","dojo/i18n!../../nls/i18nBase","../../../../kernel"],function(e,i,t,n,l,s){var r=e([n],{_isFgdcInputTime:!0,hint:l.hints.fgdcTime,small:!0,postCreate:function(){this.inherited(arguments)},getXmlValue:function(){var e=this.inherited(arguments);return"string"==typeof e&&null!==e&&(e=e.replace(/:/g,""),e=e.replace(/\./g,"")),e},importValue:function(e,t){var n,l,s,r=null,d=[],h="",f="";if("string"!=typeof t||null===t)this.inherited(arguments);else if(-1!==t.indexOf("T"))this.inherited(arguments);else if(-1!==t.indexOf(":"))this.inherited(arguments);else if(-1!==t.indexOf("."))this.inherited(arguments);else if(r=i.trim(t),-1!==r.indexOf("+")?(d=r.split("+"),f="+"):-1!==r.indexOf("-")?(d=r.split("-"),f="-"):-1!==r.indexOf("Z")?(d=r.split("Z"),f="Z",d[1]=""):(d[0]=r,d[1]=""),2!==d.length)this.inherited(arguments);else{for(s=d[0],n=0;n<s.length;n++)2===h.length?h+=":":5===h.length?h+=":":8===h.length&&(h+="."),h+=s[n];for(s=d[1],n=0;n<s.length;n++)3===f.length&&(f+=":"),f+=s[n];l=h+f,this.setInputValue(l)}}});return t("extend-esri")&&i.setObject("dijit.metadata.form.fgdc.InputTime",r,s),r});

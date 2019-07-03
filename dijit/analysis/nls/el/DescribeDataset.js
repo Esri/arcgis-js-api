@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή συνόλου δεδομένων για περιγραφή",describeDataLabel:"Κατανοήστε τα δεδομένα σας δημιουργώντας (προαιρετικά)",sampleLayer:"Δείγμα θεματικού επιπέδου",extentLayer:"Θεματικό επίπεδο έκτασης",noOfFeaturesLabel:"Αριθμός στοιχείων που θα περιλαμβάνονται",outputLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου",resultName:"Περιγραφή δεδομένων θεματικού επιπέδου ${layerName}",itemDescription:"Feature layer που θα δημιουργείται από την εκτέλεση του εργαλείου «Περιγραφή Συνόλου Δεδομένων» για το θεματικό επίπεδο ${layerName}. ",itemTags:"Αποτέλεσμα ανάλυσης, Περιγραφή Συνόλου Δεδομένων, ${layername}",itemSnippet:"Feature layer που θα δημιουργείται από το εργαλείο «Περιγραφή Συνόλου Δεδομένων»."});

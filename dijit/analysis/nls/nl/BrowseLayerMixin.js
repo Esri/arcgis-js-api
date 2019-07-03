@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Kies analyselaag Levende Atlas",customAnalysisLayerTitle:"Analyselaag kiezen",searchPlaceholderText:"Analyselagen Levende Atlas zoeken",searchCustomPlaceholderText:"Analyselagen zoeken",mainActionTitle:"Selecteren",customActionName:"Selecteren en toevoegen aan kaart",customeSectionName:"Analyselagen Levende Atlas",Categories:"Categorieën",boundaries:"Grenzen",places:"Plaatsen",boundariesAndPlaces:"Grenzen en plaatsen",hexbins:"Hexbins",transportation:"Transport",point:"Puntlagen",line:"Polylijnlagen",polygon:"Polygoonlagen",pointFilterName:"Punt",lineFilterName:"Polylijn",polygonFilterName:"Vlak",multiPointFilterName:"Multi-punten",geometryFilterName:"Geometrie",featureLayerName:"Objectlaag",tableLayerName:"Tabel",itemTypeFilterName:"Itemtype",instantFilterName:"Direct",intervalFilterName:"Interval",timeFilterName:"Tijd",edit:"Bewerken",boundaryLayers:"Grenslagen van Esri",customAnalysisGroupName:"Analysegroep van de organisatie"});

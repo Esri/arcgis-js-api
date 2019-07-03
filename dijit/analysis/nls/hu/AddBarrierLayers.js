@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({addBarriers:"Határrétegek kiválasztása",pointBarrier:"Pontszerű határok",lineBarrier:"Vonalas határok",polygonBarrier:"Polygon határok",choosePointBarrier:"Pontszerű határréteg választása",chooseLineBarrier:"Vonalas határréteg választása",choosePolygonBarrier:"Polygon határréteg választása",selectPointBarrier:"Pontszerű határok kiválasztása",selectLineBarrier:"Vonalas határok kiválasztása",selectPolygonBarrier:"Polygon határok kiválasztása"});

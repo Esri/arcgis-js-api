@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({fields:"フィールド",categorical:"カテゴリ",requiredMessage:"少なくとも 1 つの説明変数が選択されている必要があります。"});

@@ -1586,7 +1586,85 @@
         "key": "NO_LINK",
         "label": "${rasterFunctions.enumLabels.noLink}"
       }
+    ],
+    "boolean": [
+      {
+        "key": "true",
+        "label": "${rasterFunctions.enumLabels.yes}"
+      },
+      {
+        "key": "false",
+        "label": "${rasterFunctions.enumLabels.no}"
+      }
+    ],
+    "esriTransposeBitPatterns": [
+      {
+        "key": "ls8qcbp_Cirrus",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternCirrus}"
+      },
+      {
+        "key": "ls8qcbp_Cloud",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternCloud}"
+      },
+      {
+        "key": "ls8qcbp_CloudShadow",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternCloudShadow}"
+      },
+      {
+        "key": "ls8qcbp_DesignatedFill",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternDesignatedFill}"
+      },
+      {
+        "key": "ls8qcbp_DroppedFrame",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternDroppedFrame}"
+      },
+      {
+        "key": "ls8qcbp_SnowIce",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternSnowIce}"
+      },
+      {
+        "key": "ls8qcbp_TerrainOcclusion",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternTerrainOcclusion}"
+      },
+      {
+        "key": "ls8qcbp_Vegetation",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternVegetation}"
+      },
+      {
+        "key": "ls8qcbp_Water",
+        "label": "${rasterFunctions.enumLabels.ls8QCBitPatternWater}"
+      },
+      {
+        "key": "qcbp_UserDefined",
+        "label": "${rasterFunctions.enumLabels.userDefined}"
+      }
+    ],
+    "gpsaFlowDistanceStatsType": [
+      {
+        "key": "MINIMUM",
+        "label": "${rasterFunctions.enumLabels.minimum}"
+      },
+      {
+        "key": "WEIGHTED_MEAN",
+        "label": "${rasterFunctions.enumLabels.weightedMean}"
+      },
+      {
+        "key": "MAXIMUM",
+        "label": "${rasterFunctions.enumLabels.maximum}"
+      }
     ]
+  },
+
+  "tranposeInputBitInfo": {
+    "ls8qcbp_Cirrus": [12, 13],
+    "ls8qcbp_Cloud": [14, 15],
+    "ls8qcbp_CloudShadow": [6, 7],
+    "ls8qcbp_DesignatedFill": [0],
+    "ls8qcbp_DroppedFrame": [1],
+    "ls8qcbp_SnowIce": [10, 11],
+    "ls8qcbp_TerrainOcclusion": [2],
+    "ls8qcbp_Vegetation": [8, 9],
+    "ls8qcbp_Water": [4, 5]
   },
 
   "kernelTypesInfo" : {
@@ -1713,6 +1791,37 @@
       "rows": 3,
       "columns": 3,
       "value": [-0.627, 0.352, -0.627, 0.352, 2.923, 0.352, -0.627, 0.352, -0.627]
+    }
+  },
+
+  "categoryReference": {
+    "rfxArgCat_SourceCharacteristics": {
+      "title": "${rasterFunctions.categoryLabels.sourceCharacteristics}",
+      "visible": false
+    },
+    "rfxArgCat_NeighborhoodSettings": {
+      "title": "${rasterFunctions.categoryLabels.neighborhoodSettings}",
+      "visible": true
+    },
+    "rfxArgCat_FocalStatistics": {
+      "title": "${rasterFunctions.categoryLabels.statistics}",
+      "visible": true
+    },
+    "rfxArgCat_Statistics": {
+      "title": "${rasterFunctions.categoryLabels.statistics}",
+      "visible": false
+    },
+    "rfxArgCat_Gamma": {
+      "title": "${rasterFunctions.categoryLabels.gamma}",
+      "visible": false
+    },
+    "rfxArgCat_ViewshedParameters": {
+      "title": "${rasterFunctions.categoryLabels.viewshedParameters}",
+      "visible": false
+    },
+    "rfxArgCat_ObserverParameters": {
+      "title": "${rasterFunctions.categoryLabels.observerParameters}",
+      "visible": false
     }
   }
 

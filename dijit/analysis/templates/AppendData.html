@@ -69,26 +69,6 @@
         </tr>
         <tr>
           <td colspan="2">
-            <label class="esriLeadingMargin2">${i18n.filterLabel}</label>
-          </td>
-          <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="filter"></a>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <div class="esriLeadingMargin1 esriFloatTrailing">
-              <div data-dojo-type="dijit/form/Button" class="esriActionButton" data-dojo-props="label:'${i18n.queryLabel}',iconClass:'esriAnalysisAttributeFiltercon',showLabel:false" data-dojo-attach-point="_filterBtn" data-dojo-attach-event="onClick:_handleFilterBtnClick"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <label class="esriLeadingMargin2" data-dojo-attach-point="_filterLabel"></label>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.fieldMappingLabel}</label>
           </td>
@@ -118,9 +98,6 @@
   </div>
   <div data-dojo-type="dijit/Dialog" title="${i18n.creditTitle}" data-dojo-attach-point="_usageDialog" style="width:40em;">
     <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
-  </div>
-  <div data-dojo-type="dijit/Dialog" title="${i18n.expression}" data-dojo-props="closable:false" data-dojo-attach-point="_filterDialog" style="width:65em;">
-    <div data-dojo-attach-point="_filterForm" data-dojo-type="esri/dijit/analysis/ExpressionForm" data-dojo-props="showFirstRow:false,primaryActionButttonClass: '${primaryActionButttonClass}'"></div>
   </div>
   <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="_exprDialog" class="esriBufExpressDialog">
       <div class="esriBufExpressionFormCtr">

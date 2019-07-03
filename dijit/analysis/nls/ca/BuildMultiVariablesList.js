@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Trieu una capa d'entrada",addAVar:"Afegeix una variable",distToNearest:"Distància al més proper",attrOfInterest:"Atribut del més proper",summaryNearby:"Resum d'entitats properes",summaryIntersecting:"Resum d'entitats que s'intersequen",distToNearestLabel:"Distància del centre del bin a l'entitat més propera de la capa d'entrada",attrOfInterestLabel:"Valor d'un camp especificat de l'entitat més propera de la capa d'entrada",summaryNearbyLabel:"Estadística que es calcula en totes les entitats trobades amb la distància especificada del centre del bin",summaryIntersectingLabel:"Estadística que es calcula en totes les entitats que s'intersequen amb el bin",maxDistancefromCtr:"Distància màxima des del centre del bin",fieldToIncude:"Camp que s'inclourà",statstoCalculate:"Estadística que es calcularà",summFeatuesWithin:"Resumir les entitats dins de",layerChangeWarnMsg:"Les variables que s'han afegit per a aquesta capa d'entrada s'eliminaran si la capa es modifica",validationErrorMsg:"Corregiu els valors de validació abans d'afegir una variable nova",atleastOneVarMsg:"Afegiu com a mínim una variable a aquesta capa seleccionada"});

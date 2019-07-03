@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define([],function(){var e={SOLID:"Solid",DASHED:"Dashed",DOTTED:"Dotted"};return e.toGFXValue=function(e,t){switch(e){case"Dashed":return t<1?"LongDash":"Dash";case"Dotted":return t<1?"Dash":"Dot";default:return"Solid"}},e});
+define([],function(){var t={SOLID:"Solid",DASHED:"Dashed",DOTTED:"Dotted"};return t.isSupported=function(e){for(var r in t)if(t[r]===e)return!0;return!1},t.toGFXValue=function(t,e){switch(t){case"Dashed":return e<1?"LongDash":"Dash";case"Dotted":return e<1?"Dash":"Dot";default:return"Solid"}},t});

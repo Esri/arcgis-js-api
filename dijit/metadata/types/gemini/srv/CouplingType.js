@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Attribute","../../../form/Element","dojo/text!./templates/CouplingType.html","../../../../../kernel"],function(e,t,o,r,a,i,n,s){var d=e(r,{templateString:n});return o("extend-esri")&&t.setObject("dijit.metadata.types.gemini.srv.CouplingType",d,s),d});

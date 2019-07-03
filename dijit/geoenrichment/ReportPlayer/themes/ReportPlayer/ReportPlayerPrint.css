@@ -31,9 +31,14 @@
     position: static !important;
 }
 
-.esriGEReportPlayerPrintNode .esriSimpleSliderTR {
+
+
+.esriGEReportPlayerPrintNode .esriSimpleSliderTR,
+.esriGEReportPlayerPrintNode .HomeButton {
     display: none !important;
 }
+
+
 
 .esriGEReportPlayerInPrinting .reportPlayer_sidePageNavigator {
     display: none !important;
@@ -85,9 +90,9 @@
     display: none !important;
 }
 
-.esriGEReportPlayerPrintNode .sectionDynamicSettings_settingsButton,
-.esriGEReportPlayerPrintNode .sectionDynamicSettings_filterButton,
-.esriGEReportPlayerPrintNode .sectionDynamicSettings_exportButton,
+
+
+.esriGEReportPlayerPrintNode .sectionDynamicSettings_buttonBar,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButton,
 .esriGEReportPlayerPrintNode .simpleInfographic_drillDataButtonIcon {
     display: none !important;

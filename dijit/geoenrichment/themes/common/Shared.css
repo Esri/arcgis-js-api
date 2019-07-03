@@ -32,6 +32,10 @@
         pointer-events: none !important;
     }
 
+.esriGERelative {
+    position: relative;
+}
+
 .esriGEAbsoluteStretched {
     position: absolute;
     left: 0px;
@@ -108,6 +112,15 @@
 }
 
 
+
+.esriGESpaceAfterMedium {
+    margin-right: 5px;
+}
+
+.dj_rtl .esriGESpaceAfterMedium {
+    margin-left: 5px;
+    margin-right: auto;
+}
 
 .esriGESpaceAfterBig {
     margin-right: 10px;

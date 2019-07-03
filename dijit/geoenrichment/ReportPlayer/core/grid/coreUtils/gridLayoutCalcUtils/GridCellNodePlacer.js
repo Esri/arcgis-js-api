@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["./rows/GridLayoutRowsCalculator","./columns/GridLayoutColumnsCalculator"],function(t,e){var o={};return o.positionCells=function(o){function i(t){return a[t.column.index-1+"_"+t.gridData.index]||0}function n(t){return d[t.column.index+"_"+(t.gridData.index-1)]||0}var a={},d={},r={},l={};if(o.store.data.length){o.store.data.forEach(function(i,n){o.columns.forEach(function(u,f){var h=r[f]||0,c=l[n]||0,s=t.getDataHeight(o,i,u.field),m=e.getFieldWidth(o,i,u.field);h+=s,c+=m,d[f+"_"+n]=h,a[f+"_"+n]=c,r[f]=h,l[n]=c})}),o.getFieldCells().forEach(function(t){t.domNode.style.left=i(t)+"px",t.domNode.style.top=n(t)+"px"});var u=0;for(var f in r)u=Math.max(u,r[f]);var h=0;for(var f in l)h=Math.max(h,l[f]);o.mainNode.style.width=h+"px",o.mainNode.style.height=u+"px",o.domNode.style.width=h+"px",o.domNode.style.height=u+"px",o._width=h,o._height=u}},o});

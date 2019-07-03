@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalizuota linijinė regresija – ${goal}",fit:"Pritaikyti",fitAndPredict:"Pritaikyti ir prognozuoti",selectGoal:"Ką norėtumėte daryti?",fitGoal:"Pritaikyti modelį vertinti modelio našumą",fitAndPredictGoal:"Pritaikyti modelį ir prognozuoti reikšmes",inputLayerLabel:"Pasirinkite sluoksnį, iš kurio generuoti modelį",chooseDependentField:"Pasirinkite modeliuotiną lauką",chooseDataType:"Pasirinkite, kokio tipo duomenis modeliuosite",continuousData:"Tęstinis",binaryData:"Dvejetainis",countData:"Skaičius",chooseExplanatoryField:"Pasirinkite paaiškinančiuosius laukus",chooseFeaturesToPredict:"Pasirinkite sluoksnį, kurio reikšmes norite prognozuoti",chooseExplainMatch:"Pasirinkite, kaip bus derinami paaiškinantys laukai",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Elementų sluoksnis, sugeneruotas vykdant Generalizuotos linijinės regresijos ${goal} sprendimus.",itemTags:"Analizės rezultatas, Generalizuota linijinė regresija, ${inputLayerName}, ${goal}",itemSnippet:"Elementų sluoksnis, sugeneruotas vykdant Generalizuotą linijinę regresiją (${goal})"});

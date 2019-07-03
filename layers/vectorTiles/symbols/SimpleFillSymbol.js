@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["../core/declare","../core/lang","./FillSymbol","./SimpleLineSymbol"],function(i,o,e,l){var r={STYLE_SOLID:"solid",STYLE_NULL:"none",STYLE_HORIZONTAL:"horizontal",STYLE_VERTICAL:"vertical",STYLE_FORWARD_DIAGONAL:"forward-diagonal",STYLE_BACKWARD_DIAGONAL:"backward-diagonal",STYLE_CROSS:"cross",STYLE_DIAGONAL_CROSS:"diagonal-cross"},s={style:"solid",outline:new l,color:[0,0,0,.25]},n=i(e,{declaredClass:"esri.symbols.SimpleFillSymbol",properties:{color:{},type:"simple-fill",style:{value:"solid",type:String,json:{read:function(i){return o.valueOf(this._styles,i)||void 0},write:function(i,o){o.style=this._styles[i]}}}},_styles:{solid:"esriSFSSolid",none:"esriSFSNull",horizontal:"esriSFSHorizontal",vertical:"esriSFSVertical","forward-diagonal":"esriSFSForwardDiagonal","backward-diagonal":"esriSFSBackwardDiagonal",cross:"esriSFSCross","diagonal-cross":"esriSFSDiagonalCross"},getDefaults:function(){return o.mixin(this.inherited(arguments),s)},normalizeCtorArgs:function(i,o,e){if(i&&"string"!=typeof i)return i;var l={};return i&&(l.style=i),o&&(l.outline=o),e&&(l.color=e),l},clone:function(){return new n({color:o.clone(this.color),outline:this.outline&&this.outline.clone(),style:this.style})}});return o.mixin(n,r),n.defaultProps=s,n});

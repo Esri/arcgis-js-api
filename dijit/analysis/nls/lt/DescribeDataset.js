@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite, kurį duomenų rinkinį aprašyti",describeDataLabel:"Supraskite, kokią informaciją pateikia duomenys, sukurdami (neprivaloma)",sampleLayer:"Pavyzdinis sluoksnis",extentLayer:"Aprėpties sluoksnis",noOfFeaturesLabel:"Įtraukiamų elementų skaičius",outputLayerName:"Rezultatų sluoksnio pavadinimas",resultName:"Aprašyti ${layername} duomenis",itemDescription:"Elementų sluoksnis, sukurtas paleidus Aprašyti duomenų rinkinį, skirtą ${layerName}. ",itemTags:"Analizės rezultatas, Aprašyti duomenų rinkinį, ${layername}",itemSnippet:"Elementų sluoksnis, sukurtas naudojant Aprašyti duomenų rinkinį."});

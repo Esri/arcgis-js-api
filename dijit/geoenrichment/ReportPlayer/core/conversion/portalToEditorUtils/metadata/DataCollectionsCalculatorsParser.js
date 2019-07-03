@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./VariableScriptCollector","../../../../_devConfig"],function(a,e,r){var t={};return t.parseDataCollectionsCalculators=function(t,i,o){a.queryJson(t,"DataCollections").forEach(function(t){var l=a.queryJson(t,"ComparisonLevel");if(r.emulateErrors.metadataParseError)throw new Error("Error test: something crashed during the parsing of the metadata!");var n;if((o.variableProvider.isPlayerOnly||l.length)&&(n=e.getObjects(t)),l.length){var c={calculatorName:t.attributes.Name,levels:l.map(function(a){return a.attributes.Name}).filter(function(a){return!o.validateGeographyLevelFunc||o.validateGeographyLevelFunc(a)}),variableObjects:n.variableObjects};i&&(i.metadata.comparisonCalculatorsHash[c.calculatorName]=c)}o.variableProvider.isPlayerOnly&&(n.variableObjects.forEach(function(a){o.variableProvider.addVariable(a)}),n.scriptObjects.forEach(function(a){o.variableProvider.addScriptVariable(a)}))})},t});

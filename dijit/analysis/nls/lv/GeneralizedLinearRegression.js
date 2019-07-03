@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({modifiedTitle:"Vispārināta lineārā regresija — ${goal}",fit:"Ietilpināt",fitAndPredict:"Pielāgot un prognozēt",selectGoal:"Ko jūs vēlētos darīt?",fitGoal:"Pielāgojiet modeli, lai izvērtētu modeļa darbību",fitAndPredictGoal:"Pielāgojiet modeli un prognozējiet vērtības",inputLayerLabel:"Izvēlieties slāni, no kura ģenerēt modeli",chooseDependentField:"Izvēlēties modelējamo lauku",chooseDataType:"Izvēlieties modelējamo datu veidu",continuousData:"Nepārtraukti",binaryData:"Binārs",countData:"Skaits",chooseExplanatoryField:"Izvēlieties skaidrojuma laukus",chooseFeaturesToPredict:"Izvēlieties slāni, lai prognozētu vērtības",chooseExplainMatch:"Izvēlieties, kā tiks salāgoti skaidrojuma lauki",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Elementu slānis, kas ģenerēts, palaižot vispārinātas lineārās regresijas ${goal} risinājumus.",itemTags:"Analīzes rezultāts, vispārināta lineārā regresija, ${inputLayerName}, ${goal}",itemSnippet:"Elementu slānis, kas ģenerēts no vispārinātas lineārās regresijas (${goal}."});

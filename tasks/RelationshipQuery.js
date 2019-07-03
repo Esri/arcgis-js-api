@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel"],function(e,i,s,t,o){var n=e(null,{declaredClass:"esri.tasks.RelationshipQuery",definitionExpression:"",relationshipId:null,returnGeometry:!1,objectIds:null,outSpatialReference:null,outFields:null,orderByFields:null,toJson:function(){var e={definitionExpression:this.definitionExpression,relationshipId:this.relationshipId,returnGeometry:this.returnGeometry,maxAllowableOffset:this.maxAllowableOffset,geometryPrecision:this.geometryPrecision},i=this.objectIds,t=this.outFields,o=this.outSpatialReference,n=this.orderByFields;return i&&(e.objectIds=i.join(",")),t&&(e.outFields=t.join(",")),o&&(e.outSR=o.wkid||s.toJson(o.toJson())),n&&(e.orderByFields=n.join(",")),e._ts=this._ts,e}});return t("extend-esri")&&i.setObject("tasks.RelationshipQuery",n,o),n});

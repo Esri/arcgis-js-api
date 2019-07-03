@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"フローの方向レイヤーの選択",pourPointLayerLabel:"流出点ラスターまたはフィーチャ レイヤーの選択",pourPointField:"流出点フィールドの選択",resultLayerName:"結果レイヤー名",outputLayerName:"${layername} の集水域ラスターの作成",itemDescription:"${inputLayername} に対して [中心と分散の集計] を実行して生成されたフィーチャ レイヤー。 ",itemTags:"解析結果、集水域ラスターの作成、${layername} ${fieldname}",itemSnippet:"[集水域ラスターの作成] から生成されたフィーチャ レイヤー。"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["esri/layers/GraphicsLayer","./locator/LocatorPointsBuilder","./std/StdPolygonsBuilder","./thisAreas/AreaFeatureLayersBuilder","./thisAreas/ThisAreasHighlighter","./LayersSorter"],function(e,a,r,o,t,l){var s={};return s.addLayersToMap=function(s,i){var n=new l(s),d=new e;d.id="popupLayer",s.addLayer(d);var y=o.addAreaFeatures({features:i.features,featureIndexToAreaIndexMap:i.featureIndexToAreaIndexMap,analysisAreas:i.analysisAreas,map:s,attachmentsStore:i.attachmentsStore},n);t.registerThisLayersForHighlighing({thisAreasHighlightController:i.thisAreasHighlightController,calculatorFieldName:i.calculatorFieldName,thisAreaLayers:y.polygonLayers,thisAreaLayerIndexToAreaIndex:y.polygonLayerIndexToAreaIndex,map:s}),r.addStdPolygons({stdPolygonsControllers:i.stdPolygonsControllers,geClient:i.geClient,countryID:i.countryID,hierarchy:i.hierarchy,calculatorFieldName:i.calculatorFieldName,map:s},n),a.addLocatorPoints({locatorPointsControllers:i.locatorPointsControllers,geClient:i.geClient,countryID:i.countryID,calculatorFieldName:i.calculatorFieldName,map:s},n),n.addFromAdditionalLayerInfos(i.additionalLayerInfos),n.sortLayers()},s});

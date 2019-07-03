@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/Deferred","require"],function(e,r){var i,n={},t={};return n.initialize=function(){return i?i.promise:(i=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],function(e,r,n,o,s,a){t.document=e,t.chart=r,t.infographic=n,t.section=o,t.field=s,a.init().then(i.resolve)}),i.promise)},n.getParser=function(e){return t[e]},n});
+define(["esri/dijit/geoenrichment/Deferred","require"],function(e,r){var i,t={},n={};return t.initialize=function(){return i?i.promise:(i=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","./FilterParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],function(e,r,t,o,s,a,c){n.document=e,n.chart=r,n.infographic=t,n.section=o,n.field=s,n.filter=a,c.init().then(i.resolve)}),i.promise)},t.getParser=function(e){return n[e]},t});

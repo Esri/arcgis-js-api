@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izberite rastrski ali geoobjektni lokacijski sloj za določitev poti med",inputCostRasterLabel:"Izberite rastrski sloj s potnimi stroški",outputOptimumNetworkName:"Ime polilinijskega sloja z rezultati optimalnih poti",outputNeighborNetworkName:"Ime polilinijskega sloja z rezultati sosednih poti (izbirno)",outputLayerName:"Določi optimalne potne stroške za ${layername}",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Določi optimalno omrežje potnih stroškov na ${layerName}. ",itemTags:"Rezultat analize, Določi optimalno omrežje potnih stroškov, ${layername} ${fieldname}",itemSnippet:"Geoobjektni sloj, ustvarjen z orodjem Določi optimalno omrežje potnih stroškov."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({distToNearest:"Etäisyys lähimpään",attrOfInterest:"Lähimmän ominaisuustiedot",summaryNearby:"Lähimmän yhteenveto",summaryIntersecting:"Leikkaavan yhteenveto",distToNearestLabel:"Etäisyys lohkon keskipisteestä lähimpään kohteeseen lähtöaineiston karttatasossa",attrOfInterestLabel:"Määritetyn kentän arvo lähimmän lähtöaineiston karttatason lähimmästä kohteesta",summaryNearbyLabel:"Kaikille niille kohteille lasketut tilastotiedot, jotka sijaitsevat määritetyllä etäisyydellä lohkon keskipisteestä",summaryIntersectingLabel:"Kaikille niille kohteille lasketut tilastotiedot, jotka leikkaavat lohkon",maxDistancefromCtr:"Maksimietäisyys lohkon keskipisteestä",fieldToIncude:"Sisällytettävät kentät",statstoCalculate:"Laskettavat tilastotiedot",summFeatuesWithin:"Koosta kohteet sijainnissa",smallMaxDistErrorMsg:"Maksimietäisyyden lohkon keskipisteestä on oltava suurempi kuin lohkon koko.",smallSumFeaturesErrorMsg:"Maksimietäisyyden lohkon keskipisteestä on oltava suurempi kuin lohkon koko."});

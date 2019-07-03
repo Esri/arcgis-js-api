@@ -4,16 +4,8 @@
 .esriGEReportPlayer_section .sectionDynamicSettings_toolbar {
     background-color: rgba(100, 100, 100, 0.75);
     position: absolute;
-    top: 5px;
-    right: 5px;
     font-size: 13px;
 }
-
-    .esriGEReportPlayer_section .sectionDynamicSettings_toolbar.needsTopOffset {
-        top: -19px;
-        right: 4px;
-        transform-origin: 0% 0% !important; 
-    }
 
 .esriGEReportPlayer_section .sectionDynamicSettings_buttonBar.hasMultipleButtons {
     padding: 0px 5px;
@@ -140,6 +132,10 @@
         height: 60px;
     }
 
+        .esriGEReportPlayer_sectionDynamicRefineFilters .sectionDynamicRefineFilters_row.noLabel {
+            height: 40px;
+        }
+
     .esriGEReportPlayer_sectionDynamicRefineFilters .sectionDynamicRefineFilters_textFilter .dijitTextBox {
         width: 99%;
     }
@@ -147,6 +143,16 @@
     .esriGEReportPlayer_sectionDynamicRefineFilters .esriGENumericalSliderLabel {
         padding-bottom: 5px;
     }
+
+
+
+.esriGEReportPlayer_sectionDynamicMethodFilter .esriGEOnDemandSelect {
+    max-width: 125px;
+}
+
+.esriGEReportPlayer_sectionDynamicMethodFilter .dijitTextBox {
+    width: 40px;
+}
 
 
 

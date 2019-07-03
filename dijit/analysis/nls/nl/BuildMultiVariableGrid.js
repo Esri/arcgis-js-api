@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({binsLabel:"Kies het type bins dat gebruikt zal worden om het multivariabele rooster te bouwen",layersAttrLabel:"Kies de invoerlagen en variabelen die u wenst toe te voegen aan het rooster",itemDescription:"Objectlaag gegenereerd via de functie Multivariabel rooster bouwen.",itemTags:"Analyseresultaat, multivariabel rooster bouwen",itemSnippet:"Objectlaag gegenereerd via de functie Multivariabel rooster bouwen",addVariables:"Variabelen toevoegen"});

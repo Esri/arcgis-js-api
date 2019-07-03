@@ -4,6 +4,7 @@
 @import url("RFxRasterArrayEditor.css");
 @import url("RFxWeightedSumTableEditor.css");
 @import url("RFxWeightedOverlayTableEditor.css");
+@import url("RFxSRPicker.css");
 
 .esriRFxArgsEditor .dijitTextBox {
   width: 89%;
@@ -202,8 +203,13 @@
 .esriRFxArgsEditor .esri-rfx-switch-selector,
 .esriRFxArgsEditor .esri-rfx-linear-input,
 .esriRFxArgsEditor .esriRFxGridBase,
-.esriRFxArgsEditor .esriRemapgridContainer {
+.esriRFxArgsEditor .esriRemapgridContainer,
+.esriRFxArgsEditor .conversion-grid-label {
   width: 89%;
+}
+
+.esriRFxArgsEditor .conversion-grid-size-container {
+  float: right;
 }
 
   .esriRFxArgsEditor .esri-rfx-switch-selector .dijitSelect,
@@ -229,9 +235,24 @@
     display: inline-flex;
   }
 
-  .esriRFxArgsEditor .esriRFxKernelSelector .dgrid-content .dgrid-cell,
-  .esriRFxArgsEditor .esriRFxKernelSelector .dgrid-header.dgrid-header-row .dgrid-cell {
+  .esriRFxArgsEditor .esriRFxMatrix  .dgrid-content .dgrid-cell,
+  .esriRFxArgsEditor .esriRFxMatrix  .dgrid-header.dgrid-header-row .dgrid-cell {
     text-align: center;
+    width: 30px;
+  }
+
+  .esriRFxArgsEditor .esriRFxBandMatrix  .dgrid-content .dgrid-cell,
+  .esriRFxArgsEditor .esriRFxBandMatrix  .dgrid-header.dgrid-header-row .dgrid-cell {
+    text-align: center;
+  }
+
+  .esriRFxArgsEditor .esriRFxMatrix>table {
+    width: 100%;
+  }
+
+  .esriRFxArgsEditor .esriRFxMatrix .dgrid {
+    max-height: 250px;
+    overflow: auto;
   }
 
   .esriRFxArgsEditor .esriRFxKernelSelector .dgrid-header.dgrid-header-row .dgrid-cell {
@@ -254,3 +275,26 @@
   .esriRFxArgsEditor .esriRemapgridRowAddDiv {
     width: 89%;
   }
+
+  .esriRFxArgsEditor .esriRFxConversionGrid .conversion-grid-size-selector {
+    height: 29px !important;
+    width: 50px;
+    margin-left: 20px;
+  }
+
+  .esriRFxArgsEditor .esriRFxConversionGrid .conversion-grid-container {
+    margin-top: 20px;
+  }
+
+  .esriRFxArgsEditor .esriRFxArgsEditor__titlePane .dijitTitlePane {
+    border: none;
+    padding-bottom: 10px;
+  }
+   .esriRFxArgsEditor .esriRFxArgsEditor__titlePane .dijitTitlePaneTitle {
+    padding: 0;
+    font-weight: 500 !important;
+  }
+   .esriRFxArgsEditor .esriRFxArgsEditor__titlePane .dijitTitlePaneContentInner {
+    padding: 15px 0 0;
+  }
+

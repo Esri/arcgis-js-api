@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"選擇要附加到的圖層",inputWarningLabel:"警告: 將修改您附加到的圖層。",inputHostedLayerWarning:"選擇的圖層不是託管圖徵圖層。 請選擇要附加到的託管圖徵圖層。",appendLayerLabel:"選擇要附加的圖層",filterLabel:"附加所有圖徵或定義子集 (選用)",fieldMappingLabel:"選擇如何附加欄位 (選用)",inputField:"輸入欄位",appendValue:"附加值",expression:"表達式"});

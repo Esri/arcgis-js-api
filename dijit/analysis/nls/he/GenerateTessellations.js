@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({chooseShape:"בחר צורה",defineExtent:"הגדר תיחום",defineBin:"הגדר גודל bin על ידי ציון",area:"שטח",distance:"מרחק",resultLayerName:"שם שכבת התוצאה",hexagon:"משושה",transverseHexagon:"משושה אלכסוני",square:"ריבוע",triangle:"משולש",diamond:"יהלום",sameAsDisplay:"בדומה לתצוגה",emptyBinSize:"גודל ה-bin לא יכול להיות ריק",currentExtent:"תיחום נוכחי",intersectExtent:"שמור רק ריצופי מישור‬ים שיש ביניהם חפיפה",outputLayerName:"צור ריצופי מישור‬ים ב-${extentLayerName}",itemDescription:"נעשה שימוש בתיחום מ-${extentLayerName}.",itemTags:"תוצאת ניתוח, יצירת ריצופי מישור‬ים, ${extentLayerName}",itemSnippet:"שכבת ישויות נוצרה מיצירת ריצופי מישור‬ים."});

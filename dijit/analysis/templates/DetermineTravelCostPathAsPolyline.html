@@ -81,6 +81,22 @@
           </td>
         </tr>
         <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.destinationField}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="destinationField"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <select class="esriLeadingMargin1 longInput esriAnalysisSelect esriLongLabel" data-dojo-type="dijit/form/Select"
+              data-dojo-attach-point="_destinationFieldSelect" data-dojo-attach-event="onChange:_handleDestinationFieldChange">
+            </select>
+          </td>
+        </tr>
+        <tr>
           <td colspan="3">
             <label class="esriFloatLeading  esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="pathType"></a>

@@ -66,6 +66,8 @@
         .simpleInfoWindow.playerInfoWindow {
             width: auto !important;
             height: auto !important;
+            min-width: 250px;
+            min-height: 100px;
         }
 
             .simpleInfoWindow.playerInfoWindow .title {
@@ -109,6 +111,7 @@
                     "esri/geometry/Extent",
                     "esri/geometry/ScreenPoint",
                     "esri/layers/GraphicsLayer",
+                    //"esri/layers/ArcGISDynamicMapServiceLayer",
                     "esri/dijit/InfoWindowLite",
                     //"esri/urlUtils",
 
@@ -138,6 +141,7 @@
                    Extent,
                    ScreenPoint,
                    GraphicsLayer,
+                   //ArcGISDynamicMapServiceLayer,
                    InfoWindowLite,
                    //urlUtils,
 
@@ -189,7 +193,7 @@
                            var viewModeSelector = new OnDemandSelect({
                                listClass: "esriGEOnDemandSelectSpacedOut"
                            }).placeAt(viewModeSelectorDiv);
-                           if (isMobile) 
+                           if (isMobile)
                                viewModeSelectorBlock.style.display = "none"; // automatic for mobile
                            else {
                                viewModeSelector.set("options", [
@@ -218,6 +222,15 @@
                                center: [-117.15, 32.68], // longitude, latitude
                                zoom: 12
                            });
+
+                           // ####################################################################
+                           // SECURED LAYER
+
+                           //var layer = new ArcGISDynamicMapServiceLayer(
+                           //  "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA_secure_user1/MapServer")
+                           //map.addLayer(layer);
+
+                           // ####################################################################
 
                            map.on("load", function () {
 

@@ -4,20 +4,16 @@
     position: relative;
 }
 
-    .esriGEReportPlayer_section .section_stackNode {
-        height: 100%;
+    .esriGEReportPlayer_section .section_stackNode .stackNodeEmptyLine {
+        display: block;
+        background-color: transparent;
+        height: 1px;
+        margin-bottom: -1px;
     }
 
-        .esriGEReportPlayer_section .section_stackNode .stackNodeEmptyLine {
-            display: block;
-            background-color: transparent;
-            height: 1px;
-            margin-bottom: -1px;
-        }
-
-        .esriGEReportPlayer_section .section_stackNode .stackNodeSpacer {
-            display: block;
-        }
+    .esriGEReportPlayer_section .section_stackNode .stackNodeSpacer {
+        display: block;
+    }
 
     .esriGEReportPlayer_section .section_errorDiv {
         text-align: center;

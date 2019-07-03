@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"वर्णन करने के लिए डेटासेट चुनें",describeDataLabel:"निम्न बनाकर अपने डेटा को समझें (वैकल्पिक)",sampleLayer:"नमूना लेयर",extentLayer:"विस्तार लेयर",noOfFeaturesLabel:"शामिल करने के लिए फ़ीचर्स की संख्या",outputLayerName:"परिणामी लेयर का नाम",resultName:"${layerName} के डेटा का वर्णन करें",itemDescription:"${layerName} पर वर्णित डेटा को रन करने से उत्पन्न की गई फ़ीचर लेयर। ",itemTags:"विश्लेषण परिणाम, डेटासेट का वर्णन करें, ${layername}",itemSnippet:"वर्णित डेटासेट से उत्पन्न फ़ीचर लेयर।"});

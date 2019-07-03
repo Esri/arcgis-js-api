@@ -16,5 +16,5 @@
     }
 
     .esriGESimpleInfographic .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField.hasNumericVariableFieldInfo > .valueField_contentBlock > .valueField_valueBlock > .valueField_valueLabel {
-        white-space: nowrap;
+        white-space: nowrap; 
     }

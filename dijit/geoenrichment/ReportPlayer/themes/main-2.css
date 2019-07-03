@@ -2,6 +2,7 @@
 @import url('./charts/ChartTooltip.css');
 @import url('./charts/ComparisonSelect.css');
 @import url('./charts/ChartContainerSelectableLegend.css');
+@import url('./charts/ChartLegendSymbols.css');
 @import url('./charts/ChartContainerMinMaxLegend.css');
 
 @import url('./grid/AdjustableGrid.css');

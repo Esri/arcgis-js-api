@@ -17,12 +17,6 @@
         font-weight: bold;
     }
 
-    .esriGEChartContainer_chartTooltip .chartTooltip_color {
-        width: 10px;
-        height: 10px;
-        border-radius: 5px;
-    }
-
     .esriGEChartContainer_chartTooltip .chartTooltip_label {
         margin-right: 20px;
     }

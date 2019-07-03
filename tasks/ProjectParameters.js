@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/_base/json","dojo/has","../kernel","../lang","../geometry/jsonUtils"],function(e,o,t,r,s,n,a,i){var m=e(null,{declaredClass:"esri.tasks.ProjectParameters",geometries:null,outSR:null,transformation:null,transformForward:null,toJson:function(){var e=t.map(this.geometries,function(e){return e.toJson()}),o={};return o.outSR=this.outSR.wkid||r.toJson(this.outSR.toJson()),o.inSR=this.geometries[0].spatialReference.wkid||r.toJson(this.geometries[0].spatialReference.toJson()),o.geometries=r.toJson({geometryType:i.getJsonType(this.geometries[0]),geometries:e}),this.transformation&&(o.transformation=this.transformation.wkid||r.toJson(this.transformation)),a.isDefined(this.transformForward)&&(o.transformForward=this.transformForward),o}});return s("extend-esri")&&o.setObject("tasks.ProjectParameters",m,n),m});

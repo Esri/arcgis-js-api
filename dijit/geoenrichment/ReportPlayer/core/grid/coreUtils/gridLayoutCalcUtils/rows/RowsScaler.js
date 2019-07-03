@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define(["./RowDataUtil"],function(e){var t={};return t.recalcRowsToFitHeight=function(t,i){var a=e.recalcGridHeight(t),o=i/a;1!==o&&(t.store.data.forEach(function(i){t.columns.some(function(a,r){if(!t.looseResize&&r)return!0;e.setDataHeight(t,i,a.field,e.getDataHeight(t,i,a.field)*o)})}),e.recalcGridHeight(t))},t});
+define(["./RowDataUtil"],function(e){var t={};return t.recalcRowsToFitHeight=function(t,i){function a(i){i.forEach(function(i){t.columns.some(function(a,n){if(!t.looseResize&&n)return!0;e.setDataHeight(t,i,a.field,e.getDataHeight(t,i,a.field)*r)})})}var n=e.recalcGridHeight(t),r=i/n;1!==r&&(a(t.store.data),t._getSavedOriginalData()&&a(t._getSavedOriginalData()),e.recalcGridHeight(t))},t});

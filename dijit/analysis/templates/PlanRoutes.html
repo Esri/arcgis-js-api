@@ -42,8 +42,25 @@
           </td>
         </tr>
         <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
-          <td  colspan="3" style="padding-top:0;">
+          <td colspan="2" style="padding-top:0;">
             <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
+          </td>
+          <td>
+            <span class="warningIcon hide" data-dojo-attach-point="_stopsZeroCountWarning" tabindex="0"></span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_stopsCountLabel"></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_stopsCountByExtentLabel"></label>
+            </div>
           </td>
         </tr>          
         <tr>
@@ -57,8 +74,9 @@
         </tr>         
         <tr>
           <td style="padding:0.25em;" colspan="3">
-            <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_travelModeSelect" class="esriLeadingMargin1 longInput esriLongLabel esriAnalysisDriveMode">
-          </td>          
+            <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_travelModeSelect"  class="esriLeadingMargin1 longInput esriLongLabel esriAnalysisDriveMode"> </div>
+            <span class="warningIcon hide esriAnalysisDriveMode" data-dojo-attach-point="_travelModeWarningIcon" tabindex="0"></span>  
+          </td>   
         </tr>
         <tr data-dojo-type="esri/dijit/analysis/components/AddBarrierLayers/AddBarrierLayers" data-dojo-attach-point="_addBarrierLayersComponent" data-dojo-props="showGeoAnalyticsParams: ${showGeoAnalyticsParams}">
         </tr>
@@ -79,7 +97,10 @@
           <td style="width:3%">
             <div data-dojo-type="dijit/form/ToggleButton" class="esriActionButton esriLeadingMargin1" data-dojo-attach-point="_startPointDrawBtn"  data-dojo-attach-event="onChange:_handleStartDrawBtnChange" data-dojo-props="showLabel:false,iconClass:'toolbarIcon esriPointIcon',style:'width:16px;',label:'${i18n.drawLabel}'"></div>
           </td>
-          <td></td>
+          <td>
+            <span class="warningIcon hide" data-dojo-attach-point="_startLocationsWarning" tabindex="0"></span>
+            <span class="warningIcon hide" data-dojo-attach-point="_startLocationsZeroCountWarning" tabindex="0"></span>
+          </td>
         </tr>
         <tr data-dojo-attach-point="_startRouteIdRow">
           <td colspan="3" style="padding-top: 0.25em;">
@@ -101,7 +122,21 @@
             <input  type="text" data-dojo-type="dijit/form/TimeTextBox" value="now" data-dojo-props="required:true,intermediateChanges:true,constraints:{formatLength:'short',selector:'time'}"  data-dojo-attach-point="_startTime" style="width:37%;margin-top:0;">
             </input>
           </td>
-        </tr>        
+        </tr>
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_startCountLabel"></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_startCountByExtentLabel"></label>
+            </div>
+          </td>
+        </tr>       
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
@@ -133,7 +168,11 @@
           <td style="width:3%;padding-bottom:0.25em;padding-top:0.25em;">
             <div data-dojo-type="dijit/form/ToggleButton" class="esriActionButton esriLeadingMargin1" data-dojo-attach-point="_endPointDrawBtn" data-dojo-attach-event="onChange:_handleEndDrawBtnChange" data-dojo-props="showLabel:false,iconClass:'toolbarIcon esriPointIcon',style:'width:16px;',label:'${i18n.drawLabel}'"></div>
           </td>
-          <td></td>
+          <td>
+            <span class="warningIcon hide" data-dojo-attach-point="_endLocationsWarning" tabindex="0"></span>
+            <span class="warningIcon hide" data-dojo-attach-point="_unequalWarning" tabindex="0"></span>
+            <span class="warningIcon hide" data-dojo-attach-point="_endLocationsZeroCountWarning" tabindex="0"></span>
+          </td>
         </tr>
         <tr data-dojo-attach-point="_endRouteIdRow">
           <td colspan="3" style="padding-top: 0.25em;">
@@ -143,7 +182,20 @@
             </select>
           </td>
         </tr>
-
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_endCountLabel"></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;" colspan="3">
+            <div class="esriLeadingMargin15">
+              <label class="esriSmallLabel" data-dojo-attach-point="_endCountByExtentLabel"></label>
+            </div>
+          </td>
+        </tr>
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
@@ -154,10 +206,12 @@
           </td>
         </tr>        
         <tr>
-          <td colspan="3" style="padding-bottom:0.25em;padding-top:0.25em;">
+          <td colspan="2" style="padding-bottom:0.25em;padding-top:0.25em;">
               <label class="esriLeadingMargin1">
               <input type="text" class="" style="width:30%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-attach-event="onChange:_handleRoutesInputChange" data-dojo-props="intermediateChanges:true,smallDelta:1,required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_routesInput"></input>
               ${i18n.vehicles}</label>            
+          </td>
+          <td>
           </td>
         </tr>
         <tr>
@@ -238,7 +292,7 @@
                 <tr>
                   <td>
                     <div class="esriLeadingMargin1 esriTrailingMargin025">
-                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:8, smallDelta:1, constraints:{min:0,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_hoursInput"></input>
+                      <input type="text" class="" style="width:55%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges:true,value:8, smallDelta:1, constraints:{min:0,places:0}, required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_hoursInput" data-dojo-attach-event="onChange:_handleHoursChange"></input>
                       ${i18n.hoursSmall}
                     </div>
                   </td>

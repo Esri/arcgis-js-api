@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({distToNearest:"Jarak ke Terdekat",attrOfInterest:"Atribut Terdekat",summaryNearby:"Ringkasan Sekitar",summaryIntersecting:"Ringkasan Perpotongan",distToNearestLabel:"Jarak dari pusat wadah ke fitur terdekat dalam layer input",attrOfInterestLabel:"Nilai kolom yang ditentukan dari fitur terdekat dari layer input",summaryNearbyLabel:"Statistik yang dihitung pada semua fitur ditemukan dengan jarak yang ditentukan pada pusat wadah",summaryIntersectingLabel:"Statistik yang dihitung pada semua fitur yang memotong wadah",maxDistancefromCtr:"Jarak maksimum dari pusat wadah",fieldToIncude:"Kolom yang akan disertakan",statstoCalculate:"Statistik yang akan dihitung",summFeatuesWithin:"Ringkas fitur di dalam",smallMaxDistErrorMsg:"Jarak maksimum dari pusat wadah harus lebih besar dari ukuran wadah.",smallSumFeaturesErrorMsg:"Jarak maksimum dari pusat wadah harus lebih besar dari ukuran wadah."});

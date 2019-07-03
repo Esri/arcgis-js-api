@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/Evented","esri/dijit/geoenrichment/Deferred","dojo/dom-construct","dojo/dom-style"],function(e,o,t,r,i){return e(o,{_mapImageInfo:null,_mapImage:null,loaded:!1,updating:!1,error:!1,constructor:function(e,o){this._mapImageInfo=e,this._mapImage=r.create("img",{class:"esriGEAbsoluteStretched"},o),i.set(this._mapImage,{width:i.get(o,"width")+"px",height:i.get(o,"height")+"px"}),i.set(o,"position","relative")},load:function(){function e(e){o.error=!0,e&&console.log(e),o.destroy(),r.resolve()}var o=this,r=new t;return this._mapImageInfo.url?(this._mapImage.onload=function(){o.loaded=!0,r.resolve()},this._mapImage.onerror=e,this._mapImage.src=this._mapImageInfo.url,r.promise):(e(new Error("No URL specified.")),r.promise)},destroy:function(){r.destroy(this._mapImage)}})});

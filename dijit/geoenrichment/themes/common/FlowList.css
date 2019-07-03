@@ -36,7 +36,7 @@
 
     
 
-    .esriGEFlowList.esriGEFlowListWhiteBackground .listItem {
+    .esriGEFlowList.esriGEFlowListWhiteBackground {
         background-color: white;
     }
 
@@ -44,4 +44,12 @@
 
     .esriGEFlowList.esriGEFlowListSpacedOut .listItem {
         padding: 10px;
+    }
+
+    
+
+    .esriGEFlowList.esriGEFlowListNoHighlight .listItem,
+    .esriGEFlowList.esriGEFlowListNoHighlight .listItem:hover,
+    .esriGEFlowList.esriGEFlowListNoHighlight .listItemSelected {
+        background-color: transparent;
     }

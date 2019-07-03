@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({binsLabel:"多変数グリッドの構築に使用されるビンのタイプを選択します",layersAttrLabel:"グリッドに含める入力レイヤーおよび変数を選択します",itemDescription:"[多変数グリッドの構築] を実行することによって生成されるフィーチャ レイヤー。",itemTags:"解析結果、多変数グリッドの構築",itemSnippet:"[多変数グリッドの構築] から生成されるフィーチャ レイヤー",addVariables:"変数の追加"});

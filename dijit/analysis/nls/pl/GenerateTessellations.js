@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({chooseShape:"Wybierz kształt",defineExtent:"Definiowanie zasięgu",defineBin:"Zdefiniuj wielkość kosza, określając",area:"Pole powierzchni",distance:"Odległość",resultLayerName:"Nazwa warstwy wynikowej",hexagon:"Sześciokąt",transverseHexagon:"Sześciokąt poprzeczny",square:"Kwadrat",triangle:"Trójkąt",diamond:"Diament",sameAsDisplay:"Taki sam jak wyświetlany",emptyBinSize:"Wielkość kosza nie może być pusta",currentExtent:"bieżący zasięg",intersectExtent:"Zachowaj tylko przecinające się mozaikowania",outputLayerName:"Generuj mozaikowania w warstwie ${extentLayerName}",itemDescription:"Użyto zasięgu z warstwy ${extentLayerName}.",itemTags:"Wynik analizy, Generuj mozaikowania, ${extentLayerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Generuj mozaikowania."});

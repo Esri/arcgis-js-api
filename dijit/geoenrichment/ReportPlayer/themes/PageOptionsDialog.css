@@ -1,5 +1,5 @@
 .esriGEPageOptionsDialog {
-    width: 400px;
+    min-width: 400px;
 }
 
     .esriGEPageOptionsDialog .esriGEOnDemandSelect {
@@ -8,11 +8,7 @@
 
     .esriGEPageOptionsDialog .pageOptionsDialog_section {
         margin-left: 20px;
-    }
-
-    .esriGEPageOptionsDialog .pageOptionsDialog_bigRow20 {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-right: 20px;
     }
 
     .esriGEPageOptionsDialog .pageOptionsDialog_infoIcon {

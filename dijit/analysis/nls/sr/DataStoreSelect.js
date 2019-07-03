@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({relationalDS:"Relacioni",spatialDS:"Prostorno-vremenski",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Izlazni šabloni za deljenje velikih datoteka"});

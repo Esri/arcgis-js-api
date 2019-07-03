@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Attribute","../../../../form/Element","../../../../form/ElementChoice","../../../../form/InputNumber","../../../../form/InputSelectOne","../../../../form/Options","../../../../form/Option","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","../../../../form/iso/ObjectReference","./MD_SpatialRepresentationTypeCode","dojo/text!./templates/DataRepresentation.html","../../../../../../kernel"],function(e,t,o,r,n,i,a,m,s,f,c,d,p,l,b,j,u,O){var R=e(r,{templateString:u});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.identification.DataRepresentation",R,O),R});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Επιλογή των σημειακών στοιχείων προς εμπλουτισμό",chooseMVgridLyrLabel:"Επιλογή του καννάβου πολλαπλών μεταβλητών από τον οποίο θα γίνει ο εμπλουτισμός",chooseVariables:"Επιλογή των μεταβλητών που θα προστεθούν",outputLayerName:"Επιτυχής εμπλουτισμός ${inputFeatures} από ${gridLayer}",itemDescription:"Feature layer που δημιουργήθηκε από την εκτέλεση της λύσης «Εμπλουτισμός Από Κάνναβο Πολλαπλών Μεταβλητών» για ${inputFeatures}.",itemTags:"Αποτέλεσμα ανάλυσης, Εμπλουτισμός Από Κάνναβο Πολλαπλών Μεταβλητών, ${inputFeatures}, ${gridLayer}",itemSnippet:"Feature layer που δημιουργήθηκε από τη λύση «Εμπλουτισμός Από Κάνναβο Πολλαπλών Μεταβλητών»."});

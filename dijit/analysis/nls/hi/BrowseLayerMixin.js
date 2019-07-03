@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"जीवंत एटलस विश्लेषण लेयर चुनें",customAnalysisLayerTitle:"विश्लेषण लेयर चुनें",searchPlaceholderText:"लिविंग एटलस विश्लेषण लेयर खोजें",searchCustomPlaceholderText:"विश्लेषण लेयर्स खोजे",mainActionTitle:"चुनें",customActionName:"चयन करें और मैप में जोड़ें",customeSectionName:"जीवंत एटलस विश्लेषण लेयर्स",Categories:"श्रेणियाँ",boundaries:"सीमाएँ",places:"स्थान",boundariesAndPlaces:"सीमाएँ तथा स्थान",hexbins:"हेक्सबिन",transportation:"यातायात",point:"पॉइंट लेयर्स",line:"पॉलीलाइन लेयर्स",polygon:"पॉलीगन लेयर्स",pointFilterName:"बिन्दु",lineFilterName:"बहुरेखा",polygonFilterName:"बहुभुज",multiPointFilterName:"एकाधिक बिंदु",geometryFilterName:"ज्यामितीय",featureLayerName:"फ़ीचर लेयर",tableLayerName:"तालिका",itemTypeFilterName:"आइटम का प्रकार",instantFilterName:"तुरंत",intervalFilterName:"अंतराल",timeFilterName:"समय",edit:"संपादित करें",boundaryLayers:"Esri की सीमा परतें",customAnalysisGroupName:"संगठन विश्लेषण समूह"});

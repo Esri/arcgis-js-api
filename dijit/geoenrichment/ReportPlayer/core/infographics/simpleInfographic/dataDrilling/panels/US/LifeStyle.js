@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["../../ChartBuilder"],function(e){var t={};return t.musicAndTheater={states:"n,p,i",defaultState:"i",stateSettings:{n:{yAxisTitle:"Number of adults"},p:{yAxisTitle:"Percent of adults"}},fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Attended Performance in last 12 months",points:[{label:"Classical music or opera",fullName:"LeisureActivitiesLifestyle.MP20061A_B"},{label:"Country music",fullName:"LeisureActivitiesLifestyle.MP20062A_B"},{label:"Rock music",fullName:"LeisureActivitiesLifestyle.MP20063A_B"},{label:"Live theater",fullName:"LeisureActivitiesLifestyle.MP20069A_B"}],visualProps:{sorting:"Descending"}})}},t});

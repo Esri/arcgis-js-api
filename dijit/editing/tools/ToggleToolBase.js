@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dijit/form/ToggleButton","./ToolBase","../../../kernel"],function(e,t,o,s,i,d){var r=e([s,i],{declaredClass:"esri.dijit.editing.tools.ToggleToolBase",postCreate:function(){this.inherited(arguments),this._setShowLabelAttr&&this._setShowLabelAttr(!1)},destroy:function(){s.prototype.destroy.apply(this,arguments),i.prototype.destroy.apply(this,arguments)},setChecked:function(e){s.prototype.setChecked.apply(this,arguments)}});return o("extend-esri")&&t.setObject("dijit.editing.tools.ToggleToolBase",r,d),r});

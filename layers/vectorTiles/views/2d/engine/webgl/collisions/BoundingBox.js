@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/libs/gl-matrix/vec2"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t,n,i){this.width=n,this.height=i,this.center=r.fromValues(e,t)}return Object.defineProperty(e.prototype,"x",{get:function(){return this.center[0]},set:function(e){this.center[0]=e},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"y",{get:function(){return this.center[1]},set:function(e){this.center[1]=e},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"halfWidth",{get:function(){return this.width/2},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"halfHeight",{get:function(){return this.height/2},enumerable:!0,configurable:!0}),e.prototype.serialize=function(e){return e.writeF32(this.center[0]),e.writeF32(this.center[1]),e.writeInt32(this.width),e.writeInt32(this.height),e},e.deserialize=function(t){return new e(t.readF32(),t.readF32(),t.readInt32(),t.readInt32())},e}();t.default=n});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({distToNearest:"المسافة إلى المعلم الأقرب",attrOfInterest:"بيانات جدولية للمعلم الأقرب",summaryNearby:"ملخص المعالم المتجاورة",summaryIntersecting:"ملخص المعالم المتقاطعة",distToNearestLabel:"المسافة من مركز الخانة إلى المعلم الأقرب في الطبقة المدخلة",attrOfInterestLabel:"قيمة الحقل المحدد من المعلم الأقرب من الطبقة المدخلة",summaryNearbyLabel:"إحصائية لحساب كل المعالم الموجودة بتحديد المسافة بينها وبين مركز الخانة.",summaryIntersectingLabel:"إحصائي لحساب جميع المعالم المتقاطعة مع الخانة",maxDistancefromCtr:"أقصى مسافة من مركز الخانة",fieldToIncude:"حقل لإدراج",statstoCalculate:"إحصائية لحساب",summFeatuesWithin:"تلخيص المعالم ضمن",smallMaxDistErrorMsg:"لابد أن تكون المسافة القصوى من مركز الخانة أكبر من حجم الخانة.",smallSumFeaturesErrorMsg:"لابد أن تكون المسافة القصوى من مركز الخانة أكبر من حجم الخانة."});

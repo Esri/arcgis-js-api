@@ -6,7 +6,6 @@
         text-align: center;
         position: relative;
         white-space: normal;
-        overflow: hidden;
     }
 
     .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionNode {
@@ -15,6 +14,11 @@
         border: 1px solid #dddddd;
         transform-origin: 0 0;
     }
+
+        .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionNode > .esriGEReportPlayer_section > .section_stackNode {
+            overflow: hidden;
+        }
+
 
     
 

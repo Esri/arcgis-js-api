@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή θεματικού επιπέδου για προσάρτηση σε",inputWarningLabel:"Προειδοποίηση: Το θεματικό επίπεδο στο οποίο προσαρτάτε δεδομένα θα τροποποιηθεί.",inputHostedLayerWarning:"Το επιλεγμένο θεματικό επίπεδο δεν ήταν hosted feature layer. Επιλέξτε ένα hosted feature layer στο οποίο θα γίνει η προσάρτηση.",appendLayerLabel:"Επιλογή θεματικού επιπέδου για προσάρτηση",filterLabel:"Προσάρτηση όλων των στοιχείων ή καθορισμός υποσυνόλου (προαιρετικά)",fieldMappingLabel:"Επιλογή τρόπου προσάρτησης πεδίων (προαιρετικά)",inputField:"Πεδίο εισόδου",appendValue:"Προσάρτηση τιμής",expression:"Έκφραση"});

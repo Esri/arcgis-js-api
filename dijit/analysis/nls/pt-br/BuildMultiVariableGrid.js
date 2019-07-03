@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({binsLabel:"Escolha o tipo de caixas que será utilizado para construir a grade de múltiplas variáveis",layersAttrLabel:"Escolha variáveis e camadas de entrada que você gostaria de incluir na grade",itemDescription:"Camada de feição gerada a partir da execução de Construir Grade de Múltiplas Variáveis.",itemTags:"Resultado da Análise, Construir Grade de Múltiplas Variáveis",itemSnippet:"Camada de feição gerada de Construir Grade de Múltiplas Variáveis.",addVariables:"Adicionar Variáveis"});

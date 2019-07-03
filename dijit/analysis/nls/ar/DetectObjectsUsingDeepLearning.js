@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({toolDefine:"تحديد الكائنات باستخدام التعلم الشامل",outputLayerName:"${layername}_detected",modelLabel:"اختيار نموذج التعلم الشامل المستخدم لاكتشاف الكائنات",modelArgsLabel:"تحديد وسيطات نموذج التعلم الشامل",nameLabel:"الاسم",valueLabel:"قيمة",removeDuplicatesLable:"إزالة المعالم المكررة من الإخراج (اختياري)",queryModelArgsMsg:"جار الاستعلام عن وسيطات النموذج...",nonMaxSuppressionLabel:"لا يوجد حد أقصى للمنع",options:"خيارات",confidenceLabel:"حقل درجة الثقة",classValueLabel:"حقل قيمة الفئة",maxOverlapLabel:"أقصى معدل تراكب",numberOnlyMsg:"يُسمح فقط باستخدام القيم الرقمية.",analysisLayerLabel:"اختيار صورة مستخدمة لاكتشاف الكائنات",itemDescription:"تحليل خدمة الصورة المنشأة من اكتشاف الكائنات باستخدام التعلم الشامل",itemTags:"نتيجة تحليل البيانات النقطية، اكتشاف الكائنات باستخدام التعلم الشامل، ${layername}",itemSnippet:"تحليل خدمة الصورة المنشأة من اكتشاف الكائنات باستخدام التعلم الشامل"});

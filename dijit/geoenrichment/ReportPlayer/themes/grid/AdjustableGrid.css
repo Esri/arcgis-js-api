@@ -41,6 +41,7 @@
     .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock > .valueField_valueBlock > .valueField_valueLabel {
         white-space: pre-wrap; 
         overflow-wrap: break-word; 
+        word-wrap: break-word; 
     }
 
     

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({modifiedTitle:"Skogsbaserad klassificering och regression - ${goal}",train:"Tåg",trainAndPredict:"Träna och förutsäg",selectGoal:"Vad vill du göra?",trainGoal:"Träna en modell att utvärdera modellprestanda",trainAndPredictGoal:"Träna en modell och förutsäg värden",inFeaturesLabel:"Välj träningslager",variablePredictLabel:"Välj vilket fält som ska förutsägas",categorical:"Kategoriskt",chooseExplanatoryField:"Välj ett eller flera förklarande fält",chooseFeaturesToPredict:"Välj ett lager att förutsäga värden för",chooseExplainMatch:"Välj hur förklarande fält matchas",options:"Alternativ",advancedForestOptions:"Avancerade alternativ för skog",numberOfTrees:"Antal träd",minimumLeafSize:"Minsta storlek för blad",maximumTreeDepth:"Maximalt träddjup",sampleSize:"Data tillgängliga per träd (%)",randomVariables:"Antal slumpmässigt samplade variabler",variableConstraintMsg:"Måste vara mellan 1 och antalet förklarande variabler.",validationOptions:"Valideringsalternativ",percentageForValidation:"Träningsdata uteslutna för validering (%)",outputLayerName:"FBCR ${inFeaturesName}",itemDescription:"Geoobjektlager som skapas av att köra Skogsbaserad klassificering och regression ${goal}-lösningarna.",itemTags:"Analysresultat, skogsbaserad klassificering och regression, ${inFeaturesName}, ${goal}",itemSnippet:"Geoobjektlager som skapas av Skogsbaserad klassificering och regression"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți rasterul sau stratul tematic al locației obiectelor spațiale pentru a determina căile de deplasare dintre",inputCostRasterLabel:"Alegeți stratul tematic raster de deplasare",outputOptimumNetworkName:"Numele stratului tematic optim cu linie poligonală pentru căi rezultat",outputNeighborNetworkName:"Numele stratului tematic vecin cu linie poligonală pentru căi rezultat (opțional)",outputLayerName:"Determinați costul optim de deplasare pentru ${layername}",itemDescription:"Strat tematic de obiecte spațiale generat de rularea opțiunii de Determinare a rețelei costului optim de deplasare pe ${inputLayername}. ",itemTags:"Rezultatul analizei, Determinare rețea cost optim de deplasare, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat de opțiunea Determinare rețea cost optim de deplasare."});

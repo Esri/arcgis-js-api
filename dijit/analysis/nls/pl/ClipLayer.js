@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz obiekty do przycięcia",filterSelectLabel:"Przytnij wszystkie obiekty lub zdefiniuj podzbiór (opcjonalnie)",targetArea:"Wybierz obszar przycięcia",outputLayerName:"Przytnij warstwę ${inputLayerName} do warstwy ${clipLayerName}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Przytnij. Obiekty z warstwy ${inputLayerName} zostały przycięte do warstwy ${clipLayerName}.",itemTags:"Wyniki analizy, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Przytnij warstwę"});

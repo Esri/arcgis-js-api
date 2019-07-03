@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define({fields:"필드(Field)",categorical:"범주",requiredMessage:"설명 변수를 하나 이상 선택해야 합니다."});
+define({fields:"필드",categorical:"범주",requiredMessage:"설명 변수를 하나 이상 선택해야 합니다."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"जोड़ने के लिए सुविधाएँ चुनें",filterSelectLabel:"सभी सुविधाएँ जोड़ें या कोई सबसेट निर्धारित करें (वैकल्पिक)",targetArea:"सुविधा जोड़ने के लिए क्षेत्र चुनें",outputLayerName:"${inputLayerName} को ${clipLayerName} में जोड़ें",itemDescription:"सुविधा जोड़ने संबंधी समाधान चलाने से उत्पन्न फ़ीचर लेयर। ${inputLayerName} की सुविधाओं को ${clipLayerName} में जोड़ा गया।",itemTags:"विश्लेषण नतीजा, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"क्लिप लेयर से बना फ़ीचर लेयर"});

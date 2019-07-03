@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"बेहतर बनाने के लिए पॉइंट लेयर चुनें",chooseMVgridLyrLabel:"वह एकाधिक चर वाले ग्रिड चुनें जिससे बेहतर बनाया जाना है",chooseVariables:"जोड़ने के लिए चर चुनें",outputLayerName:"${gridLayer} से ${inputFeatures} को भरा गया",itemDescription:"${inputFeatures} के लिए एक से ज्यादा वेरिएबल से तैयार ग्रिड समाधान से चलाते समय जनरेट की गई फ़ीचर लेयर।",itemTags:"विश्लेषण नतीजा, एक से ज़्यादा वेरिएबल वाले ग्रिड से तैयार करें, ${inputFeatures}, ${gridLayer}",itemSnippet:"एक से ज्यादा वेरिएबल ग्रिड से तैयार करने से जनरेट की गई फ़ीचर लेयर।"});

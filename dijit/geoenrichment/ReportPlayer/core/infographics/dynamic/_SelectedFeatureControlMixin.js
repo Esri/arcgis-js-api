@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define(["dojo/_base/declare"],function(e){return e(null,{getSelectedFeatureID:function(){return this.select&&this.select.get("value")},setSelectedFeatureID:function(e){this.select&&this.select.set("value",e)}})});
+define(["dojo/_base/declare"],function(e){return e(null,{getSelectedFeatureID:function(){return this.select&&this.select.get("value")},setSelectedFeatureID:function(e){this.select&&(this.select.set("value",e),this.select.onChange())}})});

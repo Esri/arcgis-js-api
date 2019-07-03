@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/ReportPlayer/config","../ChartTypes","./waffle/WaffleChartBuilder","./round/RoundChartBuilder","./columnBarLine/ColumnBarLineChartBuilder"],function(r,e,n,a,t){var i={};return i.getChartBuilder=function(r){return r===e.WAFFLE?n:r===e.PIE||r===e.DONUT||r===e.GAUGE||r===e.RING?a:t},i.checkSeriesAreValid=function(e){return!r.charts.showErrorIfHasUnavailableData||!e.some(function(r){return r.data.some(function(r){return r.isUnavailableData})})},i});

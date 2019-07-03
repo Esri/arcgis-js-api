@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Valige rikastatavad punktobjektid",chooseMVgridLyrLabel:"Valige mitme muutujaga ruudustik, millest rikastatakse",chooseVariables:"Vali lisatavad muutujad",outputLayerName:"Rikastatud ${inputFeatures} kihist ${gridLayer}",itemDescription:"Objektikiht on loodud lahenduse Rikastage mitme muutujaga ruudustikust abil objektide ${inputFeatures} jaoks.",itemTags:"Analüüsi tulemus, Rikastage mitme muutujaga ruudustikust, ${inputFeatures}, ${gridLayer}",itemSnippet:"Objektikiht on loodud lahenduse Rikastage mitme muutujaga ruudustikust abil"});

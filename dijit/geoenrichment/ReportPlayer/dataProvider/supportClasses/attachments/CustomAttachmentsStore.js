@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/declare"],function(t){var e={fromJson:function(t){return{getAttachmentsForAreaAt:function(e){return e=t.supportsMultipleAreas?e:0,(t.areaAttachements[e]&&t.areaAttachements[e].attachments||[]).map(function(t){return{description:t.description,getThumbnail:function(){return t.thumbnail},getAttachmentUrl:function(){return t.url}}})},getAttributesForAreaAt:function(e){return e=t.supportsMultipleAreas?e:0,t.areaAttachements[e]&&t.areaAttachements[e].attributes||[]},getNotesForAreaAt:function(e){return e=t.supportsMultipleAreas?e:0,t.areaAttachements[e]&&t.areaAttachements[e].notes||[]}}}};return t(null,{supportsMultipleAreas:!1,_currentAreaIndex:0,_provider:null,constructor:function(t){this._provider=t.getAttachmentsForAreaAt||t.getAttributesForAreaAt||t.getNotesForAreaAt?t:e.fromJson(t),this.supportsMultipleAreas=t.supportsMultipleAreas},initialize:function(){},getAttachments:function(){return this._provider.getAttachmentsForAreaAt?this._provider.getAttachmentsForAreaAt(this._currentAreaIndex):[]},getAttributes:function(){return this._provider.getAttributesForAreaAt?this._provider.getAttributesForAreaAt(this._currentAreaIndex):[]},getNotes:function(){return this._provider.getNotesForAreaAt?this._provider.getNotesForAreaAt(this._currentAreaIndex):[]},setCurrentAnalysisAreaIndex:function(t){this._currentAreaIndex=t}})});

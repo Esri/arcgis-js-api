@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({relationalDS:"관계형",spatialDS:"시공간형",agsDataStore:"ArcGIS 데이터 스토어",bdfsTemplates:"빅데이터 파일 공유 결과 템플릿"});

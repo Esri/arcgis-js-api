@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({addBarriers:"Vybrat vrstvy překážek",pointBarrier:"Bodové překážky",lineBarrier:"Liniové překážky",polygonBarrier:"Polygonové překážky",choosePointBarrier:"Zvolit vrstvu bodové překážky",chooseLineBarrier:"Zvolit vrstvu liniové překážky",choosePolygonBarrier:"Zvolit vrstvu polygonové překážky",selectPointBarrier:"Vybrat bodové překážky",selectLineBarrier:"Vybrat liniové překážky",selectPolygonBarrier:"Vybrat polygonové překážky"});

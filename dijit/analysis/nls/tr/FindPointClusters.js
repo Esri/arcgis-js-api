@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define({clustersLabel:"${inputLayerName} katmanı için kümeleri bul.",chooseLayerLabel:"Kümelerin bulunacağı katmanı seçin",minClusterPtsLabel:"Bir küme olarak kabul edilecek minimum nokta sayısı",limitSearchLabel:"Arama aralığını şununla sınırla (isteğe bağlı)",limitSearchReqLabel:"Arama aralığını şununla sınırla:",outputLayerName:"${inputLayerName} için Kümeler Bul",itemDescription:"Detay katmanı, ${inputLayerName} için Nokta Kümeleri Bul çözümü çalıştırılarak oluşturuldu.",itemTags:"Analiz Sonucu, Nokta Kümeleri Bul, ${inputLayerName}",itemSnippet:"Detay katmanı, Nokta Kümeleri Bul ile oluşturuldu",chooseClusteringMethod:"Kullanılacak kümeleme yöntemini seç",dbscanLabel:"Tanımlanan Mesafe (DBSCAN)",hdbscanLabel:"Kendi kendini ayarlama (HDBSCAN)"});
+define({clustersLabel:"${inputLayerName} katmanı için kümeleri bul.",chooseLayerLabel:"Kümelerin bulunacağı katmanı seçin",minClusterPtsLabel:"Bir küme olarak kabul edilecek minimum nokta sayısı",minClustersPtsGAXLbl:"Bir küme oluşturmak için minimum nokta sayısı",limitSearchLabel:"Arama aralığını şununla sınırla (isteğe bağlı)",limitSearchReqLabel:"Arama aralığını şununla sınırla:",outputLayerName:"${inputLayerName} için Kümeler Bul",itemDescription:"Detay katmanı, ${inputLayerName} için Nokta Kümeleri Bul çözümü çalıştırılarak oluşturuldu.",itemTags:"Analiz Sonucu, Nokta Kümeleri Bul, ${inputLayerName}",itemSnippet:"Detay katmanı, Nokta Kümeleri Bul ile oluşturuldu",chooseClusteringMethod:"Kullanılacak kümeleme yöntemini seç",dbscanLabel:"Tanımlanan Mesafe (DBSCAN)",hdbscanLabel:"Kendi kendini ayarlama (HDBSCAN)"});

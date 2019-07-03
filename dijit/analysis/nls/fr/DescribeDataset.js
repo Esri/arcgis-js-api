@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir le jeu de données à décrire",describeDataLabel:"Comprendre vos données en créant un (facultatif)",sampleLayer:"Exemple de couche",extentLayer:"Couche de l’étendue",noOfFeaturesLabel:"Nombre d’entités à inclure",outputLayerName:"Nom de la couche de résultat",resultName:"Décrire les données de ${layerName}",itemDescription:"Couche d’entités générée par l’exécution de la solution Décrire le jeu de données sur ${inputLayername}. ",itemTags:"Résultat d’analyse, Décrire le jeu de données, ${layerName}",itemSnippet:"Couche d’entités générée avec Décrire le jeu de données."});

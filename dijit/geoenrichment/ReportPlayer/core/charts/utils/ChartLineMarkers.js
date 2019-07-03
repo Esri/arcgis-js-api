@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
-define(["dojox/charting/SimpleTheme"],function(e){var r={NONE:"None",CIRCLE:"Circle",SQUARE:"Square",DIAMOND:"Diamond",CROSS:"Cross",X:"X",TRIANGLE:"Triangle",TRIANGLE_INVERTED:"TriangleInverted"},n={};for(var a in r)n[r[a]]=a;return r.getMarkerPath=function(r){return e.defaultMarkers[n[r]]||""},r});
+define(["dojox/charting/SimpleTheme"],function(r){var e={NONE:"None",CIRCLE:"Circle",SQUARE:"Square",DIAMOND:"Diamond",CROSS:"Cross",X:"X",TRIANGLE:"Triangle",TRIANGLE_INVERTED:"TriangleInverted"},t=[e.CIRCLE,e.SQUARE,e.DIAMOND,e.CROSS,e.X,e.TRIANGLE,e.TRIANGLE_INVERTED],n={};for(var a in e)n[e[a]]=a;return e.isSupported=function(r){return-1!==t.indexOf(r)},e.getMarkerPath=function(e){return r.defaultMarkers[n[e]]||""},e.getMarkerAt=function(r){return t[r%t.length]},e.getMarkerPathAt=function(r){return e.getMarkerPath(e.getMarkerAt(r))},e});

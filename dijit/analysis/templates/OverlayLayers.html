@@ -69,7 +69,7 @@
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="OverlayType"></a> 
           </td>          
         </tr>  
-        <tr>
+        <tr data-dojo-attach-point="_operatorsGrid">
           <td class="overlayTypeCell" align='center' data-dojo-attach-point="_intersectBtnCell">
             <div class="esriContainerSelector" data-dojo-props="groupName:'overlayType',checked:true" data-dojo-type="esri/dijit/analysis/AnalysisToggleButton" data-dojo-attach-point="_intersectBtnCtr" style="width:100%" data-dojo-attach-event="onClick:_handleIntersectBtnCtrClick" >
               <div data-dojo-type="esri/dijit/analysis/GroupToggleButton" class="" data-dojo-attach-event="onClick:_handleIntersectBtnClick" data-dojo-attach-point="_intersectBtn" data-dojo-props="groupName:'overlayType',showLabel:false,iconClass:'intersectLayersIcon',checked:true, style:'width:36px;height:36px;',label:'intersect'"></div>
@@ -87,6 +87,12 @@
               <div  data-dojo-type="esri/dijit/analysis/GroupToggleButton" class="" data-dojo-attach-event="onClick:_handleEraseBtnClick" data-dojo-attach-point="_eraseBtn" data-dojo-props="groupName:'overlayType',showLabel:false,iconClass:'eraseLayersIcon',   style:'width:36px;height:36px;',label:'erase'"></div>
               <div><label>${i18n.erase}</label></div>
             </div>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_operatorsDropdown" class="hide">
+          <td colspan="3">
+            <select class="esriLeadingMargin1 longInput esriAnalysisSelect esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-props="required:true" data-dojo-attach-point="_operatorsSelect" data-dojo-attach-event="onChange:_handleOperatorChange">
+            </select>
           </td>
         </tr>
         <tr>

@@ -51,6 +51,21 @@
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.inputRaster}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="inputBarrierRasterOrFeatures"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <select class="esriLeadingMargin1 longInput esriAnalysisSelect esriLongLabel" data-dojo-type="dijit/form/Select"
+              data-dojo-attach-point="_inputRasterSelect" data-dojo-attach-event="onChange:_handleInputRasterChange"></select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.maxDistanceLabel}</label>
           </td>
           <td class="shortTextInput">
@@ -85,6 +100,20 @@
           </td>
         </tr>
         <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading  esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fiveLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.distanceMethod}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="distanceMethod"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <select class="esriLeadingMargin1 longInput esriAnalysisSelect esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_distanceMethodSelect"></select>
+          </td>
+        </tr>
+        <tr>
           <td colspan="3">
             <label class="esriFloatLeading  esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputDistanceName"></a>
@@ -108,6 +137,19 @@
           <td colspan="3">
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="trim:true" class="esriOutputText esriLeadingMargin1"
               data-dojo-attach-point="_outputDirectionLayerInput"></input>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <label class="esriFloatLeading  esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.eightLabel}</label>
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputBackDirectionName"></a>
+            <label class="esriAnalysisStepsLabel">${i18n.outputBackDirectionName}</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="trim:true" class="esriOutputText esriLeadingMargin1"
+              data-dojo-attach-point="_outputBackDirectionNameInput" />
           </td>
         </tr>
         <tr>

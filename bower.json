@@ -1,8 +1,8 @@
 {
   "name": "arcgis-js-api",
-  "version": "3.28.0",
+  "version": "3.29.0",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript that can be used for bower.",
-  "license": "SEE LICENSE IN http://js.arcgis.com/3.28/esri/copyright.txt",
+  "license": "SEE LICENSE IN http://js.arcgis.com/3.29/esri/copyright.txt",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -20,7 +20,7 @@
     "dstore": "1.1.2",
     "put-selector": "0.3.6",
     "xstyle": "0.3.2",
-    "moment": "2.23.0"
+    "moment": "2.24.0"
   },
   "moduleType": [
     "amd"

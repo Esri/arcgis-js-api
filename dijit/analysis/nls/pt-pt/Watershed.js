@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Selecionar camada de direção de fluxo",pourPointLayerLabel:"Selecionar raster pour point ou camada de elementos",pourPointField:"Selecionar campo pour point",resultLayerName:"Nome da camada resultante",outputLayerName:"Watershed de ${layername}",itemDescription:"Camada de elementos gerada através da execução de Resumir centro e dispersão em ${layerName}. ",itemTags:"Resultado de Análise, Watershed, ${layername} ${fieldname}",itemSnippet:"Camada de elementos gerada a partir de Watershed"});

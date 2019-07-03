@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder","../../supportClasses/tableJson/TableJsonUtil","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/ViewModes","../../grid/coreUtils/GridStyleUtil"],function(e,i,l,t,s){var a={};return a.variableTableToNormalTables=function(a){function r(i,t){return l.createSingleCellTable(e.mixin({left:i.style.left,spaceBefore:i.style.top,width:i.style.width,height:i.style.height,cellStyle:s.filterCellStyles(i.style)},t))}var n=[],o=-1,d=-1,f=-1;if(a.shape){var p=r(a.shape,{fieldInfo:i.createFieldInfoFromShape(a.shape.shapeJson)});n.push(p),o=0}else if(a.image){var h=r(a.image,{fieldInfo:i.createFieldInfoFromImage(a.image.imageJson)});n.push(h),o=0}if(a.variable){var c=r(a.variable,{attributes:{viewMode:t.PREVIEW_VALUES},themeStyle:{fields:{field0:a.variable.themeStyle}},fieldInfo:a.variable.fieldInfo});n.push(c),d=n.length-1}if(a.description){var m=r(a.description,{text:a.description.text,themeStyle:{fields:{field0:a.description.themeStyle}}});n.push(m),f=n.length-1}return{tableJsons:n,iconIndex:o,variableIndex:d,descriptionIndex:f}},a});

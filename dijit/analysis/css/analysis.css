@@ -375,6 +375,24 @@
   margin: 1px;
 }
 
+.identityLayersIcon {
+  background-image: url("../images/Identity32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 1px;
+}
+
+.symmetricalDifferenceLayersIcon {
+  background-image: url("../images/SymmetricalDifference32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 1px;
+}
+
 .mergeLayersIcon {
   background-image: url("../images/MergeLayers32.png");
 }
@@ -1040,6 +1058,22 @@ td.subsectionLineDivider {
   background-image: url("../images/DrivingDistance32.png");
 }
 
+.esriDrivingOtherIcon {
+  background-image: url("../images/Driving32.png");
+}
+
+.esriWalkingOtherIcon {
+  background-image: url("../images/Walking32.png");
+}
+
+.esriTruckingOtherIcon {
+  background-image: url("../images/Trucking32.png");
+}
+
+.esriOtherOtherIcon {
+  background-image: url("../images/OtherMode32.png");
+}
+
 .esriTruckingTimeIcon {
   background-image: url("../images/TruckingTime32.png");
 }
@@ -1400,7 +1434,7 @@ td.subsectionLineDivider {
 }
 
 .esriAnalysisExpressionGrid .field-operator .esriAnalysisOperatorButton {
-  width: 32px;
+  width: 39px;
   color: #00f;
   text-decoration: underline;
   cursor: pointer;
@@ -1656,6 +1690,10 @@ td.subsectionLineDivider {
 
 .esriAnalysisDriveMode .dijitSelectMenu .dijitMenuItemLabel {
   padding: 0.5em 0.2em;
+}
+
+.esriAnalysisDriveMode.warningIcon {
+  margin-top: 0.5em;
 }
 
 .esriAnalysis .esriExtentLabel {
@@ -2682,4 +2720,19 @@ button[disabled] {
 
 .esriAnalysis .webtoolbtn.dijitButton {
   padding: .3em 0 .3em !important;
+}
+
+.longInput.with-filter {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  width: 70%;
+  table-layout: fixed;
+}
+
+.marginTop1{
+  margin-top: 1rem;
+}
+
+.paddingTop1 {
+  padding-top: 1rem;
 }

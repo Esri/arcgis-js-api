@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType"],function(e,r,t,o,l,p,s){return function(e){function r(r){var t=e.call(this,r)||this;return t.level=0,t.levelValue=null,t.resolution=0,t.scale=0,t}return t(r,e),l=r,r.prototype.clone=function(){return new l({level:this.level,levelValue:this.levelValue,resolution:this.resolution,scale:this.scale})},o([p.property({type:s.Integer,json:{write:!0}})],r.prototype,"level",void 0),o([p.property({type:String,json:{write:!0}})],r.prototype,"levelValue",void 0),o([p.property({type:Number,json:{write:!0}})],r.prototype,"resolution",void 0),o([p.property({type:Number,json:{write:!0}})],r.prototype,"scale",void 0),r=l=o([p.subclass("esri.layers.support.LOD")],r);var l}(p.declared(l))});

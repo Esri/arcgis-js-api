@@ -46,6 +46,10 @@
   pointer-events: none;
 }
 
+.map .esriMapContainer .esriMapLayers svg g text {
+  white-space: pre;
+}
+
 
 .map .esriMapContainer .esriMapContainer {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

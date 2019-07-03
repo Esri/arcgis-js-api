@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
 
 define({toolDefine:"Klasifikuj piksele pomoću detaljnog učenja",outputLayerName:"${layername}_classified",modelLabel:"Odaberite model detaljnog učenja koji se koristi za klasifikovanje piksela",modelArgsLabel:"Navedite argumente modela detaljnog učenja",nameLabel:"Naziv",valueLabel:"Vrednost",queryModelArgsMsg:"Izvršavanje upita za argumente modela...",analysisLayerLabel:"Odaberite snimak koji se koristi za klasifikovanje piksela",itemDescription:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja",itemTags:"Rezultat rasterske analize, Klasifikuj piksele pomoću detaljnog učenja, ${layername}",itemSnippet:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja"});
