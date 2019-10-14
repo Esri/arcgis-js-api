@@ -8,11 +8,11 @@
       "type": "string",
       "description": "Defines the axis the size visual variable should be applied to when rendering features with an ObjectSymbol3DLayer.",
       "enum": [
-        "width",
-        "height",
+        "all",
         "depth",
-        "widthAndDepth",
-        "all"
+        "height",
+        "width",
+        "widthAndDepth"
       ]
     },
     "field": {
@@ -21,7 +21,19 @@
     },
     "legendOptions": {
       "type": "object",
-      "$ref": "visualVariableLegendOptions_schema.json"
+      "allOf": [
+        {
+          "$ref": "visualVariableLegendOptions_schema.json"
+        },
+        {
+          "properties": {
+            "customValues": {},
+            "title": {},
+            "showLegend": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "maxDataValue": {
       "type": "number",
@@ -81,29 +93,29 @@
       "type": "string",
       "description": "Specifies how to apply the data value when mapping real-world sizes. See table below for supported values.",
       "enum": [
-        "radius",
-        "diameter",
         "area",
-        "width",
-        "distance"
+        "diameter",
+        "distance",
+        "radius",
+        "width"
       ]
     },
     "valueUnit": {
       "type": "string",
       "description": "A string value indicating the unit of measurement. Defaults to `meters` if not set.",
       "enum": [
-        "unknown",
-        "inches",
-        "feet",
-        "yards",
-        "miles",
-        "nautical-miles",
-        "millimeters",
         "centimeters",
+        "decimal-degrees",
         "decimeters",
-        "meters",
+        "feet",
+        "inches",
         "kilometers",
-        "decimal-degrees"
+        "meters",
+        "miles",
+        "millimeters",
+        "nautical-miles",
+        "unknown",
+        "yards"
       ]
     }
   },
@@ -137,6 +149,14 @@
             {
               "type": "sizeInfo",
               "field": "Deaths",
+              "legendOptions": {
+                "title": "size",
+                "customValues": [
+                  1,
+                  2,
+                  3
+                ]
+              },
               "stops": [
                 {
                   "value": 2814,

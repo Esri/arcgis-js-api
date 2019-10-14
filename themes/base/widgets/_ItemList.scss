@@ -54,7 +54,6 @@
   }
 
   .esri-item-list__scroller {
-    max-height: $panel-max-height--small;
     overflow-y: auto;
   }
 
@@ -124,6 +123,9 @@
     justify-content: center;
     align-items: center;
     min-height: $list-item-height;
+  }
+  .esri-ui .esri-item-list__scroller {
+    max-height: $panel-max-height--small;
   }
 }
 

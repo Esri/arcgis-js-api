@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({streets:"Gater",satellite:"Bilder",hybrid:"Bilder med påskrifter",terrain:"Terreng med påskrift",topo:"Topografisk",gray:"Lysegrått lerret","dark-gray":"Mørkegrått lerret",oceans:"Kyst og sjø","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"World Street Map (Night)","streets-relief-vector":"World Street Map (with Relief)","streets-navigation-vector":"World Navigation Map"});

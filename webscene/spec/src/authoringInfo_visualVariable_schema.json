@@ -5,15 +5,11 @@
   "description": "This visual variable pertains specifically to [authoringInfo](authoringInfo.md) and is different from visual variables directly on the [renderer](renderer.md).",
   "properties": {
     "endTime": {
-      "description": "A Unix stamp. Both `startTime` or `endTime` can be fields. If this is the case, their names must be different.",
-      "oneOf": [
-        {
-          "type": "number"
-        },
-        {
-          "type": "string"
-        }
-      ]
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "A Unix stamp. Both `startTime` or `endTime` can be fields. If this is the case, their names must be different."
     },
     "field": {
       "type": "string",
@@ -28,33 +24,29 @@
       "description": "A numeric value indicating the minimum value displayed."
     },
     "startTime": {
-      "description": "A Unix time stamp. Both `startTime` or `endTime` can be fields. If this is the case, their names must be different.",
-      "oneOf": [
-        {
-          "type": "number"
-        },
-        {
-          "type": "string"
-        }
-      ]
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "A Unix time stamp. Both `startTime` or `endTime` can be fields. If this is the case, their names must be different."
     },
     "style": {
       "type": "string",
       "description": "(This property is used for comparison rendering). It is used to map the ratio between two numbers. It is possible to express that relationship as percentages, simple ratios, or an overall percentage.",
       "enum": [
         "percent",
-        "ratio",
-        "percentTotal"
+        "percentTotal",
+        "ratio"
       ]
     },
     "theme": {
       "type": "string",
       "description": "Theme to be used only when working with visual variables of type `colorInfo`. Default is `high-to-low`.",
       "enum": [
-        "high-to-low",
         "above-and-below",
         "centered-on",
-        "extremes"
+        "extremes",
+        "high-to-low"
       ]
     },
     "type": {
@@ -62,20 +54,20 @@
       "description": "A string value specifying the type of renderer's visual variable.",
       "enum": [
         "colorInfo",
+        "rotationInfo",
         "sizeInfo",
-        "transparencyInfo",
-        "rotationInfo"
+        "transparencyInfo"
       ]
     },
     "units": {
       "type": "string",
       "description": "(This property is used only with age renderers.) Units for startTime and endTime.",
       "enum": [
-        "seconds",
-        "minutes",
-        "hours",
         "days",
+        "hours",
+        "minutes",
         "months",
+        "seconds",
         "years"
       ]
     }

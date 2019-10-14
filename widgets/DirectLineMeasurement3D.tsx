@@ -3,7 +3,7 @@
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the vertical, horizontal,
  * and direct distance between two points.
  *
- * [![measurement-line-3d](../../assets/img/apiref/widgets/direct-line-measurement-3d-sample.png)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../../assets/img/apiref/widgets/3D_DirectLineMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -49,11 +49,15 @@
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/DirectLineMeasurement3D/nls/DirectLineMeasurement3D";
 
+// esri.core
+import { SystemOrLengthUnit } from "esri/core/unitUtils";
+
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -91,7 +95,9 @@ const CSS = {
   unitsSelectWrapper: "esri-direct-line-measurement-3d__units-select-wrapper",
   // clear
   actionSection: "esri-direct-line-measurement-3d__actions",
-  clearButton: "esri-direct-line-measurement-3d__clear-button"
+  clearButton: "esri-direct-line-measurement-3d__clear-button",
+  // icon
+  widgetIcon: "esri-icon-measure-line"
 };
 
 @subclass("esri.widgets.DirectLineMeasurement3D")
@@ -136,7 +142,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  visible
@@ -171,6 +177,20 @@ class DirectLineMeasurement3D extends declared(Widget) {
   active: boolean;
 
   //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -202,15 +222,14 @@ class DirectLineMeasurement3D extends declared(Widget) {
   //----------------------------------
   /**
    * List of unit systems (imperial, metric) and specific units for displaying the distance values.
-   * By default, the following units are included: `metric`, `imperial`, `inches`, `feet`, `us-feet`, `yards`, `miles`, `nautical-miles`, `meters`, `kilometers`.
    *
    * @name unitOptions
    * @instance
    * @since 4.7
-   * @type {string[]}
+   * @type {Array<"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers">}
    */
   @aliasOf("viewModel.unitOptions")
-  unitOptions: Array<DirectLineMeasurement3DViewModel.Unit> = null;
+  unitOptions: Array<SystemOrLengthUnit> = null;
 
   //----------------------------------
   //  unit
@@ -218,15 +237,13 @@ class DirectLineMeasurement3D extends declared(Widget) {
   /**
    * Unit system (imperial, metric) or specific unit used for displaying the distance values.
    *
-   * **Possible Values:** metric | imperial | inches | feet | us-feet | yards | miles | nautical-miles | meters | kilometers
-   *
    * @name unit
    * @instance
    * @since 4.8
-   * @type {string}
+   * @type {"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"}
    */
   @aliasOf("viewModel.unit")
-  unit: DirectLineMeasurement3DViewModel.Unit = null;
+  unit: SystemOrLengthUnit = null;
 
   //--------------------------------------------------------------------------
   //
@@ -377,7 +394,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
     const selected = target.options[target.selectedIndex];
 
     if (selected) {
-      this.unit = selected.value as DirectLineMeasurement3DViewModel.Unit;
+      this.unit = selected.value as SystemOrLengthUnit;
     }
   }
 }

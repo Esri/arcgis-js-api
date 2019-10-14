@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"히스토그램",xAverage:"xÌ„ ",barLabel:"막대 개수: {count} 최소 막대 데이터 값: {minValue} 최대 막대 데이터 값: {maxValue}"});
+define({title:"히스토그램",barLabel:"막대 개수: {count} 최소 막대 데이터 값: {minValue} 최대 막대 데이터 값: {maxValue}"});

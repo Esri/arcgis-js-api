@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Dilim",cancel:"İptal Et",hint:"Sahnedeki bir yüzeyi tıklayıp sürükleyerek dilimlemeye başlayın",excludeHint:"Dilimin dışında bırakmak için görünümde bir katman seçin",unsupported:"Dilim MapView'da desteklenmiyor.",multipleDisabled:"Bir seferde sadece bir dilim etkin olabilir",newSlice:"Yeni Dilim",excludedLayers:"Dışarıda bırakılan katmanlar",pickLayer:"Görünümden bir katman seç",excludeLayer:"Katmanı dilimin dışında bırak",includeLayer:"Katmanı dilime dahil et",ground:"Zemin"});

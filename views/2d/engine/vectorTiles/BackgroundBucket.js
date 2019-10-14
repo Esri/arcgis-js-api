@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","./Bucket"],function(e,t,r,n){return function(e){function t(t,r){return e.call(this,t,r)||this}return r(t,e),t}(n)});

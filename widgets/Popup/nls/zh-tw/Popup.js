@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({zoom:"縮放至",next:"下一個圖徵",previous:"上一個圖徵",dock:"固定",undock:"浮動",pageText:"{index}/{total}",selectedFeature:"選取的圖徵",selectedFeatures:"{Total} 個結果",tooManyFields:"此圖層有太多欄位，可能不會顯示部分欄位。"});

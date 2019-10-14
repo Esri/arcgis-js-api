@@ -1033,7 +1033,7 @@
 }
 .esri-icon-default-action {
   &:before {
-    content: unicode($esri-icon-default-action);     
+    content: unicode($esri-icon-default-action);
     color: $fill-color;
   }
 }
@@ -1045,14 +1045,37 @@
 }
 .esri-icon-redo {
   &:before {
-    content: unicode($esri-icon-redo); 
+    content: unicode($esri-icon-redo);
     color: $fill-color;
   }
 }
 .esri-icon-cursor {
   &:before {
-    content: unicode($esri-icon-cursor); 
+    content: unicode($esri-icon-cursor);
     color: $fill-color;
   }
 }
-
+.esri-icon-cursor-filled {
+  &:before {
+    content: unicode($esri-icon-cursor-filled);
+    color: $fill-color;
+  }
+}
+.esri-icon-measure {
+  &:before {
+    content: unicode($esri-icon-measure);
+    color: $fill-color;
+  }
+}
+.esri-icon-measure-line {
+  &:before {
+    content: unicode($esri-icon-measure-line);
+    color: $fill-color;
+  }
+}
+.esri-icon-measure-area {
+  &:before {
+    content: unicode($esri-icon-measure-area);
+    color: $fill-color;
+  }
+}

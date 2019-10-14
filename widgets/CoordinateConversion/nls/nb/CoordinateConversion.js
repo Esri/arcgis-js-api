@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Legg til konvertering",captureMode:"Opptaksmodus",changeCoordinateDisplay:"Endre koordinatvisning",convert:"Konverter",conversionOutputSuffix:"utdata for konvertering",copySuccessMessage:"Koordinat kopiert til utklippstavlen",defaultPattern:"Tilbakestill til standard",goTo:"Gå til lokasjon",inputCoordTitle:"Inndatakoordinat",invalidCoordinate:"Ugyldig koordinat",liveMode:"Live-modus",locationOffBasemap:"Inndatakoordinaten er utenfor bakgrunnskartets utstrekning",noBasemap:"Ingen bakgrunnskart.",noLocation:"Ingen posisjon",removeConversion:"Fjern konvertering",selectFormat:"Velg format",settingsTitle:"Formatinnstillinger"});

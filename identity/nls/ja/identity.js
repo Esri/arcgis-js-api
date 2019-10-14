@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"アイテム",title:"サイン イン",info:"{server} {resource} のアイテムにアクセスするにはサイン インしてください",oAuthInfo:"{server} にサイン インしてください。",lblUser:"ユーザー名:",lblPwd:"パスワード:",lblOk:"OK",lblSigning:"サイン インしています...",lblCancel:"キャンセル",errorMsg:"ユーザー名またはパスワードが無効です。もう一度やり直してください。",invalidUser:"入力したユーザー名またはパスワードが正しくありません。",forbidden:"ユーザー名とパスワードは有効ですが、このリソースへのアクセス権がありません。",noAuthService:"認証サービスにアクセスできません。"});

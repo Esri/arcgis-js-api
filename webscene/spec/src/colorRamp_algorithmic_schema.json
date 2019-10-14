@@ -7,8 +7,8 @@
       "type": "string",
       "description": "Algorithm used for calculating the ramp.",
       "enum": [
-        "esriHSVAlgorithm",
         "esriCIELabAlgorithm",
+        "esriHSVAlgorithm",
         "esriLabLChAlgorithm"
       ]
     },

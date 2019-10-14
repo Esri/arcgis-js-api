@@ -1,5 +1,7 @@
 {
   "title": "lighting",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Object containing information on how the scene is lit.",
   "properties": {
     "datetime": {

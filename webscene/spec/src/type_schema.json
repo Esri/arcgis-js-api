@@ -15,15 +15,11 @@
       }
     },
     "id": {
-      "description": "A unique string or numerical ID for the type.",
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "number"
-        }
-      ]
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "A unique string or numerical ID for the type."
     },
     "name": {
       "type": "string",

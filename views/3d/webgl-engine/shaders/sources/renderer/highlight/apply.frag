@@ -12,6 +12,7 @@ uniform sampler2D tex;
 uniform sampler2D origin;
 
 uniform vec4 color;
+uniform vec4 haloColor;
 uniform float outlineSize;
 uniform float blurSize;
 uniform vec4 opacities; // [outline, outlineOccluded, fill, fillOccluded]
@@ -38,12 +39,12 @@ void main() {
 
     // if occluded
     if (blurredHighlightValue.g > blurredHighlightValue.b) {
-      outlineIntensity = color.w * opacities[1];
+      outlineIntensity = haloColor.w * opacities[1];
       fillIntensity = color.w * opacities[3];
     }
     // if unoccluded
     else {
-      outlineIntensity = color.w * opacities[0];
+      outlineIntensity = haloColor.w * opacities[0];
       fillIntensity = color.w * opacities[2];
     }
 
@@ -57,6 +58,6 @@ void main() {
 
     // Blending equation: gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     // I.e., color should not be premultiplied with alpha
-    gl_FragColor = vec4(color.xyz, intensity);
+    gl_FragColor = vec4(mix(haloColor.rgb, color.rgb, fillFactor), intensity);
   #endif
 }

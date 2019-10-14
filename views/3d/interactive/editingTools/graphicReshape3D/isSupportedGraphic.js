@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/maybe"],function(e,o,r){function t(e){return r.isSome(e)&&("polygon"===e.type||"polyline"===e.type)}function n(e){return t(e.geometry)}Object.defineProperty(o,"__esModule",{value:!0}),o.isSupportedGeometry=t,o.isSupportedGraphic=n});

@@ -8,22 +8,28 @@ attribute vec2 a_vertexOffset; // 2 * 2 // (2 x signed 16) offset from the ancho
 attribute vec4 a_texFontSize;  // 4 (4 x unsigned byte) texture coordinatesm and font size
 attribute vec4 a_aux;          // additional information, such as a bitset on the last byte (a_aux.w)
 
+float getTextSize(inout vec2 offset, in float baseSize, in float referenceSize) {
+#ifdef VV_SIZE
+   float ratio = baseSize / referenceSize;
+   baseSize = ratio * getSize(baseSize);
+#endif
+  return baseSize;
+}
 
 void main()
 {
   INIT;
-  
+
   float a_bitSet    = a_aux.w;
   float a_fontSize  = a_texFontSize.z;
   vec2  a_offset    = a_vertexOffset * OFFSET_PRECISION;
   float a_isHalo    = getBit(a_pos.x, 0);          // First bit denotes halo
-  vec3  in_pos      = vec3(floor(a_pos * 0.5), 1.0); 
-
-  float fontSize    = getSize(a_fontSize);
-  float scaleFactor = fontSize / a_fontSize; 
+  vec3  in_pos      = vec3(floor(a_pos * 0.5), 1.0);
+  float fontSize    = getTextSize(a_offset, a_fontSize, a_aux.z * a_aux.z / 256.0);
+  float scaleFactor = fontSize / a_fontSize;
   float fontScale   = fontSize / SDF_FONT_SIZE;
-  vec3  offset      = getRotation() * vec3(scaleFactor * a_offset, 0.0); 
-  
+  vec3  offset      = getRotation() * vec3(scaleFactor * a_offset, 0.0);
+
   v_color   = a_isHalo * a_color + (1.0 - a_isHalo) * getColor(a_color, a_bitSet, 0);
   v_opacity = getOpacity(a_bitSet, 0);
   v_id      = norm(a_id);

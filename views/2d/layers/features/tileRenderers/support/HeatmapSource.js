@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../../renderers/support/heatmapUtils"],function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(){this.gradient=null,this.height=512,this.width=512}return e.prototype.render=function(e){i.drawHeatmap(e,512,this.intensities,this.gradient,this.minPixelIntensity,this.maxPixelIntensity)},e}();t.HeatmapSource=n});

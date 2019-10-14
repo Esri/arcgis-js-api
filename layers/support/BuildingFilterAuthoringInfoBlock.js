@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Collection","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterAuthoringInfoType"],function(e,r,o,t,n,p,i,l,c){var s=n.ofType(c);return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}o(r,e),n=r,r.prototype.clone=function(){return new n({filterTypes:i.clone(this.filterTypes)})};var n;return t([l.property({type:s,json:{write:!0}})],r.prototype,"filterTypes",void 0),r=n=t([l.subclass("esri.layers.support.BuildingFilterAuthoringInfoBlock")],r)}(l.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Collection","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterAuthoringInfoType"],function(e,r,o,t,p,n,i,l,c){var u=p.ofType(c);return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}o(r,e),p=r,r.prototype.clone=function(){return new p({filterTypes:i.clone(this.filterTypes)})};var p;return t([l.property({type:u,json:{write:!0}})],r.prototype,"filterTypes",void 0),r=p=t([l.subclass("esri.layers.support.BuildingFilterAuthoringInfoBlock")],r)}(l.declared(n.JSONSupport))});

@@ -21,12 +21,12 @@
     "primitive": {
       "type": "string",
       "enum": [
-        "sphere",
-        "cylinder",
-        "cube",
         "cone",
-        "invertedCone",
+        "cube",
+        "cylinder",
         "diamond",
+        "invertedCone",
+        "sphere",
         "tetrahedron"
       ]
     }

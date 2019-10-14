@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Çizim",move:"Taşı",pan:"Kaydır",reset:"Sıfırla",reshape:"Yeniden Şekillendir",rotate:"Döndür",scale:"Ölçeklendir",transform:"Dönüşüm",undo:"Geri Al",redo:"Yinele",drawPoint:"Bir nokta çiz",drawPolygon:"Bir alan çiz",drawPolyline:"Bir çoklu çizgi çiz",drawMultipoint:"Bir çoklu nokta çiz",drawCircle:"Bir daire çiz",drawRectangle:"Bir dikdörtgen çiz",clearDrawing:"Çizimi sil",completeDrawing:"Çizimi tamamla",pauseDrawing:"Çizimi duraklat",resumeDrawing:"Çizime devam et",updateDrawing:"Çizimi güncelle",addPointTooltip:"Nokta eklemek için tıklayın",removePointTooltip:"Bu noktayı kaldırmak için tıklayın",completePolygonTooltip:"Bitirmek için bu noktaya tıklayın",startDrawingTooltip:"Çizmeye başlamak için tıklayın",continueDrawingTooltip:"Çizmeye devam etmek için tıklayın",completeDrawingTooltip:"Tamamlamak için çift tıklayın",addMultipointTooltip:"Nokta eklemeye başlamak için tıklayın",finishMultipointTooltip:"Bitirmek için çift tıklayın",addFreehandTooltip:"Başlatmak için basın ve bitirmek için bırakın",addShapeTooltip:"Şekil eklemek için tıklayın veya başlatmak için basın ve bitirmek için bırakın",featureCount:"{count} Detay",featuresCount:"{count} Detay",vertexCount:"{count} Verteks",verticesCount:"{count} Vertis",deleteFeature:"Detayı sil",deleteVertex:"Düğüm noktasını sil",duplicate:"Çoğalt"});

@@ -21,6 +21,10 @@
  *   labelsVisible: true,
  *   rangeLabelsVisible: true
  * });
+ *
+ * @see [Slider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slider.tsx)
+ * @see [Slider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Slider.scss)
+ * @see module:esri/widgets/Slider/SliderViewModel
  */
 
 /// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
@@ -34,8 +38,8 @@ import * as i18n from "dojo/i18n!esri/widgets/Slider/nls/Slider";
 import { substitute } from "esri/intl";
 
 // esri.core
-import Evented = require("esri/core/Evented");
 import { eventKey } from "esri/core/events";
+import Logger = require("esri/core/Logger");
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
@@ -44,11 +48,15 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 // esri.core.libs.pep
 import PEP = require("esri/core/libs/pep/pep");
 
+// esri.libs.resize-observer
+import ResizeObserver = require("esri/libs/resize-observer/ResizeObserver");
+
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Slider
 import {
+  Bounds,
   LabelInfos,
   SegmentDragEvent,
   TickConfig,
@@ -61,11 +69,17 @@ import {
 import SliderViewModel = require("esri/widgets/Slider/SliderViewModel");
 
 // esri.widgets.support
-import { LabelFormatFunction, VNode } from "esri/widgets/support/interfaces";
+import {
+  LabelFormatFunction,
+  VNode,
+  InputParseFunction,
+  InputFormatFunction
+} from "esri/widgets/support/interfaces";
 import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-slider",
+  reversed: "esri-slider--reversed",
   horizontalLayout: "esri-slider--horizontal",
   verticalLayout: "esri-slider--vertical",
 
@@ -86,6 +100,7 @@ const CSS = {
   // handle classes
   anchorElement: "esri-slider__anchor",
   movingAnchorElement: "esri-slider__anchor--moving",
+  lastMovedAnchorElement: "esri-slider__anchor--moved",
   anchorElementIndexPrefix: "esri-slider__anchor-",
   segmentElement: "esri-slider__segment",
   segmentElementIndexPrefix: "esri-slider__segment-",
@@ -98,7 +113,8 @@ const CSS = {
   // common
   esriWidget: "esri-widget",
   widgetIcon: "esri-icon-edit",
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  hidden: "esri-hidden"
 };
 
 const KEYS = {
@@ -114,7 +130,10 @@ const KEYS = {
   moveAnchorToMin: "Home"
 };
 
-type Layout = "vertical" | "horizontal";
+const declaredClass = "esri.widgets.Slider";
+const logger = Logger.getLogger(declaredClass);
+
+type Layout = "vertical" | "vertical-reversed" | "horizontal" | "horizontal-reversed";
 
 type State = "disabled" | "ready" | "dragging" | "editing";
 
@@ -126,12 +145,20 @@ interface DragStartInfo {
 }
 
 interface SegmentDragStartInfo {
+  cursorPosition: number;
   index: number;
-  thumbIndices: [number, number];
-  clientX: number;
-  clientY: number;
-  minPosition: number;
-  maxPosition: number;
+  details: SegmentDetails;
+}
+
+interface SegmentDetails {
+  min: AnchorDetails;
+  max: AnchorDetails;
+}
+
+interface AnchorDetails {
+  index: number;
+  position: number;
+  value: number;
 }
 
 interface SliderEvents {
@@ -144,10 +171,8 @@ interface SliderEvents {
   "values-change": ValuesChangeEvent;
 }
 
-interface Slider extends Evented.IEvented<SliderEvents> {}
-
-@subclass("esri.widgets.Slider")
-class Slider extends declared(Widget, Evented) {
+@subclass(declaredClass)
+class Slider extends declared(Widget)<SliderEvents> {
   //-----------------------------------------------------------s---------------
   //
   //  Lifecycle
@@ -182,16 +207,13 @@ class Slider extends declared(Widget, Evented) {
    * @event module:esri/widgets/Slider#segment-drag
    *
    * @property {number} index - The 1-based index of the segment in the slider.
-   * @property {string} state - The state of the drag.
-   *
-   * **Possible Values:** start | drag
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `segment-drag`.
+   * @property {"start" | "drag"} state - The state of the drag.
+   * @property {"segment-drag"} type - The type of the event. For this event, the type is always `segment-drag`.
    * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
    */
 
   /**
-   * Fires when a user changes the value of a thumb via keyboard editing of the label on the slider.
+   * Fires when a user changes the value of a thumb via the arrow keys or by keyboard editing of the label on the slider.
    *
    * @event module:esri/widgets/Slider#thumb-change
    *
@@ -207,11 +229,8 @@ class Slider extends declared(Widget, Evented) {
    * @event module:esri/widgets/Slider#thumb-drag
    *
    * @property {number} index - The 0-based index of the updated thumb.
-   * @property {string} state - The state of the drag.
-   *
-   * **Possible Values:** drag | start | stop
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-drag`.
+   * @property {"drag" | "start" | "stop"} state - The state of the drag.
+   * @property {"thumb-drag"} type - The type of the event. For this event, the type is always `thumb-drag`.
    * @property {number} value - The value of the thumb when the event is emitted.
    */
 
@@ -224,6 +243,7 @@ class Slider extends declared(Widget, Evented) {
    * @property {number} oldValue - The former value of the thumb before the change was made.
    * @property {string} type - The type of the event. For this event, the type is always `value-change`.
    * @property {number} value - The value of the thumb when the event is emitted.
+   * @deprecated since version 4.13.
    */
 
   /**
@@ -235,6 +255,7 @@ class Slider extends declared(Widget, Evented) {
    * @property {number[]} oldValues - The former values of the thumbs before the changes were made.
    * @property {string} type - The type of the event. For this event, the type is always `values-change`.
    * @property {number[]} values - The values of the thumbs when the event is emitted.
+   * @deprecated since version 4.13.
    */
 
   /**
@@ -255,6 +276,8 @@ class Slider extends declared(Widget, Evented) {
    */
   constructor(params?: any) {
     super();
+
+    this._observer = new ResizeObserver(() => this.scheduleRender());
 
     this._onAnchorPointerDown = this._onAnchorPointerDown.bind(this);
     this._onAnchorPointerMove = this._onAnchorPointerMove.bind(this);
@@ -280,6 +303,8 @@ class Slider extends declared(Widget, Evented) {
 
   private _anchorElements: HTMLElement[] = null;
 
+  private _baseNode: HTMLElement = null;
+
   private _dragged: boolean = false;
 
   private _dragStartInfo: DragStartInfo = null;
@@ -291,6 +316,12 @@ class Slider extends declared(Widget, Evented) {
   private _isMaxInputActive: boolean = false;
 
   private _labelElements: HTMLElement[] = [];
+
+  private _lastMovedHandleIndex: number = null;
+
+  private _observer: ResizeObserver = null;
+
+  private _positionPrecision: number = 5;
 
   private _segmentDragStartInfo: SegmentDragStartInfo = null;
 
@@ -304,11 +335,32 @@ class Slider extends declared(Widget, Evented) {
 
   private _trackWidth: number = null;
 
+  private _zIndices: number[] = null;
+
+  private _zIndexOffset = 3;
+
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  disabled
+  //----------------------------------
+
+  /**
+   * When `true`, sets the slider to a disabled state so the user cannot interact
+   * with it.
+   *
+   * @name disabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   */
+  @property()
+  @renderable()
+  disabled = false;
 
   //----------------------------------
   //  extraNodes
@@ -405,6 +457,109 @@ class Slider extends declared(Widget, Evented) {
   @aliasOf("viewModel.labelFormatFunction") labelFormatFunction: LabelFormatFunction = null;
 
   //----------------------------------
+  //  inputFormatFunction
+  //----------------------------------
+
+  /**
+   * A function used to format user inputs. As opposed to [labelFormatFunction](#labelFormatFunction), which formats
+   * thumb labels, the `inputFormatFunction` formats thumb values in the input element when the user begins
+   * to edit them.
+   *
+   * The image below demonstrates how slider input values resemble corresponding slider values by default
+   * and won't match the formatting set in `labelFormatFunction`.
+   *
+   * ![Slider without input formatter](../../assets/img/apiref/widgets/sliders/slider-no-input-formatter.png "Slider without input formatter")
+   *
+   * If you want to format slider input values so they match thumb labels, you can pass the same function set in `labelFormatFunction` to
+   * `inputFormatFunction` for consistent formatting.
+   *
+   * ![Slider with input formatter](../../assets/img/apiref/widgets/sliders/slider-input-formatter.png "Slider with input formatter")
+   *
+   * However, if an `inputFormatFunction` is specified, you must also write a corresponding
+   * [inputParseFunction](#inputParseFunction) to parse user inputs to understandable slider values. In most cases, if
+   * you specify an `inputFormatFunction`, you should set the [labelFormatFunction](#labelFormatFunction) to the same value
+   * for consistency between labels and inputs.
+   *
+   * This property overrides the default input formatter, which formats by calling `toString()` on the input value.
+   *
+   * @name inputFormatFunction
+   * @instance
+   * @type {module:esri/widgets/Slider~LabelFormatter}
+   * @see [inputParseFunction](#inputParseFunction)
+   *
+   * @example
+   * // Formats the slider input to abbreviated numbers with units
+   * // e.g. a thumb at position 1500 will render with an input label of 1.5k
+   * slider.inputFormatFunction = function(value, type){
+   *   if(value >= 1000000){
+   *     return (value / 1000000).toPrecision(3) + "m"
+   *   }
+   *   if(value >= 100000){
+   *     return (value / 1000).toPrecision(3) + "k"
+   *   }
+   *   if(value >= 1000){
+   *     return (value / 1000).toPrecision(2) + "k"
+   *   }
+   *   return value.toFixed(0);
+   * }
+   */
+  @aliasOf("viewModel.inputFormatFunction") inputFormatFunction: InputFormatFunction = null;
+
+  /**
+   * Function definition for the
+   * [inputParseFunction](#inputParseFunction) property. It fires
+   * each time the user modifies slider input by key entry.
+   *
+   * @callback module:esri/widgets/Slider~InputParser
+   *
+   * @param {string} value - The formatted input value of the thumb to be parsed.
+   * @param {string} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
+   * @param {number} [index] - The index of the thumb (or [value](#values)).
+   *
+   * @return {number} The parsed number value of the thumb.
+   */
+
+  //----------------------------------
+  //  inputParseFunction
+  //----------------------------------
+
+  /**
+   * Function used to parse slider inputs formatted by the [inputFormatFunction](#inputFormatFunction).
+   * This property must be set if an `inputFormatFunction` is set. Otherwise the slider values will
+   * likely not update to their expected positions.
+   *
+   * Overrides the default input parses, which is a parsed floating point number.
+   *
+   * @name inputParseFunction
+   * @instance
+   * @type {module:esri/widgets/Slider~InputParser}
+   * @see [inputFormatFunction](#inputFormatFunction)
+   *
+   * @example
+   * // Parses the slider input (a string value) to a number value understandable to the slider
+   * // This assumes the slider was already configured with an inputFormatFunction
+   * // For example, if the input is 1.5k this function will parse
+   * // it to a value of 1500
+   * slider.inputParseFunction = function(value, type, index){
+   *   var charLength = value.length;
+   *   var valuePrefix = parseFloat(value.substring(0,charLength-1));
+   *   var finalChar = value.substring(charLength-1);
+   *
+   *   if(parseFloat(finalChar) >= 0){
+   *     return parseFloat(value);
+   *   }
+   *   if(finalChar === "k"){
+   *     return valuePrefix * 1000;
+   *   }
+   *   if(finalChar === "m"){
+   *     return valuePrefix * 1000000;
+   *   }
+   *   return value;
+   * }
+   */
+  @aliasOf("viewModel.inputParseFunction") inputParseFunction: InputParseFunction = null;
+
+  //----------------------------------
   //  labelInputsEnabled
   //----------------------------------
 
@@ -468,13 +623,38 @@ class Slider extends declared(Widget, Evented) {
   //----------------------------------
 
   /**
-   * Determines the layout/orientation of the Slider widget.
+   * Determines the layout/orientation of the Slider widget. By default, the slider
+   * will render horizontally with the min value on the left side of the track. The
+   * possible values are described below.
    *
-   * **Possible Values:** vertical | horizontal
+   * **`horizontal`**
+   *
+   * ![Slider horizontal not reversed](../../assets/img/apiref/widgets/sliders/slider-horizontal-not-reversed.png "default horizontal slider")
+   *
+   * **`horizontal-reversed`**
+   *
+   * When the slider is set to `horizontal-reversed`, the max value will render on the
+   * left side and the min on the right.
+   *
+   * ![Slider horizontal reversed](../../assets/img/apiref/widgets/sliders/slider-horizontal-reversed.png "reversed horizontal slider")
+   *
+   * **`vertical`**
+   *
+   * When the slider is set to `vertical`, the max value will render on the
+   * top of the track and the min on the bottom.
+   *
+   * ![Slider vertical not reversed](../../assets/img/apiref/widgets/sliders/slider-vertical-not-reversed.png "default vertical slider")
+   *
+   * **`vertical-reversed`**
+   *
+   * When the slider is set to `vertical-reversed`, the max value will render on the
+   * bottom of the track and the min on the top.
+   *
+   * ![Slider vertical reversed](../../assets/img/apiref/widgets/sliders/slider-vertical-reversed.png "reversed vertical slider")
    *
    * @name layout
    * @instance
-   * @type {string}
+   * @type {"horizontal" | "horizontal-reversed" | "vertical" | "vertical-reversed" }
    * @default horizontal
    * @example
    * slider.layout = "vertical";
@@ -482,7 +662,14 @@ class Slider extends declared(Widget, Evented) {
   @property({ value: "horizontal" })
   @renderable()
   set layout(value: Layout) {
-    if (value !== "vertical") {
+    const layouts: Layout[] = [
+      "vertical",
+      "vertical-reversed",
+      "horizontal",
+      "horizontal-reversed"
+    ];
+
+    if (layouts.indexOf(value) === -1) {
       value = "horizontal";
     }
 
@@ -665,17 +852,16 @@ class Slider extends declared(Widget, Evented) {
   /**
    * The current state of the widget.
    *
-   * **Possible Values:** ready | disabled | editing | dragging
-   *
    * @name state
    * @instance
-   * @type {string}
+   * @type {"ready" | "disabled" | "editing" | "dragging"}
    * @readonly
    */
   @property({
     dependsOn: ["viewModel.state"],
     readOnly: true
   })
+  @renderable()
   get state(): State {
     const {
       _activeLabelInputIndex,
@@ -724,6 +910,7 @@ class Slider extends declared(Widget, Evented) {
    */
 
   @property()
+  @renderable()
   steps: number | number[] = null;
 
   /**
@@ -732,7 +919,7 @@ class Slider extends declared(Widget, Evented) {
    *
    * @callback module:esri/widgets/Slider~ThumbCreatedFunction
    *
-   * @param {number} index - The index of the thumb.
+   * @param {number} index - The index of the thumb when the Slider was constructed.
    * @param {number} value - The value of the slider where the thumb is rendered.
    * @param {HTMLElement} thumbElement - The HTMLElement representing the thumb. You can add or modify the default style of individual
    *   thumbs by adding CSS classes to this element. You can also add custom behavior to thumbs by attaching
@@ -741,6 +928,30 @@ class Slider extends declared(Widget, Evented) {
    *   style of the thumb's labels by adding CSS classes to this element. You can also add custom behavior to thumb labels by attaching
    *   event listeners to individual elements.
    */
+
+  //----------------------------------
+  //  thumbsConstrained
+  //----------------------------------
+
+  /**
+   * When `false`, the user can freely move any slider thumb to any
+   * position along the track. By default, a
+   * thumb's position is constrained to the positions of neighboring thumbs so
+   * you cannot move one thumb past another. Set this property to `false` to
+   * disable this constraining behavior.
+   *
+   * @name thumbsConstrained
+   * @instance
+   * @type {boolean}
+   * @default true
+   *
+   * @example
+   * // allows the user to freely move slider
+   * // thumbs to any position along the track
+   * slider.thumbsConstrained = false;
+   */
+  @aliasOf("viewModel.thumbsConstrained")
+  thumbsConstrained = true;
 
   //----------------------------------
   //  thumbCreatedFunction
@@ -787,7 +998,7 @@ class Slider extends declared(Widget, Evented) {
    *
    * @typedef module:esri/widgets/Slider~TickConfig
    *
-   * @property {string} mode - The mode or method of positioning ticks along the slider track. See the table below for a list of possible values.
+   * @property {"count" | "percent" | "position"} mode - The mode or method of positioning ticks along the slider track. See the table below for a list of possible values.
    *
    * Possible Value | Description
    * ---------------|------------
@@ -963,7 +1174,9 @@ class Slider extends declared(Widget, Evented) {
    *   }
    * }];
    */
-  @property() tickConfigs: TickConfig[] = null;
+  @property()
+  @renderable()
+  tickConfigs: TickConfig[] = null;
 
   //----------------------------------
   //  trackElement
@@ -1026,6 +1239,7 @@ class Slider extends declared(Widget, Evented) {
    */
   @property()
   @renderable([
+    "viewModel.thumbsConstrained",
     "viewModel.max",
     "viewModel.min",
     "viewModel.precision",
@@ -1042,24 +1256,38 @@ class Slider extends declared(Widget, Evented) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const { label, layout, state, trackElement } = this;
+    const { label } = this;
     const baseClasses = this.classes(
       CSS.base,
       CSS.esriWidget,
-      layout === "horizontal" ? CSS.horizontalLayout : CSS.verticalLayout,
-      state === "disabled" ? CSS.disabled : null
+      this._isHorizontalLayout() ? CSS.horizontalLayout : CSS.verticalLayout,
+      this._isReversedLayout() ? CSS.reversed : null,
+      this._isDisabled() ? CSS.disabled : null
     );
 
-    if (trackElement) {
-      this._trackHeight = trackElement.offsetHeight;
-      this._trackWidth = trackElement.offsetWidth;
-    }
+    // Update references used to calculate position of anchors and ticks
+    // Requires 'trackElement' to already be rendered at least once
+    this._storeTrackDimensions();
 
     return (
-      <div aria-label={label} class={baseClasses} touch-action={"none"}>
-        {state !== "disabled" ? this.renderContent() : null}
+      <div
+        afterCreate={this._afterBaseNodeCreate}
+        bind={this}
+        aria-label={label}
+        class={baseClasses}
+        touch-action={"none"}
+      >
+        {this.renderContent()}
       </div>
     );
+  }
+
+  toNextStep(index: number): void {
+    this._toStep(index, 1);
+  }
+
+  toPreviousStep(index: number): void {
+    this._toStep(index, -1);
   }
 
   //--------------------------------------------------------------------------
@@ -1069,16 +1297,16 @@ class Slider extends declared(Widget, Evented) {
   //--------------------------------------------------------------------------
 
   protected renderContent(): VNode {
-    if (this.rangeLabelsVisible) {
-      return [this.renderMin(), this.renderSliderContainer(), this.renderMax()];
-    }
-
-    return this.renderSliderContainer();
+    return [this.renderMin(), this.renderSliderContainer(), this.renderMax()];
   }
 
   protected renderSliderContainer(): VNode {
+    if (!isSome(this.min) || !isSome(this.max)) {
+      return undefined;
+    }
+
     return (
-      <div bind={this} class={CSS.contentElement}>
+      <div key="slider-container" bind={this} class={CSS.contentElement}>
         {this.renderTrackElement()}
         {this.renderTicksContainer()}
         {this.renderExtraContentElements()}
@@ -1103,7 +1331,7 @@ class Slider extends declared(Widget, Evented) {
 
   protected renderSegmentElements(): VNode {
     if (!this.trackElement || !this.values || !this.values.length) {
-      return;
+      return undefined;
     }
 
     this._segmentElements = [];
@@ -1118,31 +1346,49 @@ class Slider extends declared(Widget, Evented) {
   }
 
   protected renderSegmentElement(index: number): VNode {
-    const { _trackHeight, _trackWidth, draggableSegmentsEnabled, layout, values } = this;
-    const isHorizontal = layout === "horizontal";
+    const { _trackHeight, _trackWidth, draggableSegmentsEnabled, state, values } = this;
+    const isHorizontal = this._isHorizontalLayout();
     const trackMax = isHorizontal ? _trackWidth : _trackHeight;
 
     // Information about surrounding thumb(s)
     const maxThumbIndex = index === values.length ? null : index;
-    const hasMaxThumb = isSome(maxThumbIndex);
     const minThumbIndex = index === 0 ? null : index - 1;
+    const hasMaxThumb = isSome(maxThumbIndex);
     const hasMinThumb = isSome(minThumbIndex);
+    let max, min;
+
+    // Sort values
+    // True order of values overcomplicates this workflow
+    const sortedValues = [...values].sort((n1, n2) => n1 - n2);
 
     // Get bounds of segment
     // Depending on layout, 'max' has a different meaning (top vs left)
-    const max = hasMaxThumb
-      ? this._calculatePositionFromValue(values[maxThumbIndex])
-      : isHorizontal
-      ? trackMax
-      : 0;
-    const min = hasMinThumb
-      ? this._calculatePositionFromValue(values[minThumbIndex])
-      : isHorizontal
-      ? 0
-      : trackMax;
+    if (this._isReversedLayout()) {
+      max = hasMinThumb
+        ? this._positionFromValue(sortedValues[minThumbIndex])
+        : isHorizontal
+        ? trackMax
+        : 0;
+      min = hasMaxThumb
+        ? this._positionFromValue(sortedValues[maxThumbIndex])
+        : isHorizontal
+        ? 0
+        : trackMax;
+    } else {
+      max = hasMaxThumb
+        ? this._positionFromValue(sortedValues[maxThumbIndex])
+        : isHorizontal
+        ? trackMax
+        : 0;
+      min = hasMinThumb
+        ? this._positionFromValue(sortedValues[minThumbIndex])
+        : isHorizontal
+        ? 0
+        : trackMax;
+    }
 
     // Calculate 'length' (as a percent) and scale of segment relative to the primary axis
-    const percentage = parseFloat(((min * 100) / trackMax).toFixed(5));
+    const percentage = this._applyPrecisionToPosition((min * 100) / trackMax);
     const scale = (max - min) / trackMax;
     const style = isHorizontal
       ? `transform: translate(${percentage}%, 0px) scale(${scale}, 1);`
@@ -1151,7 +1397,9 @@ class Slider extends declared(Widget, Evented) {
     const segmentClasses = this.classes(
       CSS.segmentElement,
       CSS.segmentElementIndexPrefix + index,
-      draggableSegmentsEnabled && hasMaxThumb && hasMinThumb ? CSS.segmentElementInteractive : null
+      draggableSegmentsEnabled && hasMaxThumb && hasMinThumb && state !== "disabled"
+        ? CSS.segmentElementInteractive
+        : null
     );
 
     return (
@@ -1171,11 +1419,27 @@ class Slider extends declared(Widget, Evented) {
   protected renderAnchorElements(): VNode {
     const { trackElement, values } = this;
 
+    if (!values || !values.length) {
+      return undefined;
+    }
+
     // Remove all current elements from the reference properties
     // Ensures anchor positions are always up-to-date after a visibility change
     this._anchorElements = [];
     this._thumbElements = [];
     this._labelElements = [];
+
+    // (#8319, #21529, #22693) Calculate and store z-indices
+    // This prevents issues with handles getting stuck at the slider ends
+    // Handles in the first 50% of the slider have a higher index
+    this._zIndices = values.map((value, index) => {
+      const position = this._positionFromValue(value);
+      const percent = this._positionToPercent(position);
+      const greaterThan = this._isHorizontalLayout() ? percent > 50 : percent < 50;
+      const direction = greaterThan ? -1 : 1;
+
+      return this._zIndexOffset + (values.length + direction * index);
+    });
 
     return trackElement && values && values.length
       ? values.map((value, index) => this.renderAnchorElement(value, index))
@@ -1183,25 +1447,27 @@ class Slider extends declared(Widget, Evented) {
   }
 
   protected renderAnchorElement(value: number, index: number): VNode {
-    const position = this._calculatePositionFromValue(value);
-    const testValue = this._calculateValueFromPosition(position);
+    const position = this._positionFromValue(value);
+    const testValue = this._valueFromPosition(position);
 
     if (!isSome(testValue) || isNaN(testValue)) {
-      return;
+      return undefined;
     }
 
-    const { _dragStartInfo, id, labelsVisible, layout, values } = this;
+    const { _dragStartInfo, _lastMovedHandleIndex, id, labelsVisible, layout, values } = this;
     const isDragging = _dragStartInfo && _dragStartInfo.index === index;
+    const lastMoved = _lastMovedHandleIndex === index;
 
     const classes = this.classes(
       CSS.anchorElement,
       CSS.anchorElementIndexPrefix + index,
-      isDragging ? CSS.movingAnchorElement : null
+      isDragging ? CSS.movingAnchorElement : null,
+      lastMoved ? CSS.lastMovedAnchorElement : null
     );
 
     const label = this.labels.values[index];
-    const style = this._calculatePositionStyleForElement(value);
-    const [max, min] = this._calculateValueBoundsForAnchor(index);
+    const style = this._getStyleForAnchor(value, index, isDragging || lastMoved);
+    const { min, max } = this.viewModel.getBoundsForValueAtIndex(index);
 
     const ariaValueText =
       values.length === 2
@@ -1249,27 +1515,29 @@ class Slider extends declared(Widget, Evented) {
           data-thumb-index={index}
           touch-action={"none"}
         />
-        {labelsVisible ? this.renderThumbLabel(index) : null}
+        {this.renderThumbLabel(index)}
       </div>
     );
   }
 
   protected renderThumbLabel(index: number): VNode {
-    const { id, labels } = this;
+    const { id, labels, labelInputsEnabled, labelsVisible, state } = this;
     const label = labels.values[index];
     const classes = this.classes(
       CSS.labelElement,
-      this.labelInputsEnabled ? CSS.labelElementInteractive : null
+      !labelsVisible ? CSS.hidden : null,
+      labelInputsEnabled && state !== "disabled" ? CSS.labelElementInteractive : null
     );
 
     return (
       <span
         afterCreate={this._afterLabelCreate}
+        aria-hidden={!labelsVisible}
         bind={this}
         class={classes}
         data-thumb-index={index}
         id={`${id}-label-${index}`}
-        role={this.labelInputsEnabled ? "button" : null}
+        role={labelInputsEnabled ? "button" : null}
         touch-action={"none"}
       >
         {this._activeLabelInputIndex === index ? this.renderValueInput(index) : label}
@@ -1289,7 +1557,7 @@ class Slider extends declared(Widget, Evented) {
         required={true}
         tabIndex={0}
         type={"text"}
-        value={value.toString()}
+        value={this._formatInputValue(value, "value", index)}
         onblur={this._onLabelInputBlur}
         onkeydown={this._onInputKeyDown}
       />
@@ -1297,20 +1565,22 @@ class Slider extends declared(Widget, Evented) {
   }
 
   protected renderMax(): VNode {
-    const { _isMaxInputActive, labels } = this;
+    const { _isMaxInputActive, labels, rangeLabelInputsEnabled, rangeLabelsVisible, state } = this;
     const classes = this.classes(
       CSS.maxElement,
-      this.rangeLabelInputsEnabled ? CSS.maxElementInteractive : null
+      !rangeLabelsVisible ? CSS.hidden : null,
+      rangeLabelInputsEnabled && state !== "disabled" ? CSS.maxElementInteractive : null
     );
 
     return (
       <div
+        aria-hidden={!rangeLabelsVisible}
         bind={this}
         class={classes}
         onclick={this._onMaxLabelClick}
         onkeydown={this._onMaxLabelKeyDown}
-        role={this.rangeLabelInputsEnabled ? "button" : null}
-        tabIndex={this.rangeLabelInputsEnabled ? 0 : null}
+        role={rangeLabelInputsEnabled ? "button" : null}
+        tabIndex={rangeLabelInputsEnabled ? 0 : null}
       >
         {_isMaxInputActive ? this.renderMaxInput() : labels.max}
       </div>
@@ -1318,20 +1588,22 @@ class Slider extends declared(Widget, Evented) {
   }
 
   protected renderMin(): VNode {
-    const { _isMinInputActive, labels } = this;
+    const { _isMinInputActive, labels, rangeLabelInputsEnabled, rangeLabelsVisible, state } = this;
     const classes = this.classes(
       CSS.minElement,
-      this.rangeLabelInputsEnabled ? CSS.minElementInteractive : null
+      !rangeLabelsVisible ? CSS.hidden : null,
+      rangeLabelInputsEnabled && state !== "disabled" ? CSS.minElementInteractive : null
     );
 
     return (
       <div
+        aria-hidden={!rangeLabelsVisible}
         bind={this}
         class={classes}
         onclick={this._onMinLabelClick}
         onkeydown={this._onMinLabelKeyDown}
-        role={this.rangeLabelInputsEnabled ? "button" : null}
-        tabIndex={this.rangeLabelInputsEnabled ? 0 : null}
+        role={rangeLabelInputsEnabled ? "button" : null}
+        tabIndex={rangeLabelInputsEnabled ? 0 : null}
       >
         {_isMinInputActive ? this.renderMinInput() : labels.min}
       </div>
@@ -1348,7 +1620,7 @@ class Slider extends declared(Widget, Evented) {
         required={true}
         tabIndex={0}
         type={"text"}
-        value={this.max.toString()}
+        value={this._formatInputValue(this.max, "max")}
         onblur={this._onMaxInputBlur}
         onkeydown={this._onInputKeyDown}
       />
@@ -1365,7 +1637,7 @@ class Slider extends declared(Widget, Evented) {
         required={true}
         tabIndex={0}
         type={"text"}
-        value={this.min.toString()}
+        value={this._formatInputValue(this.min, "min")}
         onblur={this._onMinInputBlur}
         onkeydown={this._onInputKeyDown}
       />
@@ -1381,8 +1653,12 @@ class Slider extends declared(Widget, Evented) {
   }
 
   protected renderTicksContainer(): VNode {
-    if (!this.tickConfigs || !this.trackElement) {
-      return;
+    if (
+      !this.tickConfigs ||
+      !this.trackElement ||
+      (this._trackHeight === 0 && this._trackWidth === 0)
+    ) {
+      return undefined;
     }
 
     return this.tickConfigs.map((config, index) => (
@@ -1409,7 +1685,7 @@ class Slider extends declared(Widget, Evented) {
       const { max, min } = this;
       const range = max - min;
       const percentValues = values.map((value) =>
-        parseFloat(((value / 100) * range + min).toFixed(5))
+        this._applyPrecisionToPosition((value / 100) * range + min)
       );
 
       return this._calculateTickPositions(percentValues).map((position, groupIndex) =>
@@ -1442,10 +1718,10 @@ class Slider extends declared(Widget, Evented) {
         ? Array.isArray(config.values)
           ? config.values[groupIndex]
           : config.values
-        : this._calculateValueFromPosition(position);
+        : this._valueFromPosition(position);
 
     if (!isSome(value) || isNaN(value)) {
-      return;
+      return undefined;
     }
 
     return (
@@ -1484,7 +1760,7 @@ class Slider extends declared(Widget, Evented) {
         data-tick-group-index={groupIndex}
         data-value={value}
         key={`tick-label-${groupIndex}`}
-        style={this._calculatePositionStyleForElement(value)}
+        style={this._getPositionStyleForElement(value)}
       />
     );
   }
@@ -1512,7 +1788,7 @@ class Slider extends declared(Widget, Evented) {
         data-tick-group-index={groupIndex}
         data-value={value}
         key={`tick-label-${groupIndex}`}
-        style={`transform: translate(-50%); ${this._calculatePositionStyleForElement(value)}`}
+        style={`transform: translate(-50%); ${this._getPositionStyleForElement(value)}`}
       >
         {label}
       </div>
@@ -1524,6 +1800,15 @@ class Slider extends declared(Widget, Evented) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _afterBaseNodeCreate(element: HTMLElement): void {
+    if (this._baseNode) {
+      this._observer.unobserve(this._baseNode);
+    }
+
+    this._baseNode = element;
+    this._observer.observe(this._baseNode);
+  }
 
   private _afterTrackCreate(element: HTMLElement): void {
     storeNode.call(this, element);
@@ -1632,22 +1917,25 @@ class Slider extends declared(Widget, Evented) {
   }
 
   //--------------------------------------------------------------------------
-  //  Event Handlers
+  //  Anchor Event Handlers
   //--------------------------------------------------------------------------
 
+  // Logic related to keyboard events when handle is focused
+  // - Anchors can be moved using 'Arrow' keys
+  // - Handle label inputs can be toggled with the 'Enter' key
   private _onAnchorKeyDown(event: KeyboardEvent): void {
     // Prevent action on this node if an input is active
-    if (this.state === "editing") {
+    if (this._isDisabled() || this.state === "editing") {
       return;
     }
 
     const { target } = event;
     const key = eventKey(event);
-    const { _anchorElements, layout, values } = this;
+    const { _anchorElements, values } = this;
     const index = (target as HTMLElement)["data-thumb-index"];
     const anchor = _anchorElements[index];
     const oldValue = values[index];
-    const isHorizontal = layout === "horizontal";
+    const isHorizontal = this._isHorizontalLayout();
     const MOVEMENT_KEYS = [
       KEYS.moveAnchorUp,
       KEYS.moveAnchorDown,
@@ -1668,21 +1956,38 @@ class Slider extends declared(Widget, Evented) {
     else if (MOVEMENT_KEYS.indexOf(key) > -1) {
       event.preventDefault();
 
-      const position = isHorizontal ? anchor.offsetLeft : anchor.offsetTop;
+      const { steps } = this;
       const direction = key === KEYS.moveAnchorUp || key === KEYS.moveAnchorRight ? 1 : -1;
-      const newPosition = this._calculatePositionAfterMovementKeyPress(index, position, direction);
 
-      // Automatically updates associated 'value'
-      this._setAnchorPosition(index, newPosition);
+      // Move anchor to nearest step based on index and provided direction
+      // Also depends on layout direction (reversed)
+      // Otherwise calculate the nearest position based on a single pixel
+      if (isSome(steps)) {
+        this._toStep(index, this._isReversedLayout() ? direction * -1 : direction);
+      } else {
+        const currentPosition = this._getPositionOfElement(anchor);
+        const pixelOffset = this._isHorizontalLayout() ? direction : direction * -1;
+        const newPosition = currentPosition + pixelOffset;
+        const finalPosition =
+          this.precision === 0
+            ? this._positionFromValue(this._valueFromPosition(newPosition) + pixelOffset)
+            : newPosition;
 
-      const value = values[index];
-      this._emitThumbChangeEvent({ index, oldValue, value });
+        this._toPosition(index, finalPosition);
+      }
+
+      const newValue = this.values[index];
+
+      if (oldValue !== newValue) {
+        this._emitValueChangeEvent({ index, oldValue, value: newValue });
+        this._emitThumbChangeEvent({ index, oldValue, value: newValue });
+      }
     }
     // Move anchor to 'minimum' or 'maximum' allowed value
     else if (key === KEYS.moveAnchorToMax || key === KEYS.moveAnchorToMin) {
       event.preventDefault();
 
-      const [max, min] = this._calculatePixelBoundsForAnchor(index);
+      const { min, max } = this._getAnchorBoundsInPixels(index);
       const newPosition = isHorizontal
         ? key === KEYS.moveAnchorToMax
           ? max
@@ -1691,203 +1996,27 @@ class Slider extends declared(Widget, Evented) {
         ? max
         : min;
 
-      // Automatically updates associated 'value'
-      this._setAnchorPosition(index, newPosition);
+      this._toPosition(index, newPosition);
 
-      const value = values[index];
-      this._emitThumbChangeEvent({ index, oldValue, value });
-    }
-  }
+      // Get updated value
+      const newValue = this.values[index];
 
-  private _onTrackPointerDown(event: PointerEvent): void {
-    const { _dragStartInfo, snapOnClickEnabled, state, values } = this;
-    const isInputOpenOrClickingOnHandle = state === "editing" || _dragStartInfo;
-
-    if (isInputOpenOrClickingOnHandle) {
-      return;
-    }
-
-    if (snapOnClickEnabled && values.length) {
-      const { layout, steps } = this;
-      const { clientX, clientY } = event;
-      const bounds = this.trackElement.getBoundingClientRect();
-      const x = event.clientX - bounds.left;
-      const y = event.clientY - bounds.top;
-
-      const cursorPosition = layout === "horizontal" ? x : y;
-      const value = this._calculateValueFromPosition(cursorPosition);
-      const index = this._getIndexOfNearestValue(value);
-
-      if (!isSome(index)) {
-        return;
+      if (oldValue !== newValue) {
+        this._emitValueChangeEvent({ index, oldValue, value: newValue });
+        this._emitThumbChangeEvent({ index, oldValue, value: newValue });
       }
-
-      // Initial, pre-drag value
-      const oldValue = values[index];
-
-      // Calculate the 'position' to store in _dragStartInfo
-      const position = isSome(steps)
-        ? this._calculateNearestStepPosition(cursorPosition)
-        : cursorPosition;
-
-      // Update current anchor position based on clicked location
-      this._setAnchorPosition(index, position);
-
-      // Handle already moved so need to reflect this in pointerup
-      this._dragged = true;
-      this._dragStartInfo = {
-        clientX,
-        clientY,
-        index,
-        position
-      };
-
-      // Causes anchor to be 'focused' on next render
-      this._focusedAnchorIndex = index;
-      this.notifyChange("state");
-
-      this._emitThumbDragEvent({
-        index,
-        state: "start",
-        value: oldValue
-      });
-
-      document.addEventListener("pointerup", this._onAnchorPointerUp);
-      document.addEventListener("pointermove", this._onAnchorPointerMove);
     }
   }
 
-  private _onSegmentPointerDown(event: PointerEvent): void {
-    const { _anchorElements, draggableSegmentsEnabled } = this;
-    const element = event.target as HTMLElement;
-    const index = element["data-segment-index"];
-    const maxThumbIndex = element["data-max-thumb-index"] as number;
-    const minThumbIndex = element["data-min-thumb-index"] as number;
-
-    if (draggableSegmentsEnabled && isSome(minThumbIndex) && isSome(maxThumbIndex)) {
-      // Prevents 'snap to tap' behavior when clicking on a segment between two handles
-      event.stopPropagation();
-
-      const thumbIndices: [number, number] = [minThumbIndex, maxThumbIndex];
-
-      // Store information about the segment
-      this._segmentDragStartInfo = {
-        index,
-        thumbIndices,
-        clientX: event.x,
-        clientY: event.y,
-        maxPosition: this._getAnchorPosition(_anchorElements[maxThumbIndex]),
-        minPosition: this._getAnchorPosition(_anchorElements[minThumbIndex])
-      };
-
-      // 'dragging'
-      this.notifyChange("state");
-      this._emitSegmentDragEvent({ index, state: "start", thumbIndices });
-
-      document.addEventListener("pointerup", this._onSegmentPointerUp);
-      document.addEventListener("pointermove", this._onSegmentPointerMove);
-    }
-  }
-
-  private _onSegmentPointerMove(event: PointerEvent): void {
-    if (!this._segmentDragStartInfo) {
-      return;
-    }
-
-    // Prevents selecting text labels on drag (i.e. min/max)
+  // Logic related to handle movement via interaction
+  // - Stores information about the target handle and wires up additional event listeners
+  private _onAnchorPointerDown(event: PointerEvent): void {
     event.preventDefault();
 
-    const {
-      layout,
-      _segmentDragStartInfo: {
-        clientX,
-        clientY,
-        index,
-        thumbIndices: [minThumbIndex, maxThumbIndex],
-        maxPosition,
-        minPosition
-      }
-    } = this;
-
-    // Track movement
-    this._dragged = true;
-
-    // Calculate boundaries for each handle
-    const movement = layout === "horizontal" ? event.clientX - clientX : event.clientY - clientY;
-    const newMaxPosition = maxPosition + movement;
-    const newMinPosition = minPosition + movement;
-    const maxBounds = this._calculatePixelBoundsForAnchor(maxThumbIndex);
-    const minBounds = this._calculatePixelBoundsForAnchor(minThumbIndex);
-
-    // Anchor must be within bounds
-    if (newMinPosition < minBounds[1]) {
-      this._setAnchorPositions(
-        [minThumbIndex, maxThumbIndex],
-        [minBounds[1], maxPosition - (minPosition - minBounds[1])]
-      );
+    if (this._isDisabled()) {
       return;
     }
 
-    // Anchor must be within bounds
-    if (newMaxPosition > maxBounds[0]) {
-      this._setAnchorPositions(
-        [minThumbIndex, maxThumbIndex],
-        [minPosition - (maxPosition - maxBounds[0]), maxBounds[0]]
-      );
-      return;
-    }
-
-    const { _anchorElements } = this;
-    const maxAnchor = _anchorElements[maxThumbIndex];
-    const minAnchor = _anchorElements[minThumbIndex];
-    const maxPos = this._getAnchorPosition(maxAnchor);
-    const minPos = this._getAnchorPosition(minAnchor);
-
-    // No changes
-    if (maxPos === newMaxPosition || minPos === newMinPosition) {
-      return;
-    }
-
-    const values = this.values;
-    const oldValues = [values[minThumbIndex], values[maxThumbIndex]];
-
-    this._setAnchorPositions([minThumbIndex, maxThumbIndex], [newMinPosition, newMaxPosition]);
-
-    const newValues = [values[minThumbIndex], values[maxThumbIndex]];
-    const valuesDidChange = !newValues.every((newValue, index) => newValue === oldValues[index]);
-
-    if (valuesDidChange) {
-      this._emitSegmentDragEvent({
-        index,
-        state: "drag",
-        thumbIndices: [minThumbIndex, maxThumbIndex]
-      });
-    }
-  }
-
-  private _onSegmentPointerUp(event: PointerEvent): void {
-    document.removeEventListener("pointerup", this._onSegmentPointerUp);
-    document.removeEventListener("pointermove", this._onSegmentPointerMove);
-
-    if (!this._segmentDragStartInfo) {
-      return;
-    }
-
-    const { index, thumbIndices } = this._segmentDragStartInfo;
-
-    this._dragged = false;
-    this._segmentDragStartInfo = null;
-    this.notifyChange("state");
-
-    this.scheduleRender();
-    this._emitSegmentDragEvent({
-      index,
-      state: "stop",
-      thumbIndices
-    });
-  }
-
-  private _onAnchorPointerDown(event: PointerEvent): void {
     const { target, clientX, clientY } = event;
     const index = (target as HTMLElement)["data-thumb-index"];
 
@@ -1896,23 +2025,27 @@ class Slider extends declared(Widget, Evented) {
       return;
     }
 
-    const anchor = this._anchorElements[index];
-    const { offsetTop: top, offsetLeft: left } = anchor;
+    this._anchorElements[index] && this._anchorElements[index].focus();
+
+    // Update references
+    this._storeTrackDimensions();
 
     this._dragStartInfo = {
       clientX,
       clientY,
       index,
-      position: this.layout === "horizontal" ? left : top
+      position: this._getPositionOfElement(this._anchorElements[index])
     };
 
     this.notifyChange("state");
-
     document.addEventListener("pointerup", this._onAnchorPointerUp);
     document.addEventListener("pointermove", this._onAnchorPointerMove);
   }
 
+  // Logic related to handle movement while dragging
   private _onAnchorPointerMove(event: PointerEvent): void {
+    event.preventDefault();
+
     // Prevent movement on this node if an input is active
     // Also allows text selection on the input
     if (this.state === "editing" || !this._dragStartInfo) {
@@ -1920,7 +2053,6 @@ class Slider extends declared(Widget, Evented) {
     }
 
     const {
-      layout,
       values,
       _anchorElements,
       _dragged,
@@ -1931,36 +2063,46 @@ class Slider extends declared(Widget, Evented) {
     const { clientX, clientY } = event;
     const state = _dragged ? "drag" : "start";
     const anchor = _anchorElements[index];
-    const currentPosition = this._getAnchorPosition(anchor);
-    const newPosition =
-      layout === "horizontal"
+
+    // Use current position and event coordinates to calculate new position
+    // New position must take 'precision' into account
+    const currentPosition = this._getPositionOfElement(anchor);
+    const newPosition = this._applyPrecisionToPosition(
+      this._isHorizontalLayout()
         ? position + clientX - _dragStartInfo.clientX
-        : position + clientY - _dragStartInfo.clientY;
+        : position + clientY - _dragStartInfo.clientY
+    );
 
     // No significant movement on relevant axis
     if (currentPosition === newPosition) {
       return;
     }
 
+    // Store old value for use in associated event
     const oldValue = values[index];
 
     // Track movement
     this._dragged = true;
 
     // Automatically updates associated 'value'
-    this._setAnchorPosition(index, newPosition);
+    this._toPosition(index, newPosition);
 
     // Use 'this' to get updated value
-    const value = this.values[index];
+    const newValue = this.values[index];
 
     if (!_dragged) {
       this._emitThumbDragEvent({ index, state, value: oldValue });
-    } else if (oldValue !== value) {
-      this._emitThumbDragEvent({ index, state, value });
+    } else if (oldValue !== newValue) {
+      this._emitValueChangeEvent({ index, oldValue, value: newValue });
+      this._emitThumbDragEvent({ index, state, value: newValue });
     }
   }
 
+  // Logic related to finished handle movement
+  // - Cleans up temporary variables and removes related event listeners
   private _onAnchorPointerUp(event: PointerEvent): void {
+    event.preventDefault();
+
     document.removeEventListener("pointerup", this._onAnchorPointerUp);
     document.removeEventListener("pointermove", this._onAnchorPointerMove);
 
@@ -1973,34 +2115,340 @@ class Slider extends declared(Widget, Evented) {
 
     this._dragged = false;
     this._dragStartInfo = null;
+    this._lastMovedHandleIndex = index;
 
     // Only update after thumb moves
     if (dragged) {
       this.notifyChange("state");
-      this.scheduleRender();
       this._emitThumbDragEvent({ index, state: "stop", value: this.values[index] });
     } else {
       this.scheduleRender();
     }
   }
 
+  //--------------------------------------------------------------------------
+  //  Track Event Handlers
+  //--------------------------------------------------------------------------
+
+  // Logic related to moving a handle when the track is targetted
+  // Moves the nearest handle to clicked location and initializes a drag operation
+  private _onTrackPointerDown(event: PointerEvent): void {
+    const { _dragStartInfo, snapOnClickEnabled, state, values } = this;
+
+    // widget/behavior is disabled, an input is open, a handle was targetted
+    if (
+      this._isDisabled() ||
+      state === "editing" ||
+      _dragStartInfo ||
+      !snapOnClickEnabled ||
+      !values.length
+    ) {
+      return;
+    }
+
+    const { steps } = this;
+    const { clientX, clientY } = event;
+
+    // Convert cursor position to raw value
+    // Use value to find the nearest anchor to move
+    const cursorPosition = this._getCursorPositionFromEvent(event);
+    const value = this._valueFromPosition(cursorPosition);
+    const index = this._getIndexOfNearestValue(value);
+
+    if (!isSome(index)) {
+      return;
+    }
+
+    // Initial, pre-drag value
+    const oldValue = values[index];
+
+    // Calculate the 'position' to store in _dragStartInfo
+    const position = isSome(steps)
+      ? this._calculateNearestStepPosition(cursorPosition)
+      : cursorPosition;
+
+    // Update current anchor position based on clicked location
+    this._toPosition(index, position);
+
+    // Handle already moved so need to reflect this in pointerup
+    this._dragged = true;
+    this._dragStartInfo = {
+      clientX,
+      clientY,
+      index,
+      position
+    };
+
+    // Causes anchor to be 'focused' on next render
+    this._focusedAnchorIndex = index;
+    this.notifyChange("state");
+
+    this._emitThumbDragEvent({
+      index,
+      state: "start",
+      value: oldValue
+    });
+
+    // Get updated value
+    const newValue = this.values[index];
+
+    if (oldValue !== newValue) {
+      this._emitThumbDragEvent({ index, state: "drag", value: newValue });
+      this._emitValueChangeEvent({ index, oldValue, value: newValue });
+    }
+
+    document.addEventListener("pointerup", this._onAnchorPointerUp);
+    document.addEventListener("pointermove", this._onAnchorPointerMove);
+  }
+
+  //--------------------------------------------------------------------------
+  //  Segment Event Handlers
+  //--------------------------------------------------------------------------
+
+  // Logic related to moving multiple handles via draggable segments
+  // - Stores information about the target handles and wires up additional event listeners
+  private _onSegmentPointerDown(event: PointerEvent): void {
+    event.preventDefault();
+
+    const { draggableSegmentsEnabled } = this;
+    const element = event.target as HTMLElement;
+    const index = element["data-segment-index"];
+    const minIndex = element["data-min-thumb-index"] as number;
+    const maxIndex = element["data-max-thumb-index"] as number;
+
+    if (this._isDisabled() || !draggableSegmentsEnabled || !isSome(minIndex) || !isSome(maxIndex)) {
+      return;
+    }
+
+    // Prevents 'snap to tap' behavior when clicking on a segment between two handles
+    event.stopPropagation();
+
+    // Update references
+    this._storeTrackDimensions();
+
+    // Store information about the segment
+    // Used to calculate new handle positions based on total changes
+    // Need to 'normalize' information about the
+    // ... handles depending on direction and layout
+    // This makes updating position of the handles conceptually easier
+    this._segmentDragStartInfo = {
+      cursorPosition: this._getCursorPositionFromEvent(event),
+      index,
+      details: this._normalizeSegmentDetails({
+        min: this._getAnchorDetails(minIndex),
+        max: this._getAnchorDetails(maxIndex)
+      })
+    };
+
+    // 'dragging'
+    this.notifyChange("state");
+    this._emitSegmentDragEvent({ index, state: "start", thumbIndices: [minIndex, maxIndex] });
+
+    document.addEventListener("pointerup", this._onSegmentPointerUp);
+    document.addEventListener("pointermove", this._onSegmentPointerMove);
+  }
+
+  // Logic related to movement of handles while dragging the segment
+  private _onSegmentPointerMove(event: PointerEvent): void {
+    if (!this._segmentDragStartInfo) {
+      return;
+    }
+
+    // Prevents selecting text labels on drag (i.e. min/max)
+    event.preventDefault();
+
+    const {
+      _trackHeight,
+      _trackWidth,
+      _segmentDragStartInfo: {
+        index,
+        cursorPosition,
+        details: { min: minDetails, max: maxDetails }
+      }
+    } = this;
+
+    const { index: minIndex, position: minPosition, value: minValue } = minDetails;
+    const { index: maxIndex, position: maxPosition, value: maxValue } = maxDetails;
+
+    // Track movement
+    this._dragged = true;
+
+    // Track total change using cursor movement
+    const newCursorPosition = this._getCursorPositionFromEvent(event);
+
+    // No movement
+    // TODO - refactor, cursorPosition is the 'original' position
+    // Need to compare position to immediate previous event rather than initial position
+    if (newCursorPosition === cursorPosition) {
+      return;
+    }
+
+    // Convert position(s) to percent of slider width
+    // Convert current min/max values to percents for comparison
+    // Comparison is used to determine if one handle is out-of-bounds
+    // Min bounds always refers to the 'left' or 'top' side of the slider
+    // Max bounds always refers to the 'right' or 'bottom' side of the slider
+    const cursorPositionAsPercent = this._positionToPercent(cursorPosition);
+    const newPositionAsPercent = this._positionToPercent(newCursorPosition);
+    const percentDiff = newPositionAsPercent - cursorPositionAsPercent;
+    const adjustedMinAsPercent = this._positionToPercent(minPosition) + percentDiff;
+    const adjustedMaxAsPercent = this._positionToPercent(maxPosition) + percentDiff;
+    const { min: minBoundAsPercent } = this._getAnchorBoundsAsPercents(minIndex);
+    const { max: maxBoundsAsPercent } = this._getAnchorBoundsAsPercents(maxIndex);
+    let atMinBounds = false;
+    let atMaxBounds = false;
+
+    // Beyond bounds
+    if (adjustedMinAsPercent < minBoundAsPercent) {
+      atMinBounds = true;
+    } else if (adjustedMaxAsPercent > maxBoundsAsPercent) {
+      atMaxBounds = true;
+    }
+
+    // Adjust anchors using explicit values
+    if (atMinBounds) {
+      const { min, max } = this.viewModel.getBoundsForValueAtIndex(minIndex);
+      const bound = this._isPositionInverted() ? max : min;
+      const newMin = bound;
+      const newMax = maxValue + (bound - minValue);
+
+      this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      return;
+    }
+
+    // Adjust anchors using explicit values
+    if (atMaxBounds) {
+      const { min, max } = this.viewModel.getBoundsForValueAtIndex(maxIndex);
+      const bound = this._isPositionInverted() ? min : max;
+      const newMax = bound;
+      const newMin = minValue + (bound - maxValue);
+
+      this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      return;
+    }
+
+    // Calculate new pixel positions using percent values
+    const trackMax = this._isHorizontalLayout() ? _trackWidth : _trackHeight;
+    const newMaxPosition = (adjustedMaxAsPercent / 100) * trackMax;
+    const newMinPosition = (adjustedMinAsPercent / 100) * trackMax;
+
+    // Store old values and calculate potential new values (pre-validation)
+    const values = this.values;
+    const oldValues = [values[minIndex], values[maxIndex]];
+    const newMinValue = this._getValueForAnchorAtPosition(minIndex, newMinPosition);
+    const newMaxValue = this._getValueForAnchorAtPosition(maxIndex, newMaxPosition);
+
+    // Move anchors to proposed values
+    // Final values may be adjusted (e.g. steps)
+    this._updateAnchorValues([minIndex, maxIndex], [newMinValue, newMaxValue]);
+
+    // Calculate new values
+    const newValues = [this.values[minIndex], this.values[maxIndex]];
+
+    // Verify changes after final validation
+    if (!newValues.every((newValue, index) => newValue === oldValues[index])) {
+      this._emitSegmentDragEvent({
+        index,
+        state: "drag",
+        thumbIndices: [minIndex, maxIndex]
+      });
+    }
+  }
+
+  // Logic related to finished segment movement
+  // - Cleans up temporary variables and removes related event listeners
+  private _onSegmentPointerUp(event: PointerEvent): void {
+    event.preventDefault();
+
+    document.removeEventListener("pointerup", this._onSegmentPointerUp);
+    document.removeEventListener("pointermove", this._onSegmentPointerMove);
+
+    if (!this._segmentDragStartInfo) {
+      return;
+    }
+
+    const { max, min, values } = this;
+    const {
+      index,
+      details: {
+        min: { index: minIndex },
+        max: { index: maxIndex }
+      }
+    } = this._segmentDragStartInfo;
+
+    const range = max - min;
+    const minHandleValue = values[minIndex];
+    const maxHandleValue = values[maxIndex];
+
+    // Overlapping handles...
+    if (minHandleValue === maxHandleValue) {
+      // Depending on handle position compared to slider center
+      // ... we want to store an index that allows handle movement, to avoid dead-ends
+      this._lastMovedHandleIndex = minHandleValue > range / 2 ? minIndex : maxIndex;
+    } else {
+      this._lastMovedHandleIndex = null;
+    }
+
+    this._dragged = false;
+    this._segmentDragStartInfo = null;
+    this.notifyChange("state");
+    this._emitSegmentDragEvent({
+      index,
+      state: "stop",
+      thumbIndices: [minIndex, maxIndex]
+    });
+  }
+
+  //--------------------------------------------------------------------------
+  //  Rendering
+  //--------------------------------------------------------------------------
+
+  // Used to calculate position of anchors and ticks
+  private _storeTrackDimensions(): void {
+    if (this.trackElement) {
+      const dimensions = this._getDimensions(this.trackElement);
+
+      this._trackHeight = dimensions.height;
+      this._trackWidth = dimensions.width;
+    }
+  }
+
+  //--------------------------------------------------------------------------
+  //  Handle Label Event Handlers
+  //--------------------------------------------------------------------------
+
   private _onLabelPointerDown(event: PointerEvent): void {
+    if (this._isDisabled()) {
+      return;
+    }
+
+    this._dragged = false;
     document.addEventListener("pointerup", this._onAnchorPointerUp);
     document.addEventListener("pointermove", this._onAnchorPointerMove);
   }
 
   private _onLabelPointerMove(event: PointerEvent): void {
+    if (this._isDisabled()) {
+      return;
+    }
+
     this._dragged = true;
   }
 
   private _onLabelPointerUp(event: PointerEvent): void {
+    if (this._isDisabled()) {
+      return;
+    }
+
     const index = (event.target as HTMLElement)["data-thumb-index"];
 
     // Label/handle was not dragged, activate the input
     if (this.labelInputsEnabled && !this._dragged && isSome(index)) {
       this._activeLabelInputIndex = index;
-      this.notifyChange("state");
     }
+
+    this._dragged = false;
+    this.notifyChange("state");
 
     // Remove listeners
     document.removeEventListener("pointerup", this._onLabelPointerUp);
@@ -2022,100 +2470,25 @@ class Slider extends declared(Widget, Evented) {
     }
 
     // Convert input value from string
-    const value = this._applyPrecisionToValue(parseFloat(inputValue));
+    const value = this._parseInputValue(inputValue, "value", index);
     const oldValue = values[index];
-    const [max, min] = this._calculateValueBoundsForAnchor(index);
 
-    // TODO
-    // Date validation - followup PR
+    viewModel.setValue(index, value);
 
-    // Check validity before updating the value and emitting event
-    // -- value is number (not null), in range, and has changed
-    if (!isNaN(value) && value <= max && value >= min && oldValue !== value) {
-      viewModel.setValue(index, value);
-      this._emitValueChangeEvent({ index, oldValue, value });
-      this._emitThumbChangeEvent({ index, oldValue, value });
-    }
-  }
+    const newValue = this.values[index];
 
-  // Triggers display of the 'max' Editor on next render
-  private _onMaxLabelClick(event: PointerEvent): void {
-    if (this.rangeLabelInputsEnabled) {
-      this._isMaxInputActive = true;
-      this.notifyChange("state");
-    }
-  }
-
-  // Triggers display of the 'max' Editor on next render
-  private _onMaxLabelKeyDown(event: KeyboardEvent): void {
-    const key = eventKey(event);
-
-    if (key === KEYS.showInput) {
-      this._isMaxInputActive = true;
-      this.notifyChange("state");
-    }
-  }
-
-  // Updates 'max' and hides Editor on next render
-  private _onMaxInputBlur(event: FocusEvent): void {
-    const input = event.target as HTMLInputElement;
-    const value = input.value;
-
-    this._isMaxInputActive = false;
-    this.notifyChange("state");
-
-    // No value
-    if (!value) {
-      return;
-    }
-    const oldValue = this.max;
-    this.viewModel.set("max", this._applyPrecisionToValue(parseFloat(value)));
-
-    if (this.max !== oldValue) {
-      this._emitMaxChangeEvent({ oldValue, value: this.max });
-    }
-  }
-
-  // Triggers display of the 'min' Editor on next render
-  private _onMinLabelClick(event: PointerEvent): void {
-    if (this.rangeLabelInputsEnabled) {
-      this._isMinInputActive = true;
-      this.notifyChange("state");
-    }
-  }
-
-  // Triggers display of the 'max' Editor on next render
-  private _onMinLabelKeyDown(event: KeyboardEvent): void {
-    const key = eventKey(event);
-
-    if (key === KEYS.showInput) {
-      this._isMinInputActive = true;
-      this.notifyChange("state");
-    }
-  }
-
-  // Updates 'min' and hides Editor on next render
-  private _onMinInputBlur(): void {
-    const input = event.target as HTMLInputElement;
-    const value = input.value;
-
-    this._isMinInputActive = false;
-    this.notifyChange("state");
-
-    if (!value) {
-      return;
-    }
-
-    const oldValue = this.min;
-    this.viewModel.set("min", this._applyPrecisionToValue(parseFloat(value)));
-
-    if (this.min !== oldValue) {
-      this._emitMinChangeEvent({ oldValue, value: this.min });
+    if (oldValue !== newValue) {
+      this._emitValueChangeEvent({ index, oldValue, value: newValue });
+      this._emitThumbChangeEvent({ index, oldValue, value: newValue });
     }
   }
 
   // Keyboard shortcuts for hiding range Editors
   private _onInputKeyDown(event: KeyboardEvent): void {
+    if (this._isDisabled()) {
+      return;
+    }
+
     const { target } = event;
     const key = eventKey(event);
     const { hideInput1, hideInput2, hideInput3 } = KEYS;
@@ -2141,188 +2514,422 @@ class Slider extends declared(Widget, Evented) {
   }
 
   //--------------------------------------------------------------------------
-  //  Anchor/Thumb Helpers
+  //  Min/Max Label Event Handlers
   //--------------------------------------------------------------------------
 
-  private _applyPrecisionToValue(value: number): number {
-    return parseFloat(value.toFixed(this.precision));
+  // Triggers display of the 'max' Editor on next render
+  private _onMaxLabelClick(event: PointerEvent): void {
+    if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
+      return;
+    }
+
+    this._isMaxInputActive = true;
+    this.notifyChange("state");
   }
 
+  // Triggers display of the 'max' Editor on next render
+  private _onMaxLabelKeyDown(event: KeyboardEvent): void {
+    if (this._isDisabled() || eventKey(event) !== KEYS.showInput) {
+      return;
+    }
+
+    this._isMaxInputActive = true;
+    this.notifyChange("state");
+  }
+
+  // Updates 'max' and hides Editor on next render
+  private _onMaxInputBlur(event: FocusEvent): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+
+    this._isMaxInputActive = false;
+    this.notifyChange("state");
+
+    // No value
+    if (!value) {
+      return;
+    }
+
+    const oldValue = this.max;
+    this.viewModel.set("max", this._parseInputValue(value, "max"));
+
+    if (this.max !== oldValue) {
+      this._emitMaxChangeEvent({ oldValue, value: this.max });
+    }
+  }
+
+  // Triggers display of the 'min' Editor on next render
+  private _onMinLabelClick(event: PointerEvent): void {
+    if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
+      return;
+    }
+
+    this._isMinInputActive = true;
+    this.notifyChange("state");
+  }
+
+  // Triggers display of the 'max' Editor on next render
+  private _onMinLabelKeyDown(event: KeyboardEvent): void {
+    if (this._isDisabled() || eventKey(event) !== KEYS.showInput) {
+      return;
+    }
+
+    this._isMinInputActive = true;
+    this.notifyChange("state");
+  }
+
+  // Updates 'min' and hides Editor on next render
+  private _onMinInputBlur(): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+
+    this._isMinInputActive = false;
+    this.notifyChange("state");
+
+    if (!value) {
+      return;
+    }
+
+    const oldValue = this.min;
+    this.viewModel.set("min", this._parseInputValue(value, "min"));
+
+    if (this.min !== oldValue) {
+      this._emitMinChangeEvent({ oldValue, value: this.min });
+    }
+  }
+
+  //--------------------------------------------------------------------------
+  //  State helpers
+  //--------------------------------------------------------------------------
+
+  private _isDisabled(): boolean {
+    return this.disabled || this.state === "disabled";
+  }
+
+  //--------------------------------------------------------------------------
+  //  Value & position conversion helpers
+  //--------------------------------------------------------------------------
+
   // Calculates 'position' (left/top) for given 'value'
-  private _calculatePositionFromValue(value: number): number {
-    const { _trackHeight, _trackWidth, layout, max, min } = this;
+  private _positionFromValue(value: number): number {
+    const { max, min } = this;
     const range = max - min;
 
-    return layout === "horizontal"
+    if (range === 0) {
+      return 0;
+    }
+
+    const { _trackHeight, _trackWidth } = this;
+    const isHorizontal = this._isHorizontalLayout();
+
+    // Position changes based on layout (orientation)
+    let position = isHorizontal
       ? parseFloat(((_trackWidth * (value - min)) / range).toFixed(2))
       : parseFloat(((_trackHeight * (max - value)) / range).toFixed(2));
+
+    // Inverse
+    if (this._isReversedLayout()) {
+      position = isHorizontal ? _trackWidth - position : _trackHeight - position;
+    }
+
+    return position;
   }
 
   // Calculates 'value' at given 'position' (left/top)
-  private _calculateValueFromPosition(position: number): number {
-    const { _trackHeight, _trackWidth, layout, max, min, precision } = this;
+  private _valueFromPosition(position: number): number {
+    const { _trackHeight, _trackWidth, max, min, precision } = this;
     const range = max - min;
-    const value =
-      layout === "horizontal"
-        ? (position * range) / _trackWidth + min
-        : (range * (1000 - (position / _trackHeight) * 1000)) / 1000 + min;
+    let value = this._isHorizontalLayout()
+      ? (position * range) / _trackWidth + min
+      : (range * (1000 - (position / _trackHeight) * 1000)) / 1000 + min;
+
+    // Inverse
+    if (this._isReversedLayout()) {
+      value = max + min - value;
+    }
 
     return parseFloat(value.toFixed(precision));
   }
 
-  // Returns current 'position' (left/top) in pixels for given 'anchor'
-  private _getAnchorPosition(anchor: HTMLElement): number {
-    return this.layout === "horizontal" ? anchor.offsetLeft : anchor.offsetTop;
+  // Converts a static pixel position to percent...
+  // relative to slider dimensions (width or height)
+  private _positionToPercent(position: number): number {
+    const { _trackHeight, _trackWidth } = this;
+    const max = this._isHorizontalLayout() ? _trackWidth : _trackHeight;
+    const percent = (position * 100) / max;
+
+    return this._applyPrecisionToPosition(percent);
   }
 
-  private _setAnchorPositions(indices: number[], positions: number[]): void {
-    const { values } = this;
+  private _applyPrecisionToPosition(position: number): number {
+    return parseFloat(position.toFixed(this._positionPrecision));
+  }
 
-    if (!indices || indices.length === 0) {
+  // Layout and direction
+  // Used to determine position(s) depending on layout (left/top)
+  // Also used to identify proper anchor order depending on direction
+  private _isPositionInverted(): boolean {
+    const { layout } = this;
+
+    return layout === "horizontal-reversed" || layout === "vertical";
+  }
+
+  private _isHorizontalLayout(): boolean {
+    return this.layout.indexOf("horizontal") > -1;
+  }
+
+  private _isReversedLayout(): boolean {
+    return this.layout.indexOf("reversed") > -1;
+  }
+
+  // Used to simplify segment dragging logic
+  // Returns inverted anchor details depending on if the position is "inverted"
+  // Being "inverted" is based on a combination of layout and direction
+  private _normalizeSegmentDetails(details: SegmentDetails): SegmentDetails {
+    if (this._isPositionInverted()) {
+      const { min, max } = details;
+
+      return {
+        min: max,
+        max: min
+      };
+    }
+
+    return details;
+  }
+
+  // Uses user defined parsing function if available
+  private _parseInputValue(value: string, type: string, index?: number): number {
+    return this.inputParseFunction
+      ? this.inputParseFunction(value, type, index)
+      : this.viewModel.defaultInputParseFunction(value);
+  }
+
+  // Uses user defined formatting function if available
+  private _formatInputValue(value: number, type: string, index?: number): string {
+    return this.inputFormatFunction
+      ? this.inputFormatFunction(value, type, index)
+      : this.viewModel.defaultInputFormatFunction(value);
+  }
+
+  //--------------------------------------------------------------------------
+  //  Anchor/Thumb Helpers
+  //--------------------------------------------------------------------------
+
+  private _getAnchorDetails(index: number): AnchorDetails {
+    const position = this._getPositionOfElement(this._anchorElements[index]);
+    const value = this.values[index];
+
+    return { index, position, value };
+  }
+
+  // Utility to update an anchor element's style
+  // Avoids overriding other properties after anchor creation
+  private _updateAnchorStyle(index: number, style: string): void {
+    const anchor = this._anchorElements[index];
+
+    if (!anchor) {
       return;
     }
 
-    if (indices.length === 1) {
-      const index = indices[0];
-      const oldValue = values[index];
-
-      this._setAnchorPosition(index, positions[0]);
-
-      const value = values[index];
-
-      if (value !== oldValue) {
-        this._emitValueChangeEvent({ index, oldValue, value });
-      }
-      return;
+    if (this._isHorizontalLayout()) {
+      anchor.style.left = `${style}`;
+    } else {
+      anchor.style.top = `${style}`;
     }
+  }
 
-    const oldValues = indices.map((anchorIndex) => values[anchorIndex]);
+  // Returns anchor style with appropriate position and z-index
+  private _getStyleForAnchor(value: number, index: number, isActive: boolean): string {
+    const zIndex = this._zIndices[index];
+    const adjustedZ = isActive ? this._zIndexOffset + zIndex : zIndex;
+    const position = this._getPositionStyleForElement(value);
 
-    for (let i = 0; i < indices.length; i++) {
-      this._setAnchorPosition(indices[i], positions[i], true);
-    }
+    return `${position}; z-index: ${adjustedZ}`;
+  }
 
-    const adjustedValues = indices.map((anchorIndex) => this.values[anchorIndex]);
-    const valuesDidChange = !adjustedValues.every(
-      (adjustedValue, index) => adjustedValue === oldValues[index]
-    );
+  // Returns position (as a percent) to be used for element's style
+  // Percentage is used for improved accuracy
+  private _getPositionStyleForElement(value: number): string {
+    const position = this._positionFromValue(value);
+    const percent = this._positionToPercent(position);
 
-    if (valuesDidChange) {
+    return `${this._isHorizontalLayout() ? "left" : "top"}: ${percent + "%"}`;
+  }
+
+  // Returns current 'position' (left/top) in pixels for given element
+  // Use 'rects' to calculate precise left/top values
+  // 'offsetTop' and 'offsetLeft' are imprecise due to integer type
+  private _getPositionOfElement(element: HTMLElement): number {
+    const parentRect = this._getDimensions(element.offsetParent);
+    const elementRect = this._getDimensions(element);
+
+    return this._isHorizontalLayout()
+      ? this._applyPrecisionToPosition(elementRect.left - parentRect.left)
+      : this._applyPrecisionToPosition(elementRect.top - parentRect.top);
+  }
+
+  // Move anchor(s) to specific value(s)
+  // Relies on view model validation
+  // If steps are involved, this method assumes the values exist on steps
+  private _updateAnchorValues(indices: number[], values: number[]): void {
+    // Store old values
+    // Update anchor position using provided values
+    // Get updated values to use in associated event
+    const oldValues = indices.map((anchorIndex) => this.values[anchorIndex]);
+    indices.forEach((index, i) => this._toValue(index, values[i]));
+    const newValues = indices.map((anchorIndex) => this.values[anchorIndex]);
+
+    if (!newValues.every((newValue, index) => newValue === oldValues[index])) {
       this._emitValuesChangeEvent({
         indices,
         oldValues,
-        values: adjustedValues
+        values: newValues
       });
     }
   }
 
-  // Moves anchor to new position, based on provided left/top value (relies on 'layout')
-  // Also updates associated value (by index)
-  private _setAnchorPosition(index: number, position: number, preventEvent?: boolean): void {
-    const { steps, values } = this;
-    const oldValue = values[index];
+  private _toValue(index: number, value: number): void {
+    // Locate nearest step to get updated value
+    if (isSome(this.steps)) {
+      const stepValues = this._getStepValues();
+      const stepValueIndex = this._getIndexOfNearestStepValue(value);
 
-    if (isSome(steps)) {
-      position = this._calculateNearestStepPosition(position);
+      value = stepValues[stepValueIndex];
     }
 
-    // Get value bounds
-    const [valueMax, valueMin] = this._calculateValueBoundsForAnchor(index);
-    const [positionMax, positionMin] = this._calculatePixelBoundsForAnchor(index);
-
-    // Enforce bounds
-    const constrainedPosition = Math.max(Math.min(position, positionMax), positionMin);
-
-    // Handles potential issue with decimals
-    // i.e. 0.5294 is the value, 0.529354 is the max
-    const value = this._calculateValueFromPosition(constrainedPosition);
-
-    // Sync up position and value
-    const adjustedValue = Math.max(Math.min(value, valueMax), valueMin);
-    const adjustedPosition = this._calculatePositionStyleForElement(adjustedValue);
-
-    const { _anchorElements, layout, viewModel } = this;
-    const anchor = _anchorElements[index];
-
-    if (layout === "horizontal") {
-      anchor.style.left = `${adjustedPosition}`;
-    } else {
-      anchor.style.top = `${adjustedPosition}`;
-    }
-
+    // Update anchor with modified style
     // Update associated value
-    viewModel.setValue(index, adjustedValue);
-
-    // Fetch 'up-to-date' value
-    const newValue = this.values[index];
-
-    if (oldValue !== newValue && !preventEvent) {
-      this._emitValueChangeEvent({ index, oldValue, value: newValue });
-    }
+    this._updateAnchorStyle(index, this._getPositionStyleForElement(value));
+    this.viewModel.setValue(index, value);
   }
 
-  // Calculates min and max values for anchor at given index.
-  private _calculateValueBoundsForAnchor(index: number): [number, number] {
-    const { max, min, values } = this;
-    const valueMax = isSome(values[index + 1]) ? values[index + 1] : max;
-    const valueMin = isSome(values[index - 1]) ? values[index - 1] : min;
+  // Moves anchor to new position, based on provided left/top value (relies on 'layout')
+  // Also updates associated value (by index)
+  private _toPosition(index: number, position: number): void {
+    // Calculate new value based on position
+    // If applicable, the anchor snaps to the nearest step
+    const value = isSome(this.steps)
+      ? this._getStepValueForAnchorAtPosition(index, position)
+      : this._getValueForAnchorAtPosition(index, position);
 
-    return [valueMax, valueMin];
+    // Update anchor with modified style
+    // Update associated value
+    this._updateAnchorStyle(index, this._getPositionStyleForElement(value));
+    this.viewModel.setValue(index, value);
+  }
+
+  // Returns 'value' based on provided 'position'
+  // Ensures the value is contained within its allowed bounds, using anchor index
+  private _getValueForAnchorAtPosition(index: number, position: number): number {
+    const { min: positionMin, max: positionMax } = this._getAnchorBoundsInPixels(index);
+    const { min: boundMin, max: boundMax } = this.viewModel.getBoundsForValueAtIndex(index);
+    let value: number = null;
+    let valueMax, valueMin;
+
+    // Layout and direction
+    if (this._isPositionInverted()) {
+      valueMax = boundMin;
+      valueMin = boundMax;
+    } else {
+      valueMax = boundMax;
+      valueMin = boundMin;
+    }
+
+    // Apply bounds to value
+    // Check if the provided position is out-of-bounds
+    // If so, we'll use the nearest bound value
+    if (position > positionMax) {
+      value = valueMax;
+    } else if (position < positionMin) {
+      value = valueMin;
+    } else {
+      value = this._valueFromPosition(position);
+    }
+
+    // Verify that the actual value is still in bounds
+    // Rounded decimal values can cause issues with precision
+    if (value > boundMax) {
+      value = boundMax;
+    } else if (value < boundMin) {
+      value = boundMin;
+    }
+
+    return value;
+  }
+
+  private _getStepValueForAnchorAtPosition(index: number, position: number): number {
+    const stepValues = this._getStepValues();
+    const stepPos = this._calculateNearestStepPosition(position);
+    const value = this._getValueForAnchorAtPosition(index, stepPos);
+    const stepValueIndex = this._getIndexOfNearestStepValue(value);
+
+    return stepValues[stepValueIndex];
+  }
+
+  private _getAnchorBoundsAsPercents(index: number): Bounds {
+    const { min, max } = this._getAnchorBoundsInPixels(index);
+
+    return {
+      min: this._positionToPercent(min),
+      max: this._positionToPercent(max)
+    };
   }
 
   // Calculates min and max pixel values (for top/left) for anchor at given index.
   // If 'layout' is 'horizontal', returns left values based on track width
   // If 'layout' is 'vertical', returns top values based on track height
-  private _calculatePixelBoundsForAnchor(index: number): [number, number] {
-    const { _anchorElements, _trackHeight, _trackWidth, layout } = this;
+  private _getAnchorBoundsInPixels(index: number): Bounds {
+    const { _anchorElements, _trackHeight, _trackWidth, thumbsConstrained } = this;
     const prevAnchor = _anchorElements[index - 1];
     const nextAnchor = _anchorElements[index + 1];
-    let max, min;
+    const trackMax = this._isHorizontalLayout() ? _trackWidth : _trackHeight;
 
-    // Note: anchors order reversed in 'vertical' layout
-    if (layout === "horizontal") {
-      max = nextAnchor ? nextAnchor.offsetLeft : _trackWidth;
-      min = prevAnchor ? prevAnchor.offsetLeft : 0;
-    } else {
-      max = prevAnchor ? prevAnchor.offsetTop : _trackHeight;
-      min = nextAnchor ? nextAnchor.offsetTop : 0;
+    if (!thumbsConstrained) {
+      return {
+        max: trackMax,
+        min: 0
+      };
     }
 
-    return [max, min];
+    // Layout and direction
+    if (this._isPositionInverted()) {
+      return {
+        max: prevAnchor ? this._getPositionOfElement(prevAnchor) : trackMax,
+        min: nextAnchor ? this._getPositionOfElement(nextAnchor) : 0
+      };
+    }
+
+    return {
+      max: nextAnchor ? this._getPositionOfElement(nextAnchor) : trackMax,
+      min: prevAnchor ? this._getPositionOfElement(prevAnchor) : 0
+    };
   }
 
+  // Returns index of nearest provided value
+  // -- Used to find the nearest handle to a given location (value) on the track
   private _getIndexOfNearestValue(value: number): number {
-    const values = this.values;
-    const closest: number = values.reduce((prev, curr) =>
-      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+    return this.values.indexOf(
+      this.values.reduce((prev, curr) =>
+        Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+      )
     );
-
-    return values.indexOf(closest);
   }
 
-  private _getIndexOfNearestStepValue(value: number): number {
-    const { steps } = this;
+  // Returns position (x or y) of the cursor, depending on layout
+  // Only a single value from a specific axis is needed for comparison
+  private _getCursorPositionFromEvent(event: PointerEvent): number {
+    const bounds = this._getDimensions(this.trackElement);
 
-    if (!isSome(steps)) {
-      return null;
-    }
-
-    const stepValues = this._getStepValues();
-    const closest = stepValues.reduce((prev, curr) =>
-      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
-    );
-
-    return stepValues.indexOf(closest);
+    return this._isHorizontalLayout() ? event.clientX - bounds.left : event.clientY - bounds.top;
   }
 
-  private _calculateNearestStepPosition(position: number): number {
-    const value = this._calculateValueFromPosition(position);
-    const index = this._getIndexOfNearestStepValue(value);
-    const stepValues = this._getStepValues();
+  //--------------------------------------------------------------------------
+  //  Steps
+  //--------------------------------------------------------------------------
 
-    return this._calculatePositionFromValue(stepValues[index]);
-  }
-
+  // Returns an array of values representing 'steps' given the current settings
+  // With 'steps' configured, handles will only snap to values contained within this array
   private _getStepValues(): number[] {
     const { steps } = this;
 
@@ -2343,51 +2950,62 @@ class Slider extends declared(Widget, Evented) {
     return stepValues;
   }
 
-  private _calculatePositionAfterMovementKeyPress(
-    index: number,
-    position: number,
-    direction: number
-  ): number {
-    const { steps, values } = this;
-    const oldValue = values[index];
-
-    // Adjusting anchor to nearest step
-    if (isSome(steps)) {
-      return this._calculateStepPositionAfterMovementKeyPress(oldValue, direction);
-    }
-
-    // Adjusting anchor by a single pixel
-    const { layout, precision } = this;
-    const pixelOffset = layout === "horizontal" ? direction : direction * -1;
-    const newPosition = position + pixelOffset;
-
-    return precision === 0
-      ? this._calculatePositionFromValue(
-          this._calculateValueFromPosition(newPosition) + pixelOffset
-        )
-      : newPosition;
-  }
-
-  private _calculateStepPositionAfterMovementKeyPress(oldValue: number, direction: number): number {
+  private _toStep(index: number, direction: number): void {
+    const { values, viewModel } = this;
+    const currentValue = values[index];
     const stepValues = this._getStepValues();
-    const oldStepIndex = stepValues.indexOf(oldValue);
+    const stepValueIndex = stepValues.indexOf(currentValue);
+    let newValue: number = null;
 
-    // Anchor exists on a step
-    if (oldStepIndex > -1) {
-      return this._calculatePositionFromValue(
-        isSome(stepValues[oldStepIndex + direction])
-          ? stepValues[oldStepIndex + direction]
-          : stepValues[oldStepIndex]
-      );
+    // Determine if an anchor exists on a step
+    // If not, it could be a decimal or result of user-input
+    // In this case, snap to the nearest step and increment based on direction
+    // This will cause the slider to 'skip' a step
+    // Alternatively, we could adjust the position of the anchor to snap to always snap
+    // ... to the closest step, regardless of direction
+    if (stepValueIndex > -1) {
+      const stepValue = stepValues[stepValueIndex + direction];
+      const stepPosition = this._positionFromValue(stepValue);
+
+      newValue = this._getStepValueForAnchorAtPosition(index, stepPosition);
+    } else {
+      const stepIndex = this._getIndexOfNearestStepValue(currentValue);
+      newValue = stepValues[stepIndex + direction];
     }
 
-    // Anchor is not attached to a 'step' - could be a decimal or result of user-input
-    // Adjust value slightly to handle case where a handle is positoned exactly between two steps
-    const stepIndex = this._getIndexOfNearestStepValue(oldValue + 0.0001 * direction);
-
-    return this._calculatePositionFromValue(stepValues[stepIndex + direction]);
+    viewModel.setValue(index, newValue);
   }
 
+  // Returns the 'index' of the nearest step to the provided value
+  private _getIndexOfNearestStepValue(value: number): number {
+    const { steps } = this;
+
+    if (!isSome(steps)) {
+      return null;
+    }
+
+    const stepValues = this._getStepValues();
+    const closest = stepValues.reduce((prev, curr) =>
+      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+    );
+
+    return stepValues.indexOf(closest);
+  }
+
+  private _calculateNearestStepPosition(position: number): number {
+    const value = this._valueFromPosition(position);
+    const index = this._getIndexOfNearestStepValue(value);
+    const stepValues = this._getStepValues();
+
+    return this._positionFromValue(stepValues[index]);
+  }
+
+  //--------------------------------------------------------------------------
+  //  Ticks
+  //--------------------------------------------------------------------------
+
+  // Returns the number of ticks to be displayed for a given configuration
+  // Property 'value' is derived from user settings
   private _getTickCounts(value: number, config: TickConfig): number {
     const { mode } = config;
 
@@ -2406,13 +3024,17 @@ class Slider extends declared(Widget, Evented) {
     return 0;
   }
 
+  // Returns positions for ticks at the specified values
+  // -- Ticks are directly tied to slider values
   private _calculateTickPositions(values: number[]): number[] {
-    return values.map((value) => this._calculatePositionFromValue(value));
+    return values.map((value) => this._positionFromValue(value));
   }
 
+  // Returns positions for equidistant ticks
+  // -- Ticks have equal spacing between them, spread along the range of the slider
   private _calculateEquidistantTickPositions(count: number): number[] {
-    const { _trackWidth, _trackHeight, layout } = this;
-    const trackMax = layout === "horizontal" ? _trackWidth : _trackHeight;
+    const { _trackWidth, _trackHeight } = this;
+    const trackMax = this._isHorizontalLayout() ? _trackWidth : _trackHeight;
     const d = trackMax / (count - 1);
     const positions: number[] = [];
 
@@ -2433,20 +3055,17 @@ class Slider extends declared(Widget, Evented) {
     return positions;
   }
 
-  private _calculatePositionStyleForElement(value: number): string {
-    const adjustedPosition = this._calculatePositionForElement(value);
-    const prefix = this.layout === "horizontal" ? "left" : "top";
+  // #22912 - getBoundingClientRect() can cause an exception in IE
+  private _getDimensions(element: HTMLElement | Element): ClientRect | DOMRect {
+    try {
+      return element.getBoundingClientRect();
+    } catch (e) {
+      if (typeof e === "object" && e !== null) {
+        return { top: 0, bottom: 0, left: 0, width: 0, height: 0, right: 0 };
+      }
 
-    return `${prefix}: ${adjustedPosition}`;
-  }
-
-  private _calculatePositionForElement(value: number): string {
-    const { layout, max, min } = this;
-    const range = max - min;
-    const percentage = 100 * ((value - min) / range);
-    const adjustedPosition = layout === "horizontal" ? percentage : 100 - percentage;
-
-    return `${adjustedPosition}%`;
+      throw e;
+    }
   }
 
   //--------------------------------------------------------------------------
@@ -2455,39 +3074,47 @@ class Slider extends declared(Widget, Evented) {
   //
   //--------------------------------------------------------------------------
 
-  private _emitMaxChangeEvent(params: { oldValue: number; value: number }): void {
+  private _emitMaxChangeEvent(params: Pick<ValueChangeEvent, "oldValue" | "value">): void {
     this.emit("max-change", { ...params, type: "max-change" });
   }
 
-  private _emitMinChangeEvent(params: { oldValue: number; value: number }): void {
+  private _emitMinChangeEvent(params: Pick<ValueChangeEvent, "oldValue" | "value">): void {
     this.emit("min-change", { ...params, type: "min-change" });
   }
 
-  private _emitValueChangeEvent(params: { index: number; oldValue: number; value: number }): void {
+  private _emitValueChangeEvent(
+    params: Pick<ValueChangeEvent, "index" | "oldValue" | "value">
+  ): void {
+    if (this.hasEventListener("value-change")) {
+      logger.warn("'value-change' is deprecated, watch the 'values' property instead.");
+    }
+
     this.emit("value-change", { ...params, type: "value-change" });
   }
 
-  private _emitValuesChangeEvent(params: {
-    indices: number[];
-    oldValues: number[];
-    values: number[];
-  }): void {
+  private _emitValuesChangeEvent(
+    params: Pick<ValuesChangeEvent, "indices" | "oldValues" | "values">
+  ): void {
+    if (this.hasEventListener("value-change")) {
+      logger.warn("'values-change' is deprecated, watch the 'values' property instead.");
+    }
+
     this.emit("values-change", { ...params, type: "values-change" });
   }
 
-  private _emitThumbChangeEvent(params: { index: number; oldValue: number; value: number }): void {
+  private _emitThumbChangeEvent(
+    params: Pick<ThumbChangeEvent, "index" | "oldValue" | "value">
+  ): void {
     this.emit("thumb-change", { ...params, type: "thumb-change" });
   }
 
-  private _emitThumbDragEvent(params: { index: number; state: string; value: number }): void {
+  private _emitThumbDragEvent(params: Pick<ThumbDragEvent, "index" | "state" | "value">): void {
     this.emit("thumb-drag", { ...params, type: "thumb-drag" });
   }
 
-  private _emitSegmentDragEvent(params: {
-    index: number;
-    state: string;
-    thumbIndices: [number, number];
-  }): void {
+  private _emitSegmentDragEvent(
+    params: Pick<SegmentDragEvent, "index" | "state" | "thumbIndices">
+  ): void {
     this.emit("segment-drag", { ...params, type: "segment-drag" });
   }
 }

@@ -38,6 +38,7 @@
               "disablePopup": {},
               "id": {},
               "layerDefinition": {},
+              "listMode": {},
               "maxScale": {},
               "minScale": {},
               "name": {},
@@ -57,9 +58,9 @@
       "type": "string",
       "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
       "enum": [
-        "show",
         "hide",
-        "hide-children"
+        "hide-children",
+        "show"
       ]
     },
     "maxScale": {
@@ -81,8 +82,7 @@
     },
     "refreshInterval": {
       "type": "number",
-      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
-      "default": 0
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
     },
     "showLegend": {
       "type": "boolean",

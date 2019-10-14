@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType"],function(e,r,o,t,p,l,n,u,c){Object.defineProperty(r,"__esModule",{value:!0});var s=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.label=null,r.value=0,r.color=null,r}o(r,e),l=r,r.prototype.clone=function(){return new l({label:this.label,value:this.value,color:n.clone(this.color)})};var l;return t([u.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t([u.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"value",void 0),t([u.property({type:p,json:{type:[c.Integer],write:!0}})],r.prototype,"color",void 0),r=l=t([u.subclass("esri.renderers.support.pointCloud.StopInfo")],r)}(u.declared(l));r.StopInfo=s,r.default=s});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType"],function(e,r,o,t,p,l,n,u,c){Object.defineProperty(r,"__esModule",{value:!0});var s=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.label=null,r.value=0,r.color=null,r}o(r,e),l=r,r.prototype.clone=function(){return new l({label:this.label,value:this.value,color:n.clone(this.color)})};var l;return t([u.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t([u.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"value",void 0),t([u.property({type:p,json:{type:[c.Integer],write:!0}})],r.prototype,"color",void 0),r=l=t([u.subclass("esri.renderers.support.pointCloud.StopInfo")],r)}(u.declared(l.JSONSupport));r.StopInfo=s,r.default=s});

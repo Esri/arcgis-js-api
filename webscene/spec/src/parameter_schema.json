@@ -5,16 +5,11 @@
   "description": "Objects defined by a [definitionEditor](definitionEditor.md) input.",
   "properties": {
     "defaultValue": {
-      "description": "The default value that is automatically given if nothing is provided.",
-      "oneOf": [
-        {
-          "type": "number",
-          "description": "Value given automatically if none provided."
-        },
-        {
-          "type": "string"
-        }
-      ]
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "The default value that is automatically given is nothing is provided."
     },
     "fieldName": {
       "type": "string",
@@ -31,9 +26,9 @@
         "esriFieldTypeBlob",
         "esriFieldTypeDate",
         "esriFieldTypeDouble",
+        "esriFieldTypeGUID",
         "esriFieldTypeGeometry",
         "esriFieldTypeGlobalID",
-        "esriFieldTypeGUID",
         "esriFieldTypeInteger",
         "esriFieldTypeOID",
         "esriFieldTypeRaster",

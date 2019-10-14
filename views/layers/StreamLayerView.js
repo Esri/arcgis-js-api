@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/Error","../../core/Handles","../../core/promiseUtils","../../core/watchUtils","../../core/accessorSupport/decorators","./support/FeatureFilter"],function(e,t,o,r,n,c,i,l,s,a,p){return function(e){function t(){var t=e.call(this)||this;return t._handles=new i,t.connectionError=null,t.connectionStatus="disconnected",t.filter=null,t._handles.add(s.on(t,"controller","data-received",function(e){t.emit("data-received",e)})),t}return o(t,e),t.prototype.connect=function(){return this.controller.connection.connect()},t.prototype.disconnect=function(){this.controller.connection.disconnect()},t.prototype.updateFilter=function(e){return"connected"!==this.connectionStatus?l.reject(new c("stream-layer-view: updateFilter","Cannot update filter. The connection with the stream service is closed")):this.controller.updateFilter(e)},r([a.property({aliasOf:"controller.connection.connectionError",readOnly:!0})],t.prototype,"connectionError",void 0),r([a.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],t.prototype,"connectionStatus",void 0),r([a.property()],t.prototype,"controller",void 0),r([a.property({type:p})],t.prototype,"filter",void 0),t=r([a.subclass("esri.views.layers.StreamLayerView")],t)}(a.declared(n))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Handles","../../core/watchUtils","../../core/accessorSupport/decorators","./support/FeatureFilter"],function(e,r,o,t,n,c,i,a){Object.defineProperty(r,"__esModule",{value:!0}),r.StreamLayerView=function(e){return function(e){function r(){for(var r=[],o=0;o<arguments.length;o++)r[o]=arguments[o];var t=e.apply(this,r)||this;return t._handles=new n,t.connectionError=null,t.connectionStatus="disconnected",t.filter=null,t._handles.add(c.on(t,"controller","data-received",function(e){t.emit("data-received",e)})),t}return o(r,e),t([i.property({aliasOf:"controller.connection.connectionError",readOnly:!0})],r.prototype,"connectionError",void 0),t([i.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],r.prototype,"connectionStatus",void 0),t([i.property()],r.prototype,"controller",void 0),t([i.property({type:a})],r.prototype,"filter",void 0),r=t([i.subclass("esri.layers.mixins.StreamLayerView")],r)}(i.declared(e))}});

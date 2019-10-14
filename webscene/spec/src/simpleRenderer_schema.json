@@ -1,6 +1,7 @@
 {
   "title": "Simple Renderer",
   "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A simple renderer is a renderer that uses one symbol only.",
   "properties": {
     "authoringInfo": {

@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: $panel-width;
   }
 
   .esri-editor__header {
@@ -49,7 +48,6 @@
   }
 
   .esri-editor__scroller {
-    max-height: $panel-max-height--medium / 2;
     overflow-y: auto;
     padding-top: $cap-spacing--half;
     padding-bottom: $cap-spacing;
@@ -65,10 +63,6 @@
   .esri-editor {
     .esri-item-list {
       background-color: transparent;
-    }
-
-    .esri-item-list__scroller {
-      max-height: ($panel-max-height--medium / 2) - 80px;
     }
 
     .esri-item-list__group {
@@ -249,6 +243,18 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+  }
+
+  .esri-ui {
+    .esri-editor {
+      width: $panel-width;
+    }
+    .esri-editor__scroller {
+      max-height: ($panel-max-height--medium / 2);
+    }
+    .esri-editor .esri-item-list__scroller {
+      max-height: ($panel-max-height--medium / 2) - 80px;
+    }
   }
 
   @include loopingProgressBar(".esri-editor__progress-bar");

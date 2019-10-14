@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports"],function(n,r){function t(){return[0,0,0,0]}function e(n){return[n[0],n[1],n[2],n[3]]}function u(n,r,t,e){return[n,r,t,e]}function o(n){for(var r=t(),e=Math.min(4,n.length),u=0;u<e;++u)r[u]=n[u];return r}function i(n,r){return new Float64Array(n,r,4)}function f(){return t()}function c(){return u(1,1,1,1)}function a(){return u(1,0,0,0)}function l(){return u(0,1,0,0)}function _(){return u(0,0,1,0)}function s(){return u(0,0,0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=t,r.clone=e,r.fromValues=u,r.fromArray=o,r.createView=i,r.zeros=f,r.ones=c,r.unitX=a,r.unitY=l,r.unitZ=_,r.unitW=s,r.ZEROS=f(),r.ONES=c(),r.UNIT_X=a(),r.UNIT_Y=l(),r.UNIT_Z=_(),r.UNIT_W=s()});

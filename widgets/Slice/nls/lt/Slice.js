@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Pjūvis",cancel:"Atšaukti",hint:"Pradėkite pjaustyti spustelėdami ir vilkdami ant scenos paviršiaus",excludeHint:"Jei norite neįtraukti sluoksnio į pjūvį, pasirinkite jį scenos peržiūroje",unsupported:"Pjūviai nepalaikomi žemėlapio peržiūroje.",multipleDisabled:"Vienu metu gali būti aktyvus tik vienas pjūvis",newSlice:"Naujas pjūvis",excludedLayers:"Neįtraukti sluoksniai",pickLayer:"Pasirinkite sluoksnį scenos peržiūroje",excludeLayer:"Neįtraukti sluoksnio į pjūvį",includeLayer:"Įtraukti sluoksnį į pjūvį",ground:"Paviršius"});

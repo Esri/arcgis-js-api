@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"เพิ่มบุ๊กมาร์ก",disabledHeading:"ปิดใช้งานบุ๊กมาร์กแล้ว",disabledDescription:"เพิ่มมุมมองแผนที่เพื่อเปิดใช้งานบุ๊กมาร์ก",goToBookmark:"ไปที่บุ๊กมาร์ก",noBookmarksHeading:"ไม่มีบุ๊คมาร์ค",noBookmarksDescription:"เพิ่มบุ๊กมาร์กลงในแผนที่ของคุณ จากนั้นบุ๊กมาร์กจะปรากฏขึ้นที่นี่",title:"ชื่อ",addPlaceholder:"ป้อนชื่อบุ๊กมาร์ก",addingBookmark:"กำลังเพิ่มบุ๊กมาร์ก",widgetLabel:"บุ๊คมาร์ค"});
+define({addBookmark:"เพิ่มบุ๊กมาร์ก",goToBookmark:"ไปที่บุ๊กมาร์ก",noBookmarksHeading:"ไม่มีบุ๊คมาร์ค",noBookmarksDescription:"เพิ่มบุ๊กมาร์กลงในแผนที่ของคุณ จากนั้นบุ๊กมาร์กจะปรากฏขึ้นที่นี่",title:"ชื่อ",addPlaceholder:"ป้อนชื่อบุ๊กมาร์ก",addingBookmark:"กำลังเพิ่มบุ๊กมาร์ก",widgetLabel:"บุ๊คมาร์ค"});

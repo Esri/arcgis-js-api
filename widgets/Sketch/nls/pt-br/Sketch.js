@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Esboço",move:"Mover",pan:"Mover",reset:"Redefinir",reshape:"Remodelar",rotate:"Rotacionar",scale:"Escala",transform:"Transformar",undo:"Desfazer",redo:"Refazer",drawPoint:"Desenhar um ponto",drawPolygon:"Desenha um polígono",drawPolyline:"Desenhar uma polilinha",drawMultipoint:"Desenhar um ponto múltiplo",drawCircle:"Desenha um círculo",drawRectangle:"Desenha um retângulo",clearDrawing:"Limpar desenho",completeDrawing:"Completar desenho",pauseDrawing:"Pausar desenho",resumeDrawing:"Retomar desenho",updateDrawing:"Atualizar desenho",addPointTooltip:"Clique para adicionar um ponto",removePointTooltip:"Clique para remover este ponto",completePolygonTooltip:"Clique neste ponto para finalizar",startDrawingTooltip:"Clique para começar a desenhar",continueDrawingTooltip:"Clique para continuar desenhando",completeDrawingTooltip:"Clique duas vezes para concluir",addMultipointTooltip:"Clique para começar a adicionar pontos",finishMultipointTooltip:"Clique duas vezes para finalizar",addFreehandTooltip:"Pressione para começar e solte para finalizar",addShapeTooltip:"Clique para adicionar um shape, ou pressione para iniciar e finalizar",featureCount:"{count} Feição",featuresCount:"{count} Feições",vertexCount:"{count} Vértice",verticesCount:"{count} Vértices",deleteFeature:"Excluir feição",deleteVertex:"Excluir vértice",duplicate:"Duplicado"});

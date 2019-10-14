@@ -4,7 +4,6 @@
 #include <util/depth.glsl>
 
 varying float depth;
-varying vec3 vpos;
 
 void main() {
 #ifndef BIAS_SHADOWMAP

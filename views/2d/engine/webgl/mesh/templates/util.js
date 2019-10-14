@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports"],function(n,t){function e(n,t){return Math.sqrt(n*n+t*t)}Object.defineProperty(t,"__esModule",{value:!0}),t.sub=function(n,t,e){return n[0]=t[0]-e[0],n[1]=t[1]-e[1],n},t.len=e,t.normalize=function(n){var t=e(n[0],n[1]);n[0]/=t,n[1]/=t},t.dist=function(n,t){return e(n[0]-t[0],n[1]-t[1])},t.isFunction=function(n){return"function"==typeof n},t.getLimitCosine=function(n){return 1/Math.max(n,1)}});

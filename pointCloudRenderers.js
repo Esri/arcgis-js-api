@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","./renderers/PointCloudClassBreaksRenderer","./renderers/PointCloudRenderer","./renderers/PointCloudRGBRenderer","./renderers/PointCloudStretchRenderer","./renderers/PointCloudUniqueValueRenderer","./renderers/support/pointCloud/jsonUtils"],function(e,r,n,o,d,t,u,i){function s(e){return e instanceof r.BasePointCloudRenderer}Object.defineProperty(r,"__esModule",{value:!0}),r.PointCloudClassBreaksRenderer=n,r.BasePointCloudRenderer=o,r.PointCloudRGBRenderer=d,r.PointCloudStretchRenderer=t,r.PointCloudUniqueValueRenderer=u,r.isPointCloudRenderer=s,r.fromJSON=i.fromJSON});

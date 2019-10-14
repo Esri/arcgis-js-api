@@ -62,7 +62,7 @@ import { substitute } from "esri/intl";
 
 // esri.core
 import { eventKey } from "esri/core/events";
-import HandleOwner = require("esri/core/HandleOwner");
+import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init, on, watch, whenNot } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -188,8 +188,6 @@ function focusOnCreate(node: HTMLElement): void {
   node.focus();
 }
 
-interface Editor extends HandleOwner {}
-
 type EditorParams = Partial<
   Pick<
     Editor,
@@ -198,7 +196,7 @@ type EditorParams = Partial<
 >;
 
 @subclass("esri.widgets.Editor")
-class Editor extends declared(Widget, HandleOwner) {
+class Editor extends declared(HandleOwnerMixin(Widget)) {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle

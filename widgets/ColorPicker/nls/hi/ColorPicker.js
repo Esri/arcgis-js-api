@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({transparency:"पारदर्शिता",suggested:"सुझाए गए",recent:"हाल ही के",more:"और अधिक",moreColorsTooltip:"और अधिक रंग देखें.",paletteTooltip:"एक रंग चुनें.",noColorTooltip:"कोई रंग नहीं",hexInputTooltip:"हेक्साडेसीमल संकेतन (#FFFF00) में एक कस्टम रंग."});

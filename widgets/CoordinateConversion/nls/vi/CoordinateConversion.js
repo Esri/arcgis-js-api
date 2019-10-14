@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Thêm phép chuyển đổi",captureMode:"Chế độ chụp",changeCoordinateDisplay:"Thay đổi hiển thị tọa độ",convert:"Chuyển đổi",conversionOutputSuffix:"Kết quả chuyển đổi",copySuccessMessage:"Tọa độ đã được sao chép vào bảng tạm",defaultPattern:"Đặt lại thành mặc định",goTo:"Đi đến vị trí",inputCoordTitle:"Tọa độ đầu vào",invalidCoordinate:"Tọa độ không hợp lệ",liveMode:"Chế độ trực tiếp",locationOffBasemap:"Tọa độ đầu vào nằm ngoài phạm vi bản đồ nền",noBasemap:"Không có bản đồ nền.",noLocation:"Không có vị trí.",removeConversion:"Xóa phép chuyển đổi",selectFormat:"Chọn định dạng",settingsTitle:"Cài đặt định dạng"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Messen",hint:"Beginnen Sie die Messung, indem Sie auf die Karte klicken, um den ersten Punkt zu positionieren.",unsupported:"Die 2D-Flächenmessung wird nur in MapView unterstützt.",perimeter:"Umfang",area:"Fläche",newMeasurement:"Neue Messung",mode:"Modus",modes:{auto:"Automatisch",planar:"Planar",geodesic:"Geodätisch"},unit:"Einheit",units:{metric:"Metrisch",imperial:"Britisch","square-kilometers":"Quadratkilometer","square-meters":"Quadratmeter","square-miles":"Quadratmeilen","square-inches":"Quadratzoll","square-feet":"Quadratfuß","square-yards":"Quadratyards","square-us-feet":"Quadratfuß (US)",acres:"Acres",ares:"Ar",hectares:"Hektar"}});
+define({title:"Flächenmessung",hint:"Beginnen Sie die Messung, indem Sie auf die Karte klicken, um den ersten Punkt zu positionieren.",unsupported:"Die 2D-Flächenmessung wird nur in MapView unterstützt.",perimeter:"Umfang",area:"Fläche",newMeasurement:"Neue Messung",mode:"Modus",modes:{auto:"Automatisch",planar:"Planar",geodesic:"Geodätisch"},unit:"Einheit",units:{metric:"Metrisch",imperial:"Britisch","square-kilometers":"Quadratkilometer","square-meters":"Quadratmeter","square-miles":"Quadratmeilen","square-inches":"Quadratzoll","square-feet":"Quadratfuß","square-yards":"Quadratyards","square-us-feet":"Quadratfuß (US)",acres:"Acres",ares:"Ar",hectares:"Hektar"}});

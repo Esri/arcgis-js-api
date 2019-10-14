@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"측정",hint:"첫 번째 포인트를 배치하기 위해 씬에서 클릭하여 측정 시작",unsupported:"씬 뷰에서는 3D 영역 측정만 지원됩니다.",perimeterLength:"둘레",area:"영역",unit:"단위",notApplicable:"n/a",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식","square-kilometers":"제곱킬로미터","square-meters":"제곱미터","square-miles":"제곱마일","square-inches":"제곱인치","square-feet":"제곱피트","square-yards":"제곱야드","square-us-feet":"제곱피트(US)",acres:"에이커",ares:"아르",hectares:"헥타르"}});
+define({title:"면적 측정",hint:"첫 번째 포인트를 배치하기 위해 씬에서 클릭하여 측정 시작",unsupported:"씬 뷰에서는 3D 영역 측정만 지원됩니다.",perimeterLength:"둘레",area:"영역",unit:"단위",notApplicable:"n/a",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식","square-kilometers":"제곱킬로미터","square-meters":"제곱미터","square-miles":"제곱마일","square-inches":"제곱인치","square-feet":"제곱피트","square-yards":"제곱야드","square-us-feet":"제곱피트(US)",acres:"에이커",ares:"아르",hectares:"헥타르"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"stavka",title:"Prijavi se",info:"Prijavite se da biste pristupili stavci na {server} {resource}",oAuthInfo:"Prijavite se na {server}.",lblUser:"Korisničko ime:",lblPwd:"Lozinka:",lblOk:"U redu",lblSigning:"Prijavljivanje...",lblCancel:"Otkaži",errorMsg:"Nevažeće korisničko ime/lozinka. Pokušajte ponovo.",invalidUser:"Korisničko ime ili lozinka koju ste uneli je neispravna.",forbidden:"Korisničko ime i lozinka su važeći, ali nemate pristup ovom resursu.",noAuthService:"Pristupanje servisu za potvrdu identiteta nije moguće."});

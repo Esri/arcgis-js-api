@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessor","../core/lang","../core/accessorSupport/decorators","../geometry/SpatialReference","../webdoc/RangeInfo","./background/ColorBackground"],function(e,r,o,t,n,p,i,a,c,l,s){return function(e){function r(r){var o=e.call(this,r)||this;return o.background=null,o.rangeInfo=null,o.spatialReference=null,o.viewpoint=null,o}o(r,e),p=r,r.prototype.clone=function(){return new p(i.clone({background:this.background,rangeInfo:this.rangeInfo,spatialReference:this.spatialReference,viewpoint:this.viewpoint}))};var p;return t([a.property({type:s})],r.prototype,"background",void 0),t([a.property({type:l})],r.prototype,"rangeInfo",void 0),t([a.property({type:c})],r.prototype,"spatialReference",void 0),t([a.property({type:n})],r.prototype,"viewpoint",void 0),r=p=t([a.subclass("esri.webmap.InitialViewProperties")],r)}(a.declared(p))});

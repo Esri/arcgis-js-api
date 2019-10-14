@@ -17,8 +17,9 @@
       }
     },
     "itemRenderingRule": {
-      "type": "string",
-      "description": "The rendering rule applies on items before mosaicking."
+      "type": "object",
+      "description": "The rendering rule applies on items before mosaicking.",
+      "$ref": "renderingRule_schema.json"
     },
     "lockRasterIds": {
       "type": "array",
@@ -31,26 +32,26 @@
       "type": "string",
       "description": "A string value that determines how the selected rasters are ordered.",
       "enum": [
-        "esriMosaicNone",
-        "esriMosaicCenter",
-        "esriMosaicNadir",
-        "esriMosaicViewpoint",
         "esriMosaicAttribute",
+        "esriMosaicCenter",
         "esriMosaicLockRaster",
+        "esriMosaicNadir",
+        "esriMosaicNone",
         "esriMosaicNorthwest",
-        "esriMosaicSeamline"
+        "esriMosaicSeamline",
+        "esriMosaicViewpoint"
       ]
     },
     "mosaicOperation": {
       "type": "string",
       "description": "Use the mosaic operation to resolve overlap pixel values: from first or last raster, use the min, max or mean of the pixel values, or blend them.",
       "enum": [
+        "MT_BLEND",
         "MT_FIRST",
         "MT_LAST",
-        "MT_MIN",
         "MT_MAX",
         "MT_MEAN",
-        "MT_BLEND",
+        "MT_MIN",
         "MT_SUM"
       ],
       "default": "MT_FIRST"
@@ -68,19 +69,13 @@
       "description": "The field name used together with `esriMosaicAttribute` method."
     },
     "sortValue": {
+      "type": [
+        "null",
+        "number",
+        "string"
+      ],
       "description": "The base sort value used together with `esriMosaicAttribute` method and `sortField` parameter.",
-      "oneOf": [
-        {
-          "type": "number",
-          "default": 0
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "default": 0
     },
     "viewpoint": {
       "type": "object",

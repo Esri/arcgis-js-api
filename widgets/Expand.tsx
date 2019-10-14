@@ -38,7 +38,8 @@ import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -374,7 +375,7 @@ class Expand extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -482,6 +483,8 @@ class Expand extends declared(Widget) {
       [CSS.modeFloating]: mode === "floating"
     };
 
+    const contentId = `${this.id}_controls_content`;
+
     return (
       <div class={this.classes(CSS.base, baseClasses)}>
         <div bind={this} onclick={this._toggle} class={this.classes(CSS.expandMask, maskClasses)} />
@@ -491,7 +494,8 @@ class Expand extends declared(Widget) {
               bind={this}
               onclick={this._toggle}
               onkeydown={this._toggle}
-              aria-label={title}
+              aria-controls={contentId}
+              aria-expanded={expanded ? "true" : "false"}
               title={title}
               role="button"
               tabindex="0"
@@ -503,7 +507,7 @@ class Expand extends declared(Widget) {
             </div>
             {expandedBadgeNumberNode}
           </div>
-          <div class={this.classes(CSS.content, contentClasses)} bind={this}>
+          <div id={contentId} role="region" class={this.classes(CSS.content, contentClasses)}>
             {this._renderContent()}
           </div>
         </div>

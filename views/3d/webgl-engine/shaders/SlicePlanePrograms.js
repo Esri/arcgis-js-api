@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,l,r,s){Object.defineProperty(l,"__esModule",{value:!0}),l.colorPass={name:"slice-plane-color",shaders:{vertexShader:s.resolveIncludes("materials/slicePlane/slicePlane.vert"),fragmentShader:s.resolveIncludes("materials/slicePlane/slicePlane.frag")},attributes:r.Default3D}});

@@ -23,8 +23,8 @@
       "type": "string",
       "description": "To show or hide the elevation layer in the layer list",
       "enum": [
-        "show",
-        "hide"
+        "hide",
+        "show"
       ]
     },
     "path": {

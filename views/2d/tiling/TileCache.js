@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
+
+define(["require","exports","../../../core/libs/gl-matrix-2/vec2"],function(e,t,i){function r(e,t){e.delete(t)}Object.defineProperty(t,"__esModule",{value:!0});var n=[0,0],s=[0,0],l=function(){function e(e,t,i){this.maxSize=e,this.tileInfoView=t,this.removedFunc=i,this._tilePerId=new Map,this._tileKeysPerLevel=[]}return e.prototype.has=function(e){return this._tilePerId.has(e)},e.prototype.get=function(e){return this._tilePerId.get(e)},e.prototype.pop=function(e){var t=this._tilePerId.get(e);if(!t)return null;var i=t.key.level,n=this._tileKeysPerLevel[i];r(this._tilePerId,e);for(var s=0;s<n.length;s++)if(n[s].id===e){n.splice(s,1);break}return t.visible=!0,t},e.prototype.add=function(e){e.visible=!1;var t=e.key,i=t.id;if(!this._tilePerId.has(i)){this._tilePerId.set(i,e);var r=t.level;this._tileKeysPerLevel[r]||(this._tileKeysPerLevel[r]=[]),this._tileKeysPerLevel[r].push(t)}},e.prototype.prune=function(e,t,i){var r=this._tilePerId.size;if(!(r<=this.maxSize)){for(var n=this._tileKeysPerLevel.length-1;r>this.maxSize&&n>=0;)n!==e&&(r=this._pruneAroundCenterTile(r,t,i,n)),n--;r>this.maxSize&&(r=this._pruneAroundCenterTile(r,t,i,e))}},e.prototype._pruneAroundCenterTile=function(e,t,r,l){var o=this._tileKeysPerLevel[l];if(!o||0===o.length)return e;var h=this.tileInfoView.tileInfo,u=h.size,v=h.origin,a=r*u[0],d=r*u[1];for(o.sort(function(e,r){return n[0]=v.x+a*(e.col+.5),n[1]=v.y-d*(e.row+.5),s[0]=v.x+a*(r.col+.5),s[1]=v.y-d*(r.row+.5),i.vec2.squaredDistance(n,t)-i.vec2.squaredDistance(s,t)});o.length>0;){var f=o.pop();if(this._removeTile(f.id),--e===this.maxSize)break}return e},e.prototype._removeTile=function(e){var t=this._tilePerId.get(e);this.removedFunc&&this.removedFunc(t),r(this._tilePerId,e)},e}();t.default=l});

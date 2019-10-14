@@ -8,8 +8,8 @@
       "type": "string",
       "description": "A string value indicating how to display the attachment. If `list` is specified, attachments show as links.",
       "enum": [
-        "preview",
-        "list"
+        "list",
+        "preview"
       ]
     },
     "type": {

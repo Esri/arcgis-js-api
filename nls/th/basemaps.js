@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({streets:"ถนน",satellite:"ภาพถ่าย",hybrid:"ภาพพร้อมคำบรรยาย",terrain:"สัญลักษณ์ของภูมิประเทศ",topo:"ภูมิประเทศ",gray:"ภาพพื้นสีเทาอ่อน","dark-gray":"ภาพพื้นสีเทาเข้ม",oceans:"มหาสมุทร","national-geographic":"เนชั่นแนล จีโอกราฟิก",osm:"OpenStreetMap","streets-night-vector":"แผนที่ถนนทั่วโลก (กลางคืน)","streets-relief-vector":"แผนที่ถนนทั่วโลก (with Relief)","streets-navigation-vector":"แผนที่นำทาง"});

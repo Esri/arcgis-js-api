@@ -38,7 +38,8 @@ import * as i18n from "dojo/i18n!esri/widgets/Zoom/nls/Zoom";
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -181,7 +182,7 @@ class Zoom extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel

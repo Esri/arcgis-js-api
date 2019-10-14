@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"הוסף סימנייה",disabledHeading:"הסימניות מושבתות",disabledDescription:"הוסף MapView כדי לאפשר סימניות.",goToBookmark:"עבור לסימניה",noBookmarksHeading:"אין סימניות",noBookmarksDescription:"הוסף סימניות למפה שלך והן יופיעו כאן.",title:"כותרת",addPlaceholder:"הזן כותרת סימנייה",addingBookmark:"מוסיף סימנייה",widgetLabel:"סימניות"});
+define({addBookmark:"הוסף סימנייה",goToBookmark:"עבור לסימניה",noBookmarksHeading:"אין סימניות",noBookmarksDescription:"הוסף סימניות למפה שלך והן יופיעו כאן.",title:"כותרת",addPlaceholder:"הזן כותרת סימנייה",addingBookmark:"מוסיף סימנייה",widgetLabel:"סימניות"});

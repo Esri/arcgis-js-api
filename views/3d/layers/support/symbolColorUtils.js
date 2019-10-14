@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports"],function(o,r){function e(o,r,e,l){if(void 0===l&&(l=0),null==o||"ignore"===r)return e[l+0]=255,e[l+1]=255,e[l+2]=255,void(e[l+3]=255);e[l+0]=Math.floor(255*o[0]),e[l+1]=Math.floor(255*o[1]),e[l+2]=Math.floor(255*o[2]);var t=Math.floor(o[3]*i);e[l+3]=0===t?0:"tint"===r?t:"replace"===r?t+n:t+u}function l(o,r){void 0===r&&(r=0);var e=0,l="multiply",t=o[r+3];return t>u?e=(t-u)/i:t>n?(e=(t-n)/i,l="replace"):t>0&&(e=t/i,l="tint"),{color:[o[r+0]/255,o[r+1]/255,o[r+2]/255,e],colorMixMode:l}}function t(o,r){void 0===r&&(r=0);var e=o[r+3];return e===n||e===u||e===a}Object.defineProperty(r,"__esModule",{value:!0}),r.encodeSymbolColor=e,r.decodeSymbolColor=l,r.isOpaqueSymbolColor=t;var i=85,n=i,u=2*i,a=3*i});
+define(["require","exports"],function(o,e){function r(o,e,r,i){if(void 0===i&&(i=0),null==o||"ignore"===e)return r[i+0]=255,r[i+1]=255,r[i+2]=255,void(r[i+3]=255);r[i+0]=Math.floor(255*o[0]),r[i+1]=Math.floor(255*o[1]),r[i+2]=Math.floor(255*o[2]);var l=Math.floor(o[3]*n);r[i+3]=0===l?0:"tint"===e?l:"replace"===e?l+a:l+c}function i(o,e){void 0===e&&(e=0);var r,i=0,t=o[e+3];switch(l(o,e)){case 0:i=(t-c)/n,r="multiply";break;case 2:i=(t-a)/n,r="replace";break;case 3:i=t/n,r="tint"}return{color:[o[e+0]/255,o[e+1]/255,o[e+2]/255,i],colorMixMode:r}}function l(o,e){void 0===e&&(e=0);var r=o[e+3];return r>c?0:r>a?2:r>0?3:0}function t(o,e){void 0===e&&(e=0);var r=o[e+3];return r===a||r===c||r===d}Object.defineProperty(e,"__esModule",{value:!0}),e.encodeSymbolColor=r,e.decodeSymbolColor=i,e.decodeSymbolColorMixMode=l,e.isOpaqueSymbolColor=t;var n=85,a=n,c=2*n,d=3*n});

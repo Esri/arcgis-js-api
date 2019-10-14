@@ -137,7 +137,7 @@ class Histogram extends declared(Widget) {
    *
    * @example
    * // typical usage
-   * const hsitogram = new Histogram({
+   * const histogram = new Histogram({
    *   bins: [{
    *     minValue: 0,
    *     maxValue: 20,
@@ -621,7 +621,7 @@ class Histogram extends declared(Widget) {
 
   protected renderContent(): VNode {
     if (!this._containerNode) {
-      return;
+      return undefined;
     }
 
     return (
@@ -645,20 +645,20 @@ class Histogram extends declared(Widget) {
     } = this;
 
     if (!binRange || !range) {
-      return;
+      return undefined;
     }
 
     const rangeRatio = binRange / range;
     const [totalHeight, totalWidth] = this._getContainerDimensions();
 
     if (totalHeight === 0 && totalWidth === 0) {
-      return;
+      return undefined;
     }
 
     // Handle issue with dynamic height
     if (totalHeight === 0 && totalWidth !== 0) {
       this.scheduleRender();
-      return;
+      return undefined;
     }
 
     const [relHeight, relWidth] =
@@ -703,7 +703,6 @@ class Histogram extends declared(Widget) {
         role="img"
         shape-rendering="crispEdges"
         stroke-width="0"
-        tabindex={0}
         width={barWidth}
         x={x}
         y={y}
@@ -724,11 +723,11 @@ class Histogram extends declared(Widget) {
     const { average } = this;
 
     if (!isSome(average)) {
-      return;
+      return undefined;
     }
 
     const labelNodes: VNode = [
-      <tspan class={this.classes(CSS.averageSymbol)}>{i18n.xAverage}</tspan>,
+      <tspan class={this.classes(CSS.averageSymbol)}>x̄ </tspan>,
       <tspan class={this.classes(CSS.averageLabel)}>
         {this.labelFormatFunction ? this.labelFormatFunction(average, "average") : average}
       </tspan>
@@ -749,7 +748,7 @@ class Histogram extends declared(Widget) {
   // Generate user-defined lines and associated labels
   protected renderCustomLines(): VNode {
     if (!this.dataLines || !this.dataLines.length) {
-      return;
+      return undefined;
     }
 
     return this.dataLines.map(({ value, label }, index) =>
@@ -850,8 +849,8 @@ class Histogram extends declared(Widget) {
 
     return counts.map((count, index) =>
       layout === "vertical"
-        ? [height / counts.length, (count / max) * width]
-        : [(count / max) * height, width / counts.length]
+        ? [height / counts.length, max !== 0 ? (count / max) * width : 0]
+        : [max !== 0 ? (count / max) * height : 0, width / counts.length]
     );
   }
 

@@ -51,7 +51,8 @@ import * as i18n from "dojo/i18n!esri/widgets/Compass/nls/Compass";
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import { Axes } from "esri/widgets/interfaces";
@@ -61,7 +62,8 @@ import Widget = require("esri/widgets/Widget");
 import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -154,7 +156,7 @@ class Compass extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel

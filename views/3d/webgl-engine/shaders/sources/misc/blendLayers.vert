@@ -10,5 +10,5 @@ varying vec2 uv;
 
 void main(void) {
   gl_Position = vec4(position, 1.0);
-  uv = uv0 * scale + offset;;
+  uv = uv0 * scale + offset;
 }

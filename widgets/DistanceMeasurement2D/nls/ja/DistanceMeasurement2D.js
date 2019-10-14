@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"計測",hint:"マップで始点となる位置をクリックし、計測を開始します",unsupported:"MapView で 2D の距離計測はサポートされていません。",distance:"距離",newMeasurement:"新しい計測",mode:"モード",modes:{auto:"自動",planar:"平面",geodesic:"測地線"},unit:"単位",units:{metric:"メートル法",imperial:"ヤード・ポンド法",kilometers:"キロメートル",meters:"メートル",miles:"マイル",inches:"インチ",feet:"フィート",yards:"ヤード","nautical-miles":"海里","us-feet":"フィート (米国)","degrees-minutes-seconds":"DMS",degrees:"度"}});
+define({title:"距離の計測",hint:"マップで始点となる位置をクリックし、計測を開始します",unsupported:"MapView で 2D の距離計測はサポートされていません。",distance:"距離",newMeasurement:"新しい計測",mode:"モード",modes:{auto:"自動",planar:"平面",geodesic:"測地線"},unit:"単位",units:{metric:"メートル法",imperial:"ヤード・ポンド法",kilometers:"キロメートル",meters:"メートル",miles:"マイル",inches:"インチ",feet:"フィート",yards:"ヤード","nautical-miles":"海里","us-feet":"フィート (米国)","degrees-minutes-seconds":"DMS",degrees:"度"}});

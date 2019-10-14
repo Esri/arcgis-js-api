@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Lisa järjehoidja",disabledHeading:"Järjehoidjad on keelatud",disabledDescription:"Järjehoidjate lubamiseks lisage kaardivaade.",goToBookmark:"Ava järjehoidja",noBookmarksHeading:"Järjehoidjad puuduvad",noBookmarksDescription:"Lisage oma kaardile järjehoidjad; need kuvatakse siin.",title:"Pealkiri",addPlaceholder:"Sisestage järjehoidja nimi",addingBookmark:"Järjehoidja lisamine",widgetLabel:"Järjehoidjad"});
+define({addBookmark:"Lisa järjehoidja",goToBookmark:"Ava järjehoidja",noBookmarksHeading:"Järjehoidjad puuduvad",noBookmarksDescription:"Lisage oma kaardile järjehoidjad; need kuvatakse siin.",title:"Pealkiri",addPlaceholder:"Sisestage järjehoidja nimi",addingBookmark:"Järjehoidja lisamine",widgetLabel:"Järjehoidjad"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"Element",title:"Anmelden",info:"Melden Sie sich an, um auf das Element unter {server} {resource} zuzugreifen.",oAuthInfo:"Melden Sie sich bei {server} an.",lblUser:"Benutzername:",lblPwd:"Kennwort:",lblOk:"OK",lblSigning:"Anmelden...",lblCancel:"Abbrechen",errorMsg:"Benutzername/Kennwort ungültig. Versuchen Sie es erneut.",invalidUser:"Der eingegebene Benutzername oder das eingegebene Kennwort ist falsch.",forbidden:"Der Benutzername und das Kennwort sind gültig, aber Sie haben keinen Zugriff auf diese Ressource.",noAuthService:"Zugriff auf Authentifizierungsservice nicht möglich."});

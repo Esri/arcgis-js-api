@@ -301,10 +301,7 @@ bool testVisibilityHUD(vec4 posProj) {
     // uRenderTransparentlyOccludedHUD = 0.75
     return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;
   }
-  // and visible pixels that are not occluded by semi-transparent geometry here
-  else {
-    return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
-  }
 
-  // return texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w).r > 0.0;
+  // and visible pixels that are not occluded by semi-transparent geometry here
+  return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
 }

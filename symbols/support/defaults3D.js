@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../core/compilerUtils","../../core/maybe","../FillSymbol3DLayer","../LineSymbol3D","../MeshSymbol3D","../PointSymbol3D","../PolygonSymbol3D","./defaults","./defaultsJSON"],function(e,l,o,r,t,n,i,a,m,u,y){function s(e){if(r.isNone(e))return null;switch(e.type){case"mesh":return b;case"point":case"multipoint":return f;case"polyline":return c;case"polygon":case"extent":return S;default:o.neverReached(e)}return null}Object.defineProperty(l,"__esModule",{value:!0});var f=a.fromSimpleMarkerSymbol(u.defaultPointSymbol2D),c=n.fromSimpleLineSymbol(u.defaultPolylineSymbol2D),S=m.fromSimpleFillSymbol(u.defaultPolygonSymbol2D),b=new i({symbolLayers:[new t({material:{color:y.defaultColor},edges:{type:"solid",size:"1px",color:y.defaultOutlineColor}})]});l.getDefaultSymbol3D=s});

@@ -1104,6 +1104,7 @@ class RasterSymbologyEditor extends declared(Widget) {
             selectedIdx = listItem.index;
             return true;
           }
+          return false;
         });
         store = new Memory({
           data: list,

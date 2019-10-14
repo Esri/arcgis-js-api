@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Додати конвертацію",captureMode:"Режим фіксування",changeCoordinateDisplay:"Змінити відображення координат",convert:"Перетворити",conversionOutputSuffix:"вихідні дані конвертації",copySuccessMessage:"Координати скопійовані в буфер обміну",defaultPattern:"Скинути до параметрів за замовчуванням",goTo:"Перейти до місця розташування",inputCoordTitle:"Вхідна координата",invalidCoordinate:"Неприпустима координата",liveMode:"«Живий» режим",locationOffBasemap:"Вхідна координата виходить за межі екстенту базової карти",noBasemap:"Немає базової карти.",noLocation:"Немає положення",removeConversion:"Видалити конвертацію",selectFormat:"Вибрати формат",settingsTitle:"Налаштування формату"});

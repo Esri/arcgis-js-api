@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 /**
  * The CSVLayer is a point layer based on a CSV file (.csv, .txt). CSV is a plain-text file format used to represent tabular data,
@@ -28,7 +28,7 @@
  * longitude coordinate is the X value. Features from the CSV file are accessible via the API so you can query
  * features and use them as input to geometry or geoprocessing services.
  *
- * If CSV files are not on the same domain as your website, a [CORS enabled server](https://enable-cors.org/server.html) or a proxy is
+ * If CSV files are not on the same domain as your website, a [CORS enabled server](../guide/cors/index.html) or a [proxy](../guide/proxies/index.html) is
  * required. The following snippet shows how to add a new CSVLayer instance to a map.
  *
  * ```js

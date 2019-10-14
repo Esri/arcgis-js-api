@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../webgl"],function(e,t,r,o){o.enums.Usage,o.enums.DataType,o.enums.PrimitiveType;return function(){function e(e,t){this.rctx=e,this._vertexBuffer=o.BufferObject.createVertex(e,35044,new Uint16Array(t)),this._vao=new o.VertexArrayObject(e,{a_position:0,a_texcoord:1},{geometry:[{name:"a_position",count:2,type:5123,offset:0,stride:4,normalized:!1}]},{geometry:this._vertexBuffer})}return e.prototype.bind=function(){this._vao.bind()},e.prototype.unbind=function(){this._vao.unbind()},e.prototype.dispose=function(){this._vao.dispose(!1),this._vertexBuffer.dispose()},e.prototype.draw=function(){this.rctx.drawArrays(5,0,4)},e}()});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../webgl"],function(e,t,r,i){i.enums.Usage,i.enums.DataType,i.enums.PrimitiveType;return function(){function e(e,t){this.rctx=e,this._vertexBuffer=i.BufferObject.createVertex(e,35044,new Uint16Array(t)),this._vao=new i.VertexArrayObject(e,{a_position:0},{geometry:[{name:"a_position",count:2,type:5123,offset:0,stride:4,normalized:!1}]},{geometry:this._vertexBuffer})}return e.prototype.bind=function(){this._vao.bind()},e.prototype.unbind=function(){this._vao.unbind()},e.prototype.dispose=function(){this._vao.dispose(!1),this._vertexBuffer.dispose()},e.prototype.draw=function(){this.rctx.bindVAO(this._vao),this.rctx.drawArrays(5,0,4)},e}()});

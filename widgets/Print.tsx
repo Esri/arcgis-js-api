@@ -52,6 +52,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Print/nls/Print";
 // esri.core
 import Collection = require("esri/core/Collection");
 import EsriError = require("esri/core/Error");
+import { eventKey } from "esri/core/events";
 import Logger = require("esri/core/Logger");
 import urlUtils = require("esri/core/urlUtils");
 import watchUtils = require("esri/core/watchUtils");
@@ -63,7 +64,7 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 import PrintTemplate = require("esri/tasks/support/PrintTemplate");
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -75,7 +76,7 @@ import TemplateOptions = require("esri/widgets/Print/TemplateOptions");
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -86,6 +87,8 @@ interface TemplatesInfo {
   format: TemplateInfo;
   layout: TemplateInfo;
 }
+
+type TabId = "layoutTab" | "mapOnlyTab";
 
 const FileLinkCollection = Collection.ofType<FileLink>(FileLink);
 
@@ -192,6 +195,8 @@ class Print extends declared(Widget) {
    */
   constructor(params?: any) {
     super();
+
+    this._focusOnTabChange = this._focusOnTabChange.bind(this);
   }
 
   postInitialize(): void {
@@ -324,21 +329,23 @@ class Print extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _exportedFileNameMap: HashMap<number> = {};
-
-  private _layoutTabSelected = true;
+  private _activeTabFocusRequested = false;
 
   private _advancedOptionsVisibleForLayout = false;
 
   private _advancedOptionsVisibleForMapOnly = false;
+
+  private _awaitingServerResponse = false;
+
+  private _exportedFileNameMap: HashMap<number> = {};
+
+  private _layoutTabSelected = true;
 
   private _pendingExportScroll = false;
 
   private _previousTitleOrFilename: string = "";
 
   private _rootNode: HTMLElement = null;
-
-  private _awaitingServerResponse = false;
 
   //--------------------------------------------------------------------------
   //
@@ -463,7 +470,7 @@ class Print extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView = null;
 
   //----------------------------------
   //  viewModel
@@ -877,10 +884,12 @@ class Print extends declared(Widget) {
           class={CSS.layoutTabList}
           role="tablist"
           onclick={this._toggleLayoutPanel}
-          onkeydown={this._toggleLayoutPanel}
+          onkeydown={this._handleLayoutPanelKeyDown}
           bind={this}
         >
           <li
+            afterCreate={this._focusOnTabChange}
+            afterUpdate={this._focusOnTabChange}
             id={`${this.id}__layoutTab`}
             data-tab-id="layoutTab"
             class={CSS.layoutTab}
@@ -891,6 +900,8 @@ class Print extends declared(Widget) {
             {i18n.layoutTab}
           </li>
           <li
+            afterCreate={this._focusOnTabChange}
+            afterUpdate={this._focusOnTabChange}
             id={`${this.id}__mapOnlyTab`}
             data-tab-id="mapOnlyTab"
             class={CSS.layoutTab}
@@ -958,6 +969,22 @@ class Print extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _focusOnTabChange(node: HTMLElement): void {
+    if (!this._activeTabFocusRequested) {
+      return;
+    }
+
+    const tabType = node.getAttribute("data-tab-id") as TabId;
+
+    if (
+      (tabType === "layoutTab" && this._layoutTabSelected) ||
+      (tabType === "mapOnlyTab" && !this._layoutTabSelected)
+    ) {
+      node.focus();
+      this._activeTabFocusRequested = false;
+    }
+  }
 
   private _renderLoader(): VNode {
     const classes = {
@@ -1175,6 +1202,7 @@ class Print extends declared(Widget) {
           <a
             aria-label={`${exportedLink.formattedName}. ${i18n.linkReady}`}
             href={url}
+            rel="noreferrer"
             tabIndex={0}
             target="_blank"
             class={this.classes(CSS.exportedFileLink, anchorClasses)}
@@ -1198,18 +1226,42 @@ class Print extends declared(Widget) {
     this.templateOptions.title = previous;
   }
 
-  @accessibleHandler()
   private _toggleLayoutPanel(e: Event): void {
+    const target = e.target as HTMLLIElement;
+    this._toggleTab(target.getAttribute("data-tab-id") as TabId);
+  }
+
+  private _toggleTab(targetTab: TabId): void {
     this._swapInputValue();
 
-    const target = e.target as HTMLSelectElement;
-    this._layoutTabSelected = target.getAttribute("data-tab-id") === "layoutTab";
+    this._layoutTabSelected = targetTab === "layoutTab";
 
     if (!this._layoutTabSelected) {
       this.templateOptions.layout = "MAP_ONLY";
     } else {
       const layoutChoices = this.get<string[]>("viewModel.templatesInfo.layout.choiceList");
       this.templateOptions.layout = layoutChoices && layoutChoices[0];
+    }
+
+    this._activeTabFocusRequested = true;
+  }
+
+  private _handleLayoutPanelKeyDown(event: KeyboardEvent): void {
+    const key = eventKey(event);
+    const target = event.target as HTMLLIElement;
+    const currentTab = target.getAttribute("data-tab-id") as TabId;
+
+    if (key === "Enter" || key === " ") {
+      this._toggleTab(currentTab);
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (key === "ArrowLeft" || key === "ArrowRight") {
+      this._toggleTab(currentTab === "layoutTab" ? "mapOnlyTab" : "layoutTab");
+      event.preventDefault();
+      event.stopPropagation();
     }
   }
 }

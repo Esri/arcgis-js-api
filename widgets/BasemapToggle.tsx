@@ -45,7 +45,8 @@ import Basemap = require("esri/Basemap");
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -149,7 +150,7 @@ class BasemapToggle extends declared(Widget) {
    *
    * * The {@link module:esri/Map#basemap string ID} of any Esri basemap.
    * * A custom {@link module:esri/Basemap} object. Since this property may be
-   * [autocast](../guide/autocasting/index.html), the {@link module:esri/Basemap}
+   * [autocast](../guide/programming-patterns/#autocasting), the {@link module:esri/Basemap}
    * module does not need to be included in the `require()` function in most applications.
    *
    * @instance
@@ -194,7 +195,7 @@ class BasemapToggle extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel

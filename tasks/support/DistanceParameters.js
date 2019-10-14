@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["../../core/Accessor","../../core/jsonMap","../../geometry/support/jsonUtils"],function(e,t,s){var r=new t.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return e.createSubclass({declaredClass:"esri.tasks.support.DistanceParameters",properties:{geometry1:null,geometry2:null,distanceUnit:null,geodesic:null},toJSON:function(){var e={},t=this.geometry1;t&&(e.geometry1=JSON.stringify({geometryType:s.getJsonType(t),geometry:t}),e.sr=JSON.stringify(this.geometry1.spatialReference.toJSON()));var i=this.geometry2;return i&&(e.geometry2=JSON.stringify({geometryType:s.getJsonType(i),geometry:i})),this.distanceUnit&&(e.distanceUnit=r.toJSON(this.distanceUnit)),this.geodesic&&(e.geodesic=this.geodesic),e}})});
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../geometry","../../core/Accessor","../../core/jsonMap","../../core/accessorSupport/decorators","../../geometry/support/jsonUtils"],function(e,t,r,o,s,i,n,p,y){var c=new n.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return function(e){function t(t){var r=e.call(this,t)||this;return r.geometry1=null,r.geometry2=null,r.distanceUnit=null,r.geodesic=null,r}return o(t,e),t.prototype.toJSON=function(){var e={},t=this.geometry1;t&&(e.geometry1=JSON.stringify({geometryType:y.getJsonType(t),geometry:t}),e.sr=JSON.stringify(this.geometry1.spatialReference.toJSON()));var r=this.geometry2;return r&&(e.geometry2=JSON.stringify({geometryType:y.getJsonType(r),geometry:r})),this.distanceUnit&&(e.distanceUnit=c.toJSON(this.distanceUnit)),this.geodesic&&(e.geodesic=this.geodesic),e},r([p.property({types:s.geometryTypes,json:{write:!0}})],t.prototype,"geometry1",void 0),r([p.property({types:s.geometryTypes,json:{write:!0}})],t.prototype,"geometry2",void 0),r([p.property({type:String,json:{write:!0}})],t.prototype,"distanceUnit",void 0),r([p.property({type:Boolean,json:{write:!0}})],t.prototype,"geodesic",void 0),t=r([p.subclass("esri.tasks.support.DistanceParameters")],t)}(p.declared(i))});

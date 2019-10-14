@@ -13,20 +13,20 @@
       "description": "An optional string that can define a client-side drawing tool to be used with this feature.",
       "enum": [
         "esriFeatureEditToolAutoCompletePolygon",
-        "esriFeatureEditToolPolygon",
-        "esriFeatureEditToolTriangle",
-        "esriFeatureEditToolRectangle",
-        "esriFeatureEditToolLeftArrow",
-        "esriFeatureEditToolRightArrow",
-        "esriFeatureEditToolEllipse",
-        "esriFeatureEditToolUpArrow",
-        "esriFeatureEditToolDownArrow",
         "esriFeatureEditToolCircle",
+        "esriFeatureEditToolDownArrow",
+        "esriFeatureEditToolEllipse",
         "esriFeatureEditToolFreehand",
+        "esriFeatureEditToolLeftArrow",
         "esriFeatureEditToolLine",
         "esriFeatureEditToolNone",
+        "esriFeatureEditToolPoint",
+        "esriFeatureEditToolPolygon",
+        "esriFeatureEditToolRectangle",
+        "esriFeatureEditToolRightArrow",
         "esriFeatureEditToolText",
-        "esriFeatureEditToolPoint"
+        "esriFeatureEditToolTriangle",
+        "esriFeatureEditToolUpArrow"
       ]
     },
     "name": {

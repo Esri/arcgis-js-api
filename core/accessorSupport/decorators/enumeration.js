@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../jsonMap","./property"],function(e,n,r,t){function o(e){return t.property({type:e})}Object.defineProperty(n,"__esModule",{value:!0}),n.enumeration=o,function(e){function n(){return function(e,n){void 0===n&&(n={ignoreUnknown:!0});var o=e instanceof r.JSONMap?e:new r.JSONMap(e,n);return t.property({type:n&&n.ignoreUnknown?o.apiValues:String,json:{type:o.jsonValues,read:{reader:o.read},write:{writer:o.write}}})}}e.serializable=n}(o=n.enumeration||(n.enumeration={}))});

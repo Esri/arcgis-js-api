@@ -54,7 +54,8 @@ import Graphic = require("esri/Graphic");
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -63,7 +64,8 @@ import Widget = require("esri/widgets/Widget");
 import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -318,7 +320,7 @@ class Track extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel

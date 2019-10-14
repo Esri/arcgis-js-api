@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Mål",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"3D-arealmåling støttes kun i SceneView.",perimeterLength:"Omkrets",area:"Areal",unit:"Enhet",notApplicable:"–",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfot","square-yards":"Kvadratyard","square-us-feet":"Kvadratfot (USA)",acres:"Acre",ares:"ar",hectares:"Hektar"}});
+define({title:"Arealmåling",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"3D-arealmåling støttes kun i SceneView.",perimeterLength:"Omkrets",area:"Areal",unit:"Enhet",notApplicable:"–",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfot","square-yards":"Kvadratyard","square-us-feet":"Kvadratfot (USA)",acres:"Acre",ares:"ar",hectares:"Hektar"}});

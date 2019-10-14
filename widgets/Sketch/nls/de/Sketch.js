@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Skizzieren",move:"Verschieben",pan:"Schwenken",reset:"Zurücksetzen",reshape:"Umformen",rotate:"Drehen",scale:"Skalieren",transform:"Transformieren",undo:"Rückgängig",redo:"Wiederherstellen",drawPoint:"Punkt zeichnen",drawPolygon:"Polygon zeichnen",drawPolyline:"Polylinie zeichnen",drawMultipoint:"Multipoint zeichnen",drawCircle:"Kreis zeichnen",drawRectangle:"Rechteck zeichnen",clearDrawing:"Zeichnung löschen",completeDrawing:"Zeichnen beenden",pauseDrawing:"Zeichnen unterbrechen",resumeDrawing:"Zeichnen fortsetzen",updateDrawing:"Zeichnung aktualisieren",addPointTooltip:"Klicken, um einen Punkt hinzuzufügen",removePointTooltip:"Klicken, um diesen Punkt zu entfernen",completePolygonTooltip:"Auf diesen Punkt klicken, um den Vorgang abzuschließen",startDrawingTooltip:"Klicken, um mit dem Zeichnen zu beginnen",continueDrawingTooltip:"Klicken, um das Zeichnen fortzusetzen",completeDrawingTooltip:"Doppelklicken, um abzuschließen",addMultipointTooltip:"Klicken, um mit dem Hinzufügen von Punkten zu beginnen",finishMultipointTooltip:"Doppelklicken, um zu beenden",addFreehandTooltip:"Zum Starten drücken und zum Beenden loslassen",addShapeTooltip:"Zum Hinzufügen einer Form klicken, oder zum Starten drücken und zum Beenden loslassen",featureCount:"{count} Feature",featuresCount:"{count} Features",vertexCount:"{count} Stützpunkt",verticesCount:"{count} Stützpunkte",deleteFeature:"Feature löschen",deleteVertex:"Stützpunkt löschen",duplicate:"Duplikat"});

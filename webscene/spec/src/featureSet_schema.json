@@ -17,11 +17,11 @@
       "type": "string",
       "description": "The type of geometry.",
       "enum": [
-        "esriGeometryPoint",
+        "esriGeometryEnvelope",
         "esriGeometryMultipoint",
-        "esriGeometryPolyline",
+        "esriGeometryPoint",
         "esriGeometryPolygon",
-        "esriGeometryEnvelope"
+        "esriGeometryPolyline"
       ]
     }
   },

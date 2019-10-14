@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Accessor","../core/Collection","../core/watchUtils","../core/accessorSupport/decorators"],function(e,r,t,o,n,i,s,p){return function(e){function r(r){var t=e.call(this)||this;return t.view=null,t.baseLayerViews=new i,t.referenceLayerViews=new i,t._loadingHdl=s.init(t,"view.map.basemap",function(e){e&&e.load()}),t}return t(r,e),r.prototype.destroy=function(){this._set("view",null),this._loadingHdl&&(this._loadingHdl.remove(),this._loadingHdl=null)},Object.defineProperty(r.prototype,"suspented",{get:function(){return!this.view||this.view.suspended},enumerable:!0,configurable:!0}),o([p.property({constructOnly:!0})],r.prototype,"view",void 0),o([p.property({readOnly:!0})],r.prototype,"baseLayerViews",void 0),o([p.property({readOnly:!0})],r.prototype,"referenceLayerViews",void 0),o([p.property({dependsOn:["view.suspended"]})],r.prototype,"suspented",null),r=o([p.subclass("esri.views.BasemapView")],r)}(p.declared(n))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Accessor","../core/Collection","../core/watchUtils","../core/accessorSupport/decorators"],function(e,r,t,o,n,i,p,s){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(r){var t=e.call(this)||this;return t.view=null,t.baseLayerViews=new i,t.referenceLayerViews=new i,t._loadingHandle=p.init(t,"view.map.basemap",function(e){e&&e.load()}),t}return t(r,e),r.prototype.destroy=function(){this._set("view",null),this._loadingHandle&&(this._loadingHandle.remove(),this._loadingHandle=null)},Object.defineProperty(r.prototype,"suspended",{get:function(){return!this.view||this.view.suspended},enumerable:!0,configurable:!0}),Object.defineProperty(r.prototype,"updating",{get:function(){return(!this.view||!this.view.suspended)&&!(!(this.view&&this.view.map&&this.view.map.basemap)||this.view.map.basemap.loaded)},enumerable:!0,configurable:!0}),o([s.property({constructOnly:!0})],r.prototype,"view",void 0),o([s.property({readOnly:!0})],r.prototype,"baseLayerViews",void 0),o([s.property({readOnly:!0})],r.prototype,"referenceLayerViews",void 0),o([s.property({readOnly:!0,dependsOn:["view.suspended"]})],r.prototype,"suspended",null),o([s.property({type:Boolean,readOnly:!0,dependsOn:["view.suspended","view.map.basemap.loaded"]})],r.prototype,"updating",null),r=o([s.subclass("esri.views.BasemapView")],r)}(s.declared(n));r.BasemapView=a});

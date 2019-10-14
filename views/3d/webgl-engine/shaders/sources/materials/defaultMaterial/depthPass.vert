@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 
 #include <materials/defaultMaterial/commonInputs.glsl>
 
@@ -8,7 +9,7 @@ attribute vec3 position;
 varying float depth;
 varying vec3 vpos;
 
-#ifdef TEXTURING
+#ifdef TEXTURE_COLOR
 attribute vec2 uv0;
 varying vec2 vtc;
 #ifdef TEXTURE_ATLAS
@@ -47,9 +48,6 @@ void main(void) {
 
 #ifdef INSTANCED_DOUBLE_PRECISION
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
-#ifdef IOS_SAFARI_FIX
-  originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
-#endif
   vpos -= originDelta;
 #endif /* INSTANCED_DOUBLE_PRECISION */
 
@@ -57,16 +55,13 @@ void main(void) {
     vpos += calculateVerticalOffset(vpos, localOrigin);
   #endif
 
-  vec4 eye = view * vec4(vpos, 1.0);
-
-  gl_Position = proj * eye;
-  depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
+  gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);
 
 #if defined(COMPONENTCOLORS)
   } // if readComponentCastShadowsFlag==true
 #endif
 
-#ifdef TEXTURING
+#ifdef TEXTURE_COLOR
 #ifndef FLIPV
   vtc = uv0;
 #else
@@ -75,6 +70,6 @@ void main(void) {
 #ifdef TEXTURE_ATLAS
   regionV = region;
 #endif
-#endif /* TEXTURING */
+#endif /* TEXTURE_COLOR */
 
 }

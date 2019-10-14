@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/DragEventSeparator","../../../input/InputHandler"],function(n,t,e,i,a){Object.defineProperty(t,"__esModule",{value:!0});var o=function(n){function t(t){var e=n.call(this,!0)||this;e.view=t,e.registerIncoming("drag",function(n){return e._handleDrag(n)}),e.registerIncoming("pointer-down",function(n){return e.stopMomentumNavigation()});var a=e.view.mapViewNavigation;return e.dragEventSeparator=new i.DragEventSeparator({start:function(n,t){a.pinch.begin(e.view,t.data),t.stopPropagation()},update:function(n,t){a.pinch.update(e.view,t.data),t.stopPropagation()},end:function(n,t){a.pinch.end(e.view,t.data),t.stopPropagation()},condition:function(n){return n>=2}}),e}return e(t,n),t.prototype._handleDrag=function(n){this.dragEventSeparator.handle(n)},t.prototype.stopMomentumNavigation=function(){this.view.mapViewNavigation.pinch.stopMomentumNavigation()},t}(a.InputHandler);t.PinchRotateAndZoom=o});

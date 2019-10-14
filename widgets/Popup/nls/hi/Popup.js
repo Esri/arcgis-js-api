@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({zoom:"जूम करें",next:"अगली विशेषता",previous:"पिछली विशेषता",dock:"डॉक करें",undock:"डॉक हटाये",pageText:"{total} का {index}",selectedFeature:"चयनित सुविधा",selectedFeatures:"{total} परिणाम",tooManyFields:"इस लेयर में भी बहुत अधिक फील्ड हैं, कुछ प्रदर्शित नहीं होंगे।"});

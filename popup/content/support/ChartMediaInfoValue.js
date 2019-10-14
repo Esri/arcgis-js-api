@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","./ChartMediaInfoValueSeries"],function(e,r,t,o,i,p,l,n){return function(e){function r(r){var t=e.call(this)||this;return t.fields=[],t.normalizeField=null,t.series=[],t.tooltipField=null,t}t(r,e),i=r,r.prototype.clone=function(){return new i({fields:p.clone(this.fields),normalizeField:this.normalizeField,tooltipField:this.tooltipField})};var i;return o([l.property({type:[String],json:{write:!0}})],r.prototype,"fields",void 0),o([l.property({type:String,json:{write:!0}})],r.prototype,"normalizeField",void 0),o([l.property({type:[n],json:{read:!1}})],r.prototype,"series",void 0),o([l.property({type:String,json:{write:!0}})],r.prototype,"tooltipField",void 0),r=i=o([l.subclass("esri.popup.content.support.ChartMediaInfoValue")],r)}(l.declared(i))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","./ChartMediaInfoValueSeries"],function(e,r,t,o,i,p,l,n){return function(e){function r(r){var t=e.call(this)||this;return t.fields=[],t.normalizeField=null,t.series=[],t.tooltipField=null,t}t(r,e),i=r,r.prototype.clone=function(){return new i({fields:p.clone(this.fields),normalizeField:this.normalizeField,tooltipField:this.tooltipField})};var i;return o([l.property({type:[String],json:{write:!0}})],r.prototype,"fields",void 0),o([l.property({type:String,json:{write:!0}})],r.prototype,"normalizeField",void 0),o([l.property({type:[n],json:{read:!1}})],r.prototype,"series",void 0),o([l.property({type:String,json:{write:!0}})],r.prototype,"tooltipField",void 0),r=i=o([l.subclass("esri.popup.content.support.ChartMediaInfoValue")],r)}(l.declared(i.JSONSupport))});

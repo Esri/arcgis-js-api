@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Könyvjelző hozzáadása",disabledHeading:"Könyvjelzők letiltva",disabledDescription:"MapView hozzáadása a könyvjelzők engedélyezéséhez.",goToBookmark:"Ugrás könyvjelzőre",noBookmarksHeading:"Nincs könyvjelző",noBookmarksDescription:"Adjon hozzá könyvjelzőket a térképéhez, és azok itt fognak megjelenni.",title:"Cím",addPlaceholder:"Adja meg a könyvjelző címét",addingBookmark:"Könyvjelző hozzáadása",widgetLabel:"Könyvjelzők"});
+define({addBookmark:"Könyvjelző hozzáadása",goToBookmark:"Ugrás könyvjelzőre",noBookmarksHeading:"Nincs könyvjelző",noBookmarksDescription:"Adjon hozzá könyvjelzőket a térképéhez, és azok itt fognak megjelenni.",title:"Cím",addPlaceholder:"Adja meg a könyvjelző címét",addingBookmark:"Könyvjelző hozzáadása",widgetLabel:"Könyvjelzők"});

@@ -13,6 +13,9 @@
         190
       ]
     },
+    "enable": {
+      "type": "boolean"
+    },
     "type": {
       "type": "string",
       "description": "Specifies the type of symbol used.",
@@ -24,9 +27,9 @@
       "type": "string",
       "description": "Size of the waterbody the symbol layer represents. Applications will display waves that are appropriate for the chosen body of water, for example ocean versus marina versus swimming pool.",
       "enum": [
-        "small",
+        "large",
         "medium",
-        "large"
+        "small"
       ],
       "default": "medium"
     },
@@ -41,9 +44,9 @@
       "description": "The magnitude of the waves displayed on the waterbody. Strings roughly follow the [Douglas sea scale](https://en.wikipedia.org/wiki/Douglas_sea_scale), currently limited to lower degrees.",
       "enum": [
         "calm",
+        "moderate",
         "rippled",
-        "slight",
-        "moderate"
+        "slight"
       ],
       "default": "moderate"
     }

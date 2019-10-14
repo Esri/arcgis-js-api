@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"K",south:"G",east:"D",west:"B"},addConversion:"Dönüştürme ekle",captureMode:"Yakalama modu",changeCoordinateDisplay:"Koordinat görüntüsünü değiştir",convert:"Çevir",conversionOutputSuffix:"dönüştürme çıkışı",copySuccessMessage:"Koordinat panoya kopyalandı",defaultPattern:"Varsayılana sıfırla",goTo:"Konuma git",inputCoordTitle:"Girdi koordinatı",invalidCoordinate:"Geçersiz koordinat",liveMode:"Canlı modu",locationOffBasemap:"Girdi koordinatı altlık haritası yayılımının dışında",noBasemap:"Altlık haritası yok.",noLocation:"Konum yok",removeConversion:"Dönüştürmeyi kaldır",selectFormat:"Biçim seç",settingsTitle:"Format ayarları"});

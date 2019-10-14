@@ -1,11 +1,11 @@
 
 // 4x4 color transform matrix whether that last column is the translation component
-uniform mat4 u_insideEffectMat4[ MAX_FILTER_COUNT ];
-uniform mat4 u_outsideEffectMat4[ MAX_FILTER_COUNT ];
+uniform highp mat4 u_insideEffectMat4[ MAX_FILTER_COUNT ];
+uniform highp mat4 u_outsideEffectMat4[ MAX_FILTER_COUNT ];
 
 // Alpha associated with each effect. We separate alpha to avoid using 5x5 color matricies
-uniform float u_insideOpacities[ MAX_FILTER_COUNT ];
-uniform float u_outsideOpacities[ MAX_FILTER_COUNT ];
+uniform highp float u_insideOpacities[ MAX_FILTER_COUNT ];
+uniform highp float u_outsideOpacities[ MAX_FILTER_COUNT ];
 
 vec4 getEffectColor(in vec4 color, in float filterFlags) {
   // Unpack premultiplied colors
@@ -14,7 +14,7 @@ vec4 getEffectColor(in vec4 color, in float filterFlags) {
 
   // default visibility filter is index 0, index 1+ are effects
   for (int i = 1; i < EFFECT_COUNT + 1; i++) {
-    float bit = getBit(filterFlags, i);
+    float bit = getFilterBit(filterFlags, i);
 
     rgbw = u_insideEffectMat4[ i ] * (bit  * rgbw) + u_outsideEffectMat4[ i ] * ((1.0 - bit) * rgbw);
     a    = u_insideOpacities[ i ]  * (bit  * a)    + u_outsideOpacities[ i ]  * ((1.0 - bit) * a);
@@ -31,7 +31,7 @@ vec3 applyFilter(inout vec4 color, inout vec3 pos, in float filterFlags) {
 
   // default visibility filter is index 0, index 1+ are effects
   for (int i = 0; i < EFFECT_COUNT + 1; i++) {
-    float bit = getBit(filterFlags, i);
+    float bit = getFilterBit(filterFlags, i);
 
     rgbw = u_insideEffectMat4[ i ] * (bit  * rgbw) + u_outsideEffectMat4[ i ] * ((1.0 - bit) * rgbw);
     a    = u_insideOpacities[ i ]  * (bit  * a)    + u_outsideOpacities[ i ]  * ((1.0 - bit) * a);
@@ -42,19 +42,25 @@ vec3 applyFilter(inout vec4 color, inout vec3 pos, in float filterFlags) {
   color.a = a;
 
   // If we are not visible, clip the vertex if we are doing a hit-test
-  pos.z += 2.0 * (1.0 - getBit(filterFlags, 0));
+  pos.z += 2.0 * (1.0 - getFilterBit(filterFlags, 0));
+
+  // MRT Soon(TM) ? 
+#ifdef HIGHLIGHT
+  pos.z += 2.0 * (1.0 - getHighlightBit(filterFlags));
+#endif
+  
   return pos;
 }
 
 vec3 applyFilterLabels(inout vec4 color, inout vec3 pos, in float filterFlags) {
-  float bit = getBit(filterFlags, 0);
+  float bit = getFilterBit(filterFlags, 0);
 
   pos.z += 2.0 * (1.0 - bit);
 
   // When outsideLabelsVisible is false, we also clip labels if they fail any effect filter
 #ifndef OUTSIDE_LABELS_VISIBLE
   for (int i = 1; i < EFFECT_COUNT + 1; i++) {
-    float bit = getBit(filterFlags, i);
+    float bit = getFilterBit(filterFlags, i);
 
     pos.z += 2.0 * (1.0 - bit);
   }

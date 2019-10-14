@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"É",south:"D",east:"K",west:"Ny"},addConversion:"Adatkonverzió hozzáadása",captureMode:"Rögzítés módja",changeCoordinateDisplay:"A koordináták megjelenítésének módosítása",convert:"Átalakítás",conversionOutputSuffix:"adatkonverzió kimenete",copySuccessMessage:"Koordináta a vágólapra másolva",defaultPattern:"Visszaállítás az alapértelmezett értékre",goTo:"Ugrás a helyre",inputCoordTitle:"Bemeneti koordináta",invalidCoordinate:"Érvénytelen koordináta",liveMode:"Élő üzemmód",locationOffBasemap:"A bemeneti koordináta kívül esik az alaptérkép kiterjedésén",noBasemap:"Nincs alaptérkép.",noLocation:"Nincs pozíció",removeConversion:"Adatkonverzió eltávolítása",selectFormat:"Formátum kiválasztása",settingsTitle:"Formátumbeállítások"});

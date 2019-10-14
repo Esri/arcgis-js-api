@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this)||this;return t.type=null,t}return t(e,r),o([s.property({readOnly:!0,json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=o([s.subclass("esri.tasks.support.ColorRamp")],e)}(s.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this)||this;return t.type=null,t}return t(e,r),o([s.property({readOnly:!0,json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=o([s.subclass("esri.tasks.support.ColorRamp")],e)}(s.declared(p.JSONSupport))});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/maybe","../core/accessorSupport/decorators","./Symbol3DLayer","./edges/utils","./support/Symbol3DMaterial"],function(e,t,o,r,s,i,a,l,n){return function(e){function t(t){var o=e.call(this)||this;return o.type="extrude",o.size=void 0,o.material=null,o.castShadows=!0,o.edges=null,o}o(t,e),a=t,t.prototype.clone=function(){return new a({edges:this.edges&&this.edges.clone(),enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:s.isSome(this.material)?this.material.clone():null,castShadows:this.castShadows,size:this.size})};var a;return r([i.enumeration.serializable()({Extrude:"extrude"})],t.prototype,"type",void 0),r([i.property({type:Number,json:{write:!0}})],t.prototype,"size",void 0),r([i.property({type:n.default,json:{write:!0}})],t.prototype,"material",void 0),r([i.property({type:Boolean,nonNullable:!0,json:{write:!0,default:!0}})],t.prototype,"castShadows",void 0),r([i.property(l.symbol3dEdgesProperty)],t.prototype,"edges",void 0),t=a=r([i.subclass("esri.symbols.ExtrudeSymbol3DLayer")],t)}(i.declared(a))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/maybe","../core/accessorSupport/decorators","./Symbol3DLayer","./edges/utils","./support/Symbol3DMaterial"],function(e,t,r,o,s,a,i,l,p){return function(e){function t(t){var r=e.call(this)||this;return r.type="extrude",r.size=void 0,r.material=null,r.castShadows=!0,r.edges=null,r}r(t,e),i=t,t.prototype.clone=function(){return new i({edges:this.edges&&this.edges.clone(),enabled:this.enabled,material:s.isSome(this.material)?this.material.clone():null,castShadows:this.castShadows,size:this.size})};var i;return o([a.enumeration.serializable()({Extrude:"extrude"})],t.prototype,"type",void 0),o([a.property({type:Number,json:{write:!0}})],t.prototype,"size",void 0),o([a.property({type:p.default,json:{write:!0}})],t.prototype,"material",void 0),o([a.property({type:Boolean,nonNullable:!0,json:{write:!0,default:!0}})],t.prototype,"castShadows",void 0),o([a.property(l.symbol3dEdgesProperty)],t.prototype,"edges",void 0),t=i=o([a.subclass("esri.symbols.ExtrudeSymbol3DLayer")],t)}(a.declared(i))});

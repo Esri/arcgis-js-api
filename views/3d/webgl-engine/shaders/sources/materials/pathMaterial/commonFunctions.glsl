@@ -25,14 +25,14 @@ uniform vec3 size;
   uniform vec3 vvSizeOffset;
   uniform vec3 vvSizeFactor;
 
-  vec3 getSize() {
+  vec2 getSize() {
     float value = featureValue.x;
     // NB: swizzle -> the profile y axis is driven by the upvector (z-axis)
-    return size*clamp(vvSizeOffset + value * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).xzy;
+    return size.xy*clamp(vvSizeOffset + value * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).xz;
   }
 #else
-  vec3 getSize(){
-    return size;
+  vec2 getSize(){
+    return size.xy;
   }
 #endif
 
@@ -106,13 +106,16 @@ uniform vec3 size;
 // calculateVPos
 //
 // ====================================================================
-
 vec3 calculateVPos() {
-  vec3 size = getSize();
+  vec2 size = getSize();
   vec3 origin = position;
-  vec3 profileRightAxis = pathGeometryInfo[0].xyz;
-  vec3 profileUpAxis = pathGeometryInfo[1].xyz;
-  vec3 offset = profileRightAxis * size.x + profileUpAxis * size.y;
+  vec3 right = profileRight.xyz;
+  vec3 up = profileUp.xyz;
+  vec3 forward = cross(up, right);
+  vec2 profileVertex = profileVertexAndNormal.xy * size;
+  vec2 profileNormal = profileVertexAndNormal.zw;
+  float positionOffsetAlongProfilePlaneNormal = 0.0;
+  float normalOffsetAlongProfilePlaneNormal = 0.0;
 
 
   if(!isCapVertex()) {
@@ -121,25 +124,50 @@ vec3 calculateVPos() {
     // geometry along path segments.
     // The following code is just there to prevent the stretching from
     // going too far with very sharp angles.
-    vec3 rotationRightAxis = pathGeometryInfo[2].xyz;
-    float maxDistance = length(rotationRightAxis);
-    rotationRightAxis = normalize(rotationRightAxis);
+    vec2 rotationRight = vec2(profileRight.w, profileUp.w);
+    float maxDistance = length(rotationRight);
+    rotationRight = normalize(rotationRight);
 
     // decompose vertex into rotationRight and rotationUp
-    float rx = dot(offset, rotationRightAxis);
-    // check if rotation right distance exceeds maxDistance value
-    if( abs(rx) > maxDistance ) {
-      // if it does, recompose offset from old rotationUp and length adjusted rotationRight
-      vec3 rotationUpAxis = offset - rx*rotationRightAxis;
-      offset = rotationRightAxis * maxDistance * sign(rx) + rotationUpAxis;
+    // limit rotation right component to maxDistance
+    // and reassemble profile vertex from rotationRight and rotationUp
+    float rx = dot(profileVertex, rotationRight);
+    if (abs(rx) > maxDistance) {
+      // NB: we do the tangent by x=-y and y=x
+      vec2 rotationUp = vec2(-rotationRight.y, rotationRight.x);
+      float ry = dot(profileVertex, rotationUp);
+      profileVertex = rotationRight * maxDistance * sign(rx) + rotationUp * ry;
     }
-
-  } else {
-    vec3 profilePlaneOffset = pathGeometryInfo[2].xyz*size.x;
-    offset += profilePlaneOffset;
+  }else{
+     positionOffsetAlongProfilePlaneNormal = profileRight.w * size[0];
+     normalOffsetAlongProfilePlaneNormal = profileUp.w;
   }
+
+  vec3 offset = right * profileVertex.x + up * profileVertex.y + forward * positionOffsetAlongProfilePlaneNormal;
 
   vec4 localPosition = vec4(origin + offset, 1.0);
   return (model * localPosition).xyz;
 }
+
+// ====================================================================
+//
+// calculateVPos
+//
+// ====================================================================
+
+vec4 localNormal() {
+  vec3 right = profileRight.xyz;
+  vec3 up = profileUp.xyz;
+  vec3 forward = cross(up, right);
+  vec2 profileNormal = profileVertexAndNormal.zw;
+
+  vec3 normal = right * profileNormal.x + up * profileNormal.y;
+
+  if(isCapVertex()) {
+    normal += forward * profileUp.w;
+  }
+
+  return vec4(normal, 1.0);
+}
+
 

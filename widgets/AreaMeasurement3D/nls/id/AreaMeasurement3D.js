@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Ukur",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran area 3D hanya didukung di SceneView.",perimeterLength:"Keliling",area:"Area",unit:"Unit",notApplicable:"t/a",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial","square-kilometers":"Kilometer Persegi","square-meters":"Meter Persegi","square-miles":"Mil Persegi","square-inches":"Inci Persegi","square-feet":"Kaki Persegi","square-yards":"Yard Persegi","square-us-feet":"Kaki Persegi (AS)",acres:"Acre",ares:"Are",hectares:"Hektare"}});
+define({title:"Pengukuran Area",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran area 3D hanya didukung di SceneView.",perimeterLength:"Keliling",area:"Area",unit:"Unit",notApplicable:"t/a",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial","square-kilometers":"Kilometer Persegi","square-meters":"Meter Persegi","square-miles":"Mil Persegi","square-inches":"Inci Persegi","square-feet":"Kaki Persegi","square-yards":"Yard Persegi","square-us-feet":"Kaki Persegi (AS)",acres:"Acre",ares:"Are",hectares:"Hektare"}});

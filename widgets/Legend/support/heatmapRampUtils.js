@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../renderers/support/HeatmapColorStop"],function(o,r,e){function t(o){var r=o.colorStops,t=r.length-1;if(r&&r[0]){var a=r[t];a&&1!==a.ratio&&(r=r.slice(0),r.push(new e.HeatmapColorStop({ratio:1,color:a.color})),t++)}return r.map(function(o,r){var e="";return 0===r?e="low":r===t&&(e="high"),{color:o.color,label:e,ratio:o.ratio,offset:1-o.ratio}}).reverse()}Object.defineProperty(r,"__esModule",{value:!0}),r.getHeatmapRampStops=t});
+define(["require","exports","../../../renderers/support/HeatmapColorStop"],function(o,r,e){function t(o){var r=o.colorStops,t=r.length-1;if(r&&r[0]){var a=r[t];a&&1!==a.ratio&&(r=r.slice(0),r.push(new e.HeatmapColorStop({ratio:1,color:a.color})),t++)}return r.map(function(o,r){var e="";return 0===r?e="low":r===t&&(e="high"),{color:o.color,label:e,ratio:o.ratio}}).reverse()}Object.defineProperty(r,"__esModule",{value:!0}),r.getHeatmapRampStops=t});

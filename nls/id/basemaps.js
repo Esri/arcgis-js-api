@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({streets:"Jalan",satellite:"Citra",hybrid:"Citra dengan Label",terrain:"Medan dengan Label",topo:"Topografi",gray:"Kanvas Abu-Abu Muda","dark-gray":"Kanvas Abu-Abu Gelap",oceans:"Samudra","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Peta Jalan Dunia (Malam)","streets-relief-vector":"Peta Jalan Dunia (dengan Relief)","streets-navigation-vector":"Peta Navigasi Dunia"});

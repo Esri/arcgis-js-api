@@ -6,11 +6,15 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "A string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
+      "description": "A unique identifying string for the layer."
     },
     "isReference": {
       "type": "boolean",
       "description": "Applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
+    },
+    "itemId": {
+      "type": "string",
+      "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
     },
     "layerType": {
       "type": "string",
@@ -18,6 +22,16 @@
       "enum": [
         "ArcGISTiledImageServiceLayer"
       ]
+    },
+    "maxScale": {
+      "type": "number",
+      "description": "A number representing the maximum scale at which the layer will be visible. The number is the scale's denominator.",
+      "minimum": 0
+    },
+    "minScale": {
+      "type": "number",
+      "description": "A number representing the minimum scale at which the layer will be visible. The number is the scale's denominator.",
+      "minimum": 0
     },
     "opacity": {
       "type": "number",
@@ -28,8 +42,7 @@
     },
     "refreshInterval": {
       "type": "number",
-      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
-      "default": 0
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
     },
     "showLegend": {
       "type": "boolean",
@@ -69,7 +82,10 @@
               "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Toronto/ImageServer",
               "visibility": true,
               "opacity": 1,
-              "title": "Toronto"
+              "title": "Toronto",
+              "itemId": "b81671067dec4bd4b569f09d9884d70f",
+              "minScale": 611770,
+              "maxScale": 6059
             }
           ]
         }
@@ -85,7 +101,10 @@
               "visibility": true,
               "opacity": 1,
               "title": "Toronto",
-              "showLegend": true
+              "showLegend": true,
+              "itemId": "b81671067dec4bd4b569f09d9884d70f",
+              "minScale": 611770,
+              "maxScale": 6059
             }
           ],
           "title": "Tiled Imagery"

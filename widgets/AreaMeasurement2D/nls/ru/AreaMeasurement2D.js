@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Измерение",hint:"Начните измерение, щелкнув на карте, чтобы разместить первую точку",unsupported:"Измерение 2D-площади поддерживается только в виде карты.",perimeter:"Периметр",area:"Площадь",newMeasurement:"Новое измерение",mode:"Режим",modes:{auto:"Авто",planar:"Плоскостной",geodesic:"Геодезический"},unit:"Единицы измерения",units:{metric:"Метрические",imperial:"Английские","square-kilometers":"Квадратные километры","square-meters":"Квадратные метры","square-miles":"Квадратные мили","square-inches":"Квадратные дюймы","square-feet":"Квадратные футы","square-yards":"Квадратные ярды","square-us-feet":"Квадратные футы (US)",acres:"Акры",ares:"Ары",hectares:"Гектары"}});
+define({title:"Измерение площади",hint:"Начните измерение, щелкнув на карте, чтобы разместить первую точку",unsupported:"Измерение 2D-площади поддерживается только в виде карты.",perimeter:"Периметр",area:"Площадь",newMeasurement:"Новое измерение",mode:"Режим",modes:{auto:"Авто",planar:"Плоскостной",geodesic:"Геодезический"},unit:"Единицы измерения",units:{metric:"Метрические",imperial:"Английские","square-kilometers":"Квадратные километры","square-meters":"Квадратные метры","square-miles":"Квадратные мили","square-inches":"Квадратные дюймы","square-feet":"Квадратные футы","square-yards":"Квадратные ярды","square-us-feet":"Квадратные футы (US)",acres:"Акры",ares:"Ары",hectares:"Гектары"}});

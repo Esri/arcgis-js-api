@@ -1,4 +1,6 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
+#include <util/offset.glsl>
 
 #include <materials/defaultMaterial/commonInputs.glsl>
 
@@ -13,9 +15,15 @@ attribute vec3 position;
 #if (NORMALS == NORMALS_COMPRESSED)
   attribute vec2 normalCompressed;
   varying vec3 vnormal;
+
+  #define HAS_NORMALS 1
 #elif (NORMALS == NORMALS_DEFAULT)
   attribute vec3 normal;
   varying vec3 vnormal;
+
+  #define HAS_NORMALS 1
+#else
+  #define HAS_NORMALS 0
 #endif
 
 varying vec3 vpos;
@@ -58,6 +66,10 @@ varying vec4 vcolor;
 // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12763
 uniform vec4 externalColor;
 varying vec4 vcolorExt;
+
+#ifdef VERTEX_TRANSPARENCY_DISCARD_ENABLED
+uniform float discardTransparentVertices;
+#endif
 
 #if defined(SYMBOLVERTEXCOLORS) || defined(COMPONENTCOLORS)
 varying mediump float colorMixMode; // varying int is not supported in WebGL
@@ -103,6 +115,16 @@ void main() {
   colorMixMode = float(symbolColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
 #endif
 
+
+#ifdef VERTEX_TRANSPARENCY_DISCARD_ENABLED
+  float opaqueCutoff = 1.0 - 1.0 / 255.0;
+
+  if (discardTransparentVertices > 0.5 ? vcolorExt.a <= opaqueCutoff : vcolorExt.a > opaqueCutoff) {
+    gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
+    return;
+  }
+#endif
+
   if (vcolorExt.a < SYMBOL_ALPHA_CUTOFF) {
     // Discard this vertex
     gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
@@ -112,17 +134,14 @@ void main() {
     localvpos = vpos - view[3].xyz;
 
 #ifdef INSTANCED_DOUBLE_PRECISION
-  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+  #if HAS_NORMALS
     vnormal = normalize(modelNormal * localNormal().xyz);
   #endif
 
   vec3 originDelta = dpAdd(viewOriginHi, viewOriginLo, -modelOriginHi, -modelOriginLo);
-  #ifdef IOS_SAFARI_FIX
-    originDelta = originDelta - fract(originDelta * 1000000.0) * (1.0 / 1000000.0);
-  #endif
   vpos -= originDelta;
 #else /* INSTANCED_DOUBLE_PRECISION */
-  #if (NORMALS == NORMALS_COMPRESSED) || (NORMALS == NORMALS_DEFAULT)
+  #if HAS_NORMALS
     vnormal = normalize((modelNormal * localNormal()).xyz);
   #endif
 #endif /* INSTANCED_DOUBLE_PRECISION */
@@ -135,7 +154,11 @@ void main() {
       transformVertexTangent(mat3(modelNormal));
     #endif
 
-    gl_Position = proj * view * vec4(vpos, 1.0);
+    gl_Position = transformPosition(proj, view, vpos);
+
+    #if HAS_NORMALS && defined(OFFSET_BACKFACES)
+      gl_Position = offsetBackfacingClipPosition(gl_Position, vpos, vnormal, camPos);
+    #endif
   }
 
 #ifdef RECEIVE_SHADOWS
@@ -147,7 +170,7 @@ void main() {
 #endif
 
 
-#ifdef TEXTURING
+#ifdef TEXTURE_COORDINATES
   #ifndef FLIPV
     vtc = uv0;
   #else
@@ -156,6 +179,6 @@ void main() {
   #ifdef TEXTURE_ATLAS
     regionV = region;
   #endif
-#endif /* TEXTURING */
+#endif /* TEXTURE_COORDINATES */
 
 }

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Dodaj obeleživač",disabledHeading:"Obeleživači onemogućeni",disabledDescription:"Dodajte MapView da omogućite obeleživače.",goToBookmark:"Idi na obeleživač",noBookmarksHeading:"Nema obeleživača",noBookmarksDescription:"Dodajte obeleživače svojoj mapi i oni će se pojaviti ovde.",title:"Naslov",addPlaceholder:"Unesi naslov obeleživača",addingBookmark:"Dodavanje obeleživača",widgetLabel:"Obeleživači"});
+define({addBookmark:"Dodaj obeleživač",goToBookmark:"Idi na obeleživač",noBookmarksHeading:"Nema obeleživača",noBookmarksDescription:"Dodajte obeleživače svojoj mapi i oni će se pojaviti ovde.",title:"Naslov",addPlaceholder:"Unesi naslov obeleživača",addingBookmark:"Dodavanje obeleživača",widgetLabel:"Obeleživači"});

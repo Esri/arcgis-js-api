@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./BuildingFilterMode"],function(e,r,t,o,p,n){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="solid",r}t(r,e),n=r,r.prototype.clone=function(){return new n};var n;return o([p.property({type:["solid"],readOnly:!0,json:{write:!0}})],r.prototype,"type",void 0),r=n=o([p.subclass("esri.layers.support.BuildingFilterModeSolid")],r)}(p.declared(n))});

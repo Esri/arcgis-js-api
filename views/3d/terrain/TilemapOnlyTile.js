@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","./TerrainConst","./TilePerLayerInfo"],function(e,r,a,n){return function(){function e(e,r){this.lij=e,this._pool=r,this.layerInfo=new Array(a.LayerClass.COUNT),this.parent=null}return e.prototype.hasDataAvailable=function(e,r,a){var n=this.layerInfo[a][r].tilemap;return!n||"unavailable"!==n.getAvailability(e.lij[1],e.lij[2])},e.prototype.modifyLayers=function(e,r,a){for(var t=this.layerInfo[a],i=r.length,o=new Array(i),l=0;l<i;l++){var y=r[l];o[l]=y>-1?t[y]:n.TilePerLayerInfo.makeEmptyLayerInfo(a,this._pool)}this.layerInfo[a]=o},e}()});
+define(["require","exports","./TilePerLayerInfo"],function(r,e,a){return function(){function r(r,e,i){this.lij=r,this._pool=e,this.layerInfo=new Array(2),this.parent=null;for(var n=0;n<2;n++){var t=i[n];if(t>0){this.layerInfo[n]=new Array;for(var o=0;o<t;++o)this.layerInfo[n][o]=a.TilePerLayerInfo.makeEmptyLayerInfo(n,this._pool)}}}return r.prototype.hasDataAvailable=function(r,e,a){var i=this.layerInfo[a][e].tilemap;return!i||"unavailable"!==i.getAvailability(r.lij[1],r.lij[2])},r.prototype.modifyLayers=function(r,e,i){for(var n=this.layerInfo[i],t=e.length,o=new Array(t),l=0;l<t;l++){var f=e[l];o[l]=f>-1?n[f]:a.TilePerLayerInfo.makeEmptyLayerInfo(i,this._pool)}this.layerInfo[i]=o},r}()});

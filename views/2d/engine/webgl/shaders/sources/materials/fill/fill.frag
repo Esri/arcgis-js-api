@@ -1,15 +1,16 @@
 precision highp float;
 
 #include <materials/constants.glsl>
+#include <materials/utils.glsl>
+#include <materials/fill/common.glsl>
 
-varying highp vec4 v_id;
+#ifdef DOT_DENSITY
+#include <materials/effects.glsl>
+#endif
 
 #ifdef PATTERN
 
 uniform lowp sampler2D u_texture;
-
-varying mediump vec4 v_tlbr;
-varying mediump vec2 v_tileTextureCoord;
 
 #endif // PATTERN
 
@@ -19,17 +20,8 @@ uniform mediump mat4 u_dotColors[ 2 ];
 uniform sampler2D u_dotTextures[ 2 ];
 uniform vec4 u_dotBackgroundColor;
 
-varying highp vec4 v_dotThresholds[ 2 ];
-varying vec2 v_dotTextureCoords;
-
 #endif
 
-varying lowp vec4 v_color;
-varying lowp float v_opacity;
-
-float max4(vec4 target) {
-  return max(max(max(target.x, target.y), target.z), target.w);
-}
 
 void main() {
 
@@ -67,8 +59,7 @@ void main() {
   vec4 weights1 = difference1 * isPositive1 / divisor;
 
   vec4 dotColor = u_dotColors[0] * weights0 + u_dotColors[1] * weights1;
-
-  gl_FragColor = greaterThanZero * dotColor + lessThanEqZero * u_dotBackgroundColor;
+  vec4 preEffectColor = greaterThanZero * dotColor + lessThanEqZero * u_dotBackgroundColor;
 
 #else
   float diffMax = max(max4(difference0), max4(difference1));
@@ -79,10 +70,13 @@ void main() {
   vec4 isMax1 = step(diffMax, difference1);
 
   vec4 dotColor = u_dotColors[0] * isMax0 + u_dotColors[1] * isMax1;
-
-  gl_FragColor = greaterOrEqZero * dotColor + lessThanZero * u_dotBackgroundColor;
+  vec4 preEffectColor = greaterOrEqZero * dotColor + lessThanZero * u_dotBackgroundColor;
 
 #endif
+  // Because colors for DotDensity vary per-fragment, we need to compute the effect color
+  // in the fragment shader
+  gl_FragColor = getEffectColor(preEffectColor, v_flags);
+
 
 #else
   gl_FragColor = v_opacity * v_color;

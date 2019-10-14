@@ -2,7 +2,7 @@
  * The AreaMeasurement3D widget calculates and displays the area and perimeter of a polygon.
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the area and perimeter of a polygon.
  *
- * [![measurement-line-3d](../../assets/img/apiref/widgets/area-measurement-3d.png)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../../assets/img/apiref/widgets/3D_AreaMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -40,11 +40,15 @@
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/AreaMeasurement3D/nls/AreaMeasurement3D";
 
+// esri.core
+import { SystemOrAreaUnit } from "esri/core/unitUtils";
+
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -82,7 +86,9 @@ const CSS = {
   unitsSelectWrapper: "esri-area-measurement-3d__units-select-wrapper",
   // clear
   actionSection: "esri-area-measurement-3d__actions",
-  clearButton: "esri-area-measurement-3d__clear-button"
+  clearButton: "esri-area-measurement-3d__clear-button",
+  // icon
+  widgetIcon: "esri-icon-measure-area"
 };
 
 @subclass("esri.widgets.AreaMeasurement3D")
@@ -127,7 +133,7 @@ class AreaMeasurement3D extends declared(Widget) {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  visible
@@ -162,6 +168,20 @@ class AreaMeasurement3D extends declared(Widget) {
   active: boolean;
 
   //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -193,14 +213,13 @@ class AreaMeasurement3D extends declared(Widget) {
 
   /**
    * List of available units and unit systems (imperial, metric) for displaying the area values.
-   * By default, the following units are included: `metric`, `imperial`, `square-inches`, `square-feet`, `square-us-feet`, `square-yards`, `square-miles`, `square-meters`, `square-kilometers`, `acres`, `ares`, `hectares`.
    *
    * @name unitOptions
    * @instance
-   * @type {string[]}
+   * @type {Array<"metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares">}
    */
   @aliasOf("viewModel.unitOptions")
-  unitOptions: Array<AreaMeasurement3DViewModel.Unit> = null;
+  unitOptions: Array<SystemOrAreaUnit> = null;
 
   //----------------------------------
   //  unit
@@ -208,16 +227,14 @@ class AreaMeasurement3D extends declared(Widget) {
   /**
    * Unit system (imperial, metric) or specific unit used for displaying the area values.
    *
-   * **Possible Values:** metric | imperial | square-inches | square-feet | square-us-feet | square-yards | square-miles | square-meters | square-kilometers | acres | ares | hectares
-   *
    * @name unit
    * @instance
    * @since 4.8
-   * @type {string}
+   * @type { "metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares" }
    */
 
   @aliasOf("viewModel.unit")
-  unit: AreaMeasurement3DViewModel.Unit = null;
+  unit: SystemOrAreaUnit = null;
 
   //--------------------------------------------------------------------------
   //
@@ -379,7 +396,7 @@ class AreaMeasurement3D extends declared(Widget) {
     const selected = target.options[target.selectedIndex];
 
     if (selected) {
-      this.unit = selected.value as AreaMeasurement3DViewModel.Unit;
+      this.unit = selected.value as SystemOrAreaUnit;
     }
   }
 }

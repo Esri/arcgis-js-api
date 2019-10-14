@@ -7,8 +7,8 @@
       "type": "string",
       "description": "Indicates the mode in which the active range should be presented to the user.",
       "enum": [
-        "slider",
-        "picker"
+        "picker",
+        "slider"
       ]
     },
     "numberOfStops": {

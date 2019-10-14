@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/Accessor","../../core/promiseUtils","../../core/accessorSupport/decorators"],function(e,r,t,s,o,i,n,p,a){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.refreshTimestamp=null,r.refreshDebounced=p.debounce(function(e,t){return i(r,void 0,void 0,function(){var r;return o(this,function(s){switch(s.label){case 0:return"number"==typeof e?r=e:(r=Date.now(),t=e),this._set("refreshTimestamp",r),this.doRefresh?[4,this.doRefresh(t)]:[3,2];case 1:s.sent(),s.label=2;case 2:return[2]}})})},2e3),r}return t(r,e),r.prototype.refresh=function(e){void 0===e&&(e=Date.now()),this._set("refreshTimestamp",e),this.doRefresh&&this.doRefresh()},s([a.property()],r.prototype,"layer",void 0),s([a.aliasOf("layer.refreshInterval")],r.prototype,"refreshInterval",void 0),s([a.property({readOnly:!0})],r.prototype,"refreshTimestamp",void 0),r=s([a.subclass("esri.layers.mixins.RefreshableLayerView")],r)}(a.declared(n))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","../../core/accessorSupport/decorators"],function(e,r,t,s,o,i,n,a){function p(e){return"refresh"in e}Object.defineProperty(r,"__esModule",{value:!0}),r.RefreshableLayerView=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.refreshTimestamp=null,r.refreshDebounced=n.debounce(function(e,t){return i(r,void 0,void 0,function(){var r;return o(this,function(s){switch(s.label){case 0:return"number"==typeof e?r=e:(r=Date.now(),t=e),this._set("refreshTimestamp",r),this.doRefresh?[4,this.doRefresh(t)]:[3,2];case 1:s.sent(),s.label=2;case 2:return[2]}})})},2e3),r}return t(r,e),r.prototype.refresh=function(e){void 0===e&&(e=Date.now()),this._set("refreshTimestamp",e),this.doRefresh&&this.doRefresh()},s([a.property()],r.prototype,"layer",void 0),s([a.aliasOf("layer.refreshInterval")],r.prototype,"refreshInterval",void 0),s([a.property({readOnly:!0})],r.prototype,"refreshTimestamp",void 0),r=s([a.subclass("esri.layers.mixins.RefreshableLayerView")],r)}(a.declared(e))},r.isRefreshableLayerView=p});

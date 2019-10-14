@@ -39,7 +39,7 @@ vec4 getOverlayWaterColor( in vec4 tileColor, vec4 maskInput, vec4 colorInput,
   vec3 n = normalize(tbn *  (2.0 * maskInput.rgb - vec3(1.0)));
   vec3 v = -normalize(vpos - eye);
   vec3 l = normalize(-lightingMainDirection);
-  vec3 final = getSeaColor(n, v, l, colorInput.rgb, localUp, 1.0 - shadow);
+  vec3 final = getSeaColor(n, v, l, colorInput.rgb, lightingMainIntensity, localUp, 1.0 - shadow);
   // the terrain renderer assumes a premultiplied color output without gamma. 
   return premultiplyAlpha(vec4(final, colorInput.w));
 }

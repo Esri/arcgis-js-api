@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"책갈피 추가",disabledHeading:"북마크 비활성화",disabledDescription:"맵 뷰를 추가해 북마크를 활성화합니다.",goToBookmark:"북마크로 이동",noBookmarksHeading:"북마크 없음",noBookmarksDescription:"맵에 북마크를 추가하여 표시합니다.",title:"제목",addPlaceholder:"북마크 제목 입력",addingBookmark:"북마크 추가",widgetLabel:"북마크"});
+define({addBookmark:"책갈피 추가",goToBookmark:"북마크로 이동",noBookmarksHeading:"북마크 없음",noBookmarksDescription:"맵에 북마크를 추가하여 표시합니다.",title:"제목",addPlaceholder:"북마크 제목 입력",addingBookmark:"북마크 추가",widgetLabel:"북마크"});

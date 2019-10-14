@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../engine","../../ViewState"],function(e,t,r,a,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t){var r=e.call(this)||this;return r.layerView=t,r._childrenRenderParameters={context:null,pixelRatio:1,state:new i,stationary:!0},r.requestRender=r.requestRender.bind(r),r}return r(t,e),t.prototype.attach=function(){return e.prototype.attach.call(this)},t.prototype.detach=function(){e.prototype.detach.call(this)},t.prototype.doRender=function(e){if(e.drawPhase===a.enums.WGLDrawPhase.MAP&&this.layerView.attached){var t=window.devicePixelRatio,r=this.stage.context,i=e.state,n=this._childrenRenderParameters;n.context=r.gl,n.state.copy(i),n.state.pixelRatio=t,n.stationary=e.stationary;var o=r.getBoundFramebufferObject(),s=r.getViewport();r.resetState(),r.bindFramebuffer(o),r.setViewport(0,0,n.state.size[0]*e.pixelRatio,n.state.size[1]*e.pixelRatio),this.layerView.render(n),r.enforceState(),r.setViewport(s.x,s.y,s.width,s.height)}},t}(a.DisplayObject);t.DisplayGL=n,t.default=n});

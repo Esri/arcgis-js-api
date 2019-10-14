@@ -86,7 +86,8 @@ import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer"
 import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, storeNode, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -375,6 +376,10 @@ class Search extends declared(Widget) {
     );
   }
 
+  postInitialize(): void {
+    this.viewModel.load();
+  }
+
   destroy(): void {
     this._handles.destroy();
     this._handles = null;
@@ -423,11 +428,9 @@ class Search extends declared(Widget) {
   /**
    * The current active menu of the Search widget.
    *
-   * **Possible Values:** none | suggestion | source | warning
-   *
    * @name activeMenu
    * @instance
-   * @type {string}
+   * @type {"none" | "suggestion" | "source" | "warning"}
    * @default none
    */
   @property()
@@ -440,7 +443,7 @@ class Search extends declared(Widget) {
 
   /**
    * The [source](#sources) object currently selected. Can be either a
-   * {@link module:esri/widgets/Search/LayerSearchSource} or a {@link module:esri/widget/Search/LocatorSearchSource}.
+   * {@link module:esri/widgets/Search/LayerSearchSource} or a {@link module:esri/widgets/Search/LocatorSearchSource}.
    *
    * @name activeSource
    * @instance
@@ -1167,7 +1170,7 @@ class Search extends declared(Widget) {
       .suggest(query)
       .then((suggestResponse) => {
         if (this._suggestPromise !== suggestPromise) {
-          return;
+          return undefined;
         }
 
         this._suggestPromise = null;
@@ -1596,7 +1599,7 @@ class Search extends declared(Widget) {
   }
 
   private _removeActiveMenu(targetNode: HTMLElement, parentNode: HTMLElement): void {
-    if (targetNode && parentNode && parentNode.contains(targetNode)) {
+    if (!targetNode || (targetNode && parentNode && parentNode.contains(targetNode))) {
       return;
     }
 
@@ -1896,6 +1899,8 @@ class Search extends declared(Widget) {
         </li>
       );
     }
+
+    return undefined;
   }
 
   private _getSourceNode(sourceIndex: number): VNode {

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ArrayPool","../../../core/ObjectPool","./TileSpan"],function(o,e,r,n,l){return function(){function o(o){this.lodInfo=o,this.spans=r.acquire()}return o.prototype.release=function(){for(var o=0,e=this.spans;o<e.length;o++){var n=e[o];l.pool.release(n)}r.release(this.spans)},o.prototype.forEach=function(o,e){var r=this,n=r.spans,l=r.lodInfo,t=l.level;if(0!==n.length)for(var a=0,s=n;a<s.length;a++)for(var i=s[a],c=i.row,f=i.colFrom,p=i.colTo,u=f;u<=p;u++)o.call(e,t,c,l.normalizeCol(u),l.getWorldForColumn(u))},o.pool=new n(o,!0),o}()});
+define(["require","exports","../../../core/ObjectPool"],function(o,n,r){return function(){function o(o){this.lodInfo=o,this.spans=[]}return o.prototype.release=function(){},o.prototype.forEach=function(o,n){var r=this,e=r.spans,t=r.lodInfo,l=t.level;if(0!==e.length)for(var f=0,i=e;f<i.length;f++)for(var c=i[f],a=c.row,s=c.colFrom,u=c.colTo,p=s;p<=u;p++)o.call(n,l,a,t.normalizeCol(p),t.getWorldForColumn(p))},o.pool=new r(o,!0),o}()});

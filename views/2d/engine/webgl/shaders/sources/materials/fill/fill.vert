@@ -40,11 +40,12 @@ void main()
 
   float a_bitSet = a_aux3.a;
   
-  v_color   = getColor(a_color, a_bitSet, 0);
-  v_opacity = getOpacity(a_bitSet, 1); 
-  v_id      = norm(a_id);
-  v_pos     = u_dvsMat3 * vec3(a_pos, 1.);
-  
+  v_color     = getColor(a_color, a_bitSet, 0);
+  v_opacity   = getOpacity(a_bitSet, 1); 
+  v_id        = norm(a_id);
+  v_pos       = u_dvsMat3 * vec3(a_pos, 1.);
+  v_flags     = getFilterFlags();
+   
 #ifdef PATTERN
   vec2 symbolOffset = u_zoomFactor * (a_aux1.zw - SIGNED_BYTE_TO_UNSIGNED);
   
@@ -53,8 +54,8 @@ void main()
   v_tlbr = a_tlbr / u_mosaicSize.xyxy;
 
 #elif defined(DOT_DENSITY)
-  vec4 ddAttributeData0 = getAttributeData1(a_id) * u_isActive[0] * a_inverseArea;
-  vec4 ddAttributeData1 = getAttributeData2(a_id) * u_isActive[1] * a_inverseArea;
+  vec4 ddAttributeData0 = getAttributeData2(a_id) * u_isActive[0] * a_inverseArea;
+  vec4 ddAttributeData1 = getAttributeData3(a_id) * u_isActive[1] * a_inverseArea;
   float size = u_tileZoomFactor * 512.0 * 1.0 / u_pixelRatio;
 
   v_dotThresholds[0] = dotThreshold(ddAttributeData0, u_dotValue, u_tileDotsOverArea);
@@ -62,5 +63,5 @@ void main()
   v_dotTextureCoords = (a_pos + 0.5) / size;
 #endif
 
-  gl_Position = vec4(applyFilter(v_color, v_pos, getFilterFlags()), 1.0);
+  gl_Position = vec4(applyFilter(v_color, v_pos, v_flags), 1.0);
 }

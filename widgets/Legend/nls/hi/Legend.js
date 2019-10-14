@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({widgetLabel:"लिजेंड",points:"बिंदु",lines:"रेखाएँ",polygons:"बहुभुज",creatingLegend:"लीजेंड बनाना",noLegend:"कोई लीजेंड नहीं",dotValue:"1 डॉट = {value} {unit}",currentObservations:"वर्तमान अवलोकन",previousObservations:"पिछले अवलोकन",high:"उच्च",low:"निम्न",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knots",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} {normField} से विभाजित",showNormPct:"कुल के प्रतिशत के रूप में {field}",showRatio:"{field} का {normField} से अनुपात",showRatioPercent:"{normField} के प्रतिशत के रूप में {field}",showRatioPercentTotal:"{field} और {normField} के प्रतिशत के रूप में {field}"});
+define({widgetLabel:"लिजेंड",points:"बिंदु",lines:"रेखाएँ",polygons:"बहुभुज",creatingLegend:"लीजेंड बनाना",noLegend:"कोई लीजेंड नहीं",dotValue:"1 डॉट = {value} {unit}",currentObservations:"वर्तमान अवलोकन",previousObservations:"पिछले अवलोकन",high:"उच्च",low:"निम्न",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knots",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} {normField} से विभाजित",showNormPct:"कुल के प्रतिशत के रूप में {field}",showRatio:"{field} का {normField} से अनुपात",showRatioPercent:"{normField} के प्रतिशत के रूप में {field}",showRatioPercentTotal:"{field} और {normField} के प्रतिशत के रूप में {field}",band0:"band_0",band1:"band_1",band2:"band_2",red:"लाल",green:"आबाद 5",blue:"नीला"});

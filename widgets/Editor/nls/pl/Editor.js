@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Edytor",multipleFeaturesTemplate:"Wiele obiektów ({total})",untitledFeatureTemplate:"Obiekt bez nazwy {id}",editFeatures:"Edytuj obiekty",editFeature:"Edytuj obiekt",addFeature:"Dodaj obiekt",selectTemplate:"Wybierz typ obiektu",selectFeatureToEdit:"Wybierz obiekt, aby go edytować.",selectFeature:"Wybierz obiekt",placeFeature:"Rozmieść obiekt",placeFeatureOnMap:"Rozmieść obiekt na mapie.",add:"Dodaj",discardEdits:"Odrzuć zmiany",discardFeature:"Odrzuć obiekt",edit:"Edycja",keepFeature:"Zachowaj obiekt",continueAdding:"Kontynuuj dodawanie",continueEditing:"Kontynuuj edycję",editing:"Edycja",warning:"Uwaga",retry:"Ponów próbę",ignore:"Ignoruj",deleteWarningTitle:"Czy usunąć ten obiekt?",deleteWarningMessage:"Ten obiekt zostanie trwale usunięty.",cancelEditTitle:"Odrzucić zmiany?",cancelAddTitle:"Czy odrzucić obiekt?",cancelAddWarningMessage:"Ten obiekt zostanie utracony.",cancelEditWarningMessage:"Aktualizacje tego obiektu zostaną utracone.",cancelRequestTitle:"Anulować procedurę wykonywania zadań?",cancelRequestWarningMessage:"Zażądano anulowania tej procedury wykonywania zadań.",errorWarningTitle:"Przepraszamy, wystąpiły problemy",errorWarningMessageTemplate:"Nie można zapisać zmian: {errorMessage}",clickToFinishTemplate:"Kliknij przycisk {button}, aby zakończyć.",tips:{clickToStart:"Kliknij, aby rozpocząć rysowanie.",clickToContinue:"Kliknij, aby kontynuować rysowanie.",clickToAddPoint:"Kliknij, aby dodać punkt.",clickToContinueThenDoubleClickToEnd:"Kliknij, aby kontynuować rysowanie, a następnie kliknij dwukrotnie, aby zakończyć pracę.",clickToAddFeature:"Kliknij, aby dodać obiekt."}});

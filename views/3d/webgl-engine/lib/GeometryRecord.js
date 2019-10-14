@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","./IdGen"],function(t,n,r){return function(){function t(n,r,i,o,a,e){this.id=t._idGen.gen(n.id),this.geometry=n,this.material=r,this.transformation=i,this.instanceParameters=o,this.origin=a,this.shaderTransformation=e}return t.prototype.getStaticTransformation=function(){return this.transformation},t.prototype.getShaderTransformation=function(){return this.shaderTransformation?this.shaderTransformation(this.transformation):this.transformation},t._idGen=new r,t}()});
+define(["require","exports","../../../../core/ObjectPool","./IdGen"],function(t,n,r,i){return function(){function t(n,r,i,o,e,a){this.id=t._idGen.gen(n&&n.id),this.geometry=n,this.material=r,this.transformation=i,this.instanceParameters=o,this.origin=e,this.shaderTransformation=a}return t.prototype.getStaticTransformation=function(){return this.transformation},t.prototype.getShaderTransformation=function(){return this.shaderTransformation?this.shaderTransformation(this.transformation):this.transformation},t._idGen=new i.IdGen,t.pool=new r(t,!0),t}()});

@@ -5,12 +5,15 @@
   "description": "A set of valid coded values with unique names.",
   "properties": {
     "code": {
-      "type": "string",
-      "description": "String value indicating which unqiue code is used to identify the feature attribute."
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "The value stored in the feature attribute."
     },
     "name": {
       "type": "string",
-      "description": "A string value given for the coded domain."
+      "description": "User-friendly name for what the code means."
     }
   },
   "required": [

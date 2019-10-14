@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <materials/water/normalsUtils.glsl>
 
 uniform mat4 proj;
@@ -11,23 +12,23 @@ attribute vec2 uv0;
 
 #include <materials/defaultMaterial/commonFunctions.glsl>
 
-varying vec2 uvOut;
-varying vec3 posOut;
-varying vec3 normalOut; // the normal from origin to the vertex
-varying mat3 tbnMatrix; // tangent / bitangent / normal matrix
+varying vec2 vuv;
+varying vec3 vpos;
+varying vec3 vnormal; // the normal from origin to the vertex
+varying mat3 vtbnMatrix; // tangent / bitangent / normal matrix at the vertex
 
 #ifdef RECEIVE_SHADOWS
 varying float linearDepth;
 #endif
 
 void main(void) {
-  uvOut = uv0;
-  posOut = calculateVPos();
+  vuv = uv0;
+  vpos = calculateVPos();
 
-  normalOut = getLocalUp(posOut, localOrigin);
-  tbnMatrix = getTBNMatrix(normalOut);
+  vnormal = getLocalUp(vpos, localOrigin);
+  vtbnMatrix = getTBNMatrix(vnormal);
 
-  gl_Position = proj * view * vec4(posOut.xyz, 1.0);
+  gl_Position = transformPosition(proj, view, vpos);
 
   #ifdef RECEIVE_SHADOWS
     // Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'

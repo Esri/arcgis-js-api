@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Виміряти",hint:"Почніть вимірювання, клацнувши на карті для розміщення першої точки",unsupported:"Вимірювання 2D-областей підтримується тільки в MapView.",perimeter:"Периметр",area:"Площа",newMeasurement:"Нове вимірювання",mode:"Режим",modes:{auto:"Авто",planar:"Планарний",geodesic:"Геодезичний"},unit:"Одиниця",units:{metric:"Метричні",imperial:"Британська система","square-kilometers":"Квадратні кілометри","square-meters":"Квадратні метри","square-miles":"Квадратні милі","square-inches":"Квадратні дюйми","square-feet":"Квадратні фути","square-yards":"Квадратні ярди","square-us-feet":"Квадратні фути (США)",acres:"Акри",ares:"Ари",hectares:"Гектари"}});
+define({title:"Вимірювання площі",hint:"Почніть вимірювання, клацнувши на карті для розміщення першої точки",unsupported:"Вимірювання 2D-областей підтримується тільки в MapView.",perimeter:"Периметр",area:"Площа",newMeasurement:"Нове вимірювання",mode:"Режим",modes:{auto:"Авто",planar:"Планарний",geodesic:"Геодезичний"},unit:"Одиниця",units:{metric:"Метричні",imperial:"Британська система","square-kilometers":"Квадратні кілометри","square-meters":"Квадратні метри","square-miles":"Квадратні милі","square-inches":"Квадратні дюйми","square-feet":"Квадратні фути","square-yards":"Квадратні ярди","square-us-feet":"Квадратні фути (США)",acres:"Акри",ares:"Ари",hectares:"Гектари"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"माप",hint:"अपना पहला बिंदु लगाने के लिए दृश्य में क्लिक करके मापना प्रारंभ करें",unsupported:"3D डायरेक्ट लाइन मापन सिर्फ़ SceneView में समर्थित है।",distance:"दूरी",direct:"सीधा",horizontal:"क्षैतिज",vertical:"लंबवत",unit:"इकाई",newMeasurement:"नया मापन",units:{metric:"मीट्रिक",imperial:"इम्पीरियल",kilometers:"किलोमीटर",meters:"मीटर",miles:"मील",inches:"इंच",feet:"फुट",yards:"गज","nautical-miles":"समुद्री मील","us-feet":"फीट (US)","degrees-minutes-seconds":"DMS",degrees:"डिग्री"}});
+define({title:"सीधी रेखा का माप",hint:"अपना पहला बिंदु लगाने के लिए दृश्य में क्लिक करके मापना प्रारंभ करें",unsupported:"3D डायरेक्ट लाइन मापन सिर्फ़ SceneView में समर्थित है।",distance:"दूरी",direct:"सीधा",horizontal:"क्षैतिज",vertical:"लंबवत",unit:"इकाई",newMeasurement:"नया मापन",units:{metric:"मीट्रिक",imperial:"इम्पीरियल",kilometers:"किलोमीटर",meters:"मीटर",miles:"मील",inches:"इंच",feet:"फुट",yards:"गज","nautical-miles":"समुद्री मील","us-feet":"फीट (US)","degrees-minutes-seconds":"DMS",degrees:"डिग्री"}});

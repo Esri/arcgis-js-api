@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/Accessor","../../../core/accessorSupport/decorators","../../../core/libs/gl-matrix-2/vec4f32"],function(o,t,r,e,c,p,i,l){return function(o){function t(){var t=null!==o&&o.apply(this,arguments)||this;return t.color=new c([0,255,255]),t.haloOpacity=1,t.fillOpacity=.25,t}return r(t,o),t.toEngineOptions=function(o){var t=c.toUnitRGBA(o.color);return{color:l.vec4f32.fromValues(t[0],t[1],t[2],t[3]),haloOpacity:o.haloOpacity,haloOpacityOccluded:.25*o.haloOpacity,fillOpacity:o.fillOpacity,fillOpacityOccluded:.25*o.fillOpacity}},e([i.property({type:c})],t.prototype,"color",void 0),e([i.property()],t.prototype,"haloOpacity",void 0),e([i.property()],t.prototype,"fillOpacity",void 0),t=e([i.subclass("esri.views.3d.support.HighlightOptions")],t)}(i.declared(p))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/Accessor","../../../core/maybe","../../../core/accessorSupport/decorators","../../../core/libs/gl-matrix-2/vec4f32"],function(o,r,t,e,l,p,c,i,a){return function(o){function r(){var r=null!==o&&o.apply(this,arguments)||this;return r.color=new l([0,255,255]),r.haloColor=null,r.haloOpacity=1,r.fillOpacity=.25,r}return t(r,o),r.toEngineOptions=function(o){var r=l.toUnitRGBA(o.color),t=c.isSome(o.haloColor)?l.toUnitRGBA(o.haloColor):r;return{color:a.vec4f32.fromValues(r[0],r[1],r[2],r[3]),haloColor:a.vec4f32.fromValues(t[0],t[1],t[2],t[3]),haloOpacity:o.haloOpacity,haloOpacityOccluded:.25*o.haloOpacity,fillOpacity:o.fillOpacity,fillOpacityOccluded:.25*o.fillOpacity}},e([i.property({type:l})],r.prototype,"color",void 0),e([i.property({type:l})],r.prototype,"haloColor",void 0),e([i.property()],r.prototype,"haloOpacity",void 0),e([i.property()],r.prototype,"fillOpacity",void 0),r=e([i.subclass("esri.views.3d.support.HighlightOptions")],r)}(i.declared(p))});

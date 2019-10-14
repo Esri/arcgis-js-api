@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Søk",searchButtonTitle:"Søk",clearButtonTitle:"Tøm søk",placeholder:"Finn adresse eller sted",searchIn:"Søk i",all:"Alle",allPlaceholder:"Finn adresse eller sted",emptyValue:"Skriv inn et søkeord",untitledResult:"Uten tittel",untitledSource:"Kilde uten tittel",noResults:"Ingen resultater",noResultsFound:"Fant ingen resultater.",noResultsFoundForValue:"Finner ingen resultater for ${value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Skjul",searchResult:"Søkeresultater",moreResultsHeader:"Flere resultater",useCurrentLocation:"Bruk gjeldende lokasjon"});

@@ -21,8 +21,8 @@
       "type": "string",
       "description": "Shape of the intersection of two line segments.",
       "enum": [
-        "miter",
         "bevel",
+        "miter",
         "round"
       ],
       "default": "miter"

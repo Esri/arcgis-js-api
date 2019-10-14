@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["../../request","../../core/lang","../Task"],function(e,t,r){return r.createSubclass({declaredClass:"esri.tasks.workflow.WMBaseTask",_sendRequest:function(r,n,s){var i=this.parsedUrl.path+n;r.f="json";var u=this._encode(t.mixin({},this.parsedUrl.query,r)),a=this._generateOptions(u,s);return e(i,a).then(function(e){return e.data})},_sendRequestFile:function(r,n,s){var i=this.parsedUrl.path+n,u={form:r,f:"json"},a=this._encode(t.mixin({},this.parsedUrl.query,u)),o=this._generateOptions(a,s);return e(i,o).then(function(e){return e.data})},_generateOptions:function(e,r){var n={query:e};if(this.requestOptions||r){n=t.mixin({},this.requestOptions,r,n);var s=this.requestOptions?this.requestOptions.query:null,i=r?r.query:null;n.query=t.mixin({},s,i,n.query)}return n}})});

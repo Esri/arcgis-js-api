@@ -62,6 +62,8 @@ varying float vSizeFalloffFactor;
 #include <edgeRenderer/lineAmplitude.glsl>
 #include <edgeRenderer/util.glsl>
 
+const float opaqueCutoff = 1.0 / 255.0;
+
 vec4 calculateGeometricOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
   vec2 sideness = unpackedAttributes.sideness;
   vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
@@ -158,6 +160,11 @@ vec4 calculateGeometricOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, 
 
 #endif /* SILHOUETTE */
 
+  // Discard fully transparent edges
+  if (vColor.a < opaqueCutoff) {
+    gl_Position = vec4(10.0, 10.0, 10.0, 1.0);
+  }
+
 #if (MODE == MODE_UBER)
 
   if (unpackedAttributes.type <= 0.0 && lineLengthPixels <= 3.0) {
@@ -233,11 +240,11 @@ void main() {
 
 #endif /* SILHOUETTE */
 
-  // General geometric computation for all types of edges
-  vec4 projPos = calculateGeometricOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, worldNormal, unpackedAttributes);
-
   // Component color
   vColor = component.color;
+
+  // General geometric computation for all types of edges
+  vec4 projPos = calculateGeometricOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, worldNormal, unpackedAttributes);
 
   // Specific computation for different edge styles
   calculateStyleOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, projPos, worldNormal, unpackedAttributes);

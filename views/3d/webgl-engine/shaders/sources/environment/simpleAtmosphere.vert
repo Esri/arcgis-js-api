@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 
 uniform mat4 proj;
 uniform mat4 view;
@@ -16,14 +17,14 @@ uniform float innerScale;  // scale for inner rim
 varying float innerFactor; // 0: outer atmosphere, 1: inner atmosphere
 #endif
 
-uniform vec3 lightDirection;
+uniform vec3 lightingMainDirection;
 
 attribute vec3 position;
 varying vec2 vtc;
 varying float falloff;
 
 void main(void) {
-
+  vec3 lightDirection = -lightingMainDirection;
 #ifdef PANORAMIC
 
   vec3 pos = position;
@@ -45,6 +46,6 @@ void main(void) {
 
   falloff = max(0.0, smoothstep(-1.0, 0.8, 2.0 * ndotl));
 
-  gl_Position = proj * view * vec4(pos, 1.0);
+  gl_Position = transformPosition(proj, view, pos);
   gl_Position.z = gl_Position.w; // project atmosphere onto the far plane
 }

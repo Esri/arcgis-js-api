@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,21 +20,22 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 /**
        * Defines the layout elements. It's an object with the following properties:
        *
-       * @property {string} titleText - The text used for the map title if the specified layout contains a title text element.
-       * @property {string} authorText - The text used for the author if the specified layout contains an author text element.
-       * @property {string} copyrightText - The text used for the copyright if the specified layout contains an copyright text element.
+       * @property {string} [titleText] - The text used for the map title if the specified layout contains a title text element.
+       * @property {string} [authorText] - The text used for the author if the specified layout contains an author text element.
+       * @property {string} [copyrightText] - The text used for the copyright if the specified layout contains an copyright text element.
        * @property {string} [scalebarUnit=Miles] - The unit used for the scalebar.
        *
        * **Possible Values:** `Miles` | `Kilometers` | `Meters` | `Feet`
-       * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of {@link module:esri/tasks/support/LegendLayer} containing the id's of the layers that
-       * will be included in the legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) except {@link module:esri/layers/GraphicsLayer}
+       * @property {module:esri/tasks/support/LegendLayer[]} [legendLayers] - An array of {@link module:esri/tasks/support/LegendLayer}
+       * containing the ids of the layers that will be included in the legend. Tiled layers and GraphicsLayer will not appear in the
+       * legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) except {@link module:esri/layers/GraphicsLayer}
        * will be present in the legend. To specify that no layers will be included in the legend set `legendLayer = []`.
-       * @property {Object[]} customTextElements - An array of name-value pairs. Use this property to update the text for custom text elements
+       * @property {Object[]} [customTextElements] - An array of name-value pairs. Use this property to update the text for custom text elements
        * on the page layout. Values must be strings.
        *
        * @example

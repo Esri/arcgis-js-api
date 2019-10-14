@@ -29,11 +29,11 @@
       "description": "Specifies the type of symbol used.",
       "enum": [
         "circle",
-        "square",
         "cross",
-        "x",
         "kite",
-        "triangle"
+        "square",
+        "triangle",
+        "x"
       ]
     }
   },

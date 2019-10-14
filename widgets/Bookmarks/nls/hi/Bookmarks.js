@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"बुकमार्क जोड़ें",disabledHeading:"बुकमार्क अक्षम किए गए",disabledDescription:"बुकमार्क सक्षम करने के लिए MapView जोड़ें।",goToBookmark:"बुकमार्क पर जाएँ",noBookmarksHeading:"कोई बुकमार्क नहीं",noBookmarksDescription:"अपने मैप में बुकमार्क जोड़ें और वे यहाँ दिखाई देंगे।",title:"शीर्षक",addPlaceholder:"बुकमार्क शीर्षक दर्ज करें",addingBookmark:"बुकमार्क जोड़ना",widgetLabel:"बुकमार्क्स"});
+define({addBookmark:"बुकमार्क जोड़ें",goToBookmark:"बुकमार्क पर जाएँ",noBookmarksHeading:"कोई बुकमार्क नहीं",noBookmarksDescription:"अपने मैप में बुकमार्क जोड़ें और वे यहाँ दिखाई देंगे।",title:"शीर्षक",addPlaceholder:"बुकमार्क शीर्षक दर्ज करें",addingBookmark:"बुकमार्क जोड़ना",widgetLabel:"बुकमार्क्स"});

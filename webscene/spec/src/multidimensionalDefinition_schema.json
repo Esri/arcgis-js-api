@@ -14,9 +14,21 @@
     },
     "values": {
       "type": "array",
-      "description": "Numerical array of associated values.",
+      "description": "Array where every element is either a single value, or an array of two values (lower and upper bound).",
       "items": {
-        "type": "number"
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        ]
       }
     },
     "variableName": {
@@ -52,12 +64,19 @@
       {
         "code": {
           "multidimensionalDefinition": {
-            "variableName": "t",
-            "dimensionName": "StdTime",
+            "variableName": "AvgSalinity",
+            "dimensionName": "StdZ",
             "values": [
-              1414303200000
+              [
+                1406181600000,
+                1406182200000
+              ],
+              [
+                1406224800000,
+                1406225400000
+              ]
             ],
-            "isSlice": true
+            "isSlice": false
           }
         }
       }

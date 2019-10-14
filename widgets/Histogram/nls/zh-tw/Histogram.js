@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"直方圖",xAverage:"xÌ„ ",barLabel:"軸計數: {count}。 軸資料最小值: {minValue}。 軸資料最大值: {maxValue}"});
+define({title:"直方圖",barLabel:"軸計數: {count}。 軸資料最小值: {minValue}。 軸資料最大值: {maxValue}"});

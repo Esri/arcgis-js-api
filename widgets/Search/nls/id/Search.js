@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Cari",searchButtonTitle:"Cari",clearButtonTitle:"Bersihkan pencarian",placeholder:"Temukan alamat atau tempat",searchIn:"Cari di dalam",all:"Semua",allPlaceholder:"Temukan alamat atau tempat",emptyValue:"Harap masukkan istilah pencarian.",untitledResult:"Tidak berjudul",untitledSource:"Sumber tidak berjudul",noResults:"Tidak ada hasil",noResultsFound:"Tidak ada hasil yang ditemukan.",noResultsFoundForValue:"Tidak ada hasil yang ditemukan untuk {value}.",showMoreResults:"Tampilkan lebih banyak hasil...",hideMoreResults:"Sembunyikan",searchResult:"Hasil pencarian",moreResultsHeader:"Hasil lainnya",useCurrentLocation:"Gunakan lokasi saat ini"});

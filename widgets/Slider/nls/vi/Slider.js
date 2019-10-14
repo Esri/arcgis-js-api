@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Thanh trượt",maximumValue:"Giá trị tối đa",minimumValue:"Giá trị tối thiểu",rangeMaximum:"Phạm vi tối đa: {value}",rangeMinimum:"Phạm vi tối thiểu: {value}",sliderValue:"Giá trị thanh trượt"});

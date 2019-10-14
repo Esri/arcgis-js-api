@@ -8,10 +8,10 @@
       "type": "string",
       "description": "The geometry type. When querying a table that does not have a geometry column, do not include geometryType.",
       "enum": [
-        "esriGeometryPoint",
         "esriGeometryMultipoint",
-        "esriGeometryPolyline",
-        "esriGeometryPolygon"
+        "esriGeometryPoint",
+        "esriGeometryPolygon",
+        "esriGeometryPolyline"
       ]
     },
     "oidFields": {

@@ -30,6 +30,7 @@
  * {@link module:esri/layers/WebTileLayer}
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
+ * * {@link module:esri/renderers/DictionaryRenderer} is not supported.
  * :::
  *
  * @example
@@ -218,6 +219,41 @@ class Legend extends declared(Widget) {
   @aliasOf("viewModel.groundLegendVisible")
   @renderable()
   groundLegendVisible = false;
+
+  //----------------------------------
+  //  respectLayerVisibility
+  //----------------------------------
+
+  /**
+   * Determines whether to respect the properties of the layers in the map that
+   * control the legend's visibility (`minScale`, `maxScale`, `legendEnabled`).
+   * By default, a layer's legend elements **will
+   * not render** in the legend given the following conditions:
+   *
+   * - The layer's {@link module:esri/layers/FeatureLayer#legendEnabled legendEnabled} property
+   * is set to `false`.
+   * - If the view's scale is outside the visibility range
+   * defined by the layer's {@link module:esri/layers/FeatureLayer#minScale minScale} and
+   * {@link module:esri/layers/FeatureLayer#maxScale maxScale} properties.
+   *
+   * When the `respectLayerVisibility` property of the legend is set to `false`, the legend elements for each
+   * layer in the map will always display, thus disregarding the `minScale`, `maxScale`,
+   * and `legendEnabled` properties for each layer in the map.
+   *
+   * @since 4.13
+   * @name respectLayerVisibility
+   * @instance
+   * @type {boolean}
+   * @default true
+   *
+   * @example
+   * // Always displays legend elements for the map's layers
+   * // regardless of their minScale, maxScale, and legendEnabled properties
+   * legend.respectLayerVisibility = false;
+   */
+  @aliasOf("viewModel.respectLayerVisibility")
+  @renderable()
+  respectLayerVisibility = true;
 
   //----------------------------------
   //  iconClass

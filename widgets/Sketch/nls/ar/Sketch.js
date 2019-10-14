@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"مخطط",move:"نقل",pan:"تحريك",reset:"إعادة تعيين",reshape:"إعادة تشكيل",rotate:"استدارة",scale:"مقياس",transform:"تحويل",undo:"تراجع",redo:"إعادة",drawPoint:"رسم نقطة",drawPolygon:"رسم مضلع",drawPolyline:"رسم الخطوط متصلة",drawMultipoint:"رسم تعدد النقاط",drawCircle:"رسم دائرة",drawRectangle:"رسم مستطيل",clearDrawing:"مسح الرسم",completeDrawing:"إكمال الرسم",pauseDrawing:"إيقاف الرسم مؤقتًا",resumeDrawing:"متابعة الرسم",updateDrawing:"تحديث الرسم",addPointTooltip:"انقر لإضافة نقطة.",removePointTooltip:"انقر لإزالة هذه النقطة",completePolygonTooltip:"انقر على هذه النقطة للإنهاء",startDrawingTooltip:"انقر لبدء الرسم",continueDrawingTooltip:"انقر للاستمرار في الرسم",completeDrawingTooltip:"انقر نقرًا مزدوجًا للإتمام",addMultipointTooltip:"انقر لبدء إضافة نقاط",finishMultipointTooltip:"انقر نقرًا مزدوجًا للإنهاء",addFreehandTooltip:"اضغط لأسفل للبدء والتقدم للإنهاء",addShapeTooltip:"انقر لإضافة شكل أو اضغط للأسفل لكي تبدأ واستمر للإنهاء",featureCount:"{count} معلم",featuresCount:"{count} معالم",vertexCount:"{count} نقطة قممية",verticesCount:"{count} نقاط قممية",deleteFeature:"حذف المعلم",deleteVertex:"حذف الرأس",duplicate:"تكرار"});

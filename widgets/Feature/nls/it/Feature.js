@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({attach:"Allegati",fields:"Campi",fieldsSummary:"Elenco di attributi e valori",media:"File multimediali",next:"Successivo",noTitle:"Senza titolo",previous:"Precedente",lastEdited:"Ultima modifica in data {date}.",lastCreated:"Creato in data {date}.",lastEditedByUser:"Ultima modifica da parte di {user} in data {date}.",lastCreatedByUser:"Creato da {user} in data {date}."});

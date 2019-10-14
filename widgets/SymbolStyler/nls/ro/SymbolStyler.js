@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({basic:"Forme de bază",preview:"Previzualizare",shape:"Formă",fill:"Umplere",outline:"Contur",px:"px",pixels:"pixeli",meters:"metri",symbolSize:"Dimensiune simbol",symbolSizeTooltip:"Setaţi dimensiunea simbolurilor de la ${min} la ${max} ${units}.",useImage:"Utilizați o imagine",useImageTooltip:"Utilizați o imagine particularizată.",imageUrlInputTooltip:"Pentru rezultate optime, utilizaţi o imagine pătrată (PNG, GIF sau JPEG) de cel mult 120 x 120 pixeli. Alte dimensiuni vor fi ajustate pentru a se potrivi.",imageUrlInputPlaceholder:"http://<image URL>",selectCategoryTooltip:"Selectați o categorie.",imageLoadError:"Imposibil de încărcat imaginea.",symbolLoadError:"Imposibil de încărcat simbolurile.",noSymbolsAvailable:"Nu există simboluri disponibile",noTitle:"Nu există titluri disponibile",noFillTooltip:"Fără umplere",symbolTransparencyTooltip:"Transparență simbol",lineWidth:"Grosime linie",lineWidthTooltip:"Setaţi o lăţime de linie de la ${min} la ${max} ${units}.",pattern:"Model",patternTooltip:"Tip de linie",flipColors:"Inversare culori",flipColorsTooltip:"Inversați rampa de culori.",noOutlineTooltip:"Fără contur",saturation:"Saturație",saturationTooltip:"Reglați intensitatea culorii.",selectRampTooltip:"Selectați o rampă de culoare.",circle:"Cerc",square:"Pătrat",cross:"Cruce",x:"X",kite:"Zmeu",triangle:"Triunghi",sphere:"Sferă",cylinder:"Cilindru",tallCylinder:"Cilindru înalt",cube:"Cub",tallCube:"Cub înalt",cone:"Con",tallCone:"Con înalt",invertedCone:"Con inversat",diamond:"Diamant",tetrahedron:"Tetraedru"});

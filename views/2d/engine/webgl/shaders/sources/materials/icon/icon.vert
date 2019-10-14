@@ -4,7 +4,8 @@ attribute vec4 a_color;
 attribute vec4 a_outlineColor;
 attribute vec4 a_sizeAndOutlineWidth;
 attribute vec2 a_vertexOffset;
-attribute vec4 a_texAndBitSet;
+attribute vec2 a_texCoords;
+attribute vec4 a_bitSetAndDistRatio;
 
 #include <materials/vcommon.glsl>
 #include <materials/icon/common.glsl>
@@ -34,9 +35,8 @@ void main()
 
   vec2  a_size   = a_sizeAndOutlineWidth.xy * a_sizeAndOutlineWidth.xy / 256.0;
   vec2  a_offset = a_vertexOffset / 16.0;
-  vec2  a_tex    = a_texAndBitSet.xy; // + SIGNED_BYTE_TO_UNSIGNED;
   float a_outlineSize = a_sizeAndOutlineWidth.z * a_sizeAndOutlineWidth.z / 256.0;
-  float a_bitSet = a_texAndBitSet.z;
+  float a_bitSet = a_bitSetAndDistRatio.z;
 
   // MG: We should try and unify the bitset, here isColorLocked is the second bit.
   // Somewhat ugly to have to pass the index to getColor
@@ -45,7 +45,7 @@ void main()
   v_size     = getMarkerSize(a_offset, a_size, a_outlineSize, a_sizeAndOutlineWidth.w * a_sizeAndOutlineWidth.w / 256.0, a_bitSet);
   v_id       = norm(a_id);
   v_filters  = getFilterFlags();
-  v_tex      = a_tex / u_mosaicSize; // texture coords and transparency
+  v_tex      = a_texCoords / u_mosaicSize; // texture coords and transparency
   v_pos      = u_dvsMat3 * vec3(a_pos, 1.0) + getOffset(a_offset, a_bitSet);
 
 #ifdef SDF
@@ -59,7 +59,7 @@ void main()
 
   v_outlineWidth = min(a_outlineSize, max(max(v_size.x, v_size.y) - 0.99, 0.0));
   v_outlineColor = getEffectColor(a_outlineColor, v_filters);
-  v_distRatio = a_texAndBitSet.w / 126.0; // 126 = 64.0 (encoding) * internal sdf ratio 126/64 (texture size = 126 / geom size = 64)
+  v_distRatio = a_bitSetAndDistRatio.w / 126.0; // 126 = 64.0 (encoding) * internal sdf ratio 126/64 (texture size = 126 / geom size = 64)
 #endif
 
   gl_Position = vec4(applyFilter(v_color, v_pos, v_filters), 1.0);

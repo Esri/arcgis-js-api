@@ -1,7 +1,8 @@
 {
   "title": "labelExpressionInfo",
   "type": "object",
-  "description": "An object that defines an expression for text of labels",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The labelExpressionInfo allows label text to be read similar to that of Popups's description property.",
   "properties": {
     "expression": {
       "type": "string",

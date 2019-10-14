@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../../Color","../../../../core/compilerUtils","../../../../core/maybe","../../../../core/screenUtils","../../../../core/libs/gl-matrix-2/vec4f64"],function(e,t,r,o,i,n,c){function a(e){return e&&e.enabled&&e.edges||null}function l(e,t,r){return s(e,a(t),r)}function s(e,t,a){if(i.isNone(t))return null;var l=i.isSome(t.color)?c.vec4f64.fromArray(r.toUnitRGBA(t.color)):c.vec4f64.fromValues(0,0,0,0),s=a.opacity;switch(t.type){case"solid":return e.createSolidEdgeMaterial({color:l,size:n.pt2px(t.size),extensionLength:n.pt2px(t.extensionLength),opacity:s});case"sketch":return e.createSketchEdgeMaterial({color:l,size:n.pt2px(t.size),extensionLength:n.pt2px(t.extensionLength),opacity:s});default:o.neverReached(t)}}Object.defineProperty(t,"__esModule",{value:!0}),t.createMaterial=l,t.createMaterialFromEdges=s});
+define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../Color","../../../../core/compilerUtils","../../../../core/maybe","../../../../core/screenUtils","../../../../core/libs/gl-matrix-2/vec4f64"],function(e,r,t,o,n,c,i,s){function a(e){return e&&e.enabled&&e.edges||null}function l(e,r){return u(a(e),r)}function u(e,r){if(c.isNone(e))return null;var a=c.isSome(e.color)?s.vec4f64.fromArray(o.toUnitRGBA(e.color)):s.vec4f64.fromValues(0,0,0,0),l=i.pt2px(e.size),u=i.pt2px(e.extensionLength);switch(e.type){case"solid":return f(t({color:a,size:l,extensionLength:u},r));case"sketch":return p(t({color:a,size:l,extensionLength:u},r));default:return void n.neverReached(e)}}function f(e){return t({},d,e,{type:"solid"})}function p(e){return t({},g,e,{type:"sketch"})}Object.defineProperty(r,"__esModule",{value:!0}),r.createMaterial=l,r.createMaterialFromEdges=u,r.createSolidEdgeMaterial=f;var d={color:s.vec4f64.fromValues(0,0,0,.2),size:1,extensionLength:0,opacity:1,objectTransparency:2},g={color:s.vec4f64.fromValues(0,0,0,.2),size:1,extensionLength:0,opacity:1,objectTransparency:2}});

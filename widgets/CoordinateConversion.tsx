@@ -75,7 +75,8 @@ import Conversion = require("esri/widgets/CoordinateConversion/support/Conversio
 import Format = require("esri/widgets/CoordinateConversion/support/Format");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";

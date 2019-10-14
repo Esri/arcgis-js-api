@@ -4,6 +4,7 @@
 #include <util/sceneLighting.glsl>
 
 #include <materials/defaultMaterial/texturingInputs.glsl>
+#include <materials/defaultMaterial/texturing.glsl>
 
 #define FRAGMENT_SHADER
 #include <materials/defaultMaterial/vertexTangents.glsl>
@@ -65,6 +66,7 @@ varying float linearDepth;
     uniform float roughnessFactor;
     uniform float metalnessFactor;
     uniform vec3 emissionFactor;
+    uniform float reflectanceFactor;
 
   #ifdef PBR_TEX_METALLNESS_ROUGHNESS
     uniform sampler2D texMetallicRoughness;
@@ -77,16 +79,12 @@ varying float linearDepth;
   #endif
 #endif
 
-#ifdef TEXTURING
-#include <materials/defaultMaterial/texturing.glsl>
-#endif
-
 #include <materials/defaultMaterial/colorMixMode.glsl>
 
 void main() {
   discardBySlice(vpos);
 
-#if defined(TEXTURING) && defined(TEXTURE_COLOR)
+#if defined(TEXTURE_COLOR)
   vec4 texColor = textureLookup(tex, vtc);
 
   #if defined(TEXTURE_ALPHA_PREMULTIPLIED)
@@ -94,9 +92,9 @@ void main() {
   #endif
 
   discardOrAdjustTextureAlpha(texColor);
-#else /* TEXTURING */
+#else /* TEXTURE_COLOR */
   vec4 texColor = vec4(1.0);
-#endif /* TEXTURING */
+#endif /* TEXTURE_COLOR */
 
   vec3 viewDir = vpos - camPos;
 
@@ -124,24 +122,25 @@ void main() {
 #endif
 
 #ifdef USE_PBR
+    float reflectance = reflectanceFactor;
     float roughness = roughnessFactor;
     float metalness = metalnessFactor;
 
   #ifdef PBR_TEX_METALLNESS_ROUGHNESS
-    vec3 metalicRoughness = texture2D(texMetallicRoughness, vtc).rgb;
+    vec3 metallicRoughness = textureLookup(texMetallicRoughness, vtc).rgb;
 
-    roughness *= metalicRoughness.g ;
-    metalness *= metalicRoughness.b ;
+    roughness *= metallicRoughness.g ;
+    metalness *= metallicRoughness.b ;
   #endif
 
     vec3 emission = emissionFactor;
   #ifdef PBR_TEX_EMISSION
-    emission *= texture2D(texEmission, vtc).rgb;
+    emission *= textureLookup(texEmission, vtc).rgb;
   #endif
 
     float bakedOcclusion = 1.0;
   #ifdef PBR_TEX_OCCLUSION
-    bakedOcclusion *= texture2D(texOcclusion, vtc).r;
+    bakedOcclusion *= textureLookup(texOcclusion, vtc).r;
   #endif
 #endif
   // compute ssao
@@ -180,6 +179,15 @@ void main() {
   float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));
 #endif
 
+#if defined(USE_PBR)
+  // With the replace color mix mode, we replace the material parameters to get a schematic look.
+  if (int(colorMixMode) == 3 /* replace */) {
+    reflectance = 0.2;
+    roughness = 0.6;
+    metalness = 0.0;
+  }
+#endif
+
 
   #if defined(TEXTURE_NORMALS)
     #ifdef VERTEX_TANGENTS
@@ -214,8 +222,12 @@ void main() {
   #endif
 
   #ifdef USE_PBR
+    // additional incoming irradiance in our case to make the appearance more brighter
+    // this can be used to add simple light diffusion depending on the incoming light for in the water rendering (or any scattering rendering)
+    float additionalAmbientIrradiance = additionalAmbientIrradianceFactor * lightingMainIntensity[2];
+
     vec3 normalGround = normalize(vpos + localOrigin);
-    vec3 shadedColor = evaluateSceneLightingPBR(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight, viewDir, normalGround, roughness, metalness, emission);
+    vec3 shadedColor = evaluateSceneLightingPBR(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight, viewDir, normalGround, roughness, metalness, emission, reflectance, additionalAmbientIrradiance);
   #else
     vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
   #endif

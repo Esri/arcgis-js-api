@@ -132,9 +132,6 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
-// @dojo.framework.shim
-import Set from "@dojo/framework/shim/Set";
-
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/Sketch/nls/Sketch";
 
@@ -144,7 +141,7 @@ import Graphic = require("esri/widgets/../Graphic");
 
 // esri.core
 import Collection = require("esri/core/Collection");
-import Evented = require("esri/core/Evented");
+import { SetFromValues } from "esri/core/iteratorUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
@@ -222,10 +219,8 @@ interface SketchEvents {
   delete: DeleteEvent;
 }
 
-interface Sketch extends Evented.IEvented<SketchEvents> {}
-
 @subclass("esri.widgets.Sketch")
-class Sketch extends declared(Widget) {
+class Sketch extends declared(Widget)<SketchEvents> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -602,8 +597,7 @@ class Sketch extends declared(Widget) {
       this.viewModel.on("create", (event) => this._onOperationComplete(event)),
       this.viewModel.on("update", (event) => this._onOperationComplete(event)),
       this.viewModel.on("undo", () => this.scheduleRender()),
-      this.viewModel.on("redo", () => this.scheduleRender()),
-      this.viewModel.on("reset", () => this.scheduleRender())
+      this.viewModel.on("redo", () => this.scheduleRender())
     ]);
   }
 
@@ -619,11 +613,9 @@ class Sketch extends declared(Widget) {
    * (for example after [update()](#update) has been called), this property reflects the
    * update tool being used. If no create or update operation is in progress, this is `null`.
    *
-   * **Possible Values:** point | polyline | polygon | circle | rectangle | move | transform | reshape
-   *
    * @name activeTool
    * @instance
-   * @type {string}
+   * @type {"point" | "polyline" | "polygon" | "circle" | "rectangle" | "move" | "transform" | "reshape"}
    * @readonly
    */
   @aliasOf("viewModel.activeTool")
@@ -650,7 +642,7 @@ class Sketch extends declared(Widget) {
       }
 
       const validTools = ["point", "polyline", "polygon", "rectangle", "circle"];
-      const validToolsSet = new Set([...validTools]);
+      const validToolsSet = SetFromValues(validTools);
 
       return tools.filter((toolName) => validToolsSet.has(toolName)) as CreateTool[];
     }
@@ -696,8 +688,6 @@ class Sketch extends declared(Widget) {
    * @property {boolean} [toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
    * @instance
    * @type {Object}
-   * @readonly
-   *
    */
   @aliasOf("viewModel.defaultUpdateOptions")
   @renderable()
@@ -754,13 +744,11 @@ class Sketch extends declared(Widget) {
   /**
    * Determines the layout/orientation of the Sketch widget.
    *
-   * **Possible Values:** vertical | horizontal
-   *
    * @name layout
    * @since 4.10
    * @instance
    * @default horizontal
-   * @type {string}
+   * @type {"vertical"|"horizontal"}
    */
   @property({ value: "horizontal" })
   @renderable()
@@ -779,11 +767,9 @@ class Sketch extends declared(Widget) {
   /**
    * The Sketch widget's state.
    *
-   * **Possible Values:** ready | disabled | active
-   *
    * @name state
    * @instance
-   * @type {string}
+   * @type {"ready" | "disabled" | "active"}
    * @readonly
    *
    */
@@ -838,7 +824,7 @@ class Sketch extends declared(Widget) {
    */
   @property()
   @renderable("viewModel.state")
-  @vmEvent(["create", "update", "undo", "redo", "reset"])
+  @vmEvent(["create", "update", "undo", "redo"])
   viewModel: SketchViewModel = new SketchViewModel();
 
   //--------------------------------------------------------------------------
@@ -1014,19 +1000,6 @@ class Sketch extends declared(Widget) {
   @aliasOf("viewModel.redo")
   redo(): void {}
 
-  /**
-   * Resets the Sketch widget to prepare for another create operation.
-   * Reset discards the current sketch, if called in middle of create operation.
-   *
-   * @method reset
-   * @instance
-   * @deprecated since version 4.12. Use {@link module:esri/widgets/Sketch#cancel cancel()} instead.
-   */
-  reset(): void {
-    this.viewModel.reset();
-    this.view.focus();
-  }
-
   render(): VNode {
     const {
       viewModel: { state },
@@ -1078,6 +1051,8 @@ class Sketch extends declared(Widget) {
         </div>
       ];
     }
+
+    return undefined;
   }
 
   protected renderFeatureCount(): VNode {
@@ -1177,6 +1152,8 @@ class Sketch extends declared(Widget) {
       if (toolName === "circle") {
         return this.renderCircleButton();
       }
+
+      return undefined;
     });
   }
 

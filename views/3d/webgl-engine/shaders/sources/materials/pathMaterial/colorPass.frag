@@ -14,11 +14,7 @@ uniform vec3 specular;
 uniform float opacity;
 uniform float layerOpacity;
 
-#if defined(SYMBOLVERTEXCOLORS) || defined(COMPONENTCOLORS)
-varying mediump float colorMixMode; // varying int is not supported in WebGL
-#else
 uniform int colorMixMode;
-#endif
 
 #ifdef RECEIVE_SHADOWS
 uniform sampler2D depthTex;

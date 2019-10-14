@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('fonts/CalciteWebCoreIcons.ttf?im9r4h') format('truetype'),
-    url('fonts/CalciteWebCoreIcons.woff?im9r4h') format('woff'),
-    url('fonts/CalciteWebCoreIcons.svg?im9r4h#CalciteWebCoreIcons') format('svg');
+    url('fonts/CalciteWebCoreIcons.ttf?8m1z5l') format('truetype'),
+    url('fonts/CalciteWebCoreIcons.woff?8m1z5l') format('woff'),
+    url('fonts/CalciteWebCoreIcons.svg?8m1z5l#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -697,10 +697,31 @@
 }
 .esri-icon-undo:before {
   content: "\e905";
+  color: inherit;
 }
 .esri-icon-redo:before {
   content: "\e906";
+  color: inherit;
 }
 .esri-icon-cursor:before {
   content: "\e907";
+  color: inherit;
 }
+.esri-icon-cursor-filled:before {
+  content: "\e908";
+  color: inherit;
+}
+.esri-icon-measure:before {
+  content: "\e90a";
+  color: inherit;
+}
+.esri-icon-measure-line:before {
+  content: "\e909";
+  color: inherit;
+}
+.esri-icon-measure-area:before {
+  content: "\e90b";
+  color: inherit;
+}
+
+

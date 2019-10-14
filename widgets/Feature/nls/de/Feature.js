@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({attach:"Anlagen",fields:"Felder",fieldsSummary:"Liste der Attribute und Werte",media:"Medien",next:"Nächstes",noTitle:"Ohne Titel",previous:"Vorheriges",lastEdited:"Zuletzt bearbeitet am {date}.",lastCreated:"Erstellt am {date}.",lastEditedByUser:"Zuletzt bearbeitet von {user} am {date}.",lastCreatedByUser:"Erstellt von {user} am {date}."});

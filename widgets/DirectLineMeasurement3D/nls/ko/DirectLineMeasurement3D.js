@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"측정",hint:"첫 번째 지점을 배치하기 위해 씬을 클릭하여 측정 시작",unsupported:"씬 뷰에서는 3D 직선 라인 측정만 지원됩니다.",distance:"거리",direct:"직선",horizontal:"수평",vertical:"수직",unit:"단위",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식",kilometers:"킬로미터",meters:"미터",miles:"마일",inches:"인치",feet:"피트",yards:"야드","nautical-miles":"해리","us-feet":"피트(US)","degrees-minutes-seconds":"도분초",degrees:"도"}});
+define({title:"직선 측정",hint:"첫 번째 지점을 배치하기 위해 씬을 클릭하여 측정 시작",unsupported:"씬 뷰에서는 3D 직선 라인 측정만 지원됩니다.",distance:"거리",direct:"직선",horizontal:"수평",vertical:"수직",unit:"단위",newMeasurement:"새 측정",units:{metric:"미터법",imperial:"영국식",kilometers:"킬로미터",meters:"미터",miles:"마일",inches:"인치",feet:"피트",yards:"야드","nautical-miles":"해리","us-feet":"피트(US)","degrees-minutes-seconds":"도분초",degrees:"도"}});

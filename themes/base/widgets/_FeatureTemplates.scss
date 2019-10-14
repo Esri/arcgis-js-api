@@ -4,7 +4,6 @@
 
   .esri-feature-templates {
     background: $background-color--offset;
-    width: $panel_width;
   }
 
   .esri-feature-templates__list-item-icon {
@@ -26,6 +25,9 @@
     height: $icon_size;
     width: 32px;
     background: url(../base/images/loading-throb.gif) no-repeat center;
+  }
+  .esri-ui .esri-feature-templates {
+    width: $panel_width;
   }
 }
 

@@ -1,6 +1,7 @@
 {
   "title": "slide",
   "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A slide object used within a presentation.",
   "properties": {
     "baseMap": {

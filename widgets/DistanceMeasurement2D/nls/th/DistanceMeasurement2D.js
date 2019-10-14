@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"วัด",hint:"เริ่มต้นวัดโดยการคลิกที่แผนที่ เพื่อวางจุดแรกของคุณ",unsupported:"รองรับการวัดระยะทาง 2D เฉพาะใน MapView",distance:"ระยะทาง",newMeasurement:"การวัดใหม่",mode:"โหมด",modes:{auto:"อัตโนมัติ",planar:"กราฟเชิงระนาบ",geodesic:"เรขาคณิตของผิวหน้าโค้ง"},unit:"หน่วย",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐฯ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});
+define({title:"การวัดระยะทาง",hint:"เริ่มต้นวัดโดยการคลิกที่แผนที่ เพื่อวางจุดแรกของคุณ",unsupported:"รองรับการวัดระยะทาง 2D เฉพาะใน MapView",distance:"ระยะทาง",newMeasurement:"การวัดใหม่",mode:"โหมด",modes:{auto:"อัตโนมัติ",planar:"กราฟเชิงระนาบ",geodesic:"เรขาคณิตของผิวหน้าโค้ง"},unit:"หน่วย",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐฯ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});

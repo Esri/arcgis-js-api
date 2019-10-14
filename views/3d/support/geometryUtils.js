@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","./geometryUtils/axisAngle","./geometryUtils/boundedPlane","./geometryUtils/frustum","./geometryUtils/lineSegment","./geometryUtils/plane","./geometryUtils/ray","./geometryUtils/sphere","./geometryUtils/triangle","./geometryUtils/vector"],function(e,t,r,l,i,n,o,s,g,m,y){Object.defineProperty(t,"__esModule",{value:!0}),t.plane=o,t.boundedPlane=l,t.triangle=m,t.lineSegment=n,t.ray=s,t.sphere=g,t.frustum=i,t.vector=y,t.axisAngle=r});

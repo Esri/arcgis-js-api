@@ -1,11 +1,12 @@
 /**
  * The DistanceMeasurement2D widget calculates and displays the distance between two or more points
- * in a {@link module:esri/views/MapView}. When the distance is less
- * than 100 km, the default {@link module:esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel#mode mode}
- * is `planar`. When the distance is greater than or equal to 100 km, the default
- * {@link module:esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel#mode mode} is `geodesic`.
+ * in a {@link module:esri/views/MapView}. The widget will compute distances geodetically
+ * for geographic coordinate systems and web mercator. For projected coordinate systems (non-web mercator),
+ * computations will be performed planimetrically for distances up to the threshold distance defined by
+ * {@link module:esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel#geodesicDistanceThreshold geodesicDistanceThreshold}.
+ * Distances equivalent to and beyond the threshold will be computed geodetically. By default the threshold is set to 100km.
  *
- * [![measurement-line-2d](../../assets/img/apiref/widgets/DistanceMeasurement2D_screenshot.png)](../sample-code/widgets-measurement-2d/index.html)
+ * [![measurement-line-2d](../../assets/img/apiref/widgets/DistanceMeasurement2D_widget.png)](../sample-code/widgets-measurement-2d/index.html)
  *
  * ### Undo / Redo
  *
@@ -48,14 +49,17 @@
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/DistanceMeasurement2D/nls/DistanceMeasurement2D";
 
+// esri.core
+import { SystemOrLengthUnit } from "esri/core/unitUtils";
+
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
-import { LinearUnit, MeasurementMode } from "esri/widgets/interfaces";
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.DistanceMeasurement2D
@@ -69,7 +73,7 @@ const CSS = {
   // common
   button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
-  widgetIcon: "esri-icon-description",
+  widgetIcon: "esri-icon-measure-line",
   // base
   base: "esri-direct-line-measurement-3d esri-widget esri-widget--panel",
   // container
@@ -181,8 +185,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    *
    * @name unit
    * @instance
-   * @type {string}
-   * @tstype "metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"
+   * @type {"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"}
    * @example
    *
    * // To create the DistanceMeasurement2D widget that displays distance in yards
@@ -195,7 +198,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    * console.log('Current unit: ', measurementWidget.unit);
    */
   @aliasOf("viewModel.unit")
-  unit: LinearUnit = null;
+  unit: SystemOrLengthUnit = null;
 
   //----------------------------------
   //  unitOptions
@@ -203,11 +206,10 @@ class DistanceMeasurement2D extends declared(Widget) {
 
   /**
    * List of available units and unit systems (imperial, metric) for displaying the distance values.
-   * By default, the following units are included: `metric`, `imperial`, `inches`, `feet`, `us-feet`, `yards`, `miles`, `nautical-miles`, `meters`, `kilometers`.
    *
    * @name unitOptions
    * @instance
-   * @type {string[]}
+   * @type {Array<"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers">}
    * @example
    *
    * // To display the available units to the console
@@ -217,7 +219,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    * console.log('All units: ', measurementWidget.unitOptions.join(", "));
    */
   @aliasOf("viewModel.unitOptions")
-  unitOptions: LinearUnit[] = null;
+  unitOptions: SystemOrLengthUnit[] = null;
 
   //----------------------------------
   //  view
@@ -239,7 +241,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    * view.ui.add(measurementWidget, "top-right");
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -261,7 +263,6 @@ class DistanceMeasurement2D extends declared(Widget) {
    * var measurementWidget = new DistanceMeasurement2D({
    *   viewModel: {
    *     view: view,
-   *     mode: "planar",
    *     unit: "feet"
    *   }
    * });
@@ -301,15 +302,15 @@ class DistanceMeasurement2D extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const isSupported = this.viewModel.isSupported;
-    const isActive = this.viewModel.active;
-    const isDisabled = this.viewModel.state === "disabled";
-    const isReady = this.viewModel.state === "ready";
-    const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
-    const label = this.viewModel.measurementLabel;
+    const { id, viewModel, visible } = this;
+    const { active, isSupported, measurementLabel, state, unit, unitOptions } = viewModel;
+
+    const isDisabled = state === "disabled";
+    const isReady = state === "ready";
+    const isMeasuring = state === "measuring" || state === "measured";
 
     const hintNode =
-      isActive && isReady ? (
+      active && isReady ? (
         <section key="hint" class={CSS.hint}>
           <p class={CSS.hintText}>{i18n.hint}</p>
         </section>
@@ -339,11 +340,11 @@ class DistanceMeasurement2D extends declared(Widget) {
 
     const measurementNode = isMeasuring ? (
       <section key="measurement" class={CSS.measurement}>
-        {measurementLabelNode(i18n.distance, label, "distance")}
+        {measurementLabelNode(i18n.distance, measurementLabel, "distance")}
       </section>
     ) : null;
 
-    const unitsId = `${this.id}-units`;
+    const unitsId = `${id}-units`;
 
     const unitsNode = isMeasuring ? (
       <section key="units" class={CSS.units}>
@@ -356,36 +357,11 @@ class DistanceMeasurement2D extends declared(Widget) {
             id={unitsId}
             onchange={this._changeUnit}
             bind={this}
-            value={this.viewModel.unit}
+            value={unit}
           >
-            {this.viewModel.unitOptions.map((unit) => (
-              <option key={unit} value={unit}>
-                {i18n.units[unit]}
-              </option>
-            ))}
-          </select>
-        </div>
-      </section>
-    ) : null;
-
-    const modesId = `${this.id}-modes`;
-
-    const modesNode = isMeasuring ? (
-      <section key="modes" class={CSS.units}>
-        <label class={CSS.unitsLabel} for={modesId}>
-          {i18n.mode}
-        </label>
-        <div class={CSS.unitsSelectWrapper}>
-          <select
-            class={CSS.unitsSelect}
-            id={modesId}
-            onchange={this._changeMode}
-            bind={this}
-            value={this.viewModel.mode}
-          >
-            {this.viewModel.modes.map((mode) => (
-              <option key={mode} value={mode}>
-                {i18n.modes[mode]}
+            {unitOptions.map((unitOption) => (
+              <option key={unitOption} value={unitOption}>
+                {i18n.units[unitOption]}
               </option>
             ))}
           </select>
@@ -396,12 +372,11 @@ class DistanceMeasurement2D extends declared(Widget) {
     const settingsNode = isMeasuring ? (
       <div key="settings" class={CSS.settings}>
         {unitsNode}
-        {modesNode}
       </div>
     ) : null;
 
     const newMeasurementNode =
-      isSupported && (!isActive || isMeasuring) ? (
+      isSupported && (!active || isMeasuring) ? (
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}
@@ -416,7 +391,7 @@ class DistanceMeasurement2D extends declared(Widget) {
         </div>
       ) : null;
 
-    const containerNode = this.visible ? (
+    const containerNode = visible ? (
       <div class={CSS.container}>
         {unsupportedNode}
         {hintNode}
@@ -453,20 +428,7 @@ class DistanceMeasurement2D extends declared(Widget) {
     const target = event.target as HTMLSelectElement;
     const selected = target.options[target.selectedIndex];
     if (selected) {
-      this.viewModel.unit = selected.value as LinearUnit;
-    }
-  }
-
-  /**
-   * Called when the user selects a new computational mode from the dropdown menu.
-   * @private
-   */
-  @accessibleHandler()
-  private _changeMode(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    const selected = target.options[target.selectedIndex];
-    if (selected) {
-      this.viewModel.mode = selected.value as MeasurementMode;
+      this.viewModel.unit = selected.value as SystemOrLengthUnit;
     }
   }
 }

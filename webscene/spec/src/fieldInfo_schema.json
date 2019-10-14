@@ -39,9 +39,9 @@
       "type": "string",
       "description": "A string determining what type of input box editors see when editing the field. Applies only to string fields. Not applicable to Arcade expressions.",
       "enum": [
-        "textbox",
+        "richtext",
         "textarea",
-        "richtext"
+        "textbox"
       ],
       "default": "textbox"
     },

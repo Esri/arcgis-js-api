@@ -68,7 +68,8 @@ import Graphic = require("esri/Graphic");
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -77,7 +78,8 @@ import Widget = require("esri/widgets/Widget");
 import LocateViewModel = require("esri/widgets/Locate/LocateViewModel");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -315,7 +317,7 @@ class Locate extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel

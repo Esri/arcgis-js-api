@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Extent"],function(e,t,r,o,p,i,l,n){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.extent=null,t.height=null,t.href=null,t.opacity=1,t.rotation=0,t.scale=null,t.visible=!0,t.width=null,t}return r(t,e),o([l.property({type:n})],t.prototype,"extent",void 0),o([l.property()],t.prototype,"height",void 0),o([l.property()],t.prototype,"href",void 0),o([l.property()],t.prototype,"opacity",void 0),o([l.property()],t.prototype,"rotation",void 0),o([l.property()],t.prototype,"scale",void 0),o([l.property()],t.prototype,"visible",void 0),o([l.property()],t.prototype,"width",void 0),t=o([l.subclass("esri.layer.support.MapImage")],t)}(l.declared(i))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Extent"],function(t,e,r,o,p,i,l,n){return function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.extent=null,e.height=null,e.href=null,e.opacity=1,e.rotation=0,e.scale=null,e.visible=!0,e.width=null,e}return r(e,t),o([l.property({type:n})],e.prototype,"extent",void 0),o([l.property()],e.prototype,"height",void 0),o([l.property()],e.prototype,"href",void 0),o([l.property()],e.prototype,"opacity",void 0),o([l.property()],e.prototype,"rotation",void 0),o([l.property()],e.prototype,"scale",void 0),o([l.property()],e.prototype,"visible",void 0),o([l.property()],e.prototype,"width",void 0),e=o([l.subclass("esri.layer.support.MapImage")],e)}(l.declared(i.JSONSupport))});

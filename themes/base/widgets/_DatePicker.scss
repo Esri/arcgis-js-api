@@ -121,8 +121,8 @@
 
   html[dir="rtl"] {
     .esri-date-picker__calendar {
-      left: 0;
-      right: $side-spacing;
+      left: auto;
+      right: 0;
     }
 
     .esri-date-picker__date {

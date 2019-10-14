@@ -16,6 +16,10 @@
  *
  * @see module:esri/widgets/Histogram
  * @see module:esri/widgets/Slider
+ *
+ * @see [HistogramRangeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/HistogramRangeSlider.tsx)
+ * @see [HistogramRangeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_HistogramRangeSlider.scss)
+ * @see module:esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel
  */
 
 /// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
@@ -29,6 +33,7 @@ import * as i18n from "dojo/i18n!esri/widgets/HistogramRangeSlider/nls/Histogram
 import Color = require("esri/Color");
 
 // esri.core
+import Logger = require("esri/core/Logger");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
@@ -71,7 +76,10 @@ const CSS = {
   disabled: "esri-disabled"
 };
 
-@subclass("esri.widgets.HistogramRangeSlider")
+const declaredClass = "esri.widgets.HistogramRangeSlider";
+const logger = Logger.getLogger(declaredClass);
+
+@subclass(declaredClass)
 class HistogramRangeSlider extends declared(Widget) {
   //--------------------------------------------------------------------------
   //
@@ -116,7 +124,7 @@ class HistogramRangeSlider extends declared(Widget) {
    */
 
   /**
-   * Fires when a user changes the value of a thumb via keyboard editing of the label on the widget.
+   * Fires when a user changes the value of a thumb via the keyboard arrow keys.
    *
    * @event module:esri/widgets/HistogramRangeSlider#thumb-change
    *
@@ -149,6 +157,7 @@ class HistogramRangeSlider extends declared(Widget) {
    * @property {number} oldValue - The former value of the thumb before the change was made.
    * @property {string} type - The type of the event. For this event, the type is always `value-change`.
    * @property {number} value - The value of the thumb when the event is emitted.
+   * @deprecated since version 4.13.
    */
 
   /**
@@ -160,6 +169,7 @@ class HistogramRangeSlider extends declared(Widget) {
    * @property {number[]} oldValues - The former values of the thumbs before the changes were made.
    * @property {string} type - The type of the event. For this event, the type is always `values-change`.
    * @property {number[]} values - The values of the thumbs when the event is emitted.
+   * @deprecated since version 4.13.
    */
 
   /**
@@ -222,11 +232,27 @@ class HistogramRangeSlider extends declared(Widget) {
     });
 
     this.own(
-      this._slider.on(["max-change", "min-change", "value-change", "values-change"], (event) =>
-        this.emit(event.type, event)
-      ),
+      this._slider.on(["max-change", "min-change"], (event) => this.emit(event.type, event)),
 
-      this._slider.on(["thumb-change", "thumb-drag", "segment-drag"], (event) => {
+      // Because we want to deprecate the 'value-change' and 'values-change' events,
+      // ... but avoid automatically firing the deprecation warnings from Slider
+      // ... we need to check if event listeners are actually attached before emitting the event
+      this._slider.on(["segment-drag"], (event) => {
+        if (this.hasEventListener("values-change")) {
+          logger.warn("'values-change' is deprecated, watch the 'values' property instead.");
+          this.emit("values-change", { ...event, type: "values-change" });
+        }
+
+        this._updateBarFills();
+        this.emit(event.type, event);
+      }),
+
+      this._slider.on(["thumb-change", "thumb-drag"], (event) => {
+        if (this.hasEventListener("value-change")) {
+          logger.warn("'value-change' is deprecated, watch the 'values' property instead.");
+          this.emit("value-change", { ...event, type: "value-change" });
+        }
+
         this._updateBarFills();
         this.emit(event.type, event);
       }),

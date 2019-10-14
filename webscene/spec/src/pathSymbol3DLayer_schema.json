@@ -42,8 +42,8 @@
       "type": "string",
       "description": "Shape of the intersection of two line segments.",
       "enum": [
-        "miter",
         "bevel",
+        "miter",
         "round"
       ],
       "default": "miter"
@@ -64,8 +64,8 @@
       "type": "string",
       "description": "Specifies the axes about which the profile may be rotated at the joins. Constraining the rotation axes leads to a fixed orientation of the profile for the specified directions.",
       "enum": [
-        "heading",
-        "all"
+        "all",
+        "heading"
       ],
       "default": "all"
     },

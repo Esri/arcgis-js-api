@@ -4,17 +4,18 @@ uniform mediump vec2 u_mosaicSize;
 #endif
 
 #ifdef DOT_DENSITY
-uniform float u_dotValue;
-uniform float u_tileDotsOverArea; 
-uniform vec4 u_isActive[ 2 ]; 
-uniform float u_dotTextureDotCount;
-uniform float u_tileZoomFactor; 
+uniform highp float u_dotValue;
+uniform highp float u_tileDotsOverArea; 
+uniform lowp vec4 u_isActive[ 2 ]; 
+uniform highp float u_dotTextureDotCount;
+uniform mediump float u_tileZoomFactor; 
 #endif
 
 varying vec3 v_pos;
 varying lowp vec4 v_color;
 varying lowp float v_opacity;
 varying highp vec4 v_id;
+varying highp float v_flags;
 
 #ifdef PATTERN
 varying mediump vec4 v_tlbr;

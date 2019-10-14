@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/libs/gl-matrix-2/vec2f64"],function(t,e,i){return function(){function t(){this.offset=i.vec2f64.create(),this.scale=0,this.tile=null}return t.prototype.init=function(t,e,i,s){this.tile=t,this.offset[0]=e,this.offset[1]=i,this.scale=s},t.prototype.dispose=function(){this.tile=null,this.offset[0]=0,this.offset[1]=0,this.scale=0},t}()});

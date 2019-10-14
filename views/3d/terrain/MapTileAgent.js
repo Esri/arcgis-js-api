@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgent"],function(e,n,t,r,o){return function(e){function n(){var n=e.call(this)||this;return n._scaleRangeEnabled=!0,n}return t(n,e),n.prototype._desiredMinLevelDelta=function(){return 0},n.Pool=new r(n),n}(o)});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgent"],function(e,n,t,r,o){return function(e){function n(){var n=e.call(this)||this;return n._scaleRangeEnabled=!0,n}return t(n,e),n.prototype._desiredMinLevelDelta=function(){return 0},n.Pool=new r(n),n}(o.TileAgent)});

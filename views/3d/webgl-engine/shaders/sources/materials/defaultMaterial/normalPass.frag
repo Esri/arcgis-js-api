@@ -9,15 +9,15 @@
 varying vec3 vpos;
 varying vec3 vPositionView;
 
-#if defined(TEXTURING)
-  #include <materials/defaultMaterial/texturingInputs.glsl>
-  #include <materials/defaultMaterial/texturing.glsl>
+#if defined(TEXTURE_COLOR)
+#include <materials/defaultMaterial/texturingInputs.glsl>
+#include <materials/defaultMaterial/texturing.glsl>
 #endif
 
 void main() {
   discardBySlice(vpos);
 
-  #if defined(TEXTURING)
+  #if defined(TEXTURE_COLOR)
     vec4 texColor = textureLookup(tex, vtc);
     discardOrAdjustTextureAlpha(texColor);
   #endif

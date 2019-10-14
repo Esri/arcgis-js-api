@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"שרטוט",move:"הזז",pan:"הזזה",reset:"איפוס",reshape:"עצב מחדש",rotate:"סובב",scale:"קנה מידה",transform:"המר",undo:"בטל",redo:"בצע מחדש",drawPoint:"שרטט נקודה",drawPolygon:"שרטט פוליגון",drawPolyline:"שרטט פוליגון",drawMultipoint:"שרטט ריבוי נקודות",drawCircle:"שרטט עיגול",drawRectangle:"שרטט מלבן",clearDrawing:"נקה שרטוט",completeDrawing:"השלם שרטוט",pauseDrawing:"השהה שרטוט",resumeDrawing:"המשך שרטוט",updateDrawing:"עדכן שרטוט",addPointTooltip:"הקש להוספת נקודה",removePointTooltip:"לחץ להסרת נקודה זו",completePolygonTooltip:"לחץ על נקודה זו לסיום",startDrawingTooltip:"לחץ כדי להתחיל בשרטוט",continueDrawingTooltip:"לחץ להמשך שרטוט",completeDrawingTooltip:"לחיצה כפולה להשלמה",addMultipointTooltip:"הקש כדי להתחיל בהוספת נקודות",finishMultipointTooltip:"לחיצה כפולה לסיום",addFreehandTooltip:"לחץ כלפי מטה כדי להתחיל ושחרר כדי לסיים",addShapeTooltip:"לחץ להוספת צורה, או לחץ למטה כדי להתחיל ושחרר בסיום",featureCount:"ישות {count}",featuresCount:"{count} ישויות",vertexCount:"נקודת מפנה {count}",verticesCount:"{count} נקודות מפנה",deleteFeature:"מחק ישות",deleteVertex:"מחק נקודת מפנה",duplicate:"שכפול"});

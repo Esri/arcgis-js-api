@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.highlight={name:"highlight",shaders:{vertexShader:t.resolveIncludes("highlight/textured.vert"),fragmentShader:t.resolveIncludes("highlight/highlight.frag")},attributes:{a_position:0,a_texcoord:1}},r.blur={name:"blur",shaders:{vertexShader:t.resolveIncludes("highlight/textured.vert"),fragmentShader:t.resolveIncludes("highlight/blur.frag")},attributes:{a_position:0,a_texcoord:1}}});

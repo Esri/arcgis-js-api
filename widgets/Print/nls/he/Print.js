@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"הדפס",title:"כותרת",fileName:"שם קובץ",titlePlaceHolder:"כותרת קובץ",fileNamePlaceHolder:"שם קובץ",formatDefaultOption:"בחר פורמט",fileFormatTitle:"פורמט קובץ",layoutTitle:"הגדרת דף",layoutDefaultOption:"בחר הגדרת דף",scale:'קבע קנ"מ',scaleLabel:"קנה מידה",reset:"אפס",author:"מחבר",copyright:"זכויות יוצרים",legend:"כולל מקרא",lock:"נעל",swap:"החלף",panelToggle:"שנה מצב חלונית",advancedOptions:"אפשרויות מתקדמות",width:"רוחב",height:"גובה",dpi:"DPI",attribution:"כלול ייחוס",layoutTab:"פריסת עמוד",mapOnlyTab:"מפה בלבד",untitled:"ללא שם",pending:"מייצא",ready:"פתח",linkReady:"פתח בחלון חדש.",error:"בחר כדי להסיר.",sceneViewError:"אין תמיכה בהדפסה בתצוגת סצנה.",serviceError:"נראה שאירעה שגיאה.",export:"ייצא",exportDescription:"יצוא. הקבצים המיוצאים יופיעו להלן.",exportText:"קבצים מיוצאים",exportHint:"הקבצים המיוצאים שלך יוצגו כאן.","a3-landscape":"A3 לרוחב","a3-portrait":"A3 לאורך","a4-landscape":"A4 לרוחב","a4-portrait":"A4 לאורך","letter-ansi-a-landscape":"Letter ANSI A לרוחב","letter-ansi-a-portrait":"Letter ANSI A לאורך","tabloid-ansi-b-landscape":"Tabloid ANSI B לרוחב","tabloid-ansi-b-portrait":"Tabloid ANSI B לאורך"});

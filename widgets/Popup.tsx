@@ -110,7 +110,8 @@ import {
 import PopupViewModel = require("esri/widgets/Popup/PopupViewModel");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import {
   accessibleHandler,
   isWidget,
@@ -229,8 +230,6 @@ const DOCK_OPTIONS: DockOptions = {
 
 const WIDGET_KEY_PARTIAL = "esri-popup";
 
-const ACTIONS_KEY = "actions";
-
 function buildKey(element: string, index?: number): string {
   if (index === undefined) {
     return `${WIDGET_KEY_PARTIAL}__${element}`;
@@ -275,7 +274,7 @@ async function loadFeatureWidget(): Promise<FeatureModule> {
  * view.popup.actions.push(zoomOutAction);
  *
  * // Fires each time an action is clicked
- * view.popup.on("trigger-action"), function(event){
+ * view.popup.on("trigger-action", function(event){
  *   // If the zoom-out action is clicked, than execute the following code
  *   if(event.action.id === "zoom-out"){
  *     // Zoom out two levels (LODs)
@@ -391,7 +390,10 @@ class Popup extends declared(Widget) {
         }
 
         this.viewModel.centerAtLocation();
-      })
+      }),
+
+      watchUtils.on(this, "viewModel.allActions", "change", () => this._watchActions()),
+      watchUtils.init(this, "viewModel.allActions", () => this._watchActions())
     ]);
   }
 
@@ -536,7 +538,10 @@ class Popup extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Position of the popup in relation to the selected feature.
+   * Position of the popup in relation to the selected feature. The default behavior
+   * is to display above the feature and adjust if not enough room. If needing
+   * to explicitly control where the popup displays in relation to the feature, choose
+   * an option besides `auto`.
    *
    * **Possible Values:** auto | top-center | top-right | bottom-left | bottom-center | bottom-right | Function
    *
@@ -547,8 +552,8 @@ class Popup extends declared(Widget) {
    * @since 4.8
    *
    * @example
-   * // The popup will display to the left of the feature
-   * view.popup.alignment = "auto";
+   * // Popup will display on the bottom-right of the selected feature regardless of where that feature is located
+   * view.popup.alignment = "bottom-right";
    */
   @property()
   alignment: Alignment = "auto";
@@ -605,8 +610,8 @@ class Popup extends declared(Widget) {
   /**
    * Enables automatic creation of a popup template for layers that have popups enabled but no
    * popupTemplate defined. Automatic popup templates are supported for layers that
-   * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer},
-   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer},
+   * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer}, {@link module:esri/layers/GeoJSONLayer},
+   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/PointCloudLayer},
    * {@link module:esri/layers/StreamLayer} and {@link module:esri/layers/ImageryLayer}).
    *
    * ::: esri-md class="panel trailer-1"
@@ -690,9 +695,7 @@ class Popup extends declared(Widget) {
 
   /**
    *
-   * **Possible Values:**  auto | top-center | top-right | top-left | bottom-left | bottom-center | bottom-right
-   *
-   * @type {string}
+   * @type {"auto" | "top-center" | "top-right" | "top-left" | "bottom-left" | "bottom-center" | "bottom-right"}
    * @default
    * @ignore
    */
@@ -712,9 +715,7 @@ class Popup extends declared(Widget) {
   /**
    * Dock position in the {@link module:esri/views/View}.
    *
-   * **Possible Values:** top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
-   *
-   * @type {string}
+   * @type {"auto" | "top-center" | "top-right" | "top-left" | "bottom-left" | "bottom-center" | "bottom-right"}
    * @instance
    * @name currentDockPosition
    * @readonly
@@ -862,16 +863,9 @@ class Popup extends declared(Widget) {
 
   // This property works when used as a param of the `popup.open()` method
 
-  @property({
-    dependsOn: ["viewModel.visible"]
-  })
+  @property()
   @renderable()
-  set featureMenuOpen(value: boolean) {
-    this._set("featureMenuOpen", !!value);
-  }
-  get featureMenuOpen(): boolean {
-    return this.viewModel.visible ? this._get("featureMenuOpen") : false;
-  }
+  featureMenuOpen = false;
 
   //----------------------------------
   //  features
@@ -1412,7 +1406,7 @@ class Popup extends declared(Widget) {
       title
     } = this.viewModel;
 
-    const featureNavigationVisible = featureCount > 1 && featureNavigationEnabled;
+    const featureNavigationVisible = visible && featureCount > 1 && featureNavigationEnabled;
     const inlineActionCount = featureNavigationVisible
       ? MAX_INLINE_ACTIONS_WITH_PAGINATION
       : MAX_INLINE_ACTIONS;
@@ -1686,7 +1680,6 @@ class Popup extends declared(Widget) {
         this._renderAction({
           action,
           index,
-          key: ACTIONS_KEY,
           type: "inline"
         })
       );
@@ -1708,7 +1701,6 @@ class Popup extends declared(Widget) {
             this._renderAction({
               action,
               index: index + inlineActionCount,
-              key: ACTIONS_KEY,
               type: "menu-item"
             })
           )}
@@ -1847,6 +1839,26 @@ class Popup extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _watchActions(): void {
+    const { allActions } = this.viewModel;
+
+    const key = "actions";
+
+    this._handles.remove(key);
+
+    allActions &&
+      allActions.forEach((action) => {
+        this._handles.add(
+          watchUtils.watch(
+            action,
+            ["active", "className", "disabled", "id", "title", "image", "visible"],
+            () => this.scheduleRender()
+          ),
+          key
+        );
+      });
+  }
 
   private _divideActions(
     inlineActionCount: number
@@ -2060,18 +2072,9 @@ class Popup extends declared(Widget) {
   private _renderAction(options: {
     action: Action;
     index: number;
-    key: string;
     type: "menu-item" | "inline";
   }): VNode {
-    const { action, index, key, type } = options;
-
-    const actionHandle = watchUtils.watch(
-      action,
-      ["active", "className", "disabled", "id", "title", "image", "visible"],
-      () => this.scheduleRender()
-    );
-
-    this._handles.add(actionHandle, key);
+    const { action, index, type } = options;
 
     const selectedFeatureAttributes = this.get("selectedFeature.attributes");
 
@@ -2521,6 +2524,8 @@ class Popup extends declared(Widget) {
     if (isWidgetBase(content)) {
       return <div key={content} bind={content.domNode} afterCreate={this._attachToNode} />;
     }
+
+    return undefined;
   }
 
   private _attachToNode(this: HTMLElement, node: HTMLElement): void {
@@ -2619,6 +2624,8 @@ class Popup extends declared(Widget) {
         left: x - halfWidth - padding.left
       };
     }
+
+    return undefined;
   }
 
   private _calculatePositionStyle(
@@ -2628,7 +2635,7 @@ class Popup extends declared(Widget) {
     const { dockEnabled, view } = this;
 
     if (!view) {
-      return;
+      return undefined;
     }
 
     if (dockEnabled) {
@@ -2641,7 +2648,7 @@ class Popup extends declared(Widget) {
     }
 
     if (!screenLocation || !domWidth) {
-      return;
+      return undefined;
     }
 
     const width = this._calculateFullWidth(domWidth);
@@ -2653,7 +2660,7 @@ class Popup extends declared(Widget) {
     );
 
     if (!position) {
-      return;
+      return undefined;
     }
 
     return {

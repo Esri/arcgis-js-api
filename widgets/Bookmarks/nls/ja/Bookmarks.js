@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"ブックマークの追加",disabledHeading:"ブックマークが無効になっています",disabledDescription:"マップ ビューを追加してブックマークを有効にします。",goToBookmark:"ブックマークに移動",noBookmarksHeading:"ブックマークがありません",noBookmarksDescription:"マップにブックマークを追加すると、そのブックマークがここに表示されます。",title:"タイトル",addPlaceholder:"ブックマークのタイトルの入力",addingBookmark:"ブックマークを追加しています",widgetLabel:"ブックマーク"});
+define({addBookmark:"ブックマークの追加",goToBookmark:"ブックマークに移動",noBookmarksHeading:"ブックマークがありません",noBookmarksDescription:"マップにブックマークを追加すると、そのブックマークがここに表示されます。",title:"タイトル",addPlaceholder:"ブックマークのタイトルの入力",addingBookmark:"ブックマークを追加しています",widgetLabel:"ブックマーク"});

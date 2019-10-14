@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <terrainRenderer/skirts.glsl>
 
 uniform vec3 origin;
@@ -11,7 +12,6 @@ attribute vec3 position;
 attribute vec2 uv0;
 
 varying float depth;
-varying vec3 vpos;
 
 void main(void) {
 #if VIEWING_MODE == VIEWING_MODE_GLOBAL
@@ -21,9 +21,7 @@ void main(void) {
 #endif
 
   vec2 uv = uv0;
-  vpos = applySkirts(uv, position, normal.xyz, skirtScale);
+  vec3 vpos = applySkirts(uv, position, normal.xyz, skirtScale);
 
-  vec4 eye = view * vec4(vpos, 1.0);
-  gl_Position = proj * eye;
-  depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
+  gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);
 }

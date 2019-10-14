@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../support/buffer/InterleavedLayout"],function(e,o,r){function n(e){var o=r.newLayout().vec3f("position");return"compressed"===e.normals?o.vec2i16("normalCompressed",{glNormalized:!0}):"default"===e.normals&&o.vec3f("normal"),e.textureCoordinates&&o.vec2f("uv0"),e.textureCoordinateRegions&&o.vec4u16("region",{glNormalized:!0}),e.colors&&o.vec4u8("color"),e.componentData&&o.u16("componentIndex"),o.alignTo(4)}Object.defineProperty(o,"__esModule",{value:!0}),o.createVertexBufferLayout=n});

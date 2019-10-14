@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/maybe","../../core/screenUtils","../../core/accessorSupport/decorators","./materialUtils"],function(e,r,o,t,p,l,s,c,n,i){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=c.px2pt(1),r}o(r,e),l=r,r.prototype.clone=function(){return new l({color:s.isSome(this.color)?this.color.clone():null,size:this.size})};var l;return t([n.property(i.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([n.property(i.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([n.subclass("esri.symbols.support.Symbol3DOutline")],r)}(n.declared(l));r.Symbol3DOutline=u,r.default=u});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/maybe","../../core/screenUtils","../../core/accessorSupport/decorators","./materialUtils"],function(e,r,o,t,p,l,s,c,n,i){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=c.px2pt(1),r}o(r,e),l=r,r.prototype.clone=function(){return new l({color:s.isSome(this.color)?this.color.clone():null,size:this.size})};var l;return t([n.property(i.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([n.property(i.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([n.subclass("esri.symbols.support.Symbol3DOutline")],r)}(n.declared(l.JSONSupport));r.Symbol3DOutline=u,r.default=u});

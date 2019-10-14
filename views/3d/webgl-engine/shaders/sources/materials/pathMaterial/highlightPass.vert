@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 
 #include <materials/pathMaterial/commonInputs.glsl>
 
@@ -9,5 +10,5 @@ varying vec3 vpos;
 void main(void) {
   vpos = calculateVPos();
 
-  gl_Position = proj * view * vec4(vpos, 1.0);
+  gl_Position = transformPosition(proj, view, vpos);
 }

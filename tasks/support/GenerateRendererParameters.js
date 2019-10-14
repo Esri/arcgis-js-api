@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","./ClassificationDefinition"],function(e,r,t,i,o,n,s){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.classificationDefinition=null,r.where=null,r}return t(r,e),i([n.property({type:s,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],r.prototype,"classificationDefinition",void 0),i([n.property({type:String,json:{write:!0}})],r.prototype,"where",void 0),r=i([n.subclass("esri.tasks.support.GenerateRendererParameters")],r)}(n.declared(o))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","./ClassificationDefinition"],function(e,r,t,i,o,n,s){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.classificationDefinition=null,r.where=null,r}return t(r,e),i([n.property({type:s,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],r.prototype,"classificationDefinition",void 0),i([n.property({type:String,json:{write:!0}})],r.prototype,"where",void 0),r=i([n.subclass("esri.tasks.support.GenerateRendererParameters")],r)}(n.declared(o.JSONSupport))});

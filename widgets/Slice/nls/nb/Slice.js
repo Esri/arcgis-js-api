@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Sektor",cancel:"Avbryt",hint:"Opprett sektorer ved å klikke og dra på overflaten i scenen",excludeHint:"Velg et lag i visningen for å utelate det fra sektoren",unsupported:"Sektor støttes ikke i MapView.",multipleDisabled:"Bare én sektor kan være aktiv om gangen",newSlice:"Ny sektor",excludedLayers:"Utelatte lag",pickLayer:"Velg et lag i visningen",excludeLayer:"Utelat lag fra sektor",includeLayer:"Inkluder lag i sektor",ground:"Bakken"});

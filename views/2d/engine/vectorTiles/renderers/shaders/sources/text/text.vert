@@ -106,7 +106,7 @@ void main()
   delta_z += step(a_maxLevel, u_level); // Test if (maxLevel <= level)
 
   // calculate the alpha given the change in the fade and the fade-speed
-  lowp float alpha = clamp((u_fadeChange - a_labelMinLevel) / u_fadeSpeed, 0.0, 1.0);
+  mediump float alpha = u_fadeSpeed != 0.0 ? clamp((u_fadeChange - a_labelMinLevel) / u_fadeSpeed, 0.0, 1.0) : 1.0;
 
   // if the speed is positive we are zooming in and therefore we need to 'fade-in'. Else we need to 'fade-out'
   v_transparency = (u_fadeSpeed >= 0.0 ? alpha : 1.0 - alpha);

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./mixins/ChartMediaInfo","./support/chartMediaInfoUtils"],function(e,t,r,o,n,i,a){return function(e){function t(t){var r=e.call(this)||this;return r.type="line-chart",r}r(t,e),i=t,t.prototype.clone=function(){return new i({title:this.title,caption:this.caption,value:this.value?this.value.clone():null})};var i;return o([n.property({type:["line-chart"],readOnly:!0,json:{read:!1,write:a.chartTypeKebabDict.write}})],t.prototype,"type",void 0),t=i=o([n.subclass("esri.popup.content.LineChartMediaInfo")],t)}(n.declared(i))});

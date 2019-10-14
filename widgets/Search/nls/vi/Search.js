@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Tìm kiếm",searchButtonTitle:"Tìm kiếm",clearButtonTitle:"Xóa tìm kiếm",placeholder:"Tìm địa chỉ hoặc địa điểm",searchIn:"Tìm kiếm trong",all:"Tất cả",allPlaceholder:"Tìm địa chỉ hoặc địa điểm",emptyValue:"Vui lòng nhập cụm từ tìm kiếm.",untitledResult:"Chưa có tiêu đề",untitledSource:"Nguồn chưa có tên",noResults:"Không có kết quả",noResultsFound:"Không tìm thấy kết quả nào.",noResultsFoundForValue:"Không tìm thấy kết quả nào cho {value}.",showMoreResults:"Hiển thị thêm kết quả",hideMoreResults:"Ẩn",searchResult:"Kết quả tìm kiếm",moreResultsHeader:"Các kết quả khác",useCurrentLocation:"Sử dụng vị trí hiện tại"});

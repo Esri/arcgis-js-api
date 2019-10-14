@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({transparency:"透明度",suggested:"建议",recent:"最近",more:"更多信息",moreColorsTooltip:"查看更多颜色。",paletteTooltip:"选择颜色。",noColorTooltip:"无颜色",hexInputTooltip:"以十六进制记数法表示的自定义颜色 (#FFFF00)。"});

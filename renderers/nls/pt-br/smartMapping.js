@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({other:"Outro",sumOfCategories:"Soma de categorias",predominantCategory:"Categoria predominante",strengthOfPredominance:"Contraste de predominância",ageInfo_years:"Idade, em anos, de {startTime} a {endTime}",ageInfo_months:"Idade, em meses, de {startTime} a {endTime}",ageInfo_days:"Idade, em dias, de {startTime} a {endTime}",ageInfo_hours:"Idade, em horas, de {startTime} a {endTime}",ageInfo_minutes:"Idade, em minutos, de {startTime} a {endTime}",ageInfo_seconds:"Idade, em segundos, de {startTime} a {endTime}",relationship:{legendTitle:"Relacionamento",HL:"Alto - Baixo",HH:"Alto - Alto",LL:"Baixo - Baixo",LH:"Baixo - Alto",HM:"Alto - Médio",ML:"Médio - Baixo",MM:"Médio - Médio",MH:"Médio - Alto",LM:"Médio - Baixo",HM1:"High - Mild",HM2:"High - Medium",M2L:"Medium - Low",M2M1:"Médio - Moderado",M2M2:"Médio - Médio",M2H:"Medium - High",M1L:"Mild - Low",M1M1:"Moderado - Moderado",M1M2:"Moderado - Médio",M1H:"Mild - High",LM1:"Low - Mild",LM2:"Low - Medium"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Ιστόγραμμα",xAverage:"xÌ„ ",barLabel:"Αριθμός ράβδων: {count}. Ελάχ. τιμή δεδομένων ράβδων: {minValue}. Μέγ. τιμή δεδομένων ράβδων: {minValue}."});
+define({title:"Ιστόγραμμα",barLabel:"Αριθμός ράβδων: {count}. Ελάχ. τιμή δεδομένων ράβδων: {minValue}. Μέγ. τιμή δεδομένων ράβδων: {minValue}."});

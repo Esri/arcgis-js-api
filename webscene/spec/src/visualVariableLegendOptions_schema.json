@@ -4,6 +4,12 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Options available for the legend for visual variables.",
   "properties": {
+    "customValues": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
     "showLegend": {
       "type": "boolean",
       "description": "Indicates whether to show the color/size/opacity ramp in the legend."

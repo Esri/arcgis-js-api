@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../request","../../core/Error","../../core/maybe","../../core/object","../../core/urlUtils","../../core/accessorSupport/decorators","../Task"],function(e,r,t,s,o,i,n,a,u,l,c,d,p){function v(e){return i(this,void 0,void 0,function(){var r,t,s,i;return o(this,function(o){switch(o.label){case 0:return o.trys.push([0,2,,3]),[4,n(e+("/"===e[e.length-1]?"":"/")+"retrieveTravelModes",{query:{f:"json"}})];case 1:return r=o.sent().data,t=r.supportedTravelModes,s=r.defaultTravelMode,[2,{supportedTravelModes:t,defaultTravelMode:s}];case 2:throw i=o.sent(),new a("network-service:retrieveTravelModes","Could not get to the NAServer's retrieveTravelModes.",{error:i});case 3:return[2]}})})}function f(e){return i(this,void 0,void 0,function(){var r,t,s,i,a,u,d,p,v,f,h,M,T,g,y,m;return o(this,function(o){switch(o.label){case 0:return[4,n(e.substring(0,e.indexOf("/rest/")+6)+"info",{query:{f:"json"}})];case 1:return(r=o.sent().data)&&r.owningSystemUrl?(e=r.owningSystemUrl,[4,n(e+("/"===e[e.length-1]?"":"/")+"sharing/rest/portals/self",{query:{f:"json"}})]):[2,{supportedTravelModes:[],defaultTravelMode:null}];case 2:return t=o.sent().data,(s=l.getDeepValue("helperServices.routingUtilities.url",t))?(i=c.urlToObject(e),a=/\/solveClosestFacility$/.test(i.path)?"Route":/\/solveClosestFacility$/.test(i.path)?"ClosestFacility":"ServiceAreas",[4,n(s+("/"===s[s.length-1]?"":"/")+"GetTravelModes/execute",{query:{f:"json",serviceName:a}})]):[2,{supportedTravelModes:[],defaultTravelMode:null}];case 3:if(u=o.sent(),d=[],p=null,u&&u.data&&u.data.results&&u.data.results.length)for(v=u.data.results,f=0,h=v;f<h.length;f++)if(M=h[f],"supportedTravelModes"===M.paramName){if(M.value&&M.value.features)for(T=0,g=M.value.features;T<g.length;T++)(y=g[T].attributes)&&(m=JSON.parse(y.TravelMode),d.push(m))}else"defaultTravelMode"===M.paramName&&(p=M.value);return[2,{supportedTravelModes:d,defaultTravelMode:p}]}})})}Object.defineProperty(r,"__esModule",{value:!0}),r.NAServiceDescriptionMixin=function(e){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s(r,e),r.prototype.getServiceDescription=function(){return i(this,void 0,void 0,function(){return o(this,function(e){return this._serviceDescriptionPromise||(this._serviceDescriptionPromise=this._fetchServiceDescription()),[2,this._serviceDescriptionPromise]})})},r.prototype._fetchServiceDescription=function(){return i(this,void 0,void 0,function(){var e,r,t,s,i,u,l;return o(this,function(o){switch(o.label){case 0:if(!this.url||!this.parsedUrl)throw new a("network-service:missing-url","Url to Network service is missing");return e=this.url,[4,n(e,{query:{f:"json"}})];case 1:for(r=o.sent().data,r.supportedTravelModes||(r.supportedTravelModes=[]),t=0;t<r.supportedTravelModes.length;t++)r.supportedTravelModes[t].id||(r.supportedTravelModes[t].id=r.supportedTravelModes[t].itemId);return s=r.currentVersion>=10.4?v(e):f(e),[4,s];case 2:return i=o.sent(),u=i.defaultTravelMode,l=i.supportedTravelModes,r.defaultTravelMode=u,r.supportedTravelModes=l,[2,r]}})})},r.prototype._isInputGeometryZAware=function(e,r){for(var t=0;t<r.length;t++){var s=e[r[t]];if(s&&s.length)for(var o=0,i=s;o<i.length;o++){var n=i[o];if(u.isSome(n)&&n.hasZ)return!0}}return!1},r.prototype._dropZValuesOffInputGeometry=function(e,r){for(var t=0;t<r.length;t++){var s=e[r[t]];if(s&&s.length)for(var o=0,i=s;o<i.length;o++){var n=i[o];n.z=void 0}}console.log("The remote Network Analysis service is powered by a network dataset which is not Z-aware.\nZ-coordinates of the input geometry are ignored.")},r=t([d.subclass("esri.tasks.mixins.NAServiceDescription")],r)}(d.declared(e))};var h=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s(r,e),r=t([d.subclass("esri.tasks.mixins.NAServiceDescription")],r)}(d.declared(r.NAServiceDescriptionMixin(p)));r.NAServiceDescription=h});

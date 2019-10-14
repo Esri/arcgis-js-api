@@ -24,11 +24,11 @@
       "type": "string",
       "description": "A transform that is applied to the field value before evaluating the renderer.",
       "enum": [
-        "none",
-        "lowFourBit",
-        "highFourBit",
         "absoluteValue",
-        "moduloTen"
+        "highFourBit",
+        "lowFourBit",
+        "moduloTen",
+        "none"
       ]
     },
     "legendOptions": {

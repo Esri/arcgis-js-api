@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/tsSupport/assignHelper","../../core/Accessor","../../core/Collection","../../core/compilerUtils","../../core/Handles","../../core/watchUtils","../../core/accessorSupport/decorators","../../layers/Layer","../../views/layers/support/ClipRect"],function(e,t,i,r,o,n,p,a,l,s,c,y,u,d,h){function g(e,t){var i=Math.pow(10,t);return Math.round(e*i)/i}var v=l.ofType(d),f={left:0,right:0,top:0,bottom:0};return function(e){function t(t){var i=e.call(this,t)||this;return i._handles=new c,i._leadingClips=new Map,i._trailingClips=new Map,i.direction="horizontal",i.leadingLayers=new v,i.max=100,i.min=0,i.precision=4,i.step=.5,i.stepMultiplier=10,i.trailingLayers=new v,i.view=null,i}return i(t,e),t.prototype.initialize=function(){var e=this;this._handles.add([y.init(this,["view","view.ready","position","direction"],function(){return e._clipLayers()}),y.on(this,"leadingLayers","change",function(){return e._clipLeadingLayers()}),y.on(this,"trailingLayers","change",function(){return e._clipTrailingLayers()})])},t.prototype.destroy=function(){this._removeExistingClips(),this._handles.destroy(),this._handles=null},Object.defineProperty(t.prototype,"position",{get:function(){return 25},set:function(e){var t=this,i=t.precision,r=t.min,o=t.max;this._set("position",g(Math.max(Math.min(e,o),r),i))},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"state",{get:function(){var e=this.view;return e&&e.ready?"ready":"disabled"},enumerable:!0,configurable:!0}),t.prototype._clipLayers=function(){this._clipLeadingLayers(),this._clipTrailingLayers()},t.prototype._clipLeadingLayers=function(){var e=this;this._removeClips("leading"),this.leadingLayers.forEach(function(t){return e._clipLayer({layer:t,type:"leading"})})},t.prototype._clipTrailingLayers=function(){var e=this;this._removeClips("trailing"),this.trailingLayers.forEach(function(t){return e._clipLayer({layer:t,type:"trailing"})})},t.prototype._getLayerView=function(e){var t=this.view;return e&&t?s.typeCast(t)().whenLayerView(e):null},t.prototype._getVerticalClipRect=function(e){var t=this.position;return"leading"===e?new h(p({},f,{bottom:100-t+"%"})):"trailing"===e?new h(p({},f,{top:t+"%"})):null},t.prototype._getHorizontalClipRect=function(e){var t=this.position;return"leading"===e?new h(p({},f,{right:100-t+"%"})):"trailing"===e?new h(p({},f,{left:t+"%"})):null},t.prototype._getClipRect=function(e){var t=this.direction;return"vertical"===t?this._getVerticalClipRect(e):"horizontal"===t?this._getHorizontalClipRect(e):null},t.prototype._clipLayer=function(e){return n(this,void 0,void 0,function(){var t,i,r,n,p,a,l,s,c;return o(this,function(o){switch(o.label){case 0:return t=this,i=t._leadingClips,r=t._trailingClips,n=e.layer,p=e.type,a="trailing"===p?r:"leading"===p?i:null,[4,this._getLayerView(n)];case 1:return(l=o.sent())&&a&&l.hasOwnProperty("clips")?(s=a.get(l),s&&l.clips.remove(s),c=this._getClipRect(p),c&&(a.set(l,c),l.clips.add(c)),[2]):[2]}})})},t.prototype._removeClips=function(e){var t=this,i=t._leadingClips,r=t._trailingClips,o="trailing"===e?r:"leading"===e?i:null;o&&(o.forEach(function(e,t){t&&t.hasOwnProperty("clips")&&t.clips.remove(e)}),o.clear())},t.prototype._removeExistingClips=function(){this._removeClips("leading"),this._removeClips("trailing")},r([u.property()],t.prototype,"direction",void 0),r([u.property({type:v})],t.prototype,"leadingLayers",void 0),r([u.property({readOnly:!0})],t.prototype,"max",void 0),r([u.property({readOnly:!0})],t.prototype,"min",void 0),r([u.property()],t.prototype,"position",null),r([u.property()],t.prototype,"precision",void 0),r([u.property({dependsOn:["view.ready"],readOnly:!0})],t.prototype,"state",null),r([u.property()],t.prototype,"step",void 0),r([u.property()],t.prototype,"stepMultiplier",void 0),r([u.property({type:v})],t.prototype,"trailingLayers",void 0),r([u.property()],t.prototype,"view",void 0),t=r([u.subclass("esri.widgets.Swipe.SwipeViewModel")],t)}(u.declared(a))});

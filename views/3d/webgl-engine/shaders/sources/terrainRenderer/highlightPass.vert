@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <terrainRenderer/skirts.glsl>
 
 uniform vec3 origin;
@@ -26,5 +27,5 @@ void main() {
 
   vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
 
-  gl_Position = proj * view * vec4(vpos, 1.0);
+  gl_Position = transformPosition(proj, view, vpos);
 }

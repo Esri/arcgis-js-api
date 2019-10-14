@@ -1,174 +1,305 @@
 @mixin timeSlider() {
-  $widget-height: 88px;
-  $widget-min-width: 400px;
-  $time-slider-tick-color: $border-color--contrast !default;
-  $time-slider-track-color: $button-color;
-  $time-slider-border-color: $border-color;
+  $widget-min-width: 375px;
+  $primary-color: $border-color--contrast;
+  $highlight-color: $button-color;
 
   .esri-time-slider {
     cursor: default;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow: hidden;
     min-width: $widget-min-width;
-    height: $widget-height;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    @include defaultBoxShadow();
+
+    &__layout {
+      &--wide {
+        .esri-time-slider {
+          &__row {
+            display: flex;
+            height: 88px;
+            overflow: hidden;
+          }
+
+          &__animation {
+            width: 64px;
+          }
+
+          &__time-extent {
+            align-items: center;
+            border: {
+              left: 1px solid $border-color;
+              right: 1px solid $border-color;
+            }
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            width: 110px;
+          }
+
+          &__min,
+          &__max {
+            width: 110px;
+          }
+
+          &__max {
+            border: {
+              right: 1px solid $border-color;
+            }
+          }
+
+          &__slider {
+            flex: auto;
+          }
+
+          &__previous,
+          &__next {
+            width: 42px;
+          }
+        }
+      }
+
+      &--compact {
+        .esri-time-slider {
+          &__row {
+            display: flex;
+
+            &:nth-child(1),
+            &:nth-child(3) {
+              height: 50px;
+            }
+            &:nth-child(2) {
+              height: 88px;
+              overflow: hidden;
+            }
+          }
+
+          &__animation {
+            width: 35px;
+          }
+
+          &__time-extent {
+            align-items: center;
+            display: flex;
+            flex: auto;
+            flex-flow: row nowrap;
+            justify-content: center;
+
+            &-separator {
+              margin: 0 15px 0 15px;
+            }
+          }
+
+          &__slider {
+            flex: auto;
+          }
+
+          &__min,
+          &__max {
+            flex: auto;
+            margin: 0 35px 0 35px;
+          }
+          &__min {
+            align-items: flex-start;
+          }
+          &__max {
+            align-items: flex-end;
+          }
+
+          &__previous,
+          &__next {
+            width: 35px;
+          }
+        }
+      }
+    }
+
+    &__mode {
+      &--instant {
+        .esri-slider {
+          &__segment-0,
+          &__segment-1 {
+            background-color: $primary-color;
+          }
+        }
+      }
+  
+      &--time-window {
+        .esri-slider {
+          &__segment-1 {
+            background-color: $highlight-color;
+            height: 6px;
+            margin-top: -1px;
+          }
+          &__segment-0,
+          &__segment-2 {
+            background-color: $primary-color;
+          }
+        }
+      }
+  
+      &--cumulative-from-start {
+        .esri-slider {
+          &__segment-0 {
+            background-color: $highlight-color;
+            height: 6px;
+            margin-top: -1px;
+          }
+          &__segment-1 {
+            background-color: $primary-color;
+          }
+        }
+      }
+  
+      &--cumulative-from-end {
+        .esri-slider {
+          &__segment-0 {
+            background-color: $primary-color;
+          }
+          &__segment-1 {
+            background-color: $highlight-color;
+            height: 6px;
+            margin-top: -1px;
+          }
+        }
+      }
+    }
+
+    &__animation {
+      &-button {
+        border: none;
+        height: 100%;
+        width: 100%;
+
+        .esri-icon-play,
+        .esri-icon-pause {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &__time-extent {
+      font-size: $font-size__body;
+      line-height: $font-size__body;
+
+      &-group {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+      
+      &-date {
+        font-weight: $font-weight__bold;
+        color: $highlight-color;
+      }
+    
+      &-time {
+        color: $highlight-color;
+      }
+    
+      &-separator {
+        font-size: $font-size__h2;
+        font-weight: $font-weight__bold;
+        line-height: $font-size__h2;
+      }
+    }
+
+    &__min,
+    &__max {
+      align-items: center;
+      display: flex;
+      flex-flow: column nowrap;
+      font-size: $font-size__body;
+      justify-content: center;
+      line-height: $font-size__body;
+      
+      &-date {
+        font-weight: $font-weight__bold;
+      }
+    }
+
+    &__slider {
+      background-color: $background-color--offset;
+      padding: 0 40px 0 40px;
+      
+      .esri-slider {
+        margin-top: -19px;
+        background-color: $background-color--offset;
+  
+        // This is a fix specifically for IE11. Without it ticks and tick labels are severely displaced.
+        &__content {
+          height: 2px;
+        }
+  
+        &__thumb {
+          border-width: 3px;
+          top: -6px;
+        }
+    
+        &__tick-label {
+          font-size: $font-size__body;
+          margin-top: 23px;
+          white-space: nowrap;
+        }
+
+        &__tick {
+          background: $primary-color;
+          width: 1px;
+
+          &.minorTick {
+            height: 4px;
+          }
+          &.majorTick {
+            height: 8px;
+          }
+        }
+
+        &__ticks {
+          margin: 16px 0 0 0;
+        }
+
+        &__track {
+          height: 4px;
+        }
+      }
+    }
+
+    &__previous,
+    &__next {
+      &-button {
+        border: none;
+        height: 100%;
+        width: 100%;
+
+        .esri-icon-reverse,
+        .esri-icon-forward {
+          font-size: 24px;
+        }
+      }
+    }
   }
 
-  // This is a fix specifically for IE11. Without it ticks and tick labels are severely displaced.
-  .esri-time-slider .esri-slider .esri-slider__content {
-    height: 2px;
-  }
-
-  .esri-time-slider--time-window .esri-slider__segment-1,
-  .esri-time-slider--cumulative-from-start .esri-slider__segment-0,
-  .esri-time-slider--cumulative-from-end .esri-slider__segment-1 {
-    background-color: $time-slider-track-color;
-    height: 8px;
-    margin-top: -3px;
-  }
-
-  .esri-time-slider .esri-slider--horizontal .esri-slider__track {
-    height: 4px;
-  }
-
-  .esri-time-slider .esri-slider__min {
-    width: 110px;
-    padding: 0;
-    font-size: $font-size__body;
-    font-weight: $font-weight;
-    line-height: $base-font-size;
-    white-space: pre;
-    text-align: right;
-    margin: 0;
-    padding: 0 30px 0 0;
-  }
-
-  .esri-time-slider .esri-slider__max {
-    width: 110px;
-    padding: 0;
-    font-size: $font-size__body;
-    font-weight: $font-weight;
-    line-height: $base-font-size;
-    white-space: pre;
-    text-align: left;
-    margin: 0;
-    padding: 0 0 0 30px;
-  }
-
-  .esri-time-slider .esri-slider__min:hover,
-  .esri-time-slider .esri-slider__max:hover {
-    pointer-events: none;
-    text-decoration: none;
-  }
-
-  .esri-time-slider .esri-slider {
-    margin-top: -10px;
-  }
-
-  .esri-time-slider .esri-slider__tick.minorTick {
-    background: $time-slider-tick-color;
-    height: 2px;
-    width: 1px;
-  }
-
-  .esri-time-slider .esri-slider__tick.majorTick {
-    background: $time-slider-tick-color;
-    height: 5px;
-    width: 1px;
-  }
-
-  .esri-time-slider .esri-slider__tick-label.majorLabel {
-    font-size: $font-size__body;
-    font-weight: $font-weight__bold;
-    margin-top: 15px;
-    white-space: nowrap;
-  }
-
-  .esri-time-slider__play {
-    flex: none;
-    width: 64px;
-    height: $widget-height;
-    border-left: none;
-    border-top: none;
-    border-bottom: none;
-    border-right: 1px solid $time-slider-border-color;
-  }
-
-  .esri-time-slider__play-icon,
-  .esri-time-slider__pause-icon {
-    font-size: 24px;
-  }
-
-  .esri-time-slider__dates {
-    height: $widget-height;
-    width: 110px;
-    flex: none;
-    font-size: $font-size__body;
-    font-weight: $font-weight;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    text-align: center;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    border-right: 1px solid $time-slider-border-color;
-    line-height: $font-size__body;
-  }
-
-  .esri-time-slider__time-extent-date {
-    font-weight: $font-weight__bold;
-    color: $button-color;
-  }
-
-  .esri-time-slider__time-extent-time {
-    color: $button-color;
-  }
-
-  .esri-time-slider__time-extent-separator {
-    font-size: $font-size__h2;
-    line-height: $font-size__h2;
-  }
-
-  .esri-time-slider__dates > div {
-    flex: none;
-  }
-
-  .esri-time-slider__track {
-    flex: auto;
-    height: $widget-height;
-    padding: 0 0 0 0;
-  }
-
-  .esri-time-slider__previous {
-    flex: none;
-    width: 42px;
-    height: $widget-height;
-    border-right: none;
-    border-top: none;
-    border-bottom: none;
-    border-left: 1px solid $time-slider-border-color;
-  }
-
-  .esri-time-slider__previous-icon {
-    font-size: 30px;
-    margin-right: -10px;
-  }
-
-  .esri-time-slider__next {
-    flex: none;
-    width: 42px;
-    border-style: none;
-    height: $widget-height;
-  }
-
-  .esri-time-slider__next-icon {
-    font-size: 30px;
-    margin-left: -10px;
+  html[dir="rtl"] .esri-time-slider {
+    &__layout {
+      &--wide {
+        .esri-time-slider {
+          &__row {
+            flex-direction: row-reverse;
+          }
+        }
+      }
+      &--compact {
+        .esri-time-slider {
+          &__row {
+            &:nth-child(3) {
+              flex-direction: row-reverse;
+            }
+          }
+          &__min {
+            align-items: flex-end;
+          }
+          &__max {
+            align-items: flex-start;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Измерение",hint:"Начать измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение прямой 3D-линии поддерживается только в виде сцены.",distance:"Расстояние",direct:"По прямой",horizontal:"Горизонтально",vertical:"Вертикальная",unit:"Единица измерения",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские",kilometers:"километры",meters:"Метры",miles:"Миль",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"DMS",degrees:"Градусы"}});
+define({title:"Измерение по прямой",hint:"Начать измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение прямой 3D-линии поддерживается только в виде сцены.",distance:"Расстояние",direct:"По прямой",horizontal:"Горизонтально",vertical:"Вертикальная",unit:"Единица измерения",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские",kilometers:"километры",meters:"Метры",miles:"Миль",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"DMS",degrees:"Градусы"}});

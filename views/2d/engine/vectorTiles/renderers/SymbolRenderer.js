@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","./IconRenderer","./SDFRenderer"],function(e,r,n,i){return function(){function e(e){this._iconRenderer=new n(e),this._sdfRenderer=new i(e)}return e.prototype.dispose=function(){this._iconRenderer&&(this._iconRenderer.dispose(),this._iconRenderer=null),this._sdfRenderer&&(this._sdfRenderer.dispose(),this._sdfRenderer=null)},e.prototype.render=function(e,r,n,i,t,s,d,o,h,u,R,c,f,p){return r.hasData()?(r.markerPerPageElementsMap.size>0&&this._iconRenderer.render(e,r,n,i,t,s,d,o,h,R,c,p),r.glyphPerPageElementsMap.size>0&&this._sdfRenderer.render(e,r,n,i,t,s,d,o,u,R,c,f,p),r.triangleCount()):0},e}()});

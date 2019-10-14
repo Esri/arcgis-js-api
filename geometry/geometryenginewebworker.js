@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 var ga;
 (function(ia){function L(c){return v.jc.RQ(c)}function O(c){return null===c?null:void 0!==c.wkt?v.we.ZQ(c.wkt):void 0!==c.wkid?v.we.create(c.wkid):null}function R(c){if(null===c||void 0===c||c.u())return null;switch(c.G()){case v.Tp.Point:var t=c.hasAttribute(v.kg.Z),h=c.hasAttribute(v.kg.M),b={x:c.Te(),y:c.Df()};t&&(b.z=c.GT());h&&(b.m=c.bT());return b;case v.Tp.Polygon:return t=c.hasAttribute(v.kg.Z),h=c.hasAttribute(v.kg.M),{rings:ha(c,t,h),hasZ:t,hasM:h};case v.Tp.Polyline:return t=c.hasAttribute(v.kg.Z),h=

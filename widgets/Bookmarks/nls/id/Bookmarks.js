@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Tambahkan penanda lokasi",disabledHeading:"Penanda Lokasi Dinonaktifkan",disabledDescription:"Tambahkan MapView untuk mengaktifkan penanda lokasi.",goToBookmark:"Buka penanda lokasi",noBookmarksHeading:"Tidak Ada Penanda Lokasi",noBookmarksDescription:"Tambahkan penanda lokasi ke peta Anda sehingga akan muncul di sini.",title:"Judul",addPlaceholder:"Masukkan judul penanda lokasi",addingBookmark:"Menambahkan penanda lokasi",widgetLabel:"Penanda Lokasi"});
+define({addBookmark:"Tambahkan penanda lokasi",goToBookmark:"Buka penanda lokasi",noBookmarksHeading:"Tidak Ada Penanda Lokasi",noBookmarksDescription:"Tambahkan penanda lokasi ke peta Anda sehingga akan muncul di sini.",title:"Judul",addPlaceholder:"Masukkan judul penanda lokasi",addingBookmark:"Menambahkan penanda lokasi",widgetLabel:"Penanda Lokasi"});

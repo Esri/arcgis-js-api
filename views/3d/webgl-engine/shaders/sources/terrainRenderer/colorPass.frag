@@ -7,36 +7,23 @@
 #include <terrainRenderer/overlay.glsl>
 
 uniform vec3 camPos;
-uniform vec3 lightDirection;
 uniform vec3 viewDirection;
 uniform sampler2D depthTex;
 uniform int shadowMapNum;
 uniform vec4 shadowMapDistance;
 uniform mat4 shadowMapMatrix[4];
+
 uniform float depthHalfPixelSz;
 uniform sampler2D ssaoTex;
 uniform vec4 viewportPixelSz;
 uniform sampler2D tex;
 uniform float opacity;
 
-#if defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
-struct WireframeSettings {
-  float width;
-  float falloff;
-  float subdivision;
-  vec4 color;
-  float wireOpacity;
-  float surfaceOpacity;
-};
-
-uniform WireframeSettings wireframe;
-#endif
-
 varying vec3 vnormal;
 varying vec3 vpos;
 varying vec2 vtc;
 
-#if defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
+#if defined(TILE_BORDERS)
 varying vec2 vuv;
 #endif
 
@@ -47,13 +34,12 @@ varying vec3 wlight;
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
 uniform vec4 screenSizePerspective;
-
 varying float screenSizeDistanceToCamera;
 varying float screenSizeCosAngle;
 #endif
 
-const vec3 ambient = vec3(0.2,0.2,0.2);
-const vec3 diffuse = vec3(0.8,0.8,0.8);
+const vec3 ambient = vec3(0.2, 0.2, 0.2);
+const vec3 diffuse = vec3(0.8, 0.8, 0.8);
 const float diffuseHardness = 2.5;
 const float sliceOpacity = 0.2;
 
@@ -108,16 +94,12 @@ vec3 atmosphere(vec3 lightPos, vec3 normal, vec3 view) {
 }
 #endif
 
-const float GAMMA_EXP = 0.4545454545; // 1.0 / 2.2
-
 void main() {
-  vec3 a = ambient;
-
   float shadow = 0.0;
 #ifdef RECEIVE_SHADOWS
   shadow = evalShadow(vpos, linearDepth, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
 #endif
-  float vndl = dot(normalize(vnormal), lightDirection);
+  float vndl = dot(normalize(vnormal), -lightingMainDirection);
   float k = smoothstep(0.0, 1.0, clamp(vndl*diffuseHardness, 0.0, 1.0));
   vec3 d = (1.0 - shadow/1.8) * diffuse * k;
 
@@ -168,13 +150,12 @@ void main() {
     // un-gamma the ground color to mix in linear space
     vec4 groundColor = vec4(pow(gl_FragColor.rgb, vec3(2.2)), gl_FragColor.w);
     waterColor = mix(groundColor, waterColor, waterColor.a);
-    gl_FragColor = vec4(pow(waterColor.rgb, vec3( GAMMA_EXP )), waterColor.a);
+    gl_FragColor = delinearizeGamma(waterColor);
   }
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
   // This is only used for debug rendering the screenSize perspective
-
   float perspectiveScale = screenSizePerspectiveScaleFloat(1.0, screenSizeCosAngle, screenSizeDistanceToCamera, screenSizePerspective);
 
   if (perspectiveScale <= 0.25) {
@@ -192,36 +173,13 @@ void main() {
 
 #endif
 
-#if defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
-
-  vec2 vuvScaled = vuv * wireframe.subdivision;
-  vec2 vuvMod = fract(vuvScaled);
-
-  vec2 dVuv = fwidth(vuvScaled);
-  dVuv = max(vec2(0.00001), dVuv); // workaround against flickering skirts, see #10245
-
-  vec2 edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,
-                                wireframe.width * dVuv, min(vuvMod, 1.0 - vuvMod));
-
+#if defined(TILE_BORDERS)
+  vec2 dVuv = fwidth(vuv);
+  vec2 edgeFactors = smoothstep(vec2(0.0), 1.5 * dVuv, min(vuv, 1.0 - vuv));
   float edgeFactor = 1.0 - min(edgeFactors.x, edgeFactors.y);
 
-#ifdef WIREFRAME_TEXTURE
-  vec3 wireframeColor = mix(gl_FragColor.rgb, wireframe.color.rgb, edgeFactor * wireframe.color.a);
-  float wireframeAlpha = mix(wireframe.surfaceOpacity, wireframe.wireOpacity, edgeFactor);
-  gl_FragColor = vec4(wireframeColor * wireframeAlpha, wireframeAlpha * gl_FragColor.a);
-#endif
-
-
-#ifdef TILE_BORDERS
-  dVuv = fwidth(vuv);
-  edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,
-                            wireframe.width * dVuv, min(vuv, 1.0 - vuv));
-  edgeFactor = 1.0 - min(edgeFactors.x, edgeFactors.y);
-
   gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 0.0, 1.0), edgeFactor);
-#endif
-
-#endif // defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
+#endif // defined(TILE_BORDERS)
 
   gl_FragColor = highlightSlice(gl_FragColor, vpos);
 }

@@ -8,8 +8,8 @@
       "type": "string",
       "description": "The type of join (left outer or left inner).",
       "enum": [
-        "esriLeftOuterJoin",
-        "esriLeftInnerJoin"
+        "esriLeftInnerJoin",
+        "esriLeftOuterJoin"
       ]
     },
     "leftTableKey": {

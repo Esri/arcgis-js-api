@@ -9,8 +9,8 @@
       "description": "Defines the rotation axis the visual variable should be applied to when rendering features with an ObjectSymbol3DLayer. [Detailed description](static/objectSymbolLayerOrientation.md).",
       "enum": [
         "heading",
-        "tilt",
-        "roll"
+        "roll",
+        "tilt"
       ],
       "default": "heading"
     },
@@ -20,14 +20,25 @@
     },
     "legendOptions": {
       "type": "object",
-      "$ref": "visualVariableLegendOptions_schema.json"
+      "allOf": [
+        {
+          "$ref": "visualVariableLegendOptions_schema.json"
+        },
+        {
+          "properties": {
+            "title": {},
+            "showLegend": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "rotationType": {
       "type": "string",
       "description": "Defines the origin and direction of rotation depending on how the angle of rotation was measured. Possible values are `geographic` which rotates the symbol from the north in a clockwise direction and `arithmetic` which rotates the symbol from the east in a counter-clockwise direction.",
       "enum": [
-        "geographic",
-        "arithmetic"
+        "arithmetic",
+        "geographic"
       ],
       "default": "geographic"
     },

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Bladwijzer toevoegen",disabledHeading:"Bladwijzers uitgeschakeld",disabledDescription:"Een MapView toevoegen om bladwijzers in te schakelen.",goToBookmark:"Naar bladwijzer gaan",noBookmarksHeading:"Geen bladwijzers",noBookmarksDescription:"Voeg bladwijzers aan uw kaart toe. Deze zullen hier verschijnen.",title:"Titel",addPlaceholder:"Titel bladwijzer invoeren",addingBookmark:"Bladwijzer toevoegen",widgetLabel:"Bladwijzers"});
+define({addBookmark:"Bladwijzer toevoegen",goToBookmark:"Naar bladwijzer gaan",noBookmarksHeading:"Geen bladwijzers",noBookmarksDescription:"Voeg bladwijzers aan uw kaart toe. Deze zullen hier verschijnen.",title:"Titel",addPlaceholder:"Titel bladwijzer invoeren",addingBookmark:"Bladwijzer toevoegen",widgetLabel:"Bladwijzers"});

@@ -9,11 +9,11 @@
       "description": "Used for classed color or size. The default value is `esriClassifyManual`.",
       "enum": [
         "esriClassifyDefinedInterval",
-        "esriClassifyNaturalBreaks",
         "esriClassifyEqualInterval",
+        "esriClassifyManual",
+        "esriClassifyNaturalBreaks",
         "esriClassifyQuantile",
-        "esriClassifyStandardDeviation",
-        "esriClassifyManual"
+        "esriClassifyStandardDeviation"
       ],
       "default": "esriClassifyManual"
     },
@@ -48,17 +48,17 @@
       "type": "string",
       "description": "Unit used in user interfaces to display world/map sizes and distances",
       "enum": [
-        "inches",
-        "feet",
-        "yards",
-        "miles",
-        "nautical-miles",
-        "millimeters",
         "centimeters",
+        "decimal-degrees",
         "decimeters",
-        "meters",
+        "feet",
+        "inches",
         "kilometers",
-        "decimal-degrees"
+        "meters",
+        "miles",
+        "millimeters",
+        "nautical-miles",
+        "yards"
       ]
     },
     "numClasses": {
@@ -71,17 +71,17 @@
       "type": "number",
       "description": "Use this property if the classificationMethod is `esriClassifyStandardDeviation`.",
       "enum": [
-        1,
-        0.5,
+        0.25,
         0.33,
-        0.25
+        0.5,
+        1
       ]
     },
     "type": {
       "type": "string",
       "enum": [
-        "classedSize",
         "classedColor",
+        "classedSize",
         "predominance",
         "relationship",
         "univariateColorSize"

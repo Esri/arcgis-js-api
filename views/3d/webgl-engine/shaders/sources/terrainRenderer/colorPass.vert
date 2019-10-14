@@ -1,10 +1,11 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <terrainRenderer/skirts.glsl>
 #include <materials/water/normalsUtils.glsl>
 
 uniform mat4 proj;
-uniform mat4 view;
-uniform vec3 origin;
+uniform mat4 view; // the view matrix + local origin
+uniform vec3 origin; // the position of the local origin
 uniform vec4 texOffsetAndScale;
 uniform mat4 viewNormal;
 uniform float skirtScale;
@@ -24,12 +25,12 @@ varying vec2 vtc;
 varying float linearDepth;
 #endif
 
-#if defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
+#if defined(TILE_BORDERS)
 varying vec2 vuv;
 #endif
 
 #ifdef ATMOSPHERE
-uniform vec3 lightDirection;
+uniform vec3 lightingMainDirection;
 varying vec3 wnormal;
 varying vec3 wlight;
 #endif
@@ -45,12 +46,9 @@ varying vec3 tbnBiTangent;
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
-
 uniform vec4 screenSizePerspective;
-
 varying float screenSizeDistanceToCamera;
 varying float screenSizeCosAngle;
-
 #endif
 
 void main(void) {
@@ -62,25 +60,21 @@ void main(void) {
 
 #ifdef ATMOSPHERE
   wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
-  wlight = (view  * vec4(lightDirection, 1.0)).xyz;
+  wlight = (view  * vec4(-lightingMainDirection, 1.0)).xyz;
 #endif
 
-#if defined(WIREFRAME_TEXTURE) || defined(TILE_BORDERS)
+#if defined(TILE_BORDERS)
   vuv = uv;
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
-
   vec3 viewPos = (view * vec4(vpos, 1.0)).xyz;
-
   screenSizeDistanceToCamera = length(viewPos);
-
   vec3 viewSpaceNormal = (viewNormal * vec4(normalize(vpos + origin), 1.0)).xyz;
   screenSizeCosAngle = abs(viewSpaceNormal.z);
-
 #endif
 
-  gl_Position = proj * view * vec4(vpos, 1.0);
+  gl_Position = transformPosition(proj, view, vpos);
 
 #ifdef RECEIVE_SHADOWS
   // Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'

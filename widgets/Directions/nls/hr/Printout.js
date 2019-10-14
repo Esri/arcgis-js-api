@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({printNotes:"Ovdje unesite bilješke",printDisclaimer:"Upute za vožnju pružaju se samo za svrhe planiranja i podložne su <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esrijevim uvjetima korištenja</a>. Mogu postojati dinamički uvjeti na cestama zbog kojih vaše upute za vožnju neće biti točne te se moraju uzeti u obzir zajedno sa znakovima i pravnim ograničenjima. Preuzimate sve rizike korištenja.",printoutError:"Čini se da je došlo do pogreške."});

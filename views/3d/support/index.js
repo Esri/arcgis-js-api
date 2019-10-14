@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","./ResourceController","./MemoryController"],function(e,o,r,n){Object.defineProperty(o,"__esModule",{value:!0}),o.newResourceController=r.newResourceController,o.newMemoryController=n.newMemoryController;!function(e){e.TERRAIN="terrain",e.SCENE="scene",e.SYMBOLOGY="symbology"}(o.ClientType||(o.ClientType={}))});
+define(["require","exports","./ResourceController","./MemoryController"],function(e,r,o,n){Object.defineProperty(r,"__esModule",{value:!0}),r.ResourceControllerMaster=o.ResourceControllerMaster,r.newResourceController=o.newResourceController,r.newMemoryController=n.newMemoryController,r.downloadSlotsPerClient=function(){for(var e=new Map,r=0,o=[[0,15],[1,20],[2,5]];r<o.length;r++){var n=o[r];e.set(n[0],n[1])}return e}()});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({addBookmark:"Agregar marcador",disabledHeading:"Marcadores deshabilitados",disabledDescription:"Agregue un MapView para habilitar los marcadores.",goToBookmark:"Ir a marcador",noBookmarksHeading:"No hay marcadores",noBookmarksDescription:"Agregue marcadores a su mapa y aparecerán aquí.",title:"Título",addPlaceholder:"Introducir un título de marcador",addingBookmark:"Agregando marcador",widgetLabel:"Marcadores"});
+define({addBookmark:"Agregar marcador",goToBookmark:"Ir a marcador",noBookmarksHeading:"No hay marcadores",noBookmarksDescription:"Agregue marcadores a su mapa y aparecerán aquí.",title:"Título",addPlaceholder:"Introducir un título de marcador",addingBookmark:"Agregando marcador",widgetLabel:"Marcadores"});

@@ -9,15 +9,19 @@
       "description": "An identifying string for the layer, unique per scene.",
       "default": "defaultBasemap"
     },
-    "isReference": {
-      "type": "boolean",
-      "description": "Applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
-    },
     "layerType": {
       "type": "string",
       "description": "String indicating the layer type.",
       "enum": [
         "OpenStreetMap"
+      ]
+    },
+    "listMode": {
+      "type": "string",
+      "description": "To show or hide layers in the layer list",
+      "enum": [
+        "hide",
+        "show"
       ]
     },
     "maxScale": {
@@ -42,10 +46,6 @@
     "title": {
       "type": "string",
       "description": "String title for the basemap layer."
-    },
-    "type": {
-      "type": "string",
-      "description": "<em>Deprecated, use layerType instead.</em>"
     },
     "visibility": {
       "type": "boolean",

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({widgetLabel:"Друк",title:"Заголовок",fileName:"Ім'я файлу",titlePlaceHolder:"Заголовок файлу",fileNamePlaceHolder:"Ім'я файлу",formatDefaultOption:"Вибрати формат",fileFormatTitle:"Формат файлу",layoutTitle:"Параметри сторінки",layoutDefaultOption:"Вибрати параметри сторінки",scale:"Задати масштаб",scaleLabel:"масштаб",reset:"скидання",author:"Автор",copyright:"Авторське право",legend:"Включити легенду",lock:"блокування",swap:"поміняти",panelToggle:"Переключення панелей",advancedOptions:"Розширені опції",width:"Ширина",height:"Висота",dpi:"Точок на дюйм",attribution:"Включити атрибуцію",layoutTab:"Макет",mapOnlyTab:"Тільки карта",untitled:"без заголовка",pending:"Експортування",ready:"Відкрити це",linkReady:"Відкрити в новому вікні.",error:"Вибрати це для видалення.",sceneViewError:"Друкування в SceneView не підтримується .",serviceError:"Здається, виникла помилка.",export:"Експорт",exportDescription:"Експорт. Експортовані файли з'являться нижче.",exportText:"Експортовані файли",exportHint:"Експортовані файли з'являться тут.","a3-landscape":"A3 Ландшафт","a3-portrait":"A3 Портрет","a4-landscape":"A4 Ландшафт","a4-portrait":"A4 Портрет","letter-ansi-a-landscape":"Letter ANSI A Ландшафт","letter-ansi-a-portrait":"Letter ANSI A Портрет","tabloid-ansi-b-landscape":"Tabloid ANSI B Ландшафт","tabloid-ansi-b-portrait":"Tabloid ANSI B Портрет"});

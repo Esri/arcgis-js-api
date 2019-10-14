@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../layers/support/fieldUtils"],function(e,r,t,o,p,i,s,n,u){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}t(r,e),s=r,r.prototype.collectRequiredFields=function(e,r){return i(this,void 0,void 0,function(){return p(this,function(t){return[2,u.collectArcadeFieldNames(e,r,this.expression)]})})},r.prototype.clone=function(){return new s({expression:this.expression,title:this.title})};var s;return o([n.property({type:String,json:{write:!0}})],r.prototype,"expression",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"title",void 0),r=s=o([n.subclass("esri.layers.support.FeatureExpressionInfo")],r)}(n.declared(s))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../layers/support/fieldUtils"],function(e,r,t,o,p,i,s,n,u){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}t(r,e),s=r,r.prototype.collectRequiredFields=function(e,r){return i(this,void 0,void 0,function(){return p(this,function(t){return[2,u.collectArcadeFieldNames(e,r,this.expression)]})})},r.prototype.clone=function(){return new s({expression:this.expression,title:this.title})};var s;return o([n.property({type:String,json:{write:!0}})],r.prototype,"expression",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"title",void 0),r=s=o([n.subclass("esri.layers.support.FeatureExpressionInfo")],r)}(n.declared(s.JSONSupport))});

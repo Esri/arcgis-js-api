@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"बु"},addConversion:"रूपांतरण जोड़ें",captureMode:"कैप्चर मोड",changeCoordinateDisplay:"निर्देशांक प्रदर्शन बदलें",convert:"बदलें अथवा रूपांतरित करें",conversionOutputSuffix:"रूपांतरण आउटपुट",copySuccessMessage:"क्लिपबोर्ड में निर्देशांक कॉपी किया गया",defaultPattern:"डिफ़ॉल्ट पर रिसेट करें",goTo:"स्थान पर जाएं",inputCoordTitle:"निर्देशांक इनपुट करें",invalidCoordinate:"अमान्य निर्देशांक",liveMode:"लाइव मोड",locationOffBasemap:"इनपुट निर्देशांक बेसमैप की सीमा के बाहर है",noBasemap:"कोई बेसमैप नहीं।",noLocation:"कोई पोज़िशन नहीं",removeConversion:"रूपांतरण हटाएं",selectFormat:"प्रारूप का चयन करें",settingsTitle:"प्रारूप सेटिंग्स"});

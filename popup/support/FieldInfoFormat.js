@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/date","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../intl/date","../../intl/number"],function(t,e,r,o,a,p,i,n,s,c){return function(t){function e(e){var r=t.call(this)||this;return r.dateFormat=null,r.digitSeparator=!1,r.places=null,r}r(e,t),p=e,e.prototype.clone=function(){return new p({dateFormat:this.dateFormat,digitSeparator:this.digitSeparator,places:this.places})},e.prototype.format=function(t){return this.dateFormat?s.formatDate(t,s.convertDateFormatToIntlOptions(this.dateFormat)):c.formatNumber(t,c.convertNumberFormatToIntlOptions(this))};var p;return o([i.enumeration.serializable()(a.dictionary)],e.prototype,"dateFormat",void 0),o([i.property({type:Boolean,json:{write:!0}})],e.prototype,"digitSeparator",void 0),o([i.property({type:n.Integer,json:{write:!0}})],e.prototype,"places",void 0),e=p=o([i.subclass("esri.popup.support.FieldInfoFormat")],e)}(i.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/date","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../intl/date","../../intl/number"],function(t,r,e,o,a,p,i,n,s,c){return function(t){function r(r){var e=t.call(this)||this;return e.dateFormat=null,e.digitSeparator=!1,e.places=null,e}e(r,t),p=r,r.prototype.clone=function(){return new p({dateFormat:this.dateFormat,digitSeparator:this.digitSeparator,places:this.places})},r.prototype.format=function(t){return this.dateFormat?s.formatDate(t,s.convertDateFormatToIntlOptions(this.dateFormat)):c.formatNumber(t,c.convertNumberFormatToIntlOptions(this))};var p;return o([i.enumeration.serializable()(a.dictionary)],r.prototype,"dateFormat",void 0),o([i.property({type:Boolean,json:{write:!0}})],r.prototype,"digitSeparator",void 0),o([i.property({type:n.Integer,json:{write:!0}})],r.prototype,"places",void 0),r=p=o([i.subclass("esri.popup.support.FieldInfoFormat")],r)}(i.declared(p.JSONSupport))});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Lisa teisendus",captureMode:"Kogumise režiim",changeCoordinateDisplay:"Muuda koordinaatide kuvamist",convert:"Konverteeri",conversionOutputSuffix:"teisenduse väljund",copySuccessMessage:"Koordinaat kopeeriti lõikelauale",defaultPattern:"Lähtesta vaikimisi määratud seadetele",goTo:"Liigu asukohta",inputCoordTitle:"Sisesta koordinaat",invalidCoordinate:"Koordinaat ei sobi",liveMode:"Reaalajarežiim",locationOffBasemap:"Sisendkoordinaat asub väljaspool aluskaardi piirkonda",noBasemap:"Aluskaart puudub.",noLocation:"Asukoht puudub",removeConversion:"Eemalda teisendus",selectFormat:"Vali formaat",settingsTitle:"Formaadi seaded"});

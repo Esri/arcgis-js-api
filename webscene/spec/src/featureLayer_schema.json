@@ -47,15 +47,9 @@
       "type": "string",
       "description": "To show or hide layers in the layer list",
       "enum": [
-        "show",
-        "hide"
+        "hide",
+        "show"
       ]
-    },
-    "mode": {
-      "type": "integer",
-      "description": "0 is snapshot mode. 1 is on-demand mode. 2 is selection-only mode. Used with ArcGIS feature services and individual layers in ArcGIS map services.",
-      "minimum": 0,
-      "maximum": 2
     },
     "opacity": {
       "type": "number",
@@ -76,8 +70,7 @@
     },
     "refreshInterval": {
       "type": "number",
-      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
-      "default": 0
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
     },
     "screenSizePerspective": {
       "type": "boolean",

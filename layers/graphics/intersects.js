@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","./contains"],function(n,o,t){function e(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)}function r(n,o,e,r,s,u){for(var c=i(s,u),l=r.coords,f=r.lengths,p=0,g=0;p<f.length;p++,g+=c)if(t.polygonContainsCoords(n,o,e,l[g],l[g+1]))return!0;return!1}function i(n,o){return n?o?4:3:o?3:2}Object.defineProperty(o,"__esModule",{value:!0}),o.polygonIntersectsPoint=e,o.polygonIntersectsMultipoint=r});

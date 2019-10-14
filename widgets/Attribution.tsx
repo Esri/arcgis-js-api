@@ -41,7 +41,8 @@ import watchUtils = require("esri/core/watchUtils");
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -195,7 +196,7 @@ class Attribution extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -239,7 +240,12 @@ class Attribution extends declared(Widget) {
         {this._renderSourcesNode()}
         <div class={CSS.poweredBy}>
           Powered by{" "}
-          <a target="_blank" href="http://www.esri.com/" class={this.classes(CSS.link, CSS.anchor)}>
+          <a
+            class={this.classes(CSS.link, CSS.anchor)}
+            href="http://www.esri.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Esri
           </a>
         </div>

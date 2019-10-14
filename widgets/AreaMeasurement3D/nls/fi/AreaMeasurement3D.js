@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Mitta",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista alueen mittausta tuetaan vain SceneView-sovelluksessa.",perimeterLength:"Ympärysmitta",area:"Alue",unit:"Yksikkö",notApplicable:"ei mitään",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä","square-kilometers":"Neliökilometriä","square-meters":"Neliömetriä","square-miles":"Neliömailia","square-inches":"Neliötuumaa","square-feet":"Neliöjalkaa","square-yards":"Neliöjaardia","square-us-feet":"Neliöjalkaa (Yhdysvallat)",acres:"Eekkeriä",ares:"Aaria",hectares:"Hehtaaria"}});
+define({title:"Alueen mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista alueen mittausta tuetaan vain SceneView-sovelluksessa.",perimeterLength:"Ympärysmitta",area:"Alue",unit:"Yksikkö",notApplicable:"ei mitään",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä","square-kilometers":"Neliökilometriä","square-meters":"Neliömetriä","square-miles":"Neliömailia","square-inches":"Neliötuumaa","square-feet":"Neliöjalkaa","square-yards":"Neliöjaardia","square-us-feet":"Neliöjalkaa (Yhdysvallat)",acres:"Eekkeriä",ares:"Aaria",hectares:"Hehtaaria"}});

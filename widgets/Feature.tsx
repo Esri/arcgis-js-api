@@ -78,7 +78,8 @@ import ChartMediaInfoValue = require("esri/popup/content/support/ChartMediaInfoV
 import { MediaChartInfo, MediaInfo } from "esri/popup/content/support/mediaInfoTypes";
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -336,13 +337,11 @@ class Feature extends declared(Widget) {
   //---------------------------------
 
   /**
-   * Enables automatic creation of a popup template for layers
-   * that have popups enabled but no popupTemplate defined.
-   * Automatic popup templates are supported for layers that support
-   * the `createPopupTemplate` method.
-   * (Supported for {@link module:esri/layers/FeatureLayer},
-   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer},
-   * {@link module:esri/layers/StreamLayer}, and {@link module:esri/layers/ImageryLayer}).
+   * Enables automatic creation of a popup template for layers that have popups enabled but no
+   * popupTemplate defined. Automatic popup templates are supported for layers that
+   * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer}, {@link module:esri/layers/GeoJSONLayer},
+   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/PointCloudLayer},
+   * {@link module:esri/layers/StreamLayer} and {@link module:esri/layers/ImageryLayer}).
    *
    * @name defaultPopupTemplateEnabled
    * @instance
@@ -452,7 +451,7 @@ class Feature extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -598,6 +597,8 @@ class Feature extends declared(Widget) {
         </div>
       ) : null;
     }
+
+    return null;
   }
 
   private _renderContentElement(
@@ -661,7 +662,7 @@ class Feature extends declared(Widget) {
 
     return (
       <li class={CSS.attachmentsItem} key={attachmentInfo}>
-        <a class={CSS.attachmentsItemLink} href={url} target="_blank">
+        <a class={CSS.attachmentsItemLink} href={url} rel="noreferrer" target="_blank">
           <div class={this.classes(attachmentsItemMaskClasses, CSS.attachmentsItemMask)}>
             <img
               styles={imageStyles}
@@ -788,7 +789,7 @@ class Feature extends declared(Widget) {
 
   private _shouldOpenInNewTab(url: string = ""): boolean {
     if (!url) {
-      return;
+      return undefined;
     }
     // Returns false if the given url uses "mailto" or "tel" protocol.
     // This is to prevent adding blank target to such links, thereby
@@ -902,6 +903,7 @@ class Feature extends declared(Widget) {
       const { sourceURL, linkURL } = value;
       const linkOpenInNewTab = this._shouldOpenInNewTab(linkURL);
       const linkTarget = linkOpenInNewTab ? "_blank" : "_self";
+      const linkRel = linkTarget === "_blank" ? "noreferrer" : "";
       const refreshIntervalInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
       const timestamp = refreshIntervalInfo ? refreshIntervalInfo.timestamp : 0;
       const imgSrc = refreshIntervalInfo ? refreshIntervalInfo.sourceURL : sourceURL;
@@ -916,7 +918,7 @@ class Feature extends declared(Widget) {
       );
 
       const linkNode = linkURL ? (
-        <a title={title} href={linkURL} target={linkTarget}>
+        <a title={title} href={linkURL} rel={linkRel} target={linkTarget}>
           {imageNode}
         </a>
       ) : null;

@@ -2,11 +2,11 @@
 uniform highp sampler2D u_attributeData0;
 uniform highp sampler2D u_attributeData1;
 uniform highp sampler2D u_attributeData2;
-uniform int u_attributeTextureSize; 
+uniform highp sampler2D u_attributeData3;
 
-vec2 getAttributeDataCoords(in highp vec4 id) {
-  // MG: Is the byte order here system dependent? Do we need to check for endianess?
-  // float u32 = float(int(id.r) * 255 * 255 * 255 + int(id.g) * 255 * 255 + int(id.b) * 255 + int(id.a));
+uniform highp int u_attributeTextureSize; 
+
+highp vec2 getAttributeDataCoords(in highp vec4 id) {
   float size = float(u_attributeTextureSize);
   highp float u32 = float(int(id.r) + int(id.g) * 256 + int(id.b) * 256 * 256 + int(id.a) * 256 * 256 * 256);
   highp float col = mod(u32, size);
@@ -18,22 +18,28 @@ vec2 getAttributeDataCoords(in highp vec4 id) {
   return vec2(u, v); 
 }
 
-vec4 getAttributeData0(in vec4 id) {
+highp vec4 getAttributeData0(in highp vec4 id) {
   vec2 coords = getAttributeDataCoords(id);
   
   return texture2D(u_attributeData0, coords); 
 }
 
-vec4 getAttributeData1(in vec4 id) {
-  vec2 coords = getAttributeDataCoords(id);
+highp vec4 getAttributeData1(in highp vec4 id) {
+  highp vec2 coords = getAttributeDataCoords(id);
   
   return texture2D(u_attributeData1, coords); 
 }
 
-vec4 getAttributeData2(in vec4 id) {
-  vec2 coords = getAttributeDataCoords(id);
+highp vec4 getAttributeData2(in highp vec4 id) {
+  highp vec2 coords = getAttributeDataCoords(id);
   
   return texture2D(u_attributeData2, coords); 
+}
+
+highp vec4 getAttributeData3(in highp vec4 id) {
+  highp vec2 coords = getAttributeDataCoords(id);
+  
+  return texture2D(u_attributeData3, coords); 
 }
 
 float u88VVToFloat(in vec2 v) {

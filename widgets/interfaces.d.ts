@@ -1,6 +1,3 @@
-// dojox
-import { Fill } from "dojox/gfx";
-
 // esri
 import Color = require("../Color");
 import { Extent, Point, SpatialReference, Polygon, Polyline } from "../geometry";
@@ -16,6 +13,9 @@ import { Maybe } from "../core/maybe";
 // esri.layers
 import Layer = require("../layers/Layer");
 
+// esri.symbols.support
+import { FillDescriptor } from "../symbols/support/interfaces";
+
 // esri.tasks
 import GeometryService = require("../tasks/GeometryService");
 
@@ -23,6 +23,18 @@ import GeometryService = require("../tasks/GeometryService");
 import { LayerView } from "../views/layers";
 import MapView = require("../views/MapView");
 import SceneView = require("../views/SceneView");
+
+// esri.widgets.AreaMeasurement2D
+import AreaMeasurement2DViewModel = require("./AreaMeasurement2D/AreaMeasurement2DViewModel");
+
+// esri.widgets.AreaMeasurement3D
+import AreaMeasurement3DViewModel = require("./AreaMeasurement3D/AreaMeasurement3DViewModel");
+
+// esri.widgets.DirectLineMeasurement3D
+import DirectLineMeasurement3DViewModel = require("./DirectLineMeasurement3D/DirectLineMeasurement3DViewModel");
+
+// esri.widgets.DistanceMeasurement2D
+import DistanceMeasurement2DViewModel = require("./DistanceMeasurement2D/DistanceMeasurement2DViewModel");
 
 // esri.widgets.Search
 import LayerSearchSource = require("./Search/LayerSearchSource");
@@ -197,6 +209,7 @@ interface LayerInfo {
 type LegendElement =
   | SymbolTableElement
   | ColorRampElement
+  | StretchRampElement
   | OpacityRampElement
   | SizeRampElement
   | HeatmapRampElement
@@ -219,7 +232,7 @@ interface SymbolTableElementInfo {
 }
 
 interface ImageSymbolTableElementInfo {
-  label?: string;
+  label?: StretchMultibandTitle | string;
   src: string;
   preview?: HTMLImageElement;
   opacity: number;
@@ -230,17 +243,22 @@ interface ImageSymbolTableElementInfo {
 interface ColorRampElement {
   type: "color-ramp";
   title: RampTitle | string;
-  borderColor: Color;
-  overlayColor: Color;
   infos: ColorRampStop[];
+  preview?: HTMLElement;
+}
+
+interface StretchRampElement {
+  type: "stretch-ramp";
+  title: RampTitle | string;
+  infos: ColorRampStop[];
+  preview?: HTMLElement;
 }
 
 interface OpacityRampElement {
   type: "opacity-ramp";
   title: RampTitle | string;
-  borderColor: Color;
-  overlayColor: Color;
   infos: OpacityRampStop[];
+  preview?: HTMLElement;
 }
 
 interface SizeRampElement {
@@ -253,13 +271,14 @@ interface HeatmapRampElement {
   type: "heatmap-ramp";
   title: RampTitle | string;
   infos: HeatmapRampStop[];
+  preview?: HTMLElement;
 }
 
 interface RelationshipRampElement {
   type: "relationship-ramp";
   numClasses: number;
   focus: string;
-  colors: Fill[][];
+  colors: FillDescriptor[][];
   labels: RelationshipLabels;
   rotation: number;
   title?: string;
@@ -286,6 +305,11 @@ interface RampTitle {
   ratioPercentTotal: boolean;
 }
 
+interface StretchMultibandTitle {
+  colorName: string;
+  bandName: string;
+}
+
 interface SizeRampStop {
   label: string;
   value?: any;
@@ -298,20 +322,17 @@ interface SizeRampStop {
 interface ColorRampStop {
   value: number;
   color: Color;
-  offset: number;
   label: string;
 }
 
 interface OpacityRampStop {
   value: number;
   color: Color;
-  offset: number;
   label: string;
 }
 
 interface HeatmapRampStop {
   color: Color;
-  offset: number;
   ratio: number;
   label: string;
 }
@@ -361,29 +382,6 @@ export interface AttributionData extends MaxKeyOwner {
   contributors?: Contributors;
 }
 
-export interface VertexDrag {
-  /** Index of the polygon vertex being dragged. */
-  index: number;
-  /** Original position of the dragged vertex. */
-  origin: Point;
-}
-
-export type AreaUnit =
-  | "metric"
-  | "imperial"
-  | "square-inches"
-  | "square-feet"
-  | "square-yards"
-  | "square-miles"
-  | "square-us-feet"
-  | "square-meters"
-  | "square-kilometers"
-  | "acres"
-  | "ares"
-  | "hectares";
-
-export type MeasurementMode = "auto" | "planar" | "geodesic";
-
 export type MeasurementState = "disabled" | "ready" | "measuring" | "measured";
 
 export interface AreaMeasurement {
@@ -396,18 +394,6 @@ export interface AreaMeasurementLabel {
   area: string;
   perimeter: string;
 }
-
-export type LinearUnit =
-  | "imperial"
-  | "metric"
-  | "inches"
-  | "feet"
-  | "yards"
-  | "miles"
-  | "nautical-miles"
-  | "meters"
-  | "kilometers"
-  | "us-feet";
 
 export interface LinearMeasurement {
   geometry: Polyline;
@@ -432,3 +418,9 @@ export interface AreaMeasurementPalette {
 
   fillColor: number[];
 }
+
+export type MeasurementViewModel =
+  | AreaMeasurement2DViewModel
+  | AreaMeasurement3DViewModel
+  | DirectLineMeasurement3DViewModel
+  | DistanceMeasurement2DViewModel;

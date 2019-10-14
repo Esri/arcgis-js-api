@@ -43,14 +43,13 @@
       vec2 stx = dFdx(st);
       vec2 sty = dFdy(st);
 
-      vec3 T = (sty.t * Q1 - stx.t * Q2) / (stx.s * sty.t - sty.s * stx.t);
-      T = normalize(T - normal * dot(normal, T));
-      vec3 B = normalize(cross(normal, T));
-      float det = sty.t * stx.s - stx.t * sty.s;
-      if(det > 0.0){
-        T *= -1.0;
-      }
-      return mat3(T, B, normal);
+      float det = stx.t * sty.s - sty.t * stx.s;
+
+      vec3 T = stx.t * Q2 - sty.t * Q1; // compute tangent
+      T = T - normal * dot(normal, T); // orthogonalize tangent
+      T *= inversesqrt(max(dot(T,T), 1.e-10)); // "soft" normalize - goes to 0 when T goes to 0 
+      vec3 B = sign(det) * cross(normal, T); // assume normal is normalized, B has the same lenght as B
+      return mat3(T, B, normal); // T and B go to 0 when the tangent space is not well defined by the uv coordinates
     }
   #endif // VERTEX_TANGENTS
 

@@ -106,9 +106,9 @@
       "type": "string",
       "description": "String value indicating the HTML popup type.",
       "enum": [
-        "esriServerHTMLPopupTypeNone",
+        "esriServerHTMLPopupTypeAsHTMLText",
         "esriServerHTMLPopupTypeAsURL",
-        "esriServerHTMLPopupTypeAsHTMLText"
+        "esriServerHTMLPopupTypeNone"
       ]
     },
     "id": {

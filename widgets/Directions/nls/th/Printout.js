@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({printNotes:"เขียนตรงนี้",printDisclaimer:"ทิศทางทั้งหลายที่จัดเตรียมไว้ เพื่อประโยชน์แห่งการวางแผนเท่านั้นและอยู่ภายใต้ <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>เงื่อนไขการใช้งานของ Esri</a> คุณต้องนำเครื่องหมายจราจรและข้อจำกัดตามกฎหมายมาพิจารณาประกอบด้วยเนื่องจากสภาวะท้องถนนยามขับขี่ (Dynamic road condition) ต่างๆ ยังคงก่อให้เกิดการเบี่ยงเบนออกจากเส้นทางที่กำหนดของคุณได้ โดยคุณตกลงรับความเสี่ยงที่จะเกิดขึ้นทั้งหมดจากการใช้งาน",printoutError:"อาจจะมีข้อผิดพลาด"});

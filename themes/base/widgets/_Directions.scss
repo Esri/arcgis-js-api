@@ -158,28 +158,11 @@
     justify-content: space-between;
     padding: 10px 0;
     border-top: dashed $border_size transparent;
-  }
-
-  .esri-directions__stop-row--dragged {
-    opacity: 0.25;
-  }
-
-  .esri-directions__stop-row--target {
-    border-top-color: $font-color;
+    background-color: $background-color;
   }
 
   .esri-directions__stop-row-ghost {
-    font-family: $font-family;
-    font-size: $font-size--small;
-    background-color: $background-color;
-    width: $panel-width;
-    padding: $cap-spacing--quarter $side-spacing--quarter;
-    position: absolute;
-
-    // fake drop-shadow now since setDragImage doesn't show box-shadow :'(
-    border: solid $border_size rgba(0, 0, 0, 0.15);
-    border-top-width: 1px;
-    border-left-width: 1px;
+    opacity: 0.25;
   }
 
   .esri-directions__stop-underline {
@@ -196,10 +179,6 @@
 
   .esri-directions .esri-search__input:focus + .esri-directions__stop-underline {
     border-color: $border-color--hover;
-  }
-
-  .esri-directions__stop-underline--drag-in-process {
-    border-color: transparent;
   }
 
   .esri-directions__stop-input {
@@ -291,10 +270,6 @@
 
   .esri-directions__stop-icon-container--last::after {
     border: none;
-  }
-
-  .esri-directions__stop-handle-icon {
-    visibility: hidden;
   }
 
   .esri-directions__costs {
@@ -419,11 +394,7 @@
 
   .esri-directions__stop-row--valid {
     .esri-directions__stop-handle:hover {
-      cursor: pointer;
-
-      .esri-directions__stop-handle-icon {
-        visibility: visible;
-      }
+      cursor: move;
     }
   }
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["../request","../core/lang","../geometry/support/normalizeUtils","./Task","./support/IdentifyResult"],function(e,t,r,s,n){return s.createSubclass({declaredClass:"esri.tasks.IdentifyTask",properties:{gdbVersion:{value:null,type:String},parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var i=s.geometry?[s.geometry]:[];return r.normalizeCentralMeridian(i).then(function(r){var i=this._encode(t.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:r&&r[0]})));this.gdbVersion&&(i.gdbVersion=this.gdbVersion);var u={query:i};return(this.requestOptions||n)&&(u=t.mixin({},this.requestOptions,n,u)),e(this.parsedUrl.path,u)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var t=e.data,r=t.results||[];return t.results=r.map(function(e){return n.fromJSON(e)}),t}})});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/tsSupport/paramHelper","../core/tsSupport/assignHelper","../request","../core/asyncUtils","../core/accessorSupport/decorators","../geometry/support/normalizeUtils","./Task","./operations/identify","./support/IdentifyParameters","./support/IdentifyResult"],function(e,r,t,o,s,n,a,i,p,u,l,c,d,y){return function(e){function r(r){var t=e.call(this)||this;return t.gdbVersion=null,t.url=null,t}return t(r,e),r.prototype.execute=function(e,r){var t=this;e=this._normalizeParams(e);var o=e.geometry?[e.geometry]:[],s=this._parseUrl(this.url);return s.path+="/identify",i.safeCast(u.normalizeCentralMeridian(o)).then(function(o){var i=c.identifyToIdentifyRESTParameters(e,{geometry:o&&o[0]}),p=t._encode(n({},s.query,{f:"json"},i));t.gdbVersion&&(p.gdbVersion=t.gdbVersion);var u={query:p};return(t.requestOptions||r)&&(u=n({},t.requestOptions,r,u)),a(s.path,u).then(t._handleExecuteResponse)})},r.prototype._handleExecuteResponse=function(e){var r=e.data;r.results=r.results||[];var t={results:[]};return t.results=r.results.map(function(e){return y.fromJSON(e)}),t},r.prototype._normalizeParams=function(e){return e=d.from(e)},o([p.property()],r.prototype,"gdbVersion",void 0),o([p.property()],r.prototype,"url",void 0),r=o([p.subclass("esri.tasks.IdentifyTask")],r)}(p.declared(l))});

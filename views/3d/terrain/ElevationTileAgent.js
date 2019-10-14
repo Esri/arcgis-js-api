@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TerrainConst","./TileAgent"],function(e,t,n,r,i,l){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._scaleRangeEnabled=!1,t}return n(t,e),t.prototype._desiredMinLevelDelta=function(){return i.ELEVATION_DESIRED_RESOLUTION_LEVEL-(this.tile.vlevel-this.tile.lij[0])},t.Pool=new r(t),t}(l)});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TerrainConst","./TileAgent"],function(e,t,n,r,i,l){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._scaleRangeEnabled=!1,t}return n(t,e),t.prototype._desiredMinLevelDelta=function(){return i.ELEVATION_DESIRED_RESOLUTION_LEVEL-(this.tile.vlevel-this.tile.lij[0])},t.Pool=new r(t),t}(l.TileAgent)});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için haritaya tıklayarak ölçüme başlayın",unsupported:"2B mesafe ölçümü sadece MapView’da desteklenir.",perimeter:"Çevre",area:"Alan",newMeasurement:"Yeni Ölçüm",mode:"Mod",modes:{auto:"Otomatik",planar:"Düzlemsel",geodesic:"Jeodezik"},unit:"Birim",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometrekare","square-meters":"Metrekare","square-miles":"Milkare","square-inches":"İnçkare","square-feet":"Fitkare","square-yards":"Yardakare","square-us-feet":"Fitkare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});
+define({title:"Alan Ölçümü",hint:"İlk noktanızı yerleştirmek için haritaya tıklayarak ölçüme başlayın",unsupported:"2B mesafe ölçümü sadece MapView’da desteklenir.",perimeter:"Çevre",area:"Alan",newMeasurement:"Yeni Ölçüm",mode:"Mod",modes:{auto:"Otomatik",planar:"Düzlemsel",geodesic:"Jeodezik"},unit:"Birim",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometrekare","square-meters":"Metrekare","square-miles":"Milkare","square-inches":"İnçkare","square-feet":"Fitkare","square-yards":"Yardakare","square-us-feet":"Fitkare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});

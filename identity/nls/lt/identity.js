@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"elementas",title:"Prisijunkite",info:"Prisijunkite, kad gautumėte prieigą prie šio elemento serveryje {server} {resource}",oAuthInfo:"Prisijunkite prie {server}.",lblUser:"Naudotojo vardas:",lblPwd:"Slaptažodis:",lblOk:"Gerai",lblSigning:"Prisijungiama...",lblCancel:"Atšaukti",errorMsg:"Netinkamas paskyros vardas arba slaptažodis. Pabandykite iš naujo.",invalidUser:"Įvestas neteisingas paskyros vardas arba slaptažodis.",forbidden:"Paskyros vardas ir slaptažodis yra teisingi, tačiau jūs neturite teisių naudotis šiuo resursu.",noAuthService:"Autentikacijos paslauga nepasiekiama."});

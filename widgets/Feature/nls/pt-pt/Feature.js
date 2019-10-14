@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({attach:"Anexos",fields:"Campos",fieldsSummary:"Lista de atributos e valores",media:"Imagem",next:"Seguinte",noTitle:"Sem título",previous:"Anterior",lastEdited:"Editado pela última vez a {date}.",lastCreated:"Criado a {date}.",lastEditedByUser:"Editado pela última vez por {user} a {date}.",lastCreatedByUser:"Criado por {user} a {date}."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../webgl","./Programs"],function(e,t,r,a){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(){this._cache=new Array(8);for(var e=0;e<8;e++)this._cache[e]={}}return e.prototype.dispose=function(){this._programRepo&&(this._programRepo.dispose(),this._programRepo=null)},e.prototype.getProgram=function(e,t,r){var a=this._cache[e];if(!a[t]){var i=this._programRepo.getProgram(this._getProgramTemplate(e),r);a[t]=i}return a[t]},e.prototype.getProgramAttributes=function(e){switch(e){case 0:return a.background.attributes;case 5:return a.circle.attributes;case 1:return a.fill.attributes;case 4:return a.icon.attributes;case 3:return a.line.attributes;case 2:return a.outline.attributes;case 6:return a.text.attributes;case 7:return a.tileInfo.attributes}},e.prototype.initialize=function(e){this._programRepo||(this._programRepo=new r.ProgramCache(e))},e.prototype._getProgramTemplate=function(e){switch(e){case 0:return a.background;case 5:return a.circle;case 1:return a.fill;case 4:return a.icon;case 3:return a.line;case 2:return a.outline;case 6:return a.text;case 7:return a.tileInfo}},e}();t.default=i});

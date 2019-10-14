@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/nextTick","../../../../core/promiseUtils"],function(e,n,r,t){function u(n,u,i){if(!u)return t.resolve(null);switch(u.type){case"class-breaks":case"simple":case"unique-value":case"dot-density":case"dictionary":return t.create(function(n){r(function(){return e(["./tileRenderers/SymbolTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(i)});case"heatmap":return t.create(function(n){r(function(){return e(["./tileRenderers/HeatmapTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(i)})}return t.resolve(null)}Object.defineProperty(n,"__esModule",{value:!0}),n.createOrReuseTileRenderer=u});

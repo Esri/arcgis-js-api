@@ -44,8 +44,8 @@
       "type": "string",
       "description": "To show or hide the sublayer in the layer list.",
       "enum": [
-        "show",
-        "hide"
+        "hide",
+        "show"
       ]
     },
     "opacity": {

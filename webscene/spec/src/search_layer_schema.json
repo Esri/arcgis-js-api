@@ -5,19 +5,7 @@
   "description": "Layer configuration for search.",
   "properties": {
     "field": {
-      "allOf": [
-        {
-          "$ref": "field_schema.json"
-        },
-        {
-          "properties": {
-            "name": {},
-            "exactMatch": {},
-            "type": {}
-          },
-          "additionalProperties": false
-        }
-      ]
+      "$ref": "search_layer_field_schema.json"
     },
     "id": {
       "type": "string",

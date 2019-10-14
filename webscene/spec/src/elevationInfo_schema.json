@@ -27,9 +27,9 @@
       "type": "string",
       "description": "Determines how the service elevation values are combined with the elevation of the scene.",
       "enum": [
-        "relativeToGround",
         "absoluteHeight",
         "onTheGround",
+        "relativeToGround",
         "relativeToScene"
       ]
     },

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({printNotes:"Sisesta siia märkused",printDisclaimer:"Sõidujuhised on mõeldud ainult teekonna planeerimiseks ja neile kehtivad <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri kasutustingimused</a>. Dünaamiliselt muutuvad olud koos märkide ja piirangutega võivad põhjustada eri aegadel tulemuste varieerumist. Sellest tulenevalt peate hindama kasutusest tekkivat võimalikku riski.",printoutError:"Ilmnes tõrge."});

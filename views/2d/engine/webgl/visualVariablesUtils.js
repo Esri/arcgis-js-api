@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/Error","../../../../core/Logger","./enums","./Utils"],function(e,i,s,r,a,l){Object.defineProperty(i,"__esModule",{value:!0});var n=r.getLogger("esri.views.2d.engine.webgl");i.getTypeOfSizeVisualVariable=function(e){return l.isNumber(e.minDataValue)&&l.isNumber(e.maxDataValue)&&null!=e.minSize&&null!=e.maxSize?a.WGLVVFlag.SIZE_MINMAX_VALUE:(e.expression&&"view.scale"===e.expression||e.valueExpression&&"$view.scale"===e.valueExpression)&&Array.isArray(e.stops)?a.WGLVVFlag.SIZE_SCALE_STOPS:(null!=e.field||e.expression&&"view.scale"!==e.expression||e.valueExpression&&"$view.scale"!==e.valueExpression)&&Array.isArray(e.stops)?a.WGLVVFlag.SIZE_FIELD_STOPS:(null!=e.field||e.expression&&"view.scale"!==e.expression||e.valueExpression&&"$view.scale"!==e.valueExpression)&&null!=e.valueUnit?a.WGLVVFlag.SIZE_UNIT_VALUE:(n.error(new s("mapview-bad-type","Found invalid size VisualVariable",e)),a.WGLVVFlag.NONE)}});

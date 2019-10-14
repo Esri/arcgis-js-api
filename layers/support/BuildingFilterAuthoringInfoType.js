@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],function(e,r,t,o,p,l,i){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.filterType=null,r.filterValues=null,r}t(r,e),p=r,r.prototype.clone=function(){return new p({filterType:this.filterType,filterValues:l.clone(this.filterValues)})};var p;return o([i.property({type:String,json:{write:!0}})],r.prototype,"filterType",void 0),o([i.property({type:[String],json:{write:!0}})],r.prototype,"filterValues",void 0),r=p=o([i.subclass("esri.layers.support.BuildingFilterAuthoringInfoType")],r)}(i.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],function(e,r,t,o,p,l,i){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.filterType=null,r.filterValues=null,r}t(r,e),p=r,r.prototype.clone=function(){return new p({filterType:this.filterType,filterValues:l.clone(this.filterValues)})};var p;return o([i.property({type:String,json:{write:!0}})],r.prototype,"filterType",void 0),o([i.property({type:[String],json:{write:!0}})],r.prototype,"filterValues",void 0),r=p=o([i.subclass("esri.layers.support.BuildingFilterAuthoringInfoType")],r)}(i.declared(p.JSONSupport))});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"item",title:"Iniciar Sessão",info:"Inicie sessão para aceder ao item em {server} {resource}",oAuthInfo:"Inicie sessão em {server}.",lblUser:"Nome de Utilizador:",lblPwd:"Palavra-passe:",lblOk:"OK",lblSigning:"A iniciar sessão…",lblCancel:"Cancelar",errorMsg:"Nome de utilizador/palavra-passe não válidos. Tente novamente.",invalidUser:"O nome de utilizador ou a palavra-passe que digitou está incorreto.",forbidden:"O nome de utilizador e palavra-passe são válidos, mas não tem acesso a este recurso.",noAuthService:"Não foi possível aceder ao serviço de autenticação."});

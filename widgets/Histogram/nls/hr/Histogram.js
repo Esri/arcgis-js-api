@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Histogram",xAverage:"xÌ„ ",barLabel:"Zbroj trake: {count}. Min. vrijednost podataka trake: {minValue}. Maks. vrijednost podataka trake: {maxValue}."});
+define({title:"Histogram",barLabel:"Zbroj trake: {count}. Min. vrijednost podataka trake: {minValue}. Maks. vrijednost podataka trake: {maxValue}."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/generatorHelper","../../../../core/tsSupport/awaiterHelper","../../support/adapters/support/utils","../../../../support/arcadeOnDemand"],function(e,t,n,r,a,i){function s(e,t,s){return r(this,void 0,void 0,function(){var r,l,u,o,c,p,d,f,g,h,v,x,w,b,m,y,D,E,M,F,H,R,h,S,V,v,q,A,C;return n(this,function(n){switch(n.label){case 0:r=0,l=0,u=1/0,o=-1/0,c=null,p=new Map,d=[];for(f in t)d.push(f);g=0,n.label=1;case 1:return g<d.length?(h=d[g],v=t[h].valueExpression,v?c?[3,3]:[4,i.loadArcade()]:[3,4]):[3,5];case 2:x=n.sent().arcadeUtils,c=x,n.label=3;case 3:p.set(h,c.createFunction(v)),n.label=4;case 4:return g++,[3,1];case 5:for(w=s&&c&&c.getViewInfo({viewingMode:"2d"===s.type?"map":s.viewingMode,scale:s.scale,spatialReference:s.spatialReference}),b=0,m=e;b<m.length;b++)if(y=m[b],D=y.geometry,E=y.attributes,D&&(M=D.extent)&&(F=M.width*M.height)>0){H=0,R=c&&c.createExecContext(y,w);for(h in t)S=t[h],V=S.field,v=S.valueExpression,q=null,V?q=E[V]:v&&(A=p.get(h),q=c.executeFunction(A,R)),a.isValidNumber(q)&&(H+=q||0);C=H/F,++r,l+=C,C<u&&(u=C),C>o&&(o=C)}return[2,{minDensity:u!==1/0?u:null,maxDensity:o!==-1/0?o:null,avgDensity:r?l/r:null}]}})})}return s});
+define(["require","exports","../../../../core/tsSupport/generatorHelper","../../../../core/tsSupport/awaiterHelper","../../support/adapters/support/utils","../../../../support/arcadeOnDemand"],function(e,t,n,r,i,a){function s(e,t,n){return void 0===t&&(t=!0),void 0===n&&(n=!0),i.isValidNumber(e)&&(t||0!==e)&&(n||e>=0)}function l(e){return r(this,void 0,void 0,function(){var t,r,i,l,u,o,c,p,d,f,g,v,h,w,x,b,m,y,D,E,M,F,H,N,v,R,S,h,V,q,A;return n(this,function(n){switch(n.label){case 0:t=e.features,r=e.attributes,i=e.includeZeros,l=e.includeNegatives,u=e.view,o=0,c=0,p=1/0,d=-1/0,f=null,g=new Map,v=0,n.label=1;case 1:return v<r.length?(h=r[v].valueExpression,h?f?[3,3]:[4,a.loadArcade()]:[3,4]):[3,5];case 2:w=n.sent().arcadeUtils,f=w,n.label=3;case 3:g.set(v,f.createFunction(h)),n.label=4;case 4:return v++,[3,1];case 5:for(x=u&&f&&f.getViewInfo({viewingMode:"2d"===u.type?"map":u.viewingMode,scale:u.scale,spatialReference:u.spatialReference}),b=0,m=t;b<m.length;b++)if(y=m[b],D=y.geometry,E=y.attributes,D&&(M=D.extent)&&(F=M.width*M.height)>0){for(H=0,N=f&&f.createExecContext(y,x),v=0;v<r.length;v++)R=r[v],S=R.field,h=R.valueExpression,V=null,S?V=E[S]:h&&(q=g.get(v),V=f.executeFunction(q,N)),s(V,i,l)&&(H+=V||0);s(H,i,l)&&(A=H/F,++o,c+=A,A<p&&(p=A),A>d&&(d=A))}return[2,{minDensity:p!==1/0?p:null,maxDensity:d!==-1/0?d:null,avgDensity:o?c/o:null}]}})})}return l});

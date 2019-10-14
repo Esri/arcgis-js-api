@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../layers/graphics/dehydratedFeatures","../../../../support/arcadeUtils"],function(e,t,r,n){function u(e,t,r){var u=null,c=e&&e.expression;if("string"==typeof c){var o=l(c);if(null!=o)u={cachedResult:o};else{var a=n.createSyntaxTree(c);n.dependsOnView(a)?(null!=r&&r.error("Expressions containing '$view' are not supported on ElevationInfo"),u={cachedResult:0}):u={arcade:{func:n.createFunction(a),context:n.createExecContext(null,{sr:t})}}}}return u}function c(e,t){return n.createFeature(e.attributes,e.geometry,t)}function o(e,t){if(null!=e&&!s(e)){var u=t;u._geometry&&(u._geometry=r.hydrateGeometry(u._geometry)),n.updateExecContext(e.arcade.context,t)}}function a(e){if(null!=e){if(s(e))return e.cachedResult;var t=e.arcade,r=n.executeFunction(t.func,t.context);return"number"!=typeof r&&(e.cachedResult=0,r=0),r}return 0}function i(e,t){void 0===t&&(t=!1);var r=e&&e.featureExpressionInfo,n=r&&r.expression;return t||"0"===n||(r=null),r}function s(e){return null!=e.cachedResult}function l(e){return"0"===e?0:null}Object.defineProperty(t,"__esModule",{value:!0}),t.createContext=u,t.createFeature=c,t.setContextFeature=o,t.execute=a,t.extractExpressionInfo=i,t.zeroContext={cachedResult:0}});

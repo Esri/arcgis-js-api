@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","dojox/string/BidiEngine"],function(e,i,r){Object.defineProperty(i,"__esModule",{value:!0});var n=new r;i.bidiText=function(e){return n.hasBidiChar(e)?(i="rtl"===n.checkContextual(e)?"IDNNN":"ICNNN",[n.bidiTransform(e,i,"VLYSN"),!0]):[e,!1];var i}});

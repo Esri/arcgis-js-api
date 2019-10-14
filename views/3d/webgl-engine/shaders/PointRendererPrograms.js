@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","./sources/resolver","../../../webgl/programUtils"],function(e,r,n,t){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){return t.glslifyDefineMap({DEPTH_PASS:e.depthPass,DRAW_SCREEN_SIZE:e.drawScreenSize,SLICE:e.slicePlaneEnabled})};r.program={name:"point-renderer",shaders:function(e){return{vertexShader:o(e)+n.resolveIncludes("pointRenderer/pointRenderer.vert"),fragmentShader:o(e)+n.resolveIncludes("pointRenderer/pointRenderer.frag")}},attributes:{aPosition:0,aColor:1}}});
+define(["require","exports","./sources/resolver","../../../webgl/programUtils"],function(e,r,n,t){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){return t.glslifyDefineMap({DEPTH_PASS:e.depthPass,HIGHLIGHT_PASS:e.highlightPass,DRAW_SCREEN_SIZE:e.drawScreenSize,SLICE:e.slicePlaneEnabled})};r.program={name:"point-renderer",shaders:function(e){return{vertexShader:i(e)+n.resolveIncludes("pointRenderer/pointRenderer.vert"),fragmentShader:i(e)+n.resolveIncludes("pointRenderer/pointRenderer.frag")}},attributes:{aPosition:0,aColor:1}}});

@@ -39,8 +39,8 @@
     "listMode": {
       "type": "string",
       "enum": [
-        "show",
-        "hide"
+        "hide",
+        "show"
       ]
     },
     "opacity": {

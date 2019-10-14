@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <materials/water/normalsUtils.glsl>
 
 uniform mat4 proj;
@@ -10,9 +11,9 @@ attribute vec3 position;
 
 #include <materials/defaultMaterial/commonFunctions.glsl>
 
-varying vec3 posOut;
+varying vec3 vpos;
 
 void main(void) {
-  posOut = calculateVPos();
-  gl_Position = proj * view * vec4(posOut.xyz, 1.0);
+  vpos = calculateVPos();
+  gl_Position = transformPosition(proj, view, vpos);
 }

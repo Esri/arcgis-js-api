@@ -32,18 +32,26 @@ import * as i18n from "dojo/i18n!esri/widgets/LayerList/nls/LayerList";
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.layers
+import Layer = require("esri/layers/Layer");
+
+// esri.libs.sortablejs
+import Sortable = require("esri/libs/sortablejs/Sortable");
+
 // esri.support.actions
 import ActionButton = require("esri/support/actions/ActionButton");
 import ActionToggle = require("esri/support/actions/ActionToggle");
 
 // esri.views
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -58,7 +66,15 @@ import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
+function moveItem(data: any[], from: number, to: number): void {
+  data.splice(to, 0, data.splice(from, 1)[0]);
+}
+
 const ListItemCollection = Collection.ofType<ListItem>(ListItem);
+
+const SORT_GROUP_NAME = "root-layers";
+const SORT_DATA_ATTR = "data-layer-uid";
+const SORT_DATASET_ID = "layerUid";
 
 const CSS = {
   // layerlist classes
@@ -182,11 +198,15 @@ class LayerList extends declared(Widget) {
     const operationalItems = this.operationalItems;
 
     this.own(
-      watchUtils.on(this, "operationalItems", "change", () => this._itemsChanged(operationalItems))
+      watchUtils.on(this, "operationalItems", "change", () => this._itemsChanged(operationalItems)),
+      watchUtils.init(this, "selectionEnabled", () => this._toggleSorting())
     );
   }
 
   destroy(): void {
+    const { _sortable } = this;
+
+    _sortable && _sortable.destroy();
     this._handles.destroy();
     this._handles = null;
   }
@@ -198,6 +218,12 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   private _handles: Handles = new Handles();
+
+  private _sortable: Sortable = null;
+
+  private _sortableNode: HTMLUListElement = null;
+
+  private _focusSortUid: string = null;
 
   //--------------------------------------------------------------------------
   //
@@ -335,8 +361,11 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Indicates whether list items may be selected by the user. When the user
-   * selects an item, it will become available in the [selectedItems](#selectedItems)
+   * Indicates whether list items may be selected by the user. Selected items
+   * may be reordered in the list by dragging gestures with the
+   * mouse or touch screen, or with arrow keys on the keyboard.
+   *
+   * Selected items are available in the [selectedItems](#selectedItems)
    * property.
    *
    * @name selectionEnabled
@@ -345,6 +374,9 @@ class LayerList extends declared(Widget) {
    * @default false
    *
    * @see [selectedItems](#selectedItems)
+   *
+   * @example
+   * layerList.selectionEnabled = true;
    */
   @property()
   @renderable()
@@ -405,7 +437,7 @@ class LayerList extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -453,7 +485,14 @@ class LayerList extends declared(Widget) {
       items.length === 0 ? (
         <div class={CSS.noItems}>{i18n.noItemsToDisplay}</div>
       ) : (
-        <ul class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}>
+        <ul
+          aria-label={i18n.widgetLabel}
+          role={this.selectionEnabled ? "listbox" : undefined}
+          afterCreate={this._sortNodeCreated}
+          data-node-ref="_sortableNode"
+          bind={this}
+          class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
+        >
           {items.map((item, key) => this._renderItem(item, null))}
         </ul>
       );
@@ -471,6 +510,55 @@ class LayerList extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _toggleSorting(): void {
+    const { _sortable, _sortableNode, selectionEnabled } = this;
+
+    if (!_sortableNode) {
+      return;
+    }
+
+    if (_sortable) {
+      _sortable.option("disabled", !selectionEnabled);
+    } else {
+      const itemSort = Sortable.create(_sortableNode, {
+        dataIdAttr: SORT_DATA_ATTR,
+        group: SORT_GROUP_NAME,
+        disabled: !selectionEnabled,
+        onSort: () => this._sortLayersToItems(itemSort.toArray())
+      });
+
+      this._sortable = itemSort;
+    }
+  }
+
+  private _sortNodeCreated(el: HTMLUListElement): void {
+    this._sortableNode = el;
+    this._toggleSorting();
+  }
+
+  private _sortLayersToItems(itemIds: string[]): void {
+    const layers = this.get<Collection<Layer>>("view.map.layers");
+
+    if (!layers) {
+      return;
+    }
+
+    layers.sort((a: Layer, b: Layer) => {
+      const aIndex = itemIds.indexOf(a.uid);
+      const bIndex = itemIds.indexOf(b.uid);
+
+      if (aIndex > bIndex) {
+        return -1;
+      }
+
+      if (aIndex < bIndex) {
+        return 1;
+      }
+
+      return 0;
+    });
+  }
 
   private _getItems(): ListItem[] {
     return this.operationalItems.toArray().filter((item) => this.errorsVisible || !item.error);
@@ -614,16 +702,18 @@ class LayerList extends declared(Widget) {
 
     const isSelected = this.selectedItems.indexOf(item) > -1;
 
-    const itemContainerProps = this.selectionEnabled
+    const sortDataAttrValue = !parent ? item.get<string>("layer.uid") : null;
+    const listItemProps = this.selectionEnabled
       ? {
           bind: this,
           onclick: this._toggleSelection,
-          onkeydown: this._toggleSelection,
+          onkeydown: this._selectionKeydown,
           "data-item": item,
           tabIndex: 0,
-          "aria-checked": isSelected ? "true" : "false",
-          role: "checkbox",
-          "aria-labelledby": titleKey
+          "aria-selected": isSelected ? "true" : "false",
+          role: "option",
+          "aria-labelledby": titleKey,
+          [SORT_DATA_ATTR]: sortDataAttrValue
         }
       : {
           bind: undefined,
@@ -631,18 +721,23 @@ class LayerList extends declared(Widget) {
           onkeydown: undefined,
           "data-item": undefined,
           tabIndex: undefined,
-          "aria-checked": undefined,
+          "aria-selected": undefined,
           role: undefined,
-          "aria-labelledby": undefined
+          "aria-labelledby": undefined,
+          [SORT_DATA_ATTR]: undefined
         };
 
     return (
-      <li key={item} class={this.classes(CSS.item, itemClasses)} aria-labelledby={titleKey}>
-        <div
-          key={`esri-layer-list__list-item-container`}
-          class={CSS.itemContainer}
-          {...itemContainerProps}
-        >
+      <li
+        key={item}
+        bind={this}
+        afterCreate={this._focusListItem}
+        afterUpdate={this._focusListItem}
+        class={this.classes(CSS.item, itemClasses)}
+        aria-labelledby={titleKey}
+        {...listItemProps}
+      >
+        <div key={`esri-layer-list__list-item-container`} class={CSS.itemContainer}>
           {toggleChildren}
           {itemLabel}
           {actionsMenu}
@@ -653,6 +748,21 @@ class LayerList extends declared(Widget) {
         {children}
       </li>
     );
+  }
+
+  private _focusListItem(element: HTMLElement): void {
+    const { _focusSortUid } = this;
+
+    if (!element || !_focusSortUid) {
+      return;
+    }
+
+    const uid = element.dataset[SORT_DATASET_ID];
+
+    if (uid === _focusSortUid) {
+      element.focus();
+      this._focusSortUid = null;
+    }
   }
 
   private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
@@ -1003,6 +1113,69 @@ class LayerList extends declared(Widget) {
     };
   }
 
+  private _selectionKeydown(event: KeyboardEvent): void {
+    const SELECTION_KEYS = ["ArrowDown", "ArrowUp"];
+
+    const key = eventKey(event);
+
+    if (SELECTION_KEYS.indexOf(key) === -1) {
+      this._toggleSelection(event);
+      return;
+    }
+
+    event.stopPropagation();
+
+    const node = event.currentTarget as Element;
+    const item = node["data-item"];
+
+    const { _sortable, selectedItems } = this;
+
+    const isSelected = selectedItems.indexOf(item) > -1;
+    const items = _sortable.toArray();
+    const target = event.target as HTMLElement;
+    const index = items.indexOf(target.dataset[SORT_DATASET_ID]);
+
+    if (index === -1) {
+      return;
+    }
+
+    if (key === "ArrowDown") {
+      const newIndex = index + 1;
+
+      if (newIndex >= items.length) {
+        return;
+      }
+
+      if (isSelected) {
+        moveItem(items, index, newIndex);
+        _sortable.sort(items);
+        this._sortLayersToItems(_sortable.toArray());
+        this._focusSortUid = items[newIndex];
+      } else {
+        this._focusSortUid = items[newIndex];
+        this.scheduleRender();
+      }
+    }
+
+    if (key === "ArrowUp") {
+      const newIndex = index - 1;
+
+      if (newIndex <= -1) {
+        return;
+      }
+
+      if (isSelected) {
+        moveItem(items, index, newIndex);
+        _sortable.sort(items);
+        this._sortLayersToItems(_sortable.toArray());
+        this._focusSortUid = items[newIndex];
+      } else {
+        this._focusSortUid = items[newIndex];
+        this.scheduleRender();
+      }
+    }
+  }
+
   @accessibleHandler()
   private _toggleActionsOpen(event: Event): void {
     const node = event.currentTarget as Element;
@@ -1065,6 +1238,8 @@ class LayerList extends declared(Widget) {
 
   @accessibleHandler()
   private _toggleSelection(event: MouseEvent | KeyboardEvent): void {
+    event.stopPropagation();
+
     const isControlSelection = event.metaKey || event.ctrlKey;
     const node = event.currentTarget as Element;
     const item = node["data-item"] as ListItem;

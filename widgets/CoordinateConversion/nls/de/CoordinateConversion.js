@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"O",west:"W"},addConversion:"Konvertierung hinzufügen",captureMode:"Erfassungsmodus",changeCoordinateDisplay:"Koordinatenanzeige ändern",convert:"Konvertieren",conversionOutputSuffix:"Konvertierungsergebnis",copySuccessMessage:"In Zwischenablage kopierte Koordinate",defaultPattern:"Auf Standard zurücksetzen",goTo:"Zu Position wechseln",inputCoordTitle:"Eingabe-Koordinate",invalidCoordinate:"Ungültige Koordinate",liveMode:"Live-Modus",locationOffBasemap:"Die Eingabe-Koordinate befindet sich außerhalb der Grundkartenausdehnung.",noBasemap:"Keine Grundkarte.",noLocation:"Keine Position",removeConversion:"Konvertierung entfernen",selectFormat:"Format auswählen",settingsTitle:"Formateinstellungen"});

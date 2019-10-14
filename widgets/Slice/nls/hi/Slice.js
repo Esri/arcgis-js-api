@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"स्लाइस",cancel:"रद्द करें",hint:"दृश्य में सतह पर क्लिक और ड्रैग करके स्लाइस करना शुरू करें",excludeHint:"व्यू में स्लाइस से अलग की जाने वाली लेयर चुनें",unsupported:"स्लाइस MapView में समर्थित नहीं है।",multipleDisabled:"एक बार में सिर्फ़ एक ही स्लाइस सक्रिय हो सकती है",newSlice:"नई स्लाइस",excludedLayers:"निकाली गई लेयर",pickLayer:"व्यू से कोई लेयर चुनें",excludeLayer:"स्लाइस से लेयर निकालें",includeLayer:"स्लाइस में लेयर शामिल करें",ground:"ग्राउंड"});

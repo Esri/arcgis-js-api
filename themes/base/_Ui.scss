@@ -8,6 +8,7 @@
   pointer-events: none;
   overflow: hidden;
   font-size: $font-size;
+  z-index: 0; // creates root stacking context
 
   .esri-component {
     pointer-events: auto;
@@ -35,8 +36,15 @@
   right: 0;
 }
 
-.esri-ui-manual-container > .esri-component {
-  position: absolute;
+.esri-ui-manual-container {
+  & > .esri-component {
+    position: absolute;
+  }
+
+  /* swipe needs to be placed behind all UI components */
+  .esri-swipe {
+    z-index: -1;
+  }
 }
 
 // Top Corners

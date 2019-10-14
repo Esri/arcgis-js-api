@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({streets:"Carrers",satellite:"Imatges",hybrid:"Imatges amb etiquetes",terrain:"Terreny amb etiquetes",topo:"Topogràfic",gray:"Lona gris clar","dark-gray":"Lona gris fosc",oceans:"Oceans","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mapa de carrers mundial (nit)","streets-relief-vector":"Mapa de carrers mundial (amb relleu)","streets-navigation-vector":"Mapa de navegació mundial"});

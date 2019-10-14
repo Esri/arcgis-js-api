@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Lõik",cancel:"Loobu",hint:"Lõigu alustamiseks klõpsake ja lohistage vaate pinnal",excludeHint:"Vaate lõigust eemaldamiseks valida vaate kiht",unsupported:"MapView ei toeta lõiku.",multipleDisabled:"Korraga võib olla aktiveeritud ainult üks lõik",newSlice:"Uus lõik",excludedLayers:"Väljajäetud kihid",pickLayer:"Valige kiht vaatelt",excludeLayer:"Kõrvaldage kiht lõigult",includeLayer:"Kaasake kiht lõiku",ground:"Maapind"});

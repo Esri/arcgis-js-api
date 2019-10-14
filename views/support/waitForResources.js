@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/watch"],function(e,t,n){function r(e,t){switch(e.type){case"2d":return i(e,t);case"3d":return a(e,t);default:t()}}function i(e,t){function n(){r()?setTimeout(n,16):t()}var r=function(){return!(e.ready&&!e.updating&&e.stationary&&!0!==e.get("layerViewManager.updating")&&!0!==e.get("labelManager.updating")&&!0!==e.get("graphicsView.updating")&&!e.allLayerViews.some(function(e){return!0===e.updating}))||!!e.allLayerViews.find(function(e){var t=!e.isFulfilled(),n=e.updating&&!e.suspended,r=e.rendering;return t||n||r})};setTimeout(n,16)}function a(e,t){function r(){return n.dispatch(),!e.ready||e.updating||e._stage.renderView.isLoadingResources||e.basemapTerrain&&e.basemapTerrain.tilingScheme&&e._stage.renderView.needsRender()||e._stage.renderView.test.textureRepository.getLoadingCount()>0}function i(){e.destroyed||(r()?setTimeout(i,16):t())}if(!e)return void t();setTimeout(i,16)}return r});
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","../../core/watchUtils","../../core/accessorSupport/watch"],function(e,t,r,n,i,a,u){function o(e,t){var r=c(e);return t?r(e,t):i.create(function(t){return r(e,t)})}function c(e){switch(e.type){case"2d":return g;case"3d":return p;default:return s}}function s(e,t){t()}function g(e,t){function r(){n()?setTimeout(r,16):t()}var n=function(){return!(e.ready&&!e.updating&&e.stationary&&!0!==e.get("layerViewManager.updating")&&!0!==e.get("labelManager.updating")&&!0!==e.get("graphicsView.updating")&&(!0!==e.get("magnifier.visible")||e.get("_magnifierView.mask")&&e.get("_magnifierView.overlay"))&&!e.allLayerViews.some(function(e){return!0===e.updating}))||!!e.allLayerViews.find(function(e){var t=!e.isFulfilled(),r=e.updating&&!e.suspended,n=e.rendering;return t||r||n})};setTimeout(r,16)}function p(e,t){if(!e)return void t();u.dispatch(),a.whenNotOnce(e,"updating",t)}return o});

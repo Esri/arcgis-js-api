@@ -42,7 +42,7 @@ import IntersectionObserver from "@dojo/framework/shim/IntersectionObserver";
 import * as i18n from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
 
 // esri.core
-import HandleOwner = require("esri/core/HandleOwner");
+import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -87,7 +87,7 @@ function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string
 }
 
 @subclass("esri.widgets.FeatureTemplates")
-class FeatureTemplates extends declared(Widget, HandleOwner) {
+class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
   /**
    * The filter used when setting the [filterFunction](#filterFunction)
    * property. It takes an object containing a {@link module:esri/widgets/FeatureTemplates/TemplateItem#label name}

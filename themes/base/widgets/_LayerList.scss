@@ -30,7 +30,7 @@
       border-left-color: $border-color;
     }
   }
-  .esri-layer-list__item-container[aria-checked="true"] {
+  .esri-layer-list__item[aria-selected="true"] > .esri-layer-list__item-container {
     border-left-color: $border-color--active;
     &:hover {
       border-left-color: $border-color--active;
@@ -56,8 +56,11 @@
     padding: $cap-spacing $side-spacing--half $cap-spacing ($side-spacing + 5);
     transition: border-color 250ms ease-in-out;
   }
-  .esri-layer-list__item--invisible-at-scale .esri-layer-list__item-title {
-    color: $interactive-font-color--disabled;
+  .esri-layer-list__item--invisible-at-scale {
+    .esri-layer-list__item-title,
+    .esri-layer-list__item-toggle {
+      color: $interactive-font-color--disabled;
+    }
   }
   .esri-layer-list__item--has-children > .esri-layer-list__item-container {
     padding-left: 5px;
@@ -132,10 +135,6 @@
     padding: 0 $side-spacing--quarter;
     cursor: pointer;
     color: $interactive-font-color;
-  }
-  .esri-layer-list__item-label[aria-checked="false"] .esri-layer-list__item-toggle-icon,
-  .esri-layer-list__item-toggle[aria-checked="false"] .esri-layer-list__item-toggle-icon {
-    opacity: 0.6;
   }
   @include loopingProgressBar(".esri-layer-list__item--updating");
   .esri-layer-list__item-actions-menu {

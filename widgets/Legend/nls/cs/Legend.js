@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({widgetLabel:"Legenda",points:"body",lines:"Linie",polygons:"Polygony",creatingLegend:"Probíhá vytváření legendy",noLegend:"Bez legendy",dotValue:"1 tečka = {value} {unit}",currentObservations:"Současná pozorování",previousObservations:"Předchozí pozorování",high:"Vysoká",low:"Nízká",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"uzly",esriFeetPerSecond:"stop/s",esriMilesPerHour:"mph",showNormField:"Pole {field} dělené {normField}",showNormPct:"Pole {field} jako podíl z celkového počtu",showRatio:"Poměr pole {field} vůči {normField}",showRatioPercent:"Pole {field} jako podíl z {normField}",showRatioPercentTotal:"Pole {field} jako podíl z pole {field} a {normField}"});
+define({widgetLabel:"Legenda",points:"body",lines:"Linie",polygons:"Polygony",creatingLegend:"Probíhá vytváření legendy",noLegend:"Bez legendy",dotValue:"1 tečka = {value} {unit}",currentObservations:"Současná pozorování",previousObservations:"Předchozí pozorování",high:"Vysoká",low:"Nízká",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"uzly",esriFeetPerSecond:"stop/s",esriMilesPerHour:"mph",showNormField:"Pole {field} dělené {normField}",showNormPct:"Pole {field} jako podíl z celkového počtu",showRatio:"Poměr pole {field} vůči {normField}",showRatioPercent:"Pole {field} jako podíl z {normField}",showRatioPercentTotal:"Pole {field} jako podíl z pole {field} a {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Červená",green:"Zelená",blue:"Modrá"});

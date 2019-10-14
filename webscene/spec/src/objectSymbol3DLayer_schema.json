@@ -8,11 +8,11 @@
       "type": "string",
       "description": "The positioning of the object relative to the geometry.",
       "enum": [
-        "center",
         "bottom",
+        "center",
         "origin",
-        "top",
-        "relative"
+        "relative",
+        "top"
       ],
       "default": "origin"
     },

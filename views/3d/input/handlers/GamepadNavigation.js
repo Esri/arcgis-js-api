@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/Handles","../../../../core/watchUtils","../../state/controllers/GamepadKeyboardController","../../../input/InputHandler"],function(a,e,t,r,n,o,l){Object.defineProperty(e,"__esModule",{value:!0});var i=function(a){function e(e,t){var n=a.call(this,!0)||this;return n.view=e,n.watchHandles=new r,n.handle=n.registerIncoming("gamepad",function(a){return n.handleEventGamepad(a)}),n.handle.pause(),n}return t(e,a),e.prototype.onInstall=function(e){var t=this;a.prototype.onInstall.call(this,e),this.watchHandles.add([n.init(this.view.navigation.gamepad,"enabled",function(a){a?t.handle.resume():(t.handle.pause(),t.cameraControllerGamepad&&(t.cameraControllerGamepad.finishController(),t.cameraControllerGamepad=null))}),this.view.navigation.gamepad.watch("device",function(a){t.cameraControllerGamepad&&a&&t.cameraControllerGamepad.gamepadDevice!==a&&(t.cameraControllerGamepad.finishController(),t.cameraControllerGamepad=null)})])},e.prototype.onUninstall=function(){this.watchHandles.removeAll(),a.prototype.onUninstall.call(this)},e.prototype.handleEventGamepad=function(a){var e=this.view.navigation.gamepad.device;if(!e||a.data.device===e){var t=this.cameraControllerGamepad&&this.cameraControllerGamepad.active;if(t||o.GamepadKeyboardController.activatesFor(this.view,a.data)){if(!t){var r=new o.GamepadKeyboardController(this.view,a.data.device);this.view.state.switchCameraController(r)&&(this.cameraControllerGamepad=r)}this.cameraControllerGamepad&&this.cameraControllerGamepad.active&&this.cameraControllerGamepad.gamepadDevice===a.data.device&&this.cameraControllerGamepad.handleEventGamepad(a.data)}}},e}(l.InputHandler);e.GamepadNavigation=i});

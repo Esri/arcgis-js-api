@@ -1,7 +1,7 @@
 attribute vec2 a_pos;
 
 uniform highp mat3 u_dvsMat3;
-uniform mediump float u_coord_range;
+uniform mediump vec2 u_coord_range;
 uniform mediump float u_depth;
 
 void main() {

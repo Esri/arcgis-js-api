@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Divideix en sectors",cancel:"Cancel·la",hint:"Per començar a fer la divisió en sectors, feu clic i arrossegueu la selecció sobre una superfície de l'escena",excludeHint:"Seleccioneu una capa a la visualització per excloure-la de la divisió en sectors",unsupported:"La divisió en sectors no s'admet al MapView.",multipleDisabled:"Només es pot activar un sector a la vegada",newSlice:"Sector nou",excludedLayers:"Capes excloses",pickLayer:"Seleccioneu una capa de la visualització",excludeLayer:"Exclou la capa del sector",includeLayer:"Inclou la capa al sector",ground:"Terreny"});

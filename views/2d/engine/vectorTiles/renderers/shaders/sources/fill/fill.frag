@@ -26,7 +26,7 @@ void main()
 {
 #ifdef PATTERN
   // normalize the calculated texture coordinate such that it fits in the range of 0 to 1.
-  mediump vec2 normalizedTextureCoord = mod(v_tileTextureCoord, 1.0);
+  mediump vec2 normalizedTextureCoord = fract(v_tileTextureCoord);
 
   // interpolate the image coordinate between the top-left and the bottom right to get the actual position to sample.
   // after normalizing the position, we get a value ranging between 0 and 1 which refers to the entire texture, however

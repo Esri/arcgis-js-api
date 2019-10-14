@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({title:"Sadalīt sektoros",cancel:"Atcelt",hint:"Sāciet sadalīt sektoros, noklikšķinot uz scēnas virsmas un velkot",excludeHint:"Skatā izvēlieties slāni, kas netiks iekļauts sektorā",unsupported:"Skatā MapView (Kartes skats) sadalīšana sektoros netiek atbalstīta.",multipleDisabled:"Vienlaicīgi var būt aktivizēts tikai viens sektors",newSlice:"Jauns sektors",excludedLayers:"Neiekļautie slāņi",pickLayer:"Izvēlēties slāni skatā",excludeLayer:"Neiekļaut slāni sektorā",includeLayer:"Iekļaut slāni sektorā",ground:"Zeme"});

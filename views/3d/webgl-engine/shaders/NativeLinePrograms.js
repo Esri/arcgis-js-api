@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,t,a,i){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){return i.glslifyDefineMap({SLICE:e.slice,VERTEXCOLORS:e.vertexColors})};r.colorPass={name:"native-line-color",shaders:function(e){return{vertexShader:n(e)+a.resolveIncludes("materials/nativeLine/nativeLine.vert"),fragmentShader:n(e)+a.resolveIncludes("materials/nativeLine/colorPass.frag")}},attributes:t.Default3D},r.highlightPass={name:"native-line-highlight",shaders:function(e){return{vertexShader:n(e)+a.resolveIncludes("materials/nativeLine/nativeLine.vert"),fragmentShader:n(e)+a.resolveIncludes("materials/nativeLine/highlightPass.frag")}},attributes:t.Default3D}});

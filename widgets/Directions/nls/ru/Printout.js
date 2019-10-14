@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({printNotes:"Для заметок",printDisclaimer:"Путевой лист предоставляется только в целых планирования, на него распространяются <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Условия использования Esri</a>. Могут существовать динамические дорожные условия, отличающиеся от ваших маршрутов, что необходимо принимать во внимание, вместе с дорожными знаками и ограничениями.Риск их использования вы берете на себя.",printoutError:"Вероятно, имеется ошибка."});

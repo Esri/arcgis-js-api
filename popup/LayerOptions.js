@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/accessorSupport/decorators"],function(o,r,e,t,s,p){return function(o){function r(r){var e=o.call(this)||this;return e.returnTopmostRaster=null,e.showNoDataRecords=null,e}e(r,o),s=r,r.prototype.clone=function(){return new s({showNoDataRecords:this.showNoDataRecords,returnTopmostRaster:this.returnTopmostRaster})};var s;return t([p.property({type:Boolean,json:{write:!0}})],r.prototype,"returnTopmostRaster",void 0),t([p.property({type:Boolean,json:{write:!0}})],r.prototype,"showNoDataRecords",void 0),r=s=t([p.subclass("esri.popup.LayerOptions")],r)}(p.declared(s))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/accessorSupport/decorators"],function(o,r,e,t,s,p){return function(o){function r(r){var e=o.call(this)||this;return e.returnTopmostRaster=null,e.showNoDataRecords=null,e}e(r,o),s=r,r.prototype.clone=function(){return new s({showNoDataRecords:this.showNoDataRecords,returnTopmostRaster:this.returnTopmostRaster})};var s;return t([p.property({type:Boolean,json:{write:!0}})],r.prototype,"returnTopmostRaster",void 0),t([p.property({type:Boolean,json:{write:!0}})],r.prototype,"showNoDataRecords",void 0),r=s=t([p.subclass("esri.popup.LayerOptions")],r)}(p.declared(s.JSONSupport))});

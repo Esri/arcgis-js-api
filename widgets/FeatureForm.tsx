@@ -771,6 +771,8 @@ class FeatureForm extends declared(Widget) {
         </div>
       );
     }
+
+    return undefined;
   }
 
   // tslint:disable-next-line:typedef
@@ -923,7 +925,7 @@ class FeatureForm extends declared(Widget) {
     const edits = this._activeDateEdit[part];
 
     if (!edits) {
-      return;
+      return undefined;
     }
 
     const { value: dateValue } = edits;

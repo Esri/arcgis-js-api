@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({zoom:"تقريب إلى",next:"المعلم التالي",previous:"المعلم السابق",dock:"مرسى",undock:"إلغاء إرساء",pageText:"{index} من {total}",selectedFeature:"المعالم المُحددة",selectedFeatures:"{total} نتيجة",tooManyFields:"تحتوي هذه الطبقة على حقول عديدة جدًا، لن يتم عرض بعضها."});

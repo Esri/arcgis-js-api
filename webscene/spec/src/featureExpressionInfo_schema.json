@@ -1,6 +1,7 @@
 {
   "title": "featureExpressionInfo",
   "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "description": "An object that defines an expression for per-feature elevation.",
   "properties": {
     "expression": {

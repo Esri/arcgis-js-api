@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Medir",hint:"Empiece a medir haciendo clic en el mapa para colocar su primer punto",unsupported:"La medición de áreas 2D solo se admite en MapView.",perimeter:"Perímetro",area:"Área",newMeasurement:"Nueva medición",mode:"Modo",modes:{auto:"Automática",planar:"Planar",geodesic:"Geodésico"},unit:"Unidad",units:{metric:"Sistema métrico",imperial:"Sistema imperial","square-kilometers":"Kilómetros cuadrados","square-meters":"Metros cuadrados","square-miles":"Millas cuadradas","square-inches":"Pulgadas Cuadradas","square-feet":"Pies cuadrados","square-yards":"Yardas cuadradas","square-us-feet":"Pies cuadrados (EE. UU.)",acres:"Acres",ares:"Áreas",hectares:"Hectáreas"}});
+define({title:"Medición de área",hint:"Empiece a medir haciendo clic en el mapa para colocar su primer punto",unsupported:"La medición de áreas 2D solo se admite en MapView.",perimeter:"Perímetro",area:"Área",newMeasurement:"Nueva medición",mode:"Modo",modes:{auto:"Automática",planar:"Planar",geodesic:"Geodésico"},unit:"Unidad",units:{metric:"Sistema métrico",imperial:"Sistema imperial","square-kilometers":"Kilómetros cuadrados","square-meters":"Metros cuadrados","square-miles":"Millas cuadradas","square-inches":"Pulgadas Cuadradas","square-feet":"Pies cuadrados","square-yards":"Yardas cuadradas","square-us-feet":"Pies cuadrados (EE. UU.)",acres:"Acres",ares:"Áreas",hectares:"Hectáreas"}});

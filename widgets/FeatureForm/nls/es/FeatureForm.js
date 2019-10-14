@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({empty:"- vacío -",validationErrors:{cannotBeNull:"Introduce un valor",outsideRange:"El valor debería estar entre {min} y {max}",invalidCodedValue:"El valor debería ser uno de los valores enumerados.",invalidType:"No es un valor válido"}});

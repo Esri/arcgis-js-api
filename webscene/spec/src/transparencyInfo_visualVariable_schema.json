@@ -10,7 +10,18 @@
     },
     "legendOptions": {
       "type": "object",
-      "$ref": "visualVariableLegendOptions_schema.json"
+      "allOf": [
+        {
+          "$ref": "visualVariableLegendOptions_schema.json"
+        },
+        {
+          "properties": {
+            "title": {},
+            "showLegend": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "normalizationField": {
       "type": "string",

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,l){Object.defineProperty(l,"__esModule",{value:!0});var n=function(){function e(){this.sharedResources=null,this.streamDataRequester=null,this.elevationProvider=null,this.renderer=null,this.stage=null,this.layerOrder=null,this.layerOrderDelta=null,this.clippingExtent=null,this.renderSpatialReference=null,this.renderCoordsHelper=null,this.overlaySR=null,this.layer=null,this.layerView=null,this.localOriginFactory=null,this.featureExpressionInfoContext=null,this.screenSizePerspectiveEnabled=!0,this.slicePlaneEnabled=!1,this.isAsync=!1}return e}();l.Graphics3DSymbolCreationContext=n});
+define(["require","exports"],function(e,l){Object.defineProperty(l,"__esModule",{value:!0});var n=function(){function e(){this.sharedResources=null,this.streamDataRequester=null,this.elevationProvider=null,this.renderer=null,this.stage=null,this.layerOrder=null,this.layerOrderDelta=null,this.clippingExtent=null,this.renderSpatialReference=null,this.renderCoordsHelper=null,this.overlaySR=null,this.layer=null,this.layerView=null,this.localOriginFactory=null,this.featureExpressionInfoContext=null,this.screenSizePerspectiveEnabled=!0,this.slicePlaneEnabled=!1,this.physicalBasedRenderingEnabled=!1,this.isAsync=!1}return e}();l.Graphics3DSymbolCreationContext=n});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Izmjeri",hint:"Započnite mjerenje tako da kliknete na scenu za postavljanje prve točke",unsupported:"Izravno mjerenje 3D linijske udaljenosti podržano je samo u pregledniku scene.",distance:"Udaljenost",direct:"Izravno",horizontal:"Vodoravni",vertical:"Uspravno",unit:"Jedinica",newMeasurement:"Novo mjerenje",units:{metric:"Metrički",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stupnjevi"}});
+define({title:"Izravno mjerenje linije",hint:"Započnite mjerenje tako da kliknete na scenu za postavljanje prve točke",unsupported:"Izravno mjerenje 3D linijske udaljenosti podržano je samo u pregledniku scene.",distance:"Udaljenost",direct:"Izravno",horizontal:"Vodoravni",vertical:"Uspravno",unit:"Jedinica",newMeasurement:"Novo mjerenje",units:{metric:"Metrički",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stupnjevi"}});

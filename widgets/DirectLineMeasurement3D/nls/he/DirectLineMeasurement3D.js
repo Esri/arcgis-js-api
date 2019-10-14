@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"מדידה",hint:"התחל במדידה על ידי לחיצה בסצנה כדי להציב את הנקודה הראשונה",unsupported:"מדידת אזור בקו ישר נתמכת רק ב-SceneView.",distance:"מרחק",direct:"ישר",horizontal:"אופקי",vertical:"אנכי",unit:"יחידה",newMeasurement:"מדידה חדשה",units:{metric:"מטרי",imperial:"תקן אמריקאי",kilometers:"קילומטרים",meters:"מטרים",miles:"מייל",inches:"אינצ׳ים",feet:"רגליים",yards:"יארדים","nautical-miles":"מיילים ימיים","us-feet":'רגל (ארה"ב)',"degrees-minutes-seconds":"DMS",degrees:"מעלות"}});
+define({title:"מדידת קו ישר",hint:"התחל במדידה על ידי לחיצה בסצנה כדי להציב את הנקודה הראשונה",unsupported:"מדידת אזור בקו ישר נתמכת רק ב-SceneView.",distance:"מרחק",direct:"ישר",horizontal:"אופקי",vertical:"אנכי",unit:"יחידה",newMeasurement:"מדידה חדשה",units:{metric:"מטרי",imperial:"תקן אמריקאי",kilometers:"קילומטרים",meters:"מטרים",miles:"מייל",inches:"אינצ׳ים",feet:"רגליים",yards:"יארדים","nautical-miles":"מיילים ימיים","us-feet":'רגל (ארה"ב)',"degrees-minutes-seconds":"DMS",degrees:"מעלות"}});

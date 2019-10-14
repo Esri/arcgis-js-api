@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../widgets/support/widget"],function(e,n,t){function i(e){(e=o(e))&&(e.style.display="block")}function o(e){return t.isWidgetBase(e)?e.domNode:e}function d(e){(e=o(e))&&(e.style.display="none")}function r(e){(e=o(e))&&(e.style.display="none"===e.style.display?"block":"none")}function s(e){return"string"==typeof e?document.getElementById(e):e}function l(e){for(;e.hasChildNodes();)e.removeChild(e.firstChild)}function f(e,n){var t=n.parentNode;t&&(t.lastChild===n?t.appendChild(e):t.insertBefore(e,n.nextSibling))}function p(e,n){var t=n.parentNode;t&&t.insertBefore(e,n)}function a(e,n){for(;e.hasChildNodes();)n.appendChild(e.firstChild)}function u(e){e.parentNode&&e.parentNode.removeChild(e)}Object.defineProperty(n,"__esModule",{value:!0}),n.show=i,n.getNode=o,n.hide=d,n.toggle=r,n.byId=s,n.empty=l,n.insertAfter=f,n.insertBefore=p,n.reparent=a,n.remove=u});
+define(["require","exports","../widgets/support/widget"],function(e,t,n){function o(e){(e=r(e))&&(e.style.display="block")}function r(e){return n.isWidgetBase(e)?e.domNode:e}function i(e){(e=r(e))&&(e.style.display="none")}function l(e){(e=r(e))&&(e.style.display="none"===e.style.display?"block":"none")}function d(e){return"string"==typeof e?document.getElementById(e):e}function s(e){for(;e.hasChildNodes();)e.removeChild(e.firstChild)}function u(e,t){var n=t.parentNode;n&&(n.lastChild===t?n.appendChild(e):n.insertBefore(e,t.nextSibling))}function f(e,t){var n=t.parentNode;n&&n.insertBefore(e,t)}function p(e,t){for(;e.hasChildNodes();)t.appendChild(e.firstChild)}function c(e){e.parentNode&&e.parentNode.removeChild(e)}Object.defineProperty(t,"__esModule",{value:!0}),t.show=o,t.getNode=r,t.hide=i,t.toggle=l,t.byId=d,t.empty=s,t.insertAfter=u,t.insertBefore=f,t.reparent=p,t.remove=c,t.closest=function(){if(Element.prototype.closest)return function(e,t){return e.closest(t)};var e=Element.prototype.matches||Element.prototype.msMatchesSelector;return function(t,n){var o=t;do{if(e.call(o,n))return o;o=o.parentElement}while(null!==o&&1===o.nodeType);return null}}()});

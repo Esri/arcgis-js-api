@@ -18,6 +18,40 @@
     user-select: none;
   }
 
+  .esri-disabled {
+    .esri-slider__content,
+    .esri-slider__min,
+    .esri-slider__max {
+      opacity: 0.4;
+    }
+    .esri-slider__thumb {
+      &:hover {
+        transform: none;
+        border-color: $button-color;
+        cursor: default;
+      }
+    }
+    .esri-slider__label {
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    .esri-slider__segment {
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  .esri-slider--reversed.esri-slider--horizontal {
+    flex-direction: row-reverse;
+  }
+
+  .esri-slider--reversed.esri-slider--vertical {
+    flex-direction: column;
+  }
+
   .esri-slider--horizontal {
     flex-direction: row;
 
@@ -158,20 +192,16 @@
     touch-action: none;
     -webkit-user-select: none;
     user-select: none;
-    z-index: 1;
 
     &:focus {
-      z-index: 2;
-    }
-
-    &:hover {
-      z-index: 3;
+      .esri-slider__thumb,
+      .esri-slider__label {
+        outline: inherit;
+      }
     }
   }
 
   .esri-slider__anchor--moving {
-    z-index: 3;
-
     .esri-slider__label {
       &:hover {
         cursor: grabbing;
@@ -207,6 +237,7 @@
     &:hover {
       transform: scale($slider-thumb-hover-scale);
       border-color: $button-color--hover;
+      cursor: pointer; // Fallback for IE11
       cursor: grab;
     }
   }
@@ -215,9 +246,9 @@
     line-height: 22px;
     min-width: 80px;
     position: absolute;
-    touch-action: none;
 
     &:hover {
+      cursor: pointer; // Fallback for IE11
       cursor: grab;
     }
   }
@@ -283,6 +314,23 @@
     .esri-slider__min,
     .esri-slider__tick-label {
       direction: rtl;
+    }
+  }
+}
+
+/*
+  #22969 - Focus outline does not appear as expected in Edge
+  Slider includes thumb/label elements in anchor focus outline when 'handle' is focused
+  Default browser style for focus outline is not included on parent element in Edge
+  This means using 'outline: inherit' on thumb/label elements does nothing
+  ... unless we define an outline on the parent
+*/
+@supports (-ms-ime-align: auto) {
+  .esri-slider {
+    &__anchor {
+      &:focus {
+        outline: 1px dotted black;
+      }
     }
   }
 }

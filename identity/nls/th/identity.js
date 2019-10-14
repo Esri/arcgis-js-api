@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({lblItem:"รายการ",title:"ลงชื่อเข้าใช้",info:"กรุณาเข้าระบบเพื่อเข้าใช้งานบน {server} {resource}",oAuthInfo:"โปรดลงชื่อเข้าใช้ {server}",lblUser:"ชื่อผู้ใช้งาน:",lblPwd:"รหัสผ่าน:",lblOk:"ตกลง",lblSigning:"กำลังลงชื่อเข้าใช้ใน...",lblCancel:"ยกเลิก",errorMsg:"ไม่มี ชื่อ/รหัสผ่านนี้ กรุณาลองอีกครั้ง",invalidUser:"ชื่อผู้ใช้งานหรือรหัสผ่านที่คุณใส่ไม่ถูกต้อง",forbidden:"ชื่อและรหัสผ่านถูกต้อง แต่คุณไม่สามารถเข้าถึงแหล่งข้อมูลนี้ได้",noAuthService:"ไม่สามารถเข้าถึงการยอมรับของบริการ"});

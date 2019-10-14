@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
 define({streets:"شوارع",satellite:"صور",hybrid:"صور ذات تسميات",terrain:"تضاريس مع تسميات",topo:"طبوجرافيا",gray:"لوحات بلون رمادي فاتح","dark-gray":"لوحات بلون رمادي داكن",oceans:"محيطات","national-geographic":"الجغرافيا الوطنية",osm:"OpenStreetMap","streets-night-vector":"خريطة شوارع العالم (الليلية)","streets-relief-vector":"خريطة شوارع العالم (مع التصريف)","streets-navigation-vector":"خريطة التنقل العالمية"});

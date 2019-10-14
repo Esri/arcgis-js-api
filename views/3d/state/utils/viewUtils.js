@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../../support/mathUtils"],function(e,t,r,c,i){function o(e,t,c){e.worldUpAtPosition(t,v),r.vec3.subtract(a,c,t);var o=r.vec3.length(a);return 0===o?0:i.acos(r.vec3.dot(a,v)/o)}Object.defineProperty(t,"__esModule",{value:!0}),t.viewAngle=o;var v=c.vec3f64.create(),a=c.vec3f64.create()});
+define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],function(e,r,t,c,i){function o(e,r,i){e.worldUpAtPosition(r,a),c.vec3.subtract(l,i,r);var o=c.vec3.length(l);return 0===o?0:t.acosClamped(c.vec3.dot(l,a)/o)}Object.defineProperty(r,"__esModule",{value:!0}),r.viewAngle=o;var a=i.vec3f64.create(),l=i.vec3f64.create()});

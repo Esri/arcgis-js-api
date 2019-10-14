@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 
 #include <materials/pathMaterial/commonInputs.glsl>
 
@@ -12,8 +13,5 @@ varying vec3 vpos;
 void main(void) {
   vpos = calculateVPos();
 
-  vec4 eye = view * vec4(vpos, 1.0);
-
-  gl_Position = proj * eye;
-  depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
+  gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);
 }

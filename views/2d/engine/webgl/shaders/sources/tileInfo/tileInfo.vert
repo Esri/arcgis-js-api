@@ -3,7 +3,7 @@ attribute vec2 a_pos;
 uniform highp mat3 u_dvsMat3;
 
 uniform mediump float u_depth;
-uniform mediump float u_coord_ratio;
+uniform mediump vec2 u_coord_ratio;
 uniform mediump vec2 u_delta; // in tile coordinates
 uniform mediump vec2 u_dimensions; // in tile coordinates
 

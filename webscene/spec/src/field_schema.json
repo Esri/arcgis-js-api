@@ -8,6 +8,14 @@
       "type": "string",
       "description": "A string defining the field alias."
     },
+    "defaultValue": {
+      "type": [
+        "null",
+        "number",
+        "string"
+      ],
+      "description": "The default value set for the field."
+    },
     "domain": {
       "type": "object",
       "description": "The domain objects if applicable.",
@@ -16,10 +24,6 @@
     "editable": {
       "type": "boolean",
       "description": "A Boolean defining whether this field is editable."
-    },
-    "exactMatch": {
-      "type": "boolean",
-      "description": "A Boolean defining whether or not the field is an exact match."
     },
     "length": {
       "type": "integer",
@@ -40,9 +44,9 @@
         "esriFieldTypeBlob",
         "esriFieldTypeDate",
         "esriFieldTypeDouble",
+        "esriFieldTypeGUID",
         "esriFieldTypeGeometry",
         "esriFieldTypeGlobalID",
-        "esriFieldTypeGUID",
         "esriFieldTypeInteger",
         "esriFieldTypeLong",
         "esriFieldTypeOID",

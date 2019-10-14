@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Měření",hint:"Začněte měření kliknutím na mapu pro umístění prvního bodu",unsupported:"Měření plochy ve 2D je podporováno pouze v MapView.",perimeter:"Obvod",area:"Plocha",newMeasurement:"Nové měření",mode:"Režim",modes:{auto:"Automatický",planar:"Rovinný",geodesic:"Geodetický"},unit:"Jednotky",units:{metric:"Metrické",imperial:"Imperiální","square-kilometers":"Kilometry čtvereční","square-meters":"Metry čtvereční","square-miles":"Čtvereční míle","square-inches":"Čtvereční palce","square-feet":"Stopy čtvereční","square-yards":"Čtvereční yardy","square-us-feet":"Čtvereční stopy (US)",acres:"akry",ares:"ary",hectares:"hektary"}});
+define({title:"Měření plochy",hint:"Začněte měření kliknutím na mapu pro umístění prvního bodu",unsupported:"Měření plochy ve 2D je podporováno pouze v MapView.",perimeter:"Obvod",area:"Plocha",newMeasurement:"Nové měření",mode:"Režim",modes:{auto:"Automatický",planar:"Rovinný",geodesic:"Geodetický"},unit:"Jednotky",units:{metric:"Metrické",imperial:"Imperiální","square-kilometers":"Kilometry čtvereční","square-meters":"Metry čtvereční","square-miles":"Čtvereční míle","square-inches":"Čtvereční palce","square-feet":"Stopy čtvereční","square-yards":"Čtvereční yardy","square-us-feet":"Čtvereční stopy (US)",acres:"akry",ares:"ary",hectares:"hektary"}});

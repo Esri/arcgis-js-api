@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"測量",hint:"按一下場景來放置第一個點，以開始測量",unsupported:"僅 SceneView 支援 3D 面積測量。",perimeterLength:"周邊",area:"面積",unit:"單位",notApplicable:"無",newMeasurement:"新測量",units:{metric:"公制",imperial:"英制","square-kilometers":"平方公里","square-meters":"平方公尺","square-miles":"平方英里","square-inches":"平方英吋","square-feet":"平方英呎","square-yards":"平方碼","square-us-feet":"平方英呎 (美制)",acres:"英畝",ares:"公畝",hectares:"公頃"}});
+define({title:"面積測量",hint:"按一下場景來放置第一個點，以開始測量",unsupported:"僅 SceneView 支援 3D 面積測量。",perimeterLength:"周邊",area:"面積",unit:"單位",notApplicable:"無",newMeasurement:"新測量",units:{metric:"公制",imperial:"英制","square-kilometers":"平方公里","square-meters":"平方公尺","square-miles":"平方英里","square-inches":"平方英吋","square-feet":"平方英呎","square-yards":"平方碼","square-us-feet":"平方英呎 (美制)",acres:"英畝",ares:"公畝",hectares:"公頃"}});

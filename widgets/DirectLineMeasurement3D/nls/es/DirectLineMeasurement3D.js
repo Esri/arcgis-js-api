@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Medir",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de líneas directas 3D solo admite en SceneView.",distance:"Distancia",direct:"Línea recta",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});
+define({title:"Medición de línea directa",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de líneas directas 3D solo admite en SceneView.",distance:"Distancia",direct:"Línea recta",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});

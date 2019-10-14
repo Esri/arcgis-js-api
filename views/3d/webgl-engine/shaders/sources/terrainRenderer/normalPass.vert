@@ -1,4 +1,5 @@
 #include <util/vsPrecision.glsl>
+#include <util/transform.glsl>
 #include <terrainRenderer/skirts.glsl>
 
 uniform vec3 origin;
@@ -23,6 +24,6 @@ void main(void) {
   vec2 uv = uv0;
   vpos = applySkirts(uv, position, normal.xyz, skirtScale);
 
-  gl_Position = proj * view * vec4(vpos, 1.0);
+  gl_Position = transformPosition(proj, view, vpos);
   vnormal = normalize((viewNormal * normal).xyz);
 }

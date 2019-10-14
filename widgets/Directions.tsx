@@ -27,7 +27,6 @@
  *
  * @module esri/widgets/Directions
  * @since 4.6
- * @beta
  *
  * @see module:esri/widgets/Directions/DirectionsViewModel
  * @see [Directions.tsx]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Directions.tsx)
@@ -47,7 +46,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Directions/nls/Directions";
 
 // esri
 import Graphic = require("esri/Graphic");
-import { substitute, formatDate, formatNumber } from "esri/intl";
+import { formatDate, formatNumber, substitute } from "esri/intl";
 import moment = require("esri/moment");
 
 // esri.core
@@ -55,10 +54,13 @@ import Collection = require("esri/core/Collection");
 import { on, pausable } from "esri/core/events";
 import Handles = require("esri/core/Handles");
 import { PausableHandle } from "esri/core/interfaces";
-import { init, watch, on as watchOn, when, whenOnce } from "esri/core/watchUtils";
+import { init, on as watchOn, watch, when, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.libs.sortablejs
+import Sortable = require("esri/libs/sortablejs/Sortable");
 
 // esri.symbols
 import Symbol = require("esri/symbols/Symbol");
@@ -95,7 +97,8 @@ import RouteSections = require("esri/widgets/Directions/support/RouteSections");
 import TimePicker = require("esri/widgets/Directions/support/TimePicker");
 
 // esri.widgets.support
-import { GoToOverride, VNode } from "esri/widgets/support/interfaces";
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
@@ -130,13 +133,10 @@ const CSS = {
   stopInput: "esri-directions__stop-input",
   stopOptions: "esri-directions__stop-options",
   stopUnderline: "esri-directions__stop-underline",
-  underlineDragInProcess: "esri-directions__stop-underline--drag-in-process",
   stopHandleIcon: "esri-directions__stop-handle-icon",
   verticalSplitter: "esri-directions__vertical-splitter",
   stopRow: "esri-directions__stop-row",
   stopRowGhost: "esri-directions__stop-row-ghost",
-  stopRowDragged: "esri-directions__stop-row--dragged",
-  stopRowDropTarget: "esri-directions__stop-row--target",
   validStopRow: "esri-directions__stop-row--valid",
   stops: "esri-directions__stops",
   addStop: "esri-directions__add-stop",
@@ -192,7 +192,6 @@ const CSS = {
   emptyContent: "esri-widget__content--empty",
   emptyIllustration: "esri-widget__content-illustration--empty",
   heading: "esri-widget__heading",
-  offscreen: "esri-offscreen",
   select: "esri-select",
   screenReaderText: "esri-icon-font-fallback-text"
 };
@@ -314,8 +313,11 @@ class Directions extends declared(Widget) {
   destroy(): void {
     this._datePicker.destroy();
     this._timePicker.destroy();
-
     this._stopsToSearches.forEach((search) => search.destroy());
+
+    if (this._sortable) {
+      this._sortable.destroy();
+    }
   }
 
   //--------------------------------------------------------------------------
@@ -338,21 +340,17 @@ class Directions extends declared(Widget) {
 
   private _datePicker: DatePicker = new DatePicker();
 
-  private _draggedStopIndex: number;
-
-  private _dropTargetStopIndex: number;
-
   private _focusedManeuver: Maneuver;
 
   private _handles = new Handles<any>();
-
-  private _ghost: HTMLElement;
 
   private _newPlaceholderStop: PlaceholderStop = null;
 
   private _previousCursor: Cursor;
 
   private _routeSections: RouteSections = new RouteSections();
+
+  private _sortable: Sortable;
 
   private _stops: Collection<PlaceholderStop> = new Collection(getDefaultStops());
 
@@ -786,13 +784,7 @@ class Directions extends declared(Widget) {
       };
 
       const rowClasses = {
-        [CSS.stopRowDragged]: this._draggedStopIndex === i,
-        [CSS.stopRowDropTarget]: this._dropTargetStopIndex === i,
         [CSS.validStopRow]: !newRow
-      };
-
-      const underlineClasses = {
-        [CSS.underlineDragInProcess]: !isNaN(this._draggedStopIndex)
       };
 
       const lastStop = stops.getItemAt(numStops - 1);
@@ -807,7 +799,6 @@ class Directions extends declared(Widget) {
         (numStops > 2 && nextIsLast && nextStopIsValid) ||
         (numStops > 2 && isLast && !stop.result);
       const shouldHideClearIcon = numStops === 2 || (numStops === 3 && !lastStopIsValid) || newRow;
-      const draggable = !newRow;
 
       const search = this._acquireSearch(stop);
 
@@ -833,12 +824,8 @@ class Directions extends declared(Widget) {
           id={stopListItemId}
           key={i}
           data-stop-index={i}
-          ondragend={this._handleStopFieldDragEnd}
-          ondragover={this._handleStopFieldDragOver}
-          ondragstart={this._handleStopFieldDragStart}
-          ondrop={this._handleStopFieldDrop}
         >
-          <div class={CSS.stopHandle} draggable={draggable}>
+          <div class={CSS.stopHandle}>
             <span
               aria-hidden="true"
               class={this.classes(
@@ -867,7 +854,7 @@ class Directions extends declared(Widget) {
           </div>
           <div class={CSS.stopInput}>
             {search.render()}
-            <div class={this.classes(CSS.stopUnderline, underlineClasses)} />
+            <div class={CSS.stopUnderline} />
           </div>
           <div class={CSS.stopOptions} role="group">
             <div
@@ -944,13 +931,22 @@ class Directions extends declared(Widget) {
 
     return (
       <div>
-        <ol class={CSS.stops} role="group">
+        <ol class={CSS.stops} role="group" afterCreate={this._setUpDragAndDropStops}>
           {rows}
         </ol>
         {addStop}
       </div>
     );
   }
+
+  private _setUpDragAndDropStops = (node: HTMLElement): void => {
+    this._sortable = Sortable.create(node, {
+      draggable: `.${CSS.validStopRow}`,
+      ghostClass: CSS.stopRowGhost,
+      handle: `.${CSS.stopHandle}`,
+      onEnd: this._handleStopInputDragEnd
+    });
+  };
 
   @accessibleHandler()
   private _handleStopIconClick(event: Event): void {
@@ -1148,75 +1144,27 @@ class Directions extends declared(Widget) {
     this._stops.remove(stop);
   }
 
-  private _getStopFieldGhost(): HTMLElement {
-    let ghost = this._ghost;
-
-    if (!ghost) {
-      ghost = document.createElement("div");
-      ghost.classList.add(CSS.stopRowGhost, CSS.offscreen);
-      this._ghost = ghost;
-    }
-
-    return ghost;
-  }
-
-  private _handleStopFieldDragStart(event: DragEvent): void {
-    const { currentTarget, dataTransfer } = event;
-
-    const element = currentTarget as HTMLElement;
-    const index = Number(element["data-stop-index"]);
-    this._draggedStopIndex = index;
-
-    const ghost = this._getStopFieldGhost();
-    const search = this._acquireSearch(this._stops.getItemAt(index));
-
-    ghost.innerHTML = search.searchTerm || search.activeSource.placeholder;
-    document.body.appendChild(ghost);
-
-    const { height } = ghost.getBoundingClientRect();
-
-    dataTransfer.effectAllowed = "move";
-    dataTransfer.setDragImage(ghost, 20, height / 2);
-    dataTransfer.setData("text/plain", element["data-stop-index"]);
-  }
-
-  private _handleStopFieldDragEnd(): void {
-    this._draggedStopIndex = null;
-    this._dropTargetStopIndex = null;
-    document.body.removeChild(this._getStopFieldGhost());
-  }
-
-  private _handleStopFieldDragOver(event: DragEvent): void {
-    const element = event.currentTarget as HTMLElement;
-    const stopIndex = Number(element["data-stop-index"]);
-
-    event.preventDefault(); // needed to allow drop
-
-    if (this._draggedStopIndex === stopIndex) {
-      this._dropTargetStopIndex = null;
+  private _handleStopInputDragEnd = ({
+    oldIndex,
+    newIndex,
+    target: list
+  }: Sortable.SortableEvent): void => {
+    if (oldIndex === newIndex) {
       return;
     }
 
-    this._dropTargetStopIndex = stopIndex;
-  }
-
-  private _handleStopFieldDrop(event: DragEvent): void {
-    event.stopPropagation();
-    event.preventDefault();
-
-    const element = event.currentTarget as HTMLElement;
-    const targetIndex = Number(element["data-stop-index"]);
-
-    const sourceIndex = Number(event.dataTransfer.getData("text/plain"));
-
-    if (sourceIndex === targetIndex) {
-      return;
-    }
+    // revert DOM changes -> VDOM will handle this for us
+    const { children } = list;
+    const itemA = children[newIndex];
+    const itemB = children[oldIndex];
+    const movedUp = newIndex - oldIndex < 0;
+    list.insertBefore(itemA, movedUp ? itemB.nextElementSibling : itemB);
 
     const stops = this._stops;
-    stops.reorder(stops.getItemAt(sourceIndex), targetIndex);
+
+    stops.reorder(stops.getItemAt(oldIndex), newIndex);
     this._processStops();
-  }
+  };
 
   private _handleDepartureOptionChange(): void {
     const select = event.currentTarget as HTMLSelectElement;
@@ -1270,7 +1218,9 @@ class Directions extends declared(Widget) {
   private _renderDisclaimer(): VNode {
     const link = `<a class="${
       CSS.anchor
-    }" href="http://www.esri.com/legal/software-license" target="_blank">${i18n.esriTerms}</a>`;
+    }" href="http://www.esri.com/legal/software-license" rel="noreferrer" target="_blank">${
+      i18n.esriTerms
+    }</a>`;
     const disclaimer = substitute(i18n.disclaimer, { esriTerms: link });
 
     return <div class={CSS.disclaimer} innerHTML={disclaimer} key="esri-directions__disclaimer" />;

@@ -16,10 +16,12 @@ float getZ(in float minZoom, in float maxZoom, in float angle) {
   float diffAngle = min(360.0 - abs(mapAngle - glyphAngle), abs(mapAngle - glyphAngle));
   float z = 0.0;
 
-  // make sure range is inclusive
-  z += 2.0 * (1.0 - step(minZoom, u_zoomLevel));
+  // MG: Gotcha! u_mapAligned indicates a line label whose glyphs have a hardcoded minZoom value.
+  // We only clip in the case of lines labels as we otherwise fade
+  z += u_mapAligned * (2.0 * (1.0 - step(minZoom, u_zoomLevel))); 
+  z += u_mapAligned * 2.0 * step(90.0, diffAngle);
+
   z += 2.0 * (1.0 - step(u_zoomLevel, maxZoom));
-  z += 2.0 * u_mapAligned * step(90.0, diffAngle);
   return z;
 }
 
@@ -47,12 +49,10 @@ void main()
   float fontScale    = fontSize / SDF_FONT_SIZE;
   float halfSize     = getSize(a_refSymbolSize) / 2.0;
 
-  v_color = a_color;
-  v_tex   = a_texAndSize.xy / u_mosaicSize;
+  v_color     = a_color;
+  v_tex       = a_texAndSize.xy / u_mosaicSize;
+  v_animation = pow(getAnimationState(), vec4(2.0)); 
 
-#ifdef ID
-  v_fadeStep = u_fadeStep;
-#endif
   // if halo.x is zero (not a halo) v_edgeDistanceOffset will end up being zero as well.
   v_edgeDistanceOffset = isHalo * OUTLINE_SCALE * a_texAndSize.w / fontScale / MAX_SDF_DISTANCE;
   v_antialiasingWidth  = 0.106 * SDF_FONT_SIZE / fontSize / u_pixelRatio;

@@ -32,7 +32,7 @@ Find a bug or want to request a new feature?  Please refer to [support.esri.com]
 For assistance, please refer to [support.esri.com](http://support.esri.com/).
 
 ## Licensing
-COPYRIGHT © 2018 Esri
+COPYRIGHT © 2019 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.

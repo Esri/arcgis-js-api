@@ -293,6 +293,46 @@
       .esri-histogram__label {
         stroke: $interactive-font-color;
       }
+
+      .zoom-cap--max {
+        position: absolute;
+        top: 0;
+      }
+
+      .zoom-cap--min {
+        position: absolute;
+        bottom: 0;
+      }
+
+      .zoom-cap {
+        height: 11px;
+        width: $smartmapping-slider__ramp-width;
+        stroke-width: 0;
+
+        .zoom-cap--mask {
+          fill: #fff;
+        }
+        .zoom-cap--line {
+          fill: #fff;
+        }
+        .zoom-cap--underline {
+          fill: #323232;
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .zoom-cap--mask {
+            fill: #fff;
+          }
+          .zoom-cap--line {
+            fill: #0079c1;
+          }
+          .zoom-cap--underline {
+            fill: #fff;
+          }
+        }
+      }
     }
   }
 
@@ -300,12 +340,15 @@
     display: inline-block;
     height: 100%;
     width: $smartmapping-slider__ramp-width;
+    position: relative;
 
     svg {
       height: 100%;
       width: 100%;
+      position: absolute;
       stroke: $smartmapping-slider__ramp-stroke-color;
       stroke-width: $smartmapping-slider__ramp-stroke-width;
+      left: 0;
 
       rect {
         height: 100%;

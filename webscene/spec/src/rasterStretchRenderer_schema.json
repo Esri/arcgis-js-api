@@ -62,12 +62,12 @@
       "type": "string",
       "description": "The stretch types for stretch raster function.",
       "enum": [
-        "none",
-        "standardDeviation",
         "histogramEqualization",
         "minMax",
+        "none",
         "percentClip",
-        "sigmoid"
+        "sigmoid",
+        "standardDeviation"
       ]
     },
     "type": {

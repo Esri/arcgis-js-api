@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define({title:"Mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista suoran viivan mittausta tuetaan vain SceneView-sovelluksessa.",distance:"Etäisyys",direct:"Suora",horizontal:"Vaaka",vertical:"Pysty",unit:"Yksikkö",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});
+define({title:"Suora viivan mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista suoran viivan mittausta tuetaan vain SceneView-sovelluksessa.",distance:"Etäisyys",direct:"Suora",horizontal:"Vaaka",vertical:"Pysty",unit:"Yksikkö",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});

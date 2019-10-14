@@ -28,7 +28,7 @@
     },
     "extent": {
       "type": "array",
-      "description": "The rectangular map extent that should be requested from the service.",
+      "description": "The minimum bounding rectangle, in decimal degrees, of the area covered by the layer as specified in the capabilities.",
       "items": {
         "type": "array",
         "items": {
@@ -50,7 +50,14 @@
     },
     "format": {
       "type": "string",
-      "description": "A string containing the image format to be requested from a WMS service.",
+      "description": "A string containing the image format to be requested from a WMS service. Default is `png`.",
+      "enum": [
+        "bmp",
+        "gif",
+        "jpg",
+        "png",
+        "svg"
+      ],
       "default": "png"
     },
     "id": {
@@ -86,9 +93,9 @@
       "type": "string",
       "description": "To show or hide the sublayer in the layer list. If the layer has sublayers, selecting `hide-children` will hide them in the layer list.",
       "enum": [
-        "show",
         "hide",
-        "hide-children"
+        "hide-children",
+        "show"
       ]
     },
     "mapUrl": {
@@ -123,8 +130,7 @@
     },
     "refreshInterval": {
       "type": "number",
-      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
-      "default": 0
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
     },
     "showLegend": {
       "type": "boolean",

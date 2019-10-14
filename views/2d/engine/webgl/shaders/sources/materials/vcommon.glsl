@@ -20,13 +20,13 @@ uniform mediump float u_antialiasing;
 // depending on whether target device supports OES_TEXTURE_FLOAT)
 vec4 VV_ADATA = vec4(0.0);
 
-void loadVisualVariableData(inout vec4 target, int index) {
+void loadVisualVariableData(inout vec4 target) {
 
 #ifdef OES_TEXTURE_FLOAT
-  target.rgba = getAttributeData1(a_id);
+  target.rgba = getAttributeData2(a_id);
 #else
-  vec4 data0 = getAttributeData1(a_id);
-  vec4 data1 = getAttributeData2(a_id);
+  vec4 data0 = getAttributeData2(a_id);
+  vec4 data1 = getAttributeData3(a_id);
 
   target.r = u88VVToFloat(data0.rg * 255.0); 
   target.g = u88VVToFloat(data0.ba * 255.0); 
@@ -36,7 +36,7 @@ void loadVisualVariableData(inout vec4 target, int index) {
 }
 
 #ifdef VV
-  #define INIT loadVisualVariableData(VV_ADATA, ATTR_DATA_VV)
+  #define INIT loadVisualVariableData(VV_ADATA)
 #else
   #define INIT
 #endif 
@@ -78,7 +78,22 @@ mat3 getRotation() {
 }
 
 float getFilterFlags() {
-  return getAttributeData0(a_id).x * 255.0;
+
+#ifdef IGNORES_SAMPLER_PRECISION
+  // MG: Texture values on some devices (see Intel HD 3000) seem to always be
+  // low precision regardless of qualifiers. This appears to be a driver bug
+  // as the OpenGL ES spec requires that sampler precision drive the precision
+  // of texture2D <https://www.khronos.org/files/opengles_shading_language.pdf>.
+  // To prevent "hard" failures (e.g. visibility) we take the ceil of the result.
+  // This is needed because we treat the filterFlags as bit flags
+  return ceil(getAttributeData0(a_id).x * 255.0); 
+#else
+  return getAttributeData0(a_id).x * 255.0; 
+#endif
+}
+
+vec4 getAnimationState() {
+  return getAttributeData1(a_id);
 }
 
 float getMinZoom() {

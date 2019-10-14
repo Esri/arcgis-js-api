@@ -1,4 +1,4 @@
-// COPYRIGHT © 2018 Esri
+// COPYRIGHT © 2019 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.12/esri/copyright.txt for details.
+// See http://js.arcgis.com/next/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/extendsHelper","../../../../../../core/Logger","../../../../../../core/promiseUtils","../../../../../../symbols/cim/cimAnalyzer","./WGLMeshTemplate"],function(e,r,t,a,l,m,i){Object.defineProperty(r,"__esModule",{value:!0});var u=a.getLogger("esri.views.2d.engine.webgl.WGLDynamicMeshTemplate"),n=function(a){function e(e){var r=a.call(this)||this;return r._materialCache=new Map,r._dynamicPropertyMap=new Map,r._cimLayer=e,r}return t(e,a),e.prototype.analyze=function(e,r,a,t){var i=this._materialCache,n=this._cimLayer.materialHash;if(!n)return u.error("A Dynamic mesh template must have a material hash function!"),l.reject(null);var s=n(r,a,t);if(i.has(s)){var c=i.get(s);return l.resolve(c)}var o=m.analyzeCIMResource(r,this._cimLayer.cim,this._cimLayer.materialOverrides);return o.mosaicHash=s,e.getCIMMosaicItem(o).then(function(e){return i.set(s,e),e})},e}(i.default);r.default=n});
+define(["require","exports","../../../../../../core/tsSupport/extendsHelper","../../../../../../core/Logger","../../../../../../core/promiseUtils","../../../../../../symbols/cim/cimAnalyzer","./WGLMeshTemplate"],function(e,a,r,t,m,h,i){Object.defineProperty(a,"__esModule",{value:!0});var g=t.getLogger("esri.views.2d.engine.webgl.WGLDynamicMeshTemplate"),n=function(t){function e(e){var a=t.call(this)||this;return a._ongoingMaterialRequestMap=new Map,a._materialCache=new Map,a._dynamicPropertyMap=new Map,a._cimLayer=e,a}return r(e,t),e.prototype.analyze=function(e,a,t,r){var i=this,n=this._materialCache,s=this._cimLayer.materialHash;if(!s)return g.error("A Dynamic mesh template must have a material hash function!"),m.reject(null);var o=s(a,t,r);if(n.has(o)){var l=n.get(o);return m.resolve(l)}if(this._ongoingMaterialRequestMap.has(o))return this._ongoingMaterialRequestMap.get(o);var u=h.analyzeCIMResource(a,this._cimLayer.cim,this._cimLayer.materialOverrides);u.mosaicHash=o;var c=e.getCIMMosaicItem(u).then(function(e){return i._ongoingMaterialRequestMap.delete(o),n.set(o,e),e}).catch(function(e){return i._ongoingMaterialRequestMap.delete(o),g.error(".analyze()",e.message),null});return this._ongoingMaterialRequestMap.set(o,c),c},e}(i.default);a.default=n});

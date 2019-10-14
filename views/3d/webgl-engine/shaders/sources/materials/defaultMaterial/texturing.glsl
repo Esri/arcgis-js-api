@@ -33,8 +33,8 @@ vec4 textureAtlasLookup(sampler2D tex, vec2 uv, vec4 region, vec2 texSize) {
 }
 
 vec4 textureLookup(sampler2D tex, vec2 uv) {
-#ifdef TEXTURE_ATLAS
-  return textureAtlasLookup(tex, uv, regionV, texSize);
+#if defined(TEXTURE_ATLAS)
+  return textureAtlasLookup(tex, uv, regionV, atlasSize);
 #else
   return texture2D(tex, uv);
 #endif
@@ -46,6 +46,7 @@ vec4 textureLookup(sampler2D tex, vec2 uv) {
  * - adjusts read texture alpha if necessary
  */
 void discardOrAdjustTextureAlpha(inout vec4 texColor) {
+  #if defined(TEXTURE_COLOR)
   // if the texture alpha mode is set to "mask"
   // the resulting alpha is either 0.0 (discard) or 1.0
   #if defined(TEXTURE_ALPHA_MODE_MASK)
@@ -67,6 +68,7 @@ void discardOrAdjustTextureAlpha(inout vec4 texColor) {
   // for "blend" we don't need to do anyting
   #else // defined(TEXTURE_ALPHA_MODE_BLEND)
 
+  #endif
   #endif
 }
 
