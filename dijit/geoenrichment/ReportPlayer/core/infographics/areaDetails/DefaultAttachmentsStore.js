@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/when","../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoPreviewAttributeUtil","dojo/i18n!esri/nls/jsapi"],function(e,t,i){function r(){return a||(a={getAttributes:function(){return[{alias:"Building Area (sq. feet)",value:1e3,type:"esriFieldTypeDouble"},{alias:"Frontage (feet)",value:100,type:"esriFieldTypeDouble"},{alias:"Parking",value:30,type:"esriFieldTypeInteger"},{alias:"Site Area (sq. feet)",value:500.5,type:"esriFieldTypeDouble"},{alias:"Number of Employees",value:300,type:"esriFieldTypeInteger"},{alias:"Address",value:"123 Main Street, City, State 55555",type:"esriFieldTypeString"}]},getNotes:function(){return[{text:i.noteSample},{text:i.noteSample}]}})}function n(r){return{getAttributes:function(){var i;return i="function"==typeof r?r():r,e(i,function(e){return e?e.map(function(e){return{alias:e.alias,value:t.getAttributePreviewValue(e),type:e.type}}):[]})},getNotes:function(){return[{text:i.noteSample},{text:i.noteSample}]}}}i=i.geoenrichment.dijit.ReportPlayer.AreaDetailsInfographic;var a;return{getDefaultAttachmentsStore:r,createStoreFromAttributes:n}});

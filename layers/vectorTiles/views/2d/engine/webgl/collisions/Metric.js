@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["require","exports","./BoundingBox"],function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t,i,n,r){void 0===n&&(n=255),void 0===r&&(r=0),this.bounds=e,this.range=t,this.index=i,this.minZoom=n,this.maxZoom=r}return e.prototype.serialize=function(e){return this.bounds.serialize(e),e.writeInt32(this.range.from),e.writeInt32(this.range.count),e.writeInt32(this.index),e},e.deserialize=function(t){return new e(i.default.deserialize(t),{from:t.readInt32(),count:t.readInt32()},t.readInt32())},e}();t.default=n});

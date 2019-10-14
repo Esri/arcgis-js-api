@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,n,r,s){var a=e(null,{declaredClass:"esri.layers.TimeReference",constructor:function(e){e&&n.mixin(this,e)}});return r("extend-esri")&&n.setObject("layers.TimeReference",a,s),a});

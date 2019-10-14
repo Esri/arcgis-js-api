@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"追加先のレイヤーを選択",inputWarningLabel:"警告: 追加するレイヤーは変更されます。",inputHostedLayerWarning:"選択したレイヤーがホスト フィーチャ レイヤーではありませんでした。 追加先のホスト フィーチャ レイヤーを選択してください。",appendLayerLabel:"追加するレイヤーを選択",filterLabel:"すべてのフィーチャを追加するかサブセットを定義 (オプション)",fieldMappingLabel:"フィールドの追加方法を選択 (オプション)",inputField:"入力フィールド",appendValue:"値の追加",expression:"条件式"});

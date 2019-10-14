@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/aspect","esri/dijit/geoenrichment/when","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/ElementUsageTypes","dojo/i18n!esri/nls/jsapi"],function(e,t,n,r,i){i=i.geoenrichment.dijit.ReportPlayer.SectionDynamicSettingsBuilder;var l={};return l.provideTableSettings=function(i){if(!i.isMultiDataSection()||i.elementUsageType!==r.PAGE_PANEL_SECTION)return null;var l=i.getTables()[0];return n(l.getFilterRanges(),function(n){if(!n||!n.length)return null;var r;if(l.presetFilter){r=e.mixin({},l.presetFilter);var i=n.filter(function(e){return e.columnIndex===l.presetFilter.columnIndex})[0];i?r.fieldName=i.fieldName:r=null}var o={filter:{filter:r,filterRanges:n,getNumElementsTotal:function(){return l.getNumElementsTotal()},getNumElementsShown:function(){return l.getNumElementsShown()},onContentUpdated:function(){}}};return t.after(l,"onRendered",function(){o.filter.onContentUpdated()}),o})},l});

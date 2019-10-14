@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({modifiedTitle:"Genelleştirilmiş Doğrusal Regresyon - ${goal}",fit:"Uydur",fitAndPredict:"Uydur ve Tahmin Et",selectGoal:"Ne yapmak istiyorsunuz?",fitGoal:"Model performansını değerlendirmek için bir model uydur",fitAndPredictGoal:"Bir model uydur ve değerleri tahmin et",inputLayerLabel:"Bir model oluşturmak için bir katman seç",chooseDependentField:"Model oluşturulacak alanı seçin",chooseDataType:"Modellediğiniz veri türünü seçin",continuousData:"Sürekli",binaryData:"İkili",countData:"Sayım",chooseExplanatoryField:"Açıklayıcı alanları seçin",chooseFeaturesToPredict:"Değerleri tahmin edilecek katmanı seçin",chooseExplainMatch:"Açıklayıcı alanların nasıl eşleştirildiğini seçin",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Genelleştirilmiş Doğrusal Regresyon ${goal} çözümlerinden oluşturulan detay katmanı.",itemTags:"Analiz Sonucu, Genelleştirilmiş Doğrusal Regresyon, ${inputLayerName}, ${goal}",itemSnippet:"Genelleştirilmiş Doğrusal Regresyondan (${goal}) oluşturulan detay katmanı"});

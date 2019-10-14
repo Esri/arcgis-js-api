@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกแรสเตอร์หรือชั้นข้อมูลที่ตั้งของฟีเจอร์เพื่อคำนวณระยะทางไปยัง",inputRaster:"เลือกแรสเตอร์หรือชั้นข้อมูลฟีเจอร์ที่จะใช้แสดงอุปสรรค (ตัวเลือก)",maxDistanceLabel:"ระยะทางสูงสุดในการคำนวณ (ไม่บังคับ)",outputCellSize:"ขนาดเซลล์ผลลัพธ์ (ตัวเลือก)",distanceMethod:"วิธีการระยะทาง",resultDistLayerName:"ชื่อชั้นข้อมูลระยะทางของผลลัพธ์",resultDirectionLayerName:"ชื่อชั้นข้อมูลระยะทางของผลลัพธ์ (ไม่บังคับ)",resultAllocationLayerName:"ชื่อชั้นข้อมูลการจัดสรรผลลัพธ์ (ไม่บังคับ)",outputBackDirectionName:"ชื่อชั้นข้อมูลทิศทางย้อนกลับของผลลัพธ์ (ตัวเลือก)",outputLayerName:"ระยะทางที่คำนวณของ ${layername}",allocationFieldLabel:"เลือกฟิลด์การจัดสรร (ไม่บังคับ)",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้คำนวณระยะทางใน {layerName} ",itemTags:"ผลการวิเคราะห์, คำนวณระยะทาง, ${layername} ${fieldname}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากคำนวณระยะทาง",planar:"กราฟเชิงระนาบ",geodesic:"เรขาคณิตของผิวหน้าโค้ง",selectDistance:"-- เลือก --"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./LayerSource"],function(e,a,r,o,s,n){var d=e(n,{declaredClass:"esri.layers.LayerMapSource",type:"mapLayer",toJson:function(){var e={type:"mapLayer",mapLayerId:this.mapLayerId,gdbVersion:this.gdbVersion};return s.fixJson(e)}});return r("extend-esri")&&a.setObject("layers.LayerMapSource",d,o),d});

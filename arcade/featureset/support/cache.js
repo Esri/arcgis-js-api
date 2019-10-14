@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,e){"use strict";return function(){function t(){this._databaseTypeMetaData={},this._layerInfo={}}return t.prototype.clearDatabaseType=function(t){void 0===this._databaseTypeMetaData[t]&&delete this._databaseTypeMetaData[t]},t.prototype.getDatabaseType=function(t){return"MUSTBESET"===t?null:void 0===this._databaseTypeMetaData[t]?null:this._databaseTypeMetaData[t]},t.prototype.setDatabaseType=function(t,e){this._databaseTypeMetaData[t]=e},t.prototype.getLayerInfo=function(t){return void 0===this._layerInfo[t]?null:this._layerInfo[t]},t.prototype.setLayerInfo=function(t,e){this._layerInfo[t]=e},t.prototype.clearLayerInfo=function(t){void 0!==this._layerInfo[t]&&delete this._layerInfo[t]},t.applicationCache=null,t}()});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/Deferred","require"],function(e,r){var i,t={},n={};return t.initialize=function(){return i?i.promise:(i=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","./FilterParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],function(e,r,t,o,s,a,c){n.document=e,n.chart=r,n.infographic=t,n.section=o,n.field=s,n.filter=a,c.init().then(i.resolve)}),i.promise)},t.getParser=function(e){return n[e]},t});

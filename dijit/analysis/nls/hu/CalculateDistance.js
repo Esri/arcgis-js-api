@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Válasszon raszteres vagy vektoros helyréteget a következőtől való távolság kiszámításához:",inputRaster:"Válassza ki az akadályokat jelképező raszteres vagy vektoros réteget (nem kötelező)",maxDistanceLabel:"Kiszámítandó maximális távolság (opcionális)",outputCellSize:"Kimeneti cella méret (opcionális)",distanceMethod:"Távolság módszer",resultDistLayerName:"Eredményül kapott távolságréteg neve",resultDirectionLayerName:"Eredményül kapott irányréteg neve (opcionális)",resultAllocationLayerName:"Eredményül kapott allokációréteg neve (opcionális)",outputBackDirectionName:"Eredményül visszakapott irányréteg neve (opcionális)",outputLayerName:"${layername} kiszámított távolsága",allocationFieldLabel:"Allokációs mező kiválasztása (opcionális)",itemDescription:"A Távolság kiszámítása függvény ${layerName} rétegen végrehajtott futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Távolság kiszámítása, ${layername}, ${fieldname}",itemSnippet:"A Távolság kiszámítása alapján létrehozott vektoros réteg.",planar:"Síkbeli",geodesic:"Geodéziai",selectDistance:"-- válasszon --"});

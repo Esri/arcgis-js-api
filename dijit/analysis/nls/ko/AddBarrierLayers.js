@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({addBarriers:"경계 레이어 선택",pointBarrier:"포인트 경계",lineBarrier:"라인 경계",polygonBarrier:"폴리곤 경계",choosePointBarrier:"포인트 경계 레이어 선택",chooseLineBarrier:"라인 경계 레이어 선택",choosePolygonBarrier:"폴리곤 경계 레이어 선택",selectPointBarrier:"포인트 경계 선택",selectLineBarrier:"라인 경계 선택",selectPolygonBarrier:"폴리곤 경계 선택"});

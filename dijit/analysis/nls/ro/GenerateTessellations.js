@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseShape:"Alegeți forma",defineExtent:"Definirea extinderii",defineBin:"Definiți dimensiunea containerelor specificând",area:"Suprafață",distance:"Distanță",resultLayerName:"Nume strat tematic rezultat",hexagon:"Hexagon",transverseHexagon:"Hexagon transversal",square:"Pătrat",triangle:"Triunghi",diamond:"Diamant",sameAsDisplay:"Afişare identice",emptyBinSize:"Dimensiunea containerelor nu poate rămâne necompletată",currentExtent:"extindere curentă",intersectExtent:"Păstrați numai teselări intersectate",outputLayerName:"Generați teselări pe ${extentLayerName}",itemDescription:"A fost folosită extinderea de la ${extentLayerName}.",itemTags:"Rezultat analiză, Generare teselări, ${extentLayerName}",itemSnippet:"Strat tematic de obiecte spaţiale generat de Generare teselări."});

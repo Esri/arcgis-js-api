@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","dojo/dom-style","dojox/gfx","dojox/gfx/matrix","esri/dijit/geoenrichment/utils/DomUtil"],function(e,t,o,r,a){var i={};return i.setCircularMask=function(i,d,s,c){function _(){d&&d.__maskNode&&(e.destroy(d.__maskNode),delete d.__maskNode)}if(c=c||0,i&&d){var n=function(){var e=t.get(d,"width"),o=t.get(d,"height");return{w:e,h:o,l:t.get(d,"left"),t:t.get(d,"top"),cr:Math.min(e,o)/2,cx:e/2,cy:o/2}}(),m=function(e){return[e.w,e.h,e.l,e.t,s,c].join("_")}(n);(!d.__maskNode||d.__maskNode.__renderKey!==m)&&(_(),d.__maskNode=e.create("div"),t.set(d.__maskNode,{position:"absolute",left:n.l+"px",top:n.t+"px"}),function(e){var t=o.createSurface(d.__maskNode,e.w,e.h),a=t.createImage({x:0,y:0,width:e.w,height:e.h,src:s});a.setClip({cx:e.cx,cy:e.cy,rx:e.cr,ry:e.cr}).applyTransform(r.rotategAt(c,e.cx,e.cy)),a.rawNode.setAttribute("preserveAspectRatio","xMidYMid meet")}(n),d.__maskNode.__renderKey=m),e.place(d.__maskNode,d,"after"),a.hide(d)}else _(),a.show(d);return d&&d.__maskNode},i});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseShape:"Вибрати форму",defineExtent:"Визначити екстент",defineBin:"Визначити розмір біну, вказавши",area:"Площа",distance:"Відстань",resultLayerName:"Назва результуючого шару",hexagon:"Шестикутник",transverseHexagon:"Січний шестикутник",square:"Квадрат",triangle:"Трикутник",diamond:"Ромб",sameAsDisplay:"Так само як відображається",emptyBinSize:"Розмір біну не може бути пустим",currentExtent:"поточний екстент",intersectExtent:"Зберігати тільки перетинаючі мозаїки",outputLayerName:"Згенерувати мозаїки на ${extentLayerName}",itemDescription:"Використано екстент з ${extentLayerName}.",itemTags:"Результат аналізу, Згенерувати мозаїки, ${extentLayerName}",itemSnippet:"Векторний шар, згенерований зі «Згенерувати мозаїки»."});

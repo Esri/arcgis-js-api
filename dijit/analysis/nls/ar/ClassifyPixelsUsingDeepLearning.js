@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({toolDefine:"تصنيف وحدات البكسل باستخدام التعلم الشامل",outputLayerName:"${layername}_classified",modelLabel:"اختيار نموذج التعلم الشامل المستخدم لتصنيف البكسل",modelArgsLabel:"تحديد وسيطات نموذج التعلم الشامل",nameLabel:"الاسم",valueLabel:"قيمة",queryModelArgsMsg:"جار الاستعلام عن وسيطات النموذج...",analysisLayerLabel:"اختيار صورة مستخدمة لتصنيف البكسل",itemDescription:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل",itemTags:"نتيجة تحليل البيانات النقطية، تصنيف البكسل باستخدام التعلم الشامل، ${layername}",itemSnippet:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل"});

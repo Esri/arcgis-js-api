@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți obiectele spațiale de atașat",filterSelectLabel:"Atașați toate obiectele spațiale sau definiți un subset (opțional)",targetArea:"Alegeți zona în care doriți atașarea",outputLayerName:"Atașați ${inputLayerName} la ${clipLayerName}",itemDescription:"Prin executarea soluției Atașare, a fost generat un strat tematic de obiecte spațiale. Obiectele spațiale din ${inputLayerName} au fost atașate la ${clipLayerName}.",itemTags:"Rezultat analiză, Atașare strat tematic, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Strat tematic de obiecte spațiale generat din Atașare strat tematic"});

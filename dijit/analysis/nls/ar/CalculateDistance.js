@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختر الطبقة النقطية أو طبقة موقع المعلم لحساب المسافة إلى",inputRaster:"اختيار طبقة معلم أو بيانات نقطية لتمثيل العوائق (اختياري)",maxDistanceLabel:"أقصى مسافة لحساب (اختياري)",outputCellSize:"حجم الخلية الناتجة (اختياري)",distanceMethod:"طريقة المسافة",resultDistLayerName:"اسم طبقة المسافة الناتجة",resultDirectionLayerName:"اسم طبقة الاتجاه الناتجة (اختياري)",resultAllocationLayerName:"اسم طبقة التخصيص الناتجة (اختياري)",outputBackDirectionName:"اسم طبقة اتجاه الرجوع الناتج (اختياري)",outputLayerName:"مسافة ${layername} المحسوبة",allocationFieldLabel:"اسم حقل التخصيص (اختياري)",itemDescription:"طبقة الميزة تم إنشاؤها من تشغيل حساب المسافة على ${layerName}. ",itemTags:"نتيجة التحليلات، حساب المسافة، ${layername} ${fieldname}",itemSnippet:"طبقة الميزة تم إنشاؤها من حساب المسافة.",planar:"مسطح",geodesic:"جيوديسي",selectDistance:"-- تحديد --"});

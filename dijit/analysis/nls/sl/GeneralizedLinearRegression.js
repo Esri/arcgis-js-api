@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({modifiedTitle:"Posplošena linearna regresija – ${goal}",fit:"Prilagodi",fitAndPredict:"Prilagodi in napovej",selectGoal:"Kaj želite narediti?",fitGoal:"Prilagodi model za vrednotenje učinkovitosti delovanja modela",fitAndPredictGoal:"Prilagodi model in napovej vrednosti",inputLayerLabel:"Izberite sloj za ustvarjanje modela iz",chooseDependentField:"Izberite polje za model",chooseDataType:"Izberite tip podatkov, ki jih modelirate.",continuousData:"Neprekinjeno",binaryData:"Binarno",countData:"Število",chooseExplanatoryField:"Izberite pojasnjevalna polja",chooseFeaturesToPredict:"Izberi sloj za napoved vrednosti za",chooseExplainMatch:"Izberi, kako se ujemajo pojasnjevalna polja",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Geoobjektni sloj, ustvarjen iz izvajanja rešitev posplošene linearne regresije ${goal}.",itemTags:"Rezultat analize, posplošena linearna regresija, ${inputLayerName}, ${goal}",itemSnippet:"Geoobjektni sloj, ustvarjen iz posplošene linearne regresije (${goal})."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({fields:"फ़ील्ड",categorical:"श्रेणीगत",requiredMessage:"कम से कम 1 व्याख्यात्मक चर का चयन किया जाना चाहिए।"});

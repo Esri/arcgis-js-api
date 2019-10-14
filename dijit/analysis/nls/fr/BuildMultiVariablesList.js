@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Choisir une couche en entrée",addAVar:"Ajouter une variable",distToNearest:"Distance par rapport à l’entité la plus proche",attrOfInterest:"Attribut de l’entité la plus proche",summaryNearby:"Synthèse de l’entité à proximité",summaryIntersecting:"Synthèse de l’entité d’intersection",distToNearestLabel:"Distance entre le centre du groupe et l’entité la plus proche dans la couche en entrée",attrOfInterestLabel:"Valeur d’un champ spécifié depuis l’entité la plus proche de la couche en entrée",summaryNearbyLabel:"Calcul statistique effectué sur toutes les entités qui se trouvent à une distance donnée du centre du groupe",summaryIntersectingLabel:"Statistique calculée sur toutes les entités qui intersectent le groupe",maxDistancefromCtr:"Distance maximale depuis le centre du groupe",fieldToIncude:"Champ à inclure",statstoCalculate:"Statistique à calculer",summFeatuesWithin:"Synthétiser les entités à l’intérieur",layerChangeWarnMsg:"Les variables ajoutées pour cette couche en entrée seront supprimées si la couche en entrée est modifiée",validationErrorMsg:"Résoudre les erreurs de validation avant d’ajouter une nouvelle variable",atleastOneVarMsg:"Ajouter au moins une variable à cette couche sélectionnée"});

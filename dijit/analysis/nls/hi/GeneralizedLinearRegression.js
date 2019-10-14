@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({modifiedTitle:"सामान्यीकृत रैखिक प्रतिगमन - ${goal}",fit:"फ़िट",fitAndPredict:"फिट करें और पूर्वानुमान लगाएँ",selectGoal:"आप क्या करना चाहेंगे?",fitGoal:"मॉडल के प्रदर्शन का आकलन करने के लिए एक मॉडल फिट करें",fitAndPredictGoal:"मॉडल फिट करें और मान का पूर्वानुमान लगाएँ",inputLayerLabel:"मॉडल फॉर्म उत्पन्न करने के लिए एक लेयर चुनें",chooseDependentField:"मॉडल करने के लिए फील्ड चुनें",chooseDataType:"वह डेटा प्रकार चुनें, जिसे आप मॉडलिंग कर रहे हैं",continuousData:"निरंतर",binaryData:"बाइनरी",countData:"गणना करें",chooseExplanatoryField:"व्याख्यात्मक फील्ड चुनें",chooseFeaturesToPredict:"निम्न के लिए मान का पूर्वानुमान लगाने के लिए लेयर चुनें",chooseExplainMatch:"चुनें कि व्याख्यात्मक फील्ड कैसे मेल खाती हैं",outputLayerName:"GLR ${inputLayerName}",itemDescription:"सामान्यीकृत रैखिक प्रतिगमन ${goal} समाधान चलाने से उत्पन्न फ़ीचर लेयर।",itemTags:"विश्लेषण परिणाम, सामान्यीकृत रैखिक प्रतिगमन, ${inputLayerName}, ${goal}",itemSnippet:"सामान्यीकृत रैखिक प्रतिगमन से उत्पन्न फ़ीचर लेयर (${goal})"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/DomUtil"],function(e){var n={};return n.getPanelInfoByNode=function(n,i){var a={panelIndex:-1,panelScale:void 0};return n.infographicPage.getSections().some(function(t,o){if(e.isChildOf(i,t.domNode))return a.panelIndex=o,a.panelScale=n.infographicPage.getPanelScaleAt(o),!0}),a},n});

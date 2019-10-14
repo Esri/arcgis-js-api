@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-attr","dojo/has","./TabButton","dojo/text!./templates/TabRadio.html","../../../kernel"],function(e,t,a,o,d,i,n){var r=e([d],{checkedAttr:"",radioName:null,templateString:i,postCreate:function(){this.inherited(arguments)},setChecked:function(e){a.set(this.radioNode,"checked",e)}});return o("extend-esri")&&t.setObject("dijit.metadata.base.TabRadio",r,n),r});

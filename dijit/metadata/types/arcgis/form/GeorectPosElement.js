@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../../../../../kernel","../../../form/OpenElement","dojo/i18n!../../../nls/i18nArcGIS","dojo/i18n!../../../nls/i18nBase"],function(e,i,a,t,n,r,o,s){var l=e([r],{postCreate:function(){this.inherited(arguments)},beforeValidateValue:function(e,t,n){if(null!==n&&0!==i.trim(n).length){var r=!0,l=n.split(" ");if(a.some(l,function(e){try{var a=!1,t=Number(i.trim(e));void 0!==t&&null!==t&&!isNaN(t)&&isFinite(t)&&(a=!0),a||(r=!1)}catch(e){console.error(e),r=!1}if(!r)return!0}),!r){var d=s.validation.pattern,c=o.hints.listOfDoubles;t.isValid=!1,t.message=d.replace("{label}",t.label).replace("{message}",c)}}}});return t("extend-esri")&&i.setObject("dijit.metadata.types.arcgis.form.GeorectPosElement",l,n),l});

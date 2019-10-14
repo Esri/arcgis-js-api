@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocessing",_featureAction_ReceiveFeatureSet:"设置为输入 ",requiredInfo:"必填项。",drawnOnMap:"结果绘制在地图上。",noToolConfig:"无可用的预配置地理处理任务。",useUrlForGPInput:"URL",useUploadForGPInput:"上传文件",selectFileToUpload:"选择文件...",rasterFormat:"栅格数据格式",noFileSelected:"未选择任何文件!",uploadSuccess:"文件上传成功!",showLayerContent:"显示图层内容",invalidUrl:"无效的要素服务 url",urlPlaceholder:"要素集 URL",addShapefile:"添加 Shapefile",generateShapefileError:"生成 shapefile 时出错，请检查: ",cleared:"结果已清除。",enlargeView:"放大视图",exportOutput:"导出",emptyResult:"结果为空。",useSelectedFeatureset:"使用生成的要素。",closeSelectedFeatureset:"清除并使用已配置的输入选项。"});

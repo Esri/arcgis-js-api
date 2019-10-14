@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({toolDefine:"Pixel mit Deep Learning klassifizieren",outputLayerName:"${layername}_classified",modelLabel:"Deep-Learning-Modell für die Klassifizierung von Pixeln auswählen",modelArgsLabel:"Argumente für das Deep-Learning-Modell angeben",nameLabel:"Name",valueLabel:"Wert",queryModelArgsMsg:"Modellargumente werden abgefragt...",analysisLayerLabel:"Bild für die Klassifizierung von Pixeln auswählen",itemDescription:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service",itemTags:"Ergebnis der Raster-Analyse, Pixel mit Deep Learning klassifizieren, ${layername}",itemSnippet:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service"});

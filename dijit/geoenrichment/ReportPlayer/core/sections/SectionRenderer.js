@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","./Empty","./Section"],function(e,n,t){var c={};return c.createSection=function(n,c,o){return new t(n,c?e.create("div",null,c,o):void 0)},c.createEmptySection=function(t,c,o){return new n(t,c?e.create("div",null,c,o):void 0)},c});

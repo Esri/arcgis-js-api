@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({toolDefine:"Klasifikovat pixely pomocí deep learningu (Classify Pixels Using Deep Learning)",outputLayerName:"${layername}_classified",modelLabel:"Vyberte model deep learningu, který bude použit ke klasifikování pixelů",modelArgsLabel:"Zadejte argumenty modelu deep learningu",nameLabel:"Jméno",valueLabel:"Hodnota",queryModelArgsMsg:"Dotazování argumentů modelu...",analysisLayerLabel:"Vyberte snímek, který bude použit ke klasifikování pixelů",itemDescription:"Image služba analýzy vytvořená řešením Klasifikovat pixely pomocí deep learningu",itemTags:"Výsledek analýzy rastru, klasifikovat pixely pomocí deep learningu, ${layername}",itemSnippet:"Image služba analýzy vytvořená řešením Klasifikovat pixely pomocí deep learningu"});

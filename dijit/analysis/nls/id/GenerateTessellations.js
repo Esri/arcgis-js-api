@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseShape:"Pilih Bentuk",defineExtent:"Tentukan jangkauan",defineBin:"Tentukan ukuran bin dengan cara menentukan",area:"Luas",distance:"Jarak",resultLayerName:"Nama layer hasil",hexagon:"Heksagon",transverseHexagon:"Heksagon melintang",square:"Persegi",triangle:"Segitiga",diamond:"Wajik",sameAsDisplay:"Sama seperti tampilan",emptyBinSize:"Ukuran bin tidak boleh kosong",currentExtent:"jangkauan saat ini",intersectExtent:"Cukup jaga tessellation berpotongan",outputLayerName:"Buat tessellation di ${extentLayerName}",itemDescription:"Jangkauan dari ${extentLayerName} digunakan.",itemTags:"Hasil Analisis, Buat Tesselllation, ${extentLayerName}",itemSnippet:"Feature layer dibuat dari Buat Tesselllation."});

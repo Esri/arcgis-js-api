@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseShape:"Şekil seç",defineExtent:"Yayılımı tanımla",defineBin:"Kutu boyutunu belirterek tanımla",area:"Alan",distance:"Mesafe",resultLayerName:"Sonuç katmanı adı",hexagon:"Altıgen",transverseHexagon:"Ters altıgen",square:"Kare",triangle:"Üçgen",diamond:"Eşkenar Dörtgen",sameAsDisplay:"Görünüm ile aynı",emptyBinSize:"Kutu boyutu boş olamaz",currentExtent:"mevcut yayılım",intersectExtent:"Sadece kesişen mozaikleri tut",outputLayerName:"${extentLayerName} üzerinde mozaikler oluştur",itemDescription:"${extentLayerName} yayılımı kullanıldı.",itemTags:"Analiz Sonucu, Mozaikler Oluştur, ${extentLayerName}",itemSnippet:"Detay katmanı, Mozaikler Oluştur ile oluşturuldu."});

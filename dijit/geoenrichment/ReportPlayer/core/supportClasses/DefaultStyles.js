@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","esri/dijit/geoenrichment/utils/ColorUtil"],function(t,r,e){return t(null,{_styles:null,_stylesArray:null,constructor:function(t){this._styles={Default:{color:"#4C4C4C",backgroundColor:"#FFFFFF"}},r.mixin(this._styles,t),this._stylesArray=[];for(var e in this._styles)this._stylesArray.push(e)},getStyle:function(t){return this._styles[t]},getStylesArray:function(){return this._stylesArray},tryApplyStyle:function(t,r,e){var s=this.getStyle(r);if(s)for(var l in s)e&&void 0!==t[l]||(t[l]=s[l])},findDefaultStyle:function(t){var r,s=this.getStylesArray(),l=this;return s.some(function(s){var n=l.getStyle(s);for(var i in n){if(!t[i])return!1;if("color"===i||"backgroundColor"===i){if(!e.colorsEqual(t[i],n[i]))return!1}else if(t[i]!==n[i])return!1}return r=s,!0}),r}})});

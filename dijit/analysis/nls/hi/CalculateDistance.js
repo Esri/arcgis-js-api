@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"इसकी दूरी का परिकलन करने के लिए रास्टर या फ़ीचर स्थान लेयर को चुनें",inputRaster:"बैरियर (वैकल्पिक) को दर्शाने वाले रेखापुंज या फीचर लेयर को चुनें",maxDistanceLabel:"परिकलित की जाने वाली अधिकतम दूरी (वैकल्पिक)",outputCellSize:"आउटपुट सेल का आकार (वैकल्पिक)",distanceMethod:"दूरी विधि",resultDistLayerName:"परिणामी दूरी लेयर का नाम",resultDirectionLayerName:"परिणामी दिशा लेयर का नाम (वैकल्पिक)",resultAllocationLayerName:"परिणामी आबंटन लेयर का नाम (वैकल्पिक)",outputBackDirectionName:"परिणामी पिछली दिशा के लेयर का नाम (वैकल्पिक)",outputLayerName:"${layername} की परिकलित दूरी",allocationFieldLabel:"आबंटन फ़ील्ड चुनें (वैकल्पिक)",itemDescription:"${layerName} पर दूरी का परिकलन करें चलाने से जेनरेट की गई फ़ीचर लेयर। ",itemTags:"विश्लेषण परिणाम, CalculateDistance, ${layername} ${fieldname}",itemSnippet:"CalculateDistance से जनरेट की गई फ़ीचर लेयर।",planar:"समतली",geodesic:"जियोडेसिक",selectDistance:"-- चयन करें --"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({chooseShape:"Scegli una forma",defineExtent:"Definire l'estensione",defineBin:"Definisci le dimensioni del contenitore specificando",area:"Area",distance:"Distanza",resultLayerName:"Nome del layer dei risultati",hexagon:"Esagono",transverseHexagon:"Esagono trasversale",square:"Square",triangle:"Triangolo",diamond:"Rombo",sameAsDisplay:"Stesso come display",emptyBinSize:"Le dimensioni del contenitore non possono essere vuote",currentExtent:"estensione corrente",intersectExtent:"Mantieni solo tassellazioni che si intersecano",outputLayerName:"Genera tassellazioni in ${extentLayerName}",itemDescription:"È stata usata l’estensione di ${extentLayerName}.",itemTags:"Risultato dell’analisi, Genera tassellazioni, ${extentLayerName}",itemSnippet:"Feature layer generato da Genera tassellazioni."});

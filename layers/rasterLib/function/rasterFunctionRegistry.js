@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","../../rasterLib/function/AspectFunction","../../rasterLib/function/BandArithmeticFunction","../../rasterLib/function/ColormapFunction","../../rasterLib/function/CompositeBandFunction","../../rasterLib/function/ContrastBrightnessFunction","../../rasterLib/function/ConvolutionFunction","../../rasterLib/function/ExtractBandFunction","../../rasterLib/function/HillshadeFunction","../../rasterLib/function/LocalFunction","../../rasterLib/function/MaskFunction","../../rasterLib/function/NDVIFunction","../../rasterLib/function/SlopeFunction","../../rasterLib/function/StretchFunction","../../rasterLib/function/IdentityFunction","../../rasterLib/function/ResampleFunction"],function(n,t,o,i,r,u,c,e,a,s,f,p,b,L,F,d,l){return function(){function n(n){n.prototype.supportWebGL&&(m[n.prototype.functionName]=n),n.prototype.support2D&&(t[n.prototype.functionName]=n),g[n.prototype.functionName]=n}var t={},m={},g={};return n(o),n(i),n(r),n(u),n(c),n(e),n(a),n(s),n(f),n(p),n(b),n(L),n(F),n(d),n(l),{cpu:t,gpu:m,functions:g,register:n,getFunction:function(n){return g[n]},support:function(n,o){var i;return i="gpu"===o?m:"cpu"===o?t:g,!!i[n]}}}()});

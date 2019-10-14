@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/when"],function(e){var n={};return n.provideMapSettings=function(n){var i=n.getMapImages()[0];return i?e(i.getRenderPromise(),function(){return{viewSettings:{showLegend:i.isLegendVisible()}}}):null},n});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({relationalDS:"יחסי",spatialDS:"של מרחב-זמן",agsDataStore:"שמירת נתונים ב-ArcGIS",bdfsTemplates:"תבניות פלט לשיתוף קבצי Big Data"});

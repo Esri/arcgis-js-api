@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildGaugeChartTooltip:function(i,o){l.addTitle(o,i.label,i);var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);l.addRowOffset(d),i.isUnavailableData?l.addLabel(t.unavailableData,d):i.hasNegativeValues?l.addLabel(i.valueLabel,d):l.addLabel(e.substitute(t.gaugeChartTooltip_label,{value:i.valueLabel,total:i.sumValueLabel}),d)}}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Vælg Living Atlas-analyselag",customAnalysisLayerTitle:"Vælg analyselag",searchPlaceholderText:"Søg i Living Atlas-analyselag",searchCustomPlaceholderText:"Søg i analyselag",mainActionTitle:"Vælg",customActionName:"Vælg og tilføj til kort",customeSectionName:"Living Atlas-analyselag",Categories:"Kategorier",boundaries:"Grænser",places:"Steder",boundariesAndPlaces:"Grænser og steder",hexbins:"Hexbins",transportation:"Transport",point:"Punktlag",line:"Polylinjelag",polygon:"Polygonlag",pointFilterName:"Punkt",lineFilterName:"Polylinje",polygonFilterName:"Polygon",multiPointFilterName:"Multi-punkter",geometryFilterName:"Geometri",featureLayerName:"Vektorlag",tableLayerName:"Tabel",itemTypeFilterName:"Elementtype",instantFilterName:"Øjeblikkelig",intervalFilterName:"Interval",timeFilterName:"Tid",edit:"Redigér",boundaryLayers:"Esri-grænselag",customAnalysisGroupName:"Organisationens analysegruppe"});

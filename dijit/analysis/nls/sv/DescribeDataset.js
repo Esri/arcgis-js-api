@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj dataset att beskriva",describeDataLabel:"Förstå dina data genom att skapa ett (valfritt)",sampleLayer:"Exempellager",extentLayer:"Utbredningslager",noOfFeaturesLabel:"Antal geoobjekt som inkluderas",outputLayerName:"Resultatlagrets namn",resultName:"Beskriv data för ${layerName}",itemDescription:"Geoobjektlager skapat från körning av Beskriv dataset på ${layerName}. ",itemTags:"Analysresultat, Beskriv dataset, ${layername}",itemSnippet:"Geoobjektlager skapat från Beskriv dataset."});

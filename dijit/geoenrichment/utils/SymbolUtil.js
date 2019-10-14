@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["esri/symbols/PictureFillSymbol","../ReportPlayer/dataProvider/commands/imageUtils/NodeToCanvasUtil","./PatternLibrary"],function(l,e,o){var r={};return r.simpleFillSymbolToPictureFillSymbol=function(r){if(!r)return null;var n=o.createSvgForPictureFillSymbol({fillStyle:r.style,fillColor:r.color.toCss(!1),fillAlpha:r.color.a});return e.svgNodeToCanvasFunc(n,10,10).then(function(e){try{var o=new l(e.toDataURL("image/png"),r.outline,10,10);return o.contentType="image/png",o}catch(l){return console.log(l),null}}).otherwise(function(l){return console.log(l),null})},r});

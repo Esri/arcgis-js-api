@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({toolDefine:"使用深度学习定义对象",outputLayerName:"${layername}_detected",modelLabel:"选择用于检测对象的深度学习模型",modelArgsLabel:"指定深度学习模型参数",nameLabel:"名称",valueLabel:"值",removeDuplicatesLable:"从输出中移除重复的要素(可选)",queryModelArgsMsg:"查询模型参数...",nonMaxSuppressionLabel:"非极大值抑制",options:"选项",confidenceLabel:"置信度得分字段",classValueLabel:"类值字段",maxOverlapLabel:"最大重叠比",numberOnlyMsg:"只允许数值。",analysisLayerLabel:"选择用于检测对象的图像",itemDescription:"使用深度学习通过检测对象生成的分析图像服务",itemTags:"栅格分析结果、使用深度学习检测对象，${layername}",itemSnippet:"使用深度学习通过检测对象生成的分析图像服务"});

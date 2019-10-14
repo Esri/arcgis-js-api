@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher conjunto de dados para descrever",describeDataLabel:"Entenda seus dados criando um (opcional)",sampleLayer:"Camada de amostra",extentLayer:"Camada de extensão",noOfFeaturesLabel:"Número de feições para incluir",outputLayerName:"Nome da camada resultante",resultName:"Descrever dados da ${layerName}",itemDescription:"Camada de feição gerada a partir da execução de Descrever Conjunto de Dados em ${layerName}. ",itemTags:"Resultado da Análise, DescribeDataset , ${layerName}",itemSnippet:"Camada de feição gerada a partir de Descrever Conjunto de Dados"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"फ्लो डायरेक्शन लेयर चुनें",pourPointLayerLabel:"पोर पॉइंट रैस्टर या फ़ीचर लेयर चुनें",pourPointField:"पोर पॉइंट क्षेत्र चुनें",resultLayerName:"परिणामी लेयर का नाम",outputLayerName:"${layername} का वाटरशेड",itemDescription:"सारांश केंद्र को चलाने से जेनरेट की गई लेयर और प्रसार को ${layerName} पर प्रदर्शित करें। ",itemTags:"विश्लेषण परिणाम, वाटरशेड, ${layername} ${fieldname}",itemSnippet:"वाटरशेड से जेनरेट किए गए फ़ीचर लेयर।"});

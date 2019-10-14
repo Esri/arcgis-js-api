@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz warstwę kierunku przepływu",pourPointLayerLabel:"Wybierz raster punktów wylewu lub warstwę obiektową",pourPointField:"Wybierz pole punktów wylewu",resultLayerName:"Nazwa warstwy wynikowej",outputLayerName:"Zlewnia warstwy ${layername}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Sumuj wyśrodkowanie i rozproszenie dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Zlewnia, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana z narzędzia Zlewnia."});

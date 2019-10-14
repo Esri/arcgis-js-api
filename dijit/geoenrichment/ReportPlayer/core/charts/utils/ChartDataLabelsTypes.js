@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define([],function(){var e={NONE:"None",LABEL:"Label",VALUE:"Value",LABEL_VALUE:"LabelValue",PERCENT:"Percent",LABEL_PERCENT:"LabelPercent"};return e.isSupported=function(n){for(var r in e)if(e[r]===n)return!0;return!1},e.toSupportedValue=function(n){return e.isSupported(n)?n:e.NONE},e.buildType=function(n){var r="";return n.label&&(r="Label"),n.value?r+="Value":n.percent&&(r+="Percent"),r||e.NONE},e.hasLabel=function(e){return e&&-1!==e.indexOf("Label")},e.hasValue=function(e){return e&&-1!==e.indexOf("Value")},e.hasPercent=function(e){return e&&-1!==e.indexOf("Percent")},e.has2Values=function(n){return n===e.LABEL_VALUE||n===e.LABEL_PERCENT},e});

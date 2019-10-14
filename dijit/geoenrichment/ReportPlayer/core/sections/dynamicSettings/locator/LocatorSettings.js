@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.29/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dijit/_WidgetBase","dijit/_TemplatedMixin","esri/dijit/geoenrichment/lists/FlowCheckList","dojo/text!../../../templates/sectionDynamicSettings/LocatorSettings.html","dojo/i18n!esri/nls/jsapi"],function(i,t,s,e,n,a){return a=a.geoenrichment.dijit.ReportPlayer.SectionDynamicSettingsBuilder,i([t,s],{templateString:n,nls:a,summaryList:null,_provideSummaryList:function(){var i=this;this.summaryList||(this.summaryList=new e({class:"esriGEFlowListSpacedOut",onSelectionChanged:function(){i.onLocatorSummaryChanged({visibleFields:i.summaryList.getSelection()})}},this.summaryListDiv),this.own(this.summaryList))},setSummaryInfos:function(i){var t=[],s=[];i.forEach(function(i){s.push({value:i.fieldName,label:i.label}),i.visible&&t.push(i.fieldName)}),this._provideSummaryList(),this.summaryList.set("items",s),this.summaryList.setSelection(t)},onLocatorSummaryChanged:function(i){},setVisualState:function(i){i&&i.summaryInfos&&this.setSummaryInfos(i.summaryInfos)}})});
