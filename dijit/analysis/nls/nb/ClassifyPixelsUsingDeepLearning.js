@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Klassifiser piksler ved hjelp av dyplæring",outputLayerName:"${layername}_classified",modelLabel:"Velg dyplæringsmodellen som skal brukes til å klassifisere piksler",modelArgsLabel:"Angi argument for dyplæringsmodell",nameLabel:"Navn",valueLabel:"Verdi",queryModelArgsMsg:"Spørring i modellargumenter...",analysisLayerLabel:"Velg bilde som skal brukes til å klassifisere piksler",itemDescription:"Bildeanalysetjeneste generert fra Klassifiser piksler ved hjelp av dyplæring",itemTags:"Rasteranalyseresultat, Klassifiser piksler ved hjelp av dyplæring, ${layername}",itemSnippet:"Bildeanalysetjeneste generert fra Klassifiser piksler ved hjelp av dyplæring"});

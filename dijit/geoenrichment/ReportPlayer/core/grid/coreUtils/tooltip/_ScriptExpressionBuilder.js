@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/ObjectUtil"],function(e){var i=/\s*/g,r=/(!.*?!|\+|\-|\*|\/|\(|\)|\^|\d+\.\d+|\d+)/g,l=/___.*?___/g,a=/___(.*?)___/g,t=/!/g,n=/\d+/;return{buildTooltipExpression:function(e,i){var r=this._maskAndValidateExpressionText(e,i);if(!r||!r.length)return null;var l="";return r.forEach(function(e){e.variable?l+="<div class='dijitInline'><div class='esriGEAdjustableGrid_cellTooltip_expressionVariable'>"+e.variable.alias+"</div></div>":e.operator?l+="<div class='dijitInline esriGEAdjustableGrid_cellTooltip_expressionOperator'>"+e.operator+"</div>":void 0!==e.number&&(l+="<div class='dijitInline esriGEAdjustableGrid_cellTooltip_expressionNumber'>"+e.number+"</div>")}),"<div class='esriGEAdjustableGrid_cellTooltip_expression'>"+l+"</div>"},_maskAndValidateExpressionText:function(s,d){return s=s.replace(i,""),s=s.replace(r,"___$1___"),s.replace(l,"").length?null:s.match(l).map(function(i){return i=i.replace(a,"$1"),0===i.indexOf("!")?{variable:d.get(i.replace(t,""))}:i.match(n)?{number:e.formatNumber(Number(i))}:{operator:i}})}}});

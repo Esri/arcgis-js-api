@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/ObjectUtil","dojo/i18n!esri/nls/jsapi"],function(n,t){t=t.geoenrichment.dijit.ReportPlayer.units;var e={},i=["px","pt","mm","cm","in"],r={px:0,pt:1,mm:1,cm:2,in:2};return e.getSupportedUnits=function(){return i},e.getShortName=function(n){return t.shortNames[n]},e.getLongName=function(n){return t.longNames[n]},e.getLongNameWithUnits=function(n){return t.longNamesWithUnits[n]},e.getPlaces=function(n){return r[n]||0},e.round=function(t,i){return n.roundNumber(t,e.getPlaces(i))},e.provideUnits=function(n,t){return n.replace("${units}",e.getShortName(t))},e});

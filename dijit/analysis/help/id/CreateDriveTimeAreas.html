@@ -84,7 +84,7 @@
         <div>
             <p>Fitur titik di sekitar area yang akan dihitung. Anda dapat memilih bagaimana suatu area dikalkulasikan berdasarkan mode perjalanan (mengemudi, mengemudi truk, atau berjalan) dan mengukur (waktu atau jarak).
             </p>
-            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            <p>Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Opsi ini membuka galeri di mana Anda dapat menelusuri dan memilih set data dari berbagai sumber untuk digunakan dalam analisis Anda. 
             </p>
             <p>Alat ini mendukung hingga 1.000 lokasi dalam layer input.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Pilih mode perjalanan Anda (mengemudi, mengemudi truk, atau berjalan) dan mengukur (waktu atau jarak).  Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.   Setelah memilih mode dan pengukuran Anda, masukkan durasi atau jarak hingga  5 jam (300 menit) atau  300 mil (482,80 kilometer). 
+            </p>
+            <p>Arah perjalanan ( <b>Menjauh dari Fasilitas</b> atau <b>Menuju Fasilitas</b>) dapat memengaruhi cara area dibuat. Buat Area Waktu Mengemudi akan mematuhi jalan satu arah, menghindari putar balik ilegal, dan mengikuti peraturan lain sesuai dengan arah perjalanan. Anda harus memilih arah perjalanan berdasarkan jenis lokasi input dan konteks analisis Anda. Misalnya, area waktu mengemudi untuk toko pengiriman pizza harus dibuat menjauh dari fasilitas, di mana area waktu mengemudi dari rumah sakit harus dibuat menuju ke fasilitas.
             </p>
             <p>Ketika Anda memilih  <b>Waktu Mengemudi</b>, <b>Waktu Mengemudi Pedesaan</b>, atau <b>Waktu Mengemudi Truk</b>, Anda memiliki opsi tentang cara mengukur waktu mengemudi.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Tampilkan area yang tidak terjangkau sebagai lubang</h2></div>
+        <hr/>
+        <div>
+            <p>Pilih apakah area output akan menyertakan lubang jika beberapa jalan tidak dapat dijangkau karena  <b>Ukur</b> waktu atau jarak atau karena pembatasan yang diberlakukan oleh mode perjalanan.
+            </p>
+            <p>Area waktu mengemudi yang dibuat menggunakan parameter ini memiliki batasan 15 menit atau 15 mil (24 kilometer).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Nama Layer Hasil</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika nama layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
             <p>Dengan menggunakan  <b>Simpan hasil di</b> menu drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Sertakan jalan yang dapat dijangkau</h2></div>
+        <hr/>
+        <div>
+            <p>Sertakan jalan yang digunakan untuk membuat area waktu mengemudi sebagai layer output. 
+            </p>
+            <p>Buat Area Waktu Mengemudi mengukur jangkauan fasilitas di sepanjang jaringan jalan, lalu membuat area waktu mengemudi dari jalan yang dilalui. Oleh karena itu, area merupakan kisaran dari jalan yang dilalui. Jika analisis Anda bertujuan untuk menentukan jalan mana yang dicakup dalam jarak atau waktu perjalanan spesifik dari fasilitas, membuat jalan yang dapat dijangkau akan lebih akurat dibandingkan menggunakan area waktu mengemudi untuk mengevaluasi apakah jalan tertentu dapat dijangkau.
+            </p>
+            <p>Area waktu mengemudi yang dibuat menggunakan parameter ini memiliki batasan 15 menit atau 15 mil (24 kilometer).
             </p>
         </div>
     </div>

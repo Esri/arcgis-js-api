@@ -41,25 +41,25 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Calculate Density</h2><p/>
-        <h2><img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" alt="Calculate Density"></h2>
+        <h2>חשב צפיפות</h2><p/>
+        <h2><img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" alt="חשב צפיפות"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point or line features by spreading known quantities of some phenomenon (represented as attributes of the points or lines) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>הכלי 'חשב צפיפות' יוצר מפת צפיפות מישויות נקודה או קו, על ידי פיזור כמויות ידועות של תופעה מסוימת (שמיוצגת כמאפיינים של הנקודות או הקווים) על פני המפה. התוצאה היא שכבה של אזורים שמסווגים החל מהכי פחות צפופים לצפופים ביותר.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>עבור קלט נקודה, כל נקודה צריכה לייצג את המיקום של אירוע או תקרית מסוימים, ושכבת התוצאה מייצגת ספירה של התקרית בכל יחידת אזור.  ערך צפיפות גבוה יותר במיקום חדש משמעו שיש יותר נקודות בסמוך למיקום זה.  במקרים רבים, ניתן לפרש את שכבת התוצאה כמשטח סיכון עבור אירועים עתידיים. לדוגמה, אם נקודות הקלט מייצגות מיקומים של פגיעות ברק, ניתן לפרש את שכבת התוצאה כמשטח סיכון עבור פגיעות ברק בעתיד.
     </p>
-    <p>For line input, the line density surface represents the total amount of line that is near each location.  The units of the calculated density values are the length of line per unit area. For example, if the lines represent rivers, the result layer will represent the total length of rivers that are within the search radius.  This result can be used to identify areas that are hospitable to grazing animals.
+    <p>עבור קלט קו, משטח צפיפות הקו מייצג את הסכום הכולל של קו שנמצא בסמוך לכל מיקום.  היחידות של ערכי הצפיפות המחושבים הן האורך של הקו לכל יחידת שטח. לדוגמה, אם הקווים מייצגים נהרות, שכבת התוצאה מייצגת את האורך הכולל של הנהרות שנמצאים בתוך רדיוס החיפוש.  תוצאה זו יכולה לשמש לזיהוי אזורים שמתאימים לחיות מרעה.
     </p>
-    <p> Other use cases of this tool include the following:
+    <p> דוגמאות אחרות לשימוש בכלי זה כוללות את המקרים הבאים:
         <ul>
-            <li>Creating crime density maps to help police departments properly allocate resources to high crime areas.
+            <li>יצירת מפות צפיפות פשע כדי לעזור לתחנות משטרה להקצות כהלכה משאבים לאזורים שבהם פשיעה רבה.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>חישוב צפיפויות של בתי חולים בתוך ארץ מסוימת.  שכבת התוצאה תציג אזורים עם נגישות גבוהה ונמוכה לבתי חולים, וניתן להשתמש במידע זה כדי להחלט היכן יש לבנות בתי חולים חדשים.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>זיהוי אזורים שבהם יש סיכון גבוה לשרפות יער, על סמך מיקומים היסטוריים של שרפות יער.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>איתור קהילות שהן רחוקות מכבישים ראשיים, כדי לתכנן היכן יש לסלול כבישים חדשים.
             </li>
         </ul>
         
@@ -67,63 +67,59 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose point or line layer from which to calculate density</h2></div>
+        <div><h2>בחר שכבת נקודות או קווים שממנה יש לחשב את הצפיפות</h2></div>
         <hr/>
         <div>
-            <p>The point or line layer from which density will be calculated.
-
+            <p>שכבת הנקודות או הקווים שממנה תחושב הצפיפות. 
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Use a count field</h2></div>
+        <div><h2>השתמש בשדה ספירה</h2></div>
         <hr/>
         <div>
-            <p>Provide a field specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
-can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>ספק שדה שמציין את מספר האירועים בכל מיקום.  לדוגמה, אם יש לך נקודות שמייצגות ערים, באפשרותך להשתמש בשדה שמייצג את האוכלוסייה של העיר כשדה ספירה, ושכבת צפיפות האוכלוסייה שתתקבל תחשב צפיפויות אוכלוסין גדולות יותר בסמוך לערים עם אוכלוסיות גדולות יותר.
             </p>
-            <p> If the default choice of  None is used, each location will be assumed to represent a single count.
+            <p> אם נעשה שימוש באפשרות ברירת המחדל של 'ללא', כל מיקום יחשב כמייצג ספירה בודדת.
             </p>
         </div>
     </div>
     <div id="radius">
-        <div><h2>Search Distance</h2></div>
+        <div><h2>מרחק חיפוש</h2></div>
         <hr/>
         <div>
-            <p>Enter a distance specifying how far to search  to find point or line features when calculating density values.  For example, if you provide a search distance of 10,000 meters, the density of any location in the output layer  is calculated based on features that are within 10,000 meters of the location.  Any location that does not have any incidents within 10,000 meters will receive a density value of zero.     
+            <p>הזן מרחק שמציין כמה רחוק לחפש כדי למצוא ישויות נקודה או קו, בעת חישוב ערכי צפיפות.  לדוגמה, אם אתה מספק מרחק חיפוש של 10,000 מטר, הצפיפות של כל מיקום בשכבת הפלט תחושב על בסיס ישויות שנמצאות בטווח של 10,000 מהמיקום. כל מיקום שבו אין כלל אירועים בטווח של 10,000 מטר, יקבל ערך צפיפות אפס.     
 
             </p>
-            <p>If no distance is provided, a default will be calculated that is based on the locations of the input features and the values in the count field (if a count field is provided).
+            <p>אם לא סופק מרחק, החישוב יתבצע לפי ברירת מחדל שמבוססת על המיקומים של ישויות הקלט והערכים בשדה הספירה (אם סופק שדה ספירה).
             </p>
         </div>
     </div>
     <div id="boundingPolygonLayer">
-        <div><h2>Clip output to</h2></div>
+        <div><h2>חתוך פלט אל</h2></div>
         <hr/>
         <div>
-            <p>Either draw or provide a  layer specifying the area where you want densities to be calculated. For example, if you are calculating densities of fish within a lake, you can use the boundary of the lake in this parameter and the output will  only draw within the boundary of the lake.
+            <p>שרטט או ספק שכבה כדי לציין את האזור שבו ברצונך לחשב צפיפויות. לדוגמה, אם אתה מחשב צפיפויות של דגים באגם, באפשרותך להשתמש בגבולות של האגם בפרמטר זה, והפלט ישורטט רק בתוך הגבולות של האגם.
             </p>
         </div>
     </div>
     <div id="classificationType">
-        <div><h2>Classify by</h2></div>
+        <div><h2>סווג לפי</h2></div>
         <hr/>
         <div>
-            <p>Choose how density values will be classified into areas.
+            <p>בחר כיצד ערכי צפיפות יסווגו לאזורים.
                 <ul>
-                    <li>Equal interval&mdash;Areas are created such that the range of density values  is equal for each area.
+                    <li>מרווח שווה - אזורים נוצרים כך שטווח ערכי הצפיפות שווה עבור כל אזור.
                     </li>
-                    <li>Geometrical interval&mdash;Areas are based on class intervals that have a geometrical series. This method ensures that each class range has approximately the same number of values within each class and that the change between intervals is consistent.
+                    <li>מרווח גיאומטרי - אזורים מבוססים על מרווחי קבוצות בעלי סדרות גיאומטריות. שיטה זו מבטיחה שלכל טווח קבוצה יש בערך אותו מספר של ערכים בתוך כל קבוצה ושהשינוי בין מרווחים הוא עקבי.
                     </li>
-                    <li>Natural breaks&mdash;Class intervals for areas are based on natural groupings of the data.  Class break values are identified that best group similar values and that
-maximize the differences between classes.
-
+                    <li>מעברים טבעיים - מרווחי קבוצות עבור אזורים מבוססים על הקבצות טבעיות של הנתונים.  ערכי מעברי קבוצה מזוהים לפי הקיבוץ הטוב ביותר של ערכים דומים, ובאופן שממקסם את ההבדלים בין קבוצות. 
                     </li>
-                    <li>Equal area&mdash;Areas are created such that the size of each area is equal.  For example, if the result layer has more high density values than low density values, more areas will be created for high densities.
+                    <li>אזורים שווים - אזורים נוצרים כך שהגודל של כל אזור שווה לאחרים.  לדוגמה, אם לשכבת התוצאה יש יותר ערכי צפיפות גבוהה מאשר ערכי צפיפות נמוכה, ייווצרו יותר אזורים עבור צפיפויות גבוהות.
                     </li>
-                    <li>Standard deviation&mdash;Areas are created based upon the standard deviation of the predicted density values. 
+                    <li>סטיית תקן - אזורים נוצרים על בסיס סטיית התקן של ערכי הצפיפות החזויים. 
                     </li>
                 </ul>
                 
@@ -131,30 +127,30 @@ maximize the differences between classes.
         </div>
     </div>
     <div id="numClasses">
-        <div><h2>Number of classes</h2></div>
+        <div><h2>מספר הקבוצות</h2></div>
         <hr/>
         <div>
-            <p>Specifies the number of classes (range of predicted values) in the result layer.  Each class defines the boundary of areas.  The values of these classes will be determined by the 
- <b>Classify by</b> parameter above.
+            <p>מציין את מספר הקבוצות (טווח ערכים חזוי) בשכבת התוצאה.  כל קבוצה מגדירה את הגבול של אזורים.  הערכים של קבוצות אלה ייקבעו על ידי 
+הפרמטר  <b>סווג לפי</b> לעיל.
             </p>
         </div>
     </div>
     <div id="areaUnits">
-        <div><h2>Output area units</h2></div>
+        <div><h2>יחידות שטח לפלט</h2></div>
         <hr/>
         <div>
-            <p>Specify the output area unit.  Density is count divided by area, and this parameter specifies the unit of the area in the density calculation.  
+            <p>ציין את יחידת שטח הפלט.  צפיפות היא ספירה חלקי השטח, ופרמטר זה מציין את יחידת השטח בחישוב הצפיפות.  
 
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

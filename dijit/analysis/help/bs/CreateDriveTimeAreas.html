@@ -84,7 +84,7 @@
         <div>
             <p>Točkasti geoobjekti oko kojih će se izračunati poligon. Možete odabrati način izračuna poligona na temelju načina putovanja (vožnja, vožnja kamionom ili hodanje) i mjerenja (vrijeme ili udaljenost).
             </p>
-            <p class="OnlineOnly">Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu Living Atlasa</b> ili <b>Izaberi sloj za analizu</b> s dna popisa padajućeg izbornika. Time se otvara galerija koja sadrži zbirku slojeva korisnu za mnogo analiza. 
+            <p>Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu</b> koja se nalazi na dnu popisa padajućeg izbornika. Ova opcija otvara galeriju u kojoj možete pretraživati i odabrati skupove podataka iz raznih izvora te ih koristiti u svojoj analizi. 
             </p>
             <p>Alat podržava do 1.000 geoobjekata u ulaznom sloju.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Odaberite svoj način putovanja (vožnja, vožnja kamionom ili hodanje) i mjerenja (vrijeme ili udaljenost). Dostupne načine putovanja određuje administrator va&scaron;e organizacije. Nakon &scaron;to odaberete način i mjerenje, unesite trajanje ili udaljenost do  5 sati (300 minuta) ili  300 milja (482,80 kilometara). 
+            </p>
+            <p>Smjer putovanja ( <b>Od mjesta usluge</b> ili <b>prema mjestu usluge</b>) može utjecati na način kako se područja generiraju. Stvori poligone vremena vožnje po&scaron;tivat će smjer jednosmjernih ulica, izbjegavati protuzakonita okretanja i držati se drugih pravila, ovisno o smjeru putovanja. Trebali biste odabrati smjer putovanja prema vrsti ulaznih lokacija i kontekstu va&scaron;e analize. Na primjer, poligon vremena vožnje za trgovinu za dostavu pizze trebao bi biti stvoren u smjeru dalje od mjesta usluge, dok bi poligon vremena vožnje za bolnicu trebao biti stvoren u smjeru prema mjestu usluge.
             </p>
             <p>Kada odaberete  <b>vrijeme vožnje</b>, <b>vrijeme vožnje ruralnim područjem</b> ili <b>vrijeme vožnje kamionom</b>, možete izmjeriti vrijeme vožnje.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Prikaži nedostupna područja kao rupe</h2></div>
+        <hr/>
+        <div>
+            <p>Odaberite hoće li izlazne povr&scaron;ine uključivati rupe ako neke ulice nije bilo moguće dosegnuti zbog vremena ili udaljenosti  <b>mjerenja</b> ili zbog ograničenja koja postavlja način putovanja.
+            </p>
+            <p>Područja vremena vožnje stvorena upotrebljavajući ovaj parametar imaju ograničenje od od 15 minuta ili 15 milja (24 kilometara).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Naziv sloja rezultata</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Ovo je naziv sloja koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti.  Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako naziv sloja već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Uključi dostupne ulice</h2></div>
+        <hr/>
+        <div>
+            <p>Uključi ulice koje se upotrebljavaju za stvaranje područja vremena vožnje kao izlazni sloj. 
+            </p>
+            <p>Stvori poligone vremena vožnje mjeri doseg mjesta usluge uzduž mreže ulica te stvara poligone vremena vožnje pomoću ulica kojima se putovalo. Zato su područja približna procjena ulica kojima se putovalo. Ako će va&scaron;a analiza utvrditi koje su ulice pokrivene unutar specifične udaljenosti putovanja ili vremena od mjesta usluge, stvaranje dostupnih ulica može biti točnije od upotrebe područja vremena vožnje za procjenu je li određena ulica bila dostupna.
+            </p>
+            <p>Područja vremena vožnje stvorena upotrebljavajući ovaj parametar imaju ograničenje od od 15 minuta ili 15 milja (24 kilometara).
             </p>
         </div>
     </div>

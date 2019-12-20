@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Selecionar raster ou camada de localização de elementos entre os quais determinar caminhos de viagem",inputCostRasterLabel:"Selecionar camada raster de custo de viagem",outputOptimumNetworkName:"Resultado de nome de camada de caminhos ótimos de polilinhas",outputNeighborNetworkName:"Resultado de nome de camada de caminhos vizinhos de polilinhas (opcional)",outputLayerName:"Determinar custo ótimo de viagem de ${layername}",itemDescription:"Camada de elementos gerada através da execução de Determinar rede de custo ótimo de viagem em ${layerName}. ",itemTags:"Resultado de Análise, Determinar Rede de Custo de Viagem, ${layername} ${fieldname}",itemSnippet:"Camada de elementos gerada através da execução de Determinar Rede de Custo Ótimo de Viagem."});

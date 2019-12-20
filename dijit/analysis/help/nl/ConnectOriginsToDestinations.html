@@ -44,7 +44,7 @@
         <h2>Vertrekpunten en bestemmingen met elkaar verbinden</h2><p/>
         <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Vertrekpunten en bestemmingen met elkaar verbinden"></h2>
         <hr/>
-    <p>Beginpunten aan bestemmingen koppelen meet de reistijd of afstand tussen paren van beginpunten en bestemmingen. De tool kan afstanden zowel hemelsbreed weergeven als de afstanden baseren op een manier van reizen, zoals lopen of rijden en kan tevens de reisduur baseren op een manier van reizen. Met deze tool kunt u het volgende doen:
+    <p>Beginpunten aan bestemmingen koppelen meet de reistijd of afstand tussen paren van beginpunten en bestemmingen. De tool kan afstanden zowel hemelsbreed weergeven als de afstanden en reisduur baseren op een manier van reizen, zoals lopen of rijden. Met deze tool kunt u het volgende doen:
     </p>
     <p>
         <ul>
@@ -52,14 +52,14 @@
             </li>
             <li>Meten hoe ver klanten reizen om bij uw winkels te winkelen. Gebruik deze informatie om uw marktbereik te bepalen, met name voor gerichte reclamecampagnes of het kiezen van nieuwe winkellocaties.
             </li>
-            <li>Het verwachte aantal kilometers voor uw wagenpark berekenen. Gebruik achteraf de tool Samenvatten in om de afstand per provincie of andere regio te rapporteren.
+            <li>Het verwachte aantal kilometers voor uw wagenpark berekenen. Gebruik achteraf de tool Samenvatten om de afstand per provincie of andere regio te rapporteren.
             </li>
         </ul>
         
     </p>
     <p>U levert de begin- en eindpunten en de tool geeft een laag terug met routes, inclusief metingen, tussen de gekoppelde beginpunten en bestemmingen. 
     </p>
-    <p>Als  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden alleen de objecten geanalyseerd die binnen het huidige extent van de kaart zichtbaar zijn. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag in aanmerking genomen, ook als ze zich buiten de huidige kaartomvang bevinden.
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden alleen de objecten geanalyseerd die binnen het huidige extent van de kaart zichtbaar zijn. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag meegenomen, ook als ze zich buiten de huidige kaartomvang bevinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -70,7 +70,7 @@
             <p>Kies puntlaag die het beginpunt of de beginpunten weergeeft. De tool ondersteunt maximaal  5.000 beginpunten en  5.000 bestemmingen. </p>
             <p>Als u een laag kiest die precies &eacute;&eacute;n beginpunt heeft, wordt het met alle bestemmingen verbonden.
             </p>
-            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> of <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Met deze optie wordt een galerij geopend waarin u kunt bladeren naar en datasets van verschillende bronnen kunt selecteren die u in uw analyse kunt gebruiken. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Als er &eacute;&eacute;n beginpunt en veel bestemmingen zijn, verbindt de tool het beginpunt met alle bestemmingen.
             </p>
-            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> of <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Met deze optie wordt een galerij geopend waarin u kunt bladeren naar en datasets van verschillende bronnen kunt selecteren die u in uw analyse kunt gebruiken. 
             </p>
             <p> Als er veel begin- en eindpunten zijn, hebt u twee velden nodig om de paren met beginpunten en eindbestemmingen te beschrijven: <b>ID-veld in oorsprongen</b> en <b>Overeenkomend ID-veld in bestemmingen</b>. De tool verbindt de begin- en eindpuntparen tijdens de analyse. Stel bijvoorbeeld dat u twee beginpunten hebt met de ID-waarden <code>Rosie</code> en <code>Harold</code> en twee bestemmingen met dezelfde ID-waarden. Het beginpunt <code>Rosie</code> wordt verbonden met de bestemming <code>Rosie</code> en <code>Harold</code> wordt verbonden met <code>Harold</code>. Andere verbindingen of metingen worden niet uitgevoerd.
             </p>
-            <p>De ID-waarden moeten uniek zijn binnen elke laag; zo kan de bestemmingenlaag geen twee waarden  <code>Rosie</code> bevatten. De waarden in de beginpunt- en bestemmingslagen moeten exact overeenkomen om paren te maken; <code>Harold</code> maakt geen verbinding met de onjuist gespelde waarde, <code>Harodl</code>. 
+            <p>Als er gelijke aantallen van oorsprong en bestemmingen zijn, moeten de ID-waarden uniek zijn binnen elke laag; zo kan de bestemmingenlaag geen twee waarden  <code>Rosie</code> bevatten. De waarden in de beginpunt- en bestemmingslagen moeten exact overeenkomen om paren te maken; <code>Harold</code> maakt geen verbinding met de onjuist gespelde waarde, <code>Harodl</code>. 
+            </p>
+            <p>De tool ondersteunt ook het verbinden van elke oorsprong met meer dan &eacute;&eacute;n bestemming of elke bestemming met meer dan &eacute;&eacute;n oorsprong. In dergelijke gevallen moet u nog steeds twee velden hebben die de oorsprong-bestemming paren beschrijven. Echter, slechts &eacute;&eacute;n van de lagen (de oorsprong- of de bestemmingslaag) hoeft unieke ID-waarden te hebben.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Een lijnbarri&egrave;re verhindert de doorgang voor het verkeer daar waar de barri&egrave;re de straat kruist. Een optocht of protestmars bijvoorbeeld waardoor het verkeer geen toegang heeft tot verschillende straatsegmenten kan weergegeven worden met een lijnbarri&egrave;re. Indien het aantal straatobjecten dat wordt doorkruist door alle lijnbarri&egrave;res meer dan 500 is, geeft de tool een foutmelding.
             </p>
             <p>Een polygoonbarri&egrave;re verhindert de doorgang voor het verkeer daar waar de polygoon de straat kruist. Een manier waarop deze barri&egrave;re gebruikt wordt is voor het weergeven van een overstroming in een bepaald gebied of van een bepaald netwerk van straten waar geen verkeer mogelijk is. Indien het aantal straatobjecten dat wordt doorkruist door alle polygoonbarri&egrave;res meer dan 2000 is, geeft de tool een foutmelding.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Vorm van de route</h2></div>
+        <hr/>
+        <div>
+            <p>Kies de vorm van de route die elke oorsprong verbindt met zijn bestemming wanneer u een reiswijze gebruikt:
+            </p>
+            <ul>
+                <li> <b>Volg de straten</b> - De vorm is gebaseerd op het onderliggende stratennetwerk. Deze optie is het beste als u de routes tussen oorsprong en bestemming wilt genereren.
+                </li>
+                <li> <b>Rechte lijn</b> - De vorm is een rechte lijn die het paar van oorsprong en bestemming met elkaar verbindt. Deze optie is het beste als u webdiagrammen of gewenste lijnen wilt genereren (bijvoorbeeld om te laten zien welke winkels de klanten bezoeken).
+                </li>
+            </ul>
+            
+            <p>De beste route tussen een vertrekpunt en de bijbehorende bestemming wordt altijd berekend op basis van de reismodus, ongeacht de gekozen routevorm.
             </p>
         </div>
     </div>

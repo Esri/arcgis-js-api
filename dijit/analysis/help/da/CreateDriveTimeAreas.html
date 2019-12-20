@@ -84,7 +84,7 @@
         <div>
             <p>De punktobjekter, der skal beregnes omr&aring;der omkring. Du kan v&aelig;lge, hvordan omr&aring;der beregnes p&aring; grundlag af rejsetilstand (bilk&oslash;rsel, lastbilk&oslash;rsel eller gang) og m&aring;ling (tid eller afstand).
             </p>
-            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> eller <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Denne indstilling &aring;bner et galleri, hvor du kan gennemse og v&aelig;lge datas&aelig;t fra forskellige kilder, som du kan bruge i din analyse. 
             </p>
             <p>V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 objekter i hvert inputlag.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>V&aelig;lg din rejsem&aring;de (k&oslash;rsel, lastbil eller gang) og m&aring;l (tid eller afstand De tilg&aelig;ngelige rejsetilstande fasts&aelig;ttes af administratoren for din organisation. N&aring;r du har valgt tilstand og m&aring;l, skal du angive en varighed eller afstand p&aring; op til  5 timer (300 minutter) eller  300 miles (482,80 kilometer). 
+            </p>
+            <p>Rejseretningen ( <b>v&aelig;k fra facilitet</b> eller <b>mod facilitet</b>) kan p&aring;virke, hvordan omr&aring;derne genereres. Opret k&oslash;retidsomr&aring;der overholder ensretning, undg&aring;r ulovlige sving og f&oslash;lger &oslash;vrige regler baseret p&aring; k&oslash;rselsretningen. Du skal v&aelig;lge k&oslash;rselsretning ud fra typen af input-placeringer og konteksten af din analyse. F.eks. skal k&oslash;retidsomr&aring;det for en pizza-udbringer oprettes v&aelig;k fra facilitet, mens k&oslash;retidsomr&aring;det for et hospital skal oprettes mod facilitet.
             </p>
             <p>N&aring;r du v&aelig;lger  <b>K&oslash;retid</b>, <b>K&oslash;retid i landlige omgivelser</b>, eller <b>Lastbilsk&oslash;retid</b> kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Vis utilgængelige områder som huller</h2></div>
+        <hr/>
+        <div>
+            <p>V&aelig;lg, om output-omr&aring;derne skal indeholde huller, hvis nogle gader ikke kunne n&aring;s p&aring; grund af  <b>M&aring;le</b>-tiden eller -afstanden eller p&aring; grund af begr&aelig;nsninger, der stammer fra rejsetilstanden.
+            </p>
+            <p>K&oslash;retidsomr&aring;der, der er oprettet ved hj&aelig;lp af denne parameter, har en gr&aelig;nse p&aring; 15 minutter eller 24 kilometer.
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Dette er navnet p&aring; det lag, som oprettes i  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis lagnavnet allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Ved hj&aelig;lp af rullemenuen  <b>Gem resultat</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Medtag gader, der kan nås</h2></div>
+        <hr/>
+        <div>
+            <p>Medtag de gader, der bruges til at oprette k&oslash;retidsomr&aring;derne, som et outputlag. 
+            </p>
+            <p>Opret k&oslash;retidsomr&aring;der m&aring;ler r&aelig;kkevidden for en facilitet langs vejnettet og opretter derefter k&oslash;retidsomr&aring;der ud fra de gader, der blev benyttet. Derfor er omr&aring;derne en tiln&aelig;rmelse baseret p&aring; de gader, der blev benyttet. Hvis din analyse skal fastl&aelig;gge, hvilke gader der er d&aelig;kket af en bestemt rejseafstand eller tid fra en facilitet, kan det v&aelig;re mere n&oslash;jagtigt at generere gader, der kan n&aring;s, end at bruge k&oslash;retidsomr&aring;derne til at vurdere, om en bestemt gade kan n&aring;s.
+            </p>
+            <p>K&oslash;retidsomr&aring;der, der er oprettet ved hj&aelig;lp af denne parameter, har en gr&aelig;nse p&aring; 15 minutter eller 24 kilometer.
             </p>
         </div>
     </div>

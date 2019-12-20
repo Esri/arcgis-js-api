@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({chooseInputLayer:"اختيار الطبقة المدخلة",addAVar:"إضافة متغير",distToNearest:"المسافة إلى المعلم الأقرب",attrOfInterest:"بيانات جدولية للمعلم الأقرب",summaryNearby:"ملخص المعالم المتجاورة",summaryIntersecting:"ملخص المعالم المتقاطعة",distToNearestLabel:"المسافة من مركز الخانة إلى المعلم الأقرب في الطبقة المدخلة",attrOfInterestLabel:"قيمة الحقل المحدد من المعلم الأقرب من الطبقة المدخلة",summaryNearbyLabel:"حساب إحصائي لكل المعالم الموجودة ضمن المسافة المحددة لمركز السلة",summaryIntersectingLabel:"إحصائي لحساب جميع المعالم المتقاطعة مع الخانة",maxDistancefromCtr:"أقصى مسافة من مركز الخانة",fieldToIncude:"حقل لإدراج",statstoCalculate:"إحصائية لحساب",summFeatuesWithin:"تلخيص المعالم ضمن",layerChangeWarnMsg:"ستتم إزالة المتغيرات المضافة للطبقة المدخلة هذه في حالة تغيير الطبقة المدخلة",validationErrorMsg:"أصلحْ أخطاء التحقق قبل إضافة متغير جديد",atleastOneVarMsg:"أضفْ متغير واحد على الأقل لهذه الطبقة المحددة"});

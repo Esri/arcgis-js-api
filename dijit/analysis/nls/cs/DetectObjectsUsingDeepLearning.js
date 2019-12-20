@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Definovat objekty pomocí deep learningu (Define Objects Using Deep Learning)",outputLayerName:"${layername}_detected",modelLabel:"Vyberte model deep learningu, který bude použit k detekování objektů",modelArgsLabel:"Zadejte argumenty modelu deep learningu",nameLabel:"Jméno",valueLabel:"Hodnota",removeDuplicatesLable:"Odstranit duplicitní prvky z výstupu (volitelné)",queryModelArgsMsg:"Dotazování argumentů modelu...",nonMaxSuppressionLabel:"Nemaximální potlačení",options:"Možnosti",confidenceLabel:"Pole hodnoty spolehlivosti",classValueLabel:"Pole hodnoty třídy",maxOverlapLabel:"Maximální poměr překryvu",numberOnlyMsg:"Jsou povoleny pouze číselné hodnoty.",analysisLayerLabel:"Vyberte snímek, který bude použit k detekování objektů",itemDescription:"Image služba analýzy vytvořená řešením Detekovat objekty pomocí deep learningu",itemTags:"Výsledek analýzy rastru, detekovat objekty pomocí deep learningu, ${layername}",itemSnippet:"Image služba analýzy vytvořená řešením Detekovat objekty pomocí deep learningu"});

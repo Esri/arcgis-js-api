@@ -67,10 +67,10 @@
         <div><h2>Scegli il layer puntuale che rappresenta le posizioni di origine</h2></div>
         <hr/>
         <div>
-            <p>Scegliere il layer puntuale che rappresenta l'origine o le origini.  Lo strumento supporta fino a  5.000 origini e  5.000 destinazioni. </p>
+            <p>Scegliere il layer puntuale che rappresenta l'origine o le origini. Lo strumento supporta fino a  5.000 origini e  5.000 destinazioni. </p>
             <p>Se si sceglie un layer contenente una sola origine, questa verr&agrave; utilizzata per connettere tutte le destinazioni.
             </p>
-            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Con questa opzione si apre una galleria in cui &egrave; possibile individuare e selezionare dataset di varie fonti da utilizzare nell'analisi. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Se invece &egrave; presente una sola origine ma pi&ugrave; destinazioni, lo strumento connetter&agrave; l'origine a ciascuna destinazione.
             </p>
-            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Con questa opzione si apre una galleria in cui &egrave; possibile individuare e selezionare dataset di varie fonti da utilizzare nell'analisi. 
             </p>
             <p> Se sono presenti pi&ugrave; origini e pi&ugrave; destinazioni, sar&agrave; necessario disporre di due campi che descrivono le coppie origine-destinazione: <b>Campo ID in origini</b> e <b>Campo ID corrispondente in destinazioni</b>. Lo strumento connette le coppie origine-destinazione durante l'analisi. Si immagini ad esempio di disporre di due origini il cui campo ID &egrave; <code>Rosie</code> e <code>Harold</code> e di due destinazioni con gli stessi ID. L'origine <code>Rosie</code> verr&agrave; connessa alla destinazione <code>Rosie</code>, mentre l'origine <code>Harold</code> verr&agrave; connessa alla destinazione <code>Harold</code>. Non vengono effettuate altre connessioni o misurazioni.
             </p>
-            <p>Gli ID devono essere univoci in ciascun layer, ad esempio nel layer delle destinazioni non possono esistere due ID  <code>Rosie</code>. Per creare le coppie, i valori nei layer di origine e destinazione devono essere perfettamente identici: <code>Harold</code> non verr&agrave; infatti connesso a un ID <code>Harodl</code> contenente un errore di ortografia. 
+            <p>Se vi sono numeri uguali nelle origini e nelle destinazioni, i valori ID devono essere univoci in ciascun layer; ad esempio nel layer delle destinazioni non possono esistere due valori  <code>Rosie</code>. Per creare le coppie, i valori nei layer di origine e destinazione devono essere perfettamente identici: <code>Harold</code> non verr&agrave; infatti connesso a un ID <code>Harodl</code> contenente un errore di ortografia. 
+            </p>
+            <p>Lo strumento supporta inoltre la connessione di ogni origine a pi&ugrave; di una destinazione, o di ogni destinazione a pi&ugrave; di un'origine. In tal caso, sar&agrave; comunque necessario avere due campi che includano la descrizione delle coppie origine-destinazione. Tuttavia, solo uno dei layer (o quello di origine o quello di destinazione) deve avere valori ID univoci.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Una barriera lineare impedisce di viaggiare lungo il perimetro di intersezione tra la barriera e le strade. Per esempio, tramite una barriera lineare, &egrave; possibile creare un corteo o una protesta in grado di bloccare il traffico interessando vari segmenti di strade. Se il numero di feature di strade che si intersecano con tutte le barriere lineari supera il numero 500, lo strumento restituir&agrave; un errore.
             </p>
             <p>Una barriera poligonale impedisce di viaggiare all&rsquo;interno di tutta l&rsquo;area di intersezione tra il poligono e le strade. &Egrave; possibile utilizzare questo tipo di barriera per creare alluvioni che coprano aree di rete di strade, rendendo impossibile la circolazione stradale. Se il numero di feature di strade che si intersecano con tutte le barriere poligonali supera il numero 2000, lo strumento restituir&agrave; un errore.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Forma del percorso</h2></div>
+        <hr/>
+        <div>
+            <p>Scegliere la forma del percorso che collega ogni origine alla sua destinazione durante la modalit&agrave; di viaggio:
+            </p>
+            <ul>
+                <li> <b>Seguire le strade</b>: la forma si basa sulla rete di strade sottostante. &Egrave; consigliabile scegliere questa opzione per generare percorsi tra origini e destinazioni.
+                </li>
+                <li> <b>Linea retta</b>: la forma &egrave; una linea retta che collega la coppia origine-destinazione. &Egrave; consigliabile scegliere questa opzione per generare diagrammi a ragno o linee preferite (ad esempio, per mostrare quali negozi stanno visitando i clienti).
+                </li>
+            </ul>
+            
+            <p>Il miglior percorso tra un'origine e la sua destinazione corrispondente viene calcolato sempre basandosi sulla modalit&agrave; di viaggio, indipendentemente da quale forma di percorso viene scelta.
             </p>
         </div>
     </div>

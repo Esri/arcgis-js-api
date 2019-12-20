@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Utwórz obszary czasu dojazdu</h2><p/>
+        <h2>Narzędzie Utwórz obszary czasu dojazdu</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Utw&oacute;rz obszary czasu dojazdu"></h2>
         <hr/>
     <p>Opcja Utw&oacute;rz obszary czasu dojazdu umożliwia tworzenie obszar&oacute;w, do kt&oacute;rych można dotrzeć w określonym czasie przejazdu lub po pokonaniu określonej odległości pojazdem bądź pieszo itd. Polega na wykonywaniu pomiar&oacute;w z jednego lub wielu punkt&oacute;w (do 1000) wzdłuż dr&oacute;g bądź pasaży i tworzeniu warstwy, dzięki kt&oacute;rej można udzielić odpowiedzi na pytania, takie jak:
@@ -84,7 +84,7 @@
         <div>
             <p>Obiekty punktowe, wok&oacute;ł kt&oacute;rych zostaną wyznaczone obszary. Można wybrać spos&oacute;b obliczania obszar&oacute;w na podstawie trybu podr&oacute;ży (samochodem osobowym, samochodem ciężarowym lub pieszo) i&nbsp;mierzonej wielkości (czas bądź odległość).
             </p>
-            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Wybranie tej opcji spowoduje otwarcie galerii, w kt&oacute;rej można wyszukać i wybrać zestawy danych pochodzące z r&oacute;żnych źr&oacute;deł w celu użycia ich podczas przeprowadzania analiz. 
             </p>
             <p>Narzędzie jest w&nbsp;stanie obsłużyć do 1000 obiekt&oacute;w w warstwie wejściowej.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Najpierw należy wybrać typ podr&oacute;ży (samochodem osobowym, samochodem ciężarowym lub pieszo) i&nbsp;mierzoną wielkość (czas bądź odległość). Dostępne tryby podr&oacute;żowania są określane przez administratora instytucji. Po wybraniu typu podr&oacute;ży i&nbsp;mierzonej wielkości należy wpisać maksymalny czas trwania lub odległość  5 godz. (300 min) lub  300 mil (482.80 km). 
+            </p>
+            <p>Kierunek podr&oacute;ży ( <b>Od obiektu</b> lub <b>Do obiektu</b>) może wpłynąć na spos&oacute;b generowania obszar&oacute;w. Narzędzie Utw&oacute;rz obszary czasu dojazdu uwzględnia drogi jednokierunkowe, unika zakaz&oacute;w skrętu oraz stosuje inne reguły zależne od kierunku podr&oacute;ży. Kierunek podr&oacute;ży należy wybrać na podstawie typu lokalizacji wejściowych i kontekstu analizy. Na przykład obszar czasu dojazdu związany z dostarczaniem pizzy należy utworzyć w kierunku podr&oacute;ży od obiektu, natomiast obszar czasu dojazdu do szpitala należy utworzyć w kierunku do obiektu.
             </p>
             <p>Po wybraniu narzędzia  <b>Czas przejazdu</b>, <b>Czas przejazdu w obszarach wiejskich</b> lub <b>Czas przejazdu samochodem ciężarowym</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Pokaż obszary nieosiągalne jako dziury</h2></div>
+        <hr/>
+        <div>
+            <p>Wybierz, czy obszary wynikowe będą zawierać dziury, gdy niekt&oacute;re ulice będą nieosiągalne ze względu na  <b>pomiar</b> czasu lub odległości albo z powodu ograniczeń narzuconych przez tryb podr&oacute;żowania.
+            </p>
+            <p>Obszary czasu dojazdu utworzone z użyciem tego parametru są ograniczone do 15&nbsp;minut lub 15&nbsp;mil (24&nbsp;kilometr&oacute;w).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli ta nazwa warstwy już istnieje, wyświetlona zostanie prośba o podanie innej nazwy.
             </p>
             <p>Używając menu rozwijanego  <b>Zapisz wynik w</b>, można wskazać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Dołącz osiągalne ulice</h2></div>
+        <hr/>
+        <div>
+            <p>Dołącz w postaci warstwy wynikowej ulice, kt&oacute;re są uwzględniane podczas tworzenia obszar&oacute;w czasu dojazdu. 
+            </p>
+            <p>Narzędzie Utw&oacute;rz obszary czasu dojazdu określa możliwość dotarcia do obiektu wzdłuż sieci ulic, a następnie tworzy obszary czasu dojazdu na podstawie ulic, kt&oacute;rymi przebiegała podr&oacute;ż. Oznacza to, że obszary te są przybliżeniem przejechanych ulic. Jeśli celem analizy jest ustalenie, kt&oacute;re ulice leżą na obszarze konkretnej odległości lub konkretnego czasu podr&oacute;ży od obiektu, określenie, czy dana ulica jest osiągalna, może być dokładniejsze przez wygenerowanie osiągalnych ulic niż przez użycie obszar&oacute;w czasu dojazdu.
+            </p>
+            <p>Obszary czasu dojazdu utworzone z użyciem tego parametru są ograniczone do 15&nbsp;minut lub 15&nbsp;mil (24&nbsp;kilometr&oacute;w).
             </p>
         </div>
     </div>

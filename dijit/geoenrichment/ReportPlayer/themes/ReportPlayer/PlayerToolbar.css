@@ -183,3 +183,10 @@
         .esriGEReportPlayer .reportPlayer_playerAfterToolbarDiv.playerToolbar_parentHasScroll.isMobileDevice {
             right: 5px; 
         }
+
+
+
+
+.esriGEReportPlayerToolbar_comparisonSettingsIcon {
+    background-image: url("../images/gearWhite.svg");
+}

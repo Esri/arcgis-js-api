@@ -41,88 +41,87 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Summarize Attributes</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summarize Attributes diagram"></h2>
+        <h2>סכם מאפיינים</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="תרשים 'סכם מאפיינים"></h2>
         <hr/>
-    <p> This tool summarizes all the matching values in one or more fields and calculates statistics on them. The
-most basic statistic is the count of features that have been summarized together, but you can calculate more advanced statistics as well.
+    <p> כלי זה מסכם את כל הערכים התואמים בשדה אחד או יותר ומחשב עליהם נתונים סטטיסטיים. הנתון הסטטיסטי הבסיסי ביותר הוא מספר הישויות שסוכמו יחד, אבל ניתן לחשב גם נתונים סטטיסטיים מתקדמים יותר.
     </p>
-    <p>For example, suppose you have point features of store locations with a field representing the  <i>DISTRICT_MANAGER_NAME</i>, and you want to summarize coffee sales by manager. You can specify the field <i>DISTRICT_MANAGER_NAME</i> as the field to dissolve on, and all rows of data representing individual managers will be summarized. This means all store locations that are managed by <pre>Manager1</pre> will be summarized into one row, with summary statistics calculated. In this instance, statistics like the count of the number of stores and the sum of <i>TOTAL_SALES</i> for all stores that <pre>Manager1</pre> manages would be calculated, as well as for any other manager listed in the <i>DISTRICT_MANAGER_NAME</i> field.
+    <p>לדוגמה, נאמר שיש לך ישויות נקודה של מיקומי חנויות עם שדה שמייצג את  <i>DISTRICT_MANAGER_NAME</i>, וברצונך לסכם מכירות של קפה לפי מנהל. באפשרותך לציין את השדה <i>DISTRICT_MANAGER_NAME</i> כשדה למזג לפיו, וכל השורות של נתונים שמייצגים מנהלים שונים יסוכמו. כלומר, כל מיקומי החנויות שמנוהלות על ידי <pre>Manager1</pre> יסוכמו לשורה אחת, עם סיכומים של נתונים סטטיסטיים. בדוגמה הזאת, נתונים סטטיסטיים כגון ספירת מספר החנויות והסכום של <i>TOTAL_SALES</i> עבור כל החנויות ש- <pre>Manager1</pre> מנהל יחושבו, וכן עבור כל מנהל אחר שמופיע בשדה <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose the input to summarize</h2></div>
+        <div><h2>בחר את הקלט לסיכום</h2></div>
         <hr/>
         <div>
-            <p>The layer that contains the fields that will be summarized.  
+            <p>השכבה שמכילה את השדות שיסוכמו.  
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Choose how to summarize your data</h2></div>
+        <div><h2>בחר איך לסכם את הנתונים שלך</h2></div>
         <hr/>
         <div>
-            <p>There are two ways to summarize your data:
+            <p>קיימות שתי דרכים לסכם את הנתונים:
                 <ul>
-                    <li> <b>All features into a single feature</b>&mdash;Calculates statistics on all features.
+                    <li> <b>כל הישויות לישות אחת</b> - חשב נתונים סטטיסטיים על כל הישויות.
                     </li>
-                    <li> <b>By fields</b>&mdash;Groups  features by like values in specified fields.
+                    <li> <b>לפי שדות</b> - מקבץ ישויות לפי ערכים דומים בשדות שצוינו.
                     </li>
                 </ul>
                 
             </p>
-            <p>For example, suppose you had a dataset of trees that included fields of   <i>treetype</i> with values <code>Maple</code>, <code>Fir</code> and <code>Pine</code>,  and a field <i>treeheight</i>, and you are interested in finding the mean <i>treeheight</i>. If you summarize all features into a single feature, you will find the mean tree height of all trees, which will result in one mean value. If you summarized by the field <i>treeheight</i>, you would end up with a mean for maple trees, a mean for fir trees, and a mean for pine trees.
+            <p>לדוגמה, נניח שיש לך סט נתונים של עצים שכולל שדות של  <i>treetype</i> עם הערכים <code>אדר</code>, <code>אשוח</code> ו <code>אורן</code> ושדה <i>treeheight</i>, ואתה מעוניין למצוא את הממוצע של <i>treeheight</i>. אם תסכם את כל הישויות לישות אחת, תמצא את גובה העצים הממוצע של כל העצים, שייתן כתוצאה ערך ממוצע אחד. אם סיכמת לפי השדה <i>treeheight</i>, תקבל את הממוצע עבור עצי אדר, ממוצע עבור עצי אשוח וממוצע עבור עצי אורן.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Add statistics (optional)</h2></div>
+        <div><h2>הוסף סטטיסטיקה (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
+            <p>באפשרותך לחשב נתונים סטטיסטיים בישויות שסוכמו. באפשרותך לחשב את הערכים הבאים בשדות מספריים: 
                 <ul>
-                    <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
+                    <li>ספירה - מחשב את מספר הערכים שאינם null. ניתן להשתמש בחישוב זה על שדות מספריים או מחרוזות. הספירה של [null&rlm;, 0, 2] היא 2.
                     </li>
-                    <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
+                    <li>סכימה - הסכימה של ערכים מספריים בשדה. הסכימה של [null&rlm;, null&rlm;, 3] היא 3.
                     </li>
-                    <li>Mean&mdash;The mean of numeric values. The mean of [0, 2, null] is 1.
+                    <li>ממוצע - הממוצע של ערכים מספריים. הממוצע של [0&rlm;, 2, null] הוא 1.
                     </li>
-                    <li>Min&mdash;The minimum value of a numeric field. The minimum of [0, 2, null] is 0. 
+                    <li>מינימום - ערך המינימום של שדה מספרי. המינימום של [0&rlm;, 2, null] הוא 0. 
                     </li>
-                    <li>Max&mdash;The maximum value of a numeric field. The maximum value of [0, 2, null] is 2.
+                    <li>מקסימום - ערך המקסימום של שדה מספרי. המקסימום של [0&rlm;, 2, null] הוא 2.
                     </li>
-                    <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
+                    <li>טווח - הטווח של שדה מספרי. ערך זה מחושב על ידי חיסור ערכי המינימום מערך המקסימום. הטווח של [0&rlm;, null, 1] הוא 1. הטווח של [null&rlm;, 4] הוא 0.
                     </li>
-                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,0,1,1] is 0.25.
+                    <li>שונות - השונות של שדה מספרי במסלול. השונות של [1] היא null. השונות של [null&rlm;, 1&rlm;,0&rlm;,1&rlm;,1] היא 0.25.
                     </li>
-                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
+                    <li>סטיית תקן - סטיית התקן של של שדה מספרי. סטיית התקן של [1] היא null. סטיית התקן של [null&rlm;, 1&rlm;,0&rlm;,1&rlm;,1] היא 0.5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>You can calculate the following on string fields:
+            <p>באפשרותך לחשב את הערכים הבאים בשדות מחרוזות:
                 <ul>
-                    <li>Count&mdash;The number of nonnull strings.
+                    <li>ספירה - מחשב את מספר המחרוזות שאינן null.
                     </li>
-                    <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
+                    <li>כלשהו - נתון סטטיסטי זה הוא דגימה אקראית של ערך מחרוזת בשדה שצוין.
                     </li>
                 </ul>
-                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+                כל הנתונים הסטטיסטיים יחושבו על ערכי שאינם null. שכבת התוצאה תכיל שדה חדש עבור כל נתון סטטיסטי שחושב. ניתן להוסיף כל מספר של נתונים סטטיסטיים על ידי בחירת מאפיין ונתון סטטיסטי. 
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Choose datastore</h2></div>
+        <div><h2>בחר מאגר נתונים</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>תוצאות GeoAnalytics מאוחסנות במאגר נתונים ונחשפות כשכבת ישויות ב- Portal for ArcGIS. במרבית המקרים, יש לאחסן את התוצאות במאגר נתונים מרחבי-זמני, וזוהי ברירת המחדל. במקרים מסוימים, שמירת התוצאות במאגר נתונים יחסי היא אפשרות טובה. להלן הסיבות שבגינן ייתכן שתרצה לאחסן תוצאות במאגר נתונים יחסי: 
                 <ul>
-                    <li>You can use results in portal-to-portal collaboration.
+                    <li>תוכל להשתמש בתוצאות בשיתוף פעולה של פורטל-לפורטל.
                     </li>
-                    <li>You can enable sync capabilities with your results.
+                    <li>תוכל לאפשר יכולות סנכרון עם התוצאות שלך.
                     </li>
                 </ul>
                 
@@ -130,16 +129,12 @@ most basic statistic is the count of features that have been summarized together
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists, the tool will fail.
+            <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.
             </p>
-            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
-the name of a folder in <b>My Content</b> where the result will be
-saved.
+            <p>בעת כתיב ל- ArcGIS Data Store (מאגר נתונים יחסים או מרחבי-זמני של Big Data) בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

@@ -70,7 +70,7 @@
             <p>Izberite točkovni sloj, ki predstavlja izhodi&scaron;če ali izhodi&scaron;ča. Orodje podpira do  5.000 izhodi&scaron;č in  5.000 ciljev. </p>
             <p>Če izberete sloj, ki ima natančno eno izhodi&scaron;če, se bo povezalo z vsemi cilji.
             </p>
-            <p class="OnlineOnly">Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo iz zbirke Living Atlas</b> ali <b>Izberi sloj za analizo</b>, ki se nahajata v spodnjem delu spustnega menija. To odpre galerijo, ki vsebuje zbirko slojev, uporabnih za mnoge analize. 
+            <p>Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo</b> ki se nahaja v spodnjem delu spustnega menija. Ta možnost odpre galerijo, kjer lahko brskate in izberete sklope podatkov iz različnih virov za uporabo v svoji analizi. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Če obstaja eno izhodi&scaron;če in več ciljev, orodje poveže izhodi&scaron;če z vsakim od ciljev.
             </p>
-            <p class="OnlineOnly">Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo iz zbirke Living Atlas</b> ali <b>Izberi sloj za analizo</b>, ki se nahajata v spodnjem delu spustnega menija. To odpre galerijo, ki vsebuje zbirko slojev, uporabnih za mnoge analize. 
+            <p>Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo</b> ki se nahaja v spodnjem delu spustnega menija. Ta možnost odpre galerijo, kjer lahko brskate in izberete sklope podatkov iz različnih virov za uporabo v svoji analizi. 
             </p>
             <p> Če obstaja veliko izhodi&scaron;č in veliko ciljev, morate imeti vsaj dve polji, ki opisujeta pare izhodi&scaron;če&ndash;cilj: <b>ID polje v izhodi&scaron;čih</b> in <b>Ujemajoče ID polje v ciljih</b>. Orodje med analizo poveže pare izhodi&scaron;če&ndash;cilj. Na primer, predstavljajte si, da imate dve izhodi&scaron;či z vrednostmi ID polja <code>Rosie</code> in <code>Harold</code> in dva cilja z istimi ID vrednostmi. Izhodi&scaron;če <code>Rosie</code> se bo povezalo s ciljem <code>Rosie</code> in <code>Harold</code> se bo povezal s <code>Harold</code>. Druge meritve ali povezave ne bodo izvedene.
             </p>
-            <p>ID vrednosti morajo biti enolične znotraj vsakega sloja: na primer, sloj ciljev ne more imeti dveh vrednosti  <code>Rosie</code>. Vrednosti slojev izhodi&scaron;č in ciljev se morajo natanko ujemati, da tvorijo pare: <code>Harold</code> se ne bo povezal z vrednostjo, ki ni pravilno zapisana &ndash; <code>Harodl</code>. 
+            <p>Če obstaja enako &scaron;tevilo izhodi&scaron;č in ciljev, morajo biti ID vrednosti enolične znotraj vsakega sloja: na primer, sloj ciljev ne more imeti dveh vrednosti  <code>Rosie</code>. Vrednosti slojev izhodi&scaron;č in ciljev se morajo natanko ujemati, da tvorijo pare: <code>Harold</code> se ne bo povezal z vrednostjo, ki ni pravilno zapisana &ndash; <code>Harodl</code>. 
+            </p>
+            <p>Orodja prav tako podpirajo povezovanje vsakega izhodi&scaron;ča z več kot enim ciljem ali vsakega cilja z več kot enim izhodi&scaron;čem. V takih primerih morate kljub temu imeti dve polji, ki opisujeta pare izhodi&scaron;če-cilj. Samo eden od slojev (bodisi sloj izhodi&scaron;ča ali cilja) mora imeti enolično ID vrednost.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Linijska ovira prepoveduje potovanje na območju, kjer se ovira križa z ulico. Na primer, z linijsko oviro je mogoče prikazati parado ali protest, ki blokira promet po več uličnih segmentih. Če &scaron;tevilo geoobjektov ulice, ki se križajo z linijskimi ovirami, presega 500, orodje javi napako.
             </p>
             <p>Poligonska ovira prepoveduje potovanje na območju, kjer se poligon križa z ulico. En način uporabe te vrste ovire je prikaz poplav, ki pokrivajo območja uličnega omrežja, in zaradi katerih je potovanje po cesti nemogoče. Če &scaron;tevilo geoobjektov ulice, ki se križajo s poligonskimi ovirami, presega 2000, orodje javi napako.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Oblika poti</h2></div>
+        <hr/>
+        <div>
+            <p>V načinu potovanja izberite obliko poti, ki vsako izhodi&scaron;če povezuje z njegovim ciljem:
+            </p>
+            <ul>
+                <li> <b>Sledi ulicam</b> - Oblika je odvisna od mreže osnovnih ulic. Ta izbira je najbolj&scaron;a, če želite ustvariti poti med izhodi&scaron;či in cilji.
+                </li>
+                <li> <b>Zračna razdalja</b> - Oblika je ravna linija, ki povezuje par izhodi&scaron;če-cilj. Ta možnost je najbolj&scaron;a, ko želite ustvariti diagram pajkove mreže ali želene linije (na primer, da bi prikazali katere trgovine stranke obiskujejo).
+                </li>
+            </ul>
+            
+            <p>Najbolj&scaron;a pot med izhodi&scaron;čem in njegovim ujemajočim se ciljem je izračunana na podlagi načina potovanja, ne glede na izbiro oblike poti.
             </p>
         </div>
     </div>

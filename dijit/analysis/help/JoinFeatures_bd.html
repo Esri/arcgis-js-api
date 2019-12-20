@@ -59,9 +59,9 @@ relationships or some combination of the  three. The tool determines all input f
         <div>
             <p>The layer that will have  attributes from the join layer appended to its table.
             </p>
-            <p>Analysis using the  <b>Near</b> spatial relationship requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
+            <p>Analysis using the  <b>Near</b> spatial relationship requires a projected coordinate system. You can set the processing coordinate system in Analysis Environments. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you run analysis .
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
             </p>
         </div>
     </div>
@@ -71,7 +71,7 @@ relationships or some combination of the  three. The tool determines all input f
         <div>
             <p>The join layer with the attributes that will be appended to the target layer.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
             </p>
         </div>
     </div>
@@ -121,7 +121,9 @@ relationships or some combination of the  three. The tool determines all input f
                     </li>
                     <li> <b>Equals</b>&mdash;The features will be matched if they have the same geometry.
                     </li>
-                    <li> <b>Near</b>&mdash;The features will be matched if they are within a specified distance of each other. The target   layer must be in a projected coordinate system, or the processing spatial reference must be set to a projected coordinate system using <b>Analysis Environments</b> if a spatial <b>Near</b> relationship is used.
+                    <li> <b>Near Planar</b>&mdash;The features will be matched if they are within a specified distance of each other. The target   layer must be in a projected coordinate system, or the processing spatial reference must be set to a projected coordinate system using <b>Analysis Environments</b> if a spatial <b>Near</b> relationship is used.
+                    </li>
+                    <li> <b>Near Geodesic</b>&mdash;The features will be matched if they are within a specified distance of each other. The distance is measured using planar distance.
                     </li>
                     <li> <b>Contains</b>&mdash;The features will be matched if the target layer is contained in the joining features.
                     </li>

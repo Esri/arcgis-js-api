@@ -7,6 +7,10 @@
       <input name="rasterDataMode" type="radio" data-dojo-attach-point="itemMode"
         style="font-size: 10px;" data-dojo-attach-event="onclick: _onItemModeSelect"
         class="jimu-leading-margin2 jimu-radio-btn"><label style=" width: auto;" class="jimu-leading-margin025">${nls.useUploadForGPInput}</label>
+      <input name="rasterDataMode" type="radio" data-dojo-attach-point="imgServerMode"
+        style="font-size: 12px;" data-dojo-attach-event="onclick: _onSelectModeClick"
+        class="jimu-leading-margin35 jimu-radio-btn" /><label style=" width: auto;"
+        class="jimu-leading-margin05">${chooseLayerName}</label>
     </div>
   </div>
   <div>
@@ -20,7 +24,7 @@
           </tr>
           <tr>
             <td><label title="${nls.url}">${nls.url}</label></td>
-            <td><input type="text" data-dojo-props="rest:false" data-dojo-type="esri/dijit/analysis/customgp/common/dijit/URLInput" 
+            <td><input type="text" data-dojo-props="rest:false" data-dojo-type="esri/dijit/analysis/customgp/common/dijit/URLInput"
               data-dojo-attach-point="urlEditor" class="common-input"/></td>
           </tr>
         </table>
@@ -42,6 +46,8 @@
           </form>
           <span data-dojo-attach-point="uploadFileName" class="jimu-leading-margin2"></span>
         </div>
+      </div>
+      <div data-dojo-attach-point="ImgSvclayerNode" data-dojo-props="label:imgServNode">
       </div>
     </div>
   </div>

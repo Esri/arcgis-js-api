@@ -41,65 +41,63 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Create Watersheds</h2><p/>
-        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Create Watersheds"></h2>
+        <h2>צור קווי פרשת מים</h2><p/>
+        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="צור קווי פרשת מים"></h2>
         <hr/>
-    <p>This tool determines the watershed, or upstream contributing area, for each point in your input layer. 
+    <p>כלי זה קובע את קו פרשת המים, או שטח תורם במעל הזרם, עבור כל נקודה בשכבת הקלט. 
     </p>
-    <p>For example, suppose you have point features representing  locations of waterborne contamination and you want to find the likely sources of the contamination. Since the source of the contamination must be somewhere within the watershed upstream of the point, you would use this tool to define the watersheds containing the sources of the contaminant.
+    <p>לדוגמה, נאמר שיש לך ישויות נקודה שמייצגות מיקומים של זיהום המועבר במים, וברצונך למצוא את המקורות האפשריים של הזיהום. מכיוון שמקור הזיהום חייב להיות במיקום כלשהו במעלה הזרם של פרשת המים, אל הנקודה, תשתמש בכלי זה כדי להגדיר את קווי פרשת המים שמכילים את מקורות הזיהום.
     </p>
-    <p>The location of your input points is important.  If they are not located precisely on a drainage line, the resulting watersheds may be very small and not useful for your analysis.  The   <b>Search distance to nearest drainage</b> can be used to adjust the location of your input points so they fall precisely on a drainage line in order to find the watershed that flows into the  point located on the drainage line.  The adjusted locations used to find the watersheds are written to the output layer&mdash;your input points are not modified.
+    <p>יש חשיבות למיקום של נקודות הקלט.  אם הן לא נמצאות בדיוק על קו ניקוז, קווי פרשת המים שיתקבלו עשויים להיות קטנים מאוד ולא מועילים עבור הניתוח.  ניתן להשתמש ב <b>מרחק החיפוש לאגן הניקוז הקרוב ביותר</b> כדי לכוונן את המיקום של נקודות הקלט כך שהם יימצאו בדיוק על קו הניקוז, כדי למצוא את קו פרשת המים שזורם לתוך הנקודה שנמצאת על קו הניקוז.  המיקומים המכווננים אשר משמשים לאיתור קווי פרשת המים נכתבים בשכבת הקלט - נקודות הקלט לא משתנות.
     </p>
-    <p>The result is a group layer  containing  two layers:  the watersheds and the  adjusted points used to compute the watersheds.     
+    <p>התוצאה היא שכבת קבוצה שמכילה שתי שכבות: קווי פרשת המים והנקודות המכווננות אשר משמשות לחישוב קווי פרשת המים.     
     </p>
-    <p>The resulting watersheds  will have all of the attributes  of your input points  as well as these additional attributes:     
+    <p>לקווי פרשת המים שיתקבלו יהיו כל המאפיינים של נקודות הקלט וכן המאפיינים הנוספים הבאים:     
         <ul>
-            <li> <i>PourPtID</i>&mdash;Contains the ID value from the input point
+            <li> <i>PourPtID</i> - מכיל את ערך המזהה מנקודת הקלט
             </li>
-            <li> <i>Area Square Kilometers</i>&mdash;Contains the area in square kilometers of the upstream watershed
+            <li> <i>Area Square Kilometers</i> - מכיל את שטח קו פרשת המים במעלה הזרם בקמ&quot;ר
             </li>
-            <li> <i>Description</i> and <i>DataResolution</i>&mdash;Contains  information pertaining to the hydrologic data used to calculate the trace
+            <li> <i>Description</i> ו- <i>DataResolution</i> - מכילים מידע שקשור לנתונים ההידרולוגיים המשמשים לחישוב המעקב
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features in the current map extent will be used to compute watersheds.  If unchecked, all features in the input layer  will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בגבולות תיחום המפה הנוכחי ישמשו לחישוב קווי פרשת מים.  אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Point features to use for calculating watersheds</h2></div>
+        <div><h2>ישויות נקודתיות משמשות לחישוב אגני ניקוז</h2></div>
         <hr/>
         <div>
-            <p>A watershed (the upstream contributing area) will be calculated 
-for each point.  
+            <p>קו פרשת מים (שטח תורם במעלה הזרם) יחושב עבור כל נקודה.  
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="SearchDistance">
-        <div><h2>Search distance to nearest drainage</h2></div>
+        <div><h2>חפש מרחק לניקוז הקרוב ביותר</h2></div>
         <hr/>
         <div>
-            <p>If your input points are located away from a drainage line, the resulting watersheds are likely to be very small and not of much use  in analysis, such as determining the upstream source of contamination.  In most cases, you want your input point to snap to the nearest drainage line in order to find the watersheds that flows to a point located on the drainage line.  To find the closest drainage line, specify a search distance.  If you do not specify a search distance, the tool will compute and use a conservative search distance.  
+            <p>אם נקודות הקלט שלך נמצאות הרחק מקו ניקוז, סביר להניח שקווי פרשת המים שיתקבלו יהיו קטנים מאוד ולא מאוד שימושיים לניתוח, כגון קביעת מקור הזיהום במעלה הזרם.  במרבית המקרים, תרצה שנקודת הקלט תהיה צמודה לקו הניקוז הקרוב ביותר כדי למצוא את קו פרשת המים שזורם לנקודה שנמצאת על קו הניקוז. כדי למצוא את קו הניקוז הקרוב ביותר, ציין מרחק חיפוש.  אם לא תציין מרחק חיפוש, הכלי יחשב ויעשה שימוש במרחק חיפוש שמרני.  
             </p>
-            <p>To use the exact location of your input point, specify a search distance of zero.  
+            <p>כדי להשתמש במיקום המדויק של נקודת הקלט, ציין מרחק חיפוש של אפס.  
             </p>
-            <p>For analysis purposes, drainage lines have been precomputed by Esri using standard hydrologic models.  If there is no drainage line within the search distance, the location containing the highest flow accumulation within the search distance is used.
+            <p>למטרות ניתוח, קווי ניקוז חושבו מראש על ידי Esri תוך שימוש במודלים הידרולוגיים סטנדרטיים.  אם יש קו ניקוז בטווח מרחק החיפוש, נעשה שימוש במיקום שמכיל את הצטברות הזרם הגבוהה ביותר בטווח החיפוש.
             </p> 
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Result layer
-name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
-            <p> Running this tool does not consume credits.
+            <p> הפעלת כלי זה אינה צורכת נקודות קרדיט.
             </p>
         </div>
     </div>

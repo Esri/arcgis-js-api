@@ -41,24 +41,24 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Choose Best Facilities</h2><p/>
-        <h2><img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="Choose Best Facilities"></h2>
+        <h2>בחר את המתקנים הטובים ביותר</h2><p/>
+        <h2><img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="בחר את המתקנים הטובים ביותר"></h2>
         <hr/>
-    <p>Choose Best Facilities allows you to choose the best locations for facilities. The tool   allocates locations with demand for the facilities in a way that satisfies the specified goal.
+    <p>הכלי 'בחר את המתקנים הטובים ביותר' מאפשר לך לבחור את המיקומים הטובים ביותר עבור מתקנים. כלי זה מקצה מיקומים שבהם יש ביקוש למתקנים באופן שממלא את היעד שצוין.
     </p>
-    <p>Facilities represent locations that offer some kind of service such as fire stations, schools, libraries, stores, or distribution centers. Demand locations represent locations that have demand for the services offered by the facilities, such as census block points that summarize the population in a given area.
+    <p>מתקנים מייצגים מיקומים שמציעים סוג כלשהו של שירות, כגון תחנות כיבוי אש, בתי ספר, ספריות, חנויות או מרכזי הפצה. מיקומי ביקוש מייצגים מיקומים שיש בהם ביקוש לשירותים שמציעים המתקנים, כגון נקודות בלוק מפקד תושבים שמסכמות את האוכלוסייה באזור נתון.
     </p>
-    <p>The Choose Best Facilities tool can help you answer questions such as
+    <p>הכלי 'בחר את המתקנים הטובים ביותר' יכול לעזור לך לענות על שאלון כגון
         <ul>
-            <li>In the case of an emergency, how can  households be assigned to the correct disaster relief center, when bed capacity is limited and should not be exceeded?
+            <li>במצב חירום, כיצד ניתן להקצות בתי-אב למרכז הנכון לסיוע בעת אסון, כאשר קיבולת המיטות מוגבלת ואין לחרוג ממנה?
             </li>
-            <li>How can you assign neighborhoods to their closest library branch and find the number of potential patrons each branch is serving? 
+            <li>כיצד ניתן להקצות שכונות לסניף הספרייה הקרוב ביותר אליהן, ולמצוא את מספר המשתמשים הפוטנציאלי שכל סניף משרת? 
             </li>
-            <li>How can you find the best location for a grocery distribution center that minimizes overall travel time (and hence cost) for delivery to a chain of grocery stores?
+            <li>איך אפשר למצוא את המיקום הטוב ביותר למרכז הפצת מוצרי מכולת, אשר ממזער את זמני ההגעה (ולפיכך את העלות) לאספקה לרשת חנויות מכולת?
             </li>
-            <li>Where would a new park be located to ensure the greatest number of the city&rsquo;s residents live within a five-minute walk of a park?
+            <li>היכן ימוקם פארק חדש, כך שיובטח שהמספר הגדול ביותר של תושבי העיר מתגוררים במרחק של חמש דקות הליכה מהפארק?
             </li>
-            <li>What are the best locations for several pet stores in a county such that 40 percent of the county&rsquo;s pet owners are no more than a ten-minute drive from one of the stores?
+            <li>מהם המיקומים הטובים ביותר לשורה של חנויות לחיות מחמד במחוז שבו 40 אחוז מבעלי חיות המחמד במחוז מתגוררים במרחק שלא עולה על עשר דקות נהיגה מאחת החנויות?
             </li>
         </ul>
         
@@ -66,148 +66,148 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="goal">
-        <div><h2>Goal</h2></div>
+        <div><h2>יעד</h2></div>
         <hr/>
         <div>
-            <p>Specify the goal that must be satisfied when allocating demand locations to facilities.
+            <p>ציין את היעד שיש למלא בעת הקצאת מיקומי ביקוש למתקנים.
             </p>
-            <p>With Choose Best Facilities you can specify the type of problem you&rsquo;re solving&mdash;the Goal. The tool is optimized to provide a solution for that particular goal. Regardless of the goal, essentially the same underlying method is used to reach a solution&mdash;the demand amount from a given demand location is allocated to the nearest facility. The goals vary how the interplay between distance (or time) and demand is handled. The tool considers both travel distance/time and amount of demand, and&mdash;in some cases&mdash;the capacity of the facilities. If a goal favors minimizing travel time, for example, the tool will still secondarily try to maximize demand that is allocated. Similarly, if the goal is to maximize demand allocated, the tool will do so by minimizing travel time (by assigning demand locations to the closest facility rather than just any facility).
+            <p>בעזרת 'בחר את המתקנים הטובים ביותר' באפשרותך לציין את סוג הבעיה שאתה פותר - זהו 'היעד'. הכלי ממוטב לספק פתרון ליעד מסוים זה. לא משנה מה היעד, אותה שיטה בסיסית במהותה משמשת להשגת פתרון - כמות הביקוש ממיקום ביקוש נתון מוקצית למתקן הקרוב ביותר. השילוב בין מרחק (או זמן) לבין ביקוש מטופל באופן שונה ביעדים השונים. הכלי לוקח בחשבון הן את מרחק/זמן ההגעה למיקום והן את כמות הביקוש, ובמקרים מסוימים גם את קיבולת המתקנים. אם, לדוגמה, לפי היעד יש עדיפות למזעור זמן ההגעה, הכלי עדיין ינסה בעדיפות משנית למקסם את הביקוש שמוקצה. בדומה, אם היעד הוא למקסם ביקוש מוקצה, הכלי יעשה זאת על ידי מזעור זמן ההגעה (באמצעות הקצאת מיקומי ביקוש למתקן הקרוב ביותר במקום למתקן כלשהו).
             </p>
-            <p>Depending on your data and the settings you use, different goals may produce the same or similar results. However, you should specify the goal that&rsquo;s the most appropriate for your analysis.
+            <p>בהתאם לנתונים ולהגדרות שבהן אתה משתמש, יעדים שונים עשויים להפיק את אותן תוצאות או תוצאות דומות. עם זאת, עליך לציין את היעד שהוא המתאים ביותר עבור הניתוח שלך.
             </p> 
         </div>
     </div>
     <div id="allocateToExistingFacilities">
-        <div><h2>Allocate to existing facilities</h2></div>
+        <div><h2>הקצה למתקנים קיימים</h2></div>
         <hr/>
         <div>
-            <p>Use this goal if you do not want to locate new facilities and  want to assign demand to existing facilities that can have limited or unlimited capacity.    
+            <p>השתמש ביעד זה אם ברצונך לאתר מתקנים חדשים ולהקצות ביקוש למתקנים קיימים שיש להם קיבולת מוגבלת או בלתי מוגבלת.    
             </p>
-            <p>This goal assigns demand to facilities based on the capacity at the facility and the amount of demand from the surrounding area. Demand is allocated to the closest facility until the available capacity is met. If you specify a maximum travel range, any demand locations beyond the range will not be assigned to a facility, even if all the demand has not been completely allocated.
+            <p>יעד זה מקצה מיקומי ביקוש למתקנים בהתבסס על הקיבולת במתקן ועל כמות הביקוש הקיימת בסביבה. הביקוש מוקצה למתקן הקרוב ביותר, עד שהקיבולת הזמינה מתמלאת. אם אתה מציין טווח הגעה מקסימלי, כל מיקומי ביקוש מעבר לטווח לא יוקצו למתקן, גם אם הביקוש כולו לא הוקצה במלואו.
             </p> 
         </div>
     </div>
     <div id="minimizeTravel">
-        <div><h2>Minimize travel</h2></div>
+        <div><h2>מזער נסיעה</h2></div>
         <hr/>
         <div>
-            <p>Use this goal if you want to locate facilities such that the overall travel time, or travel distance, between the demand locations and facilities is minimized.
+            <p>השתמש ביעד אם ברצונך לאתר מתקנים שעבורם מרחק ההגעה או זמן ההגעה הכולל בין מיקומי הביקוש למתקנים יהיה מינימלי.
             </p>
-            <p>This goal is often applicable when there is travel between the facility and all demand locations on a regular basis. You would use this goal, for example, to minimize the overall distance traveled for moving goods from distribution centers to stores, or to select a venue for a conference in a way that minimizes travel time for all attendees.
+            <p>יעד זה לעתים קרובות ישים כאשר בדרך קבע קיים מרחק הגעה בין המתקן לבין מיקומי הביקוש. תשתמש ביעד זה, לדוגמה, כדי למזער את מרחק ההגעה הכולל לצורך הובלת מוצרים ממרכזי הפצה לחנויות, או כדי לבחור אתר לכנס בדרך שממזערת את זמן ההגעה עבור כל המשתתפים.
             </p> 
         </div>
     </div>
     <div id="maximizeCoverage">
-        <div><h2>Maximize coverage</h2></div>
+        <div><h2>הגדל לכיסוי מקסימלי</h2></div>
         <hr/>
         <div>
-            <p>Use this goal if you want to maximize the amount of demand covered within a specific time or distance of the facilities.    
+            <p>השתמש ביעד זה אם ברצונך למקסם את כמות הביקוש שמכוסה במסגרת זמן או מרחק נתון של המתקנים.    
             </p>
-            <p>This goal chooses facilities such that the maximum amount of demand is allocated, with all the demand from each demand location allocated to the single facility closest to it.
+            <p>יעד זה בוחר מתקנים שעבורם כמות הביקוש המקסימלית מוקצה, כאשר כל הביקוש מכל אחד ממיקומי הביקוש מוקצה למתקן היחיד הקרוב ביותר אליו.
             </p>
-            <p>A finite maximum travel range is required for this goal; otherwise, all of the demand might be assigned to a single facility. Demand locations that are beyond the distance or time of any of the facilities will not be allocated (this will show you where demand is not being met and where additional facilities may be needed).
+            <p>טווח הגעה מקסימלי נדרש עבור יעד זה; אחרת, עלול להיווצר מצב שבו כל הביקוש מוקצה למתקן אחד. מיקומי ביקוש שנמצאים מחוץ למרחק או לזמן של אחד מהמתקנים, לא יוקצו (כך תוכל לראות היכן הביקוש לא מתמלא, והיכן ייתכן שנדרשים מתקנים נוספים).
             </p> 
         </div>
     </div>
     <div id="maximizeCoverageWithCapacity">
-        <div><h2>Maximize coverage with capacity</h2></div>
+        <div><h2>הגדל לכיסוי מקסימלי עם קיבולת</h2></div>
         <hr/>
         <div>
-            <p>Use this goal if you want to maximize the amount of demand covered by the facilities, but the facilities have limited capacity.    
+            <p>השתמש ביעד זה אם ברצונך למקסם את כמות הביקוש שמכוסה על ידי המתקנים, אבל למתקנים יש קיבולת מוגבלת.    
             </p>
-            <p>This goal chooses facilities such that the maximum amount of demand is allocated without exceeding the capacity of any facility. All the demand from each demand location is allocated to the single facility closest to it that has available capacity (that is, if assigning a demand location to a facility would exceed the available capacity of the facility, the demand location will not be assigned, rather than assigning a portion of the demand).
+            <p>יעד זה בוחר מתקנים כך שכמות הביקוש המקסימלית מוקצית, בלי לחרוג מהקיבולת של אף אחד מהמתקנים. כל הביקוש מכל מיקום ביקוש מוקצה למתקן האחד הקרוב ביותר אליו שיש בו קיבולת זמינה (כלומר, אם הקצאת מיקום ביקוש למתקן תחרוג מהקיבולת הזמינה של המתקן, מיקום הביקוש לא יוקצה, במקום להקצות חלק מהביקוש).
             </p> 
         </div>
     </div>
     <div id="coverAPercentageOfDemand">
-        <div><h2>Cover a percentage of demand</h2></div>
+        <div><h2>כסה אחוז ביקוש</h2></div>
         <hr/>
         <div>
-            <p>Use this goal if you want to find out the minimum number of facilities you need to cover a given percentage of demand.
+            <p>השתמש ביעד זה אם ברצונך לגלות מה המספר המינימלי של מתקנים שנדרשים כדי לכסות אחוז נתון של הביקוש.
             </p>
-            <p>This goal chooses the minimum number of facilities needed to reach the specified percentage of demand. A demand location that is within the maximum travel range of two or more facilities will have its demand split proportionally between the facilities based on its distance from each. This goal is often used when people have a choice of which facility to visit and it is assumed that, in general, they will visit the closest facility (all other things being equal).
+            <p>יעד זה בוחר את המספר המינימלי של מתקנים שנדרש כדי למלא אחוז מסוים מהביקוש. הביקוש במיקום ביקוש שנמצא בתוך טווח ההגעה המקסימלי משני מתקנים או יותר, יחולק באופן יחסי בין המתקנים בהתאם למרחק שלו מכל אחד מהם. יעד זה משמש לעתים קרובות כאשר לאנשים יש אפשרות לבחור באיזה מתקן לבקר, וההנחה היא שבאופן כללי הם יבקרו במתקן הקרוב ביותר (בתנאי שכל שאר המשתנים זהים).
             </p>
-            <p>Unlike with the other goals that choose facilities, in which you specify how many facilities to choose, this goal chooses the number of facilities for you, based on the percentage of demand you want to meet. It assumes the facilities do not have a limited capacity.
+            <p>בשונה מהיעדים האחרים שבוחרים מתקנים, שבהם אתה מציין כמה מתקנים לבחור, יעד זה בוחר את מספר המתקנים עבורך, בהתאם לאחוז הביקוש שברצונך למלא. יעד זה מניח שלמתקנים אין קיבולת מוגבלת.
             </p> 
         </div>
     </div>
     <div id="measure">
-        <div><h2>Measure</h2></div>
+        <div><h2>מדידה</h2></div>
         <hr/>
         <div>
-            <p>As with other tools that involve travel in the analysis, you can specify whether travel is measured using distance or time, and can select from various travel modes such as walking time, driving time, rural driving distance, and so on. The available travel modes are determined by the administrator of your organization. When using  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you can optionally include traffic for a specific day of week and time of day.
+            <p>בדומה לכלים האחרים בניתוח שמערבים הגעה, באפשרותך לציין האם ההגעה תימדד לפי מרחק או לפי זמן, ולבחור מבין אופני הגעה שונים כגון זמן הליכה, זמן נסיעה, זמן נסיעה בדרכים כפריות וכו'. דרכי ההגעה הזמינות נקבעות על ידי מנהל המערכת בארגון שלך. בעת בחירה באפשרויות  <b>זמן נסיעה</b>, <b>זמן נסיעה בדרכים כפריות</b> או <b>זמן נסיעה במשאית</b> יש לך אפשרות לבחור לכלול את מצב התנועה ביום מסוים בשבוע ובשעה מסוימת ביום.
             </p>
-            <p> In order to accurately allocate demand locations to facilities, you specify whether travel is from the facilities to the demand locations (from fire stations to houses, for example) or from demand locations to facilities (as with patrons to libraries). Choose Best Facilities will account for direction of travel on one-way streets, whether you can turn from one street onto another, whether intersections are no left turn, and so on, depending on whether travel is outward from the facility to the demand locations, or inward from the demand locations to the facilities.
+            <p> כדי להקצות באופן מדויק מיקומי ביקוש למתקנים, אתה מציין האם ההגעה היא מהמתקנים למיקומי הביקוש (לדוגמה, מתחנת כיבוי אש לבתים) או ממיקומי הביקוש למתקנים (כמו במקרה של מנויים לספריות). האפשרות 'בחר את המתקנים הטובים ביותר' תיקח בחשבון את כיוון הנסיעה ברחובות חד-סיטריים, האם ניתן לפנות מרחוב אחד לאחר, האם אין פנייה שמאלה בצמתים וכד', בהתאם לכך שהנסיעה היא החוצה מהמתקן למיקומי הביקוש או פנימה ממיקומי הביקוש למתקנים.
             </p>
         </div>
     </div>
     <div id="demandLocationsLayer">
-        <div><h2>Demand Locations Layer</h2></div>
+        <div><h2>שכבת מיקומי ביקוש</h2></div>
         <hr/>
         <div>
-            <p>The point features representing locations that have demand for the services offered by the facilities. The tool assigns these demand locations to the appropriate facilities based on the selected goal.
+            <p>ישויות הנקודה שמייצגות מיקומים שיש בהם ביקוש לשירותים שהמתקנים מציעים. הכלי מקצה מיקומי ביקוש אלה למתקנים המתאימים, בהתאם ליעד שנבחר.
             </p>
-            <p>Demand locations have an associated amount of demand. Use a constant to specify the value if all the demand locations have the same demand. If the amount of demand varies by demand location, use a field in the Demand Locations Layer to specify the value for each demand location.
+            <p>למיקומי ביקוש יש כמות ביקוש שקשורה אליהם. השתמש בקבוע כדי לציין את הערך אם לכל מיקומי הביקוש יש את אותו ביקוש. אם כמות הביקוש משתנה לפי מיקום ביקוש, השתמש בשדה ב'שכבת מיקומי ביקוש' כדי לציין את הערך עבור כל מיקום ביקוש.
             </p>
-            <p>Demand will be allocated to facilities until all demand has been allocated, regardless of how far demand locations are from facilities. You can assign a maximum travel range to the Demand Locations Layer to create a cutoff distance or time&mdash;any demand locations beyond the cutoff value will not be allocated. Use a constant to specify the value if all the demand locations have the same maximum travel range. If the maximum travel range varies by demand location, use a field in the Demand Locations Layer to specify the value for each demand location.
+            <p>הביקוש יוקצה למתקנים עד שכל הביקוש הוקצה, ללא תלות במרחק של מיקומי הביקוש מהמתקנים. באפשרותך להקצות טווח נסיעה מקסימלי: ל'שכבת מיקומי ביקוש' כדי ליצור גבול של מרחק או זמן - כל מיקומי הביקוש מעבר לערך הגבול לא יוקצו. השתמש בקבוע כדי לציין את הערך אם לכל מיקומי הביקוש יש את אותו טווח נסיעה מקסימלי. אם טווח הנסיעה המקסימלי משתנה לפי מיקום ביקוש, השתמש בשדה ב'שכבת מיקומי ביקוש' כדי לציין את הערך עבור כל מיקום ביקוש.
             </p>
-            <p>If the goal type is  <b>Cover a percentage of demand</b>, you need to specify the minimum percentage of demand that you want the facilities to capture.
+            <p>אם סוג היעד הוא  <b>כסה אחוז ביקוש</b>, עליך לציין את האחוז המינימלי של ביקוש שברצונך לכלול במתקנים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
-            <p>The tool supports up to 10,000 features in the Demand Locations Layer.
+            <p>הכלי תומך בעד 10,000 ישויות ב'שכבת מיקומי ביקוש'.
             </p>  
         </div>
     </div>
     <div id="requiredFacilitiesLayer">
-        <div><h2>Required Facilities Layer</h2></div>
+        <div><h2>שכבת מתקנים מבוקשים</h2></div>
         <hr/>
         <div>
-            <p>The point features representing locations that act as facilities by providing some kind of service. Required facilities usually represent locations that already exist as compared to candidate facilities that usually represent the locations at which new facilities will be built or placed. When allocating demand locations, the tool uses the facilities in the  <b>Required Facilities Layer</b> before any facilities from the <b>Candidate Facilities Layer</b>.
+            <p>ישויות הנקודה שמייצגות מיקומים אשר מתפקדים כמתקנים בכך שהם מספקים שירות כלשהו. מתקנים מבוקשים בדרך כלל מייצגים מיקומים שכבר קיימים, בניגוד למתקנים מועמדים שבדרך כלל מייצגים את המיקומים שבהם מתקנים חדשים ייבנו או יוצבו. בעת הקצאת מיקומי ביקוש, הכלי משתמש במתקנים ב <b>שכבת מתקנים מבוקשים</b> לפני מתקנים מ <b>שכבת מתקנים מועמדים</b>.
             </p>
-            <p>Required facilities can have unlimited capacity (that is, they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve&mdash;say, 4,000), specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school), specify a field containing the capacity value for each facility.
+            <p>למתקנים מבוקשים יכולה להיות קיבולת בלתי מוגבלת (כלומר, באפשרותם לעמוד בכל הביקוש שיוקצה להם) או קיבולת מוגבלת. אם לכל המתקנים יש אותה קיבולת מוגבלת (למשל, אם כל תחנת כיבוי אש יכולה לשרת עד 4,000 בתי-אב), ציין ערך קבוע. אם הקיבולת שונה במתקנים השונים (למשל, מספר המקומות הפנויים לתלמידים חדשים בכל בית ספר), ציין שדה שמכיל את ערך הקיבולת עבור כל מתקן.
             </p>
-            <p>The tool supports up to 100 features in the  <b>Required Facilities Layer</b>.
+            <p>הכלי תומך בעד 100 ישויות ב <b>שכבת מתקנים מבוקשים</b>.
             </p>  
         </div>
     </div>
     <div id="candidateFacilitiesLayer">
-        <div><h2>Candidate Facilities Layer</h2></div>
+        <div><h2>שכבת מתקנים מועמדים</h2></div>
         <hr/>
         <div>
-            <p>The point features representing locations that act as facilities by providing some kind of service. Candidate facilities usually represent the locations at which new facilities will be built or placed as opposed to required facilities that usually represent locations that already exist.
+            <p>ישויות הנקודה שמייצגות מיקומים אשר מתפקדים כמתקנים בכך שהם מספקים שירות כלשהו. מיקומים מועמדים בדרך כלל מייצגים מיקומים שבהם מתקנים חדשים ייבנו או יוצבו, בניגוד למתקנים מבוקשים שבדרך כלל מייצגים מיקומים שכבר קיימים.
             </p>
-            <p>Depending on your analysis goal, you need to specify the number of candidate facilities to choose from the set of candidates. If you specify both required and candidate facilities, the tool uses the facilities in the  <b>Required Facilities Layer</b> before any facilities from the <b>Candidate Facilities Layer</b>.
+            <p>בהתאם ליעד הניתוח שלך, עליך לציין את מספר המתקנים המועמדים לבחירה מקבוצת המועמדים. אם אתה מציין גם מתקנים מבוקשים וגם מתקנים מועמדים, הכלי משתמש במתקנים ב <b>שכבת מתקנים מבוקשים</b> לפני מתקנים מ <b>שכבת מתקנים מועמדים</b>.
             </p>
-            <p>Candidate facilities can have unlimited capacity (that is, they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve&mdash;say, 4,000), specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school), specify a field containing the capacity value for each facility.
+            <p>למתקנים מועמדים יכולה להיות קיבולת בלתי מוגבלת (כלומר, באפשרותם לעמוד בכל הביקוש שיוקצה להם) או קיבולת מוגבלת. אם לכל המתקנים יש אותה קיבולת מוגבלת (למשל, אם כל תחנת כיבוי אש יכולה לשרת עד 4,000 בתי-אב), ציין ערך קבוע. אם הקיבולת שונה במתקנים השונים (למשל, מספר המקומות הפנויים לתלמידים חדשים בכל בית ספר), ציין שדה שמכיל את ערך הקיבולת עבור כל מתקן.
             </p>
-            <p>The tool supports up to 1,000 features in the  <b>Candidate Facilities Layer</b>.
+            <p>הכלי תומך בעד 1,000 ישויות ב <b>שכבת מתקנים מועמדים</b>.
             </p>  
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Select barrier layers</h2></div>
+        <div><h2>בחר שכבות מחסום</h2></div>
         <hr/>
         <div>
-            <p> One or more features that act as temporary restrictions (barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            <p> ישות אחת או יותר אשר משמשות כמגבלות זמניות (מחסומים) בעת נסיעה ברחובות שמתחת. ניתן לציין מחסומים באמצעות ישויות נקודה, קו או פוליגון.
             </p>
-            <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
+            <p>מחסום נקודה עשוי לייצג עץ שקרס, תאונת דרכים, קו חשמל שנפל או כל דבר שחוסם לחלוטין את התנועה במיקום מסוים לאורך הרחוב. התנועה ברחוב מותרת, אבל לא בקטע החסום. ניתן לציין עד 250 ישויות שיתפקדו כמחסומי נקודה.
             </p>
-            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
+            <p>מחסום קו אוסר על הנסיעה בכל מקום שבו המחסום מצטלב עם הרחובות. לדוגמה, מחסום קו עשוי לייצג תהלוכה או הפגנה שחוסמות את התנועה במספר מקטעי רחובות. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הקו עולה על 500, הכלי מציג שגיאה.
             </p>
-            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
+            <p>מחסום פוליגון אוסר על הנסיעה בכל מקום שבו הפוליגון מצטלב עם הרחובות. שימוש אחד בסוג מחסום זה הוא לייצוג הצפות שמכסות אזורים של רשת רחובות ולא מאפשרים נסיעה בכבישים באותם אזורים. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הפוליגון עולה על 2000, הכלי מציג שגיאה.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>The result layer will contain a layer for each of the following: facilities that have demands assigned to them, demand locations that are allocated to facilities, and allocation lines connecting the demand locations to their assigned facilities. The allocation lines are drawn as straight lines; however, the travel time or the travel distance between the facility and the demand location is always based on the travel mode you specify and not using straight-line distances.
+            <p>שכבת התוצאה תכיל שכבה עבור כל אחד מהבאים: מתקנים שהוקצה להם ביקוש, מיקומי ביקוש שהוקצו למתקנים וקווי הקצאה שמחברים בין מיקומי ביקוש למתקנים שאליהם הוקצו. קווי ההקצאה משורטטים כקווים ישרים, אולם זמן ההגעה או מרחק ההגעה בין המתקן למיקום הביקוש יתבסס תמיד על אופן ההגעה שציינת ולא על מרחקים בקו ישר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

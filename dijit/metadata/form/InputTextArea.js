@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../base/InputBase","dojo/text!./templates/InputTextArea.html","../../../kernel"],function(e,t,n,i,r,o,u){var s=e([r],{templateString:o,large:!1,cols:50,rows:4,postCreate:function(){this.inherited(arguments)},postMixInProperties:function(){this.inherited(arguments),this.large&&(this.cols=60,this.rows=8)},connectXNode:function(e,t){this.inherited(arguments);var n=e.value;t&&!e.fixed||void 0!==n&&null!==n&&this.setInputValue(n)},getDisplayValue:function(){if(!this.focusNode)return null;var e=this.focusNode.value,i=[];if(null===e)return null;e=e.replace(/(\r\n|\r|\n|\n\r)/g,"<br/>");var r=e.split("<br/>");return n.forEach(r,function(e){var n=t.trim(e);n.length>0&&i.push(n)}),1===i.length?i[0]:i.length>1?i:null},getInputValue:function(){return this.focusNode?this.focusNode.value:null},_onChange:function(e){this.emitInteractionOccurred()},_onKeyup:function(e){this.emitInteractionOccurred()},setInputValue:function(e){void 0===e&&(e=null),this.focusNode.value=e,this.emitInteractionOccurred(),this.applyViewOnly()}});return i("extend-esri")&&t.setObject("dijit.metadata.form.InputTextArea",s,u),s});

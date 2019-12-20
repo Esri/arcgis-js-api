@@ -308,6 +308,8 @@ meet a number of different criteria you specify.
                 </li>
                 <li> <b>Geocode Locations from Table</b> converts addresses into coordinates.
                 </li>
+                <li> <b>Find Dwell Locations</b> finds locations in track datasets where objects are staying within a certain distance for a certain duration of time.
+                </li>
                 <li> <b>Find Similar Locations</b> finds locations most similar to one or more reference locations based on criteria you specify.
                 </li>
             </ul>
@@ -354,6 +356,33 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
             </p>
             <br/>
         </div>
+        <div id="FindDwellLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Dwell Locations</h2></td>
+                    <td>
+                    <img src="./images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" class="titleImage" alt="Find Dwell Locations workflow diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool works with track datasets, composed of time-enabled layer of
+points to find
+where objects dwell within a specified distance and
+duration.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Improve conservation efforts by analyzing animal movement patterns. Use this tool to uncover popular animal stay points as potential protected areas to preserve biodiversity.
+                    </li>
+                    <li>Using GPS locations for  vehicles, find and address where slow-downs occur to improve traffic safety.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -378,7 +407,7 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analyze Patterns</h2>
         <hr/>
         <p>  These tools help you identify, quantify, and visualize spatial patterns in your data.
@@ -390,6 +419,8 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
                 <li> <b>Find Point Clusters</b> finds clusters of point features in surrounding noise based on their spatial distribution.
                 </li>
                 <li> <b>Forest-based Classification and Regression</b>  creates models and generates predictions using an adaptation of Leo Breiman's random forest algorithm, a supervised machine learning method.
+                </li>
+                <li> <b>Geogrpahically Weighted Regression</b> created models using a local form of linear regression that is used to model spatially varying relationships
                 </li>
                 <li> <b>Generalized Linear Regression</b> generate predictions or models a dependent variable in terms of its relationship to a set of explanatory variables.
                 </li>
@@ -491,6 +522,34 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
                     </li>
                     <li>Housing values can be predicted based on the prices of houses that have been sold in the current year. The sale price of homes sold along with information about the number of bedrooms, distance to schools, proximity to major highways, average income, and crime counts can be used to predict sale prices of similar homes.
                          
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeneralizedLinearRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generalized Linear Regression</h2></td>
+                    <td>
+                    <img src="./images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="GeneralizedLinearRegression workflow diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool performs Geographically Weighted Regression (GWR) which is a local form of linear regression that is used to model spatially varying relationships..
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>What demographic characteristics contribute to high rates of public transportation usage?
+                    </li>
+                    <li>Is there a positive relationship between vandalism and burglary?
+                    </li>
+                    <li>Which variables effectively predict 911 call volume?  Given future projections, what is the expected demand for emergency response resources?
+                    </li>
+                    <li>What variables affect low birth rates?
                     </li>
                 </ul>
                 

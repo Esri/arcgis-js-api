@@ -84,7 +84,7 @@
         <div>
             <p>Die Punkt-Features, deren umliegende Fl&auml;chen berechnet werden. Sie k&ouml;nnen festlegen, wie Fl&auml;chen basierend auf dem Reisemodus (Auto, Lkw oder zu Fu&szlig;) berechnet und gemessen (Zeit oder Entfernung) werden.
             </p>
-            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Mit dieser Option &ouml;ffnen Sie eine Galerie, in der Sie zu Datasets aus verschiedenen Quellen navigieren und diese f&uuml;r Ihre Analysen ausw&auml;hlen k&ouml;nnen. 
             </p>
             <p>Das Werkzeug unterst&uuml;tzt bis zu 1.000&nbsp;Features im Eingabe-Layer.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>W&auml;hlen Sie den Reisemodus (Auto, Lkw oder zu Fu&szlig;) und den Messwert (Uhrzeit oder Entfernung) aus. Die verf&uuml;gbaren Reisemodi werden vom Administrator Ihrer Organisation bestimmt.   Nachdem Sie den Modus und Messwert ausgew&auml;hlt haben, geben Sie eine Dauer oder Entfernung von maximal  5 Stunden (300 Minuten) oder  300 Meilen (482,80 Kilometer) ein. 
+            </p>
+            <p>Die Fahrtrichtung ( <b>Weg von Einrichtung</b> oder <b>In Richtung Einrichtung</b>) hat u.&nbsp;U. Auswirkungen auf die Erstellung der Fahrzeitgebiete. Bei &quot;Fahrzeitgebiete erstellen&quot; werden Einbahnstra&szlig;en, unzul&auml;ssige Wendepunkte und andere Regeln basierend auf der Fahrtrichtung ber&uuml;cksichtigt. Sie sollten die Fahrtrichtung entsprechend dem Typ der Eingabepositionen sowie dem Analysekontext ausw&auml;hlen. Beispielsweise sollte das Fahrzeitgebiet f&uuml;r einen Pizza-Lieferservice von der Einrichtung weg erstellt werden, wohingegen das Fahrzeitgebiet f&uuml;r ein Krankenhaus zur Einrichtung hin erstellt werden sollte.
             </p>
             <p>Bei Auswahl von  <b>Fahrzeit</b>, <b>Fahrzeit auf Landstra&szlig;en</b> oder <b>Lkw-Fahrzeit</b> werden Optionen zum Messen der Fahrzeit bereitgestellt.
                 <ul>
@@ -114,7 +116,7 @@
                         </p>
                         <p>Sie k&ouml;nnen diese Einstellungen f&uuml;r historische Verkehrsdaten verwenden, um beispielsweise folgende Frage zu stellen: Welches Gebiet kann ich im Allgemeinen erreichen, wenn ich an einem Mittwoch um 11:30 Uhr losfahre? 
                         </p>
-                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Eingabepunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Punkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Fahrzeitgebiete f&uuml;r 8:00 Uhr Eastern Time bzw. 8:00 Uhr Pacific Time angenommen wird.
+                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Eingabepunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Punkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Fahrzeitgebiete f&uuml;r 8:00 Uhr Eastern Time bzw. 8:00 Uhr Pacific Time erstellt.
                         </p>
                     </li>
                 </ul>
@@ -150,14 +152,24 @@ Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um 
         <div>
             <p>Legen Sie fest, wie gemeinsame Gebiete von unterschiedlichen Eingabepunkten behandelt werden sollen, wenn sie aufeinander treffen. Sie k&ouml;nnen:
                 <ul>
-                    <li> <b>&Uuml;berlappen</b> &ndash; Gebiete von verschiedenen Eingabepunkten k&ouml;nnen die gleiche Stra&szlig;e abdecken. Dies ist hilfreich, wenn Sie alle Eingabepunkte ermitteln m&uuml;ssen, die einen bestimmten Standort innerhalb der angegebenen Zeit oder Entfernung erreichen k&ouml;nnen.
+                    <li> <b>&Uuml;berlappen</b>: Gebiete von verschiedenen Eingabepunkten k&ouml;nnen die gleiche Stra&szlig;e abdecken. Dies ist hilfreich, wenn Sie alle Eingabepunkte ermitteln m&uuml;ssen, die einen bestimmten Standort innerhalb der angegebenen Zeit oder Entfernung erreichen k&ouml;nnen.
                     </li>
-                    <li> <b>Zusammenf&uuml;hren</b> &ndash; Alle Gebiete werden zu einem zusammengef&uuml;hrt und nur ein Gebiet kann einen bestimmten Standort abdecken. Dies ist hilfreich, wenn Sie lediglich wissen m&uuml;ssen, dass ein Gebiet innerhalb einer angegebenen Zeit oder Entfernung erreicht werden kann, Sie aber nicht wissen m&uuml;ssen, welche Eingabepunkte den Standort erreichen k&ouml;nnen.
+                    <li> <b>Zusammenf&uuml;hren</b>: Alle Gebiete werden zu einem zusammengef&uuml;hrt und nur ein Gebiet kann einen bestimmten Standort abdecken. Dies ist hilfreich, wenn Sie lediglich wissen m&uuml;ssen, dass ein Gebiet innerhalb einer angegebenen Zeit oder Entfernung erreicht werden kann, Sie aber nicht wissen m&uuml;ssen, welche Eingabepunkte den Standort erreichen k&ouml;nnen.
                     </li>
-                    <li> <b>Teilen</b>&ndash; Die Gebiete von verschiedenen Eingabepositionen, die sich &uuml;berlappen, werden in der Mitte geteilt, sodass sie stattdessen aneinander angrenzen. Dies ist hilfreich, wenn Sie ermitteln m&ouml;chten, welche Gebiete sich innerhalb einer angegebenen Zeit oder Entfernung von den Eingabepunkten befinden, und Sie gleichzeitig bestimmen m&ouml;chten, welcher Eingabepunkt diesem Gebiet am n&auml;chsten liegt.
+                    <li> <b>Teilen</b>: Die Gebiete von verschiedenen Eingabepositionen, die sich &uuml;berlappen, werden in der Mitte geteilt, sodass sie stattdessen aneinander angrenzen. Dies ist hilfreich, wenn Sie ermitteln m&ouml;chten, welche Gebiete sich innerhalb einer angegebenen Zeit oder Entfernung von den Eingabepunkten befinden, und Sie gleichzeitig bestimmen m&ouml;chten, welcher Eingabepunkt diesem Gebiet am n&auml;chsten liegt.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="showHoles">
+        <div><h2>Nicht erreichbare Gebiete als Löcher anzeigen</h2></div>
+        <hr/>
+        <div>
+            <p>Legen Sie fest, ob die Ausgabegebiete L&ouml;cher enthalten, wenn Stra&szlig;en aufgrund der in  <b>Messen</b> festgelegten Zeit bzw. Entfernung oder aufgrund von Beschr&auml;nkungen durch den Reisemodus nicht erreicht werden k&ouml;nnen.
+            </p>
+            <p>F&uuml;r Fahrzeitgebiete, die mit diesem Parameter erstellt werden, gilt eine Begrenzung auf 15&nbsp;Minuten bzw. 24&nbsp;Kilometer.
             </p>
         </div>
     </div>
@@ -168,6 +180,18 @@ Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um 
             <p>Dies ist der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer-Name bereits vorhanden ist, werden Sie dazu aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>&Uuml;ber das Dropdown-Men&uuml;  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Erreichbare Straßen einbeziehen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Stra&szlig;en, aus denen die Fahrzeitgebiete erstellt wurden, werden als Ausgabe-Layer einbezogen. 
+            </p>
+            <p>Mit &quot;Fahrzeitgebiete erstellen&quot; wird f&uuml;r eine Einrichtung die Reichweite im Stra&szlig;ennetz gemessen, und anschlie&szlig;end werden aus den durchlaufenen Stra&szlig;en Fahrzeitgebiete erstellt. Somit entsprechen die Fahrzeitgebiete einer n&auml;herungsweisen Darstellung der durchlaufenen Stra&szlig;en. Wenn Sie mit der Analyse bestimmen m&ouml;chten, welche Stra&szlig;en von einer Einrichtung aus bei einer bestimmten Fahrstrecke oder Fahrzeit abgedeckt werden bzw. erreichbar sind, erzielen Sie durch die Erstellung von erreichbaren Stra&szlig;en genauere Ergebnisse als mit Fahrzeitgebieten.
+            </p>
+            <p>F&uuml;r Fahrzeitgebiete, die mit diesem Parameter erstellt werden, gilt eine Begrenzung auf 15&nbsp;Minuten bzw. 24&nbsp;Kilometer.
             </p>
         </div>
     </div>

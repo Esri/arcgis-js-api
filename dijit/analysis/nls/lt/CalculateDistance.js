@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite rastrą arba elementų sluoksnį, iki kurio norite skaičiuoti atstumą",inputRaster:"Pasirinkite rastrą arba elementų sluoksnį, kad nurodytumėte kliūtis (neprivaloma)",maxDistanceLabel:"Maksimalus skaičiuotinas atstumas (neprivaloma)",outputCellSize:"Išvesties gardelės dydis (neprivaloma)",distanceMethod:"Atstumo metodas",resultDistLayerName:"Rezultatų atstumo sluoksnio pavadinimas",resultDirectionLayerName:"Rezultatų krypties sluoksnio pavadinimas (neprivaloma)",resultAllocationLayerName:"Rezultatų priskyrimo sluoksnio pavadinimas (neprivaloma)",outputBackDirectionName:"Rezultatų atbulinės krypties sluoksnio pavadinimas (neprivaloma)",outputLayerName:"Apskaičiuotas ${layername} atstumas",allocationFieldLabel:"Pasirinkite priskyrimo lauką (neprivaloma)",itemDescription:"Elementų sluoksnis, sukurtas paleidus Skaičiuoti atstumą, skirtą sluoksniui ${layerName}. ",itemTags:"Analizės rezultatai, Skaičiuoti atstumą, ${layername}, ${fieldname}",itemSnippet:"Elementų sluoksnis sukurtas naudojant atstumo skaičiavimo įrankį.",planar:"Plokščiasis",geodesic:"Geodezinis",selectDistance:"-- pasirinkti --"});

@@ -65,7 +65,6 @@
           </td>
           <td>
             <span class="warningIcon hide" data-dojo-attach-point="_destinationsZeroCountWarning" tabindex="0"></span>
-            <span class="warningIcon hide" data-dojo-attach-point="_unequalFeatureCountsWarning" tabindex="0"></span>
           </td>
         </tr>
         <tr>
@@ -125,6 +124,38 @@
           </td>
         </tr>
         <tr data-dojo-type="esri/dijit/analysis/components/AddBarrierLayers/AddBarrierLayers" data-dojo-attach-point="_addBarrierLayersComponent" data-dojo-props="showGeoAnalyticsParams: ${showGeoAnalyticsParams}">
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label data-dojo-attach-point="_labelThree" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.routeShape}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="routeShape"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="width:95%;">
+            <table style="width:100%;">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="bufferSelector" data-dojo-attach-point="_straightLine">
+                      <div class="bufferIcon straightLineIcon"></div>
+                      <div><label class="esriSelectLabel" data-dojo-attach-point="_straightLineLabel">${i18n.strightLine}</label></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="esriLeadingMargin2 bufferSelector selected" data-dojo-attach-point="_followStreets">
+                      <div class="bufferIcon followStreetsIcon"></div>
+                      <div><label class="esriSelectLabel" data-dojo-attach-point="_followStreetsLabel">${i18n.followStreets}</label></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td></td>
         </tr>
         <tr>
           <td colspan="2">

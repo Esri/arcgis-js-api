@@ -41,91 +41,99 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Determine Travel Cost Path As Polyline</h2><p/>
-        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Determine Travel Cost Path as Polyline tool illustration"></h2>
+        <h2>קבע מסלול עלות נסיעה בתור קו</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="איור הכלי 'קבע מסלול עלות הנסיעה בתור קו'"></h2>
         <hr/>
-    <p>This tool calculates the least cost polyline path between sources and known destinations.
+    <p>כלי זה מחשב את נתיב הפולי-קו עם העלות הנמוכה ביותר בין מקורות ליעדים ידועים.
     </p>
-    <p>Example applications include the following:
+    <p>להלן דוגמאות ליישומים:
         <ul>
-            <li>Find the best route for a new road in terms of construction costs.
+            <li>מצא את הנתיב הטוב ביותר עבור כביש חדש, מבחינת עלויות בנייה.
                 
 
             </li>
-            <li>Identify the path to take from several suburban locations (sources) to the closest shopping mall (destination).
+            <li>זהה את הנתיב הטוב ביותר ממספר מיקומים בפרברים (מקורות) למרכז הקניות הקרוב ביותר (יעד).
                 
 
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those locations in the input layers that are visible within the current map extent will be analyzed. If unchecked, all locations in both input layers will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Choose raster or feature source layer to determine paths from</h2></div>
+        <div><h2>בחר שכבת רסטר או שכבת נקודות מוצא של ישויות כדי לקבוע את המסלולים מהן</h2></div>
         <hr/>
         <div>
-            <p>An image service or feature service that identifies the cells from which the least-cost path is determined to the least costly destination.
+            <p>שירות תמונה או שירות ישויות שמזהה את התאים שמהם נקבע הנתיב עם העלות הנמוכה ביותר אל היעד עם העלות הנמוכה ביותר.
             </p>
-            <p>If the input is an image service, the input consists of cells that have valid values (zero is a valid value), and the remaining cells must be assigned NoData.
+            <p>אם הקלט הוא שירות תמונה, הקלט מורכב מתאים שיש להם ערכים חוקיים (אפס הוא ערך חוקי), ולתאים האחרים יש להקצות NoData.
             </p>
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Choose travel cost raster layer</h2></div>
+        <div><h2>בחר את שכבת הרסטר של עלות הנסיעה</h2></div>
         <hr/>
         <div>
-            <p>A raster defining the impedance or cost to move planimetrically through each cell.
+            <p>רסטר שמגדיר את העכבה או העלות לזוז פלאנימטרית בכל תא.
             </p>
-            <p>The value at each cell location represents the cost-per-unit distance for moving through the cell. Each cell location value is multiplied by the cell resolution while also compensating for diagonal movement to obtain the total cost of passing through the cell.
+            <p>הערך בכל מיקום תא מייצג את מרחק העלות-ליחידה עבור תזוזה בתוך התא. כל ערך מיקום תא מוכפל ברזולוציית התא, תוך פיצוי גם עבור תנועה אלכסונית, לקבלת העלות הכוללת של מעבר על פני התא.
             </p>
-            <p>The values of the cost raster can be integer or floating point, but they cannot be negative or zero (you cannot have a negative or zero cost).
+            <p>הערכים של רסטר העלויות יכולים להיות מספר שלם או נקודה צפה, אבל הם לא יכולים להיות מספר שלילי או אפס (לא יכולה להיות עלות שלילית או אפס).
             </p>
         </div>
     </div>
     <div id="inputDestinationRasterOrFeatures">
-        <div><h2>Input Destination Raster or Features</h2></div>
+        <div><h2>קלט ישויות או רסטר יעדים</h2></div>
         <hr/>
         <div>
-            <p>An input that defines the destinations used to calculate the distance. The layer can be raster or feature.
+            <p>קלט שמגדיר את היעדים המשמשים לחישוב המרחק. השכבה יכולה להיות רסטר או ישות.
             </p>
-            <p>If the input is an image service, the input consists of cells that have valid values (zero is a valid value), and the remaining cells must be assigned NoData.
+            <p>אם הקלט הוא שירות תמונה, הקלט מורכב מתאים שיש להם ערכים חוקיים (אפס הוא ערך חוקי), ולתאים האחרים יש להקצות NoData.
             </p>
         </div>
     </div>
     <div id="outputPolylineName">
-        <div><h2>Result polyline layer name</h2></div>
+        <div><h2>שם שכבת תוצאת הפולי-קו</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>
     <div id="pathType">
-        <div><h2>Choose type of paths to determine</h2></div>
+        <div><h2>בחר סוג נתיבים לקביעה</h2></div>
         <hr/>
         <div>
-            <p>Defines the manner in which the values and zones on the input destination data will be interpreted in the cost path calculations.
+            <p>מגדיר את האופן שבו הערכים והאזורים בנתוני היעד של הקלט יפורשו בחישובי עלויות הנתיבים.
             </p>
             <ul>
-                <li>Best Single&mdash;For all cells or locations on the input destination data, the least-cost path is derived from the location with the minimum of the least-cost paths to source location. This is the default
+                <li> <b>היחיד הטוב ביותר</b> - עבור כל התאים או המיקומים בנתוני היעד של הקלט, הנתיב עם העלות הנמוכה ביותר נגזר מהמיקום עם מינימום נתיבים עם העלות הנמוכה ביותר אל מיקום המקור. זוהי ברירת המחדל
                     
 
                 </li>
-                <li>To Each Cell&mdash;For each cell or location with valid values on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each from cell.
+                <li> <b>אל כל תא</b> - עבור כל תא או מיקום עם ערך חוקי בנתוני יעד הקלט, נתיב עם העלות הנמוכה ביותר נקבע ונשמר בשירות הישויות של הפלט. עם אפשרות זו, כל תא של נתוני יעד הקלט מטופל בנפרד, ונתיב עם העלות הנמוכה ביותר נקבע עבור כל תא.
                     
 
                 </li>
-                <li>To Each Zone&mdash;For each zone on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, the least-cost path for each zone begins at the cell or location with the lowest cost distance weighting in the zone.
+                <li> <b>אל כל אזור</b> - עבור כל אזור בנתוני יעד הקלט, נתיב עם העלות הנמוכה ביותר נקבע ונשמר בשירות הישויות של הפלט. עם אפשרות זו, הנתיב עם העלות הנמוכה ביותר עבור כל אזור מתחיל בתא או במיקום עם שקלול המרחק בעל העלות הנמוכה ביותר באזור.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>בחר שדה לקבלת ערכים עבור המיקום</h2></div>
+        <hr/>
+        <div>
+            <p>השדה אשר משמש להשגת ערכים עבור מיקומי היעד.
+            </p>
         </div>
     </div>
 </div>

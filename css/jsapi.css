@@ -65,6 +65,11 @@
   bottom: 5px;
   z-index: 30;
   text-align: right;
+  pointer-events: none;
+}
+
+.esriControlsBR > * {
+  pointer-events: auto;
 }
 
 .esriControlsBR.withPanArrows {

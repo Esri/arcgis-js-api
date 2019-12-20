@@ -41,24 +41,24 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Forest-Based Classification and Regression</h2><p/>
-        <h2><img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" alt="Forest-based Classification and Regression workflow diagram"></h2>
+        <h2>סיווג ורגרסיה על בסיס יער</h2><p/>
+        <h2><img src="../images/GUID-AD37EC59-C890-49AC-BD28-2E87F99A08E9-web.png" alt="איור תהליך עבודה של סיווג ורגרסיה על בסיס יער"></h2>
         <hr/>
-    <p>Creates models and generates predictions using an adaptation of Leo Breiman's random forest algorithm, which is a supervised machine learning method. Predictions can be performed for both categorical variables (classification) and continuous variables (regression). Explanatory variables are fields in the attribute table of the training features. The tool can be run to generate a model to assess performance, or generate a model and predict results to another datasets.
+    <p>יוצר מודלים ומפיק תחזיות תוך שימוש באלגוריתם היער האקראי של Leo Breiman, שזו שיטת למידת מכונה מפוקחת. ניתן לבצע חיזויים עבור משתנים קטגוריים (סיווג) ומשתנים רציפים (רגרסיה). משתנים מסבירים הם שדות בטבלת המאפיינים של ישויות האימון. ניתן להריץ את הכלי כדי להפיק מודל להערכת ביצועים, או להפיק מודל ולחזות תוצאות לסטים נתונים אחרים.
     </p>
     <p>
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisType">
-        <div><h2>Analysis Type</h2></div>
+        <div><h2>סוג ניתוח</h2></div>
         <hr/>
         <div>
-            <p>Specifies the operation mode of the tool. The tool can be run to train a model to only assess performance, or train a model and  predict to features. Prediction types are as follows:
+            <p>מציין את אופן הפעולה של הכלי. ניתן להריץ את הכלי כדי לאמן מודל להערכת ביצועים בלבד, או לאמן מודל ולחזות תוצאות לישויות. להלן סוגי החיזויים:
                 <ul>
-                    <li> <b>Train a model to assess model performance</b>&mdash;A model will be trained, and fit to the input data. Use this option to assess the accuracy of your model before generating predictions on a new dataset. The output of this option will be a feature service of your fitted training data, model diagnostics, and an optional table of variable importance.
+                    <li> <b>אימון מודל להערכת ביצועי מודל</b> - מודל יאומן, ויותאם לנתוני הקלט. השתמש באפשרות זו כדי להעריך את מידת הדיוק של המודל לפני הפקת חיזויים על סט נתונים חדש. הפלט של אפשרות זו יהיה שירות ישויות של נתוני האימון המותאמים, אבחוני מודל וטבלה אופציונלית של חשיבות משתנים.
                     </li>
-                    <li> <b>Train a model and predict values</b>&mdash; Predictions or classifications will be generated for features. Explanatory variables must be provided for both the training features and the features to be predicted. The output of this option will be a feature service of your predicted values, model diagnostics, and an optional table of variable importance.
+                    <li> <b>אימון מודל וחיזוי ערכים</b> - חיזויים או סיווגים יופקו עבור ישויות. יש לספק משתנים מסבירים הן עבור ישויות האימון והן עבור הישויות שיש לחזות. הפלט של אפשרות זו יהיה שירות ישויות של הנתונים החזויים, אבחוני מודל וטבלה אופציונלית של חשיבות משתנים.
                     </li>
                 </ul>
                 
@@ -66,155 +66,130 @@
         </div>
     </div>
     <div id="train">
-        <div><h2>Train a model to assess model performance</h2></div>
+        <div><h2>אימון המודל לצורך הערכת ביצועי המודל</h2></div>
         <hr/>
         <div>
-            <p>Use this mode if you want to fit a model, and investigate the fit.
+            <p>השתמש במצב זה אם ברצונך להתאים מודל, ולחקור את ההתאמה.
             </p>
-            <p>With this choice model will be trained using an input layer. Use this option to assess the accuracy of your model before generating predictions on a new dataset. This option will output model diagnostics in the messages window and apply the model to your training data.
+            <p>בעת בחירה באפשרות זו, אימון המודל יתבצע תוך שימוש בשכבת קלט. השתמש באפשרות זו כדי להעריך את מידת הדיוק של המודל לפני הפקת חיזויים על סט נתונים חדש. הפלט של אפשרות זו יהיה אבחוני מודל בחלון ההודעות והמודל יוחל על נתוני האימון.
             </p>
         </div>
     </div>
     <div id="trainAndPredict">
-        <div><h2>Train a model and predict values</h2></div>
+        <div><h2>אימון מודל וחיזוי ערכים</h2></div>
         <hr/>
         <div>
-            <p>Use this mode if you want to fit a model, and apply the model to the dataset to generate predictions.
+            <p>השתמש במצב זה אם ברצונך להתאים מודל, ולהחיל את המודל על סט נתונים להפקת תחזיות.
             </p>
-            <p>Predictions or classifications will be generated for features. The output of this option will be a feature service, model diagnostics, and an optional table of variable importance.
+            <p>חיזויים או סיווגים יופקו עבור ישויות. הפלט של אפשרות זו יהיה שירות ישויות, אבחוני מודל וטבלה אופציונלית של חשיבות משתנים.
             </p>
         </div>
     </div>
     <div id="inFeatures">
-        <div><h2>Choose training layer</h2></div>
+        <div><h2>בחר שכבה לאימון</h2></div>
         <hr/>
         <div>
-            <p>The feature layer containing the  variable to predict and the fields that will be used to generate the prediction.
+            <p>שכבת הישויות שמכילה את המשתנה לחיזוי ואת השדות שבהם יעשה שימוש להפקת החיזוי.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="featuresToPredict">
-        <div><h2>Choose a layer to predict values for</h2></div>
+        <div><h2>בחר שכבה לחיזוי ערכים</h2></div>
         <hr/>
         <div>
-            <p>A feature layer representing locations where predictions will be made. This feature layer must also contain any explanatory variables provided as fields that correspond to those used from the training features.
+            <p>שכבת ישויות שמייצגת מיקומים שבהם יעשו חיזויים. שכבת ישויות זו חייבת להכיל גם את כל המשתנים המסבירים שסופקו כשדות אשר תואמים לאלה שבהם נעשה שימוש מישויות האימון.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="variablePredict">
-        <div><h2>Choose the field to predict</h2></div>
+        <div><h2>בחר את השדה לחיזוי</h2></div>
         <hr/>
         <div>
-            <p>The field from the training features containing the values to be used to
-train the model. This field contains known (training) values of the
-variable that will be used to predict at unknown
-locations. If values are categorical (for example, Maple, Pine, Oak) select the  <b>Categorical</b> check box.
+            <p>השדה מישויות האימון שמכיל את הערכים שבהם יעשה שימוש לאימון המודל. שזה זה מכיל ערכים ידועים (אימון) של המשתנה שבו יעשה שימוש לחיזוי במיקומים לא ידועים. אם הערכים הם קטגוריים (לדוגמה אדר, אורן, אלון) בחר את תיבת הסימון  <b>קטגורי</b>.
             </p>
         </div>
     </div>
     <div id="explanatoryVariables">
-        <div><h2>Choose one or more explanatory variables</h2></div>
+        <div><h2>בחר משתנה מסביר אחד או יותר</h2></div>
         <hr/>
         <div>
-            <p>One or more fields representing the explanatory
-variables (fields) that help predict the value or category of the variable to predict.  Use the  categorical checkbox for any variables that represent
-classes or categories (such as landcover or presence or absence).
-Specify the variable as  true  for any that represent classes or categories
-such as landcover or presence or absence and  false  if the variable is continuous.
+            <p>שדה אחד או יותר שמייצגים את המשתנים המסבירים (שדות) שעוזרים לחזות את הערך או הקטגוריה של משתנה לחיזוי.  השתמש בתיבת הסימון 'קטגורי' עבור כל משתנה שמייצג מחלקות או קטגוריות (כגון כיסויי קרקע או הימצאות או היעדרות). ציין את המשתנים כ'true' עבור כל אחד שמייצג מחלקות או קטגוריות כגון כיסויי קרקע או הימצאות או היעדרות, וכ'false' אם המשתנה הוא רציף.
             </p>
         </div>
     </div>
     <div id="numberOfTrees">
-        <div><h2>Number of trees</h2></div>
+        <div><h2>מספר העצים</h2></div>
         <hr/>
         <div>
-            <p>The number of trees to create in the model. More trees will generally result in more accurate model prediction, but the model will take longer to calculate. The default number of trees is 100.
+            <p>מספר העצים שיש ליצור במודל. מספר עצים גדול יותר בדרך כלל יפיק חיזוי מודל מדויק יותר, אבל חישוב המודל יימשך זמן רב יותר. מספר ברירת המחדל של עצים הוא 100.
             </p>
         </div>
     </div>
     <div id="minimumLeafSize">
-        <div><h2>Minimum leaf size</h2></div>
+        <div><h2>גודל עלה מינימלי</h2></div>
         <hr/>
         <div>
-            <p>The minimum number of observations required to keep a leaf (that is the terminal node on a tree without further splits). The default minimum for regression is 5 and the default for classification is 1. For very large data, increasing these numbers will decrease the run time of the tool.
+            <p>המספר המינימלי של של תצפיות שנדרש כדי לשמור עלה (כלומר, צומת המסוף על עץ ללא פיצולים נוספים). ברירת המחדל למינימום עבור רגרסיה היא 5, ועבור סיווגים היא 1. עבור נתונים גדולים מאוד, הגדלת מספרים אלה תקצר את זמן הריצה של הכלי.
             </p>
         </div>
     </div>
     <div id="maximumTreeDepth">
-        <div><h2>Maximum tree depth</h2></div>
+        <div><h2>עומק עץ מקסימלי</h2></div>
         <hr/>
         <div>
-            <p>The maximum number of splits that will be made down a tree. Using a large maximum depth, more splits will be created, which may increase the chances of overfitting the model. The default is data driven and depends on the number of trees created and the number of variables included.
+            <p>המספר המקסימלי של פיצולים שיתבצעו במורד עץ. בעת שימוש בעומק מקסימלי גדול, יותר פיצולים ייווצרו, מה שעשוי להגביר את הסיכויים להתאמת יתר של המודל. ברירת המחדל היא לפי הנתונים ותלויה במספר העצים שנוצרו ובמספר המשתנים שנכללו.
             </p>
         </div>
     </div>
     <div id="sampleSize">
-        <div><h2>Data available per tree (%)</h2></div>
+        <div><h2>הנתונים הזמינים לכל עץ (%)</h2></div>
         <hr/>
         <div>
-            <p>Specifies the percentage of the features in the training layer used for each decision
-tree. The default is 100 percent of the data. Samples for each tree
-are taken randomly from two-thirds of the data specified.
+            <p>מציין את אחוז הישויות בשכבת האימון המשמשים עבור כל עץ החלטה. ברירת המחדל היא 100 אחוז מהנתונים. דגימות עבור כל עץ נלקחות באקראיות מתוך שני-שלישים של הנתונים שצוינו.
             </p>
-            <p>Each
-decision tree in the forest is created using a random sample or
-subset (approximately two-thirds) of the training data available.
-Using a lower percentage of the input data for each decision tree
-increases the speed of the tool for very large datasets.
+            <p>כל עץ החלטה ביער נוצר באמצעות דגימה אקראית או ערכת משנה (כשני-שליש) של נתוני האימון הזמינים. שימוש באחוזים נמוכים יותר של נתוני הקלט עבור כל עץ החלטה מגביר את מהירות הכלי עבור סטים גדולים מאוד של נתונים.
             </p>
         </div>
     </div>
     <div id="randomVariables">
-        <div><h2>Number of randomly sampled variables</h2></div>
+        <div><h2>מספר אקראי של משתני דגימה</h2></div>
         <hr/>
         <div>
-            <p>Specifies the number of explanatory variables used to create each
-decision tree.
+            <p>מציין את מספר המשתנים המסבירים אשר משמשים ליצירת כל עץ החלטה.
             </p>
-            <p>Each
-of the decision trees in the forest is created using a random
-subset of the explanatory variables specified. Increasing the
-number of variables used in each decision tree will increase the
-chances of overfitting your model particularly if there is one or a
-couple dominant variables. A common practice is to use the square
-root of the total number of explanatory variables if your  variable to predict is numeric or divide
-the total number of explanatory variables by 3 if  the variable to predict is categorical.
+            <p>כל עץ החלטה ביער נוצר באמצעות ערכת משנה אקראית של המשתנים המסבירים שצוינו. הגדלת מספר המשתנים אשר משמשים בכל עץ החלטה תגדיל את הסיכויים להתאמת יתר של המודל, במיוחד אם יש משתנה דומיננטי או מספר משתנים דומיננטיים. אופן פעולה נפוץ הוא להשתמש בשורש ריבועי של המסר הכולל של משתנים מסבירים, אם המשתנה לחיזוי הוא מספרי, או לחלק את המספר הכולל של משתנים מסבירים ב-3, אם המשתנה לחיזוי הוא קטגורי.
             </p>
         </div>
     </div>
     <div id="explanatoryVariableMatching">
-        <div><h2>Choose how explanatory fields are matched</h2></div>
+        <div><h2>בחר את אופן התאמת השדות המסבירים</h2></div>
         <hr/>
         <div>
-            <p>How the corresponding variables in the training layer will match the variables in the prediction layer. Only the variables used in training will be included in the table.
+            <p>כיצד משתנים תואמים בשכבת האימון יותאמו למשתנים בשכבת החיזוי. רק המשתנים אשר משמשים באימון ייכללו בטבלה.
             </p>
         </div>
     </div>
     <div id="percentageForValidation">
-        <div><h2>Number of runs for validation</h2></div>
+        <div><h2>מספר ריצות לאימות</h2></div>
         <hr/>
         <div>
-            <p>Specifies the percentage (between 0 percent
-and 50 percent) of  features in the training layer to reserve as the test dataset for validation.
-The model will be trained without this random subset of data, and
-the observed values for those features will be compared to the
-predicted value. The default is 10 percent.
+            <p>מציין את האחוז (בין 0 אחוז ל-50 אחוז) של ישויות בשכבת האימון שיש לשמור כסט נתוני הבדיקה עבור אימות. המודל יאומן ללא ערכת משנה זו של נתונים, והערכים הנצפים עבור ישויות אלה יושוו לערך החזוי. ברירת המחדל היא 10 אחוז.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>The results returned will depend on the type of analysis. If you are training to assess model fit, results  will contain a layer of training data fit to the model and result info assessing the model fit. If you are training and predicting, results will contain a layer of the training data fit to the model, a layer of predicted results, and result info assessing the model fit.
+            <p>התוצאות שיוחזרו יהיו תלויות בסוג הניתוח. אם אתה מאמן להערכת התאמת מודל, התוצאות יכילו שכבה של נתוני אימון המותאמים למודל ופרטי תוצאה שמעריכים את התאמת המודל. אם אתה מאמן ומבצע חיזוי, התוצאות יכילו שכבה של נתוני האימון שמותאמים למודל, שכבה של תוצאות חזויות ופרטי תוצאה שמעריכים את התאמת המודל.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

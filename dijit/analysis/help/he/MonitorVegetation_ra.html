@@ -41,80 +41,80 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Monitor Vegetation</h2><p/>
-        <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Monitor Vegetation tool for Portal"></h2>
+        <h2>ניטור צמחייה</h2><p/>
+        <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="כלי ניטור צמחייה עבור פורטל"></h2>
         <hr/>
-    <p>This tool performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
+    <p>כלי זה מבצע פעולת חישוב על הערוצים של שכבת רסטר מרובה-ערוצים כדי לחשוף מידע על כיסוי צמחייה באזור המחקר.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Select the input data</h2></div>
+        <div><h2>בחר את נתוני הקלט</h2></div>
         <hr/>
         <div>
-            <p>Choose the multiband raster layer. Make sure the input raster has the appropriate bands available.
+            <p>בחר את שכבת הרסטר מרובה הערוצים. ודא שלרסטר הקלט יש ערוצים מתאימים זמינים.
             </p> 
         </div>
     </div>
     <div id="vegetationIndexType">
-        <div><h2>Choose method to monitor vegetation</h2></div>
+        <div><h2>בחר שיטה לניטור צמחייה</h2></div>
         <hr/>
         <div>
-            <p>Choose the method to create the vegetation index layer. The different vegetation indexes can help highlight certain features or reduce various noise.
+            <p>בחר את השיטה ליצירת שכבת אינדקס הצמחייה. האינדקסים השונים של הצמחייה יכולים לעזור להדגיש ישויות מסוימות או להפחית סוגים שונים של רעש.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
-GEMI is a nonlinear vegetation index for global environmental monitoring from satellite imagery. It is similar to NDVI, but it is less sensitive to atmospheric effects. It is affected by bare soil; therefore, it is not recommended for use in areas of sparse or moderately dense vegetation.
+GEMI הוא אינדקס צמחייה לניטור סביבתי גלובלי מתמונות לוויין. הוא דומה ל-NDVI, אבל פחות רגיש להשפעות אטמוספיריות. הוא מושפע מקרקע חשופה; לפיכך, הוא לא מומלץ לשימוש באזורים עם צפיפות צמחייה נמוכה או בינונית.
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
-GVI was originally designed from Landsat MSS imagery but has been modified for use with Landsat TM imagery. It is also known as the Landsat TM Tasseled Cap green vegetation index. This monitoring index can also be used with imagery whose bands share the same spectral characteristics.
+GVI עוצב במקור מתמונות Landsat MSS אבל שונה לצורך שימוש עם תמונות Landsat TM. הוא מוכר גם בשם אינדקס הצמחייה הירוקה Landsat TM Tasseled Cap. ניתן להשתמש באינדקס ניטור זה גם עם תמונות שהערוצים שלהן משתפים את אותם מאפיינים ספקטרלים.
 
                 </li>
                 <li>Modified Soil Adjusted Vegetation Index &mdash; 
-MSAVI2 is a vegetation index that tries to minimize bare soil influences of the SAVI method.
+MSAVI2 הוא אינדקס צמחייה שמנסה למזער את ההשפעות של קרקע חשופה של שיטת SAVI.
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI is a standardized index allowing you to generate an image displaying greenness, or relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset: the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
+NDVI הוא מדד מתוקנן שמאפשר ליצור תמונה המציגה את רמת הירוק, או ביומסה יחסית. אינדקס זה מנצל את הניגודיות של המאפיינים בין שני ערוצים מסט הנתונים של הרסטר המולטי-ספקטרלי: ספיגת הכלורופיל בערוץ האדום והרפלקטיביות הגבוהה של חומרי הצמחייה בערוץ הקרוב לאינפרא-אדום (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
-PVI is similar to a difference vegetation index; however, it is sensitive to atmospheric variations. When using this method to compare different images, it should only be used on images that have been atmospherically corrected. This information can be provided by your data vendor.
+PVI דומה לאינדקס שוני צמחייה; אבל, הוא רגיש לשינויים אטמוספריים. בעת השימוש בשיטה זו להשוואת תמונות שונות, יש להשתמש בה על תמונות שתוקנו מבחינה אטמוספרית. תוכל לקבל מידע זה מספק הנתונים שלך.
 
                 </li>
                 <li>Soil-Adjusted Vegetation Index &mdash; 
-SAVI is a vegetation index that attempts to minimize soil brightness influences using a soil-brightness correction factor. This is often used in arid regions where vegetative cover is low.
+SAVI הוא אינדקס צמחייה שמנסה למזער את השפעות בהירות הקרקע בעזרת פקטור תיקון בהירות קרקע. אינדקס זה משמש לעתים קרובות באזורים צחיחים שבהם כיסוי הצמחייה נמוך.
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-The Sultan's Formula process takes a six-band 8-bit image and applies a specific algorithm to it to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
+התהליך של פורמולת Sultan לוקח תמונה של שישה ערוצים ו-8 ביט ומחיל עליה אלגוריתם ספציפי כדי להפיק תמונה של שלושה-ערוצים ו-8 ביט. התמונה שמתקבלת מדגישה תצורות סלע שנקראות אופיוליטים בחופי ים. הפורמולה עוצבה על בסיס ערוצים TM ו-ETM של Landsat סצנה 5 או 7.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
-Transformed-SAVI is a vegetation index that attempts to minimize soil brightness influences by assuming the soil line has an arbitrary slope and intercept.
+Transformed-SAVI הוא אינדקס צמחייה שמנסה למזער את השפעות בהירות האדמה באמצעות ההנחה שקו האדמה כולל שיפוע וחיתוך שרירותיים.
 
                 </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specify indexes of NIR band and Red band</h2></div>
+        <div><h2>ציין אינדקסים של ערוץ NIR וערוץ Red</h2></div>
         <hr/>
         <div>
-            <p>Specify the band indexes for the NIR and red bands.
+            <p>ציין את האינדקסים של ערוץ עבור הערוצים NIR ואדום.
             </p>
-            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and red wavelengths.
+            <p>כל חיישן לוויין ומצלמה אווירית לוכדים מידע שמחולק לאינדקסים של רצועות. כל אינדקס של ערוצים מכיל את המידע עבור חלק ספציפי של הספקטרום האלקטרומגנטי. שיטת ניטור צמחייה זו מחייבת אותך לציין את אינדקס הערוצים שלכד את אורכי הגל NIR ואדום.
             </p>
         </div>
     </div>
     <div id="slopeOfSoilLine">
-        <div><h2>Slope of soil line</h2></div>
+        <div><h2>השיפוע של קו האדמה</h2></div>
         <hr/>
         <div>
-            <p>The slope of the soil line. The slope is the approximate linear relationship between the NIR and red bands on a scatterplot.
+            <p>השיפוע של קו האדמה. השיפוע הוא היחס הלינארי הנאמד בין ערוצי NIR ואדום בתרשים פיזור.
             </p>
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
+            <p>פרמטר זה תקף רק עבור שיטת האינדקס של צמחייה מומרת עם התאמת אדמה.
             </p>
         </div>
     </div>
@@ -122,32 +122,32 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Intercept</h2></div>
         <hr/>
         <div>
-            <p>The value of the NIR when the reflection value of the red (Red) band is 0 for the particular soil lines.
+            <p>הערך של ה-NIR כאשר ערך ההשתקפות של ערוץ האדום (אדום) הוא 0 עבור קווי האדמה המסוימים.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , when Red is 0.
+            <p> <code>(a = NIR - sRed)</code> , כאשר 'אדום' הוא 0.
             </p> 
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
+            <p>פרמטר זה תקף רק עבור שיטת האינדקס של צמחייה מומרת עם התאמת אדמה.
             </p>
         </div>
     </div>
     <div id="greenVegetativeCover">
-        <div><h2>Amount of green vegetation cover</h2></div>
+        <div><h2>כמות הכיסוי של צמחייה ירוקה</h2></div>
         <hr/>
         <div>
-            <p>Specifies the amount of green vegetation cover, which is required by the SAVI method.
+            <p>מציין את כמות כיסוי הצמחייה הירוקה, שנדרשת עבור השיטה SAVI.
             </p>
-            <p>Valid values are as follows: 
+            <p>להלן ערכים תקפים: 
 
                 <ul>
-                    <li>1 = Areas with no green vegetation cover
+                    <li>1 = אזורים ללא כיסוי צמחייה ירוקה
                         
  
                     </li>
-                    <li>0.5 = Areas with moderate green vegetation cover
+                    <li>0.5 = אזורים עם כיסוי בינוני של צמחייה ירוקה
                         
  
                     </li>
-                    <li>0 = Areas with high green vegetation cover
+                    <li>0 = אזורים עם כיסוי גבוה של צמחייה ירוקה
                         
 
                     </li>
@@ -157,22 +157,22 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         </div>
     </div>
     <div id="adjustmentFactor">
-        <div><h2>Adjustment factor</h2></div>
+        <div><h2>גורם התאמה</h2></div>
         <hr/>
         <div>
-            <p>Specifies the adjustment factor to help minimize soil effect, which is required by the Transformed Soil-Adjusted Vegetation Index method. The default value is 0.08.
+            <p>מציין את גורם ההתאמה כדי לעזור למזער את השפעת האדמה, שנדרש עבור השיטה 'אינדקס צמחייה מומרת עם התאמת אדמה'. ערך ברירת המחדל הוא 0.08.
             </p>
-            <p>A low value means that you are ignoring the soil effect. A high value means that the soil will affect your result.
+            <p>ערך נמוך משמעו שאתה מתעלם מהשפעת האדמה. ערך גבוה משמעו שהאדמה משפיעה על התוצאה שלך.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

@@ -8,6 +8,10 @@
         style="font-size: 12px;" data-dojo-attach-event="onclick: _onItemModeSelect"
         class="jimu-leading-margin35 jimu-radio-btn"><label style=" width: auto;"
         class="jimu-leading-margin05">${nls.useUploadForGPInput}</label>
+      <input name="dataFileMode" type="radio" data-dojo-attach-point="imgServerMode"
+        style="font-size: 12px;" data-dojo-attach-event="onclick: _onSelectModeClick"
+        class="jimu-leading-margin35 jimu-radio-btn"><label style=" width: auto;"
+        class="jimu-leading-margin05">${chooseLayerName}</label>
     </div>
   </div>
   <div>
@@ -35,6 +39,8 @@
           </form>
           <span data-dojo-attach-point="uploadFileName" class="jimu-leading-margin2"></span>
         </div>
+      </div>
+      <div data-dojo-attach-point="ImgSvclayerNode" data-dojo-props="label:imgServNode">
       </div>
     </div>
   </div>

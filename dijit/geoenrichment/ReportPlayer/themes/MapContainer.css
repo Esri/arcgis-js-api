@@ -87,3 +87,14 @@
     .esriGEReportPlayer .mapNavigationLockButton.unlocked {
         background-image: url('./images/lock/unlockWhite.svg');
     }
+
+
+
+
+
+
+
+.esriGEReportPlayerPrint .esriSimpleSliderTR,
+.esriGEReportPlayerPrint .HomeButton {
+    display: none !important;
+}

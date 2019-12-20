@@ -70,7 +70,7 @@
             <p>Wybierz warstwę punktową reprezentującą punkt lub punkty początkowe. Narzędzie obsługuje maksymalnie  5 000 punkt&oacute;w początkowych oraz  5 000 punkt&oacute;w docelowych. </p>
             <p>Jeśli wybierzesz warstwę z&nbsp;dokładnie jednym punktem początkowym, wszystkie punkty docelowe będą z&nbsp;nim połączone.
             </p>
-            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Wybranie tej opcji spowoduje otwarcie galerii, w kt&oacute;rej można wyszukać i wybrać zestawy danych pochodzące z r&oacute;żnych źr&oacute;deł w celu użycia ich podczas przeprowadzania analiz. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Jeśli istnieje jeden punkt początkowy i&nbsp;wiele punkt&oacute;w docelowych, narzędzie połączy punkt początkowy z&nbsp;każdym punktem docelowym.
             </p>
-            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Wybranie tej opcji spowoduje otwarcie galerii, w kt&oacute;rej można wyszukać i wybrać zestawy danych pochodzące z r&oacute;żnych źr&oacute;deł w celu użycia ich podczas przeprowadzania analiz. 
             </p>
             <p> Jeśli istnieje wiele punkt&oacute;w początkowych i&nbsp;docelowych, potrzebne są dwa pola opisujące pary punkt początkowy-punkt docelowy: <b>Pole identyfikatora ID w&nbsp;punktach początkowych</b> oraz <b>pole dopasowanego identyfikatora ID w&nbsp;punktach docelowych</b>. Podczas analizy narzędzie łączy pary punkt początkowy-punkt docelowy. Zał&oacute;żmy, że występują dwa punkty początkowe z&nbsp;wartościami pola identyfikatora <code>Rosie</code> i <code>Harold</code> oraz dwa punkty docelowe o&nbsp;takich samych wartościach identyfikatora. Punkt początkowy <code>Rosie</code> połączy się z&nbsp;punktem docelowym <code>Rosie</code>, a&nbsp;punkt <code>Harold</code> połączy się z&nbsp;punktem <code>Harold</code>. Nie są wykonywane żadne inne połączenia ani pomiary.
             </p>
-            <p>Wartości identyfikatora muszą być unikalne w&nbsp;obrębie każdej warstwy, na przykład w&nbsp;warstwie punkt&oacute;w docelowych nie mogą występować dwie wartości  <code>Rosie</code>. Wartości w&nbsp;warstwie punkt&oacute;w początkowych i&nbsp;warstwie punkt&oacute;w docelowych muszą sobie dokładnie odpowiadać, tak aby tworzyć pary; punkt <code>Harold</code> nie połączy się z&nbsp;błędnie zapisaną wartością <code>Harodl</code>. 
+            <p>Jeśli liczby punkt&oacute;w początkowych i docelowych są r&oacute;wne, wartości identyfikatora muszą być unikalne w obrębie każdej warstwy, na przykład w warstwie punkt&oacute;w docelowych nie mogą występować dwie wartości  <code>Rosie</code>. Wartości w&nbsp;warstwie punkt&oacute;w początkowych i&nbsp;warstwie punkt&oacute;w docelowych muszą sobie dokładnie odpowiadać, tak aby tworzyć pary; punkt <code>Harold</code> nie połączy się z&nbsp;błędnie zapisaną wartością <code>Harodl</code>. 
+            </p>
+            <p>Narzędzie obsługuje także łączenie każdego punktu początkowego z więcej niż jednym punktem docelowym lub każdego punktu docelowego z więcej niż jednym punktem początkowym. W takich przypadkach nadal wymagane są dwa pola opisujące pary punkt początkowy-punkt docelowy. Jednakże tylko w jednej z tych warstw (warstwa punkt&oacute;w początkowych lub warstwa punkt&oacute;w docelowych) wymagane są unikalne identyfikatory.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Bariery liniowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie przecinają się z ulicą. Przy użyciu bariery liniowej można na przykład modelować paradę lub marsz protestacyjny, kt&oacute;ry blokuje ruch drogowy na kilku odcinkach ulic. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery liniowe przekracza 500, narzędzie zwraca błąd.
             </p>
             <p>Bariery poligonowe uniemożliwiają podr&oacute;żowanie wszędzie tam, gdzie poligon przecina się z ulicą. Przy użyciu barier tego typu można na przykład modelować powodzie występujące na obszarach sieci ulicznej, kt&oacute;re uniemożliwią ruch drogowy w danym rejonie. Jeśli liczba obiekt&oacute;w ulic przecinanych przez wszystkie bariery poligonowe przekracza 2000, narzędzie zwraca błąd.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Kształt trasy</h2></div>
+        <hr/>
+        <div>
+            <p>Podczas korzystania z trybu podr&oacute;żowania wybierz kształt trasy łączącej każdy punkt początkowy z jego punktem docelowym:
+            </p>
+            <ul>
+                <li> <b>Wzdłuż ulic</b> &mdash; kształt zależy od bazowej sieci ulic. Ta opcja daje najlepsze wyniki w przypadku generowania tras między punktami początkowymi i docelowymi.
+                </li>
+                <li> <b>Linia prosta</b> &mdash; kształtem jest linia prosta łącząca punkt początkowy z punktem docelowym pary. Ta opcja daje najlepsze wyniki w przypadku generowania diagram&oacute;w nici pajęczych lub linii żądanych (na przykład, aby pokazać, do kt&oacute;rych sklep&oacute;w chodzą klienci).
+                </li>
+            </ul>
+            
+            <p>Najlepsza trasa między punktem początkowym a odpowiadającym mu punktem docelowym jest zawsze wyznaczana na podstawie trybu podr&oacute;żowania, niezależnie od wybranego kształtu trasy.
             </p>
         </div>
     </div>

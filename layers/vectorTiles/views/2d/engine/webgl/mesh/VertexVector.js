@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["require","exports","../Utils","../util/Writer"],function(t,e,r,n){Object.defineProperty(e,"__esModule",{value:!0});var i=function(){function t(t,e){this.data=t,this.stride=e,this.vertexCount=0}return t.prototype.transfer=function(t,e){var r=this.data.buffer();t.vertexCount=this.vertexCount,t.data=r,t.stride=this.stride,e.push(r)},t}();e.default=i;var o=function(){function t(t,e,o){this.geometryType=t,this.indexVector=new n.default(Uint32Array,o),this.namedVectors={};var s=r.getStrides(t,e);for(var a in s){var u=s[a],d=u/4,f=new n.default(Uint32Array,d*o);this.namedVectors[a]=new i(f,u)}}return t.prototype.get=function(t){return this.namedVectors[t].data},t.prototype.transfer=function(t,e){var r=this.indexVector.buffer(),n={};e.push(r);for(var i in this.namedVectors){var o=this.namedVectors[i];n[i]={},o.transfer(n[i],e)}t.geometryType=this.geometryType,t.indexBuffer=r,t.namedBuffers=n,this.destroy()},t.prototype.destroy=function(){this.indexVector=null,this.namedVectors=null},t}();e.VertexVectors=o});

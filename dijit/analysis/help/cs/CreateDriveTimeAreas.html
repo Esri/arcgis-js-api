@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Vytvořit oblasti podle doby jízdy (Create Drive-Time Areas)</h2><p/>
-        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Vytvořit oblasti podle doby j&iacute;zdy"></h2>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Vytvořit oblasti podle doby j&iacute;zdy (Create Drive-Time Areas)"></h2>
         <hr/>
     <p>N&aacute;stroj Vytvořit oblasti podle doby j&iacute;zdy vytv&aacute;ř&iacute; oblasti dosažiteln&eacute; za určitou dobu j&iacute;zdy, ujet&iacute;m nebo ujit&iacute;m určit&eacute; vzd&aacute;lenosti atd. Měř&iacute; vzd&aacute;lenosti po silnic&iacute;ch nebo cest&aacute;ch z jednoho či v&iacute;ce bodů (až 1000) a vytv&aacute;ř&iacute; vrstvu, kter&aacute; pom&aacute;h&aacute; odpovědět na ot&aacute;zky typu:
         <ul>
@@ -56,7 +56,7 @@
             </li>
             <li>Jak by se zlep&scaron;ilo pokryt&iacute; pož&aacute;rn&iacute; ochrany, kdyby se zde zř&iacute;dila nov&aacute; hasičsk&aacute; stanice?
             </li>
-            <li>Jak&eacute; oblasti trhu pokr&yacute;v&aacute; m&aacute; provozovna?
+            <li>Kter&eacute; oblasti trhu pokr&yacute;v&aacute; m&aacute; provozovna?
             </li>
         </ul>
         
@@ -79,12 +79,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Zvolte vrstvu bodů, kolem kterých budou vypočítány oblasti podle doby jízdy.</h2></div>
+        <div><h2>Zvolte vrstvu bodů, kolem kterých budou vypočítány dojezdové oblasti.</h2></div>
         <hr/>
         <div>
             <p>Bodov&eacute; prvky, kolem kter&yacute;ch budou oblasti vypoč&iacute;t&aacute;ny. Můžete zvolit, jak&yacute;m způsobem budou oblasti vypoč&iacute;t&aacute;v&aacute;ny na z&aacute;kladě způsobu přepravy (j&iacute;zda autem, j&iacute;zda n&aacute;kladn&iacute;m vozidlem nebo chůze) a měřen&eacute; hodnotě (čas nebo vzd&aacute;lenost).
             </p>
-            <p class="OnlineOnly">Kromě v&yacute;běru vrstvy z mapy můžete tak&eacute; zvolit položky  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b> nebo <b>Vybrat vrstvu anal&yacute;zy</b>, kter&eacute; se nach&aacute;zej&iacute; v doln&iacute; č&aacute;sti rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            <p>Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Pomoc&iacute; t&eacute;to možnosti se otevře galerie, kde můžete proch&aacute;zet a&nbsp;vyb&iacute;rat datov&eacute; sady z&nbsp;různ&yacute;ch vrstev, kter&eacute; můžete použ&iacute;t ve sv&eacute; anal&yacute;ze. 
             </p>
             <p>N&aacute;stroj podporuje až 1 000 prvků ve vstupn&iacute; vrstvě.
 
@@ -95,7 +95,9 @@
         <div><h2>Měření</h2></div>
         <hr/>
         <div>
-            <p>Zvolte způsob přepravy (j&iacute;zda autem, j&iacute;zda n&aacute;kladn&iacute;m vozidlem nebo chůze) a měřenou hodnotu (čas nebo vzd&aacute;lenost). Dostupn&eacute; způsoby přepravy jsou určeny administr&aacute;torem organizace.   Až zvol&iacute;te způsob přepravy a měřen&eacute; hodnoty, zadejte dobu nebo vzd&aacute;lenost až do v&yacute;&scaron;e  5 hodin (300 minut) nebo  300 mil (482 kilometrů). 
+            <p>Zvolte způsob přepravy (j&iacute;zda autem, j&iacute;zda n&aacute;kladn&iacute;m vozidlem nebo chůze) a měřenou hodnotu (čas nebo vzd&aacute;lenost).  Dostupn&eacute; způsoby přepravy jsou určeny administr&aacute;torem organizace.   Až zvol&iacute;te způsob přepravy a měřen&eacute; hodnoty, zadejte dobu nebo vzd&aacute;lenost až do v&yacute;&scaron;e  5 hodin (300 minut) nebo  300 mil (482 kilometrů). 
+            </p>
+            <p>Směr cesty ( <b>Od zař&iacute;zen&iacute;</b> nebo <b>K zař&iacute;zen&iacute;</b>) může generov&aacute;n&iacute; oblast&iacute; ovlivnit. Vytvořen&eacute; oblasti podle doby j&iacute;zdy budou dodržovat pravidla pro jednosměrn&eacute; ulice, z&aacute;kazy odbočen&iacute; a dal&scaron;&iacute; v z&aacute;vislosti na zvolen&eacute;m směru j&iacute;zdy. Směr j&iacute;zdy byste měli vybrat na z&aacute;kladě typu vstupn&iacute;ch um&iacute;stěn&iacute; a kontextu va&scaron;&iacute; anal&yacute;zy. Např&iacute;klad oblast podle doby j&iacute;zdy pro rozvoz pizzy bude směřovat od zař&iacute;zen&iacute;, zat&iacute;mco oblast podle doby j&iacute;zdy pro nemocnici bude směřovat k zař&iacute;zen&iacute;.
             </p>
             <p>Pokud zvol&iacute;te  <b>Dobu j&iacute;zdy</b>, <b>Dobu j&iacute;zdy ve venkovsk&yacute;ch oblastech</b> nebo <b>Dobu j&iacute;zdy n&aacute;kladn&iacute;m vozidlem</b>, m&aacute;te k dispozici několik možnost&iacute;, jak dobu j&iacute;zdy měřit.
                 <ul>
@@ -104,7 +106,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Chcete-li vytv&aacute;řet dojezdov&eacute; oblasti v z&aacute;vislosti na dan&eacute;m poč&aacute;tečn&iacute;m času a měn&iacute;c&iacute;ch se dopravn&iacute;ch podm&iacute;nk&aacute;ch, za&scaron;krtněte možnost  <b>Použ&iacute;t provoz</b>. Pokud tak&eacute; zvol&iacute;te možnost <b>Živ&yacute; provoz</b>, bude čas odjezdu ze vstupn&iacute;ch bodů nastaven na aktu&aacute;ln&iacute; čas a při vytv&aacute;řen&iacute; dojezdov&yacute;ch oblast&iacute; budou použ&iacute;v&aacute;ny aktu&aacute;ln&iacute; a předpov&iacute;dan&eacute; rychlosti dopravy z&iacute;skan&eacute; z dopravn&iacute;ch čidel a dal&scaron;&iacute;ch zdrojů. Předpov&iacute;dan&eacute; rychlosti dopravy jsou vypočteny na z&aacute;kladě aktu&aacute;ln&iacute;ch rychlost&iacute; provozu, historick&yacute;ch rychlost&iacute; a aktu&aacute;ln&iacute;ch ud&aacute;lost&iacute;, např&iacute;klad podle stavu počas&iacute;. Rychlosti dopravy jsou předpov&iacute;d&aacute;ny na 12 hodin dopředu, takže můžete pomoc&iacute; posuvn&iacute;ku nastavit čas odjezdu až o 12 hodin vpřed.
+                        <p>Chcete-li vytv&aacute;řet dojezdov&eacute; oblasti v z&aacute;vislosti na dan&eacute;m poč&aacute;tečn&iacute;m času a měn&iacute;c&iacute;ch se dopravn&iacute;ch podm&iacute;nk&aacute;ch, za&scaron;krtněte možnost  <b>Použ&iacute;t provoz</b>. Pokud tak&eacute; zvol&iacute;te možnost <b>Aktu&aacute;ln&iacute; dopravn&iacute; podm&iacute;nky</b>, bude čas odjezdu ze vstupn&iacute;ch bodů nastaven na aktu&aacute;ln&iacute; čas a při vytv&aacute;řen&iacute; dojezdov&yacute;ch oblast&iacute; budou použ&iacute;v&aacute;ny aktu&aacute;ln&iacute; a předpov&iacute;dan&eacute; rychlosti dopravy z&iacute;skan&eacute; z dopravn&iacute;ch čidel a dal&scaron;&iacute;ch zdrojů. Předpov&iacute;dan&eacute; rychlosti dopravy jsou vypočteny na z&aacute;kladě aktu&aacute;ln&iacute;ch rychlost&iacute; provozu, historick&yacute;ch rychlost&iacute; a aktu&aacute;ln&iacute;ch ud&aacute;lost&iacute;, např&iacute;klad podle stavu počas&iacute;. Rychlosti dopravy jsou předpov&iacute;d&aacute;ny na 12 hodin dopředu, takže můžete pomoc&iacute; posuvn&iacute;ku nastavit čas odjezdu až o 12 hodin vpřed.
                         </p>
                         <p>Tato nastaven&iacute; aktu&aacute;ln&iacute; dopravy jsou vhodn&aacute;, chcete-li zjistit, do jak&yacute;ch oblast&iacute; se můžete dostat, vyjedete-li okamžitě, za jednu hodinu atd.
                         </p>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Zobrazit nedosažitelné oblasti jako díry</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte, jestli v&yacute;stupn&iacute; oblasti budou zahrnovat d&iacute;ry, pokud někter&yacute;ch ulic nen&iacute; možn&eacute; dos&aacute;hnout kvůli času  <b>Měřen&iacute;</b>, vzd&aacute;lenosti nebo omezen&iacute; vypl&yacute;vaj&iacute;c&iacute;ch ze způsobu přepravy.
+            </p>
+            <p>Oblasti podle doby j&iacute;zdy vytvořen&eacute; s t&iacute;mto parametrem použ&iacute;vaj&iacute; limit 15 minut nebo 15 mil (24 kilometrů).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud n&aacute;zev vrstvy již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>V rozbalovac&iacute; nab&iacute;dce  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Zahrnout dosažitelné ulice</h2></div>
+        <hr/>
+        <div>
+            <p>Zahrnout ulice využit&eacute; pro vytvořen&iacute; oblast&iacute; podle doby j&iacute;zdy jako v&yacute;stupn&iacute; vrstvu. 
+            </p>
+            <p>Vytvořen&iacute; oblasti podle doby j&iacute;zdy změř&iacute; dosah zař&iacute;zen&iacute; v uličn&iacute; s&iacute;ti a pak vytvoř&iacute; oblasti podle doby j&iacute;zdy z použit&yacute;ch ulic. Oblasti proto přibližně odpov&iacute;daj&iacute; projet&yacute;m ulic&iacute;m. Pokud chcete ve sv&eacute; anal&yacute;ze určit, kter&eacute; ulice jsou dosažiteln&eacute; do konkr&eacute;tn&iacute;ho času nebo vzd&aacute;lenosti od va&scaron;eho zař&iacute;zen&iacute;, může b&yacute;t vytvořen&iacute; seznamu dosažiteln&yacute;ch ulic přesněj&scaron;&iacute; než použit&iacute; oblast&iacute; podle doby j&iacute;zdy.
+            </p>
+            <p>Oblasti podle doby j&iacute;zdy vytvořen&eacute; s t&iacute;mto parametrem použ&iacute;vaj&iacute; limit 15 minut nebo 15 mil (24 kilometrů).
             </p>
         </div>
     </div>

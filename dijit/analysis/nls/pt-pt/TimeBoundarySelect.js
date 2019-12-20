@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({timeInterval:"Intervalo de tempo",timeAlign:"Hora à qual alinhar o intervalo de tempo"});

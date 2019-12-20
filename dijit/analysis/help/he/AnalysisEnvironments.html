@@ -41,26 +41,25 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portal Analysis Environment settings</h2><p/>
+        <h2>הגדרות סביבת ניתוח של הפורטל</h2><p/>
         <h2></h2>
         <hr/>
-    <p>  Environment settings for analysis in Portal for ArcGIS and  ArcGIS Online. 
+    <p>  הגדרות סביבת הניתוח ב- Portal for ArcGIS וב-ArcGIS Online. 
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="overwriteResult">
-        <div><h2>Overwrite result layer</h2></div>
+        <div><h2>דרוס שכבת תוצאה</h2></div>
         <hr/>
         <div>
             
-            <p>Specifies whether to overwrite existing layers.    When checked, if a layer with the same name already exists within your contents, it will be overwritten.
+            <p>מציין האם לדרוס שכבות קיימות.    כאשר אפשרות זו מסומנת, אם שכבה באותו שם כבר קיימת בתכנים שלך, היא תידרס.
             </p>
             <p>
                 <ul>
-                    <li>Checked&mdash;If a layer with the same name already exists within your contents, it will be overwritten. The output will have the same coordinate system as the
-input.
+                    <li>מסומן - אם קיימת כבר שכבה באותו שם בתכנים שלך, היא תידרס. לפלט תהיה אותה מערכת קואורדינטות כמו לקלט.
                     </li>
-                    <li>Unchecked&mdash;If the result layer name provided already exists, an error will occur and the result layer must be renamed before the tool can be executed. This is the default.
+                    <li>לא מסומן - שם שכבת התוצאה שצוין כבר קיים, תוצג שגיאה ותצטרך לשנות את שם שכבת התוצאה לפני שהכלי יוכל להשלים את פעולתו. זוהי ברירת המחדל.
                     </li>
                 </ul>
                 
@@ -68,16 +67,16 @@ input.
         </div>
     </div>
     <div id="closeAnalysisWidget">
-        <div><h2>Close analysis widget after running analysis</h2></div>
+        <div><h2>סגור ווידג'ט ניתוח לאחר הרצת ניתוח</h2></div>
         <hr/>
         <div>
-            <p>Specifies whether to keep the analysis dialog box open and enabled while the tool is processing.     This setting allows you to make modifications to your analysis parameters while the previous analysis job continues to run.  Analysis is an iterative process and by keeping the tool dialog box open, it allows you to make parameter changes and rerun your analysis.
+            <p>מציין האם להשאיר את תיבת הדו-שיח של הניתוח פתוחה ומאופשרת תוך כדי פעולת הכלי.     באמצעות הגדרה זו באפשרותך לערוך שינויים בפרמטרים של הניתוח בשעה שמשימת ניתוח קודמת ממשיכה לרוץ.  הניתוח הוא תהליך איטרטיבי ועל ידי השארת תיבת הדו-שיח של הכלי פתוחה, באפשרותך לערוך שינויים בפרמטרים ולחזור לניתוח.
             </p>
             <p>
                 <ul>
-                    <li>Checked&mdash;The analysis tool dialog box will close, and focus will be returned to the table of contents. This is the default
+                    <li>מסומן - תיבת הדו-שיח של כלי הניתוח תיסגר, והמיקוד יחזור לתוכן העניינים. זוהי ברירת המחדל
                     </li>
-                    <li>Unchecked&mdash;The analysis tool dialog box will remain open and enabled.   
+                    <li>לא מסומן - תיבת הדו-שיח של כלי הניתוח תישאר פתוחה ומאופשרת.   
                     </li>
                 </ul>
                 
@@ -85,17 +84,17 @@ input.
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Store analysis results as hosted feature layers</h2></div>
+        <div><h2>אחסן את תוצאות הניתוח כשכבות ישויות מתארחות</h2></div>
         <hr/>
         <div>
             
-            <p>Specifies whether the result layer created from your analysis will be a feature collection or a hosted feature layer. 
+            <p>מציין האם שכבת התוצאה שנוצרה מהניתוח תהיה אוסף ישויות או שכבת ישויות מתארחת. 
             </p>
             <p>
                 <ul>
-                    <li>Checked&mdash;The results of your analysis will create a hosted feature layer, and an item will be created in your contents. This is the default.
+                    <li>מסומן - תוצאות הניתוח ייצרו שכבת ישויות מתארחת, ופריט יתווסף לתוכנן העניינים. זוהי ברירת המחדל.
                     </li>
-                    <li>Unchecked&mdash;The results of your analysis will create a feature collection.     
+                    <li>לא מסומן - תוצאות הניתוח ייצרו אוסף ישויות.     
                     </li>
                 </ul>
                 
@@ -103,20 +102,19 @@ input.
         </div>
     </div>
     <div id="outputCoordinateSystem">
-        <div><h2>Output coordinate system</h2></div>
+        <div><h2>מערכת קואורדינטות פלט</h2></div>
         <hr/>
         <div>
-            <p>Specifies   the  coordinate system of the result layer for raster analysis.    
+            <p>מציין את מערכת הקואורדינטות של שכבת התוצאה עבור ניתוח רסטר.    
             </p>
             <p>
                 <ul>
-                    <li> <b>Same as Input</b>&mdash;The  result of your analysis will be in the same coordinate system  as the
-input. This is the default.
+                    <li> <b>זהה לקלט</b> - תוצאת הניתוח תהיה באותה מערכת קואורדינטות כמו הקלט. זוהי ברירת המחדל.
                     </li>
-                    <li> <b>As specified</b>&mdash;The result of your analysis will be in the coordinate system you choose.   When this option is selected, click the globe button and choose from a list of known coordinate systems, or add the spatial reference WKID in the box provided.
+                    <li> <b>כפי שצוין</b> - תוצאת הניתוח תהיה במערכת הקואורדינטות שתבחר.   אם בחרת באפשרות זו, לחץ על לחצן הגלובוס ובחר מתוך רשימה של מערכת קואורדינטות מוכרות, או הוסף ייחוס מרחבי WKID בתיבה שמוצגת.
                     </li>
-                    <li> <b>Layer
-&lt;name&gt;</b>&mdash;The result of your analysis will be in the same coordinate system as an existing layer you choose in your web map.
+                    <li> <b>שכבה
+&lt;שם&gt;</b> - תוצאת הניתוח תהיה באותה מערכת קואורדינטות כמו שכבה קיימת שתבחר במפה שלך.
                     </li>
                 </ul>
                 
@@ -124,23 +122,21 @@ input. This is the default.
         </div>
     </div>
     <div id="processingCoordinateSystem">
-        <div><h2>Processing coordinate system</h2></div>
+        <div><h2>מערכת קואורדינטות לעיבוד</h2></div>
         <hr/>
         <div>
-            <p>Specifies the coordinate system your analysis will use during  execution of the GeoAnalytics analysis.   
+            <p>מציין את מערכת הקואורדינטות שבה הניתוח ישתמש במהלך ביצוע הניתוח של GeoAnalytics.   
             </p>
-            <p>For GeoAnalytics, some analysis requires
-that  processing be executed in a projected coordinate system.   Any tool that has implemented binning of data or linear units requires a projected coordinate system. 
+            <p>עבור GeoAnalytics, חלק מהניתוח מחייב שהעיבוד יתבצע במערכת קואורדינטות מוטלת.   כל כלי שיישם Binning של נתונים או יחידות לינאריות מחייב מערכת קואורדינטות מוטלת. 
             </p>
             <p>
                 <ul>
-                    <li> <b>Same as input</b>&mdash;Your analysis will be processed in the same coordinate system  as the
-input. This is the default.
+                    <li> <b>זהה לקלט</b> - הניתוח יעובד באותה מערכת קואורדינטות כמו הקלט. זוהי ברירת המחדל.
                     </li>
-                    <li> <b>As specified</b>&mdash;Your analysis will be in the coordinate system you choose.   When this option is selected, click the globe button and choose from a list of known projected coordinate systems, or add the spatial reference WKID in the box provided.
+                    <li> <b>כפי שצוין</b> - הניתוח יהיה במערכת הקואורדינטות שתבחר.   אם בחרת באפשרות זו, לחץ על לחצן הגלובוס ובחר מתוך רשימה של מערכת קואורדינטות מוטלות מוכרות, או הוסף ייחוס מרחבי WKID בתיבה שמוצגת.
                     </li>
-                    <li> <b>Layer
-&lt;name&gt;</b>&mdash; Your analysis will be in the same coordinate system as an existing layer you choose in your web map.
+                    <li> <b>שכבה
+&lt;שם&gt;</b> - הניתוח יהיה באותה מערכת קואורדינטות כמו שכבה קיימת שתבחר במפה שלך.
                     </li>
                 </ul>
                 
@@ -148,19 +144,19 @@ input. This is the default.
         </div>
     </div>
     <div id="processingExtent">
-        <div><h2>Extent</h2></div>
+        <div><h2>תיחום</h2></div>
         <hr/>
         <div>
-            <p>Specifies the extent or boundary that will be used during execution of the analysis.  All input features that are completely within or that intersect the specified extent will be used in the analysis.
+            <p>מציין את התיחום או הגבול אשר ישמש במהלך ביצוע הניתוח.  כל ישויות הקלט שנמצאות במלואן בתוך התיחום שצוין, או שמצטלבות אתו, ישמשו בניתוח.
             </p>
             <p>
                 <ul>
-                    <li> <b>Default</b>&mdash;The extent provided by the tool.
+                    <li> <b>ברירת מחדל</b> - התיחום שמספק הכלי.
                     </li>
-                    <li> <b>As specified</b>&mdash;The extent is defined by the coordinates you provide.
+                    <li> <b>כפי שצוין</b> - התיחום יוגדר על ידי הקואורדינטות שתספק.
                     </li>
-                    <li> <b>Layer
-&lt;name&gt;</b>&mdash;The extent used to process your analysis will be the same as the spatial extent of an existing layer you choose in your web map. 
+                    <li> <b>שכבה
+&lt;שם&gt;</b> - התיחום אשר משמש לעיבוד הניתוח יהיה זהה לתיחום המרחבי של שכבה קיימת שתבחר במפה שלך. 
                     </li>
                 </ul>
                 
@@ -168,35 +164,28 @@ input. This is the default.
         </div>
     </div>
     <div id="snapRaster">
-        <div><h2>Snap Raster</h2></div>
+        <div><h2>רסטר הצמדה</h2></div>
         <hr/>
         <div>
-            <p>Adjusts the extent of the output raster layer  so it  matches the
-cell alignment of the specified  <b>Snap Raster</b> layer in raster analysis.
+            <p>מכוונן את התיחום של שכבת רסטר הפלט כך שיתאים ליישור התאים של שכבת <b>רסטר הצמדה</b> בניתוח רסטר.
             </p>
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Cell Size</h2></div>
+        <div><h2>גודל תא</h2></div>
         <hr/>
         <div>
-            <p>Specifies the cell size or resolution
-that will be used to create the output raster layer in raster analysis. The default output resolution is determined by the
-largest cell size of the input raster layer.
+            <p>מציין את גודל התא או הרזולוציה אשר ישמשו ליצירת שכבת רסטר הפלט בניתוח רסטר. רזולוציית הפלט שמוגדרת כברירת מחדל נקבעת על ידי גודל התא הגדול ביותר של שכבת רסטר הקלט.
             </p>
             <p>
                 <ul>
-                    <li> <b>Minimum of Inputs</b>&mdash;Use the smallest cell size of all input
-layers.
+                    <li> <b>מינימום מהקלטים</b> - שימוש בגודל התא הקטן ביותר של כל שכבות הקלט.
                     </li>
-                    <li> <b>Maximum of Inputs</b>&mdash;Use the largest cell size of all input
-layers. This is the default.
+                    <li> <b>מקסימום מהקלטים</b> - שימוש בגודל התא הגדול ביותר של כל שכבות הקלט. זוהי ברירת המחדל.
                     </li>
-                    <li> <b>As specified</b>&mdash;Specify a numeric value to set the cell size. If this is selected, the default
-value is 1.
+                    <li> <b>כפי שצוין</b> - ציין ערך מספרי להגדרת גודל התא. אם אפשרות זו נבחרה, ערך ברירת המחדל הוא 1.
                     </li>
-                    <li> <b>Layer &lt;name&gt;</b>&mdash;Set
-the cell size to the raster layer chosen.
+                    <li> <b>שכבה &lt;שם&gt;</b> - הגדר את גודל התא לשכבת הרסטר שנבחרה.
                     </li>
                 </ul>
                 
@@ -204,83 +193,73 @@ the cell size to the raster layer chosen.
         </div>
     </div>
     <div id="mask">
-        <div><h2>Mask</h2></div>
+        <div><h2>מיסוך</h2></div>
         <hr/>
         <div>
-            <p>Specifies a layer that will be used to define your area of interest in raster analysis.   Only those cells that fall within the analysis mask will be considered  in the
-analysis operation.
+            <p>מציין שכבה אשר תשמש להגדרת אזור העניין בניתוח רסטר.   רק תאים שנמצאים בתוך מסכת הניתוח יילקחו בחשבון בפעולת הניתוח.
             </p>
             <ul>
-                <li>The mask can be either a raster
-or a feature layer.
+                <li>המסכה יכולה להיות רסטר או שכבת ישות.
                 </li>
-                <li>If the analysis mask is a raster, all cells
-that have a value will be considered to define the mask. Cells in a
-mask raster that are  NoData will be considered to be outside the mask and
-will be NoData in the analysis result layer.
-
+                <li>אם מסכת הניתוח היא רסטר, כל התאים שיש להם ערך יילקחו בחשבון להגדרת המסכה. תאים ברסטר מסכמה שהם NoData ייחשבו כנמצאים מחוץ למסכה ויהיו NoData בשכבת התוצאה של הניתוח. 
                 </li>
-                <li>If the analysis mask is
-a feature layer, it will be internally converted to a raster on
-execution. For this reason, ensure that
- <b>Cell Size</b> and <b>Snap Raster</b> are set appropriately for
-your analysis.
+                <li>מסכת הניתוח היא שכבת ישויות, היא תומר באופן פנימי לרסטר במהלך הביצוע. מסיבה זו, יש לוודא שהפרמטרים
+ <b>גודל תא</b> ו <b>רסטר הצמדה</b> הוגדרו כהלכה עבור הניתוח.
                 </li>
             </ul>
              
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Data store</h2></div>
+        <div><h2>מאגר נתונים</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results can be stored in either an  ArcGIS Data Store and exposed as a feature layer in  Portal for ArcGIS or a configured big data file share. 
+            <p>ניתן לאחסן את תוצאות GeoAnalytics ב- ArcGIS Data Store כך שיחשפו כשכבת ישויות ב-Portal for ArcGIS או כקובץ שיתוף נתוני עתק (big data) שתצורתו הוגדרה. 
             </p>
-            <p>When you store a result in  ArcGIS Data Store, in most cases, results should be stored in the spatiotemporal data store. This is the default. The following are reasons why you may want to store results in a relational data store: 
+            <p>בעת אחסון תוצאה ב- ArcGIS Data Store, במרבית המקרים יש לאחסן את התוצאות במאגר הנתונים המרחבי-זמני (spatiotemporal). זוהי ברירת המחדל. להלן הסיבות שבגינן ייתכן שתרצה לאחסן תוצאות במאגר נתונים יחסיים: 
                 <ul>
-                    <li>To use your results in portal-to-portal collaboration
+                    <li>כדי להשתמש בתוצאות בשיתוף פעולה של פורטל לפורטל
                     </li>
-                    <li>To enable sync capabilities with your results
+                    <li>כדי לאפשר יכולות סנכרון עם התוצאות
                     </li>
                 </ul>
                 
             </p>
-            <p>You should not use a relational data store if you expect your GeoAnalytics results to increase and want to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            <p>אין להשתמש במאגר נתונים יחסיים אם אתה צופה שתוצאות GeoAnalytics יגדלו וברצונך לנצל את יכולות מאגר נתוני העתק המרחבי-זמני כדי לטפל בכמויות גדולות של נתונים. 
             </p>
         </div>
     </div>
     <div id="parallelProcessingFactor">
-        <div><h2>Parallel processing factor</h2></div>
+        <div><h2>פקטור עיבוד במקביל</h2></div>
         <hr/>
         <div>
-            <p>Distributes analysis across multiple Raster Processing service instances. 
+            <p>מפזר את הניתוח על פני מופעי שירות מרובים של 'עיבוד רסטר'. 
             </p>
-            <p>Tools that honor the  <b>Parallel processing factor</b> environment allow you to control the number of raster processing service instances that can be used for processing your data.
+            <p>כלים שמכבדים את סביבת  <b>פקטור עיבוד במקביל</b> מאפשרים לך לשלוט במספר המופעים של שירות עיבוד רסטר שבהם ניתן לעשות שימוש לצורך עיבוד הנתונים.
             </p>
-            <p>If the tool doesn't honor  the  <b>Processor type</b>, or if  the <b>Processor type</b> environment is set to <b>CPU</b>,   the <b>Parallel processing factor</b> environment controls raster processing (CPU) service instances. If  the <b>Processor type</b> is set to <b>GPU</b>, the <b>Parallel processing factor</b> environment controls the number of raster processing GPU instances.
+            <p>אם הכלי לא מכבד את הפרמטר  <b>סוג מעבד</b>, או אם סביבת <b>סוג מעבד</b> הוגדרה כ- <b>CPU</b>, סביבת <b>פקטור עיבוד במקביל</b> שולטת במופעי שירות של עיבוד רסטר (CPU). אם הפרמטר <b>סוג מעבד</b> הוגדר כ- <b>GPU</b>, סביבת <b>פקטור עיבוד במקביל</b> שולט במספר מופעי עיבוד הרסטר GPU.
             </p> 
-            <p>By setting the  <b>Parallel processing factor</b>, you can request the number of parallel workers that the raster analytics image server uses to process one raster analysis task. However, if the total number of parallel processes exceeds the maximum number of raster processing (CPU or GPU) service instances, the additional parallel processes will be queued.
+            <p>הגדרת  <b>פקטור עיבוד במקביל</b>, מאפשרת לך לבקש את מספר רכיבי העבודה שבהם משתמש שרת התמונות של ניתוח הרסטר כדי לעבד משימת ניתוח רסטר אחת. עם זאת, אם המספר הכולל של עיבודים במקביל עולה על המספר המקסימלי של מופעי שירות עיבוד רסטר (CPU או GPU), העיבודים במקביל הנוספים יועברו לתור.
             </p>
-            <p>If the  <b>Parallel processing factor</b> is not specified, which is the default, the tool will use 80 percent of the maximum number of raster processing service instances. Either an integer number or a percentage can be specified as the parallel processing factor.
+            <p>אם  <b>פקטור עיבוד במקביל</b> לא הוגדר, שזו ברירת המחדל, הכלי ישתמש ב-80 אחוז מהמספר המקסימלי של מופיעי שירות עיבוד רסטר. ניתן לציין מספר שלום או אחוז כפקטור עיבוד במקביל.
             </p>
         </div>
     </div>
     <div id="processorType">
-        <div><h2>Processor type</h2></div>
+        <div><h2>סוג מעבד</h2></div>
         <hr/>
         <div>
-            <p>Tools that honor the  <b>Processor type</b> environment allow you to choose where and how you want to process your data.
-You can process your data using the server computer CPU or GPU.  If the <b>Processor type</b> environment is empty, the tool uses CPU to process the data. This is the default.
+            <p>כלים שמכבדים את סביבת  <b>סוג מעבד</b> מאפשרים לך לבחור האם וכיצד ברצונך לעבד את הנתונים. באפשרותך לעבד את הנתונים באמצעות ה-CPU או ה-GPU של מחשב השרת.  אם סביבת <b>סוג מעבד</b> ריקה, הכלי משתמש ב-CPU לעיבוד הנתונים. זוהי ברירת המחדל.
             </p> 
-            <p>CPU processing can be parallelized across multiple cores and instances, as handled by the  <b>Parallel processing factor</b>.
+            <p>ניתן לחלק את עיבוד ה-CPU לעבוד במקביל במספר ליבות ומופעים, כפי שמטופל על ידי  <b>פקטור עיבוד במקביל</b>.
             </p>
-            <p>GPUs are effective at graphics and image processing, where their highly parallel structure makes them efficient in processing large blocks of data in a repetitive manner. The Raster Analysis tools that honor this environment can distribute its job  across GPU instances at multiple raster analysis server machines, as handled by the  <b>Parallel processing factor</b>.
+            <p>יחידות GPU הן יעילות בעיבוד גרפיקה ותמונות, מכיוון שהמבנה המאוד מקבילי שלהן מאפשר להן לעבד ביעילות בלוקים גדולים של נתונים באופן חזרתי. כלי 'ניתוח רסטר' שמכבדים סביבה זו יכולים לפזר את המשימה בין מופיעי GPU במחשבי שרת ניתוח רסטר מרובים, כפי שמטופל על ידי  <b>פקטור עיבוד במקביל</b>.
             </p>
             <p>
                 <ul>
-                    <li> <b>GPU</b>&mdash;Data will processed using the graphics processing unit.
+                    <li> <b>GPU</b> - הנתונים יעובדו באמצעות יחידת העיבוד הגרפית.
                     </li>
-                    <li> <b>CPU</b>&mdash;Data will be processed using the computer's central processing unit.
+                    <li> <b>GPU</b> - הנתונים יעובדו באמצעות יחידת העיבוד המרכזית של המחשב.
                     </li>
                 </ul>
                 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","esri/dijit/geoenrichment/promise/all"],function(n,e){return n(null,{collapseContent:function(){this._grids.forEach(function(n){n.collapseContent()}),this._syncFillerContainer()},hasHiddenContent:function(){return this._grids.some(function(n){return n.hasHiddenContent()})},resizeRowHeightToShowCellsContent:function(){return e(this._grids.map(function(n){return n.resizeRowHeightToShowCellsContent()}))}})});
+define(["dojo/_base/declare","esri/dijit/geoenrichment/promise/all"],function(n,e){return n(null,{collapseContent:function(){this._grids.forEach(function(n){n.collapseContent()}),this._syncFillerContainer()},hasHiddenContent:function(){return this._grids.some(function(n){return n.hasHiddenContent()})},resizePanelsToShowContent:function(){return e(this._grids.map(function(n){return n.resizeRowHeightToShowCellsContent()}))}})});

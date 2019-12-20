@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izvēlieties aprakstāmo datu kopu",describeDataLabel:"Izprotiet savus datus, izveidojot (pēc izvēles)",sampleLayer:"Parauga slānis",extentLayer:"Pārklājuma slānis",noOfFeaturesLabel:"Iekļaujamo elementu skaits",outputLayerName:"Rezultātu slāņa nosaukums",resultName:"Aprakstīt slāņa ${layerName} datus",itemDescription:"Elementu slānis ģenerēts, izmantojot funkciju Datu kopas apraksts slānim ${layerName}. ",itemTags:"Analīzes rezultāts, Datu kopas apraksts, ${layername}",itemSnippet:"Elementu slānis ģenerēts no funkcijas Datu kopas apraksts."});

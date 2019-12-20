@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/now"],function(e,n,t){Object.defineProperty(n,"__esModule",{value:!0});var l=(function(){function e(e,n){this.level=e,this.now=n}}(),function(){function e(e,n,t,l){this.fadeSpeed=e,this.minfadeLevel=n,this.maxfadeLevel=t,this.fadeChange=l}return e}());n.FadeProperties=l;var o=function(){function e(e){void 0===e&&(e=300),this._levelSnapshots=[],this._duration=e}return e.prototype.recordLevel=function(e){var n=t(),l=this._levelSnapshots;0===l.length&&(l.push({level:e,now:0}),l.push({level:e,now:0})),2!==l.length&&l[0].level===e||l.push({level:e,now:n})},e.prototype.needsRedraw=function(){if(0===this._levelSnapshots.length)return!1;for(var e=this._duration,n=this._levelSnapshots,t=n.length,l=n[t-1],o=-1;t>o+1&&n[o+1].now+e<l.now;)o++;for(o<0&&(o=0);o<t;o++)if(n[o].level!==l.level)return!0;return!1},e.prototype.getFadeValues=function(e){void 0===e&&(e=!1);for(var n=this._duration,l=t(),o=this._levelSnapshots;o.length>3&&o[1].now+n<l;)o.shift();o[1].now+n<l&&(o[0].level=o[1].level);var a=o[0].level,i=o[o.length-1],r=i.level,h=Math.min(a,r),v=Math.max(a,r),s=i.level-o[1].level,d=i.now-o[1].now,f=s/(d/n),u=(l-i.now)/n*f;return e?{fadeSpeed:0,minfadeLevel:h,maxfadeLevel:v,fadeChange:0}:{fadeSpeed:f,minfadeLevel:h,maxfadeLevel:v,fadeChange:u}},e}();n.FadeRecorder=o});

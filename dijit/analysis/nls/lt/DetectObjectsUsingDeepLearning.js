@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Apibrėžti objektus naudojant gilų mokymąsi",outputLayerName:"${layername}_detected",modelLabel:"Pasirinkite, kokį gilaus mokymosi modelį naudoti aptinkant objektus",modelArgsLabel:"Nurodykite gilaus mokymosi modelio argumentus",nameLabel:"Pavadinimas",valueLabel:"Reikšmė",removeDuplicatesLable:"Pašalinti besidubliuojančius išvesties elementus (neprivaloma)",queryModelArgsMsg:"Teikiama užklausa dėl modelio argumentų...",nonMaxSuppressionLabel:"Be didžiausių reikšmių slopinimo",options:"Parinktys",confidenceLabel:"Patikimumo verčių laukas",classValueLabel:"Klasės reikšmės laukas",maxOverlapLabel:"Didžiausio persidengimo santykis",numberOnlyMsg:"Galimos tik skaitinės reikšmės",analysisLayerLabel:"Pasirinkite, kuris vaizdas bus naudojamas aptikti objektus",itemDescription:"Vaizdų analizės paslauga, sukurta naudojant Aptikti objektus naudojant gilų mokymąsi",itemTags:"Rastro analizės rezultatas, Aptikti objektus naudojant gilų mokymąsi, ${layername}",itemSnippet:"Vaizdų analizės paslauga, sukurta naudojant Aptikti objektus naudojant gilų mokymąsi"});

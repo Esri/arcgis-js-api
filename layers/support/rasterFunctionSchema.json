@@ -5158,6 +5158,62 @@
     }
   },
 
+  "FlowLength": {
+    "rasterFunctionArguments": {
+      "ToolName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "FlowLength_sa"
+      },
+      "PrimaryInputParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "in_flow_direction_raster"
+      },
+      "OutputRasterParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "out_raster"
+      },
+      "in_flow_direction_raster": {
+        "required": false,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.flowDirRaster}",
+        "hidden": false
+      },
+      "direction_measurement": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.directionMeasurementName}",
+        "hidden": false,
+        "defaultValue": "DOWNSTREAM",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaDirectionMeasurementType"
+        }
+      },
+      "in_weight_raster": {
+        "required": false,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.weightRasterName}",
+        "hidden": false
+      },
+      "MatchVariable": {
+        "required": false,
+        "dataType": "boolean",
+        "hidden": true
+      },
+      "UnionDimension": {
+        "required": false,
+        "dataType": "boolean",
+        "hidden": true
+      }
+    }
+  },
+
   "Corridor": {
     "rasterFunctionArguments": {
       "ToolName": {
@@ -5227,6 +5283,63 @@
       }
     }
   },
+
+  "StreamOrder": {
+    "rasterFunctionArguments": {
+      "ToolName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "StreamOrder_sa"
+      },
+      "PrimaryInputParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "in_stream_raster"
+      },
+      "OutputRasterParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "out_raster"
+      },
+      "in_stream_raster": {
+        "required": false,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.streamRaster}",
+        "hidden": false
+      },
+      "in_flow_direction_raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.flowDirRaster}",
+        "hidden": false
+      },
+      "order_method": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.orderMethodName}",
+        "hidden": false,
+        "domain": {
+          "type": "list",
+          "enum": "gpsaOrderMethodType"
+        },
+        "defaultValue": "STRAHLER"
+      },
+      "MatchVariable": {
+        "required": false,
+        "dataType": "boolean",
+        "hidden": true
+      },
+      "UnionDimension": {
+        "required": false,
+        "dataType": "boolean",
+        "hidden": true
+      }
+    }
+  },
+
     "RegionGroup": {
     "rasterFunctionArguments": {
       "ToolName": {
@@ -5711,34 +5824,6 @@
         "defaultValue": 50,
         "categoryRefId": "rfxArgCat_FocalStatistics"
       },
-      "StatisticType": {
-        "required": true,
-        "dataType": "long",
-        "displayName":"${rasterFunctions.rfxArgs.statisticsTypeName}",
-        "hidden": false,
-        "defaultValue": 3,
-        "domain": {
-          "type": "list",
-          "enum": "esriGAFocalStatisticsTypes"
-        },
-        "editorStateTrigger": {
-          "active": true,
-          "triggers": [
-            {
-              "values": [4],
-              "active": ["Percentile"],
-              "autoRevert": true
-            }
-          ]
-        }
-      },
-      "Percentile": {
-        "required": true,
-        "dataType": "double",
-        "displayName":"${rasterFunctions.rfxArgs.percentileName}",
-        "hidden": false,
-        "defaultValue": 50
-      },
       "NoDataPolicy": {
         "required": true,
         "dataType": "boolean",
@@ -5837,5 +5922,106 @@
         }
       ]
     }
+  },
+
+  "Sink": {
+   "rasterFunctionArguments": {
+     "ToolName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "Sink_sa"
+     },
+     "PrimaryInputParameterName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "in_flow_direction_raster"
+     },
+     "OutputRasterParameterName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "out_raster"
+     },
+     "in_flow_direction_raster": {
+       "required": true,
+       "dataType": "raster",
+       "displayName": "${rasterFunctions.rfxArgs.flowDirRaster}",
+       "hidden": false
+     },
+     "MatchVariable": {
+       "required": false,
+       "dataType": "boolean",
+       "hidden": true
+     },
+     "UnionDimension": {
+       "required": false,
+       "dataType": "boolean",
+       "hidden": true
+     }
+   }
+ },
+
+   "SnapPourPoint": {
+   "rasterFunctionArguments": {
+     "ToolName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "SnapPourPoint_sa"
+     },
+     "PrimaryInputParameterName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "in_pour_point_data"
+     },
+     "OutputRasterParameterName": {
+       "required": true,
+       "dataType": "string",
+       "hidden": true,
+       "defaultValue": "out_raster"
+     },
+     "in_pour_point_data": {
+       "required": false,
+       "dataType": "raster",
+       "displayName": "${rasterFunctions.rfxArgs.pourPointDataName}",
+       "hidden": false
+     },
+     "in_accumulation_raster": {
+       "required": false,
+       "dataType": "raster",
+       "displayName": "${rasterFunctions.rfxArgs.accumulationRasterName}",
+       "hidden": false
+     },
+     "snap_distance": {
+       "required": false,
+       "dataType": "double",
+       "displayName": "${rasterFunctions.rfxArgs.snapDistanceName}",
+       "hidden": false,
+       "defaultValue": 0
+     },
+     "pour_point_field": {
+       "required": false,
+       "dataType": "string",
+       "hidden": false,
+       "displayName": "${rasterFunctions.rfxArgs.pourPointFieldName}",
+       "domain": {
+         "type": "fields",
+         "argumentName": "in_pour_point_data"
+       }
+     },
+     "MatchVariable": {
+       "required": false,
+       "dataType": "boolean",
+       "hidden": true
+     },
+     "UnionDimension": {
+       "required": false,
+       "dataType": "boolean",
+       "hidden": true
+     }
+   }
   }
 }

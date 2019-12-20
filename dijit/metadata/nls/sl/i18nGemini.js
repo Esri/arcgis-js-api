@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (podatki)",description:""},service:{caption:"GEMINI (storitev)",description:""}},LanguageCode:{eng:"Angleščina",cym:"Valižanščina",gle:"Gelščina (Irska)",gla:"Gelščina (Škotska)",cor:"Kornijščina",sco:"Ulster Škoti"},verticalCRS:{reference:"Referenca (npr. urn:ogc:def:crs:EPSG::5701)"}});

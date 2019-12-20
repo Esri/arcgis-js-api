@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","../maintenance/MD_ScopeCode","dojo/text!./templates/MetadataHierarchy.html","../../../../../../kernel"],function(e,t,a,o,r,d,i,n,s,m){var c=e(o,{templateString:s});return a("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.metadataEntity.MetadataHierarchy",c,m),c});

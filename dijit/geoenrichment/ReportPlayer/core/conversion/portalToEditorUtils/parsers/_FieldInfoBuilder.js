@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder","dojo/i18n!esri/nls/jsapi"],function(a,r){r=r.geoenrichment.dijit.ReportPlayer.ReportPlayer;var e={};return e.getCalculatorOrScriptFieldInfo=function(e,l,i){if(!e)return null;if(l.variableProvider.isPlayerOnly&&!l.useVariableProviderToCollectOnly){var o=l.variableProvider.toCalculator(e);if(!o)return console.log("Can't create a dummy calculator for => "+e),null;i=i||{},i.calculatorName=o.variable.calculatorName;var t=a.createFieldInfoFromCalculator(o,l.variableProvider,i);return t.name=o.variable.fieldName,t.templateName=o.variable.templateName,t}var n=l.queryMetaDataFunc(e),c=e.substr(0,e.indexOf("."));if(i=i||{},i.calculatorName=c,n)return n.isScript?a.createFieldInfoFromScript(n,l.variableProvider,i):a.createFieldInfoFromCalculator(n,l.variableProvider,i);var s=a.createFieldInfoFromMissingVariable(e);if(l.variableProvider.isPlayerOnly){var o=l.variableProvider.toCalculator(e);s.alias=o&&o.variable.alias}return s.alias=s.alias?s.alias+" ("+r.missingVariable+")":r.missingVariable,s},e});

@@ -8,8 +8,8 @@
 @import url(Pagination.css);
 
 .calcite.esriAnalysisEnrichDataBrowser {
-    height: 480px;
-    width: 720px;
+    height: 500px;
+    width: 750px;
 }
 
 .calcite .DataBrowser {
@@ -62,4 +62,14 @@
 
 .calcite.esriAnalysisEnrichDataBrowser .dijitLayoutContainer.dijitContainer.Grid {
 	height: 480px;
+}
+
+.calcite .DataBrowser_HierarchyBox {
+  top: 32px;
+  left: 10px;
+}
+
+.dj_rtl .calcite .DataBrowser_HierarchyBox {
+  top: 32px;
+  right: 10px;
 }

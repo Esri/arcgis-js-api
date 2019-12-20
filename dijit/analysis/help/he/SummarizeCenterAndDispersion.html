@@ -40,83 +40,78 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
-        <h2>Summarize Center and Dispersion</h2><p/>
-        <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="Summarize Center and Dispersion"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>סכם מרכז ופיזור</h2><p/>
+        <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="סכם מרכז ופיזור"></h2>
         <hr/>
-    <p>This 
-tool finds central features and directional distributions.
-
-It can be used to answer questions such as:
+    <p>כלי זה מוצא ישויות מרכז ופיזורים כיווניים.
+ניתן להשתמש בו כדי לענות על שאלות כגון:
         <ul>
-            <li>Where is the center?
+            <li>היכן המרכז?
             </li>
-            <li>Which feature is the most accessible from all other features?
+            <li>איזו ישות היא הנגישה ביותר מכל הישויות האחרות?
             </li>
-            <li>How dispersed, compact, or integrated are the features?
+            <li>עד כמה הישויות מפוזרות, דחוסות או משולבות?
             </li>
-            <li>Are there directional trends?
+            <li>האם יש מגמות כיווניות?
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features in the input layer visible within the current map extent will be analyzed.  If unchecked, all features in the input layer will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Choose a layer to be described</h2></div>
+        <div><h2>בחר שכבה לתיאור</h2></div>
         <hr/>
         <div>
-            <p>The point, line, or area layer that will be used to find central features and directional distributions.
+            <p>שכבת הנקודות, הקווים או האזור שתשמש לאיתור ישויות מרכז ופיזורים כיווניים.
             </p>
         </div>
     </div>
     <div id="summarizeTypes">
-        <div><h2>Summary types</h2></div>
+        <div><h2>סוגי סיכום</h2></div>
         <hr/>
         <div>
-            <p>The method of summarizing center and dispersion.
-
+            <p>שיטת הסיכום של מרכז ופיזור. 
             </p>
             <ul>
-                <li>Central feature - Identifies the most centrally located feature in a dataset.
+                <li>ישות מרכזית - מזהה את הישות שמיקומה הוא המרכזי ביותר בערכת הנתונים.
                 </li>
-                <li>Mean center - Identifies the geographic center (or the center of concentration) for a set of features.
+                <li>מרכז ממוצע - מזהה את המרכז הגאוגרפי (או מרכז הריכוז) של קבוצת ישויות.
                 </li>
-                <li>Median center - Identifies the location that minimizes overall Euclidean distance to the features in a dataset.
+                <li>מרכז חציוני - מזהה את המיקום שממזער את החרק האוקלידי הכולל אל הישויות בערכת הנתונים.
                 </li>
-                <li>Ellipse - Creates standard deviational ellipses to summarize the spatial characteristics of geographic features: central tendency, dispersion, and directional trends. The ellipses can be sized as 1, 2, or 3 standard deviations.
+                <li>אליפסה - יוצר אליפסות סטיות תקן כדי לסכם את המאפיינים המרחביים של ישויות גאוגרפיות: נטייה מרכזית, פיזור ומגמות כיווניות. ניתן להגדיל את גודל האליפסות כ-1, 2 או 3 סטיות תקן.
                 </li>
             </ul>
             
         </div>
     </div>
     <div id="weightBy">
-        <div><h2>Weight by (optional)</h2></div>
+        <div><h2>שקלל לפי (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>The field used to weight locations according to their relative importance.
-
+            <p>השדה אשר משמש לשקלול מיקומים לפי החשיבות היחסית שלהם. 
             </p>
         </div>
     </div>
     <div id="groupBy">
-        <div><h2>Group by (optional)</h2></div>
+        <div><h2>קבץ לפי (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>The field used to group features for separate computations of central features or dispersion.
-
+            <p>השדה אשר משמש לקיבוץ ישויות לצורך חישובים נפרדים של מאפייני מרכז או פיזור. 
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

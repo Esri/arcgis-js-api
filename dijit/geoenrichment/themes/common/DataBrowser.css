@@ -1076,9 +1076,6 @@
 .DataVariablesPage_Variables .dgrid-cell {
     border: none;
     vertical-align: middle;
-}
-
-.DataVariablesPage_Variables .dgrid-cell-padding {
     padding-left: 5px;
     padding-right: 5px;
 }

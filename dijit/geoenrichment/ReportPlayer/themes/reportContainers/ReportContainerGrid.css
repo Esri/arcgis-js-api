@@ -50,3 +50,43 @@
         background-repeat: repeat;
         pointer-events: none;
     }
+
+
+
+
+
+
+
+
+
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_mainContainer {
+    text-align: left;
+    overflow: hidden;
+}
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
+    margin: 0px;
+}
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_mainContainer {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
+    border: none !important;
+    display: block !important;
+}
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomFillerContainer {
+    width: auto !important;
+    height: auto !important;
+    margin-top: 0px !important;
+}
+
+.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomScalableContainer {
+    position: static !important;
+}

@@ -224,6 +224,11 @@
   background-image: url("../images/CreateDriveTimeAreas32.png");
 }
 
+.findDwellLocationsIcon {
+  background-image: url("../images/FindDwellLocations32.png");
+}
+
+
 .findLocationsIcon {
   background-image: url("../images/FindExistingLocations32.png");
 }
@@ -299,6 +304,10 @@
 
 .generalizedLinearRegressionIcon {
   background-image: url("../images/GeneralizedLinearRegression32.png");
+}
+
+.geographicallyWeightedRegressionIcon {
+  background-image: url("../images/GeographicallyWeightedRegression32.png");
 }
 
 .forestBasedClassificationAndRegressionIcon {
@@ -1245,6 +1254,30 @@ td.subsectionLineDivider {
 
 .detectObjectsUsingDeepLearningIcon {
   background-image: url("../images/DetectObjectsUsingDeepLearning32.png");
+}
+
+.followStreetsIcon {
+  background-image: url("../images/NetworkAnalystOutputLinearShapePathAlongNetwork32.png");
+}
+
+.straightLineIcon {
+  background-image: url("../images/NetworkAnalystOutputLinearShapePathStraight32.png");
+}
+
+.geodesicIcon {
+  background-image: url("../images/GeodesicDistances32.png");
+}
+
+.planarIcon {
+  background-image: url("../images/PlanarDistances32.png");
+}
+
+.aggregateMultidimensionalRasterIcon {
+  background-image: url("../images/AggregateMultidimensionalRaster32.png");
+}
+
+.generateMultidimensionalAnomalyIcon {
+  background-image: url("../images/GenerateMultidimensionalAnomaly32.png");
 }
 
 .btn-container {

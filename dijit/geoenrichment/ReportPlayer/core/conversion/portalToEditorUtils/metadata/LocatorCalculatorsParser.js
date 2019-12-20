@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/promise/all","esri/dijit/geoenrichment/when","esri/dijit/geoenrichment/utils/JsonXmlConverter","../variables/VariableUtil"],function(a,e,r,t){var i={};return i.parseLocatorCalculators=function(i,l,o){var n=r.queryJson(i,"Locator");return a(n.map(function(a){var i=[];r.queryJson(a,/^(PointFields|Fields)$/).forEach(function(a){i=i.concat(r.queryJson(a,/^(Field|Direction|Distance)$/))});var n=[];i.forEach(function(e){"Direction"===e.name?e.attributes.MapTo="DIRECTION":"Distance"===e.name&&(e.attributes.MapTo="DISTANCE");var r=t.fieldTagToVariable(e,a.attributes.Name);r&&n.push(r)});var s={calculatorName:a.attributes.Name,variableObjects:n,layerID:null,layerUrl:null,layerName:a.attributes.LayerName};return a.attributes.Points&&0===a.attributes.Points.indexOf("std:")?s.layerID=a.attributes.Points.replace("std:",""):s.layerUrl=a.attributes.Layer,l.metadata.locatorCalculatorsHash[a.attributes.Name]=s,o.variableProvider.isPlayerOnly&&n.forEach(function(a){o.variableProvider.addVariable(a)}),e(!o.validateLocatorCalculator||o.validateLocatorCalculator(s.layerID,s.layerUrl),function(a){s.isValid=a})}))},i});

@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+
+define(["dojo/_base/lang","dojo/when","dojo/dom-construct","dojo/dom-style","esri/dijit/geoenrichment/utils/DomUtil","esri/dijit/geoenrichment/utils/MathUtil","esri/dijit/geoenrichment/utils/RegExpUtil","esri/dijit/geoenrichment/utils/UrlUtil","./BenchmarkUtil"],function(e,t,n,i,l,r,a,o,d){return{renderText:function(e,t,n){var i=e;if(i.valueLabel&&void 0!==t&&this._applyNewText(i,t,n),i.valueLabel&&(i.valueLabel.__hasTrimmedText=!1),n&&(i.trimTextIfOverflows=!1),i.trimTextIfOverflows&&i.valueLabel&&this._getLabelInnerHTML(i)&&!a.isRichText(this._getLabelInnerHTML(i))){var l=this.getFullText(i);if(l!==this._getLabelInnerHTML(i)&&this._setLabelInnerHTML(i,l),i.valueLabel.__untrimmedText=l,i.domNode.clientWidth){var r=l.trim(),o=this._measureValueField(i,r),d=o.parentW,h=o.parentH,s=o.lineHeight,L=o.charWidth;if(!(i.valueLabel.clientHeight<=h)){var u=Math.max(1,Math.floor(h/s)),g=Math.floor(d/L),c=u*g,m=r.length;if(r=r.substr(0,c),m>r.length&&(r=r.substr(0,r.length-3),this._setLabelInnerHTML(i,r+"..."),i.valueLabel.__hasTrimmedText=!0),i.valueLabel.clientHeight>h)for(;;){if(!r||i.valueLabel.clientHeight<=h||this._getLabelInnerHTML(i).length<=g)return;r=r.substr(0,r.length-1),this._setLabelInnerHTML(i,r+"..."),i.valueLabel.__hasTrimmedText=!0}}}}},_measureValueField:function(e,t){var n=e,r=l.getNodeFontSize(n.domNode),a=l.getTextBox(t,{style:"font-family:"+i.get(n.valueLabel,"fontFamily")+";font-size:"+r+"px;"});return{parentW:n.domNode.clientWidth-i.get(n.valueLabel,"paddingLeft")-i.get(n.valueLabel,"paddingRight"),parentH:n.domNode.clientHeight-i.get(n.valueLabel,"paddingTop")-i.get(n.valueLabel,"paddingBottom"),lineHeight:a.h,charWidth:a.w/t.length,textBox:a}},getFullText:function(e){return e.valueLabel&&(e.valueLabel.__untrimmedText||this._getLabelInnerHTML(e))},hasOverflowText:function(e){return e.valueLabel&&e.valueLabel.__hasTrimmedText||e.valueLabel.clientHeight>e.domNode.clientHeight},_applyNewText:function(e,t,n){delete e.valueLabel.__untrimmedText,n?this._applyTextForBenchmark(e,t,n):this._getLabelInnerHTML(e)!==t&&this._setLabelInnerHTML(e,t)},_applyTextForBenchmark:function(i,a,o){function h(t){return d.createBenchmarkedValue(e.mixin({text:a,fontSize:u,isGreater:o.isGreater,formattedValue:o.formattedValue,color:i.fieldStyle.color,nowrap:!0,noTextLimit:o.noTextLimit},t))}var s=this,L=i.parentGrid,u=l.getNodeFontSize(i.domNode);if(i.__benchmarkLabel&&n.destroy(i.__benchmarkLabel),delete i.__benchmarkLabel,L.infographicBenchmarkController){if(L.infographicBenchmarkController.isVariableInShape){var g=L.infographicBenchmarkController.getIconTable();t(g.getRenderPromise(),function(){function e(e){var t=e.getBoundingClientRect?[e]:e;return l.getNodesBox(t)}s._setLabelInnerHTML(i,h());var t=s._getInnerHTMLNode(i),o=e(t.children[0]),d=g.getFirstCell().content,u=e(d.getSvgNode?d.getSvgNode().children:d.content);if(!u||r.isRectInRect(o,u));else{s._setLabelInnerHTML(i,a),o=e(t);var c=n.create("div",null,i.domNode);c.style.position="absolute",c.style.fontSize="0px",c.innerHTML=h({text:"",color:L.infographicBenchmarkController.getOutsideShapeTextColor()}),i.__benchmarkLabel=c;var m=e(c),b=e(i.domNode),f=b.w/l.noTransformPosition(i.domNode).w;c.style.left=(u.x+u.w-b.x)/f+5+"px",c.style.top=(o.y+(o.h-m.h)/2-b.y)/f+"px"}})}else if(this._setLabelInnerHTML(i,h()),"center"===i.fieldStyle.horizontalAlign){var c=s._getInnerHTMLNode(i);i.domNode.style.marginLeft=Math.min(0,(i.getWidth()-c.children[0].clientWidth)/2)+"px"}else if("right"===i.fieldStyle.horizontalAlign){var c=s._getInnerHTMLNode(i);i.domNode.style.marginLeft=Math.min(0,i.getWidth()-c.children[0].clientWidth)+"px"}}else this._setLabelInnerHTML(i,h())},_getLabelInnerHTML:function(e){return this._getInnerHTMLNode(e).innerHTML},_setLabelInnerHTML:function(e,t){t=String(t);var n=e.valueLabel;if(e.autoDetectUrl){var i=this.getFullText(e)||t;if(a.isUrl(i)){var l=this._getInnerHTMLNode(e);"A"===l.nodeName?(l.innerHTML=t,l.hasAttribute("href")&&l.removeAttribute("href"),l.setAttribute("href",i)):n.innerHTML="<a href='"+o.toHttpsUrl(i)+"' target='_blank'>"+t+"</a>"}else n.innerHTML=t}else n.innerHTML=t},_getInnerHTMLNode:function(e){var t=e.valueLabel;return e.autoDetectUrl&&t.childNodes&&1===t.childNodes.length&&t.childNodes[0]&&"A"===t.childNodes[0].nodeName?t.childNodes[0]:t}}});

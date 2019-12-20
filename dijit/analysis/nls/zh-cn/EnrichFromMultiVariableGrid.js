@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"选择要丰富的点要素",chooseMVgridLyrLabel:"选择丰富操作要使用的多变量格网",chooseVariables:"选择要添加的变量",outputLayerName:"来自 ${gridLayer} 的已丰富 ${inputFeatures}",itemDescription:"通过对 ${inputFeatures} 运行“从多变量格网丰富”解决方案生成的要素图层。",itemTags:"分析结果，从多变量格网丰富，${inputFeatures}，${gridLayer}",itemSnippet:"通过“从多变量格网丰富”生成的要素图层。"});

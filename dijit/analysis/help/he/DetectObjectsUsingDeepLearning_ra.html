@@ -41,55 +41,54 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Detect Objects Using Deep Learning</h2><p/>
-        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detect Objects Using Deep Learning"></h2>
+        <h2>מזהה אובייקטים באמצעות למידה לעומק</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="מזהה אובייקטים באמצעות למידה לעומק"></h2>
         <hr/>
-    <p>This tool runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+    <p>כלי זה מריץ מודל למידה לעומק מאומן על רסטר קלט כדי להפיק קבוצת ישויות שמכילה את האובייקטים שנמצאו. הישויות יכולות להיות מלבנים תוחמים או פוליגונים סביב האובייקטים שנמצאו, או נקודות במרכזים של האובייקטים.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the raster area that is visible within the current map extent will be analyzed. If unchecked, the whole raster will be analyzed, even if it is outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק אזור הרסטר שנראה בתיחום המפה הנוכחי ינותח. אם האפשרות לא מסומנת, כל הרסטר ינותח, גם אם הוא מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Choose image used to detect objects</h2></div>
+        <div><h2>בחר תמונה המשמשת לזיהוי אובייקטים</h2></div>
         <hr/>
         <div>
-            <p>The input image used to detect objects.
+            <p>תמונת הקלט המשמשת לזיהוי אובייקטים.
             </p> 
         </div>
     </div>
     <div id="model">
-        <div><h2>Choose deep learning model used to detect objects</h2></div>
+        <div><h2>בחר מודל של למידה לעומק (deep learning) המשמש לזיהוי אובייקטים</h2></div>
         <hr/>
         <div>
-            <p>The input deep learning package ( <code>.dlpk</code>) item.
+            <p>פרט חבילת למידה עמוקה (Deep Learning) ( <code>.dlpk</code>) של הקלט.
             </p>
-            <p>The deep learning package is composed of the Esri model definition JSON file ( <code>.emd</code>), the deep learning binary model file, and optionally, the Python raster function to be used.
+            <p>חבילת הלמידה העמוקה מורכבת מקובץ JSON של הגדרת מודל Esri ( <code>.emd</code>), קובץ המודל הבינארי של למידה עמוקה, וכאופציה, פונקציית Python של הרסטר לשימוש.
             </p>
         </div>
     </div>
     <div id="modelArguments">
-        <div><h2>Specify deep learning model arguments</h2></div>
+        <div><h2>ציין ארגומנטים למודל של למידה לעומק</h2></div>
         <hr/>
         <div>
-            <p>The function arguments are defined in the Python raster function class referenced by the input model. This is where you list additional deep learning parameters and arguments for experiments and refinement, such as a confidence threshold for adjusting the sensitivity.
+            <p>הארגומנטים של הפונקציה מוגדרים בייחוס קבוצת פונקציית הרסטר Python על ידי מודל הקלט. זה המקום שבו אתה מפרט פרמטרים וארגומנטים נוספים של למידה עמוקה עבור ניסויים ועידונים, כגון סף בר-סמך עבור התאמת הרגישות.
             </p>
-            <p>The names of the arguments are populated by the tool from reading the Python module on the raster analysis server.
+            <p>השמות של הארגומנטים מאוכלסים על ידי הכלי מתוך קריאת מודול Python בשרת ניתוח הרסטר.
             </p>
         </div>
     </div>
     <div id="runNMS">
-        <div><h2>Remove duplicate features from the output (optional)</h2></div>
+        <div><h2>הסר ישויות כפולות מהפלט (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>Performs non-maximum suppression, where duplicate objects are identified and the duplicate feature with a lower confidence value is removed.
-
+            <p>מבצע הנחתת ערכים שאינם מקסימום, כאשר אובייקטים כפולים מזוהים והישות הכפולה עם ערך בר-סמך נמוך יותר מוסרת. 
                 <ul>
-                    <li>Unchecked&mdash;All objects that are detected will be in the output feature class. This is the default.
+                    <li>לא מסומן - כל האובייקטים שמזוהים יהיו בקבוצת ישויות הפלט. זוהי ברירת המחדל.
                         
 
                     </li>
-                    <li>Checked&mdash;Removes duplicate objects that are detected.
+                    <li>מסומן - מסיר אובייקטים כפולים שמזוהים.
                         
 
                     </li>
@@ -99,38 +98,38 @@
         </div>
     </div>
     <div id="confidenceScoreField">
-        <div><h2>Confidence score field</h2></div>
+        <div><h2>שדה ציון סמך</h2></div>
         <hr/>
         <div>
-            <p>The field in the feature service that contains the confidence scores as output by the object detection method.
+            <p>השדה בשירות הישויות שמכיל את ציון הסמך כפלט על ידי שיטת זיהוי האובייקטים.
             </p>
-            <p>This parameter is required when you check the  <b>Non Maximum Suppression</b> parameter.
+            <p>חובה לציין פרמטר זה בעת סימון הפרמטר  <b>הנחתת ערכים שאינם מקסימום</b>.
             </p>
         </div>
     </div>
     <div id="classValueField">
-        <div><h2>Class value field</h2></div>
+        <div><h2>שדה ערך קבוצה</h2></div>
         <hr/>
         <div>
-            <p>The class value field in the output feature service. If not specified, the tool will use the standard class value fields  <i>Classvalue</i> and <i>Value</i>. If these fields do not exist, all features will be treated as the same object class.
+            <p>שדה ערך הקבוצה בשירות ישויות הפלט. אם לא צוין, הכלי ישתמש בשדות ערך הקבוצה הסטנדרטיים  <i>Classvalue</i> ו- <i>Value</i>. אם שדות אלה לא קיימים, כל הישויות יטופלו כאותה קבוצת אובייקטים.
             </p>
         </div>
     </div>
     <div id="maxOverlapRatio">
-        <div><h2>Maximum overlap ratio</h2></div>
+        <div><h2>יחס חפיפה מקסימאלית</h2></div>
         <hr/>
         <div>
-            <p>The maximum overlap ratio for two overlapping features, which is defined as the ratio of intersection area over union area. The default is 0.
+            <p>יחס החפיפה המקסימאלית עבור שתי ישויות חופפות, שמוגדר כיחס של אזור הצטלבות על אזור איחוד. ערך ברירת המחדל הוא 0.
             </p>
         </div>
     </div>
     <div id="outputObjects">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

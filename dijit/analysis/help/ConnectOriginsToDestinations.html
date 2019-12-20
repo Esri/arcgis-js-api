@@ -71,7 +71,7 @@
 The tool supports up to  5,000 origins and  5,000 destinations. </p>
             <p>If you choose a layer that has exactly one origin, it will connect to all destinations.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>In addition to choosing a layer from your map, you can select  <b>Choose Analysis Layer</b> found at the bottom of the drop-down list. This option opens a gallery where you can browse to and select datasets from various sources to use in your analysis. 
             </p>
         </div>
     </div>
@@ -85,11 +85,13 @@ representing the destination or destinations to which the origins should connect
             </p>
             <p>If there is one origin and many destinations, the tool connects the origin to each of the destinations.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>In addition to choosing a layer from your map, you can select  <b>Choose Analysis Layer</b> found at the bottom of the drop-down list. This option opens a gallery where you can browse to and select datasets from various sources to use in your analysis. 
             </p>
             <p> If there are many origins and many destinations, you need to have two fields that describe the origin-destination pairs: <b>ID field in origins</b> and <b>Matching ID field in destinations</b>. The tool connects the origin-destination pairs during the analysis. For instance, imagine you have two origins with ID field values of <code>Rosie</code> and <code>Harold</code> and two destinations with the same ID values. The <code>Rosie</code> origin will connect to the <code>Rosie</code> destination, and <code>Harold</code> will connect to <code>Harold</code>. No other connections or measurements are made.
             </p>
-            <p>The ID values must be unique within each layer; for instance, the destinations layer cannot have two  <code>Rosie</code> values. The values in the origin and destination layers must match exactly to make pairs; <code>Harold</code> won't connect to the misspelled value, <code>Harodl</code>. 
+            <p>If there are equal numbers of origins and destinations, the ID values must be unique within each layer; for instance, the destinations layer cannot have two  <code>Rosie</code> values. The values in the origin and destination layers must match exactly to make pairs; <code>Harold</code> won't connect to the misspelled value, <code>Harodl</code>. 
+            </p>
+            <p>The tool also supports connecting each origin to more than one destination or each destination to more than one origin. In such cases, you still need to have two fields that describe the origin-destination pairs. However, only one of the layers (either the origin or the destination layer) needs to have unique ID values.
             </p>
         </div>
     </div>
@@ -141,6 +143,23 @@ representing the destination or destinations to which the origins should connect
             <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
             </p>
             <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Route shape</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the shape of the route that connects each origin to it's destination:
+            </p>
+            <ul>
+                <li> <b>Straight line</b> - The shape is a straight line connecting the origin-destination pair. This option is best when you want to generate spider diagrams or desire lines (for example, to show which stores customers are visiting).
+                </li>
+                <li> <b>Follow streets</b> - The shape is based on the underlying street network. This option is best when you want to generate the routes between origins and destinations. <b>Follow streets</b> is disabled when the measure is <b>Line distance</b>.
+                </li>
+            </ul>
+            
+            <p>The best route between an origin and it's matched destination is always calculated based on the travel mode, regardless of which route shape is chosen.
             </p>
         </div>
     </div>

@@ -70,7 +70,7 @@
             <p>Escolher camada de ponto representando origem ou origens.  A ferramenta suporta at&eacute;  5 000 origens e  5 000 destinos. </p>
             <p>Se escolher uma camada que tem exactamente uma origem, ele ir&aacute; ligar-se a todos os destinos.
             </p>
-            <p class="OnlineOnly">Al&eacute;m de escolher uma camada para o seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise do Living Atlas</b> ou <b>Escolher Camada de An&aacute;lise</b> que se encontra no final da lista. Esta abre uma galeria contendo um conjunto de camadas &uacute;teis para v&aacute;rias an&aacute;lises. 
+            <p>Al&eacute;m de escolher uma camada do seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise</b> que se encontra na parte inferior da lista pendente. Esta op&ccedil;&atilde;o abre uma galeria, na qual pode navegar e selecionar conjuntos de dados de v&aacute;rias fontes para utilizar na sua an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Se h&aacute; uma origem e muitos destinos, a ferramenta liga a origem a cada um dos destinos.
             </p>
-            <p class="OnlineOnly">Al&eacute;m de escolher uma camada para o seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise do Living Atlas</b> ou <b>Escolher Camada de An&aacute;lise</b> que se encontra no final da lista. Esta abre uma galeria contendo um conjunto de camadas &uacute;teis para v&aacute;rias an&aacute;lises. 
+            <p>Al&eacute;m de escolher uma camada do seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise</b> que se encontra na parte inferior da lista pendente. Esta op&ccedil;&atilde;o abre uma galeria, na qual pode navegar e selecionar conjuntos de dados de v&aacute;rias fontes para utilizar na sua an&aacute;lise. 
             </p>
             <p> Se houver muitas origens e muitos destinos, precisa ter dois campos que descrevem os pares de origem-destino: <b>Campo Identifica&ccedil;&atilde;o (ID) em origens</b> e <b>campo Correspond&ecirc;ncia de Identifica&ccedil;&atilde;o (Matching ID) em destinos</b> A ferramenta liga os pares origem-destino durante a an&aacute;lise. Por exemplo, imagine que tem duas origens, com valores de campo de identifica&ccedil;&atilde;o de <code>Rosie</code> e <code>Harold</code> e dois destinos com os mesmos valores de identifica&ccedil;&atilde;o.  A origem <code>Rosie</code> ir&aacute; ligar-se ao destino <code>Rosie</code>, e <code>Harold</code> vai ligar-se a <code>Harold</code>. N&atilde;o s&atilde;o feitas outras liga&ccedil;&otilde;es ou medi&ccedil;&otilde;es
             </p>
-            <p>Os valores de ID devem ser &uacute;nicos dentro de cada camada, por exemplo, a camada de destinos n&atilde;o pode ter dois valores  <code>Rosie</code>.  Os valores nas camadas de origem e destino devem corresponder exactamente para fazer pares; <code>Harold</code> n&atilde;o se liga ao valor digitado incorrectamente, <code>Harodl</code>. 
+            <p>Se existir um n&uacute;mero igual de origens e destinos, os valores de ID devem ser &uacute;nicos dentro de cada camada, por exemplo, a camada de destinos n&atilde;o pode ter dois valores  <code>Rosie</code>. Os valores nas camadas de origem e destino devem corresponder exactamente para fazer pares; <code>Harold</code> n&atilde;o se liga ao valor digitado incorrectamente, <code>Harodl</code>. 
+            </p>
+            <p>A ferramenta tamb&eacute;m suporta a liga&ccedil;&atilde;o de cada origem a mais do que um destino ou cada destino a mais do que uma origem. Nestes casos, continua a precisar de dois campos que descrevam os pares de origem/destino. No entanto, apenas uma das camadas (a camada de origem ou a de destino) necessita de ter valores de ID &uacute;nicos.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Uma barreira de linhas pro&iacute;be que se transite por qualquer ponto de intersec&ccedil;&atilde;o entre a barreira e as ruas. Por exemplo, um desfile ou protesto que bloqueie o tr&aacute;fego por v&aacute;rios segmentos de ruas pode ser delineado com uma barreira de linhas. Se o n&uacute;mero de elementos da rua intersetado por todas as barreiras de linhas for superior a 500 elementos, a ferramenta devolve um erro.
             </p>
             <p>Uma barreira de pol&iacute;gonos pro&iacute;be que se transite por qualquer ponto de intersec&ccedil;&atilde;o entre o pol&iacute;gono e as ruas. Este tipo de barreira pode ser utilizado para delinear inunda&ccedil;&otilde;es que abranjam &aacute;reas da rede de estradas e n&atilde;o permitam que se transite por elas. Se o n&uacute;mero de elementos da rua intersetado por todas as barreiras de pol&iacute;gonos for superior a 2000 elementos, a ferramenta devolve um erro.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Forma da rota</h2></div>
+        <hr/>
+        <div>
+            <p>Escolha a forma da rota que liga cada origem ao respetivo destino ao utilizar o modo de viagem:
+            </p>
+            <ul>
+                <li> <b>Seguir ruas</b> &mdash; A forma tem como base a rede de ruas subjacente. Esta op&ccedil;&atilde;o &eacute; a mais adequada quanto pretende gerar rotas entre origens e destinos.
+                </li>
+                <li> <b>Linha reta</b> &mdash; A forma &eacute; uma linha reta que liga o par origem/destino. Esta op&ccedil;&atilde;o &eacute; a mais adequada quanto pretende gerar diagramas de aranha ou linhas de desejo (por exemplo, para exibir que lojas est&atilde;o os clientes a visitar).
+                </li>
+            </ul>
+            
+            <p>A melhor rota entre uma origem e o respetivo destino &eacute; sempre calculada com base no modo de viagem, independentemente da forma de rota escolhida.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
-define(["../../ConversionUtil","./AlignParser"],function(e,a){var t={getElement:function(t,n){var o=t.attributes,p={id:"map",isMap:!0,style:{top:e.ptToPx(o.top)||0,left:e.ptToPx(o.left)||0,width:e.ptToPx(o.width),height:e.ptToPx(o.height)}},s=n.templateJson.metadata.mapImageInfosHash[o.name];return p.webMapId=s?s.webMapId:o.webMapId,p.defaultBasemapId=s?s.defaultBasemapId:o.defaultBasemapId,p.mapScale=s?s.mapScale:null,p.calculatorFieldName=s&&s.fieldName,p.additionalLayerInfos=s&&s.additionalLayerInfos,p.pinSymbolJson=s&&s.pinSymbolJson,p.showMapLegend=o.showMapLegend,a.parseAlign(o,p.style),n.postProcessMapJson&&n.postProcessMapJson(t,p),p},parseMapImageDField:function(e,a){return t.getElement({name:"mapImage",attributes:{name:e}},a)}};return t});
+define(["../../ConversionUtil","./AlignParser"],function(a,e){var t={getElement:function(t,n){var o=t.attributes,s={id:"map",isMap:!0,style:{top:a.ptToPx(o.top)||0,left:a.ptToPx(o.left)||0,width:a.ptToPx(o.width),height:a.ptToPx(o.height)}},p=n.templateJson.metadata.mapImageInfosHash[o.name];return s.webMapId=p?p.webMapId:o.webMapId,s.defaultBasemapId=p?p.defaultBasemapId:o.defaultBasemapId,s.mapScale=p?p.mapScale:null,s.calculatorFieldName=p&&p.fieldName,s.additionalLayerInfos=p&&p.additionalLayerInfos,s.pinSymbolJson=p&&p.pinSymbolJson,s.areaSymbolJsons=p&&p.areaSymbolJsons,s.areaSymbolRamp=p&&p.areaSymbolRamp,s.showMapLegend=o.showMapLegend,e.parseAlign(o,s.style),n.postProcessMapJson&&n.postProcessMapJson(t,s),s},parseMapImageDField:function(a,e){return t.getElement({name:"mapImage",attributes:{name:a}},e)}};return t});

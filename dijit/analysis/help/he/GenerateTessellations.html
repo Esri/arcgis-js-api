@@ -41,50 +41,50 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Generate Tessellations</h2><p/>
-        <h2><img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" alt="Generate Tessellations"></h2>
+        <h2>צור ריצופים של מישורים</h2><p/>
+        <h2><img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" alt="צור ריצופים של מישורים"></h2>
         <hr/>
-    <p>This tool generates tessellations over a study area based on specified shape and size.
+    <p>כלי זה מפיק ריצופים של מישורים על פני אזור מחקר על בסיס צורה וגודל שצוינו.
     </p>
-    <p>The   <b>Use current map extent</b> checkbox is disabled for  this tool because the extent used to generate the tessellations is controlled by the <b>Define extent</b> parameter.
+    <p>תיבת הסימון  <b>השתמש בתיחום המפה הנוכחי</b> מושבתת עבור כלי זה מכיוון שהתיאום אשר משמש להפקת הריצופים של מישורים נשלט על ידי הפרמטר <b>הגדר תיחום</b>.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="binType">
-        <div><h2>Choose shape</h2></div>
+        <div><h2>בחר צורה</h2></div>
         <hr/>
         <div>
-            <p>The  shape or geometry  of tessellation that you would like to create.  The available shapes are  <code>Square</code>, <code>Hexagon</code>, <code>Transverse Hexagon</code>, <code>Triangle</code>, or <code>Diamond</code>.
+            <p>הצורה של ריצוף המישורים שברצונך ליצור.  הצורות הזמינות הן  <code>מרובע</code>, <code>משושה</code>, <code>משושה אלכסוני</code>, <code>משולש</code> או <code>יהלום</code>.
             </p>
         </div>
     </div>
     <div id="extentLayer">
-        <div><h2>Define study area</h2></div>
+        <div><h2>הגדר אזור מחקר</h2></div>
         <hr/>
         <div>
-            <p>The extent or area that the tessellations will cover.  The extent can be determined using the current map extent, the extent of an existing layer, or by interactively drawing an area to be used as the extent.
+            <p>התיחום או האזור שריצוף המישורים יכסה.  ניתן לקבוע את התיחום בעזרת תיחום המפה הנוכחי, התיחום של שכבה קיימת או על ידי שרטוט אינטראקטיבי של אזור אשר בו יש להשתמש כתיחום.
             </p>
-            <p>If a feature layer has been selected to determine the extent, the option to only keep intersecting tessellations will be enabled.  If checked, only those tessellations that cover or intersect with features in the specified extent layer will be generated in the resulting tessellation layer. 
+            <p>אם שכבת ישויות נבחרה כדי לקבוע את התיחום, האפשרות לשמור רק ריצופי מישורים שיש ביניהם חפיפה תהיה זמינה.  אם אפשרות זו סומנה, רק אותם ריצופי מישורים שמכסים או חופפים עם ישויות בשכבת התיחום שצוינה יופקו בשכבת ריצוף המישורים שתתקבל כתוצאה. 
             </p>
             <p>
                 <table border="1">
                 <tr>
                     <td>
-                        <p>Unchecked
+                        <p>לא מסומן
                         </p>
                     </td>
                     <td>
-                        <p> <img src="../images/GUID-141880D1-A748-4F7B-B700-0036CA9ACCE1-web.png" alt="Full Extent Coverage">
+                        <p> <img src="../images/GUID-141880D1-A748-4F7B-B700-0036CA9ACCE1-web.png" alt="כיסוי תיחום מלא">
                         </p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>Checked
+                        <p>מסומן
                         </p>
                     </td>
                     <td>
-                        <p> <img src="../images/GUID-F43D993E-5881-4A35-A4AE-4221EDD48374-web.png" alt="Feature Coverage">
+                        <p> <img src="../images/GUID-F43D993E-5881-4A35-A4AE-4221EDD48374-web.png" alt="כיסוי ישויות">
                         </p>
                     </td>
                 </tr>
@@ -93,58 +93,58 @@
         </div>
     </div>
     <div id="binSize">
-        <div><h2>Define bin size by specifying</h2></div>
+        <div><h2>הגדר גודל bin על ידי ציון</h2></div>
         <hr/>
         <div>
-            <p>The size of each cell.  Cell size can be determined by specifying square units or by specifying a distance that is calculated using the following measurements, where d = Distance: 
+            <p>הגודל של כל תא.  ניתן לקבוע את גודל התא על ידי ציון יחידות מרובע או על ידי ציון מרחק שמחושב באמצעות המדידות הבאות, כאשר d = מרחק: 
                 <table border="1">
                 <tr>
                     <td>
-                        <p>Square
+                        <p>מרובע
                         </p>
                     </td>
                     <td>
-                        <p> <img src="../images/GUID-4DCDA345-EA0F-46AA-975D-27455F13AAA7-web.png" alt="Square Tessellation">
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Hexagon
-                        </p>
-                    </td>
-                    <td>
-                        <p> <img src="../images/GUID-5A685C3F-B984-4B5E-8E8A-1EE7AB7FC434-web.png" alt="Hexagon Tessellation">
+                        <p> <img src="../images/GUID-4DCDA345-EA0F-46AA-975D-27455F13AAA7-web.png" alt="ריצוף מישורים מרובע">
                         </p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>Transverse Hexagon
+                        <p>משושה
                         </p>
                     </td>
                     <td>
-                        <p> <img src="../images/GUID-61A8B883-A581-4A8D-9D77-57CEA96D9598-web.png" alt="Transverse Hexagon Tessellation">
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Triangle
-                        </p>
-                    </td>
-                    <td>
-                        <p> <img src="../images/GUID-08AB7A29-A0E7-4210-8462-7550DC99A2F2-web.png" alt="Triangle Tessellation">
+                        <p> <img src="../images/GUID-5A685C3F-B984-4B5E-8E8A-1EE7AB7FC434-web.png" alt="ריצוף מישורים משושה">
                         </p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>Diamond
+                        <p>משושה אלכסוני
                         </p>
                     </td>
                     <td>
-                        <p> <img src="../images/GUID-165A71F1-381F-4699-97FA-F83C30AC96E7-web.png" alt="Diamond Tessellation">
+                        <p> <img src="../images/GUID-61A8B883-A581-4A8D-9D77-57CEA96D9598-web.png" alt="ריצוף מישורים משושה אלכסוני">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>משולש
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-08AB7A29-A0E7-4210-8462-7550DC99A2F2-web.png" alt="ריצוף מישורים משולש">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>יהלום
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-165A71F1-381F-4699-97FA-F83C30AC96E7-web.png" alt="ריצוף מישורים יהלום">
                         </p>
                     </td>
                 </tr>
@@ -153,13 +153,12 @@
         </div>
     </div>
     <div id="tessellationPolygonLayer">
-        <div><h2>Result layer
-name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  If the layer already exists, you will be asked to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה.  אם השכבה כבר קיימת, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

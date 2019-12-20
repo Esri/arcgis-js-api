@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../../ChartBuilder"],function(e){var t={};return t.internetConnectionHome={states:"n,p,i",defaultState:"i",stateSettings:{n:{yAxisTitle:"Number of adults"},p:{yAxisTitle:"Percent of adults"}},fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Internet Access at Home",points:[{label:"Cable modem",fullName:"ElectronicsInternet.MP19003A_B"},{label:"DSL",fullName:"ElectronicsInternet.MP19004A_B"},{label:"Fiber optic",fullName:"ElectronicsInternet.MP19005A_B"},{label:"High speed connection",fullName:"ElectronicsInternet.MP19007A_B"}],visualProps:{sorting:"Descending"}})}},t});

@@ -309,11 +309,23 @@
           </td>
         </tr>
         <tr data-dojo-attach-point="_methodValueRow">
-          <td  colspan="3">
-            <select class="esriLeadingMargin1 longInput esriLongLabel"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="_methodSelect">
-              <option value="Geodesic">${i18n.geodesicLabel}</option>
-              <option value="Planar">${i18n.planarLabel}</option>
-            </select>
+          <td colspan="3">
+            <table class="one-width">
+              <tr>
+                <td class="width-50">
+                  <div class="bufferSelector" data-dojo-attach-point="_geodesicType">
+                    <div class="bufferIcon geodesicIcon"></div>
+                    <div><label class="esriSelectLabel">${i18n.geodesicLabel}</label></div>
+                  </div>
+                </td>
+                <td class="width-50">
+                  <div class="bufferSelector" data-dojo-attach-point="_planarType">
+                    <div class="bufferIcon planarIcon"></div>
+                    <div><label class="esriSelectLabel">${i18n.planarLabel}</label></div>
+                  </div>
+                </td>               
+              </tr>
+            </table>
           </td>
         </tr>
         <tr data-dojo-attach-point="_dissolveLabelRow">

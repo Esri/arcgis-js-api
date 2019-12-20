@@ -40,23 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Interpolate Points</h2><p/>
-        <h2><img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" alt="Interpolate Points"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>בצע אינטרפולציה לנקודות</h2><p/>
+        <h2><img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" alt="בצע אינטרפולציה לנקודות"></h2>
         <hr/>
-    <p>   The Interpolate Points tool allows you to predict values at new locations based on measurements from a collection of points. The tool takes point data with values at each point and returns areas classified by predicted values. For example
+    <p>   הכלי 'בצע אינטרפולציה לנקודות' מאפשר לך לחזות ערכים במיקומים חדשים על בסיס מדידות מאוסף נקודות. הכלי נוטל נתוני נקודות עם ערכים בכל נקודה ומחזיר אזורים שמסווגים על ידי ערכים חזויים. לדוגמה
         <ul>
-            <li>An air quality management district has sensors that measure pollution levels.    Interpolate Points can be used to predict pollution levels at  locations that don't have sensors, such as locations with at-risk populations&mdash;schools or hospitals, for example.
+            <li>למחוז לניהול איכות האוויר יש חיישנים שמודדים רמות זיהום.    הכלי 'בצע אינטרפולציה לנקודות' יכול לשמש לצורך חיזוי רמות זיהום במיקומים שאין בהם חיישנים, כגון מיקומים עם אוכלוסיות בסכנה - כגון בתי ספר או בתי חולים.
             </li>
-            <li>Predict heavy metal concentrations in crops based on samples taken from individual plants.
+            <li>חיזוי ריכוזי מתכות כבדות ביבול על בסיס דגימות שנלקחו מצמחים בודדים.
             </li>
-            <li>Predict soil nutrient levels (nitrogen, phosphorus, potassium, and
-so on) and other indicators (such as electrical conductivity) in
-order to study their relationships to crop yield and prescribe
-precise amounts of fertilizer for each location in the field.
-
+            <li>חיזוי רמות של חומרים מזינים באדמה (חנקן, זרחן, אשלגן וכך הלאה) ואינדיקטורים אחרים (כגון מוליכות חשמלית) כדי לחקור את הקשר שלהן לתוצרת היבול ולרשום כמויות מדויקות של דשן עבור כל מיקום בשדה. 
             </li>
-            <li>Meteorological applications include prediction of temperatures, rainfall, and associated variables (such as acid rain). 
+            <li>יישומים מטאורולוגיים כוללים חיזוי של טמפרטורות, ממטרים ומשתנים קשורים (כגון גשם חומצי). 
             </li>
         </ul>
         
@@ -64,56 +60,55 @@ precise amounts of fertilizer for each location in the field.
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose point layer containing locations with known values</h2></div>
+        <div><h2>בחר שכבת נקודות המכילה מיקומים עם ערכים ידועים</h2></div>
         <hr/>
         <div>
-            <p>The point layer to use as the basis of interpolation.  
+            <p>שכבת הנקודות אשר תשמש כבסיס לאינטרפולציה.  
 
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field to interpolate</h2></div>
+        <div><h2>בחר שדה לאינטרפולציה</h2></div>
         <hr/>
         <div>
-            <p>Choose the field containing the values you wish to interpolate.  
+            <p>בחר את השדה שמכיל את הערכים שלהם ברצונך לעשות אינטרפולציה.  
             </p>
         </div>
     </div>
     <div id="interpolateOption">
-        <div><h2>Optimize for</h2></div>
+        <div><h2>בצע אופטימיזציה עבור</h2></div>
         <hr/>
         <div>
-            <p>Choose your preference for speed versus accuracy. More accurate predictions take longer to calculate.
+            <p>בחר את ההעדפות שלך עבור מהירות לעומת דיוק. תחזיות מדויקות יותר דורשות זמן חישוב ארוך יותר.
             </p> 
         </div>
     </div>
     <div id="outputPredictionError">
-        <div><h2>Output prediction errors</h2></div>
+        <div><h2>פלט שגיאות חיזוי</h2></div>
         <hr/>
         <div>
-            <p> If checked, a layer of standard errors for the interpolation predictions will be created.  The name of the output layer 
-will be the result layer name with 'Errors' appended.
+            <p> אם אפשרות זו מסומנת, תיווצר שכבה של סטיות תקן עבור תחזיות האינטרפולציה.  שם שכבת הפלט יהיה שם שכבת התוצאה בתוספת 'Errors'.
             </p>
-            <p>Standard errors are useful because they provide information about the reliability of the predicted values.  A simple rule of thumb is that the true value will fall within two standard errors of the predicted value 95 percent of the time.  For example, suppose a new location gets a predicted value of 50 with a standard error of 5.  This means that this tool's best guess is that the true value at that location is 50, but it reasonably could be as low as 40 or as high as 60.  To calculate this range of reasonable values, multiply the standard error by 2, add this value to the predicted value to get the upper end of the range, and subtract it from the predicted value to get the lower end of the range.
+            <p>סטיות תקן הן שימושיות מכיוון שהן מספקות מידע אודות האמינות של הערכים הנחזים.  כלל אצבע פשוט הוא שהערך האמיתי יהיה בין שתי סטיות תקן של ערך חזוי 95 אחוז מהזמן.  לדוגמה, נניח שמיקום חדש מקבל ערך חזוי של 50, עם סטיית תקן של 5.  משמעות הדבר היא שהניחוש הטוב ביותר של כלי זה הוא שהערך האמיתי במיקום זה הוא 50, אבל סביר להניח שהוא יהיה בין 40 ל-60.  כדי לחשב טווח זה של ערכים סבירים, הכפל את סטיית התקן ב-2, הוסף ערך זה לערך הצפוי כדי לקבל את הקצה העליון של הטווח, והפחת ערך זה מהערך החזוי כדי לקבל את הקצה התחתון של הטווח.
             </p>
         </div>
     </div>
     <div id="classificationType">
-        <div><h2>Classify by</h2></div>
+        <div><h2>סווג לפי</h2></div>
         <hr/>
         <div>
-            <p>Choose how predicted values will be classified into areas.
+            <p>בחר כיצד ערכים חזויים יסווגו לאזורים.
                 <ul>
-                    <li>Geometric interval&mdash;Areas are based on class intervals that have a geometric series. This method ensures that each class range has approximately the same number of values within each class and that the change between intervals is consistent.
+                    <li>מרווח גאומטרי - אזורים מבוססים על מרווחי קבוצות בעלי סדרות גאומטריות. שיטה זו מבטיחה שלכל טווח קבוצה יש בערך אותו מספר של ערכים בתוך כל קבוצה ושהשינוי בין מרווחים הוא עקבי.
                     </li>
-                    <li>Equal interval&mdash;Areas are created such that the range of predicted values  is equal for each area.
+                    <li>מרווח שווה - אזורים נוצרים כך שטווח הערכים החזויים שווה עבור כל אזור.
                     </li>
-                    <li>Equal area&mdash;Areas are created such that the number of data values in each area is equal.  For example, if the data has more large values than small values, more areas will be created for large values.
+                    <li>אזורים שווים - אזורים נוצרים כך שמספר ערכי הנתונים שווה בכל אזור. לדוגמה, אם לנתונים יש יותר ערכים גדולים מאשר ערכים קטנים, ייווצרו יותר אזורים עבור ערכים גדולים.
                     </li>
-                    <li>Manual&mdash;This option allows you to define your own range of values for areas.  These values will be entered in the  <b>Class break values</b> parameter below.
+                    <li>ידני - אופציה זו מאפשרת לך להגדיר טווח ערכים משלך עבור אזורים.  ערכים אלה יוזנו בפרמטר  <b>ערכי מעברי קבוצה</b> להלן.
                     </li>
                 </ul>
                 
@@ -121,49 +116,47 @@ will be the result layer name with 'Errors' appended.
         </div>
     </div>
     <div id="numClasses">
-        <div><h2>Number of classes</h2></div>
+        <div><h2>מספר הקבוצות</h2></div>
         <hr/>
         <div>
-            <p>Specifies the number of classes (range of predicted values) in the result layer.  Each class defines the boundary of areas.  The values of these classes will be determined by the 
- <b>Classify by</b> parameter above.
+            <p>מציין את מספר הקבוצות (טווח ערכים חזוי) בשכבת התוצאה. כל קבוצה מגדירה את הגבול של אזורים. הערכים של קבוצות אלה ייקבעו על ידי 
+הפרמטר  <b>סווג לפי</b> לעיל.
             </p>
         </div>
     </div>
     <div id="classBreaks">
-        <div><h2>Class break values</h2></div>
+        <div><h2>ערכי מעברי קבוצה</h2></div>
         <hr/>
         <div>
-            <p>Enter the desired class break values separated by spaces.  For example, if you want class breaks at values of 1.5, 3, and 7, enter  <code>1.5 3 7</code>.  These values will define the upper limit of each class, so the number of classes will equal the number of entered values.  Areas will not be created for any locations with predicted values above the largest entered break value.  You must enter at least two values and no more than 32.
+            <p>הזן את ערכי מעברי הקבוצות מפורדים ברווחים.  לדוגמה, אם ברצונך להכניס מעברי קבוצה בערכים 1.5, &rlm;3 ו-7, הזן  <code>1.5 3 7</code>.  ערכים אלה יגדירו את הגבול העליון של כל קבוצה, כך שמספר הקבוצות יהיה שווה למספר הערכים שהוזנו.  לא ייווצרו אזורים עבור מיקומים עם ערכים חזויים מעל לערך המעבר הגדול ביותר.  יש להזין לפחות שני ערכים ולא יותר מ-32 ערכים.
             </p>
         </div>
     </div>
     <div id="boundingPolygonLayer">
-        <div><h2>Clip output to</h2></div>
+        <div><h2>חתוך פלט אל</h2></div>
         <hr/>
         <div>
-            <p>Either draw or provide a  layer specifying the area where you want the result to be drawn. For example, if you are interpolating lake pollution measurements, you can use the boundary of the lake in this parameter and the output will  only draw within the boundary of the lake.
+            <p>שרטט או ספק שכבה שמציינת את האזור שבו ברצונך שהתוצאה תשורטט. לדוגמה, אם אתה מבצע אינטרפולציה של מדידות זיהום באגם, באפשרותך להשתמש בגבולות של האגם בפרמטר זה, והפלט ישורטט רק בתוך הגבולות של האגם.
             </p>
         </div>
     </div>
     <div id="predictAtPointLayer">
-        <div><h2>Predict at these locations</h2></div>
+        <div><h2>חיזוי במיקומים הללו</h2></div>
         <hr/>
         <div>
-            <p>Either draw or provide a  layer specifying point locations to calculate prediction values. This allows you to make predictions at specific locations of interest.
-For example, if the input layer represents measurements of pollution levels, you can use this parameter to predict the pollution levels of locations with large at-risk populations, such as schools or hospitals.  You can then use this information to give recommendations to health officials in those locations.
+            <p>שרטט או ספק שכבה שמציינת מיקומי נקודה לחישוב ערכי חיזוי. דבר זה מאפשר לך לערוך חיזויים במיקומים ספציפיים שיש בהם עניין. לדוגמה, אם שכת הקלט מייצגת מדידות של רמות זיהום, באפשרותך להשתמש בפרמטר זה כדי לחזות את רמות הזיהום במיקומים עם שיעורים גבוהים של אוכלוסיות בסיכון, כגון בתי ספר או בתי חולים.  לאחר מכן, באפשרותך להשתמש במידע זה כדי לתת המלצות לגורמים שאחראיים על הבריאות באותם מיקומים.
             </p>
-            <p>If supplied, this tool will output a point layer of predictions at the specified locations.  The name of the output layer 
-will be the result layer name with 'Points' appended.  
+            <p>אם סופק, כלי זה יפיק שכבת נקודות של תחזיות במיקומים שצוינו.  שם שכבת הפלט יהיה שם שכבת התוצאה בתוספת 'Points'.  
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

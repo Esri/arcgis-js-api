@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define([],function(){var e={};return e.getType=function(e){return e&&(0===e.indexOf("esriFieldType")?e:"esriFieldType"+e)},e.fieldTagToVariable=function(t,a){return t.attributes.MapTo&&"AREA_ID"!==t.attributes.Name?{id:t.attributes.MapTo.substr(t.attributes.MapTo.lastIndexOf(".")+1),fullName:t.attributes.MapTo,alias:t.attributes.Alias,fieldName:t.attributes.Name,precision:Number(t.attributes.Decimals)||0,calculatorName:a,templateName:a+"."+t.attributes.Name,type:e.getType(t.attributes.Type)}:null},e.scriptTagToVariable=function(t,a){return{id:t.attributes.Name,fullName:a+"."+t.attributes.Name,fieldName:t.attributes.Name,alias:t.attributes.Alias,precision:Number(t.attributes.Decimals)||0,usedFields:t.attributes.usedFields?t.attributes.usedFields.split(","):[],usedMapTos:null,expressionText:t.tags[0].text,calculatorName:a,templateName:a+"."+t.attributes.Name,type:e.getType(t.attributes.Type)}},e});

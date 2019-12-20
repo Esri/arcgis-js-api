@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
-define(["dojo/_base/declare"],function(n){return n(null,{showLegend:null,setLegendVisible:function(n){this.showLegend=n,this.onVisibilityChanged()},onVisibilityChanged:function(){}})});
+define(["dojo/_base/declare"],function(l){return l(null,{showLegend:null,_callbacks:null,addCallback:function(l,a){var c=this;return this._callbacks=this._callbacks||{},this._callbacks[a]=l,{remove:function(){delete c._callbacks[a]}}},setLegendVisible:function(l,a){this.showLegend=l;for(var c in this._callbacks)this._callbacks[c](l,a)}})});

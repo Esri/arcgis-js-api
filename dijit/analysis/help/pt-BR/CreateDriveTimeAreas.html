@@ -84,7 +84,7 @@
         <div>
             <p>As fei&ccedil;&otilde;es de ponto ao redor das &aacute;reas que ser&atilde;o calculadas. Voc&ecirc; pode escolher como as &aacute;reas s&atilde;o calculadas baseado no modo de viagem (dirigindo, caminh&atilde;o ou caminhando) e medida (tempo ou dist&acirc;ncia).
             </p>
-            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> ou <b>Escolher  Camada de An&aacute;lise</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> localizado na parte inferior da lista suspensa. Esta op&ccedil;&atilde;o abre uma galeria onde voc&ecirc; pode procurar e selecionar conjunto de dados de v&aacute;rias fontes para utilizar em sua an&aacute;lise. 
             </p>
             <p>A ferramenta suporta at&eacute; 1,000 fei&ccedil;&otilde;es na camada de entrada.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Escolha seu modo de viagem (dirigindo, carona ou caminhando) e medida (tempo ou dist&acirc;ncia). Os modos de viagens dispon&iacute;veis s&atilde;o determinados pelo administrador da sua organiza&ccedil;&atilde;o.   Ap&oacute;s escolher seu modo e medida, insira uma dura&ccedil;&atilde;o ou dist&acirc;ncia de at&eacute;  5 horas (300 minutos) ou  300 milhas (482.80 quil&ocirc;metros). 
+            </p>
+            <p>A dire&ccedil;&atilde;o de viagem ( <b>Longe da Instala&ccedil;&atilde;o</b> ou <b>Em dire&ccedil;&atilde;o a Instala&ccedil;&atilde;o</b>) pode influenciar como as &aacute;reas s&atilde;o geradas. Criar &Aacute;reas de Tempo do Percurso obedecer&aacute; ruas de uma m&atilde;o s&oacute;, evite convers&otilde;es ilegais e siga outras regras baseadas na dire&ccedil;&atilde;o de viagem. Voc&ecirc; deve selecionar a dire&ccedil;&atilde;o de viagem baseada no tipo de localiza&ccedil;&otilde;es de entrada e o contexto de sua an&aacute;lise. Por exemplo, a &aacute;rea do tempo de percurso de uma loja de entrega de pizza deve seja criada longe da instala&ccedil;&atilde;o, considerando que a &aacute;rea de tempo de percurso de um hospital deve ser criada em dire&ccedil;&atilde;o &agrave; instala&ccedil;&atilde;o.
             </p>
             <p>Quando voc&ecirc; escolher  <b>Tempo do Percurso</b>, <b>Tempo de Percurso em &Aacute;rea Rural</b>, ou <b>Tempo de Caminh&atilde;o</b> voc&ecirc; tem op&ccedil;&otilde;es sobre como medir o tempo do percurso.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Mostrar as áreas inalcançáveis como buracos</h2></div>
+        <hr/>
+        <div>
+            <p>Escolha se as &aacute;reas de sa&iacute;da incluir&atilde;o buracos se algumas ruas n&atilde;o puderem ser alcan&ccedil;adas por causa do tempo ou dist&acirc;ncia de  <b>Medi&ccedil;&atilde;o</b> , ou devido &agrave;s restri&ccedil;&otilde;es impostas pelo modo de viagem.
+            </p>
+            <p>As &aacute;reas de tempo de percurso criadas utilizando o par&acirc;metro tem um limite de 15 minutos ou 15 milhas (24 quil&ocirc;metros).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Nome da Camada Resultante</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Este &eacute; o nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se o nome da camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Ao utilizar o menu suspenso  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Incluir ruas alcançáveis</h2></div>
+        <hr/>
+        <div>
+            <p>Inclua as ruas que s&atilde;o utilizadas para criar as &aacute;reas de tempo de percurso como uma camada de sa&iacute;da. 
+            </p>
+            <p>Criar &Aacute;reas de Tempo do Percurso mede o alcance de uma instala&ccedil;&atilde;o ao longo da rede de rua, ent&atilde;o cria &aacute;reas de tempo de percurso a partir da ruas que foram viajadas. Portanto, as &aacute;reas s&atilde;o uma aproxima&ccedil;&atilde;o das ruas viajadas. Se sua an&aacute;lise for para determinar quais ruas s&atilde;o cobertas em uma dist&acirc;ncia de viagem espec&iacute;fica ou o tempo a partir de uma instala&ccedil;&atilde;o, gerar ruas alcan&ccedil;&aacute;veis pode ser mais preciso que utilizar &aacute;reas de tempo de percurso para avaliar se uma rua em particular foi alcan&ccedil;&aacute;vel.
+            </p>
+            <p>As &aacute;reas de tempo de percurso criadas utilizando o par&acirc;metro tem um limite de 15 minutos ou 15 milhas (24 quil&ocirc;metros).
             </p>
         </div>
     </div>

@@ -41,39 +41,39 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Remap Values</h2><p/>
-        <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="Remap Values tool for Portal"></h2>
+        <h2>מיפוי ערכים מחדש</h2><p/>
+        <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="כלי מיפוי ערכים מחדש עבור פורטל"></h2>
         <hr/>
-    <p>This tool allows you to change or reclassify the pixel values of the raster data. Pixels values are remapped by specifying a range of pixel values to map to an output pixel value. The output pixel value can be a valid value or a NoData value, which are pixels that do not have a known value associated with it.
+    <p>כלי זה מאפשר לשנות או לסווג מחדש את ערכי הפיקסלים של נתוני הרסטר. ערכי פיקסלים ממופים מחדש על ידי ציון טווח של ערכי פיקסלים למיפוי לערך פיקסל של פלט. ערך הפיקסל של הפלט יכול להיות ערך תקף או ערך NoData, שאלה פיקסלים שאין להם ערך ידוע שמשויך להם.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those cells visible within the current map extent will be remapped. If unchecked, all cells in the raster will be processed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק התאים שנראים בתוך גבולות תיחום המפה הנוכחי ימופו מחדש. אם האפשרות לא מסומנת, כל התאים ברסטר יעובדו, גם אם הם מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Input Data</h2></div>
+        <div><h2>נתוני קלט</h2></div>
         <hr/>
         <div>
-            <p>The input data that will have its values remapped.
+            <p>נתוני הקלט שהערכים שלהם ימופו מחדש.
             </p>
         </div>
     </div>
     <div id="RemapList">
-        <div><h2>Remap pixel values to new values</h2></div>
+        <div><h2>מיפוי מחדש של ערכי פיקסלים לערכים חדשים</h2></div>
         <hr/>
         <div>
-            <p>You enter a range of values by specifying a minimum and maximum value, and then assign an output value or a NoData value to the specified range.
+            <p>אתה מזין טווח של ערכים על ידי ציון ערך מינימום וערך מקסימום, ולאחר מכן הקצאת ערך פלט או ערך NoData לטווח שצוין.
             </p>
-            <p>To remap a new range of values, click  <b>Add</b>, which adds a row. Click on each value to edit the table to the ranges and remapped value you need. When you specify the value ranges, there are two important rules that are employed:
+            <p>כדי למפות מחדש טווח חדש של ערכים, לחץ על  <b>הוסף</b>, להוספת שורה. לחץ על כל ערך כדי לערוך את הטבלה לטווחים ולערך הממופה מחדש הדרוש. בעת ציון טווחי הערכים, נעשה שימוש בשני כללים חשובים:
                 <ul>
-                    <li>The minimum value in the range is inclusive, and the maximum value is exclusive.
+                    <li>ערך המינימום בטווח הוא אינקלוסיבי, וערך המקסימום הוא אקסלוסיבי.
                     </li>
-                    <li>The rows in the table are processed from top to bottom.
+                    <li>השורות בטבלה מעובדות מלמעלה למטה.
                     </li>
                 </ul>
                 
             </p>
-            <p>The table below shows that the minimum value is included within the output, but the maximum value is not included in the output.
+            <p>הטבלה להלן מראה שערך המינימום כלול בתוך הפלט, אבל ערך המקסימום לא כלול בפלט.
             </p>
             <table border="1">
             <tr>
@@ -100,7 +100,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10&ndash;19
+                    <p>10-19
                     </p>
                 </td>
             </tr>
@@ -119,9 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>The order of the ranges specified in the table is also important. The top row of the table is processed first, then the row below is processed. The two tables below show how the same value ranges will produce a different results, due to the order of the table rows.
+            <p>סדר הטווחים שצוין בטבלה גם הוא חשוב. השורה העליונה בטבלה מעובדת ראשונה, ולאחר מכן מעובדת השורה שמתחתיה. שתי הטבלאות להלן מציגות כיצד אותם טווחי ערכים יפיקו תוצאות שונות, עקב סדר השורות בטבלה.
             </p> 
-            <p>The table below shows the output value when the first column is sorted numerically:
+            <p>הטבלה להלן מציגה את ערך הפלט כאשר העמודה הראשונה ממוינת מספרית:
             </p>
             <table border="1">
             <tr>
@@ -134,7 +134,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>1&ndash;14
+                    <p>1-14
                     </p>
                 </td>
             </tr>
@@ -148,7 +148,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>15&ndash;29
+                    <p>15-29
                     </p>
                 </td>
             </tr>
@@ -162,12 +162,12 @@
                     </p>
                 </td>
                 <td>
-                    <p>30&ndash;39
+                    <p>30-39
                     </p>
                 </td>
             </tr>
             </table>
-            <p>The table below how a different ordering of the rows will produce different output values:
+            <p>הטבלה להלן מראה כיצד סדר שורות שונה יפיק ערכי פלט שונים:
             </p> 
             <table border="1">
             <tr>
@@ -180,7 +180,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10&ndash;29
+                    <p>10-29
                     </p>
                 </td>
             </tr>
@@ -208,22 +208,22 @@
                     </p>
                 </td>
                 <td>
-                    <p>30&ndash;39
+                    <p>30-39
                     </p>
                 </td>
             </tr>
             </table>
-            <p>Both rules are employed to reorder the values. Since each row is processed from top to bottom, these values take precedence when determining the output, even when the same ranges are used.
+            <p>נעשה שימוש בשני הכללים כדי לסדר מחדש את הערכים. מכיוון שכל שורה מעובדת מלמעלה למטה, ערכים אלה מקבלים קדימות בעת קביעת הפלט, גם כאשר נעשה שימוש באותם טווחים.
             </p>
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

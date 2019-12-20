@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Izvēlēties Living Atlas analīzes slāni",customAnalysisLayerTitle:"Izvēlēties analīzes slāni",searchPlaceholderText:"Meklēt Living Atlas analīzes slāņus",searchCustomPlaceholderText:"Meklēt analīzes slāņus",mainActionTitle:"Atlasīt",customActionName:"Izvēlēties un pievienot kartei",customeSectionName:"Living Atlas analīzes slāņi",Categories:"Kategorijas",boundaries:"Robežas",places:"Vietas",boundariesAndPlaces:"Robežas un vietas",hexbins:"Sešstūru laukumi",transportation:"Transports",point:"Punktu slāņi",line:"Līniju slāņi",polygon:"Laukumu slāņi",pointFilterName:"Punkts",lineFilterName:"Polilīnija",polygonFilterName:"Laukums",multiPointFilterName:"Vairāki punkti",geometryFilterName:"Ģeometrija",featureLayerName:"Elementu slānis",tableLayerName:"Tabula",itemTypeFilterName:"Vienības veids",instantFilterName:"Tūlītēji",intervalFilterName:"Intervāls",timeFilterName:"Laiks",edit:"Labot",boundaryLayers:"Esri robežu slāņi",customAnalysisGroupName:"Organizācijas analīzes grupa"});

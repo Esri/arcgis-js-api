@@ -88,6 +88,9 @@
         "FindCentroids": {
           "toolDescription": "120001617"
         },
+        "FindDwellLocations_bd": {
+            "toolDescription": "120001777"
+        },
         "FindExistingLocations": {
             "toolDescription": "120001618",
             "Expression": "120001618"
@@ -193,6 +196,9 @@
         },
         "ForestBasedClassificationAndRegression_bd": {
             "toolDescription": "120001603" 
+        },
+        "GeographicallyWeightedRegression_bd": {
+            "toolDescription": "120001799"
         }
     }
 }

@@ -59,7 +59,7 @@
     </p>
     <p>&Ccedil;ıkış ve hedef noktaları girerseniz, ara&ccedil;, &ouml;l&ccedil;&uuml;mleriyle birlikte &ccedil;ıkış ve hedef &ccedil;iftleri arasındaki rota &ccedil;izgilerini i&ccedil;eren bir katman d&ouml;nd&uuml;r&uuml;r. 
     </p>
-    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan analiz katmanındaki detaylar analiz edilir.  İşaretli değilse, giriş katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile ele alınacaktır.
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan analiz katmanındaki detaylar analiz edilir.  İşaretli değilse, girdi katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile ele alınacaktır.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -70,7 +70,7 @@
             <p>Başlangı&ccedil; konumu veya konumlarını temsil eden nokta katmanını se&ccedil;in.  Ara&ccedil; en &ccedil;ok  5,000 başlangı&ccedil; noktasını ve  5,000 hedefi destekler. </p>
             <p>Yalnızca bir başlangı&ccedil; noktası olan bir katman se&ccedil;erseniz, t&uuml;m hedef noktalarına bağlanılır.
             </p>
-            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> veya <b>analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p>Haritanızdan bir katman se&ccedil;meye ek olarak, a&ccedil;ılır listenin alt kısmında bulunan  <b>Analiz Katmanı Se&ccedil;</b> se&ccedil;eneğini de se&ccedil;ebilirsiniz. Bu se&ccedil;enek, analizinizde kullanmak &uuml;zere &ccedil;eşitli kaynaklardan gelen veri k&uuml;melerine g&ouml;z atabileceğiniz ve se&ccedil;ebileceğiniz bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Bir &ccedil;ıkış noktası ve bir&ccedil;ok hedef varsa, ara&ccedil; &ccedil;ıkış noktasını hedeflerin her birine bağlar.
             </p>
-            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> veya <b>analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p>Haritanızdan bir katman se&ccedil;meye ek olarak, a&ccedil;ılır listenin alt kısmında bulunan  <b>Analiz Katmanı Se&ccedil;</b> se&ccedil;eneğini de se&ccedil;ebilirsiniz. Bu se&ccedil;enek, analizinizde kullanmak &uuml;zere &ccedil;eşitli kaynaklardan gelen veri k&uuml;melerine g&ouml;z atabileceğiniz ve se&ccedil;ebileceğiniz bir galeri a&ccedil;ar. 
             </p>
             <p> Bir&ccedil;ok &ccedil;ıkış ve hedef noktası varsa, &ccedil;ıkış-hedef &ccedil;iftlerini tanımlayan iki alanınız olması gerekir: <b>&Ccedil;ıkış noktalarındaki kimlik alanı</b> ve <b>Hedeflerde eşleşen kimlik alanı</b>. Ara&ccedil;, analiz sırasında varış-başlangı&ccedil; &ccedil;iftlerini birbirine bağlar. &Ouml;rneğin, kimlik alanı değerleri <code>G&uuml;l</code> ve <code>Kemal</code> olan iki &ccedil;ıkış noktası ve aynı kimlik değerine sahip iki hedef d&uuml;ş&uuml;n&uuml;n. <code>G&uuml;l</code> &ccedil;ıkış noktası <code>G&uuml;l</code> hedefine, <code>Kemal</code> ise <code>Kemal</code>'e bağlanır. Başka hi&ccedil;bir bağlantı veya &ouml;l&ccedil;&uuml;m yapılmaz.
             </p>
-            <p>Kimlik değerleri katman i&ccedil;inde tek olmalıdır; &ouml;rneğin hedef katmanında iki tane  <code>G&uuml;l</code> olamaz. &Ccedil;ıkış ve hedef katmanlarındaki değerlerin &ccedil;ift oluşturabilmek i&ccedil;in tam olarak eşleşmesi gerekir; <code>Kemal</code> yanlış yazılmış olan <code>Kemla</code> hedefine bağlanmaz. 
+            <p>Eşit sayıda başlangı&ccedil; ​​noktası ve hedef varsa, kimlik bilgisi değerlerinin her katmanda benzersiz olması gerekir; &ouml;rneğin, hedefler katmanı iki  <code>Rosie</code> değerine sahip olamaz. &Ccedil;ıkış ve hedef katmanlarındaki değerlerin &ccedil;ift oluşturabilmek i&ccedil;in tam olarak eşleşmesi gerekir; <code>Kemal</code> yanlış yazılmış olan <code>Kemla</code> hedefine bağlanmaz. 
+            </p>
+            <p>Ayrıca ara&ccedil;, her bir başlangı&ccedil; noktasını birden fazla hedefe veya her bir hedefe birden fazla başlangı&ccedil; noktasına bağlamayı destekler. Bu gibi durumlarda, başlangı&ccedil; ​​noktası hedef &ccedil;iftini tanımlayan iki alana sahip olmanız gerekir. Bununla birlikte, katmanlardan sadece birinin (başlangı&ccedil; noktası veya hedef katmanı) benzersiz kimlik bilgisi değerlerine sahip olması gerekir.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Hat engel, sokakları kestiği her yerde hareketi engeller. &Ouml;rneğin, birka&ccedil; sokak boyunca trafiği engelleyen bir ge&ccedil;it t&ouml;reni ya da protesto bir &ccedil;izgi bariyeri ile modellenebilir. T&uuml;m hat engeller tarafından kesilen sokak &ouml;zelliği sayısı 500'&uuml; ge&ccedil;tiğinde ara&ccedil; hata verir.
             </p>
             <p>&Ccedil;okgen engel, sokakları kestiği her yerde hareketi engeller. Bu engel tipinin kullanımlarından biri sokak ağının alanlarını kaplayan taşkınları modellemektir ve sokakta hareket imkansız hale gelir. T&uuml;m hat engeller tarafından kesilen sokak &ouml;zelliği sayısı 2000'&uuml; ge&ccedil;tiğinde ara&ccedil; hata verir.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Rota şekli</h2></div>
+        <hr/>
+        <div>
+            <p>Bir seyahat modu kullanırken her bir başlangı&ccedil; noktasını hedefine bağlayan rotanın şeklini se&ccedil;in:
+            </p>
+            <ul>
+                <li> <b>Sokakları takip et</b> - Şekil, temelini oluşturan sokak ağına dayanır. Başlangı&ccedil; noktaları ve hedefler arasında rota oluşturmak istediğinizde bu se&ccedil;enek en iyisidir.
+                </li>
+                <li> <b>D&uuml;z &ccedil;izgi</b> - Şekil, başlangı&ccedil; ​​noktası hedef &ccedil;iftini bağlayan d&uuml;z bir &ccedil;izgidir. Bu se&ccedil;enek, &ouml;r&uuml;mcek diyagramları veya istek &ccedil;izgileri oluşturmak istediğinizde (&ouml;rneğin, hangi m&uuml;şterilerin ziyaret ettiklerini g&ouml;stermek i&ccedil;in) en iyisidir.
+                </li>
+            </ul>
+            
+            <p>Bir başlangı&ccedil; ​​noktası ve bu nokta ile eşleşen hedef arasındaki en iyi rota, hangi rota şeklinin se&ccedil;ildiğinden bağımsız olarak daima seyahat moduna g&ouml;re hesaplanır.
             </p>
         </div>
     </div>

@@ -41,121 +41,121 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Find Nearest</h2><p/>
-        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Find Nearest"></h2>
+        <h2>מציאת הסמוכים ביותר</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="מציאת הסמוכים ביותר"></h2>
         <hr/>
-    <p>This tool finds the nearest features and reports and ranks the distance to the nearby features. To find what's nearest, the tool can  measure using either a straight-line distance or a selected travel mode. There are options to limit the number of nearest features to find or the search range in which to find them. The results from this tool can help you answer the following kinds of questions:
+    <p>כלי זה מוצא את הישויות והדוחות הסמוכים ביותר ומדרג את המרחק לישויות הסמוכות ביותר. כדי למצוא את הפריטים הסמוכים ביותר, הכלי יכול למדוד באמצעות מרחק בקו ישר או אופן הגעה שנבחר. קיימות אפשרויות בחירה להגביל את מספר הישויות הסמוכות ביותר שיש למצוא, או את טווח החיפוש שבו יש למצוא אותן. התוצאות מכלי זה יכולים לעוזר לך לענות על שאלות מהסוגים הבאים:
         <ul>
-            <li>What is the nearest park from here?
+            <li>מה נמצא בפארק הסמוך ביותר לכאן?
             </li>
-            <li>Which hospital can I reach in the shortest drive time? How long would the trip take on a Tuesday at 5:30 p.m. during rush hour?
+            <li>לאיזה בית חולים אני יכול להגיע בזמן הקצר ביותר? כמה זמן תימשך הנסיעה ביום שלישי בשעה 17:30 במהלך שעות העומס?
             </li>
-            <li>What are the road distances between these major cities?
+            <li>מה מרחק הנסיעה בין שתי ערים ראשיות אלה?
             </li>
-            <li>Which of these patients reside within two miles of these chemical plants?
+            <li>מי מקרב מטופלים אלה מתגוררים בטווח של 3 ק&quot;מ ממפעלים כימיים אלה?
             </li>
         </ul>
         
     </p>
-    <p>Find Nearest returns a layer containing the nearest features  and a line layer that links the start locations to their nearest locations. The line layer contains information about the start and nearest locations and the distances between.
+    <p>הכלי 'מציאת הסמוכים ביותר' מחזיר שכבה שמכילה את הישויות הסמוכות ביותר ושכבת קו שמקשרת את מיקומי ההתחלה למיקומים הסמוכים ביותר אליהם. שכבת הקו מכילה מידע אודות מיקומי ההתחלה והמיקומים הסמוכים ביותר וכן המרחקים ביניהם.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered as start and potentially nearest features.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות שנראות בתוך גבולות תיחום המפה הנוכחי יחשבו כמיקום התחלה וישויות סמוכות ביותר פוטנציאליות. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט יילקחו בחשבון, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Specify the starting locations</h2></div>
+        <div><h2>ציין את מיקומי ההתחלה</h2></div>
         <hr/>
         <div>
-            <p>Find Nearest measures from features in the layer you specify here (the start locations) to the locations you specify in the next parameter.  The tool supports up to  5,000 features in each layer. 
+            <p>הכלי 'מציאת הסמוכים ביותר' מודד מישויות בשכבה שציינת כאן (מיקומי ההתחלה) אל המיקומים שתציין בפרמטר הבא.  הכלי תומך בעד  5,000 ישויות בכל שכבה. 
             </p>
         </div>
     </div>
     <div id="NearbyLocationsLayer">
-        <div><h2>Find the nearest locations in</h2></div>
+        <div><h2>מציאת המיקומים הסמוכים ביותר ב</h2></div>
         <hr/>
         <div>
-            <p>Find Nearest measures from each of the features in the first layer to the locations in this layer. The tool supports up to  5,000 locations in each layer. </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>הכלי 'מציאת הסמוכים ביותר' מודד מכל אחת מהישויות בשכבה הראשונה למיקומים בשכבה זו. הכלי תומך בעד  5,000 מיקומים בכל שכבה. </p>
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="MeasurementMethod">
-        <div><h2>Measure</h2></div>
+        <div><h2>מדידה</h2></div>
         <hr/>
         <div>
-            <p>Choose whether to find the nearest locations based on straight-line distance or a selected travel mode. Travel modes are only enabled when your input layer contains points. The available travel modes are determined by the administrator of your organization.  When using one of the travel modes, the measurements are made along roads or walkways, and they honor applicable rules, such as one-way streets, illegal turns, and so on.
+            <p>בחר האם למצוא את המיקומים הסמוכים ביותר במרחק בקו ישר או במצב הגעה שנבחר. ניתן להשתמש באופני הגעה רק כאשר שכבת הקלט מכילה נקודות. דרכי ההגעה הזמינות נקבעות על ידי מנהל המערכת בארגון שלך. בעת שימוש באחד מאופני ההגעה, המדידות נעשות לאורך כבישים או מדרכות והן מכבדות את הכללים הרלוונטיים, כגון רחובות חד-סיטריים, פניות אסורות וכו'.
             </p>
-            <p>When measuring between lines or areas, the distance from or to the nearest point along the line or the boundary of the area is found. 
+            <p>בעת מדידה בין קווים או אזורים, נמצא המרחק מהנקודה הקרובה ביותר או אליה לאורך הקו או הגבול של האזור. 
             </p> 
-            <p>When you choose  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you have options on how to measure the drive time.
+            <p>בעת בחירה באפשרויות  <b>זמן נסיעה</b>, <b>זמן נסיעה בדרכים כפריות</b> או <b>זמן נסיעה במשאית</b> יש לך אפשרות לבחור כיצד למדוד את זמן הנסיעה.
                 <ul>
                     <li>
-                        <p>Uncheck  <b>Use Traffic</b> to find the nearest features based on static travel speeds, such as speed limits, rather than on fluctuating speeds caused by changing traffic conditions.
+                        <p>בטל את סימון האפשרות  <b>השתמש בתנועה</b> כדי למצוא את הישויות הסמוכות ביותר בהתבסס על מהירויות תנועה סטטיות, כגון מגבלות המהירות, במקום על מהירויות משתנות שנגרמות על ידי מצב תנועה משתנה.
                         </p>
-                        <p>This is the option to choose if you want to know what is generally nearest, but not necessarily the nearest given traffic conditions for a specific time and day.
-                        </p>
-                    </li>
-                    <li>
-                        <p>Check  <b>Use Traffic</b> to find the nearest features based on a given start time and changing traffic conditions. By also choosing the <b>Live traffic</b> option, the departure time from the start locations is set to the current time, and current and predicted traffic speeds are referenced from sensors and feeds to determine what features are nearest. The predicted traffic speeds are calculated by referencing live traffic speeds, historical speeds, and current events such as weather. Traffic speeds are predicted 12 hours into the future, so you can move the slider to set the departure time ahead by up to 12 hours.
-                        </p>
-                        <p>Use these live-traffic settings to find out what features can be reached in the shortest amount of time when departing now, departing in one hour from now, and so on.
+                        <p>זו האפשרות שיש לבחור אם ברצונך לדעת מה נמצא באופן כללי במרחק הקרוב ביותר, אבל לא בהכרח לפי מצב התנועה עבור שעה ויום ספציפיים.
                         </p>
                     </li>
                     <li>
-                        <p>By checking  <b>Use Traffic</b> and choosing <b>Traffic based on typical conditions for</b> a day and time, the tool finds the nearest features based on historical speed averages for every five-minute  interval across a routine week. The results include traffic but remove the influence of current traffic conditions and events, which may vary significantly from the norm.
+                        <p>סמן את האפשרות  <b>השתמש בתנועה</b> כדי למצוא את הישויות הסמוכות ביותר בהתבסס על שעת התחלה נתונה ומצב משתנה של התנועה. אם תבחר גם באפשרות <b>תנועה חיה</b>, שעת היציאה ממיקומי ההתחלה תוגדר כשעה הנוכחית, ומהירויות התנועה הנוכחיות והחזויות יילקחו מחיישנים ומהזנות כדי לקבוע אילו ישויות הן הסמוכות ביותר. מהירויות התנועה החזויות מחושבות לפי מהירויות תנועה חיה, מהירויות היסטוריות ואירועים נוכחיים כגון מזג האוויר. מהירויות תנועה נחזות 12 שעות קדימה, כך שבאפשרותך להזיז את המחוון כדי להגדיר את שעת היציאה מראש עד 12 שעות לפני היציאה.
                         </p>
-                        <p>You can use these historical traffic settings to ask, for instance, &quot;What features can be reached the quickest when departing the start features at 11:30 a.m. on a Wednesday?&quot; 
+                        <p>השתמש בהגדרות תנועה-חיה אלה כדי לגלות לאילו ישויות ניתן להגיע בזמן הקצר ביותר עבור: יציאה כעת, יציאה בעוד שעה וכו'.
                         </p>
-                        <p>The time you set refers to the time zone in which your start features are located. So if you set the time to 8:00 a.m. and have two start features, one in New York City and another in Los Angeles, the nearest locations will be found by assuming a departure time of 8:00 a.m. Eastern Time and 8:00 a.m. Pacific Time, respectively.
+                    </li>
+                    <li>
+                        <p>בעת בחירה באפשרויות  <b>השתמש בתנועה</b> ו <b>תנועה על בסיס מצב טיפוסי עבור</b> יום ושעה, הכלי מוצא את הישויות הסמוכות ביותר על בסיס ממוצעי מהירות היסטוריים עבור מרווחים של חמש דקות לאורך שבוע רגיל. התוצאות כוללות את מצב התנועה, אבל מתעלמות מההשפעה של נסיבות ואירועי תנועה נוכחיים שעשויים להיות שונים במידה רבה מהרגיל.
+                        </p>
+                        <p>באפשרותך להשתמש בהגדרות תנועה היסטורית אלה כדי לשאול, לדוגמה, &quot;לאילו ישויות ניתן באופן כללי להגיע במהירות הרבה ביותר כאשר יוצאים לדרך מישויות ההתחלה בשעה 11:30 בבוקר ביום רביעי?&quot;. 
+                        </p>
+                        <p>השעה שאתה מגדיר מתייחסת לאזור הזמן שבו נמצאות ישויות ההתחלה. לפיכך, אם אתה מגדיר את השעה כ-08:00 ויש לך שתי ישויות התחלה, אחת בעיר ניו-יורק והשנייה בלוס-אנג'לס, הכלי ימצא את המיקומים הסמוכים ביותר מתוך הנחת שעת יציאה של 08:00 לפי שעון החוף המזרחי של ארה&quot;ב ו-08:00 לפי שעון החוף המערבי של ארה&quot;ב, בהתאמה.
                         </p>
                     </li>
                 </ul>
-                Note that as a vehicle drives outward from a point, time elapses and traffic conditions change. This tool accounts for these variations when you check <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area. 
+                שים לב שבעוד רכב מתרחק מנקודה, זמן חולף ומצב התנועה משתנה. הכלי לוקח בחשבון השתנויות אלה כאשר האפשרות <b>השתמש בתנועה</b> מסומנת; עם זאת, לא כל האזורים תומכים בתנועה. לחץ על הקישור <b>ראה זמינות</b> בכלי כדי לברר אם אפשרות זו מוצעת באזור הבדיקה שלך. 
             </p>
-            <p> <b>Trucking Time</b> can use dynamic travel speeds based on traffic but only up to the legal truck speed limit. For example, if the dynamic speed for a street based on live traffic is 65 miles per hour but the truck speed limit for that street is 55 miles per hour, the calculation will use 55 miles per hour for that street.
+            <p>האפשרות  <b>זמן נסיעה במשאית</b> יכולה להשתמש במהירויות נסיעה דינמיות על בסיס תנועה, אבל רק עד למהירות הנסיעה החוקית למשאיות. לדוגמה, אם המהירות הדינמית עבור רחוב על בסיס תנועה חיה היא 100 קמ&quot;ש, אבל המהירות המרבית המותרת למשאיות ברחוב זה היא 90 קמ&quot;ש, החישוב ישתמש בערך 90 קמ&quot;ש עבור רחוב זה.
             </p>
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Select barrier layers</h2></div>
+        <div><h2>בחר שכבות מחסום</h2></div>
         <hr/>
         <div>
-            <p> One or more features that act as temporary restrictions (barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            <p> ישות אחת או יותר אשר משמשות כמגבלות זמניות (מחסומים) בעת נסיעה ברחובות שמתחת. ניתן לציין מחסומים באמצעות ישויות נקודה, קו או פוליגון.
             </p>
-            <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
+            <p>מחסום נקודה עשוי לייצג עץ שקרס, תאונת דרכים, קו חשמל שנפל או כל דבר שחוסם לחלוטין את התנועה במיקום מסוים לאורך הרחוב. התנועה ברחוב מותרת, אבל לא בקטע החסום. ניתן לציין עד 250 ישויות שיתפקדו כמחסומי נקודה.
             </p>
-            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
+            <p>מחסום קו אוסר על הנסיעה בכל מקום שבו המחסום מצטלב עם הרחובות. לדוגמה, מחסום קו עשוי לייצג תהלוכה או הפגנה שחוסמות את התנועה במספר מקטעי רחובות. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הקו עולה על 500, הכלי מציג שגיאה.
             </p>
-            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
+            <p>מחסום פוליגון אוסר על הנסיעה בכל מקום שבו הפוליגון מצטלב עם הרחובות. שימוש אחד בסוג מחסום זה הוא לייצוג הצפות שמכסות אזורים של רשת רחובות ולא מאפשרים נסיעה בכבישים באותם אזורים. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הפוליגון עולה על 2000, הכלי מציג שגיאה.
             </p>
         </div>
     </div>
     <div id="Cutoffs">
-        <div><h2>For each location in the input layer</h2></div>
+        <div><h2>עבור כל מיקום בשכבת הקלט</h2></div>
         <hr/>
         <div>
-            <p>You have two options for limiting the search for nearest locations. One option is limiting the maximum number of nearest locations to find per start location. You can find the one nearest park, the two nearest, and so on. The other option is setting a maximum search distance or drive time.
+            <p>לרשותך שתי אפשרויות להגבלת החיפוש אחר המיקומים הסמוכים ביותר. אפשרות אחת היא להגביל את המספר המקסימלי של המיקומים הסמוכים ביותר שיש למצוא לכל מיקום התחלה. באפשרותך למצוא את הפארק האחד הקרוב ביותר, שני הפארקים הקרובים ביותר וכו'. האפשרות השנייה היא להגדיר מרחק חיפוש מקסימלי או זמן נסיעה מקסימלי.
             </p>
-            <p>By unchecking  the options, the maximum number of nearest locations to find is 100 (the tool's limit), and the maximum search range is unlimited.
+            <p>אם תבטל את הסימון של אפשרויות אלה, המספר המקסימלי של מיקומים סמוכים ביותר למציאה יהיה 100 (מגבלת הכלי), וטווח החיפוש המקסימלי הוא בלתי מוגבל.
             </p>
-            <p>Processing time depends on the number of start locations, the number of nearby locations, and the maximum search range.   It takes more time to process when there are more locations or larger search ranges.
+            <p>זמן העיבוד תלוי במספר מיקומי ההתחלה, במספר המיקומים הסמוכים ביותר ובטווח החיפוש המקסימלי.   זמן העיבוד ארוך יותר כאשר יש יותר מיקומים או טווחי חיפוש גדולים יותר.
             </p>
-            <p>Note that when a limit is set on the search range, it's possible that the tool won't find any nearest locations within that range, or that fewer locations are found than the maximum number of nearest locations  you specify.
+            <p>שים לב שכאשר מגבלה מוגדרת על טווח החיפוש, ייתכן שהכלי לא ימצא אף מיקום סמוכים ביותר בתוך אותו טווח, או שימצאו פחות מיקומים מהמספר המקסימלי של מיקומים סמוכים ביותר שציינת.
             </p>
         </div>
     </div>
     <div id="OutputNearestLocationsLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the feature layer that will be created in  <b>My Content</b> and added to the map. If the feature layer already exists, you will be asked to provide another name. The feature layer will contain two layers: one representing the nearest locations and another representing the lines connecting the input locations to the nearest locations.
+            <p>זהו השם של שכבת הישות שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. אם שכבת הישות כבר קיימת, תתבקש לספק שם אחר. שכבת הישויות תכיל שתי שכבות: אחת מייצגת את המיקומים הסמוכים ביותר והשנייה מייצגת את הקווים שמחברים את מיקומי הקלט למיקומים הסמוכים ביותר.
             </p>
-            <p>If you select  <b>Include route layers</b>, each route from the result is also saved as a route layer. A route layer includes all the information for a particular route, such as the stops assigned to the route as well as the travel directions. Creating  route layers is useful if you want to share the individual routes with other members in your organization or to further modify the routes using the <b>Directions</b> button in the map viewer. The route layers use the name provided for the feature layer  as a prefix and the route name generated as part of the analysis, which is added to create a unique name for each route layer.
+            <p>אם בחרת באפשרות  <b>כלול שכבות מסלול</b>, כל מסלול מהתוצאה נשמר גם כשכבת מסלול. שכבת מסלול כוללת את כל המידע עבור מסלול ספציפי, כגון התחנות שהוקצו למסלול וכן הוראות ההגעה. יצירת שכבות מסלול שימושית אם ברצונך לשתף את המסלולים המסוימים עם חברים אחרים בארגונך או להמשיך לשנות את המסלולים תוך שימוש בלחצן <b>הוראות</b> במציג המפה. שכבות המסלול משתמשות בשם שסופק עבור שכבת הישויות כתחילית ובשם המסלול שהופק כחלק מהניתוח, שנוסף ליצירת שם ייחודי עבור כל שכבת מסלול.
             </p>
-            <p>The maximum number of route layers that can be created is  1,000. If the result contains more than  1,000 routes and  <b>Include route layers</b> is checked, the tool will only create the output feature service.
+            <p>המספר המקסימלי של שכבות מסלול שניתן ליצור הוא  1,000. אם התוצאה מכילה יותר מ-1,000 מסלולים והאפשרות  <b>כלול שכבות מסלול</b> מסומנת, הכלי יצור רק את שירות ישות הפלט.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can specify the name of a folder in <b>My Content</b> where the feature layer and the route layers, if created, will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה שכבת הישויות ושכבות המסלול, אם נוצרו, יישמרו.
             </p>
         </div>
     </div>

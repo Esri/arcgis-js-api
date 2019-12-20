@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../../ChartBuilder","../../../../../charts/utils/ChartTypes"],function(e,t){var a={};return a.dwellingMortgage={states:"n,a,i",defaultState:"a",stateSettings:{n:{isCurrency:!0},a:{yAxisTitle:"Average dollars spent per household",isCurrency:!0}},fieldInfo:{isChart:!0,chartJson:e.createChart({type:t.COLUMN,title:"Owner Dwellings: Mortgage Payment",points:[{label:"Interest",fullName:"HousingHousehold.X3005_X"},{label:"Principal",fullName:"HousingHousehold.X3006_X"}]})}},a});

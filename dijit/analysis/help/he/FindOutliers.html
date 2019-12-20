@@ -41,119 +41,117 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Find Outliers</h2><p/>
-        <h2><img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" alt="Find Outliers"></h2>
+        <h2>חפש חריגים</h2><p/>
+        <h2><img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" alt="חפש חריגים"></h2>
         <hr/>
-    <p>The Find Outliers tool will determine if there are  any statistically significant outliers in the spatial pattern of your data. 
+    <p>הכלי 'חפש חריגים' יקבע אם קיימים חריגים בעלי מובהקות סטטיסטית בדפוס המרחבי של הנתונים. 
         <ul>
-            <li>Are there anomalous areas in the pattern of your data (crime incidents, trees, traffic accidents)?  How can you be sure?
+            <li>האם יש אזורים אנומליים בדפוס הנתונים שלך (מקרי פשע, עצים, תאונות דרכים)?  איך תוכל לדעת בוודאות?
             </li>
-            <li>Have you truly discovered a statistically significant outlier (for spending, infant mortality, consistently high test scores) or would your map tell a different story if you changed the way it was symbolized?
+            <li>האם באמת מצאת חריג מובהק סטטיסטית (להוצאות, תמותת תינוקות, תוצאות בדיקות גבוהות בעקביות) או שהמפה שלך תספר סיפור אחר אם תשנה את הדרך שבה היא מסומלת?
             </li>
         </ul>
-        The Find Outliers tool will help you answer these questions with confidence.
+        הכלי 'חפש חריגים' יעזור לך לענות תשובות ודאיות לשאלות אלה.
     </p>
-    <p>Every time we look at a map, it is natural for our eyes and our brains to start to try to find patterns even when none exist.  Consequently, it can be difficult to know if the patterns in your data are the result of real spatial processes at work or just the result of random chance.  This is why researchers and analysts use statistical methods like Find Outliers (Anselin Local Moran's I) to quantify spatial patterns.  When you do find statistically significant outliers or clustering in your data, you have valuable information.  Knowing where and when outliers have occurred can provide important clues about the processes promoting the patterns you're seeing.  The next step would be to investigate why things are significantly different in those outlier areas.  Knowing that residential burglaries, for example, are significantly higher in a particular neighborhood despite  being surrounded by neighborhoods with low burglaries is vital information if you need to design effective prevention strategies, allocate limited police resources, initiate neighborhood watch programs, authorize in-depth criminal investigations, or identify potential suspects.   
+    <p>בכל פעם שאנחנו מתבוננים במפה, טבעי שהעיניים שלנו והמוח שלנו יתחילו לנסות למצוא דפוסים גם כאשר הם אינם קיימים. כפועל יוצא מכך, ייתכן שיהיה קשה לדעת אם הדפוסים בנתונים הם תוצאה של פעולת תהליכים מרחביים אמיתיים או תוצאה של יד המקרה בצורה אקראית. מסיבה זאת, חוקרים ואנליסטים משתמשים בשיטות סטטיסטיות דומות ל'חפש חריגים'&rlm; (Anselin Local Moran's I) כדי לכמת דפוסים מרחביים.  כאשר אתה מוצא חריגים מובהקים סטטיסטית בנתונים שלך, זהו מידע בעל ערך.  הידיעה היכן ומתי התרחשו חריגים יכולה לספק תובנות חשובות על התהליכים שיוצרים דפוסים שאתה רואה.  השלב הבא יהיה לחקור מדוע הדברים שונים באופן מובהק באזורים חריגים אלה.  לדוגמה, הידיעה שפריצות לבתי מגורים הן בעקביות מרובות יותר בשכונות מסוימות, למרות ששכונות אלה מוקפות בשכונות עם שיעורי פשיעה נמוכים, מהווה מידע חשוב אם ברצונך לתכנן אסטרטגיות מניעה יעילות, להקצות משאבי שיטור מוגבלים, ליזום תוכניות משמר אזרחי של תושבים, לאשר חקירות פליליות מעמיקות או לזהות חשודים פוטנציאליים.   
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Choose layer for which outliers will be calculated</h2></div>
+        <div><h2>בחר את השכבה שעבורה יחושבו חריגים</h2></div>
         <hr/>
         <div>
-            <p>The point or area layer from which outliers will be found.
-
+            <p>שכבת הנקודות או הקווים שבה יאותרו חריגים. 
             </p>
         </div>
     </div>
     <div id="analysisField">
-        <div><h2>Find outliers of</h2></div>
+        <div><h2>אתר חריגים של</h2></div>
         <hr/>
         <div>
-            <p>This analysis answers the question: Where are the spatial outliers in my data?  
+            <p>ניתוח זה עונה על השאלה: היכן נמצאים החריגים המרחביים בנתונים שלי?  
             </p>
-            <p>If your data is points and you  choose  <b>Point Counts</b>, this tool will evaluate the spatial arrangement of the point features to answer the question: Where are points unexpectedly clustered or spread out?
+            <p>אם הנתונים שלך הם נקודות ובחרת באפשרות  <b>ספירות נקודות</b>, כלי זה יעריך את הסידור המרחבי של ישויות הנקודות כדי לענות על השאלה: היכן נקודות מקובצות באשכולות או מבוזרות באופן בלי צפוי?
             </p>
-            <p>If you choose a field, this tool will evaluate the spatial arrangement of the values associated with each feature to answer the questions: Where are  there low values surrounded by high values?  Where are there high values surrounded by low values?
+            <p>אם בחרת שדה, כלי זה יעריך את הסידור המרחבי של הערכים שקשורים לכל ישות כדי לענות על השאלות: היכן קיימים ערכים נמוכים מוקפים בערכים גבוהים? היכן קיימים ערכים גבוהים מוקפים בערכים נמוכים?
             </p>
         </div>
     </div>
     <div id="aggregationPolygonLayer">
-        <div><h2>Count points within</h2></div>
+        <div><h2>ספירת נקודות בתוך</h2></div>
         <hr/>
         <div>
-            <p>The default is to count points within a fishnet grid created by the tool based on your point data. Alternatively, you can choose to count points within a hexagon grid or to provide an area layer (typically, these would reflect administrative reporting districts such as census tracts, municipal boundaries, or counties) to answer the question: Given the number of points counted within each area feature, are there locations with statistically significant high or low point counts compared to their neighbors?   
+            <p>ברירת המחדל היא לספור נקודות בתוך רשת שתי וערב, שהכלי יצר על בסיס נתוני הנקודה שלך. לחלופין, באפשרותך לבחור לספור נקודות בתוך רשת משושה או לספק שכבת אזור (בדרך כלל אלה ישקפו מחוזות דיווח מנהליים כגון יחידות מפקד אוכלוסין, גבולות מוניציפליים או ארצות) כדי לענות על השאלה: בהינתן מספר הנקודות שנספרו בתוך כל ישות אזור, האם ישנם מיקומים עם ספירות נקודות גבוהות או נמוכות במובהקות סטטיסטית בהשוואה למיקומים סמוכים?   
             </p>
         </div>
     </div>
     <div id="boundingPolygonLayer">
-        <div><h2>Define where points are possible</h2></div>
+        <div><h2>הגדר היכן עשויות להופיע נקודות</h2></div>
         <hr/>
         <div>
-            <p>Either draw or provide a layer defining where incidents are possible to answer the question: Within the areas, are there any locations with unexpectedly high or low point concentrations?   
+            <p>שרטט או ספק שכבה שמגדירה היכן יש סבירות להתרחשות אירועים, כדי לענות על השאלה: בתוך האזורים, הם קיימים מיקומים כלשהם עם ריכוזים גבוהים או נמוכים באופן לא צפוי?   
             </p>
-            <p>The area features you draw or the features in the area layer you specify should define where points could possibly occur.  To draw these areas, click the  <b>Draw</b> button and click a location on the map to create an area shape.  To draw additional areas, click the draw button again and click a location on the map to continue.
+            <p>ישויות האזור שאתה משרטט או הישויות בשכבת האזור שאתה מציין צריכות להגדיר היכן נקודות יכולות להתקיים. כדי לשרטט אזורים אלה, לחץ על הלחצן  <b>שרטט</b> ולחץ על מיקום במפה כדי ליצור צורת אזור. כדי לשרטט אזורים נוספים, לחץ שוב על הלחצן 'שרטט' ולחץ על מיקום במפה כדי להמשיך.
             </p>
         </div>
     </div>
     <div id="dividedByField">
-        <div><h2>Divide by</h2></div>
+        <div><h2>חלק ב-</h2></div>
         <hr/>
         <div>
-            <p>Sometimes you may want to analyze patterns that take into account underlying distributions. For example,   if your points represent crimes, dividing by total population would result in an analysis of crimes per capita rather than raw crime counts.  Choosing an attribute to divide by is often referred to as normalization.
+            <p>לפעמים ייתכן שתרצה לנתח דפוסים שלוקחים בחשבון התפלגויות בסיסיות. לדוגמה, אם הנקודות שלך מייצגות מעשי פשע, חלוקה בסך כל האוכלוסייה תספק ניתוח של אחוזי פשיעה לנפש במקום מספרים גולמיים של כמות מעשי פשע. בחירת מאפיין לחילוק נקראת לעתים קרובות נורמליזציה.
             </p>
-            <p> Choosing <i>Esri Population</i> will enrich each area feature with population values, which will then be used as  the attribute to divide by.  This option will use credits.
+            <p> בחירה באפשרות <i>Esri Population</i> תעשיר כל ישות אזור בערכי אוכלוסייה, שלאחר מכן ישמשו כמאפיין לחלק בו.  אפשרות זו תעשה שימוש בנקודות קרדיט.
             </p>
         </div>
     </div>
     <div id="permutations">
-        <div><h2>Optimize for</h2></div>
+        <div><h2>בצע אופטימיזציה עבור</h2></div>
         <hr/>
         <div>
-            <p>You may choose to optimize for speed or precision.  
+            <p>באפשרותך לבחור לבצע אופטימיזציה למהירות או לדיוק.  
             </p>
-            <p>This tool uses permutations to determine how different from random the spatial pattern of your data is.  Increasing the number of permutations increases precision but also increases processing time.  
+            <p>כלי זה משתמש בפרמוטציות כדי לקבוע עד כמה הדפוס המרחבי של הנתונים שלך שונה מאקראיות.  הגדלת מספר הפרמוטציות מגבירה את הדיוק, אבל גם את זמן העיבוד.  
             </p>
         </div>
     </div>
     <div id="overrideOptions">
-        <div><h2>Override Options</h2></div>
+        <div><h2>אפשרויות דריסה (Override)</h2></div>
         <hr/>
         <div>
-            <p>The tool will find optimal settings for  <b>Cell Size</b> and <b>Distance Band</b> defaults based on the characteristics of your data. However, if you have a particular <b>Cell Size</b> or <b>Distance Band</b> that makes sense for your analysis, the <b>Override Options</b> can be used  to set those values.
+            <p>הכלי ימצא הגדרות אופטימליות עבור ברירות מחדל של  <b>גודל תא</b> ו <b>טווח מרחק</b> בהתבסס על התכונות של הנתונים. עם זאת, אם יש לך <b>גודל תא</b> או <b>טווח מרחק</b> ספציפיים שהגיוניים עבור הניתוח שלך, ניתן להשתמש ב <b>אפשרויות דריסה</b> כדי להגדיר ערכים אלה.
             </p>
-            <p>The  <b>Override Options</b> are also useful when running analysis on different datasets,  allowing  you to keep <b>Distance Band</b> and <b>Cell Size</b> consistent across multiple datasets.  You can then compare the results (for example, obesity and diabetes rates or even crime rates for two different years).
+            <p> <b>אפשרויות הדריסה</b> שימושיות גם בעת הרצת ניתוח על מסדי נתונים אחרים, כך שבאפשרותך לשמור על <b>טווח מרחק</b> ו <b>גודל תא</b> עקביים בין מסדי נתונים מרובים.  כך תוכל להשוות כהלכה בין התוצאות (לדוגמה, של השמנת יתר וסוכרת או אפילו שיעורי פשיעה בשתי שנים שונות).
             </p>
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Cell Size</h2></div>
+        <div><h2>גודל תא</h2></div>
         <hr/>
         <div>
-            <p>The size of the grid cells used to count points within.  
+            <p>גודל תאי הרשת המשמשים לספירת נקודות בתוך הרשת.  
             </p>
-            <p>When using a hexagon grid to count points within, this distance is used as the height of the hexagons.
+            <p>בעת שימוש ברשת משושה לספרית נקודות בתוך הרשת, מרחק זה משמש כגובה המשושים.
             </p>
         </div>
     </div>
     <div id="distanceBand">
-        <div><h2>Distance Band</h2></div>
+        <div><h2>פס מרחק</h2></div>
         <hr/>
         <div>
-            <p>Each feature is analyzed within the context of those neighboring features located within the distance you specify.  The tool will calculate a default distance for you or you may use this option to set a particular distance that makes sense for your analysis. 
+            <p>כל מאפיין מנותח בהקשר של אותם מאפייני סמוכים שנמצאים בתוך המרחק שציינת. הכלי יחשב עבורך מרחק ברירת מחדל, או שתוכל להשתמש באפשרות זו כדי להגדיר מרחק ספציפי שהגיוני עבור הניתוח שלך. 
             </p>
-            <p>For instance, if you are studying commuting patterns and you know that the average journey to work is 15 miles, for example, you may want to use a 15-mile distance band.
+            <p>לדוגמה, אם אתה חוקר דפוסי נסיעות בין הבית לעבודה ואתה יודע שמרחק הנסיעה הממוצע לעבודה הוא 24 ק&quot;מ, ייתכן שתרצה להשתמש בטווח מרחק של 24 ק&quot;מ.
             </p>
         </div>
     </div>
     <div id="outlierResultLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>Provide a name for the layer that will be created in  <b>My Content</b>  and added to the map.  
-This result layer will show you statistically significant outliers of high and low values or point counts. If the result layer name already exists, you will be asked to rename it.
+            <p>ציין שם עבור השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שכבת התוצאה תציג בפניך חריגים מובהקים סטטיסטית של ערכים או ספירות נקודות גבוהות ונמוכות. אם שם שכבת התוצאה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

@@ -41,134 +41,156 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Create Drive-Time Areas</h2><p/>
-        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Create Drive-Time Areas"></h2>
+        <h2>צור אזורי זמן נסיעה</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="צור אזורי זמן נסיעה"></h2>
         <hr/>
-    <p>Create Drive-Time Areas creates areas that can be reached within a specified drive time, drive distance, walking distance, and so on. It measures out from one or many points (up to 1,000), along roads or walkways, to create a layer  that can help you answer questions such as:
+    <p>הכלי 'צור אזורי זמן נסיעה' יוצר אזורים שניתן להגיע אליהם בתוך זמן נסיעה נתון, מרחק נסיעה נתון, מרחק הליכה נתון וכו'. כלי זה מודד החל מנקודה אחת או ממספר נקודות (עד 1,000) לאורך כבישים או מדרכות, כדי ליצור שכבה שיכולה לעזור לענות על שאלות כגון:
         <ul>
-            <li>Where can I go from here within a 30-minute drive?
+            <li>לאן אני יכול לנסוע מכאן בנסיעה של 30 דקות?
             </li>
-            <li>Where can I go from here within a 30-minute drive at 5:30 p.m. during rush hour?
+            <li>לאן אני יכול לנסוע מכאן בנסיעה של 30 דקות בשעה 17:30 בשעות עומס התנועה?
             </li>
-            <li>What is within a two-kilometer walk from my hotel?
+            <li>מה נמצא במרחק שני קילומטר הליכה מהמלון שלי?
             </li>
-            <li>What areas of town can the fire department reach within five minutes? 
+            <li>לאילו חלקים מהעיר יכולים מכבי האש להגיע בתוך חמש דקות? 
             </li>
-            <li>How would fire-response coverage improve by building a new fire station here?
+            <li>כיצד כיסוי התגובה של מכבי האש ישתפר על ידי בניית תחנת כיבוי אש חדשה במיקום זה?
             </li>
-            <li>What market areas does my business cover?
+            <li>אילו אזורים בשוק העסק שלי מכסה?
             </li>
         </ul>
         
     </p>
-    <p>You may be able to answer your questions solely through visualizing the output areas. Alternatively, you can perform further spatial analysis using the output areas. For instance, running Aggregate Points using drive-time areas with demographic data can help determine which potential store location would likely provide the best customer base for your type of business. 
+    <p>ייתכן שתוכל לענות אל השאלות שלך אפילו רק ממבט על אזורי הפלט. לחלופין, באפשרותך לבצע ניתוח מרחבי נוסף עם אזורי הפלט. לדוגמה, הפעלת ניתוח 'קיבוץ נקודות' תוך שימוש באזורי זמן-נסיעה עם נתונים דמוגרפיים, יכולה לעזור לגלות איזה מיקום חנות פוטנציאלי יספק את בסיס הלקוחות הטוב ביותר עבור סוג העסק שלך. 
     </p>
     <p>
         <table>
         <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
         <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
         <td valign="baseline">
-            <p>To create areas by measuring straight-line distance rather than by measuring along roads, use the Create Buffers tool instead.
+            <p>כדי ליצור אזורים על ידי מדידת מרחק בקו ישר במקום מדידה לאורך כבישים, השתמש במקום זאת בכלי 'יצירת חיץ'.
             </p>
         </td></tr>
         <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
         </table>
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be used to create drive-time- or drive-distance-based areas. If unchecked, all features in the input layer will be used, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות שנראות בתוך גבולות תיחום המפה הנוכחי ישמשו ליצירת אזורים המבוססים על זמן-נסיעה או על מרחק-נסיעה. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ישמשו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose point layer to calculate drive-time areas around</h2></div>
+        <div><h2>בחר שכבת נקודות שסביבה יחושבו אזורי זמן נסיעה</h2></div>
         <hr/>
         <div>
-            <p>The point features around which areas will be calculated. You can choose how areas are calculated based on travel mode (driving, trucking, or walking) and measure (time or distance).
+            <p>ישויות הנקודה שסביבן יחושבו אזורים. באפשרותך לבחור איך אזורים יחושבו על בסיס אופן הגעה (נסיעה, נסיעה במשאית או הליכה) ומדידה (זמן או מרחק).
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
-            <p>The tool supports up to 1,000 features in the input layer.
-
+            <p>הכלי תומך בעד 1,000 ישויות בשכבת הקלט.
 
             </p>
         </div>
     </div>
     <div id="MeasurementMethod">
-        <div><h2>Measure</h2></div>
+        <div><h2>מדידה</h2></div>
         <hr/>
         <div>
-            <p>Choose your travel mode (driving, trucking, or walking) and measure (time or distance).  The available travel modes are determined by the administrator of your organization.   After choosing your mode and measure, enter a duration or distance of up to  5 hours (300 minutes) or  300 miles (482.80 kilometers). 
+            <p>בחר את אופן ההגעה (נסיעה, נסיעה במשאית או הליכה) ומדידה (זמן או מרחק).  דרכי ההגעה הזמינות נקבעות על ידי מנהל המערכת בארגון שלך. לאחר בחירת אופן ההגעה והמדידה, הזן משך או מרחק של עד  5 שעות (300 דקות) או  300 מייל (482.80 קילומטר). 
             </p>
-            <p>When you choose  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you have options on how to measure the drive time.
+            <p>כיוון הנסיעה ( <b>מתרחק מהמתקן</b> או <b>לכיוון המתקן</b>) יכול להשפיע על אופן הפקת האזור. 'צור אזורי זמן נסיעה' מציית לרחובות חד-סיטריים, נמנע מפניות לא חוקיות ומקיים כללים אחרים על בסיס כיוון הנסיעה. עליך לבחור את כיוון הנסיעה על בסיס סוג מיקומי הקלט וההקשר של הניתוח. לדוגמה, אזור זמן הנסיעה עבור חנות למשלוחי פיצה צריך להיווצר בכיוון שמתרחק מהמתקן, בעוד שאזור זמן הנסיעה עבור בית חולים צריך להיווצר לכיוון המתקן.
+            </p>
+            <p>בעת בחירה באפשרויות  <b>זמן נסיעה</b>, <b>זמן נסיעה בדרכים כפריות</b> או <b>זמן נסיעה במשאית</b> יש לך אפשרות לבחור כיצד למדוד את זמן הנסיעה.
                 <ul>
                     <li>
-                        <p>Uncheck  <b>Use Traffic</b> to create drive-time areas based on fixed speeds. This is the option to choose if you want a general drive-time area, not one that is calculated using changing traffic conditions for a specific departure time.
+                        <p>בטל את הסימון של  <b>השתמש בתנועה</b> כדי ליצור זמן נסיעה בהתבסס על מהירויות קבועות. בחר באפשרות זו אם ברצונך לקבל אזור זמן נסיעה כללי, ולא כזה שמחושב על סמך מצב תנועה משתנה עבור שעת יציאה ספציפית.
                         </p>
                     </li>
                     <li>
-                        <p>Check  <b>Use Traffic</b> to create drive-time areas based on a given start time and changing traffic conditions. By also choosing the <b>Live traffic</b> option, the departure time from the input points is set to the current time, and current and predicted traffic speeds are referenced from sensors and feeds to create the drive-time areas. The predicted traffic speeds are calculated by referencing live traffic speeds, historical speeds, and current events such as weather. Traffic speeds are predicted 12 hours into the future, so you can move the slider to set the departure time ahead by up to 12 hours.
+                        <p>סמן את האפשרות  <b>השתמש בתנועה</b> כדי ליצור אזורי זמן נסיה בהתבסס על שעת התחלה נתונה ולפי מצב משתנה של התנועה. אם תבחר גם באפשרות <b>תנועה חיה</b>, שעת היציאה מנקודות הקלט תוגדר כשעה הנוכחית, ומהירויות התנועה הנוכחיות והחזויות יילקחו מחיישנים ומהזנות כדי ליצור את אזורי זמן הנסיעה. מהירויות התנועה החזויות מחושבות לפי מהירויות תנועה חיה, מהירויות היסטוריות ואירועים נוכחיים כגון מזג האוויר. מהירויות תנועה נחזות 12 שעות קדימה, כך שבאפשרותך להזיז את המחוון כדי להגדיר את שעת היציאה מראש עד 12 שעות לפני היציאה.
                         </p>
-                        <p>Use these live-traffic settings to find out what areas can be reached by departing now, departing in one hour from now, and so on.
+                        <p>השתמש בהגדרות תנועה-חיה אלה כדי לגלות לאילו אזורים ניתן להגיע עבור: יציאה כעת, יציאה בעוד שעה וכו'.
                         </p>
                     </li>
                     <li>
-                        <p>By checking  <b>Use Traffic</b> and choosing <b>Traffic based on typical conditions for</b> a day and time, the tool creates drive-time areas based on historical speed averages for every five-minute  interval across a routine week. The results include traffic but remove the influence of current traffic conditions and events, which may vary significantly from the norm.
+                        <p>בעת בחירה באפשרויות  <b>השתמש בתנועה</b> ו <b>תנועה על בסיס מצב טיפוסי עבור</b> יום ושעה, הכלי יוצר אזורי זמן נסיעה על בסיס ממוצעי מהירות היסטוריים עבור מרווחים של חמש דקות לאורך שבוע רגיל. התוצאות כוללות את מצב התנועה, אבל מתעלמות מההשפעה של נסיבות ואירועי תנועה נוכחיים שעשויים להיות שונים במידה רבה מהרגיל.
                         </p>
-                        <p>You can use these historical traffic settings to ask, for instance, &quot;What areas can I generally reach when departing at 11:30 a.m. on a Wednesday?&quot; 
+                        <p>באפשרותך להשתמש בהגדרות תנועה היסטורית אלה כדי לשאול, לדוגמה, &quot;לאילו אזורים ניתן באופן כללי להגיע כאשר יוצאים לדרך בשעה 11:30 בבוקר ביום רביעי?&quot;. 
                         </p>
-                        <p>The time you set refers to the time zone in which your input points are located. So if you set the time to 8:00 a.m. and have two points, one in New York City and another in Los Angeles, the drive-time areas will be generated for 8:00 a.m. Eastern Time and 8:00 a.m. Pacific Time, respectively.
+                        <p>השעה שאתה מגדיר מתייחסת לאזור הזמן שבו נמצאות נקודות הקלט. לפיכך, אם אתה מגדיר את השעה כ-08:00 ויש לך שתי נקודות, אחת בעיר ניו-יורק והשנייה בלוס-אנג'לס, אזורי זמן הנסיעה יופקו עבור שעת יציאה של 08:00 לפי שעון החוף המזרחי של ארה&quot;ב ו-08:00 לפי שעון החוף המערבי של ארה&quot;ב, בהתאמה.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Note that as a vehicle drives outward from a point, time elapses and traffic conditions change. The Drive-Time Areas tool accounts for these variations when you choose  <b>Driving Time</b> and check <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area.
+            <p>שים לב שבעוד רכב מתרחק מנקודה, זמן חולף ומצב התנועה משתנה. הכלי 'אזור זמן נסיעה' לוקח בחשבון השתנויות אלה אם בחרת באפשרות  <b>זמן נסיעה</b> וסימנת את האפשרות <b>השתמש בתנועה</b>; עם זאת, לא כל האזורים תומכים בתנועה. לחץ על הקישור <b>ראה זמינות</b> בכלי כדי לברר אם אפשרות זו מוצעת באזור הבדיקה שלך.
             </p>
-            <p> <b>Trucking Time</b> can use dynamic travel speeds based on traffic but only up to the legal truck speed limit. For example, if the dynamic speed for a street based on live traffic is 65 miles per hour but the truck speed limit for that street is 55 miles per hour, the calculation will use 55 miles per hour for that street.
+            <p>האפשרות  <b>זמן נסיעה במשאית</b> יכולה להשתמש במהירויות נסיעה דינמיות על בסיס תנועה, אבל רק עד למהירות הנסיעה החוקית למשאיות. לדוגמה, אם המהירות הדינמית עבור רחוב על בסיס תנועה חיה היא 100 קמ&quot;ש, אבל המהירות המרבית המותרת למשאיות ברחוב זה היא 90 קמ&quot;ש, החישוב ישתמש בערך 90 קמ&quot;ש עבור רחוב זה.
             </p>
-            <p> <b>Walking Time</b> and <b>Walking Distance</b> use a fixed speed of 5 kilometers per hour (3.1 miles per hour) and follow pedestrian walkways as well as designated streets (while ignoring rules that affect automobiles, such as one-way streets). </p>
-            <p> <b>Trucking Distance</b>  uses fixed speeds and follow rules that are applicable to heavy trucks whereas <b>Driving Distance</b> and <b>Rural Driving Distance</b> use fixed speeds and follow rules that are applicable for automobiles such as cars.
+            <p> <b>זמן הליכה</b> ו <b>מרחק הליכה</b> משתמשים במהירות קבועה של 5 קילומטר לשעה (3.1 מייל לשעה) ונמדדים לאורך מדרכות הולכים ורחובות מיועדים (תוך התעלמות מכללים שמשפיעים על רכבים, כגון רחובות חד-סיטריים). </p>
+            <p> <b>מרחק נסיעה במשאית</b>  משתמש במהירויות קבועות ומותאם לכללים שחלים על משאיות כבדות, בעוד <b>מרחק נסיעה</b> ו <b>מרחק נסיעה בדרכים כפריות</b> משתמש במהירויות קבועות ומיישם את הכללים שחלים על רכבים, כגון מכוניות.
             </p> 
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Select barrier layers</h2></div>
+        <div><h2>בחר שכבות מחסום</h2></div>
         <hr/>
         <div>
-            <p> One or more features that act as temporary restrictions (barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            <p> ישות אחת או יותר אשר משמשות כמגבלות זמניות (מחסומים) בעת נסיעה ברחובות שמתחת. ניתן לציין מחסומים באמצעות ישויות נקודה, קו או פוליגון.
             </p>
-            <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
+            <p>מחסום נקודה עשוי לייצג עץ שקרס, תאונת דרכים, קו חשמל שנפל או כל דבר שחוסם לחלוטין את התנועה במיקום מסוים לאורך הרחוב. התנועה ברחוב מותרת, אבל לא בקטע החסום. ניתן לציין עד 250 ישויות שיתפקדו כמחסומי נקודה.
             </p>
-            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
+            <p>מחסום קו אוסר על הנסיעה בכל מקום שבו המחסום מצטלב עם הרחובות. לדוגמה, מחסום קו עשוי לייצג תהלוכה או הפגנה שחוסמות את התנועה במספר מקטעי רחובות. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הקו עולה על 500, הכלי מציג שגיאה.
             </p>
-            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
+            <p>מחסום פוליגון אוסר על הנסיעה בכל מקום שבו הפוליגון מצטלב עם הרחובות. שימוש אחד בסוג מחסום זה הוא לייצוג הצפות שמכסות אזורים של רשת רחובות ולא מאפשרים נסיעה בכבישים באותם אזורים. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הפוליגון עולה על 2000, הכלי מציג שגיאה.
             </p>
         </div>
     </div>
     <div id="DissolveType">
-        <div><h2>Areas from different points</h2></div>
+        <div><h2>שטחים מנקודות שונות</h2></div>
         <hr/>
         <div>
-            <p>Choose how shared areas from 
-different input points are handled when they reach one another. They can:
+            <p>בחר כיצד לנהוג בשטחים משותפים מנקודות קלט שונות כאשר הם מגיעים זה אל זה. להלן האפשרויות:
                 <ul>
-                    <li> <b>Overlap</b>&mdash;Areas from different input points may cover the same road. This is useful when you need to know all the input points that can reach a particular location within the given time or distance.
+                    <li> <b>חפיפה</b> - שטחים מנקודות קלט שונות יכולים לכסות את אותו כביש. אפשרות זו מועילה כאשר ברצונך לדעת את כל נקודות הקלט שיכולות להגיע אל מיקום מסוים במסגרת זמן או מרחק נתונים.
                     </li>
-                    <li> <b>Dissolve</b>&mdash;All areas are merged into one, and  no more than one area can cover a particular location. This is useful when all you need to know is that an area can be reached within a given time or distance, but you don't need to know which specific input points can reach the location.
+                    <li> <b>מיזוג</b> - כל השטחים ממוזגים לאחד, ולא יותר משטח אחד יכול לכסות מיקום מסוים. אפשרות זו שימושית כאשר כל שאתה מעוניין לדעת זה שניתן להגיע אל שטח במסגרת זמן או מרחק נתונים, אבל אינך צריך לדעת אילו נקודות קלט ספציפיות יכולות להגיע את המיקום.
                     </li>
-                    <li> <b>Split</b>&mdash;The areas from different input locations that would overlap each other are split in the middle, so they abut one another instead. This is useful when you want to see which areas are within a given time or distance of the input points and, at the same time, determine which input point is closest to that area.
+                    <li> <b>פיצול</b> - השטחים מנקודות קלט שונות שחופפים זה את זה מפוצלים באמצע, כך שבמקום זאת הם סמוכים זה לזה. אפשרות זו שימושית כאשר ברצונך לראות אילו שטחים נמצאים בתוך מסגרת זמן או מרחק מסוימים מנקודות הקלט, ובמקביל לקבוע איזו נקודת קלט היא הקרובה ביותר לשטח זה.
                     </li>
                 </ul>
                 
             </p>
         </div>
     </div>
-    <div id="OutputLayer">
-        <div><h2>Result Layer Name</h2></div>
+    <div id="showHoles">
+        <div><h2>הצג אזורים שלא ניתן להגיע אליהם כחורים</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>בחר האם אזורי הפלט יכללו חורים אם לא הייתה אפשרות להגיע לרחובות מסוימים בגלל זמן או מרחק  <b>המדידה</b> או עקב הגבלות של אופן ההגעה.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>לאזורי זמן נסיעה שנוצרו תוך שימוש בפרמטר זה יש הגבלה של 15 דקות או 24 ק&quot;מ (15 מייל).
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>שם שכבת התוצאה</h2></div>
+        <hr/>
+        <div>
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
+            </p>
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>כלול רחובות שניתן להגיע אליהם</h2></div>
+        <hr/>
+        <div>
+            <p>כלול את הרחובות אשר משמשים ליצירת אזורי זמן נסיעה כשכבת פלט. 
+            </p>
+            <p>'צור אזורי זמן נסיעה' מודד את הגישה אל מתקן וממנו לאורך רשת הרחובות, ולאחר מכן יוצר אזורי זמן נסיעה מהרחובות שבהן נעשה שימוש לצורך הגעה. לפיכך, האזורים הם אומדן של הרחובות שבהם נעשה שימוש לצורך הגעה. אם הניתוח שלך נועד לקבוע אילו רחובות מכוסים במסגרת מרחק או זמן נסיעה ספציפיים ממתקן, הפקת רחובות שניתן להגיע אליהם עשויה להיות מדויקת יותר מאשר שימוש באזורי זמן נסיעה לצורך הערכה אם ניתן היה להגיע לרחוב מסוים.
+            </p>
+            <p>לאזורי זמן נסיעה שנוצרו תוך שימוש בפרמטר זה יש הגבלה של 15 דקות או 24 ק&quot;מ (15 מייל).
             </p>
         </div>
     </div>

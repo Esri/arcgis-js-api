@@ -84,7 +84,7 @@
         <div>
             <p>Točkovni geoobjekti, okoli katerih bo izračunan poligon. Izberete lahko način izračuna poligona na podlagi načina potovanja (vožnja z osebnim ali s tovornim vozilom ali hoja) in merjenje (čas ali razdalja).
             </p>
-            <p class="OnlineOnly">Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo iz zbirke Living Atlas</b> ali <b>Izberi sloj za analizo</b>, ki se nahajata v spodnjem delu spustnega menija. To odpre galerijo, ki vsebuje zbirko slojev, uporabnih za mnoge analize. 
+            <p>Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo</b> ki se nahaja v spodnjem delu spustnega menija. Ta možnost odpre galerijo, kjer lahko brskate in izberete sklope podatkov iz različnih virov za uporabo v svoji analizi. 
             </p>
             <p>Orodje podpira do 1.000 geoobjektov v vhodnem sloju.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Izberite svoj način potovanja (vožnja z osebnimi ali s tovornimi vozili ali hoja) in merjenja (čas ali razdalja). Razpoložljive načine potovanja določi administrator va&scaron;e organizacije. Po izbiri načina in merjenja, vnesite trajanje ali razdaljo do  5 ur (300 minut) ali  300 milj (482,80 kilometrov). 
+            </p>
+            <p>Smer potovanja ( <b>Stran od lokacije storitve</b> ali <b>K lokaciji storitve</b>) lahko vpliva na to, kako so povr&scaron;ine ustvarjene. Ustvarite območja potovalnega časa da se izognete enosmernim ulicam, preprečite nedovoljena obračanja in sledite drugim pravilom, ki temeljijo na smeri potovanja. Smer potovanja morate izbrati na podlagi vrste vhodne lokacije in vsebine va&scaron;e analize. Na primer območje potovalnega časa od picerije za dostavo pic mora biti ustvarjeno stran od lokacije storitve, medtem ko mora biti območje potovalnega časa za bolni&scaron;nico ustvarjeno proti lokaciji storitve.
             </p>
             <p>Ko izberete  <b>čas vožnje</b>, <b>čas vožnje po neasfaltiranih cestah</b> ali <b>čas vožnje s tovornjakom</b>, lahko izberete način merjenja časa vožnje.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Nedosegljiva področja označite kot luknje</h2></div>
+        <hr/>
+        <div>
+            <p>Izberite ali bo izhodno področje vsebovalo luknje, če nekaterih ulic ne boste mogli doseči zaradi  <b>merjenja</b> časa ali razdalje ali omejitev, ki jih nalaga način potovanja.
+            </p>
+            <p>Območja potovalnega časa, ki so bila ustvarjena z uporabo tega parametra, imajo omejitev na 15 minut ali 15 milj (24 kilometrov).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.
             </p>
             <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Vključi dosegljive ulice</h2></div>
+        <hr/>
+        <div>
+            <p>Vključi ulice, ki so uporabljene za ustvarjanje območja potovalnega časa kot izhodni sloj. 
+            </p>
+            <p>Ustvarite območja potovalnega časa, da dosežete lokacijo v mreži ulic, nato ustvarite območje potovalnega časa iz ulic, ki so bile prepotovane. Zato so območja v bližini prepotovanih ulic. Če mora va&scaron;a analiza določiti katere ulice so pokrite znotraj potovalne razdalje ali časa od lokacije, je ustvarjanje dosegljivih ulic lahko bolj natančno kot uporaba območij potovalnega časa za oceno, ali je bila določena ulica dosegljiva.
+            </p>
+            <p>Območja potovalnega časa, ki so bila ustvarjena z uporabo tega parametra, imajo omejitev na 15 minut ali 15 milj (24 kilometrov).
             </p>
         </div>
     </div>

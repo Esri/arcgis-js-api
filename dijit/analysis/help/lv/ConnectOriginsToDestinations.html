@@ -44,7 +44,7 @@
         <h2>Savienot sākumpunktus ar galamērķiem</h2><p/>
         <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Savienot sākumpunktus ar galamērķiem"></h2>
         <hr/>
-    <p>Savienot koordinātu sākuma punktu ar  galamērķi, lai izmērītu ceļojuma laiku vai attālumu starp punktu pāri. &Scaron;is rīks var sniegt pārskatus par lineārajiem attālumiem, attālumiem, kuru pamatā ir ceļo&scaron;anas veids, piemēram, kājām vai braucot, vai ceļojuma ilgumu, pamatojoties uz ceļo&scaron;anas veidu. Izmantojot &scaron;o rīku, var veikt &scaron;ādas darbības:
+    <p>Savienot koordinātu sākuma punktu ar  galamērķi, lai izmērītu ceļojuma laiku vai attālumu starp diviem punktiem. &Scaron;is rīks var sniegt pārskatus attālumiem, kuru pamatā ir taisna līnija vai pārvieto&scaron;anās veids, piemēram, kājām vai braucot, vai ceļojuma ilgumu, pamatojoties uz pārvieto&scaron;anās veidu. Izmantojot &scaron;o rīku, var veikt &scaron;ādas darbības:
     </p>
     <p>
         <ul>
@@ -64,13 +64,13 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="originsLayer">
-        <div><h2>Izvēlieties punktu slāni, kas pārstāv koordinātu sākuma punktu novietojumus</h2></div>
+        <div><h2>Izvēlieties punktu slāni, kas attēlo koordinātu sākuma punktu novietojumus</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties punktu slāni, kas pārstāv koordinātu sākuma punktu vai punktus. Rīks atbalsta līdz  5000 koordinātu sākuma punktiem un  5000 galamērķiem. </p>
+            <p>Izvēlieties punktu slāni, kas attēlo koordinātu sākuma punktu vai punktus. Rīks atbalsta līdz  5000 koordinātu sākuma punktiem un  5000 galamērķiem. </p>
             <p>Ja izvēlaties slāni, kam ir tie&scaron;i viens koordinātu sākuma punkts, tiek izveidots savienojums ar visiem galamērķiem.
             </p>
-            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
+            <p>Papildus slāņa izvēlei no kartes varat atlasīt opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā. &Scaron;ī opcija atver galeriju, kurā varēsiet pārlūkot un atlasīt datu kopas no dažādiem avotiem un izmantot savā analīzē. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Ja ir viens koordinātu sākuma punkts un daudz galamērķi, rīks savienos koordinātu sākuma punktus ar katru no vietām.
             </p>
-            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
+            <p>Papildus slāņa izvēlei no kartes varat atlasīt opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā. &Scaron;ī opcija atver galeriju, kurā varēsiet pārlūkot un atlasīt datu kopas no dažādiem avotiem un izmantot savā analīzē. 
             </p>
             <p> Ja ir daudz sākuma punktu un daudz galamērķu, jums ir nepiecie&scaron;ami divi lauki, kas raksturo sākumpunkta &ndash; galamērķa pāri: <b>ID lauks sākuma punktam</b> un <b>atbilsto&scaron;ais ID lauks galamērķim</b>. Rīks savieno sākumpunkta-galamērķa pārus analīzes laikā. Piemēram, iedomājaties, ka jums ir divi sākumpunkti ar ID lauku vērtībām <code>Rosie</code> un <code>Harold</code> un divi galamērķi ar tām pa&scaron;ām ID vērtībām. <code>Rosie</code> sākumpunkts savienosies ar <code>Rosie</code> galamērķi un <code>Harold</code> savienosies ar <code>Harold</code>. Nekādi citi savienojumi vai mērījumi netika veikti.
             </p>
-            <p>ID vērtībām jābūt unikālām katrā slānī, piemēram, galamērķa slānī nevar būt divas  <code>Rosie</code> vērtības. Vērtībām sākumpunkta un galamērķa slāņos jāatbilst precīzi, lai veidotu pāri; vērtība <code>Harold</code> netiks savienota ar neprecīzi uzrakstītu vērtību <code>Harodl</code>. 
+            <p>Ja sākumpunktu un galamērķu skaits ir vienāds, ID vērtībām jābūt unikālām katrā slānī, piemēram, galamērķa slānī nevar būt divas  <code>Rosie</code> vērtības. Vērtībām sākumpunkta un galamērķa slāņos jāatbilst precīzi, lai veidotu pāri; vērtība <code>Harold</code> netiks savienota ar neprecīzi uzrakstītu vērtību <code>Harodl</code>. 
+            </p>
+            <p>Rīks atbalsta arī katra sākumpunkta savieno&scaron;anu ar vienu vai vairākiem galamērķiem vai katru galamērķi&nbsp;&mdash; ar vairāk nekā vienu sākumpunktu. &Scaron;ādos gadījumos jums tomēr ir jābūt diviem laukiem, kas apraksta sākumpunkta-galamērķa pārus. Taču unikālas ID&nbsp;vērtības ir nepiecie&scaron;amas tikai vienam no slāņiem (sākumpunkta vai galamērķa slānim).
             </p>
         </div>
     </div>
@@ -96,7 +98,7 @@
         <hr/>
         <div>
             
-            <p>Izvēlieties, vai savienot sākumpunktus ar galamērķiem, izmantojot lineāro attālumu vai ceļo&scaron;anas veidu. Izvades mar&scaron;ruti vedīs pa ceļiem un gājēju takām, respektējot attiecīgos noteikumus, piemēram, brauk&scaron;anas gadījumā&nbsp;&mdash; vienvirziena ielas un neatļautus pagriezienus. Pieejamos ceļo&scaron;anas veidus nosaka jūsu organizācijas administrators.  
+            <p>Izvēlieties, vai savienot sākumpunktus ar galamērķiem, izmantojot taisnlīnijas attālumu vai pārvieto&scaron;anās veidu. Izvades mar&scaron;ruti vedīs pa ceļiem un gājēju takām, respektējot attiecīgos noteikumus, piemēram, brauk&scaron;anas gadījumā&nbsp;&mdash; vienvirziena ielas un neatļautus pagriezienus. Pieejamos ceļo&scaron;anas veidus nosaka jūsu organizācijas administrators.  
             </p>
             <p>Ja izvēlaties iespēju  <b>Brauk&scaron;anas laiks</b>, <b>Brauk&scaron;anas laiks ārpus pilsētas</b> vai <b>Brauk&scaron;anas laiks ar kravas automa&scaron;īnu</b>, tiek piedāvātas brauk&scaron;anas laika mērī&scaron;anas opcijas.
                 <ul>
@@ -142,11 +144,28 @@
             </p>
         </div>
     </div>
+    <div id="routeShape">
+        <div><h2>Maršruta forma</h2></div>
+        <hr/>
+        <div>
+            <p>Izmantojot pārvieto&scaron;anās veidu, izvēlieties mar&scaron;ruta formu, kas savieno katru sākumpunktu ar tā galamērķi:
+            </p>
+            <ul>
+                <li> <b>Mar&scaron;ruts pa ielām</b>&nbsp;&mdash; &scaron;ī forma tiek veidota, ņemot vērā izveidoto ceļu tīklu. Izmantojiet &scaron;o iespēju, ja vēlaties ģenerēt mar&scaron;rutus starp sākumpunktiem un galamērķiem.
+                </li>
+                <li> <b>Taisna līnija</b>&nbsp;&mdash; &scaron;ī forma ir taisna līnija, kas savieno sākumpunktu un galamērķi. &Scaron;ī opcija ir piemērotāka, ja vēlaties ģenerēt zirnekļa diagrammas vai iecienītākos mar&scaron;rutus (piemēram, lai parādītu, kurus veikalus klienti apmeklē).
+                </li>
+            </ul>
+            
+            <p>Labākais mar&scaron;ruts starp sākumpunktu un tam atbilsto&scaron;o galamērķi vienmēr tiek aprēķināts, ņemot vērā ceļo&scaron;anas veidu neatkarīgi no izvēlētās mar&scaron;ruta formas.
+            </p>
+        </div>
+    </div>
     <div id="outputLayer">
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Elementu slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Ja elementu slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu. Elementu slānī tiks ietverts slānis katram no &scaron;iem vienumiem: mar&scaron;ruti, nepie&scaron;ķirtie koordinātu sākuma punkti un nepie&scaron;ķirtie galamērķi, ja kādu sākuma punktu nevarēs savienot ar galamērķi.
+            <p>Elementu slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Ja elementu slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu. Elementu slānī tiks ietverts slānis katrai no &scaron;īm vienībām: mar&scaron;ruti, nepie&scaron;ķirtie koordinātu sākuma punkti un nepie&scaron;ķirtie galamērķi, ja kādu sākuma punktu nevarēs savienot ar galamērķi.
             </p>
             <p>Ja atlasīsit opciju  <b>Iekļaut mar&scaron;rutu slāņus</b>, katrs mar&scaron;ruts no rezultātiem tiek saglabāts arī kā mar&scaron;ruta slānis. Mar&scaron;ruta slānī ir iekļauta informācija par konkrēto mar&scaron;rutu, piemēram, mar&scaron;rutam pie&scaron;ķirtās pieturas, kā arī ceļa norādījumi. Mar&scaron;rutu slāņu veido&scaron;ana ir noderīga, ja vēlaties atsevi&scaron;ķus mar&scaron;rutus koplietot ar citiem jūsu organizācijas dalībniekiem vai vēlaties turpināt pārveidot mar&scaron;rutus, izmantojot kar&scaron;u skatītājā eso&scaron;o pogu <b>Virzieni</b>. Mar&scaron;rutu slāņiem kā prefikss tiek izmantots elementu slānim dotais nosaukums, kā arī tiek pievienots analīzes laikā ģenerētais mar&scaron;ruta nosaukums, lai izveidotu unikālu nosaukumu katram mar&scaron;ruta slānim.
             </p>

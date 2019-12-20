@@ -112,20 +112,28 @@
             <p>Defines the manner in which the values and zones on the input destination data will be interpreted in the cost path calculations.
             </p>
             <ul>
-                <li>Best Single&mdash;For all cells or locations on the input destination data, the least-cost path is derived from the location with the minimum of the least-cost paths to source location. This is the default
+                <li> <b>Best Single</b>&mdash;For all cells or locations on the input destination data, the least-cost path is derived from the location with the minimum of the least-cost paths to source location. This is the default
                     
 
                 </li>
-                <li>To Each Cell&mdash;For each cell or location with valid values on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each from cell.
+                <li> <b>To Each Cell</b>&mdash;For each cell or location with valid values on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each from cell.
                     
 
                 </li>
-                <li>To Each Zone&mdash;For each zone on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, the least-cost path for each zone begins at the cell or location with the lowest cost distance weighting in the zone.
+                <li> <b>To Each Zone</b>&mdash;For each zone on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, the least-cost path for each zone begins at the cell or location with the lowest cost distance weighting in the zone.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Choose field to obtain values for destination</h2></div>
+        <hr/>
+        <div>
+            <p>The field used to obtain values for the destination locations.
+            </p>
         </div>
     </div>
 </div>

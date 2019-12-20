@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir la couche raster ou la couche d'entités vers laquelle calculer la distance.",inputRaster:"Choisir une couche raster ou d’entités pour représenter les interruptions(facultatif)",maxDistanceLabel:"Distance maximale à calculer (facultatif)",outputCellSize:"Taille de cellule en sortie (facultatif)",distanceMethod:"Méthode de distance",resultDistLayerName:"Nom de la couche de distance de résultat",resultDirectionLayerName:"Nom de la couche de direction de résultat (facultatif)",resultAllocationLayerName:"Nom de la couche d’allocation de résultat (facultatif)",outputBackDirectionName:"Nom de la couche de direction arrière de résultat (facultatif)",outputLayerName:"Distance calculée de ${layername}",allocationFieldLabel:"Choisir le champ d’allocation (facultatif)",itemDescription:"Couche d’entités générée par l’exécution de la solution Calculer la distance pour ${inputLayername}. ",itemTags:"Résultat d’analyse, Calculer la distance, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Calculer la distance.",planar:"plane",geodesic:"Géodésique",selectDistance:"-- sélectionner --"});

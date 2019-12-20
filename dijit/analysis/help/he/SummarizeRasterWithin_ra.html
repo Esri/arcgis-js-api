@@ -41,85 +41,85 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Summarize Raster Within</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summarize Raster Within tool"></h2>
+        <h2>סכם רסטר בתוך</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="כלי 'סכם רסטר בתוך'"></h2>
         <hr/>
-    <p>This tool summarizes a raster based on areas (zones) defined by the first input layer.
+    <p>כלי זה מסכם רסטר על בסיס אזורים שהוגדרו על ידי שכפת הקלט הראשונה.
     </p>
-    <p>Some example applications include the following:
+    <p>להלן דוגמאות ליישומים:
     </p>
     <p>
         <ul>
-            <li>Given a layer of watershed boundaries and a layer of land-use boundaries by land-use type, calculate total acreage of land-use type for each watershed.
+            <li>בהינתן שכבה של גבולות שטח קו פרשת מים ושכבה של גבולות שימוש בקרקע לפי סוג שימוש בקרקע, חשב את השטח הכולל של סוג שימוש בקרקע עבור כל שטח קו פרשת מים.
                 
 
             </li>
-            <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city boundary.
+            <li>בהינתן שכבה של חלקות במחוז ושכבה של גבולות עיר, סכם את הערך הממוצע של חלקות פנויות בתוך כל גבול עיר.
                 
 
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer and the layer to be summarized that are visible within the current map extent will be analyzed. If unchecked, all features in both the input layer and the layer to be summarized will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט והשכבה שיש לסכם שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות הן בשכבת הקלט והן בשכבה לסיכום ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Choose area layer to summarize a raster layer within defined boundaries</h2></div>
+        <div><h2>בחר שכבת אזור כדי לסכם שכבת רסטר בתוך גבולות מוגדרים</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the boundaries of the areas, or zones, that will be summarized.
+            <p>השכבה שמגדירה את הגבולות של האזורים אשר יסוכמו.
             </p>
-            <p>The layer can be a raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. The areas do not have to be contiguous.
+            <p>השכבה יכולה להיות רסטר או נתוני ישות. עבור רסטרים, האזורים מוגדרים על ידי כל המיקומים בקלט שיש להם אותו ערך תא. האזורים לא חייבים להיות ברצף.
             </p>
         </div>
     </div>
     <div id="zoneField">
-        <div><h2>Choose field to define the boundaries</h2></div>
+        <div><h2>בחר שדה כדי לקבוע את הגבולות</h2></div>
         <hr/>
         <div>
-            <p>This is the attribute of the layer that will be used to define the boundaries of the areas.
+            <p>זהו המאפיין של השכבה אשר תשמש להגדרת הגבולות של האזורים.
             </p>
-            <p>For example, suppose the first input layer defines the management unit boundaries, with attributes that define the region, the district, and the parcel ID of each unit. You also have a raster layer defining a biodiversity index for each location. With the field you select, you can decide to calculate the average biodiversity at local, district, or regional levels.
+            <p>לדוגמה, נניח ששכבת הקלט הראשונה מגדירה את גבולות יחידת הניהול, עם מאפיינים שמגדירים את מזהי האזור, המחוז והחלקה של כל יחידה. בנוסף, יש לך שכבת רסטר שמגדירה אינדקס גיוון ביולוגי עבור כל מיקום. עם השדה שבחרת, באפשרותך להחליט לחשב את הגיוון הביולוגי הממוצע ברמה המקומית, המחוזית והאזורית.
             </p>
         </div>
     </div>
     <div id="sumRasterLayer">
-        <div><h2>Choose raster layer to summarize</h2></div>
+        <div><h2>בחר שכבת רסטר כדי לסכם</h2></div>
         <hr/>
         <div>
-            <p>The raster cells in this layer will be summarized by the areas (zones) that they fall within.
+            <p>תאי הרסטר בשכבה זו יסוכמו לפי האזורים שבהם הם נמצאים.
             </p>
         </div>
     </div>
     <div id="sumStatistic">
-        <div><h2>Choose statistic to calculate</h2></div>
+        <div><h2>בחר נתון סטטיסטי לחישוב</h2></div>
         <hr/>
         <div>
-            <p>Once you choose a layer to summarize, you can optionally calculate statistics of any numerical attribute of the points, lines, or areas within the input area layer.
+            <p>לאחר שתבחר שכבה לסיכום, באפשרותך לבחור לחשב נתונים סטטיסטיים לכל מאפיין מספרי של הנקודות, קווים או אזורים שבתוך שכבת אזור הקלט.
             </p>
-            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Range, Standard deviation, Sum, and Variety.
+            <p>סוגי הנתונים הסטטיסטיים הזמינים כאשר השדה שנבחרה הוא מספר שלהם הם: ממוצע, רוב, מקסימום, חציון, מינימום, מיעוט, טווח, סטיית תקן, סכום וגיוון.
             </p>
-            <p>If the field is floating point, the options are Average, Maximum, Minimum, Range, Standard deviation, and Sum.
+            <p>אם השדה או נקודה צפה, האפשרויות הן: ממוצע, מקסימום, מינימום, טווח, סטיית תקן וסכום.
             </p>
         </div>
     </div>
     <div id="missingValues">
-        <div><h2>Ignore missing values in calculation</h2></div>
+        <div><h2>התעלם מערכים חסרים בחישוב</h2></div>
         <hr/>
         <div>
-            <p>If you choose to ignore missing values, only the cells that have a value in the layer to be summarized will be used in determining the output value for that area. Otherwise, if there are missing values anywhere in an area, it is deemed that there is insufficient information to perform statistical calculations for all the cells in that zone, and that area will receive a null (NoData) value in the output.
+            <p>אם תבחר להתעלם מערכים חסרים, רק התאים שיש להם ערך בשכבה לסיכום ישמשו בקביעת ערך הפלט עבור האזור. אחרת, אם ישנם ערכים חסרים במקום כלשהו באזור, הקביעה היא שאין מספיק מידע לבצע חישובים סטטיסטיים עבור כל התאים באותו אזור, שהאזור יקבל ערך null &rlm;(NoData) בפלט.
             </p>
         </div>
     </div>
     <div id="resultLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

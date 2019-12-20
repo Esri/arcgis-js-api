@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį.",customAnalysisLayerTitle:"Pasirinkite analizės sluoksnį",searchPlaceholderText:"Ieškoti Gyvojo pasaulio atlaso analizės sluoksnių",searchCustomPlaceholderText:"Ieškoti analizės sluoksnių",mainActionTitle:"Pasirinkti",customActionName:"Pasirinkti ir pridėti žemėlapyje",customeSectionName:"Gyvojo pasaulio atlaso analizės sluoksniai",Categories:"Kategorijos",boundaries:"Ribos",places:"Vietos",boundariesAndPlaces:"Ribos ir vietos",hexbins:"Šešiabriaunės gardelės",transportation:"Transportas",point:"Taškų sluoksniai",line:"Polilinijų sluoksniai",polygon:"Poligonų sluoksniai",pointFilterName:"Taškas",lineFilterName:"Polilinija",polygonFilterName:"Poligonas",multiPointFilterName:"Keli taškai",geometryFilterName:"Geometrija",featureLayerName:"Elementų sluoksnis",tableLayerName:"Lentelė",itemTypeFilterName:"Elemento tipas",instantFilterName:"Momentas",intervalFilterName:"Intervalas",timeFilterName:"Laikas",edit:"Redaguoti",boundaryLayers:"Esri ribų sluoksniai",customAnalysisGroupName:"Organizacijos analizės grupė"});

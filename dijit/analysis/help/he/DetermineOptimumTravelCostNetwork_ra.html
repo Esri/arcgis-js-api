@@ -41,60 +41,60 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Determine Optimum Travel Cost Network</h2><p/>
-        <h2><img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" alt="Determine Optimum Travel Cost Network tool illustration"></h2>
+        <h2>קבע רשת עלויות נסיעה מיטבית</h2><p/>
+        <h2><img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" alt="איור של הכלי 'קבע רשת עלויות נסיעה מיטבית"></h2>
         <hr/>
-    <p>This tool calculates the optimum cost network from a set of input regions.
+    <p>כלי זה מחשב את רשת העלות המיטבית מקבוצה של אזורי קלט.
     </p>
-    <p>One example application of this tool is finding the best network for emergency vehicles.
+    <p>דוגמה אחת ליישום של כלי זה היא מציאת הרשת הטובה ביותר לרכבי חירום.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those locations in the input layer that are visible within the current map extent will be analyzed. If unchecked, all locations in the input layer will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRegionsRasterOrFeatures">
-        <div><h2>Choose raster or feature location layer to determine travel paths between</h2></div>
+        <div><h2>בחר שכבת רסטר או שכבת מיקומים של ישויות כדי לקבוע את מסלולי הנסיעה ביניהם</h2></div>
         <hr/>
         <div>
-            <p>The input regions that are to be connected by the least-cost network.
+            <p>אזורי הקלט שיחוברו על ידי הרשת עם העלות הנמוכה ביותר.
             </p>
-            <p>Regions can be defined by either an image service or a feature service.
+            <p>ניתן להגדיר אזורי על ידי שירות תמונה או שירות ישויות.
             </p>
-            <p>For image service, the regions are defined by groups of contiguous (adjacent) cells of the same value. Each region must be uniquely numbered. The cells that are not part of any region must be NoData. The raster type must be integer, and the values can be either positive or negative.
+            <p>עבור שירות תמונה, האזורים מוגדרים על ידי קבוצה של תאים צמודים בעלי אותו ערך. כל אזור חייב להיות ממוספר באופן ייחודי. התאים שאינם חלק מאזור כלשהו חייבים להיות NoData. סוג הרסטר חייב להיות מספר שלם, והערכים יכולים להיות חיוביים או שליליים.
             </p>
-            <p>For feature service, the input can be point, line or polygon.
+            <p>עבור שירות ישויות, הקלט יכול להיות נקודה, קו או פוליגון.
             </p>
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Choose travel cost raster layer</h2></div>
+        <div><h2>בחר את שכבת הרסטר של עלות הנסיעה</h2></div>
         <hr/>
         <div>
-            <p>A raster defining the impedance or cost to move planimetrically through each cell.
+            <p>רסטר שמגדיר את העכבה או העלות לזוז פלאנימטרית בכל תא.
             </p>
-            <p>The value at each cell location represents the cost-per-unit distance for moving through the cell. Each cell location value is multiplied by the cell resolution while also compensating for diagonal movement to obtain the total cost of passing through the cell.
+            <p>הערך בכל מיקום תא מייצג את מרחק העלות-ליחידה עבור תזוזה בתוך התא. כל ערך מיקום תא מוכפל ברזולוציית התא, תוך פיצוי גם עבור תנועה אלכסונית, לקבלת העלות הכוללת של מעבר על פני התא.
             </p>
-            <p>The values of the cost raster can be integer or floating point, but they cannot be negative or zero (you cannot have a negative or zero cost).
+            <p>הערכים של רסטר העלויות יכולים להיות מספר שלם או נקודה צפה, אבל הם לא יכולים להיות מספר שלילי או אפס (לא יכולה להיות עלות שלילית או אפס).
             </p> 
         </div>
     </div>
     <div id="outputOptimumNetworkName">
-        <div><h2>Result optimum paths polyline layer name</h2></div>
+        <div><h2>הצג בתוצאה שם שכבת קווים של מסלולים מיטביים</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>
     <div id="outputNeighborNetworkName">
-        <div><h2>Result neighboring paths polyline layer name</h2></div>
+        <div><h2>שם שכבת התוצאה של פולי-קו נתיבים שכנים</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

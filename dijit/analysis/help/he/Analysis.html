@@ -41,29 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>ארגז הכלים 'ניתוח ישויות' מכיל מספר כלים שבהם באפשרותך לבחור להשתמש.  משימות אלה מאורגנות להלן לפי קטגוריות, הקטגוריות הן פשוט הקבצות לוגיות ולא משפיעות בשום דרך על הגישה או השימוש שלך במשימות.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
-        <h2>Summarize Data</h2>
+        <h2>סיכום נתונים</h2>
         <hr/>
-        <p>These tools calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p>כלי אלה מחשבים סה&quot;כ ספירות, אורכים, אזורים ונתונים סטטיסטיים תיאוריים בסיסיים של משויות והמאפיינים שלהן בתוך אזור או בסמוך לישויות אחרות.
             <ul>
-                <li> <b>Aggregate Points</b> calculates statistics about  points that fall within specified areas.
+                <li> <b>קיבוץ נקודות</b> מחשב נתונים סטטיסטיים אודות נקודות שנמצאות בתוך אזורים שצוינו.
                 </li>
-                <li> <b>Join Features</b> transfers attributes from one
-layer or table to another based on spatial and attribute
-relationships.
+                <li> <b>צרף ישויות</b> מעביר מאפיינים משכבה או טבלה אחת לאחרת על בסיס קשרים של מרחב ומאפיינים.
                 </li>
-                <li> <b>Summarize Nearby</b> calculates statistics for features and their  attributes that are within a specified  distance.
+                <li> <b>סיכום פריטים סמוכים</b> מחשב נתונים סטטיסטיים עבור ישויות והמאפיינים שלהן שנמצאים בטווח מרחק שצוין.
                 </li>
-                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                <li> <b>סיכום בתוך</b> מסכם נתונים סטטיסטיים עבור ישויות אזור והמאפיינים שלהם שחופפים זה את זה.
                 </li>
-                <li> <b>Summarize Center and Dispersion</b> calculates central features and directional distributions.
+                <li> <b>סכם מרכז ופיזור</b> מחשב ישויות מרכז ופיזורים כיווניים.
                 </li>
             </ul>
             
@@ -75,21 +69,18 @@ relationships.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Aggregate Points</h2></td>
+                    <td><h2>קיבוץ נקודות</h2></td>
                     <td>
-                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Aggregate Points">
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="קיבוץ נקודות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using a layer of
-point features and a layer of area features, this tool
-determines which points fall within each area and calculates statistics about all
-the points within each area. For example:
+            <p>כלי זה משתמש בשכבה של ישויות נקודה ובשכבה של ישויות אזור כדי לקבוע אילו נקודות נמצאות בתוך כל אזור ומחשב נתונים סטטיסטיים אודות כל הנקודות בתוך כל אזור. לדוגמה:
                 <ul>
-                    <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
+                    <li>בהינתן מיקומי נקודה של אירועי פשיעה, ספור את מספר הפשעים בכל מחוז או יחידה מנהלית אחרת.
                     </li>
-                    <li>Find the highest and lowest revenues for franchise locations by state.
+                    <li>מצא את הרווחים הגבוהים ביותר והנמוכים ביותר עבור מיקומי זיכיון לפי מדינה.
                     </li>
                 </ul>
                 
@@ -100,28 +91,22 @@ the points within each area. For example:
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Join Features</h2></td>
+                    <td><h2>צרף ישויות</h2></td>
                     <td>
-                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Join Features">
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="צרף ישויות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Join Features will transfer attributes from one
-layer or table to another based on spatial and attribute
-relationships. For example:
+            <p>'צרף ישויות' מעביר מאפיינים משכבה או טבלה אחת לאחרת על בסיס קשרים של מרחב ומאפיינים. לדוגמה:
                 <ul>
-                    <li>Append common boundary or demographic information
-to your incident data.
+                    <li>צרף גבול משותף או מידע דמוגרפי לנתוני אירועים.
                     </li>
-                    <li>Identify the closest facilities to a known
-location.
+                    <li>זהה את המתקנים הקרובים ביותר למיקום ידוע.
                     </li>
-                    <li>Determine the number of residences that fall
-within flood zones.
+                    <li>קבע את מספר בתי המגורים שנכללים באזורי הצפה.
                     </li>
-                    <li>Identify common habitats for different wildlife
-species.
+                    <li>זהה בתי גידול משותפים עבור זני חיות בר.
                     </li>
                 </ul>
                 
@@ -132,18 +117,18 @@ species.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Summarize Nearby</h2></td>
+                    <td><h2>סיכום פריטים סמוכים</h2></td>
                     <td>
-                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Summarize Nearby">
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="סיכום פריטים סמוכים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finds features that are within a specified distance of features in the input layer.   Distance can be measured along straight lines or viable paths of a travel mode.  Statistics are then calculated for the nearby features.  For example:
+            <p>מוצא ישויות שנמצאות בטווח מרחק ספציפי מישויות בשכבת הקלט.   ניתן למדוד מרחק לאורך קווים ישרים או נתיבים אפשריים של אופן הגעה.  לאחר מכן, מחושבים נתונים סטטיסטיים עבור הישויות הסמוכות. לדוגמה:
                 <ul>
-                    <li>Calculate the total population within five minutes of a proposed new store location.
+                    <li>חישוב סך כל האוכלוסייה שנמצאת במרחק חמש דקות ממיקום אפשרי לחנות חדשה.
                     </li>
-                    <li>Calculate the number of freeway access ramps within five minutes of a proposed new store location to use as a measure of store accessibility.
+                    <li>חישוב מספר היציאות מכביש ראשי שנמצאות בטווח של חמש דקות ממיקום אפשרי לחנות חדשה, כמדד למידת הנגישות של החנות.
                     </li>
                 </ul>
                 
@@ -154,19 +139,18 @@ species.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Summarize Within</h2></td>
+                    <td><h2>סיכום בתוך</h2></td>
                     <td>
-                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Summarize Within">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="סיכום בתוך">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finds areas (and portions of areas) that overlap between two
-layers and calculates statistics about the overlap. For example:
+            <p>מציאת אזורים (וחלקי אזורים) שחופפים בין שתי שכבות וחישוב נתונים סטטיסטיים אודות החפיפה. לדוגמה:
                 <ul>
-                    <li>Given a layer of watershed areas and a layer of land-use areas by land-use type, calculate total acreage of land-use type for each watershed. 
+                    <li>בהינתן שכבה של אזורי שטח קו פרשת מים ושכבה של גבולות שימוש בקרקע לפי סוג שימוש בקרקע, חשב את השטח הכולל של סוג שימוש בקרקע עבור כל שטח קו פרשת מים. 
                     </li>
-                    <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city.
+                    <li>בהינתן שכבה של חלקות במחוז ושכבה של גבולות עיר, סכם את הערך הממוצע של חלקות פנויות בתוך כל עיר.
                     </li>
                 </ul>
                 
@@ -177,22 +161,22 @@ layers and calculates statistics about the overlap. For example:
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Summarize Center and Dispersion</h2></td>
+                    <td><h2>סכם מרכז ופיזור</h2></td>
                     <td>
-                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Summarize Center and Dispersion">
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="סכם מרכז ופיזור">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool uses point features to calculate the central feature, mean center, median center, or ellipse (distribution). For example:
+            <p>כלי זה משתמש בישויות נקודה לחישוב הישות המרכזית, המרכז הממוצע, המרכז החציוני או האליפסה (התפלגות). לדוגמה:
                 <ul>
-                    <li>Given a layer of block group centroids, the central feature weighted by population could be used to identify which part of town is the most accessible for a performing arts center.
+                    <li>בהינתן שכבת צנטרואידים של קבוצת בלוקים, הישויות המרכזית המשוקלל לפי אוכלוסייה יכולה לשמש לזיהוי איזה חלק בעיר הוא הנגיד ביותר עבור מרכז אומנויות במה.
                     </li>
-                    <li>Given a layer of elk observations within a park over several years, mean center can be used to see where the elk congregate in summer and winter.
+                    <li>בהינתן שכבה של תצפיות איילים בפארק לאורך מספר שנים, ניתן להשתמש במרכז הממוצע כדי לראות היכן האיילים מתכנסים בקיץ ובחורף.
                     </li>
-                    <li>Given a layer of fire incidents, the median center can be used to measure the central tendency of the fires without being affected by peripheral outliers.
+                    <li>בהינתן שכבה של תקריות שרפה, המרכז החציוני יכול לשמש למדידת הנטייה המרכזית של השרפות ללא השפעה של חריגים שוליים.
                     </li>
-                    <li>Given a layer of groundwater well samples, an ellipse can be used to determine how a contaminant is spreading.
+                    <li>בהינתן שכבה של דגימות בארות מי תהום, ניתן להשתמש באליפסה כדי לקבוע כיצד זיהום מתפשט.
                     </li>
                 </ul>
                 
@@ -200,13 +184,11 @@ layers and calculates statistics about the overlap. For example:
             <br/>
         </div>
     <div id="EnrichLocationsCategory" class="smallsize">
-        <h2>Data Enrichment</h2>
+        <h2>העשרת מידע</h2>
         <hr/>
-        <p>These tools help you explore the
-character of areas. Detailed demographic data and
-statistics are returned for your chosen areas. 
+        <p>כלים אלה עוזרים לגלות את האופי של אזורים. הם מחזירים נתונים דמוגרפיים וסטטיסטיים מפורטים על האזורים שתבחר. 
             <ul>
-                <li> <b>Enrich Layer</b> retrieves information about the people, places, and businesses in a specific area, or within a selected travel time or distance from a location.
+                <li>הכלי  <b>העשרת שכבה</b> מאחזר מידע אודות האנשים, המקומות ובתי העסק באזור ספציפי, או בטווח מרחק או זמן הגעה שנבחרו מהמיקום.
                 </li>
             </ul>
             
@@ -216,43 +198,39 @@ statistics are returned for your chosen areas.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Enrich Layer</h2></td>
+                    <td><h2>העשרת שכבה</h2></td>
                     <td>
-                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Enrich Layer">
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="העשרת שכבה">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Retrieves information about the people, places, and businesses in a specific area, or within a selected travel time or distance from a location.
-
+            <p>מאחזר מידע אודות האנשים, המקומות ובתי העסק באזור ספציפי, או בטווח מרחק או זמן הגעה שנבחרו מהמיקום. 
             </p>
             <br/>
         </div>
     <div id="FindLocationsCategory" class="largesize">
-        <h2>Find Locations</h2>
+        <h2>איתור מיקומים</h2>
         <hr/>
-        <p>These tools are used to identify or create features that
-meet criteria you specify.  The type of criteria will depend on which tool you use;  for example, your criteria  may be based on spatial or attribute queries, visible areas from a specified height, downstream areas for specific drainage points, or driving time in specific traffic conditions.
+        <p>כלים אלה משמשים לזיהוי או ליצירה של זהויות שעונים על קריטריונים שציינת.  סוג הקריטריונים נקבע לפי הכלי שתבחר, לדוגמה, הקריטריונים עשויים להתבסס על שאילתות שקשורות למרחב או למאפיינים, אזורים נראים מגובה שצוין, אזורים במורד הזרם עבור נקודות ניקוז ספציפיות או זמן נסיעה בתנאי תנועה ספציפיים.
             <ul>
-                <li> <b>Choose Best Facilities</b> chooses the best locations for facilities by allocating locations that have demand for these facilities in a way that satisfies a given goal.
+                <li> <b>בחר את המתקנים הטובים ביותר</b> בוחר את המיקומים הטובים ביותר עבור מתקנים על ידי הקצאת מיקומים שבהם קיים ביקוש למתקנים אלה באופן שמספק יעד נתון.
                 </li>
-                <li> <b>Create Viewshed</b> creates areas that are visible based on locations you specify.
+                <li> <b>צור שטחים נצפים</b> יוצר אזורים שגלויים לעין על בסיס מיקומים שאתה מציין.
                 </li>
-                <li> <b>Create Watersheds</b> creates catchment areas based on  locations you specify.
+                <li> <b>צור קווי פרשת מים</b> יוצר מאגר אזורים על בסיס מיקומים שאתה מציין.
                 </li>
-                <li> <b>Derive New Locations</b> creates new areas from locations in your
-study area that meet a series of criteria.
+                <li> <b>הפקת מיקומים חדשים</b> יוצר אזורים חדשים ממיקומים באזור המחקר שעונים על סדרה של קריטריונים.
                 </li>
-                <li> <b>Find Centroids</b> finds the representative center (centroid) for input features.
+                <li> <b>איתור צנטרואידים</b> מוצא את המרכז הייצוגי (צנטרואיד) עבור ישויות קלט.
                 </li>
-                <li> <b>Find Existing Locations</b>  searches for existing areas in a layer that meet a series of criteria.
+                <li> <b>מציאת מיקומים קיימים</b> מחפש אזורים קיימים בשכבה שעונים על סדרה על סדרה של קריטריונים.
                 </li>
-                <li> <b>Find Similar Locations</b> finds locations most similar to one or more reference locations based on criteria you specify.
+                <li> <b>איתור מיקומים דומים</b> מוצא את המיקומים הדומים ביותר לאחד או יותר ממיקומי הייחוס בהתבסס על קריטריונים שציינת.
                 </li>
-                <li class="PortalOnly"> <b>Geocode Locations from Table</b> converts addresses from a table into coordinates. 
+                <li class="PortalOnly"> <b>עיגון כתובות מיקומים מטבלה</b> ממיר כתובות מטבלה לקואורדינטות. 
                 </li>
-                <li> <b>Trace Downstream</b> determines the flow paths in a downstream direction from the
-locations you specify.
+                <li> <b>עקיבה במורד הזרם</b> קובע את נתיבי הזרימה בכיוון מורד הזרם ממיקומים שציינת.
                 </li>
             </ul>
             
@@ -260,18 +238,18 @@ locations you specify.
         <p> 
         </p>
     </div>
-        <div id="ChooseBestFacilitiesTool" class="regularsize">
+        <div id="ChooseBestFacilitiesTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Choose Best Facilities</h2></td>
+                    <td><h2>בחר את המתקנים הטובים ביותר</h2></td>
                     <td>
-                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="Choose Best Facilities">
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="בחר את המתקנים הטובים ביותר">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Chooses the best locations for facilities by allocating locations that have demand for these facilities in a way that satisfies a given goal.
+            <p>בוחר את המיקומים הטובים ביותר עבור מתקנים על ידי הקצאת מיקומים שבהם קיים ביקוש למתקנים אלה באופן שמספק יעד נתון.
             </p>
             <br/>
         </div>
@@ -279,14 +257,14 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Viewshed</h2></td>
+                    <td><h2>צור שטחים נצפים</h2></td>
                     <td>
-                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Create Viewshed">
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="צור שטחים נצפים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Creates areas that are visible based on locations you specify.
+            <p>יוצר אזורים נצפים בהתבסס על מיקומים שתציין.
             </p>
             <br/>
         </div>
@@ -294,14 +272,14 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Watersheds</h2></td>
+                    <td><h2>צור קווי פרשת מים</h2></td>
                     <td>
-                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Create Watersheds">
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="צור קווי פרשת מים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Creates catchment areas based on  locations you specify.
+            <p>יוצר אזורי אגני היקוות בהתבסס על מיקומים שתגדיר.
             </p>
             <br/>
         </div>
@@ -316,9 +294,7 @@ locations you specify.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Creates new features in your
-study area that meet a series of criteria you specify. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,  within 1 mile of a river).
-
+            <p>יוצר ישויות חדשות באזור המחקר שעונות על סדרות של קריטריונים שציינת. קריטריונים אלה יכולים להיות מבוססים על שאילתות מאפיינים (לדוגמה, חלקות שהן פנויות) ושאילתות מרחביות (לדוגמה, בטווח של 1.5 ק&quot;מ מנהר). 
             </p>
             <br/>
         </div>
@@ -326,14 +302,14 @@ study area that meet a series of criteria you specify. These criteria can be bas
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Centroids</h2></td>
+                    <td><h2>איתור צנטרואידים</h2></td>
                     <td>
-                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Find Centroids">
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="איתור צנטרואידים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finds the representative center (centroid) for each input multipoint, line, or area feature.
+            <p>איתור המרכז המייצג (צנטרואיד) של כל ישות מרובת נקודות, קו או אזור שהוזנה.
             </p>
             <br/>
         </div>
@@ -348,9 +324,7 @@ study area that meet a series of criteria you specify. These criteria can be bas
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Selects existing features in your
-study area that meet a series of criteria you specify. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,  within 1 mile of a river).
-
+            <p>בוחר ישויות קיימות באזור המחקר שעונות על סדרות של קריטריונים שציינת. קריטריונים אלה יכולים להיות מבוססים על שאילתות מאפיינים (לדוגמה, חלקות שהן פנויות) ושאילתות מרחביות (לדוגמה, בטווח של 1.5 ק&quot;מ מנהר). 
             </p>
             <br/>
         </div>
@@ -358,14 +332,14 @@ study area that meet a series of criteria you specify. These criteria can be bas
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Geocode Locations from Table</h2></td>
+                    <td><h2>עיגון כתובות מיקומים מטבלה</h2></td>
                     <td>
-                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocode Locations from Table">
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="עיגון כתובות מיקומים מטבלה">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Converts addresses into coordinates. Use this tool on addresses in an Excel spreadsheet or a CSV file.
+            <p>ממיר כתובות לקואורדינטות. השתמש בכלי זה על כתובות בגיליון עבודה Excel או קובץ CSV.
             </p>
             <br/>
         </div>
@@ -373,14 +347,14 @@ study area that meet a series of criteria you specify. These criteria can be bas
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Similar Locations</h2></td>
+                    <td><h2>איתור מיקומים דומים</h2></td>
                     <td>
-                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Find Similar Locations">
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="איתור מיקומים דומים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finds the locations that are most similar to one or more reference locations based on criteria that you specify.
+            <p>מאתר את המיקומים הדומים ביותר לאחד או יותר ממיקומי הייחוס בהתבסס על קריטריונים שציינת.
             </p>
             <br/>
         </div>
@@ -388,32 +362,31 @@ study area that meet a series of criteria you specify. These criteria can be bas
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Trace Downstream</h2></td>
+                    <td><h2>עקיבה במורד הזרם</h2></td>
                     <td>
-                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Trace Downstream">
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="עקיבה במורד הזרם">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Determines the flow paths in a downstream direction from the
-locations you specify.
+            <p>קובע את נתיבי הזרימה בכיוון מורד הזרם ממיקומים שציינת.
             </p>
             <br/>
         </div>
     <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Analyze Patterns</h2>
+        <h2>ניתוח דפוסים</h2>
         <hr/>
-        <p>These tools help you identify, quantify, and visualize spatial patterns in your data.  
+        <p>כלים אלה עוזרים לזהות, לכמת ולהציג דפוסים מרחביים בנתונים.  
             <ul>
-                <li> <b>Calculate Density</b> takes known quantities of some phenomenon and spreads these quantities across the map.
+                <li> <b>חישוב צפיפות</b> לוקח כמויות ידועות של תופעה מסוימת ומפזר כמויות אלה על פני המפה.
                 </li>
-                <li> <b>Find Hot Spots</b>  identifies statistically significant clustering in the spatial pattern of your data.
+                <li> <b>מציאת נקודות חמות</b> מזהה קיבוץ באשכולות מובהק סטטיסטית בדפוס המרחבי של הנתונים.
                 </li>
-                <li> <b>Find Outliers</b> determines if there are any statistically significant outliers in the spatial pattern of your data.
+                <li> <b>אתר חריגים</b> קובע אם קיימים חריגים מובהקים סטטיסטית בדפוס המרחבי של הנתונים.
                 </li>
-                <li> <b>Find Point Clusters</b> finds clusters of point features within surrounding noise based on their spatial distribution.
+                <li> <b>מצא אשכולות של נקודות</b> מוצא אשכולות של ישויות נקודה בתוך רעש סובב בהתבסס על הפיזור המרחבי שלהן.
                 </li>
-                <li> <b>Interpolate Points</b> predicts values at new locations based on measurements found in a collection of points.
+                <li> <b>בצע אינטרפולציה לנקודות</b> צופה ערכים במיקומים חדשים בהתבסס על מדידות שנמצאו באוסף של נקודות.
                 </li>
             </ul>
             
@@ -423,14 +396,14 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Calculate Density</h2></td>
+                    <td><h2>חשב צפיפות</h2></td>
                     <td>
-                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="חשב צפיפות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Density analysis takes known quantities of some phenomenon and spreads these quantities across the map. You can use this tool, for example,  to show concentrations of  lightning strikes or tornadoes, access to health care facilities, and population densities.
+            <p>ניתוח צפיפות לוקח כמויות ידועות של תופעה מסוימת ומפזר כמויות אלה על פני המפה. באפשרותך להשתמש בכלי זה, לדוגמה, כדי להציג ריכוזים של פגיעות ברק או סופות טורנדו, גישה למתקנים רפואיים וצפיפויות אוכלוסין.
             </p>
             <br/>
         </div>
@@ -438,14 +411,14 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Hot Spots</h2></td>
+                    <td><h2>מציאת נקודות חמות</h2></td>
                     <td>
-                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Find Hot Spots">
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="מציאת נקודות חמות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool creates a map showing any statistically significant spatial clustering present in your data.   Use this tool to uncover unexpected hot spots (red) and cold spots (blue) of high and low home values, crime densities, traffic accident fatalities, unemployment or biodiversity, for example.
+            <p>כלי זה יוצר מפה שמציגה קיבוץ מרחבי באשכולות מובהק סטטיסטי שנמצא בנתונים. השתמש בכלי זה כדי לחשוף נקודות חמות לא צפויות (אדומות) ונקודות קרות (כחולות) של מספרים גבוהים ונמוכים של ערכי בתים, צפיפויות מקרי פשע, הרוגים בתאונות דרכים, אבטלה או גיוון ביולוגי, לדוגמה.
             </p>
             <br/>
         </div>
@@ -453,29 +426,29 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Outliers</h2></td>
+                    <td><h2>חפש חריגים</h2></td>
                     <td>
-                    <img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" class="titleImage" alt="Find Outliers">
+                    <img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" class="titleImage" alt="חפש חריגים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool creates a map showing any statistically significant clusters and spatial outliers present in your data. Use this tool to identify features that have values that are significantly different from their neighbors.  You can use this tool, for example, to find anomalous spending patterns, determine where are the sharpest boundaries between affluence and poverty in a study area or determine if  there are counties in the United States with unusually low life expectancy compared to their neighbors.
+            <p>כלי זה יוצר מפה שמציגה אשכולות מובהקים סטטיסטית וחריגים מרחביים שנמצאים בנתונים. השתמש בכלי זה כדי לזהות ישויות בעלות ערכים השונים באופן מובהק מהישויות הסמוכות.  ניתן להשתמש בכלי זה, לדוגמה, כדי למצוא דפוסי הוצאות אנומליים, לקבוע היכן הגבולות החדים ביותר בין עושר לעוני באזור מחקר או לקבוע אם יש מחוזות בארה&quot;ב עם תוחלת חיים נמוכה באופן חריג בהשוואה למחוזות הסמוכים.
             </p>
             <br/>
         </div>
-        <div id="FindPointClustersTool" class="regularsize">
+        <div id="FindPointClustersTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Point Clusters</h2></td>
+                    <td><h2>מצא אשכולות של נקודות</h2></td>
                     <td>
-                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="Find Point Clusters">
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="מצא אשכולות של נקודות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool detects areas where points are concentrated and where they are separated by areas that are empty or sparse. Points that are not part of a cluster are labeled as noise.
+            <p>כלי זה מזהה את אזורי הריכוז של נקודות והיכן הן מופרדות על-ידי אזורים ריקים או דלילים. נקודות שאינן חלק מאשכול מתויגות כרעש.
             </p>
             <br/>
         </div>
@@ -483,34 +456,31 @@ locations you specify.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Interpolate Points</h2></td>
+                    <td><h2>בצע אינטרפולציה לנקודות</h2></td>
                     <td>
-                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="Interpolate Points">
+                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="בצע אינטרפולציה לנקודות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This  tool allows you to predict values at new locations based on measurements found in a collection of points. The tool takes point data with values at each point and returns areas classified by predicted values. You can use this tool, for example, to predict rainfall levels across a watershed based on measurements taken at individual rain gauges.
+            <p>כלי זה מאפשרת לחזות ערכים במיקומים חדשים בהתבסס על מדידות שנמצאו באוסף של נקודות. הכלי נוטל נתוני נקודות עם ערכים בכל נקודה ומחזיר אזורים שמסווגים על ידי ערכים חזויים. ניתן להשתמש בכלי זה, לדוגמה, כדי לחזות מפלסי משקעים על פני קו פרשת מים בהתבסס על מדידות שנלקחו במודדי משקעים בודדים.
             </p>
             <br/>
         </div>
     <div id="UseProximityCategory" class="regularsize">
-        <h2>Use Proximity</h2>
+        <h2>שימוש בסמיכות</h2>
         <hr/>
-        <p>  These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
+        <p>  כלים אלה עוזרים לענות על אחת מהשאלות הנפוצות ביותר בניתוח מרחבי: &quot;מה נמצא מעל מה?&quot;
             <ul>
-                <li> <b>Connect Origins to Destinations</b> measures the travel time or distance between pairs of points.
+                <li> <b>קשר מוצא ליעדים</b> מודד את זמן ההגעה או מרחק ההגעה בין זוג נקודות.
                 </li>
-                <li> <b>Create Buffers</b> create areas of equal distance from
-features.
+                <li> <b>יצירת אזורי חיץ</b> יוצר אזורים במרחק זהה מישויות.
                 </li>
-                <li> <b>Create Drive-Time Areas</b> finds areas around
-locations that can be reached within a time period.
+                <li> <b>צור אזורי זמן נסיעה</b> מוצא אזורים סביב מיקומים שאליהם ניתן להגיע בטווח זמן נתון.
                 </li>
-                <li> <b>Find Nearest</b> identifies those places that are
-the closest to known locations.
+                <li> <b>מציאת הסמוכים ביותר</b> מזהה את המקומות הקרובים ביותר למיקומים ידועים.
                 </li>
-                <li> <b>Plan Routes</b> determines the best way to route a fleet of vehicles to visit many  stops.
+                <li> <b>תכנן מסלולים</b> קובע את הדרך הטובה ביותר לנתב צי רכבים לביקור בתחנות רבות.
                 </li>
             </ul>
             
@@ -520,27 +490,27 @@ the closest to known locations.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Connect Origins to Destinations</h2></td>
+                    <td><h2>קשר מוצא ליעדים</h2></td>
                     <td>
-                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="Connect Origins to Destinations">
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="קשר מוצא ליעדים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Connect Origins to Destinations measures the travel time or distance between pairs of points. The tool can report straight-line distances, road distances, or travel times. Using this tool, you can
+            <p>הכלי 'קשר מוצא ליעדים' מודד את זמן ההגעה או מרחק ההגעה בין זוג נקודות. הכלי יכול לדווח על מרחקים בקו-ישר, מרחקים בכבישים או זמני הגעה. בעזרת כלי זה, תוכל לעשות את הדברים הבאים:
             </p>
             <p>
                 <ul>
-                    <li>Calculate the total distance or time commuters travel on their  home-to-work trips.
+                    <li>לחשב את המרחק הכולל או הזמן הכולל שעושים עובדים בנסיעות מהבית לעבודה.
                     </li>
-                    <li>Measure how far customers are traveling to shop at your stores. Use this information to define your market reach, especially when targeting advertising campaigns or choosing new store locations.
+                    <li>למדוד מה המרחק שלקוחות עוברים כאשר הם הולכים/נוסעים לחנויות שלך. להשתמש במידע זה כדי להגדיר את היקף השוק שלך, במיוחד בעת מיקוד מסעות פרסום או בחירת מיקום לחנות חדשה.
                     </li>
-                    <li>Calculate the expected trip mileage for your fleet of vehicles. Afterward, run the Summarize Within tool to report mileage by state or other region.
+                    <li>לחשב את קילומטרז' הנסיעה הצפוי עבור צי המכוניות בארגונך. לאחר מכן, להפעיל את הכלי 'סיכום בתוך' כדי לדווח על קילומטרז' לפי מחוז או אזור אחר.
                     </li>
                 </ul>
                 
             </p>
-            <p>You provide starting and ending points, and the tool returns a layer containing route lines, including measurements, between the paired origins and destinations.
+            <p>אתה מספק נקודות התחלה ונקודות סיום, והכלי מחזיר שכבה שמכילה קווי מסלול, כולל מדידות, בין הצמדים של נקודות מוצא ונקודות יעד.
             </p>
             <br/>
         </div>
@@ -548,16 +518,16 @@ the closest to known locations.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Buffers</h2></td>
+                    <td><h2>יצירת אזורי חיץ</h2></td>
                     <td>
-                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="Create Buffers">
+                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="יצירת אזורי חיץ">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A buffer is an area that covers a given distance from a point, line, or area feature. 
+            <p>חיץ הוא אזור שמכסה מרחק נתון מישות נקודה, קו או שטח. 
             </p>
-            <p>Buffers are typically used to create areas that can be further analyzed using other  tools such as Overlay Layers. For example, if the question is &quot;What buildings are within one mile of the school?&quot;, the answer can be found by creating a one-mile buffer around the school and overlaying the buffer with the layer containing building footprints.  The end result is a layer of  those buildings within one mile of the school.  
+            <p>אזורי חיץ בדרך כלל משמשים ליצירת אזורים שעבורם ניתן לבצע ניתוח נוסף בעזרת כלים אחרים כגון 'כיסוי שכבות'. לדוגמה, אם השאלה היא &quot;אילו בניינים נמצאים בטווח קילומטר אחד מבית הספר?&quot;, ניתן לקבל את התשובה על ידי יצירת חיץ בגודל קילומטר אחד סביב בית הספר וכיסוי אזור החיץ עם השכבה שמכילה עקבות של בניינים.  התוצאה הסופית היא שכבה של הבניינים שנמצאים בטווח של קילומטר אחד מבית הספר.  
             </p>
             <br/>
         </div>
@@ -565,22 +535,22 @@ the closest to known locations.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Create Drive-Time Areas</h2></td>
+                    <td><h2>צור אזורי זמן נסיעה</h2></td>
                     <td>
-                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Create Drive-Time Areas">
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="צור אזורי זמן נסיעה">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A drive-time  area is the area that can be reached within a specified drive time or drive distance. Drive-time areas  can help you answer questions such as:
+            <p>אזורי זמן נסיעה הוא האזור שניתן להגיע אליו בתוך זמן נסיעה נתון או מרחק נסיעה נתון. אזורי זמן נסיעה יכולים לעזור לך לענות על שאלון כגון:
                 <ul>
-                    <li>Where can I go from here within a 30-minute drive?
+                    <li>לאן אני יכול לנסוע מכאן בנסיעה של 30 דקות?
                     </li>
-                    <li>Where can I go from here within a 30-minute drive at 6:00 p.m. during rush hour?
+                    <li>לאן אני יכול לנסוע מכאן בנסיעה של 30 דקות בשעה 18:00 בשעות עומס התנועה?
                     </li>
-                    <li>What areas of town can the fire department reach within five minutes? How would fire-response coverage improve by building a new fire station here?
+                    <li>לאילו חלקים מהעיר יכולים מכבי האש להגיע בתוך חמש דקות? כיצד כיסוי התגובה של מכבי האש ישתפר על ידי בניית תחנת כיבוי אש חדשה במיקום זה?
                     </li>
-                    <li>What market areas does my business cover? What areas are within 10 miles of my stores?
+                    <li>אילו אזורים בשוק העסק שלי מכסה? אילו אזורים נמצאים במרחק 15 ק&quot;מ מהחנויות שלי?
                     </li>
                 </ul>
                 
@@ -591,16 +561,14 @@ the closest to known locations.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Nearest</h2></td>
+                    <td><h2>מציאת הסמוכים ביותר</h2></td>
                     <td>
-                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="Find Nearest">
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="מציאת הסמוכים ביותר">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Measures the cost of traveling between incidents and facilities and
-determines which are closer to the other. The result is a layer showing the best routes between incidents and
-facilities along with the  travel cost (time and distance) of each route.  For example, you can use this tool to find the closest hospital to an accident or the closest ATM to your current location.
+            <p>מודד את עלות הנסיעה בין אירועים ומתקנים וקובע אילו מהם קרובים לאחרים. התוצאה היא שכבה שמראה את המסלולים הטובים ביותר בין אירועים ומתקנים, לצד עלות הנסיעה (זמן ומרחב) של כל מסלול.  לדוגמה, באפשרותך להשתמש בכלי זה כדי למצוא את בית החולים הקרוב ביותר לאירוע, או את הכספומט הקרוב ביותר למיקומך הנוכחי.
             </p>
             <br/>
         </div>
@@ -608,34 +576,33 @@ facilities along with the  travel cost (time and distance) of each route.  For e
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Plan Routes</h2></td>
+                    <td><h2>תכנן מסלולים</h2></td>
                     <td>
-                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Plan Routes">
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="תכנן מסלולים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>You provide a set of stops and the number of vehicles available to visit the stops, and Plan Routes determines how to efficiently assign the stops to the vehicles and route the vehicles to the stops.
+            <p>אתה מספק קבוצה של תחנות ואת מספר כלי הרכב שזמינים לבקר בתחנות, הכלי 'תכנן מסלולים' קובע כיצד להקצות ביעילות את התחנות לכלי הרכב ומנתב את כלי הרכב לתחנות.
             </p>
-            <p>Use this tool to plan work for a mobile team of inspectors, appraisers, in-home support service providers, and others; deliver or pick up items from remote locations; or offer transportation services to people.
+            <p>השתמש בכלי זה כדי לתכנן עבודה עבור צוות עובדים נייד של פקחים, שמאים, ספקי שירות עד הבית ואחרים; אספקה ואיסוף של פריטים ממיקומים מרוחקים או אליהם; או מתן שירותי הסעות לאנשים.
             </p>
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
-        <h2>Manage Data</h2>
+        <h2>נהל נתונים</h2>
         <hr/>
-        <p>These tools are used for both the day-to-day management of geographic data and for combining data prior to analysis.  
+        <p>כלים אלה משמשים הן עבור הניהול היום-יומי של נתונים גאוגרפיים והן עבור שילוב נתונים לפני ניתוח.  
             <ul>
-                <li> <b>Dissolve Boundaries</b> merges together areas that share a common boundary and a common attribute value.
+                <li> <b>מיזוג גבולות</b> ממזג יחד אזורים שיש להם גבול משותף וערך מאפיין משותף.
                 </li>
-                <li> <b>Extract Data</b> creates new datasets by extracting features from your existing data.
+                <li> <b>חלץ נתונים</b> יוצר ערכות נתונים חדשות על ידי חילוץ ישויות מהנתונים הקיימים.
                 </li>
-                <li> <b>Generate Tessellations</b> creates tessellations based on the extent of your data.
+                <li> <b>צור ריצופים של מישורים</b> יוצר ריצופים של מישורים על בסיס תיחום הנתונים.
                 </li>
-                <li> <b>Merge Layers</b> copies all the features from two or more existing layers
-into a new layer.
+                <li> <b>מיזוג שכבות</b> מעתיק את כל הישויות משתי שכבות קיימות או יותר אל שכבה חדשה.
                 </li>
-                <li> <b>Overlay Layers</b> combines two or more layers into one single layer.  You can think of overlay as peering through a stack of maps and creating a single map containing all the information found in the stack.
+                <li> <b>כיסוי שכבות</b> משלב שתי שכבה אחת או יותר ליצירת שכבה יחידה אחת.  ניתן לחשוב על כיסוי כהתבוננות בערימה של מפות ויצירת מפה אחת שמכילה את כל המידע שנמצא בערימה.
                 </li>
             </ul>
             
@@ -652,9 +619,9 @@ into a new layer.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Areas that overlap or share a common boundary are merged together to form a single area.    
+            <p>אזורים שחופפים או שיש להם גבול משותף ממוזגים יחד ליצירת אזור אחד.    
             </p>
-            <p>You can control which boundaries are merged by specifying a field. For example, if you have a layer of counties, and each county has a  <i>State_Name</i> attribute, you can dissolve boundaries using the <i>State_Name</i> attribute.  Adjacent counties will be merged together if they have the same value for <i>State_Name</i>.  The end result is a layer of state boundaries.
+            <p>באפשרותך לקבוע אילו גבולות ימוזגו על ידי ציון שדה. לדוגמה, אם יש לך שכבה של מחוזות, ובכל מחוז יש מאפיין בשם  <i>State_Name</i>, באפשרותך למזג את הגבולות בעזרת המאפיין <i>State_Name</i>.  מחוזות סמוכים ימוזגו יחד אם יש להם את אותו ערך של מאפיין <i>State_Name</i>.  התוצאה הסופית היא שכבה של גבולות מחוזות.
             </p>
             <br/>
         </div>
@@ -662,14 +629,14 @@ into a new layer.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Extract Data</h2></td>
+                    <td><h2>חלץ נתונים</h2></td>
                     <td>
-                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Extract Data">
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="חלץ נתונים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Creates a zip file, CSV, or KMZ of data from your layers and an area of interest that you specify.
+            <p>יוצר קובץ ZIP, &rlm;CSV או KMZ של נתונים מהשכבות ותחום עניין שציינת.
             </p>
             <p> 
             </p>
@@ -679,14 +646,14 @@ into a new layer.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Generate Tessellations</h2></td>
+                    <td><h2>צור ריצופים של מישורים</h2></td>
                     <td>
-                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generate Tessellations">
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="צור ריצופים של מישורים">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Generates tessellations over a study area based on specified shape and size.
+            <p>מפיק ריצופים של מישורים על פני אזור מחקר על בסיס צורה וגודל שצוינו.
             </p>
             <br/>
         </div>
@@ -701,11 +668,11 @@ into a new layer.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies features from two or more existing layers into a new layer,    for example:
+            <p>מעתיק ישויות משתי שכבות קיימות או יותר אל שכבה חדשה, לדוגמה:
                 <ul>
-                    <li>I have three layers for England, Wales, and Scotland and I want a single layer of Great Britain. 
+                    <li>יש לי שלוש שכבות עבור אנגליה, ווילס וסקוטלנד וברצוני לקבל שכבה אחת של בריטניה. 
                     </li>
-                    <li>I have 12 layers and each contains parcel information for contiguous townships.  I want to join them together into a single layer, keeping only the attributes that have the same name and type on the 12 input layers.
+                    <li>יש לי 12 שכבות וכל אחת מהן מכילה פרטי חלקה עבור שטחים מוניציפליים רציפים.  ברצוני לצרף אותם יחד לשכבה אחת, תוך שמירה רק של אלה שלמאפיינים שלהם יש אותו שם ואותו סוג ב-12 שכבות הקלט.
                     </li>
                 </ul>
                 
@@ -716,24 +683,24 @@ into a new layer.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Overlay Layers</h2></td>
+                    <td><h2>כיסוי שכבות</h2></td>
                     <td>
-                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="Overlay Layers">
+                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="כיסוי שכבות">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Overlay combines two or more layers into one single layer.  You can think of overlay as peering through a stack of maps and creating a single map containing all the information found in the stack,    for example:
+            <p>כיסוי משלב שתי שכבות או יותר ליצירת שכבה יחידה אחת.  ניתן לחשוב על כיסוי כהתבוננות בערימה של מפות ויצירת מפה אחת שמכילה את כל המידע שנמצא בערימה, לדוגמה:
                 <ul>
-                    <li>What parcels are within the 100-year floodplain? (Within is just another way of saying on top of.)
+                    <li>אילו חלקות נמצאות בתוך מישור ההצפה 100-שנה? (&quot;בתוך&quot; זו פשוט דרך אחרת לומר &quot;מעל&quot;.)
                           
                     </li>
-                    <li>What roads are within what counties?
+                    <li>אילו כבישים נמצאים בתוך אילו ארצות?
                     </li>
-                    <li>What land use is on top of what soil type?
+                    <li>איזה שימוש בקרקע נמצא מעל איזה סוג קרקע?
                          
                     </li>
-                    <li>What wells are within abandoned military bases?
+                    <li>אילו בארות נמצאות בתוך בסיסים צבאיים נטושים?
                     </li>
                 </ul>
                 

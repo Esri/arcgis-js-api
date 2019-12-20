@@ -41,208 +41,184 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Summarize Within</h2><p/>
-        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Summarize Within"></h2>
+        <h2>סיכום בתוך</h2><p/>
+        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="סיכום בתוך"></h2>
         <hr/>
-    <p>This tool finds features (and portions of features) that are within the boundaries of areas in the first input layer.  For example:
+    <p>כלי זה מוצא ישויות (וחלקי ישויות) שנמצאים בתוך הגבולות של אזורים בשכבת הקלט הראשונה.  לדוגמה:
         <ul>
-            <li>Given a layer of watershed boundaries and a layer of land-use boundaries by land-use type, calculate total acreage of land-use type for each watershed. 
+            <li>בהינתן שכבה של גבולות שטח קו פרשת מים ושכבה של גבולות שימוש בקרקע לפי סוג שימוש בקרקע, חשב את השטח הכולל של סוג שימוש בקרקע עבור כל שטח קו פרשת מים. 
             </li>
-            <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city boundary.
+            <li>בהינתן שכבה של חלקות במחוז ושכבה של גבולות עיר, סכם את הערך הממוצע של חלקות פנויות בתוך כל גבול עיר.
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer and the layer to be summarized that are visible within the current map extent will be analyzed.  If unchecked, all features in both the input layer and the  layer to be summarized will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט והשכבה שיש לסכם שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות הן בשכבת הקלט והן בשכבה לסיכום ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Choose area layer to summarize other features within its boundaries</h2></div>
+        <div><h2>בחר שכבת אזור לסיכום ישויות אחרות בתוך גבולות האזור</h2></div>
         <hr/>
         <div>
-            <p>The area layer that will be used to summarize features that fall within its boundaries.
-
+            <p>שכבת האזור אשר תשמש לסיכום ישויות שנמצאות בתוך הגבולות שלה. 
             </p>
-            <p>You can choose between an area layer that you
-provide or bins that are generated when the tool runs. When
-generating bins, for  <b>Square</b>, the number and units specified determine the
-height and length of the square. For <b>Hexagon</b>, the number and units specified determine the
-distance between parallel sides.
+            <p>באפשרותך לבחור בין שכבת אזור שאתה מספק או תאים שנוצרים כאשר הכלי מופעל. בעת יצירת תאים, עבור  <b>ריבוע</b>, המספר והיחידות שצוינו קובעים את הגובה והאורך של הריבוע. עבור <b>משושה</b>, המספר והיחידות שצוינו קובעים את המרחק בין צדדים מקבילים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Choose layer to summarize</h2></div>
+        <div><h2>בחר שכבה מסכמת</h2></div>
         <hr/>
         <div>
-            <p>Features in this layer that fall within the boundaries of features in the input layer above will be summarized. 
+            <p>ישויות בשכבה זו שנמצאות בתוך הגבולות של ישויות בשכבת הקלט לעיל יסוכמו. 
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="StatisticsPoint">
-        <div><h2>Add statistics from
-the layer to summarize</h2></div>
+        <div><h2>הוסף סטטיסטיקות מהשכבה לסיכום</h2></div>
         <hr/>
         <div>
-            <p>You can optionally calculate statistics for numerical attributes of the points that fall within the boundaries of features. 
+            <p>באפשרותך לבחור לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של הנקודות שנמצאות בתוך הגבולות של ישויות. 
             </p>
-            <p>The  <b>Count of points</b> check box, if checked, will calculate the total number of points within each area boundary.  In addition, you can calculate statistics for numerical attributes of the  points that are within each area boundary.
+            <p>אם תיבת הסימון  <b>ספירת נקודות</b> מסומנת, יתבצע חישוב של מספר הנקודות הכולל בתוך כל גבול אזור.  בנוסף, באפשרותך לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של הנקודות שנמצאות בתוך כל גבול אזור.
             </p>
             <ul>
-                <li> <b>Sum</b>&mdash;The total value for the specified
-field.
+                <li> <b>סכום</b> - הערך הכולל עבור השדה שצוין.
                 </li>
-                <li> <b>Average</b>&mdash;The average or mean for the specified field.
+                <li> <b>ממוצע</b> - הממוצע עבור השדה שצוין.
                 </li>
-                <li> <b>Minimum</b>&mdash;The smallest value in the specified
-field.
+                <li> <b>מינימום</b> - הערך הקטן ביותר בשדה שצוין.
                 </li>
-                <li> <b>Maximum</b>&mdash;The largest value in the specified
-field.
+                <li> <b>מקסימום</b> - הערך הגדול ביותר בשדה שצוין.
                 </li>
-                <li> <b>Std. Deviation</b>&mdash;The standard deviation of the
-values in the specified field.
+                <li> <b>סטיית תקן</b> - סטיית התקן של הערכים בשדה שצוין.
                 </li>
             </ul>
             
-            <p>If the layer to summarize does not have any number fields, the additional statistics will not be available.
+            <p>אם לשכבה לסיכום אין שדות מספרים, הנתונים הסטטיסטיים הנוספים לא יהיו זמינים.
             </p>
         </div>
     </div>
     <div id="StatisticsLine">
-        <div><h2>Add statistics from</h2></div>
+        <div><h2>הוסף נתונים סטטיסטיים מ</h2></div>
         <hr/>
         <div>
-            <p>You can optionally calculate statistics for numerical attributes of the lines to be summarized. 
+            <p>באפשרותך לבחור לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של הקווים שברצונך לסכם. 
             </p>
-            <p>The  <b>Total length of lines in</b> check box, if checked, will calculate the total length of lines within each area boundary.  In addition, you can calculate statistics for numerical attributes of the lines that are within each area boundary.
+            <p>אם תיבת הסימון  <b>אורך כולל של קווים ב</b> מסומנת, יתבצע חישוב של אורך הקווי הכולל בתוך כל גבול אזור.  בנוסף, באפשרותך לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של הקווים שנמצאים בתוך כל גבול אזור.
             </p>
             <ul>
-                <li> <b>Sum</b>&mdash;The total value for the specified
-field.
+                <li> <b>סכום</b> - הערך הכולל עבור השדה שצוין.
                 </li>
-                <li> <b>Average</b>&mdash;The average or mean for the specified field.
+                <li> <b>ממוצע</b> - הממוצע עבור השדה שצוין.
                 </li>
-                <li> <b>Minimum</b>&mdash;The smallest value in the specified
-field.
+                <li> <b>מינימום</b> - הערך הקטן ביותר בשדה שצוין.
                 </li>
-                <li> <b>Maximum</b>&mdash;The largest value in the specified
-field.
+                <li> <b>מקסימום</b> - הערך הגדול ביותר בשדה שצוין.
                 </li>
-                <li> <b>Std. Deviation</b>&mdash;The standard deviation of the
-values in the specified field.
+                <li> <b>סטיית תקן</b> - סטיית התקן של הערכים בשדה שצוין.
                 </li>
             </ul>
             
-            <p>If the layer to summarize does not have any number fields, the additional statistics will not be available.
+            <p>אם לשכבה לסיכום אין שדות מספרים, הנתונים הסטטיסטיים הנוספים לא יהיו זמינים.
             </p>
         </div>
     </div>
     <div id="StatisticsPolygon">
-        <div><h2>Add statistics from</h2></div>
+        <div><h2>הוסף נתונים סטטיסטיים מ</h2></div>
         <hr/>
         <div>
-            <p>You can optionally calculate statistics for numerical attributes of the areas to be summarized. 
+            <p>באפשרותך לבחור לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של האזורים שברצונך לסכם. 
             </p>
-            <p>The  <b>Sum area using</b> check box, if checked, will calculate the total area of  features that are within each area boundary of the first input layer.  In addition, you can calculate statistics for numerical attributes of the features within each area boundary.
+            <p>אם תיבת הסימון  <b>סכום אזור בעזרת</b> מסומנת, יתבצע חישוב של סך אזור הישויות שהן בתוך כל גבול אזור בשכבת הקלט הראשונה. בנוסף, באפשרותך לחשב נתונים סטטיסטיים עבור מאפיינים מספריים של הישויות בתוך כל גבול אזור.
             </p>
             <ul>
-                <li> <b>Sum</b>&mdash;The total value for the specified
-field.
+                <li> <b>סכום</b> - הערך הכולל עבור השדה שצוין.
                 </li>
-                <li> <b>Average</b>&mdash;The average or mean for the specified field.
+                <li> <b>ממוצע</b> - הממוצע עבור השדה שצוין.
                 </li>
-                <li> <b>Minimum</b>&mdash;The smallest value in the specified
-field.
+                <li> <b>מינימום</b> - הערך הקטן ביותר בשדה שצוין.
                 </li>
-                <li> <b>Maximum</b>&mdash;The largest value in the specified
-field.
+                <li> <b>מקסימום</b> - הערך הגדול ביותר בשדה שצוין.
                 </li>
-                <li> <b>Std. Deviation</b>&mdash;The standard deviation of the
-values in the specified field.
+                <li> <b>סטיית תקן</b> - סטיית התקן של הערכים בשדה שצוין.
                 </li>
             </ul>
             
-            <p>If the layer to summarize does not have any number fields, the additional statistics will not be available.
+            <p>אם לשכבה לסיכום אין שדות מספרים, הנתונים הסטטיסטיים הנוספים לא יהיו זמינים.
             </p>
         </div>
     </div>
     <div id="StatisticsNoLayer">
-        <div><h2>Add statistics from</h2></div>
+        <div><h2>הוסף נתונים סטטיסטיים מ</h2></div>
         <hr/>
         <div>
-            <p>Once you choose a layer to summarize, you can optionally calculate statistics of
-any numerical attributes of the points, lines, or areas within the input area layer. 
+            <p>לאחר שתבחר שכבה לסיכום, באפשרותך לבחור לחשב נתונים סטטיסטיים לכל מאפיין מספרי של הנקודות, קווים או אזורים שבתוך שכבת אזור הקלט. 
             </p>
             <ul>
-                <li> <b>Sum</b>&mdash;The total value for the specified
-field
+                <li> <b>סכום</b> - הערך הכולל עבור השדה שצוין
                 </li>
-                <li> <b>Average</b>&mdash;The average or mean for the specified field
+                <li> <b>ממוצע</b> - הממוצע עבור השדה שצוין
                 </li>
-                <li> <b>Minimum</b>&mdash;The smallest value in the specified
-field
+                <li> <b>מינימום</b> - הערך הקטן ביותר בשדה שצוין
                 </li>
-                <li> <b>Maximum</b>&mdash;The largest value in the specified
-field
+                <li> <b>מקסימום</b> - הערך הגדול ביותר בשדה שצוין
                 </li>
-                <li> <b>Std. Deviation</b>&mdash;The standard deviation of the
-values in the specified field
+                <li> <b>סטיית תקן</b> - סטיית התקן של הערכים בשדה שצוין
                 </li>
             </ul>
             
-            <p>Depending on the types of features you are summarizing, you can calculate total count of points, total length of lines, or total area.
+            <p>בהתאם לסוגי הישויות שאתה מסכם, באפשרותך לחשב ספירה כוללת של נקודות, אורך כולל של קווים או אזור כולל.
             </p>
-            <p>If the layer to summarize does not have any number fields, the additional statistics will not be available.
+            <p>אם לשכבה לסיכום אין שדות מספרים, הנתונים הסטטיסטיים הנוספים לא יהיו זמינים.
             </p>
         </div>
     </div>
     <div id="GroupBy">
-        <div><h2>Choose field to group by</h2></div>
+        <div><h2>בחר שדה לקבץ לפיו</h2></div>
         <hr/>
         <div>
-            <p>This is an attribute of the  <b>Summarize</b> features that you can use to calculate statistics separately for each unique attribute value. For example, suppose the first input layer contains city boundaries and the summary features are parcels.  One of the attributes of the parcels is <i>Status</i> which contains two values: VACANT and OCCUPIED. To calculate the total area of vacant and occupied parcels within the boundaries of cities,  use <i>Status</i> as the group by attribute.
- The statistics for each group, as well as the count of features within each area boundary, will be displayed in the result layer's pop-up.
+            <p>זהו המאפיין של ישויות  <b>הסיכום</b> שבו באפשרותך להשתמש כדי לחשב נתונים סטטיסטיים בנפרד עבור כל ערך מאפיין ייחודי. לדוגמה, נניח ששכבת הקלט הראשונה מכילה גבולות עיר וישויות הסיכום הן חלקות.  אחד מהמאפיינים של החלקות הוא <i>Status</i> שמכיל שני ערכים: 'פנוי' ו'תפוס'. כדי לחשב את האזור הכולל של חלקות פנויות או תפוסות בגבולות של ערים, השתמש בשדה <i>Status</i> כמאפיין הקבוצה. הנתונים הסטטיסטיים עבור כל קבוצה, כמו גם ספירת הישויות בתוך כל גבול אזור, יוצגו בחלון הקופץ של שכבת התוצאה.
             </p>
         </div>
     </div>
     <div id="MinorityMajority">
-        <div><h2>Add minority, majority</h2></div>
+        <div><h2>הוסף מיעוט, רוב</h2></div>
         <hr/>
         <div>
-            <p>This checkbox is enabled  when you choose a field to group by.    If you want to find out which attribute values within each group are the minority (least dominant) or the majority (most dominant)  within each boundary of the first input layer,  select  <b>Add minority, majority</b>.   When you select <b>Add minority, majority</b>, two new fields are added to your result layer.   If you also select <b>Add percentages</b>, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+            <p>תיבת סימון זו מסומנת, בעת בחירת שדה לקבץ לפיו. אם ברצונך לגלות אילו ערכי מאפיין בכל קבוצה הם המיעוט (הכי פחות דומיננטיים) או הרוב (הכי דומיננטיים) בתוך כל גבול של שכבת הקלט הראשונה, בחר  <b>הוסף מיעוט, רוב</b>.   בעת בחירה באפשרות <b>הוסף מיעוט, רוב</b>, שני שדות חדשים נוספים לשכבת התוצאה. אם תבחר גם באפשרות <b>הוסף אחוזים</b>, נוספים לשכבת התוצאה עוד שני שדות שמכילים את האחוזים של ערכי המאפיינים של המיעוט והרוב בתוך כל קבוצה.
             </p>
             <ul>
-                <li>If you are summarizing points, minority and majority values are calculated based on the count of points within each bounding area in the input area layer.  
+                <li>אם אתה מסכם נקודות, ערכי מיעוט ורוב מחושבים על בסיס ספירת הנקודות בתוך כל אזור תיחום בשכבת אזור הקלט.  
                 </li>
-                <li>If you are summarizing  lines, minority and majority values are calculated based on the length of  lines within each bounding area in the input area layer.  
+                <li>אם אתה מסכם קווים, ערכי מיעוט ורוב מחושבים על בסיס אורך הקווים בתוך כל אזור תיחום בשכבת אזור הקלט.  
                 </li>
-                <li>If you are summarizing  areas, minority and majority values are calculated based on the areas within each bounding area in the input area layer.  
+                <li>אם אתה מסכם אזורים, ערכי מיעוט ורוב מחושבים על בסיס האזורים בתוך כל אזור תיחום בשכבת אזור הקלט.  
                 </li>
             </ul>
             
         </div>
     </div>
     <div id="PercentShape">
-        <div><h2>Add percentages</h2></div>
+        <div><h2>הוסף אחוזים</h2></div>
         <hr/>
         <div>
-            <p>This check box is enabled  when you choose a field to group by.    Select  <b>Add percentages</b>   if you want to find the percentage of each attribute value within each group.  A new field  is added to the result table containing the percentages of each attribute value within each group.   If <b>Add minority, majority</b> is also checked, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+            <p>תיבת סימון זו זמינה בעת בחירת שדה לקבץ לפיו.    בחר באפשרות  <b>הוסף אחוזים</b> אם ברצונך למצוא את האחוזים של כל ערך מאפיין בתוך כל קבוצה. לטבלת התוצאה נוסף שדה חדש שמכיל את האחוזים של כל ערך מאפיין בתוך כל קבוצה.   אם גם האפשרות <b>הוסף מיעוט,רוב</b> מסומנת, נוספים שני שדות נוספים לשכבת התוצאה שמכילים את האחוזים של ערכי מאפיין מיעוט ורוב בתוך כל קבוצה.
             </p>
         </div>
     </div>
     <div id="ResultLayerName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

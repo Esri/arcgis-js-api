@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,n,t,a){var i=e(null,{declaredClass:"esri.dijit.BookmarkItem",constructor:function(e){this.name=e.name,this.extent=e.extent},toJson:function(){var e={},n=this.extent.toJson();return e.extent={spatialReference:n.spatialReference,xmax:n.xmax,xmin:n.xmin,ymax:n.ymax,ymin:n.ymin},e.name=this.name,e}});return t("extend-esri")&&n.setObject("dijit.BookmarkItem",i,a),i});

@@ -84,7 +84,7 @@
         <div>
             <p>Tačkasti geoobjekti oko kojih će oblasti biti izračunate. Možete da odaberete kako se oblasti izračunavaju na osnovu režima putovanja (vožnja automobila ili kamiona ili pe&scaron;ačenje) i merenja (vreme ili razdaljina).
             </p>
-            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            <p>Pored biranja sloja sa mape, možete da selektujete  <b>Izaberi sloj za analizu</b> koji se nalazi na dnu padajuće liste. Ova opcija otvara galeriju gde možete da pregledate i birate skupove podataka iz raznih izvora za kori&scaron;ćenje u va&scaron;oj analizi. 
             </p>
             <p>Alatka podržava do 1000 geoobjekata u ulaznom sloju.
 
@@ -95,7 +95,9 @@
         <div><h2>Merenja</h2></div>
         <hr/>
         <div>
-            <p>Odaberite režim putovanja (vožnja automobila ili kamiona ili pe&scaron;ačenje) i merenja (vreme ili razdaljina). Dostupne režime putovanja određuje administrator organizacije. Nakon biranja režima i merenja, unesite trajanje ili razdaljinu do  5 sati (300 minuta) or  300 milja (482,80 kilometara). 
+            <p>Odaberite režim putovanja (vožnja automobila ili kamiona ili pe&scaron;ačenje) i merenja (vreme ili razdaljina). Dostupne režime putovanja određuje administrator organizacije. Nakon biranja režima i merenja, unesite trajanje ili razdaljinu do  5 sati (300 minuta) ili  300 milja (482,80 kilometara). 
+            </p>
+            <p>Smer putovanja ( <b>Od objekta</b> ili <b>Ka objektu</b>) može da utiče na način generisanja oblasti. Pri kreiranju oblasti vožnja-vreme, uzimaju se u obzir jednosmerne ulice, izbegavaju se nepropisna skretanja i prate se druga pravila, na osnovu smera putovanja. Smer putovanja trebalo bi da izaberete na osnovu tipa ulaznih lokacija i konteksta analize. Na primer, oblast vožnja-vreme za restoran koji isporučuje picu trebalo bi da se kreira od objekta, a oblast vožnja-vreme za bolnicu trebalo bi da se kreira ka objektu.
             </p>
             <p>Kada odaberete  <b>Vreme vožnje</b>, <b>Vreme vožnje ruralnim predelima</b> ili <b>Vreme vožnje kamionom</b> imate opcije za način merenja vremena vožnje.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Prikaži nedostupne oblasti kao rupe</h2></div>
+        <hr/>
+        <div>
+            <p>Izaberite da li će izlazne oblasti sadržati rupe ako su neke ulice nedostupne zbog  <b>merenja</b> vremena ili razdaljine, odnosno usled ograničenja koja nameće režim putovanja.
+            </p>
+            <p>Oblasti vožnja-vreme kreirane pomoću ovog parametra imaju ograničenje od 15 minuta ili 15 milja (24 kilometra).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Ovo je naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako naziv sloja već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Koristeći padajući meni  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Uključi dostupne ulice</h2></div>
+        <hr/>
+        <div>
+            <p>Uključite ulice koje su upotrebljene za kreiranje oblasti vožnja-vreme u obliku izlaznog sloja. 
+            </p>
+            <p>Kreiranje oblasti vožnja-vreme meri razdaljinu do objekta kroz mrežu ulica, pa se oblasti vožnja-vreme kreiraju pomoću ulica kojima se prolazi. Stoga, oblasti predstavljaju približnu vrednost za ulice kojima se prolazi. Ako analizom želite da utvrdite koje ulice su pokrivene određenom razdaljinom putovanja ili vremenom od objekta, generisanje dostupnih ulica može da bude preciznije od kori&scaron;ćenja oblasti vožnja-vreme za procenu da li je određena ulica dostupna.
+            </p>
+            <p>Oblasti vožnja-vreme kreirane pomoću ovog parametra imaju ograničenje od 15 minuta ili 15 milja (24 kilometra).
             </p>
         </div>
     </div>

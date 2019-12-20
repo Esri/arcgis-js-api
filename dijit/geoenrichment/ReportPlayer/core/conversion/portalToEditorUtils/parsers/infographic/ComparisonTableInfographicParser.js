@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../../../../sections/SectionTypes","../../../ConversionUtil"],function(t,e){var a={};return a.portalToEditor=function(a,s){var r,i,o=a.attributes.name,n=s.templateJson.metadata.comparisonCalculatorsHash[o];return a.tags.forEach(function(e){e.attributes.type===t.INFOGRAPHIC_HEADER?r=e:i=e}),{calculatorName:o,type:a.attributes.type,variablesInColumns:a.attributes.variablesInColumns,showThisAreas:a.attributes.showThisAreas,levels:n&&n.levels||[],style:{width:e.ptToPx(a.attributes.width),height:e.ptToPx(a.attributes.height),padding:a.attributes.padding?e.ptToPx(a.attributes.padding):void 0,backgroundColor:a.attributes.backgroundColor},titleSectionJson:r&&s.parsers.getParser("section").parseSection(r,s),dataSectionJson:s.parsers.getParser("section").parseSection(i,s)}},a});

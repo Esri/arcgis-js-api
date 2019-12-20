@@ -26,6 +26,15 @@
     "propertySet": "propertyset",
     "spatialReference": "spatialReference"
   },
+  "domainTypes": {
+    "list": "list",
+    "range": "range",
+    "fields": "fields",
+    "numList": "numlist",
+    "bandIndex": "bandIndex",
+    "switchable": "switchable",
+    "linearUnit": "linearUnit"
+  },
   "enums": {
     "colorSchemeTypes": [
       {
@@ -1651,6 +1660,26 @@
       {
         "key": "MAXIMUM",
         "label": "${rasterFunctions.enumLabels.maximum}"
+      }
+    ],
+    "gpsaDirectionMeasurementType": [
+      {
+        "key": "DOWNSTREAM",
+        "label": "${rasterFunctions.enumLabels.downStream}"
+      },
+      {
+        "key": "UPSTREAM",
+        "label": "${rasterFunctions.enumLabels.upStream}"
+      }
+    ],
+    "gpsaOrderMethodType": [
+      {
+        "key": "STRAHLER",
+        "label": "${rasterFunctions.enumLabels.strahler}"
+      },
+      {
+        "key": "SHREVE",
+        "label": "${rasterFunctions.enumLabels.shreve}"
       }
     ]
   },

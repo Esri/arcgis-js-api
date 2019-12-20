@@ -70,7 +70,7 @@
             <p>Trieu la capa de punts que representa l'origen o els or&iacute;gens.  L'eina admet fins a  5.000 or&iacute;gens i  5.000 destinacions. </p>
             <p>Si trieu una capa que t&eacute; exactament un origen, es connectar&agrave; amb totes les destinacions.
             </p>
-            <p class="OnlineOnly">A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu una capa d'an&agrave;lisi del Living Atlas</b> o <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. S'obrir&agrave; una galeria que cont&eacute; una col&middot;lecci&oacute; de capes que resulten &uacute;tils per a moltes an&agrave;lisis. 
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. Aquesta opci&oacute; obre una galeria on podeu cercar i seleccionar datasets de diversos or&iacute;gens per u utilitzar-los a l'an&agrave;lisi. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Si hi ha un origen i moltes destinacions, l'eina connecta l'origen amb cadascuna de les destinacions.
             </p>
-            <p class="OnlineOnly">A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu una capa d'an&agrave;lisi del Living Atlas</b> o <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. S'obrir&agrave; una galeria que cont&eacute; una col&middot;lecci&oacute; de capes que resulten &uacute;tils per a moltes an&agrave;lisis. 
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. Aquesta opci&oacute; obre una galeria on podeu cercar i seleccionar datasets de diversos or&iacute;gens per u utilitzar-los a l'an&agrave;lisi. 
             </p>
             <p> Si hi ha molts or&iacute;gens i moltes destinacions, heu de tenir dos camps que descriguin els parells origen-destinaci&oacute;: <b>Camp d'ID als or&iacute;gens</b> i <b>Camp d'ID coincident a les destinacions</b>. L'eina connecta els parells origen-destinaci&oacute; durant l'an&agrave;lisi. Per exemple, imagineu que teniu dos or&iacute;gens amb els valors de camp d'ID <code>Rosie</code> i <code>Harold</code> i dues destinacions amb els mateixos valors d'ID. L'origen <code>Rosie</code> es connectar&agrave; amb la destinaci&oacute; <code>Rosie</code> i l'origen <code>Harold</code> es connectar&agrave; amb la destinaci&oacute; <code>Harold</code>. No es fa cap altra connexi&oacute; ni mesura.
             </p>
-            <p>Els valors d'ID han de ser &uacute;nics a cada capa. Per exemple, la capa de destinacions no pot tenir dos valors  <code>Rosie</code>. Els valors de les capes d'origen i destinaci&oacute; han de coincidir exactament per formar parells; el valor <code>Harold</code> no es connectar&agrave; amb el valor <code>Harodl</code>, que est&agrave; mal escrit. 
+            <p>Si hi ha nombres iguals d'or&iacute;gens i destinacions, els valors d'ID han de ser &uacute;nics a cada capa. Per exemple, la capa de destinacions no pot tenir dos valors  <code>Rosie</code>. Els valors de les capes d'origen i destinaci&oacute; han de coincidir exactament per formar parells; el valor <code>Harold</code> no es connectar&agrave; amb el valor <code>Harodl</code>, que est&agrave; mal escrit. 
+            </p>
+            <p>L'eina tamb&eacute; admet la connexi&oacute; de cada origen a m&eacute;s d'una destinaci&oacute; o de cada destinaci&oacute; a m&eacute;s d'un origen. En aquests casos, encara heu de tenir dos camps que descriguin els parells origen-destinaci&oacute;. Aix&ograve; no obstant, nom&eacute;s una de les capes (ja sigui la d'origen o la de destinaci&oacute;) ha de tenir valors d'ID &uacute;nics.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Una barrera de l&iacute;nia prohibeix viatjar per qualsevol lloc on la barrera s'intersequi amb els carrers. Per exemple, una desfilada o manifestaci&oacute; que bloquegi el tr&agrave;nsit en diversos segments del carrer es pot mostrar amb una barrera de l&iacute;nia. Si el nombre d'entitats de carrer amb qu&egrave; s'intersequen totes les barreres de l&iacute;nia &eacute;s superior a 500, l'eina retornar&agrave; un error.
             </p>
             <p>Una barrera de pol&iacute;gon prohibeix viatjar per qualsevol lloc on el pol&iacute;gon s'intersequi amb els carrers. Un dels usos d'aquest tipus de barrera &eacute;s mostrar les inundacions que cobreixen &agrave;rees de la xarxa de carrers i que impedeixen el viatge per carretera. Si el nombre d'entitats de carrer amb qu&egrave; s'intersequen totes les barreres de pol&iacute;gon &eacute;s superior a 2.000, l'eina retornar&agrave; un error.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Forma de la ruta</h2></div>
+        <hr/>
+        <div>
+            <p>Trieu la forma de la ruta que connecta cada origen a la seva destinaci&oacute; quan utilitzeu el mode de viatge:
+            </p>
+            <ul>
+                <li> <b>Segueix carrers</b>: la forma es basa en la xarxa de carrers subjacent. Aquesta opci&oacute; &eacute;s ideal si voleu generar les rutes entre els or&iacute;gens i les destinacions.
+                </li>
+                <li> <b>L&iacute;nia recta</b>: la forma &eacute;s una l&iacute;nia recta que connecta el parell origen-destinaci&oacute;. Aquesta opci&oacute; &eacute;s ideal si voleu generar diagrames d'aranya o l&iacute;nies de desig (per exemple, per mostrar quines botigues visiten els clients).
+                </li>
+            </ul>
+            
+            <p>La millor ruta entre un origen i la seva destinaci&oacute; corresponent sempre es calcula d'acord amb el mode de viatge, independentment de la forma de ruta triada.
             </p>
         </div>
     </div>

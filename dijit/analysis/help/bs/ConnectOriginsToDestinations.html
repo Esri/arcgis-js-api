@@ -70,7 +70,7 @@
             <p>Izaberite točkasti sloj koji predstavlja ishodi&scaron;te ili ishodi&scaron;ta. Alat podržava do  5 000 ishodi&scaron;ta i  5 000 odredi&scaron;ta. </p>
             <p>Ako odaberete sloj koji ima točno jedno ishodi&scaron;te, povezat će se sa svim odredi&scaron;tima.
             </p>
-            <p class="OnlineOnly">Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu Living Atlasa</b> ili <b>Izaberi sloj za analizu</b> s dna popisa padajućeg izbornika. Time se otvara galerija koja sadrži zbirku slojeva korisnu za mnogo analiza. 
+            <p>Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu</b> koja se nalazi na dnu popisa padajućeg izbornika. Ova opcija otvara galeriju u kojoj možete pretraživati i odabrati skupove podataka iz raznih izvora te ih koristiti u svojoj analizi. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Ako postoji jedno ishodi&scaron;te i mnogo odredi&scaron;ta, alat povezuje ishodi&scaron;te sa svim odredi&scaron;tima.
             </p>
-            <p class="OnlineOnly">Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu Living Atlasa</b> ili <b>Izaberi sloj za analizu</b> s dna popisa padajućeg izbornika. Time se otvara galerija koja sadrži zbirku slojeva korisnu za mnogo analiza. 
+            <p>Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu</b> koja se nalazi na dnu popisa padajućeg izbornika. Ova opcija otvara galeriju u kojoj možete pretraživati i odabrati skupove podataka iz raznih izvora te ih koristiti u svojoj analizi. 
             </p>
             <p> Ako postoji mnogo ishodi&scaron;ta i mnogo odredi&scaron;ta, trebate imati dva polja koja opisuju parove ishodi&scaron;ta i odredi&scaron;ta: <b>ID polje za ishodi&scaron;ta</b> i <b>Odgovarajuće ID polje za odredi&scaron;ta</b>. Alat povezuje parove ishodi&scaron;ta i odredi&scaron;ta tijekom analize. Na primjer, zamislite da imate dva ishodi&scaron;ta s vrijednostima ID polja <code>Rosie</code> i <code>Harold</code> i dva odredi&scaron;ta s istim vrijednostima ID-ja. Ishodi&scaron;te <code>Rosie</code> povezat će se s odredi&scaron;tem <code>Rosie</code>, a <code>Harold</code> će se povezati s <code>Haroldom</code>. Neće se izvr&scaron;iti nikakva druga povezivanja ili mjerenja.
             </p>
-            <p>Vrijednosti ID-ja moraju biti jedinstvene unutar svakog sloja; primjerice, sloj odredi&scaron;ta ne može imati dvije vrijednosti  <code>Rosie</code>. Vrijednosti u slojevima ishodi&scaron;ta i odredi&scaron;ta moraju se točno podudarati za stvaranje parova; <code>Harold</code> se neće povezati s vrijednosti koja je pogre&scaron;no napisana kao &scaron;to je <code>Harodl</code>. 
+            <p>Ako postoji jednak broj ishodi&scaron;ta i odredi&scaron;ta, vrijednosti ID-ja moraju biti jedinstvene unutar svakog sloja; primjerice, sloj odredi&scaron;ta ne može imati dvije vrijednosti  <code>Rosie</code>. Vrijednosti u slojevima ishodi&scaron;ta i odredi&scaron;ta moraju se točno podudarati za stvaranje parova; <code>Harold</code> se neće povezati s vrijednosti koja je pogre&scaron;no napisana kao &scaron;to je <code>Harodl</code>. 
+            </p>
+            <p>Alat također podržava povezivanje svakog ishodi&scaron;ta s vi&scaron;e odredi&scaron;ta ili svako odredi&scaron;te s vi&scaron;e ishodi&scaron;ta. U tim slučajevima i dalje morate imati dva polja koja opisuju parove ishodi&scaron;te-odredi&scaron;te. Međutim, samo jedan od slojeva (sloj ishodi&scaron;ta ili odredi&scaron;ta) mora posjedovati vrijednosti za jedinstveni ID.
             </p>
         </div>
     </div>
@@ -142,8 +144,25 @@
             </p>
         </div>
     </div>
+    <div id="routeShape">
+        <div><h2>Oblik rute</h2></div>
+        <hr/>
+        <div>
+            <p>Odaberite oblik rute koja povezuje svako ishodi&scaron;te s njegovim odredi&scaron;tem kada se upotrebljava način putovanja:
+            </p>
+            <ul>
+                <li> <b>Prati ulice</b> - Oblik se temelji na osnovnoj mreži ulica. Ova je opcija najbolja kada želite stvoriti rute između ishodi&scaron;ta i odredi&scaron;ta.
+                </li>
+                <li> <b>Ravna linija</b> - Oblik je ravna linija koja povezuje par ishodi&scaron;te-odredi&scaron;te. Ova je opcija najbolja kada želite stvoriti dijagrame oblika &bdquo;paukove mreže&ldquo; ili želite linije (npr. kako biste prikazali koje trgovine kupci posjećuju).
+                </li>
+            </ul>
+            
+            <p>Najbolja ruta između ishodi&scaron;ta i pripadajućeg odredi&scaron;ta uvijek se izračunava na temelju načina putovanja, bez obzira koji je oblik rute odabran.
+            </p>
+        </div>
+    </div>
     <div id="outputLayer">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             <p>Naziv sloja geoobjekata koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti. Ako sloj geoobjekata već postoji, od vas će se tražiti da unesete drugi naziv. Sloj geoobjekata sadržavat će sloj za svaku od sljedećih stavki: rute, nedodijeljena ishodi&scaron;ta i nedodijeljena odredi&scaron;ta kad neka ishodi&scaron;ta nije moguće povezati s odredi&scaron;tima.

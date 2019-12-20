@@ -103,6 +103,37 @@
               </select>
             </td>
           </tr>
+          <tr data-dojo-attach-point="_useTimeCheckRow">
+            <td colspan="3">
+              <label class="esriLeadingMargin1" data-dojo-attach-point="_useSearchTimeChkLabel">
+                <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_useSearchTimeChk" data-dojo-props="checked:false" data-dojo-attach-event="onChange:_handeUseSearchTimeChkChange"></input>
+                ${i18n.useTimeToFindCLusters}
+              </label>
+            </td>
+          </tr>
+         <tr data-dojo-attach-point="_searchDurLabelRow">
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                ${i18n.limitSearchDurLabel}
+              </label>
+            </td>
+          </tr>
+          <tr data-dojo-attach-point="_searchDurRow">
+            <td style="padding-right:0;padding-bottom:0;width:50%;">
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="constraints:{min:1,places:0},intermediateChanges:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_searchDurValue" class="esriLeadingMargin1"  style="width:60%;"/>
+            </td>
+            <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
+              <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_searchDurUnits" style="width:65%;table-layout:fixed;">
+                <option value="Seconds">${i18n.seconds}</option>
+                <option value="Minutes">${i18n.minutes}</option>
+                <option value="Hours">${i18n.hours}</option>
+                <option value="Days">${i18n.days}</option>
+                <option value="Weeks">${i18n.weeks}</option>
+                <option value="Months">${i18n.months}</option>
+                <option value="Years">${i18n.years}</option>
+              </select>
+            </td>
+          </tr>
           <tr>
             <td colspan="3" class="clear"></td>
           </tr>

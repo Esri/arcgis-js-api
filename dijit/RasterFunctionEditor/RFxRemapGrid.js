@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../kernel","../analysis/RemapGrid"],function(t,s,e,a,n){var i=t("RFxRemapGrid",[n],{inputArgs:{},constructor:function(t){this.inherited(arguments),this.own(this.on("change",s.hitch(this,this._updateInputArgs)))},postCreate:function(){this.inherited(arguments),this._setArgVisibilities(),this._setRanges()},_setArgVisibilities:function(){var t,s="none";for(var e in this.inputArgs)this.inputArgs.hasOwnProperty(e)&&(t=this.inputArgs[e],t.hasOwnProperty("isPublic")&&!t.isPublic||(s="block"));this.domNode.style.display=s},_setRanges:function(){var t={},s=this.inputArgs;s&&(s.InputRanges&&(t.InputRanges=s.InputRanges.value),s.OutputValues&&(t.OutputValues=s.OutputValues.value),s.NoDataRanges&&(t.NoDataRanges=s.NoDataRanges.value),this.set("ranges",t))},_updateInputArgs:function(){var t=this.get("ranges"),s=this.inputArgs;s&&t&&(s.InputRanges&&(s.InputRanges.value=t.InputRanges),s.OutputValues&&(s.OutputValues.value=t.OutputValues),s.NoDataRanges&&(s.NoDataRanges.value=t.NoDataRanges))}});return e("extend-esri")&&s.setObject("dijit.RasterFunctionEditor.RFxRemapGrid",i,a),i});

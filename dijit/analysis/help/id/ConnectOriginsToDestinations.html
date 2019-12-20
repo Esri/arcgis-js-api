@@ -71,7 +71,7 @@
             </p>
             <p>Jika Anda memilih layer yang tepat memiliki satu asal, maka ini akan terhubung ke semua tujuan.
             </p>
-            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            <p>Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Opsi ini membuka galeri di mana Anda dapat menelusuri dan memilih set data dari berbagai sumber untuk digunakan dalam analisis Anda. 
             </p>
         </div>
     </div>
@@ -85,11 +85,13 @@
             </p>
             <p>Jika hanya ada satu asal dan banyak tujuan, alat menghubungkan asal dengan setiap tujuan.
             </p>
-            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            <p>Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Opsi ini membuka galeri di mana Anda dapat menelusuri dan memilih set data dari berbagai sumber untuk digunakan dalam analisis Anda. 
             </p>
             <p> Jika ada banyak asal dan banyak tujuan, Anda akan perlu memiliki dua kolom yang menjelaskan pasangan asal-tujuan: <b>kolom ID dalam asal</b> dan <b>kolom ID yang Cocok di tujuan</b>. Alat menghubungkan pasangan asal-tujuan selama analisis. Misalnya, bayangkan jika Anda memiliki dua asal dengan nilai kolom ID dari <code>Rosie</code> dan <code>Harold</code> serta dua tujuan dengan nilai ID yang sama. Asal <code>Rosie</code> akan terhubung ke tujuan <code>Rosie</code>, dan <code>Harold</code> akan terhubung ke <code>Harold</code>. Tidak ada koneksi atau pengukuran lain yang dilakukan.
             </p>
-            <p>Nilai ID harus unik dalam setiap layer; contohnya, layer tujuan tidak boleh memiliki dua nilai  <code>Rosie</code>. Nilai pada layer asal dan tujuan harus benar-benar cocok untuk membuat pasangan; <code>Harold</code> tidak akan terhubung ke nilai yang salah dieja, <code>Harodl</code>. 
+            <p>Jika jumlah asal dan tujuan sama, nilai ID harus bersifat unik dalam setiap layer; misalnya, layer tujuan tidak boleh memiliki dua nilai  <code>Rosie</code>. Nilai pada layer asal dan tujuan harus benar-benar cocok untuk membuat pasangan; <code>Harold</code> tidak akan terhubung ke nilai yang salah dieja, <code>Harodl</code>. 
+            </p>
+            <p>Alat tersebut juga mendukung dalam menghubungkan setiap asal ke lebih dari satu tujuan atau setiap tujuan ke lebih dari satu asal. Dalam kasus demikian, Anda masih perlu untuk memiliki dua kolom yang menjelaskan pasangan asal-tujuan. Namun, hanya salah satu dari layer (entah layer asal atau tujuan) perlu memiliki nilai ID yang unik.
             </p>
         </div>
     </div>
@@ -109,7 +111,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Centang  <b>Gunakan Lalu Lintas</b> untuk menemukan rute tercepat berdasarkan waktu mulai dan kondisi lalu lintas berubah yang diberikan. Dengan juga memilih opsi <b>Lalu lintas langsung</b>, waktu keberangkatan dari asal ditetapkan ke waktu saat ini, dan kecepatan lalu lintas saat ini serta yang diprediksikan direferensikan dari sensor dan umpan untuk membuat rute. Kecepatan lalu lintas yang diprediksikan dihitung dengan mereferensikan kecepatan lalu lintas langsung, riwayat kecepatan, dan peristiwa saat ini seperti misalnya cuaca. Kecepatan lalu lintas diprediksi 12 jam ke depan, sehingga Anda dapat menggerakkan panel geser untuk menentukan waktu keberangkatan terlebih dahulu hingga  12 jam. </p>
+                        <p>Centang  <b>Gunakan Lalu Lintas</b> untuk menemukan rute tercepat berdasarkan waktu mulai dan kondisi lalu lintas berubah yang diberikan. Dengan juga memilih opsi <b>Lalu lintas langsung</b>, waktu keberangkatan dari asal ditetapkan ke waktu saat ini, dan kecepatan lalu lintas saat ini serta yang diprediksikan direferensikan dari sensor dan umpan untuk membuat rute. Kecepatan lalu lintas yang diprediksikan dihitung dengan mereferensikan kecepatan lalu lintas langsung, riwayat kecepatan, dan peristiwa saat ini seperti misalnya cuaca. Kecepatan lalu lintas diprediksi dalam jangka waktu 12 jam ke depan, sehingga Anda dapat menggerakkan panel geser untuk menentukan waktu keberangkatan terlebih dahulu hingga  12 jam. </p>
                         <p>Gunakan pengaturan lalu lintas langsung ini untuk menemukan waktu mengemudi untuk keberangkatan sekarang, berangkat dalam satu jam dari sekarang, dan seterusnya.
                         </p>
                     </li>
@@ -141,6 +143,23 @@
             <p>Penghalang garis melarang perjalanan ke mana pun penghalang berpotongan dengan jalan. Misalnya, parade atau demonstrasi yang memblokir lalu lintas di beberapa segmen jalan dapat direpresentasikan dengan penghalang garis. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang garis melebihi 500, alat mengembalikan suatu kesalahan.
             </p>
             <p>Penghalang poligon melarang perjalanan ke mana pun poligon berpotongan dengan jalan. Salah satu kegunaan penghalang tipe ini adalah untuk merepresentasikan area dari jaringan jalan yang tertutup banjir dan menyebabkan perjalanan ke sana tidak memungkinkan. Jika jumlah fitur jalan yang berpotongan dengan semua penghalang poligon melebihi 2000, alat mengembalikan suatu kesalahan.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Bentuk rute</h2></div>
+        <hr/>
+        <div>
+            <p>Pilih bentuk rute yang menghubungkan setiap asal ke tujuannya saat menggunakan mode perjalanan:
+            </p>
+            <ul>
+                <li> <b>Ikuti jalan</b> - Bentuk ini didasarkan pada jaringan jalan yang mendasarinya. Opsi ini adalah yang terbaik saat Anda ingin mendapatkan rute antara asal dan tujuan.
+                </li>
+                <li> <b>Garis lurus</b> - Bentuk ini adalah garis lurus yang menghubungkan pasangan asal-tujuan. Opsi ini adalah yang terbaik saat Anda ingin mendapatkan diagram laba-laba atau menghendaki garis (misalnya, untuk menunjukkan toko mana yang dikunjungi pelanggan).
+                </li>
+            </ul>
+            
+            <p>Rute terbaik antara asal dan tujuannya yang cocok selalu dihitung berdasarkan pada mode perjalanan, terlepas dari bentuk rute mana yang dipilih.
             </p>
         </div>
     </div>

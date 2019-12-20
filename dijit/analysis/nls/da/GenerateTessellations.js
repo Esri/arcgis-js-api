@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({chooseShape:"Vælg form",defineExtent:"Definere udstrækning",defineBin:"Definer beholderstørrelse ved at angive",area:"Område",distance:"Afstand",resultLayerName:"Navn på resultatlag",hexagon:"Sekskant",transverseHexagon:"Tværgående sekskant",square:"Kvadrat",triangle:"Triangel",diamond:"Ruder",sameAsDisplay:"Samme som visning",emptyBinSize:"Beholderstørrelse kan ikke være tom",currentExtent:"aktuel udstrækning",intersectExtent:"Behold kun gennemskærende underopdelinger",outputLayerName:"Generer underopdelinger på ${extentLayerName}",itemDescription:"Udstrækning fra ${extentLayerName} blev benyttet.",itemTags:"Analyseresultat, Generer underopdelinger, ${extentLayerName}",itemSnippet:"Vektorlag genereret ud fra Generer underopdelinger."});

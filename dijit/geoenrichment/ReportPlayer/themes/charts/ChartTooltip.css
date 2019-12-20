@@ -24,4 +24,5 @@
 .esriGEChartContainer_chartTooltip_masterTooltip {
     width: auto !important;
     max-width: initial !important;
+    pointer-events: none;
 }

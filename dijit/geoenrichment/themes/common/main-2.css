@@ -2,6 +2,7 @@
 @import url('../../ReportPlayer/themes/main-2.css');
 @import url('./Buttons.css');
 @import url("./Shared.css");
+@import url("./Spacing.css");
 @import url("./Tooltips.css");
 @import url("./Waiting.css");
 @import url('./FlowList.css');
@@ -11,3 +12,4 @@
 @import url('./NumericalSlider.css');
 @import url('./DataBrowser.css');
 @import url('./ShoppingCart.css');
+@import url('./ToggleButton.css');

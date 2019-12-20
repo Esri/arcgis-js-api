@@ -84,7 +84,7 @@
         <div>
             <p>Entitats de punts al voltant de les quals es calcularan les &agrave;rees. Podeu triar com es calculen les &agrave;rees en funci&oacute; del mode de viatge (en cotxe, en cami&oacute; o a peu) i la mesura (temps o dist&agrave;ncia).
             </p>
-            <p class="OnlineOnly">A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu una capa d'an&agrave;lisi del Living Atlas</b> o <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. S'obrir&agrave; una galeria que cont&eacute; una col&middot;lecci&oacute; de capes que resulten &uacute;tils per a moltes an&agrave;lisis. 
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. Aquesta opci&oacute; obre una galeria on podeu cercar i seleccionar datasets de diversos or&iacute;gens per u utilitzar-los a l'an&agrave;lisi. 
             </p>
             <p>L'eina admet fins a 1.000 entitats a la capa d'entrada.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Trieu el mode de viatge (en cotxe, en cami&oacute; o a peu) i la mesura (temps o dist&agrave;ncia).  L'administrador de la vostra organitzaci&oacute; determina els modes de viatge disponibles.   Despr&eacute;s de triar el mode de viatge i la mesura, introdu&iuml;u una durada o una dist&agrave;ncia de fins a  5 hores (300 minuts) o  300 milles (482,80 quil&ograve;metres). 
+            </p>
+            <p>La direcci&oacute; del viatge ( <b>Away from Facility</b> o <b>Toward Facility</b>) pot influir en com es generen les &agrave;rees. L'opci&oacute; Crea &agrave;rees de temps de recorregut respectar&agrave; els carrers d'un sentit, evitar&agrave; els girs il&middot;legals i seguir&agrave; altres regles basades en la direcci&oacute; del viatge. Heu de seleccionar la direcci&oacute; del viatge en funci&oacute; del tipus d'ubicacions d'entrada i el context de l'an&agrave;lisi. Per exemple, l'&agrave;rea de temps de recorregut d'un establiment de venda de pizza s'ha de crear allunyant-se de la instal&middot;laci&oacute;, mentre que l'&agrave;rea de temps de recorregut d'un hospital s'ha de crear en direcci&oacute; a la instal&middot;laci&oacute;.
             </p>
             <p>Si trieu  <b>Temps de conducci&oacute;</b>, <b>Temps de conducci&oacute; rural</b> o <b>Temps en cami&oacute;</b>, disposeu d'opcions per mesurar el temps de recorregut.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Mostra àrees inaccessibles com forats</h2></div>
+        <hr/>
+        <div>
+            <p>Trieu si les &agrave;rees de sortida inclouran forats en cas que no es pugui accedir als carrers a causa del temps o la dist&agrave;ncia de  <b>Mesura</b>, o b&eacute; de les restriccions imposades pel mode de viatge.
+            </p>
+            <p>Les &agrave;rees de temps de recorregut creades amb aquest par&agrave;metre tenen un l&iacute;mit de 15 minuts o 15 milles (24 quil&ograve;metres).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa.  El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si el nom de la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Mitjan&ccedil;ant el men&uacute; desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta d' <b>El meu contingut</b> on es desar&agrave; el resultat.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Inclou carrers accessibles</h2></div>
+        <hr/>
+        <div>
+            <p>Incloeu els carrers que s'utilitzen per crear les &agrave;rees de temps de recorregut com una capa de sortida. 
+            </p>
+            <p>L'opci&oacute; Crea &agrave;rees de temps de recorregut mesura l'abast d'una instal&middot;laci&oacute; a la xarxa de carrers i, a continuaci&oacute;, crea &agrave;rees de temps de recorregut des dels carrers per on s'ha passat. Per tant, les &agrave;rees s&oacute;n una aproximaci&oacute; dels carrers per on s'ha passat. Si la vostra an&agrave;lisi t&eacute; per objectiu determinar quins carrers cobreixen una dist&agrave;ncia o un temps de viatge espec&iacute;fics des d'una instal&middot;laci&oacute;, la generaci&oacute; dels carrers accessibles pot ser m&eacute;s precisa que la utilitzaci&oacute; de les &agrave;rees de temps de recorregut per avaluar si es pot accedir a un carrer concret.
+            </p>
+            <p>Les &agrave;rees de temps de recorregut creades amb aquest par&agrave;metre tenen un l&iacute;mit de 15 minuts o 15 milles (24 quil&ograve;metres).
             </p>
         </div>
     </div>

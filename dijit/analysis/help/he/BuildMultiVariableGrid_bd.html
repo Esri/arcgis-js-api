@@ -41,32 +41,32 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Build Multi-Variable Grid</h2><p/>
-        <h2><img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" alt="Append Data workflow diagram"></h2>
+        <h2>בנה גריד מרובה משתנים</h2><p/>
+        <h2><img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" alt="תרשים תהליך עבודה של הוספת נתונים"></h2>
         <hr/>
-    <p>The Build Multi-Variable Grid tool works with one or more layers of point, line, or polygon features. The tool generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer. These values can include the following variables: 
+    <p>הכלי 'בנה גריד מרובה משתנים' עובד עם שכבה אחת או יותר של ישויות נקודה, קו או פוליגון. הכלי מפיק גריד של תאים מרובעים או משושים ומחשב ערכים עבור כל תא על בסיס הקרבה של כל שכבת קלט. ערכים אלה יכולים לכלול את המשתנים הבאים: 
 
     </p>
     <p>
         <ul>
-            <li> <b>Distance to Nearest</b>&mdash;The distance from each bin to the nearest feature
+            <li> <b>מרחק לסמוך ביותר</b> - המרחק מכל תא לישות הקרובה ביותר
             </li>
-            <li> <b>Attribute of Nearest</b>&mdash;A field value of the feature nearest to each bin
+            <li> <b>מאפיין של הסמוך ביותר</b> - ערך שדה של הישות הקרובה ביותר לכל תא
             </li>
-            <li> <b>Summary of Nearby</b>&mdash;A specified statistic of all features within a distance of each bin
+            <li> <b>סיכום של הסמוך ביותר</b> - סטטיסטיקה מוגדרת של כל הישויות בטווח מרחק נתון מהתא
             </li>
-            <li> <b>Summary of Intersecting</b>&mdash;A specified statistic of all features that intersect each bin
+            <li> <b>סיכום של מצטלבים</b> - סטטיסטיקה מוגדרת של כל הישויות שמצטלבות עם כל תא
             </li>
         </ul>
         
     </p>
-    <p>Only variables you specify will be included in the result layer. These variables can help you understand the proximity and distribution of your data. The results can help you begin to answer questions such as the following:
+    <p>רק משתנים שציינת ייכללו בשכבת התוצאה. משתנים אלה יכולים לעזור לך להבין את הקרבה והפיזור של הנתונים. התוצאות יכולות לעזור לך להתחיל לענות על שאלות כגון:
         <ul>
-            <li>Given multiple layers of public transportation infrastructure, what part of the city is least accessible by public transportation?
+            <li>בהינתן שכבות מרובות של תשתית תחבורה ציבורית, איזה חלק של העיר הוא הכי פחות נגיד בתחבורה ציבורית?
             </li>
-            <li>Given layers of waterways, such as lakes and rivers, what is the name of the water body closest to each  location in the U.S.?
+            <li>בהינתן שכבות של נתיבי מים, כגון אגמים ונהרות, מהו שם מקור המים הקרוב ביותר לכל מיקום בארה&quot;ב?
             </li>
-            <li>Given a layer of household income, where in the U.S. is the variation of income in the surrounding 50 miles the greatest?
+            <li>בהינתן שכבה של הכנסות לבית אב, היכן בארה&quot;ב שונות ההכנסה ברדיוס של 80 ק&quot;מ היא הגדולה ביותר?
             </li>
         </ul>
         
@@ -74,54 +74,49 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="binType">
-        <div><h2>Choose the type of bins that will be used to build the multi-variable grid</h2></div>
+        <div><h2>בחר את סוג רכיבי ה-Bin שישמשו לבניית הגריד מרובה המשתנים</h2></div>
         <hr/>
         <div>
              
-            <p>The 
-type and size of bins that will be used to create  the multi-variable grid. For the  <b>Square</b> option, the number and units specified determine the height and length of the square. For the <b>Hexagon</b> option, the number and units specified  determine the distance between parallel sides.
+            <p>סוג וגודל התאים ישמש ליצירת הגריד מרובה המשתנים. עבור האפשרות  <b>ריבוע</b>, המספר והיחידות שצוינו קובעים את הגובה והאורך של הריבוע. עבור <b>משושה</b>, המספר והיחידות שצוינו קובעים את המרחק בין צדדים מקבילים.
             </p>
-            <p>This analysis uses bins and requires a projected coordinate system. You can set the  <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
+            <p>ניתוח זה משתמש בתאים ומחייב מערכת קואורדינטות מוטלת. באפשרותך להגדיר את מערכת הקואורדינטות המעבדת ב'סביבות ניתוח'. אם מערכת הקואורדינטות המעבדת לא הוגדרת למערכת קואורדינטות מוטלת, תתבקש להגדיר אותה בעת הרצת הניתוח .
             </p>
         </div>
     </div>
     <div id="variableCalculations">
-        <div><h2>Choose input layers and variables that you would like to include in the grid</h2></div>
+        <div><h2>בחר את שכבות הקלט והמשתנים שברצונך לכלול בגריד</h2></div>
         <hr/>
         <div>
-            <p>Click the  add button ( <b>+</b>) to open the <b>Add Variables</b> window and add a layer to your analysis. In the <b>Add Variables</b> window, choose an input layer and configure the variables you want to calculate for that input layer.
+            <p>לחץ על לחצן ההוספה ( <b>+</b>) כדי לפתוח את החלון <b>הוסף משתנים</b> ולהוסיף שכבה לניתוח. בחלון <b>הוסף משתנים</b>, בחר שכבת קלט והגדר את המשתנים שברצונך לחשב עבור אותה שכבת קלט.
             </p>
-            <p>Once you have chosen and configured the variables you want to calculate, the layer will be listed in the tool window with any other selected layers. Click the edit button  for any layer to open the  <b>Add Variables</b> window and see all variables configured for that layer. Click the delete button for any layer to remove that layer and all related variables from analysis.
+            <p>לאחר שבחרת והגדרת את המשתנים שברצונך לחשב, השכבה תופיע בחלון הכלי, ביחד עם כל שכבה אחרת שנבחרה. לחץ על לחצן העריכה עבור שכבה כלשהי כדי לפתוח את החלון  <b>הוסף משתנים</b> ולהציג את כל המשתנים שהוגדרו עבור שכבה זו. לחץ על לחצן המחיקה עבור שכבה כלשהי כדי להסיר מהניתוח את השכבה הזו ואת כל המשתנים הקשורים אליה.
             </p>
         </div>
     </div>
     <div id="addVariablesWindow">
-        <div><h2>Add Variables</h2></div>
+        <div><h2>הוסף משתנים</h2></div>
         <hr/>
         <div>
-            <p>This window allows you to  choose an input layer and configure the variables you want to calculate for that input layer. To begin, use the  <b>Choose an input layer</b> drop-down menu to select the point, polygon, or line layer you want to add to your analysis.
+            <p>חלון זה מאפשר לך לבחור שכבת קלט כלשהי ולהגדיר את המשתנים שברצונך לחשב עבור אותה שכבת קלט. כדי להתחיל, השתמש בתפריט הנפתח  <b>בחר שכבת קלט</b> כדי לבחור את שכבת הנקודה, הפוליגון או הקו שברצונך להוסיף לניתוח.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
-            <p>Once you have chosen an input layer, click the  <b>Add a variable</b> button to open a new variable for editing. You must provide a unique name for each variable. This will be the name of the field that is created in the attribute table of the result layer.
+            <p>לאחר שבחרת שכבת קלט, לחץ על הלחצן  <b>הוסף משתנה</b> כדי לפתוח משתנה חדש לעריכה. אתה חייב לספק שם ייחודי לכל משתנה. זה יהיה שם השדה שנוצר בטבלת המאפיינים של שכבת התוצאה.
             </p>
-            <p>Use the drop-down menu to select the type of variable to add. Each variable type must be configured with a unique set of parameters, and all parameters are required.
+            <p>השתמש בתפריט הנפתח כדי לבחור את סוג המשתנה להוספה. יש להגדיר כל סוג משתנה עם מערך ייחודי של פרמטרים, וכל הפרמטרים הם חובה.
             </p>
-            <p>Once you have added all desired variables for the chosen layer, click the  <b>Add</b> button to save the variables.
+            <p>לאחר שהוספת את כל המשתנים הרצויים עבור השכבה שנבחרה, לחץ על לחצן  <b>הוסף</b> כדי לשמור את המשתנים.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists, the tool will fail.
+            <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.
             </p>
-            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
-the name of a folder in <b>My Content</b> where the result will be
-saved.
+            <p>בעת כתיב ל- ArcGIS Data Store (מאגר נתונים יחסים או מרחבי-זמני של Big Data) בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

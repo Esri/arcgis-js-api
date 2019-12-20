@@ -70,7 +70,7 @@
             <p>Den Punkt-Layer ausw&auml;hlen, der den bzw. die Startpunkte darstellt.  Das Werkzeug unterst&uuml;tzt bis zu  5.000 Startpunkte und  5.000 Ziele. </p>
             <p>Wenn Sie einen Layer mit genau einem Startpunkt ausw&auml;hlen, wird er mit allen Zielen verbunden.
             </p>
-            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Mit dieser Option &ouml;ffnen Sie eine Galerie, in der Sie zu Datasets aus verschiedenen Quellen navigieren und diese f&uuml;r Ihre Analysen ausw&auml;hlen k&ouml;nnen. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Wenn ein Startpunkt und viele Ziele vorhanden sind, verbindet das Werkzeug den Startpunkt mit jedem Ziel.
             </p>
-            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Mit dieser Option &ouml;ffnen Sie eine Galerie, in der Sie zu Datasets aus verschiedenen Quellen navigieren und diese f&uuml;r Ihre Analysen ausw&auml;hlen k&ouml;nnen. 
             </p>
             <p> Wenn viele Startpunkte und viele Ziele vorhanden sind, ben&ouml;tigen Sie zwei Felder zur Definition der Startpunkt-Ziel-Paare: <b>ID-Feld in Startpunkten</b> und <b>&Uuml;bereinstimmendes ID-Feld in Zielen</b>. Das Werkzeug verbindet die Startpunkt-Ziel-Paare w&auml;hrend der Analyse. Angenommen, Sie verf&uuml;gen &uuml;ber zwei Startpunkte mit den ID-Feldwerten <code>Rosie</code> und <code>Harold</code> und zwei Ziele mit denselben ID-Werten. Der Startpunkt <code>Rosie</code> wird mit dem Ziel <code>Rosie</code> und <code>Harold</code> wird mit <code>Harold</code> verbunden. Es werden keine anderen Verbindungen hergestellt bzw. Messungen durchgef&uuml;hrt.
             </p>
-            <p>Die ID-Werte m&uuml;ssen in jedem Layer eindeutig sein. Der Ziel-Layer darf beispielsweise keine zwei  <code>Rosie</code>-Werte aufweisen. Die Werte in den Startpunkt- und Ziel-Layern m&uuml;ssen exakt &uuml;bereinstimmen, um Paare zu erstellen; <code>Harold</code> wird nicht mit dem falsch geschriebenen Wert <code>Harodl</code> verbunden. 
+            <p>Wenn die Anzahl an Startpunkten und Zielen gleich ist, m&uuml;ssen die ID-Werte in den einzelnen Layern eindeutig sein. Beispielsweise kann der Wert  <code>Rosie</code> nicht zweimal in einem Ziel-Layer vorhanden sein. Die Werte in den Startpunkt- und Ziel-Layern m&uuml;ssen exakt &uuml;bereinstimmen, um Paare zu erstellen; <code>Harold</code> wird nicht mit dem falsch geschriebenen Wert <code>Harodl</code> verbunden. 
+            </p>
+            <p>Das Werkzeug unterst&uuml;tzt die Verbindung eines Startpunktes mit mehreren Zielen sowie eines Zieles mit mehreren Startpunkten. Auch in diesem Fall ben&ouml;tigen Sie zwei Felder, in denen die Start-Ziel-Paare beschrieben werden. Jedoch m&uuml;ssen nur in einem der Layer (entweder der Startpunkt- oder Ziel-Layer) eindeutige ID-Werte angegeben werden.
             </p>
         </div>
     </div>
@@ -116,7 +118,7 @@
                         </p>
                         <p>Sie k&ouml;nnen diese Einstellungen f&uuml;r historische Verkehrsdaten verwenden, um beispielsweise folgende Frage zu stellen: Wie lange dauert es im Allgemeinen, diese Ziele zu erreichen, wenn an einem Mittwoch um 11:30 Uhr losgefahren wird?
                         </p>
-                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Startpunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Startpunkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Routen f&uuml;r die Abfahrtzeit von 8:00 Uhr Eastern Time bzw. 8:00 Uhr Pacific Time angenommen wird.
+                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Startpunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Startpunkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Routen f&uuml;r die Abfahrtzeit von 8:00 Uhr Eastern Time bzw. 8:00 Uhr Pacific Time erstellt.
                         </p>
                     </li>
                 </ul>
@@ -140,6 +142,23 @@ Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um 
             <p>Eine Linien-Barriere unterbindet den Verkehr an allen Punkten, an denen die Barriere Stra&szlig;en schneidet. Mit einer Linien-Barriere kann beispielsweise eine Parade oder Demonstration modelliert werden, die den Verkehr &uuml;ber mehrere Stra&szlig;enz&uuml;ge hinweg blockiert. Wenn die Anzahl der Stra&szlig;en-Features, die sich mit allen Linien-Barrieren schneiden, 500 &uuml;berschreitet, gibt das Werkzeug einen Fehler zur&uuml;ck
             </p>
             <p>Eine Polygon-Barriere unterbindet den Verkehr an allen Punkten, an denen das Polygon Stra&szlig;en schneidet. Dieser Barrierentyp wird beispielsweise verwendet, um &uuml;berflutete Bereiche des Stra&szlig;ennetzes zu modellieren und den Stra&szlig;enverkehr in diesen Bereichen zu sperren. Wenn die Anzahl der Stra&szlig;en-Features, die sich mit allen Polygon-Barrieren schneiden, 2000 &uuml;berschreitet, gibt das Werkzeug einen Fehler zur&uuml;ck
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Routen-Shape</h2></div>
+        <hr/>
+        <div>
+            <p>W&auml;hlen Sie f&uuml;r die Route das Shape aus, anhand dessen die einzelnen Startpunkte bei der Verwendung eines Reisemodus mit dem Ziel verbunden werden:
+            </p>
+            <ul>
+                <li> <b>Entlang von Stra&szlig;en</b>: Das Shape basiert auf dem zugrunde liegenden Stra&szlig;ennetz. Diese Option eignet sich optimal f&uuml;r die Erstellung von Routen zwischen Startpunkten und Zielen.
+                </li>
+                <li> <b>Gerade Linie</b>: Das Shape entspricht einer geraden Linie, die das Start-Ziel-Paar verbindet. Diese Option eignet sich optimal f&uuml;r die Erstellung von Netzdiagrammen oder Desire-Lines (z.&nbsp;B. um darzustellen, welche Filialen Kunden aufsuchen).
+                </li>
+            </ul>
+            
+            <p>Die beste Route zwischen einem Startpunkt und dessen Ziel wird unabh&auml;ngig vom ausgew&auml;hlten Shape stets auf Basis des Reisemodus berechnet.
             </p>
         </div>
     </div>

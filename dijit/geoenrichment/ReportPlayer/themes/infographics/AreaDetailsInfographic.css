@@ -16,3 +16,13 @@
         height: 139px;
         opacity: 0.5;
     }
+
+
+
+
+
+
+.esriGEReportPlayerPrint .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderImage,
+.esriGEReportPlayerPrint .esriGEAreaDetailsInfographic .paginatableTableInfographic_noDataPlaceHolderImage {
+    display: none !important;
+}

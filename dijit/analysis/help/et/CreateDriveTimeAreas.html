@@ -84,7 +84,7 @@
         <div>
             <p>Punktobjektid, mille p&otilde;hjal arvutatakse pinnad. Saate valida, kuidas pinnad arvutatakse &ndash; liikumisviisi (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;du (aeg v&otilde;i vahemaa) p&otilde;hjal.
             </p>
-            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. See variant avab galerii, mida saate sirvida ja kus saate erinevatest allikatest valida anal&uuml;&uuml;sil kasutamiseks andmestikke. 
             </p>
             <p>See algoritm toetab kuni 1000 objekti igas sisendkihis.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Vali liikumisviis (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;da aega v&otilde;i vahemaad. Lubatud reisiviisid m&auml;&auml;rab teie asutuse administraator.   Kui olete liikumisviisi ja m&otilde;&otilde;tmise vahendi valinud, sisestage kestus v&otilde;i vahemaa, milleks v&otilde;ib maksimaalselt olla  5 tundi (300 minutit) v&otilde;i  300 miili (482,80 kilomeetrit). 
+            </p>
+            <p>Reisimise suund ( <b>Rajatisest eemale</b> v&otilde;i <b>Rajatise poole</b>) v&otilde;ib piirkondade genereerimist m&otilde;jutada. S&otilde;iduaja piirkondade loomise k&auml;su kasutamisel v&otilde;etakse arvesse &uuml;hesuunalisi t&auml;navaid, v&auml;lditakse lubamatuid p&ouml;&ouml;rdeid ja peetakse kinni muudest reisimise suunas kehtivatest liiklusreeglitest. Reisimise suuna valimisel peaksite arvesse v&otilde;tma sisendasukohtade t&uuml;&uuml;pi ja oma anal&uuml;&uuml;si konteksti. Pitsade kojutoomisega tegeleva ettev&otilde;tte s&otilde;iduaja piirkond n&auml;iteks tuleks luua rajatisest eemalduvas suunas, haigla s&otilde;iduaja piirkond seevastu rajatise poole liikuvas suunas.
             </p>
             <p>Valikute  <b>s&otilde;iduaeg</b>, <b>s&otilde;iduaeg maakohas</b>v&otilde;i <b>autoveo s&otilde;iduaeg</b>  korral saate s&otilde;iduaja m&otilde;&otilde;tmiseks mitme variandi vahel valida.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Kuva juurdepääsuta alad aukudena</h2></div>
+        <hr/>
+        <div>
+            <p>Siin saate valida, kas v&auml;ljundalad peaksid sisaldama auke, kui m&otilde;nele t&auml;navale juurdep&auml;&auml;s puudub (nt aja v&otilde;i vahemaa  <b>m&otilde;&otilde;du</b> t&otilde;ttu v&otilde;i reisimisviisist tingitud piirangute t&otilde;ttu).
+            </p>
+            <p>Selle parameetri abil loodud s&otilde;iduaja piirkondade limiit on 15 minutit v&otilde;i 24 kilomeetrit (15 miili).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui samanimeline kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemus salvestatakse.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Kaasa juurdepääsetavad tänavad</h2></div>
+        <hr/>
+        <div>
+            <p>S&otilde;iduaja piirkondade loomiseks kasutatavad t&auml;navad saate kaasata v&auml;ljundkihina. 
+            </p>
+            <p>S&otilde;iduaja piirkondade loomise k&auml;sk m&otilde;&otilde;dab rajatise juurdep&auml;&auml;setavust t&auml;navate v&otilde;rgus ja loob seej&auml;rel s&otilde;iduaja piirkonnad reisimiseks kasutatud t&auml;navate p&otilde;hjal. Seet&otilde;ttu annavad piirkonnad ligikaudse kokkuv&otilde;tte l&auml;bitud t&auml;navatest. Kui teie anal&uuml;&uuml;si eesm&auml;rk on kindlaks m&auml;&auml;rata, millised t&auml;navad j&auml;&auml;vad rajatisest teatud kindla reisivahemaa v&otilde;i -aja raamesse, v&otilde;ib juurdep&auml;&auml;setavate t&auml;navate genereerimine olla t&auml;psem kui s&otilde;iduaja piirkondade kasutamine, kui soovite hinnata, kas konkreetne t&auml;nav oli juurdep&auml;&auml;setav.
+            </p>
+            <p>Selle parameetri abil loodud s&otilde;iduaja piirkondade limiit on 15 minutit v&otilde;i 24 kilomeetrit (15 miili).
             </p>
         </div>
     </div>

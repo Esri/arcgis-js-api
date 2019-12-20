@@ -100,6 +100,28 @@
         </tr>
         <tr>
           <td colspan="2">
+            <label data-dojo-attach-point="_travelDirectionLabel" class="esriLeadingMargin2">${i18n.travelDirection}</label>
+          </td>
+          <td class="shortTextInput">
+          </td>
+        </tr>         
+        <tr>      
+          <td>
+            <div class="esriLeadingMargin2 bufferSelector selected" data-dojo-attach-point="_facilitytodemand" data-dojo-attach-event="onClick:_handleFacilityToDemandClick">
+              <div class="bufferIcon facilityDemandIcon"></div>
+              <div><label class="esriSelectLabel">${i18n.awayFacility}</label></div>
+            </div>
+          </td>
+          <td>
+            <div class="bufferSelector" data-dojo-attach-point="_demandtofacility" data-dojo-attach-event="onClick:_handleDemandToFacilityClick">
+              <div class="bufferIcon demandFacilityIcon"></div>
+              <div><label class="esriSelectLabel">${i18n.towardsFacility}</label></div>
+            </div>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="2">
             <label data-dojo-attach-point="_labelTwo" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
             <label data-dojo-attach-point="_arealabel" class="esriAnalysisStepsLabel">${i18n.areaLabel}</label>
           </td>
@@ -133,7 +155,28 @@
             </table>
           </td>
         </tr>
-
+        <tr>
+          <td colspan="2">
+            <label class="esriLeadingMargin1 esriSelectLabel">
+              <input type="radio" data-dojo-attach-point="_unreachableAreas" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onClick:_handleUnreachableAreasClick"/>
+              ${i18n.showUnreachableAreas}
+            </label>
+          </td>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                      <span class="warningIcon hide" data-dojo-attach-point="_unreachableAreasWarning" tabindex="0"></span>
+                  </td>
+                  <td>
+                      <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="showHoles"></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
         <tr>
           <td colspan="2">
             <label data-dojo-attach-point="_labelThree" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
@@ -146,6 +189,28 @@
         <tr>
           <td colspan="3">
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 esriOutputText" data-dojo-props="required:true,trim:true" data-dojo-attach-event="onChange:_handleResultLyrInputChange" data-dojo-attach-point="outputLayerInput"  value="">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriLeadingMargin1 esriSelectLabel">
+              <input type="radio" data-dojo-attach-point="_reachableStreets" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onClick:_handleReachableStreetsClick"/>
+              ${i18n.includeReachableStreets}
+            </label>
+          </td>
+          <td>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                      <span class="warningIcon hide" data-dojo-attach-point="_reachableStreetsWarning" tabindex="0"></span>
+                  </td>
+                  <td>
+                      <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="includeReachableStreets"></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </td>
         </tr>
         <tr>

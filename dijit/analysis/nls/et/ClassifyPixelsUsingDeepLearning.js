@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Pikslite klassifitseerimine süvaõppe teel",outputLayerName:"${layername}_klassifitseeritud",modelLabel:"Valige pikslite klassifitseerimisel kasutatav süvaõppemudel",modelArgsLabel:"Määrake süvaõppemudeli argumendid",nameLabel:"Nimi",valueLabel:"Väärtus",queryModelArgsMsg:"Tehakse mudeli argumentide päringut...",analysisLayerLabel:"Pikslite klassifitseerimiseks kasutatava pildi valimine",itemDescription:"Analüüsipõhine pilditeenus, mis on genereeritud pikslite klassifitseerimisel süvaõppe teel",itemTags:"Rasteranalüüsi tulemus, pikslite klassifitseerimine süvaõppe teel, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus, mis on genereeritud pikslite klassifitseerimisel süvaõppe teel"});

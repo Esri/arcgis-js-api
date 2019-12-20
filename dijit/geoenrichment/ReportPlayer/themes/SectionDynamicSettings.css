@@ -79,29 +79,26 @@
 
     
 
-    .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList {
+    .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .listItem div:nth-child(2) {
+        min-width: 100px;
+        margin-right: 10px;
     }
 
-        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .listItem div:nth-child(2) {
-            min-width: 100px;
-            margin-right: 10px;
-        }
+    .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .upButton,
+    .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .downButton {
+        background-image: url("./images/sortArrows/upTriangle.svg");
+        background-repeat: no-repeat;
+        width: 8px;
+        height: 8px;
+        background-size: 7px;
+        background-position: center;
+        float: right;
+        margin-top: 5px;
+    }
 
-        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .upButton,
-        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .downButton {
-            background-image: url("./images/sortArrows/upTriangle.svg");
-            background-repeat: no-repeat;
-            width: 8px;
-            height: 8px;
-            background-size: 7px;
-            background-position: center;
-            float: right;
-            margin-top: 5px;
-        }
-
-        .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .downButton {
-            background-image: url("./images/sortArrows/downTriangle.svg");
-        }
+    .esriGEReportPlayer_sectionDynamicChartSettings .sectionDynamicChartSettings_sortingList .downButton {
+        background-image: url("./images/sortArrows/downTriangle.svg");
+    }
 
     
 
@@ -122,6 +119,16 @@
         background: -moz-linear-gradient(#409ECE, #409ECE);
         background: linear-gradient(#409ECE, #409ECE);
     }
+
+
+
+.esriGEReportPlayer_sectionDynamicTableSettings .esriGEOnDemandSelect {
+    min-width: 150px;
+}
+
+.esriGEReportPlayer_sectionDynamicTableSettings .sectionDynamicTableSettings_label {
+    min-width: 80px;
+}
 
 
 
@@ -164,4 +171,10 @@
     background-repeat: no-repeat;
     background-image: url("./images/commands/exportWhite.svg");
     cursor: pointer;
+}
+
+
+
+.esriGEReportPlayerPrint .sectionDynamicSettings_buttonBar {
+    display: none !important;
 }

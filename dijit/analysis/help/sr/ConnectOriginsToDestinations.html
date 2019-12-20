@@ -70,7 +70,7 @@
             <p>Odaberite tačkasti sloj koji predstavlja polaznu tačku ili polazne tačke. Alatka podržava do  5.000 polaznih tačaka i  5.000 krajnjih tačaka. </p>
             <p>Ako odaberete sloj koji ima tačno jednu polaznu tačku, ona će se povezati sa svim krajnjim tačkama.
             </p>
-            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            <p>Pored biranja sloja sa mape, možete da selektujete  <b>Izaberi sloj za analizu</b> koji se nalazi na dnu padajuće liste. Ova opcija otvara galeriju gde možete da pregledate i birate skupove podataka iz raznih izvora za kori&scaron;ćenje u va&scaron;oj analizi. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Ako postoji jedna polazna tačka i vi&scaron;e krajnjih tačaka, alatka povezuje polaznu tačku sa svakom od krajnjih tačaka.
             </p>
-            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            <p>Pored biranja sloja sa mape, možete da selektujete  <b>Izaberi sloj za analizu</b> koji se nalazi na dnu padajuće liste. Ova opcija otvara galeriju gde možete da pregledate i birate skupove podataka iz raznih izvora za kori&scaron;ćenje u va&scaron;oj analizi. 
             </p>
             <p> Ako ima mnogo polaznih tačaka i mnogo krajnjih tačaka, potrebno je da imate dva polja koja opisuju parove polaznih tačaka i krajnjih tačaka: <b>ID polje u polaznim tačkama</b> i <b>Podudarajuće polje ID-a u krajnjim tačkama</b>. Alatka povezuje parove polaznih tačaka i krajnjih tačaka tokom analize. Na primer, zamislite da imate dve polazne tačke sa vrednostima polja ID-a <code>Rouzi</code> i <code>Harold</code> i dve krajnje tačke sa istim vrednostima ID-a. Polazna tačka <code>Rouzi</code> povezaće se sa krajnjom tačkom <code>Rouzi</code>, a <code>Harold</code> će se povezati sa tačkom <code>Harold</code>. Neće doći do drugih veza niti mera.
             </p>
-            <p>Vrednosti ID-a moraju da budu jedinstvene unutar svakog sloja, na primer, sloj sa krajnjim tačkama ne može da ima dve vrednosti  <code>Rouzi</code>. Vrednosti u slojevima sa polaznim tačkama i krajnjim tačkama moraju tačno da se podudaraju da bi formirali parove; <code>Harold</code> se neće povezati sa pogre&scaron;no otkucanom vredno&scaron;ću, <code>Harold</code>. 
+            <p>Ako postoji jednak broj polaznih tačaka i odredi&scaron;ta, vrednosti ID-a moraju da budu jedinstvene unutar svakog sloja, na primer, sloj sa krajnjim tačkama ne može da ima dve vrednosti  <code>Rouzi</code>. Vrednosti u slojevima sa polaznim tačkama i krajnjim tačkama moraju tačno da se podudaraju da bi formirali parove; <code>Harold</code> se neće povezati sa pogre&scaron;no otkucanom vredno&scaron;ću, <code>Harold</code>. 
+            </p>
+            <p>Alatka takođe podržava povezivanje svake polazne tačke sa vi&scaron;e odredi&scaron;ta, odnosno svako od odredi&scaron;ta sa vi&scaron;e polaznih tačaka. U takvim slučajevima, svakako morate da imate dva polja koja opisuju parove polazna tačka-odredi&scaron;te. Međutim, potrebno je da samo jedan sloj (sloj polazne tačke ili odredi&scaron;ta) ima jedinstvene ID vrednosti.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Linijska barijera zabranjuje kretanje svuda kuda barijera preseca ulice. Na primer, parada ili protest koji blokiraju saobraćaj duž nekoliko segmenta ulica mogu da budu predstavljeni linijskom barijerom. Ako broj ulica koje su presečene linijskom barijerom prema&scaron;uje 500, alatka će prikazati gre&scaron;ku.
             </p>
             <p>Poligonalna barijera zabranjuje kretanje svuda gde poligon preseca ulice. Jedan vid kori&scaron;ćenja ovog tipa barijere je da predstavi poplave koje pokrivaju oblasti cele mreže ulica i onemogućavaju drumski saobraćaj. Ako broj ulica koje su presečene poligonalnom barijerom prema&scaron;uje 2000, alatka će prikazati gre&scaron;ku.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Oblik rute</h2></div>
+        <hr/>
+        <div>
+            <p>Izaberite oblik rute koja povezuje svaku polaznu tačku sa odredi&scaron;tem kada se koristi režim putovanja:
+            </p>
+            <ul>
+                <li> <b>Prati ulice</b> - Oblik je zasnovan na pozadinskoj mreži ulica. Ova opcija je najbolja kada želite da generi&scaron;ete rute između polaznih tačaka i odredi&scaron;ta.
+                </li>
+                <li> <b>Prava linija</b> - Oblik je prava linija koja povezuje par polazna tačka-odredi&scaron;te. Ova opcija je najbolja kada želite da generi&scaron;ete razgranate dijagrame ili željene linije (na primer, da biste ukazali na to koje prodavnice kupci posećuju).
+                </li>
+            </ul>
+            
+            <p>Najbolja ruta između polazne tačke i odgovarajućeg odredi&scaron;ta uvek se izračunava na osnovu režima putovanja, bez obzira na to koji oblik rute izaberete.
             </p>
         </div>
     </div>

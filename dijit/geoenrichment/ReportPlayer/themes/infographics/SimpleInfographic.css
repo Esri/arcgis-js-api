@@ -4,10 +4,8 @@
 .esriGESimpleInfographic {
     font-size: 13px;
     position: relative;
-    overflow: hidden;
-}
-
     
+}
 
     
     .esriGESimpleInfographic > div > .esriGEReportPlayer_section {

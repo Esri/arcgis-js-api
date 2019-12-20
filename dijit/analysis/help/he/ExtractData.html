@@ -41,56 +41,54 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Extract Data</h2><p/>
-        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="Extract Data"></h2>
+        <h2>חלץ נתונים</h2><p/>
+        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="חלץ נתונים"></h2>
         <hr/>
-    <p>With this tool, you can select and download data for a specified area of interest. Layers that you select will be added to a ZIP, CSV, or KMZ file.
+    <p>כלי זה מאפשר לך לבחור ולהוריד נתונים עבור תחום עניין ספציפי. שכבות שתבחר יתווספו לקובץ ZIP, &rlm;CSV או KMZ.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="InputLayers">
-        <div><h2>Layers to Extract</h2></div>
+        <div><h2>שכבות לחילוץ</h2></div>
         <hr/>
         <div>
-            <p>These are the  layers in your table of contents from which  you can extract features.  Layers that are checked are extracted and included in the resulting ZIP or CSV file.
+            <p>אלה הן השכבות בתוכן העניינים שלך שמהן באפשרותך לחלץ ישויות. שכבות שתסמן יחולצו ויכללו בקובץ ZIP, או CSV שיתקבל כתוצאה.
             </p>
-            <p>In order for a layer to appear in the list of layers to extract, you must either own the data or the owner of the data must enable exporting of the data.    To enable data export on data you own: 
+            <p>כדי ששכבה תופיע ברשימה של שכבות לחילוץ, עליך להיות הבעלים של הנתונים או שהבעלים של הנתונים יאפשר ייצוא של הנתונים.    כדי לאפשר ייצוא נתונים שהם בבעלותך: 
                 <ul>
-                    <li>Open the item description of the data.
+                    <li>פתח את תיאור הפריט של הנתונים.
                     </li>
-                    <li>Click the  <b>Settings</b> tab.
+                    <li>לחץ על הכרטיסייה  <b>הגדרות</b>.
                     </li>
-                    <li>Scroll down to the  <b>Export Data</b> section.
+                    <li>גלול למטה למקטע  <b>ייצא נתונים</b>.
                     </li>
-                    <li>Check  <b>Allow others to export to different formats</b>.  Click <b>Save</b> when finished.
+                    <li>סמן את האפשרות  <b>אפשר לאחרים לייצא לפורמטים אחרים</b>.  לחץ על <b>שמור</b> בסיום.
                     </li>
                 </ul>
                 
             </p>
-            <p>If your analysis layer contains attachments, note that attachments will only be extracted if the output data format is a file geodatabase and the  <b>Clip features</b> is unchecked.
+            <p>אם שכבת הניתוח שלך מכילה קבצים מצורפים, שים לב שקבצים מצורפים יחולצו רק אם פורמט נתוני הפלט הוא File Geodatabase והאפשרות  <b>גזור ישויות</b> לא מסומנת.
             </p>
         </div>
     </div>
     <div id="AreaOfInterest">
-        <div><h2>Study area</h2></div>
+        <div><h2>אזור עניין</h2></div>
         <hr/>
         <div>
-            <p>The
-area that defines which features will be included in the output ZIP or CSV file.  
- You can choose from the following:
+            <p>האזור שמגדיר אילו ישויות ייכללו בקובץ ה-ZIP או ה-CSV של התוצאה.   ניתן לבחור מבין האפשרויות הבאות:
                 <ul>
-                    <li>The current visible extent of your map ( <b>Same as Display</b>).
+                    <li>התיחום הנראה הנוכחי של המפה ( <b>בדומה לתצוגה</b>).
                     </li>
-                    <li>One of the layers in your table of contents. If the selected layer is point or line features, the extent of the layer will be used as the study area.
+                    <li>אחת השכבות בתוכן העניינים שלך. אם השכבה שנבחרה היא ישויות נקודה או קו, תיחום השכבה ישמש כאזור המחקר.
                     </li>
-                    <li>Draw an area  to define the study area.
+                    <li>שרטט אזור כדי להגדיר את אזור המחקר.
                     </li>
                 </ul>
-                 All features completely within the map extent will be extracted.  For  features that cross or intersect the map extent boundary but are not completely within the extent, you have two options:
+                 כל הישויות שנכללות באופן מלא בתיחום המפה יחולצו.  לגבי ישויות שחוצות או מצטלבות עם גבול תיחום המפה אבל לא נכללות באופן מלא בתוך התיחום, קיימות שתי אפשרויות:
                 <ul>
-                    <li> <b>Select features</b>&mdash;Entire features that cross the boundary of the study area will be extracted.
+                    <li> <b>בחר ישויות</b> - מכלול הישויות שחוצות את גבול אזור המחקר יחולצו.
                     </li>
-                    <li> <b>Clip features</b>&mdash;Only those portions of features that are within the study area will be extracted.
+                    <li> <b>גזור ישויות</b> - רק החלקים בישויות שנמצאים בתוך אזור המחקר יחולצו.
                     </li>
                 </ul>
                 
@@ -98,22 +96,22 @@ area that defines which features will be included in the output ZIP or CSV file.
         </div>
     </div>
     <div id="OutputFormat">
-        <div><h2>Output data format</h2></div>
+        <div><h2>פורמט נתוני פלט</h2></div>
         <hr/>
         <div>
-            <p>Format of the data that will be extracted. When exporting line or area features to CSV files, only non-spatial attributes are extracted.  When exporting point features, both the spatial and non-spatial attributes are extracted.  
+            <p>פורמט הנתונים שיחולצו. בעת יצוא ישויות קו או אזור לקובצי CSV, יחולצו רק מאפיינים שאינם מרחביים.  בעת יצוא ישויות נקודה לקובצי CSV, יחולצו הן מאפיינים מרחביים והן מאפיינים שאינם מרחביים.  
             </p>
-            <p>Extracted data will use the Web Mercator 1984 projection.  For CSV files,  <i>Lat</i> and <i>Long</i> fields will be appended to the data with coordinates in Web Mercator 1984.
+            <p>הנתונים שחולצו ישתמשו בהיטל Web Mercator 1984.  עבור קובצי CSV, שדות  <i>Lat</i> ו- <i>Long</i> יתווספו לנתונים עם קואורדינטות ב-Web Mercator 1984.
             </p> 
-            <p>The following output formats are supported:
+            <p>הפורמטים הבאים של פלט נתמכים:
                 <ul>
-                    <li>Comma separated value (CSV)&mdash; <code>.csv</code> or <code>.zip</code>
+                    <li>ערכים מופרדים בפסיק (CSV) -  <code>.csv</code> או <code>.zip</code>
                     </li>
-                    <li>File geodatabase&mdash; <code>.zip</code>
+                    <li>File Geodatabase -  <code>.zip</code>
                     </li>
-                    <li>Keyhole Markup Language (KML)&mdash; <code>.kmz</code> or <code>.zip</code>
+                    <li>Keyhole Markup Language &rlm;(KML) -  <code>.kmz</code> או <code>.zip</code>
                     </li>
-                    <li>Shapefile&mdash; <code>.zip</code>
+                    <li>Shapefile -  <code>.zip</code>
                     </li>
                 </ul>
                 
@@ -121,12 +119,12 @@ area that defines which features will be included in the output ZIP or CSV file.
         </div>
     </div>
     <div id="OutputName">
-        <div><h2>Output file name</h2></div>
+        <div><h2>שם קובץ תוצר</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the item that will be added to  <b>My Content</b>.  The item name is based on the chosen <b>Output data format</b>.     If the item already exists you will be asked to provide another name.
+            <p>זהו שם הפריט שיתווסף ל <b>תוכן שלי</b>.  שם הפריט מבוסס על <b>פורמט נתוני הפלט</b>.     אם הפריט כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

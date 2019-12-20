@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../../ChartBuilder"],function(t){var i={};return i.householdsWithDisability={states:"p",defaultState:"p",fieldInfo:{isChart:!0,chartJson:t.createGaugeChart({title:"Households with Disability",points:[{label:"Households with 1+ Persons with a Disability",fullName:"AtRisk.ACSHHDIS"}]})}},i});

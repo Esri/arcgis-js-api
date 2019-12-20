@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/_base/array","dojo/dom-class","dojo/has","../../../../kernel"],function(e,t,n,i,a){var o={applyViewOnly:function(e){this._walkNonTabs(e.rootDescriptor),this._walkTabs(e.rootDescriptor)},hasViewableContent:function(e){return!e.hide&&!e._isOptionallyOff&&(!(!e._isGxeNode||null===e.checkXmlValue())||t.some(e.getChildren(),function(e){return this.hasViewableContent(e)},this))},_walkNonTabs:function(e){(e._isGxeNode||e._isGxeMultiplicityHeader)&&(this.hasViewableContent(e)||(e.domNode.style.display="none")),t.forEach(e.getChildren(),function(e){this._walkNonTabs(e)},this)},_walkTabs:function(e){var i,a=[];e._isGxeTabs&&(t.forEach(e._tabButtons,function(e){i=this.hasViewableContent(e.tabWgt),i?a.push(e):e.domNode.style.display="none"},this),a.length>0&&(n.contains(a[0].domNode,"current")||e._activateTab(a[0]))),t.forEach(e.getChildren(),function(e){this._walkTabs(e)},this)}};return i("extend-esri")&&e.setObject("dijit.metadata.base.etc.viewOnlyUtil",o,a),o});

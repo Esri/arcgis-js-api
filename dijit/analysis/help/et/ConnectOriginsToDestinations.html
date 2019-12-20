@@ -70,7 +70,7 @@
             <p>Valige l&auml;htekohta v&otilde;i l&auml;htekohti t&auml;histav punktikiht.  See t&ouml;&ouml;riist toetab kuni  5000 l&auml;htekohta ja  5000 sihtkohta. </p>
             <p>Kui valite &uuml;he l&auml;htekohaga kihi, &uuml;henduvad sellega k&otilde;ik sihtkohad.
             </p>
-            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. See variant avab galerii, mida saate sirvida ja kus saate erinevatest allikatest valida anal&uuml;&uuml;sil kasutamiseks andmestikke. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Kui l&auml;htekohti on &uuml;ks ja sihtkohti mitu, &uuml;hendab t&ouml;&ouml;riist l&auml;htekoha k&otilde;igi sihtkohtadega.
             </p>
-            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. See variant avab galerii, mida saate sirvida ja kus saate erinevatest allikatest valida anal&uuml;&uuml;sil kasutamiseks andmestikke. 
             </p>
             <p> Kui l&auml;hte- ja sihtkohti on mitu, vajate kahte v&auml;lja, mis kirjeldavad l&auml;htekoha ja sihtkoha paare: <b>ID v&auml;li l&auml;htepunktide jaoks</b> ja <b>Vastava ID v&auml;li sihtkohtade jaoks</b>. T&ouml;&ouml;riist &uuml;hendab l&auml;htekoha&ndash;sihtkoha paarid anal&uuml;&uuml;si k&auml;igus. Oletagem n&auml;iteks, et Teil on kaks l&auml;htekohta, mille ID-v&auml;ljade v&auml;&auml;rtused on <code>Mari</code> ja <code>Mati</code> ja kaks samade ID-v&auml;&auml;rtustega sihtkohta. L&auml;htekoht <code>Mari</code> &uuml;hendatakse sihtkohaga <code>Mari</code> ja l&auml;htekoht <code>Mati</code> sihtkohaga <code>Mati</code>. Teisi &uuml;hendusi v&otilde;i m&otilde;&otilde;distusi ei tehta.
             </p>
-            <p>ID-v&auml;&auml;rtused peavad &uuml;he kihi piirides olema unikaalsed: n&auml;iteks sihtkohtade kiht ei saa sisaldada kahte v&auml;&auml;rtust  <code>Mari</code>. Paari loomiseks peavad v&auml;&auml;rtused l&auml;hte- ja sihtkohtade kihtides t&auml;ielikult kattuma: <code>Mati</code> ei &uuml;hendu valesti kirjutatud v&auml;&auml;rtusega <code>Mait</code>. 
+            <p>Kui l&auml;hte- ja sihtkohti on &uuml;hepalju, peavad ID-v&auml;&auml;rtused &uuml;he kihi piirides olema unikaalsed: n&auml;iteks ei saa sihtkohtade kiht sisaldada kahte v&auml;&auml;rtust  <code>Mari</code>. Paari loomiseks peavad v&auml;&auml;rtused l&auml;hte- ja sihtkohtade kihtides t&auml;ielikult kattuma: <code>Mati</code> ei &uuml;hendu valesti kirjutatud v&auml;&auml;rtusega <code>Mait</code>. 
+            </p>
+            <p>T&ouml;&ouml;riist toetab ka iga algpunkti &uuml;hendamist rohkem kui &uuml;he sihtkohaga v&otilde;i iga sihtkoha &uuml;hendamist rohkem kui &uuml;he algpunktiga. Sellistel juhtudel peab teil siiski olema kaks v&auml;lja, mis kirjeldavad algpunkti ja sihtkoha paare. Kordumatud ID-v&auml;&auml;rtused peavad aga olema ainult &uuml;hel kihil (kas algpunktide v&otilde;i sihtkohtade kihil).
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Joont&otilde;ke keelab liiklemise igal pool, kus t&otilde;ke l&otilde;ikub t&auml;navaga. Joont&otilde;kkega saab modelleerida n&auml;iteks paraadi v&otilde;i meeleavaldust, mis t&otilde;kestab liikluse mitmel t&auml;naval&otilde;igul. Kui k&otilde;igi joont&otilde;ketega ristuvate t&auml;navaobjektide arv &uuml;letab 500, annab t&ouml;&ouml;riist veateate.
             </p>
             <p>Hulknurkt&otilde;ke keelab liiklemise igal pool, kus hulknurk l&otilde;ikub t&auml;navatega. Selle t&otilde;kket&uuml;&uuml;bi &uuml;heks kasutuskohaks on &uuml;leujutuste modelleerimine, kui &uuml;leujutus h&otilde;lmab t&auml;navav&otilde;rku ja muudab seal liiklemise v&otilde;imatuks. Kui k&otilde;igi hulknurkt&otilde;ketega ristuvate t&auml;navaobjektide arv &uuml;letab 2000, annab t&ouml;&ouml;riist veateate.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Marsruudi kuju</h2></div>
+        <hr/>
+        <div>
+            <p>Valige marsruudi jaoks selline kuju, mis &uuml;hendab iga algpunkti vastava reisimisviisi kasutamisel sihtkohaga.
+            </p>
+            <ul>
+                <li> <b>J&auml;rgi t&auml;navaid</b> &ndash; kuju p&otilde;hineb aluseks oleval t&auml;navate v&otilde;rgul. See variant sobib k&otilde;ige paremini siis, kui soovite genereerida marsruute algpunktide ja sihtkohtade vahel.
+                </li>
+                <li> <b>Sirgjoon</b> &ndash; kuju on algpunkti ja sihtkoha paari &uuml;hendav sirgjoon. See variant sobib eelk&otilde;ige siis, kui soovite genereerida &auml;mblikskeeme v&otilde;i soovite jooni (nt selleks, et n&auml;idata, milliseid kauplusi kliendid k&uuml;lastavad).
+                </li>
+            </ul>
+            
+            <p>Parim marsruut algpunkti ja sellele vastava sihtkoha vahel arvutatakse alati reisimisviisi p&otilde;hjal olenemata sellest, milline marsruudikuju valida.
             </p>
         </div>
     </div>

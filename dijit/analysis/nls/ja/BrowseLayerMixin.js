@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Living Atlas 解析レイヤーの選択",customAnalysisLayerTitle:"解析レイヤーの選択",searchPlaceholderText:"Living Atlas 解析レイヤーの検索",searchCustomPlaceholderText:"解析レイヤーの検索",mainActionTitle:"選択",customActionName:"選択してマップに追加",customeSectionName:"Living Atlas 解析レイヤー",Categories:"カテゴリ",boundaries:"境界",places:"場所",boundariesAndPlaces:"境界と場所",hexbins:"Hexbins",transportation:"交通システム",point:"ポイント レイヤー",line:"ポリライン レイヤー",polygon:"ポリゴン レイヤー",pointFilterName:"ポイント",lineFilterName:"ポリライン",polygonFilterName:"ポリゴン",multiPointFilterName:"マルチ ポイント",geometryFilterName:"ジオメトリ",featureLayerName:"フィーチャ レイヤー",tableLayerName:"テーブル",itemTypeFilterName:"アイテム タイプ",instantFilterName:"インスタント",intervalFilterName:"間隔",timeFilterName:"現在の時間",edit:"編集",boundaryLayers:"Esri 境界レイヤー",customAnalysisGroupName:"組織の解析グループ"});

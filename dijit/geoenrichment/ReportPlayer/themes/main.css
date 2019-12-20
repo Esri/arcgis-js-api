@@ -2,16 +2,17 @@
 
 @import url('./ReportPlayer/ReportPlayer.css');
 @import url('./ReportPlayer/PlayerToolbar.css');
+@import url('./ReportPlayer/AreasSelect.css');
+@import url('./ReportPlayer/ComparisonSettings.css');
 @import url('./ReportPlayer/PlayerToolbar_mobile.css');
 @import url('./ReportPlayer/ReportPlayerAnimations.css');
 @import url('./ReportPlayer/ReportPlayerPagination.css');
-@import url('./ReportPlayer/ReportPlayerHeaderFooter.css');
-@import url('./ReportPlayer/ReportPlayerPrint.css');
 
 @import url('./reportContainers/ReportContainer.css');
 @import url('./reportContainers/ReportContainerGrid.css');
 @import url('./reportContainers/ReportContainerPagination.css');
 @import url('./reportContainers/ReportContainerStack.css');
+@import url('./reportContainers/ReportContainerStackAll.css');
 
 @import url('./ImageContainer.css');
 @import url('./ShapeContainer.css');
@@ -21,6 +22,9 @@
 @import url('./TemplateSections.css');
 @import url('./PageOptionsDialog.css');
 @import url('./ConditionalStyleLegend.css');
+
+@import url('./print/ReportPlayerHeaderFooter.css');
+@import url('./print/ReportPlayerPrint.css');
 
 
 @import url('./fonts/AvenirNext.css');

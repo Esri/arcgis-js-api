@@ -40,109 +40,93 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Aggregate Points</h2><p/>
-        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Aggregate Points"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>קיבוץ נקודות</h2><p/>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="קיבוץ נקודות"></h2>
         <hr/>
-    <p>This tool works with a layer of
-point features  and a layer of area features. It first
-determines which points fall within each area. After determining
-this point-in-area spatial relationship, statistics about all
-points in the area are calculated and assigned to the area. The
-most basic statistic is the count of the number of points within
-the area, but you can get other statistics as well. 
+    <p>כלי זה עובד עם שכבה של ישויות נקודה ושכבה של ישויות אזור. תחילה הוא קובע אילו נקודות נמצאות בתוך כל אזור. לאחר קביעת יחס מרחבי זה של נקודה-באזור, מתבצע חישוב סטטיסטי אודות כל הנקודות באזור והן מוקצות לאזור. הנתון הסטטיסטי הבסיסי ביותר הוא מספר הנקודות בתוך האזור, אבל ניתן לקבל גם נתונים סטטיסטיים אחרים. 
     </p>
-    <p>For example, suppose you have point features of coffee shop locations and area features of counties, and you want to summarize coffee sales by county.  Assuming the  coffee shops have a    <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within each county, or the minimum or maximum <i>TOTAL_SALES</i>
- within each county, or the standard deviation of all sales within each county.
+    <p>לדוגמה, נאמר שיש לך ישויות נקודה של מיקומי בתי קפה וישויות אזור של מחוזות, וברצונך לסכם מכירות של בתי קפה לפי מחוז. בהנחה שלבתי הקפה יש מאפיין    <i>TOTAL_SALES</i>, באפשרותך לקבל את הסיכום של כל <i>TOTAL_SALES</i> בכל מחוז, או את <i>TOTAL_SALES</i> המקסימלי והמינימלי
+ בכל מחוז, או את סטיית התקן של כל המכירות בכל מחוז.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features in the input point layer and area layer visible within the current map extent will be analyzed.  If unchecked, all features in both the input point layer and the area layer will be analyzed, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת נקודות הקלט ושכבת האזור שנראות בתוך תיחום המפה הנוכחי ינותחו.  אם האפשרות לא מסומנת, כל הישויות הן בשכבת נקודות הקלט והן בשכבת האזור ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="pointLayer">
-        <div><h2>Choose layer containing points to aggregate into areas</h2></div>
+        <div><h2>בחר שכבה המכילה נקודות לצבירה לתוך אזורים</h2></div>
         <hr/>
         <div>
-            <p>The point layer that will be aggregated into the areas.
+            <p>שכבת הנקודות שתקובץ לתוך האזורים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="polygonLayer">
-        <div><h2>Choose layer containing aggregation areas</h2></div>
+        <div><h2>בחר שכבה המכילה אזורי צבירה</h2></div>
         <hr/>
         <div>
-            <p>The area layer to which the points
-will be aggregated. Any points that fall within the boundaries of
-areas in this layer will be counted and optionally summarized using your choices of
-statistics.  
+            <p>שכבת האזור שאליה הנקודות יקובצו. כל הנקודות שנמצאות בתוך גבולות האזור בשכבה זו ייספרו, ופוטנציאלית יסוכמו באמצעות אפשרויות הסטטיסטיקה שתבחר.  
             </p>
-            <p>You can choose between an area layer that you
-provide or bins that are generated when the tool runs. When
-generating bins, for  <b>Square</b>, the number and units specified determine the
-height and length of the square. For <b>Hexagon</b>, the number and units specified determine the
-distance between parallel sides.
+            <p>באפשרותך לבחור בין שכבת אזור שאתה מספק או תאים שנוצרים כאשר הכלי מופעל. בעת יצירת תאים, עבור  <b>ריבוע</b>, המספר והיחידות שצוינו קובעים את הגובה והאורך של הריבוע. עבור <b>משושה</b>, המספר והיחידות שצוינו קובעים את המרחק בין צדדים מקבילים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="KeepBoundaryNoPoints">
-        <div><h2>Keep areas with no points</h2></div>
+        <div><h2>השאר שטח ללא נקודות</h2></div>
         <hr/>
         <div>
-            <p>Determines whether areas that have no points within them appear in the result layer.  If unchecked, areas without points will not appear in the result.  If checked, areas without points will appear in the result.  
+            <p>קובע האם אזורים שאין בהם נקודות יופיעו בשכבת התוצאה.  אם אפשרות זו לא מסומנת, אזורים ללא נקודות לא יופיעו בתוצאה.  אם אפשרות זו מסומנת, אזורים ללא נקודות יופיעו בתוצאה.  
             </p>
         </div>
     </div>
     <div id="SummaryFields">
-        <div><h2>Add statistic</h2></div>
+        <div><h2>הוסף נתונים סטטיסטיים</h2></div>
         <hr/>
         <div>
-            <p>You can calculate statistics about attributes of the input point layer such as sum, mean, minimum, maximum, and standard deviation. The result layer will
-contain a new attribute for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic (a new drop-down box will appear).
-
+            <p>באפשרותך לחשב נתונים סטטיסטיים אודות מאפיינים של שכבת נקודת קלט, כגון סכום, ממוצע, מינימום, מקסימום וסטיית תקן. שכבת התוצאה תכיל מאפיין חדש עבור כל נתון סטטיסטי שחושב. ניתן להוסיף כל מספר של נתונים סטטיסטיים על ידי בחירת מאפיין ונתון סטטיסטי (תופיע תיבה נפתחת חדשה).
  
             </p>
-            <p>If the layer to summarize does not have any number fields, the additional statistics will not be available.
+            <p>אם לשכבה לסיכום אין שדות מספרים, הנתונים הסטטיסטיים הנוספים לא יהיו זמינים.
             </p>
         </div>
     </div>
     <div id="GroupByField">
-        <div><h2>Choose field to group by</h2></div>
+        <div><h2>בחר שדה לקבץ לפיו</h2></div>
         <hr/>
         <div>
-            <p> You can create statistical groups using an attribute in the input point layer.    For example, if you are aggregating crimes to neighborhood boundaries, you may have an attribute <i>Crime_type</i> with five different crime types.  Each unique crime type forms a group, and the statistics you choose will be calculated for each unique value of <i>Crime_type</i>.  The statistics for each group, as well as the count of points, will be displayed in the result layer's pop-up.  When you choose a grouping attribute, two results are created: the result layer and a result table containing the statistics for each unique group.
+            <p> באפשרותך ליצור קבוצות סטטיסטיות תוך שימוש במאפיין בשכבת נקודת הקלט.    לדוגמה, אם אתה מקבץ פשעים בגבולות שכונה, ייתכן שתשתמש במאפיין <i>Crime_type</i> עם חמישה סוגי פשעים שונים.  כל סוג פשע ייחודי יוצר קבוצה, והנתונים הסטטיסטיים שתבחר יחושבו עבור כל ערך ייחודי של <i>Crime_type</i>.  הנתונים הסטטיסטיים עבור כל קבוצה, כמו גם ספירת הנקודות, יוצגו בחלון הקופץ של שכבת התוצאה.  בעת בחירת מאפיין קיבוץ, נוצרות שתי תוצאות: שכבת התוצאה וטבלת תוצאה שמכילה את הנתונים הסטטיסטיים עבור כל קבוצה ייחודית.
             </p>
         </div>
     </div>
     <div id="MinorityMajority">
-        <div><h2>Add minority, majority</h2></div>
+        <div><h2>הוסף מיעוט, רוב</h2></div>
         <hr/>
         <div>
-            <p>This checkbox is enabled  when you choose a field to group by.    If you want to find out which attribute values within each group are the minority (least dominant) or the majority (most dominant)  within each boundary,  select  <b>Add minority, majority</b>.   When you select <b>Add minority, majority</b>, two new fields are added to your result layer.   If you also select <b>Add percentages</b>, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+            <p>תיבת סימון זו מסומנת, בעת בחירת שדה לקבץ לפיו.    אם ברצונך לגלות אילו ערכי מאפיין בכל קבוצה הם המיעוט (הכי פחות דומיננטיים) או הרוב (הכי דומיננטיים) בתוך כל גבול, בחר  <b>הוסף מיעוט, רוב</b>.   בעת בחירה באפשרות <b>הוסף מיעוט, רוב</b>, שני שדות חדשים נוספים לשכבת התוצאה.   אם תבחר גם באפשרות <b>הוסף אחוזים</b>, נוספים לשכבת התוצאה עוד שני שדות שמכילים את האחוזים של ערכי המאפיינים של המיעוט והרוב בתוך כל קבוצה.
             </p>
-            <p>For example, if you are a city planner and you want to find out which tree species are in the minority and which are in the majority within all city parks, aggregate your tree data with your park areas and check this option.
+            <p>לדוגמה, אם אתה מתכנן ערים של עיר מסוימת, וברצונך לבדוק אילו זני עצים הם המיעוט ואילו הם הרוב בפרקים בעיר, קבץ את נתוני העצים עם אזורי הפרקים וסמן אפשרות זו.
             </p>
         </div>
     </div>
     <div id="PercentPoints">
-        <div><h2>Add percentages</h2></div>
+        <div><h2>הוסף אחוזים</h2></div>
         <hr/>
         <div>
-            <p>This check box is enabled  when you choose a field to group by.    Select  <b>Add percentages</b>   if you want to find the percentage of each attribute value within each group.  A new field  is added to the result table containing the percentages of each attribute value within each group.   If <b>Add minority, majority</b> is also checked, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+            <p>תיבת סימון זו זמינה בעת בחירת שדה לקבץ לפיו.    בחר באפשרות  <b>הוסף אחוזים</b> אם ברצונך למצוא את האחוזים של כל ערך מאפיין בתוך כל קבוצה. לטבלת התוצאה נוסף שדה חדש שמכיל את האחוזים של כל ערך מאפיין בתוך כל קבוצה.   אם גם האפשרות <b>הוסף מיעוט,רוב</b> מסומנת, נוספים שני שדות נוספים לשכבת התוצאה שמכילים את האחוזים של ערכי מאפיין מיעוט ורוב בתוך כל קבוצה.
             </p>
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Result layer
-name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>זהו השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

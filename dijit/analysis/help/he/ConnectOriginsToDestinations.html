@@ -41,120 +41,137 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Connect Origins to Destinations</h2><p/>
-        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Connect Origins to Destinations"></h2>
+        <h2>קשר מוצא ליעדים</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="קשר מוצא ליעדים"></h2>
         <hr/>
-    <p>Connect Origins to Destinations measures the travel time or distance between pairs of points. The tool can report straight-line distances; distances based on a travel mode, such as walking or driving; or trip durations based on a travel mode. Using this tool, you can do the following:
+    <p>הכלי 'קשר מוצא ליעדים' מודד את זמן ההגעה או מרחק ההגעה בין זוג נקודות. כלי זה יכול לדווח מרחקים בקו ישר, מרחקים לפי אופן הגעה, כגון הליכה או נסיעה; או משכי הגעה לפי אופן הגעה. בעזרת כלי זה, תוכל לעשות את הדברים הבאים:
     </p>
     <p>
         <ul>
-            <li>Calculate the total distance or time commuters travel on their  home-to-work trips.
+            <li>לחשב את המרחק הכולל או הזמן הכולל שעושים עובדים בנסיעות מהבית לעבודה.
             </li>
-            <li>Measure how far customers are traveling to shop at your stores. Use this information to define your market reach, especially when targeting advertising campaigns or choosing new store locations.
+            <li>למדוד מה המרחק שלקוחות עוברים כאשר הם הולכים/נוסעים לחנויות שלך. להשתמש במידע זה כדי להגדיר את היקף השוק שלך, במיוחד בעת מיקוד מסעות פרסום או בחירת מיקום לחנות חדשה.
             </li>
-            <li>Calculate the expected trip mileage for your fleet of vehicles. Afterward, run the Summarize Within tool to report mileage by state or other region.
+            <li>לחשב את קילומטרז' הנסיעה הצפוי עבור צי המכוניות בארגונך. לאחר מכן, להפעיל את הכלי 'סיכום בתוך' כדי לדווח על קילומטרז' לפי מחוז או אזור אחר.
             </li>
         </ul>
         
     </p>
-    <p>You provide starting and ending points, and the tool returns a layer containing route lines, including measurements, between the paired origins and destinations. 
+    <p>אתה מספק נקודות התחלה ונקודות סיום, והכלי מחזיר שכבה שמכילה קווי מסלול, כולל מדידות, בין הצמדים של נקודות מוצא ונקודות יעד. 
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered in the analysis.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות שנראות בתוך גבולות תיחום המפה הנוכחי יילקחו בחשבון בניתוח. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט יילקחו בחשבון, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="originsLayer">
-        <div><h2>Choose point layer representing the origin locations</h2></div>
+        <div><h2>בחר שכבת נקודות שמייצגת את מיקומי המוצא</h2></div>
         <hr/>
         <div>
-            <p>Choose the point layer representing the origin or origins.  
-The tool supports up to  5,000 origins and  5,000 destinations. </p>
-            <p>If you choose a layer that has exactly one origin, it will connect to all destinations.
+            <p>בחר בשכבת הנקודות שמייצגת את המוצא או נקודות המוצא.  הכלי תומך בעד  5,000 נקודות מוצא ו-5,000 נקודות יעד. </p>
+            <p>אם אתה בוחר שכבה שיש לה מוצא אחד בדיוק, הוא יקושר לכל היעדים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
         </div>
     </div>
     <div id="destinationsLayer">
-        <div><h2>Choose the destinations layer</h2></div>
+        <div><h2>בחר את שכבת היעדים</h2></div>
         <hr/>
         <div>
-            <p>Choose the layer 
-representing the destination or destinations to which the origins should connect. The tool supports up to  5,000 origins and  5,000 destinations. </p>
-            <p>If you choose a layer that has exactly one destination, all the origins will connect to that destination. 
+            <p>בחר את השכבה שמייצגת את היעד או היעדים שאליהם יש לקשר את נקודות המוצא. הכלי תומך בעד  5,000 נקודות מוצא ו-5,000 נקודות יעד. </p>
+            <p>אם אתה בוחר שכבה שיש לה יעד אחד בדיוק, כל נקודות המוצא יקושרו ליעד זה. 
             </p>
-            <p>If there is one origin and many destinations, the tool connects the origin to each of the destinations.
+            <p>אם יש מוצא אחד ויעדים רבים, הכלי מקשר את המוצא לכל אחד מהיעדים.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת. אפשרות זו פותחת גלריה שבה באפשרותך לעיין ולבחור ערכות נתונים ממקורות שונים לצורך שימוש בניתוח. 
             </p>
-            <p> If there are many origins and many destinations, you need to have two fields that describe the origin-destination pairs: <b>ID field in origins</b> and <b>Matching ID field in destinations</b>. The tool connects the origin-destination pairs during the analysis. For instance, imagine you have two origins with ID field values of <code>Rosie</code> and <code>Harold</code> and two destinations with the same ID values. The <code>Rosie</code> origin will connect to the <code>Rosie</code> destination, and <code>Harold</code> will connect to <code>Harold</code>. No other connections or measurements are made.
+            <p> אם יש מספר נקודות מוצא ומספר נקודות יעד, נדרשים שני שדות שמתארים את זוגות המוצא-יעד: <b>שדה מזהה בנקודות המוצא</b> וכן <b>שדה מזהה תואם בנקודות היעד</b>. הכלי מחבר את זוגות המוצא-יעד במהלך הניתוח. לדוגמה, נאמר שיש לך שתי נקודות מוצא עם ערכי שדה מזהה של <code>רוזי</code> ו <code>הרולד</code> ושתי נקודות יעד עם אותם ערכי מזהה. נקודת המוצא <code>רוזי</code> תקושר לנקודת היעד <code>רוזי</code>, ונקודת המוצא <code>הרולד</code> תקושר לנקודת היעד <code>הרולד</code>. הכלי לא מבצע קישורים או מדידות אחרים.
             </p>
-            <p>The ID values must be unique within each layer; for instance, the destinations layer cannot have two  <code>Rosie</code> values. The values in the origin and destination layers must match exactly to make pairs; <code>Harold</code> won't connect to the misspelled value, <code>Harodl</code>. 
+            <p>אם מספר נקודות המוצא זהה למספר היעדים, ערכי המזהה חייבים להיות ייחודיים בכל שכבה, לדוגמה, לשכבת נקודות היעד לא יכולים להיות שני ערכי  <code>רוזי</code>. הערכים של שכבות המוצא והיעד חייבים להתאים באופן מדויק כדי ליצור זוגות; <code>הרולד</code> לא יקושר לערך עם שגיאת הכתיב <code>הרודל</code>. 
+            </p>
+            <p>הכלי תומך גם בחיבור כל מוצא ליותר מיעד אחד, או כל יעד ליותר ממוצא אחד. במקרים כאלה, עדיין נדרשים שני שדות שמתארים את הזוגות מוצא-יעד. עם זאת, רק לאחת מהשכבות (שכבת המוצא או שכבת היעד) צריכים להיות ערכי מזהה ייחודיים.
             </p>
         </div>
     </div>
     <div id="measurementType">
-        <div><h2>Measure</h2></div>
+        <div><h2>מדידה</h2></div>
         <hr/>
         <div>
             
-            <p>Choose whether to connect origins to destinations using straight-line distance or a travel mode. The output routes will  follow roads or walkways and honor applicable rules, such as one-way streets and illegal turns for driving or trucking.  The available travel modes are determined by the administrator of your organization.  
+            <p>בחר האם לקשר נקודות מוצא לנקודות יעד באמצעות מרחק בקו ישר או במצב הגעה. המסלולים שיחושבו יהיו לאורך כבישים או מדרכות ויכבדו את כללי התנועה הרלוונטיים, כגון רחובות חד-סיטריים ופניות אסורות בנהיגה ברכב או במשאית. דרכי ההגעה הזמינות נקבעות על ידי מנהל המערכת בארגון שלך.  
             </p>
-            <p>When you choose  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you have options on how to measure the drive time.
+            <p>בעת בחירה באפשרויות  <b>זמן נסיעה</b>, <b>זמן נסיעה בדרכים כפריות</b> או <b>זמן נסיעה במשאית</b> יש לך אפשרות לבחור כיצד למדוד את זמן הנסיעה.
                 <ul>
                     <li>
-                        <p>Uncheck  <b>Use Traffic</b> to find the quickest routes based on fixed speeds.
+                        <p>בטל את הסימון של  <b>השתמש בתנועה</b> כדי למצוא את המסלולים המהירים ביותר בהתבסס על מהירויות קבועות.
                         </p>
-                        <p>This is the option to choose if you want a general drive-time measurement, not one that is calculated using changing traffic conditions for a specific departure time.
-                        </p>
-                    </li>
-                    <li>
-                        <p>Check  <b>Use Traffic</b> to find the quickest routes based on a given start time and changing traffic conditions. By also choosing the <b>Live traffic</b> option, the departure time from the origins is set to the current time, and current and predicted traffic speeds are referenced from sensors and feeds to create the routes. The predicted traffic speeds are calculated by referencing live traffic speeds, historical speeds, and current events such as weather. Traffic speeds are predicted 12 hours into the future, so you can move the slider to set the departure time ahead by up to  12 hours. </p>
-                        <p>Use these live-traffic settings to find the drive times for  departing now, departing in one hour from now, and so on.
+                        <p>בחר באפשרות זו אם ברצונך לקבל מדידה כללית של זמן הנסיעה, ולא מדידה שמחושבת על סמך מצב תנועה משתנה עבור שעת יציאה ספציפית.
                         </p>
                     </li>
                     <li>
-                        <p>By checking  <b>Use Traffic</b> and choosing <b>Traffic based on typical conditions for</b> a day and time, the tool finds the quickest routes based on historical speed averages for every five-minute  interval across a routine week. The results include traffic but remove the influence of current traffic conditions and events, which may vary significantly from the norm.
+                        <p>סמן את האפשרות  <b>השתמש בתנועה</b> כדי למצוא את המסלולים המהירים ביותר בשעת התחלה נתונה ולפי מצב משתנה של התנועה. אם תבחר גם באפשרות <b>תנועה חיה</b>, שעת היציאה מנקודות המוצא תוגדר כשעה הנוכחית, ומהירויות התנועה הנוכחיות והחזויות יילקחו מחיישנים ומהזנות כדי ליצור את המסלולים. מהירויות התנועה החזויות מחושבות לפי מהירויות תנועה חיה, מהירויות היסטוריות ואירועים נוכחיים כגון מזג האוויר. מהירויות תנועה נחזות 12 שעות קדימה, כך שבאפשרותך להזיז את המחוון כדי להגדיר את שעת היציאה מראש עד  12 שעות לפני היציאה. </p>
+                        <p>השתמש בהגדרות תנועה-חיה אלה כדי לקבל את זמני הנסיעה עבור: יציאה כעת, יציאה בעוד שעה וכו'.
                         </p>
-                        <p>You can use these historical traffic settings to ask, for instance, &quot;How long would it generally take to reach these destinations when departing at 11:30 a.m. on a Wednesday?&quot;
+                    </li>
+                    <li>
+                        <p>בעת בחירה באפשרויות  <b>השתמש בתנועה</b> ו <b>תנועה על בסיס מצב טיפוסי עבור</b> יום ושעה, הכלי מוצא את המסלולים המהירים ביותר על בסיס ממוצעי מהירות היסטוריים עבור מרווחים של חמש דקות לאורך שבוע רגיל. התוצאות כוללות את מצב התנועה, אבל מתעלמות מההשפעה של נסיבות ואירועי תנועה נוכחיים שעשויים להיות שונים במידה רבה מהרגיל.
                         </p>
-                        <p>The time you set refers to the time zone in which your origins are located. So if you set the time to 8:00 a.m. and have two origins, one in New York City and another in Los Angeles, the routes will be generated for a departure time of 8:00 a.m. Eastern Time and 8:00 a.m. Pacific Time, respectively.
+                        <p>באפשרותך להשתמש בהגדרות תנועה היסטורית אלה כדי לשאול, לדוגמה, &quot;כמה זמן ייקח בדרך כלל להגיע ליעדים אלה כאשר יוצאים לדרך בשעה 11:30 בבוקר ביום רביעי?&quot;.
+                        </p>
+                        <p>השעה שאתה מגדיר מתייחסת לאזור הזמן שבו נמצאות נקודות המוצא. לפיכך, אם אתה מגדיר את השעה כ-08:00 ויש לך שתי נקודות מוצא, אחת בעיר ניו-יורק והשנייה בלוס-אנג'לס, המסלולים יופקו עבור שעת יציאה של 08:00 לפי שעון החוף המזרחי של ארה&quot;ב ו-08:00 לפי שעון החוף המערבי של ארה&quot;ב, בהתאמה.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Note that as a vehicle drives away from the origin, time elapses and traffic conditions change. The Connect Origins to Destinations tool accounts for these variations when you check  <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area.
+            <p>שים לב שבעוד רכב מתרחק מנקודת המוצא, זמן חולף ומצב התנועה משתנה. הכלי 'קשר מוצא ליעדים' לוקח בחשבון השתנויות אלה כאשר האפשרות  <b>השתמש בתנועה</b> מסומנת; עם זאת, לא כל האזורים תומכים בתנועה. לחץ על הקישור <b>ראה זמינות</b> בכלי כדי לברר אם אפשרות זו מוצעת באזור הבדיקה שלך.
             </p>
-            <p> <b>Trucking Time</b> can use dynamic travel speeds based on traffic but only up to the legal truck speed limit. For example, if the dynamic speed for a street based on live traffic is 65 miles per hour but the truck speed limit for that street is 55 miles per hour, the calculation will use 55 miles per hour for that street.
+            <p>האפשרות  <b>זמן נסיעה במשאית</b> יכולה להשתמש במהירויות נסיעה דינמיות על בסיס תנועה, אבל רק עד למהירות הנסיעה החוקית למשאיות. לדוגמה, אם המהירות הדינמית עבור רחוב על בסיס תנועה חיה היא 100 קמ&quot;ש, אבל המהירות המרבית המותרת למשאיות ברחוב זה היא 90 קמ&quot;ש, החישוב ישתמש בערך 90 קמ&quot;ש עבור רחוב זה.
             </p>
         </div>
     </div>
     <div id="barrier_layers">
-        <div><h2>Select barrier layers</h2></div>
+        <div><h2>בחר שכבות מחסום</h2></div>
         <hr/>
         <div>
-            <p> One or more features that act as temporary restrictions (barriers) when traveling on the underlying streets. You can specify the barriers using point, line, or polygon features.
+            <p> ישות אחת או יותר אשר משמשות כמגבלות זמניות (מחסומים) בעת נסיעה ברחובות שמתחת. ניתן לציין מחסומים באמצעות ישויות נקודה, קו או פוליגון.
             </p>
-            <p>A point barrier can model a fallen tree, an accident, a downed electrical line, or anything that completely blocks traffic at a specific position along the street. Travel is permitted on the street but not through the barrier. You can specify up to 250 features to act as point barriers.
+            <p>מחסום נקודה עשוי לייצג עץ שקרס, תאונת דרכים, קו חשמל שנפל או כל דבר שחוסם לחלוטין את התנועה במיקום מסוים לאורך הרחוב. התנועה ברחוב מותרת, אבל לא בקטע החסום. ניתן לציין עד 250 ישויות שיתפקדו כמחסומי נקודה.
             </p>
-            <p>A line barrier prohibits travel anywhere the barrier intersects the streets. For example, a parade or protest that blocks traffic across several street segments can be modeled with a line barrier. If the number of street features intersected by all the line barriers exceeds 500, the tool returns an error.
+            <p>מחסום קו אוסר על הנסיעה בכל מקום שבו המחסום מצטלב עם הרחובות. לדוגמה, מחסום קו עשוי לייצג תהלוכה או הפגנה שחוסמות את התנועה במספר מקטעי רחובות. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הקו עולה על 500, הכלי מציג שגיאה.
             </p>
-            <p>A polygon barrier prohibits travel anywhere the polygon intersects the streets. One use of this type of barrier is to model floods covering areas of the street network and making road travel there impossible. If the number of street features intersected by all the polygon barriers exceeds 2000, the tool returns an error.
+            <p>מחסום פוליגון אוסר על הנסיעה בכל מקום שבו הפוליגון מצטלב עם הרחובות. שימוש אחד בסוג מחסום זה הוא לייצוג הצפות שמכסות אזורים של רשת רחובות ולא מאפשרים נסיעה בכבישים באותם אזורים. אם המספר של ישויות רחוב שמצטלבות עם כל מחסומי הפוליגון עולה על 2000, הכלי מציג שגיאה.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>צורת מסלול</h2></div>
+        <hr/>
+        <div>
+            <p>בחר את צורת המסלול שמחבר כל מוצא ליעד שלו בעת שימוש באופן הגעה:
+            </p>
+            <ul>
+                <li> <b>עקוב אחר רחובות</b> - הצורה מבוססת על רשת הרחובות הבסיסית. אפשרות זו היא המתאימה ביותר כאשר ברצונך להפיק את המסלולים בין נקודות מוצא לנקודות יעד.
+                </li>
+                <li> <b>קו ישר</b> - הצורה היא קו ישר שמחבר זוג מוצא-יעד. אפשרות זו היא המתאימה ביותר כאשר ברצונך להפיק דיאגרמות עכביש או קווים רצויים (לדוגמה, כדי להראות באילו חנויות לקוחות מבקרים).
+                </li>
+            </ul>
+            
+            <p>הנתיב הטוב ביותר בין מוצא לבין היעד התואם שלו תחושב תמיד על בסיס אופן ההגעה, ללא קשר לצורת המסלול שנבחרה.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the feature layer that will be created in  <b>My Content</b> and added to the map. If the feature layer already exists, you will be asked to provide another name. The feature layer will contain a layer for each of the following: routes, unassigned origins, and unassigned destinations when some origins cannot be connected to their destinations.
+            <p>השם של שכבת הישות שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. אם שכבת הישות כבר קיימת, תתבקש לספק שם אחר. שכבת הישות תכיל שכבה עבור כל אחד מהבאים: מסלולים, נקודות מוצא שלא הוקצו ונקודות יעד שלא הוקצו - כאשר לא ניתן לחבר חלק מנקודות המוצא לנקודות היעד שלהן.
             </p>
-            <p>If you select  <b>Include route layers</b>, each route from the result is also saved as a route layer. A route layer includes all the information for a particular route, such as the stops assigned to the route as well as the travel directions. Creating  route layers is useful if you want to share the individual routes with other members in your organization or to further modify the routes using the <b>Directions</b> button in the map viewer. The route layers use the name provided for the feature layer  as a prefix and the route name generated as part of the analysis, which is added to create a unique name for each route layer.
+            <p>אם בחרת באפשרות  <b>כלול שכבות מסלול</b>, כל מסלול מהתוצאה נשמר גם כשכבת מסלול. שכבת מסלול כוללת את כל המידע עבור מסלול ספציפי, כגון התחנות שהוקצו למסלול וכן הוראות ההגעה. יצירת שכבות מסלול שימושית אם ברצונך לשתף את המסלולים המסוימים עם חברים אחרים בארגונך או להמשיך לשנות את המסלולים תוך שימוש בלחצן <b>הוראות</b> במציג המפה. שכבות המסלול משתמשות בשם שסופק עבור שכבת הישויות כתחילית ובשם המסלול שהופק כחלק מהניתוח, שנוסף ליצירת שם ייחודי עבור כל שכבת מסלול.
             </p>
-            <p>The maximum number of route layers that can be created is  1,000. If the result contains more than  1,000 routes and  <b>Include route layers</b> is checked, the tool will only create the output feature service.
+            <p>המספר המקסימלי של שכבות מסלול שניתן ליצור הוא  1,000. אם התוצאה מכילה יותר מ-1,000 מסלולים והאפשרות  <b>כלול שכבות מסלול</b> מסומנת, הכלי יצור רק את שירות ישות הפלט.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down menu, you can specify the name of a folder in <b>My Content</b> where the feature layer and the route layers, if created, will be saved.
+            <p>בעזרת התפריט הנפתח  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב <b>תוכן שלי</b> שבה שכבת הישויות ושכבות המסלול, אם נוצרו, יישמרו.
             </p>
         </div>
     </div>

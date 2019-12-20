@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["../utils/ChartTypes"],function(e){var r={SQUARE:"Square",CIRCLE:"Circle",RECTANGLE:"Rectangle",LINE:"Line"};return r.isSupported=function(e){for(var n in r)if(r[n]===e)return!0;return!1},r.getDefaultSymbol=function(n,t){return t?n===e.WAFFLE?r.SQUARE:r.CIRCLE:r.SQUARE},r});

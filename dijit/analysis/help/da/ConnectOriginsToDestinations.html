@@ -70,7 +70,7 @@
             <p>V&aelig;lg det punklag, der repr&aelig;senterer udgangspunktet eller udgangspunkterne. V&aelig;rkt&oslash;jet underst&oslash;tter op til  5.000 udgangspunkter og  5.000 destinationer. </p>
             <p>Hvis du v&aelig;lger et lag, som har n&oslash;jagtigt &eacute;t udgangspunkt, vil det blive forbundet med alle destinationer.
             </p>
-            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> eller <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Denne indstilling &aring;bner et galleri, hvor du kan gennemse og v&aelig;lge datas&aelig;t fra forskellige kilder, som du kan bruge i din analyse. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Hvis der er &eacute;t udgangspunkt og mange destinationer, forbinder v&aelig;rkt&oslash;jet udgangspunktet til hver enkelt destination.
             </p>
-            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> eller <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Denne indstilling &aring;bner et galleri, hvor du kan gennemse og v&aelig;lge datas&aelig;t fra forskellige kilder, som du kan bruge i din analyse. 
             </p>
             <p> Hvis der er mange udgangspunkter og mange destinationer, skal du have to felter, som beskriver udgangspunkt-destinationsparrene: <b>Id-felt i udgangspunkter</b> og <b>Matchende id-felt i destinationer</b>. V&aelig;rkt&oslash;jet forbindes til udgangspunkt-destinationsparrene under analysen. Forestil dig f.eks., at du har to udgangspunkter med ID-feltv&aelig;rdier for <code>Rosie</code> og <code>Harold</code> og to destinationer med de samme ID-v&aelig;rdier. <code>Rosie</code>-udgangspunktet forbindes til <code>Rosie</code>-destinationen og <code>Harold</code> forbindes til <code>Harold</code>. Der foretages ingen andre forbindelser eller m&aring;linger.
             </p>
-            <p>ID-v&aelig;rdierne skal v&aelig;re unikke inden for hvert lag; eksempelvis kan destinationslaget ikke have to  <code>Rosie</code>-v&aelig;rdier. V&aelig;rdierne i udgangspunkt- og destinationslagene skal matche hinanden n&oslash;jagtigt for at danne par; <code>Harold</code> vil ikke forbindes til den forkert stavede v&aelig;rdi <code>Harodl</code>. 
+            <p>Hvis der er lige mange udgangspunkter og destinationer, skal ID-v&aelig;rdierne v&aelig;re unikke inden for hvert lag; eksempelvis kan destinationslaget ikke have to  <code>Rosie</code>-v&aelig;rdier. V&aelig;rdierne i udgangspunkt- og destinationslagene skal matche hinanden n&oslash;jagtigt for at danne par; <code>Harold</code> vil ikke forbindes til den forkert stavede v&aelig;rdi <code>Harodl</code>. 
+            </p>
+            <p>V&aelig;rkt&oslash;jet underst&oslash;tter ogs&aring; forbindelse fra hvert udgangspunkt til mere end en destination eller fra hver destination til mere end et udgangspunkt. I s&aring;danne tilf&aelig;lde er det stadig n&oslash;dvendigt at have to felter, som beskriver udgangspunkt/destinations-parrene. Det er imidlertid kun et af lagene (enten udgangspunkt- eller destinationslaget), der skal have unikke ID-v&aelig;rdier.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>En linjegr&aelig;nse forhindrer transport alle steder, hvor gr&aelig;nsen gennemsk&aelig;rer gaderne. En linjegr&aelig;nse kan f.eks. bruges til at modellere en parade eller en demonstration, der blokerer trafikken p&aring; tv&aelig;rs af flere gadesegmenter. Hvis det antal gadesegmenter, der gennemsk&aelig;res af linjegr&aelig;nserne, overskrider 500, returnerer v&aelig;rkt&oslash;jet en fejl.
             </p>
             <p>En polygongr&aelig;nse forhindrer transport alle steder, hvor polygonen gennemsk&aelig;rer gaderne. &Eacute;n m&aring;de at benytte denne type gr&aelig;nse p&aring; er at modellere oversv&oslash;mmelser, der d&aelig;kker s&aring; store dele af vejnettet, at vejtransport bliver umulig. Hvis det antal gadesegmenter, der gennemsk&aelig;res af polygongr&aelig;nserne, overskrider 2000, returnerer v&aelig;rkt&oslash;jet en fejl.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Ruteform</h2></div>
+        <hr/>
+        <div>
+            <p>V&aelig;lg formen p&aring; den rute, der forbinder hvert udgangspunkt med dets destination, n&aring;r du bruger en rejsetilstand:
+            </p>
+            <ul>
+                <li> <b>F&oslash;lg veje</b> - Formen er baseret p&aring; det underliggende vejnet. Denne indstilling er den bedste, n&aring;r du vil generere ruterne mellem udgangspunkter og destinationer.
+                </li>
+                <li> <b>Lige linje</b> - Formen er en lige linje, der forbinder udgangspunkt/destination-parret. Denne indstilling er bedst, n&aring;r du vil generere edderkopdiagrammer eller &oslash;nskede ruter (for eksempel for at vise, hvilke butikker kunder bes&oslash;ger).
+                </li>
+            </ul>
+            
+            <p>Den bedste rute mellem et udgangspunkt og den tilh&oslash;rende destination beregnes altid p&aring; grundlag af rejsetilstand, uanset hvilken ruteform der er valgt.
             </p>
         </div>
     </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define([],function(){var n={},e=["ID","OBJECTID","AREA_ID","STORE_ID","HasData","aggregationMethod","sourceCountry","radiusIndex"];return n.cleanUpAttrs=function(n){n&&e.forEach(function(e){delete n[e]})},n});

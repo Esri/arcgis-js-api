@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Funkcija Klasificēt pikseļus, izmantojot Deep Learning",outputLayerName:"${layername} Klasificēt",modelLabel:"Izvēlieties Deep Learning modeli pikseļu klasificēšanai",modelArgsLabel:"Norādiet Deep Learning modeļa argumentus",nameLabel:"Vārds/nosaukums",valueLabel:"Vērtība",queryModelArgsMsg:"Notiek modeļa argumentu vaicājumu izveide...",analysisLayerLabel:"Izvēlieties pikseļu klasificēšanai izmantoto attēlu",itemDescription:"Analīzes attēla serviss, kas ģenerēts no funkcijas Klasificēt pikseļus, izmantojot Deep Learning",itemTags:"Rastra analīzes rezultāts, Klasificēt pikseļus, izmantojot Deep Learning, ${layername}",itemSnippet:"Analīzes attēla serviss, kas ģenerēts no funkcijas Klasificēt pikseļus, izmantojot Deep Learning"});

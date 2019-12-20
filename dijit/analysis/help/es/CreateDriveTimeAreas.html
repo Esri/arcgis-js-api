@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Crear áreas de tiempo de recorrido</h2><p/>
+        <h2>Crear áreas de tiempo de recorrido por vehículo</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Crear &aacute;reas de tiempo de recorrido"></h2>
         <hr/>
     <p>Crear &aacute;reas de tiempo de recorrido crea &aacute;reas a las que se pueda llegar dentro de un tiempo o distancia conduciendo, caminando, etc. Se mide desde uno o varios puntos (hasta 1000) en las carreteras o los caminos para crear una capa que pueda ayudarte a responder preguntas como las siguientes:
@@ -84,7 +84,7 @@
         <div>
             <p>Las entidades de puntos en torno a las cuales se calcular&aacute;n las &aacute;reas. Puede elegir c&oacute;mo se calculan las &aacute;reas en funci&oacute;n del modo de viaje (en coche, en cami&oacute;n o a pie) y la medida (tiempo o distancia).
             </p>
-            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puede seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b> o <b>Elegir capa de an&aacute;lisis</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p>Adem&aacute;s de elegir una capa del mapa, puede seleccionar  <b>Elegir capa de an&aacute;lisis</b>, que se encuentra al final de la lista desplegable. Esta opci&oacute;n abre una galer&iacute;a en la que puede buscar y seleccionar datasets de varias fuentes para usarlos en su an&aacute;lisis. 
             </p>
             <p>La herramienta admite hasta 1000 entidades en la capa de entrada.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Elija su modo de viaje (en coche, en cami&oacute;n o caminando) y mida el tiempo o la distancia. Los modos de viaje disponibles vienen determinados por el administrador de su organizaci&oacute;n.   Despu&eacute;s de elegir su modo y medir, introduzca una duraci&oacute;n o una distancia de hasta  5 horas (300 minutos) o  300 millas (482.80 kil&oacute;metros). 
+            </p>
+            <p>La direcci&oacute;n del viaje ( <b>Desde la instalaci&oacute;n</b> o <b>Hacia la instalaci&oacute;n</b>) puede afectar a la forma en que se generan las &aacute;reas. Crear &aacute;reas de tiempo de recorrido por veh&iacute;culo seguir&aacute; calles de un solo sentido, evitar&aacute; giros prohibidos y seguir&aacute; otras reglas en funci&oacute;n de la direcci&oacute;n de viaje. Debe seleccionar la direcci&oacute;n de viaje en funci&oacute;n del tipo de ubicaciones de entrada y el contexto de su an&aacute;lisis. Por ejemplo, el &aacute;rea de tiempo de recorrido por veh&iacute;culo para un establecimiento de reparto de pizzas se deber&iacute;a crear desde la instalaci&oacute;n, mientras que el &aacute;rea de tiempo de recorrido por veh&iacute;culo para un hospital se deber&iacute;a crear hacia la instalaci&oacute;n.
             </p>
             <p>Al elegir  <b>Tiempo de conducci&oacute;n</b>, <b>Tiempo de conducci&oacute;n (medio rural)</b> o <b>Tiempo en cami&oacute;n</b>, dispone de distintas opciones para medir el tiempo de recorrido.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Mostrar áreas inalcanzables como agujeros</h2></div>
+        <hr/>
+        <div>
+            <p>Decida si las &aacute;reas de salida incluir&aacute;n agujeros en caso de que no se pudiese llegar a algunas de las calles debido a la  <b>Medici&oacute;n</b> de tiempo o distancia o por las restricciones impuestas por el modo de viaje.
+            </p>
+            <p>Las &aacute;reas de tiempo de recorrido por veh&iacute;culo creadas utilizando este par&aacute;metro tienen un l&iacute;mite de 15 minutos o 15 millas (24 kil&oacute;metros).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y el nombre de la capa de entrada. Si el nombre de capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Con el men&uacute; desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Incluir calles alcanzables</h2></div>
+        <hr/>
+        <div>
+            <p>Incluya las calles utilizadas para crear las &aacute;reas de tiempo de recorrido por veh&iacute;culo como una capa de salida. 
+            </p>
+            <p>Crear &aacute;reas de tiempo de recorrido por veh&iacute;culo mide el alcance de una instalaci&oacute;n en la red de calles y, luego, crea &aacute;reas de tiempo de recorrido por veh&iacute;culo de las calles que se transitaron. Por tanto, las &aacute;reas son una aproximaci&oacute;n de las calles transitadas. Si el objetivo de su an&aacute;lisis es determinar qu&eacute; calles se cubren en un tiempo o distancia de viaje determinados desde una instalaci&oacute;n, generar calles alcanzables puede ser m&aacute;s preciso que utilizar las &aacute;reas de tiempo de recorrido por veh&iacute;culo para evaluar si una calle determinada es alcanzable.
+            </p>
+            <p>Las &aacute;reas de tiempo de recorrido por veh&iacute;culo creadas utilizando este par&aacute;metro tienen un l&iacute;mite de 15 minutos o 15 millas (24 kil&oacute;metros).
             </p>
         </div>
     </div>

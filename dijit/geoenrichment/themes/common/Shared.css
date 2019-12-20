@@ -67,90 +67,6 @@
 
 
 
-.esriGERowHigh {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.esriGERow15 {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.esriGERow20 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
-
-.esriGESpaceBeforeBig {
-    margin-left: 10px;
-}
-
-.dj_rtl .esriGESpaceBeforeBig {
-    margin-left: auto;
-    margin-right: 10px;
-}
-
-.esriGESpaceBefore20 {
-    margin-left: 20px;
-}
-
-.dj_rtl .esriGESpaceBefore20 {
-    margin-right: 20px;
-    margin-left: auto;
-}
-
-.esriGESpaceBefore30 {
-    margin-left: 30px;
-}
-
-.dj_rtl .esriGESpaceBefore30 {
-    margin-right: 30px;
-    margin-left: auto;
-}
-
-
-
-.esriGESpaceAfterMedium {
-    margin-right: 5px;
-}
-
-.dj_rtl .esriGESpaceAfterMedium {
-    margin-left: 5px;
-    margin-right: auto;
-}
-
-.esriGESpaceAfterBig {
-    margin-right: 10px;
-}
-
-.dj_rtl .esriGESpaceAfterBig {
-    margin-left: 10px;
-    margin-right: auto;
-}
-
-.esriGESpaceAfter20 {
-    margin-right: 20px;
-}
-
-.dj_rtl .esriGESpaceAfter20 {
-    margin-left: 20px;
-    margin-right: auto;
-}
-
-.esriGESpaceAfter30 {
-    margin-right: 30px;
-}
-
-.dj_rtl .esriGESpaceAfter30 {
-    margin-left: 30px;
-    margin-right: auto;
-}
-
-
-
 .TrimWithEllipses {
     white-space: nowrap;
     overflow: hidden;
@@ -183,6 +99,16 @@
 
 
 
+.esriGEIcon16 {
+    background-repeat: no-repeat;
+    background-size: 16px;
+    width: 16px;
+    background-position: center;
+    height: 16px;
+    cursor: pointer;
+}
+
+
 
 .esriGEStart {
     text-align: left;
@@ -198,4 +124,20 @@
 
 .dj_rtl .esriGEEnd {
     text-align: left;
+}
+
+.esriGEFloatStart {
+    float: left;
+}
+
+.dj_rtl .esriGEFloatStart {
+    float: right;
+}
+
+.esriGEFloatEnd {
+    float: right;
+}
+
+.dj_rtl .esriGEFloatEnd {
+    float: left;
 }

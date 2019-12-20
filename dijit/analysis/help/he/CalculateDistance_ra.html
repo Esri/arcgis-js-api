@@ -41,102 +41,143 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Calculate Distance</h2><p/>
-        <h2><img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" alt="Calculate Distance"></h2>
+        <h2>חשב מרחק</h2><p/>
+        <h2><img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" alt="חשב מרחק"></h2>
         <hr/>
-    <p>This tool calculates Euclidean distance, direction, and allocation from a single source or set of sources.
+    <p>כלי זה מחשב מרחק אוקלידי, כיוון והקצאה ממקור אחד או מקבוצת מקורות.
     </p>
-    <p>Example applications include answering questions such as the following:
+    <p>יישומים לדוגמה כוללים מענה על שאלות כגון:
 
         <ul>
-            <li>What is the distance to the closest town?
+            <li>מה המרחק לעיר הקרובה ביותר?
                 
 
             </li>
-            <li>What is the distance to the closest road?
+            <li>מה המרחק לכביש הקרוב ביותר?
                 
 
             </li>
-            <li>What is the distance to the closest water source?
+            <li>מה המרחק למקור המים הקרוב ביותר?
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer that are visible within the current map extent will be analyzed. If unchecked, all features in the input layer will be analyzed, even if they are outside the current map display extent.
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, רק הישויות בשכבת הקלט שנראות בתוך תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, כל הישויות בשכבת הקלט ינותחו, גם אם הן מחוץ לתיחום המפה הנוכחי.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Choose raster of feature location layer to calculate the distance to</h2></div>
+        <div><h2>בחר שכבת רסטר או שכבת מיקומים של ישויות כדי לחשב את המרחק אליהם</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the sources to which the distance will be calculated. The layer can be an image service or a feature service.
+            <p>השכבה שמגדירה את המקורות שהמרחק אליהן יחושב. השכבה יכולה להיות שירות תמונה או שירות ישויות.
             </p>
-            <p>For an image service, the input type can be integer or floating point.
+            <p>במקרה של שירות תמונה, סוג הקלט יכול להיות מספר שלם או נקודה צפה.
             </p>
-            <p>For a feature service, the input can be point, line, or polygon.
+            <p>עבור שירות ישויות, הקלט יכול להיות נקודה, קו או פוליגון.
             </p>
         </div>
     </div>
     <div id="maximumDistance">
-        <div><h2>Maximum distance to calculate</h2></div>
+        <div><h2>מרחק מרבי לחישוב</h2></div>
         <hr/>
         <div>
-            <p>The maximum distance to be calculated. For example, if you provide a value of 10,000 meters, the Euclidian distance will be calculated from the source locations out to that value (distance).
+            <p>המרחק המרבי לחישוב. לדוגמה, אם אתה מספק ערך של 10,000 מטר, המרחק האוקלידי יחושב ממיקומי המקור ועד לאותו ערך (מרחק).
             </p>
-            <p>If no value is provided, the distance will be calculated out to the defined extent.
+            <p>אם לא סופק ערך, המרחק יחושב עד לתיחום שהוגדר.
             </p>
-            <p>The available units are Kilometers, Meters, Miles, and Feet.
+            <p>היחידות הזמינות הן קילומטרים, מטרים, מיילים ורגל.
             </p>
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output Cell Size</h2></div>
+        <div><h2>פלט גודל תא</h2></div>
         <hr/>
         <div>
-            <p>The cell size and unit for the output rasters.
+            <p>גודל התא והיחידה עבור הרסטרים של הפלט.
             </p>
-            <p>The units can be kilometers, meters, miles, or feet.
+            <p>היחידות יכולות להיות קילומטרים, מטרים, מיילים ורגל.
             </p>
         </div>
     </div>
     <div id="outputDistanceName">
-        <div><h2>Result distance layer name</h2></div>
+        <div><h2>הצג בתוצאה את שם שכבת המרחק</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>
     <div id="outputDirectionName">
-        <div><h2>Result direction layer name</h2></div>
+        <div><h2>שם שכבת כיוון של התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not currently exist in <b>My Content</b>.
+            <p>השם של השכבה שתיווצר ב- <b>התוכן שלי</b>. עליך לספק שם שלא קיים כבר ב- <b>התוכן שלי</b>.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>
     <div id="outputAllocationName">
-        <div><h2>Result Allocation layer name</h2></div>
+        <div><h2>שם שכבת ההקצאה של התוצאה</h2></div>
         <hr/>
         <div>
-            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not currently exist in <b>My Content</b>.
+            <p>השם של השכבה שתיווצר ב- <b>התוכן שלי</b>. עליך לספק שם שלא קיים כבר ב- <b>התוכן שלי</b>.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>
     <div id="allocationField">
-        <div><h2>Choose allocation field</h2></div>
+        <div><h2>בחר שדה הקצאה</h2></div>
         <hr/>
         <div>
-            <p>A field on the input source layer that holds the values that define each source. It can be an integer or a string field of the source dataset.
+            <p>שדה בשכבת מקור הקלט שבו נמצאים הערכים שמגדירים כל מקור. זה יכול להיות מספר שלם או שדה מחרוזת של סט נתוני המקור.
             </p>
-            <p>The default is  <i>Value</i>. If using a feature service and no <i>Value</i> field is available, then the first available integer or string field will be used. If no valid fields exist, the ObjectID field (for example, OID or FID, depending on the type of feature input) will be used.
+            <p>ברירת המחדל היא  <i>Value</i>. אם נעשה שימוש בשירות ישויות ואין שדה <i>Value</i> זמין, יעשה שימוש במספר השלם הראשון או בשדה המחרוזת הראשון. אם לא קיימים שדות חוקיים, יעשה שימוש בשדה ObjectID (לדוגמה, OID או FID, בהתאם לסוג קלט הישות).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>בחר רסטר או שכבת ישויות לייצוג מחסומים</h2></div>
+        <hr/>
+        <div>
+            <p>סט הנתונים שמגדיר את המחסומים. 
+            </p>
+            <p>במקרה של שירות תמונה, סוג הקלט יכול להיות מספר שלם או נקודה צפה. כל התאים שיש להם ערך (כולל אפס) ייחשבו למחסום, כל התאים שהם NoData לא ייחשבו למחסום.
+            </p>
+            <p>עבור שירות ישויות, הקלט יכול להיות נקודה, קו או פוליגון.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>שיטת מרחק</h2></div>
+        <hr/>
+        <div>
+            <p>קובע האם לחשב את המרחק בשיטה פלאנרית (קרקע שטוחה) או גיאודזית (אליפסואיד).
+            </p>
+            <ul>
+                <li> <b>פלאנרי</b> - החישוב יתבצע על משטח שטוח מוטל תוך שימוש במערכת קואורדינטות קרטזית דו-ממדית. זוהי השיטה שמוגדרת כברירת מחדל.
+                    
+
+                </li>
+                <li> <b>גיאודזי</b> - מרחקים מחושבים על האליפסואיד. לפיכך, ללא קשר להשלכה של קלט או פלט, התוצאות לא משתנות.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>שם שכבת כיוון חזור של התוצאה</h2></div>
+        <hr/>
+        <div>
+            <p>השם של השכבה שתיווצר ב- <b>התוכן שלי</b>. עליך לספק שם שלא קיים כבר ב- <b>התוכן שלי</b>.
+            </p>
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
             </p>
         </div>
     </div>

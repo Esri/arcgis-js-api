@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/requests/UniversalClient"],function(e){return{_cache:{},getInfo:function(n){return this._cache[n]||(this._cache[n]=e.request(n).then(function(e){return{url:n,name:e.name,rendererJson:e.drawingInfo&&e.drawingInfo.renderer,geometryType:e.geometryType}}).otherwise(function(e){return console.log(e),null})),this._cache[n]}}});

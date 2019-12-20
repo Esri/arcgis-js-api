@@ -191,13 +191,14 @@
                            }).placeAt(templateSelectorDiv);
 
                            var viewModeSelector = new OnDemandSelect({
-                               listClass: "esriGEOnDemandSelectSpacedOut"
+                               listClass: "esriGEOnDemandSelectSpacedOut esriGEOnDemandSelectVeryTallList"
                            }).placeAt(viewModeSelectorDiv);
                            if (isMobile)
                                viewModeSelectorBlock.style.display = "none"; // automatic for mobile
                            else {
                                viewModeSelector.set("options", [
                                    { value: PlayerViewModes.FULL_PAGES, label: "Full screen" },
+                                   { value: PlayerViewModes.PANELS_IN_STACK_ALL, label: "Full screen: compare all" },
                                    { value: PlayerViewModes.PANELS_IN_SLIDES, label: "Slide view" },
                                    { value: PlayerViewModes.PANELS_IN_STACK, label: "Stacked slide view" },
                                    { value: PlayerViewModes.PANELS_IN_ROW, label: "Flow slide view" }
@@ -457,7 +458,7 @@
 
                                function runPlayerForSelectedGraphics(graphics, mapPoint) {
 
-                                   var isFullScreen = isMobile || viewModeSelector.get("value") === PlayerViewModes.FULL_PAGES;
+                                   var isFullScreen = isMobile || viewModeSelector.get("value") === PlayerViewModes.FULL_PAGES || viewModeSelector.get("value") === PlayerViewModes.PANELS_IN_STACK_ALL;
 
                                    //--------------------------------------------------------------------------
                                    //

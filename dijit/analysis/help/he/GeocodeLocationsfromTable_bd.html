@@ -41,66 +41,61 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Geocode Locations from Table</h2><p/>
-        <h2><img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocode Locations from Table"></h2>
+        <h2>עיגון כתובות מיקומים מטבלה</h2><p/>
+        <h2><img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="עיגון כתובות מיקומים מטבלה"></h2>
         <hr/>
-    <p>Geocoding converts addresses into coordinates. This tool converts addresses from a big data file share table  into a feature layer with the coordinates as extra columns.
+    <p>עיגון כתובות ממיר כתובות לקואורדינטות. כלי זה ממיר כתובות מטבלת שיתוף קובץ Big Data לשכבת ישויות עם קואורדינטות כעמודות נוספות.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputTable">
-        <div><h2>Choose an input table</h2></div>
+        <div><h2>בחר טבלת קלט</h2></div>
         <hr/>
         <div>
-            <p>The input table with the addresses to be geocoded.
-
+            <p>טבלת הקלט עם הכתובות לעיגון. 
             </p>
         </div>
     </div>
     <div id="geocodeServiceURL">
-        <div><h2>Choose a locator</h2></div>
+        <div><h2>בחר מגדיר עיגון כתובות</h2></div>
         <hr/>
         <div>
-            <p>Choose a locator service to geocode against. If the locator service you want to use is not in the drop-down menu, contact your administrator to have the locator service configured for batch geocoding.  
+            <p>בחר שירות מגדיר עיגון כתובות לביצוע עיגון כתובות לפיו. אם שירות מגדיר עיגון הכתובות הרצוי לא מופיע בתפריט הנפתח, פנה למנהל המערכת שלך כדי להוסיף את מדריך עיגון הכתובות לצורך עיגון כתובות באצווה.  
 
             </p>
         </div>
     </div>
     <div id="sourceCountry">
-        <div><h2>Country</h2></div>
+        <div><h2>מדינה</h2></div>
         <hr/>
         <div>
-            <p>If all of your addresses are from one country, select that country to ensure the most accurate results. Otherwise, leave this parameter empty.
+            <p>אם כל הכתובות שלך הן מארץ אחת, בחר ארץ זו כדי להבטיח דיוק מרבי של התוצאות. אחרת, השאר פרמטר זה ריק.
             </p>
         </div>
     </div>
     <div id="geocodeParameters">
-        <div><h2>Select Data Fields</h2></div>
+        <div><h2>בחר שדות נתונים</h2></div>
         <hr/>
         <div>
-            <p>The locator service expects certain fields in the data, such as address, city, state, and postal or ZIP code. Match the data fields in your input file or table to the fields the locator is expecting using the drop-down boxes. The more fields you map, the more accurate the results will be. If the input table has all its data in one column, select  <b>Single Field</b>,  and choose a data field from the drop-down menu. Otherwise, select <b>Multiple Fields</b>, and map the appropriate locator fields to the multiple field columns in your table.
+            <p>שירות מגדיר עיגון הכתובות מצפה לשדות מסוימים בנתונים, כגון כתובת, עיר, מדינה ומיקוד. התאם את שדות הנתונים בקובץ הקלט או בטבלה לשדות שלהם מצפה מגדיר עיגון הכתובות, בעזרת התיבות הנפתחות. ככל שתמפה יותר שדות, כך התוצאות יהיו מדויקות יותר. אם טבלת הקלט מכילה את כל הנתונים בעמודה אחת, בחר  <b>שדה בודד</b> ובחר שדה נתונים מהתפריט הנפתח. אחרת, בחר באפשרות <b>שדות מרובים</b> ומפֵּה את השדות המתאימים במגדיר עיגון הכתובות לעמודות השדות המרובים בטבלה שלך.
             </p>
         </div>
     </div>
     <div id="includeAttributes">
-        <div><h2>For each location</h2></div>
+        <div><h2>לכל מיקום</h2></div>
         <hr/>
         <div>
-            <p>Include additional fields returned by the location service. If this option is checked, all fields created by the locator will be returned. If this is unchecked, your input data will be returned with the geocoded coordinates. 
+            <p>כלול שדות נוספים שהחזיר שירות המיקום. אם אפשרות זו מסומנת, כל השדות שנוצרו על ידי מגדיר עיגון הכתובות יוחזרו. אם אפשרות זו לא מסומנת, נתוני הקלט יוחזרו עם קואורדינטות של עיגון כתובות. 
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Output result name</h2></div>
+        <div><h2>שם תוצאת הפלט</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists, the tool will fail.
+            <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.
             </p>
-            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
-the name of a folder in <b>My Content</b> where the result will be
-saved.
+            <p>בעת כתיב ל- ArcGIS Data Store (מאגר נתונים יחסים או מרחבי-זמני של Big Data) בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

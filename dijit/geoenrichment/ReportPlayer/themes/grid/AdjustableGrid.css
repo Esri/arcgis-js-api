@@ -84,7 +84,11 @@
     height: 0px !important;
 }
 
-.esriGEAdjustableGrid .floatingTableSimpleElement.isImage,
-.esriGEAdjustableGrid .floatingTableSimpleElement.isShape {
+
+
+.esriGEReportPlayer .floatingTableSimpleElement.isImage,
+.esriGEReportPlayer .floatingTableSimpleElement.isShape,
+.esriGEReportPlayer .esriGEAdjustableGridSingleCell.isImage,
+.esriGEReportPlayer .esriGEAdjustableGridSingleCell.isShape {
     pointer-events: none;
 }

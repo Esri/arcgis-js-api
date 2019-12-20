@@ -41,47 +41,47 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Find Centroids</h2><p/>
-        <h2><img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" alt="Find Centroids"></h2>
+        <h2>Najdi centroide</h2><p/>
+        <h2><img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" alt="Najdi centroide"></h2>
         <hr/>
-    <p>This tool works with a layer of multipoint, line, or area features to determine the representative center of each feature.
+    <p>To orodje deluje s slojem mnogotočkovnih, linijskih ali poligonskih geoobjektov za določanje reprezentativnega sredi&scaron;ča vsakega geoobjekta.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features in the input multipoint, line, or area layer visible within the current map extent will be analyzed.  If unchecked, all features in the input layer will be analyzed, even if they are outside the current map extent.
+    <p>Če je obkljukana možnost  <b>Uporabi trenutni obseg karte</b>, bodo analizirani samo geoobjekti mnogotočkovnega, linijskega ali poligonskega sloja, ki so vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose layer whose features will be used to generate centroids</h2></div>
+        <div><h2>Izberi sloj, katerega geoobjekti bodo uporabljeni za ustvarjanje centroidov</h2></div>
         <hr/>
         <div>
-            <p> The multipoint, line, or area layer that will be used to find centroids.
+            <p> Mnogotočkovni, linijski ali poligonski sloj, ki bo uporabljen za iskanje centroidov.
             </p>
-            <p class="OnlineOnly">Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo iz zbirke Living Atlas</b> ali <b>Izberi sloj za analizo</b>, ki se nahajata v spodnjem delu spustnega menija. To odpre galerijo, ki vsebuje zbirko slojev, uporabnih za mnoge analize. 
+            <p>Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo</b> ki se nahaja v spodnjem delu spustnega menija. Ta možnost odpre galerijo, kjer lahko brskate in izberete sklope podatkov iz različnih virov za uporabo v svoji analizi. 
             </p>
         </div>
     </div>
     <div id="inside">
-        <div><h2>Show me output locations</h2></div>
+        <div><h2>Pokaži izhodne lokacije</h2></div>
         <hr/>
         <div>
-            <p> When <b>At the true centroid</b> is checked (default), the output will return the true location of the centroid for each input feature. The centroids will be located  as follows:
+            <p> Ko bo obkljukana možnost <b>Na pravem centroidu</b> (privzeto), bo rezultat prava lokacija centroida za vsak vhodni geoobjekt. Centroidi bodo na naslednjih lokacijah:
                 <ul>
-                    <li>Multipoint features&mdash;The output centroid will be located at the average x and y coordinates of all the points in the multipoint feature.
+                    <li>Mnogočkovni geoobjekti &ndash; izhodni centroid bo na povprečju koordinat x in y vseh točk v mnogotočkovnem geoobjektu.
                     </li>
-                    <li>Line features&mdash;The output centroid will be located at the weighted average x and y coordinates of the midpoints of all line segments in the line feature. The weight is based on the length of the segment.
+                    <li>Linijski geoobjekti &ndash; izhodni centroid bo na obteženem povprečju koordinat x in y sredi&scaron;čnih točk vseh linijskih segmentov v linijskem geoobjektu. Utež temelji na dolžini segmenta.
                     </li>
-                    <li>Area features&mdash;The output centroid will be located at the center of the area.
+                    <li>Poligonski geoobjekt &ndash; izhodni centroid bo v sredi&scaron;ču poligona.
                     </li>
                 </ul>
                 
             </p>
-            <p>When  <b>contained by input features</b> is checked, the output point features will be contained by or inside each input feature. The resulting point features will appear as follows:
+            <p>Ko bo obkljukana možnost  <b>&raquo;ki ga vsebujejo vhodni geoobjekti&laquo;</b>, bo izhodni točkovni geoobjekt vsebovan ali bo znotraj vsakega vhodnega geoobjekta. Nastali točkovni geoobjekti bodo prikazani na naslednji način:
                 <ul>
-                    <li>Multipoint features&mdash;The output centroid will be coincident to one of the points in the multipoint group.
+                    <li>Mnogočkovni geoobjekti &ndash; izhodni centroid bo sovpadal z eno od točk v mnogotočkovni skupini.
                     </li>
-                    <li>Line features&mdash;The output centroid will be on the line.  If the line is curved, the output will be at the midpoint of the line. 
+                    <li>Linijski geoobjekti &ndash; izhodni centroid bo na liniji. Če bo linija ukrivljena, bo izhodni centroid na sredi&scaron;čni točki linije. 
                     </li>
-                    <li>Area features&mdash;The output point will be inside the area feature.
+                    <li>Poligonski geoobjekti &ndash; izhodna točka bo znotraj poligonskega geoobjekta.
                     </li>
                 </ul>
                 
@@ -89,8 +89,7 @@
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Result layer
-name</h2></div>
+        <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
             <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če ime sloja že obstaja, boste morali vnesti drugo ime.

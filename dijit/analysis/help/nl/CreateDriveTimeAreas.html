@@ -84,7 +84,7 @@
         <div>
             <p>De puntobjecten rond welke gebieden worden berekend. U kunt kiezen hoe gebieden berekend worden op basis van reismethode (rijden, vrachtverkeer of wandelen) en (tijd of afstand) meten.
             </p>
-            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> of <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Met deze optie wordt een galerij geopend waarin u kunt bladeren naar en datasets van verschillende bronnen kunt selecteren die u in uw analyse kunt gebruiken. 
             </p>
             <p>De tool ondersteunt maximaal 1.000 objecten in de invoerlaag.
 
@@ -96,6 +96,8 @@
         <hr/>
         <div>
             <p>Kies uw manier van reizen (auto, vrachtwagen, wandelen) en meeteenheid (tijd of afstand). De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie. Nadat u uw manier van reizen en uw meeteenheid hebt gekozen, voert u een duur of afstand in van maximaal  5 uur (300 minuten) of  300 mijl (482,80 kilometer). 
+            </p>
+            <p>De rijrichting <b>(Weg van de bestemming</b> of <b>Richting de bestemming</b>) kan van invloed zijn op de manier waarop de gebieden worden gegenereerd. Het maken van reistijdgebieden houdt rekening met eenrichtingsstraten, vermijdt verboden bochten en volgt andere regels die gebaseerd zijn op de rijrichting. U moet de rijrichting selecteren op basis van het type invoerlocatie en de context van uw analyse. Zo moet bijvoorbeeld de reistijdruimte voor een pizzabezorger buiten de bestemming worden gecre&euml;erd, terwijl de reistijdruimte voor een ziekenhuis in de richting van de bestemming moet worden gecre&euml;erd.
             </p>
             <p>Als u  <b>Reistijd</b>, <b>Landelijke reistijd</b> of <b>Reistijd per vrachtwagen</b> kiest, hebt u opties voor het meten van de reistijd.
                 <ul>
@@ -160,6 +162,16 @@
             </p>
         </div>
     </div>
+    <div id="showHoles">
+        <div><h2>Onbereikbare plaatsen als gaten tonen</h2></div>
+        <hr/>
+        <div>
+            <p>Kies of de uitvoergebieden gaten bevatten als sommige straten niet kunnen worden bereikt vanwege de  <b>Meet</b>-tijd of afstand of vanwege de beperkingen die worden opgelegd door de reismodus.
+            </p>
+            <p>De reistijdgebieden die met deze parameter worden gecre&euml;erd, hebben een limiet van 15 minuten of 15 mijl (24 kilometer).
+            </p>
+        </div>
+    </div>
     <div id="OutputLayer">
         <div><h2>Naam resultaatlaag</h2></div>
         <hr/>
@@ -167,6 +179,18 @@
             <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laagnaam al bestaat, wordt u gevraagd een nieuwe naam te verschaffen.
             </p>
             <p>Met behulp van het vervolgkeuzemenu  <b>Resultaat opslaan in</b> kunt u de naam van een map opgeven in <b>Mijn Content</b> waar het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+    <div id="includeReachableStreets">
+        <div><h2>Inclusief bereikbare straten</h2></div>
+        <hr/>
+        <div>
+            <p>Neem de straten op die worden gebruikt om de reistijdgebieden als uitvoerlaag aan te maken. 
+            </p>
+            <p>Reistijdgebieden maken meet het bereik van een bestemming langs het stratennetwerk en cre&euml;ert vervolgens reistijdgebieden vanuit de straten die zijn afgelegd. Daarom zijn de gebieden een benadering van de afgelegde straten. Als uw analyse moet uitwijzen welke straten binnen een bepaalde reisafstand of -tijd van een bestemming liggen, kan het genereren van bereikbare straten nauwkeuriger zijn dan het gebruik van de reistijdgebieden om te evalueren of een bepaalde straat bereikbaar was.
+            </p>
+            <p>De reistijdgebieden die met deze parameter worden gecre&euml;erd, hebben een limiet van 15 minuten of 15 mijl (24 kilometer).
             </p>
         </div>
     </div>

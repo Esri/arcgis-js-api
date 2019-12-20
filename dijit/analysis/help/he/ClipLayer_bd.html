@@ -41,17 +41,17 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Clip Layer</h2><p/>
-        <h2><img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" alt="Clip Layer"></h2>
+        <h2>חתוך שכבה</h2><p/>
+        <h2><img src="../images/GUID-3F6A1ED7-A7F5-4F5C-BB2A-5D94403F2230-web.png" alt="חתוך שכבה"></h2>
         <hr/>
-    <p>The Clip Layer tool extracts input point, line, or area features that overlay the clip areas. The output is a subset of your input data based on the areas of interest. The following are examples of the tool's utility:
+    <p>הכלי 'חתוך שכבה' מחלץ ישויות נקודה, קו או אזור שמכסות את אזורי החיתוך. הפלט הוא ערכת משנה של נתוני הקלט על בסיס אזורי העניין. להלן דוגמאות לשימוש בכלי זה:
         <ul>
-            <li>Which major rivers are within the state of Nebraska?
+            <li>אילו נהרות גדולים נמצאים בתוך מדינת נברסקה?
                   
             </li>
-            <li>Which  houses are within a coastal  flood zone?
+            <li>אילו בתים נמצאים בתוך אזור הצפה על החוף?
             </li>
-            <li>Which hurricanes made landfall in 2011?
+            <li>אילו סופות הוריקן גרמו למפולות אדמה בשנת 2011?
                  
             </li>
         </ul>
@@ -60,36 +60,32 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose features to clip</h2></div>
+        <div><h2>בחר ישויות לחיתוך</h2></div>
         <hr/>
         <div>
-            <p>The point, line, or area layer that will be clipped. You'll create a subset of these features.
+            <p>שכבת הנקודה, הקו או האזור שייחתכו. את תיצור ערכת משנה של ישויות אלה.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="clipLayer">
-        <div><h2>Choose area to clip to</h2></div>
+        <div><h2>בחר אזור שאליו יתבצע החיתוך</h2></div>
         <hr/>
         <div>
-            <p>The area layer to which you'll clip input layer features.  These areas determine subset boundaries.
+            <p>שכבת האזור שאליה תחתוך ישויות שכבת קלט.  אזורים אלה קובעים את הגבולות של ערכות המשנה.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
-            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists, the tool will fail.
+            <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.
             </p>
-            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
-the name of a folder in <b>My Content</b> where the result will be
-saved.
+            <p>בעת כתיב ל- ArcGIS Data Store (מאגר נתונים יחסים או מרחבי-זמני של Big Data) בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר.
             </p>
         </div>
     </div>

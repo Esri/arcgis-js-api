@@ -29,13 +29,14 @@
 .esriGESimpleInfographic .simpleInfographic_drillDataButtonIcon {
     background-image: url("../images/chartWhite.svg");
     background-repeat: no-repeat;
-    background-size: 24px;
-    width: 24px;
-    height: 24px;
+    background-size: 2em;
+    width: 2em;
+    height: 2em;
 }
 
 .esriGESimpleInfographic .simpleInfographic_drillDataButtonLabel {
     word-break: break-word;
+    line-height: 1.5em;
 }
 
 .simpleInfographic_dataDrillingViewDiv {
@@ -66,4 +67,12 @@
 
 .simpleInfographic_drillingOptionsList {
     background-color: white;
+}
+
+
+
+.esriGEReportPlayerPrint .simpleInfographic_topToolbar,
+.esriGEReportPlayerPrint .simpleInfographic_drillDataButton,
+.esriGEReportPlayerPrint .simpleInfographic_drillDataButtonIcon {
+    display: none !important;
 }

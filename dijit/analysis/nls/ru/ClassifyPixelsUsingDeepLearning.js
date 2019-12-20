@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.30/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
 
 define({toolDefine:"Классифицировать объекты при помощи глубокого обучения",outputLayerName:"${layername}_classified",modelLabel:"Выберите модель глубокого обучения для классификации пикселей",modelArgsLabel:"Введите аргументы модели глубокого обучения",nameLabel:"Имя",valueLabel:"Значение",queryModelArgsMsg:"Запрос аргументов модели...",analysisLayerLabel:"Выберите изображение для классификации пикселей",itemDescription:"Сервис анализа изображений, созданный с применением классификации объектов при помощи глубокого обучения",itemTags:"Результат анализа растра, классификация объектов при помощи глубокого обучения, ${layername}",itemSnippet:"Сервис анализа изображений, созданный с применением классификации объектов при помощи глубокого обучения"});

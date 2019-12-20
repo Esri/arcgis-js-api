@@ -70,7 +70,7 @@
             <p>V&auml;lj det punktlager som ska representera startplatsen eller startplatserna. Verktyget har st&ouml;d f&ouml;r upp till  5 000 startpunkter och  5 000 destinationer. </p>
             <p>Om du v&auml;ljer ett lager som har exakt en startplats kopplas den till alla destinationer.
             </p>
-            <p class="OnlineOnly">F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i v&auml;rldsatlasen</b> eller <b>V&auml;lj analyslager</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
+            <p>F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager</b>, som du hittar l&auml;ngst ned i listrutan. Det alternativet &ouml;ppnar ett galleri d&auml;r du kan bl&auml;ddra till och v&auml;lja dataupps&auml;ttningar fr&aring;n diverse k&auml;llor som du kan anv&auml;nda i din analys. 
             </p>
         </div>
     </div>
@@ -83,11 +83,13 @@
             </p>
             <p>Om det finns en startpunkt och flera destinationer ansluter verktyget startpunkten till varje destination.
             </p>
-            <p class="OnlineOnly">F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i v&auml;rldsatlasen</b> eller <b>V&auml;lj analyslager</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
+            <p>F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager</b>, som du hittar l&auml;ngst ned i listrutan. Det alternativet &ouml;ppnar ett galleri d&auml;r du kan bl&auml;ddra till och v&auml;lja dataupps&auml;ttningar fr&aring;n diverse k&auml;llor som du kan anv&auml;nda i din analys. 
             </p>
             <p> Om det finns flera startpunkter och flera destinationer beh&ouml;vs f&ouml;rst tv&aring; f&auml;lt som beskriver startpunkts- och destinationsparen: <b>ID-f&auml;lt i ursprung</b> och <b>Matchande ID-f&auml;lt i destinationer</b>. Verktyget kopplar startpunkts- och destinationsparen under analysen. T&auml;nk dig exempelvis att du har tv&aring; startpunkter med ID-f&auml;ltv&auml;rdena <code>Rosanna</code> och <code>Harald</code> och tv&aring; destinationer med samma ID-v&auml;rden. Startpunkten <code>Rosanna</code> kopplas till <code>Rosanna</code>-destinationen och <code>Harald</code> kopplas till <code>Harald</code>. Inga andra kopplingar eller m&auml;tningar g&ouml;rs.
             </p>
-            <p>ID-v&auml;rdena m&aring;ste vara unika inom varje lager &ndash; exempelvis kan inte destinationslagret ha tv&aring;  <code>Rosanna</code>-v&auml;rden. V&auml;rdena i startpunkts- och destinationslagren m&aring;ste matcha exakt f&ouml;r att bilda par &ndash; <code>Harald</code> kopplas exempelvis inte om v&auml;rdet &auml;r felstavat till <code>Haradl</code>. 
+            <p>Om det finns ett lika antal startpunkter och destinationer m&aring;ste ID-v&auml;rdena vara unika inom varje lager &ndash; exempelvis kan inte destinationslagret ha tv&aring;   <code>Rosanna</code>-v&auml;rden. V&auml;rdena i startpunkts- och destinationslagren m&aring;ste matcha exakt f&ouml;r att bilda par &ndash; <code>Harald</code> kopplas exempelvis inte om v&auml;rdet &auml;r felstavat till <code>Haradl</code>. 
+            </p>
+            <p>Verktyget g&ouml;r det ocks&aring; m&ouml;jligt att ansluta varje startpunkt till mer &auml;n en destination, eller varje destination till mer &auml;n en startpunkt. I det h&auml;r fallet beh&ouml;vs det fortfarande tv&aring; f&auml;lt som beskriver startpunkts- och destinationsparen. Men endast ett av lagren (antingen startpunkts- eller destinationslagret) beh&ouml;ver ha unika ID-v&auml;rden.
             </p>
         </div>
     </div>
@@ -139,6 +141,23 @@
             <p>Ett linjehinder f&ouml;rbjuder resor &ouml;verallt d&auml;r hindret korsar gatorna. Till exempel kan en parad eller protestmarsch som blockerar trafiken p&aring; flera gatusegment modelleras med ett linjehinder. Om antalet gatugeoobjekt som korsas av alla linjehinder &ouml;verstiger 500 visas ett felmeddelande i verktyget.
             </p>
             <p>Ett polygonhinder f&ouml;rbjuder resor &ouml;verallt d&auml;r polygonen korsar gatorna. En anv&auml;ndning f&ouml;r den h&auml;r typen av hinder &auml;r att modellera &ouml;versv&auml;mningar som t&auml;cker delar av gatun&auml;tet och g&ouml;r det om&ouml;jligt att f&auml;rdas p&aring; v&auml;garna. Om antalet gatugeoobjekt som korsas av alla polygonhinder &ouml;verstiger 2&nbsp;000 visas ett felmeddelande i verktyget.
+            </p>
+        </div>
+    </div>
+    <div id="routeShape">
+        <div><h2>Ruttform</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;lj den ruttform som ansluter varje startpunkt till dess destination n&auml;r f&auml;rdl&auml;get anv&auml;nds:
+            </p>
+            <ul>
+                <li> <b>F&ouml;lj gatorna</b> &ndash; Formen baseras p&aring; det underliggande v&auml;gn&auml;tet. Alternativet passar b&auml;st n&auml;r du vill generera rutterna mellan startpunkter och destinationer.
+                </li>
+                <li> <b>Rak linje</b> &ndash; Formen &auml;r en rak linje som ansluter startpunkts- och destinationsparet. Alternativet passar b&auml;st n&auml;r du vill generera spindeldiagram eller &ouml;nskestigar (till exempel f&ouml;r att visa vilka butiker kunder bes&ouml;ker).
+                </li>
+            </ul>
+            
+            <p>Den b&auml;sta rutten mellan en startpunkt och dess matchade destination ber&auml;knas alltid baserat p&aring; f&auml;rdl&auml;get, oavsett vilken ruttform som valts.
             </p>
         </div>
     </div>
