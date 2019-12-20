@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Legend",points:"Punktid",lines:"Jooned",polygons:"Polügoonid",creatingLegend:"Legendi loomine",noLegend:"Legend puudub",dotValue:"1 punkt = {value} {unit}",currentObservations:"Praegused vaatlused",previousObservations:"Eelmised vaatlused",high:"Kõrge",low:"Madal",esriMetersPerSecond:"m/sek",esriKilometersPerHour:"km/t",esriKnots:"sõlme",esriFeetPerSecond:"jalga/sek",esriMilesPerHour:"miili/t",showNormField:"{field} jagatud väärtusega {normField}",showNormPct:"{field} protsendina koguarvust",showRatio:"Väärtuse {field} ja {normField} suhe",showRatioPercent:"{field} protsendina väärtusest {normField}",showRatioPercentTotal:"{field} protsendina väärtusest {field} ja {normField}",band0:"riba_0",band1:"riba_1",band2:"riba_2",red:"Punane",green:"Roheline",blue:"Sinine"});

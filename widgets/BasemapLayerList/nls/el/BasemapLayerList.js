@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Λίστα θεματικών επιπέδων υποβάθρου",baseHeading:"Βάση",basemapTitle:"Τίτλος υποβάθρου",referenceHeading:"Αναφορά",noReferenceLayers:"Κανένα θεματικό επίπεδο αναφοράς",noBaseLayers:"Κανένα θεματικό επίπεδο βάσης",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε κάποιο σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου.",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});

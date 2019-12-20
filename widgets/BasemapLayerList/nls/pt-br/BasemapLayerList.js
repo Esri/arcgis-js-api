@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista de Camadas do Mapa Base",baseHeading:"Base",basemapTitle:"Título do mapa base",referenceHeading:"Referência",noReferenceLayers:"Nenhuma camada de referência",noBaseLayers:"Nenhuma camada base",layerInvisibleAtScale:"Invisível na escala atual",layerError:"Ocorreu um erro ao carregar esta camada",untitledLayer:"Camada sem título"});

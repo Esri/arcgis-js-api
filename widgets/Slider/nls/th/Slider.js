@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"ตัวเลื่อน",maximumValue:"ค่าสูงสุด",minimumValue:"ค่าต่ำสุด",rangeMaximum:"ค่าสูงสุดของช่วง: {value}",rangeMinimum:"ค่าต่ำสุดของช่วง: {value}",sliderValue:"ค่าของแถบเลื่อน"});

@@ -29,6 +29,10 @@
       position: absolute;
       right: 0;
       text-align: right;
+
+      .esri-slider__range-input {
+        text-align: right;
+      }
     }
 
     .esri-slider__min {
@@ -36,13 +40,17 @@
       left: 0;
       position: absolute;
       text-align: left;
+
+      .esri-slider__range-input {
+        text-align: left;
+      }
     }
 
     .esri-slider--horizontal {
       .esri-slider__max,
       .esri-slider__min {
         display: inline;
-        min-width: 50px;
+        min-width: 50%;
       }
     }
 
@@ -53,10 +61,6 @@
 
     .esri-histogram__bar {
       touch-action: none;
-    }
-
-    .esri-slider__range-input {
-      width: 100px;
     }
 
     .esri-slider__max {

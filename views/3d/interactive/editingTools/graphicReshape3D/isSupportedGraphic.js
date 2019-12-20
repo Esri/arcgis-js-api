@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/maybe"],function(e,o,r){function t(e){return r.isSome(e)&&("polygon"===e.type||"polyline"===e.type)}function n(e){return t(e.geometry)}Object.defineProperty(o,"__esModule",{value:!0}),o.isSupportedGeometry=t,o.isSupportedGraphic=n});
+define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../geometry/Circle","../../../../../support/elevationInfoUtils","../../../../../support/featureFlags"],function(e,r,t,i,n,a,o){function s(e){if("graphics"!==e.layer.type)return 1;var r=e.geometry;if(i.isNone(r))return 2;var s=r.type;switch(s){case"polygon":if(r instanceof n)return 3;break;case"polyline":break;case"point":case"multipoint":case"extent":case"mesh":return 3;default:return t.neverReached(s),3}var c=a.getGraphicEffectiveElevationMode(e);return"on-the-ground"===c||o.enableEditing3D()&&"absolute-height"===c&&!a.hasGraphicFeatureExpressionInfo(e)?0:4}Object.defineProperty(r,"__esModule",{value:!0}),r.isSupportedGraphic=s});

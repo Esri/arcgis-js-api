@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/nextTick","../../../../core/promiseUtils"],function(e,n,r,t){function u(n,u,i){if(!u)return t.resolve(null);switch(u.type){case"class-breaks":case"simple":case"unique-value":case"dot-density":case"dictionary":return t.create(function(n){r(function(){return e(["./tileRenderers/SymbolTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(i)});case"heatmap":return t.create(function(n){r(function(){return e(["./tileRenderers/HeatmapTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(i)})}return t.resolve(null)}Object.defineProperty(n,"__esModule",{value:!0}),n.createOrReuseTileRenderer=u});
+define(["require","exports","../../../../core/nextTick","../../../../core/promiseUtils"],function(e,n,r,t){function u(n,u){if(!n)return t.resolve(null);switch(n.type){case"class-breaks":case"simple":case"unique-value":case"dot-density":case"dictionary":return t.create(function(n){r(function(){return e(["./tileRenderers/SymbolTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(u)});case"heatmap":return t.create(function(n){r(function(){return e(["./tileRenderers/HeatmapTileRenderer"],n)})}).then(function(e){return e.default}).then(function(e){return new e(u)})}return t.resolve(null)}Object.defineProperty(n,"__esModule",{value:!0}),n.createOrReuseTileRenderer=u});

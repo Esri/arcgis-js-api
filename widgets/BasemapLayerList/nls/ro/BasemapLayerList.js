@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Listă cu straturi tematice de hartă fundal",baseHeading:"Bază",basemapTitle:"Titlu hartă fundal",referenceHeading:"Referință",noReferenceLayers:"Fără straturi tematice de referință",noBaseLayers:"Fără straturi tematice de bază",layerInvisibleAtScale:"Invizibil la scara actuală",layerError:"A apărut o eroare la încărcarea acestui strat tematic",untitledLayer:"Strat tematic fără titlu"});

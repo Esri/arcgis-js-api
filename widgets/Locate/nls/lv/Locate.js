@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Atrast novietojumu",title:"Atrast manu novietojumu",currentLocation:"Pašreizējais novietojums",timestamp:"Laika zīmogs",latitude:"Platums",longitude:"Garums",accuracy:"Precizitāte",altitude:"Augstums",altitudeAccuracy:"Augstuma precizitāte",heading:"Virsraksts",speed:"Ātrums"});

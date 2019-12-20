@@ -71,40 +71,40 @@
  * @see {@link module:esri/renderers/smartMapping/creators/opacity opacityVariableCreator}
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./OpacitySlider/nls/OpacitySlider";
+import * as i18n from "dojo/i18n!esri/widgets/OpacitySlider/nls/OpacitySlider";
 
 // esri
-import Color = require("../../Color");
+import Color = require("esri/../Color");
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { VisualVariableResult } from "../../renderers/smartMapping/creators/opacity";
+import { VisualVariableResult } from "esri/../renderers/smartMapping/creators/opacity";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.visualVariables.support
-import OpacityStop = require("../../renderers/visualVariables/support/OpacityStop");
+import OpacityStop = require("esri/../renderers/visualVariables/support/OpacityStop");
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.OpacitySlider
-import OpacitySliderViewModel = require("./OpacitySlider/OpacitySliderViewModel");
+import OpacitySliderViewModel = require("esri/widgets/OpacitySlider/OpacitySliderViewModel");
 
 // esri.widgets.smartMapping.support
-import { ZoomOptions } from "./support/interfaces";
+import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-opacity-slider",
@@ -149,7 +149,7 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     // For SVG fills
     this._rampFillId = `${this.id}-ramp-fill`;
@@ -262,6 +262,8 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
   @property()
   @renderable([
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
@@ -460,8 +462,14 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
   }
 
   protected renderRamp(): VNode {
-    const { _bgFillId, _rampFillId, style, viewModel, zoomOptions } = this;
-    const stopInfos = viewModel.getStopInfo(style.trackFillColor);
+    const {
+      _bgFillId,
+      _rampFillId,
+      style: { trackFillColor },
+      viewModel,
+      zoomOptions
+    } = this;
+    const stopInfos = viewModel.getStopInfo(trackFillColor);
 
     return (
       <div class={CSS.rampElement}>

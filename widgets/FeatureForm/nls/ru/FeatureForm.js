@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- пусто -",validationErrors:{cannotBeNull:"Введите числовое значение",outsideRange:"Значение должно быть между {min} и { {max}",invalidCodedValue:"Значение должно быть одним из следующих значений.",invalidType:"Недопустимое значение"}});
+define({widgetLabel:"Объект из",empty:"- пусто -",validationErrors:{cannotBeNull:"Введите числовое значение",outsideRange:"Значение должно быть между {min} и { {max}",invalidCodedValue:"Значение должно быть одним из следующих значений.",invalidType:"Недопустимое значение"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Területmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a térképbe az első pont elhelyezéséhez",unsupported:"A 2D terület mérését csak a MapView támogatja.",perimeter:"Kerület",area:"Terület",newMeasurement:"Új mérés",mode:"Mód",modes:{auto:"Automatikus",planar:"Síkbeli",geodesic:"Geodéziai"},unit:"Mértékegység",units:{metric:"Metrikus",imperial:"Angolszász","square-kilometers":"Négyzetkilométer","square-meters":"Négyzetméter","square-miles":"Négyzetmérföld","square-inches":"Négyzethüvelyk","square-feet":"Négyzetláb","square-yards":"Négyzetyard","square-us-feet":"Négyzetláb (US)",acres:"Acre",ares:"Ares",hectares:"Hektár"}});
+define({widgetLabel:"Területmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a térképbe az első pont elhelyezéséhez",unsupported:"A 2D terület mérését csak a MapView támogatja.",perimeter:"Kerület",area:"Terület",newMeasurement:"Új mérés",mode:"Mód",modes:{auto:"Automatikus",planar:"Síkbeli",geodesic:"Geodéziai"},unit:"Mértékegység",units:{metric:"Metrikus",imperial:"Angolszász","square-kilometers":"Négyzetkilométer","square-meters":"Négyzetméter","square-miles":"Négyzetmérföld","square-inches":"Négyzethüvelyk","square-feet":"Négyzetláb","square-yards":"Négyzetyard","square-us-feet":"Négyzetláb (USA)",acres:"Acre",ares:"Ares",hectares:"Hektár"}});

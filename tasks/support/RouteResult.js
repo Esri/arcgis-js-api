@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../Graphic","../../core/JSONSupport","../../core/accessorSupport/decorators","./DirectionsFeatureSet"],function(e,r,t,o,p,s,u,i){return function(e){function r(r){var t=e.call(this,r)||this;return t.directions=null,t.route=null,t.routeName=null,t.stops=null,t}return o(r,e),t([u.property({type:i,json:{write:!0}})],r.prototype,"directions",void 0),t([u.property({type:p,json:{write:!0}})],r.prototype,"route",void 0),t([u.property({type:String,json:{write:!0}})],r.prototype,"routeName",void 0),t([u.property({type:[p],json:{write:!0}})],r.prototype,"stops",void 0),r=t([u.subclass("esri.tasks.support.RouteResult")],r)}(u.declared(s.JSONSupport))});

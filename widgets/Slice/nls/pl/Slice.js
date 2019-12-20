@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Przekrój",cancel:"Anuluj",hint:"Rozpocznij cięcie, klikając i przeciągając na powierzchni sceny",excludeHint:"Wybierz warstwę w widoku, aby wykluczyć ją z wycinka",unsupported:"Cięcie nie jest obsługiwane w komponencie MapView.",multipleDisabled:"W danej chwili może być aktywny tylko jeden wycinek.",newSlice:"Nowy wycinek",excludedLayers:"Wykluczone warstwy",pickLayer:"Wybierz warstwę z widoku",excludeLayer:"Wyklucz warstwę z wycinka",includeLayer:"Uwzględnij warstwę w wycinku",ground:"Grunt"});
+define({widgetLabel:"Przekrój",cancel:"Anuluj",hint:"Rozpocznij cięcie, klikając i przeciągając na powierzchni sceny",excludeHint:"Wybierz warstwę w widoku, aby wykluczyć ją z wycinka",unsupported:"Cięcie nie jest obsługiwane w komponencie MapView.",multipleDisabled:"W danej chwili może być aktywny tylko jeden wycinek.",newSlice:"Nowy wycinek",excludedLayers:"Wykluczone warstwy",pickLayer:"Wybierz warstwę z widoku",excludeLayer:"Wyklucz warstwę z wycinka",includeLayer:"Uwzględnij warstwę w wycinku",ground:"Grunt"});

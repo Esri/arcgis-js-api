@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/lang","../core/accessorSupport/decorators","./FillSymbol3DLayer","./Symbol3D"],function(e,r,o,t,l,s,n,y,i){var p=l.ofType({base:null,key:"type",typeMap:{fill:y}});return function(e){function r(r){var o=e.call(this)||this;return o.symbolLayers=new p,o.type="mesh-3d",o}o(r,e),l=r,r.prototype.clone=function(){return new l({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})};var l;return t([n.property({type:p})],r.prototype,"symbolLayers",void 0),t([n.enumeration.serializable()({MeshSymbol3D:"mesh-3d"})],r.prototype,"type",void 0),r=l=t([n.subclass("esri.symbols.MeshSymbol3D")],r)}(n.declared(i))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/lang","../core/accessorSupport/decorators","./FillSymbol3DLayer","./Symbol3D"],function(e,r,o,t,l,s,n,y,i){var p=l.ofType({base:null,key:"type",typeMap:{fill:y}});return function(e){function r(r){var o=e.call(this,r)||this;return o.symbolLayers=new p,o.type="mesh-3d",o}o(r,e),l=r,r.prototype.clone=function(){return new l({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})};var l;return t([n.property({type:p})],r.prototype,"symbolLayers",void 0),t([n.enumeration.serializable()({MeshSymbol3D:"mesh-3d"})],r.prototype,"type",void 0),r=l=t([n.subclass("esri.symbols.MeshSymbol3D")],r)}(n.declared(i))});

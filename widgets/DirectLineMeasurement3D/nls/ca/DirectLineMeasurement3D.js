@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Mesura de línia directa",hint:"Per iniciar la mesura, feu clic a l'escena i col·loqueu el primer punt",unsupported:"La mesura de línia directa 3D només s'admet a l'SceneView.",distance:"Distància",direct:"Directa",horizontal:"Horitzontal",vertical:"Vertical",unit:"Unitat",newMeasurement:"Mesura nova",units:{metric:"Sistema mètric",imperial:"Sistema imperial",kilometers:"Quilòmetres",meters:"Metres",miles:"Milles",inches:"Polzades",feet:"Peus",yards:"Iardes","nautical-miles":"Milles nàutiques","us-feet":"Peus (EUA)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});
+define({widgetLabel:"Mesura de línia directa",hint:"Per iniciar la mesura, feu clic a l'escena i col·loqueu el primer punt",unsupported:"La mesura de línia directa 3D només s'admet a l'SceneView.",distance:"Distància",direct:"Directa",horizontal:"Horitzontal",vertical:"Vertical",unit:"Unitat",newMeasurement:"Mesura nova",units:{metric:"Sistema mètric",imperial:"Sistema imperial",kilometers:"Quilòmetres",meters:"Metres",miles:"Milles",inches:"Polzades",feet:"Peus",yards:"Iardes","nautical-miles":"Milles nàutiques","us-feet":"Peus (EUA)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});

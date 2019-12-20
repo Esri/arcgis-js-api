@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({widgetLabel:"ขยาย",zoomIn:"ขยายเข้า",zoomOut:"ขยายออก"});
+define({widgetLabel:"ขยาย",zoomIn:"ขยายภาพ",zoomOut:"ย่อภาพ"});

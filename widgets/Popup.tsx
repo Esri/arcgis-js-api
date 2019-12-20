@@ -309,13 +309,19 @@ class Popup extends declared(Widget) {
    *                              that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this._addSelectedFeatureIndexHandle();
 
     this.own([
       watchUtils.watch<ScreenPoint>(this, "viewModel.screenLocation", () =>
         this._positionContainer()
+      ),
+
+      watchUtils.whenFalse(
+        this,
+        "viewModel.visible",
+        () => this.selectedFeatureWidget && this.selectedFeatureWidget.destroyCharts()
       ),
 
       watchUtils.watch(this, ["viewModel.visible", "dockEnabled"], () =>
@@ -1012,6 +1018,20 @@ class Popup extends declared(Widget) {
   featureWidgets: Feature[] = [];
 
   //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
+
+  //----------------------------------
   //  promises
   //----------------------------------
 
@@ -1027,7 +1047,7 @@ class Popup extends declared(Widget) {
    * @type {Promise[]}
    */
   @aliasOf("viewModel.promises")
-  promises: IPromise<Graphic[]>[] = null;
+  promises: Promise<Graphic[]>[] = null;
 
   //----------------------------------
   //  selectedFeature
@@ -1217,8 +1237,9 @@ class Popup extends declared(Widget) {
    *
    * @method
    */
-  @aliasOf("viewModel.clear")
-  clear(): void {}
+  clear(): void {
+    this.viewModel.clear();
+  }
 
   /**
    * Closes the popup by setting its [visible](#visible) property to `false`. Users can
@@ -1258,9 +1279,8 @@ class Popup extends declared(Widget) {
    *
    * @return {module:esri/widgets/Popup/PopupViewModel} Returns an instance of the popup's view model.
    */
-  @aliasOf("viewModel.next")
   next(): PopupViewModel {
-    return null;
+    return this.viewModel.next();
   }
 
   /**
@@ -1354,9 +1374,8 @@ class Popup extends declared(Widget) {
    *
    * @return {module:esri/widgets/Popup/PopupViewModel} Returns an instance of the popup's view model.
    */
-  @aliasOf("viewModel.previous")
   previous(): PopupViewModel {
-    return null;
+    return this.viewModel.previous();
   }
 
   /**
@@ -1381,9 +1400,8 @@ class Popup extends declared(Widget) {
    *
    * @method
    */
-  @aliasOf("viewModel.triggerAction")
   triggerAction(actionIndex: number): void {
-    return null;
+    this.viewModel.triggerAction(actionIndex);
   }
 
   render(): VNode {
@@ -2190,11 +2208,16 @@ class Popup extends declared(Widget) {
   }
 
   private _updateFeatureWidget(): void {
-    const { featureWidgets } = this;
-    const { selectedFeatureIndex } = this.viewModel;
-    const selectedFeatureWidget = featureWidgets[selectedFeatureIndex] || null;
+    const { featureWidgets, selectedFeatureWidget } = this;
 
-    this._set("selectedFeatureWidget", selectedFeatureWidget);
+    if (selectedFeatureWidget) {
+      selectedFeatureWidget.destroyCharts();
+    }
+
+    const { selectedFeatureIndex } = this.viewModel;
+    const newSelectedFeatureWidget = featureWidgets[selectedFeatureIndex] || null;
+
+    this._set("selectedFeatureWidget", newSelectedFeatureWidget);
   }
 
   private _destroyFeatureWidgets(): void {

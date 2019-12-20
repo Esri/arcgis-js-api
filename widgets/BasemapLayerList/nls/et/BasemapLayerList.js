@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Aluskaardi kihiloend",baseHeading:"Alus",basemapTitle:"Aluskaardi pealkiri",referenceHeading:"Viide",noReferenceLayers:"Referentskihte pole",noBaseLayers:"Aluskihte pole",layerInvisibleAtScale:"Praeguses mõõtkavas mittenähtav",layerError:"Selle kihi laadimisel ilmnes tõrge",untitledLayer:"Pealkirjata kiht"});

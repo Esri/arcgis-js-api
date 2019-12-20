@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var i=function(){function t(t){this.size=0,this._start=0,this.maxSize=t,this._buffer=new Array(t)}return Object.defineProperty(t.prototype,"entries",{get:function(){return this._buffer},enumerable:!0,configurable:!0}),t.prototype.enqueue=function(t){if(this.size===this.maxSize){var e=this._buffer[this._start];return this._buffer[this._start]=t,this._start=(this._start+1)%this.maxSize,e}return this._buffer[(this._start+this.size++)%this.maxSize]=t,null},t.prototype.dequeue=function(){if(0===this.size)throw new Error("Cannot dequeue from empty buffer");var t=this._buffer[this._start];return this.size--,this._start=(this._start+1)%this.maxSize,t},t}();e.default=i});
+define(["require","exports"],function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var i=function(){function t(t){this.size=0,this._start=0,this.maxSize=t,this._buffer=new Array(t)}return Object.defineProperty(t.prototype,"entries",{get:function(){return this._buffer},enumerable:!0,configurable:!0}),t.prototype.enqueue=function(t){if(this.size===this.maxSize){var e=this._buffer[this._start];return this._buffer[this._start]=t,this._start=(this._start+1)%this.maxSize,e}return this._buffer[(this._start+this.size++)%this.maxSize]=t,null},t.prototype.dequeue=function(){if(0===this.size)return null;var t=this._buffer[this._start];return this._buffer[this._start]=null,this.size--,this._start=(this._start+1)%this.maxSize,t},t}();e.default=i});

@@ -120,7 +120,7 @@ class Track extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------

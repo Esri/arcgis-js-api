@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./accessorSupport/decorators"],function(e,r,t,n,i){Object.defineProperty(r,"__esModule",{value:!0});var o=0;r.IdentifiableMixin=function(e){return function(e){function r(){for(var r=[],t=0;t<arguments.length;t++)r[t]=arguments[t];var n=e.apply(this,r)||this;return Object.defineProperty(n,"uid",{writable:!1,configurable:!1,value:Date.now().toString(16)+"-object-"+o++}),n}return t(r,e),r=n([i.subclass("esri.core.Identifiable")],r)}(i.declared(e))};var u=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=n([i.subclass("esri.core.Identifiable")],r)}(i.declared(r.IdentifiableMixin(function(){function e(){}return e}())));r.Identifiable=u});

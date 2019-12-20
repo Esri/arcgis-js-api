@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"تحديد موقع",title:"بحث عن الموقع",currentLocation:"الموقع الحالي",timestamp:"طابع الوقت",latitude:"خط عرض",longitude:"خط طول",accuracy:"الدقة",altitude:"خط ارتفاع",altitudeAccuracy:"دقة دائرة العرض",heading:"عنوان",speed:"سرعة"});

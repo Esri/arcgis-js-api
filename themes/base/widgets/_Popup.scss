@@ -138,7 +138,6 @@
     font-weight: $font-weight;
     margin: 0 $side-spacing $cap-spacing;
     overflow: auto;
-    overflow-x: hidden;
   }
   .esri-popup__feature-menu-button {
     transition: box-shadow 125ms ease-in-out, background-color 125ms ease-in-out;

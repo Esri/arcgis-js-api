@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators"],function(e,r,t,n,a){Object.defineProperty(r,"__esModule",{value:!0}),r.ScaleRangeLayer=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.minScale=0,r.maxScale=0,r}return t(r,e),Object.defineProperty(r.prototype,"scaleRangeId",{get:function(){return this.minScale+","+this.maxScale},enumerable:!0,configurable:!0}),n([a.property({type:Number,json:{write:!0}})],r.prototype,"minScale",void 0),n([a.property({type:Number,json:{write:!0}})],r.prototype,"maxScale",void 0),n([a.property({readOnly:!0,dependsOn:["minScale","maxScale"]})],r.prototype,"scaleRangeId",null),r=n([a.subclass("esri.layers.mixins.ScaleRangeLayer")],r)}(a.declared(e))}});

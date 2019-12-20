@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Biểu đồ tần suất",barLabel:"Số cột: {count}. Giá trị dữ liệu tối thiểu của cột: {minValue}. Giá trị dữ liệu tối đa của cột: {maxValue}"});
+define({widgetLabel:"Biểu đồ tần suất",barLabel:"Số cột: {count}. Giá trị dữ liệu tối thiểu của cột: {minValue}. Giá trị dữ liệu tối đa của cột: {maxValue}"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"شريحة",cancel:"إلغاء الأمر",hint:"بدء تقسيم بالشرائح بالنقر والسحب على سطح في المشهد",excludeHint:"التقط طبقة في العرض لاستثنائها من الشريحة",unsupported:"الشريحة غير مدعومة في MapView.",multipleDisabled:"يمكن أن تكون شريحة واحدة نشطة في المرة الواحدة",newSlice:"شريحة جديدة",excludedLayers:"الطبقات المستثناة",pickLayer:"التقط طبقة من العرض",excludeLayer:"استثناء طبقة من الشريحة",includeLayer:"تضمين طبقة في الشريحة",ground:"أرض"});
+define({widgetLabel:"شريحة",cancel:"إلغاء الأمر",hint:"بدء تقسيم بالشرائح بالنقر والسحب على سطح في المشهد",excludeHint:"التقط طبقة في العرض لاستثنائها من الشريحة",unsupported:"الشريحة غير مدعومة في MapView.",multipleDisabled:"يمكن أن تكون شريحة واحدة نشطة في المرة الواحدة",newSlice:"شريحة جديدة",excludedLayers:"الطبقات المستثناة",pickLayer:"التقط طبقة من العرض",excludeLayer:"استثناء طبقة من الشريحة",includeLayer:"تضمين طبقة في الشريحة",ground:"أرض"});

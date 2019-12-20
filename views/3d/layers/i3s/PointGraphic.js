@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/decorateHelper","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/assignHelper","../../../../Graphic","../../../../core/accessorSupport/decorators"],function(e,t,r,o,i,n,p){Object.defineProperty(t,"__esModule",{value:!0});var c=function(e){function t(t){return e.call(this,t)||this}o(t,e),n=t,t.prototype.clone=function(){return new n(this.cloneProperties())},t.prototype.cloneProperties=function(){var e=this.pointCloudMetadata;return i({},this.inherited(arguments),{pointCloudMetadata:e})};var n;return r([p.property({constructOnly:!0})],t.prototype,"pointCloudMetadata",void 0),t=n=r([p.subclass("esri.views.3d.layers.i3s.PointGraphic")],t)}(p.declared(n));t.PointGraphic=c});

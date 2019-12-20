@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Chú giải",points:"Điểm",lines:"Đường",polygons:"Vùng",creatingLegend:"Đang tạo chú giải",noLegend:"Không có chú giải",dotValue:"1 Chấm = {value} {unit}",currentObservations:"Quan sát hiện tại",previousObservations:"Quan sát trước đó",high:"Cao",low:"Thấp",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"điểm nút",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} chia cho {normField}",showNormPct:"{field} dưới dạng phần trăm của tổng",showRatio:"Tỷ lệ của {field} trong {normField}",showRatioPercent:"{field} dưới dạng phần trăm của {normField}",showRatioPercentTotal:"{field} dưới dạng phần trăm của {field} và {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Đỏ",green:"Lục",blue:"Lam"});

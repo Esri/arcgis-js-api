@@ -42,6 +42,8 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 /// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
+/// <amd-dependency path="esri/core/tsSupport/generatorHelper" name="__generator"/>
+/// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
 
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/Feature/nls/Feature";
@@ -201,6 +203,10 @@ const DEFAULT_VISIBLE_ELEMENTS = {
   lastEditedInfo: true
 };
 
+const CHART_TOOLTIP_LABEL_MAX_WIDTH = 200;
+const CHART_RENDERER_MIN_LABEL_POSITION = 0.05;
+const CHART_RENDERER_MAX_LABEL_POSITION = 0.95;
+
 @subclass("esri.widgets.Feature")
 class Feature extends declared(Widget) {
   //--------------------------------------------------------------------------
@@ -218,7 +224,7 @@ class Feature extends declared(Widget) {
    */
 
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -230,6 +236,14 @@ class Feature extends declared(Widget) {
     this._activeMediaMap.clear();
     this._activeMediaMap = null;
     this._destroyCharts();
+  }
+
+  /**
+   * Disposes of chart instances.
+   * @private
+   */
+  destroyCharts(): Promise<void> {
+    return this._destroyCharts();
   }
 
   //--------------------------------------------------------------------------
@@ -245,6 +259,8 @@ class Feature extends declared(Widget) {
   private _refreshTimers: Map<number, number> = new Map();
 
   private _mediaInfo: Map<number, MediaInfoMap> = new Map();
+
+  private _loadingChartsModule: Promise<void> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -352,6 +368,20 @@ class Feature extends declared(Widget) {
 
   @aliasOf("viewModel.defaultPopupTemplateEnabled")
   defaultPopupTemplateEnabled: boolean = false;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  spatialReference
@@ -557,7 +587,13 @@ class Feature extends declared(Widget) {
     return `${id}__${featureId}-${argString}`;
   }
 
-  private _destroyCharts(): void {
+  private async _destroyCharts(): Promise<void> {
+    const { _loadingChartsModule } = this;
+
+    if (_loadingChartsModule) {
+      await _loadingChartsModule;
+    }
+
     this._chartMap.forEach((chart) => chart.dispose());
     this._chartMap.clear();
   }
@@ -616,7 +652,7 @@ class Feature extends declared(Widget) {
 
     switch (contentElement.type) {
       case "attachments":
-        return this._renderAttachments(contentElement, contentElementIndex);
+        return this._renderAttachments(contentElement);
       case "fields":
         return this._renderFields(contentElement, contentElementIndex);
       case "media":
@@ -632,7 +668,7 @@ class Feature extends declared(Widget) {
     const { attachmentInfo, supportsResizeAttachments, contentElement } = options;
     const { displayType } = contentElement;
     const { contentType, orientationInfo, name, url } = attachmentInfo;
-    const thumbSize = displayType === "preview" ? 128 : 48;
+    const thumbSize = displayType === "list" ? 48 : 400;
 
     const transform = orientationInfo
       ? [
@@ -680,10 +716,7 @@ class Feature extends declared(Widget) {
     );
   }
 
-  private _renderAttachments(
-    contentElement: AttachmentsContent,
-    contentElementIndex: number
-  ): VNode {
+  private _renderAttachments(contentElement: AttachmentsContent): VNode {
     const { displayType, attachmentInfos } = contentElement;
 
     const hasAttachments = attachmentInfos && attachmentInfos.length;
@@ -859,7 +892,7 @@ class Feature extends declared(Widget) {
       return;
     }
 
-    content.forEach((contentElement: ContentElement, contentElementIndex) =>
+    content.forEach((_contentElement: ContentElement, contentElementIndex) =>
       this._setupMediaRefreshTimer(contentElementIndex)
     );
   }
@@ -943,18 +976,25 @@ class Feature extends declared(Widget) {
   private _getChartDependencies(chartDiv: HTMLDivElement): void {
     const mediaInfo = chartDiv["data-media-info"] as MediaChartInfo;
     const contentElementIndex = chartDiv["data-content-element-index"] as number;
+
+    const activeChart = this._chartMap.get(contentElementIndex);
+
+    if (activeChart) {
+      activeChart.dispose();
+    }
+
     const value = mediaInfo.value;
     const type = mediaInfo.type;
 
-    loadChartsModule().then((amCharts4Index) => {
+    this._loadingChartsModule = loadChartsModule().then((amCharts4Index) =>
       this._renderChart({
         chartDiv,
         contentElementIndex,
         type,
         value,
         chartsModule: amCharts4Index
-      });
-    });
+      })
+    );
   }
 
   private _createPieChart(options: ChartOptions): PieChart {
@@ -970,7 +1010,7 @@ class Feature extends declared(Widget) {
     series.dataFields.value = "y";
     series.dataFields.category = "x";
     series.tooltip.label.wrap = true;
-    series.tooltip.label.maxWidth = 150;
+    series.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
     series.tooltip.label.rtl = chart.rtl;
 
     return chart;
@@ -990,7 +1030,7 @@ class Feature extends declared(Widget) {
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
       categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
       categoryAxis.tooltip.label.rtl = chart.rtl;
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
@@ -999,7 +1039,11 @@ class Feature extends declared(Widget) {
         categoryAxis.tooltip.dy = -categoryAxis.tooltip.contentHeight;
       });
 
-      chart.yAxes.push(new am4charts.ValueAxis());
+      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      const label = valueAxis.renderer.labels.template;
+      valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
+      valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      label.wrap = true;
 
       const series = chart.series.push(new am4charts.ColumnSeries());
       series.dataFields.valueY = "y";
@@ -1019,7 +1063,7 @@ class Feature extends declared(Widget) {
       categoryAxis.renderer.labels.template.disabled = true;
 
       categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
       categoryAxis.tooltip.label.rtl = chart.rtl;
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
@@ -1028,7 +1072,11 @@ class Feature extends declared(Widget) {
         categoryAxis.tooltip.dx = categoryAxis.tooltip.contentWidth;
       });
 
-      chart.xAxes.push(new am4charts.ValueAxis());
+      const valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+      const label = valueAxis.renderer.labels.template;
+      valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
+      valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      label.wrap = true;
 
       const series = chart.series.push(new am4charts.ColumnSeries());
       series.dataFields.valueX = "y";
@@ -1046,7 +1094,7 @@ class Feature extends declared(Widget) {
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
       categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = 125;
+      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
       categoryAxis.tooltip.label.rtl = chart.rtl;
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
@@ -1055,7 +1103,11 @@ class Feature extends declared(Widget) {
         categoryAxis.tooltip.dy = -categoryAxis.tooltip.contentHeight;
       });
 
-      chart.yAxes.push(new am4charts.ValueAxis());
+      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      const label = valueAxis.renderer.labels.template;
+      valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
+      valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      label.wrap = true;
 
       const series = chart.series.push(new am4charts.LineSeries());
       series.dataFields.categoryX = "x";

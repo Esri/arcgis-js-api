@@ -99,7 +99,7 @@ class NavigationToggle extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------

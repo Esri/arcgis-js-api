@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","./ResourceController","./MemoryController"],function(e,r,o,n){Object.defineProperty(r,"__esModule",{value:!0}),r.ResourceControllerMaster=o.ResourceControllerMaster,r.newResourceController=o.newResourceController,r.newMemoryController=n.newMemoryController,r.downloadSlotsPerClient=function(){for(var e=new Map,r=0,o=[[0,15],[1,20],[2,5]];r<o.length;r++){var n=o[r];e.set(n[0],n[1])}return e}()});
+define(["require","exports","../../../core/iteratorUtils","./ResourceController","./MemoryController"],function(e,o,r,l,t){Object.defineProperty(o,"__esModule",{value:!0}),o.ResourceControllerMaster=l.ResourceControllerMaster,o.newResourceController=l.newResourceController,o.newMemoryController=t.newMemoryController,o.downloadSlotsPerClient=r.MapFromValues([[0,15],[1,15],[2,20],[3,5]]),o.maxDownloadSlots=30});

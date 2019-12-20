@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"変換の追加",captureMode:"キャプチャ モード",changeCoordinateDisplay:"座標表示の変更",convert:"変換",conversionOutputSuffix:"変換出力",copySuccessMessage:"クリップボードにコピーされた座標",defaultPattern:"デフォルトにリセット",goTo:"[XY へ移動]",inputCoordTitle:"入力座標",invalidCoordinate:"無効な座標",liveMode:"ライブ モード",locationOffBasemap:"入力座標がベースマップの範囲外です",noBasemap:"ベースマップがありません。",noLocation:"位置なし",removeConversion:"変換の削除",selectFormat:"形式の選択",settingsTitle:"形式の設定"});
+define({widgetLabel:"座標変換",abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"変換の追加",captureMode:"キャプチャ モード",changeCoordinateDisplay:"座標表示の変更",convert:"変換",conversionOutputSuffix:"変換出力",copySuccessMessage:"クリップボードにコピーされた座標",defaultPattern:"デフォルトにリセット",goTo:"[XY へ移動]",inputCoordTitle:"入力座標",invalidCoordinate:"無効な座標",liveMode:"ライブ モード",locationOffBasemap:"入力座標がベースマップの範囲外です",noBasemap:"ベースマップがありません。",noLocation:"位置なし",removeConversion:"変換の削除",selectFormat:"形式の選択",settingsTitle:"形式の設定"});

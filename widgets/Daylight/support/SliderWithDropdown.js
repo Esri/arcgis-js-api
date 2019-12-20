@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/events","../../../core/accessorSupport/decorators","../../Slider","../../support/widget"],function(e,o,t,r,n,i,s,l){var d={interactive:"esri-interactive",label:"esri-slider__label",box:"esri-slider-with-dropdown__box",dropdownRoot:"esri-slider-with-dropdown__dropdown-root",anchor:" esri-widget__anchor esri-slider-with-dropdown__anchor",anchorOpen:"esri-slider-with-dropdown__anchor--open",anchorClosed:"esri-slider-with-dropdown__anchor--closed",dropdownList:"esri-slider-with-dropdown__list",dropdownListItem:"esri-slider-with-dropdown__list-item",dropdownListItemSelected:"esri-slider-with-dropdown__list-item--selected",boxDropDownOn:"esri-slider-with-dropdown__box--drop-down-on",boxDropDownOff:"esri-slider-with-dropdown__box--drop-down-off"},p={selectItem:"Enter",closeDropdown:"Escape",moveSelectionUp:"ArrowUp",moveSelectionDown:"ArrowDown"};return function(e){function o(o){var t=e.call(this,o)||this;return t.items=null,t.currentIndex=0,t.buttonTooltip="",t.showDropDown=!0,t.open=!1,t._rootNode=null,t}return t(o,e),Object.defineProperty(o.prototype,"currentItem",{get:function(){return null!==this.items&&null!==this.currentIndex&&this.currentIndex<this.items.length?this.items[this.currentIndex]:null},enumerable:!0,configurable:!0}),o.prototype.renderThumbLabel=function(){var e,o=this,t=(e={},e[d.boxDropDownOn]=this.showDropDown,e[d.boxDropDownOff]=!this.showDropDown,e);return l.tsx("div",{class:this.classes(d.box,d.label,t)},this.inherited(arguments),this.showDropDown?l.tsx("div",{afterCreate:l.storeNode,class:d.dropdownRoot,bind:this,"data-node-ref":"_rootNode"},l.tsx("button",{class:this.classes(d.interactive,d.anchor,this.open?d.anchorOpen:d.anchorClosed),bind:this,onclick:this._onAnchorClick,onpointerdown:this._killEvent,"aria-label":this.buttonTooltip,title:this.buttonTooltip,"aria-expanded":this.open,"aria-haspopup":"listbox"},this.currentItem?this.currentItem.name+" ":""),this.open?l.tsx("ol",{class:this.classes(d.dropdownList),onpointerdown:this._killEvent,onblur:this._onDropdownBlur,bind:this,tabindex:"-1","aria-label":this.buttonTooltip,role:"listbox",onkeydown:this._onOlKeyDown,afterCreate:function(e){return e.firstChild.focus()}},this.items.map(function(e,t){return l.tsx("li",{class:t===o.currentIndex?o.classes(d.interactive,d.dropdownListItem,d.dropdownListItemSelected):o.classes(d.interactive,d.dropdownListItem),bind:o,onclick:o._onDropdownItemClick,"data-result":t,"aria-label":e.label.join(" "),role:"option","aria-selected":t===o.currentIndex,onkeydown:o._onLiKeyDown,onblur:o._onDropdownBlur,tabindex:"0"},e.label.map(function(e){return l.tsx("span",{bind:o},e)}))})):null):null)},o.prototype._onAnchorClick=function(){return this.open=!this.open,!0},o.prototype._onDropdownItemClick=function(e){var o=e.currentTarget,t=o["data-result"];this.currentIndex=t,this._close()},o.prototype._onDropdownBlur=function(e){var o=e.relatedTarget;null===o&&(o=document.activeElement),this._rootNode.contains(o)||o===this._rootNode.parentElement||o===this._rootNode.parentElement.parentElement||this._close()},o.prototype._killEvent=function(e){return e.stopPropagation(),!0},o.prototype._onOlKeyDown=function(e){event.stopPropagation(),n.eventKey(e)===p.closeDropdown&&this._close()},o.prototype._onLiKeyDown=function(e){var o=event.target;switch(n.eventKey(e)){case p.moveSelectionUp:if(o.previousElementSibling){o.previousElementSibling.focus()}break;case p.moveSelectionDown:if(o.nextElementSibling){o.nextElementSibling.focus()}break;case p.selectItem:o.click()}},o.prototype._close=function(){this.open=!1},r([i.property(),l.renderable()],o.prototype,"items",void 0),r([i.property(),l.renderable()],o.prototype,"currentIndex",void 0),r([i.property({dependsOn:["currentIndex","items"]}),l.renderable()],o.prototype,"currentItem",null),r([i.property(),l.renderable()],o.prototype,"buttonTooltip",void 0),r([i.property(),l.renderable()],o.prototype,"showDropDown",void 0),r([i.property(),l.renderable()],o.prototype,"open",void 0),o=r([i.subclass("esri.widgets.Daylight.SliderWithDropdown")],o)}(i.declared(s))});

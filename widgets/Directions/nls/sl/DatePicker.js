@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({goToPreviousMonth:"Pojdi na prejšnji mesec",goToNextMonth:"Pojdi na naslednji mesec",goToPreviousYear:"Pojdi na prejšnje leto",goToNextYear:"Pojdi na naslednje leto"});

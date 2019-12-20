@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Közvetlen vonalmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a 3D térképbe az első pont elhelyezéséhez",unsupported:"A 3D közvetlen vonalmérést csak a SceneView támogatja.",distance:"Távolság",direct:"Közvetlen",horizontal:"Vízszintes",vertical:"Függőleges",unit:"Mértékegység",newMeasurement:"Új mérés",units:{metric:"Metrikus",imperial:"Angolszász",kilometers:"kilométer",meters:"méter",miles:"mérföld",inches:"hüvelyk",feet:"láb",yards:"yard","nautical-miles":"tengeri mérföld","us-feet":"láb (US)","degrees-minutes-seconds":"DMS",degrees:"fok"}});
+define({widgetLabel:"Közvetlen vonalmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a 3D térképbe az első pont elhelyezéséhez",unsupported:"A 3D közvetlen vonalmérést csak a SceneView támogatja.",distance:"Távolság",direct:"Közvetlen",horizontal:"Vízszintes",vertical:"Függőleges",unit:"Mértékegység",newMeasurement:"Új mérés",units:{metric:"Metrikus",imperial:"Angolszász",kilometers:"kilométer",meters:"méter",miles:"mérföld",inches:"hüvelyk",feet:"láb",yards:"yard","nautical-miles":"Tengeri mérföld","us-feet":"láb (US)","degrees-minutes-seconds":"DMS",degrees:"fok"}});

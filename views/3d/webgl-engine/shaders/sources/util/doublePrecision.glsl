@@ -1,4 +1,4 @@
-#ifdef REQUIRES_FLOAT_OPERATIONS_FIX
+#ifdef DOUBLE_PRECISION_REQUIRES_OBFUSCATION
 
 /**
  * The dpAdd function requires precise floating point operation semantics and order of execution.

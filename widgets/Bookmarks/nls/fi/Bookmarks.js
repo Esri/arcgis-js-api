@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Lisää kirjanmerkki",goToBookmark:"Siirry kirjanmerkkiin",noBookmarksHeading:"Ei kirjanmerkkejä",noBookmarksDescription:"Lisää kirjanmerkkejä karttaasi, ja ne näkyvät tässä.",title:"Otsikko",addPlaceholder:"Anna kirjanmerkin otsikko",addingBookmark:"Lisätään kirjanmerkkiä",widgetLabel:"Kirjanmerkit"});

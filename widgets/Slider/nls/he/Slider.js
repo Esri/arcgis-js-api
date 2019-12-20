@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"מחוון",maximumValue:"ערך מקסימלי",minimumValue:"ערך מינימלי",rangeMaximum:"ערך מקסימלי בטווח: {value}",rangeMinimum:"ערך מינימלי בטווח: {value}",sliderValue:"ערך מחוון"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- prázdné -",validationErrors:{cannotBeNull:"Zadejte hodnotu.",outsideRange:"Hodnota by měla být mezi {min} a {max}",invalidCodedValue:"Hodnota by měla být jednou z uvedených hodnot.",invalidType:"Neplatná hodnota"}});
+define({widgetLabel:"Atributy prvku",empty:"- prázdné -",validationErrors:{cannotBeNull:"Zadejte hodnotu.",outsideRange:"Hodnota by měla být mezi {min} a {max}",invalidCodedValue:"Hodnota by měla být jednou z uvedených hodnot.",invalidType:"Neplatná hodnota"}});

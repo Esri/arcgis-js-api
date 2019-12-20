@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../Color"],function(n,r,t){function e(n,r){return n&&r&&n.r===r.r&&n.g===r.g&&n.b===r.b&&n.a===r.a}function o(n){return n?"#"+n.trim().replace(/#/g,"").substr(0,6):""}function u(n){return new t(n)}function i(n){return a(n)||h(n)}function a(n){return!!n&&4===n.length&&s.test(n)}function h(n){return!!n&&7===n.length&&v.test(n)}function d(n){return u(n).toHex()}function g(n){return c(n)?f(n):l(n,3)}function c(n){return.299*n.r+.587*n.g+.114*n.b>=127}function f(n,r){void 0===r&&(r=1);var e=Math.pow(.7,r);return new t([Math.round(n.r*e),Math.round(n.g*e),Math.round(n.b*e),n.a])}function l(n,r){void 0===r&&(r=1);var e=Math.pow(.7,r),o=30,u=n.r,i=n.g,a=n.b;return u<o&&(u=o),i<o&&(i=o),a<o&&(a=o),new t([Math.min(255,Math.round(u/e)),Math.min(255,Math.round(i/e)),Math.min(255,Math.round(a/e)),n.a])}function M(n,r){var e=n.r,o=n.g,u=n.b,i=n.a;return i<1&&(e=Math.round(i*e+(1-i)*r.r),o=Math.round(i*o+(1-i)*r.g),u=Math.round(i*u+(1-i)*r.b)),new t({r:e,g:o,b:u})}function b(n,r){return void 0===r&&(r=m),c(M(n,r))?"light":"dark"}Object.defineProperty(r,"__esModule",{value:!0});var s=/^#[0-9A-F]{3}$/i,v=/^#[0-9A-F]{6}$/i,m=new t({r:255,g:255,b:255});r.equal=e,r.normalizeHex=o,r.normalizeColor=u,r.isValidHex=i,r.isShorthandHex=a,r.isLonghandHex=h,r.toHex=d,r.getContrastingColor=g,r.isBright=c,r.darker=f,r.brighter=l,r.blendWithBackground=M,r.getColorTheme=b});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"Entrar no modo de ecrã completo",exit:"Sair do modo ecrã completo"});
+define({widgetLabel:"Ecrã Inteiro",enter:"Entrar no modo de ecrã completo",exit:"Sair do modo ecrã completo"});

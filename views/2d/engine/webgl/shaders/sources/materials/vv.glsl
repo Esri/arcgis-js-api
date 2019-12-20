@@ -182,7 +182,7 @@ vec4 getVVColor(float colorValue, vec4 fallback, float isColorLocked) {
 #endif // VV_COLOR
 
 float getVVSize(in float size, in float vvSize)  {
-
+  
 #ifdef VV_SIZE_MIN_MAX_VALUE
   return getVVMinMaxSize(vvSize, size);
 
@@ -190,7 +190,11 @@ float getVVSize(in float size, in float vvSize)  {
   return u_vvSizeScaleStopsValue;
 
 #elif defined(VV_SIZE_FIELD_STOPS)
-  return getVVStopsSize(vvSize, size);
+  float outSize = getVVStopsSize(vvSize, size);
+
+  // If we getNan as the value for a sizeStops,
+  // return the default size of the symbology
+  return isNan(outSize) ? size : outSize;
 
 #elif defined(VV_SIZE_UNIT_VALUE)
   return getVVUnitValue(vvSize, size);

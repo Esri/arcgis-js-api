@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- tom -",validationErrors:{cannotBeNull:"Angi en verdi",outsideRange:"Verdien må være mellom {min} og {max}",invalidCodedValue:"Verdien må være en av de oppførte verdiene.",invalidType:"Ikke en gyldig verdi"}});
+define({widgetLabel:"Geoobjektform",empty:"- tom -",validationErrors:{cannotBeNull:"Angi en verdi",outsideRange:"Verdien må være mellom {min} og {max}",invalidCodedValue:"Verdien må være en av de oppførte verdiene.",invalidType:"Ikke en gyldig verdi"}});

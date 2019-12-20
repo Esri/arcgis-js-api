@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"베이스맵 레이어 목록",baseHeading:"기본",basemapTitle:"베이스맵 제목",referenceHeading:"참조하기",noReferenceLayers:"참조 레이어가 없음",noBaseLayers:"베이스 레이어가 없음",layerInvisibleAtScale:"현재 축척에서는 보이지 않음",layerError:"이 레이어를 불러오는 중 오류가 발생함",untitledLayer:"제목 없는 레이어"});

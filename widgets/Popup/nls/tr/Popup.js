@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Şuna Yakınlaştır",next:"Sonraki detay",previous:"Önceki detay",dock:"Kenet",undock:"Bağlantıdan çıkar",pageText:"{index} / {total}",selectedFeature:"Seçilen detay",selectedFeatures:"{total} sonuç",tooManyFields:"Bu katmanda çok fazla alan var, bazıları görüntülenmeyecek."});
+define({widgetLabel:"Açılır Menü",zoom:"Şuna Yakınlaştır",next:"Sonraki detay",previous:"Önceki detay",dock:"Kenet",undock:"Bağlantıdan çıkar",pageText:"{index} / {total}",selectedFeature:"Seçilen detay",selectedFeatures:"{total} sonuç",tooManyFields:"Bu katmanda çok fazla alan var, bazıları görüntülenmeyecek."});

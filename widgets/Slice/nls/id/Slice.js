@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Irisan",cancel:"Batalkan",hint:"Mulai mengiris dengan mengklik dan menarik pada permukaan dalam scene",excludeHint:"Pilih layer di tampilan untuk mengecualikannya dari irisan",unsupported:"Irisan tidak didukung dalam MapView.",multipleDisabled:"Hanya satu irisan yang dapat diaktifkan dalam satu waktu",newSlice:"Irisan Baru",excludedLayers:"Layer yang dikecualikan",pickLayer:"Pilih layer dari tampilan",excludeLayer:"Kecualikan layer dari irisan",includeLayer:"Sertakan layer dalam irisan",ground:"Tanah"});
+define({widgetLabel:"Irisan",cancel:"Batalkan",hint:"Mulai mengiris dengan mengklik dan menarik pada permukaan dalam scene",excludeHint:"Pilih layer di tampilan untuk mengecualikannya dari irisan",unsupported:"Irisan tidak didukung dalam MapView.",multipleDisabled:"Hanya satu irisan yang dapat diaktifkan dalam satu waktu",newSlice:"Irisan baru",excludedLayers:"Layer yang dikecualikan",pickLayer:"Pilih layer dari tampilan",excludeLayer:"Kecualikan layer dari irisan",includeLayer:"Sertakan layer dalam irisan",ground:"Tanah"});

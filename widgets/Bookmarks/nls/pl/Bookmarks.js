@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Dodaj zakładkę",goToBookmark:"Przejdź do zakładki",noBookmarksHeading:"Brak zakładek",noBookmarksDescription:"Dodaj zakładki do swojej mapy, a będą widoczne tutaj.",title:"Tytuł",addPlaceholder:"Wpisz tytuł zakładki",addingBookmark:"Dodawanie zakładki",widgetLabel:"Zakładki"});

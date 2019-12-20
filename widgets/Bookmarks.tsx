@@ -176,7 +176,7 @@ class Bookmarks extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -398,9 +398,7 @@ class Bookmarks extends declared(Widget) {
    * @type {module:esri/widgets/Bookmarks/BookmarksViewModel}
    * @autocast
    */
-  @property({
-    type: BookmarksViewModel
-  })
+  @property({ type: BookmarksViewModel })
   @renderable(["activeBookmark", "state", "bookmarks"])
   @vmEvent(["select-bookmark"])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
@@ -459,9 +457,8 @@ class Bookmarks extends declared(Widget) {
    * @param {module:esri/webmap/Bookmark} Bookmark - The bookmark to zoom to.
    * @return {Promise} Resolves after the animation to specified bookmark finishes.
    */
-  @aliasOf("viewModel.goTo")
-  goTo(bookmark: Bookmark): IPromise<void> {
-    return null;
+  goTo(bookmark: Bookmark): Promise<void> {
+    return this.viewModel.goTo(bookmark);
   }
 
   render(): VNode {
@@ -560,7 +557,7 @@ class Bookmarks extends declared(Widget) {
     ];
   }
 
-  private _dragHandleBlur(event: FocusEvent): void {
+  private _dragHandleBlur(): void {
     this._selectedSortUid = null;
     this.scheduleRender();
   }

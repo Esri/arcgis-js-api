@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Повзунок",maximumValue:"Максимальне значення",minimumValue:"Мінімальне значення",rangeMaximum:"Максимум діапазону: {value}",rangeMinimum:"Мінімум діапазону: {value}",sliderValue:"Значення повзунка"});

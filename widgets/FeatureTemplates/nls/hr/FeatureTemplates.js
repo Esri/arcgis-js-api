@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Predlošci geoobjekta",filterPlaceholder:"Vrste filtara",noMatches:"Nema pronađenih stavki",noItems:"Nema predložaka za prikaz"});

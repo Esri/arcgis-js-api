@@ -80,7 +80,7 @@
  * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-drag.gif" width="400px"> |
  * Left-click on a ghost vertex| Add a new vertex. | <img alt="Add a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif" width="400px"> |
  * Left-click on a vertex| Select a vertex. | <img alt="Select a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif" width="400px"> |
- * Ctrl+Left-click on vertices | Select or unselect multiple vertices. | <img alt="Select vertices" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
+ * Shift+Left-click on vertices | Select or unselect multiple vertices. | <img alt="Select vertices" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
  * Drag vertex | Move the selected vertex or vertices. | <img alt="Drag vertices" src="../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif" width="400px"> |
  * Right-click on a vertex | Delete a vertex. | <img alt="Delete a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif" width="400px"> |
  * Select multiple vertices and press `Backspace` or `Delete` key | Delete multiple vertices. | <img alt="Delete vertices" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
@@ -129,6 +129,7 @@
  * });
  */
 
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -141,7 +142,7 @@ import Graphic = require("esri/widgets/../Graphic");
 
 // esri.core
 import Collection = require("esri/core/Collection");
-import { SetFromValues } from "esri/core/iteratorUtils";
+import { createSetFromValues } from "esri/core/iteratorUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
@@ -164,6 +165,7 @@ import {
   CreateEvent,
   CreateOptions,
   CreateTool,
+  CreationMode,
   DeleteEvent,
   SketchTool,
   State,
@@ -174,7 +176,7 @@ import {
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { isRTL, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   // sketch classes
@@ -228,16 +230,30 @@ class Sketch extends declared(Widget)<SketchEvents> {
   //--------------------------------------------------------------------------
 
   /**
-   * Fires when a user deletes selected graphics by clicking the `Delete feature` button on the Sketch widget.
+   * Fires when a user deletes selected graphics by clicking the `Delete feature` button on the Sketch widget
+   * or when [delete()](#delete) method is called.
    *
-   * @since 4.11
+   * @example
+   * // selected graphics can be deleted only when update event becomes active
+   * sketch.on("update", function(event) {
+   *   if (event.state === "active") {
+   *     sketch.delete();
+   *   }
+   * });
+   *
+   * // fires after delete method is called
+   * // returns references to deleted graphics.
+   * sketch.on("delete", function(event) {
+   *   event.graphics.forEach(function(graphic){
+   *     console.log("deleted", graphic)
+   *   });
+   * });
+   *
+   * @since 4.14
    * @event module:esri/widgets/Sketch#delete
    * @property {module:esri/Graphic[]} graphics - An array of deleted graphics.
-   * @property {string} tool - Name of the tool that was active when graphics are deleted.
-   *
-   * **Possible Values:** | move | reshape | transform |
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `delete`.
+   * @property {"move" | "reshape" | "transform"} tool - Name of the tool that was active when graphics are deleted.
+   * @property {"delete"} type - The type of the event.
    */
 
   /**
@@ -245,7 +261,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @event module:esri/widgets/Sketch#create
    * @property {module:esri/Graphic} graphic - The graphic that is being created.
-   * @property {string} state - The current state of the event.
+   * @property {"start" | "active" | "complete" | "cancel"} state - The current state of the event.
    *
    * **Possible Values:**
    *
@@ -256,15 +272,12 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * complete | State changes to `complete` after the [complete()](#complete) method is called, when the user double clicks, presses the C key or clicks the first vertex of the `polygon` while creating a graphic. When `point` is created, the create event is fired with the `complete` state.
    * cancel | State changes to `cancel` if the [create()](#create) or [cancel()](#cancel) methods are called during the create operation and before the state changes to `complete`.
    *
-   * @property {string} tool - Name of the create tool.
-   *
-   * **Possible Values:** point | polyline | polygon | rectangle | circle
-   *
+   * @property {"point" | "polyline" | "polygon" | "rectangle" | "circle"} tool - Name of the create tool.
    * @property {module:esri/widgets/Sketch~CreateToolEventInfo} toolEventInfo - Returns additional information associated with
    * the create operation such as where the user is clicking the view or where the user is moving the cursor to.
    * Value of this parameter changes to `null` when the `create` event's `state` changes to `complete` or `cancel`.
    *
-   * @property {string} type - The type of the event. For this event, the type is always `create`.
+   * @property {"create"} type - The type of the event.
    *
    * @example
    * // Listen to sketch widget's create event.
@@ -287,7 +300,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @event module:esri/widgets/Sketch#update
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated.
-   * @property {string} state - The state of the event.
+   * @property {"start" | "active" | "complete" | "cancel"} state - The state of the event.
    *
    * **Possible Values:**
    *
@@ -298,11 +311,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * complete | State changes to `complete` after graphics are updated.
    * cancel | State changes to `cancel` when graphics are selected and then unselected without any updates, or when the [update()](#update), [create()](#create) or [cancel()](#cancel) method is called before the `update` event's `state` changes to `complete`.
    *
-   * @property {string} tool - Name of the update operation tool.
-   *
-   * **Possible Values:**  move | transform | reshape
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `update`.
+   * @property {"move" | "transform" | "reshape"} tool - Name of the update operation tool.
+   * @property {"update"} type - The type of the event.
    * @property {module:esri/widgets/Sketch~UpdateToolEventInfo} toolEventInfo - Returns additional information associated
    * with the update operation that is taking place for the selected graphics and what stage it is at. Value of this parameter
    * changes to `null` when the `update` event's `state` changes to `complete`.
@@ -353,11 +363,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @event module:esri/widgets/Sketch#redo
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
-   * @property {string} tool - Name of the create or update tool that is active.
-   *
-   * **Possible Values:** point | polyline | polygon | rectangle | circle | move | transform | reshape
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `redo`.
+   * @property {"point" | "polyline" | "polygon" | "rectangle" | "circle" | "move" | "transform" | "reshape"} tool - Name of the create or update tool that is active.
+   * @property {"redo"} type - The type of the event.
    */
 
   /**
@@ -365,11 +372,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @event module:esri/widgets/Sketch#undo
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
-   * @property {string} tool - Name of the create or update tool that is active.
-   *
-   * **Possible Values:** point | polyline | polygon | rectangle | circle | move | transform | reshape
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `undo`.
+   * @property {"point" | "polyline" | "polygon" | "rectangle" | "circle" | "move" | "transform" | "reshape"} tool - Name of the create or update tool that is active.
+   * @property {"undo"} type - The type of the event.
    */
 
   /**
@@ -392,7 +396,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~CursorUpdateEventInfo
    *
-   * @property {string} type - Type is always `cursor-update`.
+   * @property {"cursor-update"} type - Type is always `cursor-update`.
    *
    * @property {number[]} coordinates - An array of numbers representing the coordinates of the cursor location.
    *
@@ -413,7 +417,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~VertexAddEventInfo
    *
-   * @property {string} type - Type is always `vertex-add`.
+   * @property {"vertex-add"} type - Type is always `vertex-add`.
    *
    * @property {module:esri/Graphic[]} added - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
    * representing the vertices that were added.
@@ -435,7 +439,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~VertexRemoveEventInfo
    *
-   * @property {string} type - Type is always `vertex-remove`.
+   * @property {"vertex-remove"} type - Type is always `vertex-remove`.
    *
    * @property {module:esri/Graphic[]} removed - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
    * representing the vertices that were removed.
@@ -459,7 +463,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~MoveEventInfo
    *
-   * @property {string} type - Returns information indicating the stage of the move operation.
+   * @property {"move-start" | "move" | "move-stop"} type - Returns information indicating the stage of the move operation.
    *
    * **Possible Values:**
    *
@@ -491,7 +495,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~ReshapeEventInfo
    *
-   * @property {string} type - Returns information indicating the stage of the reshape operation.
+   * @property {"reshape-start" | "reshape" | "reshape-stop"} type - Returns information indicating the stage of the reshape operation.
    *
    * **Possible Values:**
    *
@@ -519,7 +523,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~RotateEventInfo
    *
-   * @property {string} type - Returns information indicating the stage of the rotate operation.
+   * @property {"rotate-start" | "rotate" | "rotate-stop"} type - Returns information indicating the stage of the rotate operation.
    *
    * **Possible Values:**
    *
@@ -558,7 +562,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @typedef {Object} module:esri/widgets/Sketch~ScaleEventInfo
    *
-   * @property {string} type - Returns information indicating the stage of the scale operation.
+   * @property {"scale-start" | "scale" | "scale-stop"} type - Returns information indicating the stage of the scale operation.
    *
    * **Possible Values:**
    *
@@ -587,7 +591,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -596,10 +600,19 @@ class Sketch extends declared(Widget)<SketchEvents> {
       this.viewModel.on("update", () => this.scheduleRender()),
       this.viewModel.on("create", (event) => this._onOperationComplete(event)),
       this.viewModel.on("update", (event) => this._onOperationComplete(event)),
+      this.viewModel.on("delete", (event) => this.emit("delete", event)),
       this.viewModel.on("undo", () => this.scheduleRender()),
       this.viewModel.on("redo", () => this.scheduleRender())
     ]);
   }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  //--------------------------------------------------------------------------
+
+  private _activeCreateOptions: CreateOptions = null;
 
   //--------------------------------------------------------------------------
   //
@@ -642,7 +655,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
       }
 
       const validTools = ["point", "polyline", "polygon", "rectangle", "circle"];
-      const validToolsSet = SetFromValues(validTools);
+      const validToolsSet = createSetFromValues(validTools);
 
       return tools.filter((toolName) => validToolsSet.has(toolName)) as CreateTool[];
     }
@@ -665,6 +678,57 @@ class Sketch extends declared(Widget)<SketchEvents> {
   @aliasOf("viewModel.createGraphic")
   @renderable()
   createGraphic: Graphic = null;
+
+  //----------------------------------
+  //  creationMode
+  //----------------------------------
+
+  /**
+   * Defines the default behavior once the [create](#create) operation is completed. By default, the user will be
+   * able to continuously create graphics with same geometry types.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * continuous | This is the default. Users can continue creating graphics with same geometry types.
+   * single | User can create a single graphic with the specified geometry type. User must choose an operation once the graphic is created.
+   * update | The graphic will be selected for an [update](#update) operation once the `create` operation is completed.
+   *
+   * @name creationMode
+   * @since 4.14
+   * @instance
+   * @default continuous
+   * @type {"single"| "continuous"| "update"}
+   */
+  @property()
+  creationMode: CreationMode = "continuous";
+
+  //----------------------------------
+  //  defaultCreateOptions
+  //----------------------------------
+
+  /**
+   * Default create options set for the Sketch widget.
+   *
+   * @name defaultCreateOptions
+   * @instance
+   * @since 4.14
+   *
+   * @property {string} [mode] - Create operation mode how the graphic can be created.
+   *
+   * **Possible Values:**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * hybrid | This is the default. Vertices are added while the pointer is clicked or dragged. Applies to and is the default for `polygon` and `polyline`.
+   * freehand | Vertices are added while the pointer is dragged. Applies to `polygon`, `polyline` `rectangle` and `circle`. Default for `rectangle` and `circle`.
+   * click | Vertices are added when the pointer is clicked.
+   * @type {Object}
+   */
+  @aliasOf("viewModel.defaultCreateOptions")
+  @renderable()
+  defaultCreateOptions: CreateOptions = null;
 
   //----------------------------------
   //  defaultUpdateOptions
@@ -718,7 +782,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @type {string}
    */
   @property()
-  label: string = i18n.title;
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layer
@@ -841,13 +905,9 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @method create
    * @instance
    *
-   * @param {string} tool - Name of the create tool. Specifies the geometry for the graphic to be created.
-   *
-   * **Possible Values:** point | polyline | polygon | rectangle | circle
-   *
+   * @param {"point" | "polyline" | "polygon" | "rectangle" | "circle"} tool - Name of the create tool. Specifies the geometry for the graphic to be created.
    * @param {Object} [createOptions] - Options for the graphic to be created.
-   *
-   * @param {string} [createOptions.mode] - Specifies how the graphic can be created. The create mode applies only when creating
+   * @param {"hybrid" | "freehand" | "click"} [createOptions.mode] - Specifies how the graphic can be created. The create mode applies only when creating
    * `polygon`, `polyline`, `rectangle` and `circle` geometries.
    *
    * **Possible Values:**
@@ -874,8 +934,10 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * });
    */
 
-  @aliasOf("viewModel.create")
-  create(tool: CreateTool, options?: CreateOptions): void {}
+  create(tool: CreateTool, options?: CreateOptions): void {
+    this._activeCreateOptions = options || null;
+    this.viewModel.create(tool, options);
+  }
 
   /**
    * Initializes an update operation for the specified graphic(s) and fires [update](#event-update) event.
@@ -885,7 +947,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @instance
    * @param {module:esri/Graphic | module:esri/Graphic[]} graphics - A graphic or an array of graphics to be updated. Only graphics added to SketchViewModel's [layer](#layer) property can be updated.
    * @param {Object} [updateOptions] - Update options for the graphics to be updated.
-   * @param {string} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics. The provided tool will become the [activeTool](#activeTool).
+   * @param {"transform" | "reshape" | "move"} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics. The provided tool will become the [activeTool](#activeTool).
    *
    * **Possible Values:**
    *
@@ -962,7 +1024,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @method complete
    * @instance
    *
-   */ @aliasOf("viewModel.complete")
+   */
+  @aliasOf("viewModel.complete")
   complete(): void {}
 
   /**
@@ -999,6 +1062,18 @@ class Sketch extends declared(Widget)<SketchEvents> {
    */
   @aliasOf("viewModel.redo")
   redo(): void {}
+
+  /**
+   * Deletes the selected graphics used in the update workflow. Calling this method will fire the
+   * [delete](#event-delete) event.
+   *
+   * @method delete
+   * @instance
+   * @since 4.14
+   *
+   */
+  @aliasOf("viewModel.delete")
+  delete(): void {}
 
   render(): VNode {
     const {
@@ -1078,7 +1153,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
         aria-label={title}
         bind={this}
         class={this.classes(CSS.button, CSS.resetIcon)}
-        onclick={this._deleteGraphic}
+        onclick={this.delete}
         title={title}
       />
     );
@@ -1258,12 +1333,13 @@ class Sketch extends declared(Widget)<SketchEvents> {
   protected renderUndoButton(): VNode {
     const title = i18n.undo;
     const isDisabled = !this.viewModel.canUndo();
+    const icon = isRTL() ? CSS.redoIcon : CSS.undoIcon;
 
     return (
       <button
         aria-label={title}
         bind={this}
-        class={this.classes(CSS.button, CSS.undoIcon)}
+        class={this.classes(CSS.button, icon)}
         disabled={isDisabled}
         onclick={this._undo}
         title={title}
@@ -1274,12 +1350,13 @@ class Sketch extends declared(Widget)<SketchEvents> {
   protected renderRedoButton(): VNode {
     const title = i18n.redo;
     const isDisabled = !this.viewModel.canRedo();
+    const icon = isRTL() ? CSS.undoIcon : CSS.redoIcon;
 
     return (
       <button
         aria-label={title}
         bind={this}
-        class={this.classes(CSS.button, CSS.redoIcon)}
+        class={this.classes(CSS.button, icon)}
         disabled={isDisabled}
         onclick={this._redo}
         title={title}
@@ -1301,22 +1378,24 @@ class Sketch extends declared(Widget)<SketchEvents> {
     );
   }
 
-  private _deleteGraphic(): void {
-    if (this.state === "active") {
-      const { activeTool, layer, updateGraphics } = this;
-      const graphics = updateGraphics.toArray();
-
-      layer.removeMany(graphics);
-
-      this.cancel(); // Resets 'activeTool'
-      this.emit("delete", { graphics, tool: activeTool as UpdateTool, type: "delete" });
-    }
-  }
-
   private _onOperationComplete(event: CreateEvent | UpdateEvent): void {
-    // Reset the default tool when an operation finishes
-    if (event.state === "complete" || event.state === "cancel") {
-      this._modifyDefaultUpdateTool("transform");
+    const { state } = event;
+
+    if (state === "complete") {
+      const { creationMode } = this;
+      const { type } = event;
+
+      if (type === "create") {
+        const { tool, graphic } = event as CreateEvent;
+        const oldOptions = this._activeCreateOptions;
+        this._activeCreateOptions = null;
+
+        if (creationMode === "continuous") {
+          this.create(tool, oldOptions);
+        } else if (creationMode === "update") {
+          this.update([graphic]);
+        }
+      }
     }
   }
 
@@ -1360,27 +1439,32 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   private _activateCreatePoint(): void {
-    this.viewModel.create("point");
-    this.view.focus();
+    this._activateCreateTool("point");
   }
 
   private _activateCreatePolygon(): void {
-    this.viewModel.create("polygon");
-    this.view.focus();
+    this._activateCreateTool("polygon");
   }
 
   private _activateCreatePolyline(): void {
-    this.viewModel.create("polyline");
-    this.view.focus();
+    this._activateCreateTool("polyline");
   }
 
   private _activateCreateCircle(): void {
-    this.viewModel.create("circle");
-    this.view.focus();
+    this._activateCreateTool("circle");
   }
 
   private _activateCreateRectangle(): void {
-    this.viewModel.create("rectangle");
+    this._activateCreateTool("rectangle");
+  }
+
+  private _activateCreateTool(toolName: CreateTool): void {
+    if (this.activeTool === toolName) {
+      this.cancel();
+    } else {
+      this.create(toolName);
+    }
+
     this.view.focus();
   }
 

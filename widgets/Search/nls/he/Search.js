@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"חיפוש",searchButtonTitle:"חפש",clearButtonTitle:"נקה חיפוש",placeholder:"מצא כתובת או מקום",searchIn:"חפש בתוך",all:"הכל",allPlaceholder:"מצא כתובת או מקום",emptyValue:"הזן מונח חיפוש.",untitledResult:"ללא כותרת",untitledSource:"מקור ללא שם",noResults:"אין תוצאות",noResultsFound:"לא נמצאו תוצאות.",noResultsFoundForValue:"לא נמצאו תוצאות עבור {value}.",showMoreResults:"הצג תוצאות נוספות",hideMoreResults:"הסתר",searchResult:"תוצאות חיפוש",moreResultsHeader:"תוצאות נוספות",useCurrentLocation:"השתמש במיקום הנוכחי"});

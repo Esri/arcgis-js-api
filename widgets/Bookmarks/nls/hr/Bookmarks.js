@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Dodaj knjižnu oznaku",goToBookmark:"Idi na knjižnu oznaku",noBookmarksHeading:"Nema knjižnih oznaka",noBookmarksDescription:"Dodajte knjižnu oznaku na kartu pa će se tamo pojaviti.",title:"Naziv",addPlaceholder:"Unesite naziv knjižne oznake",addingBookmark:"Dodavanje knjižne oznake",widgetLabel:"Knjižne oznake"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"รายการชั้นข้อมูลแผนที่ฐาน",baseHeading:"ฐาน",basemapTitle:"ชื่อแผนที่ฐาน",referenceHeading:"อ้างอิง",noReferenceLayers:"ไม่มีชั้นข้อมูลอ้างอิง",noBaseLayers:"ไม่มีชั้นข้อมูลฐาน",layerInvisibleAtScale:"มองไม่เห็นในระดับปัจจุบัน",layerError:"เกิดข้อผิดพลาดในการโหลดชั้นข้อมูลนี้",untitledLayer:"ชั้นข้อมูลไม่มีชื่อ"});

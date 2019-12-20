@@ -16,13 +16,8 @@
  *
  * ![measurement-line-3d](../../assets/img/apiref/widgets/direct-line-measurement-3d.png)
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- *
  * This widget is designed to work with 3D SceneViews. For measurements with 2D MapViews, use
  * {@link module:esri/widgets/DistanceMeasurement2D}.
- *
- * :::
  *
  * @example
  * var measurementWidget = new DirectLineMeasurement3D({
@@ -74,7 +69,9 @@ const CSS = {
   button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
   // base
-  base: "esri-direct-line-measurement-3d esri-widget esri-widget--panel",
+  base: "esri-direct-line-measurement-3d",
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
   // container
   container: "esri-direct-line-measurement-3d__container",
   // hint
@@ -122,7 +119,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -189,6 +186,20 @@ class DirectLineMeasurement3D extends declared(Widget) {
    */
   @property()
   iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  viewModel
@@ -370,7 +381,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
     ) : null;
 
     return (
-      <div key="" class={CSS.base} role="presentation">
+      <div key="" class={this.classes(CSS.base, CSS.widget, CSS.panel)} role="presentation">
         {containerNode}
       </div>
     );

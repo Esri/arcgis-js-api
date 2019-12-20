@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","./object","@dojo/framework/shim/string"],function(e,t,r,n){function i(e,t){return e.replace(o,"object"==typeof t?function(e,n){return r.getDeepValue(n,t)}:function(e,r){return t(r)})}Object.defineProperty(t,"__esModule",{value:!0});var o=/\{([^\}]+)\}/g;t.replace=i,t.startsWith=n.startsWith,t.endsWith=n.endsWith});
+define(["require","exports","./object","@dojo/framework/shim/string"],function(e,t,r,n){function i(e,t){return e.replace(c,"object"==typeof t?function(e,n){return r.getDeepValue(n,t)}:function(e,r){return t(r)})}function o(e){return e.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,function(e){return"\\"+e})}function u(e){for(var t=0,r=0;r<e.length;r++)t=(t<<5)-t+e.charCodeAt(r),t|=0;return t}Object.defineProperty(t,"__esModule",{value:!0});var c=/\{([^\}]+)\}/g;t.endsWith=n.endsWith,t.startsWith=n.startsWith,t.replace=i,t.escapeRegExpString=o,t.numericHash=u});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType","../../../webdoc/support/opacityUtils"],function(e,r,t,p,o,a,n,c){return function(e){function r(r){var t=e.call(this,r)||this;return t.label=null,t.opacity=null,t.value=null,t}t(r,e),o=r,r.prototype.readOpacity=function(e,r){return c.transparencyToOpacity(r.transparency)},r.prototype.writeOpacity=function(e,r,t){r[t]=c.opacityToTransparency(e)},r.prototype.clone=function(){return new o({label:this.label,opacity:this.opacity,value:this.value})};var o;return p([a.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),p([a.property({type:Number,json:{type:n.Integer,write:{target:"transparency"}}})],r.prototype,"opacity",void 0),p([a.reader("opacity",["transparency"])],r.prototype,"readOpacity",null),p([a.writer("opacity")],r.prototype,"writeOpacity",null),p([a.property({type:Number,json:{write:!0}})],r.prototype,"value",void 0),r=o=p([a.subclass("esri.renderers.visualVariables.support.OpacityStop")],r)}(a.declared(o.JSONSupport))});

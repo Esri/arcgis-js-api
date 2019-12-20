@@ -1,19 +1,21 @@
 /**
  * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)}
- * and/or {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature}
- * service feature layer(s).
- * If using a locator with a geocoding service, the
+ * and/or {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
+ * layer(s). If using a locator with a geocoding service, the
  * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
  * operation is used, whereas {@link module:esri/tasks/support/Query queries} are used on feature layers.
  *
+ * By default, the Search widget sets the view on the [Search result](#SearchResult). The level of detail (LOD)
+ * at the center of the view depends on the data source, with higher quality data sources returning extents closer to the
+ * `feature` obtained from the search.
+ *
  * ![search](../../assets/img/apiref/widgets/search.png)
  *
- * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
- * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
- * See the example below.
+ * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets to the view's user interface via the
+ * {@link module:esri/views/View#ui ui} property on the view. See the example below.
  *
  * @example
- * var searchWidget = new Search({
+ * const searchWidget = new Search({
  *   view: view
  * });
  * // Adds the search widget below other elements in
@@ -46,7 +48,6 @@ import { from } from "@dojo/framework/shim/array";
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Search/nls/Search";
-import regexp = require("dojo/regexp");
 
 // esri
 import Graphic = require("esri/Graphic");
@@ -54,9 +55,11 @@ import { substitute } from "esri/intl";
 import PopupTemplate = require("esri/PopupTemplate");
 
 // esri.core
+import { createAbortController } from "esri/../esri/core/promiseUtils";
 import Collection = require("esri/core/Collection");
 import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
+import { escapeRegExpString } from "esri/core/string";
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
@@ -152,7 +155,8 @@ class Search extends declared(Widget) {
    *
    * @typedef SearchResult
    *
-   * @property {module:esri/geometry/Extent} extent - The extent, or bounding box, of the returned feature.
+   * @property {module:esri/geometry/Extent} extent - The extent, or bounding box, of the returned feature. The value depends on
+   * the data source, with higher quality data sources returning extents closer to the `feature` obtained from the search.
    * @property {module:esri/Graphic} feature - The resulting feature or location obtained from the search.
    * @property {string} name - The name of the result.
    */
@@ -205,7 +209,7 @@ class Search extends declared(Widget) {
    * @event module:esri/widgets/Search#search-blur
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("search-blur", function(event){
    *   console.log("Focus removed from search input textbox.");
@@ -218,7 +222,7 @@ class Search extends declared(Widget) {
    * @event module:esri/widgets/Search#search-focus
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("search-focus", function(event){
    *   console.log("Search input textbox is focused.");
@@ -231,7 +235,7 @@ class Search extends declared(Widget) {
    * @event module:esri/widgets/Search#search-clear
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("search-clear", function(event){
    *   console.log("Search input textbox was cleared.");
@@ -244,7 +248,7 @@ class Search extends declared(Widget) {
    * @event module:esri/widgets/Search#search-start
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("search-start", function(event){
    *   console.log("Search started.");
@@ -257,7 +261,7 @@ class Search extends declared(Widget) {
    * @event module:esri/widgets/Search#suggest-start
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("suggest-start", function(event){
    *   console.log("suggest-start", event);
@@ -279,7 +283,7 @@ class Search extends declared(Widget) {
    * @property {Object} results.source - The [source](#sources) of the selected result.
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("search-complete", function(event){
    *   // The results are stored in the event Object[]
@@ -300,7 +304,7 @@ class Search extends declared(Widget) {
    * @property {number} sourceIndex - The index of the source of the selected result.
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("select-result", function(event){
    *   console.log("The selected search result: ", event);
@@ -321,7 +325,7 @@ class Search extends declared(Widget) {
    * @property {Object} results.source - The [source](#sources) of the selected result.
    *
    * @example
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    *
    * searchWidget.on("suggest-complete", function(event){
    *   // The results are stored in the event Object[]
@@ -345,13 +349,13 @@ class Search extends declared(Widget) {
    *
    * @example
    * // typical usage
-   * var search = new Search({
+   * const searchWidget = new Search({
    *   view: view,
    *   sources: [ ... ]
    * });
    */
   constructor(value?: any) {
-    super();
+    super(value);
 
     this.own(
       watchUtils.watch(this, "searchTerm", (value) => {
@@ -385,6 +389,7 @@ class Search extends declared(Widget) {
     this._handles = null;
 
     this._cancelSuggest();
+    this._cancelSearch();
 
     if (this._searchResultRenderer) {
       this._searchResultRenderer.viewModel = null;
@@ -411,9 +416,11 @@ class Search extends declared(Widget) {
 
   private _searchResultRenderer = new SearchResultRenderer();
 
-  private _suggestPromise: IPromise<SearchResponse<SearchResults<SuggestResult>>> = null;
-
   private _relatedTarget: HTMLElement = null;
+
+  private _suggestController: AbortController;
+
+  private _searchController: AbortController;
 
   //--------------------------------------------------------------------------
   //
@@ -604,14 +611,14 @@ class Search extends declared(Widget) {
    *
    * @example
    * // includeDefaultSources passed as a boolean value
-   * var searchWidget = new Search({
+   * const searchWidget = new Search({
    *   view: view,
    *   sources: [customSearchSource],
    *   includeDefaultSources: false
    * });
    *
    * // includeDefaultSources passed as a function
-   * var searchWidget = new Search({
+   * const searchWidget = new Search({
    *   view: view,
    *   sources: [customSearchSource],
    *   includeDefaultSources: function(sourcesResponse) {
@@ -922,7 +929,7 @@ class Search extends declared(Widget) {
    *
    * @example
    * // Example of multiple sources[]
-   * var sources = [
+   * const sources = [
    * {
    *   locator: new Locator({ url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
    *   singleLineFieldName: "SingleLine",
@@ -967,19 +974,19 @@ class Search extends declared(Widget) {
    *
    * @example
    * // Set source(s) on creation
-   * var searchWidget = new Search({
+   * const searchWidget = new Search({
    *   sources: []
    * });
    *
    * @example
    * // Set source(s)
-   * var searchWidget = new Search();
-   * var sources = [{ ... }, { ... }, { ... }]; //array of sources
+   * const searchWidget = new Search();
+   * const sources = [{ ... }, { ... }, { ... }]; //array of sources
    * searchWidget.sources = sources;
    *
    * @example
    * // Add to source(s)
-   * var searchWidget = new Search();
+   * const searchWidget = new Search();
    * searchWidget.sources.push({ ... });  //new source
    */
   @aliasOf("viewModel.sources")
@@ -1129,23 +1136,37 @@ class Search extends declared(Widget) {
    *                   [SearchResult](#SearchResult).
    */
 
-  search(searchItem?: SearchItem): IPromise<SearchResponse<SearchResults<SearchResult>>> {
+  search(searchItem?: SearchItem): Promise<SearchResponse<SearchResults<SearchResult>>> {
     this.activeMenu = "none";
 
     this._cancelSuggest();
+    this._cancelSearch();
 
-    const searching = this.viewModel
-      .search(searchItem)
+    const controller = createAbortController();
+    const { signal } = controller;
+
+    this._searchController = controller;
+
+    return this.viewModel
+      .search(searchItem, { signal })
       .catch((response) => {
+        if (this._suggestController !== controller) {
+          return undefined;
+        }
+
         this.activeMenu = "none";
+        this._searchController = null;
         return response;
       })
       .then((searchResponse) => {
+        if (this._suggestController !== controller) {
+          return undefined;
+        }
+
         this.activeMenu = !searchResponse.numResults ? "warning" : "none";
+        this._searchController = null;
         return searchResponse;
       });
-
-    return searching;
   }
 
   /**
@@ -1163,17 +1184,22 @@ class Search extends declared(Widget) {
    *
    * @return {Promise<module:esri/widgets/Search~SuggestResponse>} When resolved, returns [SuggestResponse](#SuggestResponse) containing an array of result objects. Each of these results contains a [SuggestResult](#SuggestResult).
    */
-  suggest(query?: string): IPromise<SearchResponse<SearchResults<SuggestResult>>> {
+  suggest(query?: string): Promise<SearchResponse<SearchResults<SuggestResult>>> {
     this._cancelSuggest();
 
-    const suggestPromise: IPromise<SearchResponse<SearchResults<SuggestResult>>> = this.viewModel
-      .suggest(query)
+    const controller = createAbortController();
+    const { signal } = controller;
+
+    this._suggestController = controller;
+
+    return this.viewModel
+      .suggest(query, null, { signal })
       .then((suggestResponse) => {
-        if (this._suggestPromise !== suggestPromise) {
+        if (this._suggestController !== controller) {
           return undefined;
         }
 
-        this._suggestPromise = null;
+        this._suggestController = null;
 
         if (suggestResponse.numResults) {
           this.activeMenu = "suggestion";
@@ -1184,18 +1210,14 @@ class Search extends declared(Widget) {
         return suggestResponse;
       })
       .catch(() => {
-        if (this._suggestPromise !== suggestPromise) {
+        if (this._suggestController !== controller) {
           return;
         }
 
-        this._suggestPromise = null;
+        this._suggestController = null;
 
         return null;
       });
-
-    this._suggestPromise = suggestPromise;
-
-    return suggestPromise;
   }
 
   render(): VNode {
@@ -1304,7 +1326,7 @@ class Search extends declared(Widget) {
       allSources.length > 1 && activeSourceIndex === SearchViewModel.ALL_INDEX;
 
     const suggestionsGroupNode = suggestions
-      ? suggestions.map((suggestResults, suggestResultsIndex) => {
+      ? suggestions.map((suggestResults) => {
           const { sourceIndex } = suggestResults;
           const suggestResultCount = suggestResults.results.length;
           const suggestHeaderNode =
@@ -1315,7 +1337,7 @@ class Search extends declared(Widget) {
           const results = suggestResults.results as SuggestResult[];
 
           const suggestItemsNodes = results.map((suggestion, suggestionIndex) =>
-            this._getSuggestionNode(suggestion, suggestionIndex, sourceIndex)
+            this._getSuggestionNode(suggestion, suggestionIndex)
           );
 
           const suggestionListContainerNode = suggestResultCount ? (
@@ -1434,7 +1456,7 @@ class Search extends declared(Widget) {
     const sourcesListNode = hasMultipleSources ? (
       <ul bind={this} afterCreate={storeNode} data-node-ref="_sourceListNode" class={CSS.menuList}>
         {allItemNode}
-        {sourceList.map((source, sourceIndex) => this._getSourceNode(sourceIndex))}
+        {sourceList.map((_source, sourceIndex) => this._getSourceNode(sourceIndex))}
       </ul>
     ) : null;
 
@@ -1566,7 +1588,21 @@ class Search extends declared(Widget) {
   @accessibleHandler()
   private _handleUseCurrentLocationClick(): void {
     this._focus("none");
-    this.viewModel.searchNearby();
+
+    this._cancelSuggest();
+    this._cancelSearch();
+
+    const controller = createAbortController();
+    const { signal } = controller;
+
+    this._searchController = controller;
+
+    this.viewModel
+      .searchNearby({ signal })
+      .catch()
+      .then(() => {
+        this._searchController = null;
+      });
   }
 
   @accessibleHandler()
@@ -1607,7 +1643,17 @@ class Search extends declared(Widget) {
   }
 
   private _cancelSuggest(): void {
-    this._suggestPromise = null;
+    if (this._suggestController) {
+      this._suggestController.abort();
+      this._suggestController = null;
+    }
+  }
+
+  private _cancelSearch(): void {
+    if (this._searchController) {
+      this._searchController.abort();
+      this._searchController = null;
+    }
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
@@ -1672,18 +1718,18 @@ class Search extends declared(Widget) {
     }
   }
 
-  private _handleInputClick(event: Event): void {
+  private _handleInputClick(): void {
     this.activeMenu = "suggestion";
   }
 
   private _handleInputPaste(event: Event): void {
-    const searchTerm = this.get("viewModel.searchTerm");
     const input = event.target as HTMLInputElement;
-    if (searchTerm !== input.value) {
+
+    if (this.viewModel.searchTerm !== input.value) {
       this.viewModel.searchTerm = input.value;
     }
 
-    if (!searchTerm) {
+    if (!this.viewModel.searchTerm) {
       return;
     }
 
@@ -1850,16 +1896,12 @@ class Search extends declared(Widget) {
   }
 
   private _splitResult(input: string, needle: string): string[] {
-    const escapedNeedle = regexp.escapeString(needle);
+    const escapedNeedle = escapeRegExpString(needle);
     const matches = input.replace(new RegExp(`(^|)(${escapedNeedle})(|$)`, "ig"), "$1|$2|$3");
     return matches.split("|");
   }
 
-  private _getSuggestionNode(
-    suggestion: SuggestResult,
-    suggestionIndex: number,
-    sourceIndex: number
-  ): VNode {
+  private _getSuggestionNode(suggestion: SuggestResult, suggestionIndex: number): VNode {
     const vm = this.viewModel;
     const { searchTerm } = vm;
     if (searchTerm) {

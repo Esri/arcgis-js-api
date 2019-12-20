@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Sektor",cancel:"Avbryt",hint:"Börja skapa sektorer genom att klicka och dra på en yta i scenen",excludeHint:"Välj ett lager i vyn för att utesluta det från sektorn",unsupported:"Sektor stöds inte i MapView.",multipleDisabled:"Bara en sektor i taget kan vara aktiv",newSlice:"Ny sektor",excludedLayers:"Uteslutna lager",pickLayer:"Välj ett lager från vyn",excludeLayer:"Uteslut lager från sektorn",includeLayer:"Ta med lagret i sektorn",ground:"Mark"});
+define({widgetLabel:"Sektor",cancel:"Avbryt",hint:"Börja skapa sektorer genom att klicka och dra på en yta i scenen",excludeHint:"Välj ett lager i vyn för att utesluta det från sektorn",unsupported:"Sektor stöds inte i MapView.",multipleDisabled:"Bara en sektor i taget kan vara aktiv",newSlice:"Ny sektor",excludedLayers:"Uteslutna lager",pickLayer:"Välj ett lager från vyn",excludeLayer:"Uteslut lager från sektorn",includeLayer:"Ta med lagret i sektorn",ground:"Mark"});

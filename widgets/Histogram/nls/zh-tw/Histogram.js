@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"直方圖",barLabel:"軸計數: {count}。 軸資料最小值: {minValue}。 軸資料最大值: {maxValue}"});
+define({widgetLabel:"直方圖",barLabel:"軸計數: {count}。 軸資料最小值: {minValue}。 軸資料最大值: {maxValue}"});

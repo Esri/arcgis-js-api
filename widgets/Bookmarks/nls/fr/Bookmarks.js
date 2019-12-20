@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Ajouter un géosignet",goToBookmark:"Accéder à un géosignet",noBookmarksHeading:"Aucun géosignet",noBookmarksDescription:"Les géosignets que vous ajoutez à votre carte apparaîtront ici.",title:"Titre",addPlaceholder:"Entrez le titre du géosignet",addingBookmark:"Ajout d’un géosignet",widgetLabel:"Géosignets"});

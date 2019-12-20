@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Zoom para",next:"Próxima feição",previous:"Feição anterior",dock:"Móvel",undock:"Não Móvel",pageText:"{index} de {total}",selectedFeature:"Nome da Camada",selectedFeatures:"{total} resultados",tooManyFields:"Esta camada tem muitos campos, alguns não serão exibidos."});
+define({widgetLabel:"Popup",zoom:"Zoom para",next:"Próxima feição",previous:"Feição anterior",dock:"Móvel",undock:"Não Móvel",pageText:"{index} de {total}",selectedFeature:"Nome da Camada",selectedFeatures:"{total} resultados",tooManyFields:"Esta camada tem muitos campos, alguns não serão exibidos."});

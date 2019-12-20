@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Controle deslizante",maximumValue:"Valor Máximo",minimumValue:"Valor Mínimo",rangeMaximum:"Intervalo máximo: {value}",rangeMinimum:"Intervalo mínimo: {value}",sliderValue:"Valor de controle deslizante"});

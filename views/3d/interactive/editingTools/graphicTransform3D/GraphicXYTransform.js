@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../core/tsSupport/decorateHelper","../../../../../core/tsSupport/declareExtendsHelper","../../../../../core/tsSupport/generatorHelper","../../../../../core/tsSupport/awaiterHelper","../../../../../core/Handles","../../../../../core/maybe","../../../../../core/watchUtils","../../../../../core/libs/gl-matrix-2/mat4","../../../../../core/libs/gl-matrix-2/mat4f64","../../../../../core/libs/gl-matrix-2/vec3f64","../../Manipulator3D","../../manipulatorUtils","../../dragUtils/projectScreenToMap","./graphicTransform3DToolConfig","../../../webgl-engine/lib/Geometry","../../../webgl-engine/lib/GeometryUtil","../../../webgl-engine/materials/ColorMaterial","../../../../interactive/dragUtils/dragActions","../../../../interactive/dragUtils/dragHandlers","../../../../interactive/dragUtils/screenDragToMap"],function(t,e,r,i,a,o,n,c,l,s,p,u,d,h,g,f,m,M,v,y,b,D){Object.defineProperty(e,"__esModule",{value:!0});var S;!function(t){t.Highlighted=512}(S||(S={}));var _=function(){function t(t){this._handles=new n,this.tool=t.tool}return t.prototype.destroy=function(){this._clear()},t.prototype._clear=function(){this._handles.removeAll(),this.tool.manipulators.remove(this.discManipulator),this.discManipulator=null},Object.defineProperty(t.prototype,"focused",{get:function(){return this.discManipulator.focused},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"dragging",{get:function(){return this.discManipulator.dragging},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"renderLocation",{get:function(){return this.discManipulator.renderLocation},enumerable:!0,configurable:!0}),t.prototype.recreateManipulators=function(){var t=this;this._clear(),this.discManipulator=this.createDiscManipulator(),this.tool.manipulators.add(this.discManipulator);var e=this.createDragAction(),r=b.createManipulatorDragHandler(this.discManipulator,this.createDragEventMappingFunction(),e);this._handles.add(r),this._handles.add([l.init(this.tool.graphic,"geometry",function(){h.placeManipulatorAtGraphic(t.discManipulator,t.tool.graphic)}),this.discManipulator.events.on("immediate-click",function(t){t.stopPropagation()}),l.init(this.tool.graphic,["visible","layer.visible"],function(){t.discManipulator.visible=t.tool.graphic.visible&&t.tool.graphic.layer.visible})]),this._handles.add([this.discManipulator.events.on("focus",function(){t.tool.updateManipulators()})])},t.prototype.updateManipulators=function(t,e){this.discManipulator.modelTransform=t,this.discManipulator.state=e?S.Highlighted:0},t.prototype.createDiscManipulator=function(){var t=this.tool.view,e=new m(M.createCylinderGeometry(f.DISC_HEIGHT,1,f.GEOMETRY_SEGMENTS,u.vec3f64.fromValues(0,0,1),u.vec3f64.fromValues(0,0,0)),"graphic-transform-disc"),r=s.mat4.fromScaling(p.mat4f64.create(),u.vec3f64.fromValues(f.DISC_RADIUS,f.DISC_RADIUS,f.DISC_RADIUS)),i=this.createMaterial(),a=this.createMaterial(.5);return new d.Manipulator3D({view:t,renderObjects:[{geometry:e,material:i,transform:r,stateMask:S.Highlighted},{geometry:e,material:a,transform:r}],worldSized:!1,autoScaleRenderObjects:!1,focusMultiplier:1,touchMultiplier:1,radius:f.DISC_COLLISION_RADIUS,elevationInfo:{mode:"on-the-ground",offset:0},collisionType:{type:"disc",direction:u.vec3f64.fromValues(0,0,1)}})},t.prototype.createMaterial=function(t){void 0===t&&(t=1);var e=f.HANDLE_COLOR.concat([t]),r=new v({color:e,transparent:1!==t,cullFace:2},"graphic-transform");return r.renderOccluded=2,r},t.prototype.createDragEventMappingFunction=function(){var t=this;return function(e){var r=D.createXYConstrainedFromProject(g.createForGraphicAtLocation(t.tool.view,t.tool.graphic,e.elevationAlignedLocation),c.expect(t.tool.graphic.geometry).spatialReference);return c.isNone(r)?null:function(t){var e=r(t);return c.isNone(e)?null:e}}},t.prototype.createDragAction=function(){var t=this,e=y.createGraphicDragAction(this.tool.graphic);return function(r){switch("start"===r.action&&t.tool.emit("graphic-translate-start",{graphic:t.tool.graphic}),e(r),r.action){case"update":t.tool.emit("graphic-translate",{graphic:t.tool.graphic,dx:r.deltaX,dy:r.deltaY,dz:r.deltaZ,type:"translate"});break;case"end":t.tool.emit("graphic-translate-stop",{graphic:t.tool.graphic})}}},t}();e.GraphicXYTransform=_});

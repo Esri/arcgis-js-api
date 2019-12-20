@@ -13,7 +13,8 @@
         "height",
         "width",
         "widthAndDepth"
-      ]
+      ],
+      "default": "all"
     },
     "field": {
       "type": "string",
@@ -116,7 +117,8 @@
         "nautical-miles",
         "unknown",
         "yards"
-      ]
+      ],
+      "default": "meters"
     }
   },
   "required": [

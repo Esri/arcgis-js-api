@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Đo Diện tích",hint:"Bắt đầu đo bằng cách bấm vào scene để đặt điểm đầu tiên của bạn",unsupported:"Tính toán diện tích 3D chỉ được hỗ trợ trong SceneView.",perimeterLength:"Chu vi",area:"Khu vực",unit:"Đơn vị",notApplicable:"Không áp dụng",newMeasurement:"Phép đo Mới",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh","square-kilometers":"Kilômét vuông","square-meters":"Mét vuông","square-miles":"Dặm vuông","square-inches":"Inch Vuông","square-feet":"Feet vuông","square-yards":"Thước Vuông","square-us-feet":"Feet vuông (Mỹ)",acres:"Acre",ares:"Are",hectares:"Hecta"}});
+define({widgetLabel:"Đo Diện tích",hint:"Bắt đầu đo bằng cách bấm vào scene để đặt điểm đầu tiên của bạn",unsupported:"Tính toán diện tích 3D chỉ được hỗ trợ trong SceneView.",perimeterLength:"Chu vi",area:"Khu vực",unit:"Đơn vị",notApplicable:"Không áp dụng",newMeasurement:"Phép đo mới",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh","square-kilometers":"Kilômét vuông","square-meters":"Mét vuông","square-miles":"Dặm vuông","square-inches":"Inch vuông","square-feet":"Feet vuông","square-yards":"Thước vuông","square-us-feet":"Feet vuông (Mỹ)",acres:"Acre",ares:"Are",hectares:"Hecta"}});

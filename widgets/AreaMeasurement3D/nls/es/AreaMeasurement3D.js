@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Medición de área",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de áreas 3D solo se admite en SceneView.",perimeterLength:"Perímetro",area:"Área",unit:"Unidad",notApplicable:"n/d",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial","square-kilometers":"Kilómetros cuadrados","square-meters":"Metros cuadrados","square-miles":"Millas cuadradas","square-inches":"Pulgadas Cuadradas","square-feet":"Pies cuadrados","square-yards":"Yardas cuadradas","square-us-feet":"Pies cuadrados (EE. UU.)",acres:"Acres",ares:"Áreas",hectares:"Hectáreas"}});
+define({widgetLabel:"Medición de área",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de áreas 3D solo se admite en SceneView.",perimeterLength:"Perímetro",area:"Área",unit:"Unidad",notApplicable:"n/d",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial","square-kilometers":"Kilómetros cuadrados","square-meters":"Metros cuadrados","square-miles":"Millas cuadradas","square-inches":"Pulgadas cuadradas","square-feet":"Pies cuadrados","square-yards":"Yardas cuadradas","square-us-feet":"Pies cuadrados (EE. UU.)",acres:"Acres",ares:"Áreas",hectares:"Hectáreas"}});

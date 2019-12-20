@@ -146,7 +146,7 @@ export type Mode = "live" | "capture";
 
 export interface ConversionInfo {
   convert?: (point: Point) => Position;
-  convertDeferred?: (point: Point) => IPromise<Position>;
+  convertDeferred?: (point: Point) => Promise<Position>;
   reverseConvert?: (input: string) => Point;
   spatialReference?: SpatialReference;
 }
@@ -171,19 +171,19 @@ export interface FromGeoCoordinateStringParameters {
   coordinate: string;
   spatialReference: SpatialReference;
   formatName: string;
-  geometryServicePromise: IPromise<GeometryService>;
+  geometryServicePromise: Promise<GeometryService>;
 }
 
 export interface ToGeoCoordinateStringParameters {
   location: Point;
   formatName: string;
-  geometryServicePromise: IPromise<GeometryService>;
+  geometryServicePromise: Promise<GeometryService>;
 }
 
 export interface ProjectPointParameters {
   location: Point;
   spatialReference: SpatialReference;
-  geometryServicePromise: IPromise<GeometryService>;
+  geometryServicePromise: Promise<GeometryService>;
   scale?: number;
 }
 
@@ -424,3 +424,9 @@ export type MeasurementViewModel =
   | AreaMeasurement3DViewModel
   | DirectLineMeasurement3DViewModel
   | DistanceMeasurement2DViewModel;
+
+// esri.widgets.DayLight
+
+export type DateOrSeason = "date" | "season";
+
+export type Season = "spring" | "summer" | "fall" | "winter";

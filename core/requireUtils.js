@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","./promiseUtils"],function(e,n,r){function t(e,n){return Array.isArray(n)?r.create(function(r){e(n,function(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];r(e)})}):t(e,[n]).then(function(e){return e[0]})}function i(e,n,r){return n.toAbsMid?n.toAbsMid(e):r.id.replace(/\/[^\/]*$/gi,"/")+e}Object.defineProperty(n,"__esModule",{value:!0}),n.when=t,n.getAbsMid=i});
+define(["require","exports","./deprecate","./Logger","./promiseUtils"],function(e,r,t,n,i){function o(e,r){return t.deprecatedFunction(s,"when",{moduleName:"requireUtils",replacement:"Use `promiseUtils.create()` instead.",version:"4.10",warnOnce:!0}),Array.isArray(r)?i.create(function(t){e(r,function(){for(var e=[],r=0;r<arguments.length;r++)e[r]=arguments[r];t(e)})}):o(e,[r]).then(function(e){return e[0]})}function c(e,r,t){return r.toAbsMid?r.toAbsMid(e):t.id.replace(/\/[^\/]*$/gi,"/")+e}Object.defineProperty(r,"__esModule",{value:!0});var s=n.getLogger("esri.core.requireUtils");r.when=o,r.getAbsMid=c});

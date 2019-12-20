@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],function(e,a,n,r){function s(e){e.vertex.code.add(r.glsl(c||(c=n(["\n    float screenSizePerspectiveMinSize(float size, vec4 factor) {\n      float nonZeroSize = 1.0 - step(size, 0.0);\n\n      return (\n        factor.z * (\n          1.0 +\n          nonZeroSize *                // Multiply by nzs ensures if size is 0, then we ignore\n                                      // proportionally scaled padding\n          2.0 * factor.w / (\n            size + (1.0 - nonZeroSize) // Adding 1 - nzs ensures we divide either by size, or by 1\n          )\n        )\n      );\n    }\n  "],["\n    float screenSizePerspectiveMinSize(float size, vec4 factor) {\n      float nonZeroSize = 1.0 - step(size, 0.0);\n\n      return (\n        factor.z * (\n          1.0 +\n          nonZeroSize *                // Multiply by nzs ensures if size is 0, then we ignore\n                                      // proportionally scaled padding\n          2.0 * factor.w / (\n            size + (1.0 - nonZeroSize) // Adding 1 - nzs ensures we divide either by size, or by 1\n          )\n        )\n      );\n    }\n  "])))),e.vertex.code.add(r.glsl(t||(t=n(["\n    float screenSizePerspectiveViewAngleDependentFactor(float absCosAngle) {\n      return absCosAngle * absCosAngle * absCosAngle;\n    }\n  "],["\n    float screenSizePerspectiveViewAngleDependentFactor(float absCosAngle) {\n      return absCosAngle * absCosAngle * absCosAngle;\n    }\n  "])))),e.vertex.code.add(r.glsl(i||(i=n(["\n    vec4 screenSizePerspectiveScaleFactor(float absCosAngle, float distanceToCamera, vec4 params) {\n      return vec4(min(params.x / (distanceToCamera - params.y), 1.0), screenSizePerspectiveViewAngleDependentFactor(absCosAngle), params.z, params.w);\n    }\n  "],["\n    vec4 screenSizePerspectiveScaleFactor(float absCosAngle, float distanceToCamera, vec4 params) {\n      return vec4(min(params.x / (distanceToCamera - params.y), 1.0), screenSizePerspectiveViewAngleDependentFactor(absCosAngle), params.z, params.w);\n    }\n  "])))),e.vertex.code.add(r.glsl(o||(o=n(["\n    float applyScreenSizePerspectiveScaleFactorFloat(float size, vec4 factor) {\n      return max(mix(size * factor.x, size, factor.y), screenSizePerspectiveMinSize(size, factor));\n    }\n  "],["\n    float applyScreenSizePerspectiveScaleFactorFloat(float size, vec4 factor) {\n      return max(mix(size * factor.x, size, factor.y), screenSizePerspectiveMinSize(size, factor));\n    }\n  "])))),e.vertex.code.add(r.glsl(l||(l=n(["\n    float screenSizePerspectiveScaleFloat(float size, float absCosAngle, float distanceToCamera, vec4 params) {\n      return applyScreenSizePerspectiveScaleFactorFloat(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params));\n    }\n  "],["\n    float screenSizePerspectiveScaleFloat(float size, float absCosAngle, float distanceToCamera, vec4 params) {\n      return applyScreenSizePerspectiveScaleFactorFloat(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params));\n    }\n  "])))),e.vertex.code.add(r.glsl(p||(p=n(["\n    vec2 applyScreenSizePerspectiveScaleFactorVec2(vec2 size, vec4 factor) {\n      return mix(size * clamp(factor.x, screenSizePerspectiveMinSize(size.y, factor) / size.y, 1.0), size, factor.y);\n    }\n  "],["\n    vec2 applyScreenSizePerspectiveScaleFactorVec2(vec2 size, vec4 factor) {\n      return mix(size * clamp(factor.x, screenSizePerspectiveMinSize(size.y, factor) / size.y, 1.0), size, factor.y);\n    }\n  "])))),e.vertex.code.add(r.glsl(z||(z=n(["\n    vec2 screenSizePerspectiveScaleVec2(vec2 size, float absCosAngle, float distanceToCamera, vec4 params) {\n      return applyScreenSizePerspectiveScaleFactorVec2(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params));\n    }\n  "],["\n    vec2 screenSizePerspectiveScaleVec2(vec2 size, float absCosAngle, float distanceToCamera, vec4 params) {\n      return applyScreenSizePerspectiveScaleFactorVec2(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params));\n    }\n  "]))))}Object.defineProperty(a,"__esModule",{value:!0}),a.ScreenSizePerspective=s;var c,t,i,o,l,p,z});

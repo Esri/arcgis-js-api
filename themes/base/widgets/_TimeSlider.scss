@@ -62,7 +62,10 @@
 
             &:nth-child(1),
             &:nth-child(3) {
-              height: 50px;
+              padding: {
+                bottom: $cap-spacing--half;
+                top: $cap-spacing--half;
+              }
             }
             &:nth-child(2) {
               height: 88px;
@@ -119,7 +122,7 @@
           }
         }
       }
-  
+
       &--time-window {
         .esri-slider {
           &__segment-1 {
@@ -133,7 +136,7 @@
           }
         }
       }
-  
+
       &--cumulative-from-start {
         .esri-slider {
           &__segment-0 {
@@ -146,7 +149,7 @@
           }
         }
       }
-  
+
       &--cumulative-from-end {
         .esri-slider {
           &__segment-0 {
@@ -183,16 +186,16 @@
         flex-flow: column nowrap;
         align-items: center;
       }
-      
+
       &-date {
         font-weight: $font-weight__bold;
         color: $highlight-color;
       }
-    
+
       &-time {
         color: $highlight-color;
       }
-    
+
       &-separator {
         font-size: $font-size__h2;
         font-weight: $font-weight__bold;
@@ -208,7 +211,7 @@
       font-size: $font-size__body;
       justify-content: center;
       line-height: $font-size__body;
-      
+
       &-date {
         font-weight: $font-weight__bold;
       }
@@ -217,21 +220,21 @@
     &__slider {
       background-color: $background-color--offset;
       padding: 0 40px 0 40px;
-      
+
       .esri-slider {
         margin-top: -19px;
         background-color: $background-color--offset;
-  
+
         // This is a fix specifically for IE11. Without it ticks and tick labels are severely displaced.
         &__content {
           height: 2px;
         }
-  
+
         &__thumb {
           border-width: 3px;
           top: -6px;
         }
-    
+
         &__tick-label {
           font-size: $font-size__body;
           margin-top: 23px;

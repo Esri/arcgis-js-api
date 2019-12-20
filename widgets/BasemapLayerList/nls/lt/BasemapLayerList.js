@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Pagrindo žemėlapio sluoksnių sąrašas",baseHeading:"Pagrindas",basemapTitle:"Pagrindo žemėlapio pavadinimas",referenceHeading:"Nuoroda",noReferenceLayers:"Nėra informacinių sluoksnių",noBaseLayers:"Nėra pagrindinių sluoksnių",layerInvisibleAtScale:"Nematoma naudojant dabartinį mastelį",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});

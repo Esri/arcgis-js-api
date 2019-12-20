@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"滑块",maximumValue:"最大值",minimumValue:"最小值",rangeMaximum:"范围最大值：{value}",rangeMinimum:"范围最小值：{value}",sliderValue:"滑块值"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,o,p,n){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.name=null,r.field=null,r.currentRangeExtent=null,r.fullRangeExtent=null,r.type="rangeInfo",r}return t(r,e),o([n.property({type:String,json:{read:!0,write:!0}})],r.prototype,"name",void 0),o([n.property({type:String,json:{read:!0,write:!0}})],r.prototype,"field",void 0),o([n.property({type:[Number],json:{read:!0,write:!0}})],r.prototype,"currentRangeExtent",void 0),o([n.property({type:[Number],json:{read:!0,write:!0}})],r.prototype,"fullRangeExtent",void 0),o([n.property({type:["rangeInfo"],readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o([n.subclass("esri.layers.support.RangeInfo")],r)}(n.declared(p.JSONSupport));r.RangeInfo=a,r.default=a});

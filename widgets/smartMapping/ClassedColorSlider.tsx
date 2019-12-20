@@ -71,35 +71,35 @@
  * @see module:esri/renderers/ClassBreaksRenderer
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./ClassedColorSlider/nls/ClassedColorSlider";
+import * as i18n from "dojo/i18n!esri/widgets/ClassedColorSlider/nls/ClassedColorSlider";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { ClassBreaksRendererResult } from "../../renderers/smartMapping/creators/color";
+import { ClassBreaksRendererResult } from "esri/../renderers/smartMapping/creators/color";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.support
-import ClassBreakInfo from "../../renderers/support/ClassBreakInfo";
+import ClassBreakInfo from "esri/../renderers/support/ClassBreakInfo";
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ClassedColorSlider
-import ClassedColorSliderViewModel = require("./ClassedColorSlider/ClassedColorSliderViewModel");
-import { ColorBreak } from "./ClassedColorSlider/interfaces";
+import ClassedColorSliderViewModel = require("esri/widgets/ClassedColorSlider/ClassedColorSliderViewModel");
+import { ColorBreak } from "esri/widgets/ClassedColorSlider/interfaces";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-classed-color-slider",
@@ -153,7 +153,7 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -249,6 +249,8 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
   @renderable([
     "viewModel.breaks",
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",

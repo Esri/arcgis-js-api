@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./math/mat3"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.mat3=r});

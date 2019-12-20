@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Posuvník",maximumValue:"Maximální hodnota",minimumValue:"Minimální hodnota",rangeMaximum:"Maximální rozsah: {value}",rangeMinimum:"Minimální rozsah: {value}",sliderValue:"Hodnota posuvníku"});

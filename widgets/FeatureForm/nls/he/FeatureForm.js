@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- ריק -",validationErrors:{cannotBeNull:"הזן ערך",outsideRange:"הערך צריך להיות בין {min} ל-{max}",invalidCodedValue:"הערך אמור להיות אחד מהערכים שברשימה.",invalidType:"ערך לא חוקי"}});
+define({widgetLabel:"צורת ישות",empty:"- ריק -",validationErrors:{cannotBeNull:"הזן ערך",outsideRange:"הערך צריך להיות בין {min} ל-{max}",invalidCodedValue:"הערך אמור להיות אחד מהערכים שברשימה.",invalidType:"ערך לא חוקי"}});

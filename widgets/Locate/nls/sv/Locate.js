@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Leta upp",title:"Hitta min plats",currentLocation:"Aktuell plats",timestamp:"Tidsstämpel",latitude:"Latitud",longitude:"Longitud",accuracy:"Noggrannhet",altitude:"Höjd",altitudeAccuracy:"Höjdnoggrannhet",heading:"Rubrik",speed:"Hastighet"});

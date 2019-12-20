@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","./object"],function(t,e,n){function r(t,e){return t.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,function(t,r,i){if(""===r)return"$";var o=n.getDeepValue(r,e),u=null==o?"":o;if(void 0===u)throw new Error('could not find key "'+r+'" in template');return u.toString()})}return function(){function t(e,n,i){this instanceof t&&(this.name=e,this.message=n&&r(n,i)||"",this.details=i)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()});
+define(["require","exports","./object"],function(t,e,n){function r(t,e){return t.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,function(t,r){if(""===r)return"$";var i=n.getDeepValue(r,e),o=null==i?"":i;if(void 0===o)throw new Error('could not find key "'+r+'" in template');return o.toString()})}return function(){function t(e,n,i){this instanceof t&&(this.name=e,this.message=n&&r(n,i)||"",this.details=i)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()});

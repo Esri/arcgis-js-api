@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Popis slojeva kartografske podloge",baseHeading:"Baza",basemapTitle:"Naslov kartografske podloge",referenceHeading:"Referenca",noReferenceLayers:"Nema referentnih slojeva",noBaseLayers:"Nema osnovnih slojeva",layerInvisibleAtScale:"Nevidljivo u trenutačnom mjerilu",layerError:"Došlo je do pogreške prilikom učitavanja ovog sloja",untitledLayer:"Sloj bez naslova"});

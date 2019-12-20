@@ -495,7 +495,7 @@ class TimeSlider extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: TimeSliderProperties) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -747,6 +747,9 @@ class TimeSlider extends declared(Widget) {
    * Use {@link module:esri/widgets/TimeSlider~StopsByCount} to define evenly spaced timeline stops. Lastly,
    * for irregular dates use {@link module:esri/widgets/TimeSlider~StopsByDates}. Please refer below for examples
    * of each of these objects.
+   *
+   * If a declaration using {@link module:esri/widgets/TimeSlider~StopsByInterval} will result in excess of
+   * 10,000 stops then TimeSlider will default to generating ten evenly spaced stops.
    *
    * @name stops
    * @instance
@@ -1106,7 +1109,7 @@ class TimeSlider extends declared(Widget) {
           mode: "position",
           values: minorValues,
           labelsVisible: false,
-          tickCreatedFunction: (value, tick, label) => {
+          tickCreatedFunction: (_value, tick) => {
             tick.classList.add(CSS.sliderMinorTick);
           }
         };
@@ -1116,7 +1119,7 @@ class TimeSlider extends declared(Widget) {
           mode: "position",
           values: majorValues,
           labelsVisible: true,
-          tickCreatedFunction: (value, tick, label) => {
+          tickCreatedFunction: (_value, tick) => {
             tick.classList.add(CSS.sliderMajorTick);
           },
           labelFormatFunction: (value) => formatDate(value, tickFormat.format)

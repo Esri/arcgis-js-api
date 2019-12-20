@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- ว่างเปล่า -",validationErrors:{cannotBeNull:"โปรดกรอกค่า",outsideRange:"ค่าควรอยู่ระหว่าง {min} และ {max}",invalidCodedValue:"ค่าควรเป็นหนึ่งในค่าที่แสดงในรายการ",invalidType:"ไม่ใช่ค่าที่ถูกต้อง"}});
+define({widgetLabel:"ฟีเจอร์ฟอร์ม",empty:"- ว่างเปล่า -",validationErrors:{cannotBeNull:"โปรดกรอกค่า",outsideRange:"ค่าควรอยู่ระหว่าง {min} และ {max}",invalidCodedValue:"ค่าควรเป็นหนึ่งในค่าที่แสดงในรายการ",invalidType:"ไม่ใช่ค่าที่ถูกต้อง"}});

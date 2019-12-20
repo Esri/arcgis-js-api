@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Hisztogram",barLabel:"Sávok száma: {count}. Sáv minimális adatértéke: {minValue}. Sáv maximális adatértéke: {maxValue}"});
+define({widgetLabel:"Hisztogram",barLabel:"Sávok száma: {count}. Sáv minimális adatértéke: {minValue}. Sáv maximális adatértéke: {maxValue}"});

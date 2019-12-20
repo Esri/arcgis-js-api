@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"עבור למסך מלא",exit:"צא ממסך מלא"});
+define({widgetLabel:"מסך מלא",enter:"עבור למסך מלא",exit:"צא ממסך מלא"});

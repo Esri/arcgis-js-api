@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Пошук",searchButtonTitle:"Пошук",clearButtonTitle:"Очистити пошук",placeholder:"Знайти адресу або місце",searchIn:"Пошук в",all:"Всі",allPlaceholder:"Знайти адресу або місце",emptyValue:"Введіть критерій пошуку.",untitledResult:"Без заголовка",untitledSource:"Джерело без заголовка",noResults:"Немає результатів",noResultsFound:"Результатів не знайдено.",noResultsFoundForValue:"Результатів для {value} не знайдено.",showMoreResults:"Показати більше результатів",hideMoreResults:"Приховати",searchResult:"Результат пошуку",moreResultsHeader:"Більше результатів",useCurrentLocation:"Використовувати поточне місце розташування"});

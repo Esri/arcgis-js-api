@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Lát cắt",cancel:"Hủy",hint:"Nhấp và kéo trên bề mặt trong scene để bắt đầu cắt",excludeHint:"Chọn một lớp trong chế độ xem để loại lớp đó khỏi lát cắt",unsupported:"Lát cắt không được hỗ trợ trong MapView.",multipleDisabled:"Chỉ một lát cắt có thể hoạt động tại một thời điểm",newSlice:"Lát cắt mới",excludedLayers:"Các lớp bị loại",pickLayer:"Chọn một lớp từ chế độ xem",excludeLayer:"Loại lớp khỏi lát cắt",includeLayer:"Đưa lớp vào lát cắt",ground:"Mặt đất"});
+define({widgetLabel:"Lát cắt",cancel:"Hủy",hint:"Nhấp và kéo trên bề mặt trong scene để bắt đầu cắt",excludeHint:"Chọn một lớp trong chế độ xem để loại lớp đó khỏi lát cắt",unsupported:"Lát cắt không được hỗ trợ trong MapView.",multipleDisabled:"Chỉ một lát cắt có thể hoạt động tại một thời điểm",newSlice:"Lát cắt mới",excludedLayers:"Các lớp bị loại",pickLayer:"Chọn một lớp từ chế độ xem",excludeLayer:"Loại lớp khỏi lát cắt",includeLayer:"Đưa lớp vào lát cắt",ground:"Mặt đất"});

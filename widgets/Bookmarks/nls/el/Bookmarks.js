@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({addBookmark:"Προσθήκη σελιδοδείκτη",goToBookmark:"Μετάβαση στον σελιδοδείκτη",noBookmarksHeading:"Δεν υπάρχουν σελιδοδείκτες",noBookmarksDescription:"Προσθέστε στον χάρτη σας σελιδοδείκτες που θα εμφανίζονται εδώ.",title:"Τίτλος",addPlaceholder:"Καταχωρίστε τίτλο σελιδοδείκτη.",addingBookmark:"Προσθήκη σελιδοδείκτη σε εξέλιξη",widgetLabel:"Σελ/κτες"});
+define({addBookmark:"Προσθήκη σελιδοδείκτη",goToBookmark:"Μετάβαση στον σελιδοδείκτη",noBookmarksHeading:"Κανένας σελιδοδείκτης",noBookmarksDescription:"Προσθέστε στον χάρτη σας σελιδοδείκτες που θα εμφανίζονται εδώ.",title:"Τίτλος",addPlaceholder:"Καταχωρίστε τίτλο σελιδοδείκτη.",addingBookmark:"Προσθήκη σελιδοδείκτη σε εξέλιξη",widgetLabel:"Σελ/κτες"});

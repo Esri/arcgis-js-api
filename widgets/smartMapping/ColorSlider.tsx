@@ -73,37 +73,37 @@
  * @see {@link module:esri/renderers/smartMapping/creators/color colorRendererCreator}
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./ColorSlider/nls/ColorSlider";
+import * as i18n from "dojo/i18n!esri/widgets/ColorSlider/nls/ColorSlider";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { ContinuousRendererResult } from "../../renderers/smartMapping/creators/color";
+import { ContinuousRendererResult } from "esri/../renderers/smartMapping/creators/color";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.visualVariables.support
-import ColorStop = require("../../renderers/visualVariables/support/ColorStop");
+import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ColorSlider
-import ColorSliderViewModel = require("./ColorSlider/ColorSliderViewModel");
+import ColorSliderViewModel = require("esri/widgets/ColorSlider/ColorSliderViewModel");
 
 // esri.widgets.smartMapping.support
-import { ZoomOptions } from "./support/interfaces";
+import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-slider",
@@ -144,7 +144,7 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this.viewModel && this.viewModel.set("thumbsConstrained", false);
 
@@ -282,6 +282,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
   @renderable([
     "viewModel.handlesSyncedToPrimary",
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
@@ -380,7 +382,12 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
       visualVariable: { stops },
       statistics
     } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables.filter(
+      (vv) => vv.type === "color"
+    )[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
 
     return new ColorSlider({
       max,
@@ -390,7 +397,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
         average: avg,
         standardDeviation: stddev,
         bins: histogramResult ? histogramResult.bins : []
-      }
+      },
+      primaryHandleEnabled: authoringInfoVisualVariable.theme !== "high-to-low"
     });
   }
 
@@ -452,7 +460,12 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
       visualVariable: { stops },
       statistics
     } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables.filter(
+      (vv) => vv.type === "color"
+    )[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
 
     this.set({
       max,
@@ -462,7 +475,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
         average: avg,
         standardDeviation: stddev,
         bins: histogramResult ? histogramResult.bins : []
-      }
+      },
+      primaryHandleEnabled: authoringInfoVisualVariable.theme !== "high-to-low"
     });
   }
 

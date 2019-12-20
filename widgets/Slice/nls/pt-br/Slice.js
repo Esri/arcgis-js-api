@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Dividir",cancel:"Cancelar",hint:"Comece a dividir clicando e arrastando em uma superfície na cena",excludeHint:"Escolha uma camada na visualização para excluí-la da divisão",unsupported:"Dividir não é suportada no MapView.",multipleDisabled:"Somente uma divisão pode estar ativa de cada vez.",newSlice:"Nova Divisão",excludedLayers:"Camadas excluídas",pickLayer:"Selecione uma camada da visualização",excludeLayer:"Excluir camada da divisão",includeLayer:"Incluir camada na divisão",ground:"Superfície"});
+define({widgetLabel:"Dividir",cancel:"Cancelar",hint:"Comece a dividir clicando e arrastando em uma superfície na cena",excludeHint:"Escolha uma camada na visualização para excluí-la da divisão",unsupported:"Dividir não é suportada no MapView.",multipleDisabled:"Somente uma divisão pode estar ativa de cada vez.",newSlice:"Nova divisão",excludedLayers:"Camadas excluídas",pickLayer:"Selecione uma camada da visualização",excludeLayer:"Excluir camada da divisão",includeLayer:"Incluir camada na divisão",ground:"Superfície"});

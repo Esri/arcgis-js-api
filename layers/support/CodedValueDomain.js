@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./CodedValue","./Domain"],function(e,o,r,t,n,a,d,u){return function(e){function o(o){var r=e.call(this,o)||this;return r.codedValues=null,r.type="coded-value",r}r(o,e),u=o,o.prototype.getName=function(e){var o=null;if(this.codedValues){var r=String(e);this.codedValues.some(function(e){return String(e.code)===r&&(o=e.name),!!o})}return o},o.prototype.clone=function(){return new u({codedValues:n.clone(this.codedValues),name:this.name})};var u;return t([a.property({type:[d.default],json:{write:!0}})],o.prototype,"codedValues",void 0),t([a.enumeration.serializable()({codedValue:"coded-value"})],o.prototype,"type",void 0),o=u=t([a.subclass("esri.layers.support.CodedValueDomain")],o)}(a.declared(u))});

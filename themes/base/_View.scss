@@ -34,6 +34,15 @@
      * Layers should probably manage this on their own
      */
     direction: ltr;
+
+    &--touch {
+      &-none {
+        touch-action: none;
+      }
+      &-pan {
+        touch-action: pan-x pan-y;
+      }
+    }
   }
 
   .esri-view-surface--inset-outline {
@@ -110,6 +119,54 @@
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+  }
+
+  .esri-view-surface[data-cursor="n-resize"] {
+    cursor: n-resize;
+  }
+
+  .esri-view-surface[data-cursor="e-resize"] {
+    cursor: e-resize;
+  }
+
+  .esri-view-surface[data-cursor="s-resize"] {
+    cursor: s-resize;
+  }
+
+  .esri-view-surface[data-cursor="w-resize"] {
+    cursor: w-resize;
+  }
+
+  .esri-view-surface[data-cursor="ne-resize"] {
+    cursor: ne-resize;
+  }
+
+  .esri-view-surface[data-cursor="nw-resize"] {
+    cursor: nw-resize;
+  }
+
+  .esri-view-surface[data-cursor="se-resize"] {
+    cursor: se-resize;
+  }
+
+  .esri-view-surface[data-cursor="sw-resize"] {
+    cursor: sw-resize;
+  }
+
+  .esri-view-surface[data-cursor="ew-resize"] {
+    cursor: ew-resize;
+  }
+
+  .esri-view-surface[data-cursor="ns-resize"] {
+    cursor: ns-resize;
+  }
+
+  .esri-view-surface[data-cursor="nesw-resize"] {
+    cursor: nesw-resize;
+  }
+
+  .esri-view-surface[data-cursor="nwse-resize"] {
+    cursor: nwse-resize;
   }
 
   .esri-view-surface[data-interacting="true"] {

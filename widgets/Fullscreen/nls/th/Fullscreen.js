@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"ดูแบบเต็มจอ",exit:"ออกจากการดูแบบเต็มจอ"});
+define({widgetLabel:"เต็มจอ",enter:"ดูแบบเต็มจอ",exit:"ออกจากการดูแบบเต็มจอ"});

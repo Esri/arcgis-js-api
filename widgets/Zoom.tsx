@@ -78,7 +78,7 @@ class Zoom extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {

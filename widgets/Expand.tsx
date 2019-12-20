@@ -33,6 +33,7 @@ import _WidgetBase = require("dijit/_WidgetBase");
 
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
+import * as i18n from "dojo/i18n!esri/widgets/Expand/nls/Expand";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -91,7 +92,7 @@ class Expand extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -338,6 +339,20 @@ class Expand extends declared(Widget) {
   @property()
   @renderable()
   iconNumber: number = 0;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  mode

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Områdemåling",hint:"Start måling ved at klikke i scenen for at placere det første punkt",unsupported:"3D-områdemåling understøttes kun i SceneView.",perimeterLength:"Omkreds",area:"Område",unit:"Enhed",notApplicable:"i/t",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfod","square-yards":"Kvadratyard","square-us-feet":"Kvadratfod (USA)",acres:"Acres",ares:"Acres",hectares:"Hektarer"}});
+define({widgetLabel:"Områdemåling",hint:"Start måling ved at klikke i scenen for at placere det første punkt",unsupported:"3D-områdemåling understøttes kun i SceneView.",perimeterLength:"Omkreds",area:"Område",unit:"Enhed",notApplicable:"i/t",newMeasurement:"Nye målinger",units:{metric:"Metrisk",imperial:"Britiske","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Square miles","square-inches":"Kvadrattommer","square-feet":"Square feet","square-yards":"Square yards","square-us-feet":"Kvadratfod (USA)",acres:"Acres",ares:"Acres",hectares:"Hektarer"}});

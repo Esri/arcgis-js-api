@@ -116,7 +116,7 @@ class BasemapToggle extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -140,6 +140,20 @@ class BasemapToggle extends declared(Widget) {
   @aliasOf("viewModel.activeBasemap")
   @renderable()
   activeBasemap: Basemap = null;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  nextBasemap
@@ -260,7 +274,7 @@ class BasemapToggle extends declared(Widget) {
         onclick={this._toggle}
         onkeydown={this._toggle}
         tabIndex={0}
-        title={i18n.toggle}
+        title={i18n.widgetLabel}
       >
         <div class={this.classes(CSS.container, CSS.secondaryBasemapImage)}>
           <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />

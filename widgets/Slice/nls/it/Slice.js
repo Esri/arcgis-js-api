@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Sezione",cancel:"Cancella",hint:"Inizia a sezionare facendo clic e trascinando su una superficie nella scena",excludeHint:"Seleziona un layer nella vista per escluderlo dalla sezione",unsupported:"Sezione non è supportato in MapView.",multipleDisabled:"Solo una sezione può essere attiva alla volta",newSlice:"Nuova sezione",excludedLayers:"Layer esclusi",pickLayer:"Seleziona un layer dalla vista",excludeLayer:"Escludi layer dalla sezione",includeLayer:"Includi layer nella sezione",ground:"Suolo"});
+define({widgetLabel:"Sezione",cancel:"Cancella",hint:"Inizia a sezionare facendo clic e trascinando su una superficie nella scena",excludeHint:"Seleziona un layer nella vista per escluderlo dalla sezione",unsupported:"Sezione non è supportato in MapView.",multipleDisabled:"Solo una sezione può essere attiva alla volta",newSlice:"Nuova sezione",excludedLayers:"Layer esclusi",pickLayer:"Seleziona un layer dalla vista",excludeLayer:"Escludi layer dalla sezione",includeLayer:"Includi layer nella sezione",ground:"Suolo"});

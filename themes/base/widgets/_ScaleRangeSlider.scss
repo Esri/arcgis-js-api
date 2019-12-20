@@ -128,10 +128,11 @@
     flex-direction: column;
     padding: $cap-spacing--half $side-spacing--half;
     margin: 0;
+    cursor: pointer;
   }
 
-  .esri-scale-range-slider__scale-menu-item:hover {
-    cursor: pointer;
+  .esri-scale-range-slider__scale-menu-item:hover,
+  .esri-scale-range-slider__scale-menu-item:focus {
     background-color: $background-color--hover;
   }
 

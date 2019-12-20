@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Suora viivan mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista suoran viivan mittausta tuetaan vain SceneView-sovelluksessa.",distance:"Etäisyys",direct:"Suora",horizontal:"Vaaka",vertical:"Pysty",unit:"Yksikkö",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});
+define({widgetLabel:"Suora viivan mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Kolmiulotteista suoran viivan mittausta tuetaan vain SceneView-sovelluksessa.",distance:"Etäisyys",direct:"Suora",horizontal:"Vaaka",vertical:"Pysty",unit:"Yksikkö",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});

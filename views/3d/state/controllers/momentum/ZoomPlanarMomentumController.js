@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./MomentumController","../../utils/navigationUtils","../../../support/mathUtils"],function(t,e,o,i,n,r,c,s){Object.defineProperty(e,"__esModule",{value:!0});var a=function(t){function e(e,o,r){var c=t.call(this,e,1)||this;return c.momentum=o,c.zoomCenter=n.vec3f64.create(),i.vec3.copy(c.zoomCenter,r),c.constraintOptions.interactionDirection=n.vec3f64.create(),c}return o(e,t),e.prototype.momentumStep=function(t,e){i.vec3.copy(this.constraintOptions.interactionDirection,e.eye);var o=this.momentum.valueDelta(0,t);c.applyZoomToPoint(e,this.zoomCenter,o,this.view.state.constraints.minimumPoiDistance),this.constraintOptions.interactionDirection=s.directionFromTo(this.constraintOptions.interactionDirection,e.eye,this.constraintOptions.interactionDirection)},e}(r.MomentumController);e.ZoomPlanarMomentumController=a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Alan Ölçümü",hint:"İlk noktanızı yerleştirmek için sahneye tıklayarak ölçüme başlayın",unsupported:"3B alan ölçümü sadece SceneView’da desteklenir.",perimeterLength:"Çevre",area:"Alan",unit:"Birim",notApplicable:"yok",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometrekare","square-meters":"Metrekare","square-miles":"Milkare","square-inches":"İnçkare","square-feet":"Fitkare","square-yards":"Yardakare","square-us-feet":"Fitkare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});
+define({widgetLabel:"Alan Ölçümü",hint:"İlk noktanızı yerleştirmek için sahneye tıklayarak ölçüme başlayın",unsupported:"3B alan ölçümü sadece SceneView’da desteklenir.",perimeterLength:"Çevre",area:"Alan",unit:"Birim",notApplicable:"yok",newMeasurement:"Yeni ölçüm",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometre kare","square-meters":"Metre kare","square-miles":"Mil kare","square-inches":"İnç kare","square-feet":"Fit Kare","square-yards":"Yarda kare","square-us-feet":"Fit kare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});

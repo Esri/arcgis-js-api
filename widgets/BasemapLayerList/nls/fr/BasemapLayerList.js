@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Liste des couches de fond de carte",baseHeading:"De base",basemapTitle:"Titre du fond de carte",referenceHeading:"Référence",noReferenceLayers:"Aucune couche de référence",noBaseLayers:"Aucune couche de base",layerInvisibleAtScale:"Invisible à l’échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});

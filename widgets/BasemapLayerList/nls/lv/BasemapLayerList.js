@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Pamatkartes slāņu saraksts",baseHeading:"Pamata",basemapTitle:"Pamatkartes nosaukums",referenceHeading:"Atsauce",noReferenceLayers:"Nav atskaites slāņu",noBaseLayers:"Nav pamatslāņu",layerInvisibleAtScale:"Nav redzams pašreizējā mērogā",layerError:"Ielādējot šo slāni, radās kļūda",untitledLayer:"Slānis bez nosaukuma"});

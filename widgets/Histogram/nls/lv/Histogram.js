@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogramma",barLabel:"Joslu skaits: {count}. Joslas min. datu vērtība: {minValue}. Joslas maks. datu vērtība: {maxValue}."});
+define({widgetLabel:"Histogramma",barLabel:"Joslu skaits: {count}. Joslas min. datu vērtība: {minValue}. Joslas maks. datu vērtība: {maxValue}."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"km",mi:"míle",ft:"ft",m:"m",unknownUnit:"neznámá jednotka"});
+define({widgetLabel:"Grafické měřítko",km:"km",mi:"míle",ft:"ft",m:"m",unknownUnit:"Neznámá jednotka"});

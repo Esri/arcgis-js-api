@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Skydekontrol",maximumValue:"Maksimumværdi",minimumValue:"Minimumværdi",rangeMaximum:"Områdemaksimum: {value}",rangeMinimum:"Områdeminimum: {value}",sliderValue:"Skyderværdi"});

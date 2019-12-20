@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"ヒストグラム",barLabel:"バーの数: {count}。 バーの最小データ値: {minValue}。 バーの最大データ値: {minValue}。"});
+define({widgetLabel:"ヒストグラム",barLabel:"バーの数: {count}。 バーの最小データ値: {minValue}。 バーの最大データ値: {minValue}。"});

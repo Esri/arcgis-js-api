@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 /**
  * Defines the layout template options used by the {@link module:esri/widgets/Print|Print} widget to generate the print page.
@@ -51,4 +51,4 @@
              * @type {string}
              */
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(t,e,o,r,p,i){return function(t){function e(e){var o=t.call(this)||this;return o.attributionEnabled=!0,o.author=null,o.copyright=null,o.dpi=96,o.forceFeatureAttributes=!1,o.format=null,o.layout=null,o.legendEnabled=!0,o.height=null,o.scaleEnabled=!1,o.title=null,o.width=null,o}return o(e,t),r([i.property()],e.prototype,"attributionEnabled",void 0),r([i.property()],e.prototype,"author",void 0),r([i.property()],e.prototype,"copyright",void 0),r([i.property()],e.prototype,"dpi",void 0),r([i.property()],e.prototype,"forceFeatureAttributes",void 0),r([i.property()],e.prototype,"format",void 0),r([i.property()],e.prototype,"layout",void 0),r([i.property()],e.prototype,"legendEnabled",void 0),r([i.property()],e.prototype,"height",void 0),r([i.property()],e.prototype,"scale",void 0),r([i.property()],e.prototype,"scaleEnabled",void 0),r([i.property()],e.prototype,"title",void 0),r([i.property()],e.prototype,"width",void 0),e=r([i.subclass("esri.widgets.Print.TemplateOptions")],e)}(i.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(t,e,o,r,p,i){return function(t){function e(e){var o=t.call(this,e)||this;return o.attributionEnabled=!0,o.author=null,o.copyright=null,o.dpi=96,o.fileName=null,o.forceFeatureAttributes=!1,o.format=null,o.layout=null,o.legendEnabled=!0,o.height=null,o.scaleEnabled=!1,o.title=null,o.width=null,o}return o(e,t),r([i.property()],e.prototype,"attributionEnabled",void 0),r([i.property()],e.prototype,"author",void 0),r([i.property()],e.prototype,"copyright",void 0),r([i.property()],e.prototype,"dpi",void 0),r([i.property()],e.prototype,"fileName",void 0),r([i.property()],e.prototype,"forceFeatureAttributes",void 0),r([i.property()],e.prototype,"format",void 0),r([i.property()],e.prototype,"layout",void 0),r([i.property()],e.prototype,"legendEnabled",void 0),r([i.property()],e.prototype,"height",void 0),r([i.property()],e.prototype,"scale",void 0),r([i.property()],e.prototype,"scaleEnabled",void 0),r([i.property()],e.prototype,"title",void 0),r([i.property()],e.prototype,"width",void 0),e=r([i.subclass("esri.widgets.Print.TemplateOptions")],e)}(i.declared(p))});

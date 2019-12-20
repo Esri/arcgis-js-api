@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- kosong -",validationErrors:{cannotBeNull:"Harap masukkan nilai",outsideRange:"Nilai harus di antara {min} dan {max}",invalidCodedValue:"Nilai harus salah satu dari nilai yang dicantumkan.",invalidType:"Bukan nilai yang valid"}});
+define({widgetLabel:"Formulir fitur",empty:"- kosong -",validationErrors:{cannotBeNull:"Harap masukkan nilai",outsideRange:"Nilai harus di antara {min} dan {max}",invalidCodedValue:"Nilai harus salah satu dari nilai yang dicantumkan.",invalidType:"Bukan nilai yang valid"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- üres -",validationErrors:{cannotBeNull:"Adjon meg egy értéket",outsideRange:"Az értéknek {min} és {max} között kell lennie",invalidCodedValue:"Az érték a listában szereplő értékek egyike lehet.",invalidType:"Nem érvényes érték"}});
+define({widgetLabel:"Vektoroselem-űrlap",empty:"- üres -",validationErrors:{cannotBeNull:"Adjon meg egy értéket",outsideRange:"Az értéknek {min} és {max} között kell lennie",invalidCodedValue:"Az érték a listában szereplő értékek egyike lehet.",invalidType:"Nem érvényes érték"}});

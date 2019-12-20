@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Pièces jointes",fields:"Champs",fieldsSummary:"Liste des attributs et des valeurs",media:"Contenu",next:"Suivant",noTitle:"Sans titre",previous:"Précédent",lastEdited:"Dernière mise à jour le {date}.",lastCreated:"Création le {date}",lastEditedByUser:"Dernière mise à jour par {user} le {date}.",lastCreatedByUser:"Création par {user} le {date}."});
+define({widgetLabel:"Entité",attach:"Pièces jointes",fields:"Champs",fieldsSummary:"Liste des attributs et des valeurs",media:"Contenu",next:"Suivant",noTitle:"Sans titre",previous:"Précédent",lastEdited:"Dernière mise à jour le {date}.",lastCreated:"Création le {date}",lastEditedByUser:"Dernière mise à jour par {user} le {date}.",lastCreatedByUser:"Création par {user} le {date}."});

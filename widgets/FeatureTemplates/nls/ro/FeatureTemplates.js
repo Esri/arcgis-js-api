@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Șabloane de obiecte spațiale",filterPlaceholder:"Tipuri de filtru",noMatches:"Nu a fost găsit niciun element",noItems:"Niciun șablon de afișat"});

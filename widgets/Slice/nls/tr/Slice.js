@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Dilim",cancel:"İptal Et",hint:"Sahnedeki bir yüzeyi tıklayıp sürükleyerek dilimlemeye başlayın",excludeHint:"Dilimin dışında bırakmak için görünümde bir katman seçin",unsupported:"Dilim MapView'da desteklenmiyor.",multipleDisabled:"Bir seferde sadece bir dilim etkin olabilir",newSlice:"Yeni Dilim",excludedLayers:"Dışarıda bırakılan katmanlar",pickLayer:"Görünümden bir katman seç",excludeLayer:"Katmanı dilimin dışında bırak",includeLayer:"Katmanı dilime dahil et",ground:"Zemin"});
+define({widgetLabel:"Dilimle",cancel:"İptal Et",hint:"Sahnedeki bir yüzeyi tıklayıp sürükleyerek dilimlemeye başlayın",excludeHint:"Dilimin dışında bırakmak için görünümde bir katman seçin",unsupported:"Dilim MapView'da desteklenmiyor.",multipleDisabled:"Bir seferde sadece bir dilim etkin olabilir",newSlice:"Yeni dilim",excludedLayers:"Dışarıda bırakılan katmanlar",pickLayer:"Görünümden bir katman seç",excludeLayer:"Katmanı dilimin dışında bırak",includeLayer:"Katmanı dilime dahil et",ground:"Zemin"});

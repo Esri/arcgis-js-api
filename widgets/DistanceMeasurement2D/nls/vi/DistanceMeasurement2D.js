@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Đo Khoảng cách",hint:"Bắt đầu đo bằng cách bấm vào bản đồ để đặt điểm đầu tiên",unsupported:"Tính toán khoảng cách 2D chỉ được hỗ trợ trong MapView.",distance:"Khoảng cách",newMeasurement:"Phép đo Mới",mode:"Chế độ",modes:{auto:"Tự động",planar:"Phẳng",geodesic:"Trắc địa"},unit:"Đơn vị",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh",kilometers:"Kilômét",meters:"Mét",miles:"Dặm",inches:"Inch",feet:"Bộ",yards:"Thước","nautical-miles":"Hải lý","us-feet":"Feet (Hoa Kỳ)","degrees-minutes-seconds":"DMS",degrees:"Độ"}});
+define({widgetLabel:"Đo Khoảng cách",hint:"Bắt đầu đo bằng cách bấm vào bản đồ để đặt điểm đầu tiên",unsupported:"Tính toán khoảng cách 2D chỉ được hỗ trợ trong MapView.",distance:"Khoảng cách",newMeasurement:"Phép đo mới",mode:"Chế độ",modes:{auto:"Tự động",planar:"Phẳng",geodesic:"Trắc địa"},unit:"Đơn vị",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh",kilometers:"Kilômét",meters:"Mét",miles:"Dặm",inches:"Inch",feet:"Bộ",yards:"Thước","nautical-miles":"Hải lý","us-feet":"Feet (Hoa Kỳ)","degrees-minutes-seconds":"DMS",degrees:"Độ"}});

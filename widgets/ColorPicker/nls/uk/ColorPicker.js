@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({transparency:"Прозорість",suggested:"Пропоноване",recent:"Нещодавнє",more:"Більше",moreColorsTooltip:"Подивитися більше кольорів.",paletteTooltip:"Виберіть колір.",noColorTooltip:"Немає кольору",hexInputTooltip:"Власний колір в шістнадцятковому представленні (#FFFF00)."});

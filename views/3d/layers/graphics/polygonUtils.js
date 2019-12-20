@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../webgl-engine/lib/GeometryData","../../webgl-engine/lib/Util"],function(e,t,n,r){function a(e){var t={},a={};if(a[r.VertexAttrConstants.POSITION]={size:3,data:e.vertices},t[r.VertexAttrConstants.POSITION]=e.indices,e.color){var i=new Uint32Array(e.indices.length);a[r.VertexAttrConstants.COLOR]={size:4,data:e.color},t[r.VertexAttrConstants.COLOR]=i}return e.uv0&&(a[r.VertexAttrConstants.UV0]={size:2,data:e.uv0},t[r.VertexAttrConstants.UV0]=e.indices),e.eleVertices&&(a.mapPos={size:3,data:e.eleVertices},t.mapPos=e.indices),new n.GeometryData(a,t)}Object.defineProperty(t,"__esModule",{value:!0}),t.createPolygonGeometryData=a});

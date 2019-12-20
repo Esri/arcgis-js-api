@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Знайти",title:"Знайти моє місце розташування",currentLocation:"Поточне місце розташування",timestamp:"Позначка часу",latitude:"Широта",longitude:"Довгота",accuracy:"Точність",altitude:"Висота",altitudeAccuracy:"Точність висоти",heading:"Курс",speed:"Швидкість"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../core/Error"],function(e,r,o){function n(){return new o(c,"Copying of embedded resources is currently not supported")}function t(e){return e&&e.name===c}function i(e){return new o(d,"Failed to save webscene due to schema validation errors. See 'details.errors' for more detailed information",{errors:e})}function a(e){return e&&e.name===d}Object.defineProperty(r,"__esModule",{value:!0});var c="webscene:failed-to-copy-embedded-resources",d="webscene:schema-validation";r.createCopyError=n,r.isCopyError=t,r.createSchemaValidationError=i,r.isSchemaValidationError=a});

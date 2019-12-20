@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"การวัดโดยเส้นตรง",hint:"เริ่มวัดด้วยการคลิกในซีน เพื่อวางจุดแรกของคุณ",unsupported:"รองรับการวัดเส้นตรง 3D เฉพาะใน SceneView",distance:"ระยะทาง",direct:"แนวตรง",horizontal:"แนวนอน",vertical:"ตั้งฉาก",unit:"หน่วย",newMeasurement:"การวัดใหม่",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});
+define({widgetLabel:"การวัดโดยเส้นตรง",hint:"เริ่มวัดด้วยการคลิกในซีน เพื่อวางจุดแรกของคุณ",unsupported:"รองรับการวัดเส้นตรง 3D เฉพาะใน SceneView",distance:"ระยะทาง",direct:"แนวตรง",horizontal:"แนวนอน",vertical:"ตั้งฉาก",unit:"หน่วย",newMeasurement:"การวัดใหม่",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});

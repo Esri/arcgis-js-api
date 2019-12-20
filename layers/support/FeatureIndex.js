@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,o,n,p){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(r){return e.call(this,r)||this}t(r,e),n=r,r.prototype.clone=function(){var e=this,r=e.name,t=e.fields,o=e.isAscending,p=e.isUnique,i=e.description;return new n({name:r,fields:t,isAscending:o,isUnique:p,description:i})};var n;return o([p.property({constructOnly:!0})],r.prototype,"name",void 0),o([p.property({constructOnly:!0})],r.prototype,"fields",void 0),o([p.property({constructOnly:!0})],r.prototype,"isAscending",void 0),o([p.property({constructOnly:!0})],r.prototype,"isUnique",void 0),o([p.property({constructOnly:!0})],r.prototype,"description",void 0),r=n=o([p.subclass("esri.layers.support.FeatureIndex")],r)}(p.declared(n.JSONSupport));r.FeatureIndex=i,r.default=i});

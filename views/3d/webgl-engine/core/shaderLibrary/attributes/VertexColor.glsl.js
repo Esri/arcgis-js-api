@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],function(o,r,e,d){function l(o,r){r.attributeColor?(o.attributes.add("color","vec4"),o.varyings.add("vColor","vec4"),o.vertex.code.add(d.glsl(t||(t=e(["\n      void forwardVertexColor() { vColor = color; }\n    "],["\n      void forwardVertexColor() { vColor = color; }\n    "])))),o.vertex.code.add(d.glsl(a||(a=e(["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "],["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "]))))):o.vertex.code.add(d.glsl(n||(n=e(["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "],["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "]))))}Object.defineProperty(r,"__esModule",{value:!0}),r.VertexColor=l;var t,a,n});

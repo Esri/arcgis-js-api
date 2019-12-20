@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Вычисление расстояния",hint:"Начните измерение, щелкнув на карте, чтобы разместить первую точку",unsupported:"Измерение 2D-расстояния поддерживается только в виде карты.",distance:"Расстояние",newMeasurement:"Новое измерение",mode:"Режим",modes:{auto:"Авто",planar:"Плоскостной",geodesic:"Геодезический"},unit:"Единицы измерения",units:{metric:"Метрические",imperial:"Английские",kilometers:"Километры",meters:"Метры",miles:"Мили",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"Градусы, минуты, секунды",degrees:"Градусы"}});
+define({widgetLabel:"Вычисление расстояния",hint:"Начните измерение, щелкнув на карте, чтобы разместить первую точку",unsupported:"Измерение 2D-расстояния поддерживается только в виде карты.",distance:"Расстояние",newMeasurement:"Новое измерение",mode:"Режим",modes:{auto:"Авто",planar:"Плоскостной",geodesic:"Геодезический"},unit:"Единицы измерения",units:{metric:"Метрические",imperial:"Английские",kilometers:"Километры",meters:"Метры",miles:"Мили",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"Градусы, минуты, секунды",degrees:"Градусы"}});

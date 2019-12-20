@@ -18,7 +18,7 @@
  *
  * @example
  * var basemapLayerList = new BasemapLayerList({
- *   view: view;
+ *   view: view
  * });
  * // Adds the widget below other elements in the top left corner of the view
  * view.ui.add(basemapLayerList, {
@@ -219,11 +219,11 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @example
    * // typical usage
    * var BasemapLayerList = new BasemapLayerList({
-   *   view: view;
+   *   view: view
    * });
    */
   constructor(params?: BasemapLayerListParams) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -388,6 +388,28 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   label: string = i18n.widgetLabel;
 
   //----------------------------------
+  //  multipleSelectionEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether more than one list item may be selected by the user at a single time.
+   * Selected items are available in the [selectedItems](#selectedItems)
+   * property.
+   *
+   * @name multipleSelectionEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   *
+   * @see [selectedItems](#selectedItems)
+   *
+   * @example
+   * basemapLayerList.multipleSelectionEnabled = true;
+   */
+  @property()
+  multipleSelectionEnabled = false;
+
+  //----------------------------------
   //  referenceListItemCreatedFunction
   //----------------------------------
 
@@ -504,9 +526,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @default
    */
   @vmEvent("trigger-action")
-  @property({
-    type: BasemapLayerListViewModel
-  })
+  @property({ type: BasemapLayerListViewModel })
   @renderable("viewModel.state")
   viewModel: BasemapLayerListViewModel = new BasemapLayerListViewModel();
 
@@ -523,8 +543,9 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @param {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} - The action to execute.
    * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
-  @aliasOf("viewModel.triggerAction")
-  triggerAction(action: Action, item: ListItem): void {}
+  triggerAction(action: Action, item: ListItem): void {
+    this.viewModel.triggerAction(action, item);
+  }
 
   render(): VNode {
     const { state } = this.viewModel;
@@ -1246,7 +1267,13 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const title = item.title || i18n.untitledLayer;
     const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
     const titleNode = (
-      <span id={titleKey} title={label} aria-label={label} class={CSS.title}>
+      <span
+        key="layer-title-container"
+        id={titleKey}
+        title={label}
+        aria-label={label}
+        class={CSS.title}
+      >
         {title}
       </span>
     );
@@ -1304,7 +1331,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const hasError = !!item.error;
 
     const errorIconNode = hasError ? (
-      <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
+      <span key="notice-triangle" aria-hidden="true" class={CSS.iconNoticeTriangle} />
     ) : null;
 
     return parentVisibilityMode === inherited || hasError ? (
@@ -1514,13 +1541,18 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
 
     const iconNode = (
       <span
+        key="action-icon"
         aria-hidden="true"
         class={this.classes(CSS.actionIcon, iconClasses)}
         styles={iconStyles}
       />
     );
 
-    const titleNode = !singleAction ? <span class={CSS.actionTitle}>{title}</span> : null;
+    const titleNode = !singleAction ? (
+      <span key="action-title" class={CSS.actionTitle}>
+        {title}
+      </span>
+    ) : null;
 
     const actionContentNodes = [iconNode, titleNode];
 
@@ -1650,17 +1682,17 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   @accessibleHandler()
   private _toggleSelection(event: MouseEvent | KeyboardEvent): void {
     event.stopPropagation();
+    const { multipleSelectionEnabled, selectedItems } = this;
 
-    const isControlSelection = event.metaKey || event.ctrlKey;
+    const allowMultipleSelected = multipleSelectionEnabled && (event.metaKey || event.ctrlKey);
     const node = event.currentTarget as Element;
     const item = node["data-item"] as ListItem;
-    const { selectedItems } = this;
     const found = selectedItems.indexOf(item) > -1;
 
     const { length } = selectedItems;
     const singleMatch = found && length === 1;
 
-    if (isControlSelection) {
+    if (allowMultipleSelected) {
       found ? selectedItems.remove(item) : selectedItems.add(item);
       return;
     }

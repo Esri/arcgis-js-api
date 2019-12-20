@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/maybe"],function(e,o,t){function r(e){var o=t.isSome(e.symbol)&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;return!!o&&o.length>0&&o.some(function(e){return"object"===e.type})&&t.isSome(e.geometry)&&"point"===e.geometry.type&&"graphics"===e.layer.type}Object.defineProperty(o,"__esModule",{value:!0}),o.isSupportedGraphic=r});
+define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../support/elevationInfoUtils","../../../../../support/featureFlags"],function(e,t,r,o,n,i){function s(e){if("graphics"!==e.layer.type)return 1;if(o.isNone(e.geometry))return 2;var t=e.geometry.type;switch(t){case"point":break;case"polygon":case"polyline":case"multipoint":case"extent":case"mesh":return 3;default:return r.neverReached(t),3}var s=o.isSome(e.symbol)&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;if(!(s&&s.length>0&&s.some(function(e){return"object"===e.type})))return 5;var a=n.getGraphicEffectiveElevationMode(e);return"on-the-ground"===a||i.enableEditing3D()&&"absolute-height"===a&&!n.hasGraphicFeatureExpressionInfo(e)?0:4}Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphic=s});

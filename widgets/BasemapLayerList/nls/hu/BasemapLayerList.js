@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Alaptérkép réteglistája",baseHeading:"Alap",basemapTitle:"Alaptérkép címe",referenceHeading:"Referencia",noReferenceLayers:"Nincsenek referenciarétegek",noBaseLayers:"Nincsenek alaprétegek",layerInvisibleAtScale:"Láthatatlan a jelenlegi méretaránynál",layerError:"Hiba történt a réteg betöltésekor.",untitledLayer:"Cím nélküli réteg"});

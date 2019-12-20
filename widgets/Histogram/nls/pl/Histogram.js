@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogram",barLabel:"Liczba słupków: {count}. Minimalna wartość danych słupka: {minValue}. Maksymalna wartość danych słupka: {maxValue}"});
+define({widgetLabel:"Histogram",barLabel:"Liczba słupków: {count}. Minimalna wartość danych słupka: {minValue}. Maksymalna wartość danych słupka: {maxValue}"});

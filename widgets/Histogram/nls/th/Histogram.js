@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"ฮีสโตแกรม",barLabel:"จำนวนบาร์: {count}. ค่าข้อมูลต่ำสุดของบาร์: {minValue}. ค่าข้อมูลสูงสุดของบาร์: {maxValue}"});
+define({widgetLabel:"ฮีสโตแกรม",barLabel:"จำนวนบาร์: {count}. ค่าข้อมูลต่ำสุดของบาร์: {minValue}. ค่าข้อมูลสูงสุดของบาร์: {maxValue}"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],function(e,r,t,c,i){function o(e,r,i){e.worldUpAtPosition(r,a),c.vec3.subtract(l,i,r);var o=c.vec3.length(l);return 0===o?0:t.acosClamped(c.vec3.dot(l,a)/o)}Object.defineProperty(r,"__esModule",{value:!0}),r.viewAngle=o;var a=i.vec3f64.create(),l=i.vec3f64.create()});

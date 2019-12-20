@@ -33,7 +33,6 @@ import * as i18n from "dojo/i18n!esri/widgets/HistogramRangeSlider/nls/Histogram
 import Color = require("esri/Color");
 
 // esri.core
-import Logger = require("esri/core/Logger");
 import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
@@ -76,10 +75,7 @@ const CSS = {
   disabled: "esri-disabled"
 };
 
-const declaredClass = "esri.widgets.HistogramRangeSlider";
-const logger = Logger.getLogger(declaredClass);
-
-@subclass(declaredClass)
+@subclass("esri.widgets.HistogramRangeSlider")
 class HistogramRangeSlider extends declared(Widget) {
   //--------------------------------------------------------------------------
   //
@@ -93,7 +89,7 @@ class HistogramRangeSlider extends declared(Widget) {
    * @event module:esri/widgets/HistogramRangeSlider#max-change
    *
    * @property {number} oldValue - The former [max](#max) value (or bound) of the slider.
-   * @property {string} type - The type of the event. For this event, the type is always `max-change`.
+   * @property {"max-change"} type - The type of the event.
    * @property {number} value - The value of the [max](#max) value (or bound) of the slider when the event is emitted.
    */
 
@@ -103,7 +99,7 @@ class HistogramRangeSlider extends declared(Widget) {
    * @event module:esri/widgets/HistogramRangeSlider#min-change
    *
    * @property {number} oldValue - The former [min](#min) value (or bound) of the slider.
-   * @property {string} type - The type of the event. For this event, the type is always `min-change`.
+   * @property {"min-change"} type - The type of the event.
    * @property {number} value - The value of the [min](#min) value (or bound) of the slider when the event is emitted.
    */
 
@@ -115,11 +111,8 @@ class HistogramRangeSlider extends declared(Widget) {
    * @event module:esri/widgets/HistogramRangeSlider#segment-drag
    *
    * @property {number} index - The 1-based index of the segment in the slider.
-   * @property {string} state - The state of the drag.
-   *
-   * **Possible Values:** start | drag
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `segment-drag`.
+   * @property {"start" | "drag"} state - The state of the drag.
+   * @property {"segment-drag"} type - The type of the event.
    * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
    */
 
@@ -130,7 +123,7 @@ class HistogramRangeSlider extends declared(Widget) {
    *
    * @property {number} index - The 0-based index of the updated thumb position.
    * @property {number} oldValue - The former value of the thumb before the change was made.
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-change`.
+   * @property {"thumb-change"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
    */
 
@@ -140,36 +133,9 @@ class HistogramRangeSlider extends declared(Widget) {
    * @event module:esri/widgets/HistogramRangeSlider#thumb-drag
    *
    * @property {number} index - The 0-based index of the updated thumb position.
-   * @property {string} state - The state of the drag.
-   *
-   * **Possible Values:** start | drag
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-drag`.
+   * @property {"start" | "drag"} state - The state of the drag.
+   * @property {"thumb-drag"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
-   */
-
-  /**
-   * Fires when a thumb value changes on the widget.
-   *
-   * @event module:esri/widgets/HistogramRangeSlider#value-change
-   *
-   * @property {number} index - The 0-based index of the thumb emitting the event.
-   * @property {number} oldValue - The former value of the thumb before the change was made.
-   * @property {string} type - The type of the event. For this event, the type is always `value-change`.
-   * @property {number} value - The value of the thumb when the event is emitted.
-   * @deprecated since version 4.13.
-   */
-
-  /**
-   * Fires when the [values](#values) array changes on the Slider widget.
-   *
-   * @event module:esri/widgets/HistogramRangeSlider#values-change
-   *
-   * @property {number[]} [indices] - The 0-based indices of the thumbs emitting the event.
-   * @property {number[]} oldValues - The former values of the thumbs before the changes were made.
-   * @property {string} type - The type of the event. For this event, the type is always `values-change`.
-   * @property {number[]} values - The values of the thumbs when the event is emitted.
-   * @deprecated since version 4.13.
    */
 
   /**
@@ -189,7 +155,7 @@ class HistogramRangeSlider extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -234,25 +200,7 @@ class HistogramRangeSlider extends declared(Widget) {
     this.own(
       this._slider.on(["max-change", "min-change"], (event) => this.emit(event.type, event)),
 
-      // Because we want to deprecate the 'value-change' and 'values-change' events,
-      // ... but avoid automatically firing the deprecation warnings from Slider
-      // ... we need to check if event listeners are actually attached before emitting the event
-      this._slider.on(["segment-drag"], (event) => {
-        if (this.hasEventListener("values-change")) {
-          logger.warn("'values-change' is deprecated, watch the 'values' property instead.");
-          this.emit("values-change", { ...event, type: "values-change" });
-        }
-
-        this._updateBarFills();
-        this.emit(event.type, event);
-      }),
-
-      this._slider.on(["thumb-change", "thumb-drag"], (event) => {
-        if (this.hasEventListener("value-change")) {
-          logger.warn("'value-change' is deprecated, watch the 'values' property instead.");
-          this.emit("value-change", { ...event, type: "value-change" });
-        }
-
+      this._slider.on(["segment-drag", "thumb-change", "thumb-drag"], (event) => {
         this._updateBarFills();
         this.emit(event.type, event);
       }),
@@ -719,8 +667,6 @@ class HistogramRangeSlider extends declared(Widget) {
    * for filtering purposes. The value set here determines the number of [values](#values)
    * allowed on the slider.
    *
-   * **Possible Values:** equal | not-equal | less-than | greater-than | at-most | at-least | between | not-between
-   *
    * See the table below for a description and requirements of all possible values. `value1` refers to
    * the value of the first thumb position. `value2` refers to the value of the final thumb position, if applicable.
    *
@@ -737,7 +683,7 @@ class HistogramRangeSlider extends declared(Widget) {
    *
    * @name rangeType
    * @instance
-   * @type {string}
+   * @type {"equal" | "not-equal" | "less-than" | "greater-than" | "at-most" | "at-least" | "between" | "not-between"}
    *
    * @see [values](#values)
    * @see [generateWhereClause()](#generateWhereClause)

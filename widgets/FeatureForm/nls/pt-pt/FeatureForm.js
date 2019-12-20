@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- vazio -",validationErrors:{cannotBeNull:"Por favor introduza um valor",outsideRange:"O valor deverá estar entre {min} e {max}",invalidCodedValue:"O valor deve ser um dos valores listados.",invalidType:"Não é um valor válido"}});
+define({widgetLabel:"Formulário de elemento",empty:"- vazio -",validationErrors:{cannotBeNull:"Por favor introduza um valor",outsideRange:"O valor deverá estar entre {min} e {max}",invalidCodedValue:"O valor deve ser um dos valores listados.",invalidType:"Não é um valor válido"}});

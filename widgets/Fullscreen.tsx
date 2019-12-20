@@ -83,7 +83,7 @@ class Fullscreen extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -106,6 +106,20 @@ class Fullscreen extends declared(Widget) {
    */
   @aliasOf("viewModel.element")
   element: HTMLElement = null;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view

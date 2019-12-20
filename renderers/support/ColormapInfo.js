@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../Color","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,o,t,p,l,u,n){return function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.value=null,e.label=null,e.color=null,e}return o(e,r),t([n.property({type:Number,json:{write:!0}})],e.prototype,"value",void 0),t([n.property({type:String,json:{write:!0}})],e.prototype,"label",void 0),t([n.property({type:l,json:{write:!0}})],e.prototype,"color",void 0),e=t([n.subclass("esri.renderers.support.ColormapInfo")],e)}(n.declared(u.JSONSupport))});

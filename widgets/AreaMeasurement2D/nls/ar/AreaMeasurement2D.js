@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"قياس المنطقة",hint:"ابدأ بالقياس بالنقر على الخريطة لوضع النقطة الأولى",unsupported:"قياس المنطقة ثنائية الأبعاد مدعوم فقط في MapView.",perimeter:"محيط الشكل",area:"المنطقة",newMeasurement:"قياس جديد",mode:"وضع",modes:{auto:"تلقائي",planar:"مسطح",geodesic:"جيوديسي"},unit:"وحدة",units:{metric:"متري",imperial:"الامبراطورية","square-kilometers":"كيلومتر مربع","square-meters":"أمتار مربعة","square-miles":"ميل مربع","square-inches":"بوصات مربعة","square-feet":"قدم مربع","square-yards":"ياردات مربعة","square-us-feet":"قدم مربع (الولايات المتحدة)",acres:"فدان",ares:"آرس",hectares:"هكتار"}});
+define({widgetLabel:"قياس المنطقة",hint:"ابدأ بالقياس بالنقر على الخريطة لوضع النقطة الأولى",unsupported:"قياس المنطقة ثنائية الأبعاد مدعوم فقط في MapView.",perimeter:"محيط الشكل",area:"المنطقة",newMeasurement:"قياس جديد",mode:"وضع",modes:{auto:"تلقائي",planar:"مسطح",geodesic:"جيوديسي"},unit:"وحدة",units:{metric:"متري",imperial:"الامبراطورية","square-kilometers":"كيلو مترات مربعة","square-meters":"أمتار مربعة","square-miles":"أميال مربعة","square-inches":"بوصات مربعة","square-feet":"أقدام مربعة","square-yards":"ياردات مربعة","square-us-feet":"أقدام مربعة (الولايات المتحدة)",acres:"فدان",ares:"آرس",hectares:"هكتار"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Вимірювання відстані",hint:"Почніть вимірювання, клацнувши на карті для розміщення першої точки",unsupported:"Вимірювання 2D-відстані підтримується тільки в MapView.",distance:"Відстань",newMeasurement:"Нове вимірювання",mode:"Режим",modes:{auto:"Авто",planar:"Планарний",geodesic:"Геодезичний"},unit:"Одиниця",units:{metric:"Метричні",imperial:"Британська система",kilometers:"Кілометри",meters:"Метри",miles:"Милі",inches:"Дюйми",feet:"Фути",yards:"Ярди","nautical-miles":"Морські милі","us-feet":"Фути (США)","degrees-minutes-seconds":"ГХС",degrees:"Градуси"}});
+define({widgetLabel:"Вимірювання відстані",hint:"Почніть вимірювання, клацнувши на карті для розміщення першої точки",unsupported:"Вимірювання 2D-відстані підтримується тільки в MapView.",distance:"Відстань",newMeasurement:"Нове вимірювання",mode:"Режим",modes:{auto:"Авто",planar:"Планарний",geodesic:"Геодезичний"},unit:"Одиниця",units:{metric:"Метричні",imperial:"Британська система",kilometers:"Кілометри",meters:"Метри",miles:"Милі",inches:"Дюйми",feet:"Фути",yards:"Ярди","nautical-miles":"Морські милі","us-feet":"Фути (США)","degrees-minutes-seconds":"ГХС",degrees:"Градуси"}});

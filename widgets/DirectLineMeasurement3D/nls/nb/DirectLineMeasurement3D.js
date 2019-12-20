@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Måling av direkte linje",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"3D-måling av direkte linje støttes bare i SceneView.",distance:"Avstand",direct:"Direkte",horizontal:"Vannrett",vertical:"Loddrett",unit:"Enhet",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter",kilometers:"Kilometer",meters:"Meter",miles:"Miles",inches:"Tommer",feet:"Fot",yards:"Yard","nautical-miles":"Nautiske mil","us-feet":"fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});
+define({widgetLabel:"Måling av direkte linje",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"3D-måling av direkte linje støttes bare i SceneView.",distance:"Avstand",direct:"Direkte",horizontal:"Vannrett",vertical:"Loddrett",unit:"Enhet",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter",kilometers:"Kilometer",meters:"Meter",miles:"Miles",inches:"Tommer",feet:"Fot",yards:"Yard","nautical-miles":"Nautiske mil","us-feet":"fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

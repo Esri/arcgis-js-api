@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Pengukuran Jarak",hint:"Mulai mengukur dengan mengklik peta untuk menempatkan titik pertama Anda",unsupported:"Pengukuran jarak 2D hanya didukung di MapView.",distance:"Jarak",newMeasurement:"Pengukuran Baru",mode:"Mode",modes:{auto:"Otomatis",planar:"Planar",geodesic:"Geodesik"},unit:"Unit",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil Laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});
+define({widgetLabel:"Pengukuran Jarak",hint:"Mulai mengukur dengan mengklik peta untuk menempatkan titik pertama Anda",unsupported:"Pengukuran jarak 2D hanya didukung di MapView.",distance:"Jarak",newMeasurement:"Pengukuran baru",mode:"Mode",modes:{auto:"Otomatis",planar:"Planar",geodesic:"Geodesik"},unit:"Unit",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogramm",barLabel:"Balkenanzahl: {count}. Min. Datenwert für Balken: {minValue}. Max. Datenwert für Balken: {maxValue}"});
+define({widgetLabel:"Histogramm",barLabel:"Balkenanzahl: {count}. Min. Datenwert für Balken: {minValue}. Max. Datenwert für Balken: {maxValue}"});

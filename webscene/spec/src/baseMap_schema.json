@@ -18,7 +18,7 @@
       "description": "<em>Deprecated, use `ground.layers` instead <a href=\"#elevationLayers\"><sup>1</sup></a>.</em> An array of elevationLayer objects defining the basemaps used in the web scene.",
       "items": {
         "type": "object",
-        "$ref": "elevationLayer_schema.json"
+        "$ref": "elevationLayers_schema.json"
       },
       "uniqueItems": true
     },

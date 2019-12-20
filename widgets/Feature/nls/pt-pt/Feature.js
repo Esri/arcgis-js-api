@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Anexos",fields:"Campos",fieldsSummary:"Lista de atributos e valores",media:"Imagem",next:"Seguinte",noTitle:"Sem título",previous:"Anterior",lastEdited:"Editado pela última vez a {date}.",lastCreated:"Criado a {date}.",lastEditedByUser:"Editado pela última vez por {user} a {date}.",lastCreatedByUser:"Criado por {user} a {date}."});
+define({widgetLabel:"Elemento",attach:"Anexos",fields:"Campos",fieldsSummary:"Lista de atributos e valores",media:"Imagem",next:"Seguinte",noTitle:"Sem título",previous:"Anterior",lastEdited:"Editado pela última vez a {date}.",lastCreated:"Criado a {date}.",lastEditedByUser:"Editado pela última vez por {user} a {date}.",lastCreatedByUser:"Criado por {user} a {date}."});

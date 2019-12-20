@@ -161,10 +161,6 @@
     .esri-coordinate-conversion__conversion-list {
       flex-direction: column;
     }
-    .esri-widget--button.esri-icon-up,
-    .esri-widget--button.esri-icon-down {
-      transform: rotate(180deg);
-    }
   }
   .esri-ui-bottom-right .esri-coordinate-conversion__conversions-view,
   .esri-ui-bottom-left .esri-coordinate-conversion__conversions-view,
@@ -173,6 +169,12 @@
     flex-direction: column-reverse;
     .esri-coordinate-conversion__conversion-list {
       flex-direction: column-reverse;
+    }
+    .esri-widget--button {
+      .esri-icon-up,
+      .esri-icon-down {
+        transform: rotate(180deg);
+      }
     }
   }
   .esri-coordinate-conversion__heading {

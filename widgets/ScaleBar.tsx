@@ -111,7 +111,7 @@ class ScaleBar extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -125,6 +125,20 @@ class ScaleBar extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
+
+  //----------------------------------
   //  style
   //----------------------------------
 
@@ -132,11 +146,9 @@ class ScaleBar extends declared(Widget) {
    * The style for the scale bar.
    * When `unit` is set to `dual`, the style will always be `line`.
    *
-   * **Possible Values:** ruler | line
-   *
    * @name style
    * @instance
-   * @type {string}
+   * @type {"ruler" | "line"}
    */
   @property({
     dependsOn: ["unit"]
@@ -163,11 +175,9 @@ class ScaleBar extends declared(Widget) {
    * When using `dual`, the scale bar displays both metric and non-metric units.
    * Metric values show either kilometers or meters depending on the scale, and non-metric values show either miles or feet depending on the scale.
    *
-   * **Possible Values:** non-metric | metric | dual
-   *
    * @name unit
    * @instance
-   * @type {string}
+   * @type {"non-metric" | "metric" | "dual"}
    * @default non-metric
    */
   @property()

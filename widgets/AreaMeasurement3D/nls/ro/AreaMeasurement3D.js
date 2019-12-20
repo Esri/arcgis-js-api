@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Măsurarea zonei",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea suprafeței 3D este acceptată doar în SceneView.",perimeterLength:"Perimetru",area:"Suprafaţă",unit:"Unitate",notApplicable:"n/a",newMeasurement:"Măsurătoare nouă",units:{metric:"Metric",imperial:"Englez","square-kilometers":"Kilometri pătraţi","square-meters":"Metri pătraţi","square-miles":"Mile pătrate","square-inches":"Inci pătraţi","square-feet":"Ft pătraţi","square-yards":"Yarzi pătraţi","square-us-feet":"Picioare pătrate (SUA)",acres:"Acri",ares:"Ari",hectares:"Hectare"}});
+define({widgetLabel:"Măsurarea zonei",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea suprafeței 3D este acceptată doar în SceneView.",perimeterLength:"Perimetru",area:"Suprafaţă",unit:"Unitate",notApplicable:"n/a",newMeasurement:"Măsurare nouă",units:{metric:"Metric",imperial:"Englez","square-kilometers":"Kilometri pătrați","square-meters":"Metri pătrați","square-miles":"Mile pătrate","square-inches":"Inci pătrați","square-feet":"Picioare pătrate","square-yards":"Yarzi pătrați","square-us-feet":"Picioare pătrate (SUA)",acres:"Acri",ares:"Ari",hectares:"Hectare"}});

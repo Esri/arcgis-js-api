@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Măsurarea directă a liniei",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea directă a liniei 3D este acceptată doar în SceneView.",distance:"Distanţă",direct:"Direct",horizontal:"Orizontal",vertical:"Vertical",unit:"Unitate",newMeasurement:"Măsurătoare nouă",units:{metric:"Metric",imperial:"Englez",kilometers:"Kilometri",meters:"Metri",miles:"Mile",inches:"Inci",feet:"Ft",yards:"Yarzi","nautical-miles":"Mile marine","us-feet":"Picioare (SUA)","degrees-minutes-seconds":"DMS",degrees:"Grade"}});
+define({widgetLabel:"Măsurarea directă a liniei",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea directă a liniei 3D este acceptată doar în SceneView.",distance:"Distanţă",direct:"Direct",horizontal:"Orizontal",vertical:"Vertical",unit:"Unitate",newMeasurement:"Măsurare nouă",units:{metric:"Metric",imperial:"Englez",kilometers:"Kilometri",meters:"Metri",miles:"Mile",inches:"Inci",feet:"Ft",yards:"Yarzi","nautical-miles":"Mile marine","us-feet":"Picioare (SUA)","degrees-minutes-seconds":"DMS",degrees:"Grade"}});

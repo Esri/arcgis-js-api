@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Localiser",title:"Rechercher mon emplacement",currentLocation:"Position actuelle",timestamp:"Date",latitude:"Latitude",longitude:"Longitude",accuracy:"Précision",altitude:"Altitude",altitudeAccuracy:"Exactitude de l’altitude",heading:"Direction",speed:"Vitesse"});

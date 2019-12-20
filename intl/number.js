@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/assignHelper","@dojo/framework/shim/WeakMap","./locale"],function(e,r,t,a,n){function o(e){var r=e||m;if(!c.has(r)){var t=n.getLocale(),a=l[n.getLocale()]||t;c.set(r,new Intl.NumberFormat(a,e))}return c.get(r)}function i(e){void 0===e&&(e={});var r={};return null!=e.digitSeparator&&(r.useGrouping=e.digitSeparator),null!=e.places&&(r.minimumFractionDigits=r.maximumFractionDigits=e.places),r}function u(e,r){return o(r).format(e)}Object.defineProperty(r,"__esModule",{value:!0});var l={ar:"ar-u-nu-arab"},c=new a.default,m={};n.onLocaleChange(function(){c=new a.default,m={}}),r.getFormatter=o,r.convertNumberFormatToIntlOptions=i,r.formatNumber=u});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"ズーム",next:"次のフィーチャ",previous:"前のフィーチャ",dock:"ドッキング",undock:"ドッキング解除",pageText:"{index} / {total}",selectedFeature:"選択フィーチャ",selectedFeatures:"{total} 件の結果",tooManyFields:"このレイヤーのフィールドは多過ぎるため、一部表示されないものもあります。"});
+define({widgetLabel:"ポップアップ",zoom:"ズーム",next:"次のフィーチャ",previous:"前のフィーチャ",dock:"ドッキング",undock:"ドッキング解除",pageText:"{index} / {total}",selectedFeature:"選択フィーチャ",selectedFeatures:"{total} 件の結果",tooManyFields:"このレイヤーのフィールドは多過ぎるため、一部表示されないものもあります。"});

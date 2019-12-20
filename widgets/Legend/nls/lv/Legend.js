@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Apzīmējumi",points:"Punkti",lines:"Līnijas",polygons:"Laukumi",creatingLegend:"Izveido apzīmējumus",noLegend:"Nav apzīmējumu",dotValue:"1 punkts = {value} {unit}",currentObservations:"Pašreizējie novērojumi",previousObservations:"Iepriekšējie novērojumi",high:"Augsts",low:"Zems",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"mezgli",esriFeetPerSecond:"pēdas/s",esriMilesPerHour:"jūdzes/h",showNormField:"{field}, dalīts ar {normField}",showNormPct:"{field} kā procentuālā daļa no visa",showRatio:"{field} attiecība pret {normField}",showRatioPercent:"{field} kā procentuālā daļa no {normField}",showRatioPercentTotal:"{field} kā procentuālā daļa no {field} un {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Sarkans",green:"Zaļš",blue:"Zils"});

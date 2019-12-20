@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Lägg till bokmärke",goToBookmark:"Gå till bokmärke",noBookmarksHeading:"Inga bokmärken",noBookmarksDescription:"Lägg till bokmärken på kartan så visas de här.",title:"Titel",addPlaceholder:"Ange bokmärkets titel",addingBookmark:"Lägger till bokmärke",widgetLabel:"Bokmärken"});

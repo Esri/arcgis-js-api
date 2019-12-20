@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","dojo/number"],function(e,t,n){function i(e,t){e.on("change",function(e){t.set("value",e,!1)}),t.on("change",function(t){if("string"==typeof t&&(t=n.parse(t)),isNaN(t))return void this.set("value",e.get("value"),!1);var i=this.get("constraints"),a=i.min,d=i.max,s=t>d?d:t<a?a:t;this.set("value",s,!1),e.set("value",s,!1)})}function a(e,t){e.intermediateChanges=!1,e.set("value",t,!1),e.intermediateChanges=!0}function d(e){if(e.selectedChildWidget.disabled)for(var t=e.getChildren(),n=0;n<t.length;n++)if(!t[n].disabled){e.selectChild(t[n],!1);break}}function s(e){e.set("disabled",!1)}function l(e){e.set("disabled",!0)}function o(e){return e&&e.declaredClass}function r(e,t){o(e)?e.set("disabled",t):e.disabled=t}function u(e){var t=e.minimum,n=e.maximum;e.textBox.set("constraints",{min:t,max:n}),e.slider.set({minimum:t,maximum:n,discreteValues:Math.round(n)-Math.round(t)+1})}Object.defineProperty(t,"__esModule",{value:!0}),t.bindSliderAndTextBox=i,t.silentlyUpdateIntermediateChangingValueWidget=a,t.ensureEnabledChildSelection=d,t.enable=s,t.disable=l,t.toggleControl=r,t.updateSliderAndTextBoxConstraints=u});

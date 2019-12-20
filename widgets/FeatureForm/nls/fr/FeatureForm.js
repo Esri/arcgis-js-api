@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- vide -",validationErrors:{cannotBeNull:"Entrez une valeur",outsideRange:"La valeur doit être comprise entre {min} et {max}",invalidCodedValue:"La valeur doit figurer dans la liste des valeurs répertoriées.",invalidType:"Pas une valeur valide"}});
+define({widgetLabel:"Formulaire d’entité",empty:"- vide -",validationErrors:{cannotBeNull:"Entrez une valeur",outsideRange:"La valeur doit être comprise entre {min} et {max}",invalidCodedValue:"La valeur doit figurer dans la liste des valeurs répertoriées.",invalidType:"Pas une valeur valide"}});

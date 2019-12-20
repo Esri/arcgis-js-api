@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Plantilles d'entitats",filterPlaceholder:"Tipus de filtre",noMatches:"No s'ha trobat cap element",noItems:"No hi ha cap plantilla per mostrar"});

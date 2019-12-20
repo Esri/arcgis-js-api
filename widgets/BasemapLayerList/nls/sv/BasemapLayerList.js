@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Baskartlagerlista",baseHeading:"Bas",basemapTitle:"Baskartans titel",referenceHeading:"Referenser",noReferenceLayers:"Inga referenslager",noBaseLayers:"Inga baslager",layerInvisibleAtScale:"Osynlig på den aktuella skalan",layerError:"Ett fel uppstod när det här lagret skulle läsas in",untitledLayer:"Namnlöst lager"});

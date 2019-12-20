@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Bilagor",fields:"Fält",fieldsSummary:"Lista med attribut och värden",media:"Media",next:"Nästa",noTitle:"Namnlös",previous:"Föregående",lastEdited:"Senast redigerad den {date}.",lastCreated:"Skapad den {date}.",lastEditedByUser:"Senast redigerad av {user} den {date}.",lastCreatedByUser:"Skapad av {user} den {date}."});
+define({widgetLabel:"Geoobjekt",attach:"Bilagor",fields:"Fält",fieldsSummary:"Lista med attribut och värden",media:"Media",next:"Nästa",noTitle:"Namnlös",previous:"Föregående",lastEdited:"Senast redigerad den {date}.",lastCreated:"Skapad den {date}.",lastEditedByUser:"Senast redigerad av {user} den {date}.",lastCreatedByUser:"Skapad av {user} den {date}."});

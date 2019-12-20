@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Список шарів базової карти",baseHeading:"Базовий",basemapTitle:"Заголовок базової карти",referenceHeading:"Опорне значення",noReferenceLayers:"Немає шарів прив’язки",noBaseLayers:"Немає базових шарів",layerInvisibleAtScale:"Невидимий в поточному масштабі",layerError:"При завантаженні цього шару виникла помилка",untitledLayer:"Шар без заголовку"});

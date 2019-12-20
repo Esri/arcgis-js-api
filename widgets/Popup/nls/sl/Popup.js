@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Povečaj",next:"Naslednji geoobjekt",previous:"Prejšnji geoobjekt",dock:"Zasidraj",undock:"Odsidraj",pageText:"{index} od {total}",selectedFeature:"Izbrani geoobjekt",selectedFeatures:"{total} rezultatov",tooManyFields:"Ta sloj ima preveč polj, nekatera morda ne bodo prikazana."});
+define({widgetLabel:"Pojavno okno",zoom:"Povečaj",next:"Naslednji geoobjekt",previous:"Prejšnji geoobjekt",dock:"Zasidraj",undock:"Odsidraj",pageText:"{index} od {total}",selectedFeature:"Izbrani geoobjekt",selectedFeatures:"{total} rezultatov",tooManyFields:"Ta sloj ima preveč polj, nekatera morda ne bodo prikazana."});

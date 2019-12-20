@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"קמ",mi:"מייל",ft:"רגל",m:"מ'",unknownUnit:"יחידות לא ידועות"});
+define({widgetLabel:'סרגל קנ"מ',km:"קמ",mi:"מייל",ft:"רגל",m:"מ'",unknownUnit:"יחידה לא ידועה"});

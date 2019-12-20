@@ -39,7 +39,6 @@ import { substitute } from "esri/intl";
 
 // esri.core
 import { eventKey } from "esri/core/events";
-import Logger = require("esri/core/Logger");
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
@@ -63,8 +62,7 @@ import {
   ThumbChangeEvent,
   ThumbCreatedFunction,
   ThumbDragEvent,
-  ValueChangeEvent,
-  ValuesChangeEvent
+  ValueChangeEvent
 } from "esri/widgets/Slider/interfaces";
 import SliderViewModel = require("esri/widgets/Slider/SliderViewModel");
 
@@ -131,7 +129,6 @@ const KEYS = {
 };
 
 const declaredClass = "esri.widgets.Slider";
-const logger = Logger.getLogger(declaredClass);
 
 type Layout = "vertical" | "vertical-reversed" | "horizontal" | "horizontal-reversed";
 
@@ -167,8 +164,6 @@ interface SliderEvents {
   "segment-drag": SegmentDragEvent;
   "thumb-change": ThumbChangeEvent;
   "thumb-drag": ThumbDragEvent;
-  "value-change": ValueChangeEvent;
-  "values-change": ValuesChangeEvent;
 }
 
 @subclass(declaredClass)
@@ -185,7 +180,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @event module:esri/widgets/Slider#max-change
    *
    * @property {number} oldValue - The former [max](#max) value (or bound) of the slider.
-   * @property {string} type - The type of the event. For this event, the type is always `max-change`.
+   * @property {"max-change"} type - The type of the event.
    * @property {number} value - The [max](#max) value (or bound) of the slider when the event is emitted.
    */
 
@@ -195,7 +190,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @event module:esri/widgets/Slider#min-change
    *
    * @property {number} oldValue - The former [min](#min) value (or bound) of the slider.
-   * @property {string} type - The type of the event. For this event, the type is always `min-change`.
+   * @property {"min-change"} type - The type of the event.
    * @property {number} value - The the [min](#min) value (or bound) of the slider when the event is emitted.
    */
 
@@ -208,7 +203,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    *
    * @property {number} index - The 1-based index of the segment in the slider.
    * @property {"start" | "drag"} state - The state of the drag.
-   * @property {"segment-drag"} type - The type of the event. For this event, the type is always `segment-drag`.
+   * @property {"segment-drag"} type - The type of the event.
    * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
    */
 
@@ -219,7 +214,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    *
    * @property {number} index - The 0-based index of the updated thumb.
    * @property {number} oldValue - The former value of the thumb before the change was made.
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-change`.
+   * @property {"thumb-change"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
    */
 
@@ -230,32 +225,8 @@ class Slider extends declared(Widget)<SliderEvents> {
    *
    * @property {number} index - The 0-based index of the updated thumb.
    * @property {"drag" | "start" | "stop"} state - The state of the drag.
-   * @property {"thumb-drag"} type - The type of the event. For this event, the type is always `thumb-drag`.
+   * @property {"thumb-drag"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
-   */
-
-  /**
-   * Fires when a thumb value changes on the Slider widget.
-   *
-   * @event module:esri/widgets/Slider#value-change
-   *
-   * @property {number} index - The 0-based index of the thumb emitting the event.
-   * @property {number} oldValue - The former value of the thumb before the change was made.
-   * @property {string} type - The type of the event. For this event, the type is always `value-change`.
-   * @property {number} value - The value of the thumb when the event is emitted.
-   * @deprecated since version 4.13.
-   */
-
-  /**
-   * Fires when the [values](#values) array changes on the Slider widget.
-   *
-   * @event module:esri/widgets/Slider#values-change
-   *
-   * @property {number[]} [indices] - The 0-based indices of the thumbs emitting the event.
-   * @property {number[]} oldValues - The former values of the thumbs before the changes were made.
-   * @property {string} type - The type of the event. For this event, the type is always `values-change`.
-   * @property {number[]} values - The values of the thumbs when the event is emitted.
-   * @deprecated since version 4.13.
    */
 
   /**
@@ -275,7 +246,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this._observer = new ResizeObserver(() => this.scheduleRender());
 
@@ -420,7 +391,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @callback module:esri/widgets/Slider~LabelFormatter
    *
    * @param {number} value - The value of the thumb to be labeled.
-   * @param {string} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
+   * @param {"average" | "min" | "max" | "tick" | "value"} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
    * @param {number} [index] - The index of the thumb (or [value](#values)).
    *
    * @return {string} The formatted value of the label.
@@ -513,7 +484,7 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @callback module:esri/widgets/Slider~InputParser
    *
    * @param {string} value - The formatted input value of the thumb to be parsed.
-   * @param {string} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
+   * @param {"average" | "min" | "max" | "tick" | "value"} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
    * @param {number} [index] - The index of the thumb (or [value](#values)).
    *
    * @return {number} The parsed number value of the thumb.
@@ -1735,20 +1706,17 @@ class Slider extends declared(Widget)<SliderEvents> {
         data-value={value}
         key={`tick-group-${groupIndex}`}
       >
-        {this.renderTickLine(config, groupIndex, configIndex, value, position)}
-        {config.labelsVisible
-          ? this.renderTickLabel(config, groupIndex, configIndex, value, position)
-          : null}
+        {this.renderTickLine(config, groupIndex, configIndex, value)}
+        {config.labelsVisible ? this.renderTickLabel(config, groupIndex, configIndex, value) : null}
       </div>
     );
   }
 
   protected renderTickLine(
-    config: TickConfig,
+    _config: TickConfig,
     groupIndex: number,
     configIndex: number,
-    value: number,
-    position: number
+    value: number
   ): VNode {
     return (
       <div
@@ -1769,8 +1737,7 @@ class Slider extends declared(Widget)<SliderEvents> {
     config: TickConfig,
     groupIndex: number,
     configIndex: number,
-    value: number,
-    position: number
+    value: number
   ): VNode {
     const label = config.labelFormatFunction
       ? config.labelFormatFunction(value, "tick", groupIndex)
@@ -1979,7 +1946,6 @@ class Slider extends declared(Widget)<SliderEvents> {
       const newValue = this.values[index];
 
       if (oldValue !== newValue) {
-        this._emitValueChangeEvent({ index, oldValue, value: newValue });
         this._emitThumbChangeEvent({ index, oldValue, value: newValue });
       }
     }
@@ -2002,7 +1968,6 @@ class Slider extends declared(Widget)<SliderEvents> {
       const newValue = this.values[index];
 
       if (oldValue !== newValue) {
-        this._emitValueChangeEvent({ index, oldValue, value: newValue });
         this._emitThumbChangeEvent({ index, oldValue, value: newValue });
       }
     }
@@ -2093,7 +2058,6 @@ class Slider extends declared(Widget)<SliderEvents> {
     if (!_dragged) {
       this._emitThumbDragEvent({ index, state, value: oldValue });
     } else if (oldValue !== newValue) {
-      this._emitValueChangeEvent({ index, oldValue, value: newValue });
       this._emitThumbDragEvent({ index, state, value: newValue });
     }
   }
@@ -2194,7 +2158,6 @@ class Slider extends declared(Widget)<SliderEvents> {
 
     if (oldValue !== newValue) {
       this._emitThumbDragEvent({ index, state: "drag", value: newValue });
-      this._emitValueChangeEvent({ index, oldValue, value: newValue });
     }
 
     document.addEventListener("pointerup", this._onAnchorPointerUp);
@@ -2417,7 +2380,7 @@ class Slider extends declared(Widget)<SliderEvents> {
   //  Handle Label Event Handlers
   //--------------------------------------------------------------------------
 
-  private _onLabelPointerDown(event: PointerEvent): void {
+  private _onLabelPointerDown(): void {
     if (this._isDisabled()) {
       return;
     }
@@ -2427,7 +2390,7 @@ class Slider extends declared(Widget)<SliderEvents> {
     document.addEventListener("pointermove", this._onAnchorPointerMove);
   }
 
-  private _onLabelPointerMove(event: PointerEvent): void {
+  private _onLabelPointerMove(): void {
     if (this._isDisabled()) {
       return;
     }
@@ -2478,7 +2441,6 @@ class Slider extends declared(Widget)<SliderEvents> {
     const newValue = this.values[index];
 
     if (oldValue !== newValue) {
-      this._emitValueChangeEvent({ index, oldValue, value: newValue });
       this._emitThumbChangeEvent({ index, oldValue, value: newValue });
     }
   }
@@ -2518,7 +2480,7 @@ class Slider extends declared(Widget)<SliderEvents> {
   //--------------------------------------------------------------------------
 
   // Triggers display of the 'max' Editor on next render
-  private _onMaxLabelClick(event: PointerEvent): void {
+  private _onMaxLabelClick(): void {
     if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
       return;
     }
@@ -2559,7 +2521,7 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   // Triggers display of the 'min' Editor on next render
-  private _onMinLabelClick(event: PointerEvent): void {
+  private _onMinLabelClick(): void {
     if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
       return;
     }
@@ -2773,20 +2735,8 @@ class Slider extends declared(Widget)<SliderEvents> {
   // Relies on view model validation
   // If steps are involved, this method assumes the values exist on steps
   private _updateAnchorValues(indices: number[], values: number[]): void {
-    // Store old values
     // Update anchor position using provided values
-    // Get updated values to use in associated event
-    const oldValues = indices.map((anchorIndex) => this.values[anchorIndex]);
     indices.forEach((index, i) => this._toValue(index, values[i]));
-    const newValues = indices.map((anchorIndex) => this.values[anchorIndex]);
-
-    if (!newValues.every((newValue, index) => newValue === oldValues[index])) {
-      this._emitValuesChangeEvent({
-        indices,
-        oldValues,
-        values: newValues
-      });
-    }
   }
 
   private _toValue(index: number, value: number): void {
@@ -3080,26 +3030,6 @@ class Slider extends declared(Widget)<SliderEvents> {
 
   private _emitMinChangeEvent(params: Pick<ValueChangeEvent, "oldValue" | "value">): void {
     this.emit("min-change", { ...params, type: "min-change" });
-  }
-
-  private _emitValueChangeEvent(
-    params: Pick<ValueChangeEvent, "index" | "oldValue" | "value">
-  ): void {
-    if (this.hasEventListener("value-change")) {
-      logger.warn("'value-change' is deprecated, watch the 'values' property instead.");
-    }
-
-    this.emit("value-change", { ...params, type: "value-change" });
-  }
-
-  private _emitValuesChangeEvent(
-    params: Pick<ValuesChangeEvent, "indices" | "oldValues" | "values">
-  ): void {
-    if (this.hasEventListener("value-change")) {
-      logger.warn("'values-change' is deprecated, watch the 'values' property instead.");
-    }
-
-    this.emit("values-change", { ...params, type: "values-change" });
   }
 
   private _emitThumbChangeEvent(

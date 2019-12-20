@@ -121,11 +121,11 @@ const CSS: any = {
   widgetButton: "esri-widget--button",
   leftArrow: "esri-icon-left-arrow",
   captureButton: "esri-icon-map-pin",
-  collapseButton: "esri-icon-down",
+  collapseButton: "esri-icon-up",
   copyButton: "esri-icon-duplicate",
   editButton: "esri-icon-edit",
   esriSelect: "esri-select",
-  expandButton: "esri-icon-up",
+  expandButton: "esri-icon-down",
   goToButton: "esri-icon-locate",
   refresh: "esri-icon-refresh",
   removeConversion: "esri-icon-close",
@@ -157,7 +157,7 @@ class CoordinateConversion extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -245,6 +245,20 @@ class CoordinateConversion extends declared(Widget) {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  mode
@@ -400,9 +414,8 @@ class CoordinateConversion extends declared(Widget) {
    *
    * @return {Promise<module:esri/geometry/Point>} When resolved, returns a {@link module:esri/geometry/Point}.
    */
-  @aliasOf("viewModel.reverseConvert")
-  reverseConvert(coordinate: string, format: Format): IPromise<Point> {
-    return null;
+  reverseConvert(coordinate: string, format: Format): Promise<Point> {
+    return this.viewModel.reverseConvert(coordinate, format);
   }
 
   render(): VNode {
@@ -457,7 +470,7 @@ class CoordinateConversion extends declared(Widget) {
   private _findSettingsFormat(): Format {
     return (
       this._settingsFormat ||
-      this.conversions.reduceRight((format: Format, conversion, index) => {
+      this.conversions.reduceRight((format: Format, conversion) => {
         const currentFormat = conversion.format;
         return currentFormat.get<boolean>("hasDisplayProperties") ? currentFormat : format;
       }, null) ||
@@ -523,7 +536,7 @@ class CoordinateConversion extends declared(Widget) {
     }
   }
 
-  private _reverseConvert(userInput: string, format: Format): IPromise<Point> {
+  private _reverseConvert(userInput: string, format: Format): Promise<Point> {
     const vm = this.viewModel;
     return format.reverseConvert(userInput).then((result) => {
       if (this._goToEnabled) {
@@ -606,7 +619,7 @@ class CoordinateConversion extends declared(Widget) {
       firstRow = index === 0,
       rowVisible = firstRow || this._expanded,
       tools = firstRow
-        ? this._renderFirstConversion(conversion, rowId)
+        ? this._renderFirstConversion(conversion)
         : this._renderTools(index, conversion, rowId),
       displayedCoordinate =
         firstRow && !conversion.displayCoordinate ? i18n.noLocation : conversion.displayCoordinate,
@@ -676,7 +689,7 @@ class CoordinateConversion extends declared(Widget) {
     );
   }
 
-  private _renderFirstConversion(conversion: Conversion, rowId: string): VNode {
+  private _renderFirstConversion(conversion: Conversion): VNode {
     const widgetId = this.id;
 
     const expandButtonClasses = {
@@ -1090,7 +1103,7 @@ class CoordinateConversion extends declared(Widget) {
 
   @accessibleHandler()
   private _removeConversion(event: Event): void {
-    const target = event.target as HTMLElement,
+    const target = event.currentTarget as HTMLElement,
       index = target["data-index"] as number;
 
     this.conversions.removeAt(index);
@@ -1111,7 +1124,7 @@ class CoordinateConversion extends declared(Widget) {
   }
 
   @accessibleHandler()
-  private _toggleInputVisibility(event: Event): void {
+  private _toggleInputVisibility(): void {
     this._inputVisible = !this._inputVisible;
     if (this._popupVisible) {
       this._hidePopup();

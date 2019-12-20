@@ -12,6 +12,9 @@
  * or specify your own ArcGIS Server route service. Please see the
  * [routeServiceUrl](#routeServiceUrl) property.
  *
+ * The `Clear route` button calls the {@link module:esri/widgets/Directions/DirectionsViewModel#reset reset()} method, which
+ * clears all the input stops and results in the widget and in the map.
+ *
  * Any types of customizations made to the underlying functionality of the widget should be handled via its [viewModel](#viewModel) property.
  *
  * @example
@@ -252,7 +255,7 @@ class Directions extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -614,7 +617,7 @@ class Directions extends declared(Widget) {
    *
    */
   @aliasOf("viewModel.getDirections")
-  getDirections(): IPromise<void> {
+  getDirections(): Promise<void> {
     return null;
   }
 
@@ -1103,7 +1106,7 @@ class Directions extends declared(Widget) {
     clearTimeout(this._autoStopRemovalTimeoutId);
   }
 
-  private _handleAddStopFocus(event: FocusEvent): void {
+  private _handleAddStopFocus(): void {
     this._addNewPlaceholder();
   }
 
@@ -1345,21 +1348,9 @@ class Directions extends declared(Widget) {
             [CSS.closeIcon]: open
           };
 
-          let sectionHeader: any;
+          let sectionHeader: VNode;
 
-          if (!multiSectionRoute) {
-            sectionHeader = null;
-          } else if (last) {
-            sectionHeader = (
-              <header
-                class={CSS.maneuverSectionHeader}
-                key="esri-directions__maneuver-section-header"
-              >
-                <span aria-hidden="true" class={CSS.lastStopIcon} />
-                <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>{section.name}</h2>
-              </header>
-            );
-          } else {
+          if (multiSectionRoute && !last) {
             const title = open ? i18nCommon.open : i18nCommon.close;
 
             sectionHeader = (
@@ -1384,6 +1375,16 @@ class Directions extends declared(Widget) {
                     {section.name}
                   </h2>
                 </div>
+              </header>
+            );
+          } else {
+            sectionHeader = (
+              <header
+                class={CSS.maneuverSectionHeader}
+                key="esri-directions__maneuver-section-header"
+              >
+                {last ? <span aria-hidden="true" class={CSS.lastStopIcon} /> : null}
+                <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>{section.name}</h2>
               </header>
             );
           }

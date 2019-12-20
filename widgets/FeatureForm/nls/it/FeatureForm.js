@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- vuoto -",validationErrors:{cannotBeNull:"Immettere un valore",outsideRange:"Il valore dovrebbe rientrare tra {min} e {max}",invalidCodedValue:"Il valore dovrebbe rientrare nella seguente elenco di valori.",invalidType:"Valore non valido"}});
+define({widgetLabel:"Modello di feature",empty:"- vuoto -",validationErrors:{cannotBeNull:"Immettere un valore",outsideRange:"Il valore dovrebbe rientrare tra {min} e {max}",invalidCodedValue:"Il valore dovrebbe rientrare nella seguente elenco di valori.",invalidType:"Valore non valido"}});

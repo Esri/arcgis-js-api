@@ -109,7 +109,7 @@ class BasemapGallery extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {

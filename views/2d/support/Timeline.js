@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/accessorSupport/decorators"],function(e,r,s,t,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){return-1!==e.indexOf("Brush")},o=function(){function e(){this._names=new Map}return e.prototype.begin=function(e){this._names.has(e)||(this._names.set(e,!1),i(e)&&this.record("Esri.FirstDraw"),performance.mark("Esri."+e+".Start"))},e.prototype.end=function(e){this._names.has(e)&&!this._names.get(e)&&(this._names.set(e,!0),performance.mark("Esri."+e+".End"))},e.prototype.record=function(e){this._names.has(e)||(this._names.set(e,!0),performance.mark("Esri."+e))},e=s([n.subclass("esri.views.2d.support.Timeline")],e)}();r.Timeline=o});

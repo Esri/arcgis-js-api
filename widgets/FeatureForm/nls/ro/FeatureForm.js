@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- gol -",validationErrors:{cannotBeNull:"Introduceţi o valoare",outsideRange:"Valoarea trebuie să fie între {min} și {max}",invalidCodedValue:"Valoarea trebuie să fie una dintre valorile listate.",invalidType:"Nu este o valoare valabilă"}});
+define({widgetLabel:"Forma obiectului spațial",empty:"- gol -",validationErrors:{cannotBeNull:"Introduceţi o valoare",outsideRange:"Valoarea trebuie să fie între {min} și {max}",invalidCodedValue:"Valoarea trebuie să fie una dintre valorile listate.",invalidType:"Nu este o valoare valabilă"}});

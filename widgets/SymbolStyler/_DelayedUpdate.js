@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["dojo/_base/declare"],function(e){return e(null,{declaredClass:"esri.widgets.SymbolStyler._DelayedUpdate",createUpdateTrigger:function(e,t){var n=-1;return function(){n>-1||(n=setTimeout(function(){n=-1,e.call(t)},0))}}})});

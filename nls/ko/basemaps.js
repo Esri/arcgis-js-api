@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({streets:"Street",satellite:"Imagery",hybrid:"Imagery(Label)",terrain:"Terrain(Label)",topo:"Topographic",gray:"LightGrayCanvas","dark-gray":"DarkGrayCanvas",oceans:"Ocean","national-geographic":"NationalGeographic",osm:"OpenStreetMap","streets-night-vector":"WorldStreetMap(Night)","streets-relief-vector":"WorldStreetMap(Relief)","streets-navigation-vector":"WorldNavigationMap"});

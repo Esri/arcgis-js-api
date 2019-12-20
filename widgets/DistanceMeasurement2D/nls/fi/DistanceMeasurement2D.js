@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Etäisyyden mittaus",hint:"Aloita mittaus napsauttamalla karttaa ja sijoita ensimmäinen pisteesi",unsupported:"Kaksiulotteista etäisyyden mittausta tuetaan vain MapView-sovelluksessa.",distance:"Etäisyys",newMeasurement:"Uusi mittaus",mode:"Tila",modes:{auto:"Autom",planar:"Planaarinen",geodesic:"Geodeettinen"},unit:"Yksikkö",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmat","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});
+define({widgetLabel:"Etäisyyden mittaus",hint:"Aloita mittaus napsauttamalla karttaa ja sijoita ensimmäinen pisteesi",unsupported:"Kaksiulotteista etäisyyden mittausta tuetaan vain MapView-sovelluksessa.",distance:"Etäisyys",newMeasurement:"Uusi mittaus",mode:"Tila",modes:{auto:"Autom",planar:"Planaarinen",geodesic:"Geodeettinen"},unit:"Yksikkö",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});

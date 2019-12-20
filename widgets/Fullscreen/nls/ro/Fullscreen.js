@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"Accesare ecran complet",exit:"Ieşire din ecran complet"});
+define({widgetLabel:"Pe tot ecranul",enter:"Accesare ecran complet",exit:"Ieşire din ecran complet"});

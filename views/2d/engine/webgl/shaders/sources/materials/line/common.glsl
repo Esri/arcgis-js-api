@@ -1,8 +1,8 @@
+varying lowp vec4 v_color;
+varying highp vec4 v_id;
 varying mediump vec2 v_normal;             // interpolated normal to the line. packed into the two LSBs of the vertex coordinate
 varying mediump float v_lineHalfWidth;
-varying lowp vec4 v_color;
 varying lowp float v_opacity;
-varying highp vec4 v_id;
 varying vec3 v_pos;
 
 #ifdef PATTERN

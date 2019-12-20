@@ -392,7 +392,7 @@ class Histogram extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.title;
+  @property() label: string = i18n.widgetLabel;
 
   /**
    * Function used to format labels. This function should be set to the
@@ -433,12 +433,10 @@ class Histogram extends declared(Widget) {
   /**
    * Determines the orientation of the Histogram widget.
    *
-   * **Possible Values:** vertical | horizontal
-   *
    * @name layout
    * @instance
    * @default horizontal
-   * @type {string}
+   * @type {"vertical" | "horizontal"}
    *
    * @example
    * histogram.layout = "vertical";
@@ -847,7 +845,7 @@ class Histogram extends declared(Widget) {
     const counts = bins ? bins.map((bin) => bin.count) : [];
     const max = Math.max.apply(Math, counts);
 
-    return counts.map((count, index) =>
+    return counts.map((count) =>
       layout === "vertical"
         ? [height / counts.length, max !== 0 ? (count / max) * width : 0]
         : [max !== 0 ? (count / max) * height : 0, width / counts.length]

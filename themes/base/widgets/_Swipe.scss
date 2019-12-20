@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     background: transparent;
+    user-select: none;
   }
 
   .esri-swipe,
@@ -25,6 +26,7 @@
     z-index: 1;
     touch-action: none; // needed for touch actions to work correctly
     pointer-events: auto;
+    overflow: hidden; // needed to hide tracers in iOS
   }
 
   .esri-swipe--horizontal .esri-swipe__container {
@@ -76,16 +78,9 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    &:after,
-    &:before {
-      background-color: $divider-color;
-      content: "";
-      position: absolute;
-      width: $button-width--half;
-      height: $button-height;
-      border: 1px solid rgba($interactive-font-color, 0.5);
-      z-index: 1;
-    }
+    border: 1px solid rgba($interactive-font-color, 0.5);
+    border-radius: $border-radius;
+    background-color: $divider-color;
     &--hidden {
       visibility: hidden;
     }
@@ -98,58 +93,10 @@
 
   .esri-swipe--horizontal .esri-swipe__handle {
     top: calc(50% - #{$button-height--half});
-    &:after,
-    &:before {
-      top: 0; //for IE11
-      width: $button-width--half;
-      height: $button-height;
-    }
-    &:after {
-      right: -1px; // 1px to cover the border
-      border-left-color: $background-color;
-      border-radius: 0 $border-radius $border-radius 0;
-    }
-    &:before {
-      border-right-color: $background-color;
-      left: -1px; // 1px to cover the border
-      border-radius: $border-radius 0 0 $border-radius;
-    }
-    &:only-child:after {
-      right: 0;
-      border-left: none;
-    }
-    &:only-child:before {
-      left: 0;
-      border-right: none;
-    }
   }
 
   .esri-swipe--vertical .esri-swipe__handle {
     left: calc(50% - #{$button-height--half});
-    &:after,
-    &:before {
-      left: 0; //for IE11
-      width: $button-width;
-      height: $button-height--half;
-    }
-    &:after {
-      top: -1px; // 1px to cover the border
-      border-bottom-color: $background-color;
-      border-radius: $border-radius $border-radius 0 0;
-    }
-    &:before {
-      border-top-color: $background-color;
-      bottom: -1px; // 1px to cover the border
-      border-radius: 0 0 $border-radius $border-radius;
-    }
-    &:only-child:after {
-      top: 0;
-      border-bottom: none;
-    }
-    &:only-child:before {
-      bottom: 0;
-      border-top: none;
-    }
   }
 }
 

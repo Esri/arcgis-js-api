@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../has","../../lang","../../Logger","../metadata"],function(e,r,t,o,a,n){function s(e){return void 0===e&&(e={}),function(r,a){var s=r.constructor.prototype;if(s===Function.prototype)return void(t("dojo-debug-messages")&&i.error("Inappropriate use of @property() on a static field: "+r.name+"."+a+". Accessor does not support static properties."));var p=Object.getOwnPropertyDescriptor(r,a);p&&(p.get||p.set)?(e=o.clone(e),p.set&&(e.set=p.set),p.get&&(e.get=p.get)):p&&p.hasOwnProperty("value")&&(e=o.clone(e),t("dojo-debug-messages")&&e.hasOwnProperty("value")&&i.warn('@property() will redefine the value of "'+a+'" on "'+r.constructor.name+'" already defined in the metadata',e),e.value=p.value);var c=n.getPropertyMetadata(s,a);n.mergeProperty(c,e)}}function p(e,r,t){var o=n.getPropertyMetadata(e.constructor.prototype,t);o.json||(o.json={});var a=o.json;return void 0!==r&&(a.origins||(a.origins={}),a.origins[r]||(a.origins[r]={}),a=a.origins[r]),a}Object.defineProperty(r,"__esModule",{value:!0});var i=a.getLogger("esri.core.accessorSupport.decorators.property");r.property=s,r.propertyJSONMeta=p});

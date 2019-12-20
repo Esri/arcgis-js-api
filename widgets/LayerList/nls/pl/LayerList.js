@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista warstw",noItemsToDisplay:"Aktualnie brak elementów do wyświetlenia.",layerInvisibleAtScale:"Niewidoczne w bieżącej skali",layerError:"Wystąpił błąd podczas wczytywania tej warstwy",untitledLayer:"Warstwa bez nazwy"});

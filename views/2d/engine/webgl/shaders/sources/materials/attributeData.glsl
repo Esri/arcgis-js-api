@@ -7,8 +7,9 @@ uniform highp sampler2D u_attributeData3;
 uniform highp int u_attributeTextureSize; 
 
 highp vec2 getAttributeDataCoords(in highp vec4 id) {
-  float size = float(u_attributeTextureSize);
-  highp float u32 = float(int(id.r) + int(id.g) * 256 + int(id.b) * 256 * 256 + int(id.a) * 256 * 256 * 256);
+  highp vec4 texel = unpackLocalIdTexel(id); 
+  highp float size = float(u_attributeTextureSize);
+  highp float u32 = float(int(texel.r) + int(texel.g) * 256 + int(texel.b) * 256 * 256 + int(texel.a) * 256 * 256 * 256);
   highp float col = mod(u32, size);
   highp float row = (u32 - col) / size;  
 

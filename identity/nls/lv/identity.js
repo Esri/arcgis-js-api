@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({lblItem:"vienība",title:"Pierakstīties",info:"Lūdzu, pierakstieties, lai piekļūtu vienībai šeit: {server} {resource}",oAuthInfo:"Lūdzu, pierakstieties {server}.",lblUser:"Lietotājvārds:",lblPwd:"Parole:",lblOk:"Labi",lblSigning:"Pierakstās...",lblCancel:"Atcelt",errorMsg:"Nederīgs lietotājvārds/parole. Lūdzu, mēģiniet vēlreiz.",invalidUser:"Jūsu ievadītais lietotājvārds vai parole ir nepareizi.",forbidden:"Lietotājvārds un parole ir pareizi, bet jums nav tiesību piekļūt šim resursam.",noAuthService:"Nevar piekļūt autentifikācijas servisam."});

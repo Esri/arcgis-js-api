@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Pronađi",title:"Pronađi moju lokaciju",currentLocation:"Trenutačna lokacija",timestamp:"Vremenska oznaka",latitude:"Geografska širina",longitude:"Geografska dužina",accuracy:"Točnost",altitude:"Nadmorska visina",altitudeAccuracy:"Točnost nadmorske visine",heading:"Zaglavlje",speed:"Brzina"});

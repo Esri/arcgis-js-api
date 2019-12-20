@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histograma",barLabel:"Contagem de barra: {count}. Valor de dados mín. de barra: {minValue}. Valor de dados máx. de barra: {maxValue}"});
+define({widgetLabel:"Histograma",barLabel:"Contagem de barra: {count}. Valor de dados mín. de barra: {minValue}. Valor de dados máx. de barra: {maxValue}"});

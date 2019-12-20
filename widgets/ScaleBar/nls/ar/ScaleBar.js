@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"كيلومتر",mi:"ميل",ft:"قدم",m:"متر",unknownUnit:"وحدة غير معروفة"});
+define({widgetLabel:"شريط المقياس",km:"كيلومتر",mi:"ميل",ft:"قدم",m:"متر",unknownUnit:"وحدة غير معروفة"});

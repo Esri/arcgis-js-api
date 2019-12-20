@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/assignHelper","dojox/gfx"],function(e,r,o,t){function n(e){var r=e.node,n=e.width,i=e.height,s=a(e),l=t.createSurface(r,n,i),c=o({},l.getDimensions(),{x:0,y:0});return l.createRect(c).setFill({type:"linear",x1:0,y1:0,x2:0,y2:i,colors:s})}function i(e){var r=e.ramp,o=r.getFill();return o.colors=a(e),r.setFill(o),r}function s(e){return Array.isArray(e)&&e[0]&&"offset"in e[0]&&"color"in e[0]}function a(e){var r=e.colors,o=e.hasStops,t=r.length,n=o?1/t:1/(t-1),i=[];if(s(r))return r;for(var a=0,l=0;l<t;l++){var c=l*n,u=r[t-1-l];i.push({offset:c,color:u}),o&&(a=(l+1)*n,i.push({offset:a,color:u}))}return i}Object.defineProperty(r,"__esModule",{value:!0}),r.createColorRamp=n,r.updateColorRamp=i});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver"],function(e,r,t,s){Object.defineProperty(r,"__esModule",{value:!0}),r.program={name:"stars",shaders:{vertexShader:s.resolveIncludes("environment/stars.vert"),fragmentShader:s.resolveIncludes("environment/stars.frag")},attributes:t.Default3D}});

@@ -71,38 +71,44 @@
  * @see module:esri/renderers/ClassBreaksRenderer
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./ClassedSizeSlider/nls/ClassedSizeSlider";
+import * as i18n from "dojo/i18n!esri/widgets/ClassedSizeSlider/nls/ClassedSizeSlider";
+
+// esri
+import Color = require("esri/../Color");
 
 // esri.core
-import { isSome } from "../../core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { ClassBreaksRendererResult } from "../../renderers/smartMapping/creators/color";
+import { ClassBreaksRendererResult } from "esri/../renderers/smartMapping/creators/color";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.support
-import ClassBreakInfo from "../../renderers/support/ClassBreakInfo";
+import ClassBreakInfo from "esri/../renderers/support/ClassBreakInfo";
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ClassedSizeSlider
-import ClassedSizeSliderViewModel = require("./ClassedSizeSlider/ClassedSizeSliderViewModel");
-import { SizeBreak } from "./ClassedSizeSlider/interfaces";
+import ClassedSizeSliderViewModel = require("esri/widgets/ClassedSizeSlider/ClassedSizeSliderViewModel");
+import { SizeBreak } from "esri/widgets/ClassedSizeSlider/interfaces";
+
+// esri.widgets.smartMapping.support
+import { getFillFromColor } from "esri/widgets/support/utils";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, storeNode, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-classed-size-slider",
@@ -116,6 +122,16 @@ const CSS = {
   widgetIcon: "esri-icon-edit",
   disabled: "esri-disabled"
 };
+
+const DEFAULT_STYLE = {
+  trackFillColor: new Color([149, 149, 149]), // "#959595"
+  trackBackgroundColor: new Color([224, 224, 224]) //"#e0e0e0"
+};
+
+interface ClassedSizeSliderStyle {
+  trackFillColor?: Color;
+  trackBackgroundColor?: Color;
+}
 
 @subclass("esri.widgets.smartMapping.ClassedSizeSlider")
 class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
@@ -133,7 +149,7 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
    *                            that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -141,10 +157,6 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
   //  Variables
   //
   //--------------------------------------------------------------------------
-
-  private _backgroundFillColor = "#e0e0e0";
-
-  private _fillColor = "#959595";
 
   private _rampNode: HTMLElement = null;
 
@@ -210,6 +222,41 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
   @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
+  //  style
+  //----------------------------------
+
+  /**
+   * Exposes various properties of the widget that can be styled.
+   *
+   * @name style
+   * @instance
+   * @type {Object}
+   *
+   * @property {module:esri/Color} [trackFillColor=new Color([149, 149, 149])] - The color of the slider's track.
+   *   For single-color visualizations where
+   *   only a Size variable is present, you should set this color to match
+   *   the color of the symbol in the {@link module:esri/renderers/SimpleRenderer}.
+   * @todo @autocast { "name": "trackFillColor", "value": "Object | Number[] | String" }
+   * @property {module:esri/Color} [trackBackgroundColor=new Color([224, 224, 224])] - The background color of the
+   *   slider's track. Generally, this color should be subdued and not interfere with the `trackFillColor`.
+   * @todo @autocast { "name": "trackBackgroundColor", "value": "Object | Number[] | String" }
+   *
+   * @example
+   * slider.style = {
+   *   trackFillColor: new Color("dodgerblue"),
+   *   trackBackgroundColor: new Color([50,50,50])
+   * };
+   */
+  @property()
+  @renderable()
+  style: ClassedSizeSliderStyle = { ...DEFAULT_STYLE };
+
+  @cast("style")
+  protected castStyle(value: Partial<ClassedSizeSliderStyle>): ClassedSizeSliderStyle {
+    return { ...DEFAULT_STYLE, ...value };
+  }
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -226,6 +273,8 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
   @property()
   @renderable([
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
@@ -491,10 +540,19 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
   }
 
   protected renderRamp(): VNode {
+    const {
+      style: { trackBackgroundColor }
+    } = this;
     return (
       <div afterCreate={storeNode} bind={this} class={CSS.rampElement} data-node-ref="_rampNode">
         <svg xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" fill={this._backgroundFillColor} height="100%" width="100%" />
+          <rect
+            x="0"
+            y="0"
+            fill={getFillFromColor(trackBackgroundColor)}
+            height="100%"
+            width="100%"
+          />
           {this.renderPath()}
         </svg>
       </div>
@@ -515,34 +573,37 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
     const {
       breaks,
       viewModel: { max, min },
-      _fillColor
+      style: { trackFillColor }
     } = this;
     const range = max - min;
     const stepWidth = offsetWidth / breaks.length;
 
-    // Calculate position of the steps
-    const stepCoords = breaks.map((breakInfo) => [
-      offsetHeight - Math.round(((breakInfo.min - min) / range) * offsetHeight),
-      offsetHeight - Math.round(((breakInfo.max - min) / range) * offsetHeight)
-    ]);
+    // Calculate y-position at each step
+    // Reverse to match orientation of handles
+    const yPositions = breaks
+      .map(
+        (breakInfo) => offsetHeight - Math.round(((breakInfo.min - min) / range) * offsetHeight) + 1
+      )
+      .reverse();
 
-    stepCoords.reverse();
-
-    // Store minimum step width and start the path
-    let currentWidth = offsetWidth;
-    let path = `M${currentWidth} 0`;
+    // Orientation - path depends on orientation
+    const isSmallToLarge = breaks[0].size > breaks[breaks.length - 1].size || false;
+    let currentWidth = isSmallToLarge ? stepWidth : offsetWidth;
+    let path = `M${currentWidth} 0 `;
 
     // Create steps based on number of breaks
-    stepCoords.forEach((step, index) => {
-      path += `L${currentWidth} ${step[0]}`;
-      currentWidth = offsetWidth - stepWidth * (index + 1);
-      path += `L${currentWidth} ${step[0]}`;
+    yPositions.forEach((pos, index) => {
+      // Value to shift on the x-axis
+      const increment = stepWidth * (index + 1);
+      path += `L${currentWidth} ${pos} `;
+      currentWidth = isSmallToLarge ? stepWidth + increment : offsetWidth - increment;
+      path += `L${currentWidth} ${pos} `;
     });
 
     // Close the path
-    path += `L1 ${offsetHeight} L0 ${offsetHeight} L0 0 Z`;
+    path += `L0 ${offsetHeight} L0 ${offsetHeight} L0 0 Z`;
 
-    return <path d={path} fill={_fillColor} />;
+    return <path d={path} fill={getFillFromColor(trackFillColor)} />;
   }
 }
 

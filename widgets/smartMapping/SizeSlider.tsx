@@ -70,47 +70,47 @@
  * @see {@link module:esri/renderers/smartMapping/creators/size sizeRendererCreator}
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./SizeSlider/nls/SizeSlider";
+import * as i18n from "dojo/i18n!esri/widgets/SizeSlider/nls/SizeSlider";
 
 // esri
-import Color = require("../../Color");
+import Color = require("esri/../Color");
 
 // esri.core
-import { isSome } from "../../core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { ContinuousRendererResult } from "../../renderers/smartMapping/creators/size";
+import { ContinuousRendererResult } from "esri/../renderers/smartMapping/creators/size";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.visualVariables
-import SizeVariable = require("../../renderers/visualVariables/SizeVariable");
+import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
 
 // esri.renderers.visualVariables.support
-import SizeStop = require("../../renderers/visualVariables/support/SizeStop");
+import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.SizeSlider
-import SizeSliderViewModel = require("./SizeSlider/SizeSliderViewModel");
+import SizeSliderViewModel = require("esri/widgets/SizeSlider/SizeSliderViewModel");
 
 // esri.widgets.smartMapping.support
-import { ZoomOptions } from "./support/interfaces";
-import { getPathForSizeStops, getSizesFromVariable } from "./support/utils";
+import { ZoomOptions } from "esri/widgets/support/interfaces";
+import { getPathForSizeStops, getSizesFromVariable, getFillFromColor } from "esri/widgets/support/utils";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, storeNode, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-size-slider",
@@ -168,7 +168,7 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -284,6 +284,8 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
   @property()
   @renderable([
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
@@ -372,9 +374,13 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
     histogramResult?: HistogramResult
   ): SizeSlider {
     const { visualVariables, statistics } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
     const sizeVariable = visualVariables[0];
     const [maxSize, minSize] = getSizesFromVariable(sizeVariable);
+
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
 
     return new SizeSlider({
       max,
@@ -441,9 +447,13 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
     histogramResult?: HistogramResult
   ): void {
     const { visualVariables, statistics } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
     const sizeVariable = visualVariables[0];
     const [maxSize, minSize] = getSizesFromVariable(sizeVariable);
+
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
 
     this.set({
       max,
@@ -581,7 +591,10 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
   }
 
   protected renderRamp(): VNode {
-    const { style, zoomOptions } = this;
+    const {
+      style: { trackBackgroundColor },
+      zoomOptions
+    } = this;
 
     return (
       <div afterCreate={storeNode} bind={this} class={CSS.rampElement} data-node-ref="_rampNode">
@@ -589,7 +602,7 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
           <rect
             x="0"
             y="0"
-            fill={this._getFillFromColor(style.trackBackgroundColor)}
+            fill={getFillFromColor(trackBackgroundColor)}
             height="100%"
             width="100%"
           />
@@ -613,7 +626,7 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
 
     const {
       stops,
-      style,
+      style: { trackFillColor },
       values,
       viewModel: { max, min },
       _maxRampFillWidth,
@@ -640,11 +653,7 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
       topWidth
     });
 
-    return <path d={path} fill={this._getFillFromColor(style.trackFillColor)} />;
-  }
-
-  private _getFillFromColor(color?: Color): string {
-    return color instanceof Color ? color.toCss(true) : Color.fromString(color).toCss(true);
+    return <path d={path} fill={getFillFromColor(trackFillColor)} />;
   }
 }
 

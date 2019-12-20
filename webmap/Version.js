@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/extendsHelper","../core/Version"],function(e,r,n,t){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(r,n){return e.call(this,r,n,"webmap")||this}return n(r,e),r}(t.Version);r.Version=o,r.default=o});

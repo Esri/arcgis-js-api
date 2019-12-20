@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Гістограма",barLabel:"Число стовпців: {count}. Мінімальне значення даних стовпців: {minValue}. Максимальне значення даних стовпців: {maxValue}."});
+define({widgetLabel:"Гістограма",barLabel:"Число стовпців: {count}. Мінімальне значення даних стовпців: {minValue}. Максимальне значення даних стовпців: {maxValue}."});

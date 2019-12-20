@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./core/Warning","./renderers/ClassBreaksRenderer","./renderers/RasterColormapRenderer","./renderers/RasterStretchRenderer","./renderers/UniqueValueRenderer"],function(e,r,n,s,a,t,u){function d(e){return e?R[e.type]||null:null}function l(e,r){if(!e)return null;var s=d(e);if(s){var a=new s;return a.read(e,r),a}return r&&r.messages&&e&&r.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:r})),null}function o(e,r){return l(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=s,r.RasterColormapRenderer=a,r.RasterStretchRenderer=t,r.UniqueValueRenderer=u,r.rasterRendererTypes={key:"type",base:null,typeMap:{"unique-value":r.UniqueValueRenderer,"class-breaks":r.ClassBreaksRenderer,"raster-colormap":r.RasterColormapRenderer,"raster-stretch":r.RasterStretchRenderer}};var R={uniqueValue:r.UniqueValueRenderer,classBreaks:r.ClassBreaksRenderer,rasterStretch:r.RasterStretchRenderer,rasterColormap:r.RasterColormapRenderer};r.read=l,r.fromJSON=o});

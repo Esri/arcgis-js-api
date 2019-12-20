@@ -239,7 +239,7 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this.renderItemIcon = this.renderItemIcon.bind(this);
     this._afterItemCreateOrUpdate = this._afterItemCreateOrUpdate.bind(this);
@@ -416,6 +416,20 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    */
   @aliasOf("viewModel.groupBy")
   groupBy: GroupByType = null;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layers

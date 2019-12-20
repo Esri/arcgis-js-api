@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Direkt Çizgi Ölçümü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",unsupported:"3B doğrudan hat ölçümü sadece SceneView’da desteklenir.",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz Mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});
+define({widgetLabel:"Direkt Çizgi Ölçümü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",unsupported:"3B doğrudan hat ölçümü sadece SceneView’da desteklenir.",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

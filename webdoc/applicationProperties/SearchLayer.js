@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","./SearchLayerField"],function(e,r,t,o,p,i,n,s,c){return function(e){function r(r){var t=e.call(this,r)||this;return t.field=null,t.id=null,t.subLayer=null,t}t(r,e),p=r,r.prototype.clone=function(){return new p(i.clone({field:this.field,id:this.id,subLayer:this.subLayer}))};var p;return o([n.property({type:c,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"field",void 0),o([n.property({type:String,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"id",void 0),o([n.property({type:s.Integer,json:{write:!0}})],r.prototype,"subLayer",void 0),r=p=o([n.subclass("esri.webdoc.applicationProperties.SearchLayer")],r)}(n.declared(p.JSONSupport))});

@@ -69,6 +69,14 @@
         "$ref": "table_schema.json"
       }
     },
+    "transportationNetworks": {
+      "type": "array",
+      "description": "Used to specify the transportation networks of the scene.",
+      "items": {
+        "type": "object",
+        "$ref": "transportationNetwork_schema.json"
+      }
+    },
     "version": {
       "type": "string",
       "description": "Root element in the web scene specifying a string value indicating the web scene version.",

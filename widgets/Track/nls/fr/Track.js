@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Parcours",startTracking:"Commencer le suivi de mon emplacement",stopTracking:"Arrêter le suivi de mon emplacement"});

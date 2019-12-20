@@ -14,8 +14,7 @@
  * **Known Limitations**
  *
  * - This widget is not currently supported with a {@link module:esri/views/SceneView}.
- * - There is no current support for a {@link module:esri/layers/VectorTileLayer} in the
- * `leadingLayers` or `trailingLayers`.
+ * - There is no current support for {@link module:esri/layers/GroupLayer} in the `leadingLayers` or `trailingLayers`.
  * :::
  *
  * @module esri/widgets/Swipe
@@ -110,7 +109,7 @@ class Swipe extends declared(Widget) {
    *                              that may be passed into the constructor.
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this._onContainerPointerDown = this._onContainerPointerDown.bind(this);
     this._onContainerPointerMove = this._onContainerPointerMove.bind(this);
@@ -224,12 +223,14 @@ class Swipe extends declared(Widget) {
   /**
    * A collection of {@link module:esri/layers/Layer}s that will show on the left or top side of the Swipe widget.
    * See the image in the [class description](#) at the top of the page.
-   * Currently, all layers are supported except VectorTileLayers.
+   * Currently, all layers are supported except GroupLayers.
    *
    * @name leadingLayers
    * @instance
    * @autocast
    * @type {module:esri/core/Collection<module:esri/layers/Layer>}
+   *
+   * @see [trailingLayers](#trailingLayers)
    */
 
   @aliasOf("viewModel.leadingLayers")
@@ -259,12 +260,14 @@ class Swipe extends declared(Widget) {
   /**
    * A collection of {@link module:esri/layers/Layer}s that will show on the right or bottom side of the Swipe widget.
    * See the image in the [class description](#) at the top of the page.
-   * Currently, all layers are supported except VectorTileLayers.
+   * Currently, all layers are supported except GroupLayers.
    *
    * @name trailingLayers
    * @instance
    * @autocast
    * @type {module:esri/core/Collection<module:esri/layers/Layer>}
+   *
+   * @see [leadingLayers](#leadingLayers)
    */
 
   @aliasOf("viewModel.trailingLayers")
@@ -474,7 +477,7 @@ class Swipe extends declared(Widget) {
 
   private _onContainerPointerDown(event: PointerEvent): void {
     event.preventDefault();
-    this._container && this._container.focus();
+    this._container && document.activeElement !== this.container && this._container.focus();
 
     this._calculatePointerOffset(event);
     document.addEventListener("pointerup", this._onContainerPointerUp);

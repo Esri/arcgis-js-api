@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogram",barLabel:"Počet sloupců: {count}. Minimální datová hodnota sloupce: {minValue}. Maximální datová hodnota sloupce: {maxValue}."});
+define({widgetLabel:"Histogram",barLabel:"Počet sloupců: {count}. Minimální datová hodnota sloupce: {minValue}. Maximální datová hodnota sloupce: {maxValue}."});

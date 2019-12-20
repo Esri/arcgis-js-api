@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"Pereiti į viso ekrano režimą",exit:"Išeiti iš viso ekrano režimo"});
+define({widgetLabel:"Viso ekrano režimas",enter:"Pereiti į viso ekrano režimą",exit:"Išeiti iš viso ekrano režimo"});

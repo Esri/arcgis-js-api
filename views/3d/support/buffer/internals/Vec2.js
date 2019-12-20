@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/libs/gl-matrix-2/vec2"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var f=function(){function e(e,t,r,f,i){void 0===r&&(r=0),this.TypedArrayConstructor=e,this.elementCount=2;var u=this.TypedArrayConstructor;void 0===f&&(f=2*u.BYTES_PER_ELEMENT);var d=0===t.byteLength?0:r;this.typedBuffer=null==i?new u(t,d):new u(t,d,(i-r)/u.BYTES_PER_ELEMENT),this.typedBufferStride=f/u.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}return e.prototype.getVec=function(e,t){return r.vec2.set(t,this.typedBuffer[e*this.typedBufferStride],this.typedBuffer[e*this.typedBufferStride+1])},e.prototype.setVec=function(e,t){this.typedBuffer[e*this.typedBufferStride]=t[0],this.typedBuffer[e*this.typedBufferStride+1]=t[1]},e.prototype.get=function(e,t){return this.typedBuffer[e*this.typedBufferStride+t]},e.prototype.set=function(e,t,r){this.typedBuffer[e*this.typedBufferStride+t]=r},e.prototype.copyFrom=function(e,t,r){var f=this.typedBuffer,i=t.typedBuffer,u=e*this.typedBufferStride,d=r*t.typedBufferStride;f[u]=i[d],f[u+1]=i[d+1]},Object.defineProperty(e.prototype,"buffer",{get:function(){return this.typedBuffer.buffer},enumerable:!0,configurable:!0}),e.ElementCount=2,e}();t.BufferViewVec2Impl=f});

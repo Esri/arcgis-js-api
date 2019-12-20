@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Phóng tới",next:"Tính năng tiếp",previous:"Tính năng trước",dock:"Bến tàu",undock:"Bỏ gắn",pageText:"{index} trên {total}",selectedFeature:"Đối tượng được chọn",selectedFeatures:"{total} kết quả",tooManyFields:"Lớp này có quá nhiều trường, một số trường sẽ không được hiển thị."});
+define({widgetLabel:"Cửa sổ pop-up",zoom:"Phóng tới",next:"Tính năng tiếp",previous:"Tính năng trước",dock:"Bến tàu",undock:"Bỏ gắn",pageText:"{index} trên {total}",selectedFeature:"Đối tượng được chọn",selectedFeatures:"{total} kết quả",tooManyFields:"Lớp này có quá nhiều trường, một số trường sẽ không được hiển thị."});

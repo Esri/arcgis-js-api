@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Μέτρηση σε ευθεία γραμμή",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση άμεσων γραμμών 3D υποστηρίζεται μόνο στο SceneView.",distance:"Απόσταση",direct:"Απευθείας",horizontal:"Οριζόντια",vertical:"Κατακόρυφα",unit:"Μονάδα",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό",imperial:"Βρετανικό σύστημα",kilometers:"Χιλιόμετρα",meters:"Μέτρα",miles:"Μίλια",inches:"Ίντσες",feet:"Πόδια",yards:"Γιάρδες","nautical-miles":"Ναυτικά μίλια","us-feet":"Πόδια (US)","degrees-minutes-seconds":"DMS",degrees:"Μοίρες"}});
+define({widgetLabel:"Μέτρηση σε ευθεία γραμμή",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση άμεσων γραμμών 3D υποστηρίζεται μόνο στο SceneView.",distance:"Απόσταση",direct:"Απευθείας",horizontal:"Οριζόντια",vertical:"Κατακόρυφα",unit:"Μονάδα",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό",imperial:"Βρετανικό σύστημα",kilometers:"Χιλιόμετρα",meters:"Μέτρα",miles:"Μίλια",inches:"Ίντσες",feet:"Πόδια",yards:"Γιάρδες","nautical-miles":"Ναυτικά μίλια","us-feet":"Πόδια (US)","degrees-minutes-seconds":"DMS",degrees:"Μοίρες"}});

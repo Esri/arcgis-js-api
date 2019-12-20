@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({lblItem:"элемент",title:"Войти",info:"Войдите для доступа к данным на {server} {resource}",oAuthInfo:"Выполните вход в {server}.",lblUser:"Имя пользователя:",lblPwd:"Пароль:",lblOk:"OK",lblSigning:"Авторизация...",lblCancel:"Отменить",errorMsg:"Неверные имя пользователя/пароль.  Попробуйте ещё раз.",invalidUser:"Введено неправильное имя пользователя или пароль.",forbidden:"Данные учетной записи введены верно, но у вас нет доступа к данному ресурсу.",noAuthService:"Не удается получить доступ к службе аутентификации пользователей."});
+define({lblItem:"элемент",title:"Вход",info:"Войдите для доступа к данным на {server} {resource}",oAuthInfo:"Выполните вход в {server}.",lblUser:"Имя пользователя:",lblPwd:"Пароль:",lblOk:"OK",lblSigning:"Авторизация...",lblCancel:"Отменить",errorMsg:"Неверные имя пользователя/пароль.  Попробуйте ещё раз.",invalidUser:"Введено неправильное имя пользователя или пароль.",forbidden:"Данные учетной записи введены верно, но у вас нет доступа к данному ресурсу.",noAuthService:"Не удается получить доступ к службе аутентификации пользователей."});

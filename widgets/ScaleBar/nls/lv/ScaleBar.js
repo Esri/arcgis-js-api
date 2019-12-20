@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"kilometri",mi:"jūdzes",ft:"pēdas",m:"m",unknownUnit:"Nezināma mērvienība"});
+define({widgetLabel:"Grafiskais mērogs",km:"kilometri",mi:"jūdzes",ft:"pēdas",m:"m",unknownUnit:"Nezināma mērvienība"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Glisor",maximumValue:"Valoare maximă",minimumValue:"Valoare minimă",rangeMaximum:"Interval maxim: {value}",rangeMinimum:"Interval minim: {value}",sliderValue:"Valoare glisor"});

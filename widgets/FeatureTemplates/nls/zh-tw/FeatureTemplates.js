@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"圖徵樣板",filterPlaceholder:"篩選類型",noMatches:"找不到項目",noItems:"沒有要顯示的樣板"});

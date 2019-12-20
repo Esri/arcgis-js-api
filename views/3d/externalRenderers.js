@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/libs/gl-matrix-2/mat4f64","./externalRenderers/ExternalRendererStore","./support/projectionUtils"],function(e,r,n,t,o){function i(e,r){c.add(e,r)}function d(e,r){c.remove(e,r)}function a(e){e._stage.renderView.setNeedsRender()}function s(e,r,n,t,i,d,a){return t=t||e.spatialReference,o.bufferToBuffer(r,t,n,i,e.renderCoordsHelper.spatialReference,d,a)?i:null}function f(e,r,n,t,i,d,a){return d=d||e.spatialReference,o.bufferToBuffer(r,e.renderCoordsHelper.spatialReference,n,t,d,i,a)?t:null}function u(e,r,t,i){return i||(i=n.mat4f64.create()),t=t||e.spatialReference,o.computeLinearTransformation(t,r,i,e.renderCoordsHelper.spatialReference)?i:null}function l(e){return{add:i.bind(this,e),remove:d.bind(this,e),requestRender:a.bind(this,e),toRenderCoordinates:s.bind(this,e),fromRenderCoordinates:f.bind(this,e),renderCoordinateTransformAt:u.bind(this,e)}}Object.defineProperty(r,"__esModule",{value:!0});var c=new t;r.add=i,r.remove=d,r.requestRender=a,r.toRenderCoordinates=s,r.fromRenderCoordinates=f,r.renderCoordinateTransformAt=u,r.bind=l});

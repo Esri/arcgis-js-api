@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"直方图",barLabel:"条数：{count}。 条最小数据值：{minValue}。 条最大数据值：{maxValue}。"});
+define({widgetLabel:"直方图",barLabel:"条数：{count}。 条最小数据值：{minValue}。 条最大数据值：{maxValue}。"});

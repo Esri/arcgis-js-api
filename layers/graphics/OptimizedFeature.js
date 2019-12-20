@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t,i,n){void 0===e&&(e=null),void 0===t&&(t={}),this.geometry=e,t&&(this.attributes=t),i&&(this.centroid=i),null!=n&&(this.objectId=n)}return e}();t.default=i});
+define(["require","exports","../../core/tsSupport/extendsHelper"],function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t,i,o){void 0===e&&(e=null),void 0===t&&(t={}),this.localId=0,this.geohashIndexed=!1,this.geohashX=0,this.geohashY=0,this.geometry=e,t&&(this.attributes=t),i&&(this.centroid=i),null!=o&&(this.objectId=o)}return e}();t.default=o});

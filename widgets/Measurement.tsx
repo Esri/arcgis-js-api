@@ -36,16 +36,18 @@
  * @example
  * // Add the measurement widget to the upper right hand corner
  * // with the distance tool active
- * var map = new Map({
+ * const map = new Map({
  *   basemap: "hybrid"
  * });
- * var view = new MapView({
+ *
+ * const view = new MapView({
  *   container: "viewDiv",
  *   map: map,
  *   center: [-71.69, 43.76],
  *   zoom: 15
  * });
- * var measurement = new Measurement({
+ *
+ * const measurement = new Measurement({
  *   view: view,
  *   activeTool: "distance"
  * });
@@ -53,7 +55,7 @@
  *
  * // Switch between area and distance measurement
  * function switchTool() {
- *  var tool = measurement.activeTool === "distance" ? "area" : "distance";
+ *  const tool = measurement.activeTool === "distance" ? "area" : "distance";
  *  measurement.activeTool = tool;
  * }
  *
@@ -141,7 +143,7 @@ class Measurement extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
   constructor(params?: MeasurementProperties) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -207,14 +209,14 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // To create the Measurement widget with SceneView's direct-line tool active.
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   view: view,
    *   activeTool: "direct-line"
    * });
    *
    * // To switch between direct line and area measurement tools
    * function switchTool() {
-   *  var tool = measurement.activeTool === "direct-line" ? "area" : "direct-line";
+   *  const tool = measurement.activeTool === "direct-line" ? "area" : "direct-line";
    *  measurement.activeTool = tool;
    * }
    */
@@ -237,7 +239,7 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // Print the active widget to the console.
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   view: view,
    *   activeTool: "distance"
    * });
@@ -263,7 +265,7 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // To create the Measurement widget that displays area in square US feet
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   view: view,
    *   activeTool: "area",
    *   unit: "square-us-feet"
@@ -318,7 +320,7 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // To create the Measurement widget that displays distance in yards
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   view: view,
    *   activeTool: "distance",
    *   linearUnit: "yards"
@@ -344,7 +346,7 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // To create the Measurement widget for SceneView with the direct-line tool active.
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   view: sceneView,
    *   activeTool: "direct-line"
    * });
@@ -370,7 +372,7 @@ class Measurement extends declared(Widget) {
    *
    * @example
    * // Intialize a measurement widget using the view model.
-   * var measurement = new Measurement({
+   * const measurement = new Measurement({
    *   viewModel: {
    *     view: view,
    *     activeTool: "distance",
@@ -412,6 +414,18 @@ class Measurement extends declared(Widget) {
    *
    * @method startMeasurement
    * @instance
+   *
+   * @example
+   * const measurement = new Measurement({
+   *   view: view,
+   *   activeTool: "distance"
+   * });
+   *
+   * function measure () {
+   *   measurement.startMeasurement();
+   * }
+   *
+   * measure();
    */
   startMeasurement(): void {
     const { activeViewModel } = this.viewModel;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,s,r){Object.defineProperty(s,"__esModule",{value:!0}),s.stencil={name:"stencil",shaders:{vertexShader:r.resolveIncludes("stencil/stencil.vert"),fragmentShader:r.resolveIncludes("stencil/stencil.frag")},attributes:{a_pos:0}}});

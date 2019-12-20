@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"전체 화면 시작",exit:"전체 화면 끝내기"});
+define({widgetLabel:"전체 화면",enter:"전체 화면 시작",exit:"전체 화면 끝내기"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({printNotes:"إدخال ملاحظات هنا",printDisclaimer:"يتم توفير الاتجاهات لأغراض التخطيط، وتكون تابعة لشروط استخدام <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>شروط استخدام Esri</a>. يمكن أن تتسبب أحوال الطريق الديناميكية في اختلاف دقة اتجاهاتك، ويجب أخذها في الاعتبار إضافةً إلى العلامات الإرشادية والقيود القانونية. افترض كل مخاطر الاستخدام.",printoutError:"يبدوا أن هناك خطأ."});

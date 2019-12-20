@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Extent"],function(t,e,r,o,p,i,l,n){return function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.extent=null,e.height=null,e.href=null,e.opacity=1,e.rotation=0,e.scale=null,e.visible=!0,e.width=null,e}return r(e,t),o([l.property({type:n})],e.prototype,"extent",void 0),o([l.property()],e.prototype,"height",void 0),o([l.property()],e.prototype,"href",void 0),o([l.property()],e.prototype,"opacity",void 0),o([l.property()],e.prototype,"rotation",void 0),o([l.property()],e.prototype,"scale",void 0),o([l.property()],e.prototype,"visible",void 0),o([l.property()],e.prototype,"width",void 0),e=o([l.subclass("esri.layer.support.MapImage")],e)}(l.declared(i.JSONSupport))});

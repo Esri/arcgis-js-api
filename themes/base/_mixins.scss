@@ -92,86 +92,124 @@
 }
 
 @mixin measurementWidgetStyles($selector) {
-  .#{$selector}__panel--error {
-    color: $font-color--error;
-    padding: 0 $side-spacing;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
-
-  .#{$selector}__hint {
-    padding: 0 $side-spacing;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
-
-  .#{$selector}__hint-text {
-    margin: $cap-spacing 0;
-    padding: 0;
-  }
-
-  .#{$selector}__measurement {
-    padding: $cap-spacing $side-spacing;
-    margin: $cap-spacing 0;
-    background-color: $background-color--offset;
-    animation: esri-fade-in 250ms ease-in-out;
-  }
-
-  .#{$selector}__measurement-item {
-    display: flex;
-    padding-bottom: $cap-spacing;
-    flex-flow: column;
-  }
-
-  .#{$selector}__measurement-item--disabled {
-    display: flex;
-    color: rgba($font-color, $opacity--disabled);
-  }
-
-  .#{$selector}__measurement-item-title {
-    padding-bottom: $cap-spacing--quarter;
-  }
-
-  .#{$selector}__measurement-item-value {
-    font-weight: $font-weight__bold;
-  }
-
-  .#{$selector}__settings {
-    display: flex;
-    justify-content: space-between;
-    padding: $cap-spacing--half $side-spacing;
-  }
-
-  .#{$selector}__units {
-    display: flex;
-    flex: 0 1 48%;
-    flex-flow: column;
-    padding: 0;
-    animation: esri-fade-in 250ms ease-in-out;
-    &:only-child {
-      flex: 1 0 100%;
+  .#{$selector} {
+    &__container {
+      position: relative;
+      padding: $cap-spacing 0;
+      overflow-y: auto;
+      a {
+        text-decoration: none;
+      }
     }
-  }
 
-  .#{$selector}__units-select-wrapper {
-    width: 100%;
-  }
+    &__header {
+      position: relative;
+      font-size: $font-size__body;
+      align-items: flex-start;
+      justify-content: space-between;
+      display: flex;
+      flex: 0 0 auto;
+    }
 
-  .#{$selector}__units-select {
-    width: 100%;
-    padding-left: 0.5em;
-    padding-right: 2.7em;
-  }
+    &__header-title,
+    h1 &__header-title {
+      font: {
+        size: $font-size__header-text;
+        weight: $font-weight__bold;
+      }
+      padding: 8px 0;
+      margin: 0;
+      display: block;
+      flex: 1;
+      word-break: break-word;
+      text-align: left;
+    }
 
-  .#{$selector}__actions {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    padding: 0 $side-spacing;
+    &__panel--error {
+      color: $font-color--error;
+      padding: 0 $side-spacing;
+      animation: esri-fade-in 250ms ease-in-out;
+    }
+
+    &__hint {
+      padding: 0 $side-spacing;
+      animation: esri-fade-in 250ms ease-in-out;
+
+      &-text {
+        margin: $cap-spacing 0;
+        padding: 0;
+      }
+    }
+
+    &__measurement {
+      padding: $cap-spacing $side-spacing;
+      margin: $cap-spacing 0;
+      background-color: $background-color--offset;
+      animation: esri-fade-in 250ms ease-in-out;
+
+      &-item {
+        display: flex;
+        padding-bottom: $cap-spacing;
+        flex-flow: column;
+
+        &--disabled {
+          display: flex;
+          color: rgba($font-color, $opacity--disabled);
+        }
+
+        &-title {
+          padding-bottom: $cap-spacing--quarter;
+        }
+
+        &-value {
+          font-weight: $font-weight__bold;
+        }
+      }
+    }
+
+    &__settings {
+      display: flex;
+      justify-content: space-between;
+      padding: $cap-spacing--half $side-spacing;
+    }
+
+    &__units {
+      display: flex;
+      flex: 0 1 48%;
+      flex-flow: column;
+      padding: 0;
+      animation: esri-fade-in 250ms ease-in-out;
+      &:only-child {
+        flex: 1 0 100%;
+      }
+    }
+
+    &__units-select {
+      width: 100%;
+      padding: {
+        left: 0.5em;
+        right: 2.7em;
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      padding: 0 $side-spacing;
+    }
   }
 
   html[dir="rtl"] {
     .#{$selector}__units-select {
-      padding-left: 2.7em;
-      padding-right: 0.5em;
+      padding: {
+        left: 2.7em;
+        right: 0.5em;
+      }
     }
   }
 }

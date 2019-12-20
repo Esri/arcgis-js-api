@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogram",barLabel:"Søjletælling: {count}. Søjle, min.-dataværdi: {minValue}. Søjle, maks.-dataværdi: {maxValue}"});
+define({widgetLabel:"Histogram",barLabel:"Søjletælling: {count}. Søjle, min.-dataværdi: {minValue}. Søjle, maks.-dataværdi: {maxValue}"});

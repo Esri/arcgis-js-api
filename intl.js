@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./intl/date","./intl/number","./intl/substitute"],function(t,e,o,r,n){Object.defineProperty(e,"__esModule",{value:!0}),e.formatDate=o.formatDate,e.convertDateFormatToIntlOptions=o.convertDateFormatToIntlOptions,e.formatNumber=r.formatNumber,e.convertNumberFormatToIntlOptions=r.convertNumberFormatToIntlOptions,e.substitute=n.substitute});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Klizač",maximumValue:"Maksimalna vrijednost",minimumValue:"Minimalna vrijednost",rangeMaximum:"Maksimum raspona: {value}",rangeMinimum:"Minimum raspona: {value}",sliderValue:"Vrijednost klizača"});

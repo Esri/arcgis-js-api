@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Lampiran",fields:"Kolom",fieldsSummary:"Daftar atribut dan nilai",media:"Media",next:"Berikutnya",noTitle:"Tidak berjudul",previous:"Sebelumnya",lastEdited:"Terakhir diedit pada {date}.",lastCreated:"Dibuat pada {date}.",lastEditedByUser:"Terakhir diedit oleh {user} pada {date}.",lastCreatedByUser:"Dibuat oleh {user} pada {date}."});
+define({widgetLabel:"Fitur",attach:"Lampiran",fields:"Kolom",fieldsSummary:"Daftar atribut dan nilai",media:"Media",next:"Berikutnya",noTitle:"Tidak berjudul",previous:"Sebelumnya",lastEdited:"Terakhir diedit pada {date}.",lastCreated:"Dibuat pada {date}.",lastEditedByUser:"Terakhir diedit oleh {user} pada {date}.",lastCreatedByUser:"Dibuat oleh {user} pada {date}."});

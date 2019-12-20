@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Domain"],function(e,r,n,t,a,u){return function(e){function r(r){var n=e.call(this,r)||this;return n.maxValue=null,n.minValue=null,n.type="range",n}n(r,e),u=r,r.prototype.clone=function(){return new u({maxValue:this.maxValue,minValue:this.minValue,name:this.name})};var u;return t([a.property({type:Number,json:{type:[Number],read:{source:"range",reader:function(e,r){return r.range&&r.range[1]}},write:{enabled:!1,overridePolicy:function(){return{enabled:null!=this.maxValue&&null==this.minValue}},target:"range",writer:function(e,r,n){r[n]=[this.minValue||0,e]}}}})],r.prototype,"maxValue",void 0),t([a.property({type:Number,json:{type:[Number],read:{source:"range",reader:function(e,r){return r.range&&r.range[0]}},write:{target:"range",writer:function(e,r,n){r[n]=[e,this.maxValue||0]}}}})],r.prototype,"minValue",void 0),t([a.enumeration.serializable()({range:"range"})],r.prototype,"type",void 0),r=u=t([a.subclass("esri.layers.support.RangeDomain")],r)}(a.declared(u))});

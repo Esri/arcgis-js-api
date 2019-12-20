@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/maybe","../../core/accessorSupport/decorators","./Symbol3DMaterial"],function(e,o,r,l,t,i,c){Object.defineProperty(o,"__esModule",{value:!0});var a=function(e){function o(){return null!==e&&e.apply(this,arguments)||this}r(o,e),c=o,o.prototype.clone=function(){return new c({color:t.isSome(this.color)?this.color.clone():null,colorMixMode:this.colorMixMode})};var c;return l([i.enumeration.serializable()({multiply:"multiply",replace:"replace",tint:"tint"})],o.prototype,"colorMixMode",void 0),o=c=l([i.subclass("esri.symbols.support.Symbol3DFillMaterial")],o)}(i.declared(c.default));o.Symbol3DFillMaterial=a,o.default=a});

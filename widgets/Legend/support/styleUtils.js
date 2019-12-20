@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","dojo/i18n!../../Legend/nls/Legend","../../../intl"],function(e,n,i,t){function r(e,n){return n}function o(e){var n=this;e.appendChild(n)}function l(e,n){if(e){if("string"==typeof e)return e;if("value"in e||"unit"in e)return t.substitute(i.dotValue,e);if("colorName"in e||"bandName"in e)return i[e.colorName]+": "+(i[e.bandName]||e.bandName);var o=null;return r(e,n)?o=e.ratioPercentTotal?"showRatioPercentTotal":e.ratioPercent?"showRatioPercent":e.ratio?"showRatio":e.normField?"showNormField":e.field?"showField":null:d(e,n)&&(o=e.normField?"showNormField":e.normByPct?"showNormPct":e.field?"showField":null),o?t.substitute("showField"===o?"{field}":i[o],{field:e.field,normField:e.normField}):null}}function d(e,n){return!n}function a(e,n){return!!(n&&"Stretched"===n&&e.version>=10.3&&"esri.layers.ImageryLayer"===e.declaredClass)}Object.defineProperty(n,"__esModule",{value:!0}),n.attachToNode=o,n.getTitle=l,n.isRendererTitle=d,n.isImageryStretchedLegend=a});

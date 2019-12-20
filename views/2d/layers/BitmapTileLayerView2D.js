@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/accessorSupport/decorators","../engine/BitmapTileContainer","../engine/Container"],function(e,i,t,r,n,a,o){Object.defineProperty(i,"__esModule",{value:!0}),i.BitmapTileLayerView2D=function(e){return function(e){function i(){var i=null!==e&&e.apply(this,arguments)||this;return i.container=new o.Container,i}return r(i,e),i.prototype.attach=function(){var e=this;this.view.timeline.record(this.layer.title+" (BitmapTileLayer) Attach"),this._bitmapView=new a.BitmapTileContainer(this._tileInfoView,this.clips),this.handles.add(this.clips.on("change",function(){return e._bitmapView.setClips(e.clips)})),this.container.addChild(this._bitmapView)},i.prototype.detatch=function(){this.container.removeChild(this._bitmapView),this._bitmapView.removeAllChildren()},i=t([n.subclass("esri.views.2d.layers.BitmapTileLayerView2D")],i)}(n.declared(e))}});

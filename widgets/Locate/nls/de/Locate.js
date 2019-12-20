@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Suchen",title:"Eigenen Standort suchen",currentLocation:"Aktueller Standort",timestamp:"Zeitstempel",latitude:"Breitengrad",longitude:"Längengrad",accuracy:"Genauigkeit",altitude:"Höhe",altitudeAccuracy:"Genauigkeit der Höhe",heading:"Überschrift",speed:"Geschwindigkeit"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"מדידת אזור",hint:"התחל במדידה על ידי לחיצה במפה כדי להציב את הנקודה הראשונה",unsupported:"מדידת אזור בדו-ממד נתמכת רק ב-MapView.",perimeter:"היקף",area:"שטח",newMeasurement:"מדידה חדשה",mode:"מוד",modes:{auto:"אוטומטי",planar:"מישורי",geodesic:"גיאודזי"},unit:"יחידה",units:{metric:"מטרי",imperial:"תקן אמריקאי","square-kilometers":"קילומטרים רבועים","square-meters":"מטרים רבועים","square-miles":"מילים רבועים","square-inches":"אינצ'ים רבועים","square-feet":"רגל רבוע","square-yards":"יארדים רבועים","square-us-feet":'רגליים רבועות (ארה"ב)',acres:"אקרים",ares:"עשיריות דונם",hectares:"הקטרים"}});
+define({widgetLabel:"מדידת אזור",hint:"התחל במדידה על ידי לחיצה במפה כדי להציב את הנקודה הראשונה",unsupported:"מדידת אזור בדו-ממד נתמכת רק ב-MapView.",perimeter:"היקף",area:"שטח",newMeasurement:"מדידה חדשה",mode:"מוד",modes:{auto:"אוטומטי",planar:"מישורי",geodesic:"גיאודזי"},unit:"יחידה",units:{metric:"מטרי",imperial:"תקן אמריקאי","square-kilometers":"קילומטרים רבועים","square-meters":"מטרים רבועים","square-miles":"מיילים רבועים","square-inches":"אינ'צים רבועים","square-feet":"רגל רבוע","square-yards":"יארדים רבועים","square-us-feet":'רגליים רבועות (ארה"ב)',acres:"אקרים",ares:"עשיריות דונם",hectares:"הקטרים"}});

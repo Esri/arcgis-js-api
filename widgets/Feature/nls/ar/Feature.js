@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"المرفقات",fields:"حقول",fieldsSummary:"قائمة البيانات الجدولية والقيم",media:"الوسائط",next:"التالي",noTitle:"بلا عنوان",previous:"السابق",lastEdited:"آخر تحرير في {date}.",lastCreated:"تم الإنشاء في {date}.",lastEditedByUser:"آخر تحرير من قبل {user} في {date}.",lastCreatedByUser:"تم الإنشاء من قبل {user} في {date}."});
+define({widgetLabel:"معلم",attach:"المرفقات",fields:"حقول",fieldsSummary:"قائمة البيانات الجدولية والقيم",media:"الوسائط",next:"التالي",noTitle:"بلا عنوان",previous:"السابق",lastEdited:"آخر تحرير في {date}.",lastCreated:"تم الإنشاء في {date}.",lastEditedByUser:"آخر تحرير من قبل {user} في {date}.",lastCreatedByUser:"تم الإنشاء من قبل {user} في {date}."});

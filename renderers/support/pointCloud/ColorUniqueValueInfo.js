@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType"],function(e,r,o,t,p,l,n,i,s){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.description=null,r.label=null,r.values=null,r.color=null,r}o(r,e),l=r,r.prototype.clone=function(){return new l({description:this.description,label:this.label,values:n.clone(this.values),color:n.clone(this.color)})};var l;return t([i.property({type:String,json:{write:!0}})],r.prototype,"description",void 0),t([i.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t([i.property({type:[String],json:{write:!0}})],r.prototype,"values",void 0),t([i.property({type:p,json:{type:[s.Integer],write:!0}})],r.prototype,"color",void 0),r=l=t([i.subclass("esri.renderers.support.pointCloud.ColorUniqueValueInfo")],r)}(i.declared(l.JSONSupport));r.ColorUniqueValueInfo=u,r.default=u});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Dodaj zaznamek",goToBookmark:"Pojdi na zaznamek",noBookmarksHeading:"Brez zaznamkov",noBookmarksDescription:"Dodajte zaznamke na svojo karto in pojavili se bodo tukaj.",title:"ime.",addPlaceholder:"Vnesi ime zaznamka",addingBookmark:"Dodajanje zaznamka",widgetLabel:"Zaznamki"});

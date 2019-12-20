@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({addBookmark:"Thêm đánh dấu",goToBookmark:"Đi đến mục đánh dấu",noBookmarksHeading:"Không có Đánh dấu",noBookmarksDescription:"Thêm mục đánh dấu vào bản đồ của bạn và chúng sẽ xuất hiện ở đây.",title:"Tiêu đề",addPlaceholder:"Nhập tiêu đề đánh dấu",addingBookmark:"Thêm đánh dấu",widgetLabel:"Đánh dấu"});
+define({addBookmark:"Thêm đánh dấu",goToBookmark:"Đi đến mục đánh dấu",noBookmarksHeading:"Không có đánh dấu",noBookmarksDescription:"Thêm mục đánh dấu vào bản đồ của bạn và chúng sẽ xuất hiện ở đây.",title:"Tiêu đề",addPlaceholder:"Nhập tiêu đề đánh dấu",addingBookmark:"Thêm đánh dấu",widgetLabel:"Đánh dấu"});

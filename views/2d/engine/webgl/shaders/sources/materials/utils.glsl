@@ -18,6 +18,11 @@ float getHighlightBit(in float bitset) {
   return getBit(bitset, 0); 
 }
 
+highp vec4 unpackLocalIdTexel(in highp vec4 bitset) {
+  float isAggregate = getBit(bitset.a, 7);
+  return (1.0 - isAggregate) * bitset + isAggregate * (vec4(bitset.rgba) - vec4(0.0, 0.0, 0.0, float(0x80)));
+}
+
 vec4 unpack(in float u32) {
   float r = mod(rshift(u32, 0), 255.0);
   float g = mod(rshift(u32, 8), 255.0);

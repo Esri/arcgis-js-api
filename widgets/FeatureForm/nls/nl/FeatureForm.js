@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- leeg -",validationErrors:{cannotBeNull:"Voer een waarde in",outsideRange:"De waarde moet liggen tussen {min} en {max}",invalidCodedValue:"Waarde moet een van de vermelde waarden zijn.",invalidType:"Geen geldige waarde"}});
+define({widgetLabel:"Objectvorm",empty:"- leeg -",validationErrors:{cannotBeNull:"Voer een waarde in",outsideRange:"De waarde moet liggen tussen {min} en {max}",invalidCodedValue:"Waarde moet een van de vermelde waarden zijn.",invalidType:"Geen geldige waarde"}});

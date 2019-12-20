@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Bladwijzer toevoegen",goToBookmark:"Naar bladwijzer gaan",noBookmarksHeading:"Geen bladwijzers",noBookmarksDescription:"Voeg bladwijzers aan uw kaart toe. Deze zullen hier verschijnen.",title:"Titel",addPlaceholder:"Titel bladwijzer invoeren",addingBookmark:"Bladwijzer toevoegen",widgetLabel:"Bladwijzers"});

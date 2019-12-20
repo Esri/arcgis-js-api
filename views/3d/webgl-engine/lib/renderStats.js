@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,e){function r(){return{triangles:0,drawCalls:0}}Object.defineProperty(e,"__esModule",{value:!0}),e.makeNewRenderStats=r;var a=function(){function t(){this.materialRenderStats=new Map,this.reset()}return t.prototype.getMaterialRenderStatsObject=function(t){var e=this.materialRenderStats.get(t);return e||(e=r(),this.materialRenderStats.set(t,e)),e},t.prototype.getAggregatedStats=function(){var t={materialRenderers:{},total:r()};return this.materialRenderStats.forEach(function(e,r){t.materialRenderers[r]=e,t.total.drawCalls+=e.drawCalls,t.total.triangles+=e.triangles}),t},t.prototype.reset=function(){this.materialRenderStats.forEach(function(t){t.drawCalls=0,t.triangles=0})},t}();e.RenderStatsAggregator=a});

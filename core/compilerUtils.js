@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./has"],function(e,n,r){function t(e){r("dojo-debug-messages")&&console.error("Should never be reached (uncaught value "+e+")",(new Error).stack)}function u(e){}function o(e){return function(){return e}}Object.defineProperty(n,"__esModule",{value:!0}),n.neverReached=t,n.neverReachedSilent=u,n.typeCast=o,n.tuple=function(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];return e}});

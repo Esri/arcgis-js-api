@@ -7,13 +7,8 @@
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- *
  * This widget is designed to work with 3D SceneViews. For measurements with 2D MapViews, use
  * {@link module:esri/widgets/AreaMeasurement2D}.
- *
- * :::
  *
  * @example
  * var measurementWidget = new AreaMeasurement3D({
@@ -65,7 +60,9 @@ const CSS = {
   button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
   // base
-  base: "esri-area-measurement-3d esri-widget esri-widget--panel",
+  base: "esri-area-measurement-3d",
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
   // container
   container: "esri-area-measurement-3d__container",
   // hint
@@ -113,7 +110,7 @@ class AreaMeasurement3D extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -180,6 +177,20 @@ class AreaMeasurement3D extends declared(Widget) {
    */
   @property()
   iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  viewModel
@@ -372,7 +383,7 @@ class AreaMeasurement3D extends declared(Widget) {
     ) : null;
 
     return (
-      <div key="" class={CSS.base} role="presentation">
+      <div key="" class={this.classes(CSS.base, CSS.widget, CSS.panel)} role="presentation">
         {containerNode}
       </div>
     );

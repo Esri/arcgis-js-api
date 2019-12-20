@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../lib/DefaultVertexAttributeLocations","./sources/resolver","../../../webgl/programUtils"],function(e,r,t,s,n){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){return n.glslifyDefineMap({PANORAMIC:e.panoramic})};r.colorPass={name:"simple-atmosphere-color",shaders:function(e){return{vertexShader:a(e)+s.resolveIncludes("environment/simpleAtmosphere.vert"),fragmentShader:a(e)+s.resolveIncludes("environment/simpleAtmosphere.frag")}},attributes:t.Default3D},r.fadePass={name:"simple-atmosphere-fade",shaders:{vertexShader:s.resolveIncludes("environment/simpleAtmosphereFade.vert"),fragmentShader:s.resolveIncludes("environment/simpleAtmosphereFade.frag")},attributes:t.Default3D}});

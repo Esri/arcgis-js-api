@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/libs/gl-matrix-2/vec3f64"],function(i,t,e){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function i(i,t,n){void 0===i&&(i=e.vec3f64.create()),void 0===t&&(t=e.vec3f64.fromValues(.57735,.57735,.57735)),void 0===n&&(n=!0),this.intensity=i,this.direction=t,this.castShadows=n}return i}();t.MainLight=n;var r=function(){function i(i,t){void 0===i&&(i=e.vec3f64.create()),void 0===t&&(t=e.vec3f64.fromValues(.57735,.57735,.57735)),this.intensity=e.vec3f64.create(),this.direction=e.vec3f64.create(),this.intensity=i,this.direction=t}return i}();t.FillLight=r;var c=function(){function i(i){void 0===i&&(i=e.vec3f64.create()),this.intensity=i}return i}();t.AmbientLight=c;var o=function(){function i(){this.sh={r:[0],g:[0],b:[0]}}return i}();t.SphericalHarmonicsLight=o});

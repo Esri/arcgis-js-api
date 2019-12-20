@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Εστίαση",next:"Επόμενο στοιχείο",previous:"Προηγούμενο στοιχείο",dock:"Αγκύρωση",undock:"Αναίρεση αγκύρωσης",pageText:"{index} από {total}",selectedFeature:"Επιλεγμένο στοιχείο",selectedFeatures:"{total} αποτελέσματα",tooManyFields:"Αυτό το θεματικό επίπεδο έχει πάρα πολλά πεδία. Ορισμένα δεν θα εμφανίζονται."});
+define({widgetLabel:"Αναδυόμενο παράθυρο",zoom:"Εστίαση",next:"Επόμενο στοιχείο",previous:"Προηγούμενο στοιχείο",dock:"Αγκύρωση",undock:"Αναίρεση αγκύρωσης",pageText:"{index} από {total}",selectedFeature:"Επιλεγμένο στοιχείο",selectedFeatures:"{total} αποτελέσματα",tooManyFields:"Αυτό το θεματικό επίπεδο έχει πάρα πολλά πεδία. Ορισμένα δεν θα εμφανίζονται."});

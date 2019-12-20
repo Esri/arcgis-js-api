@@ -20,20 +20,20 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 /**
-                 * The time info provides information such as date fields that store
+                 * TimeInfo provides information such as date fields that store
                  * {@link module:esri/layers/support/TimeInfo#startField start}
                  * and {@link module:esri/layers/support/TimeInfo#endField end} time
-                 * for each feature and the {@link module:esri/layers/support/TimeInfo#fullTimeExtent full time extent}
-                 * for the layer. The `timeInfo` along with its `startField` and `endField` properties must be set at the
-                 * time of layer initialization if it is being set for
+                 * for each feature and the {@link module:esri/layers/support/TimeInfo#fullTimeExtent fullTimeExtent}
+                 * for the layer. The `timeInfo` property, along with its `startField` and `endField` properties, must be set at the
+                 * time of layer initialization if it is being set for a
                  * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer} or
                  * {@link module:esri/layers/FeatureLayer} initialized from
                  * [client-side features](esri-layers-FeatureLayer.html#creating-a-featurelayer).
-                 * The {@link module:esri/layers/support/TimeInfo#fullTimeExtent full time extent} for the timeInfo is
-                 * automatically calculated based on `start` and `end` fields.
+                 * The {@link module:esri/layers/support/TimeInfo#fullTimeExtent fullTimeExtent} for `timeInfo` is
+                 * automatically calculated based on its `startField` and `endField` properties.
                  * The timeInfo parameters cannot be changed after the layer is {@link module:esri/layers/FeatureLayer#load loaded}.
                  *
                  * @name timeInfo
@@ -64,4 +64,4 @@
                  * });
                  */
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../TimeExtent","../../core/accessorSupport/decorators","../../layers/support/TimeInfo","../support/fieldUtils"],function(e,t,r,o,i,n,p,s){Object.defineProperty(t,"__esModule",{value:!0}),t.TemporalLayer=function(e){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.timeExtent=null,t.useViewTime=!0,t}return r(t,e),Object.defineProperty(t.prototype,"timeInfo",{set:function(e){s.fixTimeInfoFields(e,this.fields),this._set("timeInfo",e)},enumerable:!0,configurable:!0}),o([n.property({type:i,json:{write:!1}})],t.prototype,"timeExtent",void 0),o([n.property({value:null,type:p,json:{write:!0,origins:{"web-scene":{read:!1,write:!1}}}})],t.prototype,"timeInfo",null),o([n.property({type:Boolean,json:{write:!1}})],t.prototype,"useViewTime",void 0),t=o([n.subclass("esri.layers.mixins.TemporalLayer")],t)}(n.declared(e))}});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../TimeExtent","../../TimeInterval","../../core/accessorSupport/decorators","../../layers/support/TimeInfo","../support/fieldUtils","../support/timeUtils"],function(e,t,r,o,i,n,p,s,l,u){Object.defineProperty(t,"__esModule",{value:!0}),t.TemporalLayer=function(e){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.timeExtent=null,t.timeOffset=null,t.useViewTime=!0,t}return r(t,e),t.prototype.readOffset=function(e,t){var r=t.timeInfo.exportOptions;if(!r)return null;var o=r.timeOffset,i=u.timeUnitKebabDictionary.fromJSON(r.timeOffsetUnits);return o&&i?new n({value:o,unit:i}):null},Object.defineProperty(t.prototype,"timeInfo",{set:function(e){l.fixTimeInfoFields(e,this.fields),this._set("timeInfo",e)},enumerable:!0,configurable:!0}),o([p.property({type:i,json:{write:!1}})],t.prototype,"timeExtent",void 0),o([p.property({type:n})],t.prototype,"timeOffset",void 0),o([p.reader("service","timeOffset",["timeInfo.exportOptions"])],t.prototype,"readOffset",null),o([p.property({value:null,type:s,json:{write:!0,origins:{"web-document":{read:!1,write:!1}}}})],t.prototype,"timeInfo",null),o([p.property({type:Boolean,json:{write:!1}})],t.prototype,"useViewTime",void 0),t=o([p.subclass("esri.layers.mixins.TemporalLayer")],t)}(p.declared(e))}});

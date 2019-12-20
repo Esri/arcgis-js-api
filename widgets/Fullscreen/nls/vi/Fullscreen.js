@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"Vào toàn màn hình",exit:"Thoát khỏi toàn màn hình"});
+define({widgetLabel:"Toàn màn hình",enter:"Vào toàn màn hình",exit:"Thoát khỏi toàn màn hình"});

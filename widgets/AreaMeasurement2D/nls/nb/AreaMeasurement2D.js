@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Arealmåling",hint:"Klikk i kartet for å plassere det første punktet for målingen.",unsupported:"2D-arealmåling støttes bare i MapView.",perimeter:"Omkrets",area:"Areal",newMeasurement:"Ny måling",mode:"Modus",modes:{auto:"Auto",planar:"Plant",geodesic:"Geodetisk"},unit:"Enhet",units:{metric:"Metrisk",imperial:"Britiske målenheter","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfot","square-yards":"Kvadratyard","square-us-feet":"Kvadratfot (USA)",acres:"Dekar",ares:"Ar",hectares:"Hektar"}});
+define({widgetLabel:"Arealmåling",hint:"Klikk i kartet for å plassere det første punktet for målingen.",unsupported:"2D-arealmåling støttes bare i MapView.",perimeter:"Omkrets",area:"Areal",newMeasurement:"Ny måling",mode:"Modus",modes:{auto:"Auto",planar:"Plant",geodesic:"Geodetisk"},unit:"Enhet",units:{metric:"Metrisk",imperial:"Britiske målenheter","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfot","square-yards":"Kvadratyard","square-us-feet":"Kvadratfot (USA)",acres:"Dekar",ares:"Ar",hectares:"Hektar"}});

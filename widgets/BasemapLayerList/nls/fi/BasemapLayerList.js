@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Taustakartan karttatasoluettelo",baseHeading:"Tausta",basemapTitle:"Taustakartan otsikko",referenceHeading:"Viite",noReferenceLayers:"Ei viitekarttatasoja",noBaseLayers:"Ei taustakarttatasoja",layerInvisibleAtScale:"Ei ole näkyvissä nykyisessä mittakaavassa",layerError:"Virhe karttatason lataamisessa",untitledLayer:"Nimeämätön karttataso"});

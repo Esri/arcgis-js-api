@@ -27,14 +27,8 @@
  *
  * [![slice-widget-exclude](../../assets/img/apiref/widgets/slice-exclude.png)](../sample-code/building-scene-layer-slice/index.html)
  *
- * The visualizations created using slices are temporary and cannot be persisted in a {@link
- * module:esri/WebScene} or in {@link module:esri/webscene/Slide slides}.
- *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- *
- * Slice only works with {@link module:esri/views/SceneView}.
- * :::
+ * Slice only works with {@link module:esri/views/SceneView}. The visualizations created using slices are temporary and
+ * cannot be persisted in a {@link module:esri/WebScene} or in {@link module:esri/webscene/Slide slides}.
  *
  * @module esri/widgets/Slice
  * @since 4.10
@@ -65,12 +59,6 @@ import BuildingComponentSublayer = require("esri/layers/buildingSublayers/Buildi
 
 // esri.views
 import SceneView = require("esri/views/SceneView");
-
-// esri.views.3d.interactive.analysisTools.slice
-import SliceTool = require("esri/views/3d/interactive/analysisTools/slice/SliceTool");
-
-// esri.views.3d.support.geometryUtils
-import boundedPlane = require("esri/views/3d/support/geometryUtils/boundedPlane");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -127,7 +115,7 @@ class Slice extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -135,6 +123,21 @@ class Slice extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label. This label displays when it is
+   * used within another widget, such as the {@link module:esri/widgets/Expand}
+   * or {@link module:esri/widgets/LayerList} widgets.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -197,14 +200,6 @@ class Slice extends declared(Widget) {
   })
   viewModel: SliceViewModel = new SliceViewModel();
 
-  @aliasOf("viewModel.plane")
-  @renderable()
-  plane: boundedPlane.BoundedPlane;
-
-  @aliasOf("viewModel.layersMode")
-  @renderable()
-  layersMode: SliceTool.LayersMode;
-
   @aliasOf("viewModel.excludedLayers")
   @renderable()
   excludedLayers: Collection<Layer | BuildingComponentSublayer>;
@@ -225,7 +220,7 @@ class Slice extends declared(Widget) {
     const isDisabled = this.viewModel.state === "disabled";
     const isReady = this.viewModel.state === "ready";
     const isSlicing = this.viewModel.state === "slicing" || this.viewModel.state === "sliced";
-    const isExcludeMode = this.layersMode === "exclude";
+    const isExcludeMode = this.viewModel.layersMode === "exclude";
 
     const buttonClasses = [CSS.button, isDisabled && CSS.buttonDisabled];
 

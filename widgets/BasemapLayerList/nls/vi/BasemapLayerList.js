@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Danh sách Lớp Bản đồ nền",baseHeading:"Cơ sở",basemapTitle:"Tiêu đề bản đồ nền",referenceHeading:"Tham chiếu",noReferenceLayers:"Không có lớp tham chiếu",noBaseLayers:"Không có lớp nền",layerInvisibleAtScale:"Không hiển thị ở tỷ lệ hiện tại",layerError:"Đã xảy ra lỗi khi tải lớp này",untitledLayer:"Lớp chưa có tiêu đề"});

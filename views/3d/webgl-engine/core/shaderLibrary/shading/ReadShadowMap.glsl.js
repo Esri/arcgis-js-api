@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],function(e,a,t,l,i){function n(e){e.include(l.RgbaFloatEncoding),e.fragment.uniforms.add("depthTex","sampler2D"),e.fragment.uniforms.add("shadowMapNum","int"),e.fragment.uniforms.add("shadowMapDistance","vec4"),e.fragment.uniforms.add("shadowMapMatrix","mat4",4),e.fragment.uniforms.add("depthHalfPixelSz","float"),e.fragment.code.add(i.glsl(o||(o=t(["\n    float readShadowMap(const in vec3 _vpos, float _linearDepth) {\n      float halfPixelSize = depthHalfPixelSz;\n      vec4 distance = shadowMapDistance;\n      float depth = _linearDepth;\n\n      //choose correct cascade\n      int i = depth < distance[1] ? 0 : depth < distance[2] ? 1 : depth < distance[3] ? 2 : 3;\n\n      if (i >= shadowMapNum) { return 0.0; }\n\n      mat4 mat = i == 0 ? shadowMapMatrix[0] : i == 1 ? shadowMapMatrix[1] : i == 2 ? shadowMapMatrix[2] : shadowMapMatrix[3];\n\n      vec4 lv = mat * vec4(_vpos, 1.0);\n      lv.xy /= lv.w;\n\n      // vertex completely outside? -> no shadow\n      vec3 lvpos = 0.5 * lv.xyz + vec3(0.5);\n      if (lvpos.z >= 1.0) { return 0.0; }\n      if (lvpos.x < 0.0 || lvpos.x > 1.0 || lvpos.y < 0.0 || lvpos.y > 1.0) { return 0.0; }\n\n      // calc coord in cascade texture\n      vec2 uv = vec2(float(i - 2 * (i / 2)) * 0.5, float(i / 2) * 0.5) + 0.5 * lvpos.xy;\n\n      float texSize = 0.5 / halfPixelSize;\n\n      // filter, offset by half pixels\n      vec2 st = fract((vec2(halfPixelSize) + uv) * texSize);\n\n      float s00 = rgba2float(texture2D(depthTex, uv + vec2(-halfPixelSize, -halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s10 = rgba2float(texture2D(depthTex, uv + vec2(halfPixelSize, -halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s11 = rgba2float(texture2D(depthTex, uv + vec2(halfPixelSize, halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s01 = rgba2float(texture2D(depthTex, uv + vec2(-halfPixelSize, halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n\n      return mix(mix(s00, s10, st.x), mix(s01, s11, st.x), st.y);\n    }\n  "],["\n    float readShadowMap(const in vec3 _vpos, float _linearDepth) {\n      float halfPixelSize = depthHalfPixelSz;\n      vec4 distance = shadowMapDistance;\n      float depth = _linearDepth;\n\n      //choose correct cascade\n      int i = depth < distance[1] ? 0 : depth < distance[2] ? 1 : depth < distance[3] ? 2 : 3;\n\n      if (i >= shadowMapNum) { return 0.0; }\n\n      mat4 mat = i == 0 ? shadowMapMatrix[0] : i == 1 ? shadowMapMatrix[1] : i == 2 ? shadowMapMatrix[2] : shadowMapMatrix[3];\n\n      vec4 lv = mat * vec4(_vpos, 1.0);\n      lv.xy /= lv.w;\n\n      // vertex completely outside? -> no shadow\n      vec3 lvpos = 0.5 * lv.xyz + vec3(0.5);\n      if (lvpos.z >= 1.0) { return 0.0; }\n      if (lvpos.x < 0.0 || lvpos.x > 1.0 || lvpos.y < 0.0 || lvpos.y > 1.0) { return 0.0; }\n\n      // calc coord in cascade texture\n      vec2 uv = vec2(float(i - 2 * (i / 2)) * 0.5, float(i / 2) * 0.5) + 0.5 * lvpos.xy;\n\n      float texSize = 0.5 / halfPixelSize;\n\n      // filter, offset by half pixels\n      vec2 st = fract((vec2(halfPixelSize) + uv) * texSize);\n\n      float s00 = rgba2float(texture2D(depthTex, uv + vec2(-halfPixelSize, -halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s10 = rgba2float(texture2D(depthTex, uv + vec2(halfPixelSize, -halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s11 = rgba2float(texture2D(depthTex, uv + vec2(halfPixelSize, halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n      float s01 = rgba2float(texture2D(depthTex, uv + vec2(-halfPixelSize, halfPixelSize))) < lvpos.z ? 1.0 : 0.0;\n\n      return mix(mix(s00, s10, st.x), mix(s01, s11, st.x), st.y);\n    }\n  "]))))}Object.defineProperty(a,"__esModule",{value:!0}),a.ReadShadowMap=n,function(e){function a(e,a){a.shadowMappingEnabled&&a.shadowMap.bindView(e,a.origin)}e.bindUniforms=a}(n=a.ReadShadowMap||(a.ReadShadowMap={}));var o});

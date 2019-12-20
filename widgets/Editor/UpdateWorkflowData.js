@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(e,r,t,o,p,d){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.candidates=null,r.editableItem=null,r.edits=null,r.viewModel=null,r}return t(r,e),o([d.property()],r.prototype,"candidates",void 0),o([d.property()],r.prototype,"editableItem",void 0),o([d.property()],r.prototype,"edits",void 0),o([d.property()],r.prototype,"viewModel",void 0),r=o([d.subclass("esri.widgets.Editor.UpdateWorkflowData")],r)}(d.declared(p))});

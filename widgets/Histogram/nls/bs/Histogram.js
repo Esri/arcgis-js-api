@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogram",barLabel:"Zbroj trake: {count}. Min. vrijednost podataka trake: {minValue}. Maks. vrijednost podataka trake: {maxValue}."});
+define({widgetLabel:"Histogram",barLabel:"Zbroj trake: {count}. Min. vrijednost podataka trake: {minValue}. Maks. vrijednost podataka trake: {maxValue}."});

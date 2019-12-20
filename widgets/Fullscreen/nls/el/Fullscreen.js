@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"Είσοδο σε πλήρη οθόνη",exit:"Έξοδος από πλήρη οθόνη"});
+define({widgetLabel:"Πλήρης οθόνη",enter:"Είσοδο σε πλήρη οθόνη",exit:"Έξοδος από πλήρη οθόνη"});

@@ -42,6 +42,9 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
+// dojo
+import * as i18n from "dojo/i18n!esri/widgets/FeatureForm/nls/FeatureForm";
+
 // dojo.date
 import { format, parse } from "dojo/date/locale";
 
@@ -211,7 +214,7 @@ class FeatureForm extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this._handleFormKeyDown = this._handleFormKeyDown.bind(this);
     this._handleInputBlur = this._handleInputBlur.bind(this);
@@ -388,6 +391,20 @@ class FeatureForm extends declared(Widget) {
   @property()
   @renderable()
   groupDisplay: "all" | "sequential" = "all";
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layer

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Atstumo matavimas",hint:"Pradėkite matuoti spustelėdami norimoje žemėlapio vietoje",unsupported:"Dvimatis atstumo matavimas palaikomas tik žemėlapio peržiūroje.",distance:"Atstumas",newMeasurement:"Matuoti iš naujo",mode:"Režimas",modes:{auto:"Automatinis",planar:"Plokščiasis",geodesic:"Geodezinis"},unit:"Matavimo vienetai",units:{metric:"Metriniai",imperial:"Imperiniai",kilometers:"Kilometrai",meters:"Metrai",miles:"Mylios",inches:"Coliai",feet:"Pėdos",yards:"Jardai","nautical-miles":"Jūrmylės","us-feet":"Pėdos (JAV)","degrees-minutes-seconds":"DMS",degrees:"Laipsniai"}});
+define({widgetLabel:"Atstumo matavimas",hint:"Pradėkite matuoti spustelėdami norimoje žemėlapio vietoje",unsupported:"Dvimatis atstumo matavimas palaikomas tik žemėlapio peržiūroje.",distance:"Atstumas",newMeasurement:"Naujas matavimas",mode:"Režimas",modes:{auto:"Automatinis",planar:"Plokščiasis",geodesic:"Geodezinis"},unit:"Matavimo vienetai",units:{metric:"Metriniai",imperial:"Imperiniai",kilometers:"Kilometrai",meters:"Metrai",miles:"Mylios",inches:"Coliai",feet:"Pėdos",yards:"Jardai","nautical-miles":"Jūrmylės","us-feet":"Pėdos (JAV)","degrees-minutes-seconds":"DMS",degrees:"Laipsniai"}});

@@ -9,7 +9,7 @@
       "description": "An array of elevationLayer objects defining the elevation of the ground in the web scene.",
       "items": {
         "type": "object",
-        "$ref": "elevationLayer_schema.json"
+        "$ref": "elevationLayers_schema.json"
       },
       "uniqueItems": true
     },

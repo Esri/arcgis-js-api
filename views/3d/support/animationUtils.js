@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports"],function(D,I){Object.defineProperty(I,"__esModule",{value:!0}),I.DESIRED_ANIMATION_FPS=25,I.DESIRED_ANIMATION_MS=1e3/I.DESIRED_ANIMATION_FPS,I.DESIRED_DRAPED_ANIMATION_FPS=20,I.DESIRED_DRAPED_ANIMATION_MS=1e3/I.DESIRED_DRAPED_ANIMATION_FPS});
+define(["require","exports","../../../layers/support/timeUtils"],function(e,D,I){Object.defineProperty(D,"__esModule",{value:!0}),D.DESIRED_ANIMATION_FPS=25,D.DESIRED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_ANIMATION_FPS),D.DESIRED_DRAPED_ANIMATION_FPS=20,D.DESIRED_DRAPED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_DRAPED_ANIMATION_FPS)});

@@ -20,23 +20,22 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 /**
        * Defines the layout elements. It's an object with the following properties:
        *
        * @property {string} [titleText] - The text used for the map title if the specified layout contains a title text element.
        * @property {string} [authorText] - The text used for the author if the specified layout contains an author text element.
-       * @property {string} [copyrightText] - The text used for the copyright if the specified layout contains an copyright text element.
-       * @property {string} [scalebarUnit=Miles] - The unit used for the scalebar.
-       *
-       * **Possible Values:** `Miles` | `Kilometers` | `Meters` | `Feet`
+       * @property {string} [copyrightText] - The text used for the copyright if the specified layout contains a copyright text element.
+       * @property {"Miles" | "Kilometers" | "Meters" | "Feet"} [scalebarUnit=Miles] - The unit used for the scalebar.
        * @property {module:esri/tasks/support/LegendLayer[]} [legendLayers] - An array of {@link module:esri/tasks/support/LegendLayer}
        * containing the ids of the layers that will be included in the legend. Tiled layers and GraphicsLayer will not appear in the
        * legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) except {@link module:esri/layers/GraphicsLayer}
-       * will be present in the legend. To specify that no layers will be included in the legend set `legendLayer = []`.
-       * @property {Object[]} [customTextElements] - An array of name-value pairs. Use this property to update the text for custom text elements
-       * on the page layout. Values must be strings.
+       * will be present in the legend. To specify that no layers will be included in the legend, set `legendLayer = []`.
+       * @property {Object[]} [customTextElements] - An array of name-value pair objects. Use this property to update the text for custom text elements
+       * on the page layout. Values must be strings. The custom text elements must exist in the print service. All out-of-the-box print service layout
+       * templates contain a text element named `date` that gets populated by default with the system date-time, but can be overwritten.
        *
        * @example
        * layoutOptions: {
@@ -45,11 +44,12 @@
        *   copyrightText: "My Company",
        *   scalebarUnit: "Miles",
        *   // the following text elements must
-       *   // exist in your print service
-       *   customTextElements: [{
-       *      "description": "My description",
-       *      "location": "My Location"
-       *   }]
+       *   // exist in the print service to appear
+       *   customTextElements: [
+       *     {"description": "My description"},
+       *     {"location": "My Location"},
+       *     {"date": "11/11/2020, 11:11:20 AM"}
+       *   ]
        * }
        * @type {Object}
        */

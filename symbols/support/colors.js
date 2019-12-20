@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../Color"],function(e,n,r){function t(e){return 0===e.r&&0===e.g&&0===e.b}Object.defineProperty(n,"__esModule",{value:!0}),n.white=new r("white"),n.black=new r("black"),n.transparentWhite=new r([255,255,255,0]),n.isBlack=t});

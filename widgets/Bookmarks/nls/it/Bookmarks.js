@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({addBookmark:"Aggiungi segnalibro",goToBookmark:"Vai a segnalibro",noBookmarksHeading:"Nessun segnalibro",noBookmarksDescription:"Aggiungere segnalibri alla mappa per farli apparire qui.",title:"Titolo",addPlaceholder:"Immettere il titolo del segnalibro",addingBookmark:"Aggiunta del segnalibro in corso",widgetLabel:"Segnalibri"});

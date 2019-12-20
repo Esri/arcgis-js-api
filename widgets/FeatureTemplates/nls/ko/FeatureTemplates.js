@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"피처 템플릿",filterPlaceholder:"필터 유형",noMatches:"항목을 찾을 수 없습니다.",noItems:"표시할 템플릿이 없습니다."});

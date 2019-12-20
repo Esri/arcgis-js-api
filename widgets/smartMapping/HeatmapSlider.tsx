@@ -60,31 +60,31 @@
  * @see {@link module:esri/renderers/smartMapping/creators/heatmap heatmapRendererCreator}
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./HeatmapSlider/nls/HeatmapSlider";
+import * as i18n from "dojo/i18n!esri/widgets/HeatmapSlider/nls/HeatmapSlider";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { HeatmapRendererResult } from "../../renderers/smartMapping/creators/heatmap";
+import { HeatmapRendererResult } from "esri/../renderers/smartMapping/creators/heatmap";
 
 // esri.renderers.support
-import { HeatmapColorStop } from "../../renderers/support/HeatmapColorStop";
+import { HeatmapColorStop } from "esri/../renderers/support/HeatmapColorStop";
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.HeatmapSlider
-import HeatmapSliderViewModel = require("./HeatmapSlider/HeatmapSliderViewModel");
+import HeatmapSliderViewModel = require("esri/widgets/HeatmapSlider/HeatmapSliderViewModel");
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-heatmap-slider",
@@ -113,7 +113,7 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    *
    * @property {number} index - The 0-based index of the thumb emitting the event.
    * @property {number} oldValue - The former value of the thumb before the change was made.
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-change`.
+   * @property {"thumb-change"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
    *
    * @example
@@ -130,11 +130,8 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    * @event module:esri/widgets/smartMapping/HeatmapSlider#thumb-drag
    *
    * @property {number} index - The 0-based index of the thumb emitting the event.
-   * @property {string} state - The state of the drag.
-   *
-   * **Possible Values:** start | drag
-   *
-   * @property {string} type - The type of the event. For this event, the type is always `thumb-drag`.
+   * @property {"start" | "drag"} state - The state of the drag.
+   * @property {"thumb-drag"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
    *
    * @example
@@ -172,7 +169,7 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this.slider.set({
       labelsVisible: false,
@@ -263,6 +260,8 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    */
   @property()
   @renderable([
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.max",

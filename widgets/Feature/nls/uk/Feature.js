@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Прикріплення",fields:"Поля",fieldsSummary:"Список атрибутів та значень",media:"Медіа",next:"Далі",noTitle:"Без заголовка",previous:"Назад",lastEdited:"Востаннє відредаговано {date}.",lastCreated:"Створено {date}.",lastEditedByUser:"Востаннє відредаговано {user} {date}.",lastCreatedByUser:"Створено {user} {date}."});
+define({widgetLabel:"Об’єкт",attach:"Прикріплення",fields:"Поля",fieldsSummary:"Список атрибутів та значень",media:"Медіа",next:"Далі",noTitle:"Без заголовка",previous:"Назад",lastEdited:"Востаннє відредаговано {date}.",lastCreated:"Створено {date}.",lastEditedByUser:"Востаннє відредаговано {user} {date}.",lastCreatedByUser:"Створено {user} {date}."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"قائمة طبقة خريطة الأساس",baseHeading:"أساسي",basemapTitle:"عنوان خريطة الأساس",referenceHeading:"المرجع",noReferenceLayers:"لا توجد طبقات مرجعية",noBaseLayers:"لا توجد طبقات أساس",layerInvisibleAtScale:"غير مرئي في المقياس الحالي",layerError:"حدث خطأ أثناء تحميل هذه الطبقة",untitledLayer:"طبقة بدون عنوان"});

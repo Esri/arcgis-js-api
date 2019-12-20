@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../attributes/VertexTextureCoordinates.glsl","../../shaderModules/interfaces"],function(e,s,n,o,t){function a(e,s){var a=e.fragment,p=s.hasMetalnessAndRoughnessTexture||s.hasEmissionTexture||s.hasOcclusionTexture;s.usePBR&&p&&e.include(o.VertexTextureCoordinates,s),s.usePBR&&(a.uniforms.add("roughnessFactor","float"),a.uniforms.add("metalnessFactor","float"),a.uniforms.add("emissionFactor","vec3"),a.uniforms.add("reflectanceFactor","float"),a.code.add(t.glsl(r||(r=n(["\n    float reflectance;\n    float roughness;\n    float metalness;\n    vec3 emission;\n    float occlusion;\n    "],["\n    float reflectance;\n    float roughness;\n    float metalness;\n    vec3 emission;\n    float occlusion;\n    "])))),s.hasMetalnessAndRoughnessTexture&&(a.uniforms.add("texMetallicRoughness","sampler2D"),s.supportsTextureAtlas&&a.uniforms.add("texMetallicRoughnessSize","vec2"),a.code.add(t.glsl(l||(l=n(["\n    void applyMetallnessAndRoughness(TextureLookupParameter params) {\n      vec3 metallicRoughness = textureLookup(texMetallicRoughness, params).rgb;\n\n      roughness *= metallicRoughness.g;\n      metalness *= metallicRoughness.b;\n    }\n    "],["\n    void applyMetallnessAndRoughness(TextureLookupParameter params) {\n      vec3 metallicRoughness = textureLookup(texMetallicRoughness, params).rgb;\n\n      roughness *= metallicRoughness.g;\n      metalness *= metallicRoughness.b;\n    }\n    "]))))),s.hasEmissionTexture&&(a.uniforms.add("texEmission","sampler2D"),s.supportsTextureAtlas&&a.uniforms.add("texEmissionSize","vec2"),a.code.add(t.glsl(c||(c=n(["\n    void applyEmission(TextureLookupParameter params) {\n      emission *= textureLookup(texEmission, params).rgb;\n    }\n    "],["\n    void applyEmission(TextureLookupParameter params) {\n      emission *= textureLookup(texEmission, params).rgb;\n    }\n    "])))))),s.usePBR&&s.hasOcclusionTexture?(a.uniforms.add("texOcclusion","sampler2D"),s.supportsTextureAtlas&&a.uniforms.add("texOcclusionSize","vec2"),a.code.add(t.glsl(i||(i=n(["\n    void applyOcclusion(TextureLookupParameter params) {\n      occlusion *= textureLookup(texOcclusion, params).r;\n    }\n\n    float getBakedOcclusion() {\n      return occlusion;\n    }\n    "],["\n    void applyOcclusion(TextureLookupParameter params) {\n      occlusion *= textureLookup(texOcclusion, params).r;\n    }\n\n    float getBakedOcclusion() {\n      return occlusion;\n    }\n    "]))))):a.code.add(t.glsl(u||(u=n(["\n    float getBakedOcclusion() { return 1.0; }\n    "],["\n    float getBakedOcclusion() { return 1.0; }\n    "])))),s.usePBR&&a.code.add(t.glsl(m||(m=n(["\n    void applyPBRFactors() {\n      reflectance = reflectanceFactor;\n      roughness = roughnessFactor;\n      metalness = metalnessFactor;\n      emission = emissionFactor;\n      occlusion = 1.0;\n      ","\n      ","\n      ","\n      ","\n    }\n  "],["\n    void applyPBRFactors() {\n      reflectance = reflectanceFactor;\n      roughness = roughnessFactor;\n      metalness = metalnessFactor;\n      emission = emissionFactor;\n      occlusion = 1.0;\n      ","\n      ","\n      ","\n      ","\n    }\n  "])),p?"vtc.uv = vuv0;":"",s.hasMetalnessAndRoughnessTexture?s.supportsTextureAtlas?"vtc.size = texMetallicRoughnessSize; applyMetallnessAndRoughness(vtc);":"applyMetallnessAndRoughness(vtc);":"",s.hasEmissionTexture?s.supportsTextureAtlas?"vtc.size = texEmissionSize; applyEmission(vtc);":"applyEmission(vtc);":"",s.hasOcclusionTexture?s.supportsTextureAtlas?"vtc.size = texOcclusionSize; applyOcclusion(vtc);":"applyOcclusion(vtc);":""))}Object.defineProperty(s,"__esModule",{value:!0}),s.PhysicallyBasedRenderingParameters=a,function(e){function s(e,s){e.setUniform1f("metalnessFactor",s.metallicFactor),e.setUniform1f("roughnessFactor",s.roughnessFactor),e.setUniform3fv("emissionFactor",s.emissiveFactor),e.setUniform1f("reflectanceFactor",s.reflectanceFactor)}e.bindUniforms=s}(a=s.PhysicallyBasedRenderingParameters||(s.PhysicallyBasedRenderingParameters={}));var r,l,c,i,u,m});

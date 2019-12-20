@@ -15,13 +15,8 @@
  * Z | Incrementally undos actions recorded in the stack. |
  * R | Incrementally redos actions recorded in the stack. |
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- *
  * This widget is designed to work with 2D MapViews. For measurements with 3D SceneViews, use
- * {@link module:esri/widgets/DirectLineMeasurement3D}
- *
- * :::
+ * {@link module:esri/widgets/DirectLineMeasurement3D}.
  *
  * @example
  *
@@ -75,28 +70,30 @@ const CSS = {
   buttonDisabled: "esri-button--disabled",
   widgetIcon: "esri-icon-measure-line",
   // base
-  base: "esri-direct-line-measurement-3d esri-widget esri-widget--panel",
+  base: "esri-distance-measurement-2d",
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
   // container
-  container: "esri-direct-line-measurement-3d__container",
+  container: "esri-distance-measurement-2d__container",
   // hint
-  hint: "esri-direct-line-measurement-3d__hint",
-  hintText: "esri-direct-line-measurement-3d__hint-text",
-  panelError: "esri-direct-line-measurement-3d__panel--error",
+  hint: "esri-distance-measurement-2d__hint",
+  hintText: "esri-distance-measurement-2d__hint-text",
+  panelError: "esri-distance-measurement-2d__panel--error",
   // measurement
-  measurement: "esri-direct-line-measurement-3d__measurement",
-  measurementItem: "esri-direct-line-measurement-3d__measurement-item",
-  measurementItemDisabled: "esri-direct-line-measurement-3d__measurement-item--disabled",
-  measurementItemTitle: "esri-direct-line-measurement-3d__measurement-item-title",
-  measurementItemValue: "esri-direct-line-measurement-3d__measurement-item-value",
+  measurement: "esri-distance-measurement-2d__measurement",
+  measurementItem: "esri-distance-measurement-2d__measurement-item",
+  measurementItemDisabled: "esri-distance-measurement-2d__measurement-item--disabled",
+  measurementItemTitle: "esri-distance-measurement-2d__measurement-item-title",
+  measurementItemValue: "esri-distance-measurement-2d__measurement-item-value",
   // units
-  settings: "esri-direct-line-measurement-3d__settings",
-  units: "esri-direct-line-measurement-3d__units",
-  unitsLabel: "esri-direct-line-measurement-3d__units-label",
-  unitsSelect: "esri-direct-line-measurement-3d__units-select esri-select",
-  unitsSelectWrapper: "esri-direct-line-measurement-3d__units-select-wrapper",
+  settings: "esri-distance-measurement-2d__settings",
+  units: "esri-distance-measurement-2d__units",
+  unitsLabel: "esri-distance-measurement-2d__units-label",
+  unitsSelect: "esri-distance-measurement-2d__units-select esri-select",
+  unitsSelectWrapper: "esri-distance-measurement-2d__units-select-wrapper",
   // clear
-  actionSection: "esri-direct-line-measurement-3d__actions",
-  clearButton: "esri-direct-line-measurement-3d__clear-button"
+  actionSection: "esri-distance-measurement-2d__actions",
+  clearButton: "esri-distance-measurement-2d__clear-button"
 };
 
 @subclass("esri.widgets.DistanceMeasurement2D")
@@ -121,7 +118,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    * view.ui.add(measurementWidget, "top-right");
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -172,7 +169,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    * @type {string}
    */
   @property()
-  label: string = i18n.title;
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  unit
@@ -401,7 +398,7 @@ class DistanceMeasurement2D extends declared(Widget) {
       </div>
     ) : null;
 
-    return <div class={CSS.base}>{containerNode}</div>;
+    return <div class={this.classes(CSS.base, CSS.widget, CSS.panel)}>{containerNode}</div>;
   }
 
   //--------------------------------------------------------------------------

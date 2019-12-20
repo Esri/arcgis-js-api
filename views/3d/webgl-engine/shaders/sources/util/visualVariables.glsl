@@ -1,43 +1,21 @@
-#if defined(VV_SIZE)
-  #define VV_CUSTOM_MODEL_MATRIX
-#endif
-
-#if defined(VV_SIZE)
-  uniform vec3 vvSizeMinSize;
-  uniform vec3 vvSizeMaxSize;
-  uniform vec3 vvSizeOffset;
-  uniform vec3 vvSizeFactor;
-#elif defined(VV_CUSTOM_MODEL_MATRIX)
-  uniform vec3 vvSizeValue;
-#endif
-
-#ifdef VV_CUSTOM_MODEL_MATRIX
-  uniform mat3 vvSymbolRotationMatrix;
-#endif
-
-#ifdef VV_CUSTOM_MODEL_MATRIX
-  uniform vec3 vvSymbolAnchor;
-#endif
-
 #ifdef VV_COLOR
   #define VV_COLOR_N 8
   uniform float vvColorValues[VV_COLOR_N];
   uniform vec4 vvColorColors[VV_COLOR_N];
 #endif
 
-// Evaluation of size
-#if defined(VV_SIZE)
+#ifdef VV_SIZE
+  uniform vec3 vvSizeMinSize;
+  uniform vec3 vvSizeMaxSize;
+  uniform vec3 vvSizeOffset;
+  uniform vec3 vvSizeFactor;
+  uniform mat3 vvSymbolRotationMatrix;
+  uniform vec3 vvSymbolAnchor;
+
   vec3 vvGetScale(vec4 featureAttribute) {
     return clamp(vvSizeOffset + featureAttribute.x * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize);
   }
-#elif defined(VV_CUSTOM_MODEL_MATRIX)
-  vec3 vvGetScale(vec4 featureAttribute) {
-    return vvSizeValue;
-  }
-#endif
 
-// Applying the model matrix
-#ifdef VV_CUSTOM_MODEL_MATRIX
   vec4 vvTransformPosition(vec3 position, vec4 featureAttribute) {
     return vec4(vvSymbolRotationMatrix * (vvGetScale(featureAttribute) * (position + vvSymbolAnchor)), 1.0);
   }

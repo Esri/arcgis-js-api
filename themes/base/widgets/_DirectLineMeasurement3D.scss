@@ -1,34 +1,4 @@
 @mixin directLineMeasurement3D() {
-  .esri-direct-line-measurement-3d__container {
-    position: relative;
-    padding: $cap-spacing 0;
-    overflow-y: auto;
-    a {
-      text-decoration: none;
-    }
-  }
-
-  .esri-direct-line-measurement-3d__header {
-    position: relative;
-    font-size: $font-size__body;
-    align-items: flex-start;
-    justify-content: space-between;
-    display: flex;
-    flex: 0 0 auto;
-  }
-
-  .esri-direct-line-measurement-3d__header-title,
-  h1.esri-direct-line-measurement-3d__header-title {
-    font-size: $font-size__header-text;
-    font-weight: $font-weight__bold;
-    padding: 8px 0;
-    margin: 0;
-    display: block;
-    flex: 1;
-    word-break: break-word;
-    text-align: left;
-  }
-
   @include measurementWidgetStyles("esri-direct-line-measurement-3d");
 }
 

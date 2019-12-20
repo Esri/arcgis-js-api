@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Grundkarten-Layer-Liste",baseHeading:"Basis",basemapTitle:"Titel der Grundkarte",referenceHeading:"Referenz",noReferenceLayers:"Keine Referenz-Layer",noBaseLayers:"Keine Basis-Layer",layerInvisibleAtScale:"Im aktuellen Maßstab unsichtbar",layerError:"Beim Laden dieses Layers ist ein Fehler aufgetreten.",untitledLayer:"Unbenannter Layer"});

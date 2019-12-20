@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Isječak",cancel:"Odustani",hint:"Započnite stvaranje isječaka tako da kliknete na površinu u sceni i povučete je",excludeHint:"Odaberite sloj u prikazu da biste ga isključili iz isječka",unsupported:"Isječak nije podržan u pregledniku karte.",multipleDisabled:"Istovremeno može biti aktivan samo jedan isječak",newSlice:"Novi isječak",excludedLayers:"Isključeni slojevi",pickLayer:"Odaberite sloj iz prikaza",excludeLayer:"Isključite sloj iz isječka",includeLayer:"Uključite sloj u isječak",ground:"Tlo"});
+define({widgetLabel:"Isječak",cancel:"Odustani",hint:"Započnite stvaranje isječaka tako da kliknete na površinu u sceni i povučete je",excludeHint:"Odaberite sloj u prikazu da biste ga isključili iz isječka",unsupported:"Isječak nije podržan u pregledniku karte.",multipleDisabled:"Istovremeno može biti aktivan samo jedan isječak",newSlice:"Novi isječak",excludedLayers:"Isključeni slojevi",pickLayer:"Odaberite sloj iz prikaza",excludeLayer:"Isključite sloj iz isječka",includeLayer:"Uključite sloj u isječak",ground:"Tlo"});

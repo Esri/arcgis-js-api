@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({addBookmark:"ブックマークの追加",goToBookmark:"ブックマークに移動",noBookmarksHeading:"ブックマークがありません",noBookmarksDescription:"マップにブックマークを追加すると、そのブックマークがここに表示されます。",title:"タイトル",addPlaceholder:"ブックマークのタイトルの入力",addingBookmark:"ブックマークを追加しています",widgetLabel:"ブックマーク"});
+define({addBookmark:"ブックマークの追加",goToBookmark:"ブックマークに移動",noBookmarksHeading:"ブックマークなし",noBookmarksDescription:"マップにブックマークを追加すると、そのブックマークがここに表示されます。",title:"タイトル",addPlaceholder:"ブックマークのタイトルの入力",addingBookmark:"ブックマークを追加しています",widgetLabel:"ブックマーク"});

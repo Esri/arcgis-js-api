@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Legenda",points:"Punkty",lines:"Linie",polygons:"Poligony",creatingLegend:"Tworzenie legendy",noLegend:"Brak legendy",dotValue:"1 Kropka = {value} {unit}",currentObservations:"Bieżące obserwacje",previousObservations:"Poprzednie obserwacje",high:"Wysokie",low:"Niskie",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"węzły",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} dzielone przez {normField}",showNormPct:"{field} jako procent wartości łącznej",showRatio:"Stosunek {field} do {normField}",showRatioPercent:"{field} jako procent wartości {normField}",showRatioPercentTotal:"{field} jako procent wartości {field} i {normField}",band0:"pasmo_0",band1:"pasmo_1",band2:"pasmo_2",red:"Czerwony",green:"Zielony",blue:"Niebieski"});

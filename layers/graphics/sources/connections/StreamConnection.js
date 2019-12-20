@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/decorateHelper","../../../../core/tsSupport/declareExtendsHelper","../../../../core/Evented","../../../../core/HandleOwner","../../../../core/accessorSupport/decorators"],function(e,r,t,n,o,c,s){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return n(r,e),r.prototype.onFeature=function(e){this.emit("feature",e)},r=t([s.subclass("esri.layers.graphics.sources.connections.StreamConnection")],r)}(s.declared(o.EventedMixin(c.HandleOwner)));r.default=u});

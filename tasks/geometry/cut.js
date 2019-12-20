@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/awaiterHelper","../../core/tsSupport/generatorHelper","../../geometry","../../request","../../core/urlUtils","../../geometry/support/jsonUtils"],function(e,t,r,o,s,n,i,u,c){function p(e,t,p,a){return o(this,void 0,void 0,function(){var o,f,g,l,y,d,m,S;return s(this,function(s){switch(s.label){case 0:return o="string"==typeof e?u.urlToObject(e):e,f=t[0].spatialReference,g=r({},a,{query:r({},o.query,{f:"json",sr:JSON.stringify(f),target:JSON.stringify({geometryType:c.getJsonType(t[0]),geometries:t}),cutter:JSON.stringify(p)})}),[4,i(o.path+"/cut",g)];case 1:return l=s.sent(),y=l.data,d=y.cutIndexes,m=y.geometries,S=void 0===m?[]:m,[2,{cutIndexes:d,geometries:S.map(function(e){return n.fromJSON(e).set(f)})}]}})})}Object.defineProperty(t,"__esModule",{value:!0}),t.cut=p});

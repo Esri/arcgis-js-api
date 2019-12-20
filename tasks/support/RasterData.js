@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,t,o,p,u){return function(r){function e(e){var t=r.call(this,e)||this;return t.format=null,t.itemId=null,t.url=null,t}return t(e,r),o([u.property()],e.prototype,"format",void 0),o([u.property({json:{read:{source:"itemID"},write:{target:"itemID"}}})],e.prototype,"itemId",void 0),o([u.property()],e.prototype,"url",void 0),e=o([u.subclass("esri/tasks/support/RasterData")],e)}(u.declared(p.JSONSupport))});

@@ -1,7 +1,10 @@
 /**
- * The LayerList widget provides a way to display a list of layers, and switching on/off their visibility.
- * To hide layers in the map from the LayerList widget, set the
- * {@link module:esri/layers/Layer#listMode listMode} property on the layer(s) to `hide`.
+ * The LayerList widget provides a way to display a list of layers, and switch on/off their visibility.
+ * The {@link module:esri/widgets/LayerList/ListItem} API provides access to each layer's properties, allows
+ * the developer to configure actions related to the layer, and allows the developer to add content to the item related to the layer.
+ *
+ * To hide layers in the map from the LayerList widget, you must set the
+ * {@link module:esri/layers/Layer#listMode listMode} property on the desired layers to `hide`.
  *
  * @module esri/widgets/LayerList
  * @since 4.2
@@ -191,7 +194,7 @@ class LayerList extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -337,6 +340,33 @@ class LayerList extends declared(Widget) {
   listItemCreatedFunction: ListItemModifier = null;
 
   //----------------------------------
+  //  multipleSelectionEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether more than one list item may be selected by the user at a single time.
+   * You must first set [selectionEnabled](#selectionEnabled) to `true` for this property
+   * to have an effect on the widget.
+   *
+   * Selected items are available in the [selectedItems](#selectedItems)
+   * property.
+   *
+   * @name multipleSelectionEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   *
+   * @see [selectionEnabled](#selectionEnabled)
+   * @see [selectedItems](#selectedItems)
+   *
+   * @example
+   * layerList.selectionEnabled = true;
+   * layerList.multipleSelectionEnabled = true;
+   */
+  @property()
+  multipleSelectionEnabled = false;
+
+  //----------------------------------
   //  operationalItems
   //----------------------------------
 
@@ -475,7 +505,9 @@ class LayerList extends declared(Widget) {
    * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
   @aliasOf("viewModel.triggerAction")
-  triggerAction(action: Action, item: ListItem): void {}
+  triggerAction(action: Action, item: ListItem): void {
+    this.viewModel.triggerAction(action, item);
+  }
 
   render(): VNode {
     const items = this._getItems();
@@ -493,7 +525,7 @@ class LayerList extends declared(Widget) {
           bind={this}
           class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
         >
-          {items.map((item, key) => this._renderItem(item, null))}
+          {items.map((item) => this._renderItem(item, null))}
         </ul>
       );
 
@@ -781,7 +813,13 @@ class LayerList extends declared(Widget) {
     const title = item.title || i18n.untitledLayer;
     const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
     const titleNode = (
-      <span id={titleKey} title={label} aria-label={label} class={CSS.title}>
+      <span
+        key="layer-title-container"
+        id={titleKey}
+        title={label}
+        aria-label={label}
+        class={CSS.title}
+      >
         {title}
       </span>
     );
@@ -829,7 +867,7 @@ class LayerList extends declared(Widget) {
     const hasError = !!item.error;
 
     const errorIconNode = hasError ? (
-      <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
+      <span key="notice-triangle" aria-hidden="true" class={CSS.iconNoticeTriangle} />
     ) : null;
 
     return parentVisibilityMode === inherited || hasError ? (
@@ -1047,13 +1085,18 @@ class LayerList extends declared(Widget) {
 
     const iconNode = (
       <span
+        key="action-icon"
         aria-hidden="true"
         class={this.classes(CSS.actionIcon, iconClasses)}
         styles={iconStyles}
       />
     );
 
-    const titleNode = !singleAction ? <span class={CSS.actionTitle}>{title}</span> : null;
+    const titleNode = !singleAction ? (
+      <span key="action-title" class={CSS.actionTitle}>
+        {title}
+      </span>
+    ) : null;
 
     const actionContentNodes = [iconNode, titleNode];
 
@@ -1239,17 +1282,17 @@ class LayerList extends declared(Widget) {
   @accessibleHandler()
   private _toggleSelection(event: MouseEvent | KeyboardEvent): void {
     event.stopPropagation();
+    const { multipleSelectionEnabled, selectedItems } = this;
 
-    const isControlSelection = event.metaKey || event.ctrlKey;
+    const allowMultipleSelected = multipleSelectionEnabled && (event.metaKey || event.ctrlKey);
     const node = event.currentTarget as Element;
     const item = node["data-item"] as ListItem;
-    const { selectedItems } = this;
     const found = selectedItems.indexOf(item) > -1;
 
     const { length } = selectedItems;
     const singleMatch = found && length === 1;
 
-    if (isControlSelection) {
+    if (allowMultipleSelected) {
       found ? selectedItems.remove(item) : selectedItems.add(item);
       return;
     }

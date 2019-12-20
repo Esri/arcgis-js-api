@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Fitxers adjunts",fields:"Camps",fieldsSummary:"Llista d'atributs i valors",media:"Multimèdia",next:"Següent",noTitle:"Sense títol",previous:"Anterior",lastEdited:"Editat per última vegada el {date}.",lastCreated:"Creat el {date}.",lastEditedByUser:"Editat per última vegada per {user} el {date}.",lastCreatedByUser:"Creat per {user} el {date}."});
+define({widgetLabel:"Entitat",attach:"Fitxers adjunts",fields:"Camps",fieldsSummary:"Llista d'atributs i valors",media:"Multimèdia",next:"Següent",noTitle:"Sense títol",previous:"Anterior",lastEdited:"Editat per última vegada el {date}.",lastCreated:"Creat el {date}.",lastEditedByUser:"Editat per última vegada per {user} el {date}.",lastCreatedByUser:"Creat per {user} el {date}."});

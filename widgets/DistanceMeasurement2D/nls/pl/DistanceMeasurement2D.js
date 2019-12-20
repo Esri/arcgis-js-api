@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Pomiar odległości",hint:"Rozpocznij pomiar, klikając na mapie, aby umiejscowić pierwszy punkt.",unsupported:"Pomiar odległości 2D jest obsługiwany tylko w komponencie MapView.",distance:"Odległość",newMeasurement:"Nowy pomiar",mode:"Tryb",modes:{auto:"Auto",planar:"Płaskie",geodesic:"Geodezyjne"},unit:"Jednostka",units:{metric:"Metryczne",imperial:"Angielskie",kilometers:"Kilometry",meters:"Metry",miles:"Mile",inches:"Cale",feet:"Stopy",yards:"Jardy","nautical-miles":"Mile morskie","us-feet":"Stopy (US)","degrees-minutes-seconds":"Stopnie-Minuty-Sekundy (DMS)",degrees:"Stopnie"}});
+define({widgetLabel:"Pomiar odległości",hint:"Rozpocznij pomiar, klikając na mapie, aby umiejscowić pierwszy punkt.",unsupported:"Pomiar odległości 2D jest obsługiwany tylko w komponencie MapView.",distance:"Odległość",newMeasurement:"Nowy pomiar",mode:"Tryb",modes:{auto:"Auto",planar:"Płaskie",geodesic:"Geodezyjne"},unit:"Jednostka",units:{metric:"Metryczne",imperial:"Angielskie",kilometers:"Kilometry",meters:"Metry",miles:"Mile",inches:"Cale",feet:"Stopy",yards:"Jardy","nautical-miles":"Mile morskie","us-feet":"Stopy (US)","degrees-minutes-seconds":"Stopnie-Minuty-Sekundy (DMS)",degrees:"Stopnie"}});

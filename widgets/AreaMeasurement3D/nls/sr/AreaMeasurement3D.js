@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Merenje oblasti",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",unsupported:"Merenje 3D površine je podržano samo u aplikaciji SceneView.",perimeterLength:"Obim",area:"Površina",unit:"Jedinica",notApplicable:"nije dostupno",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inč","square-feet":"Kvadratne stope","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratne stope (SAD)",acres:"Ari",ares:"Ari",hectares:"Hektari"}});
+define({widgetLabel:"Merenje oblasti",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",unsupported:"Merenje 3D površine je podržano samo u aplikaciji SceneView.",perimeterLength:"Obim",area:"Površina",unit:"Jedinica",notApplicable:"nije dostupno",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inči","square-feet":"Kvadratne stope","square-yards":"Kvadratne jarde","square-us-feet":"Kvadratne stope (SAD)",acres:"Ari",ares:"Ari",hectares:"Hektari"}});

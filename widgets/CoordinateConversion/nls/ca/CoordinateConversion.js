@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Afegeix una conversió",captureMode:"Mode de captura",changeCoordinateDisplay:"Canvia la visualització de coordenades",convert:"Converteix",conversionOutputSuffix:"sortida de conversió",copySuccessMessage:"Coordenada copiada al porta-retalls",defaultPattern:"Restableix al valor per defecte",goTo:"Ves a la ubicació",inputCoordTitle:"Coordenada d'entrada",invalidCoordinate:"Coordenada no vàlida",liveMode:"Mode en directe",locationOffBasemap:"La coordenada d'entrada es troba fora de l'extensió del mapa base",noBasemap:"No hi ha cap mapa base.",noLocation:"Sense posició",removeConversion:"Elimina la conversió",selectFormat:"Seleccioneu el format",settingsTitle:"Configuració de format"});
+define({widgetLabel:"Conversió de coordenada",abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Afegeix una conversió",captureMode:"Mode de captura",changeCoordinateDisplay:"Canvia la visualització de coordenades",convert:"Converteix",conversionOutputSuffix:"sortida de conversió",copySuccessMessage:"Coordenada copiada al porta-retalls",defaultPattern:"Restableix al valor per defecte",goTo:"Ves a la ubicació",inputCoordTitle:"Coordenada d'entrada",invalidCoordinate:"Coordenada no vàlida",liveMode:"Mode en directe",locationOffBasemap:"La coordenada d'entrada es troba fora de l'extensió del mapa base",noBasemap:"No hi ha cap mapa base.",noLocation:"Sense posició",removeConversion:"Elimina la conversió",selectFormat:"Seleccioneu el format",settingsTitle:"Configuració de format"});

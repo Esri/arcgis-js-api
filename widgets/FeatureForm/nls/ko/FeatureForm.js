@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- 비어 있음 -",validationErrors:{cannotBeNull:"값을 입력하세요.",outsideRange:"값은 {min}에서 {max} 사이여야 함",invalidCodedValue:"값은 나열된 값 중 하나여야 합니다.",invalidType:"유효한 값이 아님"}});
+define({widgetLabel:"피처 양식",empty:"- 비어 있음 -",validationErrors:{cannotBeNull:"값을 입력하세요.",outsideRange:"값은 {min}에서 {max} 사이여야 함",invalidCodedValue:"값은 나열된 값 중 하나여야 합니다.",invalidType:"유효한 값이 아님"}});

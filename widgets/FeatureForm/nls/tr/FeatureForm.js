@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- boş -",validationErrors:{cannotBeNull:"Bir değer girin",outsideRange:"Değer {min} ve {max} arasında olmalıdır",invalidCodedValue:"Değer listelenen değerlerden biri olmalıdır.",invalidType:"Geçerli bir değer değil"}});
+define({widgetLabel:"Detay formu",empty:"- boş -",validationErrors:{cannotBeNull:"Bir değer girin",outsideRange:"Değer {min} ve {max} arasında olmalıdır",invalidCodedValue:"Değer listelenen değerlerden biri olmalıdır.",invalidType:"Geçerli bir değer değil"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){return function(){function e(){this.items=[]}return e.prototype.addObject=function(e,t){this.items.push({type:"object",highlightId:t,object:e})},e.prototype.addRenderGeometry=function(e,t,i){this.items.push({type:"renderGeometry",highlightId:t,renderGeometry:e,owner:i})},e.prototype.addExternal=function(e,t){this.items.push({type:"external",highlightId:t,remove:e})},e.prototype.remove=function(e){for(var t=this.items.length-1;t>=0;--t){var i=this.items[t];i.highlightId===e&&(this.removeHighlight(i),this.items.splice(t,1))}},e.prototype.removeObject=function(e){for(var t=this.items.length-1;t>=0;--t){var i=this.items[t];"object"===i.type&&i.object===e&&(this.removeHighlight(i),this.items.splice(t,1))}},e.prototype.removeRenderGeometry=function(e){for(var t=this.items.length-1;t>=0;--t){var i=this.items[t];"renderGeometry"===i.type&&i.renderGeometry===e&&(this.removeHighlight(i),this.items.splice(t,1))}},e.prototype.removeAll=function(){var e=this;this.items.forEach(function(t){e.removeHighlight(t)}),this.items=[]},e.prototype.removeHighlight=function(e){switch(e.type){case"object":e.object.removeHighlights(e.highlightId);break;case"renderGeometry":e.owner.removeRenderGeometryHighlight(e.renderGeometry,e.highlightId);break;case"external":e.remove(e.highlightId)}},e}()});

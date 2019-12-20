@@ -4,18 +4,25 @@
  * which can be configured with custom layout templates. One is provided that shows the map only, while another provides a layout with legend, etc.
  * The Print widget works with the {@link module:esri/tasks/PrintTask} which generates a printer-ready version of the map.
  *
+ * By default, the Print widget prints a localized date for all {@link module:esri/tasks/support/PrintTemplate#layout layouts}
+ * except `map-only`. This can be customized using the `customTextElements` property of
+ * {@link module:esri/tasks/support/PrintTemplate#layoutOptions PrintTemplate.layoutOptions}.
+ *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
  * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}. Instead, see {@link module:esri/views/SceneView#takeScreenshot SceneView.takeScreenshot()}.
  * * There is no current support for printing {@link module:esri/views/layers/FeatureLayerView#highlight highlighted features}. Instead, see {@link module:esri/views/MapView#takeScreenshot MapView.takeScreenshot()}.
  * * {@link module:esri/layers/VectorTileLayer} printing requires ArcGIS Server 10.5.1 or later.
+ * * There is no current support for printing {@link module:esri/layers/ImageryLayer ImageryLayers} when a {@link module:esri/layers/ImageryLayer#pixelFilter pixelFilter}
+ * is defined.
  * * {@link module:esri/layers/support/LabelClass Labels} currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
  * * {@link module:esri/layers/ImageryLayer} cannot be printed with ArcGIS Server 10.5.1 or earlier, or any Printing Service published with ArcMap.
  * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
  * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
  * the URL to these symbols must be accessible to the print server for it to work properly.
  * * Printing layers rendered with the {@link module:esri/renderers/DotDensityRenderer} will create a client-side image of the layer in the printout.
+ * * Printing layers using {@link module:esri/layers/FeatureLayer#featureReduction clustering} will create a client-side image of the layer in the printout.
  * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
  * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
@@ -194,7 +201,7 @@ class Print extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     this._focusOnTabChange = this._focusOnTabChange.bind(this);
   }
@@ -342,8 +349,6 @@ class Print extends declared(Widget) {
   private _layoutTabSelected = true;
 
   private _pendingExportScroll = false;
-
-  private _previousTitleOrFilename: string = "";
 
   private _rootNode: HTMLElement = null;
 
@@ -509,29 +514,12 @@ class Print extends declared(Widget) {
       height,
       layout,
       legendEnabled,
-      title,
       scaleEnabled,
       scale,
       width
     } = this.templateOptions;
 
-    const titleSection = (
-      <div class={CSS.formSectionContainer}>
-        <label>
-          {this._layoutTabSelected ? i18n.title : i18n.fileName}
-          <input
-            type="text"
-            tabIndex={0}
-            placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
-            class={this.classes(CSS.inputText, CSS.input)}
-            value={title}
-            data-input-name="title"
-            oninput={this._updateInputValue}
-            bind={this}
-          />
-        </label>
-      </div>
-    );
+    const titleOrFileNameSection = this.renderTitleOrFileNameSection();
 
     const fileFormatMenuItems =
       this.get<string[]>("viewModel.templatesInfo.format.choiceList") || [];
@@ -740,7 +728,7 @@ class Print extends declared(Widget) {
         aria-selected={this._layoutTabSelected}
       >
         <div class={CSS.panelContainer}>
-          {titleSection}
+          {titleOrFileNameSection}
           {pageSetupSection}
           {this._layoutTabSelected ? fileFormatSection : null}
         </div>
@@ -789,7 +777,7 @@ class Print extends declared(Widget) {
         role="tabpanel"
       >
         <div class={CSS.panelContainer}>
-          {titleSection}
+          {titleOrFileNameSection}
           {this._layoutTabSelected ? null : fileFormatSection}
           <div class={this.classes(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
@@ -964,6 +952,45 @@ class Print extends declared(Widget) {
     );
   }
 
+  protected renderTitleOrFileNameSection(): VNode {
+    const { templateOptions } = this;
+
+    let label: string;
+    let placeholder: string;
+    let value: string;
+    let propName: Extract<keyof TemplateOptions, "fileName" | "title">;
+
+    if (this._layoutTabSelected) {
+      label = i18n.title;
+      placeholder = i18n.titlePlaceHolder;
+      value = templateOptions.title;
+      propName = "title";
+    } else {
+      label = i18n.fileName;
+      placeholder = i18n.fileNamePlaceHolder;
+      value = templateOptions.fileName;
+      propName = "fileName";
+    }
+
+    return (
+      <div class={CSS.formSectionContainer} key={propName}>
+        <label>
+          {label}
+          <input
+            type="text"
+            tabIndex={0}
+            placeholder={placeholder}
+            class={this.classes(CSS.inputText, CSS.input)}
+            value={value}
+            data-input-name={propName}
+            oninput={this._updateInputValue}
+            bind={this}
+          />
+        </label>
+      </div>
+    );
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Private Methods
@@ -994,23 +1021,23 @@ class Print extends declared(Widget) {
     return <div class={this.classes(classes)} key="loader" />;
   }
 
-  private _createFileLink(template: PrintTemplate): FileLink {
-    const titleText = template.layoutOptions.titleText || i18n.untitled,
-      lowercaseFormat = template.format.toLowerCase(),
-      extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
-      fileName = titleText + extension,
-      hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
+  private _createFileLink(template: PrintTemplate, fileName: string): FileLink {
+    const titleText = fileName || i18n.untitled;
+    const lowercaseFormat = template.format.toLowerCase();
+    const extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat;
+    const fileNameWithExtension = titleText + extension;
+    const hasSameFileName = this._exportedFileNameMap[fileNameWithExtension] !== undefined;
 
     if (hasSameFileName) {
-      this._exportedFileNameMap[fileName]++;
+      this._exportedFileNameMap[fileNameWithExtension]++;
     } else {
-      this._exportedFileNameMap[fileName] = 0;
+      this._exportedFileNameMap[fileNameWithExtension] = 0;
     }
 
     return new FileLink({
       name: titleText,
       extension,
-      count: this._exportedFileNameMap[fileName]
+      count: this._exportedFileNameMap[fileNameWithExtension]
     });
   }
 
@@ -1074,8 +1101,13 @@ class Print extends declared(Widget) {
 
   private _handlePrintMap(): void {
     this._pendingExportScroll = true;
-    const template = this._toPrintTemplate(this.templateOptions);
-    const link = this._createFileLink(template);
+    const { templateOptions } = this;
+    const template = this._toPrintTemplate(templateOptions);
+    const fileName = this._layoutTabSelected
+      ? template.layoutOptions.titleText
+      : templateOptions.fileName;
+    const link = this._createFileLink(template, fileName);
+
     this.exportedLinks.add(link);
 
     this.viewModel
@@ -1220,20 +1252,12 @@ class Print extends declared(Widget) {
     });
   }
 
-  private _swapInputValue(): void {
-    const previous = this._previousTitleOrFilename;
-    this._previousTitleOrFilename = this.templateOptions.title;
-    this.templateOptions.title = previous;
-  }
-
   private _toggleLayoutPanel(e: Event): void {
     const target = e.target as HTMLLIElement;
     this._toggleTab(target.getAttribute("data-tab-id") as TabId);
   }
 
   private _toggleTab(targetTab: TabId): void {
-    this._swapInputValue();
-
     this._layoutTabSelected = targetTab === "layoutTab";
 
     if (!this._layoutTabSelected) {

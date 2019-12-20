@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({enter:"إدخال ملء الشاشة",exit:"خروج من وضع ملء الشاشة"});
+define({widgetLabel:"ملء الشاشة",enter:"إدخال ملء الشاشة",exit:"خروج من وضع ملء الشاشة"});

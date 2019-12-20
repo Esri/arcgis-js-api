@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- prazno -",validationErrors:{cannotBeNull:"Unesite vrijednost",outsideRange:"Vrijednost bi trebala biti između {min} i {max}",invalidCodedValue:"Vrijednost bi trebala biti jedna od navedenih vrijednosti.",invalidType:"Nije važeća vrijednost"}});
+define({widgetLabel:"Oblik geoobjekta",empty:"- prazno -",validationErrors:{cannotBeNull:"Unesite vrijednost",outsideRange:"Vrijednost bi trebala biti između {min} i {max}",invalidCodedValue:"Vrijednost bi trebala biti jedna od navedenih vrijednosti.",invalidType:"Nije važeća vrijednost"}});

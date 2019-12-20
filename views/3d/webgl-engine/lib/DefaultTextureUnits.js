@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,O){Object.defineProperty(O,"__esModule",{value:!0}),O.DefaultTextureUnits={DIFFUSE:0,COMPONENT_COLOR:1,NORMAL:2,EMISSION:3,OCCLUSION:4,METALLIC_ROUGHNESS:5}});

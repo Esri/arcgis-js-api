@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"قياس الخط المباشر",hint:"بدأ في القياس عن طريق النقر في المشهد لوضع النقطة الأولى الخاصة بك",unsupported:"قياس الخط المباشر ثلاثي الأبعاد مدعوم فقط في SceneView.",distance:"المسافة",direct:"مباشر",horizontal:"أفقياً",vertical:"عمودي",unit:"وحدة",newMeasurement:"قياس جديد",units:{metric:"متري",imperial:"الامبراطورية",kilometers:"كيلومتر",meters:"أمتار",miles:"أميال",inches:"بوصة",feet:"قدم",yards:"ياردة","nautical-miles":"أميال محايدة","us-feet":"قدم (الولايات المتحدة)","degrees-minutes-seconds":"درجة دقيقة ثانية",degrees:"الدرجات"}});
+define({widgetLabel:"قياس الخط المباشر",hint:"بدأ في القياس عن طريق النقر في المشهد لوضع النقطة الأولى الخاصة بك",unsupported:"قياس الخط المباشر ثلاثي الأبعاد مدعوم فقط في SceneView.",distance:"المسافة",direct:"مباشر",horizontal:"أفقياً",vertical:"عمودي",unit:"وحدة",newMeasurement:"قياس جديد",units:{metric:"متري",imperial:"الامبراطورية",kilometers:"كيلومتر",meters:"أمتار",miles:"أميال",inches:"بوصة",feet:"قدم",yards:"ياردة","nautical-miles":"أميال بحرية","us-feet":"قدم (الولايات المتحدة)","degrees-minutes-seconds":"درجة دقيقة ثانية",degrees:"الدرجات"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Histogramă",barLabel:"Contor bară: {count}. Valoare minimă date bară: {minValue}. Valoare maximă date bară: {maxValue}."});
+define({widgetLabel:"Histogramă",barLabel:"Contor bară: {count}. Valoare minimă date bară: {minValue}. Valoare maximă date bară: {maxValue}."});

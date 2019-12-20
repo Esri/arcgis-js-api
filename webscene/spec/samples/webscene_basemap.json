@@ -9,11 +9,11 @@
         "layerType": "ArcGISTiledMapServiceLayer"
       },
       {
-        "isReference": true,
         "id": "14e509cc09c-layer-5",
         "title": "World Light Gray Reference",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer",
-        "layerType": "ArcGISTiledMapServiceLayer"
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "isReference": true
       }
     ],
     "id": "basemap_9",
@@ -40,9 +40,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.16",
+  "version": "1.18",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.12",
+  "authoringAppVersion": "4.14",
   "initialState": {
     "environment": {
       "lighting": {

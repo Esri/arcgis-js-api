@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,i,n,t){Object.defineProperty(i,"__esModule",{value:!0});var r=function(e){function i(i,n,t){var r=e.call(this,"esri.views.3d.input.handlers.SingleKeyResetHeading",n,t)||this;return r.view=i,r.key=n,r}return n(i,e),i.prototype.activate=function(){this.view.goTo({heading:0})},i}(t.SingleKey);i.SingleKeyResetHeading=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t,i,n){var r=e.call(this,i,n)||this;return r.view=t,r.key=i,r}return i(t,e),t.prototype.activate=function(){this.view.goTo({heading:0})},t}(n.SingleKey);t.SingleKeyResetHeading=r});

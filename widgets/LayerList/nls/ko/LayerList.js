@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"레이어 목록",noItemsToDisplay:"현재 표시할 항목이 없습니다.",layerInvisibleAtScale:"현재 축척에서는 보이지 않음",layerError:"이 레이어를 불러오는 중 오류가 발생함",untitledLayer:"제목 없는 레이어"});

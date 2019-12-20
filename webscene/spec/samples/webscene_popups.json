@@ -55,53 +55,51 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Elevation",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Elevation",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Distance",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance_km",
-                "isEditable": true,
-                "label": "Distance_km",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Elevation",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Elevation",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Distance",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance_km",
+                    "isEditable": true,
+                    "label": "Distance_km",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -145,100 +143,98 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "FolderPath",
-                "isEditable": true,
-                "label": "FolderPath",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "SymbolID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "SymbolID",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "AltMode",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "AltMode",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Base",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Base",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Clamped",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Clamped",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Extruded",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Extruded",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Snippet",
-                "isEditable": true,
-                "label": "Snippet",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "PopupInfo",
-                "isEditable": true,
-                "label": "PopupInfo",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "FolderPath",
+                    "isEditable": true,
+                    "label": "FolderPath",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "SymbolID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "SymbolID",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "AltMode",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "AltMode",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Base",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Base",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Clamped",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Clamped",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Extruded",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Extruded",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Snippet",
+                    "isEditable": true,
+                    "label": "Snippet",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "PopupInfo",
+                    "isEditable": true,
+                    "label": "PopupInfo",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -290,75 +286,73 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "OBJECTID",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "TITLE",
-                "label": "Title",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "VISIBLE",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "Visible",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "DESCRIPTION",
-                "label": "Description",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "IMAGE_URL",
-                "label": "Image URL",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "IMAGE_LINK_URL",
-                "label": "Image Link URL",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "DATE",
-                "format": {
-                  "dateFormat": "longMonthDayYear",
-                  "digitSeparator": false
-                },
-                "label": "DATE",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "TYPEID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "Type ID",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "OBJECTID",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "TITLE",
+                    "label": "Title",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "VISIBLE",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "Visible",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "DESCRIPTION",
+                    "label": "Description",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "IMAGE_URL",
+                    "label": "Image URL",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "IMAGE_LINK_URL",
+                    "label": "Image Link URL",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "DATE",
+                    "format": {
+                      "dateFormat": "longMonthDayYear",
+                      "digitSeparator": false
+                    },
+                    "label": "DATE",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "TYPEID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "Type ID",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Areas: {TITLE}"
@@ -422,53 +416,51 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Elevation",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Elevation",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Distance",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance_km",
-                "isEditable": true,
-                "label": "Distance_km",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Elevation",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Elevation",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Distance",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance_km",
+                    "isEditable": true,
+                    "label": "Distance_km",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -516,53 +508,51 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Elevation",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Elevation",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Distance",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance_km",
-                "isEditable": true,
-                "label": "Distance_km",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Elevation",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Elevation",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Distance",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance_km",
+                    "isEditable": true,
+                    "label": "Distance_km",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -604,53 +594,51 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Elevation",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Elevation",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Distance",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Distance_km",
-                "isEditable": true,
-                "label": "Distance_km",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Elevation",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Elevation",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Distance",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Distance_km",
+                    "isEditable": true,
+                    "label": "Distance_km",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_points_1k_webmerc: {Name}"
@@ -695,100 +683,98 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "FolderPath",
-                "isEditable": true,
-                "label": "FolderPath",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "SymbolID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "SymbolID",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "AltMode",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "AltMode",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Base",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Base",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Clamped",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Clamped",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Extruded",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Extruded",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Snippet",
-                "isEditable": true,
-                "label": "Snippet",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "PopupInfo",
-                "isEditable": true,
-                "label": "PopupInfo",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "FolderPath",
+                    "isEditable": true,
+                    "label": "FolderPath",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "SymbolID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "SymbolID",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "AltMode",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "AltMode",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Base",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Base",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Clamped",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Clamped",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Extruded",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Extruded",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Snippet",
+                    "isEditable": true,
+                    "label": "Snippet",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "PopupInfo",
+                    "isEditable": true,
+                    "label": "PopupInfo",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -832,100 +818,98 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OID",
-                "label": "OID",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "Name",
-                "isEditable": true,
-                "label": "Name",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "FolderPath",
-                "isEditable": true,
-                "label": "FolderPath",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "SymbolID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "SymbolID",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "AltMode",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "AltMode",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Base",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 2
-                },
-                "isEditable": true,
-                "label": "Base",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Clamped",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Clamped",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Extruded",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "isEditable": true,
-                "label": "Extruded",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "Snippet",
-                "isEditable": true,
-                "label": "Snippet",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "PopupInfo",
-                "isEditable": true,
-                "label": "PopupInfo",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OID",
+                    "label": "OID",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "Name",
+                    "isEditable": true,
+                    "label": "Name",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "FolderPath",
+                    "isEditable": true,
+                    "label": "FolderPath",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "SymbolID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "SymbolID",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "AltMode",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "AltMode",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Base",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 2
+                    },
+                    "isEditable": true,
+                    "label": "Base",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Clamped",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Clamped",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Extruded",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "isEditable": true,
+                    "label": "Extruded",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "Snippet",
+                    "isEditable": true,
+                    "label": "Snippet",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "PopupInfo",
+                    "isEditable": true,
+                    "label": "PopupInfo",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Track_line_simplified_webmerc: {Name}"
@@ -978,75 +962,73 @@
           "popupInfo": {
             "popupElements": [
               {
-                "type": "attachments",
-                "displayType": "list"
-              }
-            ],
-            "showAttachments": true,
-            "fieldInfos": [
-              {
-                "fieldName": "OBJECTID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "OBJECTID",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "TITLE",
-                "label": "Title",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "VISIBLE",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "Visible",
-                "tooltip": "",
-                "visible": true
-              },
-              {
-                "fieldName": "DESCRIPTION",
-                "label": "Description",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "IMAGE_URL",
-                "label": "Image URL",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "IMAGE_LINK_URL",
-                "label": "Image Link URL",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "DATE",
-                "format": {
-                  "dateFormat": "longMonthDayYear",
-                  "digitSeparator": false
-                },
-                "label": "DATE",
-                "tooltip": "",
-                "visible": false
-              },
-              {
-                "fieldName": "TYPEID",
-                "format": {
-                  "digitSeparator": true,
-                  "places": 0
-                },
-                "label": "Type ID",
-                "tooltip": "",
-                "visible": true
+                "type": "fields",
+                "fieldInfos": [
+                  {
+                    "fieldName": "OBJECTID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "OBJECTID",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "TITLE",
+                    "label": "Title",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "VISIBLE",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "Visible",
+                    "tooltip": "",
+                    "visible": true
+                  },
+                  {
+                    "fieldName": "DESCRIPTION",
+                    "label": "Description",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "IMAGE_URL",
+                    "label": "Image URL",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "IMAGE_LINK_URL",
+                    "label": "Image Link URL",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "DATE",
+                    "format": {
+                      "dateFormat": "longMonthDayYear",
+                      "digitSeparator": false
+                    },
+                    "label": "DATE",
+                    "tooltip": "",
+                    "visible": false
+                  },
+                  {
+                    "fieldName": "TYPEID",
+                    "format": {
+                      "digitSeparator": true,
+                      "places": 0
+                    },
+                    "label": "Type ID",
+                    "tooltip": "",
+                    "visible": true
+                  }
+                ]
               }
             ],
             "title": "Areas: {TITLE}"
@@ -1090,9 +1072,9 @@
     ],
     "transparency": 0
   },
-  "version": "1.16",
+  "version": "1.18",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.12",
+  "authoringAppVersion": "4.14",
   "initialState": {
     "environment": {
       "lighting": {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Ιστόγραμμα",barLabel:"Αριθμός ράβδων: {count}. Ελάχ. τιμή δεδομένων ράβδων: {minValue}. Μέγ. τιμή δεδομένων ράβδων: {minValue}."});
+define({widgetLabel:"Ιστόγραμμα",barLabel:"Αριθμός ράβδων: {count}. Ελάχ. τιμή δεδομένων ράβδων: {minValue}. Μέγ. τιμή δεδομένων ράβδων: {minValue}."});

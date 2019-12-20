@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista slojeva pozadinske mape",baseHeading:"Osnovno",basemapTitle:"Naslov pozadinske mape",referenceHeading:"Referenca",noReferenceLayers:"Nema referentnih slojeva",noBaseLayers:"Nema osnovnih slojeva",layerInvisibleAtScale:"Nevidljivo pri trenutnoj razmeri",layerError:"Došlo je do greške prilikom učitavanja ovog sloja",untitledLayer:"Sloj bez naslova"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"กม.",mi:"ไมล์",ft:"ฟุต",m:"ม",unknownUnit:"ไม่ทราบหน่วย"});
+define({widgetLabel:"สเกลบาร์",km:"กม.",mi:"ไมล์",ft:"ฟุต",m:"ม",unknownUnit:"หน่วยที่ไม่รู้จัก"});

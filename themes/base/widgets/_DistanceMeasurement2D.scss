@@ -1,0 +1,7 @@
+@mixin distanceMeasurement2D() {
+  @include measurementWidgetStyles("esri-distance-measurement-2d");
+}
+
+@if $include_DistanceMeasurement2D == true {
+  @include distanceMeasurement2D();
+}

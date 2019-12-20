@@ -26,7 +26,7 @@ import { VNode } from "esri/widgets/support/interfaces";
 import { renderable, tsx } from "esri/widgets/support/widget";
 
 interface SpinnerShowOptions {
-  promise?: IPromise<any>;
+  promise?: Promise<any>;
   location?: Point;
 }
 
@@ -45,7 +45,7 @@ class Spinner extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -66,7 +66,7 @@ class Spinner extends declared(Widget) {
 
   private _animationDelay = 500;
 
-  private _animationPromise: IPromise<any> = null;
+  private _animationPromise: Promise<any> = null;
 
   //----------------------------------
   //  location

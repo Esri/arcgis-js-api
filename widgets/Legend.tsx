@@ -21,13 +21,13 @@
  *
  * * Currently, the legend widget does not support the following layer types:
  * {@link module:esri/layers/ElevationLayer},
+ * {@link module:esri/layers/GraphicsLayer},
  * {@link module:esri/layers/IntegratedMeshLayer},
  * {@link module:esri/layers/KMLLayer},
+ * {@link module:esri/layers/MapNotesLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
- * {@link module:esri/layers/GraphicsLayer},
- * {@link module:esri/layers/GeoRSSLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
- * {@link module:esri/layers/WebTileLayer}
+ * {@link module:esri/layers/WebTileLayer}.
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
  * * {@link module:esri/renderers/DictionaryRenderer} is not supported.
@@ -123,7 +123,7 @@ class Legend extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   postInitialize(): void {
@@ -321,14 +321,14 @@ class Legend extends declared(Widget) {
    * You can either specify a string or an object to indicate the style. The known string values are the same values listed in
    * the table within the `type` property.
    *
-   * @property {string} type - Specifies the style of the legend. There are two possible values listed in the table below:
+   * @property {"classic" | "card"} type - Specifies the style of the legend. There are two possible values listed in the table below:
    *
    * Value | Description
    * ------|------------
    * classic | The legend has a portrait orientation. The user can scroll vertically when many elements are included in the legend's content.
    * card | In wide views, the legend has a landscape orientation that allows users to scroll horizontally to view all legend elements. This style can be responsive, making it ideal for mobile web apps. In smaller views, the legend collapses to occupy less space. One element is shown at a time in a card-style layout, which the user can navigate horizontally.
    *
-   * @property {string} [layout=stack] - When a `card` type is specified, you can specify one of the following layout options.
+   * @property {"auto" | "side-by-side" | "stack"} [layout=stack] - When a `card` type is specified, you can specify one of the following layout options.
    *
    * Value | Description
    * ------|------------

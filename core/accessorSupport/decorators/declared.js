@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,_){function r(e){var _=function(){return this||{}};if(arguments.length>1){_.__bases__=[];for(var r=0;r<arguments.length;r++)_.__bases__.push(arguments[r])}else _.__bases__=[e];return _}Object.defineProperty(_,"__esModule",{value:!0}),_.declared=r});
+define(["require","exports","../../declare"],function(e,t,r){function o(e){var t=function(){return this||{}};if(arguments.length>1){for(var o=[],n=0;n<arguments.length;n++)o.push(arguments[n]);e=r(o),a(e)}return t.__bases__=[e],t}function a(e){var t=Object.getPrototypeOf(e.prototype),r=e._meta&&e._meta.bases,o=e._meta&&e._meta.parents;if(t&&r&&o&&!(o.length<=1))for(var a=1;a<r.length;a++){var i=r[a],c=i.__accessorMetadata__&&i.__accessorMetadata__.properties,s=t;if(t=Object.getPrototypeOf(t),-1!==o.indexOf(i))for(var f=Object.getOwnPropertyNames(i.prototype),p=0,_=f;p<_.length;p++){var d=_[p];if("initialized"!==d&&"constructed"!==d&&"destroyed"!==d&&!(c&&d in c)){var u=Object.getOwnPropertyDescriptor(i.prototype,d);n(u)&&Object.defineProperty(s,d,u)}}}}function n(e){return e&&!(!e.get&&!e.set)}Object.defineProperty(t,"__esModule",{value:!0}),t.declared=o});

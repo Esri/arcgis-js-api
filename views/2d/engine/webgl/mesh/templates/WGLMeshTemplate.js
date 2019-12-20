@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../../core/tsSupport/extendsHelper"],function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(){}return e.prototype.writeMesh=function(e,t,n,r,o){},e.prototype.bindFeature=function(e,t,n){},e}();t.default=r});

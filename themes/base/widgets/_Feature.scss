@@ -3,7 +3,7 @@
   $attachment-icon-container-width: $button-width * 2 !default;
   $attachment-icon-container-height: $button-height * 2 !default;
   $attachment-image-container-width: 100% !default;
-  $attachment-image-container-height: $button-height * 3 !default;
+  $attachment-image-container-height: auto !default;
 
   .esri-feature__title {
     font-size: $font-size;
@@ -203,36 +203,31 @@
       align-items: center;
     }
     .esri-feature__attachments-item {
-      width: 50%;
-      &:only-child {
-        margin-left: 25%;
-        margin-right: 25%;
-      }
+      margin-bottom: $cap-spacing;
+      width: 100%;
     }
     .esri-feature__attachment-item-mask {
       width: $attachment-image-container-width;
       height: $attachment-image-container-height;
-      background-color: $background-color--offset;
-      @include borderBoxShadow();
-      padding: $cap-spacing--half $side-spacing--half;
     }
     .esri-feature__attachments-image {
-      max-width: unset;
-      width: auto;
-      max-height: 100%;
+      max-width: $attachment-image-container-width;
     }
     .esri-feature__attachments-item-link {
       align-items: center;
       flex-flow: row wrap;
       justify-content: center;
-      padding: $cap-spacing $side-spacing--half;
+      padding-bottom: $cap-spacing;
     }
     .esri-feature__attachments-filename {
-      margin-top: $cap-spacing--half;
+      margin-top: $cap-spacing;
       overflow: hidden;
       text-align: center;
       text-overflow: ellipsis;
-      width: calc(100% - #{$side-spacing});
+      width: calc(#{$attachment-image-container-width} - #{$side-spacing});
+    }
+    .esri-feature__attachment-item-mask--icon {
+      background-color: transparent;
     }
   }
   // MEDIA
@@ -279,6 +274,7 @@
     background-color: #fff;
     //  Dimensions on containing div are required
     //  for Chart library to know how big to make the chart.
+    min-width: 250px;
     width: 100%;
     height: 250px;
   }
@@ -326,7 +322,9 @@
 
   .esri-view-width-xsmall .esri-docked {
     @include mediaImgMaxWidth(300);
-  } //  RTL
+  }
+
+  //  RTL
   html[dir="rtl"] {
     .esri-feature__attachments-title {
       margin: 0 0 0 auto;

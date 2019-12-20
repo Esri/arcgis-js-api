@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({addBookmark:"إضافة علامة مرجعية",goToBookmark:"انتقال إلى الإشارة المرجعية",noBookmarksHeading:"لا توجد إشارات مرجعية",noBookmarksDescription:"أضف إشارات مرجعية إلى الخريطة التي ستظهر هنا.",title:"العنوان",addPlaceholder:"أدخل عنوان العنصر",addingBookmark:"إضافة علامة مرجعية",widgetLabel:"إشارات مرجعية"});
+define({addBookmark:"إضافة علامة مرجعية",goToBookmark:"انتقال إلى الإشارة المرجعية",noBookmarksHeading:"لا توجد أي إشارات مرجعية",noBookmarksDescription:"أضف إشارات مرجعية إلى الخريطة التي ستظهر هنا.",title:"العنوان",addPlaceholder:"أدخل عنوان العنصر",addingBookmark:"إضافة علامة مرجعية",widgetLabel:"إشارات مرجعية"});

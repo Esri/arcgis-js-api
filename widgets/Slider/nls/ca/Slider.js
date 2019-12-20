@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Control lliscant",maximumValue:"Valor màxim",minimumValue:"Valor mínim",rangeMaximum:"Valor màxim de l'interval: {value}",rangeMinimum:"Valor mínim de l'interval: {value}",sliderValue:"Valor del control lliscant"});

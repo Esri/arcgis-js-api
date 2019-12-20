@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Liitteet",fields:"Kentät",fieldsSummary:"Ominaisuustietojen ja arvojen luettelo",media:"Media",next:"Seuraava",noTitle:"Nimetön",previous:"Edellinen",lastEdited:"Muokattu viimeksi: {date}.",lastCreated:"Luontipäivä: {date}.",lastEditedByUser:"{user} on muokannut viimeksi {date}.",lastCreatedByUser:"{user} on luonut {date}."});
+define({widgetLabel:"Ominaisuus",attach:"Liitteet",fields:"Kentät",fieldsSummary:"Ominaisuustietojen ja arvojen luettelo",media:"Media",next:"Seuraava",noTitle:"Nimetön",previous:"Edellinen",lastEdited:"Muokattu viimeksi: {date}.",lastCreated:"Luontipäivä: {date}.",lastEditedByUser:"{user} on muokannut viimeksi {date}.",lastCreatedByUser:"{user} on luonut {date}."});

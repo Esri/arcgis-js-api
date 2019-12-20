@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista de capas de mapa base",baseHeading:"Base",basemapTitle:"Título del mapa base",referenceHeading:"Referencia",noReferenceLayers:"No hay ninguna capa de referencia",noBaseLayers:"No hay ninguna capa base",layerInvisibleAtScale:"Invisible en la escala actual",layerError:"Se ha producido un error al cargar esta capa",untitledLayer:"Capa sin título"});

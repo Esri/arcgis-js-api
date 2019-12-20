@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Medição de Linha Reta",hint:"Inicie a medição clicando na cena para posicionar seu primeiro ponto",unsupported:"A medição de linha direta 3D é suportada somente no SceneView.",distance:"Distância",direct:"Direto",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidade",newMeasurement:"Nova Medição",units:{metric:"Métrico",imperial:"Imperial",kilometers:"Quilômetros",meters:"Metros",miles:"Milhas",inches:"Polegadas",feet:"Pés",yards:"Jardas","nautical-miles":"Milhas Náuticas","us-feet":"Pés (US)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});
+define({widgetLabel:"Medição de Linha Reta",hint:"Inicie a medição clicando na cena para posicionar seu primeiro ponto",unsupported:"A medição de linha direta 3D é suportada somente no SceneView.",distance:"Distância",direct:"Direto",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidade",newMeasurement:"Nova medição",units:{metric:"Métrico",imperial:"Imperial",kilometers:"Quilômetros",meters:"Metros",miles:"Milhas",inches:"Polegadas",feet:"Pés",yards:"Jardas","nautical-miles":"Milhas náuticas","us-feet":"Pés (US)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});

@@ -18,6 +18,29 @@ npm install arcgis-js-api
 
 Please see our guide: [Using npm for Custom Builds](https://developers.arcgis.com/javascript/latest/guide/using-npm/index.html)
 
+## TypeScript Typings
+
+You can use the typings included with `arcgis-js-api` two ways.
+
+### Include a `///` directive in your main TypeScript file.
+```ts
+// main.ts
+/// <reference types="arcgis-js-api" />
+```
+
+### Or add to the `include` of your `tsconfig.json`.
+```json
+// tsconfig.json
+{
+  "compilerOptions": {},
+  "include": [
+    "node_modules/arcgis-js-api/index.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
+}
+```
+
 ## Resources
 
 * [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)

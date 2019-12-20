@@ -81,47 +81,47 @@
  * @see {@link module:esri/renderers/smartMapping/creators/univariateColorSize univariateColorSizeRendererCreator}
  */
 
-/// <amd-dependency path="../../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="../../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
+/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./ColorSizeSlider/nls/ColorSizeSlider";
+import * as i18n from "dojo/i18n!esri/widgets/ColorSizeSlider/nls/ColorSizeSlider";
 
 // esri.core
-import { isSome } from "../../core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../../core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.creators
-import { RendererResult } from "../../renderers/smartMapping/creators/univariateColorSize";
+import { RendererResult } from "esri/../renderers/smartMapping/creators/univariateColorSize";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "../../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.visualVariables
-import ColorVariable = require("../../renderers/visualVariables/ColorVariable");
-import SizeVariable = require("../../renderers/visualVariables/SizeVariable");
+import ColorVariable = require("esri/../renderers/visualVariables/ColorVariable");
+import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
 
 // esri.renderers.visualVariables.support
-import ColorSizeStop = require("../../renderers/visualVariables/support/ColorSizeStop");
-import ColorStop = require("../../renderers/visualVariables/support/ColorStop");
-import SizeStop = require("../../renderers/visualVariables/support/SizeStop");
+import ColorSizeStop = require("esri/../renderers/visualVariables/support/ColorSizeStop");
+import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
+import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
 
 // esri.widgets.smartMapping
-import { SmartMappingSliderBase } from "./SmartMappingSliderBase";
+import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ColorSizeSlider
-import ColorSizeSliderViewModel = require("./ColorSizeSlider/ColorSizeSliderViewModel");
+import ColorSizeSliderViewModel = require("esri/widgets/ColorSizeSlider/ColorSizeSliderViewModel");
 
 // esri.widgets.smartMapping.support
-import { ZoomOptions } from "./support/interfaces";
-import { getPathForSizeStops } from "./support/utils";
+import { ZoomOptions } from "esri/widgets/support/interfaces";
+import { getPathForSizeStops } from "esri/widgets/support/utils";
 
 // esri.widgets.support
-import { VNode } from "./../support/interfaces";
-import { renderable, storeNode, tsx } from "./../support/widget";
+import { VNode } from "esri/widgets/../support/interfaces";
+import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-size-slider",
@@ -164,7 +164,7 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -273,6 +273,8 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
   @property()
   @renderable([
     "viewModel.hasTimeData",
+    "viewModel.inputFormatFunction",
+    "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
@@ -358,7 +360,12 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
       size: { visualVariables },
       statistics
     } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
+
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
+
     const sizeVV = visualVariables[0];
     const stops = colorStops.map((colorStop, index) => {
       const { color, label, value } = colorStop;
@@ -436,7 +443,12 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
       size: { visualVariables },
       statistics
     } = result;
-    const { avg, max, min, stddev } = statistics;
+    const { avg, stddev } = statistics;
+
+    const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
+    const min = authoringInfoVisualVariable.minSliderValue;
+    const max = authoringInfoVisualVariable.maxSliderValue;
+
     const sizeVV = visualVariables[0];
     const stops = colorStops.map((colorStop, index) => {
       const { color, label, value } = colorStop;
@@ -486,7 +498,7 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    * });
    */
   updateVisualVariables(variables: VisualVariable[]): VisualVariable[] {
-    return variables.map((variable, index) => {
+    return variables.map((variable) => {
       const clone = variable.clone();
 
       if (variable.type === "size") {

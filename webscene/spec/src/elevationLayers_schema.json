@@ -1,0 +1,14 @@
+{
+  "title": "elevationLayers",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Elevation layers provide elevation for the ground.",
+  "oneOf": [
+    {
+      "$ref": "rasterDataElevationLayer_schema.json"
+    },
+    {
+      "$ref": "tiledElevationLayer_schema.json"
+    }
+  ]
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","./sources/resolver"],function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.tileInfo={name:"tileInfo",shaders:{vertexShader:t.resolveIncludes("tileInfo/tileInfo.vert"),fragmentShader:t.resolveIncludes("tileInfo/tileInfo.frag")},attributes:{a_pos:0}}});

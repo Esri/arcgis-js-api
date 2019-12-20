@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({streets:"Вулиці",satellite:"Зображення",hybrid:"Зображення з написами",terrain:"Ландшафт з написами",topo:"Топографічна",gray:"Світло-сіра бланкова","dark-gray":"Темно-сіра бланкова",oceans:"Океани","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"World Street Map (Night)","streets-relief-vector":"World Street Map (with Relief)","streets-navigation-vector":"World Navigation Map"});

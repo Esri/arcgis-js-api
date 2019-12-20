@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/jsonMap","../../core/accessorSupport/decorators","./GPMessage"],function(e,r,t,o,s,p,n){var a=new s.default({0:"informative",1:"process-definition",2:"process-start",3:"process-stop",50:"warning",100:"error",101:"empty",200:"abort"});return function(e){function r(r){var t=e.call(this)||this;return t.type=null,t}return t(r,e),o([p.property({type:String,json:{read:a.read,write:a.write}})],r.prototype,"type",void 0),r=o([p.subclass("esri.tasks.support.NAMessage")],r)}(p.declared(n))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/jsonMap","../../core/accessorSupport/decorators","./GPMessage"],function(e,r,t,o,s,p,n){var a=new s.default({0:"informative",1:"process-definition",2:"process-start",3:"process-stop",50:"warning",100:"error",101:"empty",200:"abort"});return function(e){function r(r){var t=e.call(this,r)||this;return t.type=null,t}return t(r,e),o([p.property({type:String,json:{read:a.read,write:a.write}})],r.prototype,"type",void 0),r=o([p.subclass("esri.tasks.support.NAMessage")],r)}(p.declared(n))});

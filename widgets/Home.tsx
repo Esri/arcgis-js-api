@@ -105,7 +105,7 @@ class Home extends declared(Widget) {
    * });
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -234,7 +234,7 @@ class Home extends declared(Widget) {
    * @method
    */
   @aliasOf("viewModel.cancelGo")
-  cancelGo(): IPromise<void> {
+  cancelGo(): Promise<void> {
     return null;
   }
 
@@ -246,7 +246,7 @@ class Home extends declared(Widget) {
    * @see [Event: go](#event-go)
    */
   @aliasOf("viewModel.go")
-  go(): IPromise<void> {
+  go(): Promise<void> {
     return null;
   }
 

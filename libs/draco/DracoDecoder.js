@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../core/has","../../core/promiseUtils","./draco_decoder"],function(e,r,o,n,t){function c(){return!!o("esri-wasm")}function i(){return c()?(a||(a=n.create(function(r,o){return e(["./draco_decoder"],function(e){s=e({locateFile:u}),r(s)})}).catch(function(e){return n.reject(e)})),a):n.reject(new Error("Draco decompression not available, missing WebAssembly support"))}function u(){return e.toUrl("./draco_decoder.wasm")}Object.defineProperty(r,"__esModule",{value:!0}),function(e){for(var o in e)r.hasOwnProperty(o)||(r[o]=e[o])}(t),r.isSupported=c,r.getDecoderModule=i;var a,s});
+define(["require","exports","../../core/has","../../core/promiseUtils","./draco_decoder"],function(e,r,o,n,t){function c(){return!!o("esri-wasm")}function i(){return c()?(a||(a=n.create(function(r){return e(["./draco_decoder"],function(e){s=e({locateFile:u}),r(s)})}).catch(function(e){return n.reject(e)})),a):n.reject(new Error("Draco decompression not available, missing WebAssembly support"))}function u(){return e.toUrl("./draco_decoder.wasm")}Object.defineProperty(r,"__esModule",{value:!0}),function(e){for(var o in e)r.hasOwnProperty(o)||(r[o]=e[o])}(t),r.isSupported=c,r.getDecoderModule=i;var a,s});

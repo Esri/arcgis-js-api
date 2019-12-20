@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],function(e,r,t,o,a,c,n){return function(e){function r(r){var t=e.call(this,r)||this;return t.gamepad=new n,t}return t(r,e),o([c.property({readOnly:!0})],r.prototype,"gamepad",void 0),r=o([c.subclass("esri.views.navigation.Navigation")],r)}(c.declared(a))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],function(e,o,r,t,p,a,n){return function(e){function o(o){var r=e.call(this,o)||this;return r.browserTouchPanEnabled=!0,r.gamepad=new n,r.momentumEnabled=!0,r.mouseWheelZoomEnabled=!0,r}return r(o,e),t([a.property({type:Boolean})],o.prototype,"browserTouchPanEnabled",void 0),t([a.property({type:n,nonNullable:!0})],o.prototype,"gamepad",void 0),t([a.property({type:Boolean})],o.prototype,"momentumEnabled",void 0),t([a.property({type:Boolean})],o.prototype,"mouseWheelZoomEnabled",void 0),o=t([a.subclass("esri.views.navigation.Navigation")],o)}(a.declared(p))});

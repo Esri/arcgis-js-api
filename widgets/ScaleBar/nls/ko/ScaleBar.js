@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({km:"km",mi:"mi",ft:"ft",m:"m",unknownUnit:"알 수 없는 단위"});
+define({widgetLabel:"축척 막대",km:"km",mi:"mi",ft:"ft",m:"m",unknownUnit:"알 수 없는 단위"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"רשימת שכבות מפת בסיס",baseHeading:"בסיס",basemapTitle:"כותרת מפת בסיס",referenceHeading:"יחוס",noReferenceLayers:"אין שכבות ייחוס",noBaseLayers:"אין שכבות בסיס",layerInvisibleAtScale:"לא גלוי בקנה המידה הנוכחי",layerError:"חלה שגיאה בעת הטעינה של שכבה זו.",untitledLayer:"שכבה ללא כותרת"});

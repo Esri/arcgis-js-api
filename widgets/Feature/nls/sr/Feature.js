@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({attach:"Prilozi",fields:"Polja",fieldsSummary:"Lista atributa i vrednosti",media:"Mediji",next:"Sledeće",noTitle:"Bez naslova",previous:"Prethodno",lastEdited:"Poslednji put izmenjeno {date}.",lastCreated:"Kreirano {date}.",lastEditedByUser:"Poslednji put izmenio {user} dana {date}.",lastCreatedByUser:"Kreirao {user} dana {date}."});
+define({widgetLabel:"Funkcionalnost",attach:"Prilozi",fields:"Polja",fieldsSummary:"Lista atributa i vrednosti",media:"Mediji",next:"Sledeće",noTitle:"Bez naslova",previous:"Prethodno",lastEdited:"Poslednji put izmenjeno {date}.",lastCreated:"Kreirano {date}.",lastEditedByUser:"Poslednji put izmenio {user} dana {date}.",lastCreatedByUser:"Kreirao {user} dana {date}."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",dock:"Fest",undock:"Løsne",pageText:"{index} av {total}",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater",tooManyFields:"Dette laget har for mange felter, og noen blir ikke vist."});
+define({widgetLabel:"Popup",zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",dock:"Fest",undock:"Løsne",pageText:"{index} av {total}",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater",tooManyFields:"Dette laget har for mange felter, og noen blir ikke vist."});

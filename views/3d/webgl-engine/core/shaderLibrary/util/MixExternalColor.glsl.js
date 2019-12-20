@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","./ColorConversion.glsl","../../shaderModules/interfaces"],function(e,n,t,r,i){function l(e,n){e.include(r.ColorConversion,n);var l=i.glsl(a||(a=t(["\n    vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {\n      // workaround for artifacts in OSX using Intel Iris Pro\n      // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475\n      vec3 internalMixed = internalColor * textureColor;\n      vec3 allMixed = internalMixed * externalColor;\n\n      if (mode == ",") {\n        return allMixed;\n      }\n      else if (mode == ",") {\n        return internalMixed;\n      }\n      else if (mode == ",") {\n        return externalColor;\n      }\n      else {\n        // tint (or something invalid)\n        float vIn = rgb2v(internalMixed);\n        vec3 hsvTint = rgb2hsv(externalColor);\n        vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, vIn * hsvTint.z);\n        return hsv2rgb(hsvOut);\n      }\n    }\n\n    float mixExternalOpacity(float internalOpacity, float textureOpacity, float externalOpacity, int mode) {\n      // workaround for artifacts in OSX using Intel Iris Pro\n      // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475\n      float internalMixed = internalOpacity * textureOpacity;\n      float allMixed = internalMixed * externalOpacity;\n\n      if (mode == ",") {\n        return internalMixed;\n      }\n      else if (mode == ",") {\n        return externalOpacity;\n      }\n      else {\n        // multiply or tint (or something invalid)\n        return allMixed;\n      }\n    }\n  "],["\n    vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {\n      // workaround for artifacts in OSX using Intel Iris Pro\n      // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475\n      vec3 internalMixed = internalColor * textureColor;\n      vec3 allMixed = internalMixed * externalColor;\n\n      if (mode == ",") {\n        return allMixed;\n      }\n      else if (mode == ",") {\n        return internalMixed;\n      }\n      else if (mode == ",") {\n        return externalColor;\n      }\n      else {\n        // tint (or something invalid)\n        float vIn = rgb2v(internalMixed);\n        vec3 hsvTint = rgb2hsv(externalColor);\n        vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, vIn * hsvTint.z);\n        return hsv2rgb(hsvOut);\n      }\n    }\n\n    float mixExternalOpacity(float internalOpacity, float textureOpacity, float externalOpacity, int mode) {\n      // workaround for artifacts in OSX using Intel Iris Pro\n      // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475\n      float internalMixed = internalOpacity * textureOpacity;\n      float allMixed = internalMixed * externalOpacity;\n\n      if (mode == ",") {\n        return internalMixed;\n      }\n      else if (mode == ",") {\n        return externalOpacity;\n      }\n      else {\n        // multiply or tint (or something invalid)\n        return allMixed;\n      }\n    }\n  "])),i.glsl.int(1),i.glsl.int(2),i.glsl.int(3),i.glsl.int(2),i.glsl.int(3));switch(n.stages){case 0:e.vertex.code.add(l);break;case 1:e.fragment.code.add(l);break;default:e.vertex.code.add(l),e.fragment.code.add(l)}}Object.defineProperty(n,"__esModule",{value:!0}),n.MixExternalColor=l;var a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({zoom:"Масштабувати до",next:"Наступний об'єкт",previous:"Попередній об'єкт",dock:"Зістикувати",undock:"Відстикувати",pageText:"{index} з {total}",selectedFeature:"Вибраний об'єкт",selectedFeatures:"{total} результатів",tooManyFields:"Цей шар має занадто багато полів, тому деякі з них не будуть відображатися."});
+define({widgetLabel:"Спливаюче вікно",zoom:"Масштабувати до",next:"Наступний об'єкт",previous:"Попередній об'єкт",dock:"Зістикувати",undock:"Відстикувати",pageText:"{index} з {total}",selectedFeature:"Вибраний об'єкт",selectedFeatures:"{total} результатів",tooManyFields:"Цей шар має занадто багато полів, тому деякі з них не будуть відображатися."});

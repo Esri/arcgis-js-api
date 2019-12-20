@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({empty:"- puste -",validationErrors:{cannotBeNull:"Wprowadź wartość",outsideRange:"Wartość powinna mieścić się w granicach {min} i {max}",invalidCodedValue:"Wartość powinna być równa jednej z wyszczególnionych wartości.",invalidType:"Nieprawidłowa wartość"}});
+define({widgetLabel:"Formularz obiektu",empty:"- puste -",validationErrors:{cannotBeNull:"Wprowadź wartość",outsideRange:"Wartość powinna mieścić się w granicach {min} i {max}",invalidCodedValue:"Wartość powinna być równa jednej z wyszczególnionych wartości.",invalidType:"Nieprawidłowa wartość"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
-define({title:"Mjerenje područja",hint:"Započnite mjerenje tako da kliknete na kartu za postavljanje prve točke",unsupported:"Mjerenje 2D udaljenosti nije podržano u pregledniku karte.",perimeter:"Opseg",area:"Poligon",newMeasurement:"Novo mjerenje",mode:"Način",modes:{auto:"Automatski",planar:"Planarno",geodesic:"Geodetski"},unit:"Jedinica",units:{metric:"Metrički",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inči","square-feet":"Kvadratne stope","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratne stope (SAD)",acres:"Rali",ares:"Ari",hectares:"Hektari"}});
+define({widgetLabel:"Mjerenje područja",hint:"Započnite mjerenje tako da kliknete na kartu za postavljanje prve točke",unsupported:"Mjerenje 2D udaljenosti nije podržano u pregledniku karte.",perimeter:"Opseg",area:"Poligon",newMeasurement:"Novo mjerenje",mode:"Način",modes:{auto:"Automatski",planar:"Planarno",geodesic:"Geodetski"},unit:"Jedinica",units:{metric:"Metrički",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inči","square-feet":"Kvadratne stope","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratne stope (SAD)",acres:"Rali",ares:"Ari",hectares:"Hektari"}});

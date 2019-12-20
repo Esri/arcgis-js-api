@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({transparency:"Transparens",suggested:"Föreslagen",recent:"Senaste",more:"Mer",moreColorsTooltip:"Se fler färger.",paletteTooltip:"Välj en färg.",noColorTooltip:"Ingen färg",hexInputTooltip:"En anpassad färg i hexadecimal text (#FFFF00)."});

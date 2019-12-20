@@ -45,8 +45,6 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 /// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
 
-// @dojo
-
 // @dojo.framework.shim
 import Map from "@dojo/framework/shim/Map";
 
@@ -85,13 +83,12 @@ import EditorViewModel = require("esri/widgets/Editor/EditorViewModel");
 import {
   CancelWorkflowOptions,
   CreateWorkflow,
-  CreateWorkflowParams,
   FailedOperation,
   LayerInfo,
   SupportingWidgetDefaults,
   UpdateWorkflow,
-  UpdateWorkflowParams,
-  WorkflowType
+  WorkflowType,
+  CreationInfo
 } from "esri/widgets/Editor/interfaces";
 
 // esri.widgets.FeatureTemplates
@@ -218,7 +215,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    *
    */
   constructor(params?: EditorParams) {
-    super();
+    super(params);
 
     this._handleSave = this._handleSave.bind(this);
     this._handleBack = this._handleBack.bind(this);
@@ -323,6 +320,12 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         };
       }),
 
+      watch<EditorViewModel["state"]>(this, "viewModel.state", (state) => {
+        if (state === "awaiting-update-feature-candidate") {
+          this._candidateCommitted = false;
+        }
+      }),
+
       whenNot(this, "viewModel.activeWorkflow", () => (this._featureTemplates.filterText = ""))
     ]);
   }
@@ -337,6 +340,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   //  Variables
   //
   //--------------------------------------------------------------------------
+
+  private _candidateCommitted = false;
 
   private _featureForm: FeatureForm = new FeatureForm();
 
@@ -651,9 +656,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @method startCreateWorkflowAtFeatureTypeSelection
    * @instance
    */
-  @aliasOf("viewModel.startCreateWorkflowAtFeatureTypeSelection")
   startCreateWorkflowAtFeatureTypeSelection(): Promise<void> {
-    return null;
+    return this.viewModel.startCreateWorkflowAtFeatureTypeSelection();
   }
 
   /**
@@ -668,11 +672,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * information needed to create a new feature using the Editor widget. This object
    * provides the feature template and layer for creating a new feature.
    */
-  @aliasOf("viewModel.startCreateWorkflowAtFeatureCreation")
-  startCreateWorkflowAtFeatureCreation(
-    creationInfo: CreateWorkflowParams["creationInfo"]
-  ): Promise<void> {
-    return null;
+  startCreateWorkflowAtFeatureCreation(creationInfo: CreationInfo): Promise<void> {
+    return this.viewModel.startCreateWorkflowAtFeatureCreation(creationInfo);
   }
 
   /**
@@ -684,9 +685,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @param {module:esri/Graphic} feature - The feature to be edited.
    *
    */
-  @aliasOf("viewModel.startCreateWorkflowAtFeatureEdit")
-  startCreateWorkflowAtFeatureEdit(feature: CreateWorkflowParams["feature"]): Promise<void> {
-    return null;
+  startCreateWorkflowAtFeatureEdit(feature: Graphic): Promise<void> {
+    return this.viewModel.startCreateWorkflowAtFeatureEdit(feature);
   }
 
   /**
@@ -696,9 +696,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    *
    */
-  @aliasOf("viewModel.startUpdateWorkflowAtFeatureSelection")
   startUpdateWorkflowAtFeatureSelection(): Promise<void> {
-    return null;
+    return this.viewModel.startUpdateWorkflowAtFeatureSelection();
   }
 
   /**
@@ -708,15 +707,12 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @method startUpdateWorkflowAtMultipleFeatureSelection
    * @instance
    *
-   * @param {module:esri/Graphic[]} candidates - An array of features to be updated.
+   * @param {module:esri/Graphic[]} _candidates - An array of features to be updated.
    * This is only relevant when there are multiple candidates to update.
    *
    */
-  @aliasOf("viewModel.startUpdateWorkflowAtMultipleFeatureSelection")
-  startUpdateWorkflowAtMultipleFeatureSelection(
-    candidates: UpdateWorkflowParams["candidates"]
-  ): Promise<void> {
-    return null;
+  startUpdateWorkflowAtMultipleFeatureSelection(candidates: Graphic[]): Promise<void> {
+    return this.viewModel.startUpdateWorkflowAtMultipleFeatureSelection(candidates);
   }
 
   /**
@@ -727,9 +723,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    *
    * @param {module:esri/Graphic} feature - The feature to be updated.
    */
-  @aliasOf("viewModel.startUpdateWorkflowAtFeatureEdit")
-  startUpdateWorkflowAtFeatureEdit(feature: UpdateWorkflowParams["feature"]): Promise<void> {
-    return null;
+  startUpdateWorkflowAtFeatureEdit(feature: Graphic): Promise<void> {
+    return this.viewModel.startUpdateWorkflowAtFeatureEdit(feature);
   }
 
   /**
@@ -740,9 +735,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    *
    */
-  @aliasOf("viewModel.deleteFeatureFromWorkflow")
   deleteFeatureFromWorkflow(): Promise<void> {
-    return null;
+    return this.viewModel.deleteFeatureFromWorkflow();
   }
 
   /**
@@ -751,9 +745,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @method cancelWorkflow
    * @instance
    */
-  @aliasOf("viewModel.cancelWorkflow")
   cancelWorkflow(options?: CancelWorkflowOptions): Promise<void> {
-    return null;
+    return this.viewModel.cancelWorkflow(options);
   }
 
   render(): VNode {
@@ -1127,19 +1120,10 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
               noItems: i18nTemplates.noItems,
               noMatches: i18nTemplates.noMatches
             },
-            onItemMouseEnter: ({ data: feature }) => {
-              workflow.data.edits.feature = feature;
-            },
-            onItemMouseLeave: () => {
-              workflow.data.edits.feature = null;
-            },
-            onItemSelect: ({ data: feature }) => {
-              workflow.data.edits.feature = feature;
-              workflow.next();
-            },
-            onFilterChange: (value) => {
-              this._filterText = value;
-            }
+            onItemMouseEnter: ({ data: feature }) => this._setCandidateFeature(feature),
+            onItemMouseLeave: () => this._setCandidateFeature(null),
+            onItemSelect: ({ data: feature }) => this._setCandidateFeature(feature, true),
+            onFilterChange: (value) => (this._filterText = value)
           })}
         </div>
       </div>
@@ -1151,6 +1135,21 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _setCandidateFeature = (feature: Graphic | null, commit: boolean = false): void => {
+    if (this._candidateCommitted) {
+      return;
+    }
+
+    const workflow = this.viewModel.activeWorkflow as UpdateWorkflow;
+    workflow.data.edits.feature = feature;
+
+    if (commit) {
+      // next is async so we need a commit flag to avoid overriding selected feature
+      workflow.next();
+      this._candidateCommitted = true;
+    }
+  };
 
   private _getSketchingTip(
     geometryType: FeatureLayer["geometryType"],
@@ -1217,7 +1216,6 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     const { activeWorkflow: workflow } = this.viewModel;
 
     workflow.commit();
-    workflow.reset();
   }
 
   @accessibleHandler()

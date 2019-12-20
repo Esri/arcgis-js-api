@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../core/unitUtils"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.defaultUnitPropertyMetadata={dependsOn:["view.map.portalItem.portal.units","view.map.portalItem.portal.user.units","view.spatialReference"],readOnly:!0,get:function(){var e=this.view;if(!e)return"metric";var t=e.get("map.portalItem.portal");if(t){switch(t.get("user.units")||t.units){case"metric":return"metric";case"english":return"imperial"}}return r.getDefaultUnitSystem(e.spatialReference)||"metric"}}});

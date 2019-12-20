@@ -1,0 +1,25 @@
+// COPYRIGHT © 2019 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../../core/libs/gl-matrix-2/vec2f32","../../../../../core/libs/gl-matrix-2/vec4f32","../../../../webgl","../definitions","../enums","../number","./WGLBrush"],function(e,t,r,i,a,l,z,E,j,n){Object.defineProperty(t,"__esModule",{value:!0});l.enums.DataType,l.enums.PrimitiveType,l.enums.TextureSamplingMode;t.C_DEG_TO_RAD=Math.PI/180;var S=[1,1,1,1],o=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._color=a.vec4f32.create(),e._dashArray=i.vec2f32.create(),e._programOptions={id:!1,dd:!1,pattern:!1},e._vertexAttributes={geometry:[{name:"a_pos",count:2,type:5122,offset:0,stride:12,normalized:!1,divisor:0},{name:"a_offsetAndNormal",count:4,type:5120,offset:4,stride:12,normalized:!1,divisor:0},{name:"a_accumulatedDistance",count:2,type:5123,offset:8,stride:12,normalized:!1,divisor:0}]},e._vertexAttributesDD={geometry:[{name:"a_pos",count:2,type:5122,offset:0,stride:20,normalized:!1,divisor:0},{name:"a_offsetAndNormal",count:4,type:5120,offset:4,stride:20,normalized:!1,divisor:0},{name:"a_accumulatedDistance",count:2,type:5122,offset:8,stride:20,normalized:!1,divisor:0},{name:"a_color",count:4,type:5121,offset:12,stride:20,normalized:!0,divisor:0},{name:"a_width",count:1,type:5126,offset:16,stride:20,normalized:!1,divisor:0}]},e}return r(e,t),e.prototype.dispose=function(){},e.prototype.drawMany=function(e,t){var r=e.context,i=e.displayLevel,a=e.state,n=e.drawPhase,o=e.styleLayerId,s=e.styleLayer,l=e.painter.getVectorTileProgramCach(),u=s.getPaintValue("line-translate",i),f=s.getPaintValue("line-translate-anchor",i),d=s.getPaintValue("line-pattern",i),m=void 0!==d,c=1/e.pixelRatio,_=s.getPaintValue("line-blur",i),p=s.hasDataDrivenColor?S:s.getPaintValue("line-color",i),y=s.hasDataDrivenOpacity?1:s.getPaintValue("line-opacity",i),v=s.hasDataDrivenWidth?1:s.getPaintValue("line-width",i),g=y*p[3];this._color[0]=g*p[0],this._color[1]=g*p[1],this._color[2]=g*p[2],this._color[3]=g;var h,D=s.hasDataDrivenLine,V=n===E.WGLDrawPhase.HITTEST;V&&(h=j.u32to4Xu8(o));var b=(V?1:0)<<2|(D?1:0)<<1|(m?1:0),x=this._programOptions;x.id=V,x.dd=D,x.pattern=m;var A=l.getProgram(3,b,x);if(r.bindProgram(A),A.setUniformMatrix3fv("u_displayViewMat3",a.displayViewMat3),A.setUniformMatrix3fv("u_displayMat3",1===f?a.displayMat3:a.displayViewMat3),A.setUniform2fv("u_lineTranslation",u),A.setUniform1f("u_depth",s.z),A.setUniform1f("u_blur",_),A.setUniform1f("u_antialiasing",c),A.setUniform4fv("u_color",this._color),A.setUniform1f("u_width",v),V&&A.setUniform4f("u_id",h[0],h[1],h[2],h[3]),m){var P=e.spriteMosaic,T=P.getMosaicItemPosition(d,!0);T&&(P.bind(r,9729,T.page,z.VTL_TEXTURE_BINDING_UNIT_SPRITES),A.setUniform2f("u_pattern_tl",T.tl[0],T.br[1]),A.setUniform2f("u_pattern_br",T.br[0],T.tl[1]),A.setUniform2f("u_spriteSize",8*T.size[0],T.size[1]),A.setUniform1i("u_texture",z.VTL_TEXTURE_BINDING_UNIT_SPRITES))}else{var U=s.getPaintValue("line-dasharray",i);U.length<2&&(U=[1,-1]);this._dashArray[0]=8*U[0],this._dashArray[1]=8*U[1],A.setUniform2fv("u_dasharray",this._dashArray)}for(var O=0,M=t;O<M.length;O++){var I=M[O];if(I.layerData[o]){var w=I.layerData[o],L=this._getLineVAO(r,I,D,l);L&&(r.bindVAO(L),A.setUniformMatrix3fv("u_dvsMat3",I.transforms.dvs),r.setStencilFunction(514,I.stencilRef,255),r.drawElements(4,w.triangleElementCount,5125,12*w.triangleElementStart),I.triangleCount+=w.triangleElementCount/3)}}},e.prototype._getLineVAO=function(e,t,r,i){if(r){if(t.lineDDVertexArrayObject)return t.lineDDVertexArrayObject;var a=t.lineDDVertexBuffer,n=t.lineIndexBuffer;return a&&n?(t.lineDDVertexArrayObject=new l.VertexArrayObject(e,i.getProgramAttributes(3),this._vertexAttributesDD,{geometry:a},n),t.lineDDVertexArrayObject):null}if(t.lineVertexArrayObject)return t.lineVertexArrayObject;var o=t.lineVertexBuffer,s=t.lineIndexBuffer;return o&&s?(t.lineVertexArrayObject=new l.VertexArrayObject(e,i.getProgramAttributes(3),this._vertexAttributes,{geometry:o},s),t.lineVertexArrayObject):null},e}(n.default);t.WGLBrushVTLLine=o});

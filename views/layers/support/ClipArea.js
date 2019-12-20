@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],function(r,e,t,o,p,s){return function(r){function e(){return null!==r&&r.apply(this,arguments)||this}return o(e,r),e=t([s.subclass("esri.views.layers.support.ClipArea")],e)}(s.declared(p.JSONSupport))});

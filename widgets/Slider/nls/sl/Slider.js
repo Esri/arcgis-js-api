@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define({widgetLabel:"Drsnik",maximumValue:"Maksimalna vrednost",minimumValue:"Minimalna vrednost",rangeMaximum:"Maksimalni razpon: {value}",rangeMinimum:"Minimalni razpon: {value}",sliderValue:"Vrednost drsnika"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/next/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
 
 define(["require","exports","../../../webgl/programUtils"],function(e,l,i){Object.defineProperty(l,"__esModule",{value:!0}),l.glslifyGlobalOptions=function(e){return i.glslifyDefineMap({VIEWING_MODE:{value:e.viewingMode,options:{global:"VIEWING_MODE_GLOBAL",local:"VIEWING_MODE_LOCAL"}}})}});

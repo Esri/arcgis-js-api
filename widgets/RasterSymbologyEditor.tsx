@@ -92,7 +92,7 @@ class RasterSymbologyEditor extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  postInitialize(params?: any): void {
+  postInitialize(): void {
     this.defaultParams = this.viewModel.getDefaultRenderParameters();
     this._createUIComponents();
   }
@@ -801,7 +801,7 @@ class RasterSymbologyEditor extends declared(Widget) {
       columns: [
         {
           field: "esriRasterSymbologyEditorUniqueValueSymbol",
-          renderCell: (object: any, value: any, node: Element) => {
+          renderCell: (object: any, _value: any, node: Element) => {
             node.innerHTML = `<div class = ${CSS.dgridSymbolCell}
           style = "background: rgb( ${object.esriRasterSymbologyEditorUniqueValueSymbol.r},
           ${object.esriRasterSymbologyEditorUniqueValueSymbol.g},
@@ -1118,7 +1118,7 @@ class RasterSymbologyEditor extends declared(Widget) {
 
       if (bandData.presets && bandData.presets.length) {
         this._supportsBandPresets = true;
-        bandData.presets.forEach((preset: any, idx: number) => {
+        bandData.presets.forEach((preset: any) => {
           key = Object.keys(preset)[0];
           bandCombinationTitle = i18n[`bandComboName${key}`];
           bandCombinationDescription = i18n[`bandComboDesc${key}`];
