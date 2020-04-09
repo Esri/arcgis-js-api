@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({fields:"Veld",categorical:"Categorisch",requiredMessage:"Er moet minimaal 1 verklarende variabele worden geselecteerd."});

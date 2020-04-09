@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({toolDefine:"使用深度学习分类像素",outputLayerName:"${layername}_classified",modelLabel:"选择用于对像素进行分类的深度学习模型",modelArgsLabel:"指定深度学习模型参数",nameLabel:"名称",valueLabel:"值",queryModelArgsMsg:"查询模型参数...",analysisLayerLabel:"选择用于对像素进行分类的图像",itemDescription:"使用深度学习通过分类像素生成的分析图像服务",itemTags:"栅格分析结果、使用深度学习分类像素、${layername}",itemSnippet:"使用深度学习通过分类像素生成的分析图像服务"});

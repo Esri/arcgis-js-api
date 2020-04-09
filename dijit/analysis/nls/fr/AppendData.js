@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir la couche à laquelle ajouter des champs",inputWarningLabel:"Avertissement : la couche à laquelle vous ajoutez un élément sera modifiée.",inputHostedLayerWarning:"La couche sélectionnée n'est pas une couche d'entités hébergées. Veuillez sélectionner une couche d'entités hébergées vers laquelle effectuer l'ajout.",appendLayerLabel:"Choisir la couche à ajouter",filterLabel:"Ajouter toutes les entités ou définir un sous-ensemble (facultatif)",fieldMappingLabel:"Choisir le mode d’ajout des champs (facultatif)",inputField:"Champ en entrée",appendValue:"Ajouter une valeur",expression:"Expression"});

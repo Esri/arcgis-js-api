@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Açıklanacak katmanı seçin",summaryTypes:"Özet türleri",centralFeature:"Merkezi detay",meanCenter:"Ortalama merkez",medianCenter:"Medyan merkezi",ellipse:"Elips",weightBy:"Öğeye göre ağırlıklandır (isteğe bağlı)",groupBy:"Öğeye göre grupla (isteğe bağlı)",resultLayerName:"Sonuç katmanı adı",outputLayerName:"${layerName} dağıtımını açıkla",none:"Yok",itemDescription:"Detay katmanı, ${layerName} üzerinde Merkez ve dağılımı özetle çalıştırılarak oluşturuldu. ",itemTags:"Analiz Sonucu, Merkez ve dağılımı özetle, ${layerName}",itemSnippet:"Detay katmanı, Merkez ve dağılımı özetle çalıştırılarak oluşturuldu"});

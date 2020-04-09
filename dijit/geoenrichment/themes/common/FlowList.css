@@ -53,3 +53,9 @@
     .esriGEFlowList.esriGEFlowListNoHighlight .listItemSelected {
         background-color: transparent;
     }
+
+    
+
+    .esriGEFlowList .listItemFocused {
+        background-color: #D1D1D1;
+    }

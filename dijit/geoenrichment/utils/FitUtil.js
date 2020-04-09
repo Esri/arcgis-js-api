@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define([],function(){var e={};return e.fitBox=function(e,a,t){t=t||{};var r=(t.mode,t.vAlign||"middle"),h=t.hAlign||"center",i=e.w/a.w,n=e.h/a.h,w=i>1?1:-1,c=n>1?1:-1;i=i>1?1/i:i,n=n>1?1/n:n;var o;-1===w&&-1===c?o=1/Math.max(i,n):-1===w&&1===c?o=n:1===w&&-1===c?o=i:1===w&&1===c&&(o=Math.min(i,n));var f={x:0,y:0,w:e.w*o,h:e.h*o,ratio:o};switch(h){case"left":f.x=0;break;case"right":f.x=a.w-f.w;break;default:f.x=(a.w-f.w)/2}switch(r){case"top":f.y=0;break;case"bottom":f.y=a.h-f.h;break;default:f.y=(a.h-f.h)/2}return f},e});
+define([],(function(){var e={fitBox:function(e,t,a){(a=a||{}).mode;var h,r=a.vAlign||"middle",i=a.hAlign||"center",n=e.w/t.w,w=e.h/t.h,c=n>1?1:-1,o=w>1?1:-1;n=n>1?1/n:n,w=w>1?1/w:w,-1===c&&-1===o?h=1/Math.max(n,w):-1===c&&1===o?h=w:1===c&&-1===o?h=n:1===c&&1===o&&(h=Math.min(n,w));var f={x:0,y:0,w:e.w*h,h:e.h*h,ratio:h};switch(i){case"left":f.x=0;break;case"right":f.x=t.w-f.w;break;default:f.x=(t.w-f.w)/2}switch(r){case"top":f.y=0;break;case"bottom":f.y=t.h-f.h;break;default:f.y=(t.h-f.h)/2}return f}};return e}));

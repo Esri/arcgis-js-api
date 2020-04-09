@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({addBarriers:"選擇屏障圖層",pointBarrier:"點屏障",lineBarrier:"線條屏障",polygonBarrier:"多邊形屏障",choosePointBarrier:"選擇點屏障圖層",chooseLineBarrier:"選擇線屏障圖層",choosePolygonBarrier:"選擇多邊形屏障圖層",selectPointBarrier:"選擇點屏障",selectLineBarrier:"選擇線屏障",selectPolygonBarrier:"選擇多邊形屏障"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Odaberite ulazni sloj",addAVar:"Dodaj promenljivu",distToNearest:"Rastojanje do najbliže",attrOfInterest:"Atribut najbliže",summaryNearby:"Rezime obližnje",summaryIntersecting:"Rezime preseka",distToNearestLabel:"Rastojanje od središta bloka do najbližeg geoobjekta u ulaznom sloju",attrOfInterestLabel:"Vrednost navedenog polja iz najbližeg geoobjekta iz ulaznog sloja",summaryNearbyLabel:"Izračunavanje statistike na svim geoobjektima pronađenim sa navedenim rastojanjem središta bloka",summaryIntersectingLabel:"Izračunata statistika na svim geoobjektima koji presecaju blok",maxDistancefromCtr:"Maksimalno rastojanje od središta bloka",fieldToIncude:"Polje koje treba uključiti",statstoCalculate:"Statistika koju treba izračunati",summFeatuesWithin:"Sumiraj geoobjekte unutar",layerChangeWarnMsg:"Dodate promenljive za ovaj ulazni sloj će biti uklonjene u slučaju da se promeni ulazni sloj",validationErrorMsg:"Popravi greške prilikom provere valjanosti pre dodavanja nove promenljive",atleastOneVarMsg:"Dodaj barem jednu promenljivu ovom izabranom sloju"});

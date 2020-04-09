@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["../../declare","./StudyArea"],function(r,t){return r("esri.tasks.geoenrichment.StandardGeographyStudyArea",[t],{countryID:null,geographyLayerID:null,ids:null,constructor:function(r){if(r){var t=r.sourceCountry||r.countryID;t&&(this.countryID=t);var e=r.layer||r.geographyLayerID;e&&(this.geographyLayerID=e),r.ids&&(this.ids=r.ids)}},toJson:function(){var r=this.inherited(arguments);return this.countryID&&(r.sourceCountry=this.countryID),this.geographyLayerID&&(r.layer=this.geographyLayerID),this.ids&&(r.ids=this.ids),r},getGeomType:function(){return"polygon"}})});
+define(["../../declare","./StudyArea"],(function(r,t){return r("esri.tasks.geoenrichment.StandardGeographyStudyArea",[t],{countryID:null,geographyLayerID:null,ids:null,constructor:function(r){if(r){var t=r.sourceCountry||r.countryID;t&&(this.countryID=t);var e=r.layer||r.geographyLayerID;e&&(this.geographyLayerID=e),r.ids&&(this.ids=r.ids)}},toJson:function(){var r=this.inherited(arguments);return this.countryID&&(r.sourceCountry=this.countryID),this.geographyLayerID&&(r.layer=this.geographyLayerID),this.ids&&(r.ids=this.ids),r},getGeomType:function(){return"polygon"}})}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/iso/ObjectReference","./MI_Objective","dojo/text!./templates/Objective.html","../../../../../../kernel"],function(e,t,i,o,a,n,r,s){var c=e(o,{templateString:r});return i("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.Objective",c,s),c});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/iso/ObjectReference","./MI_Objective","dojo/text!./templates/Objective.html","../../../../../../kernel"],(function(e,t,i,o,a,n,r,s){var c=e(o,{templateString:r});return i("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.Objective",c,s),c}));

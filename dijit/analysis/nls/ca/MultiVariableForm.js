@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({distToNearest:"Distància al més proper",attrOfInterest:"Atribut del més proper",summaryNearby:"Resum d'entitats properes",summaryIntersecting:"Resum d'entitats que s'intersequen",distToNearestLabel:"Distància del centre del bin a l'entitat més propera de la capa d'entrada",attrOfInterestLabel:"Valor d'un camp especificat de l'entitat més propera de la capa d'entrada",summaryNearbyLabel:"Estadística que es calcula en totes les entitats trobades amb la distància especificada del centre del bin",summaryIntersectingLabel:"Estadística que es calcula en totes les entitats que s'intersequen amb el bin",maxDistancefromCtr:"Distància màxima des del centre del bin",fieldToIncude:"Camp que s'inclourà",statstoCalculate:"Estadística que es calcularà",summFeatuesWithin:"Resumir les entitats dins de",smallMaxDistErrorMsg:"La distància màxima des del centre del bin ha de superar la mida del bin.",smallSumFeaturesErrorMsg:"La distància màxima des del centre del bin ha de superar la mida del bin."});

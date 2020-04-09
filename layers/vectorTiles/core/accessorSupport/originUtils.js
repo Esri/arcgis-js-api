@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["require","exports","../MultiOriginJSONSupport"],function(e,i,r){function n(e){e&&e.writtenProperties&&e.writtenProperties.forEach(function(e){var i=e.target;e.newOrigin&&e.oldOrigin!==e.newOrigin&&i.isInstanceOf(r)&&i.updateOrigin(e.propName,e.newOrigin)})}Object.defineProperty(i,"__esModule",{value:!0}),i.updateOrigins=n});
+define(["require","exports","../MultiOriginJSONSupport"],(function(e,i,r){Object.defineProperty(i,"__esModule",{value:!0}),i.updateOrigins=function(e){e&&e.writtenProperties&&e.writtenProperties.forEach((function(e){var i=e.target;e.newOrigin&&e.oldOrigin!==e.newOrigin&&i.isInstanceOf(r)&&i.updateOrigin(e.propName,e.newOrigin)}))}}));

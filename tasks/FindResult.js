@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../graphic","../geometry/jsonUtils"],function(e,t,s,n,r,i){var o=e(null,{declaredClass:"esri.tasks.FindResult",constructor:function(e){t.mixin(this,e),this.feature=new r(e.geometry?i.fromJson(e.geometry):null,null,e.attributes),delete this.geometry,delete this.attributes}});return s("extend-esri")&&t.setObject("tasks.FindResult",o,n),o});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../graphic","../geometry/jsonUtils"],(function(e,t,s,n,r,i){var o=e(null,{declaredClass:"esri.tasks.FindResult",constructor:function(e){t.mixin(this,e),this.feature=new r(e.geometry?i.fromJson(e.geometry):null,null,e.attributes),delete this.geometry,delete this.attributes}});return s("extend-esri")&&t.setObject("tasks.FindResult",o,n),o}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ArrayPool","../../../core/ObjectPool","./TileSpan"],function(o,e,r,n,l){return function(){function o(o){this.lodInfo=o,this.spans=r.acquire()}return o.prototype.release=function(){for(var o=0,e=this.spans;o<e.length;o++){var n=e[o];l.pool.release(n)}r.release(this.spans)},o.prototype.forEach=function(o,e){var r=this,n=r.spans,l=r.lodInfo,t=l.level;if(0!==n.length)for(var a=0,s=n;a<s.length;a++)for(var i=s[a],c=i.row,f=i.colFrom,p=i.colTo,u=f;u<=p;u++)o.call(e,t,c,l.normalizeCol(u),l.getWorldForColumn(u))},o.pool=new n(o,!0),o}()});
+define(["require","exports","../../../core/ArrayPool","../../../core/ObjectPool","./TileSpan"],(function(o,e,r,n,l){return function(){function o(o){this.lodInfo=o,this.spans=r.acquire()}return o.prototype.release=function(){for(var o=0,e=this.spans;o<e.length;o++){var n=e[o];l.pool.release(n)}r.release(this.spans)},o.prototype.forEach=function(o,e){var r=this.spans,n=this.lodInfo,l=n.level;if(0!==r.length)for(var t=0,a=r;t<a.length;t++)for(var s=a[t],i=s.row,c=s.colFrom,f=s.colTo,p=c;p<=f;p++)o.call(e,l,i,n.normalizeCol(p),n.getWorldForColumn(p))},o.pool=new n(o,!0),o}()}));

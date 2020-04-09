@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["../../ChartBuilder"],function(e){var l={};return l.crimeIndex={states:"n",defaultState:"n",fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Crime Index",points:[{label:"Personal",fullName:"crime.CRMCYPERC"},{label:"Murder",fullName:"crime.CRMCYMURD"},{label:"Rape",fullName:"crime.CRMCYRAPE"},{label:"Robbery",fullName:"crime.CRMCYROBB"},{label:"Assault",fullName:"crime.CRMCYASST"},{label:"Property",fullName:"crime.CRMCYPROC"},{label:"Burglary",fullName:"crime.CRMCYBURG"},{label:"Larceny",fullName:"crime.CRMCYLARC"},{label:"Motor Vehicle Theft",fullName:"crime.CRMCYMVEH"}],visualProps:{sorting:"Descending"}})}},l});
+define(["../../ChartBuilder"],(function(e){var l={};return l.crimeIndex={states:"n",defaultState:"n",fieldInfo:{isChart:!0,chartJson:e.createChart({title:"Crime Index",points:[{label:"Personal",fullName:"crime.CRMCYPERC"},{label:"Murder",fullName:"crime.CRMCYMURD"},{label:"Rape",fullName:"crime.CRMCYRAPE"},{label:"Robbery",fullName:"crime.CRMCYROBB"},{label:"Assault",fullName:"crime.CRMCYASST"},{label:"Property",fullName:"crime.CRMCYPROC"},{label:"Burglary",fullName:"crime.CRMCYBURG"},{label:"Larceny",fullName:"crime.CRMCYLARC"},{label:"Motor Vehicle Theft",fullName:"crime.CRMCYMVEH"}],visualProps:{sorting:"Descending"}})}},l}));

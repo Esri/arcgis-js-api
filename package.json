@@ -1,6 +1,6 @@
 {
   "name": "arcgis-js-api",
-  "version": "1.0",
+  "version": "3.32.0",
   "private": true,
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript that can be used for bower.",
   "license": "SEE LICENSE IN copyright.txt",

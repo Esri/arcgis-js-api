@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"다음에 추가할 레이어 선택",inputWarningLabel:"경고: 추가한 레이어가 수정됩니다.",inputHostedLayerWarning:"선택한 레이어는 호스팅 피처 레이어가 아닙니다. 추가할 호스팅 피처 레이어를 선택하세요.",appendLayerLabel:"추가할 레이어 선택",filterLabel:"모든 피처 추가 또는 일부분 정의(선택)",fieldMappingLabel:"필드 추가 방법 선택(선택)",inputField:"입력 필드",appendValue:"값 추가",expression:"식"});

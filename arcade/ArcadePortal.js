@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-var __extends=this&&this.__extends||function(){var t=function(n,r){return(t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var r in n)n.hasOwnProperty(r)&&(t[r]=n[r])})(n,r)};return function(n,r){function e(){this.constructor=n}t(n,r),n.prototype=null===r?Object.create(r):(e.prototype=r.prototype,new e)}}();define(["require","exports","./Dictionary"],function(t,n,r){"use strict";return function(t){function n(n){var r=t.call(this)||this;return r.immutable=!1,r.setField("url",n),r.immutable=!0,r}return __extends(n,t),n}(r)});
+var __extends=this&&this.__extends||function(){var t=function(n,r){return(t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var r in n)n.hasOwnProperty(r)&&(t[r]=n[r])})(n,r)};return function(n,r){function e(){this.constructor=n}t(n,r),n.prototype=null===r?Object.create(r):(e.prototype=r.prototype,new e)}}();define(["require","exports","./Dictionary"],(function(t,n,r){"use strict";return function(t){function n(n){var r=t.call(this)||this;return r.immutable=!1,r.setField("url",n),r.immutable=!0,r}return __extends(n,t),n}(r)}));

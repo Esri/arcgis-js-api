@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({addBarriers:"Επιλέξτε θεματικά επίπεδα φραγμάτων",pointBarrier:"Σημειακά φράγματα",lineBarrier:"Γραμμικά φράγματα",polygonBarrier:"Πολυγωνικά φράγματα",choosePointBarrier:"Επιλογή σημειακού θεματικού επιπέδου φραγμάτων",chooseLineBarrier:"Επιλογή γραμμικού θεματικού επιπέδου φραγμάτων",choosePolygonBarrier:"Επιλογή πολυγωνικού θεματικού επιπέδου φραγμάτων",selectPointBarrier:"Επιλογή σημειακών φραγμάτων",selectLineBarrier:"Επιλογή γραμμικών φραγμάτων",selectPolygonBarrier:"Επιλογή πολυγωνικών φραγμάτων"});

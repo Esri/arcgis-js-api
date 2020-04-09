@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["require","exports","dojo/has","./nextTick","./now","./promiseUtils"],function(e,n,t,r,i,l){function o(e){return e?l.create(function(n){u.push(e),a.set(e,n),1===u.length&&r(c)},function(){u[u.indexOf(e)]=null,a.delete(e)}):l.reject(new TypeError("callback is not a function"))}function c(){var e=0===u.length;if(!e){for(var n=i();!e&&i()-n<f;){var t=u[s];if(t){if(!0===t()){var l=a.get(t);u[s]=null,a.delete(t),l()}s=(s+1)%u.length}else u.splice(s,1),e=0===u.length,e?s=0:s%=u.length}e||r(c)}}var f=t("host-browser")?6:200,u=[],a=new Map,s=0;return o});
+define(["require","exports","dojo/has","./nextTick","./now","./promiseUtils"],(function(e,n,t,r,i,l){var o=t("host-browser")?6:200,c=[],f=new Map,u=0;function a(){var e=0===c.length;if(!e){for(var n=i();!e&&i()-n<o;){var t=c[u];if(t){if(!0===t()){var l=f.get(t);c[u]=null,f.delete(t),l()}u=(u+1)%c.length}else c.splice(u,1),(e=0===c.length)?u=0:u%=c.length}e||r(a)}}return function(e){return e?l.create((function(n){c.push(e),f.set(e,n),1===c.length&&r(a)}),(function(){c[c.indexOf(e)]=null,f.delete(e)})):l.reject(new TypeError("callback is not a function"))}}));

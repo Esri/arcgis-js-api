@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../../../../esri/css/esri.css">
 
     <script>
-        var dojoConfig = { async: true, locale: typeof dojoConfig !== 'undefined' && dojoConfig.locale || null, packages: [{ name: 'dojo', location: './dojo' }, { name: 'dijit', location: './dijit' }, { name: 'dojox', location: './dojox' }, { name: 'dgrid', location: './dgrid' }, { name: 'dstore', location: './dstore' }, { name: 'put-selector', location: './put-selector' }, { name: 'xstyle', location: './xstyle' }, { name: 'esri', location: './esri' }, { name: 'moment', location: './moment' }] };
+        var dojoConfig = { async: true, locale: typeof dojoConfig !== 'undefined' && dojoConfig.locale || null, packages: [{ name: 'dojo', location: './dojo' }, { name: 'dijit', location: './dijit' }, { name: 'dojox', location: './dojox' }, { name: 'dgrid', location: './dgrid' }, { name: 'dstore', location: './dstore' }, { name: 'put-selector', location: './put-selector' }, { name: 'xstyle', location: './xstyle' }, { name: 'esri', location: './esri' }, { name: 'moment', location: './moment', main: 'moment/moment' }] };
     </script>
     <script data-dojo-config="baseUrl: '../../../../..', isDebug: 1, waitSeconds: 60" src='../../../../../dojo/dojo.js'></script>
 
@@ -354,10 +354,9 @@
                                        "PARKING": 300,
                                        "BUILDING_DATE": new Date().getTime(),
                                        "url": "https://www.sandiego.com/sites/sandiego.com/files/styles/gallery_listing_full/public/content/gallery/images/national-city-11_c.jpg",
-                                       "url2": "http://www.sdcold.com/images/aerialncmt04b.jpg",
+                                       "url2": "https://www.sdcold.com/images/aerialncmt04b.jpg",
                                        "url3": "https://www.joc.com/sites/default/files/field_feature_image/san%20diego%20national%20city%20terminal.jpg",
-                                       "url4": "https://www.sdinjury.com/wp-content/uploads/2017/02/National_City.jpg",
-                                       "url5": "http://www.hotel-r.net/im/hotel/asia/pk/national-city-hotel-11.jpg",
+                                       //"url4": "https://www.sdinjury.com/wp-content/uploads/2017/02/National_City.jpg",
                                        "url6": "https://d2nuhorlnps36p.cloudfront.net/images/Hotels/best-western-plus-marina-gateway-hotel-images-05689/hotel/05689_004_pool.jpg?sfvrsn=0",
                                        "url7": "https://media-cdn.tripadvisor.com/media/photo-s/04/94/2f/2a/niederfrank-s.jpg"
                                    }
@@ -580,7 +579,7 @@
                                                        }
                                                    ];
                                                },
-                                               getAttachmentsForAreaAt: function (areaIndex) {
+                                               getImagesForAreaAt: function (areaIndex) {
                                                    var attributes = graphics[areaIndex].attributes;
                                                    var urls = [];
                                                    attributes.url && urls.push(attributes.url);

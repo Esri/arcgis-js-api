@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/lang"],function(e){function i(e){t.forEach(function(i){var o=e[i];void 0!==o&&("string"==typeof o&&r.test(o)&&(e[i]=o.replace(r,"")),e[i]=Number(e[i])||0)})}var o={},t=["x","y","left","top","width","height"],r=/px$/i;return o.createShapeJsonFromShapeObj=function(o,t){if(o&&o.viewBox){var r={id:"shape",g:o.g,viewBox:e.mixin({},o.viewBox),preserveAspectRatio:o.preserveAspectRatio,isPlaceholder:o.isPlaceholder,style:e.mixin({top:o.x||0,left:o.y||0,width:o.viewBox.width||100,height:o.viewBox.height||100*o.viewBox.height/o.viewBox.width,zoom:void 0},o.style,t),showAsBar:o.showAsBar,showBarBackground:o.showBarBackground,barBackgroundStyle:{}};return i(r.viewBox),i(r.style),r}},o.isEmptyShapeJson=function(e){return!e||!e.g||!e.g.length},o});
+define(["dojo/_base/lang"],(function(e){var i={},o=["x","y","left","top","width","height"],t=/px$/i;function r(e){o.forEach((function(i){var o=e[i];void 0!==o&&("string"==typeof o&&t.test(o)&&(e[i]=o.replace(t,"")),e[i]=Number(e[i])||0)}))}return i.createShapeJsonFromShapeObj=function(i,o){if(i&&i.viewBox){var t={id:"shape",g:i.g,viewBox:e.mixin({},i.viewBox),preserveAspectRatio:i.preserveAspectRatio,isPlaceholder:i.isPlaceholder,style:e.mixin({top:i.x||0,left:i.y||0,width:i.viewBox.width||100,height:i.viewBox.height||100*i.viewBox.height/i.viewBox.width,zoom:void 0},i.style,o),showAsBar:i.showAsBar,showBarBackground:i.showBarBackground,barBackgroundStyle:{}};return r(t.viewBox),r(t.style),t}},i.isEmptyShapeJson=function(e){return!e||!e.g||!e.g.length},i}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({chooseShape:"Elegir forma",defineExtent:"Definir extensión",defineBin:"Definir el tamaño de bin especificando lo siguiente:",area:"Área",distance:"Distancia",resultLayerName:"Nombre de capa de resultados",hexagon:"Hexágono",transverseHexagon:"Hexágono transversal",square:"Cuadrado",triangle:"Triángulo",diamond:"Diamante",sameAsDisplay:"Igual que visualización",emptyBinSize:"El tamaño de bin no puede estar vacío",currentExtent:"extensión actual",intersectExtent:"Conservar solo las teselaciones intersecantes",outputLayerName:"Generar teselaciones en ${extentLayerName}",itemDescription:"Se utilizó la extensión de ${extentLayerName}.",itemTags:"Resultado de análisis, Generar teselaciones, ${extentLayerName}",itemSnippet:"Capa de entidades generada a partir de Generar teselaciones."});

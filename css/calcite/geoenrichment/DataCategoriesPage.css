@@ -22,6 +22,7 @@
     background-color:white;
 }
 .calcite .DataCategoriesPage_Pagination .Pagination_Items {
+    padding: 10px 29px 0px !important;
 
 }
 .calcite .DataCategoriesPage_Item {

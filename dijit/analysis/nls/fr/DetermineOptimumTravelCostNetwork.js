@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir la couche raster ou la couche d'entités pour déterminer des chemins",inputCostRasterLabel:"Choisir une couche raster de coût de déplacement",outputOptimumNetworkName:"Nom de la couche de polylignes de chemins optimaux de résultat",outputNeighborNetworkName:"Nom de la couche de polylignes de chemins voisins de résultat (facultatif)",outputLayerName:"Déterminer le coût de déplacement optimal de ${layername}",itemDescription:"Couche d’entités générée par l’exécution de l’outil Déterminer le réseau de coût de déplacement optimal sur ${layerName}. ",itemTags:"Résultat d’analyse, Déterminer le réseau de coût de déplacement optimal, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Déterminer le réseau de coût de déplacement optimal."});

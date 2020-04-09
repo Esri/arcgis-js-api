@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare"],function(o){return o(null,{getScrollableContainer:function(){return this.domNode},isScrollShown:function(){return this.domNode.clientHeight<this.domNode.scrollHeight},scrollToTop:function(){this.domNode.scrollTop=0,this._updateLabelsPosition()}})});
+define(["dojo/_base/declare"],(function(o){return o(null,{getScrollableContainer:function(){return this.domNode},isScrollShown:function(){return this.domNode.clientHeight<this.domNode.scrollHeight},scrollToTop:function(){this.domNode.scrollTop=0,this._updateLabelsPosition()}})}));

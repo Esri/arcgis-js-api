@@ -155,8 +155,8 @@
 
 .ShoppingCart .ShoppingCart_LabelTd div {
     display: inline-block;
-    height: 100%;
     line-height: 12px;
+    white-space: nowrap;
 }
 
 .ShoppingCart .ShoppingCartOpener {

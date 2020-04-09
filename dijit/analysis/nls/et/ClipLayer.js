@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige kinnitatavad objektid",filterSelectLabel:"Kinnitage kõik objektid või määratlege alamhulk (valikuline)",targetArea:"Valige kinnitatav ala",outputLayerName:"Kinnitage ${inputLayerName} kihile ${clipLayerName}",itemDescription:"Objektikiht loodi kinnituslahenduste kasutamise teel. Kihi ${inputLayerName} objektid kinnitati kihile ${clipLayerName}.",itemTags:"Analüüsi tulemus, kinnituskiht, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Objektikiht genereeriti kinnituskihist"});

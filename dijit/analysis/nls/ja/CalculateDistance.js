@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"位置情報としてラスターまたはフィーチャ レイヤーを選択して、距離を計算",inputRaster:"バリアを表すラスターまたはフィーチャ レイヤーを選択 (オプション)",maxDistanceLabel:"計算する最大距離 (オプション)",outputCellSize:"出力セル サイズ (オプション)",distanceMethod:"距離計算の方法",resultDistLayerName:"結果の距離レイヤーの名前",resultDirectionLayerName:"結果の距離レイヤーの名前 (オプション)",resultAllocationLayerName:"結果の割り当てレイヤーの名前 (オプション)",outputBackDirectionName:"結果のバック方向レイヤーの名前 (オプション)",outputLayerName:"${layername} の計算された距離",allocationFieldLabel:"割り当てフィールドの選択 (オプション)",itemDescription:"${layerName} に対して [距離の計算] を実行して生成されたフィーチャ レイヤー。 ",itemTags:"解析結果、距離の計算、${layername}${fieldname}",itemSnippet:"[距離の計算] から生成されたフィーチャ レイヤー",planar:"平面",geodesic:"測地線",selectDistance:"-- 選択 --"});

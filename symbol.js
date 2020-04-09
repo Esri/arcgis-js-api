@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["./symbols/Symbol","./symbols/MarkerSymbol","./symbols/SimpleMarkerSymbol","./symbols/PictureMarkerSymbol","./symbols/LineSymbol","./symbols/SimpleLineSymbol","./symbols/CartographicLineSymbol","./symbols/FillSymbol","./symbols/SimpleFillSymbol","./symbols/PictureFillSymbol","./symbols/Font","./symbols/TextSymbol","./symbols/jsonUtils"],function(l,o,m,b,y,s,i,S,e,r,n,t,a){return{Symbol:l,MarkerSymbol:o,SimpleMarkerSymbol:m,PictureMarkerSymbol:b,LineSymbol:y,SimpleLineSymbol:s,CartographicLineSymbol:i,FillSymbol:S,SimpleFillSymbol:e,PictureFillSymbol:r,Font:n,TextSymbol:t,jsonUtils:a}});
+define(["./symbols/Symbol","./symbols/MarkerSymbol","./symbols/SimpleMarkerSymbol","./symbols/PictureMarkerSymbol","./symbols/LineSymbol","./symbols/SimpleLineSymbol","./symbols/CartographicLineSymbol","./symbols/FillSymbol","./symbols/SimpleFillSymbol","./symbols/PictureFillSymbol","./symbols/Font","./symbols/TextSymbol","./symbols/jsonUtils"],(function(l,o,m,b,y,s,i,S,e,r,n,t,a){return{Symbol:l,MarkerSymbol:o,SimpleMarkerSymbol:m,PictureMarkerSymbol:b,LineSymbol:y,SimpleLineSymbol:s,CartographicLineSymbol:i,FillSymbol:S,SimpleFillSymbol:e,PictureFillSymbol:r,Font:n,TextSymbol:t,jsonUtils:a}}));

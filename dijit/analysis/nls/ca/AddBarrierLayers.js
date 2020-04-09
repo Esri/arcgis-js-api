@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({addBarriers:"Seleccioneu capes de barrera",pointBarrier:"Barreres de punt",lineBarrier:"Barreres de línia",polygonBarrier:"Barreres de polígon",choosePointBarrier:"Trieu una capa de barreres de punt",chooseLineBarrier:"Trieu una capa de barreres de línia",choosePolygonBarrier:"Trieu una capa de barreres de polígon",selectPointBarrier:"Seleccioneu barreres de punt",selectLineBarrier:"Seleccioneu barreres de línia",selectPolygonBarrier:"Seleccioneu barreres de polígon"});

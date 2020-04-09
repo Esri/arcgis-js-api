@@ -1260,6 +1260,10 @@ td.subsectionLineDivider {
   background-image: url("../images/NetworkAnalystOutputLinearShapePathAlongNetwork32.png");
 }
 
+.followStreetsDisabledIcon {
+  background-image: url("../images/FollowStreetsDisabled32.png");
+}
+
 .straightLineIcon {
   background-image: url("../images/NetworkAnalystOutputLinearShapePathStraight32.png");
 }
@@ -1278,6 +1282,22 @@ td.subsectionLineDivider {
 
 .generateMultidimensionalAnomalyIcon {
   background-image: url("../images/GenerateMultidimensionalAnomaly32.png");
+}
+
+.generateTrendRasterIcon {
+  background-image: url("../images/GenerateTrendRaster32.png");
+}
+
+.predictUsingTrendRasterIcon {
+  background-image: url("../images/PredictUsingTrendRaster32.png");
+}
+
+.findArgumentStatisticsIcon {
+  background-image: url("../images/FindArgumentStatistics32.png");
+}
+
+.classifyObjectsUsingDeepLearningIcon {
+  background-image: url("../images/ClassifyObjectsUsingDeepLearning32.png");
 }
 
 .btn-container {

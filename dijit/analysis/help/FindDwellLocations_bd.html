@@ -45,9 +45,9 @@
         <h2><img src="./images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Find Dwell Locations workflow diagram"></h2>
         <hr/>
     <p> This tool works with a time-enabled layer of
-point features that are of type <code>instant</code>.   First, the tool assigns features to a track using a unique identifier. Track order is determined by the time of features. Next, the distance between the first observation in a track and the next is calculated. Features are considered to be part of a dwell if two temporally  consecutive points stay within the given distance for at least the given duration. When two features are found to be part of a dwell, the first feature in the dwell is used as a reference point, and the tool  find consecutive features that are withing the specified distance of the reference point in the dwell. Once all features within the specified distance are found, , the tool collects the dwell features and calculates their mean center. Features before and after the current dwell are added to the dwell if they are within the given distance of the dwell location's mean center. This process continues until the end of the track.
+point features that are of type <code>instant</code>.   First, the tool assigns features to a track using a unique identifier. Track order is determined by the time of features. Next, the distance between the first observation in a track and the next is calculated. Features are considered to be part of a dwell if two temporally  consecutive points stay within the given distance for at least the given duration. When two features are found to be part of a dwell, the first feature in the dwell is used as a reference point, and the tool  finds consecutive features that are within the specified distance of the reference point in the dwell. Once all features within the specified distance are found, the tool collects the dwell features and calculates their mean center. Features before and after the current dwell are added to the dwell if they are within the given distance of the dwell location's mean center. This process continues until the end of the track.
     </p>
-    <p>Features in time-enabled layers can be represented in one of two ways:
+    <p>Features in time-enabled layers can be represented in one of the following ways:
         <ul>
             <li>Instant&mdash;A single moment in time
             </li>
@@ -85,7 +85,7 @@ You can use one field or multiple fields to represent unique values of tracks.
         <div><h2>Choose the method to calculate distance</h2></div>
         <hr/>
         <div>
-            <p>Method used to calculate the dwell distance within tracks. The  <b>Planar</b> method may calculate the results more quickly but will not wrap tracks around the  international dateline or account for the actual shape of the earth when buffering. The <b>Geodesic</b> method will wrap tracks around the date line if required and apply a geodesic buffer to account for the shape of the earth.
+            <p>Method used to calculate the dwell distance within tracks. The  <b>Planar</b> method may calculate the results more quickly but will not wrap tracks around the  international date line or account for the actual shape of the earth when buffering. The <b>Geodesic</b> method will wrap tracks around the international date line if required and apply a geodesic buffer to account for the shape of the earth.
             </p>
         </div>
     </div>
@@ -95,7 +95,7 @@ You can use one field or multiple fields to represent unique values of tracks.
         <div>
             <p>The dwell distance tolerance is the maximum distance between points to be considered in a single dwell location.
             </p>
-            <p>For example, if you are interesting in finding dwells where traffic has not moved more than 20 meters within a certain time, the distance tolerance would be 20 meters.
+            <p>For example, if you are interested in finding dwells where traffic has not moved more than 20 meters within a certain time, the distance tolerance would be 20 meters.
             </p>
             <p>Use the parameter  <b>Define the temporal search range</b> to specify the time.
             </p>

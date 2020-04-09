@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите слой, к которому выполняется присоединение",inputWarningLabel:"Предупреждение: Слой, который вы добавляете, будет изменен.",inputHostedLayerWarning:"Выбранный слой не является размещенным векторным слоем. Выберите размещенный векторный слой, к которому выполняется присоединение.",appendLayerLabel:"Выберите присоединяемый слой",filterLabel:"Присоединить все объекты или указать поднабор объектов (дополнительно)",fieldMappingLabel:"Выберите, как присоединить поля (дополнительно)",inputField:"Входное поле",appendValue:"Присоединяемое значение",expression:"Выражение"});

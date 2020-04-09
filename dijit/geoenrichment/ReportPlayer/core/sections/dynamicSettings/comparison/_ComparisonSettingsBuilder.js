@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/aspect","esri/dijit/geoenrichment/when","../../../infographics/InfographicTypes"],function(t,e,n){var r={};return r.provideComparisonSettings=function(r){var i=r.getInfographic();return i&&i.getType()===n.COMPARISON_TABLE?e(i.getContentInitPromise(),function(){var n=i.getInnerInfographic();return e(n.getFilterRanges(),function(e){var r=n.getNumAreasTotal()>1&&e&&e.length,i={viewSettings:{chartViewOptions:n.getChartViewOptions()},filter:r&&{filterRanges:e,getNumAreasTotal:function(){return n.getNumAreasTotal()},getNumAreasShown:function(){return n.getNumAreasShown()},onContentUpdated:function(){}}};return r&&t.after(n,"onContentUpdated",function(){i.filter.onContentUpdated()}),i})}):null},r});
+define(["dojo/aspect","esri/dijit/geoenrichment/when","../../../infographics/InfographicTypes"],(function(t,e,n){var r={provideComparisonSettings:function(r){var i=r.getInfographic();return i&&i.getType()===n.COMPARISON_TABLE?e(i.getContentInitPromise(),(function(){var n=i.getInnerInfographic();return e(n.getFilterRanges(),(function(e){var r=n.getNumAreasTotal()>1&&e&&e.length,i={viewSettings:{chartViewOptions:n.getChartViewOptions()},filter:r&&{filterRanges:e,getNumAreasTotal:function(){return n.getNumAreasTotal()},getNumAreasShown:function(){return n.getNumAreasShown()},onContentUpdated:function(){}}};return r&&t.after(n,"onContentUpdated",(function(){i.filter.onContentUpdated()})),i}))})):null}};return r}));

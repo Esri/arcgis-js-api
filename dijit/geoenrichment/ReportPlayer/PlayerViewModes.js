@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define([],function(){var S={FULL_PAGES:"fullPages",PANELS_IN_SLIDES:"panelsInSlides",PANELS_IN_STACK:"panelsInStack",PANELS_IN_STACK_ALL:"panelsInStackAll",PANELS_IN_ROW:"panelsInRow"};return S.isSupported=function(_){for(var n in S)if(S[n]===_)return!0;return!1},S.toSupportedValue=function(_){return S.isSupported(_)?_:S.FULL_PAGES},S.isMobileSupported=function(_){return _===S.PANELS_IN_SLIDES||_===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL||_===S.PANELS_IN_ROW},S.isStackLike=function(_){return _===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL||_===S.PANELS_IN_ROW},S.isStack=function(_){return _===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL},S});
+define([],(function(){var S={FULL_PAGES:"fullPages",PANELS_IN_SLIDES:"panelsInSlides",PANELS_IN_STACK:"panelsInStack",PANELS_IN_STACK_ALL:"panelsInStackAll",PANELS_IN_ROW:"panelsInRow",isSupported:function(_){for(var n in S)if(S[n]===_)return!0;return!1},toSupportedValue:function(_){return S.isSupported(_)?_:S.FULL_PAGES},isMobileSupported:function(_){return _===S.PANELS_IN_SLIDES||_===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL||_===S.PANELS_IN_ROW},isStackLike:function(_){return _===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL||_===S.PANELS_IN_ROW},isStack:function(_){return _===S.PANELS_IN_STACK||_===S.PANELS_IN_STACK_ALL}};return S}));

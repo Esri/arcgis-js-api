@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojox/charting/plot2d/StackedAreas","./animation/_DefaultAnimation"],function(a,e,n){return a([e,n])});
+define(["dojo/_base/declare","dojox/charting/plot2d/StackedAreas","./animation/_DefaultAnimation"],(function(a,e,n){return a([e,n])}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({toolDefine:"Klassificera pixlar med djupinlärning",outputLayerName:"${layername}_classified",modelLabel:"Välj den djupinlärningsmodell som används för att klassificera pixlar",modelArgsLabel:"Ange modellargument för djupinlärning",nameLabel:"Namn",valueLabel:"Värde",queryModelArgsMsg:"Söker modellargument ...",analysisLayerLabel:"Välj bilder som används för att klassificera pixlar",itemDescription:"Analysbildtjänst skapad från Klassificera pixlar med djupinlärning",itemTags:"Rasteranalysresultat, Klassificera pixlar med djupinlärning, ${layername}",itemSnippet:"Analysbildtjänst skapad från Klassificera pixlar med djupinlärning"});

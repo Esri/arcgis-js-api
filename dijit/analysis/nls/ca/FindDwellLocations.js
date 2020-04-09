@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu la capa on es cercaran ubicacions de captació instantànies",selectTracksLabel:"Seleccioneu un o diversos camps per identificar recorreguts",defineDistanceLabel:"Defineix la distància de cerca espacial",distMethodLabel:"Trieu el mètode per calcular la distància",temporalSearchLabel:"Defineix l'interval de cerca temporal",outputDwellLabel:"Emet ubicacions de captació instantànies com a",outputLayerName:"Cerca ubicacions de captació instantànies per a ${inputLayerName}",meanCenters:"Centres mitjans",convexHulls:"Polígons convexos mínims",dwellFeatures:"Entitats de captació instantànies",allFeatures:"Totes les entitats",itemDescription:"Capa d'entitats que ha generat l'execució de la solució Cerca ubicacions de captació instantànies per a ${inputLayerName}.",itemTags:"Resultat de l'anàlisi, Cerca ubicacions de captació instantànies, ${inputLayerName}",itemSnippet:"Capa d'entitats que ha generat l'opció Cerca ubicacions de captació instantànies"});

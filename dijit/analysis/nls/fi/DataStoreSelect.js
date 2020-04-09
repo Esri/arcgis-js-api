@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({relationalDS:"Relaatio",spatialDS:"Tila-aikamuotoinen",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Big Data -tiedostojaon tulosaineistomallit"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["require","exports"],function(r,e){function n(r,e,n){void 0===n&&(n=0);for(var i=o(r,0,u),a=0;a<4;a++)e[n+a]=Math.floor(256*t(i*f[a]))}function o(r,e,n){return r<e?e:r>n?n:r}function t(r){return r-Math.floor(r)}Object.defineProperty(e,"__esModule",{value:!0});var f=[1,256,65536,16777216],i=[1/256,1/65536,1/16777216,1/4294967296],u=function(r,e){void 0===e&&(e=0);for(var n=0,o=0;o<4;o++)n+=r[e+o]*i[o];return n}(new Uint8ClampedArray([255,255,255,255]));e.packFloatRGBA=n});
+define(["require","exports"],(function(r,e){Object.defineProperty(e,"__esModule",{value:!0});var n=[1,256,65536,16777216],o=[1/256,1/65536,1/16777216,1/4294967296],t=function(r,e){void 0===e&&(e=0);for(var n=0,t=0;t<4;t++)n+=r[e+t]*o[t];return n}(new Uint8ClampedArray([255,255,255,255]));e.packFloatRGBA=function(r,e,o){void 0===o&&(o=0);for(var f,i=function(r,e,n){if(r<e)return e;if(r>n)return n;return r}(r,0,t),u=0;u<4;u++)e[o+u]=Math.floor(256*((f=i*n[u])-Math.floor(f)))}}));

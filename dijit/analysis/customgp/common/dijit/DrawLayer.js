@@ -20,22 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2016 Esri. All Rights Reserved.
-//
-// Licensed under the Apache License Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-///////////////////////////////////////////////////////////////////////////
-
-define(["dojo/_base/declare","dojo/_base/lang","dijit/_WidgetBase","dijit/form/ToggleButton","dojo/Evented","dojo/on","dojo/dom-construct","dijit/Menu","dijit/MenuItem","dijit/form/ComboButton","dojo/i18n!../nls/main"],function(t,e,n,i,o,s,a,c,d,r,h){return t([n,o],{declaredClass:"esri.dijit.analysis.customgp.common.dijit.DrawLayer",types:[],selectBtnNode:null,drawBtnNode:null,postCreate:function(){this.inherited(arguments)},postMixInProperties:function(){this.inherited(arguments),this.createUI()},startup:function(){},_handleDrawBtnChange:function(t){this.emit("change",t,this.types)},_handleSelectBtnChange:function(t){this.types!==t&&(this.types=t,this.createUI(),this._handleDrawBtnChange(t))},createUI:function(){var t;if(!this.drawBtnNode||"string"!=typeof this.types&&1!==this.types.length){if(this.selectBtnNode&&this.types.length>0){var n=new c({style:"display: none;"});this.types.forEach(e.hitch(this,function(t){var i=this,o=new d({type:t,class:"esriActionButton",iconClass:"toolbarIcon "+t+"Icon",onClick:function(){e.hitch(i,i._handleSelectBtnChange)(t)}});n.addChild(o)})),new r({label:h.common.draw,class:"esriActionButton",dropDown:n}).placeAt(this.selectBtnNode)}}else t=new i({class:"esriActionButton",iconClass:"toolbarIcon "+this.types+"Icon"}),a.empty(this.drawBtnNode),t.placeAt(this.drawBtnNode),s(t,"change",e.hitch(this,this._handleDrawBtnChange))},_setTypesAttr:function(t){this.types=t},_getTypesAttr:function(){return this.types},_setSelectBtnNodeAttr:function(t){this.selectBtnNode=t},_getSelectBtnNodeAttr:function(){return this.selectBtnNode},_setDrawBtnNodeAttr:function(t){this.drawBtnNode=t},_getDrawBtnNodeAttr:function(){return this.drawBtnNode}})});
+define(["dojo/_base/declare","dojo/_base/lang","dijit/_WidgetBase","dijit/form/ToggleButton","dojo/Evented","dojo/on","dojo/dom-construct","dijit/Menu","dijit/MenuItem","dijit/form/ComboButton","dojo/i18n!../nls/main"],(function(t,e,n,i,o,s,a,c,d,r,h){return t([n,o],{declaredClass:"esri.dijit.analysis.customgp.common.dijit.DrawLayer",types:[],selectBtnNode:null,drawBtnNode:null,postCreate:function(){this.inherited(arguments)},postMixInProperties:function(){this.inherited(arguments),this.createUI()},startup:function(){},_handleDrawBtnChange:function(t){this.emit("change",t,this.types)},_handleSelectBtnChange:function(t){this.types!==t&&(this.types=t,this.createUI(),this._handleDrawBtnChange(t))},createUI:function(){var t;if(!this.drawBtnNode||"string"!=typeof this.types&&1!==this.types.length){if(this.selectBtnNode&&this.types.length>0){var n=new c({style:"display: none;"});this.types.forEach(e.hitch(this,(function(t){var i=this,o=new d({type:t,class:"esriActionButton",iconClass:"toolbarIcon "+t+"Icon",onClick:function(){e.hitch(i,i._handleSelectBtnChange)(t)}});n.addChild(o)}))),new r({label:h.common.draw,class:"esriActionButton",dropDown:n}).placeAt(this.selectBtnNode)}}else t=new i({class:"esriActionButton",iconClass:"toolbarIcon "+this.types+"Icon"}),a.empty(this.drawBtnNode),t.placeAt(this.drawBtnNode),s(t,"change",e.hitch(this,this._handleDrawBtnChange))},_setTypesAttr:function(t){this.types=t},_getTypesAttr:function(){return this.types},_setSelectBtnNodeAttr:function(t){this.selectBtnNode=t},_getSelectBtnNodeAttr:function(){return this.selectBtnNode},_setDrawBtnNodeAttr:function(t){this.drawBtnNode=t},_getDrawBtnNodeAttr:function(){return this.drawBtnNode}})}));

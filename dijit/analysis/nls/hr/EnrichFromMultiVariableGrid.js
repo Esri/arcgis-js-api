@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Odaberite točkaste geoobjekte za obogaćivanje",chooseMVgridLyrLabel:"Odaberite viševarijabilnu mrežu za obogaćivanje",chooseVariables:"Odaberite varijable koje će se dodati",outputLayerName:"Obogaćeno ${inputFeatures} iz ${gridLayer}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem rješenja Obogati iz viševarijabilne mreže za ${inputFeatures}.",itemTags:"Rezultat analize, Obogati iz viševarijabilne mreže, ${inputFeatures}, ${gridLayer}",itemSnippet:"Sloj geoobjekata generiran iz opcije Obogati iz viševarijabilne mreže."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({addBarriers:"בחר שכבות מחסום",pointBarrier:"מחסומי נקודה",lineBarrier:"מחסומי קו",polygonBarrier:"מחסומי פוליגון",choosePointBarrier:"בחר שכבת מחסומי נקודה",chooseLineBarrier:"בחר שכבת מחסומי קו",choosePolygonBarrier:"בחר שכבת מחסומי פוליגון",selectPointBarrier:"בחר מחסומי נקודה",selectLineBarrier:"בחר מחסומי קו",selectPolygonBarrier:"בחר מחסומי פוליגון"});

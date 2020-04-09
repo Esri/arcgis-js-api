@@ -35,11 +35,6 @@
     font-size: 11px;
 }
 
-.OneVarMultiComparison_Expanded_ContentPane {
-    max-height: 150pt;
-    overflow-y: auto;
-}
-
 .OneVarMultiComparison_Collapsed_ContentPane {
     max-height: 90pt;
     overflow-y: auto;

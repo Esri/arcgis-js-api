@@ -20,22 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2016 Esri. All Rights Reserved.
-//
-// Licensed under the Apache License Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-///////////////////////////////////////////////////////////////////////////
-
-define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/html","dojo/keys","dojo/on","./Popup","dojo/i18n!../nls/main"],function(e,t,s,i,o,n,l){return e(n,{baseClass:"jimu-popup jimu-message",declaredClass:"esri.dijit.analysis.customgp.common.dijit.Message",type:"message",message:"",autoHeight:!0,maxWidth:350,maxHeight:180,postMixInProperties:function(){this.content=this.message},_createTitleNode:function(){this.titleLabel&&(this.titleNode=s.create("div",{class:"title"},this.domNode),this.titleLabeNode=s.create("span",{class:"title-label jimu-float-leading",innerHTML:this.titleLabel||"&nbsp"},this.titleNode),this.closeBtnNode=s.create("div",{class:"close-btn jimu-float-trailing"},this.titleNode),this.own(o(this.closeBtnNode,"click",t.hitch(this,this.close))))},_preProcessing:function(){0===this.buttons.length&&this.buttons.push({label:l.common.ok,key:i.ENTER,onClick:t.hitch(this,this.close)})},_increaseZIndex:function(){s.setStyle(this.domNode,"zIndex",501),s.setStyle(this.overlayNode,"zIndex",500)}})});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/html","dojo/keys","dojo/on","./Popup","dojo/i18n!../nls/main"],(function(e,t,s,i,o,n,l){return e(n,{baseClass:"jimu-popup jimu-message",declaredClass:"esri.dijit.analysis.customgp.common.dijit.Message",type:"message",message:"",autoHeight:!0,maxWidth:350,maxHeight:180,postMixInProperties:function(){this.content=this.message},_createTitleNode:function(){this.titleLabel&&(this.titleNode=s.create("div",{class:"title"},this.domNode),this.titleLabeNode=s.create("span",{class:"title-label jimu-float-leading",innerHTML:this.titleLabel||"&nbsp"},this.titleNode),this.closeBtnNode=s.create("div",{class:"close-btn jimu-float-trailing"},this.titleNode),this.own(o(this.closeBtnNode,"click",t.hitch(this,this.close))))},_preProcessing:function(){0===this.buttons.length&&this.buttons.push({label:l.common.ok,key:i.ENTER,onClick:t.hitch(this,this.close)})},_increaseZIndex:function(){s.setStyle(this.domNode,"zIndex",501),s.setStyle(this.overlayNode,"zIndex",500)}})}));

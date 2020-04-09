@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"選擇要說明的資料集",describeDataLabel:"瞭解您的資料，方法是建立 (選用)",sampleLayer:"範例圖層",extentLayer:"範圍圖層",noOfFeaturesLabel:"要包含的圖徵數量",outputLayerName:"結果圖層名稱",resultName:"說明 ${layerName} 的日期",itemDescription:"在 ${layerName} 上執行「說明資料集」所產生的圖徵圖層。 ",itemTags:"分析結果，DescribeDataset，${layerName}",itemSnippet:"透過「說明資料集」所產生的圖徵圖層。"});

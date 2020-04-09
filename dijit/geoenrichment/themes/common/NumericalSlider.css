@@ -34,7 +34,7 @@
             width: 65px;
         }
 
-.dj_rtl .esriGENumericalSlider.esriGENumericalSliderContainer,
+.dj_rtl .esriGENumericalSlider .esriGENumericalSliderContainer,
 .dj_rtl .esriGENumericalSlider .esriGENumericalSliderMinValueTextBox,
 .dj_rtl .esriGENumericalSlider .esriGENumericalSliderMaxValueTextBox {
     float: right;

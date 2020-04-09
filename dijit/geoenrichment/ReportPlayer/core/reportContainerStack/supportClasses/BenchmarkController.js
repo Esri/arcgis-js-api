@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dijit/Destroyable"],function(n,t,e){return n(e,{_benchmarkIndex:0,_noTextLimit:!1,constructor:function(n){t.mixin(this,n)},getAreaIndex:function(){return this._benchmarkIndex},setAreaIndex:function(n){n!==this._benchmarkIndex&&(this._benchmarkIndex=n,this.onChanged())},setNoTextLimit:function(n){this._noTextLimit=n},hasNoTextLimit:function(){return this._noTextLimit},onChanged:function(){}})});
+define(["dojo/_base/declare","dijit/Destroyable"],(function(n,e){return n(e,{_benchmarkIndex:0,_noTextLimit:!1,constructor:function(n){n&&"number"==typeof n.areaIndex&&(this._benchmarkIndex=n.areaIndex),n&&"function"==typeof n.onChanged&&(this.onChanged=n.onChanged)},getAreaIndex:function(){return this._benchmarkIndex},setAreaIndex:function(n){n!==this._benchmarkIndex&&(this._benchmarkIndex=n,this.onChanged())},setNoTextLimit:function(n){this._noTextLimit=n},hasNoTextLimit:function(){return this._noTextLimit},onChanged:function(){}})}));

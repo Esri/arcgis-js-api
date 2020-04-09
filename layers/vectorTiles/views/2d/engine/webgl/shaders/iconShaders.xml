@@ -203,7 +203,9 @@
 
     // per quad (instance) attributes (20 bytes ==> equivalent of 5 bytes per vertex)
     attribute vec2 a_pos;
-    attribute vec4 a_vertexOffsetAndTex;
+    attribute vec2 a_vertexOffset;
+    attribute vec4 a_vertexTex;
+
     attribute vec4 a_id; // since we need to render the Id as a color we need to break it into RGBA components. so just like a color, the Id is normalized.
     attribute vec4 a_color;
     attribute vec4 a_outlineColor;
@@ -255,8 +257,8 @@
 
     void main()
     {
-      vec2 a_offset = a_vertexOffsetAndTex.xy;
-      vec2 a_tex = a_vertexOffsetAndTex.zw;
+      vec2 a_offset = a_vertexOffset;
+      vec2 a_tex = a_vertexTex.xy;
       vec2 a_size = a_sizeAndOutlineWidth.xy;
 
       // default values (we need them for the variations to come)

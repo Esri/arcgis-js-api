@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/Tabs","../../iso/gmd/dataQuality/Quality","../../iso/gmd/distribution/Distribution","../gmd/identification/DataIdentification","../gmd/metadataEntity/MetadataSection","dojo/text!./templates/DataRoot.html","../../../../../kernel"],function(t,a,e,i,o,d,n,s,r,m,l,b){var c=t(i,{templateString:l});return e("extend-esri")&&a.setObject("dijit.metadata.types.inspire.base.DataRoot",c,b),c});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/Tabs","../../iso/gmd/dataQuality/Quality","../../iso/gmd/distribution/Distribution","../gmd/identification/DataIdentification","../gmd/metadataEntity/MetadataSection","dojo/text!./templates/DataRoot.html","../../../../../kernel"],(function(t,a,e,i,o,d,n,s,r,m,l,b){var c=t(i,{templateString:l});return e("extend-esri")&&a.setObject("dijit.metadata.types.inspire.base.DataRoot",c,b),c}));

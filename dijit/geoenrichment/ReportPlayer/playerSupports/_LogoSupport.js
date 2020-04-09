@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","esri/dijit/geoenrichment/when","../core/annotations/supportClasses/DynamicBehaviors","../core/supportClasses/images/DefaultLogoLoader"],function(t,e,o,n){return t(null,{_getReportLogo:function(t,n,r){var a=this;switch(t){case o.ATTACHMENTS:return function(){return e(a._reportData.attachmentsStore&&a._reportData.attachmentsStore.getAttachments(),function(t){return e(t&&t[0]&&t[0].getThumbnail(),function(t){return t||a._getDefaultLogo(n,r)})})}();default:return this._getDefaultLogo(n,r)}},_getDefaultLogo:function(t,e){return this._reportData.customLogo||e||n.getDefaultLogo(this._viewModel.getDocumentDefaultStyles())}})});
+define(["dojo/_base/declare","esri/dijit/geoenrichment/when","../core/annotations/supportClasses/DynamicBehaviors","../core/supportClasses/images/DefaultLogoLoader"],(function(t,e,o,a){return t(null,{_getReportLogo:function(t,a,r){var n=this;switch(t){case o.ATTACHMENTS:return e(n._reportData.attachmentsStore&&n._reportData.attachmentsStore.getImages(),(function(t){return e(t&&t[0]&&t[0].getThumbnail(),(function(t){return t||n._getDefaultLogo(a,r)}))}));default:return this._getDefaultLogo(a,r)}},_getDefaultLogo:function(t,e){return this._reportData.customLogo||e||a.getDefaultLogo(this._viewModel.getDocumentDefaultStyles())}})}));

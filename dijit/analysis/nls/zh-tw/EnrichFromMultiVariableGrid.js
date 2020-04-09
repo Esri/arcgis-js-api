@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"選擇要豐富化的點圖徵",chooseMVgridLyrLabel:"選擇要從中豐富化的多變數網格",chooseVariables:"選擇要新增的變數",outputLayerName:"已從 ${gridLayer} 豐富化 ${inputFeatures}",itemDescription:"為 ${inputFeatures} 執行「從多變數網格豐富化」解決方案所產生的圖徵圖層。",itemTags:"分析結果，從多變數網格豐富化，${inputFeatures}，${gridLayer}",itemSnippet:"從「從多變數網格豐富化」所產生的圖徵圖層。"});

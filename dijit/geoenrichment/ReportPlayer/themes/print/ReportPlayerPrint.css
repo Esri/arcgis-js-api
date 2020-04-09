@@ -7,7 +7,9 @@
 
 
 
-.esriGEReportPlayerPrint .esriGEImageNavigator .noImage {
+.esriGEReportPlayerPrint .esriGEImageNavigator .noImage,
+.esriGEReportPlayerPrint .esriGEImageNavigator .imageNavigator_watermarkPano,
+.esriGEReportPlayerPrint .esriGEImageNavigator .imageNavigator_watermark360 {
     display: none !important;
 }
 
@@ -39,4 +41,10 @@
 
 .esriGEReportPlayerPrintViewCopy .esriGEReportPlayerProgress {
     display: none;
+}
+
+
+
+.esriGEReportPlayerPrint .esriGEReportPlayerPanelErrorMessage {
+    display: none !important;
 }

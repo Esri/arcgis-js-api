@@ -20,22 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2016 Esri. All Rights Reserved.
-//
-// Licensed under the Apache License Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-///////////////////////////////////////////////////////////////////////////
-
-define(["./utils","dojo/_base/array","./resultrenderers/simpleResultRenderers"],function(e,r,a){function t(e){return"result map service"===e.dataType?"AddResultImageLayer":"GPFeatureRecordSetLayer"===e.dataType?"DrawResultFeatureSet":"GPRecordSet"===e.dataType?"RecordSetTable":"error"===e?"Error":"SimpleResultRenderer"}var n,s,d={};return d.createResultRenderer=function(d,u,l){var o,i=t(d),p={param:d,widgetUID:l.uid,map:n,nls:s,config:l.config};if("DrawResultFeatureSet"===i)p.value=u.value,o=new a.DrawResultFeatureSet(p);else if("RecordSetTable"===i)p.value=u.value,o=new a.RecordSetTable(p);else if("SimpleResultRenderer"===i){var R="",f=u.value;Array.isArray(f)||(f=[f]),r.forEach(f,function(r){""!==R&&(R+="<br>"),["GPLong","GPDouble","GPString","GPBoolean"].some(function(e){return d.dataType.indexOf(e)>=0})?R+=e.sanitizeHTML(r):d.dataType.indexOf("GPLinearUnit")>=0?R+=r.distance+"&nbsp;"+r.units:d.dataType.indexOf("GPDate")>=0?R+=new Date(r).toLocaleTimeString():d.dataType.indexOf("GPRecordSet")>=0?R+="table":(d.dataType.indexOf("GPDataFile")>=0||d.dataType.indexOf("GPRasterDataLayer")>=0)&&(r.url?R+='<a style="word-wrap:break-word;" target="_blank" href="'+r.url+'">'+r.url+"</a>":R+=d.paramName+": null")}),p.message=R,o=new a.SimpleResultRenderer(p)}else"AddResultImageLayer"===i?(p.layer=u,o=new a.AddResultImageLayer(p)):"UnsupportRenderer"===i?(p.message="type "+d.dataType+" is not supported for now.",o=new a.UnsupportRenderer(p)):"Error"===i?(p.message=s.error,o=new a.ErrorResultRenderer(p)):(p.message="unknown renderer name: "+i,o=new a.UnsupportRenderer(p));return o},d.setMap=function(e){n=e},d.setNls=function(e){s=e},d});
+define(["./utils","dojo/_base/array","./resultrenderers/simpleResultRenderers"],(function(e,r,a){var t,n,s={};return s.createResultRenderer=function(s,u,d){var l,i=function(e){if("result map service"===e.dataType)return"AddResultImageLayer";return"GPFeatureRecordSetLayer"===e.dataType?"DrawResultFeatureSet":"GPRecordSet"===e.dataType?"RecordSetTable":"error"===e?"Error":"SimpleResultRenderer"}(s),o={param:s,widgetUID:d.uid,map:t,nls:n,config:d.config};if("DrawResultFeatureSet"===i)o.value=u.value,l=new a.DrawResultFeatureSet(o);else if("RecordSetTable"===i)o.value=u.value,l=new a.RecordSetTable(o);else if("SimpleResultRenderer"===i){var p="",R=u.value;Array.isArray(R)||(R=[R]),r.forEach(R,(function(r){""!==p&&(p+="<br>"),["GPLong","GPDouble","GPString","GPBoolean"].some((function(e){return s.dataType.indexOf(e)>=0}))?p+=e.sanitizeHTML(r):s.dataType.indexOf("GPLinearUnit")>=0?p+=r.distance+"&nbsp;"+r.units:s.dataType.indexOf("GPDate")>=0?p+=new Date(r).toLocaleTimeString():s.dataType.indexOf("GPRecordSet")>=0?p+="table":(s.dataType.indexOf("GPDataFile")>=0||s.dataType.indexOf("GPRasterDataLayer")>=0)&&(r.url?p+='<a style="word-wrap:break-word;" target="_blank" href="'+r.url+'">'+r.url+"</a>":p+=s.paramName+": null")})),o.message=p,l=new a.SimpleResultRenderer(o)}else"AddResultImageLayer"===i?(o.layer=u,l=new a.AddResultImageLayer(o)):"UnsupportRenderer"===i?(o.message="type "+s.dataType+" is not supported for now.",l=new a.UnsupportRenderer(o)):"Error"===i?(o.message=n.error,l=new a.ErrorResultRenderer(o)):(o.message="unknown renderer name: "+i,l=new a.UnsupportRenderer(o));return l},s.setMap=function(e){t=e},s.setNls=function(e){n=e},s}));

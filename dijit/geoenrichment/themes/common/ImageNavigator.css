@@ -53,6 +53,29 @@
         background-position: center;
     }
 
+    .esriGEImageNavigator .imageNavigator_imagePaginationRoot .imageNavigator_watermarkPano { 
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        background-image: url("./images/imageNavigator/watermark-pano.svg");
+        background-size: 24px;
+        background-repeat: no-repeat;
+    }
+    
+    .esriGEImageNavigator .imageNavigator_imagePaginationRoot .imageNavigator_watermark360 { 
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        background-image: url("./images/imageNavigator/watermark-360.svg");
+        background-size: 24px;
+        background-repeat: no-repeat;
+    }
+    
+
 
 
 .esriGEImageNavigatorPaginationLeftButton {
@@ -198,7 +221,7 @@
 
 
 .esriGEImageNavigator .noImage {
-    background-image: url("./images/imageNavigatorNoImages.svg");
+    background-image: url("./images/imageNavigator/noImages.svg");
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
@@ -244,7 +267,7 @@
     background-size: contain;
     width: 24px;
     height: 24px;
-    background-image: url("./images/squares.svg");
+    background-image: url("./images/imageNavigator/squares.svg");
     display: inline-block;
     cursor: pointer;
     position: absolute;

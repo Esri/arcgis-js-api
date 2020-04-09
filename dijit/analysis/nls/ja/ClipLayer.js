@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"クリップするフィーチャを選択",filterSelectLabel:"すべてのフィーチャをクリップするかサブセットを定義 (オプション)",targetArea:"クリップに使用するエリアを選択",outputLayerName:"${inputLayerName} を ${clipLayerName} にクリップ",itemDescription:"[クリップ] ソリューションを実行して生成されたフィーチャ レイヤー。 ${inputLayerName} のフィーチャが ${clipLayerName} にクリップされました。",itemTags:"解析結果、ClipLayer、${inputLayerName}、${clipLayerName}、${outputLayerGeometry}",itemSnippet:"[レイヤーのクリップ] から生成されたフィーチャ レイヤー"});

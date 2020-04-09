@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite tėkmės krypties sluoksnį",pourPointLayerLabel:"Pasirinkite nutekėjimo taško rastrinį arba elementų sluoksnį",pourPointField:"Pasirinkite nutekėjimo taško lauką",resultLayerName:"Rezultatų sluoksnio pavadinimas",outputLayerName:"${Layername} upių baseinas",itemDescription:"Elementų sluoksnis, sukurtas įvykdžius Sumuoti centrą ir išsisklaidymą sluoksniui ${layerName}. ",itemTags:"Analizės rezultatai, Upių baseinas, ${layername}, ${fieldname}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Upių baseino įrankį."});

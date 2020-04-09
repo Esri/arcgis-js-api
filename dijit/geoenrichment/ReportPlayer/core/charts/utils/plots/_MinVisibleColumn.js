@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang"],function(e,i){return e(null,{minVisibleHeight:2,createRect:function(e,t,h){var n=i.mixin({},h);if(n.height<this.minVisibleHeight){var a=this.minVisibleHeight-h.height;n.y-=a,n.height=this.minVisibleHeight}var o;return this.opt.enableCache&&e._rectFreePool.length>0?(o=e._rectFreePool.pop(),o.setShape(n),t.add(o)):o=t.createRect(n),this.opt.enableCache&&e._rectUsePool.push(o),o}})});
+define(["dojo/_base/declare","dojo/_base/lang"],(function(i,e){return i(null,{minVisibleHeight:2,createRect:function(i,t,n){var h=e.mixin({},n);if(h.height<this.minVisibleHeight){var r=this.minVisibleHeight-n.height;h.y-=r,h.height=this.minVisibleHeight}return t.createRect(h)}})}));

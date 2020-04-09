@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/when","esri/arcgis/Portal"],function(e,n){var r={_cache:{},getPortalInfo:function(c){if(!r._cache[c]){var t=new n.Portal(c);r._cache[c]=e(t.signIn(),function(e){return{user:e,portal:t}})}return r._cache[c]}};return r});
+define(["esri/dijit/geoenrichment/when","esri/arcgis/Portal"],(function(e,n){var r={_cache:{},getPortalInfo:function(c){if(!r._cache[c]){var t=new n.Portal(c);r._cache[c]=e(t.signIn(),(function(e){return{user:e,portal:t}}))}return r._cache[c]}};return r}));

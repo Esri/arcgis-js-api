@@ -162,4 +162,5 @@
 
 .esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerStackAll .reportContainerStackAll_groupLabelsContainer {
     background-color: transparent;
+    width: auto !important;
 }

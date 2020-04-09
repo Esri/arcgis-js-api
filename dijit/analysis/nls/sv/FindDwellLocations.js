@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj det lager där du vill söka bostadsenheter",selectTracksLabel:"Välj ett eller flera fält att identifiera spår ifrån",defineDistanceLabel:"Definiera det geografiska sökavståndet",distMethodLabel:"Välj metod för att beräkna avstånd",temporalSearchLabel:"Definiera det tidsbestämda sökområdet",outputDwellLabel:"Visa bostadsplatser som",outputLayerName:"Hitta bostadsplatser för ${inputLayerName}",meanCenters:"Centrum för medelvärde",convexHulls:"Konvexa områden",dwellFeatures:"Bostadsgeoobjekt",allFeatures:"Alla geoobjekt",itemDescription:"Geoobjektlager som genererats genom att lösningen Hitta bostadsplatser för ${inputLayerName} har körts.",itemTags:"Analysresultat, Hitta bostadsplatser, ${inputLayerName}",itemSnippet:"Geoobjektlager som genererats med Hitta bostadsplatser"});

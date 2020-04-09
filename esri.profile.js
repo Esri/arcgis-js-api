@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 var profile = (function(){
   var testResourceRe = /^esri\/(.*\/)?tests\//,
@@ -46,7 +46,9 @@ var profile = (function(){
         "esri/workers/scripts/indexInterface": 1,
         "esri/arcgisonline/config":   1,
         "esri/mobile/config":         1,
-        "esri/layers/vectorTiles/core/workers/worker": 1
+        "esri/layers/vectorTiles/core/workers/worker": 1,
+        "esri/dijit/geoenrichment/PanoramicViewer/esripv_three": 1,
+        "esri/dijit/geoenrichment/PanoramicViewer/esripv_lens": 1
       };
       
       return (mid in list);

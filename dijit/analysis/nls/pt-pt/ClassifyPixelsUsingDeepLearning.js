@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({toolDefine:"Classificar píxeis utilizando aprendizagem detalhada",outputLayerName:"${layername}_classified",modelLabel:"Escolher modelo de aprendizagem detalhada utilizado para classificar píxeis",modelArgsLabel:"Especificar argumentos do modelo de aprendizagem detalhada",nameLabel:"Nome",valueLabel:"Valor",queryModelArgsMsg:"A consultar argumentos do modelo...",analysisLayerLabel:"Escolher imagem utilizada para classificar píxeis",itemDescription:"Serviço de imagens de análise gerado por Classificar píxeis utilizando aprendizagem detalhada",itemTags:"Resultado de análise de raster, Classificar píxeis utilizando aprendizagem detalhada, ${layername}",itemSnippet:"Serviço de imagens de análise gerado por Classificar píxeis utilizando aprendizagem detalhada"});

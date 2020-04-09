@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Válassza ki a kivágni kívánt vektoros elemeket",filterSelectLabel:"Az összes vektoros elem kivágása vagy részhalmaz definiálása (opcionális)",targetArea:"Válassza ki a területet, amelyre a kivágás kerül",outputLayerName:"${inputLayerName} kivágása a(z) ${clipLayerName} rétegre",itemDescription:"A kivágási megoldások futtatásából létrehozott vektoros réteg. A(z) ${inputLayerName} rétegből származó vektoros elemek a(z) ${clipLayerName} rétegre lettek kivágva.",itemTags:"Elemzés végeredménye, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"A kivágott réteg alapján létrehozott vektoros réteg"});

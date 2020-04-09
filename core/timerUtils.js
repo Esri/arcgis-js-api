@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
-define([],function(){function e(e){var n,r=e.length;for(n=0;n<r;n++)e[n]()}var n,r={LOW:1,HIGH:2},t={};t[r.LOW]=[],t[r.HIGH]=[];var u=function(){clearTimeout(n),n=null;var u=t[r.HIGH];t[r.HIGH]=[],e(u),u=t[r.LOW],t[r.LOW]=[],e(u)};return{priority:r,callbackQueue:t,setTimeout:function(e,r){var i=[r,t[r].push(e)-1];return n||(n=setTimeout(u,0)),i},clearTimeout:function(e){if(e){var n=e[0],r=e[1];t[n].splice(r,1)}}}});
+define([],(function(){var e,n={LOW:1,HIGH:2},r={};function t(e){var n,r=e.length;for(n=0;n<r;n++)e[n]()}r[n.LOW]=[],r[n.HIGH]=[];var u=function(){clearTimeout(e),e=null;var u=r[n.HIGH];r[n.HIGH]=[],t(u),u=r[n.LOW],r[n.LOW]=[],t(u)};return{priority:n,callbackQueue:r,setTimeout:function(n,t){var i=[t,r[t].push(n)-1];return e||(e=setTimeout(u,0)),i},clearTimeout:function(e){if(e){var n=e[0],t=e[1];r[n].splice(t,1)}}}}));

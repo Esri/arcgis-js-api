@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({relationalDS:"Relatsiooniline",spatialDS:"Ajalisruumiline",agsDataStore:"ArcGIS-i andmeladu",bdfsTemplates:"Suurandmete failijaotuse väljundmallid"});

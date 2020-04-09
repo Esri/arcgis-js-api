@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.31/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Kies de puntobjecten die u wilt verrijken",chooseMVgridLyrLabel:"Kies de multivariabele grid waaruit verrijkt moet worden",chooseVariables:"Kies de variabelen die u wilt toevoegen",outputLayerName:"Verrijkt(e) ${inputFeatures} vanuit ${gridLayer}",itemDescription:"Feature Layer gegenereerd door de ‘Verrijken vanuit multivariabele grid’-oplossing voor ${inputFeatures} uit te voeren.",itemTags:"Analyseresultaat, Verrijken vanuit multivariabele grid, ${inputFeatures}, ${gridLayer}",itemSnippet:"Feature Layer gegenereerd via Verrijken vanuit multivariabele grid."});
