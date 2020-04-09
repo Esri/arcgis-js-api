@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],function(e,r,a,n,t){function l(e){e.include(n.RgbaFloatEncoding),e.fragment.code.add(t.glsl(o||(o=a(["\n    float linearDepth(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "],["\n    float linearDepth(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "]))))}Object.defineProperty(r,"__esModule",{value:!0}),r.ReadLinearDepth=l,function(e){function r(e,r){e.setUniform2fv("nearFar",r.nearFar)}e.bindUniforms=r}(l=r.ReadLinearDepth||(r.ReadLinearDepth={}));var o});
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,r,a,n,t){function l(e){e.include(n.RgbaFloatEncoding),e.fragment.code.add(t.glsl(o||(o=a(["\n    float linearDepth(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "],["\n    float linearDepth(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "]))))}var o;Object.defineProperty(r,"__esModule",{value:!0}),r.ReadLinearDepth=l,function(e){e.bindUniforms=function(e,r){e.setUniform2fv("nearFar",r.nearFar)}}(l=r.ReadLinearDepth||(r.ReadLinearDepth={}))}));

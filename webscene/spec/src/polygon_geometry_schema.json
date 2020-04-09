@@ -26,7 +26,8 @@
           "maxItems": 4
         },
         "minItems": 3
-      }
+      },
+      "minItems": 1
     },
     "spatialReference": {
       "type": "object",

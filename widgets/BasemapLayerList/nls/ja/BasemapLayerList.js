@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"ベースマップ レイヤー リスト",baseHeading:"ベース",basemapTitle:"ベースマップ タイトル",referenceHeading:"参照情報",noReferenceLayers:"参照レイヤーがありません",noBaseLayers:"ベース レイヤーがありません",layerInvisibleAtScale:"現在の縮尺では表示されません",layerError:"このレイヤーの読み込み中にエラーが発生しました。",untitledLayer:"無題のレイヤー"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Вычисление расстояния",hint:"Начните измерение, щелкнув на карте, чтобы разместить первую точку",unsupported:"Измерение 2D-расстояния поддерживается только в виде карты.",distance:"Расстояние",newMeasurement:"Новое измерение",mode:"Режим",modes:{auto:"Авто",planar:"Плоскостной",geodesic:"Геодезический"},unit:"Единицы измерения",units:{metric:"Метрические",imperial:"Английские",kilometers:"Километры",meters:"Метры",miles:"Мили",inches:"Дюймы",feet:"Футы",yards:"Ярды","nautical-miles":"Морские мили","us-feet":"Футы (США)","degrees-minutes-seconds":"Градусы, минуты, секунды",degrees:"Градусы"}});

@@ -37,11 +37,7 @@
             "featureReduction": {},
             "fields": {},
             "maxScale": {},
-            "minScale": {},
-            "name": {},
-            "type": {},
-            "typeIdField": {},
-            "types": {}
+            "minScale": {}
           },
           "additionalProperties": false
         }
@@ -104,8 +100,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the layer.",
-      "format": "uri"
+      "description": "The URL to the layer."
     },
     "visibility": {
       "type": "boolean",

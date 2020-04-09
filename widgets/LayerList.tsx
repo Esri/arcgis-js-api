@@ -35,12 +35,15 @@ import * as i18n from "dojo/i18n!esri/widgets/LayerList/nls/LayerList";
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
-import watchUtils = require("esri/core/watchUtils");
+import has = require("esri/core/has");
+import Logger = require("esri/core/Logger");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import Layer = require("esri/layers/Layer");
@@ -73,6 +76,8 @@ function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
 }
 
+const NEW_UI_FLAG = "esri-layerlist-new-ui";
+
 const ListItemCollection = Collection.ofType<ListItem>(ListItem);
 
 const SORT_GROUP_NAME = "root-layers";
@@ -82,6 +87,7 @@ const SORT_DATASET_ID = "layerUid";
 const CSS = {
   // layerlist classes
   base: "esri-layer-list esri-widget esri-widget--panel",
+  newUI: "esri-layer-list--new-ui",
   noItems: "esri-layer-list__no-items",
   list: "esri-layer-list__list",
   listRoot: "esri-layer-list__list--root",
@@ -91,6 +97,7 @@ const CSS = {
   item: "esri-layer-list__item",
   itemContent: "esri-layer-list__item-content",
   itemError: "esri-layer-list__item--error",
+  itemInvisible: "esri-layer-list__item--invisible",
   itemInvisibleAtScale: "esri-layer-list__item--invisible-at-scale",
   itemUpdating: "esri-layer-list__item--updating",
   itemChildren: "esri-layer-list__item--has-children",
@@ -112,6 +119,8 @@ const CSS = {
   title: "esri-layer-list__item-title",
   toggleVisible: "esri-layer-list__item-toggle",
   toggleVisibleIcon: "esri-layer-list__item-toggle-icon",
+  toggleIcon: "esri-layer-list__item-toggle-icon",
+  radioIcon: "esri-layer-list__item-radio-icon",
   childToggle: "esri-layer-list__child-toggle",
   childToggleOpen: "esri-layer-list__child-toggle--open",
   childOpened: "esri-layer-list__child-toggle-icon--opened",
@@ -171,6 +180,15 @@ function closeItemActions(item: ListItem): void {
  * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
  * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
  */
+const logger = Logger.getLogger("esri.widgets.LayerList");
+
+interface VisibleElements {
+  statusIndicators?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  statusIndicators: true
+};
 
 @subclass("esri.widgets.LayerList")
 class LayerList extends declared(Widget) {
@@ -207,9 +225,7 @@ class LayerList extends declared(Widget) {
   }
 
   destroy(): void {
-    const { _sortable } = this;
-
-    _sortable && _sortable.destroy();
+    this._destroySortable();
     this._handles.destroy();
     this._handles = null;
   }
@@ -227,6 +243,8 @@ class LayerList extends declared(Widget) {
   private _sortableNode: HTMLUListElement = null;
 
   private _focusSortUid: string = null;
+
+  private _newUI = has(NEW_UI_FLAG);
 
   //--------------------------------------------------------------------------
   //
@@ -445,6 +463,7 @@ class LayerList extends declared(Widget) {
    * @type {boolean}
    * @default true
    * @since 4.5
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/LayerList#visibleElements LayerList.visibleElements.statusIndicators} instead.
    *
    * @example
    * // disable status indicators for all layers listed in LayerList
@@ -452,7 +471,13 @@ class LayerList extends declared(Widget) {
    */
   @property()
   @renderable()
-  statusIndicatorsVisible = true;
+  set statusIndicatorsVisible(value: boolean) {
+    deprecatedProperty(logger, "statusIndicatorsVisible", {
+      replacement: "visibleElements.statusIndicators",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, statusIndicators: value };
+  }
 
   //----------------------------------
   //  view
@@ -491,6 +516,44 @@ class LayerList extends declared(Widget) {
   @renderable("viewModel.state")
   viewModel: LayerListViewModel = new LayerListViewModel();
 
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/LayerList~VisibleElements
+   *
+   * @property {boolean} [statusIndicators] - Indicates whether to the status indicators will be displayed. Default is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/LayerList~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * layerList.visibleElements = {
+   *   statusIndicators: false
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -521,6 +584,7 @@ class LayerList extends declared(Widget) {
           aria-label={i18n.widgetLabel}
           role={this.selectionEnabled ? "listbox" : undefined}
           afterCreate={this._sortNodeCreated}
+          afterRemoved={this._destroySortable}
           data-node-ref="_sortableNode"
           bind={this}
           class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
@@ -530,6 +594,7 @@ class LayerList extends declared(Widget) {
       );
 
     const baseClasses = {
+      [CSS.newUI]: this._newUI,
       [CSS.hidden]: state === "loading",
       [CSS.disabled]: state === "disabled"
     };
@@ -542,6 +607,12 @@ class LayerList extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _destroySortable(): void {
+    const { _sortable } = this;
+    _sortable && _sortable.destroy();
+    this._sortable = null;
+  }
 
   private _toggleSorting(): void {
     const { _sortable, _sortableNode, selectionEnabled } = this;
@@ -556,6 +627,7 @@ class LayerList extends declared(Widget) {
       const itemSort = Sortable.create(_sortableNode, {
         dataIdAttr: SORT_DATA_ATTR,
         group: SORT_GROUP_NAME,
+        fallbackTolerance: 4, // Note: some phones with very sensitive touch displays like the Samsung Galaxy S8 will fire unwanted touchmove events even when your finger is not moving, resulting in the sort not triggering. Only needed when the item can also be clicked/touched. #25015
         disabled: !selectionEnabled,
         onSort: () => this._sortLayersToItems(itemSort.toArray())
       });
@@ -610,6 +682,8 @@ class LayerList extends declared(Widget) {
     const listUid = `${uid}__list`;
     const titleKey = `${uid}__title`;
 
+    const { _newUI } = this;
+
     const childrenLen = item.children.length;
     const hasError = !!item.error;
     const hasChildren = !!childrenLen && !hasError;
@@ -630,7 +704,8 @@ class LayerList extends declared(Widget) {
     const itemClasses = {
       [CSS.itemChildren]: hasChildren,
       [CSS.itemError]: !!hasError,
-      [CSS.itemUpdating]: item.updating && !parent && this.statusIndicatorsVisible,
+      [CSS.itemUpdating]: item.updating && !parent && this.visibleElements.statusIndicators,
+      [CSS.itemInvisible]: _newUI && !item.visible,
       [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
       [CSS.itemSelectable]: this.selectionEnabled
     };
@@ -798,15 +873,18 @@ class LayerList extends declared(Widget) {
   }
 
   private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
-    const { selectionEnabled } = this;
+    const { selectionEnabled, _newUI } = this;
     const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
     const toggleIconClasses = {
+      [CSS.toggleVisibleIcon]: _newUI,
+      [CSS.toggleIcon]: _newUI && parentVisibilityMode !== exclusive,
+      [CSS.radioIcon]: _newUI && parentVisibilityMode === exclusive,
       [CSS.iconRadioSelected]: parentVisibilityMode === exclusive && item.visible,
       [CSS.iconRadioUnselected]: parentVisibilityMode === exclusive && !item.visible,
-      [CSS.iconVisible]: parentVisibilityMode !== exclusive && item.visible,
-      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
+      [CSS.iconVisible]: parentVisibilityMode !== exclusive && !_newUI && item.visible,
+      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && (_newUI || !item.visible)
     };
 
     const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
@@ -824,9 +902,7 @@ class LayerList extends declared(Widget) {
       </span>
     );
 
-    const visibilityIconNode = (
-      <span class={this.classes(CSS.toggleVisibleIcon, toggleIconClasses)} aria-hidden="true" />
-    );
+    const visibilityIconNode = <span class={this.classes(toggleIconClasses)} aria-hidden="true" />;
 
     const toggleProps = {
       bind: this,
@@ -855,12 +931,21 @@ class LayerList extends declared(Widget) {
     const iconProps = selectionEnabled ? toggleProps : noToggleProps;
     const labelProps = selectionEnabled ? noToggleProps : toggleProps;
 
+    const toggleNode = (
+      <span class={CSS.toggleVisible} {...iconProps}>
+        {visibilityIconNode}
+      </span>
+    );
+
+    const labelContentNodes = [toggleNode, titleNode];
+
+    if (_newUI) {
+      labelContentNodes.reverse();
+    }
+
     const labelNode = (
       <div key={item} class={CSS.label} {...labelProps}>
-        <span class={CSS.toggleVisible} {...iconProps}>
-          {visibilityIconNode}
-        </span>
-        {titleNode}
+        {labelContentNodes}
       </div>
     );
 

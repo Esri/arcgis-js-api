@@ -172,7 +172,9 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
     super(params);
 
     this.slider.set({
-      labelsVisible: false,
+      visibleElements: {
+        labels: false
+      },
       labelInputsEnabled: false,
       rangeLabelInputsEnabled: false
     });

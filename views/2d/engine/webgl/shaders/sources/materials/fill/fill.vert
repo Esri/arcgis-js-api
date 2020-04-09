@@ -1,4 +1,4 @@
-precision mediump float;
+precision highp float;
 
 #ifdef DOT_DENSITY
 attribute float a_inverseArea;              

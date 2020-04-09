@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","../Mesh","./meshUtils/georeference","./meshUtils/merge"],function(e,r,t,n,i,o,c,u){function s(r,o,c){return n(this,void 0,void 0,function(){var n;return t(this,function(t){switch(t.label){case 0:return[4,i.create(function(r){return e(["./meshUtils/elevation"],r)})];case 1:return n=t.sent(),[2,n.create(r,o,c)]}})})}function a(r,o){return n(this,void 0,void 0,function(){var n;return t(this,function(t){switch(t.label){case 0:return[4,i.create(function(r){return e(["./meshUtils/elevationSampler"],r)})];case 1:return n=t.sent(),[2,n.create(r,o)]}})})}function f(e,r,t){return c.georeference(e,r,t)}function l(e,r,t){return c.ungeoreference(e,r,t)}function h(e){return new o(u.merge(e))}Object.defineProperty(r,"__esModule",{value:!0}),r.createFromElevation=s,r.createElevationSampler=a,r.georeference=f,r.ungeoreference=l,r.merge=h});
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","../Mesh","./meshUtils/georeference","./meshUtils/merge"],(function(e,r,t,n,i,o,c,u){Object.defineProperty(r,"__esModule",{value:!0}),r.createFromElevation=function(r,o,c){return n(this,void 0,void 0,(function(){return t(this,(function(t){switch(t.label){case 0:return[4,i.create((function(r){return e(["./meshUtils/elevation"],r)}))];case 1:return[2,t.sent().create(r,o,c)]}}))}))},r.createElevationSampler=function(r,o){return n(this,void 0,void 0,(function(){return t(this,(function(t){switch(t.label){case 0:return[4,i.create((function(r){return e(["./meshUtils/elevationSampler"],r)}))];case 1:return[2,t.sent().create(r,o)]}}))}))},r.georeference=function(e,r,t){return c.georeference(e,r,t)},r.ungeoreference=function(e,r,t){return c.ungeoreference(e,r,t)},r.merge=function(e){return new o(u.merge(e))}}));

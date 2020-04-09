@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Lista de Camadas de Mapa Base",baseHeading:"Base",basemapTitle:"Título do mapa base",referenceHeading:"Referência",noReferenceLayers:"Nenhuma camada de referência",noBaseLayers:"Nenhuma camada de base",layerInvisibleAtScale:"Invisível na escala atual",layerError:"Ocorreu um erro ao carregar esta camada",untitledLayer:"Camada sem título"});

@@ -71,7 +71,12 @@ float getSize(in float in_size) {
 
 mat3 getRotation() {
 #ifdef VV_ROTATION
-  return getVVRotationMat3(VV_ADATA[ATTR_VV_ROTATION]);
+  // MG: On Intel 620/630 driver version 21.xx.xx.xx, 23.xx.xx.xx, and 24.xx.xx.xx
+  // We get some very strange behavior if we don't normalize the angle before
+  // computing our rotation matrix (26.xx.xx.xx works fine). Some features dissapear
+  // and the rotation is very wrong. Possibly something overflows internally in these cases.
+  // Would be good to test sin / cos with very large inputs and see what happens
+  return getVVRotationMat3(mod(VV_ADATA[ATTR_VV_ROTATION], 360.0));
 #else
   return mat3(1.0); 
 #endif

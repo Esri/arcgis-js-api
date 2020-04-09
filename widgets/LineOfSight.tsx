@@ -54,6 +54,9 @@
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/LineOfSight/nls/LineOfSight";
 
+// esri.core
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
+
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
@@ -291,7 +294,7 @@ class LineOfSight extends declared(Widget) {
   @accessibleHandler()
   private onNewAnalysis(): void {
     this.viewModel.clear();
-    this.viewModel.start();
+    ignoreAbortErrors(this.viewModel.start());
   }
 
   @accessibleHandler()

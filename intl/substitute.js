@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/Logger","../core/object","../core/string","./date","./number"],function(e,r,t,n,a,o,i){function u(e,r,t){void 0===t&&(t={});var n=t.format,o=void 0===n?{}:n;return a.replace(e,function(e){return f(e,r,o)})}function f(e,r,t){var a,o,i=e.indexOf(":");if(-1===i?a=e.trim():(a=e.slice(0,i).trim(),o=e.slice(i+1).trim()),!a)return"";var u=n.getDeepValue(a,r);if(null==u)return"";var f=t[o]||t[a];return f?s(u,f):o?c(u,o):m(u)}function s(e,r){switch(r.type){case"date":return o.formatDate(e,r.intlOptions);case"number":return i.formatNumber(e,r.intlOptions);default:return d.warn("missing format descriptor for key {key}"),m(e)}}function c(e,r){switch(r.toLowerCase()){case"dateformat":return o.formatDate(e);case"numberformat":return i.formatNumber(e);default:return d.warn("inline format is unsupported since 4.12: "+r),/^(dateformat|datestring)/i.test(r)?o.formatDate(e):/^numberformat/i.test(r)?i.formatNumber(e):m(e)}}function m(e){switch(typeof e){case"string":return e;case"number":return i.formatNumber(e);case"boolean":return""+e;default:return e instanceof Date?o.formatDate(e):""}}Object.defineProperty(r,"__esModule",{value:!0});var d=t.getLogger("esri.intl");r.substitute=u});
+define(["require","exports","../core/Logger","../core/object","../core/string","./date","./number"],(function(e,r,t,n,a,i,u){Object.defineProperty(r,"__esModule",{value:!0});var o=t.getLogger("esri.intl");function f(e){switch(typeof e){case"string":return e;case"number":return u.formatNumber(e);case"boolean":return""+e;default:return e instanceof Date?i.formatDate(e):""}}r.substitute=function(e,r,t){void 0===t&&(t={});var s=t.format,c=void 0===s?{}:s;return a.replace(e,(function(e){return function(e,r,t){var a,s,c=e.indexOf(":");-1===c?a=e.trim():(a=e.slice(0,c).trim(),s=e.slice(c+1).trim());if(!a)return"";var m=n.getDeepValue(a,r);if(null==m)return"";var d=t[s]||t[a];if(d)return function(e,r){switch(r.type){case"date":return i.formatDate(e,r.intlOptions);case"number":return u.formatNumber(e,r.intlOptions);default:return o.warn("missing format descriptor for key {key}"),f(e)}}(m,d);if(s)return function(e,r){switch(r.toLowerCase()){case"dateformat":return i.formatDate(e);case"numberformat":return u.formatNumber(e);default:return o.warn("inline format is unsupported since 4.12: "+r),/^(dateformat|datestring)/i.test(r)?i.formatDate(e):/^numberformat/i.test(r)?u.formatNumber(e):f(e)}}(m,s);return f(m)}(e,r,c)}))}}));

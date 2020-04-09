@@ -9,6 +9,9 @@
     },
     {
       "$ref": "buildingSceneLayer_filterModeWireFrame_schema.json"
+    },
+    {
+      "$ref": "buildingSceneLayer_filterModeXray_schema.json"
     }
   ]
 }

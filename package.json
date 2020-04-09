@@ -1,6 +1,6 @@
 {
   "name": "arcgis-js-api",
-  "version": "4.14.1",
+  "version": "4.15.0",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
   "types": "index.d.ts",
   "license": "SEE LICENSE IN copyright.txt",
@@ -16,13 +16,9 @@
   ],
   "dependencies": {
     "@dojo/framework": "5.0.4",
-    "dgrid": "Esri/dgrid#v1.2.1/esri-3.22.0",
-    "dijit": "Esri/dijit#v1.14.2/esri-3.28.0",
     "dojo": "Esri/dojo#v1.14.2/esri-3.28.0",
     "dojo-dstore": "1.1.2",
-    "dojo-util": "Esri/dojo-util#v1.14.2/esri-3.28.0",
     "dojox": "Esri/dojox#v1.14.2/esri-3.28.0",
-    "maquette": "~3.3.4",
     "maquette-css-transitions": "~1.1.1",
     "maquette-jsx": "~2.1.1",
     "moment": "2.24.0"

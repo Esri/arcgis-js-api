@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],function(o,r,e,d){function l(o,r){r.attributeColor?(o.attributes.add("color","vec4"),o.varyings.add("vColor","vec4"),o.vertex.code.add(d.glsl(t||(t=e(["\n      void forwardVertexColor() { vColor = color; }\n    "],["\n      void forwardVertexColor() { vColor = color; }\n    "])))),o.vertex.code.add(d.glsl(a||(a=e(["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "],["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "]))))):o.vertex.code.add(d.glsl(n||(n=e(["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "],["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "]))))}Object.defineProperty(r,"__esModule",{value:!0}),r.VertexColor=l;var t,a,n});
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],(function(o,r,e,d){var l,t,a;Object.defineProperty(r,"__esModule",{value:!0}),r.VertexColor=function(o,r){r.attributeColor?(o.attributes.add("color","vec4"),o.varyings.add("vColor","vec4"),o.vertex.code.add(d.glsl(l||(l=e(["\n      void forwardVertexColor() { vColor = color; }\n    "],["\n      void forwardVertexColor() { vColor = color; }\n    "])))),o.vertex.code.add(d.glsl(t||(t=e(["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "],["\n      void forwardNormalizedVertexColor() { vColor = color * 0.003921568627451; }\n    "]))))):o.vertex.code.add(d.glsl(a||(a=e(["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "],["\n      void forwardVertexColor() {}\n      void forwardNormalizedVertexColor() {}\n    "]))))}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],function(e,a,n,o){function r(e){var a=o.glsl(t||(t=n(["\n    bool isNaN( float val )\n    {\n      return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;\n      // important: some nVidias failed to cope with version below.\n      // Probably wrong optimization.\n      /*return ( val <= 0.0 || 0.0 <= val ) ? false : true;*/\n    }\n  "],["\n    bool isNaN( float val )\n    {\n      return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;\n      // important: some nVidias failed to cope with version below.\n      // Probably wrong optimization.\n      /*return ( val <= 0.0 || 0.0 <= val ) ? false : true;*/\n    }\n  "])));e.fragment.code.add(a),e.vertex.code.add(a)}Object.defineProperty(a,"__esModule",{value:!0}),a.IsNaN=r;var t});
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],(function(e,a,n,o){var r;Object.defineProperty(a,"__esModule",{value:!0}),a.IsNaN=function(e){var a=o.glsl(r||(r=n(["\n    bool isNaN( float val )\n    {\n      return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;\n      // important: some nVidias failed to cope with version below.\n      // Probably wrong optimization.\n      /*return ( val <= 0.0 || 0.0 <= val ) ? false : true;*/\n    }\n  "],["\n    bool isNaN( float val )\n    {\n      return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;\n      // important: some nVidias failed to cope with version below.\n      // Probably wrong optimization.\n      /*return ( val <= 0.0 || 0.0 <= val ) ? false : true;*/\n    }\n  "])));e.fragment.code.add(a),e.vertex.code.add(a)}}));

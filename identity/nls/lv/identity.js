@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({lblItem:"vienība",title:"Pierakstīties",info:"Lūdzu, pierakstieties, lai piekļūtu vienībai šeit: {server} {resource}",oAuthInfo:"Lūdzu, pierakstieties {server}.",lblUser:"Lietotājvārds:",lblPwd:"Parole:",lblOk:"Labi",lblSigning:"Pierakstās...",lblCancel:"Atcelt",errorMsg:"Nederīgs lietotājvārds/parole. Lūdzu, mēģiniet vēlreiz.",invalidUser:"Jūsu ievadītais lietotājvārds vai parole ir nepareizi.",forbidden:"Lietotājvārds un parole ir pareizi, bet jums nav tiesību piekļūt šim resursam.",noAuthService:"Nevar piekļūt autentifikācijas servisam."});

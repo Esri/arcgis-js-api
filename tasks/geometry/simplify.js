@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/awaiterHelper","../../core/tsSupport/generatorHelper","../../request","../../core/urlUtils","../../geometry/support/jsonUtils"],function(e,r,t,n,i,o,s,u){function p(e,r,p){return n(this,void 0,void 0,function(){var n,f,l,y,g;return i(this,function(i){switch(i.label){case 0:return n="string"==typeof e?s.urlToObject(e):e,f=r[0].spatialReference,l=u.getJsonType(r[0]),y=t({},p,{query:t({},n.query,{f:"json",sr:f.wkid?f.wkid:JSON.stringify(f),geometries:JSON.stringify(a(r))})}),[4,o(n.path+"/simplify",y)];case 1:return g=i.sent(),[2,c(g.data,l,f)]}})})}function a(e){return{geometryType:u.getJsonType(e[0]),geometries:e.map(function(e){return e.toJSON()})}}function c(e,r,t){var n=u.getGeometryType(r);return e.map(function(e){var r=n.fromJSON(e);return r.spatialReference=t,r})}Object.defineProperty(r,"__esModule",{value:!0}),r.simplify=p});
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/awaiterHelper","../../core/tsSupport/generatorHelper","../../request","../../core/urlUtils","../../geometry/support/jsonUtils"],(function(e,r,t,n,i,o,s,u){function p(e){return{geometryType:u.getJsonType(e[0]),geometries:e.map((function(e){return e.toJSON()}))}}function a(e,r,t){var n=u.getGeometryType(r);return e.map((function(e){var r=n.fromJSON(e);return r.spatialReference=t,r}))}Object.defineProperty(r,"__esModule",{value:!0}),r.simplify=function(e,r,c){return n(this,void 0,void 0,(function(){var n,f,l,y;return i(this,(function(i){switch(i.label){case 0:return n="string"==typeof e?s.urlToObject(e):e,f=r[0].spatialReference,l=u.getJsonType(r[0]),y=t({},c,{query:t({},n.query,{f:"json",sr:f.wkid?f.wkid:JSON.stringify(f),geometries:JSON.stringify(p(r))})}),[4,o(n.path+"/simplify",y)];case 1:return[2,a(i.sent().data,l,f)]}}))}))}}));

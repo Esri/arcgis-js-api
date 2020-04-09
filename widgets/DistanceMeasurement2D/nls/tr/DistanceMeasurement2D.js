@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Mesafe Ölçümü",hint:"İlk noktanızı yerleştirmek için haritaya tıklayarak ölçüme başlayın",unsupported:"2B alan ölçümü sadece MapView’da desteklenir.",distance:"Mesafe",newMeasurement:"Yeni ölçüm",mode:"Mod",modes:{auto:"Otomatik",planar:"Düzlemsel",geodesic:"Jeodezik"},unit:"Birim",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz mili","us-feet":"Fit (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

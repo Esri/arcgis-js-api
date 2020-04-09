@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgent"],function(e,t,n,r,o){return function(e){function t(){var t=e.call(this)||this;return t._scaleRangeEnabled=!0,t}return n(t,e),Object.defineProperty(t.prototype,"_desiredMinLevelDelta",{get:function(){return 0},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_loadingLevelDelta",{get:function(){return 8},enumerable:!0,configurable:!0}),t.Pool=new r(t),t}(o.TileAgent)});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgent"],(function(e,t,n,r,o){return function(e){function t(){var t=e.call(this)||this;return t._scaleRangeEnabled=!0,t}return n(t,e),Object.defineProperty(t.prototype,"_desiredMinLevelDelta",{get:function(){return 0},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_loadingLevelDelta",{get:function(){return 8},enumerable:!0,configurable:!0}),t.Pool=new r(t),t}(o.TileAgent)}));

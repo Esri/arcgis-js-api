@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Iškylantis langas",zoom:"Parodyti visą",next:"Kitas elementas",previous:"Ankstesnis elementas",dock:"Prijungti",undock:"Atjungti",pageText:"{index} iš {total}",selectedFeature:"Pasirinktas elementas",selectedFeatures:"{total} rezultatai",tooManyFields:"Šis sluoksnis turi per daug laukų, kai kurie jų nebus rodomi."});
+define({widgetLabel:"Iškylantis langas",zoom:"Parodyti visą",next:"Kitas elementas",previous:"Ankstesnis elementas",dock:"Prijungti",undock:"Atjungti",pageText:"{index} iš {total}",selectedFeature:"Pasirinktas elementas",selectedFeatures:"{total} rezultatai"});

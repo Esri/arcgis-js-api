@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,29 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-/*
- * Copyright (c) 2012 Brandon Jones
- *
- * This software is provided 'as-is', without any express or implied
- * warranty. In no event will the authors be held liable for any damages
- * arising from the use of this software.
- *
- * Permission is granted to anyone to use this software for any purpose,
- * including commercial applications, and to alter it and redistribute it
- * freely, subject to the following restrictions:
- *
- *    1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software. If you use this software
- *    in a product, an acknowledgment in the product documentation would be
- *    appreciated but is not required.
- *
- *    2. Altered source versions must be plainly marked as such, and must not
- *    be misrepresented as being the original software.
- *
- *    3. This notice may not be removed or altered from any source
- *    distribution.
- */
-
-define(["require","exports","../../../../core/Logger","../../../../core/mathUtils","../../../webgl/Texture"],function(e,r,t,n,o){function a(e){return e.charCodeAt(0)+(e.charCodeAt(1)<<8)+(e.charCodeAt(2)<<16)+(e.charCodeAt(3)<<24)}function i(e){return String.fromCharCode(255&e,e>>8&255,e>>16&255,e>>24&255)}function u(e,r,t,a){var u=new Int32Array(t,0,v);if(u[C]!==d)return s.error("Invalid magic number in DDS header"),null;if(!(u[M]&l))return s.error("Unsupported format, must contain a FourCC code"),null;var y,S,k=u[U];switch(k){case h:y=8,S=p;break;case w:y=16,S=m;break;case g:y=16,S=f;break;default:return s.error("Unsupported FourCC code:",i(k)),null}var F=1,I=u[T],O=u[D];0==(3&I)&&0==(3&O)||(s.warn("Rounding up compressed texture size to nearest multiple of 4."),I=I+3&-4,O=O+3&-4),r.width=I,r.height=O,u[x]&c&&!1!==a&&(F=Math.max(1,u[A])),1===F||n.isPowerOfTwo(I)&&n.isPowerOfTwo(O)||(s.warn("Ignoring mipmaps of non power of two sized compressed texture."),F=1);for(var P,X,z=u[b]+4,L=[],_=0;_<F;++_)X=(I+3>>2)*(O+3>>2)*y,P=new Uint8Array(t,z,X),L.push(P),z+=X,I=Math.max(1,I>>1),O=Math.max(1,O>>1);r.samplingMode=F>1?9987:9729,r.hasMipmap=F>1,r.internalFormat=S;var j=new o(e,r,{type:"compressed",levels:L});return e.bindTexture(j),j}Object.defineProperty(r,"__esModule",{value:!0});var s=t.getLogger("esri.views.3d.webgl-engine.lib.DDSUtil"),d=542327876,c=131072,l=4,p=33776,m=33778,f=33779,h=a("DXT1"),w=a("DXT3"),g=a("DXT5"),v=31,C=0,b=1,x=2,D=3,T=4,A=7,M=20,U=21;r.createDDSTexture=u});
+define(["require","exports","../../../../core/Logger","../../../../core/mathUtils","../../../webgl/Texture"],(function(e,r,t,a,n){Object.defineProperty(r,"__esModule",{value:!0});var o=t.getLogger("esri.views.3d.webgl-engine.lib.DDSUtil");function i(e){return e.charCodeAt(0)+(e.charCodeAt(1)<<8)+(e.charCodeAt(2)<<16)+(e.charCodeAt(3)<<24)}var u=i("DXT1"),s=i("DXT3"),l=i("DXT5");function d(e,r){var t=new Int32Array(e,0,31);if(542327876!==t[0])return o.error("Invalid magic number in DDS header"),null;if(!(4&t[20]))return o.error("Unsupported format, must contain a FourCC code"),null;var n,i,d,c=t[21];switch(c){case u:n=8,i=33776;break;case s:n=16,i=33778;break;case l:n=16,i=33779;break;default:return o.error("Unsupported FourCC code:",(d=c,String.fromCharCode(255&d,d>>8&255,d>>16&255,d>>24&255))),null}var h=1,m=t[4],g=t[3];0==(3&m)&&0==(3&g)||(o.warn("Rounding up compressed texture size to nearest multiple of 4."),m=m+3&-4,g=g+3&-4);var p,w,f=m,v=g;131072&t[2]&&!1!==r&&(h=Math.max(1,t[7])),1===h||a.isPowerOfTwo(m)&&a.isPowerOfTwo(g)||(o.warn("Ignoring mipmaps of non power of two sized compressed texture."),h=1);for(var D=t[1]+4,x=[],C=0;C<h;++C)w=(m+3>>2)*(g+3>>2)*n,p=new Uint8Array(e,D,w),x.push(p),D+=w,m=Math.max(1,m>>1),g=Math.max(1,g>>1);return{textureData:{type:"compressed",levels:x},internalFormat:i,width:f,height:v}}r.createDDSTexture=function(e,r,t,a){var o=d(t,a),i=o.textureData,u=o.internalFormat,s=o.width,l=o.height;r.samplingMode=i.levels.length>1?9987:9729,r.hasMipmap=i.levels.length>1,r.internalFormat=u,r.width=s,r.height=l;var c=new n(e,r,i);return e.bindTexture(c),c},r.createDDSTextureData=d}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Легенда",points:"Точки",lines:"Лінії",polygons:"Полігони",creatingLegend:"Створення легенди",noLegend:"Немає легенди",dotValue:"1 крапка = {value} {unit}",currentObservations:"Поточні спостереження",previousObservations:"Попередні спостереження",high:"Високий",low:"Низький",esriMetersPerSecond:"м/с",esriKilometersPerHour:"км/год",esriKnots:"вузлів",esriFeetPerSecond:"футів/сек",esriMilesPerHour:"миль/год",showNormField:"{field}, поділене на {normField}",showNormPct:"{field} як відсоток від загального значення",showRatio:"Відношення {field} до {normField}",showRatioPercent:"{field} як відсоток {normField}",showRatioPercentTotal:"{field} як відсоток {field} та {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Червоний",green:"Зелений",blue:"Синій"});
+define({widgetLabel:"Легенда",points:"Точки",lines:"Лінії",polygons:"Полігони",creatingLegend:"Створення легенди",noLegend:"Немає легенди",dotValue:"1 крапка = {value} {unit}",currentObservations:"Поточні спостереження",previousObservations:"Попередні спостереження",high:"Високий",low:"Низький",esriMetersPerSecond:"м/с",esriKilometersPerHour:"км/год",esriKnots:"вузлів",esriFeetPerSecond:"футів/сек",esriMilesPerHour:"миль/год",showNormField:"{field}, поділене на {normField}",showNormPct:"{field} як відсоток від загального значення",showRatio:"Відношення {field} до {normField}",showRatioPercent:"{field} як відсоток {normField}",showRatioPercentTotal:"{field} як відсоток {field} та {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Червоний",green:"Зелений",blue:"Синій",clusterCountTitle:"Кількість об'єктів"});

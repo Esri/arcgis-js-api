@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/object","../../core/Warning","./PointCloudBitfieldFilter","./PointCloudReturnFilter","./PointCloudValueFilter"],function(e,t,n,r,i,o,u){function l(e){return e?p[e.type]||null:null}function a(e,t,n){if(e&&Array.isArray(e))return e.map(function(e){var t=l(e);if(t){var i=new t;return i.read(e,n),i}n&&n.messages&&e&&n.messages.push(new r("point-cloud-filter:unsupported","Point cloud filters of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:n}))})}function f(e,t,r,i){var o=e.map(function(e){return e.write({},i)});n.setDeepValue(r,o,t)}function d(e){var t=l(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudValueFilter:u,pointCloudBitfieldFilter:i,pointCloudReturnFilter:o};t.read=a,t.write=f,t.fromJSON=d});
+define(["require","exports","../../core/object","../../core/Warning","./PointCloudBitfieldFilter","./PointCloudReturnFilter","./PointCloudValueFilter"],(function(e,t,r,n,i,o,u){Object.defineProperty(t,"__esModule",{value:!0});var l={pointCloudValueFilter:u,pointCloudBitfieldFilter:i,pointCloudReturnFilter:o};function a(e){return e&&l[e.type]||null}t.read=function(e,t,r){if(e&&Array.isArray(e))return e.map((function(e){var t=a(e);if(t){var i=new t;return i.read(e,r),i}r&&r.messages&&e&&r.messages.push(new n("point-cloud-filter:unsupported","Point cloud filters of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:r}))}))},t.write=function(e,t,n,i){var o=e.map((function(e){return e.write({},i)}));r.setDeepValue(n,o,t)},t.fromJSON=function(e){var t=a(e);return t?t.fromJSON(e):null}}));

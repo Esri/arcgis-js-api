@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../geometry","../../../core/accessorSupport/decorators","../../../geometry/Geometry","../../../geometry/support/jsonUtils","./ClipArea"],function(e,r,t,o,n,p,s,y,i){var l={base:s,key:"type",typeMap:{extent:n.Extent,polygon:n.Polygon}};return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="geometry",r.geometry=null,r}o(r,e),n=r,Object.defineProperty(r.prototype,"version",{get:function(){return(this._get("version")||0)+1},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new n({geometry:this.geometry.clone()})};var n;return t([p.property({types:l,json:{read:y.fromJSON,write:!0}})],r.prototype,"geometry",void 0),t([p.property({readOnly:!0,dependsOn:["geometry"]})],r.prototype,"version",null),r=n=t([p.subclass("esri.views.layers.support.Geometry")],r)}(p.declared(i))});
+define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../geometry","../../../core/accessorSupport/decorators","../../../geometry/Geometry","../../../geometry/support/jsonUtils","./ClipArea"],(function(e,r,t,o,n,p,s,y,i){var l={base:s,key:"type",typeMap:{extent:n.Extent,polygon:n.Polygon}};return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="geometry",r.geometry=null,r}var n;return o(r,e),n=r,Object.defineProperty(r.prototype,"version",{get:function(){return(this._get("version")||0)+1},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new n({geometry:this.geometry.clone()})},t([p.property({types:l,json:{read:y.fromJSON,write:!0}})],r.prototype,"geometry",void 0),t([p.property({readOnly:!0,dependsOn:["geometry"]})],r.prototype,"version",null),r=n=t([p.subclass("esri.views.layers.support.Geometry")],r)}(p.declared(i))}));

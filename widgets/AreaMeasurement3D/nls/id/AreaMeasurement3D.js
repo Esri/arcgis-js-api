@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Pengukuran Area",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran area 3D hanya didukung di SceneView.",perimeterLength:"Keliling",area:"Area",unit:"Unit",notApplicable:"t/a",newMeasurement:"Pengukuran baru",units:{metric:"Metrik",imperial:"Imperial","square-kilometers":"Kilometer persegi","square-meters":"Meter persegi","square-miles":"Mil persegi","square-inches":"Inci persegi","square-feet":"Kaki persegi","square-yards":"Yard persegi","square-us-feet":"Kaki persegi (AS)",acres:"Acre",ares:"Are",hectares:"Hektare"}});

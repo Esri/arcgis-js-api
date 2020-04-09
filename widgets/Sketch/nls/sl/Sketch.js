@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Skiciraj",move:"Premik",pan:"Pomik",reset:"Ponastavi",reshape:"Preoblikuj",rotate:"Zasukaj",scale:"Merilo",transform:"Transformiraj",undo:"Razveljavi",redo:"Uveljavi",drawPoint:"Nariši točko",drawPolygon:"Nariši poligon",drawPolyline:"Nariši polilinijo",drawMultipoint:"Nariši mnogotočko",drawCircle:"Nariši krog",drawRectangle:"Nariši pravokotnik",clearDrawing:"Počisti risanje",completeDrawing:"Dokončaj risbo",pauseDrawing:"Začasno ustavi risbo",resumeDrawing:"Nadaljuj risbo",updateDrawing:"Posodobi risbo",addPointTooltip:"Kliknite, da dodate točko",removePointTooltip:"Kliknite, da odstranite to točko",completePolygonTooltip:"Kliknite to točko, da dokončate",startDrawingTooltip:"Kliknite, če želite začeti risati",continueDrawingTooltip:"Kliknite, če želite nadaljevati risanje",completeDrawingTooltip:"Dvokliknite za dokončanje",addMultipointTooltip:"Kliknite, če želite začeti dodajati točke",finishMultipointTooltip:"Dvokliknite za dokončanje",addFreehandTooltip:"Pritisnite navzdol za začetek in spustite za dokončanje",addShapeTooltip:"Kliknite, da dodate obliko ali pritisnite navzdol za začetek in spustite za dokončanje",featureCount:"{count} geoobjekt",featuresCount:"{count} geoobjektov",vertexCount:"{count} lomna točka",verticesCount:"{count} lomnih točk",deleteFeature:"Izbriši geoobjekt",deleteVertex:"Izbriši lomno točko",duplicate:"Podvoji"});

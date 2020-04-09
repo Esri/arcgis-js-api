@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./object"],function(t,e,n){function r(t,e){return t.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,function(t,r){if(""===r)return"$";var i=n.getDeepValue(r,e),o=null==i?"":i;if(void 0===o)throw new Error('could not find key "'+r+'" in template');return o.toString()})}return function(){function t(e,n,i){this instanceof t&&(this.name=e,this.message=n&&r(n,i)||"",this.details=i)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()});
+define(["require","exports","./object"],(function(t,e,n){return function(){function t(e,r,i){var o;this instanceof t&&(this.name=e,this.message=r&&(o=i,r.replace(/\$\{([^\s\:\}]*)(?:\:([^\s\:\}]+))?\}/g,(function(t,e){if(""===e)return"$";var r=n.getDeepValue(e,o),i=null==r?"":r;if(void 0===i)throw new Error('could not find key "'+e+'" in template');return i.toString()})))||"",this.details=i)}return t.prototype.toString=function(){return"["+this.name+"]: "+this.message},t}()}));

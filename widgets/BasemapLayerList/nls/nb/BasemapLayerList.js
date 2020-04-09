@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Liste over bakgrunnskartlag",baseHeading:"Basis",basemapTitle:"Tittel på bakgrunnskart",referenceHeading:"Referanse",noReferenceLayers:"Ingen referanselag",noBaseLayers:"Ingen basislag",layerInvisibleAtScale:"Usynlig med gjeldende målestokk",layerError:"Det oppstod en feil under lasting av dette laget",untitledLayer:"Lag uten tittel"});

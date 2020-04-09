@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Πληροφορίες",add:"Προσθήκη",all:"Όλες",apply:"Εφαρμογή",auth:{logOut:"Αποσύνδεση",signIn:"Εισέλθετε"},back:"Πίσω",cancel:"Ακύρωση",change:"Αλλαγή",clear:"Απαλοιφή",close:"Κλείσιμο",collapse:"Σύμπτυξη",configure:"Διαμόρφωση",control:{pause:"Παύση",play:"Έναρξη",resume:"Συνέχιση",stop:"Στάση"},copy:"Αντιγραφή",create:"Δημιουργία",cut:"Αποκοπή",delete:"Διαγραφή",details:"Λεπτομέρειες",done:"Τέλος",dragHandleTitle:"σύρσιμο/αναδιάταξη",dragHandleLabel:"Ενεργοποιήστε το κουμπί αναδιάταξης και χρησιμοποιήστε τα πλήκτρα με τα βέλη για να αναδιατάξετε τη λίστα ή χρησιμοποιήστε το ποντίκι σας για να σύρετε/αναδιατάξετε στοιχεία. Πιέστε το πλήκτρο Escape για να ακυρώσετε τη διαδικασία αναδιάταξης.",edit:"Επεξεργασία",error:"Σφάλμα",esri:"Esri",exit:"Έξοδος",expand:"Ανάπτυξη",fieldsSummary:"Λίστα γνωρισμάτων και τιμών",find:"Εύρεση",form:{no:"Όχι",ok:"OK",password:"Κωδικός πρόσβασης",submit:"Υποβολή",username:"Όνομα χρήστη",yes:"Ναι"},help:"Βοήθεια",home:"Αρχική",info:"Πληροφορίες",information:"Πληροφορίες",layer:"Θεματικό επίπεδο",loading:"Φόρτωση",maximize:"Μεγιστοποίηση",menu:"Μενού",more:"Περισσότερα",none:"Κανένα",open:"Άνοιγμα",pagination:{first:"Πρώτο",last:"Τελευταίο",next:"Επόμενο",page:"Σελίδα",pageText:"{index} από {total}",previous:"Προηγούμενο"},paste:"Επικόλληση",preview:"Προεπισκόπηση",print:"Εκτύπωση",publish:"Δημοσίευση",redo:"Επανάληψη",refresh:"Ανανέωση",remove:"Κατάργηση",rename:"Μετονομασία",reset:"Επαναφορά",restore:"Επαναφορά",save:"Αποθήκευση",search:"Αναζήτηση",searching:"Αναζήτηση",select:"Επιλογή",settings:"Ρυθμίσεις",sort:"Ταξινόμηση",share:"Κοινοποίηση",title:"Τίτλος",untitled:"Χωρίς τίτλο",unnamed:"Χωρίς όνομα",update:"Ενημέρωση",upload:"Μεταφόρτωση",undo:"Αναίρεση",view:"Προβολή",visibility:{hide:"Απόκρυψη",show:"Εμφάνιση",toggle:"Εναλλαγή"},warning:"Προειδοποίηση"});

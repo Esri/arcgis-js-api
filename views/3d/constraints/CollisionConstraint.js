@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","dojo/_base/kernel","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,r,t,n,o,s,i){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),Object.defineProperty(r.prototype,"enabled",{set:function(e){o.deprecated("SceneView.constraint.collision.enabled","Use Map.ground.navigationConstraint instead","4.8"),this._set("enabled",e)},enumerable:!0,configurable:!0}),n([i.property({value:!0})],r.prototype,"enabled",null),r=n([i.subclass("esri.views.3d.constraints.CollisionConstraint")],r)}(i.declared(s));r.CollisionConstraint=a,r.default=a});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/deprecate","../../../core/Logger","../../../core/accessorSupport/decorators"],(function(e,r,t,o,n,s,a,c){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),Object.defineProperty(r.prototype,"enabled",{set:function(e){s.deprecated(a.getLogger(this.declaredClass),"SceneView.constraint.collision.enabled",{replacement:"Map.ground.navigationConstraint",version:"4.8"}),this._set("enabled",e)},enumerable:!0,configurable:!0}),o([c.property({value:!0})],r.prototype,"enabled",null),r=o([c.subclass("esri.views.3d.constraints.CollisionConstraint")],r)}(c.declared(n));r.CollisionConstraint=i,r.default=i}));

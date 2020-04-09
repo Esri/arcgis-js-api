@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["../../core/Accessor"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.LegendLayer",properties:{layerId:null,subLayerIds:null,title:null}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this,e)||this;return t.layerId=null,t.subLayerIds=null,t.title=null,t}return t(e,r),o([s.property({json:{write:!0}})],e.prototype,"layerId",void 0),o([s.property({json:{write:!0}})],e.prototype,"subLayerIds",void 0),o([s.property({json:{write:!0}})],e.prototype,"title",void 0),e=o([s.subclass("esri/tasks/support/LegendLayer")],e)}(s.declared(p.JSONSupport))}));

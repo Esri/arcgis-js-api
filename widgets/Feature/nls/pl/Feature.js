@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Obiekt",attach:"Załączniki",fields:"Pola",fieldsSummary:"Lista atrybutów i wartości",media:"Nośnik",next:"Następny",noTitle:"Bez tytułu",previous:"Poprzedni",lastEdited:"Data ostatniej edycji: {date}.",lastCreated:"Data utworzenia: {date}",lastEditedByUser:"Ostatnio edytowane przez użytkownika {user} dnia {date}.",lastCreatedByUser:"Utworzone przez użytkownika {user} dnia {date}."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./Bucket"],function(e,t,n,r){return function(e){function t(t,n){return e.call(this,t,n)||this}return n(t,e),t.prototype.processFeatures=function(){},t.prototype.assignBufferInfo=function(){},t}(r)});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./Bucket"],(function(e,t,n,r){return function(e){function t(t,n){return e.call(this,t,n)||this}return n(t,e),t.prototype.processFeatures=function(){},t.prototype.assignBufferInfo=function(){},t}(r)}));

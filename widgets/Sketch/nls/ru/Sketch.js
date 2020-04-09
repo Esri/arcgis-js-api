@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Скетч",move:"Передвинуть",pan:"Переместить",reset:"Сбросить",reshape:"Изменить форму",rotate:"Поворот",scale:"Масштаб",transform:"Трансформирование",undo:"Отменить",redo:"Повторить",drawPoint:"Нарисовать точку",drawPolygon:"Нарисовать полигон",drawPolyline:"Нарисовать полилинию",drawMultipoint:"Нарисовать мультиточку",drawCircle:"Нарисовать окружность",drawRectangle:"Нарисовать прямоугольник",clearDrawing:"Очистить графику",completeDrawing:"Завершить графику",pauseDrawing:"Остановить рисование",resumeDrawing:"Продолжить рисование",updateDrawing:"Обновить графику",addPointTooltip:"Щелкните, чтобы добавить точку",removePointTooltip:"Щелкните, чтобы удалить эту точку",completePolygonTooltip:"Щелкните это точку, чтобы завершить",startDrawingTooltip:"Щелкните, чтобы начать рисовать",continueDrawingTooltip:"Щелкните, чтобы продолжить рисовать",completeDrawingTooltip:"Дважды щелкните для завершения",addMultipointTooltip:"Щелкните, чтобы начать добавление точек",finishMultipointTooltip:"Завершение двойным щелчком",addFreehandTooltip:"Нажмите кнопку, чтобы начать, и отпустите ее, чтобы завершить",addShapeTooltip:"Щёлкните чтобы добавить форму или нажмите стрелку вниз, чтобы начать и дойти до конца.",featureCount:"{count} объект",featuresCount:"{count} объектов",vertexCount:"{count} вершина",verticesCount:"{count} вершин",deleteFeature:"Удалить объект",deleteVertex:"Удалить вершину",duplicate:"Дублировать"});

@@ -36,6 +36,7 @@
       position: absolute;
       z-index: $container-z;
       display: flex;
+      flex-flow: column nowrap;
     }
   }
   .esri-popup--shadow {
@@ -138,6 +139,10 @@
     font-weight: $font-weight;
     margin: 0 $side-spacing $cap-spacing;
     overflow: auto;
+    line-height: normal;
+  }
+  .esri-popup__content img {
+    image-orientation: from-image;
   }
   .esri-popup__feature-menu-button {
     transition: box-shadow 125ms ease-in-out, background-color 125ms ease-in-out;
@@ -599,6 +604,9 @@
     top: 0;
     margin: $docked-margin $docked-margin $docked-margin--double $docked-margin;
     animation: esri-docking-animation 250ms ease-out;
+  }
+  .esri-ui .esri-popup--is-docked {
+    flex-flow: row nowrap;
   }
   .esri-popup--is-docked .esri-popup__header {
     padding-top: 2px;

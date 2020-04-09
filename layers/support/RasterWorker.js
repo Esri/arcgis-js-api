@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","./PixelBlock","./rasterFormats/RasterCodec","../../renderers/support/RasterSymbolizer"],function(r,e,t,o,i,n,s){return function(){function r(){}return r.prototype.decode=function(r){return o(this,void 0,void 0,function(){var e;return t(this,function(t){switch(t.label){case 0:return[4,n.decode(r.data,r.options)];case 1:return e=t.sent(),[2,e&&e.toJSON()]}})})},r.prototype.symbolize=function(r){return o(this,void 0,void 0,function(){var e;return t(this,function(t){return e=this.symbolizer.symbolize(i.fromJSON(r)),[2,e&&e.toJSON()]})})},r.prototype.updateSymbolizer=function(r){return o(this,void 0,void 0,function(){return t(this,function(e){return this.symbolizer=s.fromJSON(r.symbolizerJSON),r.histograms&&this.symbolizer&&this.symbolizer.renderer&&"histograms"in this.symbolizer.renderer&&(this.symbolizer.renderer.histograms=r.histograms),[2]})})},r}()});
+define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../../core/promiseUtils","./PixelBlock","./rasterFormats/RasterCodec","./rasterFunctions/pixelUtils","../../renderers/support/RasterSymbolizer"],(function(r,t,e,o,i,s,n,c,u){return function(){function r(){}return r.prototype.decode=function(r){return o(this,void 0,void 0,(function(){var t;return e(this,(function(e){switch(e.label){case 0:return[4,n.decode(r.data,r.options)];case 1:return[2,(t=e.sent())&&t.toJSON()]}}))}))},r.prototype.symbolize=function(r){return o(this,void 0,void 0,(function(){var t;return e(this,(function(e){return[2,(t=this.symbolizer.symbolize(s.fromJSON(r)))&&t.toJSON()]}))}))},r.prototype.updateSymbolizer=function(r){return o(this,void 0,void 0,(function(){return e(this,(function(t){return this.symbolizer=u.fromJSON(r.symbolizerJSON),r.histograms&&this.symbolizer&&this.symbolizer.renderer&&"histograms"in this.symbolizer.renderer&&(this.symbolizer.renderer.histograms=r.histograms),[2]}))}))},r.prototype.stretch=function(r){var t=this.symbolizer.simpleStretch(s.fromJSON(r.srcPixelBlock),r.stretchParams);return i.resolve(t&&t.toJSON())},r.prototype.mosaicAndTransform=function(r){return o(this,void 0,void 0,(function(){var t,o,i;return e(this,(function(e){return t=r.srcPixelBlocks.map((function(r){return r?new s(r):null})),o=c.mosaic(t,r.srcMosaicSize),r.coefs?[2,(i=c.approximateTransform(o,r.destDimension,r.coefs,r.sampleSpacing))&&i.toJSON()]:[2,o&&o.toJSON()]}))}))},r}()}));

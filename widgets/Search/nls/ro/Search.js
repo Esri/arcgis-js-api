@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Căutare",searchButtonTitle:"Căutare",clearButtonTitle:"Golire căutare",placeholder:"Găsire adresă sau loc",searchIn:"Căutare în",all:"Toate",allPlaceholder:"Găsire adresă sau loc",emptyValue:"Introduceţi un termen de căutare.",untitledResult:"Fără titlu",untitledSource:"Sursă fără titlu",noResults:"Niciun rezultat",noResultsFound:"Nu s-au găsit rezultate.",noResultsFoundForValue:"Nu s-au găsit rezultate pentru {value}.",showMoreResults:"Afişare mai multe rezultate",hideMoreResults:"Ascundere",searchResult:"Rezultat căutare",moreResultsHeader:"Mai multe rezultate",useCurrentLocation:"Utilizare locaţie curentă"});

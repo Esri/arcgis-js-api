@@ -19,8 +19,11 @@
     padding: 0;
   }
 
-  .esri-basemap-gallery--source-refreshing .esri-basemap-gallery__item-container {
+  .esri-basemap-gallery--source-refreshing .esri-basemap-gallery__item-container,
+  .esri-basemap-gallery.esri-disabled .esri-basemap-gallery__item {
     opacity: $opacity--disabled;
+    pointer-events: none;
+    animation: none;
   }
 
   .esri-basemap-gallery__empty-message {

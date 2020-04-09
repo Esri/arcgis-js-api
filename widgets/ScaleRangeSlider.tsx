@@ -32,50 +32,47 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate"/>
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends"/>
-/// <amd-dependency path="../core/tsSupport/assignHelper" name="__assign"/>
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate"/>
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends"/>
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
 
 // dojo
-import i18n = require("dojo/i18n!./ScaleRangeSlider/nls/ScaleRangeSlider");
+import i18n = require("dojo/i18n!esri/widgets/ScaleRangeSlider/nls/ScaleRangeSlider");
 
 // esri
-import { formatNumber, substitute } from "../intl";
-import { AllLayers } from "../layers";
+import { formatNumber, substitute } from "esri/intl";
+import { AllLayers } from "esri/layers";
 
 // esri.core
-import { closest } from "../core/domUtils";
-import { eventKey, on } from "../core/events";
-import { HandleOwnerMixin } from "../core/HandleOwner";
-import { init, whenTrue } from "../core/watchUtils";
+import { closest } from "esri/core/domUtils";
+import { eventKey, on } from "esri/core/events";
+import { HandleOwnerMixin } from "esri/core/HandleOwner";
+import { init, whenTrue } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { cast, declared, property, subclass } from "../core/accessorSupport/decorators";
-
-// esri.libs.sanitizer
-import Sanitizer = require("../libs/sanitizer/Sanitizer");
+import { cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
-import Slider = require("./Slider");
-import Widget = require("./Widget");
+import Slider = require("esri/widgets/Slider");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.ScaleRangeSlider
-import { ScaleType, SupportedRegion } from "./ScaleRangeSlider/interfaces";
+import { ScaleType, SupportedRegion } from "esri/widgets/ScaleRangeSlider/interfaces";
 import {
   getScalePreviewSource,
   getScalePreviewSpriteBackgroundPosition
-} from "./ScaleRangeSlider/scalePreviewUtils";
-import ScaleRanges = require("./ScaleRangeSlider/ScaleRanges");
-import ScaleRangeSliderViewModel = require("./ScaleRangeSlider/ScaleRangeSliderViewModel");
+} from "esri/widgets/ScaleRangeSlider/scalePreviewUtils";
+import ScaleRanges = require("esri/widgets/ScaleRangeSlider/ScaleRanges");
+import ScaleRangeSliderViewModel = require("esri/widgets/ScaleRangeSlider/ScaleRangeSliderViewModel");
 
 // esri.widgets.support
-import { VNode } from "./support/interfaces";
-import Popover = require("./support/Popover");
-import { accessibleHandler, isRTL, renderable, storeNode, tsx } from "./support/widget";
+import { VNode } from "esri/widgets/support/interfaces";
+import Popover = require("esri/widgets/support/Popover");
+import { accessibleHandler, isRTL, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface ScaleMenuProps {
   type: ScaleType;
@@ -133,13 +130,17 @@ const CSS = {
   widget: "esri-widget"
 };
 
-const SANITIZER = new Sanitizer();
 const DEFAULT_VISIBLE_ELEMENTS = { preview: true };
 
-const formatScale = (scale: number): string => `1:${formatNumber(scale)}`;
+const scaleFormattingOptions = {
+  maximumFractionDigits: 0
+};
+
+const formatScale = (scale: number): string => `1:${formatNumber(scale, scaleFormattingOptions)}`;
+
 const parseScale = (scaleText: string): number => {
-  const nonDigitPeriodAndWhiteSpacePattern = /[^0-9.\s]/g;
-  const scaleValue = SANITIZER.sanitize(scaleText)
+  const nonDigitPeriodAndWhiteSpacePattern = /[^\d.\s]/g;
+  const scaleValue = scaleText
     .replace(/.*\(/, "")
     .replace(/\).*$/, "")
     .replace(/.*:/, "")
@@ -191,8 +192,12 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
       }),
 
       this._slider.on("thumb-drag", ({ index }) => {
+        const {
+          visibleElements: { preview }
+        } = this;
+
         this._activeThumb = index;
-        this._previewPopover.open = true;
+        this._previewPopover.open = preview;
 
         clearTimeout(this._previewAutoCloseTimeoutId);
         const previewAutoCloseDelayInMs = 250;
@@ -284,8 +289,12 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
 
       this.own([
         on(node, "mouseenter", () => {
+          const {
+            visibleElements: { preview }
+          } = this;
+
           this._activeThumb = index;
-          this._previewPopover.open = true;
+          this._previewPopover.open = preview;
           this.scheduleRender();
         }),
 
@@ -302,28 +311,6 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
       ]);
     }
   });
-
-  //--------------------------------------------------------------------------
-  //
-  // Type definitions
-  //
-  //--------------------------------------------------------------------------
-
-  //--------------------------------------------------------------------------
-  //
-  // VisibleElements typedef
-  //
-  //--------------------------------------------------------------------------
-
-  /**
-   * The visible elements that are displayed within the widget.
-   * This provides the ability to turn individual elements of the widget's display on/off.
-   *
-   * @typedef module:esri/widgets/ScaleRangeSlider~VisibleElements
-   *
-   * @property {boolean} preview - Indicates whether the preview thumbnail of the region is visible.
-   * Default value is `true`.
-   */
 
   //--------------------------------------------------------------------------
   //
@@ -646,16 +633,26 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
 
   /**
    * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/ScaleRangeSlider~VisibleElements
+   *
+   * @property {boolean} preview - Indicates whether the preview thumbnail of the region is visible.
+   * Default value is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
    * This property provides the ability to turn individual elements of the widget's display on/off.
    *
    * @name visibleElements
    * @instance
    * @type {module:esri/widgets/ScaleRangeSlider~VisibleElements}
-   * @autocast { "value": "Object[]" }
+   * @autocast
    *
    * @example
    * scaleRangeSlider.visibleElements = {
-   *    preview: false  // thumbnail preview of map will not be displayed
+   *   preview: false  // thumbnail preview of map will not be displayed
    * }
    */
 
@@ -963,7 +960,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
   private handleCustomScaleInputKeyDown = (event: KeyboardEvent): void => {
     const target = event.currentTarget as HTMLInputElement;
     const { handleCustomScaleSelect } = target["data-render-props"] as ScaleMenuItemProps;
-    const { key } = event;
+    const { key, ctrlKey, metaKey } = event;
     const {
       viewModel: { scaleRanges }
     } = this;
@@ -971,6 +968,18 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
     if (key === "Enter") {
       const scale = parseScale(target.value);
       handleCustomScaleSelect(isNaN(scale) ? -1 : scaleRanges.clampScale(scale));
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (key.length > 1 || ctrlKey || metaKey) {
+      return;
+    }
+
+    const scaleChars = /[:,.\d]/;
+
+    if (!scaleChars.test(key)) {
       event.preventDefault();
       event.stopPropagation();
     }

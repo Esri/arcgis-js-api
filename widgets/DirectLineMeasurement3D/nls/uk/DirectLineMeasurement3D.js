@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Вимірювання прямих ліній",hint:"Почніть вимірювання, клацнувши на сцені для розміщення першої точки",unsupported:"Вимірювання прямих 3D-ліній підтримується тільки в SceneView.",distance:"Відстань",direct:"Пряма",horizontal:"Горизонтальний",vertical:"Вертикальний",unit:"Одиниця",newMeasurement:"Нове вимірювання",units:{metric:"Метричний",imperial:"Британська система",kilometers:"Кілометри",meters:"Метри",miles:"Милі",inches:"Дюйми",feet:"Фути",yards:"Ярди","nautical-miles":"Морські милі","us-feet":"Фути (США)","degrees-minutes-seconds":"DMS",degrees:"Градуси"}});

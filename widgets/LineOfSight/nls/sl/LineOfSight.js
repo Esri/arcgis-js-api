@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Linija vidnosti",hint:"Z analizo začnite s klikom v prizor, da namestite točko opazovalca in enega ali več ciljev",unsupported:"Linija vidnosti je podprta samo v pregledovalniku 3D-prizorov.",done:"Dokončano",newAnalysis:"Nova analiza",continueAnalysis:"Nadaljuj analizo"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Măsurarea distanței",hint:"Începeți să măsurați făcând clic pe hartă pentru a plasa primul punct",unsupported:"Măsurarea distanței 2D este acceptată doar în MapView.",distance:"Distanță",newMeasurement:"Măsurare nouă",mode:"Mod",modes:{auto:"Automat",planar:"Planar",geodesic:"Geodezic"},unit:"Unitate",units:{metric:"Metric",imperial:"Englez",kilometers:"Kilometri",meters:"Metri",miles:"Mile",inches:"Inci",feet:"Ft",yards:"Yarzi","nautical-miles":"Mile marine","us-feet":"Picioare (SUA)","degrees-minutes-seconds":"DMS",degrees:"Grade"}});

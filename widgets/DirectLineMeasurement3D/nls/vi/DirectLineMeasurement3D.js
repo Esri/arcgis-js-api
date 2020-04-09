@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Đo Đường thẳng Trực tiếp",hint:"Bắt đầu đo bằng cách bấm vào scene để đặt điểm đầu tiên của bạn",unsupported:"Tính toán đường trực tiếp 3D chỉ được hỗ trợ trong SceneView.",distance:"Khoảng cách",direct:"Trực tiếp",horizontal:"Ngang",vertical:"Dọc",unit:"Đơn vị",newMeasurement:"Phép đo mới",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh",kilometers:"Kilômét",meters:"Mét",miles:"Dặm",inches:"Inch",feet:"Bộ",yards:"Thước","nautical-miles":"Hải lý","us-feet":"Feet (Hoa Kỳ)","degrees-minutes-seconds":"DMS",degrees:"Độ"}});

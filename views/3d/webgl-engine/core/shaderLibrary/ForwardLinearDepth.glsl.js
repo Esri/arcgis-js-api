@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/makeTemplateObjectHelper","../shaderModules/interfaces"],function(e,r,a,n){function i(e,r){0===r.output&&r.receiveShadows?(e.varyings.add("linearDepth","float"),e.vertex.code.add(n.glsl(o||(o=a(["\n      void forwardLinearDepth() { linearDepth = gl_Position.w; }\n    "],["\n      void forwardLinearDepth() { linearDepth = gl_Position.w; }\n    "]))))):1===r.output||3===r.output?(e.varyings.add("linearDepth","float"),e.vertex.uniforms.add("uCameraNearFar","vec2"),e.vertex.code.add(n.glsl(t||(t=a(["\n      void forwardLinearDepth() {\n        linearDepth = (-position_view().z - uCameraNearFar[0]) / (uCameraNearFar[1] - uCameraNearFar[0]);\n      }\n    "],["\n      void forwardLinearDepth() {\n        linearDepth = (-position_view().z - uCameraNearFar[0]) / (uCameraNearFar[1] - uCameraNearFar[0]);\n      }\n    "]))))):e.vertex.code.add(n.glsl(d||(d=a(["\n      void forwardLinearDepth() {}\n    "],["\n      void forwardLinearDepth() {}\n    "]))))}Object.defineProperty(r,"__esModule",{value:!0}),r.ForwardLinearDepth=i;var o,t,d});
+define(["require","exports","../../../../../core/tsSupport/makeTemplateObjectHelper","../shaderModules/interfaces"],(function(e,r,a,n){var i,o,t;Object.defineProperty(r,"__esModule",{value:!0}),r.ForwardLinearDepth=function(e,r){0===r.output&&r.receiveShadows?(e.varyings.add("linearDepth","float"),e.vertex.code.add(n.glsl(i||(i=a(["\n      void forwardLinearDepth() { linearDepth = gl_Position.w; }\n    "],["\n      void forwardLinearDepth() { linearDepth = gl_Position.w; }\n    "]))))):1===r.output||3===r.output?(e.varyings.add("linearDepth","float"),e.vertex.uniforms.add("uCameraNearFar","vec2"),e.vertex.code.add(n.glsl(o||(o=a(["\n      void forwardLinearDepth() {\n        linearDepth = (-position_view().z - uCameraNearFar[0]) / (uCameraNearFar[1] - uCameraNearFar[0]);\n      }\n    "],["\n      void forwardLinearDepth() {\n        linearDepth = (-position_view().z - uCameraNearFar[0]) / (uCameraNearFar[1] - uCameraNearFar[0]);\n      }\n    "]))))):e.vertex.code.add(n.glsl(t||(t=a(["\n      void forwardLinearDepth() {}\n    "],["\n      void forwardLinearDepth() {}\n    "]))))}}));

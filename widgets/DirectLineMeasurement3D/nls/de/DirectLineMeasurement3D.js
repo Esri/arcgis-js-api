@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Messung in direkter Linie",hint:"Beginnen Sie die Messung, indem Sie in die Szene klicken, um den ersten Punkt zu positionieren.",unsupported:"Die direkte 3D-Linienmessung wird nur in SceneView unterstützt.",distance:"Abstand",direct:"Direkt",horizontal:"Horizontal",vertical:"Vertikal",unit:"Einheit",newMeasurement:"Neue Messung",units:{metric:"Metrisch",imperial:"Britisch",kilometers:"Kilometer",meters:"Meter",miles:"Meilen",inches:"Zoll",feet:"Fuß",yards:"Yards","nautical-miles":"Seemeilen","us-feet":"Fuß (US)","degrees-minutes-seconds":"DMS",degrees:"Grad"}});

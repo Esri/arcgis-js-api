@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Távolságmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a térképbe az első pont elhelyezéséhez",unsupported:"A 2D távolság mérését csak a MapView támogatja.",distance:"Távolság",newMeasurement:"Új mérés",mode:"Mód",modes:{auto:"Automatikus",planar:"Síkbeli",geodesic:"Geodéziai"},unit:"Mértékegység",units:{metric:"Metrikus",imperial:"Angolszász",kilometers:"Kilométer",meters:"Méter",miles:"Mérföld",inches:"Hüvelyk",feet:"Láb",yards:"Yard","nautical-miles":"Tengeri mérföld","us-feet":"Láb (US)","degrees-minutes-seconds":"DMS",degrees:"Fok"}});

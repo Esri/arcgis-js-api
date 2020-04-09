@@ -65,6 +65,13 @@
     overflow: hidden;
   }
 
+  .esri-view-surface[data-interacting="true"] {
+    cursor: move;
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+
   /*
    * CSS2 cursors:
    * auto, inherit, crosshair, default, help, move, pointer , progress, text, wait,
@@ -167,13 +174,6 @@
 
   .esri-view-surface[data-cursor="nwse-resize"] {
     cursor: nwse-resize;
-  }
-
-  .esri-view-surface[data-interacting="true"] {
-    cursor: move;
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
   }
 
   .esri-display-object,

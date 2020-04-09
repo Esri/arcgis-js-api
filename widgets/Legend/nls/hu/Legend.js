@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Jelmagyarázat",points:"Pontok",lines:"Vonalak",polygons:"Polygonok",creatingLegend:"Jelmagyarázat létrehozása",noLegend:"Nincs jelmagyarázat",dotValue:"1 pont = {value} {unit}",currentObservations:"Jelenlegi megfigyelések",previousObservations:"Előző megfigyelések",high:"Magas",low:"Alacsony",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"csomó",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} osztva a(z) {normField} értékével",showNormPct:"{field} az összes százalékaként",showRatio:"A(z) {field} és a(z) {normField} aránya",showRatioPercent:"{field} a(z) {normField} százalékaként",showRatioPercentTotal:"{field} a(z) {field} és {normField} százalékaként",band0:"sáv_0",band1:"sáv_1",band2:"sáv_2",red:"Vörös",green:"Zöld",blue:"Kék"});
+define({widgetLabel:"Jelmagyarázat",points:"Pontok",lines:"Vonalak",polygons:"Polygonok",creatingLegend:"Jelmagyarázat létrehozása",noLegend:"Nincs jelmagyarázat",dotValue:"1 pont = {value} {unit}",currentObservations:"Jelenlegi megfigyelések",previousObservations:"Előző megfigyelések",high:"Magas",low:"Alacsony",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"csomó",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showNormField:"{field} osztva a(z) {normField} értékével",showNormPct:"{field} az összes százalékaként",showRatio:"A(z) {field} és a(z) {normField} aránya",showRatioPercent:"{field} a(z) {normField} százalékaként",showRatioPercentTotal:"{field} a(z) {field} és {normField} százalékaként",band0:"sáv_0",band1:"sáv_1",band2:"sáv_2",red:"Vörös",green:"Zöld",blue:"Kék",clusterCountTitle:"Vektoros elemek száma"});

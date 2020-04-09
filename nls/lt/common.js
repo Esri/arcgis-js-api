@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Apie",add:"Pridėti",all:"Viskas",apply:"Taikyti",auth:{logOut:"Atsijungti",signIn:"Prisijungti"},back:"Grįžti",cancel:"Atšaukti",change:"Pakeisti",clear:"Valyti",close:"Užverti",collapse:"Suskleisti",configure:"Konfigūruoti",control:{pause:"Pristabdyti",play:"Leisti",resume:"Tęsti",stop:"Stabdyti"},copy:"Kopijuoti",create:"Sukurti",cut:"Kirpti",delete:"Pašalinti",details:"Išsamiau",done:"Atlikta",dragHandleTitle:"vilkti / keisti tvarką",dragHandleLabel:"Aktyvinkite tvarkos keitimo mygtuką ir naudokite rodyklių mygtukus, kad pakeistumėte sąrašo tvarką arba vilkite / pakeiskite tvarką pele. Norėdami atšaukti tvarkos keitimą, spauskite Esc.",edit:"Redaguoti",error:"Klaida",esri:"Esri",exit:"Uždaryti",expand:"Išskleisti",fieldsSummary:"Atributų ir reikšmių sąrašas",find:"Ieškoti",form:{no:"Ne",ok:"Gerai",password:"Slaptažodis",submit:"Pateikti",username:"Naudotojo vardas",yes:"Taip"},help:"Pagalba",home:"Pradžia",info:"Informacija",information:"Informacija",layer:"Sluoksnis",loading:"Kraunama",maximize:"Išdidinti",menu:"Meniu",more:"Daugiau",none:"Nėra",open:"Atverti",pagination:{first:"Pirmas",last:"Paskutinis",next:"Sekantis",page:"Puslapis",pageText:"{index} iš {total}",previous:"Ankstesnis"},paste:"Įdėti",preview:"Peržiūra",print:"Spausdinti",publish:"Publikuoti",redo:"Grąžinti",refresh:"Atnaujinti",remove:"Pašalinti",rename:"Pervardinti",reset:"Atkurti",restore:"Grąžinti",save:"Įrašyti",search:"Ieškoti",searching:"Ieškoma",select:"Pasirinkite",settings:"Nustatymai",sort:"Rūšiuoti",share:"Bendrinti",title:"Pavadinimas",untitled:"Bevardis",unnamed:"Be pavadinimo",update:"Atnaujinti",upload:"Nusiųsti",undo:"Atšaukti",view:"Peržiūrėti",visibility:{hide:"Slėpti",show:"Rodyti",toggle:"Perjungti"},warning:"Įspėjimas"});

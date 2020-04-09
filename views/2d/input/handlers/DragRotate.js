@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/DragEventSeparator","../../../input/InputHandler","../../../input/handlers/support"],function(t,e,n,r,a,o){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,n,a){var i=t.call(this,!0)||this;i.view=e,i.pointerAction=n;var p=i.view.mapViewNavigation;return i.dragEventSeparator=new r.DragEventSeparator({start:function(t,e){p.rotate.begin(i.view,e.data),e.stopPropagation()},update:function(t,e){p.rotate.update(i.view,e.data),e.stopPropagation()},end:function(t,e){p.rotate.end(),e.stopPropagation()},condition:function(t,e){return 1===t&&o.eventMatchesPointerAction(e.data,i.pointerAction)}}),i.registerIncoming("drag",a,function(t){return i.dragEventSeparator.handle(t)}),i}return n(e,t),e}(a.InputHandler);e.DragRotate=i});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/DragEventSeparator","../../../input/InputHandler","../../../input/handlers/support"],(function(t,e,n,r,a,o){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,n,a){var i=t.call(this,!0)||this;i.view=e,i.pointerAction=n;var p=i.view.mapViewNavigation;return i.dragEventSeparator=new r.DragEventSeparator({start:function(t,e){p.rotate.begin(i.view,e.data),e.stopPropagation()},update:function(t,e){p.rotate.update(i.view,e.data),e.stopPropagation()},end:function(t,e){p.rotate.end(),e.stopPropagation()},condition:function(t,e){return 1===t&&o.eventMatchesPointerAction(e.data,i.pointerAction)}}),i.registerIncoming("drag",a,(function(t){return i.dragEventSeparator.handle(t)})),i}return n(e,t),e}(a.InputHandler);e.DragRotate=i}));

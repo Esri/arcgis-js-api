@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Méretarány-tartomány csúszka",noLimit:"Nincs határérték",preview:"Előnézet",currentScaleTooltip:"Térkép jelenlegi méretaránya ({scaleLabel})",customScaleInputTooltip:"Írjon be egy méretarányt.",current:"Jelenlegi",setTo:"Beállítandó",selectOne:"(jelöljön ki egyet)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Világ",continent:"Földrész",countriesBig:"Országok",countriesSmall:"Ország",statesProvinces:"Államok",stateProvince:"Államigazgatás",counties:"Megyék",county:"Megye",metropolitanArea:"Agglomeráció",cities:"Nagyvárosok",city:"Nagyváros",town:"Város",neighborhood:"Szomszédság",streets:"Utcák",street:"Utca",buildings:"Épületek",building:"Épület",smallBuilding:"Kis épület",rooms:"Szobák",room:"Szoba"},featuredScaleLabels:{custom:"Egyéni",current:"Jelenlegi térképnézet",world:"Világ",continent:"Földrész",countriesBig:"Országok – nagy",countriesSmall:"Országok – kicsi",statesProvinces:"Államok/tartományok",stateProvince:"Állam/tartomány",counties:"Megyék",county:"Megyeigazgatás",metropolitanArea:"Agglomeráció",cities:"Városok",city:"Nagyváros",town:"Kisváros",neighborhood:"Szomszédság",streets:"Utcák",street:"Utca",buildings:"Épületek",building:"Épület",smallBuilding:"Kis épület",rooms:"Szobák",room:"Szoba"}});

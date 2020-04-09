@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Pindala mõõtmine",hint:"Mõõtmise alustamiseks klõpsake stseeni, kuhu soovite asetada oma esimese punkti",unsupported:"3D-pindala mõõtmist toetab ainult SceneView.",perimeterLength:"Ümbermõõt",area:"Pindala",unit:"Ühik",notApplicable:"Pole sobiv",newMeasurement:"Uus mõõtmine",units:{metric:"Meetriline",imperial:"Briti","square-kilometers":"Ruutkilomeetrit","square-meters":"Ruutmeetrit","square-miles":"Ruutmiili","square-inches":"Ruuttolli","square-feet":"Ruutjalga","square-yards":"Ruutjardi","square-us-feet":"Ruutjalga (USA)",acres:"aakrit",ares:"Aari",hectares:"hektarit"}});

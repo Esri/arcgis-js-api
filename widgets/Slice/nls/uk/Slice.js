@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Зріз",cancel:"Скасувати",hint:"Почніть створювати зріз, клацнувши та перетягуючи по поверхні в сцені.",excludeHint:"Виберіть шар у виді, щоб виключити його зі зрізу",unsupported:"Зрізи в MapView не підтримуються.",multipleDisabled:"Одночасно може бути активний тільки один зріз.",newSlice:"Новий зріз",excludedLayers:"Виключені шари",pickLayer:"Вибрати шар з виду",excludeLayer:"Виключити шар зі зрізу",includeLayer:"Включити шар в зріз",ground:"Земля"});

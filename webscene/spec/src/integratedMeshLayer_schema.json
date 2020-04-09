@@ -43,6 +43,10 @@
         "show"
       ]
     },
+    "modifications": {
+      "type": "string",
+      "description": "URL to modifications json file, typically stored in `ITEM/resources`. Content of the file follows the $ref:[Modifications schema](modifications_schema.json)."
+    },
     "opacity": {
       "type": "number",
       "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency.",
@@ -61,8 +65,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the layer. If the layer is not from a web service but rather a feature collection, then the url property is omitted.",
-      "format": "uri"
+      "description": "The URL to the layer. If the layer is not from a web service but rather a feature collection, then the url property is omitted."
     },
     "visibility": {
       "type": "boolean",
@@ -108,6 +111,28 @@
                   "offset": 100
                 }
               }
+            }
+          ]
+        }
+      },
+      {
+        "title": "IM with manipulations",
+        "description": "Data for example service was provided by Institute Cartografic i Geologic Catalunya (ICGC).",
+        "code": {
+          "operationalLayers": [
+            {
+              "id": "1589c525c4c-layer-0",
+              "title": "Integrated Mesh Girona",
+              "url": "http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/Girona_Spain/SceneServer",
+              "visibility": true,
+              "layerType": "IntegratedMeshLayer",
+              "layerDefinition": {
+                "elevationInfo": {
+                  "mode": "absoluteHeight",
+                  "offset": 100
+                }
+              },
+              "modifications": "./resources/modifications/1234-abcd.json"
             }
           ]
         }

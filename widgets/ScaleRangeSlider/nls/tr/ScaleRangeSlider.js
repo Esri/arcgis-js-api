@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Ölçek Aralığı Kaydırıcı",noLimit:"Sınır Yok",preview:"Önizleme",currentScaleTooltip:"Mevcut harita ölçeği ({scaleLabel})",customScaleInputTooltip:"Ölçek değeri girin.",current:"Geçerli",setTo:"Ayarla",selectOne:"(birini seç)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Dünya",continent:"Kıta",countriesBig:"Ülkeler",countriesSmall:"Ülke",statesProvinces:"Eyaletler",stateProvince:"Devlet",counties:"Eyaletler",county:"Bölge",metropolitanArea:"Metropol alanı",cities:"Şehirler",city:"Şehir",town:"Kasaba",neighborhood:"Komşu",streets:"Sokaklar",street:"Sokak",buildings:"Binalar",building:"Bina",smallBuilding:"Küçük bina",rooms:"Odalar",room:"Oda"},featuredScaleLabels:{custom:"Özel",current:"Mevcut harita görünümü",world:"Dünya",continent:"Kıta",countriesBig:"Ülkeler - büyük",countriesSmall:"Ülkeler - küçük",statesProvinces:"Eyaletler/Bölgeler",stateProvince:"Eyalet/Bölge",counties:"İlçeler",county:"İlçe",metropolitanArea:"Metropol alanı",cities:"Şehirler",city:"Şehir",town:"Kasaba",neighborhood:"Mahalle",streets:"Sokaklar",street:"Sokak",buildings:"Binalar",building:"Bina",smallBuilding:"Küçük bina",rooms:"Odalar",room:"Oda"}});

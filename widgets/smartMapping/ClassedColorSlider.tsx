@@ -88,7 +88,7 @@ import { ClassBreaksRendererResult } from "esri/../renderers/smartMapping/creato
 import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.support
-import ClassBreakInfo from "esri/../renderers/support/ClassBreakInfo";
+import ClassBreakInfo = require("esri/../renderers/support/ClassBreakInfo");
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";

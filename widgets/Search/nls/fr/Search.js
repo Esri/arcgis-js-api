@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Rechercher",searchButtonTitle:"Rechercher",clearButtonTitle:"Effacer la recherche",placeholder:"Rechercher une adresse ou un lieu",searchIn:"Rechercher dans",all:"Tout",allPlaceholder:"Rechercher une adresse ou un lieu",emptyValue:"Entrez un terme de recherche.",untitledResult:"Sans titre",untitledSource:"Source sans titre",noResults:"Aucun résultat",noResultsFound:"Aucun résultat n’a été trouvé.",noResultsFoundForValue:"Aucun résultat trouvé pour {value}.",showMoreResults:"Afficher plus de résultats",hideMoreResults:"Masquer",searchResult:"Résultat de la recherche",moreResultsHeader:"Plus de résultats",useCurrentLocation:"Utiliser l’emplacement actuel"});

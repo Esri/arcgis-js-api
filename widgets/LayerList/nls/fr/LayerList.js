@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Liste des couches",noItemsToDisplay:"Aucun élément à afficher actuellement.",layerInvisibleAtScale:"Invisible à l’échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});

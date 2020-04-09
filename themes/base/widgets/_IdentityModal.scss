@@ -1,0 +1,94 @@
+@mixin identityModal() {
+  .esri-identity-modal {
+    box-sizing: border-box;
+    color: $font-color;
+    display: none;
+    font-size: $font-size;
+    font-family: $font-family;
+    line-height: $line-height;
+    background-color: $background-color;
+  }
+  .esri-identity-modal--open {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: $background-color--overlay;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1001;
+    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    opacity: 1;
+    .esri-identity-modal__dialog {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      border: none;
+      background: $background-color;
+      overflow: auto;
+      border-radius: 0px;
+      outline: none;
+      padding: $cap-spacing--plus-half $side-spacing--plus-half;
+      max-width: 40vw;
+      max-height: 80vh;
+      box-sizing: border-box;
+      z-index: 102;
+      text-align: left;
+      display: inline-block;
+      vertical-align: middle;
+      transition: margin-top 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+      margin-top: 0px;
+    }
+  }
+  .esri-identity-modal__title {
+    font-size: $font-size__h1;
+    margin: 0 0 $cap-spacing 0;
+    padding: 0;
+  }
+  .esri-identity-modal__close-button {
+    position: absolute;
+    top: $cap-spacing;
+    right: $side-spacing--half;
+    z-index: 1;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $button-width;
+    height: $button-height;
+    cursor: pointer;
+  }
+
+  .esri-identity-modal__content {
+    margin-top: $cap-spacing--plus-half;
+  }
+  .esri-identity-form__group {
+    margin-bottom: $cap-spacing;
+  }
+  .esri-identity-form__label {
+    display: flex;
+    flex-flow: column;
+  }
+  .esri-identity-form__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $cap-spacing;
+  }
+
+  @media only screen and (max-width: 680px) {
+    .esri-identity-modal--open .esri-identity-modal__dialog {
+      max-width: unset;
+      width: 75vw;
+    }
+  }
+}
+
+@if $include_IdentityModal == true {
+  @include identityModal();
+}

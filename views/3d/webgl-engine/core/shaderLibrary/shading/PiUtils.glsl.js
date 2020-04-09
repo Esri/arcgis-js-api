@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],function(t,n,o,e){function l(t){t.vertex.code.add(e.glsl(a||(a=o(["\n    const float PI = 3.141592653589793;\n  "],["\n    const float PI = 3.141592653589793;\n  "])))),t.fragment.code.add(e.glsl(s||(s=o(["\n    const float PI = 3.141592653589793;\n    const float LIGHT_NORMALIZATION = 1.0 / PI;\n    const float INV_PI = 0.3183098861837907;\n    const float HALF_PI = 1.570796326794897;\n    "],["\n    const float PI = 3.141592653589793;\n    const float LIGHT_NORMALIZATION = 1.0 / PI;\n    const float INV_PI = 0.3183098861837907;\n    const float HALF_PI = 1.570796326794897;\n    "]))))}Object.defineProperty(n,"__esModule",{value:!0}),n.PiUtils=l;var a,s});
+define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],(function(t,n,o,e){var l,a;Object.defineProperty(n,"__esModule",{value:!0}),n.PiUtils=function(t){t.vertex.code.add(e.glsl(l||(l=o(["\n    const float PI = 3.141592653589793;\n  "],["\n    const float PI = 3.141592653589793;\n  "])))),t.fragment.code.add(e.glsl(a||(a=o(["\n    const float PI = 3.141592653589793;\n    const float LIGHT_NORMALIZATION = 1.0 / PI;\n    const float INV_PI = 0.3183098861837907;\n    const float HALF_PI = 1.570796326794897;\n    "],["\n    const float PI = 3.141592653589793;\n    const float LIGHT_NORMALIZATION = 1.0 / PI;\n    const float INV_PI = 0.3183098861837907;\n    const float HALF_PI = 1.570796326794897;\n    "]))))}}));

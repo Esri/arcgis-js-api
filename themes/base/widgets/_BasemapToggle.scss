@@ -41,6 +41,13 @@ $basemap_toggle_size: $button-width--double !default;
     background-image: url(../base/images/basemap-toggle-64.svg);
   }
 
+  .esri-basemap-toggle__image--loading {
+    background-image: unset;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
   .esri-basemap-toggle__image--secondary {
     margin-top: $basemap_toggle_offset;
     margin-left: $basemap_toggle_offset;

@@ -317,11 +317,25 @@ class Swipe extends declared(Widget) {
 
   /**
    * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/Swipe~VisibleElements
+   *
+   * @property {boolean} handle - Indicates whether the handle from which you drag the widget is visible.
+   * Default value is `true`.
+   * @property {boolean} divider - Indicates whether the divider between the leading and trailing layers is visible.
+   * Default value is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
    * This property provides the ability change the visibility of individual elements of the widget's display.
    *
    * @name visibleElements
    * @instance
-   * @type {Object}
+   * @type {module:esri/widgets/Swipe~VisibleElements}
+   * @autocast
+   *
    * @property {boolean} handle - Indicates whether the handle from which you drag the widget is visible.
    * Default value is `true`.
    * @property {boolean} divider - Indicates whether the divider between the leading and trailing layers is visible.
@@ -329,8 +343,8 @@ class Swipe extends declared(Widget) {
    *
    * @example
    * swipe.visibleElements = {
-   *    divider: true,
-   *    handle: false // handle will not display
+   *   divider: true,
+   *   handle: false // handle will not display
    * }
    */
 

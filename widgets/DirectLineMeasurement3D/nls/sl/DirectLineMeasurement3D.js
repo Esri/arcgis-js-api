@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Meritev neposredne linije",hint:"Začnite meriti tako, da kliknete na 3D-prizor in postavite vašo prvo točko",unsupported:"3D-meritev neposredne linije je podprta samo v pregledovalniku 3D-prizorov.",distance:"Razdalja",direct:"Neposredno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Enota",newMeasurement:"Nova meritev",units:{metric:"Metrično",imperial:"Anglosaško",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Palci",feet:"Čevlji",yards:"Jardi","nautical-miles":"Morske milje","us-feet":"Čevlji (ZDA)","degrees-minutes-seconds":"DMS",degrees:"Stopinje"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/ensureType"],function(e,r,n){function t(e){var r=n.ensureInteger(100*(1-e));return Math.max(0,Math.min(r,100))}function a(e){var r=1-e/100;return Math.max(0,Math.min(r,1))}Object.defineProperty(r,"__esModule",{value:!0}),r.opacityToTransparency=t,r.transparencyToOpacity=a});
+define(["require","exports","../../core/accessorSupport/ensureType"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0}),r.opacityToTransparency=function(e){var r=n.ensureInteger(100*(1-e));return Math.max(0,Math.min(r,100))},r.transparencyToOpacity=function(e){var r=1-e/100;return Math.max(0,Math.min(r,1))}}));

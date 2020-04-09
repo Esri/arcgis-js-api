@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Legende",points:"Punkte",lines:"Linien",polygons:"Polygone",creatingLegend:"Legende wird erstellt",noLegend:"Keine Legende vorhanden",dotValue:"1 Punkt = {value} {unit}",currentObservations:"Aktuelle Beobachtungen",previousObservations:"Vorherige Beobachtungen",high:"Hoch",low:"Niedrig",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"Knoten",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} dividiert durch {normField}",showNormPct:"{field} als Prozentsatz der Gesamtsumme",showRatio:"Verhältnis von {field} zu {normField}",showRatioPercent:"{field} als Prozentsatz von {normField}",showRatioPercentTotal:"{field} als Prozentsatz von {field} und {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rot",green:"Grün",blue:"Blau"});
+define({widgetLabel:"Legende",points:"Punkte",lines:"Linien",polygons:"Polygone",creatingLegend:"Legende wird erstellt",noLegend:"Keine Legende vorhanden",dotValue:"1 Punkt = {value} {unit}",currentObservations:"Aktuelle Beobachtungen",previousObservations:"Vorherige Beobachtungen",high:"Hoch",low:"Niedrig",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"Knoten",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} dividiert durch {normField}",showNormPct:"{field} als Prozentsatz der Gesamtsumme",showRatio:"Verhältnis von {field} zu {normField}",showRatioPercent:"{field} als Prozentsatz von {normField}",showRatioPercentTotal:"{field} als Prozentsatz von {field} und {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rot",green:"Grün",blue:"Blau",clusterCountTitle:"Anzahl der Features"});

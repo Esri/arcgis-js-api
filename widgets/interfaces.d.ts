@@ -204,6 +204,7 @@ export interface FormatJSON {
 interface LayerInfo {
   layer: Layer;
   title: string;
+  sublayerIds?: number[];
 }
 
 type LegendElement =

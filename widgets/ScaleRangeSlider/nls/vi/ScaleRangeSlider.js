@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Thanh trượt Phạm vi Tỷ lệ",noLimit:"Không giới hạn",preview:"Xem trước",currentScaleTooltip:"Tỷ lệ bản đồ hiện tại ({scaleLabel})",customScaleInputTooltip:"Nhập tỷ lệ.",current:"Hiện tại",setTo:"Thiết lập thành",selectOne:"(chọn một)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Thế giới",continent:"Lục địa",countriesBig:"Các quốc gia",countriesSmall:"Quốc gia",statesProvinces:"Các tiểu bang",stateProvince:"Tiểu bang",counties:"Các quận",county:"Hạt",metropolitanArea:"Khu vực đô thị",cities:"Các thành phố",city:"Thành phố",town:"Thị trấn",neighborhood:"Vùng lân cận",streets:"Đường phố",street:"Đường phố",buildings:"Các Tòa nhà",building:"Tòa nhà",smallBuilding:"Tòa nhà nhỏ",rooms:"Các Phòng",room:"Phòng"},featuredScaleLabels:{custom:"Tùy chỉnh",current:"Chế độ xem bản đồ hiện tại",world:"Thế giới",continent:"Lục địa",countriesBig:"Quốc gia - lớn",countriesSmall:"Quốc gia - nhỏ",statesProvinces:"Các Tiểu bang/Tỉnh",stateProvince:"Tiểu bang/Tỉnh",counties:"Các hạt",county:"Hạt",metropolitanArea:"Khu vực đô thị",cities:"Các thành phố",city:"Thành phố",town:"Thị trấn",neighborhood:"Vùng lân cận",streets:"Đường phố",street:"Đường phố",buildings:"Công trình",building:"Tòa nhà",smallBuilding:"Tòa nhà nhỏ",rooms:"Các phòng",room:"Phòng"}});

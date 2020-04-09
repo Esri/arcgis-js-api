@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./tiling/TileInfoView","./tiling/TileKey","./tiling/TileQueue","./tiling/TileStrategy"],function(e,i,l,t,n,u){Object.defineProperty(i,"__esModule",{value:!0}),i.TileInfoView=l,i.TileKey=t,i.TileQueue=n,i.TileStrategy=u});
+define(["require","exports","./tiling/TileInfoView","./tiling/TileKey","./tiling/TileQueue","./tiling/TileStrategy"],(function(e,i,l,t,n,u){Object.defineProperty(i,"__esModule",{value:!0}),i.TileInfoView=l,i.TileKey=t,i.TileQueue=n,i.TileStrategy=u}));

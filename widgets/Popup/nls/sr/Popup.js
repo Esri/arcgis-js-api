@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Iskačući prozor",zoom:"Zumiraj na",next:"Sledeći geoobjekat",previous:"Prethodni geoobjekat",dock:"Usidri",undock:"Opozovi usidrenje",pageText:"{index} od {total}",selectedFeature:"Izabrani geoobjekat",selectedFeatures:"{total} rezultata",tooManyFields:"Ovaj sloj ima previše polja, neka neće biti prikazana."});
+define({widgetLabel:"Iskačući prozor",zoom:"Zumiraj na",next:"Sledeći geoobjekat",previous:"Prethodni geoobjekat",dock:"Usidri",undock:"Opozovi usidrenje",pageText:"{index} od {total}",selectedFeature:"Izabrani geoobjekat",selectedFeatures:"{total} rezultata"});

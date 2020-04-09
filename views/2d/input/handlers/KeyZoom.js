@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/compilerUtils","../../../input/InputHandler"],function(e,o,n,t,i){Object.defineProperty(o,"__esModule",{value:!0});var r=function(e){function o(o,n,t){var i=e.call(this,!0)||this;return i.view=o,i.keys=n,i._keysToZoomAction={},i.registerIncoming("key-down",t,function(e){return i._handleKeyDown(e)}),n.zoomIn.forEach(function(e){return i._keysToZoomAction[e]=0}),n.zoomOut.forEach(function(e){return i._keysToZoomAction[e]=1}),i}return n(o,e),o.prototype._handleKeyDown=function(e){this._handleKey(e)},o.prototype._handleKey=function(e){var o=e.modifiers;if(!(o.size>0)||o.has("Shift")){var n=e.data.key;if(n in this._keysToZoomAction){var i=this._keysToZoomAction[n],r=this.view.mapViewNavigation,a=null;switch(i){case 0:a=r.zoomIn();break;case 1:a=r.zoomOut();break;default:return void t.neverReached(i)}r.begin(),a.then(function(){return r.end()}),e.stopPropagation()}}},o}(i.InputHandler);o.KeyZoom=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/compilerUtils","../../../input/InputHandler"],(function(e,o,n,t,i){Object.defineProperty(o,"__esModule",{value:!0});var r=function(e){function o(o,n,t){var i=e.call(this,!0)||this;return i.view=o,i.keys=n,i._keysToZoomAction={},i.registerIncoming("key-down",t,(function(e){return i._handleKeyDown(e)})),n.zoomIn.forEach((function(e){return i._keysToZoomAction[e]=0})),n.zoomOut.forEach((function(e){return i._keysToZoomAction[e]=1})),i}return n(o,e),o.prototype._handleKeyDown=function(e){this._handleKey(e)},o.prototype._handleKey=function(e){var o=e.modifiers;if(!(o.size>0)||o.has("Shift")){var n=e.data.key;if(n in this._keysToZoomAction){var i=this._keysToZoomAction[n],r=this.view.mapViewNavigation,a=null;switch(i){case 0:a=r.zoomIn();break;case 1:a=r.zoomOut();break;default:return void t.neverReached(i)}r.begin(),a.then((function(){return r.end()})),e.stopPropagation()}}},o}(i.InputHandler);o.KeyZoom=r}));

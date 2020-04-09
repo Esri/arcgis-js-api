@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Vektoroselem-űrlap",empty:"- üres -",validationErrors:{cannotBeNull:"Adjon meg egy értéket",outsideRange:"Az értéknek {min} és {max} között kell lennie",invalidCodedValue:"Az érték a listában szereplő értékek egyike lehet.",invalidType:"Nem érvényes érték"}});

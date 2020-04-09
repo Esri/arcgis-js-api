@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Indicaciones",advancedOptions:"Opciones avanzadas",disclaimer:"Uso sujeto a las {esriTerms}.",esriTerms:"Condiciones de uso de Esri",travelMode:"Modo de viaje",viewActive:"Hacer clic en el mapa añade una parada",showStop:"Mostrar esta parada",addStopTitle:"Añadir nueva parada",addStop:"Agregar parada",removeStop:"Eliminar parada",reverseStops:"Invertir paradas",dndHandle:"Arrastrar para cambiar el orden de visita",serviceTime:"Tiempo de servicio",serviceDistance:"Distancia de servicio",leaveNow:"Salir ahora",departBy:"Salir a las",departureTime:"Hora de salida",zoomToRoute:"Acercar a ruta",printDescription:"Imprimir direcciones",gmt:"GMT",stop:"Parada",stopLabelTemplate:"Parada {number} ({label})",unlocated:"No ubicado",searchFieldPlaceholder:"Busque o haga clic en el mapa",viewlessSearchFieldPlaceholder:"Buscar",directionsPlaceholder:"Su ruta aparecerá aquí.",etaTemplate:"{time} {gmt}",eta:"Hora estimada de llegada",distanceTemplate:"{distance} {units}",cumulativeCosts:"Costes acumulados",intermediateCosts:"Costes intermedios",optimizeRoute:"Optimizar ruta",optimizingRoute:"Optimizando ruta",clearRoute:"Borrar ruta",signInRequired:"Inicio de sesión obligatorio",time:{min:"min",hr:"h"},units:{kilometers:{name:"kilómetro(s)",abbr:"km"},meters:{name:"metro(s)",abbr:"m"},miles:{name:"milla(s)",abbr:"mi"},feet:{name:"pies",abbr:"pies"},yards:{name:"yarda(s)",abbr:"yd"},nauticalMiles:{name:"milla(s) náutica(s)",abbr:"mn"}},traffic:{average:"típicamente",none:"Sin información de tráfico",heavy:"Tráfico denso",light:"Tráfico ligero"},errors:{unableToLoadServiceMetadata:"No se puede cargar el servicio de rutas. Puede deberse a que el servicio no está accesible.",unableToRoute:"No se pueden generar rutas entre paradas.",unknownError:"Parece que se ha producido un error."}});

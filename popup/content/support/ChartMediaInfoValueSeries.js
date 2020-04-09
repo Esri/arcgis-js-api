@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(t,o,r,e,p,n){return function(t){function o(o){var r=t.call(this,o)||this;return r.tooltip=null,r.x=null,r.y=null,r}r(o,t),p=o,o.prototype.clone=function(){return new p({tooltip:this.tooltip,x:this.x,y:this.y})};var p;return e([n.property()],o.prototype,"tooltip",void 0),e([n.property()],o.prototype,"x",void 0),e([n.property()],o.prototype,"y",void 0),o=p=e([n.subclass("esri.popup.content.support.ChartMediaInfoValueSeries")],o)}(n.declared(p))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(t,o,r,e,p,n){return function(t){function o(o){var r=t.call(this,o)||this;return r.tooltip=null,r.x=null,r.y=null,r}var p;return r(o,t),p=o,o.prototype.clone=function(){return new p({tooltip:this.tooltip,x:this.x,y:this.y})},e([n.property()],o.prototype,"tooltip",void 0),e([n.property()],o.prototype,"x",void 0),e([n.property()],o.prototype,"y",void 0),o=p=e([n.subclass("esri.popup.content.support.ChartMediaInfoValueSeries")],o)}(n.declared(p))}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Misurazioni dell'area",hint:"Iniziare a misurare facendo clic sulla mappa per posizionare il primo punto.",unsupported:"La misurazione dell'area 2D è supportata solo in MapView.",perimeter:"Perimetro",area:"Area",newMeasurement:"Nuova misurazione",mode:"Modalità",modes:{auto:"Modalità automatica",planar:"Planare",geodesic:"Geodetico"},unit:"Unità",units:{metric:"Metrico",imperial:"Imperiale","square-kilometers":"Chilometri quadrati","square-meters":"Metri quadrati","square-miles":"Miglia quadrate","square-inches":"Pollici quadrati","square-feet":"Piedi quadrati","square-yards":"Iarde quadrate","square-us-feet":"Piedi quadrati (USA)",acres:"Acri",ares:"Are",hectares:"Ettari"}});

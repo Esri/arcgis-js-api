@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Teckenförklaring",points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Teckenförklaring skapas",noLegend:"Ingen teckenförklaring",dotValue:"1 prick = {value} {unit}",currentObservations:"Aktuella observationer",previousObservations:"Tidigare observationer",high:"Hög",low:"Låg",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knop",esriFeetPerSecond:"fot/s",esriMilesPerHour:"mph",showNormField:"{field} delat med {normField}",showNormPct:"{field} som en procentandel av helheten",showRatio:"Förhållande på {field} till {normField}",showRatioPercent:"{field} som en procentandel av {normField}",showRatioPercentTotal:"{field} som en procentandel av {field} och {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rött",green:"Grönt",blue:"Blått"});
+define({widgetLabel:"Teckenförklaring",points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Teckenförklaring skapas",noLegend:"Ingen teckenförklaring",dotValue:"1 prick = {value} {unit}",currentObservations:"Aktuella observationer",previousObservations:"Tidigare observationer",high:"Hög",low:"Låg",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knop",esriFeetPerSecond:"fot/s",esriMilesPerHour:"mph",showNormField:"{field} delat med {normField}",showNormPct:"{field} som en procentandel av helheten",showRatio:"Förhållande på {field} till {normField}",showRatioPercent:"{field} som en procentandel av {normField}",showRatioPercentTotal:"{field} som en procentandel av {field} och {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rött",green:"Grönt",blue:"Blått",clusterCountTitle:"Antal geoobjekt"});

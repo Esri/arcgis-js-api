@@ -35,7 +35,6 @@
     },
     "initialState": {
       "type": "object",
-      "description": "An envelope object defines the initial state at which to open the scene.",
       "$ref": "initialState_schema.json"
     },
     "mapRangeInfo": {

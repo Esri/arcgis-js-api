@@ -22,4 +22,8 @@ $interactive-font-color--inverse: $interactive-font-color;
 // Selected
 $border-color--active: $interactive-font-color;
 $background-color--active: #000000;
+
+// Error
+$font-color--error: #eb7953;
+
 @import "../base/core";

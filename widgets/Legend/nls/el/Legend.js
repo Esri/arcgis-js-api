@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Υπόμνημα",points:"Σημεία",lines:"Γραμμές",polygons:"Πολύγωνα",creatingLegend:"Δημιουργία υπομνήματος",noLegend:"Χωρίς υπόμνημα",dotValue:"1 κουκκίδα = {value} {unit}",currentObservations:"Τρέχουσες παρατηρήσεις",previousObservations:"Προηγούμενες παρατηρήσεις",high:"Υψηλό",low:"Χαμηλό",esriMetersPerSecond:"μ./δευτ.",esriKilometersPerHour:"χλμ/ώρα",esriKnots:"κόμβοι",esriFeetPerSecond:"πόδ./δευτ.",esriMilesPerHour:"μίλ./ώρα",showNormField:"{field} διαιρούμενο με {normField}",showNormPct:"{field} ως ποσοστό του συνόλου",showRatio:"Λόγος του {field} προς {normField}",showRatioPercent:"{field} ως ποσοστό του {normField}",showRatioPercentTotal:"{field} ως ποσοστό του {field} και του {normField}",band0:"φασματική ζώνη_0",band1:"φασματική ζώνη_1",band2:"φασματική ζώνη_2",red:"Κόκκινο",green:"Πράσινο",blue:"Μπλε"});
+define({widgetLabel:"Υπόμνημα",points:"Σημεία",lines:"Γραμμές",polygons:"Πολύγωνα",creatingLegend:"Δημιουργία υπομνήματος",noLegend:"Χωρίς υπόμνημα",dotValue:"1 κουκκίδα = {value} {unit}",currentObservations:"Τρέχουσες παρατηρήσεις",previousObservations:"Προηγούμενες παρατηρήσεις",high:"Υψηλό",low:"Χαμηλό",esriMetersPerSecond:"μ./δευτ.",esriKilometersPerHour:"χλμ/ώρα",esriKnots:"κόμβοι",esriFeetPerSecond:"πόδ./δευτ.",esriMilesPerHour:"μίλ./ώρα",showNormField:"{field} διαιρούμενο με {normField}",showNormPct:"{field} ως ποσοστό του συνόλου",showRatio:"Λόγος του {field} προς {normField}",showRatioPercent:"{field} ως ποσοστό του {normField}",showRatioPercentTotal:"{field} ως ποσοστό του {field} και του {normField}",band0:"φασματική ζώνη_0",band1:"φασματική ζώνη_1",band2:"φασματική ζώνη_2",red:"Κόκκινο",green:"Πράσινο",blue:"Μπλε",clusterCountTitle:"Αριθμός στοιχείων"});

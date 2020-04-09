@@ -29,10 +29,6 @@
     "title": {
       "type": "string",
       "description": "Required string title for the basemap that can be used in a table of contents."
-    },
-    "transparency": {
-      "type": "number",
-      "description": "The degree of transparency applied to the basemap on the client side, where 0 is fully opaque and 1 is fully transparent."
     }
   },
   "required": [

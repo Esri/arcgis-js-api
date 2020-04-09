@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3"],function(e,t,n,c){function r(e,t,n){var r=o(e,t);return c.vec3.scale(n,e,r)}function o(e,t){return c.vec3.dot(e,t)/c.vec3.length(e)}function i(e,t){var r=c.vec3.dot(e,t)/(c.vec3.length(e)*c.vec3.length(t));return-n.acosClamped(r)}Object.defineProperty(t,"__esModule",{value:!0}),t.projectPoint=r,t.projectPointSignedLength=o,t.angle=i});
+define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3"],(function(e,t,n,c){Object.defineProperty(t,"__esModule",{value:!0}),t.projectPoint=function(e,t,n){var o=c.vec3.dot(e,t)/c.vec3.dot(e,e);return c.vec3.scale(n,e,o)},t.projectPointSignedLength=function(e,t){return c.vec3.dot(e,t)/c.vec3.length(e)},t.angle=function(e,t){var o=c.vec3.dot(e,t)/(c.vec3.length(e)*c.vec3.length(t));return-n.acosClamped(o)}}));

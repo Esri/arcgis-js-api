@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/promiseUtils"],function(e,r,o,s){function t(r){return"heatmap"===r?s.create(function(r){return e(["./processors/HeatmapProcessor"],r)}):s.create(function(r){return e(["./processors/SymbolProcessor"],r)})}Object.defineProperty(r,"__esModule",{value:!0}),r.loadProcessorModule=t});
+define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/promiseUtils"],(function(e,r,o,s){Object.defineProperty(r,"__esModule",{value:!0}),r.loadProcessorModule=function(r){return"heatmap"===r?s.create((function(r){return e(["./processors/HeatmapProcessor"],r)})):s.create((function(r){return e(["./processors/SymbolProcessor"],r)}))}}));

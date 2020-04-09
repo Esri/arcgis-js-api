@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Color","../core/lang","../core/accessorSupport/decorators","../core/accessorSupport/ensureType","./Symbol3DLayer"],function(e,r,t,o,a,i,p,n,l){return function(e){function r(r){var t=e.call(this,r)||this;return t.color=new a("#0077BE"),t.type="water",t.waterbodySize="medium",t.waveDirection=null,t.waveStrength="moderate",t}t(r,e),l=r,r.prototype.clone=function(){return new l({color:i.clone(this.color),waterbodySize:this.waterbodySize,waveDirection:this.waveDirection,waveStrength:this.waveStrength})};var l;return o([p.property({type:a,json:{type:[n.Integer],write:!0,default:null}})],r.prototype,"color",void 0),o([p.enumeration.serializable()({Water:"water"})],r.prototype,"type",void 0),o([p.property({type:["small","medium","large"],json:{write:!0,default:"medium"}})],r.prototype,"waterbodySize",void 0),o([p.property({type:Number,json:{write:!0,default:null}})],r.prototype,"waveDirection",void 0),o([p.property({type:["calm","rippled","slight","moderate"],json:{write:!0,default:"moderate"}})],r.prototype,"waveStrength",void 0),r=l=o([p.subclass("esri.symbols.WaterSymbol3DLayer")],r)}(p.declared(l))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Color","../core/lang","../core/accessorSupport/decorators","../core/accessorSupport/ensureType","./Symbol3DLayer"],(function(e,r,t,o,a,i,p,n,l){return function(e){function r(r){var t=e.call(this,r)||this;return t.color=new a("#0077BE"),t.type="water",t.waterbodySize="medium",t.waveDirection=null,t.waveStrength="moderate",t}var l;return t(r,e),l=r,r.prototype.clone=function(){return new l({color:i.clone(this.color),waterbodySize:this.waterbodySize,waveDirection:this.waveDirection,waveStrength:this.waveStrength})},o([p.property({type:a,json:{type:[n.Integer],write:!0,default:null}})],r.prototype,"color",void 0),o([p.enumeration.serializable()({Water:"water"})],r.prototype,"type",void 0),o([p.property({type:["small","medium","large"],json:{write:!0,default:"medium"}})],r.prototype,"waterbodySize",void 0),o([p.property({type:Number,json:{write:!0,default:null}})],r.prototype,"waveDirection",void 0),o([p.property({type:["calm","rippled","slight","moderate"],json:{write:!0,default:"moderate"}})],r.prototype,"waveStrength",void 0),r=l=o([p.subclass("esri.symbols.WaterSymbol3DLayer")],r)}(p.declared(l))}));

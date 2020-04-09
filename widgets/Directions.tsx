@@ -86,7 +86,6 @@ import DirectionsViewModel = require("esri/widgets/Directions/DirectionsViewMode
 
 // esri.widgets.Directions.support
 import CostSummary = require("esri/widgets/Directions/support/CostSummary");
-import DatePicker = require("esri/widgets/Directions/support/DatePicker");
 import {
   formatDistance,
   formatTime,
@@ -97,11 +96,12 @@ import {
 import { Maneuver, PlaceholderStop, StopSymbols } from "esri/widgets/Directions/support/interfaces";
 import { toIconName } from "esri/widgets/Directions/support/maneuverUtils";
 import RouteSections = require("esri/widgets/Directions/support/RouteSections");
-import TimePicker = require("esri/widgets/Directions/support/TimePicker");
 
 // esri.widgets.support
+import DatePicker = require("esri/widgets/support/DatePicker");
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
+import TimePicker = require("esri/widgets/support/TimePicker");
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
@@ -698,7 +698,7 @@ class Directions extends declared(Widget) {
   }
 
   private _handleSignInClick(): void {
-    this.viewModel.load();
+    this.viewModel.load().catch(() => {});
   }
 
   private _renderTravelModeOptions(): VNode {
@@ -1585,7 +1585,7 @@ class Directions extends declared(Widget) {
         this._departureTime === NOW
       );
     } else if (length) {
-      intermediateCosts = time ? `${length}&nbsp;&middot;<wbr>&nbsp;${time}` : length;
+      intermediateCosts = time ? `${length}&nbsp;&middot;&nbsp;${time}` : length;
     }
 
     const showAsHeader = associatedStop;

@@ -1,4 +1,4 @@
-precision mediump float;
+precision highp float;
 
 attribute vec4 a_color;
 attribute vec4 a_outlineColor;

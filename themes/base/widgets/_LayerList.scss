@@ -56,11 +56,8 @@
     padding: $cap-spacing $side-spacing--half $cap-spacing ($side-spacing + 5);
     transition: border-color 250ms ease-in-out;
   }
-  .esri-layer-list__item--invisible-at-scale {
-    .esri-layer-list__item-title,
-    .esri-layer-list__item-toggle {
-      color: $interactive-font-color--disabled;
-    }
+  .esri-layer-list__item--invisible-at-scale .esri-layer-list__item-title {
+    color: $interactive-font-color--disabled;
   }
   .esri-layer-list__item--has-children > .esri-layer-list__item-container {
     padding-left: 5px;
@@ -90,11 +87,32 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex: 1;
+    user-select: none;
   }
-  .esri-layer-list__item-label[role="checkbox"]:hover,
-  .esri-layer-list__item-label[role="radio"]:hover {
+  .esri-layer-list__item-label[role="switch"],
+  .esri-layer-list__item-label[role="checkbox"],
+  .esri-layer-list__item-label[role="radio"] {
     cursor: pointer;
   }
+  .esri-layer-list--new-ui {
+    .esri-layer-list__item-toggle-icon {
+      visibility: hidden;
+      color: $interactive-font-color--disabled;
+    }
+    .esri-layer-list__item--invisible .esri-layer-list__item-toggle-icon {
+      color: inherit;
+    }
+    // show icon on focus of toggle/label
+    .esri-layer-list__item-toggle:focus .esri-layer-list__item-toggle-icon,
+    .esri-layer-list__item-label:focus .esri-layer-list__item-toggle-icon,
+    // show icon on hover of item container
+    .esri-layer-list__item-container:hover .esri-layer-list__item-toggle-icon,
+    // always show icon when item is not visible
+    .esri-layer-list__item--invisible > .esri-layer-list__item-container .esri-layer-list__item-toggle-icon {
+      visibility: visible;
+    }
+  }
+
   .esri-layer-list__item-title {
     flex: 1;
     padding-left: $side-spacing--third;

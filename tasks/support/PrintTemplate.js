@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,38 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-/**
-       * Defines the layout elements. It's an object with the following properties:
-       *
-       * @property {string} [titleText] - The text used for the map title if the specified layout contains a title text element.
-       * @property {string} [authorText] - The text used for the author if the specified layout contains an author text element.
-       * @property {string} [copyrightText] - The text used for the copyright if the specified layout contains a copyright text element.
-       * @property {"Miles" | "Kilometers" | "Meters" | "Feet"} [scalebarUnit=Miles] - The unit used for the scalebar.
-       * @property {module:esri/tasks/support/LegendLayer[]} [legendLayers] - An array of {@link module:esri/tasks/support/LegendLayer}
-       * containing the ids of the layers that will be included in the legend. Tiled layers and GraphicsLayer will not appear in the
-       * legend. If `legendLayers` is not specified, all operational layers (non-tiled layers) except {@link module:esri/layers/GraphicsLayer}
-       * will be present in the legend. To specify that no layers will be included in the legend, set `legendLayer = []`.
-       * @property {Object[]} [customTextElements] - An array of name-value pair objects. Use this property to update the text for custom text elements
-       * on the page layout. Values must be strings. The custom text elements must exist in the print service. All out-of-the-box print service layout
-       * templates contain a text element named `date` that gets populated by default with the system date-time, but can be overwritten.
-       *
-       * @example
-       * layoutOptions: {
-       *   titleText: "My Print",
-       *   authorText: "Sam",
-       *   copyrightText: "My Company",
-       *   scalebarUnit: "Miles",
-       *   // the following text elements must
-       *   // exist in the print service to appear
-       *   customTextElements: [
-       *     {"description": "My description"},
-       *     {"location": "My Location"},
-       *     {"date": "11/11/2020, 11:11:20 AM"}
-       *   ]
-       * }
-       * @type {Object}
-       */
-
-define(["../../core/Accessor"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.PrintTemplate",properties:{attributionVisible:{value:!0,type:Boolean},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},forceFeatureAttributes:{value:!1,type:Boolean},format:{value:"png32",type:String},label:{value:null,type:String},layout:{value:"map-only",type:String},layoutOptions:{value:null,type:Object},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},showLabels:{value:!0,type:Boolean}}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],(function(t,e,o,r,p,a){return function(t){function e(e){var o=t.call(this,e)||this;return o.attributionVisible=!0,o.exportOptions={width:800,height:1100,dpi:96},o.forceFeatureAttributes=!1,o.format="png32",o.label=null,o.layout="map-only",o.layoutOptions=null,o.outScale=0,o.preserveScale=!0,o.showLabels=!0,o}return o(e,t),r([a.property()],e.prototype,"attributionVisible",void 0),r([a.property()],e.prototype,"exportOptions",void 0),r([a.property()],e.prototype,"forceFeatureAttributes",void 0),r([a.property({type:["pdf","png32","png8","jpg","gif","eps","svg","svgz"]})],e.prototype,"format",void 0),r([a.property()],e.prototype,"label",void 0),r([a.property({type:["map-only","a3-landscape","a3-portrait","a4-landscape","a4-portrait","letter-ansi-a-landscape","letter-ansi-a-portrait","tabloid-ansi-b-landscape","tabloid-ansi-b-portrait"]})],e.prototype,"layout",void 0),r([a.property()],e.prototype,"layoutOptions",void 0),r([a.property()],e.prototype,"outScale",void 0),r([a.property()],e.prototype,"preserveScale",void 0),r([a.property()],e.prototype,"showLabels",void 0),e=r([a.subclass("esri.tasks.support.PrintTemplate")],e)}(a.declared(p))}));

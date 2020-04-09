@@ -31,7 +31,6 @@
   ],
   "rules": {
     "block-spacing": 2,
-    "brace-style": [2, "stroustrup"],
     "comma-dangle": 2,
     "comma-spacing": 2,
     "comma-style": 2,

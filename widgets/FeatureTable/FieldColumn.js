@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../intl/date","../../layers/support/CodedValueDomain","../../layers/support/fieldUtils","./Grid/Column"],(function(e,t,r,n,o,i,l,a,d,p){var u="esri-field-column__header-content",s="esri-field-column__cell-content";return function(e){function t(t){var r=e.call(this,t)||this;return r.config=null,r.defaultValue=null,r.description=null,r.direction=null,r.editable=!1,r.field=null,r.headerRenderFunction=function(e){var t=e.root,n=e.column.path,o=r.sortable,i=document.createElement("div");i.setAttribute("class",u+" "+n),o?(r._set("sortElement",r.createSortElement()),i.appendChild(r.sortElement)):i.innerHTML=r.header,t.innerHTML="",t.appendChild(i)},r.layer=null,r.length=null,r.name=null,r.nullable=!0,r.path=null,r.renderFunction=function(e){var t=e.root,n=e.rowData,o=r,i=o.path,a=o.type,d=n.item.feature,p=r._getDomainForFeature(d),u=d.attributes[i],c=u||null;p?c=r._getComputedDomain(u,p):"date"===a&&(c=u?l.formatDate(u):null);var y=document.createElement("div");y.setAttribute("class",s),y.innerHTML=c,t.innerHTML="",t.appendChild(y)},r.type=null,r}return n(t,e),Object.defineProperty(t.prototype,"header",{get:function(){var e=this.config,t=this.path;return e&&e.label?e.label:this.alias||t||null},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"hidden",{get:function(){var e=this.config;return!(!e||!1!==e.visible)||this._get("hidden")},set:function(e){this._set("hidden",e)},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"required",{get:function(){var e=this.get("field.nullable"),t=this.get("config.required");return this.editable&&(!e||!0===t)},enumerable:!0,configurable:!0}),t.prototype._isDomainCompatible=function(e){var t=this.field;if(e&&"coded-value"===e.type){var r=typeof e.codedValues[0].code;if("string"===r&&d.isStringField(t)||"number"===r&&d.isNumericField(t))return!0}return!(!e||"range"!==e.type||!d.isNumericField(t))},t.prototype._getDomainForFeature=function(e){var t=this.layer,r=this.name,n=t.typeIdField,o=n===r,i=this.get("field.domain");if(o&&!i)return new a({name:"__internal-type-based-coded-value-domain__",codedValues:t.types.map((function(e){return{code:e.id,name:e.name}}))});var l=n&&t.getFieldDomain(r,{feature:e})||i,d=this.get("config.domain");return this._isDomainCompatible(d)?d:l},t.prototype._getComputedDomain=function(e,t){if(!t)return null;if("range"===t.type)return e;if("coded-value"===t.type){var r=t.codedValues.filter((function(t){return t.hasOwnProperty("code")&&t.code===e}));return r&&r.length?r[0].name:e}return null},o([i.property({readOnly:!0,aliasOf:"field.alias"})],t.prototype,"alias",void 0),o([i.property()],t.prototype,"config",void 0),o([i.property({readOnly:!0,aliasOf:"field.defaultValue"})],t.prototype,"defaultValue",void 0),o([i.property({readOnly:!0,aliasOf:"field.description"})],t.prototype,"description",void 0),o([i.property()],t.prototype,"direction",void 0),o([i.property({readOnly:!0,aliasOf:"field.editable"})],t.prototype,"editable",void 0),o([i.property()],t.prototype,"field",void 0),o([i.property({readOnly:!0,dependsOn:["alias","config"]})],t.prototype,"header",null),o([i.property({dependsOn:["config"]})],t.prototype,"hidden",null),o([i.property()],t.prototype,"headerRenderFunction",void 0),o([i.property()],t.prototype,"layer",void 0),o([i.property({readOnly:!0,aliasOf:"field.length"})],t.prototype,"length",void 0),o([i.property({readOnly:!0,aliasOf:"field.name"})],t.prototype,"name",void 0),o([i.property({readOnly:!0,aliasOf:"field.nullable"})],t.prototype,"nullable",void 0),o([i.property({readOnly:!0,aliasOf:"field.name"})],t.prototype,"path",void 0),o([i.property()],t.prototype,"renderFunction",void 0),o([i.property({dependsOn:["field","config"]})],t.prototype,"required",null),o([i.property({readOnly:!0,aliasOf:"field.type"})],t.prototype,"type",void 0),t=o([i.subclass("esri.widgets.FeatureTable.FieldColumn")],t)}(i.declared(p))}));

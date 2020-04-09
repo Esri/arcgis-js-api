@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./LabelClass"],function(e,r,n){function i(e,r,i){var l=this;return e?e.map(function(e){var o=new n;if(o.read(e,i),o.labelExpression){var f=r.fields||r.layerDefinition&&r.layerDefinition.fields||l.fields;o.labelExpression=o.labelExpression.replace(t,function(e,r){return"["+a(r,f)+"]"})}return o}):null}function a(e,r){if(!r)return e;for(var n=e.toLowerCase(),i=0;i<r.length;i++){var a=r[i].name;if(a.toLowerCase()===n)return a}return e}Object.defineProperty(r,"__esModule",{value:!0});var t=/\[([^\[\]]+)\]/gi;r.reader=i});
+define(["require","exports","./LabelClass"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0});var i=/\[([^\[\]]+)\]/gi;r.reader=function(e,r,a){var t=this;return e?e.map((function(e){var l=new n;if(l.read(e,a),l.labelExpression){var o=r.fields||r.layerDefinition&&r.layerDefinition.fields||t.fields;l.labelExpression=l.labelExpression.replace(i,(function(e,r){return"["+function(e,r){if(!r)return e;for(var n=e.toLowerCase(),i=0;i<r.length;i++){var a=r[i].name;if(a.toLowerCase()===n)return a}return e}(r,o)+"]"}))}return l})):null}}));

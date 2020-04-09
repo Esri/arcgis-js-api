@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"قياس المنطقة",hint:"بدأ في القياس عن طريق النقر في المشهد لوضع النقطة الأولى الخاصة بك",unsupported:"قياس المنطقة ثلاثية الأبعاد مدعوم فقط في SceneView.",perimeterLength:"محيط الشكل",area:"المنطقة",unit:"وحدة",notApplicable:"لا يوجد",newMeasurement:"قياس جديد",units:{metric:"متري",imperial:"الامبراطورية","square-kilometers":"كيلو مترات مربعة","square-meters":"أمتار مربعة","square-miles":"أميال مربعة","square-inches":"بوصات مربعة","square-feet":"أقدام مربعة","square-yards":"ياردات مربعة","square-us-feet":"أقدام مربعة (الولايات المتحدة)",acres:"فدان",ares:"آرس",hectares:"هكتار"}});

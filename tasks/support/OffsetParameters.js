@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["../../core/Accessor","../../core/jsonMap","../../geometry/support/jsonUtils"],function(e,t,s){var i=new t.JSONMap({esriGeometryOffsetBevelled:"bevelled",esriGeometryOffsetMitered:"mitered",esriGeometryOffsetRounded:"rounded"}),o=new t.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return e.createSubclass({declaredClass:"esri.tasks.support.OffsetParameters",properties:{bevelRatio:null,geometries:null,offsetDistance:null,offsetHow:null,offsetUnit:null},toJSON:function(){var e={};if(this.geometries&&this.geometries.length>0){var t=this.geometries.map(function(e){return e.toJSON()});e.geometries=JSON.stringify({geometryType:s.getJsonType(this.geometries[0]),geometries:t}),e.sr=JSON.stringify(this.geometries[0].spatialReference.toJSON())}return this.bevelRatio&&(e.bevelRatio=this.bevelRatio),this.offsetDistance&&(e.offsetDistance=this.offsetDistance),this.offsetHow&&(e.offsetHow=i.toJSON(this.offsetHow)),this.offsetUnit&&(e.offsetUnit=o.toJSON(this.offsetUnit)),e}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils"],(function(e,r,t,o,p,n,s,i){var u=function(e){function r(r){var t=e.call(this,r)||this;return t.bevelRatio=null,t.geometries=null,t.offsetDistance=null,t.offsetHow=null,t.offsetUnit=null,t}return t(r,e),o([n.property({type:Number,json:{write:!0}})],r.prototype,"bevelRatio",void 0),o([n.property({json:{read:{reader:function(e){return e?e.map((function(e){return i.fromJSON(e)})):null}},write:{writer:function(e,r){r.geometries=e.map((function(e){return e.toJSON()}))}}}})],r.prototype,"geometries",void 0),o([n.property({type:Number,json:{write:!0}})],r.prototype,"offsetDistance",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"offsetHow",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"offsetUnit",void 0),r=o([n.subclass("esri.tasks.support.OffsetParameters")],r)}(n.declared(p.JSONSupport));return u.from=s.default(u),u}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({lblItem:"פריט",title:"התחבר",info:"אנא היכנס לחשבונך כדי לגשת לפריט ב-{server} {resource}",oAuthInfo:"היכנס אל {server}.",lblUser:"שם משתמש:",lblPwd:"סיסמה:",lblOk:"אישור",lblSigning:"הירשם...",lblCancel:"בטל",errorMsg:"משתמש/סיסמה לא חוקיים. אנא נסה שנית.",invalidUser:"המשתמש או הסיסמה שהכנסת לא נכונים.",forbidden:"שם המשתמש והסיסמה תקינים, אך אין לך גישה למשאב זה.",noAuthService:"לא ניתן לגשת לשירות האימות."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Uznirstošais logs",zoom:"Pietuvināt",next:"Nākošais elements",previous:"Iepriekšējs elements",dock:"Dokot",undock:"Atdokot",pageText:"{index} no {total}",selectedFeature:"Atlasītais elements",selectedFeatures:"{total} rezultāti",tooManyFields:"Šajā slānī ir pārāk daudz lauku. Daži lauki netiks parādīti."});
+define({widgetLabel:"Uznirstošais logs",zoom:"Pietuvināt",next:"Nākošais elements",previous:"Iepriekšējs elements",dock:"Dokot",undock:"Atdokot",pageText:"{index} no {total}",selectedFeature:"Atlasītais elements",selectedFeatures:"{total} rezultāti"});

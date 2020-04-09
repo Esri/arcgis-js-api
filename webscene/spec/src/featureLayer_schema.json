@@ -93,8 +93,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the layer. If the layer is not from a web service but rather a feature collection, then the url property is omitted.",
-      "format": "uri"
+      "description": "The URL to the layer. If the layer is not from a web service but rather a feature collection, then the url property is omitted."
     },
     "visibility": {
       "type": "boolean",

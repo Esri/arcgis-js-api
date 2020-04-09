@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Konverzija koordinata",abbreviatedDirections:{north:"S",south:"J",east:"I",west:"Z"},addConversion:"Dodaj konverziju",captureMode:"Način snimanja",changeCoordinateDisplay:"Promijeni prikaz koordinata",convert:"Pretvori",conversionOutputSuffix:"rezultat konverzije",copySuccessMessage:"Koordinata kopirana u međuspremnik",defaultPattern:"Vrati na zadane postavke",goTo:"Idi na lokaciju",inputCoordTitle:"Unesi koordinatu",invalidCoordinate:"Nevaljana koordinata",liveMode:"Način uživo",locationOffBasemap:"Unesena koordinata nalazi se izvan obuhvata kartografske podloge",noBasemap:"Nema kartografske podloge.",noLocation:"Nema položaja",removeConversion:"Ukloni konverziju",selectFormat:"Odaberi format",settingsTitle:"Postavke formata"});

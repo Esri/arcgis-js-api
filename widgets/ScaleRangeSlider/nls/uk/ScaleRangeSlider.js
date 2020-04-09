@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Повзунок діапазону масштабу",noLimit:"Без обмеження",preview:"Попередній перегляд",currentScaleTooltip:"Поточний масштаб карти ({scaleLabel})",customScaleInputTooltip:"Введіть масштаб.",current:"Поточний",setTo:"Задати значення",selectOne:"(вибрати один)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Світ",continent:"Континент",countriesBig:"Країни",countriesSmall:"країна",statesProvinces:"Штати",stateProvince:"Штат",counties:"Округи",county:"Округ",metropolitanArea:"Місто з передмістями",cities:"Міста",city:"Місто",town:"Містечко",neighborhood:"Район",streets:"Вулиці",street:"Вулиця",buildings:"Будівлі",building:"Будівля",smallBuilding:"Невелика будівля",rooms:"Кімнати",room:"Кімната"},featuredScaleLabels:{custom:"Користувацький",current:"Поточний вид карти",world:"Світ",continent:"Континент",countriesBig:"Країни - великі",countriesSmall:"Країни - малі",statesProvinces:"Штати/провінції",stateProvince:"Штат/провінція",counties:"Округи",county:"Округ",metropolitanArea:"Місто з передмістями",cities:"Міста",city:"Місто",town:"Містечко",neighborhood:"Район",streets:"Вулиці",street:"Вулиця",buildings:"Будівлі",building:"Будівля",smallBuilding:"Невелика будівля",rooms:"Кімнати",room:"Кімната"}});

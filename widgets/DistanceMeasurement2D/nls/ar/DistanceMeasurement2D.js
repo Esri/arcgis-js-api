@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"قياس المسافة",hint:"ابدأ بالقياس بالنقر على الخريطة لوضع النقطة الأولى",unsupported:"قياس المسافة ثنائية الأبعاد مدعوم فقط في MapView.",distance:"المسافة",newMeasurement:"قياس جديد",mode:"وضع",modes:{auto:"تلقائي",planar:"مسطح",geodesic:"جيوديسي"},unit:"وحدة",units:{metric:"متري",imperial:"الامبراطورية",kilometers:"كيلومتر",meters:"أمتار",miles:"أميال",inches:"بوصة",feet:"قدم",yards:"ياردة","nautical-miles":"أميال بحرية","us-feet":"قدم (الولايات المتحدة)","degrees-minutes-seconds":"درجة دقيقة ثانية",degrees:"الدرجات"}});

@@ -36,12 +36,15 @@ import * as i18n from "dojo/i18n!esri/widgets/BasemapLayerList/nls/BasemapLayerL
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import watchUtils = require("esri/core/watchUtils");
+import has = require("esri/core/has");
+import Logger = require("esri/core/Logger");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import Layer = require("esri/layers/Layer");
@@ -85,6 +88,8 @@ function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
 }
 
+const NEW_UI_FLAG = "esri-basemaplayerlist-new-ui";
+
 const SORT_GROUP_NAME = "root-layers";
 const SORT_DATA_ATTR = "data-layer-uid";
 const SORT_DATASET_ID = "layerUid";
@@ -92,6 +97,7 @@ const SORT_DATASET_ID = "layerUid";
 const CSS = {
   // layerlist classes
   base: "esri-basemap-layer-list esri-widget esri-widget--panel",
+  newUI: "esri-basemap-layer-list--new-ui",
   titleContainer: "esri-basemap-layer-list__title-container",
   mainHeading: "esri-basemap-layer-list__main-heading",
   editingCard: "esri-basemap-layer-list__editing-card",
@@ -113,6 +119,7 @@ const CSS = {
   itemOnlyChild: "esri-basemap-layer-list__item--only-child",
   itemContent: "esri-basemap-layer-list__item-content",
   itemError: "esri-basemap-layer-list__item--error",
+  itemInvisible: "esri-basemap-layer-list__item--invisible",
   itemInvisibleAtScale: "esri-basemap-layer-list__item--invisible-at-scale",
   itemUpdating: "esri-basemap-layer-list__item--updating",
   itemChildren: "esri-basemap-layer-list__item--has-children",
@@ -134,6 +141,8 @@ const CSS = {
   title: "esri-basemap-layer-list__item-title",
   toggleVisible: "esri-basemap-layer-list__item-toggle",
   toggleVisibleIcon: "esri-basemap-layer-list__item-toggle-icon",
+  toggleIcon: "esri-basemap-layer-list__item-toggle-icon",
+  radioIcon: "esri-basemap-layer-list__item-radio-icon",
   childToggle: "esri-basemap-layer-list__child-toggle",
   childToggleOpen: "esri-basemap-layer-list__child-toggle--open",
   childOpened: "esri-basemap-layer-list__child-toggle-icon--opened",
@@ -201,6 +210,15 @@ function closeItemActions(item: ListItem): void {
  * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
  * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
  */
+const logger = Logger.getLogger("esri.widgets.BasemapLayerList");
+
+interface VisibleElements {
+  statusIndicators?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  statusIndicators: true
+};
 
 @subclass("esri.widgets.BasemapLayerList")
 class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
@@ -269,6 +287,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   private _sortableReferenceLayersNode: HTMLUListElement = null;
 
   private _focusSortUid: string = null;
+
+  private _newUI = has(NEW_UI_FLAG);
 
   //--------------------------------------------------------------------------
   //
@@ -486,14 +506,21 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    * @type {boolean}
    * @default true
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/LayerList#visibleElements BasemapLayerList.visibleElements.statusIndicators} instead.
    *
    * @example
-   * // enable status indicators for all layers listed in BasemapLayerList
-   * basemapLayerList.statusIndicatorVisible = true;
+   * // disable status indicators for all layers listed in BasemapLayerList
+   * basemapLayerList.statusIndicatorsVisible = false;
    */
   @property()
   @renderable()
-  statusIndicatorsVisible = true;
+  set statusIndicatorsVisible(value: boolean) {
+    deprecatedProperty(logger, "statusIndicatorsVisible", {
+      replacement: "visibleElements.statusIndicators",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, statusIndicators: value };
+  }
 
   //----------------------------------
   //  view
@@ -530,6 +557,44 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   @renderable("viewModel.state")
   viewModel: BasemapLayerListViewModel = new BasemapLayerListViewModel();
 
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/BasemapLayerList~VisibleElements
+   *
+   * @property {boolean} [statusIndicators] - Indicates whether to the status indicators will be displayed. Default is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/BasemapLayerList~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * basemapLayerList.visibleElements = {
+   *   statusIndicators: false
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -551,6 +616,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const { state } = this.viewModel;
 
     const baseClasses = {
+      [CSS.newUI]: this._newUI,
       [CSS.hidden]: state === "loading",
       [CSS.disabled]: state === "disabled"
     };
@@ -773,6 +839,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         dataIdAttr: SORT_DATA_ATTR,
         group: SORT_GROUP_NAME,
         filter: `.${CSS.itemOnlyChild}`,
+        fallbackTolerance: 4, // Note: some phones with very sensitive touch displays like the Samsung Galaxy S8 will fire unwanted touchmove events even when your finger is not moving, resulting in the sort not triggering. #25015
         disabled,
         onSort: () =>
           this._sortLayersToItems({ type: "base", itemIds: sortableBaseLayers.toArray() }),
@@ -799,6 +866,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         dataIdAttr: SORT_DATA_ATTR,
         group: SORT_GROUP_NAME,
         disabled,
+        fallbackTolerance: 4, // Note: some phones with very sensitive touch displays like the Samsung Galaxy S8 will fire unwanted touchmove events even when your finger is not moving, resulting in the sort not triggering. Only needed when the item can also be clicked/touched. #25015
         onSort: () =>
           this._sortLayersToItems({
             type: "reference",
@@ -904,6 +972,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const listUid = `${uid}__list`;
     const titleKey = `${uid}__title`;
 
+    const { _newUI } = this;
+
     const childrenLen = item.children.length;
     const hasError = !!item.error;
     const hasChildren = !!childrenLen && !hasError;
@@ -924,7 +994,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const itemClasses = {
       [CSS.itemChildren]: hasChildren,
       [CSS.itemError]: !!hasError,
-      [CSS.itemUpdating]: item.updating && !parent && this.statusIndicatorsVisible,
+      [CSS.itemUpdating]: item.updating && !parent && this.visibleElements.statusIndicators,
+      [CSS.itemInvisible]: _newUI && !item.visible,
       [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
       [CSS.itemSelectable]: this.editingEnabled
     };
@@ -1252,15 +1323,18 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   }
 
   private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
-    const { editingEnabled } = this;
+    const { editingEnabled, _newUI } = this;
     const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
     const toggleIconClasses = {
+      [CSS.toggleVisibleIcon]: _newUI,
+      [CSS.toggleIcon]: _newUI && parentVisibilityMode !== exclusive,
+      [CSS.radioIcon]: _newUI && parentVisibilityMode === exclusive,
       [CSS.iconRadioSelected]: parentVisibilityMode === exclusive && item.visible,
       [CSS.iconRadioUnselected]: parentVisibilityMode === exclusive && !item.visible,
-      [CSS.iconVisible]: parentVisibilityMode !== exclusive && item.visible,
-      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
+      [CSS.iconVisible]: parentVisibilityMode !== exclusive && !_newUI && item.visible,
+      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && (_newUI || !item.visible)
     };
 
     const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
@@ -1278,9 +1352,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
       </span>
     );
 
-    const visibilityIconNode = (
-      <span class={this.classes(CSS.toggleVisibleIcon, toggleIconClasses)} aria-hidden="true" />
-    );
+    const visibilityIconNode = <span class={this.classes(toggleIconClasses)} aria-hidden="true" />;
 
     const iconNode = editingEnabled ? (
       <span
@@ -1304,10 +1376,15 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
       </span>
     );
 
+    const labelContentNodes = [iconNode, titleNode];
+
+    if (_newUI) {
+      labelContentNodes.reverse();
+    }
+
     const labelNode = editingEnabled ? (
       <div key="label" class={CSS.label}>
-        {iconNode}
-        {titleNode}
+        {labelContentNodes}
       </div>
     ) : (
       <div
@@ -1323,8 +1400,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         role={toggleRole}
         aria-labelledby={titleKey}
       >
-        {iconNode}
-        {titleNode}
+        {labelContentNodes}
       </div>
     );
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./core/Warning","./renderers/ClassBreaksRenderer","./renderers/RasterColormapRenderer","./renderers/RasterStretchRenderer","./renderers/UniqueValueRenderer"],function(e,r,n,s,a,t,u){function d(e){return e?R[e.type]||null:null}function l(e,r){if(!e)return null;var s=d(e);if(s){var a=new s;return a.read(e,r),a}return r&&r.messages&&e&&r.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:r})),null}function o(e,r){return l(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=s,r.RasterColormapRenderer=a,r.RasterStretchRenderer=t,r.UniqueValueRenderer=u,r.rasterRendererTypes={key:"type",base:null,typeMap:{"unique-value":r.UniqueValueRenderer,"class-breaks":r.ClassBreaksRenderer,"raster-colormap":r.RasterColormapRenderer,"raster-stretch":r.RasterStretchRenderer}};var R={uniqueValue:r.UniqueValueRenderer,classBreaks:r.ClassBreaksRenderer,rasterStretch:r.RasterStretchRenderer,rasterColormap:r.RasterColormapRenderer};r.read=l,r.fromJSON=o});
+define(["require","exports","./core/Warning","./renderers/ClassBreaksRenderer","./renderers/RasterColormapRenderer","./renderers/RasterStretchRenderer","./renderers/UniqueValueRenderer"],(function(e,r,n,s,t,a,u){Object.defineProperty(r,"__esModule",{value:!0}),r.ClassBreaksRenderer=s,r.RasterColormapRenderer=t,r.RasterStretchRenderer=a,r.UniqueValueRenderer=u,r.rasterRendererTypes={key:"type",base:null,typeMap:{"unique-value":u,"class-breaks":s,"raster-colormap":t,"raster-stretch":a}};var o={uniqueValue:u,classBreaks:s,rasterStretch:a,rasterColormap:t};function d(e,r){if(!e)return null;var s=function(e){return e&&o[e.type]||null}(e);if(s){var t=new s;return t.read(e,r),t}return r&&r.messages&&e&&r.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:r})),null}r.read=d,r.fromJSON=function(e,r){return d(e,r)}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/jsonMap"],function(e,r,c){Object.defineProperty(r,"__esModule",{value:!0}),r.chartTypeKebabDict=c.strict()({barchart:"bar-chart",columnchart:"column-chart",linechart:"line-chart",piechart:"pie-chart"})});
+define(["require","exports","../../../core/jsonMap"],(function(e,r,c){Object.defineProperty(r,"__esModule",{value:!0}),r.chartTypeKebabDict=c.strict()({barchart:"bar-chart",columnchart:"column-chart",linechart:"line-chart",piechart:"pie-chart"})}));

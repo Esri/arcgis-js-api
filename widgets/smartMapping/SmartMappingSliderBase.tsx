@@ -15,7 +15,7 @@ import Color = require("esri/../Color");
 
 // esri.core
 import { isSome } from "esri/../core/maybe";
-import watchUtils = require("esri/../core/watchUtils");
+import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
@@ -545,9 +545,11 @@ export abstract class SmartMappingSliderBase extends declared(Widget) {
   @property()
   slider: Slider = new Slider({
     layout: "vertical",
-    labelsVisible: true,
+    visibleElements: {
+      labels: true,
+      rangeLabels: true
+    },
     labelInputsEnabled: true,
-    rangeLabelsVisible: true,
     rangeLabelInputsEnabled: true
   });
 

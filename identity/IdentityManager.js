@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../kernel","../core/declare","./IdentityManagerDialog","./OAuthSignInHandler"],function(e,n,r,i,a,t){var d=new a,l=i.safeMixin(d,t);return r.id=l,l});
+define(["require","exports","../core/tsSupport/decorateHelper","../core/tsSupport/declareExtendsHelper","../kernel","../core/accessorSupport/decorators","./IdentityManagerBase"],(function(e,r,t,n,a,s,o){var c=new(function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return n(r,e),r=t([s.subclass("esri.identity.IdentityManager")],r)}(s.declared(o.IdentityManagerBase)));return a.setId(c),c}));

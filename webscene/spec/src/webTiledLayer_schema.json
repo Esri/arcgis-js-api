@@ -70,8 +70,7 @@
     },
     "templateUrl": {
       "type": "string",
-      "description": "URL to the Web Tiled Layer. Input required by the user when the layer is added to the web scene. The template URL contains a parameterized URL. The URL can contain the following templated parameters: `level`, `col`, `row`, and `subDomain`.",
-      "format": "uri"
+      "description": "URL to the Web Tiled Layer. Input required by the user when the layer is added to the web scene. The template URL contains a parameterized URL. The URL can contain the following templated parameters: `level`, `col`, `row`, and `subDomain`."
     },
     "tileInfo": {
       "type": "object",

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./types","./utils/mat3","./utils/mat4","./utils/scalar","./utils/vec2","./utils/vec3","./utils/vec4"],function(e,t,u,r,l,n,c,i,a){function s(e,t){return new e(new ArrayBuffer(t*e.ElementCount*u.elementTypeSize(e.ElementType)))}Object.defineProperty(t,"__esModule",{value:!0}),t.mat3=r,t.mat4=l,t.scalar=n,t.vec2=c,t.vec3=i,t.vec4=a,t.createBuffer=s});
+define(["require","exports","./types","./utils/mat3","./utils/mat4","./utils/scalar","./utils/vec2","./utils/vec3","./utils/vec4"],(function(e,t,u,r,l,n,c,i,a){Object.defineProperty(t,"__esModule",{value:!0}),t.mat3=r,t.mat4=l,t.scalar=n,t.vec2=c,t.vec3=i,t.vec4=a,t.createBuffer=function(e,t){return new e(new ArrayBuffer(t*e.ElementCount*u.elementTypeSize(e.ElementType)))}}));

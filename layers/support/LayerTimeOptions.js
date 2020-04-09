@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/lang"],function(t,e){return t(null,{declaredClass:"esri.layers.support.LayerTimeOptions",constructor:function(t){t&&e.mixin(this,t)},toJSON:function(){var t={timeDataCumulative:this.timeDataCumulative,timeOffset:this.timeOffset,timeOffsetUnits:this.timeOffsetUnits,useTime:this.useTime};return e.fixJson(t)}})});
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,t,r,o,p,i){return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return o(t,e),r([i.property({type:Boolean,json:{write:!0}})],t.prototype,"timeDataCumulative",void 0),r([i.property({type:Number,json:{write:!0}})],t.prototype,"timeOffset",void 0),r([i.property({type:String,json:{write:!0}})],t.prototype,"timeOffsetUnits",void 0),r([i.property({type:Boolean,json:{write:!0}})],t.prototype,"useTime",void 0),t=r([i.subclass("esri.layers.support.LayerTimeOptions")],t)}(i.declared(p.JSONSupport))}));

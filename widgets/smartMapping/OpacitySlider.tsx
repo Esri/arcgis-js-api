@@ -231,7 +231,7 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
    *   For single-color visualizations where
    *   only an Opacity variable is present, you should set this color to match
    *   the color of the symbol in the {@link module:esri/renderers/SimpleRenderer}.
-   * @todo @autocast { "name": "trackFillColor", "value": "Object | Number[] | String" }
+   * @todo doc later \@autocast { "name": "trackFillColor", "value": "Object | Number[] | String" }
    *
    * @example
    * slider.style.trackFillColor = new Color("dodgerblue");

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Merenje direktne linije",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",unsupported:"Direktno merenje linije u 3D je podržano samo u aplikaciji SceneView.",distance:"Rastojanje",direct:"Direktno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Jedinica",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stepeni"}});

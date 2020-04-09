@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Информация о",add:"Добавить",all:"все",apply:"Применить",auth:{logOut:"Выход",signIn:"Вход"},back:"Назад",cancel:"Отменить",change:"Изменить",clear:"Очистить",close:"Закрыть",collapse:"Свернуть",configure:"Настройка",control:{pause:"Приостановить",play:"Воспроизведение",resume:"Возобновить",stop:"Стоп"},copy:"Копировать",create:"Создать",cut:"Вырезать",delete:"Удалить",details:"Подробности",done:"Готово",dragHandleTitle:"Перетащить/изменить порядок",dragHandleLabel:"Активируйте кнопку изменения порядка и используйте клавиши стрелок, чтобы настроить список, либо используйте мышку, чтобы перетащить/изменить порядок. Нажмите клавишу ESC для отмены изменений.",edit:"Редактировать",error:"Ошибка",esri:"Esri",exit:"Выйти",expand:"Развернуть",fieldsSummary:"Список атрибутов и значений",find:"Поиск",form:{no:"Нет",ok:"OK",password:"Пароль",submit:"Отправить",username:"Имя пользователя",yes:"Да"},help:"Справка",home:"На главную",info:"Информация",information:"Информация",layer:"Слой",loading:"Загрузка",maximize:"Развернуть",menu:"Меню",more:"Еще",none:"Нет",open:"Открыть",pagination:{first:"Первый",last:"Последний",next:"Далее",page:"Страница",pageText:"{index} из {total}",previous:"Назад"},paste:"Вставить",preview:"Просмотр",print:"Печать",publish:"Публикация",redo:"Повторить",refresh:"Обновить",remove:"Удалить",rename:"Переименовать",reset:"Сброс",restore:"Восстановить",save:"Сохранить",search:"Поиск",searching:"Поиск",select:"Выбрать",settings:"Установки",sort:"Сортировать",share:"Опубликовать",title:"Название",untitled:"Без имени",unnamed:"Без названия",update:"Обновить",upload:"Загрузить",undo:"Отменить",view:"Просмотр",visibility:{hide:"Спрятать",show:"Показывать",toggle:"Переключить"},warning:"Предупреждение"});

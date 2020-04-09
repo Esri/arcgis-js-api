@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Đường ngắm cơ sở",hint:"Bắt đầu phép phân tích bằng cách nhấp vào trong scene để đặt điểm quan sát và một hoặc nhiều mục tiêu",unsupported:"Chức năng Đường ngắm cơ sở chỉ được hỗ trợ trong SceneView.",done:"Hoàn tất",newAnalysis:"Phân tích mới",continueAnalysis:"Tiếp tục phân tích"});

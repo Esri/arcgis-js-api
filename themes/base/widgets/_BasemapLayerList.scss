@@ -153,10 +153,30 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex: 1;
+    user-select: none;
   }
-  .esri-basemap-layer-list__item-label[role="checkbox"]:hover,
-  .esri-basemap-layer-list__item-label[role="radio"]:hover {
+  .esri-basemap-layer-list__item-label[role="switch"],
+  .esri-basemap-layer-list__item-label[role="checkbox"],
+  .esri-basemap-layer-list__item-label[role="radio"] {
     cursor: pointer;
+  }
+  .esri-basemap-layer-list--new-ui {
+    .esri-basemap-layer-list__item-toggle-icon {
+      visibility: hidden;
+      color: $interactive-font-color--disabled;
+    }
+    .esri-basemap-layer-list__item--invisible .esri-basemap-layer-list__item-toggle-icon {
+      color: inherit;
+    }
+    // show icon on focus of toggle/label
+    .esri-basemap-layer-list__item-toggle:focus .esri-basemap-layer-list__item-toggle-icon,
+    .esri-basemap-layer-list__item-label:focus .esri-basemap-layer-list__item-toggle-icon,
+    // how icon on hover of item container
+    .esri-basemap-layer-list__item-container:hover .esri-basemap-layer-list__item-toggle-icon,
+    // always show icon when item is not visible
+    .esri-basemap-layer-list__item--invisible > .esri-basemap-layer-list__item-container .esri-basemap-layer-list__item-toggle-icon {
+      visibility: visible;
+    }
   }
   .esri-basemap-layer-list__item-title {
     flex: 1;

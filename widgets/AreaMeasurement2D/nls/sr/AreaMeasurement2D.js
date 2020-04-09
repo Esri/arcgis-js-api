@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Merenje oblasti",hint:"Otpočnite merenja klikom na mapu kako biste namestili prvu tačku",unsupported:"Merenje 2D površine je podržano samo u aplikaciji MapView.",perimeter:"Obim",area:"Površina",newMeasurement:"Novo merenje",mode:"Režim",modes:{auto:"Automatski",planar:"Planarno",geodesic:"Geodetski"},unit:"Jedinica",units:{metric:"Metrika",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inči","square-feet":"Kvadratne stope","square-yards":"Kvadratne jarde","square-us-feet":"Kvadratne stope (SAD)",acres:"Akeri",ares:"Ari",hectares:"Hektari"}});

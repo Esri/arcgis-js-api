@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/assignHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./BuildingSublayerView3D"],function(e,r,t,s,u,o,i){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s(r,e),r=u([o.subclass("esri.views.3d.layers.BuildingGroupSublayerView3D")],r)}(o.declared(i))});
+define(["require","exports","../../../core/tsSupport/assignHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./BuildingSublayerView3D"],(function(e,r,t,s,u,o,i){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s(r,e),r=u([o.subclass("esri.views.3d.layers.BuildingGroupSublayerView3D")],r)}(o.declared(i))}));

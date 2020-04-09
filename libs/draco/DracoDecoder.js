@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/has","../../core/promiseUtils","./draco_decoder"],function(e,r,o,n,t){function c(){return!!o("esri-wasm")}function i(){return c()?(a||(a=n.create(function(r){return e(["./draco_decoder"],function(e){s=e({locateFile:u}),r(s)})}).catch(function(e){return n.reject(e)})),a):n.reject(new Error("Draco decompression not available, missing WebAssembly support"))}function u(){return e.toUrl("./draco_decoder.wasm")}Object.defineProperty(r,"__esModule",{value:!0}),function(e){for(var o in e)r.hasOwnProperty(o)||(r[o]=e[o])}(t),r.isSupported=c,r.getDecoderModule=i;var a,s});
+define(["require","exports","../../core/has","../../core/promiseUtils","./draco_decoder"],(function(e,r,n,o,c){function t(){return!!n("esri-wasm")}function a(){return e.toUrl("./draco_decoder.wasm")}var d;Object.defineProperty(r,"__esModule",{value:!0}),r.DracoDecoderInstance=c.DracoDecoderInstance,r.DecoderInstance=c.DecoderInstance,r.MeshInstance=c.MeshInstance,r.isSupported=t,r.getDecoderModule=function(){return t()?(d||(d=o.create((function(r){return e(["./draco_decoder"],(function(e){var n=e({locateFile:a,onModuleLoaded:function(){return r(n)}});delete n.then}))})).catch((function(e){return o.reject(e)}))),d):o.reject(new Error("Draco decompression not available, missing WebAssembly support"))}}));

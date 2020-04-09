@@ -33,7 +33,7 @@ $button-color--inverse: $interactive-font-color--inverse !default;
 
 // Other
 $heading-color: $font-color !default;
-$bacground-color--overlay: rgba(0, 0, 0, 0.7) !default;
+$background-color--overlay: rgba(0, 0, 0, 0.7) !default;
 $opacity--disabled: 0.4 !default;
 $interactive-font-color--disabled: rgba($interactive-font-color, $opacity--disabled) !default;
 $font-color--placeholder: rgba($font-color, $opacity--disabled) !default;

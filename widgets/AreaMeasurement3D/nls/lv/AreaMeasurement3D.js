@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Laukuma mērījums",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",unsupported:"3D platības mērīšana tiek atbalstīta tikai skatā SceneView (Scēnas skats).",perimeterLength:"Perimetrs",area:"Laukums",unit:"Mērvienība",notApplicable:"N/P",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā","square-kilometers":"Kvadrātkilometri","square-meters":"Kvadrātmetri","square-miles":"Kvadrātjūdzes","square-inches":"Kvadrātcollas","square-feet":"Kvadrātpēdas","square-yards":"Kvadrātjardi","square-us-feet":"Kvadrātpēdas (ASV)",acres:"Akri",ares:"Āri",hectares:"Hektāri"}});

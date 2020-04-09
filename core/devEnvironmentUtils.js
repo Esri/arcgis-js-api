@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./global"],function(c,t,a){function e(c){return c=c||a.location.hostname,g.some(function(t){return null!=c.match(t)})}function r(c,t){return c?(t=t||a.location.hostname,null!=t.match(n)?c.replace("static.arcgis.com","staticdev.arcgis.com"):null!=t.match(l)?c.replace("static.arcgis.com","staticdev.arcgis.com"):null!=t.match(s)?c.replace("static.arcgis.com","staticqa.arcgis.com"):null!=t.match(u)?c.replace("static.arcgis.com","staticqa.arcgis.com"):c):c}function i(c){return c=c||a.location.hostname,[/^zrh-.+?\.esri\.com$/].concat(g).some(function(t){return null!=c.match(t)})}Object.defineProperty(t,"__esModule",{value:!0}),t.isDevEnvironment=e,t.adjustStaticAGOUrl=r,t.isTelemetryDevEnvironment=i;var o=/^([\w-]*\.)?[\w-]*\.zrh-dev-local.esri.com$/,n=/^devext.arcgis.com$/,s=/^qaext.arcgis.com$/,m=/^jsapps.esri.com$/,l=/^[\w-]*\.mapsdevext.arcgis.com$/,u=/^[\w-]*\.mapsqa.arcgis.com$/,g=[o,n,s,m,l,u]});
+define(["require","exports","./global"],(function(c,t,a){Object.defineProperty(t,"__esModule",{value:!0}),t.isDevEnvironment=function(c){return c=c||a.location.hostname,n.some((function(t){return null!=c.match(t)}))},t.adjustStaticAGOUrl=function(c,t){return c?null!=(t=t||a.location.hostname).match(e)?c.replace("static.arcgis.com","staticdev.arcgis.com"):null!=t.match(i)?c.replace("static.arcgis.com","staticdev.arcgis.com"):null!=t.match(r)?c.replace("static.arcgis.com","staticqa.arcgis.com"):null!=t.match(o)?c.replace("static.arcgis.com","staticqa.arcgis.com"):c:c},t.isTelemetryDevEnvironment=function(c){return c=c||a.location.hostname,[/^zrh-.+?\.esri\.com$/].concat(n).some((function(t){return null!=c.match(t)}))};var e=/^devext.arcgis.com$/,r=/^qaext.arcgis.com$/,i=/^[\w-]*\.mapsdevext.arcgis.com$/,o=/^[\w-]*\.mapsqa.arcgis.com$/,n=[/^([\w-]*\.)?[\w-]*\.zrh-dev-local.esri.com$/,e,r,/^jsapps.esri.com$/,i,o]}));

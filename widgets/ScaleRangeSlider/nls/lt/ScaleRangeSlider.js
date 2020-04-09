@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Mastelių intervalo slankiklis",noLimit:"Nėra ribų",preview:"Peržiūra",currentScaleTooltip:"Dabartinio žemėlapio mastelis ({scaleLabel})",customScaleInputTooltip:"Įvesti mastelį.",current:"Esamas",setTo:"Nustatyti kaip",selectOne:"(pasirinkti vieną)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Pasaulis",continent:"Žemynas",countriesBig:"Šalys",countriesSmall:"Šalis",statesProvinces:"Valstijos",stateProvince:"Valstija",counties:"Savivaldybės",county:"Savivaldybė",metropolitanArea:"Didmiestis",cities:"Miestai",city:"Miestas",town:"Miestelis",neighborhood:"Apylinkė",streets:"Gatvės",street:"Gatvė",buildings:"Pastatai",building:"Pastatas",smallBuilding:"Mažas pastatas",rooms:"Kambariai",room:"Kambarys"},featuredScaleLabels:{custom:"Pasirinktiniai",current:"Esama žemėlapio peržiūra",world:"Pasaulis",continent:"Žemynas",countriesBig:"Šalys – didelės",countriesSmall:"Šalys – mažos",statesProvinces:"Valstijos / provincijos",stateProvince:"Valstija / provincija",counties:"Savivaldybės",county:"Apskritis",metropolitanArea:"Didmiestis",cities:"Miestai",city:"Miestas",town:"Miestelis",neighborhood:"Apylinkė",streets:"Gatvės",street:"Gatvė",buildings:"Pastatai",building:"Pastatas",smallBuilding:"Mažas pastatas",rooms:"Kambariai",room:"Kambarys"}});

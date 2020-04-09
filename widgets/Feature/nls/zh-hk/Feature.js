@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"圖徽",attach:"附件",fields:"欄位",fieldsSummary:"屬性和值的清單",media:"媒體",next:"下一步",noTitle:"未命名",previous:"上一步",lastEdited:"上次編輯日期為 {date}。",lastCreated:"建立日期為 {date}。",lastEditedByUser:"上次編輯日期為 {date}，由 {user} 執行。",lastCreatedByUser:"由 {user} 在 {date} 建立。"});

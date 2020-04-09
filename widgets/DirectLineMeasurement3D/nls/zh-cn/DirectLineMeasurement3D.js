@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"直线测量",hint:"通过单击场景以放置您的第一个点来开始测量",unsupported:"仅 SceneView 支持 3D 直线测量。",distance:"距离",direct:"直线",horizontal:"水平",vertical:"竖直",unit:"单位",newMeasurement:"新测量",units:{metric:"公制",imperial:"英制",kilometers:"千米",meters:"米",miles:"英里",inches:"英寸",feet:"英尺",yards:"码","nautical-miles":"海里","us-feet":"英尺(US)","degrees-minutes-seconds":"DMS",degrees:"度"}});

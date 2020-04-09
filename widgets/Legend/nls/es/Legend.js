@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Leyenda",points:"Puntos",lines:"Líneas",polygons:"Polígonos",creatingLegend:"Creando leyenda",noLegend:"No hay leyenda",dotValue:"1 punto = {value} {unit}",currentObservations:"Observaciones actuales",previousObservations:"Observaciones anteriores",high:"Alta",low:"Baja",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nudos",esriFeetPerSecond:"pies/s",esriMilesPerHour:"mph",showNormField:"{field} dividido por {normField}",showNormPct:"{field} como porcentaje del total",showRatio:"Proporción entre {field} y {normField}",showRatioPercent:"{field} como porcentaje de {normField}",showRatioPercentTotal:"{field} como porcentaje de {field} y {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rojo",green:"Verde",blue:"Azul"});
+define({widgetLabel:"Leyenda",points:"Puntos",lines:"Líneas",polygons:"Polígonos",creatingLegend:"Creando leyenda",noLegend:"No hay leyenda",dotValue:"1 punto = {value} {unit}",currentObservations:"Observaciones actuales",previousObservations:"Observaciones anteriores",high:"Alta",low:"Baja",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nudos",esriFeetPerSecond:"pies/s",esriMilesPerHour:"mph",showNormField:"{field} dividido por {normField}",showNormPct:"{field} como porcentaje del total",showRatio:"Proporción entre {field} y {normField}",showRatioPercent:"{field} como porcentaje de {normField}",showRatioPercentTotal:"{field} como porcentaje de {field} y {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rojo",green:"Verde",blue:"Azul",clusterCountTitle:"Número de entidades"});

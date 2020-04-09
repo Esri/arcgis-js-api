@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../widgets/support/widget"],function(e,t,n){function o(e){(e=r(e))&&(e.style.display="block")}function r(e){return n.isWidgetBase(e)?e.domNode:e}function i(e){(e=r(e))&&(e.style.display="none")}function l(e){(e=r(e))&&(e.style.display="none"===e.style.display?"block":"none")}function d(e){return"string"==typeof e?document.getElementById(e):e}function s(e){for(;e.hasChildNodes();)e.removeChild(e.firstChild)}function u(e,t){var n=t.parentNode;n&&(n.lastChild===t?n.appendChild(e):n.insertBefore(e,t.nextSibling))}function f(e,t){var n=t.parentNode;n&&n.insertBefore(e,t)}function p(e,t){for(;e.hasChildNodes();)t.appendChild(e.firstChild)}function c(e){e.parentNode&&e.parentNode.removeChild(e)}Object.defineProperty(t,"__esModule",{value:!0}),t.show=o,t.getNode=r,t.hide=i,t.toggle=l,t.byId=d,t.empty=s,t.insertAfter=u,t.insertBefore=f,t.reparent=p,t.remove=c,t.closest=function(){if(Element.prototype.closest)return function(e,t){return e.closest(t)};var e=Element.prototype.matches||Element.prototype.msMatchesSelector;return function(t,n){var o=t;do{if(e.call(o,n))return o;o=o.parentElement}while(null!==o&&1===o.nodeType);return null}}()});
+define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0}),t.byId=function(e){return"string"==typeof e?document.getElementById(e):e},t.empty=function(e){for(;e.hasChildNodes();)e.removeChild(e.firstChild)},t.insertAfter=function(e,t){var n=t.parentNode;n&&(n.lastChild===t?n.appendChild(e):n.insertBefore(e,t.nextSibling))},t.insertBefore=function(e,t){var n=t.parentNode;n&&n.insertBefore(e,t)},t.reparent=function(e,t){for(;e.hasChildNodes();)t.appendChild(e.firstChild)},t.remove=function(e){e.parentNode&&e.parentNode.removeChild(e)},t.closest=function(){if(Element.prototype.closest)return function(e,t){return e.closest(t)};var e=Element.prototype.matches||Element.prototype.msMatchesSelector;return function(t,n){var r=t;do{if(e.call(r,n))return r;r=r.parentElement}while(null!==r&&1===r.nodeType);return null}}()}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Koordinatkonvertering",abbreviatedDirections:{north:"N",south:"S",east:"Ö",west:"V"},addConversion:"Lägg till konvertering",captureMode:"Inspelningsläge",changeCoordinateDisplay:"Ändra visningen av koordinater",convert:"Omvandla",conversionOutputSuffix:"utdata för konvertering",copySuccessMessage:"Koordinat kopierad till Urklipp",defaultPattern:"Återställ till standard",goTo:"Gå till plats",inputCoordTitle:"Indatakoordinat",invalidCoordinate:"Ogiltig koordinat",liveMode:"Live-läge",locationOffBasemap:"Indatakoordinat är utanför baskartans utbredning",noBasemap:"Ingen baskarta.",noLocation:"Inget läge",removeConversion:"Ta bort konvertering",selectFormat:"Välj format",settingsTitle:"Formatinställningar"});

@@ -80,8 +80,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the service.",
-      "format": "uri"
+      "description": "The URL to the service."
     },
     "visibility": {
       "type": "boolean",

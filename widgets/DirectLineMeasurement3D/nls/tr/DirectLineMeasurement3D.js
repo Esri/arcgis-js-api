@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Direkt Çizgi Ölçümü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",unsupported:"3B doğrudan hat ölçümü sadece SceneView’da desteklenir.",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

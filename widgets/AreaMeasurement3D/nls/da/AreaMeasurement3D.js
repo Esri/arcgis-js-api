@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Områdemåling",hint:"Start måling ved at klikke i scenen for at placere det første punkt",unsupported:"3D-områdemåling understøttes kun i SceneView.",perimeterLength:"Omkreds",area:"Område",unit:"Enhed",notApplicable:"i/t",newMeasurement:"Nye målinger",units:{metric:"Metrisk",imperial:"Britiske","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Square miles","square-inches":"Kvadrattommer","square-feet":"Square feet","square-yards":"Square yards","square-us-feet":"Kvadratfod (USA)",acres:"Acres",ares:"Acres",hectares:"Hektarer"}});

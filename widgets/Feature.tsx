@@ -56,20 +56,17 @@ import EsriMap = require("esri/Map");
 
 // esri.core
 import { eventKey } from "esri/core/events";
-import watchUtils = require("esri/core/watchUtils");
+import { throttle } from "esri/core/throttle";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
-
-// esri.layers.support
-import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
 
 // esri.popup
 import { Content as ContentElement } from "esri/popup/content";
 import FieldInfo = require("esri/popup/FieldInfo");
 
 // esri.popup.content
-import AttachmentsContent = require("esri/popup/content/AttachmentsContent");
 import FieldsContent = require("esri/popup/content/FieldsContent");
 import ImageMediaInfo = require("esri/popup/content/ImageMediaInfo");
 import MediaContent = require("esri/popup/content/MediaContent");
@@ -77,6 +74,7 @@ import TextContent = require("esri/popup/content/TextContent");
 
 // esri.popup.content.support
 import ChartMediaInfoValue = require("esri/popup/content/support/ChartMediaInfoValue");
+import ChartMediaInfoValueSeries = require("esri/popup/content/support/ChartMediaInfoValueSeries");
 import { MediaChartInfo, MediaInfo } from "esri/popup/content/support/mediaInfoTypes";
 
 // esri.views
@@ -84,20 +82,18 @@ import MapView = require("esri/views/MapView");
 import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
+import Attachments = require("esri/widgets/Attachments");
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Feature
 import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
 
-// esri.widgets.Feature.support
-import attachmentUtils = require("esri/widgets/Feature/support/attachmentUtils");
-
 // esri.widgets.support
-import { AM4Charts, PieChart, XYChart } from "esri/widgets/support/chartTypes";
+import { AM4Charts, PieChart, XYChart, AM4Tooltip, AM4Core } from "esri/widgets/support/chartTypes";
 import { loadChartsModule } from "esri/widgets/support/chartUtils";
 import { VNode } from "esri/widgets/support/interfaces";
-import uriUtils = require("esri/widgets/support/uriUtils");
-import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
+import * as uriUtils from "esri/widgets/support/uriUtils";
+import { accessibleHandler, isWidget, hasDomNode, renderable, tsx } from "esri/widgets/support/widget";
 import { isRTL } from "esri/widgets/support/widgetUtils";
 
 type ChartOptions = {
@@ -129,12 +125,7 @@ interface MediaInfoMap {
   sourceURL: string;
 }
 
-interface AttachmentInfoOptions {
-  attachmentInfo: AttachmentInfo;
-  attachmentInfoIndex: number;
-  supportsResizeAttachments: boolean;
-  contentElement: AttachmentsContent;
-}
+const RENDER_CHART_THROTTLE_INTERVAL_IN_MS = 100;
 
 const CSS = {
   // common
@@ -160,19 +151,6 @@ const CSS = {
   showMediaPagination: "esri-feature--media-pagination-visible",
   // attachment element
   attachments: "esri-feature__attachments",
-  attachmentsList: "esri-feature__attachments--list",
-  attachmentsPreview: "esri-feature__attachments--preview",
-  attachmentsTitle: "esri-feature__attachments-title",
-  attachmentsItems: "esri-feature__attachments-items",
-  attachmentsItem: "esri-feature__attachments-item",
-  attachmentsItemMask: "esri-feature__attachment-item-mask",
-  attachmentsItemMaskIcon: "esri-feature__attachment-item-mask--icon",
-  attachmentsItemImage: "esri-feature__attachments-image",
-  attachmentsItemImageOverlay: "esri-feature__attachments-image-overlay",
-  attachmentsItemLinkIcon: "esri-feature__attachments-link-icon esri-icon-link-external",
-  attachmentsItemImageResizable: "esri-feature__attachments-image--resizable",
-  attachmentsItemFilename: "esri-feature__attachments-filename",
-  attachmentsItemLink: "esri-feature__attachments-item-link",
   // fields element
   fields: "esri-feature__fields",
   fieldHeader: "esri-feature__field-header",
@@ -203,10 +181,6 @@ const DEFAULT_VISIBLE_ELEMENTS = {
   lastEditedInfo: true
 };
 
-const CHART_TOOLTIP_LABEL_MAX_WIDTH = 200;
-const CHART_RENDERER_MIN_LABEL_POSITION = 0.05;
-const CHART_RENDERER_MAX_LABEL_POSITION = 0.95;
-
 @subclass("esri.widgets.Feature")
 class Feature extends declared(Widget) {
   //--------------------------------------------------------------------------
@@ -228,22 +202,21 @@ class Feature extends declared(Widget) {
   }
 
   postInitialize(): void {
-    this.own(watchUtils.init(this, "viewModel.content", () => this._setupMediaRefreshTimers()));
+    this.own(
+      watchUtils.init(this, "viewModel.content", () => {
+        this._setupMediaRefreshTimers();
+        this._setupAttachmentWidgets();
+      }),
+      watchUtils.init(this, "viewModel.graphic", () => this._disposeCharts())
+    );
   }
 
   destroy(): void {
     this._clearMediaRefreshTimers();
     this._activeMediaMap.clear();
     this._activeMediaMap = null;
-    this._destroyCharts();
-  }
-
-  /**
-   * Disposes of chart instances.
-   * @private
-   */
-  destroyCharts(): Promise<void> {
-    return this._destroyCharts();
+    this._destroyAttachmentWidgets();
+    this._disposeCharts();
   }
 
   //--------------------------------------------------------------------------
@@ -252,7 +225,9 @@ class Feature extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _chartMap: Map<number, XYChart | PieChart> = new Map();
+  private _chartUIds: Map<string, XYChart | PieChart> = new Map();
+
+  private _contentElementCharts: Map<number, XYChart | PieChart> = new Map();
 
   private _activeMediaMap: Map<number, number> = new Map();
 
@@ -260,32 +235,12 @@ class Feature extends declared(Widget) {
 
   private _mediaInfo: Map<number, MediaInfoMap> = new Map();
 
-  private _loadingChartsModule: Promise<void> = null;
+  private _renderChartThrottled = throttle(
+    (options: ChartOptions) => this._renderChart(options),
+    RENDER_CHART_THROTTLE_INTERVAL_IN_MS
+  );
 
-  //--------------------------------------------------------------------------
-  //
-  // Type definitions
-  //
-  //--------------------------------------------------------------------------
-
-  //--------------------------------------------------------------------------
-  //
-  // VisibleElements typedef
-  //
-  //--------------------------------------------------------------------------
-
-  /**
-   * @typedef module:esri/widgets/Feature~VisibleElements
-   *
-   * @property {boolean} [title] - Indicates whether the title associated with the feature displays.
-   * Default value is `true`.
-   * @property {boolean | module:esri/widgets/Feature~VisibleContentElements} [content] - Indicates
-   * whether content for the Feature displays, can also indicate the specific types of content elements
-   * by setting it via {@link module:esri/widgets/Feature~VisibleContentElements}. The default value
-   * is `true`, everything displays.
-   * @property {boolean} [lastEditInfo] - Indicates whether [lastEditInfo](esri-widgets-Feature-FeatureViewModel.html#lastEditInfo) is displayed
-   * within the feature. Default value is `true`.
-   */
+  private _attachmentsWidgets: Attachments[] = [];
 
   //--------------------------------------------------------------------------
   //
@@ -424,6 +379,19 @@ class Feature extends declared(Widget) {
   //----------------------------------
 
   /**
+   * @typedef module:esri/widgets/Feature~VisibleElements
+   *
+   * @property {boolean} [title] - Indicates whether the title associated with the feature displays.
+   * Default value is `true`.
+   * @property {boolean | module:esri/widgets/Feature~VisibleContentElements} [content] - Indicates
+   * whether content for the Feature displays, can also indicate the specific types of content elements
+   * by setting it via {@link module:esri/widgets/Feature~VisibleContentElements}. The default value
+   * is `true`, everything displays.
+   * @property {boolean} [lastEditInfo] - Indicates whether [lastEditInfo](esri-widgets-Feature-FeatureViewModel.html#lastEditInfo) is displayed
+   * within the feature. Default value is `true`.
+   */
+
+  /**
    * The visible elements that are displayed within the widget's [graphic.popupTemplate.content](esri-PopupTemplate.html#content).
    * This property provides the ability to turn individual elements of the widget's display on/off.
    * See the {@link module:esri/PopupTemplate#content PopupTemplate.content} documentation
@@ -433,7 +401,8 @@ class Feature extends declared(Widget) {
    * @instance
    * @type {module:esri/widgets/Feature~VisibleElements}
    * @since 4.11
-   * @autocast { "value": "Object[]" }
+   *
+   * @autocast
    * @see [PopupTemplate.content](esri-PopupTemplate.html#content)
    */
   @property()
@@ -587,15 +556,11 @@ class Feature extends declared(Widget) {
     return `${id}__${featureId}-${argString}`;
   }
 
-  private async _destroyCharts(): Promise<void> {
-    const { _loadingChartsModule } = this;
-
-    if (_loadingChartsModule) {
-      await _loadingChartsModule;
-    }
-
-    this._chartMap.forEach((chart) => chart.dispose());
-    this._chartMap.clear();
+  private async _disposeCharts(): Promise<void> {
+    this._chartUIds.forEach((chart) => chart.dispose());
+    this._chartUIds.clear();
+    this._contentElementCharts.forEach((chart) => chart.dispose());
+    this._contentElementCharts.clear();
   }
 
   private _renderContent(): VNode {
@@ -620,7 +585,7 @@ class Feature extends declared(Widget) {
       );
     }
 
-    if (isWidgetBase(content)) {
+    if (hasDomNode(content)) {
       return (
         <div key={`${contentKey}-dijit`} bind={content.domNode} afterCreate={this._attachToNode} />
       );
@@ -652,7 +617,7 @@ class Feature extends declared(Widget) {
 
     switch (contentElement.type) {
       case "attachments":
-        return this._renderAttachments(contentElement);
+        return this._renderAttachments(contentElementIndex);
       case "fields":
         return this._renderFields(contentElement, contentElementIndex);
       case "media":
@@ -664,87 +629,23 @@ class Feature extends declared(Widget) {
     }
   }
 
-  private _renderAttachmentInfo(options: AttachmentInfoOptions): VNode {
-    const { attachmentInfo, supportsResizeAttachments, contentElement } = options;
-    const { displayType } = contentElement;
-    const { contentType, orientationInfo, name, url } = attachmentInfo;
-    const thumbSize = displayType === "list" ? 48 : 400;
+  private _renderAttachments(contentElementIndex: number): VNode {
+    const attachmentsWidget = this._attachmentsWidgets[contentElementIndex];
 
-    const transform = orientationInfo
-      ? [
-          orientationInfo.rotation ? `rotate(${orientationInfo.rotation}deg)` : "",
-          orientationInfo.mirrored ? "scaleX(-1)" : ""
-        ].join(" ")
-      : "";
+    if (!attachmentsWidget || attachmentsWidget.destroyed) {
+      return null;
+    }
 
-    const imageStyles = transform ? { transform } : {};
+    const { state, attachmentInfos } = attachmentsWidget.viewModel;
+    const displaySection = state === "loading" || attachmentInfos.length > 0;
 
-    const hasSupportedImageFormat =
-      supportsResizeAttachments && attachmentUtils.isSupportedImage(contentType);
-
-    const sep = url.indexOf("?") === -1 ? "?" : "&";
-
-    const thumbnail = hasSupportedImageFormat
-      ? `${url}${sep}w=${thumbSize}`
-      : attachmentUtils.getIconPath(contentType);
-
-    const attachmentsItemMaskClasses = {
-      [CSS.attachmentsItemMaskIcon]: !hasSupportedImageFormat
-    };
-
-    const attachmentsItemImageClasses = {
-      [CSS.attachmentsItemImageResizable]: supportsResizeAttachments
-    };
-
-    return (
-      <li class={CSS.attachmentsItem} key={attachmentInfo}>
-        <a class={CSS.attachmentsItemLink} href={url} rel="noreferrer" target="_blank">
-          <div class={this.classes(attachmentsItemMaskClasses, CSS.attachmentsItemMask)}>
-            <img
-              styles={imageStyles}
-              alt=""
-              class={this.classes(attachmentsItemImageClasses, CSS.attachmentsItemImage)}
-              src={thumbnail}
-            />
-            <span class={CSS.attachmentsItemImageOverlay}>
-              <span aria-hidden="true" class={CSS.attachmentsItemLinkIcon} />
-            </span>
-          </div>
-          <span class={CSS.attachmentsItemFilename}>{name || i18n.noTitle}</span>
-        </a>
-      </li>
-    );
-  }
-
-  private _renderAttachments(contentElement: AttachmentsContent): VNode {
-    const { displayType, attachmentInfos } = contentElement;
-
-    const hasAttachments = attachmentInfos && attachmentInfos.length;
-    const supportsResizeAttachments = this.get<boolean>(
-      "graphic.layer.capabilities.operations.supportsResizeAttachments"
-    );
-
-    const attachmentsClasses = {
-      [CSS.attachmentsList]: displayType !== "preview",
-      [CSS.attachmentsPreview]: displayType === "preview"
-    };
-
-    return hasAttachments ? (
+    return displaySection ? (
       <div
-        key={"attachments-element"}
-        class={this.classes(CSS.attachments, CSS.contentElement, attachmentsClasses)}
+        key={this._buildKey("attachments-element", contentElementIndex)}
+        class={this.classes(CSS.attachments, CSS.contentElement)}
       >
-        <div class={CSS.attachmentsTitle}>{i18n.attach}</div>
-        <ul class={CSS.attachmentsItems}>
-          {attachmentInfos.map((attachmentInfo, attachmentInfoIndex) =>
-            this._renderAttachmentInfo({
-              attachmentInfo,
-              attachmentInfoIndex,
-              supportsResizeAttachments,
-              contentElement
-            })
-          )}
-        </ul>
+        <h2>{i18n.attach}</h2>
+        {attachmentsWidget.render()}
       </div>
     ) : null;
   }
@@ -884,6 +785,37 @@ class Feature extends declared(Widget) {
     this._setRefreshTimeout(contentElementIndex, mediaInfo);
   }
 
+  private _destroyAttachmentWidgets(): void {
+    this._attachmentsWidgets.forEach(
+      (attachmentsWidget) =>
+        attachmentsWidget && !attachmentsWidget.destroyed && attachmentsWidget.destroy()
+    );
+    this._attachmentsWidgets = [];
+  }
+
+  private _setupAttachmentWidgets(): void {
+    this._destroyAttachmentWidgets();
+
+    const content = this.get<ContentElement[]>("viewModel.content");
+
+    if (!Array.isArray(content)) {
+      return;
+    }
+
+    const { attachmentsViewModel } = this.viewModel;
+
+    content.forEach((contentElement, contentElementIndex) => {
+      if (contentElement.type === "attachments") {
+        this._attachmentsWidgets[contentElementIndex] = new Attachments({
+          displayType: contentElement.displayType,
+          viewModel: attachmentsViewModel
+        });
+      }
+    }, this);
+
+    this.scheduleRender();
+  }
+
   private _setupMediaRefreshTimers(): void {
     this._clearMediaRefreshTimers();
 
@@ -967,6 +899,7 @@ class Feature extends declared(Widget) {
           data-content-element-index={contentElementIndex}
           class={CSS.mediaChart}
           afterCreate={this._getChartDependencies}
+          afterRemoved={this._disposeChartByNode}
         />
       );
     }
@@ -977,17 +910,14 @@ class Feature extends declared(Widget) {
     const mediaInfo = chartDiv["data-media-info"] as MediaChartInfo;
     const contentElementIndex = chartDiv["data-content-element-index"] as number;
 
-    const activeChart = this._chartMap.get(contentElementIndex);
-
-    if (activeChart) {
-      activeChart.dispose();
-    }
+    this._disposeChartByNode(chartDiv);
+    this._disposeChartByContgentElementIndex(contentElementIndex);
 
     const value = mediaInfo.value;
     const type = mediaInfo.type;
 
-    this._loadingChartsModule = loadChartsModule().then((amCharts4Index) =>
-      this._renderChart({
+    loadChartsModule().then((amCharts4Index) =>
+      this._renderChartThrottled({
         chartDiv,
         contentElementIndex,
         type,
@@ -995,6 +925,32 @@ class Feature extends declared(Widget) {
         chartsModule: amCharts4Index
       })
     );
+  }
+
+  private _disposeChartByContgentElementIndex(contentElementIndex: number): void {
+    const activeChart = this._contentElementCharts.get(contentElementIndex);
+
+    if (activeChart) {
+      activeChart.dispose();
+    }
+  }
+
+  private _disposeChartByNode(chartDiv: HTMLDivElement): void {
+    const chartUID = chartDiv.getAttribute("data-chart-uid");
+    const activeChart = this._chartUIds.get(chartUID);
+
+    if (activeChart) {
+      activeChart.dispose();
+    }
+  }
+
+  private _customizeChartTooltip(tooltip: AM4Tooltip, am4core: AM4Core): void {
+    tooltip.label.wrap = true;
+    tooltip.label.maxWidth = 200;
+    tooltip.autoTextColor = false;
+    tooltip.getFillFromObject = false;
+    tooltip.label.fill = am4core.color("#ffffff");
+    tooltip.background.fill = am4core.color({ r: 0, g: 0, b: 0, a: 0.7 });
   }
 
   private _createPieChart(options: ChartOptions): PieChart {
@@ -1009,14 +965,23 @@ class Feature extends declared(Widget) {
     series.ticks.template.disabled = true;
     series.dataFields.value = "y";
     series.dataFields.category = "x";
-    series.tooltip.label.wrap = true;
-    series.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
-    series.tooltip.label.rtl = chart.rtl;
+    this._customizeChartTooltip(series.tooltip, am4core);
 
     return chart;
   }
 
+  private _getMinSeriesValue(series: ChartMediaInfoValueSeries[]): number {
+    let min: number = 0;
+
+    series.forEach((entry) => (min = Math.min(entry.x, min)));
+
+    return min;
+  }
+
   private _createXYChart(options: ChartOptions): XYChart {
+    const CHART_RENDERER_MIN_LABEL_POSITION = 0.05;
+    const CHART_RENDERER_MAX_LABEL_POSITION = 0.95;
+
     const { chartDiv, type, value, chartsModule: amCharts4Index } = options;
     const { am4core, am4charts } = amCharts4Index;
 
@@ -1029,9 +994,7 @@ class Feature extends declared(Widget) {
       const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
-      categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
-      categoryAxis.tooltip.label.rtl = chart.rtl;
+      this._customizeChartTooltip(categoryAxis.tooltip, am4core);
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
       // https://amcharts.zendesk.com/hc/en-us/requests/45087
@@ -1043,6 +1006,8 @@ class Feature extends declared(Widget) {
       const label = valueAxis.renderer.labels.template;
       valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
       valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      valueAxis.min = this._getMinSeriesValue(value.series);
+      this._customizeChartTooltip(valueAxis.tooltip, am4core);
       label.wrap = true;
 
       const series = chart.series.push(new am4charts.ColumnSeries());
@@ -1062,9 +1027,7 @@ class Feature extends declared(Widget) {
       categoryAxis.renderer.inversed = true;
       categoryAxis.renderer.labels.template.disabled = true;
 
-      categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
-      categoryAxis.tooltip.label.rtl = chart.rtl;
+      this._customizeChartTooltip(categoryAxis.tooltip, am4core);
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
       // https://amcharts.zendesk.com/hc/en-us/requests/45087
@@ -1076,6 +1039,8 @@ class Feature extends declared(Widget) {
       const label = valueAxis.renderer.labels.template;
       valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
       valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      valueAxis.min = this._getMinSeriesValue(value.series);
+      this._customizeChartTooltip(valueAxis.tooltip, am4core);
       label.wrap = true;
 
       const series = chart.series.push(new am4charts.ColumnSeries());
@@ -1093,9 +1058,7 @@ class Feature extends declared(Widget) {
       const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
       categoryAxis.dataFields.category = "x";
       categoryAxis.renderer.labels.template.disabled = true;
-      categoryAxis.tooltip.label.wrap = true;
-      categoryAxis.tooltip.label.maxWidth = CHART_TOOLTIP_LABEL_MAX_WIDTH;
-      categoryAxis.tooltip.label.rtl = chart.rtl;
+      this._customizeChartTooltip(categoryAxis.tooltip, am4core);
 
       // amcharts: fix to position tooltip within the chart otherwise it will get cutt off
       // https://amcharts.zendesk.com/hc/en-us/requests/45087
@@ -1107,6 +1070,8 @@ class Feature extends declared(Widget) {
       const label = valueAxis.renderer.labels.template;
       valueAxis.renderer.minLabelPosition = CHART_RENDERER_MIN_LABEL_POSITION;
       valueAxis.renderer.maxLabelPosition = CHART_RENDERER_MAX_LABEL_POSITION;
+      valueAxis.min = this._getMinSeriesValue(value.series);
+      this._customizeChartTooltip(valueAxis.tooltip, am4core);
       label.wrap = true;
 
       const series = chart.series.push(new am4charts.LineSeries());
@@ -1124,7 +1089,7 @@ class Feature extends declared(Widget) {
   }
 
   private _renderChart(options: ChartOptions): void {
-    const { contentElementIndex, type, value, chartsModule: amCharts4Index } = options;
+    const { type, contentElementIndex, value, chartsModule: amCharts4Index, chartDiv } = options;
     const { am4core } = amCharts4Index;
 
     am4core.useTheme(amCharts4Index.am4themes_animated);
@@ -1132,12 +1097,14 @@ class Feature extends declared(Widget) {
     const chart =
       type === "pie-chart" ? this._createPieChart(options) : this._createXYChart(options);
 
+    this._chartUIds.set(chart.uid, chart);
+    this._contentElementCharts.set(contentElementIndex, chart);
+    chartDiv.setAttribute("data-chart-uid", chart.uid);
+
     chart.data = value.series.map((entry) => ({
       x: entry.tooltip,
       y: entry.y
     }));
-
-    this._chartMap.set(contentElementIndex, chart);
   }
 
   private _renderMediaInfo(options: {
@@ -1173,14 +1140,14 @@ class Feature extends declared(Widget) {
         key={this._buildKey("media-container", contentElementIndex)}
         class={CSS.mediaItemContainer}
       >
+        {titleNode}
+        {captionNode}
         <div
           key={this._buildKey("media-item-container", contentElementIndex)}
           class={CSS.mediaItem}
         >
           {mediaTypeNode}
         </div>
-        {titleNode}
-        {captionNode}
       </div>
     );
   }
@@ -1309,6 +1276,14 @@ class Feature extends declared(Widget) {
     );
   }
 
+  private _addTargetToAnchors = (element: HTMLDivElement): void => {
+    element.querySelectorAll("a").forEach((anchorEl) => {
+      if (this._shouldOpenInNewTab(anchorEl.href) && !anchorEl.hasAttribute("target")) {
+        anchorEl.setAttribute("target", "_blank");
+      }
+    });
+  };
+
   private _renderText(contentElement: TextContent, contentElementIndex: number): VNode {
     const hasText = contentElement.text;
 
@@ -1316,6 +1291,7 @@ class Feature extends declared(Widget) {
       <div
         key={this._buildKey("text-element", contentElementIndex)}
         innerHTML={contentElement.text}
+        afterCreate={this._addTargetToAnchors}
         class={this.classes(CSS.text, CSS.contentElement)}
       />
     ) : null;

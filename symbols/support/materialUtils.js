@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../Color","../../core/screenUtils","../../core/accessorSupport/ensureType","../../webdoc/support/opacityUtils"],function(r,e,t,n,o,a){function c(r,e){var n=null!=e.transparency?a.transparencyToOpacity(e.transparency):1,o=e.color;return o&&Array.isArray(o)?new t([o[0]||0,o[1]||0,o[2]||0,n]):null}function p(r,e){e.color=r.toJSON().slice(0,3);var t=a.opacityToTransparency(r.a);0!==t&&(e.transparency=t)}Object.defineProperty(e,"__esModule",{value:!0}),e.colorAndTransparencyProperty={type:t,json:{type:[o.Integer],default:null,read:{source:["color","transparency"],reader:c},write:{target:{color:{type:[o.Integer]},transparency:{type:o.Integer}},writer:p}}},e.screenSizeProperty={type:Number,cast:n.toPt,json:{write:!0}},e.stipplePatternProperty={type:[Number],cast:function(r){return null!=r?r:Array.isArray(r)?r.map(n.toPt):null},json:{read:!1,write:!1}}});
+define(["require","exports","../../Color","../../core/screenUtils","../../core/accessorSupport/ensureType","../../webdoc/support/opacityUtils"],(function(r,e,t,n,o,a){Object.defineProperty(e,"__esModule",{value:!0}),e.colorAndTransparencyProperty={type:t,json:{type:[o.Integer],default:null,read:{source:["color","transparency"],reader:function(r,e){var n=null!=e.transparency?a.transparencyToOpacity(e.transparency):1,o=e.color;return o&&Array.isArray(o)?new t([o[0]||0,o[1]||0,o[2]||0,n]):null}},write:{target:{color:{type:[o.Integer]},transparency:{type:o.Integer}},writer:function(r,e){e.color=r.toJSON().slice(0,3);var t=a.opacityToTransparency(r.a);0!==t&&(e.transparency=t)}}}},e.screenSizeProperty={type:Number,cast:n.toPt,json:{write:!0}},e.stipplePatternProperty={type:[Number],cast:function(r){return null!=r?r:Array.isArray(r)?r.map(n.toPt):null},json:{read:!1,write:!1}}}));

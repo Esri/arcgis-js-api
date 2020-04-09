@@ -90,9 +90,11 @@
       }
     }
     .esri-expand__content {
-      .esri-sketch__tool-section {
-        border-left: none;
-        border-right: none;
+      .esri-sketch--vertical {
+        .esri-sketch__tool-section {
+          border-left: none;
+          border-right: none;
+        }
       }
     }
   }

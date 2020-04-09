@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],function(e,r,t,p,o,a,n){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.gamepad=new n,r}return t(r,e),p([a.property({readOnly:!0})],r.prototype,"gamepad",void 0),r=p([a.subclass("esri.views.input.Input")],r)}(a.declared(o))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],(function(e,r,t,p,o,a,n){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.gamepad=new n,r}return t(r,e),p([a.property({readOnly:!0})],r.prototype,"gamepad",void 0),r=p([a.subclass("esri.views.input.Input")],r)}(a.declared(o))}));

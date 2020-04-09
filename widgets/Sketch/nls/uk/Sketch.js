@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Скетч",move:"Перемістити",pan:"Переміщення",reset:"Скинути",reshape:"Змінити форму",rotate:"Повернути",scale:"Масштаб",transform:"Перетворити",undo:"Відмінити",redo:"Повторити",drawPoint:"Намалювати точку",drawPolygon:"Намалювати полігон",drawPolyline:"Намалювати полілінію",drawMultipoint:"Намалювати мультиточковий об'єкт",drawCircle:"Намалювати коло",drawRectangle:"Намалювати прямокутник",clearDrawing:"Очистити малюнок",completeDrawing:"Завершити малювання",pauseDrawing:"Призупинити малювання",resumeDrawing:"Відновити малювання",updateDrawing:"Оновити малюнок",addPointTooltip:"Клацніть, щоб додати точку",removePointTooltip:"Клацніть, щоб видалити цю точку",completePolygonTooltip:"Клацніть цю точку, щоб завершити",startDrawingTooltip:"Клацніть, щоб почати малювання",continueDrawingTooltip:"Клацніть, щоб продовжити малювання",completeDrawingTooltip:"Двічі клацніть, щоб завершити",addMultipointTooltip:"Клацніть, щоб почати додавання точок",finishMultipointTooltip:"Двічі клацніть, щоб завершити",addFreehandTooltip:"Натисніть і утримуйте, щоб почати, і відпустіть, щоб завершити",addShapeTooltip:"Клацніть, щоб додати форму, або натисніть і утримуйте, щоб почати, і відпустіть, щоб завершити",featureCount:"{count} Об’єкт",featuresCount:"{count} Об’єкти",vertexCount:"{count} Вершина",verticesCount:"{count} Вершини",deleteFeature:"Видалити об'єкт",deleteVertex:"Видалити вершину",duplicate:"Дублювати"});

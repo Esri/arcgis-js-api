@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Hüpikaken",zoom:"Suumi",next:"Järgmine objekt",previous:"Eelmine objekt",dock:"Doki",undock:"Doki lahti",pageText:"{index} / {total}",selectedFeature:"Valitud objekt",selectedFeatures:"{total} tulemust",tooManyFields:"Selles kihis on liiga palju välju. Mõnda neist ei kuvata."});
+define({widgetLabel:"Hüpikaken",zoom:"Suumi",next:"Järgmine objekt",previous:"Eelmine objekt",dock:"Doki",undock:"Doki lahti",pageText:"{index} / {total}",selectedFeature:"Valitud objekt",selectedFeatures:"{total} tulemust"});

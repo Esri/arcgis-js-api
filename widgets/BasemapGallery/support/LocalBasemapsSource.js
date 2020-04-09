@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Basemap","../../../core/Accessor","../../../core/Collection","../../../core/accessorSupport/decorators"],function(e,r,t,o,p,s,a,c){var n=a.ofType(p);return function(e){function r(r){var t=e.call(this,r)||this;return t.basemaps=new n,t}return t(r,e),Object.defineProperty(r.prototype,"state",{get:function(){return"ready"},enumerable:!0,configurable:!0}),r.prototype.refresh=function(){},o([c.property({type:n})],r.prototype,"basemaps",void 0),o([c.property({readOnly:!0})],r.prototype,"state",null),r=o([c.subclass("esri.widgets.BasemapGallery.support.LocalBasemapsSource")],r)}(c.declared(s))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Basemap","../../../core/Accessor","../../../core/Collection","../../../core/accessorSupport/decorators"],(function(e,r,t,o,p,s,a,c){var n=a.ofType(p);return function(e){function r(r){var t=e.call(this,r)||this;return t.basemaps=new n,t}return t(r,e),Object.defineProperty(r.prototype,"state",{get:function(){return"ready"},enumerable:!0,configurable:!0}),r.prototype.refresh=function(){},o([c.property({type:n})],r.prototype,"basemaps",void 0),o([c.property({readOnly:!0})],r.prototype,"state",null),r=o([c.subclass("esri.widgets.BasemapGallery.support.LocalBasemapsSource")],r)}(c.declared(s))}));

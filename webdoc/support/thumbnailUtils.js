@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,e){function h(t,e){e=e||i;var h=e.width,r=e.height,n=h/r;return n<d?r=h/d:n>d&&(h=r*d),h>t.width&&(r*=t.width/h,h=t.width),r>t.height&&(h*=t.height/r,r=t.height),{width:Math.round(h),height:Math.round(r)}}Object.defineProperty(e,"__esModule",{value:!0});var i={width:600,height:400},d=1.5;e.getOptimalThumbnailSize=h});
+define(["require","exports"],(function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var h={width:600,height:400};e.getOptimalThumbnailSize=function(t,e){var i=(e=e||h).width,d=e.height,r=i/d;return r<1.5?d=i/1.5:r>1.5&&(i=1.5*d),i>t.width&&(d*=t.width/i,i=t.width),d>t.height&&(i*=t.height/d,d=t.height),{width:Math.round(i),height:Math.round(d)}}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Masukkan catatan di sini",printDisclaimer:"Arah diberikan hanya untuk tujuan perencanaan dan mematuhi <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>ketentuan penggunaan Esri</a>. Kondisi jalan yang dinamis dapat menyebabkan akurasi yang berbeda dengan arah Anda serta harus diperhitungkan juga rambu-rambu dan peraturan hukum. Anda menanggung semua risiko penggunaan.",printoutError:"Sepertinya ada kesalahan."});

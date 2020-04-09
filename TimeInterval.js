@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./core/tsSupport/declareExtendsHelper","./core/tsSupport/decorateHelper","./core/JSONSupport","./core/accessorSupport/decorators","./layers/support/timeUtils"],function(e,t,r,i,o,n,u){return function(e){function t(t){var r=e.call(this,t)||this;return r.value=0,r.unit="milliseconds",r}r(t,e),o=t,t.prototype.toMilliseconds=function(){return this.value*u.millisecondsPerTimeUnit[this.unit]},t.prototype.clone=function(){return new o({value:this.value,unit:this.unit})};var o;return i([n.property({type:Number,json:{write:!0},nonNullable:!0})],t.prototype,"value",void 0),i([n.property({type:u.timeUnitKebabDictionary.apiValues,json:{type:u.timeUnitKebabDictionary.jsonValues,read:u.timeUnitKebabDictionary.read,write:u.timeUnitKebabDictionary.write},nonNullable:!0})],t.prototype,"unit",void 0),t=o=i([n.subclass("esri.TimeInterval")],t)}(n.declared(o.JSONSupport))});
+define(["require","exports","./core/tsSupport/declareExtendsHelper","./core/tsSupport/decorateHelper","./core/JSONSupport","./core/accessorSupport/decorators","./layers/support/timeUtils"],(function(e,t,r,i,o,n,u){return function(e){function t(t){var r=e.call(this,t)||this;return r.value=0,r.unit="milliseconds",r}var o;return r(t,e),o=t,t.prototype.toMilliseconds=function(){return this.value*u.millisecondsPerTimeUnit[this.unit]},t.prototype.clone=function(){return new o({value:this.value,unit:this.unit})},i([n.property({type:Number,json:{write:!0},nonNullable:!0})],t.prototype,"value",void 0),i([n.property({type:u.timeUnitKebabDictionary.apiValues,json:{type:u.timeUnitKebabDictionary.jsonValues,read:u.timeUnitKebabDictionary.read,write:u.timeUnitKebabDictionary.write},nonNullable:!0})],t.prototype,"unit",void 0),t=o=i([n.subclass("esri.TimeInterval")],t)}(n.declared(o.JSONSupport))}));

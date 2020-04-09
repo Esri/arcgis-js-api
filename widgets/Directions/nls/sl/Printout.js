@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Tukaj vnesite opombe",printDisclaimer:"Navodila za pot so namenjena samo za potrebe načrtovanja, za katere veljajo <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>pogoji uporabe podjetja Esri</a>. Na cestah lahko pride do dinamičnih razmer, kar lahko vpliva na pravilnost navodil za pot, pri čemer morate upoštevati tudi znake in pravne omejitve. Vi prevzemate vsa tveganja uporabe.",printoutError:"Zdi se, da je prišlo do napake."});

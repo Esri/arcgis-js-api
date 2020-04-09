@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Вводьте примітки тут",printDisclaimer:"Напрямки надаються лише для цілей планування та згідно з <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Умовами використання Esri</a>. Можуть існувати динамічні дорожні умови, у зв'язку з котрими точність відрізнятиметься від напрямків, та котрі потрібно враховувати разом зі знаками та законодавчими обмеженнями. Ви приймаєте на себе всі ризики використання.",printoutError:"Здається, виникла помилка."});

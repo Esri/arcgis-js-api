@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","./AutoDisposable"],function(e,t,r,o,i,s){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t){var r=e.call(this)||this;return r.material=t.material,r.programRep=t.programRep,r.techniqueRep=t.techniqueRep,r}return r(t,e),t.prototype.isVisible=function(){return this.material.isVisible()},t.prototype.isVisibleInPass=function(e){return this.material.isVisibleInPass(e)},t.prototype.getPrograms=function(){return[this.getProgram()]},t.prototype.getDrawMode=function(){return 4},t.prototype.ensureResources=function(e){return 0},t.prototype.ensureAttributeLocations=function(e){this.getProgram().assertCompatibleVertexAttributeLocations(e)},t=o([i.subclass("esri.views.3d.webgl-engine.lib.GLMaterial")],t)}(i.declared(s.AutoDisposable));t.GLMaterial=n});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","./AutoDisposable"],(function(e,t,r,o,i,n){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(t){var r=e.call(this)||this;return r.material=t.material,r.techniqueRep=t.techniqueRep,r.output=t.output,r}return r(t,e),t.prototype.getTechnique=function(){return this.technique},t.prototype.getPipelineState=function(e,t){return this.getTechnique().pipeline},t.prototype.ensureResources=function(e){return 2},t.prototype.ensureParameters=function(e){},t=o([i.subclass("esri.views.3d.webgl-engine.lib.GLMaterial")],t)}(i.declared(n.AutoDisposable));t.GLMaterial=u}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Konverze souřadnic",abbreviatedDirections:{north:"S",south:"J",east:"V",west:"Z"},addConversion:"Přidat převod",captureMode:"Režim pořizování snímků",changeCoordinateDisplay:"Změnit zobrazení souřadnic",convert:"Převést",conversionOutputSuffix:"výstup převodu",copySuccessMessage:"Souřadnice zkopírována do schránky",defaultPattern:"Obnovit na výchozí",goTo:"Přejít na umístění",inputCoordTitle:"Vstupní souřadnice",invalidCoordinate:"Neplatná souřadnice",liveMode:"Živý režim",locationOffBasemap:"Vstupní souřadnice je mimo rozsah podkladové mapy",noBasemap:"Žádná podkladová mapa.",noLocation:"Žádná pozice",removeConversion:"Odstranit převod",selectFormat:"Výběr formátu",settingsTitle:"Nastavení formátu"});

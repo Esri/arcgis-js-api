@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../../../../core/tsSupport/decorateHelper","../../../../../core/tsSupport/extendsHelper","../../../../../core/tsSupport/generatorHelper","../../../../../core/tsSupport/awaiterHelper","../../../../../core/tsSupport/assignHelper","../../../../../Color","../../../../../core/Handles","../../../../../core/maybe","../../../../../core/libs/gl-matrix-2/mat4","../../../../../core/libs/gl-matrix-2/mat4f64","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","../../../../../support/elevationInfoUtils","../../Manipulator3D","../manipulatorDragUtils","../settings","./config","./Manipulation","./moveUtils","../snapping/SnapToScene","../../../support/stack","../../../webgl-engine/lib/Geometry","../../../webgl-engine/lib/GeometryUtil","../../../webgl-engine/materials/ColorMaterial"],(function(e,t,a,r,i,n,o,l,s,c,p,u,d,f,_,m,h,g,v,S,y,M,b,T,D,w){Object.defineProperty(t,"__esModule",{value:!0});var x=function(e){function t(t){var a=e.call(this)||this;return a._handles=new s,a._snapToScene=new M.SnapToScene,a._discMaterial=a._createMaterial(),a._discMaterialTransparent=a._createMaterial(.5),a._scale=1,a._radius=v.DISC_RADIUS,a._view=t.view,a._tool=t.tool,null!=t.snapToScene&&(a.snapToScene=t.snapToScene),null!=t.radius&&(a._radius=t.radius),a._createManipulator(),a.forEachManipulator((function(e){return a._tool.manipulators.add(e)})),a}return r(t,e),t.prototype.destroy=function(){var e=this;this._handles.destroy(),this.forEachManipulator((function(t){e._tool.manipulators.remove(t),t.destroy()})),this._tool=null,this._view=null,this._manipulator=null},t.prototype.forEachManipulator=function(e){e(this._manipulator,1)},Object.defineProperty(t.prototype,"displayScale",{get:function(){return this._scale},set:function(e){this._scale=e,this._updateManipulatorTransform()},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"snapToScene",{get:function(){return this._snapToScene.enabled},set:function(e){this._snapToScene.enabled=e},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"radius",{get:function(){return this._radius},set:function(e){e!==this._radius&&(this._radius=e,this._updateManipulator())},enumerable:!0,configurable:!0}),t.prototype.createGraphicDragPipeline=function(e,t){var a=this,r=e.graphic,i=_.getGraphicEffectiveElevationInfo(r),n=c.expect(r.geometry).spatialReference;return y.createGraphicMoveDragPipeline(e,t,(function(e){return a.createDragPipeline(e,i,n)}))},t.prototype.createDragPipeline=function(e,t,a){var r=this,i=this._view;return h.createManipulatorDragEventPipeline(this._manipulator,(function(n,o,l,s){var c=o.next(h.dragAtLocation(i,n.elevationAlignedLocation)).next(h.screenToMapXYAtLocation(i,n.elevationAlignedLocation,t,a)).next(r._snapToScene.createDragEventPipelineStep(i,t),r._snapToScene.next).next(h.addScreenDelta());e(n,c,l,s)}))},t.prototype._updateManipulatorTransform=function(){var e=p.mat4.fromScaling(b.sm4d.get(),d.vec3.set(b.sv3d.get(),this.displayScale,this.displayScale,this.displayScale));this._manipulator.modelTransform=e},t.prototype._createManipulator=function(){var e=this._view;this._manipulator=new m.Manipulator3D({view:e,worldSized:!1,autoScaleRenderObjects:!1,focusMultiplier:1,touchMultiplier:1,collisionType:{type:"disc",direction:f.vec3f64.fromValues(0,0,1)},worldOriented:!0}),this._updateManipulator()},t.prototype._updateManipulator=function(){var e=new T(D.createCylinderGeometry(v.DISC_HEIGHT,1,v.GEOMETRY_SEGMENTS,f.vec3f64.fromValues(0,0,1),f.vec3f64.fromValues(0,0,0)),"graphic-transform-disc"),t=p.mat4.fromScaling(u.mat4f64.create(),f.vec3f64.fromValues(this._radius,this._radius,this._radius));this._manipulator.renderObjects=[{geometry:e,material:this._discMaterial,transform:t,stateMask:2},{geometry:e,material:this._discMaterialTransparent,transform:t,stateMask:1}],this._manipulator.radius=v.DISC_COLLISION_RADIUS*(this._radius/v.DISC_RADIUS)},t.prototype._createMaterial=function(e){void 0===e&&(e=1);var t=l.toUnitRGBA(g.colors.main);t[3]*=e;var a=new w({color:t,transparent:1!==e,cullFace:2},"move-xy-disc");return a.renderOccluded=2,a},Object.defineProperty(t.prototype,"test",{get:function(){return{discManipulator:this._manipulator}},enumerable:!0,configurable:!0}),t}(S.Manipulation);t.MoveXYDiscManipulation=x}));

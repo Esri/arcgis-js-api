@@ -166,6 +166,23 @@ class BasemapGallery extends declared(Widget) {
   activeBasemap: Basemap = null;
 
   //----------------------------------
+  //  disabled
+  //----------------------------------
+
+  /**
+   * When `true`, sets the widget to a disabled state so the user cannot interact with it.
+   *
+   * @name disabled
+   * @instance
+   * @type {Boolean}
+   * @default false
+   * @since 4.15
+   */
+  @property()
+  @renderable()
+  disabled: boolean = false;
+
+  //----------------------------------
   //  iconClass
   //----------------------------------
 
@@ -262,7 +279,7 @@ class BasemapGallery extends declared(Widget) {
 
   render(): VNode {
     const sourceLoading = this.get("source.state") === "loading";
-    const isDisabled = this.get("viewModel.state") === "disabled";
+    const isDisabled = this.disabled || this.get("viewModel.state") === "disabled";
     const items = this.get<Collection<BasemapGalleryItem>>("viewModel.items")
       .toArray()
       .map(this._renderBasemapGalleryItem, this);
@@ -315,8 +332,10 @@ class BasemapGallery extends declared(Widget) {
     const title = item.get<string>("basemap.title");
     const snippet = item.get<string>("basemap.portalItem.snippet");
     const tooltip = item.get<string>("error.message") || snippet || title;
-    const tabIndex = item.state === "ready" ? 0 : -1;
-    const isSelected = this.viewModel.basemapEquals(item.basemap, this.activeBasemap);
+    const { viewModel } = this;
+    const selectable = !this.disabled && viewModel.state === "ready" && item.state === "ready";
+    const tabIndex = selectable ? 0 : -1;
+    const isSelected = viewModel.basemapEquals(item.basemap, this.activeBasemap);
 
     const itemClasses = {
       [CSS.selectedItem]: isSelected,

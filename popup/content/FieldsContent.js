@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","../FieldInfo","./Content"],function(e,r,t,o,n,i,p,l){return function(e){function r(r){var t=e.call(this,r)||this;return t.fieldInfos=null,t.type="fields",t}t(r,e),l=r,r.prototype.writeFieldInfos=function(e,r){r.fieldInfos=e&&e.map(function(e){return e.toJSON()})},r.prototype.clone=function(){return new l({fieldInfos:Array.isArray(this.fieldInfos)?n.clone(this.fieldInfos):null})};var l;return o([i.property({type:[p]})],r.prototype,"fieldInfos",void 0),o([i.writer("fieldInfos")],r.prototype,"writeFieldInfos",null),o([i.property({type:["fields"],readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=l=o([i.subclass("esri.popup.content.FieldsContent")],r)}(i.declared(l))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","../FieldInfo","./Content"],(function(e,r,t,o,n,i,p,l){return function(e){function r(r){var t=e.call(this,r)||this;return t.fieldInfos=null,t.type="fields",t}var l;return t(r,e),l=r,r.prototype.writeFieldInfos=function(e,r){r.fieldInfos=e&&e.map((function(e){return e.toJSON()}))},r.prototype.clone=function(){return new l({fieldInfos:Array.isArray(this.fieldInfos)?n.clone(this.fieldInfos):null})},o([i.property({type:[p]})],r.prototype,"fieldInfos",void 0),o([i.writer("fieldInfos")],r.prototype,"writeFieldInfos",null),o([i.property({type:["fields"],readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=l=o([i.subclass("esri.popup.content.FieldsContent")],r)}(i.declared(l))}));

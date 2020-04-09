@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,e){function a(t,e,a){var r=t.safeWidth,n=t.width,l=t.pixelData,h=t.noDataValue,o=i(t.dy*(t.y1-a),0,r),u=i(t.dx*(e-t.x0),0,r),d=Math.floor(o),f=Math.floor(u),s=d*n+f,p=s+n,D=l[s],v=l[p],x=l[s+1],c=l[p+1];if(D!==h&&v!==h&&x!==h&&c!==h){var w=o-d,y=u-f,m=D+(x-D)*y;return m+(v+(c-v)*y-m)*w}}function i(t,e,a){return t<e?e:t>a?a:t}Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){if(this.tile=t,!e)return void(this.samplerData=null);var a=this.tile.extent;this.samplerData={pixelData:e.values,width:e.width,height:e.height,safeWidth:.99999999*(e.width-1),noDataValue:e.noDataValue,dx:(e.width-1)/(a[2]-a[0]),dy:(e.width-1)/(a[3]-a[1]),x0:a[0],y1:a[3]}}return t.prototype.sample=function(t,e){if(this.samplerData)return a(this.samplerData,t,e)},t}();e.ElevationTile=r,e.default=r});
+define(["require","exports"],(function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function t(t,e){if(this.tile=t,e){var a=this.tile.extent;this.samplerData={pixelData:e.values,width:e.width,height:e.height,safeWidth:.99999999*(e.width-1),noDataValue:e.noDataValue,dx:(e.width-1)/(a[2]-a[0]),dy:(e.width-1)/(a[3]-a[1]),x0:a[0],y1:a[3]}}else this.samplerData=null}return t.prototype.sample=function(t,e){if(this.samplerData)return function(t,e,a){var r=t.safeWidth,n=t.width,l=t.pixelData,h=t.noDataValue,u=i(t.dy*(t.y1-a),0,r),o=i(t.dx*(e-t.x0),0,r),s=Math.floor(u),d=Math.floor(o),f=s*n+d,p=f+n,D=l[f],x=l[p],c=l[f+1],v=l[p+1];if(D!==h&&x!==h&&c!==h&&v!==h){var w=o-d,y=D+(c-D)*w;return y+(x+(v-x)*w-y)*(u-s)}return}(this.samplerData,t,e)},t}();function i(t,e,a){return t<e?e:t>a?a:t}e.ElevationTile=a,e.default=a}));

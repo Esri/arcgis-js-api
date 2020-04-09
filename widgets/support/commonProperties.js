@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/unitUtils"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.defaultUnitPropertyMetadata={dependsOn:["view.map.portalItem.portal.units","view.map.portalItem.portal.user.units","view.spatialReference"],readOnly:!0,get:function(){var e=this.view;if(!e)return"metric";var t=e.get("map.portalItem.portal");if(t){switch(t.get("user.units")||t.units){case"metric":return"metric";case"english":return"imperial"}}return r.getDefaultUnitSystem(e.spatialReference)||"metric"}}});
+define(["require","exports","../../core/unitUtils"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.defaultUnitPropertyMetadata={dependsOn:["view.map.portalItem?.portal.units","view.map.portalItem?.portal.user.units","view.spatialReference"],readOnly:!0,get:function(){var e=this.view;if(!e)return"metric";var t=e.get("map.portalItem.portal");if(t)switch(t.get("user.units")||t.units){case"metric":return"metric";case"english":return"imperial"}return r.getDefaultUnitSystem(e.spatialReference)||"metric"}}}));

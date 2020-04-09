@@ -69,7 +69,20 @@
         {
           "properties": {
             "definitionExpression": {},
-            "drawingInfo": {}
+            "drawingInfo": {
+              "allOf": [
+                {
+                  "$ref": "drawingInfo_schema.json"
+                },
+                {
+                  "properties": {
+                    "renderer": {},
+                    "transparency": {}
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
           },
           "additionalProperties": false
         }
@@ -171,8 +184,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the layer.",
-      "format": "uri"
+      "description": "The URL to the layer."
     },
     "visibility": {
       "type": "boolean",

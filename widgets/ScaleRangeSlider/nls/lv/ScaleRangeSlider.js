@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Mērogu diapazona slīdnis",noLimit:"Bez ierobežojuma",preview:"Priekšskatījums",currentScaleTooltip:"Pašreizējais kartes mērogs ({scaleLabel})",customScaleInputTooltip:"Ierakstiet mērogā.",current:"Pašreizējs",setTo:"Iestatīt",selectOne:"(izvēlieties vienu)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Pasaule",continent:"Kontinents",countriesBig:"Valstis",countriesSmall:"Valsts",statesProvinces:"Štati",stateProvince:"Štats",counties:"Apgabali",county:"Apgabals",metropolitanArea:"Lielpilsētas teritorija",cities:"Pilsētas",city:"Pilsēta",town:"Mazpilsēta",neighborhood:"Apkaime",streets:"Ielas",street:"Iela",buildings:"Ēkas",building:"Ēka",smallBuilding:"Neliela ēka",rooms:"Telpas",room:"Telpa"},featuredScaleLabels:{custom:"Pielāgots",current:"Pašreizējās kartes skats",world:"Pasaule",continent:"Kontinents",countriesBig:"Valstis — lielas",countriesSmall:"Valstis — mazas",statesProvinces:"Novadi/reģioni",stateProvince:"Valsts/reģions",counties:"Novadi",county:"Novads",metropolitanArea:"Lielpilsētas teritorija",cities:"Pilsētas",city:"Lielpilsēta",town:"Mazpilsēta",neighborhood:"Apkaime",streets:"Ielas",street:"Iela",buildings:"Ēkas",building:"Ēka",smallBuilding:"Neliela ēka",rooms:"Telpas",room:"Telpa"}});

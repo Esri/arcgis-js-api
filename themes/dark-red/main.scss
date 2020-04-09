@@ -16,6 +16,7 @@ $heading-color: $font-color;
 
 $button-color: $Calcite_Vibrant_Red_150;
 $button-color--inverse: $background-color;
+$button-color--bright: $font-color;
 
 // Inverse
 $interactive-font-color--inverse: $interactive-font-color;
@@ -23,5 +24,8 @@ $interactive-font-color--inverse: $interactive-font-color;
 // Selected
 $border-color--active: $interactive-font-color;
 $background-color--active: #000000;
+
+// Error
+$font-color--error: #eb7953;
 
 @import "../base/core";

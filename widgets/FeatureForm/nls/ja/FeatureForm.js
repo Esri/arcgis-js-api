@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"フィーチャ フォーム",empty:"- 空です -",validationErrors:{cannotBeNull:"値を入力してください。",outsideRange:"値は {min} ～ {max} である必要があります",invalidCodedValue:"値は、リストされた値の 1 つである必要があります 。",invalidType:"有効な値ではありません"}});

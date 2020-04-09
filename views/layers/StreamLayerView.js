@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Handles","../../core/watchUtils","../../core/accessorSupport/decorators","./support/FeatureFilter"],function(e,r,o,t,n,c,i,a){Object.defineProperty(r,"__esModule",{value:!0}),r.StreamLayerView=function(e){return function(e){function r(){for(var r=[],o=0;o<arguments.length;o++)r[o]=arguments[o];var t=e.apply(this,r)||this;return t._handles=new n,t.connectionError=null,t.connectionStatus="disconnected",t.filter=null,t._handles.add(c.on(t,"controller","data-received",function(e){t.emit("data-received",e)})),t}return o(r,e),t([i.property({aliasOf:"controller.connection.connectionError",readOnly:!0})],r.prototype,"connectionError",void 0),t([i.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],r.prototype,"connectionStatus",void 0),t([i.property()],r.prototype,"controller",void 0),t([i.property({type:a})],r.prototype,"filter",void 0),r=t([i.subclass("esri.layers.mixins.StreamLayerView")],r)}(i.declared(e))}});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./support/FeatureFilter"],(function(e,r,t,o,n,c){Object.defineProperty(r,"__esModule",{value:!0}),r.StreamLayerView=function(e){return function(e){function r(){for(var r=[],t=0;t<arguments.length;t++)r[t]=arguments[t];var o=e.apply(this,r)||this;return o.connectionError=null,o.connectionStatus="disconnected",o.filter=null,o}return t(r,e),o([n.property({readOnly:!0})],r.prototype,"connectionError",void 0),o([n.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],r.prototype,"connectionStatus",void 0),o([n.property({type:c})],r.prototype,"filter",void 0),r=o([n.subclass("esri.layers.mixins.StreamLayerView")],r)}(n.declared(e))}}));

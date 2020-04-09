@@ -23,6 +23,6 @@ varying mediump vec2 v_tileTextureCoord;
 #endif
 
 #ifdef DOT_DENSITY
-varying vec2 v_dotTextureCoords;
-varying vec4 v_dotThresholds[ 2 ];
+varying highp vec2 v_dotTextureCoords;
+varying highp vec4 v_dotThresholds[ 2 ];
 #endif

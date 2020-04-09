@@ -33,7 +33,7 @@ import * as i18n from "dojo/i18n!esri/widgets/HistogramRangeSlider/nls/Histogram
 import Color = require("esri/Color");
 
 // esri.core
-import watchUtils = require("esri/core/watchUtils");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -191,8 +191,10 @@ class HistogramRangeSlider extends declared(Widget) {
     this._slider = new Slider({
       labelFormatFunction: this.labelFormatFunction,
       layout: "horizontal",
-      labelsVisible: true,
-      rangeLabelsVisible: true,
+      visibleElements: {
+        labels: true,
+        rangeLabels: true
+      },
       rangeLabelInputsEnabled: !hasTimeData,
       viewModel
     });

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./dom","./h","./projector","./cache","./mapping"],function(e,r,c,a,o,t,p){Object.defineProperty(r,"__esModule",{value:!0}),r.dom=c.dom,r.h=a.h,r.createProjector=o.createProjector,r.createCache=t.createCache,r.createMapping=p.createMapping});
+define(["require","exports","./dom","./h","./projector","./cache","./mapping"],(function(e,r,c,a,o,t,p){Object.defineProperty(r,"__esModule",{value:!0}),r.dom=c.dom,r.h=a.h,r.createProjector=o.createProjector,r.createCache=t.createCache,r.createMapping=p.createMapping}));

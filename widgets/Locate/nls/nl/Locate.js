@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Zoom naar",title:"Mijn locatie vinden",currentLocation:"Huidige locatie",timestamp:"Tijdstempel",latitude:"Breedte",longitude:"Lengte",accuracy:"Nauwkeurigheid",altitude:"Hoogte",altitudeAccuracy:"Nauwkeurigheid van de hoogte",heading:"Koptekst",speed:"Snelheid"});

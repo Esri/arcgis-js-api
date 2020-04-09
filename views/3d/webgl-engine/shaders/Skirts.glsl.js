@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/makeTemplateObjectHelper","../core/shaderModules/interfaces"],function(e,n,v,t){function c(e){e.vertex.code.add(t.glsl(r||(r=v(['\n    vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal, float skirtScale) {\n      float skirtLength = 0.0;\n\n      if (uv.x >= 2.0) {\n        skirtLength = uv.y * skirtScale;\n        // decode original uv-coordinates (see "encodeSkirtPos")\n        vec2 x = vec2(uv.x) - vec2(3.5, 4.5);\n        uv = clamp(vec2(1.5) - abs(x), vec2(0.0), vec2(1.0));\n      }\n\n      return vpos - vnormal * skirtLength;\n    }\n    '],['\n    vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal, float skirtScale) {\n      float skirtLength = 0.0;\n\n      if (uv.x >= 2.0) {\n        skirtLength = uv.y * skirtScale;\n        // decode original uv-coordinates (see "encodeSkirtPos")\n        vec2 x = vec2(uv.x) - vec2(3.5, 4.5);\n        uv = clamp(vec2(1.5) - abs(x), vec2(0.0), vec2(1.0));\n      }\n\n      return vpos - vnormal * skirtLength;\n    }\n    ']))))}Object.defineProperty(n,"__esModule",{value:!0}),n.Skirts=c;var r});
+define(["require","exports","../../../../core/tsSupport/makeTemplateObjectHelper","../core/shaderModules/interfaces"],(function(e,n,v,t){var c;Object.defineProperty(n,"__esModule",{value:!0}),n.Skirts=function(e){e.vertex.code.add(t.glsl(c||(c=v(['\n    vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal, float skirtScale) {\n      float skirtLength = 0.0;\n\n      if (uv.x >= 2.0) {\n        skirtLength = uv.y * skirtScale;\n        // decode original uv-coordinates (see "encodeSkirtPos")\n        vec2 x = vec2(uv.x) - vec2(3.5, 4.5);\n        uv = clamp(vec2(1.5) - abs(x), vec2(0.0), vec2(1.0));\n      }\n\n      return vpos - vnormal * skirtLength;\n    }\n    '],['\n    vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal, float skirtScale) {\n      float skirtLength = 0.0;\n\n      if (uv.x >= 2.0) {\n        skirtLength = uv.y * skirtScale;\n        // decode original uv-coordinates (see "encodeSkirtPos")\n        vec2 x = vec2(uv.x) - vec2(3.5, 4.5);\n        uv = clamp(vec2(1.5) - abs(x), vec2(0.0), vec2(1.0));\n      }\n\n      return vpos - vnormal * skirtLength;\n    }\n    ']))))}}));

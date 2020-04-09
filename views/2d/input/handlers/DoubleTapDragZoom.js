@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/compilerUtils","../../../input/InputHandler"],function(e,t,a,r,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t,a,r){var i=e.call(this,!0)||this;return i.view=t,i.pointerType=a,i.registerIncoming("double-tap-drag",r,function(e){return i._handleDoubleTapDrag(e)}),i}return a(t,e),t.prototype._handleDoubleTapDrag=function(e){var t=e.data;if(t.pointerType===this.pointerType){e.stopPropagation();var a=t.action,i=t.delta,n=this.view,o=n.mapViewNavigation;switch(a){case"begin":var s=n.scale;this._startScale=s,this._currentScale=s,this._previousDelta=i,o.begin();break;case"update":if(this._previousDelta.y===i.y)return;this._previousDelta=i;var c=Math.pow(1.015,i.y),p=this._startScale*c,l=p/this._currentScale;o.setViewpointImmediate(l),this._currentScale=p;break;case"end":var u=n.constraints,h=u.effectiveLODs;if(!u.snapToZoom||!h)return void o.end();var d=u.snapScale(this._currentScale),v=i.y>0?Math.max(d,u.snapToPreviousScale(this._startScale)):Math.min(d,u.snapToNextScale(this._startScale)),_=v/this._currentScale;o.zoom(_);break;default:r.neverReached(a)}}},t}(i.InputHandler);t.DoubleTapDragZoom=n});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/compilerUtils","../../../input/InputHandler"],(function(e,t,a,r,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t,a,r){var i=e.call(this,!0)||this;return i.view=t,i.pointerType=a,i.registerIncoming("double-tap-drag",r,(function(e){return i._handleDoubleTapDrag(e)})),i}return a(t,e),t.prototype._handleDoubleTapDrag=function(e){var t=e.data;if(t.pointerType===this.pointerType){e.stopPropagation();var a=t.action,i=t.delta,n=this.view,o=n.mapViewNavigation;switch(a){case"begin":var s=n.scale;this._startScale=s,this._currentScale=s,this._previousDelta=i,o.begin();break;case"update":if(this._previousDelta.y===i.y)return;this._previousDelta=i;var c=Math.pow(1.015,i.y),p=this._startScale*c,l=p/this._currentScale;o.setViewpointImmediate(l),this._currentScale=p;break;case"end":var u=n.constraints,h=u.effectiveLODs;if(!u.snapToZoom||!h)return void o.end();var d=u.snapScale(this._currentScale),v=(i.y>0?Math.max(d,u.snapToPreviousScale(this._startScale)):Math.min(d,u.snapToNextScale(this._startScale)))/this._currentScale;o.zoom(v);break;default:r.neverReached(a)}}},t}(i.InputHandler);t.DoubleTapDragZoom=n}));

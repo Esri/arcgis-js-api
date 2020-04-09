@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","./predominance"],function(e,r,n,t,o){function u(e){return t(this,void 0,void 0,function(){var r,t,u;return n(this,function(n){return r=e.renderer,t=e.layer,u=r.authoringInfo&&r.authoringInfo.type,"unique-value"===r.type&&"predominance"===u?[2,o.getTemplates({renderer:r,layer:t})]:[2,null]})})}Object.defineProperty(r,"__esModule",{value:!0}),r.getTemplates=u});
+define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","./classBreaks","./heatmap","./predominance","./simple","./uniqueValues"],(function(e,r,t,a,n,p,l,s,u){Object.defineProperty(r,"__esModule",{value:!0}),r.getTemplates=function(e){return a(this,void 0,void 0,(function(){var r,a;return t(this,(function(t){return r=e.renderer,a=e.layer,"simple"===r.type?[2,s.getTemplates({renderer:r,layer:a})]:"class-breaks"===r.type?[2,n.getTemplates({renderer:r,layer:a})]:"heatmap"===r.type?[2,p.getTemplates({renderer:r,layer:a})]:"unique-value"===r.type?"predominance"===(r.authoringInfo&&r.authoringInfo.type)?[2,l.getTemplates({renderer:r,layer:a})]:[2,u.getTemplates({renderer:r,layer:a})]:[2,null]}))}))}}));

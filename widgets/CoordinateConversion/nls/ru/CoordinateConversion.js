@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Преобразование координат",abbreviatedDirections:{north:"С",south:"Ю",east:"В",west:"З"},addConversion:"Добавить конвертацию",captureMode:"Режим захвата",changeCoordinateDisplay:"Изменить отображение координат",convert:"Конвертировать",conversionOutputSuffix:"результат конвертирования",copySuccessMessage:"Координаты скопированы в буфер обмена",defaultPattern:"Вернуть установки по умолчанию",goTo:"Перейти к местоположению",inputCoordTitle:"Входные координаты",invalidCoordinate:"Недопустимые координаты",liveMode:"Режим реального времени",locationOffBasemap:"Входные координаты находятся за пределами экстента базовой карты",noBasemap:"Нет базовой карты.",noLocation:"Нет местоположения",removeConversion:"Удалить конвертацию",selectFormat:"Выбрать формат",settingsTitle:"Настройки формата"});

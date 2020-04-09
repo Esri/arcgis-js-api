@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"המרת קואורדינטות",abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"הוסף המרה",captureMode:"מצב לכידה",changeCoordinateDisplay:"שנה תצוגת קואורדינטות",convert:"המר",conversionOutputSuffix:"פלט המרה",copySuccessMessage:"הקואורדינטה הועתקה ללוח",defaultPattern:"אפס לברירת המחדל",goTo:"עבור למיקום",inputCoordTitle:"הזן קואורדינטה",invalidCoordinate:"קורדיאנטה לא חוקית",liveMode:"מצב זמן אמת",locationOffBasemap:"הקואורדינטה שהוזנה נמצאת מחוץ לתחום של מפת הבסיס",noBasemap:"אין מפת בסיס.",noLocation:"אין מיקום",removeConversion:"הסר המרה",selectFormat:"בחר פורמט",settingsTitle:"הגדרות פורמט"});

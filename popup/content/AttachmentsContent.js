@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","../../layers/support/AttachmentInfo","./Content"],function(t,e,r,n,o,p,a,s){return function(t){function e(e){var r=t.call(this,e)||this;return r.attachmentInfos=null,r.displayType=null,r.type="attachments",r}r(e,t),s=e,e.prototype.clone=function(){return new s({displayType:this.displayType,attachmentInfos:this.attachmentInfos?o.clone(this.attachmentInfos):null})};var s;return n([p.property({type:[a]})],e.prototype,"attachmentInfos",void 0),n([p.property({type:["preview","list"],json:{write:!0}})],e.prototype,"displayType",void 0),n([p.property({type:["attachments"],readOnly:!0,json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=s=n([p.subclass("esri.popup.content.AttachmentsContent")],e)}(p.declared(s))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Content"],(function(e,t,r,p,o,n){return function(e){function t(t){var r=e.call(this,t)||this;return r.displayType=null,r.type="attachments",r}var n;return r(t,e),n=t,t.prototype.clone=function(){return new n({displayType:this.displayType})},p([o.property({type:["preview","list"],json:{write:!0}})],t.prototype,"displayType",void 0),p([o.property({type:["attachments"],readOnly:!0,json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=n=p([o.subclass("esri.popup.content.AttachmentsContent")],t)}(o.declared(n))}));

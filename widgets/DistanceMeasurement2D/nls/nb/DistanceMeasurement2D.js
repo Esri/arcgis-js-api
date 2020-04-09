@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Avstandsmåling",hint:"Klikk i kartet for å plassere det første punktet for målingen.",unsupported:"2D-avstandsmåling støttes bare i MapView.",distance:"Avstand",newMeasurement:"Ny måling",mode:"Modus",modes:{auto:"Auto",planar:"Plant",geodesic:"Geodetisk"},unit:"Enhet",units:{metric:"Metrisk",imperial:"Britiske målenheter",kilometers:"Kilometer",meters:"Meter",miles:"Miles",inches:"Tommer",feet:"Fot",yards:"Yard","nautical-miles":"Nautiske mil","us-feet":"fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

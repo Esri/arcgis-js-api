@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/accessorSupport/decorators"],function(e,r,t,o,p,n){return function(e){function r(r){var t=e.call(this,r)||this;return t.name=null,t.title=null,t.expression=null,t.returnType=null,t}t(r,e),p=r,r.prototype.clone=function(){return new p({name:this.name,title:this.title,expression:this.expression,returnType:this.returnType})};var p;return o([n.property({type:String,json:{write:!0}})],r.prototype,"name",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"title",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"expression",void 0),o([n.property({type:["string","number"],json:{write:!0}})],r.prototype,"returnType",void 0),r=p=o([n.subclass("esri.popup.ExpressionInfo")],r)}(n.declared(p.JSONSupport))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/accessorSupport/decorators"],(function(e,r,t,o,p,n){return function(e){function r(r){var t=e.call(this,r)||this;return t.name=null,t.title=null,t.expression=null,t.returnType=null,t}var p;return t(r,e),p=r,r.prototype.clone=function(){return new p({name:this.name,title:this.title,expression:this.expression,returnType:this.returnType})},o([n.property({type:String,json:{write:!0}})],r.prototype,"name",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"title",void 0),o([n.property({type:String,json:{write:!0}})],r.prototype,"expression",void 0),o([n.property({type:["string","number"],json:{write:!0}})],r.prototype,"returnType",void 0),r=p=o([n.subclass("esri.popup.ExpressionInfo")],r)}(n.declared(p.JSONSupport))}));

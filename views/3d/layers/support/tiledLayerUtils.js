@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","dojo/request/xhr","../../../../core/Error","../../../../core/promiseUtils","../../../../layers/support/arcgisLayerUrl"],function(e,r,i,o,s,t){function n(e){if(!t.isHostedAgolService(e.url)){if(e.version<10.22){var r=new o("layerview:service-version-too-old","Tiled Map Layers on servers prior to 10.2.2 are not supported. Detected version: "+e.version,{minVersion:10.22,detectedVersion:e.version});return s.reject(r)}if(10.22===e.version&&!t.isHostedSecuredProxyService(e.url,e.get("portalItem.id"))){var n=c(e.url),l={headers:{"X-Requested-With":null},timeout:1e4,handleAs:"json"},u=new o("tiledlayerview3d:service-missing-cors-patch","Tiled Map Layers from 10.2.2 servers are only supported if all server updates have been applied.");return i(n+"self?f=json",l).then(function(e){if(!e||e.error)throw u}).catch(function(){throw u})}return s.resolve()}}function c(e){var r=null,i=e.search(/\/rest\/services\//i);return i>0&&(r=e.substring(0,i+6)),r}function l(e){if(e)throw e}Object.defineProperty(r,"__esModule",{value:!0}),r.checkArcGISServiceVersionCompatibility=n,r.throwIfError=l});
+define(["require","exports","../../../../core/Error","../../../../core/Logger","../../../../core/promiseUtils","../../../../layers/support/arcgisLayerUrl"],(function(e,r,o,i,s,t){Object.defineProperty(r,"__esModule",{value:!0});var n=i.getLogger("esri.views.3d.layers.support.tiledLayerUtils");r.checkArcGISServiceVersionCompatibility=function(e){if(!t.isHostedAgolService(e.url)){if(e.version<10.22){var r=new o("layerview:service-version-too-old","Tiled Map Layers on servers prior to 10.2.2 are not supported. Detected version: "+e.version,{minVersion:10.22,detectedVersion:e.version});return s.reject(r)}return 10.22!==e.version||t.isHostedSecuredProxyService(e.url,e.get("portalItem.id"))||n.warnOnce("ArcGIS server version 10.2.2 needs the following patch installed in order for map layers to work properly: https://support.esri.com/en/download/2146"),s.resolve()}}}));

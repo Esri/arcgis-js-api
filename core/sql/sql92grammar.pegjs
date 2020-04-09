@@ -238,7 +238,14 @@ primary
 
 column_ref
   = col:column {
-      return {
+      return /^CURRENT_DATE$/i.test(col) ? {
+        type  : "current_time",
+        mode  : "date"
+      } :
+      /^CURRENT_TIMESTAMP$/i.test(col) ? {
+        type  : "current_time",
+        mode  : "timestamp"
+      } : {
         type  : "column_ref",
         table : "",
         column: col

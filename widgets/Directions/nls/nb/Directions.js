@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Anvisninger",advancedOptions:"Avanserte alternativer",disclaimer:"Bruk underlagt {esriTerms}.",esriTerms:"Esris bruksvilkår",travelMode:"Reisemåte",viewActive:"Et klikk i kartet legger til et stopp",showStop:"Vis dette stoppet",addStopTitle:"Legg til nytt stopp",addStop:"Legge til stopp",removeStop:"Fjern stopp",reverseStops:"Vend stopp",dndHandle:"Dra for å endre besøksrekkefølge",serviceTime:"Servicetid",serviceDistance:"Serviceavstand",leaveNow:"Avreise nå",departBy:"Avreise innen",departureTime:"Avreisetid",zoomToRoute:"Zoom til rute",printDescription:"Skriv ut veibeskrivelser",gmt:"GMT",stop:"Stopp",stopLabelTemplate:"Stopp {number} ({label})",unlocated:"Ikke plassert",searchFieldPlaceholder:"Søk eller klikk på kartet",viewlessSearchFieldPlaceholder:"Søk",directionsPlaceholder:"Ruten vises her.",etaTemplate:"{time} {gmt}",eta:"Beregnet ankomsttid",distanceTemplate:"{distance} {units}",cumulativeCosts:"Akkumulerte kostnader",intermediateCosts:"Mellomliggende kostnader",optimizeRoute:"Optimaliser rute",optimizingRoute:"Optimaliserer rute",clearRoute:"Fjern rute",signInRequired:"Pålogging kreves",time:{min:"min",hr:"t"},units:{kilometers:{name:"kilometer",abbr:"km"},meters:{name:"meter",abbr:"m"},miles:{name:"mile(s)",abbr:"mil"},feet:{name:"fot",abbr:"ft"},yards:{name:"yard",abbr:"yd"},nauticalMiles:{name:"nautisk(e) mil",abbr:"nm"}},traffic:{average:"typisk",none:"Ingen trafikkinfo",heavy:"Mye trafikk",light:"Lett trafikk"},errors:{unableToLoadServiceMetadata:"Kan ikke laste inn rutetjeneste. Det kan skyldes at tjenesten ikke er tilgjengelig.",unableToRoute:"Kan ikke opprette rute mellom stoppene.",unknownError:"Det virker som det har oppstått en feil."}});

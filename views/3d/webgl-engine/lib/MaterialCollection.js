@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,i){return function(){function t(t){this.materials={},this.stage=t}return t.prototype.getMaterial=function(t){return this.materials[t]},t.prototype.addMaterial=function(t,i){this.materials[t]=i,this.stage.add(3,i)},t.prototype.dispose=function(){for(var t in this.materials)this.stage.remove(3,this.materials[t].id);this.materials={}},t}()});
+define(["require","exports"],(function(t,i){return function(){function t(t){this.materials={},this.stage=t}return t.prototype.getMaterial=function(t){return this.materials[t]},t.prototype.addMaterial=function(t,i){this.materials[t]=i,this.stage.add(3,i)},t.prototype.dispose=function(){for(var t in this.materials)this.stage.remove(3,this.materials[t].id);this.materials={}},t}()}));

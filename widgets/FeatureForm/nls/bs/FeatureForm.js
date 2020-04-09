@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Oblik geoobjekta",empty:"- prazno -",validationErrors:{cannotBeNull:"Unesite vrijednost",outsideRange:"Vrijednost bi trebala biti između {min} i {max}",invalidCodedValue:"Vrijednost bi trebala biti jedna od navedenih vrijednosti.",invalidType:"Nije važeća vrijednost"}});

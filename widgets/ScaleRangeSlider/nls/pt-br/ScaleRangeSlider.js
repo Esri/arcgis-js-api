@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Controle Deslizante de Intervalo da Escala",noLimit:"Nenhum Limite",preview:"Visualizar",currentScaleTooltip:"Escala de mapa atual ({scaleLabel})",customScaleInputTooltip:"Digite em uma escala.",current:"Atual",setTo:"Configurar para",selectOne:"(selecionar um)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Mundial",continent:"Continente",countriesBig:"Países",countriesSmall:"País",statesProvinces:"Estados",stateProvince:"Estado",counties:"Municípios",county:"Município",metropolitanArea:"Área metropolitana",cities:"Cidades",city:"Cidade",town:"Cidade",neighborhood:"Vizinhança",streets:"Ruas",street:"Rua",buildings:"Edifícios",building:"Edifício",smallBuilding:"Edifício pequeno",rooms:"Salas",room:"Lugar"},featuredScaleLabels:{custom:"Personalizar",current:"Visualizar mapa atual",world:"Mundial",continent:"Continente",countriesBig:"Países - grandes",countriesSmall:"Países - pequenos",statesProvinces:"Estados/Províncias",stateProvince:"Estado/Cidade",counties:"Municípios",county:"Município",metropolitanArea:"Área metropolitana",cities:"Cidades",city:"Cidade",town:"Cidade",neighborhood:"Vizinhança",streets:"Ruas",street:"Rua",buildings:"Edifícios",building:"Edifício",smallBuilding:"Edifício pequeno",rooms:"Dependências",room:"Dependência"}});

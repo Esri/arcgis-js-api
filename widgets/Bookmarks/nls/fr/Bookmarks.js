@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({addBookmark:"Ajouter un géosignet",goToBookmark:"Accéder à un géosignet",noBookmarksHeading:"Aucun géosignet",noBookmarksDescription:"Les géosignets que vous ajoutez à votre carte apparaîtront ici.",title:"Titre",addPlaceholder:"Entrez le titre du géosignet",addingBookmark:"Ajout d’un géosignet",widgetLabel:"Géosignets"});

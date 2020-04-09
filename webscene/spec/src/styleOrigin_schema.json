@@ -17,7 +17,6 @@
       "oneOf": [
         {
           "type": "string",
-          "format": "uri",
           "description": "An absolute URL"
         },
         {

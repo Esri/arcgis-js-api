@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"العنصر المنبثق",zoom:"تقريب إلى",next:"المعلم التالي",previous:"المعلم السابق",dock:"مرسى",undock:"إلغاء إرساء",pageText:"{index} من {total}",selectedFeature:"المعالم المُحددة",selectedFeatures:"{total} نتيجة",tooManyFields:"تحتوي هذه الطبقة على حقول عديدة جدًا، لن يتم عرض بعضها."});
+define({widgetLabel:"العنصر المنبثق",zoom:"تقريب إلى",next:"المعلم التالي",previous:"المعلم السابق",dock:"مرسى",undock:"إلغاء إرساء",pageText:"{index} من {total}",selectedFeature:"المعالم المُحددة",selectedFeatures:"{total} نتيجة"});

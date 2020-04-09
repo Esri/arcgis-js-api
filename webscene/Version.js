@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/extendsHelper","../core/Version"],function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(r,t){return e.call(this,r,t,"webscene")||this}return t(r,e),Object.defineProperty(r.prototype,"supportsGround",{get:function(){return this.since(1,8)},enumerable:!0,configurable:!0}),Object.defineProperty(r.prototype,"supportsVisibleElevationLayersInSlides",{get:function(){return this.lessThan(1,8)},enumerable:!0,configurable:!0}),r}(n.Version);r.Version=o,r.default=o});
+define(["require","exports","../core/tsSupport/extendsHelper","../core/Version"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(r,t){return e.call(this,r,t,"webscene")||this}return t(r,e),Object.defineProperty(r.prototype,"supportsGround",{get:function(){return this.since(1,8)},enumerable:!0,configurable:!0}),Object.defineProperty(r.prototype,"supportsVisibleElevationLayersInSlides",{get:function(){return this.lessThan(1,8)},enumerable:!0,configurable:!0}),r}(n.Version);r.Version=o,r.default=o}));

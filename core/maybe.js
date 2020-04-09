@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./has"],function(n,r,e){function u(n){return null!=n}function t(n){return null==n}function o(n,r){return u(n)?r(n):null}function a(n){return n}function f(n,r){return u(n)?n:"function"==typeof r?r():r}function l(n){return t(n)&&(e("dojo-debug-messages")||e("esri-2d-debug"))&&console.error("Expected value to not be null",(new Error).stack),n}function i(n,r){var e=new Array;return n.forEach(function(n){var t=r(n);u(t)&&e.push(t)}),e}function c(n,r){for(var e=new Array,u=0,t=n;u<t.length;u++){var o=t[u];e.push(s(o,null,r))}return e}function p(n,r){for(var e=0,u=n;e<u.length;e++){s(u[e],null,r)}}function s(n,r,e){return u(n)?e(n):r}function h(n,r){return u(n)?r(n):null}function v(n,r){for(var e=0,t=n;e<t.length;e++){var o=t[e],a=r(o);if(u(a))return a}return null}function m(n){for(var r=[],e=1;e<arguments.length;e++)r[e-1]=arguments[e];for(var u=n,t=0;t<r.length&&u;)u=u[r[t++]];return u}Object.defineProperty(r,"__esModule",{value:!0}),r.isSome=u,r.isNone=t,r.applySome=o,r.unwrap=a,r.unwrapOr=f,r.expect=l,r.mapSome=i,r.mapMany=c,r.forEachSome=p,r.mapOr=s,r.andThen=h,r.mapSomeFirst=v,r.get=m});
+define(["require","exports","./has"],(function(n,r,e){function u(n){return null!=n}function t(n){return null==n}function o(n,r,e){return u(n)?e(n):r}Object.defineProperty(r,"__esModule",{value:!0}),r.isSome=u,r.isNone=t,r.applySome=function(n,r){return u(n)?r(n):null},r.unwrap=function(n){return n},r.unwrapOr=function(n,r){return u(n)?n:"function"==typeof r?r():r},r.expect=function(n){return t(n)&&(e("dojo-debug-messages")||e("esri-2d-debug"))&&console.error("Expected value to not be null",(new Error).stack),n},r.mapSome=function(n,r){var e=new Array;return n.forEach((function(n){var t=r(n);u(t)&&e.push(t)})),e},r.mapMany=function(n,r){for(var e=new Array,u=0,t=n;u<t.length;u++){var a=t[u];e.push(o(a,null,r))}return e},r.forEachSome=function(n,r){for(var e=0,u=n;e<u.length;e++){o(u[e],null,r)}},r.mapOr=o,r.andThen=function(n,r){return u(n)?r(n):null},r.mapSomeFirst=function(n,r){for(var e=0,t=n;e<t.length;e++){var o=r(t[e]);if(u(o))return o}return null},r.get=function(n){for(var r=[],e=1;e<arguments.length;e++)r[e-1]=arguments[e];for(var u=n,t=0;t<r.length&&u;)u=u[r[t++]];return u}}));

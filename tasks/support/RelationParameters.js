@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["../../core/Accessor","../../core/jsonMap","../../geometry/support/jsonUtils"],function(e,t,i){var r=new t.JSONMap({esriGeometryRelationCross:"cross",esriGeometryRelationDisjoint:"disjoint",esriGeometryRelationIn:"in",esriGeometryRelationInteriorIntersection:"interior-intersection",esriGeometryRelationIntersection:"intersection",esriGeometryRelationLineCoincidence:"line-coincidence",esriGeometryRelationLineTouch:"line-touch",esriGeometryRelationOverlap:"overlap",esriGeometryRelationPointTouch:"point-touch",esriGeometryRelationTouch:"touch",esriGeometryRelationWithin:"within",esriGeometryRelationRelation:"relation"});return e.createSubclass({declaredClass:"esri.tasks.support.RelationParameters",properties:{geometries1:null,geometries2:null,relation:null,relationParameter:null},toJSON:function(){var e=(this.geometries1||[]).map(function(e){return e.toJSON()}),t=(this.geometries2||[]).map(function(e){return e.toJSON()}),o={},n=this.geometries1;if(n&&n.length>0){o.geometries1=JSON.stringify({geometryType:i.getJsonType(n[0]),geometries:e});var s=this.geometries1[0].spatialReference;o.sr=s.wkid?s.wkid:JSON.stringify(s.toJSON())}var a=this.geometries2;return a&&a.length>0&&(o.geometries2=JSON.stringify({geometryType:i.getJsonType(a[0]),geometries:t})),this.relation&&(o.relation=r.toJSON(this.relation)),this.relationParameter&&(o.relationParam=this.relationParameter),o}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils"],(function(r,e,t,o,n,p,i,u){var s=function(r){function e(e){var t=r.call(this,e)||this;return t.geometries1=null,t.geometries2=null,t.relation=null,t.relationParameter=null,t}return t(e,r),o([p.property({json:{read:{reader:function(r){return r?r.map((function(r){return u.fromJSON(r)})):null}},write:{writer:function(r,e){e.geometries1=r.map((function(r){return r.toJSON()}))}}}})],e.prototype,"geometries1",void 0),o([p.property({json:{read:{reader:function(r){return r?r.map((function(r){return u.fromJSON(r)})):null}},write:{writer:function(r,e){e.geometries2=r.map((function(r){return r.toJSON()}))}}}})],e.prototype,"geometries2",void 0),o([p.property({type:String,json:{write:!0}})],e.prototype,"relation",void 0),o([p.property({type:String,json:{write:!0}})],e.prototype,"relationParameter",void 0),e=o([p.subclass("esri.tasks.support.RelationParameters")],e)}(p.declared(n.JSONSupport));return s.from=i.default(s),s}));

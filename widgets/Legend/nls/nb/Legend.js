@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Tegnforklaring",points:"Punkt",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Oppretter tegnforklaring",noLegend:"Ingen tegnforklaring",dotValue:"1 prikk = {value} {unit}",currentObservations:"Gjeldende observasjoner",previousObservations:"Tidligere observasjoner",high:"Høy",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knop",esriFeetPerSecond:"ft/sek",esriMilesPerHour:"mph",showNormField:"{field} delt på {normField}",showNormPct:"{field} som en prosent av totalen",showRatio:"Forholdet mellom {field} til {normField}",showRatioPercent:"{field} som en prosent av {normField}",showRatioPercentTotal:"{field} som en prosent av {field} og {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rød",green:"Grønn",blue:"Blå"});
+define({widgetLabel:"Tegnforklaring",points:"Punkt",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Oppretter tegnforklaring",noLegend:"Ingen tegnforklaring",dotValue:"1 prikk = {value} {unit}",currentObservations:"Gjeldende observasjoner",previousObservations:"Tidligere observasjoner",high:"Høy",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knop",esriFeetPerSecond:"ft/sek",esriMilesPerHour:"mph",showNormField:"{field} delt på {normField}",showNormPct:"{field} som en prosent av totalen",showRatio:"Forholdet mellom {field} til {normField}",showRatioPercent:"{field} som en prosent av {normField}",showRatioPercentTotal:"{field} som en prosent av {field} og {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Rød",green:"Grønn",blue:"Blå",clusterCountTitle:"Antall geoobjekter"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({lblItem:"objekt",title:"Logga in",info:"Logga in för att komma åt objektet på {server} {resource}",oAuthInfo:"Logga in på {server}.",lblUser:"Användarnamn:",lblPwd:"Lösenord:",lblOk:"OK",lblSigning:"Loggar in...",lblCancel:"Avbryt",errorMsg:"Ogiltigt användarnamn/lösenord. Försök igen.",invalidUser:"Det användarnamn eller lösenord du har angett är felaktigt.",forbidden:"Användarnamnet och lösenordet är giltiga, men du har inte behörighet till den här resursen.",noAuthService:"Det gick inte att komma åt autentiseringstjänsten."});

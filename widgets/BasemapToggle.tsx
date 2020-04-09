@@ -34,6 +34,7 @@
 
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
 
 // dojo
 import * as i18n from "dojo/i18n!esri/widgets/BasemapToggle/nls/BasemapToggle";
@@ -41,8 +42,12 @@ import * as i18n from "dojo/i18n!esri/widgets/BasemapToggle/nls/BasemapToggle";
 // esri
 import Basemap = require("esri/Basemap");
 
+// esri.core
+import { deprecatedProperty } from "esri/core/deprecate";
+import Logger = require("esri/core/Logger");
+
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -64,11 +69,13 @@ const CSS: any = {
 
   container: "esri-basemap-thumbnail esri-basemap-toggle__container",
   image: "esri-basemap-thumbnail__image esri-basemap-toggle__image",
+  imageLoading: "esri-basemap-toggle__image--loading",
   overlay: "esri-basemap-thumbnail__overlay esri-basemap-toggle__image-overlay",
   title: "esri-basemap-thumbnail__title esri-basemap-toggle__title",
 
   // common
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  loaderAnimation: "esri-widget__loader-animation"
 };
 
 function getThumbnailStyles(basemap: Basemap): HashMap<string> {
@@ -76,6 +83,16 @@ function getThumbnailStyles(basemap: Basemap): HashMap<string> {
 
   return thumbnailUrl ? { backgroundImage: "url(" + thumbnailUrl + ")" } : { backgroundImage: "" };
 }
+
+const logger = Logger.getLogger("esri.widgets.BasemapToggle");
+
+interface VisibleElements {
+  title?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  title: false
+};
 
 @subclass("esri.widgets.BasemapToggle")
 class BasemapToggle extends declared(Widget) {
@@ -188,10 +205,17 @@ class BasemapToggle extends declared(Widget) {
    *
    * @type {boolean}
    * @default false
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/BasemapToggle#visibleElements BasemapToggle.visibleElements.title} instead.
    */
   @property()
   @renderable()
-  titleVisible = false;
+  set titleVisible(value: boolean) {
+    deprecatedProperty(logger, "titleVisible", {
+      replacement: "visibleElements.title",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, title: value };
+  }
 
   //----------------------------------
   //  view
@@ -230,8 +254,46 @@ class BasemapToggle extends declared(Widget) {
   @property({
     type: BasemapToggleViewModel
   })
-  @renderable("viewModel.state")
+  @renderable(["viewModel.nextBasemap.loadStatus", "viewModel.state"])
   viewModel: BasemapToggleViewModel = new BasemapToggleViewModel();
+
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/BasemapToggle~VisibleElements
+   *
+   * @property {boolean} [title] - Indicates whether to the title will be displayed. Default is `false`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/BasemapToggle~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * basemapToggle.visibleElements = {
+   *   title: false
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
 
   //--------------------------------------------------------------------------
   //
@@ -251,10 +313,11 @@ class BasemapToggle extends declared(Widget) {
     const activeBasemap = vm.state === "disabled" ? null : vm.activeBasemap;
     const nextBasemap = vm.state === "disabled" ? null : vm.nextBasemap;
     const title = nextBasemap ? nextBasemap.title : "";
+    const nextBasemapLoading = nextBasemap && nextBasemap.loadStatus !== "loaded";
 
-    let titleNode: any;
+    let titleNode: VNode;
 
-    if (this.titleVisible && title) {
+    if (this.visibleElements.title && title) {
       titleNode = (
         // need key to distinguish children - see http://maquettejs.org/docs/rules.html
         <div class={CSS.overlay} key="esri-basemap-toggle__overlay">
@@ -280,7 +343,14 @@ class BasemapToggle extends declared(Widget) {
           <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
         </div>
         <div class={CSS.container}>
-          <div class={CSS.image} styles={getThumbnailStyles(nextBasemap)} />
+          <div
+            class={this.classes(CSS.image, nextBasemapLoading ? CSS.imageLoading : null)}
+            styles={getThumbnailStyles(nextBasemap)}
+          >
+            {nextBasemapLoading ? (
+              <span aria-hidden="true" role="presentation" class={CSS.loaderAnimation} />
+            ) : null}
+          </div>
           {titleNode}
         </div>
       </div>

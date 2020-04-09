@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Geoobjekt",attach:"Vedlegg",fields:"Felter",fieldsSummary:"Liste med attributter og verdier",media:"Medier",next:"Neste",noTitle:"Uten tittel",previous:"Forrige",lastEdited:"Sist redigert den {date}.",lastCreated:"Opprettet den {date}.",lastEditedByUser:"Sist redigert av {user} den {date}.",lastCreatedByUser:"Opprettet av {user} den {date}."});

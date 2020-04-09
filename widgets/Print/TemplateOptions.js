@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,35 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-/**
- * Defines the layout template options used by the {@link module:esri/widgets/Print|Print} widget to generate the print page.
- *
- * @module esri/widgets/Print/TemplateOptions
- * @since 4.6
- *
- * @see module:esri/widgets/Print
- * @see module:esri/tasks/support/PrintTemplate
- *
- * @example
- *
- * templateOptions = new TemplateOptions({
- *   title: "My Print",
- *   author: "Sam",
- *   copyright: "My Company",
- *   legendEnabled: false
- * });
- */
-
-//  copyright
-
-/**
-             * The text used for the copyright if the specified layout contains an copyright text element.
-             *
-             * @name copyright
-             * @instance
-             * @type {string}
-             */
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(t,e,o,r,p,i){return function(t){function e(e){var o=t.call(this,e)||this;return o.attributionEnabled=!0,o.author=null,o.copyright=null,o.dpi=96,o.fileName=null,o.forceFeatureAttributes=!1,o.format=null,o.layout=null,o.legendEnabled=!0,o.height=null,o.scaleEnabled=!1,o.title=null,o.width=null,o}return o(e,t),r([i.property()],e.prototype,"attributionEnabled",void 0),r([i.property()],e.prototype,"author",void 0),r([i.property()],e.prototype,"copyright",void 0),r([i.property()],e.prototype,"dpi",void 0),r([i.property()],e.prototype,"fileName",void 0),r([i.property()],e.prototype,"forceFeatureAttributes",void 0),r([i.property()],e.prototype,"format",void 0),r([i.property()],e.prototype,"layout",void 0),r([i.property()],e.prototype,"legendEnabled",void 0),r([i.property()],e.prototype,"height",void 0),r([i.property()],e.prototype,"scale",void 0),r([i.property()],e.prototype,"scaleEnabled",void 0),r([i.property()],e.prototype,"title",void 0),r([i.property()],e.prototype,"width",void 0),e=r([i.subclass("esri.widgets.Print.TemplateOptions")],e)}(i.declared(p))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],(function(t,e,o,r,p,l){return function(t){function e(e){var o=t.call(this,e)||this;return o.attributionEnabled=!0,o.author=null,o.copyright=null,o.dpi=96,o.fileName=null,o.forceFeatureAttributes=!1,o.format=null,o.layout=null,o.legendEnabled=!0,o.height=null,o.scale=null,o.scaleEnabled=!1,o.title=null,o.width=null,o}return o(e,t),r([l.property()],e.prototype,"attributionEnabled",void 0),r([l.property()],e.prototype,"author",void 0),r([l.property()],e.prototype,"copyright",void 0),r([l.property()],e.prototype,"dpi",void 0),r([l.property()],e.prototype,"fileName",void 0),r([l.property()],e.prototype,"forceFeatureAttributes",void 0),r([l.property()],e.prototype,"format",void 0),r([l.property()],e.prototype,"layout",void 0),r([l.property()],e.prototype,"legendEnabled",void 0),r([l.property()],e.prototype,"height",void 0),r([l.property()],e.prototype,"scale",void 0),r([l.property()],e.prototype,"scaleEnabled",void 0),r([l.property()],e.prototype,"title",void 0),r([l.property()],e.prototype,"width",void 0),e=r([l.subclass("esri.widgets.Print.TemplateOptions")],e)}(l.declared(p))}));

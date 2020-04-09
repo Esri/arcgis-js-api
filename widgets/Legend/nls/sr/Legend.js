@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Legenda",points:"Tačke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Kreiranje legende",noLegend:"Nema legende",dotValue:"1 tačka = {value} {unit}",currentObservations:"Trenutne opservacije",previousObservations:"Prethodne opservacije",high:"Visoko",low:"Nisko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"čvorovi",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} podeljeno sa {normField}",showNormPct:"{field} kao procentualna vrednost zbira",showRatio:"Odnos {field} i {normField}",showRatioPercent:"{field} kao procentualna vrednost {normField}",showRatioPercentTotal:"{field} kao procentualna vrednost {field} i {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Crvena",green:"Zelena",blue:"Plava"});
+define({widgetLabel:"Legenda",points:"Tačke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Kreiranje legende",noLegend:"Nema legende",dotValue:"1 tačka = {value} {unit}",currentObservations:"Trenutne opservacije",previousObservations:"Prethodne opservacije",high:"Visoko",low:"Nisko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"čvorovi",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} podeljeno sa {normField}",showNormPct:"{field} kao procentualna vrednost zbira",showRatio:"Odnos {field} i {normField}",showRatioPercent:"{field} kao procentualna vrednost {normField}",showRatioPercentTotal:"{field} kao procentualna vrednost {field} i {normField}",band0:"band_0",band1:"band_1",band2:"band_2",red:"Crvena",green:"Zelena",blue:"Plava",clusterCountTitle:"Broj geoobjekata"});

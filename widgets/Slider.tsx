@@ -18,8 +18,10 @@
  *   max: 100,
  *   values: [ 50 ],
  *   snapOnClickEnabled: false,
- *   labelsVisible: true,
- *   rangeLabelsVisible: true
+ *   visibleElements: {
+ *     labels: true,
+ *     rangeLabels: true
+ *   }
  * });
  *
  * @see [Slider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slider.tsx)
@@ -38,11 +40,13 @@ import * as i18n from "dojo/i18n!esri/widgets/Slider/nls/Slider";
 import { substitute } from "esri/intl";
 
 // esri.core
+import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
+import Logger = require("esri/core/Logger");
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.core.libs.pep
 import PEP = require("esri/core/libs/pep/pep");
@@ -58,20 +62,20 @@ import {
   Bounds,
   LabelInfos,
   SegmentDragEvent,
-  TickConfig,
   ThumbChangeEvent,
   ThumbCreatedFunction,
   ThumbDragEvent,
+  TickConfig,
   ValueChangeEvent
 } from "esri/widgets/Slider/interfaces";
 import SliderViewModel = require("esri/widgets/Slider/SliderViewModel");
 
 // esri.widgets.support
 import {
-  LabelFormatFunction,
-  VNode,
+  InputFormatFunction,
   InputParseFunction,
-  InputFormatFunction
+  LabelFormatFunction,
+  VNode
 } from "esri/widgets/support/interfaces";
 import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
@@ -165,6 +169,18 @@ interface SliderEvents {
   "thumb-change": ThumbChangeEvent;
   "thumb-drag": ThumbDragEvent;
 }
+
+const logger = Logger.getLogger("esri.widgets.Slider");
+
+interface VisibleElements {
+  labels?: boolean;
+  rangeLabels?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  labels: false,
+  rangeLabels: false
+};
 
 @subclass(declaredClass)
 class Slider extends declared(Widget)<SliderEvents> {
@@ -582,12 +598,19 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @instance
    * @type {boolean}
    * @default false
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/Slider#visibleElements Slider.visibleElements.labels} instead.
    * @example
    * slider.labelsVisible = true;
    */
   @property()
   @renderable()
-  labelsVisible = false;
+  set labelsVisible(value: boolean) {
+    deprecatedProperty(logger, "labelsVisible", {
+      replacement: "visibleElements.labels",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, labels: value };
+  }
 
   //----------------------------------
   //  layout
@@ -656,12 +679,12 @@ class Slider extends declared(Widget)<SliderEvents> {
    * specified in [values](#values) is greater than the `max` value specified
    * in this property, then the `max` will update to the highest value in `values`.
    *
-   * To display the max value's label on the slider, then set [rangeLabelsVisible](#rangeLabelsVisible) to `true`.
+   * To display the `max` value's label on the slider, set [visibleElements.rangeLabels](#visibleElements) to `true`.
    * To allow the end user to modify the max value, set
    * [rangeLabelInputsEnabled](#rangeLabelInputsEnabled) to `true`.
    *
    * @see [rangeLabelInputsEnabled](#rangeLabelInputsEnabled)
-   * @see [rangeLabelsVisible](#rangeLabelsVisible)
+   * @see [visibleElements](#visibleElements)
    *
    * @name max
    * @instance
@@ -685,12 +708,12 @@ class Slider extends declared(Widget)<SliderEvents> {
    * specified in [values](#values) is less than the `min` value specified
    * in this property, then the `min` will update to the lowest value in `values`.
    *
-   * To display the min value's label on the slider, then set [rangeLabelsVisible](#rangeLabelsVisible) to `true`.
+   * To display the `min` value's label on the slider, set [visibleElements.rangeLabels](#visibleElements) to `true`.
    * To allow the end user to modify the min value, set
    * [rangeLabelInputsEnabled](#rangeLabelInputsEnabled) to `true`.
    *
    * @see [rangeLabelInputsEnabled](#rangeLabelInputsEnabled)
-   * @see [rangeLabelsVisible](#rangeLabelsVisible)
+   * @see [visibleElements](#visibleElements)
    *
    * @name min
    * @instance
@@ -791,12 +814,19 @@ class Slider extends declared(Widget)<SliderEvents> {
    * @instance
    * @type {boolean}
    * @default false
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/Slider#visibleElements Slider.visibleElements.rangeLabels} instead.
    * @example
    * slider.viewModel.rangeLabelInputsEnabled = true;
    */
   @property()
   @renderable()
-  rangeLabelsVisible = false;
+  set rangeLabelsVisible(value: boolean) {
+    deprecatedProperty(logger, "rangeLabelsVisible", {
+      replacement: "visibleElements.rangeLabels",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, rangeLabels: value };
+  }
 
   //----------------------------------
   //  snapOnClickEnabled
@@ -1220,6 +1250,50 @@ class Slider extends declared(Widget)<SliderEvents> {
   ])
   viewModel: SliderViewModel = new SliderViewModel();
 
+  //----------------------------------
+  // visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   * Alternatively, developers may also use CSS (e.g. `display: none`) to show/hide elements, such as labels.
+   *
+   * @typedef module:esri/widgets/Slider~VisibleElements
+   *
+   * @property {boolean} [labels=false] - Indicates whether to display labels for slider thumbs. By default, labels
+   *   display input thumb values as floating point values with a precision of two digits.
+   *   The format of labels can be customized via the [labelFormatFunction](#labelFormatFunction).
+   * @property {boolean} [rangeLabels=false] - Indicates whether to display [min](#min) or [max](#max) range values on the slider.
+   *   The format of labels can be customized via the [labelFormatFunction](#labelFormatFunction).
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/Slider~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * slider.visibleElements = {
+   *   labels: true,
+   *   rangeLabels: true
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -1425,7 +1499,14 @@ class Slider extends declared(Widget)<SliderEvents> {
       return undefined;
     }
 
-    const { _dragStartInfo, _lastMovedHandleIndex, id, labelsVisible, layout, values } = this;
+    const {
+      _dragStartInfo,
+      _lastMovedHandleIndex,
+      id,
+      layout,
+      values,
+      visibleElements: { labels: labelsVisible }
+    } = this;
     const isDragging = _dragStartInfo && _dragStartInfo.index === index;
     const lastMoved = _lastMovedHandleIndex === index;
 
@@ -1492,7 +1573,8 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   protected renderThumbLabel(index: number): VNode {
-    const { id, labels, labelInputsEnabled, labelsVisible, state } = this;
+    const { id, labels, labelInputsEnabled, state } = this;
+    const labelsVisible = this.visibleElements.labels;
     const label = labels.values[index];
     const classes = this.classes(
       CSS.labelElement,
@@ -1536,7 +1618,8 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   protected renderMax(): VNode {
-    const { _isMaxInputActive, labels, rangeLabelInputsEnabled, rangeLabelsVisible, state } = this;
+    const { _isMaxInputActive, labels, rangeLabelInputsEnabled, state } = this;
+    const rangeLabelsVisible = this.visibleElements.rangeLabels;
     const classes = this.classes(
       CSS.maxElement,
       !rangeLabelsVisible ? CSS.hidden : null,
@@ -1559,7 +1642,8 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   protected renderMin(): VNode {
-    const { _isMinInputActive, labels, rangeLabelInputsEnabled, rangeLabelsVisible, state } = this;
+    const { _isMinInputActive, labels, rangeLabelInputsEnabled, state } = this;
+    const rangeLabelsVisible = this.visibleElements.rangeLabels;
     const classes = this.classes(
       CSS.minElement,
       !rangeLabelsVisible ? CSS.hidden : null,

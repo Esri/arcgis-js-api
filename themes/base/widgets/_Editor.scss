@@ -3,12 +3,14 @@
   $border: 1px solid $border-color;
 
   .esri-editor {
+    background-color: $background-color--offset;
     display: flex;
     flex-direction: column;
     position: relative;
   }
 
   .esri-editor__header {
+    background-color: $background-color;
     padding: 0 $side-spacing--three-quarters;
     font-size: $font-size__header-text;
     border-bottom: $border;
@@ -40,9 +42,16 @@
     }
   }
 
+  .esri-editor__content-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 100%;
+  }
+
   .esri-editor__message {
     display: flex;
     align-items: center;
+    align-self: stretch;
     margin-left: $side-spacing;
     margin-right: $side-spacing;
   }
@@ -51,8 +60,6 @@
     overflow-y: auto;
     padding-top: $cap-spacing--half;
     padding-bottom: $cap-spacing;
-
-    align-items: stretch;
   }
 
   .esri-editor .esri-feature-form {
@@ -93,6 +100,7 @@
   }
 
   .esri-editor__controls {
+    background-color: $background-color;
     border-top: $border;
     padding: $cap-spacing $side-spacing;
     display: flex;
@@ -231,7 +239,7 @@
     right: 0;
     bottom: 0;
     top: 0;
-    background-color: $bacground-color--overlay;
+    background-color: $background-color--overlay;
   }
 
   .esri-editor__progress-bar {

@@ -106,8 +106,7 @@
                     "visibility": true,
                     "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
                   }
-                ],
-                "transparency": 0
+                ]
               },
               "viewpoint": {
                 "scale": 7842272,

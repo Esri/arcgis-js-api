@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../support/elevationInfoUtils","../../../../../support/featureFlags"],function(e,t,r,o,n,i){function s(e){if("graphics"!==e.layer.type)return 1;if(o.isNone(e.geometry))return 2;var t=e.geometry.type;switch(t){case"point":break;case"polygon":case"polyline":case"multipoint":case"extent":case"mesh":return 3;default:return r.neverReached(t),3}var s=o.isSome(e.symbol)&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;if(!(s&&s.length>0&&s.some(function(e){return"object"===e.type})))return 5;var a=n.getGraphicEffectiveElevationMode(e);return"on-the-ground"===a||i.enableEditing3D()&&"absolute-height"===a&&!n.hasGraphicFeatureExpressionInfo(e)?0:4}Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphic=s});
+define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../support/elevationInfoUtils"],(function(e,t,r,o,n){Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphic=function(e){if("graphics"!==e.layer.type)return 1;if(o.isNone(e.geometry))return 2;var t=e.geometry.type;switch(t){case"point":break;case"polygon":case"polyline":case"multipoint":case"extent":case"mesh":return 3;default:return r.neverReached(t),3}var i=o.isSome(e.symbol)&&"point-3d"===e.symbol.type&&e.symbol.symbolLayers;return i&&i.length>0&&i.some((function(e){return"object"===e.type}))?"on-the-ground"!==n.getGraphicEffectiveElevationMode(e)&&n.hasGraphicFeatureExpressionInfo(e)?4:0:5}}));

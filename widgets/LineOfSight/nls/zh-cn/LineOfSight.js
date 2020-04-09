@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"通视分析",hint:"请单击场景，放置观察点以及一个或多个目标以开始分析",unsupported:"仅 SceneView 支持通视分析。",done:"完成",newAnalysis:"新分析",continueAnalysis:"继续分析"});

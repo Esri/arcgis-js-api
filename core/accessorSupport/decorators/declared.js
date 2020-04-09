@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../declare"],function(e,t,r){function o(e){var t=function(){return this||{}};if(arguments.length>1){for(var o=[],n=0;n<arguments.length;n++)o.push(arguments[n]);e=r(o),a(e)}return t.__bases__=[e],t}function a(e){var t=Object.getPrototypeOf(e.prototype),r=e._meta&&e._meta.bases,o=e._meta&&e._meta.parents;if(t&&r&&o&&!(o.length<=1))for(var a=1;a<r.length;a++){var i=r[a],c=i.__accessorMetadata__&&i.__accessorMetadata__.properties,s=t;if(t=Object.getPrototypeOf(t),-1!==o.indexOf(i))for(var f=Object.getOwnPropertyNames(i.prototype),p=0,_=f;p<_.length;p++){var d=_[p];if("initialized"!==d&&"constructed"!==d&&"destroyed"!==d&&!(c&&d in c)){var u=Object.getOwnPropertyDescriptor(i.prototype,d);n(u)&&Object.defineProperty(s,d,u)}}}}function n(e){return e&&!(!e.get&&!e.set)}Object.defineProperty(t,"__esModule",{value:!0}),t.declared=o});
+define(["require","exports","../../declare"],(function(e,t,r){function o(e){var t=Object.getPrototypeOf(e.prototype),r=e._meta&&e._meta.bases,o=e._meta&&e._meta.parents;if(t&&r&&o&&!(o.length<=1))for(var n=1;n<r.length;n++){var i=r[n],c=i.__accessorMetadata__&&i.__accessorMetadata__.properties,s=t;if(t=Object.getPrototypeOf(t),-1!==o.indexOf(i))for(var f=0,p=Object.getOwnPropertyNames(i.prototype);f<p.length;f++){var _=p[f];if("initialized"!==_&&"constructed"!==_&&"destroyed"!==_&&!(c&&_ in c)){var d=Object.getOwnPropertyDescriptor(i.prototype,_);a(d)&&Object.defineProperty(s,_,d)}}}}function a(e){return e&&!(!e.get&&!e.set)}Object.defineProperty(t,"__esModule",{value:!0}),t.declared=function(e){var t=function(){return this||{}};if(arguments.length>1){for(var a=[],n=0;n<arguments.length;n++)a.push(arguments[n]);o(e=r(a))}return t.__bases__=[e],t}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Λίστα θεματικών επιπέδων",noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});

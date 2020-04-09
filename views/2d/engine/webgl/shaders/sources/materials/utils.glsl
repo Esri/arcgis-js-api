@@ -42,3 +42,8 @@ float max4(vec4 target) {
   return max(max(max(target.x, target.y), target.z), target.w);
 }
 
+
+// Unpack a normalized float (-1 -> 1) encoded into a byte
+vec2 unpack_u8_nf32(vec2 bytes) {
+  return (bytes - 127.0) / 127.0;
+}

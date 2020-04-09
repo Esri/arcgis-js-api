@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"底圖圖層清單",baseHeading:"基本",basemapTitle:"底圖標題",referenceHeading:"參考",noReferenceLayers:"無參考圖層",noBaseLayers:"無基本圖層",layerInvisibleAtScale:"無法以目前的比例顯示",layerError:"載入此圖層時發生錯誤",untitledLayer:"未命名的圖層"});

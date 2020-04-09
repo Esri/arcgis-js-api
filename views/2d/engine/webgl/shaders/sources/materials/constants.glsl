@@ -10,7 +10,8 @@ const float THIN_LINE_WIDTH_FACTOR = 1.1;
 // meaning that a 2 pixels line width is considered a thin line
 const float THIN_LINE_HALF_WIDTH = 1.0;
 
-// labels 
+// labels
+const float EXTRUDE_SCALE_PLACEMENT_PADDING = 1.0 / 4.0;
 const float OFFSET_PRECISION = 1.0 / 8.0;
 const float OUTLINE_SCALE = 1.0 / 5.0;
 const float SDF_FONT_SIZE = 24.0;
@@ -32,4 +33,3 @@ const int ATTR_VV_OPACITY = 2;
 const int ATTR_VV_ROTATION = 3;
 
 const highp float NAN_MAGIC_NUMBER = 1e-30;
-

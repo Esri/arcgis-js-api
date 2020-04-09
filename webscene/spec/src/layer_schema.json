@@ -8,38 +8,30 @@
       "type": "boolean",
       "description": "Default visibility of the layers in the map service."
     },
-    "definitionEditor": {
-      "type": "object",
-      "description": "An object that provides interactive filters.",
-      "$ref": "definitionEditor_schema.json"
-    },
     "disablePopup": {
       "type": "boolean",
       "description": "Indicates whether to allow a client to ignore the popups defined on the layer. The popupInfo object could be saved in the map or item.",
       "default": false
-    },
-    "featureSet": {
-      "type": "object",
-      "description": "A featureSet object containing the geometry and attributes of the features in the layer.",
-      "$ref": "featureSet_schema.json"
-    },
-    "field": {
-      "type": "object",
-      "description": "Information about each field in a layer. Used with feature collections.",
-      "$ref": "field_schema.json"
     },
     "id": {
       "type": "number",
       "description": "The layer id, as a numeric value."
     },
     "layerDefinition": {
-      "type": "object",
-      "description": "The layerDefinition object defines the attribute schema and drawing information for the layer.",
-      "$ref": "layerDefinition_schema.json"
-    },
-    "layerItemId": {
-      "type": "string",
-      "description": "The associated query layer's itemId. Only available when there is a `layerUrl`.  You will see this if [popups are configured](https://doc.arcgis.com/en/arcgis-online/manage-data/publish-tiles-from-features.htm) on it."
+      "description": "Additional properties that define drawing information and other configurations for the layer.",
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "definitionExpression": {},
+            "drawingInfo": {},
+            "source": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerUrl": {
       "type": "string",
@@ -66,10 +58,6 @@
       "type": "string",
       "description": "The name of the layer."
     },
-    "nextObjectId": {
-      "type": "integer",
-      "description": "Iterates within a featureset. Number objectId value is incremented 1 based on last Object ID defined for the feature in a featureset. Used with feature collections."
-    },
     "parentLayerId": {
       "type": "number",
       "description": "If working with nested layers, this is the numeric value indicating the layer id of the next layer (parent) directly above the current referenced layer."
@@ -89,20 +77,12 @@
       "description": "A Boolean indicating if the layer should be shown in the legend in client applications.",
       "default": true
     },
-    "subLayer": {
-      "type": "integer",
-      "description": "Integer value indicating the layer id."
-    },
     "subLayerIds": {
       "type": "array",
       "description": "If the layer is a parent layer, it will have one or more sub layers included in an array.",
       "items": {
         "type": "integer"
       }
-    },
-    "title": {
-      "type": "string",
-      "description": "A user-friendly string title for the layer that can be used in a table of contents."
     }
   },
   "additionalProperties": false

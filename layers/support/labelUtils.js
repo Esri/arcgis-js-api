@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/string"],function(e,r,n){function t(e){var r;return e?(r=n.replace(e,function(e){return i+'$feature["'+e+'"]'+c}),r=_.test(r)?r.replace(_,""):o+r,r=g.test(r)?r.replace(g,""):r+o,r=r.replace(p,u).replace(a,l)):r='""',r}Object.defineProperty(r,"__esModule",{value:!0});var i="__begin__",c="__end__",p=new RegExp(i,"ig"),a=new RegExp(c,"ig"),_=new RegExp("^"+i,"i"),g=new RegExp(c+"$","i"),o='"',u=o+" + ",l=" + "+o;r.convertTemplatedStringToArcade=t});
+define(["require","exports","../../core/string"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0});var t=new RegExp("__begin__","ig"),i=new RegExp("__end__","ig"),a=new RegExp("^__begin__","i"),s=new RegExp("__end__$","i");r.convertTemplatedStringToArcade=function(e){var r;return e?(r=n.replace(e,(function(e){return'__begin__$feature["'+e+'"]__end__'})),r=a.test(r)?r.replace(a,""):'"'+r,r=(r=s.test(r)?r.replace(s,""):r+'"').replace(t,'" + ').replace(i,' + "')):r='""',r};var _=/^\s*\{([^}]+)\}\s*$/i;r.getSingleFieldTemplatedString=function(e){var r=e.match(_);return r&&r[1].trim()||null};var u=/^\s*(?:(?:\$feature\.(\w+))|(?:\$feature\[(["'])([\w\s]+)(\2)\]));?\s*$/i,c=/^\s*(?:(?:\$feature\.(\w+))|(?:\$feature\[(["'])([\w\s]+)(\2)\]));?\s*(?:DomainName\(\s*\$feature\s*,\s*(["'])(\1|\3)(\5)\s*\));?\s*$/i,l=/^\s*(?:DomainName\(\s*\$feature\s*,\s*(["'])([\w\s]+)(\1)\s*\));?\s*$/i;r.getSingleFieldArcadeExpression=function(e){if(!e)return null;var r=u.exec(e)||c.exec(e);return r?r[1]||r[3]:(r=l.exec(e))?r[2]:null}}));

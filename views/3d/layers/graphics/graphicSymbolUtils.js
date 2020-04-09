@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./Graphics3DSymbol","./Graphics3DWebStyleSymbol"],function(e,n,i,o){function r(e){return e instanceof o?e.graphics3DSymbol:e instanceof i?e:null}Object.defineProperty(n,"__esModule",{value:!0}),n.getGraphics3DSymbol=r});
+define(["require","exports","./Graphics3DSymbol","./Graphics3DWebStyleSymbol"],(function(e,n,i,o){Object.defineProperty(n,"__esModule",{value:!0}),n.getGraphics3DSymbol=function(e){return e instanceof o?e.graphics3DSymbol:e instanceof i?e:null}}));

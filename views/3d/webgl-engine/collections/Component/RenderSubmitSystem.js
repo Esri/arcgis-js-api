@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./DepthRange"],function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e){this._objects=e}return e.prototype.submit=function(e){for(var t=this._objects.visibleObjects,i=0;i<t.length;i++){var n=t[i];n.renderable.material.submit(e,n)}},e.prototype.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?i.computeDepthRange(e,this._objects.visibleObjects):null},e}();t.RenderSubmitSystem=n});
+define(["require","exports","./DepthRange"],(function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e){this._objects=e}return e.prototype.submit=function(e,t){this._objects.preSubmit(t);for(var i=this._objects.visibleObjects,n=0;n<i.length;n++){var r=i[n];r.renderable.material.submit(e,r)}},e.prototype.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?i.computeDepthRange(e,this._objects.visibleObjects):null},e}();t.RenderSubmitSystem=n}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../geometry/support/webMercatorUtils"],function(e,r,t){function n(e){return function(r,n){var o=e.toMap(r);return o?o.spatialReference.equals(n)?o:t.canProject(o,n)?t.project(o,n):null:null}}Object.defineProperty(r,"__esModule",{value:!0}),r.createForView=n});
+define(["require","exports","../../../../geometry/support/webMercatorUtils"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.createForView=function(e){return function(r,n){var o=e.toMap(r);return o?o.spatialReference.equals(n)?o:t.canProject(o,n)?t.project(o,n):null:null}}}));

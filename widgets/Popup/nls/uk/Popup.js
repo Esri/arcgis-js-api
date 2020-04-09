@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Спливаюче вікно",zoom:"Масштабувати до",next:"Наступний об'єкт",previous:"Попередній об'єкт",dock:"Зістикувати",undock:"Відстикувати",pageText:"{index} з {total}",selectedFeature:"Вибраний об'єкт",selectedFeatures:"{total} результатів",tooManyFields:"Цей шар має занадто багато полів, тому деякі з них не будуть відображатися."});
+define({widgetLabel:"Спливаюче вікно",zoom:"Масштабувати до",next:"Наступний об'єкт",previous:"Попередній об'єкт",dock:"Зістикувати",undock:"Відстикувати",pageText:"{index} з {total}",selectedFeature:"Вибраний об'єкт",selectedFeatures:"{total} результатів"});

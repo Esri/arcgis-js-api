@@ -1,7 +1,7 @@
 /**
  * This widget provides an out-of-the-box editing experience to help streamline the editing
- * experience within a web application. The widget has two different {@link module:esri/widgets/Editor/Workflow Workflows},
- * `create` and `update`. These workflows allow you to either add features or edit and/or delete existing features within an editable feature layer.
+ * experience within a web application. The widget has two different {@link module:esri/widgets/Editor/Workflow Workflows}:
+ * {@link module:esri/widgets/Editor/CreateWorkflow} and {@link module:esri/widgets/Editor/UpdateWorkflow}. These workflows allow you to either add features or edit and/or delete existing features within an editable feature layer.
  * The widget automatically recognizes if there are editable feature layers within the map. If it recognizes that they are editable,
  * the layers can be used by the widget. In addition, it is also possible to configure how the `Editor` behaves by setting its
  * {@link module:esri/widgets/Editor#layerInfos layerInfos} property.
@@ -12,9 +12,7 @@
  *
  * The Editor widget is not yet at full parity with the functionality provided in the 3.x
  * [Editor](https://developers.arcgis.com/javascript/3/jsapi/editor-amd.html)
- * widget. For example, there is currently no support for editing attachments or related feature attributes.
- * There is also currently no support for editing feature layers derived from feature collections and is currently only supported when
- * working with {@link module:esri/views/MapView MapViews}.
+ * widget. For example, there is currently no support editing related feature attributes.
  * :::
  *
  * ![editor](../../assets/img/apiref/widgets/editor_in_action.gif)
@@ -26,10 +24,15 @@
  * @see [Editor.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Editor.tsx)
  * @see [Editor.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Editor.scss)
  * @see [Sample - Edit features with the Editor widget](../sample-code/widgets-editor-basic/index.html)
+ * @see [Sample - Edit features in 3D with the Editor widget](../sample-code/widgets-editor-3d/index.html)
  * @see [Sample - Editor widget with configurations](../sample-code/widgets-editor-configurable/index.html)
  * @see [Sample - Popup with edit action](../sample-code/popup-editaction/index.html)
  * @see module:esri/widgets/Editor/EditorViewModel
  * @see module:esri/widgets/Editor/Workflow
+ * @see module:esri/widgets/Editor/CreateWorkflow
+ * @see module:esri/widgets/Editor/UpdateWorkflow
+ * @see module:esri/widgets/Editor/CreateWorkflowData
+ * @see module:esri/widgets/Editor/UpdateWorkflowData
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
  *
@@ -59,6 +62,7 @@ import Graphic = require("esri/Graphic");
 import { substitute } from "esri/intl";
 
 // esri.core
+import EsriError = require("esri/core/Error");
 import { eventKey } from "esri/core/events";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init, on, watch, whenNot } from "esri/core/watchUtils";
@@ -69,10 +73,15 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
 
+// esri.layers.support
+import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
+
 // esri.views
 import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
+import Attachments = require("esri/widgets/Attachments");
 import FeatureForm = require("esri/widgets/FeatureForm");
 import FeatureTemplates = require("esri/widgets/FeatureTemplates");
 import Spinner = require("esri/widgets/Spinner");
@@ -83,12 +92,12 @@ import EditorViewModel = require("esri/widgets/Editor/EditorViewModel");
 import {
   CancelWorkflowOptions,
   CreateWorkflow,
+  CreationInfo,
   FailedOperation,
   LayerInfo,
   SupportingWidgetDefaults,
   UpdateWorkflow,
-  WorkflowType,
-  CreationInfo
+  WorkflowType
 } from "esri/widgets/Editor/interfaces";
 
 // esri.widgets.FeatureTemplates
@@ -99,13 +108,14 @@ import { CreateEvent } from "esri/widgets/Sketch/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, isRTL, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, isRTL, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-editor esri-widget",
   header: "esri-editor__header",
   scroller: "esri-editor__scroller",
   content: "esri-editor__content",
+  contentGroup: "esri-editor__content-group",
   contentWrapper: "esri-editor__temp-wrapper",
   message: "esri-editor__message",
   controls: "esri-editor__controls",
@@ -148,6 +158,8 @@ const CSS = {
   buttonDisabled: "esri-button--disabled",
   buttonSecondary: "esri-button--secondary",
   buttonTertiary: "esri-button--tertiary",
+  buttonDrillIn: "esri-button--drill-in",
+  buttonDrillInTitle: "esri-button--drill-in__title",
   heading: "esri-heading",
   input: "esri-input",
   interactive: "esri-interactive",
@@ -223,12 +235,16 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     this._handleDelete = this._handleDelete.bind(this);
     this._handleAdd = this._handleAdd.bind(this);
     this._handleEdit = this._handleEdit.bind(this);
+    this._handleAttachmentAdd = this._handleAttachmentAdd.bind(this);
+    this._handleAttachmentUpdate = this._handleAttachmentUpdate.bind(this);
+    this._handleAttachmentDelete = this._handleAttachmentDelete.bind(this);
   }
 
   postInitialize(): void {
     this.own([
       init(this, "viewModel", (viewModel) => {
         this._featureForm.viewModel = viewModel ? viewModel.featureFormViewModel : null;
+        this._attachments.viewModel = viewModel ? viewModel.attachmentsViewModel : null;
         this._featureTemplates.viewModel = viewModel ? viewModel.featureTemplatesViewModel : null;
         this._spinner.viewModel = viewModel ? viewModel.spinnerViewModel : null;
       }),
@@ -285,9 +301,34 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         }
 
         this._featureForm.set(defaults.featureForm);
+        this._attachments.set(defaults.attachments);
         this._featureTemplates.set(defaults.featureTemplates);
         this.viewModel.sketchViewModel.set(defaults.sketch);
       }),
+
+      watch<EsriError>(
+        this,
+        "_attachments.error",
+        (error): void => {
+          if (!error) {
+            return;
+          }
+
+          this._prompt = {
+            title: i18n.errorWarningTitle,
+            message: error.message,
+            options: [
+              {
+                label: i18nCommon.form.ok,
+                type: "neutral",
+                action: () => {
+                  this._prompt = null;
+                }
+              }
+            ]
+          };
+        }
+      ),
 
       watch<FailedOperation[]>(this, "viewModel.failures", (failures) => {
         if (!failures) {
@@ -326,11 +367,16 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         }
       }),
 
+      watch(this, ["_attachments.selectedFile", "_attachments.submitting"], () =>
+        this.scheduleRender()
+      ),
+
       whenNot(this, "viewModel.activeWorkflow", () => (this._featureTemplates.filterText = ""))
     ]);
   }
 
   destroy(): void {
+    this._attachments.destroy();
     this._featureForm.destroy();
     this._featureTemplates.destroy();
   }
@@ -344,6 +390,19 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   private _candidateCommitted = false;
 
   private _featureForm: FeatureForm = new FeatureForm();
+
+  @property()
+  private _attachments: Attachments = new Attachments({
+    visibleElements: {
+      addSubmitButton: false,
+      cancelAddButton: false,
+      cancelUpdateButton: false,
+      deleteButton: false,
+      errorMessage: false,
+      progressBar: false,
+      updateButton: false
+    }
+  });
 
   private _featureTemplates: FeatureTemplates = new FeatureTemplates();
 
@@ -399,6 +458,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * the [supportingWidgetDefaults](#supportingWidgetDefaults) property take precedence.
    * :::
    *
+   * @property {boolean} [allowAttachments = true] - Indicates whether to display the attachments widget in the Editor's UI. By default, this is `true`, if the service {@link module:esri/layers/FeatureLayer#capabilities supportsAttachment}.
    * @property {boolean} [enabled = true] - Indicates whether to enable editing on the layer. Defaults to `true` if service supports it.
    * @property {boolean} [addEnabled] - Indicates whether to enable `Add feature` functionality. Defaults to `true` if service supports it.
    * @property {boolean} [updateEnabled] - Indicates whether to enable `Update feature` functionality. Defaults to `true` if service supports it.
@@ -461,11 +521,12 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   //----------------------------------
 
   /**
-   * A property indicating the current active workflow.
+   * A property indicating the current active workflow. This is either
+   * {@link module:esri/widgets/Editor/CreateWorkflow} or {@link module:esri/widgets/Editor/UpdateWorkflow}.
    *
    * @name activeWorkflow
    * @instance
-   * @type {module:esri/widgets/Editor/Workflow}
+   * @type {module:esri/widgets/Editor/CreateWorkflow | module:esri/widgets/Editor/UpdateWorkflow}
    * @readonly
    *
    */
@@ -616,7 +677,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    *
    */
   @aliasOf("viewModel.view")
-  view: MapView = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -642,6 +703,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     "viewModel.syncing",
     "viewModel.activeWorkflow.data.edits.modified"
   ])
+  @vmEvent(["workflow-cancel", "workflow-commit"])
   viewModel: EditorViewModel = new EditorViewModel();
 
   //--------------------------------------------------------------------------
@@ -651,38 +713,51 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   //--------------------------------------------------------------------------
 
   /**
-   * Initiates the `create` workflow by displaying the [FeatureTemplates]{@link module:esri/widgets/FeatureTemplates} panel.
+   * Initiates the {@link module:esri/widgets/Editor/CreateWorkflow} by displaying the {@link module:esri/widgets/FeatureTemplates} panel.
    *
    * @method startCreateWorkflowAtFeatureTypeSelection
    * @instance
+   * @see {@link module:esri/widgets/Editor/CreateWorkflow}
+   *
+   * @return {Promise<void>} Resolves when the {@link module:esri/widgets/Editor/CreateWorkflow} is initiated
+   * and displays the {@link module:esri/widgets/FeatureTemplates} panel.
    */
   startCreateWorkflowAtFeatureTypeSelection(): Promise<void> {
     return this.viewModel.startCreateWorkflowAtFeatureTypeSelection();
   }
 
   /**
-   * Initiates the `create` workflow by displaying the panel where feature creation begins. This method
+   * Initiates the {@link module:esri/widgets/Editor/CreateWorkflow} by displaying the panel where feature creation begins. This method
    * takes a {@link module:esri/widgets/Editor~CreationInfo} object containing the layer(s) and template(s)
    * to use.
    *
    * @method startCreateWorkflowAtFeatureCreation
    * @instance
+   * @see {@link module:esri/widgets/Editor/CreateWorkflow}
    *
    * @param {module:esri/widgets/Editor~CreationInfo} creationInfo - An object containing
    * information needed to create a new feature using the Editor widget. This object
    * provides the feature template and layer for creating a new feature.
+   *
+   * @return {Promise<void>} Resolves when the {@link module:esri/widgets/Editor/CreateWorkflow} initiates
+   * and displays the panel where feature creation begins.
    */
   startCreateWorkflowAtFeatureCreation(creationInfo: CreationInfo): Promise<void> {
     return this.viewModel.startCreateWorkflowAtFeatureCreation(creationInfo);
   }
 
   /**
-   * This method starts the Editor workflow where it waits for the feature
+   * This method starts the {@link module:esri/widgets/Editor/CreateWorkflow} where it waits for the feature
    * to be selected.
    *
    * @method startCreateWorkflowAtFeatureEdit
    * @instance
+   * @see {@link module:esri/widgets/Editor/CreateWorkflow}
+   *
    * @param {module:esri/Graphic} feature - The feature to be edited.
+   *
+   * @return {Promise<void>} Resolves once the {@link module:esri/widgets/Editor/CreateWorkflow} initiates,
+   * displays the panel where feature creation begins, and waits for the feature to be selected.
    *
    */
   startCreateWorkflowAtFeatureEdit(feature: Graphic): Promise<void> {
@@ -690,10 +765,14 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   /**
-   * Starts the `update` workflow using the current selected feature.
+   * Starts the {@link module:esri/widgets/Editor/UpdateWorkflow} using the current selected feature.
    *
    * @method startUpdateWorkflowAtFeatureSelection
    * @instance
+   * @see {@link module:esri/widgets/Editor/UpdateWorkflow}
+   *
+   * @return {Promise<void>} Resolves once the {@link module:esri/widgets/Editor/UpdateWorkflow} is initiated
+   * using the current selected feature.
    *
    */
   startUpdateWorkflowAtFeatureSelection(): Promise<void> {
@@ -701,14 +780,18 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   /**
-   * This method starts the Editor workflow where it waits for multiple features
+   * This method starts the {@link module:esri/widgets/Editor/UpdateWorkflow} where it waits for multiple features
    * to be selected.
    *
    * @method startUpdateWorkflowAtMultipleFeatureSelection
    * @instance
+   * @see {@link module:esri/widgets/Editor/UpdateWorkflow}
    *
-   * @param {module:esri/Graphic[]} _candidates - An array of features to be updated.
+   * @param {module:esri/Graphic[]} candidates - An array of features to be updated.
    * This is only relevant when there are multiple candidates to update.
+   *
+   * @return {Promise<void>} Resolves once the {@link module:esri/widgets/Editor/UpdateWorkflow} is initiated
+   * as it waits for multiple features to be selected.
    *
    */
   startUpdateWorkflowAtMultipleFeatureSelection(candidates: Graphic[]): Promise<void> {
@@ -716,23 +799,31 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   /**
-   * Starts the `update` workflow at the feature geometry and attribute editing panel.
+   * Starts the {@link module:esri/widgets/Editor/UpdateWorkflow} at the feature geometry and attribute editing
+   * panel.
    *
    * @method startUpdateWorkflowAtFeatureEdit
    * @instance
+   * @see {@link module:esri/widgets/Editor/UpdateWorkflow}
    *
    * @param {module:esri/Graphic} feature - The feature to be updated.
+   *
+   * @return {Promise<void>} Resolves once the {@link module:esri/widgets/Editor/UpdateWorkflow} initiates the
+   * feature geometry and attribute editing panel.
    */
   startUpdateWorkflowAtFeatureEdit(feature: Graphic): Promise<void> {
     return this.viewModel.startUpdateWorkflowAtFeatureEdit(feature);
   }
 
   /**
-   * This is applicable if there is an active update workflow. If so, this method
+   * This is applicable if there is an active {@link module:esri/widgets/Editor/UpdateWorkflow}. If so, this method
    * deletes the workflow feature.
    *
    * @method deleteFeatureFromWorkflow
    * @instance
+   * @see {@link module:esri/widgets/Editor/UpdateWorkflow}
+   *
+   * @return {Promise<void>} Resolves once the active {@link module:esri/widgets/Editor/UpdateWorkflow} is deleted.
    *
    */
   deleteFeatureFromWorkflow(): Promise<void> {
@@ -744,13 +835,15 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    *
    * @method cancelWorkflow
    * @instance
+   *
+   * @return {Promise<void>} Resolves once the workflow is canceled.
    */
   cancelWorkflow(options?: CancelWorkflowOptions): Promise<void> {
     return this.viewModel.cancelWorkflow(options);
   }
 
   render(): VNode {
-    const { viewModel } = this;
+    const { _attachments, viewModel } = this;
 
     if (!viewModel) {
       return <div class={CSS.base} />;
@@ -770,7 +863,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
     return (
       <div class={CSS.base}>
-        {this.viewModel.syncing ? this.renderProgressBar() : null}
+        {viewModel.syncing || _attachments.submitting ? this.renderProgressBar() : null}
         {state === "disabled"
           ? null
           : state === "ready"
@@ -785,6 +878,10 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
           ? this.renderFeatureList()
           : state === "awaiting-feature-to-create"
           ? this.renderFeatureCreation()
+          : state === "adding-attachment"
+          ? this.renderAttachmentAdding()
+          : state === "editing-attachment"
+          ? this.renderAttachmentEditing()
           : null}
         {overlay}
       </div>
@@ -827,12 +924,20 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
       }
     ];
 
-    if (workflow.type === "update" && workflow.data.editableItem.supports.indexOf("delete") > -1) {
-      controls.push({
-        label: i18nCommon.delete,
-        type: "tertiary",
-        clickHandler: this._handleDelete
-      });
+    let showAttachments = false;
+
+    if (workflow.type === "update") {
+      if (workflow.data.editableItem.hasAttachments) {
+        showAttachments = true;
+      }
+
+      if (workflow.data.editableItem.supports.indexOf("delete") > -1) {
+        controls.push({
+          label: i18nCommon.delete,
+          type: "tertiary",
+          clickHandler: this._handleDelete
+        });
+      }
     }
 
     const header = this._getLabel(feature);
@@ -841,11 +946,69 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
       <div class={CSS.contentWrapper} key="wrapper">
         {this.renderHeader(header, true)}
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
-          {featureFormViewModel.inputFields.length > 0
-            ? this._featureForm.render()
-            : this.renderMessage(
-                substitute(i18n.clickToFinishTemplate, { button: primaryButtonLabel })
-              )}
+          <div class={CSS.contentGroup}>
+            {featureFormViewModel.inputFields.length > 0
+              ? this._featureForm.render()
+              : this.renderMessage(
+                  substitute(i18n.clickToFinishTemplate, { button: primaryButtonLabel })
+                )}
+            {showAttachments ? (
+              <div key="attachments">
+                <div>{i18n.attachments}</div>
+                {this._attachments.render()}
+              </div>
+            ) : null}
+          </div>
+        </div>
+        {this.renderControls(controls)}
+      </div>
+    );
+  }
+
+  protected renderAttachmentAdding(): VNode {
+    const { _attachments } = this;
+    const controls: ControlButton[] = [
+      {
+        label: _attachments.submitting ? i18nCommon.cancel : i18nCommon.add,
+        disabled: _attachments.submitting || !_attachments.selectedFile,
+        type: "primary",
+        clickHandler: this._handleAttachmentAdd
+      }
+    ];
+
+    return (
+      <div class={CSS.contentWrapper} key="wrapper">
+        {this.renderHeader(i18n.addAttachment, true, _attachments.submitting)}
+        <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
+          {_attachments.render()}
+        </div>
+        {this.renderControls(controls)}
+      </div>
+    );
+  }
+
+  protected renderAttachmentEditing(): VNode {
+    const { _attachments } = this;
+    const controls: ControlButton[] = [
+      {
+        label: i18nCommon.update,
+        disabled: _attachments.submitting || !_attachments.selectedFile,
+        type: "primary",
+        clickHandler: this._handleAttachmentUpdate
+      },
+      {
+        label: i18nCommon.delete,
+        disabled: _attachments.submitting,
+        type: "tertiary",
+        clickHandler: this._handleAttachmentDelete
+      }
+    ];
+
+    return (
+      <div class={CSS.contentWrapper} key="wrapper">
+        {this.renderHeader(i18n.editAttachment, true, _attachments.submitting)}
+        <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
+          {_attachments.render()}
         </div>
         {this.renderControls(controls)}
       </div>
@@ -974,16 +1137,26 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     );
   }
 
-  protected renderHeader(title: string, breadcrumb: boolean = false): VNode {
+  protected renderHeader(
+    title: string,
+    breadcrumb: boolean = false,
+    preventBack: boolean = false
+  ): VNode {
     return (
       <header class={CSS.header} key="header">
         {breadcrumb ? (
           <div
             aria-label={i18nCommon.back}
-            class={this.classes(CSS.backButton, CSS.interactive)}
+            class={this.classes(
+              CSS.backButton,
+              CSS.interactive,
+              preventBack ? CSS.buttonDisabled : null
+            )}
             key="back-button"
-            onclick={this._handleBack}
-            onkeydown={this._handleBack}
+            data-prevent-back={preventBack}
+            onclick={this._handleHeaderClickOrKeyDown}
+            onkeydown={this._handleHeaderClickOrKeyDown}
+            role="button"
             tabIndex={0}
             title={i18nCommon.back}
           >
@@ -994,6 +1167,14 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
       </header>
     );
   }
+
+  protected _handleHeaderClickOrKeyDown = (event: Event): void => {
+    const preventBack = (event.currentTarget as HTMLElement)["data-prevent-back"];
+
+    if (!preventBack) {
+      this._handleBack.call(this, event);
+    }
+  };
 
   protected renderLanding(): VNode {
     const { allowedWorkflows, canCreate, canUpdate } = this.viewModel;
@@ -1180,11 +1361,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
   private _getLabel(feature: Graphic): string {
     const layer = feature.layer as FeatureLayer;
-    const { displayField, objectIdField } = layer;
+    const { objectIdField } = layer;
     const { attributes } = feature;
 
+    const displayField = getDisplayFieldName(layer);
+
     return (
-      (displayField && attributes[displayField]) ||
+      (displayField && `${attributes[displayField]}`) ||
       substitute(i18n.untitledFeatureTemplate, { id: attributes[objectIdField] })
     );
   }
@@ -1213,9 +1396,51 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   private _handleSave(): void {
-    const { activeWorkflow: workflow } = this.viewModel;
+    this.viewModel.activeWorkflow.commit();
+  }
 
-    workflow.commit();
+  @accessibleHandler()
+  private _handleAttachmentAdd(): void {
+    const { _attachments } = this;
+    const { activeWorkflow } = this.viewModel;
+
+    _attachments.addAttachment().then(() => activeWorkflow.previous());
+  }
+
+  @accessibleHandler()
+  private _handleAttachmentUpdate(): void {
+    const { _attachments } = this;
+    const { activeWorkflow } = this.viewModel;
+
+    _attachments.updateAttachment().then(() => activeWorkflow.previous());
+  }
+
+  @accessibleHandler()
+  private _handleAttachmentDelete(): void {
+    this._prompt = {
+      title: i18n.deleteAttachmentWarningTitle,
+      message: i18n.deleteAttachmentWarningMessage,
+      options: [
+        {
+          label: i18n.keepAttachment,
+          type: "neutral",
+          action: () => (this._prompt = null)
+        },
+        {
+          label: i18nCommon.delete,
+          type: "positive",
+          action: () => {
+            const { _attachments } = this;
+            const { activeWorkflow } = this.viewModel;
+
+            _attachments.deleteAttachment(_attachments.viewModel.activeAttachmentInfo).then(() => {
+              activeWorkflow.previous();
+              this._prompt = null;
+            });
+          }
+        }
+      ]
+    };
   }
 
   @accessibleHandler()

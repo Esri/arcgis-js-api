@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../layers/support/ExportImageParameters","./DynamicLayerView3D","../../layers/MapImageLayerView","../../support/drapedUtils"],function(e,t,r,a,s,i,o,p,n){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._exportImageParameters=null,t.updateWhenStationary=!0,t}return r(t,e),t.prototype.initialize=function(){var e=this;this._exportImageParameters=new i.ExportImageParameters({view:this.view,layer:this.layer}),this.updatingHandles.add(this._exportImageParameters,"version",function(){e.updatingHandles.addPromise(e.refreshDebounced())})},t.prototype.destroy=function(){this._exportImageParameters&&(this._exportImageParameters.layer=null,this._exportImageParameters.destroy(),this._exportImageParameters=null)},t.prototype.createFetchPopupFeaturesQueryGeometry=function(e,t){return n.createQueryGeometry(e,t,this.view)},t.prototype.getFetchOptions=function(){return{timeExtent:this._exportImageParameters.timeExtent,timestamp:this.refreshTimestamp}},t=a([s.subclass("esri.views.3d.layers.MapImageLayerView3D")],t)}(s.declared(p.MapImageLayerView(o)))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../layers/support/ExportImageParameters","./DynamicLayerView3D","../../layers/MapImageLayerView","../../support/drapedUtils"],(function(e,t,r,a,s,i,o,p,n){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._exportImageParameters=null,t.updateWhenStationary=!0,t}return r(t,e),t.prototype.initialize=function(){var e=this;this._exportImageParameters=new i.ExportImageParameters({view:this.view,layer:this.layer}),this.updatingHandles.add(this._exportImageParameters,"version",(function(){e.updatingHandles.addPromise(e.refreshDebounced())}))},t.prototype.destroy=function(){this._exportImageParameters&&(this._exportImageParameters.layer=null,this._exportImageParameters.destroy(),this._exportImageParameters=null)},t.prototype.createFetchPopupFeaturesQueryGeometry=function(e,t){return n.createQueryGeometry(e,t,this.view)},t.prototype.getFetchOptions=function(){return{timeExtent:this._exportImageParameters.timeExtent,timestamp:this.refreshTimestamp}},t=a([s.subclass("esri.views.3d.layers.MapImageLayerView3D")],t)}(s.declared(p.MapImageLayerView(o)))}));

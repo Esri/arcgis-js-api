@@ -100,8 +100,7 @@
     },
     "mapUrl": {
       "type": "string",
-      "description": "A string containing the URL of the WMS map. When using a WMS layer, you should also supply the url property. `mapUrl` is the URL returned by the capabilities to be used for the getMap requests.",
-      "format": "uri"
+      "description": "A string containing the URL of the WMS map. When using a WMS layer, you should also supply the url property. `mapUrl` is the URL returned by the capabilities to be used for the getMap requests."
     },
     "maxHeight": {
       "type": "number",
@@ -150,8 +149,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the WMS service (`getCapabilities` URL).",
-      "format": "uri"
+      "description": "The URL to the WMS service (`getCapabilities` URL)."
     },
     "version": {
       "type": "string",

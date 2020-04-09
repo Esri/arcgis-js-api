@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Měření plochy",hint:"Začněte měření kliknutím na scénu pro umístění prvního bodu",unsupported:"Měření plochy ve 3D je podporováno pouze v SceneView.",perimeterLength:"Obvod",area:"Plocha",unit:"Jednotka",notApplicable:"není k dispozici",newMeasurement:"Nové měření",units:{metric:"Metrické",imperial:"Imperiální","square-kilometers":"Čtvereční kilometry","square-meters":"Čtvereční metry","square-miles":"Čtvereční míle","square-inches":"čtvereční palce","square-feet":"Čtvereční stopy","square-yards":"Čtvereční yardy","square-us-feet":"Čtvereční stopy (US)",acres:"akry",ares:"ary",hectares:"hektary"}});

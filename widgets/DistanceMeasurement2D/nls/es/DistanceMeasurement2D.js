@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Medición de la distancia",hint:"Empiece a medir haciendo clic en el mapa para colocar su primer punto",unsupported:"La medición de distancias 2D solo se admite en MapView.",distance:"Distancia",newMeasurement:"Nueva medición",mode:"Modo",modes:{auto:"Automática",planar:"Planar",geodesic:"Geodésico"},unit:"Unidad",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});

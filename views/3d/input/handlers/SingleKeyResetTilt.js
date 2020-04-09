@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t,i,n){var r=e.call(this,i,n)||this;return r.view=t,r.key=i,r}return i(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0})},t}(n.SingleKey);t.SingleKeyResetTilt=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],(function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t,i,n){var r=e.call(this,i,n)||this;return r.view=t,r.key=i,r}return i(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0}).catch((function(){}))},t}(n.SingleKey);t.SingleKeyResetTilt=r}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({streets:"Ruas",satellite:"Imagem",hybrid:"Imagens com Rótulos",terrain:"Terrenos com Rótulos",topo:"Topográfico",gray:"Fundo Cinza Claro","dark-gray":"Fundo Cinza Escuro",oceans:"Oceanos","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mapa de Ruas Mundial (Noite)","streets-relief-vector":"Mapa de Ruas Mundial (com Relevo)","streets-navigation-vector":"Mapa de Navegação Mundial"});

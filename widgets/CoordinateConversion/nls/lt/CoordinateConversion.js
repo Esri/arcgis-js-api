@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Koordinačių konversija",abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Pridėti konvertavimą",captureMode:"Užfiksavimo režimas",changeCoordinateDisplay:"Keisti koordinačių atvaizdavimą",convert:"Konvertuoti",conversionOutputSuffix:"konvertavimo išvestis",copySuccessMessage:"Koordinatė nukopijuota į mainų sritį",defaultPattern:"Grąžinti numatytąją reikšmę",goTo:"Vykti į vietą",inputCoordTitle:"Įvesties koordinatė",invalidCoordinate:"Neteisinga koordinatė",liveMode:"Realaus laiko režimas",locationOffBasemap:"Įvesties koordinatė nepatenka į pagrindo žemėlapio aprėptį",noBasemap:"Nėra pagrindo žemėlapio.",noLocation:"Nėra padėties",removeConversion:"Pašalinti konvertavimą",selectFormat:"Pasirinkti formatą",settingsTitle:"Formato nustatymai"});

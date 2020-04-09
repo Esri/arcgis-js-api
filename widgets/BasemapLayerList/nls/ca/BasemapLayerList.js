@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Llista de capes del mapa de base",baseHeading:"Base",basemapTitle:"Títol del mapa base",referenceHeading:"Referència",noReferenceLayers:"No hi ha cap capa de referència",noBaseLayers:"No hi ha cap capa base",layerInvisibleAtScale:"Invisible a l'escala actual",layerError:"S'ha produït un error en carregar aquesta capa",untitledLayer:"Capa sense títol"});

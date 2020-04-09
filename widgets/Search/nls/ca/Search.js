@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Cerca",searchButtonTitle:"Cerca",clearButtonTitle:"Reinicia la cerca",placeholder:"Cerca una direcció o un lloc",searchIn:"Cerca a",all:"Tot",allPlaceholder:"Cerca una direcció o un lloc",emptyValue:"Introduïu un terme de cerca.",untitledResult:"Sense títol",untitledSource:"Origen sense títol",noResults:"No hi ha cap resultat",noResultsFound:"No s'ha trobat cap resultat.",noResultsFoundForValue:"No s'ha trobat cap resultat per a {value}.",showMoreResults:"Mostra més resultats",hideMoreResults:"Amaga",searchResult:"Resultat de la cerca",moreResultsHeader:"Més resultats",useCurrentLocation:"Utilitza la ubicació actual"});

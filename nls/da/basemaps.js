@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({streets:"Streets",satellite:"Imagery",hybrid:"Billeder med tekster",terrain:"Terræn med tekster",topo:"Topografisk",gray:"Lysegråt lærred","dark-gray":"Mørkegråt lærred",oceans:"Oceaner","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Verdensgadekort (nat)","streets-relief-vector":"Verdensgadekort (med relief)","streets-navigation-vector":"Verdensnavigationskort"});

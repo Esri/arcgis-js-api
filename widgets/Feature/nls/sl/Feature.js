@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Funkcionalnost",attach:"Priloge",fields:"Polj",fieldsSummary:"Seznam atributov in vrednosti",media:"Omrežja",next:"Naslednji",noTitle:"Neimenovano",previous:"Prejšnji",lastEdited:"Nazadnje urejeno dne {date}.",lastCreated:"Ustvarjeno dne {date}.",lastEditedByUser:"Nazadnje uredil {user} dne {date}.",lastCreatedByUser:"Ustvaril {user} dne {date}."});

@@ -69,15 +69,17 @@ import EsriMap = require("esri/Map");
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
 import Logger = require("esri/core/Logger");
 import { create } from "esri/core/promiseUtils";
 import { ScreenPoint } from "esri/core/screenUtils";
-import watchUtils = require("esri/core/watchUtils");
+import { throttle } from "esri/core/throttle";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
 import Point = require("esri/geometry/Point");
@@ -85,6 +87,7 @@ import Point = require("esri/geometry/Point");
 // esri.views
 import { Breakpoints } from "esri/views/interfaces";
 import MapView = require("esri/views/MapView");
+import { FetchPopupFeaturesResult } from "esri/views/PopupView";
 import SceneView = require("esri/views/SceneView");
 
 // esri.views.ui
@@ -105,7 +108,8 @@ import {
   PopupOutsideViewOptions,
   PopupPosition,
   PopupPositionStyle,
-  ViewPadding
+  ViewPadding,
+  FetchFeaturesOptions
 } from "esri/widgets/Popup/interfaces";
 import PopupViewModel = require("esri/widgets/Popup/PopupViewModel");
 
@@ -115,14 +119,16 @@ import { VNode } from "esri/widgets/support/interfaces";
 import {
   accessibleHandler,
   isWidget,
-  isWidgetBase,
+  hasDomNode,
   renderable,
   tsx,
   vmEvent
 } from "esri/widgets/support/widget";
-import widgetUtils = require("esri/widgets/support/widgetUtils");
+import * as widgetUtils from "esri/widgets/support/widgetUtils";
 
 const SELECTED_INDEX_HANDLE_KEY = "selected-index";
+
+const SPINNER_THROTTLE_INTERVAL_IN_MS = 0;
 
 const SPINNER_KEY = "popup-spinner";
 
@@ -288,8 +294,16 @@ async function loadFeatureWidget(): Promise<FeatureModule> {
 
 const declaredClass = "esri.widgets.Popup";
 const logger = Logger.getLogger(declaredClass);
-const MAX_INLINE_ACTIONS = 3;
-const MAX_INLINE_ACTIONS_WITH_PAGINATION = MAX_INLINE_ACTIONS - 1;
+
+interface VisibleElements {
+  closeButton?: boolean;
+  featureNavigation?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  closeButton: true,
+  featureNavigation: true
+};
 
 @subclass(declaredClass)
 class Popup extends declared(Widget) {
@@ -316,12 +330,6 @@ class Popup extends declared(Widget) {
     this.own([
       watchUtils.watch<ScreenPoint>(this, "viewModel.screenLocation", () =>
         this._positionContainer()
-      ),
-
-      watchUtils.whenFalse(
-        this,
-        "viewModel.visible",
-        () => this.selectedFeatureWidget && this.selectedFeatureWidget.destroyCharts()
       ),
 
       watchUtils.watch(this, ["viewModel.visible", "dockEnabled"], () =>
@@ -366,7 +374,7 @@ class Popup extends declared(Widget) {
       ),
 
       watchUtils.watch(this, ["viewModel.waitingForResult", "viewModel.location"], () =>
-        this._displaySpinner()
+        this._displaySpinnerThrottled()
       ),
 
       watchUtils.watch(this, ["featureWidgets", "viewModel.selectedFeatureIndex"], () =>
@@ -443,6 +451,61 @@ class Popup extends declared(Widget) {
   private _pointerOffsetInPx = 16;
 
   private _spinner: Spinner = null;
+
+  private _displaySpinnerThrottled = throttle(
+    this._displaySpinner,
+    SPINNER_THROTTLE_INTERVAL_IN_MS
+  );
+
+  //--------------------------------------------------------------------------
+  //
+  // FetchFeaturesOptions typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Optional properties to use with the [fetchFeatures](#fetchFeatures) method.
+   *
+   * @typedef module:esri/widgets/Popup~FetchFeaturesOptions
+   *
+   * @property {ClickEvent} [event] - The `click` event for either the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. The event can be supplied in order to adjust the query radius depending on the pointer type. For example, touch events query a larger radius.
+   * @property {AbortSignal} [signal] - The signal object that can be used to abort the asynchronous task.
+   * The returned promise will be rejected with an {@link module:esri/core/Error Error} named `AbortError` when an abort is signaled.
+   * See also [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) for more information on how to
+   * construct a controller that can be used to deliver abort signals.
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  // FetchPopupFeaturesResult typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * The resulting features returned from the [fetchFeatures](#fetchFeatures) method.
+   *
+   * @typedef module:esri/widgets/Popup~FetchPopupFeaturesResult
+   *
+   * @property {Promise<module:esri/Graphic[]>} [allGraphicsPromise] - An array of promises containing {@link esri/Graphic graphics} from the selected location. This can be a combination of graphics derived from a {@link module:esri/views/layers/LayerView layerview}, and/or {@link module:esri/Graphics graphics} that reside directly on the view, ie. {@link module:esri/views/View#graphics view.graphics}.
+   * @property {module:esri/Graphic[]} [clientOnlyGraphics] - An array of {@link module:esri/Graphic graphics} that do not have any associated {@link module:esri/views/layers/LayerView}, ie. {@link module:esri/views/View#graphics view.graphics}.
+   * @property {module:esri/geometry/Point} [location] - The resulting location of the {@link module:esri/views/MapView#hitTest MapView} or {@link module:esri/views/SceneView#hitTest SceneView}'s' `hitTest`.
+   * @property {module:esri/widgets/Popup~FetchPopupFeaturesPromisesPerLayerView[]} [promisesPerLayerView] - An array of {@link module:esri/widgets/Popup~FetchPopupFeaturesPromisesPerLayerView}.
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  // FetchPopupFeaturesPromisesPerLayerView typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * An object containing popup features for a specific location in addition to its associated {@link module:esri/views/layers/LayerView layerview}.
+   *
+   * @typedef module:esri/widgets/Popup~FetchPopupFeaturesPromisesPerLayerView
+   *
+   * @property {module:esri/views/layers/LayerView} layerView - The associated {@link module:esri/views/layers/LayerView layerview} in which the features are fetched.
+   * @property {Promise<module:esri/Graphic[]>} promise - A promise containing an array of {@link module:esri/Graphic graphics} for the selected location associated with a specific {@link module:esri/views/layers/LayerView layerview}.
+   */
 
   //--------------------------------------------------------------------------
   //
@@ -524,8 +587,10 @@ class Popup extends declared(Widget) {
   //  actionsMenuOpen
   //----------------------------------
 
+  // We are not documenting this unless it comes up specifically from outside users
+
   /**
-   * @todo document
+   * @private
    */
 
   @property({
@@ -618,7 +683,7 @@ class Popup extends declared(Widget) {
    * popupTemplate defined. Automatic popup templates are supported for layers that
    * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer}, {@link module:esri/layers/GeoJSONLayer},
    * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/PointCloudLayer},
-   * {@link module:esri/layers/StreamLayer} and {@link module:esri/layers/ImageryLayer}).
+   * {@link module:esri/layers/StreamLayer}, and {@link module:esri/layers/ImageryLayer}).
    *
    * ::: esri-md class="panel trailer-1"
    * Starting with version 4.12, {@link module:esri/PopupTemplate} content can no longer be set using a
@@ -933,10 +998,17 @@ class Popup extends declared(Widget) {
    * @instance
    * @type {Boolean}
    * @default
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/Popup#visibleElements Popup.visibleElements.featureNavigation} instead.
    */
   @property()
   @renderable()
-  featureNavigationEnabled = true;
+  set featureNavigationEnabled(value: boolean) {
+    deprecatedProperty(logger, "featureNavigationEnabled", {
+      replacement: "visibleElements.featureNavigation",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, featureNavigation: value };
+  }
 
   //----------------------------------
   //  goToOverride
@@ -1032,6 +1104,22 @@ class Popup extends declared(Widget) {
   label: string = i18n.widgetLabel;
 
   //----------------------------------
+  //  maxInlineActions
+  //----------------------------------
+
+  /**
+   * Defines the maximum icons displayed at one time in the action area.
+   *
+   * @name maxInlineActions
+   * @instance
+   * @type {number | null}
+   * @default 3
+   */
+  @property()
+  @renderable()
+  maxInlineActions: number | null = 3;
+
+  //----------------------------------
   //  promises
   //----------------------------------
 
@@ -1090,7 +1178,14 @@ class Popup extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document
+   * Returns a reference to the current {@link module:esri/widgets/Feature} that the Popup is using.
+   * This is useful if needing to get a reference to the widget in order to make any changes to it.
+   *
+   * @name selectedFeatureWidget
+   * @instance
+   * @since 4.7
+   * @type {module:esri/widgets/Feature}
+   * @readonly
    */
   @property({
     readOnly: true
@@ -1143,7 +1238,13 @@ class Popup extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document
+   * Indicates whether to update the [location](#location) when the [selectedFeatureIndex](#selectedFeatureIndex) changes.
+   *
+   * @name updateLocationEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @ignore
    */
   @aliasOf("viewModel.updateLocationEnabled")
   updateLocationEnabled: boolean = null;
@@ -1207,6 +1308,45 @@ class Popup extends declared(Widget) {
   @renderable()
   visible: boolean = null;
 
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/Popup~VisibleElements
+   *
+   * @property {boolean} [featureNavigation] - Indicates whether to the feature navigation will be displayed. Default value is `true`.
+   * @property {boolean} [closeButton] - Indicates whether to display a close button on the popup dialog. Default value is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/Popup~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * popup.visibleElements = {
+   *   closeButton: false
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -1250,6 +1390,61 @@ class Popup extends declared(Widget) {
    */
   close(): void {
     this.visible = false;
+  }
+
+  /**
+   * Use this method to return feature(s) at a given screen location.
+   * These features are fetched from all of the {@link module:esri/views/layers/LayerView LayerViews}
+   * in the {@link module:esri/views/View view}. In order to use this, a layer must already have an
+   * associated {@link module:esri/PopupTemplate} and have its {@link module:esri/layers/FeatureLayer#popupEnabled popupEnabled}.
+   * These features can then be used within a custom {@link module:esri/widgets/Popup}
+   * or {@link module:esri/widgets/Feature} widget experience.
+   * One example could be a custom side panel that displays feature-specific information based on
+   * an end user's click location. This method allows a developer the ability to
+   * control how the input location is handled, and then subsequently, what to do with the results.
+   *
+   * @example
+   * // Add Feature widget to UI
+   * view.ui.add(featureWidget, "top-right");
+   *
+   * // Get view's click event
+   * view.on("click", function(event) {
+   *   // Call fetchFeatures and pass in the click event screenPoint
+   *   view.popup.fetchFeatures(event.screenPoint).then(function(response) {
+   *     // Access the response from fetchFeatures
+   *     response.allGraphicsPromise.then(function(graphics) {
+   *       // Set the feature widget's graphic to the returned graphic from fetchFeatures
+   *       featureWidget.graphic = graphics[0];
+   *     });
+   *   });
+   * });
+   *
+   * @param {Object} screenPoint - An object representing a point on the screen. This point can be in either the
+   * {@link module:esri/views/MapView#ScreenPoint MapView} or
+   * {@link module:esri/views/SceneView#ScreenPoint SceneView}.
+   * @param {number} screenPoint.x - The x coordinate.
+   * @param {number} screenPoint.y - The y coordinate.
+   * @param {module:esri/widgets/Popup~FetchFeaturesOptions} [options] - The {@link module:esri/widgets/Popup~FetchFeaturesOptions options}
+   * to pass into the `fetchFeatures` method.
+   *
+   * @method
+   * @since 4.15
+   *
+   * @return {Promise<module:esri/widgets/Popup~FetchPopupFeaturesResult>} Resolves with the selected `hitTest`
+   * location. In addition, it also returns an array of {@link module:esri/Graphic graphics} if the `hitTest` is
+   * performed directly on the {@link module:esri/views/View view}, a single Promise containing an array of all resulting
+   * {@link module:esri/Graphic graphics}, or an array of objects containing this array of resulting {@link module:esri/Graphic graphics} in addition to its associated
+   * {@link module:esri/views/layers/LayerView layerview}.
+   *
+   * Most commonly if accessing all features, use the single promise returned in the
+   * {@link module:esri/widgets/Popup~FetchPopupFeaturesResult result's allGraphicsPromise} and call `.then()`
+   * as seen in the example snippet.
+   */
+  fetchFeatures(
+    screenPoint: ScreenPoint,
+    options?: FetchFeaturesOptions
+  ): Promise<FetchPopupFeaturesResult> {
+    return this.viewModel.fetchFeatures(screenPoint, options);
   }
 
   /**
@@ -1411,10 +1606,12 @@ class Popup extends declared(Widget) {
       collapseEnabled,
       dockEnabled,
       featureMenuOpen,
-      featureNavigationEnabled,
       featureWidgets,
-      visible
+      visible,
+      visibleElements
     } = this;
+
+    const featureNavigationEnabled = visibleElements.featureNavigation;
 
     const {
       content,
@@ -1425,9 +1622,7 @@ class Popup extends declared(Widget) {
     } = this.viewModel;
 
     const featureNavigationVisible = visible && featureCount > 1 && featureNavigationEnabled;
-    const inlineActionCount = featureNavigationVisible
-      ? MAX_INLINE_ACTIONS_WITH_PAGINATION
-      : MAX_INLINE_ACTIONS;
+    const inlineActionCount = this._getInlineActionCount(featureNavigationVisible);
     const dividedActions = this._divideActions(inlineActionCount);
     const { inlineActions, menuActions } = dividedActions;
     const isFeatureMenuOpen = featureNavigationVisible && featureMenuOpen;
@@ -1634,7 +1829,7 @@ class Popup extends declared(Widget) {
         {titleNode}
         <div class={CSS.headerButtons}>
           {dockButtonNode}
-          {closeButtonNode}
+          {visibleElements.closeButton ? closeButtonNode : null}
         </div>
       </header>
     );
@@ -1669,9 +1864,11 @@ class Popup extends declared(Widget) {
       currentDockPosition === "bottom-center" ||
       currentDockPosition === "bottom-right";
 
+    const hasInlineActions = !!inlineActions.length;
+    const hasMenuActions = !!menuActions.length;
     const actionsMenuLabel = actionsMenuOpen ? i18nCommon.close : i18nCommon.open;
 
-    const actionsMenuToggleNode = menuActions.length ? (
+    const actionsMenuToggleNode = hasMenuActions ? (
       <div
         key={buildKey("actions-menu-button")}
         class={this.classes(CSS.button, CSS.actionsMenuButton)}
@@ -1693,7 +1890,7 @@ class Popup extends declared(Widget) {
     ) : null;
 
     const inlineActionsNodes =
-      inlineActions.length &&
+      hasInlineActions &&
       inlineActions.toArray().map((action, index) =>
         this._renderAction({
           action,
@@ -1703,7 +1900,7 @@ class Popup extends declared(Widget) {
       );
 
     const menuActionsNode =
-      menuActions.length && actionsMenuOpen ? (
+      hasMenuActions && actionsMenuOpen ? (
         <ul
           id={`${this.id}-actions-menu`}
           role="menu"
@@ -1725,13 +1922,19 @@ class Popup extends declared(Widget) {
         </ul>
       ) : null;
 
-    const inlineActionsContainer = inlineActionsNodes ? (
-      <div key="inline-actions-container" class={CSS.inlineActionsContainer}>
-        {inlineActionsNodes}
-        {actionsMenuToggleNode}
-        {menuActionsNode}
-      </div>
-    ) : null;
+    const inlineActionsContainer =
+      hasInlineActions || hasMenuActions ? (
+        <div
+          key="inline-actions-container"
+          data-inline-actions={hasInlineActions.toString()}
+          data-menu-actions={hasMenuActions.toString()}
+          class={CSS.inlineActionsContainer}
+        >
+          {inlineActionsNodes}
+          {actionsMenuToggleNode}
+          {menuActionsNode}
+        </div>
+      ) : null;
 
     const navigationNode = featureNavigationVisible ? (
       <section key={buildKey("navigation")} class={this.classes(CSS.navigation)}>
@@ -1741,12 +1944,12 @@ class Popup extends declared(Widget) {
 
     const footerClasses = {
       [CSS.footerHasPagination]: featureNavigationVisible,
-      [CSS.footerHasActions]: !!inlineActions.length,
-      [CSS.footerHasActionsMenu]: !!menuActions.length
+      [CSS.footerHasActions]: hasInlineActions,
+      [CSS.footerHasActionsMenu]: hasMenuActions
     };
 
     const footerNode =
-      featureNavigationVisible || inlineActions.length ? (
+      featureNavigationVisible || hasInlineActions ? (
         <div key={buildKey("feature-buttons")} class={this.classes(CSS.footer, footerClasses)}>
           {inlineActionsContainer}
           {navigationNode}
@@ -1858,6 +2061,17 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _getInlineActionCount(featureNavigationVisible: boolean): number | null {
+    const { maxInlineActions } = this;
+
+    if (typeof maxInlineActions !== "number") {
+      return null;
+    }
+
+    const roundedCount = Math.round(maxInlineActions);
+    return Math.max(featureNavigationVisible ? roundedCount - 1 : roundedCount, 0);
+  }
+
   private _watchActions(): void {
     const { allActions } = this.viewModel;
 
@@ -1879,16 +2093,26 @@ class Popup extends declared(Widget) {
   }
 
   private _divideActions(
-    inlineActionCount: number
+    inlineActionCount: number | null
   ): {
     inlineActions: Collection<Action>;
     menuActions: Collection<Action>;
   } {
     const { allActions } = this.viewModel;
+    const onlyInlineActions = inlineActionCount === null;
+    const zeroInlineActions = inlineActionCount === 0;
 
     return {
-      inlineActions: allActions.slice(0, inlineActionCount),
-      menuActions: allActions.slice(inlineActionCount)
+      inlineActions: onlyInlineActions
+        ? allActions.slice(0)
+        : zeroInlineActions
+        ? new Collection()
+        : allActions.slice(0, inlineActionCount),
+      menuActions: onlyInlineActions
+        ? new Collection()
+        : zeroInlineActions
+        ? allActions.slice(0)
+        : allActions.slice(inlineActionCount)
     };
   }
 
@@ -2208,11 +2432,7 @@ class Popup extends declared(Widget) {
   }
 
   private _updateFeatureWidget(): void {
-    const { featureWidgets, selectedFeatureWidget } = this;
-
-    if (selectedFeatureWidget) {
-      selectedFeatureWidget.destroyCharts();
-    }
+    const { featureWidgets } = this;
 
     const { selectedFeatureIndex } = this.viewModel;
     const newSelectedFeatureWidget = featureWidgets[selectedFeatureIndex] || null;
@@ -2221,7 +2441,9 @@ class Popup extends declared(Widget) {
   }
 
   private _destroyFeatureWidgets(): void {
-    this.featureWidgets.forEach((featureWidget) => featureWidget.destroy());
+    this.featureWidgets.forEach(
+      (featureWidget) => featureWidget && !featureWidget.destroyed && featureWidget.destroy()
+    );
     this._set("featureWidgets", []);
   }
 
@@ -2269,7 +2491,9 @@ class Popup extends declared(Widget) {
       }
     });
 
-    featureWidgetsCopy.forEach((featureWidget) => featureWidget && featureWidget.destroy());
+    featureWidgetsCopy.forEach(
+      (featureWidget) => featureWidget && !featureWidget.destroyed && featureWidget.destroy()
+    );
 
     this._set("featureWidgets", newFeatureWidgets);
   }
@@ -2544,7 +2768,7 @@ class Popup extends declared(Widget) {
       return <div key={content} bind={content} afterCreate={this._attachToNode} />;
     }
 
-    if (isWidgetBase(content)) {
+    if (hasDomNode(content)) {
       return <div key={content} bind={content.domNode} afterCreate={this._attachToNode} />;
     }
 

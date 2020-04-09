@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"フィーチャ",attach:"添付ファイル",fields:"フィールド",fieldsSummary:"属性および値のリスト",media:"メディア",next:"次へ",noTitle:"無題",previous:"前へ",lastEdited:"{date} に最後に編集されました。",lastCreated:"{date} に作成されました。",lastEditedByUser:"{user} によって {date} に最後に編集されました。",lastCreatedByUser:"{user} によって {date} に作成されました。"});

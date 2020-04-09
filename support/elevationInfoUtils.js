@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/maybe"],function(e,o,n){function r(e,o){var r=!!n.isSome(e)&&e.hasZ;return n.isNone(o)?r?"absolute-height":"on-the-ground":"relative-to-ground"!==o.mode||!n.isNone(o.offset)&&0!==o.offset||!n.isSome(e)||"point"!==e.type||r&&0!==e.z?o.mode:"on-the-ground"}function t(e){var o=u(e);return r(e.geometry,o)}function i(e){var o=u(e),t=r(e.geometry,o);return{mode:t,offset:n.isSome(o)&&"on-the-ground"!==t?o.offset:0,featureExpressionInfo:n.isSome(o)&&"on-the-ground"!==t?o.featureExpressionInfo:null}}function f(e){if("on-the-ground"===t(e))return!1;var o=u(e),r=n.isSome(o)&&o.featureExpressionInfo?o.featureExpressionInfo.expression:null;return!(!r||"0"===r)}function u(e){return e.layer&&"elevationInfo"in e.layer?e.layer.elevationInfo:null}Object.defineProperty(o,"__esModule",{value:!0}),o.getGeometryEffectiveElevationMode=r,o.getGraphicEffectiveElevationMode=t,o.getGraphicEffectiveElevationInfo=i,o.hasGraphicFeatureExpressionInfo=f});
+define(["require","exports","../core/maybe","../symbols/support/unitConversionUtils"],(function(e,n,t,o){function r(e,n){var o=!!t.isSome(e)&&e.hasZ;return t.isNone(n)?o?"absolute-height":"on-the-ground":n.mode}function i(e){var n=a(e);return r(e.geometry,n)}function a(e){return e.layer&&"elevationInfo"in e.layer?e.layer.elevationInfo:null}Object.defineProperty(n,"__esModule",{value:!0}),n.getGeometryEffectiveElevationMode=r,n.getGraphicEffectiveElevationMode=i,n.getGraphicEffectiveElevationInfo=function(e){var n=a(e),i=r(e.geometry,n);return{mode:i,offset:t.isSome(n)&&"on-the-ground"!==i?t.unwrapOr(n.offset,0)*o.getMetersPerUnit(t.unwrapOr(n.unit,"meters")):0}},n.hasGraphicFeatureExpressionInfo=function(e){if("on-the-ground"===i(e))return!1;var n=a(e),o=t.isSome(n)&&n.featureExpressionInfo?n.featureExpressionInfo.expression:null;return!(!o||"0"===o)},n.getZForElevationMode=function(e,n,o){if(!t.isNone(o)){var r=e.hasZ?e.z:0,i=t.isSome(o.offset)?o.offset:0;switch(o.mode){case"absolute-height":return r-i;case"on-the-ground":return 0;case"relative-to-ground":return r-((n.elevationProvider.getElevation(e.x,e.y,e.z,e.spatialReference,"ground")||0)+i);case"relative-to-scene":return r-((n.elevationProvider.getElevation(e.x,e.y,e.z,e.spatialReference,"scene")||0)+i)}}}}));

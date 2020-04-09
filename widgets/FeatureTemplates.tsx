@@ -42,11 +42,13 @@ import IntersectionObserver from "@dojo/framework/shim/IntersectionObserver";
 import * as i18n from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
 
 // esri.core
+import { deprecatedProperty } from "esri/core/deprecate";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
+import Logger = require("esri/core/Logger");
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
@@ -86,6 +88,16 @@ function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string
   return itemOrGroup.layer.id;
 }
 
+const logger = Logger.getLogger("esri.widgets.FeatureTemplates");
+
+interface VisibleElements {
+  filter?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  filter: true
+};
+
 @subclass("esri.widgets.FeatureTemplates")
 class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
   /**
@@ -113,7 +125,9 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    * // Create the FeatureTemplates widget
    * templates = new FeatureTemplates({
    *   container: "templatesDiv",
-   *   filterEnabled: false, // disable the default filter UI
+   *   visibleElements: {
+   *     filter: false, // disable the default filter UI
+   *   }
    *   layers: [featureLayer], // in this example, one layer is used
    *   filterFunction: myFilterFunction
    * });
@@ -315,14 +329,20 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    * ![featureTemplatesFilter](../../assets/img/apiref/widgets/featureTemplatesFilter.png)
    *
    * @name filterEnabled
-   * @type boolean
+   * @type {boolean}
    * @instance
    * @default true
-   *
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/FeatureTemplates#visibleElements FeatureTemplates.visibleElements.filter} instead.
    */
   @property()
   @renderable()
-  filterEnabled: boolean = true;
+  set filterEnabled(value: boolean) {
+    deprecatedProperty(logger, "filterEnabled", {
+      replacement: "visibleElements.filter",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, filter: value };
+  }
 
   //----------------------------------
   //  filterFunction
@@ -351,7 +371,9 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    * // Create the FeatureTemplates widget
    * templates = new FeatureTemplates({
    *   container: "templatesDiv",
-   *   filterEnabled: false, // disable the default filter UI
+   *   visibleElements: {
+   *     filter: false, // disable the default filter UI
+   *   },
    *   layers: [featureLayer], // in this example, one layer is used
    *   filterFunction: myFilterFunction
    * });
@@ -490,6 +512,40 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
   @vmEvent("select")
   viewModel: FeatureTemplatesViewModel = new FeatureTemplatesViewModel();
 
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/FeatureTemplates~VisibleElements
+   *
+   * @property {boolean} [filter] - Indicates whether to the filter will be displayed. Default is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/FeatureTemplates~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * featureTemplates.visibleElements = {
+   *    filter: false
+   * };
+   */
+  @property()
+  @renderable()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -499,9 +555,9 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
   render(): VNode {
     const {
       filterText,
-      filterEnabled,
       viewModel: { items, state }
     } = this;
+    const filterEnabled = this.visibleElements.filter;
 
     return (
       <div class={this.classes(CSS.base, CSS.widget)} aria-label={i18n.widgetLabel}>

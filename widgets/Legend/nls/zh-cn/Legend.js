@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"图例",points:"点",lines:"线",polygons:"面",creatingLegend:"创建图例",noLegend:"无图例",dotValue:"1 点 = {value} {unit}",currentObservations:"当前观测点",previousObservations:"之前的观测点",high:"高",low:"低",esriMetersPerSecond:"米/秒",esriKilometersPerHour:"千米/小时",esriKnots:"节",esriFeetPerSecond:"英尺/秒",esriMilesPerHour:"mph",showNormField:"{field} 除以 {normField}",showNormPct:"{field} 作为总数的百分比",showRatio:"{field} 与 {normField} 的百分比",showRatioPercent:"{field} 作为 {normField} 的百分比",showRatioPercentTotal:"{field} 作为 {field} 和 {normField} 的百分比",band0:"band_0",band1:"band_1",band2:"band_2",red:"红",green:"绿",blue:"蓝"});
+define({widgetLabel:"图例",points:"点",lines:"线",polygons:"面",creatingLegend:"创建图例",noLegend:"无图例",dotValue:"1 点 = {value} {unit}",currentObservations:"当前观测点",previousObservations:"之前的观测点",high:"高",low:"低",esriMetersPerSecond:"米/秒",esriKilometersPerHour:"千米/小时",esriKnots:"节",esriFeetPerSecond:"英尺/秒",esriMilesPerHour:"mph",showNormField:"{field} 除以 {normField}",showNormPct:"{field} 作为总数的百分比",showRatio:"{field} 与 {normField} 的百分比",showRatioPercent:"{field} 作为 {normField} 的百分比",showRatioPercentTotal:"{field} 作为 {field} 和 {normField} 的百分比",band0:"band_0",band1:"band_1",band2:"band_2",red:"红",green:"绿",blue:"蓝",clusterCountTitle:"要素数量"});

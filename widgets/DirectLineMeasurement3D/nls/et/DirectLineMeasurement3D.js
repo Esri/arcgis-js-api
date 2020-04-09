@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Sirgjooneline mõõtmine",hint:"Mõõtmise alustamiseks klõpsake stseeni, kuhu soovite asetada oma esimese punkti",unsupported:"3D-sirgjoonemõõtmist toetab ainult SceneView.",distance:"Vahemaa",direct:"Otse",horizontal:"Horisontaalne",vertical:"Vertikaalne",unit:"Ühik",newMeasurement:"Uus mõõtmine",units:{metric:"Meetriline",imperial:"Briti",kilometers:"Kilomeetrit",meters:"Meetrit",miles:"Miili",inches:"Tolli",feet:"Jalga",yards:"Jardi","nautical-miles":"Meremiili","us-feet":"Jalga (USA)","degrees-minutes-seconds":"DMS",degrees:"Kraadi"}});

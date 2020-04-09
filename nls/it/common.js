@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Informazioni su",add:"Aggiungi",all:"tutte le",apply:"Applica",auth:{logOut:"Disconnetti",signIn:"Accedere"},back:"Indietro",cancel:"Annulla",change:"Cambia",clear:"Cancella",close:"Chiudi",collapse:"Comprimi",configure:"Configura",control:{pause:"Pausa",play:"Esegui",resume:"Riprendi",stop:"Termine"},copy:"Copia",create:"Crea",cut:"Taglia",delete:"Può eliminare",details:"Dettagli",done:"Fine",dragHandleTitle:"trascinare/riordinare",dragHandleLabel:"Attivare il pulsante di riordino e utilizzare i tasti freccia per riordinare l'elenco, o utilizzare il mouse per trascinare/riordinare. Premere escape per annullare il riordino.",edit:"Può modificare",error:"Errore",esri:"Esri",exit:"Esci",expand:"Espandi",fieldsSummary:"Elenco di attributi e valori",find:"Trova",form:{no:"No",ok:"OK",password:"Password",submit:"Invia",username:"Nome utente",yes:"Sì"},help:"Guida",home:"Home",info:"Informazioni",information:"Informazioni",layer:"Layer",loading:"Caricamento in corso",maximize:"Ingrandisci",menu:"Menu",more:"Maggiori informazioni",none:"Nessuno",open:"Apri",pagination:{first:"Prima",last:"Ultima",next:"Seguente",page:"Pagina",pageText:"{index} di {total}",previous:"Precedente"},paste:"Incolla",preview:"Anteprima",print:"Stampa",publish:"Pubblica",redo:"Ripeti",refresh:"Aggiorna",remove:"Rimuovi",rename:"Rinomina",reset:"Reimposta",restore:"Ripristina",save:"Salva",search:"Ricerca",searching:"Ricerca in corso",select:"Seleziona",settings:"Impostazioni",sort:"Ordina",share:"Condividi",title:"Titolo",untitled:"Senza titolo",unnamed:"Senza nome",update:"Aggiorna",upload:"Caricamento",undo:"Annulla",view:"Visualizzazione",visibility:{hide:"Nascondi",show:"Mostra",toggle:"Attiva/disattiva"},warning:"Avviso"});

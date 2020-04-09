@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"위치 찾기",title:"내 위치 찾기",currentLocation:"현재 위치",timestamp:"타임스탬프",latitude:"위도",longitude:"경도",accuracy:"정확도",altitude:"고도",altitudeAccuracy:"고도 정확도",heading:"방향",speed:"속도"});

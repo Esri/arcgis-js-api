@@ -26,6 +26,7 @@
  * {@link module:esri/layers/KMLLayer},
  * {@link module:esri/layers/MapNotesLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
+ * {@link module:esri/layers/RouteLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
  * {@link module:esri/layers/WebTileLayer}.
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
@@ -64,7 +65,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Legend/nls/Legend";
 // esri.core
 import Collection = require("esri/core/Collection");
 import Handles = require("esri/core/Handles");
-import watchUtils = require("esri/core/watchUtils");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -302,10 +303,10 @@ class Legend extends declared(Widget) {
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
    * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-   * @todo @property {boolean} [defaultSymbol=true] - When `false`, the default symbol for the renderer will
+   * @todo doc later \@property {boolean} [defaultSymbol=true] - When `false`, the default symbol for the renderer will
    * not display in the legend. Only applicable to
    * {@link module:esri/layers/FeatureLayer}.
-   * @todo @property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
+   * @todo doc later \@property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
    *                                    even if they are visible in the map.
    */
   @aliasOf("viewModel.layerInfos")

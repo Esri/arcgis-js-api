@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"معلم",attach:"المرفقات",fields:"حقول",fieldsSummary:"قائمة البيانات الجدولية والقيم",media:"الوسائط",next:"التالي",noTitle:"بلا عنوان",previous:"السابق",lastEdited:"آخر تحرير في {date}.",lastCreated:"تم الإنشاء في {date}.",lastEditedByUser:"آخر تحرير من قبل {user} في {date}.",lastCreatedByUser:"تم الإنشاء من قبل {user} في {date}."});

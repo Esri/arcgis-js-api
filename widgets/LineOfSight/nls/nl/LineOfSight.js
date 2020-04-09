@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Zichtlijn",hint:"Start de analyse door in de scène te klikken om het waarnemerspunt en een of meer doelen te plaatsen",unsupported:"De zichtlijn wordt alleen ondersteund in SceneView.",done:"Gereed",newAnalysis:"Nieuwe analyse",continueAnalysis:"Doorgaan met de analyse"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Om",add:"Lägg till",all:"Alla",apply:"Använd",auth:{logOut:"Logga ut",signIn:"Logga in"},back:"Bakåt",cancel:"Avbryt",change:"Ändra",clear:"Rensa",close:"Stäng",collapse:"Dölj",configure:"Konfigurera",control:{pause:"Paus",play:"Spela",resume:"Återuppta",stop:"Stoppa"},copy:"Kopiera",create:"Skapa",cut:"Beskär",delete:"Ta bort",details:"Detaljer",done:"Klar",dragHandleTitle:"dra/ändra ordning",dragHandleLabel:"Aktivera knappen Ändra ordning och använd pilknapparna för att ändra ordning i listan, eller använd musen för att dra/ändra ordning. Tryck på Escape för att avbryta ändringen av ordningen.",edit:"Ändra",error:"Fel",esri:"Esri",exit:"Avsluta",expand:"Expandera",fieldsSummary:"Lista med attribut och värden",find:"Sök",form:{no:"Nej",ok:"OK",password:"hämtningen är klar",submit:"Skicka",username:"Hämtningen är klar",yes:"Ja"},help:"Hjälp",home:"Hem",info:"Info",information:"Information",layer:"Lager",loading:"Laddar",maximize:"Maximera",menu:"Meny",more:"Mer",none:"Inga",open:"Öppna",pagination:{first:"Första",last:"Sista",next:"Nästa",page:"Sida",pageText:"{index} av {total}",previous:"Föregående"},paste:"Klistra in",preview:"Förhandsgranska",print:"Skriv ut",publish:"Publicera",redo:"Upprepa",refresh:"Uppdatera",remove:"Ta bort",rename:"Byt namn",reset:"Återställ",restore:"Återställ",save:"Spara",search:"Sök",searching:"Söker",select:"Välj",settings:"Settings",sort:"Sortera",share:"Dela",title:"Titel",untitled:"Namnlös",unnamed:"Namnlös",update:"Uppdatera",upload:"Överför",undo:"Ångra",view:"Visa",visibility:{hide:"Dölj",show:"Visa",toggle:"Växla"},warning:"Varning"});

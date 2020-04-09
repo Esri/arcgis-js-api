@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"Popup",zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",dock:"Fest",undock:"Løsne",pageText:"{index} av {total}",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater",tooManyFields:"Dette laget har for mange felter, og noen blir ikke vist."});
+define({widgetLabel:"Popup",zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",dock:"Fest",undock:"Løsne",pageText:"{index} av {total}",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater"});

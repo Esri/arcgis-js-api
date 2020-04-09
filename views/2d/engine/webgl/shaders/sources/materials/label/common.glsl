@@ -1,8 +1,7 @@
-
 uniform mediump float u_zoomLevel;            // the current zoom level X 10
-uniform float u_mapRotation;
-uniform float u_mapAligned;
-uniform vec2 u_mosaicSize;
+uniform mediump float u_mapRotation;
+uniform mediump float u_mapAligned;
+uniform mediump vec2 u_mosaicSize;
 
 varying mediump float v_antialiasingWidth;
 varying mediump float v_edgeDistanceOffset;

@@ -32,7 +32,7 @@ import i18n = require("dojo/i18n!esri/widgets/Bookmarks/nls/Bookmarks");
 import Collection = require("esri/core/Collection");
 import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
-import watchUtils = require("esri/core/watchUtils");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -106,6 +106,7 @@ const CSS = {
 
   // common
   esriWidget: "esri-widget",
+  esriWidgetDisabled: "esri-widget--disabled",
   esriButton: "esri-button",
   esriButtonTertiary: "esri-button--tertiary",
   esriInput: "esri-input",
@@ -187,10 +188,7 @@ class Bookmarks extends declared(Widget) {
   }
 
   destroy(): void {
-    const { _sortable } = this;
-
-    _sortable && _sortable.destroy();
-
+    this._destroySortable();
     this._handles.destroy();
     this._handles = null;
   }
@@ -232,29 +230,6 @@ class Bookmarks extends declared(Widget) {
   private _selectedSortUid: string = null;
 
   private _sortableSavedItems: string[] = null;
-
-  //--------------------------------------------------------------------------
-  //
-  // Type definitions
-  //
-  //--------------------------------------------------------------------------
-
-  //--------------------------------------------------------------------------
-  //
-  // VisibleElements typedef
-  //
-  //--------------------------------------------------------------------------
-
-  /**
-   * The visible elements that are displayed within the widget.
-   * This provides the ability to turn individual elements of the widget's display on/off.
-   *
-   * @typedef module:esri/widgets/Bookmarks~VisibleElements
-   *
-   * @property {boolean} [addBookmark] - Indicates whether to button to add a new bookmark displays. Default is `true`.
-   * @property {boolean} [thumbnail] - Indicates whether the thumbnail associated with the bookmark displays.
-   * Default value is `true`.
-   */
 
   //--------------------------------------------------------------------------
   //
@@ -312,6 +287,23 @@ class Bookmarks extends declared(Widget) {
    */
   @aliasOf("viewModel.bookmarks")
   bookmarks: Collection<Bookmark> = null;
+
+  //----------------------------------
+  //  disabled
+  //----------------------------------
+
+  /**
+   * When true, the widget is visually withdrawn and cannot be interacted with.
+   *
+   * @name disabled
+   * @instance
+   * @type {boolean}
+   * @since 4.15
+   * @default false
+   */
+  @renderable()
+  @property()
+  disabled = false;
 
   //----------------------------------
   //  editingEnabled
@@ -409,18 +401,29 @@ class Bookmarks extends declared(Widget) {
 
   /**
    * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/Bookmarks~VisibleElements
+   *
+   * @property {boolean} [addBookmark] - Indicates whether to button to add a new bookmark displays. Default is `true`.
+   * @property {boolean} [thumbnail] - Indicates whether the thumbnail associated with the bookmark displays.
+   * Default value is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
    * This property provides the ability to turn individual elements of the widget's display on/off.
    *
    * @name visibleElements
    * @instance
    * @type {module:esri/widgets/Bookmarks~VisibleElements}
-   * @autocast { "value": "Object[]" }
+   * @autocast
    *
    * @since 4.13
    *
    * @example
    * bookmarks.visibleElements = {
-   *    thumbnail: false
+   *   thumbnail: false
    * };
    */
   @property()
@@ -466,7 +469,13 @@ class Bookmarks extends declared(Widget) {
 
     const bookmarkListNode = state === "loading" ? this._renderLoading() : this._renderBookmarks();
 
-    return <div class={this.classes(CSS.base, CSS.esriWidget)}>{bookmarkListNode}</div>;
+    return (
+      <div
+        class={this.classes(CSS.base, CSS.esriWidget, { [CSS.esriWidgetDisabled]: this.disabled })}
+      >
+        {bookmarkListNode}
+      </div>
+    );
   }
 
   /**
@@ -547,6 +556,7 @@ class Bookmarks extends declared(Widget) {
         aria-label={i18n.widgetLabel}
         class={this.classes(CSS.bookmarkList, { [CSS.bookmarkListSortable]: this.editingEnabled })}
         afterCreate={this._sortNodeCreated}
+        afterRemoved={this._destroySortable}
         data-node-ref="_sortableNode"
         bind={this}
       >
@@ -898,6 +908,12 @@ class Bookmarks extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _destroySortable(): void {
+    const { _sortable } = this;
+    _sortable && _sortable.destroy();
+    this._sortable = null;
+  }
 
   private _endAddBookmark(): void {
     this._focusAddBookmarkButton = true;

@@ -13,7 +13,7 @@ void main()
 {
   vec2 v_size = v_sizeTex.xy;
   vec2 v_tex  = v_sizeTex.zw;
-    
+
 #ifdef SDF
   lowp vec4 fillPixelColor = v_color;
 

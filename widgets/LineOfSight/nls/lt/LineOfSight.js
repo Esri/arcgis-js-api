@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Matymo linija",hint:"Pradėkite analizę spustelėdami ant scenos ir padėdami stebėtojo tašką bei vieną ar daugiau taikinių",unsupported:"Matymo linija galima tik naudojant SceneView.",done:"Atlikta",newAnalysis:"Nauja analizė",continueAnalysis:"Tęsti analizę"});

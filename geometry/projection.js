@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/promiseUtils","./pe","./SpatialReference","./support/GeographicTransformation"],function(n,e,r,o,t,i){function u(){return!!d&&o.isLoaded()}function a(){return o.isSupported()}function l(){return v||(v=r.create(function(e,r){var t=o.load();n(["./geometryEngine"],function(n){d=n,t.then(function(){d._enableProjection(o),e()},function(n){r(n)})})}))}function f(n,e,r){return void 0===r&&(r=null),n instanceof Array?0===n.length?[]:c(n,n[0].spatialReference,e,r):c([n],n.spatialReference,e,r)[0]}function c(n,e,r,o,u){if(void 0===o&&(o=null),void 0===u&&(u=!1),null===o){var a=i.cacheKey(e,r);void 0!==g[a]?o=g[a]:(o=s(e,r,null),null===o&&(o=new i),g[a]=o)}return d._project(n,e,r instanceof t||!1===u?r:new t(r),o,u)}function s(n,e,r){void 0===r&&(r=null);var o=d._getTransformation(n,e,r);return null!==o?i.fromGE(o):null}function p(n,e,r){void 0===r&&(r=null);var o=d._getTransformationBySuitability(n,e,r);if(null!==o){for(var t=[],u=0,a=o;u<a.length;u++){var l=a[u];t.push(i.fromGE(l))}return t}return[]}Object.defineProperty(e,"__esModule",{value:!0});var d=null;e.isLoaded=u,e.isSupported=a;var v=null;e.load=l,e.project=f;var g={};e.projectMany=c,e.getTransformation=s,e.getTransformations=p});
+define(["require","exports","../core/promiseUtils","./pe","./SpatialReference","./support/GeographicTransformation"],(function(n,e,r,o,t,i){Object.defineProperty(e,"__esModule",{value:!0});var u=null;e.isLoaded=function(){return!!u&&o.isLoaded()},e.isSupported=function(){return o.isSupported()};var a=null;e.load=function(){return a||(a=r.create((function(e,r){var t=o.load();n(["./geometryEngine"],(function(n){u=n,t.then((function(){u._enableProjection(o),e()}),(function(n){r(n)}))}))})))},e.project=function(n,e,r){return void 0===r&&(r=null),n instanceof Array?0===n.length?[]:f(n,n[0].spatialReference,e,r):f([n],n.spatialReference,e,r)[0]};var l={};function f(n,e,r,o,a){if(void 0===o&&(o=null),void 0===a&&(a=!1),null===o){var f=i.cacheKey(e,r);void 0!==l[f]?o=l[f]:(null===(o=c(e,r,null))&&(o=new i),l[f]=o)}return u._project(n,e,r instanceof t||!1===a?r:new t(r),o,a)}function c(n,e,r){void 0===r&&(r=null);var o=u._getTransformation(n,e,r);return null!==o?i.fromGE(o):null}e.projectMany=f,e.getTransformation=c,e.getTransformations=function(n,e,r){void 0===r&&(r=null);var o=u._getTransformationBySuitability(n,e,r);if(null!==o){for(var t=[],a=0,l=o;a<l.length;a++){var f=l[a];t.push(i.fromGE(f))}return t}return[]}}));

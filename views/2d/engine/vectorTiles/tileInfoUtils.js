@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../layers/support/TileInfo"],function(e,l,r){function s(e,l){if(e===l)return!0;if(!e&&null!=l)return!1;if(null!=e&&!l)return!1;if(!e.spatialReference.equals(l.spatialReference)||e.dpi!==l.dpi)return!1;var r=e.origin,s=l.origin;if(Math.abs(r.x-s.x)>=o||Math.abs(r.y-s.y)>=o)return!1;var n,i,a=e.lods[0].scale,t=l.lods[0].scale;a>t?(n=e,i=l):(i=e,n=l);for(var u=n.lods[0].scale;u>=i.lods[i.lods.length-1].scale-o;u/=2)if(Math.abs(u-i.lods[0].scale)<o)return!0;return!1}function n(e,l){if(e===l)return e;if(!e&&null!=l)return l;if(null!=e&&!l)return e;for(var s=e.size[0],n=e.format,o=e.dpi,i={x:e.origin.x,y:e.origin.y},a=e.spatialReference.toJSON(),t=e.lods[0].scale>l.lods[0].scale?e.lods[0]:l.lods[0],u=e.lods[e.lods.length-1].scale<=l.lods[l.lods.length-1].scale?e.lods[e.lods.length-1]:l.lods[l.lods.length-1],d=t.scale,f=t.resolution,c=u.scale,p=[],g=d,h=f,v=0;g>c;)p.push({level:v,resolution:h,scale:g}),v++,g/=2,h/=2;return new r({size:[s,s],dpi:o,format:n||"pbf",origin:i,lods:p,spatialReference:a})}Object.defineProperty(l,"__esModule",{value:!0});var o=1e-6;l.areSchemasOverlapping=s,l.unionTileInfos=n});
+define(["require","exports","../../../../layers/support/TileInfo"],(function(e,l,s){Object.defineProperty(l,"__esModule",{value:!0});l.areSchemasOverlapping=function(e,l){if(e===l)return!0;if(!e&&null!=l)return!1;if(null!=e&&!l)return!1;if(!e.spatialReference.equals(l.spatialReference)||e.dpi!==l.dpi)return!1;var s,r,n=e.origin,o=l.origin;if(Math.abs(n.x-o.x)>=1e-6||Math.abs(n.y-o.y)>=1e-6)return!1;e.lods[0].scale>l.lods[0].scale?(s=e,r=l):(r=e,s=l);for(var i=s.lods[0].scale;i>=r.lods[r.lods.length-1].scale-1e-6;i/=2)if(Math.abs(i-r.lods[0].scale)<1e-6)return!0;return!1},l.unionTileInfos=function(e,l){if(e===l)return e;if(!e&&null!=l)return l;if(null!=e&&!l)return e;for(var r=e.size[0],n=e.format,o=e.dpi,i={x:e.origin.x,y:e.origin.y},a=e.spatialReference.toJSON(),t=e.lods[0].scale>l.lods[0].scale?e.lods[0]:l.lods[0],u=e.lods[e.lods.length-1].scale<=l.lods[l.lods.length-1].scale?e.lods[e.lods.length-1]:l.lods[l.lods.length-1],d=t.scale,f=t.resolution,c=u.scale,p=[],g=d,h=f,v=0;g>c;)p.push({level:v,resolution:h,scale:g}),v++,g/=2,h/=2;return new s({size:[r,r],dpi:o,format:n||"pbf",origin:i,lods:p,spatialReference:a})}}));

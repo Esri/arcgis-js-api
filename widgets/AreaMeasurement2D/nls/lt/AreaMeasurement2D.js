@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Ploto matavimas",hint:"Pradėkite matuoti spustelėdami norimoje žemėlapio vietoje",unsupported:"Dvimatis ploto matavimas palaikomas tik žemėlapio peržiūroje.",perimeter:"Perimetras",area:"Plotas",newMeasurement:"Naujas matavimas",mode:"Režimas",modes:{auto:"Automatinis",planar:"Plokščiasis",geodesic:"Geodezinis"},unit:"Matavimo vienetai",units:{metric:"Metriniai",imperial:"Imperiniai","square-kilometers":"Kvadratiniai kilometrai","square-meters":"Kvadratiniai metrai","square-miles":"Kvadratinės mylios","square-inches":"Kvadratiniai coliai","square-feet":"Kvadratinės pėdos","square-yards":"Kvadratiniai jardai","square-us-feet":"Kvadratinės pėdos (JAV)",acres:"Akrai",ares:"Arai",hectares:"Hektarai"}});

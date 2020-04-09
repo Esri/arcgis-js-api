@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["../../core/Accessor","../../core/jsonMap"],function(e,t){var n=new t.JSONMap({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"});return e.createSubclass({declaredClass:"esri.tasks.support.TrimExtendParameters",properties:{extendHow:"default-curve-extension",polylines:null,trimExtendTo:null},toJSON:function(){var e=(this.polylines||[]).map(function(e){return e.toJSON()}),t={};return t.polylines=JSON.stringify(e),t.trimExtendTo=JSON.stringify(this.trimExtendTo.toJSON()),t.sr=JSON.stringify(this.polylines[0].spatialReference.toJSON()),t.extendHow=n.toJSON(this.extendHow),t}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../geometry","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils"],(function(r,e,t,o,n,p,u,i,s){var l=function(r){function e(e){var t=r.call(this,e)||this;return t.extendHow="default-curve-extension",t.polylines=null,t.trimExtendTo=null,t}return t(e,r),o([u.property({type:String,json:{write:!0}})],e.prototype,"extendHow",void 0),o([u.property({type:[n.Polyline],json:{read:{reader:function(r){return r?r.map((function(r){return s.fromJSON(r)})):null}},write:{writer:function(r,e){e.polylines=r.map((function(r){return r.toJSON()}))}}}})],e.prototype,"polylines",void 0),o([u.property({json:{read:{reader:function(r){return r?s.fromJSON(r):null}},write:{writer:function(r,e){e.trimExtendTo=r.toJSON()}}}})],e.prototype,"trimExtendTo",void 0),e=o([u.subclass("esri.tasks.support.TrimExtendParameters")],e)}(u.declared(p.JSONSupport));return l.from=i.default(l),l}));

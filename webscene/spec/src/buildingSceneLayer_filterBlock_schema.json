@@ -10,7 +10,6 @@
     },
     "filterMode": {
       "type": "object",
-      "description": "Filter mode defines how features are drawn. For example, the filter mode of a filter can be solid or wire frame.",
       "$ref": "buildingSceneLayer_filterMode_schema.json"
     },
     "title": {

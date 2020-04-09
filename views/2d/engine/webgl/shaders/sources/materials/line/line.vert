@@ -1,4 +1,4 @@
-precision mediump float;
+precision highp float;
 
 attribute vec4 a_color;
 attribute vec4 a_offsetAndNormal;
@@ -12,14 +12,15 @@ attribute vec2 a_aux;
 
 
 const float SCALE = 1.0 / 31.0;
+const float WIDTH_SCALE = 1.0 / 1024.0;
 
 
 float getBaseLineHalfWidth(in float in_lineHalfWidth) {
 #ifdef VV_SIZE
   // when we render cim symbols we need to be able to scale in a case of a multipart line symbol
-  float referenceHalfWidth = a_aux.x * SCALE;
+  float referenceHalfWidth = a_aux.x * WIDTH_SCALE;
   float lineWidth = 2.0 * in_lineHalfWidth;
-  
+
   return 0.5 * (in_lineHalfWidth / referenceHalfWidth) * getSize(lineWidth);
 #else
   return in_lineHalfWidth;
@@ -47,7 +48,7 @@ vec2 getDist(in vec2 offset, in float halfWidth) {
   // When we render the highlight, we want to treat the line as if it was solid
   thinLineFactor *= 2.0;
 #endif
-  
+
   // calculate the relative distance from the centerline to the edge of the line. Since offset is
   // given in integers (for the sake of using less attribute memory, we need to scale it back to
   // the original range of ~ [0, 1]) in a case of a thin line we move each vertex twice as far
@@ -58,10 +59,10 @@ vec2 getDist(in vec2 offset, in float halfWidth) {
 void main()
 {
   INIT;
-  
+
   float a_bitSet          = a_segmentDirection.w;
   float a_accumulatedDist = a_accumulatedDistanceAndHalfWidth.x;
-  float a_lineHalfWidth   = a_accumulatedDistanceAndHalfWidth.y * SCALE;
+  float a_lineHalfWidth   = a_accumulatedDistanceAndHalfWidth.y * WIDTH_SCALE;
   float aa                = 0.5 * u_antialiasing;
   vec2  a_offset          = a_offsetAndNormal.xy;
 
@@ -71,7 +72,7 @@ void main()
   vec2  dist      = getDist(a_offset, halfWidth);
   vec3  offset    = u_displayViewMat3 * vec3(dist, 0.0);
   vec3  pos       = u_dvsMat3 * vec3(a_pos.xy, 1.0) + offset;
-  
+
   v_color         = getColor(a_color, a_bitSet, 0);
   v_opacity       = getOpacity(a_bitSet, 0);
   v_lineHalfWidth = halfWidth;

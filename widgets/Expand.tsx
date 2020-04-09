@@ -28,9 +28,6 @@
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
-// dijit
-import _WidgetBase = require("dijit/_WidgetBase");
-
 // dojo
 import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Expand/nls/Expand";
@@ -50,9 +47,16 @@ import ExpandViewModel = require("esri/widgets/Expand/ExpandViewModel");
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, isWidget, isWidgetBase, renderable, tsx } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  isWidget,
+  hasDomNode,
+  renderable,
+  tsx,
+  DomNodeOwner
+} from "esri/widgets/support/widget";
 
-type ContentSource = string | HTMLElement | Widget | _WidgetBase;
+type ContentSource = string | HTMLElement | Widget | DomNodeOwner;
 
 const CSS = {
   base: "esri-expand esri-widget",
@@ -199,21 +203,6 @@ class Expand extends declared(Widget) {
    *      content: node
    *    });
    *    view.ui.add(expand, "top-right");
-   *
-   * @example
-   * // D. specify content with a Dijit
-   *    var button = new Button({  // "dijit/form/Button"
-   *      label: "I'm a dijit!"
-   *    });
-   *    button.startup();
-   *
-   *    var expand = new Expand({
-   *      expandIconClass: "esri-icon-right-arrow",
-   *      expanded: true,
-   *      view: view,
-   *      content: button
-   *    });
-   *    view.ui.add(expand, "top-left");
    *
    * @name content
    * @instance
@@ -460,6 +449,9 @@ class Expand extends declared(Widget) {
       [collapseIconClass]: expanded,
       [expandIconClass]: !expanded
     };
+    if (collapseIconClass === expandIconClass) {
+      expandIconClasses[collapseIconClass] = true;
+    }
 
     const containerExpanded = {
       [CSS.containerExpanded]: expanded
@@ -556,7 +548,7 @@ class Expand extends declared(Widget) {
       return <div bind={content} afterCreate={this._attachToNode} />;
     }
 
-    if (isWidgetBase(content)) {
+    if (hasDomNode(content)) {
       return <div bind={content.domNode} afterCreate={this._attachToNode} />;
     }
 

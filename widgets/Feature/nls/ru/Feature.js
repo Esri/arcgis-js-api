@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Объект",attach:"Вложения",fields:"Поля",fieldsSummary:"Список атрибутов и значений",media:"Медиа",next:"Следующий",noTitle:"Без названия",previous:"Предыдущий",lastEdited:"Последнее изменение {date}.",lastCreated:"Создано {date}.",lastEditedByUser:"Последнее изменение от {user} {date}.",lastCreatedByUser:"Создано {user} {date}."});

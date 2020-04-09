@@ -15,6 +15,12 @@
     *:after {
       box-sizing: inherit;
     }
+    &#{&}--disabled {
+      & > * {
+        pointer-events: none;
+        opacity: $opacity--disabled;
+      }
+    }
   }
   .esri-widget__anchor {
     text-decoration: none;
@@ -206,6 +212,7 @@
     font-family: inherit;
     font-size: $font-size;
     &[type="text"],
+    &[type="password"],
     &[type="number"] {
       height: $button-height;
       padding: 0 0.5em;
@@ -247,6 +254,18 @@
       border: 1px solid $button-color--hover;
       color: $button-color--inverse;
     }
+    &.esri-button--small {
+      font-size: $font-size--small;
+      min-height: $button-height--half;
+    }
+    &.esri-button--half {
+      display: inline-block;
+      width: 50%;
+    }
+    &.esri-button--third {
+      display: inline-block;
+      width: 33%;
+    }
   }
 
   .esri-button--secondary {
@@ -269,6 +288,34 @@
   .esri-button--disabled {
     opacity: $opacity--disabled;
     pointer-events: none;
+  }
+
+  .esri-button--drill-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background-color;
+    cursor: pointer;
+    border: none;
+    border-radius: $border-radius;
+    text-align: unset;
+    text-decoration: none;
+    padding: $cap-spacing $side-spacing--half;
+    margin: $cap-spacing $side-spacing--half;
+    outline-offset: -4px;
+    transition: background-color 125ms ease-in-out;
+    @include borderBoxShadow();
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+    }
+    &__title {
+      font-size: $font-size;
+      font-family: $font-family;
+    }
+    [class*="esri-icon"] {
+      padding: 0 $side-spacing--half;
+    }
   }
 
   [class*="esri-icon"] {
@@ -411,7 +458,7 @@
     }
     .esri-expand .esri-widget--panel,
     .esri-expand .esri-widget--panel-height-only,
-    .esri-component .esri-widget--panel,
+    .esri-component > .esri-widget--panel,
     .esri-component.esri-widget--panel {
       width: $panel-width;
     }

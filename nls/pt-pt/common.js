@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({about:"Sobre",add:"Adicionar",all:"Todos",apply:"Aplicar",auth:{logOut:"Terminar sessão",signIn:"Iniciar sessão"},back:"Voltar",cancel:"Cancelar",change:"Alterar",clear:"Limpar",close:"Fechar",collapse:"Recolher",configure:"Configurar",control:{pause:"Pausa",play:"Reproduzir",resume:"Continuar",stop:"Paragem"},copy:"Copiar",create:"Criar",cut:"Cortar",delete:"Eliminar",details:"Detalhes",done:"Terminado",dragHandleTitle:"arrastar/reordenar",dragHandleLabel:"Ative o botão reordenar e utilize as teclas de seta para reordenar a lista ou utilize o rato para arrastar/reordenar. Prima Escape para cancelar a reordenação.",edit:"Editar",error:"Erro",esri:"Esri",exit:"Sair",expand:"Expandir",fieldsSummary:"Lista de atributos e valores",find:"Pesquisar",form:{no:"Não",ok:"OK",password:"Palavra passe",submit:"Enviar",username:"Nome de utilizador",yes:"Sim"},help:"Ajuda",home:"Página Inicial",info:"Informação",information:"Informação",layer:"Camada",loading:"A Carregar",maximize:"Maximizar",menu:"Menu",more:"Mais",none:"Nenhum",open:"Abrir",pagination:{first:"Primeiro",last:"Último",next:"Próximo",page:"Página",pageText:"{index} do {total}",previous:"Anterior"},paste:"Colar",preview:"Pré-visualizar",print:"Imprimir",publish:"Publicar",redo:"Refazer",refresh:"Atualizar",remove:"Remover",rename:"Renomear",reset:"Redefinir",restore:"Restaurar",save:"Guardar",search:"Pesquisar",searching:"Pesquisando",select:"Selecionar",settings:"Definições",sort:"Ordenar",share:"Partilhar",title:"Título",untitled:"Sem título",unnamed:"Sem nome",update:"Atualizar",upload:"Carregar",undo:"Desfazer",view:"Visualização",visibility:{hide:"Ocultar",show:"Mostrar",toggle:"Alternar"},warning:"Aviso"});

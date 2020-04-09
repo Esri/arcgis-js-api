@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Εισαγάγετε σημειώσεις εδώ",printDisclaimer:"Οι οδηγίες παρέχονται μόνο για σκοπούς προγραμματισμού και διέπονται από τους <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>όρους χρήσης υπηρεσιών της Esri</a>. Ενδέχεται να υπάρχουν δυναμικές οδικές συνθήκες οι οποίες επηρεάζουν την ορθότητα των οδηγιών σας και πρέπει να ληφθούν υπόψη σε συνδυασμό με σήματα και νομικούς περιορισμούς. Η συνολική ευθύνη της χρήσης βαρύνει αποκλειστικά εσάς.",printoutError:"Φαίνεται να έχει προκύψει κάποιο σφάλμα."});

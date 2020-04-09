@@ -306,6 +306,7 @@
   }
   .esri-slider__tick-label {
     position: absolute;
+    width: max-content;
   }
 
   [dir="rtl"] {

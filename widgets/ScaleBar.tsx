@@ -42,7 +42,7 @@ import * as i18n from "dojo/i18n!esri/widgets/ScaleBar/nls/ScaleBar";
 
 // esri.core
 import { createScreenPoint } from "esri/core/screenUtils";
-import { whenTrue } from "esri/core/watchUtils";
+import { watch, whenTrue } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -115,7 +115,16 @@ class ScaleBar extends declared(Widget) {
   }
 
   postInitialize(): void {
-    this.own([whenTrue(this, "view.stationary", () => this.scheduleRender())]);
+    this.own([
+      whenTrue(this, "view.stationary", () => this.scheduleRender()),
+
+      watch(this, ["view.center", "view.scale", "view.zoom"], () => {
+        if (!this.view.stationary) {
+          return;
+        }
+        this.scheduleRender();
+      })
+    ]);
   }
 
   //--------------------------------------------------------------------------

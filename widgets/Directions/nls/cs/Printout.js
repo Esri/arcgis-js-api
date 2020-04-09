@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Sem zadat poznámky",printDisclaimer:"Trasy jsou poskytnuty pouze pro účely plánování a vztahují se na ně <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>podmínky používání Esri</a>. Měnící se dopravní podmínky mohou způsobit nesrovnalosti vzhledem k naplánované trase a je nutné s nimi počítat. Platí to i pro značení a zákonná omezení.",printoutError:"Vypadá to, že došlo k chybě."});

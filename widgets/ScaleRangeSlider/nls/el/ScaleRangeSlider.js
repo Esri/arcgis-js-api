@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Ρυθμιστικό εύρους κλίμακας",noLimit:"Δεν υπάρχει όριο",preview:"Προεπισκόπηση",currentScaleTooltip:"Τρέχουσα κλίμακα χάρτη ({scaleLabel})",customScaleInputTooltip:"Πληκτρολογήστε μια κλίμακα.",current:"Τρέχον",setTo:"Ορισμός σε",selectOne:"(επιλέξτε ένα)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Κόσμος",continent:"Ήπειρος",countriesBig:"Χώρες",countriesSmall:"Χώρα",statesProvinces:"Πολιτείες/Νομοί",stateProvince:"Πολιτεία/Νομός",counties:"Επαρχίες",county:"Επαρχία",metropolitanArea:"Μητροπολιτική περιοχή",cities:"Πόλεις",city:"Πόλη",town:"Κωμόπολη",neighborhood:"Γειτονιά",streets:"Δρόμοι",street:"Οδός",buildings:"Κτίρια",building:"Κτίριο",smallBuilding:"Μικρό κτίσμα",rooms:"Κανάλια συνομιλίας",room:"Κανάλι συνομιλίας"},featuredScaleLabels:{custom:"Εξατομίκευση",current:"Τρέχουσα προβολή χάρτη",world:"Κόσμος",continent:"Ήπειρος",countriesBig:"Χώρες - Σε μεγέθυνση",countriesSmall:"Χώρες - Σε σμίκρυνση",statesProvinces:"Περιφέρειες/Νομοί",stateProvince:"Πολιτεία (Νομός)/Επαρχία",counties:"Κομητείες",county:"Κομητεία",metropolitanArea:"Μητροπολιτική περιοχή",cities:"Πόλεις",city:"Πόλη",town:"Κωμόπολη",neighborhood:"Γειτονιά",streets:"Οδοί",street:"Οδός",buildings:"Κτήρια",building:"Κτήριο",smallBuilding:"Μικρό κτίσμα",rooms:"Αίθουσες",room:"Αίθουσα"}});

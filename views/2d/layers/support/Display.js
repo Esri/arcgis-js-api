@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/tsSupport/assignHelper","../../engine","../../engine/BitmapContainer"],function(e,t,i,a,n,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t){var i=e.call(this,null)||this;return i.requestRender=i.requestRender.bind(i),i._layerView=t,i._canvas=document.createElement("canvas"),i._context=i._canvas.getContext("2d"),i._bitmap=new n.Bitmap,i._bitmap.stage=i.stage,i.addChild(i._bitmap),i}return i(t,e),t.prototype.doRender=function(t){var i=t.state,n=this._createCustomRenderParams(t),o=this._canvas,r=this._bitmap,s=window.devicePixelRatio;o.width=i.size[0]*s,o.height=i.size[1]*s,r.resolution=i.resolution;var p=i.clone();p.pixelRatio=s,r.pixelRatio=s,n.state=p,r.x=i.viewpoint.targetGeometry.x-i.extent.width/2,r.y=i.viewpoint.targetGeometry.y+i.extent.height/2,this._layerView.render(n),r.source=this._canvas,r.rotation=i.rotation,e.prototype.doRender.call(this,a({},t,{state:p}))},t.prototype._createCustomRenderParams=function(e){return{globalOpacity:e.globalOpacity,state:e.state,stationary:e.stationary,pixelRatio:window.devicePixelRatio,context:this._context}},t}(o.BitmapContainer);t.Display=r,t.default=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../../core/tsSupport/assignHelper","../../engine","../../engine/BitmapContainer"],(function(e,t,i,a,n,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t){var i=e.call(this,null)||this;return i.requestRender=i.requestRender.bind(i),i._layerView=t,i._canvas=document.createElement("canvas"),i._context=i._canvas.getContext("2d"),i._bitmap=new n.Bitmap,i._bitmap.stage=i.stage,i.addChild(i._bitmap),i}return i(t,e),t.prototype.doRender=function(t){var i=t.state,n=this._createCustomRenderParams(t),o=this._canvas,r=this._bitmap,s=window.devicePixelRatio;o.width=i.size[0]*s,o.height=i.size[1]*s,r.resolution=i.resolution;var p=i.clone();p.pixelRatio=s,r.pixelRatio=s,n.state=p,r.x=i.viewpoint.targetGeometry.x-i.extent.width/2,r.y=i.viewpoint.targetGeometry.y+i.extent.height/2,this._layerView.render(n),r.source=this._canvas,r.rotation=i.rotation,e.prototype.doRender.call(this,a({},t,{state:p}))},t.prototype._createCustomRenderParams=function(e){return{globalOpacity:e.globalOpacity,state:e.state,stationary:e.stationary,pixelRatio:window.devicePixelRatio,context:this._context}},t}(o.BitmapContainer);t.Display=r,t.default=r}));

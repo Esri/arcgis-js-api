@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,o,p,u){Object.defineProperty(r,"__esModule",{value:!0});var c=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type=null,r}return t(r,e),o([u.property({type:["selection","cluster"],readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o([u.subclass("esri.layers.support.FeatureReduction")],r)}(u.declared(p.JSONSupport));r.FeatureReduction=c,r.default=c});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,t,o,p,u){Object.defineProperty(r,"__esModule",{value:!0});var c=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type=null,r}return t(r,e),o([u.property({type:["selection","cluster"],readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o([u.subclass("esri.layers.support.FeatureReduction")],r)}(u.declared(p.JSONSupport));r.FeatureReduction=c,r.default=c}));

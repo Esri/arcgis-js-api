@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/makeTemplateObjectHelper","../shaderModules/interfaces"],function(o,e,c,n){function r(o){o.vertex.code.add(n.glsl(l||(l=c(["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "],["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "]))))}Object.defineProperty(e,"__esModule",{value:!0}),e.Offset=r;var l});
+define(["require","exports","../../../../../core/tsSupport/makeTemplateObjectHelper","../shaderModules/interfaces"],(function(o,e,c,n){var r;Object.defineProperty(e,"__esModule",{value:!0}),e.Offset=function(o){o.vertex.code.add(n.glsl(r||(r=c(["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "],["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "]))))}}));

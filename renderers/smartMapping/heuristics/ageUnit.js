@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","../../../core/Error","../statistics/summaryStatisticsForAge","../statistics/support/ageUtils","../support/utils"],function(t,i,e,n,s,r,a,u){function o(t){var i=Math.abs(t.avg),e=null;return a.supportedAgeUnits.some(function(t){var n=u.unitValueInDays[t];return i>2*n&&(e=t),!!e}),e}function c(t){return n(this,void 0,void 0,function(){var i,n,a,u,c,l,f,v;return e(this,function(e){switch(e.label){case 0:return i=t.view,n=t.layer,a=t.startTime,u=t.endTime,c="days",[4,r({view:i,layer:n,startTime:a,endTime:u,unit:c})];case 1:if(l=e.sent(),null==l.avg)throw new s("age-unit:insufficient-info","'avg' statistics is invalid");return f=o(l),f===c?[2,{unit:f,statistics:l}]:[4,r({view:i,layer:n,startTime:a,endTime:u,unit:f})];case 2:if(v=e.sent(),null==v.avg)throw new s("age-unit:insufficient-info","'avg' statistics is invalid");return[2,{unit:f,statistics:v}]}})})}return c});
+define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","../../../core/tsSupport/assignHelper","../../../core/Error","../statistics/summaryStatisticsForAge","../statistics/support/ageUtils","../support/utils"],(function(t,i,s,n,e,r,a,u,o){return function(t){return n(this,void 0,void 0,(function(){var i,n,c,l,p;return s(this,(function(s){switch(s.label){case 0:return n=e({},t,{unit:i="days"}),[4,a(n)];case 1:if(null==(c=s.sent()).avg)throw new r("age-unit:insufficient-info","'avg' statistics is invalid");return f=c,g=Math.abs(f.avg),v=null,u.supportedAgeUnits.some((function(t){var i=o.unitValueInDays[t];return g>2*i&&(v=t),!!v})),(l=v)===i?[2,{unit:l,statistics:c}]:(n.unit=l,[4,a(n)]);case 2:if(null==(p=s.sent()).avg)throw new r("age-unit:insufficient-info","'avg' statistics is invalid");return[2,{unit:l,statistics:p}]}var f,g,v}))}))}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/Warning","../../PointCloudClassBreaksRenderer","../../PointCloudRGBRenderer","../../PointCloudStretchRenderer","../../PointCloudUniqueValueRenderer"],function(e,r,n,o,t,u,d){function i(e){return e?a[e.type]||null:null}function l(e,r,o){var t=i(e);if(t){var u=new t;return u.read(e,o),u}return o&&o.messages&&e&&o.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:o})),null}function s(e){var r=i(e);return r?r.fromJSON(e):null}Object.defineProperty(r,"__esModule",{value:!0});var a={pointCloudClassBreaksRenderer:o,pointCloudRGBRenderer:t,pointCloudStretchRenderer:u,pointCloudUniqueValueRenderer:d};r.read=l,r.fromJSON=s});
+define(["require","exports","../../../core/Warning","../../PointCloudClassBreaksRenderer","../../PointCloudRGBRenderer","../../PointCloudStretchRenderer","../../PointCloudUniqueValueRenderer"],(function(e,r,n,o,t,u,d){Object.defineProperty(r,"__esModule",{value:!0});var i={pointCloudClassBreaksRenderer:o,pointCloudRGBRenderer:t,pointCloudStretchRenderer:u,pointCloudUniqueValueRenderer:d};function l(e){return e&&i[e.type]||null}r.read=function(e,r,o){var t=l(e);if(t){var u=new t;return u.read(e,o),u}return o&&o.messages&&e&&o.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:o})),null},r.fromJSON=function(e){var r=l(e);return r?r.fromJSON(e):null}}));

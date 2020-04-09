@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"圖徵表單",empty:"- 空 -",validationErrors:{cannotBeNull:"請輸入一個值",outsideRange:"值必須介於 {min} 與 {max} 之間",invalidCodedValue:"值必須是其中一個列出值。",invalidType:"不是有效值"}});

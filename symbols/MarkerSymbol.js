@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/jsonMap","../core/screenUtils","../core/accessorSupport/decorators","./Symbol"],function(e,r,t,o,p,s,n,i){var u=new p.default({esriSMS:"simple-marker",esriPMS:"picture-marker"});return function(e){function r(r){var t=e.call(this,r)||this;return t.angle=0,t.type=null,t.xoffset=0,t.yoffset=0,t.size=9,t}return t(r,e),o([n.property({type:Number,json:{read:function(e){return e&&-1*e},write:function(e,r){return r.angle=e&&-1*e}}})],r.prototype,"angle",void 0),o([n.property({type:u.apiValues,readOnly:!0,json:{type:u.jsonValues}})],r.prototype,"type",void 0),o([n.property({type:Number,cast:s.toPt,json:{write:!0}})],r.prototype,"xoffset",void 0),o([n.property({type:Number,cast:s.toPt,json:{write:!0}})],r.prototype,"yoffset",void 0),o([n.property({type:Number,cast:function(e){return"auto"===e?e:s.toPt(e)},json:{write:!0}})],r.prototype,"size",void 0),r=o([n.subclass("esri.symbols.MarkerSymbol")],r)}(n.declared(i))});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/jsonMap","../core/screenUtils","../core/accessorSupport/decorators","./Symbol"],(function(e,t,r,o,s,p,n,i){var u=new s.default({esriSMS:"simple-marker",esriPMS:"picture-marker"});return function(e){function t(t){var r=e.call(this,t)||this;return r.angle=0,r.type=null,r.xoffset=0,r.yoffset=0,r.size=9,r}return r(t,e),t.prototype.hash=function(){return this.type+"."+this.angle+"."+this.size+"."+this.xoffset+"."+this.yoffset},o([n.property({type:Number,json:{read:function(e){return e&&-1*e},write:function(e,t){return t.angle=e&&-1*e}}})],t.prototype,"angle",void 0),o([n.property({type:u.apiValues,readOnly:!0,json:{type:u.jsonValues}})],t.prototype,"type",void 0),o([n.property({type:Number,cast:p.toPt,json:{write:!0}})],t.prototype,"xoffset",void 0),o([n.property({type:Number,cast:p.toPt,json:{write:!0}})],t.prototype,"yoffset",void 0),o([n.property({type:Number,cast:function(e){return"auto"===e?e:p.toPt(e)},json:{write:!0}})],t.prototype,"size",void 0),t=o([n.subclass("esri.symbols.MarkerSymbol")],t)}(n.declared(i))}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../layers/support/timeUtils"],function(e,D,I){Object.defineProperty(D,"__esModule",{value:!0}),D.DESIRED_ANIMATION_FPS=25,D.DESIRED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_ANIMATION_FPS),D.DESIRED_DRAPED_ANIMATION_FPS=20,D.DESIRED_DRAPED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_DRAPED_ANIMATION_FPS)});
+define(["require","exports","../../../layers/support/timeUtils"],(function(e,D,I){Object.defineProperty(D,"__esModule",{value:!0}),D.DESIRED_ANIMATION_FPS=25,D.DESIRED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_ANIMATION_FPS),D.DESIRED_DRAPED_ANIMATION_FPS=20,D.DESIRED_DRAPED_ANIMATION_MS=I.Milliseconds(1e3/D.DESIRED_DRAPED_ANIMATION_FPS)}));

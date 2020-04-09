@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"見通し線",hint:"解析を開始するには、シーン内をクリックして観測点と 1 つまたは複数のターゲットを配置します",unsupported:"[見通し] は、SceneView でのみサポートされています。",done:"終了",newAnalysis:"新しい解析",continueAnalysis:"解析の続行"});

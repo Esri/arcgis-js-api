@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({streets:"Ulice",satellite:"Snímky",hybrid:"Snímky s popisky",terrain:"Terén s popisky",topo:"Topografická",gray:"Světle šedý podklad","dark-gray":"Tmavě šedý podklad",oceans:"Oceány","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mapa světa s uliční sítí (noc)","streets-relief-vector":"Mapa světa s uliční sítí (s reliéfem)","streets-navigation-vector":"Navigační mapa světa"});

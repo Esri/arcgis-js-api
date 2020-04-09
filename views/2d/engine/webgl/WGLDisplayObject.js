@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./WGLDisplayRecord","./collisions/Metric","./util/serializationUtils"],function(i,t,o,c,d){return function(){function n(i){this.insertAfter=null,this.id=i,this.displayRecords=[],this.metrics=[]}return n.prototype.copy=function(){var i=new n(this.id);return i.set(this),i},n.prototype.clone=function(){var i=new n(this.id);return i.displayRecords=this.displayRecords.map(function(i){return i.clone()}),i.metrics=this.metrics.map(function(i){return i.clone()}),i.insertAfter=this.insertAfter,i},n.prototype.set=function(i){this.id=i.id,this.displayRecords=i.displayRecords,this.metrics=i.metrics,this.insertAfter=i.insertAfter},n.prototype.serialize=function(i){return i.push(this.id),d.serializeList(i,this.metrics),d.serializeList(i,this.displayRecords),i},n.deserialize=function(i){var t=i.readInt32(),e=new n(t),s={id:t},r=d.deserializeList(i,c.default);return r.length&&(e.metrics=r),e.displayRecords=d.deserializeList(i,o,s),e},n}()});
+define(["require","exports","./WGLDisplayRecord","./collisions/Metric","./util/serializationUtils"],(function(i,t,e,s,r){return function(){function i(i){this.insertAfter=null,this.id=i,this.displayRecords=[],this.metrics=[]}return i.prototype.copy=function(){var t=new i(this.id);return t.set(this),t},i.prototype.clone=function(){var t=new i(this.id);return t.displayRecords=this.displayRecords.map((function(i){return i.clone()})),t.metrics=this.metrics.map((function(i){return i.clone()})),t.insertAfter=this.insertAfter,t},i.prototype.set=function(i){this.id=i.id,this.displayRecords=i.displayRecords,this.metrics=i.metrics,this.insertAfter=i.insertAfter},i.prototype.serialize=function(i){return i.push(this.id),r.serializeList(i,this.metrics),r.serializeList(i,this.displayRecords),i},i.deserialize=function(t){var n=t.readInt32(),o=new i(n),c={id:n},d=r.deserializeList(t,s.default);return d.length&&(o.metrics=d),o.displayRecords=r.deserializeList(t,e,c),o},i}()}));

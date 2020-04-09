@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Mittakaavan arvoalueen liukusäädin",noLimit:"No Limit",preview:"Esikatselu",currentScaleTooltip:"Nykyisen kartan mittakaava ({scaleLabel})",customScaleInputTooltip:"Kirjoita mittakaava.",current:"Nykyinen",setTo:"Aseta arvoksi",selectOne:"(valitse yksi)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Maailma",continent:"Continent",countriesBig:"Maat",countriesSmall:"Maa",statesProvinces:"Osavaltiot",stateProvince:"Osavaltio/valtio",counties:"Maakunnat",county:"Maakunta",metropolitanArea:"Suurkaupunkialue",cities:"Kaupungit",city:"kaupunki",town:"Kaupunki",neighborhood:"Neighborhood",streets:"Streets",street:"Street",buildings:"Rakennukset",building:"Rakennus",smallBuilding:"Pieni rakennus",rooms:"Tilat",room:"Huone"},featuredScaleLabels:{custom:"Mukautettu",current:"Nykyinen karttanäkymä",world:"Maailma",continent:"Maanosa",countriesBig:"Maat, suuret",countriesSmall:"Maat, pienet",statesProvinces:"Osavaltiot/Provinssit",stateProvince:"Osavaltio/Provinssi",counties:"Maakunnat",county:"Maakunta",metropolitanArea:"Suurkaupunkialue",cities:"Kaupungit",city:"Kaupunki",town:"Kaupunki",neighborhood:"Naapurusto",streets:"Kadut",street:"Katu",buildings:"Rakennukset",building:"Rakennus",smallBuilding:"Pieni rakennus",rooms:"Tilat",room:"Huone"}});

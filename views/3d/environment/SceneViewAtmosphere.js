@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,t,r,o,n,i){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}r(t,e),n=t,Object.defineProperty(t.prototype,"quality",{set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)},enumerable:!0,configurable:!0}),t.prototype.clone=function(){return new n({quality:this.quality})};var n;return o([i.property({type:["low","high"],value:"low"})],t.prototype,"quality",null),t=n=o([i.subclass("esri.views.3d.environment.SceneViewAtmosphere")],t)}(i.declared(n));t.SceneViewAtmosphere=u,t.default=u});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(e,t,r,o,n,i){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}var n;return r(t,e),n=t,Object.defineProperty(t.prototype,"quality",{set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)},enumerable:!0,configurable:!0}),t.prototype.clone=function(){return new n({quality:this.quality})},o([i.property({type:["low","high"],value:"low"})],t.prototype,"quality",null),t=n=o([i.subclass("esri.views.3d.environment.SceneViewAtmosphere")],t)}(i.declared(n));t.SceneViewAtmosphere=u,t.default=u}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ObjectPool"],function(o,e,n){return function(){function o(o,e,n){this.row=o,this.colFrom=e,this.colTo=n}return o.pool=new n(o,!0),o}()});
+define(["require","exports","../../../core/ObjectPool"],(function(o,e,n){return function(){function o(o,e,n){this.row=o,this.colFrom=e,this.colTo=n}return o.pool=new n(o,!0),o}()}));

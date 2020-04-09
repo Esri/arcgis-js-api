@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../layers/support/fieldUtils","./SceneLayerAdapter"],function(e,t,r,s,o,n,i){return function(e){function t(t){return e.call(this,t)||this}return r(t,e),t.prototype.getField=function(e){return void 0===e&&(e=""),n.getField(this.layer.fields,e)},t.prototype.getFieldUsageInfo=function(e){var t=this.getField(e);if(!t)return null;var r=this._hasCachedStatistics(t.name);return{supportsLabelingInfo:r,supportsPopupTemplate:r,supportsRenderer:r,supportsLayerQuery:!1,supportsStatistics:r}},t.prototype.getFieldDomain=function(){return null},t.prototype.load=function(e){var t=this,r=this.layer.load(e).then(function(){t.geometryType="point",t.objectIdField=null,t.supportsSQLExpression=!1,t.hasQueryEngine=!1});return this.addResolvingPromise(r),this.when()},t=s([o.subclass("esri.renderers.smartMapping.support.adapters.PointCloudLayerAdapter")],t)}(o.declared(i))});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/promiseUtils","../../../../core/accessorSupport/decorators","../../../../layers/support/fieldUtils","./SceneLayerAdapter"],(function(e,t,r,s,o,i,n,p){return function(e){function t(t){return e.call(this,t)||this}return r(t,e),t.prototype.getField=function(e){return void 0===e&&(e=""),n.getField(this.layer.fields,e)},t.prototype.getFieldUsageInfo=function(e){var t=this.getField(e);if(!t)return null;var r=this._hasCachedStatistics(t.name);return{supportsLabelingInfo:r,supportsPopupTemplate:r,supportsRenderer:r,supportsLayerQuery:!1,supportsStatistics:r}},t.prototype.getFieldDomain=function(){return null},t.prototype.load=function(e){var t=this,r=this.layer.load(e).then((function(){t.geometryType="point",t.objectIdField=null,t.supportsSQLExpression=!1,t.hasQueryEngine=!1}));return this.addResolvingPromise(r),o.resolve(this)},t=s([i.subclass("esri.renderers.smartMapping.support.adapters.PointCloudLayerAdapter")],t)}(i.declared(p))}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Koordinaattikonversio",abbreviatedDirections:{north:"P",south:"E",east:"I",west:"L"},addConversion:"Lisää muunnos",captureMode:"Tallenna tila",changeCoordinateDisplay:"Muuta koordinaattinäyttöä",convert:"Muunna",conversionOutputSuffix:"muunnoksen tulosaineisto",copySuccessMessage:"Koordinaatti kopioitu leikepöydälle",defaultPattern:"Palauta oletusarvoon",goTo:"Siirry sijaintiin",inputCoordTitle:"Lähtöaineiston koordinaatti",invalidCoordinate:"Virheellinen koordinaatti",liveMode:"Reaaliaikainen tila",locationOffBasemap:"Lähtöaineiston koordinaatti on taustakartan laajuuden ulkopuolella",noBasemap:"Ei taustakarttaa.",noLocation:"Ei sijaintia",removeConversion:"Poista muunnos",selectFormat:"Valitse muoto",settingsTitle:"Muotoiluasetukset"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Detay",attach:"Ekler",fields:"Alanlar",fieldsSummary:"Öznitelik ve değer listesi",media:"Ortam",next:"Sonraki",noTitle:"Adsız",previous:"Önceki",lastEdited:"Son düzenlenme tarihi {date}.",lastCreated:"Oluşturulduğu tarih {date}.",lastEditedByUser:"En son {user} tarafından {date} tarihinde düzenlenmiştir.",lastCreatedByUser:"{user} tarafından {date} tarihinde oluşturulmuştur."});

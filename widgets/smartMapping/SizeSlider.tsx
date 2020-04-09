@@ -247,10 +247,10 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
    *   For single-color visualizations where
    *   only a Size variable is present, you should set this color to match
    *   the color of the symbol in the {@link module:esri/renderers/SimpleRenderer}.
-   * @todo @autocast { "name": "trackFillColor", "value": "Object | Number[] | String" }
+   * @todo doc later \@autocast { "name": "trackFillColor", "value": "Object | Number[] | String" }
    * @property {module:esri/Color} [trackBackgroundColor=new Color([224, 224, 224])] - The background color of the
    *   slider's track. Generally, this color should be subdued and not interfere with the `trackFillColor`.
-   * @todo @autocast { "name": "trackBackgroundColor", "value": "Object | Number[] | String" }
+   * @todo doc later \@autocast { "name": "trackBackgroundColor", "value": "Object | Number[] | String" }
    *
    * @example
    * slider.style = {

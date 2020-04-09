@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/typedArrayUtil","../../webgl-engine/lib/geometryDataUtils"],function(r,e,n,t){function a(r){return t.generateDefaultIndexArray(r)}function i(r){return"number"==typeof r?a(r):n.isUint16Array(r)||n.isUint8Array(r)?new Uint32Array(r):r}function f(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r)for(var a=0,i=0;i<n;i+=1)i%2==0?(t[a++]=i,t[a++]=i+1,t[a++]=i+2):(t[a++]=i+1,t[a++]=i,t[a++]=i+2);else for(var a=0,i=0;i<n;i+=1)if(i%2==0){var f=r[i],o=r[i+1],u=r[i+2];t[a++]=f,t[a++]=o,t[a++]=u}else{var f=r[i+1],o=r[i],u=r[i+2];t[a++]=f,t[a++]=o,t[a++]=u}return t}function o(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r){for(var a=0,i=0;i<n;++i)t[a++]=0,t[a++]=i+1,t[a++]=i+2;return t}for(var f=r[0],o=r[1],a=0,i=0;i<n;++i){var u=r[i+2];t[a++]=f,t[a++]=o,t[a++]=u,o=u}return t}Object.defineProperty(e,"__esModule",{value:!0}),e.linearIndexArray=a,e.trianglesToTriangles=i,e.triangleStripToTriangles=f,e.triangleFanToTriangles=o});
+define(["require","exports","../../../../core/typedArrayUtil","../../webgl-engine/lib/geometryDataUtils"],(function(r,e,n,t){function i(r){return t.generateDefaultIndexArray(r)}Object.defineProperty(e,"__esModule",{value:!0}),e.linearIndexArray=i,e.trianglesToTriangles=function(r){return"number"==typeof r?i(r):n.isUint16Array(r)||n.isUint8Array(r)?new Uint32Array(r):r},e.triangleStripToTriangles=function(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r)for(var i=0,a=0;a<n;a+=1)a%2==0?(t[i++]=a,t[i++]=a+1,t[i++]=a+2):(t[i++]=a+1,t[i++]=a,t[i++]=a+2);else for(i=0,a=0;a<n;a+=1)if(a%2==0){var f=r[a],o=r[a+1],u=r[a+2];t[i++]=f,t[i++]=o,t[i++]=u}else{f=r[a+1],o=r[a],u=r[a+2];t[i++]=f,t[i++]=o,t[i++]=u}return t},e.triangleFanToTriangles=function(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r){for(var i=0,a=0;a<n;++a)t[i++]=0,t[i++]=a+1,t[i++]=a+2;return t}var f=r[0],o=r[1];for(i=0,a=0;a<n;++a){var u=r[a+2];t[i++]=f,t[i++]=o,t[i++]=u,o=u}return t}}));

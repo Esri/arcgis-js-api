@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"スライス",cancel:"キャンセル",hint:"シーン内のサーフェスをクリックおよびドラッグしてスライスを開始します。",excludeHint:"ビュー内のレイヤーを選択してスライスから除外",unsupported:"MapView でスライスはサポートされていません。",multipleDisabled:"一度にアクティブにできるスライスは 1 つだけです",newSlice:"新しいスライス",excludedLayers:"除外されたレイヤー",pickLayer:"ビューからレイヤーを選択",excludeLayer:"スライスからレイヤーを除外",includeLayer:"レイヤーをスライスに含める",ground:"地表"});

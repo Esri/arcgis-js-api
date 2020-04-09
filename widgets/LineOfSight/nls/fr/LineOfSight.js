@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Ligne de visée",hint:"Commencez l’analyse en cliquant dans la scène pour placer le point d’observation et une ou plusieurs cibles",unsupported:"La ligne de visée est uniquement prise en charge dans la scène.",done:"Terminé",newAnalysis:"Nouvelle analyse",continueAnalysis:"Continuer l’analyse"});

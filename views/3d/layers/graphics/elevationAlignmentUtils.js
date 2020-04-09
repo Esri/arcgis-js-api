@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../../../core/compilerUtils","../../../../core/libs/gl-matrix-2/mat4","../../../../core/libs/gl-matrix-2/mat4f64","../../../../core/libs/gl-matrix-2/vec3f64","./graphicUtils","../../support/ElevationProvider","../../support/projectionUtils"],(function(e,t,n,r,a,o,i,l,u){function s(e,t,r,a,o){var i=e.z||0,u=r.featureExpressionInfoContext;switch(r.mode){case"on-the-ground":var s=l.getElevationAtPoint(t,e,"ground")||0;return o&&(o.verticalDistanceToGround=0,o.sampledElevation=s),s;case"relative-to-ground":s=l.getElevationAtPoint(t,e,"ground")||0;var f=r.calculateOffsetRenderUnits(a);return null==u&&(f+=i),o&&(o.verticalDistanceToGround=f,o.sampledElevation=s),f+s;case"relative-to-scene":s=l.getElevationAtPoint(t,e,"scene")||0,f=r.calculateOffsetRenderUnits(a);return null==u&&(f+=i),o&&(o.verticalDistanceToGround=f,o.sampledElevation=s),f+s;case"absolute-height":s=r.calculateOffsetRenderUnits(a);if(null==u&&(s+=i),o){var c=l.getElevationAtPoint(t,e,"ground")||0;o.verticalDistanceToGround=s-c,o.sampledElevation=c}return s;default:return n.neverReached(r.mode),0}}var f;Object.defineProperty(t,"__esModule",{value:!0}),t.applyPerVertexElevationAlignment=function(e,t,n,r,a,o,i,l,s,f,v){var d,p,g=c[v.mode],m=0;if(u.bufferToBuffer(e,t,n,r,s.spatialReference,a,l)&&(g.requiresAlignment(v)?(m=g.applyElevationAlignmentBuffer(r,a,o,i,l,s,f,v),d=o,p=i):(d=r,p=a),u.bufferToBuffer(d,s.spatialReference,p,o,f.spatialReference,i,l)))return m},t.evaluateElevationAlignmentAtPoint=s,t.elevationModeChangeUpdateType=function(e,t,n){return null==t||null==n?e.definedChanged:"on-the-ground"===t&&"on-the-ground"===n?e.staysOnTheGround:t===n||"on-the-ground"!==t&&"on-the-ground"!==n?f.UPDATE:e.onTheGroundChanged},t.needsElevationUpdates2D=function(e){return"relative-to-ground"===e||"relative-to-scene"===e},t.needsElevationUpdates3D=function(e){return"absolute-height"!==e},t.applyElevationAlignmentForHUD=function(e,t,n,a,o){var l=s(t,n,o,a,d);i.updateVertexAttributeAuxpos1w(e,d.verticalDistanceToGround);var f=d.sampledElevation,c=r.mat4.copy(v,e.objectTransformation);return p[0]=t.x,p[1]=t.y,p[2]=l,u.computeLinearTransformation(t.spatialReference,p,c,a.spatialReference)?e.objectTransformation=c:console.warn("Could not locate symbol object properly, it might be misplaced"),f},function(e){e[e.NONE=0]="NONE",e[e.UPDATE=1]="UPDATE",e[e.RECREATE=2]="RECREATE"}(f=t.SymbolUpdateType||(t.SymbolUpdateType={}));var c={"absolute-height":{applyElevationAlignmentBuffer:function(e,t,n,r,a,o,i,l){var u=l.calculateOffsetRenderUnits(i),s=l.featureExpressionInfoContext;t*=3,r*=3;for(var f=0;f<a;++f){var c=e[t+0],v=e[t+1],d=e[t+2];n[r+0]=c,n[r+1]=v,n[r+2]=null==s?d+u:u,t+=3,r+=3}return 0},requiresAlignment:function(e){var t=e.meterUnitOffset,n=e.featureExpressionInfoContext;return 0!==t||null!=n}},"on-the-ground":{applyElevationAlignmentBuffer:function(e,t,n,r,a,o){var i=0,l=o.spatialReference;t*=3,r*=3;for(var u=0;u<a;++u){var s=e[t+0],f=e[t+1],c=e[t+2],v=o.getElevation(s,f,c,l,"ground")||0;i+=v,n[r+0]=s,n[r+1]=f,n[r+2]=v,t+=3,r+=3}return i/a},requiresAlignment:function(){return!0}},"relative-to-ground":{applyElevationAlignmentBuffer:function(e,t,n,r,a,o,i,l){var u=0,s=l.calculateOffsetRenderUnits(i),f=l.featureExpressionInfoContext,c=o.spatialReference;t*=3,r*=3;for(var v=0;v<a;++v){var d=e[t+0],p=e[t+1],g=e[t+2],m=o.getElevation(d,p,g,c,"ground")||0;u+=m,n[r+0]=d,n[r+1]=p,n[r+2]=null==f?g+m+s:m+s,t+=3,r+=3}return u/a},requiresAlignment:function(){return!0}},"relative-to-scene":{applyElevationAlignmentBuffer:function(e,t,n,r,a,o,i,l){var u=0,s=l.calculateOffsetRenderUnits(i),f=l.featureExpressionInfoContext,c=o.spatialReference;t*=3,r*=3;for(var v=0;v<a;++v){var d=e[t+0],p=e[t+1],g=e[t+2],m=o.getElevation(d,p,g,c,"scene")||0;u+=m,n[r+0]=d,n[r+1]=p,n[r+2]=null==f?g+m+s:m+s,t+=3,r+=3}return u/a},requiresAlignment:function(){return!0}}},v=a.mat4f64.create(),d={verticalDistanceToGround:0,sampledElevation:0},p=o.vec3f64.create()}));

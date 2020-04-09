@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Közvetlen vonalmérés",hint:"A mérést úgy kell elkezdeni, hogy bele kell kattintani a 3D térképbe az első pont elhelyezéséhez",unsupported:"A 3D közvetlen vonalmérést csak a SceneView támogatja.",distance:"Távolság",direct:"Közvetlen",horizontal:"Vízszintes",vertical:"Függőleges",unit:"Mértékegység",newMeasurement:"Új mérés",units:{metric:"Metrikus",imperial:"Angolszász",kilometers:"kilométer",meters:"méter",miles:"mérföld",inches:"hüvelyk",feet:"láb",yards:"yard","nautical-miles":"Tengeri mérföld","us-feet":"láb (US)","degrees-minutes-seconds":"DMS",degrees:"fok"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./tsSupport/awaiterHelper","./tsSupport/generatorHelper","@dojo/framework/shim/Promise"],function(e,r,t,n){function o(r,o){return t(this,void 0,void 0,function(){var t;return n(this,function(n){switch(n.label){case 0:return[4,new Promise(function(r,t){e(["./sql/WhereClause"],r,t)})];case 1:return t=n.sent().WhereClause,[2,t.create(r,o)]}})})}Object.defineProperty(r,"__esModule",{value:!0}),r.parseWhereClause=o});
+define(["require","exports","./tsSupport/awaiterHelper","./tsSupport/generatorHelper","@dojo/framework/shim/Promise"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0}),r.parseWhereClause=function(r,o){return t(this,void 0,void 0,(function(){return n(this,(function(t){switch(t.label){case 0:return[4,new Promise((function(r,t){e(["./sql/WhereClause"],r,t)}))];case 1:return[2,t.sent().WhereClause.create(r,o)]}}))}))}}));

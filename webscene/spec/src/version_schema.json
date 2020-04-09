@@ -14,14 +14,15 @@
     "1.15",
     "1.16",
     "1.17",
-    "1.18"
+    "1.18",
+    "1.19"
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "version",
         "code": {
-          "version": "1.18"
+          "version": "1.19"
         }
       }
     ]

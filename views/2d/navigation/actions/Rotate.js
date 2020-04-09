@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../geometry","../../../../Viewpoint","../../../../core/Accessor","../../../../core/accessorSupport/decorators","../../../../core/libs/gl-matrix-2/vec2","../../../../core/libs/gl-matrix-2/vec2f64","../../viewpointUtils"],function(e,t,r,o,i,n,c,p,s,a,v){var u=a.vec2f64.create(),d=a.vec2f64.create();return function(e){function t(t){var r=e.call(this,t)||this;return r._previousCenter=a.vec2f64.create(),r.viewpoint=new n({targetGeometry:new i.Point,scale:0,rotation:0}),r}return r(t,e),t.prototype.begin=function(e,t){this.navigation.begin(),s.vec2.set(this._previousCenter,t.center.x,t.center.y)},t.prototype.update=function(e,t){var r=e.state,o=r.size,i=r.padding;s.vec2.set(u,t.center.x,t.center.y),v.getAnchor(d,o,i),e.viewpoint=v.rotateBy(this.viewpoint,e.content.viewpoint,v.angleBetween(d,this._previousCenter,u)),s.vec2.copy(this._previousCenter,u)},t.prototype.end=function(){this.navigation.end()},o([p.property()],t.prototype,"viewpoint",void 0),o([p.property()],t.prototype,"navigation",void 0),t=o([p.subclass("esri.views.2d.actions.Rotate")],t)}(p.declared(c))});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../geometry","../../../../Viewpoint","../../../../core/Accessor","../../../../core/accessorSupport/decorators","../../../../core/libs/gl-matrix-2/vec2","../../../../core/libs/gl-matrix-2/vec2f64","../../viewpointUtils"],(function(e,t,r,o,i,n,c,p,s,a,v){var u=a.vec2f64.create(),d=a.vec2f64.create();return function(e){function t(t){var r=e.call(this,t)||this;return r._previousCenter=a.vec2f64.create(),r.viewpoint=new n({targetGeometry:new i.Point,scale:0,rotation:0}),r}return r(t,e),t.prototype.begin=function(e,t){this.navigation.begin(),s.vec2.set(this._previousCenter,t.center.x,t.center.y)},t.prototype.update=function(e,t){var r=e.state,o=r.size,i=r.padding;s.vec2.set(u,t.center.x,t.center.y),v.getAnchor(d,o,i),e.viewpoint=v.rotateBy(this.viewpoint,e.state.paddedViewState.viewpoint,v.angleBetween(d,this._previousCenter,u)),s.vec2.copy(this._previousCenter,u)},t.prototype.end=function(){this.navigation.end()},o([p.property()],t.prototype,"viewpoint",void 0),o([p.property()],t.prototype,"navigation",void 0),t=o([p.subclass("esri.views.2d.actions.Rotate")],t)}(p.declared(c))}));

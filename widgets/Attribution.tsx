@@ -35,7 +35,7 @@
 import * as i18n from "dojo/i18n!esri/widgets/Attribution/nls/Attribution";
 
 // esri.core
-import watchUtils = require("esri/core/watchUtils");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";

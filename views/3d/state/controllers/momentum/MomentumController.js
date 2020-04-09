@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../ViewAnimation","../../../camera/constraintUtils","../AnimationController","../../../webgl-engine/lib/Camera"],function(e,t,n,i,o,r,a){Object.defineProperty(t,"__esModule",{value:!0});var s=function(e){function t(t,n){var o=e.call(this,new i)||this;return o.view=t,o.beginCamera=new a.default,o.elapsedTimeSec=0,o.constraintOptions={selection:15,interactionType:4,interactionFactor:0,interactionStartCamera:new a.default,interactionDirection:null,tiltMode:0},o.constraintOptions.interactionType=n,o}return n(t,e),Object.defineProperty(t.prototype,"steppingFinished",{get:function(){return this.momentum.isFinished(this.elapsedTimeSec)},enumerable:!0,configurable:!0}),t.prototype.onControllerStart=function(t){this.beginCamera.copyFrom(t),this.constraintOptions.interactionStartCamera=this.beginCamera,e.prototype.onControllerStart.call(this,t)},t.prototype.stepController=function(e,t){t.copyViewFrom(this.beginCamera),this.elapsedTimeSec+=e,this.momentumStep(this.elapsedTimeSec,t),o.applyAll(this.view,t,this.constraintOptions)},t}(r.AnimationController);t.MomentumController=s});
+define(["require","exports","../../../../../core/tsSupport/extendsHelper","../../../../ViewAnimation","../../../camera/constraintUtils","../AnimationController","../../../webgl-engine/lib/Camera"],(function(e,t,n,i,o,r,a){Object.defineProperty(t,"__esModule",{value:!0});var s=function(e){function t(t,n){var o=e.call(this,new i)||this;return o.view=t,o.beginCamera=new a.default,o.elapsedTimeSec=0,o.constraintOptions={selection:15,interactionType:4,interactionFactor:0,interactionStartCamera:new a.default,interactionDirection:null,tiltMode:0},o.constraintOptions.interactionType=n,o}return n(t,e),Object.defineProperty(t.prototype,"steppingFinished",{get:function(){return this.momentum.isFinished(this.elapsedTimeSec)},enumerable:!0,configurable:!0}),t.prototype.onControllerStart=function(t){this.beginCamera.copyFrom(t),this.constraintOptions.interactionStartCamera=this.beginCamera,e.prototype.onControllerStart.call(this,t)},t.prototype.stepController=function(e,t){t.copyViewFrom(this.beginCamera),this.elapsedTimeSec+=e,this.momentumStep(this.elapsedTimeSec,t),o.applyAll(this.view,t,this.constraintOptions)},t}(r.AnimationController);t.MomentumController=s}));

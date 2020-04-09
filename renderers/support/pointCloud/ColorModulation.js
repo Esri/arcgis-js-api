@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],function(e,r,o,t,l,p){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.field=null,r.minValue=0,r.maxValue=255,r}o(r,e),l=r,r.prototype.clone=function(){return new l({field:this.field,minValue:this.minValue,maxValue:this.maxValue})};var l;return t([p.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),t([p.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"minValue",void 0),t([p.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"maxValue",void 0),r=l=t([p.subclass("esri.renderers.support.pointCloud.ColorModulation")],r)}(p.declared(l.JSONSupport));r.ColorModulation=u,r.default=u});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,r,o,t,l,p){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.field=null,r.minValue=0,r.maxValue=255,r}var l;return o(r,e),l=r,r.prototype.clone=function(){return new l({field:this.field,minValue:this.minValue,maxValue:this.maxValue})},t([p.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),t([p.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"minValue",void 0),t([p.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"maxValue",void 0),r=l=t([p.subclass("esri.renderers.support.pointCloud.ColorModulation")],r)}(p.declared(l.JSONSupport));r.ColorModulation=u,r.default=u}));

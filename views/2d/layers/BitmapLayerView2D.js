@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/accessorSupport/decorators","../engine/BitmapContainer"],function(e,r,t,i,n,o){Object.defineProperty(r,"__esModule",{value:!0}),r.BitmapLayerView2D=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.container=new o.BitmapContainer(r.clips),r}return i(r,e),r.prototype.initialize=function(){var e=this;this.handles.add(this.clips.on("change",function(){return e.container.setClips(e.clips)}))},r=t([n.subclass("esri.views.2d.layers.BitmapLayerView2D")],r)}(n.declared(e))}});
+define(["require","exports","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/declareExtendsHelper","../../../core/accessorSupport/decorators","../engine/BitmapContainer"],(function(e,r,t,i,n,o){Object.defineProperty(r,"__esModule",{value:!0}),r.BitmapLayerView2D=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.container=new o.BitmapContainer(r.clips),r}return i(r,e),r.prototype.initialize=function(){var e=this;this.handles.add(this.clips.on("change",(function(){return e.container.setClips(e.clips)})))},r=t([n.subclass("esri.views.2d.layers.BitmapLayerView2D")],r)}(n.declared(e))}}));

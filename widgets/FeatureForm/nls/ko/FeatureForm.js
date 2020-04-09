@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"피처 양식",empty:"- 비어 있음 -",validationErrors:{cannotBeNull:"값을 입력하세요.",outsideRange:"값은 {min}에서 {max} 사이여야 함",invalidCodedValue:"값은 나열된 값 중 하나여야 합니다.",invalidType:"유효한 값이 아님"}});

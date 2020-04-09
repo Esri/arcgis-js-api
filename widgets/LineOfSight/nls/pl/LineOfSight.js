@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Linia widoczności",hint:"Aby rozpocząć analizę, umieść punkt obserwatora i jeden lub większą liczbę punktów docelowych, klikając w scenie.",unsupported:"Linia widoczności jest obsługiwana tylko w komponencie SceneView.",done:"Wykonano",newAnalysis:"Nowa analiza",continueAnalysis:"Kontynuuj analizę"});

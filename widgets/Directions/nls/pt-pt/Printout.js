@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Introduzir notas aqui",printDisclaimer:"As direções são fornecidas apenas para fins relacionados com planeamento e encontram-se sujeitas aos <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>termos de utilização da Esri</a>. Podem existir condições dinâmicas de estradas que originem diferenças de precisão em relação às suas direções, e estas têm de ser consideradas juntamente com sinais e restrições legais. O risco associado à utilização é totalmente assumido por si.",printoutError:"Parece ter ocorrido um erro."});

@@ -7,14 +7,16 @@
  * {@link module:esri/geometry/Polyline polyline}, {@link module:esri/geometry/Polygon polygon}, {@link module:esri/geometry/Polygon rectangle}
  * and {@link module:esri/geometry/Polygon circle} geometries.
  *
+ * Discover the Sketch widget in MapView with [this sample](../sample-code/sketch-geometries/index.html):<br>
  * [![sketch-geometries](../../assets/img/apiref/widgets/sketch/sketch-widget.gif)](../sample-code/sketch-geometries/index.html)
+ *
+ * Discover the Sketch widget in SceneView with [this sample](../sample-code/sketch-3d/index.html):<br>
+ * [![sketch-geometries-3D](../../assets/img/apiref/widgets/sketch/sketch-widget-3D.gif)](../sample-code/sketch-3d/index.html)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
  * * Graphics with polyline or polygon geometries can not be rotated or scaled in a {@link module:esri/views/SceneView}.
- * * Graphics with geometries where {@link module:esri/geometry/Geometry#hasZ hasZ} is `true` will be ignored by [update()](#update)
- *   in a {@link module:esri/views/SceneView}.
  * * Multipoint geometry can only be created in a {@link module:esri/views/MapView}.
  * :::
  *
@@ -91,8 +93,42 @@
  * ---------|---------|----------|
  * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-update-point-3D.gif" width="400px"> |
  * Drag inner handle | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-move-point.gif" width="400px"> |
+ * Drag height handle | Move the selected graphic vertically (on the z axis).| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-movez-point.gif" width="400px"> |
  * Drag outer handle sideways | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-rotate-point.gif" width="400px"> |
  * Drag outer handle inwards or outwards | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-scale-point.gif" width="400px"> |
+ *
+ * Sketch 3D
+ * ---------
+ *
+ * To be able to manipulate features on the z-axis using the height handle, the following configurations are relevant:
+ * - {@link module:esri/layers/GraphicsLayer#elevationInfo Elevation info mode} of the
+ * {@link module:esri/layers/GraphicsLayer} needs to be set to `absolute-height`, `relative-to-scene`or `relative-to-ground`.
+ * - To create a graphic with z-value the `hasZ` needs to be `true` in [defaultCreateOptions](#defaultCreateOptions) and/or in the [createOptions](#createOptions).
+ * - To update the z-value of a graphic the `enableZ` needs to be `true` in [defaultUpdateOptions](#defaultUpdateOptions) and/or in the [updateOptions](#updateOptions).
+ *
+ * ```js
+ * // define the GraphicsLayer
+ * const gLayer = new GraphicsLayer({
+ *   elevationInfo: {
+ *     mode: "absolute-height" // default value
+ *   }
+ * });
+ *
+ * // define the SketchViewModel
+ * const sketchVM = new SketchViewModel({
+ *   layer: gLayer,
+ *   view: view,
+ *   defaultCreateOptions: {
+ *     hasZ: true  // default value
+ *   },
+ *   defaultUpdateOptions: {
+ *     enableZ: true  // default value
+ *   }
+ * });
+ * ```
+ * In `absolute-height` mode the sketched vertices snap to scene elements (features and ground). A {@link module:esri/geometry/Polygon polygon} sketched in
+ * `absolute-height` mode is planar, which means that all {@link module:esri/geometry/Polygon polygon} vertices use the height of the first vertex.
+ * See {@link module:esri/layers/GraphicsLayer#elevationInfo elevation info} for more information on how z-values are used with different elevation modes.
  *
  * >>>
  *
@@ -142,7 +178,7 @@ import Graphic = require("esri/widgets/../Graphic");
 
 // esri.core
 import Collection = require("esri/core/Collection");
-import { createSetFromValues } from "esri/core/iteratorUtils";
+import { createSetFromValues } from "esri/core/SetUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
@@ -169,7 +205,6 @@ import {
   DeleteEvent,
   SketchTool,
   State,
-  UpdateEvent,
   UpdateOptions,
   UpdateTool
 } from "esri/widgets/Sketch/support/interfaces";
@@ -269,8 +304,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * ----- | ----------- |
    * start | State changes to `start` when the first vertex is created. Not applicable when creating `points`.
    * active | State is `active` while graphic is being created. Not applicable when creating `points`.
-   * complete | State changes to `complete` after the [complete()](#complete) method is called, when the user double clicks, presses the C key or clicks the first vertex of the `polygon` while creating a graphic. When `point` is created, the create event is fired with the `complete` state.
-   * cancel | State changes to `cancel` if the [create()](#create) or [cancel()](#cancel) methods are called during the create operation and before the state changes to `complete`.
+   * complete | State changes to `complete` after the [complete()](#complete) method is called, when the user double clicks, presses the `C` key or clicks the first vertex of the `polygon` while creating a graphic. When `point` is created, the create event is fired with the `complete` state.
+   * cancel | State changes to `cancel` if the user pressed the escape key or [create()](#create) or [cancel()](#cancel) methods are called during the create operation and before the state changes to `complete`.
    *
    * @property {"point" | "polyline" | "polygon" | "rectangle" | "circle"} tool - Name of the create tool.
    * @property {module:esri/widgets/Sketch~CreateToolEventInfo} toolEventInfo - Returns additional information associated with
@@ -300,7 +335,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @event module:esri/widgets/Sketch#update
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated.
-   * @property {"start" | "active" | "complete" | "cancel"} state - The state of the event.
+   * @property {"start" | "active" | "complete"} state - The state of the event.
    *
    * **Possible Values:**
    *
@@ -309,8 +344,10 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * start | State changes to `start` when a graphic is selected to be updated.
    * active | State is `active` while graphics are being updated and `toolEventInfo` parameter is not `null`.
    * complete | State changes to `complete` after graphics are updated.
-   * cancel | State changes to `cancel` when graphics are selected and then unselected without any updates, or when the [update()](#update), [create()](#create) or [cancel()](#cancel) method is called before the `update` event's `state` changes to `complete`.
    *
+   * @property {boolean} aborted - Indicates if the update operation was aborted. Set to `true`
+   * if the user pressed the escape key, or when the [update()](#update), [create()](#create)
+   * or [cancel()](#cancel) method is called before the `update` event's `state` changes to `complete`.
    * @property {"move" | "transform" | "reshape"} tool - Name of the update operation tool.
    * @property {"update"} type - The type of the event.
    * @property {module:esri/widgets/Sketch~UpdateToolEventInfo} toolEventInfo - Returns additional information associated
@@ -349,7 +386,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *   calculateBuffer(vertices);
    *
    *   // user is clicking on the view... call update method with the center and edge graphics
-   *   if ((event.state === "cancel" || event.state === "complete")) {
+   *   if (event.state === "complete") {
    *     sketch.update({
    *       tool: "move",
    *       graphics: [edgeGraphic, centerGraphic]
@@ -422,6 +459,12 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @property {module:esri/Graphic[]} added - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
    * representing the vertices that were added.
    *
+   * @property {Object[]} vertices - Contains the details of the added vertices to track changes in topology of the geometry.
+   * @property {module:esri/Graphic[]} vertices.coordinates - The {@link module:esri/Graphic graphic} with {@link module:esri/geometry/Point point} geometries
+   * representing the vertices that were added.
+   * @property {number} vertices.componentIndex - The ring/path index of the added vertex.
+   * @property {number} vertices.vertexIndex - The index of the vertex position.
+   *
    * @example
    * // listen to create event
    * sketch.on("create", function(event){
@@ -443,6 +486,12 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @property {module:esri/Graphic[]} removed - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
    * representing the vertices that were removed.
+   *
+   * @property {Object[]} vertices - Contains the details of the removed vertices to track changes in topology of the geometry.
+   * @property {module:esri/Graphic[]} vertices.coordinates - The {@link module:esri/Graphic graphic} with {@link module:esri/geometry/Point point} geometries
+   * representing the vertices that were added.
+   * @property {number} vertices.componentIndex - The ring/path index of the removed vertex.
+   * @property {number} vertices.vertexIndex - The index of the vertex position.
    *
    * @example
    * // listen to update event
@@ -598,8 +647,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
     this.own([
       this.viewModel.on("create", () => this.scheduleRender()),
       this.viewModel.on("update", () => this.scheduleRender()),
-      this.viewModel.on("create", (event) => this._onOperationComplete(event)),
-      this.viewModel.on("update", (event) => this._onOperationComplete(event)),
+      this.viewModel.on("create", (event) => this._onOperationCreate(event)),
       this.viewModel.on("delete", (event) => this.emit("delete", event)),
       this.viewModel.on("undo", () => this.scheduleRender()),
       this.viewModel.on("redo", () => this.scheduleRender())
@@ -716,7 +764,6 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @since 4.14
    *
    * @property {string} [mode] - Create operation mode how the graphic can be created.
-   *
    * **Possible Values:**
    *
    * Value | Description |
@@ -724,6 +771,10 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * hybrid | This is the default. Vertices are added while the pointer is clicked or dragged. Applies to and is the default for `polygon` and `polyline`.
    * freehand | Vertices are added while the pointer is dragged. Applies to `polygon`, `polyline` `rectangle` and `circle`. Default for `rectangle` and `circle`.
    * click | Vertices are added when the pointer is clicked.
+   *
+   * @property {boolean} [hasZ] - Controls whether the created geometry has z-values or not.
+   * @property {number} [defaultZ] - The default z-value of the newly created geometry. Ignored when `hasZ` is `false` or the layer's elevation mode is set to `absolute-height`.
+   *
    * @type {Object}
    */
   @aliasOf("viewModel.defaultCreateOptions")
@@ -746,7 +797,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *                             However, if a graphic with point geometry uses a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}, the default tool is `transform`.
    * @property {boolean} [enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
    * @property {boolean} [enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
-   * @property {boolean} [multipleSelectionEnabled=true] - Indicates whether more than one selection can be made at once. This pertains to shift+click interaction with the `transform` tool.
+   * @property {boolean} [enableZ=true] -  Indicates if z-values can be modified when updating the graphic. When enabled, the height handle manipulator is displayed.
+   * @property {boolean} [multipleSelectionEnabled=true] - Indicates whether more than one selection can be made at once. This applies to the shift+click interaction with the `transform` tool.
    * @property {boolean} [preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
    * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform` and is always `true` when transforming points that use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}.
    * @property {boolean} [toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
@@ -918,6 +970,9 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * freehand | Vertices are added while the pointer is dragged. Applies to `polygon`, `polyline` `rectangle` and `circle`. Default for `rectangle` and `circle`.
    * click | Vertices are added when the pointer is clicked.
    *
+   * @param {boolean} [createOptions.hasZ] - Controls whether the created geometry has z-values or not.
+   * @param {number} [createOptions.defaultZ] - The default z-value of the newly created geometry. Ignored when `hasZ` is `false` or the layer's elevation mode is set to `absolute-height`.
+   *
    * @example
    * // Call create method to create a polygon with freehand mode.
    * sketch.create("polygon", { mode: "freehand" });
@@ -959,6 +1014,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @param {boolean} [updateOptions.enableRotation=true] - Indicates if the `rotation` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
    * @param {boolean} [updateOptions.enableScaling=true] - Indicates if the `scale` operation will be enabled when updating graphics. Only applies if `tool` is `transform`.
+   * @param {boolean} [updateOptions.enableZ=true] -  Indicates if z-values can be modified when updating the graphic. When enabled, the height handle manipulator is displayed.
+   * @param {boolean} [updateOptions.multipleSelectionEnabled=true] - Indicates whether more than one selection can be made at once.  This applies to the shift+click interaction with the `transform` tool.
    * @param {boolean} [updateOptions.preserveAspectRatio=false] - Indicates if the uniform scale operation will be enabled when updating graphics. `enableScaling`
    * must be set `true` when setting this property to `true`. Only applies if `tool` is `transform` and is always `true` when transforming points that use a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}.
    * @param {boolean} [updateOptions.toggleToolOnClick=true] - Indicates if the graphic being updated can be toggled between `transform` and `reshape` update options.
@@ -998,8 +1055,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *     if (!intersects) {
    *       sketch.complete();
    *     }
-   *   } else if ((event.state === "cancel" || event.state === "complete")) {
-   *       // graphic update has been completed or cancelled
+   *   } else if (event.state === "complete") {
+   *       // graphic update has been completed
    *       // if the graphic is in a bad spot, call sketch's update method again
    *       // giving user a chance to correct the location of the graphic
    *       if ((!contains) || (intersects)) {
@@ -1029,8 +1086,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
   complete(): void {}
 
   /**
-   * Cancels the active operation and fires the [create](#event-create) or [update](#event-update) event
-   * and changes the event's state to `cancel`. If called in the middle of a create operation, `cancel()` discards
+   * Cancels the active operation and fires the [create](#event-create) or [update](#event-update) event.
+   * If called in the middle of a create operation, `cancel()` discards
    * the partially created graphic.
    *
    * @since 4.10
@@ -1341,7 +1398,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
         bind={this}
         class={this.classes(CSS.button, icon)}
         disabled={isDisabled}
-        onclick={this._undo}
+        onclick={this.undo}
         title={title}
       />
     );
@@ -1358,7 +1415,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
         bind={this}
         class={this.classes(CSS.button, icon)}
         disabled={isDisabled}
-        onclick={this._redo}
+        onclick={this.redo}
         title={title}
       />
     );
@@ -1378,23 +1435,23 @@ class Sketch extends declared(Widget)<SketchEvents> {
     );
   }
 
-  private _onOperationComplete(event: CreateEvent | UpdateEvent): void {
-    const { state } = event;
+  private _onOperationCreate(event: CreateEvent): void {
+    if (event.state !== "complete") {
+      return;
+    }
 
-    if (state === "complete") {
-      const { creationMode } = this;
-      const { type } = event;
+    const { creationMode } = this;
+    const { type } = event;
 
-      if (type === "create") {
-        const { tool, graphic } = event as CreateEvent;
-        const oldOptions = this._activeCreateOptions;
-        this._activeCreateOptions = null;
+    if (type === "create") {
+      const { tool, graphic } = event as CreateEvent;
+      const oldOptions = this._activeCreateOptions;
+      this._activeCreateOptions = null;
 
-        if (creationMode === "continuous") {
-          this.create(tool, oldOptions);
-        } else if (creationMode === "update") {
-          this.update([graphic]);
-        }
+      if (creationMode === "continuous") {
+        this.create(tool, oldOptions);
+      } else if (creationMode === "update") {
+        this.update([graphic]);
       }
     }
   }
@@ -1418,7 +1475,6 @@ class Sketch extends declared(Widget)<SketchEvents> {
 
     // Set the default update tool to 'transform'
     this._modifyDefaultUpdateTool("transform");
-    this.view.focus();
   }
 
   private _activateReshapeTool(): void {
@@ -1435,7 +1491,6 @@ class Sketch extends declared(Widget)<SketchEvents> {
 
     // Set the default update tool to 'reshape' temporarily
     this._modifyDefaultUpdateTool("reshape");
-    this.view.focus();
   }
 
   private _activateCreatePoint(): void {
@@ -1464,18 +1519,6 @@ class Sketch extends declared(Widget)<SketchEvents> {
     } else {
       this.create(toolName);
     }
-
-    this.view.focus();
-  }
-
-  private _undo(): void {
-    this.undo();
-    this.view.focus();
-  }
-
-  private _redo(): void {
-    this.redo();
-    this.view.focus();
   }
 }
 

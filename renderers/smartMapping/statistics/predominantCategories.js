@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","../../../core/tsSupport/assignHelper","../../../core/Error","../../../core/promiseUtils","./support/utils","../support/utils"],function(e,r,t,i,a,n,s,o,l){function p(e){return i(this,void 0,void 0,function(){var r,i,p,u;return t(this,function(t){switch(t.label){case 0:if(!(e&&e.layer&&e.view&&e.fields))throw new n("predominant-categories:missing-parameters","'layer', 'view' and 'fields' parameters are required");if(r=a({},e),i=[0,2,1,3,4],p=l.createLayerAdapter(r.layer,i),r.layer=p,!p)throw new n("predominant-categories:invalid-parameters","'layer' must be one of these types: "+l.getLayerTypeLabels(i).join(", "));return[4,s.all([r.view.when(),p.load()])];case 1:if(t.sent(),u=o.verifyBasicFieldValidity(p,r.fields,"predominant-categories:invalid-parameters"))throw u;return[2,r]}})})}function u(e){return i(this,void 0,void 0,function(){var r,i;return t(this,function(t){switch(t.label){case 0:return[4,p(e)];case 1:return r=t.sent(),i=r.layer,[2,i.predominantCategories({fields:r.fields,view:r.view})]}})})}return u});
+define(["require","exports","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","../../../core/tsSupport/assignHelper","../../../core/tsSupport/restHelper","../../../core/Error","../../../core/maybe","../../../core/promiseUtils","./support/utils","../support/utils"],(function(e,r,t,i,a,n,s,o,l,p,u){function c(e){return i(this,void 0,void 0,(function(){var r,i,c,d,f,y,m;return t(this,(function(t){switch(t.label){case 0:if(!(e&&e.layer&&e.view&&e.fields))throw new s("predominant-categories:missing-parameters","'layer', 'view' and 'fields' parameters are required");if(r=[0,2,1,3,4],i=e.layer,c=n(e,["layer"]),d=u.createLayerAdapter(i,r),f=a({layerAdapter:d},c),!d)throw new s("predominant-categories:invalid-parameters","'layer' must be one of these types: "+u.getLayerTypeLabels(r).join(", "));return y=o.isSome(f.signal)?{signal:f.signal}:null,[4,l.all([f.view.when(),d.load(y)])];case 1:if(t.sent(),m=p.verifyBasicFieldValidity(d,f.fields,"predominant-categories:invalid-parameters"))throw m;return[2,f]}}))}))}return function(e){return i(this,void 0,void 0,(function(){var r,i,a;return t(this,(function(t){switch(t.label){case 0:return[4,c(e)];case 1:return r=t.sent(),i=r.layerAdapter,a=n(r,["layerAdapter"]),[2,i.predominantCategories(a)]}}))}))}}));

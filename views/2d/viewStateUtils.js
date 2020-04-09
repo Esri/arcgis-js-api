@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,n){function r(t){return t*i}function e(t,n,r){var e=r.resolution,o=r.size;return t[0]=e*(Math.round(n[0]/e)+o[0]%2*.5),t[1]=e*(Math.round(n[1]/e)+o[1]%2*.5),t}function o(t,n){var e=r(n.rotation),o=Math.abs(Math.cos(e)),u=Math.abs(Math.sin(e)),a=n.size,i=a[0],s=a[1];return t[0]=Math.round(s*u+i*o),t[1]=Math.round(s*o+i*u),t}function u(t,n,r,e){var o=n[0],u=n[1],a=e[0],i=e[1],s=.5*r;return t[0]=o-s*a,t[1]=u-s*i,t[2]=o+s*a,t[3]=u+s*i,t}function a(t,n){var r=t[0],e=t[1],o=t[2],u=t[3],a=n[0],i=n[1],s=n[2],M=n[3];return!(r>s||o<a||e>M||u<i)}Object.defineProperty(n,"__esModule",{value:!0});var i=Math.PI/180;n.snapToPixel=e,n.getOuterSize=o,n.getBBox=u,n.bboxIntersects=a});
+define(["require","exports"],(function(t,e){Object.defineProperty(e,"__esModule",{value:!0});var r=Math.PI/180;e.snapToPixel=function(t,e,r){var n=r.resolution,o=r.size;return t[0]=n*(Math.round(e[0]/n)+o[0]%2*.5),t[1]=n*(Math.round(e[1]/n)+o[1]%2*.5),t},e.getOuterSize=function(t,e){var n=e.rotation*r,o=Math.abs(Math.cos(n)),a=Math.abs(Math.sin(n)),u=e.size,i=u[0],s=u[1];return t[0]=Math.round(s*a+i*o),t[1]=Math.round(s*o+i*a),t},e.getBBox=function(t,e,r,n){var o=e[0],a=e[1],u=n[0],i=n[1],s=.5*r;return t[0]=o-s*u,t[1]=a-s*i,t[2]=o+s*u,t[3]=a+s*i,t},e.bboxIntersects=function(t,e){var r=t[0],n=t[1],o=t[2],a=t[3],u=e[0],i=e[1],s=e[2],M=e[3];return!(r>s||o<u||n>M||a<i)}}));

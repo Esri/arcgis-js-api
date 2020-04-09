@@ -2,8 +2,8 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // esri.core
-import promiseUtils = require("esri/core/promiseUtils");
-import watchUtils = require("esri/core/watchUtils");
+import * as promiseUtils from "esri/core/promiseUtils";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";

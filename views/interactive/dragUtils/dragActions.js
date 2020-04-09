@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/maybe","../../../geometry/support/webMercatorUtils","../../draw/support/drawUtils"],function(e,r,t,n,a){function o(e,r){function o(e,r){return t.isNone(e)||"mesh"===e.type?null:e.spatialReference.equals(r)?e.clone():n.canProject(e,r)?n.project(e,r):null}var c=null,i=t.isSome(e[r])?e[r].spatialReference:null;return function(u){if("start"===u.action&&t.isSome(e[r])&&(c=o(e[r],u.spatialReference)),!t.isNone(c)){var l=a.move(c.clone(),u.deltaX,u.deltaY,u.deltaZ);l.spatialReference.equals(i)?e[r]=l:e[r]=n.project(l,i)}}}function c(e){return o(e,"geometry")}function i(e){var r=e.map(c);return function(e){return r.forEach(function(r){return r(e)})}}Object.defineProperty(r,"__esModule",{value:!0}),r.createGeometryDragAction=o,r.createGraphicDragAction=c,r.createGraphicDragActionMany=i});
+define(["require","exports","../../../core/maybe","../../../geometry/support/webMercatorUtils","../../draw/support/drawUtils"],(function(e,r,t,n,a){function o(e,r){var o=null,c=t.isSome(e[r])?e[r].spatialReference:null;return function(i){var l,u;if("start"===i.action&&t.isSome(e[r])&&(l=e[r],u=i.spatialReference,o=t.isNone(l)||"mesh"===l.type?null:l.spatialReference.equals(u)?l.clone():n.canProject(l,u)?n.project(l,u):null),!t.isNone(o)){var s=a.move(o.clone(),i.deltaX,i.deltaY,i.deltaZ);s.spatialReference.equals(c)?e[r]=s:e[r]=n.project(s,c)}}}function c(e){return o(e,"geometry")}Object.defineProperty(r,"__esModule",{value:!0}),r.createGeometryDragAction=o,r.createGraphicDragAction=c,r.createGraphicDragActionMany=function(e){var r=e.map(c);return function(e){return r.forEach((function(r){return r(e)}))}}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,9 +20,11 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 /* eslint-env worker */
+
+// Use `npm run minify:worker` to created worker.min.js and then copy content to workerFactory.ts
 
 var globalId = 0;
 var outgoing = new Map();
@@ -47,10 +49,6 @@ var RESPONSE = 5;
 var INVOKE = 6;
 // to cancel a call
 var ABORT = 7;
-
-function mapDelete(map, key) {
-  map["delete"](key); // eslint-disable-line
-}
 
 function createAbortError() {
   var error = new Error("AbortError");
@@ -82,7 +80,7 @@ function invokeStaticMessage(methodName, data, options) {
       return;
     }
 
-    mapDelete(outgoing, jobId);
+    outgoing.delete(jobId);
 
     // post a cancel message in order to cancel on the main thread
     self.postMessage({
@@ -132,7 +130,6 @@ function messageHandler(event /* FmkMessageEvent */) {
   var jobId = message.jobId;
 
   switch (message.type) {
-
     // Configure the AMD loader
     case CONFIGURE:
       var configuration = message.configure;
@@ -148,9 +145,7 @@ function messageHandler(event /* FmkMessageEvent */) {
         require.config(configuration.loaderConfig);
       }
 
-      require([
-        "esri/config"
-      ], function(esriConfig) {
+      require(["esri/config"], function(esriConfig) {
         for (var name in configuration.esriConfig) {
           if (Object.prototype.hasOwnProperty.call(configuration.esriConfig, name)) {
             esriConfig[name] = configuration.esriConfig[name];
@@ -160,43 +155,53 @@ function messageHandler(event /* FmkMessageEvent */) {
           type: CONFIGURED
         });
       });
+
+      configured = true;
       break;
 
-  // Loads a module
-  case OPEN:
-    var modulePath = message.modulePath;
+    // Loads a module
+    case OPEN:
+      var modulePath = message.modulePath;
 
-    require([
-      "esri/core/workers/RemoteClient",
-      modulePath
-    ],
-    function(RemoteClient, Module) {
-      var port = RemoteClient.connect(Module);
+      require(["esri/core/workers/RemoteClient"], function(RemoteClient) {
+        RemoteClient.loadWorker(modulePath)
+          .then(function(Module) {
+            return (
+              Module ||
+              new Promise(function(resolve) {
+                require([modulePath], resolve);
+              })
+            );
+          })
+          .then(function(Module) {
+            var port = RemoteClient.connect(Module);
 
-      self.postMessage({
-        type: OPENED,
-        jobId: jobId,
-        data: port
-      }, [port]);
-    });
-    break;
+            self.postMessage(
+              {
+                type: OPENED,
+                jobId: jobId,
+                data: port
+              },
+              [port]
+            );
+          });
+      });
+      break;
 
-  // response to a static message
-  case RESPONSE:
-    if (outgoing.has(jobId)) {
-      var deferred = outgoing.get(jobId);
+    // response to a static message
+    case RESPONSE:
+      if (outgoing.has(jobId)) {
+        var deferred = outgoing.get(jobId);
 
-      mapDelete(outgoing, jobId);
+        outgoing.delete(jobId);
 
-      if (message.error) {
-        deferred.reject(JSON.parse(message.error));
+        if (message.error) {
+          deferred.reject(JSON.parse(message.error));
+        } else {
+          deferred.resolve(message.data);
+        }
       }
-      else {
-        deferred.resolve(message.data);
-      }
-    }
-
-    break;
+      break;
   }
 }
 

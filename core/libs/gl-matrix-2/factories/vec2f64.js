@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(n,r){function e(){return[0,0]}function t(n){return[n[0],n[1]]}function u(n,r){return[n,r]}function o(n){for(var r=e(),t=Math.min(2,n.length),u=0;u<t;++u)r[u]=n[u];return r}function i(n,r){return new Float64Array(n,r,2)}function f(){return e()}function c(){return u(1,1)}function a(){return u(1,0)}function l(){return u(0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.clone=t,r.fromValues=u,r.fromArray=o,r.createView=i,r.zeros=f,r.ones=c,r.unitX=a,r.unitY=l,r.ZEROS=f(),r.ONES=c(),r.UNIT_X=a(),r.UNIT_Y=l()});
+define(["require","exports"],(function(n,r){function e(){return[0,0]}function t(n,r){return[n,r]}function u(){return[0,0]}function o(){return t(1,1)}function i(){return t(1,0)}function f(){return t(0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.clone=function(n){return[n[0],n[1]]},r.fromValues=t,r.fromArray=function(n){for(var r=[0,0],e=Math.min(2,n.length),t=0;t<e;++t)r[t]=n[t];return r},r.createView=function(n,r){return new Float64Array(n,r,2)},r.zeros=u,r.ones=o,r.unitX=i,r.unitY=f,r.ZEROS=[0,0],r.ONES=o(),r.UNIT_X=i(),r.UNIT_Y=f()}));

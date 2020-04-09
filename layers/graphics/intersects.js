@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./contains"],function(n,o,t){function e(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)}function r(n,o,e,r,s,u){for(var c=i(s,u),l=r.coords,f=r.lengths,p=0,g=0;p<f.length;p++,g+=c)if(t.polygonContainsCoords(n,o,e,l[g],l[g+1]))return!0;return!1}function i(n,o){return n?o?4:3:o?3:2}Object.defineProperty(o,"__esModule",{value:!0}),o.polygonIntersectsPoint=e,o.polygonIntersectsMultipoint=r});
+define(["require","exports","./contains"],(function(n,o,t){Object.defineProperty(o,"__esModule",{value:!0}),o.polygonIntersectsPoint=function(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)},o.polygonIntersectsMultipoint=function(n,o,e,r,i,s){for(var u,l=(u=s,i?u?4:3:u?3:2),c=r.coords,f=r.lengths,p=0,g=0;p<f.length;p++,g+=l)if(t.polygonContainsCoords(n,o,e,c[g],c[g+1]))return!0;return!1}}));

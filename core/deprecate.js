@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./has"],function(e,n,i){function r(e,n,i){void 0===i&&(i=!1),i&&d.has(n)||(i&&d.add(n),e.warn("🛑 DEPRECATED - "+n))}function o(e,n,r){void 0===r&&(r={}),i("esri-deprecation-warnings")&&a(e,"Module: "+n,r)}function t(e,n,r){if(void 0===r&&(r={}),i("esri-deprecation-warnings")){var o=r.moduleName;a(e,"Function: "+((o?o+"::":"")+n+"()"),r)}}function a(e,n,o){if(void 0===o&&(o={}),i("esri-deprecation-warnings")){var t=o.replacement,a=o.version,d=o.see,c=o.warnOnce,s=n;t&&(s+="\n\t🛠️ Replacement: "+t),a&&(s+="\n\t⚙️ Version: "+a),d&&(s+="\n\t🔗 See "+d+" for more details."),r(e,s,c)}}Object.defineProperty(n,"__esModule",{value:!0});var d=new Set;n.deprecatedModule=o,n.deprecatedFunction=t,n.deprecated=a});
+define(["require","exports","./has"],(function(e,n,r){Object.defineProperty(n,"__esModule",{value:!0});var i=new Set;function o(e,n,o){if(void 0===o&&(o={}),r("esri-deprecation-warnings")){var t=o.replacement,a=o.version,d=o.see,c=n;t&&(c+="\n\t🛠️ Replacement: "+t),a&&(c+="\n\t⚙️ Version: "+a),d&&(c+="\n\t🔗 See "+d+" for more details."),function(e,n,r){void 0===r&&(r=!1),r&&i.has(n)||(r&&i.add(n),e.warn("🛑 DEPRECATED - "+n))}(e,c,o.warnOnce)}}n.deprecatedModule=function(e,n,i){void 0===i&&(i={}),r("esri-deprecation-warnings")&&o(e,"Module: "+n,i)},n.deprecatedFunction=function(e,n,i){if(void 0===i&&(i={}),r("esri-deprecation-warnings")){var t=i.moduleName;o(e,"Function: "+((t?t+"::":"")+n+"()"),i)}},n.deprecatedProperty=function(e,n,i){if(void 0===i&&(i={}),r("esri-deprecation-warnings")){var t=i.moduleName;o(e,"Property: "+((t?t+"::":"")+n),i)}},n.deprecated=o}));

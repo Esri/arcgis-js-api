@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({addBookmark:"添加书签",goToBookmark:"转至书签",noBookmarksHeading:"无书签",noBookmarksDescription:"向您的地图添加书签后，书签将显示在此处。",title:"标题",addPlaceholder:"输入书签标题",addingBookmark:"添加书签",widgetLabel:"书签"});

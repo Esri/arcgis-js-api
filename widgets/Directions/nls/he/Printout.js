@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"הזן את ההערות כאן",printDisclaimer:"הוראות הנסיעה מסופקות למטרות תכנון בלבד וכפופות ל<a href='http://www.esri.com/legal/licensing-translations' target='_blank'>תנאי השימוש של Esri</a>. תנאי הדרך עשויים להשתנות ולגרום להבדלים בהוראות הנסיעה שלך וחייבים להילקח בחשבון יחד עם שילוט הדרך והגבלות הכתובות בחוק. האחריות לשימוש היא על המשתמש בלבד.",printoutError:"נראה שאירעה שגיאה."});

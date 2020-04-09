@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({lblItem:"項目",title:"登入",info:"請登入以存取 {server} {resource} 上的項目",oAuthInfo:"請登入到 {server}。",lblUser:"使用者名稱:",lblPwd:"密碼:",lblOk:"確定",lblSigning:"正在登入...",lblCancel:"取消",errorMsg:"無效的使用者名稱或密碼。請重試。",invalidUser:"輸入的使用者名稱或密碼不正確。",forbidden:"使用者名稱和密碼有效，但您沒有存取此資源的權限。",noAuthService:"無法存取身份驗證服務。"});

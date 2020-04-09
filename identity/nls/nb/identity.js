@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({lblItem:"element",title:"Logg på",info:"Logg på for å få tilgang til elementet på {server} {resource}",oAuthInfo:"Logg på {server}.",lblUser:"Brukernavn:",lblPwd:"Passord:",lblOk:"OK",lblSigning:"Logger på...",lblCancel:"Avbryt",errorMsg:"Ugyldig brukernavn/passord. Prøv igjen.",invalidUser:"Brukernavnet eller passordet du oppgav, er feil.",forbidden:"Brukernavnet og passordet er gyldig, men du har ikke tilgang til denne ressursen.",noAuthService:"Får ikke tilgang til godkjenningstjeneste."});

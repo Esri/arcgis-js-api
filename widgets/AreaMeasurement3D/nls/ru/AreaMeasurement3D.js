@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Измерение площади",hint:"Начните измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение 3D-площади поддерживается только в виде сцены.",perimeterLength:"Периметр",area:"Площадь",unit:"Единицы измерения",notApplicable:"недоступно",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские","square-kilometers":"Квадратные километры","square-meters":"Квадратные метры","square-miles":"Квадратные мили","square-inches":"Квадратные дюймы","square-feet":"Квадратные футы","square-yards":"Квадратные ярды","square-us-feet":"Квадратные футы (США)",acres:"Акры",ares:"Ары",hectares:"Гектары"}});

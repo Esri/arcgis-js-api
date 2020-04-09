@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Direkte linje-måling",hint:"Start måling ved at klikke i scenen for at placere det første punkt",unsupported:"3D direkte linje-måling understøttes kun i SceneView.",distance:"Afstand",direct:"Direkte",horizontal:"Vandret",vertical:"Lodret",unit:"Enhed",newMeasurement:"Nye målinger",units:{metric:"Metrisk",imperial:"Britiske",kilometers:"Kilometer",meters:"Meter",miles:"Miles",inches:"Tommer",feet:"Fod",yards:"Yards","nautical-miles":"Sømil","us-feet":"Fod (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

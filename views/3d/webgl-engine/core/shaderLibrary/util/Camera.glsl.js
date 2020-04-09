@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(n,e){Object.defineProperty(e,"__esModule",{value:!0});!function(n){function e(n,e){n.setUniform3f("camPos",e.viewInvTransp[3]-e.origin[0],e.viewInvTransp[7]-e.origin[1],e.viewInvTransp[11]-e.origin[2])}n.bindUniforms=e}(e.Camera||(e.Camera={}))});
+define(["require","exports"],(function(i,n){Object.defineProperty(n,"__esModule",{value:!0}),function(i){function n(i,n,e){i.setUniform3f("camPos",e[3]-n[0],e[7]-n[1],e[11]-n[2])}i.bindUniformsCustomOrigin=n,i.bindUniforms=function(i,e){n(i,e.origin,e.viewInvTransp)}}(n.Camera||(n.Camera={})),function(i){i.bindUniforms=function(i,n){i.setUniform1f("pixelRatio",n.pixelRatio||1),i.setUniform4fv("viewport",n.viewport)}}(n.Viewport||(n.Viewport={}))}));

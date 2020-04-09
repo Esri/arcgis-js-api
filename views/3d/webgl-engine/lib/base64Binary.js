@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,33 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-/*
-Copyright (c) 2011, Daniel Guerrero
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-* Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
-* Neither the name of the Daniel Guerrero nor the
-names of its contributors may be used to endorse or promote products
-derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL DANIEL GUERRERO BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-define(["require","exports"],function(e,r){function n(e){var r=h[e.charAt(e.length-1)],n=h[e.charAt(e.length-2)],t=e.length/4*3;64===r&&t--,64===n&&t--;var a=new ArrayBuffer(t),c=new Uint8Array(a);e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");for(var o=0,f=0;f<t;f+=3){var i=h[e.charAt(o++)],u=h[e.charAt(o++)],l=h[e.charAt(o++)],A=h[e.charAt(o++)],d=i<<2|u>>4,g=(15&u)<<4|l>>2,y=(3&l)<<6|A;c[f]=d,64!==l&&(c[f+1]=g),64!==A&&(c[f+2]=y)}return a}function t(e){return new Float32Array(n(e))}function a(e){return new Uint32Array(n(e))}function c(e){return new Int32Array(n(e))}function o(e){var r;r=e instanceof Uint8Array?e:new Uint8Array(e.buffer,e.byteOffset,e.byteLength);for(var n,t=r.length%3,a="",c=r.length-t,o=0;o<c;o+=3)n=(r[o]<<16)+(r[o+1]<<8)+r[o+2],a+=f[n>>18&63]+f[n>>12&63]+f[n>>6&63]+f[63&n];switch(t){case 1:n=r[r.length-1],a+=f[n>>2],a+=f[n<<4&63],a+="==";break;case 2:n=(r[r.length-2]<<8)+r[r.length-1],a+=f[n>>10],a+=f[n>>4&63],a+=f[n<<2&63],a+="="}return a}Object.defineProperty(r,"__esModule",{value:!0});for(var f="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",h={},i=0;i<f.length;i++)h[f[i]]=i;r.decode=n,r.decodeFloat32=t,r.decodeUint32=a,r.decodeInt32=c,r.encode=o});
+define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0});for(var n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",t={},a=0;a<n.length;a++)t[n[a]]=a;function c(e){var r=t[e.charAt(e.length-1)],n=t[e.charAt(e.length-2)],a=e.length/4*3;64===r&&a--,64===n&&a--;var c=new ArrayBuffer(a),o=new Uint8Array(c);e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");for(var f=0,h=0;h<a;h+=3){var i=t[e.charAt(f++)],u=t[e.charAt(f++)],l=t[e.charAt(f++)],A=t[e.charAt(f++)],d=i<<2|u>>4,g=(15&u)<<4|l>>2,y=(3&l)<<6|A;o[h]=d,64!==l&&(o[h+1]=g),64!==A&&(o[h+2]=y)}return c}r.decode=c,r.decodeFloat32=function(e){return new Float32Array(c(e))},r.decodeUint32=function(e){return new Uint32Array(c(e))},r.decodeInt32=function(e){return new Int32Array(c(e))},r.encode=function(e){for(var r,t,a=(r=e instanceof Uint8Array?e:new Uint8Array(e.buffer,e.byteOffset,e.byteLength)).length%3,c="",o=r.length-a,f=0;f<o;f+=3)t=(r[f]<<16)+(r[f+1]<<8)+r[f+2],c+=n[t>>18&63]+n[t>>12&63]+n[t>>6&63]+n[63&t];switch(a){case 1:t=r[r.length-1],c+=n[t>>2],c+=n[t<<4&63],c+="==";break;case 2:t=(r[r.length-2]<<8)+r[r.length-1],c+=n[t>>10],c+=n[t>>4&63],c+=n[t<<2&63],c+="="}return c}}));

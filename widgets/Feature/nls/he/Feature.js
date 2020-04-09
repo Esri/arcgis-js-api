@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"ישות",attach:"קבצים מצורפים",fields:"שדות",fieldsSummary:"רשימת מאפיינים וערכים",media:"מדיה",next:"הבא",noTitle:"ללא כותרת",previous:"הקודם",lastEdited:"עריכה אחרונה ב-{date}.",lastCreated:"נוצר ב-{date}.",lastEditedByUser:"עריכה אחרונה על-ידי {user} ב-{date}.",lastCreatedByUser:"נוצר על-ידי {user} ב-{date}."});

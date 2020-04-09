@@ -86,7 +86,7 @@ import * as i18n from "dojo/i18n!esri/widgets/Daylight/nls/Daylight";
 // esri.core
 import { findIndex } from "esri/core/arrayUtils";
 import Logger = require("esri/core/Logger");
-import watchUtils = require("esri/core/watchUtils");
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { subclass, declared, property, aliasOf, cast } from "esri/core/accessorSupport/decorators";
@@ -102,19 +102,17 @@ import { DateOrSeason, Season } from "esri/widgets/interfaces";
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Daylight
-import dayUtils = require("esri/widgets/Daylight/daylightUtils");
+import * as dayUtils from "esri/widgets/Daylight/daylightUtils";
 import DaylightViewModel = require("esri/widgets/Daylight/DaylightViewModel");
 
 // esri.widgets.Daylight.support
 import SliderWithDropdown = require("esri/widgets/Daylight/support/SliderWithDropdown");
 
-// esri.widgets.Directions.support
-import DatePicker = require("esri/widgets/Directions/support/DatePicker");
-
 // esri.widgets.Slider
 import { ThumbChangeEvent, ThumbDragEvent } from "esri/widgets/Slider/interfaces";
 
 // esri.widgets.support
+import DatePicker = require("esri/widgets/support/DatePicker");
 import { VNode } from "esri/widgets/support/interfaces";
 import { tsx, renderable } from "esri/widgets/support/widget";
 
@@ -198,7 +196,7 @@ class Daylight extends declared(Widget) {
    * view.ui.add(daylightWidget, "top-right");
    */
   constructor(params?: any) {
-    super();
+    super(params);
   }
 
   //--------------------------------------------------------------------------
@@ -216,7 +214,9 @@ class Daylight extends declared(Widget) {
     steps: 5,
     values: [0], // Represents the time of day expressed in minutes
     labelInputsEnabled: false,
-    labelsVisible: true,
+    visibleElements: {
+      labels: true
+    },
     tickConfigs: [
       {
         mode: "position",
@@ -305,18 +305,27 @@ class Daylight extends declared(Widget) {
   //----------------------------------
 
   /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/Daylight~VisibleElements
+   *
+   * @property {boolean} [playButtons=true] When set to `false`, neither of the play buttons are displayed.
+   * @property {boolean} [shadowsToggle=true] When set to `false`, the shadow toggle button is not displayed.
+   * @property {boolean} [datePicker=true] When set to `false`, neither the date nor the season picker are displayed.
+   * @property {boolean} [timezone=true] When set to `false`, the timezone selector is not displayed.
+   */
+
+  /**
    * This property provides the ability to display or hide the individual elements of the widget.
    * Play buttons, shadow toggle button, date picker and timezone selector can be displayed or hidden by setting their
    * corresponding properties to `true` or `false`. By default, all the elements are displayed.
    *
    * @name visibleElements
    * @instance
-   * @type {Object}
+   * @type {module:esri/widgets/Daylight~VisibleElements}
    * @autocast
-   * @property {boolean} [playButtons=true] When set to `false`, neither of the play buttons are displayed.
-   * @property {boolean} [shadowsToggle=true] When set to `false`, the shadow toggle button is not displayed.
-   * @property {boolean} [datePicker=true] When set to `false`, neither the date nor the season picker are displayed.
-   * @property {boolean} [timezone=true] When set to `false`, the timezone selector is not displayed.
+   *
    * @example
    * // display all elements, except the shadow toggle button
    * daylightWidget.visibleElements.shadowsToggle = false;

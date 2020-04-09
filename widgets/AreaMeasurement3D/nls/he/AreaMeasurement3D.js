@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"מדידת אזור",hint:"התחל במדידה על ידי לחיצה בסצנה כדי להציב את הנקודה הראשונה",unsupported:"מדידת אזור בתלת-ממד נתמכת רק ב-SceneView.",perimeterLength:"היקף",area:"שטח",unit:"יחידה",notApplicable:"n/a",newMeasurement:"מדידה חדשה",units:{metric:"מטרי",imperial:"תקן אמריקאי","square-kilometers":"קילומטרים רבועים","square-meters":"מטרים רבועים","square-miles":"מיילים רבועים","square-inches":"אינ'צים רבועים","square-feet":"רגל רבוע","square-yards":"יארדים רבועים","square-us-feet":'רגליים רבועות (ארה"ב)',acres:"אקרים",ares:"עשיריות דונם",hectares:"הקטרים"}});

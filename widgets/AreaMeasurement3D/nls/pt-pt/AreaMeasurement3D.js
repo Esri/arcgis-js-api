@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Area Measurement",hint:"Comece a medir clicando na cena para colocar o seu primeiro ponto",unsupported:"A medição de área 3D só é suportada em SceneView.",perimeterLength:"Perímetro",area:"Área",unit:"Unidade",notApplicable:"n/d",newMeasurement:"Nova Medição",units:{metric:"Métrico",imperial:"Imperial","square-kilometers":"Quilómetros Quadrados","square-meters":"Metros Quadrados","square-miles":"Milhas Quadradas","square-inches":"Polegadas Quadradas","square-feet":"Pés Quadrados","square-yards":"Jardas Quadradas","square-us-feet":"Pés Quadrados (EUA)",acres:"Acres",ares:"Ares",hectares:"Hectares"}});

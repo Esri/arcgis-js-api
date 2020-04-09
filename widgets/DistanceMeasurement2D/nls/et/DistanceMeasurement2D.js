@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Vahemaa mõõtmine",hint:"Mõõtmise alustamiseks klõpsake kohta, kuhu soovite asetada oma esimese punkti",unsupported:"2D-kauguse mõõtmist toetab ainult MapView.",distance:"Vahemaa",newMeasurement:"Uus mõõtmine",mode:"Režiim",modes:{auto:"Automaatne",planar:"Tasapinnaline",geodesic:"Geodeetiline"},unit:"Ühik",units:{metric:"Meetriline",imperial:"Briti",kilometers:"km",meters:"m",miles:"mi",inches:"Tolli",feet:"ft",yards:"Jardi","nautical-miles":"Meremiili","us-feet":"Jalga (USA)","degrees-minutes-seconds":"DMS",degrees:"kraadid"}});

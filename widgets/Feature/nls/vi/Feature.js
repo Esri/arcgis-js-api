@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Đối tượng",attach:"Tệp đính kèm",fields:"Trường",fieldsSummary:"Danh sách các thuộc tính và giá trị",media:"Phương tiện truyền thông",next:"Tiếp theo",noTitle:"Chưa có tiêu đề",previous:"Trước",lastEdited:"Chỉnh sửa lần cuối vào {date}.",lastCreated:"Tạo vào {date}.",lastEditedByUser:"Chỉnh sửa lần cuối bởi {user} vào {date}.",lastCreatedByUser:"Tạo bởi {user} vào {date}."});

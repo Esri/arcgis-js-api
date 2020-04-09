@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(e,r,o,t,s,p){return new(function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.SCHEDULER_LOG_SLOW_TASKS=!1,r}return t(r,e),o([p.property()],r.prototype,"SCHEDULER_LOG_SLOW_TASKS",void 0),r=o([p.subclass("esri.views.support.DebugFlags")],r)}(p.declared(s)))});
+define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,r,o,t,s,p){return new(function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.SCHEDULER_LOG_SLOW_TASKS=!1,r}return t(r,e),o([p.property()],r.prototype,"SCHEDULER_LOG_SLOW_TASKS",void 0),r=o([p.subclass("esri.views.support.DebugFlags")],r)}(p.declared(s)))}));

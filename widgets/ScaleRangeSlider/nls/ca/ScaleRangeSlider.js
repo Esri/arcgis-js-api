@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Control lliscant d'interval d'escala",noLimit:"Sense límit",preview:"Visualització prèvia",currentScaleTooltip:"Escala actual del mapa ({scaleLabel})",customScaleInputTooltip:"Introduïu una escala.",current:"Actual",setTo:"Defineix com",selectOne:"(seleccioneu una opció)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Món",continent:"Continent",countriesBig:"Països",countriesSmall:"País",statesProvinces:"Estats",stateProvince:"Estat",counties:"Comtats",county:"Comtat",metropolitanArea:"Àrea metropolitana",cities:"Ciutats",city:"Ciutat",town:"Població",neighborhood:"Barri",streets:"Carrers",street:"Carrer",buildings:"Edificis",building:"Edifici",smallBuilding:"Edifici petit",rooms:"Habitacions",room:"Habitació"},featuredScaleLabels:{custom:"Personalitzada",current:"Visualització del mapa actual",world:"Món",continent:"Continent",countriesBig:"Països (grans)",countriesSmall:"Països (petits)",statesProvinces:"Estats/províncies",stateProvince:"Estat/província",counties:"Comtats",county:"Comtat",metropolitanArea:"Àrea metropolitana",cities:"Ciutats",city:"Ciutat",town:"Població",neighborhood:"Veïnat",streets:"Carrers",street:"Carrer",buildings:"Edificis",building:"Edifici",smallBuilding:"Edifici petit",rooms:"Habitacions",room:"Habitació"}});

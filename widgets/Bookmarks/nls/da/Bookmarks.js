@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({addBookmark:"Tilføj bogmærke",goToBookmark:"Gå til bogmærke",noBookmarksHeading:"Ingen bogmærker",noBookmarksDescription:"Føj bogmærker til dig kort, hvorefter de vil blive vist her.",title:"Titel",addPlaceholder:"Angiv bogmærketitel",addingBookmark:"Tilføjer bogmærke",widgetLabel:"Bogmærker"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(n,e){function t(n){for(var e=[],t=1;t<arguments.length;t++)e[t-1]=arguments[t];for(var r="",l=0;l<e.length;l++)r+=n[l]+e[l];return r+=n[n.length-1]}Object.defineProperty(e,"__esModule",{value:!0}),e.glsl=t,function(n){function e(n){return Math.round(n).toString()}n.int=e}(t=e.glsl||(e.glsl={}))});
+define(["require","exports"],(function(n,t){function e(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];for(var r="",o=0;o<t.length;o++)r+=n[o]+t[o];return r+=n[n.length-1]}Object.defineProperty(t,"__esModule",{value:!0}),t.glsl=e,function(n){n.int=function(n){return Math.round(n).toString()},n.float=function(n){return n.toPrecision(8)}}(e=t.glsl||(t.glsl={}))}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function n(e){return null}function r(e){return null}Object.defineProperty(t,"__esModule",{value:!0}),t.getEffectOperator=n,t.getPlacementOperator=r});
+define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0}),t.getEffectOperator=function(e){return null},t.getPlacementOperator=function(e){return null}}));

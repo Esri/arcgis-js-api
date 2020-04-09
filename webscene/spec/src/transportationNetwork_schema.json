@@ -1,5 +1,5 @@
 {
-  "title": "Transportation Networks",
+  "title": "Transportation Network",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The transportation network used for routing in the scene.",
@@ -29,11 +29,13 @@
       {
         "title": "Transportation Networks",
         "code": {
-          "transportationNetworks": {
-            "name": "main.campus_ND",
-            "path": "file:./esricampus.geodatabase",
-            "title": "campus_ND"
-          }
+          "transportationNetworks": [
+            {
+              "name": "main.campus_ND",
+              "path": "file:./esricampus.geodatabase",
+              "title": "campus_ND"
+            }
+          ]
         }
       }
     ]

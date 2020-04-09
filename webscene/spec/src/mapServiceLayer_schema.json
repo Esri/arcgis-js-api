@@ -95,8 +95,7 @@
     },
     "url": {
       "type": "string",
-      "description": "The URL to the layer.",
-      "format": "uri"
+      "description": "The URL to the layer."
     },
     "visibility": {
       "type": "boolean",

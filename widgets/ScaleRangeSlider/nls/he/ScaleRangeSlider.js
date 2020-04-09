@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"מחוון טווח קנה מידה",noLimit:"ללא גבול",preview:"תצוגה מקדימה",currentScaleTooltip:"קנה מידה נוכחי של המפה ({scaleLabel})",customScaleInputTooltip:"הקלד קנה מידה.",current:"נוכחי",setTo:"הגדר ל:",selectOne:"(בחר אחד)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"עולם",continent:"יבשה",countriesBig:"ארצות",countriesSmall:"מדינה",statesProvinces:"מדינות",stateProvince:"מדינה",counties:"מחוזות",county:"מחוז",metropolitanArea:"אזור מטרופוליני",cities:"ערים",city:"עיר",town:"עיר",neighborhood:"שכונה",streets:"רחובות",street:"רחוב",buildings:"בנינים",building:"מבנה",smallBuilding:"בניין קטן",rooms:"חדרים",room:"חדר"},featuredScaleLabels:{custom:"מותאם אישית",current:"תצוגת מפה נוכחית",world:"עולם",continent:"יבשת",countriesBig:"ארצות - גדול",countriesSmall:"ארצות - קטן",statesProvinces:"מדינות/מחוזות",stateProvince:"מדינה/מחוז",counties:"מחוזות",county:"מחוז",metropolitanArea:"אזור מטרופוליני",cities:"ערים",city:"עיר",town:"עיר",neighborhood:"שכונה",streets:"רחובות",street:"רחוב",buildings:"מבנים",building:"מבנה",smallBuilding:"בניין קטן",rooms:"חדרים",room:"חדר"}});

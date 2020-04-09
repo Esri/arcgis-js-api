@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","./webgl-debug","../../../webgl/capabilities/isWebGL2Context"],function(e,n,t,u){function r(){n.enabled&&(b=[])}function l(e){n.enabled&&null!=b&&b.push(e)}function o(){if(n.enabled){var e=b;return b=null,e&&(c.forEach(function(n){return n(e)}),c.length=0),e}return null}function i(e){return n.enabled?u.default(e)?(console.warn("WebGL tracer is not supported on a WebGL2 Context"),e):t.makeDebugContext(e,void 0,function(e,u){n.enabled&&b&&b.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")}):e}function a(e){c.push(e)}Object.defineProperty(n,"__esModule",{value:!0});var b=null,c=[];n.enabled=!1,n.begin=r,n.trace=l,n.end=o,n.instrumentContext=i,n.request=a});
+define(["require","exports","./webgl-debug","../../../webgl/capabilities/isWebGL2Context"],(function(e,n,t,u){Object.defineProperty(n,"__esModule",{value:!0});var l=null,o=[];n.enabled=!1,n.setEnabled=function(e){n.enabled=e},n.begin=function(){n.enabled&&(l=[])},n.trace=function(e){n.enabled&&null!=l&&l.push(e)},n.end=function(){if(n.enabled){var e=l;return l=null,e&&(o.forEach((function(n){return n(e)})),o.length=0),e}return null},n.instrumentContext=function(e){return n.enabled?u.default(e)?(console.warn("WebGL tracer is not supported on a WebGL2 Context"),e):t.makeDebugContext(e,void 0,(function(e,u){n.enabled&&l&&l.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")})):e},n.request=function(e){o.push(e)}}));

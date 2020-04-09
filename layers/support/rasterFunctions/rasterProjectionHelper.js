@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/tsSupport/generatorHelper","../../../core/tsSupport/awaiterHelper","../../../core/tsSupport/assignHelper","../../../geometry","../../../core/Error","../../../geometry/projection","../../../geometry/support/spatialReferenceUtils","../../../geometry/support/webMercatorUtils"],(function(e,r,o,t,n,a,i,s,l,c,p,u){Object.defineProperty(r,"__esModule",{value:!0});var f=function(e,r){var o=(e.isWGS84||e.isWebMercator)&&(r.isWGS84||r.isWebMercator);return!(e.equals(r)||o)};r.defaultGridSpacing=32,r.load=function(){return a(this,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return c.isLoaded()||!c.isSupported()?[2,null]:[4,c.load()];case 1:return e.sent(),[2]}}))}))},r.projectResolution=function(e,r,o,t){if(void 0===t&&(t=null),e.spatialReference.equals(r))return e;var n=f(e.spatialReference,r);if(n&&!c.isLoaded())throw new l("rasterprojectionhelper-projectResolution","projection engine is not loaded");var a=o.center,i=new s.Extent({xmin:a.x-e.x/2,xmax:a.x+e.x/2,ymin:a.y-e.y/2,ymax:a.y+e.y/2,spatialReference:e.spatialReference}),p=n?c.project(i,r,t):u.project(i,r);return null==p?null:new s.Point(p.xmax-p.xmin,p.ymax-p.ymin,r)},r.projectPoint=function(e,r,o){if(void 0===o&&(o=null),e.spatialReference.equals(r))return e;var t=f(e.spatialReference,r);if(t&&!c.isLoaded())throw new l("rasterprojectionhelper-projectResolution","projection engine is not loaded");return t?c.project(e,r,o):u.project(e,r)},r.projectExtent=function(e,r,o){if(void 0===o&&(o=null),e.spatialReference.equals(r))return e;var t=f(e.spatialReference,r);if(t&&!c.isLoaded())throw new l("rasterprojectionhelper-projectExtent","projection engine is not loaded");return t?c.project(e,r,o):u.project(e,r)},r.getProjectionOffsetGrid=function(e,o,t,n,a,i){void 0===n&&(n=null),void 0===a&&(a=!1),void 0===i&&(i=[r.defaultGridSpacing,r.defaultGridSpacing]);var d=o.spatialReference.equals(e.spatialReference),x=f(e.spatialReference,o.spatialReference);if(x&&!c.isLoaded())throw new l("rasterprojectionhelper-projectResolution","projection engine is not loaded");if(!(e&&o&&t))return null;for(var y,h,m,w=e.xmin,v=e.ymin,j=e.xmax,R=e.ymax,g=e.spatialReference,M=o.spatialReference,S=p.getInfo(g),L=S&&S.valid[0],N=S&&S.valid[1],P={x:i[0]*t.x,y:i[1]*t.y},b={cols:Math.ceil((j-w)/P.x-.1)+1,rows:Math.ceil((R-v)/P.y-.1)+1},q=P.x,G=P.y,z=[],E=!1,H=0;H<b.cols;H++){for(var W=[],A=0;A<b.rows;A++)y=new s.Point({x:w+q*H,y:R-G*A,spatialReference:g}),h=d?y:x?c.project(y,M,n):u.project(y,M),W.push(h),H>0&&a&&h&&m[A]&&S&&h.x<m[A].x&&(h.x+=N-L),h?(z.push((h.x-o.xmin)/(o.xmax-o.xmin)),z.push((o.ymax-h.y)/(o.ymax-o.ymin))):(z.push(NaN),z.push(NaN),E=!0);m=W}var F=function(e,r){var o=(e[0]+e[4]+e[4*r.cols]+e[4*r.cols+4])/4,t=(e[1]+e[5]+e[4*r.rows+1]+e[4*r.rows+5])/4;return[Math.abs(o-e[2*r.rows+2]),Math.abs(t-e[2*r.rows+3])]}(z,b),I=new Float32Array((b.cols-1)*(b.rows-1)*2*6),O=new Float32Array([-0,-1,1,-1,1,-0,1,-0,-0]),U=new Float32Array([-1,1,0,0,-1,1,1,0,0]);for(H=0;H<b.cols-1;H++){for(A=0;A<b.rows-1;A++){for(var _=H*b.rows*2+2*A,k=z[_],B=z[_+1],C=z[_+2],D=z[_+3],J=z[_+=2*b.rows],K=z[_+1],Q=z[_+2],T=z[_+3],V=0,X=12*(A*(b.cols-1)+H),Y=0;Y<3;Y++)I[X++]=O[V++]*k+O[V++]*C+O[V++]*Q;V=0;for(Y=0;Y<3;Y++)I[X++]=O[V++]*B+O[V++]*D+O[V++]*T;V=0;for(Y=0;Y<3;Y++)I[X++]=U[V++]*k+U[V++]*J+U[V++]*Q;V=0;for(Y=0;Y<3;Y++)I[X++]=U[V++]*B+U[V++]*K+U[V++]*T}if(E)for(var Z=0;Z<I.length;Z++)isNaN(I[Z])&&(I[Z]=-1)}return{offsets:z,error:F,coefficients:I,spacing:i,size:[b.cols-1,b.rows-1]}},r.snapPyramid=function(e,r,o){var t=Math.log(e.x/r.pixelSize.x)/Math.LN2,n=Math.log(e.y/r.pixelSize.y)/Math.LN2,a=r.storageInfo.maximumPyramidLevel||0,i="down"===o?Math.floor(Math.min(t,n)):"up"===o?Math.ceil(Math.max(t,n)):Math.round((t+n)/2),l=!1;i<0?i=0:i>a&&(l=i>a+3,i=a);var c=Math.pow(2,i);return{pyramidLevel:i,pyramidResolution:new s.Point({x:c*r.pixelSize.x,y:c*r.pixelSize.y,spatialReference:r.spatialReference}),excessiveReading:l}}}));

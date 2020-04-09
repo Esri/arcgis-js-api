@@ -3,7 +3,7 @@ varying highp vec4 v_id;
 varying mediump vec2 v_normal;             // interpolated normal to the line. packed into the two LSBs of the vertex coordinate
 varying mediump float v_lineHalfWidth;
 varying lowp float v_opacity;
-varying vec3 v_pos;
+varying highp vec3 v_pos;
 
 #ifdef PATTERN
 uniform mediump vec2 u_mosaicSize;

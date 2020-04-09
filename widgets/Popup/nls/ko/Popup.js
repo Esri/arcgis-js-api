@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define({widgetLabel:"팝업",zoom:"확대",next:"다음 피처",previous:"이전 피처",dock:"고정",undock:"고정 해제",pageText:"{index}/{total}",selectedFeature:"선택한 피처",selectedFeatures:"{total}개 결과",tooManyFields:"이 레이어에 너무 많은 필드가 있어 일부가 표시되지 않습니다."});
+define({widgetLabel:"팝업",zoom:"확대",next:"다음 피처",previous:"이전 피처",dock:"고정",undock:"고정 해제",pageText:"{index}/{total}",selectedFeature:"선택한 피처",selectedFeatures:"{total}개 결과"});

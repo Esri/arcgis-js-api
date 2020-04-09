@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"การวัดพื้นที่",hint:"เริ่มต้นวัดโดยการคลิกที่แผนที่ เพื่อวางจุดแรกของคุณ",unsupported:"รองรับการวัดพื้นที่ 2D เฉพาะใน MapView",perimeter:"เส้นรอบรูป",area:"พื้นที่",newMeasurement:"การวัดใหม่",mode:"โหมด",modes:{auto:"อัตโนมัติ",planar:"กราฟเชิงระนาบ",geodesic:"เรขาคณิตของผิวหน้าโค้ง"},unit:"หน่วย",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด","square-kilometers":"ตารางกิโลเมตร","square-meters":"ตารางเมตร","square-miles":"ตารางไมล์","square-inches":"ตารางนิ้ว","square-feet":"ตารางนิ้ว","square-yards":"ตารางหลา","square-us-feet":"ตารางฟุต (สหรัฐฯ)",acres:"เอเคอร์",ares:"เอเคอร์",hectares:"เฮกตาร์"}});

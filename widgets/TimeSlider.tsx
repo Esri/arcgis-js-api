@@ -97,7 +97,6 @@
  *
  * @module esri/widgets/TimeSlider
  * @since 4.12
- * @beta
  *
  * @see [TimeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TimeSlider.tsx)
  * @see [TimeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TimeSlider.scss)
@@ -501,7 +500,9 @@ class TimeSlider extends declared(Widget) {
   postInitialize(): void {
     this._slider = new Slider({
       precision: 0,
-      rangeLabelsVisible: false,
+      visibleElements: {
+        rangeLabels: false
+      },
       rangeLabelInputsEnabled: false
     });
 

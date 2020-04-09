@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Mesure de surface",hint:"Commencez les mesures en cliquant sur la carte pour placer le premier point",unsupported:"La mesure de la zone 2D est uniquement prise en charge dans la vue cartographique.",perimeter:"Périmètre",area:"Zone",newMeasurement:"Nouvelle mesure",mode:"Mode",modes:{auto:"Automatique",planar:"plane",geodesic:"Géodésique"},unit:"Unité",units:{metric:"Métriques",imperial:"Impériales","square-kilometers":"Kilomètres carrés","square-meters":"Mètres carrés","square-miles":"Miles carrés","square-inches":"Pouces carrés","square-feet":"Pieds carrés","square-yards":"Yards carrés","square-us-feet":"Pieds carrés (États-Unis)",acres:"Ares",ares:"Ares",hectares:"Hectares"}});

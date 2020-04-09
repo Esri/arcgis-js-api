@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/tsSupport/generatorHelper","../../../../core/tsSupport/awaiterHelper","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,p,t,s,a,i){return function(e){function r(r){return e.call(this,r)||this}return o(r,e),p([i.property()],r.prototype,"geometryType",void 0),p([i.property()],r.prototype,"objectIdField",void 0),p([i.property()],r.prototype,"supportsSQLExpression",void 0),p([i.property()],r.prototype,"hasQueryEngine",void 0),p([i.property()],r.prototype,"minScale",void 0),p([i.property()],r.prototype,"maxScale",void 0),p([i.property()],r.prototype,"fullExtent",void 0),r=p([i.subclass("esri.renderers.smartMapping.support.adapters.LayerAdapter")],r)}(i.declared(a))});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/tsSupport/generatorHelper","../../../../core/tsSupport/awaiterHelper","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],(function(e,r,o,p,t,s,a,i){return function(e){function r(r){return e.call(this,r)||this}return o(r,e),p([i.property()],r.prototype,"geometryType",void 0),p([i.property()],r.prototype,"objectIdField",void 0),p([i.property()],r.prototype,"supportsSQLExpression",void 0),p([i.property()],r.prototype,"hasQueryEngine",void 0),p([i.property()],r.prototype,"minScale",void 0),p([i.property()],r.prototype,"maxScale",void 0),p([i.property()],r.prototype,"fullExtent",void 0),r=p([i.subclass("esri.renderers.smartMapping.support.adapters.LayerAdapter")],r)}(i.declared(a))}));

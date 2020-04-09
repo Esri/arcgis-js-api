@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"شريحة",cancel:"إلغاء الأمر",hint:"بدء تقسيم بالشرائح بالنقر والسحب على سطح في المشهد",excludeHint:"التقط طبقة في العرض لاستثنائها من الشريحة",unsupported:"الشريحة غير مدعومة في MapView.",multipleDisabled:"يمكن أن تكون شريحة واحدة نشطة في المرة الواحدة",newSlice:"شريحة جديدة",excludedLayers:"الطبقات المستثناة",pickLayer:"التقط طبقة من العرض",excludeLayer:"استثناء طبقة من الشريحة",includeLayer:"تضمين طبقة في الشريحة",ground:"أرض"});

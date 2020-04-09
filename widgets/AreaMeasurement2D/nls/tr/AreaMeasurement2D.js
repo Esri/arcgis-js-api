@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Alan Ölçümü",hint:"İlk noktanızı yerleştirmek için haritaya tıklayarak ölçüme başlayın",unsupported:"2B mesafe ölçümü sadece MapView’da desteklenir.",perimeter:"Çevre",area:"Alan",newMeasurement:"Yeni ölçüm",mode:"Mod",modes:{auto:"Otomatik",planar:"Düzlemsel",geodesic:"Jeodezik"},unit:"Birim",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometre kare","square-meters":"Metre kare","square-miles":"Mil kare","square-inches":"İnç kare","square-feet":"Fit Kare","square-yards":"Yarda kare","square-us-feet":"Fit kare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});

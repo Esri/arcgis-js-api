@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Drukāt",title:"Nosaukums",fileName:"Faila nosaukums",titlePlaceHolder:"Faila virsraksts",fileNamePlaceHolder:"Faila nosaukums",formatDefaultOption:"Atlasīt formātu",fileFormatTitle:"Faila formāts:",layoutTitle:"Lapas iestatījumi",layoutDefaultOption:"Atlasīt lapas iestatījumus",scale:"Iestatīt mērogu",scaleLabel:"mērogs",reset:"atiestatīt",author:"Autors",copyright:"Autortiesības",legend:"Iekļaut apzīmējumus",lock:"aizslēgt",swap:"pārnese",panelToggle:"Paneļa pārslēgšana",advancedOptions:"Papildu opcijas",width:"Platums",height:"Augstums",dpi:"DPI",attribution:"Iekļaut attiecinājumu",layoutTab:"Izkārtojums",mapOnlyTab:"Tikai karte",untitled:"bez nosaukuma",pending:"Eksportēšana",ready:"Atvērt šo",linkReady:"Atveriet jaunā logā.",error:"Izvēlieties šo vienību, lai to noņemtu.",sceneViewError:"Skatā SceneView drukāšana netiek atbalstīta.",serviceError:"Šķiet, ka ir radusies kļūda.",export:"Eksportēt",exportDescription:"Eksportēšana. Eksportētie faili tiks rādīti zemāk.",exportText:"Eksportētie faili",exportHint:"Eksportētie faili tiks rādīti šeit.","a3-landscape":"A3 formāta ainavorientācija","a3-portrait":"A3 formāta portretorientācija","a4-landscape":"A4 formāta ainavorientācija","a4-portrait":"A4 formāta portretorientācija","letter-ansi-a-landscape":"Letter ANSI A formāta ainavorientācija","letter-ansi-a-portrait":"Letter ANSI A formāta portretorientācija","tabloid-ansi-b-landscape":"Tabloid ANSI B formāta ainavorientācija","tabloid-ansi-b-portrait":"Tabloid ANSI B formāta portretorientācija"});

@@ -15,6 +15,7 @@
  * The FeatureForm widget is not yet at full parity with the functionality provided in the 3.x
  * [AttributeInspector](https://developers.arcgis.com/javascript/3/jsapi/attributeinspector-amd.html)
  * widget. For example, there is currently no support for editing attachments or related feature attributes.
+ * Although, editing attachments is possible using the {@link module:esri/widgets/Editor} widget.
  * :::
  *
  * @module esri/widgets/FeatureForm
@@ -49,7 +50,7 @@ import * as i18n from "dojo/i18n!esri/widgets/FeatureForm/nls/FeatureForm";
 import { format, parse } from "dojo/date/locale";
 
 // esri
-import * as Graphic from "esri/Graphic";
+import Graphic = require("esri/Graphic");
 import moment = require("esri/moment");
 
 // esri.core.accessorSupport

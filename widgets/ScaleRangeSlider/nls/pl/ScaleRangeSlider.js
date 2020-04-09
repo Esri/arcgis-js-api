@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Suwak zakresu skali",noLimit:"Brak ograniczeń",preview:"Zobacz podgląd",currentScaleTooltip:"Bieżąca skala mapy ({scaleLabel})",customScaleInputTooltip:"Wprowadź skalę.",current:"Bieżący",setTo:"Ustaw na",selectOne:"(wybierz jeden)",setToSelectOne:"{setTo} {selectOne}",scaleRangeLabels:{world:"Świat",continent:"Kontynent",countriesBig:"Kraje",countriesSmall:"Kraj",statesProvinces:"Stany",stateProvince:"Stan",counties:"Powiaty",county:"Powiat",metropolitanArea:"Obszar metropolitalny",cities:"Miasta",city:"Miasto",town:"Miejscowość",neighborhood:"Dzielnica",streets:"Ulice",street:"Ulica",buildings:"Budynki",building:"Budynek",smallBuilding:"Mały budynek",rooms:"Pokoje",room:"Pokój"},featuredScaleLabels:{custom:"Niestandardowa",current:"Bieżący widok mapy",world:"Świat",continent:"Kontynent",countriesBig:"Kraje — duże",countriesSmall:"Kraje — małe",statesProvinces:"Województwa",stateProvince:"Województwo",counties:"Powiaty",county:"Powiat",metropolitanArea:"Obszar metropolitalny",cities:"Miasta",city:"Miasto",town:"Miejscowość",neighborhood:"Dzielnica",streets:"Ulice",street:"Ulica",buildings:"Budynki",building:"Budynek",smallBuilding:"Mały budynek",rooms:"Pomieszczenia",room:"Pomieszczenie"}});

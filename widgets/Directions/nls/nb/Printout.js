@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({printNotes:"Angi merknader her",printDisclaimer:"Veibeskrivelser tilbys utelukkende for planleggingsformål og er underlagt <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esris bruksvilkår</a>. Veiforholdene kan variere, og dette kan påvirke nøyaktigheten i veibeskrivelsene dine. Ta alltid hensyn til dette samt skilting og juridiske restriksjoner. Du påtar deg all risiko i forbindelse med bruk av tjenesten.",printoutError:"Det virker som det har oppstått en feil."});

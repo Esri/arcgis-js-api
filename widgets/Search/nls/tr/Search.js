@@ -1,4 +1,4 @@
-// COPYRIGHT © 2019 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.14/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
 
 define({widgetLabel:"Ara",searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"Sonuç bulunamadı.",noResultsFoundForValue:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",useCurrentLocation:"Mevcut konumu kullan"});
