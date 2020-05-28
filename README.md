@@ -1,3 +1,5 @@
+![Current build version](https://img.shields.io/npm/v/arcgis-js-api/next?label=Current%20build)
+
 # arcgis-js-api
 
 A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
