@@ -1,4 +1,4 @@
-![Current build version](https://img.shields.io/npm/v/arcgis-js-api/next?label=Current%20build)
+![Current version](https://img.shields.io/github/package-json/v/Esri/arcgis-js-api/4master?label=Current%20version)
 
 # arcgis-js-api
 
