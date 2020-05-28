@@ -1,3 +1,5 @@
+![Current version](https://img.shields.io/github/package-json/v/Esri/arcgis-js-api/master?label=Current%20version)
+
 # arcgis-js-api
 
 A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
