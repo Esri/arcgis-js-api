@@ -19,9 +19,11 @@
     "dojo": "Esri/dojo#v1.14.2/esri-3.28.0",
     "dojo-dstore": "1.1.2",
     "dojox": "Esri/dojox#v1.14.2/esri-3.28.0",
-    "maquette-css-transitions": "~1.1.1",
-    "maquette-jsx": "~2.1.1",
-    "moment": "2.24.0"
+    "intersection-observer": "0.5.1",
+    "maquette-css-transitions": "1.1.1",
+    "maquette-jsx": "3.0.1",
+    "moment": "2.24.0",
+    "tslib": "1.9.3"
   },
   "homepage": "https://developers.arcgis.com/javascript",
   "dojoBuild": "esri.profile.js"
