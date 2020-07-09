@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Genera el ràster de tendència</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Genera el r&agrave;ster de tend&egrave;ncia"></h2>
+        <hr/>
+    <p>Estima la tend&egrave;ncia de cada p&iacute;xel en una dimensi&oacute; per a una o diverses variables d'un r&agrave;ster multidimensional.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Trieu la capa d'imatges multidimensionals per analitzar la tendència</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Capa d'imatges d'entrada d'un r&agrave;ster multidimensional que s'analitzar&agrave;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Trieu la dimensió amb què s'analitzarà la tendència de la variable</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensi&oacute; amb la qual s'extraur&agrave; una tend&egrave;ncia per a la variable o les variables seleccionades a l'an&agrave;lisi.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trieu les variables per analitzar la tendència</h2></div>
+        <hr/>
+        <div>
+            <p>Variable o variables de les quals es calcularan les tend&egrave;ncies. Si no s'ha especificat cap variable, s'analitzar&agrave; la primera variable del r&agrave;ster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Trieu el tipus de línia per ajustar els valors de la variable a una dimensió</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el tipus de l&iacute;nia que s'utilitzar&agrave; per ajustar els valors de p&iacute;xel a una dimensi&oacute;. 
+                <ul>
+                    <li> <b>Lineal</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia lineal. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Polin&ograve;mica</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia polin&ograve;mica de segon ordre.
+                    </li>
+                    <li> <b>Harm&ograve;nica</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia harm&ograve;nica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Especifiqueu la durada del cicle harmònic</h2></div>
+        <hr/>
+        <div>
+            <p>Durada de la variaci&oacute; peri&ograve;dica amb qu&egrave; es crear&agrave; el model. Aquest par&agrave;metre &eacute;s obligatori quan el tipus de l&iacute;nia de tend&egrave;ncia es defineix com a  <b>Harm&ograve;nica</b>. Per exemple, la verdor de les fulles sovint t&eacute; un cicle marcat de variaci&oacute; al llarg d'un any, aix&iacute; que la durada del cicle &eacute;s d'un any. Les dades de temperatura per hora tenen un cicle marcat de variaci&oacute; al llarg d'un dia, de manera que la durada del cicle &eacute;s d'un dia.
+            </p>
+            <p>La durada per defecte &eacute;s d'un any per a les dades que varien en un cicle anual.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s s'inclou a l'an&agrave;lisi de tend&egrave;ncia quan la dimensi&oacute; que s'analitza &eacute;s el temps i el tipus de l&iacute;nia de tend&egrave;ncia es defineix en  <b>Harm&ograve;nica</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Trieu la unitat de temps de la durada del cicle harmònic</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unitat de temps que s'utilitzar&agrave; per a la durada del cicle harm&ograve;nic.
+                <ul>
+                    <li> <b>Dies</b>: la unitat de la durada del cicle harm&ograve;nic &eacute;s dies.
+                    </li>
+                    <li> <b>Anys</b>: la unitat de la durada del cicle harm&ograve;nic &eacute;s anys. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s s'inclou a l'an&agrave;lisi de tend&egrave;ncia quan la dimensi&oacute; que s'analitza &eacute;s el temps i el tipus de l&iacute;nia de tend&egrave;ncia es defineix en  <b>Harm&ograve;nica</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Especifiqueu el nombre de freqüència de l'ajust de tendència harmònic</h2></div>
+        <hr/>
+        <div>
+            <p>Freq&uuml;&egrave;ncia que s'utilitzar&agrave; a l'ajustament de tend&egrave;ncia harm&ograve;nic. Aquest par&agrave;metre especifica la freq&uuml;&egrave;ncia de cicles a l'any.
+            </p>
+            <p>El valor per defecte &eacute;s 1, o un cicle harm&ograve;nic per any.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s s'inclou a l'an&agrave;lisi de tend&egrave;ncia quan la dimensi&oacute; que s'utilitza &eacute;s el temps.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Especifiqueu el número d'ordre polinòmic que s'utilitzarà a l'ajust de la tendència</h2></div>
+        <hr/>
+        <div>
+            <p>N&uacute;mero d'ordre polin&ograve;mic que s'utilitzar&agrave; a l'ajust de la tend&egrave;ncia polin&ograve;mica.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s s'inclou a l'an&agrave;lisi de tend&egrave;ncia quan la dimensi&oacute; que s'utilitza &eacute;s el temps.
+            </p>
+            <p>El valor per defecte &eacute;s 2, o un polin&ograve;mic de segon ordre.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Trieu les estadístiques del model que s'inclouran al ràster de tendència</h2></div>
+        <hr/>
+        <div>
+            <p>Aquesta eina proporciona tres tipus d'estad&iacute;stiques de la l&iacute;nia d'ajust de tend&egrave;ncia: l'error de mitjana quadr&agrave;tica (RMSE), l'estad&iacute;stica de bondat d'ajust d'R quadrat i l'estad&iacute;stica de valor P del coeficient de pendent (valor P del coeficient de pendent). Cada estad&iacute;stica t&eacute; una casella de selecci&oacute; corresponent per especificar si es calcular&agrave; i s'inclour&agrave; com una de les diverses bandes del r&agrave;ster de tend&egrave;ncia de sortida.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Activada: l'RMSE es calcular&agrave; i s'inclour&agrave; com una de les diverses bandes al r&agrave;ster de tend&egrave;ncia de sortida. Aquesta &eacute;s l'opci&oacute; per defecte.
+                            </li>
+                            <li>Desactivada: l'RMSE no es calcular&agrave;.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R quadrat
+                        </p>
+                        <ul>
+                            <li>Activada: el valor R quadrat es calcular&agrave; i s'inclour&agrave; com una de les diverses bandes del r&agrave;ster de tend&egrave;ncia de sortida.
+                            </li>
+                            <li>Desactivada: el valor d'R quadrat no es calcular&agrave;. Aquesta &eacute;s l'opci&oacute; per defecte.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Valor P del coeficient de pendent
+                        </p>
+                        <ul>
+                            <li>Activada: el valor P es calcular&agrave; i s'inclour&agrave; com una de les diverses bandes al r&agrave;ster de tend&egrave;ncia de sortida.
+                            </li>
+                            <li>Desactivada: el valor P no es calcular&agrave;. Aquesta &eacute;s l'opci&oacute; per defecte.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora els valors que falten al càlcul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi.
+                <ul>
+                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li>Desactivada: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per als p&iacute;xels a la dimensi&oacute; proporcionada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

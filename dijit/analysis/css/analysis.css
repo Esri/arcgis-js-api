@@ -1300,6 +1300,10 @@ td.subsectionLineDivider {
   background-image: url("../images/ClassifyObjectsUsingDeepLearning32.png");
 }
 
+.sampleIcon {
+  background-image: url("../images/MultiDRasterExtractValueByPoints32.png");
+}
+
 .btn-container {
   padding: 5px 0px;
   position: relative;
@@ -1440,7 +1444,6 @@ td.subsectionLineDivider {
 
 .esriAnalysis .ui-widget-content {
   width: 100%;
-  overflow-y: auto;
 }
 
 
@@ -2788,4 +2791,9 @@ button[disabled] {
 
 .paddingTop1 {
   padding-top: 1rem;
+}
+
+.esriSaveLayerlabel {
+  width: 9px;
+  font-size: smaller;
 }

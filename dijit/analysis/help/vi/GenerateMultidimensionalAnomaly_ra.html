@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tạo Bất thường Đa chiều</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Tạo Bất thường Đa chiều"></h2>
+        <hr/>
+    <p>Tạo một bộ dữ liệu raster đa chiều bằng c&aacute;ch kết hợp c&aacute;c biến raster đa chiều hiện c&oacute; dọc theo một chiều.
+    </p>
+    <p>Một bất thường l&agrave; độ lệch của một quan s&aacute;t so với gi&aacute; trị ti&ecirc;u chuẩn, trung b&igrave;nh hoặc b&igrave;nh qu&acirc;n của n&oacute;.
+    </p>
+    <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n c&aacute;c bất thường theo thời gian cho một hoặc nhiều biến trong raster đa chiều. Nếu bạn c&oacute; một chiều nontime ngo&agrave;i chiều thời gian, bất thường sẽ được t&iacute;nh ở mỗi bước trong chiều bổ sung.
+    </p>
+    <p>V&iacute; dụ: bạn c&oacute; dữ liệu nhiệt độ đại dương h&agrave;ng th&aacute;ng, được thu thập ở độ s&acirc;u cứ mỗi 1 m&eacute;t l&ecirc;n đến 100 m&eacute;t v&agrave; bạn muốn t&iacute;nh to&aacute;n c&aacute;c bất thường nhiệt độ dưới dạng độ lệch so với trung b&igrave;nh h&agrave;ng năm. C&ocirc;ng cụ n&agrave;y sẽ x&aacute;c định bất thường về nhiệt độ dựa tr&ecirc;n gi&aacute; trị trung b&igrave;nh h&agrave;ng năm nếu bạn thiết lập  <b>H&agrave;ng năm</b> th&agrave;nh <b>khoảng thời gian để t&iacute;nh gi&aacute; trị trung b&igrave;nh</b>,v&agrave; n&oacute; sẽ trả về gi&aacute; trị bất thường cho mỗi độ s&acirc;u 100m.
+    </p>
+    <p>C&ocirc;ng cụ n&agrave;y chỉ hỗ trợ c&aacute;c bộ dữ liệu raster đa chiều c&oacute; một chiều thời gian.
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; c&aacute;c biến trong lớp nh&igrave;n thấy được trong phạm vi bản đồ hiện tại sẽ được ph&acirc;n t&iacute;ch. Nếu kh&ocirc;ng được chọn, c&aacute;c biến của lớp đầy đủ sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Chọn lớp hình ảnh đa chiều để tạo bất thường</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp h&igrave;nh ảnh đầu v&agrave;o của một bộ dữ liệu raster đa chiều.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Chọn (các) biến để tạo bất thường cho nó</h2></div>
+        <hr/>
+        <div>
+            <p>Biến hoặc c&aacute;c biến c&oacute; bất thường sẽ được t&iacute;nh to&aacute;n. Nếu kh&ocirc;ng c&oacute; biến n&agrave;o được chỉ định, tất cả c&aacute;c biến c&oacute; chiều thời gian sẽ được ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Chọn phương pháp để tạo bất thường</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định phương ph&aacute;p sẽ được sử dụng để t&iacute;nh to&aacute;n bất thường. 
+                <ul>
+                    <li> <b>Ch&ecirc;nh lệch so với Trung b&igrave;nh</b>&mdash;Ch&ecirc;nh lệch giữa gi&aacute; trị pixel v&agrave; trung b&igrave;nh của gi&aacute; trị pixel đ&oacute; tr&ecirc;n c&aacute;c l&aacute;t cắt được x&aacute;c định bởi khoảng sẽ được t&iacute;nh to&aacute;n. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Phần trăm Ch&ecirc;nh lệch so với Trung b&igrave;nh</b>&mdash;Phần trăm ch&ecirc;nh lệch giữa gi&aacute; trị pixel v&agrave; trung b&igrave;nh của gi&aacute; trị pixel đ&oacute; tr&ecirc;n c&aacute;c l&aacute;t cắt được x&aacute;c định bởi khoảng sẽ được t&iacute;nh to&aacute;n.
+                    </li>
+                    <li> <b>Phần trăm Trung b&igrave;nh</b>&mdash;Phần trăm của gi&aacute; trị trung b&igrave;nh sẽ được t&iacute;nh to&aacute;n.
+                    </li>
+                    <li> <b>Điểm Z</b>&mdash;Điểm z cho mỗi pixel sẽ được t&iacute;nh to&aacute;n. Điểm z bằng 0 cho biết gi&aacute; trị của pixel giống với gi&aacute; trị trung b&igrave;nh. Điểm z bằng 1 cho biết gi&aacute; trị của pixel l&agrave; 1 độ lệch chuẩn so với gi&aacute; trị trung b&igrave;nh. Điểm z bằng 2, gi&aacute; trị của pixel l&agrave; 2 độ lệch chuẩn so với gi&aacute; trị trung b&igrave;nh v&agrave; cứ thế.
+                    </li>
+                    <li> <b>Ch&ecirc;nh lệch so với B&igrave;nh qu&acirc;n</b>&mdash;Ch&ecirc;nh lệch giữa gi&aacute; trị pixel v&agrave; b&igrave;nh qu&acirc;n to&aacute;n học của gi&aacute; trị pixel đ&oacute; tr&ecirc;n c&aacute;c l&aacute;t cắt được x&aacute;c định bởi khoảng sẽ được t&iacute;nh to&aacute;n.
+                    </li>
+                    <li> <b>Phần trăm Ch&ecirc;nh lệch so với B&igrave;nh qu&acirc;n</b>&mdash;Phần trăm ch&ecirc;nh lệch giữa gi&aacute; trị pixel v&agrave; b&igrave;nh qu&acirc;n to&aacute;n học của gi&aacute; trị pixel đ&oacute; tr&ecirc;n c&aacute;c l&aacute;t cắt được x&aacute;c định bởi khoảng sẽ được t&iacute;nh to&aacute;n.
+                    </li>
+                    <li> <b>Phần trăm B&igrave;nh qu&acirc;n</b>&mdash;Phần trăm của gi&aacute; trị b&igrave;nh qu&acirc;n sẽ được t&iacute;nh to&aacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>C&aacute;c phương ph&aacute;p to&aacute;n học để t&iacute;nh gi&aacute; trị bất thường được liệt k&ecirc; dưới đ&acirc;y. Bất thường c&oacute; thể được t&iacute;nh bằng c&aacute;ch gi&aacute; trị trung b&igrave;nh hoặc gi&aacute; trị b&igrave;nh qu&acirc;n như định nghĩa của gi&aacute; trị trung b&igrave;nh. Nếu ph&acirc;n phối dữ liệu bị sai lệch, gi&aacute; trị trung b&igrave;nh c&oacute; thể bị ảnh hưởng nhiều bởi c&aacute;c ngoại lệ, v&igrave; vậy gi&aacute; trị trung b&igrave;nh hoặc phương ph&aacute;p điểm z c&oacute; thể ph&ugrave; hợp hơn với loại dữ liệu n&agrave;y.
+            </p>
+            <p>
+                <ul>
+                    <li>Ch&ecirc;nh lệch so với trung b&igrave;nh = x - &micro;
+
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                                
+
+                            </li>
+                            <li>&micro; = trung b&igrave;nh của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Phần trăm ch&ecirc;nh lệch so với trung b&igrave;nh = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                                
+
+                            </li>
+                            <li>&micro; = trung b&igrave;nh của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                                
+
+                            </li>
+                            <li>|x - &micro;| = gi&aacute; trị tuyệt đối của ch&ecirc;nh lệch giữa gi&aacute; trị v&agrave; gi&aacute; trị trung b&igrave;nh
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Phần trăm trung b&igrave;nh = x / &micro;
+
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                                
+
+                            </li>
+                            <li>&micro; = trung b&igrave;nh của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Ch&ecirc;nh lệch so với b&igrave;nh qu&acirc;n = x - &szlig;
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                            </li>
+                            <li>&szlig; = b&igrave;nh qu&acirc;n của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Phần trăm ch&ecirc;nh lệch so với b&igrave;nh qu&acirc;n = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                            </li>
+                            <li>&szlig; = b&igrave;nh qu&acirc;n của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                            </li>
+                            <li>|x - &szlig;| = gi&aacute; trị tuyệt đối của ch&ecirc;nh lệch giữa gi&aacute; trị v&agrave; gi&aacute; trị b&igrave;nh qu&acirc;n
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Phần trăm b&igrave;nh qu&acirc;n = x / &szlig;
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                            </li>
+                            <li>&szlig; = b&igrave;nh qu&acirc;n của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Điểm Z = (x - &micro;) / S
+                        <ul>
+                            <li>x = gi&aacute; trị pixel trong một l&aacute;t
+                            </li>
+                            <li>&micro; = trung b&igrave;nh của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                            </li>
+                            <li>S = độ lệch chuẩn của c&aacute;c gi&aacute; trị của pixel đ&oacute; trong khoảng thời gian nhất định
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Chọn khoảng thời gian để tính giá trị trung bình</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định khoảng thời gian sẽ được sử dụng để t&iacute;nh b&igrave;nh qu&acirc;n. 
+                <ul>
+                    <li> <b>Tất cả</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt cho mỗi pixel.
+                    </li>
+                    <li> <b>H&agrave;ng năm</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh h&agrave;ng năm cho mỗi pixel.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng th&aacute;ng</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh h&agrave;ng th&aacute;ng cho mỗi pixel.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng tuần</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh h&agrave;ng tuần cho mỗi pixel.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng ng&agrave;y</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh h&agrave;ng ng&agrave;y cho mỗi pixel.
+                    </li>
+                    <li> <b>H&agrave;ng giờ</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh h&agrave;ng giờ cho mỗi pixel.
+                    </li>
+                    <li> <b>Raster B&ecirc;n ngo&agrave;i</b>&mdash;Một bộ dữ liệu raster hiện c&oacute; chứa gi&aacute; trị trung b&igrave;nh hoặc b&igrave;nh qu&acirc;n cho mỗi pixel được tham chiếu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Chọn lớp hình ảnh giá trị trung bình làm tham chiếu</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định bộ dữ liệu raster tham chiếu c&oacute; chứa gi&aacute; trị trung b&igrave;nh được t&iacute;nh trước đ&oacute; cho mỗi pixel. Bất thường sẽ được t&iacute;nh khi so s&aacute;nh với gi&aacute; trị trung b&igrave;nh n&agrave;y.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Bỏ qua các giá trị thiếu trong tính toán</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng. 
+                <ul>
+                    <li>Được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ bao gồm tất cả c&aacute;c pixel hợp lệ dọc theo một chiều nhất định v&agrave; bỏ qua mọi pixel NoData. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li>Kh&ocirc;ng được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ cho kết quả NoData nếu c&oacute; mọi gi&aacute; trị NoData cho pixel dọc theo chiều đ&atilde; cho.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

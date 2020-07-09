@@ -56,9 +56,9 @@
         <div>
             <p>Layer alla cui tabella verranno aggiunti gli attributi derivanti dal layer di join.
             </p>
-            <p>L'analisi utilizzando la relazione spaziale  <b>Vicino</b> richiede un sistema di coordinate proiettate. &Egrave; possibile impostare il <b>Sistema di coordinate di elaborazione</b> negli <b>Ambienti di analisi</b>. Se il sistema di coordinate di elaborazione non &egrave; impostato su un sistema di coordinate proiettate, verr&agrave; chiesto di impostarlo quando si <b>Esegue l'analisi</b> .
+            <p>L'analisi utilizzando la relazione spaziale  <b>Vicino</b> richiede un sistema di coordinate proiettate. &Egrave; possibile impostare il sistema di coordinate di elaborazione negli Ambienti di analisi. Se il sistema di coordinate di elaborazione non &egrave; impostato su un sistema di coordinate proiettate, verr&agrave; chiesto di impostarlo quando si esegue l'analisi .
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Layer di join con gli attributi che verr&agrave; aggiunto al layer di destinazione.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Uguale a</b>: le feature saranno abbinate se hanno la stessa geometria.
                     </li>
-                    <li> <b>Vicino</b>: le feature saranno abbinate se si trovano entro una distanza specifica le une dalle altre. Il layer di destinazione deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli <b>Ambienti di analisi</b> se si utilizza una relazione <b>Vicino</b> spaziale.
+                    <li> <b>Planare vicino</b>: le feature saranno abbinate se si trovano entro una distanza specifica le une dalle altre. Il layer di destinazione deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli <b>Ambienti di analisi</b> se si utilizza una relazione <b>Vicino</b> spaziale.
+                    </li>
+                    <li> <b>Geodetico vicino</b>: le feature saranno abbinate se si trovano entro una distanza specifica le une dalle altre. La distanza viene misurata utilizzando la distanza planare.
                     </li>
                     <li> <b>Contiene</b>: le feature saranno abbinate se il layer di destinazione &egrave; contenuto nelle feature di join.
                     </li>
@@ -227,9 +229,9 @@
                     </li>
                     <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
                     </li>
-                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,0,1,1] &egrave; 0,25.
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1, 0, 1, 1] &egrave; 0,25.
                     </li>
-                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,0,1,1] &egrave; 0,5. 
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1, 0, 1, 1] &egrave; 0,5. 
                     </li>
                 </ul>
                 
@@ -263,9 +265,9 @@
         <div><h2>Scegliere il Data Store</h2></div>
         <hr/>
         <div>
-            <p>I risultati di GeoAnalytics sono memorizzati in un data store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati di GeoAnalytics sono memorizzati in un data store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
-                    <li>&Egrave; possibile utilizzare i risultati in una collaborazione tra portali.
+                    <li>&Egrave; possibile utilizzare i risultati nella collaborazione tra portali.
                     </li>
                     <li>&Egrave; possibile abilitare funzionalit&agrave; di sincronizzazione con i risultati.
                     </li>
@@ -280,7 +282,7 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Il nome del layer che verr&agrave; creato.  Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato. Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
             <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>

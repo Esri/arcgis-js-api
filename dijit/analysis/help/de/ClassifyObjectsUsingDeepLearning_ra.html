@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Objekte mit Deep Learning klassifizieren</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Objekte mit Deep Learning klassifizieren"></h2>
+        <hr/>
+    <p>Dieses Werkzeug f&uuml;hrt ein trainiertes Deep-Learning-Modell in einem Eingabe-Raster und einer optionalen Feature-Class aus und erstellt eine Feature-Class oder Tabelle, in der jedes Eingabeobjekt &uuml;ber eine zugewiesene Klassenbeschriftung verf&uuml;gt.
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, wird nur die Raster-Fl&auml;che analysiert, die in der aktuellen Kartenausdehnung sichtbar ist. Wenn diese Option deaktiviert ist, wird auch dann das gesamte Raster analysiert, wenn es sich au&szlig;erhalb der aktuellen Kartenausdehnung befindet.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Bild für die Klassifizierung von Objekten auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das Eingabebild f&uuml;r die Ermittlung von Objekten.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Feature-Layer für Objekte auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Der Punkt-, Linien- oder Polygon-Eingabe-Feature-Layer, der die Position jedes zu klassifizierenden und zu beschriftenden Objekts identifiziert. Jede Zeile im Eingabe-Feature-Layer repr&auml;sentiert ein einzelnes Objekt.
+            </p>
+            <p>Wenn kein Eingabe-Feature-Layer angegeben ist, wird angenommen, dass jedes Eingabebild ein einzelnes zu klassifizierendes Objekt enth&auml;lt. Wenn das Eingabebild oder die Eingabebilder einen Raumbezug verwenden, ist die Ausgabe des Werkzeugs ein Feature-Layer, in dem die Ausdehnung jedes Bildes als Begrenzungsgeometrie f&uuml;r jede beschriftete Feature-Class verwendet wird. Wenn das Eingabebild oder die Eingabebilder keinen Raumbezug verwenden, ist die Ausgabe des Werkzeugs eine Tabelle mit den Bild-ID-Werten und Klassenbeschriftungen f&uuml;r jedes Bild.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Deep-Learning-Modell für die Klassifizierung von Objekten auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das Eingabe-Deep-Learning-Paketelement ( <code>.dlpk</code>).
+            </p>
+            <p>Das Deep-Learning-Paket besteht aus der JSON-Datei mit der Esri Modelldefinition ( <code>.emd</code>), der bin&auml;ren Datei des Deep-Learning-Modells und optional aus der zu verwendenden Python-Raster-Funktion.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Argumente für das Deep-Learning-Modell angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Die Funktionsargumente werden in der Python-Raster-Funktionsklasse definiert, die vom Eingabemodell referenziert wird. Hier geben Sie zus&auml;tzliche Deep-Learning-Parameter und Argumente f&uuml;r Experimente und Verfeinerungen wie den Konfidenzschwellenwert zur Anpassung der Empfindlichkeit an.
+            </p>
+            <p>Die Namen der Argumente werden vom Werkzeug durch Lesen des Python-Moduls im Raster-Analyse-Server ausgef&uuml;llt.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Feldname für die Klassenbeschriftung definieren</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Feldes f&uuml;r die Klassifizierungsbeschriftung im Ausgabe-Feature-Layer.
+            </p>
+            <p>Falls kein Feldname angegeben ist, wird das neue Feld  <i>ClassLabel</i> im Ausgabe-Feature-Layer erstellt.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Verarbeitungsmodus</h2></div>
+        <hr/>
+        <div>
+            <p>Legt fest, wie alle Raster-Elemente in einem Image-Service verarbeitet werden. 
+                <ul>
+                    <li> <b>Als mosaikiertes Bild verarbeiten</b>: Alle Raster-Elemente im Image-Service werden zusammen mosaikiert und verarbeitet. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Alle Raster-Elemente separat verarbeiten</b>: Alle Raster-Elemente im Image-Service werden als separate Bilder verarbeitet.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

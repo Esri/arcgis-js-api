@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Raster'ı Detaya Dönüştür</h2><p/>
-        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Rasterı Detaya D&ouml;n&uuml;şt&uuml;rme aracı"></h2>
+        <h2>Rasterı Detaya Dönüştür</h2><p/>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Rasterı Detaya D&ouml;n&uuml;şt&uuml;r aracı"></h2>
         <hr/>
     <p>Bu ara&ccedil;, bir rasterı nokta, &ccedil;izgi veya alan olarak bir detay veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;r.
     </p>
@@ -52,14 +52,14 @@
     </p>
     <p>Tamsayı rasterlar nokta, &ccedil;izgi veya alan detaylarına d&ouml;n&uuml;şt&uuml;r&uuml;lebilir, ancak kayan noktalı rasterlar yalnızca nokta detaylarına d&ouml;n&uuml;şt&uuml;r&uuml;lebilir.
     </p>
-    <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan raster h&uuml;creleri d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. İşaretli değilse, raster katmanındaki t&uuml;m h&uuml;creler ge&ccedil;erli harita yayılımının dışında bile olsa d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. Buna, &ouml;zellikle raster katmanı b&uuml;y&uuml;kse veya &ccedil;ok y&uuml;ksek &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğe sahipse dikkat edin.
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan raster h&uuml;creleri d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. İşaretli değilse, raster katmanındaki t&uuml;m h&uuml;creler ge&ccedil;erli harita yayılımının dışında bile olsa d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. Buna, &ouml;zellikle raster katmanı b&uuml;y&uuml;kse veya &ccedil;ok y&uuml;ksek &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğe sahipse dikkat edin.
     </p>
     <p>Bu aracın kullanıldığı durumlar şunlardır:
- 
+
         <ul>
             <li>Arazi kullanımı sınıflandırma rasterından alan detayları oluşturma.
                 
- 
+
             </li>
             <li>DEM i&ccedil;inde tanımlanan akışlar &ccedil;izgi detaylarına d&ouml;n&uuml;şt&uuml;r&uuml;lebilir.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM nokta detaylarına d&ouml;n&uuml;şt&uuml;r&uuml;lerek, raster tabanlı olmayan bir iş akışında kullanılabilir.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Alan seçin</h2></div>
         <hr/>
         <div>
-            <p>D&ouml;n&uuml;şt&uuml;rme i&ccedil;in kullanılacak değeri belirten bir alan girin.
+            <p>D&ouml;n&uuml;şt&uuml;rme değerini belirten bir alan.
             </p>
             <p>Herhangi bir tamsayı veya metin değeri olabilir.
             </p>
             <p>Kayan noktalı değer i&ccedil;eren bir alan, yalnızca &ccedil;ıktı bir nokta veri k&uuml;mesine gidiyorsa kullanılabilir.
             </p>
-            <p>Varsayılan tercih, her raster h&uuml;cresinde değer i&ccedil;eren  <i>Value</i> alanını kullanmaktır.
+            <p>Her raster h&uuml;cresinde değer i&ccedil;eren  <i>Value</i> alanı varsayılandır.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Çıktı türünü seç</h2></div>
         <hr/>
         <div>
-            <p>Nokta, &ccedil;izgi veya alan arasından &ccedil;ıktı t&uuml;r&uuml;n&uuml; belirleyin.
+            <p>&Ccedil;ıktı t&uuml;r&uuml;n&uuml; belirtir.
             </p>
             <ul>
-                <li>Nokta; raster bir nokta veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r.
+                <li> <b>Nokta</b>&mdash;Raster bir nokta veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. Varsayılan değerdir.
                     
  
                 </li>
-                <li>&Ccedil;izgi; raster bir &ccedil;izgi detayı veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r.
+                <li> <b>&Ccedil;izgi</b>&mdash;Raster bir &ccedil;izgi detayı veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r.
                     
  
                 </li>
-                <li>Alan; raster bir alan detayı veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r.
+                <li> <b>&Ccedil;okgen</b>&mdash;Raster bir &ccedil;okgen detayı veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Çizgileri veya alanları basitleştir</h2></div>
         <hr/>
         <div>
-            <p>Detayların sadeleştirilmesi gerekip gerekmediğini belirtin.
+            <p>&Ccedil;izgiler ya da &ccedil;okgenlerin basitleştirileceğini (yumuşatma) belirtir. Yumuşatma, &ccedil;izgi orijinal raster h&uuml;cre kenarlarına m&uuml;mk&uuml;n olduğunca yakın kalırken minimum sayıda segment i&ccedil;erecek şekilde yapılır.
             </p>
-            <p>İşaretli ise (varsayılan ayar), &ccedil;izgi veya alan detayları daha genel bir sonu&ccedil; oluşturmak &uuml;zere d&uuml;zeltilerek sadeleştirilir. Bu se&ccedil;enek işaretli değilse, doğrusal detaylar raster veri k&uuml;mesinin h&uuml;cre sınırlarını takip eder.
+            <ul>
+                <li>İşaretli&mdash;Daha genel bir sonu&ccedil; elde etmek i&ccedil;in &ccedil;izgi veya &ccedil;okgen detayları yumuşatılır. Varsayılan değerdir.
+                    
+
+                </li>
+                <li>İşaretli değil&mdash;&Ccedil;izgi veya &ccedil;okgen detayları raster veri k&uuml;mesinin h&uuml;cre sınırlarını izler.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Bu parametre sadece &ccedil;ıktı t&uuml;r&uuml; &ccedil;izgi veya &ccedil;okgense desteklenir.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Çok parçalı detaylar oluştur</h2></div>
+        <hr/>
+        <div>
+            <p>&Ccedil;ıktı &ccedil;okgenlerin tek par&ccedil;alı detaylar mı yoksa &ccedil;ok par&ccedil;alı detaylar mı olacağını belirtir.
+            </p>
+            <ul>
+                <li>İşaretli&mdash;&Ccedil;ok par&ccedil;alı detaylar aynı değere sahip &ccedil;okgenler temel alınarak oluşturulur.
+                    
+
+                </li>
+                <li>İşaretli değil&mdash;Her &ccedil;okgen i&ccedil;in ayrı (tek par&ccedil;a) detaylar oluşturulur. Varsayılan değerdir.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Bu parametre sadece &ccedil;ıktı t&uuml;r&uuml; &ccedil;okgense desteklenir.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Poligon detayı başına maksimum köşe</h2></div>
+        <hr/>
+        <div>
+            <p>Bir &ccedil;okgeni daha k&uuml;&ccedil;&uuml;k &ccedil;okgenlere b&ouml;lmek i&ccedil;in kullanılan k&ouml;şe sınırı.
+            </p>
+            <p>Boş bırakılırsa &ccedil;ıktı &ccedil;okgenleri b&ouml;l&uuml;nmez. Varsayılan değerdir.
+            </p>
+            <p>Bu parametre sadece &ccedil;ıktı t&uuml;r&uuml; &ccedil;okgense desteklenir.
             </p>
         </div>
     </div>

@@ -56,9 +56,9 @@
         <div>
             <p>Layer yang akan memiliki atribut dari layer gabungan yang dilampirkan pada tabelnya.
             </p>
-            <p>Analisis menggunakan hubungan spasial  <b>Dekat</b> memerlukan sistem koordinat terproyeksi. Anda dapat menetapkan <b>Sistem koordinat pemrosesan</b> dalam <b>Lingkungan Analisis</b>. Jika sistem koordinat pemrosesan Anda tidak ditetapkan ke sistem koordinat terproyeksi, Anda akan diminta untuk menetapkannya saat Anda <b>Jalankan Analisis</b> .
+            <p>Analisis menggunakan hubungan spasial  <b>Dekat</b> memerlukan sistem koordinat terproyeksi. Anda dapat menetapkan sistem koordinat pemrosesan dalam Lingkungan Analisis. Jika sistem koordinat pemrosesan Anda tidak ditetapkan ke sistem koordinat terproyeksi, Anda akan diminta untuk menetapkannya saat Anda menjalankan analisis .
             </p>
-            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar drop-down untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data.
+            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar tarik-turun untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data. Anda dapat secara opsional menerapkan filter pada layer input Anda atau menerapkan pilihan pada layer yang di-host yang ditambahkan ke peta Anda. Filter dan pilihan hanya diterapakan untuk analisis. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Layer gabungan dengan atribut yang akan ditambahkan ke layer target.
             </p>
-            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar drop-down untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data.
+            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar tarik-turun untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data. Anda dapat secara opsional menerapkan filter pada layer input Anda atau menerapkan pilihan pada layer yang di-host yang ditambahkan ke peta Anda. Filter dan pilihan hanya diterapakan untuk analisis. 
             </p>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 2 kilometer dari pasar petani.   Pada kasus ini, layer target memiliki sebuah fitur yang mewakili pasar petani, dan alat gabungkan layer mewakili toko kelontong setempat yang memiliki atribut seperti total penjualan tahunan. Menggunakan alat Gabungkan Fitur, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan  <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar petani dan supermarket. Jika Anda menggunakan hubungan <b>Gabungkan satu ke satu</b>, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi yang diringkas dari supermarket, seperti perhitungan (2), dan statistik opsional lain seperti jumlah penjualan tahunan.
+            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 2 kilometer dari toko kelontong. Pada kasus ini, layer target memiliki sebuah fitur yang mewakili pasar petani, dan alat gabungkan layer mewakili toko kelontong setempat yang memiliki atribut seperti total penjualan tahunan. Menggunakan alat Gabungkan Fitur, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan  <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar petani dan supermarket. Jika Anda menggunakan hubungan <b>Gabungkan satu ke satu</b>, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi yang diringkas dari supermarket, seperti perhitungan (2), dan statistik opsional lain seperti jumlah penjualan tahunan.
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Setara</b>&mdash;Fitur akan dicocokkan jika memiliki geometri yang sama.
                     </li>
-                    <li> <b>Dekat</b>&mdash;Fitur akan dicocokkan jika berada pada jarak berdekatan dengan yang lainnya. Layer target harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan <b>Lingkungan Analisis</b> jika hubungan <b>Dekat</b> spasial digunakan.
+                    <li> <b>Dekat Planar</b>&mdash;Fitur akan dicocokkan jika berada pada jarak berdekatan dengan yang lainnya. Layer target harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan <b>Lingkungan Analisis</b> jika hubungan <b>Dekat</b> spasial digunakan.
+                    </li>
+                    <li> <b>Dekat Geodesik</b>&mdash;Fitur akan dicocokkan jika berada pada jarak berdekatan dengan yang lainnya. Jarak diukur menggunakan jarak planar.
                     </li>
                     <li> <b>Berisi</b>&mdash;Fitur akan dicocokkan jika layer target termasuk dalam fitur gabungan.
                     </li>
@@ -128,7 +130,7 @@
                     </li>
                     <li> <b>Bersilang</b>&mdash;Fitur akan dicocokkan jika memiliki outline yang bersilangan.
                     </li>
-                    <li> <b>Tumpang Tindih</b>&mdash;Feature akan digabungkan jika bertindihan satu sama lain.
+                    <li> <b>Bertampalan</b>&mdash;Fitur akan digabungkan jika bertampalan satu sama lain.
                     </li>
                 </ul>
                 
@@ -155,9 +157,9 @@
                     </li>
                     <li> <b>Ditemui Oleh</b>&mdash;Fitur akan dicocokkan jika fitur pertama ditemui oleh fitur kedua.
                     </li>
-                    <li> <b>Bertumpang Tindih</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertindihan dengan fitur kedua.
+                    <li> <b>Bertampalan</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertampalan dengan fitur kedua.
                     </li>
-                    <li> <b>Tertumpang Tindih dengan</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertindihan dengan fitur kedua.
+                    <li> <b>Bertampalan dengan</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertampalan dengan fitur kedua.
                     </li>
                     <li> <b>Selama</b>&mdash;Fitur akan dicocokkan jika fitur pertama selama fitur kedua.
                     </li>
@@ -215,7 +217,7 @@
             </p>
             <p>Anda dapat menghitung statistik pada fitur yang diringkas. Pada kolom numerik, Anda dapat menghitung hal berikut: 
                 <ul>
-                    <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
+                    <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Ini dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
                     </li>
                     <li>Jumlah&mdash;Jumlah nilai numerik di kolom. Jumlah [null, null, 3] adalah 3.
                     </li>
@@ -263,9 +265,9 @@
         <div><h2>Pilih data store</h2></div>
         <hr/>
         <div>
-            <p>Hasil GeoAnalytics disimpan pada penyimpanan data dan ditampilkan sebagai feature layer di  Portal for ArcGIS. Secara umum, hasil harus disimpan di penyimpanan data spatiotemporal dan ini adalah pilihan default. Secara umum, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
+            <p>Hasil GeoAnalytics disimpan pada data store dan ditampilkan sebagai feature layer di  Portal for ArcGIS. Secara umum, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di beberapa kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
                 <ul>
-                    <li>Anda dapat menggunakan hasil di portal-ke-kolaborasi portal.
+                    <li>Anda dapat menggunakan hasil dalam kolaborasi portal-ke-portal.
                     </li>
                     <li>Anda dapat mengaktifkan kemampuan sinkronisasi dengan hasil Anda.
                     </li>
@@ -282,7 +284,7 @@
         <div>
             <p> Nama layer yang akan dibuat.  Jika Anda menulis ke sebuah ArcGIS Data Store, hasil Anda akan disimpan di  <b>Konten Saya</b> dan ditambahkan ke dalam peta. Jika Anda menulis ke berbagi file big data, hasil Anda akan disimpan ke berbagi file big data dan ditambahkan ke manifestasinya. Ini tidak akan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
             </p>
-            <p>Saat menulis ke  ArcGIS Data Store (penyimpanan big data relasional atau spasiotemporal) menggunakan  <b>Simpan hasil di</b> kotak drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasil akan disimpan.
+            <p>Saat menulis ke  ArcGIS Data Store (penyimpanan big data relasional atau spasiotemporal) menggunakan  <b>Simpan hasil di</b> kotak tarik-turun, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasil akan disimpan.
             </p>
         </div>
     </div>

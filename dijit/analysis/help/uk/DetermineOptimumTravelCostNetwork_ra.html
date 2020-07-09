@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Determine Optimum Travel Cost Network</h2><p/>
+        <h2><img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" alt="Determine Optimum Travel Cost Network tool illustration"></h2>
+        <hr/>
+    <p>Цей інструмент обчислює мережу з оптимальною вартістю переміщення на основі набору вхідних регіонів.
+    </p>
+    <p>One example application of this tool is finding the best network for emergency vehicles.
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only those locations in the input layer that are visible within the current map extent will be analyzed. If unchecked, all locations in the input layer will be analyzed, even if they are outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionsRasterOrFeatures">
+        <div><h2>Choose raster or feature location layer to determine travel paths between</h2></div>
+        <hr/>
+        <div>
+            <p>The input regions that are to be connected by the least-cost network.
+            </p>
+            <p>Regions can be defined by either an image service or a feature service.
+            </p>
+            <p>For image service, the regions are defined by groups of contiguous (adjacent) cells of the same value. Each region must be uniquely numbered. The cells that are not part of any region must be NoData. The raster type must be integer, and the values can be either positive or negative.
+            </p>
+            <p>For feature service, the input can be point, line or polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Choose travel cost raster layer</h2></div>
+        <hr/>
+        <div>
+            <p>Растр, який визначає імпеданс або вартість руху в площині через кожний осередок.
+            </p>
+            <p>Значення в кожному місці розташування осередку представляє вартість руху через осередок, виражену на одиницю відстані. Для отримання загальної вартості проходження через осередок, значення кожного осередку множиться на роздільну здатність осередку з урахуванням можливості руху по діагоналі.
+            </p>
+            <p>Значення на растрі вартості можуть бути представлені цілими числами або числами з плаваючою точкою, але вони не можуть бути від&rsquo;ємними або нульовими (вартість не може бути від&rsquo;ємною або нульовою).
+            </p> 
+        </div>
+    </div>
+    <div id="outputOptimumNetworkName">
+        <div><h2>Result optimum paths polyline layer name</h2></div>
+        <hr/>
+        <div>
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            </p>
+            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborNetworkName">
+        <div><h2>Result neighboring paths polyline layer name</h2></div>
+        <hr/>
+        <div>
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            </p>
+            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

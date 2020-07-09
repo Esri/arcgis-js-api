@@ -63,9 +63,9 @@
         <div>
             <p>A camada de pontos a partir da qual v&atilde;o ser encontrados hot e cold spots.
             </p>
-            <p>Esta an&aacute;lise utiliza caixas e requer um sistema de coordenadas projetado. Pode definir o  <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas de processamento n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr An&aacute;lise</b> .
+            <p>Esta an&aacute;lise utiliza caixas e requer um sistema de coordenadas projetado. Pode definir o sistema de coordenadas de processamento em Ambientes de An&aacute;lise. Se o seu sistema de coordenadas projetado n&atilde;o se encontrar definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando executar a an&aacute;lise .
             </p>
-            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -159,16 +159,16 @@
         <div><h2>Selecionar um ArcGIS Data Store no qual guardar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em   Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
+            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
                 <ul>
-                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-to-portal.
+                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-para-portal.
                     </li>
                     <li>Pode ativar funcionalidades de sincroniza&ccedil;&atilde;o com os seus resultados
                     </li>
                 </ul>
                 
             </p>
-            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics e necessite de tirar partido das funcionalidades de armazenamento de big data espaciotemporais para gerir grandes quantidades de dados.
+            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso espere um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data espa&ccedil;otemporal para gerir grandes quantidades de dados.
             </p>
         </div>
     </div>
@@ -176,7 +176,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada.  Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o gravados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados numa partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> O nome da camada que ser&aacute; criada. Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o guardados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados na partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
             <p>A camada de resultados deve exibir agrupamentos estatisticamente significativos de valores altos e baixos ou contagem de pontos. Se o nome da camada de resultados j&aacute; existir, ser-lhe-&aacute; solicitado que altere o nome da mesma.
             </p>

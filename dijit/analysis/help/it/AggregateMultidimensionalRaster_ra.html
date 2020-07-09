@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Aggrega raster multidimensionale</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Aggregare raster multidimensionale"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Se si dispone di 30 anni di dati sulla temperatura della superficie del mare, raccolti mensilmente e ogni 5 metri di profondit&agrave; fino a 100 metri, alcune applicazioni di esempio sono le seguenti:
+        <ul>
+            <li>Aggregare dati di temperatura mensili in dati annuali.
+            </li>
+            <li>Aggregare dati di temperatura mensili in intervalli di 4 mesi.
+            </li>
+            <li>Aggregare dati di temperatura da 0 a 25 metri, quindi da 25 a 50 metri, quindi da 50 a 100 metri.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, verranno analizzate le variabili del layer visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate le variabili del layer, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Scegliere il layer di immagini multidimensionale da aggregare</h2></div>
+        <hr/>
+        <div>
+            <p>Layer di immagini di input di un raster multidimensionale che verr&agrave; aggregato.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Scegliere la dimensione lungo la quale aggregare</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensione di aggregazione. Questa &egrave; la dimensione lungo la quale verranno aggregate le variabili.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Scegliere le variabili da aggregare</h2></div>
+        <hr/>
+        <div>
+            <p>La variabile o le variabili che verranno aggregate lungo la dimensione specificata. Se non viene specificata alcuna variabile, verranno aggregate tutte le variabili con la dimensione selezionata.
+            </p>
+            <p>Ad esempio, per aggregare i dati della temperatura giornaliera in valori medi mensili, specificare la temperatura come variabile da aggregare. Se non si specificano variabili e si dispone della temperatura giornaliera e le variabili di precipitazione giornaliere, entrambe le variabili verranno aggregate in medie mensili e il raster multidimensionale di output includer&agrave; entrambe le variabili.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Scegliere il metodo di aggregazione</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica il metodo matematico che verr&agrave; utilizzato per combinare le sezioni aggregate in un intervallo. 
+                <ul>
+                    <li> <b>Media</b>: calcola la media dei valori di pixel in tutte le sezioni dell'intervallo. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li> <b>Massimo</b>: calcola il valore massimo di un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Maggioranza</b>: calcola il valore pi&ugrave; frequente per un pixel in tutte le sezioni nell'intervallo.
+                    </li>
+                    <li> <b>Minimo</b>: calcola il valore minimo di un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Minoranza</b>: calcola il valore meno frequente per un pixel in tutte le sezioni nell'intervallo.
+                    </li>
+                    <li> <b>Mediano</b>: calcola il valore mediano di un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Intervallo</b>: calcola l'intervallo di valori per un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Deviazione standard</b>: calcola la deviazione standard dei valori di un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Somma</b>: calcola la somma dei valori di pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Variet&agrave;</b>: calcola il numero di valori univoci di un pixel in tutte le sezioni dell'intervallo.
+                    </li>
+                    <li> <b>Personalizzazione</b>: calcola il valore di un pixel in base a una funzione raster personalizzata.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Scegliere il modello di funzione raster</h2></div>
+        <hr/>
+        <div>
+            <p>Una funzione raster personalizzata che verr&agrave; utilizzata per calcolare i valori dei pixel dei raster aggregati. L'input &egrave; un elemento del modello di funzione raster nel portale. Questo input &egrave; obbligatorio quando  <b>Metodo di aggregazione</b> &egrave; impostato su <b>Personalizzato</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Scegliere la definizione di aggregazione</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica l'intervallo di dimensione per il quale verranno aggregati i dati. 
+                <ul>
+                    <li> <b>Tutte</b>: i valori dei dati verranno aggregati su tutte le sezioni. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li> <b>Parola chiave di intervallo</b>: i dati variabili verranno aggregati utilizzando un intervallo comunemente noto.
+                    </li>
+                    <li> <b>Valori di intervalli</b>: i dati variabili verranno aggregati utilizzando un intervallo e un'unit&agrave; specificati dall'utente.
+                    </li>
+                    <li> <b>Gamme di intervalli</b>: i dati variabili verranno aggregati tra coppie specificate di valori o date.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Scegliere l'intervallo delle parole chiave</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica l'intervallo di parole chiave che verr&agrave; utilizzato durante l'aggregazione lungo la dimensione. Questo input &egrave; obbligatorio quando  <b>Definizione aggregazione</b> &egrave; impostato su <b>Parola chiave di intervallo</b> e l'aggregazione deve essere nel tempo.
+                <ul>
+                    <li> <b>Orario</b>: i valori dei dati verranno aggregati in intervalli temporali orari e il risultato includer&agrave; ogni ora nelle serie temporali.
+                    </li>
+                    <li> <b>Giornaliero</b>: i valori dei dati verranno aggregati in intervalli temporali giornalieri e il risultato includer&agrave; ogni giorno nelle serie temporali.
+                    </li>
+                    <li> <b>Settimanale</b>: i valori dei dati verranno aggregati in intervalli temporali settimanali e il risultato includer&agrave; ogni settimana nelle serie temporali.
+                    </li>
+                    <li> <b>Mensile</b>: i valori dei dati verranno aggregati in intervalli temporali mensili e il risultato includer&agrave; ogni mese nelle serie temporali.
+                    </li>
+                    <li> <b>Trimestrale</b>: i valori dei dati verranno aggregati in intervalli temporali trimestrali e il risultato includer&agrave; ogni trimestre nelle serie temporali.
+                    </li>
+                    <li> <b>Annuale</b>: i valori dei dati verranno aggregati in intervalli temporali annuali e il risultato includer&agrave; ogni anno nelle serie temporali.
+                    </li>
+                    <li> <b>Ricorrenza giornaliera</b>: i valori dei dati verranno aggregati in intervalli temporali giornalieri e il risultato includer&agrave; un valore aggregato per giorno giuliano. L'output includer&agrave; al massimo 366 periodi di tempo giornalieri.
+                    </li>
+                    <li> <b>Ricorrenza settimanale</b>: i valori dei dati verranno aggregati in intervalli temporali settimanali e il risultato includer&agrave; un valore aggregato per settimana. L'output includer&agrave; al massimo 53 periodi di tempo settimanali.
+                    </li>
+                    <li> <b>Ricorrenza mensile</b>: i valori dei dati verranno aggregati in intervalli temporali mensili e il risultato includer&agrave; un valore aggregato per mese. L'output includer&agrave; al massimo 12 periodi di tempo mensili.
+                    </li>
+                    <li> <b>Ricorrenza trimestrale</b>: i valori dei dati verranno aggregati in intervalli temporali trimestrali e il risultato includer&agrave; un valore aggregato per trimestre. L'output includer&agrave; al massimo 4 periodi di tempo trimestrali.
+                    </li>
+                    <li> <b>Ogni dieci giorni</b>: i valori dei dati verranno aggregati in 3 periodi di 10 giorni ciascuno. L'ultimo periodo potrebbe contenere pi&ugrave; o meno di 10 giorni. L'output includer&agrave; 3 periodi per ogni mese.
+                    </li>
+                    <li> <b>Ogni cinque giorni</b>: i valori dei dati verranno aggregati in 6 periodi di 5 giorni ciascuno. L'ultimo periodo potrebbe contenere pi&ugrave; o meno di 5 giorni. L'output includer&agrave; 6 periodi per ogni mese.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Intervallo del valore</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensione dell'intervallo che verr&agrave; utilizzato per l'aggregazione. Questo parametro &egrave; obbligatorio quando il parametro  <b>Definizione aggregazione</b> &egrave; impostato su <b>Valore di intervallo</b>.
+            </p>
+            <p>Ad esempio, per aggregare 30 anni di dati mensili sulla temperatura in incrementi di 5 anni, immettere 5 come  <b>Intervallo del valore</b> e specificare <b>Unit&agrave;</b> come <b>Anni</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unità</h2></div>
+        <hr/>
+        <div>
+            <p>L'unit&agrave; che verr&agrave; utilizzata per il valore dell'intervallo. Questo input &egrave; obbligatorio quando  <b>Dimensione</b> &egrave; un campo temporale e <b>Definizione aggregazione</b> &egrave; impostato su <b>Valore di intervallo</b>.
+            </p>
+            <p>Se si aggrega qualcosa di diverso dal tempo, questa opzione non sar&agrave; disponibile e l'unit&agrave; per il valore di intervallo corrisponder&agrave; all'unit&agrave; variabile dei dati raster multidimensionali di input. 
+                <ul>
+                    <li> <b>Orario</b>: i valori dei dati verranno aggregati in periodi di tempo orari all'intervallo fornito.
+                    </li>
+                    <li> <b>Giornaliero</b>: i valori dei dati verranno aggregati in periodi di tempo giornalieri all'intervallo fornito.
+                    </li>
+                    <li> <b>Settimanale</b>: i valori dei dati verranno aggregati in periodi di tempo settimanali all'intervallo fornito.
+                    </li>
+                    <li> <b>Mensile</b>: i valori dei dati verranno aggregati in periodi di tempo mensili all'intervallo fornito.
+                    </li>
+                    <li> <b>Annuale</b>: i valori dei dati verranno aggregati in periodi di tempo annuali all'intervallo fornito.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definire intervalli</h2></div>
+        <hr/>
+        <div>
+            <p>Le ampiezze intervallo verranno utilizzate per aggregare gruppi di valori. Sono costituiti da coppie di valori di intervallo minimo e massimo, con tipo di dati Double o Date. Questo input &egrave; obbligatorio quando  <b>Metodo di aggregazione</b> &egrave; impostato su <b>Ampiezze intervallo</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora valori mancanti nei calcoli</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i valori mancanti vengono ignorati nell'analisi. 
+                <ul>
+                    <li>Selezionato: l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li>Deselezionato: l'analisi produrr&agrave; NoData se sono presenti valori NoData per i pixel lungo la data dimensione.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

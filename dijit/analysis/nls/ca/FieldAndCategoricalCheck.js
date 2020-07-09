@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({fields:"Camp",categorical:"Categòric",requiredMessage:"S'ha d'haver seleccionat una variable explicativa com a mínim."});

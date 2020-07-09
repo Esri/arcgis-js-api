@@ -63,13 +63,6 @@
 .esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_mainContainer {
     text-align: left;
     overflow: hidden;
-}
-
-.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
-    margin: 0px;
-}
-
-.esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_mainContainer {
     padding-left: 0px !important;
     padding-right: 0px !important;
     max-width: none !important;
@@ -77,14 +70,19 @@
 }
 
 .esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
+    margin: 0px;
     border: none !important;
     display: block !important;
 }
 
 .esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomFillerContainer {
+    margin-top: 0 !important;
+    outline: none !important;
+}
+
+.esriGEReportPlayerPrint:not(.isPlayerOnServer) .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomFillerContainer {
     width: auto !important;
     height: auto !important;
-    margin-top: 0px !important;
 }
 
 .esriGEReportPlayerPrint .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomScalableContainer {

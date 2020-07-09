@@ -44,13 +44,13 @@
         <h2>Rekonstruiši staze</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstrui&scaron;i staze"></h2>
         <hr/>
-    <p> Ova alatka radi sa vremenski omogućenim slojem bilo tačkastih ili geoobjekata oblati koji predstavljaju <code>trenutak</code> u vremenu.   Ona prvo određuje koji geoobjekti pripadaju stazi koja koristi identifikator. Koristeći vreme na svakoj lokaciji, staze su poređane redom i transformisane u liniju ili oblast koja predstavlja putanju pomeranja tokom vremena. Opciono, ulazni podaci mogu da bude sme&scaron;teni u zonu bliskosti pomoću polja, &scaron;to će kreirati oblast na svakoj lokaciji. Ove tačke za koje je kreirana zona bliskosti ili ulazne oblasti se zatim pridružuju redom da bi kreirali stazu kao oblast gde je &scaron;irina predstavnik atributa od značaja. Rezultujuće staze imaju vreme početka i kraja, koje vremenski predstavlja prvi i poslednji geoobjekat u datoj stazi. Kada se kreiraju staze, izračunavaju se statistički podaci u vezi sa ulaznim geoobjektima i dodeljuju izlaznoj stazi. Najosnovnija statistika je broj tačaka unutar oblasti, ali je takođe moguće izračunati i druge statistike.
+    <p> Ova alatka radi sa vremenski omogućenim slojem bilo tačkastih bilo geoobjekata oblasti koji predstavljaju <code>trenutak</code> u vremenu.   Ona prvo određuje koji geoobjekti pripadaju stazi koja koristi identifikator. Koristeći vreme na svakoj lokaciji, staze su poređane redom i transformisane u liniju ili oblast koja predstavlja putanju pomeranja tokom vremena. Opciono, ulazni podaci mogu da bude sme&scaron;teni u zonu bliskosti pomoću polja, &scaron;to će kreirati oblast na svakoj lokaciji. Ove tačke za koje je kreirana zona bliskosti ili ulazne oblasti se zatim pridružuju redom da bi kreirali stazu kao oblast gde je &scaron;irina predstavnik atributa od značaja. Rezultujuće staze imaju vreme početka i kraja, koje vremenski predstavlja prvi i poslednji geoobjekat u datoj stazi. Kada se kreiraju staze, izračunavaju se statistički podaci u vezi sa ulaznim geoobjektima i dodeljuju izlaznoj stazi. Najosnovnija statistika je broj tačaka unutar oblasti, ali je takođe moguće izračunati i druge statistike.
     </p>
     <p>Geoobjekti u vremenski omogućenim slojevima mogu da se predstave na jedan od dva načina:
         <ul>
-            <li>Trenutak &ndash; jedan trenutak u vremenu
+            <li>Trenutak&mdash;jedan trenutak u vremenu
             </li>
-            <li>Interval &ndash; vreme početka i kraja
+            <li>Interval&mdash;vreme početka i zavr&scaron;etka
             </li>
         </ul>
         
@@ -67,7 +67,7 @@
         <div>
             <p>Tačkasti ili sloj oblasti koji će biti rekonstruisan u staze. Ulazni sloj mora da bude vremenski omogućen sa geoobjektima koji predstavljaju trenutak u vremenu. Sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem  <b>Okruženja analize</b> ako se primeni zona bliskosti.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima. Možete opciono da primenite filter na ulazni sloj ili da primenite selekciju na hostovane slojeve koji su dodati na va&scaron;u mapu. Filteri i selekcije se primenjuju samo za analizu. 
             </p>
         </div>
     </div>
@@ -97,7 +97,7 @@
             </p>
             <p>Jednačina kao &scaron;to je  <code>$feature.windspeed * 1000</code> bi primenila zonu bliskosti 1000 uvećanu poljem <i>windspeed</i>. Možete da koristite vi&scaron;e od jednog polja u kalkulatoru zone bliskosti.
             </p>
-            <p> Možete i da navedete izraz koji je usklađen sa stazom. Na primer, možete da izračunate sumu vrednosti polja <i>windspeed</i> za trenutnu geoobjekat i prethodna dva geoobjekta sa jednačinom <code>$track.field(windspeed).history(-3)</code>. Na svakoj lokaciji, suma trenutnog merenja <i>windspeed</i> i prethodna dva merenja bi bila izračunata i kreirana zona bliskosti.
+            <p> Možete i da navedete izraz koji je usklađen sa stazom. Na primer, možete da izračunate sumu vrednosti polja <i>windspeed</i> za trenutnui geoobjekat i prethodna dva geoobjekta jednačinom <code>$track.field(windspeed).history(-3)</code>. Na svakoj lokaciji, suma trenutnog merenja <i>windspeed</i> i prethodna dva merenja bi bila izračunata i kreirana zona bliskosti.
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Dodaj statistiku (opciono)</h2></div>
         <hr/>
         <div>
-            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. Možete da izračunate sledeće na numeričkim poljima:
+            <p>Možete da izračunate statistiku na geoobjektima koji su sumirani. Možete da izračunate sledeće na numeričkim poljima: 
                 <ul>
-                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null. Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
+                    <li>Brojač &ndash; izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
                     <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
@@ -166,17 +166,25 @@
                     </li>
                     <li>Standardna devijacija&mdash;standardna devijacija numeričkog polja. Standardna devijacija od [1] je null. Standardna devijacija od [null, 1,0,1,1] je 0,5. 
                     </li>
+                    <li>Prvo&mdash;Prva vrednost navedenog polja u sumiranoj stazi. Ako staza ima sledeće vremenski određene vrednosti za polje: [1,5,10,20], prva vrednost je 1.
+                    </li>
+                    <li>Poslednje&mdash;Poslednja vrednost navedenog polja u sumiranoj stazi. Ako staza ima sledeće vremenski određene vrednosti za polje: [1,5,10,20], poslednja vrednost je 20.
+                    </li>
                 </ul>
                 
             </p>
             <p>Možete da izračunate sledeće na poljima niski:
                 <ul>
-                    <li>Brojač&mdash;broj vrednosti koje nisu null.
+                    <li>Brojač &ndash; broj niski koje nisu null (bez vrednosti).
                     </li>
                     <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
                     </li>
+                    <li>Prvo&mdash;Prva vrednost navedenog polja u sumiranoj stazi. Ako staza ima sledeće vremenski određene vrednosti za polje: [Toronto,Gvelf,Skvomi&scaron;,Montreal,Halifaks,Redlends,Boston], prva vrednost je Toronto.
+                    </li>
+                    <li>Poslednje&mdash;Poslednja vrednost navedenog polja u sumiranoj stazi. Ako staza ima sledeće vremenski određene vrednosti za polje: [Toronto,Gvelf,Skvomi&scaron;,Montreal,Halifaks,Redlends,Boston], poslednja vrednost je Boston.
+                    </li>
                 </ul>
-                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike. 
+                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike.
             </p>
         </div>
     </div>
@@ -184,7 +192,7 @@
         <div><h2>Odaberite ArcGIS skladište podataka u koje će se čuvati rezultati</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalize se skladi&scaron;te u skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+            <p>Rezultati geoanalize se skladi&scaron;te u skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebalo da budu skladi&scaron;teni u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
                 <ul>
                     <li>Možete da koristite rezultate u kolaboraciji portal-sa-portalom.
                     </li>
@@ -201,7 +209,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Ime sloja koji će se kreirati. Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            <p> Ime sloja koji će se kreirati.  Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
             </p>
             <p>Prilikom upisa u  ArcGIS Data Store (skladi&scaron;te relacionih ili prostorno-vremenskih velikih podataka) koristeći padajuće polje  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> gde će rezultat biti sačuvan.
             </p>

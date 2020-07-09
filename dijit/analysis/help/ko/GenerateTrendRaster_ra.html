@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>추세 래스터 생성(Generate Trend Raster)</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="추세 래스터 생성"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>추세를 분석할 다차원 영상 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>분석할 다차원 래스터의 입력 영상 레이어입니다.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>변수 추세 분석에서 따를 디멘전 선택</h2></div>
+        <hr/>
+        <div>
+            <p>차원은 분석에서 선택한 변수에 대해 추세가 추출됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>추세를 분석할 변수 선택</h2></div>
+        <hr/>
+        <div>
+            <p>추세 계산에 사용할 변수입니다. 변수가 지정되지 않으면 다차원 래스터의 첫 번째 변수가 분석됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>디멘전에 따라 변수 값을 맞출 라인 유형 선택</h2></div>
+        <hr/>
+        <div>
+            <p>차원을 따라 픽셀 값에 맞추는 데 사용할 라인 유형을 지정합니다. 
+                <ul>
+                    <li> <b>선형</b> - 변수 픽셀값이 선형 추세선에 따라 맞춰집니다. 이 방법이 기본값입니다.
+                    </li>
+                    <li> <b>다항식</b> - 변수 픽셀값이 2차 다항식 추세선에 따라 맞춰집니다.
+                    </li>
+                    <li> <b>조화</b> - 변수 픽셀값이 조화 추세선에 따라 맞춰집니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>조화 주기의 길이 지정</h2></div>
+        <hr/>
+        <div>
+            <p>모델링할 주기적 변동의 길이입니다. 이 매개변수는 추세선 유형이  <b>조화</b>로 설정된 경우에 필요합니다. 예를 들어 잎사귀 녹색은 대개 1년에 한 번의 강한 변동 주기를 가지므로 주기 길이는 1년입니다. 시간별 온도 데이터는 하루 한 번의 강한 변동 주기를 가지므로 주기 길이는 1일입니다.
+            </p>
+            <p>연간 주기로 달라지는 데이터의 경우 기본 길이는 1년입니다.
+            </p>
+            <p>이 매개변수는 분석 중인 디멘전이 시간이고 추세선 유형이  <b>조화</b>로 설정된 경우에만 추세 분석에 포함됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>조화 주기 길이의 시간 단위 선택</h2></div>
+        <hr/>
+        <div>
+            <p>조화 주기 길이에 사용할 시간 단위를 지정합니다.
+                <ul>
+                    <li> <b>일</b> - 조화 주기의 길이 단위가 일입니다.
+                    </li>
+                    <li> <b>년</b> - 조화 주기의 길이 단위가 년입니다. 이 방법이 기본값입니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>이 매개변수는 분석 중인 디멘전이 시간이고 추세선 유형이  <b>조화</b>로 설정된 경우에만 추세 분석에 포함됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>조화 추세 맞춤의 빈도 수 지정</h2></div>
+        <hr/>
+        <div>
+            <p>조화 추세 맞춤에 사용할 빈도입니다. 이 매개변수는 1년 주기의 빈도를 지정합니다.
+            </p>
+            <p>기본값은 1 또는 매년 하나의 조화 주기입니다.
+            </p>
+            <p>이 매개변수는 분석 중인 디멘전이 시간인 경우에만 추세 분석에 포함됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>추세 맞춤의 다항식 차수 지정</h2></div>
+        <hr/>
+        <div>
+            <p>다항식 추세 맞춤에 사용할 다항식 차수입니다.
+            </p>
+            <p>이 매개변수는 분석 중인 디멘전이 시간인 경우에만 추세 분석에 포함됩니다.
+            </p>
+            <p>기본값은 2(2차 다항식)입니다.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>추세 래스터에 포함할 모델 통계 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 도구는 평균제곱근 오차(RMSE), 결정계수 적합도 통계(R-squared), 경사 계수의 P-Value 통계(경사 계수의 P-Value)라는 세 가지 유형의 추세 적합선 통계를 제공합니다. 각 통계에는 해당 통계를 계산하여 결과 추세 래스터의 여러 밴드 중 하나로 포함시킬지 여부를 지정하는 체크 박스가 있습니다.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>선택 - RMSE가 계산되어 결과 추세 래스터의 여러 밴드 중 하나로 포함됩니다. 이 방법이 기본값입니다.
+                            </li>
+                            <li>선택 취소 - RMSE가 계산되지 않습니다.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>결정계수
+                        </p>
+                        <ul>
+                            <li>선택 - 결정계수(R-Squared) 값이 계산되어 결과 추세 래스터의 여러 밴드 중 하나로 포함됩니다.
+                            </li>
+                            <li>선택 취소 - 결정계수(R-Squared) 값이 계산되지 않습니다. 이 방법이 기본값입니다.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>경사 계수의 P-Value
+                        </p>
+                        <ul>
+                            <li>선택 - P-Value가 계산되어 결과 추세 래스터의 여러 밴드 중 하나로 포함됩니다.
+                            </li>
+                            <li>선택 취소 - P-Value가 계산되지 않습니다. 이 방법이 기본값입니다.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>계산 내 누락 값 무시</h2></div>
+        <hr/>
+        <div>
+            <p>누락된 값을 분석에서 무시할지 여부를 지정합니다.
+                <ul>
+                    <li>선택 - 분석은 지정된 차원에 따라 유효한 모든 픽셀을 포함하며 NoData 픽셀을 무시합니다. 이 방법이 기본값입니다.
+                    </li>
+                    <li>선택 취소 - 분석은 지정된 차원에 따라 NoData 픽셀값이 있는 경우 NoData를 반환합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>인수 통계 찾기</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="인수 통계 찾기"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>이 도구를 사용하면 다차원 래스터 데이터셋의 래스터 스택에서 특정 통계에 도달된 디멘전 값(예: 날짜, 높이, 깊이)을 추출할 수 있습니다. 또는 다중밴드 래스터에서 특정 통계에 도달된 밴드 번호를 찾을 수 있습니다.
+    </p>
+    <p>예를 들어, 각 픽셀이 30년 동안의 데이터 수집 기간 동안 가장 높은 해수면 온도에 도달한 달을 파악할 수 있습니다. 또는 8밴드 원격 탐사 이미지를 가지고 있는 경우 각 픽셀에 대해 최소 반사도 값에 도달한 밴드를 찾아볼 수도 있습니다.
+    </p>
+    <p> <b>현재 맵 범위 사용</b>을 선택하면 현재 맵 범위 내에 보이는 레이어의 변수 또는 밴드가 분석됩니다. 선택하지 않으면 현재 맵 범위 외부에 있는 변수를 포함하여 전체 레이어의 변수 또는 밴드가 분석됩니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>분석할 다차원 또는 다중밴드 영상 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>분석할 입력 다차원 또는 다중밴드 래스터입니다.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>통계가 추출될 디멘전 선택</h2></div>
+        <hr/>
+        <div>
+            <p>통계가 추출될 디멘전입니다. 다차원 래스터가 아닌 입력 래스터에는 이 매개변수가 필요하지 않습니다.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>분석할 변수 선택</h2></div>
+        <hr/>
+        <div>
+            <p>분석할 변수입니다. 다차원 래스터가 아닌 입력 래스터의 경우 다중밴드 래스터의 픽셀값이 변수로 간주됩니다. 입력 래스터가 다차원이고 변수가 지정되지 않은 경우 선택한 디멘전이 포함된 변수가 모두 분석됩니다.
+            </p>
+            <p>예를 들어 온도 값이 가장 높은 연도를 찾으려면 분석할 변수로 온도를 지정합니다. 변수를 지정하지 않고 온도 변수와 강수량 변수를 둘 다 사용하는 경우 두 변수가 모두 분석되어 결과 다차원 래스터에 둘 다 포함됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>통계 유형 선택</h2></div>
+        <hr/>
+        <div>
+            <p>지정된 디멘전에 따라 변수에서 추출할 통계를 지정합니다. 
+            </p>
+            <ul>
+                <li> <b>최소값 인수</b> - 최소 변수 값에 도달하는 디멘전 값이 추출됩니다. 이 방법이 기본값입니다.
+                </li>
+                <li> <b>최대값 인수</b> - 최대 변수 값에 도달하는 디멘전 값이 추출됩니다.
+                </li>
+                <li> <b>중앙값 인수</b> - 중앙 변수 값에 도달하는 디멘전 값이 추출됩니다.
+                </li>
+                <li> <b>기간 인수</b> - 변수 값이 최소값과 최대값 사이에 들어가는 가장 긴 디멘전 기간입니다.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>다중 발생 값 지정</h2></div>
+        <hr/>
+        <div>
+            <p>입력 래스터 데이터셋에서 지정 인수 통계에 두 번 이상 도달했음을 나타내는 데 사용되는 픽셀값입니다. 이 값을 지정하지 않은 경우 픽셀값은 인수 통계에 처음 도달했을 때의 디멘전 값이 됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>최소값 지정</h2></div>
+        <hr/>
+        <div>
+            <p>기간을 추출하는 데 사용될 최소 변수 값입니다.
+            </p>
+            <p>이 매개변수는  <b>기간</b>이 통계 유형으로 선택된 경우에 필요합니다.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>최대값 지정</h2></div>
+        <hr/>
+        <div>
+            <p>기간을 추출하는 데 사용될 최대 변수 값입니다.
+            </p>
+            <p>이 단계는  <b>기간</b>이 통계 유형으로 선택된 경우에 필요합니다.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>디멘전 정의 선택</h2></div>
+        <hr/>
+        <div>
+            <p>통계가 디멘전에서 추출되는 방식을 지정합니다. 
+                <ul>
+                    <li> <b>모두</b> - 모든 디멘전에 걸쳐 통계가 추출됩니다. 이 방법이 기본값입니다.
+                    </li>
+                    <li> <b>간격 키워드</b> - 간격 키워드에 따라 시간 디멘전에서 통계가 추출됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>키워드 간격 선택</h2></div>
+        <hr/>
+        <div>
+            <p>통계 추출에 사용되는 시간 단위입니다.
+            </p>
+            <p>예를 들어, 5년간의 일별 해수면 온도 데이터를 사용하여 최대 온도가 관측된 연도를 알아볼 수 있습니다.  <b>최대값 인수</b>를 통계 유형으로 설정하고, <b>간격 키워드</b>를 디멘전 정의로 설정하고, <b>매년</b>을 이 단계의 키워드 간격으로 설정합니다.
+            </p>
+            <p>또는 최대 온도가 일관되게 관측된 월을 알고 싶다면  <b>최대값 인수</b>를 통계 유형으로 설정하고, <b>간격 키워드</b>를 디멘전 정의로 설정하고, <b>매월 반복</b>을 이 단계의 키워드 간격으로 설정합니다. 이 경우 5년 기록에 걸쳐 통계에 도달한 달(예: 2018년 8월 18일, 2016년 8월 25일, 2013년 8월 7일)이 각 픽셀에 포함된 래스터가 생성됩니다.
+            </p>
+            <p>이 단계는  <b>StdTime</b>을 통계가 추출될 디멘전으로 설정하고, <b>간격 키워드</b>를 선택하여 시간 디멘전에서 통계가 추출되는 방식을 정의할 때 필요합니다.
+                <ul>
+                    <li> <b>매일 반복</b> - 통계가 일 단위로 추출됩니다.
+                    </li>
+                    <li> <b>매주 반복</b> - 통계가 주 단위로 추출됩니다.
+                    </li>
+                    <li> <b>매월 반복</b> - 통계가 월 단위로 추출됩니다.
+                    </li>
+                    <li> <b>매분기 반복</b> - 통계가 분기 단위로 추출됩니다.
+                    </li>
+                    <li> <b>시간별</b> - 통계에 도달한 시간에 대해 통계가 추출됩니다.
+                    </li>
+                    <li> <b>일별</b> - 통계에 도달한 날에 대해 통계가 추출됩니다.
+                    </li>
+                    <li> <b>주별</b> - 통계에 도달한 주에 대해 통계가 추출됩니다.
+                    </li>
+                    <li> <b>월별</b> - 통계에 도달한 월에 대해 통계가 추출됩니다.
+                    </li>
+                    <li> <b>분기별</b> - 통계에 도달한 분기에 대해 통계가 추출됩니다.
+                    </li>
+                    <li> <b>연도별</b> - 통계에 도달한 연도에 대해 통계가 추출됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>계산 내 누락 값 무시</h2></div>
+        <hr/>
+        <div>
+            <p>누락된 값을 분석에서 무시할지 여부를 지정합니다.
+                <ul>
+                    <li>이 체크 박스를 선택한 경우 분석은 지정된 디멘전에 따라 유효한 모든 픽셀을 포함하며 NoData 픽셀을 무시합니다. 이 방법이 기본값입니다.
+                    </li>
+                    <li>이 체크 박스를 선택 취소한 경우 분석은 지정된 디멘전에 따라 NoData 픽셀값이 있으면 NoData를 반환합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

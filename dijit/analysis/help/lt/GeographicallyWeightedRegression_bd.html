@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografinė svorinė regresija</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Geografinės svorinės regresijos darbo eigos diagrama"></h2>
+        <hr/>
+    <p>Vykdo geografinę svorinę regresiją (GWR). Tai yra vietinė linijinės regresijos forma, kuri naudojama modeliuoti erdvi&scaron;kai kintamus ry&scaron;ius.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pasirinkite sluoksnį analizei</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnis, kuriame yra ta&scaron;kų elementai, kuriuose yra priklausomų ir paai&scaron;kinančių kintamųjų.
+            </p>
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Pasirinkti analizės sluoksnį</b>, kad galėtumėte turinyje ie&scaron;koti didelių duomenų rinkinio arba elemento sluoksnio. Jei norite, įvesties sluoksnyje galite pritaikyti filtrą arba vykdyti pasirinkimą talpinamiems sluoksniams, įtrauktiems į jūsų žemėlapį. Filtrai ir pasirinkimai pritaikomi tik analizei. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Pasirinkite modeliuotiną lauką</h2></div>
+        <hr/>
+        <div>
+            <p>Skaitinis laukas, kuriame yra modeliuotinos stebėtos reik&scaron;mės ir modeliuojamos reik&scaron;mės tipas.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Pasirinkite paaiškinančiuosius laukus</h2></div>
+        <hr/>
+        <div>
+            <p>Vienas ar daugiau laukų, reprezentuojančių paai&scaron;kinančius kintamuosius (laukus), kurie padeda prognozuoti reik&scaron;mę. Matomi tik skaitiniai laukai.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Pasirinkite, kaip bus nustatoma kaimynystė</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar naudojama kaimynystė sukuriama kaip fiksuotas atstumas, ar jos erdvinė aprėptis gali kisti atsižvelgiant į elementų tankumą.
+                <ul>
+                    <li> <b>Kaimynų skaičius</b> &ndash; kaimynystės dydis yra nurodytų kaimynų skaičiaus funkcija, įtraukiama į kiekvieno elemento skaičiavimus. Kur elementai i&scaron;dėstyti tankiai, kaimynystės erdvinė aprėptis mažesnė; ir atvirk&scaron;čiai, jei elementai i&scaron;dėstyti retai, kaimynystės erdvinė aprėptis didesnė. Kai pasirinksite &scaron;į variantą, pasirinkite, kiek kaimynų norite įtraukti. Tai turi būti sveikasis skaičius nuo 2 iki 5000.
+                    </li>
+                    <li> <b>Atstumas</b> &ndash; kaimynystės dydis kiekvienam elementui yra konstanta arba fiksuotas atstumas. Kai pasirinksite &scaron;į variantą, pasirinkite atstumą, kuris nustatys kaimynystės erdvinę aprėptį.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Pasirinkite, kokie svoriai bus suteikiami kaimyniniams elementams</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo branduolio tipą, kuris bus naudojamas modelyje, nustatant erdvinį svorį. Branduolys lemia, kaip kiekvienas elementas susietas su kitais jo kaimynystės elementais.
+                <ul>
+                    <li> <b>Bikvadratinis</b> &ndash; visiems į nurodytą kaimynystę nepatenkantiems elementams bus suteikiamas 0 lygus svoris. Tai numatytasis nustatymas.
+                    </li>
+                    <li> <b>Gauso</b> &ndash; visiems elementams bus suteikiami svoriai, tačiau jie eksponenti&scaron;kai mažės, kuo toliau elementas nuo tikslinio elemento.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Pavadinimas sluoksnio, kuris bus sukurtas.  Jei įra&scaron;ote į ArcGIS Data Store, jūsų rezultatai bus įra&scaron;yti į  <b>Turinį</b> ir įtraukti į žemėlapį. Jei įra&scaron;ote į didelių duomenų failo bendrinimą, jūsų rezultatai bus saugomi didelių duomenų failo bendrinime ir pridedami į jo deklaraciją. Jie nebus įtraukti į žemėlapį. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>Kai ra&scaron;ote į   ArcGIS Data Store  (releacinių arba erdvėlaikinių didelių duomenų saugyklą) naudodami i&scaron;&scaron;okantįjį meniu  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

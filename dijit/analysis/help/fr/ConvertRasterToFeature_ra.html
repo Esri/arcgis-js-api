@@ -55,11 +55,11 @@
     <p>Si l'option  <b>Utiliser l'&eacute;tendue actuelle de la carte</b> est s&eacute;lectionn&eacute;e, seules les cellules raster qui sont visibles au sein de l'&eacute;tendue actuelle de la carte seront converties. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les cellules de la couche raster seront converties, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue actuelle de la carte. Tenez compte de cette information si la couche raster est volumineuse ou si sa r&eacute;solution est tr&egrave;s &eacute;lev&eacute;e.
     </p>
     <p>Voici certains cas d'utilisation de cet outil&nbsp;:
- 
+
         <ul>
             <li>Cr&eacute;ez des entit&eacute;s surfaciques &agrave; partir d&rsquo;un raster de classification de l&rsquo;utilisation du sol.
                 
- 
+
             </li>
             <li>Les cours d'eau identifi&eacute;s dans un MNT peuvent &ecirc;tre convertis en entit&eacute;s lin&eacute;aires.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Un MNT peut &ecirc;tre converti en entit&eacute;s ponctuelles pouvant servir dans un workflow non raster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Choisir un champ</h2></div>
         <hr/>
         <div>
-            <p>Indiquez un champ qui pr&eacute;cise les valeurs &agrave; utiliser pour la conversion.
+            <p>Champ qui indique la valeur de conversion.
             </p>
             <p>Il peut s'agir d'un entier ou d'une valeur textuelle.
             </p>
             <p>Un champ contenant des valeurs &agrave; virgule flottante peut uniquement servir si la sortie est destin&eacute;e &agrave; &ecirc;tre un jeu de donn&eacute;es ponctuelles.
             </p>
-            <p>Le choix par d&eacute;faut consiste &agrave; utiliser le champ  <i>Value</i> qui contient la valeur dans chaque cellule raster.
+            <p>Il s&rsquo;agit par d&eacute;faut du champ  <i>Value</i>, qui contient la valeur dans chaque cellule raster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Choisir le type en sortie</h2></div>
         <hr/>
         <div>
-            <p>Choisissez le type de g&eacute;om&eacute;trie parmi le point, la ligne ou le polygone.
+            <p>Indique le type en sortie.
             </p>
             <ul>
-                <li>Point&nbsp;: le raster sera converti en jeu de donn&eacute;es ponctuelles.
+                <li> <b>Point</b>&nbsp;: le raster est converti en jeu de donn&eacute;es ponctuelles. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                     
  
                 </li>
-                <li>Ligne&nbsp;: le raster sera converti en jeu de donn&eacute;es d'entit&eacute; lin&eacute;aires.
+                <li> <b>Line (Ligne)</b>&nbsp;: le raster est converti en jeu de classes d&rsquo;entit&eacute;s lin&eacute;aires.
                     
  
                 </li>
-                <li>Polygone&nbsp;: le raster sera converti en jeu de donn&eacute;es d'entit&eacute; surfaciques.
+                <li> <b>Polygon (Polygone)</b>&nbsp;: le raster est converti en jeu de classes d&rsquo;entit&eacute;s surfaciques.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Simplifier des lignes ou des polygones</h2></div>
         <hr/>
         <div>
-            <p>Indiquez si les entit&eacute;s doivent &ecirc;tre simplifi&eacute;es.
+            <p>Indique si les lignes ou polygones sont simplifi&eacute;s (liss&eacute;s). Le lissage s&rsquo;effectue de mani&egrave;re que la ligne contienne un nombre minimal de segments tout en restant le plus proche possible des tron&ccedil;ons des cellules raster d&rsquo;origine.
             </p>
-            <p>Si cette option est s&eacute;lectionn&eacute;e (par d&eacute;faut), les entit&eacute;s lin&eacute;aires ou surfaciques sont liss&eacute;es pour produire un r&eacute;sultat plus g&eacute;n&eacute;ralis&eacute;. Si cette option n'est pas s&eacute;lectionn&eacute;e, les entit&eacute;s lin&eacute;aires suivent les limites des cellules du jeu de donn&eacute;es raster.
+            <ul>
+                <li>Activ&eacute;&nbsp;: les entit&eacute;s lin&eacute;aires ou surfaciques sont liss&eacute;es pour produire un r&eacute;sultat plus g&eacute;n&eacute;ralis&eacute;. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    
+
+                </li>
+                <li>D&eacute;sactiv&eacute;&nbsp;: les entit&eacute;s lin&eacute;aires ou surfaciques suivront les limites des cellules du jeu de donn&eacute;es raster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ce param&egrave;tre est pris en charge uniquement si la sortie est de type lin&eacute;aire ou surfacique.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Créer des entités multi-parties</h2></div>
+        <hr/>
+        <div>
+            <p>Indique si les polygones en sortie sont compos&eacute;s d&rsquo;entit&eacute;s en une seule partie ou multi-parties.
+            </p>
+            <ul>
+                <li>Activ&eacute;&nbsp;: les entit&eacute;s multi-parties sont cr&eacute;&eacute;es en fonction des polygones de m&ecirc;me valeur.
+                    
+
+                </li>
+                <li>D&eacute;sactiv&eacute;&nbsp;: les entit&eacute;s individuelles (en une seule partie) sont cr&eacute;&eacute;es pour chaque polygone. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ce param&egrave;tre est pris en charge uniquement si la sortie est de type surfacique.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Nombre maximal de sommets par entité surfacique</h2></div>
+        <hr/>
+        <div>
+            <p>La limite de sommet utilis&eacute;e pour sous-diviser un polygone&nbsp;en polygones plus petits.
+            </p>
+            <p>Si laiss&eacute;e vide, les polygones de sortie ne seront pas s&eacute;par&eacute;s. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+            </p>
+            <p>Ce param&egrave;tre est pris en charge uniquement si la sortie est de type surfacique.
             </p>
         </div>
     </div>

@@ -55,11 +55,11 @@
     <p>Jos vaihtoehto  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> on valittuna, vain nykyisess&auml; karttalaajuudessa n&auml;kyviss&auml; olevat rasterisolut muunnetaan. Jos vaihtoehtoa ei ole valittu, kaikki rasterikarttatason solut muunnetaan, vaikka ne olisivat nykyisen karttalaajuuden ulkopuolella. Ota t&auml;m&auml; huomioon, jos rasterikarttataso on suuri tai sill&auml; on eritt&auml;in suuri resoluutio.
     </p>
     <p>Ty&ouml;kalua voi k&auml;ytt&auml;&auml; esimerkiksi seuraaviin tarkoituksiin:
- 
+
         <ul>
             <li>Luo aluekohteita maank&auml;yt&ouml;n luokittelun rasterista.
                 
- 
+
             </li>
             <li>DEM:ss&auml; tunnistetut virrat voidaan muuntaa viivakohteiksi.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM voidaan muuntaa pistekohteiksi, joita voidaan k&auml;ytt&auml;&auml; muussa kuin rasteripohjaisessa ty&ouml;nkulussa.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Valitse kenttä</h2></div>
         <hr/>
         <div>
-            <p>Anna kentt&auml;, joka m&auml;&auml;ritt&auml;&auml; muunnoksessa k&auml;ytett&auml;v&auml;n arvon.
+            <p>Kentt&auml;, joka m&auml;&auml;ritt&auml;&auml; muuntoarvon.
             </p>
             <p>Se voi olla kokonaisluku- tai tekstiarvo.
             </p>
             <p>Liukulukuarvoja sis&auml;lt&auml;v&auml;&auml; kentt&auml;&auml; voi k&auml;ytt&auml;&auml; vain, jos tulosaineisto on pisteaineistoryhm&auml;&auml;n.
             </p>
-            <p>Oletusarvon mukaan k&auml;ytet&auml;&auml;n  <i>Value</i> -kentt&auml;&auml;, joka sis&auml;lt&auml;&auml; arvon jokaisessa rasterisolussa.
+            <p>Oletusarvo on  <i>Value</i>-kentt&auml;&auml;, joka sis&auml;lt&auml;&auml; arvon jokaisessa rasterisolussa.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Valitse tulostyyppi</h2></div>
         <hr/>
         <div>
-            <p>Valitse tulosaineiston tyyppi (piste, viiva tai alue).
+            <p>M&auml;&auml;ritt&auml;&auml; tulostyypin.
             </p>
             <ul>
-                <li>Piste: Rasteri muunnetaan pisteaineistoryhm&auml;ksi.
+                <li> <b>Piste</b> &ndash; rasteri muunnetaan pisteaineistoryhm&auml;ksi. T&auml;m&auml; on oletusarvo.
                     
  
                 </li>
-                <li>Viiva: Rasteri muunnetaan viivakohdeaineistoryhm&auml;ksi.
+                <li> <b>Viiva</b> &ndash; rasteri muunnetaan viivakohdeaineistoryhm&auml;ksi.
                     
  
                 </li>
-                <li>Alue: Rasteri muunnetaan aluekohdeaineistoryhm&auml;ksi.
+                <li> <b>Aluekohde</b> &ndash; rasteri muunnetaan aluekohdeaineistoryhm&auml;ksi.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Yksinkertaista viiva- tai aluekohteet</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rit&auml;, yksinkertaistetaanko kohteet.
+            <p>M&auml;&auml;ritt&auml;&auml;, yksinkertaistetaanko (pehmennet&auml;&auml;nk&ouml;) viivat tai aluekohteet. Pehmennys tehd&auml;&auml;n siten, ett&auml; viiva sis&auml;lt&auml;&auml; v&auml;himm&auml;ism&auml;&auml;r&auml;n segmenttej&auml;, mutta s&auml;ilytt&auml;&auml; mahdollisimman hyvin alkuper&auml;iset rasterisolun reunat.
             </p>
-            <p>Jos vaihtoehto on valittu (oletusarvo), tulos yleistet&auml;&auml;n yksinkertaistamalla viiva- tai aluekohteet. Jos t&auml;t&auml; vaihtoehtoa ei ole valittu, lineaariset kohteet noudattavat rasteriaineistoryhm&auml;n solurajoja.
+            <ul>
+                <li>Valittu &ndash; viiva- tai aluekohteet pehmennet&auml;&auml;n yleisemm&auml;n tuloksen saavuttamiseksi. T&auml;m&auml; on oletusarvo.
+                    
+
+                </li>
+                <li>Ei valittu &ndash; viiva- tai aluekohteet noudattavat rasteriaineistoryhm&auml;n solurajoja.
+                    
+
+                </li>
+            </ul>
+            
+            <p>T&auml;t&auml; parametria tuetaan vain, jos tulosaineiston tyyppi on viiva tai aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Luo moniosaisia kohteita</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, koostuvatko tulosaineiston aluekohteet yksiosaisista vai moniosaisista kohteista.
+            </p>
+            <ul>
+                <li>Valittu &ndash; moniosaiset kohteet luodaan niiden aluekohteiden perusteella, joilla on sama arvo.
+                    
+
+                </li>
+                <li>Ei valittu &ndash; yksitt&auml;isen (yksiosaiset) kohteet luodaan kullekin aluekohteelle. T&auml;m&auml; on oletusarvo.
+                    
+
+                </li>
+            </ul>
+            
+            <p>T&auml;t&auml; parametria tuetaan vain, jos tulosaineiston tyyppi on aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Taitepisteiden enimmäismäärä aluekohdetta kohden</h2></div>
+        <hr/>
+        <div>
+            <p>Taitepisteen raja, jota k&auml;ytet&auml;&auml;n aluekohteen jakamiseksi osiin pienemmiksi aluekohteiksi.
+            </p>
+            <p>Jos t&auml;m&auml; on j&auml;tetty tyhj&auml;ksi, tulosaineiston aluekohteita ei jaeta. T&auml;m&auml; on oletusarvo.
+            </p>
+            <p>T&auml;t&auml; parametria tuetaan vain, jos tulosaineiston tyyppi on aluekohde.
             </p>
         </div>
     </div>

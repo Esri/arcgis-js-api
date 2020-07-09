@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Znajdź statystyki argumentu</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Znajdź statystyki argumentu"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>Za pomocą tego narzędzia można wyodrębnić wartość wymiaru (na przykład datę, wysokość lub głębokość), przy kt&oacute;rej pewna statystyka jest osiągana w stosie rastr&oacute;w w wielowymiarowym zestawie danych rastrowych. Opcjonalnie znajdź numer pasma, przy kt&oacute;rym ta statystyka jest osiągana w rastrze wielopasmowym.
+    </p>
+    <p>Na przykład możesz poznać miesiąc, w kt&oacute;rym każdy piksel osiągnął najwyższą temperaturę powierzchni morza przez 30&nbsp;lat zbierania danych. W kolejnym przykładzie zał&oacute;żmy, że masz ośmiopasmowy obraz teledetekcyjny i chcesz poznać pasmo, w przypadku kt&oacute;rego osiągnięto minimalną wartość wsp&oacute;łczynnika odbicia dla każdego piksela.
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą zmienne lub pasma warstwy widoczne w bieżącym zasięgu mapy. Jeśli ta opcja nie jest zaznaczona, analizowane będą zmienne lub pasma pełnej warstwy, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Wybierz wielowymiarową lub wielopasmową warstwę zobrazowań do przeanalizowania</h2></div>
+        <hr/>
+        <div>
+            <p>Wejściowy raster wielowymiarowy lub wielopasmowy do przeanalizowania.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Wybierz wymiar, z którego zostanie wyodrębniona statystyka</h2></div>
+        <hr/>
+        <div>
+            <p>Wymiar, z kt&oacute;rego zostanie wyodrębniona statystyka. Jeśli raster wejściowy nie jest rastrem wielowymiarowym, ten parametr nie jest wymagany.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Wybierz zmienne do przeanalizowania</h2></div>
+        <hr/>
+        <div>
+            <p>Zmienna lub zmienne do przeanalizowania. Jeśli raster wejściowy nie jest rastrem wielowymiarowym, za zmienną uznawane są wartości pikseli rastra wielopasmowego. Jeśli raster wejściowy jest wielowymiarowy i nie została podana żadna zmienna, analizowane będą wszystkie zmienne z podanym wymiarem.
+            </p>
+            <p>Aby na przykład znaleźć lata, w kt&oacute;rych wartości temperatury były najwyższe, wybierz temperaturę jako zmienną do przeanalizowania. Jeśli nie podasz żadnej zmiennej i masz zar&oacute;wno zmienne z temperaturą, jak i opadami atmosferycznymi, obie te zmienne będą analizowane, a wynikowy raster wielowymiarowy będzie zawierał obie zmienne.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Wybierz typ statystyk</h2></div>
+        <hr/>
+        <div>
+            <p>Podaje statystykę do wyodrębnienia ze zmiennej lub zmiennych wzdłuż danego wymiaru. 
+            </p>
+            <ul>
+                <li> <b>Argument wartości minimalnej</b> &mdash; zostanie wyodrębniona wartość wymiaru, przy kt&oacute;rej osiągana jest minimalna wartość zmiennej. Jest to opcja domyślna.
+                </li>
+                <li> <b>Argument wartości maksymalnej</b> &mdash; zostanie wyodrębniona wartość wymiaru, przy kt&oacute;rej osiągana jest maksymalna wartość zmiennej.
+                </li>
+                <li> <b>Argument mediany</b> &mdash; zostanie wyodrębniona wartość wymiaru, przy kt&oacute;rej osiągana jest mediana zmiennej.
+                </li>
+                <li> <b>Argument czasu trwania</b> &mdash; najdłuższy czas trwania wymiaru, w przypadku kt&oacute;rego wartości zmiennych przypadają między wartością minimalną i maksymalną.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Podaj wartość występującą wielokrotnie</h2></div>
+        <hr/>
+        <div>
+            <p>Wartość piksela, kt&oacute;rej należy użyć, aby zaznaczyć, że dana statystyka argumentu została osiągnięta więcej niż raz w wejściowym zestawie danych rastrowych. Jeśli ten parametr nie jest podany, wartość piksela będzie wartością wymiaru przy pierwszym osiągnięciu statystyki argumentu.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Podaj wartość minimalną</h2></div>
+        <hr/>
+        <div>
+            <p>Minimalna wartość zmiennej, kt&oacute;rej można użyć do wyodrębnienia czasu trwania.
+            </p>
+            <p>Ten parametr jest wymagany, gdy jako typ statystyk wybrano  <b>Czas trwania</b>.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Podaj wartość maksymalną</h2></div>
+        <hr/>
+        <div>
+            <p>Maksymalna wartość zmiennej, kt&oacute;rej można użyć do wyodrębnienia czasu trwania.
+            </p>
+            <p>Ten etap jest wymagany, gdy jako typ statystyk wybrano  <b>Czas trwania</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Wybierz definicję wymiaru</h2></div>
+        <hr/>
+        <div>
+            <p>Podaje spos&oacute;b wyodrębnienia statystyki z wymiaru. 
+                <ul>
+                    <li> <b>Wszystkie</b> &mdash; statystyka zostanie wyodrębniona ze wszystkich wymiar&oacute;w. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Słowo kluczowe przedziału</b> &mdash; statystyka zostanie wyodrębniona z wymiaru czasu zgodnie ze słowem kluczowym przedziału.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Wybierz przedział słowa kluczowego</h2></div>
+        <hr/>
+        <div>
+            <p>Jednostka czasu, z kt&oacute;rej zostanie wyodrębniona statystyka.
+            </p>
+            <p>Zał&oacute;żmy na przykład, że masz codzienne dane o temperaturze powierzchni morza z pięciu lat i chcesz się dowiedzieć, w kt&oacute;rym roku zaobserwowano najwyższą temperaturę. Jako typ statystyk skonfiguruj  <b>Argument wartości maksymalnej</b>, jako definicję wymiaru skonfiguruj <b>Słowo kluczowe przedziału</b>, a jako interwał słowa kluczowego w tym etapie skonfiguruj <b>Co rok</b>.
+            </p>
+            <p>Jeśli chcesz się dowiedzieć, w kt&oacute;rym miesiącu była obserwowana najwyższa temperatura, jako typ statystyk skonfiguruj  <b>Argument wartości maksymalnej</b>, jako definicję wymiaru skonfiguruj <b>Słowo kluczowe przedziału</b>, a jako interwał słowa kluczowego w tym etapie skonfiguruj <b>Powtarzane co miesiąc</b>. Spowoduje to wygenerowanie rastra, gdzie każdy piksel zawiera miesiąc, w kt&oacute;rym została osiągnięta dana statystyka w ciągu pięciu lat (na przykład 08/18/2018, 08/25/2016, 08/07/2013).
+            </p>
+            <p>Ten etap jest wymagany, gdy wartość  <b>StdTime</b> jest skonfigurowana jako wymiar, z kt&oacute;rego zostanie wyodrębniona statystyka, a <b>Słowo kluczowe przedziału</b> jest wybrane jako spos&oacute;b wyodrębnienia statystyki z wymiaru czasu.
+                <ul>
+                    <li> <b>Powtarzane codziennie</b> &mdash; zostanie wyodrębniona statystyka dla dni.
+                    </li>
+                    <li> <b>Powtarzane co tydzień</b> &mdash; zostanie wyodrębniona statystyka dla tygodni.
+                    </li>
+                    <li> <b>Powtarzane co miesiąc</b> &mdash; zostanie wyodrębniona statystyka dla miesięcy.
+                    </li>
+                    <li> <b>Powtarzane co kwartał</b> &mdash; zostanie wyodrębniona statystyka dla kwartał&oacute;w.
+                    </li>
+                    <li> <b>Co godzinę</b> &mdash; zostanie wyodrębniona statystyka dla godziny, w kt&oacute;rej ta statystyka została osiągnięta.
+                    </li>
+                    <li> <b>Codziennie</b> &mdash; zostanie wyodrębniona statystyka dla dnia, w kt&oacute;rym ta statystyka została osiągnięta.
+                    </li>
+                    <li> <b>Co tydzień</b> &mdash; zostanie wyodrębniona statystyka dla tygodnia, w kt&oacute;rym ta statystyka została osiągnięta.
+                    </li>
+                    <li> <b>Co miesiąc</b> &mdash; zostanie wyodrębniona statystyka dla miesiąca, w kt&oacute;rym ta statystyka została osiągnięta.
+                    </li>
+                    <li> <b>Co kwartał</b> &mdash; zostanie wyodrębniona statystyka dla kwartału, w kt&oacute;rym ta statystyka została osiągnięta.
+                    </li>
+                    <li> <b>Co rok</b> &mdash; zostanie wyodrębniona statystyka dla roku, w kt&oacute;rym ta statystyka została osiągnięta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy w analizie są ignorowane brakujące wartości.
+                <ul>
+                    <li>Jeśli to pole jest zaznaczone, analiza obejmie wszystkie poprawne piksele w danym wymiarze i zignoruje piksele o wartości NoData. Jest to opcja domyślna.
+                    </li>
+                    <li>Jeśli to pole nie jest zaznaczone, wynikiem analizy będzie wartość NoData, jeśli dla piksela w danym wymiarze istnieją jakiekolwiek wartości NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

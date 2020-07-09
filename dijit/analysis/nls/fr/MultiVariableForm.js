@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({distToNearest:"Distance par rapport à l’entité la plus proche",attrOfInterest:"Attribut de l’entité la plus proche",summaryNearby:"Synthèse de l’entité à proximité",summaryIntersecting:"Synthèse de l’entité d’intersection",distToNearestLabel:"Distance entre le centre du groupe et l’entité la plus proche dans la couche en entrée",attrOfInterestLabel:"Valeur d’un champ spécifié depuis l’entité la plus proche de la couche en entrée",summaryNearbyLabel:"Statistique calculée sur toutes les entités trouvées à la distance spécifiée du centre du groupe",summaryIntersectingLabel:"Statistique calculée sur toutes les entités qui intersectent le groupe",maxDistancefromCtr:"Distance maximale depuis le centre du groupe",fieldToIncude:"Champ à inclure",statstoCalculate:"Statistique à calculer",summFeatuesWithin:"Synthétiser les entités à l’intérieur",smallMaxDistErrorMsg:"La distance maximale depuis le centre du groupe doit être supérieure à la taille du groupe.",smallSumFeaturesErrorMsg:"La distance maximale depuis le centre du groupe doit être supérieure à la taille du groupe."});

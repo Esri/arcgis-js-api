@@ -3,6 +3,7 @@
 .esriGEReportPlayerPrint_reportHeader {
     padding-top: 20px;
     padding-bottom: 10px;
+    text-align: left;
 }
 
 .esriGEReportPlayerPrint_reportHeaderTitleRow {

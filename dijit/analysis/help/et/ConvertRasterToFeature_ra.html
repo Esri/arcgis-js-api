@@ -55,11 +55,11 @@
     <p>Kui tingimus  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, teisendatakse ainult need rasterkihi pikslid, mis on kaardil praegu n&auml;htavad. Kui tingimus on v&auml;lja l&uuml;litatud, teisendatakse k&otilde;ik rasterkihis olevad pikslid, sh need, mis pole praegu kaardil n&auml;htavad. Arvestage seda juhul, kui rasterkiht on suur v&otilde;i v&auml;ga suure resolutsiooniga.
     </p>
     <p>Seda t&ouml;&ouml;riista saab kasutada ka j&auml;rgmistel juhtudel:
- 
+
         <ul>
             <li>Pindobjektide loomine maakasutuse klassifikatsiooni rastrist.
                 
- 
+
             </li>
             <li>Digitaalsest k&otilde;rgusmudelist (DEM) tuvastatud vooluveekogud saab teisendada joonobjektideks.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM-i saab teisendada punktobjektideks, mida saab kasutada ka muudes t&ouml;&ouml;etappides.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Valige väli</h2></div>
         <hr/>
         <div>
-            <p>Sisestage v&auml;li, mis m&auml;&auml;rab teisendamiseks kasutatava v&auml;&auml;rtuse.
+            <p>V&auml;li, mis m&auml;&auml;ratleb teisendamisv&auml;&auml;rtuse.
             </p>
             <p>See v&otilde;ib olla mis tahes t&auml;isarv v&otilde;i tekstiline v&auml;&auml;rtus.
             </p>
             <p>Ujuva v&auml;&auml;rtusega sisaldavat v&auml;lja saab kasutada ainult siis, kui v&auml;ljund on punktandmestik.
             </p>
-            <p>Vaikimisi on valitud v&auml;li nimega  <i>Value</i>, mis sisaldab iga rasterpiksli v&auml;&auml;rtust.
+            <p>Vaikimisi on valitud v&auml;li  <i>Value</i>, mis sisaldab iga rasterpiksli v&auml;&auml;rtust.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Valige väljundi tüüp</h2></div>
         <hr/>
         <div>
-            <p>Valige v&auml;ljundi t&uuml;&uuml;p: punkt, joon v&otilde;i pol&uuml;goon.
+            <p>M&auml;&auml;ratleb v&auml;ljundi t&uuml;&uuml;bi.
             </p>
             <ul>
-                <li>Punkt &ndash; Raster teisendatakse punktandmestikuks.
+                <li> <b>Punkt</b> &ndash; raster teisendatakse punktandmestikuks. See on vaikimisi valik.
                     
  
                 </li>
-                <li>Joon &ndash; Raster teisendatakse joonobjektide andmestikuks.
+                <li> <b>Joon</b> &ndash; raster teisendatakse joonobjektide andmestikuks.
                     
  
                 </li>
-                <li>Pol&uuml;goon &ndash; Raster teisendatakse pindobjektide andmestikuks.
+                <li> <b>Pol&uuml;goon</b> &ndash; raster teisendatakse pindobjektide andmestikuks.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Lihtsusta jooned või polügoonid</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rake, kas objektid tuleb lihtsustada.
+            <p>M&auml;&auml;rab, kas jooned v&otilde;i pol&uuml;goonid lihtsustatakse (tasandatakse). Tasandamine tehakse nii, et joon sisaldab minimaalsel arvul segmente, aga j&auml;&auml;b samal ajal v&otilde;imalikult l&auml;hedale algse rastripiksli servadele.
             </p>
-            <p>Kui tingimuse lahter on &auml;ra m&auml;rgitud (vaikimisi seatud), tasandatakse joon- v&otilde;i pindobjektid, et saada &uuml;htlasem tulemus. Kui tingimuse lahter on t&uuml;hi, j&auml;rgivad lineaarsed objektid rasterandmestiku pikslite piire.
+            <ul>
+                <li>M&auml;rgitud &ndash; joon- v&otilde;i pindobjektid tasandatakse, et saada &uuml;ldistatud/&uuml;htlasem tulemus. See on vaikimisi valik.
+                    
+
+                </li>
+                <li>M&auml;rkimata &ndash; joon- v&otilde;i pindobjektid j&auml;rgivad rasterandmestiku pikslite piire.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Seda parameetrit toetatakse ainult juhul, kui v&auml;ljundi t&uuml;&uuml;p on joon v&otilde;i pol&uuml;goon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Loo mitmeosalisi objekte</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas v&auml;ljundpol&uuml;goon koosneb &uuml;he- v&otilde;i mitmeosalistest objektidest.
+            </p>
+            <ul>
+                <li>M&auml;rgitud &ndash; luuakse mitmeosalised objektid, v&otilde;ttes aluseks sama v&auml;&auml;rtusega pol&uuml;goonid.
+                    
+
+                </li>
+                <li>M&auml;rkimata &ndash; iga pol&uuml;gooni jaoks luuakse eraldi (&uuml;heosalised) objektid. See on vaikimisi valik.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Seda parameetrit toetatakse ainult juhul, kui v&auml;ljundi t&uuml;&uuml;p on pol&uuml;goon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimaalne tippude hulk pindobjekti kohta</h2></div>
+        <hr/>
+        <div>
+            <p>Tippude limiit, mida kasutatakse pol&uuml;goonide v&auml;iksemateks pol&uuml;goonideks jagamisel.
+            </p>
+            <p>Kui see j&auml;etakse t&uuml;hjaks, siis v&auml;ljundpol&uuml;goone ei t&uuml;keldata. See on vaikimisi valik.
+            </p>
+            <p>Seda parameetrit toetatakse ainult juhul, kui v&auml;ljundi t&uuml;&uuml;p on pol&uuml;goon.
             </p>
         </div>
     </div>

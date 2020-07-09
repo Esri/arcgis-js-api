@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>使用趋势栅格预测</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="使用趋势栅格预测"></h2>
+        <hr/>
+    <p>使用来自 生成趋势栅格工具的输出趋势栅格来计算预测多维栅格。
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则对当前地图范围中可见的图层的变量进行分析。如果未选中，则将分析完整图层中的变量，包括超出当前地图范围的要素。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>选择要预测的多维影像图层</h2></div>
+        <hr/>
+        <div>
+            <p>来自 生成趋势栅格工具的输入多维趋势栅格。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>选择要预测的变量</h2></div>
+        <hr/>
+        <div>
+            <p>将在分析中预测的一个或多个变量。如果未指定任何变量，则将使用所有变量。
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>选择用于提供预测维度值的方法</h2></div>
+        <hr/>
+        <div>
+            <p>指定用于提供预测维度值的方法。
+                <ul>
+                    <li> <b>按值</b> - 将针对单个维度值或在下一步中指定的一系列维度值来计算预测。这是默认设置。例如，您要预测 2050、2100 和 2150 年的年降水量。
+                    </li>
+                    <li> <b>按间隔 </b>- 将针对由起始值和结束值定义的维度间隔来计算预测。例如，您要预测 2050 年到 2150 年之间每年的年降水量。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>指定用于预测的维度值</h2></div>
+        <hr/>
+        <div>
+            <p>预测中要使用的一个或多个维度值。
+            </p>
+            <p>时间、深度和高度值的格式必须与用于生成趋势栅格的维度值的格式相匹配。如果为 StdTime 维度生成了趋势栅格，则其格式应为 YYYY-MM-DDTHH:MM:SS，例如 2050-01-01T00:00:00。用分号分隔多个值。
+            </p>
+            <p>当选择 <b>按值</b>方法来定义用于预测的维度值时，此参数为必需项。
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>定义用于预测的维度间隔</h2></div>
+        <hr/>
+        <div>
+            <p>定义预测中要使用的维度间隔的开始和结束日期、高度或深度。
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>指定起始值和结束值之间的步长数量</h2></div>
+        <hr/>
+        <div>
+            <p>要包含在预测中的两个纬度值之间的步长数量。默认值为 1。
+            </p>
+            <p>例如，要预测每五年的温度值，请使用值 5。
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>选择将用于时间值间隔的单位</h2></div>
+        <hr/>
+        <div>
+            <p>指定将用于值间隔的单位。仅当分析的维度是时间维度时，此参数才适用。
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

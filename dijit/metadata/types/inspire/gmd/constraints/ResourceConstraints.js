@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/InputSelectOne","../../../../form/Options","../../../../form/Option","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListAttribute","../../../../form/iso/CodeListValueAttribute","../../../../form/iso/CodeListElement","../../../../form/iso/CodeListReference","../../../../form/iso/CodeSpaceAttribute","../../../../form/iso/ObjectReference","./OtherConstraints","./UseLimitation","dojo/text!./templates/ResourceConstraints.html","../../../../../../kernel"],(function(e,t,o,s,r,i,n,a,m,d,c,f,b,l,p,u,j,C){var O=e(s,{templateString:j});return o("extend-esri")&&t.setObject("dijit.metadata.types.inspire.gmd.constraints.ResourceConstraints",O,C),O}));

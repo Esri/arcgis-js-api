@@ -44,7 +44,7 @@
         <h2>Ricostruisci Tracce</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Ricostruisci tracce"></h2>
         <hr/>
-    <p> Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o areali che rappresentano un <code>istante</code> nel tempo. Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un'area che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creata un'area in ciascuna posizione. Questi punti bufferizzati o le aree di input vengono uniti in modo sequenziale per creare una traccia in forma di area laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
+    <p> Questo strumento funziona con un layer abilitato per variazioni temporali di feature areali o puntuali che rappresentano un <code>istante</code> nel tempo. Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un'area che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creata un'area in ciascuna posizione. Questi punti bufferizzati o le aree di input vengono uniti in modo sequenziale per creare una traccia in forma di area laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
     </p>
     <p>Le feature abilitate per variazioni temporali possono essere rappresentate in due modi diversi:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Il layer puntuale o areale che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
             </p>
         </div>
     </div>
@@ -109,7 +109,7 @@
             </p>
             <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
             </p>
-            <p>Si supponga di avere feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia.  Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare  <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
+            <p>Si supponga di avere feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia. Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare  <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
             </p>
         </div>
     </div>
@@ -123,7 +123,7 @@
                 <ul>
                     <li> <b>In base alla distanza tra input</b>: se i punti o i poligoni di input presentano tra di loro una distanza pi&ugrave; lunga della distanza specificata, verranno suddivisi in tracce differenti. Ad esempio, se si &egrave; specificata una distanza di 10 chilometri, i punti sequenziali superiori a 10 chilometri saranno tracce separate.
                     </li>
-                    <li> <b>In base al tempo tra input</b>: se i punti o i poligoni di input presentano una durata pi&ugrave; lunga rispetto alla suddivisione temporale, verranno suddivisi in tracce differenti. Ad esempio, se si hanno feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia.  Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
+                    <li> <b>In base al tempo tra input</b>: se i punti o i poligoni di input presentano una durata pi&ugrave; lunga rispetto alla suddivisione temporale, verranno suddivisi in tracce differenti. Ad esempio, se si hanno feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia. Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
                     </li>
                     <li> <b>A intervalli di tempo definiti</b>: suddivisione mediante intervalli regolari, specificati da un intervallo di tempo e un riferimento temporale. Se non si specifica un riferimento temporale, si user&agrave; il 1 gennaio 1970. Ad esempio, se si &egrave; specificato 1 anno con il 2 febbraio 1990 alle 10:00 come riferimento temporale, si suddivideranno le tracce in 2 febbraio 1990 alle 10:00, 2 febbraio 1991 alle 10:00 e cos&igrave; via a intervalli di un anno.
                     </li>
@@ -148,7 +148,7 @@
         <div><h2>Aggiungi statistiche (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p> &Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue:
+            <p>&Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue: 
                 <ul>
                     <li>Conteggio: calcola il numero di valori nonnull. Pu&ograve; essere utilizzato su campi o stringhe numeriche. Il conteggio di [null, 0, 2] &egrave; 2.
                     </li>
@@ -162,9 +162,13 @@
                     </li>
                     <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
                     </li>
-                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,0,1,1] &egrave; 0,25.
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1, 0, 1, 1] &egrave; 0,25.
                     </li>
-                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,0,1,1] &egrave; 0,5. 
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1, 0, 1, 1] &egrave; 0,5. 
+                    </li>
+                    <li>Primo: il primo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [1, 5, 10, 20], il primo valore &egrave; 1.
+                    </li>
+                    <li>Ultimo: l'ultimo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [1, 5, 10, 20], l'ultimo valore &egrave; 20.
                     </li>
                 </ul>
                 
@@ -175,8 +179,12 @@
                     </li>
                     <li>Qualsiasi: questa statistica &egrave; un esempio casuale di un valore stringa nel campo specificato.
                     </li>
+                    <li>Primo: il primo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], il primo valore &egrave; Toronto.
+                    </li>
+                    <li>Ultimo: l'ultimo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], l'ultimo valore &egrave; Boston.
+                    </li>
                 </ul>
-                Tutte le statistiche vengono calcolate su valori non null. Il layer risultante includer&agrave; un nuovo campo per ogni statistica calcolata. &Egrave; possibile aggiungere un numero qualsiasi di statistiche scegliendo un attributo e una statistica. 
+                Tutte le statistiche vengono calcolate su valori non null. Il layer risultante includer&agrave; un nuovo campo per ogni statistica calcolata. &Egrave; possibile aggiungere un numero qualsiasi di statistiche scegliendo un attributo e una statistica.
             </p>
         </div>
     </div>
@@ -184,9 +192,9 @@
         <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>I risultati di GeoAnalytics sono memorizzati in un data store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati di GeoAnalytics sono memorizzati in un data store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
-                    <li>&Egrave; possibile utilizzare i risultati in una collaborazione tra portali.
+                    <li>&Egrave; possibile utilizzare i risultati nella collaborazione tra portali.
                     </li>
                     <li>&Egrave; possibile abilitare funzionalit&agrave; di sincronizzazione con i risultati.
                     </li>
@@ -201,7 +209,7 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Il nome del layer che verr&agrave; creato.  Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato. Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
             <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>

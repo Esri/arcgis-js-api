@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Convertire raster în obiect spaţial</h2><p/>
-        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Instrument convertire raster &icirc;n obiect spaţial"></h2>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Instrument de Convertire a Rasterului &icirc;n Obiecte Spațiale"></h2>
         <hr/>
     <p>Acest instrument converteşte un raster &icirc;ntr-un set de date de obiecte spaţiale, precum puncte, linii sau poligoane.
     </p>
@@ -55,11 +55,11 @@
     <p>Dacă se bifează  <b>Utilizare extindere curentă a hărţii</b>, vor fi convertite numai celulele raster vizibile &icirc;n extinderea curentă a hărţii. Dacă nu se bifează, toate celulele din stratul tematic raster vor fi convertite, chiar dacă se află &icirc;n afara extinderii curente a hărţii. Reţineţi dacă stratul tematic raster este mare sau are o rezoluţie foarte &icirc;naltă.
     </p>
     <p>Printre situaţiile de utilizare ale acestui instrument se numără:
- 
+
         <ul>
             <li>Crearea de obiecte spaţiale poligoane dintr-un raster de clasificare a utilizării terenului.
                 
- 
+
             </li>
             <li>Fluxurile identificate &icirc;ntr-un DEM pot fi convertite &icirc;n obiecte spaţiale linii.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Un DEM poate fi convertit &icirc;n obiecte spaţiale puncte care pot fi utilizate &icirc;ntr-un flux de lucru nonraster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Alegere câmp</h2></div>
         <hr/>
         <div>
-            <p>Furnizaţi un c&acirc;mp care specifică ce valori vor fi utilizate pentru conversie.
+            <p>Un c&acirc;mp care specifică valoarea de conversie.
             </p>
             <p>Poate să fie un număr &icirc;ntreg sau o valoare text.
             </p>
             <p>Un c&acirc;mp care conţine valori de puncte mobile poate fi utilizat doar dacă rezultatul este un set de date punctuale.
             </p>
-            <p>Alegerea implicită este utilizarea c&acirc;mpului  <i>Value</i>, care conţine valoarea din fiecare celulă raster.
+            <p>Valoarea implicită este c&acirc;mpul  <i>Value</i>, care conține valoarea din fiecare celulă raster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Alegeţi tipul rezultatului</h2></div>
         <hr/>
         <div>
-            <p>Alegeţi tipul de ieşire dintre punct, linie sau poligon.
+            <p>Specifică tipul rezultatului.
             </p>
             <ul>
-                <li>Punct - Rasterul va fi convertit &icirc;n set de date de puncte.
+                <li> <b>Punct</b>&mdash;Rasterul va fi convertit &icirc;ntr-un set de date tip punct. Aceasta este setarea implicită.
                     
  
                 </li>
-                <li>Linie - Rasterul va fi convertit &icirc;n set de date de obiecte spaţiale liniare.
+                <li> <b>Linie</b>&mdash;va fi convertit &icirc;ntr-un set de date de obiect spațial tip linie.
                     
  
                 </li>
-                <li>Poligon - Rasterul va fi convertit &icirc;n set de date de obiecte spaţiale poligonale.
+                <li> <b>Poligon</b>&mdash;Rasterul va fi convertit &icirc;ntr-un set de date de obiect spațial tip poligon.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Simplificare linii sau poligoane</h2></div>
         <hr/>
         <div>
-            <p>Specificaţi dacă obiectele spaţiale ar trebui simplificate
+            <p>Specifică dacă liniile sau poligoanele vor fi simplificate (aplatizate). Aplatizarea este realizată astfel &icirc;nc&acirc;t linia să conțină un număr minim de segmente &icirc;n timp ce răm&acirc;ne c&acirc;t mai aproape posibil de marginile celulei raster originale.
             </p>
-            <p>Dacă opţiunea este bifată (modul implicit), obiectele spaţiale linii sau poligoane vor fi rafinate pentru a produce un rezultat mai generalizat. Dacă opţiunea nu este bifată, obiectele spaţiale liniare vor urma graniţele celulelor setului de date raster.
+            <ul>
+                <li>Bifat&mdash;Obiectele spațiale liniare sau poligonale vor fi aplatizate pentru a produce un rezultat mai generalizat. Aceasta este setarea implicită.
+                    
+
+                </li>
+                <li>Nebifat&mdash;Obiectele spațiale liniare sau poligonale vor respecta granițele celulei setului de date raster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Acest parametru este acceptat doar dacă tipul de rezultat este o linie sau un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Creare obiecte spaţiale cu mai multe părţi</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă poligoanele rezultante vor consta &icirc;n obiecte spațiale cu una sau mai multe părți.
+            </p>
+            <ul>
+                <li>Bifat&mdash;Obiectele spațiale cu părți multiple vor fi create pe baza poligoanelor care au aceeași valoare.
+                    
+
+                </li>
+                <li>Nebifat&mdash;Obiectele spațiale individuale (cu o singură parte) vor fi create pentru fiecare poligon. Aceasta este setarea implicită.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Acest parametru este acceptat doar dacă tipul rezultatului este un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Vârfurile maxime pe obiect spațial poligonal</h2></div>
+        <hr/>
+        <div>
+            <p>Limita v&acirc;rfurilor folosită pentru a sub&icirc;mpărți un poligon &icirc;n poligoane mai mici.
+            </p>
+            <p>Dacă este lăsat loc gol, poligoanele rezultante nu vor fi &icirc;mpărțite. Aceasta este setarea implicită.
+            </p>
+            <p>Acest parametru este acceptat doar dacă tipul rezultatului este un poligon.
             </p>
         </div>
     </div>

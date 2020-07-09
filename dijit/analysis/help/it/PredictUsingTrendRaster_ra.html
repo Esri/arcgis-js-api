@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prevedere utilizzando il raster di tendenza</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prevedere utilizzando il raster di tendenza"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, verranno analizzate le variabili del layer visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate le variabili del layer, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Scegliere il layer di immagini multidimensionale da prevedere</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di tendenza multidimensionale di input dallo strumento  Generare raster di tendenza.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Scegliere la variabile o le variabili che saranno previste</h2></div>
+        <hr/>
+        <div>
+            <p>La variabile o le variabili che verranno previste nell'analisi. Se non si specifica nessuna variabile, saranno utilizzate tutte le variabili.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Scegliere il metodo utilizzato per fornire valori di dimensione sulle previsioni</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica il metodo utilizzato per fornire valori di dimensione sulle previsioni.
+                <ul>
+                    <li> <b>Per valore</b>: la previsione sar&agrave; calcolata per un singolo valore di dimensione o per un elenco di valori di dimensione specificati nella fase successiva. Questa &egrave; l'impostazione predefinita. Ad esempio, si desidera prevedere la precipitazione annuale per gli anni 2050, 2100 e 2150.
+                    </li>
+                    <li> <b>Per intervallo</b>: la previsione sar&agrave; calcolata per un intervallo della dimensione definita da un valore di inizio e uno di fine. Ad esempio, si desidera prevedere la precipitazione annuale per ogni anno compreso tra il 2050 e il 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Specificare il valore o i valori di dimensione per la previsione</h2></div>
+        <hr/>
+        <div>
+            <p>Il valore o i valori di dimensione da utilizzare nella previsione.
+            </p>
+            <p>Il formato dei valori di tempo, profondit&agrave; e altezza deve corrispondere al formato dei valori di dimensione utilizzati per generare il raster di tendenza. Se il raster di tendenza &egrave; stato generato per la dimensione StdTime, il formato deve essere AAAA-MM-GGTHH:MM:SS, es. 2050-01-01T00:00:00. Pi&ugrave; valori sono separati con un punto e virgola.
+            </p>
+            <p>Questo parametro &egrave; necessario quando si seleziona il metodo  <b>Per valore</b> per definire i valori di dimensione per la previsione.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definire l'intervallo di dimensione per la previsione</h2></div>
+        <hr/>
+        <div>
+            <p>Definire la data di inizio e di fine, l'altezza o la profondit&agrave; dell'intervallo di dimensione da utilizzare nella previsione.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Specificare il numero di passaggi tra il valore iniziale e quello finale</h2></div>
+        <hr/>
+        <div>
+            <p>Il numero di passaggi tra due valori di dimensione da includere nella previsione. Il valore predefinito &egrave; 1.
+            </p>
+            <p>Ad esempio, per prevedere i valori di temperatura ogni cinque anni, utilizzare un valore di 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Scegliere l'unità che verrà utilizzata per l'intervallo dei valori di tempo</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare l'unit&agrave; che verr&agrave; utilizzata per l'intervallo dei valori. Questo si applica solo quando la dimensione dell'analisi &egrave; una dimensione temporale.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

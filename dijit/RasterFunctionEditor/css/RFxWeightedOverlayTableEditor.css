@@ -16,7 +16,7 @@
   width: 30%;
 }
 
-.esri-rfx-weighted-overlay-editor .dijitNumberTextBox,.dgrid-input {
+.esri-rfx-weighted-overlay-editor .dijitNumberTextBox,.esri-rfx-weighted-overlay-editor .dgrid-input {
   height: 90%;
   width: 90%;
 }

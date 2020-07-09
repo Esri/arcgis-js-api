@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define([],(function(){return{composeHtmlStringFromParts:function(t){var n='<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<meta http-equiv="Content-Type" content="text/html; charset=utf-8">\n<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">\n<title>'+t.reportTitle+"</title>\n";return t.links&&t.links.forEach((function(t){n+='<link href="'+t+'" rel="stylesheet" />\n'})),t.cssFiles&&t.cssFiles.forEach((function(t){n+="<style>\n",n+=t+"\n",n+="</style>\n"})),t.additionalStyleNodes&&t.additionalStyleNodes.length&&(n+="<style>\n",t.additionalStyleNodes.forEach((function(t){n+=t.innerHTML+"\n"})),n+="</style>\n"),t.scripts&&t.scripts.forEach((function(t){if("object"==typeof t){for(var e in n+="<script",t)n+=" "+e+'="'+t[e]+'"';n+="><\/script>\n"}else n+="<script>\n",n+=t+"\n",n+="<\/script>\n"})),n+='</head>\n<body class="claro" style="margin:0px;">\n',n+=t.contentString+"\n",n+="</body>\n</html>"}}}));

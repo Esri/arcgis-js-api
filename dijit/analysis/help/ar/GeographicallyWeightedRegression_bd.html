@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>الانحدار المرجح جغرافيًا</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="مخطط سير عمل GeographicallyWeightedRegression"></h2>
+        <hr/>
+    <p>ينفذ الانحدار المرجح جغرافيًا (GWR)، وهو شكل من أشكال الانحدار الخطي المحلي المستخدم لنمذجة العلاقات المختلفة مكانيًا.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>اختر طبقة لتحليلها</h2></div>
+        <hr/>
+        <div>
+            <p>الطبقة التي تحتوي على معالم نقطية تحتوي على متغيرات توضيحية أو تابعة.
+            </p>
+            <p>بالإضافة إلى اختيار طبقة من الخريطة، يمكنك تحديد  <b>اختيار طبقة التحليل</b> أسفل القائمة المنسدلة لاستعراض محتوياتك لمجموعة بيانات مشاركة ملف البيانات الضخمة أو طبقة معالم. يمكنك، اختياريًا، تطبيق عامل تصفية على طبقة الإدخال أو تطبيق تحديد على طبقات مستضافة مضافة إلى خريطتك. يتم تطبيق عوامل التصفية والتحديدات بغرض التحليل. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>اختيار حقل لنمذجته</h2></div>
+        <hr/>
+        <div>
+            <p>الحقل الرقمي الذي يحتوي على القيم الملاحظة المراد نمذجتها ونوع القيمة التي تقوم بنمذجتها.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>اختيار الحقول التوضيحية</h2></div>
+        <hr/>
+        <div>
+            <p>حقل واحد أو أكثر يمثل المتغيرات (الحقول) التوضيحية التي تساعد في توقع القيمة. ستظهر فقط الحقول الرقمية.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>اختيار كيفية تحديد الجوار</h2></div>
+        <hr/>
+        <div>
+            <p>تُحدد ما إذا كان الجوار المستخدم يتم إنشاؤه كمسافة ثابتة أو يُسمح له بالتباين في النطاق المكاني اعتمادًا على كثافة المعالم.
+                <ul>
+                    <li> <b>عدد الجوار</b>&mdash;حجم الجوار هو دالة لعدد محدد من الجوار المضمنة في العمليات الحسابية لكل معلم. عندما تكون المعالم كثيفة، يكون النطاق المكاني للجوار أصغر؛ حيث تكون المعالم قليلة، يكون النطاق المكاني للجوار أكبر. عند تحديد هذا الخيار، حدد عدد الجوار الذي تريد تضمينه. يجب أن يكون عدد عددًا صحيحًا بين 2 و5000.
+                    </li>
+                    <li> <b>نطاق المسافة</b>&mdash;حجم الجوار هو مسافة ثابتة أو محددة لكل معلم. عند تحديد هذا الخيار، حدد نطاق المسافة لتمثيل النطاق المكاني للجوار.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>اختيار كيفية ترجيح معالم الجوار</h2></div>
+        <hr/>
+        <div>
+            <p>يحدد نوع النواة التي تُستخدم لتوفير الترجيح المكاني في النموذج. تحدد النواة كيفية ارتباط كل معلم بالمعالم الأخرى ضمن الجوار.
+                <ul>
+                    <li> <b>بايسكوير</b>&mdash;سيتم تخصيص ترجيح 0 إلى أي معالم خارج الجوار المحدد. هذا هو الوضع الافتراضي.
+                    </li>
+                    <li> <b>غاوسي</b>&mdash;ستحصل كل المعالم على ترجيحات، لكن تصبح الترجيحات أصغر بشكل كبير كلما ابتعدت عن المعلم الهدف.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>اسم طبقة النتيجة</h2></div>
+        <hr/>
+        <div>
+            <p> سيتم إنشاء اسم الطبقة. إذا كنت تقوم بالكتابة إلى ArcGIS Data Store، فسيتم حفظ نتائجك في  <b>محتواي</b> وإضافته إلى الخريطة. إذا كنت تقوم بالكتابة إلى مشاركة ملف بيانات ضخمة، فسُتخزن نتائجك في مشاركة ملف البيانات الضخمة وإضافتها إلى البيان الخاص بها. لن تتم إضافتها إلى الخريطة. يستند الاسم الافتراضي إلى اسم الأداة واسم الطبقة المدخلة. إذا وُجِدَت الطبقة بالفعل، ستفشل الأداة.
+            </p>
+            <p>عند الكتابة إلى  ArcGIS Data Store (مخزن بيانات ضخمة للموضع المكاني والزماني أو ارتباطية) باستخدام مربع السهم المنسدل  <b>حفظ النتائج في</b>، يمكن تحديد اسم المجلد في <b>محتواي</b> حيث يتم حفظ النتائج.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

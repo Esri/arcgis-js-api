@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["../../kernel","dijit/_TemplatedMixin","dijit/_WidgetBase","dojo/_base/declare","dojo/_base/lang","dojo/dom-style","dojo/has","dojo/i18n!../../nls/jsapi","dojo/text!./templates/ScalePreview.html"],(function(e,i,s,t,a,o,l,n,r){var d=t([s,i],{declaredClass:"esri.dijit.VisibleScaleRangeSlider.ScalePreview",baseClass:"esriScalePreview",templateString:r,labels:n.widgets.visibleScaleRangeSlider,css:{header:"esriHeader",thumbnail:"esriThumbnail"},source:null,_setSourceAttr:function(e){this.source!==e&&(this._set("source",e),o.set(this.dap_scalePreviewThumbnail,"backgroundImage",e))},backgroundPosition:null,_setBackgroundPositionAttr:function(e){this.backgroundPosition!==e&&(this._set("backgroundPosition",e),o.set(this.dap_scalePreviewThumbnail,"backgroundPosition",e))}});return l("extend-esri")&&a.setObject("dijit.ScalePreview",d,e),d}));

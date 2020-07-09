@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>多次元異常の生成</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="多次元異常の生成"></h2>
+        <hr/>
+    <p>既存の多次元ラスター変数をディメンションに沿って結合することによって、多次元ラスター データセットを生成します。
+    </p>
+    <p>異常は、その標準値、平均値、または中央値からの観測の偏差です。
+    </p>
+    <p>このツールは、多次元ラスター内の 1 つ以上の変数で経時的な異常を計算します。時間ディメンションに加えて非時間ディメンションがある場合、追加のディメンションにおける各ステップで異常が計算されます。
+    </p>
+    <p>たとえば、月次の海洋温度データがあり、最大 100m まで 1m ごとに収集している場合、年平均からの偏差として温度の異常を計算します。このツールは、 <b>[平均値を計算する時間間隔]</b> を <b>[毎年]</b> に設定すると、年平均に基づいて温度の異常を決定し、100 深度ごとの異常値を返します。
+    </p>
+    <p>このツールは、時間ディメンションのある多次元ラスター データセットのみをサポートしています。
+    </p>
+    <p> <b>[現在のマップ範囲を使用]</b> がオンの場合、現在のマップ範囲に表示されるレイヤーの変数 が解析されます。オフの場合、レイヤー全体の変数が、現在のマップ範囲内になくても解析されます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>異常値を生成する多次元イメージ レイヤーの選択</h2></div>
+        <hr/>
+        <div>
+            <p>多次元ラスター データセットの入力画像レイヤー。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>異常値が生成される変数の選択</h2></div>
+        <hr/>
+        <div>
+            <p>異常を計算する変数。変数が指定されない場合、時間ディメンションを含む変数がすべて解析されます。
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>異常値を生成する方法の選択</h2></div>
+        <hr/>
+        <div>
+            <p>異常の計算に使用する方法を指定します。
+                <ul>
+                    <li> <b>平均からの差異</b> - 間隔で定義されたすべてのスライスで、ピクセル値とそのピクセルの平均値の差が計算されます。これがデフォルトです。
+                    </li>
+                    <li> <b>平均からのパーセント差</b> - 間隔で定義されたすべてのスライスで、ピクセル値とそのピクセルの平均値のパーセント差が計算されます。
+                    </li>
+                    <li> <b>平均値の割合</b> - 平均の割合が計算されます。
+                    </li>
+                    <li> <b>Z スコア</b> - 各ピクセルの Z スコアが計算されます。0 の Z スコアは、ピクセルの値が平均値と同一であることを示します。1 の Z スコアは、ピクセルの値の平均値からの標準偏差が 1 であることを示します。Z スコアが 2 の場合、ピクセルの値の平均値からの標準偏差が 2 であることを示します。その後も同様です。
+                    </li>
+                    <li> <b>中央値からの差異</b> - 間隔で定義されたすべてのスライスで、ピクセル値とそのピクセルの数学的中央値の差が計算されます。
+                    </li>
+                    <li> <b>中央値からのパーセント差</b> - 間隔で定義されたすべてのスライスで、ピクセル値とそのピクセルの数学的中央値のパーセント差が計算されます。
+                    </li>
+                    <li> <b>中央値の割合</b> - 数学的中央値の割合が計算されます。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>異常値を計算する数学的手法は、以下のとおりです。平均の定義として平均値または中央値のいずれかを使用して異常を計算できます。データ分布が偏っている場合、平均値は外れ値に大きく影響される可能性があるため、このタイプのデータには、中央値または Z スコアの手法が適している場合があります。
+            </p>
+            <p>
+                <ul>
+                    <li>平均からの差異 = x - &micro;
+
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                                
+
+                            </li>
+                            <li>&micro; = 指定した時間間隔内のそのピクセル値の平均
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>平均からのパーセント差 = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                                
+
+                            </li>
+                            <li>&micro; = 指定した時間間隔内のそのピクセル値の平均
+                                
+
+                            </li>
+                            <li>|x - &micro;| = 値と平均の差の絶対値
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>平均の割合 = x - &micro;
+
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                                
+
+                            </li>
+                            <li>&micro; = 指定した時間間隔内のそのピクセル値の平均
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>中央値からの差異 = x - &szlig;
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                            </li>
+                            <li>&szlig; = 指定した時間間隔内のそのピクセル値の中央値
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>中央値からのパーセント差 = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                            </li>
+                            <li>&szlig; = 指定した時間間隔内のそのピクセル値の中央値
+                            </li>
+                            <li>|x - &szlig;| = 値と中央値の差の絶対値
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>中央値の割合 = x / &szlig;
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                            </li>
+                            <li>&szlig; = 指定した時間間隔内のそのピクセル値の中央値
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z スコア  = (x - &micro;) / S
+                        <ul>
+                            <li>x = スライス内のピクセル値
+                            </li>
+                            <li>&micro; = 指定した時間間隔内のそのピクセル値の平均
+                            </li>
+                            <li>S = 指定した時間間隔内のそのピクセル値の標準偏差
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>平均値を算出する時間間隔の選択</h2></div>
+        <hr/>
+        <div>
+            <p>平均の計算に使用する時間間隔を指定します。
+                <ul>
+                    <li> <b>すべて</b> - ピクセルごとにすべてのスライスで平均を計算します。
+                    </li>
+                    <li> <b>毎年</b> - ピクセルごとに毎年の平均を計算します。
+                    </li>
+                    <li> <b>毎月繰り返し</b> - ピクセルごとに毎月の平均を計算します。
+                    </li>
+                    <li> <b>毎週繰り返し</b> - ピクセルごとに毎週の平均を計算します。
+                    </li>
+                    <li> <b>毎日繰り返し</b> - ピクセルごとに毎日の平均を計算します。
+                    </li>
+                    <li> <b>毎時間</b> - ピクセルごとに毎時間の平均を計算します。
+                    </li>
+                    <li> <b>外部ラスター</b> - ピクセルごとの平均または中央値を含む既存のラスター データセットが参照されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>平均のイメージ レイヤーを参照として選択</h2></div>
+        <hr/>
+        <div>
+            <p>以前に計算したピクセルごとの平均を含む参照ラスター データセットを指定します。異常はこの平均と比較することで計算されます。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>計算時に失われた値を無視する</h2></div>
+        <hr/>
+        <div>
+            <p>解析で失われた値を無視するかどうかを指定します。
+                <ul>
+                    <li>オン - 解析は、特定のディメンションに沿って有効なすべてのピクセルを含め、すべての NoData 値のピクセルを無視します。これがデフォルトです。
+                    </li>
+                    <li>オフ - 特定のディメンションに沿って NoData 値のピクセルが存在する場合、解析結果が NoData になります。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤー名</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

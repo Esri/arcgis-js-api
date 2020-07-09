@@ -102,7 +102,7 @@ the area, but other statistics can be calculated  as well.
             </p>
             <p>An equation like  <code>$feature.windspeed * 1000</code> would apply a buffer of 1,000 multiplied by the field <i>windspeed</i>. You may use more than one field in the buffer calculator.
             </p>
-            <p> You can also specify a track aware expression. For example, you could calculate the sum of field value <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
+            <p> You can also specify a track-aware expression. For example, you could calculate the sum of field value <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
             </p>
         </div>
     </div>
@@ -171,6 +171,10 @@ the area, but other statistics can be calculated  as well.
                     </li>
                     <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
                     </li>
+                    <li>First&mdash;The first value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [1,5,10,20], the first value is 1.
+                    </li>
+                    <li>Last&mdash;The last value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [1,5,10,20], the last value is 20.
+                    </li>
                 </ul>
                 
             </p>
@@ -180,8 +184,12 @@ the area, but other statistics can be calculated  as well.
                     </li>
                     <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
+                    <li>First&mdash;The first value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [Toronto,Guelph,Squamish,Montreal,Halifax, Redlands,Boston], the first value is Toronto.
+                    </li>
+                    <li>Last&mdash;The last value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [Toronto,Guelph,Squamish,Montreal,Halifax, Redlands,Boston], the first value is Boston.
+                    </li>
                 </ul>
-                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
             </p>
         </div>
     </div>

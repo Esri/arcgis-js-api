@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Encontrar Estatísticas de Argumentos</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Encontrar Estat&iacute;sticas de Argumentos"></h2>
+        <hr/>
+    <p>Extrai o valor de dimens&atilde;o ou &iacute;ndice de faixa na qual uma determinada estat&iacute;stica &eacute; obtida para cada p&iacute;xel num raster multidimensional ou multifaixa
+    </p>
+    <p>Utilize esta ferramenta para extrair o valor da dimens&atilde;o (por exemplo, a data, a altura ou profundidade) em que uma estat&iacute;stica espec&iacute;fica &eacute; alcan&ccedil;ada na pilha de rasters num conjunto de dados raster multidimensional. Alternativamente, encontre o n&uacute;mero da banda em que a estat&iacute;stica &eacute; alcan&ccedil;ada num raster multibanda.
+    </p>
+    <p>Por exemplo, pode querer saber o m&ecirc;s em que cada p&iacute;xel atingiu a maior temperatura da superf&iacute;cie do mar  30 anos de recolha de dados Outro exemplo &eacute; quando tem uma imagem de dete&ccedil;&atilde;o remota de oito bandas e pretende saber a banda em que o valor m&iacute;nimo de reflex&atilde;o foi alcan&ccedil;ado para cada p&iacute;xel.
+    </p>
+    <p>Se a op&ccedil;&atilde;o  <b>Utilizar a extens&atilde;o do mapa atual</b> estiver marcada, ser&atilde;o analisadas as vari&aacute;veis ou bandas da camada que se encontrem vis&iacute;veis na extens&atilde;o do mapa atual. Se estiver desmarcada, ser&atilde;o analisadas as vari&aacute;veis ou bandas de toda a camada, mesmo que estejam fora da extens&atilde;o do mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Escolher a camada de imagens multidimensional ou multibanda a analisar</h2></div>
+        <hr/>
+        <div>
+            <p>A entrada raster multidimensional ou multibanda a analisar.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Escolher a dimensão a partir da qual a estatística será extraída</h2></div>
+        <hr/>
+        <div>
+            <p>A dimens&atilde;o a partir da qual a estat&iacute;stica ser&aacute; extra&iacute;da. Se o raster de entrada n&atilde;o &eacute; um raster multidimensional, este par&acirc;metro n&atilde;o &eacute; necess&aacute;rio.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Escolha as variávelis a analisar</h2></div>
+        <hr/>
+        <div>
+            <p>A vari&aacute;vel ou vari&aacute;veis a analisar. Se o raster de entrada n&atilde;o &eacute; multidimensional, os valores de p&iacute;xel do raster multibanda s&atilde;o considerados como a vari&aacute;vel. Se  raster de entrada multidimensional e  vari&aacute;vel, todas as vari&aacute;veis com a dimens&atilde;o selecionada ser&atilde;o analisadas.
+            </p>
+            <p>Por exemplo, para encontrar os anos em que os valores de temperatura foram mais elevados, especificar a temperatura como a vari&aacute;vel a analisar. Se n&atilde;o especificar quaisquer vari&aacute;veis e dispuser de vari&aacute;veis de temperaturas e precipita&ccedil;&atilde;o, ambas as vari&aacute;veis ser&atilde;o analisadas e o raster multidimensional de sa&iacute;da incluir&aacute; ambas as vari&aacute;veis.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Escolher tipo de estatística</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica a estat&iacute;stica a extrair da vari&aacute;vel ou vari&aacute;veis ao longo d dimens&atilde;o. 
+            </p>
+            <ul>
+                <li> <b>Argumento do m&iacute;nimo</b> &mdash; O valor da dimens&atilde;o ao qual o valor da vari&aacute;vel m&iacute;nima &eacute; atingido ser&aacute; extra&iacute;do. Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li> <b>Argumento do m&aacute;ximo</b> &mdash; O valor da dimens&atilde;o ao qual o valor da vari&aacute;vel m&aacute;xima &eacute; atingido ser&aacute; extra&iacute;do.
+                </li>
+                <li> <b>Argumento da mediana</b> &mdash; O valor da dimens&atilde;o ao qual o valor da vari&aacute;vel mediana &eacute; atingido ser&aacute; extra&iacute;do.
+                </li>
+                <li> <b>Argumento da dura&ccedil;&atilde;o</b> &mdash; A dura&ccedil;&atilde;o da dimens&atilde;o mais longa para a qual os valores das vari&aacute;veis se situam entre os valores m&aacute;ximo e m&iacute;nimo.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Especificar o valor de ocorrência múltipla</h2></div>
+        <hr/>
+        <div>
+            <p>O valor de p&iacute;xel a usar para indicar que um determinad  foi  mais de uma vez no conjunto de dados raster de entrada. Se n&atilde;o for especificado, o valor do p&iacute;xel ser&aacute; o valor da dimens&atilde;o da primeira vez que .
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Especificar o valor mínimo</h2></div>
+        <hr/>
+        <div>
+            <p>O valor da vari&aacute;vel m&iacute;nimo a usar para extrair a dura&ccedil;&atilde;o.
+            </p>
+            <p>Este par&acirc;metro &eacute; necess&aacute;rio quando  <b>Dura&ccedil;&atilde;o</b> &eacute; selecionada como o tipo de estat&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Especificar o valor máximo</h2></div>
+        <hr/>
+        <div>
+            <p>O valor da vari&aacute;vel m&aacute;ximo a usar para extrair a dura&ccedil;&atilde;o.
+            </p>
+            <p>Este passo &eacute; necess&aacute;rio quando  <b>Dura&ccedil;&atilde;o</b> &eacute; selecionada como o tipo de estat&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Escolher definição da dimensão</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica como a estat&iacute;stica ser&aacute; extra&iacute;da da dimens&atilde;o. 
+                <ul>
+                    <li> <b>Todos</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da em todas as dimens&otilde;es. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li> <b>Palavra-chave de Intervalo</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da da dimens&atilde;o de tempo consoante a palavra-chave de intervalo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Escolher um intervalo de palavras-chave</h2></div>
+        <hr/>
+        <div>
+            <p>A unidade de tempo para a qual a estat&iacute;stica ser&aacute; extra&iacute;da.
+            </p>
+            <p>Por exemplo, tem cinco anos de dados de temperatura di&aacute;ria da superf&iacute;cie do mar e pretende saber o ano em que foi observada a temperatura m&aacute;xima. Defina  <b>Argumento do m&aacute;ximo</b> como tipo de estat&iacute;stica, defina <b>Palavra-chave de Intervalo</b> como defini&ccedil;&atilde;o da dimens&atilde;o, e defina <b>Anualmente</b> como intervalo da palavra-chave neste passo.
+            </p>
+            <p>Alternativamente, se pretender saber o m&ecirc;s em que foi observada de forma consistente a temperatura m&aacute;xima, defina  <b>Argumento do m&aacute;ximo</b> como tipo de estat&iacute;stica, defina <b>Palavra-chave do Intervalo</b> como defini&ccedil;&atilde;o da dimens&atilde;o, e defina <b>Mensalmente Recorrente</b> como intervalo da palavra-chave neste passo. Isto ir&aacute; gerar um raster em que cada p&iacute;xel cont&eacute;m o m&ecirc;s no qual a estat&iacute;stica foi  em todo o registo de cinco anos (//2018, //2016, 0/0/2013, por exemplo).
+            </p>
+            <p>Este passo &eacute; necess&aacute;rio quando  <b>StdTime</b> est&aacute; definido como a dimens&atilde;o a partir da qual a estat&iacute;stica ser&aacute; extra&iacute;da, e <b>Palavra-chave de Intervalo</b> &eacute; selecionado para definir como a estat&iacute;stica ser&aacute; extra&iacute;da da dimens&atilde;o.
+                <ul>
+                    <li> <b>Diariamente Recorrente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da ao longo dos dias.
+                    </li>
+                    <li> <b>Semanalmente Recorrente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da ao longo das semanas.
+                    </li>
+                    <li> <b>Mensalmente Recorrente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da ao longo dos meses.
+                    </li>
+                    <li> <b>Trimestralmente Recorrente</b> &mdash;  A estat&iacute;stica ser&aacute; extra&iacute;da ao longo dos trimestres.
+                    </li>
+                    <li> <b>De hora a hora</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para a hora em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                    <li> <b>Diariamente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para o dia em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                    <li> <b>Semanalmente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para a semana em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                    <li> <b>Mensalmente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para o m&ecirc;s em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                    <li> <b>Trimestralmente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para o trimestre em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                    <li> <b>Anualmente</b> &mdash; A estat&iacute;stica ser&aacute; extra&iacute;da para o ano em que a estat&iacute;stica foi alcan&ccedil;ada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar valores em falta no cálculo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se os valores em falta s&atilde;o ou n&atilde;o ignorados na an&aacute;lise.
+                <ul>
+                    <li>Se a caixa estiver marcada, a an&aacute;lise ir&aacute; incluir todos os p&iacute;xeis v&aacute;lidos ao longo de uma determinada dimens&atilde;o e ignorar quaisquer p&iacute;xeis NoData. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li>Se a caixa estiver desmarcada, a an&aacute;lise resultar&aacute; em NoData se existirem valores NoData para os p&iacute;xeis ao longo de uma determinada dimens&atilde;o.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

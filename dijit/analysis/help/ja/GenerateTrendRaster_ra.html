@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>トレンド ラスターの生成 (Generate Trend Raster)</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="トレンド ラスターの生成 (Generate Trend Raster)"></h2>
+        <hr/>
+    <p>多次元ラスターの 1 つまたは複数の変数のディメンションに沿って各ピクセルのトレンドを推定します。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>トレンドを解析する多次元画像レイヤーの選択</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>解析される多次元ラスターの入力画像レイヤー。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>変数トレンドが解析される際に沿うディメンションの選択</h2></div>
+        <hr/>
+        <div>
+            <p>このディメンションに沿って、解析で選択された変数に対してトレンドが抽出されます。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>トレンドを解析する変数の選択</h2></div>
+        <hr/>
+        <div>
+            <p>トレンドを計算する変数。変数が指定されない場合、多次元ラスターの最初の変数が解析されます。
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>ディメンションに沿って変数値をフィッティングさせるためのラインのタイプの選択</h2></div>
+        <hr/>
+        <div>
+            <p>ディメンションに沿ったピクセル値へのフィッティングに使用するラインのタイプを指定します。
+                <ul>
+                    <li> <b>線形</b> - 線形トレンド ラインに沿って変数のピクセル値がフィッティングされます。これがデフォルトです。
+                    </li>
+                    <li> <b>多項式</b> - 2 次多項式トレンド ラインに沿って変数のピクセル値がフィッティングされます。
+                    </li>
+                    <li> <b>高調波</b> - 調和トレンド ラインに沿って変数のピクセル値がフィッティングされます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>調和周期の長さの指定</h2></div>
+        <hr/>
+        <div>
+            <p>モデル化する周期変動の長さ。このパラメーターは、トレンド ライン タイプが  <b>[高調波]</b> に設定されている場合に必須です。たとえば、葉の緑度には 1 年に 1 回の強い変動サイクルが存在することが多いため、サイクル長は 1 年になります。1 時間ごとの温度データには、1 日に 1 回の強い変動サイクルが存在するため、サイクル長は 1 日になります。
+            </p>
+            <p>1 年のサイクルで変化するデータのデフォルト長は 1 年です。
+            </p>
+            <p>このパラメーターは、解析対象のディメンションが時間で、トレンド ラインのタイプが  <b>[高調波]</b> に設定されている場合にのみ、トレンド解析に含まれます。
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>調和周期の長さの時間単位の選択</h2></div>
+        <hr/>
+        <div>
+            <p>調和周期の長さに使用される時間単位を指定します。
+                <ul>
+                    <li> <b>日</b> - 調和周期の長さの単位は日です。
+                    </li>
+                    <li> <b>年</b> - 調和周期の長さの単位は年です。これがデフォルトです。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>このパラメーターは、解析対象のディメンションが時間で、トレンド ラインのタイプが  <b>[高調波]</b> に設定されている場合にのみ、トレンド解析に含まれます。
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>調和トレンド フィッティングで使用する頻度の指定</h2></div>
+        <hr/>
+        <div>
+            <p>調和トレンド フィッティングで使用する頻度。このパラメーターは 1 年間の周期頻度を指定します。
+            </p>
+            <p>デフォルト値は 1、つまり 1 年ごとに 1 つの調和周期です。
+            </p>
+            <p>このパラメーターは、解析対象のディメンションが時間である場合にのみ、トレンド解析に含まれます。
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>トレンド フィッティングで使用する多項式の次数の指定</h2></div>
+        <hr/>
+        <div>
+            <p>多項式トレンド フィッティングで使用する多項式の次数。
+            </p>
+            <p>このパラメーターは、解析対象のディメンションが時間である場合にのみ、トレンド解析に含まれます。
+            </p>
+            <p>デフォルト値は 2、つまり 2 次多項式です。
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>トレンド ラスターに含めるモデル統計の選択</h2></div>
+        <hr/>
+        <div>
+            <p>このツールには、トレンド フィット ラインの統計のタイプとして、二乗平均平方根誤差 (RMSE)、R2 適合度統計 (R2)、傾斜係数の P 値統計 (傾斜係数の P 値) の 3 つがあります。各統計には、計算が行われ、出力トレンド ラスターの複数のバンドの 1 つとして含められるかどうかを指定するためのチェックボックスがあります。
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>オン - RMSE が計算され、出力トレンド ラスターの複数のバンドの 1 つとして含められます。これがデフォルトです。
+                            </li>
+                            <li>オフ - RMSE は計算されません。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>相関係数の二乗
+                        </p>
+                        <ul>
+                            <li>オン - R2 値が計算され、出力トレンド ラスターの複数のバンドの 1 つとして含められます。
+                            </li>
+                            <li>オフ - R2 値は計算されません。これがデフォルトです。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>傾斜係数の P 値
+                        </p>
+                        <ul>
+                            <li>オン - P 値が計算され、出力トレンド ラスターの複数のバンドの 1 つとして含められます。
+                            </li>
+                            <li>オフ - P 値は計算されません。これがデフォルトです。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>計算時に失われた値を無視する</h2></div>
+        <hr/>
+        <div>
+            <p>解析で失われた値を無視するかどうかを指定します。
+                <ul>
+                    <li>オン - 解析は、特定のディメンションに沿って有効なすべてのピクセルを含め、すべての NoData 値のピクセルを無視します。これがデフォルトです。
+                    </li>
+                    <li>オフ - 特定のディメンションに沿って NoData 値のピクセルが存在する場合、解析結果が NoData になります。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤー名</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

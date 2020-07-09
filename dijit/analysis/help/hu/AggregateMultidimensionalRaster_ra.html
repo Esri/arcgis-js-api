@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Többdimenziós raszter összevonása</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="T&ouml;bbdimenzi&oacute;s raszter &ouml;sszevon&aacute;sa"></h2>
+        <hr/>
+    <p>Egy t&ouml;bbdimenzi&oacute;s raszteres adathalmazt hoz l&eacute;tre megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszteres v&aacute;ltoz&oacute;k kombin&aacute;l&aacute;s&aacute;val adott dimenzi&oacute; ment&eacute;n.
+    </p>
+    <p>Ha 30 &eacute;vnyi, havonta &eacute;s 100 m&eacute;ter m&eacute;lys&eacute;gig 5 m&eacute;terenk&eacute;nt gyűjt&ouml;tt tengerfelsz&iacute;ni hőm&eacute;rs&eacute;kleti adattal rendelkezik, akkor p&eacute;ld&aacute;ul a k&ouml;vetkezőket teheti:
+        <ul>
+            <li>&Ouml;sszevonhatja a havi hőm&eacute;rs&eacute;kleti adatokat &eacute;ves adatokk&aacute;.
+            </li>
+            <li>&Ouml;sszevonhatja a havi hőm&eacute;rs&eacute;kleti adatokat 4 h&oacute;napos intervallumokba.
+            </li>
+            <li>&Ouml;sszevonhatja a hőm&eacute;rs&eacute;kleti adatokat 0 &eacute;s 25 m&eacute;ter, 25 &eacute;s 50 m&eacute;ter, majd 50 &eacute;s 100 m&eacute;ter k&ouml;z&ouml;tt.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Többdimenziós réteg kiválasztása az összevonáshoz</h2></div>
+        <hr/>
+        <div>
+            <p>Az &ouml;sszevonni k&iacute;v&aacute;nt t&ouml;bbdimenzi&oacute;s raszter bemeneti r&eacute;tege.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Összevonáshoz használt dimenzió kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az &ouml;sszevon&aacute;s dimenzi&oacute;ja. Ez az a dimenzi&oacute;, amely ment&eacute;n a v&aacute;ltoz&oacute;k &ouml;ssze lesznek vonva.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Összevonni kívánt változó(k) kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A v&aacute;ltoz&oacute; vagy v&aacute;ltoz&oacute;k, amelyek &ouml;ssze lesznek vonva az adott dimenzi&oacute; ment&eacute;n. Ha nincs megadva v&aacute;ltoz&oacute;, az alkalmaz&aacute;s a kiv&aacute;lasztott dimenzi&oacute;val rendelkező &ouml;sszes v&aacute;ltoz&oacute;t &ouml;sszevonja.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul a napi hőm&eacute;rs&eacute;kleti adatokat szeretn&eacute; havi &aacute;tlag&eacute;rt&eacute;kekk&eacute; &ouml;sszevonni, akkor a hőm&eacute;rs&eacute;kletet adja meg &ouml;sszevonni k&iacute;v&aacute;nt v&aacute;ltoz&oacute;k&eacute;nt. Ha nem ad meg egyetlen v&aacute;ltoz&oacute;t sem, &eacute;s napi hőm&eacute;rs&eacute;kleti &eacute;s napi csapad&eacute;kv&aacute;ltoz&oacute;kkal is rendelkezik, az alkalmaz&aacute;s mindk&eacute;t v&aacute;ltoz&oacute;t &ouml;sszevonja havi &aacute;tlagokk&aacute;, &eacute;s a kimeneti t&ouml;bbdimenzi&oacute;s raszter mindk&eacute;t v&aacute;ltoz&oacute;t tartalmazni fogja.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Összevonási módszer kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Ezzel adhat&oacute; meg egy intervallumban az &ouml;sszevont szeletek egyes&iacute;t&eacute;s&eacute;hez haszn&aacute;lt matematikai m&oacute;dszer. 
+                <ul>
+                    <li> <b>&Aacute;tlag</b> &ndash; Egy pixel &eacute;rt&eacute;keinek &aacute;tlag&aacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Maximum</b> &ndash; Egy pixel legnagyobb &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Maximum</b> &ndash; Egy pixel legnagyobb &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Maximum</b> &ndash; Egy pixel legnagyobb &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Kisebbs&eacute;g</b> &ndash; Egy pixel legritk&aacute;bban előfordul&oacute; &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Medi&aacute;n</b> &ndash; Egy pixel medi&aacute;n &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Tartom&aacute;ny</b> &ndash; Egy pixel &eacute;rt&eacute;keinek terjedelm&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Sz&oacute;r&aacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;keinek sz&oacute;r&aacute;s&aacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>&Ouml;sszeg</b> &ndash; Egy pixel &eacute;rt&eacute;keinek &ouml;sszeg&eacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Sokf&eacute;les&eacute;g</b> &ndash; Egy pixel egyedi &eacute;rt&eacute;keinek sz&aacute;m&aacute;t sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten az intervallumon bel&uuml;l.
+                    </li>
+                    <li> <b>Egy&eacute;ni</b> &ndash; Egy pixel &eacute;rt&eacute;k&eacute;t sz&aacute;m&iacute;tja ki egy&eacute;ni raszterf&uuml;ggv&eacute;ny alapj&aacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Raszterfüggvénysablon kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az &ouml;sszevont raszterek pixel&eacute;rt&eacute;keinek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt egy&eacute;ni raszterf&uuml;ggv&eacute;ny. A bemenet egy raszterf&uuml;ggv&eacute;nysablon elem a port&aacute;lon. Ennek a bemenetnek a megad&aacute;sa k&ouml;telező, amikor az  <b>&Ouml;sszevon&aacute;si m&oacute;dszer</b> be&aacute;ll&iacute;t&aacute;sa <b>Egy&eacute;ni</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Összevonási definíció kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az adatok &ouml;sszevon&aacute;s&aacute;hoz haszn&aacute;lt dimenzi&oacute;intervallum v&aacute;laszthat&oacute; ki. 
+                <ul>
+                    <li> <b>Mind</b> &ndash; Az adat&eacute;rt&eacute;kek &ouml;ssze lesznek vonva az &ouml;sszes szeleten. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Intervallumkulcsz&oacute;</b> &ndash; A v&aacute;ltoz&oacute;adatok k&ouml;ztudott intervallumot haszn&aacute;lva lesznek &ouml;sszevonva.
+                    </li>
+                    <li> <b>Intervallum&eacute;rt&eacute;k</b> &ndash; A v&aacute;ltoz&oacute;adatok felhaszn&aacute;l&oacute; &aacute;ltal megadott intervallumot &eacute;s m&eacute;rt&eacute;kegys&eacute;get haszn&aacute;lva lesznek &ouml;sszevonva.
+                    </li>
+                    <li> <b>Intervallumtartom&aacute;nyok</b> &ndash; A v&aacute;ltoz&oacute;adatok megadott &eacute;rt&eacute;kp&aacute;rok vagy d&aacute;tumok k&ouml;z&ouml;tt lesznek &ouml;sszevonva.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Kulcsszóintervallum kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Ezzel adhat&oacute; meg a dimenzi&oacute; ment&eacute;n t&ouml;rt&eacute;nő &ouml;sszevon&aacute;s sor&aacute;n haszn&aacute;lt kulcssz&oacute;intervallum. Ennek a bemenetnek a megad&aacute;sa k&ouml;telező, amikor az  <b>&Ouml;sszevon&aacute;si defin&iacute;ci&oacute;</b> be&aacute;ll&iacute;t&aacute;sa <b>Intervallumkulcssz&oacute;</b>, &eacute;s az &ouml;sszevon&aacute;snak időben kell t&ouml;rt&eacute;nnie.
+                <ul>
+                    <li> <b>&Oacute;r&aacute;nk&eacute;nti</b> &ndash; Az adat&eacute;rt&eacute;kek &oacute;r&aacute;nk&eacute;nti idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden &oacute;r&aacute;t tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>Napi</b> &ndash; Az adat&eacute;rt&eacute;kek napi idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden napot tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>Heti</b> &ndash; Az adat&eacute;rt&eacute;kek heti idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden hetet tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>Havi</b> &ndash; Az adat&eacute;rt&eacute;kek havi idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden h&oacute;napot tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>Negyed&eacute;ves</b> &ndash; Az adat&eacute;rt&eacute;kek negyed&eacute;ves idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden negyed&eacute;vet tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>&Eacute;ves</b> &ndash; Az adat&eacute;rt&eacute;kek &eacute;ves idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny minden &eacute;vet tartalmazni fog az idősorban.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő napi</b> &ndash; Az adat&eacute;rt&eacute;kek napi idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny egy-egy &ouml;sszevont &eacute;rt&eacute;ket fog tartalmazni a Juli&aacute;n-d&aacute;tum alapj&aacute;n. A kimenet legfeljebb 366 napi időszeletet fog tartalmazni.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő heti</b> &ndash; Az adat&eacute;rt&eacute;kek heti idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny hetente egy &ouml;sszevont &eacute;rt&eacute;ket fog tartalmazni. A kimenet legfeljebb 53 heti időszeletet fog tartalmazni.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő havi</b> &ndash; Az adat&eacute;rt&eacute;kek heti idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny havonta egy &ouml;sszevont &eacute;rt&eacute;ket fog tartalmazni. A kimenet legfeljebb 12 havi időszeletet fog tartalmazni.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő negyed&eacute;ves</b> &ndash; Az adat&eacute;rt&eacute;kek heti idől&eacute;p&eacute;sekbe lesznek &ouml;sszevonva, &eacute;s az eredm&eacute;ny negyed&eacute;vente egy &ouml;sszevont &eacute;rt&eacute;ket fog tartalmazni. A kimenet legfeljebb 4 negyed&eacute;ves időszeletet fog tartalmazni.
+                    </li>
+                    <li> <b>T&iacute;znapos</b> &ndash; Az adat&eacute;rt&eacute;kek 3 darab 10 napos peri&oacute;dusba lesznek &ouml;sszevonva. Az utols&oacute; peri&oacute;dus 10 napn&aacute;l t&ouml;bbet &eacute;s kevesebbet is tartalmazhat. A kimenet 3 időszeletet fog tartalmazni mindegyik h&oacute;naphoz.
+                    </li>
+                    <li> <b>&Ouml;tnapos</b> &ndash; Az adat&eacute;rt&eacute;kek 6 darab 5 napos peri&oacute;dusba lesznek &ouml;sszevonva. Az utols&oacute; peri&oacute;dus 5 napn&aacute;l t&ouml;bbet &eacute;s kevesebbet is tartalmazhat. A kimenet 6 időszeletet fog tartalmazni mindegyik h&oacute;naphoz.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Értékintervallum</h2></div>
+        <hr/>
+        <div>
+            <p>Az &ouml;sszevon&aacute;shoz haszn&aacute;lt intervallum m&eacute;rete. Ennek a param&eacute;ternek a megad&aacute;sa k&ouml;telező, amikor az  <b>&Ouml;sszevon&aacute;si defin&iacute;ci&oacute;</b> param&eacute;ter be&aacute;ll&iacute;t&aacute;sa <b>Intervallum&eacute;rt&eacute;k</b>.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul 30 &eacute;vnyi havi hőm&eacute;rs&eacute;kleti adatot szeretne &ouml;sszevonni 5 &eacute;ves l&eacute;p&eacute;sekben, adjon meg 5-&ouml;t az  <b>&Eacute;rt&eacute;kintervallum</b> param&eacute;ter &eacute;rt&eacute;kek&eacute;nt, &eacute;s a <b>M&eacute;rt&eacute;kegys&eacute;g</b> param&eacute;tert &aacute;ll&iacute;tsa az <b>&Eacute;v</b> lehetős&eacute;gre.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Mértékegység</h2></div>
+        <hr/>
+        <div>
+            <p>Az intervallum&eacute;rt&eacute;khez haszn&aacute;lt m&eacute;rt&eacute;kegys&eacute;g. Ennek a bemenetnek a megad&aacute;sa k&ouml;telező, amikor a  <b>Dimenzi&oacute;</b> időmező, &eacute;s az <b>&Ouml;sszevon&aacute;si defin&iacute;ci&oacute;</b> be&aacute;ll&iacute;t&aacute;sa <b>Intervallum&eacute;rt&eacute;k</b>.
+            </p>
+            <p>Ha az időtől elt&eacute;rő dimenzi&oacute; ment&eacute;n von &ouml;ssze adatokat, ez a be&aacute;ll&iacute;t&aacute;s nem lesz el&eacute;rhető, &eacute;s az intervallum&eacute;rt&eacute;k m&eacute;rt&eacute;kegys&eacute;ge meg fog egyezni a bemeneti t&ouml;bbdimenzi&oacute;s raszteres adat v&aacute;ltoz&oacute;j&aacute;nak m&eacute;rt&eacute;kegys&eacute;g&eacute;vel. 
+                <ul>
+                    <li> <b>&Oacute;ra</b> &ndash; Az adat&eacute;rt&eacute;kek &oacute;r&aacute;nk&eacute;nti időszeletekbe lesznek &ouml;sszevonva a megadott intervallumon.
+                    </li>
+                    <li> <b>Nap</b> &ndash; Az adat&eacute;rt&eacute;kek napi időszeletekbe lesznek &ouml;sszevonva a megadott intervallumon.
+                    </li>
+                    <li> <b>H&eacute;t</b> &ndash; Az adat&eacute;rt&eacute;kek heti időszeletekbe lesznek &ouml;sszevonva a megadott intervallumon.
+                    </li>
+                    <li> <b>H&oacute;nap</b> &ndash; Az adat&eacute;rt&eacute;kek havi időszeletekbe lesznek &ouml;sszevonva a megadott intervallumon.
+                    </li>
+                    <li> <b>&Eacute;v</b> &ndash; Az adat&eacute;rt&eacute;kek &eacute;ves időszeletekbe lesznek &ouml;sszevonva a megadott intervallumon.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Tartományok meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>Az alkalmaz&aacute;s intervallumtartom&aacute;nyokat fog haszn&aacute;lni &eacute;rt&eacute;kek csoportjainak &ouml;sszevon&aacute;s&aacute;hoz. Ezek minimum &eacute;s maximum tartom&aacute;ny&eacute;rt&eacute;kp&aacute;rokb&oacute;l &aacute;llnak, &eacute;s double vagy d&aacute;tum t&iacute;pus&uacute; adatok. Ennek a bemenetnek a megad&aacute;sa k&ouml;telező, amikor az  <b>&Ouml;sszevon&aacute;si defin&iacute;ci&oacute;</b> be&aacute;ll&iacute;t&aacute;sa <b>Intervallumtartom&aacute;nyok</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hiányzó értékek figyelmen kívül hagyása a számításban</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben. 
+                <ul>
+                    <li>Bejel&ouml;lve &ndash; az elemz&eacute;s tartalmazni fogja az &ouml;sszes &eacute;rv&eacute;nyes pixelt egy adott dimenzi&oacute; ment&eacute;n, &eacute;s figyelmen k&iacute;v&uuml;l fogja hagyni a NoData pixeleket. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; Az elemz&eacute;s eredm&eacute;nye NoData lesz, ha a pixel b&aacute;rmelyik &eacute;rt&eacute;ke NoData a megadott dimenzi&oacute; ment&eacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

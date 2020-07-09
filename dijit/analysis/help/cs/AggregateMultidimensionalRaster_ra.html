@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregovat vícerozměrný rastr (Aggregate Multidimensional Raster)</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregovat v&iacute;cerozměrn&yacute; rastr"></h2>
+        <hr/>
+    <p>Vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru kombinac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru a rozměru.
+    </p>
+    <p>Pokud m&aacute;te data o teplotě mořsk&eacute; hladiny za 30 let, kter&aacute; byla sb&iacute;r&aacute;na měs&iacute;čně, v hloubce každ&yacute;ch 5 metrů až do 100 metrů, př&iacute;klady aplikac&iacute; jsou n&aacute;sleduj&iacute;c&iacute;:
+        <ul>
+            <li>Agregovat data o měs&iacute;čn&iacute; teplotě do ročn&iacute;ch dat.
+            </li>
+            <li>Agregovat data o měs&iacute;čn&iacute; teplotě do čtyřměs&iacute;čn&iacute;ch dat.
+            </li>
+            <li>Agregovat data o teplotě v hloubk&aacute;ch od 0 do 25 metrů, pot&eacute; od 25 do 50 metrů a pak od 50 do 100 metrů.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vyberte vrstvu vícerozměrných obrazových dat, kterou chcete agregovat.</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; vrstva sn&iacute;mků v&iacute;cerozměrn&eacute;ho rastru, kter&yacute; bude agregov&aacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vyberte rozměr, podle kterého má proběhnout agregace.</h2></div>
+        <hr/>
+        <div>
+            <p>Rozměr agregace. Rozměr, ve kter&eacute;m budou proměnn&eacute; agregov&aacute;ny.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vyberte proměnné, které mají být agregovány.</h2></div>
+        <hr/>
+        <div>
+            <p>Proměnn&aacute; nebo proměnn&eacute;, kter&eacute; budou agregov&aacute;ny v dan&eacute; k&oacute;tě. Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, budou agregov&aacute;ny v&scaron;echny proměnn&eacute; s vybranou k&oacute;tou.
+            </p>
+            <p>Chcete-li např&iacute;klad agregovat va&scaron;e denn&iacute; data o teplotě do průměrn&yacute;ch měs&iacute;čn&iacute;ch hodnot, zadejte teplotu jako proměnnou, kter&aacute; se m&aacute; agregovat. Pokud nezad&aacute;te ž&aacute;dn&eacute; proměnn&eacute; a m&aacute;te proměnn&eacute; denn&iacute; teploty i denn&iacute; sr&aacute;žky, budou obě proměnn&eacute; agregov&aacute;ny do měs&iacute;čn&iacute;ch průměrů a v&yacute;stupn&iacute; v&iacute;cerozměrn&yacute; rastr bude zahrnovat obě proměnn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Zvolte metodu agregace</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje matematickou metodu, kter&aacute; bude použita ke kombinov&aacute;n&iacute; agregovan&yacute;ch řezů v intervalu. 
+                <ul>
+                    <li> <b>Průměr</b>&mdash;Vypoč&iacute;t&aacute; průměr hodnot pixelů např&iacute;č v&scaron;emi řezy v intervalu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Maximum</b>&mdash;Vypoč&iacute;t&aacute; maxim&aacute;ln&iacute; hodnotu pixelu např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Vět&scaron;ina</b>&mdash;Vypoč&iacute;t&aacute; hodnotu, kter&aacute; se pro pixel např&iacute;č v&scaron;emi řezy objevuje nejv&iacute;ce.
+                    </li>
+                    <li> <b>Minimum</b>&mdash;Vypoč&iacute;t&aacute; minim&aacute;ln&iacute; hodnotu pixelu např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Men&scaron;ina</b>&mdash;Vypoč&iacute;t&aacute; hodnotu, kter&aacute; se pro pixel např&iacute;č v&scaron;emi řezy objevuje nejm&eacute;ně.
+                    </li>
+                    <li> <b>Medi&aacute;n</b>&mdash;Vypoč&iacute;t&aacute; hodnotu medi&aacute;nu pixelů např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Rozsah</b>&mdash;Vypoč&iacute;t&aacute; rozsah hodnot pro pixely např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Směrodatn&aacute; odchylka</b>&mdash;Vypoč&iacute;t&aacute; směrodatnou odchylku hodnot pixelů např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Součet</b>&mdash;Vypoč&iacute;t&aacute; součet hodnot pixelů např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Varieta</b>&mdash;Vypoč&iacute;t&aacute; počet unik&aacute;tn&iacute;ch hodnot pixelu např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Vlastn&iacute;</b>&mdash;Vypoč&iacute;t&aacute; hodnotu pixelu na z&aacute;kladě vlastn&iacute; funkce rastru.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Vyberte šablonu rastrové funkce</h2></div>
+        <hr/>
+        <div>
+            <p>Vlastn&iacute; funkce rastru, kter&aacute; bude použita pro v&yacute;počet hodnot pixelů agregovan&yacute;ch rastrů. Vstupem je položka &scaron;ablony rastrov&eacute; funkce v port&aacute;lu. Tento vstup je vyžadov&aacute;n, pokud je  <b>Metoda agregace</b> nastavena na <b>Vlastn&iacute;</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Zvolte definici agregace</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje interval rozměru, pro kter&yacute; budou data agregov&aacute;na. 
+                <ul>
+                    <li> <b>V&scaron;e</b>&mdash;Hodnoty dat budou agregov&aacute;ny do v&scaron;ech řezů. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Interval kl&iacute;čov&yacute;ch slov</b>--Data proměnn&yacute;ch budou agregov&aacute;na pomoc&iacute; běžně zn&aacute;m&eacute;ho intervalu.
+                    </li>
+                    <li> <b>Hodnoty intervalu</b>&mdash;Data proměnn&yacute;ch budou agregov&aacute;na pomoc&iacute; intervalu a jednotky zadan&eacute; uživatelem.
+                    </li>
+                    <li> <b>Rozsahy intervalu</b>&mdash;Proměnn&aacute; data budou agregov&aacute;na mezi stanoven&yacute;mi p&aacute;ry hodnot nebo dat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Zvolte klíčové slovo intervalu</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje interval kl&iacute;čov&yacute;ch slov, kter&yacute; se použije při agregaci dle rozměru. Tento vstup je vyžadov&aacute;n, pokud  <b>Definice agregace</b> je nastavena na <b>Interval kl&iacute;čov&yacute;ch slov</b> a agregace mus&iacute; prob&iacute;hat v čase.
+                <ul>
+                    <li> <b>Každou hodinu</b>&mdash;Hodnoty dat budou agregov&aacute;ny do hodinov&yacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každou hodinu v časov&eacute; řadě.
+                    </li>
+                    <li> <b>Denně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každ&yacute; den v časov&eacute; řadě.
+                    </li>
+                    <li> <b>T&yacute;dně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do t&yacute;denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každ&yacute; t&yacute;den v časov&eacute; řadě.
+                    </li>
+                    <li> <b>Měs&iacute;čně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do měs&iacute;čn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každ&yacute; měs&iacute;c v časov&eacute; řadě.
+                    </li>
+                    <li> <b>Čtvrtletně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do čtvrtletn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každ&eacute; čtvrtlet&iacute; v časov&eacute; řadě.
+                    </li>
+                    <li> <b>Ročně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do ročn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat každ&yacute; rok v časov&eacute; řadě.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se denně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat jednu agregovanou hodnotu za juli&aacute;nsk&yacute; den. V&yacute;stup bude zahrnovat maxim&aacute;lně 366 denn&iacute;ch časov&yacute;ch řezů.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se t&yacute;dně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do t&yacute;denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat jednu agregovanou hodnotu za t&yacute;den. V&yacute;stup bude zahrnovat maxim&aacute;lně 53 t&yacute;denn&iacute;ch časov&yacute;ch řezů.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se měs&iacute;čně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do t&yacute;denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat jednu agregovanou hodnotu za měs&iacute;c. V&yacute;stup bude zahrnovat maxim&aacute;lně 12 měs&iacute;čn&iacute;ch časov&yacute;ch řezů.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se čtvrtletně</b>&mdash;Hodnoty dat budou agregov&aacute;ny do t&yacute;denn&iacute;ch časov&yacute;ch kroků a v&yacute;sledek bude zahrnovat jednu agregovanou hodnotu za čtvrtlet&iacute;. V&yacute;stup bude zahrnovat maxim&aacute;lně 4 čtvrtletn&iacute; časov&eacute; řezy.
+                    </li>
+                    <li> <b>Jednou za deset</b>&mdash; Hodnoty dat budou agregov&aacute;ny do 3 obdob&iacute; po 10 dnech. Posledn&iacute; obdob&iacute; může obsahovat v&iacute;ce nebo m&eacute;ně než 10 dn&iacute;. V&yacute;stup bude zahrnovat 3 řezy za každ&yacute; měs&iacute;c.
+                    </li>
+                    <li> <b>Jednou za pět</b>&mdash; Hodnoty dat budou agregov&aacute;ny do 6 obdob&iacute; po 5 dnech. Posledn&iacute; obdob&iacute; může obsahovat v&iacute;ce nebo m&eacute;ně než 5 dn&iacute;. V&yacute;stup bude zahrnovat 6 řezů za každ&yacute; měs&iacute;c.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval hodnot</h2></div>
+        <hr/>
+        <div>
+            <p>Velikost intervalu, kter&yacute; se použije pro agregaci. Tento parametr je vyžadov&aacute;n, je-li parametr  <b>Definice agregace</b> nastaven na volbu <b>Interval hodnoty</b>.
+            </p>
+            <p>Chcete-li např&iacute;klad agregovat měs&iacute;čn&iacute; data o teplotě do 5let&yacute;ch př&iacute;růstků za 30 let, zadejte 5 jako  <b>Interval hodnoty</b> a pot&eacute; zadejte <b>Jednotky</b> jako <b>Roky</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Jednotky</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka, kter&aacute; se použije pro hodnotu intervalu. Tento vstup je vyžadov&aacute;n, pokud je  <b>Rozměr</b> časov&eacute; pole a <b>Definice agregace</b> je nastavena na <b>Interval hodnoty</b>.
+            </p>
+            <p>Pokud agregujete něco jin&eacute;ho než čas, nebude tato možnost k dispozici a jednotka pro hodnotu intervalu bude odpov&iacute;dat proměnn&eacute; jednotce vstupn&iacute;ch v&iacute;cerozměrn&yacute;ch rastrov&yacute;ch dat. 
+                <ul>
+                    <li> <b>Hodiny</b>&mdash;Hodnoty dat se budou agregovat v nastaven&eacute;m intervalu do hodinov&yacute;ch řezů.
+                    </li>
+                    <li> <b>Dny</b>&mdash;Hodnoty dat se budou agregovat v nastaven&eacute;m intervalu do denn&iacute;ch řezů.
+                    </li>
+                    <li> <b>T&yacute;dny</b>&mdash;Hodnoty dat se budou agregovat v nastaven&eacute;m intervalu do t&yacute;denn&iacute;ch řezů.
+                    </li>
+                    <li> <b>Měs&iacute;ce</b>&mdash;Hodnoty dat se budou agregovat v nastaven&eacute;m intervalu do měs&iacute;čn&iacute;ch řezů.
+                    </li>
+                    <li> <b>Roky</b>&mdash;Hodnoty dat se budou agregovat v nastaven&eacute;m intervalu do ročn&iacute;ch řezů.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definovat rozsahy</h2></div>
+        <hr/>
+        <div>
+            <p>Interval rozsahů bude použit k agregaci skupin hodnot. Skl&aacute;daj&iacute; se z p&aacute;rů hodnot minim&aacute;ln&iacute;ho a maxim&aacute;ln&iacute;ho rozsahu s typem dat Desetinn&eacute; č&iacute;slo s dvojitou přesnost&iacute; nebo Datum. Tento vstup je vyžadov&aacute;n, pokud je  <b>Definice agregace</b> nastavena na <b>Interval rozsahů</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny. 
+                <ul>
+                    <li>Za&scaron;krtnuto&mdash;Anal&yacute;za bude zahrnovat v&scaron;echny platn&eacute; pixely v dan&eacute;m rozměru a bude ignorovat pixely s hodnotou NoData. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li>Neza&scaron;krtnuto&mdash;V&yacute;sledkem anal&yacute;zy bude hodnota NoData, pokud někter&yacute; pixel v dan&eacute;m rozměru bude m&iacute;t hodnotu NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

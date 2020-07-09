@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prever através da Utilização de um Raster de Tendência</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prever atrav&eacute;s da Utiliza&ccedil;&atilde;o de um Raster de Tend&ecirc;ncia"></h2>
+        <hr/>
+    <p>Calcula um raster multidimensional previsto utilizando o raster de tend&ecirc;ncia da ferramenta  Gerar Raster de Tend&ecirc;ncia.
+    </p>
+    <p>Se a op&ccedil;&atilde;o  <b>Utilizar a extens&atilde;o do mapa atual</b> estiver assinalada, ser&atilde;o analisadas as vari&aacute;veis da camada que se encontrem vis&iacute;veis na extens&atilde;o do mapa atual. Se estiver desmarcada, ser&atilde;o analisadas as vari&aacute;veis de toda a camada, mesmo que estejam fora da extens&atilde;o do mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Escolher uma camada de imagem multidimensional a prever</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de tend&ecirc;ncia multidimensional de entrada da ferramenta  Gerar Raster de Tend&ecirc;ncia.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Escolha  a prever</h2></div>
+        <hr/>
+        <div>
+            <p>que ser&aacute;&atilde;o previstas na an&aacute;lise. Se n&atilde;o for especificada qualquer vari&aacute;vel, ser&atilde;o utilizadas todas as vari&aacute;veis.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Escolher o método utilizado para fornecer valores de dimensão de previsão.</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o m&eacute;todo utilizado para fornecer valores de dimens&atilde;o de previs&atilde;o.
+                <ul>
+                    <li> <b>Por Valor</b> &mdash; A previs&atilde;o ser&aacute; calculada para um valor de dimens&atilde;o &uacute;nico ou uma lista de valores de dimens&otilde;es especificados no pr&oacute;ximo passo. Isto &eacute; por omiss&atilde;o. Por exemplo, pretende prever a precipita&ccedil;&atilde;o anual para os anos 2050, 2100 e 2150.
+                    </li>
+                    <li> <b>Por Intervalo</b> &mdash; A previs&atilde;o ser&aacute; calculada para um intervalo da dimens&atilde;o definida por um valor inicial e um valor final. Por exemplo, pretende prever a precipita&ccedil;&atilde;o anual para cada ano entre 2050 e 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Especificar valores dimensãoões  previsão</h2></div>
+        <hr/>
+        <div>
+            <p>O valor ou valores de dimens&atilde;o a utilizar na previs&atilde;o.
+            </p>
+            <p>O formato dos valores de tempo, profundidade e altura deve corresponder ao formato dos valores de dimens&atilde;o utilizados para gerar o raster de tend&ecirc;ncia. Se o raster de tend&ecirc;ncia foi gerado para a dimens&atilde;o StdTime, o formato deve ser YYYY-MM-DDTHH:MM:SS, por exemplo, 2050-01-01T00:00:00. Os valores m&uacute;ltiplos s&atilde;o separados com ponto e v&iacute;rgula.
+            </p>
+            <p>Este par&acirc;metro &eacute; necess&aacute;rio quando o m&eacute;todo  <b>Por valor</b> est&aacute; selecionado para definir os valores de dimens&atilde;o para a previs&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definir o intervalo de dimensões para a previsão</h2></div>
+        <hr/>
+        <div>
+            <p>Definir a data de in&iacute;cio e de fim, a altura ou profundidade do intervalo de dimens&atilde;o a utilizar na previs&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Especificar o número de passos entre os valores de início e de fim</h2></div>
+        <hr/>
+        <div>
+            <p>O n&uacute;mero de passos entre dois valores de dimens&atilde;o a incluir na previs&atilde;o. O valor padr&atilde;o &eacute; 1.
+            </p>
+            <p>Por exemplo, para prever valores de temperatura a cada cinco anos, usar o valor de 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Escolher a unidade que será utilizada para o intervalo de valor de tempo.</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica a unidade que ser&aacute; utilizada para o intervalo de valor. Isto s&oacute; se aplica quando a dimens&atilde;o da an&aacute;lise &eacute; uma dimens&atilde;o temporal.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

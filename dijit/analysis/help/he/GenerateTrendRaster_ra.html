@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>הפק רסטר מגמה</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="הפק רסטר מגמה"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>בחר שכבת תמונה רב-ממדית לניתוח מגמה</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>יתבצע ניתוח של שכבת תמונת הקלט של רסטר רב-ממדי.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>בחר ממד שלאורכו מגמת משתנה תנותח.</h2></div>
+        <hr/>
+        <div>
+            <p>הממד שלאורכו מגמה תופק עבור המשתנה או המשתנים שנבחרו בניתוח.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>בחר משתנה/ים לניתוח מגמה</h2></div>
+        <hr/>
+        <div>
+            <p>המשתנה/ים שעבורו/ם יחושבו מגמות. אם לא צוין משתנה, יתבצע ניתוח של המשתנה הראשון ברסטר הרב-ממדי.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>בחר את סוג הקו להתאמת ערכי משתנה לאורך ממד.</h2></div>
+        <hr/>
+        <div>
+            <p>מציין את סוג הקו שבו יש להשתמש כדי להתאים לערכי הפיקסלים לאורך ממד. 
+                <ul>
+                    <li> <b>לינארי</b> - ערכי פיקסלים של משתנה יותאמו לאורך קו מגמה לינארי. זוהי ברירת המחדל.
+                    </li>
+                    <li> <b>פולינומיאלי</b> - ערכי פיקסלים של משתנה יותאמו לאורך קו מגמה פולינומאלי מסדר שני.
+                    </li>
+                    <li> <b>הרמוני</b> - ערכי פיקסלים של משתנה יותאמו לאורך קו מגמה הרמוני.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>ציין את האורך של מחזור הרמוני</h2></div>
+        <hr/>
+        <div>
+            <p>אורך השונות התקופתית למידול. פרמטר זה נדרש כאשר סוג גו המגמה מוגדר כ <b>הרמוני</b>. לדוגמה, לעוצמת הירוק של עלה לעתים קרובות יש מחזור שונות חזק בשנה יחידה, כך שאורך המחזור הוא שנה 1. לנתוני טמפרטורה שעתיים יש מחזור שונות חזק לאורך יום יחיד, לפיכך אורך המחזור הוא יום 1.
+            </p>
+            <p>אורך ברירת המחדל הוא שנה 1 עבור נתונים שמשתנים במחזור שנתי.
+            </p>
+            <p>פרמטר זה נכלל בניתוח המגמה רק כאשר הממד שמנתוח הוא זמן וסוג קו המגמה מוגדר כ <b>הרמוני</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>בחר את יחידת הזמן של אורך מחזור הרמוני</h2></div>
+        <hr/>
+        <div>
+            <p>מציין את יחידת הזמן אשר תשמש עבור אורך המחזור ההרמוני.
+                <ul>
+                    <li> <b>ימים</b> - היחידה עבור אורך המחזור ההרמוני בימים.
+                    </li>
+                    <li> <b>שנים</b> - היחידה עבור אורך המחזור ההרמוני בשנים. זוהי ברירת המחדל.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>פרמטר זה נכלל בניתוח המגמה רק כאשר הממד שמנותח הוא זמן וסוג קו המגמה מוגדר כ <b>הרמוני</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>ציין את מספר התדירות עבור התאמת מגמה הרמונית</h2></div>
+        <hr/>
+        <div>
+            <p>התדירות לשימוש בהתאמת מגמה הרמונית. פרמטר זה מזהה את התדירות של מחזורים בשנה.
+            </p>
+            <p>ערך ברירת המחדל הוא &lrm;1, או מחזור הרמוני אחד בשנה.
+            </p>
+            <p>פרמטר זה נכלל בניתוח המגמה רק כאשר הממד שמנותח הוא זמן.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>ציין את מספר הסדר הפולינומיאלי עבור התאמת המגמה</h2></div>
+        <hr/>
+        <div>
+            <p>מספר הסדר הפולינומיאלי שבו יש להשתמש בהתאמת המגמה.
+            </p>
+            <p>פרמטר זה נכלל בניתוח המגמה רק כאשר הממד שמנותח הוא זמן.
+            </p>
+            <p>ערך ברירת המחדל הוא 2, או פולינומיאלי בדרגה שנייה.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>בחר סטטיסטיקת מודל להכללה ברסטר מגמה</h2></div>
+        <hr/>
+        <div>
+            <p>כלי זה מספק שלוש סוגים של סטטיסטיקות של קו התאמת מגמה: שגיאת שורש מרובע ממוצע (RMSE), סטטיסטיקת R-squared מידת התאמה (R-squared) וסטטיסטיקת ערך-p עבור מקדם השיפוע (ערך-P של מקדם השיפוע). לכל סטטיסטיקה יש תיבת סימון מתאימה כדי לציין האם היא תחושב ותיכלל כאחד מהערוצים ברסטר המגמה של הפלט.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>מסומן - RMSE יחושב וייכלל כאחד מהערוצים המרובים ברסטר המגמה של הפלט. זוהי ברירת המחדל.
+                            </li>
+                            <li>לא מסומן - RMSE לא יחושב.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-squared
+                        </p>
+                        <ul>
+                            <li>מסומן - ערך R-squared יחושב וייכלל כאחד מהערוצים ברסטר המגמה של הפלט.
+                            </li>
+                            <li>לא מסומן - R-squared לא יחושב. זוהי ברירת המחדל.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-Value של מקדם שיפוע
+                        </p>
+                        <ul>
+                            <li>מסומן - ערך-p יחושב וייכלל כאחד מהערוצים המרובים ברסטר המגמה של הפלט.
+                            </li>
+                            <li>לא מסומן - ערך-p לא יחושב. זוהי ברירת המחדל.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>התעלם מערכים חסרים בחישוב</h2></div>
+        <hr/>
+        <div>
+            <p>מציין האם הניתוח יתעלם מערכים חסרים.
+                <ul>
+                    <li>מסומן - הניתוח יכלול את כל הפיקסלים החוקיים לאורך ממד נתון ויתעלם מפיקסלים שהם NoData. זוהי ברירת המחדל.
+                    </li>
+                    <li>לא מסומן - תוצאת ניתוח זה תהיה NoData, אם קיימים ערכי NoData עבור הפיקסלים לאורך הממד הנתון.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>שם שכבת התוצאה</h2></div>
+        <hr/>
+        <div>
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
+            </p>
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

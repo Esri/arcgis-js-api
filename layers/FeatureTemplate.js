@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","../graphic"],(function(e,t,o,i,r,a){var n=e(null,{declaredClass:"esri.layers.FeatureTemplate",constructor:function(e){if(e&&t.isObject(e)){this.name=e.name,this.description=e.description,this.drawingTool=e.drawingTool,this.thumbnail=e.thumbnail;var o=e.prototype;this.prototype=new a(o.geometry,null,o.attributes)}},toJson:function(){return r.fixJson({name:this.name,description:this.description,drawingTool:this.drawingTool,thumbnail:r.fixJson(t.clone(this.thumbnail)),prototype:this.prototype&&this.prototype.toJson()})}});return t.mixin(n,{TOOL_AUTO_COMPLETE_POLYGON:"esriFeatureEditToolAutoCompletePolygon",TOOL_CIRCLE:"esriFeatureEditToolCircle",TOOL_ELLIPSE:"esriFeatureEditToolEllipse",TOOL_FREEHAND:"esriFeatureEditToolFreehand",TOOL_LINE:"esriFeatureEditToolLine",TOOL_NONE:"esriFeatureEditToolNone",TOOL_POINT:"esriFeatureEditToolPoint",TOOL_POLYGON:"esriFeatureEditToolPolygon",TOOL_RECTANGLE:"esriFeatureEditToolRectangle",TOOL_ARROW:"esriFeatureEditToolArrow",TOOL_TRIANGLE:"esriFeatureEditToolTriangle",TOOL_LEFT_ARROW:"esriFeatureEditToolLeftArrow",TOOL_RIGHT_ARROW:"esriFeatureEditToolRightArrow",TOOL_UP_ARROW:"esriFeatureEditToolUpArrow",TOOL_DOWN_ARROW:"esriFeatureEditToolDownArrow"}),o("extend-esri")&&t.setObject("layers.FeatureTemplate",n,i),n}));

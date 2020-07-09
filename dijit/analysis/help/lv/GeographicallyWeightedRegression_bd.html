@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ģeogrāfiski svērtā regresija</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GographicallyWeightedRegression darbplūsmas diagramma"></h2>
+        <hr/>
+    <p>Veic Ģeogrāfiski svērto regresiju (GWR), kas ir lineārās regresijas vietējā forma, ko izmanto telpiski dažādu attiecību modelē&scaron;anā.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlēties analizējamo slāni</h2></div>
+        <hr/>
+        <div>
+            <p>Slānis, kurā ir punktu elementi, kas satur atkarīgos un skaidrojo&scaron;os mainīgos.
+            </p>
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni. Jūs varat arī papildus lietot filtru savam ievades slānim vai izmantot savai kartei pievienoto viesoto slāņu atlasi. Filtri un atlase tiek lietota tikai analīzei. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Izvēlieties modelējamo lauku</h2></div>
+        <hr/>
+        <div>
+            <p>Skaitliskais lauks, kas satur modelējamās novērotās vērtības un modelējamās vērtības tipu.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Izvēlēties skaidrojošos laukus</h2></div>
+        <hr/>
+        <div>
+            <p>Viens vai vairāki lauki, kas attēlo skaidrojo&scaron;os mainīgos (laukus), kas palīdz prognozēt vērtību. Būs redzami tikai skaitliskie lauki.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Izvēlēties apkaimes noteikšanas veidu</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai izmantotā apkaime tiek veidota kā fiksēts attālums, vai arī tiek atļauta dažādība telpiskajā pārklājumā atkarībā no elementu blīvuma.
+                <ul>
+                    <li> <b>Kaimiņu skaits</b>&mdash; apkaimes izmērs ir konkrēta kaimiņu skaita funkcija, kas iekļauta katra elementa aprēķinos. Ja elementi ir blīvi sakārtoti, apkaimes telpiskais pārklājums ir mazāks; ja elementu blīvums ir neliels, apkaimes telpiskais pārklājums ir lielāks. Izvēloties &scaron;o opciju, atlasiet kaimiņu skaitu, kuru vēlaties iekļaut. Skaitlim jābūt veselam skaitlim no 2 līdz 5000.
+                    </li>
+                    <li> <b>Attāluma josla</b>&mdash; apkaimes izmērs ir katram elementam konstants vai fiksēts attālums. Izvēloties &scaron;o opciju, atlasiet attāluma joslu, lai attēlotu apkaimes telpisko pārklājumu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Izvēlieties, kā tiek piešķirts apkaimes elementu nozīmīgums</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda uz kodola tipu, kas tiks izmantots, lai modelī pie&scaron;ķirtu telpisko nozīmīgumu. Kodols nosaka, kā katrs elements ir saistīts ar citiem elementiem konkrētajā apkaimē.
+                <ul>
+                    <li> <b>Biskvēra</b>&mdash; jebkuram elementam, kas atrodas ārpus norādītās apkaimes, tiks pie&scaron;ķirts nozīmīgums &ldquo;0&rdquo;. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Gausa</b>&mdash; visi elementi saņems nozīmīgumus, taču tie eksponentāli samazināsies, attālinoties no mērķa elementa.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> Izveidojamā slāņa nosaukums. Ja ierakstāt ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstāt Big Data faila koplietojumā, rezultāti tiks saglabāti Big Data failu koplietojumā un pievienoti tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            </p>
+            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika Big Data krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

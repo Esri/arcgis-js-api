@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografisk vægtet regression</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Workflow-diagram for Geografisk v&aelig;gtet regression"></h2>
+        <hr/>
+    <p>Udf&oslash;rer geografisk v&aelig;gtet regression (GWR), som er en lokal form for line&aelig;r regression, der bruges til at modellere spatialt varierende forhold.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vælg et lag, der skal analyseres</h2></div>
+        <hr/>
+        <div>
+            <p>Det lag, der indeholder punktobjekter, som indeholder de afh&aelig;ngige og forklarende variabler.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag. Du kan ogs&aring; anvende et filter p&aring; dit input-lag eller anvende en markering p&aring; hostede lag, der er tilf&oslash;jet p&aring; dit kort. Filtre og markeringer anvendes kun til analyse. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Vælg det felt, der skal modelleres</h2></div>
+        <hr/>
+        <div>
+            <p>Det numeriske felt, der indeholder de observerede v&aelig;rdier, som modelleres, og den type ​​v&aelig;rdi, du modellerer.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Vælg forklarende felter</h2></div>
+        <hr/>
+        <div>
+            <p>Et eller flere felter, der repr&aelig;senterer de forklarende variabler (felter), som hj&aelig;lper med at forudsige v&aelig;rdien. Kun numeriske felter er synlige.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Vælg, hvordan nabolaget bliver fastlagt</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om det anvendte nabolag er konstrueret som en fast afstand eller kan variere i spatial udstr&aelig;kning afh&aelig;ngigt af objekternes t&aelig;thed.
+                <ul>
+                    <li> <b>Antallet af naboer</b> - Nabolagets st&oslash;rrelse er en funktion af et specificeret antal naboer, der er medtaget i beregningerne for hvert objekt. Hvor objekterne er t&aelig;tte, er den spatiale udstr&aelig;kning af nabolaget mindre; hvor objekterne er spredt, er den spatiale udstr&aelig;kning af nabolaget st&oslash;rre. N&aring;r du v&aelig;lger denne mulighed, skal du v&aelig;lge antallet af naboer, du vil inkludere. Tallet skal v&aelig;re et heltal mellem 2 og 5000.
+                    </li>
+                    <li> <b>Afstandsb&aring;nd</b> - Nabolagets st&oslash;rrelse er en konstant eller fast afstand for hvert objekt. N&aring;r du v&aelig;lger denne mulighed, skal du v&aelig;lge afstandsb&aring;ndet, der skal repr&aelig;sentere nabolagets spatiale udstr&aelig;kning.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Vælg, hvordan naboobjekter vægtes</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den kerne-type, der vil blive brugt til den spatiale v&aelig;gtning i modellen. Kernen definerer, hvordan hvert enkelt objekt er relateret til andre objekter i sit nabolag.
+                <ul>
+                    <li> <b>Bikvadrat</b> - En v&aelig;gt p&aring; 0 tildeles ethvert objekt uden for det specificerede nabolag. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Gaussisk</b> - Alle objekter modtager v&aelig;gte, men v&aelig;gtene bliver eksponentielt mindre, jo l&aelig;ngere v&aelig;k de er fra m&aring;lobjektet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Navnet p&aring; det lag, som oprettes. Hvis du skriver til et ArcGIS Data Store, bliver  dine resultater gemt i  <b>Mit indhold</b> og f&oslash;jet til kortet. Hvis du skriver til en big data-fildeling, bliver dine resultater gemt i big data-fildelingen og f&oslash;jet til dens manifest. De bliver ikke f&oslash;jet til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>N&aring;r du skriver til   ArcGIS Data Store  (relationelt eller spatiotemporalt big data-lager) ved hj&aelig;lp af rullelisten  <b>Gem resultat i </b>, kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

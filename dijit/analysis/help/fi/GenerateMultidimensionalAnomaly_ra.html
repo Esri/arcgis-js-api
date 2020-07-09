@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Luo moniulotteinen poikkeama</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Luo moniulotteinen poikkeama"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Poikkeama on havainnon poikkeama sen vakioarvosta, keskiarvosta tai mediaanista.
+    </p>
+    <p>T&auml;m&auml; ty&ouml;kalu laskee poikkeamat ajan kuluessa v&auml;hint&auml;&auml;n yhdelle moniulotteisen rasterin muuttujalle. Jos k&auml;yt&ouml;ss&auml;si on jokin muu kuin aikaulottuvuus aikaulottuvuuden lis&auml;ksi, poikkeama lasketaan kussakin lis&auml;ulottuvuuden vaiheessa.
+    </p>
+    <p>Oletetaan, ett&auml; sinulla on esimerkiksi kuukausittain ker&auml;tty&auml; aineistoa meren l&auml;mp&ouml;tilasta, joka on ker&auml;tty metrin v&auml;lein aina 100 metrin syvyyteen, ja haluat laskea l&auml;mp&ouml;tilapoikkeamat poikkeamina vuosittaisesta keskiarvosta. T&auml;m&auml; ty&ouml;kalu m&auml;&auml;ritt&auml;&auml; l&auml;mp&ouml;tilapoikkeamat vuosikeskiarvon perusteella, jos m&auml;&auml;rit&auml;t  <b>keskiarvon laskennassa k&auml;ytett&auml;v&auml;ksi temporaaliseksi v&auml;liksi</b> <b>vuoden</b>, ja palauttaa poikkeama-arvot kullekin 100 syvyydelle.
+    </p>
+    <p>T&auml;m&auml; ty&ouml;kalu tukee vain moniulotteisia rasteriaineistoryhmi&auml;, joissa on aikaulottuvuus.
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, sen karttatason muuttujat , jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, analysoidaan. Jos vaihtoehtoa ei ole valittu, koko karttatason muuttujat analysoidaan &ndash; my&ouml;s muuttujat, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valitse moniulotteinen kuva-aineistokarttataso poikkeaman luontia varten</h2></div>
+        <hr/>
+        <div>
+            <p>Moniulotteisen rasteriaineistoryhm&auml;n l&auml;ht&ouml;aineiston kuva-aineistokarttataso.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valitse muuttujat, joille poikkeamat luodaan</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttujat, joille poikkeamat lasketaan. Jos muuttujaa ei ole m&auml;&auml;ritetty, kaikki muuttujat, joissa on aikaulottuvuus, analysoidaan.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Valitse poikkeaman luontimenetelmä</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; menetelm&auml;n, jota k&auml;ytet&auml;&auml;n poikkeaman laskemiseen. 
+                <ul>
+                    <li> <b>Ero keskiarvosta</b> &ndash; pikseliarvon ja sen keskiarvon v&auml;linen ero v&auml;lin m&auml;&auml;ritt&auml;miss&auml; eri viipaleissa lasketaan. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Prosentuaalinen ero keskiarvosta</b> &ndash; pikseliarvon ja sen keskiarvon v&auml;linen prosentuaalinen ero v&auml;lin m&auml;&auml;ritt&auml;miss&auml; eri viipaleissa lasketaan.
+                    </li>
+                    <li> <b>Prosenttiosuus keskiarvosta</b> &ndash; keskiarvon prosenttiarvo lasketaan.
+                    </li>
+                    <li> <b>Z-tulos</b> &ndash; kunkin pikselin z-tulos lasketaan. Z-tulos 0 tarkoittaa, ett&auml; pikseliarvo on sama kuin keskiarvo. Z-tulos 1 tarkoittaa, ett&auml; pikseliarvo on 1 keskipoikkeama keskiarvosta. Jos z-tulos on 2, pikseliarvo on 2 keskipoikkeamaa keskiarvosta jne.
+                    </li>
+                    <li> <b>Ero mediaanista</b> &ndash; Pikseliarvon ja sen arvojen matemaattisen mediaanin v&auml;linen ero v&auml;lin m&auml;&auml;ritt&auml;miss&auml; eri viipaleissa lasketaan.
+                    </li>
+                    <li> <b>Prosentuaalinen ero mediaanista</b> &ndash; pikseliarvon ja sen arvojen matemaattisen mediaanin v&auml;linen prosentuaalinen ero v&auml;lin m&auml;&auml;ritt&auml;miss&auml; eri viipaleissa lasketaan.
+                    </li>
+                    <li> <b>Prosenttiosuus mediaanista</b> &ndash; matemaattisen mediaanin prosenttiarvo lasketaan.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Poikkeama-arvojen laskennassa k&auml;ytetyt matemaattiset menetelm&auml;t on lueteltu alla. Poikkeamat voi laskea k&auml;ytt&auml;m&auml;ll&auml; joko keskiarvoja tai mediaaneja keskiarvon m&auml;&auml;ritelm&auml;n&auml;. Jos aineiston jakauma on v&auml;&auml;ristynyt, &auml;&auml;rihavainnot voivat vaikuttaa voimakkaasti keskiarvoon, joten mediaani tai z-tulos-menetelm&auml; voi soveltua paremmin t&auml;m&auml;ntyyppiseen aineistoon.
+            </p>
+            <p>
+                <ul>
+                    <li>Ero keskiarvosta = x - &micro;
+
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                                
+
+                            </li>
+                            <li>&micro; = pikseliarvojen keskiarvo annetulla aikav&auml;lill&auml;
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Prosentuaalinen ero keskiarvosta = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                                
+
+                            </li>
+                            <li>&micro; = pikseliarvojen keskiarvo annetulla aikav&auml;lill&auml;
+                                
+
+                            </li>
+                            <li>|x - &micro;| = arvon ja keskiarvon v&auml;lisen eron itseisarvo
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Keskiarvon prosenttiarvo = x / &micro;
+
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                                
+
+                            </li>
+                            <li>&micro; = pikseliarvojen keskiarvo annetulla aikav&auml;lill&auml;
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Ero mediaanista = x - &szlig;
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                            </li>
+                            <li>&szlig; = pikseliarvojen mediaani annetulla aikav&auml;lill&auml;
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Prosentuaalinen ero mediaanista = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                            </li>
+                            <li>&szlig; = pikseliarvojen mediaani annetulla aikav&auml;lill&auml;
+                            </li>
+                            <li>|x - &szlig;| = arvon ja mediaanin v&auml;lisen eron itseisarvo
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Mediaanin prosenttiarvo = x / &szlig;
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                            </li>
+                            <li>&szlig; = pikseliarvojen mediaani annetulla aikav&auml;lill&auml;
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-tulos = (x - &micro;) / S
+                        <ul>
+                            <li>x = viipaleen pikseliarvo
+                            </li>
+                            <li>&micro; = pikseliarvojen keskiarvo annetulla aikav&auml;lill&auml;
+                            </li>
+                            <li>S = pikseliarvojen keskipoikkeama annetulla aikav&auml;lill&auml;
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Laske keskiarvo valitsemalla temporaalinen väli</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; temporaalisen v&auml;lin, jota k&auml;ytet&auml;&auml;n keskiarvon laskennassa. 
+                <ul>
+                    <li> <b>Kaikki</b> &ndash; laskee kunkin pikselin keskiarvon kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Vuosittain</b> &ndash; laskee kunkin pikselin vuosittaisen keskiarvon.
+                    </li>
+                    <li> <b>Toistuu kuukausittain</b> &ndash; laskee kunkin pikselin kuukausittaisen keskiarvon.
+                    </li>
+                    <li> <b>Toistuu viikoittain</b> &ndash; laskee kunkin pikselin viikoittaisen keskiarvon.
+                    </li>
+                    <li> <b>Toistuu p&auml;ivitt&auml;in</b> &ndash; laskee kunkin pikselin p&auml;ivitt&auml;isen keskiarvon.
+                    </li>
+                    <li> <b>Tunneittain</b> &ndash; laskee kunkin pikselin keskiarvon tunneittain.
+                    </li>
+                    <li> <b>Ulkoinen rasteri</b> &ndash; olemassa oleva rasteriaineistoryhm&auml;, joka sis&auml;lt&auml;&auml; kunkin viitatun pikselin keskiarvon tai mediaanin arvon.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Valitse keskiarvon kuva-aineistokarttataso viitteeksi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; viiterasteriaineistoryhm&auml;n, joka sis&auml;lt&auml;&auml; &auml;skett&auml;in lasketun keskiarvon kullekin pikselille. Poikkeamat lasketaan vertailuna t&auml;h&auml;n keskiarvoon.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa. 
+                <ul>
+                    <li>Valittu &ndash; Analyysi sis&auml;lt&auml;&auml; kaikki kelvolliset pikselit annetulla ulottuvuudella ja ohittaa kaikki NoData-pikselit. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Ei valittu &ndash; Analyysin tuloksena on NoData, jos pikselien arvona on NoData-arvoja annetulla ulottuvuudella.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

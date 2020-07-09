@@ -140,5 +140,46 @@
             </p>
         </div>
     </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Elegir la capa de entidades o ráster para representar barreras</h2></div>
+        <hr/>
+        <div>
+            <p>El dataset que define las barreras. 
+            </p>
+            <p>En el caso de un servicio de im&aacute;genes, el tipo de entrada puede ser de tipo entero o de punto flotante. Las celdas que tengan alg&uacute;n valor (incluido cero) se tratar&aacute;n como barreras, y las celdas con NoData no se tratar&aacute;n como barreras.
+            </p>
+            <p>En el caso de un servicio de entidades, la entrada puede ser un punto, una l&iacute;nea o un pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distancia</h2></div>
+        <hr/>
+        <div>
+            <p>Determina si la distancia se calcula bas&aacute;ndose en un m&eacute;todo planar (Tierra plana) o geod&eacute;sico (elipsoide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>: el c&aacute;lculo se realizar&aacute; sobre un plano bidimensional proyectado usando un sistema de coordenadas cartesianas 2D. Este es el m&eacute;todo predeterminado.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>: las distancias se calculan sobre el elipsoide. Por lo tanto, independientemente de la proyecci&oacute;n de entrada o salida, los resultados no cambian.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nombre de la capa de resultados de dirección hacia atrás</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b>. Debe indicar un nombre que no exista a&uacute;n en <b>Mi contenido</b>.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
 </div>
 </html>

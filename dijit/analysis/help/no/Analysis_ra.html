@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;ysettene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Bruk n&aelig;rhet</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b>, <b>Administrer data</b> og <b>Dyp l&aelig;ring</b>.
+        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;ysettene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Bruk n&aelig;rhet</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b>, <b>Administrer data</b>, <b>Dyp l&aelig;ring</b> og <b>Flerdimensjonal analyse</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,9 +186,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Bestem rute for reiseutgifter som polylinje</h2></td>
+                    <td><h2>Bestem rute for reisekostnader som polylinje</h2></td>
                     <td>
-                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Illustrasjon av vekt&oslash;yet Bestem rute for reiseutgifter som polylinje">
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Illustrasjon av verkt&oslash;yet Bestem rute for reisekostnader som polylinje">
                     </td>
                 </tr></tbody>
             </table>
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Pr&oslash;ve</b> trekker ut data p&aring; definerte lokasjoner i et raster eller sett av rastere.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prøve</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Pr&oslash;ve">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Oppretter en tabell eller punktgeoobjektklasse med dataverdier p&aring; definerte lokasjoner som trekkes ut av et raster eller sett av rastere.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Verktøysettet Dyp læring</h2>
+        <h2>Dyp læring</h2>
         <hr/>
-        <p>Disse verkt&oslash;yene brukes til &aring; p&aring;vise bestemte elementer i et bilde eller til &aring; klassifisere piksler i et rasterdatasett. Dyp l&aelig;ring er en form for kunstig intelligens-basert maskinl&aelig;ringsmetode som p&aring;viser karakteristiske elementer i bildemateriale ved hjelp av flere lag i nevrale nettverk der hvert enkelt lag er i stand til &aring; trekke ut ett eller flere unike elementer i bildet. Disse verkt&oslash;yene bruker modeller som er blitt trent opp til &aring; p&aring;vise bestemte elementer i tredjeparts rammeverk for dyp l&aelig;ring &ndash;&nbsp;eksempelvis TensorFlow, CNTK og Keras&nbsp;&ndash; og resultere i geoobjekter eller kart over klasser som utdata.
+        <p>Disse verkt&oslash;yene brukes til &aring; p&aring;vise eller klassifisere bestemte geoobjekter i et bilde eller til &aring; klassifisere piksler i et rasterdatasett. Dyp l&aelig;ring er en form for kunstig intelligens-basert maskinl&aelig;ringsmetode som p&aring;viser karakteristiske elementer i bildemateriale ved hjelp av flere lag i nevrale nettverk der hvert enkelt lag er i stand til &aring; trekke ut ett eller flere unike elementer i bildet. Disse verkt&oslash;yene bruker modeller som er blitt trent opp til &aring; p&aring;vise bestemte elementer i tredjeparts rammeverk for dyp l&aelig;ring &ndash;&nbsp;eksempelvis TensorFlow, CNTK og Keras&nbsp;&ndash; og resultere i geoobjekter eller kart over klasser som utdata.
             <ul>
                 <li> <b>Klassifiser piksler ved hjelp av dyp l&aelig;ring</b> produserer et klassifisert raster ved hjelp av en opptrent modell for dyp l&aelig;ring.
                 </li>
                 <li> <b>P&aring;vis objekter ved hjelp av dyp l&aelig;ring</b> produserer en geoobjektklasse den finner i et inndataraster ved hjelp av en opptrent modell for dyp l&aelig;ring.
                 </li>
+                <li> <b>Klassifiser objekter ved hjelp av dyp l&aelig;ring</b> produserer en geoobjektklasse eller tabell der hvert inndataobjekt i et inndataraster f&aring;r tildelt en klassemerking ved hjelp av en opptrent modell for dyp l&aelig;ring.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere et klassifisert raster, og hver gyldige piksel har en tilordnet klassemerking.
+            <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere et klassifisert raster, og hver gyldige piksel har en tilordnet klassemerking.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere en geoobjektklasse som inneholder objektene det finner. Geoobjektene kan v&aelig;re avgrensende rammer eller polygoner rundt objektene som er funnet, eller punkter i objektenes sentrum.
+            <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster for &aring; produsere en geoobjektklasse som inneholder objektene det finner. Geoobjektene kan v&aelig;re avgrensende rammer eller polygoner rundt objektene som er funnet, eller punkter i objektenes sentrum.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassifiser objekter ved hjelp av dyp læring</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klassifiser objekter ved hjelp av dyp l&aelig;ring">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster og en valgfri geoobjektklasse for &aring; produsere en geoobjektklasse eller tabell der hvert inndataobjekt har f&aring;tt tildelt en klassemerking.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Flerdimensjonal analyse</h2>
+        <hr/>
+        <p>Verkt&oslash;yene i Flerdimensjonal analyse gir deg mulighet til &aring; utf&oslash;re analyser av vitenskapelig rasterdata p&aring; tvers av flere variabler og dimensjoner.
+        </p>
+        <p>Flerdimensjonale data representerer data som er registrert ved flere tidspunkt, dybder og h&oslash;yder. Denne typen data brukes vanligvis innenfor oseanografi, atmosf&aelig;re- og geovitenskap. Med dette verkt&oslash;ysettet kan du analysere flerdimensjonale rasterdata i flere formater, inkludert netCDF, HDF, GRIB, det flerdimensjonale mosaikkdatasettet og Esris CRF-format (Cloud Raster Format).
+        </p>
+        <p>Tabellen nedenfor inneholder verkt&oslash;yene for flerdimensjonal analyse og en kort beskrivelse av hvert verkt&oslash;y.
+            <ul>
+                <li> <b>Aggreger flerdimensjonalt raster</b> genererer et flerdimensjonalt rasterdatasett ved &aring; aggregere eksisterende flerdimensjonale rastervariabler langs en dimensjon.
+                </li>
+                <li> <b>Generer flerdimensjonal anomali</b> beregner anomalien for hver inndeling i et flerdimensjonalt raster for &aring; generere et flerdimensjonalt raster.
+                </li>
+                <li> <b>Generer trendraster</b> estimerer trenden for hver piksel langs en dimensjon for &eacute;n eller flere variabler i et flerdimensjonalt raster.
+                </li>
+                <li> <b>Prediker ved hjelp av trendraster</b> beregner et forventet flerdimensjonalt raster ved hjelp av det resulterende trendrasteret fra verkt&oslash;yet <b>Generer trendraster</b>.
+                </li>
+                <li> <b>Finn argumentstatistikk</b> trekker ut dimensjonsverdien eller b&aring;ndindeksen der en gitt statistikk oppn&aring;s for hver piksel i et flerdimensjonalt raster eller flerb&aring;ndsraster.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggreger flerdimensjonalt raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Aggreger flerdimensjonalt raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet genererer et flerdimensjonalt rasterdatasett ved &aring; aggregere eksisterende flerdimensjonale rastervariabler langs en dimensjon.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Finn argumentstatistikk</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Finn argumentstatistikk">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet trekker ut dimensjonsverdien eller b&aring;ndindeksen der en gitt statistikk oppn&aring;s for hver piksel i et flerdimensjonalt raster eller flerb&aring;ndsraster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generer flerdimensjonal anomali</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generer flerdimensjonal anomali">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner anomalien for hver inndeling i et flerdimensjonalt raster for &aring; generere et flerdimensjonalt raster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generer trendraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generer trendraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet estimerer trenden for hver piksel langs en dimensjon for &eacute;n eller flere variabler i et flerdimensjonalt raster.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prediksjon ved bruk av trendraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prediksjon ved bruk av trendraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner et forventet flerdimensjonalt raster ved hjelp av det resulterende trendrasteret fra verkt&oslash;yet  <b>Generer trendraster</b>.
             </p>
             <br/>
         </div>

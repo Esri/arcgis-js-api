@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Déterminer le chemin de coût de déplacement sous forme d’une polyligne</h2><p/>
+        <h2>Déterminer le chemin de coût de déplacement sous forme de polyligne</h2><p/>
         <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Illustration de l&rsquo;outil D&eacute;terminer le chemin de co&ucirc;t de d&eacute;placement sous forme d&rsquo;une polyligne"></h2>
         <hr/>
     <p>Cet outil calcule le chemin de moindre co&ucirc;t sous forme d&rsquo;une polyligne entre les sources et les destinations connues.
@@ -112,20 +112,28 @@
             <p>D&eacute;finit la fa&ccedil;on dont les valeurs et les zones des donn&eacute;es de destination en entr&eacute;e sont interpr&eacute;t&eacute;es dans les calculs du chemin de co&ucirc;t.
             </p>
             <ul>
-                <li>Le moins co&ucirc;teux&nbsp;: pour tous les emplacements ou cellules de l&rsquo;entr&eacute;e de destination, le chemin de moindre co&ucirc;t est d&eacute;riv&eacute; de l&rsquo;emplacement contenant le chemin minimal des chemins de moindre co&ucirc;t vers l&rsquo;emplacement source. Il s'agit du param&egrave;tre par d&eacute;faut.
+                <li> <b>Best Single (Le moins co&ucirc;teux)</b>&nbsp;: pour tous les emplacements ou cellules des donn&eacute;es de destination en entr&eacute;e, le chemin de plus faible co&ucirc;t est d&eacute;riv&eacute; de l&rsquo;emplacement contenant le chemin de plus faible co&ucirc;t minimal des chemins de co&ucirc;t vers les cellules source. Il s'agit du param&egrave;tre par d&eacute;faut.
                     
 
                 </li>
-                <li>Vers chaque cellule&nbsp;: pour chaque cellule ou emplacement avec des valeurs valides sur les donn&eacute;es de destination en entr&eacute;e, le syst&egrave;me calcule le chemin de moindre co&ucirc;t et l&rsquo;enregistre dans le service d&rsquo;entit&eacute;s en sortie. Avec cette option, chaque cellule de l'entr&eacute;e est trait&eacute;e s&eacute;par&eacute;ment et un chemin de plus faible co&ucirc;t est d&eacute;termin&eacute; pour chaque cellule de d&eacute;part.
+                <li> <b>To Each Cell (Vers chaque cellule)</b>&nbsp;: pour chaque cellule ou emplacement contenant des valeurs valides dans les donn&eacute;es de destination en entr&eacute;e, le syst&egrave;me calcule le chemin du plus faible co&ucirc;t et l&rsquo;enregistre dans le service d&rsquo;entit&eacute;s en sortie. Avec cette option, chaque cellule de l'entr&eacute;e est trait&eacute;e s&eacute;par&eacute;ment et un chemin de plus faible co&ucirc;t est d&eacute;termin&eacute; pour chaque cellule de d&eacute;part.
                     
 
                 </li>
-                <li>Vers chaque zone&nbsp;: pour chaque zone dans les donn&eacute;es de destination, le syst&egrave;me calcule le chemin de moindre co&ucirc;t et l&rsquo;enregistre dans le service d&rsquo;entit&eacute;s en sortie. Avec cette option, pour chaque zone, le chemin de moindre co&ucirc;t commence &agrave; la cellule ou &agrave; l&rsquo;emplacement avec la pond&eacute;ration de distance de plus faible co&ucirc;t dans la zone.
+                <li> <b>To Each Zone (Vers chaque zone)</b>&nbsp;: pour chaque zone des donn&eacute;es de destination en entr&eacute;e, le syst&egrave;me calcule le chemin du plus faible co&ucirc;t et l&rsquo;enregistre dans le service d&rsquo;entit&eacute;s en sortie. Avec cette option, pour chaque zone, le chemin de moindre co&ucirc;t commence &agrave; la cellule ou &agrave; l&rsquo;emplacement avec la pond&eacute;ration de distance de plus faible co&ucirc;t dans la zone.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Choisir un champ pour calculer les valeurs de destination</h2></div>
+        <hr/>
+        <div>
+            <p>Champ permettant d'obtenir des valeurs relatives aux emplacements de destination.
+            </p>
         </div>
     </div>
 </div>

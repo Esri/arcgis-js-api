@@ -41,7 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p> GeoAnalytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster with multiple machines. The following tools are available: <ul>
+        <p>GeoAnalytics distributes the analysis work across your  ArcGIS GeoAnalytics Server. This allows you to analyze more data faster with multiple machines. The following tools are available:
+            <ul>
                 <li> Aggregate Points
                 </li>
                 <li> Build Multi-Variable Grid
@@ -56,23 +57,27 @@
                 </li>
                 <li> Summarize Within
                 </li>
+                <li> Detect Incidents
+                </li>
+                <li> Find Dwell Locations
+                </li>
+                <li> Find Similar Locations
+                </li>
                 <li> Geocode Locations from Table
                 </li>
                 <li> Enrich From Multi-Variable Grid
                 </li>
-                <li> Detect Incidents
-                </li>
-                <li> Find Similar Locations
-                </li>
                 <li> Calculate Density
                 </li>
-                <li> Find Point Clusters
-                </li>
                 <li> Find Hot Spots
+                </li>
+                <li> Find Point Clusters
                 </li>
                 <li> Forest-based Classification and Regression
                 </li>
                 <li> Generalized Linear Regression
+                </li>
+                <li> Geographically Weighted Regression
                 </li>
                 <li> Create Buffers
                 </li>
@@ -80,20 +85,20 @@
                 </li>
                 <li> Calculate Field
                 </li>
-                <li> Copy to Data Store
+                <li> Clip Layer 
                 </li>
-                <li> Overlay Layers
+                <li> Copy to Data Store
                 </li>
                 <li> Dissolve Boundaries
                 </li>
                 <li> Merge Layers
                 </li>
-                <li> Clip Layer 
+                <li> Overlay Layers
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics focuses on analyzing large amounts data with an emphasis on both spatial and temporal patterns. 
+        <p>GeoAnalytics focuses on analyzing large amounts of data with an emphasis on both spatial and temporal patterns. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -410,7 +415,7 @@ duration.
     <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analyze Patterns</h2>
         <hr/>
-        <p> These tools help you identify, quantify, and visualize spatial patterns in your data.
+        <p> These tools identify, quantify, and visualize spatial patterns in your data.
             <ul>
                 <li> <b>Calculate Density</b> takes known quantities of some phenomenon and spreads these quantities across the map.
                 </li>
@@ -420,9 +425,9 @@ duration.
                 </li>
                 <li> <b>Forest-based Classification and Regression</b>  creates models and generates predictions using an adaptation of Leo Breiman's random forest algorithm, a supervised machine learning method.
                 </li>
-                <li> <b>Geographically Weighted Regression</b> created models using a local form of linear regression that is used to model spatially varying relationships.
-                </li>
                 <li> <b>Generalized Linear Regression</b> generates predictions or models a dependent variable in terms of its relationship to a set of explanatory variables.
+                </li>
+                <li> <b>Geographically Weighted Regression</b> creates models using a local form of linear regression that is used to model spatially varying relationships.
                 </li>
             </ul>
             
@@ -539,32 +544,6 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>This tool performs Geographically Weighted Regression (GWR), which is a local form of linear regression used to model spatially varying relationships.
-            </p>
-            <p>The following are examples:
-                <ul>
-                    <li>Is the relationship between educational attainment and income consistent across the study area?
-                    </li>
-                    <li>What are the key variables that explain high forest fire frequency?
-                    </li>
-                    <li>Where are the districts in which children are achieving high test scores? What characteristics seem to be associated? Where is each characteristic most important?
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="GeneralizedLinearRegressionTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Generalized Linear Regression</h2></td>
-                    <td>
-                    <img src="./images/GUID-4E435A7B-8EC1-4020-9D92-DE88E8E8BBB1-web.png" class="titleImage" alt="GeneralizedLinearRegression workflow diagram">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
             <p>The Generalized Linear Regression tool   generates predictions or models a dependent variable in terms of its relationship to a set of explanatory variables.  This tool can be used to fit continuous (OLS), binary (logistic), and count (Poisson) models.
             </p>
             <p>The following are examples:
@@ -576,6 +555,32 @@ duration.
                     <li>Which variables effectively predict 911 call volume?  Given future projections, what is the expected demand for emergency response resources?
                     </li>
                     <li>What variables affect low birth rates?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeographicallyWeightedRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geographically Weighted Regression</h2></td>
+                    <td>
+                    <img src="./images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" class="titleImage" alt="GeographicallyWeightedRegression workflow diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool performs Geographically Weighted Regression (GWR), which is a local form of linear regression used to model spatially varying relationships.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Is the relationship between educational attainment and income consistent across the study area?
+                    </li>
+                    <li>What are the key variables that explain high forest fire frequency?
+                    </li>
+                    <li>Where are the districts in which children are achieving high test scores? What characteristics seem to be associated? Where is each characteristic most important?
                     </li>
                 </ul>
                 
@@ -627,9 +632,9 @@ features.
                 </li>
                 <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Clip Layers</b> copies features that intersect a defined area of interest.
+                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest.
                 </li>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store  and creates a layer in your contents or copies data to a big data file share. 
                 </li>
                 <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
                 </li>
@@ -641,23 +646,25 @@ features.
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="regularsize">
+        <div id="AppendDataTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Copy to Data Store</h2></td>
+                    <td><h2>Append Data</h2></td>
                     <td>
-                    <img src="./images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copy to Data Store">
+                    <img src="./images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Append Data workflow diagram">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
             <p>The following are examples:
                 <ul>
-                    <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    <li>Update your 2018_Sales feature layer each month as your reports become available.
                     </li>
-                    <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
+                    </li>
+                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
                     </li>
                 </ul>
                 
@@ -711,6 +718,29 @@ features.
             </p>
             <br/>
         </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copy to Data Store</h2></td>
+                    <td>
+                    <img src="./images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copy to Data Store">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    </li>
+                    <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="DissolveBoundariesTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -729,6 +759,30 @@ features.
                     <li>Create a single feature representing the state of Hawaii by dissolving the boundaries of Hawaiian islands.
                     </li>
                     <li>Combine similar study areas based on soil type to output a contiguous soil type dataset.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Merge Layers</h2></td>
+                    <td>
+                    <img src="./images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Merge Layers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Combines two feature layers to create a single result layer. All fields from the merge layer will be included by default, or you can specify custom merge rules to define the resulting schema.  
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Merge three layers containing demographic information from England, Wales, and Scotland to make a  single layer of Great Britain.
+                    </li>
+                    <li>Combine two layers containing parcel information for contiguous townships, keeping only the fields that have the same name and type in the two layers.
                     </li>
                 </ul>
                 
@@ -757,55 +811,6 @@ features.
                          
                     </li>
                     <li>What wells are within abandoned military bases?
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="AppendDataTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Append Data</h2></td>
-                    <td>
-                    <img src="./images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Append Data workflow diagram">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
-            <p>The following are examples:
-                <ul>
-                    <li>Update your 2018_Sales feature layer each month as your reports become available.
-                    </li>
-                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
-                    </li>
-                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="MergeLayersTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Merge Layers</h2></td>
-                    <td>
-                    <img src="./images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Merge Layers">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Combines two feature layers to create a single result layer. All fields from the merge layer will be included by default, or you can specify custom merge rules to define the resulting schema.  
-            </p>
-            <p>The following are examples:
-                <ul>
-                    <li>Merge three layers containing demographic information from England, Wales, and Scotland to make a  single layer of Great Britain.
-                    </li>
-                    <li>Combine two layers containing parcel information for contiguous townships, keeping only the fields that have the same name and type in the two layers.
                     </li>
                 </ul>
                 

@@ -56,7 +56,7 @@
         <div>
             <p>Der Layer enth&auml;lt die Felder, die zusammengefasst werden.  
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
             </p>
         </div>
     </div>
@@ -81,9 +81,9 @@
         <div><h2>Statistiken hinzufügen (optional)</h2></div>
         <hr/>
         <div>
-            <p> Sie k&ouml;nnen f&uuml;r Features, die zusammengefasst wurden, Statistiken berechnen.F&uuml;r numerische Felder sind folgende Berechnungen m&ouml;glich:
+            <p>Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder sind folgende Berechnungen m&ouml;glich: 
                 <ul>
-                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte.Sie kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Es kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
                     </li>
                     <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
                     </li>
@@ -95,7 +95,7 @@
                     </li>
                     <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
                     </li>
-                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einem Track. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
                     </li>
                     <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,0,1,1] ist 0,5. 
                     </li>
@@ -109,7 +109,7 @@
                     <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
                     </li>
                 </ul>
-                Alle Statistiken werden f&uuml;r Nicht-NULL-Werte berechnet. Der resultierende Layer enth&auml;lt ein neues Feld f&uuml;r jede berechnete Statistik. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden. 
+                Alle Statistiken werden f&uuml;r Nicht-NULL-Werte berechnet. Der resultierende Layer enth&auml;lt ein neues Feld f&uuml;r jede berechnete Statistik. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden.
             </p>
         </div>
     </div>
@@ -117,11 +117,11 @@
         <div><h2>Data Store auswählen</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-Ergebnisse werden in einem Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Die folgenden Gr&uuml;nde sprechen daf&uuml;r, die Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern: 
+            <p>GeoAnalytics-Ergebnisse werden in einem Datenspeicher gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Die folgenden Gr&uuml;nde sprechen daf&uuml;r, die Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern: 
                 <ul>
                     <li>Sie k&ouml;nnen die Ergebnisse in portal&uuml;bergreifender Zusammenarbeit verwenden.
                     </li>
-                    <li>Sie sind in der Lage, Synchronisierungsfunktionen mit Ihren Ergebnissen zu aktivieren.
+                    <li>Sie sind in der Lage, Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse zu aktivieren.
                     </li>
                 </ul>
                 
@@ -132,7 +132,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Der Name des Layers, der erstellt wird.  Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und  ihrem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Der Name des zu erstellenden Layers Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und dem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>Wenn Sie &uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> in ArcGIS Data Store (Big Data Store vom Typ &quot;relational&quot; oder &quot;spatiotemporal&quot;) schreiben, k&ouml;nnen Sie den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert wird.
             </p>

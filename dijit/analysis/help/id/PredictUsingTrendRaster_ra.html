@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prediksi Menggunakan Raster Tren</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prediksi Menggunakan Raster Tren"></h2>
+        <hr/>
+    <p>Menghitung perkiraan raster multidimensional menggunakan raster tren output dari alat  Buat Raster Tren.
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel seluruh layer akan dianalisis, bahkan jika berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pilih layer citra multidimensional yang akan diprediksi</h2></div>
+        <hr/>
+        <div>
+            <p>Raster tren multidimensional input dari alat untuk  Buat Raster Tren.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pilih variabel yang akan diprediksi</h2></div>
+        <hr/>
+        <div>
+            <p>Variabel yang akan diprediksi dalam analisis. Jika tidak ada variabel yang ditentukan, semua variabel akan digunakan.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Pilih metode yang digunakan untuk memberikan nilai dimensi prediksi</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan metode yang digunakan untuk memberikan nilai dimensi prediksi.
+                <ul>
+                    <li> <b>Berdasarkan Nilai</b>&mdash;Prediksi akan dihitung untuk nilai dimensi tunggal atau daftar nilai dimensi yang ditentukan pada langkah berikutnya. Ini adalah default. Misalnya, Anda ingin memperkirakan curah hujan tahunan untuk tahun 2050, 2100, dan 2150.
+                    </li>
+                    <li> <b>Berdasarkan Interval</b>&mdash;Prediksi akan dihitung untuk interval dimensi yang ditentukan oleh nilai awal dan akhir. Misalnya, Anda ingin memperkirakan curah hujan tahunan untuk tahun 2050 dan 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Tentukan nilai dimensi untuk prediksi</h2></div>
+        <hr/>
+        <div>
+            <p>Nilai dimensi yang akan digunakan dalam prediksi.
+            </p>
+            <p>Format nilai waktu, kedalaman, dan ketinggian harus cocok dengan format nilai dimensi yang digunakan untuk menghasilkan raster tren. Jika tren raster dihasilkan untuk dimensi WaktuStandar, formatnya harus TTTT-BB-HHTJJ:MM:DD, misalnya, 2050-01-01T00:00:00. Beberapa nilai dipisahkan dengan tanda titik koma.
+            </p>
+            <p>Parameter ini diperlukan bila metode  <b>Berdasarkan nilai</b> dipilih untuk menentukan nilai dimensi untuk prediksi.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Tentukan interval dimensi untuk prediksi</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan tanggal awal dan akhir, tinggi, atau kedalaman interval dimensi yang akan digunakan dalam prediksi.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Tentukan jumlah langkah antara nilai awal dan akhir</h2></div>
+        <hr/>
+        <div>
+            <p>Jumlah langkah antara nilai dua dimensi yang akan dimasukkan dalam prediksi. Nilai defaultnya adalah 1.
+            </p>
+            <p>Misalnya, untuk memprediksi nilai suhu setiap lima tahun, gunakan nilai 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Pilih unit yang akan digunakan untuk interval nilai waktu</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan unit yang akan digunakan untuk interval nilai. Ini hanya berlaku saat dimensi analisis adalah dimensi waktu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

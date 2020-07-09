@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define({toolDefine:"使用深度學習以分類像素",outputLayerName:"${layername}_classified",modelLabel:"選擇用來分類像素的深度學習模型",modelArgsLabel:"指定深度學習模型引數",nameLabel:"名稱",valueLabel:"數值",queryModelArgsMsg:"正在查詢模型引數...",analysisLayerLabel:"選擇用來分類像素的圖片",itemDescription:"分析透過「使用深度學習以分類像素」所產生的圖片服務",itemTags:"點陣分析結果，使用深度學習以分類像素，${layername}",itemSnippet:"分析透過「使用深度學習以分類像素」所產生的圖片服務"});
+define({toolDefine:"使用深度學習以分類像素",outputLayerName:"${layername}_classified",modelLabel:"選擇用來分類像素的深度學習模型",modelArgsLabel:"指定深度學習模型引數",nameLabel:"名稱",valueLabel:"數值",queryModelArgsMsg:"正在查詢模型引數...",queryModelArgsErrMsg:"無法查詢模型引數。",analysisLayerLabel:"選擇用來分類像素的圖片",itemDescription:"分析透過「使用深度學習以分類像素」所產生的圖片服務",itemTags:"點陣分析結果，使用深度學習以分類像素，${layername}",itemSnippet:"分析透過「使用深度學習以分類像素」所產生的圖片服務"});

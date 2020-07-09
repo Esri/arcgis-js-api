@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Agregasi Raster Multidimensional</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregasi Raster Multidimensional"></h2>
+        <hr/>
+    <p>Menghasilkan set data raster multidimensional dengan menggabungkan variabel raster multidimensional yang ada di sepanjang dimensi.
+    </p>
+    <p>Jika Anda memiliki data suhu permukaan laut selama 30 tahun, dikumpulkan setiap bulan pada setiap kedalaman 5 meter hingga 100 meter, berikut adalah beberapa contoh aplikasi:
+        <ul>
+            <li>Gabungkan data suhu bulanan ke dalam data tahunan.
+            </li>
+            <li>Gabungkan data suhu bulanan ke dalam interval 4 bulan.
+            </li>
+            <li>Gabungkan data suhu dari 0 hingga 25 meter, lalu dari 25 hingga 50 meter, lalu dari 50 hingga 100 meter.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel seluruh layer akan dianalisis, bahkan jika berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pilih layer citra multidimensional untuk diagregasi</h2></div>
+        <hr/>
+        <div>
+            <p>Layer citra input dari raster multidimensional yang akan diagregasi.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Pilih kira-kira dimensi mana yang akan diagregasi</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensi agregasi. Ini adalah dimensi di mana kira-kira variabel tersebut akan diagregasi.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pilih variabel untuk diagregasi</h2></div>
+        <hr/>
+        <div>
+            <p>Satu variabel atau lebih yang akan diagregasi sepanjang dimensi yang ditentukan. Jika tidak ada variabel yang ditentukan, semua variabel dengan dimensi terpilih akan diagregasi.
+            </p>
+            <p>Misalnya, untuk melakukan agregasi data suhu harian Anda ke dalam nilai rata-rata bulanan, tentukan suhu sebagai variabel yang akan diagregasi. Jika Anda tidak menentukan variabel apa pun dan Anda memiliki suhu harian dan variabel curah hujan harian, kedua variabel akan diagregasi menjadi rata-rata bulanan dan output raster multidimensional akan mencakup kedua variabel tersebut.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Pilih metode agregasi</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan metode matematis yang akan digunakan untuk menggabungkan irisan agregat dalam suatu interval. 
+                <ul>
+                    <li> <b>Rata-rata</b>&mdash;Menghitung rata-rata nilai suatu piksel di seluruh irisan dalam interval. Ini adalah default.
+                    </li>
+                    <li> <b>Maksimum</b>&mdash;Menghitung nilai maksimum suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Mayoritas</b>&mdash;Menghitung nilai suatu piksel yang paling sering muncul di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Minimum</b>&mdash;Menghitung nilai minimum suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Minoritas</b>&mdash;Menghitung nilai suatu piksel yang jarang muncul di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Median</b>&mdash;Menghitung nilai median suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Rentang</b>&mdash;Menghitung rentang nilai suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Simpangan Baku</b>&mdash;Menghitung simpangan baku dari nilai satu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Jumlah</b>&mdash;Menghitung jumlah nilai suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Variasi</b>&mdash;Menghitung jumlah nilai unik suatu piksel di seluruh irisan dalam interval.
+                    </li>
+                    <li> <b>Kustom</b>&mdash;Menghitung nilai piksel berdasarkan fungsi raster khusus.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Pilih template fungsi raster</h2></div>
+        <hr/>
+        <div>
+            <p>Fungsi raster khusus yang akan digunakan untuk menghitung nilai piksel dari raster yang diagregasi. Input adalah item template fungsi raster di portal. Input ini diperlukan saat  <b>Metode Agregasi</b> diatur ke <b>Kustom</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Pilih penentuan agregasi</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan interval dimensi untuk data mana yang akan diagregasi. 
+                <ul>
+                    <li> <b>Semua</b>&mdash;Nilai data akan diagregasi di semua irisan. Ini adalah default.
+                    </li>
+                    <li> <b>Kata Kunci Interval</b>&mdash;Data variabel akan diagregasi menggunakan interval yang umumnya diketahui.
+                    </li>
+                    <li> <b>Nilai Interval</b>&mdash;Data variabel akan diagregasi menggunakan interval dan unit yang ditentukan pengguna.
+                    </li>
+                    <li> <b>Rentang Interval</b>&mdash;Data variabel akan diagregasi antara pasangan nilai atau tanggal yang ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Pilih interval kata kunci</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan interval kata kunci yang akan digunakan saat melakukan agregasi sepanjang dimensi. Input ini diperlukan saat  <b>Penentuan Agregasi</b> diatur ke <b>Kata Kunci Interval</b>, dan agregasi harus dilakukan sepanjang waktu.
+                <ul>
+                    <li> <b>Setiap Jam</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu per jam, dan hasilnya akan mencakup setiap jam dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Harian</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu harian, dan hasilnya akan mencakup setiap hari dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Mingguan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu mingguan, dan hasilnya akan mencakup setiap minggu dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Bulanan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu bulanan, dan hasilnya akan mencakup setiap bulan dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Triwulanan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu triwulanan, dan hasilnya akan mencakup setiap triwulan dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Tahunan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu tahunan, dan hasilnya akan mencakup setiap tahun dalam rangkaian waktu.
+                    </li>
+                    <li> <b>Berulang Setiap Hari</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu harian, dan hasilnya akan mencakup satu nilai agregat per hari Julian. Output-nya akan mencakup, paling banyak, 366 irisan waktu harian.
+                    </li>
+                    <li> <b>Berulang Setiap Minggu</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu mingguan, dan hasilnya akan mencakup satu nilai agregat per minggu. Output-nya akan mencakup, paling banyak, 53 irisan waktu mingguan.
+                    </li>
+                    <li> <b>Berulang Setiap Bulan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu mingguan, dan hasilnya akan mencakup satu nilai agregat per bulan. Output-nya akan mencakup, paling banyak, 12 irisan waktu bulanan.
+                    </li>
+                    <li> <b>Berulang Setiap Triwulan</b>&mdash;Nilai data akan diagregasi ke dalam langkah waktu mingguan, dan hasilnya akan mencakup satu nilai agregat per triwulan. Output-nya akan mencakup, paling banyak, 4 irisan waktu triwulanan.
+                    </li>
+                    <li> <b>Setiap 10 Hari</b>&mdash; Nilai data akan diagregasi menjadi 3 periode masing-masing 10 hari. Periode terakhir mungkin memiliki lebih atau kurang dari 10 hari. Output-nya akan mencakup 3 irisan untuk setiap bulan.
+                    </li>
+                    <li> <b>Setiap 5 Hari</b>&mdash;Nilai data akan diagregasi menjadi 6 periode masing-masing 5 hari. Periode terakhir mungkin memiliki lebih atau kurang dari 5 hari. Output-nya akan mencakup 6 irisan untuk setiap bulan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval Nilai</h2></div>
+        <hr/>
+        <div>
+            <p>Ukuran interval yang akan digunakan untuk agregasi. Parameter ini diperlukan saat parameter  <b>Penentuan Agregasi</b> diatur ke <b>Nilai Interval</b>.
+            </p>
+            <p>Misalnya, untuk melakukan agregasi data suhu bulanan selama 30 tahun, masukkan 5 sebagai  <b>Interval Nilai</b>, dan tentukan <b>Unit</b> sebagai <b>Tahun</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unit</h2></div>
+        <hr/>
+        <div>
+            <p>Unit yang akan digunakan untuk nilai interval. Input ini diperlukan saat  <b>Dimensi</b> merupakan kolom waktu dan <b>Penentuan Agregasi</b> diatur ke <b>Nilai Interval</b>.
+            </p>
+            <p>Jika Anda melakukan agregasi pada apa pun selain pada waktunya, opsi ini tidak akan tersedia dan unit nilai interval akan mencocokkan dengan unit variabel dari data raster multidimensional input. 
+                <ul>
+                    <li> <b>Jam</b>&mdash;Nilai data akan diagregasi ke dalam irisan waktu per jam pada interval yang disediakan.
+                    </li>
+                    <li> <b>Hari</b>&mdash;Nilai data akan diagregasi ke dalam irisan waktu harian pada interval yang disediakan.
+                    </li>
+                    <li> <b>Minggu</b>&mdash;Nilai data akan diagregasi ke dalam irisan waktu mingguan pada interval yang disediakan.
+                    </li>
+                    <li> <b>Bulan</b>&mdash;Nilai data akan diagregasi ke dalam irisan waktu bulanan pada interval yang disediakan.
+                    </li>
+                    <li> <b>Tahun</b>&mdash;Nilai data akan diagregasi ke dalam irisan waktu tahunan pada interval yang disediakan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Tentukan rentang</h2></div>
+        <hr/>
+        <div>
+            <p>Rentang interval akan digunakan untuk melakukan agregasi kelompok nilai. Kelompok nilai terdiri dari pasangan nilai rentang minimum dan maksimum, dengan tipe data Ganda atau Tanggal. Input ini diperlukan saat  <b>Penentuan Agregasi</b> diatur ke <b>Rentang Interval</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Abaikan nilai yang hilang dalam penghitungan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis. 
+                <ul>
+                    <li>Dicentang&mdash;Analisis akan mencakup semua piksel yang valid di sepanjang dimensi yang ditentukan dan mengabaikan piksel NoData apa pun. Ini adalah default.
+                    </li>
+                    <li>Tidak Dicentang&mdash;Analisis akan menghasilkan NoData jika ada nilai NoData pada piksel tersebut di sepanjang dimensi yang ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

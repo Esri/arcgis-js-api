@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Najít statistiku argumentu (Find Argument Statistics)</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Naj&iacute;t statistiku argumentů"></h2>
+        <hr/>
+    <p>Extrahuje hodnotu rozměru nebo indexu p&aacute;sma, ve kter&eacute; je vytvořena dan&aacute; statistika pro každ&yacute; pixel ve v&iacute;cerozměrn&eacute;m nebo v&iacute;cep&aacute;smov&eacute;m rastru.
+    </p>
+    <p>Použijte tento n&aacute;stroj pro extrahov&aacute;n&iacute; hodnoty rozměru (např&iacute;klad datum, v&yacute;&scaron;ka nebo hloubka), ve kter&eacute;m je dosažena dan&aacute; statistika v z&aacute;sobn&iacute;ku rastrů ve v&iacute;cerozměrn&eacute; rastrov&eacute; datov&eacute; sadě. Př&iacute;padně najděte č&iacute;slo p&aacute;sma, ve kter&eacute;m je dosažena statistika ve v&iacute;cep&aacute;smov&eacute;m rastru.
+    </p>
+    <p>Např&iacute;klad budete cht&iacute;t zn&aacute;t měs&iacute;c, v němž každ&yacute; pixel dos&aacute;hl nejvy&scaron;&scaron;&iacute; teploty mořsk&eacute; hladiny za 30 let sběru dat. Jin&yacute; př&iacute;klad je, že m&aacute;te osmip&aacute;smov&yacute; sn&iacute;mek d&aacute;lkov&eacute;ho průzkumu Země a chcete zn&aacute;t p&aacute;smo, v němž byla pro každ&yacute; pixel dosažena minim&aacute;ln&iacute; hodnota odrazivosti.
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty proměnn&eacute; nebo p&aacute;sma vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud nen&iacute; pole za&scaron;krtnuto, budou analyzov&aacute;ny proměnn&eacute; nebo p&aacute;sma v cel&eacute; vrstvě včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vybrat vrstvu vícerozměrných nebo vícepásmových obrazových dat pro analýzu</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; v&iacute;cerozměrn&yacute; nebo v&iacute;cep&aacute;smov&yacute; rastr, kter&yacute; bude analyzov&aacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vybrat rozměr, ze kterého bude extrahována statistika</h2></div>
+        <hr/>
+        <div>
+            <p>Rozměr, ze kter&eacute;ho bude extrahov&aacute;na statistika. Pokud vstupn&iacute; rastr nen&iacute; v&iacute;cerozměrn&yacute; rastr, tento parametr nen&iacute; požadov&aacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vybrat proměnnou (proměnné), které budou analyzovány</h2></div>
+        <hr/>
+        <div>
+            <p>Proměnn&aacute; nebo proměnn&eacute;, kter&eacute; budou analyzov&aacute;ny. Pokud vstupn&iacute; rastr nen&iacute; v&iacute;cerozměrn&yacute;, hodnoty pixelu v&iacute;cep&aacute;smov&eacute;ho rastru jsou považov&aacute;ny za proměnnou. Pokud je vstupn&iacute; rastr v&iacute;cerozměrn&yacute; a nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, budou analyzov&aacute;ny v&scaron;echny proměnn&eacute; s vybran&yacute;m rozměrem.
+            </p>
+            <p>Např&iacute;klad pokud chcete naj&iacute;t roky, kdy byly nejvy&scaron;&scaron;&iacute; hodnoty teplot, zadejte teplotu jako proměnnou, kterou chcete analyzovat. Pokud nezad&aacute;te ž&aacute;dn&eacute; proměnn&eacute; a m&aacute;te proměnn&eacute; teploty i sr&aacute;žky, budou analyzov&aacute;ny obě proměnn&eacute; a v&yacute;stupn&iacute; v&iacute;cerozměrn&yacute; rastr bude zahrnovat obě proměnn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Zvolit typ statistiky</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje statistiku pro extrahov&aacute;n&iacute; z proměnn&eacute; nebo proměnn&yacute;ch v dan&eacute;m rozměru. 
+            </p>
+            <ul>
+                <li> <b>Argument minima</b>&mdash;Bude extrahov&aacute;na hodnota rozměru, ve kter&eacute;m je dosažena minim&aacute;ln&iacute; hodnota proměnn&eacute;. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                </li>
+                <li> <b>Argument maxima</b>&mdash;Bude extrahov&aacute;na hodnota rozměru, ve kter&eacute;m je dosažena maxim&aacute;ln&iacute; hodnota proměnn&eacute;.
+                </li>
+                <li> <b>Argument medi&aacute;nu</b>&mdash;Bude extrahov&aacute;na hodnota rozměru, ve kter&eacute;m je dosažena hodnota medi&aacute;nu proměnn&eacute;.
+                </li>
+                <li> <b>Argument doby trv&aacute;n&iacute;</b>&mdash;Nejdel&scaron;&iacute; doba trv&aacute;n&iacute; rozměru, po kterou hodnoty proměnn&eacute; spadaj&iacute; mezi minim&aacute;ln&iacute; a maxim&aacute;ln&iacute; hodnoty.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Zadat vícenásobnou hodnotu výskytu</h2></div>
+        <hr/>
+        <div>
+            <p>Hodnota pixelu, kter&aacute; se m&aacute; použ&iacute;t pro označen&iacute;, že statistika dan&eacute;ho argumentu byla dosažena ve vstupn&iacute; rastrov&eacute; datov&eacute; sadě v&iacute;ce než jednou. Pokud nen&iacute; zad&aacute;na, hodnota pixelu bude hodnota rozměru, kdy je poprv&eacute; dosažena statistika argumentu.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Zadat minimální hodnotu</h2></div>
+        <hr/>
+        <div>
+            <p>Minim&aacute;ln&iacute; hodnota proměnn&eacute;, kter&aacute; bude použita pro extrahov&aacute;n&iacute; doby trv&aacute;n&iacute;.
+            </p>
+            <p>Tento parametr je požadov&aacute;n, když je  <b>Doba trv&aacute;n&iacute;</b> vybr&aacute;na jako typ statistiky.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Zadat maximální hodnotu</h2></div>
+        <hr/>
+        <div>
+            <p>Maxim&aacute;ln&iacute; hodnota proměnn&eacute;, kter&aacute; bude použita pro extrahov&aacute;n&iacute; doby trv&aacute;n&iacute;.
+            </p>
+            <p>Tento krok je požadov&aacute;n, když je  <b>Doba trv&aacute;n&iacute;</b> vybr&aacute;na jako typ statistiky.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Zvolit definici rozměru</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jak bude statistika extrahov&aacute;na z rozměru. 
+                <ul>
+                    <li> <b>V&scaron;e</b>&mdash;Statistika bude extrahov&aacute;na např&iacute;č v&scaron;emi rozměry. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Interval kl&iacute;čov&yacute;ch slov</b>&mdash;Statistika bude extrahov&aacute;na z rozměru času podle intervalu kl&iacute;čov&yacute;ch slov.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Zvolte klíčové slovo intervalu</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka času, pro kterou bude extrahov&aacute;na statistika.
+            </p>
+            <p>Např&iacute;klad m&aacute;te pět let denn&iacute;ch &uacute;dajů o teplotě mořsk&eacute; hladiny a chcete vědět rok, ve kter&eacute;m byla zaznamen&aacute;na maxim&aacute;ln&iacute; teplota. Nastavte  <b>Argument maxima</b> jako typ statistiky, nastavte <b>Interval kl&iacute;čov&yacute;ch slov</b> jako definici rozměru a nastavte <b>Ročně</b> jako kl&iacute;čov&eacute; slovo intervalu v tomto kroku.
+            </p>
+            <p>Př&iacute;padně pokud chcete vědět měs&iacute;c, ve kter&eacute;m byla trvale zaznamen&aacute;na maxim&aacute;ln&iacute; teplota, nastavte  <b>Argument maxima</b> jako typ statistiky, nastavte <b>Interval kl&iacute;čov&yacute;ch slov</b> jako definici rozměru a nastavte <b>Opakuj&iacute;c&iacute; se jednou za měs&iacute;ci</b> jako kl&iacute;čov&eacute; slovo intervalu v tomto kroku. To vygeneruje rastr, ve kter&eacute;m každ&yacute; pixel obsahuje měs&iacute;c, v němž byla dosažena statistika za pět let z&aacute;znamů (např&iacute;klad 08/18/2018, 08/25/2016, 08/07/2013).
+            </p>
+            <p>Tento krok je požadov&aacute;n, když je  <b>StdTime</b> nastaven jako rozměr, ze kter&eacute;ho bude extrahov&aacute;na statistika, a je vybr&aacute;n <b>Interval kl&iacute;čov&yacute;ch slov</b> pro definov&aacute;n&iacute;, jak bude statistika extrahov&aacute;na z rozměru.
+                <ul>
+                    <li> <b>Opakuj&iacute;c&iacute; se denně</b>&mdash; Statistika bude extrahov&aacute;na po dnech.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se jednou za t&yacute;den</b>&mdash; Statistika bude extrahov&aacute;na po t&yacute;dnech.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se jednou za měs&iacute;c</b>&mdash; Statistika bude extrahov&aacute;na po měs&iacute;c&iacute;ch.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se jednou za čtvrtlet&iacute;</b>&mdash; Statistika bude extrahov&aacute;na po čtvrtlet&iacute;ch.
+                    </li>
+                    <li> <b>Každou hodinu</b>&mdash;Statistika bude extrahov&aacute;na pro hodinu, v n&iacute;ž byla dosažena statistika.
+                    </li>
+                    <li> <b>Denně</b>&mdash;Statistika bude extrahov&aacute;na pro den, v němž byla dosažena statistika.
+                    </li>
+                    <li> <b>T&yacute;dně</b>&mdash;Statistika bude extrahov&aacute;na pro t&yacute;den, v němž byla dosažena statistika.
+                    </li>
+                    <li> <b>Měs&iacute;čně</b>&mdash;Statistika bude extrahov&aacute;na pro měs&iacute;c, v němž byla dosažena statistika.
+                    </li>
+                    <li> <b>Čtvrtletně</b>&mdash;Statistika bude extrahov&aacute;na pro čtvrtlet&iacute;, v němž byla dosažena statistika.
+                    </li>
+                    <li> <b>Ročně</b>&mdash;Statistika bude extrahov&aacute;na pro rok, v němž byla dosažena statistika.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny.
+                <ul>
+                    <li>Pokud je pole za&scaron;krtnuto, anal&yacute;za bude zahrnovat v&scaron;echny platn&eacute; pixely v dan&eacute;m rozměru a bude ignorovat pixely s hodnotou NoData. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li>Pokud nen&iacute; pole za&scaron;krtnuto, v&yacute;sledkem anal&yacute;zy bude hodnota NoData, pokud někter&yacute; pixel v dan&eacute;m rozměru bude m&iacute;t hodnotu NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

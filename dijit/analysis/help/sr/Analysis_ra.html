@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasterska analiza vam omogućava da izvr&scaron;ite analizu velikih rasterskih skupova podataka kori&scaron;ćenjem  ArcGIS Image Server. Ovo vam omogućava da analizirate podatke brže koristeći snagu servera. Skupovi alatki koji su trenutno dostupni preko  Portal for ArcGIS korisničkog veb iskustva su  <b>Sumiraj podatke</b>, <b>Analiza obrazaca</b>, <b>Koristi bliskost</b>, <b>Analiziraj snimak</b>, <b>Analiziraj teren</b>, <b>Upravljaj podacima</b> i <b>Detaljno učenje</b>.
+        <p>Rasterska analiza vam omogućava da izvr&scaron;ite analizu velikih rasterskih skupova podataka kori&scaron;ćenjem  ArcGIS Image Server. Ovo vam omogućava da analizirate podatke brže koristeći snagu servera. Skupovi alatki koji su trenutno dostupni preko  Portal for ArcGIS korisničkog veb iskustva su  <b>Sumiraj podatke</b>, <b>Analiza obrazaca</b>, <b>Koristi bliskost</b>, <b>Analiziraj snimak</b>, <b>Analiziraj teren</b>, <b>Upravljaj podacima</b>, <b>Detaljno učenje</b> i <b>Vi&scaron;edimenzionalna analiza</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Uzorak</b> izdvaja podatke na definisanim lokacijama iz rastera ili skupa rastera.
+                </li>
             </ul>
             
         </p>
@@ -403,7 +405,7 @@
                 <tbody><tr>
                     <td><h2>Konvertuj raster u geoobjekat</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Alat za konvertovanje rastera u geoobjekat">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Alatka za konvertovanje rastera u geoobjekat">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Uzorak</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Uzorak">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Stvara tabelu ili tačkastu klasu geoobjekatasa sa vrednostima podataka na definisanim lokacijama izvučenim iz rastera ili skupa rastera.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Skup alatki Detaljno učenje</h2>
+        <h2>Detaljno učenje</h2>
         <hr/>
-        <p>Ove alatke 	se koriste za otkrivanje određenih geoobjekata na snimku ili za klasifikaciju piksela u rasterskom skupu podataka. Detaljno učenje je vrsta metoda ma&scaron;inskog učenja ve&scaron;tačke inteligencije koji otkriva geoobjekte na snimcima koristeći vi&scaron;estruke slojeve u neuronskim mrežama gde je svaki sloj u stanju da ekstrahuje jedan ili vi&scaron;e jedinstvenih geoobjekata na snimku. Ove alatke tro&scaron;e modele koji su obučeni za otkrivanje određenih geoobjekata u radnim okvirima za detaljno učenje nezavisnih proizvođača &ndash; kao &scaron;to je TensorFlow, CNTK i Keras &ndash; i izlaznih geoobjekata ili mapa klasa.
+        <p>Ove alatke 	se koriste za otkrivanje ili klasifikovanje određenih geoobjekata na snimku ili za klasifikaciju piksela u rasterskom skupu podataka. Detaljno učenje je vrsta metoda ma&scaron;inskog učenja ve&scaron;tačke inteligencije koji otkriva geoobjekte na snimcima koristeći vi&scaron;estruke slojeve u neuronskim mrežama gde je svaki sloj u stanju da ekstrahuje jedan ili vi&scaron;e jedinstvenih geoobjekata na snimku. Ove alatke tro&scaron;e modele koji su obučeni za otkrivanje određenih geoobjekata u radnim okvirima za detaljno učenje nezavisnih proizvođača &ndash; kao &scaron;to je TensorFlow, CNTK i Keras &ndash; i izlaznih geoobjekata ili mapa klasa.
             <ul>
                 <li> <b>Klasifikuj piksele pomoću detaljnog učenja</b> proizvodi klasifikovani raster koristeći obučeni model detaljnog učenja.
                 </li>
-                <li> <b>Otkrij objekte pomoću detaljnog učenja</b> proizvodu klasu geoobjekata koja sadrži objekte koje pronađe u ulaznom rasteru pomoću obučenog modela detaljnog učenja.
+                <li> <b>Otkrij objekte pomoću detaljnog učenja</b> proizvodi klasu geoobjekata koja sadrži objekte koje pronađe u ulaznom rasteru pomoću obučenog modela detaljnog učenja.
+                </li>
+                <li> <b>Klasifikuj objekte pomoću detaljnog učenja</b> proizvodi klasu geoobjekata ili tabelu u kojoj je svaki ulazni objekat u ulazno mrasteru dodeljen uz oznaku klase upotrebom uvežbanog modela detaljnog učenja.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasifikovani raster, gde svaki važeći piksel ima dodeljenu oznaku klase.
+            <p>Ova alatka pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasifikovani raster, a svaki važeći piksel ima dodeljenu oznaku klase.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasu geoobjekata koja sadrži objekte koje pronađe. Geoobjekti mogu biti granična polja ili poligoni oko pronađenih objekata, ili tačke u centrima objekata.
+            <p>Ova alatka pokreće obučeni model detaljnog učenja na ulaznom rasteru kako bi proizvela klasu geoobjekata koja sadrži objekte koje pronađe. Geoobjekti mogu biti granična polja ili poligoni oko pronađenih objekata, ili tačke u centrima objekata.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikuj objekte pomoću detaljnog učenja</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasifikuj objekte pomoću detaljnog učenja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ova alatka pokreće uvežbani model detaljnog učenja na ulaznom rasteru i opcionu klasu geoobjekata kako bi proizvela klasu geoobjekata ili tabelu u kojoj svaki ulazni objekat ima dodeljenu oznaku klase.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Multidimensional Analysis (Višedimenzionalna analiza)</h2>
+        <hr/>
+        <p>Alati u setu alata Multidimensional Analysis (Vi&scaron;edimenzionalna analiza) daju vam mogućnost da obavite analize za naučne podatke za vi&scaron;estruke promenljive i dimenzije.
+        </p>
+        <p>Vi&scaron;edimenzionalni podaci predstavljaju podatke zebeležene vi&scaron;e puta, na vi&scaron;e dubina i visina. Ova vrsta podataka obično se koristi u atmosferskoj, okeanografskoj i zemljanoj nauci. Uz ovaj set alata, možete da analizirate podatke u vi&scaron;edimenzionalnom rasteru u vi&scaron;e formata, uključujući netCDF, HDF, GRIB, vi&scaron;edimenzionalni mozaički set podataka, i Esri Cloud Raster Format (CRF).
+        </p>
+        <p>Sledeća tabela navodi vi&scaron;edimenzionalne alate za analizu i njihov kratak opis.
+            <ul>
+                <li> <b>Aggregate Multidimensional Raster</b>  generi&scaron;e vi&scaron;edimenzionalni skup podataka dodavanjem postojećih vi&scaron;edimenzionalnih varijabli rastera duž dimenzije.
+                </li>
+                <li> <b>Generate Multidimensional Anomaly</b> izračunava anomalije za svaki odsečak u vi&scaron;edimenzionalnom rasteru radi generisanja vi&scaron;edimenzionalnog rastera.
+                </li>
+                <li> <b>Generate Trend Raster</b>  procenjuje trend svakog piksela duž dimenzije za jednu ili vi&scaron;e promenljivih u vi&scaron;edimenzionalnom rasteru.
+                </li>
+                <li> <b>Predict Using Trend Raster</b>  izračunava predviđeni vi&scaron;edimenzionalni raster koristeći izlazni raster trenda iz alatke <b>Generate Trend Raster</b>.
+                </li>
+                <li> <b>Find Argument Statistics</b>   izvlači vrednost dimenzije ili indeks opsega pri kojem se postiže određena statistika za svaki piksel u vi&scaron;edimenzionalnom ili vi&scaron;epojasnom rasteru.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregate Multidimensional Raster (Agregatni višedimenzionalni raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Aggregate Multidimensional Raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat generi&scaron;e vi&scaron;edimenzionalni skup podataka dodavanjem postojećih vi&scaron;edimenzionalnih varijabli rastera duž dimenzije.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Argument Statistics (Pronađi statistiku argumenata)</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Find Argument Statistics">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izvlači vrednost dimenzije ili indeks opsega pri kojem se postiže određena statistika za svaki piksel u vi&scaron;edimenzionalnom ili vi&scaron;epojasnom rasteru.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generate Multidimensional Anomaly</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generate Multidimensional Anomaly">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava anomalije za svaki odsečak u vi&scaron;edimenzionalnom rasteru radi generisanja vi&scaron;edimenzionalnog rastera.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generate Trend Raster (Generiši raster trenda)</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generate Trend Raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat procenjuje trend svakog piksela duž dimenzije za jednu ili vi&scaron;e promenljivih u vi&scaron;edimenzionalnom rasteru.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Predict Using Trend Raster (Predviđanje upotrebom rastera trenda)</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Predict Using Trend Raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava prognozirani vi&scaron;edimenzionalni raster koristeći izlazni raster trenda iz alatke  <b>Generate Trend Raster</b>.
             </p>
             <br/>
         </div>

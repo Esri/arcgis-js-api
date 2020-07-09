@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Temukan Statistik Argumen</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Temukan Statistik Argumen"></h2>
+        <hr/>
+    <p>Ekstrak nilai dimensi atau indeks band di mana statistik yang diberikan dicapai untuk setiap piksel dalam raster multidimensional atau multiband.
+    </p>
+    <p>Gunakan alat ini untuk mengekstraksi nilai dimensi (misalnya tanggal, tinggi, atau kedalaman) dengan statistik tertentu dicapai dalam tumpukan raster dalam set data raster multidimensional. Atau temukan nomor band dengan statistik dicapai dalam raster multiband.
+    </p>
+    <p>Misalnya, Anda mungkin ingin tahu bulan di mana setiap piksel mencapai suhu permukaan laut tertinggi selama 30 tahun pengumpulan data. Contoh lain adalah Anda memiliki gambar penginderaan jarak jauh delapan-band dan Anda ingin tahu band dengan nilai reflektansi minimum tercapai untuk setiap piksel.
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel atau band layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel atau band layer penuh akan dianalisis, bahkan jika mereka berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Pilih layer citra multidimensional atau multi-band yang akan dianalisis</h2></div>
+        <hr/>
+        <div>
+            <p>Raster multidimensional atau multiband input yang akan dianalisis.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Pilih dimensi dari mana statistik akan diekstrak</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensi dari mana statistik akan diekstrak. Jika raster input bukan raster multidimensional, parameter ini tidak diperlukan.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pilih variabel yang akan dianalisis</h2></div>
+        <hr/>
+        <div>
+            <p>Variabel atau variabel yang akan dianalisis. Jika raster input bukan multidimensional, nilai-nilai piksel raster multiband dianggap sebagai variabel. Jika raster input multidimensional dan tidak ada variabel yang ditentukan, semua variabel dengan dimensi yang dipilih akan dianalisis.
+            </p>
+            <p>Misalnya, untuk menemukan tahun dengan nilai suhu tertinggi, tentukan suhu sebagai variabel yang akan dianalisis. Jika Anda tidak menentukan variabel apa pun dan Anda memiliki variabel suhu dan curah hujan, kedua variabel tersebut akan dianalisis, dan raster multidimensional output akan menyertakan kedua variabel tersebut.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Pilih jenis statistik</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan statistik untuk mengekstrak dari variabel atau variabel di sepanjang dimensi yang ditentukan. 
+            </p>
+            <ul>
+                <li> <b>Argumen minimum</b>&mdash;Nilai dimensi saat nilai variabel minimum tercapai akan diekstrak. Ini adalah default.
+                </li>
+                <li> <b>Argumen maksimum</b>&mdash;Nilai dimensi saat nilai variabel maksimum tercapai akan diekstrak.
+                </li>
+                <li> <b>Argumen median</b>&mdash;Nilai dimensi saat nilai variabel median tercapai akan diekstrak.
+                </li>
+                <li> <b>Argumen durasi</b>&mdash;Durasi dimensi terpanjang yang nilai variabelnya berada di antara nilai minimum dan maksimum.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Tentukan beberapa nilai kemunculan</h2></div>
+        <hr/>
+        <div>
+            <p>Nilai piksel yang digunakan untuk menunjukkan bahwa statistik argumen yang diberikan tercapai lebih dari sekali dalam set data raster input. Jika tidak ditentukan, nilai piksel akan menjadi nilai dimensi saat statistik argumen pertama kali tercapai.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Tentukan nilai minimum</h2></div>
+        <hr/>
+        <div>
+            <p>Nilai variabel minimum yang akan digunakan untuk mengekstrak durasi.
+            </p>
+            <p>Parameter ini diperlukan ketika  <b>Durasi</b> dipilih sebagai jenis statistik.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Tentukan nilai maksimum</h2></div>
+        <hr/>
+        <div>
+            <p>Nilai variabel maksimum yang akan digunakan untuk mengekstrak durasi.
+            </p>
+            <p>Langkah ini diperlukan ketika  <b>Durasi</b> dipilih sebagai jenis statistik.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Pilih penentuan dimensi</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan cara statistik akan diekstrak dari dimensi. 
+                <ul>
+                    <li> <b>Semua</b>&mdash;Statistik akan diekstrak di semua dimensi. Ini adalah default.
+                    </li>
+                    <li> <b>Kata Kunci Interval</b>&mdash;Statistik akan diekstrak dari dimensi waktu sesuai dengan kata kunci interval.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Pilih interval kata kunci</h2></div>
+        <hr/>
+        <div>
+            <p>Unit waktu saat statistik akan diekstrak.
+            </p>
+            <p>Misalnya, Anda memiliki lima tahun data suhu permukaan laut harian dan Anda ingin tahu tahun saat suhu maksimum diamati. Atur  <b>Argumen maksimum</b> sebagai jenis statistik, atur <b>Kata Kunci Interval</b> sebagai penentuan dimensi, dan atur <b>Tahunan</b> sebagai interval kata kunci dalam langkah ini.
+            </p>
+            <p>Atau, jika Anda ingin mengetahui bulan saat suhu maksimum diamati secara konsisten, atur  <b>Argumen maksimum</b> sebagai jenis statistik, atur <b>Kata Kunci Interval</b> sebagai penentuan dimensi, dan atur <b>Berulang Setiap Bulan</b> sebagai interval kata kunci dalam langkah ini. Ini akan menghasilkan raster dengan setiap piksel berisi bulan tempat statistik dicapai di seluruh catatan lima tahun (08/18/2018, 08/25/2016, 08/07/2013, misalnya).
+            </p>
+            <p>Langkah ini diperlukan ketika  <b>WaktuStandar</b> diatur sebagai dimensi dari mana statistik akan diekstrak, dan <b>Kata Kunci Interval</b> dipilih untuk menentukan cara statistik akan diekstrak dari dimensi waktu.
+                <ul>
+                    <li> <b>Berulang setiap hari</b>&mdash;Statistik akan diekstrak setiap hari.
+                    </li>
+                    <li> <b>Berulang setiap minggu</b>&mdash;Statistik akan diekstrak setiap minggu.
+                    </li>
+                    <li> <b>Berulang setiap bulan</b>&mdash;Statistik akan diekstrak setiap bulan.
+                    </li>
+                    <li> <b>Berulang setiap triwulan</b>&mdash;Statistik akan diekstrak setiap triwulan.
+                    </li>
+                    <li> <b>Setiap jam</b>&mdash;Statistik akan diekstrak pada jam saat statistik tersebut tercapai.
+                    </li>
+                    <li> <b>Harian</b>&mdash;Statistik akan diekstrak pada hari saat statistik itu tercapai.
+                    </li>
+                    <li> <b>Mingguan</b>&mdash;Statistik akan diekstrak pada minggu saat statistik tercapai.
+                    </li>
+                    <li> <b>Bulanan</b>&mdash;Statistik akan diekstrak pada bulan saat statistik tersebut tercapai.
+                    </li>
+                    <li> <b>Setiap triwulan</b>&mdash;Statistik akan diekstrak pada triwulan saat statistik tercapai.
+                    </li>
+                    <li> <b>Tahunan</b>&mdash;Statistik akan diekstrak pada tahun saat statistik tersebut tercapai.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Abaikan nilai yang hilang dalam penghitungan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis.
+                <ul>
+                    <li>Jika kotak dicentang, analisis akan menyertakan semua piksel yang valid di sepanjang dimensi yang ditentukan dan mengabaikan piksel NoData. Ini adalah default.
+                    </li>
+                    <li>Jika kotak tidak dicentang, analisis akan menghasilkan NoData jika ada nilai NoData untuk piksel di sepanjang dimensi yang ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generuj raster trendu</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generuj raster trendu"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Wybierz wielowymiarową warstwę zobrazowań do przeanalizowania trendu</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Wejściowa warstwa zobrazowań rastra wielowymiarowego do przeanalizowania.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Wybierz wymiar, wzdłuż którego zostanie przeanalizowany trend zmiennej</h2></div>
+        <hr/>
+        <div>
+            <p>Wymiar, wzdłuż kt&oacute;rego zostanie wyodrębniony trend dla zmiennej lub zmiennych wybranych w analizie.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Wybierz zmienną lub zmienne do przeanalizowania trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Zmienna lub zmienne, dla kt&oacute;rych zostaną obliczone trendy. Jeśli nie zostanie podana zmienna, zostanie przeanalizowana pierwsza zmienna w rastrze wielowymiarowym.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Wybierz typ linii, aby dopasować wartości zmiennej wzdłuż wymiaru</h2></div>
+        <hr/>
+        <div>
+            <p>Określa typ linii do użycia w celu dopasowania do wartości pikseli wzdłuż wymiaru. 
+                <ul>
+                    <li> <b>Liniowa</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu liniowego. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Wielomianowa</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu wielomianowego drugiego stopnia.
+                    </li>
+                    <li> <b>Harmoniczna</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu harmonicznego.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Podaj długość cyklu harmonicznego</h2></div>
+        <hr/>
+        <div>
+            <p>Długość cyklu wariacji okresowej do modelowania. Ten parametr jest wymagany, gdy typ linii trendu jest skonfigurowany na  <b>Harmoniczna</b>. Na przykład zieleń liści często charakteryzuje się jednym silnym cyklem zmian w roku, więc długością cyklu jest 1&nbsp;rok. Cogodzinne dane o temperaturze charakteryzują się jednym silnym cyklem zmian w ciągu dnia, więc długością cyklu jest 1&nbsp;dzień.
+            </p>
+            <p>W przypadku danych charakteryzujących się cyklem rocznym domyślną długością jest 1&nbsp;rok.
+            </p>
+            <p>Ten parametr jest uwzględniany w analizie trendu tylko wtedy, gdy analizowany wymiar to czas, a typ linii trendu jest skonfigurowany na  <b>Harmoniczna</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Wybierz jednostkę czasu dla długości cyklu harmonicznego</h2></div>
+        <hr/>
+        <div>
+            <p>Decyduje o jednostce czasu, kt&oacute;ra będzie używana do określania długości cyklu harmonicznego.
+                <ul>
+                    <li> <b>Dni</b> &mdash; jednostką długości cyklu harmonicznego są dni.
+                    </li>
+                    <li> <b>Lata</b> &mdash; jednostką długości cyklu harmonicznego są lata. Jest to opcja domyślna.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ten parametr jest uwzględniany w analizie trendu tylko wtedy, gdy analizowany wymiar to czas, a typ linii trendu jest skonfigurowany na  <b>Harmoniczna</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Podaj wartość częstotliwości dopasowania trendu harmonicznego</h2></div>
+        <hr/>
+        <div>
+            <p>Częstotliwość używana w przypadku dopasowania trendu harmonicznego. Ten parametr określa częstotliwość cykli w roku.
+            </p>
+            <p>Wartością domyślną jest 1 lub jeden cykl harmoniczny na rok.
+            </p>
+            <p>Ten parametr jest uwzględniany w analizie trendu tylko wtedy, gdy analizowany wymiar to czas.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Podaj wartość kolejności wielomianowej dla dopasowania trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Kolejność wielomianowa używana w przypadku dopasowaniu trendu.
+            </p>
+            <p>Ten parametr jest uwzględniany w analizie trendu tylko wtedy, gdy analizowany wymiar to czas.
+            </p>
+            <p>Wartością domyślną jest 2 czyli wielomian drugiego stopnia.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Wybierz statystyki modelu, które mają być ujęte w rastrze trendu</h2></div>
+        <hr/>
+        <div>
+            <p>To narzędzie zapewnia trzy typy statystyk linii dopasowania trendu: błąd średni kwadratowy (RMSE), zgodność dopasowania R&nbsp;kwadrat (R&nbsp;kwadrat) oraz wartość&nbsp;p wsp&oacute;łczynnika nachylenia. Każda statystyka ma odpowiadające jej pole wyboru, kt&oacute;re pozwala zdecydować, czy dana statystyka ma być obliczana i uwzględniana jako jedno z pasm wynikowego rastra trendu.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Zaznaczone &mdash; błąd średni kwadratowy będzie obliczany i uwzględniany jako jedno z pasm wynikowego rastra trendu. Jest to opcja domyślna.
+                            </li>
+                            <li>Niezaznaczone &mdash; błąd średni kwadratowy nie będzie obliczany.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R kwadrat
+                        </p>
+                        <ul>
+                            <li>Zaznaczone &mdash; wartość R&nbsp;kwadrat będzie obliczana i uwzględniana jako jedno z pasm wynikowego rastra trendu.
+                            </li>
+                            <li>Niezaznaczone &mdash; wartość R&nbsp;kwadrat nie będzie obliczana. Jest to opcja domyślna.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Wartość&nbsp;p wsp&oacute;łczynnika nachylenia
+                        </p>
+                        <ul>
+                            <li>Zaznaczone &mdash; wartość&nbsp;p wsp&oacute;łczynnika nachylenia będzie obliczana i uwzględniana jako jedno z pasm wynikowego rastra trendu.
+                            </li>
+                            <li>Niezaznaczone &mdash; wartość&nbsp;p wsp&oacute;łczynnika nachylenia nie będzie obliczana. Jest to opcja domyślna.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy w analizie są ignorowane brakujące wartości.
+                <ul>
+                    <li>Zaznaczone &mdash; analiza obejmie wszystkie poprawne piksele w danym wymiarze i zignoruje piksele o wartości NoData. Jest to opcja domyślna.
+                    </li>
+                    <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla pikseli w danym wymiarze istnieją jakiekolwiek wartości NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

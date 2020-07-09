@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Predigueu l'ús del ràster de tendència</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prediu mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia"></h2>
+        <hr/>
+    <p>Calcula un r&agrave;ster multidimensional previst mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia de sortida des de l'eina  Genera el r&agrave;ster de tend&egrave;ncia.
+    </p>
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, s'analitzaran les variables de la capa que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran les variables de tota la capa, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Trieu la capa d'imatges multidimensionals que voleu predir</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster de tend&egrave;ncia multidimensional d'entrada de l'eina  Genera el r&agrave;ster de tend&egrave;ncia.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trieu les variables que es prediran</h2></div>
+        <hr/>
+        <div>
+            <p>Variable o variables que es prediran a l'an&agrave;lisi. Si no s'ha especificat cap variable, es faran servir totes les variables.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Trieu el mètode utilitzat per proporcionar valors de dimensió de predicció</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el m&egrave;tode utilitzat per proporcionar valors de dimensi&oacute; de predicci&oacute;.
+                <ul>
+                    <li> <b>Per valor</b>: la predicci&oacute; es calcular&agrave; per a un sol valor de dimensi&oacute; o una llista de valors de dimensi&oacute; especificats al pas seg&uuml;ent. Aquesta &eacute;s l'opci&oacute; per defecte. Per exemple, si voleu predir les precipitacions anuals dels anys 2050, 2100 i 2150.
+                    </li>
+                    <li> <b>Per interval</b>: la predicci&oacute; es calcular&agrave; per a un interval de la dimensi&oacute; definida per un valor d'inici i un de finalitzaci&oacute;. Per exemple, si voleu predir les precipitacions anuals de tots els anys entre el 2050 i el 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Especifiqueu els valors de dimensió de la predicció</h2></div>
+        <hr/>
+        <div>
+            <p>Valor o valors de la dimensi&oacute; que s'utilitzaran a la predicci&oacute;.
+            </p>
+            <p>El format dels valors de temps, profunditat i altura han de coincidir amb el format dels valors de dimensi&oacute; que s'utilitzaran per generar el r&agrave;ster de tend&egrave;ncia. Si el r&agrave;ster de tend&egrave;ncia s'ha generat per a la dimensi&oacute; StdTime, el format ha de ser AAAA-MM-DDTHH:MM:SS, per exemple 2050-01-01T00:00:00. Diversos valors se separen amb un punt i coma.
+            </p>
+            <p>Aquest par&agrave;metre &eacute;s obligatori quan s'ha seleccionat el m&egrave;tode  <b>Per valor</b> per definir els valors de dimensi&oacute; per a la predicci&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definiu l'interval de dimensió de la predicció</h2></div>
+        <hr/>
+        <div>
+            <p>Definiu la data d'inici i la de finalitzaci&oacute;, l'altura o la profunditat de l'interval de dimensi&oacute; que s'utilitzar&agrave; a la predicci&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Especifiqueu el nombre de passos entre els valors d'inici i de finalització</h2></div>
+        <hr/>
+        <div>
+            <p>Nombre de passos entre dos valors de dimensi&oacute; que s'inclouran a la predicci&oacute;. El valor per defecte &eacute;s 1.
+            </p>
+            <p>Per exemple, per predir els valors de temperatura cada cinc anys, utilitzeu un valor de 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Trieu la unitat que s'utilitzarà per a l'interval de valors de temps</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unitat que s'utilitzar&agrave; per a l'interval de valors. Nom&eacute;s s'aplica quan la dimensi&oacute; de l'an&agrave;lisi &eacute;s una dimensi&oacute; de temps.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

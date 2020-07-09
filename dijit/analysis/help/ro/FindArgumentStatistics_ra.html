@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Găsirea Statisticilor de Argumente</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Găsiți Statistica Argumentului"></h2>
+        <hr/>
+    <p>Extrage valoarea dimensiunii sau indicele de bandă la care o anumită statistică este atinsă pentru fiecare pixel dintr-un raster multidimensional sau multi-bandă.
+    </p>
+    <p>Folosiți acest instrument pentru a extrage valoarea dimensiunii (de exemplu, data, &icirc;nălțimea sau ad&acirc;ncimea) la care se atinge o statistică specifică &icirc;n stocul de rastere &icirc;ntr-un set de date raster multidimensionale. &Icirc;n mod alternativ, găsiți numărul de bandp la care se atinge statistica &icirc;ntr-un raster multibandă.
+    </p>
+    <p>De exemplu, poate vă doriți să cunoașteți luna &icirc;n care fiecare pixel a atins cea mai mare temperatură a suprafeței mării &icirc;n 30 de ani de colectare a datelor. Un alt exemplu este că aveți o imagine cu detectare de la distanță pe opt benzi și doriți să știți banda &icirc;n care a fost atinsă valoarea de reflectanță minimă pentru fiecare pixel.
+    </p>
+    <p>Dacă este bifat  <b>Utilizați acoperirea actuală a hărții</b>, variabilele sau benzile stratului tematic care sunt vizibile din acoperirea actuală a hărții vor fi analizate. Dacă sunt nebifate, variabilele sau benzile stratului tematic complet vor fi analizate, chiar dacă acestea sunt &icirc;n afara acoperirii actuale a hărții.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Alegeți stratul tematic cu imagini multidimensionale sau multi-bandă de analizat</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul multidimensional sau multibandă de analizat.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Alegeți dimensiunea din care va fi extrasă statistica</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensiunea din care va fi extrasă statistica. Dacă rasterul de intrare nu este un raster multidimensional, acest parametru nu este necesar.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Alegeți variabila(ele) de analizat</h2></div>
+        <hr/>
+        <div>
+            <p>Variabila sau variabilele de analizat. Dacă rasterul de intrare nu este multidimensionale, valorile pixelului rasterului multibandă sunt considerate variabila. Dacă rasterul de intrare este multidimensional și nu se specifică nicio variabilă, vor fi analizate toate variabilele cu dimensiunea selectată.
+            </p>
+            <p>De exemplu, pentru a găsi anii &icirc;n care valoarea temperaturii a fost cea mai mare, specificați temperatura ca fiind variabila de analizat. Dacă nu specificați nicio variabilă și aveți variabilele temperaturii și ale precipitațiilor, ambele variabile vor fi analizate, iar rasterul multidimensionale rezultant va include ambele variabile.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Alegeți tipul statisticii</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică statistica de extras din variabilă sau variabile pe dimensiunea dată. 
+            </p>
+            <ul>
+                <li> <b>Argumentul minimumului</b>&mdash;Va fi extrasă valoarea dimensiunii la care se atinge valoarea variabilă minimă. Aceasta este setarea implicită.
+                </li>
+                <li> <b>Argumentul maximumului</b>&mdash;Va fi extrasă valoarea dimensiunii la care se atinge valoarea variabilă maximă.
+                </li>
+                <li> <b>Argumentul medianei</b>&mdash;Va fi extrasă valoarea dimensiunii la care se atinge valoarea variabilă mediană.
+                </li>
+                <li> <b>Argumentul duratei</b>&mdash;Cea mai mare durată a dimensiunii pentru care valorile variabilei intră &icirc;ntre valorile minime și maxime.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Specificați o valoare cu apariții multiple</h2></div>
+        <hr/>
+        <div>
+            <p>Valoarea pixelului de utilizat pentru a indica faptul că o statistică a argumentului dat a fost atinsă mai mult de o singură dată &icirc;n setul de date raster de introdus. Dacă nu este specificată, valoarea pixelului va fi valoarea dimensiunii la prima atingere a statisticii argumentului.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Specificați valoarea minimă</h2></div>
+        <hr/>
+        <div>
+            <p>Valoarea variabilă minimă de folosit pentru extragerea duratei.
+            </p>
+            <p>Acest parametru este necesar atunci c&acirc;nd  <b>Durata</b> este selectată ca tip de statistică.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Specificați valoarea maximă</h2></div>
+        <hr/>
+        <div>
+            <p>Valoarea variabilă maximă de folosit pentru extragerea duratei.
+            </p>
+            <p>Acest pas este necesar atunci c&acirc;nd  <b>Durata</b> este selectată ca tip de statistică.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Alegeți definiția dimensiunii</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică modul &icirc;n care statistica va fi extrasă din dimensiune. 
+                <ul>
+                    <li> <b>Toate</b>&mdash;Statistica va fi extrasă &icirc;n toate dimensiunile. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Cuv&acirc;nt-cheie interval</b>&mdash;Statistica va fi extrasă din dimensiunea de timp conform cuv&acirc;ntului-cheie interval.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Alegeți intervalul de cuvinte cheie</h2></div>
+        <hr/>
+        <div>
+            <p>Unitatea de timp pentru care va fi extrasă statistica.
+            </p>
+            <p>De exemplu, dacă aveți cinci ani de date privind temperatura zilnică a suprafeței mării și doriți să știți anul &icirc;n care a fost observată temperatura maximă. Setați  <b>Argumentul maximumului</b> ca tipul statisticii, setați <b>Cuv&acirc;nt-cheie interval</b> ca definiție a dimensiunii, și setați <b>Anual</b> ca interval al cuv&acirc;ntului-cheie din acest pas.
+            </p>
+            <p>&Icirc;n mod alternativ, dacă doriți să știți luna &icirc;n care a fost observată consecvent temperatura maximă, setați  <b>Argumentul maximumului</b> ca tip al statisticii, setați <b>Cuv&acirc;nt-cheie interval</b> ca definiție a dimensiunii, și setați <b>Recurență Lunară</b> ca interval al cuv&acirc;ntului-cheie &icirc;n acest pas. Acest lucru va genera un raster &icirc;n care fiecare pixel conține luna &icirc;n care statistica a fost atinsă &icirc;n perioada de &icirc;nregistrare de cinci ani (08/18/2018, 08/25/2016, 08/07/2013, de exemplu).
+            </p>
+            <p>Acest pas este necesar atunci c&acirc;nd  <b>StdTime</b> este setat ca dimensiune din care va fi extrasă statistica, iar <b>Cuv&acirc;nt-cheie Interval</b> este selectat pentru a defini modul &icirc;n care statistica va fi extrasă din dimensiunea de timp.
+                <ul>
+                    <li> <b>Recurent zilnic</b>&mdash; Statistica va fi extrasă pe zile.
+                    </li>
+                    <li> <b>Recurent săptăm&acirc;nal</b>&mdash;Statistica va fi extrasă pe săptăm&acirc;ni.
+                    </li>
+                    <li> <b>Recurent lunar</b>&mdash;Statistica va fi extrasă pe luni.
+                    </li>
+                    <li> <b>Recurent trimestrial</b>&mdash;Statistica va fi extrasă pe trimestre.
+                    </li>
+                    <li> <b>Orar</b>&mdash;Statistica va fi extrasă pentru ora &icirc;n care a fost atinsă statistica.
+                    </li>
+                    <li> <b>Zilnic</b>&mdash;Statistica va fi extrasă pentru ziua &icirc;n care a fost atinsă statistica.
+                    </li>
+                    <li> <b>Săptăm&acirc;nal</b>&mdash;Statistica va fi extrasă pentru săptăm&acirc;na &icirc;n care a fost atinsă statistica.
+                    </li>
+                    <li> <b>Lunar</b>&mdash;Statistica va fi extrasă pentru luna &icirc;n care a fost atinsă statistica.
+                    </li>
+                    <li> <b>Trimestrial</b>&mdash;Statistica va fi extrasă pentru trimestrul &icirc;n care a fost atinsă statistica.
+                    </li>
+                    <li> <b>Anual</b>&mdash;Statistica va fi extrasă pentru anul &icirc;n care a fost atinsă statistica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorare valori lipsă în calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză.
+                <ul>
+                    <li>Dacă este bifată căsuța, analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    </li>
+                    <li>Dacă este debifată căsuța, analiza va avea ca rezultat NoData dacă există orice valori NoData pentru pixel de-a lungul dimensiunii date.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

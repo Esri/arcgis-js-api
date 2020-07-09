@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generovat rastr trendu (Generate Trend Raster)</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generovat rastr trendu"></h2>
+        <hr/>
+    <p>Odhadne trend každ&eacute;ho pixelu v rozměru pro jednu nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vybrat vrstvu vícerozměrných snímků pro analýzu trendu</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Vstupn&iacute; vrstva sn&iacute;mků v&iacute;cerozměrn&eacute;ho rastru, kter&yacute; bude analyzov&aacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vybrat rozměr, v rámci kterého bude analyzován trend pro proměnnou</h2></div>
+        <hr/>
+        <div>
+            <p>Rozměr, v r&aacute;mci kter&eacute;ho bude extrahov&aacute;n trend pro proměnnou nebo proměnn&eacute; vybran&eacute; v anal&yacute;ze.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vybrat proměnnou (proměnné) pro analýzu trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Proměnn&aacute; nebo proměnn&eacute;, pro kter&eacute; budou vypoč&iacute;t&aacute;ny trendy. Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, bude analyzov&aacute;na prvn&iacute; proměnn&aacute; v&iacute;cerozměrn&eacute;ho rastru.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Vybrat typ linie k proložení hodnotami proměnných podél rozměru</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje typ linie, kter&aacute; bude použita k proložen&iacute; hodnotami pixelů pod&eacute;l rozměru. 
+                <ul>
+                    <li> <b>Line&aacute;rn&iacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l line&aacute;rn&iacute; linie trendu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Polynomick&aacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l polynomick&eacute; linie trendu druh&eacute;ho ř&aacute;du.
+                    </li>
+                    <li> <b>Harmonick&aacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l harmonick&eacute; linie trendu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Zadat délku harmonického cyklu</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;lka periodick&eacute; variace k modelu. Tento parametr je požadov&aacute;n, když je typ linie trendu nastaven na  <b>Harmonick&yacute;</b>. Např&iacute;klad zeleň listů m&aacute; často jeden siln&yacute; cyklus variace v jednom roce, takže d&eacute;lka cyklu je 1 rok. &Uacute;daje o hodinov&eacute; teplotě maj&iacute; jeden siln&yacute; cyklus variace v jednom dni, takže d&eacute;lka cyklu je 1 den.
+            </p>
+            <p>V&yacute;choz&iacute; d&eacute;lka je 1 rok pro &uacute;daje, kter&eacute; se měn&iacute; v ročn&iacute;m cyklu.
+            </p>
+            <p>Tento parametr je zahrnut pouze do anal&yacute;zy trendu, když je analyzovan&yacute;m rozměrem čas a typ linie trendu je nastaven na  <b>Harmonick&yacute;</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Vybrat jednotku času harmonické délky cyklu</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje jednotku času, kter&aacute; m&aacute; b&yacute;t použita pro d&eacute;lku harmonick&eacute;ho cyklu.
+                <ul>
+                    <li> <b>Dny</b>&mdash;Jednotka pro d&eacute;lku harmonick&eacute;ho cyklu jsou dny.
+                    </li>
+                    <li> <b>Roky</b>&mdash;Jednotka pro d&eacute;lku harmonick&eacute;ho cyklu jsou roky. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tento parametr je zahrnut pouze do anal&yacute;zy trendu, když je analyzovan&yacute;m rozměrem čas a typ linie trendu je nastaven na  <b>Harmonick&yacute;</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Zadat číslo četnosti pro harmonické určování trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Četnost, kter&aacute; bude použita při harmonick&eacute;m určov&aacute;n&iacute; trendu. Tento parametr určuje četnost cyklů v roce.
+            </p>
+            <p>V&yacute;choz&iacute; hodnota je 1 nebo jeden harmonick&yacute; cyklus za rok.
+            </p>
+            <p>Tento parametr je zahrnut pouze do anal&yacute;zy trendu, když je analyzovan&yacute;m rozměrem čas.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Zadat číslo pořadí polynomu pro určování trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Č&iacute;slo pořad&iacute; polynomu, kter&eacute; bude použito při polynomick&eacute;m určov&aacute;n&iacute; trendu.
+            </p>
+            <p>Tento parametr je zahrnut pouze do anal&yacute;zy trendu, když je analyzovan&yacute;m rozměrem čas.
+            </p>
+            <p>V&yacute;choz&iacute; hodnota je 2 nebo polynom druh&eacute;ho ř&aacute;du.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Vybrat model statistiky, který bude zahrnut do rastru trendu</h2></div>
+        <hr/>
+        <div>
+            <p>Tento n&aacute;stroj poskytuje tři typy statistiky př&iacute;mky shody s trendem: středn&iacute; kvadratick&aacute; chyba (RMSE), R-kvadr&aacute;t statistiky dobr&eacute; shody (R-kvadr&aacute;t) a statistika p-hodnoty pro koeficient sklonu (P-hodnota koeficientu sklonu). Každ&aacute; statistika m&aacute; odpov&iacute;daj&iacute;c&iacute; za&scaron;krt&aacute;vac&iacute; pol&iacute;čko pro zad&aacute;n&iacute;, zda bude vypoč&iacute;t&aacute;na a zahrnuta jako jedno z v&iacute;ce p&aacute;sem ve v&yacute;stupn&iacute;m rastru trendu.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Za&scaron;krtnuto&mdash;RMSE bude vypoč&iacute;t&aacute;na a zahrnuta jako jedno z v&iacute;ce p&aacute;sem ve v&yacute;stupn&iacute;m rastru trendu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                            </li>
+                            <li>Neza&scaron;krtnuto&mdash;RMSE nebude vypoč&iacute;t&aacute;na.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-squared
+                        </p>
+                        <ul>
+                            <li>Za&scaron;krtnuto&mdash;Hodnota R-kvadr&aacute;t bude vypoč&iacute;t&aacute;na a zahrnuta jako jedno z v&iacute;ce p&aacute;sem ve v&yacute;stupn&iacute;m rastru trendu.
+                            </li>
+                            <li>Neza&scaron;krtnuto&mdash;Hodnota R-kvadr&aacute;t nebude vypoč&iacute;t&aacute;na. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-hodnota koeficientu sklonu
+                        </p>
+                        <ul>
+                            <li>Za&scaron;krtnuto&mdash;P-hodnota p bude vypoč&iacute;t&aacute;na a zahrnuta jako jedno z v&iacute;ce p&aacute;sem ve v&yacute;stupn&iacute;m rastru trendu.
+                            </li>
+                            <li>Neza&scaron;krtnuto&mdash;P-hodnota nebude vypoč&iacute;t&aacute;na. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny.
+                <ul>
+                    <li>Za&scaron;krtnuto&mdash;Anal&yacute;za bude zahrnovat v&scaron;echny platn&eacute; pixely v dan&eacute;m rozměru a bude ignorovat pixely s hodnotou NoData. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li>Neza&scaron;krtnuto&mdash;V&yacute;sledkem anal&yacute;zy bude hodnota NoData, pokud někter&yacute; z pixelů v dan&eacute;m rozměru bude m&iacute;t hodnotu NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Choisir un raster de couche d’entités d’emplacements pour calculer la distance</h2></div>
+        <div><h2>Choisir la couche raster ou la couche d'entités vers laquelle calculer la distance.</h2></div>
         <hr/>
         <div>
             <p>Couche qui d&eacute;finit les sources vers lesquelles la distance sera calcul&eacute;e. La couche peut &ecirc;tre un service d&rsquo;imagerie ou un service d&rsquo;entit&eacute;s.
@@ -137,6 +137,47 @@
             <p>Champ dans la couche source en entr&eacute;e qui contient les valeurs d&eacute;finissant chaque source. Il peut s&rsquo;agir d&rsquo;un champ de type entier ou cha&icirc;ne du jeu de donn&eacute;es source.
             </p>
             <p>La valeur par d&eacute;faut est  <i>Value</i>. Si aucun service d&rsquo;entit&eacute;s et aucun champ <i>Value</i> n&rsquo;est disponible, le premier champ de type entier ou cha&icirc;ne disponible sera utilis&eacute;. Si aucun champ valide n'existe, le champ ObjectID (par exemple, OID ou FID, selon le type de l'entit&eacute; entr&eacute;e) est utilis&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Choisir une couche raster ou d’entités pour représenter les interruptions</h2></div>
+        <hr/>
+        <div>
+            <p>Jeu de donn&eacute;es qui d&eacute;finit les interruptions. 
+            </p>
+            <p>Pour un service d&rsquo;imagerie, le type en entr&eacute;e peut &ecirc;tre entier ou &agrave; virgule flottante. Les cellules dot&eacute;es d&rsquo;une valeur (y compris z&eacute;ro) seront trait&eacute;es comme une interruption. Les cellules de valeur NoData ne seront pas trait&eacute;es comme une interruption.
+            </p>
+            <p>Pour le service d&rsquo;entit&eacute;s, l&rsquo;entr&eacute;e peut &ecirc;tre de type ponctuel, lin&eacute;aire ou surfacique.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Méthode de distance</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;termine si la distance doit &ecirc;tre calcul&eacute;e avec une m&eacute;thode plane (Terre plate) ou g&eacute;od&eacute;sique (ellipso&iuml;de).
+            </p>
+            <ul>
+                <li> <b>Planar (Planaire)</b>&nbsp;: le calcul est effectu&eacute; sur une surface plane projet&eacute;e &agrave; l&rsquo;aide d&rsquo;un syst&egrave;me de coordonn&eacute;es cart&eacute;siennes&nbsp;2D. Il s'agit de la m&eacute;thode par d&eacute;faut.
+                    
+
+                </li>
+                <li> <b>Geodesic (G&eacute;od&eacute;sique)</b>&nbsp;: les distances sont calcul&eacute;es sur l&rsquo;ellipso&iuml;de. Les r&eacute;sultats ne changent donc pas quelle que soit la projection en entr&eacute;e ou en sortie.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nom de la couche de résultat de direction arrière</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b>. Vous devez fournir un nom qui n&rsquo;existe pas dans <b>My Content (Mon contenu)</b>.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>
         </div>
     </div>

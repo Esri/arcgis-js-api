@@ -55,11 +55,11 @@
     <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det kun de rasterceller, der er synlige inden for den aktuelle kortudstr&aelig;kning, der konverteres. Hvis markeringen fjernes, konverteres alle cellerne i rasterlaget, ogs&aring; dem, der ligger uden for den aktuelle kortudstr&aelig;kning. L&aelig;g m&aelig;rke til dette, hvis rasterlaget er stort eller har en meget h&oslash;j opl&oslash;sning.
     </p>
     <p>Eksempelanvendelser for dette v&aelig;rkt&oslash;j omfatter f&oslash;lgende:
- 
+
         <ul>
             <li>Oprettelse af polygonobjekter ud fra rasterdata med klassifikationer for arealanvendelse.
                 
- 
+
             </li>
             <li>Vandl&oslash;b, der identificeres i en digital elevationsmodel (DEM), kan konverteres til linjeobjekter.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>En DEM kan konverteres til punktobjekter, der kan bruges i en ikke-raster-baseret arbejdsgang.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Vælg felt</h2></div>
         <hr/>
         <div>
-            <p>Opret et felt, der angiver, hvilken v&aelig;rdi der skal bruges til konverteringen.
+            <p>Et felt, der angiver konverteringsv&aelig;rdien.
             </p>
             <p>Det kan v&aelig;re en hvilken som helst heltals- eller tekstv&aelig;rdi.
             </p>
             <p>Et felt, der indeholder flydende punkt-v&aelig;rdier, kan kun bruges, hvis outputtet er et punktdatas&aelig;t.
             </p>
-            <p>Standardvalget er at bruge  <i>Value</i>-feltet, som indeholder v&aelig;rdien i hver rastercelle.
+            <p>Standard er at bruge  <i>Value</i>-feltet, som indeholder v&aelig;rdien i hver rastercelle.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Vælg outputtype</h2></div>
         <hr/>
         <div>
-            <p>V&aelig;lg outputtypen blandt punkt, linje eller polygon.
+            <p>Angiver outputtypen.
             </p>
             <ul>
-                <li>Punkt &ndash; Raster konverteres til et datas&aelig;t med punkter.
+                <li> <b>Punkt</b> &ndash; Raster konverteres til et datas&aelig;t med punkter. Dette er standardv&aelig;rdien.
                     
  
                 </li>
-                <li>Linje &ndash; Raster konverteres til et datas&aelig;t med linjeobjekter.
+                <li> <b>Linje</b> &ndash; Raster konverteres til et datas&aelig;t med linjeobjekter.
                     
  
                 </li>
-                <li>Polygon &ndash; Raster konverteres til et datas&aelig;t med polygonobjekter.
+                <li> <b>Polygon</b> &ndash; Raster konverteres til et datas&aelig;t med polygonobjekter.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Gør linjer eller polygoner enklere</h2></div>
         <hr/>
         <div>
-            <p>Angiv, om objekterne skal forenkles.
+            <p>Angiver, om linjer eller polygoner skal forenkles (udj&aelig;vnes). Udj&aelig;vningen foretages p&aring; en s&aring;dan m&aring;de, at linjen indeholder et minimum af segmenter, samtidig med at den forbliver s&aring; t&aelig;t som muligt p&aring; den oprindelige rastercelles kanter.
             </p>
-            <p>Hvis feltet er markeret (standard), udj&aelig;vnes linje- eller polygonobjekterne, s&aring; der fremkommer et mere generelt resultat. Hvis denne indstilling ikke er markeret, vil de line&aelig;re objekter f&oslash;lge rasterdatas&aelig;ttets cellegr&aelig;nser.
+            <ul>
+                <li>Markeret&mdash;Linje- eller polygonobjekterne udj&aelig;vnes, s&aring; der fremkommer et mere generelt resultat. Dette er standardv&aelig;rdien.
+                    
+
+                </li>
+                <li>Ikke markeret&ndash;Linje- eller polygonobjekterne f&oslash;lger cellgr&aelig;nserne i rasterdatas&aelig;ttet.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Denne parameter underst&oslash;ttes kun, hvis outputtypen er linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Opret multipart-objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om output-polygonerne skal best&aring; af enkeltdel-objekter eller flerdel-objekter.
+            </p>
+            <ul>
+                <li>Markeret&mdash;lerdel-objekter oprettes baseret p&aring; polygoner, der har samme v&aelig;rdi.
+                    
+
+                </li>
+                <li>Ikke markeret&ndash;Individuelle (enkeltdels-) objekter oprettes for hver polygon. Dette er standardv&aelig;rdien.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Denne parameter underst&oslash;ttes kun, hvis outputtypen er polygon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimalt antal toppunkter pr. polygonobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Gr&aelig;nsen for toppunkter, der bruges til at underinddele en polygon i mindre polygoner.
+            </p>
+            <p>Hvis v&aelig;rdien er tom, deles output-polygonerne ikke op. Dette er standardv&aelig;rdien.
+            </p>
+            <p>Denne parameter underst&oslash;ttes kun, hvis outputtypen er polygon.
             </p>
         </div>
     </div>

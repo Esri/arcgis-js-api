@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Raster naar object omzetten</h2><p/>
+        <h2>Raster naar object converteren</h2><p/>
         <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Tool Raster naar object omzetten"></h2>
         <hr/>
-    <p>Deze tool converteert een raster naar een objectdataset, als punten, lijnen of polygonen.
+    <p>Deze tool converteert een raster naar een feature dataset, als punten, lijnen of polygonen.
     </p>
     <p>Met de parameter  <b>Veld kiezen</b> kunt u kiezen welk attribuutgebied van de invoerrasterdataset een attribuut wordt in de outputobjectklasse. Deze parameter is alleen beschikbaar voor integere rasters die extra attributen hebben in de bijbehorende tabel.
     </p>
@@ -55,11 +55,11 @@
     <p>Als  <b>Huidig extent van de kaart gebruiken</b> is aangevinkt, worden alleen de rastercellen die binnen het huidige extent van de kaart zichtbaar zijn, geconverteerd. Als deze optie niet wordt geselecteerd, worden alle cellen in de rasterlaag geconverteerd, ook als ze zich buiten de huidige kaartomvang bevinden. Overweeg dit als de rasterlaag groot is of een zeer hoge resolutie heeft.
     </p>
     <p>Gebruiksvoorbeelden van deze tool zijn de volgende:
- 
+
         <ul>
             <li>Maak polygoonobjecten van een landgebruikclassificatieraster.
                 
- 
+
             </li>
             <li>Stromen ge&iuml;dentificeerd in een DEM kunnen worden omgezet naar lijnobjecten.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Een DEM kan worden omgezet naar puntobjecten die kunnen worden gebruikt in een nonraster-gebaseerde workflow.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Veld kiezen</h2></div>
         <hr/>
         <div>
-            <p>Zorg voor een veld dat aangeeft welke waarde wordt gebruikt voor de conversie.
+            <p>Een veld dat de conversiewaarde specificeert.
             </p>
             <p>Het kan een geheel getal of tekstwaarde zijn.
             </p>
             <p>Een veld met floating-pointwaarden kan alleen worden gebruikt bij uitvoer naar een puntdataset.
             </p>
-            <p>De standaardkeuze is om het veld  <i>Value</i> te gebruiken dat de waarde bevat in elke rastercel.
+            <p>De standaard is het veld  <i>Value</i> dat de waarde bevat in elke rastercel.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Uitvoertype kiezen</h2></div>
         <hr/>
         <div>
-            <p>Kies het uitvoertype tussen punt, lijn of polygoon.
+            <p>Geeft het uitvoertype op.
             </p>
             <ul>
-                <li>Punt&mdash;Het raster wordt geconverteerd naar een puntdataset.
+                <li> <b>Punt</b>&mdash;Het raster wordt geconverteerd naar een puntdataset. Dit is de standaardinstelling.
                     
  
                 </li>
-                <li>Lijn&mdash;Het raster wordt geconverteerd naar een lijnobjectdataset.
+                <li> <b>Lijn</b>&mdash;Het raster wordt geconverteerd naar een lijnobjectdataset.
                     
  
                 </li>
-                <li>Polygoon&mdash;Het raster wordt geconverteerd naar een polygoonobjectdataset.
+                <li> <b>Polygoon</b>&mdash;Het raster wordt geconverteerd naar een polygoonobjectdataset.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Lijnen of polygonen vereenvoudigen</h2></div>
         <hr/>
         <div>
-            <p>Geef aan of de objecten moeten worden vereenvoudigd.
+            <p>Geeft aan of lijnen of polygonen worden vereenvoudigd (afgevlakt). Het afvlakken gebeurt zodanig dat de lijn een minimum aantal segmenten bevat en toch zo dicht mogelijk bij de oorspronkelijke rastercelranden blijft.
             </p>
-            <p>Indien aangevinkt (standaard), zullen de lijn- of polygoonobjecten worden gladgestreken voor een ​​meer algemeen resultaat. Als deze optie niet is aangevinkt, volgen de lineaire objecten de celgrenzen van de rasterdataset.
+            <ul>
+                <li>Aangevinkt&mdash; De lijn- of polygoonobjecten worden gladgestreken voor een ​​meer algemeen resultaat. Dit is de standaardinstelling.
+                    
+
+                </li>
+                <li>Aangevinkt&mdash; De lijn of polygoonobjecten volgen de celgrenzen van de rasterdataset.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Deze parameter wordt alleen ondersteund als het uitvoertype lijn of polygoon is.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Meerdelige objecten maken</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of de uitgevoerde polygonen bestaan ​​uit objecten van &eacute;&eacute;n deel of meerdere delen.
+            </p>
+            <ul>
+                <li>Aangevinkt&mdash;Objecten van meerdere delen worden gemaakt op basis van polygonen die dezelfde waarde hebben.
+                    
+
+                </li>
+                <li>Niet aangevinkt&mdash;Individuele objecten (&eacute;&eacute;n deel) worden voor elke polygoon gemaakt. Dit is de standaardinstelling.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Deze parameter wordt alleen ondersteund als het uitvoertype polygoon is.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maximale hoekpunten per polygoonobject</h2></div>
+        <hr/>
+        <div>
+            <p>De hoeklimiet die wordt gebruikt om een polygoon op te delen in kleinere polygonen.
+            </p>
+            <p>Als er niets wordt ingevuld, worden de uitgevoerde polygonen niet gesplitst. Dit is de standaardinstelling.
+            </p>
+            <p>Deze parameter wordt alleen ondersteund als het uitvoertype polygoon is.
             </p>
         </div>
     </div>

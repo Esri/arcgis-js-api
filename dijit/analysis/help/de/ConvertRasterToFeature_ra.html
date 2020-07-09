@@ -55,11 +55,11 @@
     <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Raster-Zellen konvertiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn diese Option deaktiviert ist, werden auch dann alle Raster-Layer konvertiert, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden. Beachten Sie dies, wenn der Raster-Layer gro&szlig; ist oder eine sehr hohe Aufl&ouml;sung hat.
     </p>
     <p>Nachfolgend finden Sie Anwendungsf&auml;lle dieses Werkzeugs:
- 
+
         <ul>
             <li>Erstellen Sie Polygon-Features aus einem Landnutzungsklassifizierungs-Raster.
                 
- 
+
             </li>
             <li>In einem DEM identifizierte Wasserl&auml;ufe k&ouml;nnen in Linien-Features konvertiert werden.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Ein DEM kann in Punkt-Features konvertiert werden, die in einem nicht Raster-basierten Workflow verwendet werden k&ouml;nnen.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Feld auswählen</h2></div>
         <hr/>
         <div>
-            <p>Legen Sie ein Feld fest, das angibt, welcher Wert f&uuml;r die Konvertierung verwendet werden soll.
+            <p>Ein Feld, das den Konvertierungswert angibt.
             </p>
             <p>Dies kann ein ganzzahliger oder ein Textwert sein.
             </p>
             <p>Ein Feld, das Gleitkommawerte enth&auml;lt, kann nur verwendet werden, wenn die Ausgabe in einem Punkt-Dataset erfolgt.
             </p>
-            <p>Standardm&auml;&szlig;ig wird das Feld  <i>Value</i> verwendet, das einen Wert in jeder Raster-Zelle enth&auml;lt.
+            <p>Standardm&auml;&szlig;ig wird das Feld  <i>Value</i> verwendet, das den Wert in jeder Raster-Zelle enth&auml;lt.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Ausgabetyp auswählen</h2></div>
         <hr/>
         <div>
-            <p>W&auml;hlen Sie den Ausgabetyp zwischen Punkt, Linie oder Polygon aus.
+            <p>Gibt den Ausgabetyp an.
             </p>
             <ul>
-                <li>Punkt: Das Raster wird in ein Punkt-Dataset konvertiert.
+                <li> <b>Punkt</b>: Das Raster wird in ein Punkt-Dataset konvertiert. Dies ist die Standardeinstellung.
                     
  
                 </li>
-                <li>Linie: Das Raster wird in ein Linien-Feature-Dataset konvertiert.
+                <li> <b>Linie</b>: Das Raster wird in ein Linien-Feature-Dataset konvertiert.
                     
  
                 </li>
-                <li>Polygon: Das Raster wird in ein Polygon-Feature-Dataset konvertiert.
+                <li> <b>Polygon</b>: Das Raster wird in ein Polygon-Feature-Dataset konvertiert.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Linien oder Polygone vereinfachen</h2></div>
         <hr/>
         <div>
-            <p>Legen Sie fest, ob die Features vereinfacht werden sollen.
+            <p>Gibt an, ob Linien oder Polygone vereinfacht (gegl&auml;ttet) werden. Die Gl&auml;ttung wird so durchgef&uuml;hrt, dass die Linie eine minimale Segmentanzahl enth&auml;lt und dabei so nahe wie m&ouml;glich an den urspr&uuml;nglichen Raster-Zellenr&auml;ndern liegen.
             </p>
-            <p>Wenn diese Option aktiviert ist (Standardeinstellung), werden die Linien- oder Polygon-Features gegl&auml;ttet, um ein generalisierteres Ergebnis zu erstellen. Wenn diese Option deaktiviert ist, folgen die linearen Features den Zellengrenzen des Raster-Datasets.
+            <ul>
+                <li>Aktiviert: Die Linien- oder Polygon-Features werden gegl&auml;ttet, um ein st&auml;rker generalisiertes Ergebnis zu erstellen. Dies ist die Standardeinstellung.
+                    
+
+                </li>
+                <li>Deaktiviert: Die Linien- oder Polygon-Features folgen den Zellengrenzen des Raster-Datasets.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Dieser Parameter wird nur unterst&uuml;tzt, wenn &quot;Linie&quot; oder &quot;Polygon&quot; als Ausgabetyp festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Multipart-Features erstellen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Ausgabe-Polygone aus Singlepart- oder Multipart-Features bestehen.
+            </p>
+            <ul>
+                <li>Aktiviert: Multipart-Features werden basierend auf Polygonen mit demselben Wert erstellt.
+                    
+
+                </li>
+                <li>Deaktiviert: F&uuml;r jedes Polygon werden einzelne Features (Singlepart-Features) erstellt. Dies ist die Standardeinstellung.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Dieser Parameter wird nur unterst&uuml;tzt, wenn &quot;Polygon&quot; als Ausgabetyp festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maximale Stützpunkte pro Polygon-Feature</h2></div>
+        <hr/>
+        <div>
+            <p>Das zum Unterteilen eines Polygons in kleinere Polygone verwendete St&uuml;tzpunktlimit.
+            </p>
+            <p>Wenn dieser Wert leer gelassen wird, werden die Ausgabe-Polygone nicht aufgeteilt. Dies ist die Standardeinstellung.
+            </p>
+            <p>Dieser Parameter wird nur unterst&uuml;tzt, wenn &quot;Polygon&quot; als Ausgabetyp festgelegt wurde.
             </p>
         </div>
     </div>

@@ -211,7 +211,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Almacenamiento de datos</h2></div>
+        <div><h2>Data store</h2></div>
         <hr/>
         <div>
             <p>Los resultados de GeoAnalytics pueden almacenarse en un  ArcGIS Data Store y exponerse como capa de entidades en  Portal for ArcGIS o un recurso compartido de archivos de big data ya configurado. 
@@ -242,6 +242,22 @@
             <p>Al establecer el  <b>Factor de procesamiento en paralelo</b>, puede solicitar el n&uacute;mero de trabajadores en paralelo que el servidor de im&aacute;genes de an&aacute;lisis de r&aacute;ster utiliza para procesar una sola tarea de an&aacute;lisis de r&aacute;ster. Sin embargo, si el n&uacute;mero total de procesos en paralelo supera el n&uacute;mero m&aacute;ximo de instancias de servicio (CPU o GPU) de procesamiento de r&aacute;ster, los procesos en paralelo adicionales se pondr&aacute;n en cola.
             </p>
             <p>Si no se ha especificado el  <b>Factor de procesamiento en paralelo</b>, lo cual es la configuraci&oacute;n predeterminada, la herramienta utilizar&aacute; el 80 por ciento del n&uacute;mero m&aacute;ximo de instancias de servicio de procesamiento de r&aacute;ster. Como factor de procesamiento en paralelo puede especificar un n&uacute;mero entero o un porcentaje.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Número de intentos en fallos</h2></div>
+        <hr/>
+        <div>
+            <p>Define cu&aacute;ntos intentos realizar&aacute; el mismo proceso del trabajador cuando exista un fallo aleatorio al procesar un trabajo en particular. El valor predeterminado es 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Intervalo de reciclado de trabajadores de procesamiento</h2></div>
+        <hr/>
+        <div>
+            <p>Defina cu&aacute;ntas secciones de im&aacute;genes se procesar&aacute;n antes de reiniciar los procesos del trabajador para evitar fallos potenciales en procedimientos de larga ejecuci&oacute;n. El valor predeterminado es 0.
             </p>
         </div>
     </div>

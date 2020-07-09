@@ -55,11 +55,11 @@
     <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, pretvorit će se samo ćelije rastera koje su vidljive u trenutačnom obuhvatu karte. Ako opcija nije označena, pretvorit će se sve ćelije u sloju rastera, čak i ako se nalaze izvan trenutačnog obuhvata karte. Imajte to na umu ako je sloj rastera prevelik ili ima previsoku razlučivost.
     </p>
     <p>Slučajevi upotrebe za ovaj alat uključuju sljedeće:
- 
+
         <ul>
             <li>Stvorite poligonalne geoobjekte od klasifikacijskog rastera za uporabu na tlu.
                 
- 
+
             </li>
             <li>Potoci otkriveni u DEM-u mogu se pretvoriti u linijske geoobjekte.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM se može pretvoriti u točkaste geoobjekte koji se mogu upotrebljavati u radnom tijeku koji se ne temelju na rasteru.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Odaberite polje</h2></div>
         <hr/>
         <div>
-            <p>Unesite polje koje označava vrijednost koja će se koristiti za konverziju.
+            <p>Polje koje specificira vrijednost pretvorbe.
             </p>
             <p>To može biti bilo koji cijeli broj ili tekstualna vrijednost.
             </p>
             <p>Polje koje sadrži vrijednosti plutajuće točke može se upotrebljavati samo ako se izvozi u točkasti skup podataka.
             </p>
-            <p>Zadani izbor je kori&scaron;tenje polja  <i>Value</i> koje sadrži vrijednost u pojedinim ćelijama rastera.
+            <p>Zadani izbor je polje  <i>Value</i> koje sadrži vrijednost u pojedinim ćelijama rastera.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Izaberite vrstu izvoza</h2></div>
         <hr/>
         <div>
-            <p>Izaberite vrstu izvoza između točke, linije ili poligona.
+            <p>Određuje vrstu izlaza.
             </p>
             <ul>
-                <li>Točka &ndash; raster će se pretvoriti u točkasti skup podataka.
+                <li> <b>Point</b>&mdash;Raster će se pretvoriti u točkasti skup podataka. To je zadano.
                     
  
                 </li>
-                <li>Linija &ndash; raster će se pretvoriti u skup podataka linijskih geoobjekata.
+                <li> <b>Line</b>&mdash;Raster će se pretvoriti u skup podataka linijskih geoobjekata.
                     
  
                 </li>
-                <li>Poligon &ndash; raster će se pretvoriti u skup podataka poligonalnih geoobjekata.
+                <li> <b>Polygon</b>&mdash;Raster će se pretvoriti u skup podataka poligonalnih geoobjekata.
                     
 
                 </li>
@@ -123,14 +123,58 @@
         <div><h2>Pojednostavni linije ili poligone</h2></div>
         <hr/>
         <div>
-            <p>Navedite ako treba pojednostavniti geoobjekte.
+            <p>Određuje hoće li linije ili poligoni biti pojednostavljeni (izglađeni). Zaglađivanje se vr&scaron;i na način da linija sadrži minimalan broj segmenata, a da pritom ostane &scaron;to bliže izvornim rubovima rasterskih ćelija.
             </p>
-            <p>Ako se označi (zadano), izgladit će se linijski ili poligonalni geoobjekti kako bi nastao općenitiji rezultat. Ako se ova opcija ne označi, linearni geoobjekti pratit će ograničenja ćelija skupa podataka rastera.
+            <ul>
+                <li>Označeno&mdash;Geoobjekti linija ili poligona bit će izglađene kako bi se dobio općenitiji rezultat. To je zadano.
+                    
+
+                </li>
+                <li>Neoznačeno&mdash;Geoobjekti linija ili poligona pratit će granice ćelije rasterskog skupa podataka.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ovaj je parametar podržan samo ako je vrsta izlaza linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Stvori geoobjekte od više dijelova</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje hoće li se izlazni poligoni sastojati od geoobjekata od jednog ili vi&scaron;e dijelova.
+            </p>
+            <ul>
+                <li>Označeno&mdash;Geoobjekti od vi&scaron;e dijelova biti će stvoreni na temelju poligona koji imaju istu vrijednost.
+                    
+
+                </li>
+                <li>Neoznačeno&mdash;Individualni (jednodijelni) geoobjekti biti će stvoreni za svaki poligon. To je zadano.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ovaj je parametar podržan samo ako je vrsta izlaza poligon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimalni vrhovi po geoobjektu poligona</h2></div>
+        <hr/>
+        <div>
+            <p>Granica vrha koristi se za podjelu poligona na manje poligone.
+            </p>
+            <p>Ako se ostavi praznom, izlazni poligoni se neće podijeliti. To je zadano.
+            </p>
+            <p>Ovaj je parametar podržan samo ako je vrsta izlaza poligon.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["require","exports","esri/renderers/arcadeUtils","esri/arcade/Dictionary"],(function(e,n,t,r){Object.defineProperty(n,"__esModule",{value:!0}),n.createSyntaxTree=function(e){return t.createSyntaxTree(e)},n.createFunction=function(e,n){return t.createFunction(e,n)},n.createExecContext=function(e,n){return t.createExecContext(e,n)},n.executeFunction=function(e,n){return t.executeFunction(e,n)},n.extractFieldNames=function(e){return t.extractFieldNames(e)},n.getViewInfo=function(e){if(e&&e.viewingMode&&null!=e.scale&&e.spatialReference)return{view:new r({viewingMode:e.viewingMode,scale:e.scale}),sr:e.spatialReference}}}));

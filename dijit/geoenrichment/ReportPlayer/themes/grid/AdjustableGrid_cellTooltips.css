@@ -23,6 +23,7 @@
     max-height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
+    color: #4c4c4c;
 }
 
     .esriGEAdjustableGrid_cellTooltip_expression .esriGEAdjustableGrid_cellTooltip_expressionVariable {

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Clasificar objetos con aprendizaje profundo</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Clasificar objetos con aprendizaje profundo"></h2>
+        <hr/>
+    <p>Esta herramienta ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada y una clase de entidad opcional para generar una clase de entidad o tabla en la que cada objeto de entrada tenga asignada una etiqueta de clase.
+    </p>
+    <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute; el &aacute;rea r&aacute;ster visible dentro de la extensi&oacute;n de mapa actual. Si se ha desactivado, se analizar&aacute; todo el r&aacute;ster, aunque est&eacute; fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Elegir imagen utilizada para clasificar objetos</h2></div>
+        <hr/>
+        <div>
+            <p>La imagen de entrada usada para detectar objetos.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Elegir capa de entidades para objetos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de entidades de entrada de puntos, l&iacute;neas o pol&iacute;gonos que identifica la ubicaci&oacute;n de cada objeto que se va a clasificar y etiquetar. Cada fila de la capa de entidades de entrada representa un &uacute;nico objeto.
+            </p>
+            <p>Si no se especifica ninguna capa de entidades de entrada, la herramienta asume que cada imagen de entrada contiene un &uacute;nico objeto que se va a clasificar. Si las im&aacute;genes de entrada utilizan alguna referencia espacial, la salida de la herramienta es una capa de entidades en la que se utiliza la extensi&oacute;n de cada imagen como la geometr&iacute;a de delimitaci&oacute;n para cada entidad etiquetada. Si las im&aacute;genes de entrada no se referencian espacialmente, la salida de la herramienta es una tabla que contiene los valores de Id. de imagen y las etiquetas de clase de cada imagen.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Elegir el modelo de aprendizaje profundo utilizado para clasificar objetos</h2></div>
+        <hr/>
+        <div>
+            <p>El elemento del paquete de aprendizaje profundo de entrada ( <code>.dlpk</code>).
+            </p>
+            <p>El paquete de aprendizaje profundo est&aacute; formado por el archivo JSON de definici&oacute;n de modelo de Esri ( <code>.emd</code>), el archivo de modelo binario de aprendizaje profundo y, opcionalmente, la funci&oacute;n r&aacute;ster de Python que se debe utilizar.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Especificar los argumentos del modelo de aprendizaje profundo</h2></div>
+        <hr/>
+        <div>
+            <p>Los argumentos de funci&oacute;n se definen en la clase de funci&oacute;n r&aacute;ster de Python a la que el modelo de entrada hace referencia. Aqu&iacute; es donde enumera los argumentos y par&aacute;metros de aprendizaje profundo adicionales para experimentos y refinamiento, como un umbral de confianza para ajustar la sensibilidad.
+            </p>
+            <p>La herramienta rellena los nombres de los argumentos a partir de la lectura del m&oacute;dulo de Python del servidor de an&aacute;lisis de r&aacute;ster.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definir nombre de campo de etiqueta de clase</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre del campo que va a contener la etiqueta de clasificaci&oacute;n en la capa de entidades de salida.
+            </p>
+            <p>Si no se especifica ning&uacute;n nombre de campo, se generar&aacute; un nuevo campo denominado  <i>ClassLabel</i> en la capa de entidades de salida.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Modo de proceso</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica c&oacute;mo se procesar&aacute;n todos los elementos de r&aacute;ster en un servicio de im&aacute;genes. 
+                <ul>
+                    <li> <b>Procesar como imagen en mosaico</b>: todos los elementos de r&aacute;ster en el servicio de im&aacute;genes se unir&aacute;n en mosaico y se procesar&aacute;n. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Procesar elementos por separado</b>: todos los elementos de r&aacute;ster en el servicio de im&aacute;genes se procesar&aacute;n como im&aacute;genes separadas.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

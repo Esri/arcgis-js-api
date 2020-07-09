@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","./GPMessage"],(function(e,s,i,T,o){var S=e(null,{declaredClass:"esri.tasks.JobInfo",constructor:function(e){this.messages=[],s.mixin(this,e);var i,T=this.messages,S=T.length;for(i=0;i<S;i++)T[i]=new o(T[i])},jobId:"",jobStatus:""});return s.mixin(S,{STATUS_CANCELLED:"esriJobCancelled",STATUS_CANCELLING:"esriJobCancelling",STATUS_DELETED:"esriJobDeleted",STATUS_DELETING:"esriJobDeleting",STATUS_EXECUTING:"esriJobExecuting",STATUS_FAILED:"esriJobFailed",STATUS_NEW:"esriJobNew",STATUS_SUBMITTED:"esriJobSubmitted",STATUS_SUCCEEDED:"esriJobSucceeded",STATUS_TIMED_OUT:"esriJobTimedOut",STATUS_WAITING:"esriJobWaiting"}),i("extend-esri")&&s.setObject("tasks.JobInfo",S,T),S}));

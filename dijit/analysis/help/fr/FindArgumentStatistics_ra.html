@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rechercher des statistiques d’arguments</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Rechercher des statistiques d&rsquo;argument"></h2>
+        <hr/>
+    <p>Extrait la valeur de dimension ou l&rsquo;index de canal &agrave; laquelle/auquel une statistique donn&eacute;e est atteinte pour chaque pixel d&rsquo;un raster multidimensionnel ou multicanal.
+    </p>
+    <p>Utilisez cet outil pour extraire la valeur de dimension (par exemple la date, la hauteur ou la profondeur) &agrave; laquelle une statistique en particulier est atteinte dans la pile de rasters dans un jeu de donn&eacute;es raster multidimensionnelles. Vous pouvez &eacute;galement rechercher le num&eacute;ro de canal auquel la statistique est atteinte dans un raster multicanal.
+    </p>
+    <p>Vous pouvez par exemple souhaiter conna&icirc;tre le mois auquel chaque pixel a atteint la temp&eacute;rature de la surface des oc&eacute;ans la plus &eacute;lev&eacute;e sur 30&nbsp;ann&eacute;es de collecte de donn&eacute;es. Autre exemple&nbsp;: vous avez une image de t&eacute;l&eacute;d&eacute;tection de huit canaux et vous souhaitez conna&icirc;tre le canal dans lequel la valeur de r&eacute;flectance minimale a &eacute;t&eacute; atteinte pour chaque pixel.
+    </p>
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue courante de la carte)</b> est s&eacute;lectionn&eacute;e, les variables ou les canaux de la couche qui sont visibles au sein de l&rsquo;&eacute;tendue courante de la carte sont analys&eacute;s. Si cette option n&rsquo;est pas s&eacute;lectionn&eacute;e, les variables ou les canaux de toute la couche sont analys&eacute;s, m&ecirc;me s&rsquo;ils se trouvent en dehors de l&rsquo;&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Choisir une couche d’imagerie multidimensionnelle ou à plusieurs canaux à analyser</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster multidimensionnel ou multicanal &agrave; analyser.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Choisir la dimension à partir de laquelle extraire la statistique</h2></div>
+        <hr/>
+        <div>
+            <p>La dimension &agrave; partir de laquelle extraire la statistique. Si le raster en entr&eacute;e n&rsquo;est pas un raster multidimensionnel, ce param&egrave;tre n&rsquo;est pas requis.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Choisir la ou les variables à analyser</h2></div>
+        <hr/>
+        <div>
+            <p>La variable ou les variables &agrave; analyser. Si le raster en entr&eacute;e n&rsquo;est pas multidimensionnel, les valeurs de pixel du raster multicanal sont consid&eacute;r&eacute;es comme la variable. Si le raster en entr&eacute;e est multidimensionnel et qu&rsquo;aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, toutes les variables avec la dimension s&eacute;lectionn&eacute;e sont analys&eacute;es.
+            </p>
+            <p>Par exemple, pour trouver les ann&eacute;es qui ont connu les plus fortes temp&eacute;ratures, sp&eacute;cifiez la temp&eacute;rature comme variable &agrave; analyser. Si vous ne sp&eacute;cifiez aucune variable et que vous poss&eacute;dez des variables de pr&eacute;cipitation et de temp&eacute;rature, ces deux variables sont analys&eacute;es et le raster multidimensionnel en sortie inclut alors les deux variables.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Choisir le type de statistique</h2></div>
+        <hr/>
+        <div>
+            <p>Indique la statistique &agrave; extraire de la ou des variables le long de la dimension donn&eacute;e. 
+            </p>
+            <ul>
+                <li> <b>Argument of the minimum (Argument du minimum)</b>&nbsp;: la valeur de dimension &agrave; laquelle la valeur de variable minimale est atteinte sera extraite. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                </li>
+                <li> <b>Argument of the maximum (Argument du maximum)</b>&nbsp;: la valeur de dimension &agrave; laquelle la valeur de variable maximale est atteinte sera extraite.
+                </li>
+                <li> <b>Argument of the median (Argument de la m&eacute;diane)</b>&nbsp;: la valeur de dimension &agrave; laquelle la valeur de variable m&eacute;diane est atteinte sera extraite.
+                </li>
+                <li> <b>Argument of duration (Argument de dur&eacute;e)</b>&nbsp;: la dur&eacute;e de dimension la plus longue pour laquelle les valeurs des variables sont comprises entre les valeurs minimale et maximale.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Spécifier la valeur de plusieurs occurrences</h2></div>
+        <hr/>
+        <div>
+            <p>La valeur de pixel &agrave; utiliser pour indiquer qu&rsquo;une statistique d&rsquo;argument en particulier a &eacute;t&eacute; atteinte plusieurs fois dans le jeu de donn&eacute;es raster en entr&eacute;e. Si aucune valeur n&rsquo;est sp&eacute;cifi&eacute;e, la valeur de pixel est la valeur de la dimension la premi&egrave;re fois que la statistique d&rsquo;argument est atteinte.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Spécifier la valeur minimale</h2></div>
+        <hr/>
+        <div>
+            <p>La valeur de la variable minimale &agrave; utiliser pour extraire la dur&eacute;e.
+            </p>
+            <p>Ce param&egrave;tre est requis lorsque l&rsquo;option  <b>Duration (Dur&eacute;e)</b> est s&eacute;lectionn&eacute;e comme type de statistique.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Spécifier la valeur maximale</h2></div>
+        <hr/>
+        <div>
+            <p>La valeur de la variable maximale &agrave; utiliser pour extraire la dur&eacute;e.
+            </p>
+            <p>Cette &eacute;tape est requise lorsque l&rsquo;option  <b>Duration (Dur&eacute;e)</b> est s&eacute;lectionn&eacute;e comme type de statistique.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Choisir la définition de la dimension</h2></div>
+        <hr/>
+        <div>
+            <p>Indique comment la statistique est extraite de la dimension. 
+                <ul>
+                    <li> <b>All (Tout)</b>&nbsp;: la statistique est extraite sur toutes les dimensions. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Interval Keyword (Mot-cl&eacute; de l&rsquo;intervalle)</b>&nbsp;: la statistique est extraite de la dimension temporelle selon le mot-cl&eacute;&nbsp;de l&rsquo;intervalle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Choisir le mot-clé de l’intervalle</h2></div>
+        <hr/>
+        <div>
+            <p>L&rsquo;unit de temps pour laquelle extraire la statistique.
+            </p>
+            <p>Admettons que vous ayez cinq ann&eacute;es de donn&eacute;es quotidiennes de temp&eacute;rature de surface des oc&eacute;ans et que vous vouliez conna&icirc;tre l&rsquo;ann&eacute;e o&ugrave; la temp&eacute;rature la plus &eacute;lev&eacute;e a &eacute;t&eacute; observ&eacute;e. D&eacute;finissez  <b>Argument of the maximum (Argument du maximum)</b> comme type de statistique, d&eacute;finissez <b>Interval Keyword (Mot-cl&eacute;&nbsp;de l&rsquo;intervalle)</b> comme d&eacute;finition de la dimension et d&eacute;finissez <b>Yearly (Annuel)</b> comme mot-cl&eacute;&nbsp;de l&rsquo;intervalle dans cette &eacute;tape.
+            </p>
+            <p>Si vous souhaitez conna&icirc;tre le mois au cours duquel la temp&eacute;rature maximale a &eacute;t&eacute; observ&eacute;e, vous pouvez &eacute;galement d&eacute;finir  <b>Argument of the maximum (Argument du maximum)</b> comme type de statistique, d&eacute;finir <b>Interval Keyword (Mot-cl&eacute;&nbsp;de l&rsquo;intervalle)</b> comme d&eacute;finition de la dimension et d&eacute;finir <b>Recurring Monthly (Mensuel)</b> comme mot-cl&eacute;&nbsp;de l&rsquo;intervalle dans cette &eacute;tape. Un raster est g&eacute;n&eacute;r&eacute;, dans lequel chaque pixel contient le mois au cours duquel la statistique a &eacute;t&eacute; atteinte sur les cinq ann&eacute;es (18/08/2018, 25/08/2016, 07/08/2013, par exemple).
+            </p>
+            <p>Cette &eacute;tape est requise lorsque l&rsquo;option  <b>StdTime (&Eacute;cart type)</b> est d&eacute;finie comme dimension &agrave; partir de laquelle extraire la statistique et que l&rsquo;option <b>Interval Keyword (Mot-cl&eacute;&nbsp;de l&rsquo;intervalle)</b> est s&eacute;lectionn&eacute;e pour d&eacute;finir la fa&ccedil;on dont la statistique est extraite de la dimension temporelle.
+                <ul>
+                    <li> <b>Recurring daily (Tous les jours)</b>&nbsp;: la statistique est extraite des jours.
+                    </li>
+                    <li> <b>Recurring weekly (Toutes les semaines)</b>&nbsp;: la statistique est extraite des semaines.
+                    </li>
+                    <li> <b>Recurring monthly (Tous les mois)</b>&nbsp;: la statistique est extraite des mois.
+                    </li>
+                    <li> <b>Recurring quarterly (Tous les trimestres)</b>&nbsp;: la statistique est extraite des trimestres.
+                    </li>
+                    <li> <b>Hourly (Horaire)</b>&nbsp;: la statistique est extraite pour l&rsquo;heure &agrave; laquelle la statistique a &eacute;t&eacute; atteinte.
+                    </li>
+                    <li> <b>Daily (Quotidien)</b>&nbsp;: la statistique est extraite pour le jour auquel la statistique a &eacute;t&eacute; atteinte.
+                    </li>
+                    <li> <b>Weekly (Hebdomadaire)</b>&nbsp;: la statistique est extraite pour la semaine &agrave; laquelle la statistique a &eacute;t&eacute; atteinte.
+                    </li>
+                    <li> <b>Monthly (Mensuel)</b>&nbsp;: la statistique est extraite pour le mois auquel la statistique a &eacute;t&eacute; atteinte.
+                    </li>
+                    <li> <b>Quarterly (Trimestriel)</b>&nbsp;: la statistique est extraite pour le jour auquel le trimestre a &eacute;t&eacute; atteinte.
+                    </li>
+                    <li> <b>Yearly (Annuel)</b>&nbsp;: la statistique est extraite pour l&rsquo;ann&eacute;e &agrave; laquelle la statistique a &eacute;t&eacute; atteinte.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer les valeurs manquantes dans le calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse.
+                <ul>
+                    <li>Si la case est coch&eacute;e, l&rsquo;analyse inclut tous les pixels valides le long d&rsquo;une dimension donn&eacute;e et ignore les pixels NoData. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li>Si la case n&rsquo;est pas activ&eacute;e, le r&eacute;sultat de l&rsquo;analyse est NoData s&rsquo;il existe des valeurs NoData pour le pixel le long de la dimension donn&eacute;e.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

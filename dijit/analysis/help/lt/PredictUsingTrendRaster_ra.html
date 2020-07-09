@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prognozuoti naudojant tendencijų rastrą</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prognozuoti naudojant tendencijų rastrą"></h2>
+        <hr/>
+    <p>Apskaičiuoja prognozuojamą daugiamatį rastrą, naudodamas i&scaron; įrankio  Generuoti tendencijų rastrą gautą i&scaron;vesties tendencijų rastrą.
+    </p>
+    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik esamoje žemėlapio aprėptyje matomi kintamieji. Jei nepažymėta, bus analizuojami viso žemėlapio kintamieji, net jei jie nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pasirinkite prognozuojamą daugiamatį vaizdų sluoksnį</h2></div>
+        <hr/>
+        <div>
+            <p>Įvesties daugiamatis tendencijų rastras i&scaron; įrankio  Generuoti tendencijų rastrą.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pasirinkite kintamąjį (-uosius), kurie bus prognozuojami</h2></div>
+        <hr/>
+        <div>
+            <p>Kintamasis arba kintamieji, kuris (kurie) bus prognozuojamas (prognozuojami) analizėje. Jei kintamieji nenurodyti, bus naudojami jie visi.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Pasirinkite metodą, naudojamą pateikti prognozuojamas matmens reikšmes</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo metodą, naudojamą pateikti prognozuojamas matmens reik&scaron;mes.
+                <ul>
+                    <li> <b>Pagal reik&scaron;mę</b> &ndash; prognozė bus apskaičiuota pagal vieno matmens reik&scaron;mę arba pagal matmens reik&scaron;mių sąra&scaron;ą, nurodomą kitame etape. Tai numatytasis nustatymas. Pavyzdžiui, jei norite numatyti metinį kritulių kiekį 2050, 2100 ir 2150 metais.
+                    </li>
+                    <li> <b>Pagal intervalą</b> &ndash; prognozė bus apskaičiuota pagal matmens intervalą, apibrėžtą pradžios ir pabaigos reik&scaron;mėmis. Pavyzdžiui, jei norite numatyti metinį kritulių kiekį kasmet tarp 2050 ir 2150 metų.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Nurodykite matmens reikšmę (-es) prognozei</h2></div>
+        <hr/>
+        <div>
+            <p>Matmens reik&scaron;mė ar reik&scaron;mės, naudotinos prognozėje.
+            </p>
+            <p>Laiko, gylio ir auk&scaron;čio reik&scaron;mių formatas turi atitikti matmenų reik&scaron;mių, naudojamų generuoti tendencijų rastrą, formatą. Jei StdTime matmeniui buvo sukurtas tendencijų rastras, formatas turėtų būti YYYY-MM-DDTHH:MM:SS, pavyzdžiui, 2050-01-01T00:00:00. Kelios reik&scaron;mės atskiriamos kabliata&scaron;kiu.
+            </p>
+            <p>&Scaron;io parametro reikia, kai prognozei pasirinktas metodas  <b>Pagal reik&scaron;mę</b> matmens reik&scaron;mėms apibrėžti.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Apibrėžkite prognozės matmens intervalą</h2></div>
+        <hr/>
+        <div>
+            <p>Apibrėžkite matmens intervalo pradžios ir pabaigos datą, auk&scaron;tį arba gylį, naudojamą prognozei.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Nurodykite etapų skaičių tarp pradžios ir pabaigos reikšmių</h2></div>
+        <hr/>
+        <div>
+            <p>Į prognozę įtrauktinų etapų tarp dviejų matmenų reik&scaron;mių skaičius. Numatytoji reik&scaron;mė yra 1.
+            </p>
+            <p>Pavyzdžiui, norėdami prognozuoti temperatūros reik&scaron;mes kas penkerius metus, naudokite reik&scaron;mę 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Pasirinkite laiko reikšmės intervalui naudojamus matavimo vienetus</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo reik&scaron;mės intervalui naudojamus matavimo vienetus. Tai taikoma tik tada, kai analizės matmuo yra laiko matmuo.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

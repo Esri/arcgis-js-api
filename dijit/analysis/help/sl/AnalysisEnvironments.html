@@ -59,7 +59,7 @@
                 <ul>
                     <li>Obkljukano &ndash; Če sloj z enakim imenom že obstaja v va&scaron;i vsebini, bo ta prepisan. Izhodni sloj bo prikazan v istem koordinatnem sistemu kot vhodni sloj.
                     </li>
-                    <li>Odkljukano &ndash; Če vneseno ime sloja z rezultati že obstaja, bo pri&scaron;lo do napake. Zato morate sloj z rezultati pred izvajanjem orodja preimenovati. To je privzeto.
+                    <li>Odkljukano &ndash; Če vneseno ime sloja z rezultati že obstaja, bo pri&scaron;lo do napake. Zato morate sloj z rezultati pred izvajanjem orodja preimenovati. To je privzeta nastavitev.
                     </li>
                 </ul>
                 
@@ -92,7 +92,7 @@
             </p>
             <p>
                 <ul>
-                    <li>Obkljukano &ndash; Rezultati va&scaron;e analize bodo ustvarili gostujoč geoobjektni sloj in element bo ustvarjen v va&scaron;i vsebini. To je privzeto.
+                    <li>Obkljukano &ndash; Rezultati va&scaron;e analize bodo ustvarili gostujoč geoobjektni sloj in element bo ustvarjen v va&scaron;i vsebini. To je privzeta nastavitev.
                     </li>
                     <li>Odkljukano &ndash; Rezultati va&scaron;e analize bodo ustvarili zbirko geoobjektov.     
                     </li>
@@ -109,7 +109,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Enako kot vnos</b> &ndash; Izhodni sloj va&scaron;e analize bo prikazan v istem koordinatnem sistemu kot vhodni sloj. To je privzeto.
+                    <li> <b>Enako kot vnos</b> &ndash; Izhodni sloj va&scaron;e analize bo prikazan v istem koordinatnem sistemu kot vhodni sloj. To je privzeta nastavitev.
                     </li>
                     <li> <b>Kot je navedeno</b> &ndash; Rezultat va&scaron;e analize bo prikazan v izbranem koordinatnem sistemu. Ko je izbrana ta možnost, kliknite gumb globusa, da izberete s seznama znanih koordinatnih sistemov, ali dodajte WKID koordinatnega sistema v določeno polje.
                     </li>
@@ -131,7 +131,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Enako kot vnos</b> &ndash; Va&scaron;a analiza bo obdelana v istem koordinatnem sistemu kot vhodni sloj. To je privzeto.
+                    <li> <b>Enako kot vnos</b> &ndash; Va&scaron;a analiza bo obdelana v istem koordinatnem sistemu kot vhodni sloj. To je privzeta nastavitev.
                     </li>
                     <li> <b>Kot je navedeno</b> &ndash; Va&scaron;a analiza bo prikazana v izbranem koordinatnem sistemu. Ko je izbrana ta možnost, kliknite gumb globusa, da izberete s seznama znanih projiciranih koordinatnih sistemov, ali dodajte WKID koordinatnega sistema v določeno polje.
                     </li>
@@ -181,7 +181,7 @@
                 <ul>
                     <li> <b>Minimum vnosov</b> &ndash; Uporabite najmanj&scaron;o velikost celice vseh vhodnih slojev.
                     </li>
-                    <li> <b>Maksimum vnosov</b> &ndash; Uporabite največjo velikost celice vseh vhodnih slojev. To je privzeto.
+                    <li> <b>Maksimum vnosov</b> &ndash; Uporabite največjo velikost celice vseh vhodnih slojev. To je privzeta nastavitev.
                     </li>
                     <li> <b>Kot je navedeno</b> &ndash; Določite &scaron;tevilsko vrednost, da nastavite velikost celice. Če je to izbrano, je privzeta vrednost 1.
                     </li>
@@ -217,7 +217,7 @@
         <div>
             <p>Rezultati GeoAnalytics so lahko shranjeni v  ArcGIS Data Store in prikazani kot geoobjektni sloj v  Portal for ArcGIS ali v konfigurirani delitvi datotek velikih podatkov. 
             </p>
-            <p>Pri shranjevanju rezultata v  ArcGIS Data Store je treba rezultate v večini primerov shraniti v shrambo časovno-vremenskih podatkov. To je privzeto. V nadaljevanju so razlogi, zakaj bi morda želeli shraniti rezultate v relacijsko shrambo podatkov: 
+            <p>Pri shranjevanju rezultata v  ArcGIS Data Store je treba rezultate v večini primerov shraniti v shrambo časovno-vremenskih podatkov. To je privzeta nastavitev. V nadaljevanju so razlogi, zakaj bi morda želeli shraniti rezultate v relacijsko shrambo podatkov: 
                 <ul>
                     <li>Za uporabo va&scaron;ih rezultatov pri sodelovanju portal z portalom
                     </li>
@@ -246,11 +246,27 @@
             </p>
         </div>
     </div>
+    <div id="retryOnFailures">
+        <div><h2>Število ponovnih poskusov ob napakah</h2></div>
+        <hr/>
+        <div>
+            <p>Določi &scaron;tevilo ponovnih poskusov, ki jih bo en postopek izvajalnika izvedel, kadar pri obdelavi določenega opravila pride do naključne napake. Privzeta vrednost je 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Interval recikliranja izvajalnikov obdelave</h2></div>
+        <hr/>
+        <div>
+            <p>Določi koliko razdelkov slike bo obdelanih preden se postopki izvajalnika ponovno zaženejo, da bi se preprečile morebitne napake pri dolgotrajnih postopkih. Privzeta vrednost je 0.
+            </p>
+        </div>
+    </div>
     <div id="processorType">
         <div><h2>Tip procesorja</h2></div>
         <hr/>
         <div>
-            <p>Orodja, ki upo&scaron;tevajo okolje  <b>Tipa procesorja</b>, vam omogočajo, da izberete, kje in kako želite procesirati svoje podatke. Svoje podatke lahko procesirate s CPU-jem ali GPU-jem strežni&scaron;kega računalnika. Če je okolje <b>Tipa procesorja</b> prazno, bo orodje za procesiranje podatkov uporabilo CPU. To je privzeto.
+            <p>Orodja, ki upo&scaron;tevajo okolje  <b>Tipa procesorja</b>, vam omogočajo, da izberete, kje in kako želite procesirati svoje podatke. Svoje podatke lahko procesirate s CPU-jem ali GPU-jem strežni&scaron;kega računalnika. Če je okolje <b>Tipa procesorja</b> prazno, bo orodje za procesiranje podatkov uporabilo CPU. To je privzeta nastavitev.
             </p> 
             <p>Procesiranje s CPU-jem je mogoče paralelizirati na več jedrih in instancah, kot jih lahko obravnava  <b>Dejavnik vzporednega procesiranja</b>.
             </p>

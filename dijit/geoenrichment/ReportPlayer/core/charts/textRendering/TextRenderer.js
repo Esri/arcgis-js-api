@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dijit/Destroyable","esri/dijit/geoenrichment/ReportPlayer/core/sections/SectionTypes","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/ViewModes"],(function(e,t,i,n){return e(t,{currentFeatureIndex:null,_textSection:null,renderTexts:function(e){this._destroyTexts();var t=e.visualProperties.floatingTexts;if(t&&t.length){var o={class:"chartContainer_textSection"};o.initialWidth=e.chartW,o.initialHeight=e.chartH,o.json={type:i.DETAILS,stack:t},o.viewModel=e.viewModel,o.theme=e.theme,o.tableClass="chartContainerTextTable",o.parentWidget=e.parentWidget,o.currentFeatureIndex=this.currentFeatureIndex,o.initialViewMode=this._viewMode||n.EDIT,o.initialSpecificViewMode={richText:n.PREVIEW_VALUES,variable:n.PREVIEW_VALUES},this._provideParamsForTextSection(o,e),this._textSection=e.viewModel.layoutBuilder.createElement("section",o,e.textNode)}},_provideParamsForTextSection:function(e,t){},_viewMode:null,setViewMode:function(e){this._viewMode!==e&&(this._viewMode=e,this._textSection&&this._textSection.setViewMode(e))},_destroyTexts:function(){this._textSection&&this._textSection.destroy(),this._textSection=null},destroy:function(){this._destroyTexts(),this.inherited(arguments)}})}));

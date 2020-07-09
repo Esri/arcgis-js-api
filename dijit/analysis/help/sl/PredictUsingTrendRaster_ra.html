@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Napoved s pomočjo rastra trenda</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Napoved s pomočjo rastra trenda"></h2>
+        <hr/>
+    <p>Izračuna napovedani večdimenzionalni raster s pomočjo izhodnega rastra trenda iz orodja  Ustvari raster trenda.
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke sloja, ki so vidne znotraj trenutnega obsega mape. Če je možnost odkljukana, bodo analizirane spremenljivke celotnega sloja, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izberi večdimenzionalni slikovni sloj za napoved</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodni večdimenzionalni raster trenda iz orodja  Ustvari raster trenda.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izberi spremenljivko(-e), ki bodo napovedane</h2></div>
+        <hr/>
+        <div>
+            <p>Spremenljivka ali spremenljivke, ki bodo napovedane vzdolž podane dimenzije. Če ni določene nobene spremenljive, bodo uporabljene vse spremenljivke.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Izberi metodo, ki se uporablja za zagotavljanje napovedi vrednosti dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Določi metodo, ki se uporablja za zagotavljanje napovedi vrednosti dimenzije.
+                <ul>
+                    <li> <b>Po vrednosti</b> &ndash; Napoved bo izračunana za posamezno vrednost dimenzije ali za seznam vrednosti dimenzije, kot določeno v naslednjem koraku. To je privzeta nastavitev. Na primer, želite napovedati letne padavine za leta 2050, 2100 in 2150.
+                    </li>
+                    <li> <b>Po intervalu</b> &ndash; Napoved bo izračunana za interval dimenzije, ki je opredeljen z začetno in končno vrednostjo. Na primer, želite napovedati letne padavine za vsako leto med letoma 2050 in 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Določi vrednost(-i) dimenzije za napoved</h2></div>
+        <hr/>
+        <div>
+            <p>Vrednost ali vrednosti dimenzije, uporabljene v napovedi.
+            </p>
+            <p>Format vrednosti časa, globine in vi&scaron;ine se mora ujemati s formatom vrednosti dimenzije, ki bodo uporabljene za ustvarjanje rastra trenda. Če se raster trenda ustvari za dimenzijo StdTime (standardni čas) mora biti format YYYY-MM-DDTHH:MM:SS, na primer, 2050-01-01T00:00:00. Več vrednosti je ločenih s podpičjem.
+            </p>
+            <p>Ta parameter je obvezen, kadar je za opredelitev vrednosti dimenzije za napoved izbrana metoda  <b>Po vrednosti</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Določi interval dimenzije za napoved</h2></div>
+        <hr/>
+        <div>
+            <p>Določi začetni in končni datum, vi&scaron;ino ali globino intervala dimenzije, ki bo uporabljen v napovedi.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Določi število korakov med začetnimi in končnim vrednostmi</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;tevilo korakov med dvema vrednostma dimenzije, vključenima v napoved. Privzeta vrednost je 1.
+            </p>
+            <p>Na primer, za napoved vrednosti temperature vsakih pet let, uporabite vrednost 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Izberi enoto, ki bo uporabljena za interval vrednosti časa</h2></div>
+        <hr/>
+        <div>
+            <p>Določi enoto, ki bo uporabljena za interval vrednosti. To velja samo, kadar je dimenzija analize časovna dimenzija.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

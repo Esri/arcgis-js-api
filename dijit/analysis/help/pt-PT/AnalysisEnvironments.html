@@ -201,7 +201,7 @@
             <ul>
                 <li>A m&aacute;scara pode ser uma camada raster ou de elementos.
                 </li>
-                <li>Caso a m&aacute;scara da an&aacute;lise seja uma uma camada raster, todas as c&eacute;lulas que possuam um valor ser&atilde;o consideradas na defini&ccedil;&atilde;o da m&aacute;scara. As c&eacute;lulas existentes numa m&aacute;scara raster que sejam NoData ser&atilde;o consideradas como estando fora da m&aacute;scara e n&atilde;o existir&aacute; qualquer elemento NoData na camada de resultados de an&aacute;lise. 
+                <li>Caso a m&aacute;scara da an&aacute;lise seja uma camada raster, todas as c&eacute;lulas que possuam um valor ser&atilde;o consideradas na defini&ccedil;&atilde;o da m&aacute;scara. As c&eacute;lulas existentes numa m&aacute;scara raster que sejam NoData ser&atilde;o consideradas como estando fora da m&aacute;scara e n&atilde;o existir&aacute; qualquer elemento NoData na camada de resultados de an&aacute;lise. 
                 </li>
                 <li>Caso a m&aacute;scara de an&aacute;lise seja uma camada de elementos, ser&aacute; internamente convertida para raster na execu&ccedil;&atilde;o. Por este motivo garanta que o
  <b>Tamanho da C&eacute;lula</b> e <b>o Encaixe Raster</b> est&atilde;o definidos apropriadamente para a sua an&aacute;lise.
@@ -242,6 +242,22 @@
             <p>Ao configurar o  <b>fator de processamento paralelo</b>, pode requerer qual o n&uacute;mero de trabalhadores paralelos que o servidor da imagem da anal&iacute;tica do raster utiliza para processar uma tarefa da an&aacute;lise raster. No entanto, se o n&uacute;mero total de processos paralelos exceder o n&uacute;mero m&aacute;ximo de inst&acirc;ncias de servi&ccedil;o de processamento de raster (CPU e GPU), ent&atilde;o, os processos paralelos adicionais ser&atilde;o postos em lista de espera.
             </p>
             <p>Se o  <b>fator de processamento paralelo</b> n&atilde;o estiver definido, o que corresponde &agrave; predefini&ccedil;&atilde;o, ent&atilde;o, a ferramenta utilizar&aacute; 80 porcento do n&uacute;mero m&aacute;ximo de inst&acirc;ncias do servi&ccedil;o de processamento de raster. &Eacute; poss&iacute;vel definir o fator de processamento paralelo como um n&uacute;mero inteiro ou como uma percentagem.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Número de Tentativas em Falhas</h2></div>
+        <hr/>
+        <div>
+            <p>Define quantas tentativas o mesmo processo do colaborador tentar&aacute; quando h&aacute; uma falha aleat&oacute;ria ao processar uma tarefa particular. O valor padr&atilde;o &eacute; 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Intervalo de Reciclagem do Processamento de Colaboradores</h2></div>
+        <hr/>
+        <div>
+            <p>Defina quantas sec&ccedil;&otilde;es de imagem ser&atilde;o processadas antes de reiniciar os processos do colaborador, a fim de evitar poss&iacute;veis falhas em processos de longa dura&ccedil;&atilde;o. O valor padr&atilde;o &eacute; 0.
             </p>
         </div>
     </div>

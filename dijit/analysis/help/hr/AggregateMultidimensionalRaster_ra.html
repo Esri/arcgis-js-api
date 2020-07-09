@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Agregiraj višedimenzionalni raster</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregiraj vi&scaron;edimenzionalni raster"></h2>
+        <hr/>
+    <p>Generira vi&scaron;edimenzionalni rasterski skup podataka kombiniranjem postojećih varijabli vi&scaron;edimenzionalnog rastera prema određenoj dimenziji.
+    </p>
+    <p>Ako imate 30 godina podataka o temperaturi povr&scaron;ine mora, koje ste prikupljali mjesečno na svakih 5 metara dubine do 100 metara, neki primjeri primjene su sljedeći:
+        <ul>
+            <li>Agregiraj mjesečne podatke o temperaturi u godi&scaron;nje podatke.
+            </li>
+            <li>Agregiraj mjesečne podatke o temperaturi u 4-mjesečne intervale.
+            </li>
+            <li>Agregiraj podatke o temperaturi od 0 do 25 metara, zatim od 25 do 50 metara, zatim od 50 do 100 metara.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se varijable sloja koje su vidljive unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable cijelog sloja čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Odaberite sloj višedimenzionalnih snimki za agregiranje</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj ulaznih snimki vi&scaron;edimenzionalnog rastera koji će se agregirati.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Odaberite dimenziju za agregiranje</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija agregacije. Ovo je dimenzija po kojoj će se varijable agregirati.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Odaberite varijablu/e za agregiranje</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable koje će se agregirati po danoj dimenziji. Ako nije određena varijabla, agregirat će se sve varijable s odabranom dimenzijom.
+            </p>
+            <p>Primjerice, kako biste agregirali svoje podatke o dnevnoj temperaturi u prosječne mjesečne vrijednosti, postavite temperaturu kao varijablu za agregiranje. Ako ne odredite nikakve varijable, a imate varijable za dnevnu temperaturu i dnevne padaline, obje će se varijable agregirati u mjesečne prosjeke, a izlatni vi&scaron;edimenzionalni raster uključivat će obje varijable.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Odaberite metodu agregacije</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje matematičku metodu koja će se upotrijebiti pri kombiniranju agregiranih isječaka unutar intervala. 
+                <ul>
+                    <li> <b>Mean</b>&mdash;Izračunava srednju vrijednost vrijednosti piksela u svim isječcima unutar intervala. To je zadano.
+                    </li>
+                    <li> <b>Maximum</b>&mdash;Izračunava najvi&scaron;u vrijednost piksela u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Majority</b>&mdash;Izračunava najučestaliju vrijednost piksela u svim isječcima unutar intervala.
+                    </li>
+                    <li> <b>Minimum</b>&mdash;Izračunava najnižu vrijednost piksela u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Minority</b>&mdash;Izračunava najmanje učestalu vrijednost piksela u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Median</b>&mdash;Izračunava srednju vrijednost piksela u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Range</b>&mdash;Izračunava raspon vrijednosti za piksel u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Standard Deviation</b>&mdash;Izračunava standardno odstupanje kod vrijednosti piksela u svim isječcima unutar intervala.
+                    </li>
+                    <li> <b>Sum</b>&mdash;Izračunava zbroj vrijednosti piksela u svim isječcima unutar intervala.
+                    </li>
+                    <li> <b>Variety</b>&mdash;Izračunava broj jedinstvenih vrijednosti piksela u svim isječcima u intervalu.
+                    </li>
+                    <li> <b>Custom</b>&mdash;Izračunava vrijednost piksela na temelju prilagođene funkcije rastera.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Odaberite predložak funkcije rastera</h2></div>
+        <hr/>
+        <div>
+            <p>Prilagođena funkcija rastera koja će se upotrebljavati za izračun vrijednosti piksela agregiranih rastera. Unos je stavka predlo&scaron;ka funkcije rastera na portalu. Taj je unos potreban kada je  <b>Metoda agregacije</b> postavljena na <b>Prilagođeno</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Odaberite definiciju agregiranja</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje interval dimenzija za koji će se podaci agregirati. 
+                <ul>
+                    <li> <b>All</b>&mdash;Vrijednosti podataka bit će agregirani u svim isječcima. To je zadano.
+                    </li>
+                    <li> <b>Interval Keyword</b>&mdash;Podaci varijabli bit će agregirani upotrebljavajući općepoznati interval.
+                    </li>
+                    <li> <b>Interval Value</b>&mdash;Podaci varijabli bit će agregirani upotrebljavajući interval i jedinicu koju je odredio korisnik.
+                    </li>
+                    <li> <b>Interval Ranges</b>&mdash;Podaci varijabli bit će agregirani između određenih parova vrijednosti ili datuma.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Odaberite interval ključnih riječi</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje interval za ključne riječi koji će se upotrijebiti prilikom agregiranja po dimenziji. Taj je unos potreban kada je  <b>Definicija agregacije</b> postavljena na <b>Interval ključne riječi</b>, a agregacija mora biti vremenska.
+                <ul>
+                    <li> <b>Hourly</b>&mdash;Vrijednosti podataka bit će agregirane u satne vremenske isječke, a rezultat će uključivati svaki sat u vremenskoj seriji.
+                    </li>
+                    <li> <b>Daily</b>&mdash;Vrijednosti podataka bit će agregirane u dnevne vremenske isječke, a rezultat će uključivati svaki dan u vremenskoj seriji.
+                    </li>
+                    <li> <b>Weekly</b>&mdash;Vrijednosti podataka bit će agregirane u tjedne vremenske isječke, a rezultat će uključivati svaki tjedan u vremenskoj seriji.
+                    </li>
+                    <li> <b>Monthly</b>&mdash;Vrijednosti podataka bit će agregirane u mjesečne vremenske isječke, a rezultat će uključivati svaki mjesec u vremenskoj seriji.
+                    </li>
+                    <li> <b>Quarterly</b>&mdash;Vrijednosti podataka bit će agregirane u kvartalne vremenske isječke, a rezultat će uključivati svaki kvartal u vremenskoj seriji.
+                    </li>
+                    <li> <b>Yearly</b>&mdash;Vrijednosti podataka bit će agregirane u godi&scaron;nje vremenske isječke, a rezultat će uključivati svaku godinu u vremenskoj seriji.
+                    </li>
+                    <li> <b>Recurring Daily</b>&mdash;Vrijednosti podataka bit će agregirane u dnevne vremenske isječke, a rezultat će uključivati jednu agregiranu vrijednost po danu prema julijanskom kalendaru. Izlazni podaci uključivat će najvi&scaron;e 366 dnevnih vremenskih isječaka.
+                    </li>
+                    <li> <b>Recurring Weekly</b>&mdash;Vrijednosti podataka bit će agregirane u tjedne vremenske isječke, a rezultat će uključivati jednu agregiranu vrijednost po tjednu. Izlazni podaci uključivat će najvi&scaron;e 53 tjednih vremenskih isječaka.
+                    </li>
+                    <li> <b>Recurring Monthly</b>&mdash;Vrijednosti podataka bit će agregirane u tjedne vremenske isječke, a rezultat će uključivati jednu agregiranu vrijednost po mjesecu. Izlazni podaci uključivat će najvi&scaron;e 12 mjesečnih vremenskih isječaka.
+                    </li>
+                    <li> <b>Recurring Quarterly</b>&mdash;Vrijednosti podataka bit će agregirane u tjedne vremenske isječke, a rezultat će uključivati jednu agregiranu vrijednost po kvartalu. Izlazni podaci uključivat će najvi&scaron;e 4 kvartalnih vremenskih isječaka.
+                    </li>
+                    <li> <b>Dekadly</b>&mdash; Vrijednosti podataka bit će agregirane u 3 razdoblja od 10 dana. Posljednje razdoblje može sadržavati vi&scaron;e ili manje od 10 dana. Izlazni podaci uključivat će 3 isječka za svaki mjesec.
+                    </li>
+                    <li> <b>Pentadly</b>&mdash;Vrijednosti podataka bit će agregirane u 6 razdoblja od 5 dana. Posljednje razdoblje može sadržavati vi&scaron;e ili manje od 5 dana. Izlazni podaci uključivat će 6 isječka za svaki mjesec.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval vrijednosti</h2></div>
+        <hr/>
+        <div>
+            <p>Veličina intervala koji će se upotrebljavati za agregaciju. Taj je parametar potreban kada je parametar  <b>Definicija agregacije</b> postavljen na <b>Vrijednost intervala</b>.
+            </p>
+            <p>Primjerice, za agregaciju 30 godina podataka o mjesečnoj temperaturi u 5-godi&scaron;nja razdoblja, unesite 5 kao  <b>Interval vrijednosti </b> i postavite <b>Jedinicu</b> na <b>Godine</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Jedinica</h2></div>
+        <hr/>
+        <div>
+            <p>Jedinica koja će se upotrebljavati za vrijednost intervala. Taj je unos potreban kada je  <b>Dimenzija</b> polje za vrijeme, a <b>Definicija agregacije</b> postavljena na <b>Vrijednost intervala</b>.
+            </p>
+            <p>Ako agregirate preko bilo čega osim vremena, ova mogućnost neće biti dostupna i jedinica za vrijednost intervala bit će jednaka jedinici varijable unesenih vi&scaron;edimenzionalnih rasterskih podataka. 
+                <ul>
+                    <li> <b>Hours</b>&mdash;Vrijednosti podataka bit će agregirane u satne vremenske isječke u danom intervalu.
+                    </li>
+                    <li> <b>Days</b>&mdash;Vrijednosti podataka bit će agregirane u dnevne vremenske isječke u danom intervalu.
+                    </li>
+                    <li> <b>Weeks</b>&mdash;Vrijednosti podataka bit će agregirane u tjedne vremenske isječke u danom intervalu.
+                    </li>
+                    <li> <b>Months</b>&mdash;Vrijednosti podataka bit će agregirane u mjesečne vremenske isječke u danom intervalu.
+                    </li>
+                    <li> <b>Years</b>&mdash;Vrijednosti podataka bit će agregirane u godi&scaron;nje vremenske isječke u danom intervalu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definiraj raspone</h2></div>
+        <hr/>
+        <div>
+            <p>Rasponi intervala upotrebljavat će se za agregiranje grupa vrijednosti. Oni se sastoje od parova minimalnih i maksimalnih vrijednosti raspona s vrstama podataka Dvostruko ili Datum. Taj je unos potreban kada je  <b>Metoda agregacije</b> postavljena na <b>Rasponi intervala</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju. 
+                <ul>
+                    <li>Provjereno&mdash;Analiza će uključivati sve važeće piksele za danu dimenziju i ignorirati piksele Bez podataka. To je zadano.
+                    </li>
+                    <li>Neoznačeno&mdash;Analiza će prikazati vrijednosti Bez podataka ako postoje vrijednosti Bez podataka za piksele za danu dimenziju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klasificiraj objekte z globokim učenjem</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasificiraj objekte z globokim učenjem"></h2>
+        <hr/>
+    <p>To orodje izvaja naučeni model globokega učenja na vhodnem rastru in izbirnem geoobjektnem razred, da izdelava geoobjektni razred ali tabelo, v kateri ima vsak vhodni objekt dodeljeno oznako razreda.
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirana samo rastrska območja, vidna znotraj trenutnega obsega karte. Če je odkljukano, bo analiziran celoten raster, tudi če je zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Izberi sliko, ki se bo uporabljala za klasifikacijo objektov</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodna slika, ki se bo uporabljala za zaznavanje objektov.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Izberi geoobjektni sloj za objekte (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodni geoobjektni sloj točke, linije ali poligona, ki določa lokacijo vsakega objekta, ki bo klasificiran in označen. Vsaka vrstica v vhodnem geoobjektnem sloju predstavlja posamezni objekt.
+            </p>
+            <p>Če ni določenega vhodnega geoobjektnega sloja, orodje predpostavlja, da vsaka vhodna slika vsebuje en sam objekt za klasifikacijo. Če vhodna slika ali slike uporabljajo koordinatni sistem, potem je rezultat orodja geoobjektni sloj, v katerem je obseg vsake slike uporabljen kot omejevalna geometrija za vsak označen geoobjekt. Če vhodna slika ali slike ne uporabljajo koordinatnega sistema, je rezultat orodja tabela, ki vsebuje ID vrednosti slike in oznako razreda za vsako sliko.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Izberi model globokega učenja, ki se bo uporabljal za klasifikacijo objektov</h2></div>
+        <hr/>
+        <div>
+            <p>Element vhodnega paketa globokega učenja ( <code>.dlpk</code>).
+            </p>
+            <p>Paket globokega učenja je sestavljen iz datoteke JSON definicije modela Esri ( <code>.emd</code>), datoteke binarnega modela globokega učenja in, izbirno, rastrske funkcije Python, ki bo uporabljena.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Navedi trditve za model globokega učenja</h2></div>
+        <hr/>
+        <div>
+            <p>Trditve funkcije so določene v razredu rastrske funkcije Python, ki se sklicuje na vhodni model. Tukaj navedete dodatne parametre globokega učenja in trditve za eksperimente in natančno določanje, kot je prag zaupanja za prilagajanje občutljivosti.
+            </p>
+            <p>Imena trditev bodo dopolnjena s pomočjo orodja iz branja modula Python na strežniku za rastrsko analizo.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Opredeli ime polja oznake razreda</h2></div>
+        <hr/>
+        <div>
+            <p>Ime polja, ki bo vsebovalo klasifikacijo oznako v izhodnem geoobjektnem sloju.
+            </p>
+            <p>Če ne boste določili imena polja, bo v izhodnem geoobjektnem sloju ustvarjeno novo polje z imenom  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Način obdelave</h2></div>
+        <hr/>
+        <div>
+            <p>Določi način obdelave za vse rastrske elemente v slikovni storitvi. 
+                <ul>
+                    <li> <b>Obdelaj kot mozaično sliko</b> &ndash; Vsi rastrski elementi v slikovni storitvi bodo z mozaičenjem združeni in obdelani. To je privzeta nastavitev.
+                    </li>
+                    <li> <b>Obdelaj kot ločene elemente</b> &ndash; Vsi rastrski elementi v slikovni storitvi bodo obdelani kot ločene slike.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

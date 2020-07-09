@@ -16,13 +16,8 @@
         white-space: nowrap;
     }
 
-    .esriGEShapeContainer .shapeContainer_svgContainerBackground {
-        opacity: 0.3;
-    }
-
     .esriGEShapeContainer .shapeContainer_svgContainerElement {
         position: absolute;
-        top: 0px;
     }
 
         .esriGEShapeContainer .shapeContainer_svgContainerElement > svg {

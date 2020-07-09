@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({distToNearest:"En Yakına Uzaklık",attrOfInterest:"En Yakının Özniteliği",summaryNearby:"En Yakının Özeti",summaryIntersecting:"Kesişme Özeti",distToNearestLabel:"Kutu merkezinden girdi katmanındaki en yakın detaya uzaklık",attrOfInterestLabel:"Girdi katmanında en yakın detaydan belirtilen alanın değeri",summaryNearbyLabel:"Kutu merkezinin belirtilen uzaklığında bulunan tüm detaylarda hesaplanan istatistik",summaryIntersectingLabel:"Kutuyu kesen tüm detaylarda hesaplanan istatistik",maxDistancefromCtr:"Kutu merkezinden maksimum uzaklık",fieldToIncude:"Dahil edilecek alan",statstoCalculate:"Hesaplanacak istatistik",summFeatuesWithin:"İçindeki detayları özetle",smallMaxDistErrorMsg:"Kutu merkezinden maksimum uzaklık kutu boyutundan büyük olmalıdır.",smallSumFeaturesErrorMsg:"Kutu merkezinden maksimum uzaklık kutu boyutundan büyük olmalıdır."});

@@ -51,14 +51,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Elegir capa de destino</h2></div>
+        <div><h2>Elegir la capa de destino</h2></div>
         <hr/>
         <div>
             <p>La capa de destino que tendr&aacute; atributos procedentes de la capa de uni&oacute;n incorporados a su tabla.
             </p>
-            <p>El an&aacute;lisis con la relaci&oacute;n espacial  <b>Cercano</b> requiere un sistema de coordenadas proyectadas. Puede definir el <b>Sistema de coordenadas de procesamiento</b> en <b>Entornos de an&aacute;lisis</b>. Si el sistema de coordenadas de procesamiento no se ha definido en un sistema de coordenadas proyectadas, se le pedir&aacute; que lo defina cuando use <b>Ejecutar an&aacute;lisis</b> .
+            <p>El an&aacute;lisis con la relaci&oacute;n espacial  <b>Cercano</b> requiere un sistema de coordenadas proyectadas. Puede definir el sistema de coordenadas de procesamiento en Entornos de an&aacute;lisis. Si el sistema de coordenadas de procesamiento no se ha definido en un sistema de coordenadas proyectadas, se le pedir&aacute; que lo defina cuando ejecute el an&aacute;lisis .
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data. Si lo desea, puede aplicar un filtro en la capa de entrada o aplicar una selecci&oacute;n en capas alojadas que haya agregado al mapa. Los filtros y las selecciones solo se aplican al an&aacute;lisis. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>La capa de uni&oacute;n cuyos atributos se incorporar&aacute;n a la capa de destino.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data. Si lo desea, puede aplicar un filtro en la capa de entrada o aplicar una selecci&oacute;n en capas alojadas que haya agregado al mapa. Los filtros y las selecciones solo se aplican al an&aacute;lisis. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Igual a</b>: las entidades se cotejar&aacute;n si tienen la misma geometr&iacute;a.
                     </li>
-                    <li> <b>Cerca de</b>: las entidades se cotejar&aacute;n si est&aacute;n dentro de una distancia especificada entre s&iacute;. La capa de destino debe estar en un sistema de coordenadas proyectadas, o bien la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectadas mediante los <b>Entornos de an&aacute;lisis</b> si se utiliza una relaci&oacute;n espacial <b>Cerca de</b>.
+                    <li> <b>Cerca de planar</b>: las entidades se cotejar&aacute;n si est&aacute;n dentro de una distancia especificada entre s&iacute;. La capa de destino debe estar en un sistema de coordenadas proyectadas, o bien la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectadas mediante los <b>Entornos de an&aacute;lisis</b> si se utiliza una relaci&oacute;n espacial <b>Cerca de</b>.
+                    </li>
+                    <li> <b>Cerca de geod&eacute;sico</b>: las entidades se cotejar&aacute;n si est&aacute;n dentro de una distancia especificada entre s&iacute;. La distancia se mide con la distancia planar.
                     </li>
                     <li> <b>Contiene</b>: las entidades se cotejar&aacute;n si la capa de destino est&aacute; contenida en las entidades de uni&oacute;n.
                     </li>
@@ -215,7 +217,7 @@
             </p>
             <p>Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos, puede calcular lo siguiente: 
                 <ul>
-                    <li>Recuento: calcula el n&uacute;mero de valores no nulos. Se puede usar en campos num&eacute;ricos o cadenas de caracteres. El recuento de [nulo, 0, 2] es 2.
+                    <li>Recuento: calcula el n&uacute;mero de valores no nulos. Se puede usar en campos num&eacute;ricos o de cadenas de caracteres. El recuento de [nulo, 0, 2] es 2.
                     </li>
                     <li>Suma: la suma de valores num&eacute;ricos en un campo. La suma de [nulo, nulo, 3] es 3.
                     </li>
@@ -265,7 +267,7 @@
         <div>
             <p>Los resultados de GeoAnalytics se almacenan en un data store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el data store relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que guardar los resultados en el data store relacional es una buena idea: 
                 <ul>
-                    <li>Puede usar los resultados en una colaboraci&oacute;n de portal a portal.
+                    <li>Puede utilizar resultados en la colaboraci&oacute;n entre portales.
                     </li>
                     <li>Puede habilitar capacidades de sincronizaci&oacute;n con sus resultados.
                     </li>

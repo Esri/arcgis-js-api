@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>匯聚多維點陣</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="匯聚多維點陣"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>如果您有 30 年的海平面溫度資料，它們是每個月從每 5 公尺到 100 公尺深收集的資料，則以下是一些應用範例：
+        <ul>
+            <li>將每月溫度資料匯聚為每年資料。
+            </li>
+            <li>將每月溫度資料匯聚為 4 月間隔。
+            </li>
+            <li>依序從 0 到 25 公尺、從 25 到 50 公尺，再從 50 到 100 公尺匯聚溫度資料。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果勾選 <b>使用當前地圖範圍</b>，則會分析當前地圖範圍中的可見圖層變數。如果未勾選，將分析完整圖層的變數，即使它們超出目前的地圖範圍也是如此。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>選擇要匯聚的多維影像圖層</h2></div>
+        <hr/>
+        <div>
+            <p>將匯聚的多維點陣的輸入影像圖層。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>選擇要依據其匯聚的維度</h2></div>
+        <hr/>
+        <div>
+            <p>匯聚維度。這是將沿其匯總變數的維度。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>選擇要匯聚的變數</h2></div>
+        <hr/>
+        <div>
+            <p>選擇將沿指定維度匯聚的變數。若未指定變數，將匯聚含選定維度的所有變數。
+            </p>
+            <p>例如，若要將每日溫度資料匯聚為每月平均值，請將溫度指定為要匯聚的變數。若未指定任何變數並具有每日溫度和每日降雨變數，則會將兩個變數匯聚為每月平均值，且輸出多維點陣將包含兩個變數。
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>選擇匯聚方法</h2></div>
+        <hr/>
+        <div>
+            <p>指定數學方法，使用該方法來結合一個間隔中的匯聚切片。
+                <ul>
+                    <li> <b>平均值</b> - 計算間隔中跨所有切片的像素值平均值。這是預設情況。
+                    </li>
+                    <li> <b>最大值</b> - 計算間隔中跨所有切片之像素的最大值。
+                    </li>
+                    <li> <b>多數</b> - 針對間隔中跨所有切片的某個像素，計算出現頻率最高的值。
+                    </li>
+                    <li> <b>最小值</b> - 計算間隔中跨所有切片之像素的最小值。
+                    </li>
+                    <li> <b>少數</b> - 針對間隔中跨所有切片的某個像素，計算出現頻率最低的值。
+                    </li>
+                    <li> <b>中位數</b> - 計算間隔中跨所有切片之像素的中位數值。
+                    </li>
+                    <li> <b>範圍</b> - 計算間隔中跨所有切片之像素的值範圍。
+                    </li>
+                    <li> <b>標準差</b> - 計算間隔中跨所有切片之像素值的標準差。
+                    </li>
+                    <li> <b>總和</b> - 計算間隔中跨所有切片的像素值總和。
+                    </li>
+                    <li> <b>多樣化</b> - 計算間隔中跨所有切片之像素的唯一值數量。
+                    </li>
+                    <li> <b>自訂</b> - 根據自訂點陣函數來計算像素的值。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>選擇點陣函數樣板</h2></div>
+        <hr/>
+        <div>
+            <p>自訂點陣函數，將用來計算匯聚點陣的像素值。輸入是入口網站中的點陣函數樣板項目。將 <b>匯聚方法</b>設為 <b>自訂</b>時需要此輸入。
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>選擇匯聚定義</h2></div>
+        <hr/>
+        <div>
+            <p>指定將為其匯聚資料的維度間隔。
+                <ul>
+                    <li> <b>全部</b> - 將跨所有切片匯聚資料值。這是預設情況。
+                    </li>
+                    <li> <b>間隔關鍵字</b> - 將使用眾所周知的間隔匯聚變數資料。
+                    </li>
+                    <li> <b>間隔值</b> - 將使用使用者指定的間隔和單位來匯聚變數資料。
+                    </li>
+                    <li> <b>間隔範圍</b> - 將在指定的值或日期配對之間匯聚變數資料。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>選擇關鍵字間隔</h2></div>
+        <hr/>
+        <div>
+            <p>指定沿維度匯聚時將使用的關鍵字間隔。將 <b>匯聚定義</b>設為 <b>間隔關鍵字</b>時需要此輸入，且匯聚必須跨越時間。
+                <ul>
+                    <li> <b>每小時</b> - 會將資料值匯聚為每小時時間步長，且結果將包含時間序列中的每小時。
+                    </li>
+                    <li> <b>每日</b> - 會將資料值匯聚為每日時間步長，且結果將包含時間序列中的每日。
+                    </li>
+                    <li> <b>每週</b> - 會將資料值匯聚為每週時間步長，且結果將包含時間序列中的每週。
+                    </li>
+                    <li> <b>每月</b> - 會將資料值匯聚為每月時間步長，且結果將包含時間序列中的每個月。
+                    </li>
+                    <li> <b>每季</b> - 會將資料值匯聚為每季時間步長，且結果將包含時間序列中的每季。
+                    </li>
+                    <li> <b>每年</b> - 會將資料值匯聚為每年時間步長，且結果將包含時間序列中的每年。
+                    </li>
+                    <li> <b>每日循環</b> - 會將資料值匯聚為每日時間步長，且結果將包含每個儒略日的一個匯聚值。輸出最多將包含 366 個每日時間切片。
+                    </li>
+                    <li> <b>每週循環</b> - 會將資料值匯聚為每週時間步長，且結果將包含每週的一個匯聚值。輸出最多將包含 53 個每週時間切片。
+                    </li>
+                    <li> <b>每月循環</b> - 會將資料值匯聚為每週時間步長，且結果將包含每月的一個匯聚值。輸出最多將包含 12 個每月時間切片。
+                    </li>
+                    <li> <b>每季循環</b> - 會將資料值匯聚為每週時間步長，且結果將包含每季的一個匯聚值。輸出最多將包含 4 個每季時間切片。
+                    </li>
+                    <li> <b>Dekadly</b> - 會將資料值匯聚為 3 個時段，每個時段 10 天。最後一個時段可能包含 10 天以以上或以下。輸出將包含每個月的 3 個切片。
+                    </li>
+                    <li> <b>Pentadly</b> - 會將資料值匯聚為 6 個時段，每個時段 5 天。最後一個時段可能包含 5 天以以上或以下。輸出將包含每個月的 6 個切片。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>值間隔</h2></div>
+        <hr/>
+        <div>
+            <p>將用於匯聚的間隔大小。將 <b>匯聚定義</b>參數設為 <b>間隔值</b>時需要此參數。
+            </p>
+            <p>例如，若要將 30 年的每月溫度資料匯聚為 5 年增量，請輸入 5 作為 <b>值間隔</b>，並在 <b>單位</b>中指定 <b>年</b>。
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>單位</h2></div>
+        <hr/>
+        <div>
+            <p>將用於間隔值的單位。當 <b>維度</b>為時間欄位並將 <b>匯聚定義</b>設為 <b>間隔值</b>時，需要此輸入。
+            </p>
+            <p>如果正在匯聚時間以外的任何內容，則無法使用此選項，且間隔值的單位將符合輸入多維點陣資料的變數單位。
+                <ul>
+                    <li> <b>小時</b> - 會使用提供的間隔，將資料值匯聚為每小時時間切片。
+                    </li>
+                    <li> <b>日</b> - 會使用提供的間隔，將資料值匯聚為每日時間切片。
+                    </li>
+                    <li> <b>週</b> - 會使用提供的間隔，將資料值匯聚為每週時間切片。
+                    </li>
+                    <li> <b>月</b> - 會使用提供的間隔，將資料值匯聚為每月時間切片。
+                    </li>
+                    <li> <b>年</b> - 會使用提供的間隔，將資料值匯聚為每年時間切片。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>定義範圍</h2></div>
+        <hr/>
+        <div>
+            <p>間隔範圍將用來匯聚值的群組。它們包含最小和最大範圍值配對，資料類型則為倍整數或日期。將 <b>匯聚方法</b>設為 <b>間隔範圍</b>時需要此輸入。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>忽略計算中缺少的值</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否在分析中忽略缺少的值。
+                <ul>
+                    <li>已勾選 - 分析將包含指定維度沿線的全部有效像素，並且忽略任何 NoData 像素。這是預設情況。
+                    </li>
+                    <li>已取消勾選 - 若指定維度沿線的像素存在任何 NoData 值，則分析將導出 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

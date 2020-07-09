@@ -140,5 +140,46 @@
             </p>
         </div>
     </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Raster oder Feature-Layer zum Darstellen von Barrieren auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das Dataset, das die Barrieren definiert. 
+            </p>
+            <p>Bei einem Image-Service kann der Eingabetyp &quot;Ganze Zahl&quot; oder &quot;Gleitkomma&quot; sein. Alle Zellen mit einem Wert (auch Null) werden als Barrieren behandelt; alle Zellen mit NoData werden nicht als Barrieren behandelt.
+            </p>
+            <p>Bei einem Feature-Service kann die Eingabe ein Punkt, eine Linie oder ein Polygon sein.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Entfernungsmethode</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Entfernung mithilfe einer planaren (flache Erde) oder geod&auml;tischen (Ellipsoid) Methode berechnet werden soll.
+            </p>
+            <ul>
+                <li> <b>Planar</b>: Die Berechnung erfolgt auf einer projizierten flachen Ebene mithilfe eines kartesischen 2D-Koordinatensystems. Dies ist das Standardverfahren.
+                    
+
+                </li>
+                <li> <b>Geod&auml;tisch</b>: Entfernungen werden auf dem Ellipsoid berechnet. Deshalb &auml;ndern sich die Ergebnisse unabh&auml;ngig von der Eingabe- oder Ausgabeprojektion nicht.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Name des Ergebnis-Layers für die Gegenrichtung</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt wird. Sie m&uuml;ssen einen Namen angeben, der aktuell nicht in <b>Eigene Inhalte</b> vorhanden ist.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
 </div>
 </html>

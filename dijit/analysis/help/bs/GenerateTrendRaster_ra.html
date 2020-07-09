@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generiraj raster trenda</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generiraj raster trenda"></h2>
+        <hr/>
+    <p>Procjenjuje trend za svaki piksel po dimenziji za jednu ili vi&scaron;e varijabli u vi&scaron;edimenzionalnom rasteru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Odaberite sloj višedimenzionalnih snimki za analiziranje trenda</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Sloj ulaznih snimki vi&scaron;edimenzionalnog rastera koji će se analizirati.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Odaberite dimenziju iz koje će se varijabilni trend analizirati</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija uz koju će se izvući trend za varijable ili varijable odabrane u analizi.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Odaberite varijablu/e za analiziranje trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable za koje će se izračunati trendovi. Ako nije navedena nijedna varijabla, analizirati će se prva varijabla u vi&scaron;edimenzijskom rasteru.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Odaberite vrstu linije za postavljanje vrijednosti varijable duž dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje vrstu linije koja će se koristiti za postavljanje vrijednosti piksela duž dimenzije. 
+                <ul>
+                    <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela postavit će se duž linearne linije trenda. To je zadano.
+                    </li>
+                    <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela smjestit će se duž linije trenda polinoma drugog reda.
+                    </li>
+                    <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela postavit će se duž harmonijske linije trenda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Odredite duljinu harmonijskog ciklusa</h2></div>
+        <hr/>
+        <div>
+            <p>Duljina periodične varijacije do modela. Ovaj je parametar potreban kada je postavljena  <b>Harmonijski</b>vrsta linije trenda. Na primjer, zelenilo listova često ima jedan snažni ciklus varijacija u jednoj godini, tako da je duljina ciklusa 1 godina. Podaci o temperaturi u satu imaju jedan jak ciklus promjene tijekom jednog dana, tako da je dužina ciklusa jedan dan.
+            </p>
+            <p>Zadana dužina je 1 godina za podatke koji variraju u godi&scaron;njem ciklusu.
+            </p>
+            <p>Ovaj je parametar uključen u analizu trenda samo kad je dimenzija koja se analizira vremenom i ako je vrsta linije trenda postavljena na  <b>Harmonijsku</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Odaberite vremensku jedinicu harmonijske duljine ciklusa</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje vremensku jedinicu koja će se koristiti za duljinu harmonijskog ciklusa.
+                <ul>
+                    <li> <b>Dani</b>&mdash;Jedinica za duljinu harmonijskog ciklusa su dani.
+                    </li>
+                    <li> <b>Godine</b>&mdash;Jedinica za duljinu harmonijskog ciklusa su godine. To je zadano.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ovaj je parametar uključen u analizu trenda samo kad je dimenzija koja se analizira vremenom i ako je vrsta linije trenda postavljena na  <b>Harmonijsku</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Odredite broj frekvencije za uklapanje u harmonijski trend</h2></div>
+        <hr/>
+        <div>
+            <p>Frekvencija koja će se koristiti u uklapanju harmonijskog trenda. Ovaj parametar određuje učestalost ciklusa u godini.
+            </p>
+            <p>Zadana vrijednost je 1, ili jedan harmonijski ciklus po godini.
+            </p>
+            <p>Ovaj je parametar uključen u analizu trenda samo kad je dimenzija koja se analizira na vrijeme.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Odredite redni broj polinoma za uklapanje u trend</h2></div>
+        <hr/>
+        <div>
+            <p>Broj polinomnog reda će se koristiti u uklapanju polinomnog trenda.
+            </p>
+            <p>Ovaj je parametar uključen u analizu trenda samo kad je dimenzija koja se analizira na vrijeme.
+            </p>
+            <p>Zadana vrijednost je 2, ili polinom drugog reda.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Odaberite statistiku modela koja će se uključiti u raster trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Ovaj alat pruža tri vrste statistike linije uklapanja u trend: korijenska srednja kvadratna pogre&scaron;ka (RMSE), R na kvadrat primjerena statistika (R na kvadrat), i statistika p-vrijednosti za koeficijent nagiba (P- vrijednost koeficijenta nagiba). Svaka statistika ima odgovarajuću kućicu kako bi se utvrdilo da li će se izračunati i uključiti kao jedan od vi&scaron;e kanala u rasteru izlaznog trenda.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Označeno&mdash;RMSE će se izračunati i uključiti kao jedan od vi&scaron;e kanala u rasteru izlaznog trenda. To je zadano.
+                            </li>
+                            <li>Nije označeno&mdash;RMSE se neće računati.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R na kvadrat
+                        </p>
+                        <ul>
+                            <li>Označeno &mdash; R na kvadrat vrijednost će se izračunati i uključiti kao jedan od vi&scaron;e kanala u rasteru izlaznog trenda.
+                            </li>
+                            <li>Nije označeno&mdash; R na kvadrat vrijednost se neće računati. To je zadano.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-vrijednost koeficijenta nagiba
+                        </p>
+                        <ul>
+                            <li>Označeno&mdash; P-vrijednost će se izračunati i uključiti kao jedan od vi&scaron;e kanala u rasteru izlaznog trenda.
+                            </li>
+                            <li>Nije označeno&mdash; P-vrijednost se neće računati. To je zadano.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju.
+                <ul>
+                    <li>Provjereno&mdash;Analiza će uključivati sve važeće piksele za danu dimenziju i ignorirati piksele Bez podataka. To je zadano.
+                    </li>
+                    <li>Neprovjereno&mdash;Analiza će prikazati vrijednosti Bez podataka ako postoje vrijednosti Bez podataka za piksele za danu dimenziju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

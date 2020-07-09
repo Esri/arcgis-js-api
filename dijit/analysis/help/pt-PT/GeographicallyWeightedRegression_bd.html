@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regressão Ponderada Geograficamente</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagrama do fluxo de trabalho Regress&atilde;o Ponderada Geograficamente"></h2>
+        <hr/>
+    <p>Efetua a Regress&atilde;o Ponderada Geograficamente (GWR), que &eacute; um formul&aacute;rio local de regress&atilde;o linear utilizado para modelar rela&ccedil;&otilde;es espacialmente vari&aacute;veis.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher uma camada para analisar</h2></div>
+        <hr/>
+        <div>
+            <p>A camada que cont&eacute;m elementos de pontos com as vari&aacute;veis dependentes e explanat&oacute;rias.
+            </p>
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Escolher o campo a modelar</h2></div>
+        <hr/>
+        <div>
+            <p>O campo num&eacute;rico que cont&eacute;m os valores observados a modelar e o tipo de valor que est&aacute; a modelar.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Escolher os campos explanatórios</h2></div>
+        <hr/>
+        <div>
+            <p>Um ou mais campos que representam as vari&aacute;veis explanat&oacute;rias (campos) que ajudam a prever o valor. Apenas os campos num&eacute;ricos ser&atilde;o vis&iacute;veis.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Escolher como a vizinhança será determinada</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se a vizinhan&ccedil;a utilizada &eacute; constru&iacute;da como uma dist&acirc;ncia fixa ou se pode variar numa extens&atilde;o espacial dependendo da densidade dos elementos.
+                <ul>
+                    <li> <b>N&uacute;mero de Vizinhos</b> &mdash; O tamanho da vizinhan&ccedil;a &eacute; uma fun&ccedil;&atilde;o de um n&uacute;mero especificado de vizinhos inclu&iacute;do nos c&aacute;lculos para cada elemento. Onde os elementos forem densos, a extens&atilde;o espacial da vizinhan&ccedil;a &eacute; mais pequena; onde os elementos estiverem dispersos, a extens&atilde;o espacial da vizinhan&ccedil;a &eacute; maior. Quando escolher esta op&ccedil;&atilde;o, selecione o n&uacute;mero de vizinhos que pretende incluir. Deve ser um n&uacute;mero inteiro entre 2 e 5000.
+                    </li>
+                    <li> <b>Faixa de Dist&acirc;ncia</b> &mdash; O tamanho da vizinhan&ccedil;a &eacute; uma dist&acirc;ncia constante ou fixa para cada elemento. Quando escolher esta op&ccedil;&atilde;o, selecione a faixa de dist&acirc;ncia para representar a extens&atilde;o espacial da vizinhan&ccedil;a.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Escolher como os elementos vizinhos são ponderados</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o tipo de kernel que ser&aacute; utilizado para fornecer a pondera&ccedil;&atilde;o espacial no modelo. Kernel define a forma como o elemento se relaciona com outros elementos na sua vizinhan&ccedil;a.
+                <ul>
+                    <li> <b>Biquadrado</b> &mdash; Ser&aacute; atribu&iacute;do um valor de 0 a qualquer elemento fora da vizinhan&ccedil;a especificada. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li> <b>Gaussiano</b> &mdash; Todos os elementos receber&atilde;o valores, mas estes ir&atilde;o tornar-se exponencialmente mais pequenos quanto mais afastados estiverem do elemento-alvo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> O nome da camada que ser&aacute; criada. Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o guardados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados na partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao escrever para   ArcGIS Data Store  (armazenamento relacional ou espaciotemporal de dados big data) utilizando a caixa suspensa  <b>Guardar resultado em</b> pode especificar o nome de uma pasta em <b>O Meu Conte&uacute;do</b>, onde ser&aacute; armazenado o resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

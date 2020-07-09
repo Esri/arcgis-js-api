@@ -26,16 +26,16 @@ This repo has dependencies on the following repos.
 
 | Library | Repo | Submodule path |
 | :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.13.0-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.13.0-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.13.0-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.13.0-esri    | /util |
+| dojo  | https://github.com/Esri/dojo/tree/1.14.2-esri   | /dojo |
+| dijit | https://github.com/Esri/dijit/tree/1.14.2-esri  | /dijit |
+| dojox | https://github.com/Esri/dojox/tree/1.14.2-esri  | /dojox |
+| util | https://github.com/Esri/dojo-util/tree/1.14.2-esri    | /util |
 | dgrid | https://github.com/Esri/dgrid/tree/0.3.17-esri  | /dgrid |
 | dgrid1 | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
 | dstore | https://github.com/SitePen/dstore/tree/v1.1.2 | /dstore |
 | xstyle | https://github.com/kriszyp/xstyle/tree/v0.3.2 | /xstyle |
 | put-selector | https://github.com/kriszyp/put-selector/tree/v0.3.6 | /put-selector |
-| moment | https://github.com/moment/moment/tree/2.22.1 | /moment |
+| moment | https://github.com/moment/moment/tree/2.24.0 | /moment |
 
 Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
 

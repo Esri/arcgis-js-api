@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Amostra</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Amostra"></h2>
+        <hr/>
+    <p>Esta ferramenta cria uma tabela ou uma classe de elementos de pontos que mostra os valores das c&eacute;lulas a partir de um raster, ou conjunto de rasters, para localiza&ccedil;&otilde;es definidas. As localiza&ccedil;&otilde;es s&atilde;o definidas por c&eacute;lulas raster, elementos de pol&iacute;gono, elementos polilinha, ou por um conjunto de pontos.
+    </p>
+    <p>Os valores de p&iacute;xel ser&atilde;o extra&iacute;dos a partir de todos os rasters de entrada em cada localiza&ccedil;&atilde;o. Ser&aacute; criada uma tabela ou classe de elementos de pontos com campos que cont&ecirc;m os valores dos p&iacute;xeis para cada raster de entrada. Os atributos adicionais da tabela de rasters de entrada n&atilde;o ser&atilde;o inclu&iacute;dos na tabela de sa&iacute;da.
+    </p>
+    <p>Qualquer combina&ccedil;&atilde;o de rasters, tais como banda &uacute;nica, multibanda, multidimensional, ou multivariada, pode ser especificada como rasters de entrada. A estrutura da tabela de sa&iacute;da muda quando os rasters de entrada s&atilde;o multidimensionais. Quando um raster multibanda &eacute; especificado como um dos rasters de entrada, todas as bandas dessa entrada ser&atilde;o utilizadas. Para processar uma sele&ccedil;&atilde;o de bandas de um raster de entrada multibanda, &eacute; necess&aacute;rio criar primeiro um novo conjunto de dados raster composto por essas bandas espec&iacute;ficas. Usar o resultado na lista de rasters de entrada.
+    </p>
+    <p>A localiza&ccedil;&atilde;o da entrada pode ser um raster ou um elemento de pontos.
+        <ul>
+            <li>Raster &mdash; P&iacute;xeis que cont&ecirc;m valores v&aacute;lidos (n&atilde;o NoData) s&atilde;o usados para extrair os valores de p&iacute;xeis de todos os rasters de entrada, e o centro do pixel &eacute; usado para localiza&ccedil;&otilde;es de ponto.
+            </li>
+            <li>Ponto &mdash; Os valores ser&atilde;o  em cada localiza&ccedil;&atilde;o do ponto.
+            </li>
+            <li>Polilinha ou um pol&iacute;gono &mdash; Os valores ser&atilde;o  no centroide do pol&iacute;gono ou da polilinha. Se o raster de entrada for multidimensional, os valores ser&atilde;o agregados com base no tipo de  <b>Estat&iacute;stica</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Os rasters de entrada s&atilde;o  na sua refer&ecirc;ncia espacial e resolu&ccedil;&atilde;o nativas. Se tivermos v&aacute;rios rasters de entrada com diferentes refer&ecirc;ncias espaciais, as localiza&ccedil;&otilde;es de entrada s&atilde;o projetadas para cada refer&ecirc;ncia espacial de cada raster individual a partir do qual os valores s&atilde;o extra&iacute;dos. O ambiente de an&aacute;lise &eacute; aplicado &agrave;s localiza&ccedil;&otilde;es de entrada, mas os raster de entrada n&atilde;o ir&atilde;o respeitar o ambiente de an&aacute;lise.
+    </p>
+    <p>As localiza&ccedil;&otilde;es que extraem valores de c&eacute;lulas NoData no raster de entrada receber&atilde;o um valor &lt;null&gt; na tabela de sa&iacute;da.
+    </p>
+    <p>Para realizar a an&aacute;lise com elementos multiponto &eacute; necess&aacute;rio convert&ecirc;-los para elementos de &uacute;nico ponto antes de us&aacute;-los nesta ferramenta.
+    </p>
+    <p>A refer&ecirc;ncia espacial das coordenadas x,y da tabela da amostra de sa&iacute;da s&atilde;o as mesmas que a localiza&ccedil;&atilde;o do raster de entrada ou dos elementos de pontos, a menos que seja especificado no ambiente <b>Sistema de Coordenadas de Sa&iacute;da</b>. Se a refer&ecirc;ncia espacial dos dados das localiza&ccedil;&otilde;es de entrada for desconhecida, a refer&ecirc;ncia espacial das coordenadas x,y tamb&eacute;m &eacute; desconhecida.
+    </p>
+    <p>A refer&ecirc;ncia espacial da classe de elemento de sa&iacute;da &eacute; a mesma que a localiza&ccedil;&atilde;o do raster de entrada ou dos elementos de pontos, a menos que seja especificado no ambiente  <b>Sistema de Coordenadas de Sa&iacute;da</b>.
+    </p>
+    <p>O ambiente  <b>Fator de rocessamento aralelo</b> apenas &eacute; suportado quando a entrada &eacute; um raster multidimensional.
+    </p>
+    <p>Se a op&ccedil;&atilde;o  <b>Utilizar a extens&atilde;o do mapa atual</b> estiver marcada, ser&atilde;o analisadas as vari&aacute;veis ou bandas da camada que se encontrem vis&iacute;veis na extens&atilde;o do mapa atual. Se estiver desmarcada, ser&atilde;o analisadas as vari&aacute;veis ou bandas de toda a camada, mesmo que estejam fora da extens&atilde;o do mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Escolher as camadas</h2></div>
+        <hr/>
+        <div>
+            <p>Uma camada de imagens simples ou uma lista de camadas de imagens, cujos valores ser&atilde;o  com base nos dados de localiza&ccedil;&atilde;o de entrada.
+            </p>
+            <p>Para  todas as sec&ccedil;&otilde;es de uma camada de imagens multidimensionais, esta deve ser o &uacute;nico raster de entrada.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Escolher camada de localização</h2></div>
+        <hr/>
+        <div>
+            <p>Dados de identifica&ccedil;&atilde;o das posi&ccedil;&otilde;es que pretende
+            </p>
+            <p>Os dados da localiza&ccedil;&atilde;o de entrada podem ser um raster ou um ponto, uma polilinha ou uma classe de elementos de pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Especificar campo de ID nico</h2></div>
+        <hr/>
+        <div>
+            <p>Um campo que cont&eacute;m um valor diferente para cada localiza&ccedil;&atilde;o ou  no raster de localiza&ccedil;&atilde;o de entrada ou classe de elementos.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Especificar as informações de aquisição de dados de localização (Opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especificar o tempo, profundidade, ou outros dados de aquisi&ccedil;&atilde;o associados com as c&eacute;lulas de localiza&ccedil;&atilde;o ou elementos.
+            </p>
+            <p>Para cada dimens&atilde;o, existem tr&ecirc;s op&ccedil;&otilde;es para especificar as informa&ccedil;&otilde;es de aquisi&ccedil;&atilde;o associado com c&eacute;lulas de localiza&ccedil;&atilde;o ou elementos:
+
+                <ul>
+                    <li> <b>Campo &uacute;nico ou valor</b> &mdash; Quando esa op&ccedil;&atilde;o for selecionada, as seguintes informa&ccedil;&otilde;es devem ser especificadas:
+                        <ul>
+                            <li> <b>Campo de dimens&atilde;o ou valor</b> &mdash; Selecione um campo de valores de dimens&atilde;o dos dados de localiza&ccedil;&atilde;o, ou introduza um valor de dimens&atilde;o espec&iacute;fico.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Campo &uacute;nico ou valor com os respetivos valores</b> &mdash; Se esta op&ccedil;&atilde;o for selecionada, as informa&ccedil;&otilde;es abaixo devem ser especificadas em conjunto para definir o intervalo dentro do qual ser&atilde;o calculadas as estat&iacute;sticas para as vari&aacute;veis:
+                        <ul>
+                            <li> <b>Campo de dimens&atilde;o ou valor</b> &mdash; Selecione um campo de valores de dimens&atilde;o dos dados de localiza&ccedil;&atilde;o.
+                            </li>
+                            <li> <b>Valor relativo antes</b> &mdash; Especifique um n&uacute;mero n&atilde;o negativo utilizado para subtrair do <b>Campo de dimens&atilde;o ou valor</b> para definir o in&iacute;cio de um intervalo de valores de dimens&atilde;o. Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for tempo.
+                            </li>
+                            <li> <b>Valor relativo depois</b> &mdash; Especifique um n&uacute;mero n&atilde;o negativo usado para adicionar a <b>Campo de dimens&atilde;o ou valor</b> para definir o fim de um intervalo de valores de dimens&atilde;o. Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for tempo.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Campos de in&iacute;cio e fim</b> &mdash; Se esta op&ccedil;&atilde;o for selecionada, as informa&ccedil;&otilde;es abaixo devem ser especificadas em conjunto para definir o intervalo dentro do qual ser&atilde;o calculadas as estat&iacute;sticas para as vari&aacute;veis:
+                        <ul>
+                            <li> <b>Campo de in&iacute;cio ou valores</b> &mdash; Selecione um campo de valores de dimens&atilde;o dos dados de localiza&ccedil;&atilde;o, ou introduza um valor de dimens&atilde;o espec&iacute;fico, para definir o in&iacute;cio de um intervalo de valores de dimens&atilde;o.
+                            </li>
+                            <li> <b>Campo de fim ou valores</b> &mdash; Selecione um campo de valores de dimens&atilde;o dos dados de localiza&ccedil;&atilde;o, ou introduza um valor de dimens&atilde;o espec&iacute;fico, para definir o fim de um intervalo de valores de dimens&atilde;o.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Especificar distância de campo ou valor do buffer</h2></div>
+        <hr/>
+        <div>
+            <p>A dist&acirc;ncia especificada em torno dos elementos dos dados de localiza&ccedil;&atilde;o. A dist&acirc;ncia do buffer &eacute; especificada em unidades lineares de refer&ecirc;ncia espacial dos elementos de localiza&ccedil;&atilde;o. Se o elemento usar uma refer&ecirc;ncia geogr&aacute;fica, a unidade ser&aacute; graus.
+            </p>
+            <p>As estat&iacute;sticas ser&atilde;o calculadas dentro desta &aacute;rea de buffer.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Escolher tipo de estatística</h2></div>
+        <hr/>
+        <div>
+            <p>O tipo de estat&iacute;stica a calcular.
+            </p>
+            <ul>
+                <li> <b>M&iacute;nimo</b> &mdash; Encontra o valor m&iacute;nimo dentro do intervalo especificado.
+                </li>
+                <li> <b>M&aacute;ximo</b> &mdash; Encontra o valor m&aacute;ximo dentro do intervalo especificado.
+                </li>
+                <li> <b>Mediana</b> &mdash; Encontra o valor mediano dentro do intervalo especificado.
+                </li>
+                <li> <b>M&eacute;dia</b> &mdash; Calcula a m&eacute;dia para o intervalo especificado.
+                </li>
+                <li> <b>Soma</b> &mdash; Calcula a soma das vari&aacute;veis dentro do intervalo especificado.
+                </li>
+                <li> <b>Maioria</b> &mdash; Encontra o valor que ocorre com mais frequ&ecirc;ncia.
+                </li>
+                <li> <b>Minoria</b> &mdash; Encontra o valor que ocorre com menos frequ&ecirc;ncia.
+                </li>
+                <li> <b>Desvio Padr&atilde;o</b> &mdash; Calcula o desvio padr&atilde;o.
+                </li>
+                <li> <b>Percentil</b> &mdash; Calcula o percentil definido dentro do intervalo especificado.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>O percentil a calcular quando o par&acirc;metro  <b>Tipo de Estat&iacute;stica</b> est&aacute; definido para <b>Percentil</b>.
+            </p>
+            <p>Este  de 0 a 100. O padr&atilde;o &eacute; 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Especificar a técnica de reamostragem</h2></div>
+        <hr/>
+        <div>
+            <p>O algoritmo de reamostragem usado na amostragem de um raster.
+            </p>
+            <ul>
+                <li> <b>Mais pr&oacute;ximo</b> &mdash; Vizinho mais pr&oacute;ximo. Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li> <b>Bilinear</b> &mdash; Interpola&ccedil;&atilde;o bilinear
+                </li>
+                <li> <b>C&uacute;bico</b> &mdash; Convolu&ccedil;&atilde;o c&uacute;bica
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Especificar o  de saída</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se os valores  aparecem em linhas ou colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas est&aacute; dispon&iacute;vel quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
+            </p>
+            <ul>
+                <li> <b>Os valores  aparecem em linha</b> &mdash; Os valores  aparecem em linhas separadas na tabela de sa&iacute;da. Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li> <b>Os valores  aparecem em coluna</b> &mdash; Os valores  aparecem em colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas &eacute; v&aacute;lida quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Especificar tipo de saída</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se deve gerar uma classe de elementos de pontos com valores  na sua tabela, ou apenas uma tabela com valores .
+            </p>
+            <ul>
+                <li> <b>Tabela</b> &mdash; Gerar uma tabela com valores . Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li> <b>Elementos</b> &mdash; Gerar uma classe de elementos de pontos com valores  na sua tabela. Se os elementos de entrada de localiza&ccedil;&atilde;o forem polilinhas ou pol&iacute;gonos, cada ponto na sa&iacute;da &eacute; o centroide de cada geometria dos elementos de entrada de localiza&ccedil;&atilde;o.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

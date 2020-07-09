@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Multidimensionales Raster aggregieren</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Multidimensionales Raster aggregieren"></h2>
+        <hr/>
+    <p>Generiert ein multidimensionales Raster-Dataset durch Kombinieren vorhandener multidimensionaler Raster-Variablen entlang einer Dimension.
+    </p>
+    <p>Wenn Ihnen f&uuml;r 30&nbsp;Jahre Temperaturdaten zur Meeresoberfl&auml;che zur Verf&uuml;gung stehen, die monatlich alle 5&nbsp;Meter bis zu einer Tiefe von 100&nbsp;Metern erfasst wurden, sind z.&nbsp;B. folgende Anwendungen m&ouml;glich:
+        <ul>
+            <li>Monatstemperaturdaten in Jahresdaten aggregieren.
+            </li>
+            <li>Monatliche Temperaturdaten in 4-Monats-Intervalle aggregieren.
+            </li>
+            <li>Temperaturdaten von 0 bis 25&nbsp;Meter, 25&nbsp;bis 50&nbsp;Meter und 50&nbsp;bis 100&nbsp;Meter aggregieren.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden die Variablen des Layers analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn die Option deaktiviert ist, werden die Variablen des gesamten Layers analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Multidimensionalen Bilddaten-Layer für die Aggregation auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Rasters wird aggregiert.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Dimension auswählen, für die die Aggregation durchgeführt werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Die Aggregationsdimension. Dies ist die Dimension, an der entlang die Variablen aggregiert werden.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Zu aggregierende Variable(n) auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein oder mehrere Variablen, die entlang der angegebenen Dimension aggregiert werden. Wenn keine Variable angegeben ist, werden alle Variablen mit der ausgew&auml;hlten Dimension aggregiert.
+            </p>
+            <p>Um etwa die Tagestemperaturdaten in monatliche Durchschnittswerte zu aggregieren, geben Sie die Temperatur als zu aggregierende Variable an. Wenn Sie keine Variablen angeben und als Variablen sowohl die Tagestemperatur als auch der t&auml;gliche Niederschlag verf&uuml;gbar sind, werden beide Variablen in monatliche Durchschnittswerte aggregiert. Auch das multidimensionale Ausgabe-Raster enth&auml;lt dann beide Variablen.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Aggregationsmethode auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die mathematische Methode an, nach der die aggregierten Abschnitte in einem Intervall kombiniert werden. 
+                <ul>
+                    <li> <b>Mittelwert</b>: Berechnet den Mittelwert der Werte eines Pixels f&uuml;r alle Abschnitte im Intervall. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Maximum</b>: Berechnet den Maximalwert eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Mehrheit</b>: Berechnet den Wert mit der h&ouml;chsten H&auml;ufigkeit f&uuml;r ein Pixel in allen Abschnitten im Intervall.
+                    </li>
+                    <li> <b>Minimum</b>: Berechnet den Minimalwert eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Minderheit</b>: Berechnet den Wert mit der geringsten H&auml;ufigkeit f&uuml;r ein Pixel in allen Abschnitten im Intervall.
+                    </li>
+                    <li> <b>Medianwert</b>: Berechnet den Medianwert eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Bereich</b>: Berechnet den Wertebereich eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Standardabweichung</b>: Berechnet die Standardabweichung der Werte eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Summe</b>: Berechnet die Summe der Werte eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Varianz</b>: Berechnet die Anzahl der Einzelwerte eines Pixels f&uuml;r alle Abschnitte im Intervall.
+                    </li>
+                    <li> <b>Benutzerdefiniert</b>: Berechnet den Wert eines Pixels basierend auf einer benutzerdefinierten Raster-Funktion.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Raster-Funktionsvorlage auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Eine benutzerdefinierte Raster-Funktion, mit der die Pixelwerte der aggregierten Raster berechnet werden. Die Eingabe ist ein Raster-Funktionsvorlagenelement im Portal. Diese Eingabe ist erforderlich, wenn  <b>Aggregationsmethode</b> auf <b>Benutzerdefiniert</b> festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Aggregationsdefinition auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt das Dimensionsintervall an, f&uuml;r das die Daten aggregiert werden. 
+                <ul>
+                    <li> <b>Alle</b>: Die Datenwerte aller Abschnitte werden aggregiert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Intervallschl&uuml;sselwort</b>: Die Variablendaten werden in einem allgemein bekannten Intervall aggregiert.
+                    </li>
+                    <li> <b>Intervallwert</b>: Die Variablendaten werden in einem benutzerdefinierten Intervall und in einer benutzerdefinierten Einheit aggregiert.
+                    </li>
+                    <li> <b>Intervallbereiche</b>: Die Variablendaten werden zwischen bestimmten Wert- oder Datumspaaren aggregiert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Schlüsselwortintervall auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt das Schl&uuml;sselwortintervall f&uuml;r die Aggregation entlang einer Dimension an. Diese Eingabe ist erforderlich, wenn f&uuml;r  <b>Aggregationsdefinition</b> die Option <b>Intervallschl&uuml;sselwort</b> festgelegt wurde und die Aggregation &uuml;ber eine bestimmte Zeit erfolgen muss.
+                <ul>
+                    <li> <b>St&uuml;ndlich</b>: Die Datenwerte werden in st&uuml;ndliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jede Stunde der Zeitserie.
+                    </li>
+                    <li> <b>T&auml;glich</b>: Die Datenwerte werden in t&auml;gliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jeden Tag der Zeitserie.
+                    </li>
+                    <li> <b>W&ouml;chentlich</b>: Die Datenwerte werden in w&ouml;chentliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jede Woche der Zeitserie.
+                    </li>
+                    <li> <b>Monatlich</b>: Die Datenwerte werden in monatliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jeden Monat der Zeitserie.
+                    </li>
+                    <li> <b>Viertelj&auml;hrlich</b>: Die Datenwerte werden in viertelj&auml;hrliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jedes Quartal der Zeitserie.
+                    </li>
+                    <li> <b>J&auml;hrlich</b>: Die Datenwerte werden in j&auml;hrliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt jedes Jahr der Zeitserie.
+                    </li>
+                    <li> <b>T&auml;glich wiederkehrend</b>: Die Datenwerte werden in t&auml;gliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt einen aggregierten Wert pro julianischem Tag. Es werden maximal 366 Tages-Zeitintervalle ausgegeben.
+                    </li>
+                    <li> <b>W&ouml;chentlich wiederkehrend</b>: Die Datenwerte werden in w&ouml;chentliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt einen aggregierten Wert pro Woche. Es werden maximal 53 Wochen-Zeitintervalle ausgegeben.
+                    </li>
+                    <li> <b>Monatlich wiederkehrend</b>: Die Datenwerte werden in monatliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt einen aggregierten Wert pro Monat. Es werden maximal 12 Monats-Zeitintervalle ausgegeben.
+                    </li>
+                    <li> <b>Quartalsweise wiederkehrend</b>: Die Datenwerte werden in viertelj&auml;hrliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt einen aggregierten Wert pro Quartal. Es werden maximal 4 Quartals-Zeitintervalle ausgegeben.
+                    </li>
+                    <li> <b>Zehnt&auml;gig</b>: Die Datenwerte werden in 3&nbsp;Zeitr&auml;ume von je 10&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 10 Tage umfassen. Es werden 3 Zeitintervalle f&uuml;r jeden Monat ausgegeben.
+                    </li>
+                    <li> <b>F&uuml;nft&auml;gig</b>: Die Datenwerte werden in 6&nbsp;Zeitr&auml;ume von je 5&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 5 Tage umfassen. Es werden 6 Zeitintervalle f&uuml;r jeden Monat ausgegeben.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Wertintervall</h2></div>
+        <hr/>
+        <div>
+            <p>Die Gr&ouml;&szlig;e des Intervalls, in dem aggregiert wird. Dieser Parameter ist erforderlich, wenn f&uuml;r den Parameter  <b>Aggregationsdefinition</b> die Option <b>Intervallwert</b> festgelegt wurde.
+            </p>
+            <p>Wenn beispielsweise die monatlichen Temperaturdaten von 30&nbsp;Jahren in 5-Jahres-Abschnitte aggregiert werden sollen, geben Sie f&uuml;r  <b>Wertintervall</b> die Zahl&nbsp;5 und f&uuml;r <b>Einheit</b> die Option <b>Jahre</b> ein.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Einheit</h2></div>
+        <hr/>
+        <div>
+            <p>Die f&uuml;r den Intervallwert verwendete Einheit. Diese Eingabe ist erforderlich, wenn es sich bei  <b>Dimension</b> um ein Zeitfeld handelt und f&uuml;r <b>Aggregationsdefinition</b> die Option <b>Intervallwert</b> festgelegt wurde.
+            </p>
+            <p>Wenn die Aggregation &uuml;ber eine andere Dimension als die Zeit erfolgt, ist diese Option nicht verf&uuml;gbar, und die Einheit des Intervallwertes entspricht der Variableneinheit der multidimensionalen Eingabe-Raster-Daten. 
+                <ul>
+                    <li> <b>Stunden</b>: Die Datenwerte werden in st&uuml;ndliche Zeitabschnitte im angegebenen Intervall aggregiert.
+                    </li>
+                    <li> <b>Tage</b>: Die Datenwerte werden in t&auml;gliche Zeitabschnitte im angegebenen Intervall aggregiert.
+                    </li>
+                    <li> <b>Wochen</b>: Die Datenwerte werden in w&ouml;chentliche Zeitabschnitte im angegebenen Intervall aggregiert.
+                    </li>
+                    <li> <b>Monate</b>: Die Datenwerte werden in monatliche Zeitabschnitte im angegebenen Intervall aggregiert.
+                    </li>
+                    <li> <b>Jahre</b>: Die Datenwerte werden in j&auml;hrliche Zeitabschnitte im angegebenen Intervall aggregiert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Bereiche definieren</h2></div>
+        <hr/>
+        <div>
+            <p>Wertegruppen werden anhand von Intervallbereichen aggregiert. Sie bestehen aus Wertpaaren f&uuml;r den minimalen und maximalen Bereich und haben den Datentyp &quot;Double&quot; oder &quot;Date&quot;. Diese Eingabe ist erforderlich, wenn  <b>Aggregationsdefinition</b> auf <b>Intervallbereiche</b> festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden. 
+                <ul>
+                    <li>Aktiviert: Bei der Analyse werden alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li>Deaktiviert: Wenn NoData-Werte f&uuml;r die Pixel entlang einer angegebenen Dimension vorhanden sind, wird bei der Analyse NoData zur&uuml;ckgegeben.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

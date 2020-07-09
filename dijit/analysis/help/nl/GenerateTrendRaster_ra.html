@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trendraster genereren</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Trendraster genereren"></h2>
+        <hr/>
+    <p>Schat de trend voor elke pixel in een afmeting voor een of meerdere variabelen in een multidimensionaal raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Kies een multidimensionale laag van satellietbeelden om trends te analyseren</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>De invoerlaag van satellietbeelden van een multidimensionaal raster die wordt geanalyseerd.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Kies de dimensie waaruit de variabele trend wordt geanalyseerd</h2></div>
+        <hr/>
+        <div>
+            <p>De afmeting waarmee een trend wordt ge&euml;xtraheerd voor de variabele of variabelen die in de analyse zijn geselecteerd.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Kies variabele(n) om de trend te analyseren</h2></div>
+        <hr/>
+        <div>
+            <p>De variabele of variabelen waarvoor de trends worden berekend. Als er geen variabele gespecificeerd is, wordt de eerste variabele in de multidimensionale rasterlaag geanalyseerd.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Kies het type lijn om de variabele langs een dimensie te plaatsen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert het type lijn dat moet worden gebruikt om te passen aan de pixelwaarden langs een afmeting. 
+                <ul>
+                    <li> <b>Lineair</b>&mdash;Variabele pixelwaarden worden langs een lineaire trendlijn geplaatst. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Polynomiaal</b>&mdash;Variabele pixelwaarden worden langs een tweede polynomiale trendlijn geplaatst.
+                    </li>
+                    <li> <b>Harmonisch</b>&mdash;Variabele pixelwaarden worden langs een harmonische trendlijn geplaatst.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Geef de lengte van de harmonische cyclus op</h2></div>
+        <hr/>
+        <div>
+            <p>De lengte van de periodieke variatie voor het model. Deze parameter is vereist als het type trendlijn is ingesteld op  <b>Harmonisch</b>. Zo heeft bladgroenheid vaak &eacute;&eacute;n sterke variatiecyclus in &eacute;&eacute;n jaar, zodat de cycluslengte 1 jaar is. Uurlijkse temperatuurgegevens hebben &eacute;&eacute;n sterke variatiecyclus gedurende &eacute;&eacute;n dag, dus de lengte van de cyclus is 1 dag.
+            </p>
+            <p>De standaardlengte is 1 jaar voor gegevens die vari&euml;ren in een jaarlijkse cyclus.
+            </p>
+            <p>Deze parameter wordt alleen opgenomen in de trendanalyse wanneer de te analyseren dimensie de tijd is en het type trendlijn op  <b>Harmonisch</b> is ingesteld.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Kies de tijdseenheid van de lengte van de harmonische cyclus</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de tijdseenheid die moet worden gebruikt voor de lengte van een harmonische cyclus.
+                <ul>
+                    <li> <b>Dagen</b>&mdash; De eenheid voor de lengte van de harmonische cyclus is dagen.
+                    </li>
+                    <li> <b>Jaren</b>&mdash; De eenheid voor de lengte van de harmonische cyclus is jaren. Dit is de standaardinstelling.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Deze parameter wordt alleen opgenomen in de trendanalyse wanneer de te analyseren dimensie de tijd is en het type trendlijn op  <b>Harmonisch</b> is ingesteld.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Geef het frequentienummer voor de harmonische trendaanpassing op</h2></div>
+        <hr/>
+        <div>
+            <p>De frequentie om te gebruiken in harmonische trendaanpassing. Deze parameter geeft de frequentie van de cycli in een jaar aan.
+            </p>
+            <p>De standaardwaarde is 1, of &eacute;&eacute;n harmonische cyclus per jaar.
+            </p>
+            <p>Deze parameter wordt alleen opgenomen in de trendanalyse als de dimensie die wordt geanalyseerd tijd is.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Geef het polynomiale ordernummer voor de trendaanpassing op</h2></div>
+        <hr/>
+        <div>
+            <p>Het polynomiale ordenummer om te gebruiken in Polynomiaal trendaanpassing.
+            </p>
+            <p>Deze parameter wordt alleen opgenomen in de trendanalyse als de dimensie die wordt geanalyseerd tijd is.
+            </p>
+            <p>De standaardwaarde is 2, of een tweede order polynomiaal.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Kies modelstatistieken die in het trendraster worden opgenomen</h2></div>
+        <hr/>
+        <div>
+            <p>Deze tool biedt drie soorten statistieken van de trendaanpassingslijn: de root mean square error (RMSE), de R-gekwadrateerde goodness-of-fit statistiek (R-kwadraat), en de p-waarde statistiek voor de hellingsco&euml;ffici&euml;nt (P-waarde van de hellingsco&euml;ffici&euml;nt). Elke statistiek heeft een bijbehorend keuzevakje om aan te geven of deze wordt berekend en opgenomen als een van de meervoudige banden in het uitgevoerde trendraster.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Aangevinkt&mdash;De RMSE wordt berekend en opgenomen als een van de meervouige banden in het uitgevoerde trendraster. Dit is de standaardinstelling.
+                            </li>
+                            <li>Niet aangevinkt&mdash; De RMSE wordt niet berekend.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kwadraat
+                        </p>
+                        <ul>
+                            <li>Aangevinkt&mdash;De R-kwadraatwaarde wordt berekend en opgenomen als een van de meervouidge banden in het uitgevoerde trendraster.
+                            </li>
+                            <li>Niet aangevinkt&mdash;De R-kwadraatwaarde wordt niet berekend. Dit is de standaardinstelling.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-waarde van de hellingsco&euml;ffici&euml;nt
+                        </p>
+                        <ul>
+                            <li>Aangevinkt&mdash;De p-waarde wordt berekend en opgenomen als een van de meervouige banden in het uitgevoerde trendraster.
+                            </li>
+                            <li>Niet aangevinkt&mdash;De p-waarde wordt niet berekend. Dit is de standaardinstelling.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse.
+                <ul>
+                    <li>Aangevinkt&mdash;De analyse zal alle geldige pixels in een gegeven afmeting bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
+                    </li>
+                    <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de pixels in de gegeven afmeting.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

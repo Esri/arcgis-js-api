@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Stanovit cestovní náklady tras jako polylinii (Determine Travel Cost Path As Polyline)</h2><p/>
-        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Obr&aacute;zek n&aacute;stroje Stanovit cestovn&iacute; n&aacute;klady tras jako polylinii"></h2>
+        <h2>Stanovit nejméně nákladnou trasu jako linii (Determine Travel Cost Path As Polyline)</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Obr&aacute;zek n&aacute;stroje Stanovit nejm&eacute;ně n&aacute;kladnou trasu jako linii"></h2>
         <hr/>
     <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; polyliniovou trasu s nejniž&scaron;&iacute;mi n&aacute;klady mezi zdroji a zn&aacute;m&yacute;mi destinacemi.
     </p>
@@ -89,7 +89,7 @@
         <div><h2>Vstupní rastr destinací nebo prvky</h2></div>
         <hr/>
         <div>
-            <p>Vstup, kter&yacute; definuje c&iacute;le tak&eacute; pro v&yacute;počet vzd&aacute;lenosti. Tato vrstva může b&yacute;t rastr nebo prvek.
+            <p>Vstup, kter&yacute; definuje destinace použit&eacute; pro v&yacute;počet vzd&aacute;lenosti. Tato vrstva může b&yacute;t rastr nebo prvek.
             </p>
             <p>Pokud je vstupem image služba, vstup se skl&aacute;d&aacute; z buněk, kter&eacute; maj&iacute; platn&eacute; hodnoty (nula je platn&aacute; hodnota), a zb&yacute;vaj&iacute;c&iacute;m buňk&aacute;m mus&iacute; b&yacute;t přiřazeno NoData.
             </p>
@@ -109,23 +109,31 @@
         <div><h2>Zvolte typ tras, které se mají určit</h2></div>
         <hr/>
         <div>
-            <p>Definuje způsob, jak&yacute;m budou hodnoty a z&oacute;ny ve vstupn&iacute;ch datech o destinaci interpretov&aacute;ny ve v&yacute;počtech cesty n&aacute;kladů.
+            <p>Definuje způsob, jak&yacute;m budou hodnoty a z&oacute;ny ve vstupn&iacute;ch datech destinac&iacute; interpretov&aacute;ny ve v&yacute;počtech nejm&eacute;ně n&aacute;kladn&eacute; trasy.
             </p>
             <ul>
-                <li>Nejlep&scaron;&iacute; jednoduch&eacute; &ndash; pro v&scaron;echny buňky nebo lokace ve vstupn&iacute;ch datech c&iacute;le se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa z lokace s minimem nejm&eacute;ně n&aacute;kladn&yacute;ch tras to zdrojov&eacute; lokace. Toto je v&yacute;choz&iacute; hodnota
+                <li> <b>Nejlep&scaron;&iacute; jednotliv&yacute;</b> &ndash; pro v&scaron;echny buňky nebo lokace ve vstupn&iacute;ch datech destinac&iacute; je nejm&eacute;ně n&aacute;kladn&aacute; trasa odvozena z lokace s minimem nejm&eacute;ně n&aacute;kladn&yacute;ch tras do zdrojov&eacute; lokace. Toto je v&yacute;choz&iacute; hodnota
                     
 
                 </li>
-                <li>Do každ&eacute; buňky &ndash; pro každou buňku nebo lokaci s platn&yacute;mi hodnotami ve vstupn&iacute;ch datech c&iacute;le se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa a ulož&iacute; se do v&yacute;stupn&iacute; služby prvků. Pomoc&iacute; t&eacute;to volby se každ&aacute; buňka vstupn&iacute;ch dat c&iacute;le bere samostatně a pro každou se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa z buňky.
+                <li> <b>Do každ&eacute; buňky</b> &ndash; pro každou buňku nebo lokaci s platn&yacute;mi hodnotami ve vstupn&iacute;ch datech destinac&iacute; se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa a ulož&iacute; se do v&yacute;stupn&iacute; služby prvků. Pomoc&iacute; t&eacute;to volby se každ&aacute; buňka vstupn&iacute;ch dat destinac&iacute; bere samostatně a pro každou se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa z buňky.
                     
 
                 </li>
-                <li>Do každ&eacute; z&oacute;ny &ndash; pro každou z&oacute;nu ve vstupn&iacute;ch datech c&iacute;le se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa a ulož&iacute; se do v&yacute;stupn&iacute; služby prvků. Pomoc&iacute; t&eacute;to volby nejm&eacute;ně n&aacute;kladn&aacute; trasa pro každou z&oacute;nu zač&iacute;n&aacute; v buňce nebo lokaci s nejkrat&scaron;&iacute; vzd&aacute;lenost&iacute; v&aacute;žen&yacute;ch n&aacute;kladů v z&oacute;ně.
+                <li> <b>Do každ&eacute; z&oacute;ny</b> &ndash; pro každou z&oacute;nu ve vstupn&iacute;ch datech destinac&iacute; se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa a ulož&iacute; se do v&yacute;stupn&iacute; služby prvků. Pomoc&iacute; t&eacute;to volby nejm&eacute;ně n&aacute;kladn&aacute; trasa pro každou z&oacute;nu zač&iacute;n&aacute; v buňce nebo lokaci s nejkrat&scaron;&iacute; vzd&aacute;lenost&iacute; v&aacute;žen&yacute;ch n&aacute;kladů v z&oacute;ně.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Zvolit pole, ze kterého se mají získat hodnoty pro cíl</h2></div>
+        <hr/>
+        <div>
+            <p>Pole slouž&iacute;c&iacute; k&nbsp;z&iacute;sk&aacute;n&iacute; hodnot pro c&iacute;lov&aacute; um&iacute;stěn&iacute;.
+            </p>
         </div>
     </div>
 </div>

@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="smallsize">
+    <div id="toolDescription" class="regularsize">
         <h2>Objektide tuvastamine süvaõppe teel</h2><p/>
         <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Objektide tuvastamine s&uuml;va&otilde;ppe teel"></h2>
         <hr/>
-    <p>This tool runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+    <p>This tool runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. Objektid v&otilde;ivad olla leitud objektide &uuml;mber paiknevad piiratud alad v&otilde;i hulknurgad v&otilde;i objektide keskkohas paiknevad punktid.
     </p>
     <p>Kui tingimus  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid rasterkihi piksleid, mis on kaardi praeguses ulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel kogu rastrit ka siis, kui see on v&auml;ljaspool kaardi praegust ulatust.
     </p>
@@ -74,7 +74,7 @@
         <div>
             <p>The function arguments are defined in the Python raster function class referenced by the input model. This is where you list additional deep learning parameters and arguments for experiments and refinement, such as a confidence threshold for adjusting the sensitivity.
             </p>
-            <p>The names of the arguments are populated by the tool from reading the Python module on the raster analysis server.
+            <p>T&ouml;&ouml;riist t&auml;idab rasteranal&uuml;&uuml;si serveris Pythoni mudeli lugemise teel argumendid nimedega.
             </p>
         </div>
     </div>

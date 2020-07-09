@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({binsLabel:"Velg typen beholdere som skal brukes til å opprette det multivariable rutenettet",layersAttrLabel:"Velg inndatalagene og variablene du vil inkludere i rutenettet",itemDescription:"Geoobjektslag generert ved kjøring av Opprett multivariabelt rutenett.",itemTags:"Analyseresultat, Opprett multivariabelt rutenett",itemSnippet:"Geoobjektslag generert av Opprett multivariabelt rutenett",addVariables:"Legg til variabler"});

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generarea Anomaliei Multidimensionale</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generarea Anomaliei Multidimensionale"></h2>
+        <hr/>
+    <p>Generează un set de date de raster multidimensional prin combinarea variabilelor existente ale rasterului multidimensional de-a lungul unei dimensiuni.
+    </p>
+    <p>O anomalie este abaterea unei observații de la valoarea sa standard, medie sau mediană.
+    </p>
+    <p>Acest instrument calculează anomaliile &icirc;n timp pentru una sau mai multe variabile dintr-un raster multidimensional. Dacă aveți o dimensiune non-temporală &icirc;n plus față de dimensiunea temporală, anomalia va fi calculată la fiecare etapă din dimensiunea suplimentară.
+    </p>
+    <p>De exemplu, dacă aveți date lunare privind temperatura oceanului, colectate la fiecare 1 metru ad&acirc;ncime p&acirc;nă la 100 metri, și doriți să calculați anomaliile de temperatură ca abateri de la media anuală. Acest instrument va determina anomaliile de temperatură pe baza unei medii anuale dacă setați  <b>Anual</b> ca <b>interval temporal pentru calcularea mediei</b>, și va returna valori ale anomaliei pentru fiecare dintre cele 100 ad&acirc;ncimi.
+    </p>
+    <p>Acest instrument acceptă doar seturile de date raster multidimensional care au o dimensiune de timp.
+    </p>
+    <p>Dacă se bifează  <b>Utilizare extindere curentă a hărții</b>, variabilele stratului care sunt vizibile &icirc;n extinderea curentă a hărții vor fi analizate. Dacă nu se bifează, variabilele &icirc;ntregului strat tematic vor fi analizate, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Alegeți stratul tematic de imagistică pentru generarea unei anomalii</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de imagini de intrare al unui set de date raster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Alegeți variabila (variabilele) pentru care vor fi generate anomalii</h2></div>
+        <hr/>
+        <div>
+            <p>Variabila sau variabilele pentru care vor fi calculate anomaliile. Dacă nu este specificată nicio variabilă, toate variabilele cu o dimensiune de timp vor fi analizate.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Alegeți metoda de generare a anomaliilor</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică metoda care va fi folosită pentru a calcula anomalia. 
+                <ul>
+                    <li> <b>Diferența Față de Medie</b>&mdash;Va fi calculată diferența dintre valoarea unui pixel și media valorii acelui pixel &icirc;n &icirc;mpărțirile definite de interval. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Diferență Procentuală Față de Medie</b>&mdash;Va fi calculată diferența procentuală dintre valoarea unui pixel și media valorii acelui pixel &icirc;n &icirc;mpărțirile definite de interval.
+                    </li>
+                    <li> <b>Procent din Medie</b>&mdash;Va fi calculat procentul mediei.
+                    </li>
+                    <li> <b>Scor Z</b>&mdash;Va fi calculat scorul Z pentru fiecare pixel. Un scor z 0 indică faptul că valoarea pixelului este identică cu media. Un scor z 1 indică faptul că valoarea pixelului este 1 abatere standard de la medie. Dacă un scor z este 2, valoarea pixelului este 2 abateri standard de la medie și așa mai departe.
+                    </li>
+                    <li> <b>Diferență de la Mediană</b>&mdash;Va fi calculată diferența dintre valoarea pixelului și mediana matematică a valorilor acelui pixel pe &icirc;mpărțirile definite de interval.
+                    </li>
+                    <li> <b>Procent de diferență de la mediană</b>&mdash;Va fi calculat procentul de diferență dintre valoarea unui pixel și mediana matematică a valorilor acelui pixel pe &icirc;mpărțirile definite de interval.
+                    </li>
+                    <li> <b>Procent de mediană</b>&mdash;Va fi calculat procentul medianei matematice.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Metodele matematice pentru calcularea valorilor anomaliei sunt menționate mai jos. Anomaliile sunt calculate folosind fie valoarea medie sau mediană ca definiție a mediei. Dacă distribuția datelor este asimetrică, media poate fi influențată foarte mult de deviațiile extreme, așadar valoarea medie a metodei scorului z se poate potrivi acestui tip de date.
+            </p>
+            <p>
+                <ul>
+                    <li>Diferența față de medie = x - &micro;
+
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                                
+
+                            </li>
+                            <li>&micro; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Diferența procentuală de la medie = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                                
+
+                            </li>
+                            <li>&micro; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                                
+
+                            </li>
+                            <li>|x - &micro;| = valoarea absolută a diferenței dintre valoare și medie
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentul mediei = x - &micro;
+
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                                
+
+                            </li>
+                            <li>&micro; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferența față de mediană = x - &szlig;
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                            </li>
+                            <li>&szlig; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferența procentuală de la mediană = |x - &micro;| / [(x + &micro;)/2]
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                            </li>
+                            <li>&szlig; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                            </li>
+                            <li>|x - &szlig;| = valoarea absolută a diferenței dintre valoare și mediană
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentul medianei = x - &szlig;
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                            </li>
+                            <li>&szlig; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Scor Z = (x - &micro;) / S
+                        <ul>
+                            <li>x = valoarea pixelului dintr-o &icirc;mpărțire
+                            </li>
+                            <li>&micro; = media valorilor acelui pixel &icirc;n intervalul de timp dat
+                            </li>
+                            <li>S = abaterea standard a valorilor pixelului &icirc;n intervalul de timp dat
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Alegeți intervalul temporal pentru calcularea mediei</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică intervalul temporal care va fi folosit pentru a calcula media. 
+                <ul>
+                    <li> <b>Toate</b>&mdash;Calculează media pe toate &icirc;mpărțirile pentru fiecare pixel.
+                    </li>
+                    <li> <b>Anual</b>&mdash;Calculează media anuală pentru fiecare pixel.
+                    </li>
+                    <li> <b>Recurent lunar</b>&mdash;Calculează media lunară pentru fiecare pixel.
+                    </li>
+                    <li> <b>Recurent săptăm&acirc;nal</b>&mdash;Calculează media săptăm&acirc;nală pentru fiecare pixel.
+                    </li>
+                    <li> <b>Recurent zilnic</b>&mdash;Calculează media zilnică pentru fiecare pixel.
+                    </li>
+                    <li> <b>Orar</b>&mdash;Calculează media orară pentru fiecare pixel.
+                    </li>
+                    <li> <b>Raster Extern</b>&mdash;Se face referire la un set de date raster existent care conține valoarea medie sau mediană pentru fiecare pixel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Alegeți stratul tematic de imagini mediu ca referință</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică setul de date raster de referință care conține o medie calculată anterior pentru fiecare pixel. Anomaliile vor fi calculate comparativ cu această medie.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorare valori lipsă în calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză. 
+                <ul>
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    </li>
+                    <li>Nebifat&mdash;Analiza va avea ca rezultat NoData dacă există orice valori NoData pentru pixel pe dimensiunea dată.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

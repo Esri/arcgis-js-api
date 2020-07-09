@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Izaberite raster sloja lokacija geoobjekata da biste izračunali udaljenost do</h2></div>
+        <div><h2>Izaberite raster ili sloj lokacija geoobjekata da biste izračunali udaljenost do</h2></div>
         <hr/>
         <div>
             <p>Sloj koji određuje izvore do kojih će se računati udaljenost. Sloj može biti usluga snimke ili usluga geoobjekata.
@@ -137,6 +137,47 @@
             <p>Polje u ulaznom sloju izvora koje nosi vrijednosti koje određuju pojedine izvore. Može biti cijeli broj ili polje teksta skupa podataka izvora.
             </p>
             <p>Zadana je postavka  <i>Value</i>. Ako upotrebljavate uslugu geoobjekta i polje <i>Value</i> nije dostupno, tada će se upotrijebiti prvi dostupni cijeli broj ili polje teksta. Ako nema valjanog polja, upotrijebit će se polje ID objekta (na primjer OID ili FID, ovisno o vrsti unosa geoobjekta).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Odaberite raster ili sloj geoobjekata za predstavljanje ograničenja</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji definira ograničenja. 
+            </p>
+            <p>Za uslugu snimke vrsta unosa može biti cijeli broj ili plutajuća točka. Sve ćelije koje imaju vrijednost (uključujući nulu) tretirat će se kao ograničenje, sve ćelije koje nemaju podataka neće se tretirati kao ograničenje.
+            </p>
+            <p>Za uslugu geoobjekta unos može biti točka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda udaljenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje hoće li se računati udaljenost uporebom planarne (ravno tlo) ili geodezijske (elipsoid) metode.
+            </p>
+            <ul>
+                <li> <b>Planarno</b>&ndash; izračun će se izvr&scaron;iti na projiciranoj ravnini pomoću 2D kartezijanskog koordinatnog sustava. To je zadana metoda.
+                    
+
+                </li>
+                <li> <b>Geodezijski</b>&ndash; udaljenosti se računaju na elipsoidu. Stoga bez obzira na projekciju unosa ili izlaza, rezultati se neće mijenjati.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Naziv sloja rezultata povratnog smjera</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b>. Morate navesti naziv koji već ne postoji u stavci <b>Moj sadržaj</b>.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
             </p>
         </div>
     </div>

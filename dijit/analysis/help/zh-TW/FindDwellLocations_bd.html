@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>尋找駐留位置</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="尋找駐留位置工作流程圖"></h2>
+        <hr/>
+    <p>此工具使用 <code>即時</code>類型之點圖徵的時間啟用圖層。首先，工具會使用唯一識別碼將圖徵指派給軌跡。軌跡順序由圖徵的時間決定。接著將計算軌跡中第一個觀察點與下一個觀察點之間的距離。如果給定距離內的兩個時態連續點至少存在指定的時間，則將圖徵視為駐留位置的一部分。若發現兩個圖徵皆屬於某個駐留位置時，則會將駐留位置中的第一個圖徵作為參考點，且工具將在駐留位置中參考點的指定距離內尋找連續的圖徵。一旦找到指定距離內的所有圖徵，該工具將收集駐留位置圖徵並計算其平均值中心。如果現有駐留位置之前和之後的圖徵位於駐留位置之平均值中心的指定距離內，則會將它們新增至駐留位置。此程序一直持續到軌跡結束。
+    </p>
+    <p>可以兩種方式之一來表示時間啟用圖層中的圖徵：
+        <ul>
+            <li>即時 - 單一時間點
+            </li>
+            <li>間隔 - 開起時間和結束時間
+            </li>
+        </ul>
+        
+    </p>
+    <p>例如，假設您服務於交通部，並且已收集主要高速公路上車輛的 GPS 讀數。每一筆 GPS 記錄包含唯一的車輛 ID、時間、位置和速度。使用唯一的車輛 ID 來定義個別軌跡，搜尋至少在 15 分鐘內移動不超過 100 公尺的車輛，以發現道路網絡中的堵塞區域。您也可以計算統計資料，例如駐留位置內車輛的平均速度。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>從 ... 選擇圖層以尋找駐留位置</h2></div>
+        <hr/>
+        <div>
+            <p>將摘要至駐留位置的點圖層。輸入圖層必須是包含圖徵且啟用時間功能（其表示即時時間），以及具有可用來識別軌跡的一或多個欄位。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>選擇分析圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。您可以選擇在輸入圖層上套用篩選器，或將託管圖層上的選擇套用到您的地圖。只會套用篩選器和選擇以進行分析。 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>選擇用來識別軌跡的一或多個欄位</h2></div>
+        <hr/>
+        <div>
+            <p>表示軌跡識別碼的欄位。您可以使用一或多個欄位來表示軌跡的唯一值。
+            </p>
+            <p>例如，若正在尋找駐留位置的颶風，可以將颶風名稱作為軌跡欄位。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>選擇用來計算距離的方法</h2></div>
+        <hr/>
+        <div>
+            <p>用來計算軌跡內駐留距離的方法。 <b>平面</b>方法可更快速地計算結果，但不會沿國際換日線來變換軌跡，也不會在緩衝時考量地球的實際形狀。 <b>測地線</b>方法會在必要時沿國際換日線變換軌跡，並套用測地線緩衝區來考量地球的形狀。
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>定義空間搜尋距離</h2></div>
+        <hr/>
+        <div>
+            <p>駐留距離容差是要在單一駐留位置中考量的點之間的最長距離。
+            </p>
+            <p>例如，若要尋找其交通在某個時間內移動不超過 20 公尺的駐留位置，則距離容差將是 20 公尺。
+            </p>
+            <p>使用 <b>定義時態搜尋範圍</b>參數來指定時間。
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>分割軌跡（選用）</h2></div>
+        <hr/>
+        <div>
+            <p>距離容差的單位。
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>定義時態搜尋範圍</h2></div>
+        <hr/>
+        <div>
+            <p>駐留時間容差是要在單一駐留位置中考量之駐留位置的最短持續時間。
+            </p>
+            <p>例如，若要瞭解哪些交通在 1 小時內尚未移動到特定的距離，則時間容差將是 1 小時。
+            </p>
+            <p>使用 <b>定義空間搜尋範圍</b>參數來指定距離。
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>選擇用來分割軌跡的距離 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>時間容差的單位。
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>新增統計資料 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>您可以在要摘要的圖徵上計算統計資料。您可以在數值欄位上計算： 
+                <ul>
+                    <li>計數 - 計算非 null 值的數目。可將其使用於數值欄位或字串。[null, 0, 2] 的計數是 2。
+                    </li>
+                    <li>總和 - 欄位中的數值總和。[null, null, 3] 的總和是 3。
+                    </li>
+                    <li>平均值 - 數值的平均值。[0, 2, null] 的平均值是 1。
+                    </li>
+                    <li>最小值 - 數值欄位的最小值。[0, 2, null] 的最小值是 0。
+                    </li>
+                    <li>最大值 - 數值欄位的最大值。[0, 2, null] 的最大值是 2。
+                    </li>
+                    <li>範圍 - 數值欄位的範圍。這是以最大值減去最小值的計算結果。[0, null, 1] 的範圍為 1。[null, 4] 的範圍為 0。
+                    </li>
+                    <li>變異 - 追蹤中的數值欄位的變異。[1] 的變異為 null。[null, 1,0,1,1] 的變異是 0.25。
+                    </li>
+                    <li>標準差 - 數值欄位的標準差。[1] 的標準差為 null。[null, 1,0,1,1] 的標準差是 0.5。
+                    </li>
+                    <li>第一個 - 摘要軌跡中指定欄位的第一個值。如果軌跡具有欄位的下列時間順序值：[1,5,10,20]，則第一個值為 1。
+                    </li>
+                    <li>最後一個 - 摘要軌跡中指定欄位的最後一個值。如果軌跡具有欄位的下列時間順序值：[1,5,10,20]，則最後一個值為 20。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>您可以在字串欄位上計算：
+                <ul>
+                    <li>計數 - 非 null 字串的數目。
+                    </li>
+                    <li>任何 - 此統計資料是指定欄位中字串值的隨機樣本。
+                    </li>
+                    <li>第一個 - 摘要軌跡中指定欄位的第一個值。如果軌跡具有欄位的下列時間順序值：[Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston]，則第一個值為 Toronto。
+                    </li>
+                    <li>最後一個 - 摘要軌跡中指定欄位的最後一個值。如果軌跡具有欄位的下列時間順序值：[Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston]，則最後一個值為 Boston。
+                    </li>
+                </ul>
+                會以非 null 值計算所有統計資料。結果圖層將為每個已計算的統計資料納入一個新欄位。透過選擇屬性和統計資料可新增任意數量的統計資料。
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>將駐留位置輸出為</h2></div>
+        <hr/>
+        <div>
+            <p>決定傳回哪些圖徵及其格式。有四種可用的類型： 
+                <ul>
+                    <li> <b>平均值中心</b> - 一個點，用來表示每一個探索的駐留位置的質心。將摘要的屬性。這是預設情況。
+                         
+                    </li>
+                    <li> <b>凸殼</b> - 表示每個駐留群組之凸殼的多邊形。將摘要的屬性。
+                         
+                    </li>
+                    <li> <b>駐留圖徵</b> - 會傳回判定為屬於駐留位置的所有輸入點圖徵和屬性。
+                         
+                    </li>
+                    <li> <b>所有圖徵</b> - 會傳回所有輸入點圖徵和屬性。
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>使用時間間隔分析資料（選用）</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否要使用時間尋找駐留位置，該時間間隔將分段輸入圖徵以進行分析。如果使用時間間隔，必須設定要使用的時間間隔並（選用）設定參考時間。若未設定參考時間，將使用 1970 年 1 月 1 日。
+            </p>
+            <p>例如，若將時間邊界設為 1 天（從 1990 年 1 月 1 日上午 9:00 起算），則會在每天上午 9:00 截斷每一個軌跡，並在該時段內進行分析。將從上午 9:00 開始駐留，之後即結束。
+            </p>
+            <p>使用時間間隔可快速地加快計算時間，因為它會快速建立較小的軌跡以進行分析。如果按重複發生的時間間隔進行分割有利於分析，則建議將其運用於大數據處理。
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 將建立之圖層的名稱。若是寫入到 ArcGIS Data Store，您的結果將儲存於<b>我的內容</b>並新增至地圖中。若是寫入到大數據檔案分享，您的結果將儲存於大數據檔案分享並新增至其資訊清單中。不會將它新增到地圖。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊寫入到 ArcGIS Data Store（關聯式或大型的時空資料儲存庫）時，可以在<b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

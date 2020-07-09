@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({clustersLabel:"สำหรับชั้นข้อมูล ${inputLayerName} ให้ค้นหากลุ่ม",chooseLayerLabel:"เลือกชั้นข้อมูลที่จะพบกลุ่ม",minClusterPtsLabel:"จำนวนจุดต่ำสุดที่จะถือว่าเป็นกลุ่ม",minClustersPtsGAXLbl:"จำนวนจุดต่ำสุดที่จะใช้เป็นจุดกำเนิดคลัสเตอร์",limitSearchLabel:"จำกัดช่วงการค้นหาเป็น (ไม่บังคับ)",limitSearchReqLabel:"จำกัดช่วงในการค้นหาที่",outputLayerName:"ค้นหากลุ่มสำหรับ ${inputLayerName}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการใช้โซลูชัน Find Point Clusters สำหรับ ${inputLayerName}",itemTags:"ผลการวิเคราะห์, Find Point Clusters, ${inputLayerName}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจาก Find Point Clusters",chooseClusteringMethod:"เลือกวิธีการรวมกลุ่มที่จะใช้",dbscanLabel:"ระยะห่างที่กำหนด (DBSCAN)",hdbscanLabel:"ปรับแต่งเอง (HDBSCAN)",useTimeToFindCLusters:"ใช้เวลาในการค้นหาคลัสเตอร์",limitSearchDurLabel:"จำกัดระยะเวลาการค้นหาให้เหลือ"});

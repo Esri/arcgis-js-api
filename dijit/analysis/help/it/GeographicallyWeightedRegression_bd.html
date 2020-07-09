@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regressione Geografica Verificata</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagramma del flusso di lavoro di Regressione ponderata geograficamente"></h2>
+        <hr/>
+    <p>Esegue Regressione ponderata geograficamente (GWR), che &egrave; una forma locale di regressione lineare utilizzata per modellare le relazioni spazialmente variabili.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegliere un layer da analizzare</h2></div>
+        <hr/>
+        <div>
+            <p>Il layer contenente feature puntuali che contengono le variabili dipendenti ed esplicative.
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Scegliere il campo da modellare</h2></div>
+        <hr/>
+        <div>
+            <p>Il campo numerico contenente i valori osservati da modellare e il tipo di valore che si sta modellando.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Scegliere i campi esplicativi</h2></div>
+        <hr/>
+        <div>
+            <p>Uno o pi&ugrave; campi che rappresentano variabili esplicative (campi) che contribuiscano a prevedere il valore. Solo i campi numerici saranno visibili.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Scegliere come determinare il quartiere</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se il quartiere utilizzato &egrave; costruito come distanza fissa o se pu&ograve; variare in estensione spaziale a seconda della densit&agrave; delle feature.
+                <ul>
+                    <li> <b>Numero di vicini</b>: la dimensione del quartiere &egrave; una funzione di un numero specificato di vicini inclusi nei calcoli per ciascuna feature. Dove le feature sono dense, l'estensione spaziale del quartiere &egrave; minore; dove le feature sono scarse, l'estensione spaziale del quartiere &egrave; maggiore. Quando si sceglie questa opzione, selezionare il numero di vicini da includere. Il numero deve essere un numero intero compreso tra 2 e 5000.
+                    </li>
+                    <li> <b>Banda di distanza</b>: la dimensione del quartiere &egrave; una distanza costante o fissa per ciascuna feature. Quando si seleziona questa opzione, selezionare la banda di distanza per rappresentare l'estensione spaziale del quartiere.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Selezionare la modalità di ponderazione delle feature contigue</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica il tipo di kernel che verr&agrave; utilizzato per fornire la ponderazione spaziale nel modello. Il kernel definisce in che modo ogni feature &egrave; correlata ad altre feature all'interno nel quartiere.
+                <ul>
+                    <li> <b>Bisquare</b>: una ponderazione pari a 0 verr&agrave; assegnata a qualsiasi feature al di fuori del quartiere specificato. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li> <b>Gaussiano</b>: tutte le feature ricevono valori ponderati, ma i valori ponderati diventano esponenzialmente inferiori quanto pi&ugrave; si &egrave; lontani dalla feature di destinazione.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p> Il nome del layer che verr&agrave; creato. Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            </p>
+            <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -55,11 +55,11 @@
     <p>Jei parinktis  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus konvertuojamos tik dabartinėje žemėlapio aprėptyje matomos rastro gardelės. Jei parinktis nepažymėta, bus konvertuojamos visos rastrinio sluoksnio gardelės, net jei jos nepatenka į dabartinę žemėlapio aprėptį. Atkreipkite į tai dėmesį, jei rastrinis sluoksnis yra didelis arba labai didelės rai&scaron;kos.
     </p>
     <p>&Scaron;io įrankio panaudojimo atvejai:
- 
+
         <ul>
             <li>Sukurkite plotinius elementus i&scaron; žemės naudojimo klasifikacijos rastro.
                 
- 
+
             </li>
             <li>DEM nurodyti srautai gali būti konvertuoti į linijinius elementus.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM galima konvertuoti į ta&scaron;kinius elementus, kurie gali būti naudojami ne rastru pagrįstoje darbų eigoje.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Pasirinkite lauką</h2></div>
         <hr/>
         <div>
-            <p>Užpildykite lauką, kuriame nurodoma, kuri reik&scaron;mė bus naudojama konvertuojant.
+            <p>Laukas, kuriame nurodoma konvertavimo vertė.
             </p>
             <p>Tai gali būti bet koks sveikasis skaičius arba tekstinė reik&scaron;mė.
             </p>
             <p>Laukai, kuriuose nurodytos reik&scaron;mės su slankiaisiais kableliais, gali būti naudojami tik jei konvertuojama į ta&scaron;kų rinkinį.
             </p>
-            <p>Pagal numatytuosius nustatymus naudojamas laukas  <i>Value</i>, kuriame pateikiama kiekvienos rastro gardelės reik&scaron;mė.
+            <p>Numatytasis laukas yra  <i>Value</i>, kuriame pateikiama kiekvienos rastro gardelės reik&scaron;mė.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Pasirinkite išvesties tipą</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkite vieną i&scaron; i&scaron;vesties tipų: ta&scaron;ką, liniją ar plotą.
+            <p>Nurodo i&scaron;vesties tipą.
             </p>
             <ul>
-                <li>Ta&scaron;kas &ndash; rastras bus konvertuotas į ta&scaron;kų rinkinį.
+                <li> <b>Ta&scaron;kas</b> &ndash; rastras bus konvertuotas į ta&scaron;kų rinkinį. Tai numatytasis nustatymas.
                     
  
                 </li>
-                <li>Linija &ndash; rastras bus konvertuotas į linijinių elementų rinkinį.
+                <li> <b>Linija</b> &ndash; rastras bus konvertuotas į linijinių elementų rinkinį.
                     
  
                 </li>
-                <li>Plotas &ndash; rastras bus konvertuotas į plotinių elementų rinkinį.
+                <li> <b>Plotas</b> &ndash; rastras bus konvertuotas į plotinių elementų rinkinį.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Supaprastinkite linijas arba plotus</h2></div>
         <hr/>
         <div>
-            <p>Nurodykite, ar elementus reikia supaprastinti.
+            <p>Nurodo, ar linijos arba plotai bus supaprastinti (i&scaron;lyginti). Supaprastinimas atliekamas linijoje paliekant minimalų segmentų skaičių, i&scaron;laikant ją kuo arčiau pradinių rastro gardelių kra&scaron;tų.
             </p>
-            <p>Jei &scaron;i parinktis pažymėta (numatytasis nustatymas), linijiniai ar plotiniai elementai bus supaprastinti ir rezultatas bus labiau apibendrintas. Jei &scaron;i parinktis nepažymėta, linijiniai elementai atitiks rastrinių duomenų rinkinio gardelių ribas.
+            <ul>
+                <li>Pažymėta &ndash; linijiniai ar plotiniai elementai bus supaprastinti ir rezultatas bus labiau apibendrintas. Tai numatytasis nustatymas.
+                    
+
+                </li>
+                <li>Nepažymėta &ndash; linijiniai ar plotiniai elementai atitiks rastrinių duomenų rinkinio gardelių ribas.
+                    
+
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametras palaikomas tik jei i&scaron;vesties tipas yra linija arba plotas.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Kurti kelių dalių elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar i&scaron;vesties plotai apims vienos dalies, ar kelių dalių elementus.
+            </p>
+            <ul>
+                <li>Pažymėta &ndash; kelių dalių elementai bus sukurti pagal plotus, turinčius tą pačią reik&scaron;mę.
+                    
+
+                </li>
+                <li>Nepažymėta &ndash; kiekvienam plotui bus sukurti atskiri (vienos dalies) elementai. Tai numatytasis nustatymas.
+                    
+
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametras palaikomas tik jei i&scaron;vesties tipas yra plotas.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimalus viršūnių skaičius viename plotiniame elemente</h2></div>
+        <hr/>
+        <div>
+            <p>Vir&scaron;ūnių limitas naudojamas plotui padalinti į mažesnius plotus.
+            </p>
+            <p>Jei paliksite tu&scaron;čią, i&scaron;vesties plotai nebus suskaidyti. Tai numatytasis nustatymas.
+            </p>
+            <p>&Scaron;is parametras palaikomas tik jei i&scaron;vesties tipas yra plotas.
             </p>
         </div>
     </div>

@@ -1,0 +1,45 @@
+
+
+.esriGEReportPlayer .dataDrilling_drillDataButton {
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: rgba(170, 170, 170, 0.8);
+    opacity: 0;
+    white-space: nowrap;
+    position: absolute;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    min-width: 100px;
+}
+
+    .esriGEReportPlayer .dataDrilling_drillDataButton:hover {
+        opacity: 1;
+    }
+
+.esriGEReportPlayer.isShowingAnimation .dataDrilling_drillDataButton,
+.esriGEReportPlayer.isDrillingData .dataDrilling_drillDataButton {
+    display: none;
+}
+
+.esriGEReportPlayer .dataDrilling_drillDataButtonIcon {
+    background-image: url("./images/chartWhite.svg");
+    background-repeat: no-repeat;
+    background-size: 2em;
+    width: 2em;
+    height: 2em;
+}
+
+.esriGEReportPlayer .dataDrilling_drillDataButtonLabel {
+    word-break: break-word;
+    line-height: 1.5em;
+}
+
+
+
+.esriGEReportPlayerPrint .dataDrilling_topToolbar,
+.esriGEReportPlayerPrint .dataDrilling_drillDataButton,
+.esriGEReportPlayerPrint .dataDrilling_drillDataButtonIcon {
+    display: none !important;
+}

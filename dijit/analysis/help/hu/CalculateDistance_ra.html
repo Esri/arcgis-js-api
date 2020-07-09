@@ -49,15 +49,15 @@
     <p>Az alkalmaz&aacute;sra p&eacute;lda lehet az al&aacute;bbihoz hasonl&oacute; k&eacute;rd&eacute;sek megv&aacute;laszol&aacute;sa:
 
         <ul>
-            <li>Mekkora t&aacute;vols&aacute;gra van a legk&ouml;zelebbi v&aacute;ros?
+            <li>Mekkora a t&aacute;vols&aacute;g a legk&ouml;zelebbi v&aacute;roshoz?
                 
 
             </li>
-            <li>Mekkora t&aacute;vols&aacute;gra van a legk&ouml;zelebbi &uacute;t?
+            <li>Mekkora a t&aacute;vols&aacute;g a legk&ouml;zelebbi &uacute;thoz?
                 
 
             </li>
-            <li>Mekkora t&aacute;vols&aacute;gra van a legk&ouml;zelebbi v&iacute;zforr&aacute;s?
+            <li>Mekkora a t&aacute;vols&aacute;g a legk&ouml;zelebbi v&iacute;zforr&aacute;shoz?
             </li>
         </ul>
         
@@ -67,12 +67,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Válasszon raszteres vagy vektoros helyréteget a távolság kiszámításához</h2></div>
+        <div><h2>Válasszon raszteres vagy vektoros helyréteget a következőtől való távolság kiszámításához:</h2></div>
         <hr/>
         <div>
             <p>Azokat a kiindul&oacute;pontokat meghat&aacute;roz&oacute; r&eacute;teg, amelyektől a t&aacute;vols&aacute;got sz&aacute;m&iacute;tani kell. A r&eacute;teg lehet k&eacute;pszolg&aacute;ltat&aacute;s vagy vektoros adatszolg&aacute;ltat&aacute;s.
             </p>
-            <p>K&eacute;pszolg&aacute;ltat&aacute;s eset&eacute;n a bementi t&iacute;pus lehet integer vagy lebegőpontos &eacute;rt&eacute;k.
+            <p>K&eacute;pszolg&aacute;ltat&aacute;s eset&eacute;n a bementi t&iacute;pus lehet eg&eacute;sz sz&aacute;m vagy lebegőpontos &eacute;rt&eacute;k.
             </p>
             <p>Vektoros adatszolg&aacute;ltat&aacute;s eset&eacute;n a bemenet lehet pont, vonal vagy polygon.
             </p>
@@ -134,9 +134,50 @@
         <div><h2>Allokáció kiválasztása mező</h2></div>
         <hr/>
         <div>
-            <p>Az egyes kiindul&oacute;pontokat meghat&aacute;roz&oacute; &eacute;rt&eacute;keket tartalmaz&oacute; mező a bemeneti kiindul&oacute;pont-r&eacute;tegen. Lehet a kiindul&oacute;pontok adathalmaz&aacute;nak integer- vagy sz&ouml;veges mezője.
+            <p>Az egyes kiindul&oacute;pontokat meghat&aacute;roz&oacute; &eacute;rt&eacute;keket tartalmaz&oacute; mező a bemeneti kiindul&oacute;pont-r&eacute;tegen. Lehet a kiindul&oacute;pontok adathalmaz&aacute;nak eg&eacute;sz sz&aacute;m vagy sz&ouml;veges mezője.
             </p>
-            <p>Az alap&eacute;rtelmezett &eacute;rt&eacute;k  <i>Value</i>. Ha vektoros adatszolg&aacute;ltat&aacute;s haszn&aacute;lata eset&eacute;n nem &eacute;rhető el <i>Value</i> mező, akkor az első el&eacute;rhető integer- vagy sz&ouml;veges mezőt haszn&aacute;lja. Ha nem l&eacute;tezik &eacute;rv&eacute;nyes mező, az ObjectID mezőt (p&eacute;ld&aacute;ul OID vagy FID, a vektoros bemenet t&iacute;pus&aacute;t&oacute;l f&uuml;ggően) haszn&aacute;lja.
+            <p>Az alap&eacute;rtelmezett &eacute;rt&eacute;k  <i>Value</i>. Ha vektoros adatszolg&aacute;ltat&aacute;s haszn&aacute;lata eset&eacute;n nem &eacute;rhető el <i>Value</i> mező, akkor az első el&eacute;rhető eg&eacute;sz sz&aacute;m vagy sz&ouml;veges mezőt haszn&aacute;lja. Ha nem l&eacute;tezik &eacute;rv&eacute;nyes mező, az ObjectID mezőt (p&eacute;ld&aacute;ul OID vagy FID, a vektoros bemenet t&iacute;pus&aacute;t&oacute;l f&uuml;ggően) haszn&aacute;lja.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Válassza ki az akadályokat jelképező raszteres vagy vektoros réteget.</h2></div>
+        <hr/>
+        <div>
+            <p>Az akad&aacute;lyokat meghat&aacute;roz&oacute; adathalmaz. 
+            </p>
+            <p>K&eacute;pszolg&aacute;ltat&aacute;s eset&eacute;n a bementi t&iacute;pus lehet eg&eacute;sz sz&aacute;m vagy lebegőpontos &eacute;rt&eacute;k. Minden &eacute;rt&eacute;kkel rendelkező cell&aacute;t (a nulla &eacute;rt&eacute;kűt is) akad&aacute;lyk&eacute;nt kezel, a NoData &eacute;rt&eacute;kű cell&aacute;kat pedig nem tekinti akad&aacute;lynak.
+            </p>
+            <p>Vektoros adatszolg&aacute;ltat&aacute;s eset&eacute;n a bemenet lehet pont, vonal vagy polygon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Távolság módszer</h2></div>
+        <hr/>
+        <div>
+            <p>Meghat&aacute;rozza, hogy a t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa s&iacute;kbeli (lapos f&ouml;ld) vagy geod&eacute;ziai (ellipszoid) m&oacute;dszerrel t&ouml;rt&eacute;njen.
+            </p>
+            <ul>
+                <li> <b>S&iacute;kbeli</b> &ndash; A sz&aacute;m&iacute;t&aacute;s lapos vet&uuml;leti s&iacute;kon t&ouml;rt&eacute;nik 2D Descartes-f&eacute;le koordin&aacute;ta-rendszerben. Ez az alap&eacute;rtelmezett m&oacute;dszer.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;ziai</b> &ndash; A t&aacute;vols&aacute;gok sz&aacute;m&iacute;t&aacute;sa az ellipszoidon t&ouml;rt&eacute;nik. Az eredm&eacute;nyek nem v&aacute;ltoznak, f&uuml;ggetlen&uuml;l a bemeneti vagy kimeneti vet&uuml;lettől.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Eredményül visszakapott irányréteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő r&eacute;teg neve. Olyan nevet kell megadnia, amely m&eacute;g nem l&eacute;tezik a <b>Saj&aacute;t tartalomban</b>.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>
         </div>
     </div>

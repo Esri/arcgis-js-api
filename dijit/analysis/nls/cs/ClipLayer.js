@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolit prvky k oříznutí",filterSelectLabel:"Oříznout všechny prvky nebo určit podmnožinu (volitelné)",targetArea:"Zvolit plochu k oříznutí na",outputLayerName:"Oříznout ${inputLayerName} na ${clipLayerName}",itemDescription:"Vrstva prvků vygenerovaná nástrojem Oříznout. Prvky z ${inputLayerName} byly oříznuty na ${clipLayerName}.",itemTags:"Výsledky analýzy, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Vrstva prvků vygenerovaná z Oříznout vrstvu"});

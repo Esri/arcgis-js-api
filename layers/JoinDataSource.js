@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./DataSource","./LayerMapSource","./TableDataSource","./QueryDataSource","./RasterDataSource"],(function(e,a,r,t,o,c,i,n,u,s){var l=e(c,{declaredClass:"esri.layers.JoinDataSource",constructor:function(e){e&&(e.leftTableSource&&(this.leftTableSource=this._createLayerSource(e.leftTableSource)),e.rightTableSource&&(this.rightTableSource=this._createLayerSource(e.rightTableSource)))},_createLayerSource:function(e){var a;if("mapLayer"===e.type)a=new i(e);else{var r;switch(a={type:"dataLayer"},e.dataSource.type){case"table":r=new n(e.dataSource);break;case"queryTable":r=new u(e.dataSource);break;case"joinTable":r=new l(e.dataSource);break;case"raster":r=new s(e.dataSource);break;default:r=e.dataSource}a.dataSource=r,a.toJson=function(){var e={type:"dataLayer",dataSource:r.toJson()};return o.fixJson(e)}}return a},toJson:function(){var e,a={type:"joinTable",leftTableSource:this.leftTableSource&&this.leftTableSource.toJson(),rightTableSource:this.rightTableSource&&this.rightTableSource.toJson(),leftTableKey:this.leftTableKey,rightTableKey:this.rightTableKey};return e="left-outer-join"===this.joinType.toLowerCase()?"esriLeftOuterJoin":"left-inner-join"===this.joinType.toLowerCase()?"esriLeftInnerJoin":this.joinType,a.joinType=e,o.fixJson(a)}});return r("extend-esri")&&a.setObject("layers.JoinDataSource",l,t),l}));

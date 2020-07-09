@@ -30,7 +30,7 @@
     <table class="esriFormTable"> 
       <tbody>
         <tr data-dojo-attach-point="_titleRow">
-          <td  colspan="3" class="sectionHeader" data-dojo-attach-point="_interpolateToolDescription" ></td>
+          <td colspan="3" class="sectionHeader" data-dojo-attach-point="_interpolateToolDescription"></td>
         </tr>
         <tr data-dojo-attach-point="_analysisLabelRow" style="display:none;">
           <td colspan="2" style="padding-bottom:0;">
@@ -42,10 +42,10 @@
           </td>
         </tr>
         <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
-          <td  colspan="3" style="padding-top:0;">
-            <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
+          <td colspan="3" style="padding-top:0;">
+            <select class="esriLeadingMargin1 longInput esriLongLabel" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
           </td>
-        </tr>          
+        </tr>
         <tr>
           <td colspan="2">
             <label data-dojo-attach-point="_labelTwo" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.oneLabel}</label>
@@ -60,18 +60,27 @@
             <select class="esriLeadingMargin1 longInput esriLongLabel" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_clippingMethodSelect" data-dojo-attach-event="onChange:_handleClippingMethodChange">
               <option value="byExtent">${i18n.clippingExtent}</option>
               <option value="byGeometry"> ${i18n.clippingGeometry}</option>
+              <option value="byFeature"> ${i18n.clippingFeature}</option>
             </select>
           </td>
         </tr>
         <tr data-dojo-attach-point="_byGeometry" style="display:none">
-          <td style="padding-top:0">
-            <select class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_clippingTypeSelect">
-              <option value=1>${i18n.clippingInside}</option>
-              <option value=2> ${i18n.clippingOutside}</option>
-            </select>
-          </td>
           <td style="width:10%;">
             <div data-dojo-type="dijit/form/ToggleButton" data-dojo-attach-point="_polyDrawBtn" class="esriFloatLeading esriActionButton" data-dojo-props="showLabel:false,iconClass:'toolbarIcon polygonIcon',label:'${i18n.drawLabel}'" data-dojo-attach-event="onChange:_handlePolyBtnChange"></div>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_byFeature" style="display:none">
+          <td colspan="3" style="padding-top:0;">
+            <select class="longInput esriLongLabel esriLeadingMargin1" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_layersSelect" data-dojo-attach-event="onChange:_handleLayerChange"></select>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_useGeometry" style="display:none">
+          <td colspan="3">
+            <label class="esriLeadingMargin1 esriSelectLabel">
+              <!--<div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_useGeometryCheck" data-dojo-props="checked:false"></div>-->
+              <input type="radio" data-dojo-attach-point="_useGeometryCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:false" value="false" data-dojo-attach-event="onChange:_handleUseGeometryChange" />
+              ${i18n.useGeometry}
+            </label>
           </td>
         </tr>
         <tr>
@@ -79,11 +88,28 @@
         </tr>
         <tr>
           <td colspan="2">
-            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
+            <label data-dojo-attach-point="_labelTwo" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
+            <label data-dojo-attach-point="_clippingTypelabel" class="esriAnalysisStepsLabel">${i18n.clippingType}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_clippingTypeHelpLink" esriHelpTopic="clippingType"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top:0;">
+            <select class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_clippingTypeSelect">
+              <option value=1>${i18n.clippingInside}</option>
+              <option value=2> ${i18n.clippingOutside}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputLayer"></a> 
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputLayer"></a>
           </td>
         </tr>
         <tr>
@@ -96,7 +122,7 @@
             <div data-dojo-attach-point="_chooseFolderRow" class="esriLeadingMargin1">
               <label class="esriSaveLayerlabel">${i18n.saveResultIn}</label>
               <input class="longInput" data-dojo-attach-point="_webMapFolderSelect" data-dojo-type="dijit/form/FilteringSelect" trim="true" style="width:55%;"></input>
-            </div>              
+            </div>
           </td>
         </tr>
         <tr>

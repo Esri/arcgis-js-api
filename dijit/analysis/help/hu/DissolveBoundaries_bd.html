@@ -56,7 +56,7 @@
         <div>
             <p>A ter&uuml;let vektoros elemeket tartalmaz&oacute;, &ouml;sszeolvasztand&oacute; r&eacute;teg. 
             </p>
-            <p>Ahelyett, hogy egy r&eacute;teget v&aacute;laszt a t&eacute;rk&eacute;p&eacute;ről, v&aacute;laszthatja a leg&ouml;rd&uuml;lő lista alj&aacute;n l&eacute;vő  <b>Eredm&eacute;nyr&eacute;teg kiv&aacute;laszt&aacute;sa</b> lehetős&eacute;get is, ha a saj&aacute;t tartalomban szeretne big data-f&aacute;jlmegoszt&oacute; adathalmazt vagy vektoros r&eacute;teget keresni.
+            <p>Ahelyett, hogy egy r&eacute;teget v&aacute;laszt a t&eacute;rk&eacute;p&eacute;ről, v&aacute;laszthatja a leg&ouml;rd&uuml;lő lista alj&aacute;n l&eacute;vő  <b>Eredm&eacute;nyr&eacute;teg kiv&aacute;laszt&aacute;sa</b> lehetős&eacute;get is, ha a saj&aacute;t tartalomban szeretne big data-f&aacute;jlmegoszt&oacute; adathalmazt vagy vektoros r&eacute;teget keresni. A bemenő r&eacute;tegen lehetős&eacute;ge van szűrőt is haszn&aacute;lni, vagy kijel&ouml;l&eacute;seket is megadhat a t&eacute;rk&eacute;phez adott k&ouml;zpontilag t&aacute;rolt r&eacute;tegeken. A szűrők &eacute;s kijel&ouml;l&eacute;sek csak az elemz&eacute;sekre &eacute;rv&eacute;nyesek. 
             </p>
         </div>
     </div>
@@ -100,7 +100,7 @@
         <div>
             <p>Ter&uuml;letek egyes&iacute;t&eacute;sekor azok attrib&uacute;tum&eacute;rt&eacute;keit k&ouml;nnyen &eacute;rtelmezhető statisztik&aacute;kkal &ouml;sszegezheti.  Ha p&eacute;ld&aacute;ul  <pre>State_Name</pre> alapj&aacute;n megy&eacute;k k&ouml;z&ouml;tti hat&aacute;rvonalat olvaszt &ouml;ssze, &eacute;s az egyes megy&eacute;k rendelkeznek <i>Population</i> mezővel, akkor <pre>Population</pre> &ouml;sszeget sz&aacute;molhat az &aacute;llamra vonatkoztatva.
             </p>
-            <p> Statisztik&aacute;kat sz&aacute;m&iacute;that &ouml;sszes&iacute;tett vektoros elemeken. Numerikus mezők&ouml;n a k&ouml;vetkező statisztik&aacute;k sz&aacute;m&iacute;that&oacute;k:
+            <p>Statisztik&aacute;kat sz&aacute;m&iacute;that &ouml;sszes&iacute;tett vektoros elemeken. Numerikus mezők&ouml;n a k&ouml;vetkező statisztik&aacute;k sz&aacute;m&iacute;that&oacute;k: 
                 <ul>
                     <li>Sz&aacute;m &ndash; a nem null &eacute;rt&eacute;kek darabsz&aacute;m&aacute;t sz&aacute;m&iacute;tja ki. Numerikus mezők&ouml;n vagy karakterl&aacute;ncokon haszn&aacute;lhat&oacute;. A [null, 0, 2] darabsz&aacute;ma 2.
                     </li>
@@ -128,7 +128,7 @@
                     <li>B&aacute;rmelyik &ndash; ez a statisztika a megadott mezőben l&eacute;vő karakterl&aacute;nc egy v&eacute;letlenszerű mint&aacute;ja.
                     </li>
                 </ul>
-                Mindegyik statisztika sz&aacute;m&iacute;t&aacute;sa nem null &eacute;rt&eacute;keken t&ouml;rt&eacute;nik. Az eredm&eacute;ny&uuml;l kapott r&eacute;teg kisz&aacute;m&iacute;tott statisztikai adatonk&eacute;nt egy-egy &uacute;j mezőt fog tartalmazni. Attrib&uacute;tum &eacute;s statisztika kiv&aacute;laszt&aacute;s&aacute;val tetszőleges sz&aacute;m&uacute; statisztika hozz&aacute;adhat&oacute;. 
+                Mindegyik statisztika sz&aacute;m&iacute;t&aacute;sa nem null &eacute;rt&eacute;keken t&ouml;rt&eacute;nik. Az eredm&eacute;ny&uuml;l kapott r&eacute;teg kisz&aacute;m&iacute;tott statisztikai adatonk&eacute;nt egy-egy &uacute;j mezőt fog tartalmazni. Attrib&uacute;tum &eacute;s statisztika kiv&aacute;laszt&aacute;s&aacute;val tetszőleges sz&aacute;m&uacute; statisztika hozz&aacute;adhat&oacute;.
             </p>
         </div>
     </div>
@@ -136,9 +136,9 @@
         <div><h2>Eredményréteg neve</h2></div>
         <hr/>
         <div>
-            <p> A l&eacute;trehozand&oacute; r&eacute;teg neve.  Ha egy ArcGIS Data Store helyre &iacute;r, akkor  eredm&eacute;nyei a  <b>Saj&aacute;t tartalom</b> alatt lesznek elmentve, &eacute;s hozz&aacute; lesznek adva a t&eacute;rk&eacute;phez. Ha egy big data f&aacute;jlmegoszt&oacute;ba &iacute;r, akkor eredm&eacute;nyei a big data f&aacute;jlmegoszt&oacute;ba lesznek elmentve, &eacute;s hozz&aacute; lesznek adva annak jegyz&eacute;kf&aacute;jlj&aacute;hoz. Nem lesznek hozz&aacute;adva a t&eacute;rk&eacute;phez. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a művelet sikertelen lesz.
+            <p> A l&eacute;trej&ouml;vő r&eacute;teg neve.  Ha egy ArcGIS Data Store helyre &iacute;r, akkor eredm&eacute;nyei a  <b>Saj&aacute;t tartalom</b> alatt lesznek elmentve, &eacute;s hozz&aacute; lesznek adva a t&eacute;rk&eacute;phez. Ha egy big data f&aacute;jlmegoszt&oacute;ba &iacute;r, akkor eredm&eacute;nyei a big data f&aacute;jlmegoszt&oacute;ba lesznek elmentve, &eacute;s hozz&aacute; lesznek adva annak jegyz&eacute;kf&aacute;jlj&aacute;hoz. Nem lesznek hozz&aacute;adva a t&eacute;rk&eacute;phez. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a művelet sikertelen lesz.
             </p>
-            <p>Ha   ArcGIS Data Store (rel&aacute;ci&oacute;s vagy t&eacute;rbeli-időbeli big data adatt&aacute;rba) &iacute;r az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mező haszn&aacute;lat&aacute;val, akkor megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            <p>Ha  ArcGIS Data Store (rel&aacute;ci&oacute;s vagy t&eacute;rbeli-időbeli big data) adatt&aacute;rba &iacute;r az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mező haszn&aacute;lat&aacute;val, akkor megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
             </p>
         </div>
     </div>

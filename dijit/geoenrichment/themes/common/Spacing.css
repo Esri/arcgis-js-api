@@ -1,6 +1,15 @@
 
 
 
+.esriGEFlexRow {
+    display: flex;
+    align-items: center;
+}
+
+.esriGEFlexSpacer {
+    flex-grow: 1;
+}
+
 .esriGERowHigh {
     margin-top: 10px;
     margin-bottom: 10px;

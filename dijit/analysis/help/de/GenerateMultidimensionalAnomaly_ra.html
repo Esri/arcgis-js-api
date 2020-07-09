@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Multidimensionale Abweichung generieren</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Multidimensionale Abweichung generieren"></h2>
+        <hr/>
+    <p>Generiert ein multidimensionales Raster-Dataset durch Kombinieren vorhandener multidimensionaler Raster-Variablen entlang einer Dimension.
+    </p>
+    <p>Als Abweichung wird die Differenz zwischen einer Beobachtung und dem zugeh&ouml;rigen Standard-, Mittel- oder Medianwert bezeichnet.
+    </p>
+    <p>Mit diesem Werkzeug werden die Abweichungen im zeitlichen Verlauf f&uuml;r eine oder mehrere Variablen in einem multidimensionalen Raster berechnet. Wenn abgesehen von der Zeitdimension auch eine nicht zeitliche Dimension vorhanden ist, wird die Abweichung an jedem Schritt in der zus&auml;tzlichen Dimension berechnet.
+    </p>
+    <p>Beispiel: Ihnen liegen monatliche Meerestemperaturdaten vor, wobei die Temperatur f&uuml;r jeden Meter Tiefe bis zu einer Meerestiefe von 100&nbsp;Metern erfasst wurde. Sie m&ouml;chten damit die Temperaturabweichungen als Differenz vom j&auml;hrlichen Mittelwert berechnen. Mit diesem Werkzeug werden die Temperaturabweichungen basierend auf einem j&auml;hrlichen Mittelwert berechnet, wenn Sie f&uuml;r das  <b>Zeitintervall zum Berechnen des Mittelwerts </b> die Option <b>J&auml;hrlich</b> festlegen. Daraufhin werden die Abweichungswerte f&uuml;r jeden Meter bis zu einer Tiefe von 100&nbsp;Metern zur&uuml;ckgegeben.
+    </p>
+    <p>Dieses Werkzeug unterst&uuml;tzt nur multidimensionale Raster-Datasets mit Zeitdimension.
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden die Variablen des Layers analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn die Option deaktiviert ist, werden die Variablen des gesamten Layers analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Multidimensionalen Bilddaten-Layer zum Erstellen von Abweichungen auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Raster-Datasets.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variable(n) auswählen, für die Abweichungen berechnet werden</h2></div>
+        <hr/>
+        <div>
+            <p>Die Variable oder Variablen, f&uuml;r die Abweichungen berechnet werden. Wenn keine Variable angegeben ist, werden alle Variablen mit einer Zeitdimension analysiert.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Methode zum Ermitteln von Abweichungen auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die Methode an, die zum Berechnen der Abweichung verwendet wird. 
+                <ul>
+                    <li> <b>Differenz vom Mittelwert</b>: Die Differenz zwischen einem Pixelwert und dem Mittelwert des Wertes dieses Pixels in den vom Intervall definierten Abschnitten wird berechnet. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Prozentuale Differenz vom Mittelwert</b>: Die prozentuale Differenz zwischen einem Pixelwert und dem Mittelwert des Wertes dieses Pixels in den vom Intervall definierten Abschnitten wird berechnet.
+                    </li>
+                    <li> <b>Prozentsatz vom Mittelwert</b>: Der Prozentsatz des Mittelwertes wird berechnet.
+                    </li>
+                    <li> <b>Z-Wert</b>: Der Z-Wert jedes Pixels wird berechnet. Ein Z-Wert von 0 bedeutet, dass der Pixelwert mit dem Mittelwert identisch ist. Ein Z-Wert von 1 bedeutet, dass der Pixelwert um 1 Standardabweichung vom Mittelwert abweicht. Ein Z-Wert von 2 bedeutet, dass der Pixelwert um 2 Standardabweichungen vom Mittelwert abweicht usw.
+                    </li>
+                    <li> <b>Differenz vom Medianwert</b>: Die Differenz zwischen einem Pixelwert und dem mathematischen Medianwert der Werte dieses Pixels in den vom Intervall definierten Abschnitten wird berechnet.
+                    </li>
+                    <li> <b>Prozentuale Differenz vom Medianwert</b>: Die prozentuale Differenz zwischen einem Pixelwert und dem mathematischen Medianwert der Werte dieses Pixels in den vom Intervall definierten Abschnitten wird berechnet.
+                    </li>
+                    <li> <b>Prozentsatz vom Medianwert</b>: Der Prozentsatz des mathematischen Medianwertes wird berechnet.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>F&uuml;r die Berechnung von Abweichungswerten sind die folgenden mathematischen Methoden verf&uuml;gbar. Abweichungen k&ouml;nnen berechnet werden, indem entweder der Mittelwert oder der Medianwert als Durchschnittswert definiert wird. Ist die Datenverteilung verzerrt, wird der Mittelwert durch Ausrei&szlig;er stark beeinflusst. Daher ist der Medianwert oder die Z-Wert-Methode f&uuml;r diese Art Daten m&ouml;glicherweise besser geeignet.
+            </p>
+            <p>
+                <ul>
+                    <li>Differenz vom Mittelwert = x - &micro;
+
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                                
+
+                            </li>
+                            <li>&micro; = Mittelwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Prozentuale Differenz vom Mittelwert = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                                
+
+                            </li>
+                            <li>&micro; = Mittelwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absoluter Wert der Differenz zwischen dem Wert und dem Mittelwert
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Prozentsatz vom Mittelwert = x / &micro;
+
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                                
+
+                            </li>
+                            <li>&micro; = Mittelwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Differenz vom Medianwert = x - &szlig;
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                            </li>
+                            <li>&szlig; = Medianwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Prozentuale Differenz vom Medianwert = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                            </li>
+                            <li>&szlig; = Medianwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                            </li>
+                            <li>|x - &szlig;| = absoluter Wert der Differenz zwischen dem Wert und dem Medianwert
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Prozentsatz vom Medianwert = x / &szlig;
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                            </li>
+                            <li>&szlig; = Medianwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-Wert = (x - &micro;) / S
+                        <ul>
+                            <li>x = Pixelwert in einem Abschnitt
+                            </li>
+                            <li>&micro; = Mittelwert der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                            </li>
+                            <li>S = Standardabweichung der Werte dieses Pixels &uuml;ber das gegebene Zeitintervall
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Zeitintervall zum Berechnen des Mittelwerts auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt das Zeitintervall an, das zum Berechnen des Mittelwertes verwendet wird. 
+                <ul>
+                    <li> <b>Alle</b>: Berechnet den Mittelwert in allen Abschnitten f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>J&auml;hrlich</b>: Berechnet den j&auml;hrlichen Mittelwert f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>Monatlich wiederkehrend</b>: Berechnet den monatlichen Mittelwert f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>W&ouml;chentlich wiederkehrend</b>: Berechnet den w&ouml;chentlichen Mittelwert f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>T&auml;glich wiederkehrend</b>: Berechnet den t&auml;glichen Mittelwert f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>St&uuml;ndlich</b>: Berechnet den st&uuml;ndlichen Mittelwert f&uuml;r jedes Pixel.
+                    </li>
+                    <li> <b>Externes Raster</b>: Ein vorhandenes Raster-Dataset wird referenziert, das den Mittel- oder Medianwert f&uuml;r jedes Pixel enth&auml;lt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Bilddaten-Layer des Mittelwertes als Referenz auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt das Referenz-Raster-Dataset an, das einen zuvor berechneten Mittelwert f&uuml;r jedes Pixel enth&auml;lt. Die Abweichungen werden durch den Vergleich mit diesem Mittelwert berechnet.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden. 
+                <ul>
+                    <li>Aktiviert: Bei der Analyse werden alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li>Deaktiviert: Wenn NoData-Werte f&uuml;r die Pixel entlang einer angegebenen Dimension vorhanden sind, wird bei der Analyse &quot;NoData&quot; zur&uuml;ckgegeben.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

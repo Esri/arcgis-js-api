@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sample</h2><p/>
+        <h2><img src="./images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Sample"></h2>
+        <hr/>
+    <p>This tool creates a table or a point feature class that shows the values of cells from a raster, or set of rasters, for defined locations. The locations are defined by raster cells, polygon features, polyline features, or by a set of points.
+    </p>
+    <p>Pixel values will be extracted from all input rasters at each location. A table or a point feature class will be created with fields containing the pixel values for each input raster. Additional attributes from the input raster table will not be included in the output table.
+    </p>
+    <p>Any combination of rasters, such as single band, multiband, multidimensional, or multivariate, can be specified as input rasters. The structure of the output table changes when the input rasters are multidimensional. When a multiband raster is specified as one of the input rasters, all of the bands in that input will be used. To process a selection of bands from an input multiband raster, first create a new raster dataset composed of those particular bands. Use the result in the list of input rasters.
+    </p>
+    <p>The input location can be a raster or point feature:
+        <ul>
+            <li>Raster&mdash;Pixels containing valid values (not NoData) are used to extract the pixel values from all input rasters, and the center of the pixel is used for point locations.
+            </li>
+            <li>Point&mdash;Values will be sampled at each point location.
+            </li>
+            <li>Polyline or a polygon&mdash;Values will be sampled at the polygon or polyline centroid. If the input raster is multidimensional, the values will be aggregated based on the  <b>Statistics</b> type.
+            </li>
+        </ul>
+        
+    </p>
+    <p>The input rasters are sampled in their native spatial reference and resolution. If there are multiple input rasters with different spatial references, the input locations are projected to each individual raster's spatial reference from which values are extracted. The analysis environment is applied to the input locations, but the input rasters will not honor the analysis environment.
+    </p>
+    <p>Locations that extract values from NoData cells in the input raster will be given a &lt;null&gt; value in the output table.
+    </p>
+    <p>To perform analysis with multipoint features, first convert them to single point features before using them in this tool.
+    </p>
+    <p>The spatial reference of the x,y coordinates in the output sample table are the same as the input location raster or point features, unless it is specified in the <b>Output Coordinate System</b> environment. If the spatial reference of the input locations data is unknown, the spatial reference of the x,y coordinates is also unknown.
+    </p>
+    <p>The spatial reference of the output feature class is the same as the input location raster or point features, unless it is specified in the  <b>Output Coordinate System</b> environment.
+    </p>
+    <p>The  <b>Parallel Processing Factor</b> environment is only supported when the input is a multidimensional raster.
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, variables or bands of the layer that are  visible within the current map extent will be analyzed. If unchecked, variables or bands of the full layer will be analyzed, even if they are outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Choose imagery layer(s) to sample</h2></div>
+        <hr/>
+        <div>
+            <p>A single imagery layer or
+a list of imagery layers whose values will be sampled based on the input location data.
+            </p>
+            <p>To sample all slices from a multidimensional imagery layer, it must be the only input raster.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Choose location layer</h2></div>
+        <hr/>
+        <div>
+            <p>Data identifying positions you want to sample.
+            </p>
+            <p>The input location data can be a raster, or a  point, polyline, or polygon feature class.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Specify Unique ID field</h2></div>
+        <hr/>
+        <div>
+            <p>A field containing a different value for every location or feature in the input location raster or feature class.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Specify acquisition information of location data (Optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specify the time, depth, or other acquisition data associated with the location cells or features.
+            </p>
+            <p>For each dimension, there are three options of specifying  the acquisition information associated with location cells or features:
+
+                <ul>
+                    <li> <b>Single field or value</b>&mdash;When this option is selected, the following information needs to be specified:
+                        <ul>
+                            <li> <b>Dimension field or value</b>&mdash;select a field of dimension values  from the location data, or enter a specific dimension value.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Single field or value with relative values</b>&mdash;If this option is selected, the information below needs to be specified together to define the range within which the statistics will be calculated for variables:
+                        <ul>
+                            <li> <b>Dimension field or value</b>&mdash;select a field of dimension values  from the location data.
+                            </li>
+                            <li> <b>Relative value before</b>&mdash;specify a non-negative number used to subtract from <b>Dimension field or value</b> to define the start of a dimension value range. This value represents the number of days if the dimension is time.
+                            </li>
+                            <li> <b>Relative value after</b>&mdash;specify a non-negative number used to add to <b>Dimension field or value</b> to define the end of  a dimension value range. This value represents the number of days if the dimension is time.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Start and end fields or values</b>&mdash;If this option is selected, the information below needs to be specified together to define the range within which the statistics will be calculated for variables:
+                        <ul>
+                            <li> <b>Start field or values</b>&mdash;select a field of dimension values  from the location data, or enter a specific dimension value, to define the start of a dimension value range.
+                            </li>
+                            <li> <b>End field or values</b>&mdash;select a field of dimension values  from the location data, or enter a specific dimension value, to define the end of a dimension value range.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Specify buffer distance field or value</h2></div>
+        <hr/>
+        <div>
+            <p>The specified distance around the location data features. The buffer distance is specified in the linear units of the location feature's spatial reference. If the feature uses a geographic reference, the unit will be degrees.
+            </p>
+            <p>Statistics will be calculated within this buffer area.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Choose statistics type</h2></div>
+        <hr/>
+        <div>
+            <p>The type of statistic to be calculated.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>&mdash;Finds the minimum value within the specified range.
+                </li>
+                <li> <b>Maximum</b>&mdash;Finds the maximum value within the specified range.
+                </li>
+                <li> <b>Median</b>&mdash;Finds the median value within the specified range.
+                </li>
+                <li> <b>Mean</b>&mdash;Calculates the average for the specified range.
+                </li>
+                <li> <b>Sum</b>&mdash;Calculates the sum of the variables within the specified range.
+                </li>
+                <li> <b>Majority</b>&mdash;Finds the value that occurs most frequently.
+                </li>
+                <li> <b>Minority</b>&mdash;Finds the value that occurs least frequently.
+                </li>
+                <li> <b>Standard Deviation</b>&mdash;Calculates the standard deviation.
+                </li>
+                <li> <b>Percentile</b>&mdash;Calculates a defined percentile within the specified range.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentile value</h2></div>
+        <hr/>
+        <div>
+            <p>The percentile to calculate when the  <b>Statistics Type</b> parameter is set to <b>Percentile</b>.
+            </p>
+            <p>This value can range from 0 to 100. The default is 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Specify resampling technique</h2></div>
+        <hr/>
+        <div>
+            <p>Resampling algorithm used when sampling a raster.
+            </p>
+            <ul>
+                <li> <b>Nearest</b>&mdash;Nearest neighbor. This is the default.
+                </li>
+                <li> <b>Bilinear</b>&mdash;Bilinear interpolation
+                </li>
+                <li> <b>Cubic</b>&mdash;Cubic convolution
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Specify output layout</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether sampled values appear in rows or columns in the output table. This option is only available when the input multidimensional raster contains one variable and one dimension, and each slice is a single-band raster.
+            </p>
+            <ul>
+                <li> <b>Sampled values appear in row</b>&mdash;Sampled values appear in separate rows in the output table. This is the default.
+                </li>
+                <li> <b>Sampled values appear in column</b>&mdash;Sampled values appear in separate columns in the output table. This option is only valid when the input multidimensional raster contains one variable and one dimension, and each slice is a single-band raster.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Specify output type</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether to generate a point feature class with sampled values in its table, or only a table with sampled values.
+            </p>
+            <ul>
+                <li> <b>Table</b>&mdash;Generate a table with sampled values. This is the default.
+                </li>
+                <li> <b>Features</b>&mdash;Generate a point feature class with sampled values in its table. If the input location features are polylines or polygons, each point in the output is the centroid of each geometry of the input location features.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

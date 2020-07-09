@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>ทำนายการใช้แนวโน้มแรสเตอร์</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="ทำนายการใช้แนวโน้มแรสเตอร์"></h2>
+        <hr/>
+    <p>คำนวณแรสเตอร์หลายมิติที่คาดการณ์โดยใช้แรสเตอร์แนวโน้มเอาต์พุตจากเครื่องมือ  สร้างแนวโน้มแรสเตอร์
+    </p>
+    <p>ถ้า  <b>ใช้ขอบเขตแผนที่ปัจจุบัน</b> ถูกเลือกไว้ จะมีการใช้ข้อมูลเพื่อการวิเคราะห์นี้เฉพาะข้อมูลที่อยู่ในพื้นที่จากขอบเขตแผนที่ที่เห็นอยู่ในปัจจุบันมาทำการวิเคราะห์เท่านั้น หากไม่เลือก ตัวแปรของชั้นข้อมูลเต็มจะถูกนำมาวิเคราะห์ ถึงแม้ว่าข้อมูลเหล่านั้นจะอยู่นอกขอบเขตแผนที่ปัจจุบัน
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>เลือกชั้นข้อมูลภาพหลายมิติที่จะทำนาย</h2></div>
+        <hr/>
+        <div>
+            <p>อินพุตแรสเตอร์แนวโน้มหลายมิติจากฟังก์ชัน  สร้างแนวโน้มแรสเตอร์
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>เลือกตัวแปรที่จะถูกทำนาย</h2></div>
+        <hr/>
+        <div>
+            <p>ตัวแปรหรือตัวแปรที่จะถูกทำนายในการวิเคราะห์ หากไม่ระบุตัวแปร จะใช้ตัวแปรทั้งหมด
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>เลือกกำหนดวิธีการที่ใช้ในการพยากรณ์ค่ามิติ</h2></div>
+        <hr/>
+        <div>
+            <p>กำหนดวิธีการที่ใช้ในการพยากรณ์ค่ามิติ
+                <ul>
+                    <li> <b>ตามค่า</b>&mdash;การพยากรณ์จะถูกคำนวณสำหรับค่ามิติเดียวหรือรายการค่ามิติที่ระบุในขั้นตอนถัดไป นี่คือค่าเริ่มต้น เช่น คุณต้องการพยากรณ์หยาดน้ำฟ้ารายปีของปี 2050, 2100 และ 2150
+                    </li>
+                    <li> <b>ตามช่วง</b>&mdash;จะคำนวณการพยากรณ์ในช่วงของมิติที่กำหนดด้วยค่าเริ่มต้นและค่าสิ้นสุด เช่น คุณต้องการพยากรณ์หยาดน้ำฟ้ารายปีของทุกๆ ปีตั้งแต่ปี 2050 ถึง 2150
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>ระบุค่ามิติสำหรับการพยากรณ์</h2></div>
+        <hr/>
+        <div>
+            <p>ค่ามิติที่จะใช้ในการพยากรณ์
+            </p>
+            <p>รูปแบบของค่าเวลา ความลึก และความสูง จะต้องตรงกับรูปแบบของค่ามิติที่ใช้ในการสร้างแรสเตอร์แนวโน้ม หากแรสเตอร์แนวโน้มถูกสร้างขึ้นสำหรับมิติ StdTime, รูปแบบควรเป็น YYYY-MM-DDTHH:MM:SS เช่น 2050-01-01T00:00:00 กรณีมีหลายค่า จะคั่นระหว่างค่าด้วยเซมิโคลอน
+            </p>
+            <p>พารามิเตอร์นี้จำเป็นเมื่อวิธีการ  <b>ตามค่า</b> นั้นถูกเลือกเพื่อกำหนดค่ามิติสำหรับการทำนาย
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>กำหนดช่วงมิติสำหรับการพยากรณ์</h2></div>
+        <hr/>
+        <div>
+            <p>กำหนดวันที่เริ่ม ความสูง หรือความลึกของช่วงมิติที่จะใช้ในการพยากรณ์
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>ระบุจำนวนขั้นตอนระหว่างค่าเริ่มต้นและจุดสิ้นสุด</h2></div>
+        <hr/>
+        <div>
+            <p>จำนวนขั้นตอนระหว่างค่าสองมิติที่จะรวมไว้ในการพยากรณ์ ค่าเริ่มต้นคือ 1
+            </p>
+            <p>ตัวอย่างเช่น ในการทำนายค่าอุณหภูมิทุกห้าปี ให้ใช้ค่า 5
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>เลือกหน่วยที่จะใช้สำหรับเวลาค่าช่วงเวลา</h2></div>
+        <hr/>
+        <div>
+            <p>ระบุหน่วยที่จะใช้สำหรับค่าช่วงเวลา ซึ่งจะใช้ได้เฉพาะเมื่อการวิเคราะห์มิติ เป็นมิติเวลา
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>ชื่อของชั้นข้อมูลผลลัพธ์</h2></div>
+        <hr/>
+        <div>
+            <p>ชื่อของชั้นข้อมูลที่จะถูกสร้างขึ้นใน  <b>เนื้อหาของฉัน</b> และเพิ่มไปยังแผนที่ ชื่อเริ่มต้นจะขึ้นอยู่กับชื่อเครื่องมือและชื่อชั้นข้อมูลอินพุต ถ้าชั้นข้อมูลนี้มีอยู่แล้ว คุณจะถูกขอให้ตั้งชื่อใหม่
+            </p>
+            <p>คุณสามารถระบุชื่อโฟลเดอร์ใน  <b>My Content</b> ที่ผลลัพธ์จะบันทึกโดยการใช้ <b>กล่อง drop-down</b> บันทึกผลใน
+            </p>
+        </div>
+    </div>
+</div>
+</html>

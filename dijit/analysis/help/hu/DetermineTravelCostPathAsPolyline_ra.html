@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Útiköltség-útvonal meghatározása polyline-ként</h2><p/>
-        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa polyline-k&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
+        <h2>Útiköltség-útvonal meghatározása vonalláncként</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa vonall&aacute;nck&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
         <hr/>
     <p>Ez az eszk&ouml;z a legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; polyline-&uacute;tvonalat hat&aacute;rozza meg kiindul&oacute;pontok &eacute;s ismert c&eacute;lpontok k&ouml;z&ouml;tt.
     </p>
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div id="outputPolylineName">
-        <div><h2>Eredményül kapott polyline réteg neve</h2></div>
+        <div><h2>Eredményül kapott vonalláncréteg neve</h2></div>
         <hr/>
         <div>
             <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
@@ -112,20 +112,28 @@
             <p>Meghat&aacute;rozza a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &eacute;rt&eacute;kek &eacute;s z&oacute;n&aacute;k &eacute;rtelmez&eacute;s&eacute;nek m&oacute;dj&aacute;t a k&ouml;lts&eacute;g&uacute;tvonal sz&aacute;m&iacute;t&aacute;sakor.
             </p>
             <ul>
-                <li>Legjobb egyed&uuml;l&aacute;ll&oacute; &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes cella vagy hely eset&eacute;n a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat a kiindul&oacute;pontba tart&oacute; legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalak minimum&aacute;val rendelkező helyből sz&aacute;rmaztatja. Ez az alap&eacute;rtelmez&eacute;s
+                <li> <b>Legjobb egyed&uuml;l&aacute;ll&oacute;</b> &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes cella vagy hely eset&eacute;n a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat a kiindul&oacute;pontba tart&oacute; legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalak minimum&aacute;val rendelkező helyből sz&aacute;rmaztatja. Ez az alap&eacute;rtelmez&eacute;s
                     
 
                 </li>
-                <li>Mindegyik cell&aacute;ba &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő, &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező &ouml;sszes cella vagy hely eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő cell&aacute;k mindegyik&eacute;t k&uuml;l&ouml;n kezeli, &eacute;s mindegyik kiindul&oacute;cell&aacute;hoz meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat.
+                <li> <b>Mindegyik cell&aacute;ba</b> &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő, &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező &ouml;sszes cella vagy hely eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő cell&aacute;k mindegyik&eacute;t k&uuml;l&ouml;n kezeli, &eacute;s mindegyik kiindul&oacute;cell&aacute;hoz meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat.
                     
 
                 </li>
-                <li>Mindegyik z&oacute;n&aacute;ba &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes z&oacute;na eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva az egyes z&oacute;n&aacute;k legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonala a z&oacute;n&aacute;ban a legkisebb k&ouml;lts&eacute;gs&uacute;lyozott t&aacute;vols&aacute;ggal rendelkező cell&aacute;n&aacute;l vagy helyn&eacute;l kezdődik.
+                <li> <b>Mindegyik z&oacute;n&aacute;ba</b> &ndash; a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes z&oacute;na eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat, &eacute;s menti a kimeneti vektoros adatszolg&aacute;ltat&aacute;sba. Ezt a lehetős&eacute;get v&aacute;lasztva az egyes z&oacute;n&aacute;k legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonala a z&oacute;n&aacute;ban a legkisebb k&ouml;lts&eacute;gs&uacute;lyozott t&aacute;vols&aacute;ggal rendelkező cell&aacute;n&aacute;l vagy helyn&eacute;l kezdődik.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Válasszon mezőt a célállomás értékeinek beolvasásához</h2></div>
+        <hr/>
+        <div>
+            <p>A c&eacute;lhelysz&iacute;nek &eacute;rt&eacute;keinek beolvas&aacute;s&aacute;hoz haszn&aacute;lt mező.
+            </p>
         </div>
     </div>
 </div>

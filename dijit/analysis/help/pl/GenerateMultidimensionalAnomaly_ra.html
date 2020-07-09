@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generuj anomalię wielowymiarową</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generuj anomalię wielowymiarową"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Anomalia to odchylenie obserwacji od jej wartości standardowej, średniej lub mediany.
+    </p>
+    <p>To narzędzie oblicza anomalie w czasie dla jednej lub wielu zmiennych w rastrze wielowymiarowym. Jeśli opr&oacute;cz wymiaru czasu istnieje wymiar nieczasowy, anomalia zostanie obliczona na każdym etapie w tym dodatkowym wymiarze.
+    </p>
+    <p>Na przykład, gdy mamy miesięczne dane o temperaturze oceanu zebrane co 1 metr do głębokości 100 metr&oacute;w i chcemy obliczyć anomalie temperatury jako odchylenia od średniej wartości rocznej. To narzędzie określi anomalie temperaturowe na podstawie średniej rocznej, jeśli zostanie skonfigurowana wartość  <b>Rocznie</b> jako <b>przedział czasowy do obliczenia średniej</b>, a także zwr&oacute;ci wartości anomalii dla każdej ze 100 głębokości.
+    </p>
+    <p>Obsługuje tylko zestawy danych rastra wielowymiarowego z wymiarem czasu.
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą zmienne warstwy widoczne w bieżącym zasięgu mapy. Jeśli ta opcja nie jest zaznaczona, analizowane będą zmienne pełnej warstwy, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Wybierz wielowymiarową warstwę zobrazowań do wygenerowania anomalii</h2></div>
+        <hr/>
+        <div>
+            <p>Wejściowa warstwa zobrazowań zestawu danych rastra wielowymiarowego.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Wybierz zmienną lub zmienne, dla których będą generowane anomalie</h2></div>
+        <hr/>
+        <div>
+            <p>Zmienna lub zmienne, dla kt&oacute;rych zostaną obliczone anomalie. Jeśli nie zostanie podana żadna zmienna, zostaną przeanalizowane wszystkie zmienne z wymiarem czasu.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Wybierz metodę generowania anomalii</h2></div>
+        <hr/>
+        <div>
+            <p>Określa metodę, kt&oacute;ra zostanie użyta do obliczenia anomalii. 
+                <ul>
+                    <li> <b>R&oacute;żnica w stosunku do średniej</b> &mdash; zostanie obliczona r&oacute;żnica między wartością piksela i średnią wartości tego piksela na przekrojach zdefiniowanych przez przedział. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Procentowa r&oacute;żnica w stosunku do średniej</b> &mdash; zostanie obliczona r&oacute;żnica procentowa między wartością piksela i średnią wartości tego piksela na przekrojach zdefiniowanych przez przedział.
+                    </li>
+                    <li> <b>Procent średniej</b> &mdash; zostanie obliczony procent wartości średniej.
+                    </li>
+                    <li> <b>Wskaźnik z</b> &mdash; zostanie obliczony wskaźnik z dla każdego piksela. Wskaźnik z, o wartości 0 wskazuje, że wartość piksela jest identyczna ze średnią. Wskaźnik z, o wartości 1 wskazuje, że wartość piksela ma 1 odchylenie standardowe od średniej. Jeśli wskaźnik z ma wartość 2, wartość piksela ma 2 odchylenia standardowe od średniej itp.
+                    </li>
+                    <li> <b>R&oacute;żnica w stosunku do mediany</b> &mdash; zostanie obliczona r&oacute;żnica między wartością piksela i medianą matematyczną wartości tego piksela na przekrojach zdefiniowanych przez przedział czasu.
+                    </li>
+                    <li> <b>Procentowa r&oacute;żnica w stosunku do mediany</b> &mdash; zostanie obliczona procentowa r&oacute;żnica między wartością piksela i medianą matematyczną wartości tego piksela na przekrojach zdefiniowanych przez przedział.
+                    </li>
+                    <li> <b>Procent mediany</b> &mdash; zostanie obliczony procent mediany matematycznej.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Metody matematyczne obliczania wartości anomalii są wymienione poniżej. Anomalie mogą zostać obliczone za pomocą wartości średniej lub mediany zgodnie z definicją wartości średniej. Jeśli rozkład danych jest nier&oacute;wnomierny, na średnią mogą mieć silny wpływ elementy odstające, dlatego w przypadku tego typu danych lepiej może nadawać się metoda z wartością mediany lub wskaźnikiem z.
+            </p>
+            <p>
+                <ul>
+                    <li>R&oacute;żnica w stosunku do średniej = x - &micro;
+
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                                
+
+                            </li>
+                            <li>&micro; = średnia wartości tego piksela w danym przedziale czasu
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentowa r&oacute;żnica w stosunku do średniej = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                                
+
+                            </li>
+                            <li>&micro; = średnia wartości tego piksela w danym przedziale czasu
+                                
+
+                            </li>
+                            <li>|x - &micro;| = wartość bezwzględna r&oacute;żnicy między wartością a średnią
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procent średniej = x / &micro;
+
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                                
+
+                            </li>
+                            <li>&micro; = średnia wartości tego piksela w danym przedziale czasu
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>R&oacute;żnica w stosunku do mediany = x - &szlig;
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                            </li>
+                            <li>&szlig; = mediana wartości tego piksela w danym przedziale czasu
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentowa r&oacute;żnica w stosunku do mediany = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                            </li>
+                            <li>&szlig; = mediana wartości tego piksela w danym przedziale czasu
+                            </li>
+                            <li>|x - &szlig;| = wartość bezwzględna r&oacute;żnicy między wartością i medianą
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procent mediany = x / &szlig;
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                            </li>
+                            <li>&szlig; = mediana wartości tego piksela w danym przedziale czasu
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Wskaźnik z = (x - &micro;) / S
+                        <ul>
+                            <li>x = wartość piksela w przekroju
+                            </li>
+                            <li>&micro; = średnia wartości tego piksela w danym przedziale czasu
+                            </li>
+                            <li>S = odchylenie standardowe wartości piksela w danym przedziale czasu
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Wybierz przedział czasu do obliczenia średniej</h2></div>
+        <hr/>
+        <div>
+            <p>Określa przedział czasu, kt&oacute;ry zostanie użyty do obliczenia średniej. 
+                <ul>
+                    <li> <b>Wszystko</b> &mdash; oblicza średnią na wszystkich przekrojach dla każdego piksela.
+                    </li>
+                    <li> <b>Co rok</b> &mdash; oblicza roczną średnią dla każdego piksela.
+                    </li>
+                    <li> <b>Powtarzane co miesiąc</b> &mdash; oblicza miesięczną średnią dla każdego piksela.
+                    </li>
+                    <li> <b>Powtarzane co tydzień</b> &mdash; oblicza tygodniową średnią dla każdego piksela.
+                    </li>
+                    <li> <b>Powtarzane codziennie</b> &mdash; oblicza dzienną średnią dla każdego piksela.
+                    </li>
+                    <li> <b>Co godzinę</b> &mdash; oblicza godzinową średnią dla każdego piksela.
+                    </li>
+                    <li> <b>Raster zewnętrzny</b> &mdash; tworzone jest odniesienie do istniejącego zestawu danych rastrowych, kt&oacute;ry zawiera wartość średnią lub medianę każdego piksela.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Wybierz warstwę zobrazowań wartości średniej jako odniesienie</h2></div>
+        <hr/>
+        <div>
+            <p>Wskazuje będący odniesieniem zestaw danych rastrowych, kt&oacute;ry zawiera poprzednio obliczoną wartość średnią każdego piksela. Anomalie będą obliczane w por&oacute;wnaniu do tej wartości średniej.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy w analizie są ignorowane brakujące wartości. 
+                <ul>
+                    <li>Zaznaczone &mdash; analiza obejmie wszystkie poprawne piksele w danym wymiarze i zignoruje piksele o wartości NoData. Jest to opcja domyślna.
+                    </li>
+                    <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla pikseli w danym wymiarze istnieją jakiekolwiek wartości NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

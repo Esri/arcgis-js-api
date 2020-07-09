@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generér flerdimensional anomali</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Gener&eacute;r flerdimensional anomali"></h2>
+        <hr/>
+    <p>Genererer et flerdimensionalt rasterdatas&aelig;t ved at kombinere eksisterende flerdimensionale rastervariabler langs en dimension.
+    </p>
+    <p>En anomali er en observations afvigelse fra dens standard-, middel- eller medianv&aelig;rdi.
+    </p>
+    <p>Dette v&aelig;rkt&oslash;j beregner anomalier over tid for en eller flere variabler i en flerdimensional raster. Hvis du har en ikke-tidsdimension ud over tidsdimensionen, beregnes anomalien ved hvert trin i den ekstra dimension.
+    </p>
+    <p>Det kan f.eks. v&aelig;re m&aring;nedlige havtemperaturdata, indsamlet ved hver 1 meters dybde ned til 100 meter, hvor du &oslash;nsker at beregne temperaturanomalierne som afvigelser fra den &aring;rlige middelv&aelig;rdi. Dette v&aelig;rkt&oslash;j bestemmer temperaturanomalierne baseret p&aring; en &aring;rlig middelv&aelig;rdi, hvis du angiver  <b>&Aring;rligt</b> som det <b>tidsm&aelig;ssige interval til beregning af middelv&aelig;rdien</b>, og det returnerer anomaliv&aelig;rdier for hver af de 100 dybder.
+    </p>
+    <p>Dette v&aelig;rkt&oslash;j underst&oslash;tter kun flerdimensionale rasterdatas&aelig;t, der har en tidsdimension.
+    </p>
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vælg det flerdimensionale billedlag for at generere anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Input-billedlaget i et flerdimensionalt rasterdatas&aelig;t.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vælg den eller de variabler, som anomalier vil blive genereret til</h2></div>
+        <hr/>
+        <div>
+            <p>Den eller de variabler, som anomalier vil blive beregnet for. Hvis der ikke er angivet nogen variabel, analyseres alle variabler med en tidsdimension.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Vælg metode til generering af anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den metode, der bruges til at beregne anomalien. 
+                <ul>
+                    <li> <b>Forskel fra middelv&aelig;rdi</b>&mdash;Forskellen mellem en pixelv&aelig;rdi og middelv&aelig;rdien af den p&aring;g&aelig;ldende pixel p&aring; tv&aelig;rs af udsnit, defineret af intervallet, beregnes. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Procentvis forskel fra middel</b>&mdash;Den procentvise forskel mellem en pixelv&aelig;rdi og middelv&aelig;rdien af den p&aring;g&aelig;ldende pixel p&aring; tv&aelig;rs af udsnit, defineret af intervallet, beregnes.
+                    </li>
+                    <li> <b>Procent af middelv&aelig;rdien</b>&mdash;Procentdelen af ​​middelv&aelig;rdien beregnes.
+                    </li>
+                    <li> <b>Z-score</b>&mdash;Z-scoren for hver pixel beregnes. En z-score p&aring; 0 indikerer, at pixelens v&aelig;rdi er identisk med middelv&aelig;rdien. En z-score p&aring; 1 indikerer, at pixelens v&aelig;rdi er 1 standardafvigelse fra middelv&aelig;rdien. Hvis en z-score er 2, er pixelens v&aelig;rdi 2 standardafvigelser fra middelv&aelig;rdien osv.
+                    </li>
+                    <li> <b>Forskel fra median</b>&mdash;Forskellen mellem en pixelv&aelig;rdi og den matematiske middelv&aelig;rdi af den p&aring;g&aelig;ldende pixels v&aelig;rdi p&aring; tv&aelig;rs af udsnit, defineret af intervallet, beregnes.
+                    </li>
+                    <li> <b>Procentvis forskel fra median</b>&mdash;Den procentvise forskel mellem en pixelv&aelig;rdi og den matematiske median af pixelens v&aelig;rdier p&aring; tv&aelig;rs af udsnit, defineret af intervallet, beregnes.
+                    </li>
+                    <li> <b>Procent af median</b>&mdash;Procentdelen af ​​den matematiske median beregnes.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De matematiske metoder til beregning af anomaliv&aelig;rdier er anf&oslash;rt nedenfor. Anomalier kan beregnes ved hj&aelig;lp af enten middel- eller medianv&aelig;rdierne som definitionen af ​​gennemsnittet. Hvis datafordelingen er sk&aelig;v, kan middelv&aelig;rdien p&aring;virkes meget af afvigelser, s&aring; medianv&aelig;rdi- eller z-score-metoden kan v&aelig;re bedre egnet til denne type data.
+            </p>
+            <p>
+                <ul>
+                    <li>Forskel fra middelv&aelig;rdi = x - &micro;
+
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                                
+
+                            </li>
+                            <li>&micro; = middelv&aelig;rdien af pixelens v&aelig;rdier over det givne tidsinterval
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentvis forskel fra middelv&aelig;rdi = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                                
+
+                            </li>
+                            <li>&micro; = middelv&aelig;rdien af pixelens v&aelig;rdier over det givne tidsinterval
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolut v&aelig;rdi af forskellen mellem v&aelig;rdien og middelv&aelig;rdien
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procent af middelv&aelig;rdien = x / &micro;
+
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                                
+
+                            </li>
+                            <li>&micro; = middelv&aelig;rdien af pixelens v&aelig;rdier over det givne tidsinterval
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Forskel fra median = x - &szlig;
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                            </li>
+                            <li>&szlig; = median af pixelens v&aelig;rdier over det givne tidsinterval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentvis forskel fra median = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                            </li>
+                            <li>&szlig; = median af pixelens v&aelig;rdier over det givne tidsinterval
+                            </li>
+                            <li>|x - &szlig;| = absolut v&aelig;rdi af forskellen mellem v&aelig;rdien og medianen
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procent af median = x / &szlig;
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                            </li>
+                            <li>&szlig; = median af pixelens v&aelig;rdier over det givne tidsinterval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-score = (x - &micro;) / S
+                        <ul>
+                            <li>x = pixelv&aelig;rdi i et udsnit
+                            </li>
+                            <li>&micro; = middelv&aelig;rdien af pixelens v&aelig;rdier over det givne tidsinterval
+                            </li>
+                            <li>S = standardafvigelsen af pixelens v&aelig;rdier over det givne tidsinterval
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Vælg tidsmæssigt interval til beregning af middelværdien</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver det tidsm&aelig;ssige interval, der bruges til at beregne middelv&aelig;rdien. 
+                <ul>
+                    <li> <b>Alle</b>&mdash;Beregner middelv&aelig;rdien p&aring; tv&aelig;rs af alle udsnit for hver pixel.
+                    </li>
+                    <li> <b>&Aring;rligt</b>&mdash;Beregner den &aring;rlige middelv&aelig;rdi for hver pixel.
+                    </li>
+                    <li> <b>Gentages m&aring;nedligt</b>&mdash;Beregner den m&aring;nedlige middelv&aelig;rdi for hver pixel.
+                    </li>
+                    <li> <b>Gentages ugentligt</b>&mdash;Beregner den ugentlige middelv&aelig;rdi for hver pixel.
+                    </li>
+                    <li> <b>Gentages dagligt</b>&mdash;Beregner den daglige middelv&aelig;rdi for hver pixel.
+                    </li>
+                    <li> <b>Time</b>&mdash;Beregner middelv&aelig;rdien for hver time for hver pixel.
+                    </li>
+                    <li> <b>Ekstern raster</b>&ndash; Der refereres til et eksisterende rasterdatas&aelig;t, som indeholder middelv&aelig;rdien eller medianv&aelig;rdien for hver pixel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Vælg middelværdi-billedlag som reference</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver det reference-rasterdatas&aelig;t, der indeholder et tidligere beregnet middelv&aelig;rdi for hver pixel. Anomalier beregnes i forhold til dette middelv&aelig;rdi.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorér manglende værdier i beregning</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen. 
+                <ul>
+                    <li>Markeret - Analysen omfatter alle gyldige pixels langs en given dimension og ignorerer eventuelle NoData-pixels. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li>Ikke markeret-- Analysen resulterer i NoData, hvis der er nogen NoData-v&aelig;rdier for pixels langs den givne dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

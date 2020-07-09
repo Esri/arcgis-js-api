@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Agreguj raster wielowymiarowy</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agreguj raster wielowymiarowy"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Jeśli masz dane o temperaturze powierzchni morza z 30 lat, zbierane co miesiąc i co 5 metr&oacute;w do głębokości 100 metr&oacute;w, ich przykładowe zastosowania są następujące:
+        <ul>
+            <li>Agreguj miesięczne dane o temperaturze w dane roczne.
+            </li>
+            <li>Agreguj miesięczne dane o temperaturze w 4-miesięczne interwały.
+            </li>
+            <li>Agreguj dane o temperaturze dla głębokości od 0 do 25 metr&oacute;w, od 25 do 50 metr&oacute;w, a następnie od 50 do 100 metr&oacute;w.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą zmienne warstwy widoczne w bieżącym zasięgu mapy. Jeśli ta opcja nie jest zaznaczona, analizowane będą zmienne pełnej warstwy, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Wybierz wielowymiarową warstwę zobrazowań do zagregowania</h2></div>
+        <hr/>
+        <div>
+            <p>Wejściowa warstwa zobrazowań rastra wielowymiarowego do zagregowania.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Wybierz wymiar, wzdłuż którego agregować</h2></div>
+        <hr/>
+        <div>
+            <p>Wymiar agregacji. Jest to wymiar, wzdłuż kt&oacute;rego zmienne będą agregowane.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Wybierz zmienną lub zmienne do zagregowania</h2></div>
+        <hr/>
+        <div>
+            <p>Zmienna lub zmienne, kt&oacute;re będą agregowane wzdłuż danego wymiaru. Jeśli nie zostanie podana żadna zmienna, będą agregowane wszystkie zmienne z podanym wymiarem.
+            </p>
+            <p>Aby na przykład agregować dzienne dane o temperaturze w miesięczne wartości średnie, jako zmienną do agregowania podaj temperaturę. Jeśli nie podasz żadnej zmiennej i masz zar&oacute;wno zmienne z dzienną temperaturą, jak i dziennymi opadami atmosferycznymi, obie te zmienne będą agregowane w miesięczne wartości średnie i wynikowy raster wielowymiarowy będzie zawierał obie zmienne.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Wybierz metodę agregacji</h2></div>
+        <hr/>
+        <div>
+            <p>Określa metodę matematyczną, kt&oacute;ra zostanie użyta do połączenia agregowanych przekroj&oacute;w w przedział. 
+                <ul>
+                    <li> <b>Średnia</b> &mdash; oblicza średnią wartości pikseli na wszystkich przekrojach w tym przedziale. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Maksimum</b> &mdash; oblicza wartość maksymalną pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Większość</b> &mdash; oblicza wartość, kt&oacute;ra występowała najczęściej w przypadku pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Minimum</b> &mdash; oblicza wartość minimalną pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Mniejszość</b> &mdash; oblicza wartość, kt&oacute;ra występowała najrzadziej w przypadku pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Mediana</b> &mdash; oblicza wartość mediany pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Zakres</b> &mdash; oblicza zakres wartości dla pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Odchylenie standardowe</b> &mdash; oblicza odchylenie standardowe wartości pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Suma</b> &mdash; oblicza sumę wartości pikseli na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Zr&oacute;żnicowanie</b> &mdash; oblicza liczbę unikalnych wartości pikseli znajdujących się na wszystkich przekrojach w tym przedziale.
+                    </li>
+                    <li> <b>Dostosowanie</b> &mdash; oblicza wartość piksela na podstawie niestandardowej funkcji rastrowej.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Wybierz szablon funkcji rastrowej</h2></div>
+        <hr/>
+        <div>
+            <p>Niestandardowa funkcja rastrowa, kt&oacute;ra zostanie użyta do obliczenia wartości pikseli agregowanych rastr&oacute;w. Danymi wejściowymi jest element szablonu funkcji rastrowej w portalu. Te dane wejściowe są wymagane, gdy w polu  <b>Metoda agregacji</b> jest skonfigurowana wartość <b>Niestandardowa</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Wybierz definicję agregacji</h2></div>
+        <hr/>
+        <div>
+            <p>Określa przedział wymiaru, dla kt&oacute;rego będą agregowane dane. 
+                <ul>
+                    <li> <b>Wszystkie</b> &mdash; wartości danych będą agregowane dla wszystkich przekroj&oacute;w. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Słowo kluczowe przedziału</b> &mdash; dane zmiennej będą agregowane przy użyciu najczęściej używanego przedziału.
+                    </li>
+                    <li> <b>Wartość przedziału</b> &mdash; dane zmiennej będą agregowane przy użyciu jednostki i przedziału podanych przez użytkownika.
+                    </li>
+                    <li> <b>Zakresy przedział&oacute;w</b> &mdash; dane zmiennej będą agregowane między podaną parą wartości lub dat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Wybierz przedział słowa kluczowego</h2></div>
+        <hr/>
+        <div>
+            <p>Określa interwał sł&oacute;w kluczowych, kt&oacute;ry będzie używany przy agregowaniu wzdłuż wymiaru. Te dane wejściowe są wymagane, gdy w polu  <b>Definicja agregacji</b> jest skonfigurowana wartość <b>Interwał sł&oacute;w kluczowych</b>, a agregacja musi być przeprowadzana w pewnym okresie.
+                <ul>
+                    <li> <b>Co godzinę</b> &mdash; wartości danych będą agregowane w godzinowe etapy czasowe i wynik będzie zawierać każdą godzinę w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Codziennie</b> &mdash; wartości danych będą agregowane w dzienne etapy czasowe i wynik będzie zawierać każdy dzień w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Co tydzień</b> &mdash; wartości danych będą agregowane w tygodniowe etapy czasowe i wynik będzie zawierać każdy tydzień w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Co miesiąc</b> &mdash; wartości danych będą agregowane w miesięczne etapy czasowe i wynik będzie zawierać każdy miesiąc w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Co kwartał</b> &mdash; wartości danych będą agregowane w kwartalne etapy czasowe i wynik będzie zawierać każdy kwartał w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Co rok</b> &mdash; wartości danych będą agregowane w roczne etapy czasowe i wynik będzie zawierać każdy rok w postaci szereg&oacute;w czasowych.
+                    </li>
+                    <li> <b>Powtarzane codziennie</b> &mdash; wartości danych będą agregowane w dzienne etapy czasowe i wynik będzie zawierać jedną agregowaną wartość na dzień juliański. Dane wynikowe będą zawierać maksymalnie 366 dziennych przekroj&oacute;w czasu.
+                    </li>
+                    <li> <b>Powtarzane co tydzień</b> &mdash; wartości danych będą agregowane w tygodniowe etapy czasowe i wynik będzie zawierać jedną agregowaną wartość na tydzień. Dane wynikowe będą zawierać maksymalnie 53 tygodniowe klatki czasu.
+                    </li>
+                    <li> <b>Powtarzane co miesiąc</b> &mdash; wartości danych będą agregowane w miesięczne etapy czasowe i wynik będzie zawierać jedną agregowaną wartość na miesiąc. Dane wynikowe będą zawierać maksymalnie 12 miesięcznych klatek czasu.
+                    </li>
+                    <li> <b>Powtarzane co kwartał</b> &mdash; wartości danych będą agregowane w kwartalne etapy czasowe i wynik będzie zawierać jedną agregowaną wartość na kwartał. Dane wynikowe będą zawierać maksymalnie 4 kwartalne klatki czasu.
+                    </li>
+                    <li> <b>Co dziesięć</b> &mdash; wartości danych będą agregowane w 3&nbsp;okresy po 10&nbsp;dni każdy. Ostatni okres może zawierać mniej lub więcej niż 10 dni. Dane wynikowe będą zawierać 3 klatki dla każdego miesiąca.
+                    </li>
+                    <li> <b>Co pięć</b> &mdash; wartości danych będą agregowane w 6&nbsp;okres&oacute;w po 5&nbsp;dni każdy. Ostatni okres może zawierać mniej lub więcej niż 5 dni. Dane wynikowe będą zawierać 6 klatek dla każdego miesiąca.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Przedział wartości</h2></div>
+        <hr/>
+        <div>
+            <p>Wielkość przedziału, kt&oacute;ry będzie używany podczas agregacji. Ten parametr jest wymagany, gdy parametr  <b>Definicja agregacji</b> jest skonfigurowany na wartość <b>Wartość przedziału</b>.
+            </p>
+            <p>Aby na przykład agregować 30 lat miesięcznych danych o temperaturze w 5-letnie przyrosty, wprowadź wartość 5 w parametrze  <b>Przedział wartości</b>, a jako wartość <b>Jednostka</b> wprowadź <b>Lata</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Jednostka</h2></div>
+        <hr/>
+        <div>
+            <p>Jednostka, kt&oacute;ra będzie używana dla wartości przedziału. Te dane wejściowe są wymagane, gdy  <b>Wymiar</b> jest polem czasu, a <b>Definicja agregacji</b> jest skonfigurowana na <b>Wartość przedziału</b>.
+            </p>
+            <p>W przypadku agregacji innej niż czasowa ta opcja nie będzie dostępna i jednostka wartości przedziału będzie zgodna z jednostką zmiennej wejściowych danych rastra wielowymiarowego. 
+                <ul>
+                    <li> <b>Godziny</b> &mdash; wartości danych będą agregowane w godzinowe klatki czasu w podanym przedziale.
+                    </li>
+                    <li> <b>Dni</b> &mdash; wartości danych będą agregowane w dzienne klatki czasu w podanym przedziale.
+                    </li>
+                    <li> <b>Tygodnie</b> &mdash; wartości danych będą agregowane w tygodniowe klatki czasu w podanym przedziale.
+                    </li>
+                    <li> <b>Miesiące</b> &mdash; wartości danych będą agregowane w miesięczne klatki czasu w podanym przedziale.
+                    </li>
+                    <li> <b>Lata</b> &mdash; wartości danych będą agregowane w roczne klatki czasu w podanym przedziale.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Zdefiniuj zakresy</h2></div>
+        <hr/>
+        <div>
+            <p>Zakresy przedział&oacute;w będą używane do agregowania grup wartości. Składają się z par wartości zakresu minimalnego i maksymalnego o typie danych Podw&oacute;jnej precyzji lub Data. Te dane wejściowe są wymagane, gdy w polu  <b>Definicja agregacji</b> jest skonfigurowana wartość <b>Zakresy przedział&oacute;w</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy w analizie są ignorowane brakujące wartości. 
+                <ul>
+                    <li>Zaznaczone &mdash; analiza obejmie wszystkie poprawne piksele w danym wymiarze i zignoruje piksele o wartości NoData. Jest to opcja domyślna.
+                    </li>
+                    <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla pikseli w danym wymiarze istnieją jakiekolwiek wartości NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

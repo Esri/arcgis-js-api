@@ -56,7 +56,7 @@
         <div>
             <p>Punkt-, joon- v&otilde;i pindobjektid, mida puhvri loomiseks kasutatakse. Sisendkihid peavad olema tasapinnalises ristkoordinaatide s&uuml;steemis v&otilde;i peab tasapinnaliseks ristkoordinaatide s&uuml;steemiks olema funktsiooni  <b>Anal&uuml;&uuml;sikeskkonnad</b> abil m&auml;&auml;ratud t&ouml;&ouml;tlev koordinaats&uuml;steem.
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti. Valikuliselt v&otilde;ite rakendada filtrit oma sisendkihile v&otilde;i valikut kaardile lisatud majutatud kihtidele. Filtreid ja valikuid rakendatakse ainult anal&uuml;&uuml;siks. 
             </p>
         </div>
     </div>
@@ -124,9 +124,9 @@
         <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
-            <p> Saate arvutada summeeritud objektide statistika. Saateallj&auml;rgnevad v&auml;&auml;rtused numbriv&auml;ljadel:
+            <p>Saate arvutada summeeritud objektide statistika. Saate arvutada allj&auml;rgnevad v&auml;&auml;rtused numbriv&auml;ljadel: 
                 <ul>
-                    <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i stringide korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
+                    <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i tekstiv&auml;ljade korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
                     </li>
                     <li>Summa &ndash; v&auml;ljal olevate arvv&auml;&auml;rtuste summa. V&auml;&auml;rtuste [null, null ja 3] summa on 3.
                     </li>
@@ -145,14 +145,14 @@
                 </ul>
                 
             </p>
-            <p>Saate arvutadaallj&auml;rgnevad v&auml;&auml;rtused tekstiv&auml;ljadel:
+            <p>Saate arvutada allj&auml;rgnevad v&auml;&auml;rtused tekstiv&auml;ljadel:
                 <ul>
                     <li>Koguarv &ndash; stringide, mis pole nullv&auml;&auml;rtused, hulk.
                     </li>
                     <li>M&otilde;ni &ndash; see statistik on juhuslik valim tekstistringi v&auml;&auml;rtusest vastaval v&auml;ljal.
                     </li>
                 </ul>
-                K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik. 
+                K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
             </p>
         </div>
     </div>
@@ -160,11 +160,11 @@
         <div><h2>Valige tulemite salvestamiseks mõni ArcGIS-i andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse  andmelaos salvedena ning need kuvatakse portaalis   Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on , tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid   salvestada relatsioonilisse andmelattu: 
+            <p>GeoAnalyticsi tulemid salvestatakse  andmelaos ning need kuvatakse portaalis   Portal for ArcGIS objektikihina. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu: 
                 <ul>
-                    <li>Tulemeid saateportaaliskasutadaportaali koost&ouml;&ouml;ks.
+                    <li>Tulemeid saate portaalis kasutada portaalidevaheliseks koost&ouml;&ouml;ks.
                     </li>
-                    <li>Saate lubada tulemitega s&uuml;nkroniseerimise funktsiooni.
+                    <li>Saate lubada tulemitega s&uuml;nkroonimise funktsiooni.
                     </li>
                 </ul>
                 
@@ -177,7 +177,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> Loodavakihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale  ja lisatakse  selle manifestifailile. Seda  ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> Loodava kihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale ja lisatakse selle manifestifailile. Seda ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
             <p>Kui salvestate admelattu   ArcGIS Data Store (relatsioonilisse v&otilde;i ajalisruumilisse andmelattu), kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>

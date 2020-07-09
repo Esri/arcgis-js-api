@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Argumentumstatisztikák keresése</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Argumentumstatisztik&aacute;k keres&eacute;se"></h2>
+        <hr/>
+    <p>Azt a dimenzi&oacute;&eacute;rt&eacute;ket vagy hull&aacute;mhossztartom&aacute;ny-indexet nyeri ki, amely mellett egy adott statisztika &eacute;rhető el egy t&ouml;bbdimenzi&oacute;s vagy t&ouml;bb hull&aacute;mhossztartom&aacute;nnyal rendelkező raszter minden egyes pixel&eacute;n&eacute;l.
+    </p>
+    <p>Az eszk&ouml;zzel az a dimenzi&oacute;&eacute;rt&eacute;k (p&eacute;ld&aacute;ul a d&aacute;tum, magass&aacute;g vagy m&eacute;lys&eacute;g) nyerhető ki, amelyn&eacute;l valamely t&ouml;bbdimenzi&oacute;s raszteres adathalmazban a raszterek csoportj&aacute;ban az adott statisztik&aacute;t el&eacute;rt&eacute;k. M&aacute;sik megold&aacute;sk&eacute;nt megkereshető az a s&aacute;vsz&aacute;m, amelyn&eacute;l az adott t&ouml;bbs&aacute;vos raszterben a statisztik&aacute;t el&eacute;rt&eacute;k.
+    </p>
+    <p>P&eacute;ld&aacute;ul tegy&uuml;k fel, hogy tudni szeretn&eacute;, melyik az a h&oacute;nap, amelyben az egyes pixelek a legmagasabb tengerfelsz&iacute;ni hőm&eacute;rs&eacute;kletet &eacute;rt&eacute;k el az adatok 30 &eacute;vet &aacute;tfog&oacute; gyűjt&eacute;se sor&aacute;n. M&aacute;sik p&eacute;ldak&eacute;nt: van egy nyolcs&aacute;vos t&aacute;v&eacute;rz&eacute;kel&eacute;ses k&eacute;pe, &eacute;s tudni szeretn&eacute;, hogy melyik az a s&aacute;v, amelyben mindegyik pixel eset&eacute;ben el&eacute;rt&eacute;k a minim&aacute;lis visszaverőd&eacute;si egy&uuml;tthat&oacute; &eacute;rt&eacute;k&eacute;t.
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it vagy s&aacute;vjait elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t vagy s&aacute;vj&aacute;t  elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Többdimenziós vagy többsávos távérzékelési réteg kiválasztása az elemzéshez</h2></div>
+        <hr/>
+        <div>
+            <p>Az elemezni k&iacute;v&aacute;nt bemeneti t&ouml;bbdimenzi&oacute;s vagy t&ouml;bbs&aacute;vos raszter.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>A statisztikai adatok kinyerésének forrásául szolgáló dimenzió kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az a dimenzi&oacute;, amelyből a rendszer majd kinyeri a statisztikai adatokat Ha a bemeneti raszter nem t&ouml;bbdimenzi&oacute;s raszter, a param&eacute;ter megad&aacute;sa nem k&ouml;telező.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Elemezni kívánt változó(k) kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az elemezni k&iacute;v&aacute;nt v&aacute;ltoz&oacute; vagy v&aacute;ltoz&oacute;k. Ha a bemeneti raszter nem t&ouml;bbdimenzi&oacute;s, akkor a t&ouml;bbs&aacute;vos raszter pixel&eacute;rt&eacute;keit tekinti a v&aacute;ltoz&oacute;nak a rendszer. Ha a bemeneti raszter t&ouml;bbdimenzi&oacute;s &eacute;s nincs megadva v&aacute;ltoz&oacute;, az alkalmaz&aacute;s a kiv&aacute;lasztott dimenzi&oacute;val rendelkező &ouml;sszes v&aacute;ltoz&oacute;t elemezni fogja.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul azokat az &eacute;veket keresi, amelyekben a hőm&eacute;rs&eacute;kleti &eacute;rt&eacute;kek a legmagasabbak voltak, akkor a hőm&eacute;rs&eacute;kletet adja meg elemezni k&iacute;v&aacute;nt v&aacute;ltoz&oacute;k&eacute;nt. Ha nem ad meg egyetlen v&aacute;ltoz&oacute;t sem, &eacute;s a hőm&eacute;rs&eacute;kleti &eacute;s csapad&eacute;kv&aacute;ltoz&oacute;kkal is rendelkezik, az alkalmaz&aacute;s mindk&eacute;t v&aacute;ltoz&oacute;t elemezni fogja, &eacute;s a kimeneti t&ouml;bbdimenzi&oacute;s raszter mindk&eacute;t v&aacute;ltoz&oacute;t tartalmazni fogja.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Statisztikatípus választása</h2></div>
+        <hr/>
+        <div>
+            <p>Azt a statisztikai adatot hat&aacute;rozza meg, amelyet a rendszer az adott dimenzi&oacute; ment&eacute;n fog kinyerni a v&aacute;ltoz&oacute;b&oacute;l vagy v&aacute;ltoz&oacute;kb&oacute;l. 
+            </p>
+            <ul>
+                <li> <b>Minimum argumentuma</b> &ndash; A rendszer a minim&aacute;lis v&aacute;ltoz&oacute;&eacute;rt&eacute;k el&eacute;r&eacute;s&eacute;hez tartoz&oacute; dimenzi&oacute;&eacute;rt&eacute;ket fogja kinyerni. Ez az alap&eacute;rtelmez&eacute;s.
+                </li>
+                <li> <b>Maximum argumentuma</b> &ndash; A rendszer a maxim&aacute;lis v&aacute;ltoz&oacute;&eacute;rt&eacute;k el&eacute;r&eacute;s&eacute;hez tartoz&oacute; dimenzi&oacute;&eacute;rt&eacute;ket fogja kinyerni.
+                </li>
+                <li> <b>Medi&aacute;n argumentuma</b> &ndash; A rendszer a medii&aacute;n v&aacute;ltoz&oacute;&eacute;rt&eacute;k el&eacute;r&eacute;s&eacute;hez tartoz&oacute; dimenzi&oacute;&eacute;rt&eacute;ket fogja kinyerni.
+                </li>
+                <li> <b>Időtartam argumentuma</b> &ndash; Az a leghosszabb dimenzi&oacute;-időtartam, amelyn&eacute;l a v&aacute;ltoz&oacute;&eacute;rt&eacute;kek a minimum- &eacute;s a maximum&eacute;rt&eacute;k k&ouml;z&eacute; esnek.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Többszörös előfordulás értékének meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>Az annak jelz&eacute;s&eacute;hez haszn&aacute;lt pixel&eacute;rt&eacute;k, hogy az adott argumentumstatisztika el&eacute;r&eacute;se t&ouml;bbsz&ouml;r is előfordult a bemeneti raszteres adathalmazban. Ha nincs megadva, akkor a pixel&eacute;rt&eacute;k annak a dimenzi&oacute;nak az &eacute;rt&eacute;ke lesz, amikor elősz&ouml;r fordult elő az argumentumstatisztika el&eacute;r&eacute;se.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Minimum érték meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>Az időtartam kinyer&eacute;s&eacute;hez felhaszn&aacute;lni k&iacute;v&aacute;nt minim&aacute;lis v&aacute;ltoz&oacute;&eacute;rt&eacute;k.
+            </p>
+            <p>K&ouml;telező a param&eacute;tert megadni, ha az  <b>Időtartam</b> lehetős&eacute;get v&aacute;lasztja a statisztika t&iacute;pusak&eacute;nt.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Maximum érték meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>Az időtartam kinyer&eacute;s&eacute;hez felhaszn&aacute;lni k&iacute;v&aacute;nt maxim&aacute;lis v&aacute;ltoz&oacute;&eacute;rt&eacute;k.
+            </p>
+            <p>K&ouml;telező a l&eacute;p&eacute;st v&eacute;grehajtani, ha az  <b>Időtartam</b> lehetős&eacute;get v&aacute;lasztja a statisztika t&iacute;pusak&eacute;nt.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Dimenziódefiníció választása</h2></div>
+        <hr/>
+        <div>
+            <p>Azt hat&aacute;rozza meg, hogy hogyan t&ouml;rt&eacute;nik a statisztikai adatok kinyer&eacute;se a dimenzi&oacute;b&oacute;lt 
+                <ul>
+                    <li> <b>Mind</b> &ndash; A statisztika kinyer&eacute;se valamennyi dimenzi&oacute;ra kiterjedően t&ouml;rt&eacute;nik majd. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Intervallumkulcssz&oacute;</b> &ndash; A statisztika kinyer&eacute;se az intervallumkulcssz&oacute; szerint t&ouml;rt&eacute;nik majd az idődimenzi&oacute;b&oacute;l.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Kulcsszóintervallum kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Annak az időnek a m&eacute;rt&eacute;kegys&eacute;ge, amelyre vonatkoz&oacute;an a statisztikai adatok kinyer&eacute;se t&ouml;rt&eacute;nik majd.
+            </p>
+            <p>P&eacute;ld&aacute;ul van &ouml;t &eacute;vnyi napi tengerfelsz&iacute;n-hőm&eacute;rs&eacute;kleti adata, &eacute;s tudni szeretn&eacute;, hogy melyik volt az az &eacute;v, amelyben a legnagyobb hőm&eacute;rs&eacute;kletet figyelt&eacute;k meg. &Aacute;ll&iacute;tsa be a  <b>Maximum argumentuma</b> lehetős&eacute;get a statisztika t&iacute;pusak&eacute;nt, az <b>Intervallumkulcssz&oacute;</b> lehetős&eacute;get a dimenzi&oacute; defin&iacute;ci&oacute;jak&eacute;nt, majd az <b>&Eacute;ves</b> lehetős&eacute;get a kulcssz&oacute;intervallumk&eacute;nt ebben a l&eacute;p&eacute;sben.
+            </p>
+            <p>M&aacute;sik megold&aacute;sk&eacute;nt &ndash; ha azt szeretn&eacute; tudni, melyik h&oacute;napban figyelt&eacute;k meg k&ouml;vetkezetesen a maxim&aacute;lis hőm&eacute;rs&eacute;kletet &ndash;, &aacute;ll&iacute;tsa be a  <b>Maximum argumentuma</b> lehetős&eacute;get a statisztika t&iacute;pusak&eacute;nt, az <b>Intervallumkulcssz&oacute;</b> lehetős&eacute;get a dimenzi&oacute; defin&iacute;ci&oacute;jak&eacute;nt, majd az <b>Ism&eacute;tlődő havi</b> lehetős&eacute;get a kulcssz&oacute;intervallumk&eacute;nt ebben a l&eacute;p&eacute;sben. A l&eacute;p&eacute;s olyan rasztert gener&aacute;l, amelyben minden pixel tartalmazza azt a h&oacute;napot, amelyben a statisztik&aacute;t az &ouml;t &eacute;ves rekord sor&aacute;n el&eacute;rt&eacute;k (p&eacute;ld&aacute;ul 2018.&nbsp;08.&nbsp;18., 2016.&nbsp;08.&nbsp;25., 2013.&nbsp;08&nbsp;07.).
+            </p>
+            <p>Ez k&ouml;telező l&eacute;p&eacute;s akkor, ha az   <b>StdTime</b> lehetős&eacute;g van be&aacute;ll&iacute;tva a statisztika kinyer&eacute;s&eacute;nek forr&aacute;s&aacute;ul szolg&aacute;l&oacute; dimenzi&oacute;k&eacute;nt, &eacute;s az <b>Intervallumkulcssz&oacute;</b> lehetős&eacute;g van kiv&aacute;lasztva annak meghat&aacute;roz&aacute;s&aacute;hoz, hogy mik&eacute;nt t&ouml;rt&eacute;njen a statisztikai adat kinyer&eacute;se az idődimenzi&oacute;b&oacute;l.
+                <ul>
+                    <li> <b>Ism&eacute;tlődő napi</b> &ndash; A statisztika kinyer&eacute;se napokra kiterjedően t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő heti</b> &ndash; A statisztika kinyer&eacute;se hetekre kiterjedően t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő havi</b> &ndash; A statisztika kinyer&eacute;se h&oacute;napokra kiterjedően t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő negyed&eacute;ves</b> &ndash; A statisztika kinyer&eacute;se negyed&eacute;vekre kiterjedően t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>&Oacute;r&aacute;nk&eacute;nti</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek &oacute;r&aacute;j&aacute;ra vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Napi</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek napj&aacute;ra vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Heti</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek het&eacute;re vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Havi</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek h&oacute;napj&aacute;ra vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>Negyed&eacute;ves</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek negyed&eacute;v&eacute;re vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                    <li> <b>&Eacute;ves</b> &ndash; A statisztika kinyer&eacute;se a statisztikai adat el&eacute;r&eacute;s&eacute;nek &eacute;v&eacute;re vonatkoz&oacute;an t&ouml;rt&eacute;nik.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hiányzó értékek figyelmen kívül hagyása a számításban</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben.
+                <ul>
+                    <li>Ha a n&eacute;gyzet be van jel&ouml;lve, az elemz&eacute;s tartalmazni fogja az &ouml;sszes &eacute;rv&eacute;nyes pixelt egy adott dimenzi&oacute; ment&eacute;n, &eacute;s figyelmen k&iacute;v&uuml;l fogja hagyni a NoData pixeleket. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li>Ha a n&eacute;gyzet nincs bejel&ouml;lve, az elemz&eacute;s eredm&eacute;nye NoData lesz, ha a pixelek b&aacute;rmelyik &eacute;rt&eacute;ke NoData a megadott dimenzi&oacute; ment&eacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

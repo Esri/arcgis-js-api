@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Găsiţi locaţii de temporizare</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagrama fluxului de lucru pentru Găsirea Locațiilor de Temporizare"></h2>
+        <hr/>
+    <p>Acest instrument funcționează cu un strat tematic activat de timp de obiecte spațiale &icirc;n punct care sunt de tip  <code>instantaneu</code>.   Mai &icirc;nt&acirc;i, instrumentul alocă obiecte spațiale unui traseu cu ajutorul unui identificator unic. Ordinea traseelor este determinată de timpul obiectelor spațiale. &Icirc;n continuare, se calculează distanța dintre prima observare dintr-un traseu și următoarea. Obiectele spațiale sunt considerate ca parte a unei temporizări dacă două puncte consecutive din punct de vedere temporal răm&acirc;n &icirc;n distanța dată cel puțin durata dată. Atunci c&acirc;nd se constată că două obiecte spațiale fac parte dintr-o temporizare, primul obiect spațial din temporizare este folosit ca punct de referință, iar instrumentul găsește obiecte spațiale consecutive &icirc;nscrise &icirc;n distanța specificată a punctului de referință din temporizare. După ce sunt găsite toate obiectele spațiale din distanța specificată, instrumentul colectează obiectele spațiale ale temporizării și le calculează centrul mediu. Obiectele spațiale de dinainte și de după temporizarea curentă sunt adăugate temporizării dacă sunt &icirc;n distanța dată a centului mediu al locației temporizării. Acest proces continuă p&acirc;nă la sf&acirc;rșitul monitorizării.
+    </p>
+    <p>Obiectele spaţiale din straturile tematice legate de timp pot fi reprezentate &icirc;ntr-una din modalitățile următoare:
+        <ul>
+            <li>Instant &ndash; Un singur moment &icirc;n timp
+            </li>
+            <li>Interval &ndash; Oră de &icirc;ncepere şi de terminare
+            </li>
+        </ul>
+        
+    </p>
+    <p>De exemplu, să presupunem că lucrați la Ministerul Transporturilor și ați colectat citiri GPS pentru vehicule pe autostrăzile principale. Fiecare &icirc;nregistrare GPS conține un ID unic de vehicul, timpul, localizarea și viteza. Folosind ID-ul unic al vehiculului pentru a defini traseele individuale, căutați vehicule care nu s-au deplasat mai mult de 100 metri &icirc;n cel puțin 15 minute pentru a descoperi zonele cu probleme din rețeaua rutieră. &Icirc;n plus, puteți calcula statistici cum ar fi viteza medie a vehiculelor din locul temporizării.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Alegeți stratul tematic de pe care să găsiți temporizările</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de puncte care va fi sumarizat &icirc;n temporizări. Stratul tematic de intrare trebuie - activat de timp cu obiecte spaţiale care reprezintă un instantaneu de timp şi, de asemenea, trebuie să aibă unul sau mai multe c&acirc;mpuri care să poată fi folosite pentru identificarea traseelor.
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Alegere strat tematic de analiză</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data. Puteți să aplicați &icirc;n mod opțional un filtru pe stratul tematic de intrare sau să aplicați o selecție pe straturile tematice găzduite adăugate la harta dvs. Filtrele și selecțiile sunt aplicate doar pentru analiză. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selectați unul sau mai multe câmpuri din care să identificați traseele</h2></div>
+        <hr/>
+        <div>
+            <p>C&acirc;mpurile care reprezintă identificatorul traseului. Puteţi folosi unul sau mai multe c&acirc;mpuri pentru a reprezenta valorile unice ale traseelor.
+            </p>
+            <p>De exemplu, dacă aţi găsi locuri de temporizare pentru uragane, aţi putea utiliza numele uraganului drept c&acirc;mp de traseu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Alegeți metoda de calculare a distanței</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda folosită pentru calcularea distanței de temporizare din trasee. Metoda  <b>Planar</b> poate calcula rezultatele mai repede, dar nu va aloca traseele liniei de schimbare a datei internaționale și nu va lua &icirc;n considerare forma reală a Păm&acirc;ntului la aplicarea bufferului. Metoda <b>Geodezică</b> va &icirc;nfăşura traseele &icirc;n jurul liniei de schimbare a datelor dacă este necesar şi va aplica bufferul geodezic pentru a lua &icirc;n considerare forma reală a păm&acirc;ntului.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definiți distanța de căutare spațială</h2></div>
+        <hr/>
+        <div>
+            <p>Toleranța distanței de temporizare este distanța maximă dintre puncte de luat &icirc;n considerare &icirc;ntr-o singură locație de temporizare.
+            </p>
+            <p>De exemplu, dacă sunteți interesați să găsiți temporizări acolo unde traficul nu s-a deplasat mai mult de 20 metri &icirc;ntr-o anumită perioadă, toleranța distanței va fi de 20 metri.
+            </p>
+            <p>Utilizați parametrul  <b>Definiți intervalul de căutare temporală</b> pentru a specifica timpul.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Divizarea traseelor (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unitatea toleranței distanței.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definirea intervalului de căutare temporală</h2></div>
+        <hr/>
+        <div>
+            <p>Toleranța timpului de temporizare este durata minimă a unei temporizări de luat &icirc;n considerare &icirc;ntr-o singură locație de temporizare.
+            </p>
+            <p>De exemplu, dacă doriți să știți unde nu s-a deplasat traficul pe o anumită distanță &icirc;ntr-o oră, toleranța de timp va fi de 1 oră.
+            </p>
+            <p>Utilizați parametrul  <b>Definiți intervalul de căutare spațială</b> pentru a specifica distanța.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Selectați o distanță după care să separați traseele (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unitatea toleranței de timp.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adăugare statistici (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Puteţi calcula statistici despre obiectele spaţiale rezumate. Puteți calcula următoarele pe c&acirc;mpuri numerice: 
+                <ul>
+                    <li>Numărare&mdash;Calculează numărul de valori care nu sunt nule. Poate fi utilizat &icirc;n c&acirc;mpurile sau &icirc;n şirurile numerice. Calculul [nul, 0, 2] este egal cu 2.
+                    </li>
+                    <li>Sumă - Suma valorilor numerice dintr-un c&acirc;mp. Suma [nul, 0, 3] este egală cu 3.
+                    </li>
+                    <li>Media&mdash;Media valorilor numerice. Media dintre [0, 2, nul] este 1.
+                    </li>
+                    <li>Min&mdash;Valoarea minimă a unui c&acirc;mp numeric. Minimul dintre [0, 2, nul] este 0. 
+                    </li>
+                    <li>Max&mdash;Valoarea maximă a unui c&acirc;mp numeric. Valoarea maximă a [0, 2, nul] este 2.
+                    </li>
+                    <li>Interval&mdash;Intervalul unui c&acirc;mp numeric. Acesta este calculat ca valoare minimă scăzută din valoare maximă. Intervalul [nul, 0, 1] este 1. Intervalul [nul, 0, 4] este 0.
+                    </li>
+                    <li>Variaţia&mdash;Variaţia unui c&acirc;mp numeric pe o pistă. Variaţia [1] este nulă. Variația [nul, 1,0,1,1] este de 0,25.
+                    </li>
+                    <li>Deviaţia standard&mdash;Deviaţia standard a unui c&acirc;mp numeric. Deviaţia standard [1] este nulă. Deviaţia standard [nul, 1,0,1,1] este 0,5. 
+                    </li>
+                    <li>Prima&mdash;Prima valoare a c&acirc;mpului specificat &icirc;n monitorizarea rezumată. Dacă o monitorizare are următoarele valori ordonate după timp pentru un c&acirc;mp: [1,5,10,20], prima valoare este 1.
+                    </li>
+                    <li>Ultima&mdash;Ultima valoare a unui c&acirc;mp specificat din monitorizarea rezumată. Dacă o monitorizare are următoarele valori ordonate după timp pentru un c&acirc;mp: [1,5,10,20], ultima valoare este 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Puteți calcula următoarele pe c&acirc;mpuri de șiruri:
+                <ul>
+                    <li>Calcul&mdash;Numărul şirurilor care nu sunt nule.
+                    </li>
+                    <li>Oricare - Această statistică este un exemplu aleatoriu al unei valori de tip şir &icirc;n c&acirc;mpul specificat.
+                    </li>
+                    <li>Prima&mdash;Prima valoare a c&acirc;mpului specificat &icirc;n monitorizarea rezumată. Dacă o monitorizare are următoarele valori ordonate după timp pentru un c&acirc;mp: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], prima valoare este Toronto.
+                    </li>
+                    <li>Ultima&mdash;Ultima valoare a unui c&acirc;mp specificat din monitorizarea rezumată. Dacă o monitorizare are următoarele valori ordonate după timp pentru un c&acirc;mp: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], ultima valoare este Boston.
+                    </li>
+                </ul>
+                Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Obțineți locații de temporizare ca</h2></div>
+        <hr/>
+        <div>
+            <p>Determină care caracteristici sunt returnate și &icirc;n ce format. Sunt disponibile patru tipuri: 
+                <ul>
+                    <li> <b>Centre medii</b>&mdash;Un punct care reprezintă centroidul fiecărei locații de temporizare descoperite. Atributele vor fi rezumate. Aceasta este setarea implicită.
+                         
+                    </li>
+                    <li> <b>&Icirc;nfășurătoare convexe</b>&mdash;Poligoane care reprezintă &icirc;nfășurătoarea convexă a fiecărui grup de temporizare. Atributele vor fi rezumate.
+                         
+                    </li>
+                    <li> <b>Obiecte spațiale tip temporizare</b>&mdash;Sunt returnate toate obiectele spaţiale de tip punct și atributele determinate ca aparțin&acirc;nd unei temporizări.
+                         
+                    </li>
+                    <li> <b>Toate obiectele spațiale</b>&mdash;Sunt returnate toate obiectele spațiale de tip punct și atributele.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizați date cu intervale de timp (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificați dacă doriți să căutați locații de temporizare folosind intervalurile de timp care segmentează obiectele dvs. spațiale de introducere pentru analiză. Dacă utilizați intervale de timp, trebuie să setați intervalul de timp pe care doriți să-l utilizați și, opțional, să setați momentul de referință. Dacă nu setați un moment de referință, va fi utilizată data de 1 ianuarie 1970. 
+            </p>
+            <p>De exemplu, dacă setați limita de timp la 1 zi, &icirc;ncep&acirc;nd cu ora 9:00 AM de pe 1 ianuarie 1990, fiecare traseu va fi trunchiat la ora 9:00 AM pentru fiecare zi și analizat &icirc;n cadrul acelui segment. Nicio temporizare nu va &icirc;ncepe &icirc;nainte de 9:00 a.m. și nu se va termina după aceea. 
+            </p>
+            <p>Utilizarea intervalelor de timp este o metodă rapidă de accelerare a timpului de calcul, deoarece se creează rapid trasee mai mici pentru analiză. Dacă &icirc;mpărțirea printr-un interval de timp recurent are sens pentru analiza dvs., este recomandată &icirc;n prelucrarea volumelor mari de date.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Numele stratului tematic care va fi creat. Dacă scrieți &icirc;ntr-un ArcGIS Data Store, rezultatele dvs. vor fi salvate &icirc;n  <b>Resursele mele</b> și adăugate pe hartă. Dacă scrieți &icirc;ntr-o partajare de fişiere big data, rezultatele dvs. vor fi stocate &icirc;n partajarea de fişiere big data și adăugate la manifestul acesteia. Nu vor fi adăugate pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>C&acirc;nd scrieți &icirc;n  ArcGIS Data Store (depozit de date relaționale sau spațio-temporale de volum mare) utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteți specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Objecten classificeren met behulp van deep learning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Objecten classificeren met behulp van deep learning"></h2>
+        <hr/>
+    <p>Deze tool voert een getraind deep learningmodel uit op een invoerraster en een optionele objectklasse om een objectklasse of tabel te produceren waarin aan elk invoerobject een klasselabel wordt toegewezen.
+    </p>
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is aangevinkt, wordt alleen het rastergebied dat binnen het huidige extent van de kaart zichtbaar is, geanalyseerd. Als de optie niet is aangevinkt, wordt het volledige raster geanalyseerd, zelfs als dit zich buiten de huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Kies een afbeelding die wordt gebruikt om objecten te classificeren</h2></div>
+        <hr/>
+        <div>
+            <p>De invoerafbeelding die wordt gebruikt om objecten te detecteren.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Kies objectlaag voor objecten (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De punt-, lijn- of polygoonobjectlaag die de locatie identificeert van elk object dat moet worden geclassificeerd en gelabeld. Elke rij in de invoerobjectlaag vertegenwoordigt een enkel object.
+            </p>
+            <p>Als er geen invoerobjectlaag is gespecificeerd, gaat de tool ervan uit dat elk invoerbeeld &eacute;&eacute;n enkel object bevat dat moet worden geclassificeerd. Als de invoerafbeelding of -afbeeldingen een ruimtelijke referentie gebruiken, is de uitvoer van de tool een objectlaag, waarin de omvang van elke afbeelding wordt gebruikt als de begrenzende geometrie voor elk gelabeld object. Als de ingevoerde afbeelding of afbeeldingen niet ruimtelijk worden gerefereerd, is de uitvoer van de tool een tabel met de afbeeldings-ID-waarden en de klasselabels voor elke afbeelding.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Kies een deep learningmodel dat wordt gebruikt om objecten te classificeren</h2></div>
+        <hr/>
+        <div>
+            <p>Het deep learningpakketitem voor invoer ( <code>.dlpk</code>).
+            </p>
+            <p>Het deep learningpakket bestaat uit het Esri-modeldefinitie JSON-bestand ( <code>.emd</code>), het binaire deep learningmodelbestand en optioneel het Python-rasterobject dat moet worden gebruikt.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Geef de argumenten van het deep learningmodel op</h2></div>
+        <hr/>
+        <div>
+            <p>De functieargumenten worden gedefinieerd in de Python-rasterfunctieklasse waarnaar wordt verwezen door het invoermodel. Dit is waar men bijkomende deep learningparameters en argumenten voor experimenten en verfijning opsomt, zoals een vertrouwensdrempel voor het aanpassen van de gevoeligheid.
+            </p>
+            <p>De namen van de argumenten worden ingevuld door de tool bij het lezen van de Python-module op de rasteranalyseserver.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definieer de naam van het klasselabelveld</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van het veld dat het classificatielabel in de uitvoerobjectlaag zal bevatten.
+            </p>
+            <p>Als er geen veldnaam wordt opgegeven, wordt er een nieuw veld met de naam  <i>ClassLabel</i> in de uitvoerobjectlaag gegenereerd.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Verwerkingsmodus</h2></div>
+        <hr/>
+        <div>
+            <p>Geeft aan hoe alle rasteritems in een beeldservice worden verwerkt. 
+                <ul>
+                    <li> <b>Verwerking als moza&iuml;ekbeeld</b>&mdash;Alle rasteritems in de afbeeldingsservice worden samengevoegd en verwerkt. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Verwerk items afzonderlijk</b>&mdash;Alle rasteritems in de afbeeldingsservice worden als afzonderlijke beelden verwerkt.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

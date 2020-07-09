@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trend Rasterı Kullanarak Tahmin Et</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Trend Rasterı Kullanarak Tahmin Et"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, ge&ccedil;erli harita yayılımı dahilinde g&ouml;r&uuml;n&uuml;r olan katman değişkenleri analiz edilir. İşaretli değilse, ge&ccedil;erli harita yayılımının dışında bile olsa t&uuml;m katmanın değişkenleri analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Tahmin için çok boyutlu görüntü katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p> Trend Rasterı Oluştur aracından girdi &ccedil;ok boyutlu trend rasterı.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Tahmin edilecek değişkenleri seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Analizde tahmin edilecek değişken veya değişkenler. Herhangi bir değişken belirtilmezse, t&uuml;m değişkenler kullanılır.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Tahmin boyutu değerleri sağlamak için kullanılan yöntemi seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Tahmin boyutu değerleri sağlamak i&ccedil;in kullanılan y&ouml;ntemi belirtir.
+                <ul>
+                    <li> <b>Değere G&ouml;re</b>&mdash;Tahmin, tek bir boyut değeri veya sonraki adımda belirtilen boyut değerleri listesi i&ccedil;in hesaplanır. Varsayılan değerdir. &Ouml;rneğin, 2050, 2100 ve 2150 yılları i&ccedil;in yıllık yağış miktarını tahmin etmek istiyorsunuz.
+                    </li>
+                    <li> <b>Aralığa G&ouml;re</b>--Tahmin, başlangı&ccedil; ve bitiş değerleri ile tanımlanan boyutun bir aralığı i&ccedil;in hesaplanır. &Ouml;rneğin, 2050 ve 2150 arasındaki her yıl i&ccedil;in yıllık yağış miktarını tahmin etmek istiyorsunuz.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Tahmin için boyut değerlerini belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Tahminde kullanılacak boyut değeri veya değerleri.
+            </p>
+            <p>Zaman, derinlik ve y&uuml;kseklik değerlerinin bi&ccedil;imi, trend rasterını oluşturmak i&ccedil;in kullanılan boyut değerlerinin bi&ccedil;imiyle eşleşmelidir. StdTime boyutu i&ccedil;in trend rasterı oluşturulmuşsa, bi&ccedil;im YYYY-MM-DDTHH:MM:SS, &ouml;rneğin, 2050-01-01T00:00:00 şeklinde olmalıdır. Birden &ccedil;ok değer noktalı virg&uuml;lle ayrılır.
+            </p>
+            <p>Tahmin i&ccedil;in boyut değerlerini tanımlamak i&ccedil;in  <b>değere g&ouml;re</b> y&ouml;ntemi se&ccedil;ildiğinde bu parametre gereklidir.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Tahmin için boyut aralığını tanımla</h2></div>
+        <hr/>
+        <div>
+            <p>Tahminde kullanılacak boyut aralığının başlangı&ccedil; ve bitiş tarihini, y&uuml;ksekliğini veya derinliğini tanımlayın.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Başlangıç ve bitiş değerleri arasındaki adım sayısını belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Tahmine dahil edilecek iki boyut değeri arasındaki adım sayısı. Varsayılan değer 1'dır.
+            </p>
+            <p>&Ouml;rneğin, sıcaklık değerlerini her beş yılda bir olacak şekilde tahmin etmek i&ccedil;in 5 değerini kullanın.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Zaman değeri aralığı için kullanılacak birimi seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Zaman değeri aralığı i&ccedil;in kullanılacak birimi belirtir. Bu, analiz boyutu ancak bir zaman boyutu olduğunda ge&ccedil;erlidir.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Predicția Utilizării Rasterului de Tendințe</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predicție cu Ajutorul Rasterului de Tendință"></h2>
+        <hr/>
+    <p>Calculează un raster multidimensional prognozat folosind rasterul de tendințe rezultant din instrumentul  Generarea Rasterului de Tendințe.
+    </p>
+    <p>Dacă se bifează  <b>Utilizare extindere curentă a hărţii</b>, vor fi analizate variabilele stratului tematic care sunt vizibile &icirc;n extinderea curentă a hărţii. Dacă nu se bifează, variabilele &icirc;ntregului strat tematic vor fi analizate, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Alegeți stratul tematic cu imagini multidimensionale pentru a face predicții</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de tendință multidimensional de intrare din instrumentul  Generează Raster de Tendință.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Alegeți variabila(ele) de supus predicției</h2></div>
+        <hr/>
+        <div>
+            <p>Variabila sau variabilele care vor fi supuse predicției &icirc;n analiză. Dacă  nu sunt specificate variabile, vor fi folosite toate variabilele.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Alegeți metoda folosită pentru a asigura valori de dimensiune a predicției</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică metoda folosită pentru asigurarea valorilor dimensiunii de predicție.
+                <ul>
+                    <li> <b>După Valoare</b>&mdash;Predicția va fi calculată pentru o valoare de dimensiune individuală sau o listă de valori de dimensiune specificate la pasul următor. Aceasta este setarea implicită. De exemplu, doriți să prognozați precipitațiile anuale pentru anii 2050, 2100, și 2150.
+                    </li>
+                    <li> <b>După Interval</b>&mdash;Predicția va fi calculată pentru un interval al dimensiunii definit de o valoare de &icirc;nceput și de sf&acirc;rșit. De exemplu, doriți să prognozați precipitațiile anuale pentru fiecare an dintre 2050 și 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Specificați valoarea(ile) de dimensiune pentri predicție</h2></div>
+        <hr/>
+        <div>
+            <p>Valoarea sau valorile dimensiunii de utilizat &icirc;n prognoză.
+            </p>
+            <p>Formatul valorilor orei, ad&acirc;ncimii și &icirc;nălțimii trebuie să corespundă formatului valorilor dimensiunii folosite pentru a genera rasterul de tendință. Dacă rasterul de tendință a fost generat pentru dimensiunea StdTime, formatul trebuie să fie AAAA-LL-ZZTHH:MM:SS, de exemplu 2050-01-01T00:00:00. Valorile multiple sunt separate cu punct și virgulă.
+            </p>
+            <p>Acest parametru este necesar atunci c&acirc;nd metoda  <b>După valoare</b> este selectată pentru a defini valorile dimensiunii pentru predicție.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definiți intervalul dimensiunii pentru predicție</h2></div>
+        <hr/>
+        <div>
+            <p>Definiți data de &icirc;nceput și de sf&acirc;rșit, &icirc;nălțimea sau ad&acirc;ncimea intervalului de dimensiune de folosit la predicție.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Specificați numărul de pași dintre valorile de început și sfârșit</h2></div>
+        <hr/>
+        <div>
+            <p>Numărul de pași dintre două valori ale dimensiunilor de inclus &icirc;n prognoză. Valoarea implicită este 1.
+            </p>
+            <p>De exemplu, pentru a face o predicție a valorilor temperaturii la fiecare cinci ani, folosiți o valoare de 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Alegeți unitatea care va fi folosită pentru intervalul valorii de timp</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică unitatea care va fi folosită pentru intervalul de valoare. Acest lucru se aplică doar atunci c&acirc;nd dimensiunea analizei este o dimensiune de timp.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

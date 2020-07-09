@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>地理加权回归</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeographicallyWeightedRegression 工作流示意图"></h2>
+        <hr/>
+    <p>执行&ldquo;地理加权回归 (GWR)&rdquo;，这是一种用于建模空间变化关系的线性回归的局部形式。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>选择要分析的图层</h2></div>
+        <hr/>
+        <div>
+            <p>包含因变量和解释变量的点要素图层。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>选择分析图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。您可以选择对输入图层应用过滤器，或在添加到地图中的托管图层上应用选择。过滤器和选择仅适用于分析。 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>选择要建模的字段</h2></div>
+        <hr/>
+        <div>
+            <p>包含要建模的观测值的数值字段，以及要建模的值的类型。
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>选择解释字段</h2></div>
+        <hr/>
+        <div>
+            <p>表示解释变量（字段）的一个或多个字段，可帮助预测值。仅数值字段可见。
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>选择确定邻域的方法</h2></div>
+        <hr/>
+        <div>
+            <p>指定是将使用的邻域构造为固定距离，还是允许根据要素的密度在空间范围内变化。
+                <ul>
+                    <li> <b>相邻要素数</b> - 邻域大小是每个要素的计算中包括的指定相邻要素数目的函数。在要素密集的位置，邻域的空间范围较小；在要素稀疏的位置，邻域的空间范围较大。选择此选项时，请选择要包括的相邻要素数。数值应该为 2 到 5000 之间的整数。
+                    </li>
+                    <li> <b>距离范围</b> - 邻域大小是每个要素的恒定或固定距离。选择此选项时，请选择距离范围来表示邻域的空间范围。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>选择相邻要素的加权方式</h2></div>
+        <hr/>
+        <div>
+            <p>用于指定将用于在模型中提供空间权重的核类型。核将定义每个要素与其邻域内其他要素相关的方式。
+                <ul>
+                    <li> <b>Bisquare</b> - 权重 0 将会分配给指定邻域外的任何要素。这是默认设置。
+                    </li>
+                    <li> <b>Gaussian</b> - 所有要素都将获得权重，但是距离目标要素越远，则权重将以指数方式变小。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p> 要创建的图层的名称。如果您要写入 ArcGIS Data Store，则您的结果将保存在<b>我的内容</b>并添加到地图中。如果您要写入大数据文件共享，则您的结果将存储于大数据文件共享中，并添加到其清单。结果将不会添加到地图中。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            </p>
+            <p>如果写入  ArcGIS Data Store（关系或时空大数据存储），可以使用<b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹的名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

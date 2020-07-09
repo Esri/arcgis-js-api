@@ -52,14 +52,14 @@
     </p>
     <p>Rastry oparte na liczbach całkowitych można konwertować na obiekty punktowe, liniowe lub poligonowe, natomiast rastry oparte na liczbach zmiennoprzecinkowych można konwertować tylko na obiekty punktowe.
     </p>
-    <p>Jeśli zaznaczono opcję  <b>Użyj zasięgu bieżącej mapy</b>, konwertowane będą tylko te kom&oacute;rki rastra, kt&oacute;re są widoczne bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, będą konwertowane wszystkie kom&oacute;rki w rastrze, nawet jeśli znajdują się poza bieżącym zasięgiem mapy. Należy o tym pamiętać, jeśli warstwa rastrowa jest duża lub ma bardzo dużą rozdzielczość.
+    <p>Jeśli zaznaczono opcję  <b>Użyj zasięgu bieżącej mapy</b>, konwertowane będą tylko te kom&oacute;rki rastra, kt&oacute;re są widoczne w bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, będą konwertowane wszystkie kom&oacute;rki w rastrze, nawet jeśli znajdują się poza bieżącym zasięgiem mapy. Należy o tym pamiętać, jeśli warstwa rastrowa jest duża lub ma bardzo dużą rozdzielczość.
     </p>
     <p>Narzędzie to ma r&oacute;wnież następujące zastosowania:
- 
+
         <ul>
             <li>Utw&oacute;rz obiekty poligonowe na podstawie rastra klasyfikacji użytkowania terenu.
                 
- 
+
             </li>
             <li>Strumienie zidentyfikowane w DEM można konwertować na obiekty liniowe.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM można konwertować na obiekty punktowe, kt&oacute;rych można używać w nierastrowej procedurze wykonywania zadań.
                 
- 
+
             </li>
         </ul>
         
@@ -86,7 +86,7 @@
         <div><h2>Wybierz pole</h2></div>
         <hr/>
         <div>
-            <p>Podaj pole, decydując o tym, kt&oacute;ra wartość będzie używana podczas konwersji.
+            <p>Pole określające wartość konwersji.
             </p>
             <p>Może to być dowolna wartość całkowita lub tekstowa.
             </p>
@@ -100,18 +100,18 @@
         <div><h2>Wybierz typ danych wynikowych</h2></div>
         <hr/>
         <div>
-            <p>Wybierz typ danych wynikowych: punkt, linia lub poligon.
+            <p>Wskazuje typ wynikowy.
             </p>
             <ul>
-                <li>Punkt &mdash; raster będzie konwertowany na zestaw danych punktowych.
+                <li> <b>Punkt</b> &mdash; raster będzie konwertowany na zestaw danych punktowych. Jest to opcja domyślna.
                     
  
                 </li>
-                <li>Linia &mdash; raster będzie konwertowany na zestaw danych obiekt&oacute;w liniowych.
+                <li> <b>Linia</b> &mdash; raster będzie konwertowany na zestaw danych obiekt&oacute;w liniowych.
                     
  
                 </li>
-                <li>Poligon &mdash; raster będzie konwertowany na zestaw danych obiekt&oacute;w poligonowych.
+                <li> <b>Poligon</b> &mdash; raster będzie konwertowany na zestaw danych obiekt&oacute;w poligonowych.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Uprość linie i poligony</h2></div>
         <hr/>
         <div>
-            <p>Zdecyduj, czy obiekty mają być upraszczane.
+            <p>Decyduje, czy linie i poligony będą upraszczane (wygładzane). Wygładzanie jest przeprowadzane w taki spos&oacute;b, że linia zawiera minimalną liczbę segment&oacute;w przy jednoczesnym zachowaniu jak największego podobieństwa do krawędzi oryginalnej kom&oacute;rki rastra.
             </p>
-            <p>Jeśli ta opcja zostanie zaznaczona (domyślnie), obiekty liniowe lub poligonowe zostaną wygładzone, dzięki czemu zostanie wygenerowany bardziej uog&oacute;lniony wynik. Jeśli ta opcja nie jest zaznaczona, obiekty liniowe będą tworzone zgodnie z granicami kom&oacute;rek zestawu danych rastrowych.
+            <ul>
+                <li>Jeśli ta opcja jest zaznaczona, obiekty liniowe lub poligonowe zostaną wygładzone, dzięki czemu zostanie wygenerowany bardziej uog&oacute;lniony wynik. Jest to opcja domyślna.
+                    
+
+                </li>
+                <li>Jeśli ta opcja nie jest zaznaczona, obiekty liniowe będą tworzone zgodnie z granicami kom&oacute;rek zestawu danych rastrowych.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ten parametr jest obsługiwany tylko wtedy, gdy typ wynikowy to linia lub poligon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Utwórz obiekty wieloczęściowe</h2></div>
+        <hr/>
+        <div>
+            <p>Decyduje, czy poligony wynikowe będą zawierały obiekty jednoczęściowe czy wieloczęściowe.
+            </p>
+            <ul>
+                <li>Jeśli ta opcja jest zaznaczona, obiekty wieloczęściowe będą tworzone na podstawie poligon&oacute;w o tych samych wartościach.
+                    
+
+                </li>
+                <li>Jeśli ta opcja nie jest zaznaczona, obiekty pojedyncze (jednoczęściowe) będą tworzone dla każdego poligonu. Jest to opcja domyślna.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ten parametr jest obsługiwany tylko wtedy, gdy typ wynikowy to poligon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksymalna liczba wierzchołków na obiekt poligonowy</h2></div>
+        <hr/>
+        <div>
+            <p>Limit liczby wierzchołk&oacute;w używany do dzielenia poligonu na mniejsze części.
+            </p>
+            <p>Jeśli to pole jest puste, poligony wynikowe nie będą dzielone. Jest to opcja domyślna.
+            </p>
+            <p>Ten parametr jest obsługiwany tylko wtedy, gdy typ wynikowy to poligon.
             </p>
         </div>
     </div>

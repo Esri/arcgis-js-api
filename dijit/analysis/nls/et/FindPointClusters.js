@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({clustersLabel:"Otsige kihi ${inputLayerName} klastrid.",chooseLayerLabel:"Valige kiht klastrite otsimiseks",minClusterPtsLabel:"Minimaalne punktide arv, mida käsitletakse klastrina",minClustersPtsGAXLbl:"Klastri loomiseks vajalik minimaalne punktide arv",limitSearchLabel:"Piira otsinguvahemikku (valikuline)",limitSearchReqLabel:"Piira otsinguvahemikku",outputLayerName:"Otsi ${inputLayerName} klastrid",itemDescription:"Objektikiht loodi kihi ${inputLayerName} punktklastrite otsingu abil.",itemTags:"Analüüsi tulemus, punktklastrite otsimine, ${inputLayerName}",itemSnippet:"Objektikiht loodi punktklastrite otsingu abil",chooseClusteringMethod:"Valige kasutatav klasterdamismeetod",dbscanLabel:"Määratletud kaugus (DBSCAN)",hdbscanLabel:"Isereguleeruv (HDBSCAN)",useTimeToFindCLusters:"Varu klastrite leidmiseks aega",limitSearchDurLabel:"Piira otsingu kestvust"});

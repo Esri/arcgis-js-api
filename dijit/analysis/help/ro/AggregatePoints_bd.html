@@ -62,7 +62,7 @@
         <div>
             <p>Stratul tematic de puncte care va fi &icirc;nsumat &icirc;n suprafeţe. Straturile tematice de puncte care sunt agregate &icirc;n coşuri  <b>Pătrat </b> sau <b>Hexagon</b> trebuie să aibă referinţa spaţială de procesare setată pe un sistem de coordonate proiectate utiliz&acirc;nd <b>Mediul de analiză</b>.
             </p>
-            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Alegere strat tematic de analiză</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Alegere strat tematic de analiză</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data. Puteți să aplicați &icirc;n mod opțional un filtru pe stratul tematic de intrare sau să aplicați o selecție pe straturile tematice găzduite adăugate la harta dvs. Filtrele și selecțiile sunt aplicate doar pentru analiză. 
             </p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <div>
             <p>Suprafeţele &icirc;n care stratul tematic de puncte care va fi &icirc;nsumat. Puteţi alege &icirc;ntre un strat tematic de suprafeţe pe care &icirc;l furnizaţi şi coşuri care sunt generate atunci c&acirc;nd rulează instrumentul.   Atunci c&acirc;nd sunt generate coşuri, pentru  <b>Pătrat</b>, numărul şi unităţile specificate determină &icirc;nălţimea şi lungimea pătratului. Pentru <b>Hexagon</b>, numărul şi unităţile specificate determină distanţa dintre laturi paralele.
             </p>
-            <p>Analiza cu coşurile  <b>Pătrat</b> sau <b>Hexagon</b> necesită un sistem de coordonate proiectat. Puteţi seta <b>Sistemul de coordonate de procesare</b> din <b>Medii de analiză</b>. Dacă sistemul dvs. de coordonate de procesare nu este setat la un sistem de coordonate proiectat, vi se va indica să &icirc;l setaţi atunci c&acirc;nd <b>Executați Analiza</b> .
+            <p>Analiza folosind containere Pătrat sau Hexagon necesită un sistem de coordonate proiectat. Puteţi seta sistemul de coordonate de procesare din Medii de analiză. Dacă sistemul de coordonate de procesare nu este setat la un sistem de coordonate proiectat, vi se va indica să &icirc;l setaţi atunci c&acirc;nd executaţi analiza .
             </p>
         </div>
     </div>
@@ -82,7 +82,7 @@
         <div>
             <p>Stratul tematic cu suprafeţe &icirc;n care vor fi &icirc;nsumate punctele. Toate punctele care cad &icirc;n interiorul graniţelor suprafeţelor din acest strat tematic vor fi numărate şi rezumate opţional utiliz&acirc;ndu-se statisticile alese. 
             </p>
-            <p>Trebuie setată  <b>Dimensiunea coșului</b> pentru coșuri sau <b>Stratul tematic al zonei</b>.
+            <p>Trebuie setat fie  <b>Dimensiunea containerului</b> pentru containere, fie <b>Stratul tematic de suprafață</b>.
             </p>
         </div>
     </div>
@@ -92,7 +92,7 @@
         <div>
             <p>Distanţa utilizată pentru generarea de containere pentru &icirc;mbinarea punctelor de intrare. Pentru un coş pătrat, dimensiunea reprezintă &icirc;nălţimea pătratului. Pentru hexagon, dimensiunea reprezintă &icirc;nălţimea hexagonului (de la laturile paralele).  
             </p>
-            <p>Trebuie setată  <b>Dimensiunea coșului</b> pentru coșuri sau <b>Stratul tematic al zonei</b>.
+            <p>Trebuie setat fie  <b>Dimensiunea containerului</b> pentru containere, fie <b>Stratul tematic de suprafață</b>.
             </p>
         </div>
     </div>
@@ -113,7 +113,7 @@
             </p>
             <p>De exemplu, dacă aveți date care reprezintă un an &icirc;n timp și doriți să le analizați cu ajutorul treptelor săptăm&acirc;nale, setați  <b>Interval trepte temporale</b> la <code>1 săpt&acirc;m&acirc;nă</code>. 
             </p>
-            <p>De exemplu, dacă aveți date care reprezintă un an &icirc;n timpși doriți să le analizați folosindprima săptăm&acirc;nă a lunii, setați  <b>Interval trepte temporale</b> la <code>1 săptăm&acirc;nă</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 lună</code>, și <b>Momentul de aliniere treptele temporale</b> la <code>1 ianuarie, la 12:00 am</code>.
+            <p>De exemplu, dacă aveți date care reprezintă un an &icirc;n timp și doriți să le analizați folosind prima săptăm&acirc;nă a lunii, setați  <b>Interval trepte temporale</b> la <code>1 săptăm&acirc;nă</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 lună</code>, și <b>Momentul de aliniere trepte temporale</b> la <code>1 ianuarie, la 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -121,9 +121,9 @@
         <div><h2>Interval trepte temporale</h2></div>
         <hr/>
         <div>
-            <p>Interval de timp folosit la generarea treptelor temporale.  <b>Intervalul de trepte temporale</b> poate fi folosit individual sau cu <b>C&acirc;t de des se repetă treptele temporale</b> sau <b>Timpul de aliniere a treptelor temporale la</b> parametru.
+            <p>Intervalul de timp folosit la generarea treptelor temporale.  <b>Intervalul de trepte temporale</b> poate fi folosit individual sau cu <b>C&acirc;t de des se repetă treapta temporală</b> sau <b>Timpul de aliniere a treptelor temporale la</b> parametru.
             </p>
-            <p>De exemplu, dacă doriți să creați trepte temporale care  au loc &icirc;n fiecare luni de la 09:00 p&acirc;nă la 10:00, setați  <b>Interval de trepte temporale</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale</b> la <code>9:00:00 &icirc;ntr-o zi de luni</code>.
+            <p>De exemplu, dacă doriți să creați trepte temporale care au loc &icirc;n fiecare luni de la 09:00 a.m. p&acirc;nă la 10:00 a.m., setați  <b>Interval treaptă temporală</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale la</b> la <code>9:00:00 a.m. &icirc;ntr-o zi de luni</code>.
             </p>
         </div>
     </div>
@@ -131,9 +131,9 @@
         <div><h2>Cât de des se repetă treapta temporală</h2></div>
         <hr/>
         <div>
-            <p> Treapta utilizată pentru calculul unui segment de timp. <b>C&acirc;t de des se repetă treapta temporală</b> poate fi utilizat individual, cu <b>Interval treaptă temporală</b>, cu <b>Timp de Referință</b>, sau at&acirc;t cu <b>Interval trepte temporale</b> c&acirc;t și cu <b>Timpul de aliniere a treptelor temporale la</b>.
+            <p> Treapta utilizată pentru calculul unui segment de timp. <b>C&acirc;t de des se repetă treapta temporală</b> poate fi utilizat individual, cu <b>Interval treaptă temporală</b>, cu <b>Timp de referință</b>, sau at&acirc;t cu <b>Interval treaptă temporală</b> c&acirc;t și cu <b>Timpul de aliniere a treptelor temporale la</b>.
             </p>
-            <p> De exemplu, dacă doriți să creați trepte temporale care au loc &icirc;n fiecare luni de la 09:00 p&acirc;nă la 10:00, setați <b>Interval de trepte temporale</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale la</b> la <code>9:00:00 a.m. &icirc;ntr-o zi de luni</code>.
+            <p>De exemplu, dacă doriți să creați trepte temporale care au loc &icirc;n fiecare luni de la 09:00 a.m. p&acirc;nă la 10:00 a.m., setați  <b>Interval treaptă temporală</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale la</b> la <code>9:00:00 a.m. &icirc;ntr-o zi de luni</code>.
             </p>
         </div>
     </div>
@@ -143,7 +143,7 @@
         <div>
             <p>Data şi ora utilizate pentru alinierea segmentelor temporale. Treptele temporale vor &icirc;ncepe la și vor continua &icirc;napoi de la această oră. Dacă nu este selectat nicio oră de referinţă, treptele temporare se vor alinia la 1 ianuarie 1970. 
             </p>
-            <p> De exemplu, dacă doriți să creați trepte temporale care au loc &icirc;n fiecare luni de la 09:00 p&acirc;nă la 10:00, setați <b>Interval de trepte temporale</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale la</b> la <code>9:00:00 a.m. &icirc;ntr-o zi de luni</code>.
+            <p>De exemplu, dacă doriți să creați trepte temporale care au loc &icirc;n fiecare luni de la 09:00 a.m. p&acirc;nă la 10:00 a.m., setați  <b>Interval treaptă temporală</b> la <code>1 oră</code>, <b>C&acirc;t de des se repetă treapta temporală</b> la <code>1 săptăm&acirc;nă</code>, și <b>Timpul de aliniere a treptelor temporale la</b> la <code>9:00:00 a.m. &icirc;ntr-o zi de luni</code>.
             </p>
         </div>
     </div>
@@ -151,9 +151,9 @@
         <div><h2>Adăugare statistici (opţional)</h2></div>
         <hr/>
         <div>
-            <p> Puteţi calcula statistici despre obiectele spaţiale rezumate. Puteți calcula următoarele pe c&acirc;mpuri numerice:
+            <p>Puteţi calcula statistici despre obiectele spaţiale rezumate. Puteți calcula următoarele pe c&acirc;mpuri numerice: 
                 <ul>
-                    <li>Numărare&mdash;Calculează numărul de valori care nu sunt nule. Poate fi utilizat &icirc;n c&acirc;mpuri numerice sau șiruri. Calculul [nul, 0, 2] este egal cu 2.
+                    <li>Numărare&mdash;Calculează numărul de valori care nu sunt nule. Poate fi utilizat &icirc;n c&acirc;mpurile sau &icirc;n şirurile numerice. Calculul [nul, 0, 2] este egal cu 2.
                     </li>
                     <li>Sumă - Suma valorilor numerice dintr-un c&acirc;mp. Suma [nul, 0, 3] este egală cu 3.
                     </li>
@@ -179,7 +179,7 @@
                     <li>Oricare - Această statistică este un exemplu aleatoriu al unei valori de tip şir &icirc;n c&acirc;mpul specificat.
                     </li>
                 </ul>
-                Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică. 
+                Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică.
             </p>
         </div>
     </div>
@@ -195,7 +195,7 @@
         <div><h2>Alegeţi un depozit de date ArcGIS pe care să salvaţi rezultatele</h2></div>
         <hr/>
         <div>
-            <p>Rezultatele GeoAnalytics sunt stocate &icirc;ntr-un depozit de date și sunt expuse ca strat tematic de obiecte spaţiale &icirc;n  Portal for ArcGIS. &Icirc;n cele mai multe situaţii, rezultatele trebuie stocate &icirc;n depozitul de date spaţio-temporar, &icirc;n mod implicit. &Icirc;n unele cazuri, salvarea rezultatelor &icirc;n depozitul depozit de date relaţionale este o opțiune bună. Mai jos sunt motivele pentru care ați dori să stocați rezultatele &icirc;n depozitul depozit de date relaţionale: 
+            <p>Rezultatele GeoAnalytics sunt stocate &icirc;ntr-un depozit de date și sunt expuse ca strat tematic de obiecte spaţiale &icirc;n  Portal for ArcGIS. &Icirc;n cele mai multe situaţii, rezultatele trebuie stocate &icirc;n depozitul de date spaţio-temporar, &icirc;n mod implicit. &Icirc;n unele situaţii, salvarea rezultatelor &icirc;n depozitul de date relaţionale este o opţiune bună. Mai jos sunt motivele pentru care ați dori să stocați rezultatele &icirc;n depozitul de date relaţionale: 
                 <ul>
                     <li>Puteți folosi rezultatele &icirc;n colaborarea-dintre-portaluri.
                     </li>
@@ -204,7 +204,7 @@
                 </ul>
                 
             </p>
-            <p>Nu trebuie să utilizaţi depozitul de date relaţionale dacă vă aşteptaţi ca rezultatele GeoAnalytics să crească &icirc;n cantitate şi aveţi nevoie de capacităţile depozitului mare de stocare spaţio-temporal de a gestiona cantităţi mari de date.
+            <p>Nu trebuie să utilizaţi depozitul de date relaţionale dacă vă aşteptaţi ca rezultatele GeoAnalytics să crească şi aveţi nevoie de capacităţile depozitului de stocare de date spaţio-temporale de volum mare pentru a gestiona cantităţi mari de date.
             </p>
         </div>
     </div>

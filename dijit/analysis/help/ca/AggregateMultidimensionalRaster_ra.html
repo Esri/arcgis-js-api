@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Consolida el ràster multidimensional</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Consolida el r&agrave;ster multidimensional"></h2>
+        <hr/>
+    <p>Per generar un dataset r&agrave;ster multidimensional, combina variables de r&agrave;ster multidimensional existents en una dimensi&oacute;.
+    </p>
+    <p>Si teniu 30 anys de dades de temperatura de la superf&iacute;cie del mar, recopilades mensualment i a cada 5 metres de profunditat fins als 100 metres, algunes aplicacions d'exemple s&oacute;n les seg&uuml;ents:
+        <ul>
+            <li>Agregaci&oacute; de dades de temperatura mensuals en dades anuals.
+            </li>
+            <li>Agregaci&oacute; de dades de temperatura mensuals en intervals de 4 mesos.
+            </li>
+            <li>Agregaci&oacute; de dades de temperatura de 0 a 25 metres, despr&eacute;s de 25 a 50 metres i finalment de 50 a 100 metres.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, s'analitzaran les variables de la capa que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran les variables de tota la capa, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Trieu la capa d'imatges multidimensionals que voleu agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Capa d'imatges d'entrada d'un r&agrave;ster multidimensional que s'agregar&agrave;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Trieu la dimensió on voleu fer l'agregació</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensi&oacute; de l'agregaci&oacute;. &Eacute;s la dimensi&oacute; a la qual s'agregaran les variables.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trieu les variables que voleu agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Variable o variables que s'agregaran a la dimensi&oacute; especificada. Si no s'ha especificat cap variable, s'agregaran totes les variables amb la dimensi&oacute; seleccionada.
+            </p>
+            <p>Per exemple, per agregar les dades de temperatura di&agrave;ries als valors mitjans mensuals, especifiqueu la temperatura com la variable que s'ha d'agregar. Si no especifiqueu cap variable i teniu variables de temperatura di&agrave;ria i precipitaci&oacute; di&agrave;ria, ambdues variables s'agregaran a les mitjanes mensuals i el r&agrave;ster multidimensional de sortida les inclour&agrave; totes dues.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Trieu el mètode d'agregació</h2></div>
+        <hr/>
+        <div>
+            <p>Especifiqueu el m&egrave;tode matem&agrave;tic que s'utilitzar&agrave; per combinar els sectors agregats en un interval. 
+                <ul>
+                    <li> <b>Mitjana</b>: calcula la mitjana dels valors d'un p&iacute;xel en tots els sectors de l'interval. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>M&agrave;xim</b>: calcula el valor m&agrave;xim d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Majoria</b>: calcula el valor que s'ha donat amb m&eacute;s freq&uuml;&egrave;ncia per a un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>M&iacute;nim</b>: calcula el valor m&iacute;nim d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Minoria</b>: calcula el valor que s'ha donat amb menys freq&uuml;&egrave;ncia per a un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Mediana</b>: calcula el valor de la mediana d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Interval</b>: calcula l'interval de valors d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Desviaci&oacute; est&agrave;ndard</b>: calcula la desviaci&oacute; est&agrave;ndard dels valors d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Suma</b>: calcula la suma dels valors d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Varietat</b>: calcula el nombre de valors &uacute;nics d'un p&iacute;xel en tots els sectors de l'interval.
+                    </li>
+                    <li> <b>Personalitzat</b>: calcula el valor d'un p&iacute;xel basat en una funci&oacute; de r&agrave;ster personalitzada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Trieu la plantilla de funció de ràster</h2></div>
+        <hr/>
+        <div>
+            <p>Funci&oacute; de r&agrave;ster personalitzada que s'utilitzar&agrave; per calcular els valors de p&iacute;xel dels r&agrave;sters agregats. L'entrada &eacute;s un element de plantilla de funci&oacute; de r&agrave;ster del portal. Aquesta entrada &eacute;s necess&agrave;ria quan  <b>M&egrave;tode d'agregaci&oacute;</b> s'ha definit en <b>Personalitzat</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Trieu la definició d'agregació</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica l'interval de dimensions per al qual s'agregaran les dades. 
+                <ul>
+                    <li> <b>Tots</b>: els valors de les dades s'agregaran en tots els sectors. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Paraula clau de l'interval</b>: les dades de variables s'agregaran amb un interval conegut comunament.
+                    </li>
+                    <li> <b>Valors de l'interval</b>: les dades de variables s'agregaran amb un interval i una unitat especificats per l'usuari.
+                    </li>
+                    <li> <b>Rangs de l'interval</b>: les dades de variables s'agregaran entre parells de valors o dates especificats.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Trieu l'interval de paraules clau</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica l'interval de paraules clau que s'utilitzar&agrave; en l'agregaci&oacute; a la dimensi&oacute;. Aquesta entrada &eacute;s necess&agrave;ria quan el par&agrave;metre  <b>Definici&oacute; de l'agregaci&oacute;</b> s'ha definit en <b>Paraula clau de l'interval</b> i l'agregaci&oacute; s'ha de fer al llarg del temps.
+                <ul>
+                    <li> <b>Cada hora</b>: els valors de les dades s'agregaran en per&iacute;odes de temps d'hores, i el resultat inclour&agrave; cada hora de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Cada dia</b>: els valors de les dades s'agregaran en per&iacute;odes de temps diaris, i el resultat inclour&agrave; cada dia de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Cada setmana</b>: els valors de les dades s'agregaran en per&iacute;odes de temps setmanals, i el resultat inclour&agrave; cada setmana de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Cada mes</b>: els valors de les dades s'agregaran en per&iacute;odes de temps mensuals, i el resultat inclour&agrave; cada mes de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Cada trimestre</b>: els valors de les dades s'agregaran en per&iacute;odes de temps trimestrals, i el resultat inclour&agrave; cada trimestre de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Cada any</b>: els valors de les dades s'agregaran en per&iacute;odes de temps anuals, i el resultat inclour&agrave; cada any de la s&egrave;rie temporal.
+                    </li>
+                    <li> <b>Recurrent cada dia</b>: els valors de les dades s'agregaran en per&iacute;odes de temps diaris, i el resultat inclour&agrave; un valor agregat per dia juli&agrave;. La sortida inclour&agrave;, com a m&agrave;xim, 366 sectors de temps diaris.
+                    </li>
+                    <li> <b>Recurrent cada setmana</b>: els valors de les dades s'agregaran en per&iacute;odes de temps setmanals, i el resultat inclour&agrave; un valor agregat per setmana. La sortida inclour&agrave;, com a m&agrave;xim, 53 sectors de temps setmanals.
+                    </li>
+                    <li> <b>Recurrent cada mes</b>: els valors de les dades s'agregaran en per&iacute;odes de temps setmanals, i el resultat inclour&agrave; un valor agregat per mes. La sortida inclour&agrave;, com a m&agrave;xim, 12 sectors de temps mensuals.
+                    </li>
+                    <li> <b>Recurrent cada trimestre</b>: els valors de les dades s'agregaran en per&iacute;odes de temps setmanals, i el resultat inclour&agrave; un valor agregat per trimestre. La sortida inclour&agrave;, com a m&agrave;xim, 4 sectors de temps trimestrals.
+                    </li>
+                    <li> <b>Cada 10 dies</b>: els valors de les dades s'agregaran en 3 per&iacute;odes de 10 dies cadascun. El darrer per&iacute;ode pot contenir m&eacute;s o menys de 10 dies. La sortida inclour&agrave; 3 sectors per a cada mes.
+                    </li>
+                    <li> <b>Cada 5 dies</b>: els valors de les dades s'agregaran en 6 per&iacute;odes de 5 dies cadascun. El darrer per&iacute;ode pot contenir m&eacute;s o menys de 5 dies. La sortida inclour&agrave; 6 sectors per a cada mes.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval de valors</h2></div>
+        <hr/>
+        <div>
+            <p>Mida de l'interval que s'utilitzar&agrave; per a l'agregaci&oacute;. Aquest par&agrave;metre &eacute;s necessari quan el par&agrave;metre  <b>Definici&oacute; de l'agregaci&oacute;</b> s'ha definit en <b>Valor de l'interval</b>.
+            </p>
+            <p>Per exemple, per agregar 30 anys de dades de temperatura mensuals en increments de 5 anys, introdu&iuml;u 5 com a  <b>Interval de valors</b> i a <b>Unitat</b> especifiqueu <b>Anys</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unitat</h2></div>
+        <hr/>
+        <div>
+            <p>Unitat que s'utilitzar&agrave; per al valor de l'interval. Aquest par&agrave;metre &eacute;s necessari quan el par&agrave;metre  <b>Dimensi&oacute;</b> &eacute;s un camp de temps i <b>Definici&oacute; de l'agregaci&oacute;</b> s'ha definit en <b>Valor de l'interval</b>.
+            </p>
+            <p>Si feu l'agregaci&oacute; sobre una variable que no &eacute;s de temps, aquesta opci&oacute; no estar&agrave; disponible i la unitat del valor de l'interval coincidir&agrave; amb la unitat de la variable de les dades del r&agrave;ster multidimensional d'entrada. 
+                <ul>
+                    <li> <b>Hores</b>: els valors de les dades s'agregaran en sectors de temps d'hora a l'interval proporcionat.
+                    </li>
+                    <li> <b>Dies</b>: els valors de les dades s'agregaran en sectors de temps diaris a l'interval proporcionat.
+                    </li>
+                    <li> <b>Setmanes</b>: els valors de les dades s'agregaran en sectors de temps setmanals a l'interval proporcionat.
+                    </li>
+                    <li> <b>Mesos</b>: els valors de les dades s'agregaran en sectors de temps mensuals a l'interval proporcionat.
+                    </li>
+                    <li> <b>Anys</b>: els valors de les dades s'agregaran en sectors de temps anuals a l'interval proporcionat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Defineix els intervals</h2></div>
+        <hr/>
+        <div>
+            <p>Els rangs de l'interval s'utilitzaran per agregar grups de valors. Estan formats per parells de valors d'interval m&iacute;nims i m&agrave;xims, amb el tipus de dades Doble o Data. Aquesta entrada &eacute;s necess&agrave;ria quan el par&agrave;metre  <b>Definici&oacute; de l'agregaci&oacute;</b> s'ha definit en <b>Rangs de l'interval</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora els valors que falten al càlcul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi. 
+                <ul>
+                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li>Desactivada: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per al p&iacute;xel a la dimensi&oacute; proporcionada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Stichprobe</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Stichprobe"></h2>
+        <hr/>
+    <p>Dieses Werkzeug erstellt eine Tabelle oder eine Point-Feature-Class, die f&uuml;r definierte Positionen die Werte der Zellen aus einem Raster oder einer Gruppe von Rastern anzeigt. Die Positionen werden durch Raster-Zellen, Polygon-Features, Polylinien-Features oder eine Menge von Punkten definiert.
+    </p>
+    <p>Aus allen Eingabe-Rastern werden an der jeweiligen Position Pixelwerte extrahiert. Es wird eine Tabelle oder eine Point-Feature-Class mit Feldern erstellt, die die Pixelwerte f&uuml;r die einzelnen Eingabe-Raster enthalten. Zus&auml;tzliche Attribute aus der Eingabe-Raster-Tabelle werden nicht in die Ausgabetabelle &uuml;bernommen.
+    </p>
+    <p>Jede beliebige Kombination von Rastern, wie Einzelband-, Multiband-, multidimensionale oder multivariate Raster, kann als Eingabe angegeben werden. Wenn die Eingabe-Raster mehrdimensional sind, &auml;ndert sich die Struktur der Ausgabe-Tabelle. Wenn ein Multiband-Raster als eines der Eingabe-Raster angegeben wird, werden alle B&auml;nder in dieser Eingabe verwendet. Wenn eine Auswahl von B&auml;ndern aus einem Eingabemultiband-Raster verarbeitet werden soll, erstellen Sie zun&auml;chst ein neues Raster-Dataset, das aus den betreffenden B&auml;ndern besteht. Verwenden Sie das Ergebnis in der Liste der Eingabe-Raster.
+    </p>
+    <p>Die Eingabeposition kann ein Raster oder ein Punkt-Feature sein:
+        <ul>
+            <li>Raster: Pixel, die g&uuml;ltige Werte (keine NoData-Werte) enthalten, werden verwendet, um die Pixelwerte aus allen Eingabe-Rastern zu extrahieren, und der Mittelpunkt des Pixels wird f&uuml;r Punktpositionen verwendet.
+            </li>
+            <li>Punkt: Stichproben werden an jeder Punktposition genommen.
+            </li>
+            <li>Polylinie oder ein Polygon: Stichproben werden am Polygon- oder Polylinien-Schwerpunkt genommen. Wenn es sich um ein multidimensionales Eingabe-Raster handelt, werden die Werte auf Basis des  <b>Statistiktyps</b> aggregiert.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Die Eingabe-Raster werden mit dem urspr&uuml;nglichen Raumbezug und der urspr&uuml;nglichen Aufl&ouml;sung abgerufen. Wenn mehrere Eingabe-Raster mit unterschiedlichen Raumbez&uuml;gen vorhanden sind, werden die Eingabepositionen auf die Raumbez&uuml;ge der einzelnen Raster projiziert, aus denen Werte extrahiert werden. Die Analyseumgebung wird auf die Eingabepositionen angewendet, wobei aber die Eingabe-Raster die Analyseumgebung nicht ber&uuml;cksichtigen.
+    </p>
+    <p>Positionen, mit denen Werte aus NoData-Zellen im Eingabe-Raster extrahiert werden, erhalten in der Ausgabetabelle einen &lt;NULL&gt;-Wert.
+    </p>
+    <p>F&uuml;r die Analyse mit Multipoint-Features m&uuml;ssen Sie diese zun&auml;chst in Singlepoint-Features konvertieren, bevor Sie sie in diesem Werkzeug verwenden k&ouml;nnen.
+    </p>
+    <p>Der Raumbezug der XY-Koordinaten in der ausgegebenen Stichprobentabelle entspricht dem der Eingabe-Positions-Raster oder -Punkt-Features, sofern der Raumbezug nicht in der Umgebung  <b>Ausgabekoordinatensystem</b> angegeben wurde. Ist der Raumbezug der Eingabepositionsdaten unbekannt, ist der Raumbezug der XY-Koordinaten ebenfalls unbekannt.
+    </p>
+    <p>Der Raumbezug der Ausgabe-Feature-Class entspricht dem der Eingabe-Positions-Raster oder -Punkt-Features, sofern der Raumbezug nicht in der Umgebung  <b>Ausgabekoordinatensystem</b> angegeben wurde.
+    </p>
+    <p>Die Umgebungseinstellung  <b>Faktor f&uuml;r parallele Verarbeitung</b> wird nur unterst&uuml;tzt, wenn es sich bei der Eingabe um ein multidimensionales Raster handelt.
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden die Variablen oder B&auml;nder des Layers analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn die Option deaktiviert ist, werden die Variablen oder B&auml;nder des gesamten Layers analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Bilddaten-Layer für Stichproben auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein einzelner Bilddaten-Layer oder eine Liste der Bilddaten-Layer, deren Werte auf der Grundlage der Eingabepositionsdaten entnommen werden.
+            </p>
+            <p>Damit von allen Abschnitten eines multidimensionalen Bilddaten-Layers Stichproben entnommen werden k&ouml;nnen, darf nur ein einziges Eingabe-Raster vorhanden sein.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Positions-Layer auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Daten, die Positionen identifizieren, an denen Stichproben entnommen werden sollen.
+            </p>
+            <p>Bei den Eingabepositionsdaten kann es sich um ein Raster oder eine Point-, Polyline- bzw. Polygon-Feature-Class handeln.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Eindeutiges ID-Feld angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Feld, das f&uuml;r jede Position im Eingabe-Positions-Raster bzw. jedes Feature in der Feature-Class einen anderen Wert enth&auml;lt.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Erfassungsinformationen zu Positionsdaten angeben (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Geben Sie die Zeit, Tiefe oder andere Erfassungsdaten f&uuml;r die Positionszellen bzw. Positions-Features an.
+            </p>
+            <p>F&uuml;r jede Dimension gibt es drei Optionen, um die Erfassungsdaten f&uuml;r Positionszellen oder Positions-Features anzugeben:
+
+                <ul>
+                    <li> <b>Einzelfeld oder -wert</b>: Bei Auswahl dieser Option m&uuml;ssen die folgenden Informationen angegeben werden:
+                        <ul>
+                            <li> <b>Dimensionsfeld oder -wert</b>: W&auml;hlen Sie ein Feld mit Dimensionswerten aus den Positionsdaten aus, oder geben Sie einen bestimmten Dimensionswert ein.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Einzelfeld oder -wert mit relativen Werten</b>: Bei Auswahl dieser Option m&uuml;ssen s&auml;mtliche der folgenden Informationen angegeben werden, um den Bereich festzulegen, in dem die Statistiken f&uuml;r Variablen berechnet werden sollen:
+                        <ul>
+                            <li> <b>Dimensionsfeld oder -wert</b>: W&auml;hlen Sie ein Feld mit Dimensionswerten aus den Positionsdaten aus.
+                            </li>
+                            <li> <b>Relativer Wert vorher</b>: Geben Sie eine nicht negative Zahl an, die vom Wert f&uuml;r <b>Dimensionsfeld oder -wert</b> subtrahiert werden soll, um den Startwert des Dimensionswertebereichs festzulegen. Mit diesem Wert wird die Anzahl der Tage angegeben, wenn es sich bei der Dimension um Zeit handelt.
+                            </li>
+                            <li> <b>Relativer Wert danach</b>: Geben Sie eine nicht negative Zahl an, die dem Wert f&uuml;r <b>Dimensionsfeld oder -wert</b> hinzuaddiert werden soll, um den Endwert des Dimensionswertebereichs festzulegen. Mit diesem Wert wird die Anzahl der Tage angegeben, wenn es sich bei der Dimension um Zeit handelt.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Start- und Endfelder oder -werte</b>: Bei Auswahl dieser Option m&uuml;ssen s&auml;mtliche der folgenden Informationen angegeben werden, um den Bereich festzulegen, in dem die Statistiken f&uuml;r Variablen berechnet werden sollen:
+                        <ul>
+                            <li> <b>Startfeld oder -werte</b>: W&auml;hlen Sie ein Feld mit Dimensionswerten aus den Positionsdaten aus, oder geben Sie einen bestimmten Dimensionswert ein, um den Startwert eines Dimensionswertebereichs festzulegen.
+                            </li>
+                            <li> <b>Endfeld oder -werte</b>: W&auml;hlen Sie ein Feld mit Dimensionswerten aus den Positionsdaten aus, oder geben Sie einen bestimmten Dimensionswert ein, um den Endwert eines Dimensionswertebereichs festzulegen.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Feld oder Wert für Pufferabstand angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Der angegebene Abstand um die Positionsdaten-Features. Der Pufferabstand wird in den linearen Einheiten des Raumbezugs des Positions-Features angegeben. Wenn f&uuml;r das Feature ein geographischer Bezug verwendet wird, ist die Einheit Grad.
+            </p>
+            <p>Die Statistiken werden in diesem Pufferbereich berechnet.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Statistiktyp auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Typ der Statistik, die berechnet werden soll.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>: Sucht den Minimalwert innerhalb des angegebenen Bereichs.
+                </li>
+                <li> <b>Maximum</b>: Sucht den Maximalwert innerhalb des angegebenen Bereichs.
+                </li>
+                <li> <b>Medianwert</b>: Sucht den Medianwert innerhalb des angegebenen Bereichs.
+                </li>
+                <li> <b>Mittelwert</b>: Berechnet den Mittelwert f&uuml;r den angegebenen Bereich.
+                </li>
+                <li> <b>Summe</b>: Berechnet die Summe der Variablen innerhalb des angegebenen Bereichs.
+                </li>
+                <li> <b>Mehrheit</b>: Sucht den Wert mit der gr&ouml;&szlig;ten H&auml;ufigkeit.
+                </li>
+                <li> <b>Minderheit</b>: Sucht den Wert mit der geringsten H&auml;ufigkeit.
+                </li>
+                <li> <b>Standardabweichung</b>: Berechnet die Standardabweichung.
+                </li>
+                <li> <b>Perzentil</b>: Berechnet ein definiertes Perzentil innerhalb des angegebenen Bereichs.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Perzentilwert</h2></div>
+        <hr/>
+        <div>
+            <p>Das Perzentil, das berechnet wird, wenn der Parameter  <b>Statistiktyp</b> auf <b>Perzentil</b> festgelegt wurde.
+            </p>
+            <p>Dieser Wert kann im Bereich von 0 bis 100 liegen. Der Standardwert ist&nbsp;90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Resampling-Methode angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Verwendeter Resampling-Algorithmus bei der Entnahme eines Rasters.
+            </p>
+            <ul>
+                <li> <b>N&auml;chster</b>: N&auml;chster Nachbar. Dies ist die Standardeinstellung.
+                </li>
+                <li> <b>Bilinear</b>: Bilineare Interpolation
+                </li>
+                <li> <b>Kubisch</b>: Kubische Faltung
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Ausgabe-Layout festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Stichprobenwerte in Zeilen oder Spalten der Ausgabetabelle angezeigt werden. Diese Option ist nur verf&uuml;gbar, wenn das mulitidimensionale Eingabe-Raster eine Variable und eine Dimension enth&auml;lt und jedes Segment ein Einzelband-Raster ist.
+            </p>
+            <ul>
+                <li> <b>Stichprobenwerte werden zeilenweise angezeigt</b>: Die Stichprobenwerte werden in separaten Zeilen der Ausgabetabelle angezeigt. Dies ist die Standardeinstellung.
+                </li>
+                <li> <b>Stichprobenwerte werden spaltenweise angezeigt</b>: Die Stichprobenwerte werden in separaten Spalten der Ausgabetabelle angezeigt. Diese Option ist nur g&uuml;ltig, wenn das mulitidimensionale Eingabe-Raster eine Variable und eine Dimension enth&auml;lt und jedes Segment ein Einzelband-Raster ist.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Ausgabetyp festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob eine Point-Feature-Class mit Stichprobenwerten in der zugeh&ouml;rigen Tabelle oder nur eine Tabelle mit Stichprobenwerten erstellt wird.
+            </p>
+            <ul>
+                <li> <b>Tabelle</b>: Es wird eine Tabelle mit Stichprobenwerten erstellt. Dies ist die Standardeinstellung.
+                </li>
+                <li> <b>Features</b>: Es wird eine Point-Feature-Class mit Stichprobenwerten in der zugeh&ouml;rigen Tabelle erstellt. Wenn es sich bei den Eingabe-Positions-Features um Polylinien oder Polygone handelt, ist jeder Punkt in der Ausgabe der Schwerpunkt der einzelnen Geometrien der jeweiligen Eingabe-Positions-Features.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

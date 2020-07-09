@@ -79,5 +79,5 @@
 }
 
 .esriGEReportPlayerPrint .esriGE_dynamicInfographic .Tapestry_Main_Arrow div {
-    background-image: none !important;
+    display: none !important;
 }

@@ -53,7 +53,7 @@
         <hr/>
         <div>
             
-            <p>Specifica se sovrascrivere i layer esistenti.  Quando l'opzione &egrave; selezionata, se nei contenuti personali esiste gi&agrave; un layer con lo stesso nome, questo verr&agrave; sovrascritto.
+            <p>Specifica se sovrascrivere i layer esistenti. Quando l'opzione &egrave; selezionata, se nei contenuti personali esiste gi&agrave; un layer con lo stesso nome, questo verr&agrave; sovrascritto.
             </p>
             <p>
                 <ul>
@@ -74,7 +74,7 @@
             </p>
             <p>
                 <ul>
-                    <li>Selezionata: la finestra di dialogo dello strumento di analisi verr&agrave; chiusa e verr&agrave; di nuovo visualizzato il sommario. Si tratta dell'impostazione predefinita.
+                    <li>Selezionata: la finestra di dialogo dello strumento di analisi verr&agrave; chiusa e verr&agrave; di nuovo visualizzato il sommario. Questa &egrave; l'impostazione predefinita.
                     </li>
                     <li>Deselezionata: la finestra di dialogo dello strumento di analisi rimarr&agrave; aperta e abilitata.   
                     </li>
@@ -127,7 +127,7 @@
         <div>
             <p>Specifica il sistema di coordinate che verr&agrave; utilizzato dall'analisi durante l'esecuzione dell'analisi di GeoAnalytics.   
             </p>
-            <p>Per GeoAnalytics, alcune analisi richiedono che l'elaborazione venga eseguita in un sistema di coordinate proiettato.   Tutti gli strumenti che hanno implementato il binning dei dati o delle unit&agrave; lineari richiedono un sistema di coordinate proiettato. 
+            <p>Per GeoAnalytics, alcune analisi richiedono che l'elaborazione venga eseguita in un sistema di coordinate proiettato. Tutti gli strumenti che hanno implementato il binning dei dati o delle unit&agrave; lineari richiedono un sistema di coordinate proiettato. 
             </p>
             <p>
                 <ul>
@@ -196,7 +196,7 @@
         <div><h2>Maschera</h2></div>
         <hr/>
         <div>
-            <p>Specifica un layer che sar&agrave; usato per definire l'area di interesse nell'analisi raster.   Solo le celle che rientrano nella maschera di analisi verranno considerate nell'operazione di analisi.
+            <p>Specifica un layer che sar&agrave; usato per definire l'area di interesse nell'analisi raster. Solo le celle che rientrano nella maschera di analisi verranno considerate nell'operazione di analisi.
             </p>
             <ul>
                 <li>La maschera pu&ograve; essere un raster o un feature layer.
@@ -216,7 +216,7 @@
         <div>
             <p>I risultati di GeoAnalytics possono essere memorizzati o in  ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS o in una condivisione file Big Data. 
             </p>
-            <p>Quando si memorizza un risultato in  ArcGIS Data Store, nella maggior parte dei casi i risultati dovrebbero essere memorizzati nello Spatiotemporal Data Store. Si tratta dell'impostazione predefinita. Di seguito sono riportate le ragioni per cui sarebbe preferibile memorizzare i risultati in un Data Store relazionale: 
+            <p>Quando si memorizza un risultato in  ArcGIS Data Store, nella maggior parte dei casi i risultati dovrebbero essere memorizzati nello Spatiotemporal Data Store. Questa &egrave; l'impostazione predefinita. Di seguito sono riportate le ragioni per cui sarebbe preferibile memorizzare i risultati in un Data Store relazionale: 
                 <ul>
                     <li>Per utilizzare i risultati nella collaborazione tra portali
                     </li>
@@ -245,11 +245,27 @@
             </p>
         </div>
     </div>
+    <div id="retryOnFailures">
+        <div><h2>Numero di nuovi tentativi con errori</h2></div>
+        <hr/>
+        <div>
+            <p>Definisce quanti tentativi lo stesso processo operativo tenter&agrave; di ripetere quando si verifica un errore casuale nell'elaborazione di un particolare lavoro. Il valore predefinito &egrave; 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Intervallo di riciclo dei processi operativi</h2></div>
+        <hr/>
+        <div>
+            <p>Definisce quante sezioni di immagini saranno elaborate prima di riavviare i processi operativi, al fine di prevenire potenziali errori nei processi a lungo termine. Il valore predefinito &egrave; 0.
+            </p>
+        </div>
+    </div>
     <div id="processorType">
         <div><h2>Tipo di processore</h2></div>
         <hr/>
         <div>
-            <p>Gli strumenti che rispettano l'ambiente  <b>Tipo di processore</b> consentono di scegliere dove e come elaborare i dati. &Egrave; possibile elaborare i dati usando la CPU o la GPU del computer del server.  Se l'ambiente di <b>Tipo di processore</b> &egrave; vuoto, lo strumento usa la CPU per elaborare i dati. Questa &egrave; l'impostazione predefinita.
+            <p>Gli strumenti che rispettano l'ambiente  <b>Tipo di processore</b> consentono di scegliere dove e come elaborare i dati. &Egrave; possibile elaborare i dati usando la CPU o la GPU del computer del server. Se l'ambiente di <b>Tipo di processore</b> &egrave; vuoto, lo strumento usa la CPU per elaborare i dati. Questa &egrave; l'impostazione predefinita.
             </p> 
             <p>L'elaborazione sulla CPU pu&ograve; essere svolta in parallelo su vari core e istanze, sottostando alla gestione del  <b>Fattore di elaborazione parallela</b>.
             </p>

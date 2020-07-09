@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Alegeți rasterul sau stratul tematic al amplasării obiectului spațial față de care să se calculeze distanța</h2></div>
+        <div><h2>Alegeți rasterul sau stratul tematic al locației obiectelor spațiale pentru a calcula distanța până la</h2></div>
         <hr/>
         <div>
             <p>Stratul tematic care definește sursele față de care va fi calculată distanța. Stratul tematic poate fi un serviciu de imagine sau un serviciu de obiecte spaţiale.
@@ -137,6 +137,47 @@
             <p>Un c&acirc;mp de pe stratul tematic sursă de intrare care deține valorile care definesc fiecare sursă. Poate fi un număr &icirc;ntreg sau un c&acirc;mp șir al setului de date sursă.
             </p>
             <p>Valoarea implicită este  <i>Value</i>. Dacă se folosește un serviciu de obiecte spaţiale și nu este disponibil niciun c&acirc;mp <i>Value</i>, atunci va fi folosit primul număr &icirc;ntreg sau c&acirc;mp șir. Dacă nu există c&acirc;mpuri valabile, va fi folosit c&acirc;mpul ObjectID field (de exemplu, OID sau FID, &icirc;n funcție de tipul de intrare a obiectului spațial).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Alegeți raster sau strat tematic de obiecte spaţiale pentru a reprezenta bariere</h2></div>
+        <hr/>
+        <div>
+            <p>Setul de date care definește barierele. 
+            </p>
+            <p>Pentru un servicii de imagini, tipul de intrare poate fi un număr &icirc;ntreg sau o virgulă mobilă. Orice celule care au o valoare (inclusiv zero) vor fi tratate ca o barieră, orice celule care sunt NoData nu vor fi tratate ca o barieră.
+            </p>
+            <p>Pentru un serviciu de obiecte spaţiale, intrarea poate fi un punct, o liniei sau un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda distanței</h2></div>
+        <hr/>
+        <div>
+            <p>Stabilește dacă distanța se calculează utiliz&acirc;nd o metodă &icirc;n plan (păm&acirc;nt plat) sau una geodezică (elipsoidă).
+            </p>
+            <ul>
+                <li> <b>&Icirc;n plan</b>&mdash;Calculul va fi realizat pe un plan plat proiectat folosind un sistem de coordonate cartezian  2D. Aceasta este metoda implicită.
+                    
+
+                </li>
+                <li> <b>Geodezic</b>&mdash;Distanțele sunt calculate pe elipsoidă. Prin urmare, indiferent de proiecția de intrare sau de ieșire, rezultatele nu se schimbă.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nume strat tematic direcție rezultat înapoi</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic cu grupuri care va fi creat &icirc;n  <b>Resursele Mele</b>. Trebuie să specificați un nume care nu există &icirc;n prezent &icirc;n <b>Resursele Mele</b>.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>
         </div>
     </div>

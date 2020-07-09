@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geographisch gewichtete Regression</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Workflow-Diagramm des Werkzeugs &quot;Geographisch gewichtete Regression&quot;"></h2>
+        <hr/>
+    <p>F&uuml;hrt eine geographisch gewichtete Regression (GWR) durch. Dies ist eine lokale Form der linearen Regression zur Modellierung r&auml;umlich variierender Beziehungen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Layer für die Analyse auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Layer mit Punkt-Features, die die abh&auml;ngigen und erkl&auml;renden Variablen enthalten.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Das zu modellierende Feld auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das numerische Feld mit den beobachteten Werten, die modelliert werden sollen, und dem Wertetyp, den Sie modellieren.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Die erklärenden Felder auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein oder mehrere Felder, die erkl&auml;rende Variablen (Felder) darstellen und die Vorhersage des Wertes unterst&uuml;tzen. Es werden nur numerische Felder angezeigt.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Festlegen, wie die Nachbarschaft bestimmt wird</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die verwendete Nachbarschaft als feste Entfernung konstruiert wird oder abh&auml;ngig von der Dichte der Features in der r&auml;umlichen Ausdehnung schwanken darf.
+                <ul>
+                    <li> <b>Anzahl der Nachbarn</b>: Die Nachbarschaftsgr&ouml;&szlig;e ist eine Funktion der angegebenen Anzahl der Nachbarn, die in die Berechnungen f&uuml;r jedes Feature einbezogen wird. Wo die Features dicht sind, ist die r&auml;umliche Ausdehnung der Nachbarschaft kleiner. Bei wenigen Features ist die r&auml;umliche Ausdehnung der Nachbarschaft gr&ouml;&szlig;er. W&auml;hlen Sie f&uuml;r diese Option die Anzahl der Nachbarn aus, die einbezogen werden sollen. Die Anzahl muss ein ganzzahliger Wert zwischen 2 und 5000 sein.
+                    </li>
+                    <li> <b>Entfernungsband</b>: Die Nachbarschaftsgr&ouml;&szlig;e ist eine konstante oder feste Entfernung f&uuml;r jedes Feature. W&auml;hlen Sie f&uuml;r diese Option das Entfernungsband aus, das die r&auml;umliche Ausdehnung der Nachbarschaft darstellt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Festlegen, wie benachbarte Features gewichtet werden</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt den Kernel-Typ an, mit dem die r&auml;umliche Gewichtung im Modell bereitgestellt wird. Der Kernel definiert, in welchem Zusammenhang die einzelnen Features mit anderen Features in ihrer Nachbarschaft stehen.
+                <ul>
+                    <li> <b>Biquadrat</b>: Einem Feature au&szlig;erhalb der angegebenen Nachbarschaft wird die Gewichtung&nbsp;0 zugewiesen. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Gau&szlig;</b>: Alle Features erhalten Gewichtungen, die Gewichtungen werden jedoch mit der Entfernung vom Ziel-Feature exponentiell kleiner.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Der Name des zu erstellenden Layers Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und dem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>Wenn Sie &uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> in ArcGIS Data Store (Big Data Store vom Typ &quot;relational&quot; oder &quot;spatiotemporal&quot;) schreiben, k&ouml;nnen Sie den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

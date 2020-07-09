@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Luo trendirasteri</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Luo trendirasteri"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valitse moniulotteinen kuva-aineistokarttataso trendin analysointia varten</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Analysoitavan moniulotteisen rasterin l&auml;ht&ouml;aineiston kuva-aineistokarttataso.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Valitse ulottuvuus, jonka mukaan muuttujan trendi analysoidaan</h2></div>
+        <hr/>
+        <div>
+            <p>Ulottuvuus, jota pitkin trendi poimitaan muuttujaa tai analyysissa valittuja muuttujia varten.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valitse muuttujat trendin analysointia varten</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttuja tai muuttujat, joille trendit lasketaan. Jos yht&auml;&auml;n muuttujaa ei ole m&auml;&auml;ritetty, ensimm&auml;inen moniulotteisen rasterin muuttuja analysoidaan.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Valitse sen viivan tyypin, jota käytetään muuttujan arvojen sovittamiseen ulottuvuudelle</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; sen viivan tyypin, jota k&auml;ytet&auml;&auml;n pikseliarvojen sovittamiseen ulottuvuudelle. 
+                <ul>
+                    <li> <b>Lineaarinen</b> &ndash; muuttujan pikseliarvot sovitetaan lineaariselle trendiviivalle. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Polynominen</b> &ndash; muuttujan pikseliarvot sovitetaan toisen asteen polynomin trendiviivalle.
+                    </li>
+                    <li> <b>Harmoninen</b> &ndash; muuttujan pikseliarvot sovitetaan harmoniselle trendiviivalle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Määritä harmonisen syklin pituus</h2></div>
+        <hr/>
+        <div>
+            <p>Mallinnettavan jaksottaisen vaihtelun pituus. T&auml;m&auml; parametri on pakollinen, kun trendiviivan tyypiksi on m&auml;&auml;ritetty  <b>Harmoninen</b>. Esimerkiksi lehtien vihreys vaihtelee usein voimakkaasti kerran vuoden aikana, joten syklin pituus on 1 vuosi. Jokatuntisella l&auml;mp&ouml;tila-aineistolla on yksi voimakas vaihtelusykli yhden p&auml;iv&auml;n aikana, joten syklin pituus on 1 p&auml;iv&auml;.
+            </p>
+            <p>Oletuspituus on 1 vuosi aineistolle, joka vaihtelee vuosisyklin mukaisesti.
+            </p>
+            <p>T&auml;m&auml; parametri sis&auml;llytet&auml;&auml;n trendianalyysiin vain, kun analysoitava ulottuvuus on aika ja trendiviivan tyypiksi on m&auml;&auml;ritetty  <b>Harmoninen</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Valitse harmonisen syklin pituuden aikayksikkö</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; aikayksik&ouml;n, jota k&auml;ytet&auml;&auml;n harmonisen syklin pituudessa.
+                <ul>
+                    <li> <b>P&auml;iv&auml;t</b> &ndash; harmonisen syklin pituuden yksikk&ouml; on p&auml;iv&auml;.
+                    </li>
+                    <li> <b>Vuodet</b> &ndash; harmonisen syklin pituuden yksikk&ouml; on vuosi. T&auml;m&auml; on oletusarvo.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>T&auml;m&auml; parametri sis&auml;llytet&auml;&auml;n trendianalyysiin vain, kun analysoitava ulottuvuus on aika ja trendiviivan tyypiksi on m&auml;&auml;ritetty  <b>Harmoninen</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Määritä harmonisen trendin sovituksen toistovälin numero</h2></div>
+        <hr/>
+        <div>
+            <p>Harmonisen trendin sovituksessa k&auml;ytett&auml;v&auml; toistov&auml;li. T&auml;m&auml; parametri m&auml;&auml;ritt&auml;&auml; syklien toistov&auml;lin vuodessa.
+            </p>
+            <p>Oletusarvo on 1 tai yksi harmoninen sykli per vuosi.
+            </p>
+            <p>T&auml;m&auml; parametri sis&auml;llytet&auml;&auml;n trendianalyysiin vain, kun analysoitava ulottuvuus on aika.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Määritä trendin sovituksessa käytettävä polynomin asteluku</h2></div>
+        <hr/>
+        <div>
+            <p>Polynomisen trendin sovituksessa k&auml;ytett&auml;v&auml; polynomin asteluku.
+            </p>
+            <p>T&auml;m&auml; parametri sis&auml;llytet&auml;&auml;n trendianalyysiin vain, kun analysoitava ulottuvuus on aika.
+            </p>
+            <p>Oletusarvo on 2 tai toisen asteen polynomi.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Valitse trendirasteriin sisällytettävät mallin tilastotiedot</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; ty&ouml;kalu sis&auml;lt&auml;&auml; kolmentyyppisi&auml; tilastotietoja trendin sovitusviivalle: keskim&auml;&auml;r&auml;isen neli&ouml;juuren virhe (RMSE), R^2-luvun yhteensopivuusasteen tilastotiedot (R^2-luku) ja trendiviivan kaltevuuskertoimen p-arvon tilastotiedot (Kaltevuuskertoimen P-arvo). Kullekin tilastotiedolle on vastaava valintaruutu, jonka avulla voi m&auml;&auml;ritt&auml;&auml;, lasketaanko se ja sis&auml;llytet&auml;&auml;nk&ouml; se yhdeksi useista kaistoista tulosaineiston trendirasteriin.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Valittu &ndash; RMSE lasketaan ja sis&auml;llytet&auml;&auml;n yhdeksi useista kaistoista tulosaineiston trendirasteriin. T&auml;m&auml; on oletusarvo.
+                            </li>
+                            <li>Ei valittu &ndash; RMSE-arvoa a ei lasketa.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R^2-luku
+                        </p>
+                        <ul>
+                            <li>Valittu &ndash; R^2-luvun arvo lasketaan ja sis&auml;llytet&auml;&auml;n yhdeksi useista kaistoista tulosaineiston trendirasteriin.
+                            </li>
+                            <li>Ei valittu &ndash; R^2-luvun arvoa ei lasketa. T&auml;m&auml; on oletusarvo.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Kaltevuuskertoimen p-arvo
+                        </p>
+                        <ul>
+                            <li>Valittu &ndash; p-arvo lasketaan ja sis&auml;llytet&auml;&auml;n yhdeksi useista kaistoista tulosaineiston trendirasteriin.
+                            </li>
+                            <li>Ei valittu &ndash; p-arvoa ei lasketa. T&auml;m&auml; on oletusarvo.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa.
+                <ul>
+                    <li>Valittu &ndash; Analyysi sis&auml;lt&auml;&auml; kaikki kelvolliset pikselit annetulla ulottuvuudella ja ohittaa kaikki NoData-pikselit. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Ei valittu &ndash; Analyysin tuloksena on NoData, jos pikselien arvona on NoData-arvoja annetulla ulottuvuudella.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

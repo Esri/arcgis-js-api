@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Zvolte vstupní vrstvu",addAVar:"Přidat proměnnou",distToNearest:"Vzdálenost k nejbližšímu",attrOfInterest:"Atribut nejbližšího",summaryNearby:"Shrnutí nejbližšího",summaryIntersecting:"Shrnutí průniku",distToNearestLabel:"Vzdálenost od středu buňky k nejbližšímu prvku ve vstupní vrstvě",attrOfInterestLabel:"Hodnota určeného pole od nejbližšího prvku ze vstupní vrstvy",summaryNearbyLabel:"Statistické údaje vypočtené ze všech prvků nalezených ve stanovené vzdálenosti od středu buňky",summaryIntersectingLabel:"Statistika vypočtená ze všech prvků, které protínají buňku",maxDistancefromCtr:"Maximální vzdálenost od středu buňky",fieldToIncude:"Pole, které má být zahrnuto",statstoCalculate:"Statistika, která se má vypočítat",summFeatuesWithin:"Souhrn prvků v rozmezí",layerChangeWarnMsg:"Přidané proměnné pro tuto vstupní vrstvu budou odstraněny, pokud se vstupní vrstva změní",validationErrorMsg:"Před přidáním nové proměnné opravte chyby v ověřování",atleastOneVarMsg:"Přidejte k této vybrané vrstvě alespoň jednu proměnnou"});

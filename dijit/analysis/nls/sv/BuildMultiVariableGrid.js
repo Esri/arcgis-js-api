@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({binsLabel:"Välj den typ av klass som ska användas för att skapa det multivariabla rutnätet",layersAttrLabel:"Välj indatalager och variabler som du vill ta med i rutnätet",itemDescription:"Geoobjektlager som genererats vid körning av Skapa multivariabelt rutnät.",itemTags:"Analysresultat, Skapa multivariabelt rutnät",itemSnippet:"Geoobjektlager som genererats av Skapa multivariabelt rutnät",addVariables:"Lägg till variabler"});

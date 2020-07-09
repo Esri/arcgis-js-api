@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ustvari večdimenzionalno anomalijo</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ustvari večdimenzionalno anomalijo"></h2>
+        <hr/>
+    <p>Ustvari večdimenzionalni rastrski sklop podatkov s pomočjo združevanja obstoječih večdimenzionalnih rastrskih spremenljivk vzdolž dimenzije.
+    </p>
+    <p>Anomalija je odklon opazovanja od njegovih standardnih on srednjih vrednosti in mediana.
+    </p>
+    <p>To orodje izračuna anomalije v času za eno ali več spremenljivk v večdimenzionalnem rasterju. Če imate poleg časovne dimenzije tudi brez-časovno dimenzijo, se bo anomalija izračunala na vsakem koraku v dodatni dimenziji.
+    </p>
+    <p>Na primer, če imate podatke o mesečni temperaturi oceana, ki se zbirajo na vsak 1 meter globine do 100 metrov, in želite izračunati anomalije temperature kot odklone od letne srednje vrednosti. To orodje bo določilo anomalije v temperaturi glede na letno srednjo vrednost, če nastavite  <b>Letno</b> kot <b>časovni interval za izračun srednje vrednosti</b>, in bo vrnilo vrednosti anomalije za vsako posamezno od 100 globin.
+    </p>
+    <p>To orodje podpira samo večdimenzionalni rastrski sklop podatkov, ki ima časovno dimenzijo.
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke sloja, ki so vidne znotraj trenutnega obsega mape. Če je možnost odkljukana, bodo analizirane spremenljivke celotnega sloja, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izberi večdimenzionalni slikovni sloj za ustvarjanje anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodni slikovni sloj večdimenzionalnega rastrskega sklopa podatkov.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izberi spremenljivko(-e) za katere bodo ustvarjene anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Spremenljivka ali spremenljivke za katere bodo izračunane anomalije. Če ni določena nobena spremenljivka, bodo analizirane vse spremenljivke s časovno dimenzijo.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Izberi metodo za ustvarjanje anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Določi metodo, ki bo uporabljena za izračun anomalije. 
+                <ul>
+                    <li> <b>Razlika od srednje vrednosti</b> &ndash; Izračunana bo razlika med vrednostjo piksla in srednjo vrednostjo tega piksla preko izsekov, ki jih opredeljuje interval. To je privzeta nastavitev.
+                    </li>
+                    <li> <b>Odstotna razlika od srednje vrednosti</b> &ndash; Izračunana bo odstotna razlika med vrednostjo piksla in srednjo vrednostjo tega piksla preko izsekov, ki jih opredeljuje interval.
+                    </li>
+                    <li> <b>Odstotna srednja vrednost</b> &ndash; Izračunan bo odstotek srednje vrednosti.
+                    </li>
+                    <li> <b>Z-vrednost</b> &ndash; Izračunana bo z-vrednost vsakega piksla. Z-vrednost 0 kaže, da je vrednost piksla identična srednji vrednosti. Z-vrednost 1 kaže, da je vrednost piksla za 1 standardni odklon od srednje vrednosti. Z-vrednost 2 kaže, da je vrednost piksla za 2 standardna odklona od srednje vrednosti in tako naprej.
+                    </li>
+                    <li> <b>Razlika od mediane</b> &ndash; Izračunana bo razlika med vrednostjo piksla in matematično mediano vrednosti tega piksla preko izsekov, ki jih opredeljuje interval.
+                    </li>
+                    <li> <b>Odstotna razlika od mediane</b> &ndash; Izračunana bo odstotna razlika med vrednostjo piksla in matematično mediano vrednosti tega piksla preko izsekov, ki jih opredeljuje interval.
+                    </li>
+                    <li> <b>Odstotna vrednost mediane</b> &ndash; Izračunan bo odstotek matematične mediane.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Matematične metode za izračun vrednosti anomalije so navedene spodaj. Anomalije je možno izračunati s pomočjo srednje vrednosti ali vrednosti mediane, kot definicije povprečja. Če je porazdelitev podatkov asimetrična, lahko na srednjo vrednost močno vplivajo osamelci, zato je za to vrsto podatkov morda ustreznej&scaron;a uporaba vrednosti mediane ali metoda z-vrednosti.
+            </p>
+            <p>
+                <ul>
+                    <li>Razlika od srednje vrednosti = x - &micro;
+
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrednost vrednosti tega piksla preko podanega časovnega intervala
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Odstotna razlika od srednje vrednosti = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrednost vrednosti tega piksla preko podanega časovnega intervala
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolutna vrednost razlike med vrednostjo in srednjo vrednostjo
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Odstotek srednje vrednosti = x - &micro;
+
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrednost vrednosti tega piksla preko podanega časovnega intervala
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Razlika od mediane = x - &micro;
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                            </li>
+                            <li>&micro; = mediana vrednosti tega piksla preko podanega časovnega intervala
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Odstotna razlika od mediane = |x - &micro;| / [(x + &micro;)/2]
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                            </li>
+                            <li>&micro; = mediana vrednosti tega piksla preko podanega časovnega intervala
+                            </li>
+                            <li>|x - &szlig;| = absolutna vrednost razlike med vrednostjo in mediano
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Odstotek mediane = x - &micro;
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                            </li>
+                            <li>&micro; = mediana vrednosti tega piksla preko podanega časovnega intervala
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-vrednost  = (x - &micro;) / S
+                        <ul>
+                            <li>x = vrednost piksla v izseku
+                            </li>
+                            <li>&micro; = srednja vrednost vrednosti tega piksla preko podanega časovnega intervala
+                            </li>
+                            <li>&micro; = standardni odklon vrednosti tega piksla preko podanega časovnega intervala
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Izberi časovni interval za izračun srednje vrednosti</h2></div>
+        <hr/>
+        <div>
+            <p>Določi časovni interval, ki bo uporabljena za izračun srednje vrednosti. 
+                <ul>
+                    <li> <b>Vse</b> &ndash; Izračuna srednjo vrednost po vseh izsekih za vsak piksel.
+                    </li>
+                    <li> <b>Letno</b>&ndash; Izračuna letno srednjo vrednost za vsak piksel.
+                    </li>
+                    <li> <b>Mesečno ponavljajoče</b> &ndash; Izračuna mesečno srednjo vrednost za vsak piksel.
+                    </li>
+                    <li> <b>Tedensko ponavljajoče</b> &ndash; Izračuna tedensko srednjo vrednost za vsak piksel.
+                    </li>
+                    <li> <b>Dnevno ponavljajoče</b> &ndash; Izračuna dnevno srednjo vrednost za vsak piksel.
+                    </li>
+                    <li> <b>Urno</b> &ndash; Izračuna urno srednjo vrednost za vsak piksel.
+                    </li>
+                    <li> <b>Zunanji raster</b> &ndash; Kot referenca je uporabljen sklop podatkov obstoječega rastra, ki vsebuje srednjo vrednost in vrednost mediane za vsak piksel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Izberi sloj slikovja kot referenčno sredstvo</h2></div>
+        <hr/>
+        <div>
+            <p>Določi sklop podatkov referenčnega rastra, ki vsebuje prej&scaron;njo izračunano srednjo vrednost za vsak piksel. Anomalije bodo izračunane v primerjavi s to srednjo vrednostjo.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Prezri manjkajoče vrednosti v izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti. 
+                <ul>
+                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    </li>
+                    <li>Odkljukano &ndash; Rezultat analize bo brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

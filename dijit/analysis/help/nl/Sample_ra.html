@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Voorbeeld</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Voorbeeld"></h2>
+        <hr/>
+    <p>Deze tool maakt een tabel of een puntobjectklasse die de waarden van cellen uit een raster, of een set rasters, voor gedefinieerde locaties laat zien. De locaties worden gedefinieerd door rastercellen, polygoonobjecten, polylijnobjecten of door een set van punten.
+    </p>
+    <p>Pixelwaarden worden uit alle ingevoerde rasters op elke locatie gehaald. Er wordt een tabel of een puntobjectklasse aangemaakt met velden die de pixelwaarden voor elk ingevoerde raster bevatten. Extra attributen uit de ingevoerde rastertabel worden niet opgenomen in de uitgevoerde tabel.
+    </p>
+    <p>Elke combinatie van rasters, zoals single band, multiband, multidimensionaal of multivariaat, kan worden gespecificeerd als invoerrasters. De structuur van de uitvoertabel verandert wanneer de invoerrasters multidimensionaal zijn. Wanneer een multibandraster als een van de invoerrasters wordt gespecificeerd, zullen alle banden in die invoer worden gebruikt. Om een selectie van banden uit een invoer multibandraster te verwerken, moet u eerst een nieuwe rasterdataset maken die is samengesteld uit die specifieke banden. Gebruik het resultaat in de lijst met invoerrasters.
+    </p>
+    <p>De invoerlocatie kan een raster- of objectklasse zijn.
+        <ul>
+            <li>Raster&mdash;Pixels met geldige waarden (geen NoData) worden gebruikt om de pixelwaarden uit alle invoerrasters te halen, en het midden van de pixel wordt gebruikt voor puntlocaties.
+            </li>
+            <li>Punt&mdash;Waarden worden op elke puntlocatie genomen.
+            </li>
+            <li>Polylijn of een polygoon&mdash;Waarden worden genomen op de polygoon of de polylijn-centroide. Als het invoerraster multidimensionaal is, worden de waarden geaggregeerd op basis van het type  <b>Statistiek</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>De invoerrasters worden genomen in hun oorspronkelijke ruimtelijke referentie en resolutie. Als er meerdere invoerrasters met verschillende ruimtelijke referenties zijn, worden de invoerlocaties geprojecteerd op de ruimtelijke referentie van elk afzonderlijk raster waaruit de waarden worden ge&euml;xtraheerd. De analyseomgeving wordt toegepast op de invoerlocaties, maar de invoerrasters zullen de analyseomgeving niet honoreren.
+    </p>
+    <p>Locaties die waarden uit NoData-cellen in het invoerraster halen, krijgen een &lt;null&gt; waarde in de uitvoertabel.
+    </p>
+    <p>Om een analyse uit te voeren met meerpuntsobjecten, moet u deze eerst converteren naar enkelpuntsobjecten voordat u ze in deze tool gebruikt.
+    </p>
+    <p>De ruimtelijke referentie van de x,y-co&ouml;rdinaten in de uitvoervoorbeeldtabel zijn dezelfde als de ingevoerde locatieraster of puntobjecten, tenzij ze zijn gespecificeerd in de omgeving van de omgeving <b>Uitvoerco&ouml;rdinatensysteem</b>. Als de ruimtelijke referentie van de ingevoerde locatiegegevens onbekend is, is ook de ruimtelijke referentie van de x,y-co&ouml;rdinaten onbekend.
+    </p>
+    <p>De ruimtelijke referentie van de uitgevoerde objectklasse is dezelfde als het ingevoerde locatieraster of puntobjecten, tenzij het is gespecificeerd in de omgeving  <b>Uitvoerco&ouml;rdinatensysteem</b>.
+    </p>
+    <p>De omgeving van de  <b>Parallelle verwerkingsfactor</b> wordt alleen ondersteund als de invoer een multidimensionaal raster is.
+    </p>
+    <p>Als de optie  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden variabelen of banden van de lagen die zichtbaar zijn in het huidige kaartextent geanalyseerd. Als de optie niet is aangevinkt, worden variabelen of banden van de volledige laag geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Kies de beeldlagen voor het voorbeeld</h2></div>
+        <hr/>
+        <div>
+            <p>Een enkele beeldlaag of een lijst met beeldlagen waarvan de waarden worden genomen op basis van de invoerlocatiegegevens.
+            </p>
+            <p>Om alle plakjes van een multidimensionale beeldlaag te nemen, moet het het enige invoerraster zijn.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Kies de locatielaag</h2></div>
+        <hr/>
+        <div>
+            <p>Gegevens ter identificatie van de posities die u wilt nemen.
+            </p>
+            <p>De invoerlocatie kan een raster, of een punt, polylijn of polygoonobjectklasse zijn.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Geef het unieke Id-veld op</h2></div>
+        <hr/>
+        <div>
+            <p>Een veld dat een andere waarde bevat voor elke locatie of object in het ingevoerde locatieraster of objectklasse.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Specificeer acquisitie-informatie van locatiegegevens (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Geef de tijd, diepte of andere acquisitiegegevens op die verband houden met de locatiecellen of objecten.
+            </p>
+            <p>Voor elke dimensie zijn er drie opties voor het specificeren van de acquisitie-informatie in verband met locatiecellen of objecten:
+
+                <ul>
+                    <li> <b>Enkel veld of waarde</b>&mdash;Als deze optie is geselecteerd, moet de volgende informatie worden gespecificeerd:
+                        <ul>
+                            <li> <b>Dimensieveld of waarde</b>&mdash;Selecteer een veld met dimensiewaarden uit de locatiegegevens, of voer een specifieke dimensiewaarde in.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>E&eacute;n veld of waarde met relatieve waarden</b>&mdash;Als deze optie is geselecteerd, moet de onderstaande informatie samen worden gespecificeerd om het bereik te defini&euml;ren waarbinnen de statistieken voor de variabelen zullen worden berekend:
+                        <ul>
+                            <li> <b>Dimensieveld of waarder</b>&mdash;Selecteer een veld met dimensiewaarden uit de locatiegegevens.
+                            </li>
+                            <li> <b>Relatieve waarde voor</b>&mdash;Specificeer een niet-negatief getal dat wordt gebruikt om af te trekken van <b>Dimensieveld of waarde</b> om het begin van een dimensiewaardebereik te defini&euml;ren. Deze waarde vertegenwoordigt het aantal dagen als de dimensie tijd is.
+                            </li>
+                            <li> <b>Relatieve waarde na</b>&mdash;Specificeer een niet-negatief getal dat wordt gebruikt om toe te voegen aan <b>Dimensieveld of waarde</b> om het einde van een dimensiewaardebereik te defini&euml;ren. Deze waarde vertegenwoordigt het aantal dagen als de dimensie tijd is.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Begin- en eindvelden of -waarden</b>&mdash;Als deze optie is geselecteerd, moet de onderstaande informatie samen worden gespecificeerd om het bereik te defini&euml;ren waarbinnen de statistieken voor de variabelen zullen worden berekend:
+                        <ul>
+                            <li> <b>Startveld of -waarden</b>&mdash;Selecteer een veld met dimensiewaarden uit de locatiegegevens of voer een specifieke dimensiewaarde in om het begin van een dimensiewaardebereik te defini&euml;ren.
+                            </li>
+                            <li> <b>Eindveld of -waarden</b>&mdash;Selecteer een veld met dimensiewaarden uit de locatiegegevens, of voer een specifieke dimensiewaarde in, om het einde van een dimensiewaardebereik te defini&euml;ren.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Geef een bufferafstandveld of waarde op</h2></div>
+        <hr/>
+        <div>
+            <p>De opgegeven afstand rond de locatiedata-objecten. De bufferafstand wordt gespecificeerd in de lineaire eenheden van de ruimtelijke referentie van het locatieobject. Als de functie een geografische referentie gebruikt, zal de eenheid graden zijn.
+            </p>
+            <p>Binnen dit buffergebied worden de statistieken berekend.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Kies statistiektype</h2></div>
+        <hr/>
+        <div>
+            <p>Het type statistieken om uit te rekenen.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>&mdash;Zoekt de minimumwaarde binnen het opgegeven bereik.
+                </li>
+                <li> <b>Maximum</b>&mdash;Zoekt de maximumwaarde binnen het opgegeven bereik.
+                </li>
+                <li> <b>Mediaan</b>&mdash;Zoekt de mediaanwaarde binnen het opgegeven bereik.
+                </li>
+                <li> <b>Gemiddelde</b>&mdash;Berekent het gemiddelde van het opgegeven bereik.
+                </li>
+                <li> <b>Som</b>&mdash;Berekent de som van de variabelen binnen het opgegeven bereik.
+                </li>
+                <li> <b>Meerderheid</b>&mdash;Zoekt de waarde die het meest voorkomt.
+                </li>
+                <li> <b>Minderheid</b>&mdash;Zoekt de waarde die het minst vaak voorkomt.
+                </li>
+                <li> <b>Standaardafwijking</b>&mdash;Berekent de standaardafwijking.
+                </li>
+                <li> <b>Percentiel</b>&mdash;Berekent een gedefinieerd percentiel binnen het opgegeven bereik.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentielwaarde</h2></div>
+        <hr/>
+        <div>
+            <p>Het percentiel dat moet worden berekend wanneer de parameter  <b>Statistiektype</b> is ingesteld op <b>Percentiel</b>.
+            </p>
+            <p>Deze waarde kan tussen de 0 en 100 liggen. De standaardwaarde is 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Specificeer de resamplingtechniek</h2></div>
+        <hr/>
+        <div>
+            <p>Resampling-algoritme dat wordt gebruikt bij het bemonsteren van een raster.
+            </p>
+            <ul>
+                <li> <b>Dichtstbijzijnd</b>&mdash;Dichtstbijzijnde buur. Dit is de standaardinstelling.
+                </li>
+                <li> <b>Bilineair</b>&mdash;Bilineaire interpolatie
+                </li>
+                <li> <b>Kubiek</b>&mdash;Kubieke convolutie
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Geef de uitvoerindeling op</h2></div>
+        <hr/>
+        <div>
+            <p>Geeft aan of de waarden in rijen of kolommen in de uitvoertabel staan. Deze optie is alleen beschikbaar als het ingevoerde multidimensionale raster &eacute;&eacute;n variabele en &eacute;&eacute;n dimensie bevat en elk stukje een enkelbandraster is.
+            </p>
+            <ul>
+                <li> <b>Genomen waarden staan in een rij</b>&mdash;Genomen waarden staan in aparte rijen in de uitvoertabel. Dit is de standaardinstelling.
+                </li>
+                <li> <b>Genomen waarden staan in een kolom</b>&mdash;Genomen waarden staan in aparte kolommen in de uitvoertabel. Deze optie is alleen geldig als het ingevoerde multidimensionale raster &eacute;&eacute;n variabele en &eacute;&eacute;n dimensie bevat en elk stukje een enkelbandraster is.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Geef het uitvoertype op</h2></div>
+        <hr/>
+        <div>
+            <p>Geeft aan of een puntobjectklasse met genomen waarden in de tabel moet worden gegenereerd, of alleen een tabel met genomen waarden.
+            </p>
+            <ul>
+                <li> <b>Tabel</b>&mdash;Genereert een tabel met genomen waarden. Dit is de standaardinstelling.
+                </li>
+                <li> <b>Objecten</b>&mdash;Genereert een puntobjectklasse met genomen waarden in een tabel. Als de ingevoerde locatieobjecten polylijnen of polygonen zijn, is elk punt in de uitvoer het middelpunt van elke geometrie van de invoerlocatieobjecten.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({distToNearest:"ระยะห่างไปยังที่ใกล้ที่สุด",attrOfInterest:"แอตทริบิวต์ไปยังที่ใกล้ที่สุด",summaryNearby:"สรุปสถานที่ใกล้เคียง",summaryIntersecting:"สรุปจุดตัดกัน",distToNearestLabel:"ระยะห่างจากศูนย์กลางของถังไปยังฟีเจอร์ที่ใกล้ที่สุดในชั้นข้อมูลอินพุต",attrOfInterestLabel:"ค่าของฟิลด์ที่ระบุจากฟีเจอร์ที่ใกล้ที่สุดจากชั้นข้อมูลอินพุต",summaryNearbyLabel:"สถิติที่คำนวณจากฟีเจอร์ทั้งหมดที่พบโดยมีระยะห่างของศูนย์กลางของถังที่ระบุ",summaryIntersectingLabel:"สถิติที่คำนวณจากฟีเจอร์ทั้งหมดที่ตัดกันถัง",maxDistancefromCtr:"ระยะห่างสูงสุดจากศูนย์กลางของถัง",fieldToIncude:"ฟิลด์ที่จะรวม",statstoCalculate:"สถิติที่จะคำนวณ",summFeatuesWithin:"สรุปฟีเจอร์ภายใน",smallMaxDistErrorMsg:"ระยะห่างสูงสุดจากศูนย์กลางของถังต้องมากกว่าขนาดของถัง",smallSumFeaturesErrorMsg:"ระยะห่างสูงสุดจากศูนย์กลางของถังต้องมากกว่าขนาดของถัง"});

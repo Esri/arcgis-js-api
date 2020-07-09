@@ -67,12 +67,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Kies het raster van de locatie van de objectlaag voor de berekening van de afstand naar</h2></div>
+        <div><h2>Kies het raster of de locatie van de objectlaag voor de berekening van de afstand naar</h2></div>
         <hr/>
         <div>
             <p>De laag die de bronnen definieert waarnaar de afstand wordt berekend. De laag kan van een imageservice of een featureservice zijn.
             </p>
-            <p>Voor een imageservice kan een invoertype kan een integer of floating-point zijn.
+            <p>Voor een imageservice kan een invoertype kan een geheel getal of zwevendekommagetal zijn.
             </p>
             <p>Voor een featureservice kan de invoer een punt, lijn of polygoon zijn.
             </p>
@@ -82,7 +82,7 @@
         <div><h2>Maximumafstand voor de berekening</h2></div>
         <hr/>
         <div>
-            <p>De maximale afstand moet worden berekend. Als u bijvoorbeeld een waarde van 10.000 meter opgeeft, wordt de Euclidische afstand berekend van de bronlocaties tot die waarde (afstand).
+            <p>De maximale afstand dat zal worden berekend. Als u bijvoorbeeld een waarde van 10.000 meter opgeeft, wordt de Euclidische afstand berekend van de bronlocaties tot die waarde (afstand).
             </p>
             <p>Als er geen waarde wordt opgegeven, wordt de afstand berekend in de gedefinieerde extent.
             </p>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output celgrootte</h2></div>
+        <div><h2>Uitvoer celgrootte</h2></div>
         <hr/>
         <div>
             <p>De celgrootte en de eenheid voor de uitvoerrasters.
@@ -134,9 +134,50 @@
         <div><h2>Kies een allocatieveld</h2></div>
         <hr/>
         <div>
-            <p>Een veld op de invoerbronlaag dat de waarden bevat die elke bron defini&euml;ren. Het kan een integer of stringveld van de brondataset zijn.
+            <p>Een veld op de invoerbronlaag dat de waarden bevat die elke bron defini&euml;ren. Het kan een geheel getal- of tekstveld van de brondataset zijn.
             </p>
-            <p>De standaard is  <i>Value</i>. Als een featureservice wordt gebruikt en er is geen <i>Value</i> veld beschikbaar, dan wordt de eerst beschikbare integer of stringveld gebruikt. Als er geen geldige velden bestaan, wordt het ObjectID-veld (bijvoorbeeld OID of FID gebruikt, afhankelijk van het type feature-invoer) gebruikt.
+            <p>De standaard is  <i>Value</i>. Als een featureservice wordt gebruikt en er is geen <i>Value</i> veld beschikbaar, dan wordt de eerst beschikbare integer of stringveld gebruikt. Als er geen geldige velden bestaan, wordt het ObjectID-veld (bijvoorbeeld OID of FID gebruikt, afhankelijk van het type invoerobject) gebruikt.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Kies raster- of objectlaag om barrières weer te geven</h2></div>
+        <hr/>
+        <div>
+            <p>De dataset die de barri&egrave;res definieert. 
+            </p>
+            <p>Voor een imageservice kan een invoertype kan een geheel getal of zwevendekommagetal zijn. Alle cellen met een waarde (inclusief nul) worden behandeld als een barri&egrave;re, cellen die NoData zijn, worden niet als een barri&egrave;re behandeld.
+            </p>
+            <p>Voor een featureservice kan de invoer een punt, lijn of polygoon zijn.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Afstandmethode</h2></div>
+        <hr/>
+        <div>
+            <p>Bepaalt of de afstand wordt berekend met behulp van een vlakke (vlakke aarde) of een geodetische (ellipsvormige) methode.
+            </p>
+            <ul>
+                <li> <b>Planair</b>&mdash;De berekening wordt uitgevoerd op een geprojecteerd vlak met behulp van een 2D Cartesiaans co&ouml;rdinatensysteem. Dit is de standaardmethode.
+                    
+
+                </li>
+                <li> <b>Geodesie</b>&mdash;Afstanden worden berekend op de ellipso&iuml;de. Daarom veranderen de resultaten niet, ongeacht de invoer- of uitvoerprojectie.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Resultaat richtingslaagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt. U dient een naam in te vullen die nog niet in <b>Mijn Content</b> bestaat.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
             </p>
         </div>
     </div>

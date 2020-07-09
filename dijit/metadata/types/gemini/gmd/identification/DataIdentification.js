@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Tabs","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/ObjectReference","../../../iso/gmd/citation/ResourceCitation","../../../iso/gmd/citation/ResourceContact","../../../iso/gmd/identification/ResourceDescription","../../../iso/gmd/identification/ResourceThumbnail","../../../iso/gmd/maintenance/MD_MaintenanceFrequencyCode","../../../inspire/gmd/identification/DataResourceKeywords","../../../inspire/gmd/constraints/ResourceConstraints","./DataResourceTab","dojo/text!./templates/DataIdentification.html","../../../../../../kernel"],(function(e,i,t,o,n,a,s,c,r,d,m,f,g,u,b,R,j,l){var p=e(o,{templateString:j});return t("extend-esri")&&i.setObject("dijit.metadata.types.gemini.gmd.identification.DataIdentification",p,l),p}));

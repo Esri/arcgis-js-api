@@ -63,9 +63,9 @@
         <div>
             <p>A camada de &aacute;rea que ir&aacute; ser usada para resumir elementos que caiam dentro das suas fronteiras. Pode optar por resumir no interior de uma camada de pol&iacute;gonos fornecida por si ou no interior de caixas quadradas ou hexagonais que s&atilde;o geradas quando a ferramenta &eacute; executada.  Ao gerar caixas, por  <b>Quadrado</b>, o n&uacute;mero e unidades especificados determinam a altura e o comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e unidades especificados determinam a dist&acirc;ncia entre lados paralelos.
             </p>
-            <p>An&aacute;lise utilizando caixas  <b>Quadrado</b> ou <b>Hex&aacute;gono</b> requerem um ambiente de coordenadas projetadas. Pode definir o <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas de processamento n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr An&aacute;lise</b> .
+            <p>A an&aacute;lise com caixas quadradas ou hexagonais requer um sistema de coordenadas projetado. Pode definir o sistema de coordenadas de processamento em Ambientes de An&aacute;lise. Se o seu sistema de coordenadas projetado n&atilde;o se encontrar definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando executar a an&aacute;lise .
             </p>
-            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -75,7 +75,7 @@
         <div>
             <p>Os elementos nesta camada que se enquadram nos limites dos elementos da camada de entrada, ou as caixas especificadas acima, ser&atilde;o resumidos. 
             </p>
-            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -85,7 +85,7 @@
         <div>
             <p>A dist&acirc;ncia utilizada para gerar caixas.  
             </p>
-            <p>Quer  <b>Tamanho de Caixa</b> para caixas, ou <b>Camada de &Aacute;rea</b> tem de ser definido.
+            <p>Quer  <b>Tamanho de Caixa</b> para caixas, como <b>Camada de &Aacute;rea</b> t&ecirc;m de ser definidos.
             </p>
         </div>
     </div>
@@ -104,9 +104,9 @@
                 </ul>
                 
             </p>
-            <p>Por exemplo, caso tenha dados que representam um ano no tempo e pretende analis&aacute;- los utilizando etapas semanais, defina  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>. 
+            <p>Por exemplo, caso tenha dados que representem um ano no tempo e pretenda analis&aacute;-los utilizando etapas semanais, defina  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>. 
             </p>
-            <p>Por exemplo, caso tenha dados que representam um ano no tempo e pretende analis&aacute;- los utilizando a primeira semana do m&ecirc;s, defina  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 m&ecirc;s</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>1 de janeiro, &agrave;s 12:00</code>.
+            <p>Por exemplo, caso tenha dados que representem um ano no tempo e pretenda analis&aacute;-los utilizando a primeira semana do m&ecirc;s, defina  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 m&ecirc;s</code> e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>1 de janeiro, &agrave;s 12:00</code>.
             </p>
         </div>
     </div>
@@ -114,9 +114,9 @@
         <div><h2>Intervalo temporal no qual agregar</h2></div>
         <hr/>
         <div>
-            <p>O intervalo temporal utilizado para gerar etapas temporais.  <b>Intervalo de etapa temporal</b> pode ser utilizado isoladamente ou com o par&acirc;metro <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> ou <b>Hora &agrave; qual alinhar as etapas temporais</b> ..
+            <p>O intervalo temporal utilizado para gerar etapas temporais.  <b>Intervalo de etapa temporal</b> pode ser utilizado isoladamente ou com o par&acirc;metro <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> ou <b>Hora &agrave; qual alinhar as etapas temporais</b>.
             </p>
-            <p>Por exemplo, caso pretenda criar etapas temporais que t&ecirc;m lugar todas as segundas-feiras entre as 9:00 e as 10:00, defina  <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>9:00:00 &agrave; segunda</code>.
+            <p>Por exemplo, caso pretenda criar etapas temporais que ocorram todas as segundas-feiras entre as 9:00 e as 10:00, defina  <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code> e <b>Hora &agrave; qual alinhar as etapas temporais</b> para as <code>9:00:00 de uma segunda-feira</code>.
             </p>
         </div>
     </div>
@@ -124,9 +124,9 @@
         <div><h2>Etapa temporal na qual agregar</h2></div>
         <hr/>
         <div>
-            <p> A etapa utilizada para calcular uma etapa temporal. <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> pode ser utilizado isoladamente, com <b>Intervalo de etapa temporal</b>, com <b>Hora de Refer&ecirc;ncia</b>, ou com ambos <b>Intervalo de etapa temporal</b> e <b>Hora &agrave; qual alinhar as etapas temporais</b>.
+            <p> A etapa utilizada para calcular uma etapa temporal. <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> pode ser utilizado isoladamente, com <b>Intervalo de etapa temporal</b>, com <b>Hora de Refer&ecirc;ncia</b>, ou com ambos &mdash; <b>Intervalo de etapa temporal</b> e <b>Hora &agrave; qual alinhar as etapas temporais</b>.
             </p>
-            <p> Por exemplo, caso pretenda criar etapas temporais que t&ecirc;m lugar todas as segundas-feiras entre as 9:00 e as 10:00, defina <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>9:00:00 a uma segunda-feira</code>.
+            <p>Por exemplo, caso pretenda criar etapas temporais que ocorram todas as segundas-feiras entre as 9:00 e as 10:00, defina  <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code> e <b>Hora &agrave; qual alinhar as etapas temporais</b> para as <code>9:00:00 de uma segunda-feira</code>.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@
         <div><h2>Tempo de referência utilizado para alinhar a divisão temporal</h2></div>
         <hr/>
         <div>
-            <p>A data e hora utilizadas para alinhar a divis&atilde;o temporal. A utiliza&ccedil;&atilde;o de etapas temporais ter&aacute; in&iacute;cio &agrave;s e continuar&aacute; de forma regressiva desde esta hora. Caso n&atilde;o seja selecionada qualquer hora de refer&ecirc;ncia, a etapa temporal ser&aacute; alinhada a 1 de janeiro de 1970. 
+            <p>A data e hora utilizadas para alinhar a divis&atilde;o temporal. A utiliza&ccedil;&atilde;o de etapas temporais ter&aacute; in&iacute;cio e continuar&aacute; de forma regressiva a partir desta hora. Caso n&atilde;o seja selecionada qualquer hora de refer&ecirc;ncia, a etapa temporal ser&aacute; alinhada a 1 de janeiro de 1970. 
             </p>
-            <p> Por exemplo, caso pretenda criar etapas temporais que t&ecirc;m lugar todas as segundas-feiras entre as 9:00 e as 10:00, defina <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>9:00:00 a uma segunda-feira</code>.
+            <p>Por exemplo, caso pretenda criar etapas temporais que ocorram todas as segundas-feiras entre as 9:00 e as 10:00, defina  <b>Intervalo de etapa temporal</b> para <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 semana</code> e <b>Hora &agrave; qual alinhar as etapas temporais</b> para as <code>9:00:00 de uma segunda-feira</code>.
             </p>
         </div>
     </div>
@@ -144,9 +144,9 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Pode calcular os seguintes em campos num&eacute;ricos:
+            <p>Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Pode calcular o seguinte em campos num&eacute;ricos: 
                 <ul>
-                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou em strings. A contagem de [null, 0, 2] &eacute; 2.
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou cadeias de caracteres. A contagem de [null, 0, 2] &eacute; 2.
                     </li>
                     <li>Soma&mdash;A soma dos valores num&eacute;ricos num campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
@@ -158,21 +158,21 @@
                     </li>
                     <li>Intervalo&mdash;o intervalo de um campo num&eacute;rico. Este &eacute; calculado subtraindo os valores m&iacute;nimos ao valor m&aacute;ximo. O intervalo de [0, null, 1] &eacute; 1. O intervalo de [null, 4] &eacute; 0.
                     </li>
-                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,0,1] &eacute; 0.25.
+                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0.25.
                     </li>
                     <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; null. O desvio padr&atilde;o de [null, 1,0,1,1] &eacute; 0.5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Pode calcular os seguintes em campos de string:
+            <p>Pode calcular o seguinte em campos de cadeias de caracteres:
                 <ul>
                     <li>Contagem&mdash;O n&uacute;mero de strings n&atilde;o-nulas.
                     </li>
                     <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
                     </li>
                 </ul>
-                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica. 
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica.
             </p>
             <p>Para al&eacute;m destas estat&iacute;sticas, ser&atilde;o calculadas estat&iacute;sticas proporcionais em todos os campos num&eacute;ricos.
                 <ul>
@@ -232,16 +232,16 @@
         <div><h2>Selecionar armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em   Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
+            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
                 <ul>
-                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-to-portal.
+                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-para-portal.
                     </li>
                     <li>Pode ativar funcionalidades de sincroniza&ccedil;&atilde;o com os seus resultados
                     </li>
                 </ul>
                 
             </p>
-            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics e necessite de tirar partido das funcionalidades de armazenamento de big data espaciotemporais para gerir grandes quantidades de dados.
+            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso espere um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data espa&ccedil;otemporal para gerir grandes quantidades de dados.
             </p>
         </div>
     </div>
@@ -249,7 +249,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada.  Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o gravados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados numa partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> O nome da camada que ser&aacute; criada. Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o guardados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados na partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
             <p>Ao escrever para   ArcGIS Data Store  (armazenamento relacional ou espaciotemporal de dados big data) utilizando a caixa suspensa  <b>Guardar resultado em</b> pode especificar o nome de uma pasta em <b>O Meu Conte&uacute;do</b>, onde ser&aacute; armazenado o resultado.
             </p>

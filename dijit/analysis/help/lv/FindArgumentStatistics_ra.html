@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Atrast argumenta statistiku</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Atrast argumenta statistiku"></h2>
+        <hr/>
+    <p>Izgūst dimensijas vērtību jeb joslas indeksu, pie kura katram pikselim multidimensiju vai vairāku joslu rastrā tiek panākta konkrēta statistika.
+    </p>
+    <p>Izmantojiet &scaron;o rīku, lai izgūtu dimensijas vērtību&nbsp;(piemēram, datumu, augstumu vai dziļumu), kādā tiek sasniegta konkrētā statistika rastru grupā multidimensiju rastra datu kopā. Varat arī sameklēt joslas numuru, kādā tiek sasniegta statistika vairāku joslu rastrā.
+    </p>
+    <p>Piemēram: iespējams, ka vēlēsities noskaidrot mēnesi, kādā katrs pikselis sasniedza augstāko jūras virsmas temperatūru 30&nbsp;gadu laikā, kop&scaron; tiek ievākti dati. Cits piemērs: jums ir pieejams astoņu joslu tālizpētes attēls, un vēlaties noskaidrot joslu, kurā katram pikselim tika sasniegta minimālā atstaro&scaron;anas vērtība.
+    </p>
+    <p>Ja ir atzīmēta iespēja  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tā slāņa mainīgie vai joslas, kas ir redzamas pa&scaron;reizējā kartes pārklājumā. Ja &scaron;ī iespēja nav atzīmēta, tiks analizēti pilna slāņa mainīgie vai joslas, pat ja tās atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Izvēlieties analizējamo multidimensiju vai vairāku joslu attēlu slāni</h2></div>
+        <hr/>
+        <div>
+            <p>Analizējamais ievades multidimensiju vai vairāku joslu rastrs.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Izvēlēties dimensiju, no kuras tiks izgūta statistika</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensija, no kuras tiks izgūta statistika. Ja ievades rastrs nav multidimensiju rastrs, &scaron;is parametrs nav nepiecie&scaron;ams.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izvēlēties analizējamos mainīgos</h2></div>
+        <hr/>
+        <div>
+            <p>Analizējams mainīgais vai mainīgie. Ja ievades rastrs nav multidimensiju rastrs, vairāku joslu rastra pikseļu vērtības tiks uzskatītas par mainīgo. Ja ievades rastrs ir multidimensiju rastrs, un nav norādīts mainīgais, tiks analizēti visi mainīgie atlasītajā laika dimensijā.
+            </p>
+            <p>Piemēram: lai sameklētu gadus, kuros temperatūras vērtības bija vislielākās, norādiet temperatūru kā analizējamo mainīgo. Ja nenorādīsit nevienu mainīgo un jums ir gan temperatūra, gan dienas nokri&scaron;ņu mainīgās vērtības, tiks analizēti abi mainīgie un izvades multidimensiju rastrā būt iekļauti abi mainīgie.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Izvēlēties statistikas veidu</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda statistiku, no kuras izgūt mainīgo vai mainīgos eso&scaron;ajā dimensijā. 
+            </p>
+            <ul>
+                <li> <b>Minimuma arguments</b>&nbsp;&mdash; tiks izgūta dimensijas vērtība, pie kādas tiek sasniegta minimālā mainīgā vērtība. Tā ir noklusējuma vērtība.
+                </li>
+                <li> <b>Maksimums arguments</b>&nbsp;&mdash; tiks izgūta dimensijas vērtība, pie kādas tiek sasniegta maksimālā mainīgā vērtība.
+                </li>
+                <li> <b>Mediānas arguments</b>&nbsp;&mdash; tiks izgūta dimensijas vērtība, pie kādas tiek sasniegta mainīgā mediānas vērtība.
+                </li>
+                <li> <b>Ilguma arguments</b>&nbsp;&mdash; garākās dimensijas ilgums, pie kuras mainīgā vērtības atrodas starp minimālajām un maksimālajām vērtībām.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Norādīt vairāku gadījumu vērtību</h2></div>
+        <hr/>
+        <div>
+            <p>Pikseļa vērtība, ko izmantot, lai norādītu, ka vairāk kā vienu reizi ievades rastra datu kopā ir sasniegta dotā argumenta statistika. Ja netiek norādīts, pikseļa vērtība būs dimensijas vērtība tajā brīdī, kad pirmo reizi tika sasniegta argumenta statistika.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Norādīt minimālo vērtību</h2></div>
+        <hr/>
+        <div>
+            <p>Minimālā mainīgā vērtība, ko izmantot ilguma izgū&scaron;anai.
+            </p>
+            <p>&Scaron;is parametrs ir nepiecie&scaron;ams, kad opcija  <b>Ilgums</b> ir atlasīta kā statistikas veids.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Norādīt maksimālo vērtību</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimālā mainīgā vērtība, ko izmantot ilguma izgū&scaron;anai.
+            </p>
+            <p>&Scaron;ī darbība ir nepiecie&scaron;ama, kad opcija  <b>Ilgums</b> ir atlasīta kā statistikas veids.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Izvēlēties dimensijas aprakstu</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, kā no dimensijas tiks izgūta statistika. 
+                <ul>
+                    <li> <b>Visi</b>&nbsp;&mdash; statistika tiks izgūta no visām dimensijām. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Intervāla atslēgvārds</b>&nbsp;&mdash; statistika tiks izgūta no laika dimensijas saskaņā ar intervāla atslēgvārdu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Izvēlēties atslēgvārda intervālu</h2></div>
+        <hr/>
+        <div>
+            <p>Laika vienība, no kuras tiks izgūta statistika.
+            </p>
+            <p>Piemēram: jums ir pieejami piecu gadu jūras virsmas temperatūras dati, un vēlaties noskaidrot gadu, kurā tika novērota maksimālā temperatūra. &Scaron;ajā darbībā iestatiet  <b>Maksimuma arguments</b> kā statistikas veidu, <b>Intervāla atslēgvārds</b> kā dimensijas apzīmējumu un <b>Katru gadu</b> kā atslēgvārda intervālu.
+            </p>
+            <p>Cits paņēmiens: ja vēlaties noskaidrot mēnesi, kurā tika nepārtraukti novērota maksimālā temperatūra, &scaron;ajā darbībā iestatiet  <b>Maksimuma arguments</b> kā statistikas veidu, <b>Intervāla atslēgvārds</b> kā dimensijas apzīmējumu un <b>Periodiski katru mēnesi</b> kā atslēgvārda intervālu. &Scaron;ādi tiks ģenerēts rastrs, kurā katrā pikselī būs mēnesis, kādā statistika tiks sasniegta piecu gadu laikā&nbsp;(piemēram, 08/18/2018, 08/25/2016, 08/07/2013).
+            </p>
+            <p>&Scaron;ī darbība ir nepiecie&scaron;ama, kad opcija  <b>StdTime</b> ir iestatīta kā dimensija, no kuras tiks izgūta statistika, un ir atlasīts <b>Intervāla atslēgvārds</b>, lai norādītu, kā no laika dimensijas tiks izgūta statistika.
+                <ul>
+                    <li> <b>Periodiski katru dienu</b>&nbsp;&mdash; statistika tiks izgūta pa dienām.
+                    </li>
+                    <li> <b>Periodiski katru nedēļu</b>&nbsp;&mdash; statistika tiks izgūta pa nedēļām.
+                    </li>
+                    <li> <b>Periodiski katru mēnesi</b>&nbsp;&mdash; statistika tiks izgūta pa mēne&scaron;iem.
+                    </li>
+                    <li> <b>Periodiski katru ceturksni</b>&nbsp;&mdash; statistika tiks izgūta pa ceturk&scaron;ņiem.
+                    </li>
+                    <li> <b>Katru stundu</b>&nbsp;&mdash; statistika tiks izgūta par to stundu, kad tika sasniegta statistika.
+                    </li>
+                    <li> <b>Katru dienu</b>&nbsp;&mdash; statistika tiks izgūta par to dienu, kad tika sasniegta statistika.
+                    </li>
+                    <li> <b>Katru nedēļu</b>&nbsp;&mdash; statistika tiks izgūta par to nedēļu, kad tika sasniegta statistika.
+                    </li>
+                    <li> <b>Katru mēnesi</b>&nbsp;&mdash; statistika tiks izgūta par to mēnesi, kad tika sasniegta statistika.
+                    </li>
+                    <li> <b>Katru ceturksni</b>&nbsp;&mdash; statistika tiks izgūta par to ceturksni, kad tika sasniegta statistika.
+                    </li>
+                    <li> <b>Katru gadu</b>&nbsp;&mdash; statistika tiks izgūta par to gadu, kad tika sasniegta statistika.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorēt aprēķinā trūkstošās vērtības</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības.
+                <ul>
+                    <li>Ja lodziņ&scaron; ir atzīmēts, analīze ietver visus derīgos pikseļus konkrētajā dimensijā un ignorē jebkurus NoData pikseļus. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li>Ja lodziņ&scaron; nav atzīmēts, analīze uzrādīs NoData, ja konkrētajā dimensijā pikselim ir kāda NoData vērtība.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

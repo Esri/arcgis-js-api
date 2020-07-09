@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Convert Raster to Feature</h2><p/>
-        <h2><img src="./images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Convert Raster to Feature tool"></h2>
+        <h2>Convert Raster To Feature</h2><p/>
+        <h2><img src="./images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Convert Raster To Feature tool"></h2>
         <hr/>
     <p>This tool converts a raster to a feature dataset, as points, lines, or polygons.
     </p>
@@ -55,11 +55,11 @@
     <p>If  <b>Use current map extent</b> is checked, only the raster cells that are visible within the current map extent will be converted. If unchecked, all cells in the raster layer will be converted, even if they are outside the current map extent. Take note of this if the raster layer is large or has a very high resolution.
     </p>
     <p>Use cases for this tool include the following:
- 
+
         <ul>
             <li>Create polygon features from a land-use classification raster.
                 
- 
+
             </li>
             <li>Streams identified in a DEM can be converted to line features.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>A DEM can be converted to point features that can be used in a nonraster-based workflow.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Choose field</h2></div>
         <hr/>
         <div>
-            <p>Provide a field that specifies which value will be used for the conversion.
+            <p>A field that specifies the conversion value.
             </p>
             <p>It can be any integer or text value.
             </p>
             <p>A field containing floating-point values can only be used if the output is to a point dataset.
             </p>
-            <p>The default choice is to use the  <i>Value</i> field, which contains the value in each raster cell.
+            <p>The default is the  <i>Value</i> field, which contains the value in each raster cell.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Choose output type</h2></div>
         <hr/>
         <div>
-            <p>Choose the output type between point, line, or polygon.
+            <p>Specifies the output type.
             </p>
             <ul>
-                <li>Point&mdash;The raster will be converted to a point dataset.
+                <li> <b>Point</b>&mdash;The raster will be converted to a point dataset. This is the default.
                     
  
                 </li>
-                <li>Line&mdash;The raster will be converted to a line feature dataset.
+                <li> <b>Line</b>&mdash;The raster will be converted to a line feature dataset.
                     
  
                 </li>
-                <li>Polygon&mdash;The raster will be converted to a polygon feature dataset.
+                <li> <b>Polygon</b>&mdash;The raster will be converted to a polygon feature dataset.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Simplify lines or polygons</h2></div>
         <hr/>
         <div>
-            <p>Specify if the features should be simplified.
+            <p>Specifies whether lines or polygons will be simplified (smoothed). The smoothing is done in such a way that the line contains a minimum number of segments while remaining as close as possible to the original raster cell edges.
             </p>
-            <p>If checked (the default), the line or polygon features will be smoothed out to produce a more generalized result. If this option is unchecked, the linear features will follow the cell boundaries of the raster dataset.
+            <ul>
+                <li>Checked&mdash;The line or polygon features will be smoothed to produce a more generalized result. This is the default.
+                    
+
+                </li>
+                <li>Unchecked&mdash;The line or polygon features will follow the cell boundaries of the raster dataset.
+                    
+
+                </li>
+            </ul>
+            
+            <p>This parameter is only supported if the output type is line or polygon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Create multipart features</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether the output polygons will consist of single-part or multipart features.
+            </p>
+            <ul>
+                <li>Checked&mdash;Multipart features will be created based on polygons that have the same value.
+                    
+
+                </li>
+                <li>Unchecked&mdash;Individual (single-part) features will be created for each polygon. This is the default.
+                    
+
+                </li>
+            </ul>
+            
+            <p>This parameter is only supported if the output type is polygon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maximum vertices per polygon feature</h2></div>
+        <hr/>
+        <div>
+            <p>The vertex limit used to subdivide a polygon into smaller polygons.
+            </p>
+            <p>If left empty, the output polygons will not be split. This is the default.
+            </p>
+            <p>This parameter is only supported if the output type is polygon.
             </p>
         </div>
     </div>

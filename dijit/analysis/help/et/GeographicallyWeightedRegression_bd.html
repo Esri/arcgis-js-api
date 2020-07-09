@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geograafiliselt kaalutud regressioon</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Geograafiliselt kaalutud regressiooni t&ouml;&ouml;voo skeem"></h2>
+        <hr/>
+    <p>Teostab geograafilist kaalutud regressiooni (GWR), mis on ruumiliselt varieeruvate seoste modelleerimiseks kasutatav kohalik lineaarregressiooni vorm.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valige kiht analüüsimiseks</h2></div>
+        <hr/>
+        <div>
+            <p>Kiht sisaldab punktobjekte, mis sisaldavad s&otilde;ltuvaid ja selgitavaid muutujaid.
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti. Valikuliselt v&otilde;ite rakendada filtrit oma sisendkihile v&otilde;i valikut kaardile lisatud majutatud kihtidele. Filtreid ja valikuid rakendatakse ainult anal&uuml;&uuml;siks. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Mudeli välja valimine</h2></div>
+        <hr/>
+        <div>
+            <p>Numbriv&auml;li sisaldab j&auml;lgitavaid v&auml;&auml;rtusi, mida modelleeritakse, ja modelleeritava v&auml;&auml;rtuse t&uuml;&uuml;pi.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Selgitavate väljade valimine</h2></div>
+        <hr/>
+        <div>
+            <p>&Uuml;ks v&auml;li v&otilde;i mitu v&auml;lja, mis v&auml;ljendavad selgitavaid muutujaid (v&auml;lju), mis aitavad ennustada v&auml;&auml;rtust. N&auml;htavad on ainult numbrilised v&auml;ljad.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Valige piirkonna väljaselgitamise viis</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas kasutatav piirkond on rajatud kindla vahemaana v&otilde;i saab see objektide tihedusest s&otilde;ltuvalt ruumilises ulatuses varieeruda.
+                <ul>
+                    <li> <b>Naabrite arv</b> &ndash; piirkonna suurus on m&auml;&auml;ratud naabrite arvuga objekt, mis kaasatakse iga objekti arvutamisel. Piirkonna ruumiline ulatus on v&auml;iksem seal, kus ruumilised objektid on tihedalt. Piirkonna ruumiline ulatus on suurem, kus objektid on hajutatult. Selle suvandi valimisel m&auml;&auml;rake naabrite arv, mida soovite kaasata. &Uuml;ksuste maksimaalne arv peab olema t&auml;isarv 2 ja 5000 vahel
+                    </li>
+                    <li> <b>Vahemaa</b> &ndash; piirkonna suurus on iga objekti p&uuml;siv v&otilde;i fikseeritud vahemaa. Selle suvandi valimisel m&auml;&auml;rake piirkonna ruumilist ulatust esindav vahemaa riba.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Valige, kuidas naabruses olevaid objekte kaalutakse</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra tuuma t&uuml;&uuml;bi, mida kasutatakse ruumilisel kaalumisel selles mudelis. Tuum m&auml;&auml;ratleb selle, kuidas iga objekt on seostatud teiste objektidega selles piirkonnas.
+                <ul>
+                    <li> <b>Ruutkeskmine ruudus</b> &ndash; igale m&auml;&auml;ratud piirkonnast v&auml;ljapoole j&auml;&auml;va objekti kaaluks m&auml;&auml;ratakse 0. See on vaikimisi valik.
+                    </li>
+                    <li> <b>Gaussi</b> &ndash; igale objektile m&auml;&auml;ratakse kaal, kuid see kaal muutub eksponentsiaalselt v&auml;iksemaks vastavalt sellele, mida kaugemale see j&auml;&auml;b sihtm&auml;rgi objektist.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Loodava kihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale ja lisatakse selle manifestifailile. Seda ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kui salvestate admelattu   ArcGIS Data Store (relatsioonilisse v&otilde;i ajalisruumilisse andmelattu), kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Valim</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Valim"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist loob tabeli v&otilde;i punktobjektiklassi, mis n&auml;itab rastri v&otilde;i rastrikogumi pikslite v&auml;&auml;rtusi m&auml;&auml;ratud asukohtade jaoks. Asukohad m&auml;&auml;ratakse rastri pikslite, pol&uuml;giooniobjektide, pol&uuml;jooneobjektide v&otilde;i punktikogumi j&auml;rgi.
+    </p>
+    <p>Piksli v&auml;&auml;rtused ekstraktitakse k&otilde;igist sisendrastritest igas asukohas. Tabeli v&otilde;i punktiobjektiklass luuakse v&auml;ljadega, mis sisaldavad iga sisendrastri piksliv&auml;&auml;rtusi. Sisendrastritabeli t&auml;iendavadi atribuute v&auml;ljundtabelisse ei h&otilde;lmata.
+    </p>
+    <p>Sisendrastritena saab m&auml;&auml;rata mis tahes rastrite kombinatsiooni (nt &uuml;he ribaga, mitme ribaga, mitmem&otilde;&otilde;tmeline v&otilde;i mitme muutujaga). Kui sisendrastrid on mitmem&otilde;&otilde;tmelised, siis v&auml;ljundtabeli struktuur muutub. Kui &uuml;he sisendrastrina m&auml;&auml;ratakse mitmeribaline raster, kasutatakse selle sisendi k&otilde;iki ribasid. Mitme ribaga sisendrastri ribade valiku t&ouml;&ouml;tlemiseks looge esmalt neist konkreetsetest ribadest koosnev uus rasterandmekogum. Kasutage tulemit sisendrastrite loendis.
+    </p>
+    <p>Sisendasukoht v&otilde;ib olla raster v&otilde;i punktobjekt.
+        <ul>
+            <li>Raster &ndash; k&otilde;igist sisendrastritest ekstraktitakse piksliv&auml;&auml;rtused, kasutatades piksleid, mis sisaldavad kehtivaid v&auml;&auml;rtusi (mitte NoData), ja piksli keskkohta kasutatakse punkti asukohtade jaoks.
+            </li>
+            <li>Punkt &ndash; v&auml;&auml;rtused saadakse valimisse punktide asukohast.
+            </li>
+            <li>Pol&uuml;joon v&otilde;i pol&uuml;goon &ndash; v&auml;&auml;rtused saadakse valimisse pol&uuml;joone v&otilde;i pol&uuml;gooni tsentrist. Kui sisendraster on mitmem&otilde;&otilde;tmeline, agregeeritakse v&auml;&auml;rtused  <b>andmete</b> t&uuml;&uuml;bi alusel.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Sisendrastrite valim moodustatakse nende loomulikku ruumilist v&otilde;rdlust ja eraldusv&otilde;imet rakendades. Kui esineb mitu erinevate ruumiliste referentsidega sisendrastrit, projitseeritakse sisendasukohad iga &uuml;ksiku rastri ruumilistele referentsidele, millest v&auml;&auml;rtused ekstraktitakse. Sisendasukohtadele rakendatakse anal&uuml;&uuml;sikeskkond, kuid sisendrastrid ei hakka anal&uuml;&uuml;sikeskkonda j&auml;rgima.
+    </p>
+    <p>Asukohad, mis ekstraktivad v&auml;&auml;rtused sisendrastri NoData pikslitest, saavad v&auml;ljundtabelis v&auml;&auml;rtuse &lt;null&gt;.
+    </p>
+    <p>Mitme punktiga objektide anal&uuml;&uuml;simiseks tuleb need enne selles t&ouml;&ouml;riistas kasutamist esmalt teisendada &uuml;he punktiga objektideks
+    </p>
+    <p>V&auml;ljundi valimi tabeli X- ja Y-koordinaadite ruumilised referentsid on samad, mis sisendi asukoha rasteril v&otilde;i punktobjektidel, kui seda pole m&auml;&auml;ratud  <b>V&auml;ljundi koordinaats&uuml;steemi</b> keskkonnas. Kui sisendasukohtade ruumilisi referentse ei teata, siis ei teata ka x- ja y-koordinaatide ruumilisi referentse.
+    </p>
+    <p>V&auml;ljundi objektiklassi ruumilised referentsid on samad, mis sisendasukoha rasteril v&otilde;i punktobjektidel, kui seda pole m&auml;&auml;ratud  <b>V&auml;ljundi koordinaats&uuml;steemi</b> keskkonnas.
+    </p>
+    <p> <b>Paralleelt&ouml;&ouml;tluse teguri</b> keskkonda toetatakse ainult siis, kui sisendiks on mitmem&otilde;&otilde;tmeline raster.
+    </p>
+    <p>Kui ruut  <b>Kasuta praeguse kaardi kuvaulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse kihi muutujaid v&otilde;i ribasid, mis on praeguse kaardi kuvaulatuses n&auml;htavad. Kui ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ieliku kihi muutujaid v&otilde;i ribasid ka siis, kui neid pole praeguse kaardi kuvaulatuses n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Vali valimi jaoks pildikiht (kihid)</h2></div>
+        <hr/>
+        <div>
+            <p>&Uuml;ksik pildikiht v&otilde;i mitu pildikihti, mille v&auml;&auml;rtused v&otilde;etakse valimisse sisendasukohaandmete p&otilde;hjal.
+            </p>
+            <p>Mitmem&otilde;&otilde;tmelise pildikihi k&otilde;igi kihtide valimisse h&otilde;lmamiseks peab see olema ainus sisendraster.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Vali asukohakiht:</h2></div>
+        <hr/>
+        <div>
+            <p>Andmed, mis m&auml;&auml;ravad valimi jaoks asukohad.
+            </p>
+            <p>Sisendasukoht v&otilde;ib olla raster v&otilde;i punkt-, pol&uuml;joon- v&otilde;i pol&uuml;goonobjektiklass.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Määra unikaalne ID väli</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;li, mis sisaldab erinevat v&auml;&auml;rtust iga asukoha v&otilde;i objekti kohta sisendiks olevas asukoharastris v&otilde;i objektiklassis
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Määra asukohaandmete hankimise teave (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake aeg, s&uuml;gavus v&otilde;i muu asukohapikslite- v&otilde;i objektidega seotud andmete hankimise teave.
+            </p>
+            <p>Iga dimensiooni puhul on asukohapikslite v&otilde;i -objektidega seotud andmete hankimise teabe m&auml;&auml;ramiseks kolm v&otilde;imalust.
+
+                <ul>
+                    <li> <b>&Uuml;ksik v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; kui see v&otilde;imalus on valitud, tuleb m&auml;&auml;rata j&auml;rgnev teave.
+                        <ul>
+                            <li> <b>Dimensiooni v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; valige asukohaandmetest dimensioonv&auml;&auml;rtuste v&auml;li v&otilde;i sisestage kindel dimensiooniv&auml;&auml;rtus.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>&Uuml;ksik v&auml;li v&otilde;i v&auml;&auml;rtus suhteliste v&auml;&auml;rtustega</b> &ndash; kui see v&otilde;imalus on valitud, tuleb m&auml;&auml;rata alltoodud teave, et m&auml;&auml;rata vahemik, mille piires andmed muutujate jaoks arvutatakse.
+                        <ul>
+                            <li> <b>Dimensiooni v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; valige asukohaandmetest dimensioonv&auml;&auml;rtuste v&auml;li.
+                            </li>
+                            <li> <b>Suhteline v&auml;&auml;rtus enne</b> &ndash; valige mittenegatiivne number, mis lahutatakse <b>dimensiooni v&auml;lja v&otilde;i v&auml;&auml;rtuse</b> n&auml;itajast, et m&auml;&auml;rata dimensiooni v&auml;&auml;rtuse vahemiku algus. See v&auml;&auml;rtus t&auml;histab p&auml;evade arvu, kui dimensioon on aeg.
+                            </li>
+                            <li> <b>Suhteline v&auml;&auml;rtus p&auml;rast</b> &ndash; valige mittenegatiivne number, mis lisatakse <b>dimensiooni v&auml;lja v&otilde;i v&auml;&auml;rtuse</b> n&auml;itajale, et m&auml;&auml;rata dimensiooni v&auml;&auml;rtuse vahemiku l&otilde;pp. See v&auml;&auml;rtus t&auml;histab p&auml;evade arvu, kui dimensioon on aeg.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Alguse ja l&otilde;pu v&auml;ljad v&otilde;i v&auml;&auml;rtused</b> &ndash; kui see v&otilde;imalus on valitud, tuleb m&auml;&auml;rata alltoodud teave, et m&auml;&auml;rata vahemik, mille piires andmed muutujate jaoks arvutatakse.
+                        <ul>
+                            <li> <b>Alguse v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; valige asukohaandmetest dimensioonv&auml;&auml;rtuste v&auml;li v&otilde;i sisestage kindel dimensiooniv&auml;&auml;rtus, et m&auml;&auml;rata dimensiooni v&auml;&auml;rtuse vahemiku algus.
+                            </li>
+                            <li> <b>L&otilde;pu v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; valige asukohaandmetest dimensioonv&auml;&auml;rtuste v&auml;li v&otilde;i sisestage kindel dimensiooniv&auml;&auml;rtus, et m&auml;&auml;rata dimensiooni v&auml;&auml;rtuse vahemiku l&otilde;pp.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Määra puhvrina kasutatava vahemaa väli või väärtus</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ratud vahemaa asukohaandmete objektide &uuml;mber. Puhvervahemaa m&auml;&auml;ratletakse asukohaobjektide ruumiliste referentsi lineaarsetes &uuml;hikutes. Kui objekt kasutab geograafilist referentss&uuml;steemi, kasutatakse &uuml;hikutena kraade.
+            </p>
+            <p>Andmed arvutatakse selle puhverala piires.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Vali andmete tüüp</h2></div>
+        <hr/>
+        <div>
+            <p>Arvutatavate andmete t&uuml;&uuml;p.
+            </p>
+            <ul>
+                <li> <b>Miinimum</b> &ndash; leiab m&auml;&auml;ratud vahemiku minimaalse v&auml;&auml;rtuse.
+                </li>
+                <li> <b>Maksimum</b> &ndash; leiab m&auml;&auml;ratud vahemiku maksimaalse v&auml;&auml;rtuse.
+                </li>
+                <li> <b>Mediaan</b> &ndash; leiab m&auml;&auml;ratud vahemiku mediaani v&auml;&auml;rtuse.
+                </li>
+                <li> <b>Keskmine</b> &ndash; leiab m&auml;&auml;ratud vahemiku keskmise v&auml;&auml;rtuse.
+                </li>
+                <li> <b>Summa</b> &ndash; arvutab m&auml;&auml;ratud vahemiku muutujate summa.
+                </li>
+                <li> <b>Enamus</b> &ndash; leiab k&otilde;ige sagedamini esineva v&auml;&auml;rtuse.
+                </li>
+                <li> <b>V&auml;hemus</b> &ndash; leiab k&otilde;ige harvemini esineva v&auml;&auml;rtuse.
+                </li>
+                <li> <b>Standardh&auml;lve</b> &ndash; arvutab standardh&auml;lbe.
+                </li>
+                <li> <b>Protsentiil</b> &ndash; arvutab m&auml;&auml;ratud vahemiku m&auml;&auml;ratletud protsentiili.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Protsentiili väärtus</h2></div>
+        <hr/>
+        <div>
+            <p>Arvutatav protsentiili v&auml;&auml;rtus, kui parameetri  <b>Andmet&uuml;&uuml;p</b> jaoks on valitud <b>Protsentiil</b>.
+            </p>
+            <p>See v&auml;&auml;rtus j&auml;&auml;b vahemikku 0 kuni 100. Vaikev&auml;&auml;rtus on 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Määra korduvvalimi moodustamise meetod</h2></div>
+        <hr/>
+        <div>
+            <p>Korduvvalimi moodustamise algoritm, mida kasutatakse rastrist valimi v&otilde;tmisel.
+            </p>
+            <ul>
+                <li> <b>L&auml;him</b> &ndash; l&auml;him naaber. See on vaikimisi valik.
+                </li>
+                <li> <b>Bilineaarne</b> &ndash; bilineaarne interpolatsioon
+                </li>
+                <li> <b>Kuubiline</b>  &ndash; kuupkonvolutsioon
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Määra väljundi paigutus</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab selle, kas valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabelis ridades v&otilde;i veergudes. See v&otilde;imalus on saadaval ainult siis, kui mitmem&otilde;&otilde;tmeline sisendraster sisaldab &uuml;hte muutujat ja &uuml;hte dimensiooni ning iga l&otilde;ik on &uuml;he ribaga raster.
+            </p>
+            <ul>
+                <li> <b>Valimi v&auml;&auml;rtused kuvatakse reas</b> &ndash; valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabeli eri ridades. See on vaikimisi valik.
+                </li>
+                <li> <b>Valimi v&auml;&auml;rtused kuvatakse veerus</b> &ndash; valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabeli eri veergudes. See v&otilde;imalus kehtib ainult siis, kui mitmem&otilde;&otilde;tmeline sisendraster sisaldab &uuml;hte muutujat ja &uuml;hte dimensiooni ning iga l&otilde;ik on &uuml;he ribaga raster.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Määra väljundi tüüp</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas luuakse punktobjektiklass koos valimi v&auml;&auml;rtuste tabeliga v&otilde;i ainult tabel valimi v&auml;&auml;rtustega.
+            </p>
+            <ul>
+                <li> <b>Tabel</b> &ndash; genereerib valimiv&auml;&auml;rtustega tabeli. See on vaikimisi valik.
+                </li>
+                <li> <b>Objektid</b> &ndash; genereerib punktobjektiklassi, mille tabelis on valimiv&auml;&auml;rtused. Kui sisendina kasutatavad asukohaobjektid on pol&uuml;jooned v&otilde;i pol&uuml;goonid, siis on v&auml;ljundi iga punkt sisendi asukohaobjektide geomeertiline tsenter.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

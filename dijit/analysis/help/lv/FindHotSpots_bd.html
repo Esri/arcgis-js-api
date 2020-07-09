@@ -63,9 +63,9 @@
         <div>
             <p>Punktu slānis, kuram tiks meklēti karstie un aukstie punkti.
             </p>
-            <p>&Scaron;ajā analīzē tiek izmantoti nodalījumi, un tai ir nepiecie&scaron;ama projicētā koordinātu sistēma. Varat iestatīt  <b>Apstrādes koordinātu sistēmu</b> <b>Analīzes darba vidē</b>. Ja apstrādes koordinātu sistēma nav iestatīta kā projicētā koordinātu sistēma, jūs saņemsit pamudinājumu to iestatīt, veicot darbību <b>Darbināt analīzi</b> .
+            <p>&Scaron;ajā analīzē tiek izmantoti nodalījumi, un tai ir nepiecie&scaron;ama projicētā koordinātu sistēma. Varat iestatīt apstrādes koordinātu sistēmu sadaļā Analīzes darba vidē. Ja kā jūsu apstrādes koordinātu sistēma nav iestatīta projicētā koordinātu sistēma, jūs saņemsiet aicinājumu to iestatīt, veicot analīzi 
             </p>
-            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni. Jūs varat arī papildus lietot filtru savam ievades slānim vai izmantot savai kartei pievienoto viesoto slāņu atlasi. Filtri un atlase tiek lietota tikai analīzei. 
             </p>
         </div>
     </div>
@@ -151,7 +151,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Tas ir pagaidu pirmsizlaides parametrs, lai iestatītu apstrādes telpisko atskaiti. Daudziem big data rīkiem nepiecie&scaron;ams apstrādei kā telpisko atskaiti lietot projekcijas koordinātu sistēmu. Pēc noklusējuma rīks lietos ievades koordinātu sistēmu, bet tas pārstās darboties, ja tā ir ģeogrāfisko koordinātu sistēma. Lai iestatītu projekcijas koordinātu sistēmu, ievadiet WKID. Piemēram,  <b>Web Mercator</b> jāievada kā <code>3857</code>.
+            <p>Tas ir pagaidu pirmsizlaides parametrs, lai iestatītu apstrādes telpisko atskaiti. Daudziem Big Data rīkiem nepiecie&scaron;ams apstrādei kā telpisko atskaiti lietot projekcijas koordinātu sistēmu. Pēc noklusējuma rīks lietos ievades koordinātu sistēmu, bet tas pārstās darboties, ja tā ir ģeogrāfisko koordinātu sistēma. Lai iestatītu projekcijas koordinātu sistēmu, ievadiet WKID. Piemēram,  <b>Web Mercator</b> jāievada kā <code>3857</code>.
             </p>
         </div>
     </div>
@@ -159,16 +159,16 @@
         <div><h2>Izvēlieties ArcGIS Data Store, lai saglabātu rezultātus</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics rezultāti tiek saglabāti datukrātuvē un parādīti kā elementa slānis  Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos, noderīga iespēja ir rezultātu glabā&scaron;ana saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai  saistītajā datu krātuvē: 
+            <p>GeoAnalytics rezultāti tiek saglabāti datu krātuvē un parādīti kā elementa slānis pakalpojumā  Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos, noderīga iespēja ir rezultātu glabā&scaron;ana saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai saistītajā datu krātuvē: 
                 <ul>
-                    <li>Jūs varat izmantot rezultātus portāla sadarbībā ar portālu.
+                    <li>Jūs varat izmantot rezultātus savstarpējā portālu sadarbībā.
                     </li>
-                    <li>Jūs varataktivizēt sinhronizācijas iespējas ar rezultātiem.
+                    <li>Jūs varat aktivizēt sinhronizācijas iespējas ar rezultātiem.
                     </li>
                 </ul>
                 
             </p>
-            <p>Saistīto datu krātuvi nevajadzētu izmantot tad, ja ir sagaidām GeoAnalytics rezultātu apjoma palielinā&scaron;anās, kā arī tad, ja ir nepiecie&scaron;ams izmantot telpas un laika lielo datu krātuves iespējas, lai rīkotos ar lielu datu apjomu.
+            <p>Saistīto datu krātuvi nevajadzētu izmantot tad, ja ir sagaidāms, ka palielināsies GeoAnalytics rezultātu apjoms, kā arī ir vajadzīgs izmantot telpas un laika Big Data krātuves iespējas, lai rīkotos ar lielu datu apjomu.
             </p>
         </div>
     </div>
@@ -176,11 +176,11 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p> Slāņa nosaukums, kas tiks izveidots. Ja rakstāt uz ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstā uz lielu datu failu koplietojumu,, rezultāti tiks saglabāti lielajā datu failu koplietojumā un pievienot  tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            <p> Izveidojamā slāņa nosaukums. Ja ierakstāt ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstāt Big Data faila koplietojumā, rezultāti tiks saglabāti Big Data failu koplietojumā un pievienoti tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
             </p>
             <p>Rezultātu slānis rādīs statistiski nozīmīgas augstu un zemu vērtību klasterus vai punktu skaitu. Ja rezultātu slāņa nosaukums jau pastāv, jums tiks lūgts to pārdēvēt.
             </p>
-            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika lielo datu krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
+            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika Big Data krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
             </p>
         </div>
     </div>

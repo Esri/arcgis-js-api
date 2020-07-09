@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generarea Rasterului de Tendințe</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generează Raster Tendință"></h2>
+        <hr/>
+    <p>Estimează tendința pentru fiecare pixel din una sau mai multe variabile dintr-un raster multidimensional.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Alegeți stratul tematic de imagini multidimensionale pentru a analiza tendința</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Stratul tematic de imagini de intrare al unui raster multidimensional care va fi analizat.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Alegeți dimensiunea de-a lungul căreia va fi analizată tendința variabilă</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensiunea de-a lungul căreia va fi extrasă o tendință pentru variabila sau variabilele selectate &icirc;n analiză.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Alegeți variabilele pentru a analiza tendința</h2></div>
+        <hr/>
+        <div>
+            <p>Variabila sau variabilele pentru care vor fi calculate tendințele. Dacă nu se specifică nicio variabilă, va fi analizată prima variabilă din rasterul multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Alegeți tipul liniei care să corespundă valorilor variabilei de-a lungul unei dimensiuni</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică tipul liniei de utilizat pentru fixarea valorilor pixelilor de-a lungul unei dimensiuni. 
+                <ul>
+                    <li> <b>Liniar</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință liniară. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Polinomial</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință polinomială de ordin doi.
+                    </li>
+                    <li> <b>Armonic</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință armonică.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Specificați lungimea ciclului armonic</h2></div>
+        <hr/>
+        <div>
+            <p>Lungimea variației periodice conform modelului. Acest parametru este necesar atunci c&acirc;nd tipul liniei de tendință este setat la  <b>Armonic</b>. De exempu, culoarea verde a frunzelor are adesea un ciclu puternic de variații &icirc;ntr-un singur an, așadar lungimea ciclului este de 1 an. Datele privind temperatura orară au un ciclu puternic de variație &icirc;ntr-o singură zi, așadar lungimea cicluuli este de 1 zi.
+            </p>
+            <p>Lungimea implicită este de 1 an pentru datele care variază &icirc;ntr-un ciclu anual.
+            </p>
+            <p>Acest parametru este inclus &icirc;n analiza tendinței doar c&acirc;nd dimensiunea analizată este timpul iar tipul liniei de tendință este setat la  <b>Armonic</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Alegeți unitatea de timp a lungimii ciclului armonic</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică unitatea de timp de folosit pentru lungimea unui ciclu armonic.
+                <ul>
+                    <li> <b>Zile</b>&mdash;Unitatea pentru lungimea ciclului armonic o reprezintă zilele.
+                    </li>
+                    <li> <b>Ani</b>&mdash;Unitatea pentru lungimea ciclului armonic o reprezintă anii. Aceasta este setarea implicită.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Acest parametru este inclus &icirc;n analiza tendinței doar c&acirc;nd dimensiunea analizată este timpul iar tipul liniei de tendință este setat la  <b>Armonic</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Specificați numărul frecvenței pentru ajustarea tendinței armonice</h2></div>
+        <hr/>
+        <div>
+            <p>Frecvența de utilizat &icirc;n ajustarea tendinței armonice. Acest parametru specifică frecvența ciclurilor dintr-un an.
+            </p>
+            <p>Valoarea implicită este 1, sau un ciclu armonic pe an.
+            </p>
+            <p>Acest parametru este inclus &icirc;n analiza tendinței doar atunci c&acirc;nd dimensiunea supusă analizei este timpul.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Specificați numărul ordinului polinomial pentru ajustarea tendinței</h2></div>
+        <hr/>
+        <div>
+            <p>Numărul ordinului polinomial de folosit &icirc;n ajustarea tendinței polinomiale.
+            </p>
+            <p>Acest parametru este inclus &icirc;n analiza tendinței doar atunci c&acirc;nd dimensiunea supusă analizei este timpul.
+            </p>
+            <p>Valoarea implicită este 2, sau polinomial de ordin doi.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Alegeți statistica modelului de inclus în rasterul de tendință</h2></div>
+        <hr/>
+        <div>
+            <p>Acest instrument prevede trei tipuri de statistici ale liniei de ajustare a tendinței: eroarea rădăcinii medii pătrate (RMSE), statistica R la pătrat a potrivirii (R la pătrat), și statistica valorii p pentru coeficientul de pantă (valoarea P a coeficientului de pantă). Fiecare statistică are o căsuță de bifare corespondentă pentru a specifica dacă va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultant.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Bifat&mdash;RMSE va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat. Aceasta este setarea implicită.
+                            </li>
+                            <li>Nebifat&mdash;RMSE nu va fi calculat.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R la pătrat
+                        </p>
+                        <ul>
+                            <li>Bifat&mdash;Valoarea R la pătrat va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat.
+                            </li>
+                            <li>Nebifat&mdash;Valoarea R la pătrat nu va fi calculată. Aceasta este setarea implicită.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Valoarea P sau coeficientul de pantă
+                        </p>
+                        <ul>
+                            <li>Bifat&mdash;Valoarea P va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat.
+                            </li>
+                            <li>Nebifat&mdash;Valoarea P nu va fi calculată. Aceasta este setarea implicită.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorare valori lipsă în calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză.
+                <ul>
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    </li>
+                    <li>Debifat&mdash; Analiza va avea ca rezultat NoData dacă există valori NoData pentru pixeli de-a lungul dimensiunii date.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

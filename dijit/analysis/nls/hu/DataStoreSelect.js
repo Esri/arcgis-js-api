@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({relationalDS:"Relációs",spatialDS:"Tér- és időbeli",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Big Data-fájlmegosztás kimeneti sablonok"});

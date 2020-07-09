@@ -56,9 +56,9 @@
         <div>
             <p>Ciljni sloj koji će imati atribute sloja za pridruživanje pridodane u svoju tablicu.
             </p>
-            <p>Za analizu pomoću prostorne relacije  <b>blizine</b> potreban je predviđeni koordinatni sustav. Možete postaviti <b>Koordinatni sustav obrade</b> u <b>Okruženju za analizu</b>. Ako koordinatni sustav obrade nije postavljen na predviđeni koordinatni sustav, od vas će se tražiti da ga postavite kada <b>pokrenete analizu</b> .
+            <p>Za analizu pomoću prostorne relacije  <b>blizine</b> potreban je predviđeni koordinatni sustav. Možete postaviti koordinatni sustav obrade u Okruženju za analizu. Ako koordinatni sustav obrade nije postavljen na predviđeni koordinatni sustav, od vas će se tražiti da ga postavite kada pokrenete analizu .
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Sloj za pridruživanje s atributima koji će se pridodati ciljnom sloju.
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Jednako</b> &ndash; geoobjekti će se podudarati ako imaju istu geometriju.
                     </li>
-                    <li> <b>U blizini</b> &ndash; geoobjekti će se podudarati ako se međusobno nalaze na određenoj udaljenosti. Ciljni sloj mora biti u predviđenom koordinatnom sustavu ili prostorna referenca koja se obrađuje mora biti postavljena u predviđenom koordinatnom sustavu pomoću <b>Okruženja za analizu</b> ako se upotrebljava prostorna relacija <b>blizine</b>.
+                    <li> <b>U blizini planarno</b> &ndash; geoobjekti će se podudarati ako se međusobno nalaze na određenoj udaljenosti. Ciljni sloj mora biti u predviđenom koordinatnom sustavu ili prostorna referenca koja se obrađuje mora biti postavljena u predviđenom koordinatnom sustavu pomoću <b>Okruženja za analizu</b> ako se upotrebljava prostorna relacija <b>blizine</b>.
+                    </li>
+                    <li> <b>U blizini geodezijski</b> &ndash; geoobjekti će se podudarati ako se međusobno nalaze na određenoj udaljenosti. Udaljenost se mjeri pomoću planarne udaljenosti.
                     </li>
                     <li> <b>Sadrži</b> &ndash; geoobjekti će se podudarati ako je ciljni sloj sadržan u geoobjektima koji se pridružuju.
                     </li>
@@ -215,7 +217,7 @@
             </p>
             <p>Možete izračunati statistiku za geoobjekte koji su sažeti. U brojčanim poljima možete izračunati sljedeće: 
                 <ul>
-                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim poljima ili u tekstu. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
+                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim ili tekstualnim poljima. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
                     </li>
                     <li>Zbroj &ndash; zbroj brojčanih vrijednosti u polju. Zbroj od [nema vrijednosti, nema vrijednosti, 3] je 3.
                     </li>
@@ -263,9 +265,9 @@
         <div><h2>Izaberi spremište podataka</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima, spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
+            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
                 <ul>
-                    <li>Možete upotrijebiti rezultate u suradnji portal-do-portala.
+                    <li>Možete upotrijebiti rezultate u suradnji među portalima.
                     </li>
                     <li>Možete omogućiti mogućnosti sinkronizacije rezultata.
                     </li>
@@ -277,7 +279,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.

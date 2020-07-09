@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografsko obtežena regresija</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagram delovnega procesa geografsko obtežene regresije"></h2>
+        <hr/>
+    <p>Izvede geografsko obteženo regresijo (GWR), ki je lokalna oblika linearne regresije, uporabljena za modeliranje prostorsko različnih relacij.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izberi sloj za analiziranje</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj, ki vsebuje točkovne geoobjekte, ki vsebujejo odvisne in pojasnjevalne spremenljivke.
+            </p>
+            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj. Izbirno lahko na svojem vhodnem sloju uporabite filter ali pa uporabite izbiro na gostujočih slojih, uporabljenih na karti. Filtri in izbire so uporabljeni samo za analizo. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Izberi polje za modeliranje</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;tevilsko polje, ki vsebuje opazovane vrednosti, ki jih je treba modelirati, in tip vrednosti, ki ga modelirate.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Izberi pojasnjevalna polja</h2></div>
+        <hr/>
+        <div>
+            <p>Eno ali več polj, ki predstavljajo pojasnjevalne spremenljivke (polja), ki pomagajo pri napovedovanju vrednosti. Vidna bodo samo &scaron;tevilska polja.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Izberi, kako bo določena soseščina</h2></div>
+        <hr/>
+        <div>
+            <p>Določi ali je uporabljena sose&scaron;čina ustvarjena kot fiksna razdalja ali pa se lahko razlikuje v prostorskem obsegu glede na gostoto geoobjektov.
+                <ul>
+                    <li> <b>&Scaron;tevilo sosedov</b>&mdash;Velikost sose&scaron;čine je funkcija določenega &scaron;tevila sosedov, ki so vključeni v izračune za vsak geoobjekt. Kjer so geoobjekti gosti, je prostorski obseg sose&scaron;čine manj&scaron;i; kjer so geoobjekti razpr&scaron;eni je prostorski obseg sose&scaron;čine večji. Kadar izberete to možnost, izberite &scaron;tevilo sosedov, ki jih želite vključiti. &Scaron;tevilo mora biti celo &scaron;tevilo med 2 in 5000.
+                    </li>
+                    <li> <b>Pas razdalje</b>&mdash;velikost sose&scaron;čine je konstantna ali fiksna razdalja za vsak geoobjekt. Kadar izberete to možnost, izberite pas razdalje, ki bo predstavljal prostorski obseg sose&scaron;čine.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Izberi kako bodo sosednji geoobjekti obteženi</h2></div>
+        <hr/>
+        <div>
+            <p>Določi tip jedra, ki bo uporabljen za zagotavljanje prostorske obteženosti v modelu. Jedro definira način, kako se bo vsak geoobjekt povezal z drugim geoobjektom v njegovi sose&scaron;čini.
+                <ul>
+                    <li> <b>Bikvadrat</b>&mdash;Obteženost za O bo dodeljena kateremu koli objektu izven določene sose&scaron;čine. To je privzeto.
+                    </li>
+                    <li> <b>Gausovo</b>&mdash;Vsi geoobjekti bodo prejeli obtežitev, a bodo uteži postale eksponentno manj&scaron;e čim bolj oddaljene so od ciljnega geoobjekta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p> Ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
+            </p>
+            <p>Ko zapisujete v  ArcGIS Data Store (relacijsko ali prostorsko-časovno shrambo velikih podatkov) s pomočjo spustnega menija  <b>Shrani rezultat v</b>, lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

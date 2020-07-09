@@ -44,7 +44,9 @@
         <h2>Sovrapponi Layer</h2><p/>
         <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Sovrapponi Layer"></h2>
         <hr/>
-    <p>Sovrapponi layer consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe ed alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo. La sovrapposizione non &egrave; una semplice unione di linee; nel prodotto finale vengono infatti inclusi tutti gli attributi delle feature coinvolte nella sovrapposizione. La sovrapposizione costituisce la risposta ad una delle pi&ugrave; elementari domande di geografia, ovvero &quot;Cosa sta sopra e cosa sta sotto?&quot; Di seguito sono riportati degli esempi:
+    <p>Sovrapponi layer consente di combinare due o pi&ugrave; layer in un unico layer. La sovrapposizione &egrave; un processo analogo all'analisi di un insieme di mappe ed alla creazione di un unica mappa contenente tutte le informazioni trovate nel gruppo. La sovrapposizione non &egrave; una semplice unione di linee; nel prodotto finale vengono infatti inclusi tutti gli attributi delle feature della sovrapposizione. La sovrapposizione costituisce la risposta ad una delle pi&ugrave; elementari domande di geografia, ovvero &quot;Cosa sta sopra e cosa sta sotto?&quot; 
+    </p>
+    <p>Di seguito sono riportati degli esempi:
         <ul>
             <li>Quali lotti sono compresi nella pianura alluvionale da 100 anni?
                   
@@ -57,7 +59,7 @@
         </ul>
         
     </p>
-    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, verranno sovrapposte solo le feature nei layer di input e di sovrapposizione visibili nell'estensione mappa corrente. Se &egrave; deselezionata, verranno sovrapposte tutte le feature sia nel layer di input che in quello di sovrapposizione, anche se esterne all'estensione mappa corrente.
+    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, verranno sovrapposte solo le feature nei layer di input e di sovrapposizione visibili nell'estensione mappa corrente. Se non &egrave; selezionata, verranno sovrapposte tutte le feature sia nel layer di input che in quello di sovrapposizione, anche se esterne all'estensione mappa corrente.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -67,7 +69,7 @@
         <div>
             <p>Il layer di punti, linea o area che verr&agrave; sovrascritto.
             </p>
-            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Con questa opzione si apre una galleria in cui &egrave; possibile individuare e selezionare dataset di varie fonti da utilizzare nell'analisi. 
             </p>
         </div>
     </div>
@@ -77,7 +79,7 @@
         <div>
             <p>Il layer da sovrapporre sul layer di input.  
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
             </p>
         </div>
     </div>
@@ -85,56 +87,18 @@
         <div><h2>Scegliere il metodo di sovrapposizione</h2></div>
         <hr/>
         <div>
-            <p>Il metodo di sovrapposizione definisce in che modo vengono combinati il layer di input e quello di sovrapposizione.  
+            <p>Specifica il metodo di sovrapposizione che combiner&agrave; il layer di input e il layer di sovrapposizione.  
 
                 <ul>
-                    <li> <b>Incrocia</b>: il risultato conterr&agrave; solo le feature o le parti di feature del layer di sovrapposizione che risultano sovrapposte a feature del layer di input. Quando si intersecano feature lineari o di area, &egrave; possibile specificare il tipo di feature di output.
-                        <table border="1">
-                        <tr>
-                            <td>
-                                <p>Punti con punti
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Input di punti e punti">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Punti e punti con output di punti">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Linee con linee 
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="Input di linee e linee">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="Linee e linee con output di linee ">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Aree con aree
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Input di aree e aree">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="Aree e aree con output di aree">
-                                </p>
-                            </td>
-                        </tr>
-                        </table>
+                    <li> <b>Incrocia</b>: si combineranno solo le feature o le parti di feature del layer di sovrapposizione che risultano sovrapposte a feature del layer di input.
                     </li>
-                    <li> <b>Cancella</b>: il risultato conterr&agrave; le feature o le parti di feature del layer di sovrapposizione che non risultano sovrapposte ad aree del layer di input.  Il layer di sovrapposizione pu&ograve; contenere feature area, linea o punto.
+                    <li> <b>Cancella</b>: si combineranno le feature o le parti di feature del layer di sovrapposizione che non risultano sovrapposte ad aree del layer di input.
+                    </li>
+                    <li> <b>Unione</b>: si combineranno tutte le feature di entrambi i layer, creando un'unione geometrica del layer di input e del layer di sovrapposizione.  Si scriveranno sul layer tutte le feature e tutti i loro attributi.
+                    </li>
+                    <li> <b>Identit&agrave;</b>: si combineranno le feature o le parti di feature del layer di input e del layer di sovrapposizione. Le feature o le porzioni di feature che si sovrappongono tanto nel layer di input quanto nel layer di sovrapposizione verranno scritte sul layer di output.
+                    </li>
+                    <li> <b>Differenza simmetrica</b>: si combineranno le feature o le parti di feature del layer di input e del layer di sovrapposizione che non si sovrappongono.
                     </li>
                 </ul>
                 

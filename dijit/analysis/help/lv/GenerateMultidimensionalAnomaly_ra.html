@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ģenerēt multidimensiju anomāliju</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ģenerēt multidimensiju anomāliju"></h2>
+        <hr/>
+    <p>Ģenerē multidimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os multidimensiju rastra mainīgos.
+    </p>
+    <p>Anomālija ir novērojuma novirze no standarta, vidējā aritmētiskā vai mediānas vērtības.
+    </p>
+    <p>&Scaron;is rīks aprēķina anomālijas laika griezumā vienam vai vairākiem mainīgajiem multidimensiju rastrā. Ja jums papildus laika dimensijai ir arī ne-laika dimensija, anomālija tiks aprēķināta katrā papildu dimensijas solī.
+    </p>
+    <p>Piemēram, jūsu rīcībā ir ikmēne&scaron;a okeāna temperatūras dati, kas apkopoti ik pēc 1 metra dziļuma, līdz pat 100 metriem, un jūs vēlaties aprēķināt temperatūras anomālijas kā novirzes no gada vidējā rādītāja. &Scaron;is rīks noteiks temperatūras anomālijas, balstoties uz gada vidējo rādītāju, ja jūs iestatīsiet vienību <b>Gada</b> kā <b>temporālo intervālu, lai aprēķinātu vidējo rādītāju</b>, un tas parādīs anomālijas vērtības katriem 100 dziļumiem.
+    </p>
+    <p>&Scaron;is rīks atbalsta tikai multidimensiju rastra datu kopas ar laika dimensiju.
+    </p>
+    <p>Ja ir izvēlēts  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tad tiks analizēti tikai tā slāņa mainīgie , kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja &scaron;ī opcija nav atzīmēta, tiks analizēti pilna slāņa mainīgie, pat ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izvēlēties vairāku dimensiju attēlu slāni anomālijas ģenerēšanai</h2></div>
+        <hr/>
+        <div>
+            <p>Multidimensiju rastra datu kopas ievades attēlu slānis.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izvēlēties mainīgos, kuriem tiks ģenerētas anomālijas</h2></div>
+        <hr/>
+        <div>
+            <p>Mainīgais vai mainīgie, kam tiks aprēķinātas anomālijas. Ja nav norādīts mainīgais, tiks analizēti visi mainīgie laika dimensijā.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Izvēlieties anomālijas ģenerēšanas paņēmienu</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda metodi, kas tiks izmantota, lai aprēķinātu anomāliju. 
+                <ul>
+                    <li> <b>At&scaron;ķirība no vidējās vērtības</b>&nbsp;&mdash; tiks aprēķināta at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības vidējo vērtību dažādos sektoros, ko nosaka intervāls. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Procentuālā at&scaron;ķirība no vidējās vērtības</b>&nbsp;&mdash; tiks aprēķināta procentuālā at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības vidējo vērtību dažādos sektoros, ko nosaka intervāls.
+                    </li>
+                    <li> <b>Procentuālā vērtība no vidējās</b>&nbsp;&mdash; tiks aprēķināta vērtība procentuālā izteiksmē no vidējās vērtības.
+                    </li>
+                    <li> <b>Z&nbsp;vērtējums</b>&nbsp;&mdash; tiks aprēķināts katra pikseļa z&nbsp;vērtējums. Ja z&nbsp;vērtējums ir 0, tas norāda, ka pikseļa vērtība ir vienāda ar vidējo vērtību. Ja z&nbsp;vērtējums ir 1, tas norāda, ka pikseļa vērtība ir vienāda ar 1 standartnovirzi no vidējās vērtības. Ja z&nbsp;vērtējums ir 2, tas norāda, ka pikseļa vērtība ir vienāda ar 2 standartnovirzēm no vidējās vērtības utt.
+                    </li>
+                    <li> <b>At&scaron;ķirība no mediānas</b>&nbsp;&mdash; tiks aprēķināta at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības matemātisko mediānu dažādos sektoros, ko nosaka intervāls.
+                    </li>
+                    <li> <b>Procentuālā at&scaron;ķirība no mediānas</b>&nbsp;&mdash; tiks aprēķināta procentuālā at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības matemātisko mediānu dažādos sektoros, ko nosaka intervāls.
+                    </li>
+                    <li> <b>Procentuālā vērtība no mediānas</b>&nbsp;&mdash; tiks aprēķināta vērtība procentuālā izteiksmē no matemātiskās mediānas vērtības.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tālāk ir norādītas anomālijas vērtību aprēķinā&scaron;anā izmantotās matemātiskās vērtības. Anomālijas var aprēķināt vai nu izmantojot vidējo aritmētisko, vai mediānas vērtības kā vidējā definīciju. Ja datu sadalījums ir greizs, vidējo aritmētisko var ļoti ietekmēt izlieco&scaron;ās vērtības, tādēļ &scaron;iem datu veidiem piemērotāka varētu būt mediānas vērtības vai z&nbsp;vērtējuma metode.
+            </p>
+            <p>
+                <ul>
+                    <li>At&scaron;ķirība no vidējā aritmētiskā = x - &micro;
+
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                                
+
+                            </li>
+                            <li>&micro; = attiecīgā pikseļa vērtību vidējais aritmētiskais konkrētajā laika intervālā
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentuālā at&scaron;ķirība no vidējā aritmētiskā = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                                
+
+                            </li>
+                            <li>&micro; = attiecīgā pikseļa vērtību vidējais aritmētiskais konkrētajā laika intervālā
+                                
+
+                            </li>
+                            <li>|x - &micro;| = at&scaron;ķirības starp vērtību un vidējo aritmētisko absolūtā vērtība
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Vidējais aritmētiskais procentuālā izteiksmē = x/ &micro;
+
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                                
+
+                            </li>
+                            <li>&micro; = attiecīgā pikseļa vērtību vidējais aritmētiskais konkrētajā laika intervālā
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>At&scaron;ķirība no mediānas = x - &szlig;
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                            </li>
+                            <li>&szlig; = attiecīgā pikseļa vērtību mediāna konkrētajā laika intervālā
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentuālā at&scaron;ķirība no mediānas = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                            </li>
+                            <li>&szlig; = attiecīgā pikseļa vērtību mediāna konkrētajā laika intervālā
+                            </li>
+                            <li>|x - &szlig;| = at&scaron;ķirības starp vērtību un mediānu absolūtā vērtība
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Mediāna procentuālā izteiksmē = x/ &szlig;
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                            </li>
+                            <li>&szlig; = attiecīgā pikseļa vērtību mediāna konkrētajā laika intervālā
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z&nbsp;vērtējums  = (x - &micro;) / S
+                        <ul>
+                            <li>x = pikseļa vērtība sektorā
+                            </li>
+                            <li>&micro; = attiecīgā pikseļa vērtību vidējais aritmētiskais konkrētajā laika intervālā
+                            </li>
+                            <li>S = pikseļa vērtību standartnovirze konkrētajā laika intervālā
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Izvēlēties pagaidu intervālu vidējā aritmētiskā aprēķināšanai</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda temporālo intervālu, kas tiks izmantots, lai aprēķinātu vidējo vērtību jeb vidējo aritmētisko. 
+                <ul>
+                    <li> <b>Visi</b>&nbsp;&mdash; aprēķina vidējo vērtību no katra pikseļa visiem sektoriem.
+                    </li>
+                    <li> <b>Katru gadu</b>&nbsp;&mdash; aprēķina katra pikseļa gada vidējo vērtību.
+                    </li>
+                    <li> <b>Periodiski katru mēnesi</b>&nbsp;&mdash; aprēķina katra pikseļa mēne&scaron;a vidējo vērtību.
+                    </li>
+                    <li> <b>Periodiski katru nedēļu</b>&nbsp;&mdash; aprēķina katra pikseļa nedēļas vidējo vērtību.
+                    </li>
+                    <li> <b>Periodiski katru dienu</b>&nbsp;&mdash; aprēķina katra pikseļa dienas vidējo vērtību.
+                    </li>
+                    <li> <b>Katru stundu</b>&nbsp;&mdash; aprēķina katra pikseļa stundas vidējo vērtību.
+                    </li>
+                    <li> <b>Ārējais rastrs</b>&nbsp;&mdash; atsauce uz eso&scaron;u rastra datu kopu, kurā ir vidējā vērtība vai mediānas vērtība katram pikselim.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Izvēlēties vidējās vērtības attēlu slāni kā atsauci</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda atsauces rastra datu kopu, kurā ir iepriek&scaron; aprēķināta vidējā vērtība katram pikselim. Anomālijas tiks aprēķinātas, salīdzinot ar &scaron;o vidējo vērtību.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorēt aprēķinā trūkstošās vērtības</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības. 
+                <ul>
+                    <li>Atzīmēts &mdash; analīze ietver visus derīgos pikseļus konkrētajā dimensijā un ignorē jebkurus NoData pikseļus. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li>Neatzīmēts&nbsp;&mdash; analīze uzrādīs NoData, ja konkrētajā dimensijā pikselim ir kāda NoData vērtība.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

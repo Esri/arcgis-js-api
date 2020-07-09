@@ -24,7 +24,8 @@
     "rasterInfo": "rasterinfo",
     "cellSize": "cellsize",
     "propertySet": "propertyset",
-    "spatialReference": "spatialReference"
+    "spatialReference": "spatialReference",
+    "rfxtemplate": "rfxtemplate"
   },
   "domainTypes": {
     "list": "list",
@@ -33,7 +34,11 @@
     "numList": "numlist",
     "bandIndex": "bandIndex",
     "switchable": "switchable",
-    "linearUnit": "linearUnit"
+    "linearUnit": "linearUnit",
+    "rasterDimensions": "rasterDimensions",
+    "rasterVariables": "rasterVariables",
+    "mdimdef": "mdimdef",
+    "aggregationdef": "aggregationdef"
   },
   "enums": {
     "colorSchemeTypes": [
@@ -1333,7 +1338,7 @@
       }
     ],
 
-    
+
     "esriMosaicOperatorTypes": [
       {
         "key": 1,
@@ -1681,6 +1686,208 @@
         "key": "SHREVE",
         "label": "${rasterFunctions.enumLabels.shreve}"
       }
+    ],
+    "gpsaProcessAsMultidimensionalOptions": [
+      {
+        "key": "CURRENT_SLICE",
+        "label": "${rasterFunctions.enumLabels.currentSlice}"
+      },
+      {
+        "key": "ALL_SLICES",
+        "label": "${rasterFunctions.enumLabels.allSlices}"
+      }
+    ],
+    "gpsaExpandMethod": [
+      {
+        "key": "DISTANCE",
+        "label": "{createViewshedRasterTool.distance}"
+      },
+      {
+        "key": "MORPHOLOGICAL",
+        "label": "${rasterFunctions.enumLabels.expandMorphological}"
+      }
+    ],
+    "spectralProfileFileTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.rfxArgs.spectralProfileName}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.rfxArgs.trainingFeatureName}"
+      }
+    ],
+    "randomDistributionType": [
+      {
+        "key": 1,
+        "label": "${calculateDensityTool.uniform}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.integer}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypeNormal}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypeExponential}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypePoisson}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.radarCalibGammaNought}"
+      },
+      {
+        "key": 7,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypeBinomial}"
+      },
+      {
+        "key": 8,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypeGeometric}"
+      },
+      {
+        "key": 9,
+        "label": "${rasterFunctions.enumLabels.randomDistributionTypeNegativeBinomial}"
+      }
+    ],
+    "randomGeneratorType" : [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.randomGeneratorTypeStandardCRand}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.randomGeneratorTypeAlgorithmACM599}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.randomGeneratorTypeMersenneTwister}"
+      }
+    ],
+    "gpsaAggregationTypes":[
+      {
+        "key": 9,
+        "label": "${rasterFunctions.enumLabels.localCellStatisticsSum}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.maximum}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.mean}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.localCellStatisticsMedian}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.minimum}"
+      }
+    ],
+    "esriTrendAnalysisTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.trendLinear}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.trendHarmonic}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.trendPolynomial}"
+      }
+    ],
+    "dimensionDefinitionTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.dimensionByValue}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.dimensionByInterval}"
+      }
+    ],
+    "esriMdimTimeIntervalUnits": [
+      {
+        "key": "HOURS",
+        "label": "${common.hours}"
+      },
+      {
+        "key": "DAYS",
+        "label": "${common.days}"
+      },
+      {
+        "key": "WEEKS",
+        "label": "${common.weeks}"
+      },
+      {
+        "key": "MONTHS",
+        "label": "${common.months}"
+      },
+      {
+        "key": "YEARS",
+        "label": "${common.years}"
+      }
+    ],
+    "esriCycleUnits": [
+      {
+        "key": "DAYS",
+        "label": "${common.days}"
+      },
+      {
+        "key": "YEARS",
+        "label": "${common.years}"
+      }
+    ],
+    "esriDetectChangeTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.latestChange}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.earliestChange}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.largestChange}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.numberOfChanges}"
+      }
+    ],
+    "esriRenderTrendTypes": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.trendLinear}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.trendHarmonic}"
+      }
+    ],
+    "esriComputeChangeMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodDifference}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodRelativeDifference}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodCategorical}"
+      }
     ]
   },
 
@@ -1851,6 +2058,14 @@
     "rfxArgCat_ObserverParameters": {
       "title": "${rasterFunctions.categoryLabels.observerParameters}",
       "visible": false
+    },
+    "rfxArgCat_IrregularDataInterpolation": {
+      "title": "${rasterFunctions.categoryLabels.irregularDataInterpolation}",
+      "visible": false
+    },
+    "rfxArgCat_ModelStatistics": {
+      "title": "${rasterFunctions.categoryLabels.modelStatistics}",
+      "visible": true
     }
   }
 

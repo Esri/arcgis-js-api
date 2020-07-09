@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>L'analisi raster consente di eseguire un'analisi di grandi dataset raster utilizzando  ArcGIS Image Server. Ci&ograve; consente di analizzare un maggior numero di dati pi&ugrave; velocemente sfruttando la potenza del server. I set di strumenti attualmente disponibili tramite l'esperienza utente Web di  Portal for ArcGIS sono  <b>Riepiloga dati</b>, <b>Analizza modelli</b>, <b>Usa prossimit&agrave;</b>, <b>Analizza immagine</b>, <b>Analizza terreno</b>, <b>Gestisci dati</b> e <b>Apprendimento profondo</b>.
+        <p>L'analisi raster consente di eseguire un'analisi di grandi dataset raster utilizzando  ArcGIS Image Server. Ci&ograve; consente di analizzare un maggior numero di dati pi&ugrave; velocemente sfruttando la potenza del server. I set di strumenti attualmente disponibili tramite l'esperienza utente Web di  Portal for ArcGIS sono  <b>Riepiloga dati</b>, <b>Analizza modelli</b>, <b>Usa prossimit&agrave;</b>, <b>Analizza immagine</b>, <b>Analizza terreno</b>, <b>Gestisci dati</b>, <b>Apprendimento profondo</b> e <b>Analisi multidimensionale</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Determina costi di viaggio dell’itinerario come polilinea</h2></td>
+                    <td><h2>Determina costi di viaggio dell'itinerario come polilinea</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Illustrazione strumento Determina costi di viaggio dell&rsquo;itinerario come polilinea">
                     </td>
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Campione</b> estrae i dati in posizioni definite da un raster o da un insieme di raster.
+                </li>
             </ul>
             
         </p>
@@ -401,9 +403,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Converte raster in feature</h2></td>
+                    <td><h2>Converti raster in feature</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Strumento Converte raster in feature">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Strumento Converti raster in feature">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Esempio</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Esempio">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Crea una tabella o una feature class puntuale con valori di dati in posizioni definite estratti da un raster o da un insieme di raster.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Apprendimento profondo del set di strumenti</h2>
+        <h2>Apprendimento profondo</h2>
         <hr/>
-        <p>Questi strumenti 	vengono utilizzati per rilevare feature specifiche in un'immagine o per classificare pixel in un dataset di raster. L'apprendimento profondo &egrave; un tipo di metodo di apprendimento automatico per intelligenza artificiale che rileva feature all'interno di immagini usando vari layer in reti neurali in cui ogni layer &egrave; in grado di estrarre una o pi&ugrave; feature uniche nell'immagine. Questi strumenti consumano modelli addestrati per rilevare feature specifiche in framework di apprendimento profondo di parti terze, come TensorFlow, CNTK e Keras, ed emettere feature o mappe di classe.
+        <p>Questi strumenti vengono utilizzati per rilevare o classificare feature specifiche in un'immagine o per classificare pixel in un dataset di raster. L'apprendimento profondo &egrave; un tipo di metodo di apprendimento automatico per intelligenza artificiale che rileva feature all'interno di immagini usando vari layer in reti neurali in cui ogni layer &egrave; in grado di estrarre una o pi&ugrave; feature uniche nell'immagine. Questi strumenti consumano modelli addestrati per rilevare feature specifiche in framework di apprendimento profondo di parti terze, come TensorFlow, CNTK e Keras, ed emettere feature o mappe di classe.
             <ul>
                 <li> <b>Classifica pixel usando l'apprendimento profondo</b> produce un raster classificato usando un modello di apprendimento profondo addestrato.
                 </li>
                 <li> <b>Rileva oggetti usando l'apprendimento profondo</b> produce una feature class contenente oggetti che trova in un raster di input usando un modello di apprendimento profondo addestrato.
                 </li>
+                <li> <b>Classificare oggetti usando l'apprendimento profondo</b> produce una feature class o una tabella in cui a ogni oggetto di input in un raster di input viene assegnata una label class usando un modello di apprendimento profondo addestrato.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>Questo strumento esegue un modello di apprendimento profondo addestrato su un raster di input per produrre un raster classificato e ogni pixel valido presenta una label class assegnata.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>Questo strumento esegue un modello di apprendimento profondo addestrato su un raster di input per produrre una feature class che contiene gli oggetti che trova. Le feature possono essere riquadri di contorno o poligoni intorno agli oggetti trovati o punti al centro degli oggetti.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classificare oggetti usando l'apprendimento profondo</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classificare oggetti usando l'apprendimento profondo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento esegue un modello di apprendimento profondo addestrato su un raster di input e una feature class opzionale per produrre una feature class o una tabella in cui ogni oggetto di input ha una label class assegnata.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Analisi multidimensionale</h2>
+        <hr/>
+        <p>Gli strumenti nel set di strumenti analisi multidimensionale consentono di eseguire analisi su dati scientifici tra pi&ugrave; variabili e dimensioni.
+        </p>
+        <p>I dati multidimensionali rappresentano i dati acquisiti in pi&ugrave; momenti, profondit&agrave; e altezze. Questo tipo di dati &egrave; comunemente usato nelle scienze atmosferiche, oceanografiche e terrestri. Con questo set di strumenti, &egrave; possibile analizzare dati raster multidimensionali in pi&ugrave; formati, tra cui netCDF, HDF, GRIB, il mosaic dataset multidimensionale e il formato raster cloud (CRF) di Esri.
+        </p>
+        <p>Nella tabella seguente vengono elencati gli strumenti di analisi multidimensionale e viene fornita una breve descrizione di ciascuno di essi.
+            <ul>
+                <li> <b>Aggregare raster multidimensionale</b> genera un dataset di raster multidimensionale aggregando le variabili raster multidimensionali esistenti lungo una dimensione.
+                </li>
+                <li> <b>Generare anomalia multidimensionale</b> calcola l'anomalia per ogni sezione in un raster multidimensionale per generare un raster multidimensionale.
+                </li>
+                <li> <b>Generare raster di tendenza</b> stima la tendenza per ogni pixel lungo una dimensione per una o pi&ugrave; variabili in un raster multidimensionale.
+                </li>
+                <li> <b>Prevedere utilizzando il raster di tendenza</b> calcola un raster multidimensionale previsto utilizzando il raster di tendenza di output dallo strumento <b>Generare raster di tendenza</b>.
+                </li>
+                <li> <b>Trovare statistiche di argomento</b> estrae il valore di dimensione o l'indice di banda al quale una data statistica viene raggiunta per ogni pixel in un raster multidimensionale o multibanda.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggrega raster multidimensionale</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Aggregare raster multidimensionale">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento genera un dataset di raster multidimensionali aggregando le variabili raster multidimensionali esistenti lungo una dimensione.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trovare statistiche di argomento</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Trovare statistiche di argomento">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento estrae il valore di dimensione o l'indice di banda al quale una data statistica viene raggiunta per ogni pixel in un raster multidimensionale o multibanda.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genera anomalia multidimensionale</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generare anomalia multidimensionale">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento calcola l'anomalia per ogni sezione in un raster multidimensionale per generare un raster multidimensionale.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generare raster di tendenza</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generare raster di tendenza">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento stima la tendenza per ogni pixel lungo una dimensione per una o pi&ugrave; variabili in un raster multidimensionale.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prevedere utilizzando il raster di tendenza</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prevedere utilizzando il raster di tendenza">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento calcola un raster multidimensionale previsto utilizzando il raster di tendenza di output dallo strumento  <b>Generare raster di tendenza</b>.
             </p>
             <br/>
         </div>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vzorec</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Vzorec"></h2>
+        <hr/>
+    <p>To orodje ustvari tabelo ali točkovni geoobjektni razred, ki prikazuje vrednosti celic iz rastra ali sklopa rastrov, za opredeljene lokacije. Lokacije opredeljujejo rastrske celice, poligonski geoobjekti, polilinijski geoobjekti ali sklop točk.
+    </p>
+    <p>Vrednosti piksla bodo ekstrahirane iz vseh vhodnih rastrov na vsaki lokaciji. Tabela ali točkovni geoobjektni razred bo ustvarjen s polji, ki vsebujejo vrednosti piksla za vsak vhodni raster. Dodatni atributi iz vhode tabele rastra ne bodo vključeni v izhodno tabelo.
+    </p>
+    <p>Kot vhodne rastre je mogoče določite kakr&scaron;no koli kombinacijo rastrov, kot so enopasovni, večpasovni, večdimenzionalni ali večvariantni. Struktura izhodne tabele se spremeni, kadar so vhodni rastri večdimenzionalni. Kadar je kot eden izmed vhodnih rastrov določen večpasovni raster, bodo uporabljeni vsi pasovi tega vhoda. Za obdelavo izbora pasov iz vhodnega večpasovnega rastra morate najprej ustvariti nov rastrski sklop podatkov, sestavljeni iz teh določenih pasov. Rezultat uporabi v seznamu vhodnih rastrov.
+    </p>
+    <p>Vhodna lokacija je lahko raster ali točkovni geoobjekt:
+        <ul>
+            <li>Raster &ndash; Piksli, ki vsebujejo veljavne vrednosti (ne brez podatkov), se uporabijo za ekstrahiranje vrednosti piksla iz vseh vhodnih rastrov, in sredi&scaron;če piksla se uporabi za točkovne lokacije.
+            </li>
+            <li>Točka &ndash; Vrednosti bodo vzorčene na vsaki točkovni lokaciji.
+            </li>
+            <li>Polilinija ali poligon&ndash; Vrednosti bodo vzorčene na centroidu poligona ali polilinije. Če je vhodni raster večdimenzionalen, bodo vrednosti agregirane na podlagi tipa  <b>Statistike</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Vhodni rastri so vzorčeni v svojem izvornem koordinatnem sistemu in ločljivosti. Če obstaja več vhodnih rastrov z različnimi koordinatnimi sistemi, se vhodne lokacije projicirajo na koordinatni sistem vsakega posameznega rastra iz katerega so ekstrahirane vrednosti. Okolje analize se uporabi pri vhodnih lokacijah, a vhodni rastri ne bodo upo&scaron;tevali okolja analize.
+    </p>
+    <p>Lokacije, ki bodo ekstrahirale vrednosti iz celic brez podatkov v vhodnem rastru, bodo v izhodni tabeli dobile vrednost &lt;null&gt;.
+    </p>
+    <p>Za izvajanje analize z večtočkovnimi geoobjekti, morate le-te najprej pretvoriti v enotočkovne geoobjekte, preden jih uporabite v orodju.
+    </p>
+    <p>Koordinatni sistem koordinat x in y v izhodni vzorčni tabeli je enak kot vhodni raster lokacije ali točkovni geoobjekti, razen če ni drugače določeno v okolju  <b>Izhodni koordinatni sistem</b>. Če je koordinatni sistem podatkov vhodne lokacije neznan, je neznan tudi koordinatni sistem koordinat x in y.
+    </p>
+    <p>Koordinatni sistem izhodnega geoobjektnega razreda je enak kot vhodni raster lokacije ali točkovni geoobjekti, razen če ni drugače določeno v okolju  <b>Izhodni koordinatni sistem</b>.
+    </p>
+    <p>Okolje  <b>Dejavnik vzporednega procesiranja</b> je podprto samo, kadar je vhod večdimenzionalni raster.
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke ali pasov sloja, ki so vidni znotraj trenutnega obsega mape. Če je možnost odkljukana, bodo analizirane spremenljivke ali pasovi celotnega sloja, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Izberi sloj(-e) slikovja za vzorčenje</h2></div>
+        <hr/>
+        <div>
+            <p>Posamezni sloj slikovja ali seznam slojev slikovja, čigar vrednosti bodo vzorčene na podlagi vhodnih podatkov lokacije.
+            </p>
+            <p>Za vzorčenje vseh izsekov iz večdimenzionalnega sloja slikovja, mora biti samo vhodni raster.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Izberi sloj lokacije</h2></div>
+        <hr/>
+        <div>
+            <p>Podatki, ki identificirajo položaj, ki ga želite vzorčiti.
+            </p>
+            <p>Vhodni podatki lokacije so lahko raster, ali točkovni, polilinijski ali poligonski geoobjektni razred.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Določi polje edinstvenega ID</h2></div>
+        <hr/>
+        <div>
+            <p>Polje, ki vsebuje različno vrednost za vsako lokacijo ali geoobjekt v vhodnem rastru lokacije ali geoobjektnem razredu.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Določi informacije o pridobitvi podatkov lokacije (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Določi čas, globino in druge podatke o pridobitvi, ki so povezane s celicami ali geoobjekti lokacije.
+            </p>
+            <p>Za vsako dimenzijo obstajajo tri možnosti določanja informacij o pridobitvi, ki so povezane z celicami ali geoobjekti lokacije:
+
+                <ul>
+                    <li> <b>Enojno polje ali vrednost</b> &ndash; Kadar je izbrana ta možnost, je treba določiti naslednje informacije:
+                        <ul>
+                            <li> <b>Polje ali vrednost dimenzije</b> &ndash; Izberite polje vrednosti dimenzije iz podatkov lokacije ali vnesite določeno vrednost dimenzije.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Enojno polje ali vrednost z relativnimi vrednostmi</b> &ndash; Če je izbrana ta možnost, je treba spodnje informacije določiti skupaj za opredelitev razpona v katerem bo izračunana statistika za spremenljivke:
+                        <ul>
+                            <li> <b>Polje ali vrednost dimenzije</b> &ndash; Izberite polje vrednosti dimenzije iz podatkov lokacije.
+                            </li>
+                            <li> <b>Relativna vrednost pred</b> &ndash; določi nenegativno vrednost, ki se jo od&scaron;teje od <b>Polja ali vrednosti dimenzije</b> za opredelitev začetka razpona vrednosti dimenzije. Ta vrednost predstavlja &scaron;tevilo dni, če je dimenzija čas.
+                            </li>
+                            <li> <b>Relativna vrednost po</b> &ndash; določi nenegativno vrednost, ki se jo doda k <b>Polju ali vrednosti dimenzije</b> za opredelitev konca razpona vrednosti dimenzije. Ta vrednost predstavlja &scaron;tevilo dni, če je dimenzija čas.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Začetna in končna polja ali vrednosti</b> &ndash; Če je izbrana ta možnost, je treba spodnje informacije določiti skupaj za opredelitev razpona v katerem bo izračunana statistika za spremenljivke:
+                        <ul>
+                            <li> <b>Začetno polje ali vrednosti</b> &ndash; Izberite polje vrednosti dimenzije iz podatkov lokacije ali vnesite določeno vrednost dimenzije za opredelitev začetka razpona vrednosti dimenzije.
+                            </li>
+                            <li> <b>Končno polje ali vrednosti</b> &ndash; Izberite polje vrednosti dimenzije iz podatkov lokacije ali vnesite določeno vrednost dimenzije za opredelitev konca razpona vrednosti dimenzije.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Določi polje ali vrednost razdalje obrisa</h2></div>
+        <hr/>
+        <div>
+            <p>Določena razdalja okoli geoobjektov podatkov lokacije. Razdalja obrisa je določena v linearnih enotah koordinatnega sistema geoobjekta lokacije. Če geoobjekt uporablja geografsko referenco, bo enota navedena v stopinjah.
+            </p>
+            <p>Statistika bo izračunana znotraj tega območja obrisa.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Izberi tip statistike</h2></div>
+        <hr/>
+        <div>
+            <p>Vrsta statistika, ki bo izračunana.
+            </p>
+            <ul>
+                <li> <b>Minimum</b> &ndash; Poi&scaron;če minimalno vrednost znotraj določenega razpona.
+                </li>
+                <li> <b>Maksimum</b> &ndash; Poi&scaron;če maksimalno vrednost znotraj določenega razpona.
+                </li>
+                <li> <b>Mediana</b> &ndash; Poi&scaron;če vrednost mediane znotraj določenega razpona.
+                </li>
+                <li> <b>Srednja vrednost</b> &ndash; Izračuna povprečje določenega razpona.
+                </li>
+                <li> <b>Se&scaron;tevek</b> &ndash; Izračuna se&scaron;tevek spremenljivk znotraj določenega razpona.
+                </li>
+                <li> <b>Večina</b> &ndash; Poi&scaron;če vrednost, ki se najpogosteje pojavi.
+                </li>
+                <li> <b>Manj&scaron;ina</b> &ndash; Poi&scaron;če vrednost, ki se najredkeje pojavi.
+                </li>
+                <li> <b>Standard Standardni odklon</b> &ndash; Izračuna standardni odklon.
+                </li>
+                <li> <b>Percentil</b> &ndash; Izračuna opredeljen percentil znotraj določenega razpona.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Vrednost percentila</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil, ki se ga izračuna, kadar je parameter  <b>Tip statistike</b> nastavljen na <b>Percentil</b>.
+            </p>
+            <p>Vrednosti se lahko gibljejo od 0 do 100. Privzeta vrednost je 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Določi tehniko prevzorčenja</h2></div>
+        <hr/>
+        <div>
+            <p>Algoritem prevzorčenja, ki je uporabljen pri vzorčenju rastra.
+            </p>
+            <ul>
+                <li> <b>Najbližji</b> &ndash; Najbližji sosed. To je privzeta nastavitev.
+                </li>
+                <li> <b>Bilinearno</b> &ndash; Bilinearna interpolacija
+                </li>
+                <li> <b>Kubično</b> &ndash; Kubična konvolucija
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Določi izhodno postavitev</h2></div>
+        <hr/>
+        <div>
+            <p>Določi, ali so vzorčene vrednosti v izhodni tabeli prikazane v vrsticah ali stolpcih. Ta možnost je na voljo samo, kadar vhodni večdimenzionalni raster vsebuje eno spremenljivko in eno dimenzijo, in je vsak izsek enopasovni raster.
+            </p>
+            <ul>
+                <li> <b>Vzorčene vrednosti se pojavijo v vrstici</b> &ndash;Vzorčene vrednosti se v izhodni tabeli pojavijo v ločenih vrsticah. To je privzeta nastavitev.
+                </li>
+                <li> <b>Vzorčene vrednosti se pojavijo v stolpcu</b> &ndash;Vzorčene vrednosti se v izhodni tabeli pojavijo v ločenih stolpcih. Ta možnost je veljavna samo, kadar vhodni večdimenzionalni raster vsebuje eno spremenljivko in eno dimenzijo, in je vsak izsek enopasovni raster.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Določi izhodni tip</h2></div>
+        <hr/>
+        <div>
+            <p>Določa, ali se ustvari točkovni geoobjektni razred z vzorčenimi vrednostmi v svoji tabeli ali samo tabela z vzorčenimi vrednostmi.
+            </p>
+            <ul>
+                <li> <b>Tabela</b> &ndash; Ustvari tabelo z vzorčenimi vrednostmi. To je privzeta nastavitev.
+                </li>
+                <li> <b>Geoobjekti</b> &ndash; Ustvari točkovni geoobjektni razred z vzorčenimi vrednostmi v svoji tabeli. Če so vhodni geoobjekti lokacije polilinije ali poligoni, je vsaka točka v izhodu centroid vsake geometrije vhodnih geoobjektov lokacije.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

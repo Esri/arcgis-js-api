@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다. 현재  Portal for ArcGIS 웹 UX에서 제공되는 도구집합은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>인접도 사용</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>, <b>딥러닝</b>입니다.
+        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대용량 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다. 현재  Portal for ArcGIS 웹 UX에서 제공되는 도구집합은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>인접성 사용</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>, <b>딥러닝</b>, <b>다차원 분석</b>입니다.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>폴리라인으로의 이동 비용 경로 결정</h2></td>
+                    <td><h2>폴리라인으로 이동 비용 경로 결정(Determine Travel Cost Path As Polyline)</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="폴리라인 도구 그림으로의 이동 비용 경로 결정">
                     </td>
@@ -327,8 +327,8 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
-        <h2>데이터 관리</h2>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>데이터 관리하기(Manage Data)</h2>
         <hr/>
         <p>지리 데이터의 일상적인 관리 및 분석 전 데이터 통합에 사용되는 도구입니다. 
             <ul>
@@ -347,6 +347,8 @@
                 <li> <b>래스터를 피처로 변환</b> - 래스터 데이터를 벡터화합니다.
                     
 
+                </li>
+                <li> <b>샘플</b> - 한 래스터 또는 래스터 집합의 데이터를 정의된 위치에 추출합니다.
                 </li>
             </ul>
             
@@ -401,7 +403,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>래스터를 피처로 변환</h2></td>
+                    <td><h2>래스터를 피처로 변환(Convert Raster To Feature)</h2></td>
                     <td>
                     <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="래스터를 피처로 변환 도구">
                     </td>
@@ -412,20 +414,37 @@
             </p>
             <br/>
         </div>
-    <div id="DeepLearningCategory" class="smallsize">
-        <h2>딥러닝 도구집합</h2>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>샘플</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="샘플">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>한 래스터 또는 래스터 집합에서 추출한 데이터 값이 포함된 테이블 또는 포인트 피처 클래스를 정의된 위치에 생성합니다.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="regularsize">
+        <h2>딥러닝(Deep Learning)</h2>
         <hr/>
-        <p>이러한 도구는 이미지의 특정 피처를 감지하거나 래스터 데이터셋의 픽셀을 분류하는 데 사용됩니다. 딥러닝은 인공 지능 머신 러닝 방법의 유형으로, 각 레이어가 하나 이상의 고유한 피처를 이미지에서 추출할 수 있는 신경망에서 다중 레이어를 사용하여 이미지의 피처를 감지합니다. 이러한 도구는 TensorFlow, CNTK, Keras와 같은 서드 파티 딥러닝 프레임워크의 특정 피처와 결과 피처, 클래스 맵을 감지하도록 교육된 모델을 사용합니다.
+        <p>이러한 도구는 이미지의 특정 피처를 감지하거나 분류하여 래스터 데이터셋의 픽셀을 분류하는 데 사용됩니다. 딥러닝은 인공 지능 머신 러닝 방법의 유형으로, 각 레이어가 하나 이상의 고유한 피처를 이미지에서 추출할 수 있는 신경망에서 다중 레이어를 사용하여 이미지의 피처를 감지합니다. 이러한 도구는 TensorFlow, CNTK, Keras와 같은 서드 파티 딥러닝 프레임워크의 특정 피처와 결과 피처, 클래스 맵을 감지하도록 교육된 모델을 사용합니다.
             <ul>
                 <li> <b>딥러닝을 사용하여 픽셀 분류</b>는 숙련된 딥러닝 모델을 사용하여 분류된 래스터를 생성합니다.
                 </li>
                 <li> <b>딥러닝을 사용하여 객체 감지</b>는 숙련된 딥러닝 모델을 사용하여 입력 래스터에서 찾는 객체를 포함하는 피처 클래스를 생성합니다.
                 </li>
+                <li> <b>딥러닝을 사용하여 객체 분류</b>는 입력 래스터의 각 입력 객체에 대해 숙련된 딥러닝 모델을 사용하여 클래스 레이블이 할당되어 있는 피처 클래스 또는 테이블을 생성합니다.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
-        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -436,11 +455,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>이 도구는 입력 래스터에서 숙련된 딥러닝 모델을 실행하여 분류 래스터를 생성하며 각 유효 픽셀에는 할당된 클래스 레이블이 있습니다.
             </p>
             <br/>
         </div>
-        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+        <div id="DetectObjectsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>이 도구는 입력 래스터에서 숙련된 딥러닝 모델을 실행하여 찾는 객체가 포함된 피처 클래스를 생성합니다. 피처는 찾은 객체 주변의 경계 상자 또는 폴리곤이거나, 객체 중심에 있는 포인트일 수 있습니다.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>딥러닝을 사용하여 객체 분류(Classify Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="딥러닝을 사용하여 객체 분류">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 입력 래스터와 선택적 피처 클래스에 대해 숙련된 딥러닝 모델을 실행하여 피처 클래스나 테이블을 생성하며 각 입력 객체에는 할당된 클래스 레이블이 있습니다.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="regularsize">
+        <h2>다차원 분석</h2>
+        <hr/>
+        <p>다차원 분석 도구집합의 도구를 사용하면 다중 변수 및 차원에 걸쳐 과학 데이터를 분석할 수 있습니다.
+        </p>
+        <p>다차원 데이터는 다양한 시간, 깊이, 높이에서 캡처된 데이터를 나타냅니다. 해당 유형의 데이터는 대기, 해양, 지구 과학 분야에서 일반적으로 사용됩니다. 이 도구집합을 사용하면 netCDF, HDF, GRIB, 다차원 모자이크 데이터셋, Esri의 클라우드 래스터 형식(CRF)을 포함한 여러 형식으로 다차원 래스터 데이터를 분석할 수 있습니다.
+        </p>
+        <p>다음 테이블에는 다차원 분석 도구와 각각에 대한 간략한 설명이 나와 있습니다.
+            <ul>
+                <li> <b>다차원 래스터 집계</b>는 차원에 따라 기존 다차원 래스터 변수를 집계하여 다차원 래스터 데이터셋을 생성합니다.
+                </li>
+                <li> <b>다차원 이상치 생성</b>은 다차원 래스터에서 각 슬라이스에 대한 이상치를 계산하여 다차원 래스터를 생성합니다.
+                </li>
+                <li> <b>추세 래스터 생성</b>은 다차원 래스터에 있는 하나 이상의 변수에 대해 디멘전에 따라 각 픽셀의 추세를 추정합니다.
+                </li>
+                <li> <b>추세 래스터를 사용하여 예측</b>은 <b>추세 래스터 생성</b> 도구의 결과 추세 래스터를 사용하여 예측 다차원 래스터를 계산합니다.
+                </li>
+                <li> <b>인수 통계 찾기</b>는 다차원 또는 다중밴드 래스터의 각 픽셀에 대해 지정 통계에 도달된 디멘전 값이나 밴드 색인을 추출합니다.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>다차원 래스터 집계</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="다차원 래스터 집계(Aggregate Multidimensional Raster)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 차원에 따라 기존 다차원 래스터 변수를 집계하여 다차원 래스터 데이터셋을 생성합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>인수 통계 찾기</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="인수 통계 찾기">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 다차원 또는 다중밴드 래스터의 각 픽셀에 대해 지정 통계에 도달된 디멘전 값이나 밴드 색인을 추출합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>다차원 이상치 생성</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="다차원 이상치 생성(Generate Multidimensional Anomaly)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 다차원 래스터에서 각 슬라이스에 대한 이상치를 계산하여 다차원 래스터를 생성합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>추세 래스터 생성(Generate Trend Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="추세 래스터 생성">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 다차원 래스터에 있는 하나 이상의 변수에 대해 디멘전에 따라 각 픽셀의 추세를 추정합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>추세 래스터를 사용하여 예측</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="추세 래스터를 사용하여 예측">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는  <b>추세 래스터 생성</b> 도구의 결과 추세 래스터를 사용하여 예측 다차원 래스터를 계산합니다.
             </p>
             <br/>
         </div>

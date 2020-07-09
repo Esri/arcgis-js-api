@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({addBarriers:"Vali tõkke kihid",pointBarrier:"Punkttõkked",lineBarrier:"Joonetõkked",polygonBarrier:"Alatõkked",choosePointBarrier:"Vali punkttõkke kiht",chooseLineBarrier:"Vali joontõkke kiht",choosePolygonBarrier:"Vali hulknurktõkke kiht",selectPointBarrier:"Vali punkttõkked",selectLineBarrier:"Vali joontõkked",selectPolygonBarrier:"Vali hulknurktõkked"});

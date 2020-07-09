@@ -41,23 +41,25 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Lớp Phủ</h2><p/>
-        <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Lớp Phủ"></h2>
+        <h2>Chồng xếp lớp</h2><p/>
+        <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Chồng xếp lớp"></h2>
         <hr/>
-    <p>Lớp Phủ kết hợp hai hoặc nhiều lớp v&agrave;o một lớp duy nhất. Bạn c&oacute; thể nghĩ về việc chồng xếp lớp như nh&igrave;n qua một xấp bản đồ v&agrave; tạo ra một bản đồ duy nhất c&oacute; chứa tất cả c&aacute;c th&ocirc;ng tin t&igrave;m thấy trong xấp bản đồ đ&oacute;. Lớp phủ kh&ocirc;ng chỉ l&agrave; sự kết hợp giữa c&aacute;c luồng c&ocirc;ng việc; tất cả c&aacute;c thuộc t&iacute;nh của đối tượng tham gia v&agrave;o lớp phủ đều được đưa v&agrave;o sản phẩm cuối c&ugrave;ng. Lớp phủ được sử dụng để trả lời một trong những c&acirc;u hỏi cơ bản nhất về địa l&yacute;, C&aacute;i g&igrave; nằm tr&ecirc;n c&aacute;i g&igrave;? Dưới đ&acirc;y l&agrave; c&aacute;c v&iacute; dụ:
+    <p>Chồng xếp lớp kết hợp hai hoặc nhiều lớp v&agrave;o th&agrave;nh một lớp duy nhất. Bạn c&oacute; thể hiểu chồng xếp như thao t&aacute;c nh&igrave;n xuy&ecirc;n qua một tập bản đồ v&agrave; tạo ra một bản đồ duy nhất c&oacute; chứa tất cả c&aacute;c th&ocirc;ng tin t&igrave;m thấy trong tập bản đồ n&agrave;y. Chồng xếp kh&ocirc;ng chỉ l&agrave; sự kết hợp về kh&ocirc;ng gian; m&agrave; tất cả c&aacute;c thuộc t&iacute;nh của đối tượng trong lớp chồng xếp đều được đưa v&agrave;o sản phẩm cuối c&ugrave;ng. Chồng xếp được sử dụng để trả lời một trong những c&acirc;u hỏi cơ bản nhất về địa l&yacute;: C&aacute;i g&igrave; nằm tr&ecirc;n c&aacute;i g&igrave;? 
+    </p>
+    <p>Dưới đ&acirc;y l&agrave; c&aacute;c v&iacute; dụ:
         <ul>
             <li>L&ocirc; đất n&agrave;o nằm trong v&ugrave;ng ngập lụt 100 năm? (Kh&aacute;i niệm Trong v&ugrave;ng chỉ l&agrave; một c&aacute;ch n&oacute;i của nằm tr&ecirc;n.)
                   
             </li>
-            <li>Đất sử dụng n&agrave;o nằm tr&ecirc;n loại đất n&agrave;o?
+            <li>Loại h&igrave;nh sử dụng đất n&agrave;o đang nằm tr&ecirc;n loại đất n&agrave;o?
                  
             </li>
-            <li>Giếng nước n&agrave;o nằm trong căn cứ qu&acirc;n sự bị bỏ rơi?
+            <li>Giếng nước n&agrave;o nằm trong căn cứ qu&acirc;n sự bị bỏ hoang?
             </li>
         </ul>
         
     </p>
-    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng được nh&igrave;n thấy trong lớp đầu v&agrave;o v&agrave; lớp phủ b&ecirc;n trong phạm vi bản đồ hiện tại mới được chồng lớp l&ecirc;n. Nếu bỏ chọn, tất cả c&aacute;c đối tượng trong lớp đầu v&agrave;o v&agrave; lớp phủ sẽ được chồng lớp l&ecirc;n, ngay cả khi ch&uacute;ng ở ngo&agrave;i phạm vi bản đồ hiện tại.
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng được nh&igrave;n thấy trong lớp đầu v&agrave;o v&agrave; lớp phủ b&ecirc;n trong phạm vi bản đồ hiện tại mới được chồng lớp l&ecirc;n. Nếu bỏ chọn mục n&agrave;y, tất cả c&aacute;c đối tượng trong cả lớp đầu v&agrave;o v&agrave; lớp chồng xếp sẽ được chồng xếp, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,76 +67,38 @@
         <div><h2>Chọn lớp đầu vào</h2></div>
         <hr/>
         <div>
-            <p>Lớp điểm, đường, hoặc v&ugrave;ng sẽ bị chồng lớp l&ecirc;n.
+            <p>Lớp điểm, đường, hoặc v&ugrave;ng sẽ được chồng xếp.
             </p>
-            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> hoặc <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống. Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn c&oacute; thể chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> ở dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống. T&ugrave;y chọn n&agrave;y mở ra một thư viện, tại đ&oacute; bạn c&oacute; thể duyệt v&agrave; chọn c&aacute;c bộ dữ liệu từ nhiều nguồn kh&aacute;c nhau để sử dụng trong ph&acirc;n t&iacute;ch của m&igrave;nh. 
             </p>
         </div>
     </div>
     <div id="overlayLayer">
-        <div><h2>Chọn lớp phủ</h2></div>
+        <div><h2>Chọn lớp chồng xếp</h2></div>
         <hr/>
         <div>
-            <p>Lớp d&ugrave;ng để chồng l&ecirc;n lớp đầu v&agrave;o  
+            <p>Lớp n&agrave;y sẽ được chồng l&ecirc;n lớp đầu v&agrave;o.  
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp dữ liệu từ bản đồ, bạn c&oacute; thể chọn mục  <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> ở dưới danh s&aacute;ch thả xuống để t&igrave;m đến nội dung của m&igrave;nh cho bộ dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.
+            <p>B&ecirc;n cạnh việc chọn một lớp dữ liệu từ bản đồ, bạn c&oacute; thể chọn mục  <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> ở dưới danh s&aacute;ch thả xuống để t&igrave;m đến nội dung của m&igrave;nh cho bộ dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng. Bạn c&oacute; thể t&ugrave;y &yacute; &aacute;p dụng bộ lọc tr&ecirc;n lớp đầu v&agrave;o hoặc &aacute;p dụng lựa chọn tr&ecirc;n c&aacute;c lớp được lưu trữ được th&ecirc;m v&agrave;o bản đồ của bạn. C&aacute;c bộ lọc v&agrave; lựa chọn chỉ được &aacute;p dụng cho ph&acirc;n t&iacute;ch. 
             </p>
         </div>
     </div>
     <div id="OverlayType">
-        <div><h2>Chọn phương pháp phủ</h2></div>
+        <div><h2>Chọn phương pháp chồng xếp</h2></div>
         <hr/>
         <div>
-            <p>Phương ph&aacute;p chồng lớp x&aacute;c định c&aacute;ch kết hợp giữa lớp đầu v&agrave;o v&agrave; lớp phủ.  
+            <p>X&aacute;c định phương ph&aacute;p chồng xếp sẽ được d&ugrave;ng để kết hợp lớp đầu v&agrave;o v&agrave; lớp chồng xếp.  
 
                 <ul>
-                    <li> <b>Giao cắt</b>&mdash;Kết quả sẽ chỉ chứa c&aacute;c đối tượng hoặc một phần đối tượng n&agrave;y trong lớp phủ m&agrave; được chồng lớp bằng c&aacute;c đối tượng trong lớp đầu v&agrave;o. Khi giao cắt đối tượng đường hoặc v&ugrave;ng, bạn c&oacute; t&ugrave;y chọn để chỉ định loại đối tượng bạn muốn l&agrave;m đầu ra.
-                        <table border="1">
-                        <tr>
-                            <td>
-                                <p>Điểm với Điểm
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Đầu v&agrave;o điểm v&agrave; điểm">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Điểm v&agrave; điểm với đầu ra điểm">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Đường với Đường 
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="Đầu v&agrave;o đường v&agrave; đường">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="Đường v&agrave; đường với đầu ra đường ">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>V&ugrave;ng với V&ugrave;ng
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Đầu v&agrave;o v&ugrave;ng v&agrave; v&ugrave;ng">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="V&ugrave;ng v&agrave; v&ugrave;ng với đầu ra v&ugrave;ng">
-                                </p>
-                            </td>
-                        </tr>
-                        </table>
+                    <li> <b>Giao cắt</b>&mdash;Chỉ c&aacute;c đối tượng hoặc c&aacute;c phần của đối tượng trong lớp chồng xếp m&agrave; chồng khớp với c&aacute;c đối tượng trong lớp đầu v&agrave;o mới được kết hợp.
                     </li>
-                    <li> <b>X&oacute;a</b>&mdash;Kết quả sẽ chứa c&aacute;c đối tượng hoặc một phần đối tượng trong lớp phủ m&agrave; kh&ocirc;ng chồng lớp bằng c&aacute;c v&ugrave;ng trong lớp ph&acirc;n t&iacute;ch. Lớp phủ c&oacute; thể chứa c&aacute;c đối tượng v&ugrave;ng, đường, hoặc điểm.
+                    <li> <b>X&oacute;a</b>&mdash;Chỉ c&aacute;c đối tượng hoặc c&aacute;c phần của đối tượng trong lớp chồng xếp m&agrave; kh&ocirc;ng chồng khớp với c&aacute;c v&ugrave;ng trong lớp đầu v&agrave;o mới được kết hợp.
+                    </li>
+                    <li> <b>Hợp nhất</b>&mdash;Tất cả đối tượng ở cả hai lớp sẽ được kết hợp, tạo ra một li&ecirc;n kết h&igrave;nh học giữa lớp đầu v&agrave;o v&agrave; lớp chồng xếp. Tất cả đối tượng v&agrave; thuộc t&iacute;nh của ch&uacute;ng sẽ được ghi v&agrave;o lớp n&agrave;y.
+                    </li>
+                    <li> <b>X&aacute;c định</b>&mdash;C&aacute;c đối tượng hoặc c&aacute;c phần của đối tượng trong lớp đầu v&agrave;o v&agrave; lớp chồng xếp sẽ được kết hợp. C&aacute;c đối tượng hoặc c&aacute;c phần của đối tượng chồng khớp ở cả lớp đầu v&agrave;o v&agrave; lớp chồng xếp sẽ được ghi v&agrave;o lớp kết quả.
+                    </li>
+                    <li> <b>Ph&acirc;n biệt đối xứng</b>&mdash;C&aacute;c đối tượng hoặc c&aacute;c phần của đối tượng trong lớp đầu v&agrave;o v&agrave; lớp chồng xếp m&agrave; kh&ocirc;ng chồng khớp với nhau th&igrave; sẽ được kết hợp.
                     </li>
                 </ul>
                 
@@ -145,9 +109,9 @@
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. N&oacute; sẽ c&oacute; kiểu đối tượng tương tự (v&ugrave;ng, đường, hoặc điểm) như lớp đầu v&agrave;o v&agrave; lớp phủ. T&ecirc;n mặc định dựa v&agrave;o phương ph&aacute;p chồng lớp v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. Kết quả sẽ c&oacute; c&ugrave;ng kiểu kh&ocirc;ng gian(v&ugrave;ng, đường hoặc điểm) như lớp đầu v&agrave;o v&agrave; lớp chồng xếp. T&ecirc;n mặc định dựa v&agrave;o phương ph&aacute;p chồng lớp v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
-            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> hộp xổ xuống để chỉ định t&ecirc;n thư mục trong <b>Nội Dung Của T&ocirc;i</b> để lưu trữ kết quả của bạn.
             </p>
         </div>
     </div>

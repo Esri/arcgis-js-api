@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Woonlocaties zoeken</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Workflow woonlocaties zoeken"></h2>
+        <hr/>
+    <p>Deze tool werkt met een tijdgestuurde laag van puntobjecten van het type  <code>instant</code>. Allereerst wijst de tool objecten toe aan een track met behulp van een unieke identifier. De trackvolgorde wordt bepaald door de tijd van objecten. Vervolgens wordt de afstand tussen de eerste observatie en de volgende in een track berekend. Objecten worden gezien als onderdeel van een woning als binnen de bepaalde tijd twee temporele opeenvolgende punten binnen de bepaalde afstand blijven. Als er twee objecten onderdeel blijken van een woning, wordt het eerste object in de woning gebruikt als een referentiepunt en de tool vindt opeenvolgende objecten die zich binnen de gespecificeerde afstand van het referentiepunt in de woning bevinden. Als alle objecten binnen de gespecificeerde afstand eenmaal zijn gevonden, verzamelt de tool de woonobjecten en berekent hun gemiddelde centrum. Objecten voor en na de huidige woning worden toegevoegd aan de woning als ze binnen de gegeven afstand van het gemiddelde centrum van de woonlocatie liggen. Dit proces gaat door tot het einde van de track.
+    </p>
+    <p>Objecten in tijdgestuurde lagen kunnen worden weergegeven op de volgende manieren:
+        <ul>
+            <li>Direct&mdash;E&eacute;n moment in de tijd
+            </li>
+            <li>Interval&mdash;Een start- en eindtijd
+            </li>
+        </ul>
+        
+    </p>
+    <p>Stel dat u voor de Afdeling Transportatie werkt en GPS-gegevens hebt verzameld voor voertuigen op grote snelwegen. Elke GPS-record bevat een unieke voertuig-ID, de tijd, locatie en de snelheid. Met behulp van de unieke voertuig-ID om individuele tracks te defini&euml;ren, zoekt u naar voertuigen die in de afgelopen 15 minuten niet meer dan 100 meter zijn verplaatst, om knelpunten in het wegennetwerk te ontdekken. Daarnaast kunt u statistieken berekenen zoals de gemiddelde snelheid van de voertuigen binnen de woonlocatie.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies de laag om woningen in te zoeken</h2></div>
+        <hr/>
+        <div>
+            <p>De puntlaag die wordt samengevat in woningen. De invoerlaag moet tijdgestuurd zijn met objecten die een moment in de tijd vertegenwoordigen, evenals een of meer velden die kunnen worden gebruikt om tracks te identificeren.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag. U kunt optioneel een filter toepassen op uw invoerlaag of een selectie toepassen op gehoste lagen die aan uw kaart zijn toegevoegd. Filters en selecties worden alleen toegepast voor analyse. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selecteer een of meer velden om track te identificeren</h2></div>
+        <hr/>
+        <div>
+            <p>Velden die de trackidentifier vertegenwoordigen. U kunt &eacute;&eacute;n veld of meerdere velden gebruiken om unieke waarden van tracks te representeren.
+            </p>
+            <p>Bijvoorbeeld als u de locaties waar orkanen zich bevinden zoekt, kunt u de naam van de orkaan gebruiken als het trackveld.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Kies de methode om de afstand te berekenen</h2></div>
+        <hr/>
+        <div>
+            <p>Methode die wordt gebruikt om de woningafstand binnen tracks te berekenen. De  <b>Planaire</b> methode kan de resultaten sneller berekenen, maar wikkelt de tracks niet rond de internationale datumlijn en houdt geen rekening met de daadwerkelijke vorm van de aarde bij het bufferen. De <b>Geodetische</b> methode wikkelt tracks rond de internationale datumlijn indien nodig en past een geodetische buffer toe om rekening te houden met de vorm van de aarde.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>De ruimtelijke zoekafstand definiëren</h2></div>
+        <hr/>
+        <div>
+            <p>De tolerantie van de woningafstand is de maximale afstand tussen punten die zich in een enkele woonlocatie bevinden.
+            </p>
+            <p>Als u bijvoorbeeld ge&iuml;nteresseerd bent in het zoeken van woningen waar het verkeer binnen een bepaalde tijd niet meer dan 20 meter heeft bewogen , zou de afstandslocatie 20 meter zijn.
+            </p>
+            <p>Gebruik de parameter  <b>Het tijdelijke zoekbereik defini&euml;ren</b> om de tijd op te geven.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Splitsen van tracks (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De eenheid van de afstandstolerantie.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Het tijdelijke zoekbereik definiëren</h2></div>
+        <hr/>
+        <div>
+            <p>De tijdstolerantie van de woning is de minimale tijd van een woning die zich in een enkele woonlocatie bevindt.
+            </p>
+            <p>Als u bijvoorbeeld wilt weten waar verkeer een bepaalde afstand niet heeft afgelegd binnen een uur, zet u de tijdstolerantie op 1 uur.
+            </p>
+            <p>Gebruik de parameter  <b>Het ruimtelijke zoekbereik defini&euml;ren</b> om de afstand op te geven.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Selecteer een afstand om traceringen op te splitsen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De eenheid van de tijdstolerantie.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistieken toevoegen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>U kunt statistieken berekenen over objecten die zijn samengevat. U kunt het volgende berekenen in numerieke velden: 
+                <ul>
+                    <li>Count&mdash;Berekent het aantal non-nulwaarden. Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
+                    </li>
+                    <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
+                    </li>
+                    <li>Gemiddelde&mdash;Het gemiddelde van numerieke waarden. Het gemiddelde van [0, 2, nul] is 1.
+                    </li>
+                    <li>Min&mdash;De minimumwaarde van een numeriek veld. Het minimum van [0, 2, nul] is 0. 
+                    </li>
+                    <li>Max&mdash;De maximumwaarde van een numeriek veld. De maximumwaarde van [0, 2, nul] is 2.
+                    </li>
+                    <li>Bereik&mdash;Het bereik van een numeriek veld. Dit wordt berekend als de minimumwaarden afgetrokken van de maximumwaarde. Het bereik van [0, nul, 1] is 1. Het bereik van [nul, 4] is 0.
+                    </li>
+                    <li>Variantie&mdash;De variantie van een numeriek veld in een track. De variantie van [1] is nul. De variantie van [null, 1,0,1,1] is 0,25.
+                    </li>
+                    <li>Standaarddeviatie&mdash;De standaarddeviatie van een numeriek veld. De standaarddeviatie van [1] is nul. De standaarddeviatie van [null, 1,0,1,1] is 0,5. 
+                    </li>
+                    <li>Eerste&mdash;De eerste waarde van een gespecificeerd veld in de samengevatte track. Als een track de volgende tijdsgeordende waarden voor een veld heeft: 1,5,10,20], is de eerste waarde 1.
+                    </li>
+                    <li>Laatste&mdash;De laatste waarde van een gespecificeerd veld in de samengevatte track. Als een track de volgende tijdsgeordende waarden voor een veld heeft: 1,5,10,20], is de laatste waarde 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U kunt het volgende berekenen in stringvelden:
+                <ul>
+                    <li>Telling&mdash;Het aantal non-nul strings.
+                    </li>
+                    <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
+                    </li>
+                    <li>Eerste&mdash;De eerste waarde van een gespecificeerd veld in de samengevatte track. Als een track de volgende tijdsgeordende waarden voor een veld heeft: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], is de eerste waarde Toronto.
+                    </li>
+                    <li>Laatste&mdash;De laatste waarde van een gespecificeerd veld in de samengevatte track. Als een track de volgende tijdsgeordende waarden voor een veld heeft: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], is de laatste waarde Boston.
+                    </li>
+                </ul>
+                Alle statistieken worden berekend op nonnull waarden. De resultaatlaag zal een nieuw veld bevatten voor elke statistiek die wordt berekend. Andere statistieken kunnen worden toegevoegd door een attribuut en statistiek te kiezen.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Voer woongebieden uit als</h2></div>
+        <hr/>
+        <div>
+            <p>Bepaalt welke objecten worden uitgevoerd en het formaat. Er zijn vier typen beschikbaar: 
+                <ul>
+                    <li> <b>Gemiddelde centra</b>&mdash;Een punt dat het zwaartepunt van elke woonlocatie representeert. Attributen worden samengevat. Dit is de standaardinstelling.
+                         
+                    </li>
+                    <li> <b>Convex Hulls</b>&mdash;Vlakken die een convex hull van elke woninggroep representeren. Attributen worden samengevat.
+                         
+                    </li>
+                    <li> <b>Woonobjecten</b>&mdash;Alle ingevoerde puntobjecten en attributen waarvan bepaald is dat ze bij een woning horen, worden uitgevoerd.
+                         
+                    </li>
+                    <li> <b>Alle objecten</b>&mdash;Alle ingevoerde puntobjecten en attributen worden uitgevoerd.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyseer gegevens met tijdsintervallen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Geef aan of u woonlocaties wilt zoeken met tijdsintervallen die uw invoerobjecten segmenteren voor analyse. Als u tijdsintervallen gebruikt, moet u het tijdsinterval dat u wilt gebruiken instellen en optioneel de referentietijd instellen. Als u geen referentietijd instelt, wordt 1 januari 1970 gebruikt. 
+            </p>
+            <p>Als u bijvoorbeeld de tijdgrens instelt als 1 dag, beginnend om 9:00 op 1 januari 1990, dan wordt elke track afgekapt om 9.00 uur voor elke dag en geanalyseerd binnen dat segment. Geen enkele woonlocatie begint voor 9.00 uur 's morgens en eindigt daarna. 
+            </p>
+            <p>Het gebruik van tijdsintervallen is een snelle manier om de rekentijd te versnellen, omdat het snel kleinere tracks voor analyse cre&euml;ert. Als splitsen met een terugkerend tijdsinterval zinvol is voor uw analyse, is het aan te raden voor de verwerking van big data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

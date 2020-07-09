@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Aggregér flerdimensional raster</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Aggreg&eacute;r flerdimensional raster"></h2>
+        <hr/>
+    <p>Genererer et flerdimensionalt rasterdatas&aelig;t ved at kombinere eksisterende flerdimensionale rastervariabler langs en dimension.
+    </p>
+    <p>Hvis man har 30 &aring;rs temperaturdata for havoverfladen, der er indsamlet hver m&aring;ned for hver 5. meters dybde ned til 100 meter, er f&oslash;lgende eksempler p&aring; anvendelse:
+        <ul>
+            <li>Aggreg&eacute;r m&aring;nedlige temperaturdata til &aring;rsdata.
+            </li>
+            <li>Aggreg&eacute;r m&aring;nedlige temperaturdata til 4-m&aring;neds intervaller.
+            </li>
+            <li>Aggreg&eacute;r temperaturdata fra 0 til 25 meter, derefter fra 25 til 50 meter, derefter fra 50 til 100 meter.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vælg det flerdimensionale billedlag, der skal aggregeres</h2></div>
+        <hr/>
+        <div>
+            <p>Det input-billedlag fra en flerdimensional raster, der aggregeres.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vælg den dimension, der skal aggregeres langs</h2></div>
+        <hr/>
+        <div>
+            <p>Aggregeringsdimensionen. Det er den dimension, som variablerne aggregeres langs.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vælg den eller de variabler, der skal aggregeres</h2></div>
+        <hr/>
+        <div>
+            <p>Den eller de variabler, der aggregeres langs den givne dimension. Hvis der ikke er angivet nogen variabel, bliver alle variabler med den valgte dimension aggregeret.
+            </p>
+            <p>Hvis du f.eks. vil aggregere de daglige temperaturdata til m&aring;nedlige gennemsnitsv&aelig;rdier, skal du angive temperatur som den variabel, der skal aggregeres. Hvis du ikke angiver nogen variabler, og du har b&aring;de daglige temperatur- og nedb&oslash;rsvariabler, bliver begge variabler aggregeret til m&aring;nedlige gennemsnit, og den flerdimensionale output-raster inkluderer begge variabler.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Vælg aggregeringsmetode</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den matematiske metode, der bruges til at kombinere de aggregerede udsnit i et interval. 
+                <ul>
+                    <li> <b>Middelv&aelig;rdi</b>&mdash;Beregner middelv&aelig;rdien af en pixels v&aelig;rdier p&aring; tv&aelig;rs af alle udsnit i intervallet. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Maksimum</b>&mdash;Beregner den maksimale v&aelig;rdi af en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Majoritet</b>&mdash;Beregner den v&aelig;rdi, der forekom mest hyppigt for en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Minimum</b>&mdash;Beregner minimumv&aelig;rdien af en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Minoritet</b>&mdash;Beregner den v&aelig;rdi, der forekom mindst hyppigt for en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Median</b>&mdash;Beregner medianv&aelig;rdien af en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Interval</b>&mdash;Beregner v&aelig;rdi-intervallet for en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Standardafvigelse</b>&mdash;Beregner standardafvigelsen af en pixels v&aelig;rdier p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Sum</b>&mdash;Beregner summen af en pixels v&aelig;rdier p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Variation</b>&mdash;Beregner antallet af unikke v&aelig;rdier for en pixel p&aring; tv&aelig;rs af alle udsnit i intervallet.
+                    </li>
+                    <li> <b>Brugerdefineret</b>&mdash;Beregner v&aelig;rdien af en pixel baseret p&aring; en brugerdefineret rasterfunktion.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Vælg rasterfunktionsskabelon</h2></div>
+        <hr/>
+        <div>
+            <p>En brugerdefineret rasterfunktion, der bruges til at beregne pixelv&aelig;rdierne for de aggregerede rastere. Input er et rasterfunktion-skabelonelement i portalen. Dette input er obligatorisk, n&aring;r  <b>Aggregeringsmetode</b> er indstillet til <b>Brugerdefineret</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Vælg aggregeringsdefinition</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver det dimensionsinterval, som dataene bliver aggregeret for. 
+                <ul>
+                    <li> <b>Alle</b>&mdash;Datav&aelig;rdierne aggregeres p&aring; tv&aelig;rs af alle udsnit i intervallet. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Interval-n&oslash;gleord</b>&mdash;De variable data aggregeres ved hj&aelig;lp af et almindeligt kendt interval.
+                    </li>
+                    <li> <b>Interval-v&aelig;rdier</b>&mdash;De variable data aggregeres ved hj&aelig;lp af brugerdefineret interval og enhed.
+                    </li>
+                    <li> <b>Interval-omr&aring;der</b>&mdash;De variable data aggregeres mellem angivne par af v&aelig;rdier og datoer.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Vælg nøgleordsinterval</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver det n&oslash;gleordsinterval, der bruges ved aggregering af langs dimensionen. Dette input er obligatorisk, n&aring;r  <b>Aggregeringsdefinition</b> er indstillet til <b>Interval-n&oslash;gleord</b>, og aggregeringen skal ske over tid.
+                <ul>
+                    <li> <b>Time</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en time, og resultatet omfatter hver enkelt time i tidsserien.
+                    </li>
+                    <li> <b>Dagligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en dag, og resultatet omfatter hver enkelt dag i tidsserien.
+                    </li>
+                    <li> <b>Ugentligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en uge, og resultatet omfatter hver enkelt uge i tidsserien.
+                    </li>
+                    <li> <b>M&aring;nedligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en m&aring;ned, og resultatet omfatter hver enkelt m&aring;ned i tidsserien.
+                    </li>
+                    <li> <b>Kvartalsvis</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; et kvartal, og resultatet omfatter hvert enkelt kvartal i tidsserien.
+                    </li>
+                    <li> <b>&Aring;rligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; et &aring;r, og resultatet omfatter hvert enkelt &aring;r i tidsserien.
+                    </li>
+                    <li> <b>Gentages dagligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en dag, og resultatet omfatter en aggregeret v&aelig;rdi pr. juliansk dag. Outputtet indeholder h&oslash;jst 366 daglige tidsudsnit.
+                    </li>
+                    <li> <b>Gentages ugentligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en uge, og resultatet omfatter en aggregeret v&aelig;rdi pr. uge. Outputtet indeholder h&oslash;jst 53 ugentlige tidsudsnit.
+                    </li>
+                    <li> <b>Gentages m&aring;nedligt</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; en m&aring;ned, og resultatet omfatter en aggregeret v&aelig;rdi pr. m&aring;ned. Outputtet indeholder h&oslash;jst 12 m&aring;nedlige tidsudsnit.
+                    </li>
+                    <li> <b>Gentages kvartalsvis</b>--Datav&aelig;rdierne bliver aggregeret i trin p&aring; et kvartal, og resultatet omfatter en aggregeret v&aelig;rdi pr. kvartal. Outputtet indeholder h&oslash;jst 4 kvartalsvise tidsudsnit.
+                    </li>
+                    <li> <b>10 dage</b>--Datav&aelig;rdierne aggregeres til 3 perioder p&aring; 10 dage hver. Den sidste periode kan indeholde flere eller f&aelig;rre end 10 dage. Outputtet indeholder 3 tidsudsnit for hver m&aring;ned.
+                    </li>
+                    <li> <b>5 dage</b>--Datav&aelig;rdierne aggregeres til 6 perioder p&aring; 5 dage hver. Den sidste periode kan indeholde flere eller f&aelig;rre end 5 dage. Outputtet indeholder 6 tidsudsnit for hver m&aring;ned.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Værdiinterval</h2></div>
+        <hr/>
+        <div>
+            <p>St&oslash;rrelsen p&aring; det interval, der skal bruges til aggregering. Dette input er obligatorisk, n&aring;r parameteren  <b>Aggregeringsdefinition</b> er indstillet til <b>Intervalv&aelig;rdi</b>.
+            </p>
+            <p>Hvis man f.eks. vil aggregere 30 &aring;rs m&aring;nedlige temperaturdata til stigende 5 &aring;rsintervaller, skal man indtaste 5 som  <b>V&aelig;rdiinterval</b> og angive <b>Enhed </b> til <b>&Aring;r</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Enhed</h2></div>
+        <hr/>
+        <div>
+            <p>Den enhed, der bliver brugt som intervalv&aelig;rdi. Dette input er obligatorisk, n&aring;r  <b>Dimension</b> er et tidsfelt, og <b>Aggregeringsdefinition</b> er indstillet til <b>Intervalv&aelig;rdi</b>.
+            </p>
+            <p>Hvis du aggregerer over andet end tid, er denne indstilling ikke tilg&aelig;ngelig, og enheden for intervalv&aelig;rdien svarer til den variable enhed i de flerdimensionale input-rasterdata. 
+                <ul>
+                    <li> <b>Timer</b>--Datav&aelig;rdierne bliver aggregeret i tidsudsnit p&aring; en time ved det angivne interval.
+                    </li>
+                    <li> <b>Dage</b>--Datav&aelig;rdierne bliver aggregeret i tidsudsnit p&aring; en dag ved det angivne interval.
+                    </li>
+                    <li> <b>Uger</b>--Datav&aelig;rdierne bliver aggregeret i tidsudsnit p&aring; en uge ved det angivne interval.
+                    </li>
+                    <li> <b>M&aring;neder</b>--Datav&aelig;rdierne bliver aggregeret i tidsudsnit p&aring; en m&aring;ned ved det angivne interval.
+                    </li>
+                    <li> <b>&Aring;r</b>--Datav&aelig;rdierne bliver aggregeret i tidsudsnit p&aring; et &aring;r dag ved det angivne interval.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definer intervaller</h2></div>
+        <hr/>
+        <div>
+            <p>Der bliver benyttet intervalomr&aring;der til at aggregere grupper af v&aelig;rdier. De best&aring;r af par af minimum- og maksimum-omr&aring;dev&aelig;rdier med datatypen Dobbelt eller Dato. Dette input er obligatorisk, n&aring;r  <b>Aggregeringsdefinition</b> er indstillet til <b>Intervalomr&aring;der</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorér manglende værdier i beregning</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen. 
+                <ul>
+                    <li>Markeret - Analysen omfatter alle gyldige pixels langs en given dimension og ignorerer eventuelle NoData-pixels. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li>Ikke markeret-- Analysen resulterer i NoData, hvis der er nogen NoData-v&aelig;rdier for pixelen langs den givne dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

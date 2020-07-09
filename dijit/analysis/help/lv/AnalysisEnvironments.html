@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portāla analīzes darba vides iestatījumi</h2><p/>
+        <h2>Portāla analīzes vides iestatījumi</h2><p/>
         <h2></h2>
         <hr/>
     <p>  Vides iestatījumi analīzei Portal for ArcGIS un  ArcGIS Online. 
@@ -94,7 +94,7 @@
                 <ul>
                     <li>Atzīmēta&nbsp;&mdash; jūsu analīzes rezultāti izveidos viesotu elementu slāni un jūsu saturā tiks izveidota vienība. Tā ir noklusējuma vērtība.
                     </li>
-                    <li>Neatzīmēta&nbsp;&mdash; no jūsu analīzes rezultātiem tiks izveidots elementu kopums.     
+                    <li>Neatzīmēta&nbsp;&mdash; no jūsu analīzes rezultātiem tiks izveidota elementu kolekcija.     
                     </li>
                 </ul>
                 
@@ -236,11 +236,27 @@
             </p>
             <p>Rīki, kas attiecas uz  <b>Paralēlo apstrādes faktoru</b> vidi, ļauj kontrolēt rastra apstrādes pakalpojumu instanču skaitu, ko var izmantot datu apstrādei.
             </p>
-            <p>Ja rīks neatbilst  <b>Procesora tipam</b>, vai ja <b>Procesora tipa</b> vide ir iestatīta kā <b>CPU</b>, <b>Paralēlās apstrādes faktora</b> vide kontrolē rastra apstrādes (CPU) pakalpojuma instances. Ja <b>Procesora tips</b> ir iestatīts uz <b>GPU</b>, <b>Paralēlā apstrādes faktora</b> vide kontrolē rastra apstrādes GPU instanču skaitu.
+            <p>Ja rīks neatbilst  <b>Procesora tipam</b>, vai ja <b>Procesora tipa</b> vide ir iestatīta kā <b>CPU</b>, <b>Paralēlās apstrādes faktora</b> vide kontrolē rastra apstrādes (CPU) pakalpojuma instances. Ja <b>Procesora veids</b> ir iestatīts uz <b>GPU</b>, <b>Paralēlā apstrādes faktora</b> vide kontrolē rastra apstrādes GPU instanču skaitu.
             </p> 
             <p>Iestatot  <b>Paralēlas apstrādes faktoru</b>, varat pieprasīt paralēlo darbinieku skaitu, ko rastra analīzes attēlu serveris izmanto viena rastra analīzes uzdevuma apstrādei. Tomēr, ja kopējais paralēlo procesu skaits pārsniedz maksimālo rastra apstrādes (CPU vai GPU) pakalpojumu instanču skaitu, papildu paralēlie procesi tiks ievietoti rindā.
             </p>
-            <p>Ja  <b>Paralēlās apstrādes faktors</b> netiek norādīts, kas ir noklusējums, rīks izmantos 80 procentus no maksimālā rastra apstrādes pakalpojuma instanču skaita. Kā paralēlās apstrādes faktoru var norādīt veselu skaitli vai procentus.
+            <p>Ja  <b>Paralēlās apstrādes faktors</b> netiek norādīts, kas ir noklusējums, rīks izmantos 80 procentus no maksimālā rastra apstrādes pakalpojuma instanču skaita. Kā paralēlās apstrādes koeficientu var norādīt veselu skaitli vai procentus.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Mēģinājuma reižu skaits neizdošanās gadījumā</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, cik reizes viens darbinieks var veikt apstrādi, ja ir radusies nejau&scaron;a kļūme, veicot konkrētu darbu. Noklusējuma vērtība ir 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Apstrādes darbinieku darba cikla intervāls</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet, cik daudz attēla sekciju tiks apstrādāts pirms apstrādes darbinieku darba procesu pārstartē&scaron;anas, lai nepieļautu iespējamās kļūmes ilgsto&scaron;as apstrādes laikā. Noklusējuma vērtība ir 0.
             </p>
         </div>
     </div>
@@ -256,9 +272,9 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>GPU</b>&mdash;dati tiks apstrādāti, izmantojot grafikas apstrādes mērvienību.
+                    <li> <b>GPU</b>&nbsp;&mdash; dati tiks apstrādāti, izmantojot grafikas procesoru.
                     </li>
-                    <li> <b>CPU</b>&mdash;dati tiks apstrādāti, izmantojot datora centrālo procesoru.
+                    <li> <b>CPU</b>&nbsp;&mdash; dati tiks apstrādāti, izmantojot datora centrālo procesoru.
                     </li>
                 </ul>
                 

@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Zvolte vrstvu rastru nebo umístění prvku, ke kterému se vypočítá vzdálenost</h2></div>
+        <div><h2>Zvolte rastrovou vrstvu nebo vrstvu umístění prvků pro výpočet vzdálenosti k</h2></div>
         <hr/>
         <div>
             <p>Vrstva, kter&aacute; definuje zdroje, ke kter&yacute;m se vypoč&iacute;t&aacute; vzd&aacute;lenost. Tato vrstva může b&yacute;t image služba nebo feature služba.
@@ -137,6 +137,47 @@
             <p>Pole na vstupn&iacute; vrstvě zdroje, kter&eacute; obsahuje hodnoty definuj&iacute;c&iacute; každ&yacute; zdroj. Může se jednat o celoč&iacute;seln&eacute; nebo řetězcov&eacute; pole datov&eacute; sady zdroje.
             </p>
             <p>V&yacute;choz&iacute; hodnota je  <i>Value</i>. Pokud použ&iacute;v&aacute;te feature službu a nen&iacute; k dispozici ž&aacute;dn&eacute; pole <i>Value</i>, použije se prvn&iacute; dostupn&eacute; pole cel&eacute;ho č&iacute;sla nebo řetězce. Pokud neexistuje ž&aacute;dn&eacute; platn&eacute; pole, použije se pole ObjectID (např. OID nebo FID, v z&aacute;vislosti na typu vstupu prvku).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Zvolte vrstvu rastru nebo prvku, která bude představovat překážky</h2></div>
+        <hr/>
+        <div>
+            <p>Datov&aacute; sada, kter&aacute; definuje přek&aacute;žky. 
+            </p>
+            <p>Typ vstupu u image služby může b&yacute;t cel&eacute; č&iacute;slo nebo desetinn&eacute; č&iacute;slo. V&scaron;echny buňky, kter&eacute; maj&iacute; hodnotu (včetně nuly), budou považov&aacute;ny za přek&aacute;žku. Buňky, kter&eacute; nemaj&iacute; hodnotu (jsou NoData), nebudou považov&aacute;ny za přek&aacute;žku.
+            </p>
+            <p>Vstup u feature služby může b&yacute;t bod, linie nebo polygon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda vyhodnocování vzdáleností</h2></div>
+        <hr/>
+        <div>
+            <p>Urč&iacute;, zda vypoč&iacute;tat vzd&aacute;lenost pomoc&iacute; rovinn&eacute; metody (na ploch&eacute; zemi) nebo geodetick&eacute; metody (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Rovinn&aacute;</b> &ndash; v&yacute;počet bude proveden na kartograficky zobrazen&eacute; rovině pomoc&iacute; 2D kart&eacute;zsk&eacute;ho souřadnicov&eacute;ho syst&eacute;mu. Toto je v&yacute;choz&iacute; metoda.
+                    
+
+                </li>
+                <li> <b>Geodetick&aacute;</b> &ndash; vzd&aacute;lenosti jsou vypočteny na elipsoidu. Bez ohledu na kartografick&eacute; zobrazen&iacute; vstupu nebo v&yacute;stupu se v&yacute;sledky neměn&iacute;.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Název výsledné vrstvy zpětného směru</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b>. Mus&iacute;te zadat n&aacute;zev, kter&yacute; je&scaron;tě ve složce <b>Můj obsah</b> neexistuje.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Anv&auml;nd n&auml;rhet</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b>, <b>Hantera data</b> och <b>Djupinl&auml;rning</b>.
+        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Anv&auml;nd n&auml;rhet</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b>, <b>Hantera data</b>, <b>Djupinl&auml;rning</b> och <b>Flerdimensionell analys</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Sampla</b> extraherar data p&aring; definierade platser fr&aring;n ett raster eller en upps&auml;ttning raster.
+                </li>
             </ul>
             
         </p>
@@ -393,7 +395,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Skapa ett nytt rasterdataset fr&aring;n ett befintligt geoobjektsdataset.
+            <p>Skapa ett nytt rasterdataset fr&aring;n ett befintligt geoobjektdataset.
             </p>
             <br/>
         </div>
@@ -408,21 +410,38 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Skapa ett nytt geoobjektsdataset fr&aring;n ett befintligt rasterdataset.
+            <p>Skapa ett nytt geoobjektdataset fr&aring;n ett befintligt rasterdataset.
+            </p>
+            <br/>
+        </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sampla</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Sampla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Skapar en tabell eller punktgeoobjektklass med datav&auml;rden p&aring; definierade platser extraherade fr&aring;n ett raster eller en upps&auml;ttning raster.
             </p>
             <br/>
         </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Verktygssetet Djupinlärning</h2>
+        <h2>Djupinlärning</h2>
         <hr/>
-        <p>De h&auml;r verktygen anv&auml;nds f&ouml;r att uppt&auml;cka specifika geoobjekt i en bild eller f&ouml;r att klassificera pixlar i ett rasterdataset. Djupinl&auml;rning &auml;r en typ av maskininl&auml;rningsmetod med artificiell intelligens som uppt&auml;cker geoobjekt i bilder med flera lager i neurala n&auml;tverk d&auml;r varje lager kan extrahera ett eller flera unika geoobjekt i bilden. Verktygen f&ouml;rbrukar de modeller som har tr&auml;nats att uppt&auml;cka specifika geoobjekt i djupinl&auml;rningsramverk fr&aring;n tredje part, t.ex. TensorFlow, CNTK och Keras, och utdatageoobjekt eller klasskartor.
+        <p>De h&auml;r verktygen anv&auml;nds f&ouml;r att uppt&auml;cka eller klassificera specifika geoobjekt i en bild eller f&ouml;r att klassificera pixlar i ett rasterdataset. Djupinl&auml;rning &auml;r en typ av maskininl&auml;rningsmetod med artificiell intelligens som uppt&auml;cker geoobjekt i bilder med flera lager i neurala n&auml;tverk d&auml;r varje lager kan extrahera ett eller flera unika geoobjekt i bilden. Verktygen f&ouml;rbrukar de modeller som har tr&auml;nats att uppt&auml;cka specifika geoobjekt i djupinl&auml;rningsramverk fr&aring;n tredje part, t.ex. TensorFlow, CNTK och Keras, och utdatageoobjekt eller klasskartor.
             <ul>
                 <li> <b>Klassificera pixlar med djupinl&auml;rning</b> skapar ett klassificerat raster med en tr&auml;nad djupinl&auml;rningsmodell.
                 </li>
                 <li> <b>Identifiera objekt med djupinl&auml;rning</b> skapar en geoobjektklass som inneh&aring;ller objekt den hittar i ett indataraster med hj&auml;lp av en tr&auml;nad djupinl&auml;rningsmodell.
                 </li>
+                <li> <b>Klassificera objekt med djupinl&auml;rning</b> skapar en geoobjektklass eller tabell d&auml;r varje indataobjekt i ett indataraster tilldelas en klassetikett med hj&auml;lp av en tr&auml;nad djupinl&auml;rningsmodell.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>Det h&auml;r verktyget k&ouml;r en tr&auml;nad djupinl&auml;rningsmodell p&aring; ett indataraster f&ouml;r att skapa ett klassificerat raster, och varje giltig pixel har en tilldelad klassetikett.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>Det h&auml;r verktyget k&ouml;r en tr&auml;nad djupinl&auml;rningsmodell p&aring; ett indataraster f&ouml;r att skapa en geoobjektklass som inneh&aring;ller de objekt det hittar. Geoobjekten kan vara begr&auml;nsande boxar eller polygoner runt de hittade objekten, eller punkter i mitten av objekten.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassificera objekt med djupinlärning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klassificera objekt med djupinl&auml;rning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget k&ouml;r en tr&auml;nad djupinl&auml;rningsmodell p&aring; ett indataraster och en valfri geoobjektklass f&ouml;r att skapa en geoobjektklass eller tabell d&auml;r varje indataobjekt har en tilldelad klassetikett.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Flerdimensionell analys</h2>
+        <hr/>
+        <p>Med verktygen i verktygssetet Flerdimensionell analys kan du utf&ouml;ra analyser av vetenskapliga data med m&aring;nga variabler och dimensioner.
+        </p>
+        <p>Flerdimensionella data representerar data som registrerats vid olika tidpunkter, djup och h&ouml;jder &ouml;ver marken. Den h&auml;r typen av data anv&auml;nds ofta inom geovetenskap och vetenskapsomr&aring;den som involverar atmosf&auml;ren och haven. Med det h&auml;r verktygssetet kan du analysera flerdimensionella rasterdata i flera format, inklusive netCDF, HDF, GRIB, flerdimensionella mosaikdataset och Esris molnrasterformat (CRF).
+        </p>
+        <p>F&ouml;ljande tabell visar en lista med flerdimensionella analysverktyg och en beskrivning av vart och ett.
+            <ul>
+                <li> <b>Aggregera flerdimensionellt raster</b> genererar ett flerdimensionellt rasterdataset genom att aggregera befintliga flerdimensionella rastervariabler l&auml;ngs en dimension.
+                </li>
+                <li> <b>Generera flerdimensionell anomali</b> ber&auml;knar anomalin f&ouml;r varje sektor i ett flerdimensionellt raster f&ouml;r att generera ett flerdimensionellt raster.
+                </li>
+                <li> <b>Generera trendraster</b> uppskattar trenden f&ouml;r varje pixel l&auml;ngs en dimension f&ouml;r en eller flera variabler i ett flerdimensionellt raster.
+                </li>
+                <li> <b>F&ouml;ruts&auml;g med trendraster</b> ber&auml;knar ett prognostiserat flerdimensionellt raster med utdatatrendrastret fr&aring;n funktionen <b>Generera trendraster</b>.
+                </li>
+                <li> <b>Hitta argumentstatistik</b> extraherar det dimensionsv&auml;rde eller bandindex d&auml;r en given statistik uppn&aring;s f&ouml;r varje pixel i ett flerdimensionellt raster eller flerbandsraster.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregera flerdimensionellt raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Aggregera flerdimensionellt raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget genererar ett flerdimensionellt rasterdataset genom att aggregera befintliga flerdimensionella rastervariabler l&auml;ngs en dimension.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitta argumentstatistik</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Hitta argumentstatistik">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget extraherar det dimensionsv&auml;rde eller bandindex d&auml;r en given statistik uppn&aring;s f&ouml;r varje pixel i ett flerdimensionellt raster eller flerbandsraster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generera flerdimensionell anomali</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generera flerdimensionell anomali">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget ber&auml;knar anomalin f&ouml;r varje sektor i ett flerdimensionellt raster f&ouml;r att generera ett flerdimensionellt raster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generera trendraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generera trendraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget uppskattar trenden f&ouml;r varje pixel l&auml;ngs en dimension f&ouml;r en eller flera variabler i ett flerdimensionellt raster.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Förutsäg med trendraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="F&ouml;ruts&auml;g med trendraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget ber&auml;knar ett prognostiserat  flerdimensionellt raster med utdatatrendrastret fr&aring;n funktionen  <b>Generera trendraster</b>.
             </p>
             <br/>
         </div>

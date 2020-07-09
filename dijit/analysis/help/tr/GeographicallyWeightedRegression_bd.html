@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Coğrafi Olarak Ağırlıklı Regresyon</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Coğrafi Olarak Ağırlıklı Regresyon iş akışı diyagramı"></h2>
+        <hr/>
+    <p>Mekansal olarak değişen ilişkileri modellemek i&ccedil;in kullanılan yerel bir doğrusal regresyon formu olan Coğrafi Olarak Ağırlıklı Regresyon (GWR) işlemini ger&ccedil;ekleştirir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Analiz edilecek bir katman seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Bağımlı ve a&ccedil;ıklayıcı değişkenleri i&ccedil;eren nokta detaylarını i&ccedil;eren katman.
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Analiz Katmanını Se&ccedil;</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz. İsteğe bağlı olarak girdi katmanınıza bir filtre uygulayabilir veya haritanıza eklenen barındırılan katmanlara bir se&ccedil;im uygulayabilirsiniz. Filtreler ve se&ccedil;imler sadece analiz i&ccedil;in uygulanır. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Model oluşturulacak alanı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Modellenecek g&ouml;zlemlenen değerleri ve modellemekte olduğunuz değerin t&uuml;r&uuml;n&uuml; i&ccedil;eren sayısal alan.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Açıklayıcı alanları seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Değeri tahmin etmeye yardımcı olan a&ccedil;ıklayıcı değişkenleri temsil eden bir veya daha fazla alan (alanlar). Sadece sayısal alanlar g&ouml;r&uuml;necektir.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Komşuluğun nasıl belirleneceğini seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Kullanılan komşuluğun, detayların yoğunluğuna bağlı olarak sabit bir mesafe olarak mı inşa edileceğini veya mekansal yayılımda değişmesine izin verilip verilmeyeceğini belirtir.
+                <ul>
+                    <li> <b>Komşuluk Sayısı</b>: Komşuluk boyutu, her bir detay i&ccedil;in hesaplamalara dahil edilen belirli sayıda komşuluğun bir fonksiyonudur. Detayların yoğun olduğu yerlerde, komşuluğun mekansal yayılımı daha k&uuml;&ccedil;&uuml;kt&uuml;r; detayların seyrek olduğu yerlerde ise komşuluğun mekansal yayılımı daha b&uuml;y&uuml;kt&uuml;r. Bu se&ccedil;eneği tercih ettiğinizde, dahil etmek istediğiniz komşuluk sayısını belirtin. Bu sayı, 2 ile 5000 arasında bir tamsayı olmalıdır.
+                    </li>
+                    <li> <b>Mesafe Bandı</b>: Komşuluk boyutu, her detay i&ccedil;in sabit veya değişmez bir mesafedir. Bu se&ccedil;eneği tercih ettiğinizde, komşuluğun mekansal yayılımını temsil edecek mesafe bandını se&ccedil;in.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Komşuluk detaylarının nasıl ağırlıklandırılacağını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Modeldeki mekansal ağırlıklandırmayı sağlamak i&ccedil;in kullanılacak &ccedil;ekirdek t&uuml;r&uuml;n&uuml; belirtir. Bu &ccedil;ekirdek, her bir detayın komşuluktaki diğer detaylarla nasıl ilişkili olduğunu tanımlar.
+                <ul>
+                    <li> <b>&Ccedil;iftkare</b>: Belirtilen komşuluk dışındaki herhangi bir detaya 0 ağırlığı atanır. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Gauss</b>: T&uuml;m detaylar ağırlık alır, ancak ağırlıklar hedef detaydan uzaklaştık&ccedil;a katlanarak k&uuml;&ccedil;&uuml;l&uuml;r.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> Oluşturulacak katmanın adı. Bir ArcGIS Data Store&lsquo;a yazdığınızda, sonu&ccedil;larınız  <b>İ&ccedil;eriğime</b> kaydedilir ve haritaya eklenir. Bir b&uuml;y&uuml;k veri dosya paylaşımına yazdığınızda, sonu&ccedil;larınız b&uuml;y&uuml;k veri dosya paylaşımı i&ccedil;ine kaydedilir ve manifestosuna eklenir. Haritaya eklenmez. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            </p>
+            <p> ArcGIS Data Store&lsquo;a yazarken (ilişkisel ya da mekan-zamansal b&uuml;y&uuml;k veri deposu)  <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

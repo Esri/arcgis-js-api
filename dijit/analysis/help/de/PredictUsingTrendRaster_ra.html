@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Mit Trend-Raster vorhersagen</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Mit Trend-Raster vorhersagen"></h2>
+        <hr/>
+    <p>Berechnet ein prognostiziertes multidimensionales Raster mithilfe des Ausgabe-Trend-Rasters aus dem Werkzeug  Trend-Raster generieren.
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden die Variablen des Layers analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn die Option deaktiviert ist, werden die Variablen des gesamten Layers analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Multidimensionalen Bilddaten-Layer für die Vorhersage auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das multidimensionale Eingabe-Trend-Raster aus dem Werkzeug  Trend-Raster generieren
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variable(n) für die Vorhersage auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein oder mehrere Variablen, die in der Analyse vorhergesagt werden. Wenn keine Variablen angegeben sind, werden alle Variablen verwendet.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Methode zum Bereitstellen von Vorhersagedimensionswerten auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die Methode an, die zum Bereitstellen von Vorhersagedimensionswerten verwendet wird.
+                <ul>
+                    <li> <b>Schrittweite</b>: Die Vorhersage wird f&uuml;r einen einzelnen Dimensionswert oder eine Liste von Dimensionswerten berechnet, der bzw. die im n&auml;chsten Schritt angegeben werden. Dies ist die Standardeinstellung. Dies ist der Fall, wenn Sie beispielsweise die j&auml;hrlichen Niederschl&auml;ge f&uuml;r die Jahre 2050, 2100 und 2150 vorhersagen m&ouml;chten.
+                    </li>
+                    <li> <b>Nach Intervall</b>: Die Vorhersage wird f&uuml;r ein Intervall der Dimension berechnet, die durch einen Anfangs- und einen Endwert definiert ist. Dies ist der Fall, wenn Sie beispielsweise die j&auml;hrlichen Niederschl&auml;ge f&uuml;r alle Jahre zwischen 2050 und 2150 vorhersagen m&ouml;chten.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Dimensionswert(e) für die Vorhersage angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Der Dimensionswert, der in der Vorhersage verwendet werden soll.
+            </p>
+            <p>Das Format der Werte f&uuml;r Uhrzeit, Tiefe und H&ouml;he muss mit dem Format der Dimensionswerte &uuml;bereinstimmen, die zum Generieren des Trend-Rasters verwendet wurden. Wenn das Trend-Raster f&uuml;r die Dimension &quot;StdTime&quot; generiert wurde, muss das Format JJJJ-MM-TTThh:mm:ss, also z.&nbsp;B. 2050-01-01T00:00:00, verwendet werden. Mehrere Werte werden durch Semikolons getrennt angegeben.
+            </p>
+            <p>Dieser Parameter ist erforderlich, wenn die Methode  <b>Schrittweite</b> f&uuml;r die Definition der Dimensionswerte f&uuml;r die Vorhersage ausgew&auml;hlt wird.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Dimensionsintervall für die Vorhersage definieren</h2></div>
+        <hr/>
+        <div>
+            <p>Definieren Sie die Werte f&uuml;r Start- und Enddatum, H&ouml;he oder Tiefe des Dimensionsintervalls, die in der Vorhersage verwendet werden sollen.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Anzahl der Schritte zwischen Start- und Endwert festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Anzahl der Schritte zwischen zwei Dimensionswerten, die in die Vorhersage einbezogen werden sollen. Der Standardwert ist 1.
+            </p>
+            <p>Um z.&nbsp;B. die Temperaturwerte alle f&uuml;nf Jahre vorherzusagen, verwenden Sie den Wert 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Einheit für das Zeitwertintervall auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die f&uuml;r das Wertintervall verwendete Einheit an. Diese Angabe ist nur relevant, wenn es sich bei der Analysedimension um eine Zeitdimension handelt.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

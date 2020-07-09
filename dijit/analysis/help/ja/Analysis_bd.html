@@ -41,7 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p> GeoAnalytics は、 ArcGIS GeoAnalytics Server 全体に解析作業を分配します。これにより、複数のコンピューターで、より多くのデータをよりすばやく解析できます。使用できるツールを次に示します。 <ul>
+        <p>GeoAnalytics は、 ArcGIS GeoAnalytics Server 全体に解析作業を分配します。これにより、複数のコンピューターで、より多くのデータをよりすばやく解析できます。使用できるツールを次に示します。
+            <ul>
                 <li> ポイントの集約
                 </li>
                 <li> 多変数グリッドの構築 (Build Multi-Variable Grid)
@@ -56,39 +57,43 @@
                 </li>
                 <li> エリア内での集計
                 </li>
+                <li> インシデントの検出 (Detect Incidents)
+                </li>
+                <li> 滞在場所の検索 (Find Dwell Locations)
+                </li>
+                <li> 類似フィーチャの検索
+                </li>
                 <li> テーブルから場所をジオコーディング (Geocode Locations from Table)
                 </li>
                 <li> 多変数グリッドから情報付加 (Enrich From Multi-Variable Grid)
                 </li>
-                <li> インシデントの検出 (Detect Incidents)
-                </li>
-                <li> 類似フィーチャの検索
-                </li>
                 <li> 密度の計算 (Calculate Density)
                 </li>
-                <li> ポイント クラスターの検索 (Find Point Clusters)
-                </li>
                 <li> ホット スポット分析 (Find Hot Spots)
+                </li>
+                <li> ポイント クラスターの検索 (Find Point Clusters)
                 </li>
                 <li> フォレストベースの分類と回帰分析 (Forest-based Classification and Regression)
                 </li>
                 <li> 一般化線形回帰分析 (Generalized Linear Regression)
                 </li>
+                <li> 地理空間加重回帰分析 (Geographically Weighted Regression)
+                </li>
                 <li> バッファーの作成
                 </li>
-                <li> データのアペンド (Append Data)
+                <li> データの追加 (Append Data)
                 </li>
                 <li> フィールド演算 (Calculate Field)
                 </li>
-                <li> データ ストアにコピー (Copy to Data Store)
+                <li> レイヤーのクリップ (Clip Layer) 
                 </li>
-                <li> オーバーレイ
+                <li> データ ストアにコピー (Copy to Data Store)
                 </li>
                 <li> 境界線のディゾルブ
                 </li>
                 <li> レイヤーのマージ
                 </li>
-                <li> レイヤーのクリップ (Clip Layer) 
+                <li> オーバーレイ
                 </li>
             </ul>
             
@@ -96,24 +101,24 @@
         <p>GeoAnalytics は、特に空間パターンと時間パターンの両方に重点を置いて大規模なデータを解析します。 
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="largesize">
-        <h2>Summarize Data</h2>
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>データの集約</h2>
         <hr/>
-        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p>  [データの集約] ツールセットには、エリア内または他のフィーチャの近くで、フィーチャとその属性の合計数、長さ、面積、および説明的な基本統計情報を計算するツールが用意されています。
             <ul>
-                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                <li> <b>[ポイントの集約]</b> では、指定のエリアまたはビン内にあるポイントの統計情報を計算します。
                 </li>
-                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
+                <li> <b>[多変数グリッドの構築]</b> は、四角形または六角形のビンのグリッドを生成し、各入力レイヤーの近接性に基づいてビンごとに値を計算します。
                 </li>
-                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
+                <li> <b>[データセットの記述]</b> は、入力のサマリーを計算し、必要に応じて、入力レイヤーのサンプルを生成できます。
                 </li>
-                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
+                <li> <b>[フィーチャの結合]</b> では、空間、時系列、または属性リレーションシップを他のフィーチャと共有しているフィーチャの統計情報を計算します。
                 </li>
-                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
+                <li> <b>[トラックの再構築]</b> では、同じトラックに属しているポイントまたはポリゴンの統計情報を計算し、入力をトラックに再構築します。
                 </li>
-                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                <li> <b>[属性の集計]</b> では、属性を共有しているフィーチャまたは表形式データの統計情報を計算します。
                 </li>
-                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                <li> <b>[エリア内での集計]</b> では、互いにオーバーラップしているエリア フィーチャとその属性の統計情報を計算します。
                 </li>
             </ul>
             
@@ -136,7 +141,7 @@
                 <ul>
                     <li>犯罪事件のポイント位置を基に、国やその他の行政区域別に犯罪数をカウントします。
                     </li>
-                    <li>100 キロメートルのビンを使用して、フランチャイズ店の各位置に対して、毎月の最高の収益および最低の収益を検索します。
+                    <li>100 km のビンを使用して、フランチャイズ店の場所の最大月収と最小月収を確認します。
                     </li>
                 </ul>
                 
@@ -223,14 +228,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>トラックの再構築 (Reconstruct Tracks)</h2></td>
+                    <td><h2>トラッキングの再構築 (Reconstruct Tracks)</h2></td>
                     <td>
                     <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="トラックの再構築 (Reconstruct Tracks)">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <code>瞬間</code>を表すポイントまたはポリゴン フィーチャの時間対応レイヤーを使用すると、このツールは、トラッキングに属している入力フィーチャを特定し、入力の時系列順を決定します。必要に応じて、各トラッキングの入力フィーチャの統計情報が計算されます。
+            <p>瞬間を表すポイントまたはポリゴン フィーチャの時間対応レイヤーを使用すると、このツールは、トラッキングに属している入力フィーチャを特定し、入力の時系列順を決定します。必要に応じて、各トラッキングの入力フィーチャの統計情報が計算されます。
             </p>
             <p>以下に例を示します。
                 <ul>
@@ -300,6 +305,8 @@
                 </li>
                 <li> <b>[テーブルから場所をジオコーディング]</b> は、住所を座標に変換します。
                 </li>
+                <li> <b>[滞在場所の検索]</b> は、オブジェクトが一定期間、一定距離内に滞在しているトラック データセット内の場所を検索します。
+                </li>
                 <li> <b>[類似フィーチャの検索]</b> は、指定した条件に基づいて、1 つ以上の参照場所に最も類似している場所を検索します。
                 </li>
             </ul>
@@ -345,6 +352,30 @@
             </p>
             <br/>
         </div>
+        <div id="FindDwellLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>滞在場所の検索 (Find Dwell Locations)</h2></td>
+                    <td>
+                    <img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" class="titleImage" alt="[滞在場所の検索] のワークフロー図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、トラック データセットで機能します。オブジェクトが指定の距離と期間内に滞在する場所を検出できるよう、ポイントの時間対応レイヤーから構成されています。
+            </p>
+            <p>以下に例を示します。
+                <ul>
+                    <li>動物の移動パターンを解析して、保護活動を改善します。このツールを使用して、動物が頻繁に滞在するポイントを潜在的な保護エリアとして特定し、生物の多様性を保護します。
+                    </li>
+                    <li>車両の GPS 位置を使用して、車両の減速が発生している住所を見つけ、交通の安全性を向上させます。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -358,7 +389,7 @@
 <hr/>
             <p>[類似フィーチャの検索] は、指定した条件に基づいて、基準となる 1 つ以上の場所に対する検索候補レイヤー内の類似場所を測定します。
             </p>
-            <p>以下に例を示します。 
+            <p>以下に例を示します。
                 <ul>
                     <li>従業員数と年間売上を調べて、最も類似している 10 か所の店舗を検索します。
                     </li>
@@ -372,7 +403,7 @@
     <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>パターンの分析</h2>
         <hr/>
-        <p>  これらのツールを使用すると、データ内の空間パターンを識別、定量化、および視覚化できます。
+        <p> これらのツールを使用すると、データ内の空間パターンを識別、定量化、および視覚化できます。
             <ul>
                 <li> <b>[密度の計算]</b> では、ある現象の既知の数量を取得してマップ上に展開します
                 </li>
@@ -382,7 +413,9 @@
                 </li>
                 <li> <b>[フォレストベースの分類と回帰分析 (Forest-based Classification and Regression)]</b> は、教師付きコンピューター ラーニング手法である Leo Breiman のランダム フォレスト アルゴリズムを転用してモデルを作成し、予測を生成します。
                 </li>
-                <li> <b>[一般化線形回帰分析 (Generalized Linear Regression)]</b> は、予測したり、一連の説明変数との関係から従属変数をモデル化したりします。
+                <li> <b>[一般化線形回帰分析]</b> は、予測したり、一連の説明変数との関係から従属変数をモデル化したりします。
+                </li>
+                <li> <b>[地理空間加重回帰分析 (Geographically Weighted Regression)]</b> は、空間的に変化する関係をモデリングするときに使用される局所形の線形回帰を使用してモデルを作成します。
                 </li>
             </ul>
             
@@ -407,7 +440,7 @@
                     </li>
                     <li>過去に森林火災があった場所に基づいて、森林火災のリスクの高いエリアを特定する場合。
                     </li>
-                    <li>新しい道路を建設する場所を計画するために、主要道路から遠い地域を特定する場合。
+                    <li>新しい道路を建設する場所を計画するために、主要道路から遠い地域を特定します。
                     </li>
                 </ul>
                 
@@ -429,9 +462,9 @@
             </p>
             <p>以下に例を示します。
                 <ul>
-                    <li>害虫によって感染した世帯のクラスターを検索して、感染撲滅の取り組みの対象を絞ることができます。  
+                    <li>駆除作業を支援するために、害虫が蔓延する世帯群を検索します。
                     </li>
-                    <li>自然災害およびテロ攻撃の後に、ジオタグ付きツイートを使用して、クラスターのサイズおよび位置に基づいて救助および避難の必要性に関して情報を伝え、影響を与えます。
+                    <li>自然災害またはテロ攻撃をフォローする、ジオロケートされたツイートを使用し、世帯群の規模と位置に基づいて、救助と避難のニーズを知らせ、行動します。
                     </li>
                 </ul>
                 
@@ -453,7 +486,7 @@
                 <ul>
                     <li>ポイント データ (犯罪事件、樹木、交通事故) は本当にクラスター化されているか。どのようにすれば確認できるか？
                     </li>
-                    <li>統計的に有意なホット スポット (消費、乳児死亡率、一貫して高いテスト スコア) を本当に発見したか。あるいは、シンボルを変更したら、マップから得られる情報は変化するか。
+                    <li>統計的に有意なホット スポット (消費、乳児死亡率、一貫して高いテスト スコア) を本当に発見したか？あるいは、シンボルを変更したら、マップから得られる情報は変化するか？
                     </li>
                 </ul>
                 [ホット スポット分析 (Find Hot Spots)] ツールを使用すると、これらの質問に自信を持って答えることができます。
@@ -471,7 +504,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>[フォレストベースの分類と回帰分析 (Forest-based Classification and Regression)] ツールは、教師付きコンピューター ラーニング手法である Leo Breiman のランダム フォレスト アルゴリズムを転用してモデルを作成し、予測を生成します。
+            <p>[フォレストベースの分類と回帰分析] ツールは、教師付きコンピューター ラーニング手法である Leo Breiman のランダム フォレスト アルゴリズムを転用してモデルを作成し、予測を生成します。
             </p>
             <p>以下に例を示します。
                 <ul>
@@ -480,7 +513,7 @@
                     </li>
                     <li>全国の数百軒の農場の作物収穫量に関するデータと各農場のその他の属性 (従業員数、農業面積など) があるとします。それらのデータを使用して、(他のすべての変数はあるが) 作物の収穫がない農場を表す一連のフィーチャを提供したり、収穫量を予測したりできます。
                     </li>
-                    <li>今年販売された住宅の価格に基づいて、住宅の価格を予測できます。住宅の販売価格と、寝室数、学校までの距離、主要な高速道路までの距離、平均収入、犯罪数などの情報を使用して、同様の住宅の販売価格を予測できます。
+                    <li>今年販売された住宅の価格に基づいて、住宅の価格を予測できます。販売された住宅の販売価格と、寝室数、学校までの距離、主要幹線道路までの距離、平均収入、犯罪発生数に関する情報を使用して、類似する住宅の販売価格を予測できます。
                          
                     </li>
                 </ul>
@@ -488,7 +521,7 @@
             </p>
             <br/>
         </div>
-        <div id="GeneralizedLinearRegressionTool" class="largesize">
+        <div id="GeneralizedLinearRegressionTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -499,7 +532,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>[一般化線形回帰分析 (Generalized Linear Regression)] ツールは、予測したり、一連の説明変数との関係から従属変数をモデル化したりします。このツールを使用して、連続 (OLS)、バイナリ (ロジスティック)、およびカウント (ポワソン分布) のモデルを適合させることができます。
+            <p>[一般化線形回帰分析 (Generalized Linear Regression)] ツールは、予測したり、一連の説明変数との関係から従属変数をモデル化したりします。このツールを使用して、連続 (OLS)、バイナリ (論理)、およびカウント (ポワソン分布) のモデルに適合させることができます。
             </p>
             <p>以下に例を示します。
                 <ul>
@@ -510,6 +543,32 @@
                     <li>どの変数が効果的に緊急通報量を予測するか。将来の予測に基づき、予想される緊急応答リソースに対する要求はどのようなものか。
                     </li>
                     <li>どの変数が低い出生率に影響を与えるか。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeographicallyWeightedRegressionTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>地理空間加重回帰分析 (Geographically Weighted Regression)</h2></td>
+                    <td>
+                    <img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" class="titleImage" alt="[地理空間加重回帰分析] のワークフロー図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、空間的に変化する関係をモデリングするときに使用される局所形の線形回帰である、地理空間加重回帰分析 (GWR) を実行します。
+            </p>
+            <p>以下に例を示します。
+                <ul>
+                    <li>学歴と所得の間のリレーションシップは、分析範囲全体にわたって一貫性があるか。
+                    </li>
+                    <li>森林火災の高い頻度を説明する主要な変数はどれか。
+                    </li>
+                    <li>生徒が試験で高成績をあげている地域はどこか。どのような特性が関連付けられているか。それぞのれ特性が最も重要であるのはどこか。
                     </li>
                 </ul>
                 
@@ -551,46 +610,47 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="largesize">
-        <h2>Manage Data</h2>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>データの管理</h2>
         <hr/>
-        <p>These tools are used for the day-to-day management of geographic and tabular data. 
+        <p>これらのツールは、地理データと表形式データの日々の管理に使用します。  
             <ul>
-                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                <li> <b>[データの追加]</b> は、フィーチャを既存のホスト フィーチャ レイヤーに追加します。
                 </li>
-                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
+                <li> <b>[フィールド演算]</b> は、新しいフィールドを作成するか、既存のフィールドを変更して、コンテンツ内に新しいレイヤーを作成します。
                 </li>
-                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
+                <li> <b>[レイヤーのクリップ]</b> は、対象の定義エリアと交差するフィーチャをコピーします。
                 </li>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                <li> <b>[データ ストアにコピー]</b> は、データを ArcGIS Data Store にコピーし、コンテンツにレイヤーを作成するか、データをビッグ データ ファイル共有にコピーします。 </li>
+                <li> <b>[境界のディゾルブ]</b> は、共通の境界線または共通の属性値を共有するエリアをマージします。
                 </li>
-                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                <li> <b>[レイヤーのマージ]</b> は、2 つのレイヤーのすべてのフィーチャを 1 つの結果レイヤーにコピーします。
                 </li>
-                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
-                </li>
-                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
+                <li> <b>[オーバーレイ]</b> は、複数のレイヤーを 1 つのレイヤーに結合します。
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="regularsize">
+        <div id="AppendDataTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>データ ストアにコピー</h2></td>
+                    <td><h2>データのアペンド</h2></td>
                     <td>
-                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="データ ストアにコピー">
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="[データのアペンド] のワークフロー図">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>入力フィーチャ レイヤーまたはテーブルを  ArcGIS Data Store にコピーし、ArcGIS Enterprise のコンテンツ内にレイヤーを作成します。 </p>
+            <p>フィーチャを、 ArcGIS Enterprise のコンテンツ内の既存のホスト レイヤーに追加します。 </p>
             <p>以下に例を示します。
                 <ul>
-                    <li>ビッグ データ ファイル共有にある  <code>.csv</code> ファイルのコレクションをビッグ データ ストアにコピーして視覚化します。
+                    <li>レポートが使用可能になったときに、2018_Sales フィーチャ レイヤーを毎月更新します。
                     </li>
-                    <li>現在のマップ範囲内のフィーチャのうち、ビッグ データ ストアに格納されているフィーチャをリレーショナル データ ストアにコピーします。
+                    <li>2016 年および 2017 年のハリケーン トラッキング データセットを、マスター ハリケーン データセットに追加します。
+                    </li>
+                    <li>カスタム フィールド割り当てを使用して、異なるスキーマを持っているさまざまなソースからデータセットを収集して追加します。
                     </li>
                 </ul>
                 
@@ -613,7 +673,7 @@
                 <ul>
                     <li> <i>total</i>という名前の既存のフィールドを収益のフィールド <i>total_2016</i>、 <i>total_2017</i>、 <i>total_2018</i> の合計に変更します。
                     </li>
-                    <li>新しいフィールドを作成して、 <i>windspeed</i> や <i>pollutant</i> などのフィールド値に基づいてハザード レベルを分類します。
+                    <li>フィールドを作成して、 <i>windspeed</i> や <i>pollutant</i> などのフィールド値に基づいてハザード レベルを分類します。
                     </li>
                 </ul>
                 
@@ -644,6 +704,29 @@
             </p>
             <br/>
         </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>データ ストアにコピー</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="データ ストアにコピー">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>入力フィーチャ レイヤーまたはテーブルを  ArcGIS Data Store にコピーし、ArcGIS Enterprise のコンテンツ内にレイヤーを作成します。 </p>
+            <p>以下に例を示します。
+                <ul>
+                    <li>ビッグ データ ファイル共有にある  <code>.csv</code> ファイルのコレクションをビッグ データ ストアにコピーして視覚化します。
+                    </li>
+                    <li>現在のマップ範囲内のフィーチャのうち、ビッグ データ ストアに格納されているフィーチャをリレーショナル データ ストアにコピーします。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="DissolveBoundariesTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -662,59 +745,6 @@
                     <li>ハワイ諸島の境界をディゾルブして、ハワイ州を表す 1 つのフィーチャを作成します。
                     </li>
                     <li>土壌タイプに基づいて類似する調査対象地域を結合し、連続する土壌タイプデータセットを出力します。
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="OverlayLayersTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>レイヤーのオーバーレイ (Overlay Layers)</h2></td>
-                    <td>
-                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="オーバーレイ">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>複数のレイヤーを 1 つのレイヤーに結合します。オーバーレイは、「何の上には何があるか」という地理で最も基本的な質問の 1 つに答えるために使用されます。
-            </p>
-            <p>以下に例を示します。
-                <ul>
-                    <li>100 年の氾濫原内にどのような土地区画があるか？ (ここでいう「内」は「上」と同じ意味です)。
-                          
-                    </li>
-                    <li>どのような土壌タイプの上にどのような土地利用があるか？
-                         
-                    </li>
-                    <li>軍用基地の跡地にどのような井戸があるか？
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="AppendDataTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>データのアペンド</h2></td>
-                    <td>
-                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="[データのアペンド] のワークフロー図">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>フィーチャを、 ArcGIS Enterprise のコンテンツ内の既存のホスト レイヤーに追加します。 </p>
-            <p>以下に例を示します。
-                <ul>
-                    <li>レポートが使用可能になったときに、2018_Sales フィーチャ レイヤーを毎月更新します。
-                    </li>
-                    <li>2016 年および 2017 年のハリケーン トラッキング データセットを、マスター ハリケーン データセットに追加します。
-                    </li>
-                    <li>カスタム フィールド割り当てを使用して、異なるスキーマを持っているさまざまなソースからデータセットを収集して追加します。
                     </li>
                 </ul>
                 
@@ -745,6 +775,34 @@
             </p>
             <br/>
         </div>
+        <div id="OverlayLayersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>レイヤーのオーバーレイ (Overlay Layers)</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="オーバーレイ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>複数のレイヤーを 1 つのレイヤーに結合します。オーバーレイは、「何の上には何があるか」という地理で最も基本的な質問の 1 つに答えるために使用されます。
+            </p>
+            <p>以下に例を示します。
+                <ul>
+                    <li>100 年の氾濫原内にどのような土地区画があるか (ここでいう「内」は「上」と同じ意味です)。
+                          
+                    </li>
+                    <li>どのような土壌タイプの上にどのような土地利用があるか？
+                         
+                    </li>
+                    <li>軍用基地の跡地にどのような井戸があるか？
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="EnrichLocationsCategory" class="smallsize">
         <h2>データへの情報付加</h2>
         <hr/>
@@ -769,7 +827,7 @@
 <hr/>
             <p>多変数グリッドから取得した属性をポイント レイヤーに効率的に結合すると、多様で大規模な情報のコレクションをポイント データに簡単に追加して、以降の空間解析で使用することができます。
             </p>
-            <p>以下に例を示します。
+            <p>例を以下に示します。
                 <ul>
                     <li>レイヤーに数百万もの停電インシデントが含まれていることを考慮すると、標準的な電力消費量、環境リスク、インフラの状態に関する情報をインシデント フィーチャに付加し、それらの要因と停電頻度とのリレーションシップを調査できます。
                     </li>

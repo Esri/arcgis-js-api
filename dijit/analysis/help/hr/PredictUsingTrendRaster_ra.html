@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Predvidi pomoću rastera trenda</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predvidi pomoću rastera trenda"></h2>
+        <hr/>
+    <p>Izračunava predviđanje vi&scaron;edimenzionalnog rastera upotrebljavajući izlazni raster trenda iz alata  Generiraj raster trenda.
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte,</b> analizirat će se varijable sloja koje su vidljive unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable cijelog sloja čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Odaberite sloj višedimenzionalnih snimki za predviđanje</h2></div>
+        <hr/>
+        <div>
+            <p>Ulazni vi&scaron;edimenzionalni raster trenda iz alata  Generiraj raster trenda .
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Odaberite varijablu/e koje će biti predviđene</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable koje će biti predviđene u analizi. Ako nije navedena nijedna varijabla, koristit će se sve varijable.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Odaberite metodu koja se koristi za davanje vrijednosti dimenzija predviđanja</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje metodu koja se koristi za davanje vrijednosti dimenzija predviđanja.
+                <ul>
+                    <li> <b>Pomoću vrijednosti</b>&mdash;Predviđanje će se izračunati za pojedinačnu vrijednost dimenzije ili popis vrijednosti dimenzija navedenih u sljedećem koraku. To je zadano. Na primjer, želite predvidjeti godi&scaron;nje padaline za godine 2050, 2100 i 2150.
+                    </li>
+                    <li> <b>Pomoću intervala</b>&mdash; Predviđanje će se izračunati za interval dimenzije koji je definiran početnom i krajnjom vrijedno&scaron;ću. Na primjer, želite predvidjeti godi&scaron;nje padaline za svaku godinu između 2050 i 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Odredite vrijednost/i dimenzije za predviđanje</h2></div>
+        <hr/>
+        <div>
+            <p>Vrijednost ili vrijednosti dimenzije koje se koriste u predviđanju.
+            </p>
+            <p>Format vrijednosti vremena, dubine i visine mora odgovarati formatu vrijednosti dimenzija koje se koriste za generiranje rastera trenda. Ako je generiran raster trenda za dimenziju StdTime, format bi trebao biti YYYY-MM-DDTHH:MM:SS, na primjer, 2050-01-01T00:00:00. Vi&scaron;e vrijednosti odvojeno je točkom sa zarezom.
+            </p>
+            <p>Ovaj je parametar potreban kada je odabrana metoda  <b>Pomoću vrijednosti</b> kako bi se definirale vrijednosti dimenzija za predviđanje.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Odredite interval dimenzije za predviđanje</h2></div>
+        <hr/>
+        <div>
+            <p>Definirajte datum početka i kraja, visinu ili dubinu intervala dimenzije koji će se koristiti u predviđanju.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Odredite broj koraka između početne i krajnje vrijednosti</h2></div>
+        <hr/>
+        <div>
+            <p>Broj koraka između dviju dimenzija koje treba uključiti u predviđanje. Zadana vrijednost je 1.
+            </p>
+            <p>Na primjer, za predviđanje vrijednosti temperature svakih pet godina koristite vrijednost 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Odaberite jedinicu koja će se upotrebljavati za vremenski interval</h2></div>
+        <hr/>
+        <div>
+            <p>Odredite jedinicu koja će se upotrebljavati za vrijednosni interval. Ovo se primjenjuje samo kad je dimenzija analize vremenska dimenzija.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

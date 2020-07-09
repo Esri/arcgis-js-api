@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Selecionar raster de camada de localização de elemento para o qual calcular a distância</h2></div>
+        <div><h2>Selecionar raster ou camada de localização de elementos para os quais determinar a distância</h2></div>
         <hr/>
         <div>
             <p>A camada que define as origens para as quais as dist&acirc;ncias ser&atilde;o calculadas. A camada pode ser um servi&ccedil;o de imagens ou um servi&ccedil;o de elementos:
@@ -137,6 +137,47 @@
             <p>Um campo na camada de origem de entrada que cont&eacute;m os valores que definem cada origem. Pode ser um n&uacute;mero inteiro ou um campo de string do conjunto de dados de origem.
             </p>
             <p>A predefini&ccedil;&atilde;o &eacute;  <i>Value</i>. Caso esteja a utilizar um servi&ccedil;o de elementos e n&atilde;o se encontre dispon&iacute;vel qualquer campo <i>Value</i> , o primeiro campo dispon&iacute;vel inteiro ou de string ser&aacute; utilizado. Caso n&atilde;o existam campos v&aacute;lidos, o campo ObjectID (por exemplo, OID ou FID, dependendo do tipo de entrada de elementos) ser&aacute; utilizado.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Escolha raster ou camada de elementos para representar barreiras</h2></div>
+        <hr/>
+        <div>
+            <p>O conjunto de dados que define as barreiras. 
+            </p>
+            <p>Para um servi&ccedil;o de imagens, o tipo de entrada pode ser inteiro ou ponto flutuante. Quaisquer c&eacute;lulas que possuam um valor (incluindo zero) ser&atilde;o tratadas como uma barreira, quaisquer c&eacute;lulas NoData n&atilde;o ser&atilde;o tratadas como uma barreira.
+            </p>
+            <p>Para um servi&ccedil;o de elementos, a entrada pode ser ponto, linha ou pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distância</h2></div>
+        <hr/>
+        <div>
+            <p>Determina se deve calcular a dist&acirc;ncia atrav&eacute;s de um m&eacute;todo planar (terra plana) ou geod&eacute;sico (elipsoide).
+            </p>
+            <ul>
+                <li> <b>Planar</b> &mdash; O c&aacute;lculo ser&aacute; efetuado numa superf&iacute;cie plana projetada utilizando um sistema de coordenadas cartesiano em 2D. Este &eacute; o m&eacute;todo predefinido.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b> &mdash; As dist&acirc;ncias s&atilde;o calculadas no elipsoide. Por conseguinte, independentemente da proje&ccedil;&atilde;o de entrada ou sa&iacute;da, os resultados n&atilde;o se alteram.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nome da camada de direção de retorno resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b>. &Eacute; necess&aacute;rio fornecer um nome, que n&atilde;o exista presentemente, em <b>O Meu Conte&uacute;do</b>.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
             </p>
         </div>
     </div>

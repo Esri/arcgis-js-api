@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Find Hot Spots</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Find Hot Spots"></h2>
+        <hr/>
+    <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+        <ul>
+            <li>Are your points (crime incidents, trees, or traffic accidents) really clustered?  How can you be sure?
+            </li>
+            <li>Have you truly discovered a statistically significant hot spot, or would your map tell a different story if you changed the way it was symbolized?
+            </li>
+        </ul>
+        The Find Hot Spots tool will help you answer these questions with confidence.
+    </p>
+    <p>Even random spatial patterns exhibit some degree of clustering.  In addition, our eyes and brains naturally try to find patterns even when none exist.  Consequently, it can be difficult to know if the patterns in your data are the result of real spatial processes at work or just the result of random chance.  This is why researchers and analysts use statistical methods such as Find Hot Spots (Getis-Ord Gi*) to quantify spatial patterns.  When you do find statistically significant clustering in your data, you have valuable information.  Knowing where and when clustering occurs can provide important clues about the processes promoting the patterns you're seeing.  Knowing that residential burglaries, for example, are consistently higher in particular neighborhoods is vital information if you need to design effective prevention strategies, allocate scarce police resources, initiate neighborhood watch programs, authorize in-depth criminal investigations, or identify potential suspects.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Choose layer for which hot spots will be calculated</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer from which hot and cold spots will be found.
+            </p>
+            <p>В аналізі використовуються контейнери і повинна використовуватися система координат проекції. Можна задати Систему координат процесу у Середовищах аналізу. Якщо для системи координат процесу не задано систему координат проекції, вам буде запропоновано установити її при запуску аналізу .
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Find clusters of high and low</h2></div>
+        <hr/>
+        <div>
+            
+            <p>This analysis answers the question: Where do high and low values cluster spatially?
+            </p>
+            <p>If your data is points and you  choose  <b>Point Counts</b>, this tool will evaluate the spatial arrangement of the point features to answer the question: Where are points unexpectedly clustered or spread out?
+            </p>
+            <p>If you choose a field, this tool will evaluate the spatial arrangement of the values associated with each feature to answer the question: Where are high and low values clustering?
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Select the bin size for aggregation</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to generate the square bins that will be used to analyze your input points.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Find hot spots using time steps (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>If time is enabled on the point layer, and it's of type instant, you can analyze using time steps.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time step interval</h2></div>
+        <hr/>
+        <div>
+            <p>Interval of time used for generating time steps. Time can be aligned to the start or end time of the input data or to a specified reference time.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Time step interval</h2></div>
+        <hr/>
+        <div>
+            <p>Interval of time used for generating time steps. Time can be aligned to the start or end time of the input data or to a specified reference time.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Choose how to align time steps</h2></div>
+        <hr/>
+        <div>
+            <p>How time steps are aligned. There are three ways to align time steps:
+                <ul>
+                    <li> <b>Start Time</b>&mdash;Time steps are aligned with the first feature in time.
+                    </li>
+                    <li> <b>End Time</b>&mdash;Time steps are aligned with the last feature in time.
+                    </li>
+                    <li> <b>Reference Time</b>&mdash;Time steps are aligned with a specified time.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Reference time to align time steps to</h2></div>
+        <hr/>
+        <div>
+            <p>The date and time used to align the time steps.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Select the neighborhood size for hot spot calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to determine the neighborhood used for hot spot calculations. The neighborhood should be larger than the bin size to ensure that each bin has at least one neighbor. Each bin is analyzed and compared to the neighboring bins.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Це тимчасовий параметр для передрелізної версії, який задає просторову прив&rsquo;язку процесу. Багато інструментів для роботи з великими даними вимагають, щоб система координат проекції використовувалася як просторова прив&rsquo;язка для обробки. За замовчування інструмент використовує вхідну систему координат, але не зможе працювати, якщо це географічна система координат. Щоб задати систему координат проекції, введіть WKID. Наприклад, для  <b>Web Mercator</b> потрібно ввести <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
+        <hr/>
+        <div>
+            <p>Результати GeoAnalytics зберігаються у  сховищі даних та відображаються як векторний шар у  Portal for ArcGIS. У більшості випадків результати потрібно зберігати у просторово-часовому сховищі даних, що задано за замовчуванням. У деяких випадках гарною опцією є зберігання результатів у реляційному сховищі даних. Нижче наведено причини, чому може знадобитись зберігання результатів у реляційному сховищі даних: 
+                <ul>
+                    <li>Для використання результатів у співпраці між порталами
+                    </li>
+                    <li>Для активації можливості синхронізації з вашими результатами.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Не рекомендується використовувати реляційне сховище даних, якщо ви очікуєте збільшення ваших результатів GeoAnalytics. В цьому випадку слід скористатись можливостями просторово-часового сховища великих даних для зберігання великих обсягів даних.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>This result layer will show you statistically significant clusters of high and low values or point counts. If the result layer name already exists, you will be asked to rename it.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analisis Raster memungkinkan Anda melakukan analisis terhadap set data raster dengan jumlah banyak menggunakan  ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server. Rangkaian alat saat ini tersedia melalui pengalaman pengguna web  Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Gunakan Kedekatan Jarak</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, <b>Kelola Data</b>, dan <b>Deep Learning</b>.
+        <p>Analisis Raster memungkinkan Anda melakukan analisis terhadap set data raster dengan jumlah banyak menggunakan  ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server. Rangkaian alat saat ini tersedia melalui pengalaman pengguna web  Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Gunakan Kedekatan Jarak</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, <b>Kelola Data</b>, <b>Deep Learning</b>, dan <b>Analisis Multidimensional</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -330,9 +330,9 @@
     <div id="ManageDataCategory" class="regularsize">
         <h2>Kelola Data</h2>
         <hr/>
-        <p>Alat tersebut digunakan untuk mengelola data geografis sehari-hari dan menggabungkan data sebelum analisis dilakukan. 
+        <p>Peralatan ini digunakan untuk mengelola data geografis sehari-hari dan menggabungkan data sebelum analisis dilakukan. 
             <ul>
-                <li> <b>Ekstrak Raster</b> menempelkan porsi dari rangkaian data raster untuk analisis lebih lanjut.
+                <li> <b>Ekstrak Raster</b> menempelkan porsi dari set data raster untuk analisis lebih lanjut.
                     
 
                 </li>
@@ -347,6 +347,8 @@
                 <li> <b>Konversi Raster ke Fitur</b> memvektorisasi data raster.
                     
 
+                </li>
+                <li> <b>Sampel</b> mengekstrak data di lokasi yang ditentukan dari raster, atau rangkaian raster.
                 </li>
             </ul>
             
@@ -363,7 +365,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ekstrak sel dari raster berdasarkan nilai, bentuk, atau cakupan rangkaian data yang berbeda.
+            <p>Ekstrak sel dari raster berdasarkan nilai, bentuk, atau jangkauan set data yang berbeda.
             </p>
             <br/>
         </div>
@@ -393,7 +395,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Buat rangkaian data raster baru dari rangkaian data fitur yang sudah ada
+            <p>Buat set data raster baru dari set data fitur yang sudah ada
             </p>
             <br/>
         </div>
@@ -408,21 +410,38 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Buat rangkaian data fitur baru dari rangkaian data raster yang sudah ada
+            <p>Buat set data fitur baru dari set data raster yang sudah ada.
+            </p>
+            <br/>
+        </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sampel</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Sampel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Membuat feature class titik atau tabel dengan nilai data di lokasi yang ditentukan, yang diekstrak dari raster atau rangkaian raster.
             </p>
             <br/>
         </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Deep Learning Rangkaian Alat</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>Peralatan ini 	digunakan untuk mendeteksi fitur spesifik dalam sebuah gambar atau untuk mengklasifikasikan piksel dalam set data raster. Deep learning adalah jenis metode pembelajaran mesin cerdas buatan yang mendeteksi fitur dalam pencitraan menggunakan beberapa layer dalam jaringan neural di mana setiap layer mampu mengekstrak satu fitur unik atau lebih dalam gambar. Peralatan ini menggunakan model yang telah dilatih untuk mendeteksi fitur spesifik dalam kerangka kerja deep learning pihak ketiga&mdash;seperti TensorFlow, CNTK, dan Keras&mdash;serta fitur output atau peta kelas.
+        <p>Peralatan ini 	digunakan untuk mendeteksi atau mengklasifikasikan fitur spesifik dalam sebuah gambar atau untuk mengklasifikasikan piksel dalam set data raster. Deep learning adalah jenis metode pembelajaran mesin cerdas buatan yang mendeteksi fitur dalam citra menggunakan beberapa layer dalam jaringan neural di mana setiap layer mampu mengekstrak satu fitur unik atau lebih dalam gambar. Peralatan ini menggunakan model yang telah dilatih untuk mendeteksi fitur spesifik dalam kerangka kerja deep learning pihak ketiga&mdash;seperti TensorFlow, CNTK, dan Keras&mdash;serta fitur output atau peta kelas.
             <ul>
                 <li> <b>Klasifikasikan Piksel Menggunakan Deep Learning</b> menghasilkan raster yang diklasifikasi menggunakan model deep learning terlatih.
                 </li>
-                <li> <b>Deteksi Objek Menggunakan Deep Learning</b> menghasilkan kelas fitur yang berisi objek yang ditemukannya dalam raster input menggunakan model deep learning terlatih.
+                <li> <b>Deteksi Objek Menggunakan Deep Learning</b> menghasilkan feature class yang berisi objek yang ditemukannya dalam raster input menggunakan model deep learning terlatih.
+                </li>
+                <li> <b>Klasifikasikan Objek Menggunakan Deep Learning</b> menghasilkan tabel atau feature class tempat setiap obejk input dalam raster input ditetapkan dengan label kelas menggunakan model deep learning yang terlatih.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menjalankan model deep learning terlatih pada raster input untuk menghasilkan raster yang diklasifikasikan, dengan setiap piksel valid memiliki label kelas yang ditetapkan.
+            <p>Alat ini menjalankan model deep learning terlatih pada raster input untuk menghasilkan raster yang diklasifikasikan, dan setiap piksel valid memiliki label kelas yang ditetapkan.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menjalankan model deep learning terlatih pada sebuah raster input untuk menghasilkan sebuah kelas fitur berisi objek yang ditemukannya. Fitur tersebut bisa jadi kotak atau poligon keliling di sekitar objek yang ditemukan, atau titik di tengah objek.
+            <p>Alat ini menjalankan model deep learning terlatih pada sebuah raster input untuk menghasilkan feature class berisi objek yang ditemukannya. Fitur tersebut bisa jadi kotak atau poligon keliling di sekitar objek yang ditemukan, atau titik di tengah objek.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikasikan Objek Menggunakan Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasifikasikan Objek Menggunakan Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menjalankan model deep learning yang terlatih pada raster input dan feature class opsional untuk menghasilkan feature class atau tabel dengan setiap objek input telah menetapkan label kelas.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Analisis Multidimensional</h2>
+        <hr/>
+        <p>Alat dalam rangkaian alat Analisis Multidimensional memungkinkan Anda untuk melakukan analisis terhadap data ilmiah di berbagai variabel dan dimensi.
+        </p>
+        <p>Data multidimensional merepresentasikan data yang diambil pada beberapa waktu, kedalaman, dan ketinggian. Jenis data ini biasanya digunakan dalam ilmu atmosfer, oseanografi, dan bumi. Dengan rangkaian alat ini, Anda dapat menganalisis data raster multidimensional dalam beberapa format, termasuk netCDF, HDF, GRIB, set data multidimensional, dan Format Raster Cloud (CRF) Esri.
+        </p>
+        <p>Tabel berikut ini mencantumkan alat analisis multidimensional dan menyediakan deskripsi singkat dari masing-masing alat.
+            <ul>
+                <li> <b>Agregat Raster Multidimensional</b> membuat set data multidimensional dengan mengagregasi variabel raster multidimensional yang ada dalam sebuah dimensi.
+                </li>
+                <li> <b>Buat Anomali Multidimensional</b> menghitung anomali untuk setiap irisan dalam raster multidimensional untuk membuat sebuah raster multidimensional.
+                </li>
+                <li> <b>Buat Raster Tren</b> memperkirakan tren untuk setiap piksel di sepanjang dimensi untuk satu variabel atau lebih dalam raster multidimensional.
+                </li>
+                <li> <b>Prediksi Menggunakan Raster Tren</b> menghitung perkiraan raster multidimensional menggunakan raster tren output dari alat <b>Buat Raster Tren</b>.
+                </li>
+                <li> <b>Temukan Statistik Argumen</b> mengekstrak nilai dimensi atau indeks band di mana statistik yang ditentukan diperoleh untuk setiap piksel dalam raster multidimensional atau multiband.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregasi Raster Multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregasi Raster Multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini membuat set data multidimensional dengan mengagregasi dengan mengagregasi variabel raster multidimensional yang ada dalam sebuah dimensi.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Temukan Statistik Argumen</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Temukan Statistik Argumen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini mengekstrak nilai dimensi atau indeks band di mana statistik yang ditentukan diperoleh untuk setiap piksel dalam raster multidimensional atau multiband.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buat Anomali Multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Buat Anomali Multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung anomali untuk setiap irisan dalam raster multidimensional untuk membuat sebuah raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buat Raster Tren</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Buat Raster Tren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini memperkirakan tren untuk setiap piksel di sepanjang dimensi untuk satu variabel atau lebih dalam raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prediksi Menggunakan Raster Tren</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prediksi Menggunakan Raster Tren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung perkiraan raster multidimensional menggunakan raster tren output dari alat  <b>Buat Raster Tren</b>.
             </p>
             <br/>
         </div>

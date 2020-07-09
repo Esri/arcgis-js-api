@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>生成趋势栅格</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="生成趋势栅格"></h2>
+        <hr/>
+    <p>用于面向多维栅格中一个或多个变量估计每个像素沿维度的趋势。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>选择多维影像图层以分析趋势</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>将分析的多维栅格的输入影像图层。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>选择分析变量趋势时所使用的维度</h2></div>
+        <hr/>
+        <div>
+            <p>将沿此维度为分析中所选的一个或多个变量提取趋势。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>选择用于分析趋势的变量</h2></div>
+        <hr/>
+        <div>
+            <p>将计算趋势的一个或多个变量。如果未指定变量，则将分析多维栅格中的第一个变量。
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>选择用于沿维度拟合变量值的线的类型</h2></div>
+        <hr/>
+        <div>
+            <p>指定用于拟合沿维度像素值的线的类型。
+                <ul>
+                    <li> <b>线性</b> - 将沿线性趋势线拟合变量像素值。这是默认设置。
+                    </li>
+                    <li> <b>多项式</b> - 将沿二阶多项式趋势线拟合变量像素值。
+                    </li>
+                    <li> <b>谐波</b> - 将沿谐波趋势线拟合变量像素值。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>指定谐波周期的长度</h2></div>
+        <hr/>
+        <div>
+            <p>要进行建模的周期性变化的长度。当趋势线类型设置为 <b>谐波</b>时，此参数为必需项。例如，叶绿度通常在一年中具有一个较强的变化周期，因此周期长度为 1 年。每小时温度数据在一天中具有一个较强的变化周期，因此周期长度为 1 天。
+            </p>
+            <p>对于每年周期变化的数据，默认长度为 1 年。
+            </p>
+            <p>仅当要分析的维度是时间且趋势线的类型设置为 <b>谐波</b>时，此参数才会包含在趋势分析中。
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>选择谐波周期长度的时间单位</h2></div>
+        <hr/>
+        <div>
+            <p>指定用于谐波周期长度的时间单位。
+                <ul>
+                    <li> <b>天</b> - 谐波周期的长度单位为天。
+                    </li>
+                    <li> <b>年</b> - 谐波周期的长度单位为年。这是默认设置。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>仅当要分析的维度是时间且趋势线的类型设置为 <b>谐波</b>时，此参数才会包含在趋势分析中。
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>指定谐波趋势拟合的频率数</h2></div>
+        <hr/>
+        <div>
+            <p>谐波趋势拟合中使用的频率。此参数将指定一年中的周期频率。
+            </p>
+            <p>默认值为 1 或每年一个谐波周期。
+            </p>
+            <p>仅当分析的维度是时间时，趋势分析中才会包含此参数。
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>指定趋势拟合的多项式阶数</h2></div>
+        <hr/>
+        <div>
+            <p>多项式趋势拟合中使用的多项式阶数。
+            </p>
+            <p>仅当分析的维度是时间时，趋势分析中才会包含此参数。
+            </p>
+            <p>默认值为 2 或二阶多项式。
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>选择要包含在趋势栅格中的模型统计数据</h2></div>
+        <hr/>
+        <div>
+            <p>该工具提供了三种类型的趋势拟合线统计数据：均方根误差 (RMSE)、R 平方拟合优度统计数据（R 平方）和斜率系数的 p 值统计数据（斜率系数的 P 值）。每种统计数据都有一个对应的复选框，用于指定是否将计算该统计数据并将其作为输出趋势栅格中的多个波段之一包含在内。
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>选中 - 将计算 RMSE，并将其作为输出趋势栅格中的多个波段之一包含在内。这是默认设置。
+                            </li>
+                            <li>未选中 - 将不计算 RMSE。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R 平方
+                        </p>
+                        <ul>
+                            <li>选中 - 将计算 R 平方值，并将其作为输出趋势栅格中的多个波段之一包含在内。
+                            </li>
+                            <li>未选中 - 将不计算 R 平方值。这是默认设置。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>斜率系数的 P 值
+                        </p>
+                        <ul>
+                            <li>选中 - 将计算 p 值，并将其作为输出趋势栅格中的多个波段之一包含在内。
+                            </li>
+                            <li>未选中 - 将不计算 p 值。这是默认设置。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>忽略计算中的缺失值</h2></div>
+        <hr/>
+        <div>
+            <p>指定分析中是否忽略缺失值。
+                <ul>
+                    <li>已选中 - 分析将包括沿给定维度的所有有效像素，并忽略所有 NoData 像素。这是默认设置。
+                    </li>
+                    <li>未选中 - 如果沿给定维度的像素包含任意 NoData 值，则分析结果将变为 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

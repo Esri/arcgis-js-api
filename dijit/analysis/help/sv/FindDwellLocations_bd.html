@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Hitta bostadsplatser</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Arbetsfl&ouml;desdiagram f&ouml;r Hitta bostadsplatser"></h2>
+        <hr/>
+    <p>Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med punktgeoobjekt som &auml;r av typen  <code>tidspunkt</code>. F&ouml;rst tilldelar verktyget geoobjekten till ett sp&aring;r med hj&auml;lp av en unik identifierare. Sp&aring;rens ordning best&auml;ms av geoobjektens tid. Sedan ber&auml;knas avst&aring;ndet mellan den f&ouml;rsta observationen i ett sp&aring;r och den n&auml;stkommande. Geoobjekt betraktas som en del av en bostadsplats om tv&aring; punkter som f&ouml;ljer p&aring; varandra tidsm&auml;ssigt stannar inom det angivna avst&aring;ndet under minst den angivna tiden. N&auml;r tv&aring; geoobjekt befinns ing&aring; i en bostadsplats, anv&auml;nds det f&ouml;rsta geoobjektet i bostadsplatsen som en referenspunkt. Verktyget hittar d&auml;refter geoobjekt som f&ouml;ljer p&aring; varandra och som finns inom det angivna avst&aring;ndet fr&aring;n bostadsplatsens referenspunkt. N&auml;r v&auml;l alla geoobjekt inom det angivna avst&aring;ndet har hittats samlar verktyget in alla bostadsgeoobjekt och ber&auml;knar deras centrum f&ouml;r medelv&auml;rde. Geoobjekt f&ouml;re och efter den aktuella bostadsplatsen l&auml;ggs till i bostadsplatsen om de finns inom det angivna avst&aring;ndet fr&aring;n bostadsplatsens centrum f&ouml;r medelv&auml;rde. Processen forts&auml;tter till sp&aring;rets slut.
+    </p>
+    <p>Geoobjekt i tidsaktiverade lager kan representeras p&aring; n&aring;got av f&ouml;ljande s&auml;tt:
+        <ul>
+            <li>Tidpunkt &ndash; Ett enda &ouml;gonblick
+            </li>
+            <li>Intervall &ndash; En start- och sluttid
+            </li>
+        </ul>
+        
+    </p>
+    <p>F&ouml;rest&auml;ll dig exempelvis att du arbetar f&ouml;r transportstyrelsen och har samlat in GPS-avl&auml;sningar f&ouml;r fordon p&aring; st&ouml;rre motorv&auml;gar. Varje GPS-post inneh&aring;ller ett unikt fordons-ID, tidpunkt, plats och hastighet. Genom att anv&auml;nda det unika fordonets ID f&ouml;r att definiera individuella sp&aring;r kan du s&ouml;ka efter fordon som inte har f&ouml;rflyttats mer &auml;n 100 meter p&aring; minst 15 minuter. P&aring; s&aring; vis kan du uppt&auml;cka problematiska omr&aring;den i v&auml;gn&auml;tet. Dessutom kan du ber&auml;kna statistik som medelhastighet f&ouml;r fordonen inom bostadsplatsen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Välj det lager där du vill söka bostadsplatser</h2></div>
+        <hr/>
+        <div>
+            <p>Punktlagret som ska sammanfattas till bostadsplatser. Indatalagret m&aring;ste vara tidsaktiverat med geoobjekt som representerar ett &ouml;gonblick i tiden. Det m&aring;ste dessutom ha ett eller flera f&auml;lt som kan anv&auml;ndas f&ouml;r identifiering av sp&aring;r.
+            </p>
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Välj ett eller flera fält att identifiera spår ifrån</h2></div>
+        <hr/>
+        <div>
+            <p>F&auml;lt som representerar sp&aring;ridentifieraren. Du kan anv&auml;nda ett eller flera f&auml;lt f&ouml;r att representera unika v&auml;rden f&ouml;r sp&aring;r.
+            </p>
+            <p>Om du exempelvis vill hitta bostadsplatser n&auml;ra orkaner kan du anv&auml;nda orkanens namn som sp&aring;rf&auml;lt.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Välj metod för att beräkna avstånd</h2></div>
+        <hr/>
+        <div>
+            <p>Metod som anv&auml;nds f&ouml;r att ber&auml;kna bostadsplatsens avst&aring;nd inom sp&aring;ren.  <b>Plana-metoden</b> kan ber&auml;kna resultaten snabbare men placerar inte sp&aring;r runt den internationella datumlinjen och tar inte h&auml;nsyn till jordens faktiska form vid buffring. <b>Geodetiska metoden</b> placerar sp&aring;r runt den internationella datumlinjen vid behov och till&auml;mpar en geodetisk buffert f&ouml;r att ta h&auml;nsyn till jordens form.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definiera det geografiska sökavståndet</h2></div>
+        <hr/>
+        <div>
+            <p>Toleransen f&ouml;r bostadsplatsens avst&aring;nd &auml;r det maximala avst&aring;ndet mellan punkter som ska beaktas i en enda bostadsplats.
+            </p>
+            <p>Om du till exempel &auml;r intresserad av att hitta platser d&auml;r trafiken inte har r&ouml;rt sig mer &auml;n 20 meter inom en viss tid, ska avst&aring;ndstoleransen vara 20 meter.
+            </p>
+            <p>Anv&auml;nd parametern  <b>Definiera det tidsbest&auml;mda s&ouml;komr&aring;det</b> f&ouml;r att ange tiden.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Dela spår (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Enhet f&ouml;r avst&aring;ndstoleransen.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definiera det tidsbestämda sökområdet</h2></div>
+        <hr/>
+        <div>
+            <p>Toleransen f&ouml;r uppeh&aring;llstid &auml;r den minimala varaktigheten f&ouml;r en plats som ska beaktas i en enda bostadsplats.
+            </p>
+            <p>Om du till exempel vill veta var trafiken inte har r&ouml;rt sig ett visst avst&aring;nd inom en timme skulle tidstoleransen vara 1 timme.
+            </p>
+            <p>Anv&auml;nd parametern  <b>Definiera det geografiska s&ouml;komr&aring;det</b> f&ouml;r att ange avst&aring;ndet.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Välj ett avstånd att dela spår från (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Enhet f&ouml;r tidstoleransen.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lägg till statistik (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt: 
+                <ul>
+                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Det kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
+                    </li>
+                    <li>Summa &ndash; Summan av de numeriska v&auml;rdena i ett f&auml;lt. Summan f&ouml;r [null, null, 3] &auml;r 3.
+                    </li>
+                    <li>Medelv&auml;rde &ndash; Medelv&auml;rdet f&ouml;r numeriska v&auml;rden. Medelv&auml;rde f&ouml;r [0, 2, null] &auml;r 1.
+                    </li>
+                    <li>Min &ndash; Minimiv&auml;rdet f&ouml;r ett numeriskt f&auml;lt. Minimiv&auml;rde f&ouml;r [0, 2, null] &auml;r 0. 
+                    </li>
+                    <li>Max &ndash; Det maximala v&auml;rdet f&ouml;r ett numeriskt f&auml;lt. Det maximala v&auml;rdet f&ouml;r [0, 2, null] &auml;r 2.
+                    </li>
+                    <li>Intervall &ndash; Intervallet f&ouml;r ett numeriskt f&auml;lt. Det ber&auml;knas som det maximala v&auml;rdet minus minimiv&auml;rdena. Intervallet f&ouml;r [0, null, 1] &auml;r 1. Intervallet f&ouml;r [null, 4] &auml;r 0.
+                    </li>
+                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,0,1,1] &auml;r 0,25.
+                    </li>
+                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,0,1,1] &auml;r 0,5. 
+                    </li>
+                    <li>F&ouml;rst &ndash; Det f&ouml;rsta v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [1,5,10,20], &auml;r det f&ouml;rsta v&auml;rdet 1.
+                    </li>
+                    <li>Sist &ndash; Det sista v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [1,5,10,20], &auml;r det sista v&auml;rdet 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
+                <ul>
+                    <li>Antal &ndash; Antalet str&auml;ngar som inte &auml;r null.
+                    </li>
+                    <li>Alla &ndash; Det statistiska v&auml;rdet &auml;r ett slumpm&auml;ssigt exempel p&aring; ett str&auml;ngv&auml;rde i det angivna f&auml;ltet.
+                    </li>
+                    <li>F&ouml;rst &ndash; Det f&ouml;rsta v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], &auml;r det f&ouml;rsta v&auml;rdet Toronto.
+                    </li>
+                    <li>Sist &ndash; Det sista v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], &auml;r det sista v&auml;rdet Boston.
+                    </li>
+                </ul>
+                All statistik ber&auml;knas p&aring; v&auml;rden som inte &auml;r null. Det resulterande lagret inneh&aring;ller ett nytt f&auml;lt f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Visa bostadsplatser som</h2></div>
+        <hr/>
+        <div>
+            <p>Avg&ouml;r vilka geoobjekt som returneras och deras format. Det finns fyra tillg&auml;ngliga typer: 
+                <ul>
+                    <li> <b>Centrum f&ouml;r medelv&auml;rde</b> &ndash; En punkt som representerar centroiden f&ouml;r varje uppt&auml;ckt bostadsplats. Attributen sammanfattas. Det h&auml;r &auml;r standardinst&auml;llningen.
+                         
+                    </li>
+                    <li> <b>Konvexa omr&aring;den</b> &ndash; Polygoner som representerar det konvexa omr&aring;det f&ouml;r varje bostadsplatsgrupp. Attributen sammanfattas.
+                         
+                    </li>
+                    <li> <b>Bostadsgeoobjekt</b> &ndash; Alla indatapunktgeoobjekt och attribut som &auml;r best&auml;mda att tillh&ouml;ra en bostadsplats returneras.
+                         
+                    </li>
+                    <li> <b>Alla geoobjekt</b> &ndash; Alla indatapunktgeoobjekt och attribut returneras.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analysera data med tidsintervall (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ange om du vill s&ouml;ka efter bostadsplatser genom att anv&auml;nda tidsintervall som segmenterar dina indatageoobjekt f&ouml;r analys. Om du anv&auml;nder tidsintervall m&aring;ste du st&auml;lla in tidsintervallet som du vill anv&auml;nda och eventuellt ocks&aring; referenstiden. Om du inte st&auml;ller in en referenstid anv&auml;nds 1 jan 1970. 
+            </p>
+            <p>Om du till exempel st&auml;ller in tidsgr&auml;nsen till 1 dag, med start kl. 09.00 den 1 januari 1990, kommer varje sp&aring;r att kortas ned kl. 09.00 varje dag och analyseras inom det segmentet. Inga bostadsplatser startar f&ouml;re eller slutar efter 09.00. 
+            </p>
+            <p>Att anv&auml;nda tidsintervaller &auml;r ett enkelt s&auml;tt att snabba p&aring; ber&auml;kningstiden, eftersom det snabbt skapar mindre sp&aring;r f&ouml;r analys. Om det verkar vettigt att dela med &aring;terkommande tidsintervall f&ouml;r analysen rekommenderas det f&ouml;r behandling av big data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p> Namnet p&aring; lagret som ska skapas. Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            </p>
+            <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige kirjeldatav kiht",summaryTypes:"Kokkuvõtte tüübid",centralFeature:"Tsentraalobjekt",meanCenter:"Tsentraalpunkt",medianCenter:"Tsentraalpunkt",ellipse:"Ellips",weightBy:"Kaalu alusel (valikuline)",groupBy:"Rühmitamise alusel (valikuline)",resultLayerName:"Tulemkihi nimi",outputLayerName:"Kirjelda kihi ${layerName} jaotust",none:"Puudub",itemDescription:"Objektikiht loodi kihi ${layerName} tsentri summeerimise ja dispersioon abil. ",itemTags:"Analüüsitulemus, keskme ja hajutatuse summeerimine, ${layerName}",itemSnippet:"Objektikiht loodi tsentri summeerimise ja dispersiooni abil."});

@@ -140,5 +140,46 @@
             </p>
         </div>
     </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Trieu la capa d'origen de ràster o entitat per representar les barreres</h2></div>
+        <hr/>
+        <div>
+            <p>Dataset que defineix les barreres. 
+            </p>
+            <p>Per a un servei d'imatges, el tipus d'entrada pot ser un enter o un punt flotant. Totes les cel&middot;les que tinguin un valor (incl&ograve;s el zero) es tractaran com una barrera. Totes les cel&middot;les que tinguin un valor NoData no es tractaran com una barrera.
+            </p>
+            <p>Per a un servei d'entitats, l'entrada pot ser un punt, una l&iacute;nia o un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mètode de distància</h2></div>
+        <hr/>
+        <div>
+            <p>Determina si es calcular&agrave; la dist&agrave;ncia mitjan&ccedil;ant un m&egrave;tode pla (terra plana) o geod&egrave;sic (el&middot;lipsoide).
+            </p>
+            <ul>
+                <li> <b>Pla</b>: el c&agrave;lcul es realitzar&agrave; en un terreny pla projectat mitjan&ccedil;ant un sistema de coordenades cartesianes cartesi&agrave; 2D. Aquest &eacute;s el m&egrave;tode per defecte.
+                    
+
+                </li>
+                <li> <b>Geod&egrave;sic</b>: les dist&agrave;ncies es calculen a l'el&middot;lipsoide. Per tant, independentment de la projecci&oacute; d'entrada o de sortida, els resultats no canvien.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nom de la capa de direcció inversa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b>. Heu de proporcionar un nom que no existeixi a <b>El meu contingut</b>.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
 </div>
 </html>

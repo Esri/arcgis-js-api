@@ -44,9 +44,9 @@
         <h2>Puntclusters zoeken</h2><p/>
         <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Puntclusters zoeken"></h2>
         <hr/>
-    <p>Het  Puntclusters zoeken tool zoekt clusters van puntobjecten binnen omringend geluid gebaseerd op hun ruimtelijke distributie.
+    <p>De  Puntclusters zoeken-tool zoekt clusters van puntobjecten binnen omringend geluid gebaseerd op hun ruimtelijke of tijdruimtelijke distributie.
     </p>
-    <p>Een niet-gouvernementele organisatie bestudeert bijvoorbeeld een bepaalde door plagen overgedragen ziekte. Het heeft een puntdataset van huishoudens in een studiegebied, waarvan sommige wel en andere niet besmet zijn. Door de  Puntclusters zoeken tool te gebruiken, kan een analist clusters van besmette huishoudens bepalen om een gebied aan te wijzen waar met de behandeling en uitroeiing van plagen kan worden begonnen.
+    <p>Een niet-gouvernementele organisatie onderzoekt bijvoorbeeld een bepaalde overdraagbare ziekte door plagen. Het heeft een puntdataset van huishoudens in een studiegebied, waarvan sommige wel en andere niet besmet zijn. Door de  Puntclusters zoeken-tool te gebruiken, kan een analist clusters van besmette huishoudens bepalen om een gebied aan te wijzen waar met de behandeling en uitroeiing van plagen begonnen kan worden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,9 +54,9 @@
         <div><h2>Kies de laag waarvoor clusters zullen worden gevonden</h2></div>
         <hr/>
         <div>
-            <p>De puntenlaag waarin clusters zich bevinden.  Lagen moeten in een geprojecteerd ruimtelijke referentie of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b>.
+            <p>De puntlaag waarin de clusters zich bevinden.  Lagen moeten in een geprojecteerd ruimtelijke referentie of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b>.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag. U kunt optioneel een filter toepassen op uw invoerlaag of een selectie toepassen op gehoste lagen die aan uw kaart zijn toegevoegd. Filters en selecties worden alleen toegepast voor analyse. 
             </p>
         </div>
     </div>
@@ -66,23 +66,23 @@
         <div>
             <p>De clusteringmethode die wordt gebruikt om clusters van puntobjecten te onderscheiden van omringende ruis. U kunt ervoor kiezen om een ​​gedefinieerde afstands- of zelfaanpassend clusteringalgoritme te gebruiken.
             </p>
-            <p>Gedefinieerde afstand (DBSCAN) gebruikt een gespecificeerd zoekbereik om dichte clusters te scheiden van verspreide ruis. Gedefinieerde afstand (DBSCAN) is sneller, maar is alleen geschikt als er een zeer duidelijk zoekbereik is dat goed werkt om alle aanwezige clusters te defini&euml;ren. Gedefinieerde afstand (DBSCAN) vindt clusters met vergelijkbare dichtheden.
+            <p>Gedefinieerde afstand (DBSCAN) gebruikt een gespecificeerd zoekbereik om dichte clusters te scheiden van verspreide ruis. Tijd kan optioneel worden gebruikt om tijdruimtelijke clusters te zoeken met behulp van een zoekbereik en zoekduur. Gedefinieerde afstand (DBSCAN) is sneller, maar is alleen geschikt als er een zeer duidelijk zoekbereik is dat goed werkt om alle aanwezige clusters te defini&euml;ren. Gedefinieerde afstand (DBSCAN) vindt clusters met vergelijkbare dichtheden.
             </p>
             <p>Zelfaanpassend (HDBSCAN) vereist geen zoekbereik dat moet worden gespecificeerd, maar het is een meer tijdrovende methode. Zelfaanpassend (HDBSCAN) vindt clusters van punten die lijken op de gedefinieerde afstand (DBSCAN), maar gebruikt verschillende zoekbereiken die clusters met verschillende dichtheden mogelijk maken. 
             </p>
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Minimumaantal punten dat als een cluster moet worden beschouwd</h2></div>
+        <div><h2>Minimumaantal punten om een cluster te genereren</h2></div>
         <hr/>
         <div>
-            <p>Deze parameter wordt op verschillende manieren gebruikt, afhankelijk van de gekozen clusteringmethode:
+            <p>Deze parameter wordt op verschillende manieren gebruikt, afhankelijk van de uit de volgende opties gekozen clusteringmethode:
             </p>
             <p>
                 <ul>
-                    <li>Gedefinieerde afstand (DBSCAN)&mdash;specificeert het aantal objecten dat moet worden gevonden binnen een bepaalde afstand van een punt om een ​​cluster met dat punt te vormen. De afstand wordt gedefinieerd met behulp van de parameter <b>Beperken tot zoekbereik</b>.
+                    <li>Gedefinieerde afstand (DBSCAN)&mdash;Specificeert het aantal objecten dat moet worden gevonden binnen een bepaalde afstand of een afstand en duur van een punt om een​ cluster met dat punt te vormen. De afstand wordt gedefinieerd met behulp van de parameter <b>Beperken tot zoekbereik</b>. Als tijd wordt gebruikt om tijdruimtelijke clusters te ontdekken, wordt de duur gespecificeerd met behulp van de parameter <b>Beperk de zoekduur tot</b>.
                     </li>
-                    <li>Zelfaanpassend (HDBSCAN)&mdash;specificeert het aantal objecten naast elk punt (inclusief het punt zelf) dat in overweging wordt genomen bij het schatten van de dichtheid. Dit aantal is ook de minimale clustergrootte die is toegestaan ​​bij het exporteren van clusters.
+                    <li>Zelfaanpassend (HDBSCAN)&mdash;Specificeert het aantal objecten naast elk punt (inclusief het punt zelf) dat in overweging wordt genomen bij het schatten van de dichtheid. Dit aantal is ook de minimale clustergrootte die is toegestaan ​​bij het exporteren van clusters.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
         <div><h2>Beperk het zoekbereik tot</h2></div>
         <hr/>
         <div>
-            <p>Bij gebruik van de gedefinieerde afstand (DBSCAN) is deze parameter de afstand waarbinnen het  <b>minimumaantal punten dat als een cluster moet worden beschouwd</b>, moet worden gevonden. Deze parameter wordt niet gebruikt wanneer zelfregulering (HDBSCAN) wordt gekozen als de te gebruiken clusteringmethode.
+            <p>Bij gebruik van de gedefinieerde afstand (DBSCAN) is deze parameter de afstand waarbinnen het  <b>minimumaantal punten om een cluster te starten</b> moet worden gevonden. Als de invoerlaag tijdgestuurd is en deze is van het type instant, kunt u <b>Gebruik tijd om clusters te vinden</b> selecteren om tijdruimtelijke puntgroepen te vinden met omgevingsgeluid. Als u tijd gebruikt, specificeert de parameter <b>Beperk de zoekduur tot</b>    de tijdsduur waarin parameter <b>Minimumaantal punten om een cluster te genereren</b> moet worden gevonden naast dat het in het zoekbereik moet liggen. Deze parameters worden niet gebruikt wanneer zelfregulering (HDBSCAN) wordt gekozen als de te gebruiken clusteringmethode.
             </p>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store,  schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
             <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
             </p>

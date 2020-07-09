@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Classify Pixels Using Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" alt="Classify Pixels Using Deep Learning"></h2>
+        <hr/>
+    <p>Цей інструмент запускає навчену модель глибокого навчання на вхідному растрі, щоб створити класифікований растр, де кожному дійсному пікселю буде призначений надпис класу.
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only the raster area that is visible in the current map extent will be analyzed. If it's not checked, the whole raster will be analyzed, even if it is outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Choose image used to classify pixels</h2></div>
+        <hr/>
+        <div>
+            <p>The input image to classify.
+            </p>
+            <p>It can be an image service URL, a raster layer, or an image service layer.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Choose deep learning model used to classify pixels</h2></div>
+        <hr/>
+        <div>
+            <p>Елемент вхідного пакету глибокого навчання ( <code>.dlpk</code>).
+            </p>
+            <p>Пакет глибокого навчання містить файл JSON ( <code>.emd</code>) з визначенням моделі Esri, файл бінарної моделі глибокого навчання, і додатково може використовуватися растрова функція Python.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Specify deep learning model arguments</h2></div>
+        <hr/>
+        <div>
+            <p>Аргументи функції визначаються у класі растрової функції Python, на яку посилається вхідна модель. Саме тут наводяться додаткові параметри і аргументи глибокого навчання для експериментів і доводження, такі як довірчий поріг для уточнення чутливості.
+            </p>
+            <p>Назви аргументів заповнюються даними, отриманими інструментом із модуля Python на сервері аналізу растрів.
+            </p>  
+            <p> 
+            </p>
+        </div>
+    </div>
+    <div id="outputClassifiedRaster">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            </p>
+            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

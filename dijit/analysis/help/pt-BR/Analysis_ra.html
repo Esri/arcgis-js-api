@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A an&aacute;lise de raster permite a voc&ecirc; executar an&aacute;lises de grandes conjuntos de dados raster utilizando o  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Utilizar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerenciar Dados</b> e <b>Aprendizado Detalhado</b>.
+        <p>A an&aacute;lise de raster permite a voc&ecirc; executar an&aacute;lises de grandes conjuntos de dados raster utilizando o  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Utilizar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerenciar Dados</b>, <b>Aprendizagem Detalhada</b>, e <b>An&aacute;lise Multidimensional</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -344,9 +344,11 @@
                     
 
                 </li>
-                <li> <b>Converter Raster para Fei&ccedil;&atilde;o</b> vectoriza dados raster.
+                <li> <b>Converter Raster para Fei&ccedil;&atilde;o</b> vetoriza dados raster.
                     
 
+                </li>
+                <li> <b>Amostra</b> extrai dados em locais definidos de um raster ou conjunto de rasters.
                 </li>
             </ul>
             
@@ -378,7 +380,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Altera os valores de c&eacute;lula das faixas ou individual para novos valores.
+            <p>Altera os valores individuais ou intervalos de c&eacute;lulas para novos valores.
             </p>
             <br/>
         </div>
@@ -393,7 +395,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Cria um novo conjunto de dados raster a partir de um conjunto de dados de fei&ccedil;&otilde;es existentes.
+            <p>Cria um novo conjunto de dados raster a partir de um conjunto de dados de fei&ccedil;&atilde;o existente.
             </p>
             <br/>
         </div>
@@ -408,21 +410,38 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Cria um novo conjunto de dados raster a partir de um conjunto de dados de fei&ccedil;&otilde;es existentes.
+            <p>Cria um novo conjunto de dados de fei&ccedil;&atilde;o a partir de um conjunto de dados raster existente.
+            </p>
+            <br/>
+        </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Amostra</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Amostra">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cria uma tabela ou classe de fei&ccedil;&atilde;o de ponto com valores de dados em locais definidos extra&iacute;dos de um raster ou conjunto de rasters.
             </p>
             <br/>
         </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Conjunto de Ferramentas do Aprendizado Detalhado</h2>
+        <h2>Aprendizagem Detalhada</h2>
         <hr/>
-        <p>Estas ferramentas s&atilde;o utilizadas para detectar fei&ccedil;&otilde;es espec&iacute;ficas em uma imagem ou para classificar pixels em um conjunto de dados raster. Aprendizado detalhado &eacute; um tipo de m&eacute;todo de aprendizado autom&aacute;tico de intelig&ecirc;ncia artificial que detecta fei&ccedil;&otilde;es em imagens utilizando v&aacute;rias camadas em redes neurais, onde cada camada &eacute; capaz de extrair uma ou mais fei&ccedil;&otilde;es exclusivas da imagem. Estas ferramentas consomem os modelos que foram treinados para detectar fei&ccedil;&otilde;es espec&iacute;ficas em estruturas de aprendizado detalhado de terceiros&mdash;como TensorFlow, CNTK e Keras&mdash;e mapas de classe ou fei&ccedil;&otilde;es de sa&iacute;da.
+        <p>Estas ferramentas s&atilde;o utilizadas para detectar ou classificar fei&ccedil;&otilde;es espec&iacute;ficas em uma imagem ou para classificar pixels em um conjunto de dados raster. Aprendizagem detalhada &eacute; um tipo de m&eacute;todo de aprendizado autom&aacute;tico de intelig&ecirc;ncia artificial que detecta fei&ccedil;&otilde;es em imagens utilizando v&aacute;rias camadas em redes neurais, onde cada camada &eacute; capaz de extrair uma ou mais fei&ccedil;&otilde;es exclusivas da imagem. Estas ferramentas consomem os modelos que foram treinados para detectar fei&ccedil;&otilde;es espec&iacute;ficas em estruturas de aprendizagem detalhada de terceiros&mdash;como TensorFlow, CNTK e Keras&mdash;e mapas de classe ou fei&ccedil;&otilde;es de sa&iacute;da.
             <ul>
-                <li> <b>Classificar Pixels Utilizando Aprendizado Detalhado</b> produz uma raster classificada utilizando um modelo de aprendizado detalhado treinado.
+                <li> <b>Classificar Pixels Utilizando Aprendizagem Detalhada</b> produz uma raster classificada utilizando um modelo de aprendizagem detalhada treinado.
                 </li>
-                <li> <b>Detectar Objetos Utilizando Aprendizado Detalhado</b> produz uma classe de fei&ccedil;&atilde;o contendo objetos que encontra em uma imagem de entrada utilizando um modelo de aprendizado detalhado treinado.
+                <li> <b>Detectar Objetos Utilizando Aprendizagem Detalhada</b> produz uma classe de fei&ccedil;&atilde;o contendo objetos que encontra em uma imagem de entrada utilizando um modelo de aprendizagem detalhada treinado.
+                </li>
+                <li> <b>Classificar Objetos Utilizando Aprendizagem Detalhada</b> produz uma tabela ou classe de fei&ccedil;&atilde;o na qual cada objeto de entrada em um raster de entrada &eacute; atribu&iacute;do com um r&oacute;tulo de classe utilizando um modelo de aprendizagem detalhada treinado.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir um raster classificado, e cada pixel v&aacute;lido tem um r&oacute;tulo de classe atribu&iacute;do.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir uma classe de fei&ccedil;&atilde;o contendo os objetos localizados por ela. As fei&ccedil;&otilde;es podem ser caixas delimitadoras ou pol&iacute;gonos ao redor dos objetos encontrados ou pontos nos centros dos objetos.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classificar Objetos Utilizando Aprendizagem Detalhada</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classificar Objetos Utilizando Aprendizagem Detalhada">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir uma tabela ou classe de fei&ccedil;&atilde;o na qual cada objeto de entrada tem um r&oacute;tulo de classe atribu&iacute;do.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Análise Multidimensional</h2>
+        <hr/>
+        <p>As ferramentas no conjunto de ferramentas An&aacute;lise Multidimensional permite a voc&ecirc; executar An&aacute;lise em dados cient&iacute;ficos atrav&eacute;s de vari&aacute;veis e dimens&otilde;es m&uacute;ltiplas.
+        </p>
+        <p>Os dados multidimensionais representam dados capturados em tempos m&uacute;ltiplos, profundidades e alturas. Este tipo de dados est&aacute; comumente utilizado em dados atmosf&eacute;ricos, oceanogr&aacute;ficos e ci&ecirc;ncias da Terra. Com este conjunto de ferramentas, voc&ecirc; pode analisar dados de raster multidimensional em formatos m&uacute;ltiplos, incluindo netCDF, HDF, GRIB, o conjunto de dados do mosaico multidimensional, e Cloud Raster Format (CRF) da Esri.
+        </p>
+        <p>A seguinte tabela lista as ferramentas de an&aacute;lise multidimensional e fornece uma breve descri&ccedil;&atilde;o de cada.
+            <ul>
+                <li> <b>Agregar Raster Multidimensional</b> gera um conjunto de dados raster  multidimensional agregando vari&aacute;veis de raster multidimensional existentes ao longo de uma dimens&atilde;o.
+                </li>
+                <li> <b>Gerar Anomalia Multidimensional</b> computa a anomalia de cada fatia em um raster multidimensional para gerar um raster multidimensional.
+                </li>
+                <li> <b>Gerar Raster de Tend&ecirc;ncia</b> estima a tend&ecirc;ncia de cada pixel ao longo de uma dimens&atilde;o para um ou mais vari&aacute;veis em um raster multidimensional.
+                </li>
+                <li> <b>Prever Utilizando Raster de Tend&ecirc;ncia</b> calcula uma camada raster multidimensional prevista utilizando o raster de tend&ecirc;ncia de sa&iacute;da da ferramenta <b>Gerar Raster de Tend&ecirc;ncia</b> .
+                </li>
+                <li> <b>Localizar Estat&iacute;stica de Par&acirc;metro</b> extrai o valor da dimens&atilde;o ou o &iacute;ndice de banda no qual uma determinada estat&iacute;stica &eacute; atingida para cada pixel em um raster multidimensional ou de m&uacute;ltiplas bandas.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregar Raster Multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregar Raster Multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta gera um conjunto de dados raster multidimensional agregando vari&aacute;veis de raster multidimensional existentes ao longo de uma dimens&atilde;o.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Estatística de Parâmetro</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Localizar Estat&iacute;stica de Par&acirc;metro">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta extrai o valor da dimens&atilde;o ou o &iacute;ndice de banda no qual uma determinada estat&iacute;stica &eacute; atingida para cada pixel em um raster multidimensional ou de m&uacute;ltiplas bandas.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Gerar Anomalia Multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Gerar Anomalia Multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta computa a anomalia de cada fatia em um raster multidimensional para gerar um raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Gerar Raster de Tendência</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Gerar Raster de Tend&ecirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta estima a tend&ecirc;ncia de cada pixel ao longo de uma dimens&atilde;o para um ou mais vari&aacute;veis em um raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prever Utilizando Raster de Tendência</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prever Utilizando Raster de Tend&ecirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula um raster multidimensional previsto utilizando o raster de tend&ecirc;ncia de sa&iacute;da da ferramenta  <b>Gerar Raster de Tend&ecirc;ncia</b> .
             </p>
             <br/>
         </div>

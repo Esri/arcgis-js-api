@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Classer des objets en utilisant la méthode Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Classer des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond"></h2>
+        <hr/>
+    <p>Cet outil ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e et une classe d&rsquo;entit&eacute;s facultative afin de g&eacute;n&eacute;rer une table ou une classe d&rsquo;entit&eacute;s dans laquelle une &eacute;tiquette de classe est attribu&eacute;e &agrave; chaque objet en entr&eacute;e.
+    </p>
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue courante de la carte)</b> est s&eacute;lectionn&eacute;e, seule la surface raster qui est visible au sein de l&rsquo;&eacute;tendue actuelle de la carte est analys&eacute;e. Si l&rsquo;option n&rsquo;est pas s&eacute;lectionn&eacute;e, l&rsquo;ensemble du raster sera analys&eacute;, m&ecirc;me s&rsquo;il se trouve en dehors de l&rsquo;&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Choisir l’image utilisée pour classer des objets</h2></div>
+        <hr/>
+        <div>
+            <p>Image en entr&eacute;e utilis&eacute;e pour d&eacute;tecter des objets.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Choisir la couche d’entités des objets (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>La couche d&rsquo;entit&eacute;s ponctuelle, lin&eacute;aire ou surfacique en entr&eacute;e qui identifie la localisation de chaque objet &agrave; classer et &eacute;tiqueter. Chaque ligne dans la couche d&rsquo;entit&eacute;s en entr&eacute;e repr&eacute;sente un seul objet.
+            </p>
+            <p>Si aucune couche d&rsquo;entit&eacute;s en entr&eacute;e n&rsquo;est sp&eacute;cifi&eacute;e, l&rsquo;outil suppose que chaque image en entr&eacute;e contient un seul objet &agrave; classer. Si l&rsquo;image ou les images en entr&eacute;e utilisent une r&eacute;f&eacute;rence spatiale, la sortie de l&rsquo;outil est une couche d&rsquo;entit&eacute;s dans laquelle l&rsquo;&eacute;tendue de chaque image sert d&rsquo;emprise g&eacute;om&eacute;trique pour chaque entit&eacute; &eacute;tiquet&eacute;e. Si l&rsquo;image ou les images en entr&eacute;e ne sont pas r&eacute;f&eacute;renc&eacute;es spatialement, la sortie de l&rsquo;outil est une table contenant les valeurs d&rsquo;ID des images et les &eacute;tiquettes de classe de chaque image.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Choisir le modèle d’apprentissage profond utilisé pour classer des objets</h2></div>
+        <hr/>
+        <div>
+            <p>L&rsquo;entr&eacute;e est l&rsquo;URL d&rsquo;un &eacute;l&eacute;ment de paquetage d&rsquo;apprentissage profond ( <code>.dlpk</code>).
+            </p>
+            <p>Le paquetage d&rsquo;apprentissage profond se compose du fichier JSON d&eacute;finition du mod&egrave;le ESRI ( <code>.emd</code>), du fichier de mod&egrave;le binaire d&rsquo;apprentissage profond et, &eacute;ventuellement, de la fonction raster Python &agrave; utiliser.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Spécifier les arguments du modèle d’apprentissage profond</h2></div>
+        <hr/>
+        <div>
+            <p>Les arguments de la fonction sont d&eacute;finis dans la classe de fonction raster Python r&eacute;f&eacute;renc&eacute;e par le mod&egrave;le en entr&eacute;e. C&rsquo;est l&agrave; que vous r&eacute;pertoriez les param&egrave;tres et arguments d&rsquo;apprentissage profond suppl&eacute;mentaires &agrave; tester et affiner, par exemple un seuil de confiance pour ajuster la sensibilit&eacute;.
+            </p>
+            <p>Les noms des arguments sont renseign&eacute;s par l&rsquo;outil apr&egrave;s lecture du module Python dans le serveur d&rsquo;analyse raster.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Définir le nom du champ d’étiquette de classe</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom du champ qui contiendra l&rsquo;&eacute;tiquette de classification dans la couche d&rsquo;entit&eacute;s en sortie.
+            </p>
+            <p>Si aucun nom de champ n'est sp&eacute;cifi&eacute;, un nouveau champ nomm&eacute;  <i>ClassLabel</i> est g&eacute;n&eacute;r&eacute; dans la classe d&rsquo;entit&eacute;s en sortie.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Mode de traitement</h2></div>
+        <hr/>
+        <div>
+            <p>Indique la fa&ccedil;on dont tous les &eacute;l&eacute;ments raster sont trait&eacute;s dans un service d&rsquo;imagerie. 
+                <ul>
+                    <li> <b>Process as mosaicked image (Traiter comme image mosa&iuml;qu&eacute;e)</b>&nbsp;: tous les &eacute;l&eacute;ments raster dans le service d&rsquo;imagerie sont mosa&iuml;qu&eacute;s ensemble et trait&eacute;s. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Process items separately (Traiter les &eacute;l&eacute;ments s&eacute;par&eacute;ment)</b>&nbsp;: tous les &eacute;l&eacute;ments raster dans le service d&rsquo;imagerie sont trait&eacute;s en tant qu&rsquo;images s&eacute;par&eacute;es.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

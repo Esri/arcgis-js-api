@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Find pauser</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Find pauser-workflow-diagram"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag af punktobjekter, der er af typen  <code>&oslash;jeblik</code>. F&oslash;rst tildeler v&aelig;rkt&oslash;jet objekter til et spor ved hj&aelig;lp af en unik identifikator. Sporenes r&aelig;kkef&oslash;lge bestemmes af objekttidspunktet. Dern&aelig;st beregnes afstanden mellem den f&oslash;rste observation i et spor og den n&aelig;ste. Objekter betragtes som en del af en pause, hvis to punkter, der midlertidigt der f&oslash;lger efter hinanden, forbliver inden for den givne afstand i mindst den givne varighed. N&aring;r det konstateres, at to objekter er en del af en pause, bruges det f&oslash;rste objekt i pausen som referencepunkt, og v&aelig;rkt&oslash;jet finder objekter, der midlertidigt der f&oslash;lger efter hinanden, som er inden for den angivne afstand fra referencepunktet i pausen. N&aring;r alle objekter inden for den angivne afstand er fundet, indsamler v&aelig;rkt&oslash;jet pauseobjekterne og beregner deres middel-centrum. Objekter f&oslash;r og efter den nuv&aelig;rende pause tilf&oslash;jes til pausen, hvis de ligger inden for den givne afstand fra pausepositionens middel-centrum. Denne proces forts&aelig;tter indtil slutningen af ​​sporet.
+    </p>
+    <p>Objekter i tidsafh&aelig;ngige lag kan repr&aelig;senteres p&aring; en af ​​f&oslash;lgende m&aring;der:
+        <ul>
+            <li>&Oslash;jeblik &ndash; Et enkelt &oslash;jeblik i tiden
+            </li>
+            <li>Interval &ndash; En start- og en sluttid
+            </li>
+        </ul>
+        
+    </p>
+    <p>Lad os f.eks. sige, at du arbejder for Vejdirektoratet og har indsamlet GPS-afl&aelig;sninger for k&oslash;ret&oslash;jer p&aring; st&oslash;rre motorveje. Hver GPS-post indeholder et unikt k&oslash;ret&oslash;js-ID, tid, placering og hastighed. Med det unikke k&oslash;ret&oslash;js-ID til at definere individuelle spor kan du s&oslash;ge efter k&oslash;ret&oslash;jer, der ikke har flytte sig mere end 100 meter p&aring; mindst 15 minutter for at finde problemomr&aring;der p&aring; vejnettet. Derudover kan du beregne statistik, s&aring;som k&oslash;ret&oslash;jets gennemsnitlige hastighed inden for pauselokationen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vælg det lag, der skal findes pauser i</h2></div>
+        <hr/>
+        <div>
+            <p>Punktlaget, der vil blive opsummeret til pauser. Input-laget skal v&aelig;re tidsafh&aelig;ngigt og indeholde objekter, der repr&aelig;senterer et &oslash;jeblik i tiden, og der skal desuden v&aelig;re et eller flere felter, der kan bruges til at identificere spor.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag. Du kan ogs&aring; anvende et filter p&aring; dit input-lag eller anvende en markering p&aring; hostede lag, der er tilf&oslash;jet p&aring; dit kort. Filtre og markeringer anvendes kun til analyse. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Vælg ét eller flere felter for at identificere spor</h2></div>
+        <hr/>
+        <div>
+            <p>Felter, der repr&aelig;senterer sporidentifikatoren. Du kan bruge &eacute;t eller flere felter til at repr&aelig;sentere unikke v&aelig;rdier for sporene.
+            </p>
+            <p>Hvis du f.eks. skulle finde pauselokationer for orkaner, kunne du benytte orkanens navn som sporingsfelt.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Vælg metoden til at beregne afstand</h2></div>
+        <hr/>
+        <div>
+            <p>Metoden, der bruges til at beregne pauseafstanden i sporene.  <b>Planar</b>-metoden kan muligvis beregne resultaterne hurtigere, men vil ikke knytte sporene til den internationale datolinje eller tage h&oslash;jde for jordens faktiske runding ved oprettelse af buffere. <b>Geod&aelig;tisk</b>-metoden vil l&aelig;gge sporene omkring den internationale datolinje, hvis det er p&aring;kr&aelig;vet, og den vil bruge en geod&aelig;tisk buffer til at tage h&oslash;jde for jordens runding.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definer den spatiale søgeafstand</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancen for pauseafstand er den maksimale afstand mellem punkter, der betragtes som en enkelt pause.
+            </p>
+            <p>Hvis du f.eks. er interesseret i at finde pauser, hvor trafikken ikke har bev&aelig;get sig mere end 20 meter inden for et bestemt tidsrum, ville afstandstolerancen v&aelig;re 20 meter.
+            </p>
+            <p>Brug parameteren  <b>Definer det tidsm&aelig;ssige s&oslash;geomr&aring;de</b> for at angive tidspunktet.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Opdelte spor (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Enheden for afstandstolerancen.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definer det tidsmæssige søgeområde</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancen for pausetid er den minimale varighed for en pause, der skal tages i betragtning i en enkelt pauseplacering.
+            </p>
+            <p>Hvis du f.eks. vil vide, hvor trafikken ikke har bev&aelig;get sig en bestemt afstand inden for en time, vil tidstolerancen v&aelig;re 1 time.
+            </p>
+            <p>Brug parameteren  <b>Definer det spatiale s&oslash;geomr&aring;de</b> for at angive afstanden.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Vælg en afstand, som spor skal opdeles efter (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Enheden for tidstolerancen.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tilføj statistik (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan beregne statistik for objekter, der er summeret. Du kan beregne f&oslash;lgende for numeriske felter : 
+                <ul>
+                    <li>Antal &ndash; Beregner antallet af ikke-nul-v&aelig;rdier. Kan anvendes til numeriske felter eller strenge. Opt&aelig;llingen af [null, 0, 2] er 2.
+                    </li>
+                    <li>Sum &ndash; Summen af numeriske v&aelig;rdier i et felt. Summen af [null, null, 3] er 3.
+                    </li>
+                    <li>Middelv&aelig;rdi &ndash; Middelv&aelig;rdier af de numeriske v&aelig;rdier. Middelv&aelig;rdien af [0, 2, null] er 1.
+                    </li>
+                    <li>Min. &ndash; Minimumv&aelig;rdien for et numerisk felt. Minimumsv&aelig;rdien af [0, 2, null] er 0. 
+                    </li>
+                    <li>Maks. &ndash; Maksimumv&aelig;rdien for et numerisk felt. Maksimumv&aelig;rdien af [0, 2, null] er 2.
+                    </li>
+                    <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Dette beregnes som minimumv&aelig;rdierne, der er trukket fra maksimumv&aelig;rdien. Omr&aring;det for [0, null, 1] er 1. Omr&aring;det for [null, 4] er 0.
+                    </li>
+                    <li>Varians &ndash; Variansen af et numerisk felt i et spor. Variansen af [1] er nul. Variansen af [null, 1,0, 1,1] er 0,25.
+                    </li>
+                    <li>Standardafvigelse &ndash; Standardafvigelsen for et numerisk felt. Standardafvigelsen for [1] er nul. Standardafvigelsen for [null, 1,0, 1,1] er 0,5. 
+                    </li>
+                    <li>F&oslash;rst&mdash;Den f&oslash;rste v&aelig;rdi af et angivet felt i det opsummerede spor. Hvis et spor har f&oslash;lgende tids-sorterede v&aelig;rdier for et felt: [1,5,10,20], er den f&oslash;rste v&aelig;rdi 1.
+                    </li>
+                    <li>Sidst&mdash;Den sidste v&aelig;rdi af et angivet felt i det opsummerede spor. Hvis et spor har f&oslash;lgende tids-sorterede v&aelig;rdier for et felt: [1,5,10,20], er den sidste v&aelig;rdi 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du kan beregne f&oslash;lgende for strengfelter :
+                <ul>
+                    <li>Antal &ndash; Antallet af ikke-nul-strenge.
+                    </li>
+                    <li>Vilk&aring;rlig &ndash; Denne statistik er et vilk&aring;rligt eksempel p&aring; en strengv&aelig;rdi i det angivne felt.
+                    </li>
+                    <li>F&oslash;rst&mdash;Den f&oslash;rste v&aelig;rdi af et angivet felt i det opsummerede spor. Hvis et spor har f&oslash;lgende tids-sorterede v&aelig;rdier for et felt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], er den f&oslash;rste v&aelig;rdi Toronto.
+                    </li>
+                    <li>Sidst&mdash;Den sidste v&aelig;rdi af et angivet felt i det opsummerede spor. Hvis et spor har f&oslash;lgende tids-sorterede v&aelig;rdier for et felt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], er den sidste v&aelig;rdi Boston.
+                    </li>
+                </ul>
+                Alle statistiske data beregnes ud fra ikke-nul-v&aelig;rdier. Resultatlaget vil indeholde et nyt felt for hver beregnet statistik. Du kan tilf&oslash;je et vilk&aring;rligt antal statistikker ved at v&aelig;lge en attribut og en statistik.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Output boliger som</h2></div>
+        <hr/>
+        <div>
+            <p>Bestemmer, hvilke objekter der skal returneres og formatet. Fire typer er tilg&aelig;ngelige: 
+                <ul>
+                    <li> <b>Middel-centre</b> &ndash; Et punkt, der repr&aelig;senterer centroiden for hver registreret pauselokation. Attributter opsummeres. Dette er standardv&aelig;rdien.
+                         
+                    </li>
+                    <li> <b>Konveks &quot;hull&rdquo;</b> &ndash; Polygoner, der repr&aelig;senterer det konvekse &rdquo;hull&rdquo; i hver pausegruppe. Attributter opsummeres.
+                         
+                    </li>
+                    <li> <b>Pauseobjekter</b> &ndash; Alle input-punktobjekter og attributter, der er bestemt til at tilh&oslash;re en pause, returneres.
+                         
+                    </li>
+                    <li> <b>Alle objekter</b> &ndash; Alle input-punktobjekter og attributter returneres.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analysér data med tidsintervaller (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv, om du vil s&oslash;ge efter pauselokationer ved hj&aelig;lp af tidsintervaller, som vil segmentere dine inputobjekter til analyse. Hvis du bruger tidsintervaller, skal du angive det tidsinterval, du vil bruge, og evt. indstille referencetidspunktet. Hvis du ikke angiver et referencetidspunkt, benyttes 1. januar 1970. 
+            </p>
+            <p>Hvis du f.eks. indstiller tidsgr&aelig;nsen til at v&aelig;re 1 dag, der begynder kl. 9.00 den 1. januar 1990, bliver hvert spor afkortet klokken 9:00 for hver dag og analyseret inden for dette segment. Ingen pauser starter f&oslash;r 9:00 og slutter senere. 
+            </p>
+            <p>Brug af tidsintervaller er en hurtig m&aring;de at nedbringe beregningstiden, da der hurtigt oprettes mindre spor til analyse. Hvis opsplitning ved et tilbagevendende tidsinterval giver mening for din analyse, anbefales det behandling af big data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Navnet p&aring; det lag, som oprettes. Hvis du skriver til et ArcGIS Data Store, bliver  dine resultater gemt i  <b>Mit indhold</b> og f&oslash;jet til kortet. Hvis du skriver til en big data-fildeling, bliver dine resultater gemt i big data-fildelingen og f&oslash;jet til dens manifest. De bliver ikke f&oslash;jet til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>N&aring;r du skriver til   ArcGIS Data Store  (relationelt eller spatiotemporalt big data-lager) ved hj&aelig;lp af rullelisten  <b>Gem resultat i </b>, kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

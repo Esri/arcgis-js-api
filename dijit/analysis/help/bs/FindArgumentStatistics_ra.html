@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pronađi statistike argumenata</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Pronađi statistike argumenata"></h2>
+        <hr/>
+    <p>Izdvaja vrijednost dimenzije ili indeks kanala kod kojeg se dana statistika dobiva za svaki piksel iz vi&scaron;edimenzionalnog ili vi&scaron;ekanalnog rastera.
+    </p>
+    <p>Pomoću ovog alata izdvojite vrijednost dimenzije (na primjer datum, visinu ili dubinu) na kojoj se postiže određena statistika u nizu rastera u vi&scaron;edimenzionalnom skupu rasterskih podataka. Alternativno pronađite broj kanala kod kojeg se postiže statistika u vi&scaron;epojasnom rasteru.
+    </p>
+    <p>Na primjer, možda želite znati mjesec u kojem je svaki piksel dosegao najvi&scaron;u temperaturu morske povr&scaron;ine tijekom 30 godina prikupljanja podataka. Drugi primjer je da imate osmokanalnu daljinsko istraživanje slike i želite znati kanal u kojem je postignuta minimalna vrijednost refleksije za svaki piksel.
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte,</b> analizirat će se varijable ili kanali geoobjekta koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable ili kanali cijelog geoobjekta čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Odaberite višedimenzionalni ili višekanalni geoobjekt slike za analizu</h2></div>
+        <hr/>
+        <div>
+            <p>Ulazni vi&scaron;edimenzionalni ili vi&scaron;ekanalni raster koji se analizira.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Odaberite dimenziju iz koje će se izvući statistika</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija iz koje će se izvući statistika. Ako ulazni raster nije vi&scaron;edimenzionalni raster, ovaj parametar nije potreban.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Odaberite varijablu/e koje će se analizirati</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable koje će se analizirati. Ako ulazni raster nije vi&scaron;edimenzionalan, vrijednosti piksela vi&scaron;eslojnog rastera smatraju se varijablom. Ako je ulazni raster vi&scaron;edimenzionalan i nije navedena varijabla, analizirat će se sve varijable s odabranom dimenzijom.
+            </p>
+            <p>Primjerice, da bi se utvrdile godine u kojima su temperaturne vrijednosti najvi&scaron;e, potrebno je odrediti temperaturu kao varijablu koja će se analizirati. Ako ne navedete varijable i imate varijable temperature i oborine, analizirat će se obje varijable, a izlazni multidimenzionalni raster uključivat će obje varijable.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Odaberi vrstu statistike</h2></div>
+        <hr/>
+        <div>
+            <p>Specificira statistiku za izdvajanje iz varijable ili varijabli duž određene dimenzije. 
+            </p>
+            <ul>
+                <li> <b>Argument minimalnog</b>&mdash;Izvuči će se vrijednost dimenzije kod koje se postiže minimalna varijabilna vrijednost. To je zadano.
+                </li>
+                <li> <b>Argument maksimalnog</b>&mdash;Izvuči će se vrijednost dimenzije kod koje se postiže maksimalna varijabilna vrijednost.
+                </li>
+                <li> <b>Argument medijana</b>&mdash;Izvuči će se vrijednost dimenzije kod koje se postiže srednja varijabilna vrijednost.
+                </li>
+                <li> <b>Argument trajanja</b>&mdash;Najdulje trajanje dimenzije za koju varijable vrijednosti padaju između minimalne i maksimalne vrijednosti.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Odredite višestruku vrijednost pojavljivanja</h2></div>
+        <hr/>
+        <div>
+            <p>Vrijednost piksela koja se koristi da naznači da je data statistika argumenta dostignuta vi&scaron;e nego jednom u ulaznom skupu podataka rastera. Ako nije određeno, vrijednost piksela bit će vrijednost dimenzije prvi put kada se dostigne statistika argumenta.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Odredite minimalnu vrijednost</h2></div>
+        <hr/>
+        <div>
+            <p>Minimalna vrijednost varijable koja se koristi za izdvajanje trajanja.
+            </p>
+            <p>Ovaj je parametar potreban kada je  <b>Trajanje</b> odabrano kao vrsta statistike.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Odredite maksimalnu vrijednost</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalna vrijednost varijable koja se koristi za izdvajanje trajanja.
+            </p>
+            <p>Ovaj je korak potreban kada je  <b>Trajanje</b> odabrano kao vrsta statistike.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Odaberite definiciju dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje kako će se statistika izvući iz dimenzije. 
+                <ul>
+                    <li> <b>Sve</b>&mdash;Statistika će biti izvučena u svim dimenzijama. To je zadano.
+                    </li>
+                    <li> <b>Interval ključne riječ</b>&mdash;Statistika će biti izvučena iz vremenske dimenzije u skladu s intervalom ključne riječi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Odaberite interval ključnih riječi</h2></div>
+        <hr/>
+        <div>
+            <p>Jedinica vremena za koju će se izvući statistika.
+            </p>
+            <p>Na primjer, imate pet godina podataka o dnevnoj temperaturi mora i želite znati godinu u kojoj je zabilježena maksimalna temperatura. Postavite  <b>Argument maksimalnog</b> kao vrstu statistike, postavite <b>Interval ključne riječi</b> kao definiciju dimenzije, i postavite <b>Godi&scaron;nje</b> kao interval ključne riječi u ovom koraku.
+            </p>
+            <p>Alternativno, ako želite znati mjesec u kojem je maksimalna temperatura bila dosljedno promatrana, postavite  <b>Argument maksimalnog</b> kao vrstu statistike, postavite <b>Interval ključne riječi</b> as kao definiciju dimenzije, i postavite <b>Ponavlja se mjesečno</b> kao interval ključne riječi u ovom koraku. Ovo će generirati raster u kojem svaki piksel sadrži mjesec u kojem je statistika dosegnuta tijekom petogodi&scaron;njeg zapisa (na primjer 18/08/2018., 25/08/2016., 07/07/2013.).
+            </p>
+            <p>Ovaj korak je potreban kada je  <b>Standardno vrijeme</b> je postavljeno kao dimenzija iz koje će se izvući statistika, i <b>Interval ključne riječi</b> je odabran da definira kako će se statistika izvući iz vremenske dimenzije.
+                <ul>
+                    <li> <b>Ponavlja se dnevno</b>&mdash; Statistika će se izvlačiti kroz  dana.
+                    </li>
+                    <li> <b>Ponavlja se tjedno</b>&mdash; Statistika će se izvlačiti kroz  tjedana.
+                    </li>
+                    <li> <b>Ponavlja se mjesečno</b>&mdash; Statistika će se izvlačiti kroz  mjeseci.
+                    </li>
+                    <li> <b>Recurring kvartalno</b>&mdash;Statistika će se izvlačiti kroz  kvartala.
+                    </li>
+                    <li> <b>Po satu</b>&mdash;Statistika će se izvlačiti za  sat u kojem je statistika dosegnuta.
+                    </li>
+                    <li> <b>Dnevno</b>&mdash;Statistika će se izvlačiti za  dan u kojem je statistika dosegnuta.
+                    </li>
+                    <li> <b>Tjedno</b>&mdash;Statistika će se izvlačiti za  tjedan u kojem je statistika dosegnuta.
+                    </li>
+                    <li> <b>Mjesečno</b>&mdash;Statistika će se izvlačiti za  mjesecu kojem je statistika dosegnuta.
+                    </li>
+                    <li> <b>Kvartalno</b>&mdash;Statistika će se izvlačiti za  kvartal u kojem je statistika dosegnuta.
+                    </li>
+                    <li> <b>Godi&scaron;nje</b>&mdash;Statistika će se izvlačiti za  godinu u kojoj je statistika dosegnuta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju.
+                <ul>
+                    <li>Ako je kućica označena analiza će uključivati sve važeće piksele za danu dimenziju i ignorirati piksele Bez podataka. To je zadano.
+                    </li>
+                    <li>Ako kućica nije označena analiza će prikazati vrijednosti Bez podataka ako postoje vrijednosti Bez podataka za piksele za danu dimenziju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

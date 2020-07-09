@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor. Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari web del  Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Utilitza la proximitat</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b>, <b>Administra les dades</b> i <b>Aprenentatge profund</b>.
+        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor. Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari del  Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Utilitza la proximitat</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b>, <b>Administra les dades</b>, <b>Aprenentatge profund</b> i <b>An&agrave;lisi multidimensional</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -328,7 +328,7 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
-        <h2>Administra les dades</h2>
+        <h2>Administra dades</h2>
         <hr/>
         <p>Aquestes eines es fan servir per a l'administraci&oacute; di&agrave;ria de les dades geogr&agrave;fiques i per combinar dades abans de l'an&agrave;lisi. 
             <ul>
@@ -347,6 +347,8 @@
                 <li> <b>Converteix un r&agrave;ster a entitat</b> vectoritza dades de r&agrave;ster.
                     
 
+                </li>
+                <li> <b>Mostra</b> extreu dades en ubicacions definides d'un r&agrave;ster o d'un conjunt de r&agrave;sters.
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mostra</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Mostra">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Crea una taula o una classe d'entitat de punt amb valors de dades en ubicacions definides extretes d'un r&agrave;ster o d'un conjunt de r&agrave;sters.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Aprenentatge profund del conjunt d'eines</h2>
+        <h2>Aprenentatge profund</h2>
         <hr/>
-        <p>Aquestes eines 	s'utilitzen per detectar entitats espec&iacute;fiques en una imatge o per classificar els p&iacute;xels en un dataset r&agrave;ster. L'aprenentatge profund &eacute;s un tipus de m&egrave;tode d'aprenentatge autom&agrave;tic d'intel&middot;lig&egrave;ncia artificial que detecta entitats a les imatges mitjan&ccedil;ant diverses capes de xarxes neuronals, on cada capa &eacute;s capa&ccedil; d'extreure una o diverses entitats &uacute;niques de la imatge. Aquestes eines utilitzen els models que s'han format per detectar entitats espec&iacute;fiques als marcs d'aprenentatge profund de tercers, com ara el TensorFlow, el CNTK i el Keras, i proporcionar entitats o mapes de classes.
+        <p>Aquestes eines 	s'utilitzen per detectar o classificar entitats espec&iacute;fiques en una imatge o per classificar els p&iacute;xels en un dataset r&agrave;ster. L'aprenentatge profund &eacute;s un tipus de m&egrave;tode d'aprenentatge autom&agrave;tic d'intel&middot;lig&egrave;ncia artificial que detecta entitats a les imatges mitjan&ccedil;ant diverses capes de xarxes neuronals, on cada capa &eacute;s capa&ccedil; d'extreure una o diverses entitats &uacute;niques de la imatge. Aquestes eines utilitzen els models que s'han format per detectar entitats espec&iacute;fiques als marcs d'aprenentatge profund de tercers, com ara el TensorFlow, el CNTK i el Keras, i proporcionar entitats o mapes de classes.
             <ul>
                 <li> <b>Classifica els p&iacute;xels amb Aprenentatge profund</b> produeix un r&agrave;ster classificat mitjan&ccedil;ant un model d'aprenentatge profund format.
                 </li>
                 <li> <b>Detecta objectes amb Aprenentatge profund</b> produeix una classe d'entitat que cont&eacute; objectes que cerca en un r&agrave;ster d'entrada mitjan&ccedil;ant un model d'aprenentatge profund format.
                 </li>
+                <li> <b>Classifica els objectes amb Aprenentatge profund</b> produeix una classe d'entitat o una taula en qu&egrave; a cada objecte d'entrada en un r&agrave;ster d'entrada se li assigna una etiqueta de classe mitjan&ccedil;ant un model d'aprenentatge profund format.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir un r&agrave;ster classificat, on cada p&iacute;xel v&agrave;lid t&eacute; una etiqueta de classe assignada.
+            <p>Aquesta eina executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir un r&agrave;ster classificat, i cada p&iacute;xel v&agrave;lid t&eacute; una etiqueta de classe assignada.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir una classe d'entitat que contingui els objectes que troba. Les entitats poden ser quadres de delimitaci&oacute; o pol&iacute;gons al voltant dels objectes trobats, o b&eacute; punts als centres dels objectes.
+            <p>Aquesta eina executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada per produir una classe d'entitat que contingui els objectes que troba. Les entitats poden ser quadres de delimitaci&oacute; o pol&iacute;gons al voltant dels objectes trobats, o b&eacute; punts als centres dels objectes.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classifica els objectes amb Aprenentatge profund</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classifica els objectes amb Aprenentatge profund">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina executa un model d'aprenentatge profund format en un r&agrave;ster d'entrada i una classe d'entitat opcional per produir una classe d'entitat o una taula en qu&egrave; cada objecte d'entrada t&eacute; una etiqueta de classe assignada.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Anàlisi multidimensional</h2>
+        <hr/>
+        <p>Les eines del conjunt d'eines An&agrave;lisi multidimensional permeten realitzar an&agrave;lisis de dades cient&iacute;fiques en diverses variables i dimensions.
+        </p>
+        <p>Les dades multidimensionals representen dades capturades en temps, profunditats i altures diferents. Aquest tipus de dades s'acostumen a utilitzar en ci&egrave;ncies atmosf&egrave;riques, oceanogr&agrave;fiques i terrestres. Amb aquest conjunt d'eines, podeu analitzar dades de r&agrave;ster multidimensional en diversos formats, com ara netCDF, HDF, GRIB, el dataset de mosaic multidimensional i el format de r&agrave;ster de n&uacute;vol (CRF) d'Esri.
+        </p>
+        <p>A la taula seg&uuml;ent s'indiquen les eines d'an&agrave;lisi multidimensional i s'inclou una descripci&oacute; breu de cadascuna.
+            <ul>
+                <li> <b>Consolida el r&agrave;ster multidimensional</b> genera un dataset r&agrave;ster multidimensional mitjan&ccedil;ant l'agregaci&oacute; de variables de r&agrave;ster multidimensional existents en una dimensi&oacute;.
+                </li>
+                <li> <b>Genera l'anomalia multidimensional</b> calcula l'anomalia de cada sector d'un r&agrave;ster multidimensional per generar un r&agrave;ster multidimensional.
+                </li>
+                <li> <b>Genera el r&agrave;ster de tend&egrave;ncia</b> estima la tend&egrave;ncia de cada p&iacute;xel en una dimensi&oacute; per a una o diverses variables d'un r&agrave;ster multidimensional.
+                </li>
+                <li> <b>Prediu mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia</b> calcula un r&agrave;ster multidimensional previst mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia de sortida des de l'eina <b>Genera el r&agrave;ster de tend&egrave;ncia</b>.
+                </li>
+                <li> <b>Cerca estad&iacute;stiques d'argument</b>: extreu el valor de la dimensi&oacute; o l'&iacute;ndex de banda en qu&egrave; s'obt&eacute; una estad&iacute;stica determinada de cada p&iacute;xel en un r&agrave;ster multidimensional o multibanda.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Consolida el ràster multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Consolida el r&agrave;ster multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina genera un dataset r&agrave;ster multidimensional mitjan&ccedil;ant l'agregaci&oacute; de variables de r&agrave;ster multidimensional existents en una dimensi&oacute;.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Cerca estadístiques d'argument</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Cerca estad&iacute;stiques d'argument">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina extreu el valor de la dimensi&oacute; o l'&iacute;ndex de banda en qu&egrave; s'obt&eacute; una estad&iacute;stica determinada de cada p&iacute;xel en un r&agrave;ster multidimensional o multibanda.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genera l'anomalia multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Genera l'anomalia multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula l'anomalia de cada sector d'un r&agrave;ster multidimensional per generar un r&agrave;ster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genera el ràster de tendència</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Genera el r&agrave;ster de tend&egrave;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina estima la tend&egrave;ncia de cada p&iacute;xel en una dimensi&oacute; per a una o diverses variables d'un r&agrave;ster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Predigueu l'ús del ràster de tendència</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prediu mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula un r&agrave;ster multidimensional previst mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia de sortida des de l'eina  <b>Genera el r&agrave;ster de tend&egrave;ncia</b>.
             </p>
             <br/>
         </div>

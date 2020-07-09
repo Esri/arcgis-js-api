@@ -52,14 +52,14 @@
                 
 
             </li>
-            <li>M&auml;&auml;rake tee, mis viib mitmest linnal&auml;hedasest kohast (l&auml;htepunktist) tl&auml;hina kaubanduskeskuseni (sihtkohani).
+            <li>M&auml;&auml;rake tee, mis viib mitmest linnal&auml;hedasest kohast (l&auml;htepunktist) l&auml;hima kaubanduskeskuseni (sihtkohani).
                 
 
             </li>
         </ul>
         
     </p>
-    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui neid pole praegu kaardil n&auml;ha.
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui need ei ole kaardi praeguses ulatuses n&auml;htavad.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -69,7 +69,7 @@
         <div>
             <p>Pilditeenus v&otilde;i objektiteenus, mis identifitseerib pikslid, millest m&auml;&auml;ratakse k&otilde;ige odavam tee k&otilde;ige odavama sihtkohani.
             </p>
-            <p>Kui sisend on pilditeenus, sisaldab sisend kehtivate v&auml;&auml;rtustega piksleid (null on kehtiv v&auml;&auml;rtus) ja &uuml;lej&auml;&auml;nud pikslitele tuleb m&auml;&auml;rata olek NoData.
+            <p>Kui sisend on pilditeenus, sisaldab sisend kehtivate v&auml;&auml;rtustega piksleid (null on kehtiv v&auml;&auml;rtus) ja &uuml;lej&auml;&auml;nud pikslitele tuleb m&auml;&auml;rata v&auml;&auml;rtus NoData.
             </p>
         </div>
     </div>
@@ -112,20 +112,28 @@
             <p>M&auml;&auml;rab viisi, kuidas v&auml;&auml;rtusi ja tsoone saab sihtkoha sisendandmetel t&otilde;lgendada tee kuluarvutustes.
             </p>
             <ul>
-                <li>Parim &uuml;ksik &mdash; Sihtkoha sisendandmetel tuletatakse odavaim tee k&otilde;igi pikslite v&otilde;i asukohtade puhul asukohast, millest on sihtkohani k&otilde;ige odavam tee. See on vaikimisi valitud
+                <li> <b>Parim &uuml;ksik</b> &mdash; Sihtkoha sisendandmetel tuletatakse odavaim tee k&otilde;igi pikslite v&otilde;i asukohtade puhul asukohast, millest on sihtkohani k&otilde;ige odavam tee. See on vaikimisi valitud
                     
 
                 </li>
-                <li>Iga pikslini &mdash; Igal pikslil v&otilde;i asukohal, mille sihtkoha sisendandmed on kehtivad, m&auml;&auml;ratakse odavaim tee ja salvestatakse v&auml;ljundobjekti teenusena. Selle variandi puhul k&auml;sitletakse sihtkoha sisendandmete iga pikslit eraldi ja igast pikslist m&auml;&auml;ratakse odavaim tee.
+                <li> <b>Iga pikslini</b> &mdash; Igal pikslil v&otilde;i asukohal, mille sihtkoha sisendandmed on kehtivad, m&auml;&auml;ratakse odavaim tee ja salvestatakse v&auml;ljundobjekti teenusena. Selle variandi puhul k&auml;sitletakse sihtkoha sisendandmete iga pikslit eraldi ja igast pikslist m&auml;&auml;ratakse odavaim tee.
                     
 
                 </li>
-                <li>Iga tsoonini &mdash; Igal tsoonil m&auml;&auml;ratakse sihtkoha sisendandmete hulgas odavaim tee ja salvestatakse v&auml;ljundobjekti teenusena. Selle variandi korral algab iga tsooni odavaim tee pikslist v&otilde;i asukohast, mille tsooni kaalutud kaugus on k&otilde;ige odavam.
+                <li> <b>Iga tsoonini</b> &mdash; Igal tsoonil m&auml;&auml;ratakse sihtkoha sisendandmete hulgas odavaim tee ja salvestatakse v&auml;ljundobjekti teenusena. Selle variandi korral algab iga tsooni odavaim tee pikslist v&otilde;i asukohast, mille tsooni kaalutud kaugus on k&otilde;ige odavam.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Sihtkoha väärtuste saamiseks valige väli</h2></div>
+        <hr/>
+        <div>
+            <p>Seda v&auml;lja kasutatakse v&auml;&auml;rtuste m&auml;&auml;ramiseks sihtkoha asukohtadele.
+            </p>
         </div>
     </div>
 </div>

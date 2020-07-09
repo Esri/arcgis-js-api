@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regrese určená z geografických vah (Geographically Weighted Regression)</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagram pracovn&iacute;ho postupu Regrese z geografick&yacute;ch vah"></h2>
+        <hr/>
+    <p>Provede regresi určenou z geografick&yacute;ch vah (GWR), což je m&iacute;stn&iacute; forma line&aacute;rn&iacute; regrese použ&iacute;van&aacute; k modelov&aacute;n&iacute; vztahů proměnliv&yacute;ch v prostoru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte vrstvu, kterou chcete analyzovat</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva obsahuj&iacute;c&iacute; bodov&eacute; prvky, kter&eacute; obsahuj&iacute; z&aacute;visl&eacute; a nez&aacute;visl&eacute; proměnn&eacute;.
+            </p>
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Zvolit vrstvu anal&yacute;zy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat. Volitelně můžete na vstupn&iacute; vrstvu použ&iacute;t filtr nebo na hostovan&eacute; vrstvy přidan&eacute; do mapy použ&iacute;t v&yacute;běr. Filtry a&nbsp;v&yacute;běry se použij&iacute; pouze při anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Zvolit pole k modelování</h2></div>
+        <hr/>
+        <div>
+            <p>Č&iacute;seln&eacute; pole obsahuj&iacute;c&iacute; sledovan&eacute; hodnoty, kter&eacute; budou modelov&aacute;ny, a typ hodnot, kter&eacute; modelujete.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Vyberte nezávislá pole</h2></div>
+        <hr/>
+        <div>
+            <p>Jedno nebo v&iacute;ce pol&iacute; reprezentuj&iacute;c&iacute;ch nez&aacute;visl&eacute; proměnn&eacute; (pole), kter&eacute; pom&aacute;haj&iacute; předpov&iacute;dat hodnotu. Budou vidět pouze č&iacute;seln&aacute; pole.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Zvolte, jak bude určeno okolí.</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, zda je použit&eacute; okol&iacute; konstruov&aacute;no jako pevn&aacute; vzd&aacute;lenost nebo zda se může měnit prostorov&yacute; rozsah v z&aacute;vislosti na hustotě prvků.
+                <ul>
+                    <li> <b>Počet sousedů</b> - velikost okol&iacute; je funkc&iacute; určit&eacute;ho počtu sousedů zahrnut&yacute;ch do v&yacute;počtů pro každ&yacute; prvek. Pokud jsou prvky hust&eacute;, je prostorov&yacute; rozsah okol&iacute; men&scaron;&iacute;; pokud jsou prvky ř&iacute;dk&eacute;, je prostorov&yacute; rozsah okol&iacute; vět&scaron;&iacute;. Pokud si vyberete tuto možnost, vyberte počet sousedů, kter&eacute; chcete zahrnout. Č&iacute;slo by mělo b&yacute;t cel&eacute; č&iacute;slo mezi 2 a&nbsp;5&nbsp;000.
+                    </li>
+                    <li> <b>Distančn&iacute; p&aacute;smo</b> - velikost okol&iacute; je konstantn&iacute; nebo pevn&aacute; vzd&aacute;lenost pro každ&yacute; prvek. Pokud vyberete tuto možnost, vyberte p&aacute;smo vzd&aacute;lenosti, kter&eacute; představuje prostorov&yacute; rozsah okol&iacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Vyberte, jak budou váženy sousední prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje typ j&aacute;dra, kter&yacute; bude použit k zaji&scaron;těn&iacute; prostorov&eacute;ho v&aacute;žen&iacute; v modelu. J&aacute;dro definuje, jak každ&yacute; prvek souvis&iacute; s jin&yacute;mi prvky v jeho okol&iacute;.
+                <ul>
+                    <li> <b>Bisquare</b> - libovoln&eacute;mu prvku mimo určen&eacute; okol&iacute; bude přiřazena v&aacute;ha 0. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Gaussi&aacute;n</b> - v&aacute;ha bude přiřazena v&scaron;em prvkům, ale v&aacute;ha se exponenci&aacute;lně zmen&scaron;uje se vzd&aacute;lenost&iacute; od c&iacute;lov&eacute;ho prvku.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> N&aacute;zev vytv&aacute;řen&eacute; vrstvy.  Pokud zapisujete ArcGIS Data Store, va&scaron;e v&yacute;sledky budou uloženy v  <b>Můj obsah</b> a přid&aacute;ny na mapu. Pokud zapisujete sd&iacute;len&yacute; soubor velk&yacute;ch dat, va&scaron;e v&yacute;sledky budou uloženy ve sd&iacute;len&eacute;m souboru velk&yacute;ch dat a přid&aacute;ny do jejich manifestu. Nebudou přid&aacute;ny na mapu. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            </p>
+            <p>Když zapisujete do   ArcGIS Data Store  (datov&eacute; &uacute;loži&scaron;tě relačn&iacute;ch a časoprostorov&yacute;ch velk&yacute;ch dat) pomoc&iacute; rozbalovac&iacute;ho seznamu  <b>Uložit v&yacute;sledek do</b> , můžete zadat n&aacute;zev složky v <b>Můj obsah</b>, kde budou v&yacute;sledky uloženy.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>חיזוי באמצעות רסטר קו מגמה</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="חיזוי באמצעות רסטר קו מגמה"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p>אם האפשרות  <b>השתמש בתיחום המפה הנוכחי</b> מסומנת, משתנים בשכבה שנראים בתוך גבולות תיחום המפה הנוכחי ינותחו. אם האפשרות לא מסומנת, משתנים בשכבה המלאה ינותחו, גם אם הם מחוץ לתיחום המפה הנוכחי.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>בחר שכבת תמונה רב-ממדית לחיזוי</h2></div>
+        <hr/>
+        <div>
+            <p>רסטר המגמה הרב-ממדי של קלט מהכלי  צור רסטר מגמה.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>בחר את המשתנה/ים לחיזוי</h2></div>
+        <hr/>
+        <div>
+            <p>המשתנה או המשתנים שעבורם יתבצע חיזוי בניתוח. אם לא צוין משתנה, יעשה שימוש בכל המשתנים.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>בחר את השיטה המשמשת למתן ערכי ממד חזויים</h2></div>
+        <hr/>
+        <div>
+            <p>מציין את השיטה המשמשת למתן ערכי ממד חזויים.
+                <ul>
+                    <li> <b>לפי ערך</b> - החיזוי יחושב עבור ערך ממד יחיד או רשימה של ערכי ממד שצוינה בשלב הבא. זוהי ברירת המחדל. לדוגמה, ברצונך לחזות משקעים שנתיים עבור השנים 2050, &rlm;2100 ו-2150.
+                    </li>
+                    <li> <b>לפי מרווח</b> - החיזוי יחושב עבור מרווח של הממד שהוגדר על ידי ערך התחלה וסיום. לדוגמה, ברצונך לצרף את שכבת 'קווי מתאר של בניין' לשכבת 'גבולות העיר'.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>ציין ערך/י ממד לחיזוי</h2></div>
+        <hr/>
+        <div>
+            <p>ערך או ערכי הממד אשר ישמשו בחיזוי.
+            </p>
+            <p>פורמט ערכי הזמן, העומק והגובה חייב להתאים לפורמט של ערכי הממד אשר משמשים ליצירת רסטר המגמה. אם רסטר המגמה נוצר עבור ממד StdTime, הפורמט צריך להיות YYYY-MM-DDTHH:MM:SS, לדוגמה, 2050-01-01T00:00:00. ערכים מרובים מופרדים באמצעות נקודה ופסיק.
+            </p>
+            <p>פרמטר זה נדרש כאשר בחרה השיטה  <b>לפי ערך</b> להגדרת ערכי ממד לחיזוי.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>הדר את מרווח הממד עבור חיזוי</h2></div>
+        <hr/>
+        <div>
+            <p>הגדר את תאריך ההתחלה והסיום, הגובה או העומק של מרווח הממד אשר ישמש בחיזוי.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>ציין את מספר השלבים בין ערכי ההתחלה והסיום</h2></div>
+        <hr/>
+        <div>
+            <p>מספר השלבים בין שני ערכי ממד ייכלל בחיזוי. ערך ברירת המחדל הוא 1.
+            </p>
+            <p>לדוגמה, כדי לחזות ערכי טמפרטורה כל חמש שנים, השתמש בערך 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>בחר את היחידה שבה יש להשתמש עבור מרווח ערך הזמן</h2></div>
+        <hr/>
+        <div>
+            <p>מציין את היחידה אשר תשמש עבור מרווח הערך. הדבר חל רק כאשר הממד של הניתוח הוא ממד זמן.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>שם שכבת התוצאה</h2></div>
+        <hr/>
+        <div>
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
+            </p>
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

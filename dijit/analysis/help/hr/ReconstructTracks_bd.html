@@ -44,7 +44,7 @@
         <h2>Rekonstruiraj tragove</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruiraj tragove"></h2>
         <hr/>
-    <p> Ovaj alat radi s ovremenjenim slojem točkastih ili poligonalnih geoobjekata koji predstavljaju <code>instancu</code> u vremenu. Prvo određuje geoobjekte koji pripadaju tragu s pomoću identifikatora. Upotrebom vremena na pojedinim lokacijama, tragovi se slažu po redu i transformiraju u liniju ili poligon koji predstavlja putanju kretanja kroz vrijeme. Dodatno se može stvoriti pojas pomoću polja, čime će se stvoriti poligon na svakoj lokaciji. Te točke ili ulazni poligoni tada se pridružuju po redu za stvaranje traga kao poligona, pri čemu &scaron;irina predstavlja željeni atribut. Dobiveni tragovi imaju početno i zavr&scaron;no vrijeme, &scaron;to vremenski predstavlja prvi i posljednji geoobjekt u danom tragu. Kada se izrade tragovi, statistike o ulaznim geoobjektima izračunavaju se i dodjeljuju izlaznom tragu. Najosnovnija statistika jest zbroj broja točaka u poligonu, ali možete također izračunati druge statistike.
+    <p> Ovaj alat djeluje s vremenski omogućenim slojem bilo točke ili područja koje predstavljaju <code>trenutak</code> u vremenu.   Prvo određuje geoobjekte koji pripadaju tragu s pomoću identifikatora. Upotrebom vremena na pojedinim lokacijama, tragovi se slažu po redu i transformiraju u liniju ili poligon koji predstavlja putanju kretanja kroz vrijeme. Dodatno se može stvoriti pojas pomoću polja, čime će se stvoriti poligon na svakoj lokaciji. Te točke ili ulazni poligoni tada se pridružuju po redu za stvaranje traga kao poligona, pri čemu &scaron;irina predstavlja željeni atribut. Dobiveni tragovi imaju početno i zavr&scaron;no vrijeme, &scaron;to vremenski predstavlja prvi i posljednji geoobjekt u danom tragu. Kada se izrade tragovi, statistike o ulaznim geoobjektima izračunavaju se i dodjeljuju izlaznom tragu. Najosnovnija statistika jest zbroj broja točaka u poligonu, ali možete također izračunati druge statistike.
     </p>
     <p>Geoobjekti u ovremenjenim slojevima mogu se predstaviti na jedan od dvaju načina:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Točkasti ili poligonalni sloj koji će se rekonstruirati u tragove. Ulazni sloj mora biti ovremenjen s geoobjektima koji predstavljaju instancu u vremenu. Sloj mora biti u predviđenom koordinatnom sustavu ili prostorna referenca koja se obrađuje mora biti postavljena u predviđenom koordinatnom sustavu pomoću  <b>Okruženja za analizu</b> ako se primijeni pojas.
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Dodaj statistike (neobavezno)</h2></div>
         <hr/>
         <div>
-            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Možete izračunati sljedeće u brojčanim poljima:
+            <p>Možete izračunati statistiku za geoobjekte koji su sažeti. Možete izračunati sljedeće u brojčanim poljima: 
                 <ul>
-                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim poljima ili u tekstu. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
+                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim ili tekstualnim poljima. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
                     </li>
                     <li>Zbroj &ndash; zbroj brojčanih vrijednosti u polju. Zbroj od [nema vrijednosti, nema vrijednosti, 3] je 3.
                     </li>
@@ -166,17 +166,25 @@
                     </li>
                     <li>Standardna devijacija &ndash; standardna devijacija brojčanog polja. Standardna devijacija od [1] nema vrijednosti. Standardna devijacija od [nema vrijednosti, 1,0,1,1] je 0,5. 
                     </li>
+                    <li>Prvo - prva vrijednost određenog polja u sažetom zapisu. Prva vrijednost je 1 ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [1,5,10,20].
+                    </li>
+                    <li>Zadnje - zadnja vrijednost određenog polja u sažetom zapisu. Zadnja vrijednost je 20 ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [1,5,10,20].
+                    </li>
                 </ul>
                 
             </p>
-            <p>Možete izračunati sljedeće u poljima teksta:
+            <p>Možete izračunati sljedeće u tekstualnim poljima:
                 <ul>
                     <li>Ukupni broj &ndash; broj vrijednosti koje imaju neku vrijednost.
                     </li>
                     <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti teksta u određenom polju.
                     </li>
+                    <li>Prvo - prva vrijednost određenog polja u sažetom zapisu. Prva vrijednost je Toronto ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston].
+                    </li>
+                    <li>Zadnje - zadnja vrijednost određenog polja u sažetom zapisu. Zadnja vrijednost je Boston ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston].
+                    </li>
                 </ul>
-                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike.
             </p>
         </div>
     </div>
@@ -184,9 +192,9 @@
         <div><h2>Odaberite ArcGIS Data Store kao mjesto za spremanje rezultata</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima, spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
+            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
                 <ul>
-                    <li>Možete upotrijebiti rezultate u suradnji portal-do-portala.
+                    <li>Možete upotrijebiti rezultate u suradnji među portalima.
                     </li>
                     <li>Možete omogućiti mogućnosti sinkronizacije rezultata.
                     </li>
@@ -198,7 +206,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.

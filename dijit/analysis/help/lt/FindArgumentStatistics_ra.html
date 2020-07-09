@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rasti argumento statistiką</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Rasti argumento statistiką"></h2>
+        <hr/>
+    <p>Pateikia matmens reik&scaron;mę arba kanalo indeksą, ties kuriuo daugiamačiame arba daugiakanaliame rastre kiekvienam pikseliui pasiekiama nurodyta statistika.
+    </p>
+    <p>Naudokite &scaron;į įrankį matmens reik&scaron;mei (pavyzdžiui, datai, auk&scaron;čiui ar gyliui), kuria pasiekiama tam tikra statistika rastrų rietuve, daugiamačiame rastrinių duomenų rinkinyje, i&scaron;gauti. Arba raskite kanalo numerį, kuriuo pasiekiama statistika daugiakanaliame rastre.
+    </p>
+    <p>Pavyzdžiui, galbūt norėsite sužinoti mėnesį, kurį kiekvienas pikselis pasiekė auk&scaron;čiausią jūros pavir&scaron;iaus temperatūrą per 30 duomenų rinkimo metų. Kitas pavyzdys &ndash; turite a&scaron;tuonių kanalų nuotolinio stebėjimo vaizdą ir norite žinoti kanalą, kuriame kiekvienam pikseliui buvo pasiekta minimali atspindžio vertė.
+    </p>
+    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik esamoje žemėlapio aprėptyje matomi kintamieji arba kanalai. Jei nepažymėta, bus analizuojami viso žemėlapio kintamieji arba kanalai, net jei jie nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Norėdami analizuoti, pasirinkite daugiamatį ar daugiakanalį vaizdų sluoksnį</h2></div>
+        <hr/>
+        <div>
+            <p>Analizuojamas įvesties daugiamatis arba daugiakanalis rastras.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Pasirinkite matmenį, iš kurio bus išgaunama statistika</h2></div>
+        <hr/>
+        <div>
+            <p>Matmuo, i&scaron; kurio bus i&scaron;gaunama statistika. Jei įvesties rastras nėra daugiamatis rastras, &scaron;io parametro nereikia.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pasirinkite kintamąjį (-uosius), kurie bus analizuojami</h2></div>
+        <hr/>
+        <div>
+            <p>Kintamasis (-ieji), kurie bus analizuojami Jei įvesties rastras nėra daugiamatis, daugiakanalio rastro pikselio reik&scaron;mės yra laikomos kintamaisiais. Jei įvesties rastras yra daugiamatis ir kintamasis nėra nurodytas, bus analizuojami visi pasirinktą matmenį turintys kintamieji.
+            </p>
+            <p>Pavyzdžiui, norėdami sužinoti metus, kuriais temperatūros reik&scaron;mės buvo didžiausios, nurodykite temperatūrą kaip analizuojamą kintamąjį. Jei nenurodysite jokių kintamųjų, o turite ir temperatūros, ir kritulių kintamuosius, jie abu bus analizuojami, ir i&scaron;vesties daugiamačiame rastre bus abu kintamieji.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Pasirinkite statistikos tipą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodoma statistika, kurią norima i&scaron;gauti i&scaron; kintamojo ar kintamųjų pagal pateiktą matmenį. 
+            </p>
+            <ul>
+                <li> <b>Minimumo argumentas</b> &ndash; bus i&scaron;gauta matmens reik&scaron;mė, kuriai esant pasiekiama mažiausia kintamojo reik&scaron;mė. Tai numatytasis nustatymas.
+                </li>
+                <li> <b>Maksimumo argumentas</b> &ndash; bus i&scaron;gauta matmens reik&scaron;mė, kuriai esant pasiekiama didžiausia kintamojo reik&scaron;mė.
+                </li>
+                <li> <b>Medianos argumentas</b> &ndash; bus i&scaron;gauta matmens reik&scaron;mė, kuriai esant pasiekiama kintamojo reik&scaron;mės mediana.
+                </li>
+                <li> <b>Trukmės argumentas</b> &ndash; ilgiausia matmens trukmė, per kurią kintamųjų reik&scaron;mės patenka tarp mažiausios ir didžiausios reik&scaron;mių.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Nurodykite kelių atvejų reikšmę</h2></div>
+        <hr/>
+        <div>
+            <p>Pikselio reik&scaron;mė, naudojama norint nurodyti, kad nurodyto argumento statistika įvesties rastro duomenų rinkinyje buvo pasiekta daugiau nei vieną kartą. Jei nenurodyta, pikselio reik&scaron;mė bus matmens reik&scaron;mė, pirmą kartą pasiekus argumento statistiką.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Nurodykite minimalią reikšmę</h2></div>
+        <hr/>
+        <div>
+            <p>Mažiausia kintamojo reik&scaron;mė trukmei i&scaron;gauti.
+            </p>
+            <p>&Scaron;io parametro reikia, kai  <b>Trukmė</b> yra pasirinkta kaip statistikos tipas.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Nurodykite maksimalią reikšmę</h2></div>
+        <hr/>
+        <div>
+            <p>Didžiausia kintamojo reik&scaron;mė trukmei i&scaron;gauti.
+            </p>
+            <p>&Scaron;io etapo reikia, kai  <b>Trukmė</b> yra pasirinkta kaip statistikos tipas.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Pasirinkite matmens apibrėžimą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, kaip i&scaron; matmens bus i&scaron;gaunama statistika. 
+                <ul>
+                    <li> <b>Viskas</b> &ndash; bus i&scaron;gauta visų matmenų statistika. Tai numatytasis nustatymas.
+                    </li>
+                    <li> <b>Intervalo raktažodis</b> &ndash; statistika bus i&scaron;gauta i&scaron; laiko matmens pagal intervalo raktažodį.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Pasirinkite raktažodžių intervalą</h2></div>
+        <hr/>
+        <div>
+            <p>Laiko vienetas, i&scaron; kurio bus i&scaron;gaunama statistika.
+            </p>
+            <p>Pavyzdžiui, jūs turite penkerių metų dienos duomenis apie jūros pavir&scaron;iaus temperatūrą ir norite sužinoti, kuriais metais buvo stebima maksimali temperatūra. Nustatykite  <b>Maksimumo argumentą</b> kaip statistikos tipą, nustatykite <b>Intervalo raktažodį</b> kaip matmens apibrėžimą ir nustatykite <b>Metų</b> kaip raktažodžių intervalą &scaron;iame etape.
+            </p>
+            <p>Arba, jei norite sužinoti mėnesį, kurį buvo nuolat stebima maksimali temperatūra, nustatykite  <b>Maksimumo argumentą</b> kaip statistikos tipą, nustatykite <b>Intervalo raktažodį</b> kaip matmens apibrėžimą ir nustatykite <b>Kas mėnesį</b> kaip raktažodžių intervalą &scaron;iame etape. Taip bus sugeneruojamas rastras, kuriame kiekviename pikselyje nurodomas mėnuo, per kurį buvo pasiektas penkerių metų statistikos rekordas (pvz., 2018 08 18, 2016 08 25, 2013 08 07).
+            </p>
+            <p>&Scaron;io etapo reikia, kai  <b>StdTime</b> nustatytas kaip matmuo, i&scaron; kurio bus i&scaron;gaunama statistika, ir kai pasirinktas <b>Intervalo raktažodis</b> apibrėžti, kaip statistika bus i&scaron;gaunama i&scaron; laiko matmens.
+                <ul>
+                    <li> <b>Kasdien</b> &ndash; bus i&scaron;gaunama dienų statistika.
+                    </li>
+                    <li> <b>Kas savaitę</b> &ndash; bus i&scaron;gaunama savaičių statistika.
+                    </li>
+                    <li> <b>Kas mėnesį</b> &ndash; bus i&scaron;gaunama mėnesių statistika.
+                    </li>
+                    <li> <b>Kas ketvirtį</b> &ndash; bus i&scaron;gaunama ketvirčių statistika.
+                    </li>
+                    <li> <b>Valandos</b> &ndash; bus i&scaron;gaunama tos valandos statistika, kurią ji buvo pasiekta.
+                    </li>
+                    <li> <b>Dienos</b> &ndash; bus i&scaron;gaunama tos dienos statistika, kurią ji buvo pasiekta.
+                    </li>
+                    <li> <b>Savaitės</b> &ndash; bus i&scaron;gaunama tos savaitės statistika, kurią ji buvo pasiekta.
+                    </li>
+                    <li> <b>Mėnesio</b> &ndash; bus i&scaron;gaunama to mėnesio statistika, kurią ji buvo pasiekta.
+                    </li>
+                    <li> <b>Ketvirčio</b> &ndash; bus i&scaron;gaunama to ketvirčio statistika, kurią ji buvo pasiekta.
+                    </li>
+                    <li> <b>Metų</b> &ndash; bus i&scaron;gaunama tų metų statistika, kurią ji buvo pasiekta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
+                <ul>
+                    <li>Jei langelis pažymėtas, analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    </li>
+                    <li>Jei langelis nepažymėtas, analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikselis turi bent vieną NoData reik&scaron;mę.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

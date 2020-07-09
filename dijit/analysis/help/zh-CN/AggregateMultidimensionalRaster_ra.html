@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>聚合多维栅格</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="聚合多维栅格"></h2>
+        <hr/>
+    <p>通过沿维度组合现有多维栅格变量来生成多维栅格数据集。
+    </p>
+    <p>如果您具有每 5 米深度（深达 100 米）按月采集的 30 年海面温度数据，以下是一些示例应用程序：
+        <ul>
+            <li>将每月温度数据聚合到年度数据中。
+            </li>
+            <li>将月度温度数据聚合到 4 个月间隔中。
+            </li>
+            <li>依次聚合介于 0 到 25 米之间、25 到 50 米、50 到 100 米之间的温度数据。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则对当前地图范围中可见的图层的变量进行分析。如果未选中，则将分析完整图层中的变量，包括超出当前地图范围的要素。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>选择要聚合的多维影像图层</h2></div>
+        <hr/>
+        <div>
+            <p>将被聚合的多维栅格的输入影像图层。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>选择要沿其进行聚合的维度</h2></div>
+        <hr/>
+        <div>
+            <p>聚合维度。这是聚合变量时所沿的维度。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>选择要聚合的变量</h2></div>
+        <hr/>
+        <div>
+            <p>将沿给定维度聚合的一个或多个变量。如果未指定变量，则将使用所选维度聚合所有变量。
+            </p>
+            <p>例如，要将每日温度数据聚合到月平均值，请将温度指定为要聚合的变量。如果您没有指定任何变量，并且您同时拥有每日温度和日降雨量变量，则这两个变量将聚合到月平均值，并且输出多维栅格将包含两个变量。
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>选择聚合方法</h2></div>
+        <hr/>
+        <div>
+            <p>指定将用于组合间隔中的已聚合剖切的数学方法。
+                <ul>
+                    <li> <b>平均值</b> - 计算间隔中所有剖切的像素值的平均值。这是默认设置。
+                    </li>
+                    <li> <b>最大值</b> - 计算间隔中所有剖切的像素最大值。
+                    </li>
+                    <li> <b>众数</b> - 计算间隔中所有剖切上最频繁出现的像素值。
+                    </li>
+                    <li> <b>最小值</b> - 计算间隔中所有剖切的像素最小值。
+                    </li>
+                    <li> <b>少数</b> - 计算间隔中所有剖切上出现频率最低的像素值。
+                    </li>
+                    <li> <b>中值</b> - 计算间隔中所有剖切的像素中值。
+                    </li>
+                    <li> <b>范围</b> - 计算间隔中所有剖切的像素值范围。
+                    </li>
+                    <li> <b>标准差</b> - 计算间隔中所有剖切的像素值的标准偏差。
+                    </li>
+                    <li> <b>总和</b> - 计算间隔中所有剖切上像素值的总和。
+                    </li>
+                    <li> <b>变异度</b> - 计算间隔中所有剖切上像素的唯一值数量。
+                    </li>
+                    <li> <b>自定义</b> - 根据自定义栅格函数计算像素值。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>选择栅格函数模板</h2></div>
+        <hr/>
+        <div>
+            <p>将用于计算聚合栅格的像素值的自定义栅格函数。输入是门户中的栅格函数模板项。当 <b>聚合方法</b>设置为 <b>自定义</b>时，此输入为必需项。
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>选择聚合定义</h2></div>
+        <hr/>
+        <div>
+            <p>指定要为其聚合数据的维度间隔。
+                <ul>
+                    <li> <b>全部</b> - 将聚合所有剖切的数据值。这是默认设置。
+                    </li>
+                    <li> <b>间隔关键字</b> - 变量数据将使用常用间隔进行聚合。
+                    </li>
+                    <li> <b>间隔值</b> - 变量数据将使用用户指定的间隔和单位进行聚合。
+                    </li>
+                    <li> <b>间隔范围</b> - 变量数据将在指定的值对或日期之间进行聚合。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>选择关键字间隔</h2></div>
+        <hr/>
+        <div>
+            <p>指定沿维度聚合时将使用的关键字间隔。当 <b>聚合定义</b>设置为 <b>间隔关键字</b>并且聚合必须跨时间时，此输入为必需项。
+                <ul>
+                    <li> <b>每小时</b> - 数据值将聚合为每小时时间步长，且结果将包括时间序列中的每个小时。
+                    </li>
+                    <li> <b>每日</b> - 数据值将聚合为每日时间步长，且结果将包括时间序列中的每一天。
+                    </li>
+                    <li> <b>每周</b> - 数据值将聚合为每周时间步长，且结果将包括时间序列中的每周。
+                    </li>
+                    <li> <b>每月</b> - 数据值将聚合为每月时间步长，且结果将包括时间序列中的每个月。
+                    </li>
+                    <li> <b>每季度</b> - 数据值将聚合为季度时间步长，且结果将包括时间序列中的每个季度。
+                    </li>
+                    <li> <b>每年</b> - 数据值将聚合为年度时间步长，且结果将包括时间序列中的每年。
+                    </li>
+                    <li> <b>每天循环</b> - 数据值将聚合为每日时间步长，且结果将包括每个儒略日的一个聚合值。输出中最多包括 366 个每日时间片。
+                    </li>
+                    <li> <b>每周循环</b> - 数据值将聚合为每周时间步长，且结果将包括每周的一个聚合值。输出中最多包括 53 个每周时间片。
+                    </li>
+                    <li> <b>每月循环</b> - 数据值将聚合为每周时间步长，且结果将包括每月的一个聚合值。输出中最多包括 12 个每月时间片。
+                    </li>
+                    <li> <b>每季度循环</b> - 数据值将聚合为每周时间步长，且结果将包括每季度的一个聚合值。输出中最多包括 4 个季度时间片。
+                    </li>
+                    <li> <b>每十年</b> - 数据值将聚合为 3 个周期，每个周期为 10 天。最后一个周期所包含的天数可能多于或少于 10 天。对于每个月，输出中将包括 3 个时间片。
+                    </li>
+                    <li> <b>每五年</b> - 数据值将聚合为 6 个周期，每个周期为 5 天。最后一个周期所包含的天数可能多于或少于 5 天。对于每个月，输出中将包括 6 个时间片。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>值间隔</h2></div>
+        <hr/>
+        <div>
+            <p>将用于聚合的间隔大小。当 <b>聚合定义</b>参数设置为 <b>间隔值</b>时，此参数为必需项。
+            </p>
+            <p>例如，要将 30 年的每月温度数据聚合到 5 年增量，请输入 5 作为 <b>值间隔</b>，并将 <b>单位</b>指定为 <b>年</b>。
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>单位</h2></div>
+        <hr/>
+        <div>
+            <p>将用于间隔值的单位。当 <b>维度</b>为时间字段并且 <b>聚合定义</b>设置为 <b>间隔值</b>时，此输入为必需项。
+            </p>
+            <p>如果要聚合除时间之外的任何内容，则此选项将不可用，并且间隔值的单位将与输入多维栅格数据的变量单位一致。
+                <ul>
+                    <li> <b>每小时</b> - 数据值将按提供的间隔聚合到每小时时间片。
+                    </li>
+                    <li> <b>每日</b> - 数据值将按提供的间隔聚合到每日时间片。
+                    </li>
+                    <li> <b>每周</b> - 数据值将按提供的间隔聚合到每周时间片。
+                    </li>
+                    <li> <b>每月</b> - 数据值将按提供的间隔聚合到每月时间片。
+                    </li>
+                    <li> <b>每年</b> - 数据值将按提供的间隔聚合到每年时间片。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>定义范围</h2></div>
+        <hr/>
+        <div>
+            <p>间隔范围将用于聚合值组。它们由最小和最大范围值对组成，数据类型为双精度或日期。当 <b>聚合定义</b>设置为 <b>间隔范围</b>时，此输入为必需项。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>忽略计算中的缺失值</h2></div>
+        <hr/>
+        <div>
+            <p>指定分析中是否忽略缺失值。
+                <ul>
+                    <li>已选中 - 分析将包括沿给定维度的所有有效像素，并忽略所有 NoData 像素。这是默认设置。
+                    </li>
+                    <li>未选中 - 如果沿给定维度的像素包含任意 NoData 值，则分析结果将变为 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

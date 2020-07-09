@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Örnek</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="&Ouml;rnekle"></h2>
+        <hr/>
+    <p>Bu ara&ccedil;, tanımlanan konumlar i&ccedil;in bir raster veya raster k&uuml;mesinden alınan h&uuml;crelerin değerlerini g&ouml;steren bir tablo veya nokta detay sınıfı oluşturur. Konumlar raster h&uuml;creleri, &ccedil;okgen detayları, &ccedil;oklu &ccedil;izgi detayları veya bir dizi nokta ile tanımlanır.
+    </p>
+    <p>Piksel değerleri her konumda t&uuml;m girdi rasterlardan &ccedil;ıkarılır. Her girdi rasterı i&ccedil;in piksel değerlerini i&ccedil;eren alanlarla bir tablo veya nokta detay sınıfı oluşturulur. Girdi raster tablosundan ek &ouml;znitelikler &ccedil;ıktı tablosuna dahil edilmez.
+    </p>
+    <p>Tek bantlı, &ccedil;ok bantlı, &ccedil;ok boyutlu veya &ccedil;ok değişkenli vb. raster kombinasyonları girdi rasterları olarak belirtilebilir. Girdi rasterları &ccedil;ok boyutlu olduğunda &ccedil;ıktı tablosunun yapısı değişir. &Ccedil;ok bantlı bir raster girdi rasterlarından biri olarak belirtildiğinde, bu girdideki t&uuml;m bantlar kullanılır. Bir girdi &ccedil;ok bantlı rasterdan bir grup se&ccedil;imini işlemek i&ccedil;in &ouml;ncelikle bu belirli bantlardan oluşan yeni bir raster veri k&uuml;mesi oluşturun. Sonucu girdi rasterlar listesinde kullanın.
+    </p>
+    <p>Girdi konumu bir raster veya nokta detayı olabilir:
+        <ul>
+            <li>Raster&mdash;Ge&ccedil;erli değerler i&ccedil;eren (NoData değil) pikseller, t&uuml;m girdi rasterlarından piksel değerleri &ccedil;ıkarmak i&ccedil;in kullanılır ve pikselin merkezi nokta konumları i&ccedil;in kullanılır.
+            </li>
+            <li>Nokta&mdash;Değerler her nokta konumunda &ouml;rneklenir.
+            </li>
+            <li>&Ccedil;oklu &ccedil;izgi veya &ccedil;okgen&mdash;Değerler &ccedil;okgen veya &ccedil;oklu &ccedil;izgi merkezinde &ouml;rneklenir. Girdi rasterı &ccedil;ok boyutluysa, değerler  <b>İstatistik</b> t&uuml;r&uuml; temel alınarak k&uuml;melenir.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Girdi rasterları kendi yerleşik mekansal referans ve &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;klerinde &ouml;rneklenir. Farklı mekansal referanslara sahip &ccedil;oklu girdi rasterları varsa girdi konumları, değerlerin &ccedil;ıkarıldığı her bir rasterın mekansal referansına izd&uuml;ş&uuml;mlendirilir. Analiz ortamı girdi konumlarına uygulanır ancak girdi rasterları analiz ortamına uygun değildir.
+    </p>
+    <p>Girdi rasterındaki NoData h&uuml;crelerinden değer &ccedil;ıkaran konumlara, &ccedil;ıktı tablosundan bir &lt;null&gt; değeri verilir.
+    </p>
+    <p>&Ccedil;ok noktalı detaylarla analiz yapmak i&ccedil;in bu ara&ccedil;ta kullanmadan &ouml;nce bu detayları tek nokta detaylarına d&ouml;n&uuml;şt&uuml;r&uuml;n.
+    </p>
+    <p>&Ccedil;ıktı &ouml;rnek tablosundaki x, y koordinatlarının mekansal referansı,  <b>&Ccedil;ıktı Koordinat Sistemi</b> ortamında belirtilmediği s&uuml;rece girdi konum rasterı veya nokta detayları ile aynıdır. Girdi konum verilerinin mekansal referansı bilinmiyorsa, x, y koordinatlarının mekansal referansları da bilinmez.
+    </p>
+    <p>&Ccedil;ıktı detay sınıfının mekansal referansı,  <b>&Ccedil;ıktı Koordinat Sistemi</b> ortamında belirtilmediği s&uuml;rece girdi konum rasterı veya nokta detayları ile aynıdır.
+    </p>
+    <p> <b>Paralel İşleme Fakt&ouml;r&uuml;</b> ortamı, girdi ancak &ccedil;ok boyutlu bir raster olduğunda desteklenir.
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, ge&ccedil;erli harita yayılımı dahilinde g&ouml;r&uuml;n&uuml;r olan katman değişkenleri veya bantları analiz edilir. İşaretli değilse, ge&ccedil;erli harita yayılımının dışında bile olsa t&uuml;m katmanın değişkenleri veya bantları analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Örneklenecek görüntü katmanlarını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi konum verilerine g&ouml;re değerleri &ouml;rneklenecek olan tek bir g&ouml;r&uuml;nt&uuml; katmanı veya g&ouml;r&uuml;nt&uuml; katmanlarının listesi.
+            </p>
+            <p>T&uuml;m dilimleri &ouml;rneklemek i&ccedil;in &ccedil;ok boyutlu bir g&ouml;r&uuml;nt&uuml; katmanının tek girdi rasterı olması gerekir.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Konum katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;rneklemek istediğiniz veri tanımlama konumları.
+            </p>
+            <p>Girdi konumu bir raster veya bir nokta, &ccedil;oklu &ccedil;izgi veya &ccedil;okgen detay sınıfı olabilir.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Benzersiz kimlik alanı tanımlayın</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi konum rasterı veya detay sınıfındaki her konum veya detay i&ccedil;in farklı bir değer i&ccedil;eren bir alan.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Konum verilerinin alım bilgilerini belirtin (İsteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Konum h&uuml;creleri veya detaylarla ilgili zaman, derinlik veya diğer alım verilerini belirtin.
+            </p>
+            <p>Her boyut i&ccedil;in konum h&uuml;creleri veya detaylarla ilgili alım bilgilerini belirtmenin &uuml;&ccedil; se&ccedil;eneği vardır:
+
+                <ul>
+                    <li> <b>Tek alan veya değer</b>&mdash;Bu se&ccedil;enek belirlenirse aşağıdaki bilgilerin belirtilmesi gerekir:
+                        <ul>
+                            <li> <b>Boyut alanı veya değeri</b>&mdash;Konum verilerinden bir boyut değerleri alanı se&ccedil;in veya belirli bir boyut değeri girin.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>G&ouml;reli değerlerle tek alan veya değer</b>&mdash;Bu se&ccedil;enek belirlenirse, değişkenlerin istatistiklerinin hesaplanacağı aralığı tanımlamak i&ccedil;in aşağıdaki bilgilerin belirtilmesi gerekir:
+                        <ul>
+                            <li> <b>Boyut alanı veya değeri</b>&mdash;Konum verilerinden bir boyut değerleri alanı se&ccedil;in.
+                            </li>
+                            <li> <b>G&ouml;reli değer &ouml;nce</b>&mdash;Bir boyut değeri aralığının başlangıcını tanımlamak &uuml;zere <b>Boyut alanı veya değeri</b>&rsquo;nden &ccedil;ıkarmak i&ccedil;in kullanılacak negatif olmayan bir sayı belirtin. Bu değer, boyut zaman olduğunda g&uuml;n sayısını temsil eder.
+                            </li>
+                            <li> <b>G&ouml;reli değer sonra</b>&mdash;Bir boyut değeri aralığının bitişini tanımlamak &uuml;zere <b>Boyut alanı veya değeri</b>&rsquo;ne eklemek i&ccedil;in kullanılacak negatif olmayan bir sayı belirtin. Bu değer, boyut zaman olduğunda g&uuml;n sayısını temsil eder.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Başlangı&ccedil; ve bitiş alanları veya değerleri</b>&mdash;Bu se&ccedil;enek belirlenirse, değişkenlerin istatistiklerinin hesaplanacağı aralığı tanımlamak i&ccedil;in aşağıdaki bilgilerin belirtilmesi gerekir:
+                        <ul>
+                            <li> <b>Başlangı&ccedil; alanı veya değerleri</b>&mdash;Bir boyut değeri aralığının başlangıcını tanımlamak i&ccedil;in konum verilerinden bir boyut değerleri alanı se&ccedil;in veya belirli bir boyut değeri girin.
+                            </li>
+                            <li> <b>Bitiş alanı veya değerleri</b>&mdash;Bir boyut değeri aralığının bitişini tanımlamak i&ccedil;in konum verilerinden bir boyut değerleri alanı se&ccedil;in veya belirli bir boyut değeri girin.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Tampon mesafesi alanı veya değerini belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Konum verisi detaylarının &ccedil;evresinde belirtilen mesafe. Tampon mesafesi konum detayı mekansal referansının lineer birimleri cinsinden belirtilir. Detay bir coğrafi referans kullanıyorsa, birim derece olur.
+            </p>
+            <p>İstatistikler bu tampon alanının i&ccedil;inde hesaplanır.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>İstatistik türünü seç</h2></div>
+        <hr/>
+        <div>
+            <p>Hesaplanacak istatistik t&uuml;r&uuml;.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>&mdash;Belirtilen aralıkta minimum değeri bulur.
+                </li>
+                <li> <b>Maksimum</b>&mdash;Belirtilen aralıkta maksimum değeri bulur.
+                </li>
+                <li> <b>Ortanca</b>&mdash;Belirtilen aralıkta ortanca değeri bulur.
+                </li>
+                <li> <b>Ortalama</b>&mdash;Belirtilen aralık i&ccedil;in ortalama değeri hesaplar.
+                </li>
+                <li> <b>Toplam</b>&mdash;Belirtilen aralıkta değişkenlerin toplamını hesaplar.
+                </li>
+                <li> <b>&Ccedil;oğunluk</b>&mdash;En sık ger&ccedil;ekleşen değeri bulur.
+                </li>
+                <li> <b>Azınlık</b>&mdash;En seyrek ger&ccedil;ekleşen değeri bulur.
+                </li>
+                <li> <b>Standart Sapma</b>&mdash;Standart sapmayı hesaplar.
+                </li>
+                <li> <b>Y&uuml;zde</b>&mdash;Belirtilen aralıkta tanımlanan y&uuml;zdeyi hesaplar.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Yüzde değeri</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İstatistik T&uuml;r&uuml;</b> parametresi <b>Y&uuml;zde</b> olarak ayarlandığında hesaplanacak y&uuml;zde.
+            </p>
+            <p>Bu değer 0 - 100 aralığında değişir. Varsayılan değer 90'dır.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Yeniden örnekleme tekniğini belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Bir raster &ouml;rneklerken kullanılan yeniden &ouml;rnekleme algoritması.
+            </p>
+            <ul>
+                <li> <b>En yakın</b>&mdash;En yakın komşu. Varsayılan değerdir.
+                </li>
+                <li> <b>Bilineer</b>&mdash;Bilineer interpolasyon
+                </li>
+                <li> <b>K&uuml;bik</b>&mdash;K&uuml;bik konvol&uuml;syon
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Çıktı düzenini belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;rneklenen değerlerin &ccedil;ıktı tablosunda satırlar ya da s&uuml;tunlarda g&ouml;r&uuml;leceğini belirtir. Bu se&ccedil;enek yalnızca girdi &ccedil;ok boyutlu raster bir değişken ve bir boyut i&ccedil;erdiğinde ve her dilim tek bantlı bir raster olduğunda kullanılabilir.
+            </p>
+            <ul>
+                <li> <b>&Ouml;rneklenen değerler satırda g&ouml;sterilir</b>&mdash;&Ouml;rneklenen değerler &ccedil;ıktı tablosunda ayrı satırlarda g&ouml;sterilir. Varsayılan değerdir.
+                </li>
+                <li> <b>&Ouml;rneklenen değerler s&uuml;tunda g&ouml;sterilir</b>&mdash;&Ouml;rneklenen değerler &ccedil;ıktı tablosunda ayrı s&uuml;tunlarda g&ouml;sterilir. Bu se&ccedil;enek yalnızca girdi &ccedil;ok boyutlu raster bir değişken ve bir boyut i&ccedil;erdiğinde ve her dilim tek bantlı bir raster olduğunda ge&ccedil;erlidir.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Çıktı türünü belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Tabloda &ouml;rneklenen değerlere sahip bir nokta detay sınıfı ya da sadece &ouml;rneklenen değerlere sahip bir tablo oluşturulacağını belirtir.
+            </p>
+            <ul>
+                <li> <b>Tablo</b>&mdash;&Ouml;rneklenen değerlerle bir tablo oluşturur. Varsayılan değerdir.
+                </li>
+                <li> <b>Detaylar</b>&mdash;Tabloda &ouml;rneklenen değerlerle bir nokta detay sınıfı oluşturur. Girdi konumu detayları &ccedil;oklu &ccedil;izgi veya &ccedil;okgen ise &ccedil;ıktıdaki her nokta, girdi konumu detaylarındaki geometrilerin merkezleridir.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

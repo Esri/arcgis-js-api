@@ -44,19 +44,19 @@
         <h2>Temukan Klaster Titik</h2><p/>
         <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Temukan Klaster Titik"></h2>
         <hr/>
-    <p>Alat  Temukan Klaster Titik menemukan klaster fitur titik dalam derau di sekitar berdasarkan distribusi spasialnya.
+    <p>Alat  Temukan Klaster Titik menemukan klaster fitur titik di sekitar kebisingan berdasarkan distribusi spasial atau spatio-temporal.
     </p>
-    <p>Contoh, organisasi non-pemerintah melakukan studi mengenai penyakit tertentu yang dibawa hama. Organisasi ini memiliki set data titik yang mewakili rumah tangga di area studi, beberapa di antaranya sudah penuh, dan beberapa di antaranya tidak. Dengan menggunakan alat  Temukan Klaster Titik, seorang analis dapat menentukan kelompok rumah tangga yang dipenuhi untuk membantu menentukan suatu area untuk memulai penanganan dan pemusnahan hama.
+    <p>Contohnya, organisasi non-pemerintah melakukan studi mengenai penyakit tertentu yang dibawa hama. Organisasi ini memiliki set data titik yang mewakili rumah tangga di area studi, beberapa di antaranya sudah penuh dan beberapa di antaranya tidak. Dengan menggunakan  Temukan Klaster Titik, seorang analis bisa menentukan klaster rumah tangga sudah penuh untuk membantu menemukan area untuk memulai penanganan dan pemusnahan.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Pilih layer yang memiliki klaster</h2></div>
+        <div><h2>Pilih layer untuk klaster mana yang akan ditemukan.</h2></div>
         <hr/>
         <div>
-            <p>Layer titik tempat klaster akan ditemukan.  Layer harus dalam referensi spasial yang diproyeksikan atau memiliki referensi spasial pemrosesan yang ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b>.
+            <p>Layer titik tempat klaster akan ditemukan.  Layer harus berada dalam referensi spasial yang diproyeksikan atau memiliki referensi pemrosesan spasial yang ditetapkan ke sistem koordinat terproyeksi dengan menggunakan  <b>Lingkungan Analisis</b>.
             </p>
-            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar drop-down untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data.
+            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar tarik-turun untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data. Anda dapat secara opsional menerapkan filter pada layer input Anda atau menerapkan pilihan pada layer yang di-host yang ditambahkan ke peta Anda. Filter dan pilihan hanya diterapakan untuk analisis. 
             </p>
         </div>
     </div>
@@ -66,23 +66,23 @@
         <div>
             <p>Metode pembuatan klaster yang akan digunakan untuk membedakan klaster fitur titik dari derau di sekitar. Anda dapat memilih untuk menggunakan jarak yang ditetapkan atau algoritme pembuatan klaster yang disesuaikan sendiri.
             </p>
-            <p>Jarak yang ditentukan (DBSCAN) menggunakan rentang pencarian untuk memisahkan klaster padat dari derau tersebar. Jarak yang ditentukan (DBSCAN) lebih cepat, tapi hanya baik jika ada rentang pencarian yang sangat jelas untuk digunakan dan bekerja sangat baik dalam menentukan semua klaster yang mungkin muncul. Jarak yang ditentukan (DBSCAN) menemukan klaster yang memiliki kepadatan yang sama.
+            <p>Jarak yang ditentukan (DBSCAN) menggunakan rentang pencarian untuk membedakan klaster padat dari kebisingan langka. Secara opsional, waktu dapat digunakan untuk menemukan klaster spatio-temporal melalui rentang pencarian dan durasi pencarian. Jarak yang ditentukan (DBSCAN) lebih cepat, tapi akan tepat jika ada rentang pencarian yang sangat jelas untuk digunakan agar berfungsi dengan baik untuk menentukan semua klaster yang mungkin muncul. Jarak yang ditentukan (DBSCAN) menemukan klaster yang memiliki kepadatan yang sama.
             </p>
-            <p>Penyesuaian diri (HDBSCAN) tidak mengharuskan rentang pencarian ditentukan, akan tetapi ini merupakan metode yang makan waktu. Penyesuaian diri (HDBSCAN) menemukan klaster titik yang serupa dengan jarak yang ditentukan (DBSCAN) tapi menggunakan berbagai macam rentang pencarian yang diizinkan untuk klaster dengan kepadatan yang beragam. 
+            <p>Penyesuaian diri (HDBSCAN) tidak memerlukan rentang pencarian tertentu, tetapi metode tersebut memakan lebih banyak waktu. Penyesuaian diri (HDBSCAN) menemukan klaster titik yang serupa dengan jarak yang ditentukan (DBSCAN), tapi menggunakan berbagai macam rentang pencarian yang diizinkan untuk klaster dengan kepadatan yang beragam. 
             </p>
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Jumlah titik minimal untuk dapat dianggap sebagai klaster</h2></div>
+        <div><h2>Jumlah minimum poin untuk dapat mengawali klaster</h2></div>
         <hr/>
         <div>
-            <p>Parameter ini digunakan secara berbeda tergantung pada metode pembuatan klaster yang dipilih:
+            <p>Parameter ini digunakan secara berbeda tergantung pada metode pengelompokan yang dipilih dari opsi berikut:
             </p>
             <p>
                 <ul>
-                    <li>Jarak yang ditentukan (DBSCAN)&mdash;menentukan jumlah fitur yang harus ditemukan dengan jarak tertentu dari titik agar titik itu dapat mulai membentuk sebuah klaster. Jarak ditentukan menggunakan parameter  <b>Batasi rentang pencarian menjadi</b>.
+                    <li>Jarak yang ditentukan (DBSCAN) &mdash;Menentukan jumlah fitur yang harus ditemukan dalam jarak tertentu atau jarak dan durasi suatu titik untuk mulai membentuk sebuah klaster. Jarak yang ditentukan menggunakan parameter  <b>Batasi rentang pencarian hingga</b>. Jika waktu digunakan untuk menemukan klaster spatio-temporal, durasinya ditentukan dengan menggunakan parameter <b>Batasi durasi pencarian hingga</b>.
                     </li>
-                    <li>Penyesuaian diri (HDBSCAN)&mdash;menentukan jumlah fitur di lingkungan sekitar setiap titik (termasuk titik itu sendiri) yang akan dipertimbangkan saat memperkirakan kepadatan. Angka ini juga merupakan ukuran klaster minimal yang diizinkan saat mengekstrak klaster.
+                    <li>Penyesuaian diri (HDBSCAN)&mdash;Menentukan jumlah fitur pada setiap titik di lingkungan sekitar (termasuk titik itu sendiri) yang akan dipertimbangkan saat memperkirakan kepadatan. Angka ini juga merupakan ukuran klaster minimum yang diizinkan saat mengekstrak klaster.
                     </li>
                 </ul>
                 
@@ -90,10 +90,10 @@
         </div>
     </div>
     <div id="searchDistance">
-        <div><h2>Batasi rentang pencarian menjadi</h2></div>
+        <div><h2>Batasi rentang pencarian hingga</h2></div>
         <hr/>
         <div>
-            <p>Saat menggunakan jarak yang ditentukan (DBSCAN), parameter ini adalah jarak yang menyertai di mana  <b>Jumlah titik minimal untuk dapat dianggap sebagai klaster</b> harus ditemukan. Parameter ini tidak digunakan saat penyesuaian diri (HDBSCAN) dipilih sebagai metode pembuatan klaster yang akan digunakan.
+            <p>Saat menggunakan jarak yang ditentukan menggunakan (DBSCAN), parameter ini adalah jarak di mana  <b>Jumlah minimum poin untuk mengawali klaster</b> harus ditemukan. Jika layer input yang diaktifkan waktu merupakan tipe instan, Anda bisa memilih <b>Gunakan waktu untuk menemukan klaster</b> untuk menemukan titik grup spatio-temporal di sekitar kebisingan. Saat menggunakan waktu, parameter <b>Batasi durasi pencarian hingga</b> menentukan panjangnya waktu dalam <b>Jumlah minimum poin untuk mengawali klaster</b> selain yang ada di dalam rentang pencarian. Parameter ini tidak digunakan ketika penyesuaian diri (HDBSCAN) dipilih sebagai metode pengelompokan yang akan digunakan.
             </p>
         </div>
     </div>
@@ -103,7 +103,7 @@
         <div>
             <p> Nama layer yang akan dibuat.  Jika Anda menulis ke sebuah ArcGIS Data Store, hasil Anda akan disimpan di  <b>Konten Saya</b> dan ditambahkan ke dalam peta. Jika Anda menulis ke berbagi file big data, hasil Anda akan disimpan ke berbagi file big data dan ditambahkan ke manifestasinya. Ini tidak akan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
             </p>
-            <p>Saat menulis ke  ArcGIS Data Store (penyimpanan big data relasional atau spasiotemporal) menggunakan  <b>Simpan hasil di</b> kotak drop-down, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasil akan disimpan.
+            <p>Saat menulis ke  ArcGIS Data Store (penyimpanan big data relasional atau spasiotemporal) menggunakan  <b>Simpan hasil di</b> kotak tarik-turun, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasil akan disimpan.
             </p>
         </div>
     </div>

@@ -56,7 +56,7 @@
         <div>
             <p>Sloj, ki vsebuje poligonske geoobjekte, ki bodo razgrajeni. 
             </p>
-            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj.
+            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj. Izbirno lahko na svojem vhodnem sloju uporabite filter ali pa uporabite izbiro na gostujočih slojih, uporabljenih na karti. Filtri in izbire so uporabljeni samo za analizo. 
             </p>
         </div>
     </div>
@@ -100,9 +100,9 @@
         <div>
             <p>Ko so poligoni združeni, lahko njihove atributivne vrednosti povzamete s smiselno statistiko. Na primer, če razgrajujete mejo med okrožji na podlagi  <pre>State_Name</pre> in ima vsako okrožje polje <i>Population</i>, lahko izračunate vsoto polja <pre>Population</pre> za državo.
             </p>
-            <p> Statistiko lahko izračunate na povzetih geoobjektih.Na &scaron;tevilskih poljih lahko izračunate naslednje:
+            <p>Statistiko lahko izračunate na povzetih geoobjektih. Na &scaron;tevilskih poljih lahko izračunate naslednje: 
                 <ul>
-                    <li>&Scaron;tetje &ndash; Izračuna &scaron;tevilo nepraznih vrednosti. Uporabljeno je lahko za  &scaron;tevilska ali besedilna polja. &Scaron;tetje za [null, 0, 2] je 2.
+                    <li>&Scaron;tetje &ndash; izračuna &scaron;tevilo neničelnih vrednosti. Uporablja se lahko na &scaron;tevilskih in besedilnih poljih. &Scaron;tetje za [null, 0, 2] je 2.
                     </li>
                     <li>Vsota &ndash; vsota &scaron;tevilskih vrednosti v polju. Vsota [null, null, 3] je 3.
                     </li>
@@ -128,7 +128,7 @@
                     <li>Kateri koli &ndash; ta statistika je naključni vzorec besedilne vrednosti v navedenem polju.
                     </li>
                 </ul>
-                Vsa statistika bo izračunana na neničelnih vrednostih. Sloj z rezultati bo vseboval nova polja za vsako izračunano statistiko. Z izbiro atributov in statistik je mogoče dodati katerokoli statistiko. 
+                Vsa statistika bo izračunana na neničelnih vrednostih. Sloj z rezultati bo vseboval nova polja za vsako izračunano statistiko. Z izbiro atributov in statistik je mogoče dodati katero koli statistiko.
             </p>
         </div>
     </div>
@@ -136,7 +136,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p> To je ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani v skupino. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
+            <p> Ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
             </p>
             <p>Ko zapisujete v  ArcGIS Data Store (relacijsko ali prostorsko-časovno shrambo velikih podatkov) s pomočjo spustnega menija  <b>Shrani rezultat v</b>, lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>

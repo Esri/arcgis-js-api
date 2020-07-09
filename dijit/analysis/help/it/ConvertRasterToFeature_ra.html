@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Converte raster in feature</h2><p/>
-        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Strumento Converte raster in feature"></h2>
+        <h2>Converti raster in feature</h2><p/>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Strumento Converti raster in feature"></h2>
         <hr/>
     <p>Questo strumento converte un raster in un feature dataset, come punti, linee o poligoni.
     </p>
@@ -55,11 +55,11 @@
     <p>Se &egrave; selezionata l'opzione  <b>Usa estensione mappa corrente</b>, solo le celle del raster visibili nell'estensione mappa corrente verranno convertite. Se &egrave; deselezionata, verranno convertite tutte le celle nel layer raster, anche se esterne all'estensione mappa corrente. Tenere in considerazione questo fattore se il layer del raster &egrave; grande o ha una risoluzione molto alta.
     </p>
     <p>Di seguito sono descritti alcuni casi di utilizzo di questo strumento:
- 
+
         <ul>
             <li>Creare feature poligono da un raster di classificazione di utilizzo del suolo.
                 
- 
+
             </li>
             <li>I flussi identificati in un DEM possono essere convertiti in feature linea.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Un DEM pu&ograve; essere convertito in feature punto che possono essere utilizzate in un flusso di lavoro non basato su raster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Scegli campo</h2></div>
         <hr/>
         <div>
-            <p>Fornire un campo che specifichi il valore che verr&agrave; utilizzato per la conversione.
+            <p>Un campo che specifica il valore di conversione.
             </p>
             <p>Pu&ograve; essere un valore intero o di testo.
             </p>
             <p>Un campo che contiene valori a virgola mobile pu&ograve; essere utilizzato solo se l'output &egrave; un dataset di punti.
             </p>
-            <p>L'opzione predefinita consiste nell'utilizzare il campo  <i>Value</i> che contiene il valore di ciascuna cella del raster.
+            <p>L'opzione predefinita &egrave; il campo  <i>Value</i> che contiene il valore di ciascuna cella del raster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Seleziona tipo di output</h2></div>
         <hr/>
         <div>
-            <p>Scegliere il tipo di output tra punto, linea o poligono.
+            <p>Specifica il tipo di output.
             </p>
             <ul>
-                <li>Punto: il raster verr&agrave; convertito in un dataset di punti.
+                <li> <b>Punto</b>: il raster verr&agrave; convertito in un dataset di punti. Questa &egrave; l'impostazione predefinita.
                     
  
                 </li>
-                <li>Linea: il raster verr&agrave; convertito in un feature dataset di linea.
+                <li> <b>Linea</b>: il raster verr&agrave; convertito in un dataset di feature lineari.
                     
  
                 </li>
-                <li>Poligono: il raster verr&agrave; convertito in un feature dataset di poligono.
+                <li> <b>Poligono</b>: il raster verr&agrave; convertito in un dataset di feature poligonali.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Semplifica linee o poligoni</h2></div>
         <hr/>
         <div>
-            <p>Specificare se le feature devono essere semplificate.
+            <p>Specifica se le linee o i poligoni saranno semplificati (smussati). Lo smoothing viene effettuato in modo tale che la linea contenga un numero minimo di segmenti, pur rimanendo il pi&ugrave; vicino possibile ai bordi delle celle del raster originali.
             </p>
-            <p>Se l'opzione &egrave; selezionata (impostazione predefinita), le feature di linea o poligono verranno smussate per produrre un risultato pi&ugrave; generalizzato. Se questa opzione &egrave; deselezionata, le feature di linea seguiranno i contorni della cella del dataset raster.
+            <ul>
+                <li>Selezionata: le feature lineari o poligonali verranno smussate per produrre un risultato pi&ugrave; generalizzato. Questa &egrave; l'impostazione predefinita.
+                    
+
+                </li>
+                <li>Deselezionata: le feature lineari o poligonali seguiranno i contorni della cella del dataset raster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Questo parametro &egrave; supportato solo se il tipo di output &egrave; una linea o un poligono.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Crea feature multiparte</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i poligoni di output saranno costituiti da feature monoparte o multiparte.
+            </p>
+            <ul>
+                <li>Selezionata: le feature multiparte verranno create sulla base di poligoni che hanno lo stesso valore.
+                    
+
+                </li>
+                <li>Deselezionata: le feature individuali (monoparte) verranno create per ogni poligono. Questa &egrave; l'impostazione predefinita.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Questo parametro &egrave; supportato solo se il tipo di output &egrave; un poligono.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Vertici massimi per feature poligonale</h2></div>
+        <hr/>
+        <div>
+            <p>Il limite di vertice utilizzato per suddividere un poligono in poligoni pi&ugrave; piccoli.
+            </p>
+            <p>Se lasciati vuoti, i poligoni di output non verranno suddivisi. Questa &egrave; l'impostazione predefinita.
+            </p>
+            <p>Questo parametro &egrave; supportato solo se il tipo di output &egrave; un poligono.
             </p>
         </div>
     </div>

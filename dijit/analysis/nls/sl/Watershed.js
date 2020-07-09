@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izberite sloj s smerjo toka",pourPointLayerLabel:"Izberite rastrski ali geoobjektni sloj s izlivno točko",pourPointField:"Izberite polje s izlivno točko",resultLayerName:"Ime sloja z rezultati",outputLayerName:"Razvodje za ${layername}",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Povzemi središče in disperzijo za ${layerName}. ",itemTags:"Rezultat analize, Razvodje, ${layername}, ${fieldname}",itemSnippet:"Geoobjektni sloj, ustvarjen z orodjem Razvodje."});

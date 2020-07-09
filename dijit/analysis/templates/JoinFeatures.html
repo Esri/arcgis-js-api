@@ -239,6 +239,17 @@
 	          	<tr data-dojo-type="esri/dijit/analysis/components/AddSummaryFields" data-dojo-attach-point="_summaryWidget" 
 								data-dojo-props="layer:'', showGeoAnalyticsParams:${showGeoAnalyticsParams}, addAsRow:true, allowDateType:true, isGPStringObjType: true">
 							</tr>
+              <tr data-dojo-attach-point="_keepTargetFeaturesRow" style="display: table-row;">
+                <td colspan="3">
+				   <label class="esriLeadingMargin1 esriSelectLabel esriExtentLabel">
+					 <input type="radio" data-dojo-attach-point="_keepTargetFeaturesCheck" data-dojo-type="dijit/form/CheckBox" name="keepAllTargetFeatures"/>
+						${i18n.keepAllTargetFeatures}
+				   </label>
+                </td>
+		        <td class="shortTextInput" style="padding-bottom:0;">
+		          <a href="#" class="esriFloatTrailing helpIcon" esrihelptopic="keepTargetFeatures"></a>
+		        </td>
+              </tr>
 	        </tbody>
 	    </table>
 			<table data-dojo-attach-point="_joinConditionNode" class="esriFormTable" style="border-collapse:collapse;border-spacing:5px; margin-top:10px;margin-bottom:5px;" cellpadding="5px" cellspacing="5px" data-dojo-attach-point="_joinOperationTable"> 

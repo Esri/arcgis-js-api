@@ -44,9 +44,9 @@
         <h2>Koble geoobjekter</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Koble geoobjekter"></h2>
         <hr/>
-    <p>Verkt&oslash;yet Koble geoobjekter fungerer med to lag. Koble geoobjekter f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige, tidsmessige, og attributtmessige forhold eller en kombinasjon av de tre. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler det andre geoobjektslaget til det f&oslash;rste. Du kan eventuelt koble sammen alle geoobjektene til de samsvarende geoobjektene eller oppsummere de samsvarende geoobjektene.
+    <p>Verkt&oslash;yet Koble geoobjekter fungerer med to lag. Koble geoobjekter f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige, tidsmessige, og attributtmessige forhold eller en kombinasjon av de tre. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler det andre geoobjektlaget til det f&oslash;rste. Du kan eventuelt koble sammen alle geoobjektene til de samsvarende geoobjektene eller oppsummere de samsvarende geoobjektene.
     </p>
-    <p>Koble geoobjekter kan brukes p&aring; punkter, linjer, omr&aring;der og tabeller. En tidsmessig sammenf&oslash;yning krever at inndataene er tidsaktivert, og en romlig sammenf&oslash;yning krever at dataene har en geometri. 
+    <p>Koble geoobjekter kan brukes p&aring; punkter, linjer, polygoner og tabeller. En tidsmessig sammenf&oslash;yning krever at inndataene er tidsaktivert, og en romlig sammenf&oslash;yning krever at dataene har en geometri. 
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,9 +56,9 @@
         <div>
             <p>Laget som vil ha attributter fra koblingslaget lagt til i tabellen.
             </p>
-            <p>Analyser med den romlige relasjonen  <b>N&aelig;r</b> krever et projisert koordinatsystem. Du kan angi <b>Behandlende koordinatsystem</b> i <b>Analysemilj&oslash;er</b>. Hvis koordinatsystemet for behandling ikke er angitt som et projisert koordinatsystem, blir du bedt om &aring; angi det n&aring;r du bruker funksjonen <b>Kj&oslash;r analyse</b> .
+            <p>Analyser med den romlige relasjonen  <b>N&aelig;r</b> krever et projisert koordinatsystem. Du kan angi koordinatsystem for behandling i Analysemilj&oslash;er. Hvis koordinatsystemet for behandling ikke er angitt som et projisert koordinatsystem, blir du bedt om &aring; angi det n&aring;r du kj&oslash;rer analysen .
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten, for &aring; bla gjennom innholdet p&aring; et fildelingsomr&aring;de for stordata eller et geoobjektlag.
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten for &aring; g&aring; til innholdet ditt og finne et fildelingsomr&aring;de for stordata eller et geoobjektlag. Du kan velge om du vil bruke et filter p&aring; inndatalaget eller bruke et utvalg p&aring; hostede lag som er lagt til kartet. Filtre og utvalg brukes kun til analyser. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Koblingslaget med attributtene som skal legges til i m&aring;llaget.
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten, for &aring; bla gjennom innholdet p&aring; et fildelingsomr&aring;de for stordata eller et geoobjektlag.
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten for &aring; g&aring; til innholdet ditt og finne et fildelingsomr&aring;de for stordata eller et geoobjektlag. Du kan velge om du vil bruke et filter p&aring; inndatalaget eller bruke et utvalg p&aring; hostede lag som er lagt til kartet. Filtre og utvalg brukes kun til analyser. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Like</b> &ndash; Geoobjektene matches hvis de har samme geometri.
                     </li>
-                    <li> <b>N&aelig;r</b> &ndash; Geoobjektene matches hvis de er innenfor en viss avstand fra hverandre. M&aring;llaget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i <b>Analysemilj&oslash;er</b> dersom det brukes en geografisk <b>N&aelig;r</b>-relasjon.
+                    <li> <b>N&aelig;r plan</b> &ndash; Geoobjektene matches hvis de ligger innenfor en viss avstand fra hverandre. M&aring;llaget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i <b>Analysemilj&oslash;er</b> dersom det brukes en geografisk <b>N&aelig;r</b>-relasjon.
+                    </li>
+                    <li> <b>N&aelig;r geodetisk</b> &ndash; Geoobjektene matches hvis de ligger innenfor en viss avstand fra hverandre. Avstanden m&aring;les ved hjelp av planavstand.
                     </li>
                     <li> <b>Inneholder</b>&nbsp;&ndash; Geoobjektene matches hvis m&aring;llaget omfattes av geoobjektene som skal kobles sammen.
                     </li>
@@ -203,7 +205,7 @@
         <div>
             <p>Matcher verdiene i et felt fra ett lag med verdiene i et felt i et annet lag. 
             </p>
-            <p>Hvis du for eksempel har et landsdekkende geografisk lag med boligadresser (inkludert et felt med  <i>ZIP</i>) og et tabellarisk datasett med helsedemografi i henhold til postnummeret (et felt med navnet <i>HEALTHZIP</i>), kunne du koble helsedatasettet til boligdataene ved &aring; matche feltet <i>ZIP</i> med feltet <i>HEALTHZIP</i>. Dette ville resultere i et lag med boliger med tilh&oslash;rende helsedata.
+            <p>Hvis du for eksempel har et landsdekkende geografisk lag med boligadresser (inkludert et felt med  <i>ZIP</i>) oog et tabell datasett med helsedemografi i henhold til postnummeret (et felt med navnet <i>HEALTHZIP</i>), kunne du koble helsedatasettet til boligdataene ved &aring; matche feltet <i>ZIP</i> med feltet <i>HEALTHZIP</i>. Dette ville resultere i et lag med boliger med tilh&oslash;rende helsedata.
             </p>
         </div>
     </div>
@@ -215,7 +217,7 @@
             </p>
             <p>Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende: 
                 <ul>
-                    <li>Antall&nbsp;&ndash; Beregner antall verdier som ikke er null. Det kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
+                    <li>Antall &ndash; Beregner antall verdier som ikke er null. Det kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
                     </li>
                     <li>Sum &ndash; Summen av numeriske verdier i et felt. Summen av [null, null, 3] er 3.
                     </li>
@@ -243,7 +245,7 @@
                 </ul>
                 All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og statistikk.
             </p>
-            <p>All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og en forekomst.
+            <p>All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og en statistikk.
             </p>
         </div>
     </div>
@@ -253,7 +255,7 @@
         <div>
             <p>Bruker en betingelse p&aring; spesifiserte felter. Bare geoobjekter med felter som oppfyller disse betingelsene, sl&aring;s sammen.
             </p>
-            <p>Hvis du for eksempel &oslash;nsker &aring; bruke sammensl&aring;ing med et datasett bare for geoobjektene der  <i>health_spending</i> er st&oslash;rre enn 20 prosent av <i>income</i>, kan du bruke sammensl&aring;ingsbetingelsen <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> med feltet <i>health_spending</i> fra det f&oslash;rste datasettet (datasettgeoobjektene sl&aring;s sammen) og <i>income</i>-feltet fra det andre datasettet (datasettet som blir sl&aring;tt sammen).
+            <p>Hvis du for eksempel &oslash;nsker &aring; bruke sammensl&aring;ing med et datasett bare for geoobjektene der  <i>health_spending</i> er st&oslash;rre enn 20 prosent av <i>income</i>, kan du bruke sammensl&aring;ingsbetingelsen <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> med feltet <i>health_spending</i> fra det f&oslash;rste datasettet (datasettet som geoobjektene er koblet til) og <i>income</i>-feltet fra det andre datasettet (datasettet som blir sl&aring;tt sammen).
             </p>
             <p>Sammensl&aring;ingsbetingelser kan brukes ved hjelp av uttrykkskalkulatoren.
             </p>
@@ -263,7 +265,7 @@
         <div><h2>Velg datalager</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-resultater lagre s p&aring; et datalager og vises som et geoobjektlag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et geotemporalt datalager, og dette er standarden. I enkelte tilfeller, er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du kan velge &aring; lagre resultatene i relasjonsdatalageret av f&oslash;lgende grunner: 
+            <p>GeoAnalytics-resultater lagres i et datalager og vises som et geoobjektlag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et geotemporalt datalager, og dette er standarden. I enkelte tilfeller er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du kan velge &aring; lagre resultatene i relasjonsdatalageret av f&oslash;lgende grunner: 
                 <ul>
                     <li>Du kan bruke resultater i portal-til-portal-samarbeid.
                     </li>
@@ -272,7 +274,7 @@
                 </ul>
                 
             </p>
-            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene skal &oslash;ke, og du &oslash;nsker &aring; dra fordeler av det geotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data.
+            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene skal &oslash;ke, og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data.
             </p>
         </div>
     </div>
@@ -280,7 +282,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Navnet p&aring; laget som opprettes. Hvis du skriver til en ArcGIS Data Store, blir resultatene dine lagret i  <b>Mitt innhold</b> og lagt til kartet. Hvis du skriver til et fildelingsomr&aring;de for stordata, blir resultatene lagret i fildelingsomr&aring;det for stordata og lagt til dets innholdsoversikt. De blir ikke lagt til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes. Hvis du skriver til en ArcGIS Data Store, blir resultatene dine lagret i  <b>Mitt innhold</b> og lagt til i kartet. Hvis du skriver til en fildelingstjeneste for stordata, blir resultatene lagret i fildelingstjenesten for stordata og lagt til i innholdsoversikten for denne. De blir ikke lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
             <p>N&aring;r du skriver til  ArcGIS Data Store (fildelingsomr&aring;de for relasjons- eller geotemporale stordata) via rullegardinlisten  <b>Lagre resultat i</b>, kan du angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatet skal lagres i.
             </p>

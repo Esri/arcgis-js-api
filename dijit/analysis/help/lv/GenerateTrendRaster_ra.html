@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ģenerēt tendences rastru</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Ģenerēt tendences rastru"></h2>
+        <hr/>
+    <p>Izvērtē katra pikseļa tendenci dimensijā vienam vai vairākiem multidimensiju rastra mainīgajiem.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izvēlēties multidimensiju attēlu slāni tendences analīzei</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Analizējamais multidimensiju rastra ievades attēlu slānis.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Izvēlēties dimensiju, ar kuru tiks analizēta mainīgā tendence</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensija pēc kuras tiks izgūta tendence mainīgajam vai mainīgajiem, kas atlasīti analīzē.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izvēlēties mainīgos tendences analīzei</h2></div>
+        <hr/>
+        <div>
+            <p>Mainīgais vai mainīgie, kuriem tiks aprēķinātas tendences. Ja nav norādīts neviens mainīgais, tiks analizēts pirmais mainīgais multidimensiju rastrā.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Izvēlieties līnijas veidu, kas jāizmanto, lai izvietotu mainīgā vērtības dimensijā</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda līnijas veidu, kas jāizmanto, lai izvietotu pikseļu vērtības dimensijā. 
+                <ul>
+                    <li> <b>Lineāra</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas lineārā tendences līnijā. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Polinoma</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas otrās pakāpes polinoma tendences līnijā.
+                    </li>
+                    <li> <b>Harmoniska</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas harmoniskās tendences līnijā.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Norādīt harmoniskā cikla ilgumu</h2></div>
+        <hr/>
+        <div>
+            <p>Modeļa perioda variācijas ilgums. &Scaron;is parametrs ir nepiecie&scaron;ams, kad tendences līnijas veids ir  <b>Harmoniska</b>. Piemēram: lapu zaļumam bieži ir viens izteiktas variācijas cikls gadā, tādēļ cikla ilgums ir 1&nbsp;gads. Katras stundas temperatūras datiem ir viens izteiktas variācijas cikls dienā, tādēļ cikla ilgums ir&nbsp;1 diena.
+            </p>
+            <p>Noklusējuma ilgums ir 1&nbsp;gads datiem, kas mainās ar gada ciklu.
+            </p>
+            <p>&Scaron;is parametrs tiek iekļauts tendences analīzē tikai tad, ja analizējamā dimensija ir laiks un iestatītais tendences līnijas veids ir  <b>Harmoniska</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Izvēlēties harmoniskā cikla garuma laika mērvienību</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda laika mērvienību, kas izmantojama harmoniskā cikla ilgumam.
+                <ul>
+                    <li> <b>Dienas</b>&nbsp;&mdash; harmoniskā cikla ilguma mērvienība ir dienas.
+                    </li>
+                    <li> <b>Gadi</b>&nbsp;&mdash; harmoniskā cikla ilguma mērvienība ir gadi. Tā ir noklusējuma vērtība.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Scaron;is parametrs tiek iekļauts tendences analīzē tikai tad, ja analizējamā dimensija ir laiks un iestatītais tendences līnijas veids ir  <b>Harmoniska</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Norādīt harmoniskās tendences pielāgošanas reižu skaitu</h2></div>
+        <hr/>
+        <div>
+            <p>Frekvence, kas jāizmanto harmoniskās tendences pielāgo&scaron;anā. &Scaron;is parametrs norāda ciklu biežumu gadā.
+            </p>
+            <p>Noklusējuma vērtība ir&nbsp;1 jeb viens harmonisks cikls gadā.
+            </p>
+            <p>&Scaron;is parametrs tiek iekļauts tendences analīzē tika tad, ja analizējamā dimensija ir laiks.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Norādīt polinoma pakāpes skaitli, kas jāizmanto tendenču pielāgošanā</h2></div>
+        <hr/>
+        <div>
+            <p>Polinoma pakāpes skaitlis, kas jāizmanto polinoma tendences pielāgo&scaron;anā.
+            </p>
+            <p>&Scaron;is parametrs tiek iekļauts tendences analīzē tika tad, ja analizējamā dimensija ir laiks.
+            </p>
+            <p>Noklusējuma vērtība ir&nbsp;2 jeb otrās pakāpes polinoms.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Izvēlēties modeļa statistiku, kas jāiekļauj tendenču rastrā</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;is rīks nodro&scaron;ina trīs tendences pielāgo&scaron;anas līnijas statistikas veidus: vidējā kvadrātiskā kļūda&nbsp;(RMSE), R&nbsp;kvadrātā atbilstības statistika&nbsp;(R&nbsp;kvadrātā) un p&nbsp;vērtības statistika slīpuma koeficientam&nbsp;(slīpuma koeficienta P&nbsp;vērtība). Katrai statistikai atbilst attiecīga izvēles rūtiņa, lai norādītu, vai statistika tiks aprēķināta un iekļauta kā viena no vairākām joslām izvades tendences rastrā.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Atzīmēts&nbsp;&mdash; RMSE tiks aprēķināta un iekļauta kā viena no vairākām joslām izvades tendences rastrā. Tā ir noklusējuma vērtība.
+                            </li>
+                            <li>Neatzīmēts&nbsp;&mdash; RMSE netiks aprēķināta.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R&nbsp;kvadrātā
+                        </p>
+                        <ul>
+                            <li>Atzīmēts&nbsp;&mdash; R&nbsp;kvadrātā vērtība tiks aprēķināta un iekļauta kā viena no vairākām joslām izvades tendences rastrā.
+                            </li>
+                            <li>Neatzīmēts&nbsp;&mdash; R&nbsp;kvadrātā vērtība netiks aprēķināta. Tā ir noklusējuma vērtība.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Slīpuma koeficienta P&nbsp;vērtība
+                        </p>
+                        <ul>
+                            <li>Atzīmēts&nbsp;&mdash; p&nbsp;vērtība tiks aprēķināta un iekļauta kā viena no vairākām joslām izvades tendences rastrā.
+                            </li>
+                            <li>Neatzīmēts&nbsp;&mdash; p&nbsp;vērtība netiks aprēķināta. Tā ir noklusējuma vērtība.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorēt aprēķinā trūkstošās vērtības</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības.
+                <ul>
+                    <li>Atzīmēts &mdash; analīze ietver visus derīgos pikseļus konkrētajā dimensijā un ignorē jebkurus NoData pikseļus. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li>Neatzīmēts &mdash; analīze dos NoData, ja konkrētajā dimensijā pikseļiem ir kāda NoData vērtība.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

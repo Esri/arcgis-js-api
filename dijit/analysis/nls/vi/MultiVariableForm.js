@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({distToNearest:"Khoảng cách đến Đối tượng Gần nhất",attrOfInterest:"Thuộc tính của Đối tượng Gần nhất",summaryNearby:"Tóm tắt về thông tin Lân cận",summaryIntersecting:"Tóm tắt về thông tin Giao cắt",distToNearestLabel:"Khoảng cách từ tâm bin đến đối tượng gần nhất trong lớp đầu vào",attrOfInterestLabel:"Giá trị của một trường cụ thể từ đối tượng gần nhất từ lớp đầu vào",summaryNearbyLabel:"Một phép thống kê được tính toán trên tất cả đối tượng tìm thấy với khoảng cách cụ thể của tâm bin",summaryIntersectingLabel:"Một phép thống kê đã tính toán thống kê trên tất cả đối tượng giao cắt bin",maxDistancefromCtr:"Khoảng cách tối đa tính từ tâm bin",fieldToIncude:"Trường cần bao gồm",statstoCalculate:"Phép thống kê cần tính",summFeatuesWithin:"Tóm tắt các đối tượng trong",smallMaxDistErrorMsg:"Khoảng cách tối đa tính từ tâm bin phải lớn hơn kích thước bin.",smallSumFeaturesErrorMsg:"Khoảng cách tối đa tính từ tâm bin phải lớn hơn kích thước bin."});

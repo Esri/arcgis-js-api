@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Detect Objects Using Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detect Objects Using Deep Learning"></h2>
+        <hr/>
+    <p>Цей інструмент запускає навчену модель глибокого навчання на вхідному растрі, щоб створити клас об&rsquo;єктів, в якому містяться знайдені ним об&rsquo;єкти. Об&rsquo;єктами можуть бути обмежуючі рамки або полігони навколо знайдених об&rsquo;єктів, або точки по центру об&rsquo;єктів.
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only the raster area that is visible within the current map extent will be analyzed. If unchecked, the whole raster will be analyzed, even if it is outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Choose image used to detect objects</h2></div>
+        <hr/>
+        <div>
+            <p>The input image used to detect objects.
+            </p> 
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Choose deep learning model used to detect objects</h2></div>
+        <hr/>
+        <div>
+            <p>Елемент вхідного пакету глибокого навчання ( <code>.dlpk</code>).
+            </p>
+            <p>Пакет глибокого навчання містить файл JSON ( <code>.emd</code>) з визначенням моделі Esri, файл бінарної моделі глибокого навчання, і додатково може використовуватися растрова функція Python.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Specify deep learning model arguments</h2></div>
+        <hr/>
+        <div>
+            <p>Аргументи функції визначаються у класі растрової функції Python, на яку посилається вхідна модель. Саме тут наводяться додаткові параметри і аргументи глибокого навчання для експериментів і доводження, такі як довірчий поріг для уточнення чутливості.
+            </p>
+            <p>Назви аргументів заповнюються даними, отриманими інструментом із модуля Python на сервері аналізу растрів.
+            </p>
+        </div>
+    </div>
+    <div id="runNMS">
+        <div><h2>Remove duplicate features from the output (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Performs non-maximum suppression, where duplicate objects are identified and the duplicate feature with a lower confidence value is removed.
+
+                <ul>
+                    <li>Unchecked&mdash;All objects that are detected will be in the output feature class. This is the default.
+                        
+
+                    </li>
+                    <li>Checked&mdash;Removes duplicate objects that are detected.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="confidenceScoreField">
+        <div><h2>Confidence score field</h2></div>
+        <hr/>
+        <div>
+            <p>The field in the feature service that contains the confidence scores as output by the object detection method.
+            </p>
+            <p>This parameter is required when you check the  <b>Non Maximum Suppression</b> parameter.
+            </p>
+        </div>
+    </div>
+    <div id="classValueField">
+        <div><h2>Class value field</h2></div>
+        <hr/>
+        <div>
+            <p>The class value field in the output feature service. If not specified, the tool will use the standard class value fields  <i>Classvalue</i> and <i>Value</i>. If these fields do not exist, all features will be treated as the same object class.
+            </p>
+        </div>
+    </div>
+    <div id="maxOverlapRatio">
+        <div><h2>Maximum overlap ratio</h2></div>
+        <hr/>
+        <div>
+            <p>The maximum overlap ratio for two overlapping features, which is defined as the ratio of intersection area over union area. The default is 0.
+            </p>
+        </div>
+    </div>
+    <div id="outputObjects">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            </p>
+            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Trovare statistiche di argomento</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Trovare statistiche di argomento"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>Utilizzare questo strumento per estrarre il valore della dimensione (ad esempio la data, l'altezza o la profondit&agrave;) a cui si raggiunge una specifica statistica nell'insieme di raster in un dataset raster multidimensionale. In alternativa, trovare il numero della banda a cui si raggiunge la statistica in un raster multibanda.
+    </p>
+    <p>Ad esempio, pu&ograve; essere necessario conoscere il mese in cui ogni pixel ha raggiunto la temperatura pi&ugrave; alta della superficie del mare in 30 anni di raccolta dati. Un altro esempio &egrave; che si dispone di un'immagine di telerilevamento a otto bande e si vuole conoscere la banda in cui &egrave; stato raggiunto il valore minimo di riflettanza per ogni pixel.
+    </p>
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, verranno analizzate le variabili o le bande del layer visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate le variabili o le bande del layer, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Scegliere il layer di immagini multidimensionale o multibanda da analizzare</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster multidimensionale o multibanda di input da analizzare.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Scegliere la dimensione da cui estrarre la statistica</h2></div>
+        <hr/>
+        <div>
+            <p>La dimensione da cui estrarre la statistica. Se il raster di input non &egrave; un raster multidimensionale, questo parametro non &egrave; richiesto.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Scegliere la variabile o le variabili che saranno analizzate</h2></div>
+        <hr/>
+        <div>
+            <p>La variabile o le variabili da analizzare. Se il raster di input non &egrave; multidimensionale, i valori dei pixel del raster multibanda sono considerati la variabile. Se il raster di input &egrave; multidimensionale e non viene specificata alcuna variabile, verranno analizzate tutte le variabili con la dimensione selezionata.
+            </p>
+            <p>Per esempio, per trovare gli anni in cui i valori di temperatura erano pi&ugrave; alti, specificare la temperatura come variabile da analizzare. Se non si specificano variabili e si dispone delle variabili di temperatura e precipitazione, entrambe le variabili verranno analizzate e il raster multidimensionale di output includer&agrave; entrambe le variabili.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Scegliere il tipo di statistiche</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica la statistica da estrarre dalla variabile o dalle variabili lungo la dimensione data. 
+            </p>
+            <ul>
+                <li> <b>Argomento del minimo</b>: il valore di dimensione al quale viene raggiunto il valore minimo della variabile. Questa &egrave; l'impostazione predefinita.
+                </li>
+                <li> <b>Argomento del massimo</b>: il valore di dimensione al quale viene raggiunto il valore massimo della variabile.
+                </li>
+                <li> <b>Argomento del mediano</b>: il valore di dimensione al quale viene raggiunto il valore mediano della variabile.
+                </li>
+                <li> <b>Argomento della durata</b>: la durata della dimensione pi&ugrave; lunga per la quale i valori delle variabili rientrano tra i valori minimi e massimi.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Specificare valori di occorrenza multipli</h2></div>
+        <hr/>
+        <div>
+            <p>Il valore del pixel da utilizzare per indicare che una data statistica di argomento &egrave; stata raggiunta pi&ugrave; di una volta nel dataset raster di input. Se non specificato, il valore del pixel sar&agrave; il valore della dimensione al primo raggiungimento della statistica di argomento.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Specificare valore minimo</h2></div>
+        <hr/>
+        <div>
+            <p>Il valore minimo della variabile da utilizzare per estrarre la durata.
+            </p>
+            <p>Questo parametro &egrave; necessario quando si seleziona  <b>Durata</b> come tipo di statistica.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Specificare valore massimo</h2></div>
+        <hr/>
+        <div>
+            <p>Il valore massimo della variabile da utilizzare per estrarre la durata.
+            </p>
+            <p>Questo passaggio &egrave; necessario quando si seleziona  <b>Durata</b> come tipo di statistica.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Scegliere la definizione di dimensione</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica in che modo la statistica sar&agrave; estratta dalla dimensione. 
+                <ul>
+                    <li> <b>Tutte</b>: la statistica sar&agrave; estratta in tutte le dimensioni. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li> <b>Parola chiave di intervallo</b>: la statistica sar&agrave; estratta dalla dimensione temporale secondo la parola chiave dell'intervallo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Scegliere l'intervallo delle parole chiave</h2></div>
+        <hr/>
+        <div>
+            <p>L'unit&agrave; di tempo per la quale verr&agrave; estratta la statistica.
+            </p>
+            <p>Ad esempio, si dispone di cinque anni di dati giornalieri sulla temperatura della superficie del mare e si vuole conoscere l'anno in cui &egrave; stata osservata la temperatura massima. Impostare  <b>Argomento del massimo</b> come tipo di statistica, impostare <b>Parola chiave di intervallo</b> come definizione della dimensione e impostare <b>Annuale</b> come intervallo di parole chiave in questo passaggio.
+            </p>
+            <p>In alternativa, se si desidera conoscere il mese in cui la temperatura massima &egrave; stata osservata costantemente, impostare  <b>Argomento del massimo</b> come tipo di statistica, impostare la <b>Parola chiave di intervallo</b> come definizione della dimensione e impostare <b>Ricorrenza mensile</b> come intervallo di parole chiave in questo passaggio. In questo modo si genera un raster in cui ogni pixel contiene il mese in cui &egrave; stato raggiunto il record quinquennale (ad esempio, 18/08/2018, 25/08/2016, 07/08/2013).
+            </p>
+            <p>Questo passaggio &egrave; necessario quando  <b>StdTime</b> &egrave; impostato come dimensione dalla quale la statistica sar&agrave; estratta e <b>Parola chiave di intervallo</b> &egrave; selezionato per definire in che modo la statistica sar&agrave; estratta dalla dimensione del tempo.
+                <ul>
+                    <li> <b>Ricorrenza giornaliera</b>: la statistica sar&agrave; estratta in giorni.
+                    </li>
+                    <li> <b>Ricorrenza settimanale</b>: la statistica sar&agrave; estratta in settimane.
+                    </li>
+                    <li> <b>Ricorrenza mensile</b>: la statistica sar&agrave; estratta in mesi.
+                    </li>
+                    <li> <b>Ricorrenza trimestrale</b>: la statistica sar&agrave; estratta in trimestri.
+                    </li>
+                    <li> <b>Orario</b>: la statistica sar&agrave; estratta per l'ora in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                    <li> <b>Giornaliero</b>: la statistica sar&agrave; estratta per il giorno in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                    <li> <b>Settimanale</b>: la statistica sar&agrave; estratta per la settimana in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                    <li> <b>Mensile</b>: la statistica sar&agrave; estratta per il mese in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                    <li> <b>Trimestrale</b>: la statistica sar&agrave; estratta per il trimestre in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                    <li> <b>Annuale</b>: la statistica sar&agrave; estratta per l'anno in cui &egrave; stata raggiunta la statistica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora valori mancanti nei calcoli</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i valori mancanti vengono ignorati nell'analisi.
+                <ul>
+                    <li>Se la casella &egrave; selezionata, l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Questa &egrave; l'impostazione predefinita.
+                    </li>
+                    <li>Se la casella &egrave; deselezionata, l'analisi produrr&agrave; NoData se sono presenti valori NoData per i pixel lungo la data dimensione.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

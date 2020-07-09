@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Atrast uzturēšanās vietas</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Darbplūsmas Atrast uzturē&scaron;anās vietas diagramma"></h2>
+        <hr/>
+    <p>&Scaron;is rīks darbojas ar laika iespējotu punktu elementu slāni, kas ir  <code>tūlītējs</code> pēc veida. Pirmkārt, rīks pie&scaron;ķir mar&scaron;rutam elementus, izmantojot unikālu identifikatoru. Mar&scaron;ruta kārtību nosaka elementu laiks. Kā nākamais &mdash; tiek aprēķināts attālums starp pirmo un otro novērojumu mar&scaron;rutā. Elementi tiek uzskatīti par uzturē&scaron;anās vietas daļu, ja divi laika ziņā secīgi punkti paliek noteiktajā attālumā vismaz uz konkrētu laika periodu. Ja tiek konstatēts, ka divi elementi ir uzturē&scaron;anās vietas daļa, pirmais uzturē&scaron;anās elements tiek izmantots kā atskaites punkts, un rīks atrod secīgus elementus, kas atrodas noteiktā attālumā no uzturē&scaron;anās vietas atskaites punkta. Tiklīdz ir atrasti visi elementi norādītajā attālumā, rīks apkopo uzturē&scaron;anās elementus un aprēķina to vidējo aritmētisko centru. Elementi pirms un pēc pa&scaron;reizējās uzturē&scaron;anās vietas tiek pievienoti uzturē&scaron;anās vietai, ja tie atrodas konkrētā uzturē&scaron;anās novietojuma vidējā aritmētiskā centra attālumā. &Scaron;is process turpinās līdz mar&scaron;ruta beigām.
+    </p>
+    <p>Laika iespējotu slāņu elementus var apzīmēt vienā no &scaron;iem veidiem:
+        <ul>
+            <li>Tūlītējs. Atsevi&scaron;ķs mirklis laikā
+            </li>
+            <li>Intervāls. Sākuma un beigu laiks.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Piemēram, pieņemsim, ka jūs strādājat transporta nodaļā un esat apkopojis transportlīdzekļu, kas pārvietojas pa galvenajiem lielceļiem, GPS rādījumus. Katram GPS ierakstam ir unikāls transportlīdzekļa ID, laiks, novietojums un ātrums. Izmantojot unikālo transportlīdzekļa ID, lai noteiktu atsevi&scaron;ķus mar&scaron;rutus, meklējiet transportlīdzekļus, kas vismaz 15 minū&scaron;u laikā nav pavirzīju&scaron;ies tālāk par 100 metriem, lai atrastu problemātiskās zonas ceļa tīklā. Turklāt jūs varat aprēķināt statistiku, piemēram, transportlīdzekļu vidējo ātrumu uzturē&scaron;anās vietā.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlieties slāni, kurā meklēt uzturēšanās vietas.</h2></div>
+        <hr/>
+        <div>
+            <p>Punktu slānis, kas tiks apkopots uzturē&scaron;anās vietās. Ievades slānī jābūt iespējotam laikam, jābūt elementiem, kas pārstāv noteiktu brīdi laikā, kā arī vienam vai vairākiem laukiem, ko var izmantot mar&scaron;rutu noteik&scaron;anai.
+            </p>
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni. Jūs varat arī papildus lietot filtru savam ievades slānim vai izmantot savai kartei pievienoto viesoto slāņu atlasi. Filtri un atlase tiek lietota tikai analīzei. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Izvēlieties vienu vai vairākus laukus, lai identificētu maršrutus</h2></div>
+        <hr/>
+        <div>
+            <p>Lauki, kas attēlo mar&scaron;rutu identifikatoru. Lai norādītu unikālas mar&scaron;rutu vērtības, varat lietot vienu vai vairākus laukus.
+            </p>
+            <p>Piemēram, ja meklējat viesuļvētru uzturē&scaron;anās vietas, kā mar&scaron;ruta lauku varat izmantot viesuļvētras nosaukumu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Izvēlieties attāluma aprēķināšanas metodi</h2></div>
+        <hr/>
+        <div>
+            <p>Uzturē&scaron;anās attāluma aprēķinā&scaron;anas metode mar&scaron;rutu ietvaros.  <b>Plaknes</b> metode aprēķina rezultātus ātrāk, bet neaplieks mar&scaron;rutus ap starptautisko datuma maiņas līniju, kā arī neierēķinās zemes faktisko Zemes formu, veidojot buferzonu. <b>Ģeodēziskā</b> metode, ja nepiecie&scaron;ams, aplieks mar&scaron;rutus ap starptautisko datuma maiņas līniju un izveidos ģeodēzisko buferzonu, lai ierēķinātu zemes formu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Nosakiet telpas meklēšanas attālumu</h2></div>
+        <hr/>
+        <div>
+            <p>Uzturē&scaron;anās attāluma pielaide ir maksimālais attālums starp punktiem, kas jāņem vērā vienā uzturē&scaron;anās novietojumā.
+            </p>
+            <p>Piemēram, ja jūs vēlaties atrast uzturē&scaron;anās vietas, kur satiksme konkrētā laika posmā nav pavirzījusies vairāk par 20 metriem, attāluma pielaide būs 20 metri.
+            </p>
+            <p>Lai noteiktu laiku, izmantojiet parametru  <b>Definēt temporālo meklē&scaron;anas diapazonu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Sašķelt maršrutus (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Attāluma pielaides vienība.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Nosakiet temporālo meklēšanas diapazonu</h2></div>
+        <hr/>
+        <div>
+            <p>Uzturē&scaron;anās attāluma pielaide ir minimālais uzturē&scaron;anās laika sprīdis, kas jāņem vērā vienā uzturē&scaron;anās novietojumā.
+            </p>
+            <p>Piemēram, ja vēlaties uzzināt, kurā vietā satiksme stundas laikā nav pavirzījusies pa konkrētu attālumu, laika pielaide būtu 1 stunda.
+            </p>
+            <p>Lai noteiktu attālumu, izmantojiet parametru  <b>Definēt telpisko meklē&scaron;anas diapazonu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Izvēlēties attālumu, pēc kura sadalīt maršrutus (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Laika pielaides vienība.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pievienot statistiku (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Varat aprēķināt apkopoto elementu statistiku. Jūs varat aprēķināt zemāk norādītās vērtības ciparu laukos. 
+                <ul>
+                    <li>Skaits&nbsp;&mdash; aprēķina vērtību, kas nav nulle, skaitu. To var lietot ciparu laukiem un virknēm. [nulle, 0, 2] skaits ir&nbsp;2.
+                    </li>
+                    <li>Summa&nbsp;&mdash; katra lauka skaitlisko vērtību summa. [nulle, nulle, 3] summa ir&nbsp;3.
+                    </li>
+                    <li>Vidējais&nbsp;&mdash; vidējā skaitliskā vērtība. [0, 2, nulle] vidējā vērtība ir&nbsp;1.
+                    </li>
+                    <li>Minimums&nbsp;&mdash; ciparu lauka minimālā vērtība. [0, 2, nulle] minimums ir&nbsp;0. 
+                    </li>
+                    <li>Maksimums&nbsp;&mdash; ciparu lauka maksimālā vērtība. [0, 2, nulle] maksimums ir&nbsp;2.
+                    </li>
+                    <li>Diapazons&nbsp;&mdash; ciparu lauka diapazons. To aprēķina, minimālo vērtību atņemot no maksimālās vērtības. [0, nulle, 1] diapazons ir&nbsp;1. [nulle, 4] diapazons ir&nbsp;0.
+                    </li>
+                    <li>Novirze&nbsp;&mdash; mar&scaron;ruta ciparu lauka novirze. [1] novirze ir nulle. [null, 1, 0, 1, 1] novirze ir 0,25.
+                    </li>
+                    <li>Standarta novirze&nbsp;&mdash; ciparu lauka standarta novirze. [1] standarta novirze ir nulle. [null, 1, 0, 1, 1] standartnovirze ir 0,5. 
+                    </li>
+                    <li>Pirmā&nbsp;&mdash; pirmā norādītā lauka vērtība apkopotajā mar&scaron;rutā. Ja mar&scaron;rutā ir zemāk norādītās pēc laika kārtotas vērtības laukam: [1, 5, 10, 20], pirmā vērtība ir&nbsp;1.
+                    </li>
+                    <li>Pēdējā&nbsp;&mdash; pēdējā norādītā lauka vērtība apkopotajā mar&scaron;rutā. Ja mar&scaron;rutā ir zemāk norādītās pēc laika kārtotas vērtības laukam: [1, 5, 10, 20], pēdējā vērtība ir&nbsp;20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Jūs varat aprēķināt zemāk norādītās vērtības virkņu laukos.
+                <ul>
+                    <li>Skaits&nbsp;&mdash; virkņu, kas nav nulle, skaits.
+                    </li>
+                    <li>Jebkāda. &Scaron;ī statistika ir nejau&scaron;s virknes vērtības paraugs norādītajā laukā.
+                    </li>
+                    <li>Pirmā&nbsp;&mdash; pirmā norādītā lauka vērtība apkopotajā mar&scaron;rutā. Ja mar&scaron;rutā ir zemāk norādītās pēc laika kārtotas vērtības laukam: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], pirmā vērtība ir Toronto.
+                    </li>
+                    <li>Pēdējā&nbsp;&mdash; pēdējā norādītā lauka vērtība apkopotajā mar&scaron;rutā. Ja mar&scaron;rutā ir zemāk norādītās pēc laika kārtotas vērtības laukam: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], pēdējā vērtība ir Bostona.
+                    </li>
+                </ul>
+                Jebkāda statistika tiek aprēķināta no vērtībām, kas nav nulle. Rezultātu slānī ir ietverts jauns lauks par katru aprēķināto statistiku. Izvēloties atribūtu un statistikas datus, jebkur&scaron; daudzums satistikas datu var tikt pievienots.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Izvades uzturēšanās novietojumi kā</h2></div>
+        <hr/>
+        <div>
+            <p>Nosaka, kuri elementi un kādā formātā tiek parādīti. Ir iespējami četri veidi: 
+                <ul>
+                    <li> <b>Vidējā aritmētiskā centri</b>&mdash; punkts, kas norāda katra atrastā uzturē&scaron;anās novietojuma izliekuma centru. Tiks apkopoti atribūti. Tā ir noklusējuma vērtība.
+                         
+                    </li>
+                    <li> <b>Izliekti apvalki</b>&mdash; daudzstūri, kas parāda katras uzturē&scaron;anās grupas izliekto apvalku. Tiks apkopoti atribūti.
+                         
+                    </li>
+                    <li> <b>Uzturē&scaron;anās elementi</b>&mdash; tiek parādīti visi ievades punkta elementi un atribūti, kas ir noteikti kā piedero&scaron;i uzturē&scaron;anās vietai.
+                         
+                    </li>
+                    <li> <b>Visi elementi</b>&mdash;  tiek parādīti visi ievades punkta elementi un atribūti.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizēt datus ar laika intervāliem (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet, ja vēlaties sameklēt uzturē&scaron;anās vietas, izmantojot laika intervālus, kas segmentē jūsu ievades elementus analīzei. Ja izmantojat laika intervālus, ir jāiestata vajadzīgais laika intervāls un pēc izvēles jānorāda atsauces laiks. Ja nenorādāt atsauces laiku, tiks izmantots 1970. gada 1. janvāris. 
+            </p>
+            <p>Piemēram, ja iestatāt laika robežu 1 diena, sākot ar 9:00 no rīta 1990. gada 1. janvārī, tad katra ieraksta vērtība tiks saīsināta 9:00 no rīta katrai dienai un analizēta &scaron;ajā segmentā. Uzturē&scaron;anās vietas tiks meklētas pirms 9:00&nbsp;un beigsies pēc tam. 
+            </p>
+            <p>Laika intervālu izmanto&scaron;ana ir ātrs veids, kā paātrināt skaitļo&scaron;anas laiku, jo tas ātri rada īsākos mar&scaron;rutus analīzei. Ja analīzei ir lietderīgi sadalīt ar atkārtotiem intervāliem, tas ir ieteicams lielai datu apstrādei.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> Izveidojamā slāņa nosaukums. Ja ierakstāt ArcGIS Data Store, rezultāti tiks saglabāti mapē  <b>Mans saturs</b> un pievienoti kartei. Ja rakstāt Big Data faila koplietojumā, rezultāti tiks saglabāti Big Data failu koplietojumā un pievienoti tā sarakstam. Tas netiks pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            </p>
+            <p>Rakstot uz   ArcGIS Data Store  (relāciju vai telpas un laika Big Data krātuvi), izmantojot nolaižamo lodziņu  <b>Saglabāt rezultātu,</b> var norādīt mapes nosaukumu mapē <b>Mans saturs,</b> kurā tiks saglabāts rezultāts.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

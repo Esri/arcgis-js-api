@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Encontrar Localizações de Intervalo</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagrama de fluxo de trabalho Encontrar Localiza&ccedil;&otilde;es de Intervalo"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada com componente de tempo ativa de elementos de ponto de tipo  <code>instante</code>. Primeiro, esta ferramenta atribui elementos a um trilho utilizando um identificador &uacute;nico. A ordem do trilho &eacute; determinada pela hora dos elementos. Em seguida, &eacute; calculada a dist&acirc;ncia entre a primeira observa&ccedil;&atilde;o num trilho e a pr&oacute;xima. Os elementos s&atilde;o considerados como parte de um intervalo se dois pontos temporariamente consecutivos se situarem dentro de uma determinada dist&acirc;ncia pelo menos durante o tempo determinado. Quando dois elementos se encontrarem num intervalo, o primeiro elemento no intervalo &eacute; utilizado como ponto de refer&ecirc;ncia, e a ferramenta encontra elementos consecutivos que se encontram dentro de uma distancia especificada do ponto de refer&ecirc;ncia no intervalo. Assim que forem encontrados todos os elementos dentro da dist&acirc;ncia especificada, a ferramenta recolhe todos os elementos do intervalo e calcula o centro m&eacute;dio. Os elementos antes e depois do intervalo atual s&atilde;o adicionados ao intervalo se se encontraram dentro de uma determinada dist&acirc;ncia do centro m&eacute;dio da localiza&ccedil;&atilde;o do intervalo. Este processo continua at&eacute; ao final do trilho.
+    </p>
+    <p>Os elementos em camadas com componente temporal ativa podem ser representados por uma das seguintes formas:
+        <ul>
+            <li>Instante&mdash;um momento &uacute;nico no tempo
+            </li>
+            <li>Intervalo&mdash;Uma hora de in&iacute;cio e de fim
+            </li>
+        </ul>
+        
+    </p>
+    <p>Por exemplo, suponha que trabalha no Departamento de Transportes e recolheu leituras de GPS para ve&iacute;culos em vias rodovi&aacute;rias importantes. Cada registo de GPS cont&eacute;m uma ID de ve&iacute;culo &uacute;nica, a hora, a localiza&ccedil;&atilde;o e a velocidade. Utilizando a ID de ve&iacute;culo &uacute;nica para definir trilhos individuais, procure ve&iacute;culos que n&atilde;o se moveram mais de 100 metros em pelo menos 15 minutos para descobrir zonas problem&aacute;ticas na rede rodovi&aacute;ria. Adicionalmente, pode calcular estat&iacute;sticas tais como a velocidade m&eacute;dia dos ve&iacute;culos dentro da localiza&ccedil;&atilde;o de intervalo.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher a camada para encontrar intervalos</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de ponto que ser&aacute; resumida em intervalos. A camada de entrada tem de ter a componente temporal ativa com elementos que representam um instante no tempo, bem como ter um ou mais campos que podem ser utilizados para identificar trilhos.
+            </p>
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selecionar um ou mais campos para identificar trilhos</h2></div>
+        <hr/>
+        <div>
+            <p>Os campos que representam o identificador de trilhos. Pode utilizar um campo ou v&aacute;rios campos para representar valores &uacute;nicos de trilhos.
+            </p>
+            <p>Por exemplo, caso estivesse a procurar localiza&ccedil;&otilde;es de Intervalo para furac&otilde;es, poderia utilizar o nome do furac&atilde;o como campo de trilho.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Escolher método para calcular distância</h2></div>
+        <hr/>
+        <div>
+            <p>M&eacute;todo utilizado para calcular a dist&acirc;ncia do intervalo dentro de trilhos. O m&eacute;todo  <b>Planar</b> pode calcular os resultados mais rapidamente, mas n&atilde;o ir&aacute; associar os trilhos &agrave; linha de data internacional, ou considerar o verdadeiro formato da Terra ao aplicar buffers. O m&eacute;todo <b>Geod&eacute;sico</b> ir&aacute; associar os trilhos &agrave; linha de data internacional, se necess&aacute;rio, e aplicar um buffer geod&eacute;sico para considerar o formato da Terra.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definir distância de pesquisa espacial</h2></div>
+        <hr/>
+        <div>
+            <p>A toler&acirc;ncia do intervalo &eacute; a dist&acirc;ncia m&aacute;xima entre pontos a considerar numa &uacute;nica localiza&ccedil;&atilde;o de intervalo.
+            </p>
+            <p>Por exemplo, se est&aacute; interessado em encontrar intervalos onde o tr&acirc;nsito n&atilde;o se tenha movido mais do que 20 metros num determinado per&iacute;odo, a toler&acirc;ncia da dist&acirc;ncia seria de 20 metros.
+            </p>
+            <p>Utilize o par&acirc;metro  <b>Definir intervalo de pesquisa temporal</b> para especificar o tempo.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Divisão de Trilhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>A unidade de toler&acirc;ncia da dist&acirc;ncia.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definir intervalo de pesquisa temporal</h2></div>
+        <hr/>
+        <div>
+            <p>A toler&acirc;ncia de tempo de intervalo &eacute; o tempo m&iacute;nimo entre um intervalo a considerar numa &uacute;nica localiza&ccedil;&atilde;o de intervalo.
+            </p>
+            <p>Por exemplo, se quiser saber onde o tr&acirc;nsito n&atilde;o se moveu uma determinada distancia durante uma hora, a toler&acirc;ncia de tempo seria 1 hora.
+            </p>
+            <p>Utilize o par&acirc;metro  <b>Definir intervalo de pesquisa espacial</b> para especificar a dist&acirc;ncia.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Selecionar uma distância pela qual dividir trilhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>A unidade de toler&acirc;ncia do tempo.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Pode calcular o seguinte em campos num&eacute;ricos: 
+                <ul>
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou cadeias de caracteres. A contagem de [null, 0, 2] &eacute; 2.
+                    </li>
+                    <li>Soma&mdash;A soma dos valores num&eacute;ricos num campo. A soma de [null, null, 3] &eacute; 3.
+                    </li>
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
+                    </li>
+                    <li>M&iacute;n&mdash;o valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
+                    </li>
+                    <li>M&aacute;x&mdash;o valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
+                    </li>
+                    <li>Intervalo&mdash;o intervalo de um campo num&eacute;rico. Este &eacute; calculado subtraindo os valores m&iacute;nimos ao valor m&aacute;ximo. O intervalo de [0, null, 1] &eacute; 1. O intervalo de [null, 4] &eacute; 0.
+                    </li>
+                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0.25.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; null. O desvio padr&atilde;o de [null, 1,0,1,1] &eacute; 0.5. 
+                    </li>
+                    <li>Primeiro &mdash; O primeiro valor de um campo especificado no trilho resumido. Se um trilho tem os seguintes valores ordenados por tempo para um campo: [1,5,10,20], o primeiro valor &eacute; 1.
+                    </li>
+                    <li>&Uacute;ltimo &mdash; O &uacute;ltimo valor de um campo especificado no trilho resumido. Se um trilho tem os seguintes valores ordenados por tempo para um campo: [1,5,10,20], o &uacute;ltimo valor &eacute; 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pode calcular o seguinte em campos de cadeias de caracteres:
+                <ul>
+                    <li>Contagem&mdash;O n&uacute;mero de strings n&atilde;o-nulas.
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                    <li>Primeiro &mdash; O primeiro valor de um campo especificado no trilho resumido. Se um trilho tem os seguintes valores ordenados por tempo para um campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], o primeiro valor &eacute; Toronto.
+                    </li>
+                    <li>&Uacute;ltimo &mdash; O &uacute;ltimo valor de um campo especificado no trilho resumido. Se um trilho tem os seguintes valores ordenados por tempo para um campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], o &uacute;ltimo valor &eacute; Boston.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Fornecer localizações de intervalo como</h2></div>
+        <hr/>
+        <div>
+            <p>Determina que elementos s&atilde;o devolvidos e o formato. Est&atilde;o dispon&iacute;veis quatro tipos: 
+                <ul>
+                    <li> <b>Centros M&eacute;dios</b> &mdash; Um ponto que representa o centroide de cada localiza&ccedil;&atilde;o de intervalo descoberto. Os atributos ser&atilde;o resumidos. Isto &eacute; por omiss&atilde;o.
+                         
+                    </li>
+                    <li> <b>Fechos Convexos</b> &mdash; Pol&iacute;gonos que representam o fecho convexo de cada grupo de intervalo. Os atributos ser&atilde;o resumidos.
+                         
+                    </li>
+                    <li> <b>Elementos de Intervalo</b> &mdash; Todos os elementos e atributos de pontos de entrada que se determinou pertencerem a um intervalo s&atilde;o devolvidos.
+                         
+                    </li>
+                    <li> <b>Todos os Elementos</b> &mdash; Todos os elementos e atributos de pontos de entrada s&atilde;o devolvidos.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analisar dados com intervalos de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se pretende detetar localiza&ccedil;&otilde;es de Intervalo utilizando intervalos de tempo que segmentam os seus elementos de entrada para an&aacute;lise. Se utiliza intervalos de tempo tem de definir o intervalo de tempo que pretende utilizar, e opcionalmente definir o momento de refer&ecirc;ncia. Se n&atilde;o definir um momento de refer&ecirc;ncia ser&aacute; utilizado 1 de janeiro de 1970. 
+            </p>
+            <p>Por exemplo, se definir que o limite de tempo &eacute; de 1 dia, come&ccedil;ando &agrave;s 9:00 AM de 1 de janeiro de 1990, ent&atilde;o cada trilho ser&aacute; truncado &agrave;s 9:00 AM de cada dia e analisado dentro desse segmento. Nenhum intervalo  antes das 09:00 e terminar&aacute; depois. 
+            </p>
+            <p>Utilizar intervalos de tempo &eacute; uma forma r&aacute;pida de acelerar o tempo de c&aacute;lculo, visto que isso cria rapidamente trilhos mais pequenos para an&aacute;lise. Se a divis&atilde;o por um intervalo de tempo recorrente faz sentido para a sua an&aacute;lise, isso &eacute; recomendado para o processamento de big data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> O nome da camada que ser&aacute; criada. Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o guardados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados na partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao escrever para   ArcGIS Data Store  (armazenamento relacional ou espaciotemporal de dados big data) utilizando a caixa suspensa  <b>Guardar resultado em</b> pode especificar o nome de uma pasta em <b>O Meu Conte&uacute;do</b>, onde ser&aacute; armazenado o resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

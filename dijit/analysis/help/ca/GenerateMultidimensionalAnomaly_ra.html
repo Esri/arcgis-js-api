@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Genera l'anomalia multidimensional</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Genera l'anomalia multidimensional"></h2>
+        <hr/>
+    <p>Per generar un dataset r&agrave;ster multidimensional, combina variables de r&agrave;ster multidimensional existents en una dimensi&oacute;.
+    </p>
+    <p>Una anomalia &eacute;s la desviaci&oacute; d'una observaci&oacute; del seu valor de mitjana, mediana o est&agrave;ndard.
+    </p>
+    <p>Aquesta eina calcula les anomalies al llarg del temps per a una o diverses variables d'un r&agrave;ster multidimensional. Si teniu una variable que no &eacute;s de temps a m&eacute;s de la dimensi&oacute; de temps, l'anomalia es calcular&agrave; a cada per&iacute;ode de la dimensi&oacute; addicional.
+    </p>
+    <p>Per exemple, teniu dades de temperatura dels oceans mensuals, que s'han recopilat a cada metre de profunditat fins a 100 metres, i voleu calcular les anomalies de temperatura com a desviacions de la mitjana anual. Aquesta eina determinar&agrave; les anomalies de temperatura en funci&oacute; d'una mitjana anual si definiu  <b>Anualment</b> com l' <b>interval temporal per calcular la mitjana</b>, i retornar&agrave; valors d'anomalies per a cadascuna de les 100 profunditats.
+    </p>
+    <p>Aquesta eina nom&eacute;s admet datasets r&agrave;ster multidimensionals que tenen una dimensi&oacute; de temps.
+    </p>
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, s'analitzaran les variables de la capa que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran les variables de tota la capa, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Trieu la capa d'imatges multidimensionals per generar l'anomalia</h2></div>
+        <hr/>
+        <div>
+            <p>Capa d'imatges d'entrada d'un dataset r&agrave;ster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trieu les variables per a les quals es generaran anomalies</h2></div>
+        <hr/>
+        <div>
+            <p>Variable o variables de les quals es calcularan les anomalies. Si no s'ha especificat cap variable, s'analitzaran totes les variables amb una dimensi&oacute; de temps.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Trieu el mètode per generar l'anomalia</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el m&egrave;tode que s'utilitzar&agrave; per calcular l'anomalia. 
+                <ul>
+                    <li> <b>Difer&egrave;ncia de la mitjana</b>: es calcular&agrave; la difer&egrave;ncia entre el valor d'un p&iacute;xel i la mitjana del valor del p&iacute;xel als sectors definits per l'interval. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Percentatge de difer&egrave;ncia de la mitjana</b>: es calcular&agrave; el percentatge de difer&egrave;ncia entre el valor d'un p&iacute;xel i la mitjana del valor del p&iacute;xel als sectors definits per l'interval.
+                    </li>
+                    <li> <b>Percentatge de la mitjana</b>: es calcular&agrave; el percentatge de la mitjana.
+                    </li>
+                    <li> <b>Puntuaci&oacute; z</b>: es calcular&agrave; la puntuaci&oacute; z de cada p&iacute;xel. Una puntuaci&oacute; z de 0 indica que el valor del p&iacute;xel &eacute;s id&egrave;ntic a la mitjana. Una puntuaci&oacute; z d'1 indica que el valor del p&iacute;xel &eacute;s 1 desviaci&oacute; est&agrave;ndard de la mitjana. Una puntuaci&oacute; z de 2 indica que el valor del p&iacute;xel &eacute;s 2 desviacions est&agrave;ndard de la mitjana.
+                    </li>
+                    <li> <b>Difer&egrave;ncia de la mediana</b>: es calcular&agrave; la difer&egrave;ncia entre el valor d'un p&iacute;xel i la mediana matem&agrave;tica dels valors del p&iacute;xel als sectors definits per l'interval.
+                    </li>
+                    <li> <b>Percentatge de difer&egrave;ncia de la mediana</b>: es calcular&agrave; el percentatge de difer&egrave;ncia entre el valor d'un p&iacute;xel i la mediana matem&agrave;tica dels valors del p&iacute;xel als sectors definits per l'interval.
+                    </li>
+                    <li> <b>Percentatge de la mediana</b>: es calcular&agrave; el percentatge de la mediana matem&agrave;tica.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>A continuaci&oacute; s'indiquen els m&egrave;todes matem&agrave;tics per calcular els valors d'anomalies. Les anomalies es poden calcular amb els valors de la mitjana o la mediana com a definici&oacute; del valor mitj&agrave;. Si la distribuci&oacute; de dades est&agrave; desviada, pot ser que la mitjana es vegi enormement afectada pels valors at&iacute;pics. Per tant, &eacute;s possible que el valor de la mediana o el m&egrave;tode de la puntuaci&oacute; z siguin m&eacute;s adequats per a aquest tipus de dades.
+            </p>
+            <p>
+                <ul>
+                    <li>Difer&egrave;ncia de la mitjana = x - &micro;
+
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                                
+
+                            </li>
+                            <li>&micro; = mitjana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Percentatge de difer&egrave;ncia de la mitjana = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                                
+
+                            </li>
+                            <li>&micro; = mitjana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                                
+
+                            </li>
+                            <li>|x - &micro;| = valor absolut de la difer&egrave;ncia entre el valor i la mitjana
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Percentatge de la mitjana = x / &micro;
+
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                                
+
+                            </li>
+                            <li>&micro; = mitjana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Difer&egrave;ncia de la mediana = x - &szlig;
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                            </li>
+                            <li>&szlig; = mediana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Percentatge de difer&egrave;ncia de la mediana = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                            </li>
+                            <li>&szlig; = mediana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                            </li>
+                            <li>|x - &szlig;| = valor absolut de la difer&egrave;ncia entre el valor i la mediana
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Percentatge de la mediana = x / &szlig;
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                            </li>
+                            <li>&szlig; = mediana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Puntuaci&oacute; z = (x - &micro;) / S
+                        <ul>
+                            <li>x = valor del p&iacute;xel en un sector
+                            </li>
+                            <li>&micro; = mitjana dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                            </li>
+                            <li>S = desviaci&oacute; est&agrave;ndard dels valors del p&iacute;xel de tot l'interval de temps proporcionat
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Trieu l'interval temporal per calcular la mitjana</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica l'interval temporal que s'utilitzar&agrave; per calcular la mitjana. 
+                <ul>
+                    <li> <b>Tots</b>: calcula la mitjana en tots els sectors de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Cada any</b>: calcula la mitjana anual de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrent cada mes</b>: calcula la mitjana mensual de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrent cada setmana</b>: calcula la mitjana setmanal de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrent cada dia</b>: calcula la mitjana di&agrave;ria de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Cada hora</b>: calcula la mitjana de cada hora de cada p&iacute;xel.
+                    </li>
+                    <li> <b>R&agrave;ster extern</b>: es fa refer&egrave;ncia un dataset r&agrave;ster existent que cont&eacute; el valor de la mitjana o la mediana de cada p&iacute;xel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Trieu la capa d'imatges de la mitjana com a referència</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el dataset r&agrave;ster de refer&egrave;ncia que cont&eacute; una mitjana calculada anteriorment per a cada p&iacute;xel. Les anomalies es calcularan en comparaci&oacute; amb aquesta mitjana.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora els valors que falten al càlcul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi. 
+                <ul>
+                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li>Desactivada: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per al p&iacute;xel a la dimensi&oacute; proporcionada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Maantieteellisesti painotettu regressio</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeographicallyWeightedRegression-ty&ouml;nkulkukaavio"></h2>
+        <hr/>
+    <p>Toteuttaa maantieteellisesti painotetun regression (GWR), joka on spatiaalisesti vaihtelevien suhteiden mallinnuksessa k&auml;ytetyn lineaarisen regression paikallinen muoto.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse analysoitava karttataso</h2></div>
+        <hr/>
+        <div>
+            <p>Karttataso, joka sis&auml;lt&auml;&auml; pistekohteet, jotka sis&auml;lt&auml;v&auml;t riippuvat ja selitt&auml;v&auml;t muuttujat.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Valitse analyysikarttataso</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n. Voit valinnaisesti k&auml;ytt&auml;&auml; suodatinta l&auml;ht&ouml;karttatasossa tai valintaa karttaan lis&auml;tyiss&auml; is&auml;nn&ouml;idyiss&auml; karttatasoissa. Suodattimia ja valintoja k&auml;ytet&auml;&auml;n vain analyyseissa. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Valitse mallinnettava kenttä</h2></div>
+        <hr/>
+        <div>
+            <p>Numerokentt&auml;, joka sis&auml;lt&auml;&auml; mallinettavat havaitut arvot ja mallinnettavan arvon tyypin.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Valitse selittävät kentät</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;hint&auml;&auml;n yksi selitt&auml;vi&auml; muuttujia (kentti&auml;) edustava kentt&auml;, josta on apua arvon ennustamisessa. Vain numerokent&auml;t ovat n&auml;kyviss&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Valitse, miten naapuruus määritetään</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, muodostuuko k&auml;ytetty naapuruus kiinte&auml;n et&auml;isyyden perusteella, vai saako se vaihdella spatiaalisesti kohteiden tiheyden perusteella.
+                <ul>
+                    <li> <b>Naapureiden m&auml;&auml;r&auml;</b> &ndash; naapuruston koko on funktio, joka perustuu kunkin kohteen laskentaan sis&auml;ltyvien naapureiden m&auml;&auml;ritettyyn m&auml;&auml;r&auml;&auml;n. Jos kohteita on tihe&auml;ss&auml;, naapuruston spatiaalinen laajuus on pieni. Jos kohteita on harvassa, naapuruston spatiaalinen laajuus on suuri. Kun valitset t&auml;m&auml;n vaihtoehdon, valitse my&ouml;s sis&auml;llytett&auml;vien naapureiden m&auml;&auml;r&auml;. Luvun on oltava kokonaisluku 2&ndash;5 000.
+                    </li>
+                    <li> <b>Et&auml;isyyskaista</b> &ndash; naapuruston koko on vakio tai kiinte&auml; et&auml;isyys kullekin kohteelle. Kun valitset t&auml;m&auml;n vaihtoehdon, valitse my&ouml;s et&auml;isyyskaista, joka edustaa naapuruston spatiaalista laajuutta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Valitse, miten vierekkäisiä kohteita painotetaan</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; ytimen tyypin, jota k&auml;ytet&auml;&auml;n mallin spatiaalisen painotuksen m&auml;&auml;ritt&auml;miseen. Ydin m&auml;&auml;ritt&auml;&auml;, mik&auml; on kunkin kohteen suhde muihin kohteisiin sen naapurustossa.
+                <ul>
+                    <li> <b>Bisquare</b> &ndash; painoarvo 0 m&auml;&auml;ritet&auml;&auml;n kaikille kohteille, jotka ovat m&auml;&auml;ritetyn naapuruston ulkopuolella. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Gaussin jakauma</b> &ndash; kaikille kohteille m&auml;&auml;ritet&auml;&auml;n painoarvo, mutta painoarvot pienenev&auml;t eksponentiaalisesti, mit&auml; kauempana ne ovat kohteena olevasta kohteesta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Luotavan karttatason nimi. Jos kirjoitat ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n, tulokset tallennetaan  <b>Oma sis&auml;lt&ouml;</b> -osioon ja lis&auml;t&auml;&auml;n karttaan. Jos kirjoitat Big Data -tiedostojakoon, tulokset tallennetaan Big Data -tiedostojakoon ja lis&auml;t&auml;&auml;n sen manifest-tiedostoon. Tuloksia  ei lis&auml;t&auml; karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Kun kirjoitat kohteeseen  ArcGIS Data Store  (relaatiotietokantaan perustuvaan tai spatiotemporaaliseen Big Data -s&auml;il&ouml;&ouml;n) k&auml;ytt&auml;m&auml;ll&auml; avattavaa  <b>Tallenna tulos kohteeseen</b> -luetteloa, voit m&auml;&auml;ritt&auml;&auml; kansion nimen <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

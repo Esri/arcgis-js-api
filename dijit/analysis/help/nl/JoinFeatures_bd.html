@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Objecten koppelen</h2><p/>
-        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Objecten koppelen"></h2>
+        <h2>Objecten samenvoegen</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Objecten samenvoegen"></h2>
         <hr/>
     <p>De tool Objecten samenvoegen werkt met twee lagen. Objecten samenvoegen voegt attributen samen op basis van ruimtelijke, tijdelijke en attribuutrelaties of een combinatie van de drie. De tool bepaalt alle invoerobjecten die voldoen aan alle gestelde samenvoegvoorwaarden en voegt de tweede invoerlaag samen met de eerste. U kunt eventueel alle objecten samenvoegen met de overeenkomende objecten of de overeenkomende objecten samenvatten.
     </p>
@@ -56,9 +56,9 @@
         <div>
             <p>De laag waarvan de  attributen van de samenvoegingslaag aan de tabel ervan zullen worden toegevoegd.
             </p>
-            <p>Analyse d.m.v. de  <b>In de buurt</b> ruimtelijke relatie vereist een geprojecteerd co&ouml;rdinaatsysteem. U kunt het <b>Processing co&ouml;rdinaatsysteem</b> instellen bij <b>Analysis Environments</b>. Als uw huidige co&ouml;rdinaatsysteem niet op een geprojecteerd co&ouml;rdinaatsysteem is ingesteld, zal u gevraagd worden het in te stellen wanneer u <b>Analyse uitvoeren</b> kiest.
+            <p>Analyse d.m.v. de  <b>In de buurt</b> ruimtelijke relatie vereist een geprojecteerd co&ouml;rdinaatsysteem. U kunt het Processing co&ouml;rdinaatsysteem instellen bij Analysis Environments. Als uw huidige co&ouml;rdinaatsysteem niet op een geprojecteerd co&ouml;rdinaatsysteem is ingesteld, zal u gevraagd worden het in te stellen wanneer u een analyse uitvoert .
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag. U kunt optioneel een filter toepassen op uw invoerlaag of een selectie toepassen op gehoste lagen die aan uw kaart zijn toegevoegd. Filters en selecties worden alleen toegepast voor analyse. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>De koppelingslaag met de attributen die zullen worden toegevoegd aan de doellaag.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag.
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag. U kunt optioneel een filter toepassen op uw invoerlaag of een selectie toepassen op gehoste lagen die aan uw kaart zijn toegevoegd. Filters en selecties worden alleen toegepast voor analyse. 
             </p>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Stel bijvoorbeeld dat u supermarkten wilt zoeken binnen 2 kilometer van een boerenmarkt. In dit geval heeft de doellaag een enkel object, namelijk de boerenmarkt, en de samenvoegende laag zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool Objecten koppelen vindt u vijf supermarkten die aan de criteria voldoen. Als u een koppelingsbewerking kiest voor  <b>E&eacute;n-aan-veel koppelen</b> krijgen we vijf objecten in ons resultaat, elke rij vertegenwoordigt de boerenmarkt en een supermarkt. Als u een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiest, krijgt u &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (2) en andere statistieken, zoals de som van de jaarlijkse verkoop.
+            <p>Stel bijvoorbeeld dat u supermarkten wilt zoeken binnen 2 kilometer van een boerenmarkt. In dit geval heeft de doellaag een enkel object, namelijk de boerenmarkt, en de samenvoegende laag zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool Objecten samenvoegen vindt u vijf supermarkten die aan de criteria voldoen. Als u een koppelingsbewerking kiest voor  <b>E&eacute;n-aan-veel koppelen</b> krijgen we vijf objecten in ons resultaat, elke rij vertegenwoordigt de boerenmarkt en een supermarkt. Als u een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiest, krijgt u &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (2) en andere statistieken, zoals de som van de jaarlijkse verkoop.
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Gelijk aan</b>&mdash;De objecten worden gekoppeld als ze dezelfde geometrie hebben.
                     </li>
-                    <li> <b>Near</b>&mdash;De objecten worden gekoppeld als ze zich binnen een bepaalde afstand tot elkaar bevinden. De kaartlaag moet in een geprojecteerd co&ouml;rdinatensysteem zijn of de verwerkende ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinatenstelsel met behulp van de <b>Analysis Environments</b> als een ruimtelijke <b>Near</b> relatie wordt gebruikt.
+                    <li> <b>Nabij plenair</b>&mdash;De objecten worden gekoppeld als ze zich binnen een bepaalde afstand tot elkaar bevinden. De kaartlaag moet in een geprojecteerd co&ouml;rdinatensysteem zijn of de verwerkende ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinatenstelsel met behulp van de <b>Analysis Environments</b> als een ruimtelijke <b>Near</b> relatie wordt gebruikt.
+                    </li>
+                    <li> <b>Nabij geodesisch</b>&mdash;De objecten worden gekoppeld als ze zich binnen een bepaalde afstand tot elkaar bevinden. De afstand wordt gemeten met behulp van een plenaire afstand.
                     </li>
                     <li> <b>Bevat</b>&mdash;Deze objecten worden gekoppeld als de doellaag is opgenomen in de samengevoegde objecten.
                     </li>
@@ -139,7 +141,7 @@
         <div><h2></h2></div>
         <hr/>
         <div>
-            <p> Bepaalt de radius toegepast op een ruimtelijk nauwe relatie.
+            <p> Bepaalt de radius toegepast op een ruimtelijke nauwe relatie.
             </p>
             <p>Als u bijvoorbeeld een dataset voor een kerncentrale hebt en een dataset voor woningen, kunt u een afstand van 1 kilometer nearSpatial afstand instellen om huizen binnen 1 kilometer van de kerncentrale te vinden.
             </p> 
@@ -177,9 +179,9 @@
                     </li>
                     <li> <b>In de buurt van</b>&mdash;De objecten worden gekoppeld als ze in de buurt van elkaar zijn, bepaald door een gespecificeerde tijd.
                     </li>
-                    <li> <b>In de omgeving voor</b>&mdash;De objecten worden gekoppeld als het eerste object voor het tweede object is en binnen de opgegeven tijd valt.
+                    <li> <b>Nabijheid voor</b>&mdash;De objecten worden gekoppeld als het eerste object voor het tweede object is en binnen de opgegeven tijd valt.
                     </li>
-                    <li> <b>In de omgeving na</b>&mdash;De objecten worden gekoppeld als het eerste object na het tweede object is en binnen de opgegeven tijd valt.
+                    <li> <b>Nabijheid na</b>&mdash;De objecten worden gekoppeld als het eerste object na het tweede object is en binnen de opgegeven tijd valt.
                     </li>
                 </ul>
                 
@@ -191,7 +193,7 @@
         <hr/>
         <div>
             
-            <p>Bepaalt de tijdelijke radius toegepast op een tijdelijke nauwe relatie. Een tijdelijke in de buurt-relatie  <b>In de buurt</b>, <b>In de buurt voor</b> en <b>In de buurt na</b>.
+            <p>Bepaalt de temporele radius toegepast op een temporele nabijheidsrelatie. Een temporele nabijheidsrelatie  <b>Nabijheid</b>, <b>Nabijheid voor</b> en <b>Nabijheid na</b>.
             </p>
             <p>Als u bijvoorbeeld een laag van incidenten met de scheepvaart en een laag van GPS-sporen voor een orkaan, kunt u zoeken naar incidenten met de scheepvaart binnen een bepaalde afstand van orkaansporen in zowel ruimte (1 kilometer) als tijd (5 uur). Dit zou resulteren in bootongevallen gekoppeld aan orkanen die in ruimte en tijd dicht bij elkaar hebben plaatsgevonden.
             </p>
@@ -203,7 +205,7 @@
         <div>
             <p>Koppelt waarden in een gebied van de ene laag met waarden in een veld in een andere laag. 
             </p>
-            <p>Als u bijvoorbeeld een landbrede geografische laag hebt van woonadressen (inclusief een  <i>ZIP</i> veld) en een tabeldataset van gezondsdemografie per postcode (een veld genaamd <i>HEALTHZIP</i>), kunt een een gezondheidsdataset koppelen aan woondata door het <i>ZIP</i> veld te koppelen aan het <i>HEALTHZIP</i> veld. Dit zou resulteren in een laag van woningen met de bijbehorende gezondheidsgegevens.
+            <p>Als u bijvoorbeeld een landsdekkende geografische laag hebt van woonadressen (inclusief een  <i>ZIP</i> veld) en een tabeldataset van gezondsdemografie per postcode (een veld genaamd <i>HEALTHZIP</i>), kunt een een gezondheidsdataset koppelen aan woondata door het <i>ZIP</i> veld te koppelen aan het <i>HEALTHZIP</i> veld. Dit zou resulteren in een laag van woningen met de bijbehorende gezondheidsgegevens.
             </p>
         </div>
     </div>
@@ -215,7 +217,7 @@
             </p>
             <p>U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen: 
                 <ul>
-                    <li>Count&mdash;Berekent het aantal niet-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
+                    <li>Count&mdash;Berekent het aantal non-nulwaarden. Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
                     <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
@@ -272,7 +274,7 @@
                 </ul>
                 
             </p>
-            <p>U moet geen gebruik maken van een relationele data-store als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-store om grote hoeveelheden gegevens te verwerken.
+            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken.
             </p>
         </div>
     </div>
@@ -280,7 +282,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store,  schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
             <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
             </p>

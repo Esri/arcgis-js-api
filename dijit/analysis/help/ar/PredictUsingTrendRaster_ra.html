@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>التنبؤ باستخدام بيانات نقطية للاتجاه</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="التنبؤ باستخدام البيانات النقطية للاتجاه"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p>إذا تم التأشير على  <b>استخدام نطاق الخريطة الحالي</b>، فسيتم تحليل متغيرات الطبقة المرئية داخل نطاق الخريطة الحالي. إذا لم يتم التأشير عليها، فسيتم تحليل متغيرات الطبقة الكاملة، حتى إذا كانت خارج نطاق الخريطة الحالي.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>اختر طبقة صور متعددة الأبعاد للتنبؤ من خلالها</h2></div>
+        <hr/>
+        <div>
+            <p>البيانات النقطية للاتجاه متعددة الأبعاد للإدخال من أداة  إنشاء البيانات النقطية للاتجاه.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>اختيار المتغير (المتغيرات) التي سيتم التنبؤ بها</h2></div>
+        <hr/>
+        <div>
+            <p>المتغير أو المتغيرات التي سيتم التنبؤ بها في التحليل. إذا لم يتم تحديد متغيرات معينة، فستُستخدم جميع المتغيرات.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>اختيار الطريقة المستخدمة لتوفير قيم أبعاد التنبؤ</h2></div>
+        <hr/>
+        <div>
+            <p>لتحديد الطريقة المستخدمة لتوفير قيم أبعاد التنبؤ.
+                <ul>
+                    <li> <b>حسب القيمة</b>&mdash;سيتم حساب التنبؤ لقيمة بُعد واحدة أو قائمة قيم الأبعاد المحددة في الخطوة التالية. هذا هو الوضع الافتراضي. على سبيل المثال، تريد التنبؤ بهطول الأمطار السنوي للأعوام 2050 و2100 و2150.
+                    </li>
+                    <li> <b>حسب الفاصل الزمني</b>&mdash;سيتم حساب التنبؤ لفاصل زمني للبعد المحدد من خلال قيمة بداية ونهاية. على سبيل المثال، تريد التنبؤ بهطول الأمطار السنوي للأعوام بين عامي 2050 و2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>حدد قيمة (قيم) البعد للتنبؤ</h2></div>
+        <hr/>
+        <div>
+            <p>قيمة أو قيم البعد المراد استخدامها في التنبؤ.
+            </p>
+            <p>يجب أن يتطابق تنسيق الوقت والعمق والقيم المرتفعة مع تنسيق قيم الأبعاد المستخدمة لإنشاء البيانات النقطية للاتجاه. إذا تم إنشاء البيانات النقطية للاتجاه لبُعد StdTime، فيجب أن يكون التنسيق YYYY-MM-DDTHH: MM: SS، على سبيل المثال 2050-01-01T00: 00: 00. يتم فصل القيم المتعددة بفاصلة منقوطة.
+            </p>
+            <p>يلزم وجود هذه المعلمة عند تحديد طريقة  <b>حسب القيمة</b> لتحديد قيم البعد المستخدمة في التنبؤ.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>تحديد الفاصل الزمني للبعد المستخدم في التنبؤ</h2></div>
+        <hr/>
+        <div>
+            <p>حدد تاريخ البدء والانتهاء أو الارتفاع أو العمق للفاصل الزمني المراد استخدامه في التنبؤ.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>حدد عدد الخطوات بين قيم البداية والنهاية</h2></div>
+        <hr/>
+        <div>
+            <p>عدد الخطوات بين قيمتي البعد المراد تضمينها في التنبؤ. القيمة الافتراضية هي 1.
+            </p>
+            <p>على سبيل المثال، للتنبؤ بقيم درجة الحرارة كل خمس سنوات، استخدم قيمة 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>اختر الوحدة التي ستُستخدم للقيمة الزمنية للفاصل الزمني</h2></div>
+        <hr/>
+        <div>
+            <p>حدد الوحدة التي ستُستخدم في حساب قيمة الفاصل الزمني. ينطبق هذا فقط عندما يكون بُعد التحليل بُعدًا زمنيًا.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>اسم طبقة النتيجة</h2></div>
+        <hr/>
+        <div>
+            <p>سيتم إنشاء اسم الطبقة في  <b>المحتوى</b> وسيتم إضافته إلى الخريطة. يستند الاسم الافتراضي إلى اسم الأداة واسم الطبقة المدخلة. إذا وُجدت الطبقة بالفعل، سيطلب منك كتابة اسم آخر.
+            </p>
+            <p>يمكنك تحديد اسم مجلد في  <b>محتواي</b> حيث سيتم حفظ النتيجة باستخدام المربع المنسدل <b>حفظ النتيجة في</b>
+            </p>
+        </div>
+    </div>
+</div>
+</html>

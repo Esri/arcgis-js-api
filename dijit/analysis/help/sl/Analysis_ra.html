@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika. Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;nje  Portal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Uporabi bližino</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b>, <b>Upravljaj podatke</b> in <b>Globoko učenje</b>.
+        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika. Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;njePortal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Uporabi bližino</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b>, <b>Upravljaj podatke</b>, <b>Globoko učenje</b> in <b>Večdimenzionalna analiza</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -344,9 +344,11 @@
                     
 
                 </li>
-                <li> <b>Pretvori raster v geoobjekt</b> vektorizira rasterske podatke.
+                <li> <b>Pretvori raster v geoobjekt</b> vektorizira rastrske podatke.
                     
 
+                </li>
+                <li> <b>Vzorec</b> ekstrahira podatke na določenih lokacijah iz rastra, ali nabora rastrov.
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
-    <div id="DeepLearningCategory" class="regularsize">
-        <h2>Komplet orodja Globoko učenje</h2>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vzorec</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Vzorec">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ustvari tabelo ali točkovni geoobjektni razred z vrednostmi podatkov na določenih lokacijah, ekstrahiranih iz rastra ali nabora rastrov.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Globoko učenje</h2>
         <hr/>
-        <p>Ta orodja se uporabljajo za zaznavanje določenih geoobjektov v sliki ali za klasificiranje pikslov v rastrskem sklopu podatkov. Globoko učenje je tip metode strojnega učenja umetne inteligence, ki zaznava geoobjekte v slikovju s pomočjo več slojev v nevronskih mrežah, kjer je vsak sloj sposoben ekstrahirati enega ali več edinstvenih geoobjektov na sliki. Ta orodja porabljajo modele, ki so bili naučeni zaznavanja določenih geoobjektov v ogrodju globokega učenja drugega proizvajalca, kot so TensorFlow, CNTK in Keras, ter izhodnih geoobjektov ali kart razreda.
+        <p>Ta orodja 	se uporabljajo za zaznavanje ali klasifikacijo določenih geoobjektov v sliki ali za klasificiranje pikslov v rastrskem sklopu podatkov. Globoko učenje je tip metode strojnega učenja umetne inteligence, ki zaznava geoobjekte v slikovju s pomočjo več slojev v nevronskih mrežah, kjer je vsak sloj sposoben ekstrahirati enega ali več edinstvenih geoobjektov na sliki. Ta orodja porabljajo modele, ki so bili naučeni zaznavanja določenih geoobjektov v ogrodju globokega učenja drugega proizvajalca, kot so TensorFlow, CNTK in Keras, ter izhodnih geoobjektov ali kart razreda.
             <ul>
                 <li> <b>Klasificiraj piksle z globokim učenjem</b> ustvarja klasificiran raster s pomočjo naučenega modela globokega učenja.
                 </li>
                 <li> <b>Zaznaj objekte z globokim učenjem</b> ustvarja geoobjektni razred, ki vsebuje objekte, ki jih najde v vhodnem rastru s pomočjo naučenega modela globokega učenja.
                 </li>
+                <li> <b>Klasificiraj objekte z globokim učenjem</b> ustvari geoobjektni razred ali tabelo pri kateri je vsak vhodni objekt v vhodnem rastru dodeljen z oznako razreda, ki uporablja model globokega učenja.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo klasificiranega rastra in vsak veljavni slikovni piksel ima dodeljeno oznako razreda.
+            <p>To orodje izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo klasificiranega rastra in vsak veljavni slikovni piksel ima dodeljeno oznako razreda.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo geoobjektnega razreda, ki vsebuje objekte, ki jih najde. Geoobjekti so lahko prostorski obsegi ali poligoni okoli najdenih objektov ali točke na sredi&scaron;čih objektov.
+            <p>To orodje izvaja naučeni model globokega učenja na vhodnem rastru za izdelavo geoobjektnega razreda, ki vsebuje objekte, ki jih najde. Geoobjekti so lahko prostorski obsegi ali poligoni okoli najdenih objektov ali točke na sredi&scaron;čih objektov.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasificiraj objekte z globokim učenjem</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasificiraj objekte z globokim učenjem">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izvaja naučeni model globokega učenja na vhodnem rastru in izbirnem geoobjektnem razred, da izdelava geoobjektni razred ali tabelo, v kateri ima vsak vhodni objekt dodeljeno oznako razreda.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Večdimenzionalna analiza</h2>
+        <hr/>
+        <p>Orodja v kompletu orodij Večdimenzionalne analize vam omogočajo, da izvedete analizo znanstvenih podatkov po več spremenljivkah in dimenzijah.
+        </p>
+        <p>Večdimenzionalni podatki predstavljajo zajete podatke ob več različnih časih, globinah in vi&scaron;inah. Tak&scaron;ne vrste podatkov se splo&scaron;no uporabljajo v vedah o ozračju, oceanografiji in geologiji. S tem kompletom orodja lahko analizirate podatke večdimenzionalnega rasterja v več različnih formatih, vključno z netCDF, HDF, GRIB, večdimenzionalnim mozaičnim sklopom podatkov ter rastrskim formatom v oblaku Esri (CRF).
+        </p>
+        <p>Naslednja tabela navaja orodja za večdimenzionalno analizo ter kratek opis posameznega orodja.
+            <ul>
+                <li> <b>Agregacija večdimenzionalnega rasterja</b> ustvari večdimenzionalni rastrski sklop podatkov s pomočjo agregacije obstoječih večdimenzionalni rastrskih spremenljivk vzdolž dimenzije.
+                </li>
+                <li> <b>Ustvari večdimenzionalno anomalijo</b> izračuna anomalijo za vsak izsek v večdimenzionalnem rastru, da ustvari večdimenzionalni raster.
+                </li>
+                <li> <b>Ustvari raster trenda</b> oceni trend za vsak piksel vzdolž dimenzije za eno ali več spremenljivk v večdimenzionalnem rastru.
+                </li>
+                <li> <b>Napoved s pomočjo rastra trenda</b> izračuna napovedani večdimenzionalni raster s pomočjo izhodnega rastra trenda iz orodja <b>Ustvari raster trenda</b>.
+                </li>
+                <li> <b>Najdi statistiko argumenta</b> ekstrahira vrednost dimenzije ali indeks pasu, pri katerem je bila za vsak piksel pridobljena dana statistika v večdimenzionalnem ali večpasovnem rastru.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregacija večdimenzionalnega rastra</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregacija večdimenzionalnega rasterja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje ustvari večdimenzionalni rastrski sklop podatkov z agregacijo obstoječih večdimenzionalnih spremenljivk rastra vzdolž dimenzije.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Najdi statistiko argumenta</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Najdi statistiko argumenta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje ekstrahira vrednost dimenzije ali indeks pasu, pri katerem je bila za vsak piksel pridobljena dana statistika v večdimenzionalnem ali večpasovnem rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ustvari večdimenzionalno anomalijo</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ustvari večdimenzionalno anomalijo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna anomalijo za vsak izsek v večdimenzionalnem rastru, da ustvari večdimenzionalni raster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ustvari raster trenda</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Ustvari raster trenda">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje oceni trend za vsak piksel vzdolž dimenzije za eno ali več spremenljivk v večdimenzionalnem rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Napoved s pomočjo rastra trenda</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Napoved s pomočjo rastra trenda">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna napovedani večdimenzionalni raster s pomočjo izhodnega rastra trenda iz orodja  <b>Ustvari raster trenda</b>.
             </p>
             <br/>
         </div>

@@ -44,7 +44,7 @@
         <h2>Calcola Distanza</h2><p/>
         <h2><img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" alt="Calcola distanza"></h2>
         <hr/>
-    <p>Questo strumento calcola la distanza euclidea, la direzione e l&rsquo;assegnazione da un'origine singola o da un gruppo di origini.
+    <p>Questo strumento calcola la distanza euclidea, la direzione e l'assegnazione da un'origine singola o da un gruppo di origini.
     </p>
     <p>Le applicazioni di esempio includono risposte a domande come le seguenti:
 
@@ -137,6 +137,47 @@
             <p>Un campo del layer di origine di input che contiene i valori che definiscono ciascuna origine. Pu&ograve; essere un numero intero o un campo stringa del dataset di origine.
             </p>
             <p>Il valore predefinito &egrave;  <i>Value</i>. Se si utilizza un feature service e non &egrave; disponibile nessun campo <i>Value</i>, verr&agrave; utilizzato il primo numero intero o campo stringa disponibile. Se non esiste alcun campo valido, viene utilizzato il campo ObjectID (ad esempio, OID o FID, a seconda del tipo di input di feature).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Scegliere layer raster o feature layer per rappresentare le barriere</h2></div>
+        <hr/>
+        <div>
+            <p>Il dataset che definisce le barriere. 
+            </p>
+            <p>Per un Image Service, il tipo di input pu&ograve; essere un numero intero o a virgola mobile. Qualunque cella che presenti un valore (incluso lo zero) sar&agrave; trattata come una barriera; qualunque cella NoData sar&agrave; trattata come una barriera.
+            </p>
+            <p>Per un feature service, l'input pu&ograve; essere puntuale, lineare o poligonale.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metodo Distanza</h2></div>
+        <hr/>
+        <div>
+            <p>Determina se calcolare la distanza con un metodo planare (terra piatta) o geodetico (ellissoide).
+            </p>
+            <ul>
+                <li> <b>Planare</b>: il calcolo verr&agrave; eseguito su un piano piatto proiettato utilizzando un sistema di coordinate cartesiane 2D. Questo &egrave; il metodo predefinito.
+                    
+
+                </li>
+                <li> <b>Geodetico</b>: le distanze vengono calcolate sull'ellissoide. Pertanto, indipendentemente dalla proiezione di input o output, i risultati non cambiano.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nome del layer di back direction dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b>. &Egrave; necessario fornire un nome che non &egrave; attualmente presente in <b>I miei contenuti</b>.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
             </p>
         </div>
     </div>

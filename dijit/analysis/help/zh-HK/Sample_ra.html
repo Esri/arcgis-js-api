@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>取樣</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="取樣"></h2>
+        <hr/>
+    <p>此工具可建立一個表格或點圖徵類別，為定義的位置顯示一個或一組點陣的儲存格值。位置由點陣儲存格、多邊形圖徵、折線圖徵或點集所定義。
+    </p>
+    <p>將從每個位置的所有輸入點陣中擷取像素值。將使用包含每個輸入點陣之像素值的欄位來建立表格或點圖徵類別。輸出表不會包含輸入點陣表中的其他屬性。
+    </p>
+    <p>可將任何點陣組合（例如單頻段、多頻段、多維或多變量）指定為輸入點陣。當輸入點陣為多維時，輸出表的結構會改變。將多頻段點陣指定為其中一個輸入點陣時，將使用該輸入中的所有頻段。若要處理輸入多頻段點陣中的頻段選擇，請先建立這些特定頻段所組成的新點陣資料集。使用輸入點陣清單中的結果。
+    </p>
+    <p>輸入位置可為點陣或點圖徵：
+        <ul>
+            <li>點陣 - 包含有效值（非 NoData）的像素可擷取所有輸入點陣中的像素值，且像素的中心是用於點位置。
+            </li>
+            <li>點 - 將在每個點位置上取樣值。
+            </li>
+            <li>折線或多邊形 - 將在多邊形或折線質心處取樣值。若是多維的輸入點陣，則將根據 <b>統計資料</b>類型匯聚值。
+            </li>
+        </ul>
+        
+    </p>
+    <p>輸入點陣是依其原始空間參考和解析度加以取樣。如果有多個具有不同空間參考的輸入點陣，則會將輸入位置投影到每個個別點陣的空間參考，以便從中擷取值。會將分析環境套用到輸入位置，但輸入點陣不支持分析環境。
+    </p>
+    <p>會將輸出表中的 &lt;null&gt; 值，給予從輸入點陣的 NoData 儲存格中擷取值的位置。
+    </p>
+    <p>要使用多點圖徵執行分析，請先將其轉換為單點圖徵，然後在此工具中使用它們。
+    </p>
+    <p>除非在 <b>輸出座標系統</b>環境中指定，否則輸出樣本表的 x,y 座標的空間參考，將與輸入位置點陣或點圖徵相同。若輸入位置資料的空間參考未知，則 x,y 座標的空間參考也是未知。
+    </p>
+    <p>除非在 <b>輸出座標系統</b>環境中指定，否則輸出圖徵類別的空間參考將與輸入位置點陣或點圖徵相同。
+    </p>
+    <p>只有當輸入是多維點陣時才支援 <b>平行處理因子</b>環境。
+    </p>
+    <p>如果勾選 <b>使用當前地圖範圍</b>，則會分析當前地圖範圍中的可見圖層變數或頻段。如果未勾選，將分析完整圖層的變數或頻段，即使它們超出目前的地圖範圍也是如此。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>選擇要取樣的影像圖層</h2></div>
+        <hr/>
+        <div>
+            <p>將根據輸入位置資料對其值進行取樣的單一影像圖層或影像圖層清單。
+            </p>
+            <p>要對多維影像圖層中的所有切片進行取樣，它必須是唯一的輸入點陣。
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>選擇位置圖層</h2></div>
+        <hr/>
+        <div>
+            <p>用來識別要取樣之位置的資料。
+            </p>
+            <p>輸入位置資料可為點陣，或是點、折線或多邊形圖徵類別。
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>指定唯一 ID 欄位</h2></div>
+        <hr/>
+        <div>
+            <p>對於輸入位置點陣或圖徵類別中的每個位置或圖徵，包含一個不同值的欄位。
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>指定位置資料的擷取資訊（選用）</h2></div>
+        <hr/>
+        <div>
+            <p>指定與位置儲存格或圖徵相關聯的時間、深度或其他擷取資料。
+            </p>
+            <p>每個維度有三個選項，可用來指定位置儲存格或圖徵所關聯的擷取資訊：
+
+                <ul>
+                    <li> <b>單一欄位或值</b> - 選擇此選項時，需要指定下列資訊：
+                        <ul>
+                            <li> <b>維度欄位或值</b> - 從位置資料選擇維度值的欄位，或輸入特定的維度值。
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>具有相對值的單一欄位或值</b> - 如果選擇此選項，則需要一起指定下列資訊，以定義將在其中計算變數統計資料的範圍：
+                        <ul>
+                            <li> <b>維度欄位或值</b> - 從位置資料選擇維度值的欄位。
+                            </li>
+                            <li> <b>相對值前方</b> - 指定要從 <b>維度欄位或值</b>中減去的非負數字，從而定義維度值範圍的開頭。若維度為時間，則此值表示天數。
+                            </li>
+                            <li> <b>相對值後方</b> - 指定要在 <b>維度欄位或值</b>中加入的非負數字，從而定義維度值範圍的結尾。若維度為時間，則此值表示天數。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>開始和結束欄位或值</b> - 如果選擇此選項，則需要一起指定下列資訊，以定義將在其中計算變數統計資料的範圍：
+                        <ul>
+                            <li> <b>開始欄位或值</b> - 從位置資料中選擇維度值欄位，或輸入特定的維度值，以定義維度值範圍的開頭。
+                            </li>
+                            <li> <b>結束欄位或值</b> - 從位置資料中選擇維度值欄位，或輸入特定的維度值，以定義維度值範圍的結尾。
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>指定緩衝區距離欄位或值</h2></div>
+        <hr/>
+        <div>
+            <p>位置資料圖徵周圍的指定距離。緩衝區距離是以位置圖徵之空間參考的線性單位所指定。如果圖徵使用地理參考，單位將是度。
+            </p>
+            <p>將在此緩衝區域內計算統計資料。
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>選擇統計資料類型</h2></div>
+        <hr/>
+        <div>
+            <p>要計算的統計資料類型。
+            </p>
+            <ul>
+                <li> <b>最小值</b> - 尋找指定範圍內的「最小值」值。
+                </li>
+                <li> <b>最大值</b> - 尋找指定範圍內的「最大值」值。
+                </li>
+                <li> <b>中位數</b> - 尋找指定範圍內的中位數值。
+                </li>
+                <li> <b>平均值</b> - 計算指定範圍的平均值。
+                </li>
+                <li> <b>總和</b> - 計算指定範圍內的變數總和。
+                </li>
+                <li> <b>多數</b> - 尋找最常出現的值。
+                </li>
+                <li> <b>少數</b> - 尋找最不常出現的值。
+                </li>
+                <li> <b>標準差</b> - 計算標準差。
+                </li>
+                <li> <b>百分位</b> - 計算指定範圍內的定義百分位。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>百分位值</h2></div>
+        <hr/>
+        <div>
+            <p>將 <b>統計資料類型</b>參數設為 <b>百分位</b>時要計算的百分位。
+            </p>
+            <p>此值的範圍是 0 到 100。預設值是 90 。
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>指定重取樣技術</h2></div>
+        <hr/>
+        <div>
+            <p>取樣點陣時所使用的重新取樣演算法。
+            </p>
+            <ul>
+                <li> <b>最近</b> - 最近鄰域。這是預設情況。
+                </li>
+                <li> <b>雙線性</b> - 雙線性插值
+                </li>
+                <li> <b>立方</b> - 立方捲繞
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>指定輸出版面配置</h2></div>
+        <hr/>
+        <div>
+            <p>指定取樣值是顯示在輸出表的列還是欄中。只有當輸入多維點陣包含一個變數和一個維度，且每個切片都是單一頻段點陣時，才能使用此選項。
+            </p>
+            <ul>
+                <li> <b>在列中顯示取樣值</b> - 在輸出表的不同列中顯示取樣值。這是預設情況。
+                </li>
+                <li> <b>在欄中顯示取樣值</b> - 在輸出表的不同欄中顯示取樣值。只有當輸入多維點陣包含一個變數和一個維度，且每個切片都是單一頻段點陣時，此選項才有效。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>指定輸出類型</h2></div>
+        <hr/>
+        <div>
+            <p>指定是在其表格中產生具有取樣值的點圖徵類別，還是僅產生具有取樣值的表格。
+            </p>
+            <ul>
+                <li> <b>表格</b> - 產生具有取樣值的表格。這是預設情況。
+                </li>
+                <li> <b>圖徵</b> - 在其表格中產生具有取樣值的點圖徵類別。如果輸入位置圖徵是折線或多邊型，則輸出中的每個點是輸入位置圖徵的每個幾何的質心。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -56,7 +56,7 @@
         <div>
             <p>Sloj koji sadrži geoobjekte oblasti koji će biti svedeni. 
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima. Možete opciono da primenite filter na ulazni sloj ili da primenite selekciju na hostovane slojeve koji su dodati na va&scaron;u mapu. Filteri i selekcije se primenjuju samo za analizu. 
             </p>
         </div>
     </div>
@@ -100,9 +100,9 @@
         <div>
             <p>Kada se oblasti spoje, možete da sumirate njihove vrednosti atributa sa smislenom statistikom. Na primer, ako svodite granicu između okruga na osnovu polja  <pre>State_Name</pre>, a svaki okrug ima polje <i>Population</i>, možete da izračunate zbir za polje <pre>Population</pre> za državu.
             </p>
-            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. Možete da izračunate sledeće na numeričkim poljima:
+            <p>Možete da izračunate statistiku na geoobjektima koji su sumirani. Možete da izračunate sledeće na numeričkim poljima: 
                 <ul>
-                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null. Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
+                    <li>Brojač &ndash; izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
                     <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
@@ -123,12 +123,12 @@
             </p>
             <p>Možete da izračunate sledeće na poljima niski:
                 <ul>
-                    <li>Brojač&mdash;broj vrednosti koje nisu null.
+                    <li>Brojač &ndash; broj niski koje nisu null (bez vrednosti).
                     </li>
                     <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
                     </li>
                 </ul>
-                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike. 
+                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike.
             </p>
         </div>
     </div>
@@ -136,7 +136,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Ime sloja koji će se kreirati. Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            <p> Ime sloja koji će se kreirati.  Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
             </p>
             <p>Prilikom upisa u  ArcGIS Data Store (skladi&scaron;te relacionih ili prostorno-vremenskih velikih podataka) koristeći padajuće polje  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> gde će rezultat biti sačuvan.
             </p>

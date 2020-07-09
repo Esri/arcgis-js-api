@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Encontrar Locais de Habitação</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagrama do fluxo de trabalho Encontrar Locais de Habita&ccedil;&atilde;o"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com um camada habilitada ao tempo de fei&ccedil;&otilde;es de ponto que s&atilde;o do tipo  <code>momento</code>. Primeiro, a ferramenta atribui fei&ccedil;&otilde;es para um caminho utilizando um identificador &uacute;nico. A ordem do caminho &eacute; determinada pelo tempo das fei&ccedil;&otilde;es. Em seguida, a dist&acirc;ncia entre a primeira observa&ccedil;&atilde;o em um caminho e o pr&oacute;ximo &eacute; calculado. As fei&ccedil;&otilde;es s&atilde;o consideradas como parte de uma moradia se dois pontos sucessivos permanecerem temporariamente dentro da dist&acirc;ncia fornecida pelo menos a dura&ccedil;&atilde;o fornecida. Quando duas fei&ccedil;&otilde;es s&atilde;o definidas para serem parte de uma moradia, a primeira fei&ccedil;&atilde;o na moradia &eacute; utilizada como um ponto de refer&ecirc;ncia e a ferramenta localiza fei&ccedil;&otilde;es sucessivas que est&atilde;o dentro da dist&acirc;ncia especificadas do ponto de refer&ecirc;ncia na moradia. Uma vez que todas as fei&ccedil;&otilde;es dentro da dist&acirc;ncia especificada forem localizadas, a ferramenta coleta as fei&ccedil;&otilde;es de moradia e calcula seu centro m&eacute;dio. Fei&ccedil;&otilde;es na antes e depois da moradia atual s&atilde;o adicionadas &agrave; moradia se elas estiverem dentro da dist&acirc;ncia fornecida do centro m&eacute;dio da localiza&ccedil;&atilde;o da moradia. Este processo continua at&eacute; o fim do caminho.
+    </p>
+    <p>Fei&ccedil;&otilde;es nas camadas habilitadas ao tempo podem ser representadas em uma das maneiras seguintes:
+        <ul>
+            <li>Momento&mdash;Um momento &uacute;nico no tempo
+            </li>
+            <li>Intervalo&mdash;Um tempo inicial e final
+            </li>
+        </ul>
+        
+    </p>
+    <p>Por exemplo, suponha que voc&ecirc; trabalha para o Departamento de Transporte e coletou leituras GPS para ve&iacute;culos em estradas importantes. Cada registro de GPS cont&eacute;m um ID de ve&iacute;culo &uacute;nico, o tempo, localiza&ccedil;&atilde;o e velocidade. A utiliza&ccedil;&atilde;o do ID de ve&iacute;culo &uacute;nico para definir caminhos individuais, procura por ve&iacute;culos que n&atilde;o moveram mais de 100 metros em pelo menos 15 minutos para descobrir &aacute;reas inoportunas na rede de estrada. Adicionalmente, voc&ecirc; pode calcular estat&iacute;stica, como a velocidade m&eacute;dia dos ve&iacute;culos dentro da localiza&ccedil;&atilde;o de moradias.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolha a camada da qual encontrar locais de permanência</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de ponto que ser&aacute; resumida em moradias. A camada de entrada deve ser de tempo habilitado com fei&ccedil;&otilde;es que representam um momento no tempo, como tamb&eacute;m ter um ou mais campos que podem ser utilizados para identificar caminhos.
+            </p>
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o. Voc&ecirc; pode, opcionalmente, aplicar um filtro &agrave; sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o nas camadas hospedadas adicionadas no seu mapa. Filtros e sele&ccedil;&otilde;es s&atilde;o aplicados somente para an&aacute;lise. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selecionar um ou mais campos para identificar caminhos</h2></div>
+        <hr/>
+        <div>
+            <p>Os campos que representam o identificador do caminho. Voc&ecirc; pode utilizar um campo ou campos m&uacute;ltiplos para representar valores &uacute;nicos de caminhos.
+            </p>
+            <p>Por exemplo, se voc&ecirc; for encontrar locais para furac&otilde;es, voc&ecirc; pode utilizar o nome de furac&atilde;o como o campo de caminho.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Escolha o método para calcular a distância</h2></div>
+        <hr/>
+        <div>
+            <p>O m&eacute;todo utilizado para calcular a dist&acirc;ncia de habita&ccedil;&atilde;o dentro dos caminhos. O m&eacute;todo  <b>Planar</b> pode calcular os resultados mais rapidamente mas n&atilde;o envolver&aacute; os caminhos na linha de data internacional ou levar&aacute; em conta a forma real da Terra ao criar o buffer. O m&eacute;todo <b>Geod&eacute;sico</b> envolver&aacute; os caminhos na linha de data internacional se for preciso e aplicar&aacute; um buffer geod&eacute;sico para levar em conta o formato da Terra.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Defina a distância de pesquisa espacial</h2></div>
+        <hr/>
+        <div>
+            <p>A toler&acirc;ncia de dist&acirc;ncia de habita&ccedil;&atilde;o &eacute; a dist&acirc;ncia m&aacute;xima entre pontos para serem consideradas em uma localiza&ccedil;&atilde;o de habita&ccedil;&atilde;o &uacute;nica.
+            </p>
+            <p>Por exemplo, se voc&ecirc; estiver interessado em localizar habita&ccedil;&otilde;es onde o tr&aacute;fego n&atilde;o moveu mais de 20 metros dentro de um certo tempo, a toler&acirc;ncia de dist&acirc;ncia seria 20 metros.
+            </p>
+            <p>Utilize o par&acirc;metro  <b>Definir a faixa de pesquisa temporal</b> para especificar o tempo.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Dividir por caminhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>A unidade da toler&acirc;ncia de dist&acirc;ncia.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definir o intervalo de pesquisa temporal</h2></div>
+        <hr/>
+        <div>
+            <p>A toler&acirc;ncia de tempo da habita&ccedil;&atilde;o &eacute; a dura&ccedil;&atilde;o de tempo m&iacute;nima de um ponto a ser considerado em uma localiza&ccedil;&atilde;o de habita&ccedil;&atilde;o &uacute;nica.
+            </p>
+            <p>Por exemplo, se desejar saber onde o tr&aacute;fego n&atilde;o moveu uma certa dist&acirc;ncia dentro de uma hora, a toler&acirc;ncia de tempo seria 1 hora.
+            </p>
+            <p>Utilize o par&acirc;metro  <b>Definir a faixa de pesquisa espacial</b> para especificar a dist&acirc;ncia.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Selecionar uma distância para dividir caminhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>A unidade da toler&acirc;ncia de tempo.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Voc&ecirc; pode calcular o seguinte em campos num&eacute;ricos: 
+                <ul>
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
+                    </li>
+                    <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
+                    </li>
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
+                    </li>
+                    <li>M&iacute;n&mdash;O valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
+                    </li>
+                    <li>M&aacute;x&mdash;O valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
+                    </li>
+                    <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
+                    </li>
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0,25.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,0,1,1] &eacute; 0,5. 
+                    </li>
+                    <li>Primeiro&mdash;O primeiro valor de um campo especificado no caminho resumido. Se um caminho tiver os seguintes valores ordenados por tempo para um campo: [1,5,10,20], o primeiro valor ser&aacute; 1.
+                    </li>
+                    <li>&Uacute;ltimo&mdash;O &uacute;ltimo valor de um campo especificado no caminho resumido. Se um caminho tiver os seguintes valores ordenados por tempo para um campo: [1,5,10,20], o &uacute;ltimo valor ser&aacute; 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; pode calcular o seguinte em campos de strings:
+                <ul>
+                    <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                    <li>Primeiro&mdash;O primeiro valor de um campo especificado no caminho resumido. Se um caminho tiver os seguintes valores ordenados por tempo para um campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], o primeiro valor ser&aacute; Toronto.
+                    </li>
+                    <li>&Uacute;ltimo&mdash;O &uacute;ltimo valor de um campo especificado no caminho resumido. Se um caminho tiver os seguintes valores ordenados por tempo para um campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], o &uacute;ltimo valor ser&aacute; Boston.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em valores n&atilde;o nulos. A camada resultante conter&aacute; um novo atributo para cada estat&iacute;stica calculada. Qualquer n&uacute;mero de estat&iacute;stica pode ser adicionado ao escolher um atributo e estat&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Locais de permanência de saída como</h2></div>
+        <hr/>
+        <div>
+            <p>Determina quais fei&ccedil;&otilde;es foram retornadas e o formato. Quatro tipos est&atilde;o dispon&iacute;veis: 
+                <ul>
+                    <li> <b>Centros M&eacute;dios</b>&mdash;Um ponto representando o centr&oacute;ide de cada local de habita&ccedil;&atilde;o descoberta. Os atributos ser&atilde;o resumidos. Este &eacute; o padr&atilde;o.
+                         
+                    </li>
+                    <li> <b>Coberturas Convexa</b>&mdash;Os pol&iacute;gonos representando a cobertura convexa de cada grupo de habita&ccedil;&atilde;o. Os atributos ser&atilde;o resumidos.
+                         
+                    </li>
+                    <li> <b>More Fei&ccedil;&otilde;es de Habita&ccedil;&atilde;o</b>&mdash;Todas as as fei&ccedil;&otilde;es de ponto e atributos de entrada determinados a pertencer a uma habita&ccedil;&atilde;o s&atilde;o retornados.
+                         
+                    </li>
+                    <li> <b>Todas as Fei&ccedil;&otilde;es</b>&mdash;Todas as fei&ccedil;&otilde;es de ponto e atributos de entrada s&atilde;o retornadas.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analisar dados com intervalos de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se voc&ecirc; deseja procurar por localiza&ccedil;&otilde;es de habita&ccedil;&atilde;o utilizando intervalos de tempo que segmentam suas fei&ccedil;&otilde;es de entrada para an&aacute;lise. Se voc&ecirc; utilizar intervalos de tempo, dever&aacute; definir o intervalo de tempo que deseja utilizar e, opcionalmente, definir o hor&aacute;rio de refer&ecirc;ncia. Se voc&ecirc; n&atilde;o definir um hor&aacute;rio de refer&ecirc;ncia, 1&ordm; de Janeiro de 1970 ser&aacute; utilizado. 
+            </p>
+            <p>Por exemplo, se voc&ecirc; definir o limite de tempo como 1 dia, come&ccedil;ando &agrave;s 9:00 AM do dia 1&ordm; de Janeiro de 1990, cada caminho ser&aacute; truncado &agrave;s 9:00 am para todos os dias e analisado neste segmento. Nenhuma perman&ecirc;ncia iniciar&aacute; antes de 9:00 AM e finalizar&aacute; depois. 
+            </p>
+            <p>O uso de intervalos de tempo &eacute; uma maneira r&aacute;pida de acelerar o tempo de computa&ccedil;&atilde;o, pois cria rapidamente caminhos menores para an&aacute;lise. Se a divis&atilde;o por um intervalo de tempo recorrente fizer sentido para sua an&aacute;lise, &eacute; recomendado para o processamento de grandes dados.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> O nome da camada que ser&aacute; criada. Se voc&ecirc; estiver gravando em um ArcGIS Data Store, seus resultados ser&atilde;o salvos em  <b>Meu Conte&uacute;do</b> e adicionados no mapa. Se voc&ecirc; estiver gravando em um compartilhamento do arquivo de grandes dados, seus resultados ser&atilde;o armazenados no compartilhamento do arquivo de grandes dados e adicionados em seu manifesto. N&atilde;o ser&atilde;o adicionados no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            </p>
+            <p>Ao gravar no  ArcGIS Data Store  (armazenamento de grandes dados de espa&ccedil;o-tempo ou relacional) utilizando a caixa suspensa  <b>Salvar resultados em</b> , voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

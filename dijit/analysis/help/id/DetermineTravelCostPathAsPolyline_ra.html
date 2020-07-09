@@ -64,7 +64,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Pilih raster atau layer sumber feature untuk menentukan dari mana jalur dimulai</h2></div>
+        <div><h2>Pilih raster atau layer sumber fitur untuk menentukan dari mana jalur dimulai</h2></div>
         <hr/>
         <div>
             <p>Layanan gambar atau feature service yang mengidentifikasi sel-sel dari mana jalur biaya terendah ditentukan ke tujuan paling murah.
@@ -89,7 +89,7 @@
         <div><h2>Input Raster atau Fitur Tujuan</h2></div>
         <hr/>
         <div>
-            <p>Input yang mendefinisikan tujuan yang digunakan untuk menghitung jarak. Layer bisa berupa raster atau fitur.
+            <p>Input yang menentukan tujuan yang digunakan untuk menghitung jarak. Layer bisa berupa raster atau fitur.
             </p>
             <p>Jika input adalah layanan gambar, input terdiri dari sel-sel yang memiliki nilai yang valid (nol adalah nilai yang valid), dan sel-sel yang tersisa harus diberi NoData.
             </p>
@@ -101,7 +101,7 @@
         <div>
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>
@@ -109,23 +109,31 @@
         <div><h2>Pilih jenis jalur untuk ditentukan</h2></div>
         <hr/>
         <div>
-            <p>Mendefinisikan cara di mana nilai-nilai dan zona pada input data tujuan akan ditafsirkan dalam perhitungan biaya jalan.
+            <p>Menentukan cara di mana nilai-nilai dan zona pada input data tujuan akan ditafsirkan dalam perhitungan biaya jalan.
             </p>
             <ul>
-                <li>Single Terbaik &mdash; Untuk semua sel atau lokasi pada data tujuan input, jalur biaya paling rendah diturunkan dari lokasi dengan minimum lintasan biaya terendah ke lokasi sumber. Ini adalah default
+                <li> <b>Single Terbaik</b>&mdash;Untuk semua sel atau lokasi pada data tujuan input, jalur biaya paling rendah diturunkan dari lokasi dengan minimum lintasan biaya terendah ke lokasi sumber. Ini adalah default
                     
 
                 </li>
-                <li>Untuk Setiap Sel &mdash; Untuk setiap sel atau lokasi dengan nilai yang valid pada data tujuan input, jalur biaya terkecil ditentukan dan disimpan pada feature service output. Dengan opsi ini, setiap sel dari data tujuan input diperlakukan secara terpisah, dan jalur biaya paling rendah ditentukan untuk masing-masing dari sel.
+                <li> <b>Untuk Setiap Sel</b>&mdash;Untuk setiap sel atau lokasi dengan nilai yang valid pada data tujuan input, jalur biaya terkecil ditentukan dan disimpan pada feature service output. Dengan opsi ini, setiap sel dari data tujuan input diperlakukan secara terpisah, dan jalur biaya paling rendah ditentukan untuk masing-masing dari sel.
                     
 
                 </li>
-                <li>Untuk Setiap Zona &mdash; Untuk setiap zona pada data tujuan input, jalur biaya terkecil ditentukan dan disimpan pada feature service output. Dengan opsi ini, lintasan biaya terendah untuk setiap zona dimulai di sel atau lokasi dengan pembobotan jarak biaya terendah di zona tersebut.
+                <li>Untuk Setiap Zona <b>&mdash;</b>Untuk setiap zona pada data tujuan input, jalur biaya terkecil ditentukan dan disimpan pada feature service output. Dengan opsi ini, lintasan biaya terendah untuk setiap zona dimulai di sel atau lokasi dengan pembobotan jarak biaya terendah di zona tersebut.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Pilih kolom guna mendapatkan nilai untuk tujuan</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom digunakan guna mendapatkan nilai untuk lokasi tujuan.
+            </p>
         </div>
     </div>
 </div>

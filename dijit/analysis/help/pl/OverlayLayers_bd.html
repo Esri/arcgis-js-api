@@ -44,7 +44,9 @@
         <h2>Nałóż warstwy</h2><p/>
         <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Nał&oacute;ż warstwy"></h2>
         <hr/>
-    <p>Nał&oacute;ż warstwy służy do łączenia co najmniej dw&oacute;ch warstw w jedną. Nakładanie można postrzegać jako tworzenie z&nbsp;zestawu nakładających się map pojedynczej mapy zawierającej wszystkie informacje w&nbsp;nich zawarte. Nakładanie to znacznie więcej niż połączenie ze sobą rysunk&oacute;w. Wszystkie atrybuty obiekt&oacute;w biorące udział w operacji nakładania są przenoszone do wynikowego produktu. Nakładanie służy do uzyskania odpowiedzi na jedno z najbardziej podstawowych pytań z dziedziny geografii: &bdquo;Jakie elementy leżą na obszarze czegoś?&rdquo; Przykłady:
+    <p>Narzędzie Nał&oacute;ż warstwy służy do łączenia co najmniej dw&oacute;ch warstw w jedną. Nakładanie można postrzegać jako tworzenie z&nbsp;zestawu nakładających się map pojedynczej mapy zawierającej wszystkie informacje w&nbsp;nich zawarte. Nakładanie to więcej niż połączenie ze sobą rysunk&oacute;w. Wszystkie atrybuty obiekt&oacute;w biorących udział w operacji nakładania są uwzględniane w produkcie wynikowym. Nakładanie służy do uzyskania odpowiedzi na jedno z najbardziej podstawowych pytań z dziedziny geografii: &bdquo;Jaka jest kolejność poszczeg&oacute;lnych warstw?&rdquo; 
+    </p>
+    <p>Przykłady:
         <ul>
             <li>Kt&oacute;re działki znajdują się na obszarze zalewania przez powodzie 100-letnie? (Gdy coś znajduje się &bdquo;w obrębie&rdquo; czegoś, to znaczy r&oacute;wnież, że leży na obszarze czegoś).
                   
@@ -67,7 +69,7 @@
         <div>
             <p>Warstwy punktowe, liniowe lub obiekt&oacute;w, kt&oacute;re zostaną nałożone.
             </p>
-            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Wybranie tej opcji spowoduje otwarcie galerii, w kt&oacute;rej można wyszukać i wybrać zestawy danych pochodzące z r&oacute;żnych źr&oacute;deł w celu użycia ich podczas przeprowadzania analiz. 
             </p>
         </div>
     </div>
@@ -77,7 +79,7 @@
         <div>
             <p>Warstwa do nałożenia na warstwę wejściową.  
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
             </p>
         </div>
     </div>
@@ -85,56 +87,18 @@
         <div><h2>Wybierz metodę nakładania</h2></div>
         <hr/>
         <div>
-            <p>Metoda nakładania określa spos&oacute;b połączenia warstwy wejściowej z warstwą nakładaną.  
+            <p>Określa metodę nakładania, kt&oacute;ra zostanie użyta do połączenia warstwy wejściowej i warstwy nakładanej.  
 
                 <ul>
-                    <li> <b>Przetnij</b> &mdash; Uzyskana mapa będzie zawierać tylko te obiekty z&nbsp;warstwy nakładanej lub ich części pokrywające się z&nbsp;obiektami w&nbsp;warstwie wejściowej. Przy przecinaniu obiekt&oacute;w liniowych lub poligonowych możesz określić typ obiekt&oacute;w wynikowych.
-                        <table border="1">
-                        <tr>
-                            <td>
-                                <p>Punkty z punktami
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Punkty z punktami jako dane wejściowe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Punkty z punktami z wynikiem danych punktowych">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Linie z liniami 
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="Linie i linie jako dane wejściowe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="Linie i linie z wynikiem danych liniowych">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Obszary z obszarami
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Obszary i obszary jako dane wejściowe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="Obszary i&nbsp;obszary z&nbsp;wynikiem danych poligonowych">
-                                </p>
-                            </td>
-                        </tr>
-                        </table>
+                    <li> <b>Przetnij</b> &mdash; połączone zostaną tylko te obiekty lub ich części z&nbsp;warstwy nakładanej, kt&oacute;re pokrywają się z&nbsp;obiektami w&nbsp;warstwie wejściowej.
                     </li>
-                    <li> <b>Usuń</b> &mdash; Uzyskana mapa będzie zawierać obiekty z&nbsp;warstwy nakładanej lub ich części niepokrywające się z&nbsp;obszarami w&nbsp;warstwie wejściowej. W&nbsp;warstwie nakładanej mogą znajdować się obiekty poligonowe, liniowe i&nbsp;punktowe.
+                    <li> <b>Usuń</b> &mdash; połączone zostaną obiekty lub ich części z&nbsp;warstwy nakładanej niepokrywające się z&nbsp;obszarami w&nbsp;warstwie wejściowej.
+                    </li>
+                    <li> <b>Suma</b> &mdash; zostaną połączone wszystkie obiekty z obu warstw, tworząc sumę geometryczną warstwy wejściowej i warstwy nakładanej.  W warstwie zostaną zapisane wszystkie obiekty i ich atrybuty.
+                    </li>
+                    <li> <b>Tożsamość</b> &mdash; zostaną połączone obiekty lub ich części w warstwie wejściowej i warstwie nakładanej. Obiekty lub ich części, kt&oacute;re nakładają się zar&oacute;wno w warstwie wejściowej, jak i w warstwie nakładanej zostaną zapisane w warstwie wynikowej.
+                    </li>
+                    <li> <b>R&oacute;żnica symetryczna</b> &mdash; zostaną połączone obiekty lub ich części w warstwie wejściowej i warstwie nakładanej, kt&oacute;re się nie nakładają.
                     </li>
                 </ul>
                 

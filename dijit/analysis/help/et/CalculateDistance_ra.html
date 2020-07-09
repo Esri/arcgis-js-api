@@ -46,7 +46,7 @@
         <hr/>
     <p>See t&ouml;&ouml;riist arvutab Eukleidese kauguse, suuna ja paigutuse &uuml;hestainsast l&auml;htepunktist v&otilde;i l&auml;htepunktide komplektist.
     </p>
-    <p>N&auml;idisrakendused, sealhulgas allj&auml;rgnevatele k&uuml;simustele vastamine:
+    <p>N&auml;idisrakendused v&otilde;imaldavad muuhulgas allj&auml;rgnevatele k&uuml;simustele vastamist:
 
         <ul>
             <li>Milline on vahemaa l&auml;hima linnani?
@@ -62,12 +62,12 @@
         </ul>
         
     </p>
-    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui neid pole praegu kaardil n&auml;ha.
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui need on sel hetkel n&auml;htavast kaardiulatusest v&auml;ljas.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Vahemaa arvutamiseks valige objekti asukohakihi raster</h2></div>
+        <div><h2>Valige rasterkiht või vektorkiht, et arvutada kaugus</h2></div>
         <hr/>
         <div>
             <p>Kiht, mis m&auml;&auml;rab l&auml;htepunktid, milleni vahemaa arvutatakse. Kiht v&otilde;ib olla pilditeenus v&otilde;i objektiteenus.
@@ -114,7 +114,7 @@
         <div><h2>Tulemsuuna kihi nimi</h2></div>
         <hr/>
         <div>
-            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. You must provide a name that does not currently exist in <b>My Content</b>.
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
             </p>
@@ -124,7 +124,7 @@
         <div><h2>Tulempaigutuse kihi nimi</h2></div>
         <hr/>
         <div>
-            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. You must provide a name that does not currently exist in <b>My Content</b>.
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
             </p>
@@ -137,6 +137,47 @@
             <p>V&auml;li sisendallika kihis, mis sisaldavad igat allikat m&auml;&auml;ratlevaid v&auml;&auml;rtusi. See v&otilde;ib olla t&auml;isarv v&otilde;i l&auml;hte-andmekogumi stringiv&auml;li.
             </p>
             <p>Vaikev&auml;&auml;rtus on  <i>Value</i>. Kui kasutatakse objektiteenust ja v&auml;&auml;rtuse <i>Value</i> v&auml;li ei ole saadaval, siis kasutatakse esimest saadaolevat t&auml;isarvu v&otilde;i stringi v&auml;lja. Kui kehtivaid v&auml;lju ei ole, kasutatakse v&auml;lja objekti ID-d (objekti sisendi t&uuml;&uuml;bist s&otilde;ltuvalt n&auml;iteks OID v&otilde;i FID).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Tõkete tähistamiseks valige raster- või objektikiht</h2></div>
+        <hr/>
+        <div>
+            <p>T&otilde;kkeid m&auml;&auml;ratlev andmekogum. 
+            </p>
+            <p>Pilditeenuse puhul v&otilde;ib sisendt&uuml;&uuml;p olla t&auml;isarv v&otilde;i ujuvpunkt. K&otilde;iki v&auml;&auml;rtusega (sealhulgas nulliga) piksleid k&auml;sitletakse t&otilde;kkena. NoData-andmeid ei k&auml;sitleta t&otilde;kkena.
+            </p>
+            <p>Objektiteenuse puhul v&otilde;ib sisend olla punkt, joon v&otilde;i hulknurk.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Kauguse meetod</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas kaugus arvutatakse planaarse (lapiku maa) v&otilde;i geodeetilise (ellipsoidi) meetodiga.
+            </p>
+            <ul>
+                <li> <b>Planaarne</b>&mdash;Arvutus viiakse l&auml;bi projitseeritud tasapinnal, kasutades Cartesiuse 2D-koordinaatide s&uuml;steemi. See on vaikimisi valitud meetod.
+                    
+
+                </li>
+                <li> <b>Geodeetiline</b>&mdash;Kaugused arvutatakse ellipsoidil. Hoolimata sisendi v&otilde;i v&auml;ljundi projitseerimisest tulemused ei muutu.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Tulemuse tagasisuuna kihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
             </p>
         </div>
     </div>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Eksempel</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Sample"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j opretter en tabel eller en punktobjektklasse, der viser v&aelig;rdierne for celler fra en raster eller et s&aelig;t rastere for definerede steder. Stederne defineres af rasterceller, polygonobjekter, polylinjeobjekter eller af et s&aelig;t punkter.
+    </p>
+    <p>Pixelv&aelig;rdier vil blive udtrukket fra alle input-rastere p&aring; hvert sted. Der oprettes en tabel eller en punktobjektklasse med felter, der indeholder pixelv&aelig;rdierne for hver input-raster. Yderligere attributter fra input-rastertabellen medtages ikke i output-tabellen.
+    </p>
+    <p>Enhver kombination af rastere, s&aring;som enkeltb&aring;nd, multib&aring;nd, flerdimensional eller multivariat, kan angives som input-rastere. Outputtabellens struktur &aelig;ndres, n&aring;r input-rasterne er flerdimensionale. N&aring;r en raster med flere b&aring;nd er angivet som en af input-rasterne, anvendes alle b&aring;ndene i det p&aring;g&aelig;ldende input. Hvis du vil behandle et udvalg af b&aring;nd fra en input-multib&aring;ndsraster skal du f&oslash;rst oprette et nyt rasterdatas&aelig;t, der er sammensat af de p&aring;g&aelig;ldende b&aring;nd. Brug resultatet i listen over input-rastere.
+    </p>
+    <p>Input-positionen kan v&aelig;re en raster eller et punktobjekt.
+        <ul>
+            <li>Raster&mdash;Pixels, der indeholder gyldige v&aelig;rdier (ikke NoData), bruges til at udtr&aelig;kke pixelv&aelig;rdierne fra alle input-rastere, og pixlens centrum bruges til punktplaceringer.
+            </li>
+            <li>Punkt&mdash;V&aelig;rdier samples p&aring; hvert punktsted.
+            </li>
+            <li>Polylinje eller polygon&mdash;V&aelig;rdier samples ved polygonens eller polylinjes centroide. Hvis input-rasteren er flerdimensional, aggregeres v&aelig;rdierne p&aring; basis  <b>af</b> statistiktypen.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Input-rastere samples i deres oprindelige spatiale reference og opl&oslash;sning. Hvis der er flere input-rastere med forskellige spatiale referencer, vil inputstederne blive projekteret til hver enkelt rasters spatiale reference, hvorfra v&aelig;rdier udtr&aelig;kkes. Analysemilj&oslash;et anvendes p&aring; inputstederne, men input-rasterne tager ikke h&oslash;jde for analysemilj&oslash;et.
+    </p>
+    <p>Steder, der udtr&aelig;kker v&aelig;rdier fra NoData-celler i input-rasteren, f&aring;r en &lt;null&gt;-v&aelig;rdi i outputtabellen.
+    </p>
+    <p>Hvis du vil udf&oslash;re analyse med multipunktobjekter, skal du f&oslash;rst konvertere dem til enkeltpunktobjekter, inden du bruger dem i dette v&aelig;rkt&oslash;j.
+    </p>
+    <p>Den spatiale reference for x,y-koordinaterne i output-sampletabellen er den samme som inputplacerings-rasteren eller punktobjekterne, medmindre den er <b>angivet i Output-koordinatsystemets milj&oslash;</b>. Hvis den spatiale reference for dataene for inputplaceringerne er ukendt, er den spatiale reference for x,y-koordinaterne ogs&aring; ukendt.
+    </p>
+    <p>Den spatiale reference for output-objektklassen er den samme som inputplacerings-rasteren eller punktobjekterne, medmindre den er  <b>angivet i Output-koordinatsystemets milj&oslash;</b>.
+    </p>
+    <p>Milj&oslash;et Parallelbehandlingsfaktor underst&oslash;ttes  <b>kun</b>, n&aring;r inputtet er en flerdimensional raster.
+    </p>
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler eller b&aring;nd fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler eller b&aring;nd fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Vælg billedlag, der skal samples</h2></div>
+        <hr/>
+        <div>
+            <p>Et enkelt billedlag eller en liste over billedlag, hvis v&aelig;rdier skal samples p&aring; basis af input-positionsdata.
+            </p>
+            <p>Hvis du vil sample alle stykker fra et flerdimensionalt billedlag, skal det v&aelig;re den eneste input-raster.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Vælg positionslag:</h2></div>
+        <hr/>
+        <div>
+            <p>Data, der identificerer de positioner, som du vil sample.
+            </p>
+            <p>Dataene for inputpositionen kan v&aelig;re en raster eller et punkt, en polylinje eller en polygon-objektklasse.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Angiv et entydigt ID-felt</h2></div>
+        <hr/>
+        <div>
+            <p>Et felt, der indeholder en forskellig v&aelig;rdi for hvert sted eller hvert objekt i inputpositions-rasteren eller objektklassen.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Angiv information om erhvervelse for placeringsdata (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv tid, dybde eller anden information om erhvervelse, der er knyttet til placeringscellerne eller -objekterne.
+            </p>
+            <p>For hver dimension er der tre muligheder for at angive den information om erhvervelse, der er forbundet med positionsceller eller -objekter:
+
+                <ul>
+                    <li> <b>Enkelt felt eller en enkelt v&aelig;rdi</b>&ndash; N&aring;r denne indstilling er valgt, skal f&oslash;lgende oplysninger angives:
+                        <ul>
+                            <li> <b>Dimensionsfelt eller -v&aelig;rdi</b>&mdash;v&aelig;lg et felt med dimensionsv&aelig;rdier fra positionsdataene, eller angiv en specifik dimensionsv&aelig;rdi.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Enkelt felt eller v&aelig;rdi med relative v&aelig;rdier</b>&ndash; Hvis denne indstilling er valgt, skal oplysningerne nedenfor angives sammen for at definere det interval, som statistikken for variabler skal beregnes inden for:
+                        <ul>
+                            <li> <b>Dimensionsfelt eller -v&aelig;rdi</b>&mdash;v&aelig;lg et felt med dimensionsv&aelig;rdier fra positionsdataene.
+                            </li>
+                            <li> <b>Relativ v&aelig;rdi f&oslash;r</b>&mdash;angiv et tal, der ikke er negativt, og som tr&aelig;kkes fra et <b>dimensionsfelt eller en dimensionsv&aelig;rdi</b> for at definere starten p&aring; et dimensionsv&aelig;rdiinterval. Denne v&aelig;rdi repr&aelig;senterer antallet af dage, hvis dimensionen er tid.
+                            </li>
+                            <li> <b>Relativ v&aelig;rdi efter</b>&mdash;angiv et tal, der ikke er negativt, og som l&aelig;gges til et <b>dimensionsfelt eller en dimensionsv&aelig;rdi</b> for at definere slutningen p&aring; et dimensionsv&aelig;rdiinterval. Denne v&aelig;rdi repr&aelig;senterer antallet af dage, hvis dimensionen er tid.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Start- og slutfelter eller -v&aelig;rdier</b>&ndash; Hvis denne indstilling er valgt, skal oplysningerne nedenfor angives sammen for at definere det interval, som statistikken for variabler skal beregnes inden for:
+                        <ul>
+                            <li> <b>Startfelt eller -v&aelig;rdier</b>&mdash;v&aelig;lg et felt med dimensionsv&aelig;rdier fra positionsdataene eller angiv en specifik dimensionsv&aelig;rdi for at definere starten p&aring; et dimensions- eller v&aelig;rdiinterval.
+                            </li>
+                            <li> <b>Slurfelt eller -v&aelig;rdier</b>&mdash;v&aelig;lg et felt med dimensionsv&aelig;rdier fra positionsdataene eller angiv en specifik dimensionsv&aelig;rdi for at definere slutningen p&aring; et dimensions- eller v&aelig;rdiinterval.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Angiv buffer-afstand eller -værdi</h2></div>
+        <hr/>
+        <div>
+            <p>Den angivne afstand rundt om placeringsdataobjekterne. Buffer-afstanden er angivet i de line&aelig;re enheder i positionsobjektets spatiale reference. Hvis objektet bruger en geografisk reference, vil enheden v&aelig;re grader.
+            </p>
+            <p>Statistik beregnes inden for dette buffer-omr&aring;de.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Vælg statistiktype</h2></div>
+        <hr/>
+        <div>
+            <p>Den type statistik, der skal beregnes.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>&ndash; Finder minimumv&aelig;rdien inden for det angivne interval.
+                </li>
+                <li> <b>Maksimum</b>&ndash; Finder maksimumv&aelig;rdien inden for det angivne interval.
+                </li>
+                <li> <b>Median</b>&mdash;Finder medianv&aelig;rdien inden for det angivne interval.
+                </li>
+                <li> <b>Middelv&aelig;rdi</b>&mdash;Beregner gennemsnittet for det angivne interval.
+                </li>
+                <li> <b>Sum</b>&ndash; Beregner summen af variablerne inden for det angivne interval.
+                </li>
+                <li> <b>Majoritet</b>&ndash; Finder den v&aelig;rdi, der forekommer oftest.
+                </li>
+                <li> <b>Minoritet</b>&mdash;Finder den v&aelig;rdi, der forekommer mindst ofte.
+                </li>
+                <li> <b>Standardafvigelse</b>&mdash;Beregner standardafvigelsen.
+                </li>
+                <li> <b>Percentil</b>&ndash; Beregner en defineret percentil inden for det angivne interval.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilværdi</h2></div>
+        <hr/>
+        <div>
+            <p>Percentilen, der beregnes,  <b>n&aring;r parameteren Statistiktype</b> er indstillet til <b>Percentil</b>.
+            </p>
+            <p>V&aelig;rdien kan v&aelig;re fra 0 til 100. Standard er 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Angiv resamplingsteknik</h2></div>
+        <hr/>
+        <div>
+            <p>Resamplingsalgoritmer, der anvendes ved sampling af en raster.
+            </p>
+            <ul>
+                <li> <b>N&aelig;rmeste</b>&mdash;N&aelig;rmeste nabo. Dette er standardv&aelig;rdien.
+                </li>
+                <li> <b>Biline&aelig;r </b>&mdash;Biline&aelig;r interpolation
+                </li>
+                <li> <b>Kubisk</b>&mdash;Kubisk konvolution
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Angiv outputlayout</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om samplede v&aelig;rdier vises i r&aelig;kker eller kolonner i outputtabellen. Denne indstilling er kun tilg&aelig;ngelig, n&aring;r den flerdimensionale input-raster indeholder &eacute;n variabel og &eacute;n dimension, og hvert udsnit er en enkelt-b&aring;nds raster.
+            </p>
+            <ul>
+                <li> <b>Samplede v&aelig;rdier vises i r&aelig;kke</b>&mdash;Samplede v&aelig;rdier vises i separate r&aelig;kker i output-tabellen. Dette er standardv&aelig;rdien.
+                </li>
+                <li> <b>Samplede v&aelig;rdier vises i kolonne</b>&mdash;Samplede v&aelig;rdier vises i separate kolonner i output-tabellen. Denne indstilling er kun gyldig, n&aring;r den flerdimensionale input-raster indeholder &eacute;n variabel og &eacute;n dimension, og hvert udsnit er en enkelt-b&aring;nds raster.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Angiv outputtype</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv, om der skal genereres en punktobjektklasse med samplede v&aelig;rdier i tabellen, eller om der kun skal genereres en tabel med samplede v&aelig;rdier.
+            </p>
+            <ul>
+                <li> <b>Tabel</b>&mdash;Gener&eacute;r en tabel med samplede v&aelig;rdier. Dette er standardv&aelig;rdien.
+                </li>
+                <li> <b>Objekter</b>&mdash;Gener&eacute;r en punktobjektklasse med samplede v&aelig;rdier i tabellen. Hvis input-positionsobjekterne er polylinjer eller polygoner, er hvert punkt i outputtet centroiden af hver geometri for input-positionsobjekterne.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

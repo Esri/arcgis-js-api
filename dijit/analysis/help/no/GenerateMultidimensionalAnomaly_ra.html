@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generer flerdimensjonal anomali</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generer flerdimensjonal anomali"></h2>
+        <hr/>
+    <p>Genererer et flerdimensjonalt rasterdatasett ved &aring; sl&aring; sammen eksisterende flerdimensjonale rastervariabler langs en dimensjon.
+    </p>
+    <p>En anomali er en obervasjons avvik fra standard-, middel- eller medianverdien.
+    </p>
+    <p>Dette verkt&oslash;yet beregner anomalier over tid for &eacute;n eller flere variabler i et flerdimensjonalt raster. Hvis du i tillegg til tidsdimensjonen har en ekstra dimensjon som ikke er tidsbasert, bergenes anomalien p&aring; hvert trinn i tilleggsdimensjonen.
+    </p>
+    <p>La oss for eksempel si du har m&aring;nedlige temperaturdata som er samlet inn for hver meter ned til 100 meters dyp, og du vil beregne temperaturanomaliene som avvik fra det &aring;rlige gjennomsnittet. Dette verkt&oslash;yet fastsetter temperaturanomalier basert p&aring; et &aring;rlige gjennomsnitt hvis du velger  <b>&Aring;rlig</b> som <b>tidsintervall for beregning av gjennomsnittet</b>, og det returnerer avviksverdier for hver av de 100 dybdene.
+    </p>
+    <p>Verkt&oslash;yet st&oslash;tter kun flerdimensjonale rasterdatasett som har en tidsdimensjon.
+    </p>
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres variablene i laget som vises i gjeldende kartutstrekning. Hvis det ikke er merket av for dette alternativet, analyseres variablene i hele laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Velg flerdimensjonalt bildelag for å generere anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Inndatabildelaget for et flerdimensjonalt rasterdatasett.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Velg variabelen(e) det skal genereres anomalier for</h2></div>
+        <hr/>
+        <div>
+            <p>Variabelen eller variablene det skal beregnes anomalier for. Hvis det ikke angis en variabel, analyseres alle variablene som har en tidsdimensjon.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Velg metode for generering av anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Angir metoden som skal brukes til &aring; generere anomalien. 
+                <ul>
+                    <li> <b>Forskjell fra gjennomsnitt</b>&ndash;&nbsp;Beregner forskjellen mellom en pikselverdi og gjennomsnittet for denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Prosentvis forskjell fra gjennomsnitt</b>&ndash;&nbsp;Beregner den prosentvise forskjellen mellom en pikselverdi og gjennomsnittet av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    </li>
+                    <li> <b>Prosent av gjennomsnitt</b>&ndash;&nbsp;Prosenten av gjennomsnittet beregnes.
+                    </li>
+                    <li> <b>Z-sk&aring;r</b>&ndash;&nbsp;Z-sk&aring;ren for hver piksel beregnes. En z-sk&aring;r p&aring; 0 angir at pikslens verdi er identisk med gjennomsnittet. En z-sk&aring;r p&aring; 1 angir at pikslens verdi er 1 standardavvik fra gjennomsnittet. Hvis en z-sk&aring;r er 2, er pikslens verdi 2 standardavvik fra gjennomsnittet og s&aring; videre.
+                    </li>
+                    <li> <b>Forskjell fra median</b>&ndash;&nbsp;Beregner forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    </li>
+                    <li> <b>Prosentvis forskjell fra median</b>&ndash;&nbsp;Beregner den prosentvise forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    </li>
+                    <li> <b>Prosent av median</b>&ndash;&nbsp;Beregner prosenten av den matematiske medianen.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De matematiske metodene for &aring; beregne avviksverdier er oppf&oslash;rt nedenfor. Anomalier kan beregnes ved hjelp av gjennomsnittsverdier eller medianverdier som definisjonen av gjennomsnittet. Hvis datafordelingen er skjev, kan gjennomsnittet v&aelig;re sterkt p&aring;virket av avvikende observasjoner, slik at medianverdi eller z-sk&aring;rmetoden kan v&aelig;re bedre egnet for denne typen data.
+            </p>
+            <p>
+                <ul>
+                    <li>Forskjell fra gjennomsnitt = x - &micro;
+
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                                
+
+                            </li>
+                            <li>&micro; = gjennomsnittet av pikselens verdier i det gitte tidsintervallet
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Prosentvis forskjell fra gjennomsnitt = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                                
+
+                            </li>
+                            <li>&micro; = gjennomsnittet av pikselens verdier i det gitte tidsintervallet
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolutt verdi for forskjellen mellom verdien og gjennomsnittet
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Prosent av gjennomsnitt = x / &micro;
+
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                                
+
+                            </li>
+                            <li>&micro; = gjennomsnittet av pikselens verdier i det gitte tidsintervallet
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Forskjell fra median = x - &szlig;
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                            </li>
+                            <li>&szlig; = median for pikslens verdi i det gitte tidsintervallet
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Prosentvis forskjell fra median = |x - &micro;| / [(x + &micro;)/2]
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                            </li>
+                            <li>&szlig; = median for pikslens verdi i det gitte tidsintervallet
+                            </li>
+                            <li>|x - &szlig;| = absolutt verdi av forskjell mellom verdien og medianen
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Prosent av median = x / &szlig;
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                            </li>
+                            <li>&szlig; = median for pikslens verdi i det gitte tidsintervallet
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-sk&aring;r = (x - &micro;) / S
+                        <ul>
+                            <li>x = pikselverdien i en inndeling
+                            </li>
+                            <li>&micro; = gjennomsnittet av pikselens verdier i det gitte tidsintervallet
+                            </li>
+                            <li>S = standardavviket for pikselens verdier i det gitte tidsintervallet
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Velg tidsintervall for å beregne gjennomsnitt</h2></div>
+        <hr/>
+        <div>
+            <p>Angir tidsintervallet som skal brukes til &aring; beregne gjennomsnittet. 
+                <ul>
+                    <li> <b>Alle</b>&ndash;&nbsp;Beregner gjennomsnittet p&aring; tvers av alle inndelinger for hver piksel.
+                    </li>
+                    <li> <b>&Aring;rlig</b>&ndash;&nbsp;Beregner &aring;rlig gjennomsnitt for hver piksel.
+                    </li>
+                    <li> <b>Gjentas m&aring;nedlig</b>&ndash;&nbsp;Beregner m&aring;nedlig gjennomsnitt for hver piksel.
+                    </li>
+                    <li> <b>Gjentas ukentlig</b>&ndash;&nbsp;Beregner ukentlig gjennomsnitt for hver piksel.
+                    </li>
+                    <li> <b>Gjentas daglig</b>&ndash;&nbsp;Beregner daglig gjennomsnitt for hver piksel.
+                    </li>
+                    <li> <b>Timebasert</b>&ndash;&nbsp;Beregner gjennomsnitt per time for hver piksel.
+                    </li>
+                    <li> <b>Eksternt raster</b>&ndash;&nbsp;Referanse finnes til et eksisterende rasterdatasett som inneholder gjennomsnitts- eller medianverdien for hver piksel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Velg bildelaget i gjennomsnittet som referanse</h2></div>
+        <hr/>
+        <div>
+            <p>Angir det refererte rasterdatasettet som inneholder et tidligere beregnet gjennomsnitt for hver piksel. Anomaliene beregnes ved sammenligning med dette gjennomsnittet.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer manglende verdier i beregningen</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om manglende verdier ignoreres i analysen. 
+                <ul>
+                    <li>Avmerket &ndash; Analysen omfatter alle gyldige piksler langs en gitt dimensjon og ignorerer eventuelle NoData-piksler. Dette er standardalternativet.
+                    </li>
+                    <li>Ikke avmerket &ndash; Analysen resulterer i NoData hvis det finnes NoData-verdier for pikselen langs den gitte dimensjonen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

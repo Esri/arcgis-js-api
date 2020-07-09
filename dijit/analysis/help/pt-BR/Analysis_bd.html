@@ -41,7 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p> GeoAnalytics distribui o trabalho de an&aacute;lise atrav&eacute;s do seu ArcGIS GeoAnalytics Server. Isto permite a voc&ecirc; analisar mais dados de forma r&aacute;pida com m&uacute;ltiplas m&aacute;quinas. As seguintes ferramentas est&atilde;o dispon&iacute;veis: <ul>
+        <p>GeoAnalytics distribui o trabalho de an&aacute;lise atrav&eacute;s do seu    ArcGIS GeoAnalytics Server. Isto permite a voc&ecirc; analisar mais dados de forma r&aacute;pida com m&uacute;ltiplas m&aacute;quinas. As seguintes ferramentas est&atilde;o dispon&iacute;veis:
+            <ul>
                 <li> Agregar Pontos
                 </li>
                 <li> Construir Grade de M&uacute;ltiplas Vari&aacute;veis
@@ -56,23 +57,27 @@
                 </li>
                 <li> Resumir Dentro
                 </li>
+                <li> Detectar Incidentes
+                </li>
+                <li> Encontrar Locais de Habita&ccedil;&atilde;o
+                </li>
+                <li> Encontrar Locais Semelhantes
+                </li>
                 <li> Geocodificar Locais da Tabela
                 </li>
                 <li> Enriquecer de Grade de M&uacute;ltiplas Vari&aacute;veis
                 </li>
-                <li> Detectar Incidentes
-                </li>
-                <li> Encontrar Locais Semelhantes
-                </li>
                 <li> Calcular Densidade
                 </li>
-                <li> Localizar Agrupamentos de Pontos
-                </li>
                 <li> Localizar Valor Alto de Incid&ecirc;ncia
+                </li>
+                <li> Localizar Agrupamentos de Pontos
                 </li>
                 <li> Classifica&ccedil;&atilde;o e Regress&atilde;o baseada em Floresta
                 </li>
                 <li> Regress&atilde;o Linear Generalizada
+                </li>
+                <li> Regress&atilde;o Geograficamente Ponderada
                 </li>
                 <li> Criar Buffers
                 </li>
@@ -80,40 +85,40 @@
                 </li>
                 <li> Calcular Campo
                 </li>
-                <li> Copiar para Armazenamento de Dados
+                <li> Camada de Recorte 
                 </li>
-                <li> Sobrepor Camadas
+                <li> Copiar para Armazenamento de Dados
                 </li>
                 <li> Dissolver Limites
                 </li>
                 <li> Juntar Camadas
                 </li>
-                <li> Camada de Recorte 
+                <li> Sobrepor Camadas
                 </li>
             </ul>
             
         </p>
-        <p>O GeoAnalytics foca na an&aacute;lise de grandes quantidades de dados com &ecirc;nfase em padr&otilde;es espaciais e temporais. 
+        <p>GeoAnalytics foca na an&aacute;lise de grandes quantidades de dados com &ecirc;nfase em padr&otilde;es espaciais e temporais. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Summarize Data</h2>
+        <h2>Resumir Dados</h2>
         <hr/>
-        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p>  O conjunto de ferramentas Resumir Dados cont&eacute;m ferramentas que calculam o total de contagens, comprimentos, &aacute;reas e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
             <ul>
-                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                <li> <b>Agregar Pontos</b> calcula estat&iacute;sticas sobre pontos que caem dentro de &aacute;reas ou bandejas especificadas.
                 </li>
-                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
+                <li>A ferramenta  <b>Construir Grade de M&uacute;ltiplas Vari&aacute;veis</b> gera uma grade de caixas quadrada ou hexagonais e calcula os valores para cada caixa baseado na proximidade de cada camada de entrada.
                 </li>
-                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
+                <li> <b>Descrever Conjunto de Dados</b> calcula um resumo da sua entrada e, opcionalmente, pode gerar uma amostra da sua camada de entrada.
                 </li>
-                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
+                <li> <b>Ligar Fei&ccedil;&otilde;es</b> calcula estat&iacute;sticas sobre fei&ccedil;&otilde;es que compartilham um relacionamento espacial, temporal ou de atributos com outras fei&ccedil;&otilde;es.
                 </li>
-                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
+                <li> <b>Reconstruir Caminhos</b> calcula as estat&iacute;sticas sobre pontos ou pol&iacute;gonos que pertencem ao mesmo caminho e reconstr&oacute;i as entradas em caminhos.
                 </li>
-                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                <li> <b>Resumir Atributos</b> calcula estat&iacute;sticas sobre fei&ccedil;&atilde;o ou dados tabelares que compartilham atributos.
                 </li>
-                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                <li> <b>Resumir Dentro</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es de &aacute;rea e atributos que sobrep&otilde;em uns aos outros.
                 </li>
             </ul>
             
@@ -136,7 +141,7 @@
                 <ul>
                     <li>Determinados os locais de ponto dos incidentes de crime, contar o n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
                     </li>
-                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100-quil&ocirc;metros .
+                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100-quil&ocirc;metros.
                     </li>
                 </ul>
                 
@@ -210,7 +215,7 @@
             </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Dadas as localiza&ccedil;&otilde;es dos pontos de incidentes do crime com um tempo, junte os dados de crime para voc&ecirc; mesmo, especificando um relacionamento espacial de crimes dentro de 1 quil&ocirc;metro um do outro, e que ocorreu no prazo de uma hora um do outro, para determinar se h&aacute; uma sequ&ecirc;ncia de crimes perto um ao outro no espa&ccedil;o e tempo.
+                    <li>Determinados os locais de ponto dos incidentes de crime em um tempo, junte os dados de crime para voc&ecirc; mesmo, especificando um relacionamento espacial de crimes dentro de 1 quil&ocirc;metro um do outro, e que ocorreu no prazo de uma hora um do outro, para determinar se h&aacute; uma sequ&ecirc;ncia de crimes perto um ao outro no espa&ccedil;o e tempo.
                     </li>
                     <li>Com uma tabela de Ceps fornecida com informa&ccedil;&otilde;es demogr&aacute;ficas e fei&ccedil;&otilde;es de &aacute;rea representando edif&iacute;cios residenciais, ligue as informa&ccedil;&otilde;es demogr&aacute;ficas com as resid&ecirc;ncias de forma que cada resid&ecirc;ncia agora tenha as informa&ccedil;&otilde;es.
                     </li>
@@ -230,13 +235,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Utilize uma camada habilitada ao tempo de fei&ccedil;&otilde;es de pol&iacute;gono e de ponto ou que representa um  <code>momento</code> no tempo, esta ferramenta determina quais fei&ccedil;&otilde;es de entrada pertencem em um caminho e ordenar&aacute; as entradas consecutivamente no tempo. As estat&iacute;sticas s&atilde;o opcionalmente calculadas para as fei&ccedil;&otilde;es de entrada dentro de cada caminho.
+            <p>Utilize uma camada habilitada ao tempo de fei&ccedil;&otilde;es de pol&iacute;gono e de ponto ou que representa um momento no tempo, esta ferramenta determina quais fei&ccedil;&otilde;es de entrada pertencem em um caminho e ordenar&aacute; as entradas consecutivamente no tempo. As estat&iacute;sticas s&atilde;o opcionalmente calculadas para as fei&ccedil;&otilde;es de entrada dentro de cada caminho. 
             </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Dada as localiza&ccedil;&otilde;es de ponto e tempo das medi&ccedil;&otilde;es do furac&atilde;o, calcule a velocidade m&eacute;dia do vento e press&atilde;o m&aacute;xima de vento do furac&atilde;o.
                     </li>
-                    <li>Utilize as medi&ccedil;&otilde;es de GPS de navios para reconstruir rotas de navega&ccedil;&atilde;o como linhas. 
+                    <li>Utilize as medi&ccedil;&otilde;es de GPS de navios para reconstruir caminhos de navio como linhas. 
                     </li>
                 </ul>
                 
@@ -294,11 +299,13 @@
     <div id="FindLocationsCategory" class="regularsize">
         <h2>Encontrar Locais</h2>
         <hr/>
-        <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que atendem v&aacute;rios crit&eacute;rios diferentes que voc&ecirc; especifica.   
+        <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que atendem v&aacute;rios crit&eacute;rios voc&ecirc; especifica.   
             <ul>
                 <li> <b>Detectar Incidentes</b> funciona com camadas habilitadas ao tempo para determinar quais fei&ccedil;&otilde;es atendem uma condi&ccedil;&atilde;o especificada.
                 </li>
                 <li> <b>Geocodificar Locais da Tabela</b> converte endere&ccedil;os em coordenadas.
+                </li>
+                <li> <b>Encontrar Locais de Habita&ccedil;&atilde;o</b> encontra no em conjunto de dados do caminho onde objetos est&atilde;o est&atilde;o dentro de uma certa dist&acirc;ncia por uma certa dura&ccedil;&atilde;o de tempo.
                 </li>
                 <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia baseado em crit&eacute;rios que voc&ecirc; especifica.
                 </li>
@@ -345,6 +352,30 @@
             </p>
             <br/>
         </div>
+        <div id="FindDwellLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Locais de Habitação</h2></td>
+                    <td>
+                    <img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" class="titleImage" alt="Diagrama do fluxo de trabalho Encontrar Locais de Habita&ccedil;&atilde;o">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta funciona com conjunto de dados de caminho; &eacute; composta de uma camada de pontos habilitada ao tempo para localizar onde os objetos est&atilde;o dentro de uma dist&acirc;ncia e dura&ccedil;&atilde;o especificada.
+            </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Melhora esfor&ccedil;os de conserva&ccedil;&atilde;o analisando padr&otilde;es de movimento animais. Utilize esta ferramenta para descobrir pontos de perman&ecirc;ncia de animais populares como &aacute;reas protegidas em potencial para preservar biodiversidade.
+                    </li>
+                    <li>A utiliza&ccedil;&atilde;o de localiza&ccedil;&otilde;es de GPS para ve&iacute;culos, localiza onde as ocorre lentid&atilde;o para melhorar a seguran&ccedil;a do tr&aacute;fego.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -360,7 +391,7 @@
             </p>
             <p>Os seguintes s&atilde;o exemplos: 
                 <ul>
-                    <li>Encontrar as dez lojas mais semelhantes atrav&eacute;s da an&aacute;lise do n&uacute;mero de empregados e das vendas anuais.
+                    <li>Encontrar as 10 lojas mais semelhantes atrav&eacute;s da an&aacute;lise do n&uacute;mero de empregados e das vendas anuais.
                     </li>
                     <li>Encontrar as 100 cidades mais semelhantes ao examinar a rela&ccedil;&atilde;o entre a popula&ccedil;&atilde;o, crescimento anual e receitas fiscais.
                     </li>
@@ -372,7 +403,7 @@
     <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Analisar Padrões</h2>
         <hr/>
-        <p>  Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.
+        <p> Estas ferramentas identificam, quantificam e visualizam modelos espaciais em seus dados.
             <ul>
                 <li> <b>Calcular Densidade</b> obt&eacute;m quantidades conhecidas de algum fen&ocirc;meno e distribui estas quantidades pelo mapa.
                 </li>
@@ -382,7 +413,9 @@
                 </li>
                 <li> <b>Classifica&ccedil;&atilde;o e Regress&atilde;o baseadas em Floresta</b>  cria modelos e gera previs&otilde;es utilizando uma adapta&ccedil;&atilde;o do algoritmo de floresta aleat&oacute;ria de Leo Breiman, um m&eacute;todo supervisionado de aprendizado autom&aacute;tico.
                 </li>
-                <li> <b>Regress&atilde;o Linear Generalizada</b> gerar previs&otilde;es ou modela uma vari&aacute;vel dependente em termos de sua rela&ccedil;&atilde;o com um conjunto de vari&aacute;veis explanat&oacute;rias.
+                <li> <b>Regress&atilde;o Linear Generalizada</b> gera previs&otilde;es ou modela uma vari&aacute;vel dependente em termos de sua rela&ccedil;&atilde;o com um conjunto de vari&aacute;veis explanat&oacute;rias.
+                </li>
+                <li> <b>Regress&atilde;o Geograficamente Ponderada</b> cria modelos utilizando um formul&aacute;rio local de regress&atilde;o linear que &eacute; utilizado para modelar espacialmente relacionamentos da vari&aacute;vel.
                 </li>
             </ul>
             
@@ -403,7 +436,7 @@
             </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para decidir onde novos hospitais devem ser constru&iacute;dos.
+                    <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para determinar onde novos hospitais devem ser constru&iacute;dos.
                     </li>
                     <li>Identificar &aacute;reas que est&atilde;o em alto risco de inc&ecirc;ndio em florestas baseado em hist&oacute;rico dos locais de inc&ecirc;ndio em florestas.
                     </li>
@@ -425,13 +458,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A ferramenta Localizar Agrupamentos de Pontos localiza agrupamentos de fei&ccedil;&otilde;es de ponto ao redor de ru&iacute;do baseado em sua distribui&ccedil;&atilde;o espacial.
+            <p>A ferramenta Localizar Agrupamentos de Pontos encontra conjuntos de fei&ccedil;&otilde;es de ponto dentro do ru&iacute;do circundante com base em sua distribui&ccedil;&atilde;o espacial.
             </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Localize agrupamentos de-casas infestadas por pragas para ajudar nos esfor&ccedil;os de erradica&ccedil;&atilde;o de alvo.  
+                    <li>Localizar agrupamentos de casas infestadas por pragas para ajudar nos esfor&ccedil;os de erradica&ccedil;&atilde;o de destino.  
                     </li>
-                    <li>Informe e atue no salvamento e necessidades de evacua&ccedil;&atilde;o baseado no tamanho e localiza&ccedil;&atilde;o dos agrupamentos utilizando tweets localizados geograficamente seguindo perigos naturais ou ataques.
+                    <li>Informar e atuar nas necessidades de resgate e evacua&ccedil;&atilde;o baseado no tamanho e localiza&ccedil;&atilde;o dos agrupamentos utilizando tweets localizados geograficamente ap&oacute;s perigos naturais ou ataques terroristas.
                     </li>
                 </ul>
                 
@@ -516,6 +549,32 @@
             </p>
             <br/>
         </div>
+        <div id="GeographicallyWeightedRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Regressão Geograficamente Ponderada</h2></td>
+                    <td>
+                    <img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" class="titleImage" alt="Diagrama do fluxo de trabalho GeographicallyWeightedRegression">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta executa Regress&atilde;o Geograficamente Ponderada (GWR) que cria um formul&aacute;rio local de regress&atilde;o linear utilizado para modelar relacionamentos variados espacialmente.
+            </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>O relacionamento entre realiza&ccedil;&atilde;o educacional e renda &Eacute; consistente pela &aacute;rea de estudo?
+                    </li>
+                    <li>O que s&atilde;o as vari&aacute;veis chaves que explicam alta frequ&ecirc;ncia de fogo na floresta?
+                    </li>
+                    <li>Onde est&atilde;o os distritos em que as crian&ccedil;as est&atilde;o alcan&ccedil;ando pontua&ccedil;&otilde;es altas do teste? Quais caracter&iacute;sticas parecem ser associadas? Onde cada caracter&iacute;stica &eacute; mais importante?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="UseProximityCategory" class="smallsize">
         <h2>Utilizar Proximidade</h2>
         <hr/>
@@ -552,45 +611,47 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="largesize">
-        <h2>Manage Data</h2>
+        <h2>Gerenciar Dados</h2>
         <hr/>
-        <p>These tools are used for the day-to-day management of geographic and tabular data. 
+        <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento di&aacute;rio de dados geogr&aacute;ficos e tabelares.  
             <ul>
-                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                <li> <b>Anexar Dados</b> anexa fei&ccedil;&otilde;es a uma camada de fei&ccedil;&atilde;o hospedada existente.
                 </li>
-                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
+                <li> <b>Calcular Campo</b> cria um novo campo ou modifica um campo existente e cria uma nova camada em seu conte&uacute;do.
                 </li>
-                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
+                <li> <b>Recortar Camada</b> copia fei&ccedil;&otilde;es que interseccionam uma &aacute;rea de interesse definida.
                 </li>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu conte&uacute;do ou copia os dados para um compartilhamento do arquivo de grandes dados. 
                 </li>
-                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                <li> <b>Dissolver Limites</b> junta as &aacute;reas que compartilham um valor de atributo ou limite em comum.
                 </li>
-                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                <li> <b>Juntar Camadas</b> copia todas as fei&ccedil;&otilde;es de duas camadas em uma &uacute;nica camada resultante.
                 </li>
-                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
+                <li> <b>Sobrepor Camadas</b> combina duas ou mais camadas em uma &uacute;nica camada.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="largesize">
+        <div id="AppendDataTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Copiar para Armazenamento de Dados</h2></td>
+                    <td><h2>Acrescentar Dados</h2></td>
                     <td>
-                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copiar para Armazenamento de Dados">
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Diagrama do Fluxo de Trabalho Anexar Dados">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu  ArcGIS Enterprise. </p>
+            <p>Anexa fei&ccedil;&otilde;es para umas camada hospedada existentes em seu conte&uacute;do em  ArcGIS Enterprise. </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Copiar uma cole&ccedil;&atilde;o de  <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
+                    <li>Atualize sua camada de fei&ccedil;&atilde;o 2018_Sales cada m&ecirc;s que seus relat&oacute;rios forem disponibilizados.
                     </li>
-                    <li>Copiar as fei&ccedil;&otilde;es na extens&atilde;o de mapa atual que s&atilde;o guardadas no armazenamento de dados de espa&ccedil;o-tempo no armazenamento de dados relacional.
+                    <li>Anexe conjunto de dados de acompanhamento de furac&atilde;o a partir dos anos 2016 e 2017 em um conjunto de dados de furac&atilde;o mestre.
+                    </li>
+                    <li>Colete e anexe conjunto de dados de v&aacute;rias origens com esquemas diferentes utilizando mapeamento de campo personalizado.
                     </li>
                 </ul>
                 
@@ -613,7 +674,7 @@
                 <ul>
                     <li>Modificar um campo existente denominado  <i>total</i> para ser a soma das receitas dos campos <i>total_2016</i>, <i>total_2017</i>, e <i>total_2018</i>.
                     </li>
-                    <li>Criar um novo campo para categorizar os n&iacute;veis de perigo com base em valores de campo, como  <i>windspeed</i> e <i>pollutant</i>.
+                    <li>Criar um campo para categorizar os n&iacute;veis de perigo com base em valores de campo, como  <i>windspeed</i> e <i>pollutant</i>.
                     </li>
                 </ul>
                 
@@ -644,6 +705,29 @@
             </p>
             <br/>
         </div>
+        <div id="CopyToDataStoreTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copiar para Armazenamento de Dados</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copiar para Armazenamento de Dados">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu  ArcGIS Enterprise. </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Copiar uma cole&ccedil;&atilde;o de  <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
+                    </li>
+                    <li>Copiar as fei&ccedil;&otilde;es na extens&atilde;o de mapa atual que s&atilde;o guardadas no armazenamento de dados de espa&ccedil;o-tempo no armazenamento de dados relacional.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="DissolveBoundariesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -656,67 +740,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Junta as fei&ccedil;&otilde;es de &aacute;rea que se interseccionam ou compartilham um valor de campo em comum para criar fei&ccedil;&otilde;es de  m&uacute;ltiplas partes ou cont&iacute;guas.
+            <p>Junta as fei&ccedil;&otilde;es de &aacute;rea que se interseccionam ou compartilham um valor de campo em comum para criar fei&ccedil;&otilde;es de m&uacute;ltiplas partes ou cont&iacute;guas.
             </p>
             <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Cria uma &uacute;nica fei&ccedil;&atilde;o representando o estado do Hava&iacute;, dissolvendo os limites das ilhas havaianas.
                     </li>
                     <li>Combina &aacute;reas de estudo semelhantes com base no tipo de solo para produzir um conjunto de dados de tipo de solo cont&iacute;guo.
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="OverlayLayersTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Sobrepor Camadas</h2></td>
-                    <td>
-                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Sobrepor Camadas
-">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Combina duas ou mais camadas em uma &uacute;nica camada. A sobreposi&ccedil;&atilde;o &eacute; utilizada para responder uma das perguntas mais b&aacute;sicas da geografia,O que est&aacute; por cima do que? 
-            </p>
-            <p>O seguinte s&atilde;o exemplos:
-                <ul>
-                    <li>Quais lotes est&atilde;o dentro da &aacute;rea de inunda&ccedil;&atilde;o de 100 anos? (Dentro &eacute; somente outro modo de dizer sobre.)
-                          
-                    </li>
-                    <li>Qual uso do solo est&aacute; sobre qual tipo de solo?
-                         
-                    </li>
-                    <li>Quais po&ccedil;os est&atilde;o dentro de bases militares abandonadas?
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="AppendDataTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Acrescentar Dados</h2></td>
-                    <td>
-                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Diagrama do Fluxo de Trabalho Anexar Dados">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Anexa fei&ccedil;&otilde;es para umas camada hospedada existentes em seu conte&uacute;do em  ArcGIS Enterprise. </p>
-            <p>Os seguintes s&atilde;o exemplos:
-                <ul>
-                    <li>Atualize sua camada de fei&ccedil;&atilde;o 2018_Sales cada m&ecirc;s que seus relat&oacute;rios forem disponibilizados.
-                    </li>
-                    <li>Anexe conjunto de dados de acompanhamento de furac&atilde;o a partir dos anos 2016 e 2017 em um conjunto de dados de furac&atilde;o mestre.
-                    </li>
-                    <li>Colete e anexe conjunto de dados de v&aacute;rias origens com esquemas diferentes utilizando mapeamento de campo personalizado.
                     </li>
                 </ul>
                 
@@ -747,6 +777,35 @@
             </p>
             <br/>
         </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sobrepor Camadas</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Sobrepor Camadas
+">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Combina duas ou mais camadas em uma camada. A sobreposi&ccedil;&atilde;o &eacute; utilizada para responder uma das perguntas mais b&aacute;sicas da geografia: O que est&aacute; por cima do que? 
+            </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Quais lotes est&atilde;o dentro da plan&iacute;cie alagada de 100 anos? (Dentro &eacute; somente outro modo de dizer sobre.)
+                          
+                    </li>
+                    <li>Qual uso do solo est&aacute; sobre qual tipo de solo?
+                         
+                    </li>
+                    <li>Quais po&ccedil;os est&atilde;o dentro de bases militares abandonadas?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="EnrichLocationsCategory" class="smallsize">
         <h2>Enriquecimento de Dados</h2>
         <hr/>
@@ -771,7 +830,7 @@
 <hr/>
             <p>Une eficientemente os atributos de uma grade de m&uacute;ltiplas vari&aacute;veis a uma camada de ponto, permitindo que voc&ecirc; adicione rapidamente uma grande e diversificada cole&ccedil;&atilde;o de informa&ccedil;&otilde;es para apontar dados para uso em an&aacute;lises espaciais posteriores. 
             </p>
-            <p>Os seguintes s&atilde;o exemplos:
+            <p>Abaixo est&aacute; um exemplo:
                 <ul>
                     <li>Considerando uma camada contendo milh&otilde;es de incidentes de interrup&ccedil;&atilde;o de energia, aprimore as fei&ccedil;&otilde;es do incidente com informa&ccedil;&otilde;es sobre o uso t&iacute;pico, os riscos ambientais e as condi&ccedil;&otilde;es de infraestrutura, a fim de estudar a rela&ccedil;&atilde;o entre estes fatores e a frequ&ecirc;ncia da falta de energia. 
                     </li>

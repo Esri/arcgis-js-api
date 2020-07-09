@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({addBarriers:"Izvēlēties barjeras slāņus",pointBarrier:"Punktveida barjeras",lineBarrier:"Līnijveida barjeras",polygonBarrier:"Laukumveida barjeras",choosePointBarrier:"Izvēlēties punktveida barjeru slāni",chooseLineBarrier:"Izvēlēties līnijveida barjeru slāni",choosePolygonBarrier:"Izvēlēties laukumveida barjeru slāni",selectPointBarrier:"Izvēlieties punktveida barjeras",selectLineBarrier:"Izvēlēties līnijveida barjeras",selectPolygonBarrier:"Izvēlēties laukumveida barjeras"});

@@ -140,5 +140,46 @@
             </p>
         </div>
     </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Escolher camada de feição ou raster para representar barreiras</h2></div>
+        <hr/>
+        <div>
+            <p>O conjunto de dados que define as barreiras. 
+            </p>
+            <p>Para um servi&ccedil;o de imagem, o tipo de entrada pode ser inteiro ou ponto flutuante. Quaisquer c&eacute;lulas que tenham um valor (incluindo zero) ser&aacute; tratado como uma barreira, quaisquer c&eacute;lulas que forem NoData n&atilde;o ser&atilde;o tratados como uma barreira.
+            </p>
+            <p>Para um servi&ccedil;o da fei&ccedil;&atilde;o, a entrada pode ser ponto, linha ou pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distância</h2></div>
+        <hr/>
+        <div>
+            <p>Determina o c&aacute;lculo da dist&acirc;ncia utilizando um m&eacute;todo plano (Terra plana) ou um m&eacute;todo geod&eacute;sico (elips&oacute;ide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;O c&aacute;lculo ser&aacute; executado em um plano utilizando um sistema de coordenada Cartesiano 2D. Este &eacute; o m&eacute;todo padr&atilde;o.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>&mdash;As dist&acirc;ncias s&atilde;o calculadas no elips&oacute;ide. Portanto, n&atilde;o importando a proje&ccedil;&atilde;o de entrada ou de sa&iacute;da, os resultados n&atilde;o alteram.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nome da camada de direção resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b>. Voc&ecirc; deve fornecer um nome que n&atilde;o exista atualmente em <b>Meu Conte&uacute;do</b>.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
 </div>
 </html>

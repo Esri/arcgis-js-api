@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rasti apsistojimo vietas</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Rasti apsistojimo vietas darbo eigos diagrama"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis veikia su  <code>momentinio</code>&nbsp;tipo ta&scaron;kinių elementų sluoksniu, kuriame įgalintas laikas. Pirmiausia įrankis priskiria elementus trajektorijai, naudodamas unikalius identifikatorius. Trajektorijos eili&scaron;kumas nustatomas pagal elementų laiką. Tada skaičiuojamas atstumas tarp pirmojo ir sekančio trajektorijos stebėjimo. Apsistojimui&nbsp;elementai priskiriami, jei du laiko atžvilgiu gretimi ta&scaron;kai per nurodytą laiko trukmę nevir&scaron;ija nurodyto atstumo. Kai&nbsp;du elementai nustatomi kaip&nbsp;apsistojimo dalys, pirmasis&nbsp;apsistojimo elementas naudojamas kaip atskaitos ta&scaron;kas. Įrankis randa tolesnius elementus, kurie patenka į nurodytą atstumą nuo&nbsp;apsistojimo atskaitos ta&scaron;ko. Kai randami visi į nurodytą atstumą patenkantys elementai, įrankis surenka&nbsp;apsistojimo elementus ir apskaičiuoja jų&nbsp;vidurkio centrą. Prie&scaron; ir po esamo&nbsp;apsistojimo esantys elementai įtraukiami į jį, jei jie patenka į nurodytą atstumą nuo&nbsp;apsistojimo padėties&nbsp;vidurkio centro. &Scaron;is procesas tęsiamas iki trajektorijos pabaigos.
+    </p>
+    <p>Elementai sluoksniuose, kuriuose palaikomos laiko žymos, gali būti reprezentuojami tokiais būdais:
+        <ul>
+            <li>Momentas &ndash; konkreti laiko akimirka
+            </li>
+            <li>Intervalas &ndash; pradžios ir pabaigos laikas
+            </li>
+        </ul>
+        
+    </p>
+    <p>Pavyzdžiui, įsivaizduokite, kad dirbate Transporto departamente ir surinkote transporto priemonių GPS duomenis pagrindiniuose greitkeliuose. Kiekviename GPS įra&scaron;e yra unikalus transporto priemonės ID, laikas, padėtis ir greitis. Naudodami unikalius transporto priemonių ID, apibrėžkite individualias trajektorijas ir ie&scaron;kokite transporto priemonių, kurios per paskutines 15 minučių nepajudėjo daugiau nei 100 metrų. Taip atrasite problemi&scaron;kas kelių tinklo vietas. Taip pat galite apskaičiuoti statistiką, pavyzdžiui, vidutinį transporto priemonių greitį jų gyvenamojoje vietoje.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pasirinkite sluoksnį, kuriame ieškoti apsistojimų</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kinis sluoksnis, kuris bus sumuojamas į apsistojimus. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką, bei vienas arba keli laukai, kuriuos būtų galima naudoti trajektorijoms nustatyti.
+            </p>
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Pasirinkti analizės sluoksnį</b>, kad galėtumėte turinyje ie&scaron;koti didelių duomenų rinkinio arba elemento sluoksnio. Jei norite, įvesties sluoksnyje galite pritaikyti filtrą arba vykdyti pasirinkimą talpinamiems sluoksniams, įtrauktiems į jūsų žemėlapį. Filtrai ir pasirinkimai pritaikomi tik analizei. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Pasirinkite vieną arba kelis laukus, kad galėtumėte nustatyti trajektorijas</h2></div>
+        <hr/>
+        <div>
+            <p>Laukai, nurodantys trajektorijos identifikatorių. Unikalioms trajektorijos reik&scaron;mėms nurodyti galite naudoti vieną arba kelis laukus.
+            </p>
+            <p>Pavyzdžiui, jei ie&scaron;kote uraganų apsistojimo vietų, trajektorijos lauke galite nurodyti uragano pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Pasirinkite atstumo skaičiavimo metodą</h2></div>
+        <hr/>
+        <div>
+            <p>Apsistojimo atstumui trajektorijose skaičiuoti naudojamas metodas Naudojant  <b>Plok&scaron;tuminį</b> metodą, rezultatai bus apskaičiuojami greičiau, tačiau trajektorijos aplink demarkacinę paros laiko liniją nebus buferizuojamos, o buferizuojant nebus atsižvelgiama į tikrąją Žemės formą. Naudojant <b>Geodezinį</b> metodą, trajektorijos aplink demarkacinę paros laiko liniją bus buferizuojamos (jei reikia), o atsižvelgiant į tikrąją Žemės formą bus naudojamas geodezinis buferis.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Apibrėžkite erdvinį paieškos atstumą</h2></div>
+        <hr/>
+        <div>
+            <p>Apsistojimo atstumo tolerancija yra maksimalus atstumas tarp dviejų ta&scaron;kų, kad jie būtų laikomi patenkantys į tą pačią apsistojimo vietą.
+            </p>
+            <p>Pavyzdžiui, jei norite rasti apsistojimo vietas, kur eismas per tam tikrą laiką nepajudėjo daugiau nei 20 metrų, atstumo toleranciją nurodykite lygią 20 metrų.
+            </p>
+            <p>Laiką nurodykite naudojami parametrą  <b>Apibrėžti laikiną paie&scaron;kos intervalą</b>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Trajektorijų skaidymas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Atstumo tolerancijos matavimo vienetas.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Apibrėžti laikiną paieškos intervalą</h2></div>
+        <hr/>
+        <div>
+            <p>Apsistojimo laiko tolerancija yra minimali apsistojimo laiko trukmė, kad jis būtų laikomas viena apsistojimo vieta.
+            </p>
+            <p>Pavyzdžiui, jei norite žinoti, kur eismas tam tikru atstumu nepajudėjo per valandą, laiko toleranciją reikia nurodyti kaip 1 valandą.
+            </p>
+            <p>Atstumą nurodykite naudojami parametrą  <b>Apibrėžti erdvinį paie&scaron;kos intervalą</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Pasirinkite atstumą, kurio intervalais bus suskaidytos trajektorijos (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Laiko tolerancijos matavimo vienetas.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pridėti statistiką (pasirinktinis nustatymas)</h2></div>
+        <hr/>
+        <div>
+            <p>Galite apskaičiuoti į santrauką įtrauktų elementų statistiką. Galite skaičiuoti &scaron;iuos skaitinius laukus: 
+                <ul>
+                    <li>Skaičius &ndash; apskaičiuojamas nenulinių reik&scaron;mių skaičius. Galima naudoti skaitiniams laukams arba eilutėms. [nulinis, 0, 2] skaičius yra 2.
+                    </li>
+                    <li>Suma &ndash; lauke nurodytų skaitinių reik&scaron;mių suma. [nulinis, 0, 3] suma yra 3.
+                    </li>
+                    <li>Vidurkis &ndash; skaitinių reik&scaron;mių vidurkis. [0, 2, nulinis] vidurkis yra 1.
+                    </li>
+                    <li>Minimumas &ndash; skaitinio lauko reik&scaron;mės minimumas. [0, 2, nulinis] minimumas yra 0. 
+                    </li>
+                    <li>Maksimumas &ndash; skaitinio lauko reik&scaron;mės maksimumas. [0, 2, nulinis] maksimumas yra 2.
+                    </li>
+                    <li>Intervalas  &ndash; skaitinio lauko intervalas. Apskaičiuojamas i&scaron; maksimalios reik&scaron;mės atėmus minimalią reik&scaron;mę. [0, nulinis, 1] intervalas yra 1. [nulinis, 4] intervalas yra 0.
+                    </li>
+                    <li>Nuokrypis &ndash; skaitinio laiko nuokrypis trajektorijoje. [1] nuokrypis yra nulinis. [nulinis, 1,0,1,1] nuokrypis yra 0,25.
+                    </li>
+                    <li>Standartinis nuokrypis &ndash; skaitinio laiko standartinė deviacija. [1] standartinis nuokrypis yra nulinis. [nulinis, 1,0,1,1] standartinis nuokrypis yra 0,5. 
+                    </li>
+                    <li>Pirma &ndash; pirma nurodyto laiko reik&scaron;mė apibendrintoje trajektorijoje. Jei trajektorijos lauko reik&scaron;mės pagal laiką yra &scaron;ios: [1,5,10,20], pirmoji reik&scaron;mė yra 1.
+                    </li>
+                    <li>Paskutinė &ndash; paskutinė nurodyto laiko reik&scaron;mė apibendrintoje trajektorijoje. Jei trajektorijos lauko reik&scaron;mės pagal laiką yra &scaron;ios: [1,5,10,20], paskutinė reik&scaron;mė yra 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Galite skaičiuoti &scaron;iuos tekstinius laukus:
+                <ul>
+                    <li>Skaičius &ndash; nenulinių eilučių skaičius.
+                    </li>
+                    <li>Bet kokį rodiklį &ndash; &scaron;is statistinis rodiklis yra atsitiktinės eilutės reik&scaron;mės i&scaron; nurodyto lauko pavyzdys.
+                    </li>
+                    <li>Pirma &ndash; pirma nurodyto laiko reik&scaron;mė apibendrintoje trajektorijoje. Jei trajektorijos lauko reik&scaron;mės pagal laiką yra &scaron;ios: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], pirmoji reik&scaron;mė yra Toronto.
+                    </li>
+                    <li>Paskutinė &ndash; paskutinė nurodyto laiko reik&scaron;mė apibendrintoje trajektorijoje. Jei trajektorijos lauko reik&scaron;mės pagal laiką yra &scaron;ios: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], paskutinė reik&scaron;mė yra Boston.
+                    </li>
+                </ul>
+                Visi statistiniai rodikliai apskaičiuojami tik su nenulinėmis reik&scaron;mėmis. Gautame sluoksnyje bus kiekvieno apskaičiuoto statistinio rodiklio naujas laukas. Pasirinktam atributui ir statistiniam rodikliui galima apskaičiuoti bet kokį skaičių statistinių rodiklių.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Išvesti apsistojimo vietas kaip</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, kokie elementai grąžinami ir kokiu formatu. Galimi keturi tipai: 
+                <ul>
+                    <li> <b>I&scaron;vidurkinti centrai</b> &ndash; ta&scaron;kas, kuris reprezentuoja kiekvienos aptiktos apsistojimo vietos centroidą. Atributai bus sumuojami. Tai numatytasis nustatymas.
+                         
+                    </li>
+                    <li> <b>I&scaron;kiliosios aprėptys</b> &ndash; poligonai, reprezentuojantys kiekvienos apsistojimo grupės i&scaron;kiliąją aprėptį. Atributai bus sumuojami.
+                         
+                    </li>
+                    <li> <b>Apsistojimo elementai</b> &ndash; pateikiami visi įvesties ta&scaron;kų elementai ir atributai, kurie nustatyti priklausantys apsistojimui.
+                         
+                    </li>
+                    <li> <b>Visi elementai</b> &ndash; pateikiami visi įvesties ta&scaron;kų elementai ir atributai.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizuoti duomenis su laiko intervalais (nebūtina)</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite, ar norite ie&scaron;koti apsistojimo vietų naudodami laiko intervalus, kurie segmentuoja jūsų įvesties elementus analizei. Jei naudosite laiko intervalus, turite nustatyti norimą naudoti laiko intervalą ir (nebūtina) nustatyti atskaitos laiką. Jei nenustatysite atskaitos laiko, bus naudojama 1970 m. sausio 1 d. 
+            </p>
+            <p>Pavyzdžiui, jei nustatysite laiko ribą kaip 1 dieną, o pradžios ta&scaron;ką 1990 m. sausio 1 d. 9:00 val., kiekviena trajektorija bus sutrumpinta kasdien 9:00 val. ir analizuojama tame segmente. Apsistojimai nebus pradedami prie&scaron; ir nebus užbaigiami po 9:00 val. 
+            </p>
+            <p>Laiko intervalų naudojimas yra paprastas būdas paspartinti skaičiavimo laiką, nes taip greitai sukuriamos mažesnės trajektorijos analizei. Jei padalinimas į pasikartojančius laiko intervalus logi&scaron;kai tinkamas jūsų analizei, rekomenduojama tai padaryti apdorojant didelius duomenis.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Pavadinimas sluoksnio, kuris bus sukurtas.  Jei įra&scaron;ote į ArcGIS Data Store, jūsų rezultatai bus įra&scaron;yti į  <b>Turinį</b> ir įtraukti į žemėlapį. Jei įra&scaron;ote į didelių duomenų failo bendrinimą, jūsų rezultatai bus saugomi didelių duomenų failo bendrinime ir pridedami į jo deklaraciją. Jie nebus įtraukti į žemėlapį. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>Kai ra&scaron;ote į   ArcGIS Data Store  (releacinių arba erdvėlaikinių didelių duomenų saugyklą) naudodami i&scaron;&scaron;okantįjį meniu  <b>Įra&scaron;yti rezultatą į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

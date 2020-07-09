@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({chooseShape:"選擇形狀",defineExtent:"定義範圍",defineBin:"定義容器大小，方法是指定",area:"面積",distance:"距離",resultLayerName:"結果圖層名稱",hexagon:"六邊形",transverseHexagon:"橫切六邊形",square:"平方",triangle:"三角形",diamond:"菱形",sameAsDisplay:"與顯示一致",emptyBinSize:"容器大小不可空白",currentExtent:"目前範圍",intersectExtent:"僅維持相交鑲嵌",outputLayerName:"在 ${extentLayerName} 上產生鑲嵌",itemDescription:"使用來自 ${extentLayerName} 的範圍。",itemTags:"分析結果，產生鑲嵌，${extentLayerName}",itemSnippet:"透過「產生鑲嵌」所產生的圖徵圖層。"});

@@ -41,12 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Połącz obiekty</h2><p/>
-        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Połącz obiekty"></h2>
+        <h2>Złącz obiekty</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Złącz obiekty"></h2>
         <hr/>
     <p>Narzędzie Połącz obiekty działa z dwiema warstwami. Narzędzie Połącz obiekty łączy atrybuty z jednego obiektu z atrybutami w innym obiekcie na podstawie relacji przestrzennych, czasowych lub relacji między atrybutami, albo na postawie kombinacji tych trzech typ&oacute;w relacji. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki połączenia, a następnie łączy warstwy wejściowe. Opcjonalnie można połączyć wszystkie pasujące obiekty lub zsumować pasujące obiekty.
     </p>
-    <p>Narzędzie Połącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Połączenie czasowe wymaga wejściowych danych czasowych, a połączenie przestrzenne wymaga, aby dane posiadały geometrię. 
+    <p>Narzędzie Złącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Połączenie czasowe wymaga wejściowych danych czasowych, a połączenie przestrzenne wymaga, aby dane posiadały geometrię. 
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,19 +56,19 @@
         <div>
             <p>Warstwa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy połączenia.
             </p>
-            <p>Analiza wykorzystująca relację przestrzenną  <b>W pobliżu</b> wymaga układu wsp&oacute;łrzędnych odwzorowanych. <b>Układ wsp&oacute;łrzędnych przetwarzania</b> można skonfigurować w oknie <b>Środowiska analizy</b>. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas <b>uruchamiania analizy</b> zostanie wyświetlony monit informujący o konieczności wykonania tej czynności.
+            <p>Analiza wykorzystująca relację przestrzenną  <b>W pobliżu</b> wymaga układu wsp&oacute;łrzędnych odwzorowanych. Układ wsp&oacute;łrzędnych przetwarzania można skonfigurować w oknie Środowiska analizy. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas uruchamiania analizy zostanie wyświetlony monit informujący o konieczności wykonania tej czynności .
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Wybierz warstwę do przyłączenia do warstwy docelowej</h2></div>
+        <div><h2>Wybierz warstwę do złączenia z warstwą docelową</h2></div>
         <hr/>
         <div>
-            <p>Warstwa połączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
+            <p>Warstwa złączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
             </p>
         </div>
     </div>
@@ -119,7 +119,9 @@
                     </li>
                     <li> <b>R&oacute;wna się</b> &mdash; obiekty zostaną dopasowane, jeśli mają tę samą geometrię.
                     </li>
-                    <li> <b>W pobliżu</b> &mdash; obiekty zostaną dopasowane, jeśli znajdują się w określonej odległości od siebie. Warstwa docelowa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie <b>Środowiska analizy</b>, jeśli używana jest relacja przestrzenna <b>W pobliżu</b>.
+                    <li> <b>W pobliżu (planarne)</b> &mdash; obiekty zostaną dopasowane, jeśli znajdują się w określonej odległości od siebie. Warstwa docelowa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie <b>Środowiska analizy</b>, jeśli używana jest relacja przestrzenna <b>W pobliżu</b>.
+                    </li>
+                    <li> <b>W pobliżu (geodezyjne)</b> &mdash; obiekty zostaną dopasowane, jeśli znajdują się w określonej odległości od siebie. Odległość jest mierzona jako odległość planarna.
                     </li>
                     <li> <b>Zawiera</b> &mdash; obiekty zostaną dopasowane, jeśli warstwa docelowa jest zawarta w dołączanych obiektach.
                     </li>
@@ -216,7 +218,7 @@
             </p>
             <p>Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości: 
                 <ul>
-                    <li>Liczba &mdash; zlicza wartości inne niż null.Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
                     <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
@@ -264,11 +266,11 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w magazynie danych i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w magazynie danych i udostępniane jako warstwa obiektowa w oprogramowaniu  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Wyniki mogą być używane w ramach kooperacji między portalami.
                     </li>
-                    <li>Została włączona możliwość synchronizacji wynik&oacute;w.
+                    <li>Można włączyć funkcje synchronizacji wynik&oacute;w.
                     </li>
                 </ul>
                 
@@ -281,7 +283,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie Moje zasoby. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
             <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>

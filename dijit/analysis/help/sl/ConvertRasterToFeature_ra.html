@@ -55,11 +55,11 @@
     <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo pretvorjene samo rastrske celice, vidne znotraj trenutnega obsega karte. Če je odkljukano, bodo pretvorjene vse celice v rastrskem sloju, tudi če so zunaj trenutnega obsega karte. Upo&scaron;tevajte to, če je rastrski sloj velik ali ima zelo visoko ločljivost.
     </p>
     <p>Primeri uporabe tega orodja vključujejo naslednje:
- 
+
         <ul>
             <li>Ustvarite poligonske geoobjekte iz klasifikacijskega rastra za rabo tal.
                 
- 
+
             </li>
             <li>Realnočasovne pretoke, identificirane v DMV-ju, je mogoče pretvoriti v linijske geoobjekte.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DMV je mogoče pretvoriti v točkovne geoobjekte, ki se lahko uporabljajo v delovnem procesu, ki ne temelji na rastru.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Izberi polje</h2></div>
         <hr/>
         <div>
-            <p>Vnesite polje, ki določa vrednost, ki se bo uporabljala za pretvorbo.
+            <p>Polje, ki določa vrednost pretvorbe.
             </p>
             <p>Lahko je katero koli celo &scaron;tevilo ali besedilna vrednost.
             </p>
             <p>Polje, ki vsebuje vrednosti plavajoče vejice, se lahko uporablja samo, če je izhod v točkovnem sklopu podatkov.
             </p>
-            <p>Privzeta izbira je uporaba polja  <i>Value</i>, ki vsebuje vrednost v vsaki rastrski celici.
+            <p>Privzeta nastavitev je polje  <i>Value</i> , ki vsebuje vrednost v vsaki rastrski celici.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Izberi izhodni tip</h2></div>
         <hr/>
         <div>
-            <p>Izberite tip izhoda med točko, linijo ali poligonom.
+            <p>Določi izhodni tip.
             </p>
             <ul>
-                <li>Točka &ndash; raster bo pretvorjen v točkovni sklop podatkov.
+                <li> <b>Točka</b> &ndash; Raster bo pretvorjen v točkovni sklop podatkov. To je privzeta nastavitev.
                     
  
                 </li>
-                <li>Linija &ndash; raster bo pretvorjen v linijski geoobjektni sklop.
+                <li> <b>Linija</b> &ndash; Raster bo pretvorjen v linijski geoobjektni sklop.
                     
  
                 </li>
-                <li>Poligon &ndash; raster bo pretvorjen v poligonski geoobjektni sklop.
+                <li> <b>Poligon</b> &ndash; Raster bo pretvorjen v poligonski geoobjektni sklop.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Poenostavi linije ali poligone</h2></div>
         <hr/>
         <div>
-            <p>Navedite, ali je treba geoobjekte poenostaviti.
+            <p>Določi če bodo linije ali poligoni poenostavljeni (zglajeni). Glajenje se izvede tako, da linija vsebuje minimalno &scaron;tevilo segmentov, a hkrati ostaja kolikor se da blizu robovom prvotnih rastrskih celic.
             </p>
-            <p>Če je obkljukano (privzeto), bodo linijski ali poligonski geoobjekti izravnani zaradi pridobivanja bolj posplo&scaron;enega rezultata. Če je možnost odkljukana, bodo linearni geoobjekti sledili omejitvam celic rastrskega sklopa podatkov.
+            <ul>
+                <li>Obkljukano &ndash; Linijski ali poligonski geoobjekti bodo izravnani zaradi pridobivanja bolj posplo&scaron;enega rezultata. To je privzeta nastavitev.
+                    
+
+                </li>
+                <li>Odkljukano &ndash; Linijski ali poligonski geoobjekti bodo sledili omejitvam celic rastrskega sklopa podatkov.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ta parameter je podprt samo, če je izhodni tip linija ali poligon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Ustvari mnogodelne geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Določi, ali bo va&scaron; rezultat sestavljen iz enodelnih ali večdelnih geoobjektov.
+            </p>
+            <ul>
+                <li>Obkljukano &ndash; Večdelni geoobjekti bodo ustvarjeni na podlagi poligonov z enakimi vrednostmi.
+                    
+
+                </li>
+                <li>Odkljukano &ndash; Posamezni (enodelni) geoobjekti bodo ustvarjeni za vsak poligon. To je privzeta nastavitev.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ta parameter je podprt samo, če je izhodni tip poligon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimalno število lomnih točk na poligonski geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Omejitev lomnih točk, ki se uporablja za razdelitev poligona na manj&scaron;e poligone.
+            </p>
+            <p>Če možnost pustite prazno, izhodni poligoni ne bodo razdeljeni. To je privzeta nastavitev.
+            </p>
+            <p>Ta parameter je podprt samo, če je izhodni tip poligon.
             </p>
         </div>
     </div>

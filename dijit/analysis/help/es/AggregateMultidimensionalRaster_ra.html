@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregar ráster multidimensional</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregar r&aacute;ster multidimensional"></h2>
+        <hr/>
+    <p>Genera un dataset r&aacute;ster multidimensional al combinar variables de r&aacute;ster multidimensional existentes a lo largo de una dimensi&oacute;n.
+    </p>
+    <p>Si cuenta con 30 a&ntilde;os de datos de temperatura de la superficie del mar que se han recopilado mensualmente y en cada 5 metros de profundidad hasta llegar a los 100 metros, estas son algunas de las aplicaciones de ejemplo:
+        <ul>
+            <li>Agregue datos de temperatura mensuales en datos anuales.
+            </li>
+            <li>Agregue datos de temperatura mensuales en intervalos de 4 meses.
+            </li>
+            <li>Agregue datos de temperatura de 0 a 25 metros, despu&eacute;s de 25 a 50 metros, por &uacute;ltimo, de 50 a 100 metros.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si  <b>Usar la extensi&oacute;n de mapa actual</b> est&aacute; activado, se analizar&aacute;n las variables de la capa que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si no est&aacute; activado, se analizar&aacute;n las variables de la capa completa, incluso si se encuentran fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Elegir capa de imágenes multidimensional que agregar</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de im&aacute;genes de entrada de un r&aacute;ster multidimensional que se agregar&aacute;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Elegir dimensión a lo largo de la que se agregará</h2></div>
+        <hr/>
+        <div>
+            <p>La dimensi&oacute;n de agregaci&oacute;n. Esta es la dimensi&oacute;n a lo largo de la cual se agregan las variables.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Elegir variable(s) que agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Las variables que se agregar&aacute;n a lo largo de la dimensi&oacute;n determinada. Si no se especifica ninguna variable, se agregar&aacute;n todas las variables con la dimensi&oacute;n seleccionada.
+            </p>
+            <p>Por ejemplo, para agregar sus datos de temperatura diarios en valores promedio mensuales, especifique la temperatura como la variable que se agregar&aacute;. Si no especifica ninguna variable y no cuenta con variables de temperatura y precipitaciones diarias, ambas variables se agregar&aacute;n en promedios mensuales y estar&aacute;n incluidas en el r&aacute;ster multidimensional de salida.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Elegir el método de agregación</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el m&eacute;todo matem&aacute;tico que se utilizar&aacute; para combinar las porciones agregadas en un intervalo. 
+                <ul>
+                    <li> <b>Valor medio</b>: calcula el valor medio de los valores de un p&iacute;xel en todas las porciones del intervalo. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>M&aacute;ximo</b>: calcula el valor m&aacute;ximo de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Mayor&iacute;a</b>: calcula el valor que se produce con m&aacute;s frecuencia para un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>M&iacute;nimo</b>: calcula el valor m&iacute;nimo de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Minor&iacute;a</b>: calcula el valor que se produce con menos frecuencia para un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Mediana</b>: calcula el valor de la mediana de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Rango</b>: calcula el rango de valores de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Desviaci&oacute;n est&aacute;ndar</b>: calcula la desviaci&oacute;n est&aacute;ndar de los valores de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Suma</b>: calcula la suma de los valores de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Variedad</b>: calcula la cantidad de valores &uacute;nicos de un p&iacute;xel en todas las porciones del intervalo.
+                    </li>
+                    <li> <b>Personalizar</b>: calcula el valor de un p&iacute;xel seg&uacute;n una funci&oacute;n r&aacute;ster personalizada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Elegir la plantilla de función ráster</h2></div>
+        <hr/>
+        <div>
+            <p>Una funci&oacute;n r&aacute;ster personalizada que se usar&aacute; para calcular los valores de p&iacute;xel de los r&aacute;steres agregados. Esta entrada es un elemento de plantilla de funci&oacute;n r&aacute;ster en el portal. Esta entrada es obligatoria cuando  <b>M&eacute;todo de agregaci&oacute;n</b> est&aacute; definido en <b>Personalizado</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Elegir definición de agregación</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el intervalo de dimensi&oacute;n en el que se agregar&aacute;n los datos. 
+                <ul>
+                    <li> <b>Todo</b>: los valores de datos se agregar&aacute;n en todas las porciones. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Palabra clave de intervalo</b>: los datos de variables se agregar&aacute;n con un intervalo com&uacute;nmente conocido.
+                    </li>
+                    <li> <b>Valor de intervalo</b>: los datos de variables se agregar&aacute;n con un intervalo y una unidad especificados por el usuario.
+                    </li>
+                    <li> <b>Rangos de intervalos</b>: los datos de variables se agregar&aacute;n entre pares de valores o fechas especificados.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Elegir intervalo de palabra clave</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el intervalo de palabra clave que se usar&aacute; al agregar a lo largo de la dimensi&oacute;n. Esta entrada es obligatoria si  <b>Definici&oacute;n de agregaci&oacute;n</b> se define como <b>Palabra clave de intervalo</b> y, adem&aacute;s, la agregaci&oacute;n debe ser a lo largo del tiempo.
+                <ul>
+                    <li> <b>Cada hora</b>: los valores de datos se agregar&aacute;n en periodos de tiempo horarios y el resultado incluir&aacute; todas las horas de las series temporales.
+                    </li>
+                    <li> <b>Cada d&iacute;a</b>: los valores de datos se agregar&aacute;n en periodos de tiempo diarios y el resultado incluir&aacute; todos los d&iacute;as de las series temporales.
+                    </li>
+                    <li> <b>Cada semana</b>: los valores de datos se agregar&aacute;n en periodos de tiempo semanales y el resultado incluir&aacute; todas las semanas de las series temporales.
+                    </li>
+                    <li> <b>Cada mes</b>: los valores de datos se agregar&aacute;n en periodos de tiempo mensuales y el resultado incluir&aacute; todos los meses de las series temporales.
+                    </li>
+                    <li> <b>Cada trimestre</b>: los valores de datos se agregar&aacute;n en periodos de tiempo trimestrales y el resultado incluir&aacute; todos los trimestres de las series temporales.
+                    </li>
+                    <li> <b>Cada a&ntilde;o</b>: los valores de datos se agregar&aacute;n en periodos de tiempo anuales y el resultado incluir&aacute; todos los a&ntilde;os de las series temporales.
+                    </li>
+                    <li> <b>Recurrente diariamente</b>: los valores de datos se agregar&aacute;n en periodos de tiempo diarios y el resultado incluir&aacute; un valor agregado por d&iacute;a juliano. La salida incluir&aacute;, al menos, 366 periodos de tiempo diarios.
+                    </li>
+                    <li> <b>Recurrente semanalmente</b>: los valores de datos se agregar&aacute;n en periodos de tiempo semanales y el resultado incluir&aacute; un valor agregado por semana. La salida incluir&aacute;, al menos, 53 periodos de tiempo semanales.
+                    </li>
+                    <li> <b>Recurrente mensualmente</b>: los valores de datos se agregar&aacute;n en periodos de tiempo semanales y el resultado incluir&aacute; un valor agregado por mes. La salida incluir&aacute;, al menos, 12 periodos de tiempo mensuales.
+                    </li>
+                    <li> <b>Recurrente trimestralmente</b>: los valores de datos se agregar&aacute;n en periodos de tiempo semanales y el resultado incluir&aacute; un valor agregado por trimestre. La salida incluir&aacute;, al menos, 4 periodos de tiempo trimestrales.
+                    </li>
+                    <li> <b>Cada d&eacute;cada</b>: los valores de datos se agregar&aacute;n en 3 periodos de 10 d&iacute;as cada uno. Es posible que el &uacute;ltimo periodo contenga m&aacute;s o menos de 10 d&iacute;as. La salida incluir&aacute; 3 periodos para cada mes.
+                    </li>
+                    <li> <b>Cada lustro</b>: los valores de datos se agregar&aacute;n en 6 periodos de 5 d&iacute;as cada uno. Es posible que el &uacute;ltimo periodo contenga m&aacute;s o menos de 5 d&iacute;as. La salida incluir&aacute; 6 periodos para cada mes.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Intervalo de valor</h2></div>
+        <hr/>
+        <div>
+            <p>El tama&ntilde;o del intervalo que se utilizar&aacute; para la agregaci&oacute;n. Este par&aacute;metro es obligatorio si el par&aacute;metro  <b>Definici&oacute;n de agregaci&oacute;n</b> se define como <b>Valor de intervalo</b>.
+            </p>
+            <p>Por ejemplo, para agregar 30 a&ntilde;os de datos de temperatura mensuales en incrementos de 5 a&ntilde;os, introduzca 5 como el  <b>Intervalo de valor</b> y especifique la <b>Unidad</b> como <b>A&ntilde;os</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unidad</h2></div>
+        <hr/>
+        <div>
+            <p>La unidad que se usar&aacute; para el valor del intervalo. Esta entrada es obligatoria si  <b>Dimensi&oacute;n</b> es un campo de tiempo y <b>Definici&oacute;n de agregaci&oacute;n</b> se define como <b>Valor de intervalo</b>.
+            </p>
+            <p>Si agrega a lo largo de algo que no sea tiempo, esta opci&oacute;n no estar&aacute; disponible y la unidad del valor de intervalo coincidir&aacute; con la unidad de variable de los datos r&aacute;ster multidimensionales de entrada. 
+                <ul>
+                    <li> <b>Horas</b>: los valores de datos se agregar&aacute;n en porciones de tiempo horarios en el intervalo proporcionado.
+                    </li>
+                    <li> <b>D&iacute;as</b>: los valores de datos se agregar&aacute;n en porciones de tiempo diarios en el intervalo proporcionado.
+                    </li>
+                    <li> <b>Semanas</b>: los valores de datos se agregar&aacute;n en porciones de tiempo semanales en el intervalo proporcionado.
+                    </li>
+                    <li> <b>Meses</b>: los valores de datos se agregar&aacute;n en porciones de tiempo mensuales en el intervalo proporcionado.
+                    </li>
+                    <li> <b>A&ntilde;os</b>: los valores de datos se agregar&aacute;n en porciones de tiempo anuales en el intervalo proporcionado.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definir rangos</h2></div>
+        <hr/>
+        <div>
+            <p>Se usar&aacute;n los rangos de intervalos para agregar grupos de valores. Consisten en pares de valores de rango m&iacute;nimo y m&aacute;ximo, siendo el tipo de datos Doble o Fecha. Esta entrada es obligatoria si  <b>Definici&oacute;n de agregaci&oacute;n</b> se define como <b>Rangos de intervalos</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar valores que faltan en cálculo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis. 
+                <ul>
+                    <li>Activado: el an&aacute;lisis incluir&aacute; todos los p&iacute;xeles v&aacute;lidos a lo largo de una dimensi&oacute;n determinada y se ignorar&aacute;n los p&iacute;xeles NoData. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li>Desactivado: el an&aacute;lisis dar&aacute; como resultado NoData si no hay valores NoData para los p&iacute;xeles a lo largo de la dimensi&oacute;n determinada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

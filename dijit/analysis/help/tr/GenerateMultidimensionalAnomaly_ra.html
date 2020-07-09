@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Çok Boyutlu Anormallik Oluştur</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="&Ccedil;ok Boyutlu Anormallik Oluştur"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Anormallik, g&ouml;zlemin standart, ortalama veya ortanca değerinden sapmasıdır.
+    </p>
+    <p>Bu ara&ccedil;, &ccedil;ok boyutlu bir rasterdaki bir veya daha fazla değişken i&ccedil;in zaman i&ccedil;indeki anormallikleri hesaplar. Zaman boyutuna ek olarak zaman dışı bir boyutunuz varsa, anormallik, ilave boyuttaki her adımda hesaplanır.
+    </p>
+    <p>&Ouml;rneğin, 100 metreye kadar derinlikte her 1 metrede bir toplanan aylık okyanus sıcaklığı verileriniz var ve sıcaklık anormalliklerini yıllık ortalamadan sapmalar olarak hesaplamak istiyorsunuz. Bu ara&ccedil;,  <b>ortalamayı hesaplamak i&ccedil;in ge&ccedil;ici aralık</b> olarak <b>Yıllık</b> se&ccedil;eneğini belirttiğinizde sıcaklık anormalliklerini yıllık ortalamalara dayanarak belirler ve her 100 derinlik i&ccedil;in anormallik değerlerini getirir.
+    </p>
+    <p>Bu ara&ccedil; yalnızca zaman boyutuna sahip &ccedil;ok boyutlu raster veri k&uuml;melerini destekler.
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, ge&ccedil;erli harita yayılımı dahilinde g&ouml;r&uuml;n&uuml;r olan katman değişkenleri analiz edilir. İşaretli değilse, ge&ccedil;erli harita yayılımının dışında bile olsa t&uuml;m katmanın değişkenleri analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Anormallik oluşturmak için çok boyutlu görüntü katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>&Ccedil;ok boyutlu bir raster veri k&uuml;mesinin girdi g&ouml;r&uuml;nt&uuml; katmanı.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Anormalliklerin oluşturulacağı değişkenleri seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Anormalliklerin hesaplanacağı değişken veya değişkenler. Değişken belirtilmediğinde zaman boyutuna sahip t&uuml;m değişkenler analiz edilir.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Anormalliğin oluşturulacağı yöntemi seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Anormalliği hesaplamak i&ccedil;in kullanılacak y&ouml;ntemi belirtir. 
+                <ul>
+                    <li> <b>Ortalamadan Farkı</b>&mdash;Bir piksel değeri ile o pikselin değerinin ortalaması arasındaki fark, aralık tarafından tanımlanan dilimler boyunca hesaplanır. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Ortalamadan Y&uuml;zde Farkı</b>&mdash;Bir piksel değeri ile o pikselin değerinin ortalaması arasındaki y&uuml;zde farkı, aralık tarafından tanımlanan dilimler boyunca hesaplanır.
+                    </li>
+                    <li> <b>Ortalama Y&uuml;zdesi</b>&mdash;Ortalamanın y&uuml;zdesi hesaplanır.
+                    </li>
+                    <li> <b>Z Skoru</b>&mdash;Her piksel i&ccedil;in z skoru hesaplanır. 0 değerinde bir z skoru, pikselin değerinin ortalamayla aynı olduğunu belirtir. 1 değerinde bir z skoru, pikselin değerinin ortalamadan 1 standart sapma olduğunu belirtir. 2 değerinde bir z skoru, pikselin değerinin ortalamadan 2 standart sapma olduğunu belirtir ve bu şekilde devam eder.
+                    </li>
+                    <li> <b>Ortancadan Farkı</b>&mdash;Bir piksel değeri ile o pikselin değerlerinin matematiksel ortancası arasındaki fark, aralık tarafından tanımlanan dilimler boyunca hesaplanır.
+                    </li>
+                    <li> <b>Ortancadan Y&uuml;zde Farkı</b>&mdash;Bir piksel değeri ile o pikselin değerlerinin matematiksel ortancası arasındaki y&uuml;zde farkı, aralık tarafından tanımlanan dilimler boyunca hesaplanır.
+                    </li>
+                    <li> <b>Ortanca Y&uuml;zdesi</b>&mdash;Matematiksel ortanca y&uuml;zdesi hesaplanır.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Anormallik değerlerini hesaplamada kullanılacak matematiksel y&ouml;ntemler aşağıda listelenmiştir. Anormallikler, ortalamanın tanımı olarak ortalama veya ortanca değerleri kullanılarak hesaplanabilir. Veri dağılımı simetrik olmadığında ortalama, u&ccedil; değerlerden b&uuml;y&uuml;k &ouml;l&ccedil;&uuml;de etkilenebilir; bu nedenle bu t&uuml;r veriler i&ccedil;in ortanca değeri veya z skoru y&ouml;ntemi daha uygun olabilir.
+            </p>
+            <p>
+                <ul>
+                    <li>Ortalamadan farkı = x - &micro;
+
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                                
+
+                            </li>
+                            <li>&micro; = o pikselin değerlerinin verilen zaman aralığındaki ortalaması
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Ortalamadan Y&uuml;zde Farkı = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                                
+
+                            </li>
+                            <li>&micro; = o pikselin değerlerinin verilen zaman aralığındaki ortalaması
+                                
+
+                            </li>
+                            <li>|x - &micro;| = değer ve ortalama arasındaki farkın mutlak değeri
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Ortalama y&uuml;zdesi = x / &micro;
+
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                                
+
+                            </li>
+                            <li>&micro; = o pikselin değerlerinin verilen zaman aralığındaki ortalaması
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Ortancadan farkı= x - &szlig;
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                            </li>
+                            <li>&szlig; = o pikselin değerlerinin verilen zaman aralığındaki ortancası
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Ortancadan Y&uuml;zde Farkı = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                            </li>
+                            <li>&szlig; = o pikselin değerlerinin verilen zaman aralığındaki ortancası
+                            </li>
+                            <li>|x - &szlig;| = değer ve ortanca arasındaki farkın mutlak değeri
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Ortanca y&uuml;zdesi = x / &szlig;
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                            </li>
+                            <li>&szlig; = o pikselin değerlerinin verilen zaman aralığındaki ortancası
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z skoru = (x - &micro;) / S
+                        <ul>
+                            <li>x = bir dilimdeki piksel değeri
+                            </li>
+                            <li>&micro; = o pikselin değerlerinin verilen zaman aralığındaki ortalaması
+                            </li>
+                            <li>S = o pikselin değerlerinin verilen zaman aralığındaki standart sapması
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Ortalamayı hesaplamak için geçici aralığı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Ortalamayı hesaplamak i&ccedil;in kullanılacak ge&ccedil;ici aralığı belirtir. 
+                <ul>
+                    <li> <b>T&uuml;m&uuml;</b>&mdash;Her piksel i&ccedil;in t&uuml;m dilimlerdeki ortalamayı hesaplar.
+                    </li>
+                    <li> <b>Yıllık</b>&mdash;Her piksel i&ccedil;in yıllık ortalamayı hesaplar.
+                    </li>
+                    <li> <b>Ayda Bir Tekrarlanır</b>&mdash;Her piksel i&ccedil;in aylık ortalamayı hesaplar.
+                    </li>
+                    <li> <b>Haftada Bir Tekrarlanır</b>&mdash;Her piksel i&ccedil;in haftalık ortalamayı hesaplar.
+                    </li>
+                    <li> <b>G&uuml;nde Bir Tekrarlanır</b>&mdash;Her piksel i&ccedil;in g&uuml;nl&uuml;k ortalamayı hesaplar.
+                    </li>
+                    <li> <b>Saatlik</b>&mdash;Her piksel i&ccedil;in saatlik ortalamayı hesaplar.
+                    </li>
+                    <li> <b>Harici Raster</b>&mdash;Her piksel i&ccedil;in ortalama veya ortanca değer i&ccedil;eren mevcut raster veri k&uuml;mesine referans verilir.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Referans olarak ortalamanın görüntü katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Her piksel i&ccedil;in &ouml;nceden hesaplanmış bir ortalama i&ccedil;eren referans raster veri k&uuml;mesini belirtir. Anomaliler bu ortalama ile kıyaslanarak hesaplanır.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hesaplamadaki eksik değerleri yoksay</h2></div>
+        <hr/>
+        <div>
+            <p>Eksik değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir. 
+                <ul>
+                    <li>İşaretli&mdash;Analizde verilen bir boyut boyunca ge&ccedil;erli olan t&uuml;m pikseller yer alır ancak NoData pikselleri dikkate alınmaz. Varsayılan değerdir.
+                    </li>
+                    <li>İşaretli değil--Verilen boyut boyunca mevcut pikseller i&ccedil;in herhangi bir NoData değeri varsa, analiz NoData ile sonu&ccedil;lanır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

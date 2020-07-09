@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過  Portal for ArcGIS Web 使用者體驗所使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>使用鄰域</b>、 <b>分析圖片</b>、 <b>分析地形</b>、 <b>管理資料</b>和 <b>深度學習</b>。
+        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過  Portal for ArcGIS Web 使用者體驗所使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>使用鄰域</b>、 <b>分析圖片</b>、 <b>分析地形</b>、 <b>管理資料</b>、 <b>深度學習</b>和 <b>多維分析</b>。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -328,7 +328,7 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="smallsize">
-        <h2>管理數據</h2>
+        <h2>管理資料</h2>
         <hr/>
         <p>這些工具用於地理資料的日常管理，以及在分析之前合併資料。
             <ul>
@@ -347,6 +347,8 @@
                 <li> <b>將點陣轉換為圖徵</b>可向量化點陣資料。
                     
 
+                </li>
+                <li> <b>取樣</b>可從一個或一組點陣中擷取定義之位置上的資料。
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>取樣</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="取樣">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>建立表格或點圖徵類別，包含從一個或一組點陣中擷取之定義位置上的資料值。
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="smallsize">
-        <h2>工具集深度學習</h2>
+        <h2>深度學習</h2>
         <hr/>
-        <p>這些工具是用來偵測圖片中的特定圖徵，或用來分類點陣資料集內的像素。深度學習是一種人工智慧機器學習方法，可在類神經網路中使用多個圖層來偵測影像的圖徵，其中的每個圖層可擷取圖片中一或多個唯一圖徵。這些工具利用經過培訓的模型，可用來偵測第三方深度學習架構（例如 TensorFlow、CNTK 和 Keras）中的特定圖徵，並輸出圖徵或類別地圖。
+        <p>這些工具是用來偵測或分類圖片中的特定圖徵，或用來分類點陣資料集內的像素。深度學習是一種人工智慧機器學習方法，可在類神經網路中使用多個圖層來偵測影像的圖徵，其中的每個圖層可擷取圖片中一或多個唯一圖徵。這些工具利用經過培訓的模型，可用來偵測第三方深度學習架構（例如 TensorFlow、CNTK 和 Keras）中的特定圖徵，並輸出圖徵或類別地圖。
             <ul>
                 <li> <b>使用深度學習以分類像素</b>可使用培訓的深度學習模型來產生分類的點陣。
                 </li>
                 <li> <b>使用深度學習以偵測物件</b>可使用培訓的深度學習模型來產生圖徵類別，包含它在輸入點陣中找到的物件。
                 </li>
+                <li> <b>使用深度學習以分類物件</b>可使用培訓的深度學習模型來產生圖徵類別或表格，會將一個類別標籤指派給一個輸入點陣的每個輸入物件。
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
@@ -436,11 +455,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>此工具可在輸入點陣上執行經過培訓的深度學習模型來產生分類的點陣，並將一個類別標籤指派給每一個有效的像素。
             </p>
             <br/>
         </div>
-        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
+        <div id="DetectObjectsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>此工具可在輸入點陣上執行經過訓練的深度學習模型，以產生包含其發現之物件的圖徵類別。圖徵可以是找到的物件周圍的方塊或多邊形，也可以是物件中心上的點。
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用深度學習以分類物件</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="使用深度學習以分類物件">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具可在輸入點陣和選用的圖徵類別上，執行經過培訓的深度學習模型來產生圖徵類別或表格，其中的每個輸入物件都有一個指派的類別標籤。
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="regularsize">
+        <h2>多維分析</h2>
+        <hr/>
+        <p>您可使用多維分析工具集的工具，跨多個變數和維度對科學資料執行分析。
+        </p>
+        <p>多維資料表示在多個時間、深度和高度所擷取的資料。此資料類型通常應用於大氣、海洋和地球科學。您可以使用此工具集，以多種格式分析多維點陣資料，包括 netCDF、HDF、GRIB、多維鑲嵌資料集，及 Esri 的雲點陣格式 (CRF)。
+        </p>
+        <p>下表列出了多維分析工具，並提供每個工具的簡要說明。
+            <ul>
+                <li> <b>匯聚多維點陣</b>將沿著某個維度匯聚現有的多維點陣變數，從而產生多維點陣資料集。
+                </li>
+                <li> <b>產生多維異常</b>可計算多維點陣中每個切片的異常來產生多維點陣。
+                </li>
+                <li> <b>產生趨勢點陣</b>可針對多維點陣中的一或多個變數，沿某個維度估計每個像素的趨勢。
+                </li>
+                <li> <b>使用趨勢點陣進行預測</b>可使用 <b>產生趨勢點陣</b>工具中的輸出趨勢點陣，以計算預測的多維點陣。
+                </li>
+                <li> <b>尋找引數統計資料</b>可擷取維度值或頻段索引，根據該維度值或波段索引，多維或多頻段點陣中的每個像素都將取得給定的統計資料。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>匯聚多維點陣</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="匯聚多維點陣">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具將沿著某個維度匯聚現有的多維點陣變數，從而產生多維點陣資料集。
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找引數統計資料</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="尋找引數統計資料">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具可擷取維度值或頻段索引，根據該維度值或波段索引，多維或多頻段點陣中的每個像素都將取得給定的統計資料。
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>產生多維異常</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="產生多維異常">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具可計算多維點陣中每個切片的異常來產生多維點陣。
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>產生趨勢點陣</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="產生趨勢點陣">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具可針對多維點陣中的一或多個變數，沿某個維度估計每個像素的趨勢。
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>使用趨勢點陣進行預測</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="使用趨勢點陣進行預測">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具可使用 <b>產生趨勢點陣</b>工具中的輸出趨勢點陣來計算預測的多維點陣。
             </p>
             <br/>
         </div>

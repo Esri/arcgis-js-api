@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generar ráster de tendencia</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generar r&aacute;ster de tendencia"></h2>
+        <hr/>
+    <p>Estima la tendencia de cada p&iacute;xel a lo largo de una dimensi&oacute;n para una o varias variables de un r&aacute;ster multidimensional.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Elegir capa de imágenes multidimensional para analizar tendencia</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>La capa de im&aacute;genes de entrada de un r&aacute;ster multidimensional que se analizar&aacute;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Elegir dimensión junto con la tendencia de variable que se analizará</h2></div>
+        <hr/>
+        <div>
+            <p>La dimensi&oacute;n a lo largo de la cual se extraer&aacute; una tendencia para la variable o variables seleccionadas en el an&aacute;lisis.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Elegir variables para analizar tendencia</h2></div>
+        <hr/>
+        <div>
+            <p>Las variables para las que se calcular&aacute;n tendencias. Si no se especifica ninguna variable, se analizar&aacute; la primera variable del r&aacute;ster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Elegir el tipo de línea para ajustar valores de variables a lo largo de una dimensión</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el tipo de l&iacute;nea que se utilizar&aacute; para ajustar a los valores de p&iacute;xel a lo largo de una dimensi&oacute;n. 
+                <ul>
+                    <li> <b>Lineal</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia lineal. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Polin&oacute;mico</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia polin&oacute;mica de segundo orden.
+                    </li>
+                    <li> <b>Arm&oacute;nico</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia arm&oacute;nica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Especificar la longitud de ciclo armónico</h2></div>
+        <hr/>
+        <div>
+            <p>La longitud de la variaci&oacute;n peri&oacute;dica que se va a modelar. Este par&aacute;metro se requiere cuando el tipo de l&iacute;nea de tendencia se establece en  <b>Arm&oacute;nico</b>. Por ejemplo, el verdor de las hojas tiene con frecuencia un ciclo fuerte de variaci&oacute;n en un solo a&ntilde;o, por lo que la longitud de ciclo es 1 a&ntilde;o. Los datos de temperatura por hora tienen un ciclo fuerte de variaci&oacute;n en un solo d&iacute;a, por lo que la longitud de ciclo es 1 d&iacute;a.
+            </p>
+            <p>La longitud predeterminada es 1 a&ntilde;o para los datos que var&iacute;an en un ciclo anual.
+            </p>
+            <p>Este par&aacute;metro solo se incluye en el an&aacute;lisis de tendencias cuando la dimensi&oacute;n que se va a analizar es tiempo y el tipo de l&iacute;nea de tendencia se establece en  <b>Arm&oacute;nico</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Elegir la unidad de tiempo de longitud de ciclo armónico</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unidad de tiempo que se utilizar&aacute; para la longitud de un ciclo arm&oacute;nico.
+                <ul>
+                    <li> <b>D&iacute;as</b>: la unidad para la longitud del ciclo arm&oacute;nico es d&iacute;as.
+                    </li>
+                    <li> <b>A&ntilde;os</b>: la unidad para la longitud del ciclo arm&oacute;nico es a&ntilde;os. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Este par&aacute;metro solo se incluye en el an&aacute;lisis de tendencias cuando la dimensi&oacute;n que se va a analizar es tiempo y el tipo de l&iacute;nea de tendencia se establece en  <b>Arm&oacute;nico</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Especificar el número de frecuencia del ajuste de tendencia de armónico</h2></div>
+        <hr/>
+        <div>
+            <p>La frecuencia que se utilizar&aacute; en el ajuste de tendencia de arm&oacute;nico. Este par&aacute;metro especifica la frecuencia de ciclos en un a&ntilde;o.
+            </p>
+            <p>El valor predeterminado es 1, o un ciclo arm&oacute;nico por a&ntilde;o.
+            </p>
+            <p>Este par&aacute;metro solo se incluye en el an&aacute;lisis de tendencias cuando la dimensi&oacute;n que se est&aacute; analizando es tiempo.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Especificar el número de orden polinómico para el ajuste de tendencia</h2></div>
+        <hr/>
+        <div>
+            <p>El n&uacute;mero de orden polin&oacute;mico que se utilizar&aacute; en el ajuste de tendencia polin&oacute;mica.
+            </p>
+            <p>Este par&aacute;metro solo se incluye en el an&aacute;lisis de tendencias cuando la dimensi&oacute;n que se est&aacute; analizando es tiempo.
+            </p>
+            <p>El valor predeterminado es 2, o polin&oacute;mico de segundo orden.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Elegir estadísticas de modelo que se incluirán en ráster de tendencia</h2></div>
+        <hr/>
+        <div>
+            <p>Esta herramienta proporciona tres tipos de estad&iacute;sticas de la l&iacute;nea ajustada de tendencia: el error cuadr&aacute;tico medio (RMSE), la estad&iacute;stica de idoneidad de ajuste R (R cuadrado) y la estad&iacute;stica de valor P para el coeficiente de pendiente (valor P del coeficiente de pendiente). Cada estad&iacute;stica tiene una casilla de verificaci&oacute;n correspondiente para especificar si se calcular&aacute; y se incluir&aacute; como una de las varias bandas en el r&aacute;ster de tendencia de salida.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Activado: el RMSE se calcular&aacute; e incluir&aacute; como una de las varias bandas en el r&aacute;ster de tendencia de salida. Esta es la opci&oacute;n predeterminada.
+                            </li>
+                            <li>Desactivado: el RMSE no se calcular&aacute;.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R cuadrado
+                        </p>
+                        <ul>
+                            <li>Activado: el valor de R cuadrado se calcular&aacute; y se incluir&aacute; como una de las varias bandas en el r&aacute;ster de tendencia de salida.
+                            </li>
+                            <li>Desactivado: el valor de R cuadrado no se calcular&aacute;. Esta es la opci&oacute;n predeterminada.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Valor P del coeficiente de pendiente
+                        </p>
+                        <ul>
+                            <li>Activado: el valor P se calcular&aacute; e incluir&aacute; como una de las varias bandas en el r&aacute;ster de tendencia de salida.
+                            </li>
+                            <li>Desactivado: el valor P no se calcular&aacute;. Esta es la opci&oacute;n predeterminada.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar valores que faltan en cálculo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis.
+                <ul>
+                    <li>Activado: el an&aacute;lisis incluir&aacute; todos los p&iacute;xeles v&aacute;lidos a lo largo de una dimensi&oacute;n determinada y se ignorar&aacute;n los p&iacute;xeles NoData. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li>Desactivado: el an&aacute;lisis dar&aacute; como resultado NoData si no hay valores NoData para los p&iacute;xeles a lo largo de la dimensi&oacute;n determinada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

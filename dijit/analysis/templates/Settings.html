@@ -267,6 +267,19 @@
             <label class="esriAnalysisStepsLabel">${i18n.parallelProcessingLabel}</label>
           </td>
         </tr>
+        <tr data-dojo-attach-point="_recycleProcessingWorkersLblRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1">${i18n.recycleProcessingWorkers}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="recycleProcessingWorkers"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_recycleProcessingWorkersNumRow">
+          <td colspan="2">
+            <input class="esriLeadingMargin1 mediumInput esriMediumLabel" type="text" data-dojo-attach-point="_recycleProcessingWorkersInput" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handlerecycleProcessingWorkersInputChange"></input>
+          </td>
+        </tr>
         <tr data-dojo-attach-point="_parallelProcessingFactorLblRow">
           <td colspan="2">
             <label class="esriLeadingMargin1">${i18n.parallelProcessingFactor}</label>
@@ -277,7 +290,20 @@
         </tr>
         <tr data-dojo-attach-point="_parallelProcessingFactorNumRow">
           <td colspan="2">
-            <input class="esriLeadingMargin1 mediumInput esriMediumLabel" type="text" data-dojo-attach-point="_parallelProcessingFactorInput" data-dojo-type="dijit/form/TextBox" data-dojo-attach-event="onChange:_handleparallelProcessingFactorInputChange"></input>
+            <input class="esriLeadingMargin1 mediumInput esriMediumLabel" type="text" data-dojo-attach-point="_parallelProcessingFactorInput" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleparallelProcessingFactorInputChange"></input>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_retryOnFailuresLblRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1">${i18n.retryOnFailures}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="retryOnFailures"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_retryOnFailuresNumRow">
+          <td colspan="2">
+            <input class="esriLeadingMargin1 mediumInput esriMediumLabel" type="text" data-dojo-attach-point="_retryOnFailuresInput" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleretryOnFailuresInputChange"></input>
           </td>
         </tr>
       </tbody>

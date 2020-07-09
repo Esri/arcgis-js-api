@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Znajdź lokalizacje wystąpień</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagram procedury wykonywania zadań narzędzia Znajdź lokalizacje wystąpień"></h2>
+        <hr/>
+    <p>Narzędzie służące do pracy z zawierającą dane czasowe warstwą obiekt&oacute;w punktowych typu  <code>moment</code>. Najpierw przy użyciu unikalnego identyfikatora narzędzie przypisuje obiekty do ścieżki. Kolejność w ścieżce jest ustalana na podstawie czasu obiekt&oacute;w. Następnie jest obliczana odległość między pierwszą i następną obserwacją w ścieżce. Jeśli dwa kolejne pod względem czasu punkty znajdują się w obszarze wyznaczonym przez podaną odległość przez co najmniej wskazany czas trwania, przyjmowane jest założenie, że obiekty te są częścią wystąpienia. Gdy dwa obiekty są częścią wystąpienia, pierwszy obiekt w wystąpieniu jest używany jako punkt odniesienia, a narzędzie znajduje kolejne obiekty w obszarze wyznaczonym przez odległość od punktu odniesienia i uznaje je jako należące do tego wystąpienia. Po znalezieniu wszystkich obiekt&oacute;w znajdujących się w odległości nie większej od podanej narzędzie zbiera obiekty wystąpienia i oblicza ich średni środek. Obiekty znajdujące się przed aktualnym wystąpieniem i za nim są dodawane do tego wystąpienia, jeśli znajdują się nie dalej od średniego środka lokalizacji wystąpienia niż podana odległość. Ten proces jest kontynuowany do momentu osiągnięcia końca ścieżki.
+    </p>
+    <p>Obiekty w warstwach z danymi czasowymi mogą być reprezentowane na jeden z następujących sposob&oacute;w:
+        <ul>
+            <li>Moment &mdash; jeden moment czasu
+            </li>
+            <li>Interwał &mdash; czas rozpoczęcia i zakończenia
+            </li>
+        </ul>
+        
+    </p>
+    <p>Przyjmijmy przykładowo, że pracujesz w wydziale transportu i masz zebrane odczyty GPS dotyczące pojazd&oacute;w na gł&oacute;wnych autostradach. Każdy rekord GPS zawiera unikalny identyfikator pojazdu, czas, lokalizację i prędkość. Korzystając z unikalnego identyfikatora pojazdu do zdefiniowania poszczeg&oacute;lnych ścieżek, szukasz pojazd&oacute;w, kt&oacute;re nie przemieściły się o więcej niż 100 metr&oacute;w w ciągu co najmniej 15 minut, aby znaleźć problematyczne obszary sieci drogowej. Ponadto możesz obliczyć statystyki, na przykład średnią prędkość pojazd&oacute;w w obrębie lokalizacji wystąpienia.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wybierz warstwę, w której mają być znajdowane wystąpienia</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa punkt&oacute;w, kt&oacute;ra zostanie zsumowana w celu utworzenia wystąpienia. Warstwa wejściowa musi zawierać dane czasowe oraz obiekty reprezentujące momenty w czasie, jak r&oacute;wnież jedno lub większą liczbę p&oacute;l, za pomocą kt&oacute;rych można identyfikować ścieżki.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Wybierz co najmniej jedno pole do identyfikacji ścieżek</h2></div>
+        <hr/>
+        <div>
+            <p>Pola reprezentujące identyfikator ścieżki. Do reprezentowania unikalnych wartości ścieżek można użyć jednego lub wielu p&oacute;l.
+            </p>
+            <p>Na przykład podczas znajdowania lokalizacji wystąpień huragan&oacute;w w polach ścieżki można używać nazw huragan&oacute;w.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Wybieranie metody obliczania odległości</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda używana do obliczania odległości wystąpień w obrębie ścieżek. Używając metody  <b>Płaskie</b>, można szybciej obliczyć wyniki, ale ścieżki nie zostaną zawinięte wok&oacute;ł międzynarodowej linii zmiany daty, a podczas buforowania nie zostanie wzięty pod uwagę rzeczywisty kształt Ziemi. Metoda <b>Geodezyjne</b> zawinie w razie konieczności ścieżki wok&oacute;ł międzynarodowej linii zmiany daty i zastosuje rzeczywisty kształt Ziemi w odniesieniu do bufora geodezyjnego.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definiowanie odległości wyszukiwania przestrzennego</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancja odległości wystąpienia to maksymalna odległość między punktami, kt&oacute;re są uznawane za znajdujące się w obrębie lokalizacji jednego wystąpienia.
+            </p>
+            <p>Na przykład, aby znaleźć wystąpienia, w przypadku kt&oacute;rych w określonym czasie pojazdy uczestniczące w ruchu drogowym nie przemieściły się o więcej niż 20 metr&oacute;w, tolerancja odległości powinna wynosić 20 metr&oacute;w.
+            </p>
+            <p>Aby podać czas, użyj parametru  <b>Zdefiniuj czasowy zakres wyszukiwania</b>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Podziel ścieżki (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancja jednostki odległości.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definiowanie czasowego zakresu wyszukiwania</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancja czasu wystąpienia to minimalny czas trwania wystąpienia, kt&oacute;ry będzie brany pod uwagę w pojedynczej lokalizacji wystąpienia.
+            </p>
+            <p>Aby na przykład dowiedzieć się, gdzie pojazdy uczestniczące w ruchu drogowym nie przemieściły się o konkretną odległość w ciągu godziny, tolerancja czasu powinna wynosić 1 godzinę.
+            </p>
+            <p>Aby podać odległość, użyj parametru  <b>Zdefiniuj zakres wyszukiwania przestrzennego</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Wybierz odległość do dzielenia ścieżek (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerancja jednostki czasu.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości: 
+                <ul>
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    </li>
+                    <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
+                    </li>
+                    <li>Średnia &mdash; średnia wartości liczbowych. Średnia dla wartości [0, 2, null] wynosi 1.
+                    </li>
+                    <li>Min &mdash; wartość minimalna w polu liczbowym. Wartość minimalna dla wartości [0, 2, null] wynosi 0. 
+                    </li>
+                    <li>Maks &mdash; wartość maksymalna w polu liczbowym. Wartość maksymalna dla wartości [0, 2, null] wynosi 2.
+                    </li>
+                    <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
+                    </li>
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1,0,1,1] wynosi 0,25.
+                    </li>
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1,0,1,1] wynosi 0,5. 
+                    </li>
+                    <li>Pierwsza &mdash; pierwsza wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [1,5,10,20], pierwsza wartość wynosi&nbsp;1.
+                    </li>
+                    <li>Ostatnia &mdash; ostatnia wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [1,5,10,20], ostatnia wartość wynosi&nbsp;20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W polach znakowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
+                    </li>
+                    <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
+                    </li>
+                    <li>Pierwsza &mdash; pierwsza wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], pierwsza wartość wynosi Toronto.
+                    </li>
+                    <li>Ostatnia &mdash; ostatnia wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], ostatnia wartość wynosi Boston.
+                    </li>
+                </ul>
+                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Wyświetl wynikowe lokalizacje wystąpień w postaci</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, kt&oacute;re obiekty są zwracane, a także ich format. Dostępne są cztery typy: 
+                <ul>
+                    <li> <b>Średnie środki</b> &mdash; punkt reprezentujący centroid każdej wykrytej lokalizacji wystąpienia. Atrybuty zostaną zsumowane. Jest to opcja domyślna.
+                         
+                    </li>
+                    <li> <b>Powłoki wypukłe</b> &mdash; poligony reprezentujące powłokę wypukłą każdej grupy wystąpień. Atrybuty zostaną zsumowane.
+                         
+                    </li>
+                    <li> <b>Obiekty wystąpień</b> &mdash; zwracane są wszystkie wejściowe obiekty punktowe i atrybuty, kt&oacute;re zostały określone jako należące do wystąpienia.
+                         
+                    </li>
+                    <li> <b>Wszystkie obiekty</b> &mdash; zwracane są wszystkie wejściowe obiekty punktowe i atrybuty.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Zanalizuj dane z przedziałami czasu (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Wskaż, czy chcesz szukać lokalizacji wystąpień przy użyciu przedział&oacute;w czasu, co spowoduje podzielenie obiekt&oacute;w wejściowych na segmenty w celu analizy. W przypadku użycia przedział&oacute;w czasu należy ustawić określony przedział i opcjonalnie ustawić czas referencyjny. Jeśli czas referencyjny nie zostanie ustawiony, przyjęty zostanie 1&nbsp;stycznia 1970&nbsp;r. 
+            </p>
+            <p>Jeśli na przykład granica czasu zostanie ustawiona na 1&nbsp;dzień, począwszy od 9:00 rano w dniu 1&nbsp;stycznia 1990, to każda ścieżka będzie obcinana dla każdego dnia o godz. 9:00 rano i analizowana w tym segmencie. Żadne wystąpienia nie będą się rozpoczynać przed 9:00 ani kończyć po tej godzinie. 
+            </p>
+            <p>Użycie przedział&oacute;w czasu to prosty spos&oacute;b na skr&oacute;cenie czasu przetwarzania, ponieważ pozwala szybko tworzyć mniejsze ścieżki na potrzeby analizy. Jeśli podział na powtarzalne przedziały czasu ma sens w danej analizie, jest to zalecana metoda w przypadku przetwarzania dużych zbior&oacute;w danych.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

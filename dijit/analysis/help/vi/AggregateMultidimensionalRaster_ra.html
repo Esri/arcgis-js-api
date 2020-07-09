@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tổng hợp Raster Đa chiều</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Tổng hợp Raster Đa chiều"></h2>
+        <hr/>
+    <p>Tạo một bộ dữ liệu raster đa chiều bằng c&aacute;ch kết hợp c&aacute;c biến raster đa chiều hiện c&oacute; dọc theo một chiều.
+    </p>
+    <p>Nếu bạn c&oacute; dữ liệu nhiệt độ mặt biển trong 30 năm, được thu thập h&agrave;ng th&aacute;ng v&agrave; ở độ s&acirc;u 5 m&eacute;t một cho đến 100 m&eacute;t, một số ứng dụng v&iacute; dụ như sau:
+        <ul>
+            <li>Tổng hợp dữ liệu nhiệt độ h&agrave;ng th&aacute;ng th&agrave;nh dữ liệu h&agrave;ng năm.
+            </li>
+            <li>Tổng hợp dữ liệu nhiệt độ h&agrave;ng th&aacute;ng th&agrave;nh c&aacute;c khoảng thời gian mỗi 4 th&aacute;ng.
+            </li>
+            <li>Tổng hợp dữ liệu nhiệt độ từ 0 đến 25 m&eacute;t, sau đ&oacute; từ 25 đến 50 m&eacute;t, rồi từ 50 đến 100 m&eacute;t.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ</b>, th&igrave; c&aacute;c biến trong lớp nh&igrave;n thấy được trong phạm vi bản đồ hiện tại sẽ được ph&acirc;n t&iacute;ch. Nếu kh&ocirc;ng được chọn, c&aacute;c biến của lớp đầy đủ sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Chọn lớp hình ảnh đa chiều để tổng hợp</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp h&igrave;nh ảnh đầu v&agrave;o của một raster đa chiều sẽ được tổng hợp.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Chọn chiều để tổng hợp theo đó</h2></div>
+        <hr/>
+        <div>
+            <p>Chiều tổng hợp. Đ&acirc;y l&agrave; chiều m&agrave; c&aacute;c biến sẽ được tổng hợp dọc theo đ&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Chọn (các) biến để tổng hợp</h2></div>
+        <hr/>
+        <div>
+            <p>Biến hoặc c&aacute;c biến sẽ được tổng hợp dọc theo chiều đ&atilde; định. Nếu kh&ocirc;ng c&oacute; biến n&agrave;o được chỉ định, tất cả c&aacute;c biến c&oacute; chiều được chọn sẽ được tổng hợp.
+            </p>
+            <p>V&iacute; dụ: để tổng hợp dữ liệu nhiệt độ h&agrave;ng ng&agrave;y của bạn th&agrave;nh c&aacute;c gi&aacute; trị trung b&igrave;nh h&agrave;ng th&aacute;ng, h&atilde;y chỉ định nhiệt độ l&agrave; biến cần tổng hợp. Nếu bạn kh&ocirc;ng chỉ định biến n&agrave;o v&agrave; bạn c&oacute; cả biến nhiệt độ h&agrave;ng ng&agrave;y v&agrave; lượng mưa h&agrave;ng ng&agrave;y, th&igrave; cả hai biến sẽ được tổng hợp th&agrave;nh trung b&igrave;nh h&agrave;ng th&aacute;ng v&agrave; raster đa chiều đầu ra sẽ bao gồm cả hai biến.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Chọn phương pháp tổng hợp</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định phương ph&aacute;p to&aacute;n học sẽ được sử dụng để kết hợp c&aacute;c l&aacute;t tổng hợp trong một khoảng. 
+                <ul>
+                    <li> <b>Trung b&igrave;nh</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh của c&aacute;c gi&aacute; trị pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Tối đa</b>&mdash;T&iacute;nh gi&aacute; trị tối đa của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Đa số</b>&mdash;T&iacute;nh gi&aacute; trị xảy ra thường xuy&ecirc;n nhất cho một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Tối thiểu</b>&mdash;T&iacute;nh gi&aacute; trị tối thiểu của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Thiểu số</b>&mdash;T&iacute;nh gi&aacute; trị xảy ra &iacute;t thường xuy&ecirc;n nhất cho một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>B&igrave;nh qu&acirc;n</b>&mdash;T&iacute;nh gi&aacute; trị b&igrave;nh qu&acirc;n của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Phạm vi</b>&mdash;T&iacute;nh phạm vi gi&aacute; trị cho một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Độ lệch chuẩn</b>&mdash;T&iacute;nh độ lệch chuẩn của c&aacute;c gi&aacute; trị của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Tổng</b>&mdash;T&iacute;nh tổng gi&aacute; trị của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>Đa dạng</b>&mdash;T&iacute;nh số lượng c&aacute;c gi&aacute; trị duy nhất của một pixel tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt trong khoảng.
+                    </li>
+                    <li> <b>T&ugrave;y chỉnh</b>&mdash;T&iacute;nh gi&aacute; trị của một pixel dựa tr&ecirc;n h&agrave;m raster t&ugrave;y chỉnh.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Chọn biểu mẫu hàm raster</h2></div>
+        <hr/>
+        <div>
+            <p>H&agrave;m raster t&ugrave;y chỉnh sẽ được sử dụng để t&iacute;nh gi&aacute; trị pixel của c&aacute;c raster tổng hợp. Th&ocirc;ng tin đầu v&agrave;o l&agrave; một mục biểu mẫu h&agrave;m raster trong cổng th&ocirc;ng tin. Th&ocirc;ng tin đầu v&agrave;o n&agrave;y l&agrave; bắt buộc khi <b>Phương ph&aacute;p Tổng hợp</b>được thiết lập th&agrave;nh <b>T&ugrave;y chỉnh</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Chọn thông tin xác định tổng hợp</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định khoảng chiều m&agrave; dữ liệu sẽ được tổng hợp cho n&oacute;. 
+                <ul>
+                    <li> <b>Tất cả</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Từ kh&oacute;a Khoảng</b>&mdash;Dữ liệu biến sẽ được tổng hợp bằng một khoảng phổ biến.
+                    </li>
+                    <li> <b>Gi&aacute; trị Khoảng</b>&mdash;Dữ liệu biến sẽ được tổng hợp bằng một khoảng v&agrave; đơn vị do người d&ugrave;ng chỉ định.
+                    </li>
+                    <li> <b>Phạm vi Khoảng</b>&mdash;Dữ liệu biến sẽ được tổng hợp giữa c&aacute;c cặp gi&aacute; trị hoặc ng&agrave;y cụ thể.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Chọn khoảng từ khóa</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định khoảng từ kh&oacute;a sẽ được sử dụng khi tổng hợp dọc theo chiều. Th&ocirc;ng tin đầu v&agrave;o n&agrave;y l&agrave; bắt buộc khi  <b>Th&ocirc;ng tin x&aacute;c định Tổng hợp</b> được đặt th&agrave;nh <b>Từ kh&oacute;a Khoảng</b>, v&agrave; hoạt động tổng hợp phải theo thời gian.
+                <ul>
+                    <li> <b>H&agrave;ng giờ</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng giờ v&agrave; kết quả sẽ bao gồm mỗi giờ trong chuỗi thời gian.
+                    </li>
+                    <li> <b>H&agrave;ng ng&agrave;y</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng ng&agrave;y v&agrave; kết quả sẽ bao gồm mỗi ng&agrave;y trong chuỗi thời gian.
+                    </li>
+                    <li> <b>H&agrave;ng tuần</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng tuần v&agrave; kết quả sẽ bao gồm mỗi tuần trong chuỗi thời gian.
+                    </li>
+                    <li> <b>H&agrave;ng th&aacute;ng</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng th&aacute;ng v&agrave; kết quả sẽ bao gồm mỗi th&aacute;ng trong chuỗi thời gian.
+                    </li>
+                    <li> <b>H&agrave;ng qu&yacute;</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng qu&yacute; v&agrave; kết quả sẽ bao gồm mỗi qu&yacute; trong chuỗi thời gian.
+                    </li>
+                    <li> <b>H&agrave;ng năm</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng năm v&agrave; kết quả sẽ bao gồm mỗi năm trong chuỗi thời gian.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng ng&agrave;y</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng ng&agrave;y v&agrave; kết quả sẽ bao gồm một gi&aacute; trị tổng hợp cho mỗi ng&agrave;y Julian. Kết quả đầu ra sẽ bao gồm, nhiều nhất l&agrave; 366 l&aacute;t thời gian h&agrave;ng ng&agrave;y.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng tuần</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng tuần v&agrave; kết quả sẽ bao gồm một gi&aacute; trị tổng hợp cho mỗi tuần. Kết quả đầu ra sẽ bao gồm, nhiều nhất l&agrave; 53 l&aacute;t thời gian h&agrave;ng tuần.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng th&aacute;ng</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng tuần v&agrave; kết quả sẽ bao gồm một gi&aacute; trị tổng hợp cho mỗi th&aacute;ng. Kết quả đầu ra sẽ bao gồm, nhiều nhất l&agrave; 12 l&aacute;t thời gian h&agrave;ng th&aacute;ng.
+                    </li>
+                    <li> <b>T&aacute;i diễn H&agrave;ng qu&yacute;</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c bước thời gian h&agrave;ng tuần v&agrave; kết quả sẽ bao gồm một gi&aacute; trị tổng hợp cho mỗi qu&yacute;. Kết quả đầu ra sẽ bao gồm, nhiều nhất l&agrave; 4 l&aacute;t thời gian h&agrave;ng qu&yacute;.
+                    </li>
+                    <li> <b>Mười ng&agrave;y li&ecirc;n tiếp</b>&mdash; C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh 3 giai đoạn, mỗi giai đoạn 10 ng&agrave;y. Khoảng thời gian cuối c&ugrave;ng c&oacute; thể chứa tr&ecirc;n dưới 10 ng&agrave;y. Kết quả đầu ra sẽ bao gồm 3 l&aacute;t mỗi th&aacute;ng.
+                    </li>
+                    <li> <b>Năm ng&agrave;y li&ecirc;n tiếp</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh 6 giai đoạn, mỗi giai đoạn 5 ng&agrave;y. Khoảng thời gian cuối c&ugrave;ng c&oacute; thể chứa tr&ecirc;n dưới 5 ng&agrave;y. Kết quả đầu ra sẽ bao gồm 6 l&aacute;t mỗi th&aacute;ng.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Khoảng Giá trị</h2></div>
+        <hr/>
+        <div>
+            <p>K&iacute;ch thước của khoảng sẽ được sử dụng cho hoạt động tổng hợp. Th&ocirc;ng số n&agrave;y l&agrave; bắt buộc khi th&ocirc;ng số  <b>Th&ocirc;ng tin x&aacute;c định Tổng hợp</b> được đặt th&agrave;nh <b>Khoảng Gi&aacute; trị</b>.
+            </p>
+            <p>V&iacute; dụ: để tổng hợp 30 năm dữ liệu nhiệt độ h&agrave;ng th&aacute;ng th&agrave;nh c&aacute;c bậc tăng 5 năm một, h&atilde;y nhập 5 l&agrave;  <b>Khoảng Gi&aacute; trị</b>, v&agrave; chỉ định <b>Đơn vị</b> l&agrave; <b>Năm</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Đơn vị</h2></div>
+        <hr/>
+        <div>
+            <p>Đơn vị sẽ được sử dụng cho gi&aacute; trị khoảng. Th&ocirc;ng tin đầu v&agrave;o l&agrave; bắt buộc khi  <b>Chiều</b> l&agrave; một trường thời gian v&agrave; <b>Th&ocirc;ng tin x&aacute;c định Tổng hợp</b> được đặt th&agrave;nh <b>Gi&aacute; trị Khoảng</b>.
+            </p>
+            <p>Nếu bạn đang tổng hợp th&ocirc;ng tin kh&aacute;c kh&ocirc;ng phải thời gian, t&ugrave;y chọn n&agrave;y sẽ kh&ocirc;ng khả dụng v&agrave; đơn vị cho gi&aacute; trị khoảng sẽ khớp với đơn vị biến của dữ liệu raster đa chiều đầu v&agrave;o. 
+                <ul>
+                    <li> <b>Giờ</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c l&aacute;t cắt thời gian h&agrave;ng giờ tại khoảng đ&atilde; cho.
+                    </li>
+                    <li> <b>Ng&agrave;y</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c l&aacute;t cắt thời gian h&agrave;ng ng&agrave;y tại khoảng đ&atilde; cho.
+                    </li>
+                    <li> <b>Tuần</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c l&aacute;t cắt thời gian h&agrave;ng tuần tại khoảng đ&atilde; cho.
+                    </li>
+                    <li> <b>Th&aacute;ng</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c l&aacute;t cắt thời gian h&agrave;ng th&aacute;ng tại khoảng đ&atilde; cho.
+                    </li>
+                    <li> <b>Năm</b>&mdash;C&aacute;c gi&aacute; trị dữ liệu sẽ được tổng hợp th&agrave;nh c&aacute;c l&aacute;t cắt thời gian h&agrave;ng năm tại khoảng đ&atilde; cho.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Xác định phạm vi</h2></div>
+        <hr/>
+        <div>
+            <p>Phạm vi khoảng sẽ được sử dụng để tổng hợp c&aacute;c nh&oacute;m gi&aacute; trị. C&aacute;c phạm vi đ&oacute; bao gồm c&aacute;c cặp gi&aacute; trị phạm vi tối thiểu v&agrave; tối đa, với kiểu dữ liệu Double hoặc Date. Th&ocirc;ng tin đầu v&agrave;o n&agrave;y l&agrave; bắt buộc khi  <b>Th&ocirc;ng tin x&aacute;c định Tổng hợp</b> được đặt th&agrave;nh <b>Khoảng Phạm vi</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Bỏ qua các giá trị thiếu trong tính toán</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng. 
+                <ul>
+                    <li>Được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ bao gồm tất cả c&aacute;c pixel hợp lệ dọc theo một chiều nhất định v&agrave; bỏ qua mọi pixel NoData. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li>Kh&ocirc;ng được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ cho kết quả NoData nếu c&oacute; mọi gi&aacute; trị NoData cho pixel dọc theo chiều đ&atilde; cho.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

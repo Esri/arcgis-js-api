@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define({toolDefine:"Klasificiraj piksele upotrebom dubokog učenja",outputLayerName:"${layername}_classified",modelLabel:"Odaberi model dubokog učenja za klasifikaciju piksela",modelArgsLabel:"Odredite argumente za model dubokog učenja",nameLabel:"Naziv",valueLabel:"Vrijednost",queryModelArgsMsg:"Ispitivanje argumenata za model...",analysisLayerLabel:"Odaberi sliku koja se upotrebljava za klasifikaciju piksela",itemDescription:"Usluga analize slike generirana alatom Klasificiraj piksele upotrebom dubokog učenja",itemTags:"Rezultat analize rastera, Klasificiraj piksele upotrebom dubokog učenja, ${layername}",itemSnippet:"Usluga analize slike generirana alatom Klasificiraj piksele upotrebom dubokog učenja"});
+define({toolDefine:"Klasificiraj piksele upotrebom dubokog učenja",outputLayerName:"${layername}_classified",modelLabel:"Odaberi model dubokog učenja za klasifikaciju piksela",modelArgsLabel:"Odredite argumente za model dubokog učenja",nameLabel:"Naziv",valueLabel:"Vrijednost",queryModelArgsMsg:"Ispitivanje argumenata za model...",queryModelArgsErrMsg:"Neuspjelo ispitivanje argumenata za model.",analysisLayerLabel:"Odaberi sliku koja se upotrebljava za klasifikaciju piksela",itemDescription:"Usluga analize slike generirana alatom Klasificiraj piksele upotrebom dubokog učenja",itemTags:"Rezultat analize rastera, Klasificiraj piksele upotrebom dubokog učenja, ${layername}",itemSnippet:"Usluga analize slike generirana alatom Klasificiraj piksele upotrebom dubokog učenja"});

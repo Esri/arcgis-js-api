@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Argumentstatistiken suchen</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Argumentstatistiken suchen"></h2>
+        <hr/>
+    <p>Extrahiert den Dimensionswert oder Bandindex, bei dem in einem multidimensionalen Raster oder einem Multiband-Raster ein bestimmter statistischer Wert f&uuml;r jedes Pixel erreicht wird.
+    </p>
+    <p>Verwenden Sie dieses Werkzeug, um den Dimensionswert (z.&nbsp;B. Datum, H&ouml;he oder Tiefe) zu extrahieren, bei dem eine bestimmte Statistik in den Rastern eines multidimensionalen Raster-Datasets erreicht wird. Oder suchen Sie damit die Bandnummer, bei der ein bestimmter statistischer Wert in einem Multiband-Raster erreicht wird.
+    </p>
+    <p>Zum Beispiel m&ouml;chten Sie vielleicht wissen, in welchem Monat der 30-j&auml;hrigen Datenerfassung jedes Pixel die h&ouml;chste Meeresoberfl&auml;chentemperatur erreicht hat. Oder ein anderes Beispiel: Sie haben ein 8-Band-Fernerkundungsbild und m&ouml;chten wissen, in welchem Band der minimale Reflexionswert f&uuml;r jedes Pixel erreicht wurde.
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden die Variablen oder B&auml;nder des Layers analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn die Option deaktiviert ist, werden die Variablen oder B&auml;nder des gesamten Layers analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Multidimensionalen oder Multiband-Bilddaten-Layer für die Analyse auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das zu analysierende multidimensionale oder Multiband-Eingabe-Raster.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Dimension auswählen, aus der die Statistik extrahiert wird</h2></div>
+        <hr/>
+        <div>
+            <p>Die Dimension, aus der die Statistik extrahiert wird. Wenn das Eingabe-Raster kein multidimensionales Raster ist, ist dieser Parameter nicht erforderlich.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variable(n) für die Analyse auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die zu analysierende(n) Variable(n). Wenn das Eingabe-Raster nicht multidimensional ist, werden die Pixelwerte des Multiband-Rasters als die zu analysierende Variable betrachtet. Wenn das Eingabe-Raster multidimensional ist und keine Variable angegeben ist, werden alle Variablen mit der ausgew&auml;hlten Dimension analysiert.
+            </p>
+            <p>Um zum Beispiel die Jahre zu finden, in denen die Temperaturwerte am h&ouml;chsten waren, geben Sie die Temperatur als zu analysierende Variable an. Wenn Sie keine Variablen angeben und als Variablen sowohl die Temperatur als auch der Niederschlag verf&uuml;gbar sind, werden beide Variablen analysiert, und das multidimensionale Ausgabe-Raster enth&auml;lt dann auch beide Variablen.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Statistiktyp auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die Statistik an, die aus der oder den Variablen entlang der gegebenen Dimension extrahiert werden soll. 
+            </p>
+            <ul>
+                <li> <b>Argument des Minimums</b>: Der Dimensionswert, bei dem der minimale Variablenwert erreicht wird, wird extrahiert. Dies ist die Standardeinstellung.
+                </li>
+                <li> <b>Argument des Maximums</b>: Der Dimensionswert, bei dem der maximale Variablenwert erreicht wird, wird extrahiert.
+                </li>
+                <li> <b>Argument des Medians</b>: Der Dimensionswert, bei dem der Medianwert der Variablen erreicht wird, wird extrahiert.
+                </li>
+                <li> <b>Argument der Dauer</b>: Die l&auml;ngste Dimensionsdauer, w&auml;hrend der die Variablenwerte zwischen den Minimal- und Maximalwerten liegen.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Mehrfach vorkommenden Wert festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Pixelwert, der verwendet werden soll, um anzuzeigen, dass eine bestimmte Argumentstatistik mehr als einmal im Eingabe-Raster-Dataset erreicht wurde. Wird dies nicht angegeben, ist der Pixelwert der Wert der Dimension beim ersten Erreichen der Argumentstatistik.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Minimalwert festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Der minimale Variablenwert, der zur Extraktion der Dauer verwendet wird.
+            </p>
+            <p>Dieser Parameter ist erforderlich, wenn f&uuml;r den Statistiktyp die Option  <b>Dauer</b> ausgew&auml;hlt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Maximalwert festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Der maximale Variablenwert, der zur Extraktion der Dauer verwendet wird.
+            </p>
+            <p>Dieser Schritt ist erforderlich, wenn f&uuml;r den Statistiktyp die Option  <b>Dauer</b> ausgew&auml;hlt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Dimensionsdefinition auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, wie die Statistik aus der Dimension extrahiert wird. 
+                <ul>
+                    <li> <b>Alle</b>: Die Statistik wird aus allen Dimensionen extrahiert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Intervallschl&uuml;sselwort</b>: Die Statistik wird je nach Intervallschl&uuml;sselwort aus der Zeitdimension extrahiert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Schlüsselwortintervall auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Zeiteinheit, f&uuml;r die die Statistik extrahiert wird.
+            </p>
+            <p>Sie haben beispielsweise t&auml;gliche Daten der Meeresoberfl&auml;chentemperatur aus f&uuml;nf Jahren und m&ouml;chten wissen, in welchem Jahr die maximale Temperatur beobachtet wurde. Legen Sie in diesem Schritt  <b>Argument des Maximums</b> als Statistiktyp, <b>Intervallschl&uuml;sselwort</b> als Dimensionsdefinition und <b>J&auml;hrlich</b> als Schl&uuml;sselwortintervall fest.
+            </p>
+            <p>Wenn Sie dagegen wissen m&ouml;chten, in welchem Monat dauerhaft die maximale Temperatur beobachtet wurde, legen Sie in diesem Schritt  <b>Argument des Maximums</b> als Statistiktyp, <b>Intervallschl&uuml;sselwort</b> als Dimensionsdefinition und <b>Monatlich wiederkehrend</b> als Schl&uuml;sselwortintervall fest. Dadurch wird ein Raster erzeugt, in dem jedes Pixel den Monat enth&auml;lt, in dem diese Statistik im Laufe der f&uuml;nf Jahre erreicht wurde (z.&nbsp;B. 18.08.2018, 25.08.2016, 07.08.2013).
+            </p>
+            <p>Dieser Schritt ist erforderlich, wenn  <b>StdTime</b> als die Dimension festgelegt wurde, aus der die Statistik extrahiert wird, und <b>Intervallschl&uuml;sselwort</b> ausgew&auml;hlt wurde, um festzulegen, wie die Statistik aus der Zeitdimension extrahiert werden soll.
+                <ul>
+                    <li> <b>T&auml;glich wiederkehrend</b>: Die Statistik wird aus allen Tagen extrahiert.
+                    </li>
+                    <li> <b>W&ouml;chentlich wiederkehrend</b>: Die Statistik wird aus allen Wochen extrahiert.
+                    </li>
+                    <li> <b>Monatlich wiederkehrend</b>: Die Statistik wird aus allen Monaten extrahiert.
+                    </li>
+                    <li> <b>Quartalsweise wiederkehrend</b>: Die Statistik wird aus allen Quartalen extrahiert.
+                    </li>
+                    <li> <b>St&uuml;ndlich</b>: Die Statistik wird f&uuml;r die Stunde extrahiert, in der die Statistik erreicht wurde.
+                    </li>
+                    <li> <b>T&auml;glich</b>: Die Statistik wird f&uuml;r den Tag extrahiert, an dem die Statistik erreicht wurde.
+                    </li>
+                    <li> <b>W&ouml;chentlich</b>: Die Statistik wird f&uuml;r die Woche extrahiert, in der die Statistik erreicht wurde.
+                    </li>
+                    <li> <b>Monatlich</b>: Die Statistik wird f&uuml;r den Monat extrahiert, in dem die Statistik erreicht wurde.
+                    </li>
+                    <li> <b>Viertelj&auml;hrlich</b>: Die Statistik wird f&uuml;r das Quartal extrahiert, in dem die Statistik erreicht wurde.
+                    </li>
+                    <li> <b>J&auml;hrlich</b>: Die Statistik wird f&uuml;r das Jahr extrahiert, in dem die Statistik erreicht wurde.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden.
+                <ul>
+                    <li>Wenn das Kontrollk&auml;stchen aktiviert wird, werden bei der Analyse alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li>Bei deaktiviertem Kontrollk&auml;stchen wird bei der Analyse &quot;NoData&quot; zur&uuml;ckgegeben, wenn NoData-Werte f&uuml;r die Pixel entlang einer angegebenen Dimension vorhanden sind.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

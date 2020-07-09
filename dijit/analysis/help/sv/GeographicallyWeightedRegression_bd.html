@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografiskt viktad regression</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Arbetsfl&ouml;desdiagram f&ouml;r GeographicallyWeightedRegression"></h2>
+        <hr/>
+    <p>Utf&ouml;r geografiskt viktad regression (GWR) som &auml;r en lokal form av linj&auml;r regression som anv&auml;nds f&ouml;r att modellera geografiskt varierande relationer.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Välj ett lager att analysera</h2></div>
+        <hr/>
+        <div>
+            <p>Lagret som inneh&aring;ller punktgeoobjekt som inneh&aring;ller de avh&auml;ngiga och f&ouml;rklarande variablerna.
+            </p>
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Välj vilket fält som ska modelleras</h2></div>
+        <hr/>
+        <div>
+            <p>Det numeriska f&auml;ltet som inneh&aring;ller de observerade v&auml;rdena som ska modelleras och den typ av v&auml;rde du modellerar.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Välj förklarande fält</h2></div>
+        <hr/>
+        <div>
+            <p>Ett eller flera f&auml;lt som representerar de f&ouml;rklarande variablerna (f&auml;lt) som hj&auml;lper till att f&ouml;ruts&auml;ga v&auml;rdet. Endast numeriska f&auml;lt &auml;r synliga.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Välj hur grannskapet ska avgöras</h2></div>
+        <hr/>
+        <div>
+            <p>Anger om det anv&auml;nda n&auml;romr&aring;det har konstruerats som ett fast avst&aring;nd eller om den geografiska utbredningen kan variera beroende p&aring; geoobjektens densitet.
+                <ul>
+                    <li> <b>Antal grannar</b> &ndash; N&auml;romr&aring;dets storlek &auml;r en funktion av ett angivet antal grannar som inkluderas i ber&auml;kningarna f&ouml;r varje geoobjekt. D&auml;r geoobjekten &auml;r t&auml;ta &auml;r n&auml;romr&aring;dets geografiska utbredning mindre, d&auml;r geoobjekten &auml;r glesa &auml;r n&auml;romr&aring;dets geografiska utbredning st&ouml;rre. N&auml;r du v&auml;ljer det h&auml;r alternativet ska du &auml;ven v&auml;lja hur m&aring;nga grannar du vill inkludera. Antalet m&aring;ste vara ett heltal mellan 2 och 5&nbsp;000.
+                    </li>
+                    <li> <b>Avst&aring;ndsband</b> &ndash; N&auml;romr&aring;dets storlek &auml;r ett konstant eller fast avst&aring;nd f&ouml;r varje geoobjekt. N&auml;r du v&auml;ljer det h&auml;r alternativet ska du &auml;ven v&auml;lja ett avst&aring;ndsband som ska representera n&auml;romr&aring;dets geografiska utbredning.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Välj hur närliggande geoobjekt viktas</h2></div>
+        <hr/>
+        <div>
+            <p>Anger k&auml;rntyp som ska anv&auml;ndas f&ouml;r att tillhandah&aring;lla modellens geografiska viktning. K&auml;rnan definierar hur varje geoobjekt &auml;r relaterat till andra geoobjekt inom dess n&auml;romr&aring;de.
+                <ul>
+                    <li> <b>Bikvadrat</b> &ndash; En vikt om 0 kommer att tilldelas till varje geoobjekt utanf&ouml;r det angivna n&auml;romr&aring;det. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Gauss</b> &ndash; Alla geoobjekt f&aring;r vikter, men vikterna blir exponentiellt mindre ju l&auml;ngre bort fr&aring;n m&aring;lgeoobjektet de &auml;r.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p> Namnet p&aring; lagret som ska skapas. Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            </p>
+            <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

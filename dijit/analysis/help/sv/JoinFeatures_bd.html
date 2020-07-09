@@ -56,9 +56,9 @@
         <div>
             <p>Det lager som kommer att f&aring; attribut fr&aring;n f&ouml;reningslagret tillagda i sin tabell.
             </p>
-            <p>Analyser som anv&auml;nder den geografiska relationen  <b>N&auml;ra</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b> .
+            <p>Analyser som anv&auml;nder den geografiska relationen  <b>N&auml;ra</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange bearbetande koordinatsystem i Analysmilj&ouml;. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder k&ouml;r analys .
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>F&ouml;reningslagret med de attribut som ska l&auml;ggas till i m&aring;llagret.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Motsvarar</b> &ndash; Geoobjekten matchas om de har samma geometri.
                     </li>
-                    <li> <b>N&auml;ra</b> &ndash; Geoobjekten matchas om de ligger inom ett angivet avst&aring;nd fr&aring;n varandra. M&aring;llagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med <b>Analysmilj&ouml;</b> om en geografiskt <b>n&auml;ra</b> relation anv&auml;nds.
+                    <li> <b>N&auml;ra plan</b> &ndash; Geoobjekten matchas om de ligger inom ett angivet avst&aring;nd fr&aring;n varandra. M&aring;llagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med <b>Analysmilj&ouml;</b> om en geografiskt <b>n&auml;ra</b> relation anv&auml;nds.
+                    </li>
+                    <li> <b>N&auml;ra geodesi</b> &ndash; Geoobjekten matchas om de ligger inom ett angivet avst&aring;nd fr&aring;n varandra. Avst&aring;ndet m&auml;ts med planavst&aring;nd.
                     </li>
                     <li> <b>Inneh&aring;ller</b> &ndash; Geoobjekten matchas om m&aring;llagret innefattas i de geoobjekt som f&ouml;renas.
                     </li>
@@ -215,7 +217,7 @@
             </p>
             <p>Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. P&aring; numeriska f&auml;lt kan du ber&auml;kna f&ouml;ljande: 
                 <ul>
-                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
+                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Det kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
                     <li>Summa &ndash; Summan av de numeriska v&auml;rdena i ett f&auml;lt. Summan f&ouml;r [null, null, 3] &auml;r 3.
                     </li>
@@ -280,7 +282,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Namnet p&aring; lagret som ska skapas.  Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som ska skapas. Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

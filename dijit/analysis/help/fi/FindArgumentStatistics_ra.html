@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Etsi argumentin tilastot</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Etsi argumentin tilastot"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>T&auml;m&auml;n ty&ouml;kalun avulla voit poimia ulottuvuusarvon (esimerkiksi p&auml;iv&auml;m&auml;&auml;r&auml;n, korkeuden tai syvyyden), jossa tietty tilastoarvo saavutetaan moniulotteisen rasteriaineistoryhm&auml;n rasteripinossa. Voit vaihtoehtoisesti etsi&auml; kaistanumeron, jossa tilastoarvo saavutetaan monikaistaisessa rasterissa.
+    </p>
+    <p>Haluat ehk&auml; esimerkiksi tiet&auml;&auml; kuukauden, jona kukin pikseli saavutti korkeimman merenpinnan l&auml;mp&ouml;tilan aineistossa, joka on ker&auml;tty 30 vuoden ajalta. Toinen esimerkki on tilanne, jossa k&auml;yt&ouml;ss&auml;si on kahdeksankaistainen kaukokartoituskuva ja haluat tiet&auml;&auml; kunkin pikselin osalta kaistan, jossa heijastuksen v&auml;himm&auml;isarvo on saavutettu.
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, sen karttatason muuttujat tai kaistat, jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, analysoidaan. Jos vaihtoehtoa ei ole valittu, koko karttatason muuttujat tai kaistat analysoidaan &ndash; my&ouml;s ne, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Valitse analysoitava moniulotteinen tai monikaistainen kuva-aineistokarttataso</h2></div>
+        <hr/>
+        <div>
+            <p>Analysoitava l&auml;ht&ouml;aineiston moniulotteinen tai monikaistainen rasteri.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Valitse ulottuvuus, josta tilastotiedot poimitaan</h2></div>
+        <hr/>
+        <div>
+            <p>Ulottuvuus, josta tilastotiedot poimitaan. Jos l&auml;ht&ouml;aineiston rasteri ei ole moniulotteinen rasteri, t&auml;m&auml; parametri ei ole pakollinen.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valitse analysoitavat muuttujat</h2></div>
+        <hr/>
+        <div>
+            <p>Analysoitava muuttuja tai analysoitavat muuttujat. Jos l&auml;ht&ouml;aineiston rasteri ei ole moniulotteinen, monikaistaisen rasterin pikseliarvoja pidet&auml;&auml;n muuttujana. Jos l&auml;ht&ouml;aineiston rasteri on moniulotteinen eik&auml; yht&auml;&auml;n muuttujaa ei ole m&auml;&auml;ritetty, kaikki valitun ulottuvuuden mukaiset muuttujat analysoidaan.
+            </p>
+            <p>Jos haluat etsi&auml; esimerkiksi vuodet, joina l&auml;mp&ouml;tila-arvot olivat korkeimpia, m&auml;&auml;rit&auml; l&auml;mp&ouml;tila analysoitavaksi muuttujaksi. Jos et m&auml;&auml;rit&auml; yht&auml;&auml;n muuttujaa ja k&auml;yt&ouml;ss&auml;si on sek&auml; l&auml;mp&ouml;tila- ett&auml; sadem&auml;&auml;r&auml;muuttuja, kummatkin muuttujat analysoidaan ja tulosaineiston moniulotteinen rasteri sis&auml;lt&auml;&auml; molemmat muuttujat.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Valitse tilastotyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; muuttujasta tai muuttujista poimittavat tilastotiedot annetulla ulottuvuudella. 
+            </p>
+            <ul>
+                <li> <b>Minimin argumentti</b> &ndash; ulottuvuusarvo, jossa muuttujan v&auml;himm&auml;isarvo saavutetaan, poimitaan. T&auml;m&auml; on oletusarvo.
+                </li>
+                <li> <b>Maksimin argumentti</b> &ndash; ulottuvuusarvo, jossa muuttujan enimm&auml;isarvo saavutetaan, poimitaan.
+                </li>
+                <li> <b>Mediaanin argumentti</b> &ndash; ulottuvuusarvo, jossa muuttujan mediaaniarvo saavutetaan, poimitaan.
+                </li>
+                <li> <b>Keston argumentti</b> &ndash; pisin ulottuvuuden kesto, jolle muuttujan arvot osuvat v&auml;himm&auml;is- ja enimm&auml;isarvojen v&auml;lill&auml;.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Määritä useiden esiintymien arvo</h2></div>
+        <hr/>
+        <div>
+            <p>Pikseliarvo, jota k&auml;ytet&auml;&auml;n sen ilmaisemiseen, ett&auml; annettu argumentin tilastoarvo on saavutettu useammin kuin kerran l&auml;ht&ouml;aineiston rasteriaineistoryhm&auml;ss&auml;. Jos pikseliarvoa ei ole m&auml;&auml;ritetty, se on ulottuvuuden arvo silloin, kun argumentin tilastoarvo saavutettiin ensimm&auml;isen kerran.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Määritä vähimmäisarvo</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttujan v&auml;himm&auml;isarvo, jota k&auml;ytet&auml;&auml;n keston poimimiseen.
+            </p>
+            <p>T&auml;m&auml; parametri on pakollinen, kun tilastotyypiksi on valittu  <b>Kesto</b>.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Määritä enimmäisarvo</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttujan enimm&auml;isarvo, jota k&auml;ytet&auml;&auml;n keston poimimiseen.
+            </p>
+            <p>T&auml;m&auml; vaihe on pakollinen, kun tilastotyypiksi on valittu  <b>Kesto</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Valitse ulottuvuuden määritelmä</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, miten tilastoarvo poimitaan ulottuvuudesta. 
+                <ul>
+                    <li> <b>Kaikki</b> &ndash; tilastoarvo poimitaan kaikista ulottuvuuksista. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Arvov&auml;lin avainsana</b> &ndash; tilastoarvo poimitaan aikaulottuvuudesta arvov&auml;lin avainsanan mukaisesti.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Valitse avainsanaväli</h2></div>
+        <hr/>
+        <div>
+            <p>Aikayksikk&ouml;, jolle ulottuvuus poimitaan.
+            </p>
+            <p>K&auml;yt&ouml;ss&auml;si on esimerkiksi p&auml;ivitt&auml;iset merenpinnan l&auml;mp&ouml;tila-aineistot viidelt&auml; vuodelta ja haluat tiet&auml;&auml; vuoden, jona enimm&auml;isl&auml;mp&ouml;tila havaittiin. M&auml;&auml;rit&auml; tilastotyypiksi  <b>Maksimin argumentti</b>, m&auml;&auml;rit&auml; ulottuvuuden m&auml;&auml;ritelm&auml;ksi <b>Arvov&auml;lin avainsana</b> ja m&auml;&auml;rit&auml; t&auml;m&auml;n vaiheen arvov&auml;lin avainsanaksi <b>Vuosittain</b>.
+            </p>
+            <p>Vaihtoehtoisesti, jos haluat tiet&auml;&auml; kuukauden, jona enimm&auml;isl&auml;mp&ouml;tila havaittiin tasaisesti, m&auml;&auml;rit&auml; tilastotyypiksi  <b>Maksimin argumentti</b>, m&auml;&auml;rit&auml; ulottuvuuden m&auml;&auml;ritelm&auml;ksi <b>Arvov&auml;lin avainsana</b> ja m&auml;&auml;rit&auml; t&auml;m&auml;n vaiheen arvov&auml;lin avainsanaksi <b>Toistuu kuukausittain</b>. T&auml;m&auml; luo rasterin, jossa kukin pikseli sis&auml;lt&auml;&auml; kuukauden, jona tilastoarvo saavutettiin viiden vuoden tilastoidulta ajanjaksoilta (esimerkiksi 18.8.2018, 25.8.2016 ja 7.8.2013).
+            </p>
+            <p>T&auml;m&auml; vaihe on pakollinen, kun ulottuvuudeksi, josta tilastoarvo poimitaan, on m&auml;&auml;ritetty  <b>StdTime</b> ja <b>Arvov&auml;lin avainsana</b> on valittu m&auml;&auml;ritt&auml;m&auml;&auml;n sit&auml;, miten tilastoarvo poimitaan aikaulottuvuudesta.
+                <ul>
+                    <li> <b>Toistuu p&auml;ivitt&auml;in</b> &ndash; tilastoarvo poimitaan kaikilta p&auml;ivilt&auml;.
+                    </li>
+                    <li> <b>Toistuu viikoittain</b> &ndash; tilastoarvo poimitaan kaikilta viikoilta.
+                    </li>
+                    <li> <b>Toistuu kuukausittain</b> &ndash; tilastoarvo poimitaan kaikilta kuukausilta.
+                    </li>
+                    <li> <b>Toistuu nelj&auml;nnesvuosittain</b> &ndash; tilastoarvo poimitaan kaikilta vuosinelj&auml;nneksilt&auml;.
+                    </li>
+                    <li> <b>Tunneittain</b> &ndash; tilastoarvo poimitaan silt&auml; tunnilta, jolloin tilastoarvo saavutettiin.
+                    </li>
+                    <li> <b>P&auml;ivitt&auml;in</b> &ndash; tilastoarvo poimitaan silt&auml; p&auml;iv&auml;lt&auml;, jolloin tilastoarvo saavutettiin.
+                    </li>
+                    <li> <b>Viikoittain</b> &ndash; tilastoarvo poimitaan silt&auml; viikolta, jolloin tilastoarvo saavutettiin.
+                    </li>
+                    <li> <b>Kuukausittain</b> &ndash; tilastoarvo poimitaan silt&auml; kuukaudelta, jolloin tilastoarvo saavutettiin.
+                    </li>
+                    <li> <b>Nelj&auml;nnesvuosittain</b> &ndash; tilastoarvo poimitaan silt&auml; vuosinelj&auml;nnekselt&auml;, jolloin tilastoarvo saavutettiin.
+                    </li>
+                    <li> <b>Vuosittain</b> &ndash; tilastoarvo poimitaan silt&auml; vuodelta, jolloin tilastoarvo saavutettiin.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa.
+                <ul>
+                    <li>Jos valintaruutu on valittu, analyysi sis&auml;lt&auml;&auml; kaikki kelvolliset pikselit annetulla ulottuvuudella ja ohittaa kaikki NoData-pikselit. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Jos valintaruutua ei ole valittu, analyysin tuloksena on NoData, jos pikselien arvona on NoData-arvoja annetulla ulottuvuudella.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

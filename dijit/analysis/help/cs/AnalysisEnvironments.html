@@ -245,15 +245,31 @@
             </p>
         </div>
     </div>
+    <div id="retryOnFailures">
+        <div><h2>Počet opakovaných pokusů při chybách</h2></div>
+        <hr/>
+        <div>
+            <p>Definuje, kolik m&aacute; jeden zpracovatel opakovan&yacute;ch pokusů pro př&iacute;pad, že dojde k n&aacute;hodn&eacute; poru&scaron;e při zpracov&aacute;n&iacute; konkr&eacute;tn&iacute; &uacute;lohy. V&yacute;choz&iacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Recyklovat interval zpracovatelů</h2></div>
+        <hr/>
+        <div>
+            <p>Definuje kolik &uacute;seků sn&iacute;mků, bude zpracov&aacute;no před zastaven&iacute;m procesu a spu&scaron;těn&iacute;m nov&yacute;ch procesů zpracovatele, aby se přede&scaron;lo možn&yacute;m chyb&aacute;m dlouho běž&iacute;c&iacute;ch procesů. V&yacute;choz&iacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
     <div id="processorType">
         <div><h2>Typ procesoru</h2></div>
         <hr/>
         <div>
-            <p>N&aacute;stroje, kter&eacute; berou ohled na prostřed&iacute;  <b>Typ procesoru</b>, v&aacute;m umožňuj&iacute; zvolit, kde a jak chcete zpracov&aacute;vat svoje data. Sv&aacute; data můžete zpracov&aacute;vat pomoc&iacute; CPU nebo GPU serverov&eacute;ho poč&iacute;tače.Pokud je prostřed&iacute; <b>Typ procesoru</b> pr&aacute;zdn&eacute;, n&aacute;stroj použije CPU ke zpracov&aacute;n&iacute; dat. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+            <p>N&aacute;stroje, kter&eacute; berou ohled na prostřed&iacute;  <b>Typ procesoru</b>, v&aacute;m umožňuj&iacute; zvolit, kde a jak chcete zpracov&aacute;vat svoje data. Sv&aacute; data můžete zpracov&aacute;vat pomoc&iacute; CPU nebo GPU serverov&eacute;ho poč&iacute;tače. Pokud je prostřed&iacute; <b>Typ procesoru</b> pr&aacute;zdn&eacute;, n&aacute;stroj použije CPU ke zpracov&aacute;n&iacute; dat. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
             </p> 
             <p>Zpracov&aacute;n&iacute; pomoc&iacute; CPU může b&yacute;t synchronizov&aacute;no přes v&iacute;ce j&aacute;der a instanc&iacute;, to je prov&aacute;děno pomoc&iacute;  <b>Faktoru paraleln&iacute;ho zpracov&aacute;n&iacute;</b>.
             </p>
-            <p>GPU jsou &uacute;činn&eacute; při zpracov&aacute;n&iacute; grafiky a obrazu, jelikož d&iacute;ky sv&eacute; vysoce paraleln&iacute; struktuře dobře funguj&iacute; při opakovan&eacute;m zpracov&aacute;n&iacute; velk&yacute;ch bloků dat.N&aacute;stroje rastrov&eacute; anal&yacute;zy, kter&eacute; berou ohled na toto prostřed&iacute;, mohou distribuovat svoje &uacute;lohy např&iacute;č instancemi GPU na v&iacute;ce serverov&yacute;ch poč&iacute;tač&iacute;ch rastrov&eacute; anal&yacute;zy, to je prov&aacute;děno pomoc&iacute;  <b>Faktoru paraleln&iacute;ho zpracov&aacute;n&iacute;</b>.
+            <p>GPU jsou &uacute;činn&eacute; při zpracov&aacute;n&iacute; grafiky a obrazu, jelikož d&iacute;ky sv&eacute; vysoce paraleln&iacute; struktuře dobře funguj&iacute; při opakovan&eacute;m zpracov&aacute;n&iacute; velk&yacute;ch bloků dat. N&aacute;stroje rastrov&eacute; anal&yacute;zy, kter&eacute; berou ohled na toto prostřed&iacute;, mohou distribuovat svoje &uacute;lohy např&iacute;č instancemi GPU na v&iacute;ce serverov&yacute;ch poč&iacute;tač&iacute;ch rastrov&eacute; anal&yacute;zy, to je prov&aacute;děno pomoc&iacute;  <b>Faktoru paraleln&iacute;ho zpracov&aacute;n&iacute;</b>.
             </p>
             <p>
                 <ul>

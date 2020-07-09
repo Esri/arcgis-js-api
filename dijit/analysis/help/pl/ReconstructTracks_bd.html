@@ -55,7 +55,7 @@
         </ul>
         
     </p>
-    <p>Przyjmijmy na przykład, że dysponujesz pomiarami GPS huragan&oacute;w wykonywanymi co 10 minut. W ramach każdego pomiaru GPS rejestrowana jest nazwa huraganu, jego lokalizacja, czas rejestracji i prędkość wiatru. Przy użyciu tych informacji można utworzyć ścieżkę każdego huraganu, kt&oacute;ry będzie identyfikowany za pomocą nazwy. Dla każdego huraganu zostanie wygenerowana ścieżka.  Dodatkowo można będzie wykonać obliczenia statystyczne, takie jaki średnia, maksymalna i minimalna prędkość wiatru dla każdego huraganu lub liczba pomiar&oacute;w w ramach każdej ścieżki.
+    <p>Przyjmijmy na przykład, że dysponujesz pomiarami GPS huragan&oacute;w wykonywanymi co 10 minut. W ramach każdego pomiaru GPS rejestrowana jest nazwa huraganu, jego lokalizacja, czas rejestracji i prędkość wiatru. Przy użyciu tych informacji można utworzyć ścieżkę każdego huraganu, kt&oacute;ry będzie identyfikowany za pomocą nazwy. Dla każdego huraganu zostanie wygenerowana ścieżka.  Dodatkowo można będzie wykonać obliczenia statystyczne, takie jak średnia, maksymalna i minimalna prędkość wiatru dla każdego huraganu lub liczba pomiar&oacute;w w ramach każdej ścieżki.
     </p>
     <p>Używając tego samego przykładu, można buforować ścieżki według prędkości wiatru. Każdy pomiar będzie buforowany według pola prędkości wiatru w danej lokalizacji, a buforowane obszary zostaną połączone, tworząc obszarową reprezentację ścieżki, zawierającą także informacje o zmianach prędkości wiatru w trakcie trwania huraganu.   
     </p>
@@ -67,7 +67,7 @@
         <div>
             <p>Warstwa punktowa lub powierzchniowa, kt&oacute;ra zostanie zrekonstruowana do postaci ścieżki. Warstwa wejściowa musi zawierać dane czasowe z obiektami reprezentującymi moment w czasie. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
             </p>
         </div>
     </div>
@@ -97,7 +97,7 @@
             </p>
             <p>R&oacute;wnanie w postaci  <code>$feature.windspeed * 1000</code> spowoduje zastosowanie wartości bufora r&oacute;wnej 1000 pomnożonej przez wartość w polu <i>windspeed</i>. W kalkulatorze bufora można użyć więcej niż jednego pola.
             </p>
-            <p> Można także określić wyrażenie zawierające dane o ścieżkach. Na przykład można obliczyć sumę wartości w polu <i>windspeed</i> dla bieżącego obiektu i dw&oacute;ch wcześniejszych obiekt&oacute;w za pomocą wyrażenia w postaci <code>$track.field(windspeed).history(-3)</code>. Suma bieżącej wartości pola <i>windspeed</i> i dw&oacute;ch wcześniejszych pomiar&oacute;w może być obliczona i buforowana dla każdej lokalizacji.
+            <p> Można też zdefiniować wyrażenie zawierające dane o ścieżkach. Na przykład można obliczyć sumę wartości w polu <i>windspeed</i> dla bieżącego obiektu i dw&oacute;ch wcześniejszych obiekt&oacute;w za pomocą wyrażenia w postaci <code>$track.field(windspeed).history(-3)</code>. Suma bieżącej wartości pola <i>windspeed</i> i dw&oacute;ch wcześniejszych pomiar&oacute;w może być obliczona i buforowana dla każdej lokalizacji.
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w.W polach liczbowych można obliczyć następujące wartości:
+            <p>Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości: 
                 <ul>
-                    <li>Liczba &mdash; zlicza wartości inne niż null.Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
                     <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
@@ -166,6 +166,10 @@
                     </li>
                     <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1,0,1,1] wynosi 0,5. 
                     </li>
+                    <li>Pierwsza &mdash; pierwsza wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [1,5,10,20], pierwsza wartość wynosi&nbsp;1.
+                    </li>
+                    <li>Ostatnia &mdash; ostatnia wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [1,5,10,20], ostatnia wartość wynosi&nbsp;20.
+                    </li>
                 </ul>
                 
             </p>
@@ -175,8 +179,12 @@
                     </li>
                     <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
                     </li>
+                    <li>Pierwsza &mdash; pierwsza wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], pierwsza wartość wynosi Toronto.
+                    </li>
+                    <li>Ostatnia &mdash; ostatnia wartość zdefiniowanego pola w podsumowanej ścieżce. Jeśli ścieżka ma w polu następujące wartości uporządkowane czasowo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], ostatnia wartość wynosi Boston.
+                    </li>
                 </ul>
-                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej. 
+                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej.
             </p>
         </div>
     </div>
@@ -184,11 +192,11 @@
         <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w magazynie danych i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w magazynie danych i udostępniane jako warstwa obiektowa w oprogramowaniu  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Wyniki mogą być używane w ramach kooperacji między portalami.
                     </li>
-                    <li>Została włączona możliwość synchronizacji wynik&oacute;w.
+                    <li>Można włączyć funkcje synchronizacji wynik&oacute;w.
                     </li>
                 </ul>
                 
@@ -201,7 +209,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie Moje zasoby. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
             <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>

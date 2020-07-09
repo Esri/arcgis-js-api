@@ -44,7 +44,9 @@
         <h2>Layer überlagern</h2><p/>
         <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Layer &uuml;berlagern"></h2>
         <hr/>
-    <p>&quot;Layer &uuml;berlagern&quot; kombiniert mindestens zwei Layer zu einem einzelnen Layer. Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstellen, durch den Sie hindurchsehen und anhand dessen Sie eine einzelne Karte erstellen, die alle Informationen aus diesem Stapel enth&auml;lt. Ein &Uuml;berlagerungsvorgang ist viel mehr als eine einfache Zusammenf&uuml;hrung einzelner Linien. S&auml;mtliche Attribute der Features, die Teil der &Uuml;berlagerung sind, werden auf das endg&uuml;ltige Produkt &uuml;bertragen. Die &Uuml;berlagerung gibt eine Antwort auf die grundlegendsten Fragen der Geographie: Welche Elemente &uuml;berlagern einander? Nachfolgend finden Sie einige Beispiele:
+    <p>&quot;Layer &uuml;berlagern&quot; kombiniert mindestens zwei Layer zu einem einzelnen Layer. Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstellen, durch den Sie hindurchsehen und anhand dessen Sie eine einzelne Karte erstellen, die alle Informationen aus diesem Stapel enth&auml;lt. Ein &Uuml;berlagerungsvorgang bedeutet mehr als einfach die Zusammenf&uuml;hrung einzelner Linien: S&auml;mtliche Attribute der &Uuml;berlagerungs-Features sind im endg&uuml;ltigen Produkt enthalten. Die &Uuml;berlagerung gibt eine Antwort auf eine der grundlegendsten Fragen der Geographie: &quot;Welche Elemente &uuml;berlagern einander?&quot; 
+    </p>
+    <p>Nachfolgend finden Sie einige Beispiele:
         <ul>
             <li>Welche Flurst&uuml;cke befinden sich in einem 100-Jahres-&Uuml;berschwemmungsgebiet? (&quot;In&quot; ist hier ein Synonym f&uuml;r &quot;&uuml;ber&quot; bzw. &quot;&uuml;berlagern&quot;.)
                   
@@ -57,7 +59,7 @@
         </ul>
         
     </p>
-    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe- und Overlay-Layer &uuml;berlagert, die sich in der aktuellen Kartenausdehnung befinden. Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe- und Overlay-Layer &uuml;berlagert, wenn sie sich au&szlig;erhalb der aktuellen Ausdehnung befinden.
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe- und Overlay-Layer &uuml;berlagert, die sich in der aktuellen Kartenausdehnung befinden. Wenn diese Option nicht aktiviert ist, werden alle Features im Eingabe- und Overlay-Layer &uuml;berlagert, selbst wenn sie sich au&szlig;erhalb der aktuellen Ausdehnung befinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -67,7 +69,7 @@
         <div>
             <p>Die Punkt-, Linien- oder Fl&auml;chen-Features, die &uuml;berlagert werden.
             </p>
-            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> oder <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Mit dieser Option &ouml;ffnen Sie eine Galerie, in der Sie zu Datasets aus verschiedenen Quellen navigieren und diese f&uuml;r Ihre Analysen ausw&auml;hlen k&ouml;nnen. 
             </p>
         </div>
     </div>
@@ -75,9 +77,9 @@
         <div><h2>Overlay-Layer auswählen</h2></div>
         <hr/>
         <div>
-            <p>Der Layer, der den Eingabe-Layer &uuml;berlagern soll.  
+            <p>Der Layer, mit dem der Eingabe-Layer &uuml;berlagert werden soll.  
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
             </p>
         </div>
     </div>
@@ -85,56 +87,18 @@
         <div><h2>Überlagerungsmethode auswählen</h2></div>
         <hr/>
         <div>
-            <p>Anhand der Overlay-Methode wird definiert, wie der Eingabe-Layer und der Overlay-Layer kombiniert werden.  
+            <p>Gibt die &Uuml;berlagerungsmethode an, mit der der Eingabe-Layer und der Overlay-Layer kombiniert werden.  
 
                 <ul>
-                    <li> <b>&Uuml;berschneiden</b> &ndash; Das Ergebnis enth&auml;lt nur die Features oder Teile der Features im Overlay-Layer, die sich mit Features im Eingabe-Layer &uuml;berlappen. Bei der &Uuml;berschneidung von Linien- oder Fl&auml;chen-Features k&ouml;nnen Sie festlegen, welcher Typ von Features ausgegeben werden soll.
-                        <table border="1">
-                        <tr>
-                            <td>
-                                <p>Punkte mit Punkten
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Punkte und Punkt-Eingabe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Punkte und Punkte mit Punkt-Ausgabe">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Linien mit Linien 
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="Linien und Linien-Eingabe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="Linien und Linien mit Linien-Ausgabe ">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Fl&auml;chen mit Fl&auml;chen
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Fl&auml;chen und Fl&auml;chen-Eingabe">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="Fl&auml;chen und Fl&auml;chen mit Fl&auml;chen-Ausgabe">
-                                </p>
-                            </td>
-                        </tr>
-                        </table>
+                    <li> <b>&Uuml;berschneiden</b>: Es werden nur die Features oder Teile der Features im Overlay-Layer kombiniert, die sich mit Features im Eingabe-Layer &uuml;berlappen.
                     </li>
-                    <li> <b>Radieren</b> &ndash; Das Ergebnis enth&auml;lt nur die Features oder Teile der Features im Overlay-Layer, die sich nicht mit den Fl&auml;chen im Eingabe-Layer &uuml;berlappen.  Der Overlay-Layer kann Fl&auml;chen-, Linien- oder Punkt-Features enthalten.
+                    <li> <b>Radieren</b>: Features oder Teile der Features im Overlay-Layer, die sich nicht mit den Fl&auml;chen im Eingabe-Layer &uuml;berlappen, werden kombiniert.
+                    </li>
+                    <li> <b>Vereinigen</b>: Alle Features aus beiden Layern werden kombiniert, wodurch sich eine geometrische Vereinigung aus Eingabe-Layer und Overlay-Layer ergibt. Alle Features und deren Attribute werden in den Layer geschrieben.
+                    </li>
+                    <li> <b>Verschneiden (Identity)</b>: Features oder Teile der Features im Eingabe-und Overlay-Layer werden kombiniert. Features oder Teile von Features, die sich im Eingabe- und im Overlay-Layer &uuml;berlappen, werden in den Ausgabe-Layer geschrieben.
+                    </li>
+                    <li> <b>Symmetrische Differenz</b>: Features oder Teile der Features im Eingabe-und Overlay-Layer, die sich nicht &uuml;berlappen, werden kombiniert.
                     </li>
                 </ul>
                 

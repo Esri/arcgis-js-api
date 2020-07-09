@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klassificera objekt med djupinlärning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klassificera objekt med djupinl&auml;rning"></h2>
+        <hr/>
+    <p>Det h&auml;r verktyget k&ouml;r en tr&auml;nad djupinl&auml;rningsmodell p&aring; ett indataraster och en valfri geoobjektklass f&ouml;r att skapa en geoobjektklass eller tabell d&auml;r varje indataobjekt har en tilldelad klassetikett.
+    </p>
+    <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras endast det rasteromr&aring;de som &auml;r synligt i den aktuella kartutbredningen. Om alternativet inte markeras analyseras hela rastret, &auml;ven om det ligger utanf&ouml;r den aktuella kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Välj bild som används för att klassificera objekt</h2></div>
+        <hr/>
+        <div>
+            <p>Indatabilden som anv&auml;nds f&ouml;r att identifiera objekt.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Välj geoobjektlager för objekt (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Det punkt-, linje-, eller polygongeoobjektlager f&ouml;r indata som identifierar platsen f&ouml;r varje objekt som ska klassificeras och etiketteras. Varje rad i indatageoobjektlagret motsvarar ett enskilt objekt.
+            </p>
+            <p>Om inget indatageoobjektlager anges, antar verktyget att varje indatabild inneh&aring;ller ett enda objekt som ska klassificeras. Om indatabilden eller -bilderna anv&auml;nder en geografisk referens, &auml;r utdata fr&aring;n verktyget ett geoobjektlager, d&auml;r utbredningen f&ouml;r varje bild anv&auml;nds som gr&auml;nsgeometri f&ouml;r varje etiketterat geoobjekt. Om indatabilden eller -bilderna inte har en geografisk referens, &auml;r utdata fr&aring;n verktyget en tabell som inneh&aring;ller bild-ID-v&auml;rdena och klassetiketterna f&ouml;r varje bild.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Välj den djupinlärningsmodell som används för att klassificera objekt</h2></div>
+        <hr/>
+        <div>
+            <p>Indataobjektet f&ouml;r djupinl&auml;rningspaketet ( <code>.dlpk</code>).
+            </p>
+            <p>Djupinl&auml;rningspaketet best&aring;r av JSON-filen f&ouml;r Esri-modelldefinitionen ( <code>.emd</code>), filen med djupinl&auml;rningsbin&auml;rmodellen och, som tillval, Python-rasterfunktionen som ska anv&auml;ndas.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Ange modellargument för djupinlärning</h2></div>
+        <hr/>
+        <div>
+            <p>Funktionsargumenten definieras i Python-rasterfunktionsklassen som refereras av indatamodellen. H&auml;r listar du ytterligare djupinl&auml;rningsparametrar och argument f&ouml;r experiment och f&ouml;rfining, t.ex. en konfidenstr&ouml;skel f&ouml;r att justera k&auml;nsligheten.
+            </p>
+            <p>Namnen f&ouml;r argumenten fylls av verktyget genom att l&auml;sa Python-modulen p&aring; rasteranalysservern.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definiera klassetikettfältnamn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; f&auml;ltet som ska inneh&aring;lla klassificeringsetiketten i utdatageoobjektlagret.
+            </p>
+            <p>Om inget f&auml;ltnamn har angetts kommer ett nytt f&auml;lt med namnet  <i>ClassLabel</i> att genereras i utdatageoobjektlagret.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Bearbetningsläge</h2></div>
+        <hr/>
+        <div>
+            <p>Specificerar hur alla rasterobjekt i en bildtj&auml;nst kommer att bearbetas. 
+                <ul>
+                    <li> <b>Bearbeta som mosaikbild</b> &ndash; Alla rasterobjekt i bildtj&auml;nsten mosaikbehandlas tillsammans och bearbetas. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Bearbeta objekt separat</b> &ndash; Alla rasterobjekt i bildtj&auml;nsten bearbetas som separata bilder.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

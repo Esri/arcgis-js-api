@@ -62,7 +62,7 @@
         <div>
             <p>Točkasti sloj koji će se agregirati u poligone. Točkasti slojevi koji se agregiraju u  <b>kvadratne</b> ili <b>&scaron;esterokutne</b> ćelije moraju imati prostorne reference koja se obrađuje postavljene u predviđenom koordinatnom sustavu pomoću <b>Okruženja za analizu</b>.
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
             </p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <div>
             <p>Poligoni u koje će se točkasti sloj agregirati. Možete odabrati između poligonalnog sloja koji omogućite ili ćelija koje se generiraju kad alat radi. Prilikom generiranja ćelija za  <b>Četverokut</b>, broj i naznačene jedinice određuju visinu i dužinu kvadrata. Za <b>&Scaron;esterokut</b> broj i naznačene jedinice određuju udaljenost između usporednih strana.
             </p>
-            <p>Za analizu  <b>kvadratnih</b> ili <b>&scaron;esterokutnih</b> ćelija potreban je predviđeni koordinatni sustav. Možete postaviti <b>Koordinatni sustav obrade</b> u <b>Okruženju za analizu</b>. Ako koordinatni sustav obrade nije postavljen na predviđeni koordinatni sustav, od vas će se tražiti da ga postavite kada <b>pokrenete analizu</b> .
+            <p>Za analizu kvadratnih ili &scaron;esterokutnih ćelija potreban je predviđeni koordinatni sustav. Možete postaviti koordinatni sustav obrade u Okruženju za analizu. Ako koordinatni sustav obrade nije postavljen na predviđeni koordinatni sustav, od vas će se tražiti da ga postavite kada pokrenete analizu .
             </p>
         </div>
     </div>
@@ -111,9 +111,9 @@
                 </ul>
                 
             </p>
-            <p>Na primjer, ako imate podatke koji predstavljaju jednu godinu i želite ih analizirati it u koracima od tjedna, postavite <b>Interval vremenskog koraka</b> na <code>1 tjedan</code>. 
+            <p>Na primjer, ako imate podatke koji predstavljaju jednu godinu i želite ih analizirati u koracima od tjedna, postavite  <b>Interval vremenskog koraka</b> na <code>1 tjedan</code>. 
             </p>
-            <p>Na primjer, ako imate podatke koji predstavljaju jednu godinu i želite analiziratiprve tjedne u mjesecu, postavite  <b>Interval vremenskog koraka</b> na <code>1 tjedan</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 mjesec</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci </b> na <code>1. siječnja u 12:00 h</code>.
+            <p>Na primjer, ako imate podatke koji predstavljaju jednu godinu i želite analizirati prve tjedne u mjesecu, postavite  <b>Interval vremenskog koraka</b> na <code>1 tjedan</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 mjesec</code> i <b>Vrijeme kojim se usklađuju vremenski koraci </b> na <code>1. siječnja u 12:00 h</code>.
             </p>
         </div>
     </div>
@@ -121,9 +121,9 @@
         <div><h2>Interval vremenskog koraka</h2></div>
         <hr/>
         <div>
-            <p>Vremenski interval kori&scaron;ten za generiranje vremenskih koraka.  <b>Interval vremenskog koraka</b> može se upotrebljavati samostalno ili s parametrima <b>Učestalost ponavljanja vremenskog koraka</b> ili <b>Vrijeme s kojim se usklađuju vremenski koraci</b>.
+            <p>Vremenski interval kori&scaron;ten za generiranje vremenskih koraka.  <b>Interval vremenskog koraka</b> može se upotrebljavati samostalno ili s parametrima <b>Učestalost ponavljanja vremenskog koraka</b> ili parametrom <b>Vrijeme s kojim se usklađuju vremenski koraci</b>.
             </p>
-            <p>Na primjer, ako želite izraditi vremenske korake između svakog ponedjeljka od 9:00 h do 10:00 h, postavite  <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 h u ponedjeljak</code>.
+            <p>Na primjer, ako želite stvoriti vremenske isječke koji se događaju svakog ponedjeljka od 9:00 do 10:00, postavite  <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 u ponedjeljak</code>.
             </p>
         </div>
     </div>
@@ -133,7 +133,7 @@
         <div>
             <p> Korak koji se koristi za izračun vremenskog koraka. <b>Učestalost ponavljanja vremenskog koraka</b> može se upotrebljavati samostalno, s parametrom <b>Interval vremenskog koraka</b>, s parametrom <b>Referentno vrijeme</b> ili s oba parametra <b>Interval vremenskog koraka</b> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b>.
             </p>
-            <p> Na primjer, ako želite izraditi vremenske korake između svakog ponedjeljka od 9:00 h do 10:00 h, postavite <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 h u ponedjeljak</code>.
+            <p>Na primjer, ako želite stvoriti vremenske isječke koji se događaju svakog ponedjeljka od 9:00 do 10:00, postavite  <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 u ponedjeljak</code>.
             </p>
         </div>
     </div>
@@ -143,7 +143,7 @@
         <div>
             <p>Datum i vrijeme kori&scaron;teni za poravnanje vremenskih isječaka. Stvaranje vremenskih koraka započet će od ovog vremena i nastavit će se unatrag. Ako se ne odabere referentno vrijeme, stvaranje vremenskih koraka poravnat će se s 1. siječnjem 1970. 
             </p>
-            <p> Na primjer, ako želite izraditi vremenske korake između svakog ponedjeljka od 9:00 h do 10:00 h, postavite <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 h u ponedjeljak</code>.
+            <p>Na primjer, ako želite stvoriti vremenske isječke koji se događaju svakog ponedjeljka od 9:00 do 10:00, postavite  <b>Interval vremenskog koraka</b> na <code>1 sat</code>, <b>Učestalost ponavljanja vremenskog koraka</b> na <code>1 tjedan</code> i <b>Vrijeme s kojim se usklađuju vremenski koraci</b> na <code>9:00:00 u ponedjeljak</code>.
             </p>
         </div>
     </div>
@@ -151,9 +151,9 @@
         <div><h2>Dodaj statistike (neobavezno)</h2></div>
         <hr/>
         <div>
-            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Možete izračunati sljedeće u brojčanim poljima:
+            <p>Možete izračunati statistiku za geoobjekte koji su sažeti. Možete izračunati sljedeće u brojčanim poljima: 
                 <ul>
-                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim poljima ili u tekstu. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
+                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim ili tekstualnim poljima. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
                     </li>
                     <li>Zbroj &ndash; zbroj brojčanih vrijednosti u polju. Zbroj od [nema vrijednosti, nema vrijednosti, 3] je 3.
                     </li>
@@ -172,14 +172,14 @@
                 </ul>
                 
             </p>
-            <p>Možete izračunati sljedeće u poljima teksta:
+            <p>Možete izračunati sljedeće u tekstualnim poljima:
                 <ul>
                     <li>Ukupni broj &ndash; broj vrijednosti koje imaju neku vrijednost.
                     </li>
                     <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti teksta u određenom polju.
                     </li>
                 </ul>
-                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike.
             </p>
         </div>
     </div>
@@ -195,9 +195,9 @@
         <div><h2>Odaberite ArcGIS Data Store kao mjesto za spremanje rezultata</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima, spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
+            <p>Rezultati geoanalitika pohranjuju se u spremnik podataka i otkriveni su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka i to je zadana postavka. U nekim je slučajevima spremanje rezultata u spremnik relacijskih podataka dobra opcija. Razlozi za&scaron;to biste htjeli pohraniti rezultate u spremnik relacijskih podataka navedeni su u nastavku: 
                 <ul>
-                    <li>Možete upotrijebiti rezultate u suradnji portal-do-portala.
+                    <li>Možete upotrijebiti rezultate u suradnji među portalima.
                     </li>
                     <li>Možete omogućiti mogućnosti sinkronizacije rezultata.
                     </li>

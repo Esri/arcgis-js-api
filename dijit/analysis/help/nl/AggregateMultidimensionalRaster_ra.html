@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Multidimensionaal raster aggregeren</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Multidimensionaal raster aggregeren"></h2>
+        <hr/>
+    <p>Genereert een multidimensionaal rasterdataset door bestaande multidimensionale rastervariabelen naast de afmeting te combineren.
+    </p>
+    <p>Als u 30 jaar aan zee-oppervlaktemperatuurdata heeft, maandelijks verzameld op elke 5 meter diepte tot 100 meter, zijn enkele voorbeelden van toepassingen onder meer het volgende:
+        <ul>
+            <li>Het aggregeren van maandelijkse temperatuurdata in jaarlijkse data.
+            </li>
+            <li>Het aggregeren van maandelijkse temperatuurdata in intervallen van 4 maanden.
+            </li>
+            <li>Het aggregeren van temperatuurdata van 0 tot 25 meter, vervolgens van 25 tot 50 meter en vervolgens van 50 tot 100 meter.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Als de optie  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden variabelen van de lagen die zichtbaar zijn in het huidige kaartextent geanalyseerd. Als de optie niet is aangevinkt, worden variabelen van de volledige laag geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Een multidimensionale laag van imagery layer kiezen om te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De invoerlaag van satellietbeelden van een multidimensionaal raster dat wordt geaggregeerd.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Afmeting kiezen om mee te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De aggregatie-afmeting. Dit is de afmeting waarmee de variabelen worden geaggregeerd.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variabele(n) kiezen om te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De variabele of variabelen die wordt/worden geaggregeerd met de gegeven afmeting. Als er geen variabele is gespecificeerd, worden alle variabelen met de geselecteerde afmeting geaggregeerd.
+            </p>
+            <p>Om bijvoorbeeld uw dagelijkse temperatuurgegevens te aggregeren in maandelijkse gemiddelde waarden, specificeert u temperatuur als de variabele die geaggregeerd wordt. Als u geen variabelen specificeert en u hebt dagelijkse temperatuur- en dagelijkse neerslagvariabelen, worden beide variabelen geaggregeerd in maandelijkse gemiddelden en bevat het uitgevoerde multidimensionale raster beide variabelen.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Aggregatiemethode kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de wiskundige methode die wordt gebruikt om de geaggregeerde stukken in een interval te combineren. 
+                <ul>
+                    <li> <b>Gemiddelde</b>&mdash;Berekent het gemiddelde van een pixelwaarde over alle stukken in het interval. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Maximum</b>&mdash;Berekent de maximumwaarde van een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Meerderheid</b>&mdash;Berekent de waarde die het meest voorkwam voor een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Minimum</b>&mdash;Berekent de minimumwaarde van een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Minderheid</b>&mdash;Berekent de waarde die het minst vaak voorkwam van een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Mediaan</b>&mdash;Berekent de mediaanwaarde van een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Bereik</b>&mdash;Berekent het bereik van de waarden voor een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Standaardafwijking</b>&mdash;Berekent de standaardafwijking van de pixelwaarden over alle stukken in het interval.
+                    </li>
+                    <li> <b>Som</b>&mdash;Berekent de som van de pixelwaarden over alle stukken in het interval.
+                    </li>
+                    <li> <b>Varieteit</b>&mdash;Berekent het aantal unieke waarden van een pixel over alle stukken in het interval.
+                    </li>
+                    <li> <b>Aangepast</b>&mdash;Berekent de waarde van een pixel op basis van een aangepaste rasterfunctie.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Rasterfunctie-template kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Een aangepaste rasterfunctie die wordt gebruikt om de pixelwaarden van de geaggregeerde rasters te berekenen. De invoer is een template-item van een rasterfunctie in portaal. Deze invoer is vereist wanneer de  <b>Aggregatiemethode</b> is ingesteld op <b>Aangepast</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Aggregatiedefinitie kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de afmetingsinterval waarvoor de gegevens worden geaggregeerd. 
+                <ul>
+                    <li> <b>Alle</b>&mdash; De gegevenswaarden worden geaggregeerd over alle stukken. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Intervaltrefwoord</b>&mdash; De variabele gegevens worden geaggregeerd met behulp van een bekende interval.
+                    </li>
+                    <li> <b>Intervalwaarde</b>&mdash;De variabele gegevens worden geaggregeerd met behulp van een gebruikers-gespecificeerde interval en eenheid.
+                    </li>
+                    <li> <b>Intervalbereiken</b>&mdash; De variabele gegevens worden geaggregeerd tussen gespecificeerde paren van waarden of data.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Trefwoordinterval kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de trefwoordinterval die wordt gebruikt tijdens het aggregeren over de afmeting. Deze invoer is vereist wanneer  <b>Aggregatiedefinitie</b> is ingesteld op <b>Interval trefwoord</b> en de aggregatie moet over een tijdsperiode zijn.
+                <ul>
+                    <li> <b>Uur</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsstappen per uur en het resultaat bevat elk uur in de tijdsreeks.
+                    </li>
+                    <li> <b>Dagelijks</b>&mdash;De gegevenswaarden worden geaggregeerd in dagelijkse tijdsstappen en het resultaat bevat elke dag in de tijdsreeks.
+                    </li>
+                    <li> <b>Week</b>&mdash;De gegevenswaarden worden geaggregeerd in wekelijkse tijdsstappen en het resultaat bevat elke week in de tijdsreeks.
+                    </li>
+                    <li> <b>Maandelijks</b>&mdash;De gegevenswaarden worden geaggregeerd in maandelijkse tijdsstappen en het resultaat bevat elke maand in de tijdsreeks.
+                    </li>
+                    <li> <b>Kwartaal</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsstappen per kwartaal en het resultaat bevat elk kwartaal in de tijdsreeks.
+                    </li>
+                    <li> <b>Jaar</b>&mdash;De gegevenswaarden worden geaggregeerd in jaarlijkse tijdsstappen en het resultaat bevat elk jaar in de tijdsreeks.
+                    </li>
+                    <li> <b>Dagelijks terugkerend</b>&mdash;De gegevenswaarden worden geaggregeerd in dagelijkse tijdsstappen en het resultaat bevat een geaggregeerde waarde per Juliaanse dag. De uitvoer bevat hooguit 366 dagelijkse tijdsstukken.
+                    </li>
+                    <li> <b>Wekelijks terugkerend</b>&mdash;De gegevenswaarden worden geaggregeerd in wekelijkse tijdsstappen en het resultaat bevat een geaggregeerde waarde per week. De uitvoer bevat hooguit 53 wekelijkse tijdsstukken.
+                    </li>
+                    <li> <b>Maandelijks terugkerend</b>&mdash;De gegevenswaarden worden geaggregeerd in wekelijkse tijdsstappen en het resultaat bevat een geaggregeerde waarde per maand. De uitvoer bevat hooguit 12 maandelijkse tijdsstukken.
+                    </li>
+                    <li> <b>Driemaandelijks terugkerend</b>&mdash;De gegevenswaarden worden geaggregeerd in wekelijkse tijdsstappen en het resultaat bevat een geaggregeerde waarde per kwartaal. De uitvoer bevat hooguit 4 tijdsstukken van een kwartaal.
+                    </li>
+                    <li> <b>Dekadly</b>&mdash; De gegevenswaarden worden geaggregeerd in 3 perioden van elk 10 dagen. De laatste periode bevat mogelijk meer of minder dan 10 dagen. De uitvoer bevat 3 stukken voor elke maand.
+                    </li>
+                    <li> <b>Pentadly</b>&mdash;De gegevenswaarden worden geaggregeerd in 6 perioden van elk 5 dagen. De laatste periode bevat mogelijk meer of minder dan 5 dagen. De uitvoer bevat 6 stukken voor elke maand.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Waarde-interval</h2></div>
+        <hr/>
+        <div>
+            <p>De grootte van het interval dat wordt gebruikt voor de aggregatie. Deze parameter is vereist als de parameter  <b>Aggregatiedefinitie</b> is ingesteld op <b>Interval waarde</b>.
+            </p>
+            <p>Om bijvoorbeeld 30 jaar aan maandelijkse temperatuurgegevens in toenames van 5 jaar te aggregeren, voert u 5 in als de  <b>Waarde-interval</b> en specificeert u de <b>Eenheid</b> als <b>Jaren</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Eenheid</h2></div>
+        <hr/>
+        <div>
+            <p>De eenheid die wordt gebruikt voor de intervalwaarde. Deze invoer is vereist wanneer de  <b>Afmeting</b> een tijdsveld is en <b>Aggregatiedefinitie</b> is ingesteld op <b>Intervalwaarde</b>.
+            </p>
+            <p>Als u over iets anders dan tijd aggregeert, is deze optie niet beschikbaar en de eenheid voor de intervalwaarde komt overeen met de variabele eenheid van de ingevoerde multidimensionale rastergegevens. 
+                <ul>
+                    <li> <b>Uur</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsperioden van uren op de geboden interval.
+                    </li>
+                    <li> <b>Dagen</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsperioden van dagen op de geboden interval.
+                    </li>
+                    <li> <b>Weken</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsperioden van weken op de geboden interval.
+                    </li>
+                    <li> <b>Maanden</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsperioden van maanden op de geboden interval.
+                    </li>
+                    <li> <b>Jaren</b>&mdash;De gegevenswaarden worden geaggregeerd in tijdsperioden van jaren op de geboden interval.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Bereik definiëren</h2></div>
+        <hr/>
+        <div>
+            <p>Er worden intervalbereiken gebruikt om groepen van waarden te aggregeren. Ze bestaan uit paren van minimale en maximale bereikwaarden met gegevenstype Dubbel of Datum. Deze invoer is vereist wanneer de  <b>Aggregatiedefinitie</b> is ingesteld op <b>Intervalbereiken</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse. 
+                <ul>
+                    <li>Aangevinkt&mdash;De analyse zal alle geldige pixels in een gegeven afmeting bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
+                    </li>
+                    <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de pixels in de gegeven afmeting.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

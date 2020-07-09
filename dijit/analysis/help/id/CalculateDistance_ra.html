@@ -67,10 +67,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Pilih raster atau layer lokasi fitur untuk dihitung jaraknya</h2></div>
+        <div><h2>Pilih raster atau feature layer lokasi untuk menghitung jarak ke</h2></div>
         <hr/>
         <div>
-            <p>Layer yang mendefinisikan sumber ke mana jarak akan dihitung. Layer dapat berupa layanan gambar atau feature service.
+            <p>Layer yang menentukan sumber ke mana jarak akan dihitung. Layer dapat berupa layanan gambar atau feature service.
             </p>
             <p>Untuk layanan gambar, jenis input bisa berupa bilangan bulat atau bilangan titik mengambang.
             </p>
@@ -106,7 +106,7 @@
         <div>
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>
@@ -114,9 +114,9 @@
         <div><h2>Nama layer arah hasil</h2></div>
         <hr/>
         <div>
-            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang belum ada di <b>Konten Saya</b>.
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang saat ini belum ada di <b>Konten Saya</b>.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>
@@ -124,9 +124,9 @@
         <div><h2>Nama layer Alokasi hasil</h2></div>
         <hr/>
         <div>
-            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang belum ada di <b>Konten Saya</b>.
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang saat ini belum ada di <b>Konten Saya</b>.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>
@@ -137,6 +137,47 @@
             <p>Kolom pada layer sumber input yang menyimpan nilai yang mendefinisikan setiap sumber. Ini bisa berupa bilangan bulat atau kolom string dari set data sumber.
             </p>
             <p>Standarnya adalah  <i>Value</i>. Jika menggunakan feature service dan tidak ada kolom <i>Value</i> tersedia, maka tersedia kolom bilangan bulat atau string pertama yang akan digunakan. Jika tidak ada kolom yang valid, kolom ObjectID (misalnya, OID atau FID, tergantung pada jenis input fitur) akan digunakan.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Pilih raster atau feature layer untuk merepresentasikan penghalang</h2></div>
+        <hr/>
+        <div>
+            <p>Set data yang menentukan penghalang. 
+            </p>
+            <p>Untuk layanan gambar, jenis input bisa berupa bilangan bulat atau bilangan titik mengambang. Sel apa pun yang memiliki nilai (termasuk nol) akan dianggap sebagai penghalang, sel apa pun yang merupakan NoData tidak akan dianggap sebagai penghalang.
+            </p>
+            <p>Untuk feature service, input bisa berupa titik, garis, atau poligon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metode jarak</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah menghitung jarak menggunakan metode planar (bumi datar) atau geodesik (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;Perhitungan akan dilakukan pada bidang datar terproyeksi menggunakan sistem koordinat Cartesian 2D. Ini adalah metode default.
+                    
+
+                </li>
+                <li> <b>Geodesik</b>&mdash;Jarak dihitung berdasarkan elipsoid. Maka dari itu, hasil tidak berubah terlepas dari proyeksi input atau output.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nama layer arah kembali hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang saat ini belum ada di <b>Konten Saya</b>.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

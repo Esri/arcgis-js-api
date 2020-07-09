@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../geometry/Point","../geometry/Extent","./VEAddress"],(function(e,t,l,s,i,n,o){var a=e(null,{declaredClass:"esri.virtualearth.VEGeocodeResult",constructor:function(e){t.mixin(this,{address:null,bestView:null,calculationMethod:null,confidence:null,displayName:null,entityType:null,location:null,matchCodes:null},e),this.address&&(this.address=new o(this.address)),this.bestView&&(this.bestView=new n(this.bestView)),this.locationArray&&(this.calculationMethod=this.locationArray[0].calculationMethod,this.location=new i(this.locationArray[0]))}});return l("extend-esri")&&t.setObject("virtualearth.VEGeocodeResult",a,s),a}));

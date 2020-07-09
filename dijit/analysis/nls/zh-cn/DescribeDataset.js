@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define({inputLayerLabel:"选择要描述的数据集",describeDataLabel:"通过创建了解您的数据(可选)",sampleLayer:"样本图层",extentLayer:"范围图层",noOfFeaturesLabel:"要包含的要素数量",outputLayerName:"结果图层名称",resultName:"描述 ${layerName} 的数据",itemDescription:"通过在 ${layerName} 上运行描述数据集生成的要素图层。 ",itemTags:"分析结果、DescribeDataset、${layername}",itemSnippet:"通过描述数据集生成的要素图层。"});
+define({inputLayerLabel:"选择要描述的数据集",describeDataLabel:"通过创建了解您的数据(可选)",sampleLayer:"样本图层",extentLayer:"范围图层",noOfFeaturesLabel:"要包含的要素数量",outputLayerName:"结果图层名称",resultName:"描述 ${layerName} 的数据",itemDescription:"通过在 ${layerName} 上运行描述数据集生成的要素图层。 ",itemTags:"分析结果、DescribeDataset、${layerName}",itemSnippet:"通过描述数据集生成的要素图层。"});

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trend Rasterı Oluştur</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Trend Rasterı Oluştur"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Trend analiz etmek için çok boyutlu görüntü katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>&Ccedil;ok boyutlu rasterın analiz edilecek girdi g&ouml;r&uuml;nt&uuml;leme katmanı.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Değişken trendinin analiz edileceği boyutu seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Analizde se&ccedil;ilen değişken veya değişkenler i&ccedil;in bir trendin &ccedil;ıkarılacağı boyut.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trendi analiz etmek için değişkenleri seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Trendlerin hesaplanacağı değişken veya değişkenler. Herhangi bir değişken belirtilmezse, &ccedil;ok boyutlu rasterdaki ilk değişken analiz edilir.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Bir boyut boyunca değişken değerlerini sığdırmak için bir çizgi türü seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Bir boyut boyunca piksel değerlerini sığdırmak i&ccedil;in kullanılacak &ccedil;izginin t&uuml;r&uuml;n&uuml; belirtir. 
+                <ul>
+                    <li> <b>Lineer</b>&mdash;Değişken piksel değerleri bir lineer trend &ccedil;izgisi boyunca sığdırılır. Varsayılan değerdir.
+                    </li>
+                    <li> <b>&Uuml;stel</b>&mdash;Değişken piksel değerleri bir ikinci sıra &uuml;stel trend &ccedil;izgisi boyunca sığdırılır.
+                    </li>
+                    <li> <b>Harmonik</b>&mdash;Değişken piksel değerleri bir harmonik trend &ccedil;izgisi boyunca sığdırılır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Harmonik döngünün uzunluğunu belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Modellenecek d&ouml;nemsel varyasyonun uzunluğu. Bu parametre, trend &ccedil;izgisi t&uuml;r&uuml;  <b>Harmonik</b> olarak ayarlandığında gereklidir. &Ouml;rneğin, yaprak yeşilliğinin bir yıl i&ccedil;inde genellikle g&uuml;&ccedil;l&uuml; bir varyasyon d&ouml;ng&uuml;s&uuml; vardır; bu nedenle d&ouml;ng&uuml; uzunluğu 1 yıldır. Saatlik sıcaklık verilerinin bir g&uuml;n boyunca g&uuml;&ccedil;l&uuml; bir varyasyon d&ouml;ng&uuml;s&uuml; vardır; bu nedenle d&ouml;ng&uuml; uzunluğu 1 g&uuml;nd&uuml;r.
+            </p>
+            <p>Yıllık d&ouml;ng&uuml;de değişim g&ouml;steren veriler i&ccedil;in varsayılan uzunluk 1 yıldır.
+            </p>
+            <p>Bu parametre sadece analiz edilen boyut zaman olduğunda ve trend &ccedil;izgisi tipi  <b>Harmonik</b> olarak ayarlandığında trend analizine dahil edilir.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Harmonik döngü uzunluğu zaman birimini seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Harmonik d&ouml;ng&uuml;n&uuml;n uzunluğu i&ccedil;in kullanılacak zaman birimini belirtir.
+                <ul>
+                    <li> <b>G&uuml;nler</b>&mdash;Harmonik d&ouml;ng&uuml;n&uuml;n uzunluk birimi g&uuml;nlerdir.
+                    </li>
+                    <li> <b>Yıllar</b>&mdash;Harmonik d&ouml;ng&uuml;n&uuml;n uzunluk birimi yıllardır. Varsayılan değerdir.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bu parametre sadece analiz edilen boyut zaman olduğunda ve trend &ccedil;izgisi tipi  <b>Harmonik</b> olarak ayarlandığında trend analizine dahil edilir.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Harmonik trend sığdırma için frekans sayısını belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Harmonik trend sığdırma i&ccedil;in kullanılan frekans. Bu parametre bir yıl i&ccedil;indeki d&ouml;ng&uuml; sıklığını belirtir.
+            </p>
+            <p>Varsayılan değer 1 veya yılda bir harmonik d&ouml;ng&uuml;d&uuml;r.
+            </p>
+            <p>Bu parametre yalnızca analiz edilen boyut zaman olduğunda trend analizine dahil edilir.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Trend sığdırma için üstel sıra sayısını belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>&Uuml;stel trend sığdırma i&ccedil;in kullanılan &uuml;stel sıra sayısı.
+            </p>
+            <p>Bu parametre yalnızca analiz edilen boyut zaman olduğunda trend analizine dahil edilir.
+            </p>
+            <p>Varsayılan değer 2 veya ikinci sıra &uuml;steldir.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Trend rasterına dahil edilecek model istatistiklerini seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Bu ara&ccedil; &uuml;&ccedil; t&uuml;r trend uyum &ccedil;izgisi istatistiki sağlar: ortalama kare k&ouml;k&uuml; hatası (RMSE), R-kare uyum iyiliği istatistiği (R-kare) ve eğim katsayısı i&ccedil;in p-değeri istatistiği (Eğim katsayısının p-değeri). Her istatistiğin, &ccedil;ıktı trend rasterındaki birden &ccedil;ok banttan biri olarak hesaplanıp dahil edileceğini belirlemek i&ccedil;in bir ilgili onay kutusu bulunur.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>İşaretli&mdash;RMSE, &ccedil;ıktı trend rasterındaki &ccedil;oklu bantlardan biri olarak hesaplanır ve dahil edilir. Varsayılan değerdir.
+                            </li>
+                            <li>İşaretli değil&mdash;RMSE hesaplanmaz.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kare
+                        </p>
+                        <ul>
+                            <li>İşaretli&mdash;R kare değeri &ccedil;ıktı trend rasterındaki &ccedil;oklu bantlardan biri olarak hesaplanır ve dahil edilir.
+                            </li>
+                            <li>İşaretli değil&mdash;R kare değeri hesaplanmaz. Varsayılan değerdir.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Eğim katsayısının P değeri
+                        </p>
+                        <ul>
+                            <li>İşaretli&mdash;P değeri, &ccedil;ıktı trend rasterındaki &ccedil;oklu bantlardan biri olarak hesaplanır ve dahil edilir.
+                            </li>
+                            <li>İşaretli değil&mdash;P değeri hesaplanmaz. Varsayılan değerdir.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hesaplamadaki eksik değerleri yoksay</h2></div>
+        <hr/>
+        <div>
+            <p>Eksik değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir.
+                <ul>
+                    <li>İşaretli&mdash;Analizde verilen bir boyut boyunca ge&ccedil;erli olan t&uuml;m pikseller yer alır ancak NoData pikselleri dikkate alınmaz. Varsayılan değerdir.
+                    </li>
+                    <li>İşaretli değil--Verilen boyut boyunca mevcut pikseller i&ccedil;in herhangi bir NoData değeri varsa, analiz NoData ile sonu&ccedil;lanır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

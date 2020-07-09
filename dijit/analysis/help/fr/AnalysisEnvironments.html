@@ -212,7 +212,7 @@
         <div>
             <p>Les r&eacute;sultats de la g&eacute;oanalyse sont stock&eacute;s dans une instance  ArcGIS Data Store et s&rsquo;affichent en tant que couche d&rsquo;entit&eacute;s dans  Portal for ArcGIS ou dans un partage de fichiers Big Data configur&eacute;. 
             </p>
-            <p>Lorsque vous conservez un r&eacute;sultat dans  ArcGIS Data Store, les r&eacute;sultats doivent figurer, dans la plupart des cas, dans le r&eacute;pertoire de donn&eacute;es spatio-temporelles. Il s'agit de l'option par d&eacute;faut. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans un stockage des donn&eacute;es relationnelles&nbsp;: 
+            <p>Lorsque vous conservez un r&eacute;sultat dans  ArcGIS Data Store, les r&eacute;sultats doivent figurer, dans la plupart des cas, dans le r&eacute;pertoire de donn&eacute;es spatio-temporelles. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans un stockage des donn&eacute;es relationnelles&nbsp;: 
                 <ul>
                     <li>Utiliser vos r&eacute;sultats dans une collaboration de portail &agrave; portail
                     </li>
@@ -238,6 +238,22 @@
             <p>En configurant l&rsquo;environnement  <b>Parallel processing factor (Facteur de traitement parall&egrave;le)</b>, vous pouvez demander le nombre de processus parall&egrave;les que le serveur d&rsquo;imagerie d&rsquo;analyse raster utilise pour traiter une t&acirc;che d&rsquo;analyse raster. En revanche, si le nombre total de processus parall&egrave;les d&eacute;passe le nombre maximum d&rsquo;instances de service (CPU or GPU) de traitement raster, les processus parall&egrave;les suppl&eacute;mentaires seront mis en attente.
             </p>
             <p>Si le  <b>facteur de traitement parall&egrave;le</b> n&rsquo;est pas sp&eacute;cifi&eacute; (option par d&eacute;faut), l&rsquo;outil utilisera 80&nbsp;pour cent du nombre maximum d&rsquo;instances de service de traitement parall&egrave;le. Un nombre entier ou un pourcentage peut &ecirc;tre sp&eacute;cifi&eacute; en tant que facteur de traitement parall&egrave;le.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Nombre de tentatives en cas d’échec</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;finit le nombre de tentatives que le m&ecirc;me processus peut r&eacute;aliser lors de l&rsquo;&eacute;chec al&eacute;atoire du traitement d&rsquo;une t&acirc;che en particulier. La valeur par d&eacute;faut est 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Intervalle de recyclage du traitement Opérateurs</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;finit le nombre de sections d&rsquo;image qui est trait&eacute; avant de red&eacute;marrer les processus, afin d&rsquo;emp&ecirc;cher les &eacute;checs potentiels des traitements au long cours. La valeur par d&eacute;faut est 0.
             </p>
         </div>
     </div>

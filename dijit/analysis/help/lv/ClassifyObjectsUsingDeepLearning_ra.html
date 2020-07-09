@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klasificēt objektus, izmantojot Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasificēt objektus, izmantojot Deep Learning"></h2>
+        <hr/>
+    <p>&Scaron;is rīks izmanto Deep Learning modeli ievades rastra vai papildu elementu klasei, lai izveidotu elementu klasi vai tabulu, kurā katram ievades objektam ir pie&scaron;ķirts klases apzīmējums.
+    </p>
+    <p>Ja tiek atzīmēta opcija  <b>Lietot pa&scaron;reizējo kartes pārklājumu,</b> tiks analizēts tikai rastra apgabals, kas ir redzams pa&scaron;reizējā kartes pārklājumā. Ja nav atzīmēts, viss rastrs tiks analizēts, pat ja tas atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Izvēlieties objektu klasificēšanai izmantojamo attēlu</h2></div>
+        <hr/>
+        <div>
+            <p>Ievades attēls, ko izmanto objektu noteik&scaron;anai.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Izvēlieties objektiem paredzētu elementu slāni (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Punkta, līnijas vai daudzstūra ievades elementu slānis, kas norāda katra klasificējamā un apzīmējamā objekta atra&scaron;anās vietu. Katra rinda ievades elementu slānī attiecas uz vienu objektu.
+            </p>
+            <p>Ja nav norādīts neviens ievades elementu slānis, rīks pieņem, ka katrā ievades attēlā ir viens klasificējams objekts. Ja ievades attēls vai attēli izmanto telpisko atsauci, izvade no rīka ir elementu slānis, kurā katra attēla lielums tiek lietots kā ierobežojo&scaron;a ģeometrija katram apzīmētajam elementam. Ja ievades attēlam vai attēliem nav telpiskas atsauces, izvade no rīka ir tabula, kurā ir attēla ID vērtības un klases apzīmējumi katram attēlam.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Izvēlieties Deep Learning modeli, lai klasificētu objektus</h2></div>
+        <hr/>
+        <div>
+            <p>Ievades Deep Learning pakotnes ( <code>.dlpk</code>) vienība.
+            </p>
+            <p>Deep Learning pakotni veido Esri modeļa definīcijas JSON fails ( <code>.emd</code>), Deep Learning binārā modeļa fails, un pēc izvēles izmantojamā Python rastra funkcija.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Norādiet Deep Learning modeļa argumentus</h2></div>
+        <hr/>
+        <div>
+            <p>Funkciju argumenti tiek definēti Python raster funkciju klasē, uz kuru atsaucas ievades modelis. &Scaron;eit jūs uzskaitāt papildu Deep Learning parametrus un argumentus eksperimentiem un pilnveido&scaron;anai, piemēram, ticamības slieksni jutīguma korekcijai.
+            </p>
+            <p>Argumentu nosaukumus aizpilda Python moduļa lasī&scaron;anas rīks rastra analīzes serverī.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Norādiet klases apzīmējuma lauka nosaukumu</h2></div>
+        <hr/>
+        <div>
+            <p>Tā lauka nosaukums, kas ietvers klasifikācijas apzīmējumu izvades elementu slānī.
+            </p>
+            <p>Ja lauka nosaukums nav norādīts, izvades elementu slānī tiks ģenerēts jauns lauks ar nosaukumu  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Apstrādes režīms</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, kā tiks apstrādāti visas rastra vienības attēlu servisā. 
+                <ul>
+                    <li> <b>Apstrādāt kā mozaīkas attēlu</b>&nbsp;&mdash; visas rastra vienības attēlu servisā tiks ietvertas vienā mozaīkā un apstrādātas. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Apstrādāt vienības atsevi&scaron;ķi</b>&nbsp;&mdash; visas rastra vienības attēlu servisā tiks apstrādātas kā atsevi&scaron;ķi attēli.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

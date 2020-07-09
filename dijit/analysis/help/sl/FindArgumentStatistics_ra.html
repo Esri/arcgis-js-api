@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Najdi statistiko argumenta</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Najdi statistiko argumenta"></h2>
+        <hr/>
+    <p>Ekstrahira vrednost dimenzije ali indeks pasu, pri katerem je bila za vsak piksel pridobljena dana statistika v večdimenzionalnem ali večpasovnem rastru.
+    </p>
+    <p>To orodje uporabite, da ekstrahirate vrednost dimenzije (na primer, datum, vi&scaron;ino ali globino) pri kateri je dosežena določena statistika v skupku rastrov v večdimenzionalnem rastrskem sklopu podatkov. Lahko pa tudi poi&scaron;čete &scaron;tevilko pasu, pri katerem je statistika dosežena v večpasovnem rastru.
+    </p>
+    <p>Če želite, na primer, poznati mesec v katerem je vsak piksel dosegel najvi&scaron;jo temperaturo morske gladine v 30 letih zbiranja podatkov. Pa tudi če imate, na primer, osempasovno sliko daljinskega zaznavanja in želite izvedeti v katerem pasu je za vsak piksel bila dosežena najnižja vrednost odbojnosti.
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke ali pasov sloja, ki so vidni znotraj trenutnega obsega mape. Če je možnost odkljukana, bodo analizirane spremenljivke ali pasovi celotnega sloja, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Izberi večdimenzionalni ali večpasovni sloj slikovja za analizo</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodni večdimenzonalni ali večpasovni raster, ki bo analiziran.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Izberi dimenzijo iz katere bo ekstrahirana statistika</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija iz katere bo ekstrahirana statistika. Če vhodni raster ni večdimenzionalni raster, potem ta parameter ni potreben.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izberi spremenljivko(-e), ki bodo analizirane</h2></div>
+        <hr/>
+        <div>
+            <p>Spremenljivka ali spremenljivke, ki bodo analizirane. Če vhodni raster ni večdimenzionalni, potem se za spremenljivko smatrajo vrednosti piksla večdimenzionalnega rastra. Če je vhodni raster večdimenzionalni in ni določene nobene spremenljivke, potem bo potekala analiza vseh spremenljivk z izbrano dimenzijo.
+            </p>
+            <p>Če želite, na primer, poiskati leta, v katerih so bile vrednosti temperature najvi&scaron;je, določite temperaturo kot spremenljivko za analizo. Če ne določite nobenih spremenljivk ter imate hkrati spremenljivke za temperaturo in padavine, bosta analizirani obe spremenljivki in izhodni večdimenzionalni raster bo vključeval obe spremenljivki.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Izberi tip statistike</h2></div>
+        <hr/>
+        <div>
+            <p>Določi statistiko za ekstrahiranje spremenljivke ali spremenljivk vzdolž dane dimenzije. 
+            </p>
+            <ul>
+                <li> <b>Argument minimuma</b> &ndash; Ekstrahirana bo vrednost dimenzije pri kateri se doseže minimalna vrednost spremenljivke. To je privzeta nastavitev.
+                </li>
+                <li> <b>Argument maksimuma</b> &ndash; Ekstrahirana bo vrednost dimenzije pri kateri se doseže maksimalna vrednost spremenljivke.
+                </li>
+                <li> <b>Argument mediane</b> &ndash; Ekstrahirana bo vrednost dimenzije pri kateri se doseže vrednost mediane spremenljivke.
+                </li>
+                <li> <b>Argument trajanja</b> &ndash; Trajanje najdalj&scaron;e dimenzije za katero vrednosti dimenzije padejo med minimalne in maksimalne vrednosti.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Določi vrednost večkratnega pojava</h2></div>
+        <hr/>
+        <div>
+            <p>Vrednost piksla, ki kaže, da je bila statistika argumenta v sklopu podatkov vhodnega rastra dosežena večkrat. Če ta možnost ni določena, bo vrednost piksla tista vrednost dimenzije, ki se pojavi kadar se prvič doseže statistika argumenta.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Določi minimalno vrednost</h2></div>
+        <hr/>
+        <div>
+            <p>Minimalna vrednost spremenljivke, ki se uporabi za ekstrahiranje trajanja.
+            </p>
+            <p>Ta parameter je obvezen, kadar je kot tip statistike izbrano  <b>Trajanje</b>.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Določi maksimalno vrednost</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalna vrednost spremenljivke, ki se uporabi za ekstrahiranje trajanja.
+            </p>
+            <p>Ta korak je obvezen, kadar je kot tip statistike izbrano  <b>Trajanje</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Izberi definicijo dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Določi način ekstrahiranja statistike iz dimenzije. 
+                <ul>
+                    <li> <b>Vse</b> &ndash; Statistika bo ekstrahirana po vseh dimenzijah. To je privzeta nastavitev.
+                    </li>
+                    <li> <b>Ključna beseda intervala</b> &ndash; Statistika bo ekstrahirana iz časovne dimenzije glede na ključno besedo intervala.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Izberi interval ključne besede</h2></div>
+        <hr/>
+        <div>
+            <p>Enota časa, za katero bo ekstrahirana statistika.
+            </p>
+            <p>Če imate, na primer, podatke o dnevni temperaturi morske gladine iz 5 let in želite izvedeti v katerem letu je bila opažena maksimalna temperatura. V tem koraku kot tip statistike nastavite  <b>Argument maksimuma</b>, kot opredelitev dimenzije nastavite <b>Ključna beseda intervala</b> in kot ključno besedo intervala nastavite <b>Letno</b>.
+            </p>
+            <p>Če poznate mesec, v katerem je bila konsistentno opažena maksimalna temperatura, pa lahko pri tem koraku kot tip statistike nastavite  <b>Argument maksimuma</b> , kot opredelitev dimenzije nastavite <b>Ključna beseda intervala</b> in kot ključno besedo intervala nastavite <b>Mesečno ponavljajoče</b>. To bo ustvarilo raster v katerem bo vsak piksel vseboval mesec, v katerem je bila v petih letih dosežena ta statistika (18.&nbsp;8.&nbsp;2018, 25.&nbsp;8.&nbsp;2016, 7.&nbsp;8.&nbsp;2013, na primer).
+            </p>
+            <p>Ta korak je obvezen, kadar je kot dimenzija iz katere bo ekstrahirana statistika nastavljeno  <b>StdTime</b> in je za opredelitev načina ekstrahiranja statistike iz časovne dimenzije izbrano <b>Ključna beseda intervala</b>.
+                <ul>
+                    <li> <b>Dnevno ponavljajoče</b> &ndash; Statistika bo ekstrahirana po  dnevih.
+                    </li>
+                    <li> <b>Tedensko ponavljajoče</b> &ndash; Statistika bo ekstrahirana po  tednih.
+                    </li>
+                    <li> <b>Mesečno ponavljajoče</b> &ndash; Statistika bo ekstrahirana po  mesecih.
+                    </li>
+                    <li> <b>Trimesečno ponavljajoče</b> &ndash; Statistika bo ekstrahirana po  trimesečjih.
+                    </li>
+                    <li> <b>Urno</b> &ndash; Statistika bo ekstrahirana za tisto   uro, v kateri je bila statistika dosežena.
+                    </li>
+                    <li> <b>Dnevno</b> &ndash; Statistika bo ekstrahirana za tisti   dan, v katerem je bila statistika dosežena.
+                    </li>
+                    <li> <b>Tedensko</b> &ndash; Statistika bo ekstrahirana za tisti   teden, v katerem je bila statistika dosežena.
+                    </li>
+                    <li> <b>Mesečno</b> &ndash; Statistika bo ekstrahirana za tisti   mesec, v katerem je bila statistika dosežena.
+                    </li>
+                    <li> <b>Trimesečno</b> &ndash; Statistika bo ekstrahirana za tisto   trimesečje, v katerem je bila statistika dosežena.
+                    </li>
+                    <li> <b>Letno</b> &ndash; Statistika bo ekstrahirana za tisto   leto, v katerem je bila statistika dosežena.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Prezri manjkajoče vrednosti v izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti.
+                <ul>
+                    <li>Če je polje obkljukano, bo analiza vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    </li>
+                    <li>Če je polje odkljukano, bo rezultat analize brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

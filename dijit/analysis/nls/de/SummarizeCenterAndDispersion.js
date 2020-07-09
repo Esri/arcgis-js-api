@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Einen zu beschreibenden Layer auswählen",summaryTypes:"Zusammenfassungsarten",centralFeature:"Zentrales Feature",meanCenter:"Mittelwert für Mittelpunkt",medianCenter:"Medianwert",ellipse:"Ellipse",weightBy:"Gewichten nach (optional)",groupBy:"Gruppieren nach (optional)",resultLayerName:"Name des Ergebnis-Layers",outputLayerName:"Verteilung von ${layerName} beschreiben",none:"Kein(e)",itemDescription:"Über die Ausführung von 'Zentrierung und Verteilung zusammenfassen' für ${layerName} erstellter Feature-Layer. ",itemTags:"Analyseergebnis, Zentrierung und Verteilung zusammenfassen, ${layerName}",itemSnippet:"Über 'Zentrierung und Verteilung zusammenfassen' erstellter Feature-Layer."});

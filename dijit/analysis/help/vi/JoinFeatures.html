@@ -103,7 +103,7 @@
                     </li>
                     <li> <b>Ho&agrave;n to&agrave;n nằm trong</b>&mdash;C&aacute;c đối tượng sẽ được kết nối nếu c&aacute;c đối tượng trong lớp mục ti&ecirc;u ho&agrave;n to&agrave;n nằm trong c&aacute;c đối tượng của lớp kết nối.
                     </li>
-                    <li> <b>Trong khoảng c&aacute;ch với</b>&mdash;C&aacute;c đối tượng trong lớp mục ti&ecirc;u sẽ được kết hợp nếu ch&uacute;ng nằm trong một khoảng c&aacute;ch nhất định so với c&aacute;c đối tượng của lớp kết nối.
+                    <li> <b>Nằm trong khoảng c&aacute;ch với</b>&mdash;C&aacute;c đối tượng trong lớp mục ti&ecirc;u sẽ được kết hợp nếu ch&uacute;ng nằm trong một khoảng c&aacute;ch nhất định so với c&aacute;c đối tượng của lớp kết nối.
                     </li>
                 </ul>
                 
@@ -126,8 +126,8 @@
         <div>
             <p>X&aacute;c định c&aacute;ch m&agrave; c&aacute;c kết nối giữa lớp mục ti&ecirc;u v&agrave; lớp kết nối sẽ được xử l&yacute; nếu nhiều đối tượng trong lớp kết nối được ph&aacute;t hiện c&oacute; mối quan hệ giống với lớp mục ti&ecirc;u. Bạn c&oacute; thể lựa chọn một trong hai phương thức kết nối:
                 <ul>
-                    <li> <b>Kết nối một - một</b>&mdash; T&ugrave;y chọn n&agrave;y kết nối c&aacute;c t&iacute;nh năng trong lớp mục ti&ecirc;u với một đối tượng duy nhất trong lớp kết nối. C&aacute;ch kết nối c&aacute;c t&iacute;nh năng được x&aacute;c định bằng tham số <b>Th&ecirc;m số liệu thống k&ecirc;</b> hoặc tham số <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b>. Nếu <b>Th&ecirc;m số liệu thống k&ecirc;</b> được sử dụng, tất cả đối tượng được kết nối ph&ugrave; hợp sẽ được tổng hợp th&agrave;nh từng đối tượng trong lớp mục ti&ecirc;u. Số lượng c&aacute;c đối tượng được kết nối sẽ được mặc định th&ecirc;m v&agrave;o.Nếu <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b>
-được sử dụng, bạn c&oacute; thể chọn giữ bản ghi khớp đầu ti&ecirc;n (mặc định) hoặc chọn giữ bản ghi khớp dựa tr&ecirc;n biểu thức. Biểu thức c&oacute; thể sử dụng trường số
+                    <li> <b>Kết nối một - một</b>&mdash; T&ugrave;y chọn n&agrave;y kết nối c&aacute;c đối tượng trong lớp mục ti&ecirc;u với một đối tượng duy nhất trong lớp kết nối. C&aacute;ch kết nối c&aacute;c đối tượng được x&aacute;c định bằng tham số <b>Th&ecirc;m số liệu thống k&ecirc;</b> hoặc tham số <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b>. Nếu <b>Th&ecirc;m số liệu thống k&ecirc;</b> được sử dụng, tất cả đối tượng được kết nối ph&ugrave; hợp sẽ được tổng hợp th&agrave;nh từng đối tượng trong lớp mục ti&ecirc;u. Số lượng c&aacute;c đối tượng được kết nối sẽ được mặc định th&ecirc;m v&agrave;o.Nếu <b>X&aacute;c định bản ghi n&agrave;o được lưu giữ</b> 
+được sử dụng, bạn c&oacute; thể chọn giữ bản ghi khớp đầu ti&ecirc;n (mặc định) hoặc chọn giữ bản ghi tr&ugrave;ng khớp dựa tr&ecirc;n biểu thức. Biểu thức c&oacute; thể sử dụng trường số
 (t&ugrave;y chọn cho bản ghi lớn nhất hoặc nhỏ nhất) hoặc trường ng&agrave;y (t&ugrave;y chọn mới nhất hoặc cũ nhất).
                     </li>
                     <li> <b>Kết nối một - nhiều</b>&mdash;T&ugrave;y chọn n&agrave;y sẽ kết nối tất cả c&aacute;c đối tượng ph&ugrave; hợp trong lớp kết nối với lớp mục ti&ecirc;u. Lớp kết quả sẽ chứa nhiều bản ghi của đối tượng mục ti&ecirc;u.
@@ -136,6 +136,14 @@
                 
             </p>
             <p>V&iacute; dụ: giả sử bạn muốn t&igrave;m kiếm c&aacute;c si&ecirc;u thị nằm trong v&ograve;ng b&aacute;n k&iacute;nh 5 km so với chợ n&ocirc;ng sản. Trong trường hợp n&agrave;y, lớp được kết nối c&oacute; một đối tượng đại diện cho một chợ n&ocirc;ng sản v&agrave; c&aacute;c đối tượng kết nối đại diện cho những cửa h&agrave;ng tạp h&oacute;a tại địa phương c&oacute; c&aacute;c thuộc t&iacute;nh như tổng doanh số h&agrave;ng năm. Bằng c&aacute;ch sử dụng c&ocirc;ng cụ  <b>Kết nối Đối tượng</b>, bạn sẽ t&igrave;m thấy năm cửa h&agrave;ng tạp h&oacute;a đ&aacute;p ứng được ti&ecirc;u ch&iacute; n&agrave;y. Nếu bạn x&aacute;c định phương thức kết nối l&agrave; <b>Kết nối một - nhiều</b>, bạn sẽ phải c&oacute; năm thuộc t&iacute;nh b&ecirc;n trong kết quả của m&igrave;nh, mỗi d&ograve;ng đại diện cho chợ n&ocirc;ng sản v&agrave; một si&ecirc;u thị. Nếu bạn x&aacute;c định mối quan hệ l&agrave; <b>Li&ecirc;n kết một - một</b> v&agrave; chọn một sự thống k&ecirc;, bạn sẽ c&oacute; một đối tượng đại diện cho chợ n&ocirc;ng sản v&agrave; th&ocirc;ng tin tổng kết từ c&aacute;c si&ecirc;u thị, như th&ocirc;ng tin số lượng (5) v&agrave; những dữ liệu thống k&ecirc; kh&aacute;c như tổng doanh số h&agrave;ng năm.
+            </p>
+        </div>
+    </div>
+    <div id="keepTargetFeatures">
+        <div><h2>Giữ tất cả đối tượng mục tiêu</h2></div>
+        <hr/>
+        <div>
+            <p>Theo mặc định, chỉ những đối tượng n&agrave;o ph&ugrave; hợp giữa lớp mục ti&ecirc;u v&agrave; lớp li&ecirc;n kết mới được trả về trong lớp kết quả (ph&eacute;p nối b&ecirc;n trong). Khi được k&iacute;ch hoạt, th&ocirc;ng số  <b>Giữ tất cả đối tượng mục ti&ecirc;u</b> sẽ thay đổi kết quả đầu ra để bao gồm mọi đối tượng trong lớp mục ti&ecirc;u bất kể ch&uacute;ng c&oacute; tr&ugrave;ng khớp với đối tượng trong lớp li&ecirc;n kết hay kh&ocirc;ng (kết nối ngo&agrave;i ph&iacute;a b&ecirc;n tr&aacute;i).
             </p>
         </div>
     </div>

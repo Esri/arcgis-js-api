@@ -24,6 +24,9 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleCol3{
   width: 33%;
 }
+.esriRenderingRuleCol4{
+  width: 10%;
+}
 .esriRenderingRuleHeadingLabel {
   font-weight:bold;
   padding-bottom: 10px;
@@ -245,4 +248,19 @@ div.esriRenderingRuleContainer {
 }
 .esriRenderingRuleLoadingMsg {
   font-style: italic;
+}
+
+.esriRenderingRuleHillshadeType {
+  padding-right: 30px;
+}
+
+.esriRenderingRuleSliderValue {
+  width: 4rem;
+}
+
+.esriRenderingRuleContainer .esri-icon-plus-circled {
+  font-size: 20px;
+  padding: 4px;
+  color: #007AC2;
+  cursor: pointer;
 }

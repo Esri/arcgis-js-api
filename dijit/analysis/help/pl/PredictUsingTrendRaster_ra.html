@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prognozuj przy użyciu rastra trendu</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prognozuj przy użyciu rastra trendu"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą zmienne warstwy widoczne w bieżącym zasięgu mapy. Jeśli ta opcja nie jest zaznaczona, analizowane będą zmienne pełnej warstwy, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Wybierz wielowymiarową warstwę zobrazowań do prognozowania</h2></div>
+        <hr/>
+        <div>
+            <p>Wejściowy wielowymiarowy raster trendu z narzędzia  Generuj raster trendu.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Wybierz zmienne do prognozowania</h2></div>
+        <hr/>
+        <div>
+            <p>Zmienna lub zmienne, kt&oacute;re będą prognozowane podczas analizy. Jeśli nie zostanie podana zmienna, zostaną użyte wszystkie zmienne.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Wybierz metodę służącą do podawania wartości wymiarów prognozy</h2></div>
+        <hr/>
+        <div>
+            <p>Określa metodę służącą do podania wartości wymiar&oacute;w prognozy.
+                <ul>
+                    <li> <b>Według wartości</b> &mdash; prognoza zostanie obliczona dla jednej wartości wymiaru lub listy wartości wymiaru podanych w następnym etapie. Jest to opcja domyślna. Na przykład: chcesz prognozować roczne opady atmosferyczne dla lat 2050, 2100 i 2150.
+                    </li>
+                    <li> <b>Według przedziału</b> &mdash; prognoza zostanie obliczona dla interwału wymiaru zdefiniowanego przez wartość początkową i końcową. Na przykład: chcesz prognozować roczne opady atmosferyczne dla każdego roku między 2050 a 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Podaj wartości wymiarów prognozy</h2></div>
+        <hr/>
+        <div>
+            <p>Wartość lub wartości wymiar&oacute;w do użycia w prognozie.
+            </p>
+            <p>Format wartości czasu, głębokości i wysokości musi być zgodny z formatem wartości wymiar&oacute;w użytym do generowania rastra trendu. Jeśli raster trendu został wygenerowany dla wymiaru StdTime, format powinien być następujący: RRRR-MM-DDTGG:MM:SS, na przykład 2050-01-01T00:00:00. Wiele wartości jest rozdzielanych średnikiem.
+            </p>
+            <p>Ten parametr jest wymagany wtedy, gdy metoda  <b>Według wartości</b> została wybrana do zdefiniowania wartości wymiaru dla prognozy.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Zdefiniuj przedział wymiaru prognozy</h2></div>
+        <hr/>
+        <div>
+            <p>Podaj datę początkową, wysokość lub głębokość przedziału wymiaru do użycia w prognozie.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Podaj liczbę etapów między wartością początkową i końcową</h2></div>
+        <hr/>
+        <div>
+            <p>Liczba etap&oacute;w między dwiema wartościami wymiar&oacute;w, kt&oacute;re mają zostać uwzględnione w prognozie. Wartość domyślna wynosi 1.
+            </p>
+            <p>Aby na przykład przewidywać wartości temperatury co pięć lat, użyj wartości&nbsp;5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Wybierz jednostkę, która będzie używana w przedziale wartości czasu</h2></div>
+        <hr/>
+        <div>
+            <p>Definiuje jednostkę, kt&oacute;ra będzie używana w przedziale wartości. Ten parametr ma zastosowanie tylko wtedy, gdy wymiarem analizy jest wymiar czasu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

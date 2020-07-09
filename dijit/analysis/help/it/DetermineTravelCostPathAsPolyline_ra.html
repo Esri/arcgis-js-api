@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Determina costi di viaggio dell’itinerario come polilinea</h2><p/>
+        <h2>Determina costi di viaggio dell'itinerario come polilinea</h2><p/>
         <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Illustrazione strumento Determina costi di viaggio dell&rsquo;itinerario come polilinea"></h2>
         <hr/>
     <p>Questo strumento calcola la polilinea di percorso a basso costo tra origini e destinazioni note.
@@ -112,20 +112,28 @@
             <p>Definisce il modo in cui i valori e le zone nei dati di destinazione di input vengono interpretati nei calcoli dei costi di viaggio.
             </p>
             <ul>
-                <li>Singolo migliore: per tutte le celle o posizioni nei dati di destinazione di input, il percorso di costo minimo viene ricavato dalla posizione con il minimo dei percorsi di costo minimo verso la posizione di origine. Si tratta dell'impostazione predefinita.
+                <li> <b>Singolo migliore</b>: per tutte le celle o posizioni nei dati di destinazione di input, il percorso di costo minimo viene ricavato dalla posizione con il minimo dei percorsi di costo minimo verso la posizione di origine. Si tratta dell'impostazione predefinita.
                     
 
                 </li>
-                <li>A ogni cella: per ogni cella o posizione con valori validi nei dati di destinazione di input, viene determinato e salvato sul feature service di output un percorso di costo minimo. Con questa opzione, ogni cella dei dati di destinazione di input viene trattata separatamente e viene determinato un percorso di costo minimo per ciascuna cella.
+                <li> <b>A ogni cella</b>: per ogni cella o posizione con valori validi nei dati di destinazione di input, viene determinato e salvato sul feature service di output un percorso di costo minimo. Con questa opzione, ogni cella dei dati di destinazione di input viene trattata separatamente e viene determinato un percorso di costo minimo per ciascuna cella.
                     
 
                 </li>
-                <li>A ogni zona: per ogni zona nei dati di destinazione di input, viene determinato e salvato sul feature service di output un percorso di costo minimo. Con questa opzione, il percorso di costo minimo per ogni zona inizia nella cella o nella posizione con la ponderazione distanza di costo pi&ugrave; basso nella zona.
+                <li> <b>A ogni zona</b>: per ogni zona nei dati di destinazione di input, viene determinato e salvato sul feature service di output un percorso di costo minimo. Con questa opzione, il percorso di costo minimo per ogni zona inizia nella cella o nella posizione con la ponderazione distanza di costo pi&ugrave; basso nella zona.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Scegliere un campo per ottenere valori per la destinazione</h2></div>
+        <hr/>
+        <div>
+            <p>Il campo usato per ottenere i valori per le posizioni di destinazione.
+            </p>
         </div>
     </div>
 </div>

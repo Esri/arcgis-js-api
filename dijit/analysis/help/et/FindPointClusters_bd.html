@@ -44,9 +44,9 @@
         <h2>Otsi punktklastreid</h2><p/>
         <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Otsi punktklastreid"></h2>
         <hr/>
-    <p>T&ouml;&ouml;vahend Otsi punktklastreid leiab &uuml;mbritseva m&uuml;ra hulgast punktobjektide klastrid nende ruumilise jaotuse p&otilde;hjal.
+    <p> Otsi punktklastreid t&ouml;&ouml;riist otsib punktobjektide klastreid &uuml;mbritseva m&uuml;ra seast nende ruumilise v&otilde;i aegruumilise jaotuse p&otilde;hjal.
     </p>
-    <p>Valitsusv&auml;line organisatsioon uurib n&auml;iteks konkreetset kahjuritest p&otilde;hjustatud haigust. Selles kasutatakse punktandmestikku, mis esindab uuringupiirkonna kodusid, millest m&otilde;ned on nakatunud ja m&otilde;ned mitte. T&ouml;&ouml;vahendi  Otsi punktklastreid abil saab anal&uuml;&uuml;tik leida nakatunud kodude klastrid, et aidata m&auml;&auml;rata piirkonda, kus tuleb alustada ravi ja h&auml;vitada kahjurid.
+    <p>N&auml;iteks, mittetulundus&uuml;hing uurib konkreetset kahjuritest p&otilde;hjustatud haigust. Selles kasutatakse punktandmestikku, mis esindab uuringupiirkonna kodusid, millest m&otilde;ned on nakatunud ja m&otilde;ned mitte. T&ouml;&ouml;vahendi  Otsi punktklastreid abil saab anal&uuml;&uuml;tik leida nakatunud kodude klastrid, et aidata m&auml;&auml;rata piirkonda, kus tuleb alustada ravi ja h&auml;vitada kahjurid.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,9 +54,9 @@
         <div><h2>Valige kiht klastrite otsimiseks</h2></div>
         <hr/>
         <div>
-            <p>Punktkiht, milles leiduvad klastrid.  Kihid peavad olema tasapinnalises ruumilise l&auml;hiseose s&uuml;steemis v&otilde;i tasapinnaliseks ruumilise l&auml;hiseose s&uuml;steemiks peab olema funktsiooni  <b>Anal&uuml;&uuml;sikeskkonnad</b> abil m&auml;&auml;ratud tasapinnaline koordinaats&uuml;steem.
+            <p>Punktikiht, kus klastrid leitakse. Kihid peavad olema topotsentrilises koordinaaats&uuml;steemis v&otilde;i see tuleb s&auml;testada  <b>Anal&uuml;&uuml;sikeskkonnad</b> aknas.
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti. Valikuliselt v&otilde;ite rakendada filtrit oma sisendkihile v&otilde;i valikut kaardile lisatud majutatud kihtidele. Filtreid ja valikuid rakendatakse ainult anal&uuml;&uuml;siks. 
             </p>
         </div>
     </div>
@@ -64,25 +64,25 @@
         <div><h2>Valige kasutatav klasterdamismeetod</h2></div>
         <hr/>
         <div>
-            <p>Klasterdamismeetod, mida kasutatakse punktobjektide klastrite eristamiseks &uuml;mbritsevast m&uuml;rast. V&otilde;ite kasutamiseks valida kas m&auml;&auml;ratletud kauguse v&otilde;i isereguleeruva klasterdamisalgoritmi.
+            <p>Klasterdamismeetod, mida kasutatakse punktobjektide klastrite eristamiseks &uuml;mbritsevast m&uuml;rast. V&otilde;ite meetodina kasutada kas kindlaks m&auml;&auml;ratletud kaugust v&otilde;i isereguleeruvat klasterdamisalgoritmi.
             </p>
-            <p>M&auml;&auml;ratletud kaugus (DBSCAN) kasutab etten&auml;htud otsinguvahemikku, et eraldada tihedamad klastrid h&otilde;redamast m&uuml;rast. M&auml;&auml;ratletud kaugus (DBSCAN) on kiirem, kuid see sobib ainult juhul, kui kasutatakse v&auml;ga selget otsinguvahemikku, mis toimib h&auml;sti, kui on vaja m&auml;&auml;ratleda k&otilde;ik esineda v&otilde;ivad klastrid. M&auml;&auml;ratletud kaugus (DBSCAN) leiab samasuguse tihedusega klastrid.
+            <p>M&auml;&auml;ratletud kaugus (DBSCAN) kasutab etten&auml;htud otsinguvahemikku, et eraldada tihedamad klastrid h&otilde;redamast m&uuml;rast. Valikuliselt saab aega kasutada aegruumiliste klastrite leidmisel, kasutades nii otsingu kaugust kui ka kestust. M&auml;&auml;ratletud kauguse (DBSCAN) kasutamine on kiirem meetod, kuid see sobib ainult juhul, kui kasutatakse kindalt otsinguvahemikku, millega on v&otilde;imalik v&auml;ga selgelt m&auml;&auml;ratleda k&otilde;ik esineda v&otilde;ivad klastrid. M&auml;&auml;ratletud kaugus (DBSCAN) leiab sarnase tihedusega klastrid.
             </p>
             <p>Isereguleeruv kaugus (HDBSCAN) ei vaja otsinguvahemiku m&auml;&auml;ramist, kuid on rohkem aega n&otilde;udev meetod. Isereguleeruv kaugus (HDBSCAN) leiab punktide klastrid, mis on sarnased m&auml;&auml;ratletud kaugusega (DBSCAN), kuid kasutab erinevaid otsinguvahemikke, mis v&otilde;imaldab leida erineva tihedusega klastreid. 
             </p>
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Minimaalne punktide arv, mida käsitletakse klastrina</h2></div>
+        <div><h2>Klastri loomiseks vajalik minimaalne punktide arv</h2></div>
         <hr/>
         <div>
-            <p>Seda parameetrit kasutatakse erinevalt olenevalt valitud klasterdamismeetodist:
+            <p>Seda parameetrit kasutatakse erinevalt olenevalt valitud klasterdamismeetodist j&auml;rgmiste valikute hulgast:
             </p>
             <p>
                 <ul>
-                    <li>M&auml;&auml;ratletud kaugus (DBSCAN) &mdash; m&auml;&auml;rab objektide arvu, mis peavad leiduma punkti igas konkreetses kauguses, et see punkt hakkaks moodustama klastrit. Kaugus m&auml;&auml;ratletakse parameetriga  <b>Otsinguvahemiku piirang</b>.
+                    <li>M&auml;&auml;ratletud kaugus (DBSCAN) &ndash; m&auml;&auml;rab objektide arvu, mis peavad leiduma punkti igas konkreetses kauguses, et see punkt hakkaks moodustama klastrit. Kaugus m&auml;&auml;ratletakse parameetriga  <b>Otsinguvahemiku piirang</b>. Kui aega kasutatakse aegruumilise klastri tuvastamiseks, m&auml;&auml;ratakse kestus <b>Piira otsinguvahemikku</b> parameetri abil.
                     </li>
-                    <li>Isereguleeruv (HDBSCAN) &mdash; m&auml;&auml;rab objektide arvu iga punkti (sealhulgas punkti enda) naabruses, mida v&otilde;etakse arvesse tiheduse hindamisel. See arv on ka klastrite minimaalne suurus klastrite eraldamisel.
+                    <li>Isereguleeruv (HDBSCAN) &ndash; m&auml;&auml;rab objektide arvu iga punkti (sealhulgas punkti enda) naabruses, mida v&otilde;etakse arvesse tiheduse hindamisel. See arv on ka klastrite minimaalne suurus klastrite eraldamisel.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
         <div><h2>Piira otsinguvahemikku</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ratletud kauguse (DBSCAN) kasutamisel on see parameeter kaugus, mille piires tuleb leida  <b>Punktide minimaalne arv, mida v&otilde;ib lugeda klastriks</b>. Seda parameetrit ei kasutata, kui klasterdamise kasutatavaks meetodiks valitakse isereguleeruv kaugus (HDBSCAN).
+            <p>M&auml;&auml;ratletud kauguse (DBSCAN) kasutamisel on see parameeter kaugus, mille piires tuleb leida  <b>Punktide minimaalne arv, mida on vaja klastri loomiseks</b>. Kui sisendkiht on ajateadlik ja selle t&uuml;&uuml;biks on jooksev, saate &uuml;mbritsevast m&uuml;rast aegruumiliste punktigruppide leidmiseks teha valiku <b>Kasuta klastrite leidmiseks aega</b>. Kui kasutate aega, m&auml;&auml;rab parameeter <b>Piira otsinguvahemikku</b>    aja&uuml;hiku, mille jooksul tuleb leida <b>Klastri loomiseks vajalik minimaalne punktide arv</b>, lisaks sellele, et see j&auml;&auml;ks otsinguvahemikku. Neid parameetreid ei kasutata, kui klasterdamise kasutatavaks meetodiks valitakse isereguleeruv kaugus (HDBSCAN).
             </p>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> Loodavakihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale  ja lisatakse  selle manifestifailile. Seda  ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> Loodava kihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale ja lisatakse selle manifestifailile. Seda ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
             <p>Kui salvestate admelattu   ArcGIS Data Store (relatsioonilisse v&otilde;i ajalisruumilisse andmelattu), kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>

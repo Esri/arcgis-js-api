@@ -44,9 +44,9 @@
         <h2>Konversi Raster ke Fitur</h2><p/>
         <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Alat Konversi Raster ke Fitur"></h2>
         <hr/>
-    <p>Alat ini mengubah raster ke rangkaian data fitur, seperti titik, garis, atau poligon.
+    <p>Alat ini mengubah raster ke set data fitur, seperti titik, garis, atau poligon.
     </p>
-    <p>Parameter  <b>Pilih kolom</b> memungkinkan Anda untuk memilih kolom atribut manakah dari rangkaian data raster input yang akan menjadi sebuah atribut di kelas fitur output. Parameter ini hanya tersedia untuk raster bilangan bulat yang memiliki atribut tambahan di tabel terkait.
+    <p>Parameter  <b>Pilih kolom</b> memungkinkan Anda untuk memilih kolom atribut manakah dari set data raster input yang akan menjadi sebuah atribut di feature class output. Parameter ini hanya tersedia untuk raster bilangan bulat yang memiliki atribut tambahan di tabel terkait.
     </p>
     <p>Raster input dapat memiliki ukuran sel berapa pun.
     </p>
@@ -55,11 +55,11 @@
     <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya sel raster yang terlihat di dalam jangkauan peta saat ini yang akan dikonversikan. Jika tidak dicentang, semua sel pada layer raster akan dikonversikan, meskipun berada di luar jangkauan peta saat ini. Perhatikan hal ini jika layer raster memiliki ukuran yang besar atau memiliki resolusi yang sangat tinggi.
     </p>
     <p>Contoh penggunaan alat ini mencakup hal berikut:
- 
+
         <ul>
             <li>Membuat fitur poligon dari raster klasifikasi penggunaan tanah.
                 
- 
+
             </li>
             <li>Aliran yang teridentifikasi di DEM dapat dikonversikan ke fitur garis.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM dapat dikonversikan ke fitur titik yang dapat digunakan di alur kerja berbasis nonraster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Pilih kolom</h2></div>
         <hr/>
         <div>
-            <p>Sediakan kolom yang menentukan nilai manakah yang akan digunakan untuk konversi.
+            <p>Kolom yang menentukan nilai konversi.
             </p>
             <p>Bisa saja berupa bilangan bulat atau nilai teks.
             </p>
             <p>Kolom yang berisi nilai bilangan titik mengambang hanya dapat digunakan jika output adalah ke set data titik.
             </p>
-            <p>Pilihan default adalah menggunakan kolom  <i>Value</i>, yang berisi nilai di setiap sel raster.
+            <p>Default adalah kolom  <i>Value</i>, yang berisi nilai di setiap sel raster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Pilih tipe output</h2></div>
         <hr/>
         <div>
-            <p>Pilih tipe output antara titik, garis, atau poligon.
+            <p>Menentukan jenis output.
             </p>
             <ul>
-                <li>Titik&mdash;Raster akan dikonversi ke rangkaian data titik.
+                <li> <b>Titik</b>&mdash;Raster akan dikonversi ke set data titik. Ini adalah default.
                     
  
                 </li>
-                <li>Garis&mdash;Raster akan dikonversi ke rangkaian data fitur garis.
+                <li> <b>Garis</b>&mdash;Raster akan dikonversi ke set data fitur garis.
                     
  
                 </li>
-                <li>Poligon&mdash;Raster akan dikonversi ke rangkaian data fitur poligon.
+                <li> <b>Poligon</b>&mdash;Raster akan dikonversi ke set data fitur poligon.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Sederhanakan garis atau poligon</h2></div>
         <hr/>
         <div>
-            <p>Tentukan apakah fitur harus disederhanakan.
+            <p>Menentukan apakah garis atau poligon akan disederhanakan (diperhalus). Perataan dilakukan sedemikian rupa sehingga garis berisi jumlah segmen minimum dan tetap sedekat mungkin dengan tepi sel raster asli.
             </p>
-            <p>Jika dicentang (default), fitur garis atau poligon akan diperhalus untuk memberikan hasil yang lebih digeneralisasi. Jika opsi ini tidak dicentang, fitur linear akan mengikuti batasan sel rangkaian data raster.
+            <ul>
+                <li>Dicentang&mdash;Fitur garis atau poligon akan diperhalus untuk menghasilkan hasil yang lebih umum. Ini adalah default.
+                    
+
+                </li>
+                <li>Tidak dicentang&mdash;Fitur garis atau poligon akan mengikuti batas sel set data raster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Parameter ini hanya didukung jika jenis output adalah garis atau poligon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Buat fitur multi-bagian</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah poligon output akan terdiri dari fitur satu-bagian atau multi-bagian.
+            </p>
+            <ul>
+                <li>Dicentang&mdash;Fitur multi-bagian akan dibuat berdasarkan poligon yang memiliki nilai yang sama.
+                    
+
+                </li>
+                <li>Tidak Dicentang&mdash;Fitur individu (satu-bagian) akan dibuat untuk setiap poligon. Ini adalah default.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Parameter ini hanya didukung jika jenis outputnya adalah poligon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Puncak maksimum per fitur poligon</h2></div>
+        <hr/>
+        <div>
+            <p>Batas verteks digunakan untuk membagi poligon menjadi poligon yang lebih kecil.
+            </p>
+            <p>Jika dibiarkan kosong, poligon output tidak akan terpecah. Ini adalah default.
+            </p>
+            <p>Parameter ini hanya didukung jika jenis outputnya adalah poligon.
             </p>
         </div>
     </div>
@@ -135,7 +179,7 @@
         <div>
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

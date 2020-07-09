@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ennusta trendirasterin avulla</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Ennusta trendirasterin avulla"></h2>
+        <hr/>
+    <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, sen karttatason muuttujat, jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, analysoidaan. Jos vaihtoehtoa ei ole valittu, koko karttatason muuttujat analysoidaan &ndash; my&ouml;s muuttujat, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valitse ennustettava moniulotteinen kuva-aineistokarttataso</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;ht&ouml;aineiston moniulotteinen trendirasteri  Luo trendirasteri -ty&ouml;kalusta.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valitse ennustettavat muuttujat</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttuja tai muuttujat, jotka ennustetaan analyysissa. Jos yht&auml;&auml;n muuttujaa ei ole m&auml;&auml;ritetty, kaikkia muuttujia k&auml;ytet&auml;&auml;n.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Valitse menetelmä, jota käytetään ennusteulottuvuuden arvojen määrittämiseen</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; menetelm&auml;n, jota k&auml;ytet&auml;&auml;n ennusteulottuvuuden arvojen m&auml;&auml;ritt&auml;miseen.
+                <ul>
+                    <li> <b>Arvon perusteella</b> &ndash; Ennuste lasketaan seuraavassa vaiheessa m&auml;&auml;ritetylle yksitt&auml;iselle ulottuvuusarvolle tai ulottuvuusarvojen luettelolle. T&auml;m&auml; on oletusarvo. Jos haluat ennustaa vuosittaisen sadem&auml;&auml;r&auml;n vuosille 2050, 2100 ja 2150.
+                    </li>
+                    <li> <b>Arvov&auml;lin perusteella</b> &ndash; Ennuste lasketaan aloitus- ja lopetusarvojen m&auml;&auml;ritt&auml;m&auml;lle ulottuvuuden arvov&auml;lille. Haluat esimerkiksi ennustaa vuosittaisen sadem&auml;&auml;r&auml;n kullekin vuodelle v&auml;lill&auml; 2050&ndash;2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Määriä ulottuvuusarvo(t) ennustetta varten</h2></div>
+        <hr/>
+        <div>
+            <p>Ennusteessa k&auml;ytett&auml;v&auml; ulottuvuusarvo tai k&auml;ytett&auml;v&auml;t ulottuvuusarvot.
+            </p>
+            <p>Aika-, syvyys- ja korkeusarvojen muodon on vastattava trendirasterin luonnissa k&auml;ytett&auml;vien ulottuvuusarvojen muotoa. Jos trendirasteri on luotu StdTime-ulottuvuutta varten, muodon on oltava VVVV-KK-PPTHH:MM:SS, esimerkiksi 2050-01-01T00:00:00. Useita arvoja puolipisteell&auml; eroteltuna.
+            </p>
+            <p>T&auml;m&auml; parametri on pakollinen, kun  <b>Arvon perusteella</b> -menetelm&auml; on valittu ennusteen ulottuvuusarvojen m&auml;&auml;ritt&auml;mist&auml; varten.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Määritä ulottuvuuden arvoväli ennustetta varten</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml; ennusteessa k&auml;ytett&auml;v&auml;n ulottuvuuden arvov&auml;lin aloitus- ja lopetusp&auml;iv&auml;m&auml;&auml;r&auml;, korkeus tai syvyys.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Määritä vaiheiden määrä aloitus- ja lopetusarvojen välillä</h2></div>
+        <hr/>
+        <div>
+            <p>Ennusteeseen mukaan otettavien kahden ulottuvuusarvon v&auml;lill&auml; olevien vaiheiden m&auml;&auml;r&auml;. Oletusarvo on 1.
+            </p>
+            <p>Jos haluat ennustaa esimerkiksi l&auml;mp&ouml;tila-arvot viiden vuoden v&auml;lein, k&auml;yt&auml; arvoa 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Valitse ajan arvovälissä käytettävä yksikkö</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; arvov&auml;liss&auml; k&auml;ytett&auml;v&auml;n yksik&ouml;n. T&auml;m&auml; p&auml;tee vain, kun analyysin ulottuvuus on aikaulottuvuus.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Living Atlas Analiz Katmanı Seç",customAnalysisLayerTitle:"Analiz Katmanını Seç",searchPlaceholderText:"Living Atlas analiz katmanlarını ara",searchCustomPlaceholderText:"Analiz katmanlarını ara",mainActionTitle:"Seç",customActionName:"Seç ve haritaya ekle",customeSectionName:"Living Atlas Analiz Katmanları",Categories:"Kategoriler",boundaries:"Sınırlar",places:"Yerler",boundariesAndPlaces:"Sınırlar ve Yerler",hexbins:"Altıgen(Petek) Analizi",transportation:"Ulaşım",point:"Nokta Katmanları",line:"Çoklu Çizgi Katmanları",polygon:"Çokgen Katmanları",pointFilterName:"Nokta",lineFilterName:"Çoklu Çizgi",polygonFilterName:"Çokgen",multiPointFilterName:"Çoklu Noktalar",geometryFilterName:"Geometri",featureLayerName:"Detay Katmanı",tableLayerName:"Tablo",itemTypeFilterName:"Öge türü",instantFilterName:"Anında",intervalFilterName:"Aralık",timeFilterName:"Zaman",edit:"Düzenle",boundaryLayers:"Esri Sınır Katmanları",customAnalysisGroupName:"Kuruluşun Analiz Grupları"});

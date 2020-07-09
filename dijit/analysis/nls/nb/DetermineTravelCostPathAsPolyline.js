@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Velg raster- eller geoobjektkildelaget det skal beregnes reiseruter fra",inputCostRasterLabel:"Velg rasterlag for reiseutgifter",inputDestinationLayerLabel:"Velg raster- eller geoobjektsmållaget det skal beregnes reiseruter til",pathTypeLabel:"Velg reiserutetypen som skal beregnes (valgfritt)",bestSingle:"Beste enkeltforekomst",eachCell:"Til hver celle",eachZone:"Til hver sone",destinationField:"Velg felt for å hente verdier for destinasjon",outputPolylineName:"Navn på resulterende polylinje",outputLayerName:"Optimale reisekostnader som polylinje for ${layername}",drawDestinationPointLayerName:"Målpunkter",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Geoobjektlag generert ved kjøring av Bestem rute for reisekostnader som polylinje på ${layername}. ",itemTags:"Analyseresultat, Fastsett rute for reiseutgifter som polylinje, ${layername} ${fieldname}",itemSnippet:"Geoobjektslag generert fra Fastsett rute for reiseutgifter som polylinje.",missingMessage:"Mållaget må være forskjellig fra kildelaget",noValueMessage:"Denne verdien er obligatorisk",placeHolder:"--Velg et lag--"});

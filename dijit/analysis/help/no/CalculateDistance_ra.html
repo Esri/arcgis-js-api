@@ -67,14 +67,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Velg rasteret for geoobjektslokasjonslaget som du vil beregne avstanden til</h2></div>
+        <div><h2>Velg raster- eller geoobjektslokasjonslaget som skal brukes til å beregne avstanden til</h2></div>
         <hr/>
         <div>
-            <p>Laget som definerer kildene som avstanden skal beregnes til. Laget kan v&aelig;re fra en bildetjeneste eller geoobjektstjeneste.
+            <p>Laget som definerer kildene som avstanden skal beregnes til. Laget kan v&aelig;re fra en bildetjeneste eller geoobjekttjeneste.
             </p>
             <p>For en bildetjeneste kan inndataatypen v&aelig;re et heltall eller et flyttall.
             </p>
-            <p>For en geoobjektstjeneste kan inndata v&aelig;re punkt, linje eller polygon.
+            <p>For en geoobjekttjeneste kan inndata v&aelig;re punkt, linje eller polygon.
             </p>
         </div>
     </div>
@@ -136,7 +136,48 @@
         <div>
             <p>Et felt i inndatakildelaget som inneholder verdiene som definerer hver av kildene. Det kan v&aelig;re et heltall eller et strengfelt i kildedatasettet.
             </p>
-            <p>Standarden er  <i>Value</i>. Hvis du bruker en geoobjektstjeneste og ingen <i>Value</i>-felt er tilgjengelige, brukes det f&oslash;rste tilgjengelige heltall- eller strengfeltet. Hvis det ikke finnes noen gyldige felt, brukes objekt-ID-feltet (f.eks. OID eller FID, avhengig av typen geoobjekt som er lagt inn).
+            <p>Standarden er  <i>Value</i>. Hvis du bruker en geoobjekttjeneste og ingen <i>Value</i>-felt er tilgjengelige, brukes det f&oslash;rste tilgjengelige heltall- eller strengfeltet. Hvis det ikke finnes noen gyldige felt, brukes objekt-ID-feltet (f.eks. OID eller FID, avhengig av typen geoobjekt som er lagt inn).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Velg raster- eller geoobjektlag som representerer hindringer</h2></div>
+        <hr/>
+        <div>
+            <p>Datasettet som definerer hindringene. 
+            </p>
+            <p>For en bildetjeneste kan inndataatypen v&aelig;re et heltall eller et flyttall. Celler som har en verdi (inkludert null) behandles som en hindring. Celler som er NoData, behandles ikke som en hindring.
+            </p>
+            <p>For en geoobjekttjeneste kan inndata v&aelig;re punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avstandsmetode</h2></div>
+        <hr/>
+        <div>
+            <p>Bestemmer om avstanden skal beregnes ved hjelp av en planmetode (flat jord) eller geodetisk metode (ellipsoide).
+            </p>
+            <ul>
+                <li> <b>Plan</b> &ndash; Beregningen foretas p&aring; et projisert flatt plan ved hjelp av et 2D kartesisk koordinatsystem. Dette er standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodetisk</b> &ndash; Avstander beregnes p&aring; ellipsoide. Det betyr at resultatene ikke endrer seg, uansett inndata- og utdataprojeksjon.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Navn på resulterende tilbakeretningslag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b>. Du m&aring; oppgi et navn som ikke allerede finnes i <b>Mitt innhold</b>.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
             </p>
         </div>
     </div>

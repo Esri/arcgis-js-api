@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Summarize Attributes</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summarize Attributes diagram"></h2>
+        <hr/>
+    <p> This tool summarizes all the matching values in one or more fields and calculates statistics on them. The
+most basic statistic is the count of features that have been summarized together, but you can calculate more advanced statistics as well.
+    </p>
+    <p>For example, suppose you have point features of store locations with a field representing the  <i>DISTRICT_MANAGER_NAME</i>, and you want to summarize coffee sales by manager. You can specify the field <i>DISTRICT_MANAGER_NAME</i> as the field to dissolve on, and all rows of data representing individual managers will be summarized. This means all store locations that are managed by <pre>Manager1</pre> will be summarized into one row, with summary statistics calculated. In this instance, statistics like the count of the number of stores and the sum of <i>TOTAL_SALES</i> for all stores that <pre>Manager1</pre> manages would be calculated, as well as for any other manager listed in the <i>DISTRICT_MANAGER_NAME</i> field.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose the input to summarize</h2></div>
+        <hr/>
+        <div>
+            <p>The layer that contains the fields that will be summarized.  
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Choose how to summarize your data</h2></div>
+        <hr/>
+        <div>
+            <p>There are two ways to summarize your data:
+                <ul>
+                    <li> <b>All features into a single feature</b>&mdash;Calculates statistics on all features.
+                    </li>
+                    <li> <b>By fields</b>&mdash;Groups  features by like values in specified fields.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For example, suppose you had a dataset of trees that included fields of   <i>treetype</i> with values <code>Maple</code>, <code>Fir</code> and <code>Pine</code>,  and a field <i>treeheight</i>, and you are interested in finding the mean <i>treeheight</i>. If you summarize all features into a single feature, you will find the mean tree height of all trees, which will result in one mean value. If you summarized by the field <i>treeheight</i>, you would end up with a mean for maple trees, a mean for fir trees, and a mean for pine trees.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Можна обчислювати статистику підсумованих об&rsquo;єктів. В числових полях можна обчислювати: 
+                <ul>
+                    <li>Кількість &mdash; обчислює кількість ненульових значень. Може використовуватися як з числовими, так і рядковими полями. Кількість [нуль, 0, 2] &mdash; 2.
+                    </li>
+                    <li>Сума&mdash;Сума числових значень у полі. Сума [нуль, 0, 3] &mdash; 3.
+                    </li>
+                    <li>Середнє&mdash;Середнє числових значень. Середнє [0, 2, нуль] &mdash; 1.
+                    </li>
+                    <li>Мін.&mdash;Мінімальне значення числового поля. Мінімум [0, 2, нуль] &mdash; 0. 
+                    </li>
+                    <li>Макс.&mdash;Максимальне значення числового поля. Максимальне значення [0, 2, нуль] &mdash; 2.
+                    </li>
+                    <li>Діапазон&mdash;Діапазон числового поля. Розраховується відніманням мінімального значення із максимального. Діапазон [0, нуль, 1] &mdash; 1. Діапазон [нуль, 4] &mdash; 0.
+                    </li>
+                    <li>Дисперсія&mdash;Дисперсія числового значення в треку. Дисперсія [1] &mdash; нуль. Дисперсія [нуль, 1,0,1,1] &mdash; 0,25.
+                    </li>
+                    <li>Середньоквадратичне відхилення &mdash; середньоквадратичне відхилення числового поля. Середньоквадратичне відхилення [1] &mdash; нуль. Середньоквадратичне відхилення [нуль, 1,0,1,1] &mdash; 0,5. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>В рядкових полях можна обчислювати:
+                <ul>
+                    <li>Кількість &mdash; кількість непорожніх рядків.
+                    </li>
+                    <li>Будь-які &mdash; ця статистика є випадковою вибіркою рядкового значення в указаному полі.
+                    </li>
+                </ul>
+                Вся статистика обчислюється за ненульовими значеннями. Результуючий шар буде містити нове поле для кожної обчисленої статистики. Будь-яку кількість статистичних відомостей можна додати за допомогою вибору атрибута і статистики.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Результати GeoAnalytics зберігаються у  сховищі даних та відображаються як векторний шар у  Portal for ArcGIS. У більшості випадків результати потрібно зберігати у просторово-часовому сховищі даних, що задано за замовчуванням. У деяких випадках гарною опцією є зберігання результатів у реляційному сховищі даних. Нижче наведено причини, чому може знадобитись зберігання результатів у реляційному сховищі даних: 
+                <ul>
+                    <li>Для використання результатів у співпраці між порталами
+                    </li>
+                    <li>Для активації можливості синхронізації з вашими результатами.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

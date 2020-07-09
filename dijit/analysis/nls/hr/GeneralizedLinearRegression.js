@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalizirana linearna regresija - ${goal}",fit:"Prilagodi",fitAndPredict:"Prilagođavanje i predviđanje",selectGoal:"Što želite napraviti?",fitGoal:"Prilagodite model za procjenu izvedbe modela",fitAndPredictGoal:"Prilagodite model i predvidite vrijednosti",inputLayerLabel:"Odaberite sloj iz kojeg ćete generirati model",chooseDependentField:"Odaberite polja za izradu modela",chooseDataType:"Odaberite vrstu podataka koju modelirate",continuousData:"Neprekidno",binaryData:"Binarni sustav",countData:"Zbroj",chooseExplanatoryField:"Odaberite polja za objašnjenje",chooseFeaturesToPredict:"Odaberite sloj za koji će se predviđati vrijednosti",chooseExplainMatch:"Odaberite kako se polja objašnjenja podudaraju",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Sloj geoobjekata generiran pokretanjem rješenja generalizirane linearne regresije ${goal}.",itemTags:"Rezultat analize, generalizirana linearna regresija, ${inputLayerName}, ${goal}",itemSnippet:"Sloj geoobjekata generiran iz generalizirane linearne regresije (${goal}"});

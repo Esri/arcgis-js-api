@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generovat vícerozměrnou anomálii (Generate Multidimensional Anomaly)</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generovat v&iacute;cerozměrnou anom&aacute;lii"></h2>
+        <hr/>
+    <p>Vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru kombinac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru a rozměru.
+    </p>
+    <p>Anom&aacute;lie je odchylka pozorov&aacute;n&iacute; od standardn&iacute;, průměrn&eacute; nebo středn&iacute; hodnoty.
+    </p>
+    <p>Tento n&aacute;stroj poč&iacute;t&aacute; anom&aacute;lie v průběhu času pro jednu nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru. Pokud kromě časov&eacute; dimenze m&aacute;te nečasovou dimenzi, bude anom&aacute;lie vypoč&iacute;t&aacute;na v každ&eacute;m kroku v dal&scaron;&iacute; dimenzi.
+    </p>
+    <p>Např&iacute;klad m&aacute;te měs&iacute;čn&iacute; data o teplotě oce&aacute;nu shromažďovan&eacute; každ&yacute; 1 metr hloubky až 100 metrů a chcete vypoč&iacute;tat teplotn&iacute; anom&aacute;lie jako odchylky od ročn&iacute; průměrn&eacute; hodnoty. Tento n&aacute;stroj urč&iacute; teplotn&iacute; anom&aacute;lie na z&aacute;kladě ročn&iacute;ho průměru, pokud nastav&iacute;te  <b>Ročn&iacute;</b> jako <b>časov&yacute; interval pro v&yacute;počet průměru</b> a v&yacute;sledkem budou hodnoty anom&aacute;li&iacute; pro každou ze 100 hloubek.
+    </p>
+    <p>Tento n&aacute;stroj podporuje pouze v&iacute;cerozměrn&eacute; rastrov&eacute; datov&eacute; sady, kter&eacute; maj&iacute; časov&yacute; rozměr.
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vyberte vrstvu vícerozměrných snímků, u které chcete generovat anomálii.</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; vrstva sn&iacute;mků v&iacute;cerozměrn&eacute; rastrov&eacute; datov&eacute; sady.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vyberte proměnnou (proměnné), u kterých se budou generovat anomálie</h2></div>
+        <hr/>
+        <div>
+            <p>Proměnn&aacute; nebo proměnn&eacute;, u kter&eacute; se vypoč&iacute;taj&iacute; anom&aacute;lie. Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, budou analyzov&aacute;ny v&scaron;echny proměnn&eacute; s časovou k&oacute;tou.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Vyberte metodu generování anomálie</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje metodu, kter&aacute; bude použita k vypoč&iacute;t&aacute;n&iacute; anom&aacute;lie. 
+                <ul>
+                    <li> <b>Rozd&iacute;l od průměru</b>&mdash;Vypoč&iacute;t&aacute; se rozd&iacute;l mezi hodnotou pixelu a průměrem hodnoty tohoto pixelu na řezech definovan&yacute;ch intervalem. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Procentu&aacute;ln&iacute; rozd&iacute;l od průměru</b>&mdash;Vypoč&iacute;t&aacute; se procentu&aacute;ln&iacute; rozd&iacute;l mezi hodnotou pixelu a průměrem hodnoty tohoto pixelu na řezech definovan&yacute;ch intervalem.
+                    </li>
+                    <li> <b>Procento průměru</b>&mdash;Vypoč&iacute;t&aacute; se procento průměru.
+                    </li>
+                    <li> <b>Z-sk&oacute;re</b>&mdash;Vypoč&iacute;t&aacute; se z-sk&oacute;re pro každ&yacute; pixel. Z-sk&oacute;re 0 znamen&aacute;, že hodnota pixelu je identick&aacute; s průměrnou hodnotou. Z-sk&oacute;re 1 znamen&aacute;, že hodnota pixelu je 1 směrodatn&aacute; odchylka od průměru. Pokud je z-sk&oacute;re 2, hodnota pixelu je 2 směrodatn&eacute; odchylky od průměru atd.
+                    </li>
+                    <li> <b>Rozd&iacute;l od medi&aacute;nu</b>&mdash;Vypoč&iacute;t&aacute; se rozd&iacute;l mezi hodnotou pixelu a matematick&yacute;m medi&aacute;nem hodnoty tohoto pixelu na řezech definovan&yacute;ch intervalem.
+                    </li>
+                    <li> <b>Procentu&aacute;ln&iacute; rozd&iacute;l od medi&aacute;nu</b>&mdash;Vypoč&iacute;t&aacute; se procentu&aacute;ln&iacute; rozd&iacute;l mezi hodnotou pixelu a matematick&yacute;m medi&aacute;nem hodnoty tohoto pixelu na řezech definovan&yacute;ch intervalem.
+                    </li>
+                    <li> <b>Procento medi&aacute;nu</b>&mdash;Vypoč&iacute;t&aacute; se procento matematick&eacute;ho medi&aacute;nu.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Matematick&eacute; metody pro v&yacute;počet hodnot anom&aacute;li&iacute; jsou uvedeny n&iacute;že. Anom&aacute;lie lze vypoč&iacute;tat pomoc&iacute; průměrn&eacute; nebo středn&iacute; hodnoty jako definice průměru. Pokud je distribuce dat zkosen&aacute;, může průměr b&yacute;t velmi ovlivněn odlehl&yacute;mi hodnotami, takže pro tento typ dat může b&yacute;t vhodněj&scaron;&iacute; středn&iacute; hodnota nebo metoda z-sk&oacute;re.
+            </p>
+            <p>
+                <ul>
+                    <li>Rozd&iacute;l od průměru = x - &micro;
+
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                                
+
+                            </li>
+                            <li>&micro; = průměr hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentu&aacute;ln&iacute; rozd&iacute;l od průměru = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                                
+
+                            </li>
+                            <li>&micro; = průměr hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolutn&iacute; hodnota rozd&iacute;lu mezi hodnotou a průměrem
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentu&aacute;ln&iacute; průměr = x / &micro;
+
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                                
+
+                            </li>
+                            <li>&micro; = průměr hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Rozd&iacute;l od medi&aacute;nu = x - &szlig;
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                            </li>
+                            <li>&szlig; = medi&aacute;n hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentu&aacute;ln&iacute; rozd&iacute;l od medi&aacute;nu = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                            </li>
+                            <li>&szlig; = medi&aacute;n hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                            </li>
+                            <li>|x - &szlig;| = absolutn&iacute; hodnota rozd&iacute;lu mezi hodnotou a medi&aacute;nem
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procento medi&aacute;nu = x / &szlig;
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                            </li>
+                            <li>&szlig; = medi&aacute;n hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-sk&oacute;re = (x - &micro;) / S
+                        <ul>
+                            <li>x = hodnota pixelu v řezu
+                            </li>
+                            <li>&micro; = průměr hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                            </li>
+                            <li>S = směrodatn&aacute; odchylka hodnot pixelu v dan&eacute;m časov&eacute;m intervalu
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Zvolte časový interval pro výpočet střední hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje časov&yacute; interval, kter&yacute; se použije k vypoč&iacute;t&aacute;n&iacute; průměru. 
+                <ul>
+                    <li> <b>V&scaron;e</b>&mdash;Vypoč&iacute;t&aacute; průměr ze v&scaron;ech řezů pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Ročně</b>&mdash;Vypoč&iacute;t&aacute; ročn&iacute; průměr pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se jednou za měs&iacute;c</b>&mdash;Vypoč&iacute;t&aacute; měs&iacute;čn&iacute; průměr pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se jednou za t&yacute;den</b>&mdash;Vypoč&iacute;t&aacute; t&yacute;denn&iacute; průměr pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Opakuj&iacute;c&iacute; se denně</b>&mdash;Vypoč&iacute;t&aacute; denn&iacute; průměr pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Každou hodinu</b>&mdash;Vypoč&iacute;t&aacute; hodinov&yacute; průměr pro každ&yacute; pixel.
+                    </li>
+                    <li> <b>Extern&iacute; rastr</b>&mdash;Je definov&aacute;na existuj&iacute;c&iacute; rastrov&aacute; datov&aacute; sada, kter&aacute; obsahuje průměrnou nebo hodnotu nebo hodnotu medi&aacute;nu pro každ&yacute; pixel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Zvolit vrstvu obrazových dat průměru jako referenci</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje referenčn&iacute; rastrovou datovou sadu, kter&aacute; obsahuje dř&iacute;ve vypoč&iacute;tan&yacute; průměr pro každ&yacute; pixel. Anom&aacute;lie budou vypoč&iacute;t&aacute;ny v porovn&aacute;n&iacute; s t&iacute;mto průměrem.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny. 
+                <ul>
+                    <li>Za&scaron;krtnuto&mdash;Anal&yacute;za bude zahrnovat v&scaron;echny platn&eacute; pixely v dan&eacute;m rozměru a bude ignorovat pixely s hodnotou NoData. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li>Neza&scaron;krtnuto&mdash;V&yacute;sledkem anal&yacute;zy bude hodnota NoData, pokud někter&yacute; pixel v dan&eacute;m rozměru bude m&iacute;t hodnotu NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

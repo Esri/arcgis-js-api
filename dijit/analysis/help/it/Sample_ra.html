@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Esempio</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Esempio"></h2>
+        <hr/>
+    <p>Questo strumento crea una tabella o una feature class puntuale che mostra i valori di celle da un raster, o un insieme di raster, per posizioni definite. Le posizioni sono definite da celle raster, feature poligonali, feature polilinee o da un insieme di punti.
+    </p>
+    <p>I valori dei pixel saranno estratti da tutti i raster di input in ogni posizione. Verr&agrave; creata una tabella o una feature class puntuale con campi contenenti i valori dei pixel per ogni raster di input. Gli attributi aggiuntivi della tabella raster di input non saranno inclusi nella tabella di output.
+    </p>
+    <p>Qualsiasi combinazione di raster, ad esempio a banda singola, multibanda, multidimensionale o multivariato, pu&ograve; essere specificata come raster di input. La struttura della tabella di output cambia quando i raster di input sono multidimensionali. Quando viene specificato un raster multibanda come uno dei raster di input, verranno utilizzate tutte le bande di tale input. Per elaborare una selezione di bande da un raster multibanda di input, creare prima un nuovo dataset raster composto da quelle bande particolari. Utilizzare il risultato nell'elenco dei raster di input.
+    </p>
+    <p>La posizione di input pu&ograve; essere un raster o una feature puntuale:
+        <ul>
+            <li>Raster: i pixel contenenti valori validi (non NoData) vengono utilizzati per estrarre i valori dei pixel da tutti i raster di input, e il centro del pixel viene utilizzato per le posizioni dei punti.
+            </li>
+            <li>Punto: i valori saranno campionati in ogni posizione del punto.
+            </li>
+            <li>Polilinea o poligono: i valori saranno campionati al poligono o al centroide polilinea. Se il raster di input &egrave; multidimensionale, i valori saranno aggregati in base al tipo di  <b>Statistica</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>I raster di input sono campionati nel loro riferimento spaziale e risoluzione nativi. Se ci sono pi&ugrave; raster di input con diversi riferimenti spaziali, le posizioni di input sono proiettate al riferimento spaziale di ogni singolo raster da cui vengono estratti i valori. L'ambiente di analisi viene applicato alle posizioni di input, ma i raster di input non rispettano l'ambiente di analisi.
+    </p>
+    <p>Le posizioni che estraggono i valori dalle celle NoData nel raster di input riceveranno un valore &lt;null&gt; nella tabella di output.
+    </p>
+    <p>Per eseguire analisi con feature multipuntuali, prima di utilizzarle in questo strumento &egrave; necessario convertirle in singole feature puntuali.
+    </p>
+    <p>Il riferimento spaziale delle coordinate x,y nella tabella di campionamento di output &egrave; lo stesso del raster della posizione di input o delle feature puntuali, a meno che non sia specificato nell'ambiente del <b>Sistema di coordinate di output</b>. Se il riferimento spaziale dei dati relativi alle posizioni di input &egrave; sconosciuto, anche il riferimento spaziale delle coordinate x,y &egrave; sconosciuto.
+    </p>
+    <p>Il riferimento spaziale della feature class di output &egrave; lo stesso del raster della posizione di input o delle feature puntuali, a meno che non sia specificato nell'ambiente del  <b>Sistema di coordinate di output</b>.
+    </p>
+    <p>L'ambiente del  <b>Fattore di elaborazione parallela</b> &egrave; supportato solo quando l'input &egrave; un raster multidimensionale.
+    </p>
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, verranno analizzate le variabili o le bande del layer visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate le variabili o le bande del layer, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Scegliere il layer o i layer di immagini da campionare</h2></div>
+        <hr/>
+        <div>
+            <p>Un singolo layer di immagini o un elenco di layer di immagini i cui valori saranno campionati in base ai dati di posizione di input.
+            </p>
+            <p>Per campionare tutte le sezioni da un layer di immagini multidimensionale, deve essere l'unico raster di input.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Scegliere il layer della posizione</h2></div>
+        <hr/>
+        <div>
+            <p>Dati che identificano le posizioni da campionare.
+            </p>
+            <p>I dati di posizione di input possono essere un raster, o una feature class puntuale, polilinea o poligonale.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Specificare campo ID univoco</h2></div>
+        <hr/>
+        <div>
+            <p>Un campo contenente un valore diverso per ogni posizione o feature nel raster della posizione di input o feature class.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Specificare le informazioni di acquisizione dei dati di posizione (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare il tempo, la profondit&agrave;, o altri dati di acquisizione associati alle celle di posizione o alle feature.
+            </p>
+            <p>Per ogni dimensione, ci sono tre opzioni per specificare le informazioni di acquisizione associate alle celle di posizione o alle feature:
+
+                <ul>
+                    <li> <b>Singolo campo o valore</b>: quando si seleziona questa opzione, &egrave; necessario specificare le seguenti informazioni:
+                        <ul>
+                            <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Singolo campo o valore con valori relativi</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
+                        <ul>
+                            <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione.
+                            </li>
+                            <li> <b>Valore relativo prima</b>: specificare un numero non negativo usato per sottrarre dal <b>Campo o valore dimensionale</b> per definire l'inizio di un intervallo di valori della dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
+                            </li>
+                            <li> <b>Valore relativo dopo</b>: specificare un numero non negativo usato per aggiungere al <b>Campo o valore dimensionale</b> per definire la fine di un intervallo di valori di dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Campi o valori di inizio e fine</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
+                        <ul>
+                            <li> <b>Campo o valori di inizio</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire l'inizio di un intervallo di valori di dimensione.
+                            </li>
+                            <li> <b>Campo o valori di fine</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire la fine di un intervallo di valori di dimensione.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Specificare campo o valore di distanza di buffer</h2></div>
+        <hr/>
+        <div>
+            <p>La distanza specificata intorno alle feature dei dati relativi alla posizione. La distanza di buffer &egrave; specificata nelle unit&agrave; lineari del riferimento spaziale della feature di posizione. Se la feature utilizza un riferimento geografico, l'unit&agrave; sar&agrave; costituita da gradi.
+            </p>
+            <p>Le statistiche saranno calcolate all'interno di questa area di buffer.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Scegliere il tipo di statistiche</h2></div>
+        <hr/>
+        <div>
+            <p>Il tipo di statistica da calcolare.
+            </p>
+            <ul>
+                <li> <b>Minimo</b>: trova il valore minimo all'interno dell'intervallo specificato.
+                </li>
+                <li> <b>Massimo</b>: trova il valore massimo all'interno dell'intervallo specificato.
+                </li>
+                <li> <b>Mediano</b>: trova il valore mediano all'interno dell'intervallo specificato.
+                </li>
+                <li> <b>Medio</b>: calcola il valore medio dell'intervallo specificato.
+                </li>
+                <li> <b>Somma</b>: calcola la somma delle variabili all'interno dell'intervallo specificato.
+                </li>
+                <li> <b>Maggioranza</b>: trova il valore che si verifica con pi&ugrave; frequenza.
+                </li>
+                <li> <b>Minoranza</b>: trova il valore che si verifica con meno frequenza.
+                </li>
+                <li> <b>Deviazione standard</b>: calcola la deviazione standard.
+                </li>
+                <li> <b>Percentile</b>: calcola un percentile definito all'interno dell'intervallo specificato.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valore percentile</h2></div>
+        <hr/>
+        <div>
+            <p>Il percentile da calcolare quando il parametro  <b>Tipo di statistiche</b> &egrave; impostato su <b>Percentile</b>.
+            </p>
+            <p>Questo valore pu&ograve; variare da 0 a 100. L'impostazione predefinita &egrave; 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Specificare la tecnica di ricampionamento</h2></div>
+        <hr/>
+        <div>
+            <p>Algoritmo di ricampionamento utilizzato per il campionamento di un raster.
+            </p>
+            <ul>
+                <li> <b>Pi&ugrave; vicino</b>: vicino pi&ugrave; vicino. Questa &egrave; l'impostazione predefinita.
+                </li>
+                <li> <b>Bilineare</b>: interpolazione bilineare
+                </li>
+                <li> <b>Cubica</b>: convoluzione cubica
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Specificare il layout di output</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i valori campionati appaiono in righe o colonne nella tabella di output. Questa opzione &egrave; disponibile solo quando il raster multidimensionale di input contiene una variabile e una dimensione e ogni sezione &egrave; un raster a banda singola.
+            </p>
+            <ul>
+                <li> <b>I valori campionati appaiono in riga</b>: i valori campionati appaiono in righe separate nella tabella di output. Questa &egrave; l'impostazione predefinita.
+                </li>
+                <li> <b>I valori campionati appaiono in colonna</b>: i valori campionati appaiono in colonne separate nella tabella di output. Questa opzione &egrave; valida solo quando il raster multidimensionale di input contiene una variabile e una dimensione, e ogni sezione &egrave; un raster a banda singola.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Specificare il tipo di output</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se generare una feature class puntuale con valori campionati nella sua tabella, o solo una tabella con valori campionati.
+            </p>
+            <ul>
+                <li> <b>Tabella</b>: generare una tabella con i valori campionati. Questa &egrave; l'impostazione predefinita.
+                </li>
+                <li> <b>Feature</b>: generare una feature class puntuale con valori campionati nella sua tabella. Se le feature di posizione di input sono polilinee o poligonali, ogni punto di output &egrave; il centroide di ogni geometria delle feature di posizione di input.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

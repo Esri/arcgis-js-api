@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Argumentstatistieken zoeken</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Argumentstatistieken zoeken"></h2>
+        <hr/>
+    <p>Extraheert de afmetingswaarde  of bandindex waarin een gegeven statistiek wordt verworven voor elke pixel in een multidimensionaal of multibandraster.
+    </p>
+    <p>Gebruik deze tool om de dimensiewaarde (bijvoorbeeld de datum, hoogte of diepte) te extraheren waarop een specifieke statistiek wordt bereikt in de stapel rasters in een multidimensionale rasterdataset. U kunt ook het bandnummer vinden waarop de statistiek wordt bereikt in een multibandraster.
+    </p>
+    <p>U wilt bijvoorbeeld weten in welke maand elke pixel de hoogste temperatuur van het zeeoppervlak heeft bereikt gedurende 30 jaar van dataverzameling. Een ander voorbeeld is dat u een achtbandig remote sensing-beeld hebt en wilt weten in welke band de minimale reflectiewaarde voor elke pixel is bereikt.
+    </p>
+    <p>Als de optie  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden variabelen of banden van de lagen die zichtbaar zijn in het huidige kaartextent geanalyseerd. Als de optie niet is aangevinkt, worden variabelen of banden van de volledige laag geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Kies voor een multidimensionale of multi-band beeldverwerkingslaag om te analyseren</h2></div>
+        <hr/>
+        <div>
+            <p>De ingevoerde multidimensionale of multiband raster om te analyseren.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Kies de dimensie waaruit de statistiek zal worden gehaald</h2></div>
+        <hr/>
+        <div>
+            <p>De dimensie waaruit de statistiek zal worden gehaald. Als het invoerraster geen multidimensionaal raster is, is deze parameter niet nodig.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Kies variabele(n) die worden geanalyseerd</h2></div>
+        <hr/>
+        <div>
+            <p>De te analyseren variabele of variabelen. Als het invoerraster niet multidimensionaal is, worden de pixelwaarden van het multibandraster als de variabele beschouwd. Als er geen variabele is gespecificeerd, worden alle variabelen met de geselecteerde afmeting geanalyseerd.
+            </p>
+            <p>Om bijvoorbeeld de jaren te vinden waarin de temperatuurwaarden het hoogst waren, geeft u de temperatuur op als de te analyseren variabele. Als u geen variabelen specificeert en u hebt temperatuur- en neerslagvariabelen, worden beide variabelen geanalyseerd en bevat het uitgevoerde multidimensionale raster beide variabelen.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Kies statistiektype</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de statistieken om te extraheren van de variabele of variabelen langs de gegeven dimensie. 
+            </p>
+            <ul>
+                <li> <b>Argument van het minimum</b>&mdash; De dimensiewaarde waarbij de minimale variabele waarde wordt bereikt zal worden ge&euml;xtraheerd. Dit is de standaardinstelling.
+                </li>
+                <li> <b>Argument van het maximum</b>&mdash; De dimensiewaarde waarbij de maximale variabele waarde wordt bereikt zal worden ge&euml;xtraheerd.
+                </li>
+                <li> <b>Argument van de mediaan</b>&mdash; De dimensiewaarde waarbij de mediaanvariabele waarde wordt bereikt zal worden ge&euml;xtraheerd.
+                </li>
+                <li> <b>Argument van de duur</b>&mdash; De langste dimensionale duur waarvoor de variabele waarden tussen de minimum- en maximumwaarden vallen.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Geef de waarde van het meervoudig voorkomen op</h2></div>
+        <hr/>
+        <div>
+            <p>De pixelwaarde die moet worden gebruikt om aan te geven dat een bepaalde argumentatiestatistiek meer dan eens werd bereikt in de ingevoerde rasterdataset. Indien niet gespecificeerd, zal de pixelwaarde de waarde van de dimensie zijn de eerste keer dat de argumentatiestatistiek wordt bereikt.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Geef de minimumwaarde op</h2></div>
+        <hr/>
+        <div>
+            <p>De minimale variabele waarde die moet worden gebruikt om de duur te bepalen.
+            </p>
+            <p>Deze parameter is vereist wanneer  <b>Duur</b> wordt geselecteerd als het statistiektype.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Geef de maximumwaarde op</h2></div>
+        <hr/>
+        <div>
+            <p>De maximale variabele waarde die gebruikt kan worden om de duur te bepalen.
+            </p>
+            <p>Deze stap is vereist wanneer  <b>Duur</b> wordt geselecteerd als het statistiektype.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Kies de dimensiedefinitie</h2></div>
+        <hr/>
+        <div>
+            <p>Geeft aan hoe de statistiek uit de dimensie zal worden gehaald. 
+                <ul>
+                    <li> <b>Alle</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd over alle dimensies. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Intervaltrefwoord</b>&mdash; De statistiek zal worden ge&euml;xtraheerd uit de tijdsdimensie volgens het intervaltrefwoord.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Trefwoordinterval kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>De eenheid van tijd waarvoor de statistiek zal worden ge&euml;xtraheerd.
+            </p>
+            <p>U hebt bijvoorbeeld vijf jaar aan dagelijkse gegevens over de temperatuur van het zeeoppervlak en wilt weten in welk jaar de maximumtemperatuur werd waargenomen. Stel   <b>Argument van het maximum</b> in als het statistiektype, stel <b>Intervaltrefwoord</b> in als de definitie van de dimensie en stel <b>Jaarlijks</b> in als de trefwoordinterval in deze stap.
+            </p>
+            <p>Als u wilt weten in welke maand de maximale temperatuur consequent werd waargenomen, stelt u  <b>Argument van het maximum</b> in als het statistiektype, stelt u het <b>Intervaltrefwoord</b> in als de dimensiedefinitie, en stelt u <b>Maandelijks terugkerend</b> in als de trefwoordinterval in deze stap. Dit zal een raster genereren waarin elke pixel de maand bevat waarin de statistiek werd bereikt over het vijfjarige record (bijvoorbeeld 08/18/2018, 08/25/2016, 08/07/2013).
+            </p>
+            <p>Deze stap is nodig wanneer  <b>StdTijd</b> is ingesteld als de dimensie waaruit de statistiek zal worden ge&euml;xtraheerd, en <b>Intervaltrefwoord</b> is geselecteerd om te defini&euml;ren hoe de statistiek zal worden ge&euml;xtraheerd uit de tijdsdimensie.
+                <ul>
+                    <li> <b>Dagelijks terugkerend</b>&mdash; De statistieken zullen over dagen worden ge&euml;xtraheerd.
+                    </li>
+                    <li> <b>Wekelijks terugkerend</b>&mdash; De statistieken zullen over weken worden ge&euml;xtraheerd.
+                    </li>
+                    <li> <b>Maandelijks terugkerend</b>&mdash; De statistieken zullen over maanden worden ge&euml;xtraheerd.
+                    </li>
+                    <li> <b>Driemaandelijks terugkerend</b>&mdash; De statistieken zullen over elk kwartaal worden ge&euml;xtraheerd.
+                    </li>
+                    <li> <b>Per uur</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor het uur waarin de statistiek werd bereikt.
+                    </li>
+                    <li> <b>Dagelijks</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor de dag waarop de statistiek werd bereikt.
+                    </li>
+                    <li> <b>Wekelijks</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor de week waarin de statistiek werd bereikt.
+                    </li>
+                    <li> <b>Maandelijks</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor de maand waarin de statistiek werd bereikt.
+                    </li>
+                    <li> <b>Driemaandelijks</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor het kwartaal waarin de statistiek werd bereikt.
+                    </li>
+                    <li> <b>Jaarlijks</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd voor het jaar waarin de statistiek werd bereikt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse.
+                <ul>
+                    <li>Als het vakje is aangevinkt, zal de analyse alle geldige pixels in een gegeven dimensie bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
+                    </li>
+                    <li>Als het vakje niet is aangevinkt, zal de analyse resulteren in NoData als er NoData-waarden zijn voor de pixels in de gegeven dimensie.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

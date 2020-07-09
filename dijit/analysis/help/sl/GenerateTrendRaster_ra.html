@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ustvari raster trenda</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Ustvari raster trenda"></h2>
+        <hr/>
+    <p>Oceni trend za vsak piksel vzdolž dimenzije za eno ali več spremenljivk v večdimenzionalnem rastru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izberi večdimenzionalni slikovni sloj za analizo trenda</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Vhodni slikovni sloj večdimenzionalnega rastra, ki bo analiziran.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Izberi dimenzijo, vzdolž katere bo analiziran trend spremenljivke</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija vzdolž katere bo ekstrahiran trend za spremenljivko ali spremenljivke, izbrane v analizi.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izberi spremenljivko(-e) za analizo trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Spremenljivka ali spremenljivke za katere bodo izračunani trendi. Če ni določene nobene spremenljive, bo analizirana prva spremenljivka v večdimenzionalnem rastru.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Izberi tip linije za prilagajanje vrednostim spremenljivke vzdolž dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Določa tip linije, ki bo uporabljena za prilagajanje vrednostim piksla vzdolž dimenzije. 
+                <ul>
+                    <li> <b>Linearno</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije linearnega trenda. To je privzeta nastavitev.
+                    </li>
+                    <li> <b>Polinomsko</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije trenda polinoma druge stopnje.
+                    </li>
+                    <li> <b>Harmonsko</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije harmonskega trenda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Določi dolžino harmonskega cikla</h2></div>
+        <hr/>
+        <div>
+            <p>Dolžina periodične spremembe na modelu. Ta parameter je obvezen, ko je tip linije trende nastavljen na  <b>Harmonsko</b>. Na primer, zelenost listja ima v enem letu en močan cikel spremembe, zato je dolžina cikla 1 leto. Urni podatki o temperaturi imajo en močan cikel spremembe skozi posamezen dan, zato je dolžina cikla 1 dan.
+            </p>
+            <p>Privzeta dolžina je 1 leto za podatke, ki se spreminjajo skozi letni cikel.
+            </p>
+            <p>Ta parameter je vključen v analizo trenda samo, kadar je analizirana dimenzija čas in je tip linije trenda nastavljen na  <b>Harmonsko</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Izberi časovno enoto za dolžino harmonskega cikla</h2></div>
+        <hr/>
+        <div>
+            <p>Določi časovno enoto, ki bo uporabljena za dolžino harmonskega cikla.
+                <ul>
+                    <li> <b>Dnevi</b> &ndash; Enota za dolžino harmonskega cikla so dnevi.
+                    </li>
+                    <li> <b>Leta</b> &ndash; Enota za dolžino harmonskega cikla so leta. To je privzeta nastavitev.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ta parameter je vključen v analizo trenda samo, kadar je analizirana dimenzija čas in je tip linije trenda nastavljen na  <b>Harmonsko</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Določi število pogostosti za prilagajanje harmonskega trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Pogostost, ki se uporabi pri prilagajanju harmonskega trenda. Ta parameter določa pogostost ciklov v letu.
+            </p>
+            <p>Privzeta vrednost je 1 ali en harmonski cikel na leto.
+            </p>
+            <p>Ta parameter je vključen v analizo trenda samo, kadar je analizirana dimenzija čas.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Določi številko polinomnega vrstnega reda za prilagajanje trenda</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;tevilka polinomnega vrstnega reda, ki se uporabi pri prilagajanju harmonskega trenda.
+            </p>
+            <p>Ta parameter je vključen v analizo trenda samo, kadar je analizirana dimenzija čas.
+            </p>
+            <p>Privzeta vrednost je 2 ali polinom drugega reda.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Izberi statistiko modela, ki bo vključena v raster trenda</h2></div>
+        <hr/>
+        <div>
+            <p>To orodje zagotavlja tri tipe statistike za linijo prilagajanja trenda: koren povprečne kvadratne napake (RMSE), R-kvadrat statistike dobrega prileganja (R-kvadrat) in statistika p-vrednosti za koeficient naklona (P-vrednost koeficienta naklona). Vsaka statistika ima ustrezno izbirno polje, kjer lahko določite ali bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Obkljukano &ndash; RMSE bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda. To je privzeta nastavitev.
+                            </li>
+                            <li>Odkljukano &ndash; RMSE ne bo izračunan.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kvadrat
+                        </p>
+                        <ul>
+                            <li>Obkljukano &ndash; Vrednost R-kvadrat bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda.
+                            </li>
+                            <li>Odkljukano &ndash; Vrednost R-kvadrat ne bo izračunana. To je privzeta nastavitev.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-vrednost koeficienta naklona
+                        </p>
+                        <ul>
+                            <li>Obkljukano &ndash; P-vrednost bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda.
+                            </li>
+                            <li>Odkljukano &ndash; P-vrednost ne bo izračunana. To je privzeta nastavitev.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Prezri manjkajoče vrednosti v izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti.
+                <ul>
+                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    </li>
+                    <li>Odkljukano&mdash;Rezultat analize bo brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Ime sloja z rezultati</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

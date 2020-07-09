@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite geoobjekte za isecanje",filterSelectLabel:"Isecite sve geoobjekte ili definišite podskup (opciono)",targetArea:"Odaberite oblast prema kojoj ćete izvršiti isecanje",outputLayerName:"Isecite ${inputLayerName} prema ${clipLayerName}",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Isecanja. Geoobjekti iz ${inputLayerName} su isečeni prema ${clipLayerName}.",itemTags:"Rezultat analize, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Sloj geoobjekata nastao iz zadatka Iseci sloj"});

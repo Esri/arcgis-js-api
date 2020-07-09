@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Prognozēt, izmantojot tendenču rastru</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prognozēt, izmantojot tendenču rastru"></h2>
+        <hr/>
+    <p>Aprēķina prognozēto multidimensiju rastru, izmantojot rīka  Ģenerēt tendenču rastru izvades tendenču rastru.
+    </p>
+    <p>Ja ir atzīmēta opcija  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tā slāņa mainīgie, kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja &scaron;ī opcija nav atzīmēta, tiks analizēti pilna slāņa mainīgie, pat ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izvēlēties prognozēšanai multidimensiju attēlu slāni</h2></div>
+        <hr/>
+        <div>
+            <p>Ievades multidimensiju tendences rastrs no rīka  Ģenerēt tendenču rastru.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izvēlēties prognozējamos mainīgos</h2></div>
+        <hr/>
+        <div>
+            <p>Mainīgais vai mainīgie, kas tiks prognozēti analīzē. Ja nav norādīts neviens mainīgais, tiks izmantoti visi mainīgie.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Izvēlēties metodi, kas izmantojama, lai nodrošinātu dimensijas prognožu vērtības</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda metodi, kas izmantojama, lai nodro&scaron;inātu dimensijas prognožu vērtības.
+                <ul>
+                    <li> <b>Pēc vērtības</b>&nbsp;&mdash; prognoze tiks aprēķināta vienai dimensijas vērtībai vai dimensijas vērtību sarakstam, kas norādīts nākamajā darbībā. Tā ir noklusējuma vērtība. Piemēram: jūs vēlaties veikt ikgadēju nokri&scaron;ņu prognozi 2050., 2100. un 2150. gadam.
+                    </li>
+                    <li> <b>Pēc intervāla</b>&nbsp;&mdash; prognoze tiks aprēķināta sākuma un beigu vērtības norādītam dimensijas intervālam. Piemēram: jūs vēlaties veikt ikgadēju nokri&scaron;ņu prognozi laika posmā no 2050. līdz 2150. gadam.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Norādīt prognozes dimensijas vērtību(-as)</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensijas vērtība vai vērtības, kas jāizmanto prognozē.
+            </p>
+            <p>Laika, dziļuma un augstuma vērtību formātam jāatbilst tam dimensijas vērtību formātam, kas izmantots tendenču rastra ģenerē&scaron;anai. Ja tendenču rastrs tika ģenerēts StdTime dimensijai, formātam jābūt GGGG-MM-DDTHH:MM:SS, piemēram, 2050-01-01T00:00:00. Vairākas vērtības tiek atdalītas ar semikolu.
+            </p>
+            <p>&Scaron;is parametrs ir nepiecie&scaron;ams, kad atlasāt metodi  <b>Pēc vērtības</b>, lai norādītu dimensijas vērtības prognozei.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Norādīt dimensijas intervālu prognozei</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet dimensijas intervāla sākuma un beigu datumu, augstumu vai dziļumu, kas jāizmanto prognozē.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Norādīt soļu skaitu starp sākuma un beigu vērtībām</h2></div>
+        <hr/>
+        <div>
+            <p>Darbību skaits starp divām dimensijas vērtībām, kas jāiekļauj prognozē. Noklusējuma vērtība ir 1.
+            </p>
+            <p>Piemēram: lai prognozētu temperatūras vērtības ik pēc pieciem gadiem, izmantojiet vērtību&nbsp;5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Izvēlēties mērvienību, kas tiks izmantota laika vērtību intervālam</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda mērvienību, kas tiks izmantota vērtību intervālam. Tas ir spēkā tikai tad, ja analīzes dimensija ir laika dimensija.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

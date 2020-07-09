@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů aktu&aacute;lně dostupn&eacute; přes  Portal for ArcGIS webovou uživatelskou službu  <b>Shrnout data</b>, <b>Anal&yacute;za prostorov&eacute;ho uspoř&aacute;d&aacute;n&iacute;</b>, <b>Obalov&eacute; z&oacute;ny, vzd&aacute;lenost</b>, <b>Analyzovat sn&iacute;mek</b>, <b>Analyzovat ter&eacute;n</b>, <b>Spravovat data</b>, and <b>Deep Learning</b>.
+        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů aktu&aacute;lně dostupn&eacute; přes  Portal for ArcGIS webovou uživatelskou službu jsou  <b>Shrnout data</b>, <b>Anal&yacute;za prostorov&eacute;ho uspoř&aacute;d&aacute;n&iacute;</b>, <b>Obalov&eacute; z&oacute;ny, vzd&aacute;lenost,</b> <b>Analyzovat sn&iacute;mek</b>, <b>Analyzovat ter&eacute;n</b>, <b>Spravovat data</b>, <b>Deep Learning</b>a <b>V&iacute;cerozměrn&aacute; anal&yacute;za</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,9 +186,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Stanovit cestovní náklady tras jako polylinii (Determine Travel Cost Path As Polyline)</h2></td>
+                    <td><h2>Stanovit nejméně nákladnou trasu jako linii (Determine Travel Cost Path As Polyline)</h2></td>
                     <td>
-                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Obr&aacute;zek n&aacute;stroje Stanovit cestovn&iacute; n&aacute;klady tras jako polylinii">
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Obr&aacute;zek n&aacute;stroje Stanovit nejm&eacute;ně n&aacute;kladnou trasu jako linii">
                     </td>
                 </tr></tbody>
             </table>
@@ -327,7 +327,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Spravovat data</h2>
         <hr/>
         <p>Tyto n&aacute;stroje lze použ&iacute;t pro každodenn&iacute; spr&aacute;vu geografick&yacute;ch dat a pro kombinov&aacute;n&iacute; dat před anal&yacute;zou. 
@@ -347,6 +347,8 @@
                 <li>N&aacute;stroj  <b>Přev&eacute;st rastr na prvek</b> měn&iacute; rastrov&aacute; data na vektory.
                     
 
+                </li>
+                <li> <b>Vzorek</b> extrahuje data v definovan&yacute;ch um&iacute;stěn&iacute;ch z rastru nebo sady rastrů.
                 </li>
             </ul>
             
@@ -401,7 +403,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Převést rastr na prvek (Convert Raster to Feature)</h2></td>
+                    <td><h2>Převést rastr na prvek (Convert Raster To Feature)</h2></td>
                     <td>
                     <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="N&aacute;stroj Přev&eacute;st rastr na prvek">
                     </td>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vzorek (Sample)</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Vzorek">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vytv&aacute;ř&iacute; tabulku nebo tř&iacute;du bodov&yacute;ch prvků s datov&yacute;mi hodnotami extrahovan&yacute;mi z rastru nebo sady rastrů v definovan&yacute;ch um&iacute;stěn&iacute;ch.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Sada nástrojů Deep Learningu</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>Tyto n&aacute;stroje detekuj&iacute; specifick&eacute; prvky na sn&iacute;mku nebo klasifikuj&iacute; pixely v rastrov&eacute; datov&eacute; sadě. Deep learning je typem metody strojov&eacute;ho učen&iacute; uměl&eacute; inteligence, kter&aacute; detekuje prvky na sn&iacute;mc&iacute;ch pomoc&iacute; v&iacute;ce vrstev v neutr&aacute;ln&iacute;ch s&iacute;t&iacute;ch, kde každ&aacute; vrstva je schopna extrahovat jeden nebo v&iacute;ce jedinečn&yacute;ch prvků na sn&iacute;mku. Tento n&aacute;stroj využ&iacute;v&aacute; modely, kter&eacute; byly učeny pro detekov&aacute;n&iacute; prvků v programech deep learningu třet&iacute; strany&mdash;jako např&iacute;klad TensorFlow, CNTK a Keras&mdash;a v&yacute;stupn&iacute; prvky nebo mapy tř&iacute;dy.
+        <p>Tyto n&aacute;stroje se použ&iacute;vaj&iacute; pro detekci nebo klasifikaci specifick&yacute;ch prvků na sn&iacute;mku nebo klasifikaci pixelů v rastrov&eacute; datov&eacute; sadě. Deep learning je typem metody strojov&eacute;ho učen&iacute; uměl&eacute; inteligence, kter&aacute; detekuje prvky na sn&iacute;mc&iacute;ch pomoc&iacute; v&iacute;ce vrstev v neur&aacute;ln&iacute;ch s&iacute;t&iacute;ch, kde každ&aacute; vrstva je schopna extrahovat jeden nebo v&iacute;ce jedinečn&yacute;ch prvků na sn&iacute;mku. Tento n&aacute;stroj využ&iacute;v&aacute; modely, kter&eacute; byly učeny pro detekov&aacute;n&iacute; prvků v programech deep learningu třet&iacute; strany&mdash;jako např&iacute;klad TensorFlow, CNTK a Keras&mdash;a v&yacute;stupn&iacute; prvky nebo mapy tř&iacute;dy.
             <ul>
                 <li> <b>Klasifikovat pixely pomoc&iacute; deep learningu (Classify Pixels Using Deep Learning)</b> vytv&aacute;ř&iacute; rastr pomoc&iacute; učen&eacute;ho modelu deep learningu.
                 </li>
                 <li> <b>Detekovat objekty pomoc&iacute; deep learningu (Detect Objects Using Deep Learning)</b> vytv&aacute;ř&iacute; tř&iacute;du prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne ve vstupn&iacute;m rastru pomoc&iacute; učen&eacute;ho modelu deep learningu.
                 </li>
+                <li> <b>Klasifikovat pixely pomoc&iacute; deep learningu (Classify Pixels Using Deep Learning)</b> vytv&aacute;ř&iacute; tř&iacute;du prvků nebo tabulku, ve kter&eacute; je každ&eacute;mu vstupn&iacute;mu objektu ve vstupn&iacute;m rastru přiřazeno pojmenov&aacute;n&iacute; tř&iacute;dy pomoc&iacute; učen&eacute;ho modelu deep learningu.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Spust&iacute; model &scaron;kolen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; klasifikovan&eacute;ho rastru se tř&iacute;dou popisků přiřazenou ke každ&eacute;mu platn&eacute;mu pixelu.
+            <p>Tento n&aacute;stroj spust&iacute; model učen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; klasifikovan&eacute;ho rastru se tř&iacute;dou popisků přiřazenou ke každ&eacute;mu platn&eacute;mu pixelu.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Spust&iacute; model &scaron;kolen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; tř&iacute;dy prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne. Prvky mohou b&yacute;t ohraničuj&iacute;c&iacute; v&yacute;řezy nebo polygony kolem nalezen&yacute;ch objektů, nebo body ve středech objektů.
+            <p>Tento n&aacute;stroj spust&iacute; model učen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; tř&iacute;dy prvků obsahuj&iacute;c&iacute; objekty, kter&eacute; nalezne. Prvky mohou b&yacute;t ohraničuj&iacute;c&iacute; v&yacute;řezy nebo polygony kolem nalezen&yacute;ch objektů, nebo body ve středech objektů.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasifikovat objekty pomocí deep learningu (Classify Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasifikovat objekty pomoc&iacute; deep learningu (Classify Objects Using Deep Learning)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj spust&iacute; naučen&yacute; model deep learningu na vstupn&iacute;m rastru a voliteln&eacute; tř&iacute;dě prvků za &uacute;čelem vytvořen&iacute; tř&iacute;dy prvků nebo tabulky, v n&iacute;ž m&aacute; každ&yacute; vstupn&iacute; objekt přiřazenou tř&iacute;du popisků.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Vícerozměrná analýza</h2>
+        <hr/>
+        <p>N&aacute;stroje v sadě n&aacute;strojů V&iacute;cerozměrn&eacute; anal&yacute;zy v&aacute;m umožňuj&iacute; prov&aacute;dět anal&yacute;zu vědeck&yacute;ch dat za použit&iacute; mnoha proměnn&yacute;ch a rozměrů.
+        </p>
+        <p>V&iacute;cerozměrn&aacute; data představuj&iacute; data poř&iacute;zen&aacute; ve v&iacute;ce (různ&yacute;ch) časech, hloubk&aacute;ch nebo v&yacute;&scaron;k&aacute;ch. Tento typ dat se běžně použ&iacute;v&aacute; v meteorologii, oce&aacute;nografii a dal&scaron;&iacute;ch věd&aacute;ch o Zemi. Pomoc&iacute; t&eacute;to sady n&aacute;strojů můžete spravovat, vizualizovat a analyzovat v&iacute;cerozměrn&aacute; rastrov&aacute; data v mnoha form&aacute;tech včetně netCDF, HDF, GRIB, v&iacute;cerozměrn&eacute; mozaikov&eacute; datov&eacute; sady a form&aacute;tu CRF (Cloud Raster Format) od společnosti Esri.
+        </p>
+        <p>V n&aacute;sleduj&iacute;c&iacute; tabulce jsou uvedeny n&aacute;stroje v&iacute;cerozměrn&eacute; anal&yacute;zy a jejich stručn&yacute; popis.
+            <ul>
+                <li>N&aacute;stroj  <b>Agregovat v&iacute;cerozměrn&yacute; rastr</b> vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru agregac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru v rozměru.
+                </li>
+                <li>N&aacute;stroj  <b>Generovat v&iacute;cerozměrnou anom&aacute;lii</b> vypoč&iacute;t&aacute; anom&aacute;lii pro každ&yacute; v&yacute;řez ve v&iacute;cerozměrn&eacute;m rastru a vygeneruje v&iacute;cerozměrn&yacute; rastr.
+                </li>
+                <li> <b>Generovat rastr trendu</b> odhaduje trend pro každ&yacute; pixel pod&eacute;l rozměru pro jedno nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru.
+                </li>
+                <li> <b>Předpověď pomoc&iacute; rastru trendu</b> vypoč&iacute;t&aacute; předpokl&aacute;dan&yacute; v&iacute;cerozměrn&yacute; rastr pomoc&iacute; v&yacute;stupn&iacute;ho rastru trendu z n&aacute;stroje <b>Generovat rastr trendu</b>.
+                </li>
+                <li> <b>Naj&iacute;t statistiku argumentu</b> extrahuje hodnotu rozměru nebo indexu p&aacute;sma, ve kter&eacute; je vytvořena dan&aacute; statistika pro každ&yacute; pixel ve v&iacute;cerozměrn&eacute;m nebo v&iacute;cep&aacute;smov&eacute;m rastru.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregovat vícerozměrný rastr (Aggregate Multidimensional Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregovat v&iacute;cerozměrn&yacute; rastr">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru agregac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru v rozměru.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Najít statistiku argumentu (Find Argument Statistics)</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Naj&iacute;t statistiku argumentů">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj extrahuje hodnotu rozměru nebo indexu p&aacute;sma, ve kter&eacute; je vytvořena dan&aacute; statistika pro každ&yacute; pixel ve v&iacute;cerozměrn&eacute;m nebo v&iacute;cep&aacute;smov&eacute;m rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generovat vícerozměrnou anomálii (Generate Multidimensional Anomaly)</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generovat v&iacute;cerozměrnou anom&aacute;lii">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; anom&aacute;lii pro každ&yacute; v&yacute;řez ve v&iacute;cerozměrn&eacute;m rastru a vygeneruje v&iacute;cerozměrn&yacute; rastr.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generovat rastr trendu (Generate Trend Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generovat rastr trendu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj odhaduje trend pro každ&yacute; pixel pod&eacute;l rozměru pro jedno nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Předpověď pomocí rastru trendu (Predict Using Trend Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Předpověď pomoc&iacute; rastru trendu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; předpokl&aacute;dan&yacute; v&iacute;cerozměrn&yacute; rastr pomoc&iacute; v&yacute;stupn&iacute;ho rastru trendu z n&aacute;stroje  <b>Generovat rastr trendu</b>.
             </p>
             <br/>
         </div>

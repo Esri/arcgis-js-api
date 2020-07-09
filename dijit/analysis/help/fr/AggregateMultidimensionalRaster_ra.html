@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agréger un raster multidimensionnel</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agr&eacute;ger un raster multidimensionnel"></h2>
+        <hr/>
+    <p>G&eacute;n&egrave;re un jeu de donn&eacute;es raster multidimensionnelles en associant des variables du raster multidimensionnel existant selon une dimension.
+    </p>
+    <p>Si vous disposez de 30&nbsp;ans de donn&eacute;es de temp&eacute;rature de surface des oc&eacute;ans, collect&eacute;es tous les mois et tous les 5&nbsp;m&egrave;tres jusqu&rsquo;&agrave; 100&nbsp;m&egrave;tres de profondeur, voici quelques exemples d&rsquo;applications&nbsp;:
+        <ul>
+            <li>Agr&eacute;ger les donn&eacute;es de temp&eacute;rature mensuelles en donn&eacute;es annuelles.
+            </li>
+            <li>Agr&eacute;ger les donn&eacute;es de temp&eacute;rature mensuelles en intervalles de 4&nbsp;mois.
+            </li>
+            <li>Agr&eacute;ger les donn&eacute;es de temp&eacute;rature de 0 &agrave; 25&nbsp;m&egrave;tres, puis de 25 &agrave; 50&nbsp;m&egrave;tres, puis de 50 &agrave; 100&nbsp;m&egrave;tres.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue courante de la carte)</b> est s&eacute;lectionn&eacute;e, les variables de la couche qui sont visibles au sein de l&rsquo;&eacute;tendue courante de la carte sont analys&eacute;es. Si cette option n&rsquo;est pas s&eacute;lectionn&eacute;e, les variables de toute la couche sont analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l&rsquo;&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Choisir la couche d’imagerie multidimensionnelle à agréger</h2></div>
+        <hr/>
+        <div>
+            <p>Couche d&rsquo;imagerie en entr&eacute;e d&rsquo;un raster multidimensionnel &agrave; agr&eacute;ger.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Choisir la dimension le long de laquelle réaliser l’agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>Dimension de l&rsquo;agr&eacute;gation. Il s&rsquo;agit de la dimension le long de laquelle les variables sont agr&eacute;g&eacute;es.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Choisir la ou les variables à agréger</h2></div>
+        <hr/>
+        <div>
+            <p>La variable ou les variables qui sont agr&eacute;g&eacute;es selon la dimension donn&eacute;e. Si aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, toutes les variables avec la dimension s&eacute;lectionn&eacute;e sont agr&eacute;g&eacute;es.
+            </p>
+            <p>Ainsi, pour agr&eacute;ger vos temp&eacute;ratures quotidiennes dans des valeurs moyennes mensuelles, sp&eacute;cifiez la temp&eacute;rature comme la variable &agrave; agr&eacute;ger. Si vous ne sp&eacute;cifiez aucune variable et que vous poss&eacute;dez des variables de pr&eacute;cipitation quotidiennes et des temp&eacute;ratures quotidiennes, ces deux variables sont agr&eacute;g&eacute;es en moyennes mensuelles&nbsp;; le raster multidimensionnel en sortie inclut alors les deux variables.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Choisir la méthode d’agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>Indique la m&eacute;thode math&eacute;matique qui est utilis&eacute;e pour combiner les tranches agr&eacute;g&eacute;es dans un intervalle. 
+                <ul>
+                    <li> <b>Mean (Moyenne)</b>&nbsp;: calcule la moyenne des valeurs d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Maximum</b>&nbsp;: calcule la valeur maximale d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Majority (Majorit&eacute;)</b>&nbsp;: calcule la valeur qui est apparue le plus fr&eacute;quemment pour un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Minimum</b>&nbsp;: calcule la valeur minimale d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Minority (Minorit&eacute;)</b>&nbsp;: calcule la valeur qui est apparue le moins fr&eacute;quemment sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Median (M&eacute;diane)</b>&nbsp;: calcule la valeur m&eacute;diane d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Range (Plage)</b>&nbsp;: calcule la plage de valeurs pour un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Standard Deviation (&Eacute;cart type)</b>&nbsp;: calcule l&rsquo;&eacute;cart type des valeurs d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Sum (Somme)</b>&nbsp;: calcule la somme des valeurs d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Variety (Vari&eacute;t&eacute;)</b>&nbsp;: calcule le nombre de valeurs uniques d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Custom (Personnalis&eacute;)</b>&nbsp;: calcule la valeur d&rsquo;un pixel reposant sur la fonction raster personnalis&eacute;e.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Choisir le modèle de fonction raster</h2></div>
+        <hr/>
+        <div>
+            <p>Fonction raster personnalis&eacute;e utilis&eacute;e pour calculer les valeurs de pixels des rasters agr&eacute;g&eacute;s. L&rsquo;entr&eacute;e est un &eacute;l&eacute;ment de mod&egrave;le de fonction raster dans le portail. Cette entr&eacute;e est requise lorsque le param&egrave;tre  <b>Aggregation Method (M&eacute;thode d&rsquo;agr&eacute;gation)</b> est d&eacute;fini sur <b>Custom (Personnalis&eacute;)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Choisir la définition d’agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie l&rsquo;intervalle dimensionnel selon lequel les donn&eacute;es sont agr&eacute;g&eacute;es. 
+                <ul>
+                    <li> <b>All (Toutes)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es &agrave; travers toutes les coupes. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Interval Keyword (Mot-cl&eacute; de l&rsquo;intervalle)</b>&nbsp;: les donn&eacute;es des variables sont agr&eacute;g&eacute;es &agrave; l&rsquo;aide d&rsquo;un intervalle courant connu.
+                    </li>
+                    <li> <b>Interval Value (Valeurs d&rsquo;intervalle)</b>&nbsp;: les donn&eacute;es des variables sont agr&eacute;g&eacute;es &agrave; l&rsquo;aide d&rsquo;un intervalle et d&rsquo;une unit&eacute; d&eacute;finis par l&rsquo;utilisateur.
+                    </li>
+                    <li> <b>Interval Ranges (Plages d&rsquo;intervalles)</b>&nbsp;: les donn&eacute;es des variables sont agr&eacute;g&eacute;es entre les paires de valeurs ou de dates sp&eacute;cifi&eacute;es.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Choisir le mot-clé de l’intervalle</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le mot-cl&eacute; de l&rsquo;intervalle &agrave; utiliser lors de l&rsquo;agr&eacute;gation le long de la dimension. Cette entr&eacute;e est requise lorsque la valeur de  <b>Aggregation Definition (D&eacute;finition d&rsquo;agr&eacute;gation)</b> est <b>Interval Keyword (Intervalle de mot-cl&eacute;)</b> et que l&rsquo;agr&eacute;gation doit s&rsquo;effectuer sur le temps.
+                <ul>
+                    <li> <b>Hourly (Horaire)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles horaires et le r&eacute;sultat comprend chaque heure de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Daily (Quotidien)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles quotidiens et le r&eacute;sultat comprend chaque jour de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Weekly (Hebdomadaire)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles hebdomadaires et le r&eacute;sultat comprend chaque semaine de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Monthly (Mensuel)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles mensuels et le r&eacute;sultat comprend chaque mois de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Quarterly (Trimestriel)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles trimestriels et le r&eacute;sultat comprend chaque trimestre de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Yearly (Annuel)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles annuels et le r&eacute;sultat comprend chaque ann&eacute;e de la s&eacute;rie chronologique.
+                    </li>
+                    <li> <b>Recurring Daily (Tous les jours)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles quotidiens et le r&eacute;sultat comprend une valeur agr&eacute;g&eacute;e par jour julien. Le r&eacute;sultat comprend 366 tranches de temps quotidiennes au maximum.
+                    </li>
+                    <li> <b>Recurring Weekly (Toutes les semaines)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles hebdomadaires et le r&eacute;sultat comprend une valeur agr&eacute;g&eacute;e par semaine. Le r&eacute;sultat comprend 53 tranches de temps hebdomadaires au maximum.
+                    </li>
+                    <li> <b>Recurring Monthly (Tous les mois)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles hebdomadaires et le r&eacute;sultat comprend une valeur agr&eacute;g&eacute;e par mois. Le r&eacute;sultat comprend 12 tranches de temps mensuelles au maximum.
+                    </li>
+                    <li> <b>Recurring Quarterly (Tous les trimestres)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles hebdomadaires et le r&eacute;sultat comprend une valeur agr&eacute;g&eacute;e par trimestre. Le r&eacute;sultat comprend 4 tranches de temps trimestrielles au maximum.
+                    </li>
+                    <li> <b>Dekadly (Tous les 10&nbsp;jours)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es en 3&nbsp;p&eacute;riodes de 10&nbsp;jours chacune. La derni&egrave;re p&eacute;riode peut contenir plus ou moins de 10 jours. La sortie comprend 3 tranches pour chaque mois.
+                    </li>
+                    <li> <b>Pentadly (Tous les 5&nbsp;jours)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es en 6&nbsp;p&eacute;riodes de 5&nbsp;jours chacune. La derni&egrave;re p&eacute;riode peut contenir plus ou moins de 5 jours. La sortie comprend 6 tranches pour chaque mois.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Valeur de l’intervalle</h2></div>
+        <hr/>
+        <div>
+            <p>Taille de l&rsquo;intervalle &agrave; appliquer &agrave; l&rsquo;agr&eacute;gation. Ce param&egrave;tre est obligatoire si le param&egrave;tre  <b>Aggregation Definition (D&eacute;finition de l&rsquo;agr&eacute;gation)</b> est d&eacute;fini sur <b>Interval Value (Valeur de l&rsquo;intervalle)</b>.
+            </p>
+            <p>Par exemple, pour agr&eacute;ger 30&nbsp;ann&eacute;es de donn&eacute;es de temp&eacute;rature mensuelles, par incr&eacute;ments de 5&nbsp;ans, tapez 5 comme  <b>Value Interval (Intervalle de la valeur)</b> et sp&eacute;cifiez <b>Years (Ann&eacute;es)</b> pour <b>Unit (Unit&eacute;)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unité</h2></div>
+        <hr/>
+        <div>
+            <p>Unit&eacute; utilis&eacute;e pour la valeur de l&rsquo;intervalle. Cette entr&eacute;e est requise lorsque  <b>Dimension</b> est un champ de temps et que la valeur de <b>Aggregation Definition (D&eacute;finition d&rsquo;agr&eacute;gation)</b> est <b>Interval Value (Valeur de l&rsquo;intervalle)</b>.
+            </p>
+            <p>Si vous proc&eacute;dez &agrave; une agr&eacute;gation sur une dimension autre que temporelle, cette option n&rsquo;est pas disponible et l&rsquo;unit&eacute; de la valeur de l&rsquo;intervalle correspond &agrave; l&rsquo;unit&eacute; de variable des donn&eacute;es raster multidimensionnelles en entr&eacute;e. 
+                <ul>
+                    <li> <b>Hours (Heures)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es par tranches horaires suivant l&rsquo;intervalle fourni.
+                    </li>
+                    <li> <b>Days (Jours)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es par tranches quotidiennes suivant l&rsquo;intervalle fourni.
+                    </li>
+                    <li> <b>Weeks (Semaines)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es par tranches hebdomadaires suivant l&rsquo;intervalle fourni.
+                    </li>
+                    <li> <b>Months (Mois)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es par tranches mensuelles suivant l&rsquo;intervalle fourni.
+                    </li>
+                    <li> <b>Years (Ann&eacute;es)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es par tranches annuelles suivant l&rsquo;intervalle fourni.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Définir les plages</h2></div>
+        <hr/>
+        <div>
+            <p>Des plages d&rsquo;intervalles sont utilis&eacute;es pour agr&eacute;ger des groupes de valeurs. Elles se composent de paires de valeurs de plage minimales et maximales, dont le type de donn&eacute;es est Double ou Date. Cette entr&eacute;e est requise lorsque le param&egrave;tre  <b>Aggregation Definition (D&eacute;finition d&rsquo;agr&eacute;gation)</b> est d&eacute;fini sur <b>Interval Ranges (Plages d&rsquo;intervalles)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer les valeurs manquantes dans le calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse. 
+                <ul>
+                    <li>Activ&eacute;&nbsp;: l&rsquo;analyse inclut tous les pixels valides selon une dimension donn&eacute;e et ignore les pixels NoData. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li>D&eacute;sactiv&eacute;&nbsp;: le r&eacute;sultat de l&rsquo;analyse est NoData s&rsquo;il existe des valeurs NoData pour le pixel le long de la dimension donn&eacute;e.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

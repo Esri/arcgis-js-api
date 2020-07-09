@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Odaberite raster lokacije geoobjekata da biste izračunali rastojanje do</h2></div>
+        <div><h2>Odaberite sloj lokacije rastera ili geoobjekta od kojeg želite da izračunate rastojanje</h2></div>
         <hr/>
         <div>
             <p>Sloj koji defini&scaron;e izvore do kojih će rastojanje biti izračunato. Sloj može da bude servis snimka ili servis geoobjekata.
@@ -137,6 +137,47 @@
             <p>Polje na ulaznom sloju izvora koje sadrži vrednosti koje defini&scaron;u svaki izvor. Može da bude ceo broj ili polje niske skupa podataka izvora.
             </p>
             <p>Podrazumevano je  <i>Value</i>. Ako se koristi servis geoobjekata i polje <i>Value</i> nije dostupno, onda će prvi dostupan ceo broj ili olje niske biti kori&scaron;ćeno. Ako ne postoje validna polja, biće kori&scaron;ćeno ObjectID polje (na primer OID ili FID, u zavisnosti od tipa ulaznih geoobjekata).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Odaberite sloj rastera ili geoobjekta da biste predstavili barijere</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji defini&scaron;e barijere. 
+            </p>
+            <p>Za servis snimka, ulazni tip može da bude ceo broj ili pokretni zarez. Sve ćelije koje imaju vrednost (uključujući nulu) će se tretirati kao barijere, sve ćelije koje su tipa NoData (bez podataka) se neće tretirati kao barijere.
+            </p>
+            <p>Za servis geoobjekata, unos može da bude tačka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metod rastojanja</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje da li rastojanje treba izračunati kori&scaron;ćenjem planarnog (ravna zemlja) ili geodetskog (elipsoid) metoda.
+            </p>
+            <ul>
+                <li> <b>Planarni</b> &ndash; Izračunavanje će se obaviti na projektovanoj ravni kori&scaron;ćenjem 2D Dekartovog koordinatnog sistema. Ovo je podrazumevani metod.
+                    
+
+                </li>
+                <li> <b>Geodetski</b> &ndash; Rastojanja se izračunavaju na elipsoidu. Stoga se, bez obzira na ulaznu ili izlaznu projekciju, rezultati ne menjaju.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Ime sloja povratnog smera rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b>. Morate da unesete ime koje trenutno ne postoji u <b>Mom sadržaju</b>.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
             </p>
         </div>
     </div>

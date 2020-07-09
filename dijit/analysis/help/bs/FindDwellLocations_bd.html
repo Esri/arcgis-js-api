@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pronađi lokacije boravka</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Dijagram radnog tijeka za Pronađi lokacije boravka"></h2>
+        <hr/>
+    <p>Ovaj alat za rad upotrebljava ovremenjeni sloj točkastih geoobjekata koji su  <code>instantne vrste</code>. Prvo, alat dodjeljuje geoobjekte tragu pomoću jedinstvenog identifikatora. Redoslijed tragova određuje se prema vremenu geoobjekata. Sljedeće se izračunava udaljenost između prvog i sljedećeg zapažanja na tragu. Geoobjekti se smatraju dijelom mjesta boravka ako dvije vremenski uzastopne točke ostaju unutar dane udaljenosti najmanje dano vrijeme. Kada su dva geoobjekta dio boravka, prvi geoobjekt u boravku upotrebljava se kao referentna točka, a alat pronalazi uzastopne geoobjekte koji su unutar određene udaljenosti referentne točke u boravku. Kada su pronađeni svi geoobjekti unutar određene udaljenosti, alat prikuplja geoobjekte boravka i izračunava njihovu srednju sredinu. Geoobjekti prije i poslije trenutnog boravka dodaju se u boravak ako su unutar dane udaljenosti srednje sredine mjesta boravka. Taj se postupak nastavlja do kraja traga.
+    </p>
+    <p>Geoobjekti u ovremenjenim slojevima mogu se predstaviti na jedan od sljedećih načina:
+        <ul>
+            <li>Instanca &ndash; jedan trenutak u vremenu
+            </li>
+            <li>Interval &ndash; početno i zavr&scaron;no vrijeme
+            </li>
+        </ul>
+        
+    </p>
+    <p>Primjerice, ako radite za Ministarstvo prometa i prikupili ste GPS očitanja vozila s glavnih autocesta. Svaki GPS zapis sadrži jedinstven ID vozila, vrijeme, lokaciju i brzinu. Koristeći se jedinstvenim ID-om vozila za određivanje pojedinačnih tragova, možete tražiti vozila koja se nisu pomakla vi&scaron;e od 100 metara unutar najmanje 15 minuta kako biste otkrili problematična područja na cestovnoj mreži. Dodatno, možete izračunati statistiku poput srednje brzine vozila unutar lokacije boravka.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj za traženje boravka</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti sloj koji će se sažeti u boravke. Ulazni sloj mora biti ovremenjen s geoobjektima koji predstavljaju instancu u vremenu te mora imati jedno ili vi&scaron;e polja koji se mogu upotrijebiti za identificiranje tragova.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Odaberite jedno ili više polja za identifikaciju tragova</h2></div>
+        <hr/>
+        <div>
+            <p>Polja koja predstavljaju identifikator tragova. Možete upotrijebiti jedno polje ili vi&scaron;e polja da biste predstavili jedinstvene vrijednosti tragova.
+            </p>
+            <p>Primjerice, ako ste nalazili lokacije boravaka uragana, možete upotrijebiti ime uragana kao polje traga.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Odaberite metodu za izračun udaljenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda upotrebljena za izračun udaljenosti boravka unutar tragova.  <b>Planarna</b> metoda može brže izračunati rezultate, ali neće omotati tragove oko međunarodne datumske granice ili uzeti u obzir stvarni oblik Zemlje prilikom izrade pojasa. <b>Geodetska</b> metoda će omotati tragove oko međunarodne datumske granice ako je potrebno i primijenit će geodetski pojas koji će uzeti u obzir oblik Zemlje.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Odredite prostornu udaljenost za pretraživanje</h2></div>
+        <hr/>
+        <div>
+            <p>Udaljenost boravka maksimalna je udaljenost između točaka, koja će se smatrati jednom lokacijom boravka.
+            </p>
+            <p>Primjrice, ako ste zainteresirani za pronalazak boravaka gdje se promet nije pomaknuo vi&scaron;e od 20 metara unutar određenog vremena, dopu&scaron;teno odstupanje za udaljenost bila bi 20 metara.
+            </p>
+            <p>Upotrijebite parametar  <b>Odredite vremenski raspon za pretraživanje</b> kako biste odredili vrijeme.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Podijeli tragove (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Jedinica dopu&scaron;tenog odstupanja udaljenosti.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Odredite vremenski raspon za pretraživanje</h2></div>
+        <hr/>
+        <div>
+            <p>Dopu&scaron;teno odstupanje vremena boravka minimalno je trajanje boravka koje će se uzimati u obzir na pojedinačnoj lokaciji boravka.
+            </p>
+            <p>Primjerice, ako želite znati gdje se promet nije pomaknuo za određenu udaljenost unutar sata, dopu&scaron;teno vremensko odstupanje bilo bi 1 sat.
+            </p>
+            <p>Upotrijebite parametar  <b>Odredite prostorni raspon za pretraživanje</b> kako biste odredili udaljenost.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Odaberite udaljenost za dijeljenje tragova (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Jedinica dopu&scaron;tenog vremenskog odstupanja.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistike (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Možete izračunati statistiku za geoobjekte koji su sažeti. Možete izračunati sljedeće u brojčanim poljima: 
+                <ul>
+                    <li>Ukupni broj &ndash; izračunava broj vrijednosti koje imaju neku vrijednost. Može se upotrebljavati na brojčanim ili tekstualnim poljima. Ukupni broj od [nema vrijednosti, 0, 2] je 2.
+                    </li>
+                    <li>Zbroj &ndash; zbroj brojčanih vrijednosti u polju. Zbroj od [nema vrijednosti, nema vrijednosti, 3] je 3.
+                    </li>
+                    <li>Srednja vrijednost &ndash; srednja vrijednost brojčanih vrijednosti. Srednja vrijednost od [0, 2, nema vrijednosti] je 1.
+                    </li>
+                    <li>Min. &ndash; minimalna vrijednost brojčanog polja. Minimum od [0, 2, nema vrijednosti] je 0. 
+                    </li>
+                    <li>Maks. &ndash; maksimalna vrijednost brojčanog polja. Maksimalna vrijednost od [0, 2, nema vrijednosti] je 2.
+                    </li>
+                    <li>Raspon &ndash; raspon brojčanog polja. Izračunava se oduzimanjem minimalnih vrijednosti od maksimalnih vrijednosti. Raspon od [0, nema vrijednosti, 1] je 1. Raspon od [nema vrijednosti, 4] je 0.
+                    </li>
+                    <li>Varijanca &ndash; varijanca brojčanog polja u tragu. Varijanca od [1] nema vrijednosti. Varijanca od [nema vrijednosti, 1,0,1,1] je 0,25.
+                    </li>
+                    <li>Standardna devijacija &ndash; standardna devijacija brojčanog polja. Standardna devijacija od [1] nema vrijednosti. Standardna devijacija od [nema vrijednosti, 1,0,1,1] je 0,5. 
+                    </li>
+                    <li>Prvo - prva vrijednost određenog polja u sažetom zapisu. Prva vrijednost je 1 ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [1,5,10,20].
+                    </li>
+                    <li>Zadnje - zadnja vrijednost određenog polja u sažetom zapisu. Zadnja vrijednost je 20 ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [1,5,10,20].
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Možete izračunati sljedeće u tekstualnim poljima:
+                <ul>
+                    <li>Ukupni broj &ndash; broj vrijednosti koje imaju neku vrijednost.
+                    </li>
+                    <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti teksta u određenom polju.
+                    </li>
+                    <li>Prvo - prva vrijednost određenog polja u sažetom zapisu. Prva vrijednost je Toronto ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston].
+                    </li>
+                    <li>Zadnje - zadnja vrijednost određenog polja u sažetom zapisu. Zadnja vrijednost je Boston ako zapis ima sljedeće vremenski uređene vrijednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston].
+                    </li>
+                </ul>
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Izvozi lokacije boravka kao</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje koji se geoobjekti vraćaju te format. Dostupne su četiri vrste: 
+                <ul>
+                    <li> <b>Srednje sredine</b>&mdash;točka koja predstavlja cetroid svake otkrivene lokacije boravka. Atributi će biti sažeti. To je zadano.
+                         
+                    </li>
+                    <li> <b>Konveksni trupovi</b>&mdash;poligoni predstavljaju konveksni trup svake grupe boravaka. Atributi će biti sažeti.
+                         
+                    </li>
+                    <li> <b>Geoobjekti boravka</b>&mdash; vraćaju se svi ulazni točkasti geoobjekti i atributi za koje je ustanovljeno da pripadaju nekom boravku.
+                         
+                    </li>
+                    <li> <b>Svi geoobjekti</b>&mdash; vraćaju se svi ulazni točkasti geoobjekti i atributi.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizirajte podatke s vremenskim intervalima (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Odredite želite li tražiti lokacije boravka pomoću vremenskih intervala koji segmentiraju ulazne geoobjekte za analizu. Ako upotrebljavate vremenske intervale, morate postaviti vremenski interval koji želite upotrijebiti i opcionalno postaviti referentno vrijeme. Ako ne postavite referentno vrijeme, upotrijebit će se 1. siječnja 1970. 
+            </p>
+            <p>Primjerice, ako postavite vremensku granicu na 1 dan, počev&scaron;i od 9:00 sati 1. siječnja 1990., onda će se svaki trag skratiti u 9:00 za svaki dan i analizirati unutar tog segmenta. Nijedan boravak neće započeti prije 09:00 i zavr&scaron;iti poslije toga 
+            </p>
+            <p>Upotreba vremenskih intervala brz je način za ubrzavanje vremena računanja jer brzo stvara manje tragove za analizu. Ako dijeljenje ponavljajućim vremenskim intervalom ima smisla za va&scaron;u analizu, preporučuje se za obradu velikih podataka.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Kada pi&scaron;ete na  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka), upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

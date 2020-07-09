@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi kaavat</b>, <b>K&auml;yt&auml; l&auml;heisyytt&auml;</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b>, <b>Hallitse aineistoa</b> ja <b>Syv&auml;oppiminen</b>.
+        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi mallit</b>, <b>K&auml;yt&auml; l&auml;heisyytt&auml;</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b>, <b>Hallitse aineistoa</b>, <b>Syv&auml;oppiminen</b> ja <b>Moniulotteinen analyysi</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Otos</b> poimii m&auml;&auml;ritettyjen sijaintien aineiston rasterista tai rasterijoukosta.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Esimerkki</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Otos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Luo taulun tai pistekohdeluokan, jonka m&auml;&auml;ritettyjen sijaintien aineiston arvot on poimittu rasterista tai rasterijoukosta.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Syväoppimisen työkalusarja</h2>
+        <h2>Syväoppiminen</h2>
         <hr/>
-        <p>N&auml;iden ty&ouml;kalujen avulla voit havaita tiettyj&auml; kohteita kuvassa tai luokitella rasteriaineistoryhm&auml;n pikseleit&auml;. Syv&auml;oppiminen on er&auml;&auml;nlainen teko&auml;lyn koneoppimismenetelm&auml;, joka havaitsee kohteita kuva-aineistossa k&auml;ytt&auml;m&auml;ll&auml; useita karttatasoja neuroverkoissa, joissa kukin karttataso kykenee poimimaan v&auml;hint&auml;&auml;n yhden kohteen kuvasta. N&auml;iss&auml; ty&ouml;kaluissa k&auml;ytet&auml;&auml;n malleja, jotka on koulutettu havaitsemaan tiettyj&auml; kohteita kolmannen osapuolen syv&auml;oppimiskehyksiss&auml; &ndash; kuten TensorFlow, CNTK ja Keras &ndash; ja ty&ouml;kalut tulostavat kohteita tai luokkakarttoja.
+        <p>N&auml;iden ty&ouml;kalujen avulla voit havaita tai luokitella tiettyj&auml; kohteita kuvassa tai luokitella rasteriaineistoryhm&auml;n pikseleit&auml;. Syv&auml;oppiminen on er&auml;&auml;nlainen teko&auml;lyn koneoppimismenetelm&auml;, joka havaitsee kohteita kuva-aineistossa k&auml;ytt&auml;m&auml;ll&auml; useita karttatasoja neuroverkoissa, joissa kukin karttataso kykenee poimimaan v&auml;hint&auml;&auml;n yhden kohteen kuvasta. N&auml;iss&auml; ty&ouml;kaluissa k&auml;ytet&auml;&auml;n malleja, jotka on koulutettu havaitsemaan tiettyj&auml; kohteita kolmannen osapuolen syv&auml;oppimiskehyksiss&auml; &ndash; kuten TensorFlow, CNTK ja Keras &ndash; ja ty&ouml;kalut tulostavat kohteita tai luokkakarttoja.
             <ul>
                 <li> <b>Luokittele pikselit syv&auml;oppimisen avulla</b> tuottaa luokitellun rasterin k&auml;ytt&auml;m&auml;ll&auml; koulutettua syv&auml;oppimismallia.
                 </li>
                 <li> <b>Havaitse objektit syv&auml;oppimisen avulla</b> tuottaa kohdeluokan, joka sis&auml;lt&auml;&auml; l&auml;ht&ouml;aineiston rasterista l&ouml;yt&auml;m&auml;ns&auml; objektit, k&auml;ytt&auml;m&auml;ll&auml; syv&auml;oppimismallia.
                 </li>
+                <li> <b>Luokittele objekti syv&auml;oppimisen avulla</b> tuottaa kohdeluokan tai taulun, jossa kullekin l&auml;ht&ouml;aineiston rasterin l&auml;ht&ouml;aineiston objektille m&auml;&auml;ritet&auml;&auml;n luokan tunnusteksti k&auml;ytt&auml;m&auml;ll&auml; koulutettua syv&auml;oppimismallia.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>T&auml;m&auml; ty&ouml;kalu suorittaa koulutetun syv&auml;oppimismallin l&auml;ht&ouml;aineiston rasterille ja tuottaa luokitellun rasterin, jossa jokaiselle kelvolliselle pikselille on m&auml;&auml;ritetty luokkatunnusteksti.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>T&auml;m&auml; ty&ouml;kalu suorittaa koulutetun syv&auml;oppimismallin l&auml;ht&ouml;aineiston rasterissa ja luo kohdeluokan, joka sis&auml;lt&auml;&auml; l&ouml;ydetyt objektit. Kohteet voivat olla rajauslaatikoita tai aluekohteita l&ouml;ydettyjen objektien ymp&auml;rill&auml; tai objektien keskell&auml; olevia pisteit&auml;.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luokittele objektit syväoppimisen avulla</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Luokittele objektit syv&auml;oppimisen avulla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu suorittaa koulutetun syv&auml;oppimismallin l&auml;ht&ouml;aineiston rasterille ja valinnaiselle kohdeluokalle ja tuottaa kohdeluokan tai -taulun, jossa jokaiselle l&auml;ht&ouml;aineiston objektille on m&auml;&auml;ritetty luokkatunnusteksti.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Moniulotteinen analyysi</h2>
+        <hr/>
+        <p>Moniulotteinen analyysi -ty&ouml;kalujen avulla voit suorittaa tieteellisen aineiston analyysin useiden muuttujien ja ulottuvuuksien avulla.
+        </p>
+        <p>Moniulotteinen aineisto edustaa aineistoa, joka on tallennettu useita kertoja sek&auml; useissa syvyyksiss&auml; ja korkeuksissa. T&auml;m&auml;ntyyppist&auml; aineistoa k&auml;ytet&auml;&auml;n yleens&auml; ilmatieteess&auml;, meritieteess&auml; ja geotieteiss&auml;. N&auml;iden ty&ouml;kalujen avulla voit analysoida moniulotteista rasteriaineistoa useissa muodoissa, kuten netCDF-, HDF- ja GRIB-muodossa, moniulotteisena mosaiikkiaineistoryhm&auml;n&auml; ja Esrin pilvirasterimuodossa (CRF).
+        </p>
+        <p>Seuraavassa taulussa on lueteltu moniulotteiset analyysity&ouml;kalut ja siin&auml; on my&ouml;s lyhyt kuvaus kustakin ty&ouml;kalusta.
+            <ul>
+                <li> <b>Koosta moniulotteinen rasteri</b> -toiminto luo moniulotteisen rasteriaineistoryhm&auml;n koostamalla aiemmin luodut moniulotteiset rasterimuuttujat ulottuvuudelle.
+                </li>
+                <li> <b>Luo moniulotteinen poikkeama</b> -toiminto laskee poikkeaman kullekin moniulotteisen rasterin viipaleelle moniulotteisen rasterin luontia varten.
+                </li>
+                <li> <b>Luo trendirasteri</b> arvioi kunkin pikselin trendin ulottuvuudessa yhdelle tai useammalle moniulotteisen rasterin muuttujalle.
+                </li>
+                <li> <b>Ennusta trendirasterin avulla</b> -funktio laskee ennustetun moniulotteisen rasterin k&auml;ytt&auml;m&auml;ll&auml; <b>Luo trendirasteri</b> -funktion tuottamaa tulosaineiston trendirasteria.
+                </li>
+                <li> <b>Etsi argumentin tilastot</b> poimii ulottuvuusarvon tai kaistaindeksin, jolla annettu tilastotieto saavutetaan kullekin moniulotteisen tai monikaistaisen rasterin pikselille.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Koosta moniulotteinen rasteri</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Koosta moniulotteinen rasteri">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu luo moniulotteisen rasteriaineistoryhm&auml;n koostamalla aiemmin luodut moniulotteiset rasterimuuttujat ulottuvuudessa.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etsi argumentin tilastot</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Etsi argumentin tilastot">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu poimii ulottuvuusarvon tai kaistaindeksin, jolla annettu tilastotieto saavutetaan kullekin moniulotteisen tai monikaistaisen rasterin pikselille.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luo moniulotteinen poikkeama</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Luo moniulotteinen poikkeama">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee poikkeaman kullekin moniulotteisen rasterin viipaleelle moniulotteisen rasterin luontia varten.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luo trendirasteri</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Luo trendirasteri">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu arvioi kunkin pikselin trendin ulottuvuudessa yhdelle tai useammalle moniulotteisen rasterin muuttujalle.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ennusta trendirasterin avulla</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Ennusta trendirasterin avulla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee ennustetun moniulotteisen rasterin k&auml;ytt&auml;m&auml;ll&auml;  <b>Luo trendirasteri</b> -funktion tuottamaa tulosaineiston trendirasteria.
             </p>
             <br/>
         </div>

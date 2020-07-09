@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sampel</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Sampel"></h2>
+        <hr/>
+    <p>Alat ini membuat feature class titik atau tabel yang menunjukkan nilai sel dari raster, atau rangkaian raster, untuk lokasi yang ditentukan. Lokasi ditentukan oleh sel raster, fitur poligon, fitur polyline, atau oleh serangkaian titik.
+    </p>
+    <p>Nilai piksel akan diekstrak dari semua raster input di setiap lokasi. Feature class titik atau tabel akan dibuat dengan kolom yang berisi nilai piksel untuk setiap raster input. Atribut tambahan dari tabel raster input tidak akan dimasukkan dalam tabel output.
+    </p>
+    <p>Kombinasi raster apa pun, seperti band tunggal, multiband, multidimensional, atau multivarian, dapat ditentukan sebagai raster input. Struktur tabel output berubah saat raster input bersifat multidimensional. Ketika raster multiband ditentukan sebagai salah satu raster input, semua band dalam input itu akan digunakan. Untuk memproses pilihan band dari raster multiband input, pertama buat set data raster baru yang terdiri dari band-band tertentu. Gunakan hasilnya dalam daftar raster input.
+    </p>
+    <p>Lokasi input dapat berupa fitur raster atau titik:
+        <ul>
+            <li>Raster&mdash;Piksel yang berisi nilai yang valid (bukan NoData) digunakan untuk mengekstraksi nilai piksel dari semua raster input, dan pusat piksel digunakan untuk lokasi titik.
+            </li>
+            <li>Poin&mdash;Nilai akan diambil sampelnya di setiap lokasi titik.
+            </li>
+            <li>Polyline atau poligon&mdash;Nilai akan diambil sampelnya pada poligon atau centroid polyline. Jika raster input multidimensional, nilainya akan diagregasi berdasarkan jenis  <b>Statistik</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Raster input diambil sampelnya dalam referensi dan resolusi spasial asli mereka. Jika ada beberapa raster input dengan referensi spasial yang berbeda, lokasi input diproyeksikan ke masing-masing referensi spasial raster individu dari mana nilai diekstrak. Lingkungan analisis diterapkan ke lokasi input, tetapi raster input tidak akan menaati lingkungan analisis.
+    </p>
+    <p>Lokasi yang mengekstrak nilai dari sel NoData di raster input akan diberi nilai &lt;null&gt; di tabel output.
+    </p>
+    <p>Untuk melakukan analisis dengan fitur multititik, pertama-tama ubahlah ke fitur titik tunggal sebelum menggunakannya dalam alat ini.
+    </p>
+    <p>Referensi spasial dari koordinat x, y dalam tabel sampel output sama dengan raster lokasi input atau fitur titik, kecuali jika ditentukan dalam lingkungan <b>Sistem Koordinat Output</b>. Jika referensi spasial dari data lokasi input tidak diketahui, referensi spasial dari koordinat x, y juga tidak diketahui.
+    </p>
+    <p>Referensi spasial dari feature class output sama dengan raster lokasi input atau fitur titik, kecuali jika ditentukan dalam lingkungan  <b>Sistem Koordinat Output</b>.
+    </p>
+    <p>Lingkungan  <b>Faktor Pemrosesan Paralel</b> hanya didukung bila inputnya adalah raster multidimensional.
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel atau band layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel atau band layer penuh akan dianalisis, bahkan jika mereka berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Pilih layer citra untuk sampel</h2></div>
+        <hr/>
+        <div>
+            <p>Layer citra tunggal atau daftar layer citra yang nilainya akan diambil sampel berdasarkan data lokasi input.
+            </p>
+            <p>Untuk mengambil sampel semua irisan dari layer citra multidimensional, irisan tersebut harus menjadi satu-satunya raster input.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Pilih layer lokasi</h2></div>
+        <hr/>
+        <div>
+            <p>Posisi pengidentifikasi data yang ingin Anda ambil sampelnya.
+            </p>
+            <p>Data lokasi input dapat berupa raster, atau titik, polyline, atau feature class poligon.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Tentukan kolom ID Unik</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom yang berisi nilai berbeda untuk setiap lokasi atau fitur dalam raster lokasi input atau feature class.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Tentukan informasi akuisisi data lokasi (Opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan waktu, kedalaman, atau data akuisisi lainnya yang terkait dengan sel atau fitur lokasi.
+            </p>
+            <p>Untuk setiap dimensi, ada tiga opsi untuk menentukan informasi akuisisi yang terkait dengan sel atau fitur lokasi:
+
+                <ul>
+                    <li> <b>Kolom atau nilai tunggal</b>&mdash;Bila opsi ini dipilih, informasi berikut perlu ditentukan:
+                        <ul>
+                            <li> <b>Nilai atau kolom dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Nilai atau kolom tunggal dengan nilai relatif</b>&mdash;Jika opsi ini dipilih, informasi di bawah ini perlu ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
+                        <ul>
+                            <li> <b>Nilai atau kolom dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi.
+                            </li>
+                            <li> <b>Nilai relatif sebelumnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk dikurangi dari <b>Nilai atau kolom dimensi</b> untuk menentukan awal rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                            </li>
+                            <li> <b>Nilai relatif setelahnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk ditambahkan ke <b>Nilai atau kolom tunggal</b> untuk menentukan akhir rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Nilai atau kolom awal dan akhir</b>&mdash;Jika opsi ini dipilih, informasi di bawah ini perlu ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
+                        <ul>
+                            <li> <b>Nilai atau kolom awal</b>&mdash;pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan awal rentang nilai dimensi.
+                            </li>
+                            <li> <b>Nilai atau kolom akhir</b>&mdash;pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan akhir rentang nilai dimensi.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Tentukan kolom atau nilai jarak buffer</h2></div>
+        <hr/>
+        <div>
+            <p>Jarak yang ditentukan di sekitar fitur data lokasi. Jarak buffer ditentukan dalam unit linear dari referensi spasial fitur lokasi. Jika fitur menggunakan referensi geografis, unit akan berupa derajat.
+            </p>
+            <p>Statistik akan dihitung dalam area buffer ini.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Pilih jenis statistik</h2></div>
+        <hr/>
+        <div>
+            <p>Jenis statistik yang akan dihitung.
+            </p>
+            <ul>
+                <li> <b>Minimum</b>&mdash;Menemukan nilai minimum dalam rentang yang ditentukan.
+                </li>
+                <li> <b>Maksimum</b>&mdash;Menemukan nilai maksimum dalam rentang yang ditentukan.
+                </li>
+                <li> <b>Median</b>&mdash;Menemukan nilai median dalam rentang yang ditentukan.
+                </li>
+                <li> <b>Rata-rata</b>&mdash;Menghitung rata-rata untuk rentang yang ditentukan.
+                </li>
+                <li> <b>Jumlah</b>&mdash;Menghitung jumlah variabel dalam rentang yang ditentukan.
+                </li>
+                <li> <b>Mayoritas</b>&mdash;Menemukan nilai yang paling sering muncul.
+                </li>
+                <li> <b>Minoritas</b>&mdash;Menemukan nilai yang paling jarang muncul.
+                </li>
+                <li> <b>Simpangan Baku</b>&mdash;Menghitung simpangan baku.
+                </li>
+                <li> <b>Persentil</b>&mdash;Menghitung persentil yang ditentukan dalam rentang yang ditentukan.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Nilai Persentil</h2></div>
+        <hr/>
+        <div>
+            <p>Persentil yang akan dihitung saat parameter  <b>Jenis Statistik</b> diatur ke <b>Persentil</b>.
+            </p>
+            <p>Nilai ini dapat memiliki rentang dari 0 hingga 100. Defaultnya adalah 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Tentukan teknik pengambilan ulang sampel</h2></div>
+        <hr/>
+        <div>
+            <p>Algoritme pengambilan ulang sampel digunakan saat mengambil sampel raster.
+            </p>
+            <ul>
+                <li> <b>Terdekat</b>&mdash;Lingkungan terdekat. Ini adalah default.
+                </li>
+                <li> <b>Bilinear</b>&mdash;Interpolasi bilinear
+                </li>
+                <li> <b>Kubik</b>&mdash;Konvolusi kubik
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Tentukan tata letak output</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah nilai sampel muncul dalam baris atau kolom di tabel output. Opsi ini hanya tersedia saat raster multidimensional input berisi satu variabel dan satu dimensi, dan setiap irisan adalah raster band tunggal.
+            </p>
+            <ul>
+                <li> <b>Nilai sampel muncul dalam baris</b>&mdash;Nilai sampel muncul dalam baris terpisah di tabel output. Ini adalah default.
+                </li>
+                <li> <b>Nilai sampel muncul dalam kolom</b>&mdash;Nilai sampel muncul dalam kolom terpisah di tabel output. Opsi ini hanya valid bila raster multidimensional input berisi satu variabel dan satu dimensi, dan setiap irisan adalah raster band tunggal.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Tentukan jenis output</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah akan membuat feature class titik dengan nilai sampel dalam tabelnya, atau hanya tabel dengan nilai sampel.
+            </p>
+            <ul>
+                <li> <b>Tabel</b>&mdash;Buat tabel dengan nilai sampel. Ini adalah default.
+                </li>
+                <li> <b>Fitur</b>&mdash;Buat feature class titik dengan nilai sampel dalam tabelnya. Jika fitur lokasi input adalah polyline atau poligon, setiap titik dalam output adalah centroid setiap geometri dari fitur lokasi input.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

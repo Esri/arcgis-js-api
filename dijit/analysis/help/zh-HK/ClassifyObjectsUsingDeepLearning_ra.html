@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>使用深度學習以分類物件</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="使用深度學習以分類物件"></h2>
+        <hr/>
+    <p>此工具可在輸入點陣和選用的圖徵類別上，執行經過培訓的深度學習模型來產生圖徵類別或表格，其中的每個輸入物件都有一個指派的類別標籤。
+    </p>
+    <p>如果勾選 <b>使用當前地圖範圍</b>，則僅對當前地圖範圍中可見的點陣區域進行分析。如果未勾選，則將分析整個點陣，包括超出目前地圖範圍的圖徵。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>選擇用來分類物件的圖片</h2></div>
+        <hr/>
+        <div>
+            <p>用來偵測物件的輸入圖片。
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>選擇物件的圖徵圖層（選用）</h2></div>
+        <hr/>
+        <div>
+            <p>用於識別要分類和標記的每個物件之位置的點、線或多邊形輸入圖徵圖層。輸入圖徵圖層的每列代表一個物件。
+            </p>
+            <p>若未指定輸入圖徵圖層，工具將假設每張輸入圖片都包含要分類的單一物件。若一或多張輸入圖片使用一個空間參考，則工具將輸出圖徵圖層，其中的每個圖片範圍將作為每個標記圖徵的邊界幾何。若未在空間上參考一或多張輸入圖片，則工具將輸出一個表格，其中包含圖片 ID 值和每張圖片的類別標籤。
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>選擇用來分類物件的深度學習模型</h2></div>
+        <hr/>
+        <div>
+            <p>輸入深度學習套件 ( <code>.dlpk</code>) 項目。
+            </p>
+            <p>深度學習套件包含 Esri 模型定義 JSON 檔案 ( <code>.emd</code>)、深度學習二進位模型檔案，以及（選用）要使用的 Python 點陣函數。
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>指定深度學習模型引數</h2></div>
+        <hr/>
+        <div>
+            <p>函數引數是在輸入模型參考的 Python 點陣函數類別中定義。您可以在這裡列出供實驗和精細化的其他深度學習參數和引數，例如用於調整敏感度的信心閾值。
+            </p>
+            <p>工具會讀取點陣分析伺服器上的 Python 模組來填入引數的名稱。
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>定義類別標籤欄位名稱</h2></div>
+        <hr/>
+        <div>
+            <p>將在輸出圖徵圖層中包含分類標籤的欄位名稱。
+            </p>
+            <p>若未指定任何欄位名稱，將在輸出圖徵圖層中產生名為  <i>ClassLabel</i> 的新欄位。
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>處理模式</h2></div>
+        <hr/>
+        <div>
+            <p>指定如何處理圖片服務中的所有點陣項目。
+                <ul>
+                    <li> <b>作為鑲嵌圖片處理</b> - 將圖片服務中的所有點陣項目鑲嵌在一起並進行處理。這是預設情況。
+                    </li>
+                    <li> <b>分別處理項目</b> - 將圖片服務中的所有點陣項目作為個別圖片予以處理。
+                    </li>
+                </ul>
+                中設定之任何條件的像素之值。
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

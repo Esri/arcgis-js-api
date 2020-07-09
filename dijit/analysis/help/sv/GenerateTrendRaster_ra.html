@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generera trendraster</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generera trendraster"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Välj flerdimensionellt bildlager för att analysera trend</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Indatabildlagret f&ouml;r ett flerdimensionellt raster som ska analyseras.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Välj dimension längs vilken variabeltrenden ska analyseras</h2></div>
+        <hr/>
+        <div>
+            <p>Den dimension l&auml;ngs vilken en trend extraheras f&ouml;r variabeln eller variablerna som valts i analysen.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Välj variabel/variabler för att analysera trend</h2></div>
+        <hr/>
+        <div>
+            <p>Variabel eller variabler som trender ska ber&auml;knas f&ouml;r. Om ingen variabel anges analyseras den f&ouml;rsta variabeln i det flerdimensionella rastret.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Välj typ av linje för att anpassa variabelvärdena längs en dimension</h2></div>
+        <hr/>
+        <div>
+            <p>Anger typ av linje som ska anv&auml;ndas f&ouml;r anpassning till pixelv&auml;rdena l&auml;ngs en dimension. 
+                <ul>
+                    <li> <b>Linj&auml;r</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en linj&auml;r trendlinje. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Polynom</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en andra ordnings polynomtrendlinje.
+                    </li>
+                    <li> <b>Harmonisk</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en harmonisk trendlinje.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Ange den harmoniska cykelns längd</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;ngden av periodisk variation att modellera. Denna parameter kr&auml;vs n&auml;r trendlinjetyp &auml;r inst&auml;lld till  <b>Harmonisk</b>. Till exempel har blads gr&ouml;nhet en stark variationscykel under ett enda &aring;r, s&aring; cykell&auml;ngden &auml;r 1 &aring;r. Temperaturdata per timme har en stark variationscykel under en enda dag, s&aring; cykell&auml;ngden &auml;r 1 dag.
+            </p>
+            <p>Standardl&auml;ngden &auml;r 1 &aring;r f&ouml;r data som varierar enligt en &aring;rlig cykel.
+            </p>
+            <p>Den h&auml;r parametern inkluderas bara i trendanalysen n&auml;r dimensionen som analyseras &auml;r tid och typen av trendlinje &auml;r inst&auml;lld p&aring;  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Välj tidsenhet för den harmoniska cykelns längd</h2></div>
+        <hr/>
+        <div>
+            <p>Anger den tidsenhet som ska anv&auml;ndas f&ouml;r l&auml;ngden av en harmonisk cykel.
+                <ul>
+                    <li> <b>Dagar</b> &ndash; Enheten f&ouml;r den harmoniska cykelns l&auml;ngd &auml;r dagar.
+                    </li>
+                    <li> <b>&Aring;r</b> &ndash; Enheten f&ouml;r den harmoniska cykelns l&auml;ngd &auml;r &aring;r. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Den h&auml;r parametern inkluderas bara i trendanalysen n&auml;r dimensionen som analyseras &auml;r tid och typen av trendlinje &auml;r inst&auml;lld p&aring;  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Ange frekvenssiffran för den harmoniska trendinpassningen</h2></div>
+        <hr/>
+        <div>
+            <p>Den frekvens som ska anv&auml;ndas i harmonisk trendinpassning. Den h&auml;r parametern anger frekvensen f&ouml;r cykler under ett &aring;r.
+            </p>
+            <p>Standardv&auml;rdet &auml;r 1 eller en harmonisk cykel per &aring;r.
+            </p>
+            <p>Den h&auml;r parametern inkluderas bara i trendanalysen n&auml;r dimensionen som analyseras &auml;r tid.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Ange polynomordningssiffran för trendinpassningen</h2></div>
+        <hr/>
+        <div>
+            <p>Den polynomordningssiffra som ska anv&auml;ndas i den polynoma trendinpassningen.
+            </p>
+            <p>Den h&auml;r parametern inkluderas bara i trendanalysen n&auml;r dimensionen som analyseras &auml;r tid.
+            </p>
+            <p>Standardv&auml;rdet &auml;r 2 eller andra ordnings polynom.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Välj modellstatistik att inkludera i trendrastret</h2></div>
+        <hr/>
+        <div>
+            <p>Det h&auml;r verktyget ger tre typer av statistik f&ouml;r trendanpassningslinje: medelkvadratrotsfel (RMSE), R-kvadrat f&ouml;r goodness-of-fit-statistiken (R-kvadrat) och p-v&auml;rdesstatistiken f&ouml;r lutningskoefficienten (P-v&auml;rde f&ouml;r lutningskoefficienten). Varje statistik har en motsvarande kryssruta som specificerar om den ska ber&auml;knas och inkluderas som ett av banden i utdatatrendrastret.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Markerat &ndash; RMSE ber&auml;knas och inkluderas som ett av banden i utdatatrendrastret. Det h&auml;r &auml;r standardinst&auml;llningen.
+                            </li>
+                            <li>Omarkerat &ndash; RMSE ber&auml;knas inte.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kvadrat
+                        </p>
+                        <ul>
+                            <li>Markerat &ndash; R-kvadratv&auml;rdet ber&auml;knas och inkluderas som ett av banden i utdatatrendrastret.
+                            </li>
+                            <li>Omarkerat &ndash; R-kvadratv&auml;rdet ber&auml;knas inte. Det h&auml;r &auml;r standardinst&auml;llningen.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-v&auml;rde f&ouml;r lutningskoefficient
+                        </p>
+                        <ul>
+                            <li>Markerat &ndash; P-v&auml;rdet ber&auml;knas och inkluderas som ett av banden i utdatatrendrastret.
+                            </li>
+                            <li>Omarkerat &ndash; P-v&auml;rdet ber&auml;knas inte. Det h&auml;r &auml;r standardinst&auml;llningen.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorera saknade värden i beräkningen</h2></div>
+        <hr/>
+        <div>
+            <p>Anger huruvida saknade v&auml;rden ignoreras i analysen.
+                <ul>
+                    <li>Markerad &ndash; Analysen inkluderar alla giltiga pixlar l&auml;ngs en given dimension och ignorerar eventuella NoData-pixlar. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li>Avmarkerad &ndash; Analysen resulterar i NoData om det finns NoData-v&auml;rden f&ouml;r pixlarna l&auml;ngs en angiven dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

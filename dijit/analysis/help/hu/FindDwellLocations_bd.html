@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Várakozási helyek keresése</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="V&aacute;rakoz&aacute;si helyek keres&eacute;se munkafolyamat diagramja"></h2>
+        <hr/>
+    <p>Ez az eszk&ouml;z  <code>azonnali</code> t&iacute;pus&uacute;, pontszerű vektoros elemek időb&eacute;lyeggel ell&aacute;tott r&eacute;teg&eacute;vel műk&ouml;dik.   Az eszk&ouml;z elősz&ouml;r vektoros elemeket rendel egy nyomvonalhoz egy egyedi azonos&iacute;t&oacute;t haszn&aacute;lva. A nyomvonalban a sorrendet a vektoros elemek ideje hat&aacute;rozza meg. Ezut&aacute;n kisz&aacute;m&iacute;tja a t&aacute;vols&aacute;got a nyomvonal első megfigyel&eacute;se &eacute;s a k&ouml;vetkező k&ouml;z&ouml;tt. Akkor tekint egy vektoros elemet egy v&aacute;rakoz&aacute;s r&eacute;sz&eacute;nek, ha k&eacute;t, időben egym&aacute;st k&ouml;vető pont a megadott t&aacute;vols&aacute;gon bel&uuml;l marad legal&aacute;bb a megadott időtartamig. Amikor az eszk&ouml;z k&eacute;t, v&aacute;rakoz&aacute;s r&eacute;sz&eacute;t k&eacute;pező vektoros elemet tal&aacute;l, a v&aacute;rakoz&aacute;s első vektoros elem&eacute;t referenciapontk&eacute;nt haszn&aacute;lja, majd tov&aacute;bbi vektoros elemeket keres a megadott t&aacute;vols&aacute;gon bel&uuml;l a v&aacute;rakoz&aacute;s referenciapontj&aacute;hoz k&eacute;pest. Miut&aacute;n az eszk&ouml;z megtal&aacute;lta az &ouml;sszes vektoros elemet a megadott t&aacute;vols&aacute;gon bel&uuml;l, &ouml;sszegyűjti a v&aacute;rakoz&aacute;s vektoros elemeit, &eacute;s kisz&aacute;m&iacute;tja az &aacute;tlagos k&ouml;z&eacute;ppontjukat. Az aktu&aacute;lis v&aacute;rakoz&aacute;s előtt &eacute;s ut&aacute;n l&eacute;vő vektoros elemeket akkor adja hozz&aacute; a v&aacute;rakoz&aacute;shoz, ha a megadott t&aacute;vols&aacute;gon bel&uuml;l vannak a v&aacute;rakoz&aacute;s hely&eacute;nek &aacute;tlagos k&ouml;z&eacute;ppontj&aacute;hoz k&eacute;pest. Ez a folyamat a nyomvonal v&eacute;g&eacute;ig folytat&oacute;dik.
+    </p>
+    <p>Az időb&eacute;lyeggel ell&aacute;tott r&eacute;tegeken l&eacute;vő vektoros elemek az al&aacute;bbi k&eacute;t m&oacute;don &aacute;br&aacute;zolhat&oacute;k:
+        <ul>
+            <li>Pillanat &ndash; egyetlen időpillanat
+            </li>
+            <li>Intervallum &ndash; egy kezdő &eacute;s egy befejező időpont
+            </li>
+        </ul>
+        
+    </p>
+    <p>Tegy&uuml;k fel p&eacute;ld&aacute;ul, hogy a K&ouml;zleked&eacute;si Hat&oacute;s&aacute;gn&aacute;l dolgozik, &eacute;s GPS-adatokat gyűjt&ouml;tt a nagyobb aut&oacute;p&aacute;ly&aacute;kon k&ouml;zlekedő g&eacute;pj&aacute;rművekről. Mindegyik GPS-rekord tartalmaz egy egyedi g&eacute;pj&aacute;rmű-azonos&iacute;t&oacute;t, az időt, a helyet &eacute;s a sebess&eacute;get. Az egyedi g&eacute;pj&aacute;rmű-azonos&iacute;t&oacute; seg&iacute;ts&eacute;g&eacute;vel &ouml;n&aacute;ll&oacute; nyomvonalakat defini&aacute;lhat, majd megkeresheti azokat a g&eacute;pj&aacute;rműveket, amelyek nem mozogtak 100 m&eacute;tern&eacute;l t&ouml;bbet legal&aacute;bb 15 perc alatt, &iacute;gy r&aacute;tal&aacute;lhat az &uacute;th&aacute;l&oacute;zat probl&eacute;m&aacute;s ter&uuml;leteire. Ezenk&iacute;v&uuml;l olyan statisztik&aacute;kat sz&aacute;m&iacute;that ki, mint a v&aacute;rakoz&aacute;si helyen tal&aacute;lhat&oacute; g&eacute;pj&aacute;rművek &aacute;tlagsebess&eacute;ge.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Réteg kiválasztása várakozási hely kereséséhez</h2></div>
+        <hr/>
+        <div>
+            <p>A v&aacute;rakoz&aacute;si helyekk&eacute; &ouml;sszes&iacute;tendő pontr&eacute;teg. A bemenő r&eacute;tegnek időb&eacute;lyeggel ell&aacute;tott r&eacute;tegnek kell lennie olyan vektoros elemekkel, amelyek egy időpillanatot &iacute;rnak le, valamint rendelkeznek egy vagy t&ouml;bb olyan mezővel, amelyek nyomvonalak azonos&iacute;t&aacute;s&aacute;ra haszn&aacute;lhat&oacute;k.
+            </p>
+            <p>Ahelyett, hogy egy r&eacute;teget v&aacute;laszt a t&eacute;rk&eacute;p&eacute;ről, v&aacute;laszthatja a leg&ouml;rd&uuml;lő lista alj&aacute;n l&eacute;vő  <b>Eredm&eacute;nyr&eacute;teg kiv&aacute;laszt&aacute;sa</b> lehetős&eacute;get is, ha a saj&aacute;t tartalomban szeretne big data-f&aacute;jlmegoszt&oacute; adathalmazt vagy vektoros r&eacute;teget keresni. A bemenő r&eacute;tegen lehetős&eacute;ge van szűrőt is haszn&aacute;lni, vagy kijel&ouml;l&eacute;seket is megadhat a t&eacute;rk&eacute;phez adott k&ouml;zpontilag t&aacute;rolt r&eacute;tegeken. A szűrők &eacute;s kijel&ouml;l&eacute;sek csak az elemz&eacute;sekre &eacute;rv&eacute;nyesek. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Válasszon ki egy vagy több mezőt a nyomvonalak azonosításához</h2></div>
+        <hr/>
+        <div>
+            <p>A nyomvonal-azonos&iacute;t&oacute;t jelentő mezők. A nyomvonalak egyedi &eacute;rt&eacute;keit k&eacute;pviselheti egy mező vagy t&ouml;bb mező is.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul azokat a helyeket szeretn&eacute; megtal&aacute;lni, ahol a hurrik&aacute;nok t&ouml;bb időt t&ouml;ltenek, a hurrik&aacute;n nev&eacute;t haszn&aacute;lhatja nyomvonalmezők&eacute;nt.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>A távolság kiszámításához használt módszer kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A nyomvonalakon bel&uuml;l a v&aacute;rakoz&aacute;s t&aacute;vols&aacute;g&aacute;nak kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt m&oacute;dszer. A  <b>S&iacute;kbeli</b> m&oacute;dszer gyorsabban sz&aacute;molhatja az eredm&eacute;nyeket, de nem k&eacute;sz&iacute;t nyomvonalakat a nemzetk&ouml;zi d&aacute;tumv&aacute;laszt&oacute; vonalon, &eacute;s nem veszi figyelembe a f&ouml;ld t&eacute;nyleges alakj&aacute;t bufferel&eacute;s k&ouml;zben. A <b>Geod&eacute;ziai</b> m&oacute;dszer sz&uuml;ks&eacute;g eset&eacute;n k&eacute;sz&iacute;t nyomvonalakat a nemzetk&ouml;zi d&aacute;tumv&aacute;laszt&oacute; vonalon, &eacute;s geod&eacute;ziai bufferel&eacute;st alkalmaz a f&ouml;ld alakj&aacute;nak figyelembev&eacute;tele &eacute;rdek&eacute;ben.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Térbeli keresési távolság meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>A v&aacute;rakoz&aacute;si t&aacute;vols&aacute;g tűr&eacute;se az a pontok k&ouml;z&ouml;tti maxim&aacute;lis t&aacute;vols&aacute;g, amelyet egy v&aacute;rakoz&aacute;si helyen figyelembe kell venni.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul olyan v&aacute;rakoz&aacute;si helyeket szeretne megtal&aacute;lni, ahol a forgalom nem mozdult 20 m&eacute;tern&eacute;l t&ouml;bbet egy bizonyos idő alatt, akkor a t&aacute;vols&aacute;g tűr&eacute;se 20 m&eacute;ter lenne.
+            </p>
+            <p>Az idő megad&aacute;s&aacute;hoz haszn&aacute;lja az  <b>Időbeli keres&eacute;si tartom&aacute;ny meghat&aacute;roz&aacute;sa</b> param&eacute;tert.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Nyomvonalak felosztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A t&aacute;vols&aacute;g tűr&eacute;s&eacute;nek m&eacute;rt&eacute;kegys&eacute;ge.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Időbeli keresési tartomány meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>A v&aacute;rakoz&aacute;si idő tűr&eacute;se az a minim&aacute;lis v&aacute;rakoz&aacute;si időtartam, amelyet egy v&aacute;rakoz&aacute;si helyen figyelembe kell venni.
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul tudni szeretn&eacute;, hogy hol nem mozdult a forgalom egy bizonyos t&aacute;vols&aacute;gn&aacute;l t&ouml;bbet egy &oacute;ra alatt, akkor az idő tűr&eacute;se 1 &oacute;ra lenne.
+            </p>
+            <p>A t&aacute;vols&aacute;g megad&aacute;s&aacute;hoz haszn&aacute;lja a  <b>T&eacute;rbeli keres&eacute;si tartom&aacute;ny meghat&aacute;roz&aacute;sa</b> param&eacute;tert.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Válassza ki az útvonal felosztásához használni kívánt távolságot (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az idő tűr&eacute;s&eacute;nek m&eacute;rt&eacute;kegys&eacute;ge.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statisztika hozzáadása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Statisztik&aacute;kat sz&aacute;m&iacute;that &ouml;sszes&iacute;tett vektoros elemeken. Numerikus mezők&ouml;n a k&ouml;vetkező statisztik&aacute;k sz&aacute;m&iacute;that&oacute;k: 
+                <ul>
+                    <li>Sz&aacute;m &ndash; a nem null &eacute;rt&eacute;kek darabsz&aacute;m&aacute;t sz&aacute;m&iacute;tja ki. Numerikus mezők&ouml;n vagy karakterl&aacute;ncokon haszn&aacute;lhat&oacute;. A [null, 0, 2] darabsz&aacute;ma 2.
+                    </li>
+                    <li>&Ouml;sszeg &ndash; egy mezőben l&eacute;vő numerikus &eacute;rt&eacute;kek &ouml;sszege. A [null, null, 3] &ouml;sszege 3.
+                    </li>
+                    <li>&Aacute;tlag &ndash; a numerikus &eacute;rt&eacute;kek &aacute;tlaga. A [0, 2, null] &aacute;tlaga 1.
+                    </li>
+                    <li>Min &ndash; egy numerikus mező legkisebb &eacute;rt&eacute;ke. A [0, 2, null] minimuma 0. 
+                    </li>
+                    <li>Max &ndash; egy numerikus mező legnagyobb &eacute;rt&eacute;ke. A [0, 2, null] maximuma 2.
+                    </li>
+                    <li>Terjedelem &ndash; egy numerikus mező terjedelme. Ennek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz az eszk&ouml;z a legkisebb &eacute;rt&eacute;keket vonja ki a legnagyobb &eacute;rt&eacute;kből. A [0, null, 1] terjedelme 1. A [null, 4] terjedelme 0.
+                    </li>
+                    <li>Variancia &ndash; egy numerikus mező varianci&aacute;ja egy k&ouml;vet&eacute;sben. Az [1] varianci&aacute;ja null &eacute;rt&eacute;kű. A [null, 1, 0, 1, 1] varianci&aacute;ja 0,25.
+                    </li>
+                    <li>Sz&oacute;r&aacute;s &ndash; egy numerikus mező sz&oacute;r&aacute;sa. Az [1] sz&oacute;r&aacute;sa null &eacute;rt&eacute;kű. A [null, 1, 0, 1, 1] sz&oacute;r&aacute;sa 0,5. 
+                    </li>
+                    <li>Első &ndash; A megadott mező első &eacute;rt&eacute;ke az &ouml;sszes&iacute;tett k&ouml;vet&eacute;sben. Ha az adott k&eacute;pkockasorozat a k&ouml;vetkező, idősorrend szerint rendezett &eacute;rt&eacute;kekkel rendelkezik valamely mezőre: [1,5,10,20], akkor az első &eacute;rt&eacute;k az 1.
+                    </li>
+                    <li>Utols&oacute; &ndash; A megadott mező utols&oacute; &eacute;rt&eacute;ke az &ouml;sszes&iacute;tett k&eacute;pkockasorozatban. Ha az adott k&eacute;pkockasorozat a k&ouml;vetkező, idősorrend szerint rendezett &eacute;rt&eacute;kekkel rendelkezik valamely mezőre: [1,5,10,20], akkor az utols&oacute; &eacute;rt&eacute;k a 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Karakterl&aacute;nc t&iacute;pus&uacute; mezők&ouml;n a k&ouml;vetkező statisztik&aacute;k sz&aacute;m&iacute;that&oacute;k:
+                <ul>
+                    <li>Sz&aacute;m &ndash; a nem null karakterl&aacute;ncok darabsz&aacute;ma.
+                    </li>
+                    <li>B&aacute;rmelyik &ndash; ez a statisztika a megadott mezőben l&eacute;vő karakterl&aacute;nc egy v&eacute;letlenszerű mint&aacute;ja.
+                    </li>
+                    <li>Első &ndash; A megadott mező első &eacute;rt&eacute;ke az &ouml;sszes&iacute;tett k&eacute;pkockasorozatban. Ha az adott mező a k&ouml;vetkező, idősorrend szerint rendezett &eacute;rt&eacute;kekkel rendelkezik valamely mezőre: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], akkor az első &eacute;rt&eacute;k Toronto.
+                    </li>
+                    <li>Utols&oacute; &ndash; A megadott mező utols&oacute; &eacute;rt&eacute;ke az &ouml;sszes&iacute;tett k&eacute;pkockasorozatban. Ha az adott mező a k&ouml;vetkező, idősorrend szerint rendezett &eacute;rt&eacute;kekkel rendelkezik valamely mezőre: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], akkor az utols&oacute; &eacute;rt&eacute;k Boston.
+                    </li>
+                </ul>
+                Mindegyik statisztika sz&aacute;m&iacute;t&aacute;sa nem null &eacute;rt&eacute;keken t&ouml;rt&eacute;nik. Az eredm&eacute;ny&uuml;l kapott r&eacute;teg kisz&aacute;m&iacute;tott statisztikai adatonk&eacute;nt egy-egy &uacute;j mezőt fog tartalmazni. Attrib&uacute;tum &eacute;s statisztika kiv&aacute;laszt&aacute;s&aacute;val tetszőleges sz&aacute;m&uacute; statisztika hozz&aacute;adhat&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Várakozási helyek visszaadása kimenetként mint</h2></div>
+        <hr/>
+        <div>
+            <p>Itt adhat&oacute; meg, hogy melyik vektoros elemek szerepeljenek a kimenetben &eacute;s milyen form&aacute;tumban. N&eacute;gy t&iacute;pus &aacute;ll rendelkez&eacute;sre: 
+                <ul>
+                    <li> <b>&Aacute;tlagos k&ouml;z&eacute;ppontok</b> &ndash; a felfedezett v&aacute;rakoz&aacute;si helyek centroidj&aacute;t &aacute;br&aacute;zol&oacute; pont. Az attrib&uacute;tumok &ouml;sszes&iacute;tve lesznek. Ez az alap&eacute;rtelmez&eacute;s.
+                         
+                    </li>
+                    <li> <b>Legkisebb konvex befoglal&oacute; poligonokok</b> &ndash; az egyes v&aacute;rakoz&aacute;scsoportok legkisebb konvex befoglal&oacute; poligonj&aacute;t &aacute;br&aacute;zol&oacute; poligonok. Az attrib&uacute;tumok &ouml;sszes&iacute;tve lesznek.
+                         
+                    </li>
+                    <li> <b>V&aacute;rakoz&aacute;s vektoros elemei</b> &ndash; a v&aacute;rakoz&aacute;shoz tartoz&oacute;nak v&eacute;lt &ouml;sszes bemeneti pontszerű vektoros elemet &eacute;s attrib&uacute;tumot visszaadja eredm&eacute;nyk&eacute;nt.
+                         
+                    </li>
+                    <li> <b>&Ouml;sszes vektoros elem</b> &ndash; az &ouml;sszes bemeneti pontszerű vektoros elemet &eacute;s attrib&uacute;tumot visszaadja eredm&eacute;nyk&eacute;nt.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Adatokat elemezhet időintervallumokkal (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Adja meg, hogy szeretne-e v&aacute;rakoz&aacute;si keresni időintervallumok haszn&aacute;lat&aacute;val, amelyek szegment&aacute;lj&aacute;k a bemeneti vektoros elemeket az elemz&eacute;shez. Ha időintervallumokat haszn&aacute;l, meg kell adnia a haszn&aacute;lni k&iacute;v&aacute;nt időintervallumot &eacute;s opcion&aacute;lisan a referenciaidőt is. Ha nem ad meg referenciaidőt, akkor a referenciaidő 1970. jan. 1-je lesz. 
+            </p>
+            <p>Ha p&eacute;ld&aacute;ul időhat&aacute;rnak 1 napot ad meg 1990. janu&aacute;r 1-je reggel 9:00 &oacute;rai kezdettel, akkor minden k&ouml;vet&eacute;s minden napra 9:00 &oacute;rakor ker&uuml;l csonkol&aacute;sra &eacute;s elemz&eacute;sre azon szegmensen bel&uuml;l. A v&aacute;rakoz&aacute;sok nem indulnak el 9:00 előtt, &eacute;s az ut&aacute;n fejeződnek be. 
+            </p>
+            <p>Az időintervallumok haszn&aacute;lata gyors m&oacute;dja a sz&aacute;m&iacute;t&aacute;si idő gyors&iacute;t&aacute;s&aacute;nak, mivel gyorsan hoz l&eacute;tre kisebb k&ouml;vet&eacute;seket elemz&eacute;sre. Ha egy ism&eacute;tlődő időintervallummal t&ouml;rt&eacute;nő bont&aacute;s &eacute;szszerű az &ouml;n elemz&eacute;se eset&eacute;n, akkor aj&aacute;nlott big data feldolgoz&aacute;shoz haszn&aacute;lni.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p> A l&eacute;trej&ouml;vő r&eacute;teg neve.  Ha egy ArcGIS Data Store helyre &iacute;r, akkor eredm&eacute;nyei a  <b>Saj&aacute;t tartalom</b> alatt lesznek elmentve, &eacute;s hozz&aacute; lesznek adva a t&eacute;rk&eacute;phez. Ha egy big data f&aacute;jlmegoszt&oacute;ba &iacute;r, akkor eredm&eacute;nyei a big data f&aacute;jlmegoszt&oacute;ba lesznek elmentve, &eacute;s hozz&aacute; lesznek adva annak jegyz&eacute;kf&aacute;jlj&aacute;hoz. Nem lesznek hozz&aacute;adva a t&eacute;rk&eacute;phez. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a művelet sikertelen lesz.
+            </p>
+            <p>Ha  ArcGIS Data Store (rel&aacute;ci&oacute;s vagy t&eacute;rbeli-időbeli big data) adatt&aacute;rba &iacute;r az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mező haszn&aacute;lat&aacute;val, akkor megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

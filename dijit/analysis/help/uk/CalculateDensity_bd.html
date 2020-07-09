@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Calculate Density</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose a point layer from which to calculate density</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Choose one or more fields to calculate density on (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
+can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Choose a bin shape</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+            <p>Для аналізу з використанням квадратних або шестикутних контейнерів потрібна система координат проекції. Можна задати Систему координат процесу у Середовищах аналізу. Якщо для системи координат процесу не задано систему координат проекції, вам буде запропоновано установити її при запуску аналізу .
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Select the bin size for aggregation</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Select the density weighting to apply</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Select the neighborhood size</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Choose the output units for density</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Calculate density using time steps (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Якщо на вхідному точковому шарі активований час і тип часу &mdash; &laquo;поточний момент&raquo;, можна виконувати покроковий часовий аналіз. При використанні часу можна задати три параметри:
+                <ul>
+                    <li> <b>Інтервал часових кроків</b>
+                    </li>
+                    <li> <b>Як часто повторювати часовий крок</b>
+                    </li>
+                    <li> <b>Час, з яким узгоджуватимуться часові кроки</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Наприклад, якщо у вас є дані, які представляють рік у часі і вам потрібно проаналізувати їх за допомогою тижневих кроків, установіть  <b>Інтервал часових кроків</b> на <code>1 тиждень</code>. 
+            </p>
+            <p>Наприклад, якщо у вас є дані, які представляють рік у часі, і вам потрібно проаналізувати їх, використовуючи перший тиждень місяця, установіть  <b>Інтервал часових кроків</b> на <code>1 тиждень</code>, <b>Як часто повторювати часовий крок</b> на <code>1 місяць</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>1 січня, 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time step interval</h2></div>
+        <hr/>
+        <div>
+            <p>Інтервал часу для генерування часових кроків.  <b>Інтервал часових кроків</b> може використовуватися самостійно або разом з параметром <b>Як часто повторювати часовий крок</b> або <b>Час, з яким узгоджуватимуться часові кроки</b>.
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>How often to repeat the time step</h2></div>
+        <hr/>
+        <div>
+            <p> Крок, використовуваний для розрахунку часового кроку. <b>Як часто повторювати часовий крок</b> може використовуватися самостійно, з <b>Інтервал часових кроків</b>, з <b>Опорний час</b> або одночасно з <b>Інтервал часових кроків</b> і <b>Час, з яким узгоджуватимуться часові кроки</b>.
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Time to align time steps to</h2></div>
+        <hr/>
+        <div>
+            <p>Дата і час для узгодження часових кроків. Покроковий часовий аналіз розпочнеться о і попрямує назад від цього часу. Якщо опорний час не вибраний, покроковий часовий аналіз буде узгоджений на 1 січня 1970 р. 
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Це тимчасовий параметр для передрелізної версії, який задає просторову прив&rsquo;язку процесу. Багато інструментів для роботи з великими даними вимагають, щоб система координат проекції використовувалася як просторова прив&rsquo;язка для обробки. За замовчування інструмент використовує вхідну систему координат, але не зможе працювати, якщо це географічна система координат. Щоб задати систему координат проекції, введіть WKID. Наприклад, для  <b>Web Mercator</b> потрібно ввести <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose data store</h2></div>
+        <hr/>
+        <div>
+            <p>Результати GeoAnalytics зберігаються у  сховищі даних та відображаються як векторний шар у  Portal for ArcGIS. У більшості випадків результати потрібно зберігати у просторово-часовому сховищі даних, що задано за замовчуванням. У деяких випадках гарною опцією є зберігання результатів у реляційному сховищі даних. Нижче наведено причини, чому може знадобитись зберігання результатів у реляційному сховищі даних: 
+                <ul>
+                    <li>Для використання результатів у співпраці між порталами
+                    </li>
+                    <li>Для активації можливості синхронізації з вашими результатами.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Не рекомендується використовувати реляційне сховище даних, якщо ви очікуєте збільшення ваших результатів GeoAnalytics. В цьому випадку слід скористатись можливостями просторово-часового сховища великих даних для зберігання великих обсягів даних.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

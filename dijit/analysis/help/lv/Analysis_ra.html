@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku kopas, kas pa&scaron;laik ir pieejamas, izmantojot  Portal for ArcGIS tīmekļa lietotāju pieredzi, ir  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Izmantot tuvumu</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b>, <b>Pārvaldīt datus</b> un <b>Deep Learning</b>.
+        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku kopas, kas pa&scaron;laik ir pieejamas, izmantojot  Portal for ArcGIS tīmekļa lietotāju pieredzi, ir  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Izmantot tuvumu</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b>, <b>Pārvaldīt datus</b>, <b>Deep Learning</b> un <b>Multidimensiju analīze</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Noteikt pārvietošanas izmaksu ceļu kā polilīniju</h2></td>
+                    <td><h2>Noteikt ceļošanas izmaksu ceļu kā polilīniju</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Rīka Noteikt ceļo&scaron;anas izmaksu ceļu kā polilīniju ilustrācija">
                     </td>
@@ -328,7 +328,7 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
-        <h2>Pārvaldīt datus</h2>
+        <h2>Datu pārvaldība</h2>
         <hr/>
         <p>&Scaron;ie rīki tiek izmantoti gan ikdienas ģeogrāfisko datu pārvaldī&scaron;anai, gan datu apvieno&scaron;anai pirms analīzes. 
             <ul>
@@ -340,13 +340,15 @@
                     
 
                 </li>
-                <li> <b>Konvertēt elementu par rastru</b> rastrē vektora datus.
+                <li>Rīks  <b>Pārvērst elementu par rastru</b> vektora datus pārvēr&scaron; rastra attēlā.
                     
 
                 </li>
-                <li> <b>Konvertēt rastru par elementu</b> vektorizē rastra datus.
+                <li>Rīks  <b>Pārvērst rastru par elementu</b> rastra datus pārvēr&scaron; vektoru attēlā.
                     
 
+                </li>
+                <li>Rīks  <b>Paraugs</b> izgūst datus no rastra vai rastru kopām norādītās atra&scaron;anās vietās.
                 </li>
             </ul>
             
@@ -401,9 +403,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Konvertēt rastru par elementu</h2></td>
+                    <td><h2>Pārvērst rastru par elementu</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Portāla rīks Konvertēt rastru par elementu">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Rīks Pārvērst rastru par elementu">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
-    <div id="DeepLearningCategory" class="regularsize">
-        <h2>Rīku komplekta Deep Learning</h2>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Paraugs</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Paraugs">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Izveido tabulas vai punktu elementu klasi ar datu vērtībām norādītajās atra&scaron;anās vietās, kas izgūtas no rastra vai rastru kopas.
+            </p>
+            <br/>
+        </div>
+    <div id="DeepLearningCategory" class="largesize">
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>&Scaron;ie rīki tiek izmantoti, lai noteiktu specifiskas attēla iezīmes vai klasificētu pikseļus rastra datu kopā. Deep Learning ir mākslīgā intelekta ma&scaron;īnmācību metode, kas nosaka elementus attēlos, izmantojot vairākus slāņus neironu tīklos, kur katrs slānis spēj izvilkt vienu vai vairākus unikālus attēla elementus. &Scaron;ie rīki izmanto modeļus, kas ir trenēti noteikt īpa&scaron;as iezīmes tre&scaron;ās puses Deep Learning struktūrās, piemēram, TensorFlow, CNTK un Keras&mdash;un izvades elementus vai klases kartes.
+        <p>&Scaron;ie rīki tiek izmantoti, lai noteiktu vai klasificētu konkrētus attēla elementus vai klasificētu pikseļus rastra datu kopā. Deep Learning ir mākslīgā intelekta ma&scaron;īnmācību metode, kas nosaka elementus attēlos, izmantojot vairākus slāņus neironu tīklos, kur katrs slānis spēj izgūt vienu vai vairākus unikālus attēla elementus. &Scaron;ie rīki izmanto modeļus, kas ir trenēti noteikt īpa&scaron;as iezīmes tre&scaron;ās puses Deep Learning struktūrās, piemēram, TensorFlow, CNTK un Keras&mdash;un izvades elementus vai klases kartes.
             <ul>
                 <li> <b>Klasificēt pikseļus, izmantojot Deep Learning,</b> veido klasificētu rastru, izmantojot Deep Learning modeli.
                 </li>
-                <li> <b>Noteikt objektus, izmantojot Deep Learning,</b> uzveido elementu klasi, kas satur objektus, kurus tā atrod ievades rastrā, izmantojot trenētu Deep Learning modeli.
+                <li> <b>Noteikt objektus, izmantojot Deep Learning</b> izveido elementu klasi, kas satur objektus, kurus funkcija atrod ievades rastrā, izmantojot apmācītu Deep Learning modeli.
+                </li>
+                <li> <b>Klasificēt objektus, izmantojot Deep Learning</b> izveido elementu klasi vai tabulu, kurā katram ievades rastra ievades objektam tiek pie&scaron;ķirts klases apzīmējums, izmantojot apmācītu Deep Learning modeli.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tiek palaists trenēts Deep Learning modelis uz ievades rastra, lai radītu klasificētu rastru, kuram katram derīgajam pikselim ir pie&scaron;ķirta klases atzīme.
+            <p>&Scaron;is rīks izmanto trenētu Deep Learning modeli uz ievades rastra, lai izveidotu klasificētu rastru, un katram derīgajam pikselim ir pie&scaron;ķirta klases atzīme.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tiek palaists trenēts Deep Learning modelis uz ievades rastra, lai izveidotu funkciju klasi, kurā ir atrastie objekti. &Scaron;ie elementi var būt lodziņi vai laukumi ap atrastajiem objektiem vai punkti objektu centros.
+            <p>&Scaron;is rīks izmanto trenētu Deep Learning modeli uz ievades rastra, lai izveidotu elementu klasi, kurā ir atrastie objekti. &Scaron;ie elementi var būt lodziņi vai laukumi ap atrastajiem objektiem vai punkti objektu centros.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasificēt objektus, izmantojot Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasificēt objektus, izmantojot Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks izmanto Deep Learning modeli ievades rastra vai papildu elementu klasei, lai izveidotu elementu klasi vai tabulu, kurā katram ievades objektam ir pie&scaron;ķirts klases apzīmējums.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Multidimensiju analīze</h2>
+        <hr/>
+        <p>Multidimensiju analīzes rīku komplektā pieejamie rīki jums ļauj analizēt zinātniskos datus dažādu mainīgo un dimensiju ietvaros.
+        </p>
+        <p>Multidimensiju dati ir dažādos laikos, dziļumos un augstumos savākti dati. &Scaron;ī veida datus parasti izmanto atmosfēras, okeanogrāfijas un zemes zinātnē. &Scaron;ajā rīku komplektā jūsu varat analizēt multidimensiju rastra datus dažādos formātos, tostarp netCDF, HDF, GRIB, multidimensiju mozaīkas datu kopā un Esri Cloud Raster Format (CRF).
+        </p>
+        <p>Tālāk redzamajā tabulā ir norādīti multidimensiju analīzes rīki un īss katra rīka aprasts.
+            <ul>
+                <li>Rīks  <b>Apkopot multidimensiju rastru</b> ģenerē multidimensiju rastra datu kopu, dimensijā apkopojot eso&scaron;ā multidimensiju rastra mainīgos.
+                </li>
+                <li>Rīks  <b>Ģenerēt multidimensiju anomāliju</b> aprēķina katra sektora anomāliju multidimensiju rastrā, lai ģenerētu multidimensiju rastru.
+                </li>
+                <li>Rīks  <b>Ģenerēt tendences rastru</b> izvērtē katra pikseļa tendenci dimensijā vienam vai vairākiem multidimensiju rastra mainīgajiem.
+                </li>
+                <li>Rīks  <b>Prognozēt, izmantojot tendenču rastru</b> aprēķina prognozēto multidimensiju rastru, izmantojot rīka <b>Ģenerēt tendenču rastru</b> izvades tendenču rastru.
+                </li>
+                <li>Rīks  <b>Atrast argumenta statistiku</b> izgūst dimensijas vērtību jeb joslas indeksu, pie kura katram pikselim multidimensiju vai vairāku joslu rastrā tiek panākta konkrēta statistika.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Apkopot multidimensiju rastru</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Apkopot multidimensiju rastru">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks ģenerē multidimensiju rastru datu kopu, apkopojot dimensijā eso&scaron;os multidimensiju rastra mainīgos.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atrast argumenta statistiku</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Atrast argumenta statistiku">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks izgūst dimensijas vērtību jeb joslas indeksu, pie kura katram pikselim multidimensiju vai vairāku joslu rastrā tiek panākta konkrēta statistika.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ģenerēt multidimensiju anomāliju</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ģenerēt multidimensiju anomāliju">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina katras sadaļas anomāliju multidimensiju rastrā, lai ģenerētu multidimensiju rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ģenerēt tendences rastru</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Ģenerēt tendences rastru">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks izvērtē katra pikseļa tendenci dimensijā vienam vai vairākiem multidimensiju rastra mainīgajiem.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prognozēt, izmantojot tendenču rastru</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prognozēt, izmantojot tendenču rastru">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina prognozēto multidimensiju rastru, izmantojot rīka  <b>Ģenerēt tendenču rastru</b> izvades tendenču rastru.
             </p>
             <br/>
         </div>

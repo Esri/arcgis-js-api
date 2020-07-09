@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klasyfikuj obiekty metodą Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasyfikuj obiekty metodą Deep Learning"></h2>
+        <hr/>
+    <p>To narzędzie uruchamia w rastrze wejściowym model wytrenowany metodą Deep Learning i opcjonalnie klasę obiekt&oacute;w w celu utworzenia klasy obiekt&oacute;w lub tabeli, w kt&oacute;rej każdy obiekt wejściowy ma przypisaną etykietę klasy.
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj zasięgu bieżącej mapy</b>, analizowany będzie tylko ten obszar rastra, kt&oacute;ry jest widoczny w bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowany zostanie cały raster, nawet jeśli znajduje się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Wybierz obraz używany do klasyfikowania obiektów</h2></div>
+        <hr/>
+        <div>
+            <p>Obraz wejściowy używany do wykrywania obiekt&oacute;w.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Wybierz warstwę obiektową obiektów (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Wejściowa warstwa obiekt&oacute;w punktowych, liniowych lub poligonowych, kt&oacute;ra identyfikuje lokalizację każdego obiektu do sklasyfikowania i oznaczenia etykietą. Każdy wiersz w wejściowej warstwie obiektowej reprezentuje jeden obiekt.
+            </p>
+            <p>Jeśli nie podano wejściowej warstwy obiektowej, narzędzie przyjmuje, że każdy obraz wejściowy zawiera jeden obiekt do sklasyfikowania. Jeśli obraz lub obrazy wejściowe korzystają z odniesienia przestrzennego, dane wynikowe z narzędzia to warstwa obiektowa, w kt&oacute;rej zasięg każdego obrazu jest używany jako geometria ograniczająca poszczeg&oacute;lne obiekty oznaczone etykietami. Jeśli obraz lub obrazy wejściowe nie korzystają z odniesienia przestrzennego, dane wynikowe z narzędzia to tabela zawierająca wartości identyfikator&oacute;w obraz&oacute;w oraz etykiety klas poszczeg&oacute;lnych obraz&oacute;w.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Wybierz model Deep Learning używany do klasyfikowania obiektów</h2></div>
+        <hr/>
+        <div>
+            <p>Element wejściowego pakietu Deep Learning ( <code>.dlpk</code>).
+            </p>
+            <p>Pakiet Deep Learning składa się z pliku JSON definicji modelu Esri ( <code>.emd</code>) pliku modelu binarnego Deep Learning i opcjonalnie funkcji rastrowej w języku Python, kt&oacute;ra ma być używana.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Podaj argumenty modelu Deep Learning</h2></div>
+        <hr/>
+        <div>
+            <p>Argumenty funkcji są zdefiniowane w klasie funkcji rastrowej w języku Python, do kt&oacute;rej odwołuje się model wejściowy. W tym miejscu wymienione są dodatkowe parametry i argumenty Deep Learning na potrzeby eksperyment&oacute;w i precyzowania, takie jak pr&oacute;g ufności używany podczas dostosowywania czułości.
+            </p>
+            <p>Nazwy argument&oacute;w są uzupełniane przez narzędzie, kt&oacute;re odczytuje moduł Python z serwera analiz rastrowych.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Zdefiniuj nazwę pola etykiety klasy</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa pola zawierającego etykietę klasyfikacji w wynikowej warstwie obiektowej.
+            </p>
+            <p>Jeśli nie podano nazwy pola, w wynikowej warstwie obiektowej zostanie wygenerowane nowe pole o nazwie  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Tryb przetwarzania</h2></div>
+        <hr/>
+        <div>
+            <p>Określa spos&oacute;b przetwarzania wszystkich element&oacute;w rastrowych w usłudze obrazowej. 
+                <ul>
+                    <li> <b>Przetwarzaj jako obraz mozaikowy</b> &mdash; wszystkie elementy rastrowe w usłudze obrazowej zostaną połączone w mozaikę i przetworzone. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Przetwarzaj elementy osobno</b> &mdash; wszystkie elementy rastrowe w usłudze obrazowej zostaną przetworzone jako osobne obrazy.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

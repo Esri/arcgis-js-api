@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Predecir con ráster de tendencia</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predecir con r&aacute;ster de tendencia"></h2>
+        <hr/>
+    <p>Calcula un r&aacute;ster multidimensional previsto utilizando el r&aacute;ster de tendencia de salida de la herramienta  Generar r&aacute;ster de tendencia.
+    </p>
+    <p>Si  <b>Usar la extensi&oacute;n de mapa actual</b> est&aacute; activado, se analizar&aacute;n las variables de la capa que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si no est&aacute; activado, se analizar&aacute;n las variables de la capa completa, incluso si se encuentran fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Elegir capa de imágenes multidimensional que se va a predecir</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de tendencia multidimensional de entrada de la herramienta  Generar r&aacute;ster de tendencia.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Elegir variables que se van a predecir</h2></div>
+        <hr/>
+        <div>
+            <p>Las variables que se van a predecir en el an&aacute;lisis. Si no se especifica ninguna variable, se utilizar&aacute;n todas las variables.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Elegir el método utilizado para ofrecer valores de dimensión de predicción</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el m&eacute;todo utilizado para ofrecer valores de dimensi&oacute;n de predicci&oacute;n.
+                <ul>
+                    <li> <b>Por valor</b>: la predicci&oacute;n se calcular&aacute; para un &uacute;nico valor de dimensi&oacute;n o una lista de valores de dimensi&oacute;n especificados en el siguiente paso. Esta es la opci&oacute;n predeterminada. Por ejemplo, desea predecir la precipitaci&oacute;n anual de los a&ntilde;os 2050, 2100 y 2150.
+                    </li>
+                    <li> <b>Por intervalo</b>: la predicci&oacute;n se calcular&aacute; para un intervalo de la dimensi&oacute;n definida mediante un valor inicial y final. Por ejemplo, desea predecir la precipitaci&oacute;n anual de cada a&ntilde;o entre el 2050 y el 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Especificar valores de dimensión para predicción</h2></div>
+        <hr/>
+        <div>
+            <p>El valor o los valores de dimensi&oacute;n que se utilizar&aacute;n en la predicci&oacute;n.
+            </p>
+            <p>El formato de los valores de tiempo, profundidad y altura debe coincidir con el formato de los valores de dimensi&oacute;n utilizados para generar el r&aacute;ster de tendencia. Si el r&aacute;ster de tendencia se gener&oacute; para la dimensi&oacute;n StdTime, el formato deber&iacute;a ser AAAA-MM-DDTHH:MM:SS, por ejemplo 2050-01-01T00:00:00. Varios valores se separan mediante punto y coma.
+            </p>
+            <p>Este par&aacute;metro se requiere cuando se selecciona el m&eacute;todo  <b>Por valor</b> para definir los valores de dimensi&oacute;n para predicci&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definir el intervalo de dimensión para predicción</h2></div>
+        <hr/>
+        <div>
+            <p>Defina la fecha de inicio y fin, la altura o la profundidad de inicio del intervalo de dimensi&oacute;n que se utilizar&aacute;n en la predicci&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Especificar el número de pasos entre los valores de inicio y fin</h2></div>
+        <hr/>
+        <div>
+            <p>El n&uacute;mero de pasos entre dos valores de dimensi&oacute;n que se incluir&aacute;n en la predicci&oacute;n. El valor predeterminado es 1.
+            </p>
+            <p>Por ejemplo, para predecir valores de temperatura cada cinco a&ntilde;os, utilice un valor de 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Elija la unidad que se usará para el intervalo de valores de tiempo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unidad que se usar&aacute; para el intervalo de valores. Esto solo se aplica cuando la dimensi&oacute;n del an&aacute;lisis es una dimensi&oacute;n de tiempo.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

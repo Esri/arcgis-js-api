@@ -19,8 +19,8 @@
 @import url('./infographics/LocatorTableInfographic.css');
 @import url('./infographics/PaginatableTableInfographic.css');
 @import url('./infographics/SimpleInfographic.css');
-@import url('./infographics/SimpleInfographic_dataDrilling.css');
-@import url('./infographics/SimpleInfographic_dataDrillingSlide.css');
-@import url('./infographics/SimpleInfographic_dataDrillingZoom.css');
+
+@import url('./DataDrilling.css');
+@import url('./DataDrilling_zoom.css');
 
 @import url('./ComparisonSelect.css');

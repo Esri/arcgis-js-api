@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A raszterelemz&eacute;s lehetőv&eacute; teszi nagy m&eacute;retű raszteres adathalmazok elemz&eacute;s&eacute;t az  ArcGIS Image Server seg&iacute;ts&eacute;g&eacute;vel. &Iacute;gy a szerver erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. A  Portal for ArcGIS port&aacute;lon kereszt&uuml;l jelenleg a k&ouml;vetkező eszk&ouml;zk&eacute;szletek &eacute;rhetők el:  <b>Adatok &ouml;sszegz&eacute;se</b>, <b>Mint&aacute;zatok elemz&eacute;se</b>, <b>K&ouml;zels&eacute;g haszn&aacute;lata</b>, <b>K&eacute;p elemz&eacute;se</b>, <b>Felsz&iacute;nelemz&eacute;s</b>, <b>Adatok kezel&eacute;se</b> &eacute;s <b>deep learning</b>.
+        <p>A raszterelemz&eacute;s lehetőv&eacute; teszi nagy m&eacute;retű raszteres adathalmazok elemz&eacute;s&eacute;t az  ArcGIS Image Server seg&iacute;ts&eacute;g&eacute;vel. &Iacute;gy a szerver erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. A  Portal for ArcGIS port&aacute;lon kereszt&uuml;l jelenleg a k&ouml;vetkező eszk&ouml;zk&eacute;szletek &eacute;rhetők el:  <b>Adatok &ouml;sszegz&eacute;se</b>, <b>Mint&aacute;zatok elemz&eacute;se</b>, <b>K&ouml;zels&eacute;g haszn&aacute;lata</b>, <b>K&eacute;p elemz&eacute;se</b>, <b>Felsz&iacute;nelemz&eacute;s</b>, <b>Adatok kezel&eacute;se</b>, <b>M&eacute;ly Tanul&aacute;s</b> &eacute;s <b>T&ouml;bbdimenzi&oacute;s elemz&eacute;s</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -186,9 +186,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Útiköltség-útvonal meghatározása polyline-ként</h2></td>
+                    <td><h2>Útiköltség-útvonal meghatározása vonalláncként</h2></td>
                     <td>
-                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa polyline-k&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Az &Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa vonall&aacute;nck&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja">
                     </td>
                 </tr></tbody>
             </table>
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li>A  <b>Minta</b> meghat&aacute;rozott helyeken nyer ki adatokat raszterből vagy raszterek halmaz&aacute;b&oacute;l.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Minta</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Minta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Adat&eacute;rt&eacute;keket tartalmaz&oacute; t&aacute;bl&aacute;t vagy pontszerűvektoroselem-oszt&aacute;lyt hoz l&eacute;tre meghat&aacute;rozott, raszterből vagy raszterek halmaz&aacute;b&oacute;l kinyert helyeken.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Deep learning eszközkészlet</h2>
+        <h2>Mély Tanulás</h2>
         <hr/>
-        <p>Ezek az eszk&ouml;z&ouml;k 	egy k&eacute;pben tal&aacute;lhat&oacute; bizonyos vektoros elemek &eacute;szlel&eacute;s&eacute;re vagy egy raszteres adathalmazban tal&aacute;lhat&oacute; pixelek oszt&aacute;lyoz&aacute;s&aacute;ra haszn&aacute;lhat&oacute;k. A deep learning egy mesters&eacute;ges intelligencia g&eacute;pi tanul&aacute;si m&oacute;dszer, amely  vektoros elemeket ismer fel t&aacute;v&eacute;rz&eacute;kel&eacute;si r&eacute;tegben &uacute;gy, hogy t&ouml;bb r&eacute;teget alkalmaz a neur&aacute;lis h&aacute;l&oacute;zatban, ahol minden r&eacute;teg egy vagy t&ouml;bb vektoros elemet k&eacute;pes kinyerni a k&eacute;pből. Ezek az eszk&ouml;z&ouml;k azokat a tan&iacute;tott modelleket haszn&aacute;lj&aacute;k fel, amelyek k&eacute;pesek bizonyos vektoros elemeket felismerni harmadik f&eacute;l deep learning keretrendszereiben (pl. TensorFlow, CNTK &eacute;s Keras), &eacute;s kimenetk&eacute;nt vektoros elemeket vagy oszt&aacute;lyt&eacute;rk&eacute;peket hoznak l&eacute;tre.
+        <p>Ezek az eszk&ouml;z&ouml;k 	egy k&eacute;pben tal&aacute;lhat&oacute; bizonyos vektoros elemek &eacute;szlel&eacute;s&eacute;re vagy oszt&aacute;lyoz&aacute;s&aacute;ra, illetve egy raszteres adathalmazban tal&aacute;lhat&oacute; pixelek oszt&aacute;lyoz&aacute;s&aacute;ra haszn&aacute;lhat&oacute;k. A m&eacute;ly tanul&aacute;s egy mesters&eacute;ges intelligencia g&eacute;pi tanul&aacute;si m&oacute;dszer, amely felsz&iacute;ni jellegzetess&eacute;geket ismer fel t&aacute;v&eacute;rz&eacute;kel&eacute;si r&eacute;tegben &uacute;gy, hogy t&ouml;bb r&eacute;teget alkalmaz a neur&aacute;lis h&aacute;l&oacute;zatban, ahol minden r&eacute;teg egy vagy t&ouml;bb vektoros elemet k&eacute;pes kinyerni a k&eacute;pből. Ezek az eszk&ouml;z&ouml;k azokat a tan&iacute;tott modelleket haszn&aacute;lj&aacute;k fel, amelyek k&eacute;pesek bizonyos felsz&iacute;ni jellegzetess&eacute;geket felismerni harmadik f&eacute;l m&eacute;ly tanul&aacute;s keretrendszereiben (pl. TensorFlow, CNTK &eacute;s Keras), &eacute;s kimenetk&eacute;nt vektoros elemeket vagy oszt&aacute;lyt&eacute;rk&eacute;peket hoznak l&eacute;tre.
             <ul>
-                <li>A  <b>Pixelek oszt&aacute;lyoz&aacute;sa deep learning haszn&aacute;lat&aacute;val</b> eszk&ouml;z tan&iacute;tott deep learningi modell haszn&aacute;lat&aacute;val oszt&aacute;lyozott rasztert hoz l&eacute;tre.
+                <li>A  <b>Pixelek oszt&aacute;lyoz&aacute;sa m&eacute;ly tanul&aacute;s haszn&aacute;lat&aacute;val</b> eszk&ouml;z tan&iacute;tott m&eacute;ly tanul&aacute;s modell haszn&aacute;lat&aacute;val oszt&aacute;lyozott rasztert hoz l&eacute;tre.
                 </li>
-                <li>A  <b>deep learninget alkalmaz&oacute; objektumok felismer&eacute;se</b> eszk&ouml;z vektoroselem-oszt&aacute;lyt hoz l&eacute;tre, amely tartalmazza az eszk&ouml;z &aacute;ltal egy bemeneti raszterben tal&aacute;lt, tan&iacute;tott deep learningi modellt alkalmaz&oacute; objektumokat.
+                <li>A  <b>M&eacute;ly Tanul&aacute;st alkalmaz&oacute; objektumok felismer&eacute;se</b> eszk&ouml;z vektoroselem-oszt&aacute;lyt hoz l&eacute;tre, amely tartalmazza az eszk&ouml;z &aacute;ltal egy bemeneti raszterben tal&aacute;lt, tan&iacute;tott m&eacute;ly tanul&aacute;s modellt alkalmaz&oacute; objektumokat.
+                </li>
+                <li>Az  <b>Objektumok oszt&aacute;lyoz&aacute;sa m&eacute;ly tanul&aacute;s haszn&aacute;lat&aacute;val</b> eszk&ouml;z vektoroselem-oszt&aacute;lyt vagy t&aacute;bl&aacute;t hoz l&eacute;tre, amelyben minden bemeneti objektum oszt&aacute;lyc&iacute;mk&eacute;t kap egy tan&iacute;tott m&eacute;ly tanul&aacute;si modell haszn&aacute;lat&aacute;val.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tan&iacute;tott deep learning modellt futtat egy bemeneti raszteren egy oszt&aacute;lyozott raszter l&eacute;trehoz&aacute;s&aacute;ra, ahol minden &eacute;rv&eacute;nyes pixelnek van hozz&aacute;rendelt oszt&aacute;ly felirata.
+            <p>Ez az eszk&ouml;z tan&iacute;tott m&eacute;ly tanul&aacute;s modellt futtat egy bemeneti raszteren egy oszt&aacute;lyozott raszter l&eacute;trehoz&aacute;s&aacute;ra, &eacute;s minden &eacute;rv&eacute;nyes pixelnek lesz egy hozz&aacute;rendelt oszt&aacute;lya.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Deep learning modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
+            <p>Ez az eszk&ouml;z tan&iacute;tott m&aacute;ly tanul&aacute;s modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely a tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objektumok osztályozása mély tanulás használatával</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Objektumok oszt&aacute;lyoz&aacute;sa m&eacute;ly tanul&aacute;s haszn&aacute;lat&aacute;val">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z tan&iacute;tott m&eacute;ly tanul&aacute;si modellt futtat egy bemeneti raszteren &eacute;s egy opcion&aacute;lis vektoroselem-oszt&aacute;lyon egy oszt&aacute;lyozott raszter vagy t&aacute;bl&aacute;zat l&eacute;trehoz&aacute;s&aacute;ra, amelyben minden bemeneti objektum rendelkezik hozz&aacute;rendelt oszt&aacute;lyc&iacute;mk&eacute;vel.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Többdimenziós elemzés</h2>
+        <hr/>
+        <p>A T&ouml;bbdimenzi&oacute;s elemz&eacute;s eszk&ouml;zk&eacute;szletben l&eacute;vő eszk&ouml;z&ouml;kkel k&uuml;l&ouml;nf&eacute;le v&aacute;ltoz&oacute;kon &eacute;s dimenzi&oacute;kon &aacute;tny&uacute;l&oacute;an v&eacute;gezheti el a tudom&aacute;nyos adatok elemz&eacute;s&eacute;t.
+        </p>
+        <p>A t&ouml;bbdimenzi&oacute;s adatok k&ouml;z&ouml;tt t&ouml;bb alkalommal, k&uuml;l&ouml;nb&ouml;ző m&eacute;lys&eacute;gekben &eacute;s magass&aacute;gokban r&ouml;gz&iacute;tett adatok szerepelnek. Ilyen t&iacute;pus&uacute; adatokat rendszerint a l&eacute;gk&ouml;ri, oceanogr&aacute;fiai &eacute;s f&ouml;ldtani tudom&aacute;nyokban haszn&aacute;lnak fel. Ezzel az eszk&ouml;zk&eacute;szlettel t&ouml;bbf&eacute;le form&aacute;tumban &ndash; netCDF, HDF, GRIB, t&ouml;bbdimenzi&oacute;s mozaik-adathalmaz form&aacute;tumban, tov&aacute;bb&aacute; az Esri Cloud Raster Format (CRF) form&aacute;tum&aacute;ban &ndash; elemezhet t&ouml;bbdimenzi&oacute;s raszteradatokat.
+        </p>
+        <p>A k&ouml;vetkező t&aacute;bl&aacute;zat a t&ouml;bbdimenzi&oacute;s elemzőeszk&ouml;z&ouml;ket sorolja fel, &eacute;s r&ouml;vid &aacute;ttekint&eacute;ssel szolg&aacute;l mindegyik&uuml;kről.
+            <ul>
+                <li>A  <b>T&ouml;bbdimenzi&oacute;s Raszter &Ouml;sszes&iacute;t&eacute;se</b> a megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszterv&aacute;ltoz&oacute;k egyetlen dimenzi&oacute; ment&eacute;n val&oacute; &ouml;sszes&iacute;t&eacute;s&eacute;vel gener&aacute;l t&ouml;bbdimenzi&oacute;s raszteres adathalmazt.
+                </li>
+                <li>A  <b>T&ouml;bbdimenzi&oacute;s Anom&aacute;lia L&eacute;trehoz&aacute;sa</b> egy t&ouml;bbdimenzi&oacute;s raszterben l&eacute;vő mindegyik szeletre n&eacute;zve sz&aacute;m&iacute;tja ki az anom&aacute;li&aacute;t a t&ouml;bbdimenzi&oacute;s raszter l&eacute;trehoz&aacute;s&aacute;hoz.
+                </li>
+                <li>A  <b>Trendraszter l&eacute;trehoz&aacute;sa</b> az egyes pixelek trendj&eacute;t becs&uuml;li meg egy dimenzi&oacute; ment&eacute;n egy t&ouml;bbdimenzi&oacute;s raszter egy vagy t&ouml;bb v&aacute;ltoz&oacute;ja eset&eacute;n.
+                </li>
+                <li>Az  <b>Előrejelz&eacute;s trendraszterrel</b> művelet előre jelzett t&ouml;bbdimenzi&oacute;s rasztert sz&aacute;mol ki a <b>Trendraszter l&eacute;trehoz&aacute;sa</b> eszk&ouml;zből sz&aacute;rmaz&oacute; kimeneti trendraszter seg&iacute;ts&eacute;g&eacute;vel.
+                </li>
+                <li>Az  <b>Argumentumstatisztik&aacute;k keres&eacute;se</b> azt a dimenzi&oacute;&eacute;rt&eacute;ket vagy hull&aacute;mhossztartom&aacute;ny-indexet nyeri ki, amely mellett egy adott statisztika &eacute;rhető el egy t&ouml;bbdimenzi&oacute;s vagy t&ouml;bb hull&aacute;mhossztartom&aacute;nnyal rendelkező raszter minden egyes pixel&eacute;n&eacute;l.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Többdimenziós raszter összevonása</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="T&ouml;bbdimenzi&oacute;s raszter &ouml;sszevon&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z a megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszterv&aacute;ltoz&oacute;k egyetlen dimenzi&oacute; ment&eacute;n val&oacute; &ouml;sszes&iacute;t&eacute;s&eacute;vel gener&aacute;l t&ouml;bbdimenzi&oacute;s raszteres adathalmazt.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Argumentumstatisztikák keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Argumentumstatisztik&aacute;k keres&eacute;se">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z azt a dimenzi&oacute;&eacute;rt&eacute;ket vagy hull&aacute;mhossztartom&aacute;ny-indexet nyeri ki, amely mellett egy adott statisztika &eacute;rhető el egy t&ouml;bbdimenzi&oacute;s vagy t&ouml;bb hull&aacute;mhossztartom&aacute;nnyal rendelkező raszter minden egyes pixel&eacute;n&eacute;l.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Többdimenziós anomália létrehozása</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="T&ouml;bbdimenzi&oacute;s anom&aacute;lia l&eacute;trehoz&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z egy t&ouml;bbdimenzi&oacute;s raszterben l&eacute;vő mindegyik szeletre n&eacute;zve sz&aacute;m&iacute;tja ki az anom&aacute;li&aacute;t a t&ouml;bbdimenzi&oacute;s raszter l&eacute;trehoz&aacute;s&aacute;hoz.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trendraszter létrehozása</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Trendraszter l&eacute;trehoz&aacute;sa">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az egyes pixelek trendj&eacute;t becs&uuml;li meg egy dimenzi&oacute; ment&eacute;n egy t&ouml;bbdimenzi&oacute;s raszter egy vagy t&ouml;bb v&aacute;ltoz&oacute;ja eset&eacute;n.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Előrejelzés trendraszterrel</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Előrejelz&eacute;s trendraszterrel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z egy előre jelzett t&ouml;bbdimenzi&oacute;s rasztert sz&aacute;mol ki a  <b>Trendraszter l&eacute;trehoz&aacute;sa</b> eszk&ouml;zből sz&aacute;rmaz&oacute; kimeneti trendraszter seg&iacute;ts&eacute;g&eacute;vel.
             </p>
             <br/>
         </div>

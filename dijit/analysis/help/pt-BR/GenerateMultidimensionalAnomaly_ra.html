@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Gerar Anomalia Multidimensional</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Gerar Anomalia Multidimensional"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Uma anomalia &eacute; a diverg&ecirc;ncia de uma observa&ccedil;&atilde;o de seu valor padr&atilde;o, m&eacute;dia ou mediana.
+    </p>
+    <p>Esta ferramenta calcula anomalias com o passar do tempo para uma ou mais vari&aacute;veis em um raster multidimensional. Se voc&ecirc; tiver uma dimens&atilde;o de n&atilde;o tempo al&eacute;m da dimens&atilde;o de tempo, a anomalia ser&aacute; calculada em cada etapa na dimens&atilde;o adicional.
+    </p>
+    <p>Por exemplo, voc&ecirc; tem dados mensais de temperatura do oceano, coletado a cada 1 metro de profundidade at&eacute; 100 metros e voc&ecirc; deseja calcular as anomalias de temperatura como diverg&ecirc;ncias a partir da m&eacute;dia anual. Esta ferramenta determinar&aacute; as anomalias de temperatura baseado em uma m&eacute;dia anual se voc&ecirc; configurar  <b>Anual</b> como o <b>intervalo temporal para calcular a m&eacute;dia</b>, e retornar&aacute; valores de anomalia para cada uma das 100 profundidades.
+    </p>
+    <p>Isto ferramenta somente suporta conjuntos de dados raster multidimensional que tem uma dimens&atilde;o de tempo.
+    </p>
+    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, as vari&aacute;veis da camada que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se desmarcada, as vari&aacute;veis da camada total ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Escolher camada de imagens multidimensionais para gerar anomalia</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de imagens de entrada de um conjunto de dados raster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Escolher variáveis para as quais serão geradas anomalias</h2></div>
+        <hr/>
+        <div>
+            <p>A vari&aacute;vel ou vari&aacute;veis em que as anomalias ser&atilde;o calculadas. Se nenhuma vari&aacute;vel for especificada, todas as vari&aacute;veis com uma dimens&atilde;o de tempo ser&atilde;o analisadas.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Escolher método para gerar anomalia</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o texto que ser&aacute; utilizado para calcular a anomalia. 
+                <ul>
+                    <li> <b>Diferen&ccedil;a da M&eacute;dia</b>&mdash;A diferen&ccedil;a entre um valor de pixel e a m&eacute;dia deste valor do pixel atrav&eacute;s de partes definidas pelo intervalo ser&aacute; calculada. Este &eacute; o padr&atilde;o.
+                    </li>
+                    <li> <b>Diferen&ccedil;a de Porcentagem da M&eacute;dia</b>&mdash;A diferen&ccedil;a de porcentagem entre um valor de pixel e a m&eacute;dia deste valor do pixel atrav&eacute;s das partes definidas pelo intervalo ser&aacute; calculada.
+                    </li>
+                    <li> <b>Porcentagem da M&eacute;dia</b>&mdash;A porcentagem da m&eacute;dia ser&aacute; calculada.
+                    </li>
+                    <li> <b>Pontua&ccedil;&atilde;o Z</b>&mdash;A pontua&ccedil;&atilde;o z de cada pixel ser&aacute; calculada. Uma pontua&ccedil;&atilde;o z de 0 indica que o valor do pixel &eacute; &agrave; m&eacute;dia. Uma pontua&ccedil;&atilde;o z de 1 indica que o valor do pixel &eacute; 1 desvio padr&atilde;o da m&eacute;dia. Uma pontua&ccedil;&atilde;o z for 2, o valor do pixel &eacute; 2 desvio padr&atilde;o da m&eacute;dia e assim por diante.
+                    </li>
+                    <li> <b>Diferen&ccedil;a da M&eacute;dia</b>&mdash;A diferen&ccedil;a entre um valor de pixel e a m&eacute;dia matem&aacute;tica destes valores do pixel atrav&eacute;s de partes definidas pelo intervalo ser&aacute; calculada.
+                    </li>
+                    <li> <b>Diferen&ccedil;a de Porcentagem da M&eacute;dia</b>&mdash;A diferen&ccedil;a de porcentagem entre um valor de pixel e a m&eacute;dia matem&aacute;tica destes valores do pixel atrav&eacute;s de partes definidas pelo intervalo ser&aacute; calculada.
+                    </li>
+                    <li> <b>Porcentagem de Mediano</b>&mdash;A porcentagem da m&eacute;dia matem&aacute;tica ser&aacute; calculada.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Os m&eacute;todos matem&aacute;ticos para calcular valores de anomalia s&atilde;o listados abaixo. As anomalias podem ser calculadas utilizando a m&eacute;dia ou os valores medianos como a defini&ccedil;&atilde;o da m&eacute;dia. Se a distribui&ccedil;&atilde;o de dados for inclinada, a m&eacute;dio pode estar altamente influenciada por valores at&iacute;picos, ent&atilde;o o valor mediano ou m&eacute;todo de pontua&ccedil;&atilde;o z pode ser melhor utilizado para este tipo de dados.
+            </p>
+            <p>
+                <ul>
+                    <li>Diferen&ccedil;a da m&eacute;dia = x - &micro;
+
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                                
+
+                            </li>
+                            <li>&micro; = m&eacute;dia destes valores de pixel durante o intervalo de tempo fornecido
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Diferen&ccedil;a de porcentagem da m&eacute;dia = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                                
+
+                            </li>
+                            <li>&micro; = m&eacute;dia destes valores de pixel durante o intervalo de tempo fornecido
+                                
+
+                            </li>
+                            <li>|x - &micro;| = valor absoluto da diferen&ccedil;a entre o valor e a m&eacute;dia
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Porcentagem da m&eacute;dia = x - &micro;
+
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                                
+
+                            </li>
+                            <li>&micro; = m&eacute;dia destes valores de pixel durante o intervalo de tempo fornecido
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferen&ccedil;a de mediano = x - &szlig;
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                            </li>
+                            <li>&szlig; = mediano destes valores do pixel durante o intervalo de tempo fornecido
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferen&ccedil;a de porcentagem do mediano = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                            </li>
+                            <li>&szlig; = mediano destes valores do pixel durante o intervalo de tempo fornecido
+                            </li>
+                            <li>|x - &szlig;| = valor absoluto da diferen&ccedil;a entre o valor e o mediano
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Porcentagem do mediano = x / &szlig;
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                            </li>
+                            <li>&szlig; = mediano destes valores do pixel durante o intervalo de tempo fornecido
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Pontua&ccedil;&atilde;o Z = (x - &micro;) / S
+                        <ul>
+                            <li>x = valor de pixel em uma parte
+                            </li>
+                            <li>&micro; = m&eacute;dia destes valores de pixel durante o intervalo de tempo fornecido
+                            </li>
+                            <li>S = o desvio padr&atilde;o dos valores do pixel durante o intervalo de tempo fornecido
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Escolher intervalo temporal para calcular a média</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o intervalo temporal que ser&aacute; utilizado para calcular a m&eacute;dia. 
+                <ul>
+                    <li> <b>Todos</b>&mdash;Calcula a m&eacute;dia atrav&eacute;s de todas as partes de cada pixel.
+                    </li>
+                    <li> <b>Anual</b>&mdash;Calcula a m&eacute;dia anual de cada pixel.
+                    </li>
+                    <li> <b>Mensalmente recorrente</b>&mdash;Calcula a m&eacute;dia mensal de cada pixel.
+                    </li>
+                    <li> <b>Semanalmente Recorrente</b>&mdash;Calcula a m&eacute;dia semanal de cada pixel.
+                    </li>
+                    <li> <b>Diariamente Recorrente</b>&mdash;Calcula a m&eacute;dia di&aacute;ria de cada pixel.
+                    </li>
+                    <li> <b>A Cada Hora</b>&mdash;Calcula a m&eacute;dia de hora de cada pixel.
+                    </li>
+                    <li> <b>Raster Externo</b>&mdash;Um conjunto de dados raster existente que cont&eacute;m o valor m&eacute;dio ou mediano de cada pixel que &eacute; referenciado.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Escolher camada de imagens da média como referência</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o conjunto de dados raster de refer&ecirc;ncia que cont&eacute;m uma m&eacute;dia anteriormente calculada para cada pixel. As anomalias ser&atilde;o calculadas em compara&ccedil;&atilde;o com esta m&eacute;dia.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar valores ausentes no cálculo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se os valores ausentes s&atilde;o ignorados na an&aacute;lise. 
+                <ul>
+                    <li>Marcado&mdash;A an&aacute;lise incluir&aacute; todos os pixels v&aacute;lidos ao longo de uma dimens&atilde;o fornecida e ignorar&aacute; quaisquer pixels de NoData. Este &eacute; o padr&atilde;o.
+                    </li>
+                    <li>Desmarcado&mdash;A an&aacute;lise resultar&aacute; em NoData se houver quaisquer valores de NoData para os pixels ao longo da dimens&atilde;o fornecida.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

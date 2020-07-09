@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./GraphicReportSectionsParser","./ClassicReportSectionsParser"],(function(e,r,s){var a={parseReportXML:function(a){a.log(a.file.data);var i=e.parseXml(a.file.data);a.parsers.getParser("document").parseDocument(i,a),a.isGraphicReport?r.parseSectionsGraphic(i,a):s.parseSectionsClassic(i,a)}};return a}));
+define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./GraphicReportSectionsParser","./ClassicReportSectionsParser"],(function(e,r,s){var t={parseReportXML:function(t){t.log(t.file.data);var a=e.parseXml(t.file.data);t.parsers.getParser("document").parseDocument(a,t),t.report.isGraphicReport?(t.templateJson.sectionsTables=[],r.parseSectionsGraphic(a,t)):(t.templateJson.sections=[],s.parseSectionsClassic(a,t))}};return t}));

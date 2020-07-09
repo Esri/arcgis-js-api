@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Duraklama Yeri Konumlarını Bul</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Duraklama Yeri Konumlarını Bul iş akışı diyagramı"></h2>
+        <hr/>
+    <p>Bu ara&ccedil;, t&uuml;r&uuml;  <code>an</code> olan zaman etkin bir nokta detayları katmanıyla &ccedil;alışır. İlk olarak, bu ara&ccedil; benzersiz bir tanımlayıcı kullanarak bir ize detaylar atar. İz sırası, detayların zamanına g&ouml;re belirlenir. Daha sonra, bir izdeki ilk g&ouml;zlem ile bir sonraki arasındaki mesafe hesaplanır. Ge&ccedil;ici olarak ardışık olan iki nokta verilen mesafe i&ccedil;erisinde en az belirtilen s&uuml;re boyunca kalırsa, detaylar duraklama yerinin bir par&ccedil;ası olarak kabul edilir. İki detayın da konaklama yerinin bir par&ccedil;ası olduğu tespit edildiğinde, duraklama yerindeki ilk detay referans noktası olarak kullanılır ve ara&ccedil;, konaklama yerindeki referans noktası i&ccedil;in belirtilen mesafe i&ccedil;inde olan ardışık detayları bulur. Belirlenen mesafedeki t&uuml;m detaylar bulunduktan sonra, ara&ccedil; duraklama yeri detaylarını toplar ve ortalama merkezlerini hesaplar. Mevcut duraklama yerinden &ouml;nceki ve sonraki detaylar, duraklama yeri konumunun ortalama merkezine belirli bir mesafede olduklarında duraklama yerine eklenirler. Bu işlem izin sonuna kadar devam eder.
+    </p>
+    <p>Zaman etkin katmanlardaki detaylar aşağıdaki y&ouml;ntemlerden biriyle g&ouml;sterilebilir:
+        <ul>
+            <li>An; zaman i&ccedil;inde belirli bir an
+            </li>
+            <li>Aralık; başlangı&ccedil; ve bitiş zamanı arasında kalan
+            </li>
+        </ul>
+        
+    </p>
+    <p>&Ouml;rneğin, Ulaştırma Bakanlığı i&ccedil;in &ccedil;alıştığınızı ve b&uuml;y&uuml;k otoyollardaki ara&ccedil;lar i&ccedil;in GPS okumaları topladığınızı varsayalım. Her GPS kaydında benzersiz bir ara&ccedil; kimliği, saat, konum ve hız yer alır. İzleri ayrı ayrı tanımlamak i&ccedil;in benzersiz ara&ccedil; kimliğini kullanarak, yol ağındaki sorunlu b&ouml;lgeleri ortaya &ccedil;ıkarmak &uuml;zere en az 15 dakikada 100 metreden fazla hareket etmemiş olan ara&ccedil;ları arayın. Ek olarak, duraklama yeri konumundaki ara&ccedil;ların ortalama hızı gibi istatistikleri de hesaplayabilirsiniz.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Duraklama yeri bulunacak katmanı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Duraklama yerleri olarak &ouml;zetlenecek nokta katmanıdır. Girdi katmanı, zamanda bir anı temsil eden detaylarla birlikte zaman - etkin olmalı ve par&ccedil;aları tanımlamak i&ccedil;in kullanılabilecek bir veya daha fazla alana sahip olmalıdır.
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Analiz Katmanını Se&ccedil;</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz. İsteğe bağlı olarak girdi katmanınıza bir filtre uygulayabilir veya haritanıza eklenen barındırılan katmanlara bir se&ccedil;im uygulayabilirsiniz. Filtreler ve se&ccedil;imler sadece analiz i&ccedil;in uygulanır. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>İzleri tanımlamak için bir veya birkaç alan seçin</h2></div>
+        <hr/>
+        <div>
+            <p>İz tanımlayıcısını g&ouml;steren alanlar. Par&ccedil;aların benzersiz değerlerini g&ouml;stermek i&ccedil;in bir alanı veya birden fazla alanı kullanabilirsiniz.
+            </p>
+            <p>&Ouml;rneğin, fırtınalar i&ccedil;in duraklama yerleri arıyorsanız, iz alanı olarak fırtınanın adını kullanabilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mesafeyi hesaplamak için yöntemi seçin</h2></div>
+        <hr/>
+        <div>
+            <p>İzlerin i&ccedil;indeki duraklama yeri mesafesini hesaplamak i&ccedil;in kullanılan y&ouml;ntem.  <b>D&uuml;zlemsel</b> y&ouml;ntem, sonu&ccedil;ları daha hızlı hesaplayabilir ancak izleri uluslararası tarih &ccedil;izgisine sarmaz veya tampon oluştururken d&uuml;nyanın ger&ccedil;ek şeklini değerlendirmez. <b>Jeodezik</b> y&ouml;ntem, gerekirse izleri uluslararası tarih &ccedil;izgisine sarar ve d&uuml;nyanın ger&ccedil;ek şeklini hesaba katmak i&ccedil;in bir jeodezik tampon uygular.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Mekansal arama mesafesini tanımlayın</h2></div>
+        <hr/>
+        <div>
+            <p>Duraklama yeri mesafesi toleransı, tek bir duraklama yeri konumunda dikkate alınması gereken noktalar arasındaki maksimum mesafedir.
+            </p>
+            <p>&Ouml;rneğin, trafiğin belirli bir s&uuml;re i&ccedil;inde 20 metreden fazla hareket etmediği duraklama yerlerini bulmakla ilgileniyorsanız, mesafe toleransı 20 metre olmalıdır.
+            </p>
+            <p>Zamanı belirlemek i&ccedil;in  <b>Ge&ccedil;ici arama aralığını tanımla</b> parametresini kullanın.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>İzleri böl (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafe toleransının birimi.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Geçici arama aralığını tanımlayın</h2></div>
+        <hr/>
+        <div>
+            <p>Duraklama yeri zaman toleransı, bir duraklama yerinin tek bir duraklama yeri konumu olarak değerlendirilmesi i&ccedil;in gereken minimum s&uuml;redir.
+            </p>
+            <p>&Ouml;rneğin, trafiğin bir saat i&ccedil;inde belirli bir mesafe hareket etmediği yerleri &ouml;ğrenmek istiyorsanız, zaman toleransı 1 saat olmalıdır.
+            </p>
+            <p>Mesafeyi belirlemek i&ccedil;in  <b>Mekansal arama aralığını tanımla</b> parametresini kullanın.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>İzleri ayırmak için kullanılacak mesafeyi seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Zaman toleransının birimi.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>İstatistik ekle (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;zetlenen detaylarla ilgili istatistikleri hesaplayabilirsiniz. Aşağıdakileri sayısal alanlarda hesaplayabilirsiniz: 
+                <ul>
+                    <li>Sayım; null olmayan değerlerin sayısını hesaplar. Sayısal alan veya dizelerde kullanılabilir. [null, 0, 2] sonucu 2&rsquo;dir.
+                    </li>
+                    <li>Toplam; bir alandaki sayısal değerlerin toplamıdır. [null, null, 3] toplamı 3&rsquo;t&uuml;r.
+                    </li>
+                    <li>Ortalama; sayısal değerlerin ortalamasıdır. [0, 2, null] ortalaması 1&rsquo;dir.
+                    </li>
+                    <li>Min; bir sayısal alanın minimum değeridir. [0, 2, null] minimumu 0&rsquo;dır. 
+                    </li>
+                    <li>Maks; bir sayısal alanın maksimum değeridir. [0, 2, null] maksimum değeri 2&rsquo;dir.
+                    </li>
+                    <li>Aralık; bir sayısal alanın aralığıdır. Bu değer, minimum değerlerin maksimum değerlerden &ccedil;ıkartılmasıyla hesaplanır. [0, null, 1] aralığı 1&rsquo;dir. [null, 4] aralığı 0&rsquo;dır.
+                    </li>
+                    <li>Varyans; bir izdeki sayısal değerin sapmasını g&ouml;sterir. [1] sapması null&rsquo;dır. [null, 1,0,1,1] sapması 0,25&rsquo;dir.
+                    </li>
+                    <li>Standart sapma; bir sayısal alanın standart sapmasıdır. [1] standart sapması null&rsquo;dır. [null, 1,0,1,1] standart sapması 0,5&rsquo;dir. 
+                    </li>
+                    <li>İlk&mdash;&Ouml;zetlenen izde belirtilen alanın ilk değeri. Bir izde bir alan i&ccedil;in şu zaman sıralı değerler varsa: [1,5,10,20], ilk değer 1&rsquo;dir.
+                    </li>
+                    <li>Son&mdash;&Ouml;zetlenen izde belirtilen alanın son değeri. Bir izde bir alan i&ccedil;in şu zaman sıralı değerler varsa: [1,5,10,20], son değer 20&rsquo;dir.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Aşağıdakileri dizi alanlarında hesaplayabilirsiniz:
+                <ul>
+                    <li>Sayım; null olmayan dizelerin sayısını hesaplar.
+                    </li>
+                    <li>Herhangi; bu istatistik belirtilen alandaki bir dize değerinin rastgele &ouml;rneğidir.
+                    </li>
+                    <li>İlk&mdash;&Ouml;zetlenen izde belirtilen alanın ilk değeri. Bir izde bir alan i&ccedil;in şu zaman sıralı değerler varsa: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], ilk değer Toronto&rsquo;dur.
+                    </li>
+                    <li>Son&mdash;&Ouml;zetlenen izde belirtilen alanın son değeri. Bir izde bir alan i&ccedil;in şu zaman sıralı değerler varsa: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], son değer Boston&rsquo;dur.
+                    </li>
+                </ul>
+                T&uuml;m istatistikler null olmayan değerler &uuml;zerinde hesaplanır. Sonu&ccedil; katmanı hesaplanan her istatistik i&ccedil;in yeni bir alan i&ccedil;erir. &Ouml;znitelik ve istatistik se&ccedil;ilerek herhangi sayıda istatistik eklenebilir.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Çıktı duraklama yeri konumları</h2></div>
+        <hr/>
+        <div>
+            <p>Hangi detayların getirileceğini ve bi&ccedil;imini belirler. D&ouml;rt t&uuml;r&uuml; bulunur: 
+                <ul>
+                    <li> <b>Ortalama Merkezler</b>: Her keşfedilen duraklama yeri konumunun merkezini temsil eden bir nokta. &Ouml;znitelikler &ouml;zetlenir. Varsayılan değerdir.
+                         
+                    </li>
+                    <li> <b>Dışb&uuml;key Y&uuml;zey</b>: Her duraklama yeri grubunun dışb&uuml;key y&uuml;zeyini temsil eden &ccedil;okgenler. &Ouml;znitelikler &ouml;zetlenir.
+                         
+                    </li>
+                    <li> <b>Duraklama Yeri Detayları</b>: Bir duraklama yerine ait olduğu belirlenen t&uuml;m girdi noktası detayları ve &ouml;znitelikleri getirilir.
+                         
+                    </li>
+                    <li> <b>T&uuml;m Detaylar</b>: T&uuml;m girdi noktası detayları ve &ouml;znitelikleri getirilir.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Zaman aralıkları arasında verileri analiz edin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi detaylarınızı analiz i&ccedil;in segmentlere ayıran zaman aralıklarını kullanarak duraklama yeri konumlarını aramak isteyip istemediğinizi belirtin. Zaman aralıklarını kullanıyorsanız, kullanmak istediğiniz zaman aralığını ayarlamanız gerekir ve isteğe bağlı olarak referans zamanını da ayarlayabilirsiniz. Bir referans zamanı ayarlamadığınızda, 1 Ocak 1970 kullanılacaktır. 
+            </p>
+            <p>&Ouml;rneğin, zaman sınırını 1 g&uuml;n olarak ayarlarsanız, 1 Ocak 1990&rsquo;da saat 09:00&rsquo;dan başlayarak her iz, her g&uuml;n saat 09:00&rsquo;da kesilir ve o segment i&ccedil;inde analiz edilir. Hi&ccedil;bir duraklama yeri sabah 9:00&rsquo;dan &ouml;nce başlamaz ve sonrasında bitmez. 
+            </p>
+            <p>Zaman aralıklarını kullanmak, hesaplama s&uuml;resini hızlandırmanın hızlı bir yoludur, &ccedil;&uuml;nk&uuml; analiz i&ccedil;in daha k&uuml;&ccedil;&uuml;k izler oluşturur. Tekrar eden bir zaman aralığına b&ouml;l&uuml;nmesi analiziniz i&ccedil;in anlamlıysa, b&uuml;y&uuml;k veri işleme i&ccedil;in &ouml;nerilir.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> Oluşturulacak katmanın adı. Bir ArcGIS Data Store&lsquo;a yazdığınızda, sonu&ccedil;larınız  <b>İ&ccedil;eriğime</b> kaydedilir ve haritaya eklenir. Bir b&uuml;y&uuml;k veri dosya paylaşımına yazdığınızda, sonu&ccedil;larınız b&uuml;y&uuml;k veri dosya paylaşımı i&ccedil;ine kaydedilir ve manifestosuna eklenir. Haritaya eklenmez. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            </p>
+            <p> ArcGIS Data Store&lsquo;a yazarken (ilişkisel ya da mekan-zamansal b&uuml;y&uuml;k veri deposu)  <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

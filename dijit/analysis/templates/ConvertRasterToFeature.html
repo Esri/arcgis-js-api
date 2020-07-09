@@ -9,7 +9,7 @@
             <nav class="breadcrumbs" data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
               <a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
               <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.convertRasterToFeature}</a>
-            </nav> 
+            </nav>
           </td>
           <td>
             <div class="esriFloatTrailing" style="padding:0;">
@@ -103,6 +103,28 @@
             <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="simplifyLinesOrPolygons"></a>
           </td>
         </tr>
+        <tr data-dojo-attach-point="_multipartCheckRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1 esriSelectLabel">
+              <input data-dojo-type="dijit/form/CheckBox" name="multipartCbx" data-dojo-attach-point="_multipartCheck" data-dojo-props="checked:false">
+              ${i18n.multipartHeader}
+            </label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="createMultipartFeatures"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_maximumVerticesRow">
+          <td colspan="2">
+            <label class="esriLeadingMargin1 esriSelectLabel">
+              ${i18n.maximumVertices}
+              <input data-dojo-type="dijit/form/NumberTextBox" name="maximumVerticesNumberBox" data-dojo-attach-point="_maximumVertices" />
+            </label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="maxVerticesPerFeature"></a>
+          </td>
+        </tr>
         <tr>
           <td colspan="3" class="clear"></td>
         </tr>
@@ -125,14 +147,6 @@
             <div data-dojo-attach-point="_chooseFolderRow" class="esriLeadingMargin1">
               <label class="esriSaveLayerlabel">${i18n.saveResultIn}</label>
               <input class="longInput" data-dojo-attach-point="_webMapFolderSelect" data-dojo-type="dijit/form/FilteringSelect" trim="true" style="width:55%;"></input>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <div data-dojo-attach-point="_chooseLayerTypeRow" class="esriLeadingMargin1">
-              <label class="esriSaveLayerlabel">${i18n.saveLayerType}</label>
-              <input class="longInput esriLongLabel" data-dojo-attach-point="_webLayerTypeSelect" data-dojo-type="dijit/form/FilteringSelect" trim="true" style="width:55%;"></input>
             </div>
           </td>
         </tr>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrų analizė leidžia analizuoti didelius rastro duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų.  Portal for ArcGIS internetinės paskyros vartotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai:  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Naudoti gretimybes</b>, <b>Analizuoti vaizdą</b>, <b>Analizuoti reljefą</b>, <b>Valdyti duomenis</b> ir <b>Gilusis mokymasis</b>.
+        <p>Rastrų analizė leidžia analizuoti didelius rastrų duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų.  Portal for ArcGIS internetinės paskyros naudotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai:  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Naudoti gretimybes</b>, <b>Analizuoti vaizdą</b>, <b>Analizuoti reljefą</b>, <b>Valdyti duomenis</b>, <b>Gilus mokymasis</b> ir <b>Daugiamatė analizė</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -336,7 +336,7 @@
                     
 
                 </li>
-                <li> <b>I&scaron; naujo susieti reik&scaron;mes</b> priskiria skirtingas reik&scaron;mes rastro gardeliams.
+                <li> <b>I&scaron; naujo susieti reik&scaron;mes</b> priskiria skirtingas reik&scaron;mes rastro gardelėms.
                     
 
                 </li>
@@ -347,6 +347,8 @@
                 <li> <b>Konvertuoti rastrą į elementus</b> konvertuoja rastrinius duomenis į vektorinius.
                     
 
+                </li>
+                <li> <b>Atranka</b> atsisiunčiami duomenys apibrėžtose vietose i&scaron; rastro ar rastrų rinkinio.
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atranka</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Atranka">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sukuriama lentelė arba ta&scaron;kų elementų klasė su duomenų reik&scaron;mėmis apibrėžtose vietose, atsisiųstose i&scaron; rastro ar rastrų rinkinio.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Įrankių grupė Gilusis mokymasis</h2>
+        <h2>Gilusis mokymasis</h2>
         <hr/>
-        <p>&Scaron;ie įrankiai 	naudojami aptikti tam tikrus vaizdo elementus arba klasifikuoti rastrinio duomenų rinkinio pikselius. Gilusis mokymasis yra dirbtinio intelekto ma&scaron;ininio mokymosi metodas, kuris aptinka elementus vaizduose naudodamas kelis neuroninių tinklų sluoksnius, i&scaron; kurių kiekvienas gali gauti vieną ar daugiau unikalių vaizdo elementų. Tokie įrankiai naudoja modelius, kurie jau apmokyti aptikti tam tikrus elementus trečiųjų &scaron;alių giliojo mokymosi sistemose, pavyzdžiui, TensorFlow, CNTK ir Keras, ir i&scaron;vesties elementuose arba klasių žemėlapiuose.
+        <p>&Scaron;ie įrankiai 	naudojami aptikti arba klasifikuoti tam tikrus vaizdo elementus arba klasifikuoti rastrinio duomenų rinkinio pikselius. Gilusis mokymasis yra dirbtinio intelekto ma&scaron;ininio mokymosi metodas, kuris aptinka elementus vaizduose naudodamas kelis neuroninių tinklų sluoksnius, i&scaron; kurių kiekvienas gali gauti vieną ar daugiau unikalių vaizdo elementų. Tokie įrankiai naudoja modelius, kurie jau apmokyti aptikti tam tikrus elementus trečiųjų &scaron;alių giliojo mokymosi sistemose, pavyzdžiui, TensorFlow, CNTK ir Keras, ir i&scaron;vesties elementuose arba klasių žemėlapiuose.
             <ul>
                 <li> <b>Pikselių klasifikavimas naudojant gilųjį mokymąsi</b> pateikia klasifikuotą rastrą, naudodamas apmokytą giliojo mokymosi modelį.
                 </li>
-                <li> <b>Objektų aptikimas naudojant gilųjį mokymąsi</b> pateikia elementų klasę, kurioje yra objektai, kuriuos įrankis rado įvesties rastre naudodamas apmokytą giliojo mokymosi modelį.
+                <li> <b>Objektų aptikimas naudojant gilųjį mokymąsi</b> pateikia elementų klasę, kurioje yra objektai ir kuriuos įrankis rado įvesties rastre, naudodamas apmokytą giliojo mokymosi modelį.
+                </li>
+                <li> <b>Objektų klasifikavimas naudojant gilųjį mokymąsi</b> sukuria elementų klasę arba lentelę, kurioje kiekvienam įvesties objektui įvesties rastre priskiriama klasės žymė, naudojant i&scaron;mokytą giliojo mokymosi modelį.
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Įvesties rastrui paleidžia apmokytą giliojo mokymosi modelį, kad sukurtų klasifikuotą rastrą, ir kiekvienam tinkamam pikseliui priskiriama klasės žymė.
+            <p>&Scaron;is įrankis įvesties rastrui naudoja apmokytą giliojo mokymosi modelį, kad sukurtų klasifikuotą rastrą, ir kiekvienam tinkamam pikseliui priskiriama klasės žymė.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Įvesties rastrui naudoja apmokytą giliojo mokymosi modelį, kad sukurtų elementų klasę, kurioje yra įrankio rasti objektai. Elementai gali būti apriboti plotai arba poligonai aplink rastus objektus, arba ta&scaron;kai objektų centruose.
+            <p>&Scaron;is įrankis įvesties rastrui naudoja apmokytą giliojo mokymosi modelį, kad sukurtų elementų klasę, kurioje yra įrankio rasti objektai. Elementai gali būti apriboti plotai arba poligonai aplink rastus objektus, arba ta&scaron;kai objektų centruose.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objektų klasifikavimas naudojant gilųjį mokymąsi</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Objektų klasifikavimas naudojant gilųjį mokymąsi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis įvesties rastrui ir pasirinktinei elementų klasei naudoja i&scaron;mokytą giliojo mokymosi modelį, kad sukurtų elementų klasę arba lentelę, kurioje kiekvienam įvesties objektui priskiriama klasės žymė.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Daugiamatė analizė</h2>
+        <hr/>
+        <p>Daugiamatės analizės įrankių rinkinio įrankiai leidžia vykdyti mokslinių duomenų analizę naudojant kelis kintamuosius ir matmenis.
+        </p>
+        <p>Daugiamačiai duomenys yra duomenys, surinkti per kelis kartus, įvairiais gyliais ir auk&scaron;čiais. Tokio tipo duomenys dažnai naudojami atmosferos, okeanografijos ir žemės moksluose. Naudodami &scaron;į įrankių rinkinį galite analizuoti įvairių formatų daugiamačius rastrinius duomenis, įskaitant netCDF, HDF, GRIB, daugiamačius mozaikos rinkinius ir Esri debesų rastro formatą (CRF).
+        </p>
+        <p>Toliau lentelėje i&scaron;dėstyti daugiamatės analizės įrankiai ir pateikiami trumpi jų apra&scaron;ymai.
+            <ul>
+                <li> <b>Agreguoti daugiamatį rastrą</b>  generuoja daugiamačių rastrinių duomenų rinkinį, agreguodamas esamus daugiamačius rastrinius kintamuosius pagal matmenį.
+                </li>
+                <li> <b>Generuoti daugiamatę anomaliją</b> apskaičiuoja kiekvienos daugiamačio rastro skilties anomaliją ir sugeneruoja daugiamatį rastrą.
+                </li>
+                <li> <b>Generuoti tendencijų rastrą</b>  įvertina kiekvieno pikselio tendenciją matmenyje vienam ar daugiau daugiamačio rastro kintamųjų.
+                </li>
+                <li> <b>Prognozuoti naudojant tendencijų rastrą</b>  apskaičiuoja prognozuojamą daugiamatį rastrą, naudodamas i&scaron; įrankio <b>Generuoti tendencijų rastrą</b> gautą i&scaron;vesties tendencijų rastrą.
+                </li>
+                <li> <b>Rasti argumento statistiką</b>   pateikia matmens reik&scaron;mę arba kanalo indeksą, ties kuriuo daugiamačiame arba daugiakanaliame rastre kiekvienam pikseliui pasiekiama nurodyta statistika.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agreguoti daugiamatį rastrą</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agreguoti daugiamatį rastrą">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis sugeneruoja daugiamačių rastrinių duomenų rinkinį, agreguodamas esamus daugiamačius rastrinius kintamuosius pagal matmenį.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rasti argumento statistiką</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Rasti argumento statistiką">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis pateikia matmens reik&scaron;mę arba kanalo indeksą, ties kuriuo daugiamačiame arba daugiakanaliame rastre kiekvienam pikseliui pasiekiama nurodyta statistika.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generuoti daugiamatę anomaliją</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generuoti daugiamatę anomaliją">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja kiekvienos daugiamačio rastro skilties anomaliją ir sugeneruoja daugiamatį rastrą.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generuoti tendencijų rastrą</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generuoti tendencijų rastrą">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis Įvertina kiekvieno pikselio tendenciją matmenyje vienam ar daugiau daugiamačio rastro kintamųjų.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prognozuoti naudojant tendencijų rastrą</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prognozuoti naudojant tendencijų rastrą">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja prognozuojamą daugiamatį rastrą, naudodamas i&scaron; įrankio  <b>Generuoti tendencijų rastrą</b> gautą i&scaron;vesties tendencijų rastrą.
             </p>
             <br/>
         </div>

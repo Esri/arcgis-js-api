@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Najít místa zdržení (Find Dwell Locations)</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagram pracovn&iacute;ho postupu n&aacute;stroje Naj&iacute;t m&iacute;sta zdržen&iacute;"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj pracuje s vrstvou bodov&yacute;ch prvků obsahuj&iacute;c&iacute;ch informaci o čase, kter&eacute; jsou typu  <code>Okamžik</code>.   Nejprve n&aacute;stroj přiřad&iacute; ke stopě prvky pomoc&iacute; jedinečn&eacute;ho identifik&aacute;toru. Pořad&iacute; stop je určeno časem prvků. D&aacute;le se vypočte vzd&aacute;lenost mezi prvn&iacute;m a dal&scaron;&iacute;m pozorov&aacute;n&iacute;m ve stopě. Prvky se považuj&iacute; za souč&aacute;st prvku zdržen&iacute;, pokud dva časově n&aacute;sleduj&iacute;c&iacute; body zůstanou v dan&eacute; vzd&aacute;lenosti alespoň po dan&eacute; trv&aacute;n&iacute;. Pokud se zjist&iacute;, že dva prvky jsou souč&aacute;st&iacute; prvku zdržen&iacute;, použije se prvn&iacute; prvek zdržen&iacute; jako referenčn&iacute; bod a n&aacute;stroj najde n&aacute;sledn&eacute; prvky, kter&eacute; jsou v zadan&eacute; vzd&aacute;lenosti od referenčn&iacute;ho bodu v prvku zdržen&iacute;. Jakmile jsou nalezeny v&scaron;echny prvky v zadan&eacute; vzd&aacute;lenosti, n&aacute;stroj sb&iacute;r&aacute; prvky zdržen&iacute; a vypoč&iacute;t&aacute; jejich geografick&yacute; střed. Prvky před a po aktu&aacute;ln&iacute;m prvku zdržen&iacute; se přidaj&iacute; k prvku zdržen&iacute;, pokud jsou v dan&eacute; vzd&aacute;lenosti od geografick&eacute;ho středu prvku zdržen&iacute;. Tento proces pokračuje až do konce stopy.
+    </p>
+    <p>Prvky ve vrstv&aacute;ch s&nbsp;informacemi o čase lze reprezentovat jedn&iacute;m ze n&aacute;sleduj&iacute;c&iacute;ch způsobů:
+        <ul>
+            <li>Okamžik &ndash; Jedin&yacute; okamžik v&nbsp;čase
+            </li>
+            <li>Interval &ndash; Poč&aacute;tečn&iacute; a koncov&yacute; čas
+            </li>
+        </ul>
+        
+    </p>
+    <p>Předpokl&aacute;dejme např&iacute;klad, že pracujete pro ministerstvo dopravy a shromažďujete &uacute;daje GPS o vozidlech na hlavn&iacute;ch d&aacute;lnic&iacute;ch. Každ&yacute; z&aacute;znam GPS obsahuje jedinečn&eacute; ID vozidla, čas, um&iacute;stěn&iacute; a rychlost. Jedinečn&eacute; ID vozidla můžete použ&iacute;t k definov&aacute;n&iacute; jednotliv&yacute;ch stop, k vyhled&aacute;n&iacute; vozidel, kter&aacute; se během 15 minut nepřem&iacute;stila o v&iacute;ce než 100 metrů, č&iacute;mž můžete odhalit problematick&eacute; oblasti v silničn&iacute; s&iacute;ti. Kromě toho můžete vypoč&iacute;tat statistiky, jako je průměrn&aacute; rychlost vozidel v m&iacute;stě prvku zdržen&iacute;.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte vrstvu, ve které chcete hledat prvky zdržení</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute; vrstva, kter&aacute; se shrne do prvků zdržen&iacute;. Vstupn&iacute; vrstva mus&iacute; b&yacute;t časov&aacute; vrstva s prvky, kter&eacute; představuj&iacute; okamžik v čase, a maj&iacute; jedno nebo v&iacute;ce pol&iacute;, kter&aacute; lze použ&iacute;t pro identifikaci stop.
+            </p>
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Zvolit vrstvu anal&yacute;zy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat. Volitelně můžete na vstupn&iacute; vrstvu použ&iacute;t filtr nebo na hostovan&eacute; vrstvy přidan&eacute; do mapy použ&iacute;t v&yacute;běr. Filtry a&nbsp;v&yacute;běry se použij&iacute; pouze při anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Zvolte jedno nebo více polí k identifikaci stop</h2></div>
+        <hr/>
+        <div>
+            <p>Pole, kter&aacute; představuj&iacute; identifik&aacute;tor stopy. Pro vyj&aacute;dřen&iacute; jedinečn&yacute;ch hodnot stop můžete použ&iacute;t jedno pole nebo v&iacute;ce pol&iacute;.
+            </p>
+            <p>Např&iacute;klad, pokud byste vyhled&aacute;vali um&iacute;stěn&iacute; prvků zdržen&iacute; v př&iacute;padě hurik&aacute;nů, mohli byste jako pole stop použ&iacute;t n&aacute;zev hurik&aacute;nu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Vyberte metodu výpočtu vzdálenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda použit&aacute; pro v&yacute;počet vzd&aacute;lenosti prvku zdržen&iacute; ve stop&aacute;ch.  <b>Rovinn&aacute;</b> metoda může vypoč&iacute;tat v&yacute;sledky rychleji, ale nezalom&iacute; stopy kolem mezin&aacute;rodn&iacute; datov&eacute; č&aacute;ry ani nebude při vytv&aacute;řen&iacute; obalov&eacute; z&oacute;ny zohledňovat re&aacute;ln&yacute; tvar Země. <b>Geodetick&aacute;</b> metoda v&nbsp;př&iacute;padě potřeby zalom&iacute; stopy kolem mezin&aacute;rodn&iacute; datov&eacute; č&aacute;ry a aplikuje geodetickou obalovou z&oacute;nu, aby zohledňovala tvar Země.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Určete vzdálenost pro prostorové vyhledávání</h2></div>
+        <hr/>
+        <div>
+            <p>Tolerance vzd&aacute;lenosti prvku zdržen&iacute; je maxim&aacute;ln&iacute; vzd&aacute;lenost mezi body, kter&eacute; maj&iacute; b&yacute;t považov&aacute;ny za jedin&eacute; um&iacute;stěn&iacute; prvku zdržen&iacute;.
+            </p>
+            <p>Např&iacute;klad, pokud m&aacute;te z&aacute;jem o nalezen&iacute; prvků zdržen&iacute;, kde se provoz během určit&eacute; doby neposunul o v&iacute;ce než 20 metrů, tolerance vzd&aacute;lenosti by byla 20 metrů.
+            </p>
+            <p>Pomoc&iacute; parametru  <b>Definovat rozsah časov&eacute;ho vyhled&aacute;v&aacute;n&iacute;</b> zadejte čas.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Rozdělit stopy (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka tolerance vzd&aacute;lenosti.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Určete časový rozsah vyhledávání</h2></div>
+        <hr/>
+        <div>
+            <p>Časov&aacute; tolerance prvku zdržen&iacute; je minim&aacute;ln&iacute; doba trv&aacute;n&iacute; prvku zdržen&iacute;, kter&aacute; se bere v &uacute;vahu na jednom um&iacute;stěn&iacute; prvku zdržen&iacute;.
+            </p>
+            <p>Např&iacute;klad, pokud chcete vědět, kde provoz nepřesunul o určitou vzd&aacute;lenost do jedn&eacute; hodiny, časov&aacute; tolerance by byla 1 hodina.
+            </p>
+            <p>Pomoc&iacute; parametru  <b>Definovat rozsah prostorov&eacute;ho vyhled&aacute;v&aacute;n&iacute;</b> zadejte vzd&aacute;lenost.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Zvolte vzdálenost pro rozdělení stop (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka časov&eacute; tolerance.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Přidat statistiku (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků. Můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute; v č&iacute;seln&yacute;ch pol&iacute;ch: 
+                <ul>
+                    <li>Počet &ndash; Vypočte počet nenulov&yacute;ch hodnot. Lze jej použ&iacute;t na č&iacute;seln&yacute;ch pol&iacute;ch nebo řetězc&iacute;ch. Počet pro [null, 0, 2] je 2.
+                    </li>
+                    <li>Součet &ndash; Součet č&iacute;seln&yacute;ch hodnot v poli. Součet pro [null, null, 3] je 3.
+                    </li>
+                    <li>Průměr &ndash; Průměr č&iacute;seln&yacute;ch hodnot. Průměr pro [0, 2, null] je 1.
+                    </li>
+                    <li>Min &ndash; Minim&aacute;ln&iacute; hodnota č&iacute;seln&eacute;ho pole. Minimum pro [0, 2, null] je 0. 
+                    </li>
+                    <li>Max &ndash; Maxim&aacute;ln&iacute; hodnota č&iacute;seln&eacute;ho pole. Maximum pro [0, 2, null] je 2.
+                    </li>
+                    <li>Rozsah &ndash; Rozsah č&iacute;seln&eacute;ho pole. Vypočtou se jako minim&aacute;ln&iacute; hodnoty odečten&eacute; od maxim&aacute;ln&iacute; hodnoty. Rozsah pro [0, null, 1] je 1. Rozsah pro [null, 4] je 0.
+                    </li>
+                    <li>Odchylka &ndash; Odchylka č&iacute;seln&eacute;ho pole ve stopě. Odchylka pro [1]  je null. Odchylka pro [null, 1,0,1,1] je 0,25.
+                    </li>
+                    <li>Standardn&iacute; odchylka &ndash; Standardn&iacute; odchylka č&iacute;seln&eacute;ho pole. Standardn&iacute; odchylka pro [1] je null. Standardn&iacute; odchylka pro [null, 1,0,1,1] je 0,5. 
+                    </li>
+                    <li>Prvn&iacute;&mdash;Prvn&iacute; hodnota určen&eacute;ho pole na sumarizovan&eacute; trase. Pokud m&aacute; trasa n&aacute;sleduj&iacute;c&iacute; časově řazen&eacute; hodnoty pro pole: [1,5,10,20], prvn&iacute; hodnota je 1.
+                    </li>
+                    <li>Posledn&iacute;&mdash;Posledn&iacute; hodnota určen&eacute;ho pole na sumarizovan&eacute; trase. Pokud m&aacute; trasa n&aacute;sleduj&iacute;c&iacute; časově řazen&eacute; hodnoty pro pole: [1,5,10,20], posledn&iacute; hodnota je 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>N&aacute;sleduj&iacute;c&iacute; můžete vypoč&iacute;tat v pol&iacute;ch řetězců:
+                <ul>
+                    <li>Počet &ndash; Počet nenulov&yacute;ch řetězců.
+                    </li>
+                    <li>Libovoln&eacute; &ndash; Tato statistika je n&aacute;hodn&yacute;m vzorkem hodnoty řetězce v&nbsp;určen&eacute;m poli.
+                    </li>
+                    <li>Prvn&iacute;&mdash;Prvn&iacute; hodnota určen&eacute;ho pole na sumarizovan&eacute; trase. Pokud m&aacute; trasa n&aacute;sleduj&iacute;c&iacute; časově řazen&eacute; hodnoty pro pole: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], prvn&iacute; hodnota je Toronto.
+                    </li>
+                    <li>Posledn&iacute;&mdash;Posledn&iacute; hodnota určen&eacute;ho pole na sumarizovan&eacute; trase. Pokud m&aacute; trasa n&aacute;sleduj&iacute;c&iacute; časově řazen&eacute; hodnoty pro pole: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], posledn&iacute; hodnota je Boston.
+                    </li>
+                </ul>
+                V&scaron;echny statistiky se poč&iacute;taj&iacute; pro nenulov&eacute; hodnoty. V&yacute;sledn&aacute; vrstva bude obsahovat nov&eacute; pole pro každou vypoč&iacute;tanou statistiku. Lze přidat libovoln&yacute; počet statistik zvolen&iacute;m atributu a statistiky.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Zobrazit umístění prvků zdržení jako</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, kter&eacute; prvky se vr&aacute;t&iacute; a form&aacute;t. K dispozici jsou čtyři typy: 
+                <ul>
+                    <li> <b>Geografick&eacute; středy prvků</b> - bod představuj&iacute;c&iacute; centroid každ&eacute;ho nalezen&eacute;ho prvku zdržen&iacute;. Dojde ke shrnut&iacute; atributů. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                         
+                    </li>
+                    <li> <b>Konvexn&iacute; obaly</b> - polygony představuj&iacute;c&iacute; konvexn&iacute; obal každ&eacute; skupiny prvků zdržen&iacute;. Dojde ke shrnut&iacute; atributů.
+                         
+                    </li>
+                    <li> <b>Prvky zdržen&iacute;</b> - vr&aacute;t&iacute; se v&scaron;echny prvky a atributy vstupn&iacute;ho bodu, kter&eacute; patř&iacute; k prvku zdržen&iacute;.
+                         
+                    </li>
+                    <li> <b>V&scaron;echny prvky</b> - vr&aacute;t&iacute; se v&scaron;echny prvky a atributy vstupn&iacute;ho bodu.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyzovat data s časovými intervaly (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Zadejte, jestli chcete vyhledat m&iacute;sta zdržen&iacute; pomoc&iacute; časov&yacute;ch intervalů, kter&eacute; provedou segmentaci va&scaron;ich vstupn&iacute;ch prvků pro anal&yacute;zu. Pokud použ&iacute;v&aacute;te časov&eacute; intervaly, mus&iacute;te nastavit časov&yacute; interval, kter&yacute; chcete použ&iacute;vat, a volitelně nastavit referenčn&iacute; čas. Pokud nenastav&iacute;te referenčn&iacute; čas, bude použito 1. ledna 1970. 
+            </p>
+            <p>Např&iacute;klad, pokud nastav&iacute;te časovou hranici na 1 den, zač&iacute;t od 9:00 1. ledna, 1990, potom každ&aacute; stopa bude zkr&aacute;cena v 9:00 pro každ&yacute; den a analyzov&aacute;na v tomto segmentu. Prvky zdržen&iacute; nezačnou před 9:00 a skonč&iacute; potom. 
+            </p>
+            <p>Použ&iacute;v&aacute;n&iacute; časov&yacute;ch intervalů představuje rychl&yacute; způsob zv&yacute;&scaron;en&iacute; doby v&yacute;počtu, protože rychle vytv&aacute;ř&iacute; men&scaron;&iacute; stopy k anal&yacute;ze. Pokud rozdělen&iacute; pomoc&iacute; znovu nastal&eacute;ho časov&eacute;ho intervalu m&aacute; smysl pro va&scaron;i anal&yacute;zu, doporučuje se pro zpracov&aacute;n&iacute; velk&yacute;ch dat.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> N&aacute;zev vytv&aacute;řen&eacute; vrstvy.  Pokud zapisujete ArcGIS Data Store, va&scaron;e v&yacute;sledky budou uloženy v  <b>Můj obsah</b> a přid&aacute;ny na mapu. Pokud zapisujete sd&iacute;len&yacute; soubor velk&yacute;ch dat, va&scaron;e v&yacute;sledky budou uloženy ve sd&iacute;len&eacute;m souboru velk&yacute;ch dat a přid&aacute;ny do jejich manifestu. Nebudou přid&aacute;ny na mapu. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            </p>
+            <p>Když zapisujete do   ArcGIS Data Store  (datov&eacute; &uacute;loži&scaron;tě relačn&iacute;ch a časoprostorov&yacute;ch velk&yacute;ch dat) pomoc&iacute; rozbalovac&iacute;ho seznamu  <b>Uložit v&yacute;sledek do</b> , můžete zadat n&aacute;zev složky v <b>Můj obsah</b>, kde budou v&yacute;sledky uloženy.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

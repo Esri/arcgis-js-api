@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({clustersLabel:"Pour la couche ${inputLayerName}, rechercher les agrégats.",chooseLayerLabel:"Choisir la couche pour laquelle les agrégats seront identifiés",minClusterPtsLabel:"Nombre minimal de points à considérer comme agrégat",minClustersPtsGAXLbl:"Nombre minimal de points pour constituer un agrégat",limitSearchLabel:"Limiter la plage de recherche à (facultatif)",limitSearchReqLabel:"Limiter la plage de recherche à",outputLayerName:"Rechercher des agrégats pour ${inputLayerName}",itemDescription:"Couche d’entités générée en exécutant la solution Rechercher des agrégats de points pour ${inputLayerName}.",itemTags:"Résultat d’analyse, Rechercher des agrégats de points, ${inputLayerName}",itemSnippet:"Couche d’entités générée avec Rechercher des agrégats de points",chooseClusteringMethod:"Choisissez la méthode d’agrégation à utiliser",dbscanLabel:"Distance définie (DBSCAN)",hdbscanLabel:"Ajustement automatique (HDBSCAN)",useTimeToFindCLusters:"Utiliser le temps pour rechercher des agrégats",limitSearchDurLabel:"Limiter la durée de recherche à"});

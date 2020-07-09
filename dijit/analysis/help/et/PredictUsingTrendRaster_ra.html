@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trendi rastriga prognoosimine</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Trendi rastriga prognoosimine"></h2>
+        <hr/>
+    <p>Arvutab ennustatud mitmem&otilde;&otilde;rmelise rastri t&ouml;&ouml;riista  Trendi rastri loomine v&auml;ljundi trendi rastri abil.
+    </p>
+    <p>Kui  <b>Kasuta hetke kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse kihi muutujaid, mis on hetke kaardi kuvaulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ielikus kihis olevaid muutujaid ka siis, kui neid pole praegu kaardil n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valige prognoosimiseks mitmemõõtmeline pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>Sisendi mitmem&otilde;&otilde;tmeline trendi raster t&ouml;&ouml;riistast  Trendi rastri loomine.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valige prognoositav(ad) muutuja(d)</h2></div>
+        <hr/>
+        <div>
+            <p>Muutuja v&otilde;i muutujad, mida anal&uuml;&uuml;siga prognoositakse. Kui muutujaid pole m&auml;&auml;ratletud, kasutatakse k&otilde;ik muutujaid.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Valige prognoosimise dimensiooni väärtuste esitamiseks kasutatav meetod</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab meetodi, mida kasutatakse prognoosimise dimensiooni v&auml;&auml;rtuste esitamiseks.
+                <ul>
+                    <li> <b>V&auml;&auml;rtuse j&auml;rgi</b> &ndash; prognoos arvutatakse &uuml;ksiku dimensiooni v&auml;&auml;rtuse v&auml;&auml;rtuste loendi kohta, mida kirjeldatakse j&auml;rgmises sammu juures. See on vaikimisi valitud. N&auml;iteks soovite ennustada aastaseid sademeid aastateks 2050, 2100 ja 2150.
+                    </li>
+                    <li> <b>Intervalli j&auml;rgi</b> &ndash; prognoos arvutatakse dimensiooni intervalli kohta, mis on m&auml;&auml;ratletud alguse ja l&otilde;pu v&auml;&auml;rtusega. N&auml;iteks soovite ennustada aastaseid sademeid igaks aastaks ajavahemikus 2050-2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Määratlege dimensiooni väärtus(ed)</h2></div>
+        <hr/>
+        <div>
+            <p>Ennustuses kasutatav dimensiooni v&auml;&auml;rtus v&otilde;i v&auml;&auml;rtused.
+            </p>
+            <p>Aja, s&uuml;gavuse ja k&otilde;rguse v&auml;&auml;rtuste formaat peab sobima kokku trendi rastri loomiseks kasutatavate v&auml;&auml;rtuste dimensiooniga. Kui trendi raster loodi dimensiooni StdTime jaoks, peab formaat olema YYYY-MM-DDTHH:MM:SS, n&auml;iteks 2050-01-01T00:00:00. Erinevad v&auml;&auml;rtused eraldatakse semikooloniga.
+            </p>
+            <p>See parameeter on n&otilde;utav, kui prognoosi dimensiooni v&auml;&auml;rtuste m&auml;&auml;ratlemise meetodiks on valitud  <b>V&auml;&auml;rtuse j&auml;rgi</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Määra prognoosi jaoks dimensiooni intervall</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake prognoosimisel kasutatava dimensiooni intervalli alguse ja l&otilde;pu kuup&auml;ev, k&otilde;rgus v&otilde;i s&uuml;gavus.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Määra sammude arv alguse ja lõpu väärtuste vahel</h2></div>
+        <hr/>
+        <div>
+            <p>Ennustusse kaasatud kahe dimensiooni v&auml;&auml;rtuse vaheliste etappide arv. Vaikev&auml;&auml;rtus on 1.
+            </p>
+            <p>N&auml;iteks selleks, et prognoosida temperatuuriv&auml;&auml;rtusi iga viie aasta kohta, kasutage v&auml;&auml;rtust 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Vali ajalise väärtuse intervalli jaoks kasutatav ühik</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab intervalli v&auml;&auml;rtuse jaoks kasutatava &uuml;hiku. See kehtib ainult juhul, kui anal&uuml;&uuml;si dimensioon on ajaldimensioon.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

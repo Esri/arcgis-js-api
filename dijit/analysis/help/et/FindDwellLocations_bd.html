@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Leia paiknemise asukohad</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Leia paiknemise asukohad t&ouml;&ouml;voo skeem"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist t&ouml;&ouml;tab punktobjektide ajateadliku kihi korral, kui punktobjektide t&uuml;&uuml;p on  <code>kiire</code>. K&otilde;igepealt m&auml;&auml;rab see t&ouml;&ouml;riist objekte rajale ainulaadse identifikaatori abil. Raja j&auml;rjekord m&auml;&auml;ratakse objektide aja j&auml;rgi. Seej&auml;rel arvutatakse raja esimese ja j&auml;rgmise vaatluse vaheline kaugus. Objekte loetakse paiknemise osaks, kui kaks ajutiselt j&auml;rjestikust punkti p&uuml;sivad antud vahemaa peal v&auml;hemalt antud aja v&auml;ltel. Kui kaks objekti tuvastatakse osana paiknemisest, kasutatakse paiknemise esimest objekti etalonpunktina ja t&ouml;&ouml;riist leiab j&auml;rjestikused objektid, mis j&auml;&auml;vad selle paiknemise etalonpunkti m&auml;&auml;ratud vahemaa piiridesse. Kui m&auml;&auml;ratud vahemaa k&otilde;ik objektid on leitud, kogub t&ouml;&ouml;riist paiknemise objektid kokku ja arvutab nende keskv&auml;&auml;rtuse keskpunkti. Praegusest paiknemisest ette- ja tahapoole j&auml;&auml;vad objektid lisatakse sellesse paiknemisse, kui need j&auml;&auml;vad selle paiknemise asukoha keskv&auml;&auml;rtuse keskpunktist m&auml;&auml;ratud vahemaa sisse. See toiming kordub kuni raja l&otilde;puni.
+    </p>
+    <p>Ajateadlike kihtide objekte saab esitada &uuml;hel j&auml;rgnevatest viisidest.
+        <ul>
+            <li>Ajahetk &ndash; &uuml;ks hetk ajas
+            </li>
+            <li>Ajavahemik &ndash; algus- ja l&otilde;ppaeg
+            </li>
+        </ul>
+        
+    </p>
+    <p>Oletame n&auml;iteks, et t&ouml;&ouml;tate transpordiametis ja olete kogunud suurtel maanteedel liiklevate s&otilde;idukite GPS-andmeid. Iga GPS-kirje sisaldab s&otilde;iduki ainulaadset ID-d, aega, asukohta ja kiirust. S&otilde;iduki ainulaadse ID abil saate m&auml;&auml;ratleda &uuml;ksikuid radasid ja otsida s&otilde;idukeid, mis ei ole liikunud &uuml;le 100 meetri viimase 15 minuti jooksul, et tuvastada probleemseid piirkondi teede v&otilde;rgus. Lisaks saate arvutada statistikat, nagu s&otilde;idukite keskmist kiirust paiknemise asukoha piires.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valige kiht, millelt soovite paiknemisi leida</h2></div>
+        <hr/>
+        <div>
+            <p>Punktikiht, mis summeeritakse asukohtadeks. Sisendkiht peab olema ajateadlik koos objektidega, mis kujutavad endast ajahetke, ja sellel peab olema v&auml;hemalt &uuml;ks v&auml;li, mida saab kasutada radade tuvastamiseks.
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Vali anal&uuml;&uuml;sikihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti. Valikuliselt v&otilde;ite rakendada filtrit oma sisendkihile v&otilde;i valikut kaardile lisatud majutatud kihtidele. Filtreid ja valikuid rakendatakse ainult anal&uuml;&uuml;siks. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Valige radade tuvastamiseks vähemalt üks väli</h2></div>
+        <hr/>
+        <div>
+            <p>Raja identifikaatorit t&auml;histavad v&auml;ljad. Radade kordumatute v&auml;&auml;rtuste t&auml;histamiseks saate kasutada &uuml;hte v&otilde;i mitut v&auml;lja.
+            </p>
+            <p>N&auml;iteks v&otilde;ite kasutada orkaanide paiknemise asukoha leidmiseks raja nimena orkaani nime.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Valige vahemaa arvutamise meetod</h2></div>
+        <hr/>
+        <div>
+            <p>Paiknemise asukoha arvutamise meetod raja l&otilde;ikes. Meetodiga  <b>Planaarne</b> on tulemuste arvutamine kiirem, aga selle puhul ei j&auml;rgi rajad rahvusvahelist kuup&auml;evarada ja puhverdamisel ei v&otilde;eta arvesse maapinna tegelikku kuju. Meetodiga <b>Geodeetiline</b> j&auml;rgivad rajad rahvusvahelist kuup&auml;evarada ja maapinna tegeliku kuju arvesse v&otilde;tmiseks rakendatakse geodeetilist puhvrit.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Ruumilise otsitava vahemaa määratlemine</h2></div>
+        <hr/>
+        <div>
+            <p>Paiknemise vahemaa tolerants on &uuml;he paiknemise asukoha piires arvestatavate punktide vaheline maksimaalne kaugus.
+            </p>
+            <p>N&auml;iteks kui te soovite leida paiknemisi, kus liiklus ei ole liikunud &uuml;le 20 meetri teatud aja jooksul, siis vahemaa tolerants on 20 meetrit.
+            </p>
+            <p>Aja m&auml;&auml;ramiseks kasutage parameetrit  <b>Ajalise otsinguvahemiku m&auml;&auml;ratlemine</b>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Tükeldatud rajad (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Vahemaa tolerantsi &uuml;hik.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Ajalise otsinguvahemiku määratlemine</h2></div>
+        <hr/>
+        <div>
+            <p>Paiknemise ajaline tolerants on &uuml;he paiknemise asukoha piires arvestatava paiknemise minimaalne ajaline kestus.
+            </p>
+            <p>N&auml;iteks kui soovite teada kus liiklus ei ole liikunud teatud vahemaad viimase tunni jooksul, siis ajaline tolerants on 1 tund.
+            </p>
+            <p>Vahemaa m&auml;&auml;ramiseks kasutage parameetrit  <b>Ruumilise otsinguvahemiku m&auml;&auml;ratlemine</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Valige vahemaa, mille järgi radasid tükeldada (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Aja tolerantsi &uuml;hik.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisa statistika (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Saate arvutada summeeritud objektide statistika. Saate arvutada allj&auml;rgnevad v&auml;&auml;rtused numbriv&auml;ljadel: 
+                <ul>
+                    <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i tekstiv&auml;ljade korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
+                    </li>
+                    <li>Summa &ndash; v&auml;ljal olevate arvv&auml;&auml;rtuste summa. V&auml;&auml;rtuste [null, null ja 3] summa on 3.
+                    </li>
+                    <li>Keskmine &ndash; arvv&auml;&auml;rtuste keskmine. V&auml;&auml;rtuste [0; 2 ja null] keskmine on 1.
+                    </li>
+                    <li>Miinimum &ndash; numbriv&auml;lja miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] miinimum on 0. 
+                    </li>
+                    <li>Maksimum &ndash; numbriv&auml;lja maksimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] maksimum on 2.
+                    </li>
+                    <li>Vahemik &ndash; numbriv&auml;lja vahemik. Selle arvutamiseks lahutatakse maksimumv&auml;&auml;rtusest miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0, null ja 1] vahemik on 1. V&auml;&auml;rtuste [null ja 4] vahemik on 0.
+                    </li>
+                    <li>Dispersioon &ndash; raja numbriv&auml;lja dispersioon. V&auml;&auml;rtuse [1] dispersiooni on null. V&auml;&auml;rtuste [null, 1,0,1,1] dispersioon on 0,25.
+                    </li>
+                    <li>Standardh&auml;lve &ndash; numbriv&auml;lja standardh&auml;lve. V&auml;&auml;rtuse [1] standardh&auml;lve on null. V&auml;&auml;rtuste [null, 1,0,1,1] standardh&auml;lve on 0,5. 
+                    </li>
+                    <li>Esimene &ndash; summeeritud raja m&auml;&auml;ratud v&auml;lja esimene v&auml;&auml;rtus. Kui rajal on v&auml;lja jaoks ajaliselt j&auml;rjestatud v&auml;&auml;rtused [1,5,10,20], siis esimene v&auml;&auml;rtus on 1.
+                    </li>
+                    <li>Viimane &ndash; summeeritud raja m&auml;&auml;ratud v&auml;lja viimane v&auml;&auml;rtus. Kui rajal on v&auml;lja jaoks ajaliselt j&auml;rjestatud v&auml;&auml;rtused [1,5,10,20], siis viimane v&auml;&auml;rtus on 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Saate arvutada allj&auml;rgnevad v&auml;&auml;rtused tekstiv&auml;ljadel:
+                <ul>
+                    <li>Koguarv &ndash; stringide, mis pole nullv&auml;&auml;rtused, hulk.
+                    </li>
+                    <li>M&otilde;ni &ndash; see statistik on juhuslik valim tekstistringi v&auml;&auml;rtusest vastaval v&auml;ljal.
+                    </li>
+                    <li>Esimene &ndash; summeeritud raja m&auml;&auml;ratud v&auml;lja esimene v&auml;&auml;rtus. Kui rajal on v&auml;lja jaoks ajaliselt j&auml;rjestatud v&auml;&auml;rtused [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], siis esimene v&auml;&auml;rtus on Toronto.
+                    </li>
+                    <li>Viimane &ndash; summeeritud raja m&auml;&auml;ratud v&auml;lja viimane v&auml;&auml;rtus. Kui rajal on v&auml;lja jaoks ajaliselt j&auml;rjestatud v&auml;&auml;rtused [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], siis viimane v&auml;&auml;rtus on Boston.
+                    </li>
+                </ul>
+                K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Paiknemise asukoha väljund</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra millised objektid saadetakse tagasi ja nende vorming. Saadaval on nelja t&uuml;&uuml;pi. 
+                <ul>
+                    <li> <b>Keskv&auml;&auml;rtuse keskv&auml;&auml;rtuste keskpunktid</b> &ndash; iga tuvastatud paiknemise asukoha tsentroidi esindav punkt. Atribuudid summeeritakse. See on vaikimisi valik.
+                         
+                    </li>
+                    <li> <b>Kumer kate</b> &ndash; iga paiknemise grupi kumerat katet esindav pol&uuml;goon. Atribuudid summeeritakse.
+                         
+                    </li>
+                    <li> <b>Paiknemise objektid</b> &ndash; k&otilde;ik sisendi punktobjektid ja atribuudid, mille asukohta kuulumine on kindlaks tehtud, saadetakse tagasi.
+                         
+                    </li>
+                    <li> <b>K&otilde;ik objektid</b> &ndash; k&otilde;ik sisendi punktobjektid ja atribuudid saadetakse tagasi.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analüüsi andmeid ajaintervallidega (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake, kui soovite otsida asukohtade paiknemisi, kasutades ajaintervalle, mis segmenteerivad teie sisendobjektid anal&uuml;&uuml;si jaoks. Kui kasutate ajaintervalle, peate seadistama kasutatava ajaintervalli ja valikuliselt seadma viiteaja. Kui te ei seadista viiteaega, kasutatakse 1. jaanuari 1970. 
+            </p>
+            <p>Kui seate ajapiiriks n&auml;iteks 1. p&auml;eva, mis algab 1. jaanuaril 1990. aastal kell 9.00, siis k&auml;rbitakse iga p&auml;ev kell 9.00 k&otilde;iki radasid ja anal&uuml;&uuml;sitakse neid selle segmendi piires. Asukoha paiknemise funktsiooni ei alustata enne 9 hommikul ega l&otilde;petata hiljem. 
+            </p>
+            <p>Ajaintervallide kasutamine on kiire viis arvutusaja l&uuml;hendamiseks, sest sel juhul luuakse anal&uuml;&uuml;si jaoks kiiresti v&auml;iksemad rajad. Kui korduva ajaintervalli jaotamine on teie anal&uuml;&uuml;si jaoks m&otilde;ttekas, siis on see soovitatav mahukate andmete t&ouml;&ouml;tlemise puhul.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Loodava kihi nimi.  Kui kirjutate andmelattu ArcGIS Data Store, salvestatakse teie tulemused  <b>Minu sisus</b> ja lisatakse kaardile. Kui kirjutate suurandmete failikettale, salvestatakse teie andmed suurandmete failikettale ja lisatakse selle manifestifailile. Seda ei lisata kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kui salvestate admelattu   ArcGIS Data Store (relatsioonilisse v&otilde;i ajalisruumilisse andmelattu), kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

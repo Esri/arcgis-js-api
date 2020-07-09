@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Cerca ubicacions de captació instantànies</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Cerca el diagrama de flux de treball d'ubicacions de captacions instant&agrave;nies"></h2>
+        <hr/>
+    <p>Aquesta eina funciona amb una capa d'entitats de punts que tenen la funci&oacute; de temps habilitada i que s&oacute;n de tipus  <code>instant</code>. Primer, l'eina assigna entitats a un recorregut mitjan&ccedil;ant un identificador &uacute;nic. L'ordre del recorregut el determina l'antiguitat de les entitats. A continuaci&oacute;, es calcula la dist&agrave;ncia entre la primera observaci&oacute; d'un recorregut i la seg&uuml;ent. Les entitats es consideren part d'una captaci&oacute; instant&agrave;nia si dos punts consecutius temporalment romanen dins de la dist&agrave;ncia indicada com a m&iacute;nim durant el temps indicat. Si es determina que dues entitats formen part d'una captaci&oacute; instant&agrave;nia, la primera entitat de la captaci&oacute; instant&agrave;nia s'utilitza com un punt de refer&egrave;ncia, i l'eina cerca entitats consecutives que es troben dins de la dist&agrave;ncia especificada del punt de refer&egrave;ncia de la captaci&oacute; instant&agrave;nia. Quan s'han trobat totes les entitats dins de la dist&agrave;ncia especificada, l'eina recopila les entitats de captaci&oacute; instant&agrave;nies i en calcula el centre mitj&agrave;. Les entitats que es trobin abans i despr&eacute;s de la captaci&oacute; instant&agrave;nia actual s'hi afegiran si es troben dins de la dist&agrave;ncia indicada del centre mitj&agrave; de la ubicaci&oacute; de captaci&oacute; instant&agrave;nia. Aquest proc&eacute;s continua fins al final del recorregut.
+    </p>
+    <p>Les entitats de les capes amb la funci&oacute; de temps habilitada es poden representar de les maneres seg&uuml;ents:
+        <ul>
+            <li>Instant: un moment &uacute;nic en el temps
+            </li>
+            <li>Interval: una hora d'inici i una hora final
+            </li>
+        </ul>
+        
+    </p>
+    <p>Per exemple, suposem que treballeu per al Departament de Transport i que heu recopilat les lectures GPS dels vehicles a les carreteres principals. Cada registre GPS cont&eacute; un ID de vehicle &uacute;nic, l'hora, la ubicaci&oacute; i la velocitat. Mitjan&ccedil;ant l'ID de vehicle &uacute;nic per definir recorreguts individuals, cerqueu vehicles que no s'hagin mogut m&eacute;s de 100 metres en un temps m&iacute;nim de 15 minuts per descobrir &agrave;rees problem&agrave;tiques a la xarxa vi&agrave;ria. A m&eacute;s, podeu calcular estad&iacute;stiques, com ara la velocitat mitjana dels vehicles dins de la ubicaci&oacute; de captaci&oacute; instant&agrave;nia.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Trieu la capa on es cercaran ubicacions de captació instantànies</h2></div>
+        <hr/>
+        <div>
+            <p>Capa de punts que es consolidar&agrave; en captacions instant&agrave;nies. La capa d'entrada ha tenir la funci&oacute; de temps habilitada i entitats que representin un instant de temps, aix&iacute; com un o diversos camps que es puguin utilitzar per identificar recorreguts.
+            </p>
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b> al final de la llista desplegable per cercar al vostre contingut una capa d'entitats o un dataset de recursos compartits de fitxers de dades massives. Podeu aplicar un filtre a la capa d'entrada o aplicar una selecci&oacute; a les capes allotjades que s'han afegit al mapa. Els filtres i les seleccions nom&eacute;s s'apliquen per a an&agrave;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Seleccioneu un o diversos camps per identificar recorreguts</h2></div>
+        <hr/>
+        <div>
+            <p>Camps que representen l'identificador del recorregut. Podeu utilitzar un o diversos camps per representar valors &uacute;nics de recorreguts.
+            </p>
+            <p>Per exemple, si esteu cercant ubicacions de captacions instant&agrave;nies d'huracans, podeu utilitzar el nom de l'hurac&agrave; com a camp de recorregut.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Trieu el mètode per calcular la distància</h2></div>
+        <hr/>
+        <div>
+            <p>M&egrave;tode utilitzat per calcular la dist&agrave;ncia de captaci&oacute; instant&agrave;nia entre recorreguts. El m&egrave;tode  <b>Pla</b> pot calcular els resultats m&eacute;s r&agrave;pidament, per&ograve; no ajustar&agrave; els recorreguts al voltant de la l&iacute;nia internacional de canvi de data ni representar&agrave; la forma real de la Terra en crear l'&agrave;rea d'influ&egrave;ncia. El m&egrave;tode <b>Geod&egrave;sic</b> ajustar&agrave; els recorreguts al voltant de la l&iacute;nia internacional de canvi de data si &eacute;s necessari i aplicar&agrave; una &agrave;rea d'influ&egrave;ncia geod&egrave;sica per representar la forma de la Terra.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Defineix la distància de cerca espacial</h2></div>
+        <hr/>
+        <div>
+            <p>La toler&agrave;ncia de dist&agrave;ncia de captaci&oacute; instant&agrave;nia &eacute;s la dist&agrave;ncia m&agrave;xima entre els punts que es tindr&agrave; en compte en una &uacute;nica ubicaci&oacute; de captaci&oacute; instant&agrave;nia.
+            </p>
+            <p>Per exemple, si esteu interessats a cercar captacions instant&agrave;nies on el tr&agrave;nsit no s'ha mogut m&eacute;s de 20 metres en un per&iacute;ode de temps determinat, la toler&agrave;ncia de dist&agrave;ncia ser&agrave; de 20 metres.
+            </p>
+            <p>Utilitza el par&agrave;metre  <b>Definiu l'interval de cerca temporal</b> per especificar l'hora.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Divideix recorreguts (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unitat de la toler&agrave;ncia de dist&agrave;ncia.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Defineix l'interval de cerca temporal</h2></div>
+        <hr/>
+        <div>
+            <p>La toler&agrave;ncia de temps de captaci&oacute; instant&agrave;nia &eacute;s la durada m&agrave;xima d'una captaci&oacute; instant&agrave;nia que es tindr&agrave; en compte en una &uacute;nica ubicaci&oacute; de captaci&oacute; instant&agrave;nia.
+            </p>
+            <p>Per exemple, si voleu saber en quins llocs els tr&agrave;nsit no s'ha mogut una dist&agrave;ncia determinada durant una hora, la toler&agrave;ncia de temps ser&agrave; 1 hora.
+            </p>
+            <p>Utilitza el par&agrave;metre  <b>Definiu l'interval de cerca espacial </b> per especificar la dist&agrave;ncia.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Seleccioneu una distància amb la qual dividir els recorreguts (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unitat de la toler&agrave;ncia de temps.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Afegiu estadístiques (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Podeu calcular les estad&iacute;stiques sobre les entitats que s'han resumit. Als camps num&egrave;rics, podeu calcular el seg&uuml;ent: 
+                <ul>
+                    <li>Recompte: calcula el nombre de valors no nuls. Es pot utilitzar a les cadenes o als camps num&egrave;rics. El recompte de [nul, 0, 2] &eacute;s 2.
+                    </li>
+                    <li>Suma: suma dels valors num&egrave;rics d'un camp. La suma de [nul, nul, 3] &eacute;s 3.
+                    </li>
+                    <li>Mitjana: mitjana dels valors num&egrave;rics. La mitjana de [0, 2, nul] &eacute;s 1.
+                    </li>
+                    <li>M&iacute;nim: valor m&iacute;nim d'un camp num&egrave;ric. El m&iacute;nim de [0, 2, nul] &eacute;s 0. 
+                    </li>
+                    <li>M&agrave;xim: valor m&agrave;xim d'un camp num&egrave;ric. El valor m&agrave;xim de [0, 2, nul] &eacute;s 2.
+                    </li>
+                    <li>Interval: interval d'un camp num&egrave;ric. Es calcula com els valors m&iacute;nims restats del m&agrave;xim. L'interval de [0, nul, 1] &eacute;s 1. L'interval de [nul, 4] &eacute;s 0.
+                    </li>
+                    <li>Vari&agrave;ncia: vari&agrave;ncia d'un camp num&egrave;ric en un recorregut. La vari&agrave;ncia de [1] &eacute;s nul. La vari&agrave;ncia de [nul, 1,0,1,1] &eacute;s 0,25.
+                    </li>
+                    <li>Desviaci&oacute; est&agrave;ndard: desviaci&oacute; est&agrave;ndard d'un camp num&egrave;ric. La desviaci&oacute; est&agrave;ndard de [1] &eacute;s nul. La desviaci&oacute; est&agrave;ndard de [nul, 1,0,1,1] &eacute;s 0,5. 
+                    </li>
+                    <li>Primer: el primer valor d'un camp especificat al recorregut resumit. Si un recorregut t&eacute; els valors ordenats per temps [1,5,10,20] per a un camp, el primer valor &eacute;s 1.
+                    </li>
+                    <li>&Uacute;ltim: l'&uacute;ltim valor d'un camp especificat al recorregut resumit. Si un recorregut t&eacute; els valors ordenats per temps [1,5,10,20] per a un camp, l'&uacute;ltim valor &eacute;s 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Als camps de cadena, podeu calcular el seg&uuml;ent:
+                <ul>
+                    <li>Recompte: nombre de cadenes no nul&middot;les.
+                    </li>
+                    <li>Qualsevol: aquesta estad&iacute;stica &eacute;s una mostra aleat&ograve;ria del valor d'una cadena al camp especificat.
+                    </li>
+                    <li>Primer: el primer valor d'un camp especificat al recorregut resumit. Si un recorregut t&eacute; els valors ordenats per temps [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] per a un camp, el primer valor &eacute;s Toronto.
+                    </li>
+                    <li>&Uacute;ltim: l'&uacute;ltim valor d'un camp especificat al recorregut resumit. Si un recorregut t&eacute; els valors ordenats per temps [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] per a un camp, l'&uacute;ltim valor &eacute;s Boston.
+                    </li>
+                </ul>
+                Totes les estad&iacute;stiques es calcularan sobre valors no nuls. La capa resultant contindr&agrave; un camp nou per a cada estad&iacute;stica calculada. Per afegir qualsevol nombre d'estad&iacute;stiques, podeu triar un atribut i una estad&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Emet ubicacions de captació instantànies com a</h2></div>
+        <hr/>
+        <div>
+            <p>Determina les entitats que es retornen i el format. Hi ha quatre tipus disponibles: 
+                <ul>
+                    <li> <b>Centres mitjans</b>: punt que representa el centroide de cada ubicaci&oacute; de captaci&oacute; instant&agrave;nia descoberta. Els atributs es resumiran. Aquesta &eacute;s l'opci&oacute; per defecte.
+                         
+                    </li>
+                    <li> <b>Pol&iacute;gons convexos m&iacute;nims</b>: pol&iacute;gons que representen el pol&iacute;gon convex m&iacute;nim de cada grup de captacions instant&agrave;nies. Els atributs es resumiran.
+                         
+                    </li>
+                    <li> <b>Entitats de captaci&oacute; instant&agrave;nies</b>: es retornen tots els atributs i les entitats de punts d'entrada que s'ha determinat que pertanyen a una captaci&oacute; instant&agrave;nia.
+                         
+                    </li>
+                    <li> <b>Totes les entitats</b>: es retornen tots els atributs i les entitats de punts d'entrada.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analitza les dades amb intervals de temps (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifiqueu si voleu cercar ubicacions de captaci&oacute; instant&agrave;nies mitjan&ccedil;ant intervals de temps que segmentin les entitats d'entrada per a l'an&agrave;lisi. Si utilitzeu intervals de temps, heu de definir l'interval de temps que voleu utilitza i, de manera opcional, definir el temps de refer&egrave;ncia. Si no definiu un temps de refer&egrave;ncia, s'utilitzar&agrave; l'1 de gener de 1970. 
+            </p>
+            <p>Per exemple, si definiu el l&iacute;mit de temps en 1 dia, a partir de les 9:00 de l'1 de gener de 1990, tots els seguiments es truncaran a les 9:00 cada dia i s'analitzaran dins d'aquest segment. No s'iniciaran captacions instant&agrave;nies abans de les 9:00 ni s'acabaran despr&eacute;s d'aquesta hora. 
+            </p>
+            <p>Els intervals de temps s&oacute;n un m&egrave;tode r&agrave;pid per accelerar el temps de c&agrave;lcul, ja que creen seguiments m&eacute;s petits r&agrave;pidament per a l'an&agrave;lisi. Si la divisi&oacute; per un interval de temps recurrent t&eacute; sentit per a la vostra an&agrave;lisi, &eacute;s recomanable per al processament de dades massives.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p> Nom de la capa que es crear&agrave;.  Si esteu escrivint en un ArcGIS Data Store, els resultats es desaran a  <b>El meu contingut</b> i s'afegiran al mapa. Si esteu escrivint en un recurs compartit de fitxers de dades massives, els resultats s'emmagatzemaran en aquest recurs i s'afegiran al seu manifest. No s'afegiran al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, l'eina no funcionar&agrave;.
+            </p>
+            <p>Si escriviu a l' ArcGIS Data Store (magatzem de dades massives relacional o espaciotemporal) mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta a <b>El meu contingut</b>, on es desar&agrave; el resultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

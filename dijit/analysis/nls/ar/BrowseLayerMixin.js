@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"اختر طبقة تحليل الأطلس الحي",customAnalysisLayerTitle:"اختر طبقة التحليل",searchPlaceholderText:"بحث عن طبقات تحليل Living Atlas",searchCustomPlaceholderText:"بحث عن طبقات التحليل",mainActionTitle:"تحديد",customActionName:"تحديد وإضافة إلى الخريطة",customeSectionName:"طبقات تحليل Living Atlas.",Categories:"الفئات",boundaries:"الحدود",places:"أماكن",boundariesAndPlaces:"الحدود والأماكن",hexbins:"Hexbins",transportation:"نقل",point:"طبقات نقطة",line:"طبقات خطوط متصلة",polygon:"طبقات مضلع",pointFilterName:"نقطة",lineFilterName:"متعدد الخطوط",polygonFilterName:"مضلع",multiPointFilterName:"نقاط متعددة",geometryFilterName:"الرسوم الهندسية",featureLayerName:"طبقة المعلم",tableLayerName:"جدول",itemTypeFilterName:"نوع العنصر",instantFilterName:"فوري",intervalFilterName:"فاصل",timeFilterName:"الوقت",edit:"تحرير",boundaryLayers:"طبقات حدود Esri",customAnalysisGroupName:"مجموعة تحليل المؤسسة"});

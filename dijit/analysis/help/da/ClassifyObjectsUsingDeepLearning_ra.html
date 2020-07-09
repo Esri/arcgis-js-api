@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klassificer objekter ved hjælp af Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klassificer objekter ved hj&aelig;lp af Deep Learning"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j k&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster og en valgfri objektklasse for at frembringe en objektklasse eller tabel, hvor hvert objekt har en tildelt en klasseetiket.
+    </p>
+    <p>Hvis afkrydsningsfeltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det kun det rasteromr&aring;de, der er synligt inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis det ikke er markeret, analyseres hele rasteren, selvom den er uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vælg det billede, der bruges til at klassificere objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Inputbilledet, der bruges til at registrere objekter.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Vælg vektorlag til objekter (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Det punkt-, linje- eller polygon-inputvektorlag, der identificerer placeringen af hvert objekt, der skal klassificeres og navngives. Hver r&aelig;kke i input-vektorlaget repr&aelig;senterer et enkelt objekt.
+            </p>
+            <p>Hvis der ikke er angivet noget input-vektorlag, foruds&aelig;tter v&aelig;rkt&oslash;jet, at hvert inputbillede indeholder et enkelt objekt, der skal klassificeres. Hvis inputbilledet eller billederne bruger en spatial reference, er outputtet fra v&aelig;rkt&oslash;jet et vektorlag, hvor udstr&aelig;kningen af hvert billede bruges som gr&aelig;nsegeometri for hvert navngivet objekt. Hvis der ikke refereres spatialt til inputbilledet eller -billederne, er outputtet fra v&aelig;rkt&oslash;jet en tabel, der indeholder billed-ID-v&aelig;rdier og klasseetiketter for hvert billede.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Vælg den Deep Learning-model, der skal bruges til at registrere objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Elementet Deep Learning-inputpakken ( <code>.dlpk</code>).
+            </p>
+            <p>Deep Learning-pakken best&aring;r af Esri-modeldefinitionens JSON-filen ( <code>.emd</code>), den bin&aelig;re Deep Learning-modelfil, og evt. den Python rasterfunktion, der skal anvendes.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Angiv argumenter for Deep Learning-model</h2></div>
+        <hr/>
+        <div>
+            <p>Funktionsargumenterne er defineret i Python raster-funktionsklassen, der refereres til i inputmodellen.. Her angiver du p&aring; yderligere Deep learning-parametre og -argumenter for eksperimenter og forfinelse, f.eks. en trov&aelig;rdighedst&aelig;rskel for justering af f&oslash;lsomheden.
+            </p>
+            <p>Navnet p&aring; argumenterne udfyldes af v&aelig;rkt&oslash;jet ved at l&aelig;se Python-modulet p&aring; rasteranalyse-serveren.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definér feltnavn for klasseetiket</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det felt, der skal indeholde klassifikationsetiketten i output-vektorlaget.
+            </p>
+            <p>Hvis der ikke er angivet noget feltnavn, genereres  <i>ClassLabel</i> der et nyt felt i output-vektorlaget.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Procestilstand</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, hvordan alle rasterelementer i en billedtjeneste skal behandles. 
+                <ul>
+                    <li> <b>Behandl som mosaikbillede</b>&mdash;Alle rasterelementer i billedtjenesten samles i en mosaik og behandlet. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Behandl elementer separat</b>&mdash;Alle rasterelementer i billedtjenesten behandles som separate billeder.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

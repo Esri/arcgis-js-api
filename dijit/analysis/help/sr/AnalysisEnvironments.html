@@ -179,11 +179,11 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Minimum ulaza</b> &ndash; koristite najmanju veličinu ćelije svih ulaznih slojeva.
+                    <li> <b>Minimum ulaza</b>&mdash;Koristite najmanju veličinu ćelije svih ulaznih slojeva.
                     </li>
-                    <li> <b>Maksimum ulaza</b> &ndash; koristite najveću veličinu ćelije svih ulaznih slojeva. Ovo je podrazumevano.
+                    <li> <b>Maksimum ulaza</b>&mdash;Koristite najveću veličinu ćelije svih ulaznih slojeva. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Kao &scaron;to je navedeno</b> &ndash; navedite numeričku vrednost da biste podesili veličinu ćelije. Ako je ovo selektovano, podrazumevana vrednost je 1.
+                    <li> <b>Kao &scaron;to je navedeno</b>&mdash;Navedite numeričku vrednost da biste podesili veličinu ćelije. Ako je ovo selektovano, podrazumevana vrednost je 1.
                     </li>
                     <li> <b>Sloj &lt;name&gt;</b> &ndash; pode&scaron;ava veličinu ćelije za odabrani sloj rastera.
                     </li>
@@ -193,7 +193,7 @@
         </div>
     </div>
     <div id="mask">
-        <div><h2>Maska</h2></div>
+        <div><h2>Mask</h2></div>
         <hr/>
         <div>
             <p>Navodi sloj koji će se koristiti za definisanje va&scaron;e oblasti interesovanja u rasterskoj analizi.   Samo one ćelije koje padaju unutar granica maske analize će biti razmatrane pri radu analize.
@@ -242,6 +242,23 @@
             <p>Pode&scaron;avanjem  <b>Faktora paralelne obrade</b>, možete da tražite broj paralelnih radnika koje server snimaka rasterske analitike koristi za obradu jednog zadatka rasterske analize. Međutim, ako ukupan broj paralelnih procesa prema&scaron;i maksimalni broj instanci servisa za obradu rastera (CPU ili GPU), dodatni paralelni procesi će biti stavljeni u red za čekanje.
             </p>
             <p>Ako nije naveden  <b>Faktor paralelne obrade</b>, &scaron;to je podrazumevano, alatka će koristiti 80 procenata maksimalnog broja instanci servisa za obradu rastera. Za faktor paralelne obrade se može navesti ili ceo broj ili procenat.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Broj ponovnih pokušaja kada dođe do otkazivanja</h2></div>
+        <hr/>
+        <div>
+            <p>Defini&scaron;e koliko će ponovnih poku&scaron;aja napraviti radni proces kada dođe do slučajnog otkazivanja u obradi određenog posla.
+Podrazumevana vrednost je 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Interval recikliranja radnog procesa</h2></div>
+        <hr/>
+        <div>
+            <p>Defini&scaron;e koliko će odeljaka snimka biti obrađeno pre ponovnog pokretanja radnih procesa kako bi se sprečile potencijalna otkazivanja u dugotrajnim procesima. Podrazumevana vrednost je 0.
             </p>
         </div>
     </div>

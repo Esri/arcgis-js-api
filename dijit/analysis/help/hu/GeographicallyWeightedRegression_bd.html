@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Földrajzilag súlyozott regresszió</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="F&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute; munkafolyamat&aacute;nak diagramja"></h2>
+        <hr/>
+    <p>F&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute;t (GWR) hajt v&eacute;gre, amely a line&aacute;ris regresszi&oacute; t&eacute;rben v&aacute;ltoz&oacute; adatkapcsolatok modellez&eacute;s&eacute;re haszn&aacute;lt, helyi form&aacute;ja.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elemezni kívánt réteg kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A f&uuml;ggő &eacute;s magyar&aacute;z&oacute; v&aacute;ltoz&oacute;kat magukban foglal&oacute;, pontszerű vektoros elemeket tartalmaz&oacute; r&eacute;teg.
+            </p>
+            <p>Ahelyett, hogy egy r&eacute;teget v&aacute;laszt a t&eacute;rk&eacute;p&eacute;ről, v&aacute;laszthatja a leg&ouml;rd&uuml;lő lista alj&aacute;n l&eacute;vő  <b>Eredm&eacute;nyr&eacute;teg kiv&aacute;laszt&aacute;sa</b> lehetős&eacute;get is, ha a saj&aacute;t tartalomban szeretne big data-f&aacute;jlmegoszt&oacute; adathalmazt vagy vektoros r&eacute;teget keresni. A bemenő r&eacute;tegen lehetős&eacute;ge van szűrőt is haszn&aacute;lni, vagy kijel&ouml;l&eacute;seket is megadhat a t&eacute;rk&eacute;phez adott k&ouml;zpontilag t&aacute;rolt r&eacute;tegeken. A szűrők &eacute;s kijel&ouml;l&eacute;sek csak az elemz&eacute;sekre &eacute;rv&eacute;nyesek. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Modellezni kívánt mező kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az a numerikus mező, amely tartalmazza a megfigyelt, modellezendő &eacute;rt&eacute;keket &eacute;s a modellezni k&iacute;v&aacute;nt &eacute;rt&eacute;k t&iacute;pus&aacute;t.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Magyarázó mezők kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Egy vagy t&ouml;bb, azokat a magyar&aacute;z&oacute; v&aacute;ltoz&oacute;kat (mezőket) reprezent&aacute;l&oacute; mező, amelyek seg&iacute;tenek előre jelezni az &eacute;rt&eacute;ket. Csak numerikus &eacute;rt&eacute;kek lesznek l&aacute;that&oacute;k.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>A szomszédság meghatározási módszerének kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhat&oacute;, hogy a haszn&aacute;lt szomsz&eacute;ds&aacute;g fix t&aacute;vols&aacute;gk&eacute;nt legyen &eacute;rtelmezve, vagy megengedett a t&eacute;rbeli v&aacute;ltoz&aacute;sa a vektoros elemek sűrűs&eacute;g&eacute;től f&uuml;ggően.
+                <ul>
+                    <li> <b>Szomsz&eacute;dok sz&aacute;ma</b> &ndash; a szomsz&eacute;ds&aacute;g m&eacute;rete meghat&aacute;rozott sz&aacute;m&uacute;, az egyes vektoros elemek sz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt szomsz&eacute;d f&uuml;ggv&eacute;nye. Ahol a vektoros elemek sűrűn fordulnak elő, ott a szomsz&eacute;ds&aacute;g t&eacute;rbeli kiterjed&eacute;se kisebb; ahol a vektoros elemek ritk&aacute;n fordulnak elő, ott a szomsz&eacute;ds&aacute;g t&eacute;rbeli kiterjed&eacute;se nagyobb. Amikor ezt a be&aacute;ll&iacute;t&aacute;st v&aacute;lasztja, adja meg, hogy h&aacute;ny szomsz&eacute;dot tartalmazzon. A sz&aacute;mnak 2 &eacute;s 5000 k&ouml;z&ouml;tti eg&eacute;sz sz&aacute;mnak kell lennie.
+                    </li>
+                    <li> <b>T&aacute;vols&aacute;gs&aacute;v</b> &ndash; a szomsz&eacute;ds&aacute;g m&eacute;rete &aacute;lland&oacute; vagy fix t&aacute;vols&aacute;g mindegyik vektoros elemn&eacute;l. Amikor ezt a be&aacute;ll&iacute;t&aacute;st v&aacute;lasztja, adja meg a szomsz&eacute;ds&aacute;g t&eacute;rbeli kiterjed&eacute;s&eacute;t meghat&aacute;roz&oacute; t&aacute;vols&aacute;gs&aacute;vot.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Szomszédos vektoros elemek súlyozásának kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A modellben a t&eacute;rbeli s&uacute;lyoz&aacute;shoz haszn&aacute;lt kernelt&iacute;pus adhat&oacute; meg ezzel a be&aacute;ll&iacute;t&aacute;ssal. A kernel hat&aacute;rozza meg, hogyan kapcsol&oacute;dnak a vektoros elemek m&aacute;s vektoros elemekhez a szomsz&eacute;ds&aacute;gukon bel&uuml;l.
+                <ul>
+                    <li> <b>Duplan&eacute;gyzet</b> &ndash; a megadott szomsz&eacute;ds&aacute;gon k&iacute;v&uuml;l l&eacute;vő vektoros elemek 0 s&uacute;lyt kapnak. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Gauss</b> &ndash; minden vektoros elem kap s&uacute;lyt, de a s&uacute;lyok exponenci&aacute;lisan cs&ouml;kkennek a c&eacute;l vektoros elemtől t&aacute;volodva.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p> A l&eacute;trej&ouml;vő r&eacute;teg neve.  Ha egy ArcGIS Data Store helyre &iacute;r, akkor eredm&eacute;nyei a  <b>Saj&aacute;t tartalom</b> alatt lesznek elmentve, &eacute;s hozz&aacute; lesznek adva a t&eacute;rk&eacute;phez. Ha egy big data f&aacute;jlmegoszt&oacute;ba &iacute;r, akkor eredm&eacute;nyei a big data f&aacute;jlmegoszt&oacute;ba lesznek elmentve, &eacute;s hozz&aacute; lesznek adva annak jegyz&eacute;kf&aacute;jlj&aacute;hoz. Nem lesznek hozz&aacute;adva a t&eacute;rk&eacute;phez. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a művelet sikertelen lesz.
+            </p>
+            <p>Ha  ArcGIS Data Store (rel&aacute;ci&oacute;s vagy t&eacute;rbeli-időbeli big data) adatt&aacute;rba &iacute;r az  <b>Eredm&eacute;ny ment&eacute;si helye</b> leg&ouml;rd&uuml;lő mező haszn&aacute;lat&aacute;val, akkor megadhatja a <b>Saj&aacute;t tartalom</b> mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z menti az eredm&eacute;nyt.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

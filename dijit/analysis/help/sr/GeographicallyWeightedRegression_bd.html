@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geographically Weighted Regression</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeographicallyWeightedRegression dijagram radnog toka"></h2>
+        <hr/>
+    <p>Obavlja Geographically Weighted Regression (GWR), &scaron;to predstavlja linearnu regresiju koja se koristi za spatijalnost modela sa varirajućim vezama.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj za analizu</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži tačkaste funkcije koji sadrže zavisne ili opisne promenljive.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima. Možete opciono da primenite filter na ulazni sloj ili da primenite selekciju na hostovane slojeve koji su dodati na va&scaron;u mapu. Filteri i selekcije se primenjuju samo za analizu. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Odaberite polje za modelovanje</h2></div>
+        <hr/>
+        <div>
+            <p>Numeričko polje koje sadrži vrednosti opservacije koje treba modelovati i vrstu vrednosti koju modelujete.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Odaberite opisna polja</h2></div>
+        <hr/>
+        <div>
+            <p>Jedno ili vi&scaron;e polja koja predstavljaju opisne promenljive (polja) koje pomažu u predviđanju vrednosti. Samo će numeričke vrednosti biti vidljive.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Odaberite način poravnanja okruženja</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje da li je kori&scaron;ćeno okruženje konstruisano kao fiksna udaljenost ili je dozvoljeno da se razlikuje u prostornom obimu u zavisnosti od gustine karakteristika.
+                <ul>
+                    <li> <b>Number of Neigbors</b>&mdash;Veličina susedstva je funkcija određenog broja kom&scaron;ija uključenih u proračun za svaku od karakteristika. Tamo gde su karakteristike guste, prostorni obim susedstva je manji; tamo gde su karakteristike retke, prostorni obim susedstva je veći. Kada odaberete ovu opciju, odaberite broj kom&scaron;ija koje želite da uključite. Broj bi trebao biti ceo broj između 2 i 5000.
+                    </li>
+                    <li> <b>Distance Band</b>&mdash;Veličina susedstva je konstantna ili fiksna udaljenost za svaku karakteristiku. Kada odaberete ovu opciju, odaberite opseg udaljenosti koji će predstaviti prostorni opseg susedstva.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Odaberite kako se vrednuju susedne karakteristike</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi tip kernela koji će se koristiti za osiguravanje prostornog ponderiranja u modelu. Kernel defini&scaron;e na koji se način svaka funkcija povezuje sa drugim karakteristikama u njenom okruženju
+                <ul>
+                    <li> <b>Bisquare</b>&mdash;Vrednost težine 0 biće dodeljena bilo kojoj budućoj funkciji navedenoj van susedstva. Ovo je podrazumevano.
+                    </li>
+                    <li> <b>Gaussian</b>&mdash;Sve karakteristike dobijaju težinu, ali težine postaju eksponencijalno manje &scaron;to su dalje od ciljane karakteristike.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ime sloja koji će se kreirati.  Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Prilikom upisa u  ArcGIS Data Store (skladi&scaron;te relacionih ili prostorno-vremenskih velikih podataka) koristeći padajuće polje  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> gde će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

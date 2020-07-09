@@ -44,7 +44,7 @@
         <h2>Återskapa spår</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="&Aring;terskapa sp&aring;r"></h2>
         <hr/>
-    <p> Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med antingen punkt- eller omr&aring;desgeoobjekt som representerar en <code>punkt</code> i tiden.  Det avg&ouml;r f&ouml;rst vilka geoobjekt som tillh&ouml;r ett sp&aring;r med en identifierare. Utifr&aring;n tiden vid varje plats ordnas sp&aring;ren i tur och ordning och omvandlas till en linje eller ett omr&aring;de som representerar r&ouml;relsev&auml;gen &ouml;ver tid. Indata kan ocks&aring; buffras av ett f&auml;lt, vilket skapar ett omr&aring;de p&aring; varje plats. De buffrade punkterna eller indataomr&aring;dena f&ouml;renas sedan sekventiellt f&ouml;r att skapa ett sp&aring;r som ett omr&aring;de d&auml;r bredden representerar det intressanta attributet. Resulterande sp&aring;r har en start- och en sluttid, som tidsm&auml;ssigt representerar det f&ouml;rsta och det sista geoobjektet i ett angivet sp&aring;r. N&auml;r sp&aring;ren skapas ber&auml;knas statistik om indatageoobjekten och tilldelas till utdatasp&aring;ret. Den mest grundl&auml;ggande statistiken &auml;r antalet punkter inom omr&aring;det, men du kan &auml;ven ber&auml;kna annan statistik.
+    <p> Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med antingen punkt- eller omr&aring;desgeoobjekt som representerar en <code>punkt</code> i tiden. Det avg&ouml;r f&ouml;rst vilka geoobjekt som tillh&ouml;r ett sp&aring;r med en identifierare. Utifr&aring;n tiden vid varje plats ordnas sp&aring;ren i tur och ordning och omvandlas till en linje eller ett omr&aring;de som representerar r&ouml;relsev&auml;gen &ouml;ver tid. Indata kan ocks&aring; buffras av ett f&auml;lt, vilket skapar ett omr&aring;de p&aring; varje plats. De buffrade punkterna eller indataomr&aring;dena f&ouml;renas sedan sekventiellt f&ouml;r att skapa ett sp&aring;r som ett omr&aring;de d&auml;r bredden representerar det intressanta attributet. Resulterande sp&aring;r har en start- och en sluttid, som tidsm&auml;ssigt representerar det f&ouml;rsta och det sista geoobjektet i ett angivet sp&aring;r. N&auml;r sp&aring;ren skapas ber&auml;knas statistik om indatageoobjekten och tilldelas till utdatasp&aring;ret. Den mest grundl&auml;ggande statistiken &auml;r antalet punkter inom omr&aring;det, men du kan &auml;ven ber&auml;kna annan statistik.
     </p>
     <p>Geoobjekt i tidsaktiverade lager kan representeras p&aring; ett av tv&aring; s&auml;tt:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Det punkt- eller omr&aring;deslager som ska rekonstrueras till sp&aring;r. Indatalagret m&aring;ste vara tidsaktiverat med geoobjekt som motsvarar en tidspunkt. Lagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med  <b>Analysmilj&ouml;</b> om en buffert till&auml;mpas.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
+            <p>Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt: 
                 <ul>
-                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
+                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Det kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
                     <li>Summa &ndash; Summan av de numeriska v&auml;rdena i ett f&auml;lt. Summan f&ouml;r [null, null, 3] &auml;r 3.
                     </li>
@@ -166,6 +166,10 @@
                     </li>
                     <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,0,1,1] &auml;r 0,5. 
                     </li>
+                    <li>F&ouml;rst &ndash; Det f&ouml;rsta v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [1,5,10,20], &auml;r det f&ouml;rsta v&auml;rdet 1.
+                    </li>
+                    <li>Sist &ndash; Det sista v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [1,5,10,20], &auml;r det sista v&auml;rdet 20.
+                    </li>
                 </ul>
                 
             </p>
@@ -175,8 +179,12 @@
                     </li>
                     <li>Alla &ndash; Det statistiska v&auml;rdet &auml;r ett slumpm&auml;ssigt exempel p&aring; ett str&auml;ngv&auml;rde i det angivna f&auml;ltet.
                     </li>
+                    <li>F&ouml;rst &ndash; Det f&ouml;rsta v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], &auml;r det f&ouml;rsta v&auml;rdet Toronto.
+                    </li>
+                    <li>Sist &ndash; Det sista v&auml;rdet f&ouml;r ett angivet f&auml;lt i det summerade sp&aring;ret. Om ett sp&aring;r har f&ouml;ljande tidsordnade v&auml;rden f&ouml;r ett f&auml;lt: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], &auml;r det sista v&auml;rdet Boston.
+                    </li>
                 </ul>
-                All statistik ber&auml;knas p&aring; v&auml;rden som inte &auml;r null. Det resulterande lagret inneh&aring;ller ett nytt f&auml;lt f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik. 
+                All statistik ber&auml;knas p&aring; v&auml;rden som inte &auml;r null. Det resulterande lagret inneh&aring;ller ett nytt f&auml;lt f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik.
             </p>
         </div>
     </div>
@@ -201,7 +209,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Namnet p&aring; lagret som ska skapas.  Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som ska skapas. Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

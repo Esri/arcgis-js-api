@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird. Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von  Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Nachbarschaftsanalyse verwenden</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b>, <b>Daten verwalten</b> und <b>Deep Learning</b>.
+        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird. Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von  Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Nachbarschaftsanalyse verwenden</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b>, <b>Daten verwalten</b>, <b>Deep Learning</b> und <b>Multidimensionale Analyse</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Stichprobe</b> extrahiert Daten an definierten Positionen aus einem Raster oder einer Gruppe von Rastern.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Stichprobe</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Stichprobe">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Erstellt eine Tabelle oder eine Point-Feature-Class mit Datenwerten, die an definierten Positionen aus einem Raster oder einer Gruppe von Rastern extrahiert wurden.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Toolset "Deep Learning"</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>Mit diesen Werkzeugen k&ouml;nnen bestimmte Features in einem Bild erkannt oder Pixel in einem Raster-Dataset klassifiziert werden. Deep Learning ist eine Art maschinelles Lernverfahren der k&uuml;nstlichen Intelligenz, bei dem mehrere Layer in neuralen Netzwerken verwendet werden, in denen die einzelnen Layer in der Lage sind, mindestens ein eindeutiges Feature im Bild zu extrahieren. Diese Werkzeuge verwenden die Modelle, die f&uuml;r die Erkennung bestimmter Features in Deep-Learning-Frameworks von Drittanbietern, wie etwa TensorFlow, CNTK und Keras, sowie in Ausgabe-Features oder Klassenkarten trainiert wurden.
+        <p>Mit diesen Werkzeugen k&ouml;nnen bestimmte Features in einem Bild erkannt und klassifiziert oder Pixel in einem Raster-Dataset klassifiziert werden. Deep Learning ist eine Art maschinelles Lernverfahren der k&uuml;nstlichen Intelligenz, bei dem mehrere Layer in neuralen Netzwerken verwendet werden, in denen die einzelnen Layer in der Lage sind, mindestens ein eindeutiges Feature im Bild zu extrahieren. Diese Werkzeuge verwenden die Modelle, die f&uuml;r die Erkennung bestimmter Features in Deep-Learning-Frameworks von Drittanbietern, wie etwa TensorFlow, CNTK und Keras, sowie in Ausgabe-Features oder Klassenkarten trainiert wurden.
             <ul>
                 <li> <b>Pixel mit Deep Learning klassifizieren</b> erzeugt ein klassifiziertes Raster mithilfe eines trainierten Deep-Learning-Modells.
                 </li>
                 <li> <b>Objekte mit Deep Learning ermitteln</b> erzeugt eine Feature-Class mit Objekten, die mithilfe eines Deep-Learning-Modells in einem Eingabe-Raster gefunden werden.
                 </li>
+                <li> <b>Objekte mit Deep Learning klassifizieren</b> erstellt mithilfe eines trainierten Deep-Learning-Modells eine Feature-Class oder Tabelle, in der jedem Eingabeobjekt in einem Eingabe-Raster eine Klassenbeschriftung zugewiesen ist.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>F&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung eines klassifizierten Rasters aus, wobei jedem g&uuml;ltigen Pixel eine Klassenbeschriftung zugewiesen ist.
+            <p>Dieses Werkzeug f&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung eines klassifizierten Rasters aus, wobei jedem g&uuml;ltigen Pixel eine Klassenbeschriftung zugewiesen ist.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>F&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung einer Feature-Class aus, die die gefundenen Objekte enth&auml;lt. Bei den Features kann es sich um Rahmen oder Polygone um die gefundenen Objekte oder um Punkte im Mittelpunkt der Objekte handeln.
+            <p>Dieses Werkzeug f&uuml;hrt ein trainiertes Deep-Learning-Modell auf einem Eingabe-Raster zur Erstellung einer Feature-Class aus, die die gefundenen Objekte enth&auml;lt. Bei den Features kann es sich um Rahmen oder Polygone um die gefundenen Objekte oder um Punkte im Mittelpunkt der Objekte handeln.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objekte mit Deep Learning klassifizieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Objekte mit Deep Learning klassifizieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug f&uuml;hrt ein trainiertes Deep-Learning-Modell in einem Eingabe-Raster und einer optionalen Feature-Class aus und erstellt eine Feature-Class oder Tabelle, in der jedes Eingabeobjekt &uuml;ber eine zugewiesene Klassenbeschriftung verf&uuml;gt.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Multidimensionale Analyse</h2>
+        <hr/>
+        <p>Mit den Werkzeugen im Toolset &quot;Multidimensionale Analyse&quot; k&ouml;nnen Sie Analysen wissenschaftlicher Daten f&uuml;r mehrere Variablen und Dimensionen durchf&uuml;hren.
+        </p>
+        <p>Multidimensionale Daten stellen Daten dar, die zu mehreren Zeitpunkten und in mehreren Tiefen und H&ouml;hen erfasst werden. Dieser Typ von Daten wird im Allgemeinen in der Atmosph&auml;renforschung, Ozeanografie und Geowissenschaft verwendet. Mit diesem Toolset k&ouml;nnen Sie multidimensionale Raster-Daten in mehreren Formaten analysieren. Dazu geh&ouml;ren netCDF, HDF, GRIB, das multidimensionale Mosaik-Dataset und das Esri Cloud-Raster-Format (CRF).
+        </p>
+        <p>In der folgenden Tabelle werden die Analysewerkzeuge aufgef&uuml;hrt und kurz beschrieben.
+            <ul>
+                <li> <b>Multidimensionales Raster aggregieren</b> generiert ein multidimensionales Raster-Dataset durch Aggregieren vorhandener multidimensionaler Raster-Variablen entlang einer Dimension.
+                </li>
+                <li> <b>Multidimensionale Abweichung generieren</b> berechnet die Abweichung f&uuml;r jeden Ausschnitt in einem multidimensionalen Raster, um ein multidimensionales Raster zu generieren.
+                </li>
+                <li> <b>Trend-Raster generieren</b> sch&auml;tzt den Trend f&uuml;r jedes Pixel entlang einer Dimension f&uuml;r eine oder mehrere Variablen in einem multidimensionalen Raster.
+                </li>
+                <li> <b>Mit Trend-Raster vorhersagen</b> berechnet ein prognostiziertes multidimensionales Raster mithilfe des Ausgabe-Trend-Rasters aus dem Werkzeug <b>Trend-Raster generieren</b>.
+                </li>
+                <li> <b>Argumentstatistiken suchen</b> extrahiert den Dimensionswert oder Bandindex, bei dem in einem multidimensionalen Raster oder einem Multiband-Raster ein bestimmter statistischer Wert f&uuml;r jedes Pixel erreicht wird.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Multidimensionales Raster aggregieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Multidimensionales Raster aggregieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug generiert ein multidimensionales Raster-Dataset durch Aggregieren vorhandener multidimensionaler Raster-Variablen entlang einer Dimension.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Argumentstatistiken suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Argumentstatistiken suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug extrahiert den Dimensionswert oder Bandindex, bei dem in einem multidimensionalen Raster oder einem Multiband-Raster ein bestimmter statistischer Wert f&uuml;r jedes Pixel erreicht wird.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Multidimensionale Abweichung generieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Multidimensionale Abweichung generieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet die Abweichung f&uuml;r jeden Ausschnitt in einem multidimensionalen Raster, um ein multidimensionales Raster zu generieren.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trend-Raster generieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Trend-Raster generieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug sch&auml;tzt den Trend f&uuml;r jedes Pixel entlang einer Dimension f&uuml;r eine oder mehrere Variablen in einem multidimensionalen Raster.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mit Trend-Raster vorhersagen</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Mit Trend-Raster vorhersagen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet ein prognostiziertes multidimensionales Raster mithilfe des Ausgabe-Trend-Rasters aus dem Werkzeug  <b>Trend-Raster generieren</b>.
             </p>
             <br/>
         </div>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Trova posizione dell'abitazione</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagramma del flusso di lavoro Trova posizione dell'abitazione"></h2>
+        <hr/>
+    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali di tipo  <code>istante</code>. In primo luogo, lo strumento assegna le feature a una traccia utilizzando un identificatore univoco. L'ordine di traccia &egrave; determinato dal tempo delle feature. Successivamente, viene calcolata la distanza tra la prima osservazione in una traccia e la successiva. Le feature sono considerate parte di un'abitazione se due punti temporalmente consecutivi rimangono entro una determinata distanza per almeno la durata data. Quando due feature vengono rilevate come parte di un'abitazione, la prima feature nell'abitazione viene utilizzata come punto di riferimento e lo strumento trova feature consecutive entro la distanza specificata dal punto di riferimento nell'abitazione. Una volta trovate tutte le feature entro la distanza specificata, lo strumento raccoglie le feature dell'abitazione e calcola il loro centro medio. Le feature prima e dopo l'abitazione corrente vengono aggiunte all'abitazione se si trovano entro una determinata distanza dal centro medio della posizione dell'abitazione. Questo processo continua fino alla fine della traccia.
+    </p>
+    <p>Le feature abilitate per variazioni temporali possono essere rappresentate in uno dei modi diversi:
+        <ul>
+            <li>Istante: per un singolo momento di tempo
+            </li>
+            <li>Intervallo: un'ora d'inizio e un'ora di fine
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ad esempio, si supponga di lavorare per il Dipartimento dei trasporti e di aver raccolto i valori GPS per i veicoli sulle principali autostrade. Ogni record GPS contiene un ID univoco del veicolo, l'ora, la posizione e la velocit&agrave;. Utilizzando l'ID univoco del veicolo per definire le singoli tracce, cercare i veicoli che non si sono mossi di oltre 100 metri in almeno 15 minuti per scoprire aree problematiche nella rete stradale. Inoltre, &egrave; possibile calcolare statistiche come la velocit&agrave; media dei veicoli entro il luogo dell'abitazione.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegliere il layer nel quale verranno trovate le abitazioni</h2></div>
+        <hr/>
+        <div>
+            <p>Il layer puntuale che verr&agrave; riepilogato nelle abitazioni. Il layer di input deve essere abilitato per variazioni temporali con feature che rappresentano un istante nel tempo e dispone di uno o pi&ugrave; campi che possono essere utilizzati per identificare tracce.
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> alla base dell'elenco a discesa per cercare un dataset di condivisione file Big Data o un feature layer. In via facoltativa, &egrave; possibile applicare un filtro al layer di input o applicare una selezione sul layer hosted aggiunto alla mappa. I filtri e le selezioni vengono applicati solo per l'analisi. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selezionare uno o più campi per identificare le tracce</h2></div>
+        <hr/>
+        <div>
+            <p>I campi che rappresentano l'identificatore di tracce. &Egrave; possibile utilizzare uno o pi&ugrave; campi per rappresentare valori univoci delle tracce.
+            </p>
+            <p>Ad esempio, se si stanno rilevando posizioni dell'abitazione per uragani, si dovrebbe usare il nome dell'uragano come campo della traccia.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Scegliere il metodo per il calcolo della distanza</h2></div>
+        <hr/>
+        <div>
+            <p>Metodo utilizzato per calcolare la distanza dell'abitazione all'interno di tracce. Il metodo  <b>Planare</b> consente di calcolare i risultati pi&ugrave; velocemente ma non unisce le tracce in corrispondenza della linea di cambio data internazionale n&eacute; tiene in considerazione la forma effettiva della terra durante il buffering. Il metodo <b>Geodetico</b> consente di unire le tracce in corrispondenza della linea di cambio data internazionale e applica un buffer geodetico tenendo in considerazione la forma effettiva della terra.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Definire la distanza di ricerca spaziale</h2></div>
+        <hr/>
+        <div>
+            <p>La tolleranza della distanza dell'abitazione &egrave; la distanza massima tra i punti da considerare in una singola posizione dell'abitazione.
+            </p>
+            <p>Ad esempio, se si &egrave; interessati a trovare abitazioni in cui il traffico non si &egrave; spostato di oltre 20 metri in un determinato periodo, la tolleranza della distanza sarebbe di 20 metri.
+            </p>
+            <p>Utilizzare il parametro  <b>Definire l'intervallo di ricerca temporale</b> per specificare l'ora.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Suddividi tracce (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit&agrave; di tolleranza della distanza.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Definire l'intervallo di ricerca temporale</h2></div>
+        <hr/>
+        <div>
+            <p>La tolleranza del tempo dell'abitazione &egrave; la durata minima di un'abitazione da considerare in una singola posizione dell'abitazione.
+            </p>
+            <p>Ad esempio, se si desidera sapere il punto in cui il traffico non si &egrave; spostato di una determinata distanza entro un'ora, la tolleranza del tempo sarebbe di 1 ora.
+            </p>
+            <p>Utilizzare il parametro  <b>Definire l'intervallo di ricerca spaziale</b> per specificare la distanza.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Selezionare una distanza per suddividere le tracce (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit&agrave; di tolleranza del tempo.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Aggiungi statistiche (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p>&Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue: 
+                <ul>
+                    <li>Conteggio: calcola il numero di valori nonnull. Pu&ograve; essere utilizzato su campi o stringhe numeriche. Il conteggio di [null, 0, 2] &egrave; 2.
+                    </li>
+                    <li>Somma: la somma dei valori numerici in un campo. La somma di [null, null, 3] &egrave; 3.
+                    </li>
+                    <li>Media: la media di valori numerici. La media di [0, 2, null] &egrave; 1.
+                    </li>
+                    <li>Min: il valore minimo di un campo numerico. Il minimo di [0, 2, null] &egrave; 0. 
+                    </li>
+                    <li>Max: il valore massimo di un campo numerico. Il valore massimo di [0, 2, null] &egrave; 2.
+                    </li>
+                    <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
+                    </li>
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1, 0, 1, 1] &egrave; 0,25.
+                    </li>
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1, 0, 1, 1] &egrave; 0,5. 
+                    </li>
+                    <li>Primo: il primo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [1, 5, 10, 20], il primo valore &egrave; 1.
+                    </li>
+                    <li>Ultimo: l'ultimo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [1, 5, 10, 20], l'ultimo valore &egrave; 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Su campi stringa &egrave; possibile calcolare quanto segue:
+                <ul>
+                    <li>Conteggio: il numero di stringhe nonnull.
+                    </li>
+                    <li>Qualsiasi: questa statistica &egrave; un esempio casuale di un valore stringa nel campo specificato.
+                    </li>
+                    <li>Primo: il primo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], il primo valore &egrave; Toronto.
+                    </li>
+                    <li>Ultimo: l'ultimo valore di un campo specificato nella traccia di riepilogo. Se una traccia ha i seguenti valori ordinati per tempo per un campo: [Toronto, Guelph, Squamish, Montreal, Halifax, Redlands, Boston], l'ultimo valore &egrave; Boston.
+                    </li>
+                </ul>
+                Tutte le statistiche vengono calcolate su valori non null. Il layer risultante includer&agrave; un nuovo campo per ogni statistica calcolata. &Egrave; possibile aggiungere un numero qualsiasi di statistiche scegliendo un attributo e una statistica.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Eseguire l'output delle posizioni delle abitazioni come</h2></div>
+        <hr/>
+        <div>
+            <p>Determina quali feature vengono restituite e il formato. Sono disponibili quattro tipi: 
+                <ul>
+                    <li> <b>Centri medi</b>: un punto che rappresenta il centroide di ciascuna posizione di abitazione rilevata. Gli attributi vengono riepilogati. Questa &egrave; l'impostazione predefinita.
+                         
+                    </li>
+                    <li> <b>Involucri convessi</b>: poligoni che rappresentano l'involucro convesso di ciascun gruppo di abitazione. Gli attributi vengono riepilogati.
+                         
+                    </li>
+                    <li> <b>Feature abitazioni</b>: vengono restituite tutte le feature puntuali di input e gli attributi determinati come appartenenti a un'abitazione.
+                         
+                    </li>
+                    <li> <b>Tutte le feature</b>: vengono restituite tutte le feature puntuali di input e gli attributi.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analizzare dati con intervalli di tempo (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare se si desidera rilevare le posizioni delle abitazioni usando intervalli di tempo che segmentano le feature di input per l'analisi. Se si utilizzano intervalli di tempo, &egrave; necessario impostare l'intervallo di tempo da usare e, facoltativamente, impostare un riferimento temporale. Se non si imposta un riferimento temporale, si user&agrave; il 1 gennaio 1970. 
+            </p>
+            <p>Ad esempio, se si imposta come confine temporale 1 giorno, a partire dalle 9:00 del 1&ordm; gennaio 1990, ogni traccia sar&agrave; troncata alle 9:00 di ogni giorno e analizzata all'interno di tale segmento. Nessuna abitazione inizier&agrave; prima delle 9:00 e finir&agrave; dopo. 
+            </p>
+            <p>L'utilizzo di intervalli di tempo &egrave; un modo rapido per accelerare il tempo di calcolo, perch&eacute; crea rapidamente tracce pi&ugrave; piccole per l'analisi. Se per l'analisi &egrave; conveniente dividere in base a un intervallo di tempo ricorrente, si consiglia per l'elaborazione di Big Data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p> Il nome del layer che verr&agrave; creato. Se si scrive su un ArcGIS Data Store, i risultati saranno salvati in  <b>I miei contenuti</b> e aggiunti alla mappa. Se si scrive su una condivisione file Big Data, i risultati saranno memorizzati nella condivisione file Big Data e aggiunti al suo Manifest. Non saranno aggiunti alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            </p>
+            <p>Quando si scrive su  ArcGIS Data Store (data store relazionale o Spatiotemporal Big Data Store) usando la casella a discesa  <b>Salva risultato in</b>, &egrave; possibile specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

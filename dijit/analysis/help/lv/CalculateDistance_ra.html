@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Izvēlēties elementu novietojuma slāņa rastru, lai aprēķinātu attālumu līdz</h2></div>
+        <div><h2>Izvēlieties rastru vai elementu novietojuma slāni, lai aprēķinātu attālumu līdz</h2></div>
         <hr/>
         <div>
             <p>Slānis, kas definē avotus, līdz kuriem tiks aprēķināts attālums. Slānis var būt attēlu vai elementu serviss.
@@ -137,6 +137,47 @@
             <p>Ievades avota slāņa lauks ar vērtībām, kas definē katru avotu. Tas var būt avota datu kopas vesela skaitļa vai virknes lauks.
             </p>
             <p>Noklusējuma vērtība ir  <i>Value</i>. Ja, lietojot elementu servisu, lauks <i>Value</i> nebūs pieejams, tiks izmantots pirmais pieejamais vesela skaitļa vai virknes lauks. Ja nebūs derīgu lauku, tiks izmantots lauks ObjectID (piemēram, OID vai FID, atkarībā no elementa ievades tipa).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izvēlēties rastru vai elementu slāni, lai parādītu barjeras</h2></div>
+        <hr/>
+        <div>
+            <p>Datu kopa, kas nosaka barjeras. 
+            </p>
+            <p>Attēlu servisa ievades veids var būt vesels skaitlis vai peldo&scaron;ais punkts. Jebkura &scaron;ūna, kurā ir vērtība (tostarp nulles vērtība), tiks uzskatīta par barjeru; &scaron;ūnās, kurās ir parametrs NoData, netiks uzskatītas par barjeru.
+            </p>
+            <p>Elementu servisa ievade var būt punkts, līnija vai laukums.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Attāluma metode</h2></div>
+        <hr/>
+        <div>
+            <p>Nosaka, vai aprēķināt attālumu, izmantojot plaknes (plakana zeme) vai ģeodēzisko (elipses) metodi.
+            </p>
+            <ul>
+                <li> <b>Plakne</b>&nbsp;&mdash;&nbsp;aprēķinā&scaron;ana tiks veikta projicētajā plakanajā plaknē, izmantojot 2D Dekarta koordinātu sistēmu. Tā ir noklusējuma metode.
+                    
+
+                </li>
+                <li> <b>Ģeodēzisks</b>&nbsp;&mdash; attālumi tiek aprēķināti elipsē. Tādēļ neatkarīgi no ievades vai izvades projekcijas rezultāti nemainās.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Virziena rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tā slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b>. Jums jānorāda nosaukums, kāda vēl nav sadaļā <b>Mans saturs</b>.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
             </p>
         </div>
     </div>

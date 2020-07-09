@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Ph&acirc;n t&iacute;ch Raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c tập dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>Tổng kết Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch C&aacute;c m&ocirc; h&igrave;nh</b>, <b>Sử dụng V&ugrave;ng l&acirc;n cận</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b>, <b>Quản l&yacute; Dữ liệu</b> v&agrave; <b>Deep Learning</b>.
+        <p>Ph&acirc;n t&iacute;ch raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c bộ dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>Tổng kết Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch M&ocirc; h&igrave;nh</b>, <b>Sử dụng V&ugrave;ng l&acirc;n cận</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b>, <b>Quản l&yacute; Dữ liệu</b>, <b>Deep Learning</b> v&agrave; <b>Ph&acirc;n t&iacute;ch Đa chiều</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -327,7 +327,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Quản lý Dữ liệu</h2>
         <hr/>
         <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được d&ugrave;ng để quản l&yacute; dữ liệu địa l&yacute; h&agrave;ng ng&agrave;y v&agrave; kết hợp dữ liệu trước khi ph&acirc;n t&iacute;ch. 
@@ -347,6 +347,8 @@
                 <li> <b>Chuyển đổi Raster th&agrave;nh Đối tượng</b> sẽ v&eacute;c tơ h&oacute;a dữ liệu raster.
                     
 
+                </li>
+                <li> <b>Mẫu</b> tr&iacute;ch xuất dữ liệu tại c&aacute;c vị tr&iacute; x&aacute;c định từ một raster hoặc tập hợp raster.
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mẫu</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Mẫu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tạo một lớp đối tượng điểm hoặc bảng c&oacute; gi&aacute; trị dữ liệu tại c&aacute;c vị tr&iacute; x&aacute;c định được tr&iacute;ch xuất từ một raster hoặc tập hợp raster.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Bộ công cụ Deep Learning</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được sử dụng để ph&aacute;t hiện đối tượng cụ thể trong h&igrave;nh ảnh hoặc để ph&acirc;n loại pixel trong bộ dữ liệu raster. Deep learning l&agrave; một loại phương ph&aacute;p học m&aacute;y tr&iacute; th&ocirc;ng minh nh&acirc;n tạo sử dụng nhiều lớp trong mạng lưới thần kinh nơi m&agrave; trong đ&oacute; mỗi lớp c&oacute; khả năng tr&iacute;ch xuất một hoặc nhiều đối tượng duy nhất trong h&igrave;nh ảnh để ph&aacute;t hiện c&aacute;c đối tượng trong h&igrave;nh ảnh. Những c&ocirc;ng cụ n&agrave;y sử dụng c&aacute;c m&ocirc; h&igrave;nh đ&atilde; được đ&agrave;o tạo để ph&aacute;t hiện đối tượng cụ thể trong c&aacute;c deep learning framework của b&ecirc;n thứ ba&mdash;như TensorFlow, CNTK v&agrave; Keras&mdash;v&agrave; c&aacute;c đối tượng đầu ra hoặc bản đồ lớp.
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được sử dụng để ph&aacute;t hiện hoặc ph&acirc;n loại đối tượng cụ thể trong h&igrave;nh ảnh hoặc để ph&acirc;n loại pixel trong bộ dữ liệu raster. Deep learning l&agrave; một loại phương ph&aacute;p machine learning về tr&iacute; th&ocirc;ng minh nh&acirc;n tạo sử dụng nhiều lớp trong mạng lưới thần kinh nơi m&agrave; trong đ&oacute; mỗi lớp c&oacute; khả năng tr&iacute;ch xuất một hoặc nhiều đối tượng duy nhất trong h&igrave;nh ảnh để ph&aacute;t hiện c&aacute;c đối tượng trong h&igrave;nh ảnh. Những c&ocirc;ng cụ n&agrave;y sử dụng c&aacute;c m&ocirc; h&igrave;nh đ&atilde; được đ&agrave;o tạo để ph&aacute;t hiện đối tượng cụ thể trong c&aacute;c deep learning framework của b&ecirc;n thứ ba&mdash;như TensorFlow, CNTK v&agrave; Keras&mdash;v&agrave; c&aacute;c đối tượng đầu ra hoặc bản đồ lớp.
             <ul>
                 <li> <b>Ph&acirc;n loại Pixel sử dụng Deep Learning</b> sử dụng một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo để tạo ra một raster được ph&acirc;n loại.
                 </li>
                 <li> <b>Ph&aacute;t hiện Đối tượng sử dụng Deep Learning</b> sử dụng một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo để tạo ra một lớp đối tượng chứa c&aacute;c đối tượng m&agrave; n&oacute; t&igrave;m thấy trong một raster đầu v&agrave;o.
                 </li>
+                <li> <b>Ph&acirc;n loại Đối tượng sử dụng Deep Learning</b> tạo ra một lớp đối tượng hoặc bảng, trong đ&oacute; mỗi đối tượng đầu v&agrave;o trong một raster đầu v&agrave;o sẽ được g&aacute;n một nh&atilde;n loại bằng m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Chạy một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo tr&ecirc;n một raster đầu v&agrave;o để tạo ra một raster được ph&acirc;n loại, theo đ&oacute; mỗi pixel hợp lệ c&oacute; được g&aacute;n một nh&atilde;n lớp.
+            <p>C&ocirc;ng cụ n&agrave;y chạy một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo tr&ecirc;n một raster đầu v&agrave;o để tạo ra một raster được ph&acirc;n loại, theo đ&oacute; mỗi pixel hợp lệ được g&aacute;n một nh&atilde;n loại.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Chạy m&ocirc; h&igrave;nh deep learning tr&ecirc;n một raster đầu v&agrave;o để tạo ra một lớp đối tượng chứa c&aacute;c đối tượng m&agrave; n&oacute; t&igrave;m thấy. Đối tượng c&oacute; thể l&agrave; c&aacute;c v&ugrave;ng bao hoặc đa gi&aacute;c quanh c&aacute;c đối tượng t&igrave;m thấy, hoặc c&aacute;c điểm ở t&acirc;m của đối tượng.
+            <p>C&ocirc;ng cụ n&agrave;y chạy một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo tr&ecirc;n một raster đầu v&agrave;o để tạo ra một lớp đối tượng chứa c&aacute;c đối tượng m&agrave; n&oacute; t&igrave;m thấy. Đối tượng c&oacute; thể l&agrave; c&aacute;c v&ugrave;ng bao hoặc polygon quanh c&aacute;c đối tượng t&igrave;m thấy, hoặc c&aacute;c điểm ở t&acirc;m của đối tượng.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Phân loại Đối tượng sử dụng Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Ph&acirc;n loại Đối tượng sử dụng Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y chạy một m&ocirc; h&igrave;nh deep learning được đ&agrave;o tạo tr&ecirc;n một raster đầu v&agrave;o để tạo ra một lớp đối tượng t&ugrave;y chọn từ đ&oacute; tạo ra một lớp đối tượng hoặc bảng m&agrave; trong đ&oacute; đối tượng đầu v&agrave;o được g&aacute;n một nh&atilde;n loại.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Phân tích Đa chiều</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ trong bộ c&ocirc;ng cụ Ph&acirc;n t&iacute;ch Đa chiều cho ph&eacute;p bạn thực hiện ph&acirc;n t&iacute;ch dữ liệu khoa học tr&ecirc;n nhiều biến v&agrave; nhiều chiều.
+        </p>
+        <p>Dữ liệu đa chiều l&agrave; c&aacute;c dữ liệu thu được tại nhiều thời điểm, độ s&acirc;u v&agrave; chiều cao. Loại dữ liệu n&agrave;y thường được sử dụng trong khoa học kh&iacute; quyển, hải dương học v&agrave; khoa học tr&aacute;i đất. C&oacute; bộ c&ocirc;ng cụ n&agrave;y trong tay, bạn c&oacute; thể ph&acirc;n t&iacute;ch dữ liệu raster đa chiều ở nhiều định dạng, gồm netCDF, HDF, GRIB, bộ dữ liệu mosaic đa chiều v&agrave; Định dạng Cloud Raster của Esri (CRF).
+        </p>
+        <p>Bảng sau giới thiệu c&aacute;c c&ocirc;ng cụ ph&acirc;n t&iacute;ch đa chiều v&agrave; phần m&ocirc; tả ngắn về từng c&ocirc;ng cụ.
+            <ul>
+                <li> <b>Tổng hợp Raster Đa chiều</b> tạo ra một bộ dữ liệu raster đa chiều bằng c&aacute;ch tổng hợp c&aacute;c biến raster đa chiều hiện c&oacute; theo một chiều.
+                </li>
+                <li> <b>Tạo Bất thường Đa chiều</b> t&iacute;nh to&aacute;n sự bất thường của mỗi l&aacute;t cắt trong một raster đa chiều để tạo ra một raster đa chiều.
+                </li>
+                <li> <b>Tạo Raster Xu hướng</b> ước t&iacute;nh xu hướng cho từng pixel theo một chiều cho một hoặc nhiều biến trong raster đa chiều.
+                </li>
+                <li> <b>Dự đo&aacute;n Sử dụng Raster Xu hướng</b> t&iacute;nh to&aacute;n một raster đa chiều được dự đo&aacute;n bằng c&aacute;ch sử dụng raster xu hướng đầu ra từ c&ocirc;ng cụ <b>Tạo Raster Xu hướng</b>.
+                </li>
+                <li> <b>T&igrave;m Thống k&ecirc; Đối số</b> xuất gi&aacute; trị chiều hoặc chỉ số dải m&agrave; tại đ&oacute; thu được một số liệu thống k&ecirc; nhất định cho mỗi pixel trong raster đa chiều hoặc đa dải.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tổng hợp Raster Đa chiều</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Tổng hợp Raster Đa chiều">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y tạo ra một bộ dữ liệu raster đa chiều bằng c&aacute;ch tổng hợp c&aacute;c biến raster đa chiều hiện c&oacute; theo một chiều.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tìm Thống kê Đối số</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="T&igrave;m Thống k&ecirc; Đối số">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y xuất gi&aacute; trị chiều hoặc chỉ số dải m&agrave; tại đ&oacute; thu được một số liệu thống k&ecirc; nhất định cho mỗi pixel trong raster đa chiều hoặc đa dải.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tạo Bất thường Đa chiều</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Tạo Bất thường Đa chiều">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n sự bất thường của mỗi l&aacute;t cắt trong một raster đa chiều để tạo ra một raster đa chiều.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tạo Raster Xu hướng</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Tạo Raster Xu hướng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y ước t&iacute;nh xu hướng cho từng pixel theo một chiều cho một hoặc nhiều biến trong raster đa chiều.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dự đoán sử dụng Raster Xu hướng</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Dự đo&aacute;n sử dụng Raster Xu hướng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n một raster đa chiều được dự đo&aacute;n sử dụng raster xu hướng đầu ra từ c&ocirc;ng cụ  <b>Tạo Raster Xu hướng</b>.
             </p>
             <br/>
         </div>

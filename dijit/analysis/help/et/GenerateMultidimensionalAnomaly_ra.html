@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Genereeri mitmemõõtmeline anomaalia</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Genereeri mitmem&otilde;&otilde;tmeline anomaalia"></h2>
+        <hr/>
+    <p>Loob mitmem&otilde;&otilde;tmelise rasterandmestiku olemasolevaid mitmem&otilde;&otilde;tmelisi rastri muutujaid m&ouml;&ouml;da dimensiooni kombineerides.
+    </p>
+    <p>Anomaalia on vaatluse h&auml;lve selle standard-, keskmisest v&otilde;i aritmeetilise keskmise v&auml;&auml;rtusest.
+    </p>
+    <p>See t&ouml;&ouml;riist m&otilde;&otilde;dab &uuml;he v&otilde;i mitme muutuja nomaaliaid ajaperioodi jooksul &uuml;hes mitmem&otilde;&otilde;tmelisest rastris. Kui ajalisele m&otilde;&otilde;tmele lisaks on mitteajaline m&otilde;&otilde;de, arvutatakse lisam&otilde;&otilde;tme anomaalia igas osas.
+    </p>
+    <p>N&auml;iteks teil on igakuised ookeani temperatuuri andmed, mis on kogutud iga meetri pealt kuni 100 meetri s&uuml;gavuseni v&auml;lja ja te tahate arvutada temperatuuri anomaaliaid h&auml;lbena aasta keskmisest. See t&ouml;&ouml;riist m&auml;&auml;rab temeratuuri anomaaliad aasta keskmise p&otilde;hjal, kui m&auml;&auml;rate  <b>keskmise arvutamise ajaliseks m&otilde;&otilde;teks</b> valiku <b>Iga-aastane</b> ja see annab sajast s&uuml;gavusest igale n&auml;itajale anomaalia v&auml;&auml;rtuse.
+    </p>
+    <p>See t&ouml;&ouml;riist toetab ainult neid mitmem&otilde;&otilde;tmelisi rasterandmestikke, millel on ajaline m&otilde;&otilde;de.
+    </p>
+    <p>Kui  <b>Kasuta hetke kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse kihi muutujaid, mis on hetke kaardi kuvaulatuses n&auml;htavad.. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ielikus kihis olevaid muutujaid ka siis, kui neid pole praegu kaardil n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valige anomaalia loomiseks mitmemõõtmeline pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>Mitmem&otilde;&otilde;tmelise rasterandmestiku sisendpiltide kiht
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valige muutuja(d), mille kohta luuakse anomaaliad</h2></div>
+        <hr/>
+        <div>
+            <p>Muutuja v&otilde;i muutujad, millele anomaaliad arvutatakse. Kui muutujat ei m&auml;&auml;rata, anal&uuml;&uuml;sitakse k&otilde;iki muutujaid, millel on ajaline m&otilde;&otilde;de.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Valige anomaalia loomise meetod</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab meetodi, mida kasutatakse anomaalia arvutamiseks. 
+                <ul>
+                    <li> <b>Erinevus keskmisest</b> &ndash; arvutatakse piksli v&auml;&auml;rtuse ja vahemikuga m&auml;&auml;ratletud l&otilde;ikude pikslite keskmise v&auml;&auml;rtuse vahe. See on vaikimisi valik.
+                    </li>
+                    <li> <b>Protsentuaalne erinevus keskmisest</b> &ndash; arvutatakse piksli v&auml;&auml;rtuse ja vahemikuga m&auml;&auml;ratletud l&otilde;ikude pikslite keskmise v&auml;&auml;rtuse vahe protsentides.
+                    </li>
+                    <li> <b>Keskmise protsent</b> &ndash; arvutatakse keskmine protsent.
+                    </li>
+                    <li> <b>Z-skoor</b> &ndash; arvutatakse iga piksli z-skoor. Kui z-skoor on 0, on piksli v&auml;&auml;rtus identne keskmisega. Kui z-skoor on 1, on piksli v&auml;&auml;rtus 1 standardh&auml;lve keskmisest. Kui z-skoor on 2, on piksli v&auml;&auml;rtus 2 standardh&auml;lvet keskmisest.
+                    </li>
+                    <li> <b>Erinevus mediaanist</b> &ndash; arvutatakse piksli v&auml;&auml;rtuse ja vahemikuga m&auml;&auml;ratletud l&otilde;ikude pikslite v&auml;&auml;rtuste matemaatilise mediaani v&auml;&auml;rtuse vahe.
+                    </li>
+                    <li> <b>Protsentuaalne erinevus mediaanist</b> &ndash; arvutatakse piksli v&auml;&auml;rtuse ja vahemikuga m&auml;&auml;ratletud l&otilde;ikude pikslite v&auml;&auml;rtuste matemaatilise mediaani v&auml;&auml;rtuse vahe protsentides.
+                    </li>
+                    <li> <b>Mediaani protsent</b> &ndash; arvutatakse matemaatilise mediaani protsent.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Anomaalia v&auml;&auml;rtuste arvutamise matemaatilised meetodid on toodud allpool. Anomaaliaid saab arvutada nii keskmise kui ka aritmeetilise keskmise j&auml;rgi kui arvutatud keskmisena. Kui andmete jaotus on kallutatud, v&otilde;ib keskmine olla m&otilde;jutatud v&auml;&auml;rv&auml;&auml;rtusest, seega nende andmete jaoks v&otilde;ib aritmeetilise keskmise v&auml;&auml;rtus paremini sobida.
+            </p>
+            <p>
+                <ul>
+                    <li>Vahe keskmisega = x - &micro;
+
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                                
+
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Protsentuaalne vahe keskmisega = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                                
+
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                                
+
+                            </li>
+                            <li>|x - &micro;| = v&auml;&auml;rtuse ja keskmise vahelise vahe absoluutne v&auml;&auml;rtus
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Keskmise protsent = x / &micro;
+
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                                
+
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Vahe aritmeetilise keskmisega = x - &szlig;
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste aritmeetiline keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Protsentuaalne vahe aritmeetilise keskmisega = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste aritmeetiline keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                            </li>
+                            <li>|x - &micro;| = v&auml;&auml;rtuse ja aritmeetilise keskmise vahelise vahe absoluutne v&auml;&auml;rtus
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Aritmeetilise keskmise protsent = x / &szlig;
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste aritmeetiline keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-skoor  = (x - &micro;) / S
+                        <ul>
+                            <li>x = &uuml;he l&otilde;igu piksli v&auml;&auml;rtus
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste keskmine m&auml;&auml;ratud ajaperioodi jooksul
+                            </li>
+                            <li>&micro; = selle piksli v&auml;&auml;rtuste standardh&auml;lve m&auml;&auml;ratud ajaperioodi jooksul
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Keskmise arvutamiseks valige ajaintervall</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab ajalise vahemiku, mida kasutatakse keskmise arvutamiseks. 
+                <ul>
+                    <li> <b>K&otilde;ik</b> &ndash; arvutab k&otilde;igi l&otilde;ikude iga piksli keskmise.
+                    </li>
+                    <li> <b>Aastap&otilde;hine</b> &ndash; arvutab iga piksli aastap&otilde;hise keskmise.
+                    </li>
+                    <li> <b>Korduv, kuup&otilde;hine</b> &ndash; arvutab iga piksli kuup&otilde;hise keskmise.
+                    </li>
+                    <li> <b>Korduv, n&auml;dalap&otilde;hine</b> &ndash; arvutab iga piksli n&auml;dalap&otilde;hise keskmise.
+                    </li>
+                    <li> <b>Korduv, p&auml;evap&otilde;hine</b> &ndash; arvutab iga piksli n&auml;dalap&otilde;hise keskmise.
+                    </li>
+                    <li> <b>Tunnip&otilde;hine</b> &ndash; arvutab iga piksli tunnip&otilde;hise keskmise.
+                    </li>
+                    <li> <b>V&auml;line raster</b> &ndash; v&otilde;rdluseks kasutatakse olemasolevat rastriandmestikku, mis h&otilde;lmab iga piksli keskmist v&otilde;i mediaanv&auml;&auml;rtust.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Valige võrdluseks keskmise pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab v&otilde;rdluseks rasterandmestiku, mis sisaldab iga piksli eelnevalt arvutatud keskmist. Anomaaliad arvutatakse selle keskmisega v&otilde;rreldes.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Eira arvutuses puuduvaid väärtusi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra, kas puuduvaid v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida. 
+                <ul>
+                    <li>Kontrollitud &ndash; anal&uuml;&uuml;sis kaasatakse k&otilde;ik kehtivad pikslid kindlas dimensioonis ja ignoreeritakse k&otilde;iki NoData piksleid. See on vaikimisi valik.
+                    </li>
+                    <li>M&auml;rkimata &ndash; kui antud dimensiooni pikslites esineb NoData v&auml;&auml;rtuseid, on anal&uuml;&uuml;si tulemuseks NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Izberite raster geoobjektnega lokacijskega sloja za izračun razdalje do</h2></div>
+        <div><h2>Izberite rastrski ali geoobjektni lokacijski sloj za izračun razdalje do</h2></div>
         <hr/>
         <div>
             <p>Sloj, ki definira vire, do katerih bo izračunana razdalja. Sloj je lahko slikovna ali geoobjektna storitev.
@@ -137,6 +137,47 @@
             <p>Polje na vhodnem izvirnem sloju, ki vsebuje vrednosti, ki definirajo posamezen vir. To je lahko polje s celim &scaron;tevilom ali besedilno polje izvirnega sklopa podatkov.
             </p>
             <p>Privzeta vrednost je  <i>Value</i>. Če uporabljate geoobjektno storitev in polje z <i>Value</i> ni na voljo, bo uporabljano prvo polje s celim &scaron;tevilom ali besedilom. Če veljavno polje ne obstaja, bo uporabljeno polje ObjectID (na primer OID ali FID, odvisno od tipa vhodnega geoobjekta).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izberite raster ali geoobjektni sloj, ki predstavlja ovire.</h2></div>
+        <hr/>
+        <div>
+            <p>Sklop podatkov, ki določa ovire. 
+            </p>
+            <p>Za slikovno storitev je vhodni tip lahko celo &scaron;tevilo ali &scaron;tevilo s plavajočo vejico. Celice, ki imajo vrednost (vključno z nič), bodo obravnavane kot ovira in celice, ki so NoData, ne bodo obravnavane kot ovire.
+            </p>
+            <p>Za geoobjektno storitev je vhodni tip lahko točka, linija ali poligon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda razdalje</h2></div>
+        <hr/>
+        <div>
+            <p>Določa izračun razdalje na osnovi ravninske (ravne povr&scaron;ine) ali geodetske (elipsoid) metode.
+            </p>
+            <ul>
+                <li> <b>Ravnina</b> &ndash; Izračun bo izveden na projicirani ravni povr&scaron;ini s pomočjo 2D kartezijskega koordinatnega sistema. To je privzeta metoda.
+                    
+
+                </li>
+                <li> <b>Geodetski</b> &ndash; Razdalje so izračunane na elipsoidu. Tako se rezultati ne spremenijo ne glede na vhodno ali izhodno projekcijo.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Ime sloja z rezultati obratne smeri</h2></div>
+        <hr/>
+        <div>
+            <p>To je ime sloja, ki bo dodan v  <b>Moja vsebina</b>. Navesti morate ime, ki trenutno &scaron;e ne obstaja v <b>Moji vsebini</b>.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
             </p>
         </div>
     </div>

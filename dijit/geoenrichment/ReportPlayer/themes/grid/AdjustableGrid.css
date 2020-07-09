@@ -92,3 +92,8 @@
 .esriGEReportPlayer .esriGEAdjustableGridSingleCell.isShape {
     pointer-events: none;
 }
+
+.esriGEReportPlayer .floatingTableSimpleElement.isImage.hasConditionalStyling,
+.esriGEReportPlayer .esriGEAdjustableGridSingleCell.isImage.hasConditionalStyling {
+    pointer-events: initial;
+}

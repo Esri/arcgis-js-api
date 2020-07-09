@@ -289,3 +289,33 @@
   width: 80%;
   min-width: 100px;
 }
+
+.featureList {
+  padding: 6px;
+  border: 1px solid #686868;
+  flex-direction: column;
+  max-height: 8rem;
+  overflow: auto;
+}
+
+.inline-block-div {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: #d4d4d4;
+  border: 1px solid #686868;
+  margin-bottom: 10px;
+}
+
+.inline-block-div .esriAnalysisCloseIcon {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.layer-name {
+  width: 80%;
+  word-break: break-word;
+}

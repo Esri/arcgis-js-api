@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generate Trend Raster (Generiši raster trenda)</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generate Trend Raster"></h2>
+        <hr/>
+    <p>Procenjuje trend svakog piksela duž dimenzije za jednu ili vi&scaron;e promenljivih u vi&scaron;edimenzionalnom rasteru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Izaberite višedimenzionalni sloj snimka za analizu trenda</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Ulazni sloj snimka vi&scaron;edimenzionalnog rastera koji će biti analiziran.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Odaberite dimenziju duž koje će trend promenljive biti analiziran</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzija duž koje će trend biti ekstraktovan za promenljivu ili promenljive selektovane u analizi.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Izaberite promenljivu(e) za analizu trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable za koje će se izračunati trendovi. Ako promenljiva nije navedena, analiziraće se prva promenljiva u vi&scaron;edimenzionalnom rasteru.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Odaberi tip linije koja će se koristiti za uklapanje vrednosti promenljivih duž dimenzije</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi tip linije koja će se koristiti za uklapanje vrednosti piksela duž dimenzije. 
+                <ul>
+                    <li> <b>Linearni</b>&mdash;Promenljive vrednosti piksela biće postavljene duž linearne linije trenda. Ovo je podrazumevano.
+                    </li>
+                    <li> <b>Polinomni</b>&mdash;Promenljive vrednosti piksela biće postavljene duž polinomne linije trenda.
+                    </li>
+                    <li> <b>Harmonični</b>&mdash;Promenljive vrednosti piksela biće postavljene duž harmonične linije trenda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Odredite dužinu harmoničnog ciklusa</h2></div>
+        <hr/>
+        <div>
+            <p>Dužina periodične varijacije do modela. Ovaj parametar je neophodan kada je tip linije trenda postavljen na  <b>Harmonični</b>. Na primer, zelenilo listova često ima jedan jak ciklus varijacija u jednoj godini, tako da dužina ciklusa iznosi 1 godinu. Podaci o satnoj temperaturi imaju jedan snažan ciklus varijacija tokom jednog dana, tako da je dužina ciklusa 1 dan.
+            </p>
+            <p>Podrazumevana dužina je 1 godinu za podatke koji variraju na godi&scaron;njem ciklusu.
+            </p>
+            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme i kada je tip linije trenda postavljen na  <b>Harmonični</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Odaberi jedinicu vremena dužine harmoničnog ciklusa</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje jedinicu vremena koja će se koristiti za dužinu harmoničnog ciklusa.
+                <ul>
+                    <li> <b>Dani</b>&mdash;Jedinica za dužinu harmoničnog ciklusa su dani.
+                    </li>
+                    <li> <b>Godine</b>&mdash;Jedinica za dužinu harmoničnog ciklusa su godine. Ovo je podrazumevano.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme i kada je tip linije trenda postavljen na  <b>Harmonični</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Navedite broj učestalosti za uklapanje harmoničnog trenda.</h2></div>
+        <hr/>
+        <div>
+            <p>Frekvencija koja se koristi za uklapanje harmoničnog trenda. Ovaj parametar navodi učestalost ciklusa u godini.
+            </p>
+            <p>Podrazumevana vrednost je 1, ili jedan harmonični ciklus godi&scaron;nje.
+            </p>
+            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Navedite polinomni redni broj za uklapanje trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Redni broj polinoma koji se koristi za uklapanje polinomnog trenda.
+            </p>
+            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme.
+            </p>
+            <p>Podrazumevana vrednost je 2 ili polinom drugog reda.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Odaberite statistiku modela koja će biti obuhvaćena rasterom trenda</h2></div>
+        <hr/>
+        <div>
+            <p>Ova alatka pruža tri tipa statistike fit linije trenda: koren srednje kvadratne gre&scaron;ke (RMSE), R-kvadratna statistika adekvatnosti uklapanja (R-kvadrat) i statistika p-vrednosti za koeficijent nagiba (P-vrednost koeficijenta nagiba). Svaka statistika ima odgovarajuće polje za potvrdu kako bi se odredilo da li će se izračunati i obuhvatiti kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Označeno&mdash;RMSE će biti izračunat i obuhvaćen kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda. Ovo je podrazumevano.
+                            </li>
+                            <li>Neoznačeno&mdash;RMSE neće biti izračunat.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kvadrat
+                        </p>
+                        <ul>
+                            <li>Označeno&mdash;Vrednost R-kvadrat će biti izračunata i obuhvaćena kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+                            </li>
+                            <li>Neoznačeno&mdash;Vrednost R-kvadrat neće biti izračunata. Ovo je podrazumevano.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-vrednost koeficijenta nagiba
+                        </p>
+                        <ul>
+                            <li>Označeno&mdash;P-vrednost će biti izračunata i obuhvaćena kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+                            </li>
+                            <li>Neoznačeno&mdash;P-vrednost neće biti izračunata. Ovo je podrazumevano.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignoriši nedostajuće vrednosti u izračunavanju</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje da li se vrednosti koje nedostaju zanemaruju u analizi.
+                <ul>
+                    <li>Označeno - Analiza će uključiti sve važeće piksele duž date dimenzije i zanemariti sve NoData piksele. Ovo je podrazumevano.
+                    </li>
+                    <li>Neoznačeno - Analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za piksele duž date dimenzije.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

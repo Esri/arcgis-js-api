@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rechercher des emplacements de stabilisation</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagramme du workflow de recherche d&rsquo;emplacements de stabilisation"></h2>
+        <hr/>
+    <p>Cet outil fonctionne avec une couche d&rsquo;entit&eacute;s ponctuelles temporelles de type  <code>Instant</code>. Tout d&rsquo;abord, l&rsquo;outil affecte des entit&eacute;s &agrave; une piste &agrave; l&rsquo;aide d&rsquo;un identifiant unique. L&rsquo;ordre des pistes d&eacute;pend des donn&eacute;es temporelles des entit&eacute;s. Ensuite, la distance entre la premi&egrave;re observation dans une piste et la suivante est calcul&eacute;e. Les entit&eacute;s sont consid&eacute;r&eacute;es comme faisant partie d&rsquo;une stabilisation si deux points cons&eacute;cutifs dans le temps restent dans le rayon donn&eacute; pendant au moins la dur&eacute;e consid&eacute;r&eacute;e. Lorsque deux entit&eacute;s sont identifi&eacute;es comme faisant partie d&rsquo;une stabilisation, la premi&egrave;re est utilis&eacute;e comme point de r&eacute;f&eacute;rence et l&rsquo;outil recherche les entit&eacute;s cons&eacute;cutives qui se trouvent dans le rayon sp&eacute;cifi&eacute; par rapport au point de r&eacute;f&eacute;rence de la stabilisation. Une fois que toutes les entit&eacute;s situ&eacute;es dans le rayon sp&eacute;cifi&eacute; sont d&eacute;tect&eacute;es, l&rsquo;outil rassemble les entit&eacute;s de stabilisation et calcule leur centre moyen. Les entit&eacute;s situ&eacute;s avant et apr&egrave;s la stabilisation actuelle sont ajout&eacute;es &agrave; celle-ci si elles se trouvent dans le rayon donn&eacute; par rapport au centre moyen de l&rsquo;emplacement de stabilisation. Ce processus se poursuit jusqu&rsquo;&agrave; la fin de la piste.
+    </p>
+    <p>Les entit&eacute;s des couches temporelles peuvent &ecirc;tre repr&eacute;sent&eacute;es des mani&egrave;res suivantes&nbsp;:
+        <ul>
+            <li>Instant&nbsp;: un seul moment dans le temps
+            </li>
+            <li>Intervalle&nbsp;: une heure de d&eacute;but et de fin
+            </li>
+        </ul>
+        
+    </p>
+    <p>Par exemple, supposons que, dans le cadre de votre travail au minist&egrave;re des transports, vous ayez collect&eacute; les relev&eacute;s GPS des v&eacute;hicules empruntant les principales autoroutes. Chaque enregistrement GPS contient un ID de v&eacute;hicule unique, l&rsquo;heure, l&rsquo;emplacement et la vitesse. En utilisant l&rsquo;ID de v&eacute;hicule unique pour d&eacute;finir des pistes individuelles, recherchez les v&eacute;hicules qui n&rsquo;ont pas parcouru plus de 100&nbsp;m&egrave;tres en au moins 15&nbsp;minutes pour identifier les zones du r&eacute;seau routier en difficult&eacute;. Vous pouvez &eacute;galement calculer des statistiques telles que la vitesse moyenne des v&eacute;hicules dans l&rsquo;emplacement de stabilisation.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Sélectionner la couche dans laquelle rechercher les stabilisations</h2></div>
+        <hr/>
+        <div>
+            <p>Il s&rsquo;agit de la couche de points qui sera agr&eacute;g&eacute;e en stabilisations. La couche en entr&eacute;e doit &ecirc;tre temporelle avec des entit&eacute;s repr&eacute;sentant un instant dans le temps et doit comporter un ou plusieurs champs permettant d&rsquo;identifier les pistes.
+            </p>
+            <p>En plus de choisir une couche de votre carte, vous pouvez s&eacute;lectionner  <b>Choose Analysis Layer (Choisir une couche d&rsquo;analyse)</b> au bas de la liste d&eacute;roulante pour parcourir votre contenu et rechercher une couche d&rsquo;entit&eacute;s ou un jeu de donn&eacute;es de partage de fichiers Big Data. Vous pouvez appliquer un filtre &agrave; votre couche en entr&eacute;e ou appliquer une s&eacute;lection aux couches h&eacute;berg&eacute;es ajout&eacute;es &agrave; votre carte. Les filtres et les s&eacute;lections sont uniquement appliqu&eacute;s &agrave; des fins d&rsquo;analyse. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Sélectionner un ou plusieurs champs pour identifier les traces</h2></div>
+        <hr/>
+        <div>
+            <p>Champs qui repr&eacute;sentent l&rsquo;identifiant de piste. Vous pouvez utiliser un ou plusieurs champs pour repr&eacute;senter des valeurs de pistes uniques.
+            </p>
+            <p>Par exemple, si vous recherchez des emplacements de stabilisation d&rsquo;ouragans, vous pouvez utiliser le nom de l&rsquo;ouragan comme nom de piste.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Sélectionner le mode de calcul de la distance</h2></div>
+        <hr/>
+        <div>
+            <p>M&eacute;thode utilis&eacute;e pour calculer la distance de stabilisation au sein des pistes. La m&eacute;thode  <b>planaire</b> peut calculer les r&eacute;sultats plus rapidement, mais elle n&rsquo;enroule pas les pistes autour de la ligne internationale de changement de date ou ne tient pas compte de la forme r&eacute;elle de la Terre lors de la mise en tampon. La m&eacute;thode <b>g&eacute;od&eacute;sique</b> enroule les pistes autour de la ligne internationale de changement de date, si n&eacute;cessaire, et applique une zone tampon g&eacute;od&eacute;sique pour tenir compte de la forme r&eacute;elle de la Terre.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Définir la distance de recherche spatiale</h2></div>
+        <hr/>
+        <div>
+            <p>La tol&eacute;rance de distance de stabilisation repr&eacute;sente la distance maximale entre les points &agrave; prendre en compte dans un emplacement de stabilisation.
+            </p>
+            <p>Par exemple, si vous recherchez les stabilisations o&ugrave; le trafic n&rsquo;a pas avanc&eacute; de plus de 20&nbsp;m&egrave;tres pendant un d&eacute;lai donn&eacute;, la tol&eacute;rance de distance est de 20&nbsp;m&egrave;tres.
+            </p>
+            <p>Utilisez le param&egrave;tre  <b>Define the temporal search range (D&eacute;finir la plage de recherche temporelle)</b> pour sp&eacute;cifier les donn&eacute;es de temps.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Fractionner les pistes (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit&eacute; de tol&eacute;rance de distance.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Définir la plage de recherche temporelle</h2></div>
+        <hr/>
+        <div>
+            <p>La tol&eacute;rance de dur&eacute;e de stabilisation repr&eacute;sente la dur&eacute;e minimale d&rsquo;une stabilisation &agrave; prendre en compte dans un emplacement de stabilisation.
+            </p>
+            <p>Par exemple, si vous voulez localiser les endroits o&ugrave; le trafic n&rsquo;a pas parcouru plus d&rsquo;une distance donn&eacute;e pendant une heure, la tol&eacute;rance de dur&eacute;e est d&rsquo;une heure.
+            </p>
+            <p>Utilisez le param&egrave;tre  <b>Define the spatial search range (D&eacute;finir la plage de recherche spatiale)</b> pour sp&eacute;cifier la distance.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Sélectionner une distance en fonction de laquelle fractionner les pistes (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit&eacute; de tol&eacute;rance de temps.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Ajouter des statistiques (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Vous pouvez calculer les donn&eacute;es suivantes sur des champs num&eacute;riques&nbsp;: 
+                <ul>
+                    <li>Total&nbsp;: calcule le nombre de valeurs non Null. Peut &ecirc;tre utilis&eacute; sur des champs num&eacute;riques ou des cha&icirc;nes. Le total de [Null, 0, 2] est &eacute;gal &agrave; 2.
+                    </li>
+                    <li>Somme&nbsp;: somme des valeurs num&eacute;riques dans un champ. La somme de [Null, 0, 3] est &eacute;gale &agrave; 3.
+                    </li>
+                    <li>Moyenne&nbsp;: moyenne des valeurs num&eacute;riques. La moyenne de [0, 2, Null] est &eacute;gale &agrave; 1.
+                    </li>
+                    <li>Min&nbsp;: valeur minimale d'un champ num&eacute;rique. La valeur minimale de [0, 2, Null] est &eacute;gale &agrave; 0. 
+                    </li>
+                    <li>Max&nbsp;: valeur maximale d'un champ num&eacute;rique. La valeur maximale de [0, 2, Null] est &eacute;gale &agrave; 2.
+                    </li>
+                    <li>Plage&nbsp;: plage d'un champ num&eacute;rique. Elle est calcul&eacute;e pour correspondre aux valeurs minimales soustraites de la valeur maximale. La plage de [0, Null, 1] est &eacute;gale &agrave; 1. La plage de [Null, 4] est &eacute;gale &agrave; 0.
+                    </li>
+                    <li>Variance&nbsp;: variance d'un champ num&eacute;rique dans une piste. La variance de [1] est la valeur Null. La variance de [null, 1,0,1,1] est &eacute;gale &agrave; 0,25.
+                    </li>
+                    <li>Ecart type&nbsp;: &eacute;cart type d'un champ num&eacute;rique. L'&eacute;cart type de [1] est la valeur Null. L&rsquo;&eacute;cart type de [null, 1,0,1,1] est &eacute;gale &agrave; 0,5. 
+                    </li>
+                    <li>Premier&nbsp;: la premi&egrave;re valeur d&rsquo;un champ donn&eacute; dans la piste synth&eacute;tis&eacute;e. Si une piste a les valeurs temporelles suivantes pour un champ&nbsp;: [1,5,10,20], la premi&egrave;re valeur est&nbsp;1.
+                    </li>
+                    <li>Dernier&nbsp;: la derni&egrave;re valeur d&rsquo;un champ donn&eacute; dans la piste synth&eacute;tis&eacute;e. Si une piste a les valeurs temporelles suivantes pour un champ&nbsp;: [1,5,10,20], la derni&egrave;re valeur est&nbsp;20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vous pouvez calculer les donn&eacute;es suivantes sur des champs de type cha&icirc;ne&nbsp;:
+                <ul>
+                    <li>Total&nbsp;: le nombre de cha&icirc;nes diff&eacute;rentes de la valeur Null.
+                    </li>
+                    <li>Tout&nbsp;: cette statistique est un &eacute;chantillon al&eacute;atoire d'une valeur de cha&icirc;ne dans le champ sp&eacute;cifi&eacute;.
+                    </li>
+                    <li>Premier&nbsp;: la premi&egrave;re valeur d&rsquo;un champ donn&eacute; dans la piste synth&eacute;tis&eacute;e. Si une piste a les valeurs temporelles suivantes pour un champ&nbsp;: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], la premi&egrave;re valeur est&nbsp;Toronto.
+                    </li>
+                    <li>Dernier&nbsp;: la derni&egrave;re valeur d&rsquo;un champ donn&eacute; dans la piste synth&eacute;tis&eacute;e. Si une piste a les valeurs temporelles suivantes pour un champ&nbsp;: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], la derni&egrave;re valeur est&nbsp;Boston.
+                    </li>
+                </ul>
+                Toutes les statistiques sont calcul&eacute;es sur des valeurs non nulles. La couche obtenue contient un nouveau champ pour chaque statistique calcul&eacute;e. Vous pouvez ajouter des statistiques en choisissant un attribut et une statistique.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Afficher les emplacements de stabilisation comme</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;termine les entit&eacute;s retourn&eacute;es et dans quel format. Quatre types sont disponibles&nbsp;: 
+                <ul>
+                    <li> <b>Centres moyens</b>&nbsp;: point repr&eacute;sentant le centro&iuml;de de chaque emplacement de stabilisation d&eacute;tect&eacute;. Les attributs sont agr&eacute;g&eacute;s. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                         
+                    </li>
+                    <li> <b>Enveloppes convexes</b>&nbsp;: polygones repr&eacute;sentant l&rsquo;enveloppe convexe de chaque groupe de stabilisations. Les attributs sont agr&eacute;g&eacute;s.
+                         
+                    </li>
+                    <li> <b>Entit&eacute;s de stabilisation</b>&nbsp;: les entit&eacute;s ponctuelles en entr&eacute;e et les attributs identifi&eacute;s comme appartenant &agrave; une stabilisation sont retourn&eacute;s.
+                         
+                    </li>
+                    <li> <b>Toutes les entit&eacute;s</b>&nbsp;: l&rsquo;ensemble des entit&eacute;s ponctuelles en entr&eacute;e et des attributs sont retourn&eacute;s.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyser les données selon les intervalles temporels (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Indiquez si vous voulez rechercher des localisations de stabilisation &agrave; l&rsquo;aide d&rsquo;intervalles temporels qui segmentent les entit&eacute;s en entr&eacute;e &agrave; analyser. Si vous utilisez des intervalles temporels, vous devez d&eacute;finir les intervalles temporels n&eacute;cessaires et, &eacute;ventuellement, le temps de r&eacute;f&eacute;rence. Si vous n&rsquo;indiquez pas de temps de r&eacute;f&eacute;rence, la date du 1er janvier 1970 est employ&eacute;e. 
+            </p>
+            <p>Si, par exemple, vous d&eacute;finissez la limite temporelle comme &eacute;tant un jour, &agrave; partir de 9&nbsp;heures du matin &agrave; la date du 1er janvier 1990, chaque piste sera tronqu&eacute;e &agrave; 9&nbsp;heures chaque jour et analys&eacute; au sein de ce segment. Aucune stabilisation ne commencera avant 9&nbsp;heures et se terminera apr&egrave;s. 
+            </p>
+            <p>L&rsquo;utilisation d&rsquo;intervalles temporels est une mani&egrave;re d&rsquo;acc&eacute;l&eacute;rer le calcul car elle g&eacute;n&egrave;re de plus petites pistes &agrave; analyser. S&rsquo;il est pertinent d&rsquo;appliquer une division par un intervalle temporel r&eacute;current dans le cadre de l&rsquo;analyse, il est recommand&eacute; d&rsquo;utiliser cette m&eacute;thode pour le traitement Big Data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p> Le nom de la couche &agrave; cr&eacute;er.  Si vous &eacute;crivez dans une instance ArcGIS Data Store, vos r&eacute;sultats sont enregistr&eacute;s dans  <b>My Content (Mon contenu)</b> et ajout&eacute;s &agrave; la carte. Si vous &eacute;crivez dans un partage de fichiers Big Data, vos r&eacute;sultats sont stock&eacute;s dans le partage de fichiers Big Data et ajout&eacute;s &agrave; son manifeste. Ils ne sont pas ajout&eacute;s &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            </p>
+            <p>Lors de l&rsquo;&eacute;criture sur  ArcGIS Data Store (r&eacute;pertoire de donn&eacute;es relationnelles ou spatio-temporelles) via la zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>, vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My Content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

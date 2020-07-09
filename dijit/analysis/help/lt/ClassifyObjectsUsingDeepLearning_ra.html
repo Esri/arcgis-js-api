@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Objektų klasifikavimas naudojant gilųjį mokymąsi</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Objektų klasifikavimas naudojant gilųjį mokymąsi"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis įvesties rastrui ir pasirinktinei elementų klasei naudoja i&scaron;mokytą giliojo mokymosi modelį, kad sukurtų elementų klasę arba lentelę, kurioje kiekvienam įvesties objektui priskiriama klasės žymė.
+    </p>
+    <p>Jei parinktis  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojama tik dabartinėje žemėlapio aprėptyje matomas rastro plotas. Jei nepažymėta, bus analizuojamas visas rastras, net jei jis nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Pasirinkite, kuris vaizdas bus naudojamas klasifikuoti objektus</h2></div>
+        <hr/>
+        <div>
+            <p>Įvesties vaizdas, kuris bus naudojamas aptikti objektus
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Pasirinkite objektų elementų sluoksnį (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;ko, linijos arba ploto įvesties elementų sluoksnis, nustatantis kiekvieno klasifikuojamo ir žymimo objekto padėtį. Kiekviena įvesties elementų sluoksnio eilutė atspindi vieną objektą.
+            </p>
+            <p>Jei įvesties elementų sluoksnis nenurodytas, įrankis daro prielaidą, kad kiekviename įvesties vaizde yra vienas klasifikuotinas objektas. Jei įvesties vaizde ar vaizduose naudojama erdvinė informacija, įrankio i&scaron;vestis yra elementų sluoksnis, kuriame kiekvieno vaizdo aprėptis naudojama kaip kiekvieno pažymėto elemento ribojanti geometrija. Jei įvesties vaizde ar vaizduose nėra erdvinės informacijos, įrankio i&scaron;vestis yra visų vaizdų ID reik&scaron;mių ir klasių žymių lentelė.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Pasirinkite, kokį giliojo mokymosi modelį naudoti klasifikuojant objektus</h2></div>
+        <hr/>
+        <div>
+            <p>Įvesties giliojo mokymosi paketo ( <code>.dlpk</code>) elementas.
+            </p>
+            <p>Giliojo mokymosi paketą sudaro Esri modelio apra&scaron;o JSON failas ( <code>.emd</code>), giliojo mokymosi dvinario modelio failas ir (nebūtinai) naudojama Python rastrinė funkcija.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Nurodykite gilaus mokymosi modelio argumentus</h2></div>
+        <hr/>
+        <div>
+            <p>Funkcijos argumentai apibrėžiami įvesties modelyje, nurodytoje Python rastro funkcijos klasėje. Būtent čia nurodote papildomus giliojo mokymosi parametrus ir argumentus, skirtus eksperimentuoti ir tobulinti, pavyzdžiui, pasitikėjimo ribą jautrumo korekcijoms.
+            </p>
+            <p>Argumentų pavadinimus įrankis i&scaron;platina skaitydamas Python modulį rastrų analizės serveryje.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Nustatykite klasės žymės lauko pavadinimą</h2></div>
+        <hr/>
+        <div>
+            <p>Lauko, kuriame i&scaron;vesties elementų sluoksnyje bus nurodyta klasifikacijos žymė, pavadinimas.
+            </p>
+            <p>Jei nenurodytas lauko pavadinimas, i&scaron;vesties elementų sluoksnyje bus sugeneruotas naujas laukas pavadinimu  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Apdorojimo režimas</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, kaip bus apdorojami visi vaizdų paslaugos rastro elementai. 
+                <ul>
+                    <li> <b>Vaizdo mozaikos apdorojimas</b> &ndash; bus sudaryta ir apdorojama visų vaizdų paslaugos rastro elementų mozaika. Tai numatytasis nustatymas.
+                    </li>
+                    <li> <b>Atskirų elementų apdorojimas</b> &ndash; visi vaizdų paslaugos rastro elementai bus apdorojami kaip atskiri vaizdai.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

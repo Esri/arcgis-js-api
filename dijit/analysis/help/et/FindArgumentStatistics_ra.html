@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Argumendi statistika otsimine</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Argumendi statistika otsimine"></h2>
+        <hr/>
+    <p>V&otilde;tab v&auml;lja m&otilde;&otilde;tme v&auml;&auml;rtuse v&otilde;i sagedusriba indeks, millega antud statistika on iga piksli jaoks saavutatud mitmem&otilde;&otilde;tmelises v&otilde;i mitmeribalises rastris.
+    </p>
+    <p>Selle t&ouml;&ouml;riistaga ekstraktitakse dimensiooniv&auml;&auml;rtus (nt kuup&auml;eva, k&otilde;rguse v&otilde;i s&uuml;gavuse), mille juures j&otilde;utakse kindla statistikani rastrite virnas mitmem&otilde;&otilde;tmelises rasterandmestikus. Teine v&otilde;imalus on leida ribade arv, mille juures j&otilde;utakse statistikani mitmeribalises rastris.
+    </p>
+    <p>N&auml;iteks v&otilde;ite soovida teada kuud, mil iga piksel saavutas 30 aasta pikkuse andmekogumisperioodi jooksul k&otilde;rgeima merepinnatemperatuuri. Teine n&auml;ide: teil on kaheksaribaline kauganduriga pilt ja te soovite teada riba, kus iga piksli puhul saavutati minimaalne peegeldusv&auml;&auml;rtus.
+    </p>
+    <p>Kui ruut  <b>Kasuta hetke kaardi kuvaulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse kihi muutujaid v&otilde;i ribasid, mis on hetke kaardi kuvaulatuses n&auml;htavad. Kui ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ieliku kihi muutujaid v&otilde;i laineid ka siis, kui neid pole praeguse kaardi kuvaulatuses n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Valige analüüsimiseks mitmemõõtmeline või mitmeribaline pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>Anal&uuml;&uuml;sitakse mitmem&otilde;&otilde;tmelist v&otilde;i mitmeribalist sisendrastrit.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Valige dimensioon, millest statistika ekstraktitakse</h2></div>
+        <hr/>
+        <div>
+            <p>Valige dimensioon, millest tehakse statistikav&auml;ljav&otilde;te Kui sisendraster ei ole mitmem&otilde;&otilde;tmeline raster, siis pole see parameeter vajalik.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valige analüüsitav(ad) muutuja(d)</h2></div>
+        <hr/>
+        <div>
+            <p>Muutuja v&otilde;i muutujad, mida anal&uuml;&uuml;sitakse. Kui sisendraster pole mitmem&otilde;&otilde;tmeline, v&otilde;etakse muutujana mitmeribalise rastri piksliv&auml;&auml;rtusi. Kui sisendraster on mitmem&otilde;&otilde;tmeline ja muutujat pole m&auml;&auml;ratud, anal&uuml;&uuml;sitakse k&otilde;iki valitud dimensiooniga muutujaid.
+            </p>
+            <p>N&auml;iteks selleks, et leida aastad, mil temperatuuriv&auml;&auml;rtused olid k&otilde;rgeimad, m&auml;&auml;rake anal&uuml;&uuml;sitavaks muutujaks temperatuur. Kui te muutujat ei t&auml;psusta ja teil on nii temperatuuri- kui ka sademete muutujad, anal&uuml;&uuml;sitakse m&otilde;lemaid muutujaid ja v&auml;ljundi mitmem&otilde;&otilde;tmeline raster sisaldab m&otilde;lemaid muutujaid.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Valige statistika tüüp</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab statistika, mis ekstraktitakse muutujast v&otilde;i muutujatest antud dimensiooni raames. 
+            </p>
+            <ul>
+                <li> <b>Miinimumi argument</b> &ndash; ekstraktitakse dimensiooniv&auml;&auml;rtus, mille juures saavutatakse muutuja minimaalne v&auml;&auml;rtus. See on vaikimisi valik.
+                </li>
+                <li> <b>Maksimumi argument</b> &ndash; ekstraktitakse dimensiooniv&auml;&auml;rtus, mille juures saavutatakse muutuja maksimaalne v&auml;&auml;rtus.
+                </li>
+                <li> <b>Mediaani argument</b> &ndash; ekstraktitakse dimensiooniv&auml;&auml;rtus, mille juures saavutatakse muutuja mediaanv&auml;&auml;rtus.
+                </li>
+                <li> <b>Kestvuse argument </b> &ndash; pikim dimensiooni kestvus, mille puhul muutuja v&auml;&auml;rtus langeb miinimum- ja maksimumv&auml;&auml;rtuste vahele.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Määrake korduva esinemise väärtus</h2></div>
+        <hr/>
+        <div>
+            <p>Piksliv&auml;&auml;rtus, millega t&auml;histatakse seda, et antud argumendi statistika saavutati sisendrastri andmestikus rohkem kui &uuml;ks kord. Kui seda pole m&auml;&auml;ratud, on piksli v&auml;&auml;rtus dimensiooni v&auml;&auml;rtus argumendi statistika esmakordsel saavutamisel.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Määrake miinimumväärtus</h2></div>
+        <hr/>
+        <div>
+            <p>Minimaalne muutuja v&auml;&auml;rtus, mida kasutatakse kestvusandmete ekstraktimisel.
+            </p>
+            <p>See parameeter on n&otilde;utav, kui statistika t&uuml;&uuml;bina on valitud  <b>Kestvus</b>.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Määrake maksimumväärtus</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimaalne muutuja v&auml;&auml;rtus, mida kasutatakse kestvuse ekstraktimisel.
+            </p>
+            <p>See tuleb m&auml;rkida, kui statistika t&uuml;&uuml;bina on valitud  <b>Kestvus</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Valige dimensioonimääratlus</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kuidas statistika dimensioonist ekstraktitakse. 
+                <ul>
+                    <li> <b>K&otilde;ik</b> &ndash; statistika ekstraktitakse k&otilde;ikidest dimensioonidest. See on vaikimisi valik.
+                    </li>
+                    <li> <b>Intervalli v&otilde;tmes&otilde;na</b> &ndash; statistika ekstraktitakse ajadimensioonist vastavalt vahemiku m&auml;rks&otilde;nale.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Valige võtmesõna intervall</h2></div>
+        <hr/>
+        <div>
+            <p>Valige aja&uuml;hik, mille jaoks statistika ekstraktitakse.
+            </p>
+            <p>N&auml;iteks v&otilde;ib teil olla viie aasta kohta p&auml;evap&otilde;hised merepinna temperatuuri andmed ja soovite teada aastat, mil m&otilde;&otilde;deti suurim temperatuur. M&auml;&auml;rake statistika t&uuml;&uuml;bina  <b>Maksimumi argument</b>, dimensiooni m&auml;&auml;ratlusena <b>Intervalli v&otilde;tmes&otilde;na</b> ja v&otilde;tmes&otilde;na intervallina <b>Aastap&otilde;hine</b>.
+            </p>
+            <p>V&otilde;i kui te soovite teada kuud, millal m&otilde;&otilde;deti pidevalt maksimaalne temperatuur, m&auml;&auml;rake statistika t&uuml;&uuml;bina  <b>Maksimumi argument</b>, dimensiooni m&auml;&auml;ratlusena <b>Intervalli v&otilde;tmes&otilde;na</b> ja v&otilde;tmes&otilde;na intervallina <b>Korduv, kuup&otilde;hine</b>. Siis genereeritakse raster, milles iga piksel sisaldab kuud, mil vastav statistika viie aasta jooksul saadi (nt 18/08/2018, 25/08/2016, 07/08/2013).
+            </p>
+            <p>See samm on n&otilde;utav, kui statistika ekstraktimise dimensiooniks on m&auml;&auml;ratud  <b>StdTime</b> ja ajadimensioonist statistika ekstraktimise viisiks on m&auml;&auml;ratud <b>Intervalli v&otilde;tmes&otilde;na</b>.
+                <ul>
+                    <li> <b>Korduv, p&auml;evap&otilde;hine</b> &ndash; statistika ekstraktitakse p&auml;evade l&otilde;ikes.
+                    </li>
+                    <li> <b>Korduv, n&auml;dalap&otilde;hine</b> &ndash; statistika ekstraktitakse n&auml;dalate l&otilde;ikes.
+                    </li>
+                    <li> <b>Korduv, kuup&otilde;hine</b> &ndash; statistika ekstraktitakse kuude l&otilde;ikes.
+                    </li>
+                    <li> <b>Korduv, kvartalip&otilde;hine</b> &ndash; statistika ekstraktitakse kvartalite l&otilde;ikes.
+                    </li>
+                    <li> <b>Tunnip&otilde;hine</b> &ndash; statistika ekstraktitakse tunni kohta, mil vastav statistika saadi.
+                    </li>
+                    <li> <b>P&auml;evap&otilde;hine</b> &ndash; statistika ekstraktitakse p&auml;eva kohta, mil vastav statistika saadi.
+                    </li>
+                    <li> <b>N&auml;dalap&otilde;hine</b> &ndash; statistika ekstraktitakse n&auml;dala kohta, mil vastav statistika saadi.
+                    </li>
+                    <li> <b>Kuup&otilde;hine</b> &ndash; statistika ekstraktitakse kuu kohta, mil vastav statistika saadi.
+                    </li>
+                    <li> <b>Kvartalip&otilde;hine</b> &ndash; statistika ekstraktitakse kvartali kohta, mil vastav statistika saadi.
+                    </li>
+                    <li> <b>Aastap&otilde;hine</b> &ndash; statistika ekstraktitakse aasta kohta, mil vastav statistika saadi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Eira arvutuses puuduvaid väärtusi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra, kas puuduvaid v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida.
+                <ul>
+                    <li>Kui ruut on m&auml;rgitud, kaasatakse anal&uuml;&uuml;si k&otilde;ik antud dimensiooni kehtivad pikslid  ja ignoreeritakse k&otilde;iki NoData piksleid. See on vaikimisi valik.
+                    </li>
+                    <li>Kui ruut on m&auml;rkimata ja antud dimensiooni pikslites esineb NoData v&auml;&auml;rtuseid, on anal&uuml;&uuml;si tulemuseks NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

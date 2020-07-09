@@ -126,7 +126,7 @@
         <div>
             <p>Determina in che modo verranno gestiti i layer di join e di destinazione se pi&ugrave; feature nel layer di join presentano la stessa relazione con il layer di destinazione. Di seguito sono riportate le due operazioni di join tra cui scegliere:
                 <ul>
-                    <li> <b>Join uno a uno</b>: questa opzione unisce le feature nel layer di target in una singola feature nel layer di join. La maniera in cui le feature vengono unite, viene determinata dal parametro <b>Aggiungi statistiche</b> o dal parametro <b>Specifica quale record mantenere</b>. Se viene utilizzato <b>Aggiungi statistiche</b>, tutte le feature unite corrispondenti verranno riepilogate per ogni feature nel layer di destinazione. Il conteggio di feature unite verr&agrave; aggiunto per impostazione predefinita. Se viene utilizzato <b>Specifica quale record mantenere</b>, &egrave; possibile scegliere di mantenere il primo record corrispondente (predefinito) o di mantenere un record corrispondente basato su un&rsquo;espressione. Un&rsquo;espressione pu&ograve; utilizzare un campo numerico (opzione per il record pi&ugrave; grande o pi&ugrave; piccolo) o un campo data (opzione per il pi&ugrave; recente o per il pi&ugrave; datato).
+                    <li> <b>Join uno a uno</b>: questa opzione unisce le feature nel layer di target in una singola feature nel layer di join. La maniera in cui le feature vengono unite, viene determinata dal parametro <b>Aggiungi statistiche</b> o dal parametro <b>Specifica quale record mantenere</b>. Se viene utilizzato <b>Aggiungi statistiche</b>, tutte le feature unite corrispondenti verranno riepilogate per ogni feature nel layer di destinazione. Il conteggio di feature unite verr&agrave; aggiunto per impostazione predefinita. Se viene utilizzato <b>Specifica quale record mantenere</b>, &egrave; possibile scegliere di mantenere il primo record corrispondente (predefinito) o di mantenere un record corrispondente basato su un'espressione. Un'espressione pu&ograve; utilizzare un campo numerico (opzione per il record pi&ugrave; grande o pi&ugrave; piccolo) o un campo data (opzione per il pi&ugrave; recente o per il pi&ugrave; datato).
                     </li>
                     <li> <b>Join uno a molti</b>: questa opzione unisce tutte le feature corrispondenti nel Join Layer al Target Layer.  Il layer risultati conterr&agrave; pi&ugrave; record della feature di destinazione.
                     </li>
@@ -134,6 +134,14 @@
                 
             </p>
             <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino.   In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b> e si seleziona una statistica, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (5) e altre statistiche facoltative, ad esempio la somma delle vendite annuali.
+            </p>
+        </div>
+    </div>
+    <div id="keepTargetFeatures">
+        <div><h2>Mantieni tutte le feature di destinazione</h2></div>
+        <hr/>
+        <div>
+            <p>Per impostazione predefinita, solo le feature corrispondenti tra il layer di destinazione e il layer di join vengono restituite nel layer dei risultati (un join interno). Se abilitato, il parametro  <b>Mantieni tutte le feature di destinazione</b> cambier&agrave; l'output per includere tutte le feature nel layer di destinazione, indipendentemente dalla loro corrispondenza con le feature nel layer di join (un join esterno sinistro).
             </p>
         </div>
     </div>
@@ -176,7 +184,7 @@
         <div>
             <p> La creazione dei risultati come una vista del feature layer hosted permette di mantenere i dati sempre aggiornati mentre i dati origine cambiano. Le viste feature layer hosted che contengono join saranno di sola lettura e non consumeranno crediti per analisi e memorizzazione.
             </p>
-            <p>&Egrave; possibile creare una vista del feature layer hosted dai risultati dell&rsquo;analisi se vengono rispettate le seguenti condizioni:
+            <p>&Egrave; possibile creare una vista del feature layer hosted dai risultati dell'analisi se vengono rispettate le seguenti condizioni:
                 <ul>
                     <li>Si &egrave; proprietari di entrambi i layer.
                     </li>

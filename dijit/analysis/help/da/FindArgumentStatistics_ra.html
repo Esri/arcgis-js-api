@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Find argument-statistik</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Find argument-statistik"></h2>
+        <hr/>
+    <p>Ekstraherer dimensionv&aelig;rdien eller b&aring;ndindekset, hvor en given statistik opn&aring;s for hver pixel i en flerdimensional eller multib&aring;ndsraster.
+    </p>
+    <p>Brug dette v&aelig;rkt&oslash;j til at udtr&aelig;kke den dimensionsv&aelig;rdi (f.eks. dato, h&oslash;jde eller dybde), hvor en specifik statistik n&aring;s i stakken af rastere i et for flerdimensionalt rasterdatas&aelig;t. Alternativt kan du finde det b&aring;ndnummer, som statistikken n&aring;s med i en multib&aring;ndsraster.
+    </p>
+    <p>Du vil m&aring;ske gerne vide, i hvilken m&aring;ned hver pixel har n&aring;et den h&oslash;jeste overfladetemperatur p&aring; havet over 30 &aring;rs dataindsamling. Et andet eksempel er, at du har et otteb&aring;nds-fjernsensorbillede, og du vil gerne vide, i hvilket b&aring;nd der blev opn&aring;et den mindste reflektansv&aelig;rdi for hver pixel.
+    </p>
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vælg flerdimensionalt eller multibåndsbilledlag, der skal analyseres</h2></div>
+        <hr/>
+        <div>
+            <p>Den flerdimensionale eller multib&aring;nds-inputraster, der skal analyseres.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vælg den dimension, som statistikken skal hentes fra</h2></div>
+        <hr/>
+        <div>
+            <p>Den dimension, hvorfra statistikken vil blive udtrukket. Hvis inputrasteren ikke er en flerdimensional raster, er denne parameter ikke p&aring;kr&aelig;vet.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vælg den eller de variabler, der skal analyseres</h2></div>
+        <hr/>
+        <div>
+            <p>Den eller de variabler, der skal analyseres. Hvis inputrasteren ikke er flerdimensional, anses pixelv&aelig;rdierne for multib&aring;nd-rasteren for at v&aelig;re variablen. Hvis inputrasteren er flerdimensional, og der ikke er angivet nogen variabel, bliver alle variabler med den valgte dimension analyseret.
+            </p>
+            <p>Hvis du f.eks. vil finde de &aring;r, hvor temperaturv&aelig;rdierne var h&oslash;jest, skal du angive temperatur som den variabel, der skal analyseres. Hvis du ikke angiver nogen variabler, og du har b&aring;de temperatur- og nedb&oslash;rsvariabler, bliver begge analyseret, og den flerdimensionale output-raster inkluderer begge variabler.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Vælg statistiktype</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den statistik, der skal udtr&aelig;kkes fra variablen eller variablerne langs dimensionen. 
+            </p>
+            <ul>
+                <li> <b>Argument for minimum</b>&ndash; Den m&aring;lv&aelig;rdi, hvor den minimale variabelv&aelig;rdi n&aring;s, vil blive udtrukket. Dette er standardv&aelig;rdien.
+                </li>
+                <li> <b>Argument for maksimum</b>&ndash;Den m&aring;lv&aelig;rdi, hvor den maksimale variabelv&aelig;rdi n&aring;s, vil blive udtrukket.
+                </li>
+                <li> <b>Argument for medianen</b>&mdash;Den m&aring;lv&aelig;rdi, hvor medianen n&aring;s, vil blive udtrukket.
+                </li>
+                <li> <b>Argument for varighed</b>&mdash;Den l&aelig;ngste dimension-varighed, for hvilken de variable v&aelig;rdier falder mellem minimum- og maksimumv&aelig;rdier.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Angiv flere forekomst-værdier</h2></div>
+        <hr/>
+        <div>
+            <p>Den pixelv&aelig;rdi, der skal bruges til at angive, at en given argumentstatistik blev n&aring;et mere end &eacute;n gang i input-rasterdatas&aelig;ttet. Hvis det ikke er angivet, er pixelv&aelig;rdien v&aelig;rdien af dimensionen den f&oslash;rste gang, argumentstatistikken n&aring;s.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Angiv minimumsværdi</h2></div>
+        <hr/>
+        <div>
+            <p>Den minimale variabelv&aelig;rdi, der skal bruges til at udtr&aelig;kke varigheden.
+            </p>
+            <p>Denne parameter er p&aring;kr&aelig;vet, n&aring;r  <b>Varighed</b> v&aelig;lges som statistiktype.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Angiv maksimumværdi</h2></div>
+        <hr/>
+        <div>
+            <p>Den maksimale variabelv&aelig;rdi, der skal bruges til at udtr&aelig;kke varigheden.
+            </p>
+            <p>Dette trin er p&aring;kr&aelig;vet, n&aring;r  <b>Varighed</b> v&aelig;lges som statistiktype.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Vælg dimensionsdefinition</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, hvordan statistik vil blive udtrukket fra dimensionen. 
+                <ul>
+                    <li> <b>Alle</b>&ndash; Statistikken vil blive udtrukket p&aring; tv&aelig;rs af alle dimensioner. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Interval -n&oslash;gleord</b>&ndash; Statistikken udtr&aelig;kkes fra tidsdimensionen i overensstemmelse med interval-n&oslash;gleordet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Vælg nøgleordsinterval</h2></div>
+        <hr/>
+        <div>
+            <p>Den tidsenhed, som statistikken vil blive udtrukket for.
+            </p>
+            <p>Du har eksempelvis fem &aring;rs daglige temperaturdata for havoverfladen, og du vil gerne vide, hvilket &aring;r den maksimale temperatur blev m&aring;lt. Angiv  <b>Argument for maksimum</b> som statistiktype, angiv <b>Interval -n&oslash;gleord</b> som dimensionsdefinition og <b>angiv &Aring;rligt</b> som n&oslash;gleordsinterval i dette trin.
+            </p>
+            <p>Hvis du &oslash;nsker at kende den m&aring;ned, hvor den maksimale temperatur blev observeret over en l&aelig;ngere periode, kan du  <b>ogs&aring; angive Argument for maksimum</b>, <b>Interval-n&oslash;gleord</b> som dimensiondefinition og <b>Gentages m&aring;nedligt</b> som n&oslash;gleordsinterval i dette trin. Det vil generere en raster, hvor hver pixel indeholder den m&aring;ned, hvor statistikken blev n&aring;et p&aring; tv&aelig;rs af f.eks. fem&aring;rsresultater (18/08/2018, 25/08/2016, 07/08/2013, for eksempel).
+            </p>
+            <p>Dette trin er p&aring;kr&aelig;vet, n&aring;r <b>StdTime </b> angives som den dimension, hvorfra statistikken vil blive udtrukket, og <b>Interval-n&oslash;gleord</b>  v&aelig;lges for at definere, hvordan statistikken vil blive udtrukket fra tidsdimensionen .
+                <ul>
+                    <li> <b>Gentages dagligt</b>&mdash; Statistikken vil blive udtrukket p&aring; tv&aelig;rs af dage.
+                    </li>
+                    <li> <b>Gentages ugentligt</b>&ndash; Statistikken vil blive udtrukket p&aring; tv&aelig;rs af uger.
+                    </li>
+                    <li> <b>Gentages m&aring;nedligt</b>&ndash; Statistikken vil blive udtrukket p&aring; tv&aelig;rs af m&aring;neder.
+                    </li>
+                    <li> <b>Gentages kvartalsvis</b>&ndash; Statistikken udtr&aelig;kkes p&aring; tv&aelig;rs af omr&aring;der.
+                    </li>
+                    <li> <b>Time</b>&ndash; Statistikken udtr&aelig;kkes for den time, hvor statistikken blev n&aring;et.
+                    </li>
+                    <li> <b>Dagligt</b>&ndash; Statistikken vil blive udtrukket for den dag, hvor statistikken blev n&aring;et.
+                    </li>
+                    <li> <b>Ugentligt</b>&ndash; Statistikken vil blive udtrukket for den uge, hvor statistikken blev n&aring;et.
+                    </li>
+                    <li> <b>M&aring;nedligt</b>&ndash; Statistikken vil blive udtrukket for den m&aring;ned, hvor statistikken blev n&aring;et.
+                    </li>
+                    <li> <b>Kvartalsvis</b>&ndash; Statistikken vil blive udtrukket for det kvartal, hvor statistik er n&aring;et.
+                    </li>
+                    <li> <b>&Aring;rligt</b>&ndash; Statistikken vil blive udtrukket for det &aring;r, hvor statistikken blev n&aring;et.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorér manglende værdier i beregning</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen.
+                <ul>
+                    <li>Hvis feltet er markeret, omfatter analysen alle gyldige pixels langs en given dimension og ignorerer eventuelle NoData-pixels. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li>Hvis feltet ikke markeret, resulterer analysen i NoData, hvis der er nogen NoData-v&aelig;rdier for pixels langs den givne dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Tạo Raster Xu hướng</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Tạo Raster Xu hướng"></h2>
+        <hr/>
+    <p>Ước t&iacute;nh xu hướng cho từng pixel theo một chiều cho một hoặc nhiều biến trong raster đa chiều.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Chọn lớp hình ảnh đa chiều để phân tích xu hướng</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Lớp h&igrave;nh ảnh đầu v&agrave;o của một raster đa chiều sẽ được ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Chọn chiều mà theo đó xu hướng biến sẽ được phân tích</h2></div>
+        <hr/>
+        <div>
+            <p>Chiều m&agrave; theo đ&oacute; một xu hướng sẽ được tr&iacute;ch xuất dọc theo cho biến số hoặc c&aacute;c biến số được lựa chọn trong ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Chọn (các) biến để phân tích xu hướng</h2></div>
+        <hr/>
+        <div>
+            <p>Biến hoặc c&aacute;c biến c&oacute; xu hướng sẽ được t&iacute;nh to&aacute;n. Nếu kh&ocirc;ng c&oacute; biến n&agrave;o được chỉ định th&igrave; biến đầu ti&ecirc;n trong raster đa chiều sẽ được ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Chọn loại đường phù hợp với các giá trị biến dọc theo một chiều</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định loại đường được sử dụng để điều chỉnh gi&aacute; trị pixel dọc theo một chiều. 
+                <ul>
+                    <li> <b>Tuyến t&iacute;nh</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng tuyến t&iacute;nh. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Đa thức</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng đa thức bậc hai.
+                    </li>
+                    <li> <b>Điều h&ograve;a</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng điều h&ograve;a.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Chỉ định độ dài của chu kỳ điều hòa</h2></div>
+        <hr/>
+        <div>
+            <p>Độ d&agrave;i biến đổi định kỳ để m&ocirc; h&igrave;nh h&oacute;a. Khi loại đường xu hướng được thiết lập th&agrave;nh  <b>Điều h&ograve;a</b> th&igrave; th&ocirc;ng số n&agrave;y l&agrave; bắt buộc. V&iacute; dụ: độ xanh của l&aacute; thường c&oacute; một chu kỳ biến đổi mạnh trong một năm, do đ&oacute;, độ d&agrave;i chu kỳ l&agrave; 1. Dữ liệu nhiệt độ h&agrave;ng giờ c&oacute; một chu kỳ biến đổi mạnh mẽ trong một ng&agrave;y, v&igrave; vậy độ d&agrave;i chu kỳ l&agrave; 1 ng&agrave;y.
+            </p>
+            <p>Độ d&agrave;i mặc định l&agrave; 1 năm đối với dữ liệu thay đổi theo chu kỳ h&agrave;ng năm.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ được bao gồm trong ph&acirc;n t&iacute;ch xu hướng khi chiều được ph&acirc;n t&iacute;ch l&agrave; thời gian v&agrave; loại đường xu hướng được thiết lập th&agrave;nh  <b>Điều h&ograve;a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Chọn đơn vị thời gian của chu kỳ điều hòa</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định đơn vị thời gian sẽ được sử dụng cho độ d&agrave;i của chu kỳ điều h&ograve;a.
+                <ul>
+                    <li> <b>Days</b>&mdash;Đơn vị cho độ d&agrave;i của chu kỳ điều h&ograve;a l&agrave; ng&agrave;y.
+                    </li>
+                    <li> <b>Years</b>&mdash;Đơn vị cho độ d&agrave;i của chu kỳ điều h&ograve;a l&agrave; năm. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ được bao gồm trong ph&acirc;n t&iacute;ch xu hướng khi chiều được ph&acirc;n t&iacute;ch l&agrave; thời gian v&agrave; loại đường xu hướng được thiết lập th&agrave;nh  <b>Điều h&ograve;a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Chỉ định tần số để khớp xu hướng điều hòa</h2></div>
+        <hr/>
+        <div>
+            <p>Tần số sử dụng để khớp xu hướng điều h&ograve;a. Tham số n&agrave;y chỉ định tần số của chu kỳ trong một năm.
+            </p>
+            <p>Gi&aacute; trị mặc định l&agrave; 1, hoặc một chu kỳ điều h&ograve;a mỗi năm.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ được bao gồm trong ph&acirc;n t&iacute;ch xu hướng khi chiều được ph&acirc;n t&iacute;ch l&agrave; thời gian.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Chỉ định bậc đa thức để khớp xu hướng</h2></div>
+        <hr/>
+        <div>
+            <p>Bậc đa thức d&ugrave;ng để khớp xu hướng.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ được bao gồm trong ph&acirc;n t&iacute;ch xu hướng khi chiều được ph&acirc;n t&iacute;ch l&agrave; thời gian.
+            </p>
+            <p>Gi&aacute; trị mặc định l&agrave; 2 hoặc đa thức bậc hai.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Chọn số liệu thống kê mô hình để đưa vào raster xu hướng</h2></div>
+        <hr/>
+        <div>
+            <p>C&ocirc;ng cụ n&agrave;y cung cấp ba loại thống k&ecirc; về đường khớp xu hướng: lỗi b&igrave;nh phương trung b&igrave;nh (RMSE), thống k&ecirc; mức độ ph&ugrave; hợp của R b&igrave;nh phương (R b&igrave;nh phương) v&agrave; thống k&ecirc; gi&aacute; trị p cho hệ số độ dốc (gi&aacute; trị P của hệ số dốc). Mỗi số liệu thống k&ecirc; c&oacute; một hộp kiểm tương ứng để chỉ định liệu n&oacute; sẽ được t&iacute;nh v&agrave; đưa v&agrave;o th&agrave;nh một trong nhiều dải trong raster xu hướng đầu ra hay kh&ocirc;ng.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Được chọn&mdash;RMSE sẽ được t&iacute;nh to&aacute;n v&agrave; đưa v&agrave;o th&agrave;nh một trong nhiều dải trong raster xu hướng đầu ra. Đ&acirc;y l&agrave; mặc định.
+                            </li>
+                            <li>Kh&ocirc;ng được chọn--RMSE sẽ kh&ocirc;ng được t&iacute;nh.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R b&igrave;nh phương
+                        </p>
+                        <ul>
+                            <li>Được chọn&mdash;Gi&aacute; trị R b&igrave;nh phương sẽ được t&iacute;nh v&agrave; đưa v&agrave;o th&agrave;nh một trong nhiều dải trong raster xu hướng đầu ra hay kh&ocirc;ng.
+                            </li>
+                            <li>Kh&ocirc;ng được chọn--Gi&aacute; trị R b&igrave;nh phương sẽ kh&ocirc;ng được t&iacute;nh. Đ&acirc;y l&agrave; mặc định.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Gi&aacute; trị P của hệ số dốc
+                        </p>
+                        <ul>
+                            <li>Được chọn&mdash;Gi&aacute; trị P sẽ được t&iacute;nh to&aacute;n v&agrave; đưa v&agrave;o th&agrave;nh một trong nhiều dải trong raster xu hướng đầu ra.
+                            </li>
+                            <li>Kh&ocirc;ng chọn--Gi&aacute; trị P sẽ kh&ocirc;ng được t&iacute;nh. Đ&acirc;y l&agrave; mặc định.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Bỏ qua các giá trị thiếu trong tính toán</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng.
+                <ul>
+                    <li>Được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ bao gồm tất cả c&aacute;c pixel hợp lệ dọc theo một chiều nhất định v&agrave; bỏ qua mọi pixel NoData. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li>Kh&ocirc;ng được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ cho kết quả NoData nếu c&oacute; mọi gi&aacute; trị NoData cho pixel dọc theo chiều đ&atilde; cho.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

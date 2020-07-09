@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Dissolve Boundaries</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Dissolve Boundaries"></h2>
+        <hr/>
+    <p>Areas that overlap or share a common boundary or attribute value are merged to form a single area.
+    </p>
+    <p>You can control which boundaries are merged by specifying a field. For example, if you have a layer of counties, and each county has a  <pre>State_Name</pre> attribute, you can dissolve boundaries using the <pre>State_Name</pre> attribute.  Counties will be merged if they have the same <pre>State_Name</pre> value.  The result is a layer of state boundaries.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose area layer whose boundaries will be dissolved</h2></div>
+        <hr/>
+        <div>
+            <p>The layer containing area features that will be dissolved.
+
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="dissolveFields">
+        <div><h2>Choose dissolve method</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the method used to dissolve the fields.
+            </p>
+            <p>You can choose one of two methods for merging area features:
+                <ul>
+                    <li> <b>Areas that overlap or are adjacent</b>&mdash;Two or more areas whose boundaries overlap will be merged into one area.  In addition, areas that are adjacent (that is, they share a common boundary) will be merged into one area.
+                    </li>
+                    <li> <b>Areas with the same field value</b>&mdash;Two or more areas will be merged into one area if they have the same field value.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Create multipart features</h2></div>
+        <hr/>
+        <div>
+            <p>Multipart is a representation of a place or thing that has
+more than one part but is defined as one feature because it
+references one set of attributes. In a layer of states, for
+example, Hawaii could be considered a multipart
+feature because its separate geometric parts are classified as a
+single state.
+            </p>
+            <p> <b>Create multipart features</b> offers two options:
+                <ul>
+                    <li>True (checked)&mdash; The output service can contain multipart features.
+                    </li>
+                    <li>False (unchecked)&mdash; The output service will only contain single-part features, and individual features will be created for each part. This is the default.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>When areas are merged, you can summarize their attribute values with meaningful statistics.  For example, if you are dissolving the boundary between counties based on  <pre>State_Name</pre>, and each county has a <i>Population</i> field, you could calculate the sum of <pre>Population</pre> for the state.
+            </p>
+            <p>Можна обчислювати статистику підсумованих об&rsquo;єктів. В числових полях можна обчислювати: 
+                <ul>
+                    <li>Кількість &mdash; обчислює кількість ненульових значень. Може використовуватися як з числовими, так і рядковими полями. Кількість [нуль, 0, 2] &mdash; 2.
+                    </li>
+                    <li>Сума&mdash;Сума числових значень у полі. Сума [нуль, 0, 3] &mdash; 3.
+                    </li>
+                    <li>Середнє&mdash;Середнє числових значень. Середнє [0, 2, нуль] &mdash; 1.
+                    </li>
+                    <li>Мін.&mdash;Мінімальне значення числового поля. Мінімум [0, 2, нуль] &mdash; 0. 
+                    </li>
+                    <li>Макс.&mdash;Максимальне значення числового поля. Максимальне значення [0, 2, нуль] &mdash; 2.
+                    </li>
+                    <li>Діапазон&mdash;Діапазон числового поля. Розраховується відніманням мінімального значення із максимального. Діапазон [0, нуль, 1] &mdash; 1. Діапазон [нуль, 4] &mdash; 0.
+                    </li>
+                    <li>Дисперсія&mdash;Дисперсія числового значення в треку. Дисперсія [1] &mdash; нуль. Дисперсія [нуль, 1,0,1,1] &mdash; 0,25.
+                    </li>
+                    <li>Середньоквадратичне відхилення &mdash; середньоквадратичне відхилення числового поля. Середньоквадратичне відхилення [1] &mdash; нуль. Середньоквадратичне відхилення [нуль, 1,0,1,1] &mdash; 0,5. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>В рядкових полях можна обчислювати:
+                <ul>
+                    <li>Кількість &mdash; кількість непорожніх рядків.
+                    </li>
+                    <li>Будь-які &mdash; ця статистика є випадковою вибіркою рядкового значення в указаному полі.
+                    </li>
+                </ul>
+                Вся статистика обчислюється за ненульовими значеннями. Результуючий шар буде містити нове поле для кожної обчисленої статистики. Будь-яку кількість статистичних відомостей можна додати за допомогою вибору атрибута і статистики.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer
+name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

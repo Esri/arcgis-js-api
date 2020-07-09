@@ -1,4 +1,26 @@
 
+.dijitTooltip.esriGETooltip .dijitTooltipContainer {
+    padding: 5px 7px;
+    border: none;
+    background-color: transparent;
+    padding: 8px 10px;
+    text-align: left;
+    
+    box-shadow: none;
+    cursor: default;
+    color: #4c4c4c;
+    background-image: none;
+    position: relative;
+}
+
+.dijitTooltip.esriGETooltip:not(.notRestricted) .dijitTooltipContainer {
+    max-width: 250px;
+}
+
+.dijitTooltip.esriGETooltip .dijitTooltipConnector {
+    opacity: 0;
+}
+
 
 
 .esriGEClosableTooltip {

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>ניתוח רסטר מאפשר לך לבצע ניתוח של סטי נתוני רסטר גדולים תוך שימוש ב- ArcGIS Image Server. הדבר מאפשר לך לנתח יותר נתונים מהר יותר על ידי ניצול העוצמה של השרת. ערכות הכלים שזמינות כעת דרך חוויית השימוש באינטרנט  Portal for ArcGIS הן  <b>סיכום נתונים</b>, <b>ניתוח דפוסים</b>, <b>שימוש בקרבה</b>, <b>ניתוח תמונה</b>, <b>ניתוח פני שטח</b>, <b>ניהול נתונים</b> ו <b>למידה עמוקה</b>.
+        <p>ניתוח רסטר מאפשר לך לבצע ניתוח של סטי נתוני רסטר גדולים תוך שימוש ב- ArcGIS Image Server. הדבר מאפשר לך לנתח יותר נתונים מהר יותר על ידי ניצול העוצמה של השרת. ערכות הכלים שזמינות כעת דרך חוויית השימוש באינטרנט  Portal for ArcGIS הן  <b>סיכום נתונים</b>, <b>ניתוח דפוסים</b>, <b>שימוש בקרבה</b>, <b>ניתוח תמונה</b>, <b>ניתוח פני שטח</b>, <b>ניהול נתונים</b>, <b>למידה עמוקה</b> ו <b>ניתוח רב-ממדי</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>דוגמה</b> מחלץ נתונים במיקומים מוגדרים מהרסטר, או ערכת הרסטרים.
+                </li>
             </ul>
             
         </p>
@@ -412,20 +414,37 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>דוגמה</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="דוגמה">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>יוצר טבלה או קבוצת ישויות נקודה עם ערכי נתונים במיקומים מוגדרים שחולצו מרסטר או מערכת רסטרים.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="regularsize">
         <h2>למידה עמוקה (Deep Learning)</h2>
         <hr/>
-        <p>כלים אלה משמשים לזיהוי ישויות ספציפיות בתמונה או לסיווג פיקסלים בסט נתוני רסטר. למידה עמוקה (Deep Learning) היא סוג של שיטת למידת מכונה בבינה מלאכותית אשר מזהה ישויות בתמונה באמצעות שכבות מרובות ברשתות ניטרליות שבהן כל שכבה מסוגלת לחלץ ישות אחת או יותר בתמונה. כלים אלה צורכים את המודלים שאומנו לזהות ישויות ספציפיות במסגרות למידה עמוקה של צד שלישי - כגון TensorFlow&rlm;, CNTK ו-Keras - וישויות פלט או מפות מחלקה.
+        <p>כלים אלה משמשים לזיהוי או לסיווג של ישויות ספציפיות בתמונה או לסיווג פיקסלים בסט נתוני רסטר. למידה עמוקה (Deep Learning) היא סוג של שיטת למידת מכונה בבינה מלאכותית אשר מזהה ישויות בתמונה באמצעות שכבות מרובות ברשתות ניטרליות שבהן כל שכבה מסוגלת לחלץ ישות אחת או יותר בתמונה. כלים אלה צורכים את המודלים שאומנו לזהות ישויות ספציפיות במסגרות למידה עמוקה של צד שלישי - כגון TensorFlow&rlm;, CNTK ו-Keras - וישויות פלט או מפות מחלקה.
             <ul>
                 <li> <b>סיווג פיקסלים באמצעות למידה עמוקה</b> יוצר רסטר מסווג תוך שימוש במודל למידה עמוקה מאומן.
                 </li>
                 <li> <b>זיהוי אובייקטים באמצעות למידה עמוקה</b> מפיק קבוצת ישויות שמכילה אובייקטים שנמצאו ברסטר קלט באמצעות מודל למידה עמוקה מאומן.
                 </li>
+                <li> <b>סיווג אובייקטים באמצעות למידה עמוקה</b> מפיק קבוצת ישויות או טבלה שבה לכל אובייקט קלט ברסטר קלט מוקצית תווית קבוצה תוך שימוש במודל למידה עמוקה מאומן.
+                </li>
             </ul>
             
         </p>
     </div>
-        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>כלי זה מריץ מודל למידה לעומק מאומן על רסטר קלט כדי להפיק רסטר מסווג, ולכל פיקסל תקף יש תווית מחלקה משויכת.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>כלי זה מריץ מודל למידה לעומק מאומן על רסטר קלט כדי להפיק קבוצת ישויות שמכילה את האובייקטים שנמצאו. הישויות יכולות להיות מלבנים תוחמים או פוליגונים סביב האובייקטים שנמצאו, או נקודות במרכזים של האובייקטים.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>סווג אובייקטים באמצעות למידה עמוקה</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="סווג אובייקטים באמצעות למידה עמוקה">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>כלי זה מריץ מודל למידה לעומק מאומן על רסטר קלט וקבוצת ישויות אופציונלית כדי להפיק קבוצת ישויות או טבלה שבה כל לכל אובייקט קלט יש תווית קבוצה משויכת.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>ניתוח רב-ממדי</h2>
+        <hr/>
+        <p>הכלים בערכת הכלים 'ניתוח רב-ממדי' מאפשרים לך לבצע ניתוח של נתונים מדעיים על פני משתנים וממדים מרובים.
+        </p>
+        <p>נתונים מרובי-ממדים מייצגים נתונים שנלכדו במגוון של זמנים, עומקים וגבהים. סוג נתונים זה בדרך משמש במדעי האטמוספרה, האוקיינוסים וכדור הארץ. עם ערכת כלים זו, באפשרותך לנתח נתוני רסטר מרובי-ממדים בתבניות שונות, כולל netCDF&rlm;, HDF&rlm;, GRIB, סט נתוני המוזאיקה הרב-ממדיים ו-Cloud Raster Format &rlm;(CRF) של Esri.
+        </p>
+        <p>טבלה הבאה מפרטתת את כלי הניתוח הרב-ממדי ומספקת תיאור קצר של כל אחד מהם.
+            <ul>
+                <li> <b>צבירת רסטר רב-ממדי</b> מפיק סט נתוני רסטר מרובי-ממדים על ידי צבירת משתני רסטר מרובי-ממדים קיימים לאורך ממד.
+                </li>
+                <li> <b>הפק אנומליה רב-ממדית</b> מחשב את האנומליה עבור כל פלח ברסטר רב-ממדי כדי להפיק רסטר רב-ממדי.
+                </li>
+                <li> <b>צור רסטר מגמה</b> מעריך את המגמות עבור כל פיקסל לאורך ממד עבור משתנה אחד או יותר ברסטר רב-ממדי.
+                </li>
+                <li> <b>חיזוי באמצעות רסטר מגמה</b> מחשב רסטר רב-ממדי חזוי תוך שימוש ברסטר המגמה של הפלט מהכלי <b>צור קו מגמה</b>.
+                </li>
+                <li> <b>מצא סטטיסטיקות של ארגומנט</b> מחלץ את ערך הממד או אינדקס הערוץ שבו סטטיסטיקה נתונה מושגת עבור כל פקסל ברסטר רב-ממדי או רב-ערוצי.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>צבירת רסטר רב-ממדי</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="צבירת רסטר רב-ממדי">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>הכלי מפיק סט נתוני רסטר מרובי-ממדים על ידי צבירת משתני רסטר מרובי-ממדים קיימים לאורך ממד.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>מצב סטטיסטיקות של ארגומנט</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="מצא סטטיסטיקות של ארגומנט">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>כלי זה מחלץ את ערך הממד או אינדקס הערוץ שבו סטטיסטיקה נתונה מושגת עבור כל פקסל ברסטר רב-ממדי או רב-ערוצי.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>הפק אנומליה רב-ממדית</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="הפק אנומליה רב-ממדית">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>כלי זה מחשב מחשב את האנומליה עבור כל פלח ברסטר רב-ממדי כדי להפיק רסטר רב-ממדי.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>הפק רסטר מגמה</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="הפק רסטר מגמה">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>כלי זה אומד את המגמה עבור כל פיקסל לאורך ממד עבור משתנה אחד או יותר ברסטר רב-ממדי.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>חיזוי באמצעות רסטר קו מגמה</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="חיזוי באמצעות רסטר קו מגמה">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>כלי זה מחשב רסטר רב-ממדי חזוי תוך שימוש ברסטר המגמה של הפלט מהכלי  <b>צור קו מגמה</b>.
             </p>
             <br/>
         </div>

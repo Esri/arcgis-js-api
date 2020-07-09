@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Bağımsız Değişken İstatistikleri Bul</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Bağımsız Değişken İstatistikleri Bul"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>&Ccedil;ok boyutlu raster veri k&uuml;mesindeki raster yığınında belirli bir istatistiğe ulaşılan boyut değerini (&ouml;rneğin, tarih, y&uuml;kseklik veya derinlik) &ccedil;ıkarmak i&ccedil;in bu aracı kullanın. Alternatif olarak, istatistiğe &ccedil;ok bantlı bir rasterda ulaşılan bant sayısını bulun.
+    </p>
+    <p>&Ouml;rneğin, her bir pikselin toplanan 30 yıllık verilerde en y&uuml;ksek deniz y&uuml;zeyi sıcaklığına ulaştığı ayı bilmek isteyebilirsiniz. Başka bir &ouml;rnekte sekiz bantlı uzaktan algılama g&ouml;r&uuml;nt&uuml;n&uuml;z vardır ve her piksel i&ccedil;in minimum yansıma değerine ulaşılan bandı bilmek istersiniz.
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretliyse, ge&ccedil;erli harita yayılımı dahilinde g&ouml;r&uuml;n&uuml;r olan katman değişkenleri veya bantları analiz edilir. İşaretli değilse, ge&ccedil;erli harita yayılımının dışında bile olsa t&uuml;m katmanın değişkenleri veya bantları analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Analiz edilecek çok boyutlu veya çok bantlı görüntü katmanını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Analiz edilecek girdi &ccedil;ok boyutlu veya &ccedil;ok bantlı raster.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>İstatistiğin çıkarılacağı boyutu seçin</h2></div>
+        <hr/>
+        <div>
+            <p>İstatistiğin &ccedil;ıkarılacağı boyut. Girdi rasterı &ccedil;ok boyutlu bir raster değilse, bu parametre gerekli değildir.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Analiz edilecek değişkenleri seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Analiz edilecek değişken veya değişkenler. Girdi rasterı &ccedil;ok boyutlu değilse, &ccedil;ok bantlı rasterın piksel değerleri değişken olarak kabul edilir. Girdi rasterı &ccedil;ok boyutluysa ve değişken belirtilmediğinde, se&ccedil;ilen boyuta sahip t&uuml;m değişkenler analiz edilir.
+            </p>
+            <p>&Ouml;rneğin, sıcaklık değerlerinin en y&uuml;ksek olduğu yılları bulmak i&ccedil;in sıcaklığı, analiz edilecek değişken olarak belirtin. Herhangi bir değişken belirtmezseniz ve hem sıcaklık hem de yağış değişkenlerine sahipseniz, her iki değişken de analiz edilir ve &ccedil;ıktı &ccedil;ok boyutlu rasterı her iki değişkeni de i&ccedil;erir.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>İstatistik türünü seç</h2></div>
+        <hr/>
+        <div>
+            <p>Belirli bir boyut boyunca değişken veya değişkenlerden &ccedil;ıkarılacak istatistiği belirtir. 
+            </p>
+            <ul>
+                <li> <b>Minimum bağımsız değişkeni</b>&mdash;Minimum değişken değere ulaşılan boyut değeri &ccedil;ıkarılır. Varsayılan değerdir.
+                </li>
+                <li> <b>Maksimum bağımsız değişkeni</b>&mdash;Maksimum değişken değere ulaşılan boyut değeri &ccedil;ıkarılır.
+                </li>
+                <li> <b>Ortanca bağımsız değişkeni</b>&mdash;Ortanca değişken değere ulaşılan boyut değeri &ccedil;ıkarılır.
+                </li>
+                <li> <b>S&uuml;re bağımsız değişkeni</b>&mdash;Değişken değerlerin minimum ve maksimum değerler arasında olduğu en uzun boyut s&uuml;resi.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Çoklu oluşum değerini belirt</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi rasterı veri k&uuml;mesinde belirli bir bağımsız değişken istatistiğine bir seferden fazla ulaşıldığını belirtmek i&ccedil;in kullanılan piksel değeri. Belirtilmezse piksel değeri, bağımsız değişken istatistiğine ilk ulaşıldığında boyutun değeri olur.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Minimum değeri belirt</h2></div>
+        <hr/>
+        <div>
+            <p>S&uuml;reyi &ccedil;ıkartmak i&ccedil;in kullanılan minimum değişken değeri.
+            </p>
+            <p>Bu parametre istatistik t&uuml;r&uuml; olarak  <b>S&uuml;re</b> se&ccedil;ildiğinde gereklidir.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Maksimum değeri belirt</h2></div>
+        <hr/>
+        <div>
+            <p>S&uuml;reyi &ccedil;ıkartmak i&ccedil;in kullanılan maksimum değişken değeri.
+            </p>
+            <p>Bu adım istatistik t&uuml;r&uuml; olarak  <b>S&uuml;re</b> se&ccedil;ildiğinde gereklidir.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Boyut tanımını seç</h2></div>
+        <hr/>
+        <div>
+            <p>İstatistiğin boyuttan nasıl &ccedil;ıkarılacağını belirtir. 
+                <ul>
+                    <li> <b>T&uuml;m&uuml;</b>&mdash;İstatistik t&uuml;m boyutlarda &ccedil;ıkarılır. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Aralık Anahtar S&ouml;zc&uuml;ğ&uuml;</b>&mdash;İstatistik, aralık anahtar s&ouml;zc&uuml;ğe g&ouml;re zaman boyutundan &ccedil;ıkarılır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Anahtar sözcük aralığını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>İstatistiğin &ccedil;ıkarılacağı zaman birimi.
+            </p>
+            <p>&Ouml;rneğin, beş yıllık g&uuml;nl&uuml;k deniz y&uuml;zeyi sıcaklık verileriniz var ve maksimum sıcaklığın g&ouml;zlemlendiği yılı bilmek istiyorsunuz. Bu adımda, istatistik t&uuml;r&uuml; olarak  <b>Maksimum bağımsız değişkeni</b>, boyut tanımı olarak <b>Aralık Anahtar S&ouml;zc&uuml;ğ&uuml;</b>, anahtar s&ouml;zc&uuml;k aralığı olarak <b>Yıllık</b> ayarlayın.
+            </p>
+            <p>Alternatif olarak, maksimum sıcaklığın s&uuml;rekli olarak g&ouml;zlemlendiği ayı bilmek istiyorsanız bu adımda, istatistik t&uuml;r&uuml; olarak  <b>Maksimum bağımsız değişkeni</b>, boyut tanımı olarak <b>Aralık Anahtar S&ouml;zc&uuml;ğ&uuml;</b>, anahtar s&ouml;zc&uuml;k aralığı olarak <b>Ayda Bir Tekrarlanır</b> ayarlayın. Bu, her pikselin, beş yıllık kayıt boyunca istatistiğe ulaşılan ayı i&ccedil;erdiği bir raster oluşturur (&ouml;rneğin, 08/18/2018, 08/25/2016, 08/07/2013).
+            </p>
+            <p>İstatistiğin &ccedil;ıkarılacağı boyut olarak  <b>StdTime</b> ayarlandığında ve istatistiğin zaman boyutundan nasıl &ccedil;ıkarılacağını tanımlamak i&ccedil;in <b>Aralık Anahtar S&ouml;zc&uuml;ğ&uuml;</b> se&ccedil;ildiğinde bu adım gereklidir.
+                <ul>
+                    <li> <b>G&uuml;nl&uuml;k tekrarlanır</b>&mdash; İstatistik g&uuml;nlerden &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Haftalık tekrarlanır</b>&mdash; İstatistik haftalardan &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Aylık tekrarlanır</b>&mdash; İstatistik aylardan &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>&Uuml;&ccedil; ayda bir tekrarlanır</b>&mdash; İstatistik &uuml;&ccedil; aylık d&ouml;nemlerden &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Saatlik</b>&mdash;İstatistik, istatistiğe ulaşılan saatten &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>G&uuml;nl&uuml;k</b>&mdash;İstatistik, istatistiğe ulaşılan g&uuml;nden &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Haftalık</b>&mdash;İstatistik, istatistiğe ulaşılan haftadan &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Aylık</b>&mdash;İstatistik, istatistiğe ulaşılan aydan &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>&Uuml;&ccedil; Aylık</b>&mdash;İstatistik, istatistiğe ulaşılan &uuml;&ccedil; aylık d&ouml;nemden &ccedil;ıkarılır.
+                    </li>
+                    <li> <b>Yıllık</b>&mdash;İstatistik, istatistiğe ulaşılan yıldan &ccedil;ıkarılır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hesaplamadaki eksik değerleri yoksay</h2></div>
+        <hr/>
+        <div>
+            <p>Eksik değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir.
+                <ul>
+                    <li>Kutu işaretli ise analizde verilen bir boyut boyunca ge&ccedil;erli olan t&uuml;m pikseller yer alır ancak NoData pikselleri dikkate alınmaz. Varsayılan değerdir.
+                    </li>
+                    <li>Kutu işaretli değilse, verilen boyut boyunca mevcut pikseller i&ccedil;in herhangi bir NoData değeri varsa, analiz NoData ile sonu&ccedil;lanır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

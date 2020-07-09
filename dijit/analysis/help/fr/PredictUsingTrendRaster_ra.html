@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Prévoir à l’aide du raster de tendance</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Pr&eacute;dire &agrave; l&rsquo;aide d&rsquo;un raster de tendances"></h2>
+        <hr/>
+    <p>Calcul un raster multidimensionnel pr&eacute;vu en utilisant le raster de tendance en sortie &agrave; partir de l&rsquo;outil  G&eacute;n&eacute;rer un raster de tendance.
+    </p>
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue courante de la carte)</b> est s&eacute;lectionn&eacute;e, les variables de la couche qui sont visibles au sein de l&rsquo;&eacute;tendue courante de la carte sont analys&eacute;es. Si cette option n&rsquo;est pas s&eacute;lectionn&eacute;e, les variables de toute la couche sont analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l&rsquo;&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Choisir une couche d’imagerie multidimensionnelle à prédire</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster de tendance multimensionnel en entr&eacute;e de l&rsquo;outil  G&eacute;n&eacute;rer un raster de tendance.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Choisir la ou les variables à prédire</h2></div>
+        <hr/>
+        <div>
+            <p>La variable ou les variables qui sont pr&eacute;dites dans l&rsquo;analyse. Si aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, toutes les variables sont utilis&eacute;es.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Choisir la méthode utilisée pour fournir les valeurs de dimension de prévision</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie la m&eacute;thode utilis&eacute;e pour fournir les valeurs de dimension de pr&eacute;vision.
+                <ul>
+                    <li> <b>By Value (Par valeur)</b>&nbsp;: la pr&eacute;vision est calcul&eacute;e pour une seule valeur de dimension ou pour une liste de valeurs de dimension sp&eacute;cifi&eacute;es &agrave; l&rsquo;&eacute;tape suivante. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut. Par exemple, vous souhaitez pr&eacute;voir les pr&eacute;cipitations annuelles pour les ann&eacute;es 2050, 2100 et 2150.
+                    </li>
+                    <li> <b>By Interval (Par intervalle)</b>&nbsp;: la pr&eacute;vision est calcul&eacute;e pour un intervalle de la dimension d&eacute;finie par une valeur de d&eacute;but et de fin. Par exemple, vous souhaitez pr&eacute;voir les pr&eacute;cipitations annuelles pour les ann&eacute;es comprises entre 2050 et 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Spécifier les valeurs de dimension pour la prévision</h2></div>
+        <hr/>
+        <div>
+            <p>Valeur(s) de dimension &agrave; utiliser dans la pr&eacute;vision.
+            </p>
+            <p>Le format des valeurs temporelles, de profondeur et de hauteur doit correspondre au format des valeurs de dimension utilis&eacute;es pour g&eacute;n&eacute;rer le raster de tendance. Si le raster de tendance a &eacute;t&eacute; g&eacute;n&eacute;r&eacute; pour la dimension StdTime, le format doit &ecirc;tre AAAA-MM-JJTHH:MM:SS (par exemple 2050-01-01T00:00:00). Les valeurs multiples sont s&eacute;par&eacute;es par des points-virgules.
+            </p>
+            <p>Ce param&egrave;tre est requis lorsque la m&eacute;thode  <b>By value (Par valeur)</b> est s&eacute;lectionn&eacute;e pour d&eacute;finir les valeurs de dimension pour la pr&eacute;vision.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Définir l’intervalle de dimension pour la prévision</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;finissez la date de d&eacute;but et la date de fin, la hauteur ou la profondeur de l&rsquo;intervalle de dimension &agrave; utiliser dans la pr&eacute;vision.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Indiquer le nombre d’étapes entre les valeurs de début et de fin</h2></div>
+        <hr/>
+        <div>
+            <p>Nombre d&rsquo;&eacute;tapes entre deux valeurs de dimension &agrave; inclure dans la pr&eacute;vision. La valeur par d&eacute;faut est 1.
+            </p>
+            <p>Par exemple, pour pr&eacute;voir les valeurs de temp&eacute;rature tous les cinq ans, utilisez la valeur&nbsp;5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Choisir l’unité à utiliser pour l’intervalle de valeurs temporelles</h2></div>
+        <hr/>
+        <div>
+            <p>Indique l&rsquo;unit&eacute; utilis&eacute;e pour l&rsquo;intervalle de valeurs. Ce param&egrave;tre s&rsquo;applique uniquement si la dimension de l&rsquo;analyse est une dimension temporelle.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

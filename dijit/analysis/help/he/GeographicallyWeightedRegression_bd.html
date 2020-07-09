@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>רגרסיה משוקללת גיאוגרפית</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="תרשים תהליך עבודה של GeographicallyWeightedRegression"></h2>
+        <hr/>
+    <p>מבצע רגרסיה משוקללת גיאוגרפית (GWR), שהיא סוג מקומי של רגרסיה לינארית אשר משמשת למידול של קשרים מרחביים משתנים.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>בחר שכבה לניתוח</h2></div>
+        <hr/>
+        <div>
+            <p>השכבה שמכילה ישויות נקודה אשר כוללות את המשתנים התלויים והמסבירים.
+            </p>
+            <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>בחר את השדות ליצירת מודל</h2></div>
+        <hr/>
+        <div>
+            <p>השדה המספרי שמכיל את הערכים הנצפים שיש למדל ואת סוג הערך שאתה ממדל.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>בחר את השדות המסבירים</h2></div>
+        <hr/>
+        <div>
+            <p>שדה אחד או יותר שמייצגים את המשתנים המסבירים (שדות) שעוזרים לחזות את הערך . רק שדות מספריים יהיו גלויים לעין.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>בחר כיצד השכונה תיקבע</h2></div>
+        <hr/>
+        <div>
+            <p>מציין האם השכונה שבה נעשה שימוש בנויה כמרחק קבוע או שיכולה להשתנות בתיחום מרחבי בהתאם לצפיפות הישויות.
+                <ul>
+                    <li> <b>מספר השכנים</b> - גודל השכונה הוא פונקציה של המספר שצוין של שכנים הכלולים בחישובים עבור כל ישות. כאשר הישויות צפופות, התיחום המרחבי של השכונה קטן יותר; כאשר הישויות דלילות, התיחום המרחבי של השכונה גדול יותר. בעת בחירה באפשרות זו, בחר את מספר השכנים שברצונך לכלול. המספר צריך להיות מסלם שלם בין 2 ל-5000.
+                    </li>
+                    <li> <b>טווח מרחק</b> - גודל השכונה הוא קבוע או מרחק קבוע עבור כל ישות. בעת בחירה באפשרות זו, בחר את טווח המרחק לייצוג התיחום המרחבי של השכונה.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>בחר כיצד ישויות שכונה נשקלות</h2></div>
+        <hr/>
+        <div>
+            <p>מציין את סוג הליבה אשר ישמש לסיפוק השקלול המרחבי במודל. הליבה מגדירה את הקשר של כל ישות לישויות אחרות בשכונה שלה.
+                <ul>
+                    <li> <b>Bisquare</b> - משקל 0 יוקצה לכל ישות מחוץ לשכונה שצוינה. זוהי ברירת המחדל.
+                    </li>
+                    <li> <b>גאוסיאני</b> - כל הישויות יקבלו משקלים, אבל משקלים הולכים וקטנים אקספוננציאלית ככל שמתרחקים מישות היעד.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>שם שכבת התוצאה</h2></div>
+        <hr/>
+        <div>
+            <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.
+            </p>
+            <p>בעת כתיב ל- ArcGIS Data Store (מאגר נתונים יחסים או מרחבי-זמני של Big Data) בעזרת התיבה הנפתחת  <b>שמור תוצאה ב</b>, באפשרותך לציין את שם התיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

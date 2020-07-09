@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Loopkostenpad bepalen als polylijn</h2><p/>
-        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Illustratie van loop voor het bepalen  van loopkostenpad bepalen als polylijn"></h2>
+        <h2>Reiskostenpad als polylijn bepalen</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Reiskostenpad bepalen als polylijn tool illustratie"></h2>
         <hr/>
     <p>Deze tool berekent het goedkoopste polylijnpad tussen bronnen en bekende bestemmingen.
     </p>
@@ -74,14 +74,14 @@
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Kies de loopkosten van de rasterlaag</h2></div>
+        <div><h2>Kies de rasterlaag met routekosten</h2></div>
         <hr/>
         <div>
             <p>Een raster dat de impedantie of de kosten definieert om planimetrisch door elke cel te bewegen.
             </p>
             <p>De waarde op elke cellocatie vertegenwoordigt de kosten per eenheid afstand voor het verplaatsen door de cel. Elke cellocatiewaarde wordt vermenigvuldigd met de celresolutie, terwijl ook de diagonale beweging wordt gecompenseerd om de totale kosten van het passeren door de cel te verkrijgen.
             </p>
-            <p>De waarden van het kostenraster kunnen gehele getallen of zwevendekommagetallen zijn, maar ze kunnen niet negatief of nul zijn (u kunt geen negatieve of nulkosten hebben).
+            <p>De waarden van het kostenraster kunnen integer of float zijn, maar ze kunnen niet negatief of nul zijn (u kunt geen negatieve of nulkosten hebben).
             </p>
         </div>
     </div>
@@ -112,20 +112,28 @@
             <p>Bepaalt de manier waarop de waarden en zones op de invoerbestemmingsgegevens worden ge&iuml;nterpreteerd in de kostenpadberekeningen.
             </p>
             <ul>
-                <li>Beste enkel&mdash;Voor alle cellen of locaties op de invoergegevens van de bestemming wordt het pad met de laagste kosten afgeleid van de locatie met het minimum van de goedkoopste paden naar de bronlocatie. Dit is de standaard
+                <li> <b>Beste enkel</b>&mdash;Voor alle cellen of locaties op de invoergegevens van de bestemming wordt het pad met de laagste kosten afgeleid van de locatie met het minimum van de goedkoopste paden naar de bronlocatie. Dit is de standaard
                     
 
                 </li>
-                <li>Naar elke cel&mdash;Voor elke cel of locatie met geldige waarden op de bestemmingsgegevens van de invoer wordt een pad met de laagste kosten bepaald en opgeslagen op de uitvoerfeatureservice. Met deze optie wordt elke cel van de invoerbestemmingsdata afzonderlijk behandeld en wordt voor elke cel een pad met de laagste kosten bepaald.
+                <li> <b>Naar elke cel</b>&mdash;Voor elke cel of locatie met geldige waarden op de bestemmingsgegevens van de invoer wordt een pad met de laagste kosten bepaald en opgeslagen op de uitvoerfeatureservice. Met deze optie wordt elke cel van de invoerbestemmingsdata afzonderlijk behandeld en wordt voor elke cel een pad met de laagste kosten bepaald.
                     
 
                 </li>
-                <li>Naar elke zone&mdash;Voor elke zone op de bestemmingsgegevens van de invoer wordt een pad met de laagste kosten bepaald en opgeslagen op de uitvoerfeatureservice. Met deze optie begint het pad met de laagste kosten voor elke zone op de cel of locatie met de weging van de laagste kostenafstand in de zone.
+                <li> <b>Naar elke zone</b>&mdash;Voor elke zone op de bestemmingsgegevens van de invoer wordt een pad met de laagste kosten bepaald en opgeslagen op de uitvoerfeatureservice. Met deze optie begint het pad met de laagste kosten voor elke zone op de cel of locatie met de weging van de laagste kostenafstand in de zone.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Kies een veld om waarden voor de bestemming te krijgen</h2></div>
+        <hr/>
+        <div>
+            <p>Het veld dat wordt gebruikt om waarden te krijgen voor de bestemmingslocaties.
+            </p>
         </div>
     </div>
 </div>

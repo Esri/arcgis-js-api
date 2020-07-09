@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Konvertēt rastru par elementu</h2><p/>
-        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Portāla rīks Konvertēt rastru par elementu"></h2>
+        <h2>Pārvērst rastru par elementu</h2><p/>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Rīks Pārvērst rastru par elementu"></h2>
         <hr/>
     <p>&Scaron;is rīks konvertē rastru par elementu datu kopu, kā punktus, līnijas vai laukumus.
     </p>
@@ -55,11 +55,11 @@
     <p>Ja ir atzīmēta opcija  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tiks konvertētas tikai tās rastra &scaron;ūnas, kas ir redzamas pa&scaron;reizējā kartes skatā. Ja opcija nav atzīmēta, tiks konvertētas visas rastra slāņa &scaron;ūnas; arī tās, kas atrodas ārpus pa&scaron;reizējā kartes pārklājuma. Ņemiet to vērā, ja rastra slānis ir liels vai tam ir augsta iz&scaron;ķirtspēja.
     </p>
     <p>&Scaron;ī rīka lieto&scaron;anas gadījumi ietver:
- 
+
         <ul>
             <li>Laukuma līdzekļu izveide no zemes lietojuma klasifikācijas rastra.
                 
- 
+
             </li>
             <li>DEM identificētās upes var konvertēt par līniju elementiem.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM var konvertēt par punktu elementiem, ko var izmantot darbplūsmā, kas nav balstīta uz rastru.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Izvēlēties lauku</h2></div>
         <hr/>
         <div>
-            <p>Norādiet lauku, kurā norādīta konvertē&scaron;ana izmantojamā vērtība.
+            <p>Lauks, kas norāda pārveido&scaron;anas vērtību.
             </p>
             <p>Tā var būt jebkāda vesela skaitļa vai teksta vērtība.
             </p>
             <p>Lauku ar peldo&scaron;ā komata skaitļa vērtību var izmantot tikai tad, ja izvade ir punktu datu kopa.
             </p>
-            <p>Noklusējuma izvēle ir lauka  <i>Value</i> izmanto&scaron;ana, kurā ir ietverta vērtība katrā rastra &scaron;ūnā.
+            <p>Noklusējums ir lauks  <i>Value</i>, kurā ir ietverta vērtība katrā rastra &scaron;ūnā.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Izvēlieties izvades veidu</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties punkta, līnijas vai laukuma izvades tipu.
+            <p>Norāda izvades veidu.
             </p>
             <ul>
-                <li>Punkts. Rastrs tiks konvertēts par punktu datu kopu.
+                <li> <b>Punkts</b>&nbsp;&mdash; rastrs tiks pārvērsts par punktu datu kopu. Tā ir noklusējuma vērtība.
                     
  
                 </li>
-                <li>Līnija. Rastrs tiks konvertēts par līniju elementu datu kopu.
+                <li> <b>Līnija</b>&nbsp;&mdash; rastrs tiks pārvērsts par līniju elementu datu kopu.
                     
  
                 </li>
-                <li>Laukums. Rastrs tiks konvertēts par laukuma elementu datu kopu.
+                <li> <b>Daudzstūris</b>&nbsp;&mdash; rastrs tiks pārvērsts par daudzstūra elementu datu kopu.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Vienkāršot līnijas vai daudzstūrus</h2></div>
         <hr/>
         <div>
-            <p>Norādiet vienkār&scaron;ojamos elementus.
+            <p>Norāda, vai līnijas vai daudzstūri tiks vienkār&scaron;oti&nbsp;(izlīdzināti). Līdzinā&scaron;ana tiek veikta &scaron;ādi: līnijā iekļauj minimālu segmentu skaitu, bet paliek iespējami tuvu sākotnējām rastra &scaron;ūnas malām.
             </p>
-            <p>Ja atzīmēta (noklusējums), līniju vai laukuma elementi tiks izlīdzināti, lai radītu vispārīgāku rezultātu. Ja &scaron;ī opcija nav atzīmēta, līniju elementi ievēros rastra datu kopas &scaron;ūnu robežas.
+            <ul>
+                <li>Atzīmēts&nbsp;&mdash; līnijas vai daudzstūra elementi tiks izlīdzināti, lai radītu vispārīgāku rezultātu. Tā ir noklusējuma vērtība.
+                    
+
+                </li>
+                <li>Neatzīmēts&nbsp;&mdash; līnijas vai daudzstūra elementi ievēros rastra datu kopas &scaron;ūnu robežas.
+                    
+
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametrs tiek atbalstīts tikai tad, ja izvades veids ir līnija vai daudzstūris.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Izveidot vairākdaļu elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai izvades daudzstūrus veidos vienas daļas vai vairāku daļu elementi.
+            </p>
+            <ul>
+                <li>Atzīmēts&nbsp;&mdash; vairākdaļu elementi tiks izveidoti, pamatojoties uz daudzstūriem, kuriem ir tā pati vērtība.
+                    
+
+                </li>
+                <li>Neatzīmēts&nbsp;&mdash; katram daudzstūrim tiks izveidoti atsevi&scaron;ķi&nbsp;(vienas daļas) elementi. Tā ir noklusējuma vērtība.
+                    
+
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametrs tiek atbalstīts tikai tad, ja izvades veids ir daudzstūris.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimālais virsotņu skaits daudzstūra elementā</h2></div>
+        <hr/>
+        <div>
+            <p>Virsotņu skaita ierobežojumu izmanto, lai sadalītu daudzstūri mazākos daudzstūros.
+            </p>
+            <p>Ja &scaron;is lauks atstāts tuk&scaron;s, izvades daudzstūri netiks sadalīti. Tā ir noklusējuma vērtība.
+            </p>
+            <p>&Scaron;is parametrs tiek atbalstīts tikai tad, ja izvades veids ir daudzstūris.
             </p>
         </div>
     </div>

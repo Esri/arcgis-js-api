@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Buat Anomali Multidimensional</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Buat Anomali Multidimensional"></h2>
+        <hr/>
+    <p>Menghasilkan set data raster multidimensional dengan menggabungkan variabel raster multidimensional yang ada di sepanjang dimensi.
+    </p>
+    <p>Anomali adalah deviasi pengamatan dari nilai standar, rata-rata, atau mediannya.
+    </p>
+    <p>Alat ini menghitung anomali dari waktu ke waktu untuk satu variabel atau lebih dalam raster multidimensional. Jika Anda memiliki dimensi non waktu di samping dimensi waktu, anomali akan dihitung pada setiap langkah di dimensi tambahan.
+    </p>
+    <p>Misalnya, Anda memiliki data suhu laut bulanan, dikumpulkan dari setiap kedalaman 1 meter hingga 100 meter, dan Anda ingin menghitung anomali suhu sebagai deviasi dari rata-rata tahunan. Alat ini akan menentukan anomali suhu berdasarkan rata-rata tahunan jika Anda mengatur  <b>Tahunan</b> sebagai <b>interval temporal untuk menghitung rata-rata</b>, dan itu akan mengembalikan nilai anomali untuk setiap kedalaman 100 meter.
+    </p>
+    <p>Alat ini hanya mendukung set data raster multidimensional yang memiliki dimensi waktu.
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel seluruh layer akan dianalisis, bahkan jika berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pilih layer citra multidimensional untuk menghasilkan anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Layer citra input dari set data raster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pilih variabel untuk anomali mana yang akan dihasilkan</h2></div>
+        <hr/>
+        <div>
+            <p>Satu variabel atau lebih untuk anomali mana yang akan dihitung. Jika tidak ada variabel yang ditentukan, semua variabel dengan dimensi waktu akan dianalisis.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Pilih metode untuk menghasilkan anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan metode yang akan digunakan untuk menghitung anomali. 
+                <ul>
+                    <li> <b>Perbedaan dari Rata-rata</b>&mdash;Perbedaan antara nilai piksel dan rata-rata nilai piksel tersebut di seluruh irisan yang ditentukan oleh interval akan dihitung. Ini adalah default.
+                    </li>
+                    <li> <b>Persentase Perbedaan dari Rata-rata</b>&mdash;Persentase perbedaan antara nilai piksel dan rata-rata nilai piksel tersebut di seluruh irisan yang ditentukan oleh interval akan dihitung.
+                    </li>
+                    <li> <b>Persentase Rata-rata</b>&mdash;Persentase rata-rata akan dihitung.
+                    </li>
+                    <li> <b>Skor Z</b>&mdash;Skor z untuk setiap piksel akan dihitung. Skor z 0 mengindikasikan nilai piksel sama dengan rata-rata. Skor z 1 mengindikasikan nilai piksel memiliki 1 simpangan baku dari rata-rata. Skor z 2 mengindikasikan nilai piksel memiliki 2 simpangan baku dari rata-rata dan seterusnya.
+                    </li>
+                    <li> <b>Perbedaan dari Median</b>&mdash;Perbedaan antara nilai piksel dan median matematis dari nilai piksel tersebut di seluruh irisan yang ditentukan oleh interval akan dihitung.
+                    </li>
+                    <li> <b>Persentase Perbedaan dari Median</b>&mdash;Persentase perbedaan antara nilai piksel dan median matematis dari nilai piksel tersebut di seluruh irisan yang ditentukan oleh interval akan dihitung.
+                    </li>
+                    <li> <b>Persentase Median</b>&mdash;Persentase median matematis akan dihitung.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Metode matematis untuk menghitung nilai anomali tercantum di bawah ini. Anomali dapat dihitung menggunakan nilai rata-rata atau median sebagai gambaran rata-rata. Jika distribusi data tidak stabil, rata-rata bisa sangat dipengaruhi oleh outlier, sehingga nilai median atau metode skor z mungkin lebih cocok untuk jenis data ini.
+            </p>
+            <p>
+                <ul>
+                    <li>Perbedaan rata-rata = x - &mu;
+
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                                
+
+                            </li>
+                            <li>&mu; = rata-rata nilai piksel tersebut selama interval waktu yang ditentukan
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Persentase perbedaan dari rata-rata = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                                
+
+                            </li>
+                            <li>&mu; = rata-rata nilai piksel tersebut selama interval waktu yang ditentukan
+                                
+
+                            </li>
+                            <li>|x - &micro;| = nilai absolut perbedaan antara nilai dan rata-rata
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Persentase rata-rata = x / &micro;
+
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                                
+
+                            </li>
+                            <li>&mu; = rata-rata nilai piksel tersebut selama interval waktu yang ditentukan
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Perbedaan dari median = x - &szlig;
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                            </li>
+                            <li>&szlig; = median nilai piksel selama interval waktu yang ditentukan
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Persentase perbedaan dari median = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                            </li>
+                            <li>&szlig; = median nilai piksel selama interval waktu yang ditentukan
+                            </li>
+                            <li>|x - &szlig;| = nilai absolut perbedaan antara nilai dan median
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Persentase median = x / &szlig;
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                            </li>
+                            <li>&szlig; = median nilai piksel selama interval waktu yang ditentukan
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Skor z  = (x - &micro;) / S
+                        <ul>
+                            <li>x = nilai piksel dalam satu irisan
+                            </li>
+                            <li>&mu; = rata-rata nilai piksel tersebut selama interval waktu yang ditentukan
+                            </li>
+                            <li>S = simpangan baku dari nilai piksel selama interval waktu yang ditentukan
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Pilih interval temporal untuk menghitung rata-rata</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan interval temporal yang akan digunakan untuk menghitung rata-rata. 
+                <ul>
+                    <li> <b>Semua</b>&mdash;Menghitung rata-rata di semua irisan untuk setiap piksel.
+                    </li>
+                    <li> <b>Tahunan</b>&mdash;Menghitung rata-rata tahunan untuk setiap piksel.
+                    </li>
+                    <li> <b>Berulang Setiap Bulan</b>&mdash;Menghitung rata-rata bulanan untuk setiap piksel.
+                    </li>
+                    <li> <b>Berulang Setiap Minggu</b>&mdash;Menghitung rata-rata mingguan untuk setiap piksel.
+                    </li>
+                    <li> <b>Berulang Setiap Hari</b>&mdash;Menghitung rata-rata harian untuk setiap piksel.
+                    </li>
+                    <li> <b>Setiap jam</b>&mdash;Menghitung rata-rata per jam untuk setiap piksel.
+                    </li>
+                    <li> <b>Raster Eksternal</b>&mdash;Set data raster yang ada yang berisi nilai rata-rata atau median untuk setiap piksel direferensikan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Pilih layer citra rata-rata sebagai referensi</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan set data raster referensi yang berisi rata-rata yang sebelumnya dihitung untuk setiap piksel. Anomali akan dihitung dibandingkan dengan rata-rata ini.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Abaikan nilai yang hilang dalam penghitungan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis. 
+                <ul>
+                    <li>Dicentang&mdash;Analisis akan mencakup semua piksel yang valid di sepanjang dimensi yang ditentukan dan mengabaikan piksel NoData apa pun. Ini adalah default.
+                    </li>
+                    <li>Tidak Dicentang&mdash;Analisis akan menghasilkan NoData jika ada nilai NoData pada piksel tersebut di sepanjang dimensi yang ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

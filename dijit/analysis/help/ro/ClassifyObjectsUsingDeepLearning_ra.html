@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Clasificați obiectele folosind învățarea profundă</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Clasificați obiectele folosind &icirc;nvățarea profundă"></h2>
+        <hr/>
+    <p>Acest instrument rulează un model instruit de &icirc;nvățare profundă pe un raster de intrare și o clasă opțională de obiecte spațiale pentru a produce o clasă de obiecte spațiale sau un tabel &icirc;n care fiecărui obiect de intrare i-a fost alocată o etichetă de clasă.
+    </p>
+    <p>Dacă este bifat  <b>Utilizare extindere curentă a hărții</b>, va fi analizată doar zona raster care este vizibilă &icirc;n zona de vizualizare curentă a hărții. Dacă nu este bifat, va fi analizată toată zona raster, chiar dacă se află &icirc;n afara zonei de vizualizare curentă a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Alegeți imaginea folosită pentru a clasifica obiecte</h2></div>
+        <hr/>
+        <div>
+            <p>Imaginea utilizată pentru a detecta obiecte.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Alegeți stratul tematic de obiecte spațiale pentru obiecte (Opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic cu obiecte spațiale cu intrare &icirc;n punct, linie sau poligon care identifică localizarea fiecărui obiect de clasificat și etichetat. Fiecare r&acirc;nd din stratul tematic cu obiecte spațiale de intrare reprezintă un obiect individual.
+            </p>
+            <p>Dacă nu este specificat niciun strat tematic cu obiecte spațiale de intrare, instrumentul presupune că fiecare imagine de intrare conține un singur obiect de clasificat. Dacă imaginea sau imaginile de intrare folosesc o referință spațială, rezultatul instrumentului este un strat tematic cu obiecte spațiale, &icirc;n care acoperirea fiecărei imagini este folosită ca geometria de separare pentru fiecare obiect spațial etichetat. Dacă imaginea sau imaginile de intrare nu au referințe spațiale, rezultatul instrumentului este un tabel care conține valorile ID ale imaginii și etichetele de clasă pentru fiecare imagine.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Alegeți modelul de învățare profundă folosit pentru clasificarea obiectelor</h2></div>
+        <hr/>
+        <div>
+            <p>Element Pachet de &icirc;nvățare aprofundată de intrare ( <code>.dlpk</code>).
+            </p>
+            <p>Pachetul de &icirc;nvățare aprofundată este compus din fișierul JSON de definire a modelului Esri ( <code>.emd</code>), fișierul modelului binar de &icirc;nvățare aprofundată, și opțional, se va folosi funcția raster Python.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Specificați argumentele modelului de învățare aprofundată</h2></div>
+        <hr/>
+        <div>
+            <p>Argumentele funcției sunt definiți &icirc;n clasa funcțiilor raster Python la care se referă modelul de intrare. Aici găsiți listați parametri suplimentari de &icirc;nvățare aprofundată și argumente pentru experimente și rafinare, cum ar fi un prag de &icirc;ncredere pentru reglarea sensibilității.
+            </p>
+            <p>Numele argumentelor sunt populate de instrument prin citirea modulului Python de pe serverul de analiză raster.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definiți numele câmpului de etichetă a clasei</h2></div>
+        <hr/>
+        <div>
+            <p>Numele c&acirc;mpului care va conține eticheta de clasificare din stratul tematic cu obiecte spațiale rezultant.
+            </p>
+            <p>Dacă nu este specificat niciun nume de c&acirc;mp, un nou c&acirc;mp denumit  <i>ClassLabel</i> va fi generat &icirc;n stratul tematic cu obiecte spațiale rezultant.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Mod de proces</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică modul &icirc;n care vor fi prelucrate toate reperele raster dintr-un serviciu de imagini. 
+                <ul>
+                    <li> <b>Procesați ca imagine mozaicată</b>&mdash;Toate elementele de raster din serviciul de imagine vor fi mozaicate &icirc;mpreună și procesate. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Procesați reperele separat</b>&mdash;Toate reperele raster din serviciul de imagine vor fi procesate ca imagini separate.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

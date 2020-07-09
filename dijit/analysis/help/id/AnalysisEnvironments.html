@@ -114,7 +114,7 @@
                     <li> <b>Seperti yang ditentukan</b>&mdash;Hasil analisis Anda akan berada dalam sistem koordinat yang Anda pilih.   Saat opsi ini dipilih, klik tombol bola dunia, lalu pilih dari daftar sistem koordinat yang diketahui, atau tambahkan referensi spasial WKID dalam kotak yang disediakan.
                     </li>
                     <li> <b>Layer
-&lt;name&gt;</b>&mdash;Hasil analisis Anda akan berada dalam sistem koordinat yang sama dengan layer pilihan dalam web map Anda yang sudah ada.
+&lt;name&gt;</b>&mdash;Hasil analisis Anda akan berada dalam sistem koordinat yang sama dengan layer pilihan dalam peta web Anda yang sudah ada.
                     </li>
                 </ul>
                 
@@ -136,7 +136,7 @@
                     <li> <b>Seperti yang ditentukan</b>&mdash;Analisis Anda akan berada dalam sistem koordinat yang Anda pilih.   Saat opsi ini dipilih, klik tombol bola dunia, lalu pilih dari daftar sistem koordinat terproyeksi yang diketahui, atau tambahkan referensi spasial WKID dalam kotak yang disediakan.
                     </li>
                     <li> <b>Layer
-&lt;name&gt;</b>&mdash; Analisis Anda akan berada dalam sistem koordinat yang sama dengan layer pilihan yang ada dalam web map Anda.
+&lt;name&gt;</b>&mdash; Analisis Anda akan berada dalam sistem koordinat yang sama dengan layer pilihan yang ada dalam peta web Anda.
                     </li>
                 </ul>
                 
@@ -156,7 +156,7 @@
                     <li> <b>Seperti yang ditentukan</b>&mdash;Jangkauan ditentukan oleh koordinat yang Anda sediakan.
                     </li>
                     <li> <b>Layer
-&lt;name&gt;</b>&mdash;Jangkauan yang digunakan untuk memproses analisis Anda akan sama dengan jangkauan spasial layer pilihan dalam web map Anda yang ada. 
+&lt;name&gt;</b>&mdash;Jangkauan yang digunakan untuk memproses analisis Anda akan sama dengan jangkauan spasial layer pilihan dalam peta web Anda yang ada. 
                     </li>
                 </ul>
                 
@@ -167,7 +167,7 @@
         <div><h2>Snap Raster</h2></div>
         <hr/>
         <div>
-            <p>Sesuaikan jangkauan layer raster output, sehingga akan cocok dengan penyejajaran sel layer  <b>Snap Raster</b> yang ditentukan dalam analisis raster.
+            <p>Menyesuaikan jangkauan layer raster output, sehingga akan cocok dengan penyejajaran sel layer  <b>Snap Raster</b> yang ditentukan dalam analisis raster.
             </p>
         </div>
     </div>
@@ -185,7 +185,7 @@
                     </li>
                     <li> <b>Seperti yang ditentukan</b>&mdash;Tentukan nilai angka untuk menetapkan ukuran sel. Jika ini dipilih, nilai default adalah 1.
                     </li>
-                    <li> <b>Layer &lt;name&gt;</b>&mdash;Set the cell size to the raster layer chosen.
+                    <li> <b>Layer &lt;name&gt;</b>&mdash;Atur ukuran sel ke layer raster yang dipilih.
                     </li>
                 </ul>
                 
@@ -201,7 +201,7 @@
             <ul>
                 <li>Mask dapat berupa raster atau feature layer.
                 </li>
-                <li>Jika mask analisis adalah raster, seluruh sel yang memiliki nilai akan diperhitungkan untuk menentukan mask. Sel pada raster mask yang merupakan NoData akan dianggap berada di luar mask dan akan menjadi NoData pada layer hasil analisis. 
+                <li>Jika mask analisis adalah raster, seluruh sel yang memiliki nilai akan diperhitungkan untuk menentukan mask. Sel pada raster mask yang merupakan NoData akan dianggap berada di luar masker dan akan menjadi NoData pada layer hasil analisis. 
                 </li>
                 <li>Jika masker analisis adalah feature layer, maka akan diubah secara internal menjadi raster saat eksekusi. Karena alasan ini, pastikan bahwa
  <b>Ukuran Sel</b> dan <b>Snap Raster</b> diatur dengan baik untuk analisis Anda.
@@ -211,12 +211,12 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Penyimpanan data</h2></div>
+        <div><h2>Data store</h2></div>
         <hr/>
         <div>
             <p>Hasil GeoAnalytics dapat disimpan di  ArcGIS Data Store dan ditampilkan sebagai feature layer di  Portal for ArcGIS atau berbagi file big data yang dikonfigurasi. 
             </p>
-            <p>Saat Anda menyimpan hasil di  ArcGIS Data Store, dalam banyak kasus, hasil seharusnya disimpan dalam penyimpanan data spasiotemporal. Ini adalah default. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di sebuah penyimpanan data relasional: 
+            <p>Saat Anda menyimpan hasil di  ArcGIS Data Store, dalam banyak kasus, hasil seharusnya disimpan dalam data store spasiotemporal. Ini adalah default. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di sebuah data store relasional: 
                 <ul>
                     <li>Untuk menggunakan hasil di kolaborasi portal-ke-portal
                     </li>
@@ -225,7 +225,7 @@
                 </ul>
                 
             </p>
-            <p>Anda tidak boleh menggunakan penyimpanan data relasional jika Anda berharap hasil GeoAnalytics dapat meningkat dan ingin memanfaatkan kemampuan penyimpanan big data spatiotemporal untuk menangani jumlah data yang besar. 
+            <p>Anda tidak boleh menggunakan data store relasional jika Anda berharap hasil GeoAnalytics dapat meningkat dan ingin memanfaatkan kemampuan penyimpanan big data spatiotemporal untuk menangani jumlah data yang besar. 
             </p>
         </div>
     </div>
@@ -242,6 +242,22 @@
             <p>Dengan mengatur  <b>Faktor pemrosesan paralel</b>, Anda dapat meminta jumlah pekerja paralel yang digunakan server gambar analisis raster untuk memproses satu tugas analisis raster. Namun, jika jumlah total pemrosesan paralel melebihi jumlah maksimal pemrosesan contoh layanan pemrosesan raster (CPU atau GPU), proses paralel tambahan akan diantrekan.
             </p>
             <p>Jika  <b>Faktor pemrosesan paralel</b> tidak ditentukan, yang mana merupakan default, alat akan menggunakan 80 persen jumlah maksimal untuk raster memproses contoh layanan. Baik bilangan bulat atau persentase dapat ditentukan sebagai faktor pemrosesan paralel.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Jumlah Percobaan yang Gagal</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan berapa banyak percobaan yang akan dilakukan oleh proses pekerja yang sama bila ada kegagalan acak dalam memproses pekerjaan tertentu. Nilai defaultnya adalah 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Daur Ulang Interval Pekerja Pemrosesan</h2></div>
+        <hr/>
+        <div>
+            <p>Tetapkan berapa banyak bagian gambar yang akan diproses sebelum memulai ulang proses pekerja, untuk mencegah kemungkinan kegagalan dalam proses yang berjalan lama. Nilai defaultnya adalah 0.
             </p>
         </div>
     </div>

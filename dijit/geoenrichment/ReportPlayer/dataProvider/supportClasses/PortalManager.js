@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/when","esri/arcgis/Portal"],(function(e,n){var r={_cache:{},getPortalInfo:function(c){if(!r._cache[c]){var t=new n.Portal(c);r._cache[c]=e(t.signIn(),(function(e){return{user:e,portal:t}}))}return r._cache[c]}};return r}));
+define(["esri/dijit/geoenrichment/when","esri/arcgis/Portal","../../../utils/requests/UniversalClient","../commands/mapToImage/MapToURLUtil","../../../utils/ProjectionUtil"],(function(r,e,t,n,i){var o={_cache:{},getPortalInfo:function(t){if(!o._cache[t]){var n=new e.Portal(t);o._cache[t]=r(n.signIn(),(function(r){return{user:r,portal:n}}))}return o._cache[t]},tryConfigureServicesFromAGOLPublic:function(){return t.requestPublicFirst("https://www.arcgis.com/sharing/rest/portals/self",{},{retryOnAnyError:!1}).then((function(r){var e=r&&r.helperServices;e&&(e.geometry&&i.setGeometryServiceUrl(e.geometry.url),e.printTask&&n.setPrintMapTaskUrl(e.printTask.url))})).otherwise((function(r){console.log(r)}))}};return o}));

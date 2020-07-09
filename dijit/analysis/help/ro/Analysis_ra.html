@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analiza raster vă permite să efectuaţi analiza seturilor de date raster mari cu ajutorul  ArcGIS Image Server. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea puterii serverului. Setul de unelte disponibil &icirc;n prezent prin experiența de utilizator web a  Portal for ArcGIS sunt  <b>Sumar date</b>, <b>Modele de analiză</b>, <b>Utilizare proximitate</b>, <b>Analiză imagine</b>, <b>Analiză teren</b>, <b>Gestionare date</b>, și <b>&Icirc;nvățare aprofundată</b>.
+        <p>Analiza raster vă permite să efectuaţi analiza seturilor de date raster mari cu ajutorul  ArcGIS Image Server. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea puterii serverului. Setul de unelte disponibil &icirc;n prezent prin experiența de utilizator web a  Portal for ArcGIS sunt  <b>Sumar Date</b>, <b>Modele de analiză</b>, <b>Utilizare proximitate</b>, <b>Analizare imagine</b>, <b>Analizare teren</b>, <b>Administrare date</b>, <b>&Icirc;nvățare profundă</b>, și <b>Analiză multidimensională</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Determine Travel Cost Path As Polyline</h2></td>
+                    <td><h2>Determinare cale cost de deplasare ca linie poligonală</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Determine Travel Cost Path as Polyline tool illustration">
                     </td>
@@ -328,7 +328,7 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
-        <h2>Administrare date</h2>
+        <h2>Gestionare date</h2>
         <hr/>
         <p>Aceste instrumente sunt utilizate at&acirc;t pentru administrarea de zi cu zi a datelor geografice, c&acirc;t şi pentru combinarea datelor &icirc;nainte de analiză. 
             <ul>
@@ -347,6 +347,8 @@
                 <li> <b>Convertire raster &icirc;n obiect spaţial</b> vectorizează datele raster.
                     
 
+                </li>
+                <li> <b>Prelevare</b> extrage datele &icirc;n locurile definite dintr-un raster sau un set de rastere.
                 </li>
             </ul>
             
@@ -397,13 +399,13 @@
             </p>
             <br/>
         </div>
-        <div id="ConvertRasterToFeatureTool" class="smallsize">
+        <div id="ConvertRasterToFeatureTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Convertire raster în obiect spaţial</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Instrument convertire raster &icirc;n obiect spaţial">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Instrument de Convertire a Rasterului &icirc;n Obiecte Spațiale">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Exemplu</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Probă">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Creează un tabel sau o clasă de obiecte spațiale cu punct cu valori ale datelor &icirc;n locuri definite extrase dintr-un raster sau set de rastere.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Set de unelte Învățare aprofundată</h2>
+        <h2>Învățare aprofundată</h2>
         <hr/>
-        <p>Aceste instrumente sunt folosite pentru a detecta anumite obiecte spațiale dintr-o imagine sau pentru a clasifica pixeli &icirc;ntr-un set de date raster. &Icirc;nvățarea profundă este un tip de metodă de &icirc;nvățare mecanică ce folosește inteligența artificială care detectează caracteristicile imaginilor utiliz&acirc;nd mai multe straturi &icirc;n rețele neuronale, unde fiecare strat este capabil să extragă una sau mai multe obiecte spațiale unice &icirc;n imagine. Aceste instrumente folosesc modelele care au fost antrenate să detecteze anumite obiecte spațiale &icirc;n cadre terțe de &icirc;nvățare aprofundată - cum ar fi TensorFlow, CNTK și Keras - și produc hărți de obiecte spațiale sau de clase.
+        <p>Aceste instrumente 	sunt folosite pentru a detecta sau clasifica obiecte spațiale specifice &icirc;ntr-o imagine sau a clasifica pixeli &icirc;ntr-un set de date raster. &Icirc;nvățarea profundă este un tip de metodă de &icirc;nvățare mecanică ce folosește inteligența artificială care detectează caracteristicile imaginilor utiliz&acirc;nd mai multe straturi &icirc;n rețele neuronale, unde fiecare strat este capabil să extragă una sau mai multe obiecte spațiale unice &icirc;n imagine. Aceste instrumente folosesc modelele care au fost antrenate să detecteze anumite obiecte spațiale &icirc;n cadre terțe de &icirc;nvățare aprofundată - cum ar fi TensorFlow, CNTK și Keras - și produc hărți de obiecte spațiale sau de clase.
             <ul>
                 <li> <b>Clasificarea pixelilor utiliz&acirc;nd &icirc;nvățare aprofundată</b> produce un raster clasificat folosind un model de &icirc;nvățare aprofundată antrenat.
                 </li>
                 <li> <b>Detectarea obiectelor utiliz&acirc;nd &icirc;nvățarea aprofundată</b> produce o clasă de obiecte spațiale care conține obiecte pe care le găsește &icirc;ntr-un raster de intrare folosind un model de &icirc;nvățare aprofundată antrenat.
                 </li>
+                <li> <b>Clasificarea obiectelor cu ajutorul &icirc;nvățării aprofundate</b> produce o clasă de obiecte spațiale sau un tabel &icirc;n care fiecărui obiect de intrare dintr-un raster de intrare &icirc;i este alocată o etichetă de clasă cu ajutorul unui model de &icirc;nvățare aprofundată instruit.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Execută un model de &icirc;nvățare aprofundată antrenat pe un raster de intrare pentru a produce un raster clasificat, cu fiecare pixel valid av&acirc;nd o etichetă de clasă atribuită.
+            <p>Acest instrument execută un model de &icirc;nvățare aprofundată antrenat pe un raster de intrare pentru a produce un raster clasificat și fiecare pixel valid are o etichetă de clasă atribuită.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Execută un model de &icirc;nvățare aprofundată antrenat pe un raster de intrare pentru a produce o categorie de obiecte spațiale care conține obiectele pe care le găsește. Caracteristicile pot fi reprezentată de dreptunghiurille sau poligoanele de delimitare &icirc;n jurul obiectelor găsite, sau puncte &icirc;n centrele obiectelor.
+            <p>Acest instrument rulează un model de &icirc;nvățare aprofundată antrenat pe un raster de intrare pentru a produce o categorie de obiecte spațiale care conține obiectele pe care le găsește. Caracteristicile pot fi reprezentată de dreptunghiurile sau poligoanele de delimitare &icirc;n jurul obiectelor găsite, sau puncte &icirc;n centrele obiectelor.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Clasificați obiectele folosind învățarea profundă</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Clasificați obiectele folosind &icirc;nvățarea profundă">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument rulează un model instruit de &icirc;nvățare profundă pe un raster de intrare și o clasă opțională de obiecte spațiale pentru a produce o clasă de obiecte spațiale sau un tabel &icirc;n care fiecărui obiect de intrare i-a fost alocată o etichetă de clasă.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Analiză multidimensională</h2>
+        <hr/>
+        <p>Instrumentele din setul de Analiză Multidimensională vă permit să efectuați analiza datelor științifice de pe mai multe variabile și dimensiuni.
+        </p>
+        <p>Datele multidimensionale reprezintă datele colectate &icirc;n momente, la ad&acirc;ncimi și &icirc;nălțimi multiple. Acest tip de date este utilizat de obicei &icirc;n științele atmosferice, oceanografice și ale păm&acirc;ntului. Cu acest set de instrumente, puteți analiza date raster multidimensionale &icirc;n formaturi multiple, inclusiv netCDF, HDF, GRIB, setul de date cu mozaic multidimensional și Cloud Raster Format (CRF) de la Esri.
+        </p>
+        <p>Următorul tabel prezintă instrumentele de analiză multidimensională și oferă o scurtă descriere a fiecăruia.
+            <ul>
+                <li> <b>Aggregate Multidimensional Raster</b> generează un set de date raster multidimensional prin agregarea variabilelor raster multidimensionale existente dintr-o dimensiune.
+                </li>
+                <li> <b>Generate Multidimensional Anomaly</b> calculează anomalia pentru fiecare &icirc;mpărțire dintr-un raster multidimensional pentru a genera un raster multidimensional.
+                </li>
+                <li> <b>Generați Raster de Tendință</b>  estimează tendința pentru fiecare pixel de-a lungul unei dimensiuni pentru una sau mai multe variabile dintr-un raster multidimensional.
+                </li>
+                <li> <b>Faceți Predicții cu Ajutorul Rarterului de Tendințe</b>  calculează un raster multidimensional previzionat cu ajutorul rasterului de tendințe rezultant din instrumentul <b>Generează Raster de Tendință</b>.
+                </li>
+                <li> <b>Găsește Statisticile de Argumente</b>   extrage valoarea dimensiunii sau indicele de bandă la care se obține o anumită statistică pentru fiecare pixel dintr-un raster multidimensional sau multibandă.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Însumare raster multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Raster Multidimensional Agregat">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument generează un set de date raster multidimensional prin agregarea variabilelor raster multidimensionale existente dintr-o dimensiune.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Găsirea Statisticilor de Argumente</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Găsiți Statistica Argumentului">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument extrage valoarea dimensiunii sau indicele de bandă la care se obține o anumită statistică pentru fiecare pixel &icirc;ntr-un raster multidimensional sau multibandă.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generarea Anomaliei Multidimensionale</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generarea Anomaliei Multidimensionale">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument calculează anomalia pentru fiecare &icirc;mpărțire dintr-un raster multidimensional pentru a genera un raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generarea Rasterului de Tendințe</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generează Raster Tendință">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument estimează tendința pentru fiecare pixel de-a lungul unei dimensiuni pentru una sau mai multe variabile dintr-un raster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Predicția Utilizării Rasterului de Tendințe</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Predicție cu Ajutorul Rasterului de Tendință">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument calculează un raster multidimensional supus predicției cu ajutorul rasterului de tendință de ieșire din instrumentul  <b>Generați Raster de Tendință</b>.
             </p>
             <br/>
         </div>

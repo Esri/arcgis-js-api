@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generera flerdimensionell anomali</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generera flerdimensionell anomali"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>En anomali &auml;r n&auml;r en observation avviker fr&aring;n sitt standardv&auml;rde, medelv&auml;rde eller medianv&auml;rde.
+    </p>
+    <p>Det h&auml;r verktyget ber&auml;knar anomalier &ouml;ver tid f&ouml;r en eller flera variabler i ett flerdimensionellt raster. Om du har en icke-tidsdimension ut&ouml;ver tidsdimensionen ber&auml;knas anomalin vid varje steg i den ytterligare dimensionen.
+    </p>
+    <p>L&aring;t oss s&auml;ga att du till exempel har m&aring;nadsdata f&ouml;r havstemperatur som samlats in p&aring; varje meters djup upp till 100 meter, och du vill ber&auml;kna temperaturanomalierna som avvikelser fr&aring;n &aring;rsmedelv&auml;rdet. Det h&auml;r verktyget fastst&auml;ller temperaturanomalier baserat p&aring; ett &aring;rsmedelv&auml;rde om du st&auml;ller in  <b>&Aring;rligen</b> som <b>tidsintervall f&ouml;r att ber&auml;kna medel</b>, och returnerar anomaliv&auml;rden f&ouml;r alla de 100 djupen.
+    </p>
+    <p>Verktyget st&ouml;der bara flerdimensionella rasterdataset som har en tidsdimension.
+    </p>
+    <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras variabler f&ouml;r de lager som &auml;r synliga i den aktuella kartutbredningen. Om alternativet inte markeras analyseras variablerna i hela lagret, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Välj flerdimensionellt bildlager för att generera anomalier</h2></div>
+        <hr/>
+        <div>
+            <p>Indatabildlagret f&ouml;r ett flerdimensionellt rasterdataset.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Välj variabel/variabler som anomalier ska genereras för</h2></div>
+        <hr/>
+        <div>
+            <p>Variabel eller variabler som anomalier ska ber&auml;knas f&ouml;r. Om ingen variabel anges analyseras alla variabler med den valda tidsdimensionen.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Välj metod för att generera anomali</h2></div>
+        <hr/>
+        <div>
+            <p>Anger metoden som ska anv&auml;ndas f&ouml;r att ber&auml;kna anomalin. 
+                <ul>
+                    <li> <b>Skillnad fr&aring;n medel</b> &ndash; Skillnaden mellan ett pixelv&auml;rde och medel f&ouml;r det pixelv&auml;rdet &ouml;ver sektorer som definieras av intervallet kommer att ber&auml;knas. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Procentskillnad fr&aring;n medel</b> &ndash; Procentskillnaden mellan ett pixelv&auml;rde och medel f&ouml;r det pixelv&auml;rdet &ouml;ver sektorer som definieras av intervallet kommer att ber&auml;knas.
+                    </li>
+                    <li> <b>Procent av medel</b> &ndash; Procentandelen av medelv&auml;rdet ber&auml;knas.
+                    </li>
+                    <li> <b>Z-po&auml;ng</b> &ndash; Z-po&auml;ngen f&ouml;r varje pixel ber&auml;knas. Z-po&auml;ngen 0 anger att pixelv&auml;rdet &auml;r identiskt med medelv&auml;rdet. Z-po&auml;ngen 1 anger att pixelv&auml;rdet &auml;r 1 standardavvikelse fr&aring;n medelv&auml;rdet. Om Z-po&auml;ngen &auml;r 2 &auml;r pixelv&auml;rdet 2 standardavvikelser fr&aring;n medelv&auml;rdet och s&aring; vidare.
+                    </li>
+                    <li> <b>Skillnad fr&aring;n median</b> &ndash; Skillnaden mellan ett pixelv&auml;rde och den matematiska medianen f&ouml;r pixelns v&auml;rden &ouml;ver sektorer som definieras av intervallet kommer att ber&auml;knas.
+                    </li>
+                    <li> <b>Procentskillnad fr&aring;n median</b> &ndash; Procentskillnaden mellan ett pixelv&auml;rde och det matematiska medianv&auml;rdet f&ouml;r den pixelns v&auml;rden &ouml;ver sektorer som definieras av intervallet kommer att ber&auml;knas.
+                    </li>
+                    <li> <b>Procent av median</b> &ndash; Procentandelen av det matematiska medianv&auml;rdet ber&auml;knas.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De matematiska metoderna f&ouml;r att ber&auml;kna anomaliv&auml;rden anges nedan. Anomalier kan ber&auml;knas antingen genom att anv&auml;nda medelv&auml;rden eller medianv&auml;rden som definition av genomsnittet. Om datadistributionen &auml;r missvisande kan medelv&auml;rdet p&aring;verkas av avvikelser, s&aring; medianv&auml;rde eller Z-po&auml;ng kan vara l&auml;mpligare f&ouml;r denna typ av data.
+            </p>
+            <p>
+                <ul>
+                    <li>Skillnad fr&aring;n medel = x - &micro;
+
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                                
+
+                            </li>
+                            <li>&micro; = medel f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentskillnad fr&aring;n medel = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                                
+
+                            </li>
+                            <li>&micro; = medel f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolut v&auml;rde f&ouml;r skillnaden mellan v&auml;rdet och medel
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procent av medel = x / &micro;
+
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                                
+
+                            </li>
+                            <li>&micro; = medel f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Skillnad fr&aring;n median = x - &szlig;
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                            </li>
+                            <li>&szlig; = median f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentskillnad fr&aring;n median = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                            </li>
+                            <li>&szlig; = median f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                            </li>
+                            <li>|x - &szlig;| = absolut v&auml;rde f&ouml;r skillnaden mellan v&auml;rde och median
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procent av median = x / &szlig;
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                            </li>
+                            <li>&szlig; = median f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-po&auml;ng = (x - &micro;) / S
+                        <ul>
+                            <li>x = pixelv&auml;rde i en sektor
+                            </li>
+                            <li>&micro; = medel f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                            </li>
+                            <li>S = standardavvikelse f&ouml;r den pixelns v&auml;rden &ouml;ver det angivna tidsintervallet
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Välj tidsintervall för att beräkna medel</h2></div>
+        <hr/>
+        <div>
+            <p>Anger tidsintervall som ska anv&auml;ndas f&ouml;r att ber&auml;kna medel. 
+                <ul>
+                    <li> <b>Alla</b> &ndash; Ber&auml;knar medel &ouml;ver alla sektorer f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>&Aring;rligen</b> &ndash; Ber&auml;knar &aring;rsmedelv&auml;rdet f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>&Aring;terkommer m&aring;nadsvis</b> &ndash; Ber&auml;knar m&aring;nadsmedelv&auml;rdet f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>&Aring;terkommer veckovis</b> &ndash; Ber&auml;knar veckomedelv&auml;rdet f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>&Aring;terkommer dagligen</b> &ndash; Ber&auml;knar dagsmedelv&auml;rdet f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>Timvis</b> &ndash; Ber&auml;knar timmedelv&auml;rdet f&ouml;r varje pixel.
+                    </li>
+                    <li> <b>Externt raster</b> &ndash; Ett befintligt rasterdataset som inneh&aring;ller medel- eller medianv&auml;rdet f&ouml;r varje pixel refereras.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Välj bildlager för medelvärde som referens</h2></div>
+        <hr/>
+        <div>
+            <p>Anger det referensrasterdataset som inneh&aring;ller ett tidigare ber&auml;knat medelv&auml;rde f&ouml;r varje pixel. Anomalierna ber&auml;knas i j&auml;mf&ouml;relse med medelv&auml;rdet.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorera saknade värden i beräkningen</h2></div>
+        <hr/>
+        <div>
+            <p>Anger huruvida saknade v&auml;rden ignoreras i analysen. 
+                <ul>
+                    <li>Markerad &ndash; Analysen inkluderar alla giltiga pixlar l&auml;ngs en given dimension och ignorerar eventuella NoData-pixlar. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li>Avmarkerad &ndash; Analysen resulterar i NoData om det finns NoData-v&auml;rden f&ouml;r pixeln l&auml;ngs en angiven dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

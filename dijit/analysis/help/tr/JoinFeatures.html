@@ -48,7 +48,7 @@
     </p>
     <p>Detayları Birleştir noktalara, &ccedil;izgilere, alanlara ve tablolara uygulanabilir. Mekansal birleşim verilerinizin bir geometrisi olmasını gerektirir. 
     </p>
-    <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita kapsamında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir. İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita kapsamında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir. İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita yayılımının dışında olsa bile analiz edilir.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -134,6 +134,14 @@
                 
             </p>
             <p>&Ouml;rneğin, &uuml;retici pazarına 5 km uzaklıktaki s&uuml;permarketleri bulmak istediğinizi varsayalım.   Bu durumda, birleşim katmanında &uuml;retici pazarını temsil eden bir tek detay var; birleşim detaylar da toplam yıllık satışlar gibi &ouml;znitelikleri olan yerel marketleri g&ouml;stermektedir.  <b>Detayları Birleştir</b> aracını kullanarak &ouml;l&ccedil;&uuml;tleri karşılayan beş s&uuml;permarket bulursunuz. <b>Bire &ccedil;ok birleştir</b> birleşim t&uuml;r&uuml; belirlendiyse, sonu&ccedil;ta her satırın bir &uuml;retici pazarıyla bir s&uuml;permarketi g&ouml;sterdiği beş detay elde edilir. <b>Bire bir birleştir</b> ilişkisi belirtilir ve bir istatistik se&ccedil;ilirse, &uuml;retici pazarını g&ouml;steren bir detay ile s&uuml;permarketlerden gelen sayı (5) gibi &ouml;zetlenmiş bilgiler ve toplam yıllık satış gibi diğer isteğe bağlı istatistikler elde edilir.
+            </p>
+        </div>
+    </div>
+    <div id="keepTargetFeatures">
+        <div><h2>Tüm hedef detayları koru</h2></div>
+        <hr/>
+        <div>
+            <p>Varsayılan olarak, sonu&ccedil; katmanında (bir i&ccedil; birleştirme) sadece hedef katman ile birleştirme katmanı arasında eşleşen detaylar d&ouml;nd&uuml;r&uuml;l&uuml;r. Etkinleştirildiğinde  <b>T&uuml;m hedef detayları koru</b> parametresi, birleştirme katmanındaki (sol dış birleştirme) detaylarla eşleşip eşleşmediğinden bağımsız olarak &ccedil;ıktıyı hedef katmandaki t&uuml;m detayları i&ccedil;erecek şekilde değiştirir.
             </p>
         </div>
     </div>

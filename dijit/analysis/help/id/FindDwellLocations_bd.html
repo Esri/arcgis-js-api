@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Temukan Lokasi Diam</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Diagram alur kerja Temukan Lokasi Diam"></h2>
+        <hr/>
+    <p>Alat ini berfungsi dengan layer fitur titik yang diaktifkan waktu dan termasuk jenis  <code>instan</code>.   Pertama, alat ini mengarahkan fitur ke jalur menggunakan pengidentifikasi unik. Urutan tampilan jalur ditentukan oleh fitur waktu. Selanjutnya, jarak antara pengamatan pertama dan berikutnya pada suatu jalur akan dihitung. Fitur dianggap sebagai bagian dari titik diam jika dua titik berurutan sementara tetap berada dalam jarak tertentu selama setidaknya durasi yang ditentukan. Ketika dua fitur ditemukan sebagai bagian dari titik diam, fitur pertama di titik diam tersebut digunakan sebagai titik referensi, dan alat tersebut menemukan fitur berurutan dalam jarak yang ditentukan dari titik referensi di dalam titik diam tersebut. Setelah semua fitur dalam jarak tertentu ditemukan, alat mengumpulkan fitur titik diam dan menghitung pusat rata-rata. Fitur sebelum dan sesudah titik diam saat ini ditambahkan ke titik diam jika fitur tersebut berada dalam jarak tertentu dari pusat rata-rata lokasi diam. Proses ini berlanjut hingga akhir jalur.
+    </p>
+    <p>Fitur dalam layer yang diaktifkan waktu dapat direpresentasikan dengan salah satu cara berikut:
+        <ul>
+            <li>Instan&mdash;Satu momen pada saat itu
+            </li>
+            <li>Interval&mdash;Waktu mulai dan waktu akhir
+            </li>
+        </ul>
+        
+    </p>
+    <p>Misalnya, Anda bekerja di Departemen Transportasi dan mengumpulkan pembacaan GPS untuk kendaraan di jalan utama. Setiap catatan GPS berisi ID kendaraan unik, waktu, lokasi, dan kecepatan. Menggunakan ID kendaraan unik untuk menentukan jalur individual, mencari kendaraan yang belum bergerak lebih dari 100 meter dalam setidaknya 15 menit untuk menemukan area bermasalah di jaringan jalan. Selain itu, Anda dapat menghitung statistik seperti kecepatan rata-rata kendaraan di dalam lokasi diam.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer untuk menemukan titik diam dari</h2></div>
+        <hr/>
+        <div>
+            <p>Layer titik yang akan dirangkum menjadi titik diam. Layer input harus bersifat diaktifkan waktu dengan fitur yang mewakili satu momen pada saat itu, serta memiliki satu atau lebih kolom yang dapat digunakan untuk mengidentifikasi jalur.
+            </p>
+            <p>Selain memilih layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> di bawah daftar tarik-turun untuk menelusuri konten Anda untuk set data atau feature layer berbagi file big data. Anda dapat secara opsional menerapkan filter pada layer input Anda atau menerapkan pilihan pada layer yang di-host yang ditambahkan ke peta Anda. Filter dan pilihan hanya diterapakan untuk analisis. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Pilih satu atau beberapa kolom untuk mengidentifikasi jalur</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom yang mewakili pengidentifikasi jalur. Anda dapat menggunakan satu kolom atau kolom ganda untuk mewakili nilai jalur unik.
+            </p>
+            <p>Misalnya, jika Anda menemukan lokasi titik diam untuk badai, Anda bisa menggunakan nama badai sebagai kolom jalur.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Pilih metode untuk menghitung jarak</h2></div>
+        <hr/>
+        <div>
+            <p>Metode yang digunakan untuk menghitung jarak titik diam dalam jalur. Metode  <b>Planar</b> dapat menghitung hasil dengan lebih cepat tetapi tidak akan mencakup jalur di sekitar garis tanggal atau akun internasional untuk bentuk bumi yang sebenarnya saat buffering. Metode <b>Geodesik</b> akan mencakup jalur di sekitar garis tanggal internasional jika diperlukan dan menerapkan buffer geodesik ke akun untuk memperhitungkan bentuk bumi.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Tentukan jarak pencarian spasial</h2></div>
+        <hr/>
+        <div>
+            <p>Toleransi jarak titik diam adalah jarak maksimum antara titik-titik yang harus dipertimbangkan dalam satu lokasi diam tunggal.
+            </p>
+            <p>Misalnya, jika Anda tertarik untuk mencari titik diam di mana lalu lintas belum bergerak lebih dari 20 meter dalam waktu tertentu, toleransi jaraknya adalah 20 meter.
+            </p>
+            <p>Gunakan parameter  <b>Tentukan rentang pencarian temporal</b> untuk menentukan waktunya.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Pisahkan jalur (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit toleransi jarak.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Tentukan rentang pencarian temporal</h2></div>
+        <hr/>
+        <div>
+            <p>Toleransi waktu diam adalah durasi waktu minimum dari suatu titik diam untuk dipertimbangkan dalam satu lokasi diam.
+            </p>
+            <p>Misalnya, jika Anda ingin tahu di mana lalu lintas yang tidak bergerak dalam jarak tertentu dalam satu jam, toleransi waktu akan menjadi 1 jam.
+            </p>
+            <p>Gunakan parameter  <b>Tentukan rentang pencarian spasial</b> untuk menentukan jarak.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Pilih jarak untuk memisahkan jalur berdasarkan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Unit toleransi waktu.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tambahkan statistik (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Anda dapat menghitung statistik pada fitur yang diringkas. Anda dapat menghitung hal berikut ini di kolom numerik: 
+                <ul>
+                    <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Ini dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
+                    </li>
+                    <li>Jumlah&mdash;Jumlah nilai numerik di kolom. Jumlah [null, null, 3] adalah 3.
+                    </li>
+                    <li>Rata-rata&mdash;Rata-rata nilai numerik. Rata-rata [0, 2, null] adalah 1.
+                    </li>
+                    <li>Min.&mdash;Nilai minimum kolom numerik. Minimal [0, 2, null] adalah 0. 
+                    </li>
+                    <li>Maks.&mdash;Nilai maksimum kolom numerik. Nilai maksimum [0, 2, null] adalah 2.
+                    </li>
+                    <li>Rentang&mdash;Rentang kolom numerik. Ini dihitung sebagai nilai minimum yang disubtraksi dari nilai maksimum. Rentang [0, null, 1] adalah 1. Rentang [null, 4] adalah 0.
+                    </li>
+                    <li>Varian&mdash;Varian kolom numerik di jalur. Varian [1] adalah null. Varian [null, 1,0,1,1] adalah 0,25.
+                    </li>
+                    <li>Simpangan baku&mdash;Simpangan baku kolom numerik. Simpangan baku [1] adalah null. Simpangan baku [null, 1,0,1,1] adalah 0,5. 
+                    </li>
+                    <li>Pertama&mdash;Nilai pertama dari kolom yang ditentukan dalam jalur yang diringkas. Jika jalur memiliki nilai yang diurutkan berdasarkan waktu berikut untuk kolom: [1,5,10,20], nilai pertamanya adalah 1.
+                    </li>
+                    <li>Terakhir&mdash;Nilai terakhir dari kolom yang ditentukan dalam jalur yang diringkas. Jika jalur memiliki nilai yang diurutkan berdasarkan waktu berikut untuk kolom: [1,5,10,20], nilai terakhirnya adalah 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Anda dapat menghitung hal berikut ini di kolom string:
+                <ul>
+                    <li>Jumlah&mdash;Jumlah string nonnull.
+                    </li>
+                    <li>Apa saja&mdash;Statistik ini adalah contoh acak nilai string di dalam kolom yang telah ditentukan.
+                    </li>
+                    <li>Pertama&mdash;Nilai pertama dari kolom yang ditentukan dalam jalur yang diringkas. Jika jalur memiliki nilai yang diurutkan berdasarkan waktu berikut untuk kolom: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], nilai pertamanya adalah Toronto.
+                    </li>
+                    <li>Terakhir&mdash;Nilai terakhir dari kolom yang ditentukan dalam jalur yang diringkas. Jika jalur memiliki nilai yang diurutkan berdasarkan waktu berikut untuk kolom: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], nilai terakhirnya adalah Boston.
+                    </li>
+                </ul>
+                Semua statistik dihitung pada nilai nonnull. Layer hasil akan berisi kolom baru untuk setiap statistik yang dihitung. Angka statistik berapa pun dapat ditambahkan dengan memilih sebuah atribut dan statistik.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Output lokasi diam sebagai</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan fitur mana yang dikembalikan dan formatnya. Tersedia empat tipe: 
+                <ul>
+                    <li> <b>Pusat Rata-rata</b>&mdash;Sebuah titik yang mewakili centroid dari masing-masing lokasi diam yang ditemukan. Atribut akan diringkas. Ini adalah default.
+                         
+                    </li>
+                    <li> <b>Convex Hull</b>&mdash;Polygon yang mewakili convex hull dari setiap grup titik diam. Atribut akan diringkas.
+                         
+                    </li>
+                    <li> <b>Fitur Titik Diam</b>&mdash;Semua fitur titik dan atribut input yang ditentukan menjadi bagian titik diam akan dikembalikan.
+                         
+                    </li>
+                    <li> <b>Semua Fitur</b>&mdash;Semua fitur titik dan atribut input akan dikembalikan.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analisis data dengan interval waktu (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan jika Anda ingin mendeteksi lokasi titik diam menggunakan interval waktu yang akan membagi fitur input Anda untuk analisis. Jika Anda menggunakan interval waktu, Anda harus mengatur interval waktu yang ingin Anda gunakan, dan secara opsional mengatur waktu referensi. Jika Anda tidak mengatur waktu referensi, 1 Januari 1970 akan digunakan. 
+            </p>
+            <p>Contohnya, jika Anda mengatur batasan waktu menjadi 1 hari, dimulai pada 9:00 pagi tanggal 1 Januari 1990, maka setiap jalur akan dipotong pada pukul 9:00 pagi setiap hari dan dianalisis dalam segmen itu. Tidak ada lokasi titik diam yang akan dimulai sebelum 9:00 pagi dan berakhir setelahnya. 
+            </p>
+            <p>Menggunakan interval waktu adalah cara yang cepat untuk mempercepat waktu komputasi, karena ini membuat jalur yang lebih kecil untuk analisis dengan cepat. Jika membagi berdasarkan interval waktu yang terjadi kembali wajar bagi analisis Anda, ini disarankan untuk pemrosesan big data.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Nama layer yang akan dibuat.  Jika Anda menulis ke sebuah ArcGIS Data Store, hasil Anda akan disimpan di  <b>Konten Saya</b> dan ditambahkan ke dalam peta. Jika Anda menulis ke berbagi file big data, hasil Anda akan disimpan ke berbagi file big data dan ditambahkan ke manifestasinya. Ini tidak akan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Saat menulis ke  ArcGIS Data Store (penyimpanan big data relasional atau spasiotemporal) menggunakan  <b>Simpan hasil di</b> kotak tarik-turun, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasil akan disimpan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

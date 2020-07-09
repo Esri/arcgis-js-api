@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>引数の統計を検索 (Find Argument Statistics)</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="引数の統計を検索 (Find Argument Statistics)"></h2>
+        <hr/>
+    <p>多次元ラスターまたはマルチバンド ラスター内の各ピクセルに対して、所定の統計が得られるディメンション値またはバンド インデックスを抽出します。
+    </p>
+    <p>このツールを使用すると、多次元ラスター データセット内のラスターのスタックで、特定の統計値に達したディメンション値 (たとえば、日付、高さ、深さ) を抽出できます。また、マルチバンド ラスター内で統計値に達したバンド番号を検索できます。
+    </p>
+    <p>たとえば、30 年間のデータ コレクションで各ピクセルが最高海面温度に達した月を知りたい場合があります。あるいは、8 バンドのリモート センシング画像があり、各ピクセルで最小反射率値に達したバンドを知りたいこともあります。
+    </p>
+    <p> <b>[現在のマップ範囲を使用]</b> がオンの場合、現在のマップ範囲に表示されるレイヤーの変数またはバンドが解析されます。オフの場合、レイヤー全体の変数またはバンドが、現在のマップ範囲内になくても解析されます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>解析する多次元またはマルチバンド イメージ レイヤーの選択</h2></div>
+        <hr/>
+        <div>
+            <p>解析対象の入力多次元ラスターまたはマルチバンド ラスター。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>統計の抽出元となるディメンションの選択</h2></div>
+        <hr/>
+        <div>
+            <p>統計の抽出元となるディメンション。入力ラスターが多次元ラスターでない場合、このパラメーターは必要ありません。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>解析される変数の選択</h2></div>
+        <hr/>
+        <div>
+            <p>解析対象の変数。入力ラスターが多次元でない場合、マルチバンド ラスターのピクセル値が変数と見なされます。入力ラスターが多次元で、変数が指定されない場合、選択したディメンションを含む変数がすべて解析されます。
+            </p>
+            <p>たとえば、温度の値が最高であった年を検索するには、解析対象の変数として温度を指定します。変数を指定せず、変数として温度と降雨量の両方がある場合、両方の変数が解析され、出力多次元ラスターには両方の変数が含まれます。
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>統計情報の種類の選択</h2></div>
+        <hr/>
+        <div>
+            <p>所定のディメンションに沿って変数から抽出する統計を指定します。
+            </p>
+            <ul>
+                <li> <b>最小値の引数</b> - 最小変数値に達したディメンション値が抽出されます。これがデフォルトです。
+                </li>
+                <li> <b>最大値の引数</b> - 最大変数値に達したディメンション値が抽出されます。
+                </li>
+                <li> <b>中央値の引数</b> - 中央変数値に達したディメンション値が抽出されます。
+                </li>
+                <li> <b>期間の引数</b> - 変数値が最小値と最大値の間にある、最長のディメンション期間。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>最大出現値の指定</h2></div>
+        <hr/>
+        <div>
+            <p>入力ラスター データセット内で所定の引数の統計値に複数回達したことを示すために使用するピクセル値。指定しない場合、ピクセル値は、初めて引数の統計値に達したときのディメンションの値になります。
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>最小値の指定</h2></div>
+        <hr/>
+        <div>
+            <p>期間の抽出に使用する最小変数値。
+            </p>
+            <p> <b>[期間]</b> が統計タイプとして選択されている場合、このパラメーターは必須です。
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>最大値の指定</h2></div>
+        <hr/>
+        <div>
+            <p>期間の抽出に使用する最大変数値。
+            </p>
+            <p> <b>[期間]</b> が統計タイプとして選択されている場合、このステップは必須です。
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>ディメンション定義の選択</h2></div>
+        <hr/>
+        <div>
+            <p>ディメンションから統計を抽出する方法を指定します。
+                <ul>
+                    <li> <b>すべて</b> - 統計は、すべてのディメンションで抽出されます。これがデフォルトです。
+                    </li>
+                    <li> <b>間隔キーワード</b> - 統計は、間隔キーワードに応じて、時間ディメンションから抽出されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>キーワードの間隔の選択</h2></div>
+        <hr/>
+        <div>
+            <p>統計を抽出する時間単位。
+            </p>
+            <p>たとえば、毎日の海面温度データが 5 年分あり、最大温度を観測した年を知りたいとします。統計タイプを  <b>[最大値の引数]</b> に設定し、ディメンション定義を <b>[間隔キーワード]</b> に設定して、このステップで、キーワードの間隔を <b>[毎年]</b> に設定します。
+            </p>
+            <p>または、最大温度が一貫して観測された月を知りたい場合は、統計タイプを  <b>[最大値の引数]</b> に設定し、ディメンション定義を <b>[間隔キーワード]</b> に設定して、このステップで、キーワードの間隔を <b>[毎月繰り返し]</b> に設定します。この結果、5 年間の記録の中で統計値に到達した月が各ピクセルに含まれるラスターが生成されます (例: 2018/08/18、2016/08/25、2013/08/07)。
+            </p>
+            <p>統計の抽出元となるディメンションとして  <b>[標準時間]</b> が設定され、統計が時間ディメンションから抽出される方法の定義に <b>[間隔キーワード]</b> が選択されている場合、このステップは必須です。
+                <ul>
+                    <li> <b>毎日繰り返し</b> - 統計は日単位で抽出されます。
+                    </li>
+                    <li> <b>毎週繰り返し</b> - 統計は週単位で抽出されます。
+                    </li>
+                    <li> <b>毎月繰り返し</b> - 統計は月単位で抽出されます。
+                    </li>
+                    <li> <b>毎四半期繰り返し</b> - 統計は四半期単位で抽出されます。
+                    </li>
+                    <li> <b>毎時間</b> - 統計は、統計値に到達した時間について抽出されます。
+                    </li>
+                    <li> <b>毎日</b> - 統計は、統計値に到達した日について抽出されます。
+                    </li>
+                    <li> <b>毎週</b> - 統計は、統計値に到達した週について抽出されます。
+                    </li>
+                    <li> <b>毎月</b> - 統計は、統計値に到達した月について抽出されます。
+                    </li>
+                    <li> <b>四半期</b> - 統計は、統計値に到達した四半期について抽出されます。
+                    </li>
+                    <li> <b>毎年</b> - 統計は、統計値に到達した年について抽出されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>計算時に失われた値を無視する</h2></div>
+        <hr/>
+        <div>
+            <p>解析で失われた値を無視するかどうかを指定します。
+                <ul>
+                    <li>オンにすると、解析は、特定のディメンションに沿って有効なすべてのピクセルを含め、すべての NoData 値のピクセルを無視します。これがデフォルトです。
+                    </li>
+                    <li>オフにすると、特定のディメンションに沿って NoData 値のピクセルが存在する場合、解析結果が NoData になります。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤー名</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

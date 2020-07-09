@@ -41,7 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p> A geoanalitika elosztja az elemz&eacute;si feladatot itt: ArcGIS GeoAnalytics Server. &Iacute;gy t&ouml;bb g&eacute;p erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. Jelenleg az al&aacute;bbi eszk&ouml;z&ouml;k &eacute;rhetők el: <ul>
+        <p>A GeoAnalytics az &Ouml;n  ArcGIS GeoAnalytics Server kiszolg&aacute;l&oacute;j&aacute;n osztja el az elemz&eacute;si feladatot. &Iacute;gy t&ouml;bb g&eacute;p erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. Jelenleg az al&aacute;bbi eszk&ouml;z&ouml;k &aacute;llnak rendelkez&eacute;sre:
+            <ul>
                 <li> Pontok &ouml;sszevon&aacute;sa
                 </li>
                 <li> T&ouml;bbv&aacute;ltoz&oacute;s t&aacute;bl&aacute;zat fel&eacute;p&iacute;t&eacute;se
@@ -56,23 +57,27 @@
                 </li>
                 <li> Ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;s
                 </li>
+                <li> Incidensek &eacute;szlel&eacute;se
+                </li>
+                <li> Lak&oacute;helyek keres&eacute;se
+                </li>
+                <li> Hasonl&oacute; helyek keres&eacute;se
+                </li>
                 <li> Geok&oacute;dol&aacute;si helysz&iacute;nek t&aacute;bl&aacute;zatb&oacute;l
                 </li>
                 <li> Bőv&iacute;t&eacute;s t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l
                 </li>
-                <li> Incidensek &eacute;szlel&eacute;se
-                </li>
-                <li> Hasonl&oacute; helyek keres&eacute;se
-                </li>
                 <li> Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa
                 </li>
-                <li> Pontklaszterek keres&eacute;se
-                </li>
                 <li> Hot spotok keres&eacute;se
+                </li>
+                <li> Pontklaszterek keres&eacute;se
                 </li>
                 <li> Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute;
                 </li>
                 <li> Generaliz&aacute;lt line&aacute;ris regresszi&oacute;
+                </li>
+                <li> F&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute;
                 </li>
                 <li> Buffer l&eacute;trehoz&aacute;sa
                 </li>
@@ -80,40 +85,40 @@
                 </li>
                 <li> Mező kisz&aacute;m&iacute;t&aacute;sa
                 </li>
-                <li> M&aacute;sol&aacute;s az adatt&aacute;rba
+                <li> Kiv&aacute;g&aacute;si r&eacute;teg 
                 </li>
-                <li> Fedv&eacute;nyműveletek
+                <li> M&aacute;sol&aacute;s az adatt&aacute;rba
                 </li>
                 <li> Hat&aacute;rok &ouml;sszeolvaszt&aacute;sa
                 </li>
                 <li> R&eacute;tegek &ouml;sszeilleszt&eacute;se
                 </li>
-                <li> Kiv&aacute;g&aacute;si r&eacute;teg 
+                <li> Fedv&eacute;nyműveletek
                 </li>
             </ul>
             
         </p>
-        <p>A geoanalitika elsősorban nagy mennyis&eacute;gű adatot elemez, kiemelten figyelve a t&eacute;rbeli &eacute;s időbeli mint&aacute;kat. 
+        <p>A GeoAnalytics eszk&ouml;z elsősorban nagy mennyis&eacute;gű adatot elemez, kiemelten figyelve a t&eacute;rbeli &eacute;s időbeli mint&aacute;kat. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Summarize Data</h2>
+        <h2>Adatok összegzése</h2>
         <hr/>
-        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p>  Az Adatok &ouml;sszefoglal&aacute;sa eszk&ouml;zk&eacute;szlet kisz&aacute;m&iacute;tja a ter&uuml;leten bel&uuml;l vagy m&aacute;s vektoros elemek k&ouml;zel&eacute;ben tal&aacute;lhat&oacute; vektoros elemek &ouml;sszes&iacute;tett darabsz&aacute;m&aacute;t, hossz&aacute;t, ter&uuml;let&eacute;t &eacute;s alapvető le&iacute;r&oacute; statisztikai adataikat, valamint attrib&uacute;tumaikat.
             <ul>
-                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                <li>A  <b>Pontok &ouml;sszevon&aacute;sa</b> kisz&aacute;m&iacute;tja a megadott ter&uuml;leten vagy binen bel&uuml;l eső pontok statisztikai adatait.
                 </li>
-                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
+                <li>A  <b>T&ouml;bbv&aacute;ltoz&oacute;s t&aacute;bl&aacute;zat fel&eacute;p&iacute;t&eacute;se</b> n&eacute;gysz&ouml;g vagy hatsz&ouml;g alak&uacute; bineket tartalmaz&oacute; r&aacute;csh&aacute;l&oacute;t hoz l&eacute;tre, &eacute;s mindegyik gyűjtőh&ouml;z &eacute;rt&eacute;keket sz&aacute;m&iacute;t az egyes bemenő r&eacute;tegek k&ouml;zels&eacute;ge alapj&aacute;n.
                 </li>
-                <li> <b>Describe Dataset</b> calculates a summary of your input, and can optionally generate a sample of your input layer.
+                <li>Az  <b>Adathalmaz le&iacute;r&aacute;sa</b> kisz&aacute;m&iacute;tja az eredm&eacute;ny &ouml;sszefoglal&aacute;s&aacute;t, &eacute;s &ndash; opcion&aacute;lisan &ndash; mint&aacute;t gener&aacute;l a bemeneti r&eacute;tegből.
                 </li>
-                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
+                <li>A  <b>Vektoros elemek &ouml;sszekapcsol&aacute;sa</b> statisztikai adatokat sz&aacute;m&iacute;t azokr&oacute;l a vektoros elemekről, amelyek t&eacute;rbeli, időbeli vagy attrib&uacute;tumkapcsolatokat osztanak meg m&aacute;s vektoros elemekkel.
                 </li>
-                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
+                <li>A  <b>Nyomvonal-rekonstrukci&oacute;</b> az ugyanazon nyomvonalhoz tartoz&oacute; pontokra vagy polygonokra sz&aacute;m&iacute;t statisztik&aacute;t, &eacute;s rekonstru&aacute;lja a nyomvonalak inputjait.
                 </li>
-                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                <li>Az  <b>Attrib&uacute;tumok &ouml;sszefoglal&aacute;sa</b> az attrib&uacute;tumokon osztoz&oacute; vektoroselem- vagy t&aacute;bl&aacute;zatos adatokr&oacute;l sz&aacute;m&iacute;t statisztik&aacute;kat.
                 </li>
-                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                <li>A  <b>Ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;s</b> kisz&aacute;m&iacute;tja a ter&uuml;let egym&aacute;st &aacute;tfedő ter&uuml;let vektoros elemeinek &eacute;s attrib&uacute;tumainak statisztikai adatait.
                 </li>
             </ul>
             
@@ -132,7 +137,7 @@
 <hr/>
             <p>Ez az eszk&ouml;z egy pont-t&iacute;pus&uacute; vektoros elemeket tartalmaz&oacute; r&eacute;teg &eacute;s vagy egy ter&uuml;let vektoros elemeket tartalmaz&oacute; r&eacute;teg vagy meghat&aacute;rozott t&aacute;vols&aacute;ggal defini&aacute;lt gyűjtők haszn&aacute;lat&aacute;val meghat&aacute;rozza, hogy mely pontok esnek az egyes ter&uuml;leteken vagy gyűjtők&ouml;n bel&uuml;l, &eacute;s kisz&aacute;m&iacute;tja az &ouml;sszes pont statisztikai adatait az egyes ter&uuml;leteken vagy gyűjtők&ouml;n bel&uuml;l. Ezzel az eszk&ouml;zzel időszeleteket is haszn&aacute;lhat. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>A bűnt&eacute;nyek pontszerűen megadott hely&eacute;t alapul v&eacute;ve kisz&aacute;m&iacute;thatja a megy&eacute;nk&eacute;nt vagy m&aacute;s k&ouml;zigazgat&aacute;si k&ouml;rzetenk&eacute;nt előfordult bűnt&eacute;nyek sz&aacute;m&aacute;t.
                     </li>
@@ -154,9 +159,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A T&ouml;bbv&aacute;ltoz&oacute;s t&aacute;bl&aacute;zat fel&eacute;p&iacute;t&eacute;se eszk&ouml;z n&eacute;gysz&ouml;g vagy hatsz&ouml;g alak&uacute; gyűjtőket tartalmaz&oacute; r&aacute;csh&aacute;l&oacute;t hoz l&eacute;tre, &eacute;s mindegyik gyűjtőh&ouml;z v&aacute;ltoz&oacute;kat sz&aacute;m&iacute;t egy vagy t&ouml;bb bemenő r&eacute;teg k&ouml;zels&eacute;ge alapj&aacute;n.
+            <p>A T&ouml;bbv&aacute;ltoz&oacute;s grid r&aacute;cs fel&eacute;p&iacute;t&eacute;se eszk&ouml;z n&eacute;gysz&ouml;g vagy hatsz&ouml;g alak&uacute; gyűjtőket tartalmaz&oacute; r&aacute;csh&aacute;l&oacute;t hoz l&eacute;tre, &eacute;s mindegyik gyűjtőh&ouml;z v&aacute;ltoz&oacute;kat sz&aacute;m&iacute;t egy vagy t&ouml;bb bemenő r&eacute;teg k&ouml;zels&eacute;ge alapj&aacute;n.
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>Tegy&uuml;k fel, hogy adva van t&ouml;bb, t&ouml;megk&ouml;zleked&eacute;si infrastrukt&uacute;r&aacute;t tartalmaz&oacute; r&eacute;teg. A v&aacute;ros melyik r&eacute;sze a legnehezebben el&eacute;rhető t&ouml;megk&ouml;zleked&eacute;ssel?
                     </li>
@@ -208,9 +213,9 @@
 <hr/>
             <p>Vektoros r&eacute;tegeket vagy t&aacute;bl&aacute;zatos adatokat haszn&aacute;lva vektoros elemeket &eacute;s rekordokat kapcsolhat &ouml;ssze a bemenő r&eacute;tegek vagy t&aacute;bl&aacute;zatok k&ouml;z&ouml;tti egyedi kapcsolatok alapj&aacute;n.  Az &ouml;sszekapcsol&aacute;sokat t&eacute;rbeli, időbeli &eacute;s attrib&uacute;tumok k&ouml;z&ouml;tti kapcsolatok hat&aacute;rozz&aacute;k meg, &eacute;s ak&aacute;r &ouml;sszes&iacute;tő statisztik&aacute;k is sz&aacute;m&iacute;that&oacute;k.  
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Tegy&uuml;k fel, hogy rendelkez&eacute;sre &aacute;llnak bűncselekm&eacute;nyek helyei &eacute;s időpontjai; kapcsolja &ouml;ssze a bűncselekm&eacute;nyek adatait &ouml;nmagukkal, t&eacute;rbeli kapcsolatot meghat&aacute;rozva olyan bűncselekm&eacute;nyek k&ouml;z&ouml;tt, amelyek egym&aacute;st&oacute;l 1 kilom&eacute;ter t&aacute;vols&aacute;gon bel&uuml;l &eacute;s 1 &oacute;r&aacute;n bel&uuml;l t&ouml;rt&eacute;ntek, &eacute;s &aacute;llap&iacute;tsa meg, hogy t&ouml;rt&eacute;nt-e egym&aacute;shoz t&eacute;rben &eacute;s időben k&ouml;zeli bűncselekm&eacute;nyek sorozata.
+                    <li>Tegy&uuml;k fel, hogy rendelkez&eacute;sre &aacute;llnak egy adott időben elk&ouml;vetett bűncselekm&eacute;nyek helyei; kapcsolja &ouml;ssze a bűncselekm&eacute;nyek adatait &ouml;nmagukkal, t&eacute;rbeli kapcsolatot meghat&aacute;rozva olyan bűncselekm&eacute;nyek k&ouml;z&ouml;tt, amelyek egym&aacute;st&oacute;l 1 kilom&eacute;ter t&aacute;vols&aacute;gon bel&uuml;l &eacute;s 1 &oacute;r&aacute;n bel&uuml;l t&ouml;rt&eacute;ntek, &eacute;s &aacute;llap&iacute;tsa meg, hogy t&ouml;rt&eacute;nt-e egym&aacute;shoz t&eacute;rben &eacute;s időben k&ouml;zeli bűncselekm&eacute;nyek sorozata.
                     </li>
                     <li>Tegy&uuml;k fel, hogy rendelkez&eacute;sre &aacute;ll egy ir&aacute;ny&iacute;t&oacute;sz&aacute;mokhoz kapcsolt demogr&aacute;fiai adatokat tartalmaz&oacute; t&aacute;bl&aacute;zat &eacute;s lak&oacute;&eacute;p&uuml;leteket le&iacute;r&oacute; ter&uuml;let vektoros elemek; kapcsolja &ouml;ssze a demogr&aacute;fiai inform&aacute;ci&oacute;kat a lakc&iacute;mekkel, hogy a lakc&iacute;mek is rendelkezzenek ugyanezekkel az inform&aacute;ci&oacute;kkal.
                     </li>
@@ -230,9 +235,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ez az eszk&ouml;z  <code>időpillanatot</code> le&iacute;r&oacute;, pontszerű vagy polygon vektoros elemek időb&eacute;lyeggel ell&aacute;tott r&eacute;teg&eacute;t haszn&aacute;lva meghat&aacute;rozza, hogy a bemeneti vektoros elemek k&ouml;z&uuml;l melyek tartoznak egy nyomvonalhoz, &eacute;s időbeli sorrendbe rendezi a bemeneteket. Lehetős&eacute;g van a bemeneti vektoros elemek statisztik&aacute;inak kisz&aacute;m&iacute;t&aacute;s&aacute;ra is az egyes nyomvonalakon bel&uuml;l.
+            <p>Ez az eszk&ouml;z időpillanatot le&iacute;r&oacute;, pontszerű vagy poligon vektoros elemek időb&eacute;lyeggel ell&aacute;tott r&eacute;teg&eacute;t haszn&aacute;lva meghat&aacute;rozza, hogy a bemeneti vektoros elemek k&ouml;z&uuml;l melyek tartoznak egy nyomvonalhoz, &eacute;s időbeli sorrendbe rendezi a bemeneteket. Lehetős&eacute;g van a bemeneti vektoros elemek statisztik&aacute;inak kisz&aacute;m&iacute;t&aacute;s&aacute;ra is az egyes nyomvonalakon bel&uuml;l. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>Egy hurrik&aacute;nra vonatkoz&oacute;an adott helyekből &eacute;s időpontokb&oacute;l sz&aacute;m&iacute;tsa ki a hurrik&aacute;n &aacute;tlagos sz&eacute;lsebess&eacute;g&eacute;t &eacute;s legnagyobb sz&eacute;lnyom&aacute;s&aacute;t.
                     </li>
@@ -256,7 +261,7 @@
 <hr/>
             <p>Ez az eszk&ouml;z vektoros elemek vagy t&aacute;bl&aacute;zatos adatok alapj&aacute;n &ouml;sszes&iacute;tő statisztik&aacute;kat k&eacute;sz&iacute;t meghat&aacute;rozott mezőkh&ouml;z. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>Tegy&uuml;k fel, hogy a(z)  <i>COMPANY_NAME</i> mezőben rendelkez&eacute;sre &aacute;llnak &eacute;lelmiszerboltok helyei; &ouml;sszes&iacute;tse a boltokat a v&aacute;llalat neve alapj&aacute;n, &eacute;s sz&aacute;m&iacute;tson kis statisztik&aacute;kat mindegyik v&aacute;llalathoz.
                     </li>
@@ -280,9 +285,9 @@
 <hr/>
             <p>Megkeresi azokat a ter&uuml;leteket (&eacute;s ter&uuml;letr&eacute;szeket), ahol k&eacute;t r&eacute;teg &aacute;tfedi egym&aacute;st, &eacute;s kisz&aacute;m&iacute;tja a fedv&eacute;ny statisztikai adatait. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati t&iacute;pusokat tartalmaz&oacute; r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
+                    <li>V&iacute;zgyűjtő ter&uuml;leteket &eacute;s egy felsz&iacute;nhaszn&aacute;lati r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a f&ouml;ldter&uuml;letek nagys&aacute;g&aacute;t felsz&iacute;nhaszn&aacute;lati t&iacute;pusonk&eacute;nt mindegyik v&iacute;zgyűjtő ter&uuml;letre. 
                     </li>
                     <li>Egy megye parcell&aacute;it &eacute;s telep&uuml;l&eacute;shat&aacute;rait tartalmaz&oacute; r&eacute;teg eset&eacute;n &ouml;sszes&iacute;theti a telep&uuml;l&eacute;seken bel&uuml;li szabad parcell&aacute;k &aacute;tlagos &eacute;rt&eacute;keit.
                     </li>
@@ -291,14 +296,16 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="regularsize">
+    <div id="FindLocationsCategory" class="largesize">
         <h2>Helyek keresése</h2>
         <hr/>
-        <p>Ezekkel az eszk&ouml;z&ouml;kkel az &Ouml;n &aacute;ltal megadott k&uuml;l&ouml;nf&eacute;le krit&eacute;riumokat kiel&eacute;g&iacute;tő ter&uuml;letek azonos&iacute;that&oacute;k.   
+        <p>Ezekkel az eszk&ouml;z&ouml;kkel az &Ouml;n &aacute;ltal megadott krit&eacute;riumokat kiel&eacute;g&iacute;tő ter&uuml;letek azonos&iacute;that&oacute;k.  
             <ul>
                 <li>Az  <b>Incidensek &eacute;szlel&eacute;se</b> időb&eacute;lyeggel ell&aacute;tott r&eacute;tegek seg&iacute;ts&eacute;g&eacute;vel &aacute;llap&iacute;tja meg, hogy melyik vektoros elemek felelnek meg egy meghat&aacute;rozott felt&eacute;telnek.
                 </li>
                 <li>A  <b>Geok&oacute;dol&aacute;si helysz&iacute;nek t&aacute;bl&aacute;zatb&oacute;l</b> c&iacute;meket koordin&aacute;t&aacute;kk&aacute; alak&iacute;t.
+                </li>
+                <li>A  <b>V&aacute;rakoz&aacute;si helyek keres&eacute;se</b> olyan helyeket keres nyomvonal-adathalmazokban, ahol az objektumok egy bizonyos t&aacute;vols&aacute;gon bel&uuml;l maradnak egy bizonyos ideig.
                 </li>
                 <li>A  <b>Hasonl&oacute; helyek keres&eacute;se</b> a megadott krit&eacute;riumokon alapul&oacute; egy vagy t&ouml;bb vonatkoztat&aacute;si helyhez hasonl&oacute; helyeket keres.
                 </li>
@@ -319,7 +326,7 @@
 <hr/>
             <p>Ez az eszk&ouml;z pontok, vonalak, ter&uuml;letek vagy t&aacute;bl&aacute;zatok időb&eacute;lyeggel ell&aacute;tott, egy időpillanatot le&iacute;r&oacute; r&eacute;teg&eacute;vel dolgozik.   Az eszk&ouml;z nyomvonalnak nevezett, sorba rendezett vektoros elemeket haszn&aacute;lva meg&aacute;llap&iacute;tja, hogy melyik vektoros elemek &eacute;rdeklőd&eacute;sre sz&aacute;mot tart&oacute; incidensek. Az incidensek fogalm&aacute;t az &Ouml;n &aacute;ltal meghat&aacute;rozott felt&eacute;telek szabj&aacute;k meg. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>4. kateg&oacute;ri&aacute;j&uacute; hurrik&aacute;nok felismer&eacute;se hurrik&aacute;nok m&eacute;rt adataib&oacute;l a sz&eacute;lsebess&eacute;g attrib&uacute;tum alapj&aacute;n.
                     </li>
@@ -345,6 +352,30 @@
             </p>
             <br/>
         </div>
+        <div id="FindDwellLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Várakozási helyek keresése</h2></td>
+                    <td>
+                    <img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" class="titleImage" alt="V&aacute;rakoz&aacute;si helyek keres&eacute;se munkafolyamat diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z nyomvonal-adathalmazokkal dolgozik. Pontok időb&eacute;lyeggel ell&aacute;tott r&eacute;teg&eacute;n keresi meg, hogy az objektumok megadott t&aacute;vols&aacute;gon &eacute;s időtartamon bel&uuml;l hol v&aacute;rakoznak.
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Term&eacute;szetv&eacute;delmi tev&eacute;kenys&eacute;g fejleszt&eacute;se az &aacute;llatok mozg&aacute;si mint&aacute;inak elemz&eacute;s&eacute;vel. Az eszk&ouml;z seg&iacute;ts&eacute;g&eacute;vel megkeresheti azokat a helyeket, ahol az &aacute;llatok sz&iacute;vesen tart&oacute;zkodnak hosszabb ideig, &eacute;s ezeket potenci&aacute;lis v&eacute;dett ter&uuml;letk&eacute;nt kezelheti a biodiverzit&aacute;s megőrz&eacute;se &eacute;rdek&eacute;ben.
+                    </li>
+                    <li>A g&eacute;pj&aacute;rművek GPS-es nyomk&ouml;vet&eacute;se seg&iacute;ts&eacute;g&eacute;vel megkeresheti azokat a helyeket, ahol lassul&oacute; forgalom jelentkezik, &iacute;gy jav&iacute;that a forgalom biztons&aacute;g&aacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -358,9 +389,9 @@
 <hr/>
             <p>Az eszk&ouml;z hasonl&oacute; helyeket keres a megadott krit&eacute;riumok alapj&aacute;n &uacute;gy, hogy megm&eacute;ri a vizsg&aacute;lt lehets&eacute;ges keres&eacute;si r&eacute;teg helyeinek egy vagy t&ouml;bb vonatkoztat&aacute;si helyhez val&oacute; hasonl&oacute;s&aacute;g&aacute;t. 
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők: 
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők: 
                 <ul>
-                    <li>Keresse meg az egym&aacute;shoz legink&aacute;bb hasonl&iacute;t&oacute; t&iacute;z boltot az alkalmazottak sz&aacute;m&aacute;t &eacute;s az &eacute;ves &aacute;rbev&eacute;telt vizsg&aacute;lva.
+                    <li>Keresse meg az egym&aacute;shoz legink&aacute;bb hasonl&iacute;t&oacute; 10 boltot az alkalmazottak sz&aacute;m&aacute;t &eacute;s az &eacute;ves &aacute;rbev&eacute;telt vizsg&aacute;lva.
                     </li>
                     <li>Keresse meg az egym&aacute;shoz legink&aacute;bb hasonl&iacute;t&oacute; 100 v&aacute;rost a n&eacute;pess&eacute;g, az &eacute;ves n&ouml;veked&eacute;s &eacute;s az ad&oacute;bev&eacute;telek k&ouml;z&ouml;tti kapcsolatot vizsg&aacute;lva.
                     </li>
@@ -372,17 +403,19 @@
     <div id="AnalyzePatternsCategory" class="largesize">
         <h2>Mintázatok elemzése</h2>
         <hr/>
-        <p>  Az al&aacute;bbi eszk&ouml;z&ouml;k seg&iacute;tenek azonos&iacute;tani, mennyis&eacute;gileg meghat&aacute;rozni &eacute;s megjelen&iacute;teni az adatok t&eacute;rbeli mint&aacute;zatait.
+        <p> Ezek az eszk&ouml;z&ouml;k az adatok t&eacute;rbeli mint&aacute;zatainak azonos&iacute;t&aacute;s&aacute;ra, mennyis&eacute;gi meghat&aacute;roz&aacute;s&aacute;ra &eacute;s megjelen&iacute;t&eacute;s&eacute;re szolg&aacute;lnak.
             <ul>
                 <li>A  <b>Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa</b> bizonyos jelens&eacute;gek ismert mennyis&eacute;geit ter&iacute;ti sz&eacute;t a t&eacute;rk&eacute;pen.
                 </li>
-                <li>A  <b>Hot spotok keres&eacute;se</b> meghat&aacute;rozza a statisztikailag szignifik&aacute;ns klaszterez&eacute;st az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
+                <li>A  <b>Hotspotok keres&eacute;se</b> meghat&aacute;rozza a statisztikailag szignifik&aacute;ns klaszterez&eacute;st az adatok t&eacute;rbeli mint&aacute;zat&aacute;ban.
                 </li>
                 <li>A  <b>Pontklaszterek keres&eacute;se</b> pontszerű vektoros elemek klasztereit keresi a k&ouml;rnyező zajban a t&eacute;rbeli eloszl&aacute;suk alapj&aacute;n.
                 </li>
                 <li>Az  <b>Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; eszk&ouml;z</b> modelleket hoz l&eacute;tre, &eacute;s előrejelz&eacute;seket gener&aacute;l Leo Breiman v&eacute;letlen erdő algoritmus&aacute;nak adapt&aacute;ci&oacute;j&aacute;t alkalmazva, amely egy fel&uuml;gyelt g&eacute;pi tanul&aacute;si m&oacute;dszer
                 </li>
-                <li>A  <b>Generaliz&aacute;lt line&aacute;ris regresszi&oacute;</b> előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.
+                <li>Az  <b>&Aacute;ltal&aacute;nos&iacute;tott line&aacute;ris regresszi&oacute;</b> előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.
+                </li>
+                <li>A  <b>F&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute;</b> a line&aacute;ris regresszi&oacute; t&eacute;rben v&aacute;ltoz&oacute; adatkapcsolatok modellez&eacute;s&eacute;re haszn&aacute;lt, helyi form&aacute;ja seg&iacute;ts&eacute;g&eacute;vel hoz l&eacute;tre modelleket.
                 </li>
             </ul>
             
@@ -401,13 +434,13 @@
 <hr/>
             <p>A Sűrűs&eacute;g sz&aacute;m&iacute;t&aacute;sa eszk&ouml;z sűrűs&eacute;gt&eacute;rk&eacute;pet hoz l&eacute;tre pont-t&iacute;pus&uacute; vektoros elemekből egy bizonyos (a pontok attrib&uacute;tumai &aacute;ltal k&eacute;pviselt) jelens&eacute;g ismert mennyis&eacute;geit kiterjesztve a t&eacute;rk&eacute;pen. Az eredm&eacute;ny a sűrűs&eacute;get &aacute;br&aacute;zol&oacute; ter&uuml;leteket tartalmaz&oacute; r&eacute;teg.
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;nyr&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
+                    <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa.  Az eredm&eacute;nyr&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak meghat&aacute;roz&aacute;s&aacute;ra, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
                     </li>
-                    <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi helysz&iacute;ne alapj&aacute;n.
+                    <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi erdőt&uuml;zek adatai alapj&aacute;n.
                     </li>
-                    <li>A nagyobb fő&uacute;tvonalakt&oacute;l t&aacute;vol &eacute;lő k&ouml;z&ouml;ss&eacute;gek hely&eacute;nek meghat&aacute;roz&aacute;sa, annak megtervez&eacute;s&eacute;hez, hogy hol &eacute;p&uuml;ljenek &uacute;j utak.
+                    <li>A nagyobb fő&uacute;tvonalakt&oacute;l t&aacute;vol &eacute;lő k&ouml;z&ouml;ss&eacute;gek hely&eacute;nek meghat&aacute;roz&aacute;sa annak megtervez&eacute;s&eacute;hez, hogy hol &eacute;p&uuml;ljenek &uacute;j utak.
                     </li>
                 </ul>
                 
@@ -453,10 +486,10 @@
                 <ul>
                     <li>Val&oacute;ban klaszterezettek a kiv&aacute;lasztott pontok (bűnt&eacute;nyek, f&aacute;k, k&ouml;zleked&eacute;si balesetek)?  Hogyan tudhatja biztosan?
                     </li>
-                    <li>Val&oacute;ban statisztikailag szignifik&aacute;ns hot spotra bukkant (kiad&aacute;sok, gyermekhaland&oacute;s&aacute;g, k&ouml;vetkezetesen magas vizsgapontsz&aacute;mok), vagy m&aacute;st sugallna a t&eacute;rk&eacute;p, ha megv&aacute;ltoztatn&aacute; a jelk&eacute;pez&eacute;s m&oacute;dj&aacute;t?
+                    <li>Val&oacute;ban statisztikailag szignifik&aacute;ns hot spotra bukkant (kiad&aacute;sok, gyermekhaland&oacute;s&aacute;g, k&ouml;vetkezetesen magas vizsgapontsz&aacute;mok), vagy m&aacute;st sugallna a t&eacute;rk&eacute;p, ha megv&aacute;ltoztatn&aacute; a szimboliz&aacute;l&aacute;s m&oacute;dj&aacute;t?
                     </li>
                 </ul>
-                A Hot spotok keres&eacute;se eszk&ouml;z seg&iacute;t megb&iacute;zhat&oacute; v&aacute;laszt tal&aacute;lni az ilyen k&eacute;rd&eacute;sekre.
+                A Hot spot-ok keres&eacute;se eszk&ouml;z seg&iacute;t megb&iacute;zhat&oacute; v&aacute;laszt tal&aacute;lni az ilyen k&eacute;rd&eacute;sekre.
             </p>
             <br/>
         </div>
@@ -471,16 +504,16 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Az Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; eszk&ouml;z modelleket hoz l&eacute;tre, &eacute;s előrejelz&eacute;seket gener&aacute;l Leo Breiman v&eacute;letlen erdő algoritmus&aacute;nak adapt&aacute;ci&oacute;j&aacute;t alkalmazva, amely egy fel&uuml;gyelt g&eacute;pi tanul&aacute;si m&oacute;dszer
+            <p>Az Erdő alap&uacute; oszt&aacute;lyoz&aacute;s &eacute;s regresszi&oacute; eszk&ouml;z modelleket hoz l&eacute;tre, &eacute;s előrejelz&eacute;seket gener&aacute;l Leo Breiman v&eacute;letlen erdő algoritmus&aacute;nak adapt&aacute;ci&oacute;j&aacute;t alkalmazva, amely egy fel&uuml;gyelt g&eacute;pi tanul&aacute;si m&oacute;dszer.
             </p>
             <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li>Ha vannak adataink a tengerifű előfordul&aacute;s&aacute;r&oacute;l, tov&aacute;bb&aacute; vannak attrib&uacute;tumk&eacute;nt reprezent&aacute;lt k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;ink (amelyeket  t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l bőv&iacute;tett&uuml;nk, kisz&aacute;m&iacute;tva az &aacute;r ir&aacute;ny&aacute;val ellent&eacute;tes ir&aacute;nyban tal&aacute;lhat&oacute; gy&aacute;rak &eacute;s nagy kik&ouml;tők t&aacute;vols&aacute;g&aacute;t), akkor előrejelz&eacute;st tudunk k&eacute;sz&iacute;teni a tengerifű j&ouml;vőbeli előfordul&aacute;s&aacute;r&oacute;l a k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;k j&ouml;vőre t&ouml;rt&eacute;nő kivet&iacute;t&eacute;s&eacute;vel.
+                    <li>Ha vannak adataink a tengerifű előfordul&aacute;s&aacute;r&oacute;l, tov&aacute;bb&aacute; vannak attrib&uacute;tumk&eacute;nt reprezent&aacute;lt k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;ink (amelyeket t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l bőv&iacute;tett&uuml;nk, kisz&aacute;m&iacute;tva az &aacute;r ir&aacute;ny&aacute;val ellent&eacute;tes ir&aacute;nyban tal&aacute;lhat&oacute; gy&aacute;rak &eacute;s nagy kik&ouml;tők t&aacute;vols&aacute;g&aacute;t), akkor előrejelz&eacute;st tudunk k&eacute;sz&iacute;teni a tengerifű j&ouml;vőbeli előfordul&aacute;s&aacute;r&oacute;l a k&ouml;rnyezeti magyar&aacute;z&oacute; v&aacute;ltoz&oacute;k j&ouml;vőre t&ouml;rt&eacute;nő kivet&iacute;t&eacute;s&eacute;vel.
                           
                     </li>
                     <li>Tegy&uuml;k fel, hogy vannak term&eacute;sre vonatkoz&oacute; adataink az orsz&aacute;g k&uuml;l&ouml;nb&ouml;ző r&eacute;szein tal&aacute;lhat&oacute; t&ouml;bb sz&aacute;z farm vonatkoz&aacute;s&aacute;ban, valamint vannak egy&eacute;b attrib&uacute;tumaink a farmok vonatkoz&aacute;s&aacute;ban (munkv&aacute;llal&oacute;k sz&aacute;ma, f&ouml;ldter&uuml;let stb). Ezen adatok haszn&aacute;lat&aacute;val olyan vektoros elemeket hozhatunk l&eacute;tre, amelyek azokat a farmokat reprezent&aacute;lj&aacute;k, ahol nincs term&eacute;sadat (de az &ouml;sszes t&ouml;bbi v&aacute;ltoz&oacute; megvan), &eacute;s előrejelz&eacute;st k&eacute;sz&iacute;thet&uuml;nk a term&eacute;sről.
                     </li>
-                    <li>Lak&aacute;sokra vonatkoz&oacute; &eacute;rt&eacute;keket jelezhet&uuml;nk előre a foly&oacute; &eacute;vben eladott lak&aacute;sok &aacute;ra alapj&aacute;n. Az adatok alapj&aacute;n (lak&aacute;sok elad&aacute;si &aacute;ra, h&aacute;l&oacute;szob&aacute;k sz&aacute;ma, iskol&aacute;kt&oacute;l val&oacute; t&aacute;vols&aacute;g, nagyobb fő&uacute;tvonalakt&oacute;l val&oacute; t&aacute;vols&aacute;g, &aacute;tlagj&ouml;vedelem, bűncselekm&eacute;nyek sz&aacute;ma) előrejelezhetj&uuml;k a hasonl&oacute; lak&aacute;sok elad&aacute;si &aacute;r&aacute;t.
+                    <li>Lak&aacute;sokra vonatkoz&oacute; &eacute;rt&eacute;keket jelezhet&uuml;nk előre az adott &eacute;vben eladott lak&aacute;sok &aacute;ra alapj&aacute;n. Az adatok alapj&aacute;n (lak&aacute;sok elad&aacute;si &aacute;ra, h&aacute;l&oacute;szob&aacute;k sz&aacute;ma, iskol&aacute;kt&oacute;l val&oacute; t&aacute;vols&aacute;g, nagyobb fő&uacute;tvonalakt&oacute;l val&oacute; t&aacute;vols&aacute;g, &aacute;tlagj&ouml;vedelem, bűncselekm&eacute;nyek sz&aacute;ma) előre jelezhetj&uuml;k a hasonl&oacute; lak&aacute;sok elad&aacute;si &aacute;r&aacute;t.
                          
                     </li>
                 </ul>
@@ -499,7 +532,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A Generaliz&aacute;lt line&aacute;ris regresszi&oacute; eszk&ouml;z  előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.  Az eszk&ouml;z haszn&aacute;lhat&oacute; folytonos (OLS), bin&aacute;ris (logisztikus modell) &eacute;s sz&aacute;m&iacute;t&aacute;si modellek (Poisson-modell) illeszt&eacute;s&eacute;re.
+            <p>Az &Aacute;ltal&aacute;nos&iacute;tott line&aacute;ris regresszi&oacute;s eszk&ouml;z előrejelz&eacute;seket hoz l&eacute;tre, vagy egy f&uuml;ggő v&aacute;ltoz&oacute;t modellez magyar&aacute;z&oacute; v&aacute;ltoz&oacute;khoz val&oacute; kapcsolata tekintet&eacute;ben.  Az eszk&ouml;z haszn&aacute;lhat&oacute; folytonos (OLS), bin&aacute;ris (logisztikus modell) &eacute;s diszkr&eacute;t (Poisson) modellek illeszt&eacute;s&eacute;re.
             </p>
             <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
@@ -510,6 +543,32 @@
                     <li>Milyen v&aacute;ltoz&oacute;kkal lehet hat&eacute;konyan megj&oacute;solni a 911-es seg&eacute;lyh&iacute;v&oacute;hoz befut&oacute; h&iacute;v&aacute;sok sz&aacute;m&aacute;t?  A j&ouml;vőre t&ouml;rt&eacute;nő kivet&iacute;t&eacute;sek alapj&aacute;n mekkora sz&uuml;ks&eacute;glet v&aacute;rhat&oacute; a v&eacute;szhelyzeti v&aacute;laszad&aacute;si forr&aacute;sokra?
                     </li>
                     <li>Milyen v&aacute;ltoz&oacute;kkal f&uuml;gg &ouml;ssze az alacsony sz&uuml;let&eacute;ssz&aacute;m?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeographicallyWeightedRegressionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Földrajzilag súlyozott regresszió</h2></td>
+                    <td>
+                    <img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" class="titleImage" alt="F&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute; munkafolyamat&aacute;nak diagramja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Az eszk&ouml;z f&ouml;ldrajzilag s&uacute;lyozott regresszi&oacute;t (GWR) hajt v&eacute;gre, amely a line&aacute;ris regresszi&oacute; t&eacute;rben v&aacute;ltoz&oacute; adatkapcsolatok modellez&eacute;s&eacute;re haszn&aacute;lt, helyi form&aacute;ja.
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>A tanulm&aacute;nyi eredm&eacute;nyek &eacute;s a j&ouml;vedelem k&ouml;z&ouml;tti kapcsolat &aacute;lland&oacute; a vizsg&aacute;lati ter&uuml;leten?
+                    </li>
+                    <li>Melyek a kulcsv&aacute;ltoz&oacute;k, amelyek magyar&aacute;zz&aacute;k az erdőt&uuml;zek magas gyakoris&aacute;g&aacute;t?
+                    </li>
+                    <li>Melyek azok a ker&uuml;letek, ahol a gyermekek magas vizsgapontsz&aacute;mokat &eacute;rnek el? Mely jellemzők k&ouml;z&ouml;tt van l&aacute;tsz&oacute;lag kapcsolat? Hol a legfontosabbak az egyes jellemzők?
                     </li>
                 </ul>
                 
@@ -540,7 +599,7 @@
 <hr/>
             <p>A buffer egy pontszerű, vonalas vagy polygon t&iacute;pus&uacute; vektoros elemtől egy meghat&aacute;rozott t&aacute;vols&aacute;got lefedő ter&uuml;let.
             </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>Line&aacute;ris foly&oacute;t reprezent&aacute;l&oacute; vektoros elemeket haszn&aacute;lva k&eacute;sz&iacute;tsen mindegyik v&iacute;zfoly&aacute;shoz az adott v&iacute;zfoly&aacute;s sz&eacute;less&eacute;g&eacute;nek 50-szeres&eacute;t kitevő buffert, &eacute;s hat&aacute;rozza meg az &aacute;rt&eacute;r hat&aacute;rvonal&aacute;t.
                     </li>
@@ -552,45 +611,47 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="largesize">
-        <h2>Manage Data</h2>
+        <h2>Adatok kezelése</h2>
         <hr/>
-        <p>These tools are used for the day-to-day management of geographic and tabular data. 
+        <p>Ezek az eszk&ouml;z&ouml;k f&ouml;ldrajzi &eacute;s t&aacute;bl&aacute;zatos adatok napi kezel&eacute;s&eacute;re haszn&aacute;lhat&oacute;k.  
             <ul>
-                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                <li>Az  <b>Adatok hozz&aacute;fűz&eacute;se</b> eszk&ouml;z adatokat fűz egy l&eacute;tező t&aacute;rolt vektoros r&eacute;teghez.
                 </li>
-                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
+                <li>A  <b>Mező kisz&aacute;m&iacute;t&aacute;sa</b> &uacute;j mezőt hoz l&eacute;tre, vagy pedig megl&eacute;vő mezőt m&oacute;dos&iacute;t, &eacute;s &uacute;j r&eacute;teget hoz l&eacute;tre az &Ouml;n saj&aacute;t tartalm&aacute;ban.
                 </li>
-                <li> <b>Clip Layer</b> copies features that intersect a defined area of interest. 
+                <li>A  <b>R&eacute;teg kiv&aacute;g&aacute;sa</b> a meghat&aacute;rozott vizsg&aacute;lati ter&uuml;letet metsző vektoros elemeket m&aacute;solja.
                 </li>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                <li>A  <b>M&aacute;sol&aacute;s az adatt&aacute;rba</b> adatokat m&aacute;sol az &Ouml;n ArcGIS Data Store adatt&aacute;r&aacute;ba, &eacute;s r&eacute;teget hoz l&eacute;tre az &Ouml;n saj&aacute;t tartalm&aacute;ban, vagy pedig egy big data-f&aacute;jlmegoszt&oacute;ba m&aacute;solja az adatokat. 
                 </li>
-                <li> <b>Dissolve Boundaries</b> merges areas that share a common boundary or attribute value.
+                <li>A  <b>Hat&aacute;rok &ouml;sszeolvaszt&aacute;sa</b> a k&ouml;z&ouml;s hat&aacute;rvonal&uacute; vagy k&ouml;z&ouml;s attrib&uacute;tum&eacute;rt&eacute;kű ter&uuml;leteket egyes&iacute;ti.
                 </li>
-                <li> <b>Merge Layers</b> copies all features from two layers into a single result layer.
+                <li>A  <b>R&eacute;tegek &ouml;sszeilleszt&eacute;se</b> k&eacute;t r&eacute;teg &ouml;sszes vektoros elem&eacute;t egyetlen eredm&eacute;nyr&eacute;tegbe m&aacute;solja.
                 </li>
-                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
+                <li>A  <b>Fedv&eacute;nyműveletek</b> k&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egyetlen r&eacute;tegg&eacute;.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="largesize">
+        <div id="AppendDataTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Másolás az adattárba</h2></td>
+                    <td><h2>Adat hozzáfűzése</h2></td>
                     <td>
-                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="M&aacute;sol&aacute;s az adatt&aacute;rba">
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Az Adat hozz&aacute;fűz&eacute;se munkafolyamat&aacute;nak diagramja">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Egy bemenő vektoros r&eacute;teget vagy t&aacute;bl&aacute;zatot egy  ArcGIS Data Store adatt&aacute;rba m&aacute;sol, &eacute;s egy r&eacute;teget hoz l&eacute;tre a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Vektoros elemeket fűz egy megl&eacute;vő t&aacute;rolt r&eacute;teghez a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
-                    <li> <code>.csv</code>-f&aacute;jlok gyűjtem&eacute;ny&eacute;nek m&aacute;sol&aacute;sa big data-f&aacute;jlmegoszt&oacute;ba a t&eacute;rbeli-időbeli adatt&aacute;rba megjelen&iacute;t&eacute;s &eacute;rdek&eacute;ben.
+                    <li>A 2018_&aacute;rbev&eacute;tel vektoros r&eacute;teg friss&iacute;t&eacute;se minden h&oacute;napban, amint a besz&aacute;mol&oacute;k el&eacute;rhetőv&eacute; v&aacute;lnak.
                     </li>
-                    <li>Az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s t&eacute;rbeli-időbeli adatt&aacute;rban t&aacute;rolt vektoros elemeinek m&aacute;sol&aacute;sa a rel&aacute;ci&oacute;s adatt&aacute;rba.
+                    <li>Hurrik&aacute;nok k&ouml;vet&eacute;s&eacute;re haszn&aacute;lt, 2016. &eacute;s 2017. &eacute;vi adathalmazok hozz&aacute;fűz&eacute;se a hurrik&aacute;nok t&ouml;rzsadathalmaz&aacute;hoz.
+                    </li>
+                    <li>Adathalmazok gyűjt&eacute;se t&ouml;bb, elt&eacute;rő s&eacute;m&aacute;val rendelkező forr&aacute;sb&oacute;l, &eacute;s hozz&aacute;fűz&eacute;s egyedi mezőlek&eacute;pez&eacute;s seg&iacute;ts&eacute;g&eacute;vel.
                     </li>
                 </ul>
                 
@@ -609,11 +670,11 @@
             </table>
 <hr/>
             <p>&Eacute;rt&eacute;keket sz&aacute;m&iacute;t ki egy &uacute;j vagy l&eacute;tező mezőh&ouml;z, &eacute;s egy r&eacute;teget hoz l&eacute;tre a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>Egy l&eacute;tező,  <i>total</i> nevű mező m&oacute;dos&iacute;t&aacute;sa a(z) <i>total_2016</i>, <i>total_2017</i> &eacute;s <i>total_2018</i> mezőkben szereplő bev&eacute;telek &ouml;sszeg&eacute;re.
                     </li>
-                    <li>Egy &uacute;j mező l&eacute;trehoz&aacute;sa a vesz&eacute;lyess&eacute;gi szintek besorol&aacute;s&aacute;ra a(z)  <i>windspeed</i> &eacute;s <i>pollutant</i> &eacute;rt&eacute;kekhez hasonl&oacute; mező&eacute;rt&eacute;kek alapj&aacute;n.
+                    <li>Egy mező l&eacute;trehoz&aacute;sa a vesz&eacute;lyess&eacute;gi szintek besorol&aacute;s&aacute;ra a(z)  <i>windspeed</i> &eacute;s <i>pollutant</i> &eacute;rt&eacute;kekhez hasonl&oacute; mező&eacute;rt&eacute;kek alapj&aacute;n.
                     </li>
                 </ul>
                 
@@ -644,6 +705,29 @@
             </p>
             <br/>
         </div>
+        <div id="CopyToDataStoreTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Másolás az adattárba</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="M&aacute;sol&aacute;s az adatt&aacute;rba">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Egy bemenő vektoros r&eacute;teget vagy t&aacute;bl&aacute;zatot egy  ArcGIS Data Store adatt&aacute;rba m&aacute;sol, &eacute;s egy r&eacute;teget hoz l&eacute;tre a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li> <code>.csv</code>-f&aacute;jlok gyűjtem&eacute;ny&eacute;nek m&aacute;sol&aacute;sa big data-f&aacute;jlmegoszt&oacute;ba a t&eacute;rbeli-időbeli adatt&aacute;rba megjelen&iacute;t&eacute;s &eacute;rdek&eacute;ben.
+                    </li>
+                    <li>Az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s t&eacute;rbeli-időbeli adatt&aacute;rban t&aacute;rolt vektoros elemeinek m&aacute;sol&aacute;sa a rel&aacute;ci&oacute;s adatt&aacute;rba.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="DissolveBoundariesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -655,66 +739,13 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Olyan ter&uuml;leti vektoros elemek &ouml;sszeilleszt&eacute;se, amelyek metszenek egy k&ouml;z&ouml;s mező&eacute;rt&eacute;ket, vagy osztoznak azon, &ouml;sszef&uuml;ggő vagy t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemekl&eacute;trehoz&aacute;s&aacute;ra.
+            <p>Olyan ter&uuml;leti vektoros elemek &ouml;sszeilleszt&eacute;se, amelyek metszenek egy k&ouml;z&ouml;s mező&eacute;rt&eacute;ket, vagy osztoznak azon, &ouml;sszef&uuml;ggő vagy t&ouml;bb r&eacute;szből &aacute;ll&oacute; vektoros elemek l&eacute;trehoz&aacute;s&aacute;ra.
             </p>
             <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
                 <ul>
                     <li>A Hawaii-szigetek hat&aacute;rainak &ouml;sszeolvaszt&aacute;s&aacute;val hozzon l&eacute;tre egy vektoros elemet, amely Hawaii &aacute;llamot reprezent&aacute;lja.
                     </li>
                     <li>Illesszen &ouml;ssze talajt&iacute;pus szempontj&aacute;b&oacute;l hasonl&oacute; vizsg&aacute;lati ter&uuml;leteket, hogy kimenetk&eacute;nt egy &ouml;ssszef&uuml;ggő talajt&iacute;pus-adathalmazt kapjon.
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="OverlayLayersTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Fedvényműveletek</h2></td>
-                    <td>
-                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Fedv&eacute;nyműveletek">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>K&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egyetlen r&eacute;tegben.  A fedv&eacute;nyek seg&iacute;ts&eacute;g&eacute;vel a legalapvetőbb f&ouml;ldrajzi k&eacute;rd&eacute;sek egyike v&aacute;laszolhat&oacute; meg: Mi tal&aacute;lhat&oacute; min? 
-            </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
-                <ul>
-                    <li>Milyen parcell&aacute;k tal&aacute;lhat&oacute;k a 100 &eacute;v visszat&eacute;r&eacute;si idejű &aacute;rt&eacute;ren bel&uuml;l? (Bel&uuml;l, vagy m&aacute;sk&eacute;pp fogalmazva rajta.)
-                          
-                    </li>
-                    <li>Milyen felsz&iacute;nhaszn&aacute;lat t&iacute;pus tartozik az egyes talajt&iacute;pusokhoz?
-                         
-                    </li>
-                    <li>Milyen kutak tal&aacute;lhat&oacute;k elhagyott katonai b&aacute;zisokon?
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="AppendDataTool" class="largesize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Adat hozzáfűzése</h2></td>
-                    <td>
-                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Az Adat hozz&aacute;fűz&eacute;se munkafolyamat&aacute;nak diagramja">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Vektoros elemeket fűz egy megl&eacute;vő t&aacute;rolt r&eacute;teghez a saj&aacute;t tartalomban az  ArcGIS Enterprise alkalmaz&aacute;sban. </p>
-            <p>Ilyenre p&eacute;ld&aacute;k a k&ouml;vetkezők:
-                <ul>
-                    <li>A 2018_&aacute;rbev&eacute;tel vektoros r&eacute;teg friss&iacute;t&eacute;se minden h&oacute;napban, amint a besz&aacute;mol&oacute;k el&eacute;rhetőv&eacute; v&aacute;lnak.
-                    </li>
-                    <li>Hurrik&aacute;nok k&ouml;vet&eacute;s&eacute;re haszn&aacute;lt, 2016. &eacute;s 2017. &eacute;vi adathalmazok hozz&aacute;fűz&eacute;se a hurrik&aacute;nok t&ouml;rzsadathalmaz&aacute;hoz.
-                    </li>
-                    <li>Adathalmazok gyűjt&eacute;se t&ouml;bb, elt&eacute;rő s&eacute;m&aacute;val rendelkező forr&aacute;sb&oacute;l, &eacute;s hozz&aacute;fűz&eacute;s egyedi mezőlek&eacute;pez&eacute;s seg&iacute;ts&eacute;g&eacute;vel.
                     </li>
                 </ul>
                 
@@ -745,6 +776,34 @@
             </p>
             <br/>
         </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Fedvényműveletek</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Fedv&eacute;nyműveletek">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>K&eacute;t vagy t&ouml;bb r&eacute;teget egyes&iacute;t egy r&eacute;tegg&eacute;.  A fedv&eacute;nyek seg&iacute;ts&eacute;g&eacute;vel a legalapvetőbb f&ouml;ldrajzi k&eacute;rd&eacute;sek egyike v&aacute;laszolhat&oacute; meg: Mi tal&aacute;lhat&oacute; min? 
+            </p>
+            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+                <ul>
+                    <li>Milyen parcell&aacute;k tal&aacute;lhat&oacute;k a 100 &eacute;ves &aacute;rt&eacute;ren bel&uuml;l? (Bel&uuml;l, vagy m&aacute;sk&eacute;pp fogalmazva rajta.)
+                          
+                    </li>
+                    <li>Milyen talajt&iacute;pust milyen mezőgazdas&aacute;gi c&eacute;lra haszn&aacute;lnak:
+                         
+                    </li>
+                    <li>Milyen kutak tal&aacute;lhat&oacute;k elhagyott katonai b&aacute;zisokon?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
     <div id="EnrichLocationsCategory" class="smallsize">
         <h2>Adatbővítés</h2>
         <hr/>
@@ -769,9 +828,9 @@
 <hr/>
             <p>Hat&eacute;konyan kapcsol &ouml;ssze t&ouml;bbv&aacute;ltoz&oacute;s r&aacute;csh&aacute;l&oacute;b&oacute;l sz&aacute;rmaz&oacute; attrib&uacute;tumokat egy pontszerű r&eacute;teggel, &iacute;gy lehetőv&eacute; t&eacute;ve inform&aacute;ci&oacute;k nagy &eacute;s k&uuml;l&ouml;nb&ouml;ző gyűjtem&eacute;ny&eacute;nek pontadathoz t&ouml;rt&eacute;nő gyors hozz&aacute;ad&aacute;s&aacute;t tov&aacute;bbi t&eacute;rbeli elemz&eacute;sekhez val&oacute; felhaszn&aacute;l&aacute;s c&eacute;lj&aacute;ra. 
             </p>
-            <p>Erre p&eacute;ld&aacute;k a k&ouml;vetkezők:
+            <p>Erre p&eacute;lda a k&ouml;vetkező:
                 <ul>
-                    <li>Ha van egy t&ouml;bb milli&oacute; &aacute;ramkimarad&aacute;si incidenst tartalmaz&oacute; r&eacute;teg, bőv&iacute;tse az incidens vektoros elemeit a tipikus haszn&aacute;latra, a k&ouml;rnyezeti kock&aacute;zatokra &eacute;s az infrastruktur&aacute;lis felt&eacute;telekre vonatkoz&oacute; inform&aacute;ci&oacute;kkal, hogy tanulm&aacute;nyozhassa ezen t&eacute;nyezők &eacute;s az &aacute;ramkimarad&aacute;s gyakoris&aacute;ga k&ouml;z&ouml;tti &ouml;sszef&uuml;gg&eacute;seket. 
+                    <li>Ha van egy t&ouml;bb milli&oacute; &aacute;ramkimarad&aacute;ssal kapcsolatos esem&eacute;nyt tartalmaz&oacute; r&eacute;teg, bőv&iacute;tse az incidens vektoros elemeit a tipikus haszn&aacute;latra, a k&ouml;rnyezeti kock&aacute;zatokra &eacute;s az infrastruktur&aacute;lis felt&eacute;telekre vonatkoz&oacute; inform&aacute;ci&oacute;kkal, &eacute;s tanulm&aacute;nyozza ezen t&eacute;nyezők &eacute;s az &aacute;ramkimarad&aacute;s gyakoris&aacute;ga k&ouml;z&ouml;tti &ouml;sszef&uuml;gg&eacute;seket. 
                     </li>
                 </ul>
                 

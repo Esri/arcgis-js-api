@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>지리 가중 회귀분석(Geographically Weighted Regression)</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="지리 가중 회귀분석 워크플로 다이어그램"></h2>
+        <hr/>
+    <p>공간적으로 다양한 관계를 모델링하는 데 사용되는 선형 회귀의 로컬 양식인 지리 가중 회귀분석(GWR)을 수행합니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>분석할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>종속 변수와 설명 변수가 있는 포인트 피처를 포함하는 레이어입니다.
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>분석 레이어 선택</b>을 선택하여 빅데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다. 필요에 따라 입력 레이어에 필터를 적용하거나 맵에 추가된 호스팅 레이어에 선택 항목을 적용할 수 있습니다. 필터와 선택 항목은 분석에만 적용됩니다. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>모델링할 필드 선택</h2></div>
+        <hr/>
+        <div>
+            <p>모델링할 관찰 값과 모델링 중인 값의 유형을 포함하는 숫자 필드입니다.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>설명 필드 선택</h2></div>
+        <hr/>
+        <div>
+            <p>값을 예측할 수 있는 설명 변수(필드)를 나타내는 하나 이상의 필드입니다. 숫자 필드만 보여집니다.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>근린 지정 방식 선택</h2></div>
+        <hr/>
+        <div>
+            <p>사용된 근린을 고정 거리로 구성할지 아니면 피처 밀도에 따라 공간 범위에 변화를 주도록 허용할지 지정합니다.
+                <ul>
+                    <li> <b>네이버 개수</b> - 근린 크기는 각 피처 계산의 지정된 네이버 개수를 나타내는 함수입니다. 피처 밀도가 높으면 근린의 공간 범위가 더 작지만, 피처 밀도가 낮으면 근린의 공간 범위가 더 큽니다. 해당 옵션을 선택하는 경우 포함할 네이버 개수를 선택합니다. 개수는 2에서 5000 사이의 정수여야 합니다.
+                    </li>
+                    <li> <b>거리 밴드</b> - 근린 크기는 각 피처에 대한 고정 거리 또는 상수입니다. 해당 옵션을 선택하는 경우 근린의 공간 범위를 나타낼 거리 밴드를 선택합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>인접 피처에 가중치 적용 방법 선택</h2></div>
+        <hr/>
+        <div>
+            <p>모델에 공간 가중치를 제공하는 데 사용할 커널 유형을 지정합니다. 커널은 각 피처와 해당 근린 내의 다른 피처의 연관 방식을 정의합니다.
+                <ul>
+                    <li> <b>Bisquare</b> - 지정된 근린 외부에 있는 피처에 가중치 0이 할당됩니다. 이 방법이 기본값입니다.
+                    </li>
+                    <li> <b>가우시안</b> - 모든 피처에 가중치가 지정되지만 대상 피처에서 멀리 떨어질수록 가중치가 기하급수적으로 작아집니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> 생성될 레이어의 이름입니다. ArcGIS Data Store에 작성하는 경우 결과는  <b>내 콘텐츠</b>에 저장되고 맵에 추가됩니다. 빅데이터 파일 공유에 작성하는 경우 결과는 빅데이터 파일 공유에 저장되고 해당 매니페스트에 추가됩니다. 이러한 결과는 맵에 추가되지 않습니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> ArcGIS Data Store(관계형 또는 시공간 빅데이터 저장소)에 작성하는 경우  <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

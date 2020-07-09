@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tìm Thống kê Đối số</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="T&igrave;m Thống k&ecirc; Đối số"></h2>
+        <hr/>
+    <p>Xuất gi&aacute; trị chiều hoặc chỉ số dải m&agrave; tại đ&oacute; thu được một số liệu thống k&ecirc; nhất định cho mỗi pixel trong raster đa chiều hoặc đa dải.
+    </p>
+    <p>Sử dụng c&ocirc;ng cụ n&agrave;y để tr&iacute;ch xuất gi&aacute; trị k&iacute;ch thước (v&iacute; dụ: ng&agrave;y, độ cao hoặc độ s&acirc;u) m&agrave; tại đ&oacute; đạt được một số liệu thống k&ecirc; cụ thể trong một khối raster thuộc bộ dữ liệu raster đa chiều.  Hoặc t&igrave;m số dải m&agrave; tại đ&oacute; đạt được số liệu thống k&ecirc; trong một raster đa dải.
+    </p>
+    <p>V&iacute; dụ: bạn muốn biết th&aacute;ng m&agrave; mỗi pixel đạt nhiệt độ mặt nước biển cao nhất trong 30 năm thu thập dữ liệu. V&iacute; dụ kh&aacute;c l&agrave; bạn c&oacute; một h&igrave;nh ảnh viễn th&aacute;m t&aacute;m dải v&agrave; bạn muốn biết dải n&agrave;o trong đ&oacute; đạt được gi&aacute; trị phản xạ tối thiểu cho mỗi pixel.
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; c&aacute;c biến hoặc dải trong lớp nh&igrave;n thấy được trong phạm vi bản đồ hiện tại sẽ được ph&acirc;n t&iacute;ch. Nếu kh&ocirc;ng được chọn, c&aacute;c biến hoặc dải trong lớp đầy đủ sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Chọn lớp hình ảnh đa chiều hoặc đa dải để phân tích</h2></div>
+        <hr/>
+        <div>
+            <p>Raster đa chiều hoặc đa dải đầu v&agrave;o được ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Chọn chiều mà từ đó số liệu thống kê sẽ được trích xuất</h2></div>
+        <hr/>
+        <div>
+            <p>Chiều m&agrave; từ đ&oacute; số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất. Nếu raster đầu v&agrave;o kh&ocirc;ng phải l&agrave; raster đa chiều, th&ocirc;ng số n&agrave;y kh&ocirc;ng bắt buộc.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Chọn biến sẽ được phân tích</h2></div>
+        <hr/>
+        <div>
+            <p>Biến hoặc c&aacute;c biến sẽ được ph&acirc;n t&iacute;ch. Nếu raster đầu v&agrave;o kh&ocirc;ng phải l&agrave; đa chiều, c&aacute;c gi&aacute; trị pixel của raster đa dải được coi l&agrave; biến. Nếu raster đầu v&agrave;o l&agrave; đa chiều v&agrave; kh&ocirc;ng c&oacute; biến được chỉ định, tất cả c&aacute;c biến c&oacute; chiều được chọn sẽ được ph&acirc;n t&iacute;ch.
+            </p>
+            <p>V&iacute; dụ: để t&igrave;m năm c&oacute; gi&aacute; trị nhiệt độ cao nhất, h&atilde;y chỉ định nhiệt độ l&agrave; biến cần ph&acirc;n t&iacute;ch. Nếu bạn kh&ocirc;ng chỉ định biến n&agrave;o v&agrave; bạn c&oacute; cả biến nhiệt độ v&agrave; lượng mưa, th&igrave; cả hai biến sẽ được ph&acirc;n t&iacute;ch v&agrave; raster đa chiều đầu ra sẽ bao gồm cả hai biến.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Chọn loại thống kê</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định số liệu thống k&ecirc; để tr&iacute;ch xuất từ biến hoặc c&aacute;c biến dọc theo chiều nhất định. 
+            </p>
+            <ul>
+                <li> <b>Đối số tối thiểu</b>&mdash;Gi&aacute; trị chiều m&agrave; tại đ&oacute; sẽ tr&iacute;ch xuất gi&aacute; trị biến tối thiểu đạt được. Đ&acirc;y l&agrave; mặc định.
+                </li>
+                <li> <b>Đối số tối đa</b>&mdash;Gi&aacute; trị chiều m&agrave; tại đ&oacute; sẽ tr&iacute;ch xuất gi&aacute; trị biến tối đa đạt được.
+                </li>
+                <li> <b>Đối số b&igrave;nh qu&acirc;n</b>&mdash;Gi&aacute; trị chiều m&agrave; tại đ&oacute; sẽ tr&iacute;ch xuất gi&aacute; trị biến b&igrave;nh qu&acirc;n đạt được.
+                </li>
+                <li> <b>Đối số thời lượng</b>&mdash;Thời lượng của chiều d&agrave;i nhất m&agrave; c&aacute;c gi&aacute; trị biến nằm giữa gi&aacute; trị tối thiểu v&agrave; tối đa.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Chỉ định giá trị nhiều lần xuất hiện</h2></div>
+        <hr/>
+        <div>
+            <p>Gi&aacute; trị pixel được sử dụng để chỉ thị rằng đ&atilde; đạt được nhiều lần một số liệu thống k&ecirc; đối số nhất định trong bộ dữ liệu raster đầu v&agrave;o. Nếu kh&ocirc;ng được chỉ định, gi&aacute; trị pixel sẽ l&agrave; gi&aacute; trị của chiều trong lần đầu ti&ecirc;n đạt được số liệu thống k&ecirc; đối số.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Chỉ định giá trị tối thiểu</h2></div>
+        <hr/>
+        <div>
+            <p>Gi&aacute; trị biến tối thiểu sẽ được sử dụng để tr&iacute;ch xuất thời lượng.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y l&agrave; bắt buộc khi  <b>Thời lượng</b> được chọn l&agrave;m loại thống k&ecirc;.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Chỉ định giá trị tối đa</h2></div>
+        <hr/>
+        <div>
+            <p>Gi&aacute; trị biến tối đa sẽ được sử dụng để tr&iacute;ch xuất thời lượng.
+            </p>
+            <p>Bước n&agrave;y l&agrave; bắt buộc khi  <b>Thời lượng</b> được chọn l&agrave;m loại thống k&ecirc;.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Chọn thông tin xác định chiều</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định c&aacute;ch tr&iacute;ch xuất số liệu thống k&ecirc; từ chiều. 
+                <ul>
+                    <li> <b>Tất cả</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Từ kh&oacute;a Khoảng</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất từ chiều thời gian theo từ kh&oacute;a khoảng.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Chọn khoảng từ khóa</h2></div>
+        <hr/>
+        <div>
+            <p>Đơn vị thời gian c&oacute; số liệu thống k&ecirc; được tr&iacute;ch xuất.
+            </p>
+            <p>V&iacute; dụ: bạn c&oacute; dữ liệu nhiệt độ mặt nước biển h&agrave;ng ng&agrave;y trong năm năm v&agrave; bạn muốn biết năm c&oacute; nhiệt độ tối đa được quan s&aacute;t. Trong bước n&agrave;y,thiết lập  <b>Đối số tối đa</b> l&agrave;m loại thống k&ecirc;, thiết lập <b>Từ kh&oacute;a Khoảng</b> l&agrave;m th&ocirc;ng tin x&aacute;c định k&iacute;ch thước v&agrave; thiết lập <b>H&agrave;ng năm</b> l&agrave;m từ kh&oacute;a khoảng.
+            </p>
+            <p>Ngo&agrave;i ra, nếu bạn muốn biết th&aacute;ng m&agrave; nhiệt độ tối đa được theo d&otilde;i một c&aacute;ch nhất qu&aacute;n, h&atilde;y thiết lập  <b>Đối số tối đa </b> l&agrave;m loại thống k&ecirc;, thiết lập <b>Từ kh&oacute;a Khoảng</b>l&agrave;m th&ocirc;ng tin x&aacute;c định k&iacute;ch thước v&agrave; thiết lập <b>T&aacute;i diễn H&agrave;ng th&aacute;ng</b> l&agrave;m từ kh&oacute;a khoảng trong bước n&agrave;y. H&agrave;nh động n&agrave;y sẽ tạo ra một raster trong đ&oacute; mỗi pixel chứa th&aacute;ng đạt được số liệu thống k&ecirc; trong năm năm (18/08/2018, 25/08/2016, 07/08/2013 chẳng hạn).
+            </p>
+            <p>Đ&acirc;y l&agrave; bước bắt buộc khi  <b>StdTime</b> được thiết lập l&agrave;m chiều để tr&iacute;ch xuất số liệu thống k&ecirc; từ đ&oacute; v&agrave; <b>Từ kh&oacute;a Khoảng</b> được chọn để x&aacute;c định c&aacute;ch tr&iacute;ch xuất số liệu thống k&ecirc; từ chiều thời gian.
+                <ul>
+                    <li> <b>T&aacute;i diễn h&agrave;ng ng&agrave;y</b>&mdash; Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho  ng&agrave;y.
+                    </li>
+                    <li> <b>T&aacute;i diễn h&agrave;ng tuần</b>&mdash; Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho  tuần.
+                    </li>
+                    <li> <b>T&aacute;i diễn h&agrave;ng th&aacute;ng</b>&mdash; Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho  th&aacute;ng.
+                    </li>
+                    <li> <b>T&aacute;i diễn h&agrave;ng qu&yacute;</b>&mdash; Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho  qu&yacute;.
+                    </li>
+                    <li> <b>H&agrave;ng giờ</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   giờ m&agrave; trong đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                    <li> <b>H&agrave;ng ng&agrave;y</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   ng&agrave;y m&agrave; trong đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                    <li> <b>H&agrave;ng tuần</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   tuần m&agrave; ở đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                    <li> <b>H&agrave;ng th&aacute;ng</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   th&aacute;ng m&agrave; ở đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                    <li> <b>H&agrave;ng qu&yacute;</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   qu&yacute; m&agrave; trong đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                    <li> <b>H&agrave;ng năm</b>&mdash;Số liệu thống k&ecirc; sẽ được tr&iacute;ch xuất cho   năm m&agrave; ở đ&oacute; đạt được số liệu thống k&ecirc;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Bỏ qua các giá trị thiếu trong tính toán</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng.
+                <ul>
+                    <li>Nếu t&ugrave;y chọn n&agrave;y được chọn, ph&acirc;n t&iacute;ch sẽ bao gồm tất cả c&aacute;c pixel hợp lệ dọc theo một chiều nhất định v&agrave; bỏ qua mọi pixel NoData. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li>Nếu t&ugrave;y chọn n&agrave;y kh&ocirc;ng được chọn, ph&acirc;n t&iacute;ch sẽ cho kết quả NoData nếu c&oacute; mọi gi&aacute; trị NoData cho pixel dọc theo chiều đ&atilde; cho.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

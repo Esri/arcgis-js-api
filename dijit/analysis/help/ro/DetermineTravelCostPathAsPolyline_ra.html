@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Determine Travel Cost Path As Polyline</h2><p/>
+        <h2>Determinare cale cost de deplasare ca linie poligonală</h2><p/>
         <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Determine Travel Cost Path as Polyline tool illustration"></h2>
         <hr/>
     <p>Acest instrument calculează traseul cu polilinie cu cel mai mic cost dintre surse și destinațiile cunoscute.
@@ -64,7 +64,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Choose raster or feature source layer to determine paths from</h2></div>
+        <div><h2>Alegeți rasterul sau stratul tematic sursă de obiecte spațiale pentru determinarea căilor</h2></div>
         <hr/>
         <div>
             <p>An image service or feature service that identifies the cells from which the least-cost path is determined to the least costly destination.
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Choose travel cost raster layer</h2></div>
+        <div><h2>Alegeţi stratul tematic raster cu costuri de deplasare</h2></div>
         <hr/>
         <div>
             <p>Un raster care definește impedanța sau costul deplasării planimetrice prin fiecare celulă.
@@ -112,20 +112,28 @@
             <p>Defines the manner in which the values and zones on the input destination data will be interpreted in the cost path calculations.
             </p>
             <ul>
-                <li>Best Single&mdash;For all cells or locations on the input destination data, the least-cost path is derived from the location with the minimum of the least-cost paths to source location. Aceasta este acţiunea implicită
+                <li> <b>Best Single</b>&mdash;Pentru toate celulele și locațiile din datele destinație introduse, calea de cost minim este determinată pe baza minimului dintre căile de cost minim către locația sursă. Aceasta este acţiunea implicită
                     
 
                 </li>
-                <li>To Each Cell&mdash;For each cell or location with valid values on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each from cell.
+                <li> <b>Către fiecare celulă</b>&mdash;Pentru fiecare celulă sau locație cu valori valide ale datelor de destinație introduse, o cale de cost minim este determinată și salvată pe serviciul de obiecte spațiale de ieșire. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each from cell.
                     
 
                 </li>
-                <li>To Each Zone&mdash;For each zone on the input destination data, a least-cost path is determined and saved on the output feature service. With this option, the least-cost path for each zone begins at the cell or location with the lowest cost distance weighting in the zone.
+                <li> <b>Către fiecare zonă</b>&mdash;Pentru fiecare zonă din datele destinație introduse, o cale de cost minim se determină și se salvează pe serviciul de obiecte spațiale de ieșire. With this option, the least-cost path for each zone begins at the cell or location with the lowest cost distance weighting in the zone.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Alegeți câmpul pentru a obține valori pentru destinație</h2></div>
+        <hr/>
+        <div>
+            <p>C&acirc;mpul utilizat pentru a obține valori pentru locațiile destinație.
+            </p>
         </div>
     </div>
 </div>

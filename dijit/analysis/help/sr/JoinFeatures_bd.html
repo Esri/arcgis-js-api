@@ -54,11 +54,11 @@
         <div><h2>Odaberite ciljni sloj</h2></div>
         <hr/>
         <div>
-            <p>Sloj koji će imati  atribute iz sloja za pridruživanje dodatog njegovoj tabeli.
+            <p>Sloj koji će imati atribute iz sloja za pridruživanje dodatog njegovoj tabeli.
             </p>
-            <p>Analiziranje pomoću prostornog odnosa  <b>Blizu</b> zahteva projektovani koordinatni sistem. <b>Koordinatni sistem obrade</b> možete da podesite u <b>Okruženja analize</b>. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom kori&scaron;ćenja opcije <b>Pokreni analizu</b> .
+            <p>Analiziranje pomoću prostornog odnosa  <b>Blizu</b> zahteva projektovani koordinatni sistem. Koordinatni sistem obrade možete da podesite u okviru Okruženja analize. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom pokretanja analize .
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima. Možete opciono da primenite filter na ulazni sloj ili da primenite selekciju na hostovane slojeve koji su dodati na va&scaron;u mapu. Filteri i selekcije se primenjuju samo za analizu. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Sloj za pridruživanje sa atributima koji će biti dodati ciljnom sloju.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Izaberi sloj za analizu</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima. Možete opciono da primenite filter na ulazni sloj ili da primenite selekciju na hostovane slojeve koji su dodati na va&scaron;u mapu. Filteri i selekcije se primenjuju samo za analizu. 
             </p>
         </div>
     </div>
@@ -95,11 +95,11 @@
         <div>
             <p>Navodi kori&scaron;ćenu opciju pridruživanja. Možete da primenite jedan, dva ili tri od sledećih tipova pridruživanja: 
                 <ul>
-                    <li> <b>Prostorno</b>&mdash;Koristi navedeni prostorni odnos za pridruživanje geoobjekata. To zahteva da oba sloja imaju geometriju.
+                    <li> <b>Prostorno</b> &ndash; Koristi navedeni prostorni odnos za pridruživanje geoobjekata. To zahteva da oba sloja imaju geometriju.
                     </li>
                     <li> <b>Vremensko</b>&mdash;Koristi vremenski odnos za pridruživanje geoobjekata. To zahteva da to vreme bude omogućeno na oba sloja.
                     </li>
-                    <li> <b>Atributsko</b>&mdash;Pridružuje geoobjekte na osnovu jednakih polja.
+                    <li> <b>Atributsko</b> &ndash; Pridružuje geoobjekte na osnovu jednakih polja.
                     </li>
                 </ul>
                 
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Jednaki</b>&mdash;geoobjekti će se upariti ako imaju istu geometriju.
                     </li>
-                    <li> <b>Blizu</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog. Ciljni sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem <b>Okruženja analize</b>, ako se koristi prostorni odnos <b>Blizu</b>.
+                    <li> <b>Blizu planarno</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog. Ciljni sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem <b>Okruženja analize</b>, ako se koristi prostorni odnos <b>Blizu</b>.
+                    </li>
+                    <li> <b>Blizu geodetski</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog. Rastojanje se meri kori&scaron;ćenjem planarnog rastojanja.
                     </li>
                     <li> <b>Sadrži</b>&mdash;geoobjekti će se upariti ako je ciljni sloj sadržan u geoobjektima koji se pridružuju.
                     </li>
@@ -215,7 +217,7 @@
             </p>
             <p>Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće: 
                 <ul>
-                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null. Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
+                    <li>Brojač &ndash; izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
                     <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
@@ -236,7 +238,7 @@
             </p>
             <p>U poljima niske možete da izračunate sledeće:
                 <ul>
-                    <li>Brojač&mdash;broj vrednosti koje nisu null.
+                    <li>Brojač &ndash; broj niski koje nisu null (bez vrednosti).
                     </li>
                     <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
                     </li>
@@ -263,7 +265,7 @@
         <div><h2>Izaberi skladište podataka</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalize se skladi&scaron;te u skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+            <p>Rezultati geoanalize se skladi&scaron;te u skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebalo da budu skladi&scaron;teni u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
                 <ul>
                     <li>Možete da koristite rezultate u kolaboraciji portal-sa-portalom.
                     </li>
@@ -280,7 +282,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Ime sloja koji će se kreirati. Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            <p> Ime sloja koji će se kreirati.  Ako vr&scaron;ite upis u ArcGIS Data Store, va&scaron;i rezultati će se čuvati u  <b>Mom sadržaju</b> i biće dodati na mapu. Ako vr&scaron;ite upis u deljeni resurs za datoteke sa velikim podacima, va&scaron;i rezultati će se čuvati u deljenom resursu za datoteke sa velikim podacima i biti dodati u njegov manifest. On neće biti dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
             </p>
             <p>Prilikom upisa u  ArcGIS Data Store (skladi&scaron;te relacionih ili prostorno-vremenskih velikih podataka) koristeći padajuće polje  <b>Sačuvaj rezultat u</b>, možete da navedete ime fascikle u <b>Mom sadržaju</b> gde će rezultat biti sačuvan.
             </p>

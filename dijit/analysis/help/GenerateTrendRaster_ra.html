@@ -40,112 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>Generate Trend Raster</h2><p/>
-        <h2><img src="./images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Generate Trend Raster"></h2>
+        <h2><img src="./images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generate Trend Raster"></h2>
         <hr/>
     <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
-    </p>
-    <p>A use example for this tool is you have 40 years worth of monthly ocean temperature data, and you want to fit a trend line for each pixel to see where and how temperature changed over time.
-    </p>
-    <p>There are three trend line options for fitting a trend to the variable values along a dimension: linear, polynomial, and harmonic.
-    </p>
-    <p>The output trend raster generated with this tool is used as the input to the  tool. The output is a multidimensional raster in which each slice is a multiband raster containing information about the trend line. If you are analyzing the trend for a single variable for a dataset containing a single dimension (for example, time), there will be a single slice in the output dataset. If you are analyzing a single variable for a dataset containing multiple dimensions (for example, time and depth), each slice will contain trend information for each dimension value along the dimension that was not included in the analysis.
-    </p>
-    <p>For Linear trend analysis, the output contains five-band rasters, where: 
-        <ul>
-            <li>Band 1 = Slope
-            </li>
-            <li>Band 2 = Intercept
-            </li>
-            <li>Band 3 = Root Mean Square Error (RMSE) or the error around the line of best fit
-            </li>
-            <li>Band 4 = Coefficient of determination (R2)
-            </li>
-            <li>Band 5 = Probability value (P_Value)
-            </li>
-        </ul>
-        
-    </p>
-    <p>For Polynomial trend analysis, the number of bands in the output depends on the polynomial order. Second order polynomial fitting produces a six-band raster, where:
-        <ul>
-            <li>Band 1 = Polynomial_2
-            </li>
-            <li>Band 2 = Polynomial_1
-            </li>
-            <li>Band 3 = Polynomial_0
-            </li>
-            <li>Band 4 = RMSE
-            </li>
-            <li>Band 5 = R2
-            </li>
-            <li>Band 6 = P_Value
-            </li>
-        </ul>
-        
-    </p>
-    <p>Third order polynomial fitting produces a seven-band raster, where:
-        <ul>
-            <li>Band 1 = Polynomial_3
-            </li>
-            <li>Band 2 = Polynomial_2
-            </li>
-            <li>Band 3 = Polynomial_1
-            </li>
-            <li>Band 4 = Polynomial_0
-            </li>
-            <li>Band 5 = RMSE
-            </li>
-            <li>Band 6 = R2
-            </li>
-            <li>Band 7 = P_Value
-            </li>
-        </ul>
-        
-    </p>
-    <p>For Harmonic trend analysis, the number of bands in the output depends on the harmonic frequency. When the frequency is set to 1, the output is a seven-band raster, where:
-        <ul>
-            <li>Band 1 = Slope
-            </li>
-            <li>Band 2 = Intercept
-            </li>
-            <li>Band 3 = Harmonic_sin1
-            </li>
-            <li>Band 4 = Harmonic_cos1
-            </li>
-            <li>Band 5 = RMSE
-            </li>
-            <li>Band 6 = R2
-            </li>
-            <li>Band 7 = P_Value
-            </li>
-        </ul>
-        
-    </p>
-    <p>When the frequency is set to 2, the output is a seven-band raster, where:
-        <ul>
-            <li>Band 1 = Slope
-            </li>
-            <li>Band 2 = Intercept
-            </li>
-            <li>Band 3 = Harmonic_sin1
-            </li>
-            <li>Band 4 = Harmonic_cos1
-            </li>
-            <li>Band 5 = Harmonic_sin2
-            </li>
-            <li>Band 6 = Harmonic_cos2
-            </li>
-            <li>Band 7 = RMSE
-            </li>
-            <li>Band 6 = R2
-            </li>
-            <li>Band 7 = P_Value
-            </li>
-        </ul>
-        
-    </p>
-    <p>If  <b>Use current map extent</b> is checked, variables of the layer that are  visible within the current map extent will be analyzed. If unchecked, variables of the full layer will be analyzed, even if they are outside the current map extent.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -153,6 +52,8 @@
         <div><h2>Choose multidimensional imagery layer to analyze trend</h2></div>
         <hr/>
         <div>
+            <p>
+            </p>
             <p>The input imagery layer of a multidimensional raster that will be analyzed.
             </p>
         </div>
@@ -179,14 +80,43 @@
         <div>
             <p>Specifies the type of line to be used to fit to the pixel values along a dimension. 
                 <ul>
-                    <li> <b>Linear</b>&mdash;Fits the pixel values for a variable along a linear trend line. This is the default.
+                    <li> <b>Linear</b>&mdash;Variable pixel values will be fitted along a linear trend line. This is the default.
                     </li>
-                    <li> <b>Polynomial</b>&mdash;Fits the pixel values for a variable along a second order polynomial trend line.
+                    <li> <b>Polynomial</b>&mdash;Variable pixel values will be fitted along a second order polynomial trend line.
                     </li>
-                    <li> <b>Harmonic</b>&mdash;Fits the pixel values for a variable along a harmonic trend line.
+                    <li> <b>Harmonic</b>&mdash;Variable pixel values will be fitted along a harmonic trend line.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Specify the length of harmonic cycle</h2></div>
+        <hr/>
+        <div>
+            <p>The length of periodic variation to model. This parameter is required when the trend line type is set to  <b>Harmonic</b>. For example, leaf greenness often has one strong cycle of variation in a single year, so the cycle length is 1 year. Hourly temperature data has one strong cycle of variation throughout a single day, so the cycle length is 1 day.
+            </p>
+            <p>The default length is 1 year for data that varies on an annual cycle.
+            </p>
+            <p>This parameter is only included in the trend analysis when the dimension being analyzed is time and the type of trend line is set to  <b>Harmonic</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Choose the time unit of harmonic cycle length</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the time unit to be used for the length of a harmonic cycle.
+                <ul>
+                    <li> <b>Days</b>&mdash;The unit for the length of the harmonic cycle is days.
+                    </li>
+                    <li> <b>Years</b>&mdash;The unit for the length of the harmonic cycle is years. This is the default.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>This parameter is only included in the trend analysis when the dimension being analyzed is time and the type of trend line is set to  <b>Harmonic</b>.
             </p>
         </div>
     </div>
@@ -194,7 +124,7 @@
         <div><h2>Specify the frequency number for the harmonic trend fitting</h2></div>
         <hr/>
         <div>
-            <p>The frequency to use in the  <b>Harmonic</b> trend fitting. This parameter specifies the frequency of cycles in a year.
+            <p>The frequency to use in harmonic trend fitting. This parameter specifies the frequency of cycles in a year.
             </p>
             <p>The default value is  1, or one harmonic cycle per year.
             </p>
@@ -206,11 +136,55 @@
         <div><h2>Specify the polynomial order number for the trend fitting</h2></div>
         <hr/>
         <div>
-            <p>The polynomial order number to use in the   <b>Polynomial</b> trend fitting.
+            <p>The polynomial order number to use in polynomial trend fitting.
             </p>
             <p>This parameter is only included in the trend analysis when the dimension being analyzed is time.
             </p>
             <p>The default value is 2, or second order polynomial.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Choose model statistics to be included in trend raster</h2></div>
+        <hr/>
+        <div>
+            <p>This tool provides three types of statistics of trend fit line: the root mean square error (RMSE), the R-squared goodness-of-fit statistic (R-squared), and the p-value statistic for the slope coefficient (P-value of the slope coefficient). Each statistic has a corresponding check box to specify whether it will be calculated and included as one of the multiple bands in the output trend raster.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Checked&mdash;The RMSE will be calculated and included as one of the multiple bands in the output trend raster. This is the default.
+                            </li>
+                            <li>Unchecked&mdash;The RMSE will not be calculated.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-squared
+                        </p>
+                        <ul>
+                            <li>Checked&mdash;The R-squared value will be calculated and included as one of the multiple bands in the output trend raster.
+                            </li>
+                            <li>Unchecked&mdash;The R-squared value will not be calculated. This is the default.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-value of slope coefficient
+                        </p>
+                        <ul>
+                            <li>Checked&mdash;The p-value will be calculated and included as one of the multiple bands in the output trend raster.
+                            </li>
+                            <li>Unchecked&mdash;The p-value will not be calculated. This is the default.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -222,7 +196,7 @@
                 <ul>
                     <li>Checked&mdash;The analysis will include all valid pixels along a given dimension and ignore any NoData pixels. This is the default.
                     </li>
-                    <li>Unchecked&mdash;The analysis will result in NoData if there are any NoData values for the pixel along the given dimension.
+                    <li>Unchecked&mdash;The analysis will result in NoData if there are any NoData values for the pixels along the given dimension.
                     </li>
                 </ul>
                 

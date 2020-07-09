@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Verweilorte suchen</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Workflow-Diagramm des Werkzeugs &quot;Verweilorte suchen&quot;"></h2>
+        <hr/>
+    <p>Dieses Werkzeug wird mit einem Punkt-Feature-Layer mit aktivierten Zeiteigenschaften und dem Zeittyp  <code>Zeitpunkt</code> ausgef&uuml;hrt. Zun&auml;chst weist das Werkzeug einem Track mithilfe einer eindeutigen Kennung Features zu. Die Track-Reihenfolge wird anhand der Zeit der Features bestimmt. Als N&auml;chstes wird die Entfernung zwischen der ersten Beobachtung in einem Track und der n&auml;chsten Beobachtung berechnet. Die Features werden als Teil des Verweilortes betrachtet, wenn zwei zeitlich aufeinanderfolgende Punkte f&uuml;r mindestens die angegebene Dauer innerhalb der angegebenen Entfernung verbleiben. Wenn zwei Features als Teil eines Verweilortes erkannt werden, wird das erste Feature am Verweilort als Bezugspunkt verwendet. Das Werkzeug sucht dann nach darauffolgenden Features, die sich innerhalb der angegebenen Entfernung vom Bezugspunkt des Verweilortes befinden. Nachdem alle Features innerhalb der angegebenen Entfernung gefunden wurden, erfasst das Werkzeug die Verweil-Features und berechnet den zugeh&ouml;rigen Mittelpunkt. Features vor und nach dem aktuellen Verweilort werden diesem hinzugef&uuml;gt, wenn sie sich innerhalb der angegebenen Entfernung vom Mittelpunkt des Verweilortes befinden. Dieser Vorgang wird bis zum Ende des Tracks fortgesetzt.
+    </p>
+    <p>Es gibt folgende M&ouml;glichkeiten, Features in Layern mit aktivierten Zeiteigenschaften darzustellen:
+        <ul>
+            <li>Zeitpunkt: Ein einzelner Zeitpunkt
+            </li>
+            <li>Intervall: Eine Start- und eine Endzeit
+            </li>
+        </ul>
+        
+    </p>
+    <p>Angenommen, Sie arbeiten f&uuml;r das Verkehrsministerium und verf&uuml;gen &uuml;ber GPS-Messungen f&uuml;r Fahrzeuge auf Fernstra&szlig;en. Jeder GPS-Datensatz enth&auml;lt eine eindeutige Fahrzeug-ID sowie die Zeit, Position und Geschwindigkeit. Definieren Sie anhand der eindeutigen Fahrzeug-ID einzelne Tracks, und suchen Sie Fahrzeuge, die sich mindestens 15&nbsp;Minuten lang nicht weiter als 100&nbsp;Meter bewegt haben, um problematische Bereiche im Stra&szlig;ennetz zu ermitteln. Sie k&ouml;nnen zudem Statistiken berechnen, z.&nbsp;B. die mittlere Geschwindigkeit der Fahrzeuge innerhalb des Verweilortes.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Den Layer auswählen, in dem nach Verweilorten gesucht werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Der Punkt-Layer, f&uuml;r den die Verweilorte zusammengefasst werden. Der Eingabe-Layer muss ein Layer mit aktivierten Zeiteigenschaften sein, der Features enth&auml;lt, die einen Zeitpunkt darstellen. Au&szlig;erdem muss mindestens ein Feld enthalten sein, das zum Bestimmen von Tracks verwendet werden kann.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Mindestens ein Feld zum Identifizieren von Tracks auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Felder, die die Track-ID darstellen. Sie k&ouml;nnen ein Feld oder mehrere Felder zum Darstellen von eindeutigen Werten f&uuml;r Tracks angeben.
+            </p>
+            <p>Wenn Sie beispielsweise Verweilorte f&uuml;r Hurrikane suchen, k&ouml;nnen Sie den Namen des Hurrikans als Track-Feld verwenden.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Methode zum Berechnen der Entfernung auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Methode zum Berechnen der Verweilortentfernung innerhalb von Tracks. Die Methode  <b>Planar</b> kann die Ergebnisse schneller berechnen, jedoch werden beim Puffern keine Tracks an der internationalen Datumslinie umgebrochen. Die tats&auml;chliche Form der Erde wird ebenfalls nicht ber&uuml;cksichtigt. Bei der Methode <b>Geod&auml;tisch</b> werden Tracks bei Bedarf an der internationalen Datumslinie umgebrochen. Durch die Anwendung eines geod&auml;tisches Puffers wird die Form der Erde ber&uuml;cksichtigt.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Räumliche Suchentfernung definieren</h2></div>
+        <hr/>
+        <div>
+            <p>Die Verweilort-Entfernungstoleranz ist die maximale Entfernung zwischen Punkten, die in einem einzelnen Verweilort ber&uuml;cksichtigt werden soll.
+            </p>
+            <p>Wenn Sie beispielsweise Verweilorte suchen m&ouml;chten, an denen sich der Verkehr innerhalb einer bestimmten Zeitspanne nicht mehr als 20&nbsp;Meter bewegt hat, betr&auml;gt die Entfernungstoleranz 20&nbsp;Meter.
+            </p>
+            <p>Verwenden Sie zum Angeben der Zeit den Parameter <b>Zeitlichen Suchbereich definieren</b>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Tracks aufteilen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Die Einheit der Entfernungstoleranz.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Zeitlichen Suchbereich definieren</h2></div>
+        <hr/>
+        <div>
+            <p>Die Verweilzeittoleranz ist die minimale Verweilzeit, die an einem einzelnen Verweilort ber&uuml;cksichtigt werden soll.
+            </p>
+            <p>Wenn Sie beispielsweise ermitteln m&ouml;chten, wo sich der Verkehr innerhalb einer Stunde nicht &uuml;ber eine bestimmte Entfernung bewegt hat, betr&auml;gt die Zeittoleranz 1&nbsp;Stunde.
+            </p>
+            <p>Verwenden Sie zum Angeben der Entfernung den Parameter <b>R&auml;umliche Suchentfernung definieren</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Eine Entfernung zum Aufteilen von Tracks auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Die Einheit der Zeittoleranz.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistiken hinzufügen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder sind folgende Berechnungen m&ouml;glich: 
+                <ul>
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Es kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
+                    </li>
+                    <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
+                    </li>
+                    <li>Mittelwert: Der Mittelwert der numerischen Werte. Der Mittelwert von [0, 2, NULL] betr&auml;gt 1.
+                    </li>
+                    <li>Min: Der Minimalwert eines numerischen Feldes. Der Minimalwert von [0, 2, NULL] betr&auml;gt 0. 
+                    </li>
+                    <li>Max: Der Maximalwert eines numerischen Feldes. Der Maximalwert von [0, 2, NULL] betr&auml;gt 2.
+                    </li>
+                    <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
+                    </li>
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einem Track. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
+                    </li>
+                    <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,0,1,1] ist 0,5. 
+                    </li>
+                    <li>Erste(r): Der erste Wert eines angegebenen Feldes in dem zusammengefassten Track. Wenn ein Track die nach Zeit sortierten Werte [1,5,10,20] f&uuml;r ein Feld enth&auml;lt, ist der erste Wert&nbsp;1.
+                    </li>
+                    <li>Letzte(r): Der letzte Wert eines angegebenen Feldes in dem zusammengefassten Track. Wenn ein Track die nach Zeit sortierten Werte [1,5,10,20] f&uuml;r ein Feld enth&auml;lt, ist der letzte Wert&nbsp;20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>F&uuml;r Zeichenfolgenfelder sind folgende Berechnungen m&ouml;glich:
+                <ul>
+                    <li>Anzahl: Die Anzahl der Nicht-NULL-Werte.
+                    </li>
+                    <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
+                    </li>
+                    <li>Erste(r): Der erste Wert eines angegebenen Feldes in dem zusammengefassten Track. Wenn ein Track die nach Zeit sortierten Werte [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] f&uuml;r ein Feld enth&auml;lt, lautet der erste Wert &quot;Toronto&quot;.
+                    </li>
+                    <li>Letzte(r): Der letzte Wert eines angegebenen Feldes in dem zusammengefassten Track. Wenn ein Track die nach Zeit sortierten Werte [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] f&uuml;r ein Feld enth&auml;lt, lautet der letzte Wert &quot;Boston&quot;.
+                    </li>
+                </ul>
+                Alle Statistiken werden f&uuml;r Nicht-NULL-Werte berechnet. Der resultierende Layer enth&auml;lt ein neues Feld f&uuml;r jede berechnete Statistik. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Verweilorte ausgeben als</h2></div>
+        <hr/>
+        <div>
+            <p>Bestimmt, welche Features zur&uuml;ckgegeben werden, sowie das Format. Es sind vier Typen verf&uuml;gbar: 
+                <ul>
+                    <li> <b>Mittelwerte f&uuml;r Mittelpunkte</b>: Ein Punkt, der den Schwerpunkt jedes ermittelten Verweilortes darstellt. Attribute werden zusammengefasst. Dies ist die Standardeinstellung.
+                         
+                    </li>
+                    <li> <b>Konvexe H&uuml;llen</b>: Polygone, die die konvexe H&uuml;lle der einzelnen Verweilgruppen darstellen. Attribute werden zusammengefasst.
+                         
+                    </li>
+                    <li> <b>Verweil-Features</b>: Es werden alle Eingabe-Punkt-Features und -Attribute zur&uuml;ckgegeben, die zu einem Verweilort geh&ouml;ren.
+                         
+                    </li>
+                    <li> <b>Alle Features</b>: Es werden alle Eingabe-Punkt-Features und -Attribute zur&uuml;ckgegeben.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Daten mit Zeitintervallen analysieren (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Legen Sie fest, ob Verweilorte mithilfe von Zeitintervallen gesucht werden sollen, die Ihre Eingabe-Features f&uuml;r die Analyse segmentieren. Wenn Sie Zeitintervalle verwenden, m&uuml;ssen Sie das zu verwendende Zeitintervall und optional die Bezugszeit festlegen. Wird keine Bezugszeit festgelegt, wird der 1.&nbsp;Januar&nbsp;1970 verwendet. 
+            </p>
+            <p>Wenn Sie die Zeitgrenze beispielsweise auf 1&nbsp;Tag festlegen, beginnend am 1.&nbsp;Januar&nbsp;1990 um 9:00&nbsp;Uhr, wird jeder Track f&uuml;r jeden Tag um 9:00&nbsp;Uhr abgeschnitten und innerhalb dieses Segments analysiert. Es gibt keine Verweilzeiten, die vor 9:00&nbsp;Uhr beginnen und sp&auml;ter enden. 
+            </p>
+            <p>Zeitintervalle sind eine bequeme M&ouml;glichkeit, die Rechenzeit zu beschleunigen, da kleinere Tracks schnell f&uuml;r die Analyse erstellt werden. Wenn die Unterteilung nach einem wiederholt auftretenden Zeitintervall sinnvoll f&uuml;r Ihre Analyse ist, ist sie f&uuml;r die Big-Data-Verarbeitung zu empfehlen.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Der Name des zu erstellenden Layers Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und dem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>Wenn Sie &uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> in ArcGIS Data Store (Big Data Store vom Typ &quot;relational&quot; oder &quot;spatiotemporal&quot;) schreiben, k&ouml;nnen Sie den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

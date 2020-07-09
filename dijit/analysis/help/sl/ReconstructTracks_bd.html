@@ -44,7 +44,7 @@
         <h2>Rekonstruiraj sledi</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruiraj sledi"></h2>
         <hr/>
-    <p> To orodje deluje s slojem z omogočenim časom, s točkovnimi ali poligonskimi geoobjekti, ki predstavljajo <code>trenutek</code> v času. Najprej s pomočjo identifikatorja določi, kateri geoobjekti pripadajo sledi. Z uporabo časa na vsaki lokaciji so sledi naročene ena za drugo in preoblikovane v linije ali poligone, ki predstavljajo pot gibanja v času. Po želji se lahko ustvari obris okoli vhoda polja, kar bo ustvarilo poligon na vsaki lokaciji. Te obrisane točke ali vhodni poligoni so nato zaporedno združeni, da se ustvari sled kot poligon, pri čemer je &scaron;irina reprezentativna za želeni atribut. Pridobljene sledi imajo začetni in končni čas, kar časovno predstavlja prvi in zadnji geoobjekt v podani sledi. Ko so sledi ustvarjene, se statistike o vhodnih geoobjektih izračunajo in dodelijo izhodni sledi. Najosnovnej&scaron;a statistika je &scaron;tetje točk znotraj poligona, vendar lahko izračunate tudi druge statistike.
+    <p> To orodje deluje s časovno omogočenim slojem točkovnih ali poligonskih geoobjektov, ki predstavljajo <code>trenutek</code> v času.   Najprej s pomočjo identifikatorja določi, kateri geoobjekti pripadajo sledi. Z uporabo časa na vsaki lokaciji so sledi naročene ena za drugo in preoblikovane v linije ali poligone, ki predstavljajo pot gibanja v času. Po želji se lahko ustvari obris okoli vhoda polja, kar bo ustvarilo poligon na vsaki lokaciji. Te obrisane točke ali vhodni poligoni so nato zaporedno združeni, da se ustvari sled kot poligon, pri čemer je &scaron;irina reprezentativna za želeni atribut. Pridobljene sledi imajo začetni in končni čas, kar časovno predstavlja prvi in zadnji geoobjekt v podani sledi. Ko so sledi ustvarjene, se statistike o vhodnih geoobjektih izračunajo in dodelijo izhodni sledi. Najosnovnej&scaron;a statistika je &scaron;tetje točk znotraj poligona, vendar lahko izračunate tudi druge statistike.
     </p>
     <p>Geoobjekti v časovno omogočenih slojih so lahko predstavljeni na enega od dveh načinov:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Točka ali poligonski sloj, ki bo rekonstruiran v sledi. Vhodni sloj mora biti časovno omogočen z geoobjekti, ki prestavljajo trenutek v času. Če se uporablja obris, mora biti sloj v projiciranem koordinatnem sistemu ali mora biti procesni koordinatni sistem nastavljen na projiciran koordinatni sistem s pomočjo  <b>okolij analize</b>.
             </p>
-            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj.
+            <p>Poleg izbire sloja s svoje karte lahko na dnu spustnega seznama izberete  <b>Izberi sloj za analizo</b>, da po svoji vsebini poi&scaron;čete delitev datotek velikih podatkov ali geoobjektni sloj. Izbirno lahko na svojem vhodnem sloju uporabite filter ali pa uporabite izbiro na gostujočih slojih, uporabljenih na karti. Filtri in izbire so uporabljeni samo za analizo. 
             </p>
         </div>
     </div>
@@ -97,7 +97,7 @@
             </p>
             <p>Pri enačbi, kot je  <code>$feature.windspeed * 1000</code>, se uporablja obris, ki je 1000-krat pomnožen s poljem <i>windspeed</i>. V kalkulatorju obrisa lahko uporabite več kot eno polje.
             </p>
-            <p> Navedete lahko tudi izraz, ki zaznava sledi. Na primer, izračunate lahko vsoto vrednosti polja <i>windspeed</i> za trenutni geoobjekt in pre&scaron;nja dva geoobjekta z enačbo, kot je <code>$track.field(windspeed).history(-3)</code>. Na vsaki lokaciji je vsota trenutne meritve <i>windspeed</i> in prej&scaron;njih dveh meritev izračunana in obrisana.
+            <p> Navedete lahko tudi izraz, ki zaznava sledi. Na primer, izračunate lahko vsoto vrednosti polja <i>windspeed</i> za trenutni geoobjekt in prej&scaron;nja dva geoobjekta z enačbo, kot je <code>$track.field(windspeed).history(-3)</code>. Na vsaki lokaciji je vsota trenutne meritve <i>windspeed</i> in prej&scaron;njih dveh meritev izračunana in obrisana.
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Dodaj statistiko (izbirno)</h2></div>
         <hr/>
         <div>
-            <p> Statistiko lahko izračunate na povzetih geoobjektih.Na &scaron;tevilskih poljih lahko izračunate naslednje:
+            <p>Statistiko lahko izračunate na povzetih geoobjektih. Na &scaron;tevilskih poljih lahko izračunate naslednje: 
                 <ul>
-                    <li>&Scaron;tetje &ndash; Izračuna &scaron;tevilo nepraznih vrednosti. Uporabljeno je lahko za  &scaron;tevilska ali besedilna polja. &Scaron;tetje za [null, 0, 2] je 2.
+                    <li>&Scaron;tetje &ndash; izračuna &scaron;tevilo neničelnih vrednosti. Uporablja se lahko na &scaron;tevilskih in besedilnih poljih. &Scaron;tetje za [null, 0, 2] je 2.
                     </li>
                     <li>Vsota &ndash; vsota &scaron;tevilskih vrednosti v polju. Vsota [null, null, 3] je 3.
                     </li>
@@ -166,6 +166,10 @@
                     </li>
                     <li>Standardni odklon &ndash; standardni odklon &scaron;tevilskega polja. Standardni odklon za [1] je brez vrednosti. Standardni odklon [brez vrednosti, 1,0,1,1] je 0,5. 
                     </li>
+                    <li>Prva &ndash; Prva vrednost določenega polja v povzeti sledi. Če ima sled naslednje časovno urejene vrednosti za polje: [1,5,10,20], je prva vrednost 1.
+                    </li>
+                    <li>Zadnja &ndash; Zadnja vrednost določenega polja v povzeti sledi. Če ima sled naslednje časovno urejene vrednosti za polje: [1,5,10,20], je zadnja vrednost 20.
+                    </li>
                 </ul>
                 
             </p>
@@ -175,8 +179,12 @@
                     </li>
                     <li>Kateri koli &ndash; ta statistika je naključni vzorec besedilne vrednosti v navedenem polju.
                     </li>
+                    <li>Prva &ndash; Prva vrednost določenega polja v povzeti sledi. Če ima sled naslednje časovno urejene vrednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], je prva vrednost Toronto.
+                    </li>
+                    <li>Zadnja &ndash; Zadnja vrednost določenega polja v povzeti sledi. Če ima sled naslednje časovno urejene vrednosti za polje: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], je zadnja vrednost Boston.
+                    </li>
                 </ul>
-                Vsa statistika bo izračunana na neničelnih vrednostih. Sloj z rezultati bo vseboval nova polja za vsako izračunano statistiko. Z izbiro atributov in statistik je mogoče dodati katerokoli statistiko. 
+                Vsa statistika bo izračunana na neničelnih vrednostih. Sloj z rezultati bo vseboval nova polja za vsako izračunano statistiko. Z izbiro atributov in statistik je mogoče dodati katero koli statistiko.
             </p>
         </div>
     </div>
@@ -184,16 +192,16 @@
         <div><h2>Izberite ArcGIS Data Store za shranjevanje rezultatov v</h2></div>
         <hr/>
         <div>
-            <p>Rezultati GeoAnalytics so shranjeni v shrambo podatkov in prikazani kot geoobjektni sloj v  Portal for ArcGIS. V večini primerov je treba rezultate shraniti v prostorsko-časovno shrambo podatkov, kar je privzeto. V nekaterih primerih je dobra možnost hramba podatkov v relacijskih shrambi podatkov. V nadaljevanju so navedeni razlogi, zakaj bi morda želeli shraniti rezultate v relacijsko shrambo podatkov: 
+            <p>Rezultati GeoAnalytics so shranjeni v shrambo podatkov in prikazani kot geoobjektni sloj v   Portal for ArcGIS. V večini primerov je treba rezultate shraniti v prostorsko-časovno shrambo podatkov, kar je privzeto. V nekaterih primerih je dobra izbira shranjevanje rezultatov v relacijsko shrambo podatkov. V nadaljevanju so navedeni razlogi, zakaj bi morda želeli shraniti rezultate v relacijsko shrambo podatkov: 
                 <ul>
-                    <li>Rezultate lahko uporabite za sodelovanjeprekportala.
+                    <li>Rezultate lahko uporabite za sodelovanje prek portala.
                     </li>
-                    <li>Pri rezultatih lahkoomogočite možnosti sinhronizacije.
+                    <li>Pri rezultatih lahko omogočite možnosti sinhronizacije.
                     </li>
                 </ul>
                 
             </p>
-            <p>Relacijske shrambe podatkov ne smete uporabljati, če pričakujete, da se bodo va&scaron;i rezultati GeoAnalytics povečali in želite izkoristiti možnosti velike prostorsko-časovne shrambe podatkov za obdelavo velikih količin podatkov.
+            <p>Relacijske shrambe podatkov ne smete uporabljati, če pričakujete, da se bodo va&scaron;i rezultati geoanalitike povečali in želite izkoristiti zmožnosti velike prostorsko-časovne shrambe podatkov za obdelavo velikih količin podatkov.
             </p>
         </div>
     </div>
@@ -201,7 +209,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
-            <p> To je ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani v skupino. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
+            <p> Ime sloja, ki bo ustvarjen. Če zapisujete v ArcGIS Data Store, bodo va&scaron;i rezultati shranjeni v  <b>Moji vsebini</b> in dodani na karto. Če zapisujete v delitev datotek velikih podatkov, bodo va&scaron;i rezultati shranjeni v delitev datotek velikih podatkov in dodani v njen manifest. Ne bodo dodani na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, orodje ne bo uspe&scaron;no.
             </p>
             <p>Ko zapisujete v  ArcGIS Data Store (relacijsko ali prostorsko-časovno shrambo velikih podatkov) s pomočjo spustnega menija  <b>Shrani rezultat v</b>, lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
             </p>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Trieu una capa d'anàlisi del Living Atlas",customAnalysisLayerTitle:"Trieu la capa d'anàlisi",searchPlaceholderText:"Cerca capes d'anàlisi del Living Atlas",searchCustomPlaceholderText:"Cerca capes d'anàlisi",mainActionTitle:"Selecciona",customActionName:"Selecciona i afegeix al mapa",customeSectionName:"Capes d'anàlisi del Living Atlas",Categories:"Categories",boundaries:"Fronteres",places:"Llocs",boundariesAndPlaces:"Fronteres i llocs",hexbins:"Bins hexagonals",transportation:"Transport",point:"Capes de punts",line:"Capes de polilínies",polygon:"Capes de polígons",pointFilterName:"Punt",lineFilterName:"Polilínia",polygonFilterName:"Polígon",multiPointFilterName:"Multipunts",geometryFilterName:"Geometria",featureLayerName:"Capa d'entitats",tableLayerName:"Taula",itemTypeFilterName:"Tipus d'element",instantFilterName:"Instant",intervalFilterName:"Interval",timeFilterName:"Temps",edit:"Edició",boundaryLayers:"Capes de límit d'Esri",customAnalysisGroupName:"Grup d'anàlisi de l'organització"});

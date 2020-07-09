@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Převést rastr na prvek (Convert Raster to Feature)</h2><p/>
+        <h2>Převést rastr na prvek (Convert Raster To Feature)</h2><p/>
         <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="N&aacute;stroj Přev&eacute;st rastr na prvek"></h2>
         <hr/>
     <p>Tento n&aacute;stroj převede rastr na datovou sadu prvků ve formě bodů, lini&iacute; nebo polygonů.
@@ -55,11 +55,11 @@
     <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;vat aktu&aacute;ln&iacute; rozsah mapy</b>, budou převedeny pouze rastrov&eacute; buňky viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole nen&iacute; za&scaron;krtnuto, budou převedeny v&scaron;echny buňky v rastrov&eacute; vrstvě, i když se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy. Na toto je vhodn&eacute; br&aacute;t ohled, pokud je rastrov&aacute; vrstva velk&aacute; nebo m&aacute; velmi vysok&eacute; rozli&scaron;en&iacute;.
     </p>
     <p>Možnosti použit&iacute; tohoto n&aacute;stroje zahrnuj&iacute;:
- 
+
         <ul>
             <li>Vytvořen&iacute; polygonov&yacute;ch prvků z&nbsp;klasifikačn&iacute;ho rastru využit&iacute; půdy.
                 
- 
+
             </li>
             <li>Proudy identifikovan&eacute; v DEM lze přev&eacute;st na liniov&eacute; prvky.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>DEM lze přev&eacute;st na bodov&eacute; prvky, kter&eacute; lze použ&iacute;t v pracovn&iacute;ch postupech nezaložen&yacute;ch na rastrech.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Zvolit pole</h2></div>
         <hr/>
         <div>
-            <p>Zadejte pole, kter&eacute; uv&aacute;d&iacute; hodnotu použitou pro převod.
+            <p>Pole, kter&eacute; určuje hodnotu konverze.
             </p>
             <p>Může m&iacute;t jakoukoli celoč&iacute;selnou nebo textovou hodnotu.
             </p>
             <p>Pole obsahuj&iacute;c&iacute; desetinn&eacute; hodnoty lze použ&iacute;t, pouze pokud je v&yacute;stupem bodov&aacute; datov&aacute; sada.
             </p>
-            <p>V&yacute;choz&iacute; volbou je použit&iacute; pole  <i>Value</i>, kter&eacute; obsahuje hodnotu v každ&eacute; buňce rastru.
+            <p>V&yacute;choz&iacute; volbou je pole  <i>Value</i>, kter&eacute; obsahuje hodnotu v každ&eacute; buňce rastru.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Zvolit typ výstupu</h2></div>
         <hr/>
         <div>
-            <p>Zvolte typ v&yacute;stupu &ndash; bodov&yacute;, liniov&yacute; nebo polygonov&yacute;.
+            <p>Určuje typ v&yacute;stupu.
             </p>
             <ul>
-                <li>Bodov&yacute; &ndash; Rastr bude převeden na bodovou datovou sadu.
+                <li> <b>Bodov&yacute;</b>&mdash;Rastr bude převeden na bodovou datovou sadu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                     
  
                 </li>
-                <li>Liniov&yacute; &ndash; Rastr bude převeden na datovou sadu liniov&yacute;ch prvků.
+                <li> <b>Liniov&yacute;</b>&mdash;Rastr bude převeden na datovou sadu liniov&yacute;ch prvků.
                     
  
                 </li>
-                <li>Polygonov&yacute; &ndash; Rastr bude převeden na datovou sadu polygonov&yacute;ch prvků.
+                <li> <b>Polygonov&yacute;</b>&mdash;Rastr bude převeden na datovou sadu polygonov&yacute;ch prvků.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Zjednodušit linie či polygony</h2></div>
         <hr/>
         <div>
-            <p>Určete, zda maj&iacute; b&yacute;t prvky zjednodu&scaron;eny.
+            <p>Určuje, zda budou zjednodu&scaron;eny (vyhlazeny) linie nebo polygony. Vyhlazen&iacute; je prov&aacute;děno tak, aby linie obsahovala minim&aacute;ln&iacute; počet segmentů a z&aacute;roveň zůstala co nejbl&iacute;že původn&iacute;m okrajům buněk rastru.
             </p>
-            <p>Pokud je pole za&scaron;krtnuto (v&yacute;choz&iacute; nastaven&iacute;), liniov&eacute; nebo polygonov&eacute; prvky budou vyhlazeny, aby poskytovaly uceleněj&scaron;&iacute; v&yacute;sledek. Pokud tato možnost zůstane neza&scaron;krtnuta, budou liniov&eacute; prvky dodržovat hranice buněk rastrov&eacute; datov&eacute; sady.
+            <ul>
+                <li>Za&scaron;krtnuto&mdash;Liniov&eacute; nebo polygonov&eacute; prvky budou vyhlazeny, aby poskytovaly obecněj&scaron;&iacute; v&yacute;sledek. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnuto &ndash; Liniov&eacute; nebo polygonov&eacute; prvky budou dodržovat hranice buněk rastrov&eacute; datov&eacute; sady.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tento parametr je podporov&aacute;n pouze, pokud je typ v&yacute;stupu linie nebo polygon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Vytvořit vícenásobné prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, zda se budou v&yacute;stupn&iacute; polygony skl&aacute;dat z jednoduch&yacute;ch nebo v&iacute;cen&aacute;sobn&yacute;ch prvků.
+            </p>
+            <ul>
+                <li>Za&scaron;krtnuto&mdash;V&iacute;cen&aacute;sobn&eacute; prvky budou vytvořeny na z&aacute;kladě polygonů, kter&eacute; maj&iacute; stejnou hodnotu.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnuto&mdash;Jednotliv&eacute; (jednoduch&eacute;) prvky budou vytvořeny pro každ&yacute; polygon. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tento parametr je podporov&aacute;n pouze, pokud je typ v&yacute;stupu polygon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maximální počet lomových bodů na polygonový prvek</h2></div>
+        <hr/>
+        <div>
+            <p>Limit lomov&yacute;ch bodů se použ&iacute;v&aacute; k rozdělen&iacute; polygonu do men&scaron;&iacute;ch polygonů.
+            </p>
+            <p>Pokud zůstane pr&aacute;zdn&yacute;, v&yacute;stupn&iacute; polygon nebude rozdělen. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+            </p>
+            <p>Tento parametr je podporov&aacute;n pouze, pokud je typ v&yacute;stupu polygon.
             </p>
         </div>
     </div>

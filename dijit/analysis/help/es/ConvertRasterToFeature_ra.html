@@ -55,11 +55,11 @@
     <p>Si la opci&oacute;n  <b>Utilizar la extensi&oacute;n de mapa actual</b> est&aacute; activada, solo se convertir&aacute;n las celdas de r&aacute;ster que est&eacute;n visibles dentro de la extensi&oacute;n de mapa actual. Si la opci&oacute;n est&aacute; desactivada, se convertir&aacute;n todas las celdas de la capa r&aacute;ster, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual. Tenga en cuenta este aspecto si la capa r&aacute;ster es grande o tiene una resoluci&oacute;n muy alta.
     </p>
     <p>Se describen a continuaci&oacute;n ejemplos de uso de esta herramienta:
- 
+
         <ul>
             <li>Crear entidades poligonales a partir de un r&aacute;ster de clasificaci&oacute;n de uso del suelo.
                 
- 
+
             </li>
             <li>Los arroyos identificados en un DEM se pueden convertir a entidades de l&iacute;neas.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Un DEM se puede convertir a entidades de puntos que se podr&aacute;n utilizar en un flujo de trabajo no basado en r&aacute;ster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Elegir campo</h2></div>
         <hr/>
         <div>
-            <p>Proporcione un campo que especifique el valor que se utilizar&aacute; para la conversi&oacute;n.
+            <p>Un campo que especifica el valor de conversi&oacute;n.
             </p>
             <p>Puede ser cualquier valor entero o de texto.
             </p>
             <p>Los campos que contienen valores de punto flotante solo se pueden utilizar si la salida es a un dataset de puntos.
             </p>
-            <p>La opci&oacute;n predeterminada consiste en utilizar el campo  <i>Value</i>, que contiene el valor de cada celda r&aacute;ster.
+            <p>La opci&oacute;n predeterminada es el campo  <i>Value</i>, que contiene el valor de cada celda r&aacute;ster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Elegir tipo de salida</h2></div>
         <hr/>
         <div>
-            <p>Elija el tipo de salida entre punto, l&iacute;nea o pol&iacute;gono.
+            <p>Especifica el tipo de salida.
             </p>
             <ul>
-                <li>Punto: el r&aacute;ster se convertir&aacute; a un dataset de puntos.
+                <li> <b>Punto</b>: el r&aacute;ster se convertir&aacute; en un dataset de puntos. Esta es la opci&oacute;n predeterminada.
                     
  
                 </li>
-                <li>L&iacute;nea: el r&aacute;ster se convertir&aacute; a un dataset de entidades de l&iacute;nea.
+                <li> <b>L&iacute;nea</b>: el r&aacute;ster se convertir&aacute; en un dataset de entidades de l&iacute;nea.
                     
  
                 </li>
-                <li>Pol&iacute;gono: el r&aacute;ster se convertir&aacute; a un dataset de entidades poligonales.
+                <li> <b>Pol&iacute;gono</b>: el r&aacute;ster se convertir&aacute; en un dataset de entidades de pol&iacute;gono.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Simplificar líneas o polígonos</h2></div>
         <hr/>
         <div>
-            <p>Especifique si se deben simplificar las entidades.
+            <p>Especifica si las l&iacute;neas o pol&iacute;gonos se simplificar&aacute;n (se suavizar&aacute;n). El suavizado se realiza de tal modo que la l&iacute;nea contenga un n&uacute;mero m&iacute;nimo de segmentos mientras permanece lo m&aacute;s cerca posible de los bordes de la celda r&aacute;ster original.
             </p>
-            <p>Si el par&aacute;metro est&aacute; activado (opci&oacute;n predeterminada), las entidades de l&iacute;nea o poligonales se suavizar&aacute;n para generar un resultado m&aacute;s generalizado. Si esta opci&oacute;n est&aacute; desactivada, las entidades lineales seguir&aacute;n los l&iacute;mites de las celdas del dataset r&aacute;ster.
+            <ul>
+                <li>Activado: las entidades de l&iacute;nea o poligonales se suavizar&aacute;n para producir un resultado m&aacute;s generalizado. Esta es la opci&oacute;n predeterminada.
+                    
+
+                </li>
+                <li>Desactivado: las entidades de l&iacute;nea o poligonales seguir&aacute;n los l&iacute;mites de las celdas del dataset r&aacute;ster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Este par&aacute;metro solo es compatible si el tipo de salida es l&iacute;nea o pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Crear entidades multiparte</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si los pol&iacute;gonos de salida estar&aacute;n compuestos por entidades multiparte o de una sola parte.
+            </p>
+            <ul>
+                <li>Activado: se crear&aacute;n entidades multiparte a partir de los pol&iacute;gonos que tengan el mismo valor.
+                    
+
+                </li>
+                <li>Desactivado: se crear&aacute;n entidades individuales (de una sola parte) para cada pol&iacute;gono. Esta es la opci&oacute;n predeterminada.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Este par&aacute;metro solo es compatible si el tipo de salida es pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Número máximo de vértices por entidad poligonal</h2></div>
+        <hr/>
+        <div>
+            <p>El l&iacute;mite de v&eacute;rtices utilizado para subdividir un pol&iacute;gono en pol&iacute;gonos m&aacute;s peque&ntilde;os.
+            </p>
+            <p>Si se deja vac&iacute;o, los pol&iacute;gonos de salida no se dividen. Esta es la opci&oacute;n predeterminada.
+            </p>
+            <p>Este par&aacute;metro solo es compatible si el tipo de salida es pol&iacute;gono.
             </p>
         </div>
     </div>

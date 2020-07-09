@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>產生趨勢點陣</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="產生趨勢點陣"></h2>
+        <hr/>
+    <p>Estimates the trend for each pixel along a dimension for one or more variables in a multidimensional raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>選擇多維影像圖層以分析趨勢</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>將分析的多維點陣的輸入影像圖層。
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>選擇將分析的變數趨勢所依據的維度</h2></div>
+        <hr/>
+        <div>
+            <p>將為分析中選擇的一或多個變數擷取趨勢時所依據的維度。
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>選擇要分析趨勢的變數</h2></div>
+        <hr/>
+        <div>
+            <p>將為其計算趨勢的變數。若未指定變數，將分析多維點陣中的第一個變數。
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>選擇用於沿維度擬合變數值的線類型</h2></div>
+        <hr/>
+        <div>
+            <p>指定用於沿維度擬合像素值的線類型。
+                <ul>
+                    <li> <b>線性</b> - 變數像素值將沿線性趨勢線擬合。這是預設情況。
+                    </li>
+                    <li> <b>多項式</b> - 變數像素值將沿二階多項式趨勢線擬合。
+                    </li>
+                    <li> <b>諧波</b> - 變數像素值將沿諧波趨勢線擬合。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>指定諧波週期的長度</h2></div>
+        <hr/>
+        <div>
+            <p>要塑模的定期差異長度。將趨勢線類型設為 <b>諧波</b>時，必須使用此參數。例如，葉綠度在一年內通常有一個較強的變化週期，因此週期長度為 1 年。每小時溫度資料在一天中會有一個強烈的變化週期，因此週期長度為 1 天。
+            </p>
+            <p>對於每年週期變化的資料，預設長度為 1 年。
+            </p>
+            <p>唯有當正在分析的維度是時間，並將趨勢線類型設為 <b>諧波</b>時，才會在趨勢分析中包含此參數。
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>選擇諧波週期長度的時間單位</h2></div>
+        <hr/>
+        <div>
+            <p>指定用於諧波週期長度的時間單位。
+                <ul>
+                    <li> <b>天</b> - 諧波週期的長度單位是天。
+                    </li>
+                    <li> <b>年</b> - 諧波週期的長度單位是年。這是預設情況。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>唯有當正在分析的維度是時間，並將趨勢線類型設為 <b>諧波</b>時，才會在趨勢分析中包含此參數。
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>指定諧波趨勢擬合的頻率數字</h2></div>
+        <hr/>
+        <div>
+            <p>要在諧波趨勢擬合中使用的頻率。此參數指定一年中的週期頻率。
+            </p>
+            <p>預設值為 1，或每年一個諧波週期。
+            </p>
+            <p>唯有當正在分析的維度是時間時，才會在趨勢分析中包含此參數。
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>指定趨勢擬合的多項式階數</h2></div>
+        <hr/>
+        <div>
+            <p>要在多項式趨勢擬合中使用的多項式階數。
+            </p>
+            <p>唯有當正在分析的維度是時間時，才會在趨勢分析中包含此參數。
+            </p>
+            <p>預設值是 2，或 2 次多項式。
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>選擇趨勢點陣要包含的模型統計資料</h2></div>
+        <hr/>
+        <div>
+            <p>此工具提供三種趨勢擬合線統計資料類型：均方根誤差 (RMSE)、R 平方適合度統計資料 (R 平方) 和斜率係數的 P 值統計資料（斜率係數的 P 值）。每個統計資料都有一個對應的核取方塊，用於指定是否將計算它，並作為輸出趨勢點陣中的其中一個頻段予以加入。
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>已勾選 - 將計算 RMSE，並作為輸出趨勢點陣中的其中一個頻段予以加入。這是預設情況。
+                            </li>
+                            <li>已取消勾選 - 不會計算 RMSE。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R 平方
+                        </p>
+                        <ul>
+                            <li>已勾選 - 將計算 R 平方值，並作為輸出趨勢點陣中的其中一個頻段予以加入。
+                            </li>
+                            <li>已取消勾選 - 不會計算 R 平方值。這是預設情況。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>斜率係數的 P 值
+                        </p>
+                        <ul>
+                            <li>已勾選 - 將計算 p 值，並作為輸出趨勢點陣中的其中一個頻段予以加入。
+                            </li>
+                            <li>已取消勾選 - 不會計算 p 值。這是預設情況。
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>忽略計算中缺少的值</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否在分析中忽略缺少的值。
+                <ul>
+                    <li>已勾選 - 分析將包含指定維度沿線的全部有效像素，並且忽略任何 NoData 像素。這是預設情況。
+                    </li>
+                    <li>已取消勾選 - 若指定維度沿線的像素存在任何 NoData 值，則分析將導出 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

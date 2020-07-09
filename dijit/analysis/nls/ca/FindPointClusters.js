@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({clustersLabel:"Cerca els clústers per a la capa ${inputLayerName}.",chooseLayerLabel:"Trieu la capa de la qual es cercaran els clústers",minClusterPtsLabel:"Nombre mínim de punts que es considerarà un clúster",minClustersPtsGAXLbl:"Nombre mínim de punts per originar un clúster",limitSearchLabel:"Limita l’interval de cerca a (opcional)",limitSearchReqLabel:"Limita l’interval de cerca a",outputLayerName:"Cerca els clústers de ${inputLayerName}",itemDescription:"Capa d’entitats generada en executar la solució Cerca clústers de punts per a ${inputLayerName}.",itemTags:"Resultat de l’anàlisi, Cerca clústers de punts, ${inputLayerName}",itemSnippet:"Capa d’entitats generada en executar Cerca clústers de punts",chooseClusteringMethod:"Trieu el mètode de clusterització que voleu utilitzar",dbscanLabel:"Distància definida (DBSCAN)",hdbscanLabel:"Ajust automàtic (HDBSCAN)",useTimeToFindCLusters:"Utilitza l'hora per cercar clústers",limitSearchDurLabel:"Limita la durada de la cerca a"});

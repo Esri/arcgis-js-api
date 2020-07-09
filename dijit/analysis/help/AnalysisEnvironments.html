@@ -265,6 +265,25 @@ your analysis.
             </p>
         </div>
     </div>
+    <div id="retryOnFailures">
+        <div><h2>Number of Retries on Failures</h2></div>
+        <hr/>
+        <div>
+            <p>Defines
+how many retries the same worker process will attempt when there is
+random failure processing a particular job.
+The default value is 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Recycle Interval Of Processing Workers</h2></div>
+        <hr/>
+        <div>
+            <p>Define how many image sections will be processed before restarting  worker processes, in order to prevent potential failures in long-running processes. The default value is 0.
+            </p>
+        </div>
+    </div>
     <div id="processorType">
         <div><h2>Processor type</h2></div>
         <hr/>

@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Välj raster i geoobjektplatslagret för att beräkna avståndet till</h2></div>
+        <div><h2>Välj raster eller geoobjektplatslager för att beräkna avståndet till</h2></div>
         <hr/>
         <div>
             <p>Det lager som definierar de k&auml;llor till vilka avst&aring;ndet ska ber&auml;knas. Lagret kan vara en bildtj&auml;nst eller en geoobjekttj&auml;nst.
@@ -137,6 +137,47 @@
             <p>Ett f&auml;lt i k&auml;llagret som inneh&aring;ller de v&auml;rden som definierar varje k&auml;lla. Det kan vara ett heltalsf&auml;lt eller str&auml;ngf&auml;lt i k&auml;lldatasetet.
             </p>
             <p>Standardv&auml;rdet &auml;r  <i>Value</i>. Om du anv&auml;nder en geoobjekttj&auml;nst och inga <i>Value</i>-f&auml;lt &auml;r tillg&auml;ngliga, anv&auml;nds det f&ouml;rsta tillg&auml;ngliga heltalsf&auml;ltet eller str&auml;ngf&auml;ltet. Om det inte finns n&aring;gra giltiga f&auml;lt anv&auml;nds f&auml;ltet ObjectID (t.ex. OID eller FID), beroende p&aring; typen av geoobjektindata.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Välj raster eller geoobjektlager som representerar hinder</h2></div>
+        <hr/>
+        <div>
+            <p>Datasetet som definierar hinder. 
+            </p>
+            <p>F&ouml;r en bildtj&auml;nst kan indatatypen vara heltal eller flyttal. Alla celler som har ett v&auml;rde (inklusive noll) behandlas som hinder, alla celler som &auml;r NoData behandlas som hinder.
+            </p>
+            <p>F&ouml;r en geoobjekttj&auml;nst kan indata vara punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avståndsmetod</h2></div>
+        <hr/>
+        <div>
+            <p>Avg&ouml;r om avst&aring;ndet ska ber&auml;knas med en planmetod (platt jordyta) eller en geodetisk metod (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Plan</b> &ndash; Ber&auml;kningen utf&ouml;rs p&aring; ett projicerat platt plan med ett tv&aring;dimensionellt kartesiskt koordinatsystem. Det h&auml;r &auml;r standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodetisk</b> &ndash; Avst&aring;nden ber&auml;knas p&aring; ellipsoiden. Det inneb&auml;r att resultatet inte f&ouml;r&auml;ndras beroende p&aring; indata- eller utdataprojektion.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Ger riktningslagrets namn tillbaka</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som ska skapas i  <b>Mitt inneh&aring;ll</b>. Du m&aring;ste ange ett namn som inte redan finns i <b>Mitt inneh&aring;ll</b>.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
             </p>
         </div>
     </div>

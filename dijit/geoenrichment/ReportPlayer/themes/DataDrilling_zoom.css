@@ -1,0 +1,81 @@
+
+
+
+.dataDrilling_dataDrillingViewDiv {
+    position: absolute;
+    box-shadow: 0px 0px 3px 3px rgba(50, 50, 50, 0.2);
+}
+
+    
+
+    .dataDrilling_dataDrillingViewDiv .dataDrilling_topToolbar {
+        left: 0px;
+        top: -42px;
+        height: 42px;
+        right: 0px;
+        position: absolute;
+        background-color: rgba(0,0,0,0.01); 
+        text-align: right;
+        padding-top: 10px;
+        font-size: 0px; 
+    }
+
+
+
+.dataDrilling_dataDrillingViewDiv .dataDrilling_dynamicSettingsToolbarRoot .sectionDynamicSettings_buttonBar > div {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+.dataDrilling_dataDrillingViewDiv .dataDrilling_exportButton {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    background-image: url("./images/commands/exportWhite.svg");
+    cursor: pointer;
+}
+
+
+
+.dataDrilling_dataDrillingViewDiv .dataDrilling_printButton {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    background-image: url("./images/commands/printWhite.svg");
+    cursor: pointer;
+}
+
+
+
+.dataDrilling_dataDrillingViewDiv .dataDrilling_backToMainViewButton {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    background-image: url("./images/close/closeWindowWhite.svg");
+    cursor: pointer;
+}
+
+
+
+.dataDrilling_dataDrillingViewDivScreen {
+    background-color: rgba(70, 70, 70, 0.7);
+}
+
+    .dataDrilling_dataDrillingViewDivScreen.mobile {
+        background-color: rgba(70, 70, 70, 0.95);
+    }
+
+
+
+.dataDrilling_dataDrillingViewDiv,
+.dataDrilling_dataDrillingViewDivScreen {
+    z-index: 151; 
+}

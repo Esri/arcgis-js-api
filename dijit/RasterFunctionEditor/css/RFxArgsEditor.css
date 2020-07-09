@@ -227,7 +227,7 @@
     width: 20px;
     background-position: center !important;
   }
-  
+
   .esriRFxArgsEditor .esriRFxRasterInput .zoomToRasterButtonNode .dijitButtonNode {
     background: none;
   }
@@ -299,3 +299,28 @@
     padding: 15px 0 0;
   }
 
+  .esri-rfx-raster-variable-grid .field-Select {
+    width: 60px;
+  }
+
+  .esri-rfx-raster-variable-grid .dgrid-scroller {
+    max-height: 160px;
+    overflow-y: auto !important;
+  }
+
+  .esri-rfx-raster-variable-grid {
+    padding-bottom: 7px;
+  }
+
+  .esri-rfx-mdimdef-byValues-grid .dgrid-scroller {
+    max-height: 200px;
+    overflow-y: auto !important;
+  }
+
+  .esri-paddingTop-5 {
+    padding-top: 5px;
+  }
+
+  .hidden {
+    display: none;
+  }

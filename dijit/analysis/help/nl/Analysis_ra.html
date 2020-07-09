@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van de  ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS web user experience zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Nabijheid gebruiken</b>, <b>Beeld analyseren</b>, <b>Terrein analyseren</b>, <b>Gegevens beheren</b> en <b>deep learning</b>.
+        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van   ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS webgebruikerservaring zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Nabijheid gebruiken</b>, <b>Beeld analyseren</b>, <b>Terrein analyseren</b>, <b>Gegevens beheren</b>, <b>Deep Learning</b> en <b>Multidimensionale analyse</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -182,13 +182,13 @@
             </p>
             <br/>
         </div>
-        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+        <div id="DetermineTravelCostPathAsPolylineTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Loopkostenpad bepalen als polylijn</h2></td>
+                    <td><h2>Reiskostenpad als polylijn bepalen</h2></td>
                     <td>
-                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Illustratie van loop voor het bepalen  van loopkostenpad bepalen als polylijn">
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Reiskostenpad bepalen als polylijn tool illustratie">
                     </td>
                 </tr></tbody>
             </table>
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Voorbeeld</b> haalt data uit bepaalde locaties uit een raster of set rasters.
+                </li>
             </ul>
             
         </p>
@@ -401,7 +403,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Raster naar object omzetten</h2></td>
+                    <td><h2>Raster naar object converteren</h2></td>
                     <td>
                     <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Tool Raster naar object omzetten">
                     </td>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Voorbeeld</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Voorbeeld">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cre&euml;ert een tabel- of puntobjectklasse met gegevenswaarden op gedefinieerde locaties die uit een raster of een set rasters worden gehaald.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Deep learningtoolset</h2>
+        <h2>Deep learning</h2>
         <hr/>
-        <p>Deze tools worden gebruikt om specifieke objecten in een afbeelding te detecteren of om pixels in een rasterdataset te classificeren. Deep learning is een methode om kunstmatige intelligentie te leren, waarbij objecten in satellietbeelden worden gedetecteerd met behulp van meerdere lagen in neurale netwerken, waarbij elke laag in staat is om een ​​of meer unieke objecten in de afbeelding te extraheren. Deze tools gebruiken de modellen die zijn getraind om specifieke objecten in deep learningkaders van derden te detecteren, zoals TensorFlow, CNTK en Keras, en uitvoerobjecten of klassekaarten.
+        <p>Deze tools worden gebruikt om specifieke objecten in een afbeelding te detecteren of te classificeren om pixels in een rasterdataset te classificeren. Deep learning is een methode om kunstmatige intelligentie te leren, waarbij objecten in satellietbeelden worden gedetecteerd met behulp van meerdere lagen in neurale netwerken, waarbij elke laag in staat is om een ​​of meer unieke objecten in de afbeelding te extraheren. Deze tools gebruiken de modellen die zijn getraind om specifieke objecten in deep learningkaders van derden te detecteren, zoals TensorFlow, CNTK en Keras, en uitvoerfeatures of klassekaarten.
             <ul>
                 <li> <b>Pixels classificeren met deep learning</b> produceert een ​​geclassificeerd raster met behulp van een getraind deep learningmodel.
                 </li>
                 <li> <b>Objecten classificeren met deep learning</b> produceert een feature class met objecten die het vindt in een invoerraster met behulp van een getraind deep learningmodel.
                 </li>
+                <li> <b>Objecten classificeren met behulp van deep learning</b> produceert een feature class of tabel waarin elk invoerobject in een invoerraster wordt toegewezen aan een klassenlabel met behulp van een getraind deep learningmodel.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Voert een getraind deep learningmodel uit op een invoerraster om een ​​geclassificeerd raster te produceren, waarbij aan elke geldige pixel een klasselabel is toegewezen.
+            <p>Deze tool voert een getraind deep learningmodel uit op een invoerraster om een ​​geclassificeerd raster te produceren en aan elke geldige pixel wordt een klasselabel toegewezen.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Voert een getraind deep learningmodel uit op een invoerraster om een ​​feature class te produceren die de gevonden objecten bevat. De objecten kunnen selectiekaders of vlakken zijn rond de gevonden objecten of wijzen naar de middelpunten van de objecten.
+            <p>Deze tool voert een getraind deep learningmodel uit op een invoerraster om een ​​featureklasse te produceren die de gevonden objecten bevat. De objecten kunnen selectiekaders of vlakken zijn rond de gevonden objecten of wijzen naar de middelpunten van de objecten.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objecten classificeren met behulp van deep learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Objecten classificeren met behulp van deep learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool voert een getraind deep learningmodel uit op een invoerraster en een optionele objectklasse om een objectklasse of tabel te produceren waarin aan elk invoerobject een klasselabel wordt toegewezen.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Multidimensionale analyse</h2>
+        <hr/>
+        <p>De tools in de multidimensionale analyse-toolset zorgen ervoor dat u een analyse kunt uitvoeren op wetenschappelijke gegevens over meerdere variabelen en dimensies.
+        </p>
+        <p>Multidimensionale gegevens representeren vastgelegde data op meerdere momenten, diepten en hoogten. Dit type gegevens wordt vaak gebruikt in atmosferische, oceanografische en aardwetenschappen. Met deze toolset kunt u multidimensionale rastergegevens in meerdere formaten analyseren, inclusief netCDF, HDF, GRIB, de multidimensionale moza&iuml;ek dataset en Esri's Cloud Raster Format (CRF).
+        </p>
+        <p>De volgende tabel vermeldt de multidimensionale analysetools en biedt een korte beschrijving van elk van deze.
+            <ul>
+                <li> <b>Multidimensionaal raster aggregeren</b>  genereert een multidimensionaal rasterdataset door bestaande multidimensionale rastervariabelen naast de afmeting te aggregeren.
+                </li>
+                <li> <b>Multidimensionale anomalie genereren</b> berekent de anomalie voor elk stukje in een multidimensionaal raster om een multidimensionaal raster te genereren.
+                </li>
+                <li> <b>Het raster Trend genereren</b> schat de trend voor elke pixel in tegen een afmeting voor een of meerdere variabelen in een multidimensionaal raster.
+                </li>
+                <li> <b>Het gebruik van trendraster voorspellen</b> berekent een voorspeld multidimensionaal raster met behulp van het uitgevoerde trendraster van de tool <b>Trendraster genereren</b>.
+                </li>
+                <li> <b>Argumentstatistieken zoeken</b> extraheert de afmetingswaarde  of bandindex waarin een gegeven statistiek wordt verworven voor elke pixel in een multidimensionaal of multibandraster.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Multidimensionaal raster aggregeren</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Multidimensionaal raster aggregeren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool genereert een multidimensionale rasterdataset door bestaande multidimensionale rastervariabelen langs een dimensie te aggregeren.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Argumentstatistieken zoeken</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Argumentstatistieken zoeken">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool extraheert de afmetingswaarde  of bandindex waarin een gegeven statistiek wordt verworven voor elke pixel in een multidimensionaal of multibandraster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Multidimensionale afwijking genereren</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Multidimensionale anomalie genereren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent de anomalie voor elk stuk in een multidimensionaal raster om een multidimensionaal raster te genereren.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trendraster genereren</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Trendraster genereren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool schat de trend voor elke pixel in een afmeting voor een of meerdere variabelen in een multidimensionaal raster.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Het gebruik van trendraster voorspellen</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Voorspellen met behulp van trendraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent een voorspeld multidimensionaal raster met behulp van het uitgevoerde trendraster van de tool  <b>Trendraster genereren</b>.
             </p>
             <br/>
         </div>

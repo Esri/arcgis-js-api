@@ -30,7 +30,7 @@
 }
 
 .esriGEConditionalStylingLegend_currentValue {
-    background-color: #EEEEEE;
+    outline: 1px solid #EEEEEE;
 }
 
 

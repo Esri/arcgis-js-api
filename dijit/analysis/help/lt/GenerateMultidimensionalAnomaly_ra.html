@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generuoti daugiamatę anomaliją</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generuoti daugiamatę anomaliją"></h2>
+        <hr/>
+    <p>Generuoja daugiamačių rastrinių duomenų rinkinį, apjungdamas esamus daugiamačius rastrinius kintamuosius pagal matmenį.
+    </p>
+    <p>Anomalija yra stebėjimo nukrypimas nuo jo standartinės, vidutinės arba medianos reik&scaron;mės.
+    </p>
+    <p>&Scaron;is įrankis skaičiuoja anomalijas per laiką vienam arba daugiau daugiamačio rastro kintamųjų. Jei be laiko matmens turite ir ne laiko matmenį, anomalija bus skaičiuojama kiekviename papildomo matmens žingsnyje.
+    </p>
+    <p>Pavyzdžiui, jei turite kasmėnesinius vandenynų temperatūros duomenis, surinktus kas 1 metrą iki 100 metrų gylio, ir norite skaičiuoti temperatūros anomalijas kaip nukrypimus nuo metinio vidurkio: &scaron;is įrankis temperatūros anomalijas pagal metinį vidurkį nustatys, jei pasirinksite  <b>Metinis</b> kaip <b>laiko intervalą vidurkiui skaičiuoti</b>, ir pateiks anomalijų reik&scaron;mes kiekvienam i&scaron; 100 gylių.
+    </p>
+    <p>&Scaron;is įrankis palaiko tik daugiamačius rastrinius duomenų rinkinius, kurie turi laiko matmenį.
+    </p>
+    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik esamoje žemėlapio aprėptyje matomi kintamieji. Jei nepažymėta, bus analizuojami viso žemėlapio kintamieji, net jei jie nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pasirinkite daugiamatį vaizdų sluoksnį anomalijai generuoti</h2></div>
+        <hr/>
+        <div>
+            <p>Daugiamačio rastrinio duomenų rinkinio įvesties vaizdų sluoksnis.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pasirinkite kintamąjį (-uosius), kuriam bus sugeneruotos anomalijos</h2></div>
+        <hr/>
+        <div>
+            <p>Kintamasis arba kintamieji, kurio (kurių) anomalijos bus skaičiuojamos. Jei kintamasis nenurodytas, bus analizuojami visi laiko matmens kintamieji.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Pasirinkite anomalijos generavimo būdą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo metodą, kurį naudojant bus generuojamos anomalijos. 
+                <ul>
+                    <li> <b>Skirtumas nuo vidurkio</b> &ndash; bus skaičiuojamas skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių vidurkio pagal intervalą apibrėžtose skiltyse. Tai numatytasis nustatymas.
+                    </li>
+                    <li> <b>Procentinis skirtumas nuo vidurkio</b> &ndash; bus skaičiuojamas procentinis skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių vidurkio pagal intervalą apibrėžtose skiltyse.
+                    </li>
+                    <li> <b>Vidurkio procentinė reik&scaron;mė</b> &ndash; bus skaičiuojama vidurkio procentinė reik&scaron;mė.
+                    </li>
+                    <li> <b>Z įvertis</b> &ndash; bus skaičiuojamas kiekvieno pikselio z įvertis. Z įvertis lygus 0 rodo, kad pikselio reik&scaron;mė tapati vidurkiui. Z įvertis lygus 1 rodo, kad pikselio reik&scaron;mė nuo vidurkio skiriasi per 1 standartinį nuokrypį. Z įvertis lygus 2 rodo, kad pikselio reik&scaron;mė nuo vidurkio skiriasi per 2 standartinius nuokrypius ir t. t.
+                    </li>
+                    <li> <b>Skirtumas nuo medianos</b> &ndash; bus skaičiuojamas skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių matematinės medianos pagal intervalą apibrėžtose skiltyse.
+                    </li>
+                    <li> <b>Procentinis skirtumas nuo medianos</b> &ndash; bus skaičiuojamas procentinis skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių matematinės medianos pagal intervalą apibrėžtose skiltyse.
+                    </li>
+                    <li> <b>Medianos procentinė reik&scaron;mė</b> &ndash; bus skaičiuojama matematinės medianos procentinė reik&scaron;mė.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Toliau pateikiami anomalijos reik&scaron;mių skaičiavimo matematiniai metodai. Anomalijas galima skaičiuoti kaip vidutines, apibrėžiant vidurkio arba medianos reik&scaron;mes. Jei duomenų pasiskirstymas i&scaron;kreiptas, i&scaron;skirtys gali turėti didelės įtakos vidurkiui. Tokio tipo duomenims gali būti tinkamesni medianos reik&scaron;mę arba z įvertį naudojantys metodai.
+            </p>
+            <p>
+                <ul>
+                    <li>Skirtumas nuo vidurkio = x - &micro;
+
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                                
+
+                            </li>
+                            <li>&micro; = to pikselio reik&scaron;mių per nurodytą laiko intervalą vidurkis
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Procentinis skirtumas nuo vidurkio = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                                
+
+                            </li>
+                            <li>&micro; = to pikselio reik&scaron;mių per nurodytą laiko intervalą vidurkis
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absoliučioji reik&scaron;mė skirtumo tarp pikselio reik&scaron;mės ir vidurkio
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Vidurkio procentinė reik&scaron;mė = x - &micro;
+
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                                
+
+                            </li>
+                            <li>&micro; = to pikselio reik&scaron;mių per nurodytą laiko intervalą vidurkis
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Skirtumas nuo medianos = x - &micro;
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                            </li>
+                            <li>&szlig; = to pikselio reik&scaron;mių per nurodytą laiko intervalą mediana
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentinis skirtumas nuo medianos = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                            </li>
+                            <li>&szlig; = to pikselio reik&scaron;mių per nurodytą laiko intervalą mediana
+                            </li>
+                            <li>|x - &szlig;| = absoliučioji skirtumo tarp pikselio reik&scaron;mės ir medianos reik&scaron;mė
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Procentinė medianos dalis = x / &szlig;
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                            </li>
+                            <li>&szlig; = to pikselio reik&scaron;mių per nurodytą laiko intervalą mediana
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z įvertis  = (x - &micro;) / S
+                        <ul>
+                            <li>x = pikselio reik&scaron;mė skiltyje
+                            </li>
+                            <li>&micro; = to pikselio reik&scaron;mių per nurodytą laiko intervalą vidurkis
+                            </li>
+                            <li>S = standartinis pikselio reik&scaron;mių nuokrypis per nurodytą laiko intervalą
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Pasirinkite laiko intervalą vidurkiui apskaičiuoti</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo laiko intervalą, kurį naudojant bus skaičiuojamas vidurkis. 
+                <ul>
+                    <li> <b>Viskas</b> &ndash; skaičiuoja kiekvieno pikselio vidurkį per visas skiltis.
+                    </li>
+                    <li> <b>Metų</b> &ndash; skaičiuoja kiekvieno pikselio metinį vidurkį.
+                    </li>
+                    <li> <b>Kas mėnesį</b> &ndash; skaičiuoja kiekvieno pikselio mėnesinį vidurkį.
+                    </li>
+                    <li> <b>Kas savaitę</b> &ndash; skaičiuoja kiekvieno pikselio savaitinį vidurkį.
+                    </li>
+                    <li> <b>Kasdien</b> &ndash; skaičiuoja kiekvieno pikselio dienos vidurkį.
+                    </li>
+                    <li> <b>Valandos</b> &ndash; skaičiuoja kiekvieno pikselio valandinį vidurkį.
+                    </li>
+                    <li> <b>I&scaron;orinis rastras</b> &ndash; nurodomas esamas rastrinis duomenų rinkinys, kuriame yra kiekvieno pikselio vidutinė arba medianos reik&scaron;mė.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Pasirinkite vidurkio vaizdų sluoksnį kaip atskaitą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo atskaitos rastrinį duomenų rinkinį, kuriame yra anksčiau apskaičiuotas kiekvieno pikselio vidurkis. Anomalijos bus apskaičiuojamos, palyginti su &scaron;iuo vidurkiu.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės. 
+                <ul>
+                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    </li>
+                    <li>Nepažymėta &ndash; analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikselis turi bent vieną NoData reik&scaron;mę.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

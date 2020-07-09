@@ -55,11 +55,11 @@
     <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel a program csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; raszteres cell&aacute;kat alak&iacute;tja &aacute;t. Ha nincs bejel&ouml;lve, akkor a raszteres r&eacute;teg &ouml;sszes cell&aacute;j&aacute;t &aacute;talak&iacute;tja, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen. &Uuml;gyeljen erre, amikor a raszteres r&eacute;teg nagy, vagy nagyon nagy felbont&aacute;ssal rendelkezik.
     </p>
     <p>Az eszk&ouml;z p&eacute;ld&aacute;ul az al&aacute;bbiakra haszn&aacute;lhat&oacute;:
- 
+
         <ul>
             <li>Polygon vektoros elemek l&eacute;trehoz&aacute;sa f&ouml;ldhaszn&aacute;lat-oszt&aacute;lyoz&aacute;st tartalmaz&oacute; raszterből.
                 
- 
+
             </li>
             <li>Egy DMM-ben azonos&iacute;tott adatfolyamok vonalas vektoros elemekk&eacute; alak&iacute;that&oacute;k.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Egy DMM nem raszteres munkafolyamatban haszn&aacute;lhat&oacute;, pont-t&iacute;pus&uacute; vektoros elemekk&eacute; alak&iacute;that&oacute;.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Válasszon mezőt</h2></div>
         <hr/>
         <div>
-            <p>Adja meg az &aacute;talak&iacute;t&aacute;shoz haszn&aacute;lt &eacute;rt&eacute;ket meghat&aacute;roz&oacute; mezőt.
+            <p>A konverzi&oacute; &eacute;rt&eacute;k&eacute;t meghat&aacute;roz&oacute; mező.
             </p>
             <p>Ez lehet integer vagy sz&ouml;veges &eacute;rt&eacute;k.
             </p>
             <p>Lebegőpontos &eacute;rt&eacute;keket tartalmaz&oacute; mező csak akkor haszn&aacute;lhat&oacute;, ha a kimenet pont-t&iacute;pus&uacute; adathalmaz.
             </p>
-            <p>Az alap&eacute;rtelmezett v&aacute;laszt&aacute;s a(z)  <i>Value</i> mező haszn&aacute;lata, amely az &eacute;rt&eacute;ket minden egy raszteres cell&aacute;ban tartalmazza.
+            <p>Az alap&eacute;rtelmezett a(z)  <i>Value</i> mező, amely az &eacute;rt&eacute;ket minden egy raszteres cell&aacute;ban tartalmazza.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Válasszon kimenettípust</h2></div>
         <hr/>
         <div>
-            <p>Kimenett&iacute;pusk&eacute;nt v&aacute;laszthat pontot, vonalat vagy polygont.
+            <p>A kimenet t&iacute;pus&aacute;t hat&aacute;rozza meg.
             </p>
             <ul>
-                <li>Pont &ndash; a rasztert pont-t&iacute;pus&uacute; adathalmazz&aacute; alak&iacute;tja.
+                <li> <b>Pont</b> &ndash; A rasztert pont t&iacute;pus&uacute; adathalmazz&aacute; alak&iacute;tja. Ez az alap&eacute;rtelmez&eacute;s.
                     
  
                 </li>
-                <li>Vonal &ndash; a rasztert vonalas vektoros elemeket tartalmaz&oacute; adathalmazz&aacute; alak&iacute;tja.
+                <li> <b>Vonal</b> &ndash; A rasztert vonalas vektoros elemeket tartalmaz&oacute; adathalmazz&aacute; alak&iacute;tja.
                     
  
                 </li>
-                <li>Polygon &ndash; a rasztert polygon vektoros elemeket tartalmaz&oacute; adathalmazz&aacute; alak&iacute;tja.
+                <li> <b>Polygon</b> &ndash; A rasztert polygon vektoros elemeket tartalmaz&oacute; adathalmazz&aacute; alak&iacute;tja.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Vonalak vagy polygonok egyszerűsítése</h2></div>
         <hr/>
         <div>
-            <p>Megadhatja, hogy szeretn&eacute;-e a vektoros elemek egyszerűs&iacute;t&eacute;s&eacute;t.
+            <p>Meghat&aacute;rozza, hogy a rendszer egyszerűs&iacute;tse-e (sim&iacute;tsa-e) a vonalakat vagy polygonokat. A sim&iacute;t&aacute;s &uacute;gy t&ouml;rt&eacute;nik, hogy a vonal tartalmaz egy minim&aacute;lis sz&aacute;m&uacute; szegmenst, ugyanakkor a a lehető legk&ouml;zelebb marad az eredeti rasztercella &eacute;leihez.
             </p>
-            <p>Bejel&ouml;l&eacute;se eset&eacute;n (alap&eacute;rtelmez&eacute;s) kisim&iacute;tja a vonalas &eacute;s polygon vektoros elemeket, ami generaliz&aacute;lja az eredm&eacute;nyt. Ha a lehetős&eacute;g nincs bejel&ouml;lve, a vonalas vektoros elemek a raszteres adathalmaz cell&aacute;inak hat&aacute;rvonalait fogj&aacute;k k&ouml;vetni.
+            <ul>
+                <li>Bejel&ouml;lve &ndash; A rendszer kisim&iacute;tja a vonal &eacute;s a polygon t&iacute;pus&uacute; vektoros elemeket, ami generaliz&aacute;lja az eredm&eacute;nyt. Ez az alap&eacute;rtelmez&eacute;s.
+                    
+
+                </li>
+                <li>Nincs bejel&ouml;lve &ndash; A vonal t&iacute;pus&uacute; vektoros elemek a raszteres adathalmaz cell&aacute;inak hat&aacute;rvonalait fogj&aacute;k k&ouml;vetni.
+                    
+
+                </li>
+            </ul>
+            
+            <p>A param&eacute;ter csak akkor t&aacute;mogatott, ha a kimenet t&iacute;pusa vonal vagy polygon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Többrészes vektoros elemek létrehozása</h2></div>
+        <hr/>
+        <div>
+            <p>Megadja, hogy az eredm&eacute;ny polygonok egyr&eacute;szes vagy t&ouml;bbr&eacute;szes vektoros elemekből &aacute;lljanak majd.
+            </p>
+            <ul>
+                <li>Bejel&ouml;lve &ndash; A rendszer a t&ouml;bbr&eacute;szes vektoros elemeket azonos &eacute;rt&eacute;kű polygonok alapj&aacute;n hozza l&eacute;tre.
+                    
+
+                </li>
+                <li>Nincs bejel&ouml;lve &ndash; A rendszer &ouml;n&aacute;ll&oacute; (egyr&eacute;szes) vektoros elemeket hoz l&eacute;tre mindegyik polygonhoz. Ez az alap&eacute;rtelmez&eacute;s.
+                    
+
+                </li>
+            </ul>
+            
+            <p>A param&eacute;ter csak akkor t&aacute;mogatott, ha a kimenet t&iacute;pusa polygon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Csomópontok maximális száma polygon típusú vektoros elemenként</h2></div>
+        <hr/>
+        <div>
+            <p>Egy polygon kisebb polygonokra val&oacute; oszt&aacute;s&aacute;ra szolg&aacute;l&oacute; csom&oacute;pontkorl&aacute;t.
+            </p>
+            <p>Ha &uuml;res, az eredm&eacute;ny polygonok nem lesznek felosztva. Ez az alap&eacute;rtelmez&eacute;s.
+            </p>
+            <p>A param&eacute;ter csak akkor t&aacute;mogatott, ha a kimenet t&iacute;pusa polygon.
             </p>
         </div>
     </div>

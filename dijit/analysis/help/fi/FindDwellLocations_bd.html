@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Etsi asuinpaikkojen sijainteja</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Etsi asuinpaikkojen sijainteja -ty&ouml;nkulkukaavio"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu toimii ajan huomioivassa karttatasossa, jossa on tyypin  <code>hetki</code> pistekohteita. Ty&ouml;kalu m&auml;&auml;ritt&auml;&auml; ensin kohteet reittiin k&auml;ytt&auml;m&auml;ll&auml; yksil&ouml;llist&auml; tunnusta. Kohteiden aika m&auml;&auml;ritt&auml;&auml; reitin j&auml;rjestyksen. Seuraavaksi lasketaan reitin ensimm&auml;isen havainnon ja seuraavan havainnon v&auml;linen et&auml;isyys. Kohteiden ajatellaan sis&auml;ltyv&auml;n asuinpaikkaan, jos kaksi tilap&auml;isesti per&auml;kk&auml;ist&auml; pistett&auml; s&auml;ilyv&auml;t annetulla et&auml;isyydell&auml; toisistaan v&auml;hint&auml;&auml;n m&auml;&auml;ritetyn ajan. Kun havaitaan, ett&auml; kaksi kohdetta sis&auml;ltyy asuinpaikkaan, sen ensimm&auml;ist&auml; kohdetta pidet&auml;&auml;n viitepisteen&auml;, ja ty&ouml;kalu etsii seuraavat per&auml;kk&auml;iset kohteet, jotka ovat m&auml;&auml;ritetyll&auml; et&auml;isyydell&auml; asuinpaikan viitepisteest&auml;. Kun kaikki m&auml;&auml;ritetyll&auml; et&auml;isyydell&auml; olevat kohteet on l&ouml;ydetty, ty&ouml;kalu ker&auml;&auml; asuinpaikkakohteet ja laskee niiden keskim&auml;&auml;r&auml;isen keskipisteen. Nykyist&auml; asuinpaikkaa ennen ja sen j&auml;lkeen olevat kohteet lis&auml;t&auml;&auml;n asuinpaikkaan, jos ne ovat annetulla et&auml;isyydell&auml; asuinpaikan sijainnin keskim&auml;&auml;r&auml;isest&auml; keskipisteest&auml;. T&auml;t&auml; prosessia jatketaan reitin loppuun saakka.
+    </p>
+    <p>Ajan huomioivien karttatasojen kohteet voidaan kuvata jommallakummalla seuraavista tavoista:
+        <ul>
+            <li>hetki: yksitt&auml;inen hetki ajassa
+            </li>
+            <li>aikav&auml;li: aloitus- ja lopetusaika.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Oletetaan esimerkiksi, ett&auml; ty&ouml;skentelet Kuljetusosastolla ja ett&auml; olet ker&auml;nnyt GPS-paikannustietoja p&auml;&auml;v&auml;ylill&auml; ajavista ajoneuvoista. Kukin GPS-tietue sis&auml;lt&auml;&auml; yksil&ouml;llisen ajoneuvotunnuksen, ajan, sijainnin ja nopeuden. Yksil&ouml;llisten reittien m&auml;&auml;rityksess&auml; k&auml;ytetyn yksil&ouml;llisen ajoneuvotunnuksen avulla voit etsi&auml; ajoneuvoja, jotka eiv&auml;t ole liikkuneet 100:a metri&auml; enemp&auml;&auml; v&auml;hint&auml;&auml;n 15 minuuttiin, ja paljastaa siten ongelmalliset alueet tieverkostossa. Lis&auml;ksi voit laskea tilastotietoja, kuten ajoneuvojen keskinopeuden asuinpaikan sijainnissa.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Etsi asuinpaikkoja seuraavasta kohteesta valitsemalla karttataso</h2></div>
+        <hr/>
+        <div>
+            <p>Pistekarttataso, joka summataan asuinpaikkoihin. Ajan on oltava k&auml;yt&ouml;ss&auml; l&auml;ht&ouml;aineiston karttatasossa, jossa on ajan hetke&auml; edustavia kohteita. Lis&auml;ksi siin&auml; on oltava v&auml;hint&auml;&auml;n yksi kentt&auml;, jota voi k&auml;ytt&auml;&auml; reittien tunnistamiseen.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Valitse analyysikarttataso</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n. Voit valinnaisesti k&auml;ytt&auml;&auml; suodatinta l&auml;ht&ouml;karttatasossa tai valintaa karttaan lis&auml;tyiss&auml; is&auml;nn&ouml;idyiss&auml; karttatasoissa. Suodattimia ja valintoja k&auml;ytet&auml;&auml;n vain analyyseissa. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Valitse vähintään yksi kenttä reittien tunnistamista varten</h2></div>
+        <hr/>
+        <div>
+            <p>Kent&auml;t, jotka edustavat reittitunnusta. Voit k&auml;ytt&auml;&auml; yht&auml; kentt&auml;&auml; tai useaa kentt&auml;&auml; reittien yksil&ouml;llisten arvojen esitt&auml;miseen.
+            </p>
+            <p>Jos olet esimerkiksi etsim&auml;ss&auml; asuinpaikkojen sijainteja hurrikaanien tapauksessa, voit k&auml;ytt&auml;&auml; hurrikaanin nime&auml; reittikentt&auml;n&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Valitse etäisyyden laskentatapa</h2></div>
+        <hr/>
+        <div>
+            <p>Menetelm&auml;, jota k&auml;ytet&auml;&auml;n reiteille osuvien asuinpaikkojen v&auml;lisen et&auml;isyyden laskentaan.  <b>Planaarinen</b>-menetelm&auml; voi laskea tulokset muita menetelmi&auml; nopeammin, mutta se ei rivit&auml; reittej&auml; kansainv&auml;lisen p&auml;iv&auml;m&auml;&auml;r&auml;rajan ymp&auml;rille tai ota huomioon maapallon todellista muotoa puskuroitaessa. <b>Geodeettinen</b>-menetelm&auml; rivitt&auml;&auml; reitit kansainv&auml;lisen p&auml;iv&auml;m&auml;&auml;r&auml;rajan ymp&auml;rille tarvittaessa ja ottaa maapallon muodon huomioon geodeettisen puskurin avulla.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Määritä spatiaalinen hakuetäisyys</h2></div>
+        <hr/>
+        <div>
+            <p>Asuinpaikan et&auml;isyyden toleranssi on niiden pisteiden v&auml;linen enimm&auml;iset&auml;isyys, joiden oletetaan olevan yksitt&auml;isess&auml; asuinpaikan sijainnissa.
+            </p>
+            <p>Jos haluat esimerkiksi etsi&auml; asuinpaikkoja, joissa liikenne ei ole liikkunut 20 metri&auml; enemp&auml;&auml; tietyn ajan kuluessa, et&auml;isyyden toleranssi olisi t&auml;ll&ouml;in 20 metri&auml;.
+            </p>
+            <p>M&auml;&auml;rit&auml; aika  <b>M&auml;&auml;rit&auml; temporaalinen hakualue</b> -parametrin avulla.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Jaa reitit (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Et&auml;isyyden toleranssin yksikk&ouml;.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Määritä temporaalinen hakualue</h2></div>
+        <hr/>
+        <div>
+            <p>Asuinpaikan ajan toleranssi on sen asuinpaikan asumisajan v&auml;himm&auml;iskesto, jonka oletetaan olevan yksitt&auml;isess&auml; asuinpaikan sijainnissa.
+            </p>
+            <p>Jos haluat esimerkiksi selvitt&auml;&auml;, miss&auml; liikenne ei ole liikkunut tietty&auml; et&auml;isyytt&auml; tunnin sis&auml;ll&auml;, ajan toleranssi on 1 tunti.
+            </p>
+            <p>M&auml;&auml;rit&auml; et&auml;isyys  <b>M&auml;&auml;rit&auml; spatiaalinen hakualue</b> -parametrin avulla.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Valitse etäisyys, jonka jälkeen reitti jaetaan (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Ajan toleranssin yksikk&ouml;.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisää tilastotiedot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Voit laskea seuraavat numerokentist&auml;: 
+                <ul>
+                    <li>M&auml;&auml;r&auml;: laskee muiden kuin nolla-arvojen m&auml;&auml;r&auml;n. Voidaan k&auml;ytt&auml;&auml; numerokentiss&auml; tai merkkijonoissa. Arvojen [nolla, 0, 2] nolla-arvojen m&auml;&auml;r&auml; on 2.
+                    </li>
+                    <li>Summa: kunkin kent&auml;n numeroarvojen summa. Numeroarvojen [nolla, nolla, 3] summa on 3.
+                    </li>
+                    <li>Keskiarvo: numeroarvojen keskiarvo. Arvojen [0, 2, nolla] keskiarvo on 1.
+                    </li>
+                    <li>Minimi: numerokent&auml;n minimiarvo. Arvojen [0, 2, nolla] minimiarvo on 0. 
+                    </li>
+                    <li>Maksimiarvo: numerokent&auml;n maksimiarvo. Arvojen [0, 2, nolla] maksimiarvo on 2.
+                    </li>
+                    <li>Alue: numerokent&auml;n alue. T&auml;m&auml; lasketaan minimiarvoina, jotka on v&auml;hennetty maksimiarvosta. Arvojen [0, nolla, 1] alue on 1. Arvojen [nolla, 4] alue on 0.
+                    </li>
+                    <li>Varianssi: numerokent&auml;n varianssi reitill&auml;. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,0, 1,1] varianssi on 0,25.
+                    </li>
+                    <li>Vakio keskihajonta: numerokent&auml;n keskihajonta. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,0, 1,1] vakio keskihajonta on 0,5. 
+                    </li>
+                    <li>Ensimm&auml;inen &ndash; m&auml;&auml;ritetyn kent&auml;n ensimm&auml;inen arvo yhteenlasketussa reitiss&auml;. Jos reitill&auml; on seuraavat ajan mukaan j&auml;rjestetyt arvot kent&auml;lle: [1,5,10,20], ensimm&auml;inen arvo on 1.
+                    </li>
+                    <li>Viimeinen &ndash; m&auml;&auml;ritetyn kent&auml;n viimeinen arvo yhteenlasketussa reitiss&auml;. Jos reitill&auml; on seuraavat ajan mukaan j&auml;rjestetyt arvot kent&auml;lle: [1,5,10,20], viimeinen arvo on 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voit laskea seuraavat merkkijonokentist&auml;:
+                <ul>
+                    <li>M&auml;&auml;r&auml;: muiden kuin nolla-merkkijonojen m&auml;&auml;r&auml;.
+                    </li>
+                    <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
+                    </li>
+                    <li>Ensimm&auml;inen &ndash; m&auml;&auml;ritetyn kent&auml;n ensimm&auml;inen arvo yhteenlasketussa reitiss&auml;. Jos reitill&auml; on seuraavat ajan mukaan j&auml;rjestetyt arvot kent&auml;lle: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], ensimm&auml;inen arvo on Toronto.
+                    </li>
+                    <li>Viimeinen &ndash; m&auml;&auml;ritetyn kent&auml;n viimeinen arvo yhteenlasketussa reitiss&auml;. Jos reitill&auml; on seuraavat ajan mukaan j&auml;rjestetyt arvot kent&auml;lle: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], viimeinen arvo on Boston.
+                    </li>
+                </ul>
+                Kaikki tilastotiedot lasketaan muina kuin nolla-arvoina. Tuloskarttataso sis&auml;lt&auml;&auml; uuden kent&auml;n jokaiselle lasketulle tilastotiedolle. Voit lis&auml;t&auml; niin paljon tilastotietoja kuin haluat valitsemalla ominaisuustiedon ja tilastotiedon.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Tulosta asuinpaikkojen sijainnit muodossa</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, mitk&auml; kohteet palautetaan ja niiden muodon. Nelj&auml; tyyppi&auml; on k&auml;ytett&auml;viss&auml;: 
+                <ul>
+                    <li> <b>Keskim&auml;&auml;r&auml;iset keskipisteet</b> &ndash; piste, joka edustaa kunkin l&ouml;ydetyn asuinpaikan sijainnin keskipistett&auml;. Ominaisuustiedoista laaditaan yhteenveto. T&auml;m&auml; on oletusarvo.
+                         
+                    </li>
+                    <li> <b>Konveksit peitteet</b> &ndash; aluekohteet, jotka edustavat kunkin asuinpaikkaryhm&auml;n konveksia peitett&auml;. Ominaisuustiedoista laaditaan yhteenveto.
+                         
+                    </li>
+                    <li> <b>Asuinpaikkakohteet</b> &ndash; kaikki l&auml;ht&ouml;aineiston pistekohteet ja ominaisuustiedot, jotka kuuluvat asuinpaikkaan, palautetaan.
+                         
+                    </li>
+                    <li> <b>Kaikki kohteet</b> &ndash; kaikki l&auml;ht&ouml;aineiston pistekohteet ja ominaisuustiedot palautetaan.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analysoi aikavälejä sisältävät tiedot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml;, haluatko etsi&auml; asuinpaikkojen sijainteja k&auml;ytt&auml;m&auml;ll&auml; aikav&auml;lej&auml;, jotka segmentoivat l&auml;ht&ouml;aineistosi kohteet analyysia varten. Jos k&auml;yt&auml;t aikav&auml;lej&auml;, sinun on m&auml;&auml;ritett&auml;v&auml; aikav&auml;li, jota haluat k&auml;ytt&auml;&auml;, ja m&auml;&auml;ritett&auml;v&auml; vaihtoehtoisesti viiteaika. Jos et m&auml;&auml;rit&auml; viiteaikaa, j&auml;rjestelm&auml; k&auml;ytt&auml;&auml; p&auml;iv&auml;m&auml;&auml;r&auml;&auml; 1.1.1970. 
+            </p>
+            <p>Jos m&auml;&auml;rit&auml;t aikarajaksi esimerkiksi yhden p&auml;iv&auml;n, alkaen 1.1.1990 klo 9.00, kukin reitti katkaistaan klo 9.00 kunakin p&auml;iv&auml;n&auml; ja analysoidaan kyseisen segmentin osalta. Yksik&auml;&auml;n asuinpaikka ei ala ennen klo 9.00:&auml;&auml; eik&auml; p&auml;&auml;ty sen j&auml;lkeen. 
+            </p>
+            <p>Aikav&auml;lien k&auml;ytt&ouml; on nopea tapa kiihdytt&auml;&auml; laskenta-aikaa, koska se luo pienempi&auml; analysoitavia reittej&auml;. Jos toistuvan aikav&auml;lin k&auml;ytt&ouml; jaossa on parempi analyysin kannalta, sit&auml; suositellaan Big Datan k&auml;sittelyss&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Luotavan karttatason nimi. Jos kirjoitat ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n, tulokset tallennetaan  <b>Oma sis&auml;lt&ouml;</b> -osioon ja lis&auml;t&auml;&auml;n karttaan. Jos kirjoitat Big Data -tiedostojakoon, tulokset tallennetaan Big Data -tiedostojakoon ja lis&auml;t&auml;&auml;n sen manifest-tiedostoon. Tuloksia  ei lis&auml;t&auml; karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Kun kirjoitat kohteeseen  ArcGIS Data Store  (relaatiotietokantaan perustuvaan tai spatiotemporaaliseen Big Data -s&auml;il&ouml;&ouml;n) k&auml;ytt&auml;m&auml;ll&auml; avattavaa  <b>Tallenna tulos kohteeseen</b> -luetteloa, voit m&auml;&auml;ritt&auml;&auml; kansion nimen <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

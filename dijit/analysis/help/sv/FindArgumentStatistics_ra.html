@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Hitta argumentstatistik</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Hitta argumentstatistik"></h2>
+        <hr/>
+    <p>Extracts the dimension value  or band index at which a given statistic is attained for each pixel in a multidimensional or multiband raster.
+    </p>
+    <p>Anv&auml;nd det h&auml;r verktyget f&ouml;r att extrahera dimensionsv&auml;rdet (t.ex. datum, h&ouml;jd eller djup) d&auml;r en specifik statistisk egenskap uppn&aring;s i rasterbunten i ett flerdimensionellt rasterdataset. Du kan &auml;ven hitta det bandnummer d&auml;r statistiken uppn&aring;s i ett flerbandsraster.
+    </p>
+    <p>Du kan till exempel vilja veta i vilken m&aring;nad varje pixel n&aring;dde den h&ouml;gsta temperaturen p&aring; havsyteniv&aring; under 30 &aring;rs insamlade data. Ett annat exempel &auml;r om du har en fj&auml;rranalysbild med &aring;tta band och vill veta i vilket band det minsta reflektansv&auml;rdet uppn&aring;ddes f&ouml;r varje pixel.
+    </p>
+    <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras variabler eller band f&ouml;r de lager som &auml;r synliga i den aktuella kartutbredningen. Om alternativet inte markeras analyseras variablerna eller banden i hela lagret, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Välj flerdimensionellt eller flerbands bildlager att analysera</h2></div>
+        <hr/>
+        <div>
+            <p>Det multidimensionella raster eller multibandraster som indata som ska analyseras.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Välj dimension som statistiken ska extraheras från</h2></div>
+        <hr/>
+        <div>
+            <p>Den dimension som statistiken ska extraheras fr&aring;n. Om indatarastret inte &auml;r ett flerdimensionellt raster kr&auml;vs inte den h&auml;r parametern.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Välj variabel/variabler som ska analyseras</h2></div>
+        <hr/>
+        <div>
+            <p>Den eller de variabler som ska analyseras. Om indatarastret inte &auml;r flerdimensionellt, ses pixelv&auml;rdena i flerbandsrastret som variabeln. Om indatarastret &auml;r flerdimensionellt och ingen variabel anges analyseras alla variabler med den valda dimensionen.
+            </p>
+            <p>Om du till exempel vill hitta de &aring;r d&auml;r temperaturv&auml;rdena var h&ouml;gst, anger du temperatur som den variabel som ska analyseras. Om du inte anger n&aring;gra variabler och du har variabler f&ouml;r b&aring;de temperatur och nederb&ouml;rd kommer b&aring;da variablerna att analyseras och det flerdimensionella utdatarastret att inkludera b&aring;da variablerna.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Välj statistiktyp</h2></div>
+        <hr/>
+        <div>
+            <p>Anger den statistik som ska extraheras fr&aring;n variabeln eller variablerna l&auml;ngs den givna dimensionen. 
+            </p>
+            <ul>
+                <li> <b>Argument f&ouml;r minimum</b> &ndash; Det dimensionsv&auml;rde d&auml;r det minsta variabelv&auml;rdet uppn&aring;s kommer att extraheras. Det h&auml;r &auml;r standardinst&auml;llningen.
+                </li>
+                <li> <b>Argument f&ouml;r maximum</b> &ndash; Det dimensionsv&auml;rde d&auml;r det h&ouml;gsta variabelv&auml;rdet uppn&aring;s kommer att extraheras.
+                </li>
+                <li> <b>Argument f&ouml;r median</b> &ndash; Det dimensionsv&auml;rde d&auml;r medianvariabelv&auml;rdet uppn&aring;s kommer att extraheras.
+                </li>
+                <li> <b>Argument f&ouml;r varaktighet</b> &ndash; Den l&auml;ngsta dimensionsvaraktigheten f&ouml;r vilken variabelv&auml;rdena faller mellan minimi- och maximiv&auml;rdena.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Ange värde med flera förekomster</h2></div>
+        <hr/>
+        <div>
+            <p>Det pixelv&auml;rde som anv&auml;nds f&ouml;r att indikera att ett givet statistiskt v&auml;rde f&ouml;r argumentet uppn&aring;ddes mer &auml;n en g&aring;ng i indatarasterdatasetet. Om det inte anges &auml;r pixelv&auml;rdet v&auml;rdet f&ouml;r dimensionen f&ouml;rsta g&aring;ngen argumentstatistiken uppn&aring;s.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Ange minimivärde</h2></div>
+        <hr/>
+        <div>
+            <p>Det minimala variabelv&auml;rde som ska anv&auml;ndas f&ouml;r att extrahera varaktigheten.
+            </p>
+            <p>Parametern &auml;r obligatorisk n&auml;r  <b>Varaktighet</b> v&auml;ljs som statistiktyp.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Ange maximivärde</h2></div>
+        <hr/>
+        <div>
+            <p>Det maximala variabelv&auml;rdet som ska anv&auml;ndas f&ouml;r att extrahera varaktigheten.
+            </p>
+            <p>Steget &auml;r obligatoriskt n&auml;r  <b>Varaktighet</b> v&auml;ljs som statistiktyp.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Välj dimensionsdefinition</h2></div>
+        <hr/>
+        <div>
+            <p>Anger hur statistiken ska extraheras fr&aring;n dimensionen. 
+                <ul>
+                    <li> <b>Alla</b> &ndash; Statistiken extraheras &ouml;ver alla dimensioner. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Intervallnyckelord</b> &ndash; Statistiken extraheras fr&aring;n tidsdimensionen enligt intervallnyckelordet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Välj nyckelordsintervall</h2></div>
+        <hr/>
+        <div>
+            <p>Den tidsenhet som statistiken ska extraheras f&ouml;r.
+            </p>
+            <p>Du har till exempel fem &aring;rs dagliga temperaturdata f&ouml;r havsytan och du vill veta under vilket &aring;r den maximala temperaturen observerades. St&auml;ll in  <b>Argument f&ouml;r maximum</b> som statistiktyp, st&auml;ll in <b>Intervallnyckelord</b> som dimensionsdefinition och st&auml;ll in <b>&Aring;rligen</b> som nyckelordsintervall i det h&auml;r steget.
+            </p>
+            <p>Om du vill veta under vilken m&aring;nad den maximala temperaturen observerades konsekvent, kan du ocks&aring; st&auml;lla in  <b>Argument f&ouml;r maximum</b> som statistiktyp, st&auml;lla in <b>Intervallnyckelord</b> som dimensionsdefinition och st&auml;lla in <b>&Aring;terkommer m&aring;nadsvis</b> som nyckelordsintervall i det h&auml;r steget. D&aring; genereras ett raster d&auml;r varje pixel inneh&aring;ller den m&aring;nad d&auml;r statistiken uppn&aring;ddes under hela fem&aring;rsperioden (t.ex. 2018-08-18, 2016-08-25, 2013-08-07).
+            </p>
+            <p>Det h&auml;r steget &auml;r obligatoriskt n&auml;r  <b>StdTid</b> har st&auml;llts in som den dimension som statistiken ska extraheras fr&aring;n och <b>Intervallnyckelord</b> &auml;r valt f&ouml;r att definiera hur statistiken ska extraheras fr&aring;n tidsdimensionen.
+                <ul>
+                    <li> <b>&Aring;terkommer dagligen</b> &ndash; Statistiken extraheras &ouml;ver dagar.
+                    </li>
+                    <li> <b>&Aring;terkommer veckovis</b> &ndash; Statistiken extraheras &ouml;ver veckor.
+                    </li>
+                    <li> <b>&Aring;terkommer m&aring;nadsvis</b> &ndash; Statistiken extraheras &ouml;ver m&aring;nader.
+                    </li>
+                    <li> <b>&Aring;terkommer kvartalsvis</b> &ndash; Statistiken extraheras &ouml;ver kvartal.
+                    </li>
+                    <li> <b>Timvis</b> &ndash; Statistiken extraheras f&ouml;r den timme d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                    <li> <b>Dagligen</b> &ndash; Statistiken extraheras f&ouml;r den dag d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                    <li> <b>Veckovis</b> &ndash; Statistiken extraheras f&ouml;r den vecka d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                    <li> <b>M&aring;nadsvis</b> &ndash; Statistiken extraheras f&ouml;r den m&aring;nad d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                    <li> <b>Kvartalsvis</b> &ndash; Statistiken extraheras f&ouml;r det kvartal d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                    <li> <b>&Aring;rligen</b> &ndash; Statistiken extraheras f&ouml;r det &aring;r d&auml;r statistiken uppn&aring;ddes.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorera saknade värden i beräkningen</h2></div>
+        <hr/>
+        <div>
+            <p>Anger huruvida saknade v&auml;rden ignoreras i analysen.
+                <ul>
+                    <li>Om kryssrutan &auml;r markerad inkluderar analysen alla giltiga pixlar l&auml;ngs en given dimension och ignorerar eventuella NoData-pixlar. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li>Om kryssrutan &auml;r avmarkerad resulterar analysen i NoData om det finns NoData-v&auml;rden f&ouml;r pixeln l&auml;ngs en angiven dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

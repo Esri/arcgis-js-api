@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>Yakınlık Kullan</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b>, <b>Veriyi Y&ouml;net</b> ve <b>Derin &Ouml;ğrenme</b>.
+        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>Yakınlık Kullan</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b>, <b>Veriyi Y&ouml;net</b>, <b>Derin &Ouml;ğrenme</b> ve <b>&Ccedil;ok Boyutlu Analiz</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>&Ouml;rnekle</b>, bir raster veya raster k&uuml;mesinde tanımlanmış konumlardan veriler &ccedil;ıkarır.
+                </li>
             </ul>
             
         </p>
@@ -401,9 +403,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Raster'ı Detaya Dönüştür</h2></td>
+                    <td><h2>Rasterı Detaya Dönüştür</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Rasterı Detaya D&ouml;n&uuml;şt&uuml;rme aracı">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Rasterı Detaya D&ouml;n&uuml;şt&uuml;r aracı">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Örnek</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="&Ouml;rnekle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Rasterdan veya rasterlardan &ccedil;ıkarılan tanımlanmış konumlarda veri değerleriyle bir tablo veya nokta detay sınıfı oluşturur.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Derin Öğrenme Araç Seti</h2>
+        <h2>Derin Öğrenme</h2>
         <hr/>
-        <p>Bu ara&ccedil;lar g&ouml;r&uuml;nt&uuml;deki belirli detayları tespit etmek veya bir raster veri k&uuml;mesindeki pikselleri sınıflandırmak i&ccedil;in kullanılır. Derin &ouml;ğrenme, g&ouml;r&uuml;nt&uuml;deki detayları, her bir katmanın g&ouml;r&uuml;nt&uuml;de bir veya daha fazla benzersiz detay &ccedil;ıkarabildiği sinir ağlarındaki &ccedil;oklu katmanları kullanarak algılayan bir t&uuml;r yapay zeka makinesi &ouml;ğrenme y&ouml;ntemidir. Bu ara&ccedil;lar, TensorFlow, CNTK ve Keras gibi &uuml;&ccedil;&uuml;nc&uuml; taraf derin &ouml;ğrenme &ccedil;er&ccedil;evelerindeki belirli detayları ve &ccedil;ıktı detaylarını veya sınıf haritalarını belirlemek i&ccedil;in eğitilmiş modelleri kullanır.
+        <p>Bu ara&ccedil;lar 	bir g&ouml;r&uuml;nt&uuml;deki belirli detayları algılamak veya sınıflandırmak ya da bir raster veri k&uuml;mesindeki pikselleri sınıflandırmak i&ccedil;in kullanılır. Derin &ouml;ğrenme, g&ouml;r&uuml;nt&uuml;deki detayları, her bir katmanın g&ouml;r&uuml;nt&uuml;de bir veya daha fazla benzersiz detay &ccedil;ıkarabildiği sinir ağlarındaki &ccedil;oklu katmanları kullanarak algılayan bir t&uuml;r yapay zeka makinesi &ouml;ğrenme y&ouml;ntemidir. Bu ara&ccedil;lar, TensorFlow, CNTK ve Keras gibi &uuml;&ccedil;&uuml;nc&uuml; taraf derin &ouml;ğrenme &ccedil;er&ccedil;evelerindeki belirli detayları ve &ccedil;ıktı detaylarını veya sınıf haritalarını belirlemek i&ccedil;in eğitilmiş modelleri kullanır.
             <ul>
                 <li> <b>Derin &Ouml;ğrenme Kullanarak Pikselleri Sınıflandır</b>, eğitilmiş bir derin &ouml;ğrenme modeli kullanarak sınıflandırılmış bir raster &uuml;retir.
                 </li>
                 <li> <b>Derin &Ouml;ğrenme Kullanarak Nesneleri Algıla</b>, eğitilmiş bir derin &ouml;ğrenme modeli kullanarak bir girdi rasterında bulduğu nesneleri i&ccedil;eren bir detay sınıfı &uuml;retir.
                 </li>
+                <li> <b>Derin &Ouml;ğrenme Kullanarak Nesneleri Sınıflandır</b>, eğitilmiş bir derin &ouml;ğrenme modeli kullanılarak girdi rasterındaki her girdi nesnesine bir sınıf etiketi atanan bir detay sınıfı veya tablosu &uuml;retir.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>Bu ara&ccedil;, atanan bir sınıf etiketi bulunan her ge&ccedil;erli pikselle sınıflandırılmış bir raster oluşturmak i&ccedil;in girdi rasterı &uuml;zerinde eğitilmiş derin &ouml;ğrenme modeli &ccedil;alıştırır.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>Bu ara&ccedil;, bulunan nesneleri i&ccedil;eren bir detay sınıfı oluşturmak i&ccedil;in girdi rasterı &uuml;zerinde eğitilmiş derin &ouml;ğrenme modeli &ccedil;alıştırır. Detaylar bulunan nesnelerin etrafındaki sınırlayıcı kutular veya &ccedil;okgenler veya nesnelerin merkezindeki noktalar olabilir.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Derin Öğrenme Kullanarak Nesneleri Sınıflandır</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Derin &Ouml;ğrenme Kullanarak Nesneleri Sınıflandır">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, her bir girdi nesnesinin atanmış bir sınıf etiketine sahip olduğu bir detay sınıfı veya tablosu oluşturmak i&ccedil;in girdi rasterında ve isteğe bağlı bir detay sınıfında eğitilmiş bir derin &ouml;ğrenme modeli &ccedil;alıştırır.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Çok Boyutlu Analiz</h2>
+        <hr/>
+        <p>&Ccedil;ok Boyutlu Analiz ara&ccedil; setindeki ara&ccedil;lar, bilimsel veriler &uuml;zerinde birden fazla değişken ve boyutta analiz yapmanızı sağlar.
+        </p>
+        <p>&Ccedil;ok boyutlu veriler, birden &ccedil;ok zamanda, derinlikte ve y&uuml;kseklikte toplanan verileri temsil eder. Bu t&uuml;r veriler genellikle atmosferik, oşinografik ve yer bilimlerinde kullanılır. Bu ara&ccedil; takımı ile &ccedil;ok boyutlu raster verilerini, netCDF, HDF, GRIB, &ccedil;ok boyutlu mozaik veri k&uuml;mesi ve Esri'nin Bulut Raster Bi&ccedil;imi (CRF) dahil olmak &uuml;zere birden fazla bi&ccedil;imde analiz edebilirsiniz.
+        </p>
+        <p>Aşağıdaki tabloda, &ccedil;ok boyutlu analiz ara&ccedil;ları listelenmiş ve her birinin kısa bir a&ccedil;ıklaması verilmiştir.
+            <ul>
+                <li> <b>&Ccedil;ok Boyutlu Rasterı Topla</b>, bir boyuttaki mevcut &ccedil;ok boyutlu raster değişkenlerini toplayarak &ccedil;ok boyutlu bir raster veri k&uuml;mesi oluşturur.
+                </li>
+                <li> <b>&Ccedil;ok Boyutlu Anormallik Oluştur</b>, &ccedil;ok boyutlu bir raster oluşturmak i&ccedil;in her dilime ait anormalliği &ccedil;ok boyutlu bir rasterda hesaplar.
+                </li>
+                <li> <b>Trend Rasterı Oluştur</b>, &ccedil;ok boyutlu bir rasterda bir veya daha fazla değişken i&ccedil;in bir boyut boyunca her pikselin trendini tahmin eder.
+                </li>
+                <li> <b>Trend Rasterı Kullanarak Tahmin Et</b>, <b>Trend Rasterı Oluştur</b> aracından &ccedil;ıktı trendi rasterını kullanarak tahmini bir &ccedil;ok boyutlu raster hesaplar.
+                </li>
+                <li> <b>Bağımsız Değişken İstatistikleri Bul</b> &ccedil;ok boyutlu veya &ccedil;ok bantlı bir rasterdaki her piksel i&ccedil;in belirli bir istatistiğin elde edildiği boyut değerini veya bant indeksini &ccedil;ıkarır.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Çok Boyutlu Rasterı Kümele</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="&Ccedil;ok Boyutlu Rasterı Topla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil; bir boyuttaki mevcut &ccedil;ok boyutlu raster değişkenlerini toplayarak &ccedil;ok boyutlu bir raster veri k&uuml;mesi oluşturur.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Bağımsız Değişken İstatistikleri Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Bağımsız Değişken İstatistikleri Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, &ccedil;ok boyutlu veya &ccedil;ok bantlı bir rasterdaki her piksel i&ccedil;in belirli bir istatistiğin elde edildiği boyut değerini veya bant indeksini &ccedil;ıkarır.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Çok Boyutlu Anormallik Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="&Ccedil;ok Boyutlu Anormallik Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, &ccedil;ok boyutlu bir raster oluşturmak i&ccedil;in her dilime ait anormalliği &ccedil;ok boyutlu bir rasterda hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trend Rasterı Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Trend Rasterı Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, &ccedil;ok boyutlu bir rasterda bir veya daha fazla değişken i&ccedil;in bir boyut boyunca her pikselin trendini tahmin eder.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trend Rasterı Kullanarak Tahmin Et</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Trend Rasterı Kullanarak Tahmin Et">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;,  <b>Trend Rasterı Oluştur</b> aracından &ccedil;ıktı trendi rasterını kullanarak tahmini bir &ccedil;ok boyutlu raster hesaplar.
             </p>
             <br/>
         </div>

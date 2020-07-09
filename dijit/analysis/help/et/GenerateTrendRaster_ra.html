@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trendirastri loomine</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Trendirastri loomine"></h2>
+        <hr/>
+    <p>Kalkuleerib iga piksli trendi piki &uuml;he v&otilde;i mitme muutuja m&otilde;&otilde;det mitmem&otilde;&otilde;tmelises rastris.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vali trendi analüüsimiseks mitmemõõtmeline pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Mitmem&otilde;&otilde;tmelise rastri sisendpildikiht, mida hakatakse anal&uuml;&uuml;sima.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vali dimensioon, mille raames muutuja trendi analüüsitakse</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensioon, mille p&otilde;hjal trend anal&uuml;&uuml;sis valitud muutuja v&otilde;i muutujate jaoks ekstraktitakse.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vali trendi analüüsimiseks muutuja(d)</h2></div>
+        <hr/>
+        <div>
+            <p>Muutuja v&otilde;i muutujad, mille jaoks trend arvutatakse. Kui muutujat pole m&auml;&auml;ratletud, kasutatakse mitmem&otilde;&otilde;tmelise rastri esimest muutujat.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Vali joone tüüp, mida muutujate väärtuste dimensiooni paigutamiseks kasutatakse</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab joone t&uuml;&uuml;bi, mida kasutatakse, et paigutada piksli v&auml;&auml;rtused m&ouml;&ouml;da dimensiooni. 
+                <ul>
+                    <li> <b>Lineaarne</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da lineaarset trendijoont. See on vaikevalik.
+                    </li>
+                    <li> <b>Pol&uuml;noomiline</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da teise j&auml;rgu pol&uuml;noomilist trendijoont.
+                    </li>
+                    <li> <b>Harmooniline</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da harmoonilist trendijoont.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Määra harmoonilise tsükli pikkus</h2></div>
+        <hr/>
+        <div>
+            <p>Mudeli mudeli jaoks perioodilise varieerumise pikkus. See parameeter on n&otilde;utav, kui trendijoone t&uuml;&uuml;biks on m&auml;&auml;ratud  <b>Harmooniline</b>. N&auml;iteks lehev&auml;rvil on sageli &uuml;he aasta jooksul &uuml;ks tugev variatsioonits&uuml;kkel ja seega on selle ts&uuml;kli pikkus 1 aasta. Tunnip&otilde;histel temperatuuriandmetel on sageli &uuml;ks tugev variatsioonits&uuml;kkel p&auml;evas ja seega on selle ts&uuml;kli pikkus 1 p&auml;ev.
+            </p>
+            <p>Vaikimisi m&auml;&auml;ratakse pikkuseks 1 aasta, kui andmed varieeruvad aastase ts&uuml;kliga.
+            </p>
+            <p>See parameeter h&otilde;lmatakse trendianal&uuml;&uuml;si siis, kui anal&uuml;&uuml;sitav dimensioon on aeg ja valitud on trendijoone t&uuml;&uuml;p  <b>Harmooniline</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Vali harmoonilise tsükli pikkuse ajaühik</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab aja&uuml;hiku, mida kasutatakse harmoonilise ts&uuml;kli pikkuse m&auml;&auml;ratlemisel.
+                <ul>
+                    <li> <b>P&auml;evad</b> &ndash; harmoonilise ts&uuml;kli pikkuse aja&uuml;hikuna kasutatakse p&auml;evi.
+                    </li>
+                    <li> <b>Aastad</b> &ndash; harmoonilise ts&uuml;kli pikkuse aja&uuml;hikuna kasutatakse aastaid. See on vaikimisi valik.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>See parameeter h&otilde;lmatakse trendianal&uuml;&uuml;si siis, kui anal&uuml;&uuml;sitav dimensioon on aeg ja valitud on trendijoone t&uuml;&uuml;p  <b>Harmooniline</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Määra sagedusarv harmoonilise trendi genereerimiseks</h2></div>
+        <hr/>
+        <div>
+            <p>Harmoonilise trendi genereerimiseks kasutatav sagedusn&auml;itaja. See parameeter m&auml;&auml;rab ts&uuml;klite arvu aastas.
+            </p>
+            <p>Vaikev&auml;&auml;rtus on 1 v&otilde;i &uuml;ks harmooniline ts&uuml;kkel aastas.
+            </p>
+            <p>See parameeter h&otilde;lmatakse trendianal&uuml;&uuml;si ainult siis, kui anal&uuml;&uuml;sitav dimensioon on aeg.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Määra trendi genereerimiseks kasutatav polünoomi järgunumber.</h2></div>
+        <hr/>
+        <div>
+            <p>Trendi genereerimiseks kasutatav pol&uuml;noomi j&auml;rgunumber.
+            </p>
+            <p>See parameeter h&otilde;lmatakse trendianal&uuml;&uuml;si ainult siis, kui anal&uuml;&uuml;sitav dimensioon on aeg.
+            </p>
+            <p>Vaikev&auml;&auml;rtus on 2 v&otilde;i teise j&auml;rgu pol&uuml;noom.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Vali trendirastrisse hõlmatavad mudeli statistikud</h2></div>
+        <hr/>
+        <div>
+            <p>See t&ouml;&ouml;riist v&otilde;imaldab trendijoone kirjeldamisel kasutada kolme statistikut: ruutkeskmine viga (RMSE), mudeli headust kirjeldav determinatsioonikordaja (R2) ja t&otilde;usu koefitsendi p-v&auml;&auml;rtus. Iga statistiku jaoks on m&auml;rkeruut, mis v&otilde;imaldab m&auml;&auml;rata, kas statistiku v&auml;&auml;rtus arvutatakse ja h&otilde;lmatakse mudelisse v&auml;ljundina saadava trendi rastri &uuml;he ribana.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>M&auml;rgitud &ndash; RMSE v&auml;&auml;rtus arvutatakse v&auml;lja ja h&otilde;lmatakse v&auml;ljundina saadava trendi rastri ribade hulka. See on vaikevalik.
+                            </li>
+                            <li>M&auml;rkimata &ndash; RMSE v&auml;&auml;rtust ei arvutata.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Determinatsioonikordaja (R2)
+                        </p>
+                        <ul>
+                            <li>M&auml;rgitud &ndash; determinatsioonikordaja (R2) v&auml;&auml;rtus arvutatakse v&auml;lja ja h&otilde;lmatakse v&auml;ljundina saadava trendi rastri ribade hulka.
+                            </li>
+                            <li>M&auml;rkimata &ndash; determinatsioonikordaja (R2) v&auml;&auml;rtust ei arvutata. See on vaikevalik.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>T&otilde;usukoefitsendi P-v&auml;&auml;rtus
+                        </p>
+                        <ul>
+                            <li>M&auml;rgitud &ndash; p-v&auml;&auml;rtus arvutatakse v&auml;lja ja h&otilde;lmatakse v&auml;ljundina saadava trendi rastri ribade hulka.
+                            </li>
+                            <li>M&auml;rkimata &ndash; p-v&auml;&auml;rtust ei arvutata. See on vaikevalik.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Eira arvutuses puuduvaid väärtusi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra, kas puuduvaid v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida.
+                <ul>
+                    <li>Kontrollitud &ndash; anal&uuml;&uuml;sis kaasatakse k&otilde;ik kehtivad pikslid kindlas dimensioonis ja ignoreeritakse k&otilde;iki NoData piksleid. See on vaikevalik.
+                    </li>
+                    <li>Mittekontrollitud &ndash; kui antud dimensiooni pikslites esineb NoData v&auml;&auml;rtuseid, on anal&uuml;&uuml;si tulemuseks NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

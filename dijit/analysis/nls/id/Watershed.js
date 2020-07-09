@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pilih layer arah aliran",pourPointLayerLabel:"Pilih raster atau feature layer titik tuang",pourPointField:"Pilih kolom titik tuang",resultLayerName:"Nama layer hasil",outputLayerName:"Batas air ${layername}",itemDescription:"Feature layer dihasilkan setelah menjalankan Ringkas pusat dan persebaran pada ${layerName}. ",itemTags:"Hasil Analisis, Batas Air, ${layername} ${fieldname}",itemSnippet:"Feature layer yang dihasilkan dari Batas Air."});

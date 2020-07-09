@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generer trendraster</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generer trendraster"></h2>
+        <hr/>
+    <p>Estimerer trenden for hver piksel langs en dimensjon for &eacute;n eller flere variabler i et flerdimensjonalt raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Velg flerdimensjonalt bildelag for å analysere trend</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Inndatabildelaget i det flerdimensjonale rasteret som skal analyseres.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Velg dimensjon som variabel trend skal analyseres langs</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensjonen som det trekkes ut en trend langs for variabelen eller variablene som er valgt i analysen.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Velg én eller flere variabler for å analysere trend</h2></div>
+        <hr/>
+        <div>
+            <p>Variabelen eller variablene det skal beregnes trender for. Hvis det ikke er angitt en variabel, blir den f&oslash;rste variabelen i det flerdimensjonale rasteret analysert.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Velg linjetype for å tilpasse variable verdier langs en dimensjon</h2></div>
+        <hr/>
+        <div>
+            <p>Angir linjetypen som skal brukes til &aring; tilpasse pikselverdiene langs en dimensjon. 
+                <ul>
+                    <li> <b>Line&aelig;r</b>&ndash;&nbsp;Variable pikselverdier tilpasses langs en line&aelig;r trendlinje. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Polynomisk</b>&ndash;&nbsp;Variable pikselverdier tilpasses langs en annengrads polynomisk trendlinje.
+                    </li>
+                    <li> <b>Polynomisk</b>&ndash;&nbsp;Variable pikselverdier tilpasses langs en annengrads polynomisk trendlinje.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Angi lengde på harmonisk syklus</h2></div>
+        <hr/>
+        <div>
+            <p>Lengden p&aring; periodisk variasjon som skal modelleres. Denne parameteren er obligatorisk n&aring;r trendlinjetypen er satt til  <b>Harmonisk</b>. For eksempel har bladers gr&oslash;nnfarge ofte &eacute;n sterk syklus med varians innenfor ett &aring;r, s&aring; sykluslengden er 1&nbsp;&aring;r. Timebaserte temperaturdata har &eacute;n sterk syklus med varians gjennom &eacute;n enkelt dag, s&aring; sykluslengden er 1&nbsp;dag.
+            </p>
+            <p>Standardlengden er 1&nbsp;&aring;r for data som varierer i en &aring;rlig syklus.
+            </p>
+            <p>Denne parameteren inkluderes bare i trendanalysen n&aring;r den analyserte dimensjonen er tid, og type trendlinje er satt til  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Velg tidsenhet for harmonisk sykluslengde</h2></div>
+        <hr/>
+        <div>
+            <p>Angir tidsenheten som skal brukes for lengden p&aring; en harmonisk syklus.
+                <ul>
+                    <li> <b>Dager</b>&ndash;&nbsp;Enheten for lengden p&aring; den harmoniske syklusen er dager.
+                    </li>
+                    <li> <b>&Aring;r</b>&ndash;&nbsp;Enheten for lengden p&aring; den harmoniske syklusen er &aring;r. Dette er standardalternativet.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Denne parameteren inkluderes bare i trendanalysen n&aring;r den analyserte dimensjonen er tid, og type trendlinje er satt til  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Angi frekvensnummeret for harmonisk trendtilpasning</h2></div>
+        <hr/>
+        <div>
+            <p>Frekvensen som skal brukes i trendtilpasningen. Denne parameteren angir frekvensen av sykluser i et &aring;r.
+            </p>
+            <p>Standardverdien er 1, eller &eacute;n harmonisk syklus per &aring;r.
+            </p>
+            <p>Denne parameteren inkluderes bare i trendanalysen n&aring;r den analyserte dimensjonen er tid.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Angi det polynomiske rekkefølgenummeret som skal brukes i trendtilpasningen</h2></div>
+        <hr/>
+        <div>
+            <p>Det polynomiske rekkef&oslash;lgenummeret som skal brukes i trendtilpasningen.
+            </p>
+            <p>Denne parameteren inkluderes bare i trendanalysen n&aring;r den analyserte dimensjonen er tid.
+            </p>
+            <p>Standardverdien er 2, eller annengradspolynomisk.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Velg modellstatistikk som skal inkluderes i trendraster</h2></div>
+        <hr/>
+        <div>
+            <p>Dette verkt&oslash;yet gir tre typer statistikk for trendtilpasningslinjen: kvadratrot av gjennomsnittlig kvadrert feil (RMSE), tilpasningsgrad for determinantkoeffisient (R2) og p-verdistatistikk for hellingskoeffisienten (P-verdi for hellingskoeffisient). Hver statistisk kategori har en tilh&oslash;rende avmerkingsboks for &aring; angi om den skal beregnes og inkluderes som ett av flere b&aring;nd i utdatatrendrasteret.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Avmerket &ndash;&nbsp;RMSE beregnes og inkluderes som ett av flere b&aring;nd i utdatatrendrasteret. Dette er standardalternativet.
+                            </li>
+                            <li>Ikke avmerket &ndash; RMSE blir ikke beregnet.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>determinantkoeffisient
+                        </p>
+                        <ul>
+                            <li>Avmerket &ndash;&nbsp;Determinantkoeffisienten beregnes og inkluderes som ett av flere b&aring;nd i utdatatrendrasteret.
+                            </li>
+                            <li>Ikke avmerket &ndash; Determinantkoeffisienten blir ikke beregnet. Dette er standardalternativet.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-verdi for hellingskoeffisient
+                        </p>
+                        <ul>
+                            <li>Avmerket &ndash;&nbsp;P-verdien for hellingskoeffisienten beregnes og inkluderes som ett av flere b&aring;nd i det resulterende trendrasteret.
+                            </li>
+                            <li>Ikke avmerket &ndash; P-verdien blir ikke beregnet. Dette er standardalternativet.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer manglende verdier i beregningen</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om manglende verdier ignoreres i analysen.
+                <ul>
+                    <li>Avmerket &ndash; Analysen omfatter alle gyldige piksler langs en gitt dimensjon og ignorerer eventuelle NoData-piksler. Dette er standardalternativet.
+                    </li>
+                    <li>Ikke avmerket &ndash; Analysen resulterer i NoData hvis det finnes NoData-verdier for pikslene langs den gitte dimensjonen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

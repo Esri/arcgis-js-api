@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Többdimenziós anomália létrehozása</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="T&ouml;bbdimenzi&oacute;s anom&aacute;lia l&eacute;trehoz&aacute;sa"></h2>
+        <hr/>
+    <p>Egy t&ouml;bbdimenzi&oacute;s raszteres adathalmazt hoz l&eacute;tre megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszteres v&aacute;ltoz&oacute;k kombin&aacute;l&aacute;s&aacute;val adott dimenzi&oacute; ment&eacute;n.
+    </p>
+    <p>Az anom&aacute;lia egy megfigyel&eacute;s elt&eacute;r&eacute;s&eacute;t jelenti annak standard, &aacute;tlag- vagy medi&aacute;n &eacute;rt&eacute;k&eacute;től.
+    </p>
+    <p>Ez az eszk&ouml;z az időbeli anom&aacute;li&aacute;kat sz&aacute;m&iacute;tja ki egy vagy t&ouml;bb v&aacute;ltoz&oacute; eset&eacute;n egy t&ouml;bbdimenzi&oacute;s raszterben. Ha az idődimenzi&oacute; mellett rendelkezik nem időbeli dimenzi&oacute;val is, az eszk&ouml;z az anom&aacute;li&aacute;t a m&aacute;sik dimenzi&oacute; minden egyes l&eacute;p&eacute;s&eacute;ben kisz&aacute;m&iacute;tja.
+    </p>
+    <p>Tegy&uuml;k fel p&eacute;ld&aacute;ul, hogy havi &oacute;ce&aacute;n-hőm&eacute;rs&eacute;kleti adatokat gyűjt&ouml;tt 1 m&eacute;terenk&eacute;nt 100 m&eacute;ter m&eacute;lys&eacute;gig, &eacute;s ki szeretn&eacute; sz&aacute;m&iacute;tani az &eacute;ves &aacute;tlagt&oacute;l val&oacute; elt&eacute;r&eacute;sk&eacute;nt &eacute;rtelmezett hőm&eacute;rs&eacute;kleti anom&aacute;li&aacute;kat. Az eszk&ouml;z az &eacute;ves &aacute;tlag alapj&aacute;n fogja meg&aacute;llap&iacute;tani a hőm&eacute;rs&eacute;kleti anom&aacute;li&aacute;kat, ha az  <b>&Eacute;ves</b> lehetős&eacute;get v&aacute;lasztja <b>az &aacute;tlag kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt időintervallum</b>, be&aacute;ll&iacute;t&aacute;sn&aacute;l, &eacute;s mind a 100 m&eacute;lys&eacute;g&eacute;rt&eacute;khez vissza fogja adni eredm&eacute;nyk&eacute;nt az anom&aacute;li&aacute;k &eacute;rt&eacute;keit.
+    </p>
+    <p>Ez az eszk&ouml;z csak az idődimenzi&oacute;val rendelkező, t&ouml;bbdimenzi&oacute;s raszteres adathalmazokat t&aacute;mogatja.
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Többdimenziós réteg kiválasztása az anomália létrehozásához</h2></div>
+        <hr/>
+        <div>
+            <p>Egy t&ouml;bbdimenzi&oacute;s raszteres adathalmaz bemeneti r&eacute;tege.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Azon változó(k) kiválasztása, amely(ek)hez létre kell hozni az anomáliát</h2></div>
+        <hr/>
+        <div>
+            <p>A v&aacute;ltoz&oacute; vagy v&aacute;ltoz&oacute;k, amelyekn&eacute;l az alkalmaz&aacute;s kisz&aacute;m&iacute;tja az anom&aacute;li&aacute;t. Ha nincs megadva v&aacute;ltoz&oacute;, az alkalmaz&aacute;s az idődimenzi&oacute;val rendelkező &ouml;sszes v&aacute;ltoz&oacute;t elemzi.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Anomália-létrehozás módszerének kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Ezzel adhat&oacute; meg az anom&aacute;lia kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt m&oacute;dszer. 
+                <ul>
+                    <li> <b>&Aacute;tlagt&oacute;l vett elt&eacute;r&eacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;ke &eacute;s az adott pixel &eacute;rt&eacute;k&eacute;nek &aacute;tlaga k&ouml;z&ouml;tti k&uuml;l&ouml;nbs&eacute;get sz&aacute;m&iacute;tja ki az intervallum &aacute;ltal meghat&aacute;rozott szeleteken. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>&Aacute;tlagt&oacute;l vett sz&aacute;zal&eacute;kos elt&eacute;r&eacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;ke &eacute;s az adott pixel &eacute;rt&eacute;k&eacute;nek &aacute;tlaga k&ouml;z&ouml;tti sz&aacute;zal&eacute;kos k&uuml;l&ouml;nbs&eacute;get sz&aacute;m&iacute;tja ki az intervallum &aacute;ltal meghat&aacute;rozott szeleteken.
+                    </li>
+                    <li> <b>Az &aacute;tlag sz&aacute;zal&eacute;ka</b> &ndash; Az &aacute;tlag sz&aacute;zal&eacute;k&aacute;t sz&aacute;m&iacute;tja ki.
+                    </li>
+                    <li> <b>Z pontsz&aacute;m</b> &ndash; Az egyes pixelek z pontsz&aacute;m&aacute;t sz&aacute;m&iacute;tja ki. Ha a z pontsz&aacute;m 0, az azt jelzi, hogy a pixel &eacute;rt&eacute;ke egyenlő az &aacute;tlaggal. Ha a z pontsz&aacute;m 1, az azt jelzi, hogy a pixel &eacute;rt&eacute;ke 1 sz&oacute;r&aacute;sra esik az &aacute;tlagt&oacute;l. Ha a z pontsz&aacute;m 2, a pixel &eacute;rt&eacute;ke 2 sz&oacute;r&aacute;sra esik az &aacute;tlagt&oacute;l, &eacute;s &iacute;gy tov&aacute;bb.
+                    </li>
+                    <li> <b>Medi&aacute;nt&oacute;l vett elt&eacute;r&eacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;ke &eacute;s az adott pixel &eacute;rt&eacute;keinek matematikai medi&aacute;nja k&ouml;z&ouml;tti k&uuml;l&ouml;nbs&eacute;get sz&aacute;m&iacute;tja ki az intervallum &aacute;ltal meghat&aacute;rozott szeleteken.
+                    </li>
+                    <li> <b>Medi&aacute;nt&oacute;l vett sz&aacute;zal&eacute;kos elt&eacute;r&eacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;ke &eacute;s az adott pixel &eacute;rt&eacute;keinek matematikai medi&aacute;nja k&ouml;z&ouml;tti sz&aacute;zal&eacute;kos k&uuml;l&ouml;nbs&eacute;get sz&aacute;m&iacute;tja ki az intervallum &aacute;ltal meghat&aacute;rozott szeleteken.
+                    </li>
+                    <li> <b>A medi&aacute;n sz&aacute;zal&eacute;ka</b> &ndash; A matematikai medi&aacute;n sz&aacute;zal&eacute;k&aacute;t sz&aacute;m&iacute;tja ki.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Az anom&aacute;lia&eacute;rt&eacute;kek sz&aacute;m&iacute;t&aacute;s&aacute;nak matematikai m&oacute;dszerei az al&aacute;bbi list&aacute;ban l&aacute;that&oacute;k. Az anom&aacute;li&aacute;k kisz&aacute;m&iacute;that&oacute;k az &aacute;tlag- vagy a medi&aacute;n &eacute;rt&eacute;keket haszn&aacute;lva k&ouml;z&eacute;p&eacute;rt&eacute;kk&eacute;nt. Ha az adatok eloszl&aacute;sa ferde, az &aacute;tlagot a kiugr&oacute; &eacute;rt&eacute;kek nagyban befoly&aacute;solhatj&aacute;k, ez&eacute;rt az ilyen t&iacute;pus&uacute; adatokhoz a medi&aacute;n &eacute;rt&eacute;k vagy a z pontsz&aacute;m m&oacute;dszere jobban megfelelhet.
+            </p>
+            <p>
+                <ul>
+                    <li>&Aacute;tlagt&oacute;l vett elt&eacute;r&eacute;s = x &minus; &micro;
+
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                                
+
+                            </li>
+                            <li>&micro; = az adott pixel &eacute;rt&eacute;keinek &aacute;tlaga a megadott időintervallumon
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>&Aacute;tlagt&oacute;l vett sz&aacute;zal&eacute;kos elt&eacute;r&eacute;s = |x &minus; &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                                
+
+                            </li>
+                            <li>&micro; = az adott pixel &eacute;rt&eacute;keinek &aacute;tlaga a megadott időintervallumon
+                                
+
+                            </li>
+                            <li>|x &minus; &micro;| = az &eacute;rt&eacute;k &eacute;s az &aacute;tlag k&uuml;l&ouml;nbs&eacute;g&eacute;nek abszol&uacute;t &eacute;rt&eacute;ke
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Az &aacute;tlag sz&aacute;zal&eacute;ka = x / &micro;
+
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                                
+
+                            </li>
+                            <li>&micro; = az adott pixel &eacute;rt&eacute;keinek &aacute;tlaga a megadott időintervallumon
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Medi&aacute;nt&oacute;l vett elt&eacute;r&eacute;s = x &minus; &szlig;
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                            </li>
+                            <li>&szlig; = az adott pixel &eacute;rt&eacute;keinek medi&aacute;nja a megadott időintervallumon
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Medi&aacute;nt&oacute;l vett sz&aacute;zal&eacute;kos elt&eacute;r&eacute;s = |x &minus; &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                            </li>
+                            <li>&szlig; = az adott pixel &eacute;rt&eacute;keinek medi&aacute;nja a megadott időintervallumon
+                            </li>
+                            <li>|x &minus; &szlig;| = az &eacute;rt&eacute;k &eacute;s a medi&aacute;n k&uuml;l&ouml;nbs&eacute;g&eacute;nek abszol&uacute;t &eacute;rt&eacute;ke
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>A medi&aacute;n sz&aacute;zal&eacute;ka = x / &szlig;
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                            </li>
+                            <li>&szlig; = az adott pixel &eacute;rt&eacute;keinek medi&aacute;nja a megadott időintervallumon
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z pontsz&aacute;m = (x &minus; &micro;) / S
+                        <ul>
+                            <li>x = pixel &eacute;rt&eacute;ke egy szeletben
+                            </li>
+                            <li>&micro; = az adott pixel &eacute;rt&eacute;keinek &aacute;tlaga a megadott időintervallumon
+                            </li>
+                            <li>S = a pixel &eacute;rt&eacute;keinek sz&oacute;r&aacute;sa a megadott időintervallumon
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Az átlag kiszámításához használt időintervallum kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Ezzel adhat&oacute; meg az &aacute;tlag kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt időintervallum. 
+                <ul>
+                    <li> <b>Mind</b> &ndash; Az &aacute;tlagot sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>&Eacute;ves</b> &ndash; Az &eacute;ves &aacute;tlagot sz&aacute;m&iacute;tja ki mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő havi</b> &ndash; A havi &aacute;tlagot sz&aacute;m&iacute;tja ki mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő heti</b> &ndash; A heti &aacute;tlagot sz&aacute;m&iacute;tja ki mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>Ism&eacute;tlődő napi</b> &ndash; A napi &aacute;tlagot sz&aacute;m&iacute;tja ki mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>&Oacute;r&aacute;nk&eacute;nti</b> &ndash; Az &oacute;r&aacute;nk&eacute;nti &aacute;tlagot sz&aacute;m&iacute;tja ki mindegyik pixeln&eacute;l.
+                    </li>
+                    <li> <b>K&uuml;lső raszter</b> &ndash; &ndash; Hivatkoz&aacute;s az egyes pixelek &aacute;tlag- vagy medi&aacute;n&eacute;rt&eacute;k&eacute;t tartalmaz&oacute;, megl&eacute;vő raszteres adathalmazra.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Átlag távérzékelt réteg választása referenciaként</h2></div>
+        <hr/>
+        <div>
+            <p>Azt a referencia raszteres adathalmazt hat&aacute;rozza meg, amely a kor&aacute;bban kisz&aacute;m&iacute;tott &aacute;tlagot tartalmazza mindegyik pixelre vonatkoz&oacute;an. Az alkalmaz&aacute;s az anom&aacute;li&aacute;kat ezzel az &aacute;tlaggal &ouml;sszevet&eacute;sben sz&aacute;m&iacute;tja ki.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Hiányzó értékek figyelmen kívül hagyása a számításban</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben. 
+                <ul>
+                    <li>Bejel&ouml;lve &ndash; az elemz&eacute;s tartalmazni fogja az &ouml;sszes &eacute;rv&eacute;nyes pixelt egy adott dimenzi&oacute; ment&eacute;n, &eacute;s figyelmen k&iacute;v&uuml;l fogja hagyni a NoData pixeleket. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; Az elemz&eacute;s eredm&eacute;nye NoData lesz, ha a pixelek b&aacute;rmelyik &eacute;rt&eacute;ke NoData a megadott dimenzi&oacute; ment&eacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

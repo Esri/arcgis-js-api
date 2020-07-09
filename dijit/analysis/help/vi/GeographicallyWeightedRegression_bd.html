@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Hồi quy Địa lý theo Trọng số</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Sơ đồ quy tr&igrave;nh Hồi quy Địa l&yacute; theo Trọng số"></h2>
+        <hr/>
+    <p>Thực hiện Hồi quy Địa l&yacute; theo Trọng số (GWR), l&agrave; một dạng thức hồi quy tuyến t&iacute;nh cục bộ được sử dụng để m&ocirc; h&igrave;nh h&oacute;a c&aacute;c mối quan hệ thay đổi theo kh&ocirc;ng gian.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp để phân tích</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp chứa c&aacute;c đối tượng dạng điểm, gồm c&aacute;c biến phụ thuộc v&agrave; c&aacute;c biến giải th&iacute;ch.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp dữ liệu từ bản đồ, bạn c&oacute; thể chọn mục  <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> ở dưới danh s&aacute;ch thả xuống để t&igrave;m đến nội dung của m&igrave;nh cho bộ dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng. Bạn c&oacute; thể t&ugrave;y &yacute; &aacute;p dụng bộ lọc tr&ecirc;n lớp đầu v&agrave;o hoặc &aacute;p dụng lựa chọn tr&ecirc;n c&aacute;c lớp được lưu trữ được th&ecirc;m v&agrave;o bản đồ của bạn. C&aacute;c bộ lọc v&agrave; lựa chọn chỉ được &aacute;p dụng cho ph&acirc;n t&iacute;ch. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Chọn trường để mô hình hóa</h2></div>
+        <hr/>
+        <div>
+            <p>Trường số chứa c&aacute;c gi&aacute; trị quan s&aacute;t sẽ được m&ocirc; h&igrave;nh h&oacute;a v&agrave; loại gi&aacute; trị bạn đang m&ocirc; h&igrave;nh h&oacute;a.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Chọn các trường giải thích</h2></div>
+        <hr/>
+        <div>
+            <p>Một hoặc nhiều trường đại diện cho c&aacute;c biến giải th&iacute;ch (c&aacute;c trường) gi&uacute;p dự đo&aacute;n gi&aacute; trị. Chỉ c&aacute;c trường số mới được hiển thị.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Chọn cách xác định vùng lân cận</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định xem v&ugrave;ng l&acirc;n cận được sử dụng c&oacute; được x&acirc;y dựng l&agrave; khoảng c&aacute;ch cố định hoặc được ph&eacute;p thay đổi trong phạm vi kh&ocirc;ng gian t&ugrave;y theo mật độ đối tượng.
+                <ul>
+                    <li> <b>Số lượng V&ugrave;ng l&acirc;n cận</b>&mdash;K&iacute;ch thước v&ugrave;ng l&acirc;n cận l&agrave; h&agrave;m của một số lượng v&ugrave;ng l&acirc;n cận cụ thể c&oacute; trong c&aacute;c ph&eacute;p t&iacute;nh to&aacute;n cho từng đối tượng. Khi c&aacute;c đối tượng d&agrave;y đặc, phạm vi kh&ocirc;ng gian của v&ugrave;ng l&acirc;n cận nhỏ hơn; v&agrave; khi c&aacute;c đối tượng thưa thớt, phạm vi kh&ocirc;ng gian của v&ugrave;ng l&acirc;n cận lớn hơn. Khi bạn chọn t&ugrave;y chọn n&agrave;y, h&atilde;y chọn số lượng v&ugrave;ng l&acirc;n cận bạn muốn đưa v&agrave;o. Số lượng phải l&agrave; số nguy&ecirc;n trong khoảng 2 đến 5000.
+                    </li>
+                    <li> <b>Dải Khoảng c&aacute;ch</b>&mdash;K&iacute;ch thước v&ugrave;ng l&acirc;n cận l&agrave; một khoảng c&aacute;ch kh&ocirc;ng đổi hoặc cố định cho mỗi đối tượng. Khi bạn chọn t&ugrave;y chọn n&agrave;y, h&atilde;y chọn dải khoảng c&aacute;ch để thể hiện phạm vi kh&ocirc;ng gian của v&ugrave;ng l&acirc;n cận.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Chọn cách đo lường trọng số các đối tượng lân cận</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định loại kernel sẽ được sử dụng để cung cấp trọng số kh&ocirc;ng gian trong m&ocirc; h&igrave;nh. Kernel x&aacute;c định mỗi đối tượng c&oacute; li&ecirc;n quan đến c&aacute;c đối tượng kh&aacute;c trong v&ugrave;ng l&acirc;n cận của n&oacute; như thế n&agrave;o.
+                <ul>
+                    <li> <b>Bisquare</b>&mdash;Trọng số 0 sẽ được g&aacute;n cho bất kỳ đối tượng n&agrave;o b&ecirc;n ngo&agrave;i v&ugrave;ng l&acirc;n cận được chỉ định. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Gaussian</b>&mdash;Tất cả c&aacute;c đối tượng sẽ nhận được trọng số, nhưng c&agrave;ng xa đối tượng mục ti&ecirc;u th&igrave; trọng số c&agrave;ng nhỏ hơn theo cấp số nh&acirc;n.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> T&ecirc;n lớp sẽ được tạo. Nếu bạn đang ghi v&agrave;o ArcGIS Data Store, kết quả của bạn sẽ được lưu trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. Nếu bạn đang ghi v&agrave;o một phần chia sẻ tệp dữ liệu lớn, kết quả của bạn sẽ được lưu v&agrave;o phần chia sẻ tệp dữ liệu lớn v&agrave; được th&ecirc;m v&agrave;o bản k&ecirc; của n&oacute;. N&oacute; sẽ kh&ocirc;ng được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Khi ghi v&agrave;o  ArcGIS Data Store (kho dữ liệu lớn li&ecirc;n quan hoặc kho dữ liệu lớn kh&ocirc;ng gian thời gian) sử dụng hộp xổ xuống  <b>Lưu kết quả v&agrave;o</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của t&ocirc;i</b> để lưu trữ kết quả v&agrave;o.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

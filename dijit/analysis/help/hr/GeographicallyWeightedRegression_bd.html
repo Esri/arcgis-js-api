@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografski ponderirana regresija</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Dijagram radnog tijeka za Geografski ponderiranu regresiju"></h2>
+        <hr/>
+    <p>Vr&scaron;i Geografski ponderiranu regresiju (GWR), koja je lokalni oblik linearne regresije upotrebljavan za oblikovanje prostorno varirajućih odnosa.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj za analizu</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži točkaste geoobjekte koji sadrže zavisne varijable i varijable za obja&scaron;njenje.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Odaberite polja za izradu modela</h2></div>
+        <hr/>
+        <div>
+            <p>Brojčano polje koje sadrži promatrane vrijednosti koje će se oblikovati i vrstu vrijednosti koju oblikujete.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Odaberite polja za objašnjenje</h2></div>
+        <hr/>
+        <div>
+            <p>Jedno ili vi&scaron;e polja koja predstavljaju varijable (polja) za obja&scaron;njenje koje pomažu predvidjeti vrijednost. Vidljiva su samo brojčana polja.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Odaberite način određivanja susjedstva</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje hoće li upotrebljeno susjedstvo biti konstruirano kao fiksna udaljenost ili će biti dopu&scaron;teno variranje prostornog obuhvata ovisno o gustoći geoobjekata.
+                <ul>
+                    <li> <b>Broj susjeda</b>&mdash;Veličina susjedstva funkcija je određenog broja susjeda uključena u izračune za svaki geoobjekt. Gdje su geoobjekti gusto raspoređeni, prostorni obuhvat susjedstva manji je; gdje su geoobjekti rijetko raspoređeni, prostorni obuhvat susjedstva veći je. Kada odaberete tu mogućnost, odaberite broj susjeda koji želite uključiti. Broj mora biti cijeli broj između 2 i 5000.
+                    </li>
+                    <li> <b>Pojas udaljenosti</b>&mdash;Veličina susjedstva konstantna je ili fiksna udaljenost za svaki geoobjekt. Kada odaberete tu mogućnost, odaberite pojas udaljenosti koji će predstavljati prostorni obuhvat susjedstva.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Odaberite kako se ponderiraju susjedni geoobjekti</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje vrstu jezgre sustava koja će se upotrebljavati za pružanje prostornog ponderiranja modela. Jezgra sustava određuje kako je svaki geoobjekt povezan s drugim geoobjektima unutar svog susjedstva.
+                <ul>
+                    <li> <b>Bisquare</b>&mdash;Ponderirana vrijednost 0 bit će dodijeljena bilo kojem geoobjektu izvan određenog susjedstva. To je zadano.
+                    </li>
+                    <li> <b>Gaussian</b>&mdash;Svi geoobjekti dobit će ponderirane vrijednosti, ali one postaju eksponencijalno manje &scaron;to su udaljenije od ciljnog geoobjekta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Naziv sloja koji će se stvoriti. Ako pi&scaron;ete na ArcGIS Data Store, va&scaron;i će se rezultati spremiti u  <b>Mojem sadržaju</b> i dodati karti. Ako pi&scaron;ete na dijeljenje datoteka velikih podataka, va&scaron;i će se rezultati pohraniti u dijeljenje datoteka velikih podataka i dodati u manifest. Neće se dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Kada pi&scaron;ete na  ArcGIS Data Store (relacijski ili prostorno-vremenski spremnik velikih podataka), upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

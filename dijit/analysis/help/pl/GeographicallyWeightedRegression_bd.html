@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regresja ważona geograficznie</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagram procedury wykonywania zadań narzędzia Regresja ważona geograficznie"></h2>
+        <hr/>
+    <p>Wykonuje regresję ważoną geograficznie (Geographically Weighted Regression &mdash; GWR), kt&oacute;ra jest lokalną formą regresji liniowej używaną do modelowania relacji zr&oacute;żnicowanych przestrzennie.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wybierz warstwę do analizy</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa obiekt&oacute;w punktowych zawierająca zmienne zależne i objaśniające.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Wybierz warstwę analizy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej. Opcjonalnie można zastosować filtr w warstwie wejściowej lub wyb&oacute;r w warstwach hostowanych dodanych do mapy. Filtry i wybory są stosowane tylko na potrzeby analizy. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Wybierz pole do modelowania</h2></div>
+        <hr/>
+        <div>
+            <p>Pole liczbowe zawierające obserwowane wartości, kt&oacute;re mają być modelowane oraz typ modelowanych wartości.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Wybierz pola objaśniające</h2></div>
+        <hr/>
+        <div>
+            <p>Jedno lub większa liczba p&oacute;l reprezentujących zmienne objaśniające (pola), kt&oacute;re ułatwiają prognozowanie wartości. Tylko pola liczbowe będą widoczne.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Wybierz sposób określania sąsiedztwa</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy sąsiedztwo jest konstruowane jako stała odległość, czy dozwolona jest jego zmienność w zasięgu przestrzennym w zależności od zagęszczenia obiekt&oacute;w.
+                <ul>
+                    <li> <b>Liczba sąsiad&oacute;w</b> &mdash; wielkość sąsiedztwa jest funkcją podanej liczby sąsiad&oacute;w uwzględnianej w obliczeniach dla każdego obiektu. Tam, gdzie obiekty są rozmieszczone gęsto, zasięg przestrzenny sąsiedztwa jest mniejszy. Tam, gdzie obiekty występują rzadko, zasięg przestrzenny sąsiedztwa jest większy. Przy wybieraniu tej opcji podaj liczbę sąsiad&oacute;w do uwzględnienia. Liczba powinna być wartością całkowitą z zakresu od 2 do 5000.
+                    </li>
+                    <li> <b>Pasmo odległości</b> &mdash; wielkość sąsiedztwa jest wartością stałą lub stałą odległością dla każdego obiektu. Przy wybieraniu tej opcji wybierz pasmo odległości, kt&oacute;re będzie reprezentować zasięg przestrzenny sąsiedztwa.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Wybierz sposób ważenia obiektów sąsiadujących</h2></div>
+        <hr/>
+        <div>
+            <p>Określa typ jądra, kt&oacute;re będzie używane do zapewnienia ważenia przestrzennego w modelu. Jądro definiuje spos&oacute;b powiązania ze sobą obiekt&oacute;w w sąsiedztwie.
+                <ul>
+                    <li> <b>Podw&oacute;jnych kwadrat&oacute;w</b> &mdash; do każdego obiektu spoza podanego sąsiedztwa zostanie przypisana waga o wartości 0. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Gaussa</b> &mdash; wszystkie obiekty otrzymają wagi, ale wagi będą stawać się wykładniczo tym mniejsze, im dalej znajdują się od obiektu docelowego.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona. W przypadku zapisywania w ArcGIS Data Store wyniki będą przechowywane w obszarze  <b>Moje zasoby</b> i dodawane do mapy. W przypadku zapisywania w udostępnionym pliku dużych zbior&oacute;w danych wyniki będą przechowywane w udostępnionym pliku dużych zbior&oacute;w danych i dodawane do jego manifestu. Nie będą dodawane do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>W przypadku zapisywania w  ArcGIS Data Store (relacyjny magazyn danych lub magazyn dużych zbior&oacute;w danych czasowo-przestrzennych) przy użyciu listy rozwijanej  <b>Zapisz wynik w</b> można określić nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

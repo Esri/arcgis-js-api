@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generar anomalía multidimensional</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generar anomal&iacute;a multidimensional"></h2>
+        <hr/>
+    <p>Genera un dataset r&aacute;ster multidimensional al combinar variables de r&aacute;ster multidimensional existentes a lo largo de una dimensi&oacute;n.
+    </p>
+    <p>Una anomal&iacute;a es la desviaci&oacute;n de una observaci&oacute;n de su valor est&aacute;ndar, medio o de mediana.
+    </p>
+    <p>Esta herramienta calcula anomal&iacute;as a lo largo del tiempo para una o varias variables en un r&aacute;ster multidimensional. Si tiene una dimensi&oacute;n que no es de tiempo adem&aacute;s de la dimensi&oacute;n de tiempo, la anomal&iacute;a se calcular&aacute; en cada paso de la dimensi&oacute;n adicional.
+    </p>
+    <p>Por ejemplo, tiene datos de temperatura del oc&eacute;ano mensuales, capturados cada 1 metro de profundidad hasta llegar a los 100 metros, y desea calcular las anomal&iacute;as de temperatura como desviaciones desde el valor medio anual. Esta herramienta determinar&aacute; las anomal&iacute;as de temperatura en funci&oacute;n de un valor medio anual si define  <b>Anualmente</b> como <b>intervalo de tiempo para calcular el valor medio</b> y devolver&aacute; valores an&oacute;malos para cada una de las 100 profundidades.
+    </p>
+    <p>Esta herramienta solo admite datasets r&aacute;ster multidimensionales que tengan una dimensi&oacute;n de tiempo.
+    </p>
+    <p>Si  <b>Usar la extensi&oacute;n de mapa actual</b> est&aacute; activado, se analizar&aacute;n las variables de la capa que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si no est&aacute; activado, se analizar&aacute;n las variables de la capa completa, incluso si se encuentran fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Elegir capa de imágenes multidimensional para generar una anomalía</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de im&aacute;genes de entrada de un dataset r&aacute;ster multidimensional.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Elegir variables de las que se generarán anomalías</h2></div>
+        <hr/>
+        <div>
+            <p>Las variables para las que se calcular&aacute;n anomal&iacute;as. Si no se especifica ninguna variable, se analizar&aacute;n todas las variables con dimensi&oacute;n de tiempo.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Elija el método para generar anomalías</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el m&eacute;todo que se utilizar&aacute; para calcular la anomal&iacute;a. 
+                <ul>
+                    <li> <b>Diferencia desde valor medio</b>: se calcular&aacute; la diferencia entre un valor de p&iacute;xel y el valor medio del valor de dicho p&iacute;xel de porciones definidas por el intervalo. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Diferencia porcentual desde valor medio</b>: se calcular&aacute; la diferencia porcentual entre un valor de p&iacute;xel y el valor medio del valor de dicho p&iacute;xel a trav&eacute;s de porciones definidas por el intervalo.
+                    </li>
+                    <li> <b>Porcentaje de valor medio</b>: se calcular&aacute; el porcentaje del valor medio.
+                    </li>
+                    <li> <b>Puntuaci&oacute;n Z</b>: se calcular&aacute; la puntuaci&oacute;n z de cada p&iacute;xel. Una puntuaci&oacute;n z de 0 indica que el valor del p&iacute;xel es id&eacute;ntico al valor medio. Una puntuaci&oacute;n z de 1 indica que el valor del p&iacute;xel presenta una desviaci&oacute;n est&aacute;ndar de 1 del valor medio. Si la puntuaci&oacute;n z es 2, el valor del p&iacute;xel presenta una desviaci&oacute;n est&aacute;ndar de 2 del valor medio, y as&iacute; sucesivamente.
+                    </li>
+                    <li> <b>Diferencia de mediana</b>: se calcular&aacute; la diferencia entre un valor de p&iacute;xel y la mediana matem&aacute;tica de los valores de dicho p&iacute;xel a trav&eacute;s de porciones definidas por el intervalo.
+                    </li>
+                    <li> <b>Diferencia porcentual desde mediana</b>: se calcular&aacute; la diferencia porcentual entre un valor de p&iacute;xel y la mediana matem&aacute;tica de los valores de ese p&iacute;xel a trav&eacute;s de porciones definidas por el intervalo.
+                    </li>
+                    <li> <b>Porcentaje de mediana</b>: se calcular&aacute; el porcentaje de la mediana matem&aacute;tica.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Los m&eacute;todos matem&aacute;ticos para calcular valores an&oacute;malos se indican a continuaci&oacute;n. Es posible calcular anomal&iacute;as con los valores medios o la mediana como definici&oacute;n del promedio. Si la distribuci&oacute;n de datos est&aacute; sesgada, los valores at&iacute;picos pueden influir enormemente en el valor medio, por lo que es posible que la mediana o el m&eacute;todo de puntuaci&oacute;n z sean m&aacute;s adecuados para este tipo de datos.
+            </p>
+            <p>
+                <ul>
+                    <li>Diferencia desde valor medio = x - &micro;
+
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                                
+
+                            </li>
+                            <li>&micro; = valor medio de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Diferencia de porcentaje desde valor medio = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                                
+
+                            </li>
+                            <li>&micro; = valor medio de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                                
+
+                            </li>
+                            <li>|x - &micro;| = valor absoluto de la diferencia entre el valor y el valor medio
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Porcentaje de valor medio = x / &micro;
+
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                                
+
+                            </li>
+                            <li>&micro; = valor medio de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferencia de mediana = x - &szlig;
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                            </li>
+                            <li>&szlig; = mediana de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Diferencia entre porcentaje y mediana = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                            </li>
+                            <li>&szlig; = mediana de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                            </li>
+                            <li>|x - &szlig;| = valor absoluto de la diferencia entre el valor y la mediana
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Porcentaje de mediana = x / &szlig;
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                            </li>
+                            <li>&szlig; = mediana de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Puntuaci&oacute;n Z = (x &minus; &micro;) / S
+                        <ul>
+                            <li>x = valor de p&iacute;xel en una porci&oacute;n
+                            </li>
+                            <li>&micro; = valor medio de los valores de dicho p&iacute;xel a lo largo del intervalo de tiempo determinado
+                            </li>
+                            <li>S = desviaci&oacute;n est&aacute;ndar de los valores del p&iacute;xel a lo largo del intervalo de tiempo determinado
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Elegir el intervalo temporal que se utilizará para calcular el valor medio</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el intervalo temporal que se utilizar&aacute; para calcular el valor medio. 
+                <ul>
+                    <li> <b>Todo</b>: calcula el valor medio a trav&eacute;s de todas las porciones de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Cada a&ntilde;o</b>: calcula el valor medio anual de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrente mensualmente</b>: calcula el valor medio mensual de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrente semanalmente</b>: calcula el valor medio semanal de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Recurrente diariamente</b>: calcula el valor medio diario de cada p&iacute;xel.
+                    </li>
+                    <li> <b>Cada hora</b>: calcula el valor medio horario de cada p&iacute;xel.
+                    </li>
+                    <li> <b>R&aacute;ster externo</b>: se hace referencia a un dataset r&aacute;ster existente que contiene el valor medio o la mediana de cada p&iacute;xel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Elegir capa de imágenes de valor medio como referencia</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el dataset r&aacute;ster de referencia que contiene el valor medio calculado previamente para cada p&iacute;xel. Las anomal&iacute;as se calcular&aacute;n en comparaci&oacute;n con este valor medio.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar valores que faltan en cálculo</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis. 
+                <ul>
+                    <li>Activado: el an&aacute;lisis incluir&aacute; todos los p&iacute;xeles v&aacute;lidos a lo largo de una dimensi&oacute;n determinada y se ignorar&aacute;n los p&iacute;xeles NoData. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li>Desactivado: el an&aacute;lisis dar&aacute; como resultado NoData si hay valores NoData para el p&iacute;xel a lo largo de la dimensi&oacute;n determinada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

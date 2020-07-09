@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[近接エリアの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、 <b>[データの管理]</b>、および <b>[ディープ ラーニング]</b>です。
+        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[近接エリアの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、 <b>[データの管理]</b>、 <b>[ディープ ラーニング]</b>、および <b>[多次元解析]</b> です。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ポリラインとしての移動コスト パスの決定</h2></td>
+                    <td><h2>移動コスト パスの決定 (ポリライン)</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="[ポリラインとしての移動コスト パスの決定] ツールの図">
                     </td>
@@ -327,7 +327,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>データの管理</h2>
         <hr/>
         <p>これらのツールは、地理データの日常的な管理と、解析前のデータの結合のために使用されます。
@@ -347,6 +347,8 @@
                 <li> <b>[ラスターをフィーチャに変換]</b> では、ラスター データをベクター変換します。
                     
 
+                </li>
+                <li> <b>[サンプル]</b> では、ラスターまたはラスター セットから定義済み位置のデータを抽出します。
                 </li>
             </ul>
             
@@ -401,9 +403,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ラスターをフィーチャに変換</h2></td>
+                    <td><h2>ラスターをフィーチャに変換 (Convert Raster To Feature)</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="ラスターをフィーチャに変換ツール">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="[ラスターをフィーチャに変換 (Convert Raster To Feature)] ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sample (サンプル)</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="サンプル">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ラスターまたはラスター セットから抽出された定義済み位置のデータ値を使用して、テーブルまたはポイント フィーチャを作成します。
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="regularsize">
-        <h2>ツールセット: ディープ ラーニング</h2>
+        <h2>ディープ ラーニング</h2>
         <hr/>
-        <p>これらのツールは、イメージ内の特定のフィーチャを検出するためや、ラスター データセット内のピクセルを分類するために使用されます。ディープ ラーニングは、人工知能機械学習手法の一種であり、各レイヤーが画像内の 1 つ以上の一意なフィーチャを抽出できるニューラル ネットワークで複数のレイヤーを使用して画像内のフィーチャを検出します。これらのツールは、トレーニングされたモデルを使用して、サード パーティのディープ ラーニング フレームワーク (TensorFlow、CNTK、Keras など) で特定のフィーチャを検出し、フィーチャまたは分類マップを出力します。
+        <p>これらのツールは、イメージ内の特定のフィーチャを検出するためや、ラスター データセット内のピクセルを分類するために使用されます。ディープ ラーニングは、機械学習法の人口知能の一種であり、各レイヤーが画像内の 1 つ以上の一意なフィーチャを抽出できるニューラル ネットワークで複数のレイヤーを使用して画像内のフィーチャを検出します。これらのツールは、トレーニングされたモデルを使用して、サード パーティのディープ ラーニング フレームワーク (TensorFlow、CNTK、Keras など) で特定のフィーチャを検出し、フィーチャまたは分類マップを出力します。
             <ul>
-                <li> <b>[ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、分類済みのラスターを生成します。
+                <li> <b>[ディープ ラーニングを使用したピクセルの分類]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、分類済みのラスターを生成します。
                 </li>
-                <li> <b>[ディープ ラーニングを使用したオブジェクトの検出 (Detect Objects Using Deep Learning)]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、入力ラスターで検出したオブジェクトを含むフィーチャクラスを作成します。
+                <li> <b>[ディープ ラーニングを使用したオブジェクトの検出]</b> は、トレーニング済みのディープ ラーニング モデルを使用し、入力ラスターで検出したオブジェクトを含むフィーチャクラスを作成します。
+                </li>
+                <li> <b>[ディープ ラーニングを使用したオブジェクトの分類]</b> は、トレーニング済みのディープ ラーニング モデルを使用して、入力ラスター内の各入力オブジェクトにクラス ラベルを割り当てたフィーチャクラスまたはテーブルを作成します。
                 </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>入力ラスターにトレーニング済みディープ ラーニング モデルを実行して、有効な各ピクセルにクラス ラベルを割り当てた分類済みラスターを作成します。
+            <p>このツールは、入力ラスターに対してトレーニング済みのディープ ラーニング モデルを実行し、分類済みラスターを作成します。有効な各ピクセルにはクラス ラベルが割り当てられます。
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>入力ラスターにトレーニング済みディープ ラーニング モデルを実行して、検出したオブジェクトを含むフィーチャクラスを作成します。フィーチャには、検出されたオブジェクトの周囲の境界四角形やポリゴン、またはオブジェクトの中心のポイントを指定できます。
+            <p>このツールは、入力ラスターに対してトレーニング済みのディープ ラーニング モデルを実行し、検出したオブジェクトを含むフィーチャクラスを作成します。フィーチャには、検出されたオブジェクトの周囲の境界四角形やポリゴン、またはオブジェクトの中心のポイントを指定できます。
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ディープ ラーニングを使用したオブジェクトの分類 (Classify Objects Using Deep Learning)</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="ディープ ラーニングを使用したオブジェクトの分類 (Classify Objects Using Deep Learning)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、入力ラスターとオプションのフィーチャクラスに対してトレーニング済みディープ ラーニング モデルを実行し、各入力オブジェクトにクラス ラベルを割り当てたフィーチャクラスまたはテーブルを作成します。
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="regularsize">
+        <h2>多次元解析</h2>
+        <hr/>
+        <p>多次元解析ツールセット内のツールを使用すると、複数の変数や次元にまたがる科学的なデータに対する解析を実行できます。
+        </p>
+        <p>多次元データは、複数の回数、深度、および高度で取得されたデータを表します。このタイプのデータは、大気、海洋、および地球科学でよく使用されています。このツールセットを用いて、netCDF、HDF、GRIB などの複数の形式、多次元モザイク データセット、および Esri の CRF (Cloud Raster Format) の多次元ラスター データを解析できます。
+        </p>
+        <p>以下の表に、[多次元解析] ツールとその簡単な説明を示します。
+            <ul>
+                <li> <b>[多次元ラスターの集約]</b> - 既存の多次元ラスター変数をディメンションに沿って集約することによって、多次元ラスター データセットを生成します。
+                </li>
+                <li> <b>[多次元異常の生成]</b> - 多次元ラスター内のスライスごとに異常を計算し、多次元ラスターを生成します。
+                </li>
+                <li> <b>[トレンド ラスターの生成]</b> - 多次元ラスターの 1 つまたは複数の変数のディメンションに沿って各ピクセルのトレンドを推定します。
+                </li>
+                <li> <b>[トレンド ラスターを使用した予測]</b>- [トレンド ラスターの生成] ツールの出力トレンド ラスターを使用して、予測される多次元ラスターを計算します。
+                </li>
+                <li> <b>[引数の統計を検索]</b> - 多次元ラスターまたはマルチバンド ラスター内の各ピクセルに対して、所定の統計が得られるディメンション値またはバンド インデックスを抽出します。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>多次元ラスターの集約</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="多次元ラスターの集約">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、既存の多次元ラスター変数をディメンションに沿って集約することによって、多次元ラスター データセットを生成します。
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>引数の統計を検索 (Find Argument Statistics)</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="引数の統計を検索 (Find Argument Statistics)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、多次元ラスターまたはマルチバンド ラスター内の各ピクセルに対して、所定の統計が得られるディメンション値またはバンド インデックスを抽出します。
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>多次元異常の生成</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="多次元異常の生成">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、多次元ラスター内のスライスごとに異常を計算し、多次元ラスターを生成します。
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>トレンド ラスターの生成 (Generate Trend Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="トレンド ラスターの生成 (Generate Trend Raster)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、多次元ラスターの 1 つまたは複数の変数のディメンションに沿って各ピクセルのトレンドを推定します。
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>トレンド ラスターを使用した予測 (Predict Using Trend Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="トレンド ラスターを使用した予測 (Predict Using Trend Raster)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、 <b>[トレンド ラスターの生成 (Generate Trend Raster)]</b> ツールの出力トレンド ラスターを使用して、予測される多次元ラスターを計算します。
             </p>
             <br/>
         </div>

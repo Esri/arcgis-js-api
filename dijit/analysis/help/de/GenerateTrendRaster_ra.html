@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trend-Raster generieren</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Trend-Raster generieren"></h2>
+        <hr/>
+    <p>Sch&auml;tzt den Trend f&uuml;r jedes Pixel entlang einer Dimension f&uuml;r eine oder mehrere Variablen in einem multidimensionalen Raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Multidimensionalen Bilddaten-Layer für die Trendanalyse auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Rasters f&uuml;r die Analyse.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Dimension für die Analyse des Variablentrends auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Dimension, f&uuml;r die anhand der in der Analyse ausgew&auml;hlte(n) Variable(n) Trenddaten gewonnen werden sollen.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variable(n) für die Trendanalyse auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Variable oder Variablen, f&uuml;r die Trends berechnet werden. Wenn keine Variable angegeben ist, wird die erste Variable im multidimensionalen Raster analysiert.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Linientyp für die Anpassung an die Variablenwerte in einer Dimension auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt den Linientyp f&uuml;r die Anpassung an die Pixelwerte in einer Dimension an. 
+                <ul>
+                    <li> <b>Linear</b>: Variable Pixelwerte werden entlang einer linearen Trendlinie angepasst. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Polynomisch</b>: Variable Pixelwerte werden entlang einer polynomischen Trendlinie zweiter Ordnung angepasst.
+                    </li>
+                    <li> <b>Harmonisch</b>: Variable Pixelwerte werden entlang einer harmonischen Trendlinie angepasst.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Die Länge des harmonischen Zyklus angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Die L&auml;nge der zu modellierenden periodischen Variation. Dieser Parameter ist erforderlich, wenn f&uuml;r den Trendlinientyp die Option  <b>Harmonisch</b> festgelegt wurde. Der Gr&uuml;nanteil bei Bl&auml;ttern beispielsweise weist pro Jahr einen starken Variationszyklus auf, sodass die Zyklusl&auml;nge 1&nbsp;Jahr betr&auml;gt. St&uuml;ndlich erfasste Temperaturdaten weisen pro Tag einen starken Variationszyklus auf, sodass die Zyklusl&auml;nge 1&nbsp;Tag betr&auml;gt.
+            </p>
+            <p>F&uuml;r Daten, die eine Variation auf der Grundlage eines Jahreszyklus aufweisen, betr&auml;gt die Standardl&auml;nge 1&nbsp;Jahr.
+            </p>
+            <p>Dieser Parameter ist nur in der Trendanalyse enthalten, wenn es sich bei der analysierten Dimension um Zeit handelt und der Trendlinientyp auf  <b>Harmonisch</b> festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Zeiteinheit für die Länge eines harmonischen Zyklus auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die Zeiteinheit f&uuml;r die L&auml;nge eines harmonischen Zyklus an.
+                <ul>
+                    <li> <b>Tage</b>: Die Einheit f&uuml;r die L&auml;nge des harmonischen Zyklus ist ein Tag.
+                    </li>
+                    <li> <b>Jahre</b>: Die Einheit f&uuml;r die L&auml;nge des harmonischen Zyklus ist ein Jahr. Dies ist die Standardeinstellung.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dieser Parameter ist nur in der Trendanalyse enthalten, wenn es sich bei der analysierten Dimension um Zeit handelt und der Trendlinientyp auf  <b>Harmonisch</b> festgelegt wurde.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Frequenz für die harmonische Trendanpassung angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Die f&uuml;r die harmonische Trendanpassung verwendete Frequenz. Dieser Parameter gibt die Frequenz als Zyklen pro Jahr an.
+            </p>
+            <p>Der Standardwert ist 1, das entspricht einem harmonischen Zyklus pro Jahr.
+            </p>
+            <p>Dieser Parameter ist nur in der Trendanalyse enthalten, wenn es sich bei der analysierten Dimension um Zeit handelt.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Polynom-Ordnung für die Trendanpassung angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Die f&uuml;r die polynomische Trendanpassung verwendete Polynom-Ordnung.
+            </p>
+            <p>Dieser Parameter ist nur in der Trendanalyse enthalten, wenn es sich bei der analysierten Dimension um Zeit handelt.
+            </p>
+            <p>Der Standardwert ist&nbsp;2. Das entspricht einem Polynom zweiter Ordnung.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Modellstatistiken für die Berücksichtigung im Trend-Raster auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dieses Werkzeug stellt drei Typen von Statistiken f&uuml;r die angepasste Trendlinie zur Verf&uuml;gung: Den RMS-Fehler (Root Mean Square, quadratisches Mittel), die Statistik zur Qualit&auml;t der &Uuml;bereinstimmung von R-Squared und die p-Wertstatistik f&uuml;r den Neigungskoeffizienten (P-Wert des Neigungskoeffizienten). F&uuml;r jede Statistik kann &uuml;ber ein Kontrollk&auml;stchen festgelegt werden, ob sie berechnet und als eines der B&auml;nder im Ausgabe-Trend-Raster ber&uuml;cksichtigt werden soll.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Aktiviert: Der RMS-Fehler wird berechnet und als eines der B&auml;nder im Ausgabe-Trend-Raster ber&uuml;cksichtigt. Dies ist die Standardeinstellung.
+                            </li>
+                            <li>Deaktiviert: Der RMS-Fehler wird nicht berechnet.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-Squared
+                        </p>
+                        <ul>
+                            <li>Aktiviert: Der R-Squared-Wert wird berechnet und als eines der B&auml;nder im Ausgabe-Trend-Raster ber&uuml;cksichtigt.
+                            </li>
+                            <li>Deaktiviert: Der R-Squared-Wert wird nicht berechnet. Dies ist die Standardeinstellung.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-Wert des Neigungskoeffizienten
+                        </p>
+                        <ul>
+                            <li>Aktiviert: Der P-Wert wird berechnet und als eines der B&auml;nder im Ausgabe-Trend-Raster ber&uuml;cksichtigt.
+                            </li>
+                            <li>Deaktiviert: Der p-Wert wird nicht berechnet. Dies ist die Standardeinstellung.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden.
+                <ul>
+                    <li>Aktiviert: Bei der Analyse werden alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
+                    </li>
+                    <li>Deaktiviert: Wenn NoData-Werte f&uuml;r die Pixel entlang einer angegebenen Dimension vorhanden sind, wird bei der Analyse NoData zur&uuml;ckgegeben.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

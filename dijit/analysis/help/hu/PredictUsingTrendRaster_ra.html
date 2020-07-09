@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Előrejelzés trendraszterrel</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Előrejelz&eacute;s trendraszterrel"></h2>
+        <hr/>
+    <p>Egy előre jelzett t&ouml;bbdimenzi&oacute;s rasztert sz&aacute;mol ki a  Trendraszter l&eacute;trehoz&aacute;sa eszk&ouml;zből sz&aacute;rmaz&oacute; kimeneti trendraszter seg&iacute;ts&eacute;g&eacute;vel.
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Többdimenziós távérzékelési réteg kiválasztása az előrejelzéshez</h2></div>
+        <hr/>
+        <div>
+            <p>A  Trendraszter l&eacute;trehoz&aacute;sa eszk&ouml;zzel l&eacute;trehozott bemeneti t&ouml;bbdimenzi&oacute;s trendraszter.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Előre jelezni kívánt változó(k) kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az v&aacute;ltoz&oacute; (vagy v&aacute;ltoz&oacute;k), amelye(ke)t az elemz&eacute;s majd előre jelez. Ha nincs megadva v&aacute;ltoz&oacute;, a rendszer az &ouml;sszes v&aacute;ltoz&oacute;t fogja haszn&aacute;lni.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Az előrejelzés dimenzióértékeinek biztosítására szolgáló módszer kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az előrejelz&eacute;s dimenzi&oacute;&eacute;rt&eacute;keinek biztos&iacute;t&aacute;s&aacute;ra szolg&aacute;l&oacute; m&oacute;dszert hat&aacute;rozza meg.
+                <ul>
+                    <li> <b>&Eacute;rt&eacute;k szerint</b> &ndash; A rendszer a k&ouml;vetkező l&eacute;p&eacute;sben meghat&aacute;rozott egyetlen dimenzi&oacute;&eacute;rt&eacute;kre vagy dimenzi&oacute;&eacute;rt&eacute;kek list&aacute;j&aacute;ra sz&aacute;m&iacute;t előrejelz&eacute;st. Ez az alap&eacute;rtelmez&eacute;s. P&eacute;ld&aacute;ul ha az &eacute;ves csapad&eacute;kmennyis&eacute;get k&iacute;v&aacute;nja előre jelezni 2050-re, 2100-ra &eacute;s 2150-re.
+                    </li>
+                    <li> <b>Idők&ouml;z szerint</b> &ndash; Az előrejelz&eacute;st a rendszer a dimenzi&oacute; kezdő &eacute;s z&aacute;r&oacute; d&aacute;tum &aacute;ltal meghat&aacute;rozott idők&ouml;z&eacute;re sz&aacute;m&iacute;tja ki. P&eacute;ld&aacute;ul ha minden &eacute;vre szeretn&eacute; előre jelezni az &eacute;ves csapad&eacute;kmennyis&eacute;get 2050 &eacute;s 2150 k&ouml;z&ouml;tt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Dimenzióérték(ek) meghatározása előrejelzéshez</h2></div>
+        <hr/>
+        <div>
+            <p>Az előrejelz&eacute;sben haszn&aacute;land&oacute; dimenzi&oacute;&eacute;rt&eacute;k vagy dimenzi&oacute;&eacute;rt&eacute;kek.
+            </p>
+            <p>Az idő-, m&eacute;lys&eacute;g- &eacute;s magass&aacute;g&eacute;rt&eacute;kek form&aacute;tum&aacute;nak egyeznie kell a trendraszter l&eacute;trehoz&aacute;s&aacute;hoz haszn&aacute;lt dimenzi&oacute;&eacute;rt&eacute;kek form&aacute;tum&aacute;val. Ha a trendraszter az StdTime dimenzi&oacute; sz&aacute;m&aacute;ra k&eacute;sz&uuml;lt, akkor a form&aacute;tum &Eacute;&Eacute;&Eacute;&Eacute;-HH-NNT&Oacute;&Oacute;:PP:MM kell legyen, azaz &ndash; p&eacute;ld&aacute;ul &ndash; 2050-01-01T00:00:00. Ha t&ouml;bb &eacute;rt&eacute;k van, pontosvesszővel kel elv&aacute;lasztani őket.
+            </p>
+            <p>K&ouml;telező a param&eacute;tert megadni ha az  <b>&Eacute;rt&eacute;k szerint</b> met&oacute;dus van kiv&aacute;lasztva az előrejelz&eacute;s dimenzi&oacute;&eacute;rt&eacute;keinek meghat&aacute;roz&aacute;s&aacute;hoz.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Előrejelzés dimenzió-időközének meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>A dimenzi&oacute; idők&ouml;z&eacute;nek az előrejelz&eacute;sben haszn&aacute;lni k&iacute;v&aacute;nt kezdő &eacute;s z&aacute;r&oacute; d&aacute;tum&aacute;t, magass&aacute;g&aacute;t vagy m&eacute;lys&eacute;g&eacute;t hat&aacute;rozza meg.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>A kezdő és záró értékek közötti lépések számának meghatározása</h2></div>
+        <hr/>
+        <div>
+            <p>Az előrejelz&eacute;sbe belefoglaland&oacute; k&eacute;t dimenzi&oacute;&eacute;rt&eacute;k k&ouml;z&ouml;tti l&eacute;p&eacute;sek sz&aacute;ma. Az alap&eacute;rtelmezett &eacute;rt&eacute;k 1.
+            </p>
+            <p>P&eacute;ld&aacute;ul ha &ouml;t&eacute;vente k&iacute;v&aacute;nja előre jelezni a hőm&eacute;rs&eacute;klet&eacute;rt&eacute;keket, v&aacute;lassza &eacute;rt&eacute;knek az 5-&ouml;t.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Az időérték-intervallumhoz használt mértékegység kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Az &eacute;rt&eacute;k idők&ouml;z&eacute;&uuml;l szolg&aacute;l&oacute; m&eacute;rt&eacute;kegys&eacute;get hat&aacute;rozza meg. Csak akkor alkalmazand&oacute;, ha az elemz&eacute;s dimenzi&oacute;ja idődimenzi&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Eredmény réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

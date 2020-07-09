@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({clustersLabel:"Para a camada ${inputLayerName} localize os agrupamentos.",chooseLayerLabel:"Escolha a camada em que os agrupamentos serão calculados",minClusterPtsLabel:"Número mínimo de pontos a ser considerado como um agrupamento",minClustersPtsGAXLbl:"Número mínimo de pontos para propagar um agrupamento",limitSearchLabel:"Limitar o intervalo de pesquisa para (opcional)",limitSearchReqLabel:"Limitar o intervalo de pesquisa para",outputLayerName:"Localizar Agrupamentos do ${inputLayerName}",itemDescription:"Camada de feição gerada ao executar a solução Localizar Agrupamentos de Pontos de ${inputLayerName}.",itemTags:"Resultado da Análise, Localizar Agrupamentos de Pontos, ${inputLayerName}",itemSnippet:"Camada de feição gerada de Localizar Agrupamentos de Pontos",chooseClusteringMethod:"Escolha o método de agrupamento para utilizar",dbscanLabel:"Distância Definida (DBSCAN)",hdbscanLabel:"Auto-Ajuste (HDBSCAN)",useTimeToFindCLusters:"Utilizar tempo para localizar agrupamentos",limitSearchDurLabel:"Limitar a duração de pesquisa para"});

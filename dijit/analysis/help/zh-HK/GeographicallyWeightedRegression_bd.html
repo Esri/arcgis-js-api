@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>地理加權迴歸</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeographicallyWeightedRegression 工作流程圖"></h2>
+        <hr/>
+    <p>執行地理加權迴歸 (GWR)，這是線性迴歸的本地形式，用於塑模空間變化關係。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>選擇要分析的圖層</h2></div>
+        <hr/>
+        <div>
+            <p>包含相依和說明變數之點圖徵所屬的圖層。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>選擇分析圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。您可以選擇在輸入圖層上套用篩選器，或將託管圖層上的選擇套用到您的地圖。只會套用篩選器和選擇以進行分析。 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>選擇要塑模的欄位</h2></div>
+        <hr/>
+        <div>
+            <p>包含要塑模的觀察值和正在塑模之值類型的數值欄位。
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>選擇說明欄位</h2></div>
+        <hr/>
+        <div>
+            <p>一或多個欄位，表示可協助預測值的說明變數（欄位）。只有數值欄位可見。
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>選擇將判定鄰里的方式</h2></div>
+        <hr/>
+        <div>
+            <p>指定是將使用的鄰里建構為固定距離，還是依據圖徵的密度，在空間範圍內變化。
+                <ul>
+                    <li> <b>鄰域數量</b> - 鄰里大小是針對每個圖徵所計算之鄰域指定數量的函數。當圖徵密集時，鄰里的空間範圍較小；當圖徵稀疏時，鄰里的空間範圍較大。選擇此選項時，請選擇要包含的鄰域數量。數量必須是介於 2 到 5000 之間的整數。
+                    </li>
+                    <li> <b>距離頻段</b> - 鄰里大小是每個圖徵的常數或固定距離。選擇此選項時，請選擇距離頻段來表示鄰里的空間範圍。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>選擇鄰近圖徵的加權方式</h2></div>
+        <hr/>
+        <div>
+            <p>指定在模型中將用來提供空間加權的核心類型。核心定義了每個圖徵與其鄰里中其他圖徵之間的關聯方式。
+                <ul>
+                    <li> <b>雙平方</b> - 將權數 0 指派給指定鄰里外部的任何圖徵。這是預設情況。
+                    </li>
+                    <li> <b>Gaussian</b> - 所有圖徵都會收到權數，但與目標圖徵的距離越遠，其權數就會以指數方式減小。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 將建立之圖層的名稱。若是寫入到 ArcGIS Data Store，您的結果將儲存於<b>我的內容</b>並新增至地圖中。若是寫入到大數據檔案分享，您的結果將儲存於大數據檔案分享並新增至其資訊清單中。不會將它新增到地圖。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊寫入到 ArcGIS Data Store（關聯式或大型的時空資料儲存庫）時，可以在<b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

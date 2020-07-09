@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Copy to Data Store</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copy to Data Store"></h2>
+        <hr/>
+    <p>This tool will take an input layer and copy it to a data store. You can copy results to  ArcGIS Data Store (relational or spatiotemporal big data store) and a layer will be created in your portal or you can copy results to a big data file sure. 
+    </p>
+    <p>For example, you could copy features that are stored in a  <code>big data file share</code> to a <code>relational data store</code> and specify that  only  features within the current map extent will be copied. This would create a hosted feature service with only those features that were within the specified map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose layer to copy</h2></div>
+        <hr/>
+        <div>
+            <p>The layer or  table that will be copied. 
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>You may use all features or make a selection (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Optionally, use the selection button to identify the locations to be copied.
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Choose the data store to copy to</h2></div>
+        <hr/>
+        <div>
+            <p>The data store that the layer will be copied to. This parameter will override the selection in the  <b>Analysis Environments</b>. The options are the following:
+                <ul>
+                    <li> <b>ArcGIS Data Store</b> ArcGIS Data Store <ul>
+                            <li> <b>Spatiotemporal</b>&mdash;This is the default.
+                            </li>
+                            <li> <b>Relational</b>
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Big Data File Share Output Templates</b>
+                        <ul>
+                            <li>A list of available big data file share templates in the format  <b>bigDataFileShareName-templateName</b>. Big data file shares templates must be configured before running the tool.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

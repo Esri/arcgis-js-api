@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regressió ponderada geogràficament</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagrama de flux de treball de GeographicallyWeightedRegression"></h2>
+        <hr/>
+    <p>Executa la regressi&oacute; ponderada geogr&agrave;ficament (GWR), que &eacute;s una forma local de regressi&oacute; lineal utilitzada per modelar relacions que varien espacialment.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Trieu la capa que voleu analitzar</h2></div>
+        <hr/>
+        <div>
+            <p>Capa que inclou les entitats de punts que contenen les variables dependents i explicatives.
+            </p>
+            <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b> al final de la llista desplegable per cercar al vostre contingut una capa d'entitats o un dataset de recursos compartits de fitxers de dades massives. Podeu aplicar un filtre a la capa d'entrada o aplicar una selecci&oacute; a les capes allotjades que s'han afegit al mapa. Els filtres i les seleccions nom&eacute;s s'apliquen per a an&agrave;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Trieu el camp que voleu modelar</h2></div>
+        <hr/>
+        <div>
+            <p>Camp num&egrave;ric que cont&eacute; els valors observats que es modelaran i el tipus de valor que esteu modelant.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Trieu els camps explicatius</h2></div>
+        <hr/>
+        <div>
+            <p>Un o diversos camps que representen les variables explicatives (camps) que ajuden a predir el valor. Nom&eacute;s els camps num&egrave;rics seran visibles.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Trieu com es determinarà el veïnat</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si el ve&iuml;nat utilitzat s'ha constru&iuml;t com una dist&agrave;ncia fixa o pot variar en extensi&oacute; espacial segons la densitat de les entitats.
+                <ul>
+                    <li> <b>Nombre de ve&iuml;ns</b>: la mida del ve&iuml;nat &eacute;s una funci&oacute; d'un nombre de ve&iuml;ns especificat que s'inclou als c&agrave;lculs de cada entitat. All&agrave; on les entitats s&oacute;n denses, l'extensi&oacute; espacial del ve&iuml;nat &eacute;s m&eacute;s petita; on s&oacute;n disperses, l'extensi&oacute; espacial del ve&iuml;nat &eacute;s m&eacute;s gran. Si trieu aquesta opci&oacute;, seleccioneu el nombre de ve&iuml;ns que voleu incloure. El nombre ha de ser un enter entre 2 i 5.000.
+                    </li>
+                    <li> <b>Banda de dist&agrave;ncia</b>: la mida del ve&iuml;nat &eacute;s una dist&agrave;ncia constant o fixa de cada entitat. Si trieu aquesta opci&oacute;, seleccioneu la banda de dist&agrave;ncia que representar&agrave; l'extensi&oacute; espacial del ve&iuml;nat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Trieu com es ponderaran les entitats veïnes</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el tipus de nucli que s'utilitzar&agrave; per proporcionar la ponderaci&oacute; espacial al model. El nucli defineix com es relaciona cada entitat amb les altres del seu ve&iuml;nat.
+                <ul>
+                    <li> <b>Biquadrat</b>: s'assignar&agrave; una ponderaci&oacute; de 0 a qualsevol entitat que es trobi fora del ve&iuml;nat especificat. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Gaussi&agrave;</b>: totes les entitats rebran ponderacions, que seran exponencialment inferiors com m&eacute;s lluny es trobin de l'entitat de destinaci&oacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p> Nom de la capa que es crear&agrave;.  Si esteu escrivint en un ArcGIS Data Store, els resultats es desaran a  <b>El meu contingut</b> i s'afegiran al mapa. Si esteu escrivint en un recurs compartit de fitxers de dades massives, els resultats s'emmagatzemaran en aquest recurs i s'afegiran al seu manifest. No s'afegiran al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, l'eina no funcionar&agrave;.
+            </p>
+            <p>Si escriviu a l' ArcGIS Data Store (magatzem de dades massives relacional o espaciotemporal) mitjan&ccedil;ant el quadre desplegable  <b>Desa el resultat a</b>, podeu especificar el nom d'una carpeta a <b>El meu contingut</b>, on es desar&agrave; el resultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

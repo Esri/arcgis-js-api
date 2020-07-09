@@ -106,7 +106,32 @@
             <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_trendLineTypeSelect" data-dojo-attach-event="onChange:_handleTrendLineTypeChange"></select>
           </td>
         </tr>
-
+        <tr data-dojo-attach-point="_cycleLengthLabelRow" class="esriLeadingMargin1" style="display:none;">
+          <td colspan="2">
+            <label data-dojo-attach-point="_cycleLengthLabel">${i18n.cycleLength}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="cycleLength"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_cycleLengthValueRow" style="display:none;">
+          <td colspan="3">
+            <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_cycleLengthValue" value=""></input>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_cycleUnitLabelRow" class="esriLeadingMargin1" style="display:none;">
+          <td colspan="2">
+            <label data-dojo-attach-point="_cycleUnitLabel">${i18n.cycleUnit}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="cycleUnit"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_cycleUnitValueRow" class="esriLeadingMargin1" style="display:none;">
+          <td colspan="3">
+            <select class="longInput" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_cycleUnitSelect"></select>
+          </td>
+        </tr>
         <tr data-dojo-attach-point="_frequencyLabelRow" class="esriLeadingMargin1" style="display:none;">
           <td colspan="2">
             <label data-dojo-attach-point="_frequencyLabel">${i18n.frequencyLabel}</label>
@@ -123,9 +148,39 @@
             <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="polynomialOrder"></a>
           </td>
         </tr>
-        <tr data-dojo-attach-point="_frequencyValueRow" class="esriLeadingMargin1" style="display:none;">
+        <tr data-dojo-attach-point="_frequencyValueRow" style="display:none;">
           <td colspan="3">
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_frequencyValue" value=""></input>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="clear"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
+            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_modelStatisticsLabel">${i18n.modelStatistics}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="modelStatistics"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <label class="esriLeadingMargin2 esriSelectLabel">
+              <input type="radio" data-dojo-attach-point="_rmseCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" checked value="true" />
+              ${i18n.rmse}
+            </label>
+            <br />
+            <label class="esriLeadingMargin2 esriSelectLabel">
+              <input type="radio" data-dojo-attach-point="_r2Check" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:false" checked value="false" />
+              ${i18n.r2}
+            </label>
+            <br />
+            <label class="esriLeadingMargin2 esriSelectLabel" data-dojo-attach-point="_pValue">
+              <input type="radio" data-dojo-attach-point="_slopePValueCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:false" checked value="false" />
+              ${i18n.slopePValue}
+            </label>
           </td>
         </tr>
         <tr>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregeeri mitmemõõtmeline raster</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregeeri mitmem&otilde;&otilde;tmeline raster"></h2>
+        <hr/>
+    <p>Loob mitmem&otilde;&otilde;tmelise rasterandmestiku olemasolevaid mitmem&otilde;&otilde;tmelisi rastri muutujaid m&ouml;&ouml;da dimensiooni kombineerides.
+    </p>
+    <p>Kui teil on 30 aasta merepinna temperatuuri andmed, mida on m&otilde;&otilde;detud igakuiselt iga 5 meetri tagant kuni 100 meetri s&uuml;gavuseni, on v&otilde;imalikud kasutusalad muuhulgas j&auml;rgnevad:
+        <ul>
+            <li>Igakuiste temperatuuriandmete agregeerimine iga-aastasteks andmeteks.
+            </li>
+            <li>Igakuiste temperatuuriandmete agregeerimine 4-kuusteks vahemikeks.
+            </li>
+            <li>Temperatuuriandmete agregeerimine 0&ndash;25 meetrilt, seej&auml;rel 25&ndash;50 meetrilt ja seej&auml;rel 50&ndash;100meetrilt.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Kui  <b>Kasuta hetke kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse kihi muutujaid, mis on hetke kaardi kuvaulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ielikus kihis olevaid muutujaid ka siis, kui neid pole praegu kaardil n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valige agregeerimiseks mitmemõõtmeline pildikiht</h2></div>
+        <hr/>
+        <div>
+            <p>Agregeeritav mitmem&otilde;&otilde;tmelise rastri sisendpiltide kiht.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Valige mõõde, mida mööda agregeerida</h2></div>
+        <hr/>
+        <div>
+            <p>Agregeerimise m&otilde;&otilde;de. See on m&otilde;&otilde;de, mida m&ouml;&ouml;da muutujad agregeeritakse.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valige agregeeritav(ad) muutuja(d)</h2></div>
+        <hr/>
+        <div>
+            <p>Muutuja v&otilde;i muutujad, mida agregeeritakse m&ouml;&ouml;da antud m&otilde;&otilde;det. Kui muutujat ei m&auml;&auml;rata, agregeeritakse k&otilde;iki valitud m&otilde;&otilde;tmega muutujaid.
+            </p>
+            <p>N&auml;iteks teie igap&auml;evaste temperatuuriandmete agregeerimiseks kuu keskmisteks v&auml;&auml;rtusteks, m&auml;&auml;rake agregeeritavaks muutujaks temperatuur. Kui teil on nii p&auml;evased temperatuuri ja p&auml;evased sademete muutujad ja te ei t&auml;psusta kindlat muutujat, agregeeritakse m&otilde;lemad muutujad kuu keskmisteks v&auml;&auml;rtusteks ja v&auml;ljundi mitmem&otilde;&otilde;tmeline raster sisaldab m&otilde;lemaid muutujaid.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Valige agregeerimismeetod</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra matemaatilise meetodi, mida kasutatakse agregeeritud l&otilde;ikude &uuml;hendamiseks vahemikus. 
+                <ul>
+                    <li> <b>Keskmine</b> &ndash; arvutab piksli v&auml;&auml;rtuste keskmise k&otilde;ikides vahemiku l&otilde;ikudes. See on vaikimisi valik.
+                    </li>
+                    <li> <b>Maksimaalne</b> &ndash; arvutab piksli maksimaalse v&auml;&auml;rtuse k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Enamus</b> &ndash; arvutab piksli k&otilde;ige sagedamini esineva v&auml;&auml;rtuse k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Minimaalne</b> &ndash; arvutab piksli minimaalse v&auml;&auml;rtuse k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>V&auml;hemus</b> &ndash; arvutab piksli k&otilde;ige harvemini esineva v&auml;&auml;rtuse k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Mediaan</b> &ndash; arvutab piksli mediaanv&auml;&auml;rtuse k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Vahemik</b> &ndash; arvutab piksli v&auml;&auml;rtuste vahemikud k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Standardh&auml;lve</b> &ndash; arvutab piksli v&auml;&auml;rtuste standardh&auml;lbe k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Summa</b> &ndash; arvutab piksli v&auml;&auml;rtuste summa k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Varieeruvus</b> &ndash; arvutab piksli ainulaadsete v&auml;&auml;rtuste arvu k&otilde;ikides vahemiku l&otilde;ikudes.
+                    </li>
+                    <li> <b>Kohandatud</b> &ndash; arvutab piksli v&auml;&auml;rtuse kohandatud rasterfunktsiooni j&auml;rgi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Valige rasterfunktsiooni mall</h2></div>
+        <hr/>
+        <div>
+            <p>Kohandatud rasterfunktsioon, mille j&auml;rgi arvutatakse agregeeritud rastrite piksli v&auml;&auml;rtusi. Sisendiks on rasterfunktsiooni malli element portaalis. Sisend on n&otilde;utav, kui valik  <b>Agregeerimismeetod</b> on m&auml;&auml;ratud olekusse <b>Kohandatud</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Valige agregeerimise definitsioon</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;psustab m&otilde;&otilde;tme vahemiku, millele andmed agregeeritakse. 
+                <ul>
+                    <li> <b>K&otilde;ik</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse k&otilde;ikides l&otilde;ikudes. See on vaikimisi valik.
+                    </li>
+                    <li> <b>Vahemiku m&auml;rks&otilde;na</b> &ndash; muutuja andmed agregeeritakse &uuml;ldtuntud vahemiku abil.
+                    </li>
+                    <li> <b>Intervalli v&auml;&auml;rtused</b> &ndash; muutuja andmed agregeeritakse kasutajap&otilde;hise vahemiku ja &uuml;hiku abil.
+                    </li>
+                    <li> <b>Ulatuste intervall</b> &ndash; muutuja andmed agregeeritakse m&auml;&auml;ratud v&auml;&auml;rtuste v&otilde;i kuup&auml;evade paaride vahel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Valige võtmesõna intervall</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab m&auml;rks&otilde;na vahemiku, mida kasutatakse m&ouml;&ouml;da m&otilde;&otilde;det agregeerides. See sisend on n&otilde;utav, kui valik  <b>Agregeerimism&auml;&auml;ratlus</b> on seatud olekusse <b>Vahemiku m&auml;rks&otilde;na</b> ja agregatsioon peab toimuma l&auml;bi aja.
+                <ul>
+                    <li> <b>Tunnis</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse tunnisteks ajasammudeks ja tulemus sisaldab igat tundi aegreas.
+                    </li>
+                    <li> <b>P&auml;evas</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse p&auml;evasteks ajasammudeks ja tulemus sisaldab igat p&auml;eva aegreas.
+                    </li>
+                    <li> <b>N&auml;dalas</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse n&auml;dalasteks ajasammudeks ja tulemus sisaldab igat n&auml;dalat aegreas.
+                    </li>
+                    <li> <b>Kuus</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse kuusteks ajasammudeks ja tulemus sisaldab igat kuud aegreas.
+                    </li>
+                    <li> <b>Kvartalis</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse kvartalisteks ajasammudeks ja tulemus sisaldab igat kvartalit aegreas.
+                    </li>
+                    <li> <b>Aastas</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse aastasteks ajasammudeks ja tulemus sisaldab igat aastat aegreas.
+                    </li>
+                    <li> <b>Korduv, p&auml;evas</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse p&auml;evasteks ajasammudeks ja tulemus sisaldab &uuml;hte agregeeritud v&auml;&auml;rtust juuliuse p&auml;eva kohta. V&auml;ljund sisaldab k&otilde;ige rohkem 366 p&auml;evast ajal&otilde;iku.
+                    </li>
+                    <li> <b>Korduv, n&auml;dalas</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse n&auml;dalasteks ajasammudeks ja tulemus sisaldab &uuml;hte agregeeritud v&auml;&auml;rtust n&auml;dala kohta. V&auml;ljund sisaldab k&otilde;ige rohkem 53 n&auml;dalast ajal&otilde;iku.
+                    </li>
+                    <li> <b>Korduv, kuus</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse n&auml;dalasteks ajasammudeks ja tulemus sisaldab &uuml;hte agregeeritud v&auml;&auml;rtust kuu kohta. V&auml;ljund sisaldab k&otilde;ige rohkem 12 kuust ajal&otilde;iku.
+                    </li>
+                    <li> <b>Korduv, kvartalis</b> &ndash; andmete v&auml;&auml;rtused agrduvregeeritakse n&auml;dalasteks ajasammudeks ja tulemus sisaldab &uuml;hte agregeeritud v&auml;&auml;rtust kvartali kohta. V&auml;ljund sisaldab k&otilde;ige rohkem 4 kvartalist ajal&otilde;iku.
+                    </li>
+                    <li> <b>Dekaadis</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse kolmeks 10-p&auml;evaseks perioodiks. Viimane periood v&otilde;ib sisaldada rohkem v&otilde;i v&auml;hem, kui 10 p&auml;eva. V&auml;ljund sisaldab 3 l&otilde;iku iga kuu kohta.
+                    </li>
+                    <li> <b>Pentaadis</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse kuueks 5-p&auml;evaseks perioodiks. Viimane periood v&otilde;ib sisaldada rohkem v&otilde;i v&auml;hem, kui 5 p&auml;eva. V&auml;ljund sisaldab 6 l&otilde;iku iga kuu kohta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Väärtuse vahemik</h2></div>
+        <hr/>
+        <div>
+            <p>Agregeerimiseks kasutatava vahemiku suurus. See parameeter on n&otilde;utav, kui parameeter  <b>Agregeerimise m&auml;&auml;ratlus</b> on seatud olekusse <b>Vahemiku v&auml;&auml;rtus</b>.
+            </p>
+            <p>N&auml;iteks 30 aasta jagu igakuiste temperatuuriandmete agregeerimiseks 5-aastasteks sammudeks, sisestage number 5 valikusse  <b>V&auml;&auml;rtuse vahemik</b> ja m&auml;&auml;rake &uuml;ksusele <b>&Uuml;hik</b> valik <b>Aastad</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Ühik</h2></div>
+        <hr/>
+        <div>
+            <p>Vahemiku v&auml;&auml;rtusena kasutatav &uuml;hik. Sisend on n&otilde;utav, kui v&auml;li  <b>M&otilde;&otilde;de</b> on ajav&auml;li ja valik <b>Agregeerimise m&auml;&auml;ratlus</b> on m&auml;&auml;ratud olekusse <b>Vahemiku v&auml;&auml;rtus</b>.
+            </p>
+            <p>Kui kasutate agregeerimiseks teist t&uuml;&uuml;pi v&auml;&auml;rtust kui aeg, ei ole see valik saadaval ja sisendi mitmem&otilde;&otilde;tmelise rastri vahemiku v&auml;&auml;rtuse &uuml;hik vastab muutuja &uuml;hikule. 
+                <ul>
+                    <li> <b>Tunnid</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse tunnisteks ajal&otilde;ikudeks antud vahemikus.
+                    </li>
+                    <li> <b>P&auml;evad</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse p&auml;evasteks ajal&otilde;ikudeks antud vahemikus.
+                    </li>
+                    <li> <b>N&auml;dalad</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse n&auml;dalasteks ajal&otilde;ikudeks antud vahemikus.
+                    </li>
+                    <li> <b>Kuud</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse kuusteks ajal&otilde;ikudeks antud vahemikus.
+                    </li>
+                    <li> <b>Aastad</b> &ndash; andmete v&auml;&auml;rtused agregeeritakse aastasteks ajal&otilde;ikudeks antud vahemikus.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Määra ulatused</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;&auml;rtuste gruppide agregeerimiseks kasutatakse vahemike kaugusi. Need koosnevad minimaalsete ja maksimaalsete kauguste v&auml;&auml;rtuste paaridest, mille andmet&uuml;&uuml;p on Topelt v&otilde;i Kuup&auml;ev. Sisend on n&otilde;utav, kui valik  <b>Agregeerimism&auml;&auml;ratlus</b> on m&auml;&auml;ratud olekusse <b>Vahemike kaugus</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Eira arvutuses puuduvaid väärtusi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab &auml;ra, kas puuduvaid v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida. 
+                <ul>
+                    <li>Kontrollitud &ndash; anal&uuml;&uuml;sis kaasatakse k&otilde;ik kehtivad pikslid kindlas dimensioonis ja ignoreeritakse k&otilde;iki NoData piksleid. See on vaikimisi valik.
+                    </li>
+                    <li>M&auml;rkimata &ndash; kui antud dimensiooni pikslites esineb NoData v&auml;&auml;rtuseid, on anal&uuml;&uuml;si tulemuseks NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

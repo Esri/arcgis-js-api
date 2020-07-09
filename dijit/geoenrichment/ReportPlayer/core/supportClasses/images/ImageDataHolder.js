@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define([],(function(){var n={},t={},e={};return n.putImageData=function(n,r){if("string"==typeof n){var a=n.toLowerCase();e[a]=n,t[a]=r}},n.getImageData=function(n){return"string"!=typeof n?null:t[n.toLowerCase()]},n.findFileNameByData=function(n){for(var r in t)if(n===t[r])return e[r];return null},n}));
+define([],(function(){var e={},n={},r={};return e.putImageData=function(e,t){if("string"==typeof e&&t){var a=e.toLowerCase();r[a]=e,n[a]=t}else console.error("Invalid image filename or data!")},e.getImageData=function(e){return"string"!=typeof e?null:n[e.toLowerCase()]},e.findFileNameByData=function(e){for(var t in n)if(e===n[t])return r[t];return null},e}));

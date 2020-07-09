@@ -44,7 +44,7 @@
         <h2>Reconstruir recorridos</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir recorridos"></h2>
         <hr/>
-    <p> Esta herramienta trabaja con una capa con la funci&oacute;n de tiempo habilitada de entidades de puntos o de &aacute;rea que representan un <code>instante</code> en el tiempo.   Primero determina qu&eacute; entidades pertenecen a un recorrido utilizando un identificador. Utilizando el tiempo en cada ubicaci&oacute;n, los recorridos se ordenan secuencialmente y se transforman en una l&iacute;nea o &aacute;rea que representa la ruta del movimiento en el tiempo. Opcionalmente, se puede crear una zona de influencia de la entrada mediante un campo, que crear&aacute; un &aacute;rea en cada ubicaci&oacute;n. Estos puntos con zona de influencia o &aacute;reas de entrada se unen a continuaci&oacute;n secuencialmente para crear un recorrido como &aacute;rea all&iacute; donde el ancho represente el atributo de inter&eacute;s. Los recorridos resultantes tendr&aacute;n un tiempo de inicio y finalizaci&oacute;n, que representar&aacute;n, temporalmente, la primera y la &uacute;ltima entidad en una determinada recorrido. Cuando se crean los recorridos, se calculan estad&iacute;sticas sobre las entidades de entrada y se asignan al recorrido de salida. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de puntos dentro del &aacute;rea, pero se pueden calcular tambi&eacute;n otras estad&iacute;sticas.
+    <p> Esta herramienta trabaja con una capa con la funci&oacute;n de tiempo habilitada de entidades de punto o de &aacute;rea que representan un <code>instante</code> en el tiempo. Primero determina qu&eacute; entidades pertenecen a un recorrido utilizando un identificador. Utilizando el tiempo en cada ubicaci&oacute;n, los recorridos se ordenan secuencialmente y se transforman en una l&iacute;nea o &aacute;rea que representa la ruta del movimiento en el tiempo. Opcionalmente, se puede crear una zona de influencia de la entrada mediante un campo, que crear&aacute; un &aacute;rea en cada ubicaci&oacute;n. Estos puntos con zona de influencia o &aacute;reas de entrada se unen a continuaci&oacute;n secuencialmente para crear un recorrido como &aacute;rea all&iacute; donde el ancho represente el atributo de inter&eacute;s. Los recorridos resultantes tendr&aacute;n un tiempo de inicio y finalizaci&oacute;n, que representar&aacute;n, temporalmente, la primera y la &uacute;ltima entidad en una determinada recorrido. Cuando se crean los recorridos, se calculan estad&iacute;sticas sobre las entidades de entrada y se asignan al recorrido de salida. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de puntos dentro del &aacute;rea, pero se pueden calcular tambi&eacute;n otras estad&iacute;sticas.
     </p>
     <p>Las entidades en capas con la funci&oacute;n de tiempo habilitada se pueden representar de una de estas dos formas:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>La capa de puntos o &aacute;rea que se reconstruir&aacute; en recorridos. La capa de entrada debe ser una capa con tiempo habilitado que represente un instante en el tiempo. La capa debe estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante  <b>Entornos de an&aacute;lisis</b> si se aplica una zona de influencia.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data. Si lo desea, puede aplicar un filtro en la capa de entrada o aplicar una selecci&oacute;n en capas alojadas que haya agregado al mapa. Los filtros y las selecciones solo se aplican al an&aacute;lisis. 
             </p>
         </div>
     </div>
@@ -109,7 +109,7 @@
             </p>
             <p>Si especifica una divisi&oacute;n de tiempo y otra de distancia, los recorridos se dividir&aacute;n cuando se cumplan una o ambas condiciones. 
             </p>
-            <p>Supongamos que tiene entidades de puntos que representan vuelos de aeronaves donde el campo de recorrido es el Id. de la aeronave. Esta aeronave podr&iacute;a realizar varios viajes y se representar&iacute;a como un recorrido.  Si supiera que existe un descanso de 1 hora entre los vuelos, podr&iacute;a utilizar  <code>1 hora</code> como valor para la divisi&oacute;n del recorrido y cada vuelo se dividir&iacute;a entre su propio recorrido.
+            <p>Supongamos que tiene entidades de puntos que representan vuelos de aeronaves donde el campo de recorrido es el Id. de la aeronave. esta aeronave podr&iacute;a realizar varios viajes y se representar&iacute;a como un recorrido.  Si supiera que existe un descanso de 1 hora entre los vuelos, podr&iacute;a utilizar  <code>1 hora</code> como valor para la divisi&oacute;n del recorrido y cada vuelo se dividir&iacute;a entre su propio recorrido.
             </p>
         </div>
     </div>
@@ -148,9 +148,9 @@
         <div><h2>Agregar estadísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. Puede calcular lo siguiente en los campos num&eacute;ricos:
+            <p>Puede calcular estad&iacute;sticas sobre las entidades resumidas. Puede calcular lo siguiente en campos num&eacute;ricos: 
                 <ul>
-                    <li>Recuento: calcula el n&uacute;mero de valores no nulos. Se puede usar en campos num&eacute;ricos o cadenas de caracteres. El recuento de [nulo, 0, 2] es 2.
+                    <li>Recuento: calcula el n&uacute;mero de valores no nulos. Se puede usar en campos num&eacute;ricos o de cadenas de caracteres. El recuento de [nulo, 0, 2] es 2.
                     </li>
                     <li>Suma: la suma de valores num&eacute;ricos en un campo. La suma de [nulo, nulo, 3] es 3.
                     </li>
@@ -166,17 +166,25 @@
                     </li>
                     <li>Desviaci&oacute;n est&aacute;ndar: la desviaci&oacute;n est&aacute;ndar de un campo num&eacute;rico. La desviaci&oacute;n est&aacute;ndar de [1] es nulo. La desviaci&oacute;n est&aacute;ndar de [nulo, 1,0,1,1] es 0,5. 
                     </li>
+                    <li>Primero: el primer valor de un campo especificado en el recorrido resumido. Si un recorrido tiene los siguientes valores ordenados por tiempo para un campo: [1,5,10,20], el primer valor es 1.
+                    </li>
+                    <li>&Uacute;ltimo: el &uacute;ltimo valor de un campo especificado en el recorrido resumido. Si un recorrido tiene los siguientes valores ordenados por tiempo para un campo: [1,5,10,20], el &uacute;ltimo es 20.
+                    </li>
                 </ul>
                 
             </p>
-            <p>Puede calcular lo siguiente en los campos de cadena de caracteres:
+            <p>Puede calcular lo siguiente en campos de cadena de caracteres:
                 <ul>
                     <li>Recuento: el n&uacute;mero de cadenas de caracteres no nulas.
                     </li>
                     <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
                     </li>
+                    <li>Primero: el primer valor de un campo especificado en el recorrido resumido. Si un recorrido tiene los siguientes valores ordenados por tiempo para un campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], el primer valor es Toronto.
+                    </li>
+                    <li>&Uacute;ltimo: el &uacute;ltimo valor de un campo especificado en el recorrido resumido. Si un recorrido tiene los siguientes valores ordenados por tiempo para un campo: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston], el &uacute;ltimo valor es Boston.
+                    </li>
                 </ul>
-                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica.
             </p>
         </div>
     </div>
@@ -186,7 +194,7 @@
         <div>
             <p>Los resultados de GeoAnalytics se almacenan en un data store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el data store relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que guardar los resultados en el data store relacional es una buena idea: 
                 <ul>
-                    <li>Puede usar los resultados en una colaboraci&oacute;n de portal a portal.
+                    <li>Puede utilizar resultados en la colaboraci&oacute;n entre portales.
                     </li>
                     <li>Puede habilitar capacidades de sincronizaci&oacute;n con sus resultados.
                     </li>

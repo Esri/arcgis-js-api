@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analiza rastrowa umożliwia analizowanie dużych zestaw&oacute;w danych rastrowych przy użyciu serwera  ArcGIS Image Server. Umożliwia to szybsze analizowanie większych ilości danych przy wykorzystaniu mocy obliczeniowej serwera. W interfejsie internetowym witryny  Portal for ArcGIS aktualnie dostępny jest następujący zestaw narzędzi:  <b>Sumowanie danych</b>, <b>Analiza zależności przestrzennych</b>, <b>Narzędzia bliskości</b>, <b>Analizuj obraz</b>, <b>Analizuj teren</b>, <b>Zarządzanie danymi</b> oraz <b>Deep Learning</b>.
+        <p>Analiza rastrowa umożliwia analizowanie dużych zestaw&oacute;w danych rastrowych przy użyciu serwera  ArcGIS Image Server. Umożliwia to szybsze analizowanie większych ilości danych przy wykorzystaniu mocy obliczeniowej serwera. W interfejsie internetowym oprogramowania  Portal for ArcGIS aktualnie dostępny jest następujący zestaw narzędzi:  <b>Sumowanie danych</b>, <b>Analiza zależności przestrzennych</b>, <b>Narzędzia bliskości</b>, <b>Analizuj obraz</b>, <b>Analizuj teren</b>, <b>Zarządzanie danymi</b>, <b>Deep Learning</b> oraz <b>Analiza wielowymiarowa</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -350,6 +350,8 @@
                     
 
                 </li>
+                <li> <b>Pr&oacute;bka</b> wyodrębnia dane ze zdefiniowanych lokalizacji w rastrze lub zestawie rastr&oacute;w.
+                </li>
             </ul>
             
         </p>
@@ -415,17 +417,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Próbka</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Pr&oacute;bka">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tworzy tabelę lub klasę obiektu punktowego z wartościami danych w zdefiniowanych lokalizacjach wyodrębnionych z rastra lub zestawu rastr&oacute;w.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Zestaw narzędzi Deep Learning</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>Te narzędzia służą do wykrywania konkretnych obiekt&oacute;w w obrazie lub do klasyfikowania pikseli w zestawie danych rastrowych. Deep Learning to oparty na sztucznej inteligencji typ metody samouczenia się maszyn, kt&oacute;ra pozwala wykrywać obiekty w zobrazowaniach przy użyciu wielu warstw w sieciach neuronowych, z kt&oacute;rych każda umożliwia wyodrębnienie jednego lub większej liczby unikalnych obiekt&oacute;w w obrazie. Te narzędzia korzystają z modeli, kt&oacute;re zostały wytrenowane w zewnętrznych środowiskach Deep Learning, takich jak TensorFlow, CNTK i Keras, pod kątem wykrywania konkretnych obiekt&oacute;w, i generują obiekty wynikowe lub mapy klas.
+        <p>Te narzędzia służą do wykrywania i klasyfikowania konkretnych obiekt&oacute;w w obrazie lub do klasyfikowania pikseli w zestawie danych rastrowych. Deep Learning to oparty na sztucznej inteligencji typ metody samouczenia się maszyn, kt&oacute;ra pozwala wykrywać obiekty w zobrazowaniach przy użyciu wielu warstw w sieciach neuronowych, z kt&oacute;rych każda umożliwia wyodrębnienie jednego lub większej liczby unikalnych obiekt&oacute;w w obrazie. Te narzędzia korzystają z modeli, kt&oacute;re zostały wytrenowane w zewnętrznych środowiskach Deep Learning, takich jak TensorFlow, CNTK i Keras, pod kątem wykrywania konkretnych obiekt&oacute;w, i generują obiekty wynikowe lub mapy klas.
             <ul>
                 <li> <b>Klasyfikuj piksele metodą Deep Learning</b> generuje sklasyfikowany raster, korzystając z modelu wytrenowanego metodą Deep Learning.
                 </li>
                 <li> <b>Wykrywaj obiekty metodą Deep Learning</b> generuje klasę obiekt&oacute;w zawierających obiekty znalezione w rastrze wejściowym z użyciem modelu wytrenowanego metodą Deep Learning.
                 </li>
+                <li> <b>Klasyfikuj obiekty metodą Deep Learning</b> tworzy klasę obiekt&oacute;w lub tabelę, w kt&oacute;rej każdy obiekt wejściowy w rastrze wejściowym ma przypisywaną etykietę klasy przy użyciu wytrenowanego modelu Deep Learning.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -439,7 +458,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a classified raster, with each valid pixel having a class label assigned.
+            <p>To narzędzie uruchamia na rastrze wejściowym model wytrenowany metodą Deep Learning, tworząc sklasyfikowany raster, w kt&oacute;rym każdy piksel ma przypisaną etykietę klasy.
             </p>
             <br/>
         </div>
@@ -454,7 +473,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. The features can be bounding boxes or polygons around the objects found, or points at the centers of the objects.
+            <p>To narzędzie uruchamia na rastrze wejściowym model wytrenowany metodą Deep Learning, tworząc klasę obiekt&oacute;w zawierającą znalezione obiekty. Obiektami tej klasy mogą być prostokąty lub poligony ograniczające znalezione obiekty albo punkty znajdujące się w środkach znalezionych obiekt&oacute;w.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klasyfikuj obiekty metodą Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klasyfikuj obiekty metodą Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie uruchamia w rastrze wejściowym model wytrenowany metodą Deep Learning i opcjonalnie klasę obiekt&oacute;w w celu utworzenia klasy obiekt&oacute;w lub tabeli, w kt&oacute;rej każdy obiekt wejściowy ma przypisaną etykietę klasy.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Analiza wielowymiarowa</h2>
+        <hr/>
+        <p>Narzędzia z zestawu narzędzi Analiza wielowymiarowa umożliwiają przeprowadzenie analizy danych naukowych dla wielu zmiennych i wymiar&oacute;w.
+        </p>
+        <p>Dane wielowymiarowe reprezentują dane zbierane dla wielu czas&oacute;w, głębokości i wysokości. Ten typ danych jest zwykle używany w naukach o Ziemi, atmosferze i oceanach. Ten zestaw narzędzi pozwala analizować dane rastra wielowymiarowego w wielu formatach, w tym netCDF, HDF, GRIB, wielowymiarowym zestawie danych mozaiki oraz formacie rastra chmury (Cloud Raster Format &mdash; CRF) firmy Esri.
+        </p>
+        <p>Poniższa tabela zawiera listę narzędzi analiz wielowymiarowych oraz kr&oacute;tki opis każdego z nich.
+            <ul>
+                <li>Narzędzie  <b>Agreguj raster wielowymiarowy</b> generuje zestaw danych rastra wielowymiarowego, agregując istniejące zmienne rastra wielowymiarowego wzdłuż wymiaru.
+                </li>
+                <li>Narzędzie  <b>Generuj anomalię wielowymiarową</b> oblicza anomalię dla każdego przekroju w rastrze wielowymiarowym, aby wygenerować raster wielowymiarowy.
+                </li>
+                <li>Narzędzie  <b>Generuj raster trendu</b> szacuje trend każdego piksela wzdłuż wymiaru dla co najmniej jednej zmiennej w rastrze wielowymiarowym.
+                </li>
+                <li>Narzędzie  <b>Prognozuj przy użyciu rastra trendu</b> oblicza prognozowany raster wielowymiarowy za pomocą wynikowego rastra trendu z narzędzia <b>Generuj raster trendu</b>.
+                </li>
+                <li>Narzędzie  <b>Znajdź statystyki argumentu</b> wyodrębnia wartość wymiaru lub indeks pasma, przy kt&oacute;rym dana statystyka jest osiągana dla każdego piksela w rastrze wielowymiarowym lub wielopasmowym.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agreguj raster wielowymiarowy</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agreguj raster wielowymiarowy">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie generuje zestaw danych rastra wielowymiarowego, agregując istniejące zmienne rastra wielowymiarowego wzdłuż wymiaru.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź statystyki argumentu</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Znajdź statystyki argumentu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie wyodrębnia wartość wymiaru lub indeks pasma, przy kt&oacute;rym dana statystyka jest osiągana dla każdego piksela w rastrze wielowymiarowym lub wielopasmowym.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generuj anomalię wielowymiarową</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generuj anomalię wielowymiarową">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza anomalię dla każdego przekroju w rastrze wielowymiarowym, aby wygenerować raster wielowymiarowy.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generuj raster trendu</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generuj raster trendu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie szacuje trend każdego piksela wzdłuż wymiaru dla co najmniej jednej zmiennej w rastrze wielowymiarowym.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prognozuj przy użyciu rastra trendu</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prognozuj przy użyciu rastra trendu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza prognozowany raster wielowymiarowy za pomocą wynikowego rastra trendu z narzędzia  <b>Generuj raster trendu</b>.
             </p>
             <br/>
         </div>

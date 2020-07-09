@@ -44,8 +44,8 @@
         <h2>Find Dwell Locations</h2><p/>
         <h2><img src="./images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Find Dwell Locations workflow diagram"></h2>
         <hr/>
-    <p> This tool works with a time-enabled layer of
-point features that are of type <code>instant</code>.   First, the tool assigns features to a track using a unique identifier. Track order is determined by the time of features. Next, the distance between the first observation in a track and the next is calculated. Features are considered to be part of a dwell if two temporally  consecutive points stay within the given distance for at least the given duration. When two features are found to be part of a dwell, the first feature in the dwell is used as a reference point, and the tool  finds consecutive features that are within the specified distance of the reference point in the dwell. Once all features within the specified distance are found, the tool collects the dwell features and calculates their mean center. Features before and after the current dwell are added to the dwell if they are within the given distance of the dwell location's mean center. This process continues until the end of the track.
+    <p>This tool works with a time-enabled layer of
+point features that are of type  <code>instant</code>.   First, the tool assigns features to a track using a unique identifier. Track order is determined by the time of features. Next, the distance between the first observation in a track and the next is calculated. Features are considered to be part of a dwell if two temporally  consecutive points stay within the given distance for at least the given duration. When two features are found to be part of a dwell, the first feature in the dwell is used as a reference point, and the tool  finds consecutive features that are within the specified distance of the reference point in the dwell. Once all features within the specified distance are found, the tool collects the dwell features and calculates their mean center. Features before and after the current dwell are added to the dwell if they are within the given distance of the dwell location's mean center. This process continues until the end of the track.
     </p>
     <p>Features in time-enabled layers can be represented in one of the following ways:
         <ul>
@@ -151,6 +151,10 @@ You can use one field or multiple fields to represent unique values of tracks.
                     </li>
                     <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
                     </li>
+                    <li>First&mdash;The first value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [1,5,10,20], the first value is 1.
+                    </li>
+                    <li>Last&mdash;The last value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [1,5,10,20], the last value is 20.
+                    </li>
                 </ul>
                 
             </p>
@@ -160,8 +164,12 @@ You can use one field or multiple fields to represent unique values of tracks.
                     </li>
                     <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
+                    <li>First&mdash;The first value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [Toronto,Guelph,Squamish,Montreal,Halifax, Redlands,Boston], the first value is Toronto.
+                    </li>
+                    <li>Last&mdash;The last value of a specified field in the summarized track. If a track had the following time-ordered values for a field: [Toronto,Guelph,Squamish,Montreal,Halifax, Redlands,Boston], the first value is Boston.
+                    </li>
                 </ul>
-                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
             </p>
         </div>
     </div>
@@ -185,6 +193,18 @@ You can use one field or multiple fields to represent unique values of tracks.
                     </li>
                 </ul>
                 
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Analyze data with time intervals (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specify if you want to look for dwell locations using time intervals which segment your input features for analysis. If you use time intervals you must set the time interval you want to use, and optionally set the reference time. If you don't set a reference time, Jan 1, 1970 will be used. 
+            </p>
+            <p>For example, if you set the time boundary to be 1 day, starting at 9:00 AM on January 1st, 1990, than each track will be truncated at 9:00 am for every day and analyzed within that segment. No dwells will start before 9:00 AM and end afterwards. 
+            </p>
+            <p>Using time intervals is a fast way to accelerate computing time, as it quickly creates smaller tracks for analysis. If splitting by a reoccurring time interval makes sense for your analysis, it is recommend for big data processing.
             </p>
         </div>
     </div>

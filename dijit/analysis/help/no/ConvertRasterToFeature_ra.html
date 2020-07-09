@@ -46,7 +46,7 @@
         <hr/>
     <p>Dette verkt&oslash;yet konverterer raster til et geoobjektdatasett som punkter, linjer eller polygoner.
     </p>
-    <p>Med  <b>Velg felt</b>-parameteren kan du velge hvilket attributtfelt i inndatarasterdatasettet som skal bli et attributt i utdatageoobjektsklassen. Denne parameteren er kun tilgjengelig for heltallrastere som har ekstra attributter i den tilknyttede tabellen.
+    <p>Med  <b>Velg felt</b>-parameteren kan du velge hvilket attributtfelt i inndatarasterdatasettet som skal bli et attributt i utdatageoobjektklassen. Denne parameteren er kun tilgjengelig for heltallrastere som har ekstra attributter i den tilknyttede tabellen.
     </p>
     <p>Inngangsrastene kan ha en hvilken som helst cellest&oslash;rrelse.
     </p>
@@ -55,11 +55,11 @@
     <p>Hvis  <b>Bruk gjeldende kartutstrekning</b> er krysset av, blir bare rastercellene som er synlige innenfor gjeldende kartutstrekning konvertert. Hvis det ikke er merket av for dette alternativet, blir alle cellene i rasteret behandlet, selv om de befinner seg utenfor gjeldende kartutstrekning. Legg merke til dette hvis rasterlaget er stort eller har en meget h&oslash;y oppl&oslash;sning.
     </p>
     <p>Bruksm&aring;ter dette verkt&oslash;yet omfatter f&oslash;lgende:
- 
+
         <ul>
             <li>Lag polygongeoobjekter fra en arealbruksomr&aring;deraster.
                 
- 
+
             </li>
             <li>Elver som er identifisert i en DEM, kan konverteres til linjegeoobjekter.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>En DEM kan konverteres til punktgeoobjekter som kan brukes i en arbeidsflyt som ikke er basert p&aring; raster.
                 
- 
+
             </li>
         </ul>
         
@@ -78,7 +78,7 @@
         <div><h2>Velg rasterlag som skal konverteres</h2></div>
         <hr/>
         <div>
-            <p>Inndatarasterlaget som skal konverteres til geoobjektslag.
+            <p>Inndatarasterlaget som skal konverteres til geoobjektlag.
             </p>
         </div>
     </div>
@@ -86,13 +86,13 @@
         <div><h2>Velg felt</h2></div>
         <hr/>
         <div>
-            <p>Oppgi et felt som angir hvilken verdi som skal brukes til konverteringen.
+            <p>Et felt som angir konverteringsverdien.
             </p>
             <p>Det kan v&aelig;re et heltall eller en tekstverdi.
             </p>
             <p>Et felt som inneholder flyttallsverdier kan brukes bare hvis utdataene er til et punktdatasett.
             </p>
-            <p>Standardvalget er &aring; bruke feltet  <i>Value</i>, som inneholder verdien i hver rastercelle.
+            <p>Standard er feltet  <i>Value</i>, som inneholder verdien i hver rastercelle.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Velg utdatatype</h2></div>
         <hr/>
         <div>
-            <p>Velg utdatatype, velg mellom punkt, linje eller polygon.
+            <p>Angir utdatatypen.
             </p>
             <ul>
-                <li>Punkt &ndash; Raster blir konvertert til et punktdatasett.
+                <li> <b>Punkt</b>&ndash;&nbsp;Rasteret konverteres til et punktdatasett. Dette er standardalternativet.
                     
  
                 </li>
-                <li>Linje &ndash; Raster blir konvertert til et linjegeoobjektdatasett.
+                <li> <b>Linje</b>&ndash;&nbsp;Rasteret konverteres til et linjegeoobjektdatasett.
                     
  
                 </li>
-                <li>Polygon &ndash; Raster blir konvertert til et polygongeoobjektdatasett.
+                <li> <b>Polygon</b>&ndash;&nbsp;Rasteret konverteres til et polygongeoobjektdatasett.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Forenkle linjer eller polygoner</h2></div>
         <hr/>
         <div>
-            <p>Spesifiser om geoobjektene skal forenkles.
+            <p>Angir om linjer eller polygoner skal forenkles (utjevnes). Utjevningen gj&oslash;res slik at linjen inneholder et minimumsantall segmenter samtidig som den holdes s&aring; n&aelig;r som mulig de opprinnelige kantene p&aring; rastercellen.
             </p>
-            <p>Hvis det er merket av for det (standard), vil linje- eller polygongeoobjektene glattes ut for &aring; lage et mer generalisert resultat. Hvis dette alternativet ikke er merket av, vil de line&aelig;re geoobjektene f&oslash;lge cellegrensene i rasterdatasettet.
+            <ul>
+                <li>Avmerket &ndash; Linje- eller polygongeoobjektene utjevnes for &aring; gi et mer generalisert resultat. Dette er standardalternativet.
+                    
+
+                </li>
+                <li>Ikke avmerket &ndash;&nbsp;Linje- eller polygongeoobjektene f&oslash;lger cellegrensene i rasterdatasettet.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Denne parameteren st&oslash;ttes bare hvis utdatatypen er linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Opprett geoobjekter i flere deler</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om utdatapolygonene skal best&aring; av geoobjekter med &eacute;n eller flere deler.
+            </p>
+            <ul>
+                <li>Avmerket &ndash;&nbsp;Geoobjekter med flere deler opprettes p&aring; basis av polygoner med samme verdi.
+                    
+
+                </li>
+                <li>Ikke avmerket &ndash;&nbsp;Enkeltvise geoobjekter (med &eacute;n del) opprettes for hver polygon. Dette er standardalternativet.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Denne parameteren st&oslash;ttes bare hvis utdatatypen er polygon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maksimalt antall knekkpunkter per polygongeoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Begrensningen p&aring; antall knekkpunkter som brukes for &aring; dele en polygon inn i mindre polygoner.
+            </p>
+            <p>Hvis den st&aring;r tom, blir de resulterende polygonene ikke delt. Dette er standardalternativet.
+            </p>
+            <p>Denne parameteren st&oslash;ttes bare hvis utdatatypen er polygon.
             </p>
         </div>
     </div>

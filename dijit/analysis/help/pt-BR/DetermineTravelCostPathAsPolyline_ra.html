@@ -74,14 +74,14 @@
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Escolher camada de raster de custo da viagem</h2></div>
+        <div><h2>Escolher a camada de raster de custo de viagem</h2></div>
         <hr/>
         <div>
             <p>Um raster definindo o custo ou imped&acirc;ncia para mover planimetricamente atrav&eacute;s de cada c&eacute;lula.
             </p>
-            <p>O valor de cada localiza&ccedil;&atilde;o da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de localiza&ccedil;&atilde;o de c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
+            <p>O valor de cada local da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de local da c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
             </p>
-            <p>Os valores do custo de raster podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo  negativo ou zero).
+            <p>Os valores do raster de custo podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo  negativo ou zero).
             </p>
         </div>
     </div>
@@ -112,20 +112,28 @@
             <p>Define a maneira pela qual os valores e zonas nos dados de destino de entrada ser&atilde;o interpretados nos c&aacute;lculos do caminho de custo.
             </p>
             <ul>
-                <li>&Uacute;nico Melhor&mdash;Para todas as c&eacute;lulas ou locais nos dados de destino de entrada, o caminho de menor custo &eacute; derivado do local com o m&iacute;nimo dos caminhos de menor custo at&eacute; o local de origem. Este &eacute; o padr&atilde;o
+                <li> <b>&Uacute;nico Melhor</b>&mdash;Para todas as c&eacute;lulas ou locais nos dados de destino de entrada, o caminho de menor custo &eacute; derivado do local com o m&iacute;nimo dos caminhos de menor custo at&eacute; o local de origem. Este &eacute; o padr&atilde;o
                     
 
                 </li>
-                <li>Para Cada C&eacute;lula&mdash;Para cada c&eacute;lula ou local com valores v&aacute;lidos nos dados de destino de entrada, um caminho de menor custo &eacute; determinado e salvo no servi&ccedil;o da fei&ccedil;&atilde;o de sa&iacute;da. Com esta op&ccedil;&atilde;o, cada c&eacute;lula dos dados de destino de entrada &eacute; tratada separadamente e um caminho de menor custo &eacute; determinado para cada c&eacute;lula.
+                <li> <b>Para Cada C&eacute;lula</b>&mdash;Para cada c&eacute;lula ou local com valores v&aacute;lidos nos dados de destino de entrada, um caminho de menor custo &eacute; determinado e salvo no servi&ccedil;o da fei&ccedil;&atilde;o de sa&iacute;da. Com esta op&ccedil;&atilde;o, cada c&eacute;lula dos dados de destino de entrada &eacute; tratada separadamente e um caminho de menor custo &eacute; determinado para cada c&eacute;lula.
                     
 
                 </li>
-                <li>Para Cada Zona&mdash;Para cada zona nos dados de destino de entrada, um caminho de menor custo &eacute; determinado e salvo no servi&ccedil;o da fei&ccedil;&atilde;o de sa&iacute;da. Com esta op&ccedil;&atilde;o, o caminho de menor custo para cada zona come&ccedil;a na c&eacute;lula ou local com a menor pondera&ccedil;&atilde;o de dist&acirc;ncia de custo na zona.
+                <li> <b>Para Cada Zona</b>&mdash;Para cada zona nos dados de destino de entrada, um caminho de menor custo &eacute; determinado e salvo no servi&ccedil;o da fei&ccedil;&atilde;o de sa&iacute;da. Com esta op&ccedil;&atilde;o, o caminho de menor custo para cada zona come&ccedil;a na c&eacute;lula ou local com a menor pondera&ccedil;&atilde;o de dist&acirc;ncia de custo na zona.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Escolher campo para obter valores para destino</h2></div>
+        <hr/>
+        <div>
+            <p>O campo utilizado para obter valores das localiza&ccedil;&otilde;es de destino.
+            </p>
         </div>
     </div>
 </div>

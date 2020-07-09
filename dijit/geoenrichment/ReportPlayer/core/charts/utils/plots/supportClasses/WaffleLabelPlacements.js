@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define([],(function(){var t={NONE:"None",TOP:"Top",RIGHT:"Right",BOTTOM:"Bottom",LEFT:"Left",INSIDE:"Inside",isSupported:function(n){for(var r in t)if(t[r]===n)return!0;return!1},toSupportedValue:function(n){return t.isSupported(n)?n:t.NONE}};return t}));

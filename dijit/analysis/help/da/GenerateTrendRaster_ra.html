@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generer tendensraster</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generer tendensraster"></h2>
+        <hr/>
+    <p>Estimerer tendensen for hver pixel langs en dimension for en eller flere variabler i en flerdimensional  raster.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vælg det flerdimensionale billedlag for at analysere tendens</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Det input-billedlag fra en flerdimensional raster, der analyseres.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vælg den dimension, som variablerne analyseres langs</h2></div>
+        <hr/>
+        <div>
+            <p>Den dimension, langs hvilken en tendens vil blive udtrukket for den eller de variabler, der er valgt i analysen.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vælg en ellert flere variabler for at analysere tendensen</h2></div>
+        <hr/>
+        <div>
+            <p>Den eller de variabler, som tendenser vil blive beregnet for. Hvis ingen variabler er angivet, analyseres den f&oslash;rste variabel i den flerdimensionale raster.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Vælg den type linje, skal bruges for at tilpasse variable værdier langs en dimension</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den type linje, der skal bruges for at passe til pixelv&aelig;rdierne langs en dimension. 
+                <ul>
+                    <li> <b>Line&aelig;r</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en line&aelig;r tendenskurve. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>Polynomisk</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en andengradspolynomisk tendenskurve.
+                    </li>
+                    <li> <b>Harmonisk</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en harmonisk tendenskurve.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Angiv længden af periodiske cyklusser</h2></div>
+        <hr/>
+        <div>
+            <p>L&aelig;ngden af en periodisk variation, der skal modelleres. Denne parameter er obligatorisk, n&aring;r tendenskurven er indstillet til  <b>Harmonisk</b>. F.eks. har bladenes gr&oslash;nhed ofte &eacute;n st&aelig;rk variations-cyklus p&aring; et &aring;r, s&aring; cyklussens l&aelig;ngde er 1 &aring;r. Data for hver times temperatur har &eacute;n st&aelig;rk variations-cyklus i l&oslash;bet af en enkelt dag, s&aring; cyklussens l&aelig;ngde er 1 dag.
+            </p>
+            <p>Standardl&aelig;ngden er 1 &aring;r for data, der varierer i en &aring;rlig cyklus.
+            </p>
+            <p>Denne parameter er kun inkluderet i tendensanalysen, n&aring;r den dimension, der analyseres, er tid, og typen af tendenskurve er indstillet til  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Vælg tidsenhed til længden af den harmoniske cyklus</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den tidsenhed, der skal anvendes til l&aelig;ngden af en harmoniske cyklus.
+                <ul>
+                    <li> <b>Dage</b>&ndash; Enheden for l&aelig;ngden af den harmoniske cyklus er dage.
+                    </li>
+                    <li> <b>&Aring;r</b>&mdash;Enheden for l&aelig;ngden af den harmoniske cyklus er &aring;r. Dette er standardv&aelig;rdien.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Denne parameter er kun inkluderet i tendensanalysen, n&aring;r den dimension, der analyseres, er tid, og typen af tendenskurve er indstillet til  <b>Harmonisk</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Angiv frekvenstallet for tilpasning af den harmoniske tendens</h2></div>
+        <hr/>
+        <div>
+            <p>Frekvenstallet, der skal bruges i den harmoniske tendenstilpasning. Denne parameter angiver frekvensen af cyklusser p&aring; et &aring;r.
+            </p>
+            <p>Standardv&aelig;rdien er 1 eller en harmonisk cyklus om &aring;ret.
+            </p>
+            <p>Denne parameter er kun inkluderet i tendensanalysen, n&aring;r den dimension, der analyseres, er tid.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Angiv det polynomiske rækkefølge-nummer til tendenstilpasningen.</h2></div>
+        <hr/>
+        <div>
+            <p>Det polynomiske r&aelig;kkef&oslash;lge-nummer, der skal bruges i den polynomiske tendenstilpasning.
+            </p>
+            <p>Denne parameter er kun inkluderet i tendensanalysen, n&aring;r den dimension, der analyseres, er tid.
+            </p>
+            <p>Standardv&aelig;rdien er 2 eller andengradspolynomium.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Vælg den modelstatistik, der skal inkluderes i trendraster</h2></div>
+        <hr/>
+        <div>
+            <p>Dette v&aelig;rkt&oslash;j leverer tre typer statistik inden for tendenstilpasning: Kvadratroden af den gennemsnitlige kvadratafvigelse (RMSE), den R-kvadratiske goodness-of-fit-statistik (R-squared) og p-v&aelig;rdistatistik for h&aelig;ldningskoefficienten (P-v&aelig;rdien for h&aelig;ldningskoefficienten). Hver statistik har et tilsvarende afkrydsningsfelt til at angive, om den skal beregnes og inkluderes som et af b&aring;ndene i output-tendensrasteren.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Markeret &ndash; RMSE beregnes og inkluderes som et af b&aring;ndene i output-tendensrasteren. Dette er standardv&aelig;rdien.
+                            </li>
+                            <li>Ikke markeret&ndash; RMSE beregnes ikke.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-kvadratisk
+                        </p>
+                        <ul>
+                            <li>Markeret&mdash;Den R-kvadratiske v&aelig;rdi beregnes og inkluderes som et af  b&aring;ndene i output-tendensrasteren.
+                            </li>
+                            <li>Ikke markeret&mdash;Den R-kvadratiske v&aelig;rdi beregnes ikke. Dette er standardv&aelig;rdien.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>P-v&aelig;rdi af h&aelig;ldningskoefficient
+                        </p>
+                        <ul>
+                            <li>Markeret &ndash; P-v&aelig;rdien beregnes og inkluderes som et af b&aring;ndene i output-tendensrasteren.
+                            </li>
+                            <li>Ikke markeret &ndash; P-v&aelig;rdien beregnes ikke. Dette er standardv&aelig;rdien.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorér manglende værdier i beregning</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen.
+                <ul>
+                    <li>Markeret - Analysen omfatter alle gyldige pixels langs en given dimension og ignorerer eventuelle NoData-pixels. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li>Ikke markeret - Analysen resulterer i NoData, hvis der er nogen NoData-v&aelig;rdier for pixels langs den givne dimension.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

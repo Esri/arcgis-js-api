@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Muestra</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Muestra"></h2>
+        <hr/>
+    <p>Esta herramienta crea una tabla o una clase de entidad de punto que muestra los valores de las celdas de un r&aacute;ster, o conjunto de r&aacute;steres, para ubicaciones definidas. Las ubicaciones se definen por celdas, r&aacute;ster, entidades de pol&iacute;gono, entidades de polil&iacute;nea o un conjunto de puntos.
+    </p>
+    <p>Los valores de p&iacute;xel se extraer&aacute;n de todos los r&aacute;steres de entrada en cada ubicaci&oacute;n. Se crear&aacute; una tabla o una clase de entidad de punto con campos que contienen los valores de p&iacute;xel para cada r&aacute;ster de entrada. En caso de que la tabla de r&aacute;ster de entrada contenga atributos adicionales, estos no se incluir&aacute;n en la tabla de salida.
+    </p>
+    <p>Cualquier combinaci&oacute;n de r&aacute;steres, como por ejemplo de banda &uacute;nica, multibanda, multidimensional o multivariante, se puede especificar como r&aacute;steres de entrada. La estructura de la tabla de salida cambia cuando los r&aacute;steres de entrada son multidimensionales. Cuando se especifica un r&aacute;ster multibanda como uno de los r&aacute;steres de entrada, se utilizan todas las bandas de esa entrada. Para procesar una selecci&oacute;n de bandas a partir de un r&aacute;ster multibanda de entrada, cree primero un dataset r&aacute;ster nuevo formado por esas bandas concretas. Utilice el resultado en la lista de r&aacute;steres de entrada.
+    </p>
+    <p>La ubicaci&oacute;n de entrada puede ser un r&aacute;ster o una entidad de punto:
+        <ul>
+            <li>R&aacute;ster: los p&iacute;xeles que contienen valores v&aacute;lidos (que no sean NoData) se utilizan para extraer valores de p&iacute;xel de todos los r&aacute;steres de entrada, y el centro del p&iacute;xel se utiliza para ubicaciones de punto.
+            </li>
+            <li>Punto: valores que se muestrear&aacute;n en cada ubicaci&oacute;n de punto.
+            </li>
+            <li>Polil&iacute;nea o un pol&iacute;gono: valores que se muestrear&aacute;n en el centroide de pol&iacute;gono o polil&iacute;nea. Si el r&aacute;ster de entrada es multidimensional, los valores se agregar&aacute;n en funci&oacute;n del tipo de  <b>Estad&iacute;sticas</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Los r&aacute;steres de entrada se muestrean en su referencia y resoluci&oacute;n espaciales nativas. Si hubiera varios r&aacute;steres de entrada con diferentes referencias espaciales, las ubicaciones de entrada se proyectan en la referencia espacial de cada r&aacute;ster individual desde la que se extraen los valores. El entorno de an&aacute;lisis se aplica a las ubicaciones de entrada, aunque los r&aacute;steres de entrada no respetar&aacute;n el entorno de an&aacute;lisis.
+    </p>
+    <p>A las ubicaciones que extraen valores de celdas NoData en el r&aacute;ster de entrada se les proporcionar&aacute; un valor &lt;null&gt; en la tabla de salida.
+    </p>
+    <p>Para realizar an&aacute;lisis con entidades multipunto, convi&eacute;rtalas primero a entidades de un solo punto antes de usarlas en esta herramienta.
+    </p>
+    <p>La referencia espacial de las coordenadas x,y de la tabla de muestra de salida es la misma que la de las entidades de puntos o r&aacute;ster de ubicaci&oacute;n de entrada salvo que se especifique en el entorno  <b>Sistema de coordenadas de salida</b>. Si no se conoce la referencia espacial de los datos de ubicaci&oacute;n de entrada, la referencia espacial de las coordenadas x,y tampoco se conoce.
+    </p>
+    <p>La referencia espacial de la clase de entidad de salida es la misma que la de las entidades de puntos o r&aacute;ster de ubicaci&oacute;n de entrada, salvo que se especifique en el entorno  <b>Sistema de coordenadas de salida</b>.
+    </p>
+    <p>El entorno  <b>Factor de procesamiento en paralelo</b> solo se admite cuando la entrada es un r&aacute;ster multidimensional.
+    </p>
+    <p>Si  <b>Usar la extensi&oacute;n de mapa actual</b> est&aacute; activado, se analizar&aacute;n las variables o bandas de la capa que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si no est&aacute; activado, se analizar&aacute;n las variables o bandas de la capa completa, incluso si se encuentran fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Elegir capas de imágenes para muestreo</h2></div>
+        <hr/>
+        <div>
+            <p>Una &uacute;nica capa de im&aacute;genes o una lista de capas de im&aacute;genes cuyos valores se muestrear&aacute;n seg&uacute;n los datos de ubicaci&oacute;n de entrada.
+            </p>
+            <p>Para muestrear todas las porciones de una capa de im&aacute;genes multidimensional, debe ser el &uacute;nico r&aacute;ster de entrada.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Elegir capa de ubicación</h2></div>
+        <hr/>
+        <div>
+            <p>Los datos que identifican las posiciones que desea muestrear.
+            </p>
+            <p>Los datos de ubicaci&oacute;n de entrada pueden ser una clase de entidad de punto, polil&iacute;nea o pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Especificar campo de Id. único</h2></div>
+        <hr/>
+        <div>
+            <p>Un campo que contiene un valor diferente para cada ubicaci&oacute;n o entidad en el r&aacute;ster de ubicaci&oacute;n o clase de entidad de entrada.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Especificar información de adquisición de datos de ubicación (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique la hora, profundidad u otros datos de adquisici&oacute;n asociados con las entidades o celdas de ubicaci&oacute;n.
+            </p>
+            <p>Para cada dimensi&oacute;n, existen tres opciones para especificar la informaci&oacute;n de adquisici&oacute;n asociada con celdas o entidades de ubicaci&oacute;n:
+
+                <ul>
+                    <li> <b>Campo o valor &uacute;nico</b>: cuando se selecciona esta opci&oacute;n, debe especificarse la siguiente informaci&oacute;n:
+                        <ul>
+                            <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Campo o valor &uacute;nico con valores relativos</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para variables:
+                        <ul>
+                            <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n.
+                            </li>
+                            <li> <b>Valor relativo anterior</b>: especifique un n&uacute;mero no negativo utilizado que se restar&aacute; de <b>Campo o valor de dimensi&oacute;n</b> para definir el inicio de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
+                            </li>
+                            <li> <b>Valor relativo posterior</b>: especifique un n&uacute;mero no negativo utilizado para sumarlo a <b>Campo o valor de dimensi&oacute;n</b> para definir el final de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Campos o valores de inicio y fin</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para variables:
+                        <ul>
+                            <li> <b>Campo o valores de inicio</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el inicio de un rango de valores de dimensi&oacute;n.
+                            </li>
+                            <li> <b>Campo o valores de finalizaci&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el final de un rango de valores de dimensi&oacute;n.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Especificar campo o valor de distancia de zona de influencia</h2></div>
+        <hr/>
+        <div>
+            <p>La distancia especificada que rodea las entidades de datos de ubicaci&oacute;n. La distancia de zona de influencia se especifica en las unidades lineales de la referencia espacial de la entidad de ubicaci&oacute;n. Si la entidad utiliza una referencia geogr&aacute;fica, la unidad estar&aacute; en grados.
+            </p>
+            <p>Se calcular&aacute;n las estad&iacute;sticas dentro de esta &aacute;rea de zona de influencia.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Elegir tipo de estadísticas</h2></div>
+        <hr/>
+        <div>
+            <p>El tipo de estad&iacute;stica que se calcular&aacute;.
+            </p>
+            <ul>
+                <li> <b>M&iacute;nimo</b>: busca el valor m&iacute;nimo dentro del rango especificado.
+                </li>
+                <li> <b>M&aacute;ximo</b>: busca el valor m&aacute;ximo dentro del rango especificado.
+                </li>
+                <li> <b>Mediana</b>: busca el valor de la mediana dentro del rango especificado.
+                </li>
+                <li> <b>Valor medio</b>: calcula el promedio del rango especificado.
+                </li>
+                <li> <b>Suma</b>: calcula la suma de las variables dentro del rango especificado.
+                </li>
+                <li> <b>Mayor&iacute;a</b>: busca el valor que se produce con m&aacute;s frecuencia.
+                </li>
+                <li> <b>Minor&iacute;a</b>: busca el valor que se produce con menos frecuencia.
+                </li>
+                <li> <b>Desviaci&oacute;n est&aacute;ndar</b>: calcula la desviaci&oacute;n est&aacute;ndar.
+                </li>
+                <li> <b>Percentil</b>: calcula un percentil definido dentro del rango especificado.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>El percentil que se va a calcular cuando el par&aacute;metro  <b>Tipo de estad&iacute;sticas</b> est&aacute; establecido en <b>Percentil</b>.
+            </p>
+            <p>El valor puede variar del 0 al 100. El valor predeterminado es 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Especificar técnica de remuestreo</h2></div>
+        <hr/>
+        <div>
+            <p>El algoritmo de remuestreo utilizado para muestrear un r&aacute;ster.
+            </p>
+            <ul>
+                <li> <b>M&aacute;s cercano</b>: vecino m&aacute;s cercano. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li> <b>Bilineal</b>: interpolaci&oacute;n bilineal
+                </li>
+                <li> <b>C&uacute;bica</b>: convoluci&oacute;n c&uacute;bica
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Especificar diseño de salida</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si los valores de muestra aparecen en filas o columnas de la tabla de salida. Esta opci&oacute;n solo est&aacute; disponible cuando el r&aacute;ster multidimensional de entrada contiene una variable y una dimensi&oacute;n y cada porci&oacute;n es un r&aacute;ster de una sola banda.
+            </p>
+            <ul>
+                <li> <b>Valores muestreados aparecen en fila</b>: los valores muestreados aparecen en filas separadas en la tabla de salida. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li> <b>Aparecen valores muestreados en columna</b>: los valores muestreados aparecen en columnas separadas en la tabla de salida. Esta opci&oacute;n solo es v&aacute;lida cuando el r&aacute;ster multidimensional de entrada contiene una variable y una dimensi&oacute;n y cada porci&oacute;n es un r&aacute;ster de una sola banda.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Especificar tipo de salida</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si se va a generar una clase de entidad de punto con valores muestreados en su tabla, o solo una tabla con valores muestreados.
+            </p>
+            <ul>
+                <li> <b>Tabla</b>: genere una tabla con valores muestreados. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li> <b>Entidades</b>: genere una clase de entidad de punto con valores muestreados en su tabla. Si las entidades de ubicaci&oacute;n de entrada son polil&iacute;neas o pol&iacute;gonos, cada punto de la salida es el centroide de cada geometr&iacute;a de las entidades de ubicaci&oacute;n de entrada.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

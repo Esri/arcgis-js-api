@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Koosta moniulotteinen rasteri</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Koosta moniulotteinen rasteri"></h2>
+        <hr/>
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    </p>
+    <p>Jos k&auml;yt&ouml;ss&auml;si on 30 vuoden ajalta merenpinnan l&auml;mp&ouml;tila-aineistoa, joka on ker&auml;tty kuukausittain viiden metrin v&auml;lien aina 100 metrin syvyyteen, seuraavassa on joitakin esimerkkisovelluksia:
+        <ul>
+            <li>Koosta kuukausittainen l&auml;mp&ouml;tila-aineisto vuosiaineistoon.
+            </li>
+            <li>Koosta kuukausittainen l&auml;mp&ouml;tila-aineisto nelj&auml;n kuukauden mittaisiin v&auml;leihin.
+            </li>
+            <li>Koosta l&auml;mp&ouml;tila-aineisto 0&ndash;25 metrin v&auml;lilt&auml;, sen j&auml;lkeen 25&ndash;50 metrin v&auml;lilt&auml; ja lopuksi 50&ndash;100 metrin v&auml;lilt&auml;.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, sen karttatason muuttujat, jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, analysoidaan. Jos vaihtoehtoa ei ole valittu, koko karttatason muuttujat analysoidaan &ndash; my&ouml;s muuttujat, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Valitse koostettava moniulotteinen kuva-aineistokarttataso</h2></div>
+        <hr/>
+        <div>
+            <p>Koostettavan moniulotteisen rasterin l&auml;ht&ouml;aineiston kuva-aineistokarttataso.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Valitse ulottuvuus, jonka mukaan koostetaan</h2></div>
+        <hr/>
+        <div>
+            <p>Koosteulottuvuus. T&auml;m&auml; on ulottuvuus, jonka mukaan muuttujat koostetaan.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Valitse koostettavat muuttujat</h2></div>
+        <hr/>
+        <div>
+            <p>Muuttuja tai muuttujat, jotka koostetaan annetun ulottuvuuden mukaan. Jos yht&auml;&auml;n muuttujaa ei ole m&auml;&auml;ritetty, kaikki valitun ulottuvuuden mukaiset muuttujat koostetaan.
+            </p>
+            <p>Jos haluat koostaa esimerkiksi p&auml;ivitt&auml;isen l&auml;mp&ouml;tila-aineistosi kuukausittaisiin keskiarvoihin, m&auml;&auml;rit&auml; l&auml;mp&ouml;tila koostettavaksi muuttujaksi. Jos et m&auml;&auml;rit&auml; yht&auml;&auml;n muuttujaa ja k&auml;yt&ouml;ss&auml;si on sek&auml; p&auml;ivitt&auml;inen l&auml;mp&ouml;tila- ett&auml; p&auml;ivitt&auml;inen sadem&auml;&auml;r&auml; -muuttuja, kummatkin muuttujat koostetaan kuukausittaisiin keskiarvoihin ja tulosaineiston moniulotteinen rasteri sis&auml;lt&auml;&auml; molemmat muuttujat.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Valitse koostamismenetelmä</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; matemaattisen menetelm&auml;n, jota k&auml;ytet&auml;&auml;n aikav&auml;lin koostettujen viipaleiden yhdist&auml;miseen. 
+                <ul>
+                    <li> <b>Keskiarvo</b> &ndash; laskee pikselin arvojen keskiarvon v&auml;lin kaikissa viipaleissa. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Maksimi</b> &ndash; laskee pikselin enimm&auml;isarvon v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Enemmist&ouml;</b> &ndash; laskee arvon, joka esiintyi eniten toistuvasti pikselin osalta v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Minimi</b> &ndash; laskee pikselin v&auml;himm&auml;isarvon v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>V&auml;hemmist&ouml;</b> &ndash; laskee arvon, joka esiintyi v&auml;hiten toistuvasti pikselin osalta v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Mediaani</b> &ndash; laskee pikselin mediaaniarvon v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Arvov&auml;li</b> &ndash; laskee pikselin arvojen vaihteluv&auml;lin v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Keskihajonta</b> &ndash; laskee pikselin arvojen keskipoikkeaman arvon v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Summa</b> &ndash; laskee pikselin arvojen summan v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Diversiteetti</b> &ndash;laskee pikselin yksil&ouml;llisten arvojen m&auml;&auml;r&auml;n v&auml;lin kaikissa viipaleissa.
+                    </li>
+                    <li> <b>Mukautettu</b> &ndash; laskee pikselin arvon mukautetun rasteritoiminnon perusteella.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Valitse rasteritoimintomalli</h2></div>
+        <hr/>
+        <div>
+            <p>Mukautettu rasteritoiminto, jota k&auml;ytet&auml;&auml;n koostettujen rastereiden pikseliarvojen laskentaan. L&auml;ht&ouml;aineistona on portaalin rasteritoimintomallin kohde. T&auml;t&auml; l&auml;ht&ouml;aineistoa tarvitaan, kun  <b>koostamismenetelm&auml;ksi</b> on m&auml;&auml;ritetty <b>Mukautettu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Valitse koostamismääritelmä</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; ulottuvuusv&auml;lin, jolle aineisto koostetaan. 
+                <ul>
+                    <li> <b>Kaikki</b> &ndash; Aineiston arvot koostetaan kaikista viipaleista. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Arvov&auml;lin avainsana</b> &ndash; Muuttuja-aineisto koostetaan k&auml;ytt&auml;m&auml;ll&auml; yleisesti tunnettua v&auml;li&auml;.
+                    </li>
+                    <li> <b>Arvov&auml;lin arvo</b> &ndash; Muuttuja-aineisto koostetaan k&auml;ytt&auml;m&auml;ll&auml; k&auml;ytt&auml;j&auml;n m&auml;&auml;ritt&auml;m&auml;&auml; v&auml;li&auml; ja yksikk&ouml;&auml;.
+                    </li>
+                    <li> <b>Arvov&auml;lin arvoalueet</b> &ndash; Muuttuja-aineisto koostetaan k&auml;ytt&auml;m&auml;ll&auml; m&auml;&auml;ritettyj&auml; arvo- tai p&auml;iv&auml;m&auml;&auml;r&auml;pareja.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Valitse avainsanaväli</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; avainsanav&auml;lin, jota k&auml;ytet&auml;&auml;n koostettaessa ulottuvuuden mukaisesti. T&auml;t&auml; l&auml;ht&ouml;aineistoa tarvitaan, kun  <b>koostamism&auml;&auml;ritelm&auml;ksi</b> on m&auml;&auml;ritetty <b>Avainsanav&auml;li</b> ja koostamisen on tapahduttava ajan kuluessa.
+                <ul>
+                    <li> <b>Tunneittain</b> &ndash; Aineiston arvot koostetaan tunnin mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan tunnit.
+                    </li>
+                    <li> <b>P&auml;ivitt&auml;in</b> &ndash; Aineiston arvot koostetaan p&auml;iv&auml;n mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan p&auml;iv&auml;t.
+                    </li>
+                    <li> <b>Viikoittain</b> &ndash; Aineiston arvot koostetaan viikon mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan viikot.
+                    </li>
+                    <li> <b>Kuukausittain</b> &ndash; Aineiston arvot koostetaan kuukauden mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan kuukaudet.
+                    </li>
+                    <li> <b>Nelj&auml;nnesvuosittain</b> &ndash; Aineiston arvot koostetaan nelj&auml;nnesvuoden mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan vuosinelj&auml;nnekset.
+                    </li>
+                    <li> <b>Vuosittain</b> &ndash; Aineiston arvot koostetaan vuoden mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; kaikki aikasarjan vuodet.
+                    </li>
+                    <li> <b>Toistuu p&auml;ivitt&auml;in</b> &ndash; Aineiston arvot koostetaan p&auml;iv&auml;n mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; yhden koostetun arvon juliaanista p&auml;iv&auml;&auml; kohti. Tulosaineisto sis&auml;lt&auml;&auml; enimmill&auml;&auml;n 366 p&auml;ivitt&auml;ist&auml; aikaviipaletta.
+                    </li>
+                    <li> <b>Toistuu viikoittain</b> &ndash; Aineiston arvot koostetaan viikon mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; yhden koostetun arvon viikkoa kohti. Tulosaineisto sis&auml;lt&auml;&auml; enimmill&auml;&auml;n 53 viikoittaista aikaviipaletta.
+                    </li>
+                    <li> <b>Toistuu kuukausittain</b> &ndash; Aineiston arvot koostetaan kuukaudet mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; yhden koostetun arvon kuukautta kohti. Tulosaineisto sis&auml;lt&auml;&auml; enimmill&auml;&auml;n 12 kuukausittaista aikaviipaletta.
+                    </li>
+                    <li> <b>Toistuu nelj&auml;nnesvuosittain</b> &ndash; Aineiston arvot koostetaan vuosinelj&auml;nneksen mittaisiin aikav&auml;leihin, ja tulos sis&auml;lt&auml;&auml; yhden koostetun arvon vuosinelj&auml;nnest&auml; kohti. Tulosaineisto sis&auml;lt&auml;&auml; enimmill&auml;&auml;n nelj&auml; nelj&auml;nnesvuosittaista aikaviipaletta.
+                    </li>
+                    <li> <b>Vuosikymmenitt&auml;in</b> &ndash; Aineiston arvot koostetaan kolmeen 10 p&auml;iv&auml;n mittaiseen jaksoon. Viimeinen jakso voi sis&auml;lt&auml;&auml; alle tai yli 10 p&auml;iv&auml;&auml;. Tulosaineisto sis&auml;lt&auml;&auml; kolme viipaletta kutakin kuukautta kohti.
+                    </li>
+                    <li> <b>Viisitt&auml;in</b> &ndash; Aineiston arvot koostetaan kuuteen viiden p&auml;iv&auml;n mittaiseen jaksoon. Viimeinen jakso voi sis&auml;lt&auml;&auml; alle tai yli viisi p&auml;iv&auml;&auml;. Tulosaineisto sis&auml;lt&auml;&auml; kuusi viipaletta kutakin kuukautta kohti.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Arvoväli</h2></div>
+        <hr/>
+        <div>
+            <p>Sen v&auml;lin koko, jota k&auml;ytet&auml;&auml;n koostamisessa. T&auml;m&auml; parametri on pakollinen, kun  <b>Koostamism&auml;&auml;ritelm&auml;</b>-parametrin arvoksi on m&auml;&auml;ritetty <b>V&auml;lin arvo</b>.
+            </p>
+            <p>Jos haluat koostaa esimerkiksi kuukausittaista l&auml;mp&ouml;tila-aineistoa 30 vuoden ajalta 5 vuoden lis&auml;yksin, m&auml;&auml;rit&auml;  <b>arvov&auml;liksi</b> 5 ja m&auml;&auml;rit&auml; <b>yksik&ouml;ksi</b> <b>Vuodet</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Yksikkö</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;lin arvona k&auml;ytett&auml;v&auml; yksikk&ouml;. T&auml;t&auml; l&auml;ht&ouml;aineistoa tarvitaan, kun  <b>Ulottuvuus</b> on aikakentt&auml; ja <b>koostamism&auml;&auml;ritelm&auml;ksi</b> on m&auml;&auml;ritetty <b>V&auml;lin arvo</b>.
+            </p>
+            <p>Jos k&auml;yt&auml;t koostamisperusteena jotain muuta kuin aikaa, t&auml;m&auml; vaihtoehto ei ole k&auml;ytett&auml;viss&auml; ja v&auml;lin arvon yksikk&ouml; vastaa l&auml;ht&ouml;aineiston moniulotteisen rasteriaineiston muuttujan yksikk&ouml;&auml;. 
+                <ul>
+                    <li> <b>Tunneittain</b> &ndash; Aineiston arvot koostetaan tunnin mittaisiin aikaviipaleisiin annetun v&auml;lin mukaisesti.
+                    </li>
+                    <li> <b>P&auml;ivitt&auml;in</b> &ndash; Aineiston arvot koostetaan p&auml;iv&auml;n mittaisiin aikaviipaleisiin annetun v&auml;lin mukaisesti.
+                    </li>
+                    <li> <b>Viikoittain</b> &ndash; Aineiston arvot koostetaan viikon mittaisiin aikaviipaleisiin annetun v&auml;lin mukaisesti.
+                    </li>
+                    <li> <b>Kuukausittain</b> &ndash; Aineiston arvot koostetaan kuukauden mittaisiin aikaviipaleisiin annetun v&auml;lin mukaisesti.
+                    </li>
+                    <li> <b>Vuosittain</b> &ndash; Aineiston arvot koostetaan vuoden mittaisiin aikaviipaleisiin annetun v&auml;lin mukaisesti.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Määritä arvoalueet</h2></div>
+        <hr/>
+        <div>
+            <p>V&auml;lin arvoalueita k&auml;ytet&auml;&auml;n arvoryhmien koostamiseen. Ne koostuvat v&auml;himm&auml;is- ja enimm&auml;isarvov&auml;lien arvopareista, joissa tietotyyppin&auml; on Double (kaksoistarkkuuksinen liukuluku) tai Date (p&auml;iv&auml;m&auml;&auml;r&auml;). T&auml;t&auml; l&auml;ht&ouml;aineistoa tarvitaan, kun  <b>koostamism&auml;&auml;ritelm&auml;ksi</b> on m&auml;&auml;ritetty <b>V&auml;lin arvoalueet</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa. 
+                <ul>
+                    <li>Valittu &ndash; Analyysi sis&auml;lt&auml;&auml; kaikki kelvolliset pikselit annetulla ulottuvuudella ja ohittaa kaikki NoData-pikselit. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Ei valittu &ndash; Analyysin tuloksena on NoData, jos pikselien arvona on NoData-arvoja annetulla ulottuvuudella.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

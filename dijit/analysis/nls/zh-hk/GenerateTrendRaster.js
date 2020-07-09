@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define({toolDefine:"產生趨勢點陣",outputLayerName:"${layername}_trend",dimensionLabel:"選擇將沿其分析變數趨勢的維度",variablesLabel:"選擇要分析趨勢的變數",variablesListLabel:"變數 [維度資訊] (描述)",trendLineTypeLabel:"選擇線條類型以符合維度沿線的變數值",linear:"線性函數",harmonic:"諧波",polynomial:"多項式",frequencyLabel:"指定諧波趨勢擬合的頻率編號",polynomialOrderLabel:"指定趨勢擬合的多項式次方",ignoreNodataLabel:"忽略計算中缺少的值",ignore:"忽略",analysisLayerLabel:"選擇要分析趨勢的多維影像圖層",itemDescription:"從產生趨勢點陣所產生的分析圖片服務",itemTags:"點陣分析結果，產生趨勢點陣，${layername}",itemSnippet:"從產生趨勢點陣所產生的分析圖片服務"});
+define({toolDefine:"產生趨勢點陣",outputLayerName:"${layername}_trend",dimensionLabel:"選擇將沿其分析變數趨勢的維度",variablesLabel:"選擇要分析趨勢的變數",variablesListLabel:"變數 [維度資訊] (描述)",trendLineTypeLabel:"選擇線條類型以符合維度沿線的變數值",linear:"線性函數",harmonic:"諧波",polynomial:"多項式",cycleLength:"指定諧波週期的長度",cycleUnit:"選擇諧波週期長度的時間單位",years:"年",days:"天",frequencyLabel:"指定諧波趨勢擬合的頻率編號",polynomialOrderLabel:"指定趨勢擬合的多項式次方",modelStatistics:"選擇趨勢點陣要包含的模型統計資料",rmse:"RMSE",r2:"R 平方",slopePValue:"坡度係數的 P 值",ignoreNodataLabel:"忽略計算中缺少的值",ignore:"忽略",analysisLayerLabel:"選擇要分析趨勢的多維影像圖層",itemDescription:"從產生趨勢點陣所產生的分析圖片服務",itemTags:"點陣分析結果，產生趨勢點陣，${layername}",itemSnippet:"從產生趨勢點陣所產生的分析圖片服務"});

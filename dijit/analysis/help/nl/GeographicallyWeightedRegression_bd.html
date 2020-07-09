@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografisch gewogen regressie</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeografischGewogenRegressie workflowdiagram"></h2>
+        <hr/>
+    <p>Voert Geografisch gewogen regressie (Geographically Weighted Regression, GWR) uit, wat een lokale vorm van lineaire regressie is die wordt gebruikt om ruimtelijk van elkaar verschillende relaties te modelleren.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Een laag kiezen om te analyseren</h2></div>
+        <hr/>
+        <div>
+            <p>De laag met puntobjecten die de afhankelijke en verklarende variabelen bevatten.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Analyselaag kiezen</b> onderaan de keuzelijst om in uw inhoud te zoeken naar een big data file share-dataset of objectlaag. U kunt optioneel een filter toepassen op uw invoerlaag of een selectie toepassen op gehoste lagen die aan uw kaart zijn toegevoegd. Filters en selecties worden alleen toegepast voor analyse. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Het veld kiezen om te modelleren</h2></div>
+        <hr/>
+        <div>
+            <p>Het numerieke veld met de te meten geobserveerde waarden en het type waarde dat u aan het modelleren bent.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Kies de verklarende velden</h2></div>
+        <hr/>
+        <div>
+            <p>Een of meer velden die de verklarende variabelen (velden) vertegenwoordigen die helpen de waarde te voorspellen. Alleen numerieke velden zijn zichtbaar.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Kies hoe de buurt wordt bepaald</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of een gebruikte buurt wordt geconstrueerd als een vaste afstand of wordt toegestaan om in ruimtelijk opzicht te vari&euml;ren, afhankelijk van de dichtheid van de objecten.
+                <ul>
+                    <li> <b>Aantal buren</b>&mdash;De grootte van de buurt is een functie van een gespecificeerd aantal buren die worden opgenomen in de berekeningen voor elk object. Waar objecten dicht bij elkaar liggen, is de ruimtelijke extent van de buurt kleiner; waar objecten ver uit elkaar liggen, is de ruimtelijke extent van de buurt groter. Als u deze optie kiest, selecteert u het aantal buren dat u wilt opnemen. Het aantal moet een integer tussen 2 en 5000 zijn.
+                    </li>
+                    <li> <b>Afstandsgrootte</b>&mdash;De grootte van de buurt is een constante of vaste afstand voor elk object. Als u deze optie kiest, selecteert u de afstandsgrootte die de ruimtelijke extent van de buurt representeert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Kiezen hoe buurtobjecten worden gewogen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert het kerneltype dat wordt gebruikt om de ruimtelijke weging in het model te leveren. De kernel definieert hoe elk object is gerelateerd aan andere objecten binnen dezelfde buurt.
+                <ul>
+                    <li> <b>Bisquare</b>&mdash;Een gewicht van 0 wordt toegewezen aan elk object buiten de gespecificeerde buurt. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Gaussian</b>&mdash;Alle objecten krijgen gewichten, maar gewichten worden exponentieel kleiner als ze verder weg liggen van het doelobject.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> De naam van de laag die wordt gemaakt. Als u naar een ArcGIS Data Store schrijft, worden uw resultaten opgeslagen in  <b>Mijn Content</b> en toegevoegd aan de kaart. Als u naar een big data file share schrijft, worden uw resultaten opgeslagen in de big data file share en toegevoegd aan het bijhorende manifest. Ze zullen niet worden toegevoegd aan de kaart. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Wanneer u schrijft naar  ArcGIS Data Store (relationele of spatiotemporele big datastore) met behulp van de vervolgkeuzelijst  <b>Resultaat opslaan in</b>, kunt u de naam van een map opgeven in <b>Mijn Content</b>, waar het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

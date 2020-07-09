@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Regresión ponderada geográficamente</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="Diagrama del flujo de trabajo de GeographicallyWeightedRegression"></h2>
+        <hr/>
+    <p>Realiza una Regresi&oacute;n ponderada geogr&aacute;ficamente (GWR), que es una forma local de regresi&oacute;n lineal que se utiliza para modelar las relaciones que var&iacute;an espacialmente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elegir una capa para analizar</h2></div>
+        <hr/>
+        <div>
+            <p>La capa que contiene las entidades de puntos que a su vez contienen variables explicativas y dependientes.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Elegir capa de an&aacute;lisis</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un recurso compartido de archivos de big data. Si lo desea, puede aplicar un filtro en la capa de entrada o aplicar una selecci&oacute;n en capas alojadas que haya agregado al mapa. Los filtros y las selecciones solo se aplican al an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Elegir el campo que se va a modelar</h2></div>
+        <hr/>
+        <div>
+            <p>El campo num&eacute;rico que contiene los valores observados que se van a modelar y el tipo de valor que est&aacute; modelando.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Elegir los campos explicativos</h2></div>
+        <hr/>
+        <div>
+            <p>Uno o varios campos que representan a las variables explicativas (campos) que ayudan a predecir el valor. Solamente estar&aacute;n visibles los campos num&eacute;ricos.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Elegir cómo se determinará el vecindario</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si el vecindario utilizado se construye como una distancia fija o si puede variar en extensi&oacute;n espacial en funci&oacute;n de la densidad de las entidades.
+                <ul>
+                    <li> <b>N&uacute;mero de vecinos</b>: el tama&ntilde;o del vecindario es una funci&oacute;n de un n&uacute;mero concreto de vecinos incluidos en c&aacute;lculos para cada entidad. Si las entidades son densas, la extensi&oacute;n espacial del vecindario es m&aacute;s peque&ntilde;a; si las entidades tienen menos densidad, la extensi&oacute;n espacial del vecindario es m&aacute;s grande. Cuando elija esta opci&oacute;n, seleccione el n&uacute;mero de vecinos que desea incluir. El n&uacute;mero debe ser un entero entre 2 y 5.000.
+                    </li>
+                    <li> <b>Banda de distancia</b>: el tama&ntilde;o de vecindario es una distancia fija o constante para cada entidad. Cuando elija esta opci&oacute;n, seleccione la banda de distancia en la que desea representar la extensi&oacute;n espacial del vecindario.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Elegir cómo se van a ponderar las entidades vecinas</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica el tipo kernel que se usar&aacute; para proporcionar la ponderaci&oacute;n espacial en el modelo. El kernel define c&oacute;mo se relacionan las entidades entre s&iacute; dentro de su vecindario.
+                <ul>
+                    <li> <b>Bicuadrado</b>: se asigna una ponderaci&oacute;n de 0 a todas las entidades que se encuentren fuera del vecindario especificado. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Gaussiano</b>: todas las entidades recibir&aacute;n ponderaciones, que ser&aacute;n exponencialmente m&aacute;s peque&ntilde;as cuanto m&aacute;s se alejen de la entidad de destino.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> El nombre de la capa que se crear&aacute;.  Si escribe en un ArcGIS Data Store, sus resultados se guardar&aacute;n en  <b>Mi contenido</b> y se agregar&aacute;n al mapa. Si escribe en un recurso compartido de archivos de big data, sus resultados se almacenar&aacute;n en el recurso compartido de archivos de big data y se agregar&aacute;n a su manifiesto. No se agregar&aacute;n al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>Cuando escriba en  ArcGIS Data Store (big data store espaciotemporal o relacional) con el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

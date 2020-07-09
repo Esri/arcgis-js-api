@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","dojo/io-query","../kernel","../layers/ArcGISDynamicMapServiceLayer"],(function(e,t,a,i,s,r,n){var o=e(n,{declaredClass:"esri.tasks._GPResultImageLayer",constructor:function(e,a){a&&a.imageParameters&&a.imageParameters.extent&&(this.initialExtent=this.fullExtent=a.imageParameters.extent,this.spatialReference=this.initialExtent.spatialReference),this.getImageUrl=t.hitch(this,this.getImageUrl),this.loaded=!0,this.onLoad(this)},getImageUrl:function(e,i,r,n){var o=this._url.path+"?",l=this._params,c=e.spatialReference.wkid;n(o+s.objectToQuery(t.mixin(l,{f:"image",bbox:a.toJson(e.toJson()),bboxSR:c,imageSR:c,size:i+","+r})))}});return i("extend-esri")&&t.setObject("tasks._GPResultImageLayer",o,r),o}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Choisir une couche de direction de flux",pourPointLayerLabel:"Choisir un raster de points d’écoulement ou une couche d’entités",pourPointField:"Choisir un champ de point d’écoulement",resultLayerName:"Nom de la couche de résultat",outputLayerName:"Bassins versants de ${layername}",itemDescription:"Couche d’entités générée en exécutant la solution Synthétiser le centre et la dispersion sur ${inputLayername}. ",itemTags:"Résultat d’analyse, Bassins versants, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Bassins versants."});
+define({inputLayerLabel:"Choisir une couche de direction de flux",pourPointLayerLabel:"Choisir un raster de points d’écoulement ou une couche d’entités",pourPointField:"Choisir un champ de point d’écoulement",resultLayerName:"Nom de la couche de résultat",outputLayerName:"Bassins versants de ${layername}",itemDescription:"Couche d’entités générée en exécutant la solution Synthétiser le centre et la dispersion sur ${layerName}. ",itemTags:"Résultat d’analyse, Bassins versants, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Bassins versants."});

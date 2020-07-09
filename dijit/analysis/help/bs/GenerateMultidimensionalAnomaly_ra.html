@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Generiraj višedimenzionalnu anomaliju</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generiraj vi&scaron;edimenzionalnu anomaliju"></h2>
+        <hr/>
+    <p>Generira vi&scaron;edimenzionalni rasterski skup podataka kombiniranjem postojećih varijabli vi&scaron;edimenzionalnog rastera prema određenoj dimenziji.
+    </p>
+    <p>Anomalija je odstupanje zapažanja od standardne, srednje ili prosječne vrijednosti.
+    </p>
+    <p>Taj alat izračunava anomalije kroz vrijeme za jednu ili vi&scaron;e varijabli u vi&scaron;edimenzionalnom rasteru. Ako imate nevremensku dimenziju dodatno uz vremensku dimenziju, anomalija će biti izračunata kod svakog koraka u u dodatnoj dimenziji.
+    </p>
+    <p>Primjerice, ako imate podatke o mjesečnoj temperaturi oceana koja se očitava na svakih 1 metar dubine do 100 metara, a želite računati anomalije temperature kao odstupanja od godi&scaron;nje srednje vrijednosti. Taj će alat odrediti anomalije temperature na temelju godi&scaron;nje srednje vrijednosti ako postavite  <b>Godi&scaron;nje</b> kao <b>vremenski interval za izračun srednje vrijednosti</b>, a vratit će vrijednosti anomalija za svaku od 100 dubina.
+    </p>
+    <p>Taj alat podržava samo vi&scaron;edimenzionalne skupove rasterskih podataka koji imaju vremensku dimenziju.
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se varijable sloja koje su vidljive unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable cijelog sloja čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Odaberite sloj višedimenzionalnih snimki za generiranje anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj ulaznih snimki vi&scaron;edimenzionalnog skupa rasterskih podataka.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Odaberite varijablu/e za koje će se generirati anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Varijabla ili varijable za koje će se izračunati anomalije. Ako nije određena varijabla, analizirat će se sve varijable s vremenskom dimenzijom.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Odaberi metodu za generiranje anomalije</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje metodu koja će se upotrijebiti za izračun anomalije. 
+                <ul>
+                    <li> <b>Razlika naspram srednje vrijednosti</b>&mdash;Izračunat će se razlika između vrijednosti piksela i srednje vrijednosti od vrijednosti tog piksela po isječcima koju definira interval. To je zadano.
+                    </li>
+                    <li> <b>Postotna razlika naspram srednje vrijednosti</b>&mdash;Izračunat će se razlika u postocima između vrijednosti piksela i srednje vrijednosti od vrijednosti tog piksela po isječcima koju definira interval.
+                    </li>
+                    <li> <b>Postotak srednje vrijednosti</b>&mdash;Izračunat će se postotak srednje vrijednosti.
+                    </li>
+                    <li> <b>Z rezultat</b>&mdash;Izračunat će se rezultat z za svaki piksel. Rezultat z vrijednosti 0 znači da je vrijednost piksela jednaka srednjoj vrijednosti. Rezultat z vrijednosti 1 znači da je vrijednost piksela je 1 standardno odstupanje od srednje vrijednosti. Ako je vrijednost rezultata z 2, vrijednost piksela je 2 standardna odstupanja od srednje vrijednosti i tako dalje.
+                    </li>
+                    <li> <b>Razlika naspram medijana</b>&mdash;Izračunat će se razlika između vrijednosti piksela i matematičkog medijana od vrijednosti tog piksela po isječcima koju definira interval.
+                    </li>
+                    <li> <b>Postotna razlika naspram medijana</b>&mdash;Izračunat će se razlika u postocima između vrijednosti piksela i matematičkog medijana od vrijednosti tog piksela po isječcima koju definira interval.
+                    </li>
+                    <li> <b>Postotak medijana</b>&mdash;Izračunat će se postotak matematičkog medijana.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U nastavku su navedene matematičke metode za izračun vrijednosti anomalija. Anomalije je moguće izračunati pomoću srednjih ili prosječnih vrijednosti, &scaron;to je definicija prosjeka. Ako je raspodjela podataka asimetrična, na srednju vrijednost jako mogu utjecati netipične vrijednosti te je za ovu vrstu podataka možda prikladnija metoda koja uključuje prosječnu vrijednost ili rezultat z.
+            </p>
+            <p>
+                <ul>
+                    <li>Razlika naspram srednje vrijednosti = x - &micro;
+
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Razlika naspram srednje vrijednosti u postocima = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                                
+
+                            </li>
+                            <li>|x - &micro;| = apsolutna vrijednost razlike između vrijednosti i srednje vrijednosti
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Postotak srednje vrijednosti = x / &micro;
+
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                                
+
+                            </li>
+                            <li>&micro; = srednja vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Razlika naspram prosječne vrijednosti = x - &szlig;
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                            </li>
+                            <li>&szlig; = prosječna vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Razlika naspram prosječne vrijednosti u postocima= |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                            </li>
+                            <li>&szlig; = prosječna vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                            </li>
+                            <li>|x - &szlig;| = apsolutna vrijednost razlike između vrijednosti i prosječne vrijednosti
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Postotak prosječne vrijednosti = x / &szlig;
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                            </li>
+                            <li>&szlig; = prosječna vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Rezultat z  = (x - &micro;) / S
+                        <ul>
+                            <li>x = vrijednost piksela u isječku
+                            </li>
+                            <li>&micro; = srednja vrijednost vrijednosti tog piksela kroz dani vremenski interval
+                            </li>
+                            <li>S = standardno odstupanje vrijednosti piksela kroz dani vremenski interval
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Odaberite vremenski interval za izračun srednje vrijednosti</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje vremenski interval koji će se upotrijebiti za izračun srednje vrijednosti. 
+                <ul>
+                    <li> <b>Sve</b>&mdash;Izračunava srednju vrijednost svih isječaka za svaki piksel.
+                    </li>
+                    <li> <b>Godi&scaron;nje</b>&mdash;Izračunava godi&scaron;nju srednju vrijednost za svaki piksel.
+                    </li>
+                    <li> <b>Ponavlja se mjesečno</b>&mdash;Izračunava mjesečnu srednju vrijednost za svaki piksel.
+                    </li>
+                    <li> <b>Ponavlja se tjedno</b>&mdash;Izračunava tjednu srednju vrijednost za svaki piksel.
+                    </li>
+                    <li> <b>Ponavlja se dnevno</b>&mdash;Izračunava dnevnu srednju vrijednost za svaki piksel.
+                    </li>
+                    <li> <b>Po satu</b>&mdash;Izračunava srednju vrijednost po satu za svaki piksel.
+                    </li>
+                    <li> <b>Vanjski raster</b>&mdash;Ukazuje se na postojeći rasterski niz podataka koji sadrži medijan ili srednju vrijednost za svaki piksel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Odaberite geoobjekt slike srednje vrijednosti kao referencu</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje referentni rasterski skup podataka koji sadrži prethodno izračunatu srednju vrijednost za svaki piksel. Anomalije će se izračunati u usporedbi s tim srednjim vrijednostima.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju. 
+                <ul>
+                    <li>Provjereno&mdash;Analiza će uključivati sve važeće piksele za danu dimenziju i ignorirati piksele Bez podataka. To je zadano.
+                    </li>
+                    <li>Neoznačeno&mdash;Analiza će prikazati vrijednosti Bez podataka ako postoje vrijednosti Bez podataka za piksele za danu dimenziju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

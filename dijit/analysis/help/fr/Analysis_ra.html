@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>L'analyse raster vous permet d'analyser des jeux de donn&eacute;es raster volumineux &agrave; l'aide d' ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur. Les jeux d&rsquo;outils actuellement disponibles via l&rsquo;exp&eacute;rience utilisateur web de  Portal for ArcGIS sont  <b>Synth&eacute;tiser les donn&eacute;es</b>, <b>Analyser la r&eacute;partition spatiale</b>, <b>Utiliser la proximit&eacute;</b>, <b>Analyser l&rsquo;image</b>, <b>Analyser le MNT</b>, <b>G&eacute;rer les donn&eacute;es</b> et <b>Apprentissage profond</b>.
+        <p>L&rsquo;analyse raster vous permet d&rsquo;analyser des jeux de donn&eacute;es raster volumineux &agrave; l&rsquo;aide de  ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur. Les jeux d&rsquo;outils actuellement disponibles via l&rsquo;exp&eacute;rience utilisateur Web  Portal for ArcGIS sont  <b>Synth&eacute;tiser les donn&eacute;es</b>, <b>Analyser les mod&egrave;les</b>, <b>Utiliser la proximit&eacute;</b>, <b>Analyser l&rsquo;image</b>, <b>Analyser le MNT</b>, <b>G&eacute;rer les donn&eacute;es</b>, <b>Apprentissage profond</b> et <b>Analyse multidimensionnelle</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -186,7 +186,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Déterminer le chemin de coût de déplacement sous forme d’une polyligne</h2></td>
+                    <td><h2>Déterminer le chemin de coût de déplacement sous forme de polyligne</h2></td>
                     <td>
                     <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Illustration de l&rsquo;outil D&eacute;terminer le chemin de co&ucirc;t de d&eacute;placement sous forme d&rsquo;une polyligne">
                     </td>
@@ -327,7 +327,7 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="regularsize">
+    <div id="ManageDataCategory" class="largesize">
         <h2>Gérer les données</h2>
         <hr/>
         <p>Ces outils permettent de g&eacute;rer au quotidien les donn&eacute;es g&eacute;ographiques et de fusionner les donn&eacute;es avant leur analyse. 
@@ -347,6 +347,8 @@
                 <li> <b>Convertir le raster en entit&eacute;</b> vectorise des donn&eacute;es raster.
                     
 
+                </li>
+                <li> <b>Sample (&Eacute;chantillon)</b> extrait les donn&eacute;es &agrave; des localisations d&eacute;finies &agrave; partir d&rsquo;un raster, ou d&rsquo;un jeu de rasters.
                 </li>
             </ul>
             
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Échantillon</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="&Eacute;chantillon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cr&eacute;e une table ou une classe d&rsquo;entit&eacute;s ponctuelles avec des valeurs de donn&eacute;es &agrave; des localisations d&eacute;finies extraites d&rsquo;un raster ou d&rsquo;un ensemble de rasters.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Jeu d’outils Apprentissage profond</h2>
+        <h2>Apprentissage profond</h2>
         <hr/>
-        <p>Ces outils permettent de d&eacute;tecter les entit&eacute;s sp&eacute;cifiques sur une image ou de classifier les pixels dans un jeu de donn&eacute;es raster. L&rsquo;apprentissage profond est un type de m&eacute;thode d&rsquo;apprentissage automatique bas&eacute;e sur l&rsquo;intelligence artificielle qui d&eacute;tecte les images &agrave; l&rsquo;aide de plusieurs couches figurant dans des r&eacute;seaux neuronaux, chaque couche &eacute;tant capable d&rsquo;extraire une ou plusieurs entit&eacute;s uniques dans l&rsquo;image. Ces outils exploitent les mod&egrave;les qui ont &eacute;t&eacute; form&eacute;s &agrave; d&eacute;tecter des entit&eacute;s sp&eacute;cifiques dans les structures d&rsquo;apprentissage profond ind&eacute;pendantes (TensorFlow, CNTK et Keras, par exemple) et produisent des entit&eacute;s ou des cartes de classe.
+        <p>Ces outils permettent de d&eacute;tecter ou de classifier les entit&eacute;s sp&eacute;cifiques sur une image ou de classifier les pixels dans un jeu de donn&eacute;es raster. L&rsquo;apprentissage profond est un type de m&eacute;thode d&rsquo;apprentissage automatique bas&eacute;e sur l&rsquo;intelligence artificielle qui d&eacute;tecte les images &agrave; l&rsquo;aide de plusieurs couches figurant dans des r&eacute;seaux neuronaux, chaque couche &eacute;tant capable d&rsquo;extraire une ou plusieurs entit&eacute;s uniques dans l&rsquo;image. Ces outils exploitent les mod&egrave;les qui ont &eacute;t&eacute; form&eacute;s &agrave; d&eacute;tecter des entit&eacute;s sp&eacute;cifiques dans les structures d&rsquo;apprentissage profond ind&eacute;pendantes (TensorFlow, CNTK et Keras, par exemple) et produisent des entit&eacute;s ou des cartes de classe.
             <ul>
                 <li>L&rsquo;outil  <b>Classer des pixels &agrave; l&rsquo;aide d&rsquo;un outil d&rsquo;apprentissage profond</b> produit un raster class&eacute; &agrave; l&rsquo;aide d&rsquo;un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute;.
                 </li>
                 <li>L&rsquo;outil  <b>D&eacute;tecter des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond</b> produit une classe d&rsquo;entit&eacute;s contenant les objets qu&rsquo;il d&eacute;tecte dans un raster en entr&eacute;e &agrave; l&rsquo;aide d&rsquo;un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute;.
                 </li>
+                <li> <b>Classify Objects Using Deep Learning (Classer des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond)</b> produit une classe d&rsquo;entit&eacute;s ou une table dans laquelle chaque objet en entr&eacute;e dans un raster en entr&eacute;e est attribu&eacute; avec une &eacute;tiquette de classe &agrave; l&rsquo;aide d&rsquo;un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute;.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer un raster class&eacute;, une &eacute;tiquette de classe &eacute;tant attribu&eacute;e &agrave; chaque pixel valide.
+            <p>Cet outil ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer un raster class&eacute;, une &eacute;tiquette de classe &eacute;tant attribu&eacute;e &agrave; chaque pixel valide.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer une classe d&rsquo;entit&eacute;s contenant les objets qu&rsquo;il trouve. Les entit&eacute;s peuvent correspondre &agrave; des emprises ou des polygones autour des objets trouv&eacute;s ou encore des points situ&eacute;s aux centres des objets.
+            <p>Cet outil ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e afin de g&eacute;n&eacute;rer une classe d&rsquo;entit&eacute;s contenant les objets qu&rsquo;il trouve. Les entit&eacute;s peuvent correspondre &agrave; des emprises ou des polygones autour des objets trouv&eacute;s ou encore des points situ&eacute;s aux centres des objets.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Classer des objets en utilisant la méthode Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classer des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil ex&eacute;cute un mod&egrave;le d&rsquo;apprentissage profond entra&icirc;n&eacute; sur un raster en entr&eacute;e et une classe d&rsquo;entit&eacute;s facultative afin de g&eacute;n&eacute;rer une table ou une classe d&rsquo;entit&eacute;s dans laquelle une &eacute;tiquette de classe est attribu&eacute;e &agrave; chaque objet en entr&eacute;e.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Analyse multidimensionnelle</h2>
+        <hr/>
+        <p>Les outils du jeu d&rsquo;outils Analyse multidimensionnelle permettent de proc&eacute;der &agrave; des analyses de donn&eacute;es scientifiques portant sur plusieurs variables et dimensions.
+        </p>
+        <p>Les donn&eacute;es multidimensionnelles repr&eacute;sentent les donn&eacute;es captur&eacute;es &agrave; plusieurs moments, profondeurs et hauteurs. Ce type de donn&eacute;es est fr&eacute;quemment utilis&eacute; dans les sciences de l&rsquo;atmosph&egrave;re, de l&rsquo;oc&eacute;anographie et de la terre. Ce jeu d&rsquo;outils permet d&rsquo;analyser des donn&eacute;es raster multidimensionnelles dans plusieurs formats, notamment netCDF, HDF, GRIB, le jeu de donn&eacute;es mosa&iuml;que multidimensionnelles et le format CRF (Cloud Raster Format) d&rsquo;Esri.
+        </p>
+        <p>Le tableau suivant r&eacute;pertorie les outils d&rsquo;analyse multidimensionnelle et en donne une br&egrave;ve description.
+            <ul>
+                <li> <b>Agr&eacute;ger un raster multidimensionnel</b> g&eacute;n&egrave;re un jeu de donn&eacute;es raster multidimensionnelles en agr&eacute;geant les variable raster multidimensionnelles existantes le long d&rsquo;une dimension.
+                </li>
+                <li> <b>G&eacute;n&eacute;rer une anomalie multidimensionnelle</b> calcule l&rsquo;anomalie pour chaque tranche d&rsquo;un raster multidimensionnel pour g&eacute;n&eacute;rer un raster multidimensionnel.
+                </li>
+                <li> <b>Generate Trend Raster (G&eacute;n&eacute;rer un raster de tendances)</b> estime la tendance de chaque pixel le long d&rsquo;une dimension pour une ou plusieurs variables dans un raster multidimensionnel.
+                </li>
+                <li> <b>Predict Using Trend Raster (Pr&eacute;dire &agrave; l&rsquo;aide d&rsquo;un raster de tendances)</b> calcule un raster multidimensionnel pr&eacute;vu &agrave; l&rsquo;aide d&rsquo;un raster de tendances en sortie &agrave; l&rsquo;aide de l&rsquo;outil <b>Generate Trend Raster (G&eacute;n&eacute;rer un raster de tendances)</b>.
+                </li>
+                <li> <b>Find Argument Statistics (Rechercher des statistiques d&rsquo;argument)</b> extrait la valeur de dimension ou l&rsquo;index de canal auquel une statistique donn&eacute;e est atteinte pour chaque pixel dans un raster multidimensionnel ou multicanal.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agréger un raster multidimensionnel</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agr&eacute;ger un raster multidimensionnel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil g&eacute;n&egrave;re un jeu de donn&eacute;es raster multidimensionnelles en agr&eacute;geant les variables raster multidimensionnelles existantes sur une dimension.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rechercher des statistiques d’arguments</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Rechercher des statistiques d&rsquo;argument">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil extrait la valeur de dimension ou l&rsquo;index de canal auquel une statistique donn&eacute;e est atteinte pour chaque pixel dans un raster multidimensionnel ou multicanal.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Générer une anomalie multidimensionnelle</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="G&eacute;n&eacute;rer une anomalie multidimensionnelle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule l&rsquo;anomalie pour chaque tranche d&rsquo;un raster multidimensionnel afin de cr&eacute;er un raster multidimensionnel.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Générer un raster de tendance</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="G&eacute;n&eacute;rer un raster de tendances">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil estime la tendance de chaque pixel le long d&rsquo;une dimension pour une ou plusieurs variables dans un raster multidimensionnel.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prévoir à l’aide du raster de tendance</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Pr&eacute;dire &agrave; l&rsquo;aide d&rsquo;un raster de tendances">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule un raster multidimensionnel pr&eacute;vu &agrave; l&rsquo;aide d&rsquo;un raster de tendances en sortie &agrave; l&rsquo;aide de l&rsquo;outil  <b>Generate Trend Raster (G&eacute;n&eacute;rer un raster de tendances)</b>.
             </p>
             <br/>
         </div>

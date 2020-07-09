@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Bestem rute for reiseutgifter som polylinje</h2><p/>
-        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Illustrasjon av vekt&oslash;yet Bestem rute for reiseutgifter som polylinje"></h2>
+        <h2>Bestem rute for reisekostnader som polylinje</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Illustrasjon av verkt&oslash;yet Bestem rute for reisekostnader som polylinje"></h2>
         <hr/>
     <p>Dette verkt&oslash;yet beregner den beste polylinjeruten mellom kilder og kjente m&aring;l.
     </p>
@@ -64,17 +64,17 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Velg raster- eller geoobjektskildelaget det skal beregnes reiseruter fra</h2></div>
+        <div><h2>Velg raster- eller geoobjektkildelaget det skal beregnes reiseruter fra</h2></div>
         <hr/>
         <div>
-            <p>En bildetjeneste eller geoobjektstjeneste som identifiserer cellene der den rimeligste ruten til det rimeligste m&aring;let  fastsettes.
+            <p>En bildetjeneste eller geoobjekttjeneste som identifiserer cellene der den rimeligste ruten til det rimeligste m&aring;let fastsettes.
             </p>
             <p>Hvis inndataene er en bildetjeneste, best&aring;r inndataene av celler med gyldige verdier (null er en gyldig verdi), og de gjenv&aelig;rende cellene m&aring; tilordnes NoData.
             </p>
         </div>
     </div>
     <div id="inputCostRaster">
-        <div><h2>Velg rasterlag for reiseutgifter</h2></div>
+        <div><h2>Velg rasterlag for reisekostnader</h2></div>
         <hr/>
         <div>
             <p>Et raster som definerer impedans eller kostnad ved planimetrisk bevegelse gjennom hver celle.
@@ -109,23 +109,31 @@
         <div><h2>Velg type rute som skal bestemmes</h2></div>
         <hr/>
         <div>
-            <p>Definerer hvordan verdier og soner i inndataene for destinasjonen skal tolkes i beregningene av ruteutgiftene.
+            <p>Definerer hvordan verdier og soner i inndataene for destinasjonen skal tolkes i beregningene av rutekostnadene.
             </p>
             <ul>
-                <li>Beste enkeltreise&nbsp;&ndash; For alle celler eller lokasjoner i destinasjonsinndataene utledes den rimeligste ruten fra lokasjonen med minimumet av ruter til kildelokasjonen med lavest utgifter. Dette er standardalternativet.
+                <li> <b>Beste enkel</b> &ndash;  For alle celler eller lokasjoner i destinasjonsinndataene utledes den rimeligste ruten fra lokasjonen med den laveste minste kostnadsrute til kildelokasjonen. Dette er standardalternativet.
                     
 
                 </li>
-                <li>Til hver celle&nbsp;&ndash; For hver celle eller lokasjon med gyldige verdier i destinasjonsinndataene, bestemmes og lagres rimeligste rute p&aring; utdatageoobjektstjenesten. Med dette alternativet behandles hver celle med destinasjonsinndata separat, og en rimeligste rute bestemmes for hver celle.
+                <li> <b>Til hver celle</b> &ndash; For hver celle eller lokasjon med gyldige verdier i destinasjonsinndataene bestemmes minste kostnadsrute og lagres til utdatageoobjekttjenesten. Med dette alternativet behandles hver celle med destinasjonsinndata separat, og en rimeligste rute bestemmes for hver celle.
                     
 
                 </li>
-                <li>Til hver sone&nbsp;&ndash; For hver sone i destinasjonsinndataene bestemmes og lagres rimeligste rute p&aring; utdatageoobjektstjenesten. Med dette alternativet begynner den rimeligste ruten for hver sone ved cellen eller lokasjonen med sonens rimeligste utgift&ndash;avstandsvekting.
+                <li> <b>Til hver sone</b> &ndash; For hver sone i destinasjonsinndataene bestemmes og lagres rimeligste rute p&aring; utdatageoobjekttjenesten. Med dette alternativet begynner ruten med lavest kostnad for hver sone ved cellen eller lokasjonen med sonens laveste vektede avstandskostnad.
                     
 
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Velg felt for å hente verdier for destinasjon</h2></div>
+        <hr/>
+        <div>
+            <p>Feltet brukes til &aring; hente verdier for destinasjonslokasjoner.
+            </p>
         </div>
     </div>
 </div>

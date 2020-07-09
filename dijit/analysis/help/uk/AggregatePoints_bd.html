@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aggregate Points</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Aggregate Points"></h2>
+        <hr/>
+    <p>This tool works with a layer of
+point features  and a layer of areas features.  Input area features can be from a polygon layer or they can be square or hexagonal bins calculated when the tool is run. The tool first
+determines which points fall within each specified area. After determining
+this point-in-area spatial relationship, statistics about all
+points in the area are calculated and assigned to the area. The
+most basic statistic is the count of the number of points within
+the area, but you can get other statistics as well. 
+
+    </p>
+    <p>For example, suppose you have point features of coffee shop locations and area features of counties, and you want to summarize coffee sales by county.  Assuming the  coffee shops have a    <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within each county, the minimum or maximum <i>TOTAL_SALES</i>
+ within each county, or other statistics such as the count, range, standard deviation, and variance.
+    </p>
+    <p>This tool can also work with data that is time-enabled. If time is enabled on the input points, then the time slicing options are available. Time slicing allows you to calculate the point-in-area relationship while looking at a specific slice in time. For example, you could look at hourly intervals, which would result in outputs for each hour. 
+    </p>
+    <p>For an example with time, suppose you had point features of every transaction made at various coffee shop locations and no  area layer. The data has been recorded over a year and each transaction has a location and a time stamp. Assuming each transaction has a <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within the space and time of interest. If these transactions are for a single city, we could generate  areas that  are 1-kilometer grids and look at weekly time slices to summarize the transactions in both time and space.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Choose a layer containing points to aggregate into areas</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer that will aggregate into the areas.  Point layers that are aggregated into  <b>Square </b> or <b>Hexagon</b> bins must have the processing spatial reference set to a projected coordinate system using the <b>Analysis Environments</b>.
+            </p>
+            <p>Можна не тільки обирати шар на карті, а й обрати  <b>Вибрати шар аналізу</b> внизу розкривного списку для огляду ваших ресурсів, які містяться у наборі даних спільного файлового сховища великих даних або у векторному шарі. Ви можете додатково застосувати фільтр на вашому вхідному шарі або застосувати вибір на розміщених на хості шарах, доданих до вашої карти. Фільтри та вибори застосовуються тільки для аналізу. 
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Choose an area layer to aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The areas that the   point layer will be aggregated into. You can choose between an area layer that you provide or  bins that are generated when the tool runs.   When generating bins, for  <b>Square</b>, the number and units specified determine the height and length of the square. For <b>Hexagon</b>, the number and units specified  determine the distance between parallel sides.
+            </p>
+            <p>Для аналізу з використанням квадратних або шестикутних контейнерів потрібна система координат проекції. Можна задати Систему координат процесу у Середовищах аналізу. Якщо для системи координат процесу не задано систему координат проекції, вам буде запропоновано установити її при запуску аналізу .
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Choose the area layer to aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The area layer to which the points will be aggregated.  Any points that fall within the boundaries of areas in this layer will be counted and optionally summarized using your choice of statistics. 
+            </p>
+            <p>Повинен бути заданий  <b>Розмір контейнера</b> для контейнерів або <b>Площадний шар</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Choose a distance to generate bins and aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to generate bins to aggregate your input points into. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).  
+            </p>
+            <p>Повинен бути заданий  <b>Розмір контейнера</b> для контейнерів або <b>Площадний шар</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggregate using time steps (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Якщо на вхідному точковому шарі активований час і тип часу &mdash; &laquo;поточний момент&raquo;, можна виконувати покроковий часовий аналіз. При використанні часу можна задати три параметри:
+                <ul>
+                    <li> <b>Інтервал часових кроків</b>
+                    </li>
+                    <li> <b>Як часто повторювати часовий крок</b>
+                    </li>
+                    <li> <b>Час, з яким узгоджуватимуться часові кроки</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Наприклад, якщо у вас є дані, які представляють рік у часі і вам потрібно проаналізувати їх за допомогою тижневих кроків, установіть  <b>Інтервал часових кроків</b> на <code>1 тиждень</code>. 
+            </p>
+            <p>Наприклад, якщо у вас є дані, які представляють рік у часі, і вам потрібно проаналізувати їх, використовуючи перший тиждень місяця, установіть  <b>Інтервал часових кроків</b> на <code>1 тиждень</code>, <b>Як часто повторювати часовий крок</b> на <code>1 місяць</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>1 січня, 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time step interval</h2></div>
+        <hr/>
+        <div>
+            <p>Інтервал часу для генерування часових кроків.  <b>Інтервал часових кроків</b> може використовуватися самостійно або разом з параметром <b>Як часто повторювати часовий крок</b> або <b>Час, з яким узгоджуватимуться часові кроки</b>.
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>How often to repeat the time step</h2></div>
+        <hr/>
+        <div>
+            <p> Крок, використовуваний для розрахунку часового кроку. <b>Як часто повторювати часовий крок</b> може використовуватися самостійно, з <b>Інтервал часових кроків</b>, з <b>Опорний час</b> або одночасно з <b>Інтервал часових кроків</b> і <b>Час, з яким узгоджуватимуться часові кроки</b>.
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Time to align time steps to</h2></div>
+        <hr/>
+        <div>
+            <p>Дата і час для узгодження часових кроків. Покроковий часовий аналіз розпочнеться о і попрямує назад від цього часу. Якщо опорний час не вибраний, покроковий часовий аналіз буде узгоджений на 1 січня 1970 р. 
+            </p>
+            <p>Наприклад, якщо потрібно створити часові кроки, які відбуваються щопонеділка від 9:00 до 10:00, установіть  <b>Інтервал часових кроків</b> на <code>1 годину</code>, <b>Як часто повторювати часовий крок</b> на <code>1 тиждень</code> і <b>Час, з яким узгоджуватимуться часові кроки</b> на <code>9:00:00 понеділка</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Можна обчислювати статистику підсумованих об&rsquo;єктів. В числових полях можна обчислювати: 
+                <ul>
+                    <li>Кількість &mdash; обчислює кількість ненульових значень. Може використовуватися як з числовими, так і рядковими полями. Кількість [нуль, 0, 2] &mdash; 2.
+                    </li>
+                    <li>Сума&mdash;Сума числових значень у полі. Сума [нуль, 0, 3] &mdash; 3.
+                    </li>
+                    <li>Середнє&mdash;Середнє числових значень. Середнє [0, 2, нуль] &mdash; 1.
+                    </li>
+                    <li>Мін.&mdash;Мінімальне значення числового поля. Мінімум [0, 2, нуль] &mdash; 0. 
+                    </li>
+                    <li>Макс.&mdash;Максимальне значення числового поля. Максимальне значення [0, 2, нуль] &mdash; 2.
+                    </li>
+                    <li>Діапазон&mdash;Діапазон числового поля. Розраховується відніманням мінімального значення із максимального. Діапазон [0, нуль, 1] &mdash; 1. Діапазон [нуль, 4] &mdash; 0.
+                    </li>
+                    <li>Дисперсія&mdash;Дисперсія числового значення в треку. Дисперсія [1] &mdash; нуль. Дисперсія [нуль, 1,0,1,1] &mdash; 0,25.
+                    </li>
+                    <li>Середньоквадратичне відхилення &mdash; середньоквадратичне відхилення числового поля. Середньоквадратичне відхилення [1] &mdash; нуль. Середньоквадратичне відхилення [нуль, 1,0,1,1] &mdash; 0,5. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>В рядкових полях можна обчислювати:
+                <ul>
+                    <li>Кількість &mdash; кількість непорожніх рядків.
+                    </li>
+                    <li>Будь-які &mdash; ця статистика є випадковою вибіркою рядкового значення в указаному полі.
+                    </li>
+                </ul>
+                Вся статистика обчислюється за ненульовими значеннями. Результуючий шар буде містити нове поле для кожної обчисленої статистики. Будь-яку кількість статистичних відомостей можна додати за допомогою вибору атрибута і статистики.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Це тимчасовий параметр для передрелізної версії, який задає просторову прив&rsquo;язку процесу. Багато інструментів для роботи з великими даними вимагають, щоб система координат проекції використовувалася як просторова прив&rsquo;язка для обробки. За замовчування інструмент використовує вхідну систему координат, але не зможе працювати, якщо це географічна система координат. Щоб задати систему координат проекції, введіть WKID. Наприклад, для  <b>Web Mercator</b> потрібно ввести <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
+        <hr/>
+        <div>
+            <p>Результати GeoAnalytics зберігаються у  сховищі даних та відображаються як векторний шар у  Portal for ArcGIS. У більшості випадків результати потрібно зберігати у просторово-часовому сховищі даних, що задано за замовчуванням. У деяких випадках гарною опцією є зберігання результатів у реляційному сховищі даних. Нижче наведено причини, чому може знадобитись зберігання результатів у реляційному сховищі даних: 
+                <ul>
+                    <li>Для використання результатів у співпраці між порталами
+                    </li>
+                    <li>Для активації можливості синхронізації з вашими результатами.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Не рекомендується використовувати реляційне сховище даних, якщо ви очікуєте збільшення ваших результатів GeoAnalytics. В цьому випадку слід скористатись можливостями просторово-часового сховища великих даних для зберігання великих обсягів даних.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> Назва шару, який буде створено. Якщо ви записуєте результати у ArcGIS Data Store, вони будуть зберігатися у  <b>Мої ресурси</b> і додаватися до карти. Якщо ви записуєте результати у спільне файлове сховище великих даних, вони будуть зберігатися у спільному файловому сховищі великих даних і додаватися до його маніфесту. Він не буде додаватися до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, інструмент не буде працювати.
+            </p>
+            <p>При записі до  ArcGIS Data Store (реляційного або просторово-часового сховища великих даних) з використанням розкривного меню  <b>Зберегти результати в</b>, можна указати ім&rsquo;я папки у <b>Мої ресурси</b>, в яку будуть збережені результати.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

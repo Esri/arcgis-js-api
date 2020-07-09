@@ -172,7 +172,7 @@
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Lahtri suurus</h2></div>
+        <div><h2>Piksli suurus</h2></div>
         <hr/>
         <div>
             <p>Rasteranal&uuml;&uuml;si teostamise ajal m&auml;&auml;rab see keskkond piksli suuruse v&otilde;i resolutsiooni, mida kasutatakse v&auml;ljundi rasterkihi loomiseks. V&auml;ljundi resolutsiooni vaikimisi v&auml;&auml;rtuse m&auml;&auml;rab sisendi rasterkihi suurim piksli k&uuml;ljepikkuse suurus.
@@ -242,6 +242,22 @@
             <p> <b>Paralleelse t&ouml;&ouml;tluse teguri</b>, seadistamise teel saate valida paralleelsete t&ouml;&ouml;tajate arvu, keda rastri anal&uuml;&uuml;si pildiserver kasutab rastrianal&uuml;&uuml;si &uuml;lesande t&ouml;&ouml;tlemisel. Kui paralleelsete protsesside &uuml;ldarv &uuml;letab siiski rastri t&ouml;&ouml;tlemise (CPU v&otilde;i GPU) teenuse eksemplaride arvu, seatakse t&auml;iendavad paralleelsed protsessid j&auml;rjekorda.
             </p>
             <p>Kui  <b>Paralleelse t&ouml;&ouml;tlemise tegur</b> ei ole m&auml;&auml;ratud, mis on vaikeseadistus, siis kasutab t&ouml;&ouml;riist 80% rastri t&ouml;&ouml;tlemise teenuse eksemplaride maksimaalsest arvust. Paralleelse t&ouml;&ouml;tlemise teguri saab m&auml;&auml;rata kas t&auml;isarvulise numbrina v&otilde;i protsendina.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Korduvkatsete arv nurjumise korral</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ratleb &uuml;he t&ouml;&ouml;tleja t&ouml;&ouml;tlemise korduvkatsete arvu, kui m&otilde;ne kindla t&ouml;&ouml; t&ouml;&ouml;tlemisel esineb juhuslik t&otilde;rge. Vaikev&auml;&auml;rtus on 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Töötlutsükli kordamise intervall</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake, mitu pildisektsiooni t&ouml;&ouml;deldakse enne t&ouml;&ouml;tlusts&uuml;kli taask&auml;ivitamist, et v&auml;ltida v&otilde;imalikke rikkeid pikaajalistes t&ouml;&ouml;tlusprotsessides. Vaikev&auml;&auml;rtus on 0.
             </p>
         </div>
     </div>

@@ -21,8 +21,15 @@
         margin-right: 20px;
     }
 
+    .esriGEChartContainer_chartTooltip .esriGEReportPlayerChartLegendSymbol.isSVGSymbol {
+        width: 10px;
+    }
+
+    .esriGEChartContainer_chartTooltip a {
+        color: #0079C1;
+    }
+
 .esriGEChartContainer_chartTooltip_masterTooltip {
     width: auto !important;
     max-width: initial !important;
-    pointer-events: none;
 }

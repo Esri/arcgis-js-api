@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({addBarriers:"Välj hinderlager",pointBarrier:"Punkthinder",lineBarrier:"Linjehinder",polygonBarrier:"Polygonhinder",choosePointBarrier:"Välj punkthinderlager",chooseLineBarrier:"Välj linjehinderlager",choosePolygonBarrier:"Välj polygonhinderlager",selectPointBarrier:"Välj punkthinder",selectLineBarrier:"Välj linjehinder",selectPolygonBarrier:"Välj polygonhinder"});

@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Wybierz raster lub warstwę lokalizacji obiektów w celu obliczenia odległości do</h2></div>
+        <div><h2>Wybierz raster lub obiektową warstwę lokalizacji, do których ma zostać obliczona odległość</h2></div>
         <hr/>
         <div>
             <p>Warstwa definiująca źr&oacute;dła, do kt&oacute;rych będzie obliczona odległość. Warstwa może być usługą rastrową lub usługą obiektową.
@@ -137,6 +137,47 @@
             <p>Pole wejściowej warstwy źr&oacute;dłowej zawierające wartości definiujące poszczeg&oacute;lne źr&oacute;dła. Może to być pole całkowitoliczbowe lub znakowe źr&oacute;dłowego zestawu danych.
             </p>
             <p>Domyślnym polem jest  <i>Value</i>. W przypadku usługi obiektowej i braku pola <i>Value</i> zostanie użyte pierwsze dostępne pole całkowitoliczbowe lub znakowe. Jeśli nie istnieją poprawne pola, zostanie użyte pole z identyfikatorem obiektu (na przykład OID lub FID w zależności od typu obiektowej danej wejściowej).
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Wybierz raster lub warstwę obiektową reprezentującą bariery</h2></div>
+        <hr/>
+        <div>
+            <p>Zestaw danych definiujący bariery. 
+            </p>
+            <p>W przypadku usługi rastrowej typem wejściowym może być typ całkowitoliczbowy lub zmiennoprzecinkowy. Wszystkie kom&oacute;rki, kt&oacute;re zawierają wartości (w tym wartość zero) będą traktowane jako bariery. Wszystkie kom&oacute;rki zawierające wartość NoData nie będą traktowane jako bariery.
+            </p>
+            <p>W przypadku usługi obiektowej danymi wejściowymi mogą być punkty, linie lub poligony.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda ustalania odległości</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, czy odległości mają być obliczane przy użyciu metody planarnej (płaska powierzchnia Ziemi), czy geodezyjnej (elipsoida).
+            </p>
+            <ul>
+                <li> <b>Planarna</b> &mdash; obliczenia będą wykonywane na odwzorowanej płaskiej powierzchni przy użyciu 2-wymiarowego kartezjańskiego układu wsp&oacute;łrzędnych. To jest metoda domyślna.
+                    
+
+                </li>
+                <li> <b>Geodezyjna</b> &mdash; odległości są obliczane na elipsoidzie. Dzięki temu wyniki nie zależą od wejściowego lub wynikowego odwzorowania.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Nazwa warstwy dla wynikowego kierunku wstecz</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie  <b>Moje zasoby</b>. Należy podać nazwę, kt&oacute;ra nie istnieje aktualnie w obszarze <b>Moje zasoby</b>.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>An&aacute;lisis de r&aacute;ster le permite realizar an&aacute;lisis de datasets r&aacute;ster grandes utilizando el  ArcGIS Image Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia del servidor. Los conjuntos de herramientas que actualmente est&aacute;n disponibles mediante la experiencia de usuario web de  Portal for ArcGIS son:  <b>Resumir datos</b>, <b>Analizar patrones</b>, <b>Utilizar proximidad</b>, <b>Analizar imagen</b>, <b>Analizar terreno</b>, <b>Administrar datos</b> y <b>Aprendizaje profundo</b>.
+        <p>An&aacute;lisis de r&aacute;ster le permite realizar an&aacute;lisis de datasets r&aacute;ster grandes utilizando  ArcGIS Image Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia del servidor. Los conjuntos de herramientas que actualmente est&aacute;n disponibles mediante la experiencia de usuario web de  Portal for ArcGIS son:  <b>Resumir datos</b>, <b>Analizar patrones</b>, <b>Utilizar proximidad</b>, <b>Analizar imagen</b>, <b>Analizar terreno</b>, <b>Administrar datos</b>, <b>Aprendizaje profundo</b> y <b>An&aacute;lisis multidimensional</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Muestra</b> extrae datos en ubicaciones definidas de un r&aacute;ster, o conjunto de r&aacute;steres.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Muestra</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Muestra">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Crea una tabla o una clase de entidad de punto con valores de datos en ubicaciones definidas extra&iacute;das de un r&aacute;ster o un conjunto de r&aacute;steres.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Conjunto de herramientas Aprendizaje profundo</h2>
+        <h2>Aprendizaje profundo</h2>
         <hr/>
-        <p>Estas herramientas 	se utilizan para detectar entidades espec&iacute;ficas en una imagen o clasificar p&iacute;xeles en un dataset r&aacute;ster. El aprendizaje profundo es un m&eacute;todo de aprendizaje de m&aacute;quina de inteligencia artificial que detecta entidades en im&aacute;genes con varias capas en redes neuronales, en las que cada capa puede extraer una o varias entidades &uacute;nicas de la imagen. Estas herramientas utilizan modelos entrenados para detectar entidades espec&iacute;ficas en marcos de aprendizaje profundo de terceros, tales como TensorFlow, CNTK y Keras, y generan entidades o mapas de clases.
+        <p>Estas herramientas se utilizan para detectar o clasificar entidades espec&iacute;ficas en una imagen o clasificar p&iacute;xeles en un dataset r&aacute;ster. El aprendizaje profundo es un m&eacute;todo de aprendizaje de m&aacute;quina de inteligencia artificial que detecta entidades en im&aacute;genes con varias capas en redes neuronales, en las que cada capa puede extraer una o varias entidades &uacute;nicas de la imagen. Estas herramientas utilizan modelos entrenados para detectar entidades espec&iacute;ficas en marcos de aprendizaje profundo de terceros, tales como TensorFlow, CNTK y Keras, y generan entidades o mapas de clases.
             <ul>
                 <li> <b>Clasificar p&iacute;xeles con aprendizaje profundo</b> genera un r&aacute;ster clasificado utilizando un modelo de aprendizaje profundo entrenado.
                 </li>
                 <li> <b>Detectar objetos con aprendizaje profundo</b> genera una clase de entidad que contiene los objetos que encuentra en un r&aacute;ster de entrada con un modelo de aprendizaje profundo entrenado.
                 </li>
+                <li> <b>Clasificar objetos con aprendizaje profundo</b> genera una clase de entidad o tabla en la que a cada objeto de entrada en un r&aacute;ster de entrada se le asigna una etiqueta de clase usando un modelo de aprendizaje profundo entrenado.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar un r&aacute;ster clasificado, donde cada p&iacute;xel v&aacute;lido tiene asignada una etiqueta de clase.
+            <p>Esta herramienta ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar un r&aacute;ster clasificado, donde cada p&iacute;xel v&aacute;lido tiene asignada una etiqueta de clase.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar una clase de entidad con los objetos que encuentre. Las entidades pueden ser cuadros o pol&iacute;gonos de delimitaci&oacute;n alrededor de los objetos encontrados o puntos en el centro de los objetos.
+            <p>Esta herramienta ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada para generar una clase de entidad con los objetos que encuentre. Las entidades pueden ser cuadros o pol&iacute;gonos de delimitaci&oacute;n alrededor de los objetos encontrados o puntos en el centro de los objetos.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Clasificar objetos con aprendizaje profundo</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Clasificar objetos con aprendizaje profundo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta ejecuta un modelo de aprendizaje profundo entrenado en un r&aacute;ster de entrada y una clase de entidad opcional para generar una clase de entidad o tabla en la que cada objeto de entrada tenga asignada una etiqueta de clase.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Análisis multidimensional</h2>
+        <hr/>
+        <p>Las herramientas del conjunto de herramientas An&aacute;lisis multidimensional permiten realizar an&aacute;lisis en datos cient&iacute;ficos a trav&eacute;s de varias dimensiones y variables.
+        </p>
+        <p>Los datos multidimensionales representan datos capturados en distintos momentos, profundidades y alturas. Este tipo de datos se usa com&uacute;nmente en ciencias atmosf&eacute;ricas, oceanogr&aacute;ficas y de la tierra. En este conjunto de herramientas, puede analizar datos r&aacute;ster multidimensionales en varios formatos, por ejemplo, netCDF, HDF, GRIB, el dataset de mosaico multidimensional y el formato r&aacute;ster de nube (CRF) de Esri.
+        </p>
+        <p>La siguiente tabla enumera las herramientas de an&aacute;lisis multidimensional y proporciona una breve descripci&oacute;n de cada una.
+            <ul>
+                <li> <b>Agregar r&aacute;ster multidimensional</b> genera un dataset r&aacute;ster multidimensional al agregar variables de r&aacute;ster multidimensional existentes a lo largo de una dimensi&oacute;n.
+                </li>
+                <li> <b>Generar anomal&iacute;a multidimensional</b> calcula la anomal&iacute;a de cada porci&oacute;n en un r&aacute;ster multidimensional para generar un r&aacute;ster multidimensional.
+                </li>
+                <li> <b>Generar r&aacute;ster de tendencia</b> estima la tendencia de cada p&iacute;xel a lo largo de una dimensi&oacute;n para una o varias variables de un r&aacute;ster multidimensional.
+                </li>
+                <li> <b>Predecir con r&aacute;ster de tendencia</b> calcula un r&aacute;ster multidimensional previsto usando el r&aacute;ster de tendencia de salida de la herramienta <b>Generar r&aacute;ster de tendencia</b>.
+                </li>
+                <li> <b>Hallar estad&iacute;sticas de argumentos</b> extrae el valor de dimensi&oacute;n o &iacute;ndice de banda en el que se consigue una determinada estad&iacute;stica para cada p&iacute;xel en un r&aacute;ster multidimensional o multibanda.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregar ráster multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregar r&aacute;ster multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta genera un dataset r&aacute;ster multidimensional al agregar variables de r&aacute;ster multidimensional existentes a lo largo de una dimensi&oacute;n.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hallar estadísticas de argumentos</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Hallar estad&iacute;sticas de argumentos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta extrae el valor de dimensi&oacute;n o el &iacute;ndice de banda en el que se consigue una determinada estad&iacute;stica para cada p&iacute;xel de un r&aacute;ster multidimensional o multibanda.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generar anomalía multidimensional</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Generar anomal&iacute;a multidimensional">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta calcula la anomal&iacute;a de cada porci&oacute;n en un r&aacute;ster multidimensional para generar un r&aacute;ster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generar ráster de tendencia</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generar r&aacute;ster de tendencia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta estima la tendencia de cada p&iacute;xel a lo largo de una dimensi&oacute;n para una o varias variables de un r&aacute;ster multidimensional.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Predecir con ráster de tendencia</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Predecir con r&aacute;ster de tendencia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta calcula un r&aacute;ster multidimensional previsto utilizando el r&aacute;ster de tendencia de salida de la herramienta  <b>Generar r&aacute;ster de tendencia</b>.
             </p>
             <br/>
         </div>

@@ -56,9 +56,9 @@
         <div>
             <p>Der Layer, der Attribute des Join-Layers an seine Tabelle anh&auml;ngen wird.
             </p>
-            <p>Analysen, die den Raumbezug  <b>In der N&auml;he von</b> verwenden, erfordern ein projiziertes Koordinatensystem. Sie k&ouml;nnen das <b>Verarbeitungskoordinatensystem</b> in <b>Analyseumgebungen</b> festlegen. Wenn das Verarbeitungskoordinatensystem nicht auf ein projiziertes Koordinatensystem festgelegt ist, werden Sie aufgefordert, es festzulegen, wenn Sie die <b>Analyse ausf&uuml;hren</b> .
+            <p>Analysen, die den Raumbezug  <b>In der N&auml;he von</b> verwenden, erfordern ein projiziertes Koordinatensystem. Sie k&ouml;nnen das Verarbeitungskoordinatensystem unter &quot;Analyseumgebungen&quot; festlegen. Wenn das Verarbeitungskoordinatensystem nicht auf ein projiziertes Koordinatensystem festgelegt ist, werden Sie beim Ausf&uuml;hren der Analyse aufgefordert, es festzulegen .
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>Der Join-Layer mit den Attributen, die an den Ziel-Layer angeh&auml;ngt werden.
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste die Option  <b>Analyse-Layer ausw&auml;hlen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren. Optional k&ouml;nnen Sie auf den Eingabe-Layer einen Filter bzw. auf gehostete Layer, die der Karte hinzugef&uuml;gt wurden, eine Auswahl anwenden. Filter und Auswahl werden nur f&uuml;r die Analyse &uuml;bernommen. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Gleich</b>: Die Features werden abgeglichen, wenn sie dieselbe Geometrie aufweisen.
                     </li>
-                    <li> <b>Nahe</b>: Die Features werden abgeglichen, wenn sie sich innerhalb einer angegebenen Entfernung voneinander befinden. Der Ziel-Layer muss sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden, wenn die r&auml;umliche Beziehung <b>Near</b> lautet.
+                    <li> <b>Nahe (planar)</b>: Die Features werden abgeglichen, wenn sie sich innerhalb einer angegebenen Entfernung voneinander befinden. Der Ziel-Layer muss sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden, wenn die r&auml;umliche Beziehung <b>Near</b> lautet.
+                    </li>
+                    <li> <b>Nahe (geod&auml;tisch)</b>: Die Features werden abgeglichen, wenn sie sich innerhalb einer angegebenen Entfernung voneinander befinden. Die Entfernung wird als planare Entfernung gemessen.
                     </li>
                     <li> <b>Enth&auml;lt</b>: Die Features werden abgeglichen, wenn der Ziel-Layer in den Verbindungs-Features enthalten ist.
                     </li>
@@ -198,7 +200,7 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Zu übereinstimmende Felder auswählen</h2></div>
+        <div><h2>Abzugleichende Felder auswählen</h2></div>
         <hr/>
         <div>
             <p>Gleicht die Werte im Feld eines Layers mit den Werten im Feld eines anderen Layers ab. 
@@ -215,7 +217,7 @@
             </p>
             <p>Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder sind folgende Berechnungen m&ouml;glich: 
                 <ul>
-                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte.Sie kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Es kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
                     </li>
                     <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
                     </li>
@@ -227,7 +229,7 @@
                     </li>
                     <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
                     </li>
-                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einem Track. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
                     </li>
                     <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,0,1,1] ist 0,5. 
                     </li>
@@ -263,16 +265,16 @@
         <div><h2>Data Store auswählen</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-Ergebnisse werden in einem Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Die folgenden Gr&uuml;nde sprechen daf&uuml;r, die Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern: 
+            <p>GeoAnalytics-Ergebnisse werden in einem Datenspeicher gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Die folgenden Gr&uuml;nde sprechen daf&uuml;r, die Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern: 
                 <ul>
                     <li>Sie k&ouml;nnen die Ergebnisse in portal&uuml;bergreifender Zusammenarbeit verwenden.
                     </li>
-                    <li>Sie sind in der Lage, Synchronisierungsfunktionen mit Ihren Ergebnissen zu aktivieren.
+                    <li>Sie sind in der Lage, Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse zu aktivieren.
                     </li>
                 </ul>
                 
             </p>
-            <p>Der Einsatz des Data Stores vom Typ &quot;relational&quot; wird nicht empfohlen, wenn abzusehen ist, dass Ihre GeoAnalytics-Ergebnisse weiter zunehmen. Nutzen Sie in diesem Fall die Funktionen des Big Data Store vom Typ &quot;spatiotemporal&quot; zur Verwaltung von gro&szlig;en Datenmengen.
+            <p>Der Einsatz des Data Store vom Typ &quot;relational&quot; wird nicht empfohlen, wenn abzusehen ist, dass der Umfang Ihrer GeoAnalytics-Ergebnisse weiter zunimmt. Verwenden Sie stattdessen die Funktionen des Big Data Store vom Typ &quot;spatiotemporal&quot;, um gro&szlig;e Datenmengen zu verwalten.
             </p>
         </div>
     </div>
@@ -280,7 +282,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Der Name des Layers, der erstellt wird.  Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und  ihrem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Der Name des zu erstellenden Layers Wenn Sie in einen ArcGIS Data Store schreiben, werden Ihre Ergebnisse in  <b>Eigene Inhalte</b> gespeichert und der Karte hinzugef&uuml;gt. Wenn Sie in eine Big-Data-Dateifreigabe schreiben, werden Ihre Ergebnisse in der Big-Data-Dateifreigabe gespeichert und dem Manifest hinzugef&uuml;gt. Sie werden nicht der Karte hinzugef&uuml;gt. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>Wenn Sie &uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> in ArcGIS Data Store (Big Data Store vom Typ &quot;relational&quot; oder &quot;spatiotemporal&quot;) schreiben, k&ouml;nnen Sie den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert wird.
             </p>

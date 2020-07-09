@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klassifiser objekter ved hjelp av dyp læring</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klassifiser objekter ved hjelp av dyp l&aelig;ring"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster og en valgfri geoobjektklasse for &aring; produsere en geoobjektklasse eller tabell der hvert inndataobjekt har f&aring;tt tildelt en klassemerking.
+    </p>
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres bare det rasteromr&aring;det som er synlig innenfor gjeldende kartutstrekning. Hvis dette ikke er avmerket, analyseres hele rasteret, selv om det befinner seg utenfor gjeldende kartutstrekning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Velg bilde som skal brukes til å klassifisere objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Inndatabildet som skal brukes til &aring; p&aring;vise objekter.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Velg geoobjektlag for objekter (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt-, linje- eller polygongeoobjektlaget som utgj&oslash;r inndataene og identifiserer lokasjonen for hvert objekt som skal klassifiseres og merkes. Hver rad i inndatageoobjektet representerer ett enkelt objekt.
+            </p>
+            <p>Hvis det ikke angis noe inndatageoobjekt, tolker verkt&oslash;yet det som om hvert enkelt inndatabilde inneholder ett enkelt objekt som skal klassifiseres. Hvis inndatabildet eller -bildene bruker en romlig referanse, blir utdataene fra verkt&oslash;yet et geoobjektlag der utstrekningen av hvert bilde brukes som avgrensende geometri for hvert enkelt merket geoobjekt. Hvis inndatabildet eller -bildene ikke har noen romlig referanse, blir utdataene fra verkt&oslash;yet en tabell som inneholder bildets ID-verdier og klassemerkingen av hvert enkelt bilde.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Velg modellen for dyp læring som skal brukes til å klassifisere objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Dypl&aelig;ringspakken for ( <code>.dlpk</code>)-elementet som er inndata.
+            </p>
+            <p>Dypl&aelig;ringspakken er sammensatt av Esris JSON-fil for modelldefinering ( <code>.emd</code>), den bin&aelig;re modellfilen for dyp l&aelig;ring og (valgfritt) Python-rasterfunksjonen som skal brukes.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Angi modellargumenter for dyp læring</h2></div>
+        <hr/>
+        <div>
+            <p>Funksjonsargumentene er definert i Python-rasterfunksjonsklassen det vises til i inndatamodellen. Det er her du f&oslash;rer opp ytterligere parametre for dyp l&aelig;ring og argumenter for eksperimenter og avgrensninger, for eksempel en konfidensterskel for justering av f&oslash;lsomhet.
+            </p>
+            <p>Navnene p&aring; argumentene fylles ut av verkt&oslash;yet etter lesing av Python-modulen p&aring; rasteranalyseserveren.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Angi feltnavn for klassemerkingen</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; feltet som skal inneholde klassifiseringsmerket i utdatageoobjektlaget.
+            </p>
+            <p>Hvis det ikke angis noe feltnavn, genereres et nytt felt med tittelen  <i>ClassLabel</i> i utdatageoobjektlaget.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Prosessmodus</h2></div>
+        <hr/>
+        <div>
+            <p>Angir hvordan alle rasterelementer i en bildetjeneste skal behandles. 
+                <ul>
+                    <li> <b>Behandle som mosaikkbilde</b>&ndash;&nbsp;Alle rasterelementer i bildetjenesten blir satt sammen og behandlet som mosaikk. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Behandle elementer separat</b>&ndash;&nbsp;Alle rasterelementer i bildetjenesten blir behandlet som separate bilder.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

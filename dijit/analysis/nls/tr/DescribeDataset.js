@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Tanımlanacak veri kümesini seç",describeDataLabel:"Şunu oluşturarak verilerinizi anlayın (isteğe bağlı)",sampleLayer:"Örnek katmanı",extentLayer:"Yayılım katmanı",noOfFeaturesLabel:"Dahil edilecek detay sayısı",outputLayerName:"Sonuç katmanı adı",resultName:"${layerName} verilerini tanımla",itemDescription:"${layerName} üzerinde Veri Kümesi Tanımla çalıştırılarak oluşturulan detay katmanı. ",itemTags:"Analiz Sonucu, Veri Kümesi Tanımla, ${layerName}",itemSnippet:"Veri Kümesi Tanımla ile oluşturulan detay katmanı."});

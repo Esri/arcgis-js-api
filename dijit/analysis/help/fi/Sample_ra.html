@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Esimerkki</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Otos"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu luo taulun tai pistekohdeluokan, joka n&auml;ytt&auml;&auml; rasterin tai rasterijoukon solujen arvot m&auml;&auml;ritettyjen sijaintien osalta. Sijainnit on m&auml;&auml;ritetty rasterisolujen, aluekohteiden, taiteviivakohteiden tai pistejoukon mukaan.
+    </p>
+    <p>Pikseliarvot poimitaan kaikista l&auml;ht&ouml;aineiston rastereista kussakin sijainnissa. Taulu tai pistekohdeluokka luodaan kenttien kanssa. Kent&auml;t sis&auml;lt&auml;v&auml;t kunkin l&auml;ht&ouml;aineiston rasterin pikseliarvot. L&auml;ht&ouml;aineiston rasteritaulun lis&auml;ominaisuustietoja ei sis&auml;llytet&auml; tulosaineiston tauluun.
+    </p>
+    <p>Mik&auml; tahansa rasterien yhdistelm&auml;, kuten yksikaistainen, monikaistainen, moniulotteinen tai monimuuttujainen, voidaan m&auml;&auml;ritt&auml;&auml; l&auml;ht&ouml;aineiston rasteriksi. Tulosaineiston taulun rakenne muuttuu, jos l&auml;ht&ouml;aineiston rasterit ovat moniulotteisia. Kun monikaistainen rasteri on m&auml;&auml;ritetty joksikin l&auml;ht&ouml;aineiston rasteriksi, kaikkia kyseisen l&auml;ht&ouml;aineiston kaistoja k&auml;ytet&auml;&auml;n. Jos haluat k&auml;sitell&auml; l&auml;ht&ouml;aineiston monikaistaisen rasterin kaistavalikoimaa, luo ensin uusi rasteriaineistoryhm&auml;, joka koostuu kyseisist&auml; kaistoista. K&auml;yt&auml; l&auml;ht&ouml;aineiston rasteriluettelon tulosta.
+    </p>
+    <p>L&auml;ht&ouml;aineiston sijainti voi olla rasteri tai pistekohde:
+        <ul>
+            <li>Rasteri &ndash; kelvollisia arvoja (muita kuin NoData-arvoja) sis&auml;lt&auml;vi&auml; pikseleit&auml; k&auml;ytet&auml;&auml;n pikseliarvojen poimimiseen kaikista l&auml;ht&ouml;aineiston rastereista, ja pikselin keskipistett&auml; k&auml;ytet&auml;&auml;n pistesijainteihin.
+            </li>
+            <li>Piste &ndash; arvojen otanta suoritetaan kussakin pistesijainnissa.
+            </li>
+            <li>Taiteviiva tai aluekohde &ndash; arvojen otanta suoritetaan aluekohteessa tai taiteviivan keskipisteess&auml;. Jos l&auml;ht&ouml;aineiston rasteri on moniulotteinen, arvot koostetaan  <b>Tilastot</b>-tyypin perusteella.
+            </li>
+        </ul>
+        
+    </p>
+    <p>L&auml;ht&ouml;aineiston rastereiden otanta suoritetaan niiden alkuper&auml;isess&auml; koordinaatistotiedossa ja resoluutiossa. Jos eri koordinaatistotiedoilla olevia l&auml;ht&ouml;aineiston rastereita on useita, l&auml;ht&ouml;aineiston sijainnit projisoidaan kunkin yksitt&auml;isen rasterin koordinaatistotietoon, josta arvot on poimittu. Analyysiymp&auml;rist&ouml;&auml; k&auml;ytet&auml;&auml;n l&auml;ht&ouml;aineiston sijainteihin, mutta l&auml;ht&ouml;aineiston rasterit eiv&auml;t noudata analyysiymp&auml;rist&ouml;&auml;.
+    </p>
+    <p>Sijainnit, jotka poimivat arvot l&auml;ht&ouml;aineiston rasterin NoData-soluista, saavat &lt;null&gt;-arvon tulosaineiston taulussa.
+    </p>
+    <p>Jos haluat suorittaa analyysin monipistekohteilla, muunna ne ensin yksitt&auml;isiksi pistekohteiksi ennen niiden k&auml;ytt&ouml;&auml; t&auml;ss&auml; ty&ouml;kalussa.
+    </p>
+    <p>X,y-koordinaattien koordinaatistotieto tulosaineiston otostaulussa on sama kuin l&auml;ht&ouml;aineiston sijaintirasteri tai pistekohteen, ellei sit&auml; ole m&auml;&auml;ritetty  <b>Tulosaineiston koordinaattij&auml;rjestelm&auml;</b> -ymp&auml;rist&ouml;ss&auml;. Jos l&auml;ht&ouml;aineiston sijaintiaineiston koordinaatistotieto on tuntematon, x,y-koordinaattien koordinaatistotieto on my&ouml;s tuntematon.
+    </p>
+    <p>Tulosaineiston kohdeluokan koordinaatistotieto on sama kuin l&auml;ht&ouml;aineiston sijaintirasteri tai pistekohteen, ellei sit&auml; ole m&auml;&auml;ritetty  <b>Tulosaineiston koordinaattij&auml;rjestelm&auml;</b> -ymp&auml;rist&ouml;ss&auml;.
+    </p>
+    <p> <b>Rinnakkaisk&auml;sittelyn kerroin</b> -ymp&auml;rist&ouml;&auml; tuetaan vain silloin, kun l&auml;ht&ouml;aineisto on moniulotteinen rasteri.
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, sen karttatason muuttujat tai kaistat, jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, analysoidaan. Jos vaihtoehtoa ei ole valittu, koko karttatason muuttujat tai kaistat analysoidaan &ndash; my&ouml;s ne, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inRasters">
+        <div><h2>Valitse kuva-aineistokarttataso, josta otanta suoritetaan</h2></div>
+        <hr/>
+        <div>
+            <p>Yksitt&auml;inen kuva-aineistokarttataso tai niiden kuva-aineistokarttatasojen luettelo, joiden arvoja k&auml;ytet&auml;&auml;n otannassa l&auml;ht&ouml;aineiston sijaintiaineiston perusteella.
+            </p>
+            <p>Jos haluat sis&auml;llytt&auml;&auml; otantaan kaikki moniulotteisen kuva-aineistokarttatason viipaleet, sen on oltava ainoa l&auml;ht&ouml;aineiston rasteri.
+            </p>
+        </div>
+    </div>
+    <div id="inLocationData">
+        <div><h2>Valitse sijaintikarttataso</h2></div>
+        <hr/>
+        <div>
+            <p>Aineisto, joka kertoo otantaan sis&auml;llytett&auml;v&auml;t paikat.
+            </p>
+            <p>L&auml;ht&ouml;aineiston sijaintiaineisto voi olla rasteri tai piste-, taiteviiva- tai aluekohdeluokka.
+            </p>
+        </div>
+    </div>
+    <div id="uniqueIdField">
+        <div><h2>Määritä yksilöllisen tunnuksen kenttä</h2></div>
+        <hr/>
+        <div>
+            <p>Kentt&auml;, joka sis&auml;lt&auml;&auml; eri arvon kullekin sijainnille tai kohteelle l&auml;ht&ouml;aineiston rasterissa tai kohdeluokassa.
+            </p>
+        </div>
+    </div>
+    <div id="acquisitionDefinition">
+        <div><h2>Määritä sijaintiaineiston hankintatiedot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml; aika, syvyys tai muu hankintatieto, joka liittyy sijaintisoluihin tai -kohteisiin.
+            </p>
+            <p>Sijaintisoluihin tai -kohteisiin liittyv&auml;t hankintatiedot voi m&auml;&auml;ritt&auml;&auml; kullekin ulottuvuudelle kolmella tavalla:
+
+                <ul>
+                    <li> <b>Yksitt&auml;inen kentt&auml; tai arvo</b> &ndash; kun t&auml;m&auml; vaihtoehto on valittu, seuraavat tiedot on m&auml;&auml;ritett&auml;v&auml;:
+                        <ul>
+                            <li> <b>Ulottuvuuskentt&auml; tai -arvo</b> &ndash; valitse ulottuvuusarvojen kentt&auml; sijaintiaineistosta tai kirjoita tietty ulottuvuusarvo.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li> <b>Yksitt&auml;inen kentt&auml; tai arvo suhteellisten arvojen kanssa</b> &ndash; jos t&auml;m&auml; vaihtoehto on valittu, alla olevat tiedot on m&auml;&auml;ritett&auml;v&auml; yhdess&auml; sen arvoalueen m&auml;&auml;ritt&auml;miseksi, jonka puitteissa tilastotiedot lasketaan muuttujille:
+                        <ul>
+                            <li> <b>Ulottuvuuskentt&auml; tai -arvo</b> &ndash; valitse ulottuvuusarvojen kentt&auml; sijaintiaineistosta.
+                            </li>
+                            <li> <b>Suhteellinen arvo ennen</b> &ndash; m&auml;&auml;rit&auml; muu kuin negatiivinen luku, joka v&auml;hennet&auml;&auml;n <b>Ulottuvuuskentt&auml; tai -arvo</b> -arvosta ulottuvuuden arvov&auml;lin aloitusarvon m&auml;&auml;ritt&auml;miseksi. T&auml;m&auml; arvo edustaa p&auml;ivien m&auml;&auml;r&auml;&auml;, jos ulottuvuus on aika.
+                            </li>
+                            <li> <b>Suhteellinen arvo j&auml;lkeen</b> &ndash; m&auml;&auml;rit&auml; muu kuin negatiivinen luku, joka lis&auml;t&auml;&auml;n <b>Ulottuvuuskentt&auml; tai -arvo</b> -arvoon ulottuvuuden arvov&auml;lin lopetusarvon m&auml;&auml;ritt&auml;miseksi. T&auml;m&auml; arvo edustaa p&auml;ivien m&auml;&auml;r&auml;&auml;, jos ulottuvuus on aika.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li> <b>Aloitus- ja lopetuskent&auml;t tai -arvot</b> &ndash; jos t&auml;m&auml; vaihtoehto on valittu, alla olevat tiedot on m&auml;&auml;ritett&auml;v&auml; yhdess&auml; sen arvoalueen m&auml;&auml;ritt&auml;miseksi, jonka puitteissa tilastotiedot lasketaan muuttujille:
+                        <ul>
+                            <li> <b>Aloitus-kentt&auml; tai -arvo</b> &ndash; valitse ulottuvuusarvojen kentt&auml; sijaintiaineistosta tai kirjoita tietty ulottuvuusarvo ulottuvuuden arvov&auml;lin aloitusarvon m&auml;&auml;ritt&auml;miseksi.
+                            </li>
+                            <li> <b>Lopetus-kentt&auml; tai -arvo</b> &ndash; valitse ulottuvuusarvojen kentt&auml; sijaintiaineistosta tai kirjoita tietty ulottuvuusarvo ulottuvuuden arvov&auml;lin lopetusarvon m&auml;&auml;ritt&auml;miseksi.
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="bufferDistance">
+        <div><h2>Määritä puskurietäisyyskenttä tai -arvo</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritetty et&auml;isyys sijaintiaineiston kohteiden ymp&auml;rill&auml;. Puskuriet&auml;isyys on m&auml;&auml;ritetty sijaintikohteen koordinaatistotiedon lineaarisissa yksik&ouml;iss&auml;. Jos kohde k&auml;ytt&auml;&auml; maantieteellist&auml; viitett&auml;, yksikk&ouml; on aste.
+            </p>
+            <p>Tilastotiedot lasketaan t&auml;m&auml;n puskurialueen puitteissa.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Valitse tilastotyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>Laskettavan tilastotiedon tyyppi.
+            </p>
+            <ul>
+                <li> <b>Minimi</b> &ndash; etsii v&auml;himm&auml;isarvon m&auml;&auml;ritetylt&auml; arvoalueelta.
+                </li>
+                <li> <b>Maksimi</b> &ndash; etsii enimm&auml;isarvon m&auml;&auml;ritetylt&auml; arvoalueelta.
+                </li>
+                <li> <b>Mediaani</b> &ndash; etsii mediaaniarvon m&auml;&auml;ritetylt&auml; arvoalueelta.
+                </li>
+                <li> <b>Keskiarvo</b> &ndash; laskee m&auml;&auml;ritetyn arvoalueen keskiarvon.
+                </li>
+                <li> <b>Summa</b> &ndash; laskee m&auml;&auml;ritetyn arvoalueen muuttujien summan.
+                </li>
+                <li> <b>Enemmist&ouml;</b> &ndash; etsii arvon, joka esiintyy useimmin.
+                </li>
+                <li> <b>V&auml;hemmist&ouml;</b> &ndash; etsii arvon, joka esiintyy harvimmin.
+                </li>
+                <li> <b>Keskihajonta</b> &ndash; laskee keskihajonnan.
+                </li>
+                <li> <b>Prosenttipiste</b> &ndash; laskee m&auml;&auml;ritetyn prosenttipisteen m&auml;&auml;ritetylt&auml; arvoalueelta.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Prosenttiarvo</h2></div>
+        <hr/>
+        <div>
+            <p>Prosenttipiste, joka lasketaan, kun  <b>Tilastotyyppi</b>-parametrin arvoksi on m&auml;&auml;ritetty <b>Prosenttipiste</b>.
+            </p>
+            <p>T&auml;m&auml; arvo on 0&ndash;100. Oletusarvo on 90.
+            </p>
+        </div>
+    </div>
+    <div id="resamplingType">
+        <div><h2>Määritä uudelleenotannan tekniikka</h2></div>
+        <hr/>
+        <div>
+            <p>Uudelleenotannan algoritmi, jota k&auml;ytet&auml;&auml;n, kun rasterin otanta suoritetaan.
+            </p>
+            <ul>
+                <li> <b>L&auml;hin</b> &ndash; l&auml;hin naapuri. T&auml;m&auml; on oletusarvo.
+                </li>
+                <li> <b>Bilineaarinen</b> &ndash; bilineaarinen interpolointi
+                </li>
+                <li> <b>Kuutiollinen</b> &ndash; kuutiollinen konvoluutio
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="layout">
+        <div><h2>Määritä tulosaineiston asettelu</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, n&auml;kyv&auml;tk&ouml; otanta-arvot rivein&auml; vai sarakkeina tulosaineiston taulussa. T&auml;m&auml; asetus on k&auml;ytett&auml;viss&auml; vain, kun l&auml;ht&ouml;aineiston moniulotteinen rasteri sis&auml;lt&auml;&auml; yhden muuttujan ja yhden ulottuvuuden ja kukin viipale on yksikaistainen rasteri.
+            </p>
+            <ul>
+                <li> <b>Otanta-arvot n&auml;kyv&auml;t rivill&auml;</b> &ndash; otanta-arvot n&auml;kyv&auml;t erillisill&auml; riveill&auml; tulosaineiston taulussa. T&auml;m&auml; on oletusarvo.
+                </li>
+                <li> <b>Otanta-arvot n&auml;kyv&auml;t sarakkeessa</b> &ndash; otanta-arvot n&auml;kyv&auml;t erillisiss&auml; sarakkeissa tulosaineiston taulussa. T&auml;m&auml; asetus on kelvollinen vain, kun l&auml;ht&ouml;aineiston moniulotteinen rasteri sis&auml;lt&auml;&auml; yhden muuttujan ja yhden ulottuvuuden ja kukin viipale on yksikaistainen rasteri.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Määritä tulosaineiston tyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, luodaanko pistekohdeluokka otanta-arvojen kanssa sen tauluun vai vain otanta-arvot sis&auml;lt&auml;v&auml; taulu.
+            </p>
+            <ul>
+                <li> <b>Taulu</b> &ndash; luo otanta-arvot sis&auml;lt&auml;v&auml;n taulun. T&auml;m&auml; on oletusarvo.
+                </li>
+                <li> <b>Kohteet</b> &ndash; luo pistekohdeluokan otanta-arvojen kanssa sen tauluun. Jos l&auml;ht&ouml;aineiston sijaintikohteet ovat taiteviivoja tai aluekohteita, kukin tulosaineiston piste on kunkin l&auml;ht&ouml;aineiston sijaintikohteen geometrian keskipiste.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

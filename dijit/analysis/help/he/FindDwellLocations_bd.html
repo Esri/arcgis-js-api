@@ -41,101 +41,94 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Find Dwell Locations</h2><p/>
-        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Find Dwell Locations"></h2>
+        <h2>מצא מיקומי שהייה</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="תרשים תהליך עבודה של 'מצא מיקומי שהייה'"></h2>
         <hr/>
-    <p>This tool works with a time-enabled layer of
-point features that are  <code>instant</code> in time.   It first
-determines which features belong to a track using an identifier. Using the time at each location, the tracks are ordered sequentially and the tool searches these paths of movement over time. Depending on the output type chosen, the resulting features can be time-enabled points (instant time type) or areas (interval time type) that represent locations where tracked objects travelled less than the specified distance within the specified duration of time. When the dwells are discovered, statistics about the included features are calculated and assigned to the output track. The
-most basic statistic is the count  of points within
-the dwell location, but other statistics can be calculated  as well.
+    <p>כלי זה עובד עם שכבה מאופשרת-זמן של ישויות נקודה שהן מסוג  <code>רגע</code>.   תחילה, הכלי מקצה ישויות למסלול באמצעות מזהה ייחודי. סדר המסלול נקבע על ידי זמן הישויות. לאחר מכן, מחושב המרחק בין התצפית הראשונה במסלול לבין התצפית הבאה. ישויות נחשבות לחלק משהייה אם שתי נקודות רציפות זמנית נותרות בתוך מרחק נתונן למשך לפחות פרק זמן נתון. כאשר נמצא ששתי ישויות הן חלק משהייה, הישות הראשונה בשהייה משמשת כנקודת ייחוס, והכלי מוצא ישויות עוקבות שהן בטווח המרחק שצוין מנקודת הייחוס בשהייה. לאחר שכל הישויות בטווח המרחק שצוין נמצאו, הכלי אוסף את ישויות השהייה ומחשב את המרכז הממוצע שלהן. ישויות לפני ואחרי השהייה הנוכחית מתווספים לשהייה אם הם בטווח המרחק הנתון מהמרכז הממוצע של מיקום השהייה. תהליך זה נמשך עד לסוף המסלול.
     </p>
-    <p>Features in time-enabled layers can be represented in one of two ways:
+    <p>ישויות בשכבות בעלות רכיב זמן מופעל ניתנות לייצוג באחת משתי דרכים:
         <ul>
-            <li>Instant&mdash;A single moment in time
+            <li>רגע - רגע יחיד בזמן
             </li>
-            <li>Interval&mdash;A start and end time
+            <li>מרווח - זמן התחלה וסיום
             </li>
         </ul>
         
     </p>
-    <p>For example, suppose you work for the Department of Transportation and have collected GPS readings for major highways. Each GPS record contains a unique vehicle ID, the time, location, and speed. Using the unique vehicle ID to define individual tracks, search for vehicles that have not moved more than 100 meters in at least 15 minutes to uncover troublesome areas in the road network. Additionally, you could calculate statistics such as the mean speed of the vehicles within the dwell location.
-    </p>
-    <p>ADD HERE
+    <p>לדוגמה, נניח שאתה עובד משרד התחבורה ואספת קריאות GPS עבור כלי רכב בכבישים ראשיים מרכזיים. כל רשומת GPS מכילה מזהה ייחודי של כלי רכב, את השעה, מיקום ומהירות. תוך שימוש במזהה כלי הרכב הייחודי כדי להגדיר מסלולים נפרדים, חפש כלי רכב שלא זזו יותר מ-100 מטר במשך לפחות 15 דקות כדי לחשוף אזורים בעייתיים ברשת הכבישים. בנוסף, באפשרותך לחשב נתונים סטטיסטיים כגון מהירות ממוצעת של כלי הרכב בטווח מיקום השהייה.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose the layer to find dwells from</h2></div>
+        <div><h2>בחר בשכבה למציאת שהיות ממנה</h2></div>
         <hr/>
         <div>
-            <p>The point layer that will be summarized into dwells. The input layer must be time-enabled with features that represent an instant in time, as well as have one or more fields that can be used to identify tracks.
+            <p>שכבת הנקודות שתסוכם לתוך מיקומי שהייה. שכבת הקלט חייבת לכלול רכיב זמן מופעל עם ישויות שמייצגות אירוע בזמן, וכן לכלול שדה אחד או יותר שניתן להשתמש בהם כדי לזהות מסלולים.
             </p>
             <p>בנוסף לבחירת שכבה מהמפה שלך, באפשרותך לבחור באפשרות  <b>בחר שכבת ניתוח</b> בתחתית הרשימה הנפתחת כדי לדפדף לתכנים שלך עבור סט נתוני שיתוף קובץ Big Data או שכבת ישויות. באפשרותך אופציונלית להחיל מסנן על שכבת הקלט או להחיל בחירה על שכבות מתארחות שנוספו למפה שלך. מסננים ובחירות מוחלים רק עבור ניתוח. 
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Select one or more fields to identify tracks</h2></div>
+        <div><h2>בחר שדה אחד או יותר כדי לזהות מסלולים</h2></div>
         <hr/>
         <div>
-            <p>Fields that represent the track identifier.
-You can use one field or multiple fields to represent unique values of tracks.
+            <p>השדות שמייצגים את מזהה המסלול. באפשרותך להשתמש בשדה אחד או במספר שדות כדי לייצג ערכים ייחודיים של מסלולים.
             </p>
-            <p>As an example, if you were finding idle locations for hurricanes, you could use the hurricane name as the track field.
+            <p>לדוגמה, אם אתה מאתר מיקומי שהייה עבור הוריקנים, באפשרותך להשתמש בשם ההוריקן כשדה המסלול.
             </p>
         </div>
     </div>
     <div id="distanceMethod">
-        <div><h2>Choose the method to calculate distance</h2></div>
+        <div><h2>בחר בשיטה לחישוב מרחק</h2></div>
         <hr/>
         <div>
-            <p>Method used to calculate the dwell distance within tracks. The  <b>Planar</b> method may calculate the results more quickly but will not wrap tracks around the  international dateline or account for the actual shape of the earth when buffering. The <b>Geodesic</b> method will wrap tracks around the date line if required and apply a geodesic buffer to account for the shape of the earth.
+            <p>השיטה אשר משמשת לחישוב מרחק השהייה בתוך מסלולים. השיטה  <b>הפלאנרית</b> יכולה לחשב את התוצאות מהר יותר אבל לא תעטוף מסלולים סביב קו התאריך הבינלאומי או תיקח בחשבון את הצורה בפועל של כדור הארץ בעת יצירת החיץ. השיטה <b>הגיאודזית</b> תעטוף מסלולים סביב קו התאריך אם נדרש ותחיל חיץ גיאודזי כדי לקחת בחשבון את הצורה של כדור הארץ.
             </p>
         </div>
     </div>
     <div id="distanceTolerance">
-        <div><h2>Define the spatial search distance</h2></div>
+        <div><h2>הגדר את מרחק החיפוש המרחבי</h2></div>
         <hr/>
         <div>
-            <p>The dwell distance tolerance is the maximum distance between points to be considered in a single dwell location.
+            <p>טולרנס מרחק השהייה הוא המרחק המקסימלי בין נקודות כדי להיכלל באותו מיקום שהייה.
             </p>
-            <p>For example, if you are finding dwells where traffic has not moved more than 20 meters within a certain time, the distance tolerance would be 20 meters.
+            <p>לדוגמה, אם אתה מעוניין למצוא שהיות שבהן התנועה לא זזה יותר מ-20 מטר בטווח זמן מסוים, טולרנס המרחק יהיה 20 מטר.
             </p>
-            <p>Use the parameter  <b>Define the temporal search range</b> to specify the time.
+            <p>השתמש בפרמטר  <b>הגדר את טווח החיפוש בממד זמן</b> כדי לציין את הזמן.
             </p>
         </div>
     </div>
     <div id="distanceToleranceUnit">
-        <div><h2>Split tracks (optional)</h2></div>
+        <div><h2>פצל מסלולים (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>The unit of the distance tolerance.
-            </p>
+            <p>היחידה של טולרנס המרחק.
+            </p> 
         </div>
     </div>
     <div id="timeTolerance">
-        <div><h2>Define the temporal search range</h2></div>
+        <div><h2>הגדר את טווח החיפוש בממד זמן</h2></div>
         <hr/>
         <div>
-            <p>The dwell time tolerance is the minimum time duration of a dwell to be considered in a single dwell location.
+            <p>טולרנס זמן השהייה הוא משך הזמן המינימלי של שהייה כיד להיחשב למיקום שהייה יחיד.
             </p>
-            <p>For example, if you want to know where traffic hasn't moved a certain distance within an hour, the time tolerance would be 1 hour.
+            <p>לדוגמה, אם אתה מעוניין לדעת היכן התנועה לא זזה מרחק מסוים בתוך שעה, טולרנס הזמן יהיה שעה 1.
             </p>
-            <p>Use the parameter  <b>Define the spatial search range</b> to specify the distance.
+            <p>השתמש בפרמטר  <b>הגדר את טווח החיפוש בממד מרחב</b> כדי לציין את המרחק.
             </p>
         </div>
     </div>
     <div id="timeToleranceUnit">
-        <div><h2>Select a distance to split tracks by (optional)</h2></div>
+        <div><h2>בחר מרחק לפיצול מסלולים (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>The unit of the time tolerance.
-            </p>
+            <p>היחידה של טולרנס הזמן.
+            </p> 
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Add statistics (optional)</h2></div>
+        <div><h2>הוסף סטטיסטיקה (אופציונלי)</h2></div>
         <hr/>
         <div>
             <p>באפשרותך לחשב נתונים סטטיסטיים בישויות שסוכמו. באפשרותך לחשב את הערכים הבאים בשדות מספריים: 
@@ -156,6 +149,10 @@ You can use one field or multiple fields to represent unique values of tracks.
                     </li>
                     <li>סטיית תקן - סטיית התקן של של שדה מספרי. סטיית התקן של [1] היא null. סטיית התקן של [null&rlm;, 1&rlm;,0&rlm;,1&rlm;,1] היא 0.5. 
                     </li>
+                    <li>ראשון - הערך הראשון של שדה שצוין במסלול המסוכם. אם למסלול יש את הערכים הבאים לפי סדר זמן עבור שדה: [1,5,10,20], הערך הראשון הוא.
+                    </li>
+                    <li>אחרון - הערך האחרון של שדה שצוין במסלול המסוכם. אם למסלול יש את הערכים הבאים לפי סדר זמן עבור שדה: [1,5,10,20], הערך האחרון הוא 20.
+                    </li>
                 </ul>
                 
             </p>
@@ -165,27 +162,31 @@ You can use one field or multiple fields to represent unique values of tracks.
                     </li>
                     <li>כלשהו - נתון סטטיסטי זה הוא דגימה אקראית של ערך מחרוזת בשדה שצוין.
                     </li>
+                    <li>ראשון - הערך הראשון של שדה שצוין במסלול המסוכם. אם למסלול יש את הערכים הבאים לפי סדר זמן עבור שדה: [טורונטו,גואלף,סקומיש,מונטריאול,הליפקס,רדלנדס,בוסטון], הערך הראשון הוא טורונטו.
+                    </li>
+                    <li>אחרון - הערך האחרון של שדה שצוין במסלול המסוכם. אם למסלול יש את הערכים הבאים לפי סדר זמן עבור שדה: [טורונטו,גואלף,סקומיש,מונטריאול,הליפקס,רדלנדס,בוסטון], הערך האחרון הוא בוסטון.
+                    </li>
                 </ul>
-                כל הנתונים הסטטיסטיים יחושבו על ערכי שאינם null. שכבת התוצאה תכיל שדה חדש עבור כל נתון סטטיסטי שחושב. ניתן להוסיף כל מספר של נתונים סטטיסטיים על ידי בחירת מאפיין ונתון סטטיסטי. 
+                כל הנתונים הסטטיסטיים יחושבו על ערכי שאינם null. שכבת התוצאה תכיל שדה חדש עבור כל נתון סטטיסטי שחושב. ניתן להוסיף כל מספר של נתונים סטטיסטיים על ידי בחירת מאפיין ונתון סטטיסטי.
             </p>
         </div>
     </div>
     <div id="outputType">
-        <div><h2>Output dwell locations as</h2></div>
+        <div><h2>פלט מיקומי שהייה בתור</h2></div>
         <hr/>
         <div>
-            <p>Determines which features are returned and the format. Four types are available: 
+            <p>קובע אילו ישויות מוחזרות ואת התבנית. ארבעה סוגים זמינים: 
                 <ul>
-                    <li> <b>Mean Centers</b>&mdash;A point representing the centroid of each discovered dwell location. Attributes will be summarized. This is the default.
+                    <li> <b>מרכזי ממוצע</b> - נקודה שמייצגת את הצנטרואיד של כל מיקום שהייה שהתגלה. המאפיינים יסוכמו. זוהי ברירת המחדל.
                          
                     </li>
-                    <li> <b>Convex Hulls</b>&mdash;Polygons representing the convex hull of each dwell group. Attributes will be summarized.
+                    <li> <b>קימורי דפנות</b> - פוליגונים שמייצגים את קימור הדפנות של כל קבוצת שהייה. המאפיינים יסוכמו.
                          
                     </li>
-                    <li> <b>Dwell Features</b>&mdash;All of the input point features and attributes determined to belong to a dwell are returned.
+                    <li> <b>ישויות שהייה</b> - החזרת כל ישויות הנקודה של הקלט והמאפיינים שנקבעו כשייכים לשהייה.
                          
                     </li>
-                    <li> <b>All Features</b>&mdash;All of the input point features and attributes are returned.
+                    <li> <b>כל הישויות</b> - החזרת כל ישויות הנקודה של הקלט והמאפיינים.
                          
                     </li>
                 </ul>
@@ -193,25 +194,20 @@ You can use one field or multiple fields to represent unique values of tracks.
             </p>
         </div>
     </div>
-    <div id="dataStore">
-        <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
+    <div id="timeBoundarySplit">
+        <div><h2>ניתוח נתונים עם מרווחי זמן (אופציונלי)</h2></div>
         <hr/>
         <div>
-            <p>תוצאות GeoAnalytics מאוחסנות במאגר נתונים ונחשפות כשכבת ישויות ב- Portal for ArcGIS. במרבית המקרים, יש לאחסן את התוצאות במאגר נתונים מרחבי-זמני, וזוהי ברירת המחדל. במקרים מסוימים, שמירת התוצאות במאגר נתונים יחסי היא אפשרות טובה. להלן הסיבות שבגינן ייתכן שתרצה לאחסן תוצאות במאגר נתונים יחסי: 
-                <ul>
-                    <li>תוכל להשתמש בתוצאות בשיתוף פעולה של פורטל-לפורטל.
-                    </li>
-                    <li>תוכל לאפשר יכולות סנכרון עם התוצאות שלך.
-                    </li>
-                </ul>
-                
+            <p>ציין אם ברצונך לחפש מיקומי שהייה תוך שימוש במרווחי זמן, אשר מחלקים את ישויות הקלט למקטעים לצורך ניתוח. אם תשתמש במרווחי זמן, עליך להגדיר את מרווח הזמן הרצוי, ואופציונלית להגדיר זמן ייחוס. אם לא תגדיר זמן ייחוס, יעשה שימוש ב-1 בינואר 1970. 
             </p>
-            <p>אין להשתמש במאגר נתונים יחסיים אם אתה צופה שתוצאות GeoAnalytics יגדלו וברצונך לנצל את יכולות מאגר הנתונים המרחבי-זמני של Big Data כדי לטפל בכמויות גדולות של נתונים.
+            <p>לדוגמה, אם תגדיר את גבול הזמן ליום אחד, שמתחיל ב-09:00 ב-1 בינואר 1990, כל מסלול ייחתך ב-09:00 בכל יום וינותח במסגרת מקטע זה. אף שהייה לא תתחיל לפני 09:00 ותסתיים לאחר מכן. 
+            </p>
+            <p>שימוש במרווחי זמן זו דרך מהירה להאיץ את זמן החישוב, מכיוון שהם יוצרים במהירות מסלולים קטנים יותר לניתוח. אם פיצול לפי מרווח זמן חוזר ונשנה מתאים לצורך הניתוח שלך, אפשרות זאת מומלצת עבור עיבוד של Big Data.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>שם שכבת התוצאה</h2></div>
         <hr/>
         <div>
             <p> השם של השכבה שתיווצר.  אם אתה כותב ל- ArcGIS Data Store, התוצאות שלך יישמרו ב-<b>התוכן שלי</b> ויתווספו למפה. אם אתה כותב לקובץ שיתוף Big Data, התוצאות שלך יאוחסנו בקובץ השיתוף של Big Data ויתווספו למניפסט שלו. הם לא יתווספו למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם השכבה כבר קיימת, הכלי ייכשל.

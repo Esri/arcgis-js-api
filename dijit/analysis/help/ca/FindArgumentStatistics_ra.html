@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Cerca estadístiques d'argument</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Cerca estad&iacute;stiques d'argument"></h2>
+        <hr/>
+    <p>Extreu el valor de la dimensi&oacute; o l'&iacute;ndex de banda en qu&egrave; s'obt&eacute; una estad&iacute;stica determinada de cada p&iacute;xel en un r&agrave;ster multidimensional o multibanda.
+    </p>
+    <p>Utilitzeu aquesta eina per extreure el valor de dimensi&oacute; (per exemple, la data, l'al&ccedil;ada o la profunditat) en qu&egrave; s'arriba a una estad&iacute;stica concreta en un conjunt de r&agrave;sters en un dataset r&agrave;ster multidimensional. Tamb&eacute; podeu cercar el n&uacute;mero de banda en qu&egrave; s'arriba a una estad&iacute;stica en un r&agrave;ster multibanda.
+    </p>
+    <p>Per exemple, &eacute;s possible que vulgueu saber a quin mes cada p&iacute;xel ha arribat al m&agrave;xim de temperatura de la superf&iacute;cie del mar en 30 anys de dades recopilades. Un altre exemple seria si teniu una imatge de teledetecci&oacute; de vuit bandes i voleu saber la banda en qu&egrave; s'ha arribat al valor m&iacute;nim de reflect&agrave;ncia de cada p&iacute;xel.
+    </p>
+    <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, s'analitzaran les variables o les bandes de la capa que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran les variables o les bandes de tota la capa, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Trieu la capa d'imatges multidimensional o multibanda que s'analitzarà</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster multidimensional o multibanda d'entrada que s'analitzar&agrave;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Trieu la dimensió de què s'extraurà l'estadística</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensi&oacute; de qu&egrave; s'extraur&agrave; l'estad&iacute;stica. Si el r&agrave;ster d'entrada no &eacute;s un r&agrave;ster multidimensional, aquest par&agrave;metre no &eacute;s obligatori.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Trieu les variables que s'analitzaran</h2></div>
+        <hr/>
+        <div>
+            <p>Variable o variables que s'analitzaran. Si el r&agrave;ster d'entrada no &eacute;s multidimensional, els valors de p&iacute;xel del r&agrave;ster multibanda es consideren la variable. Si el r&agrave;ster d'entrada &eacute;s multidimensional i no s'ha especificat cap variable, s'analitzaran totes les variables amb la dimensi&oacute; seleccionada.
+            </p>
+            <p>Per exemple, per trobar els anys en qu&egrave; els valors de temperatura van ser m&eacute;s elevats, especifiqueu la temperatura com la variable que s'analitzar&agrave;. Si no especifiqueu cap variable i teniu variables de temperatura i precipitaci&oacute;, ambdues variables s'analitzaran i el r&agrave;ster multidimensional de sortida les inclour&agrave; totes dues.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Trieu el tipus d'estadístiques</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica l'estad&iacute;stica que s'extraur&agrave; de la variable o les variables amb la dimensi&oacute; proporcionada. 
+            </p>
+            <ul>
+                <li> <b>Argument del m&iacute;nim</b>: s'extraur&agrave; el valor de dimensi&oacute; en qu&egrave; s'arriba al valor m&iacute;nim de la variable. Aquesta &eacute;s l'opci&oacute; per defecte.
+                </li>
+                <li> <b>Argument del m&agrave;xim</b>: s'extraur&agrave; el valor de dimensi&oacute; en qu&egrave; s'arriba al valor m&agrave;xim de la variable.
+                </li>
+                <li> <b>Argument de la mediana</b>: s'extraur&agrave; el valor de dimensi&oacute; en qu&egrave; s'arriba al valor medi&agrave; de la variable.
+                </li>
+                <li> <b>Argument de durada</b>: la durada de la dimensi&oacute; m&eacute;s llarga amb els valors de la variable entre el m&iacute;nim i el m&agrave;xim.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Especifiqueu el valor d'ocurrència múltiple</h2></div>
+        <hr/>
+        <div>
+            <p>Valor de p&iacute;xel que s'utilitzar&agrave; per indicar que s'ha arribat a una estad&iacute;stica d'argument determinada m&eacute;s d'una vegada al dataset r&agrave;ster d'entrada. Si no s'especifica, el valor de p&iacute;xel ser&agrave; el valor de la dimensi&oacute; la primera vegada que s'arribi a l'estad&iacute;stica d'argument.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Especifiqueu el valor mínim</h2></div>
+        <hr/>
+        <div>
+            <p>Valor m&iacute;nim de la variable que s'utilitzar&agrave; per extreure la durada.
+            </p>
+            <p>Aquest par&agrave;metre &eacute;s obligatori quan s'ha seleccionat  <b>Durada</b> com a tipus d'estad&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Especifiqueu el valor màxim</h2></div>
+        <hr/>
+        <div>
+            <p>Valor m&agrave;xim de la variable que s'utilitzar&agrave; per extreure la durada.
+            </p>
+            <p>Aquest pas &eacute;s obligatori quan s'ha seleccionat  <b>Durada</b> com a tipus d'estad&iacute;stica.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Trieu la definició de la dimensió</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica com l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute;. 
+                <ul>
+                    <li> <b>Totes</b>: l'estad&iacute;stica s'extraur&agrave; de totes les dimensions. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Paraula clau de l'interval</b>: l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute; de temps d'acord amb la paraula clau de l'interval.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Trieu l'interval de paraules clau</h2></div>
+        <hr/>
+        <div>
+            <p>Unitat de temps de qu&egrave; s'extraur&agrave; l'estad&iacute;stica.
+            </p>
+            <p>Per exemple, teniu cinc anys de dades di&agrave;ries de la temperatura de la superf&iacute;cie del mar i voleu saber l'any en qu&egrave; es va observar la temperatura m&agrave;xima. Definiu  <b>Argument del m&agrave;xim</b> com a tipus d'estad&iacute;stica, definiu <b>Paraula clau de l'interval</b> com a definici&oacute; de la dimensi&oacute; i definiu <b>Cada any</b> com a interval de paraules clau en aquest pas.
+            </p>
+            <p>Si voleu saber el mes en qu&egrave; s'ha observat sistem&agrave;ticament la temperatura m&agrave;xima, definiu  <b>Argument del m&agrave;xim</b> com a tipus d'estad&iacute;stica, definiu <b>Paraula clau de l'interval</b> com a definici&oacute; de la dimensi&oacute; i definiu <b>Recurrent cada mes</b> com a interval de paraules clau en aquest pas. Aquesta acci&oacute; generar&agrave; un r&agrave;ster en qu&egrave; cada p&iacute;xel cont&eacute; el mes en qu&egrave; s'ha arribat a l'estad&iacute;stica en un registre de cinc anys (08/18/2018, 08/25/2016 i 08/07/2013, per exemple).
+            </p>
+            <p>Aquest pas &eacute;s obligatori quan  <b>StdTime</b> s'ha definit com la dimensi&oacute; de qu&egrave; s'extraur&agrave; l'estad&iacute;stica i s'ha seleccionat <b>Paraula clau de l'interval</b> per definir com l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute; de temps.
+                <ul>
+                    <li> <b>Recurrent cada dia</b>: l'estad&iacute;stica s'extraur&agrave; dels dies.
+                    </li>
+                    <li> <b>Recurrent cada setmana</b>: l'estad&iacute;stica s'extraur&agrave; de les setmanes.
+                    </li>
+                    <li> <b>Recurrent cada mes</b>: l'estad&iacute;stica s'extraur&agrave; dels mesos.
+                    </li>
+                    <li> <b>Recurrent cada trimestre</b>: l'estad&iacute;stica s'extraur&agrave; dels trimestres.
+                    </li>
+                    <li> <b>Cada hora</b>: l'estad&iacute;stica s'extraur&agrave; per a l'hora en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                    <li> <b>Cada dia</b>: l'estad&iacute;stica s'extraur&agrave; per al dia en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                    <li> <b>Cada setmana</b>: l'estad&iacute;stica s'extraur&agrave; per a la setmana en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                    <li> <b>Cada mes</b>: l'estad&iacute;stica s'extraur&agrave; per al mes en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                    <li> <b>Cada trimestre</b>: l'estad&iacute;stica s'extraur&agrave; per al trimestre en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                    <li> <b>Cada any</b>: l'estad&iacute;stica s'extraur&agrave; per a l'any en qu&egrave; es va arribar a l'estad&iacute;stica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignora els valors que falten al càlcul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi.
+                <ul>
+                    <li>Si la casella est&agrave; activada, l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li>Si la casella est&agrave; desactivada, l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per al p&iacute;xel a la dimensi&oacute; proporcionada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la capa de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

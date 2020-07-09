@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geografisk vektet regresjon</h2><p/>
+        <h2><img src="../images/GUID-B304F70A-6F43-4FB0-A786-66CBCF222530-web.png" alt="GeographicallyWeightedRegression workflow diagram"></h2>
+        <hr/>
+    <p>Utf&oslash;rer geografisk vektet regresjon som er en lokal form for line&aelig;r regresjon som brukes til &aring; modellere forhold med romlig variasjon.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Velg laget som skal analyseres</h2></div>
+        <hr/>
+        <div>
+            <p>Laget med punktgeoobjekter som inneholder de avhengige variablene og forklaringsvariablene.
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> nederst i rullegardinlisten for &aring; g&aring; til innholdet ditt og finne et fildelingsomr&aring;de for stordata eller et geoobjektlag. Du kan velge om du vil bruke et filter p&aring; inndatalaget eller bruke et utvalg p&aring; hostede lag som er lagt til kartet. Filtre og utvalg brukes kun til analyser. 
+            </p>
+        </div>
+    </div>
+    <div id="dependentVariable">
+        <div><h2>Velg feltet som skal modelleres</h2></div>
+        <hr/>
+        <div>
+            <p>Det numeriske feltet som inneholder de observerte verdiene som skal modelleres, og typen verdi du modellerer.
+            </p>
+        </div>
+    </div>
+    <div id="explanatoryVariables">
+        <div><h2>Velg forklaringsfeltene</h2></div>
+        <hr/>
+        <div>
+            <p>Ett eller flere felter som representerer forklaringsvariablene (felter) som bidrar til &aring; predikere verdien. Kun numeriske felt vises.
+            </p>
+        </div>
+    </div>
+    <div id="NeighborhoodType">
+        <div><h2>Velg hvordan nabolaget skal bestemmes</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om nabolaget som brukes, er bygget opp som en fast avstand eller kan variere i romlig utstrekning basert p&aring; tettheten av geoobjekter.
+                <ul>
+                    <li> <b>Antall naboer</b> &ndash;  Nabolagst&oslash;rrelse er en funksjon som definerer antallet naboer som skal inkluderes i beregningene for hvert geoobjekt. N&aring;r det er tett med geoobjekter, er den romlige utstrekningen mindre, og n&aring;r geoobjektene er spredt, er den romlige utstrekningen st&oslash;rre. N&aring;r du velger dette alternativet, velger du antallet naboer du vil inkludere. Tallet m&aring; v&aelig;re et heltall mellom 2 og 5000.
+                    </li>
+                    <li> <b>Avstandsb&aring;nd</b> &ndash; Nabolagst&oslash;rrelsen er en konstant eller fast avstand for hvert geoobjekt. N&aring;r du velger dette alternativet, velger du avstandsb&aring;ndet som representerer den romlige utstrekningen for nabolaget.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="localWeightingScheme">
+        <div><h2>Velg hvordan nabogeoobjekter vektes</h2></div>
+        <hr/>
+        <div>
+            <p>Angir kjernetypen som brukes til den romlige vektingen i modellen. Kjernen definerer hvordan hvert geoobjekt er relatert til andre geoobjekter i sitt nabolag.
+                <ul>
+                    <li> <b>Bisquare</b> &ndash; En vekt p&aring; 0 tilordnes til et geoobjekt utenfor det angitte nabolaget. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Gaussian</b> &ndash; Alle geoobjekter f&aring;r vekter, men vektene blir eksponentielt mindre jo lenger bort de er fra m&aring;lobjektet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputTrainedName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Navnet p&aring; laget som opprettes. Hvis du skriver til en ArcGIS Data Store, blir resultatene dine lagret i  <b>Mitt innhold</b> og lagt til i kartet. Hvis du skriver til en fildelingstjeneste for stordata, blir resultatene lagret i fildelingstjenesten for stordata og lagt til i innholdsoversikten for denne. De blir ikke lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>N&aring;r du skriver til  ArcGIS Data Store (fildelingsomr&aring;de for relasjons- eller geotemporale stordata) via rullegardinlisten  <b>Lagre resultat i</b>, kan du angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatet skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

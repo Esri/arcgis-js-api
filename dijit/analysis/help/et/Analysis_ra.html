@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab  ArcGIS Image Serveriga anal&uuml;&uuml;sida suuri rasterandmestikke. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid. Hetkel portaalis  Portal for ArcGIS kasutamiseks saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmed</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Kasuta l&auml;hedust</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b>, <b>Halda andmeid </b> ja <b>S&uuml;va&otilde;pe</b>.
+        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab  ArcGIS Image Serveriga anal&uuml;&uuml;sida suuri rasterandmestikke. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid. Hetkel portaalis  Portal for ArcGIS kasutamiseks saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmed</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Kasuta l&auml;hedust</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b>, <b>Halda andmeid </b>, <b>S&uuml;va&otilde;pe</b> ja <b>Mitmem&otilde;&otilde;tmeline anal&uuml;&uuml;s</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Valim</b> ekstraktib andmeid m&auml;&auml;ratud asukohtadest rastrist v&otilde;i rastrikogumist.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Valim</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Valim">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Loob tabeli v&otilde;i punktobjektiklassi rastrist v&otilde;i rastrikogumist ekstraktitud m&auml;&auml;ratud asukohtade andmev&auml;&auml;rtustega.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Tööriistakomplekti süvaõpe</h2>
+        <h2>Süvaõpe</h2>
         <hr/>
-        <p>Neid t&ouml;&ouml;riistu kasutatakse pildi spetsiaalsete objektide tuvastamiseks v&otilde;i pikslite klassifitseerimiseks rastri andmestikus. S&uuml;va&otilde;pe on tehisintellektiga masina &otilde;petusmeetodi t&uuml;&uuml;p, mis tuvastab pildiandmete objekte, kasutades neurov&otilde;rkude mitut kihti, kus iga kiht on v&otilde;imeline v&auml;ljendama pildi &uuml;ht v&otilde;i mitut unikaalset objekti. Need t&ouml;&ouml;riistad kasutavad mudeleid, mida on &otilde;petatud tuvastama spetsiifilisi objekte muude v&auml;ljat&ouml;&ouml;tajate s&uuml;va&otilde;ppe raamistikes &mdash; n&auml;iteks TensorFlow&rsquo;s, CNTK-s ja Keras&rsquo;is &mdash; ning v&auml;ljundobjektidel v&otilde;i klassikaartidel.
+        <p>Neid t&ouml;&ouml;riistu kasutatakse pildi spetsiaalsete objektide tuvastamiseks v&otilde;i klassifitseerimiseks v&otilde;i pikslite klassifitseerimiseks rastri andmestikus. S&uuml;va&otilde;pe on tehisintellektiga masina &otilde;petusmeetodi t&uuml;&uuml;p, mis tuvastab pildiandmete objekte, kasutades neurov&otilde;rkude mitut kihti, kus iga kiht on v&otilde;imeline v&auml;ljendama pildi &uuml;ht v&otilde;i mitut unikaalset objekti. Need t&ouml;&ouml;riistad kasutavad mudeleid, mida on &otilde;petatud tuvastama spetsiifilisi objekte muude v&auml;ljat&ouml;&ouml;tajate s&uuml;va&otilde;ppe raamistikes &mdash; n&auml;iteks TensorFlow&rsquo;s, CNTK-s ja Keras&rsquo;is &mdash; ning v&auml;ljundobjektidel v&otilde;i klassikaartidel.
             <ul>
                 <li> <b>Pikslite klassifitseerimine s&uuml;va&otilde;ppe teel</b> valmistab klassifitseeritud rastri, kasutades &otilde;petatud s&uuml;va&otilde;ppemudelit.
                 </li>
                 <li> <b>Objektide tuvastamine s&uuml;va&otilde;ppe teel</b> valmistab objektiklassi, mis sisaldab objekte, mida ta leiab sisendrastris, kasutades &otilde;petatud s&uuml;va&otilde;ppemudelit.
                 </li>
+                <li> <b>Objektide klassifitseerimine s&uuml;va&otilde;ppe teel</b> moodustab objektiklassi v&otilde;i -tabeli, mille igal sisendobjektil on m&auml;&auml;ratud klassim&auml;rk, kasutades treenitud s&uuml;va&otilde;ppe mudelit.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>K&auml;itab &otilde;petatud s&uuml;va&otilde;petusmudelit sisendrastril, et luua klassifitseeritud raster, kus igal pikslile on m&auml;&auml;ratud klassisilt.
+            <p>This tool runs a trained deep learning model on an input raster to produce a classified raster, and each valid pixel has an assigned class label.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>K&auml;itab &otilde;petatud s&uuml;va&otilde;petusmudelit sisendrastril, et luua objektiklass, mis sisaldab leitud objekte. Objektid v&otilde;ivad olla leitud objektide &uuml;mber paiknevad piiratud alad v&otilde;i hulknurgad v&otilde;i objektide keskkohas paiknevad punktid.
+            <p>This tool runs a trained deep learning model on an input raster to produce a feature class containing the objects it finds. Objektid v&otilde;ivad olla leitud objektide &uuml;mber paiknevad piiratud alad v&otilde;i hulknurgad v&otilde;i objektide keskkohas paiknevad punktid.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objektide klassifitseerimine süvaõppe teel</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Objektide klassifitseerimine s&uuml;va&otilde;ppe teel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist rakendab sisendrastril treenitud s&uuml;va&otilde;ppe mudelit ja valikulist objektiklassi, et moodustada objektiklass v&otilde;i -tabel, mille igal sisendobjektil on m&auml;&auml;ratud klassim&auml;rk.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Mitmemõõtmeline analüüs</h2>
+        <hr/>
+        <p>Mitmem&otilde;&otilde;tmelise anal&uuml;&uuml;si t&ouml;&ouml;riistakomplekti kuuluvate t&ouml;&ouml;riistadega saate teostada teaduslike andmete anal&uuml;&uuml;si l&auml;bi mitme muutuja ja dimensiooni.
+        </p>
+        <p>Mitmem&otilde;&otilde;tmelised andmed kujutavad mitmel korral, s&uuml;gavusel ja k&otilde;rgusel kogutud andmeid. Sellist t&uuml;&uuml;pi andmeid kasutatakse tavaliselt teaduses atmosf&auml;&auml;rist, ookeanist ja maast. Selle t&ouml;&ouml;riistakomplektiga saate mitmem&otilde;&otilde;tmelisi andmeid anal&uuml;&uuml;sida mitmes erinevas vormingus, nt  netCDF-, HDF-, GRIB-andmestik, mitmem&otilde;&otilde;tmeline mosaiikandmestik ja Esri pilvrastri vorming (CRF).
+        </p>
+        <p>Mitmem&otilde;&otilde;tmelise anal&uuml;&uuml;si t&ouml;&ouml;riistad ja nende l&uuml;hikirjeldused on toodud allolevas tabelis.
+            <ul>
+                <li> <b>Agregeeri mitmem&otilde;&otilde;tmeline raster</b>  loob mitmem&otilde;&otilde;tmelise rasterandmestiku olemasolevaid mitmem&otilde;&otilde;tmelisi rastri muutujaid agregeerides m&ouml;&ouml;da dimensiooni.
+                </li>
+                <li> <b>Genereeri mitmem&otilde;&otilde;tmeline anomaalia</b> arvutab mitmem&otilde;&otilde;tmelise rastri iga l&otilde;igu anomaalia, et luua mitmem&otilde;&otilde;tmelist rastrit.
+                </li>
+                <li> <b>Trendi rastri loomine</b>  hindab iga piksli trendi piki &uuml;he v&otilde;i mitme muutuja m&otilde;&otilde;det mitmem&otilde;&otilde;tmelises rastris.
+                </li>
+                <li> <b>Trendi rastriga prognoosimine</b>  arvutab prognoositava mitmem&otilde;&otilde;tmelise rastri t&ouml;&ouml;riista <b>Trendi rastri loomine</b> v&auml;ljundi trendi rastri alusel.
+                </li>
+                <li> <b>Argumendi statistika otsimine</b>  ekstraktib m&otilde;&otilde;tme v&auml;&auml;rtuse v&otilde;i riba indeksi, mille juures antud statistika on iga piksli jaoks mitmem&otilde;&otilde;tmelises v&otilde;i mitmeribalises rastris saadud.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregeeri mitmemõõtmeline raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregeeri mitmem&otilde;&otilde;tmeline raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist loob mitmem&otilde;&otilde;tmelise rasterandmestiku, agregeerides olemasolevaid mitmem&otilde;&otilde;tmelisi rastri muutujaid m&ouml;&ouml;da dimensiooni.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Argumendi statistika otsimine</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Argumendi statistika otsimine">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist ekstraktib m&otilde;&otilde;tme v&auml;&auml;rtuse v&otilde;i riba indeksi, mille juures antud statistika on iga piksli jaoks mitmem&otilde;&otilde;tmelises v&otilde;i mitmeribalises rastris saadud.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Genereeri mitmemõõtmeline anomaalia</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Genereeri mitmem&otilde;&otilde;tmeline anomaalia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab mitmem&otilde;&otilde;tmelise rastri iga l&otilde;igu anomaalia, et luua mitmem&otilde;&otilde;tmelist rastrit.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trendirastri loomine</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Trendirastri loomine">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist hindab iga piksli trendi piki &uuml;he v&otilde;i mitme muutuja m&otilde;&otilde;det mitmem&otilde;&otilde;tmelises rastris.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trendi rastriga prognoosimine</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Trendi rastriga prognoosimine">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab prognoositava mitmem&otilde;&otilde;tmelise rastri t&ouml;&ouml;riista  <b>Trendi rastri loomine</b> v&auml;ljundi trendi rastri alusel.
             </p>
             <br/>
         </div>

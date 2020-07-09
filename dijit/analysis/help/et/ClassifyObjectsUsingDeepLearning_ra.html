@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Objektide klassifitseerimine süvaõppe teel</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Objektide klassifitseerimine s&uuml;va&otilde;ppe teel"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist rakendab sisendrastril treenitud s&uuml;va&otilde;ppe mudelit ja valikulist objektiklassi, et moodustada objektiklass v&otilde;i -tabel, mille igal sisendobjektil on m&auml;&auml;ratud klassim&auml;rk.
+    </p>
+    <p>Kui tingimus  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid rasterkihi piksleid, mis on kaardi praeguses ulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel kogu rastrit ka siis, kui see on v&auml;ljaspool kaardi praegust ulatust.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Objektide klassifitseerimiseks kasutatava pildi valimine</h2></div>
+        <hr/>
+        <div>
+            <p>Objektide tuvastamiseks kasutatav sisendpilt
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Objektide jaoks objektikihi valimine (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt-, joon- v&otilde;i pindobjektide sisendobjektikiht, mis tuvastab klassifitseerimiseks ja m&auml;rgistamiseks iga objekti asukoha. Sisendobjektikihi &uuml;ks rida esindab &uuml;hte objekti.
+            </p>
+            <p>Kui sisendobjektikihti pole m&auml;&auml;ratud, eeldab t&ouml;&ouml;riist, et iga sisendpilt sisaldab klassifitseerimiseks &uuml;hte objekti. Kui sisendpilt v&otilde;i -pildid kasutavad ruumilist v&otilde;rdlust, on t&ouml;&ouml;riista v&auml;ljund objektikiht, milles piltide ulatust kasutatakse m&auml;rgistatud objektide &uuml;mardusgeomeetriana. Kui sisendpilt v&otilde;i -pildid ei kasuta ruumilist v&otilde;rdlust, on t&ouml;&ouml;riista v&auml;ljund tabel, mis sisaldab iga pildi ID-v&auml;&auml;rtusi ja klassim&auml;rke.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Valige objektide klassifitseerimisel kasutatav süvaõppemudel</h2></div>
+        <hr/>
+        <div>
+            <p>The input deep learning package ( <code>.dlpk</code>) item.
+            </p>
+            <p>The deep learning package is composed of the Esri model definition JSON file ( <code>.emd</code>), the deep learning binary model file, and optionally, the Python raster function to be used.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Määrake süvaõppemudeli argumendid</h2></div>
+        <hr/>
+        <div>
+            <p>The function arguments are defined in the Python raster function class referenced by the input model. This is where you list additional deep learning parameters and arguments for experiments and refinement, such as a confidence threshold for adjusting the sensitivity.
+            </p>
+            <p>T&ouml;&ouml;riist t&auml;idab rasteranal&uuml;&uuml;si serveris Pythoni mudeli lugemise teel argumendid nimedega.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Määrake klassi märgi välja nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle v&auml;lja nimi, mis sisaldab v&auml;ljundobjektikihi klassifitseerimism&auml;rki.
+            </p>
+            <p>Kui v&auml;lja nime pole m&auml;&auml;ratud, genereeritakse v&auml;ljundobjektikihis uus v&auml;li nimega  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Töötusrežiim</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kuidas k&otilde;iki rastri&uuml;ksusi pilditeenuses t&ouml;&ouml;deldakse. 
+                <ul>
+                    <li> <b>Mosaiikpildina t&ouml;&ouml;tlemine</b> &ndash; k&otilde;ik rastri&uuml;ksused pilditeenuses &uuml;hendatakse mosaiiktehnikaga ja neid t&ouml;&ouml;deldakse mosaiigina. See on vaikimisi valik.
+                    </li>
+                    <li> <b>&Uuml;ksuste eraldi t&ouml;&ouml;tlemine</b> &ndash; k&otilde;ik rastri&uuml;ksused pilditeenuses t&ouml;&ouml;deldakse eraldi pildina.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

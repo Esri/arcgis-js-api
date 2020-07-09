@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Multidimensionale afwijking genereren</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Multidimensionale anomalie genereren"></h2>
+        <hr/>
+    <p>Genereert een multidimensionaal rasterdataset door bestaande multidimensionale rastervariabelen naast de afmeting te combineren.
+    </p>
+    <p>Een anomalie is de afwijking van een observatie van de standaard-, gemiddelde of mediaanwaarde.
+    </p>
+    <p>Deze tool berekent anomalie&euml;n in een periode voor een of meer variabelen in een multidimensionaal raster. Als u een afmeting hebt zonder tijd in aanvulling op de tijdsafmeting, wordt de anomalie berekend bij elke stap in de aanvullende afmeting.
+    </p>
+    <p>U hebt bijvoorbeeld maandelijkse oceaantemperatuurgegevens, verzameld van 1 dieptemeter tot een diepte van 100 meter, en u wilt de temperatuuranomalie&euml;n berekenen als afwijkingen op basis van het jaarlijkse gemiddelde. Deze tool bepaalt de temperatuuranomalie&euml;n op basis van een jaarlijks gemiddelde als u  <b>Jaarlijks</b> instelt als de <b>temporele interval om het gemiddelde te berekenen</b> en het genereert anomaliewaarden voor elk van de 100 diepten.
+    </p>
+    <p>Deze tool ondersteunt alleen multidimensionale rasterdatasets met een tijdsafmeting.
+    </p>
+    <p>Als de optie  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden variabelen van de lagen die zichtbaar zijn in het huidige kaartextent geanalyseerd. Als de optie niet is aangevinkt, worden variabelen van de volledige laag geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Een multidimensionale laag van satellietbeelden kiezen om anomalie te genereren</h2></div>
+        <hr/>
+        <div>
+            <p>De invoerlaag van satellietbeelden van een multidimensionale rasterdataset.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Variabele(n) kiezen waarvoor anomalieën worden gegenereerd</h2></div>
+        <hr/>
+        <div>
+            <p>De variabele of variabelen waarvoor anomalie&euml;n worden berekend. Als er geen variabele is gespecificeerd, worden alle variabelen met een tijdsafmeting geanalyseerd.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Een methode kiezen om een anomalie te genereren</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de methode die wordt gebruikt om de anomalie te berekenen. 
+                <ul>
+                    <li> <b>Verschil ten opzichte van het gemiddelde</b>&mdash;Het verschil tussen een pixelwaarde en het gemiddelde van die pixelwaarde in door de interval gedefinieerde stukken worden berekend. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Percentageverschil ten opzichte van het gemiddelde</b>&mdash;Het percentageverschil tussen een pixelwaarde en het gemiddelde van die pixelwaarde in door de interval gedefinieerde stukken worden berekend.
+                    </li>
+                    <li> <b>Percentage van het gemiddelde</b>&mdash;Het percentage van het gemiddelde wordt berekend.
+                    </li>
+                    <li> <b>Z-score</b>&mdash;De z-score wordt voor elke pixel berekend. Een z-score van 0 geeft aan dat de pixelwaarde identiek is aan het gemiddelde. Een z-score van 1 geeft aan dat de pixelwaarde 1 standaardafwijking van het gemiddelde verwijderd is. Een z-score van 2 geeft aan dat de pixelwaarde 2 standaardafwijkingen van het gemiddelde verwijderd is, enzovoorts.
+                    </li>
+                    <li> <b>Verschil ten opzichte van de mediaan</b>&mdash;Het verschil tussen een pixelwaarde en het gemiddelde van die pixelwaarde van stukken gedefinieerd door het interval worden berekend.
+                    </li>
+                    <li> <b>Percentageverschil ten opzichte van de mediaan</b>&mdash;Het percentageverschil tussen een pixelwaarde en de wiskundige mediaan van die pixelwaarden in door de interval gedefinieerde stukken worden berekend.
+                    </li>
+                    <li> <b>Percentage van de mediaan</b>&mdash;Het percentage van de wiskundige mediaan wordt berekend.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De wiskundige methoden voor het berekenen van anomaliewaarden worden hieronder vermeld. Anomalie&euml;n kunnen worden berekend met behulp van het gemiddelde of de mediaanwaarden als de definitie van het gemiddelde. Als de gegevensdistributie scheef is, kan het gemiddelde zeer worden be&iuml;nvloed door uitschieters, dus de mediaanwaarde- of de z-score-methode is voor dit type gegevens mogelijk beter geschikt.
+            </p>
+            <p>
+                <ul>
+                    <li>Verschil van het gemiddelde = x - &micro;
+
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                                
+
+                            </li>
+                            <li>&micro; = gemiddelde van die pixelwaarden over het gegeven tijdsinterval
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Percentageverschil van het gemiddelde = |x - &micro;| / [(x + &micro;)/2]
+
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                                
+
+                            </li>
+                            <li>&micro; = gemiddelde van die pixelwaarden over het gegeven tijdsinterval
+                                
+
+                            </li>
+                            <li>|x - &micro;| = absolute waarde van het verschil tussen de waarde en het gemiddelde
+                                
+
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                    <li>Percentage van het gemiddelde = x / &micro;
+
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                                
+
+                            </li>
+                            <li>&micro; = gemiddelde van die pixelwaarden over het gegeven tijdsinterval
+                                
+
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Verschil van de mediaan = x - &szlig;
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                            </li>
+                            <li>&szlig; = mediaan van die pixelwaarden over het gegeven tijdsinterval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Percentageverschil van de mediaan = |x - &szlig;| / [(x + &szlig;)/2]
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                            </li>
+                            <li>&szlig; = mediaan van die pixelwaarden over het gegeven tijdsinterval
+                            </li>
+                            <li>|x - &szlig;| = absolute waarde van het verschil tussen de waarde en de mediaan
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Percentage van de mediaan = x / &szlig;
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                            </li>
+                            <li>&szlig; = mediaan van die pixelwaarden over het gegeven tijdsinterval
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>Z-score  = (x - &micro;) / S
+                        <ul>
+                            <li>x = pixelwaarde in een stuk
+                            </li>
+                            <li>&micro; = gemiddelde van die pixelwaarden over het gegeven tijdsinterval
+                            </li>
+                            <li>S = De standaardafwijking van de pixelwaarden over het gegeven tijdsinterval
+                            </li>
+                        </ul>
+                        
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="calculationInterval">
+        <div><h2>Temporele interval kiezen om het gemiddelde te berekenen</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de temporele interval die wordt gebruikt om het gemiddelde te berekenen. 
+                <ul>
+                    <li> <b>Alle</b>&mdash;Berekent het gemiddelde over alle stukken voor elke pixel.
+                    </li>
+                    <li> <b>Jaarlijks</b>&mdash;Berekent het jaarlijkse gemiddelde voor elke pixel.
+                    </li>
+                    <li> <b>Maandelijks terugkerend</b>&mdash;Berekent het maandelijkse gemiddelde voor elke pixel.
+                    </li>
+                    <li> <b>Wekelijks terugkerend</b>&mdash;Berekent het wekelijkse gemiddelde voor elke pixel.
+                    </li>
+                    <li> <b>Dagelijks terugkerend</b>&mdash;Berekent het dagelijkse gemiddelde voor elke pixel.
+                    </li>
+                    <li> <b>Uurlijks</b>&mdash;Berekent het gemiddelde van een uur voor elke pixel.
+                    </li>
+                    <li> <b>Extern raster</b>&mdash;Een bestaande rasterdataset die de gemiddelde of mediaanwaarde voor elke pixel bevat wordt gerefereerd.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="referenceMeanRaster">
+        <div><h2>Kies de gemiddelde beeldlaag als referentie</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de referentierasterdataset die een eerder berekend gemiddelde voor elke pixel bevat. De afwijkingen worden berekend in vergelijking met dit gemiddelde.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse. 
+                <ul>
+                    <li>Aangevinkt&mdash;De analyse zal alle geldige pixels in een gegeven afmeting bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
+                    </li>
+                    <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de pixels in de gegeven afmeting.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

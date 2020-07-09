@@ -44,9 +44,9 @@
         <h2>Localizar Agrupamentos de Pontos</h2><p/>
         <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Localizar Agrupamentos de Pontos"></h2>
         <hr/>
-    <p>A ferramenta  Localizar Agrupamentos de Pontos encontra conjuntos de fei&ccedil;&otilde;es de ponto dentro do ru&iacute;do circundante com base em sua distribui&ccedil;&atilde;o espacial.
+    <p>A ferramenta  Localizar Agrupamentos de Pontos encontra conjuntos de fei&ccedil;&otilde;es de ponto dentro do ru&iacute;do circundante com base em sua distribui&ccedil;&atilde;o de espa&ccedil;o-temporal ou espacial.
     </p>
-    <p>Por exemplo, uma organiza&ccedil;&atilde;o n&atilde;o governamental est&aacute; estudando uma doen&ccedil;a espec&iacute;fica transmitida por pragas. Ela tem um conjunto de dados de ponto representando as fam&iacute;lias em uma &aacute;rea de estudo, algumas das quais est&atilde;o infestadas e outras n&atilde;o. Ao utilizar a ferramenta  Localizar Agrupamentos de Pontos , um analista pode determinar grupos de fam&iacute;lias infestados para ajudar a identificar uma &aacute;rea para iniciar o tratamento e o exterm&iacute;nio de pragas.
+    <p>Por exemplo, uma organiza&ccedil;&atilde;o n&atilde;o governamental est&aacute; estudando uma doen&ccedil;a espec&iacute;fica transmitida por pragas. Ela tem um conjunto de dados de ponto representando as fam&iacute;lias em uma &aacute;rea de estudo algumas das quais est&atilde;o infestadas e outras n&atilde;o. Ao utilizar a ferramenta  Localizar Agrupamentos de Pontos , um analista pode determinar grupos de fam&iacute;lias infestados para ajudar a identificar uma &aacute;rea para iniciar o tratamento e o exterm&iacute;nio de pragas.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,9 +54,9 @@
         <div><h2>Escolher a camada na qual os agrupamentos serão calculados</h2></div>
         <hr/>
         <div>
-            <p>A camada de ponto na qual os agrupamentos ser&atilde;o encontrados. As camadas devem estar em uma refer&ecirc;ncia espacial plana ou ter uma refer&ecirc;ncia espacial de processamento definida para um sistema de coordenadas planas utilizando  <b>Ambientes de An&aacute;lise</b>.
+            <p>A camada de ponto em que os agrupamentos ser&atilde;o encontrados. As camadas devem estar em uma refer&ecirc;ncia espacial plana ou ter uma refer&ecirc;ncia espacial de processamento definida para um sistema de coordenadas planas utilizando  <b>Ambientes de An&aacute;lise</b>.
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o. Voc&ecirc; pode, opcionalmente, aplicar um filtro &agrave; sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o nas camadas hospedadas adicionadas no seu mapa. Filtros e sele&ccedil;&otilde;es s&atilde;o aplicados somente para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -66,23 +66,23 @@
         <div>
             <p>O m&eacute;todo de agrupamento que ser&aacute; utilizado para distinguir os agrupamentos de fei&ccedil;&otilde;es de ponto do ru&iacute;do circundante. Voc&ecirc; pode optar por utilizar um algoritmo de agrupamento de auto ajuste ou dist&acirc;ncia definida.
             </p>
-            <p>A dist&acirc;ncia definida (DBSCAN) utiliza um intervalo de pesquisa especificado para separar os agrupamentos densos do ru&iacute;do mais esparso. A dist&acirc;ncia definida (DBSCAN) &eacute; mais r&aacute;pida, mas &eacute; apropriada somente se houver um intervalo de pesquisa muito claro a ser utilizado que funcione bem para definir todos os agrupamentos que possam estar presentes. A dist&acirc;ncia definida (DBSCAN) encontra agrupamentos que t&ecirc;m densidades semelhantes.
+            <p>A dist&acirc;ncia definida (DBSCAN) utiliza um intervalo de pesquisa especificado para separar os agrupamentos densos do ru&iacute;do mais esparso. Opcionalmente, o tempo pode ser utilizado para localizar agrupamentos spatiotemporal utilizando ambos uma faixa de pesquisa e dura&ccedil;&atilde;o de pesquisa. A dist&acirc;ncia definida (DBSCAN) &eacute; mais r&aacute;pida, mas &eacute; apropriada somente se houver um intervalo de pesquisa muito claro a ser utilizado que funcione bem para definir todos os agrupamentos que possam estar presentes. A dist&acirc;ncia definida (DBSCAN) encontra agrupamentos que t&ecirc;m densidades semelhantes.
             </p>
-            <p>O auto-ajuste (HDBSCAN) n&atilde;o exige que um intervalo de pesquisa seja especificado, mas &eacute; um m&eacute;todo que consome mais tempo. O auto-ajuste (HDBSCAN) encontra agrupamentos de pontos semelhantes &agrave; dist&acirc;ncia definida (DBSCAN), mas utiliza intervalos de pesquisa variados, permitindo agrupamentos com densidades vari&aacute;veis. 
+            <p>O auto-ajuste (HDBSCAN) n&atilde;o exige que um intervalo de pesquisa seja especificado, mas &eacute; um m&eacute;todo que consome mais tempo. O auto-ajuste (HDBSCAN) encontra agrupamentos de pontos semelhantes &agrave; dist&acirc;ncia definida (DBSCAN), mas utiliza intervalos de pesquisa variados, , permitindo agrupamentos com densidades vari&aacute;veis. 
             </p>
         </div>
     </div>
     <div id="minFeaturesCluster">
-        <div><h2>Número mínimo de pontos a ser considerado como um agrupamento</h2></div>
+        <div><h2>Número mínimo de pontos para propagar um agrupamento</h2></div>
         <hr/>
         <div>
-            <p>Este par&acirc;metro &eacute; utilizado de forma diferente dependendo do m&eacute;todo de agrupamento escolhido:
+            <p>Este par&acirc;metro &eacute; utilizado de forma diferente dependendo do m&eacute;todo de agrupamento escolhido a partir das op&ccedil;&otilde;es seguintes:
             </p>
             <p>
                 <ul>
-                    <li>Dist&acirc;ncia definida (DBSCAN)&mdash;especifica o n&uacute;mero de fei&ccedil;&otilde;es que devem ser encontradas dentro de uma determinada dist&acirc;ncia de um ponto para que o ponto comece a formar um agrupamento. A dist&acirc;ncia &eacute; definida utilizando o par&acirc;metro  <b>Limitar o intervalo de pesquisa para</b> .
+                    <li>Dist&acirc;ncia definida (DBSCAN)&mdash;Especifica o n&uacute;mero de fei&ccedil;&otilde;es que devem ser encontradas dentro de uma determinada dist&acirc;ncia ou dist&acirc;ncia e dura&ccedil;&atilde;o de um ponto para que o ponto comece a formar um agrupamento. A dist&acirc;ncia &eacute; definida utilizando o par&acirc;metro  <b>Limitar o intervalo de pesquisa para</b> . Se o tempo for utilizado para detectar agrupamentos spatiotemporal, a dura&ccedil;&atilde;o &eacute; especificada com a utiliza&ccedil;&atilde;o do par&acirc;metro <b>Limitar a dura&ccedil;&atilde;o de pesquisa para</b> .
                     </li>
-                    <li>Auto-ajuste (HDBSCAN)&mdash;especifica o n&uacute;mero de fei&ccedil;&otilde;es pr&oacute;ximas de cada ponto (incluindo o pr&oacute;prio ponto) que ser&atilde;o consideradas ao estimar a densidade. Este n&uacute;mero tamb&eacute;m &eacute; o tamanho m&iacute;nimo do agrupamento permitido ao extrair agrupamentos.
+                    <li>Auto-ajuste (HDBSCAN)&mdash;Especifica o n&uacute;mero de fei&ccedil;&otilde;es pr&oacute;ximas de cada ponto (incluindo o pr&oacute;prio ponto) que ser&atilde;o consideradas ao estimar a densidade. Este n&uacute;mero tamb&eacute;m &eacute; o tamanho m&iacute;nimo do agrupamento permitido ao extrair agrupamentos.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
         <div><h2>Limitar o intervalo de pesquisa para</h2></div>
         <hr/>
         <div>
-            <p>Ao utilizar a dist&acirc;ncia definida (DBSCAN), este par&acirc;metro &eacute; a dist&acirc;ncia dentro da qual o  <b>N&uacute;mero m&iacute;nimo de pontos a serem considerados um agrupamento</b> deve ser encontrado. Este par&acirc;metro n&atilde;o &eacute; utilizado quando o auto ajuste (HDBSCAN) &eacute; escolhido como o m&eacute;todo de agrupamento a ser utilizado.
+            <p>Ao utilizar a dist&acirc;ncia definida (DBSCAN), este par&acirc;metro &eacute; a dist&acirc;ncia dentro da qual o  <b>N&uacute;mero m&iacute;nimo de pontos para propagar um agrupamento</b> deve ser encontrado. Se a camada de entrada for habilitado ao tempo e for do momento de tipo, voc&ecirc; pode selecionar <b>Utilize tempo para localizar agrupamentos</b> para detectar grupos spatiotemporal de pontos em ru&iacute;do circundante. Ao utilizar tempo, o par&acirc;metro <b>Limitar a dura&ccedil;&atilde;o de pesquisa para</b> especifica o comprimento de tempo dentro do <b>N&uacute;mero m&iacute;nimo de pontos para propagar um agrupamento</b> deve ser localizado al&eacute;m de estar dentro da faixa de pesquisa. Estes par&acirc;metros n&atilde;o s&atilde;o utilizados quando o auto ajuste (HDBSCAN) for escolhido como o m&eacute;todo de agrupamento a ser utilizado.
             </p>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada.  Se voc&ecirc; estiver gravando em um ArcGIS Data Store, seus resultados ser&atilde;o salvos em  <b>Meu Conte&uacute;do</b> e adicionados no mapa. Se voc&ecirc; estiver gravando em um compartilhamento do arquivo de grandes dados, seus resultados ser&atilde;o armazenados compartilhamento do arquivo de grandes dados  e adicionados em seu   manifesto. N&atilde;o ser&atilde;o adicionados no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> O nome da camada que ser&aacute; criada. Se voc&ecirc; estiver gravando em um ArcGIS Data Store, seus resultados ser&atilde;o salvos em  <b>Meu Conte&uacute;do</b> e adicionados no mapa. Se voc&ecirc; estiver gravando em um compartilhamento do arquivo de grandes dados, seus resultados ser&atilde;o armazenados no compartilhamento do arquivo de grandes dados e adicionados em seu manifesto. N&atilde;o ser&atilde;o adicionados no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao gravar no  ArcGIS Data Store  (armazenamento de grandes dados de espa&ccedil;o-tempo ou relacional) utilizando a caixa suspensa  <b>Salvar resultados em</b> , voc&ecirc; pode especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

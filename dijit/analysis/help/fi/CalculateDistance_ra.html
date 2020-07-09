@@ -67,7 +67,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputSourceRasterOrFeatures">
-        <div><h2>Valitse kohdesijainnin karttatason rasteri etäisyyden laskemiseksi kohteeseen</h2></div>
+        <div><h2>Valitse rasteri tai kohdesijainnin karttataso etäisyyden laskemiseksi kohteeseen</h2></div>
         <hr/>
         <div>
             <p>Taso, joka m&auml;&auml;ritt&auml;&auml; l&auml;ht&ouml;paikat, josta et&auml;isyydet lasketaan. Karttataso voi olla kuva- tai kohdepalvelu.
@@ -137,6 +137,47 @@
             <p>L&auml;ht&ouml;aineiston kentt&auml;, jossa on kutakin l&auml;hdett&auml; m&auml;&auml;ritt&auml;v&auml;t arvot. T&auml;m&auml; voi olla l&auml;hdeaineistoryhm&auml;n kokonaisluku tai merkkijonokentt&auml;.
             </p>
             <p>Oletuksena on  <i>Value</i>. Jos k&auml;ytet&auml;&auml;n kohdepalvelua eik&auml; <i>Value</i> -kentt&auml; ole k&auml;yt&ouml;ss&auml;, k&auml;ytet&auml;&auml;n ensimm&auml;ist&auml; saatavilla olevaa kokonaislukukentt&auml;&auml; tai merkkijonokentt&auml;&auml;. Jos kelvollisia kentti&auml; ei ole, ObjectiD-kentt&auml; (esim. OID tai FID riippuen l&auml;hd&ouml;n tyypist&auml; riippuen) on k&auml;yt&ouml;ss&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Valitse rasteri- tai kohdekarttataso esteiden esittämistä varten</h2></div>
+        <hr/>
+        <div>
+            <p>Aineistoryhm&auml;, joka m&auml;&auml;ritt&auml;&auml; esteet. 
+            </p>
+            <p>L&auml;ht&ouml;aineiston tyyppi voi kuvapalvelua varten olla joko kokonaisluku tai liukuluku. Kaikkia arvon (my&ouml;s nollan) sis&auml;lt&auml;vi&auml; soluja k&auml;sitell&auml;&auml;n esteen&auml;. Soluja, jotka eiv&auml;t ole NoData-tyyppi&auml;, ei k&auml;sitell&auml; esteen&auml;.
+            </p>
+            <p>L&auml;ht&ouml; voi kohdepalvelua varten olla piste, viiva tai aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Etäisyysmenetelmä</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, lasketaanko et&auml;isyys planaarisen (litte&auml; maa) tai geodeettisen (ellipsoidi) menetelm&auml;n avulla.
+            </p>
+            <ul>
+                <li> <b>Planaarinen</b>: Laskelma suoritetaan projisoidusta litte&auml;st&auml; tasosta karteesisen 2D-koordinaatiston avulla. T&auml;m&auml; on oletusmenetelm&auml;.
+                    
+
+                </li>
+                <li> <b>Geodeettinen</b>: Et&auml;isyydet lasketaan ellipsoideista Siksi tulokset eiv&auml;t muutu l&auml;ht&ouml;aineiston tai tulosaineiston projisoinnista huolimatta.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputBackDirectionName">
+        <div><h2>Tuloksen paluusuuntatason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Karttatason nimi luodaan  <b>Oma sis&auml;lt&ouml; -osiossa</b>. Sinun on annettava nimi, jota ei t&auml;ll&auml; hetkell&auml; ole <b>Oma sis&auml;lt&ouml; -osiossa</b>.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
             </p>
         </div>
     </div>

@@ -62,7 +62,7 @@
         <div>
             <p>Punktlagret som ska aggregeras till omr&aring;den. F&ouml;r punktlager som aggregeras till lagringsplatserna  <b>Kvadrat </b> eller <b>Hexagon</b> m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med <b>Analysmilj&ouml;</b>.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager.
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>V&auml;lj analyslager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektlager. Du kan &auml;ven till&auml;mpa ett filter p&aring; indatalagret eller anv&auml;nda ett urval p&aring; driftade lager som lagts till i kartan. Filter och urval anv&auml;nds endast f&ouml;r analys. 
             </p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <div>
             <p>De omr&aring;den som punktlagret ska aggregeras till. Du kan v&auml;lja mellan ett omr&aring;deslager som du anger eller lagringsplatser som genereras n&auml;r verktyget k&ouml;rs.   N&auml;r lagringsplatser skapas avg&ouml;r siffran och enheterna som angivits f&ouml;r  <b>Kvadrat</b> kvadratens h&ouml;jd och l&auml;ngd. F&ouml;r <b>Hexagon</b> avg&ouml;r siffran och enheterna som angivits avst&aring;ndet mellan parallella sidor.
             </p>
-            <p>Analyser som anv&auml;nder lagringsplatserna  <b>Kvadrat</b> eller <b>Hexagon</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b> .
+            <p>Analyser som anv&auml;nder lagringsplatserna kvadrat eller hexagon kr&auml;ver ett projicerat koordinatsystem. Du kan ange bearbetande koordinatsystem i Analysmilj&ouml;. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder k&ouml;r analys .
             </p>
         </div>
     </div>
@@ -113,7 +113,7 @@
             </p>
             <p>Om du till exempel har data som representerar ett &aring;rs tid och du vill analysera dem i veckovisa steg, st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 vecka</code>. 
             </p>
-            <p>Om du till exempel har data som representerar ett &aring;rs tid och du vill analysera dem med hj&auml;lp av den f&ouml;rsta veckan i m&aring;naden, st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 vecka</code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 m&aring;nad</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>1 januari, kl. 00:00</code>.
+            <p>Om du till exempel har data som representera ett &aring;rs tid och du vill analysera dem med hj&auml;lp av den f&ouml;rsta veckan i m&aring;naden, st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 vecka</code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 m&aring;nad</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>1 januari, kl. 00:00</code>.
             </p>
         </div>
     </div>
@@ -123,7 +123,7 @@
         <div>
             <p>Det tidsintervall som anv&auml;nds f&ouml;r att generera tidssteg.  <b>Tidsstegsintervall</b> kan anv&auml;ndas var f&ouml;r sig eller med parametern <b>Hur ofta tidssteget ska upprepas</b> eller <b>Tid som anv&auml;nds till att justera tidssteg till</b>.
             </p>
-            <p>Om du till exempel vill skapa tidssteg som intr&auml;ffar varje m&aring;ndag fr&aring;n 09:00 till 10:00, st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p>Om du till exempel vill skapa tidssteg som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 timme </code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
@@ -131,9 +131,9 @@
         <div><h2>Hur ofta tidssteget ska upprepas</h2></div>
         <hr/>
         <div>
-            <p> Det steg som anv&auml;nds f&ouml;r att ber&auml;kna ett tidssteg. <b>Hur ofta tidssteget ska upprepas</b> kan anv&auml;ndas var f&ouml;r sig, med <b>Tidsstegsintervall</b>, med <b>Referenstid</b> eller med b&aring;de <b>Tidsstegsintervall</b> och <b>Tid som anv&auml;nds till att justera tidssteg till</b>.
+            <p> Det steg som anv&auml;nds f&ouml;r att ber&auml;kna ett tidssteg. <b>Hur ofta tidssteget ska upprepas</b> kan anv&auml;ndas var f&ouml;r sig med <b>Tidsstegsintervall</b>, med <b>Referenstid</b> eller med b&aring;de <b>Tidsstegsintervall</b> och <b>Tid som anv&auml;nds till att justera tidssteg till</b>.
             </p>
-            <p> Om du till exempel vill skapa tidssteg som intr&auml;ffar varje m&aring;ndag fr&aring;n 09:00 till 10:00, st&auml;ller du in <b>Tidsstegsintervall</b> p&aring; <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p>Om du till exempel vill skapa tidssteg som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 timme </code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
@@ -143,7 +143,7 @@
         <div>
             <p>Datum och tid som anv&auml;nds f&ouml;r att justera tidsdelar. Tidssteg startar vid och forts&auml;tter bak&aring;t fr&aring;n den h&auml;r tiden. Om ingen referenstid v&auml;ljs justeras tidssteg mot 1 januari 1970. 
             </p>
-            <p> Om du till exempel vill skapa tidssteg som intr&auml;ffar varje m&aring;ndag fr&aring;n 09:00 till 10:00, st&auml;ller du in <b>Tidsstegsintervall</b> p&aring; <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p>Om du till exempel vill skapa tidssteg som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 st&auml;ller du in  <b>Tidsstegsintervall</b> p&aring; <code>1 timme </code>, <b>Hur ofta tidssteget ska upprepas</b> p&aring; <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> p&aring; <code>9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
@@ -151,9 +151,9 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
+            <p>Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt: 
                 <ul>
-                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
+                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Det kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
                     <li>Summa &ndash; Summan av de numeriska v&auml;rdena i ett f&auml;lt. Summan f&ouml;r [null, null, 3] &auml;r 3.
                     </li>
@@ -179,7 +179,7 @@
                     <li>Alla &ndash; Det statistiska v&auml;rdet &auml;r ett slumpm&auml;ssigt exempel p&aring; ett str&auml;ngv&auml;rde i det angivna f&auml;ltet.
                     </li>
                 </ul>
-                All statistik ber&auml;knas p&aring; v&auml;rden som inte &auml;r null. Det resulterande lagret inneh&aring;ller ett nytt f&auml;lt f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik. 
+                All statistik ber&auml;knas p&aring; v&auml;rden som inte &auml;r null. Det resulterande lagret inneh&aring;ller ett nytt f&auml;lt f&ouml;r varje statistiskt v&auml;rde som ber&auml;knas. Du kan l&auml;gga till valfri m&auml;ngd statistiska v&auml;rden genom att v&auml;lja ett attribut och statistik.
             </p>
         </div>
     </div>
@@ -212,7 +212,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Namnet p&aring; lagret som ska skapas.  Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som ska skapas. Om du skriver till en ArcGIS Data Store, sparas dina resultat i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Om du skriver till en big data-fildelning, lagras dina resultat i big data-fildelningen och l&auml;ggs till i dess manifest. Det l&auml;ggs inte till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>N&auml;r du skriver till   ArcGIS Data Store (relationellt eller rumstempor&auml;rt Big Data-datalager) med listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

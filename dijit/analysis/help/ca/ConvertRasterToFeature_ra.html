@@ -55,11 +55,11 @@
     <p>Si s'ha activat  <b>Utilitza l'extensi&oacute; del mapa actual</b>, nom&eacute;s es convertiran les cel&middot;les de r&agrave;ster que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, es convertiran totes les cel&middot;les de la capa de r&agrave;ster, encara que estiguin fora de l'extensi&oacute; de mapa actual. Preneu nota d'aix&ograve; si la capa de r&agrave;ster &eacute;s gran o t&eacute; una resoluci&oacute; molt alta.
     </p>
     <p>Els casos d'&uacute;s d'aquesta eina inclouen el seg&uuml;ent:
- 
+
         <ul>
             <li>Creeu entitats de pol&iacute;gons a partir d'un r&agrave;ster de classificaci&oacute; d'&uacute;s del s&ograve;l.
                 
- 
+
             </li>
             <li>Les transmissions identificades en un DEM es poden convertir en entitats de l&iacute;nies.
                 
@@ -67,7 +67,7 @@
             </li>
             <li>Un DEM es pot convertir en entitats de punts que es poden utilitzar en un flux de treball no basat en r&agrave;ster.
                 
- 
+
             </li>
         </ul>
         
@@ -86,13 +86,13 @@
         <div><h2>Trieu un camp</h2></div>
         <hr/>
         <div>
-            <p>Proporcioneu un cap que especifiqui quin valor s'utilitzar&agrave; per a la conversi&oacute;.
+            <p>Camp que especifica el valor de conversi&oacute;.
             </p>
             <p>Pot ser qualsevol enter o valor de text.
             </p>
             <p>Un camp que contingui valors de punt flotant nom&eacute;s es pot utilitzar si la sortida es fa a un dataset de punts.
             </p>
-            <p>L'opci&oacute; per defecte &eacute;s utilitzar el camp  <i>Value</i>, que cont&eacute; el valor de cada cel&middot;la del r&agrave;ster.
+            <p>L'opci&oacute; per defecte &eacute;s el camp  <i>Value</i>, que cont&eacute; el valor de cada cel&middot;la del r&agrave;ster.
             </p>
         </div>
     </div>
@@ -100,18 +100,18 @@
         <div><h2>Trieu el tipus de sortida</h2></div>
         <hr/>
         <div>
-            <p>Trieu el tipus de sortida entre punt, l&iacute;nia o pol&iacute;gon.
+            <p>Especifica el tipus de sortida.
             </p>
             <ul>
-                <li>Punt: el r&agrave;ster es convertir&agrave; en un dataset de punts.
+                <li> <b>Punt</b>: el r&agrave;ster es convertir&agrave; en un dataset de punts. Aquesta &eacute;s l'opci&oacute; per defecte.
                     
  
                 </li>
-                <li>L&iacute;nia: el r&agrave;ster es convertir&agrave; en un dataset d'entitats de l&iacute;nies.
+                <li> <b>L&iacute;nia</b>: el r&agrave;ster es convertir&agrave; en un dataset d'entitats de l&iacute;nies.
                     
  
                 </li>
-                <li>Pol&iacute;gon: el r&agrave;ster es convertir&agrave; en un dataset d'entitats de pol&iacute;gons.
+                <li> <b>Pol&iacute;gon</b>: el r&agrave;ster es convertir&agrave; en un dataset d'entitats de pol&iacute;gons.
                     
 
                 </li>
@@ -123,9 +123,53 @@
         <div><h2>Simplifica les línies o els polígons</h2></div>
         <hr/>
         <div>
-            <p>Especifiqueu si les entitats s'han de simplificar.
+            <p>Especifica si les l&iacute;nies o pol&iacute;gons se simplificaran (se suavitzaran). La suavitzaci&oacute; es du a terme de manera que la l&iacute;nia cont&eacute; un nombre m&iacute;nim de segments, a la vegada que es mant&eacute; tan a prop com sigui possible de les vores del r&agrave;ster original.
             </p>
-            <p>Si est&agrave; activada (valor per defecte), les entitats de l&iacute;nies o pol&iacute;gons es suavitzaran per produir un resultat m&eacute;s generalitzat. Si aquesta opci&oacute; est&agrave; desactivada, les entitats lineals seguiran els l&iacute;mits de la cel&middot;la del dataset r&agrave;ster.
+            <ul>
+                <li>Activada: les entitats de l&iacute;nies o pol&iacute;gons se suavitzaran per produir un resultat m&eacute;s generalitzat. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    
+
+                </li>
+                <li>Desactivada: les entitats de l&iacute;nies o pol&iacute;gons seguiran els l&iacute;mits de la cel&middot;la del dataset r&agrave;ster.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Aquest par&agrave;metre nom&eacute;s s'admet si el tipus de sortida &eacute;s una l&iacute;nia o un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Crea entitats multipart</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els pol&iacute;gons de sortida estan formats per entitats d'una part o multipart.
+            </p>
+            <ul>
+                <li>Activada: es crearan entitats multipart a partir dels pol&iacute;gons que tinguin el mateix valor.
+                    
+
+                </li>
+                <li>Desactivada: es crearan entitats individuals (d'una sola part) per a cada pol&iacute;gon. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Aquest par&agrave;metre nom&eacute;s s'admet si el tipus de sortida &eacute;s un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Nombre màxim de vèrtexs per entitat de polígon</h2></div>
+        <hr/>
+        <div>
+            <p>L&iacute;mit de v&egrave;rtexs que s'utilitza per subdividir un pol&iacute;gon en pol&iacute;gons m&eacute;s petits.
+            </p>
+            <p>Si es deixa buit, els pol&iacute;gons de sortida no es dividiran. Aquesta &eacute;s l'opci&oacute; per defecte.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s s'admet si el tipus de sortida &eacute;s un pol&iacute;gon.
             </p>
         </div>
     </div>

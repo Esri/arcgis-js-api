@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Klasifikovat objekty pomocí deep learningu (Classify Objects Using Deep Learning)</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasifikovat objekty pomoc&iacute; deep learningu (Classify Objects Using Deep Learning)"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj spust&iacute; naučen&yacute; model deep learningu na vstupn&iacute;m rastru a voliteln&eacute; tř&iacute;dě prvků za &uacute;čelem vytvořen&iacute; tř&iacute;dy prvků nebo tabulky, v n&iacute;ž m&aacute; každ&yacute; vstupn&iacute; objekt přiřazenou tř&iacute;du popisků.
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b> , budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vyberte snímek, který bude použit ke klasifikaci objektů</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; sn&iacute;mek, kter&yacute; bude použit k detekov&aacute;n&iacute; objektů
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Vybrat vrstvu prvků pro objekty (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; vrstva bodov&yacute;ch, liniov&yacute;ch nebo polygonov&yacute;ch prvků, kter&aacute; definuje um&iacute;stěn&iacute; každ&eacute;ho objektu, kter&yacute; bude klasifikov&aacute;n a označen. Každ&yacute; ř&aacute;dek ve vstupn&iacute; vrstvě prvků představuje jeden objekt.
+            </p>
+            <p>Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; vstupn&iacute; vrstva prvků, n&aacute;stroj předpokl&aacute;d&aacute;, že každ&yacute; vstupn&iacute; sn&iacute;mek obsahuje jeden objekt, kter&yacute; bude klasifikov&aacute;n. Pokud vstupn&iacute; sn&iacute;mek nebo sn&iacute;mky použ&iacute;vaj&iacute; souřadnicov&yacute; syst&eacute;m, v&yacute;stupem z n&aacute;stroje je vrstva prvků, ve kter&eacute; je použit rozsah každ&eacute;ho sn&iacute;mku jako ohraničuj&iacute;c&iacute; geometrie pro každ&yacute; označen&yacute; prvek. Pokud vstupn&iacute; sn&iacute;mek nebo sn&iacute;mky nepouž&iacute;vaj&iacute; souřadnicov&yacute; syst&eacute;m, v&yacute;stupem z n&aacute;stroje je tabulka obsahuj&iacute;c&iacute; hodnoty ID sn&iacute;mku a pojmenov&aacute;n&iacute; tř&iacute;d pro každ&yacute; sn&iacute;mek.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Vybrat model deep learningu, který bude použit ke klasifikaci objektů</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupem je položka deep learningov&eacute;ho bal&iacute;čku ( <code>.dlpk</code>) .
+            </p>
+            <p>Deep learningov&yacute; bal&iacute;ček je složen ze souboru JSON s definic&iacute; modelu Esri ( <code>.emd</code>), souboru s bin&aacute;rn&iacute;m modelem deep learningu, a volitelně rastrov&eacute; funkce Python k použit&iacute;.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Zadejte argumenty modelu deep learningu</h2></div>
+        <hr/>
+        <div>
+            <p>Argumenty funkce jsou definov&aacute;ny ve tř&iacute;dě rastrov&eacute; funkce jazyka Python, na kterou odkazuje vstupn&iacute; model. Zde uvedete dal&scaron;&iacute; parametry deep learningu a argumenty pro experimenty a zlep&scaron;ov&aacute;n&iacute;, např. hranice spolehlivosti pro nastaven&iacute; citlivosti.
+            </p>
+            <p>N&aacute;zvy argumentů jsou dosazeny n&aacute;strojem z Python modulu na serveru rastrov&eacute; anal&yacute;zy.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definovat název pole pojmenování třídy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev pole, kter&eacute; bude obsahovat klasifikačn&iacute; popisek ve v&yacute;stupn&iacute; vrstvě prvků.
+            </p>
+            <p>Pokud nen&iacute; zad&aacute;n ž&aacute;dn&yacute; n&aacute;zev pole, ve v&yacute;stupn&iacute; vrstvě prvků bude vygenerov&aacute;no nov&eacute; pole s n&aacute;zvem  <i>ClassLabel</i>.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Režim zpracování</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru ve službě image service. 
+                <ul>
+                    <li> <b>Zpracovat jako mozaikov&yacute; obraz</b>&mdash;V&scaron;echny položky rastru ve službě image service budou spojeny do mozaiky a zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Zpracovat položky odděleně</b>&mdash;V&scaron;echny položky rastru ve službě image service budou zpracov&aacute;ny jako samostatn&eacute; sn&iacute;mky.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

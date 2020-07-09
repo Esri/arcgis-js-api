@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp af  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke. De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via  Portal for ArcGIS, er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Anvend n&aelig;rhed</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b>, <b>Administr&eacute;r data</b> og <b>Deep Learning</b>.
+        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke. De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via  Portal for ArcGIS, er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Anvend n&aelig;rhed</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b>, <b>Administr&eacute;r data</b>, <b>Deep Learning</b> og <b>Flerdimensional analyse</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -348,6 +348,8 @@
                     
 
                 </li>
+                <li> <b>Eksempel</b> udtr&aelig;kker data p&aring; definerede steder fra en raster eller et s&aelig;t rastere.
+                </li>
             </ul>
             
         </p>
@@ -412,17 +414,34 @@
             </p>
             <br/>
         </div>
+        <div id="SampleTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Eksempel</h2></td>
+                    <td>
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Sample">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Opretter en tabel eller en punktobjektklasse med datav&aelig;rdier p&aring; definerede steder, der er udtrukket fra en raster eller et s&aelig;t rastere.
+            </p>
+            <br/>
+        </div>
     <div id="DeepLearningCategory" class="largesize">
-        <h2>Værktøjer til Deep Learning</h2>
+        <h2>Deep Learning</h2>
         <hr/>
-        <p>Disse v&aelig;rkt&oslash;jer 	bruges til at registrere specifikke objekter i et billede eller til at klassificere pixels i et rasterdatas&aelig;t. Deep Learning er en maskinl&aelig;ringsmetode, der benytter sig af kunstig intelligens. Den registrerer objekter i billeder ved hj&aelig;lp af flere lag i neurale netv&aelig;rk, hvor hvert lag er i stand til at udtr&aelig;kke et eller flere unikke objekter i billedet. Disse v&aelig;rkt&oslash;jer bruger de modeller, der er blevet tr&aelig;net til at registrere specifikke objekter i tredjeparts Deep Learning-frameworks - f.eks. TensorFlow, CNTK og Keras - og output er objekter eller klassekort.
+        <p>Disse v&aelig;rkt&oslash;jer 	bruges til at registrere eller klassificere specifikke objekter i et billede eller til at klassificere pixels i et rasterdatas&aelig;t. Deep Learning er en maskinl&aelig;ringsmetode, der benytter sig af kunstig intelligens. Den registrerer objekter i billeder ved hj&aelig;lp af flere lag i neurale netv&aelig;rk, hvor hvert lag er i stand til at udtr&aelig;kke et eller flere unikke objekter i billedet. Disse v&aelig;rkt&oslash;jer bruger de modeller, der er blevet tr&aelig;net til at registrere specifikke objekter i tredjeparts Deep Learning-frameworks - f.eks. TensorFlow, CNTK og Keras - og output er objekter eller klassekort.
             <ul>
                 <li> <b>Klassificer pixels ved hj&aelig;lp af Deep Learning</b> producerer en klassificeret raster ved hj&aelig;lp af en tr&aelig;net Deep Learning-model.
                 </li>
                 <li> <b>Registrer objekter ved hj&aelig;lp af Deep Learning</b> producerer en objektklasse, der indeholder objekter, som den finder i en inputraster ved hj&aelig;lp af en tr&aelig;net Deep Learning-model.
                 </li>
+                <li> <b>Klassificer objekter ved hj&aelig;lp af Deep Learning</b> producerer en objektklasse eller tabel, hvior hver enkelt input-objekt i en inputraster tildeles en klasse-etiket ved hj&aelig;lp af en tr&aelig;net Deep Learning-model.
+                </li>
             </ul>
-             
+            
         </p>
     </div>
         <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
@@ -436,7 +455,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>K&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en klassificeret raster, hvor hver gyldig pixel har f&aring;et tildelt en klasseetiket.
+            <p>Dette v&aelig;rkt&oslash;j k&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en klassificeret raster, og hver gyldig pixel har en tildelt en klasseetiket.
             </p>
             <br/>
         </div>
@@ -451,7 +470,120 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>K&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en objektklasse, der indeholder de objekter, den finder. Objekterne kan v&aelig;re afgr&aelig;nsende kasser eller polygoner rundt om de objekter, der findes, eller de kan pege p&aring; objekternes centrum.
+            <p>Dette v&aelig;rkt&oslash;j k&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster for at frembringe en objektklasse, der indeholder de objekter, den finder. Objekterne kan v&aelig;re afgr&aelig;nsende kasser eller polygoner rundt om de objekter, der findes, eller de kan pege p&aring; objekternes centrum.
+            </p>
+            <br/>
+        </div>
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Klassificer objekter ved hjælp af Deep Learning</h2></td>
+                    <td>
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Klassificer objekter ved hj&aelig;lp af Deep Learning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j k&oslash;rer en tr&aelig;net Deep Learning-model p&aring; en inputraster og en valgfri objektklasse for at frembringe en objektklasse eller tabel, hvor hvert objekt har en tildelt en klasseetiket.
+            </p>
+            <br/>
+        </div>
+    <div id="MultidimensionalAnalysisCategory" class="largesize">
+        <h2>Flerdimensional analyse</h2>
+        <hr/>
+        <p>V&aelig;rkt&oslash;jerne i v&aelig;rkt&oslash;jss&aelig;ttet Flerdimensional analyse giver dig mulighed for at udf&oslash;re analyse af videnskabelige data p&aring; tv&aelig;rs af flere variabler og dimensioner.
+        </p>
+        <p>Flerdimensionale data repr&aelig;senterer data, der er optaget ved flere tidspunkter, dybder og h&oslash;jder. Denne type data bruges normalt inden for atmosf&aelig;risk, oceanografisk og geovidenskab. Med dette v&aelig;rkt&oslash;jss&aelig;t kan du analysere flerdimensionale rasterdata i flere formater, herunder netCDF, HDF, GRIB, det flerdimensionale mosaikdatas&aelig;t og Esris Cloud Raster Format (CRF).
+        </p>
+        <p>F&oslash;lgende tabel viser v&aelig;rkt&oslash;jerne til flerdimensional analyse og indeholder en kort beskrivelse af dem.
+            <ul>
+                <li> <b>Aggreg&eacute;r flerdimensional raster</b> genererer et flerdimensionalt rasterdatas&aelig;t ved at aggregere eksisterende flerdimensionale rastervariabler langs en dimension.
+                </li>
+                <li> <b>Aggreg&eacute;r flerdimensional anomali</b> beregner anomalien for hvert udsnit i en flerdimensional raster for at generere en flerdimensional raster.
+                </li>
+                <li> <b>Generer tendensraster</b>  estimerer tendensen for hver pixel langs en dimension for en eller flere variabler i en flerdimensional raster.
+                </li>
+                <li> <b>Forudsig ved brug af tendensraster</b>  beregner en forventet flerdimensional raster ved hj&aelig;lp af output-tendensrasteren fra v&aelig;rkt&oslash;jet <b>Generer tendensraster</b>.
+                </li>
+                <li> <b>Find argument-statistik</b>   ekstraherer dimensionv&aelig;rdien eller b&aring;ndindekset, hvor en given statistik opn&aring;s for hver pixel i en flerdimensional eller multib&aring;ndsraster.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregateMultidimensionalRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregér flerdimensional raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Aggreg&eacute;r flerdimensional raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j genererer et flerdimensionalt rasterdatas&aelig;t ved at aggregere eksisterende flerdimensionale rastervariabler langs en dimension.
+            </p>
+            <br/>
+        </div>
+        <div id="FindArgumentStatisticsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find argument-statistik</h2></td>
+                    <td>
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Find argument-statistik">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j ekstraherer dimensionv&aelig;rdien eller b&aring;ndindekset, hvor en given statistik opn&aring;s for hver pixel i en flerdimensional eller multib&aring;ndsraster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generér flerdimensional anomali</h2></td>
+                    <td>
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Gener&eacute;r flerdimensional anomali">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner anomalien for hvert udsnit i en flerdimensional raster for at generere en flerdimensional raster.
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generer tendensraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="Generer tendensraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j estimerer tendensen for hver pixel langs en dimension for en eller flere variabler i en flerdimensional  raster.
+            </p>
+            <br/>
+        </div>
+        <div id="PredictUsingTrendRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Forudsig ved brug af tendensraster</h2></td>
+                    <td>
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Forudsig ved brug af tendensraster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner en forventet flerdimensional raster ved hj&aelig;lp af output-tendensrasteren fra v&aelig;rkt&oslash;jet  <b>Generer tendensraster</b>.
             </p>
             <br/>
         </div>

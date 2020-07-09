@@ -51,14 +51,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Escolher camada alvo</h2></div>
+        <div><h2>Selecionar camada alvo</h2></div>
         <hr/>
         <div>
             <p>A camada que ter&aacute;  atributos da camada de liga&ccedil;&atilde;o anexada &agrave; respetiva tabela.
             </p>
-            <p>An&aacute;lise recorrendo &agrave; rela&ccedil;&atilde;o espacial  <b>Pr&oacute;ximo</b> requer um sistema de coordenadas projetado.  Pode definir o <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas de processamento n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr An&aacute;lise</b> .
+            <p>An&aacute;lise recorrendo &agrave; rela&ccedil;&atilde;o espacial  <b>Pr&oacute;ximo</b> requer um sistema de coordenadas projetado.  Pode definir o sistema de coordenadas de processamento em Ambientes de An&aacute;lise. Se o seu sistema de coordenadas projetado n&atilde;o se encontrar definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando executar a an&aacute;lise .
             </p>
-            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>A camada de liga&ccedil;&atilde;o com os atributos que ser&atilde;o anexados &agrave; camada alvo.
             </p>
-            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos.
+            <p>Para al&eacute;m de escolher uma camada do seu mapa, pode escolher  <b>Escolher Camada de An&aacute;lise</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de ficheiros de big data ou camada de elementos. Opcionalmente, pode aplicar um filtro na sua camada de entrada ou aplicar uma sele&ccedil;&atilde;o em camadas alojadas adicionadas ao seu mapa. Os filtros e sele&ccedil;&otilde;es s&atilde;o aplicados apenas para an&aacute;lise. 
             </p>
         </div>
     </div>
@@ -118,7 +118,9 @@
                     </li>
                     <li> <b>Igual</b>&mdash;Os elementos ser&atilde;o ligados se possu&iacute;rem a mesma geometria.
                     </li>
-                    <li> <b>Pr&oacute;ximo</b>&mdash;Os elementos ser&atilde;o ligados caso se encontrem no limite de determinada dist&acirc;ncia uns dos outros. A camada alvo tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado, que utilize os <b>Ambientes de An&aacute;lise</b> caso uma refer&ecirc;ncia espacial <b>Pr&oacute;ximo</b> seja utilizada.
+                    <li> <b>Pr&oacute;ximo Planar</b> &mdash; Os elementos ser&atilde;o ligados caso se encontrem no limite de uma determinada dist&acirc;ncia uns dos outros. A camada alvo tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado, que utilize os <b>Ambientes de An&aacute;lise</b> caso uma refer&ecirc;ncia espacial <b>Pr&oacute;ximo</b> seja utilizada.
+                    </li>
+                    <li> <b>Pr&oacute;ximo Geod&eacute;sico</b> &mdash; Os elementos ser&atilde;o ligados caso se encontrem no limite de uma determinada dist&acirc;ncia uns dos outros. A dist&acirc;ncia &eacute; medida atrav&eacute;s da dist&acirc;ncia planar.
                     </li>
                     <li> <b>Cont&eacute;m</b>&mdash;Os elementos ser&atilde;o correspondidos se a camada alvo estiver contida nos elementos em liga&ccedil;&atilde;o.
                     </li>
@@ -141,7 +143,7 @@
         <div>
             <p> Especifica o raio aplicado a uma rela&ccedil;&atilde;o espacial pr&oacute;xima.
             </p>
-            <p>Por exemplo, se tivesse um conjunto de dados representando uma central nuclear e um conjunto de dados representando resid&ecirc;ncias, poderia definir uma dist&acirc;ncia nearSpatial de 1 quil&oacute;metro para encontrar casas  &agrave; dist&acirc;ncia de 1 quil&oacute;metro da central nuclear.
+            <p>Por exemplo, se tivesse um conjunto de dados representando uma central nuclear e um conjunto de dados representando resid&ecirc;ncias, poderia definir uma dist&acirc;ncia nearSpatial de 1 quil&oacute;metro para encontrar casas &agrave; dist&acirc;ncia de 1 quil&oacute;metro da central nuclear.
             </p> 
         </div>
     </div>
@@ -215,7 +217,7 @@
             </p>
             <p>Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes: 
                 <ul>
-                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou em strings. A contagem de [null, 0, 2] &eacute; 2.
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou cadeias de caracteres. A contagem de [null, 0, 2] &eacute; 2.
                     </li>
                     <li>Soma&mdash;A soma dos valores num&eacute;ricos num campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
@@ -227,7 +229,7 @@
                     </li>
                     <li>Intervalo&mdash;o intervalo de um campo num&eacute;rico. Este &eacute; calculado subtraindo os valores m&iacute;nimos ao valor m&aacute;ximo. O intervalo de [0, null, 1] &eacute; 1. O intervalo de [null, 4] &eacute; 0.
                     </li>
-                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,0,1] &eacute; 0.25.
+                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0.25.
                     </li>
                     <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; null. O desvio padr&atilde;o de [null, 1,0,1,1] &eacute; 0.5. 
                     </li>
@@ -263,16 +265,16 @@
         <div><h2>Selecionar armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em   Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
+            <p>Os resultados de GeoAnalytics s&atilde;o guardados num armazenamento de dados e expostos como uma camada de elementos em  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados relacional. 
                 <ul>
-                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-to-portal.
+                    <li>Pode utilizar resultados em colabora&ccedil;&atilde;o portal-para-portal.
                     </li>
                     <li>Pode ativar funcionalidades de sincroniza&ccedil;&atilde;o com os seus resultados
                     </li>
                 </ul>
                 
             </p>
-            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics e necessite de tirar partido das funcionalidades de armazenamento de big data espaciotemporais para gerir grandes quantidades de dados.
+            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso espere um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data espa&ccedil;otemporal para gerir grandes quantidades de dados.
             </p>
         </div>
     </div>
@@ -280,7 +282,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> O nome da camada que ser&aacute; criada.  Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o gravados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados numa partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> O nome da camada que ser&aacute; criada. Se estiver a escrever para ArcGIS Data Store, os seus resultados ser&atilde;o guardados em  <b>O Meu Conte&uacute;do</b> e adicionados ao mapa. Se estiver a escrever para uma partilha de ficheiros big data, os seus resultados ser&atilde;o guardados na partilha de ficheiros big data e adicionados ao seu manifesto. N&atilde;o ser&atilde;o adicionados ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
             </p>
             <p>Ao escrever para   ArcGIS Data Store  (armazenamento relacional ou espaciotemporal de dados big data) utilizando a caixa suspensa  <b>Guardar resultado em</b> pode especificar o nome de uma pasta em <b>O Meu Conte&uacute;do</b>, onde ser&aacute; armazenado o resultado.
             </p>

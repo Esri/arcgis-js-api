@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.32/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valitse leikattavat kohteet",filterSelectLabel:"Leikkaa kaikki kohteet tai määritä alijoukko (valinnainen)",targetArea:"Valitse alue, johon leikattava kohde liitetään",outputLayerName:"Leikkaa ${inputLayerName} karttatasoon ${clipLayerName}",itemDescription:"Kohdekarttataso, joka on luotu leikkausratkaisujen suorituksesta. Karttatason ${inputLayerName} kohteet on leikattu karttatasoon ${clipLayerName}.",itemTags:"Analyysin tulos, leikattu karttataso, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Kohdekarttataso on luotu leikatusta karttatasosta"});

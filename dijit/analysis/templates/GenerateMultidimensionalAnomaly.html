@@ -103,7 +103,20 @@
         </tr>
         <tr>
           <td colspan="3">
-            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_calculationIntervalSelect"></select>
+            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_calculationIntervalSelect" data-dojo-attach-event="onChange:_handleCalculationIntervalChange"></select>
+          </td>
+        </tr>
+        <tr class="referenceMeanRaster" style="display:none">
+          <td colspan="2">
+            <label class="esriLeadingMargin1" data-dojo-attach-point="_externalRasterLabel">${i18n.meanRaster}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="referenceMeanRaster"></a>
+          </td>
+        </tr>
+        <tr class="referenceMeanRaster" style="display:none">
+          <td colspan="3">
+            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_referenceMeanRasterSelect" data-dojo-attach-event="onChange:_handleReferenceMeanRasterChange"></select>
           </td>
         </tr>
         <tr>

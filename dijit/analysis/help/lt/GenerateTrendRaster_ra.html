@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generuoti tendencijų rastrą</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generuoti tendencijų rastrą"></h2>
+        <hr/>
+    <p>Įvertina kiekvieno pikselio tendenciją matmenyje vienam ar daugiau daugiamačio rastro kintamųjų.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Pasirinkite daugiamatį vaizdų sluoksnį tendencijai analizuoti</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Daugiamačio rastro įvesties vaizdų sluoksnis, kuris bus analizuojamas.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Pasirinkite matmenį, pagal kurį bus analizuojama kintamojo tendencija</h2></div>
+        <hr/>
+        <div>
+            <p>Matmuo, pagal kurį bus gaunama analizei pasirinkto kintamojo ar kintamųjų tendencija.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Pasirinkite kintamąjį (-uosius) tendencijai analizuoti</h2></div>
+        <hr/>
+        <div>
+            <p>Kintamasis arba kintamieji, kurio (kurių) tendencijos bus skaičiuojamos. Jei nenurodytas joks kintamasis, bus analizuojamas pirmasis kintamasis daugiamačiame rastre.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Pasirinkite linijos tipą, derantį prie kintamojo reikšmių pagal matmenį</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo linijos, kurią reikia naudoti, kad atitiktų pikselių reik&scaron;mes i&scaron;ilgai matmens, tipą. 
+                <ul>
+                    <li> <b>Tiesinė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal tiesinę tendencijos liniją. Tai numatytasis nustatymas.
+                    </li>
+                    <li> <b>Daugianarė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal antro eili&scaron;kumo daugianarės tendencijos liniją.
+                    </li>
+                    <li> <b>Harmoninė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal harmoninę tendencijos liniją.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Nurodykite harmoninio ciklo ilgį</h2></div>
+        <hr/>
+        <div>
+            <p>Modelio periodinės variacijos ilgis. &Scaron;io parametro reikia, kai tendencijos linijos tipas yra nustatytas į  <b>Harmoninė</b>. Pavyzdžiui, lapų žalumas dažnai turi vieną stiprų variacijos ciklą per vienerius metus, taigi ciklo ilgis yra 1 metai. Valandiniai temperatūros duomenys turi vieną stiprų variacijos ciklą vienos dienos metu, taigi ciklo ilgis yra 1 diena.
+            </p>
+            <p>Duomenų, kurie kinta pagal metinį ciklą, numatytasis ilgis yra 1 metai.
+            </p>
+            <p>&Scaron;is parametras įtraukiamas į tendencijų analizę tik tada, kai analizuojamas matmuo yra laikas, o tendencijos linijos tipas yra nustatytas į  <b>Harmoninė</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Pasirinkite harmoninio ciklo ilgio laiko vienetą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo laiko vienetą, naudojamą harmoninio ciklo ilgiui.
+                <ul>
+                    <li> <b>Dienos</b> &ndash; harmoninio ciklo ilgio vienetas yra dienos.
+                    </li>
+                    <li> <b>Metai</b> &ndash; harmoninio ciklo ilgio vienetas yra metai. Tai numatytasis nustatymas.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Scaron;is parametras įtraukiamas į tendencijų analizę tik tada, kai analizuojamas matmuo yra laikas, o tendencijos linijos tipas yra nustatytas į  <b>Harmoninė</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Nurodykite harmoninės tendencijos derinimo dažnį</h2></div>
+        <hr/>
+        <div>
+            <p>Dažnis, naudojamas derinant harmoninę tendenciją. &Scaron;is parametras nurodo ciklų dažnį per metus.
+            </p>
+            <p>Numatytoji reik&scaron;mė yra 1 arba vienas harmoninis ciklas per metus.
+            </p>
+            <p>&Scaron;is parametras įtraukiamas į tendencijų analizę tik tada, kai analizuojamas matmuo yra laikas.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Nurodykite daugianarių eilės numerį tendencijoms derinti</h2></div>
+        <hr/>
+        <div>
+            <p>Daugianarių eilės numeris, naudojamas derinant daugianares tendencijas.
+            </p>
+            <p>&Scaron;is parametras įtraukiamas į tendencijų analizę tik tada, kai analizuojamas matmuo yra laikas.
+            </p>
+            <p>Numatytoji reik&scaron;mė yra 2 arba antro eili&scaron;kumo daugianaris.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Pasirinkite į tendencijų rastrą įtrauktiną modelio statistiką</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;is įrankis pateikia trijų tipų tendencijų derinimo linijos statistiką: &scaron;aknies i&scaron; vidutinės kvadratinės paklaidos (RMSE), R kvadrato atitikties gerumo statistiką (R kvadratu) ir p reik&scaron;mės nuolydžio koeficiento statistiką (P nuolydžio koeficiento reik&scaron;mė). Kiekviena statistika turi atitinkamą žymės langelį, kuriame nurodoma, ar ji bus apskaičiuota ir įtraukta kaip viena i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą.
+                <ul>
+                    <li>
+                        <p>RMSE
+                        </p>
+                        <ul>
+                            <li>Pažymėta &ndash; RMSE bus apskaičiuotas ir įtrauktas kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą. Tai numatytasis nustatymas.
+                            </li>
+                            <li>Nepažymėta &ndash; RMSE nebus apskaičiuotas.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R kvadratas
+                        </p>
+                        <ul>
+                            <li>Pažymėta &ndash; R kvadrato reik&scaron;mė bus apskaičiuota ir įtraukta kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą.
+                            </li>
+                            <li>Nepažymėta &ndash; R kvadrato reik&scaron;mė nebus apskaičiuota. Tai numatytasis nustatymas.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Nuolydžio koeficiento p reik&scaron;mė
+                        </p>
+                        <ul>
+                            <li>Pažymėta &ndash; p reik&scaron;mė bus apskaičiuota ir įtraukta kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą.
+                            </li>
+                            <li>Nepažymėta &ndash; p reik&scaron;mė nebus apskaičiuota. Tai numatytasis nustatymas.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
+                <ul>
+                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    </li>
+                    <li>Nepažymėta &ndash; analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikseliai turi bent vieną NoData reik&scaron;mę.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

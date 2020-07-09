@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Générer un raster de tendance</h2><p/>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="G&eacute;n&eacute;rer un raster de tendances"></h2>
+        <hr/>
+    <p>Estime la tendance de chaque pixel par rapport &agrave; une dimension pour une ou plusieurs variables d&rsquo;un raster multidimensionnel.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Choisir une couche d’imagerie multidimensionnelle pour analyser la tendance</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>Couche d&rsquo;imagerie en entr&eacute;e d&rsquo;un raster multidimensionnel &agrave; analyser.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Choisir la dimension le long de laquelle analyser la tendance des variables</h2></div>
+        <hr/>
+        <div>
+            <p>Dimension le long de laquelle une tendance sera extraite pour la ou les variables s&eacute;lectionn&eacute;es dans l&rsquo;analyse.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Choisir la ou les variables pour analyser la tendance</h2></div>
+        <hr/>
+        <div>
+            <p>La variable ou les variables pour lesquelles les tendances sont calcul&eacute;es. Si aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, la premi&egrave;re variable dans le raster multidimensionnel est analys&eacute;e.
+            </p>
+        </div>
+    </div>
+    <div id="trendLineType">
+        <div><h2>Choisir le type de ligne pour ajuster les valeurs de variable le long d’une dimension</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le type de ligne &agrave; utiliser pour ajuster les valeurs de pixel le long d&rsquo;une dimension. 
+                <ul>
+                    <li> <b>Linear (Lin&eacute;aire)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance lin&eacute;aire. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Polynomial (Polynomial)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance polynomiale de second ordre.
+                    </li>
+                    <li> <b>Harmonic (Harmonique)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance harmonique.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="cycleLength">
+        <div><h2>Spécifier la longueur d’un cycle harmonique</h2></div>
+        <hr/>
+        <div>
+            <p>Dur&eacute;e de la variation p&eacute;riodique &agrave; mod&eacute;liser. Ce param&egrave;tre est requis lorsque le type de la ligne de tendance est d&eacute;fini sur  <b>Harmonic (Harmonique)</b>. Par exemple, la verdoyance des feuilles pr&eacute;sente souvent un cycle de variation fort sur une seule ann&eacute;e, de sorte que la longueur du cycle est de 1&nbsp;an. Les donn&eacute;es horaires de temp&eacute;rature pr&eacute;sentent un cycle de variation fort tout au long d&rsquo;une seule journ&eacute;e, de sorte que la longueur du cycle est de 1&nbsp;jour.
+            </p>
+            <p>La longueur par d&eacute;faut est &eacute;gale &agrave; 1&nbsp;an pour les donn&eacute;es qui varient sur un cycle annuel.
+            </p>
+            <p>Ce param&egrave;tre est inclus uniquement dans l&rsquo;analyse des tendances lorsque la dimension analys&eacute;e est la dimension temporelle et que le type de la ligne de tendance est d&eacute;fini sur  <b>Harmonic (Harmonique)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cycleUnit">
+        <div><h2>Choisir l’unité temporelle de la longueur du cycle harmonique</h2></div>
+        <hr/>
+        <div>
+            <p>Indique l&rsquo;unit&eacute; temporelle &agrave; utiliser pour la longueur d&rsquo;un cycle harmonique.
+                <ul>
+                    <li> <b>Days (Jours)</b>&nbsp;: l&rsquo;unit&eacute; de la longueur du cycle harmonique sont les jours.
+                    </li>
+                    <li> <b>Years (Ann&eacute;es)</b>&nbsp;: l&rsquo;unit&eacute; de la longueur du cycle harmonique sont les ann&eacute;es. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ce param&egrave;tre est inclus uniquement dans l&rsquo;analyse des tendances lorsque la dimension analys&eacute;e est la dimension temporelle et que le type de la ligne de tendance est d&eacute;fini sur  <b>Harmonic (Harmonique)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="frequency">
+        <div><h2>Spécifier le numéro de fréquence pour l’ajustement de tendance harmonique</h2></div>
+        <hr/>
+        <div>
+            <p>La fr&eacute;quence &agrave; utiliser dans l&rsquo;ajustement de tendance harmonique. Ce param&egrave;tre sp&eacute;cifie la fr&eacute;quence des cycles au cours d&rsquo;une ann&eacute;e.
+            </p>
+            <p>La valeur par d&eacute;faut est de&nbsp;1, soit un cycle harmonique par an.
+            </p>
+            <p>Ce param&egrave;tre est inclus uniquement dans l&rsquo;analyse des tendances lorsque la dimension analys&eacute;e est la dimension temporelle.
+            </p>
+        </div>
+    </div>
+    <div id="polynomialOrder">
+        <div><h2>Spécifier le numéro d’ordre polynomial pour l’ajustement de tendance</h2></div>
+        <hr/>
+        <div>
+            <p>Num&eacute;ro d&rsquo;ordre polynomial &agrave; utiliser dans l&rsquo;ajustement de tendance polynomial.
+            </p>
+            <p>Ce param&egrave;tre est inclus uniquement dans l&rsquo;analyse des tendances lorsque la dimension analys&eacute;e est la dimension temporelle.
+            </p>
+            <p>La valeur par d&eacute;faut est 2 ou un polyn&ocirc;me du second degr&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="modelStatistics">
+        <div><h2>Choisir les statistiques de modèle à inclure dans le raster de tendance</h2></div>
+        <hr/>
+        <div>
+            <p>Cet outil fournit trois types de statistiques de la ligne d&rsquo;ajustement de tendance&nbsp;: la racine carr&eacute;e de l&rsquo;erreur quadratique moyenne (EQM), la statistique de qualit&eacute; de l&rsquo;ajustement R-carr&eacute; (R-carr&eacute;) et la statistique de valeur p pour le coefficient de pente (Valeur p du coefficient de pente). Chaque statistique a une case &agrave; cocher correspondante pour indiquer si elle sera calcul&eacute;e et incluse comme l&rsquo;un des nombreux canaux dans le raster de tendance en sortie.
+                <ul>
+                    <li>
+                        <p>EQM
+                        </p>
+                        <ul>
+                            <li>Activ&eacute;&nbsp;: l&rsquo;EQM sera calcul&eacute; et inclus comme l&rsquo;un des nombreux canaux dans le raster de tendance en sortie. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                            </li>
+                            <li>D&eacute;sactiv&eacute;&nbsp;: l&rsquo;EQM ne sera pas calcul&eacute;e.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>R-carr&eacute;
+                        </p>
+                        <ul>
+                            <li>Activ&eacute;&nbsp;: la valeur R-carr&eacute; sera calcul&eacute;e et incluse comme l&rsquo;un des nombreux canaux dans le raster de tendance en sortie.
+                            </li>
+                            <li>D&eacute;sactiv&eacute;&nbsp;: la valeur R-carr&eacute; ne sera pas calcul&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li>
+                        <p>Valeur p du coefficient de pente
+                        </p>
+                        <ul>
+                            <li>Activ&eacute;&nbsp;: la valeur p sera calcul&eacute;e et incluse comme l&rsquo;un des nombreux canaux dans le raster de tendance en sortie.
+                            </li>
+                            <li>D&eacute;sactiv&eacute;&nbsp;: la valeur&nbsp;P ne sera pas calcul&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                            </li>
+                        </ul>
+                        
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer les valeurs manquantes dans le calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse.
+                <ul>
+                    <li>Activ&eacute;&nbsp;: l&rsquo;analyse inclut tous les pixels valides selon une dimension donn&eacute;e et ignore les pixels NoData. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li>D&eacute;sactiv&eacute;&nbsp;: le r&eacute;sultat de l&rsquo;analyse est NoData s&rsquo;il existe des valeurs NoData pour les pixels selon la dimension donn&eacute;e.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,9 @@
         <h2>Preklopi slojeve</h2><p/>
         <h2><img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" alt="Preklapanje slojeva"></h2>
         <hr/>
-    <p>Preklapanje slojeva kombinira dva ili vi&scaron;e slojeva u jedan sloj. Možete razmi&scaron;ljati o preklapanju kao o gledanju kroz snop karata i stvaranje jedne karte koja sadrži sve informacije iz snopa.    Preklapanje je puno vi&scaron;e od spajanja linija. Svi atributi geoobjekata koji sudjeluju u preklapanju prenose se do konačnog proizvoda. Preklapanje se upotrebljava kako bi se odgovorilo na jedno od najosnovnijih pitanja u geografiji: &Scaron;to se nalazi na čemu? U nastavku su primjeri:
+    <p>Preklapanje slojeva kombinira dva ili vi&scaron;e slojeva u jedan sloj. Možete razmi&scaron;ljati o preklapanju kao o gledanju kroz snop karata i stvaranje jedne karte koja sadrži sve informacije iz snopa.    Preklapanje je vi&scaron;e od spajanja linija, svi atributi geoobjekata koji se preklapaju uključeni su u konačni proizvod. Preklapanje se upotrebljava kako bi se odgovorilo na jedno od najosnovnijih pitanja u geografiji: &scaron;to se nalazi na čemu? 
+    </p>
+    <p>U nastavku su primjeri:
         <ul>
             <li>Koje se parcele nalaze unutar stogodi&scaron;nje poplavne ravnice? (Unutar je drugačiji način da se kaže na nečemu.)
                   
@@ -57,7 +59,7 @@
         </ul>
         
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, preklopit će se samo geoobjekti u ulaznim slojevima i slojevima preklapanja koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, preklopit će se svi geoobjekti u sloju unosa i sloju preklapanja, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, preklopit će se samo geoobjekti u ulaznim slojevima i slojevima preklapanja koji su vidljivi unutar trenutačnog obuhvata karte. Ako se ne označi, preklopit će se svi geoobjekti u sloju unosa i sloju preklapanja, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -67,7 +69,7 @@
         <div>
             <p>Točkasti, linijski ili poligonalni sloj koji će se preklopiti.
             </p>
-            <p class="OnlineOnly">Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu Living Atlasa</b> ili <b>Izaberi sloj za analizu</b> s dna popisa padajućeg izbornika. Time se otvara galerija koja sadrži zbirku slojeva korisnu za mnogo analiza. 
+            <p>Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu</b> koja se nalazi na dnu popisa padajućeg izbornika. Ova opcija otvara galeriju u kojoj možete pretraživati i odabrati skupove podataka iz raznih izvora te ih koristiti u svojoj analizi. 
             </p>
         </div>
     </div>
@@ -75,9 +77,9 @@
         <div><h2>Izaberi sloj preklapanja</h2></div>
         <hr/>
         <div>
-            <p>Sloj za preklapanje na sloju unosa.  
+            <p>Sloj koji će se preklopiti na sloju unosa.  
             </p>
-            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Izaberi sloj za analizu</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta. Dodatno možete primijeniti filtar na sloj unosa ili primijeniti odabir na hostiranim slojevima koji su dodani va&scaron;oj karti. Filtri i odabiri samo se primjenjuju za analizu. 
             </p>
         </div>
     </div>
@@ -85,56 +87,18 @@
         <div><h2>Izaberi metodu preklapanja</h2></div>
         <hr/>
         <div>
-            <p>Metodom preklapanja utvrđuje se kako se kombiniraju sloj unosa i sloj preklapanja.  
+            <p>Navodi način preklapanja koji će koji će kombinirati sloj unosa i sloj preklapanja.  
 
                 <ul>
-                    <li> <b>Presijeci</b> &mdash; rezultat će sadržavati samo one geoobjekte ili dijelove geoobjekata u sloju preklapanja koji se preklapaju s geoobjektima u sloju unosa. Prilikom presijecanja linijskih ili poligonalnih geoobjekata, imate opciju određivanja vrste geoobjekata koje želite kao izlazne.
-                        <table border="1">
-                        <tr>
-                            <td>
-                                <p>Točke s točkama
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Točke i unos točaka">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Točke s točkama s izvozom točaka">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Linije s linijama 
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="Linije i unos linija">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="Linije i linije s izvozom linija ">
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Povr&scaron;ine s povr&scaron;inama
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Povr&scaron;ine i unos povr&scaron;ina">
-                                </p>
-                            </td>
-                            <td>
-                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="Povr&scaron;ine i povr&scaron;ine s izvozom povr&scaron;ina">
-                                </p>
-                            </td>
-                        </tr>
-                        </table>
+                    <li> <b>Presijeci</b> &mdash; kombinirat će se samo oni geoobjekti ili dijelovi geoobjekata u sloju preklapanja koji se preklapaju s geoobjektima u sloju unosa.
                     </li>
-                    <li> <b>Izbri&scaron;i</b> &mdash; rezultat će sadržavati geoobjekte ili dijelove geoobjekata u sloju preklapanja koji se ne preklapaju s povr&scaron;inama u sloju unosa.  Sloj preklapanja može sadržavati poligonalne, linijske ili točkaste geoobjekte.
+                    <li> <b>Izbri&scaron;i</b> &mdash; kombinirat će se geoobjekti ili dijelovi geoobjekata u sloju preklapanja koji se ne preklapaju s povr&scaron;inama u sloju unosa.
+                    </li>
+                    <li> <b>Unija</b>&mdash; kombinirat će se svi geoobjekti s obaju slojeva i stvoriti geometrijsku uniju sloja unosa i sloja preklapanja. U sloj će se upisati svi geoobjekti i njihovi atributi.
+                    </li>
+                    <li> <b>Identitet</b>&mdash; kombinirat će se geoobjekti ili dijelovi geoobjekata u sloju unosa i sloju preklapanja. Geoobjekti ili dijelovi geoobjekata koji se preklapaju u sloju unosa i sloju preklapanja zapisat će se u izlazni sloj.
+                    </li>
+                    <li> <b>Simetrična udaljenost</b>&mdash; kombinirat će se geoobjekti ili dijelovi geoobjekata sloja unosa i sloja preklapanja koji se ne preklapaju.
                     </li>
                 </ul>
                 
@@ -142,7 +106,7 @@
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Imat će iste vrste geoobjekata (poligonalni, linijski ili točkasti) kao ulazni sloj i sloj preklapanja. Zadani naziv temelji se na metodi preklapanja i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.

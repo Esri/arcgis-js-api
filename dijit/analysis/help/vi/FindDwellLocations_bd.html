@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tìm Vị trí Trú ngụ</h2><p/>
+        <h2><img src="../images/GUID-6BFF03DF-ECE3-4666-8A93-42C7BA85CC7B-web.png" alt="Sơ đồ quy tr&igrave;nh T&igrave;m Vị tr&iacute; Tr&uacute; ngụ"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y hoạt động với lớp đối tượng dạng điểm được k&iacute;ch hoạt th&ocirc;ng tin thời gian thuộc loại  <code>thời điểm tức th&igrave;</code>. Đầu ti&ecirc;n, c&ocirc;ng cụ sẽ g&aacute;n c&aacute;c đối tượng đến đường đi sử dụng một m&atilde; x&aacute;c định duy nhất. Thứ tự đường đi được x&aacute;c định bởi thời gian của c&aacute;c đối tượng. Sau đ&oacute;, khoảng c&aacute;ch giữa lần quan s&aacute;t đầu ti&ecirc;n trong một đường đi v&agrave; lần tiếp theo sẽ được t&iacute;nh. C&aacute;c đối tượng được coi l&agrave; một phần của nơi tr&uacute; ngụ nếu hai điểm c&oacute; thời gian li&ecirc;n tiếp nằm trong khoảng c&aacute;ch nhất định &iacute;t nhất theo một khoảng thời gian nhất định. Khi hai đối tượng được t&igrave;m thấy l&agrave; một phần của một nơi tr&uacute; ngụ, đối tượng đầu ti&ecirc;n ở nơi tr&uacute; ngụ được sử dụng l&agrave;m điểm tham chiếu v&agrave; c&ocirc;ng cụ t&igrave;m thấy c&aacute;c đối tượng li&ecirc;n tiếp nằm trong khoảng c&aacute;ch nhất định của điểm tham chiếu trong nơi tr&uacute; ngụ. Khi đ&atilde; t&igrave;m thấy tất cả c&aacute;c đối tượng trong khoảng c&aacute;ch chỉ định, c&ocirc;ng cụ sẽ thu thập c&aacute;c đối tượng nơi tr&uacute; ngụ v&agrave; t&iacute;nh to&aacute;n điểm trung t&acirc;m trung b&igrave;nh của ch&uacute;ng. C&aacute;c đối tượng trước v&agrave; sau nơi tr&uacute; ngụ hiện tại được th&ecirc;m v&agrave;o nơi tr&uacute; ngụ nếu ch&uacute;ng nằm trong khoảng c&aacute;ch nhất định từ điểm trung t&acirc;m trung b&igrave;nh của vị tr&iacute; nơi tr&uacute; ngụ. Qu&aacute; tr&igrave;nh n&agrave;y tiếp tục cho đến khi kết th&uacute;c đường đi.
+    </p>
+    <p>C&aacute;c đối tượng trong lớp k&iacute;ch hoạt thời gian c&oacute; thể được thể hiện theo một trong c&aacute;c c&aacute;ch sau:
+        <ul>
+            <li>Tức th&igrave;&mdash;Một thời điểm
+            </li>
+            <li>Khoảng&mdash;Thời gian bắt đầu v&agrave; kết th&uacute;c
+            </li>
+        </ul>
+        
+    </p>
+    <p>V&iacute; dụ: giả sử bạn l&agrave;m việc cho Bộ Giao th&ocirc;ng Vận tải v&agrave; đ&atilde; thu thập c&aacute;c số liệu GPS cho c&aacute;c phương tiện xe cộ tr&ecirc;n c&aacute;c đường cao tốc ch&iacute;nh. Mỗi bản ghi GPS chứa một ID phương tiện, thời gian, địa điểm v&agrave; tốc độ duy nhất. Sử dụng ID phương tiện duy nhất để x&aacute;c định từng đường đi ri&ecirc;ng lẻ, t&igrave;m kiếm c&aacute;c phương tiện kh&ocirc;ng di chuyển hơn 100 m&eacute;t trong &iacute;t nhất 15 ph&uacute;t để kh&aacute;m ph&aacute; c&aacute;c khu vực sự cố trong mạng lưới đường bộ. Ngo&agrave;i ra, bạn c&oacute; thể t&iacute;nh to&aacute;n c&aacute;c số liệu thống k&ecirc; như tốc độ trung b&igrave;nh của c&aacute;c phương tiện trong vị tr&iacute; dừng.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp để tìm nơi trú ngụ ở trong đó</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp điểm sẽ được tổng hợp th&agrave;nh c&aacute;c nơi tr&uacute; ngụ. Lớp đầu v&agrave;o phải được k&iacute;ch hoạt th&ocirc;ng tin thời gian cho c&aacute;c đối tượng thể hiện thời gian tức th&igrave;, cũng như c&oacute; một hoặc nhiều trường c&oacute; thể sử dụng được để x&aacute;c định đường đi.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp dữ liệu từ bản đồ, bạn c&oacute; thể chọn mục  <b>Chọn Lớp Ph&acirc;n t&iacute;ch</b> ở dưới danh s&aacute;ch thả xuống để t&igrave;m đến nội dung của m&igrave;nh cho bộ dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng. Bạn c&oacute; thể t&ugrave;y &yacute; &aacute;p dụng bộ lọc tr&ecirc;n lớp đầu v&agrave;o hoặc &aacute;p dụng lựa chọn tr&ecirc;n c&aacute;c lớp được lưu trữ được th&ecirc;m v&agrave;o bản đồ của bạn. C&aacute;c bộ lọc v&agrave; lựa chọn chỉ được &aacute;p dụng cho ph&acirc;n t&iacute;ch. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Chọn một hoặc nhiều trường để xác định đường đi</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c trường thể hiện m&atilde; x&aacute;c định của đường đi. Bạn c&oacute; thể sử dụng một hoặc nhiều trường để thể hiện c&aacute;c gi&aacute; trị duy nhất của đường đi.
+            </p>
+            <p>V&iacute; dụ: nếu bạn đang t&igrave;m vị tr&iacute; tr&uacute; ngụ cho cơn b&atilde;o, bạn c&oacute; thể sử dụng t&ecirc;n b&atilde;o l&agrave;m trường đường đi.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Chọn phương pháp tính khoảng cách</h2></div>
+        <hr/>
+        <div>
+            <p>Phương ph&aacute;p được sử dụng để t&iacute;nh khoảng c&aacute;ch tr&uacute; ngụ trong c&aacute;c đường đi. Phương ph&aacute;p  <b>Phẳng</b> c&oacute; thể t&iacute;nh to&aacute;n kết quả nhanh hơn, nhưng sẽ kh&ocirc;ng bẻ đường đi xung quanh đường ng&agrave;y quốc tế hoặc t&iacute;nh đến h&igrave;nh dạng thực tế của tr&aacute;i đất khi tạo v&ugrave;ng đệm. Phương ph&aacute;p <b>Trắc địa</b> sẽ bẻ đường đi xung quanh đường ng&agrave;y quốc tế nếu cần thiết v&agrave; &aacute;p dụng v&ugrave;ng đệm trắc địa để t&iacute;nh đến h&igrave;nh dạng tr&aacute;i đất.
+            </p>
+        </div>
+    </div>
+    <div id="distanceTolerance">
+        <div><h2>Xác định khoảng cách tìm kiếm không gian</h2></div>
+        <hr/>
+        <div>
+            <p>Dung sai khoảng c&aacute;ch tr&uacute; ngụ l&agrave; khoảng c&aacute;ch tối đa giữa c&aacute;c điểm cần xem x&eacute;t trong một vị tr&iacute; tr&uacute; ngụ.
+            </p>
+            <p>V&iacute; dụ: nếu bạn muốn t&igrave;m nơi tr&uacute; ngụ ở nơi giao th&ocirc;ng kh&ocirc;ng được di chuyển qu&aacute; 20 m&eacute;t trong một khoảng thời gian nhất định, th&igrave; dung sai khoảng c&aacute;ch sẽ l&agrave; 20 m&eacute;t.
+            </p>
+            <p>Sử dụng th&ocirc;ng số  <b>X&aacute;c định phạm vi t&igrave;m kiếm thời gian</b> để x&aacute;c định thời gian.
+            </p>
+        </div>
+    </div>
+    <div id="distanceToleranceUnit">
+        <div><h2>Phân chia đường đi (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Đơn vị của dung sai khoảng c&aacute;ch.
+            </p> 
+        </div>
+    </div>
+    <div id="timeTolerance">
+        <div><h2>Xác định phạm vi tìm kiếm thời gian</h2></div>
+        <hr/>
+        <div>
+            <p>Dung sai thời gian tr&uacute; ngụ l&agrave; khoảng thời gian tối thiểu của một nơi tr&uacute; ngụ cần xem x&eacute;t trong một vị tr&iacute; tr&uacute; ngụ.
+            </p>
+            <p>V&iacute; dụ: nếu bạn muốn biết lưu lượng giao th&ocirc;ng đ&atilde; kh&ocirc;ng di chuyển một khoảng c&aacute;ch nhất định trong v&ograve;ng một giờ, th&igrave; dung sai thời gian sẽ l&agrave; 1 giờ.
+            </p>
+            <p>Sử dụng th&ocirc;ng số  <b>X&aacute;c định phạm vi t&igrave;m kiếm kh&ocirc;ng gian</b> để x&aacute;c định khoảng c&aacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="timeToleranceUnit">
+        <div><h2>Chọn khoảng cách dùng để chia đường đi (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Đơn vị của dung sai thời gian.
+            </p> 
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Thêm số liệu thống kê (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; tr&ecirc;n c&aacute;c đối tượng được tổng hợp. Bạn c&oacute; thể t&iacute;nh to&aacute;n như sau ở c&aacute;c trường số: 
+                <ul>
+                    <li>Đếm&mdash;T&iacute;nh to&aacute;n số lượng gi&aacute; trị kh&ocirc;ng rỗng. C&oacute; thể được sử dụng ở c&aacute;c trường dạng số hoặc chuỗi. Số lượng của [rỗng 0, 2] l&agrave; 2.
+                    </li>
+                    <li>Tổng cộng&mdash;Tổng gi&aacute; trị số trong một trường Tổng cộng của [rỗng, krỗng, 3] l&agrave; 3.
+                    </li>
+                    <li>Trung b&igrave;nh&mdash;Trung b&igrave;nh của c&aacute;c gi&aacute; trị số. Trung b&igrave;nh của [0, 2, rỗng] l&agrave; 1.
+                    </li>
+                    <li>Tối thiểu&mdash;Gi&aacute; trị tối thiểu của trường số. Trung b&igrave;nh của [0, 2, rỗng] l&agrave; 0. 
+                    </li>
+                    <li>Tối đa&mdash;Gi&aacute; trị tối đa của trường số. Gi&aacute; trị tối đa của [0, 2, rỗng] l&agrave; 2.
+                    </li>
+                    <li>Phạm vi&mdash;Phạm vi của trường số Phạm vi n&agrave;y được t&iacute;nh to&aacute;n l&agrave; gi&aacute; trị tối đa trừ đi gi&aacute; trị tối thiểu. Phạm vi của [0, rỗng, 1] l&agrave; 1. Phạm vi của [rỗng, 4] l&agrave; 0.
+                    </li>
+                    <li>Biến số&mdash;Biến số của trường số trong đường đi. Biến số của [1] l&agrave; rỗng. Biến số của [null, 1,0,1,1] l&agrave; 0,25.
+                    </li>
+                    <li>Độ lệch chuẩn&mdash;Độ lệch chuẩn của một trường số. Độ lệch chuẩn của [1] l&agrave; rỗng. Độ lệch chuẩn của [null, 1,0,1,1] l&agrave; 0,5. 
+                    </li>
+                    <li>Đầu ti&ecirc;n&mdash;Gi&aacute; trị đầu ti&ecirc;n của trường chỉ định trong lớp đường đi được tổng kết.  Nếu đường đi n&agrave;y c&oacute; c&aacute;c gi&aacute; trị sắp xếp theo thứ tự thời gian cho một trường l&agrave;: [1,5,10,20] th&igrave; gi&aacute; trị đầu ti&ecirc;n sẽ l&agrave; 1.
+                    </li>
+                    <li>Cuối c&ugrave;ng&mdash;Gi&aacute; trị cuối c&ugrave;ng của trường chỉ định trong lớp đường đi được tổng kết.  Nếu đường đi n&agrave;y c&oacute; c&aacute;c gi&aacute; trị sắp xếp theo thứ tự thời gian cho một trường l&agrave;: [1,5,10,20] th&igrave; gi&aacute; trị cuối c&ugrave;ng sẽ l&agrave; 20.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bạn c&oacute; thể t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c trường dạng chuỗi sau:
+                <ul>
+                    <li>Đếm&mdash;Số chuỗi kh&ocirc;ng rỗng.
+                    </li>
+                    <li>Bất kỳ&mdash;Số liệu thống k&ecirc; n&agrave;y l&agrave; mẫu ngẫu nhi&ecirc;n của một gi&aacute; trị dạng chuỗi trong trường x&aacute;c định.
+                    </li>
+                    <li>Đầu ti&ecirc;n&mdash;Gi&aacute; trị đầu ti&ecirc;n của trường chỉ định trong lớp đường đi được tổng kết. Nếu đường đi n&agrave;y c&oacute; c&aacute;c gi&aacute; trị sắp xếp theo thứ tự thời gian cho một trường l&agrave;: [Toronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] th&igrave; gi&aacute; trị đầu ti&ecirc;n sẽ l&agrave; Toronto.
+                    </li>
+                    <li>Cuối c&ugrave;ng&mdash;Gi&aacute; trị cuối c&ugrave;ng của trường chỉ định trong lớp đường đi được tổng kết. Nếu đường đi n&agrave;y c&oacute; c&aacute;c gi&aacute; trị sắp xếp theo thứ tự thời gian cho một trường: [oronto,Guelph,Squamish,Montreal,Halifax,Redlands,Boston] th&igrave; gi&aacute; trị cuối c&ugrave;ng sẽ l&agrave; Boston.
+                    </li>
+                </ul>
+                Tất cả số liệu thống k&ecirc; được t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c gi&aacute; trị kh&ocirc;ng rỗng. Lớp kết quả sẽ chứa một trường mới cho mỗi số liệu thống k&ecirc; được t&iacute;nh to&aacute;n. C&oacute; thể th&ecirc;m bất kỳ số liệu thống k&ecirc; n&agrave;o bằng c&aacute;ch chọn một thuộc t&iacute;nh v&agrave; số liệu thống k&ecirc;.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Vị trí trú ngụ đầu ra là</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định c&aacute;c đối tượng được trả lại v&agrave; định dạng. C&oacute; bốn loại: 
+                <ul>
+                    <li> <b>Điểm trung t&acirc;m Trung b&igrave;nh</b>&mdash;Một điểm đại diện cho t&acirc;m của mỗi vị tr&iacute; tr&uacute; ngụ được ph&aacute;t hiện. C&aacute;c thuộc t&iacute;nh sẽ được tổng hợp. Đ&acirc;y l&agrave; mặc định.
+                         
+                    </li>
+                    <li> <b>Bao lồi</b>&mdash;Đa gi&aacute;c đại diện cho v&ugrave;ng bao lồi của mỗi nh&oacute;m nơi tr&uacute; ngụ. C&aacute;c thuộc t&iacute;nh sẽ được tổng hợp.
+                         
+                    </li>
+                    <li> <b>Đối tượng Nơi tr&uacute; ngụ</b>&mdash;Tất cả c&aacute;c đối tượng điểm đầu v&agrave;o v&agrave; thuộc t&iacute;nh được x&aacute;c định thuộc về một nơi tr&uacute; ngụ được trả về.
+                         
+                    </li>
+                    <li> <b>Tất cả c&aacute;c Đối tượng</b>&mdash;Tất cả c&aacute;c đối tượng điểm đầu v&agrave;o v&agrave; thuộc t&iacute;nh được trả về.
+                         
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="timeBoundarySplit">
+        <div><h2>Phân tích dữ liệu với các khoảng thời gian (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định xem bạn c&oacute; muốn t&igrave;m kiếm c&aacute;c vị tr&iacute; dừng bằng c&aacute;ch sử dụng khoảng thời gian m&agrave; cho ph&eacute;p ph&acirc;n đoạn đối tượng đầu v&agrave;o cho ph&acirc;n t&iacute;ch. Nếu sử dụng c&aacute;c khoảng thời gian, bạn phải thiết lập khoảng thời gian bạn muốn sử dụng v&agrave; t&ugrave;y &yacute; thiết lập thời gian tham chiếu. Nếu bạn kh&ocirc;ng thiết lập thời gian tham chiếu th&igrave; hệ thống sẽ sử dụng ng&agrave;y 1 th&aacute;ng 1 năm 1970. 
+            </p>
+            <p>V&iacute; dụ: nếu bạn thiết lập giới hạn thời gian l&agrave; 1 ng&agrave;y, bắt đầu l&uacute;c 9:00 s&aacute;ng ng&agrave;y 1 th&aacute;ng 1 năm 1990 th&igrave; mỗi đường đi sẽ được cắt ngắn v&agrave;o l&uacute;c 9:00 s&aacute;ng h&agrave;ng ng&agrave;y v&agrave; được ph&acirc;n t&iacute;ch trong khoảng thời gian đ&oacute;. Sẽ kh&ocirc;ng c&oacute; hoạt động dừng bắt đầu trước 9:00 s&aacute;ng v&agrave; kết th&uacute;c sau đ&oacute;. 
+            </p>
+            <p>Sử dụng c&aacute;c khoảng thời gian l&agrave; c&aacute;ch nhanh để tăng tốc thời gian t&iacute;nh to&aacute;n, v&igrave; n&oacute; nhanh ch&oacute;ng tạo ra c&aacute;c đường đi nhỏ hơn cho ph&acirc;n t&iacute;ch. Nếu ph&acirc;n t&iacute;ch của bạn c&oacute; thể &aacute;p dụng chia t&aacute;ch khoảng thời gian định kỳ th&igrave; bạn n&ecirc;n d&ugrave;ng chức năng đ&oacute; cho việc xử l&yacute; dữ liệu lớn.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> T&ecirc;n lớp sẽ được tạo. Nếu bạn đang ghi v&agrave;o ArcGIS Data Store, kết quả của bạn sẽ được lưu trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. Nếu bạn đang ghi v&agrave;o một phần chia sẻ tệp dữ liệu lớn, kết quả của bạn sẽ được lưu v&agrave;o phần chia sẻ tệp dữ liệu lớn v&agrave; được th&ecirc;m v&agrave;o bản k&ecirc; của n&oacute;. N&oacute; sẽ kh&ocirc;ng được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Khi ghi v&agrave;o  ArcGIS Data Store (kho dữ liệu lớn li&ecirc;n quan hoặc kho dữ liệu lớn kh&ocirc;ng gian thời gian) sử dụng hộp xổ xuống  <b>Lưu kết quả v&agrave;o</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của t&ocirc;i</b> để lưu trữ kết quả v&agrave;o.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Însumare raster multidimensional</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Raster Multidimensional Agregat"></h2>
+        <hr/>
+    <p>Generează un set de date de raster multidimensional prin combinarea variabilelor existente ale rasterului multidimensional de-a lungul unei dimensiuni.
+    </p>
+    <p>Dacă aveți date privind temperatura suprafeței mării care acoperă 30 ani, colectate lunar și la ad&acirc;ncime de c&acirc;te 5 metri p&acirc;nă la 100 metri, unele exemplele de aplicaţii sunt următoarele:
+        <ul>
+            <li>Agregarea datelor privind temperaturile lunare &icirc;n date anuale.
+            </li>
+            <li>Agregarea datelor privind temperaturile lunare &icirc;n intervale de c&acirc;te 4 luni.
+            </li>
+            <li>Agregarea datelor privind temperaturile de la 0 la 25 metri, apoi de la 25 la 50 metri, apoi de la 50 la 100 metri.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Dacă se bifează  <b>Utilizare extindere curentă a hărţii</b>, vor fi analizate variabilele stratului tematic care sunt vizibile &icirc;n extinderea curentă a hărţii. Dacă nu se bifează, variabilele &icirc;ntregului strat tematic vor fi analizate, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Alegeți un strat tematic de imagistică pentru însumare</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de imagini de intrare al unui raster multidimensional vor fi agregate.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Alegeți dimensiunea de însumare</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensiunea agregării. Aceasta este dimensiunea de-a lungul căreia vor fi agregate variabilele.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Alegeți variabila/variabilele de însumare</h2></div>
+        <hr/>
+        <div>
+            <p>Variabila sau variabilele care vor fi agregate de-a lungul dimensiunii date. Dacă nu este specificată nicio variabilă, toate variabilele cu dimensiunea selectată vor fi agregate.
+            </p>
+            <p>De exemplu, pentru agregarea datelor dvs. privind temperatura zilnică &icirc;n valori lunare medii, specificați temperatura ca fiind variabila de agregat. Dacă nu specificați nicio variabilă și aveți at&acirc;t variabilele referitoare la temperaturile zilnice c&acirc;t și la precipitațiile zilnice, ambele variabile vor fi agregate &icirc;n medii lunare iar rasterul multidimensional rezultant ieșire va include ambele variabile.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Alegeți metoda de însumare</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică metoda matematică care va fi utilizată pentru a combina &icirc;mpărțirile agregate &icirc;ntr-un interval. 
+                <ul>
+                    <li> <b>Medie</b>&mdash;Calculează media valorilor unui pixel pe toate &icirc;mpărțirile din interval. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Maximă</b>&mdash;Calculează valoarea maximă a unui pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Majoritate</b>&mdash;Calculează valoarea care a apărut cel mai des pentru un pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Minimă</b>&mdash;Calculează valoarea minimă a unui pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Minoritate</b>&mdash;Calculează valoarea care a apărut cel mai rar pentru un pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Mediană</b>&mdash;Calculează valoarea mediană a unui pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Gamă</b>&mdash;Calculează gama de valori pentru un pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Abatere standard</b>&mdash;Calculează abaterea standard a valorilor unui pixel &icirc;n toate &icirc;mpărțirile din imterval.
+                    </li>
+                    <li> <b>Sumă</b>&mdash;Calculează suma valorilor unui pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Varietate</b>&mdash;Calculează numărul de valori unice ale unui pixel pe toate &icirc;mpărțirile din interval.
+                    </li>
+                    <li> <b>Personalizat</b>&mdash;Calculează valoarea unui pixel pe baza unei funcții raster personalizate.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Alegeți șablonul funcției raster</h2></div>
+        <hr/>
+        <div>
+            <p>O funcție raster specifică care va fi folosită pentru calcularea valorilor pixel ale rasterelor agregate. Intrarea este un model de funcţie raster &icirc;n portal. Această intrare este necesară atunci c&acirc;nd  <b>Metoda de Agregare</b> este fixată la <b>Specifică</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Alegeți definiția de însumare</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică intervalul de dimensiuni pentru care vor fi agregate datele. 
+                <ul>
+                    <li> <b>Toate</b>&mdash;Valorile datelor vor fi agregate pe toate &icirc;mpărțirile. Aceasta este setarea implicită.
+                    </li>
+                    <li> <b>Cuv&acirc;nt-Cheie Interval</b>&mdash;Datele variabile vor fi agregate folosind un interval cunoscut &icirc;n comun.
+                    </li>
+                    <li> <b>Valoare de Interval</b>&mdash;Datele variabile vor fi agregate folosind un interval și o unitate specificate de utilizator.
+                    </li>
+                    <li> <b>Game de Interval</b>&mdash;Datele variabile vor fi cumulate &icirc;ntre perechi specifice de valori sau date.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Alegeți intervalul de cuvinte cheie</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică intervalul cuv&acirc;ntului cheie care va fi utilizat la agregarea de-a lungul dimensiunii. Această intrare este necesară c&acirc;nd  <b>Definiția Agregării</b> este setată la <b>Interval Cuv&acirc;nt Cheie</b>, iar agregarea trebuie să fie pe timp.
+                <ul>
+                    <li> <b>Orar</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp orare, iar rezultatul va include fiecare oră din seria de timp.
+                    </li>
+                    <li> <b>Zilnic</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp zilnice, iar rezultatul va include fiecare zi din seria de timp.
+                    </li>
+                    <li> <b>Săptăm&acirc;nal</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp săptăm&acirc;nale, iar rezultatul va include fiecare săptăm&acirc;nă din seria de timp.
+                    </li>
+                    <li> <b>Lunar</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp lunare, iar rezultatul va include fiecare lună din seria de timp.
+                    </li>
+                    <li> <b>Trimestrial</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp trimestriale, iar rezultatul va include fiecare trimestru din seria de timp.
+                    </li>
+                    <li> <b>Anual</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp anuale, iar rezultatul va include fiecare an din seria de timp.
+                    </li>
+                    <li> <b>Recurent Zilnic</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp zilnice, iar rezultatul va include o valoare agregată pe zi iuliană. Rezultatul va include maximum 366 &icirc;mpărțiri de timp zilnice.
+                    </li>
+                    <li> <b>Recurent Săptăm&acirc;nal</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp săptăm&acirc;nale, iar rezultatul va include o valoare agregată pe săptăm&acirc;nă. Rezultatul va include maximum 53 &icirc;mpărțiri de timp săptăm&acirc;nal.
+                    </li>
+                    <li> <b>Recurent Lunar</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp lunare, iar rezultatul va include o valoare agregată pe lună. Rezultatul va include maximum 12 &icirc;mpărțiri de timp lunar.
+                    </li>
+                    <li> <b>Recurent Trimestrial</b>&mdash;Valorile de date vor fi agregate &icirc;n etape de timp trimestriale, iar rezultatul va include o valoare agregată pe trimestru. Rezultatul va include maximum 4 &icirc;mpărțiri de timp trimestrial.
+                    </li>
+                    <li> <b>Decadă</b>&mdash; Valorile de date vor fi agregate &icirc;n 3 perioade de c&acirc;te 10 zile fiecare. Ultima perioadă poate include mai mult sau mai puțin de 10 zile. Rezultatul va include 3 &icirc;mpărțiri pentru fiecare lună.
+                    </li>
+                    <li> <b>Pentadă</b>&mdash;Valorile de date vor fi agregate &icirc;n 6 perioade de c&acirc;te 5 zile fiecare. Ultima perioadă poate include mai mult sau mai puțin de 5 zile. Rezultatul va include 6 &icirc;mpărțiri pentru fiecare lună.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval de valori</h2></div>
+        <hr/>
+        <div>
+            <p>Dimensiunea intervalului care va fi utilizat pentru agregare. Acest parametru este necesar atunci c&acirc;nd parametrul  <b>Definiția Agregării</b> este setat la <b>Valoarea Intervalului</b>.
+            </p>
+            <p>De exemplu, pentru a agrega 30 ani de date privind temperaturile lunare &icirc;n etape de c&acirc;te 5 ani, introduceți 5 ca  <b>Interval de Valoare</b>, și specificați <b>Unitatea</b> ca fiind <b>Ani</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Unitate</h2></div>
+        <hr/>
+        <div>
+            <p>Unitatea care va fi folosită pentru valoarea de interval. Această intrare este necesară atunci c&acirc;nd  <b>Dimensiunea</b> este un c&acirc;mp de timp iar <b>Definirea Agregării</b> este setată la <b>Valoarea Intervalului</b>.
+            </p>
+            <p>Dacă agregați pe orice altceva &icirc;n afara timpului, această opțiune nu va fi disponibilă iar unitatea pentru valoarea de interval ca corespunde unității variabile a datelor de raster multidimensional introduse. 
+                <ul>
+                    <li> <b>Ore</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp orare &icirc;n intervalul prevăzut.
+                    </li>
+                    <li> <b>Zile</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp zilnice &icirc;n intervalul prevăzut.
+                    </li>
+                    <li> <b>Săptăm&acirc;ni</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp săptăm&acirc;nale &icirc;n intervalul prevăzut.
+                    </li>
+                    <li> <b>Luni</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp lunare &icirc;n intervalul prevăzut.
+                    </li>
+                    <li> <b>Ani</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp anuale &icirc;n intervalul prevăzut.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definire intervale</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalele vor fi folosite pentru a integra grupuri de valori. Acestea constau &icirc;n perechi de valori de interval minim și maxim, cu tipuri de date Duble sau Dată. Această intrare este necesară atunci c&acirc;nd  <b>Definirea Agregării</b> este stabilită la <b>Intervale</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorare valori lipsă în calcul</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză. 
+                <ul>
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    </li>
+                    <li>Nebifat&mdash;Analiza va avea ca rezultat NoData dacă există orice valori NoData pentru pixel alături de dimensiunea dată.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>
